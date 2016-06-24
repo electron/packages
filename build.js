@@ -29,7 +29,7 @@ class Package {
   }
 
   mentions(string) {
-    return !!JSON.stringify(this).includes(string)
+    return !!JSON.stringify(this).toLowerCase().includes(string.toLowerCase())
   }
 
   save() {
