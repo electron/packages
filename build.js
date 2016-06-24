@@ -44,7 +44,6 @@ class Package {
   }
 }
 
-
 got(db).then(response => {
   changes.on('data', function (change) {
     // stop after we've parsed all the things
@@ -55,7 +54,7 @@ got(db).then(response => {
     process.stdout.write('.')
     var pkg = new Package(change.doc)
 
-    if (pkg.mentions('electron')) {
+    if (pkg.mentions('electron') && !pkg.mentions('electronic')) {
       console.log(pkg.name)
       pkg.save()
     }
