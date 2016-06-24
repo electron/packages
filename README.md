@@ -1,6 +1,6 @@
 # electron-npm-packages
 
-A collection of all npm packages that mention `electron` in their package.json or README
+A collection of all npm packages that mention `electron` in their package.json
 
 ## Packages
 
