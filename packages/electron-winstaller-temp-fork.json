@@ -1,0 +1,81 @@
+{
+  "name": "electron-winstaller-temp-fork",
+  "version": "2.0.5-beta.3",
+  "description": "Module to generate Windows installers for Electron apps",
+  "main": "./lib/index.js",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/electronjs/windows-installer.git"
+  },
+  "scripts": {
+    "compile": "babel -d lib/ src/",
+    "prepublish": "eslint src && npm run compile",
+    "test": "eslint spec && mocha --compilers js:babel-register ./spec/*.js"
+  },
+  "dependencies": {
+    "asar": "~0.10.0",
+    "debug": "^2.2.0",
+    "fs-extra": "^0.26.5",
+    "fs-jetpack": "^0.7.1",
+    "lodash": "^4.6.1",
+    "temp": "^0.8.3"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.6.4",
+    "babel-eslint": "^5.0.0",
+    "babel-plugin-transform-async-to-module-method": "^6.5.2",
+    "babel-plugin-transform-runtime": "^6.6.0",
+    "babel-preset-es2015-node4": "^2.0.3",
+    "babel-preset-stage-0": "^6.5.0",
+    "babel-register": "^6.6.0",
+    "chai": "^3.5.0",
+    "chai-as-promised": "^5.2.0",
+    "eslint": "^2.2.0",
+    "mocha": "^2.4.5"
+  },
+  "babel": {
+    "presets": [
+      "stage-0",
+      "es2015-node4"
+    ],
+    "plugins": [
+      [
+        "transform-async-to-module-method",
+        {
+          "module": "bluebird",
+          "method": "coroutine"
+        }
+      ]
+    ]
+  },
+  "gitHead": "ca080678c66e6858f9558e8527cd37be4bf3aeef",
+  "bugs": {
+    "url": "https://github.com/electronjs/windows-installer/issues"
+  },
+  "homepage": "https://github.com/electronjs/windows-installer#readme",
+  "_id": "electron-winstaller-temp-fork@2.0.5-beta.3",
+  "_shasum": "74f0fd70aea5ea3e2fe2078aa89b4fb372c945ca",
+  "_from": ".",
+  "_npmVersion": "3.6.0",
+  "_nodeVersion": "5.7.1",
+  "_npmUser": {
+    "name": "develar",
+    "email": "develar@gmail.com"
+  },
+  "dist": {
+    "shasum": "74f0fd70aea5ea3e2fe2078aa89b4fb372c945ca",
+    "tarball": "http://registry.npmjs.org/electron-winstaller-temp-fork/-/electron-winstaller-temp-fork-2.0.5-beta.3.tgz"
+  },
+  "maintainers": [
+    {
+      "name": "develar",
+      "email": "develar@gmail.com"
+    }
+  ],
+  "_npmOperationalInternal": {
+    "host": "packages-12-west.internal.npmjs.com",
+    "tmp": "tmp/electron-winstaller-temp-fork-2.0.5-beta.3.tgz_1457027301634_0.10712682595476508"
+  },
+  "directories": {}
+}

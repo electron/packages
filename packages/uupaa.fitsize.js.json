@@ -1,0 +1,112 @@
+{
+  "name": "uupaa.fitsize.js",
+  "version": "0.0.2",
+  "description": "Calculate to fit the screen size and keep aspect ratio.",
+  "url": "https://github.com/uupaa/FitSize.js",
+  "keywords": [
+    "uupaa",
+    "WebModule",
+    "Unstable"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/uupaa/FitSize.js.git"
+  },
+  "scripts": {
+    "sync": "node ../WebModule/run/sync.js; npm update; node ../WebModule/run/page.js",
+    "wiki": "node ../WebModule/run/wiki.js",
+    "min": "node ../WebModule/run/minify.js --verbose --strict --keep --pretty",
+    "build": "node ../WebModule/run/minify.js --verbose --strict --keep --release",
+    "watch": "node ../WebModule/run/watch.js --verbose --run lint",
+    "page": "node ../WebModule/run/page.js --verbose",
+    "test": "npm run min; npm run node; npm run browser",
+    "node": "NODE_ENV=production NODE_PATH=lib node test/node/index.js",
+    "noded": "NODE_ENV=production NODE_PATH=lib node --debug-brk test/node/index.js",
+    "browser": "open http://localhost:8000/FitSize.js/test/browser/index.html",
+    "el": "electron test/el",
+    "nw": "nw test/nw",
+    "add-src": "node ../WebModule/run/add-src.js",
+    "add-subclass": "node ../WebModule/run/add-subclass.js",
+    "sim": "node ../WebModule/run/sim.js http://localhost:8000/FitSize.js/test/browser/index.html",
+    "simx": "node ../WebModule/run/sim.js stop",
+    "lint": "eslint lib/*.js",
+    "score": "node ../WebModule/run/score.js; open lint/plato/index.html",
+    "patch": "node ../WebModule/run/patch.js",
+    "setup": "node ../WebModule/run/setup.js",
+    "start": "cd ../; Python -m SimpleHTTPServer 8000 &",
+    "stop": "killall -- Python -m SimpleHTTPServer 8000; exit 0"
+  },
+  "webmodule": {
+    "develop": false,
+    "label": [
+      "@dev"
+    ],
+    "browser": {
+      "output": "release/FitSize.b.min.js",
+      "source": [
+        "lib/FitSize.js"
+      ]
+    },
+    "worker": {
+      "output": "release/FitSize.w.min.js",
+      "source": [
+        "lib/FitSize.js"
+      ]
+    },
+    "node": {
+      "output": "release/FitSize.n.min.js",
+      "source": [
+        "lib/FitSize.js"
+      ]
+    },
+    "nw": {
+      "output": "release/FitSize.nw.min.js",
+      "source": [
+        "lib/FitSize.js"
+      ]
+    },
+    "el": {
+      "output": "release/FitSize.el.min.js",
+      "source": [
+        "lib/FitSize.js"
+      ]
+    }
+  },
+  "dependencies": {},
+  "devDependencies": {},
+  "lib": "./lib/",
+  "main": "./index.js",
+  "author": {
+    "name": "uupaa"
+  },
+  "license": "MIT",
+  "contributors": [],
+  "gitHead": "b44be43811b8d434ae85fdbfc5fbc0d9ac377639",
+  "bugs": {
+    "url": "https://github.com/uupaa/FitSize.js/issues"
+  },
+  "homepage": "https://github.com/uupaa/FitSize.js",
+  "_id": "uupaa.fitsize.js@0.0.2",
+  "_shasum": "1e0e1164677051ba68e31916fb970c26718c8ddd",
+  "_from": ".",
+  "_npmVersion": "2.0.0",
+  "_npmUser": {
+    "name": "uupaa",
+    "email": "uupaa.js@gmail.com"
+  },
+  "maintainers": [
+    {
+      "name": "uupaa",
+      "email": "uupaa.js@gmail.com"
+    }
+  ],
+  "dist": {
+    "shasum": "1e0e1164677051ba68e31916fb970c26718c8ddd",
+    "tarball": "http://registry.npmjs.org/uupaa.fitsize.js/-/uupaa.fitsize.js-0.0.2.tgz"
+  },
+  "_npmOperationalInternal": {
+    "host": "packages-12-west.internal.npmjs.com",
+    "tmp": "tmp/uupaa.fitsize.js-0.0.2.tgz_1463857377956_0.7977269138209522"
+  },
+  "directories": {}
+}

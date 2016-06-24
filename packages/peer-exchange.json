@@ -1,0 +1,85 @@
+{
+  "name": "peer-exchange",
+  "version": "0.5.3",
+  "description": "Decentralized peer discovery and signaling",
+  "main": "index.js",
+  "scripts": {
+    "test": "standard src test index.js && nyc tape test/*.js | faucet && nyc report",
+    "test-browser": "npm run build && ./test/browser.sh && npm run source",
+    "build": "rm -rf lib && babel --presets es2015 src -d lib",
+    "source": "rm -rf lib && ln -s src lib",
+    "prepublish": "npm run build",
+    "publish": "npm run source"
+  },
+  "keywords": [
+    "p2p",
+    "peer",
+    "dicovery",
+    "exchange",
+    "seed",
+    "bootstrap",
+    "signal",
+    "hub"
+  ],
+  "author": {
+    "name": "Matt Bell",
+    "email": "mappum@gmail.com"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "duplexify": "^3.4.2",
+    "get-browser-rtc": "^1.0.2",
+    "hat": "0.0.3",
+    "multiplex": "^6.6.1",
+    "ndjson": "^1.4.3",
+    "once": "^1.3.3",
+    "simple-peer": "^6.0.1",
+    "websocket-stream": "^3.1.0"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.5.1",
+    "babel-preset-es2015": "^6.5.0",
+    "electron-webrtc": "^0.2.4",
+    "faucet": "0.0.1",
+    "nyc": "^6.4.4",
+    "standard": "^7.1.0",
+    "tape": "^4.5.1",
+    "zuul": "^3.10.1",
+    "zuul-ngrok": "^4.0.0"
+  },
+  "directories": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mappum/peer-exchange.git"
+  },
+  "bugs": {
+    "url": "https://github.com/mappum/peer-exchange/issues"
+  },
+  "homepage": "https://github.com/mappum/peer-exchange#readme",
+  "gitHead": "5419e10d06b6fe3e9388709130497dd1ad98ca3c",
+  "_id": "peer-exchange@0.5.3",
+  "_shasum": "ef917718ebf0dbe7294317d3b957292ae9e8d5a7",
+  "_from": ".",
+  "_npmVersion": "3.8.9",
+  "_nodeVersion": "6.2.0",
+  "_npmUser": {
+    "name": "mappum",
+    "email": "mappum@gmail.com"
+  },
+  "dist": {
+    "shasum": "ef917718ebf0dbe7294317d3b957292ae9e8d5a7",
+    "tarball": "http://registry.npmjs.org/peer-exchange/-/peer-exchange-0.5.3.tgz"
+  },
+  "maintainers": [
+    {
+      "name": "mappum",
+      "email": "mappum@gmail.com"
+    }
+  ],
+  "_npmOperationalInternal": {
+    "host": "packages-16-east.internal.npmjs.com",
+    "tmp": "tmp/peer-exchange-0.5.3.tgz_1464573989595_0.3330275509506464"
+  }
+}

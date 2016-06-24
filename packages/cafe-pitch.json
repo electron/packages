@@ -1,0 +1,94 @@
+{
+  "name": "cafe-pitch",
+  "version": "0.0.6",
+  "description": "Markdown-driven presentation tool built on Electron.",
+  "main": "dist/browser/main.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/joe-re/cafe-pitch.git"
+  },
+  "bin": {
+    "cafepitch": "./bin/cli.js"
+  },
+  "scripts": {
+    "prepublish": "npm run build",
+    "prebuild": "gulp build:prepare && tsconfig -u tsconfig.json",
+    "setup": "npm i && typings install",
+    "build": "webpack",
+    "watch": "npm run prebuild && concurrently --kill-others \"webpack -w\" \"gulp watch\" \"npm run test-watch\"",
+    "start": "electron .",
+    "package": "npm run build && gulp package",
+    "test-watch": "concurrently --kill-others \"webpack --config ./webpack_for_spec.config.coffee -w\" \"karma start spec/karma.conf.coffee\"",
+    "test": "webpack --config ./webpack_for_spec.config.coffee && karma start spec/karma.conf.coffee"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "ace-min-noconflict": "^1.1.9",
+    "angular2": "2.0.0-beta.17",
+    "electron-prebuilt": "^0.36.12",
+    "emoji-images": "^0.1.1",
+    "es6-shim": "^0.35.0",
+    "font-awesome": "^4.5.0",
+    "highlight.js": "^9.3.0",
+    "lodash": "^4.3.0",
+    "marked": "^0.3.5",
+    "reflect-metadata": "0.1.2",
+    "rxjs": "5.0.0-beta.6",
+    "zone.js": "0.6.12"
+  },
+  "devDependencies": {
+    "coffee-script": "^1.10.0",
+    "concurrently": "^2.0.0",
+    "del": "^2.2.0",
+    "electron-packager": "^6.0.2",
+    "glob": "^7.0.3",
+    "gulp": "^3.9.1",
+    "gulp-sass": "^2.2.0",
+    "jasmine-core": "^2.4.1",
+    "jquery": "^2.2.3",
+    "karma": "^0.13.22",
+    "karma-chrome-launcher": "^0.2.3",
+    "karma-commonjs": "0.0.13",
+    "karma-firefox-launcher": "^0.1.7",
+    "karma-jasmine": "^0.3.8",
+    "karma-mocha-reporter": "^2.0.2",
+    "run-sequence": "^1.1.5",
+    "ts-loader": "^0.8.2",
+    "tsconfig-cli": "^1.0.2",
+    "typescript": "^1.8.10",
+    "typings": "^0.8.1",
+    "webpack": "^1.13.0",
+    "zip-dir": "^1.0.2"
+  },
+  "gitHead": "c665e1cacb112e2ff0ad8a1e8e0369548b6a9d9b",
+  "bugs": {
+    "url": "https://github.com/joe-re/cafe-pitch/issues"
+  },
+  "homepage": "https://github.com/joe-re/cafe-pitch#readme",
+  "_id": "cafe-pitch@0.0.6",
+  "_shasum": "789e98030716bd82d33539f9b24ef35dffae7a55",
+  "_from": ".",
+  "_npmVersion": "3.8.6",
+  "_nodeVersion": "6.0.0",
+  "_npmUser": {
+    "name": "joe-re",
+    "email": "joe.tialtngo@gmail.com"
+  },
+  "dist": {
+    "shasum": "789e98030716bd82d33539f9b24ef35dffae7a55",
+    "tarball": "http://registry.npmjs.org/cafe-pitch/-/cafe-pitch-0.0.6.tgz"
+  },
+  "maintainers": [
+    {
+      "name": "joe-re",
+      "email": "joe.tialtngo@gmail.com"
+    }
+  ],
+  "_npmOperationalInternal": {
+    "host": "packages-16-east.internal.npmjs.com",
+    "tmp": "tmp/cafe-pitch-0.0.6.tgz_1462670339952_0.028755824314430356"
+  },
+  "directories": {}
+}

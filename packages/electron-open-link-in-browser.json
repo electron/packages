@@ -1,0 +1,77 @@
+{
+  "name": "electron-open-link-in-browser",
+  "description": "Open a link in browser for Electron and browser.",
+  "version": "1.0.2",
+  "author": {
+    "name": "sanemat",
+    "email": "o.gata.ken@gmail.com",
+    "url": "sane.jp"
+  },
+  "dependencies": {
+    "is-electron-renderer": "^2.0.0"
+  },
+  "devDependencies": {
+    "browserify": "^11.1.0",
+    "conventional-changelog": "^0.4.2",
+    "dereserve": "^0.1.1",
+    "eclint": "^1.1.1",
+    "eslint": "^1.3.0",
+    "fixpack": "^2.2.0",
+    "globstar": "^1.0.0",
+    "npm-check-updates": "^2.2.0",
+    "touch": "^1.0.0"
+  },
+  "engines": {
+    "node": ">=0.10.0"
+  },
+  "files": [
+    "index.js",
+    "build"
+  ],
+  "keywords": [
+    "atomshell",
+    "browser",
+    "electron"
+  ],
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lyrictenor/electron-open-link-in-browser.git"
+  },
+  "scripts": {
+    "build:browser": "npm update && npm prune && npm dedupe && browserify -u shell --standalone electronOpenLinkInBrowser ./index.js | dereserve > build/electron-open-link-in-browser.js",
+    "changelog": "touch changelog.md && conventional-changelog -i changelog.md --overwrite --preset angular",
+    "eclint": "globstar --ignore \"{node_modules,build}/**\" -- eclint check \"*.{js,yml,md,json}\"",
+    "eslint": "eslint index.js",
+    "fixpack": "fixpack",
+    "git:tag": "git tag v${npm_package_version}",
+    "lint": "npm run eclint && npm run eslint",
+    "ncu": "ncu -u",
+    "verify": "npm run lint"
+  },
+  "gitHead": "d41eb55d67941bcb9e8865527b25995624146824",
+  "bugs": {
+    "url": "https://github.com/lyrictenor/electron-open-link-in-browser/issues"
+  },
+  "homepage": "https://github.com/lyrictenor/electron-open-link-in-browser#readme",
+  "_id": "electron-open-link-in-browser@1.0.2",
+  "_shasum": "66e5d584fdf10ce7d5716bbe5d12e41b3568f1a3",
+  "_from": ".",
+  "_npmVersion": "2.14.4",
+  "_nodeVersion": "3.2.0",
+  "_npmUser": {
+    "name": "sanemat",
+    "email": "o.gata.ken@gmail.com"
+  },
+  "maintainers": [
+    {
+      "name": "sanemat",
+      "email": "o.gata.ken@gmail.com"
+    }
+  ],
+  "dist": {
+    "shasum": "66e5d584fdf10ce7d5716bbe5d12e41b3568f1a3",
+    "tarball": "http://registry.npmjs.org/electron-open-link-in-browser/-/electron-open-link-in-browser-1.0.2.tgz"
+  },
+  "directories": {}
+}

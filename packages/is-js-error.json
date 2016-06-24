@@ -1,0 +1,92 @@
+{
+  "name": "is-js-error",
+  "version": "0.7.0",
+  "description": "Check if a page contains a JavaScript error",
+  "author": {
+    "name": "Thibaud Colas",
+    "email": "thib@thib.me",
+    "url": "https://github.com/ThibWeb"
+  },
+  "license": "ISC",
+  "homepage": "https://github.com/ThibWeb/is-js-error#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ThibWeb/is-js-error.git"
+  },
+  "bugs": {
+    "url": "https://github.com/ThibWeb/is-js-error/issues"
+  },
+  "keywords": [
+    "browser",
+    "error",
+    "ci",
+    "qa",
+    "nightmare",
+    "phantom",
+    "slimer",
+    "electron",
+    "website",
+    "webpage",
+    "ip",
+    "live",
+    "running"
+  ],
+  "engines": {
+    "node": ">=4.0"
+  },
+  "preferGlobal": true,
+  "bin": {
+    "is-js-error": "./index.js"
+  },
+  "dependencies": {
+    "babel-polyfill": "^6.0.16",
+    "got": "^5.1.0",
+    "log-symbols": "^1.0.2",
+    "meow": "^3.4.2",
+    "nightmare": "^2.0.8",
+    "normalize-url": "^1.3.1",
+    "vo": "^1.0.3"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.1.1",
+    "babel-core": "^6.0.20",
+    "babel-eslint": "^4.1.3",
+    "babel-preset-es2015": "^6.0.15",
+    "chai": "^3.3.0",
+    "eslint": "^1.8.0",
+    "eslint-config-airbnb": "^0.1.1",
+    "mocha": "^2.3.3",
+    "rollup": "^0.20.5"
+  },
+  "scripts": {
+    "lint": "eslint --cache .",
+    "pretest": "npm run lint -s",
+    "test:output": "./test.sh",
+    "test:unit": "mocha --compilers js:babel-core/register -- test/*.spec.js",
+    "test": "npm run build -s && npm run test:unit -s && npm run test:output -s",
+    "prepublish": "npm run build -s",
+    "build": "rollup cli.js > tmp.js && babel tmp.js > es5-bundle.js && rm -rf tmp.js",
+    "start": "node index.js"
+  },
+  "gitHead": "58d696da06d1c9199312b0067c25aea1aad2b864",
+  "_id": "is-js-error@0.7.0",
+  "_shasum": "4580b438c35e588790b6a93801e62da8b1e0260b",
+  "_from": ".",
+  "_npmVersion": "2.14.7",
+  "_nodeVersion": "4.2.3",
+  "_npmUser": {
+    "name": "thibweb",
+    "email": "thib@thib.me"
+  },
+  "dist": {
+    "shasum": "4580b438c35e588790b6a93801e62da8b1e0260b",
+    "tarball": "http://registry.npmjs.org/is-js-error/-/is-js-error-0.7.0.tgz"
+  },
+  "maintainers": [
+    {
+      "name": "thibweb",
+      "email": "thib@thib.me"
+    }
+  ],
+  "directories": {}
+}

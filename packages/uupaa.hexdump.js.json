@@ -1,0 +1,110 @@
+{
+  "name": "uupaa.hexdump.js",
+  "version": "0.0.5",
+  "description": "Hex dump",
+  "url": "https://github.com/uupaa/HexDump.js",
+  "keywords": [
+    "uupaa",
+    "WebModule",
+    "Unstable"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/uupaa/HexDump.js.git"
+  },
+  "scripts": {
+    "sync": "node ../WebModule/run/sync.js; npm update; node ../WebModule/run/page.js",
+    "wiki": "node ../WebModule/run/wiki.js",
+    "min": "node ../WebModule/run/minify.js --verbose --strict --keep --pretty",
+    "build": "node ../WebModule/run/minify.js --verbose --strict --keep --release",
+    "watch": "node ../WebModule/run/watch.js --verbose --run lint",
+    "page": "node ../WebModule/run/page.js --verbose",
+    "test": "npm run min; npm run node; npm run browser",
+    "node": "NODE_ENV=production NODE_PATH=lib node test/node/index.js",
+    "noded": "NODE_ENV=production NODE_PATH=lib node --debug-brk test/node/index.js",
+    "browser": "open http://localhost:8000/HexDump.js/test/browser/index.html",
+    "el": "electron test/el",
+    "nw": "nw test/nw",
+    "add-src": "node ../WebModule/run/add-src.js",
+    "sim": "node ../WebModule/run/sim.js http://localhost:8000/HexDump.js/test/browser/index.html",
+    "simx": "node ../WebModule/run/sim.js stop",
+    "lint": "eslint lib/*.js",
+    "score": "node ../WebModule/run/score.js; open lint/plato/index.html",
+    "patch": "node ../WebModule/run/patch.js",
+    "setup": "node ../WebModule/run/setup.js",
+    "start": "cd ../; Python -m SimpleHTTPServer 8000 &",
+    "stop": "killall -- Python -m SimpleHTTPServer 8000; exit 0"
+  },
+  "webmodule": {
+    "develop": false,
+    "label": [
+      "@dev"
+    ],
+    "browser": {
+      "source": [
+        "lib/HexDump.js"
+      ],
+      "output": "release/HexDump.b.min.js"
+    },
+    "worker": {
+      "source": [
+        "lib/HexDump.js"
+      ],
+      "output": "release/HexDump.w.min.js"
+    },
+    "node": {
+      "source": [
+        "lib/HexDump.js"
+      ],
+      "output": "release/HexDump.n.min.js"
+    },
+    "nw": {
+      "source": [
+        "lib/HexDump.js"
+      ],
+      "output": "release/HexDump.nw.min.js"
+    },
+    "el": {
+      "source": [
+        "lib/HexDump.js"
+      ],
+      "output": "release/HexDump.el.min.js"
+    }
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "uupaa.random.js": ""
+  },
+  "lib": "./lib/",
+  "main": "./index.js",
+  "author": {
+    "name": "uupaa"
+  },
+  "license": "MIT",
+  "contributors": [],
+  "gitHead": "150016afc5ec6c4825a07228f6f1b7f25c7dc9ad",
+  "bugs": {
+    "url": "https://github.com/uupaa/HexDump.js/issues"
+  },
+  "homepage": "https://github.com/uupaa/HexDump.js#readme",
+  "_id": "uupaa.hexdump.js@0.0.5",
+  "_shasum": "c6d6ff4f8eef92099fffa4248333c6682732838a",
+  "_from": ".",
+  "_npmVersion": "2.14.4",
+  "_nodeVersion": "4.1.1",
+  "_npmUser": {
+    "name": "uupaa",
+    "email": "uupaa.js@gmail.com"
+  },
+  "maintainers": [
+    {
+      "name": "uupaa",
+      "email": "uupaa.js@gmail.com"
+    }
+  ],
+  "dist": {
+    "shasum": "c6d6ff4f8eef92099fffa4248333c6682732838a",
+    "tarball": "http://registry.npmjs.org/uupaa.hexdump.js/-/uupaa.hexdump.js-0.0.5.tgz"
+  },
+  "directories": {}
+}

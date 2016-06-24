@@ -1,0 +1,127 @@
+{
+  "name": "uupaa.mp4parser.js",
+  "version": "0.0.12",
+  "description": "MP4 File parser",
+  "url": "https://github.com/uupaa/MP4Parser.js",
+  "keywords": [
+    "AVC",
+    "MP4",
+    "H.264",
+    "Parser",
+    "uupaa",
+    "WebModule",
+    "Unstable"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/uupaa/MP4Parser.js.git"
+  },
+  "scripts": {
+    "sync": "node ../WebModule/run/sync.js; npm update; node ../WebModule/run/page.js",
+    "wiki": "node ../WebModule/run/wiki.js",
+    "min": "node ../WebModule/run/minify.js --verbose --strict --keep --pretty",
+    "build": "node ../WebModule/run/minify.js --verbose --strict --keep --release",
+    "watch": "node ../WebModule/run/watch.js --verbose --run lint",
+    "page": "node ../WebModule/run/page.js --verbose",
+    "test": "npm run min; npm run node; npm run browser",
+    "node": "NODE_ENV=production NODE_PATH=lib node test/node/index.js",
+    "noded": "NODE_ENV=production NODE_PATH=lib node --debug-brk test/node/index.js",
+    "browser": "open http://localhost:8000/MP4Parser.js/test/browser/index.html",
+    "el": "electron test/el",
+    "nw": "nw test/nw",
+    "add-src": "node ../WebModule/run/add-src.js",
+    "add-subclass": "node ../WebModule/run/add-subclass.js",
+    "sim": "node ../WebModule/run/sim.js http://localhost:8000/MP4Parser.js/test/browser/index.html",
+    "simx": "node ../WebModule/run/sim.js stop",
+    "lint": "eslint lib/*.js",
+    "score": "node ../WebModule/run/score.js; open lint/plato/index.html",
+    "patch": "node ../WebModule/run/patch.js",
+    "setup": "node ../WebModule/run/setup.js",
+    "start": "cd ../; Python -m SimpleHTTPServer 8000 &",
+    "stop": "killall -- Python -m SimpleHTTPServer 8000; exit 0",
+    "make_assets": "cd test/assets; ./make_video; cd -",
+    "clean_assets": "cd test/assets; rm -rf ./ff; rm -rf ./js; cd -"
+  },
+  "webmodule": {
+    "develop": false,
+    "label": [
+      "@dev"
+    ],
+    "browser": {
+      "output": "release/MP4Parser.b.min.js",
+      "source": [
+        "lib/MP4Parser.js"
+      ]
+    },
+    "worker": {
+      "output": "release/MP4Parser.w.min.js",
+      "source": [
+        "lib/MP4Parser.js"
+      ]
+    },
+    "node": {
+      "output": "release/MP4Parser.n.min.js",
+      "source": [
+        "lib/MP4Parser.js"
+      ]
+    },
+    "nw": {
+      "output": "release/MP4Parser.nw.min.js",
+      "source": [
+        "lib/MP4Parser.js"
+      ]
+    },
+    "el": {
+      "output": "release/MP4Parser.el.min.js",
+      "source": [
+        "lib/MP4Parser.js"
+      ]
+    }
+  },
+  "dependencies": {
+    "uupaa.bit.js": "",
+    "uupaa.hexdump.js": "",
+    "uupaa.nalunit.js": "",
+    "uupaa.typedarray.js": ""
+  },
+  "devDependencies": {
+    "uupaa.task.js": "",
+    "uupaa.fileloader.js": "",
+    "uupaa.h264.js": ""
+  },
+  "lib": "./lib/",
+  "main": "./index.js",
+  "author": {
+    "name": "uupaa"
+  },
+  "license": "Apache License Version 2.0",
+  "contributors": [],
+  "gitHead": "79e90b21b903da591bd59e0e2e727567af8953d3",
+  "bugs": {
+    "url": "https://github.com/uupaa/MP4Parser.js/issues"
+  },
+  "homepage": "https://github.com/uupaa/MP4Parser.js",
+  "_id": "uupaa.mp4parser.js@0.0.12",
+  "_shasum": "7c49c1ec995ae07f94a3e81d513df9342991d74d",
+  "_from": ".",
+  "_npmVersion": "2.0.0",
+  "_npmUser": {
+    "name": "uupaa",
+    "email": "uupaa.js@gmail.com"
+  },
+  "maintainers": [
+    {
+      "name": "uupaa",
+      "email": "uupaa.js@gmail.com"
+    }
+  ],
+  "dist": {
+    "shasum": "7c49c1ec995ae07f94a3e81d513df9342991d74d",
+    "tarball": "http://registry.npmjs.org/uupaa.mp4parser.js/-/uupaa.mp4parser.js-0.0.12.tgz"
+  },
+  "_npmOperationalInternal": {
+    "host": "packages-12-west.internal.npmjs.com",
+    "tmp": "tmp/uupaa.mp4parser.js-0.0.12.tgz_1460807409901_0.08055689162574708"
+  },
+  "directories": {}
+}

@@ -1,0 +1,90 @@
+{
+  "name": "npm-gui",
+  "version": "0.3.1",
+  "description": "Graphic User Interface for NPM packages/tasks for front and back -end users.",
+  "main": "index.js",
+  "scripts": {
+    "start": "node bin/npm-gui",
+    "test": "node node_modules/mocha/bin/mocha ./lib/modules/**/*.js ./lib/helpers/**/*.js && node node_modules/mocha/bin/mocha responses.test.js",
+    "build": "node node_modules/webpack/bin/webpack.js -p --config webpack.client.config.js && node node_modules/webpack/bin/webpack.js -p --config webpack.server.config.js",
+    "dev": "node node_modules/webpack/bin/webpack.js -p --config webpack.server.config.js && node bin/npm-gui 0.0.0.0:9001 & node node_modules/webpack/bin/webpack.js --progress --colors --watch --config webpack.client.config.js",
+    "app": "node bin/npm-gui-app"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/q-nick/npm-gui.git"
+  },
+  "keywords": [
+    "gui",
+    "npm",
+    "view",
+    "client",
+    "task",
+    "runner",
+    "dependencies",
+    "installer",
+    "console"
+  ],
+  "author": {
+    "name": "Paweł Stefański"
+  },
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/q-nick/npm-gui/issues"
+  },
+  "homepage": "https://github.com/q-nick/npm-gui#readme",
+  "devDependencies": {
+    "angular": "^1.5.5",
+    "angular-animate": "^1.5.5",
+    "angular-route": "^1.5.5",
+    "angular-ui-bootstrap": "^0.14.3",
+    "angular-websocket": "^1.1.0",
+    "bluebird": "^3.4.0",
+    "body-parser": "^1.15.1",
+    "chai": "^3.5.0",
+    "cross-spawn": "^4.0.0",
+    "electron-prebuilt": "^1.1.1",
+    "express": "^4.13.4",
+    "json-loader": "^0.5.4",
+    "mocha": "^2.5.1",
+    "ng-annotate-webpack-plugin": "^0.1.2",
+    "rewire": "^2.5.1",
+    "sinon": "^1.17.4",
+    "sinon-stub-promise": "^2.0.0",
+    "supertest": "^1.2.0",
+    "uglify-js": "^2.6.2",
+    "webpack": "^1.13.1",
+    "ws": "^1.1.0"
+  },
+  "bin": {
+    "npm-gui": "bin/npm-gui"
+  },
+  "dependencies": {
+    "nsp": "^2.4.0"
+  },
+  "gitHead": "fbd68a9a52cb2827d1d013b2d6d5ec1cf9f0070a",
+  "_id": "npm-gui@0.3.1",
+  "_shasum": "dfc06ee439816bbb35c7ce04be24c0d2e06e1694",
+  "_from": ".",
+  "_npmVersion": "2.14.7",
+  "_nodeVersion": "4.2.2",
+  "_npmUser": {
+    "name": "q-nick",
+    "email": "qnick.mail@gmail.com"
+  },
+  "dist": {
+    "shasum": "dfc06ee439816bbb35c7ce04be24c0d2e06e1694",
+    "tarball": "http://registry.npmjs.org/npm-gui/-/npm-gui-0.3.1.tgz"
+  },
+  "maintainers": [
+    {
+      "name": "q-nick",
+      "email": "qnick.mail@gmail.com"
+    }
+  ],
+  "_npmOperationalInternal": {
+    "host": "packages-16-east.internal.npmjs.com",
+    "tmp": "tmp/npm-gui-0.3.1.tgz_1465073571250_0.2847119828220457"
+  },
+  "directories": {}
+}

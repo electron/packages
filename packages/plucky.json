@@ -1,0 +1,43 @@
+{
+  "name": "plucky",
+  "version": "0.1.1",
+  "description": "compose musical callbacks into plucky arrangements",
+  "main": "index.js",
+  "devDependencies": {
+    "baudio": "*"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/substack/plucky.git"
+  },
+  "homepage": "https://github.com/substack/plucky",
+  "keywords": [
+    "music",
+    "baudio",
+    "electronic"
+  ],
+  "author": {
+    "name": "James Halliday",
+    "email": "mail@substack.net",
+    "url": "http://substack.net"
+  },
+  "license": "MIT",
+  "readme": "# plucky\n\ncompose musical callbacks into plucky arrangements\n\n# example\n\n``` js\nvar baudio = require('baudio');\nvar b = baudio({ rate : 44100 });\nvar tau = 2 * Math.PI;\nvar player = require('plucky');\n\nvar music = [\n    function (t, clip) {\n        if (t > 1 / 4) clip.end();\n        return Math.sin(tau * 200 * t);\n    },\n    function (t, clip) {\n        if (t > 1 / 4) clip.end();\n        return Math.sin(tau * t * 200 * Math.pow(2, 1/3));\n    },\n    function (t, clip) {\n        if (t > 1 / 2) clip.go(0);\n        return Math.sin(tau * t * 100)\n            + Math.sin(tau * t * 105) / 8\n        ;\n    }\n];\nb.push(player(music));\nb.play();\n```\n\n# methods\n\n``` js\nvar plucky = require('plucky')\n```\n\n## var f = plucky(music, end)\n\nReturn a [baudio](http://github.com/substack/baudio)-compatible\nfunction given an array of `music` functions.\n\nEach function in the array `music` will be called `fn(t, clip)`\nwith the relative time in seconds since it was started `t` and a `clip` object\ndescribed below. Musical functions should return a floating point value between\n`-1` and `1`, inclusive.\n\nIf provided, `end()` fires when there's no more music to play.\n\n## clip.next(index)\n\nTrigger the next musical function, if there is one.\n\nIf `index` is specified, trigger the musical function at `index`.\n\n## clip.end()\n\nEnd the currently playing clip and trigger the next clip.\n\n## clip.destroy()\n\nEnd the currently playing clip only.\n\n## clip.go(index)\n\nTrigger the musical function at an `index` in the musical array and stop playing\nthe current clip.\n\n# attributes\n\n## clip.t\n\nAbsolute time in seconds. This is different from the `t` in `f(t, clip)`, which\nis a relative time in seconds for the clip since it started playing.\n\n# install\n\nWith [npm](https://npmjs.org) do:\n\n```\nnpm install plucky\n```\n\n# license\n\nMIT\n",
+  "_id": "plucky@0.1.1",
+  "dist": {
+    "shasum": "6719e37aa55f358dff3b22037c6db6826ebb50ea",
+    "tarball": "http://registry.npmjs.org/plucky/-/plucky-0.1.1.tgz"
+  },
+  "_npmVersion": "1.1.59",
+  "_npmUser": {
+    "name": "substack",
+    "email": "mail@substack.net"
+  },
+  "maintainers": [
+    {
+      "name": "substack",
+      "email": "mail@substack.net"
+    }
+  ],
+  "directories": {}
+}

@@ -1,0 +1,90 @@
+{
+  "name": "electron-spellchecker",
+  "version": "0.0.8",
+  "description": "Implement spellchecking, correctly",
+  "scripts": {
+    "doc": "esdoc -c ./esdoc.json",
+    "compile": "babel -d lib/ src/",
+    "prepublish": "npm run compile",
+    "test-renderer": "electron-mocha --renderer --require ./test/support.js ./test",
+    "test-browser": "electron-mocha --browser --require ./test/support.js ./test",
+    "test": "npm run test-renderer",
+    "node": "cross-env ELECTRON_RUN_AS_NODE=1 ./node_modules/electron-prebuilt-compile/node_modules/.bin/electron",
+    "start": "electron ./example/main.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/paulcbetts/electron-spellchecker.git"
+  },
+  "keywords": [
+    "spelling",
+    "electron",
+    "rx"
+  ],
+  "author": {
+    "name": "Paul Betts",
+    "email": "paul@paulbetts.org"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/paulcbetts/electron-spellchecker/issues"
+  },
+  "main": "lib/index.js",
+  "homepage": "https://github.com/paulcbetts/electron-spellchecker",
+  "dependencies": {
+    "@paulcbetts/spellchecker": "^4.0.0",
+    "babel-runtime": "^6.9.2",
+    "cld": "^2.4.5",
+    "debug-electron": "^0.0.1",
+    "electron-remote": "^0.5.6",
+    "keyboard-layout": "^1.0.0",
+    "mkdirp": "^0.5.1",
+    "pify": "^2.3.0",
+    "rx": "^4.1.0",
+    "spawn-rx": "^0.2.0"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.9.0",
+    "babel-eslint": "^6.0.4",
+    "babel-plugin-transform-async-to-generator": "^6.8.0",
+    "babel-plugin-transform-runtime": "^6.9.0",
+    "babel-preset-es2016-node5": "^1.1.2",
+    "babel-register": "^6.9.0",
+    "chai": "^3.5.0",
+    "chai-as-promised": "^5.3.0",
+    "cross-env": "^1.0.8",
+    "electron-debug": "^1.0.0",
+    "electron-mocha": "^2.2.0",
+    "electron-prebuilt-compile": "1.2.2",
+    "esdoc": "^0.4.7",
+    "esdoc-es7-plugin": "0.0.3",
+    "esdoc-plugin-async-to-sync": "^0.5.0",
+    "eslint": "^2.11.1",
+    "rimraf": "^2.5.2"
+  },
+  "gitHead": "c92aa035a185e06b0c4497fcfb43180441e58ca1",
+  "_id": "electron-spellchecker@0.0.8",
+  "_shasum": "15c6a904be950c36fca99399612f227c4ffed8a0",
+  "_from": ".",
+  "_npmVersion": "3.9.5",
+  "_nodeVersion": "6.2.1",
+  "_npmUser": {
+    "name": "paulcbetts",
+    "email": "paul@paulbetts.org"
+  },
+  "dist": {
+    "shasum": "15c6a904be950c36fca99399612f227c4ffed8a0",
+    "tarball": "http://registry.npmjs.org/electron-spellchecker/-/electron-spellchecker-0.0.8.tgz"
+  },
+  "maintainers": [
+    {
+      "name": "paulcbetts",
+      "email": "paul@paulbetts.org"
+    }
+  ],
+  "_npmOperationalInternal": {
+    "host": "packages-12-west.internal.npmjs.com",
+    "tmp": "tmp/electron-spellchecker-0.0.8.tgz_1466202760074_0.11137361312285066"
+  },
+  "directories": {}
+}

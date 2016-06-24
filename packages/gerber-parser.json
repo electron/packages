@@ -1,0 +1,84 @@
+{
+  "name": "gerber-parser",
+  "version": "1.0.3",
+  "description": "A PCB Gerber/drill-file parser implemented as a Node transform-stream",
+  "main": "lib/index.js",
+  "scripts": {
+    "lint": "eslint lib/*.js test/*.js",
+    "test": "istanbul cover --include-all-sources _mocha",
+    "posttest": "npm run lint",
+    "test:watch": "mocha --reporter dot --timeout 500ms --watch",
+    "test:browser": "zuul --local -- ./test/*_test.js",
+    "test:sauce": "zuul -- ./test/*_test.js",
+    "ci": "npm test && if [ \"${TEST_BROWSERS}\" = \"true\" ]; then npm run ci:browser; fi",
+    "ci:browser": "if [ \"${TRAVIS_PULL_REQUEST}\" = \"false\" ]; then npm run test:sauce; fi",
+    "postci": "coveralls < ./coverage/lcov.info"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mcous/gerber-parser.git"
+  },
+  "keywords": [
+    "PCB",
+    "Gerber",
+    "drill",
+    "circuit",
+    "board",
+    "transform",
+    "stream",
+    "hardware",
+    "electronics"
+  ],
+  "author": {
+    "name": "Mike Cousins",
+    "email": "mike@cousins.io",
+    "url": "http://cousins.io/"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/mcous/gerber-parser/issues"
+  },
+  "homepage": "https://github.com/mcous/gerber-parser#readme",
+  "dependencies": {
+    "inherits": "^2.0.1",
+    "lodash.isfinite": "^3.3.1",
+    "lodash.padleft": "^3.1.3",
+    "lodash.padright": "^3.1.3",
+    "readable-stream": "^2.1.2"
+  },
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "coveralls": "^2.11.9",
+    "eslint": "^2.9.0",
+    "istanbul": "^0.4.3",
+    "lodash.partial": "^4.1.4",
+    "lodash.repeat": "^4.0.2",
+    "mocha": "^2.4.5",
+    "zuul": "^3.10.1"
+  },
+  "gitHead": "be62efb4cd26591f164ece77005784f8ec3630ba",
+  "_id": "gerber-parser@1.0.3",
+  "_shasum": "c824db26ed8b1986bb68588e872f01fc51e37083",
+  "_from": ".",
+  "_npmVersion": "3.9.3",
+  "_nodeVersion": "6.2.1",
+  "_npmUser": {
+    "name": "mcous",
+    "email": "mike@cousins.io"
+  },
+  "dist": {
+    "shasum": "c824db26ed8b1986bb68588e872f01fc51e37083",
+    "tarball": "http://registry.npmjs.org/gerber-parser/-/gerber-parser-1.0.3.tgz"
+  },
+  "maintainers": [
+    {
+      "name": "mcous",
+      "email": "mike@cousins.io"
+    }
+  ],
+  "_npmOperationalInternal": {
+    "host": "packages-16-east.internal.npmjs.com",
+    "tmp": "tmp/gerber-parser-1.0.3.tgz_1465617149346_0.37632554257288575"
+  },
+  "directories": {}
+}

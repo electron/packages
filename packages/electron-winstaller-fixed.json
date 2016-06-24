@@ -1,0 +1,99 @@
+{
+  "name": "electron-winstaller-fixed",
+  "version": "2.11.5",
+  "description": "Module to generate Windows installers for Electron apps",
+  "main": "./lib/index.js",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/electronjs/windows-installer.git"
+  },
+  "scripts": {
+    "compile": "babel -d lib/ src/",
+    "prepublish": "npm run test && npm run compile",
+    "lint": "eslint src & eslint spec",
+    "test": "npm run lint && ava",
+    "tdd": "ava --watch",
+    "whitespace": "whitespace src/*.js"
+  },
+  "dependencies": {
+    "archiver": "^1.0.0",
+    "archiver-utils": "^1.2.0",
+    "asar": "^0.11.0",
+    "bluebird": "^3.4.1",
+    "debug": "^2.2.0",
+    "fs-extra-p": "^1.0.3",
+    "rcedit": "^0.5.0",
+    "signcode-tf": "~0.7.3"
+  },
+  "devDependencies": {
+    "ava": "^0.15.2",
+    "babel-cli": "^6.10.1",
+    "babel-eslint": "^6.1.0",
+    "babel-plugin-transform-async-to-module-method": "^6.8.0",
+    "babel-plugin-transform-runtime": "^6.9.0",
+    "babel-preset-es2015-node4": "^2.1.0",
+    "babel-preset-stage-0": "^6.5.0",
+    "babel-register": "^6.9.0",
+    "eslint": "2.13.1",
+    "temp": "^0.8.3",
+    "whitespace": "^2.0.0"
+  },
+  "engines": {
+    "node": ">=0.4.0"
+  },
+  "babel": {
+    "presets": [
+      "stage-0",
+      "es2015-node4"
+    ],
+    "plugins": [
+      [
+        "transform-async-to-module-method",
+        {
+          "module": "bluebird",
+          "method": "coroutine"
+        }
+      ]
+    ]
+  },
+  "ava": {
+    "files": [
+      "spec/*.js"
+    ],
+    "failFast": true,
+    "require": [
+      "babel-register"
+    ],
+    "babel": "inherit"
+  },
+  "gitHead": "48fe28ca71df9389539652900d41a7070891d728",
+  "bugs": {
+    "url": "https://github.com/electronjs/windows-installer/issues"
+  },
+  "homepage": "https://github.com/electronjs/windows-installer#readme",
+  "_id": "electron-winstaller-fixed@2.11.5",
+  "_shasum": "1e6ccd699497136d83a2047d9dde1998fa77c9f5",
+  "_from": ".",
+  "_npmVersion": "3.10.2",
+  "_nodeVersion": "6.2.2",
+  "_npmUser": {
+    "name": "develar",
+    "email": "develar@gmail.com"
+  },
+  "dist": {
+    "shasum": "1e6ccd699497136d83a2047d9dde1998fa77c9f5",
+    "tarball": "http://registry.npmjs.org/electron-winstaller-fixed/-/electron-winstaller-fixed-2.11.5.tgz"
+  },
+  "maintainers": [
+    {
+      "name": "develar",
+      "email": "develar@gmail.com"
+    }
+  ],
+  "_npmOperationalInternal": {
+    "host": "packages-12-west.internal.npmjs.com",
+    "tmp": "tmp/electron-winstaller-fixed-2.11.5.tgz_1466695858711_0.4528365412261337"
+  },
+  "directories": {}
+}

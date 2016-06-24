@@ -1,0 +1,127 @@
+{
+  "name": "uupaa.mp4probe.js",
+  "version": "0.0.2",
+  "description": "get MP4 diagnostic information (We love ffprobe)",
+  "url": "https://github.com/uupaa/MP4Probe.js",
+  "keywords": [
+    "MP4",
+    "prove",
+    "diagnostic",
+    "uupaa",
+    "WebModule",
+    "Unstable"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/uupaa/MP4Probe.js.git"
+  },
+  "scripts": {
+    "sync": "node ../WebModule/run/sync.js; npm update; node ../WebModule/run/page.js",
+    "wiki": "node ../WebModule/run/wiki.js",
+    "min": "node ../WebModule/run/minify.js --verbose --strict --keep --pretty",
+    "build": "node ../WebModule/run/minify.js --verbose --strict --keep --release",
+    "watch": "node ../WebModule/run/watch.js --verbose --run lint",
+    "page": "node ../WebModule/run/page.js --verbose",
+    "test": "npm run min; npm run node; npm run browser",
+    "node": "NODE_ENV=production NODE_PATH=lib node test/node/index.js",
+    "noded": "NODE_ENV=production NODE_PATH=lib node --debug-brk test/node/index.js",
+    "browser": "open http://localhost:8000/MP4Probe.js/test/browser/index.html",
+    "el": "electron test/el",
+    "nw": "nw test/nw",
+    "add-src": "node ../WebModule/run/add-src.js",
+    "add-subclass": "node ../WebModule/run/add-subclass.js",
+    "sim": "node ../WebModule/run/sim.js http://localhost:8000/MP4Probe.js/test/browser/index.html",
+    "simx": "node ../WebModule/run/sim.js stop",
+    "lint": "eslint lib/*.js",
+    "score": "node ../WebModule/run/score.js; open lint/plato/index.html",
+    "patch": "node ../WebModule/run/patch.js",
+    "setup": "node ../WebModule/run/setup.js",
+    "start": "cd ../; Python -m SimpleHTTPServer 8000 &",
+    "stop": "killall -- Python -m SimpleHTTPServer 8000; exit 0"
+  },
+  "webmodule": {
+    "develop": false,
+    "label": [
+      "@dev"
+    ],
+    "browser": {
+      "output": "release/MP4Probe.b.min.js",
+      "source": [
+        "lib/MP4Probe.js"
+      ]
+    },
+    "worker": {
+      "output": "release/MP4Probe.w.min.js",
+      "source": [
+        "lib/MP4Probe.js"
+      ]
+    },
+    "node": {
+      "output": "release/MP4Probe.n.min.js",
+      "source": [
+        "lib/MP4Probe.js"
+      ]
+    },
+    "nw": {
+      "output": "release/MP4Probe.nw.min.js",
+      "source": [
+        "lib/MP4Probe.js"
+      ]
+    },
+    "el": {
+      "output": "release/MP4Probe.el.min.js",
+      "source": [
+        "lib/MP4Probe.js"
+      ]
+    }
+  },
+  "dependencies": {
+    "uupaa.nalunit.js": ""
+  },
+  "devDependencies": {
+    "uupaa.bit.js": "",
+    "uupaa.hexdump.js": "",
+    "uupaa.typedarray.js": "",
+    "uupaa.base64.js": "",
+    "uupaa.mpeg2ts.js": "",
+    "uupaa.aac.js": "",
+    "uupaa.mpeg4bytestream.js": "",
+    "uupaa.mp4muxer.js": "",
+    "uupaa.h264.js": ""
+  },
+  "lib": "./lib/",
+  "main": "./index.js",
+  "author": {
+    "name": "uupaa"
+  },
+  "license": "Apache-2.0",
+  "contributors": [],
+  "gitHead": "569a7db62d80814a633c30e33b64f167b38afa5d",
+  "bugs": {
+    "url": "https://github.com/uupaa/MP4Probe.js/issues"
+  },
+  "homepage": "https://github.com/uupaa/MP4Probe.js",
+  "_id": "uupaa.mp4probe.js@0.0.2",
+  "_shasum": "681d44a0f9a33e82567cea2366df92cda3c270a7",
+  "_from": ".",
+  "_npmVersion": "2.0.0",
+  "_npmUser": {
+    "name": "uupaa",
+    "email": "uupaa.js@gmail.com"
+  },
+  "maintainers": [
+    {
+      "name": "uupaa",
+      "email": "uupaa.js@gmail.com"
+    }
+  ],
+  "dist": {
+    "shasum": "681d44a0f9a33e82567cea2366df92cda3c270a7",
+    "tarball": "http://registry.npmjs.org/uupaa.mp4probe.js/-/uupaa.mp4probe.js-0.0.2.tgz"
+  },
+  "_npmOperationalInternal": {
+    "host": "packages-16-east.internal.npmjs.com",
+    "tmp": "tmp/uupaa.mp4probe.js-0.0.2.tgz_1460716792011_0.19888229854404926"
+  },
+  "directories": {}
+}

@@ -1,0 +1,128 @@
+{
+  "name": "uupaa.bit.js",
+  "version": "0.8.1",
+  "description": "Bit operation",
+  "url": "https://github.com/uupaa/Bit.js",
+  "keywords": [
+    "Bit",
+    "BitView",
+    "reverse",
+    "MSB",
+    "LSB",
+    "popcnt",
+    "nlz",
+    "ntz",
+    "IEEE754",
+    "Golomb",
+    "uupaa",
+    "WebModule"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/uupaa/Bit.js.git"
+  },
+  "scripts": {
+    "sync": "node ../WebModule/run/sync.js; npm update; node ../WebModule/run/page.js",
+    "wiki": "node ../WebModule/run/wiki.js",
+    "min": "node ../WebModule/run/minify.js --verbose --strict --keep --pretty",
+    "build": "node ../WebModule/run/minify.js --verbose --strict --keep --release",
+    "watch": "node ../WebModule/run/watch.js --verbose --run lint",
+    "page": "node ../WebModule/run/page.js --verbose",
+    "test": "npm run min; npm run node; npm run browser",
+    "node": "NODE_ENV=production NODE_PATH=lib node test/node/index.js",
+    "noded": "NODE_ENV=production NODE_PATH=lib node --debug-brk test/node/index.js",
+    "browser": "open http://localhost:8000/Bit.js/test/browser/index.html",
+    "el": "electron test/el",
+    "nw": "nw test/nw",
+    "add-src": "node ../WebModule/run/add-src.js",
+    "add-subclass": "node ../WebModule/run/add-subclass.js",
+    "sim": "node ../WebModule/run/sim.js http://localhost:8000/Bit.js/test/browser/index.html",
+    "simx": "node ../WebModule/run/sim.js stop",
+    "lint": "eslint lib/*.js",
+    "score": "node ../WebModule/run/score.js; open lint/plato/index.html",
+    "patch": "node ../WebModule/run/patch.js",
+    "setup": "node ../WebModule/run/setup.js",
+    "start": "cd ../; Python -m SimpleHTTPServer 8000 &",
+    "stop": "killall -- Python -m SimpleHTTPServer 8000; exit 0"
+  },
+  "webmodule": {
+    "develop": false,
+    "label": [
+      "@dev"
+    ],
+    "browser": {
+      "output": "release/Bit.b.min.js",
+      "source": [
+        "lib/Bit.js",
+        "lib/BitView.js"
+      ]
+    },
+    "worker": {
+      "output": "release/Bit.w.min.js",
+      "source": [
+        "lib/Bit.js",
+        "lib/BitView.js"
+      ]
+    },
+    "node": {
+      "output": "release/Bit.n.min.js",
+      "source": [
+        "lib/Bit.js",
+        "lib/BitView.js"
+      ]
+    },
+    "nw": {
+      "output": "release/Bit.nw.min.js",
+      "source": [
+        "lib/Bit.js",
+        "lib/BitView.js"
+      ]
+    },
+    "el": {
+      "output": "release/Bit.el.min.js",
+      "source": [
+        "lib/Bit.js",
+        "lib/BitView.js"
+      ]
+    }
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "uupaa.expgolomb.js": ""
+  },
+  "lib": "./lib/",
+  "main": "./index.js",
+  "author": {
+    "name": "uupaa"
+  },
+  "license": "MIT",
+  "contributors": [],
+  "gitHead": "17c9607eee30277b89f3c3353df08332f5c6d993",
+  "bugs": {
+    "url": "https://github.com/uupaa/Bit.js/issues"
+  },
+  "homepage": "https://github.com/uupaa/Bit.js",
+  "_id": "uupaa.bit.js@0.8.1",
+  "_shasum": "92256819d71a15e29dc0e8141cad6a1839443312",
+  "_from": ".",
+  "_npmVersion": "2.0.0",
+  "_npmUser": {
+    "name": "uupaa",
+    "email": "uupaa.js@gmail.com"
+  },
+  "maintainers": [
+    {
+      "name": "uupaa",
+      "email": "uupaa.js@gmail.com"
+    }
+  ],
+  "dist": {
+    "shasum": "92256819d71a15e29dc0e8141cad6a1839443312",
+    "tarball": "http://registry.npmjs.org/uupaa.bit.js/-/uupaa.bit.js-0.8.1.tgz"
+  },
+  "_npmOperationalInternal": {
+    "host": "packages-16-east.internal.npmjs.com",
+    "tmp": "tmp/uupaa.bit.js-0.8.1.tgz_1465344996589_0.8363165678456426"
+  },
+  "directories": {}
+}

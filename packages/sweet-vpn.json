@@ -1,0 +1,70 @@
+{
+  "name": "sweet-vpn",
+  "productName": "SweetVPN",
+  "version": "0.1.0",
+  "description": "A sweet VPN client",
+  "main": "./dist/sweet.js",
+  "scripts": {
+    "test": "npm test",
+    "build": "babel src -D -d dist --compress && sass --update -f -t compressed src/sass:dist/css",
+    "watch": "npm run watch-js; npm run watch-sass",
+    "watch-js": "babel src -D -d dist -w",
+    "watch-sass": "sass --watch -q src/sass/:dist/css",
+    "package": "npm run build && babel-node package",
+    "launch": "electron ./dist/menu"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/ConnorAtherton/Sweet.git"
+  },
+  "keywords": [
+    "VPN",
+    "sweet",
+    "electron",
+    "react"
+  ],
+  "author": {
+    "name": "Connor Atherton",
+    "email": "c.liam.atherton@gmail.com"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ConnorAtherton/Sweet/issues"
+  },
+  "homepage": "https://github.com/ConnorAtherton/Sweet#readme",
+  "dependencies": {
+    "electron-rpc": "^1.0.3",
+    "menubar": "^2.2.1",
+    "react": "^0.13.3"
+  },
+  "devDependencies": {
+    "babel": "^5.8.23",
+    "babel-eslint": "^4.1.3",
+    "dialog": "^0.1.8",
+    "electron-packager": "^5.1.0",
+    "electron-prebuilt": "^0.33.3",
+    "headway": "^0.3.0",
+    "sass": "^0.5.0"
+  },
+  "gitHead": "fea258aa02fde3e817b61cb27087858ca77d513f",
+  "_id": "sweet-vpn@0.1.0",
+  "_shasum": "785a124110c99269bc4075e8cfd9fc1964cc3539",
+  "_from": ".",
+  "_npmVersion": "2.11.3",
+  "_nodeVersion": "0.13.0-pre",
+  "_npmUser": {
+    "name": "connoratherton",
+    "email": "c.liam.atherton@gmail.com"
+  },
+  "dist": {
+    "shasum": "785a124110c99269bc4075e8cfd9fc1964cc3539",
+    "tarball": "http://registry.npmjs.org/sweet-vpn/-/sweet-vpn-0.1.0.tgz"
+  },
+  "maintainers": [
+    {
+      "name": "connoratherton",
+      "email": "c.liam.atherton@gmail.com"
+    }
+  ],
+  "directories": {}
+}

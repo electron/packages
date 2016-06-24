@@ -1,0 +1,119 @@
+{
+  "name": "uupaa.postal.js",
+  "version": "1.3.0",
+  "description": "Message delivery subsystem (Observer pattern implementation).",
+  "url": "https://github.com/uupaa/Postal.js",
+  "keywords": [
+    "message",
+    "passing",
+    "Observer",
+    "pub/sub",
+    "uupaa",
+    "WebModule",
+    "Unstable"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/uupaa/Postal.js.git"
+  },
+  "scripts": {
+    "sync": "node ../WebModule/run/sync.js; npm update; node ../WebModule/run/page.js",
+    "wiki": "node ../WebModule/run/wiki.js",
+    "min": "node ../WebModule/run/minify.js --verbose --strict --keep --pretty",
+    "build": "node ../WebModule/run/minify.js --verbose --strict --keep --release",
+    "watch": "node ../WebModule/run/watch.js --verbose --run lint",
+    "page": "node ../WebModule/run/page.js --verbose",
+    "test": "npm run min; npm run node; npm run browser",
+    "node": "NODE_ENV=production NODE_PATH=lib node test/node/index.js",
+    "noded": "NODE_ENV=production NODE_PATH=lib node --debug-brk test/node/index.js",
+    "browser": "open http://localhost:8000/Postal.js/test/browser/index.html",
+    "el": "electron test/el",
+    "nw": "nw test/nw",
+    "add-src": "node ../WebModule/run/add-src.js",
+    "add-subclass": "node ../WebModule/run/add-subclass.js",
+    "sim": "node ../WebModule/run/sim.js http://localhost:8000/Postal.js/test/browser/index.html",
+    "simx": "node ../WebModule/run/sim.js stop",
+    "lint": "eslint lib/*.js",
+    "score": "node ../WebModule/run/score.js; open lint/plato/index.html",
+    "patch": "node ../WebModule/run/patch.js",
+    "setup": "node ../WebModule/run/setup.js",
+    "start": "cd ../; Python -m SimpleHTTPServer 8000 &",
+    "stop": "killall -- Python -m SimpleHTTPServer 8000; exit 0"
+  },
+  "webmodule": {
+    "develop": false,
+    "label": [
+      "@dev"
+    ],
+    "browser": {
+      "output": "release/Postal.b.min.js",
+      "source": [
+        "lib/Postal.js"
+      ]
+    },
+    "worker": {
+      "output": "release/Postal.w.min.js",
+      "source": [
+        "lib/Postal.js"
+      ]
+    },
+    "node": {
+      "output": "release/Postal.n.min.js",
+      "source": [
+        "lib/Postal.js"
+      ]
+    },
+    "nw": {
+      "output": "release/Postal.nw.min.js",
+      "source": [
+        "lib/Postal.js"
+      ]
+    },
+    "el": {
+      "output": "release/Postal.el.min.js",
+      "source": [
+        "lib/Postal.js"
+      ]
+    }
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "uupaa.task.js": ""
+  },
+  "lib": "./lib/",
+  "main": "./index.js",
+  "author": {
+    "name": "uupaa",
+    "email": "uupaa.js@gmail.com"
+  },
+  "license": "MIT",
+  "contributors": [],
+  "gitHead": "522618d4602ddacd0d3601ef61efdda011421ecf",
+  "bugs": {
+    "url": "https://github.com/uupaa/Postal.js/issues"
+  },
+  "homepage": "https://github.com/uupaa/Postal.js",
+  "_id": "uupaa.postal.js@1.3.0",
+  "_shasum": "b8e1461f0b11221d5899a41a067eb91ae4dfb5fb",
+  "_from": ".",
+  "_npmVersion": "2.0.0",
+  "_npmUser": {
+    "name": "uupaa",
+    "email": "uupaa.js@gmail.com"
+  },
+  "maintainers": [
+    {
+      "name": "uupaa",
+      "email": "uupaa.js@gmail.com"
+    }
+  ],
+  "dist": {
+    "shasum": "b8e1461f0b11221d5899a41a067eb91ae4dfb5fb",
+    "tarball": "http://registry.npmjs.org/uupaa.postal.js/-/uupaa.postal.js-1.3.0.tgz"
+  },
+  "_npmOperationalInternal": {
+    "host": "packages-16-east.internal.npmjs.com",
+    "tmp": "tmp/uupaa.postal.js-1.3.0.tgz_1462935122018_0.6202880013734102"
+  },
+  "directories": {}
+}

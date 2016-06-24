@@ -1,0 +1,72 @@
+{
+  "name": "editdata-github",
+  "version": "1.0.2",
+  "description": "an api client for github that performs actions needed by editdata applications",
+  "main": "index.js",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "lint": "standard",
+    "test:node": "tape tests/*.js | tap-spec",
+    "test:testron": "browserify tests/index.js -t [ envify --GITHUB_ACCESS_TOKEN $GITHUB_ACCESS_TOKEN] | testron | tap-spec",
+    "test": "npm run lint && npm run test:node && npm run test:testron"
+  },
+  "browser": {
+    "request": "xhr"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/editdata/editdata-github.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/editdata/editdata-github/issues"
+  },
+  "homepage": "https://github.com/editdata/editdata-github#readme",
+  "devDependencies": {
+    "documentation-readme": "^2.1.1",
+    "electron-prebuilt": "^0.37.2",
+    "envify": "^3.4.0",
+    "standard": "^6.0.8",
+    "tap-spec": "^4.1.1",
+    "tape": "^4.5.1",
+    "testron": "^1.2.0"
+  },
+  "dependencies": {
+    "base-64": "^0.1.0",
+    "csv-parser": "^1.9.3",
+    "csv-write-stream": "^2.0.0",
+    "from2-array": "0.0.4",
+    "from2-string": "^1.1.0",
+    "request": "^2.69.0",
+    "through2": "^2.0.1",
+    "utf8": "^2.1.1",
+    "xhr": "^2.2.0"
+  },
+  "gitHead": "6df797b153319300c783ac854a0b5fad4b68fe2a",
+  "_id": "editdata-github@1.0.2",
+  "_shasum": "17bbfc08b60e673f4bf93750d6f0a04c82b5d2ba",
+  "_from": ".",
+  "_npmVersion": "3.8.6",
+  "_nodeVersion": "6.0.0",
+  "_npmUser": {
+    "name": "sethvincent",
+    "email": "sethvincent@gmail.com"
+  },
+  "dist": {
+    "shasum": "17bbfc08b60e673f4bf93750d6f0a04c82b5d2ba",
+    "tarball": "http://registry.npmjs.org/editdata-github/-/editdata-github-1.0.2.tgz"
+  },
+  "maintainers": [
+    {
+      "name": "sethvincent",
+      "email": "sethvincent@gmail.com"
+    }
+  ],
+  "_npmOperationalInternal": {
+    "host": "packages-12-west.internal.npmjs.com",
+    "tmp": "tmp/editdata-github-1.0.2.tgz_1462417208872_0.6621898144949228"
+  }
+}

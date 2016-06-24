@@ -1,0 +1,70 @@
+{
+  "name": "henderson",
+  "version": "1.0.0",
+  "description": "A tiny event emitter-based finite state machine with promises",
+  "main": "henderson.js",
+  "scripts": {
+    "develop": "onchange 'henderson.js' 'test/*' -- npm run test:node",
+    "minify": "uglifyjs henderson.js -o henderson.min.js -c --m",
+    "test:node": "electron-mocha --reporter spec ./test",
+    "test:browser": "electron-mocha --renderer --preload test/browser-shim.js --preload henderson.js --reporter spec ./test",
+    "test:minified": "electron-mocha --renderer --preload test/browser-shim.js --preload henderson.min.js --reporter spec ./test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/orbitbot/henderson.git"
+  },
+  "files": [
+    "henderson.js",
+    "henderson.min.js"
+  ],
+  "keywords": [
+    "statemachine",
+    "fsm",
+    "state",
+    "event",
+    "promise",
+    "promises"
+  ],
+  "author": {
+    "name": "Patrik Johnson",
+    "email": "patrik@zebros.fi"
+  },
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/orbitbot/henderson/issues"
+  },
+  "homepage": "https://github.com/orbitbot/henderson#readme",
+  "devDependencies": {
+    "chai": "3.5.0",
+    "electron-mocha": "2.0.0",
+    "onchange": "2.4.0",
+    "sinon": "1.17.4",
+    "uglify-js": "2.6.2"
+  },
+  "gitHead": "12bd330234b4066b0d12a017618474542031e162",
+  "_id": "henderson@1.0.0",
+  "_shasum": "96c86c19803c41606ef7c630c47b35e681d459fd",
+  "_from": ".",
+  "_npmVersion": "2.14.12",
+  "_nodeVersion": "4.3.1",
+  "_npmUser": {
+    "name": "orbitbot",
+    "email": "patrik@zebros.fi"
+  },
+  "dist": {
+    "shasum": "96c86c19803c41606ef7c630c47b35e681d459fd",
+    "tarball": "http://registry.npmjs.org/henderson/-/henderson-1.0.0.tgz"
+  },
+  "maintainers": [
+    {
+      "name": "orbitbot",
+      "email": "patrik@zebros.fi"
+    }
+  ],
+  "_npmOperationalInternal": {
+    "host": "packages-12-west.internal.npmjs.com",
+    "tmp": "tmp/henderson-1.0.0.tgz_1463694175107_0.6979722308460623"
+  },
+  "directories": {}
+}

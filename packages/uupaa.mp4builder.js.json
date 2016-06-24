@@ -1,0 +1,129 @@
+{
+  "name": "uupaa.mp4builder.js",
+  "version": "0.0.10",
+  "description": "MP4 File builder.",
+  "url": "https://github.com/uupaa/MP4Builder.js",
+  "keywords": [
+    "AVC",
+    "MP4",
+    "H.264",
+    "Builder",
+    "uupaa",
+    "WebModule",
+    "Unstable"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/uupaa/MP4Builder.js.git"
+  },
+  "scripts": {
+    "sync": "node ../WebModule/run/sync.js; npm update; node ../WebModule/run/page.js",
+    "wiki": "node ../WebModule/run/wiki.js",
+    "min": "node ../WebModule/run/minify.js --verbose --strict --keep --pretty",
+    "build": "node ../WebModule/run/minify.js --verbose --strict --keep --release",
+    "watch": "node ../WebModule/run/watch.js --verbose --run lint",
+    "page": "node ../WebModule/run/page.js --verbose",
+    "test": "npm run min; npm run node; npm run browser",
+    "node": "NODE_ENV=production NODE_PATH=lib node test/node/index.js",
+    "noded": "NODE_ENV=production NODE_PATH=lib node --debug-brk test/node/index.js",
+    "browser": "open http://localhost:8000/MP4Builder.js/test/browser/index.html",
+    "el": "electron test/el",
+    "nw": "nw test/nw",
+    "add-src": "node ../WebModule/run/add-src.js",
+    "add-subclass": "node ../WebModule/run/add-subclass.js",
+    "sim": "node ../WebModule/run/sim.js http://localhost:8000/MP4Builder.js/test/browser/index.html",
+    "simx": "node ../WebModule/run/sim.js stop",
+    "lint": "eslint lib/*.js",
+    "score": "node ../WebModule/run/score.js; open lint/plato/index.html",
+    "patch": "node ../WebModule/run/patch.js",
+    "setup": "node ../WebModule/run/setup.js",
+    "start": "cd ../; Python -m SimpleHTTPServer 8000 &",
+    "stop": "killall -- Python -m SimpleHTTPServer 8000; exit 0",
+    "make_assets": "cd test/assets; ./make_video; cd -",
+    "clean_assets": "cd test/assets; rm -rf ./ff; rm -rf ./js; cd -",
+    "bin_diff": "cmp -b -l test/assets/ff/png.all.mp4 test/assets/js/png.all.mp4"
+  },
+  "webmodule": {
+    "develop": false,
+    "label": [
+      "@dev"
+    ],
+    "browser": {
+      "output": "release/MP4Builder.b.min.js",
+      "source": [
+        "lib/MP4Builder.js"
+      ]
+    },
+    "worker": {
+      "output": "release/MP4Builder.w.min.js",
+      "source": [
+        "lib/MP4Builder.js"
+      ]
+    },
+    "node": {
+      "output": "release/MP4Builder.n.min.js",
+      "source": [
+        "lib/MP4Builder.js"
+      ]
+    },
+    "nw": {
+      "output": "release/MP4Builder.nw.min.js",
+      "source": [
+        "lib/MP4Builder.js"
+      ]
+    },
+    "el": {
+      "output": "release/MP4Builder.el.min.js",
+      "source": [
+        "lib/MP4Builder.js"
+      ]
+    }
+  },
+  "dependencies": {
+    "uupaa.bit.js": "",
+    "uupaa.hexdump.js": "",
+    "uupaa.nalunit.js": "",
+    "uupaa.typedarray.js": ""
+  },
+  "devDependencies": {
+    "uupaa.task.js": "",
+    "uupaa.fileloader.js": "",
+    "uupaa.h264.js": "",
+    "uupaa.mp4parser.js": ""
+  },
+  "lib": "./lib/",
+  "main": "./index.js",
+  "author": {
+    "name": "uupaa"
+  },
+  "license": "Apache License Version 2.0",
+  "contributors": [],
+  "gitHead": "615c73b5c195b86f75ff366d6ceb74c4da3719a5",
+  "bugs": {
+    "url": "https://github.com/uupaa/MP4Builder.js/issues"
+  },
+  "homepage": "https://github.com/uupaa/MP4Builder.js",
+  "_id": "uupaa.mp4builder.js@0.0.10",
+  "_shasum": "dbc045380cd3c76ed5eb883c01eae949679b77fb",
+  "_from": ".",
+  "_npmVersion": "2.0.0",
+  "_npmUser": {
+    "name": "uupaa",
+    "email": "uupaa.js@gmail.com"
+  },
+  "maintainers": [
+    {
+      "name": "uupaa",
+      "email": "uupaa.js@gmail.com"
+    }
+  ],
+  "dist": {
+    "shasum": "dbc045380cd3c76ed5eb883c01eae949679b77fb",
+    "tarball": "http://registry.npmjs.org/uupaa.mp4builder.js/-/uupaa.mp4builder.js-0.0.10.tgz"
+  },
+  "_npmOperationalInternal": {
+    "host": "packages-12-west.internal.npmjs.com",
+    "tmp": "tmp/uupaa.mp4builder.js-0.0.10.tgz_1462043496511_0.17580448440276086"
+  },
+  "directories": {}
+}

@@ -1,0 +1,100 @@
+{
+  "name": "uupaa.speech.js",
+  "version": "0.0.1",
+  "description": "Speech Synthesis and Recognition.",
+  "url": "https://github.com/uupaa/Speech.js",
+  "keywords": [
+    "speech",
+    "synthesis",
+    "recognition",
+    "uupaa",
+    "WebModule",
+    "Unstable"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/uupaa/Speech.js.git"
+  },
+  "scripts": {
+    "sync": "node ../WebModule/run/sync.js; npm update; node ../WebModule/run/page.js",
+    "wiki": "node ../WebModule/run/wiki.js",
+    "min": "node ../WebModule/run/minify.js --verbose --strict --keep --pretty",
+    "build": "node ../WebModule/run/minify.js --verbose --strict --keep --release",
+    "watch": "node ../WebModule/run/watch.js --verbose --run lint",
+    "page": "node ../WebModule/run/page.js --verbose",
+    "test": "npm run min; npm run node; npm run browser",
+    "node": "NODE_ENV=production NODE_PATH=lib node test/node/index.js",
+    "noded": "NODE_ENV=production NODE_PATH=lib node --debug-brk test/node/index.js",
+    "browser": "open http://localhost:8000/Speech.js/test/browser/index.html",
+    "el": "electron test/el",
+    "nw": "nw test/nw",
+    "add-src": "node ../WebModule/run/add-src.js",
+    "add-subclass": "node ../WebModule/run/add-subclass.js",
+    "sim": "node ../WebModule/run/sim.js http://localhost:8000/Speech.js/test/browser/index.html",
+    "simx": "node ../WebModule/run/sim.js stop",
+    "lint": "eslint lib/*.js",
+    "score": "node ../WebModule/run/score.js; open lint/plato/index.html",
+    "patch": "node ../WebModule/run/patch.js",
+    "setup": "node ../WebModule/run/setup.js",
+    "start": "cd ../; Python -m SimpleHTTPServer 8000 &",
+    "stop": "killall -- Python -m SimpleHTTPServer 8000; exit 0"
+  },
+  "webmodule": {
+    "develop": false,
+    "label": [
+      "@dev"
+    ],
+    "browser": {
+      "output": "release/Speech.b.min.js",
+      "source": [
+        "lib/Speech.js"
+      ]
+    },
+    "nw": {
+      "output": "release/Speech.nw.min.js",
+      "source": [
+        "lib/Speech.js"
+      ]
+    },
+    "el": {
+      "output": "release/Speech.el.min.js",
+      "source": [
+        "lib/Speech.js"
+      ]
+    }
+  },
+  "dependencies": {},
+  "devDependencies": {},
+  "lib": "./lib/",
+  "main": "./index.js",
+  "author": {
+    "name": "uupaa"
+  },
+  "license": "MIT",
+  "contributors": [],
+  "gitHead": "31efeeb70aa33e9794f5b561ea35b2d24f863600",
+  "bugs": {
+    "url": "https://github.com/uupaa/Speech.js/issues"
+  },
+  "homepage": "https://github.com/uupaa/Speech.js#readme",
+  "_id": "uupaa.speech.js@0.0.1",
+  "_shasum": "81e6ec335e2a7a6f70e45f69d51542c85a92d9fe",
+  "_from": ".",
+  "_npmVersion": "3.3.12",
+  "_nodeVersion": "5.3.0",
+  "_npmUser": {
+    "name": "uupaa",
+    "email": "uupaa.js@gmail.com"
+  },
+  "maintainers": [
+    {
+      "name": "uupaa",
+      "email": "uupaa.js@gmail.com"
+    }
+  ],
+  "dist": {
+    "shasum": "81e6ec335e2a7a6f70e45f69d51542c85a92d9fe",
+    "tarball": "http://registry.npmjs.org/uupaa.speech.js/-/uupaa.speech.js-0.0.1.tgz"
+  },
+  "directories": {}
+}

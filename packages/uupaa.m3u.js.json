@@ -1,0 +1,117 @@
+{
+  "name": "uupaa.m3u.js",
+  "version": "1.0.0",
+  "description": "M3U/M3U8 parser and builder.",
+  "url": "https://github.com/uupaa/M3U.js",
+  "keywords": [
+    "MPEG2TS",
+    "ts",
+    "HLS",
+    "M3U",
+    "M3U8",
+    "uupaa",
+    "WebModule"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/uupaa/M3U.js.git"
+  },
+  "scripts": {
+    "sync": "node ../WebModule/run/sync.js; npm update; node ../WebModule/run/page.js",
+    "wiki": "node ../WebModule/run/wiki.js",
+    "min": "node ../WebModule/run/minify.js --verbose --strict --keep --pretty",
+    "build": "node ../WebModule/run/minify.js --verbose --strict --keep --release",
+    "watch": "node ../WebModule/run/watch.js --verbose --run lint",
+    "page": "node ../WebModule/run/page.js --verbose",
+    "test": "npm run min; npm run node; npm run browser",
+    "node": "NODE_ENV=production NODE_PATH=lib node test/node/index.js",
+    "noded": "NODE_ENV=production NODE_PATH=lib node --debug-brk test/node/index.js",
+    "browser": "open http://localhost:8000/M3U.js/test/browser/index.html",
+    "el": "electron test/el",
+    "nw": "nw test/nw",
+    "add-src": "node ../WebModule/run/add-src.js",
+    "add-subclass": "node ../WebModule/run/add-subclass.js",
+    "sim": "node ../WebModule/run/sim.js http://localhost:8000/M3U.js/test/browser/index.html",
+    "simx": "node ../WebModule/run/sim.js stop",
+    "lint": "eslint lib/*.js",
+    "score": "node ../WebModule/run/score.js; open lint/plato/index.html",
+    "patch": "node ../WebModule/run/patch.js",
+    "setup": "node ../WebModule/run/setup.js",
+    "start": "cd ../; Python -m SimpleHTTPServer 8000 &",
+    "stop": "killall -- Python -m SimpleHTTPServer 8000; exit 0"
+  },
+  "webmodule": {
+    "develop": false,
+    "label": [
+      "@dev"
+    ],
+    "browser": {
+      "output": "release/M3U.b.min.js",
+      "source": [
+        "lib/M3U.js"
+      ]
+    },
+    "worker": {
+      "output": "release/M3U.w.min.js",
+      "source": [
+        "lib/M3U.js"
+      ]
+    },
+    "node": {
+      "output": "release/M3U.n.min.js",
+      "source": [
+        "lib/M3U.js"
+      ]
+    },
+    "nw": {
+      "output": "release/M3U.nw.min.js",
+      "source": [
+        "lib/M3U.js"
+      ]
+    },
+    "el": {
+      "output": "release/M3U.el.min.js",
+      "source": [
+        "lib/M3U.js"
+      ]
+    }
+  },
+  "dependencies": {},
+  "devDependencies": {},
+  "lib": "./lib/",
+  "main": "./index.js",
+  "author": {
+    "name": "uupaa"
+  },
+  "license": "MIT",
+  "contributors": [],
+  "gitHead": "314576984888f2a886b272b97a63452bb91de154",
+  "bugs": {
+    "url": "https://github.com/uupaa/M3U.js/issues"
+  },
+  "homepage": "https://github.com/uupaa/M3U.js#readme",
+  "_id": "uupaa.m3u.js@1.0.0",
+  "_shasum": "b9012b99da3315fc20cf84c1648d2bbb2b5740c0",
+  "_from": ".",
+  "_npmVersion": "2.14.12",
+  "_nodeVersion": "4.2.4",
+  "_npmUser": {
+    "name": "uupaa",
+    "email": "uupaa.js@gmail.com"
+  },
+  "maintainers": [
+    {
+      "name": "uupaa",
+      "email": "uupaa.js@gmail.com"
+    }
+  ],
+  "dist": {
+    "shasum": "b9012b99da3315fc20cf84c1648d2bbb2b5740c0",
+    "tarball": "http://registry.npmjs.org/uupaa.m3u.js/-/uupaa.m3u.js-1.0.0.tgz"
+  },
+  "_npmOperationalInternal": {
+    "host": "packages-12-west.internal.npmjs.com",
+    "tmp": "tmp/uupaa.m3u.js-1.0.0.tgz_1457611094510_0.24845366645604372"
+  },
+  "directories": {}
+}

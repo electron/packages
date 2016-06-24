@@ -1,0 +1,70 @@
+{
+  "name": "anysql-websql",
+  "version": "0.4.1",
+  "description": "Web SQL implementation of the AnySQL API",
+  "author": {
+    "name": "Manuel Vila",
+    "email": "mvila@3base.com"
+  },
+  "license": "MIT",
+  "main": "lib/index.js",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/object-layer/anysql-websql.git"
+  },
+  "scripts": {
+    "compile": "babel src --out-dir lib",
+    "prepublish": "npm run compile",
+    "release": "npm run lint && npm run compile && npm test && (git checkout --quiet master && test -z \"$(git status --porcelain)\" && npm version $npm_config_release_type && git push --follow-tags) || echo \"An error occurred (uncommitted changes?)\"",
+    "release-patch": "npm run release --release-type=patch",
+    "release-minor": "npm run release --release-type=minor",
+    "release-major": "npm run release --release-type=major",
+    "lint": "eslint .",
+    "test": "electron-mocha --renderer test"
+  },
+  "dependencies": {
+    "await-lock": "^1.1.1"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.6.5",
+    "babel-eslint": "^6.0.0",
+    "babel-plugin-transform-async-to-generator": "^6.7.4",
+    "babel-polyfill": "^6.7.4",
+    "babel-preset-es2015": "^6.6.0",
+    "babel-register": "^6.7.2",
+    "chai": "^3.5.0",
+    "electron-mocha": "^1.0.0",
+    "electron-prebuilt": "^0.37.3",
+    "eslint": "^2.5.3",
+    "eslint-config-next": "^0.1.12"
+  },
+  "gitHead": "8a369ffe35e27d8eea4559a05bbdc933ed143c44",
+  "bugs": {
+    "url": "https://github.com/object-layer/anysql-websql/issues"
+  },
+  "homepage": "https://github.com/object-layer/anysql-websql#readme",
+  "_id": "anysql-websql@0.4.1",
+  "_shasum": "e1002070608e96137e7f9e27c59f36baa328dfe3",
+  "_from": ".",
+  "_npmVersion": "2.14.9",
+  "_nodeVersion": "0.12.12",
+  "_npmUser": {
+    "name": "mvila",
+    "email": "mvila@3base.com"
+  },
+  "dist": {
+    "shasum": "e1002070608e96137e7f9e27c59f36baa328dfe3",
+    "tarball": "http://registry.npmjs.org/anysql-websql/-/anysql-websql-0.4.1.tgz"
+  },
+  "maintainers": [
+    {
+      "name": "mvila",
+      "email": "mvila@3base.com"
+    }
+  ],
+  "_npmOperationalInternal": {
+    "host": "packages-12-west.internal.npmjs.com",
+    "tmp": "tmp/anysql-websql-0.4.1.tgz_1459321793380_0.6904649345669895"
+  },
+  "directories": {}
+}

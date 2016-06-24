@@ -1,0 +1,91 @@
+{
+  "name": "electron-tunnels",
+  "version": "1.2.0",
+  "description": "Electron app to manage your ssh tunnels",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/parro-it/tunnels.git"
+  },
+  "author": {
+    "name": "andrea@parro.it"
+  },
+  "keywords": [
+    "electron",
+    "ssh",
+    "tunnel",
+    "port",
+    "forwarding"
+  ],
+  "dependencies": {
+    "co": "^4.6.0",
+    "dom-delegate": "^2.0.3",
+    "electron-debug": "^0.5.1",
+    "electron-detach": "^0.3.0",
+    "electron-window": "^0.6.0",
+    "insert-css": "^0.2.0",
+    "menubar": "^2.3.0",
+    "node-uuid": "^1.4.3",
+    "nunjucks": "^2.0.0",
+    "open-ssh-tunnel": "^0.1.0",
+    "photon": "github:connors/photon",
+    "store": "^1.3.17"
+  },
+  "scripts": {
+    "test": "eslint . && node test | faucet",
+    "rebuild": "electron-rebuild",
+    "lint": "eslint .",
+    "start": "electron .",
+    "package": "rm -f setup/${npm_package_productName}-${platform}-${arch}-${npm_package_version}.zip && electron-packager .  ${npm_package_productName} --platform=${platform} --arch=${arch} --version=${npm_package_electronVersion} --ignore='(setup|media|test|private|node_modules/electron-packager|node_modules/electron-prebuilt)' --overwrite --out=setup && cd setup/${npm_package_productName}-${platform}-${arch} && zip -ryXq9 ../${npm_package_productName}-${platform}-${arch}-${npm_package_version}.zip . && cd .. && rm -rf ${npm_package_productName}-${platform}-${arch}",
+    "package:osx": "platform=linux arch=x64 npm run package",
+    "package:linux:x64": "platform=linux arch=x64 npm run package",
+    "package:linux:ia32": "platform=linux arch=x64 npm run package",
+    "package:all": "npm run package:osx && npm run package:linux:x64 && npm run package:linux:ia32"
+  },
+  "files": [
+    "index.js",
+    "src"
+  ],
+  "bin": {
+    "tunnels": "cli.js"
+  },
+  "eslintConfig": {
+    "extends": "js"
+  },
+  "electronVersion": "0.35.2",
+  "productName": "Tunnels",
+  "license": "MIT",
+  "devDependencies": {
+    "electron-packager": "^5.1.1",
+    "electron-prebuilt": "^0.35.2",
+    "electron-rebuild": "^1.0.2",
+    "eslint": "^1.10.3",
+    "eslint-config-js": "^2.0.2",
+    "faucet": "0.0.1",
+    "tape": "^4.2.2"
+  },
+  "gitHead": "fbc3d3ff073e6e7ceb1a0c4e22a223aaec44e782",
+  "bugs": {
+    "url": "https://github.com/parro-it/tunnels/issues"
+  },
+  "homepage": "https://github.com/parro-it/tunnels#readme",
+  "_id": "electron-tunnels@1.2.0",
+  "_shasum": "1b45fab5bed8dc5fc90a6936e6e254066e4e7bef",
+  "_from": ".",
+  "_npmVersion": "3.3.12",
+  "_nodeVersion": "5.1.0",
+  "_npmUser": {
+    "name": "parroit",
+    "email": "andrea.parodi@ebansoftware.net"
+  },
+  "dist": {
+    "shasum": "1b45fab5bed8dc5fc90a6936e6e254066e4e7bef",
+    "tarball": "http://registry.npmjs.org/electron-tunnels/-/electron-tunnels-1.2.0.tgz"
+  },
+  "maintainers": [
+    {
+      "name": "parroit",
+      "email": "andrea.parodi@ebansoftware.net"
+    }
+  ],
+  "directories": {}
+}

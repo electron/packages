@@ -1,0 +1,59 @@
+{
+  "name": "cnet",
+  "version": "0.1.0",
+  "description": "CNET API Connection Library for Node.js",
+  "homepage": "https://github.com/jpmonette/cnet",
+  "author": {
+    "name": "Jean-Philippe Monette",
+    "email": "contact@jpmonette.net"
+  },
+  "main": "lib/cnet.js",
+  "keywords": [
+    "cnet",
+    "api",
+    "tech",
+    "media",
+    "reviews",
+    "electronic",
+    "cbs"
+  ],
+  "dependencies": {},
+  "engines": {
+    "node": ">=0.4.0"
+  },
+  "bugs": {
+    "url": "https://github.com/jpmonette/cnet/issues"
+  },
+  "os": [],
+  "cpu": [],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jpmonette/cnet.git"
+  },
+  "contributors": [
+    {
+      "name": "Jean-Philippe Monette",
+      "email": "contact@jpmonette.net",
+      "url": "http://blogue.jpmonette.net/"
+    }
+  ],
+  "readme": "# CNET API for Node.js\r\n\r\n[CNET API for Node.js](https://npmjs.org/package/cnet) is a *connection library* for [CNET API](http://developer.cnet.com/), giving you access to data about tech and consumer electronics products such as computers, digital cameras, MP3 players, and TVs, as well as software titles and merchant pricing from CNET Certified Merchants.\r\n\r\n## Installation\r\n\r\n```bash\r\n$ npm install cnet\r\n```\r\n\r\n## Features\r\n\r\n* Pure JavaScript\r\n* Full access to CNET API\r\n* Lightweight - No dependency, using core [HTTP](http://nodejs.org/api/http.html#http_http) interface!\r\n\r\n## Quick Start\r\n\r\nFirst, add the module:\r\n\r\n```js\r\nvar CNET = require('cnet');\r\n```\r\n\r\nInitialize your `CNET` object using your API key (request one [here](http://developer.cnet.com/)):\r\n\r\n```js\r\nvar cnet = new CNET({ apiKey: '<your-api-key>' });\r\n```\r\n\r\nBuild your `HTTP` request using [CNET API Reference Guide](http://developer.cnet.com/docs/read/reference_guide). Here's an example requesting the `category` ressource:\r\n\r\n```js\r\ncnet.category({ 'categoryId': 6505, 'siteId': 'reviews'}, function(err, data) {\r\n    if(err) throw err;\r\n    console.log(data);\r\n});\r\n```\r\n\r\nHere's a more complex HTTP request using the `softwareProduct` ressource:\r\n\r\n```js\r\ncnet.softwareProductSearch({ \r\n    query:  'Microsoft Office', \r\n    iod:    [\r\n        'userRatings',\r\n        'popularityChart'\r\n    ],\r\n    minEditorsRating: 3,\r\n    maxEditorsRating: 5,\r\n    minUserRating: 2,\r\n    platform: 'Windows',\r\n    orderBy: 'downloadsAndCreatedDate',\r\n    sortDesc: true,\r\n    sortSearchFacets: true,\r\n    start: 0,\r\n    limit: 1\r\n}, function(err, data) {\r\n    if(err) throw err;\r\n    console.log(data);\r\n});\r\n```\r\n\r\n## Additional Information\r\n\r\nIf you prefer to receive your data in **XML** format, populate the `format` key on initialization:\r\n\r\n```js\r\nvar cnet = new CNET({\r\n    apiKey: '<your-api-key>',\r\n    format: 'xml'\r\n});\r\n```\r\n\r\nIf you want to explore the [CNET API](http://developer.cnet.com/), head to their REST developer console:\r\n\r\n```\r\nhttp://developer.api.cnet.com/dashboard.html?partTag=<your-api-key>\r\n```\r\n\r\n## More Information\r\n\r\n* [CNET for Node.js on NPM Registry](https://github.com/jpmonette/cnet)\r\n* Follow [@jpmonette](https://twitter.com/jpmonette) on Twitter for updates\r\n* Read my personal blog [Blogue de Jean-Philippe Monette](http://blogue.jpmonette.net/) to learn more about what I do!\r\n\r\n## License\r\n\r\nCopyright (C) 2013, Jean-Philippe Monette <contact@jpmonette.net>\r\n\r\nPermission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the \"Software\"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:\r\n\r\nThe above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.\r\n\r\nTHE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.",
+  "readmeFilename": "README.md",
+  "_id": "cnet@0.1.0",
+  "dist": {
+    "shasum": "ed802377d5d949644aa8f70be77dba0ea9bf4126",
+    "tarball": "http://registry.npmjs.org/cnet/-/cnet-0.1.0.tgz"
+  },
+  "_npmVersion": "1.1.69",
+  "_npmUser": {
+    "name": "jpmonette",
+    "email": "contact@jpmonette.net"
+  },
+  "maintainers": [
+    {
+      "name": "jpmonette",
+      "email": "contact@jpmonette.net"
+    }
+  ],
+  "directories": {}
+}

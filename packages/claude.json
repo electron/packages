@@ -1,0 +1,51 @@
+{
+  "name": "claude",
+  "version": "0.0.6",
+  "scripts": {
+    "start": "node app"
+  },
+  "dependencies": {
+    "express": "3.0.6",
+    "hbs": "2.0.x",
+    "forever-monitor": "1.1.x",
+    "suppose": "0.1.x",
+    "deep-extend": "0.2.x",
+    "wrench": "1.4.x",
+    "request": "2.16.x"
+  },
+  "readmeFilename": "README.md",
+  "description": "Claude Shannon was an American mathematician, electronic engineer, and cryptographer known as \"The father of information theory\". Claude.js is web server manager for node.js.",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/jrf0110/claude.git"
+  },
+  "keywords": [
+    "web",
+    "server",
+    "management",
+    "sysadmin"
+  ],
+  "author": {
+    "name": "John Fawcett"
+  },
+  "license": "BSD",
+  "readme": "# Claude.js - An App Manager for Servers\n\nClaude Shannon was an American mathematician, electronic engineer, and cryptographer known as \"The father of information theory\". Claude.js is a deployment server for node.js apps. It allows you to very easily deploy your apps to a VPS.\n\n```npm install claude```\n\nFor an example app deployed with claude, check out my [contact card](https://github.com/jrf0110/contact)\n\nClaude assumes you're setting up individual node.js apps at your domain like:\n\n```\nhttp://app1.yourdomain.com\nhttp://app2.yourdomain.com\nhttp://app3.yourdomain.com\n```\n\nAnything that matches your node.js http server should go there, otherwise, we should assume it's a static resource to be handled by nginx.\n\nYou create a claude server like this:\n\n```javascript\nvar claude = require('claude');\n\nclaude.init({\n  // You need to setup a github app that claude will use for oauth\n  github: {\n    clientId:             process.env.GITHUB_CLIENT_ID\n  , clientSecret:         process.env.GITHUB_CLIENT_SECRET\n\n    // Specify the github username that you want to allow to control your apps\n  , username:             'jrf0110'\n  }\n\n  // Directory you want your apps to be stored in\n, appDir:                 '/apps'\n\n  // Where to hold data that claude needs\n, dataPath:               process.cwd() + '/data.js'\n\n  // What port should claude run on?\n, port:                   3003\n});\n```\n\nYou can look at my claude server [here](https://github.com/jrf0110/apps-server).\n\nClaude uses Nginx for static resources and virtual host setup. It's not necessary to include one. Claude will still host your app on whatever port you want, but you're on your own as far as sub-domains are concerned. Your nginx file should look something like this:\n\n```\n server {\n  server_name apps1.mydomain.com;\n  listen 80;\n\n  root /apps/app1.mydomain.com/public;\n  index index.html index.htm;\n\n  location ~ ^/(.*\\..*)$ {\n    alias /apps/app1.mydomain.com/public/$1;\n  }\n\n  location ~ ^/(.+)$ {\n    # root /apps/app1.mydomain.com/public;\n    proxy_pass http://127.0.0.1:3003;\n  }\n}\n```\n\n## Deploying an app\n\nSo, I haven't built a client for this yet, but you can do everything over http right now.\n\n__Authorize Github__\n\nGet the github oauth url\n\n```\nGET /oauth - Gets the url to authorize the app\n```\n\nGive claude the code that github gave you\n\n```\nPOST /oauth { code: github_code }\n```\n\nNow you should be authenticated. If there was an error, check the output from the server. I probably messed something up int he oauth proess. There should be some output that says access_token: 'SOME_ACCESS_TOKEN_TEXT'. Copy the token, and then:\n\n```\nPOST /session { accessToken: github_access_token }\n```\n\nOnce claude gets an access token, it ensures your identity by checking your github user profile. Authing is the worst part. It's buggy, but will be fixed. Thankfully, you don't have to login all the time.\n\n__Adding an App__\n\nTo add an app:\n\n```\nPOST /apps { name: 'app1', repo: 'https://github.com/username/app1.git' }\n```\n\nNOTE: Be sure and use the http repo url and not the ssh!\n\nAdding an app only adds it to the app database. You can turn apps on and off and by default they're off. Activate an app by:\n\n```\nPUT /apps/:name { active: true }\n```\n\nIf it's the first time to be activated, then the repo will be pulled down, dependencies will be installed, nginx will be restarted if necessary, and the app will start.\n\n__Re-Deploying an App__\n\nTo re-deploy an app:\n\n```\nPOST /apps/:name/deploy\n```\n\nSo, this will force the app to re-download from the origin, dependencies installed, nginx will be restarted if necessary, and the app will start.\n\n### Permissions problems\n\nWhatever app directory you specify, obviously the user that starts your claude server needs have to read/write permissions on it. Also, nginx typically requires root access to start and stop. For that reason, claude generates a bash script that contains the command to restart nginx. You can specify your own comand from the ```nginx.restart``` property. By default, it will be setup for ubuntu:\n\n```\nservice nginx restart\n```\n\nIn order to get around the sudo problem, claude needs an exception made in the ```/etc/sudoers``` file:\n\n```\nusername ALL=NOPASSWD: /path/to/claude/server/restart-nginx\n```\n\n## In the year 2000\n\nPlans to implement very soon:\n\n* A complete re-factor because this was quickly hacked together\n* Claude CLI - ```claude deploy, claude stop, etc```\n* An HTML client\n* Claude Apps (like heroku)\n\nFor the apps, I'm thinking something like this in your ```package.json```\n\n```javascript\n...\n\"claude\": {\n  \"postgres\": \"9.0.2\",\n  \"nodetime\": \"*\"\n}\n...\n```\n",
+  "_id": "claude@0.0.6",
+  "dist": {
+    "shasum": "c534ff459c84067b50ae5f047672dba4a0ac2cc5",
+    "tarball": "http://registry.npmjs.org/claude/-/claude-0.0.6.tgz"
+  },
+  "_npmVersion": "1.2.0",
+  "_npmUser": {
+    "name": "johndotawesome",
+    "email": "jrf0110@gmail.com"
+  },
+  "maintainers": [
+    {
+      "name": "johndotawesome",
+      "email": "jrf0110@gmail.com"
+    }
+  ],
+  "directories": {}
+}

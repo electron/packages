@@ -1,0 +1,98 @@
+{
+  "package.json": true,
+  "author": {
+    "name": "kai zhu",
+    "email": "kaizhu256@gmail.com"
+  },
+  "bin": {
+    "utility2": "index.sh",
+    "utility2-bcrypt": "lib.bcrypt.js",
+    "utility2-istanbul": "lib.istanbul.js",
+    "utility2-jslint": "lib.jslint.js",
+    "utility2-uglifyjs": "lib.uglifyjs.js"
+  },
+  "description": "this package will run dynamic browser tests with coverage (via istanbul and electron)",
+  "devDependencies": {
+    "electron-lite": "github:kaizhu256/node-electron-lite#alpha"
+  },
+  "engines": {
+    "node": ">=4.0"
+  },
+  "homepage": "https://github.com/kaizhu256/node-utility2",
+  "keywords": [
+    "atom",
+    "atom-shell",
+    "browser",
+    "build",
+    "ci",
+    "code",
+    "continuous-integration",
+    "cover",
+    "coverage",
+    "electron",
+    "headless",
+    "headless-browser",
+    "instrument",
+    "istanbul",
+    "jscover",
+    "jscoverage",
+    "phantom",
+    "phantomjs",
+    "slimer",
+    "slimerjs",
+    "test",
+    "travis",
+    "travis-ci",
+    "web"
+  ],
+  "license": "MIT",
+  "name": "utility2",
+  "os": [
+    "darwin",
+    "linux"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kaizhu256/node-utility2.git"
+  },
+  "scripts": {
+    "build-app": "npm test --mode-test-case=testCase_build_app",
+    "build-ci": "./index.sh shRun shReadmeBuild",
+    "build-doc": "npm test --mode-test-case=testCase_build_doc",
+    "env": "env",
+    "example.js": ". ./index.sh && shInit && shReadmeExportScripts && shFileTrimLeft tmp/README.example.js && shRunScreenCapture shReadmeTestJs example.js",
+    "example.sh": ". ./index.sh && shInit && shReadmeExportScripts && shRunScreenCapture shReadmeTestSh example.sh",
+    "start": "export PORT=${PORT:-8080} && if [ -f assets.app.js ]; then node assets.app.js; return; fi && export npm_config_mode_auto_restart=1 && ./index.sh shRun shIstanbulCover node test.js",
+    "start-heroku": "export npm_config_mode_backend=1 && npm start ",
+    "test": ". ./index.sh && shInit && shReadmeExportScripts && export PORT=$(./index.sh shServerPortRandom) && export npm_config_mode_auto_restart=1 && ./index.sh test node test.js",
+    "test-published": "./index.sh shRun shNpmTestPublished"
+  },
+  "version": "2016.5.4",
+  "bugs": {
+    "url": "https://github.com/kaizhu256/node-utility2/issues"
+  },
+  "_id": "utility2@2016.5.4",
+  "_shasum": "5bc9f4eb60f5c54fc01d7fee90c5807919089745",
+  "_from": ".",
+  "_npmVersion": "3.9.3",
+  "_nodeVersion": "6.2.1",
+  "_npmUser": {
+    "name": "kaizhu",
+    "email": "kaizhu256@gmail.com"
+  },
+  "dist": {
+    "shasum": "5bc9f4eb60f5c54fc01d7fee90c5807919089745",
+    "tarball": "http://registry.npmjs.org/utility2/-/utility2-2016.5.4.tgz"
+  },
+  "maintainers": [
+    {
+      "name": "kaizhu",
+      "email": "kaizhu256@gmail.com"
+    }
+  ],
+  "_npmOperationalInternal": {
+    "host": "packages-16-east.internal.npmjs.com",
+    "tmp": "tmp/utility2-2016.5.4.tgz_1465999097456_0.010182876605540514"
+  },
+  "directories": {}
+}

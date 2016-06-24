@@ -1,0 +1,50 @@
+{
+  "author": {
+    "name": "Falco Nogatz",
+    "email": "fnogatz@gmail.com"
+  },
+  "name": "dgtchess",
+  "description": "Node.js driver for DGT electronic chess boards",
+  "keywords": [
+    "chess",
+    "board",
+    "DGT",
+    "driver",
+    "serialport"
+  ],
+  "version": "0.0.1",
+  "main": "./lib/index.js",
+  "engines": {
+    "node": ">=0.8"
+  },
+  "dependencies": {
+    "serialport": "1.0.x",
+    "chess.js": "0.1.x"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/fnogatz/node-dgtchess.git"
+  },
+  "bugs": {
+    "url": "http://github.com/fnogatz/node-dgtchess/issues"
+  },
+  "readme": "dgtchess\n========\n\nAn event-driven node.js driver for the electronic [DGT](http://dgtprojects.com) chess board.\n\nInstall via npm:\n\n\tnpm install dgtchess\n\n## Status\n\nThis project is still under heavy development. Currently only the boards connected via USB are\nsupported and no clock commands are implemented yet. The module uses only the `UPDATE BOARD`\nmodus and instead of moves only changes are triggered through the 'data' event.\n\n## Usage\n\n\tvar DGT = require('..');\n\tvar board = new DGT.Board('/dev/ttyUSB0');\n\n\tboard.on('ready', function() {\n\t  console.log('Serial No:', board.serialNo);\n\t  console.log('Version:', board.versionNo);\n\t  console.log('-----');\n\t});\n\n\tboard.on('data', function(data) {\n\t  console.log('Field:', data.field);\n\t  console.log('Piece:', data.piece);\n\t  console.log('-----');\n\t});\n\n\tboard.on('move', function(move) {\n\t  console.log('Move:', move);\n\t  console.log('-----');\n\t});\n\nThis might result in the following output:\n\n\tSerial No: 12345\n\tVersion: 1.7\n\t   +------------------------+\n\t 8 | .  .  .  .  .  .  .  . |\n\t 7 | .  .  .  .  .  .  .  . |\n\t 6 | .  .  .  .  .  .  .  . |\n\t 5 | .  .  .  .  .  k  .  . |\n\t 4 | .  .  R  .  .  .  .  . |\n\t 3 | .  .  .  .  .  K  .  . |\n\t 2 | .  .  .  .  .  .  .  . |\n\t 1 | .  .  .  .  .  .  .  . |\n\t   +------------------------+\n\t     a  b  c  d  e  f  g  h\n\n\t-----\n\tField: c4\n\tPiece: EMPTY\n\t-----\n\tField: c5\n\tPiece: WROOK\n\t-----\n\tMove: { color: 'w',\n\t  from: 'c4',\n\t  to: 'c5',\n\t  flags: 'n',\n\t  piece: 'r',\n\t  san: 'Rc5+' }\n\t-----\n\tField: f5\n\tPiece: EMPTY\n\t-----\n\tField: e6\n\tPiece: BKING\n\t-----\n\tMove: { color: 'b',\n\t  from: 'f5',\n\t  to: 'e6',\n\t  flags: 'n',\n\t  piece: 'k',\n\t  san: 'Ke6' }\n\t-----\n\n## Events\n\n### 'ready'\n\nThe 'ready' event is fired once the basic data (i.e. version and serial number) are read from\nthe board.\n\n### 'data'\n\nOnce something on the board has been changed, i.e. a move gets (re)moved, this event gets\ntriggered. The passed object has the properties `field` and `piece`.\n\n\n## Background\n\nThe protocol for communicating with the electronic chess boards is well documented by DGT in\n[their developer section](http://www.dgtprojects.com/site/index.php/dgtsupport/developer-info).\nThere you can find the [DGT Electronic Board Protocol Description (version 20120309)](http://www.dgtprojects.com/site/index.php/dgtsupport/developer-info/downloads/doc_download/85-dgt-electronic-board-protocol-description-version-20120309)\nwhich is the base for this node.js implementation.\n\n## Licence\n\nThis project stands under the MIT Licence, see LICENCE.md for details.",
+  "readmeFilename": "README.md",
+  "_id": "dgtchess@0.0.1",
+  "dist": {
+    "shasum": "efa996a3fadc89497a25fd17fea34e8015ca5a8d",
+    "tarball": "http://registry.npmjs.org/dgtchess/-/dgtchess-0.0.1.tgz"
+  },
+  "_npmVersion": "1.1.65",
+  "_npmUser": {
+    "name": "fnogatz",
+    "email": "fnogatz@googlemail.com"
+  },
+  "maintainers": [
+    {
+      "name": "fnogatz",
+      "email": "fnogatz@googlemail.com"
+    }
+  ],
+  "directories": {}
+}

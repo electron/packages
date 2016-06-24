@@ -1,0 +1,70 @@
+{
+  "name": "preact-photon",
+  "version": "1.1.1",
+  "description": "Preact + Photon = <3",
+  "main": "preact-photon.js",
+  "scripts": {
+    "build": "babel -f $npm_package_main -s -o $npm_package_main < src/index.js",
+    "test": "eslint src test && mocha --compilers js:babel/register test/**/*.js",
+    "prepublish": "npm run build",
+    "release": "npm run build && git commit -am $npm_package_version && git tag $npm_package_version && git push && git push --tags && npm publish"
+  },
+  "keywords": [
+    "preact",
+    "photon",
+    "electron"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/developit/preact-photon.git"
+  },
+  "author": {
+    "name": "Jason Miller",
+    "email": "jason@developit.ca"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/developit/preact-photon/issues"
+  },
+  "homepage": "https://github.com/developit/preact-photon",
+  "implicitDependencies": {
+    "photon": "git+https://github.com/connors/photon.git#v0.1-alpha"
+  },
+  "peerDependencies": {
+    "preact": "*"
+  },
+  "devDependencies": {
+    "babel": "^5.8.23",
+    "babel-eslint": "^5.0.0",
+    "chai": "^3.5.0",
+    "eslint": "^2.0.0",
+    "mocha": "^2.4.5",
+    "preact": "^4.1.1",
+    "preact-render-to-string": "^2.0.0"
+  },
+  "gitHead": "feb7b18ea2cefbe149600add51cb3ba0ed834305",
+  "_id": "preact-photon@1.1.1",
+  "_shasum": "ac198f5a0e076a9082b5f7e20bccd5bc5871f7b8",
+  "_from": ".",
+  "_npmVersion": "2.14.7",
+  "_nodeVersion": "4.2.2",
+  "_npmUser": {
+    "name": "developit",
+    "email": "jason@developit.ca"
+  },
+  "maintainers": [
+    {
+      "name": "developit",
+      "email": "jason@developit.ca"
+    }
+  ],
+  "dist": {
+    "shasum": "ac198f5a0e076a9082b5f7e20bccd5bc5871f7b8",
+    "tarball": "http://registry.npmjs.org/preact-photon/-/preact-photon-1.1.1.tgz"
+  },
+  "_npmOperationalInternal": {
+    "host": "packages-12-west.internal.npmjs.com",
+    "tmp": "tmp/preact-photon-1.1.1.tgz_1456970906847_0.5397994872182608"
+  },
+  "directories": {}
+}
