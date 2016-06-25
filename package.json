@@ -4,7 +4,10 @@
   "description": "A collection of all npm packages that mention `electron` in their package.json",
   "main": "index.js",
   "scripts": {
-    "build": "node build.js"
+    "build": "node build.js",
+    "docs": "npm run docs:keywords && npm run docs:packages",
+    "docs:keywords": "node keywords.js > keywords.md",
+    "docs:packages": "node packages.js > packages.md"
   },
   "repository": "https://github.com/zeke/electron-npm-packages",
   "keywords": [
@@ -29,6 +32,8 @@
     "normalize-registry-metadata": "^1.1.2"
   },
   "dependencies": {
+    "lodash.find": "^4.4.0",
+    "lodash.sortby": "^4.5.0",
     "require-dir": "^0.3.0"
   }
 }
