@@ -1,14 +1,19 @@
-const packages = require('.')
+var packages = require('.')
 
-Object.keys(packages).forEach(name => {
-  var pkg = packages[name]
-  var description = pkg.description || ''
+packages = Object.keys(packages)
+  .map(name => packages[name])
+
+console.log(`${packages.length} Packages`)
+console.log('\n\nAll of these mention `electron` somewhere in their package.json\n\n')
+
+packages.forEach(p => {
+  var description = p.description || ''
   var keywords = ''
-  if (pkg.keywords) {
-    keywords = pkg.keywords.map(k => `_${k}_`).join(', ')
+  if (p.keywords) {
+    keywords = p.keywords.map(k => `_${k}_`).join(', ')
     keywords = ` (${keywords})`
   }
   console.log(
-    `- [${name}](http://npm.im/${name}) - ${description}${keywords} ([repo](http://ghub.io/${name}))`
+    `- [${p.name}](http://npm.im/${p.name}) - ${description}${keywords} ([repo](http://ghub.io/${p.name}))`
   )
 })

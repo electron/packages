@@ -1,6 +1,12 @@
+1053 Packages
+
+
+All of these mention `electron` somewhere in their package.json
+
+
 - [2app](http://npm.im/2app) - Convert Web to native app useing Electron ([repo](http://ghub.io/2app))
 - [3d-kit](http://npm.im/3d-kit) - A small 3D kit using Three.js. (_3D_) ([repo](http://ghub.io/3d-kit))
-- [AccuplacerClient](http://npm.im/AccuplacerClient) - CollegeBoard ACCUPLACER Score Webservice Client ([repo](http://ghub.io/AccuplacerClient))
+- [ACCUPLACERClient](http://npm.im/ACCUPLACERClient) - CollegeBoard ACCUPLACER Score Webservice Client ([repo](http://ghub.io/ACCUPLACERClient))
 - [ETK](http://npm.im/ETK) - Electron toolkit (_electron_, _toolkit_, _ui_) ([repo](http://ghub.io/ETK))
 - [ElectronAppUpdater](http://npm.im/ElectronAppUpdater) - Electron Application Updater ([repo](http://ghub.io/ElectronAppUpdater))
 - [MaxUPS](http://npm.im/MaxUPS) - Controls and monitors UPS (_electron-app_, _electron_, _application-menu_, _menu-icons_) ([repo](http://ghub.io/MaxUPS))
