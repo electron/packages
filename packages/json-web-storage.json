@@ -1,0 +1,76 @@
+{
+  "name": "json-web-storage",
+  "version": "1.0.7",
+  "description": "Simple localStorage/sessionStorage wrapper providing the exact same API with automatic JSON serialization",
+  "keywords": [
+    "web-storage",
+    "localStorage",
+    "sessionStorage",
+    "json",
+    "serialization",
+    "serialize"
+  ],
+  "author": {
+    "name": "Manuel Vila",
+    "email": "mvila@3base.com"
+  },
+  "license": "MIT",
+  "reveal": true,
+  "main": "lib/index.js",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/mvila/json-web-storage.git"
+  },
+  "scripts": {
+    "compile": "babel src --out-dir lib",
+    "prepublish": "npm run compile",
+    "release": "npm run lint && npm run compile && npm test && (git checkout --quiet master && test -z \"$(git status --porcelain)\" && npm version $npm_config_release_type && git push --follow-tags) || echo \"An error occurred (uncommitted changes?)\"",
+    "release-patch": "npm run release --release-type=patch",
+    "release-minor": "npm run release --release-type=minor",
+    "release-major": "npm run release --release-type=major",
+    "lint": "eslint .",
+    "test": "electron-mocha --renderer test"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "babel-cli": "^6.6.5",
+    "babel-eslint": "^6.0.0",
+    "babel-polyfill": "^6.7.4",
+    "babel-preset-es2015": "^6.6.0",
+    "babel-register": "^6.7.2",
+    "chai": "^3.5.0",
+    "electron-mocha": "^1.0.0",
+    "electron-prebuilt": "^0.37.2",
+    "eslint": "^2.5.3",
+    "eslint-config-next": "^0.1.12"
+  },
+  "gitHead": "b3fff9b1150d16d79c07f4988c3afe04bd3a39e0",
+  "bugs": {
+    "url": "https://github.com/mvila/json-web-storage/issues"
+  },
+  "homepage": "https://github.com/mvila/json-web-storage#readme",
+  "_id": "json-web-storage@1.0.7",
+  "_shasum": "eb52155b54cd7073a065415025a6af4a9cb9afac",
+  "_from": ".",
+  "_npmVersion": "2.14.9",
+  "_nodeVersion": "0.12.12",
+  "_npmUser": {
+    "name": "mvila",
+    "email": "mvila@3base.com"
+  },
+  "dist": {
+    "shasum": "eb52155b54cd7073a065415025a6af4a9cb9afac",
+    "tarball": "http://registry.npmjs.org/json-web-storage/-/json-web-storage-1.0.7.tgz"
+  },
+  "maintainers": [
+    {
+      "name": "mvila",
+      "email": "mvila@3base.com"
+    }
+  ],
+  "_npmOperationalInternal": {
+    "host": "packages-12-west.internal.npmjs.com",
+    "tmp": "tmp/json-web-storage-1.0.7.tgz_1459237415478_0.5149749964475632"
+  },
+  "directories": {}
+}

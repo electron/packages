@@ -1,0 +1,70 @@
+{
+  "name": "caprine",
+  "productName": "Caprine",
+  "version": "1.3.1",
+  "description": "Unofficial Facebook Messenger app",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sindresorhus/caprine.git"
+  },
+  "author": {
+    "name": "Sindre Sorhus",
+    "email": "sindresorhus@gmail.com",
+    "url": "sindresorhus.com"
+  },
+  "maintainers": [
+    {
+      "name": "sindresorhus",
+      "email": "sindresorhus@gmail.com"
+    }
+  ],
+  "scripts": {
+    "test": "xo",
+    "start": "electron .",
+    "build": "npm run build:osx && npm run build:linux && npm run build:windows",
+    "build:osx": "electron-packager . --overwrite --asar --out=dist --ignore='^media$' --prune --platform=darwin --arch=x64 --icon=static/Icon.icns --app-bundle-id=com.sindresorhus.caprine --sign='Developer ID Application: Sindre Sorhus (YG56YK5RN5)' --app-version=$npm_package_version && cd dist/Caprine-darwin-x64 && zip -ryXq9 ../Caprine-osx-${npm_package_version}.zip Caprine.app",
+    "build:linux": "electron-packager . --overwrite --out=dist --ignore='^media$' --prune --platform=linux --arch=x64 --app-bundle-id=com.sindresorhus.caprine --app-version=$npm_package_version && cd dist/Caprine-linux-x64/ && zip -ryq9 ../Caprine-linux-${npm_package_version}.zip *",
+    "build:windows": "electron-packager . --overwrite --asar --out=dist --ignore='^media$' --prune --platform=win32 --arch=ia32 --icon=static/Icon.ico --version-string.ProductName=$npm_package_productName --app-version=$npm_package_version && cd dist/Caprine-win32-ia32 && zip -ryq9 ../Caprine-windows-${npm_package_version}.zip *"
+  },
+  "dependencies": {
+    "electron-debug": "^1.0.0",
+    "electron-dl": "^1.0.0",
+    "electron-osx-appearance": "^0.1.1"
+  },
+  "devDependencies": {
+    "electron-packager": "^7.0.0",
+    "electron-prebuilt": "^1.0.2",
+    "xo": "*"
+  },
+  "xo": {
+    "esnext": true,
+    "envs": [
+      "node",
+      "browser"
+    ]
+  },
+  "gitHead": "551d8884495ac2bd148837f7c90355b3275da8a4",
+  "bugs": {
+    "url": "https://github.com/sindresorhus/caprine/issues"
+  },
+  "homepage": "https://github.com/sindresorhus/caprine#readme",
+  "_id": "caprine@1.3.1",
+  "_shasum": "d81a9622f973b700f17acb7f33c674dca4e13ad1",
+  "_from": ".",
+  "_npmVersion": "2.15.0",
+  "_nodeVersion": "4.4.2",
+  "_npmUser": {
+    "name": "sindresorhus",
+    "email": "sindresorhus@gmail.com"
+  },
+  "dist": {
+    "shasum": "d81a9622f973b700f17acb7f33c674dca4e13ad1",
+    "tarball": "http://registry.npmjs.org/caprine/-/caprine-1.3.1.tgz"
+  },
+  "_npmOperationalInternal": {
+    "host": "packages-12-west.internal.npmjs.com",
+    "tmp": "tmp/caprine-1.3.1.tgz_1463127057491_0.04768016654998064"
+  },
+  "directories": {}
+}

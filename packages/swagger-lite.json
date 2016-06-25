@@ -1,0 +1,88 @@
+{
+  "package.json": true,
+  "author": {
+    "name": "kai zhu",
+    "email": "kaizhu256@gmail.com"
+  },
+  "bin": {
+    "swagger-lite": "index.js"
+  },
+  "dependencies": {
+    "utility2": "2016.5.4"
+  },
+  "description": "this package will run a virtual swagger-ui server with persistent storage in the browser, that your webapp can use (in-place of a real backend)",
+  "devDependencies": {
+    "electron-lite": "github:kaizhu256/node-electron-lite#alpha"
+  },
+  "engines": {
+    "node": ">=4.0"
+  },
+  "homepage": "https://github.com/kaizhu256/node-swagger-lite",
+  "keywords": [
+    "api",
+    "admin",
+    "admin-ui",
+    "browser",
+    "cms",
+    "crud",
+    "db",
+    "light",
+    "lightweight",
+    "lite",
+    "mongo",
+    "mongodb",
+    "nedb",
+    "standalone",
+    "swagger",
+    "swagger-ui",
+    "web"
+  ],
+  "license": "MIT",
+  "name": "swagger-lite",
+  "os": [
+    "darwin",
+    "linux"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kaizhu256/node-swagger-lite.git"
+  },
+  "scripts": {
+    "build-app": "npm test --mode-test-case=testCase_build_app && utility2-jslint tmp/build/app/assets.app.js",
+    "build-ci": "utility2 shRun shReadmeBuild",
+    "build-doc": "npm test --mode-test-case=testCase_build_doc",
+    "example.js": ". node_modules/.bin/utility2 && shInit && shReadmeExportScripts && shRunScreenCapture shReadmeTestJs example.js",
+    "start": "export PORT=${PORT:-8080} && export npm_config_mode_auto_restart=1 && utility2 shRun shIstanbulCover node test.js",
+    "start-heroku": "export npm_config_mode_backend=1 && npm start ",
+    "test": ". node_modules/.bin/utility2 && shInit && shReadmeExportScripts && export PORT=$(utility2 shServerPortRandom) && utility2 test node test.js",
+    "test-published": "utility2 shRun shNpmTestPublished"
+  },
+  "version": "2016.5.3",
+  "bugs": {
+    "url": "https://github.com/kaizhu256/node-swagger-lite/issues"
+  },
+  "_id": "swagger-lite@2016.5.3",
+  "_shasum": "ad1eae5a9108525bab434d0d8f2ca94f69670a4f",
+  "_from": ".",
+  "_npmVersion": "3.9.3",
+  "_nodeVersion": "6.2.1",
+  "_npmUser": {
+    "name": "kaizhu",
+    "email": "kaizhu256@gmail.com"
+  },
+  "dist": {
+    "shasum": "ad1eae5a9108525bab434d0d8f2ca94f69670a4f",
+    "tarball": "http://registry.npmjs.org/swagger-lite/-/swagger-lite-2016.5.3.tgz"
+  },
+  "maintainers": [
+    {
+      "name": "kaizhu",
+      "email": "kaizhu256@gmail.com"
+    }
+  ],
+  "_npmOperationalInternal": {
+    "host": "packages-12-west.internal.npmjs.com",
+    "tmp": "tmp/swagger-lite-2016.5.3.tgz_1466000480534_0.1977651787456125"
+  },
+  "directories": {}
+}

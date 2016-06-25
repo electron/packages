@@ -1,0 +1,76 @@
+{
+  "name": "staticland",
+  "version": "1.0.0",
+  "description": "Publish static sites",
+  "main": "index.js",
+  "bin": {
+    "staticland": "cli.js"
+  },
+  "scripts": {
+    "deps": "dependency-check . && dependency-check . --unused --no-dev",
+    "lint": "standard",
+    "test:testron": "browserify index.js | testron | tap-spec",
+    "test:node": "tape tests/*.js | tap-spec",
+    "test": "npm run deps && npm run lint && npm run test:node && npm run test:testron"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/staticland/staticland.git"
+  },
+  "keywords": [
+    "static",
+    "sites",
+    "static"
+  ],
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/staticland/staticland/issues"
+  },
+  "homepage": "https://github.com/staticland/staticland#readme",
+  "devDependencies": {
+    "browserify": "^13.0.1",
+    "dependency-check": "^2.5.1",
+    "electron-prebuilt": "^0.37.8",
+    "standard": "^7.0.1",
+    "tap-spec": "^4.1.1",
+    "tape": "^4.5.1",
+    "testron": "^1.2.0"
+  },
+  "dependencies": {
+    "exit": "^0.1.2",
+    "is-number": "^2.1.0",
+    "is-string": "^1.0.4",
+    "minimist": "^1.2.0",
+    "os-homedir": "^1.0.1",
+    "request": "^2.72.0",
+    "single-line-log": "^1.1.1",
+    "subcommand": "^2.0.3",
+    "tar-fs": "^1.12.0"
+  },
+  "gitHead": "3b7be6b664c7b07f3996cee94a94d413a5f047fe",
+  "_id": "staticland@1.0.0",
+  "_shasum": "fa6b47ca27a86cbefc093a79457c690d1ae5af99",
+  "_from": ".",
+  "_npmVersion": "3.8.6",
+  "_nodeVersion": "6.0.0",
+  "_npmUser": {
+    "name": "sethvincent",
+    "email": "sethvincent@gmail.com"
+  },
+  "dist": {
+    "shasum": "fa6b47ca27a86cbefc093a79457c690d1ae5af99",
+    "tarball": "http://registry.npmjs.org/staticland/-/staticland-1.0.0.tgz"
+  },
+  "maintainers": [
+    {
+      "name": "sethvincent",
+      "email": "sethvincent@gmail.com"
+    }
+  ],
+  "_npmOperationalInternal": {
+    "host": "packages-16-east.internal.npmjs.com",
+    "tmp": "tmp/staticland-1.0.0.tgz_1464137266423_0.7306424132548273"
+  },
+  "directories": {}
+}

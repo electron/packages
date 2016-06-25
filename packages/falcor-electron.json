@@ -1,0 +1,66 @@
+{
+  "name": "falcor-electron",
+  "version": "0.2.0",
+  "description": "falcor integration for electron's ipc module",
+  "main": "lib/index.js",
+  "jsnext:main": "src/index.js",
+  "scripts": {
+    "clean": "rimraf lib",
+    "lint": "eslint src",
+    "test": "babel-node ./node_modules/tape/bin/tape ./test/*.test.js",
+    "check": "npm run lint && npm run test",
+    "build": "babel src --out-dir lib",
+    "preversion": "npm run clean && npm run check",
+    "version": "npm run build",
+    "postversion": "git push && git push --tags && npm run clean",
+    "prepublish": "npm run clean && npm run build"
+  },
+  "author": {
+    "name": "Luke William Westby",
+    "email": "lwestby@alumni.nd.edu"
+  },
+  "license": "MIT",
+  "peerDependencies": {
+    "falcor": "0.1.x",
+    "falcor-router": "0.2.x"
+  },
+  "devDependencies": {
+    "babel": "6.0.15",
+    "babel-cli": "6.1.2",
+    "babel-eslint": "4.1.4",
+    "babel-preset-es2015": "6.1.2",
+    "babel-preset-stage-1": "6.1.2",
+    "eslint": "1.6.0",
+    "eslint-config-airbnb": "0.1.0",
+    "eslint-plugin-react": "3.5.1",
+    "falcor": "0.1.14",
+    "falcor-router": "0.2.11",
+    "rimraf": "2.4.3",
+    "tape": "4.2.1"
+  },
+  "dependencies": {
+    "lodash.partial": "3.1.1",
+    "node-uuid": "1.4.3"
+  },
+  "gitHead": "4ef669a3ec34d6b124052b35e37fd4ebeccd2891",
+  "_id": "falcor-electron@0.2.0",
+  "_shasum": "ed114331ab72bee125e17073908dbb0e4652753f",
+  "_from": ".",
+  "_npmVersion": "3.3.6",
+  "_nodeVersion": "4.0.0",
+  "_npmUser": {
+    "name": "lukewestby",
+    "email": "lwestby@alumni.nd.edu"
+  },
+  "dist": {
+    "shasum": "ed114331ab72bee125e17073908dbb0e4652753f",
+    "tarball": "http://registry.npmjs.org/falcor-electron/-/falcor-electron-0.2.0.tgz"
+  },
+  "maintainers": [
+    {
+      "name": "lukewestby",
+      "email": "lwestby@alumni.nd.edu"
+    }
+  ],
+  "directories": {}
+}

@@ -1,0 +1,64 @@
+{
+  "name": "kinda-web-sql",
+  "version": "0.2.5",
+  "description": "...",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/kinda/kinda-web-sql.git"
+  },
+  "main": "lib/index.js",
+  "scripts": {
+    "compile": "babel src --out-dir lib",
+    "prepublish": "npm run compile",
+    "release": "npm run lint && npm test && (git checkout --quiet master && test -z \"$(git status --porcelain)\" && npm version $npm_config_release_type && git push --follow-tags) || echo \"An error occured (unclean repository?)\"",
+    "release-patch": "npm run release --release-type=patch",
+    "release-minor": "npm run release --release-type=minor",
+    "release-major": "npm run release --release-type=major",
+    "lint": "eslint .",
+    "test": "electron-mocha --renderer --ui tdd test"
+  },
+  "author": {
+    "name": "Manuel Vila",
+    "email": "mvila@3base.com"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "await-lock": "^1.1.1",
+    "kinda-object": "^0.3.0",
+    "lodash": "^3.9.1"
+  },
+  "devDependencies": {
+    "babel": "^5.4.7",
+    "babel-eslint": "^4.0.5",
+    "chai": "^3.2.0",
+    "electron-mocha": "^0.3.1",
+    "electron-prebuilt": "^0.32.2",
+    "eslint": "^1.0.0",
+    "eslint-config-kinda": "^0.2.0"
+  },
+  "gitHead": "1bd5c70a2bb77776d32903061bdcfa95cb9ff5d3",
+  "bugs": {
+    "url": "https://github.com/kinda/kinda-web-sql/issues"
+  },
+  "homepage": "https://github.com/kinda/kinda-web-sql#readme",
+  "_id": "kinda-web-sql@0.2.5",
+  "_shasum": "99956bb1d4b6217fe144e660f0571d058d0f071b",
+  "_from": ".",
+  "_npmVersion": "2.11.3",
+  "_nodeVersion": "0.12.7",
+  "_npmUser": {
+    "name": "mvila",
+    "email": "mvila@3base.com"
+  },
+  "dist": {
+    "shasum": "99956bb1d4b6217fe144e660f0571d058d0f071b",
+    "tarball": "http://registry.npmjs.org/kinda-web-sql/-/kinda-web-sql-0.2.5.tgz"
+  },
+  "maintainers": [
+    {
+      "name": "mvila",
+      "email": "mvila@3base.com"
+    }
+  ],
+  "directories": {}
+}

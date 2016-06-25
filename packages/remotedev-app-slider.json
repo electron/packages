@@ -1,0 +1,124 @@
+{
+  "name": "remotedev-app-slider",
+  "version": "0.1.2",
+  "description": "Remote Redux DevTools web, electron and chrome app. slider version",
+  "scripts": {
+    "start": "gulp",
+    "start:electron": "rm -rf ./build/electron/ && gulp build:electron && electron ./build/electron/",
+    "build:electron": "rm -rf ./build/electron/ && rm -rf ./build/executables/ && gulp build:electron && gulp pack:electron",
+    "build:web": "gulp build:web",
+    "build:app": "gulp build:app",
+    "compress:electron": "npm run build:electron && gulp compress:electron",
+    "compress:app": "npm run build:app && gulp compress:app",
+    "clean": "rm -rf build/ && rm -rf dev/",
+    "build": "rm -rf ./lib && babel ./src/app --out-dir lib",
+    "prepublish": "eslint ./src/app && npm run build",
+    "lint": "eslint ."
+  },
+  "main": "lib/index.js",
+  "files": [
+    "lib"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JaxGit/remotedev-app.git"
+  },
+  "homepage": "https://github.com/JaxGit/remotedev-app",
+  "keywords": [
+    "react",
+    "redux",
+    "devtools",
+    "slider"
+  ],
+  "author": {
+    "name": "Mihail Diordiev",
+    "email": "zalmoxisus@gmail.com",
+    "url": "https://github.com/zalmoxisus"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "babel-cli": "^6.3.15",
+    "babel-core": "^6.3.26",
+    "babel-eslint": "^5.0.0-beta6",
+    "babel-loader": "^6.2.0",
+    "babel-plugin-add-module-exports": "^0.1.2",
+    "babel-plugin-react-transform": "^2.0.0",
+    "babel-plugin-transform-decorators-legacy": "^1.3.4",
+    "babel-polyfill": "^6.3.14",
+    "babel-preset-es2015": "^6.3.13",
+    "babel-preset-react": "^6.3.13",
+    "babel-preset-stage-0": "^6.3.13",
+    "chromedriver": "^2.20.0",
+    "co-mocha": "^1.1.2",
+    "del": "^2.2.0",
+    "electron-builder": "^2.5.0",
+    "electron-debug": "^0.5.1",
+    "electron-packager": "^5.2.0",
+    "electron-prebuilt": "^0.36.2",
+    "enzyme": "^1.2.0",
+    "eslint": "^1.10.3",
+    "eslint-config-airbnb": "^2.1.1",
+    "eslint-plugin-react": "^3.11.3",
+    "expect": "^1.13.3",
+    "gulp": "^3.9.0",
+    "gulp-jade": "1.1.0",
+    "gulp-mocha": "^2.2.0",
+    "gulp-rename": "^1.2.2",
+    "gulp-util": "^3.0.7",
+    "gulp-zip": "^3.0.2",
+    "mocha": "^2.3.4",
+    "raw-loader": "^0.5.1",
+    "react-addons-test-utils": "^0.14.3",
+    "react-transform-catch-errors": "^1.0.0",
+    "react-transform-hmr": "^1.0.1",
+    "redbox-react": "^1.2.0",
+    "redux-immutable-state-invariant": "^1.2.0",
+    "redux-logger": "^2.2.1",
+    "require-dir": "^0.3.0",
+    "selenium-webdriver": "^2.48.2",
+    "style-loader": "^0.13.0",
+    "webpack": "^1.12.9",
+    "webpack-dev-server": "^1.14.0"
+  },
+  "dependencies": {
+    "chrome-storage-local": "^0.1.5",
+    "jsan": "^2.0.4",
+    "react": "^0.14.5",
+    "react-desktop": "^0.1.48",
+    "react-dom": "^0.14.5",
+    "react-icons": "^1.0.3",
+    "react-modal": "^0.6.1",
+    "react-redux": "^4.0.6",
+    "redux": "^3.0.5",
+    "redux-devtools": "^3.0.1",
+    "redux-devtools-log-monitor": "^1.0.1",
+    "redux-slider-monitor": "^1.0.0",
+    "redux-devtools-themes": "^1.0.0",
+    "redux-thunk": "^1.0.3",
+    "socketcluster-client": "^3.1.1"
+  },
+  "gitHead": "112a54b0bbc762a01db0b53ffd5616aab954cb4c",
+  "bugs": {
+    "url": "https://github.com/JaxGit/remotedev-app/issues"
+  },
+  "_id": "remotedev-app-slider@0.1.2",
+  "_shasum": "a730bed277463f6fd34186342b2adf3291f9b21c",
+  "_from": ".",
+  "_npmVersion": "2.14.7",
+  "_nodeVersion": "4.2.2",
+  "_npmUser": {
+    "name": "jaxnpm",
+    "email": "jaxchen.au@gmail.com"
+  },
+  "dist": {
+    "shasum": "a730bed277463f6fd34186342b2adf3291f9b21c",
+    "tarball": "http://registry.npmjs.org/remotedev-app-slider/-/remotedev-app-slider-0.1.2.tgz"
+  },
+  "maintainers": [
+    {
+      "name": "jaxnpm",
+      "email": "jaxchen.au@gmail.com"
+    }
+  ],
+  "directories": {}
+}

@@ -1,0 +1,131 @@
+{
+  "name": "uupaa.mp4muxer.js",
+  "version": "0.0.8",
+  "description": "MP4 Muxer",
+  "url": "https://github.com/uupaa/MP4Muxer.js",
+  "keywords": [
+    "AVC",
+    "MP4",
+    "H.264",
+    "Muxer",
+    "uupaa",
+    "WebModule",
+    "Unstable"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/uupaa/MP4Muxer.js.git"
+  },
+  "scripts": {
+    "sync": "node ../WebModule/run/sync.js; npm update; node ../WebModule/run/page.js",
+    "wiki": "node ../WebModule/run/wiki.js",
+    "min": "node ../WebModule/run/minify.js --verbose --strict --keep --pretty",
+    "build": "node ../WebModule/run/minify.js --verbose --strict --keep --release",
+    "watch": "node ../WebModule/run/watch.js --verbose --run lint",
+    "page": "node ../WebModule/run/page.js --verbose",
+    "test": "npm run min; npm run node; npm run browser",
+    "node": "NODE_ENV=production NODE_PATH=lib node test/node/index.js",
+    "noded": "NODE_ENV=production NODE_PATH=lib node --debug-brk test/node/index.js",
+    "browser": "open http://localhost:8000/MP4Muxer.js/test/browser/index.html",
+    "el": "electron test/el",
+    "nw": "nw test/nw",
+    "add-src": "node ../WebModule/run/add-src.js",
+    "add-subclass": "node ../WebModule/run/add-subclass.js",
+    "sim": "node ../WebModule/run/sim.js http://localhost:8000/MP4Muxer.js/test/browser/index.html",
+    "simx": "node ../WebModule/run/sim.js stop",
+    "lint": "eslint lib/*.js",
+    "score": "node ../WebModule/run/score.js; open lint/plato/index.html",
+    "patch": "node ../WebModule/run/patch.js",
+    "setup": "node ../WebModule/run/setup.js",
+    "start": "cd ../; Python -m SimpleHTTPServer 8000 &",
+    "stop": "killall -- Python -m SimpleHTTPServer 8000; exit 0",
+    "make_assets": "cd test/assets; ./make_video; cd -",
+    "clean_assets": "cd test/assets; rm -rf ./ff; rm -rf ./js; cd -"
+  },
+  "webmodule": {
+    "develop": false,
+    "label": [
+      "@dev"
+    ],
+    "browser": {
+      "output": "release/MP4Muxer.b.min.js",
+      "source": [
+        "lib/MP4Muxer.js"
+      ]
+    },
+    "worker": {
+      "output": "release/MP4Muxer.w.min.js",
+      "source": [
+        "lib/MP4Muxer.js"
+      ]
+    },
+    "node": {
+      "output": "release/MP4Muxer.n.min.js",
+      "source": [
+        "lib/MP4Muxer.js"
+      ]
+    },
+    "nw": {
+      "output": "release/MP4Muxer.nw.min.js",
+      "source": [
+        "lib/MP4Muxer.js"
+      ]
+    },
+    "el": {
+      "output": "release/MP4Muxer.el.min.js",
+      "source": [
+        "lib/MP4Muxer.js"
+      ]
+    }
+  },
+  "dependencies": {
+    "uupaa.nalunit.js": "",
+    "uupaa.mp4parser.js": "",
+    "uupaa.h264profile.js": ""
+  },
+  "devDependencies": {
+    "uupaa.aac.js": "",
+    "uupaa.task.js": "",
+    "uupaa.fileloader.js": "",
+    "uupaa.h264.js": "",
+    "uupaa.mpeg2ts.js": "",
+    "uupaa.mp4parser.js": "",
+    "uupaa.mp4builder.js": "",
+    "uupaa.mpeg4bytestream.js": ""
+  },
+  "lib": "./lib/",
+  "main": "./index.js",
+  "author": {
+    "name": "uupaa"
+  },
+  "license": "Apache License Version 2.0",
+  "contributors": [],
+  "gitHead": "d23253713246afbfd4e44606514df7d46b1914d4",
+  "bugs": {
+    "url": "https://github.com/uupaa/MP4Muxer.js/issues"
+  },
+  "homepage": "https://github.com/uupaa/MP4Muxer.js",
+  "_id": "uupaa.mp4muxer.js@0.0.8",
+  "_shasum": "da439dd14b5a9300590e9d09026caf05a90a373e",
+  "_from": ".",
+  "_npmVersion": "2.0.0",
+  "_npmUser": {
+    "name": "uupaa",
+    "email": "uupaa.js@gmail.com"
+  },
+  "maintainers": [
+    {
+      "name": "uupaa",
+      "email": "uupaa.js@gmail.com"
+    }
+  ],
+  "dist": {
+    "shasum": "da439dd14b5a9300590e9d09026caf05a90a373e",
+    "tarball": "http://registry.npmjs.org/uupaa.mp4muxer.js/-/uupaa.mp4muxer.js-0.0.8.tgz"
+  },
+  "_npmOperationalInternal": {
+    "host": "packages-12-west.internal.npmjs.com",
+    "tmp": "tmp/uupaa.mp4muxer.js-0.0.8.tgz_1465906919480_0.08686655620113015"
+  },
+  "directories": {}
+}

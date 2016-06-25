@@ -1,0 +1,128 @@
+{
+  "name": "uupaa.thread.js",
+  "version": "0.0.25",
+  "description": "Thread and ThreadPool functions.",
+  "url": "https://github.com/uupaa/Thread.js",
+  "keywords": [
+    "WebWorkers",
+    "postMessage",
+    "Thread",
+    "uupaa",
+    "WebModule",
+    "Unstable"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/uupaa/Thread.js.git"
+  },
+  "scripts": {
+    "sync": "node ../WebModule/run/sync.js; npm update; node ../WebModule/run/page.js",
+    "wiki": "node ../WebModule/run/wiki.js",
+    "min": "node ../WebModule/run/minify.js --verbose --strict --keep --pretty",
+    "build": "node ../WebModule/run/minify.js --verbose --strict --keep --release",
+    "watch": "node ../WebModule/run/watch.js --verbose --run lint",
+    "page": "node ../WebModule/run/page.js --verbose",
+    "test": "npm run min; npm run node; npm run browser",
+    "node": "NODE_ENV=production NODE_PATH=lib node test/node/index.js",
+    "noded": "NODE_ENV=production NODE_PATH=lib node --debug-brk test/node/index.js",
+    "browser": "open http://localhost:8000/Thread.js/test/browser/index.html",
+    "el": "electron test/el",
+    "nw": "nw test/nw",
+    "add-src": "node ../WebModule/run/add-src.js",
+    "add-subclass": "node ../WebModule/run/add-subclass.js",
+    "sim": "node ../WebModule/run/sim.js http://localhost:8000/Thread.js/test/browser/index.html",
+    "simx": "node ../WebModule/run/sim.js stop",
+    "lint": "eslint lib/*.js",
+    "score": "node ../WebModule/run/score.js; open lint/plato/index.html",
+    "patch": "node ../WebModule/run/patch.js",
+    "setup": "node ../WebModule/run/setup.js",
+    "start": "cd ../; Python -m SimpleHTTPServer 8000 &",
+    "stop": "killall -- Python -m SimpleHTTPServer 8000; exit 0"
+  },
+  "webmodule": {
+    "develop": false,
+    "label": [
+      "@dev"
+    ],
+    "browser": {
+      "output": "release/Thread.b.min.js",
+      "source": [
+        "lib/Thread.js",
+        "lib/ThreadPool.js",
+        "lib/ThreadProxy.js"
+      ]
+    },
+    "worker": {
+      "output": "release/Thread.w.min.js",
+      "source": [
+        "lib/Thread.js",
+        "lib/ThreadPool.js",
+        "lib/ThreadProxy.js"
+      ]
+    },
+    "node": {
+      "output": "release/Thread.n.min.js",
+      "source": [
+        "lib/Thread.js",
+        "lib/ThreadPool.js",
+        "lib/ThreadProxy.js"
+      ]
+    },
+    "nw": {
+      "output": "release/Thread.nw.min.js",
+      "source": [
+        "lib/Thread.js",
+        "lib/ThreadPool.js",
+        "lib/ThreadProxy.js"
+      ]
+    },
+    "el": {
+      "output": "release/Thread.el.min.js",
+      "source": [
+        "lib/Thread.js",
+        "lib/ThreadPool.js",
+        "lib/ThreadProxy.js"
+      ]
+    }
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "uupaa.task.js": "",
+    "uupaa.messagepack.js": ""
+  },
+  "lib": "./lib/",
+  "main": "./index.js",
+  "author": {
+    "name": "uupaa"
+  },
+  "license": "MIT",
+  "contributors": [],
+  "gitHead": "fe63cf6b0bc58c8e1eaeeeb985e70e009c1bb0a6",
+  "bugs": {
+    "url": "https://github.com/uupaa/Thread.js/issues"
+  },
+  "homepage": "https://github.com/uupaa/Thread.js",
+  "_id": "uupaa.thread.js@0.0.25",
+  "_shasum": "f17b0077cf674f71c0f55ca21e1bdeb7a555c703",
+  "_from": ".",
+  "_npmVersion": "2.0.0",
+  "_npmUser": {
+    "name": "uupaa",
+    "email": "uupaa.js@gmail.com"
+  },
+  "maintainers": [
+    {
+      "name": "uupaa",
+      "email": "uupaa.js@gmail.com"
+    }
+  ],
+  "dist": {
+    "shasum": "f17b0077cf674f71c0f55ca21e1bdeb7a555c703",
+    "tarball": "http://registry.npmjs.org/uupaa.thread.js/-/uupaa.thread.js-0.0.25.tgz"
+  },
+  "_npmOperationalInternal": {
+    "host": "packages-12-west.internal.npmjs.com",
+    "tmp": "tmp/uupaa.thread.js-0.0.25.tgz_1463340872885_0.9400664090644568"
+  },
+  "directories": {}
+}

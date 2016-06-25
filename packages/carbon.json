@@ -1,0 +1,68 @@
+{
+  "author": {
+    "name": "Jake Luer",
+    "email": "jake@qualiancy.com"
+  },
+  "name": "carbon",
+  "description": "Middleware based proxy for cluster or table based routing.",
+  "keywords": [
+    "proxy",
+    "cluster",
+    "balancer",
+    "balance"
+  ],
+  "license": "MIT",
+  "version": "0.5.0",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/qualiancy/carbon.git"
+  },
+  "bugs": {
+    "url": "https://github.com/qualiancy/carbon/issues"
+  },
+  "main": "./index",
+  "bin": {
+    "carbon": "./bin/carbon"
+  },
+  "scripts": {
+    "test": "make test"
+  },
+  "engines": {
+    "node": ">= 0.8.x"
+  },
+  "dependencies": {
+    "cohesion": "0.2.x",
+    "drip": "1.1.x",
+    "electron": "0.4.x",
+    "fsagent": "0.3.x",
+    "harbor": "0.2.x",
+    "sherlock": "*"
+  },
+  "devDependencies": {
+    "superagent": "0.12.x",
+    "ws": "0.4.x",
+    "socket.io": "0.9.x",
+    "mocha": "*",
+    "chai": "*",
+    "chai-http": "*"
+  },
+  "readme": "# Carbon [![build status](https://secure.travis-ci.org/qualiancy/carbon.png)](http://travis-ci.org/qualiancy/carbon)\n\n> Middleware based proxy for table or cluster based routing.\n\n## Features\n\n- Node http server export balancing with file watching and no-downtime restarts\n- ProxyTable routing and balancing\n- Websocket / [socket.io](https://github.com/LearnBoost/socket.io) compatibible\n- CLI helper for ProxyFile based routing\n- Support for custom middleware\n\n## Middleware\n\nCarbon support many types of middlware. The bundled middlware is specifically for \ndifferent types of balancing techniques. You can find other middleware projects\nby following the links below.\n\n#### Bundled Middleware\n\n- **Balancer**: Given a `module.export` node compatible webserver, start `n` \nprocesses and balance traffic. (_Psuedo-clustering_)\n- **ProxyTable**: Route requests for host to port, or balance between many ports\n\n#### Qualiancy Middleware\n\n- **Logging** ([qualiancy/carbon-logger](https://github.com/qualiancy/carbon-logger)): \nMulti-transport logging middleware suitable for debugging or production use.\n- **Stats** ([qualiancy/carbon-stats](https://github.com/qualiancy/carbon-stats)): \nCreate a stats store and measure count of hits/misses and response time. \n\n## Installation\n\n    $ npm install carbon\n\n## Usage\n\nTo get the basics, you can also check out the `examples` folder.\n\n### Basic\n\nCarbon allow you to build your own routing logic. In this really basic example, \nall traffic to port `8080` will be routed to port `8081`.\n\n```js\nvar proxy = require('carbon').listen(8080);\n\nproxy.use(function (req, res, next) {\n  next(8081);\n});\n\n// for websockets\nproxy.ws.use(function (req, res, next) {\n  next(8081);\n});\n```\n\n### Proxy Table\n\nThe Carbon ProxyTable middleware makes it easy to route any traffic for a specific host to a different host, port, or set of host/ports.\n\n```js\nvar proxy = require('carbon').listen(8080);\n\n// Single port proxy table\nproxy.use(carbon.proxyTable([\n  { hostname: 'localhost:8080'\n  , port: 8081 }\n]));\n\n// Balanced proxyTable\nproxy.use(carbon.proxyTable([\n  { hostname: 'proxytable.com'\n  , dest: [ 'localhost:9091', 9191, 'ec2-10-10-10-10:9090' ] }\n]));\n```\n\nThe proxyTable middleware takes an array of object definitions. If an array of `port` or `dest` is provided, requests will be round-robin\nbalanced for each.\n\n### Balancer\n\nCarbon Balancer middleware will take any node compatible http server (http, connect, express, ect..) and spawn up several node processes\nand balance traffic between them. Instead of using node's clusting component, carbon will find open ports available on the system and \ninstruct the webserver to listen on that port. \n\nTo use, ensure the the server is the primary `module.export` for a given file, and pass that file to the balancer middleware.\n\n```js\nvar carbon = require('carbon')\n  , proxy = carbon.listen(8080);\n\nvar balancer = carbon.balancer(\n    path.join(__dirname, 'app.js')\n  , { host: 'localhost' // required\n    , watch: true       // optional (defaults to true)\n    , maxWorkers: 4     // optional (defaults to hardware cpu count)\n});\n\n// for http requests\nproxy.use(balancer.middleware);\n\n// for websocket requests\nproxy.ws(balancer.middleware);\n```\n\nIn this example, any traffic that goes to `localhost:8080` will be balanced between several instances of `app.js`. Balancer defaults to \nthe number of CPU cores available on the current machine, but can be adjusted with options. Balancer also, by default, will watch `app.js` \nfor changes and restart a new set of workers with no downtime. You can turn this off with the option `watch: false`.\n\n## Debugging\n\nCarbon has integrated the fantastic [debug]() module to allow for descriptive debugging. When starting any file that requires\n`carbon`, include the `DEBUG` environment variable to get robust CLI output:\n\n    DEBUG=carbon:* node proxy.js\n\n## Tests\n\nTests are written in the BDD styles for the [Mocha](http://visionmedia.github.com/mocha) test runner using the\n`should` assertion interface from [Chai](http://chaijs.com). Running tests is simple:\n\n    make test\n\n\n## Contributing\n\nInterested in contributing? Fork to get started. Contact [@logicalparadox](http://github.com/logicalparadox) \nif you are interested in being regular contributor.\n\n#### Contibutors \n\n* Jake Luer ([@logicalparadox](http://github.com/logicalparadox))\n\n## Inspiration\n\nCarbon was inspired by these modules:\n\n- [node-http-proxy](https://github.com/nodejitsu/node-http-proxy): proxy http & websocket requests\n- [distribute](https://github.com/learnboost/distribute): proxy api\n- [up](https://github.com/learnboost/up): psuedo-clustering\n\n## License\n\n(The MIT License)\n\nCopyright (c) 2012 Jake Luer <jake@qualiancy.com>\n\nPermission is hereby granted, free of charge, to any person obtaining a copy\nof this software and associated documentation files (the \"Software\"), to deal\nin the Software without restriction, including without limitation the rights\nto use, copy, modify, merge, publish, distribute, sublicense, and/or sell\ncopies of the Software, and to permit persons to whom the Software is\nfurnished to do so, subject to the following conditions:\n\nThe above copyright notice and this permission notice shall be included in\nall copies or substantial portions of the Software.\n\nTHE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR\nIMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,\nFITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE\nAUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER\nLIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,\nOUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN\nTHE SOFTWARE.\n",
+  "readmeFilename": "README.md",
+  "_id": "carbon@0.5.0",
+  "dist": {
+    "shasum": "fe1f1fe61e9464afd8b4beca67aa822e51744f1a",
+    "tarball": "http://registry.npmjs.org/carbon/-/carbon-0.5.0.tgz"
+  },
+  "_npmVersion": "1.2.0",
+  "_npmUser": {
+    "name": "jakeluer",
+    "email": "jake@alogicalparadox.com"
+  },
+  "maintainers": [
+    {
+      "name": "jakeluer",
+      "email": "jake.luer@incatern.com"
+    }
+  ],
+  "directories": {}
+}

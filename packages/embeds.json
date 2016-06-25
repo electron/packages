@@ -1,0 +1,100 @@
+{
+  "name": "embeds",
+  "version": "2.5.1",
+  "description": "Parse & render embeds",
+  "main": "dist/index.js",
+  "scripts": {
+    "lint": "semistandard | snazzy",
+    "test:node": "nyc babel-tape-runner test/*-test.js",
+    "test:browser": "browserify -t babelify -t brfs -d test/*-test.js | testron --errors | faucet",
+    "test": "npm run test:node && npm run test:browser && npm run lint",
+    "build": "rm -rf dist && mkdir -p dist && babel lib --out-dir dist",
+    "watch": "rm -rf dist && mkdir -p dist && babel lib --out-dir dist --watch",
+    "prepublish": "npm run build",
+    "open-coverage": "npm run test:unit && nyc report --reporter=lcov && open coverage/lcov-report/index.html"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/micnews/embeds.git"
+  },
+  "keywords": [
+    "embeds"
+  ],
+  "author": {
+    "name": "mic.com"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/micnews/embeds/issues"
+  },
+  "homepage": "https://github.com/micnews/embeds#readme",
+  "devDependencies": {
+    "babel-cli": "^6.6.5",
+    "babel-core": "^6.7.2",
+    "babel-plugin-transform-react-jsx": "^6.6.5",
+    "babel-preset-es2015": "^6.6.0",
+    "babel-tape-runner": "^2.0.1",
+    "babelify": "^7.2.0",
+    "brfs": "^1.4.3",
+    "browserify": "^13.0.0",
+    "electron-prebuilt": "^0.37.7",
+    "faucet": "0.0.1",
+    "hyperscript": "^1.4.7",
+    "nyc": "^6.1.1",
+    "query-dom": "^3.0.7",
+    "semistandard-deku": "github:micnews/semistandard#deku",
+    "snazzy": "^4.0.0",
+    "tape-catch": "^1.0.4",
+    "testron": "^1.2.0",
+    "tsml": "^1.0.1"
+  },
+  "dependencies": {
+    "deku": "^1.0.0",
+    "embedly-url": "^1.0.0",
+    "get-youtube-id": "^1.0.0",
+    "lodash.find": "^4.2.0",
+    "lodash.foreach": "^4.2.0",
+    "lodash.last": "^3.0.0",
+    "lodash.map": "^4.2.1",
+    "lodash.startswith": "^4.0.0",
+    "lodash.values": "^4.1.0",
+    "virtual-element": "^1.2.0"
+  },
+  "gitHead": "3a44c5380ff2d91f1a225b9cc890ce53faa784a7",
+  "_id": "embeds@2.5.1",
+  "_shasum": "145941efca8d9e36b48a77ce350fa575992cd787",
+  "_from": ".",
+  "_npmVersion": "3.8.3",
+  "_nodeVersion": "5.4.1",
+  "_npmUser": {
+    "name": "iefserge",
+    "email": "shayief@gmail.com"
+  },
+  "dist": {
+    "shasum": "145941efca8d9e36b48a77ce350fa575992cd787",
+    "tarball": "http://registry.npmjs.org/embeds/-/embeds-2.5.1.tgz"
+  },
+  "maintainers": [
+    {
+      "name": "ellell",
+      "email": "lisaovermyr@gmail.com"
+    },
+    {
+      "name": "iefserge",
+      "email": "shayief@gmail.com"
+    },
+    {
+      "name": "kesla",
+      "email": "david.bjorklund@gmail.com"
+    },
+    {
+      "name": "orrybaram",
+      "email": "orry@fancyhands.com"
+    }
+  ],
+  "_npmOperationalInternal": {
+    "host": "packages-12-west.internal.npmjs.com",
+    "tmp": "tmp/embeds-2.5.1.tgz_1466433678576_0.9686227976344526"
+  },
+  "directories": {}
+}

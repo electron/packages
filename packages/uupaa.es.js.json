@@ -1,0 +1,119 @@
+{
+  "name": "uupaa.es.js",
+  "version": "0.9.25",
+  "description": "[![npm](https://nodei.co/npm/uupaa.es.js.svg?downloads=true&stars=true)](https://nodei.co/npm/uupaa.es.js/)",
+  "url": "https://github.com/uupaa/ES.js",
+  "keywords": [
+    "es5",
+    "es6",
+    "es7",
+    "polyfill",
+    "uupaa",
+    "WebModule"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/uupaa/ES.js.git"
+  },
+  "scripts": {
+    "sync": "node ../WebModule/run/sync.js; npm update; node ../WebModule/run/page.js",
+    "wiki": "node ../WebModule/run/wiki.js",
+    "min": "node ../WebModule/run/minify.js --verbose --strict --keep --pretty",
+    "build": "node ../WebModule/run/minify.js --verbose --strict --keep --release",
+    "watch": "node ../WebModule/run/watch.js --verbose --run lint",
+    "page": "node ../WebModule/run/page.js --verbose",
+    "test": "npm run min; npm run node; npm run browser",
+    "node": "NODE_ENV=production NODE_PATH=lib node test/node/index.js",
+    "noded": "NODE_ENV=production NODE_PATH=lib node --debug-brk test/node/index.js",
+    "browser": "open http://localhost:8000/ES.js/test/browser/index.html",
+    "el": "electron test/el",
+    "nw": "nw test/nw",
+    "add-src": "node ../WebModule/run/add-src.js",
+    "add-subclass": "node ../WebModule/run/add-subclass.js",
+    "sim": "node ../WebModule/run/sim.js http://localhost:8000/ES.js/test/browser/index.html",
+    "simx": "node ../WebModule/run/sim.js stop",
+    "lint": "eslint lib/*.js",
+    "score": "node ../WebModule/run/score.js; open lint/plato/index.html",
+    "patch": "node ../WebModule/run/patch.js",
+    "setup": "node ../WebModule/run/setup.js",
+    "start": "cd ../; Python -m SimpleHTTPServer 8000 &",
+    "stop": "killall -- Python -m SimpleHTTPServer 8000; exit 0"
+  },
+  "webmodule": {
+    "develop": false,
+    "label": [
+      "@dev",
+      "@es5",
+      "@es6",
+      "@es7",
+      "@esx"
+    ],
+    "browser": {
+      "output": "release/ES.b.min.js",
+      "source": [
+        "lib/ES.js"
+      ]
+    },
+    "worker": {
+      "output": "release/ES.w.min.js",
+      "source": [
+        "lib/ES.js"
+      ]
+    },
+    "node": {
+      "output": "release/ES.n.min.js",
+      "source": [
+        "lib/ES.js"
+      ]
+    },
+    "nw": {
+      "output": "release/ES.nw.min.js",
+      "source": [
+        "lib/ES.js"
+      ]
+    },
+    "el": {
+      "output": "release/ES.el.min.js",
+      "source": [
+        "lib/ES.js"
+      ]
+    }
+  },
+  "dependencies": {},
+  "devDependencies": {},
+  "lib": "./lib/",
+  "main": "./index.js",
+  "author": {
+    "name": "uupaa"
+  },
+  "license": "MIT",
+  "contributors": [],
+  "gitHead": "0f07e414a5074942b78f0d66f828e904d024d824",
+  "bugs": {
+    "url": "https://github.com/uupaa/ES.js/issues"
+  },
+  "homepage": "https://github.com/uupaa/ES.js",
+  "_id": "uupaa.es.js@0.9.25",
+  "_shasum": "40fab9164569a1b291e0359381eeb6f93852340a",
+  "_from": ".",
+  "_npmVersion": "2.0.0",
+  "_npmUser": {
+    "name": "uupaa",
+    "email": "uupaa.js@gmail.com"
+  },
+  "maintainers": [
+    {
+      "name": "uupaa",
+      "email": "uupaa.js@gmail.com"
+    }
+  ],
+  "dist": {
+    "shasum": "40fab9164569a1b291e0359381eeb6f93852340a",
+    "tarball": "http://registry.npmjs.org/uupaa.es.js/-/uupaa.es.js-0.9.25.tgz"
+  },
+  "_npmOperationalInternal": {
+    "host": "packages-16-east.internal.npmjs.com",
+    "tmp": "tmp/uupaa.es.js-0.9.25.tgz_1463459267892_0.7164649039041251"
+  },
+  "directories": {}
+}

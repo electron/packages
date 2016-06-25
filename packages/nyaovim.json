@@ -1,0 +1,85 @@
+{
+  "name": "nyaovim",
+  "productName": "NyaoVim",
+  "version": "0.0.19",
+  "description": "Web-enhanced Extensible Neovim Frontend",
+  "main": "main/main.js",
+  "bin": {
+    "nyaovim": "./bin/cli.js"
+  },
+  "scripts": {
+    "dep": "npm install && bower install && typings install",
+    "build-main": "tsc --pretty -p $(npm prefix)/main",
+    "build-renderer": "tsc --pretty -p $(npm prefix)/renderer",
+    "build": "npm run build-main && npm run build-renderer",
+    "lint": "tslint $(git ls-files | grep -E \".ts$\")",
+    "app": "electron $(npm prefix)",
+    "debug": "NODE_ENV=debug electron $(npm prefix)",
+    "start": "npm run dep && npm run build && npm run app",
+    "watch": "cd $(npm prefix) && guard --watchdir main renderer typings",
+    "clean": "cd $(npm prefix) && rm -rf build typings bower_components node_modules"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rhysd/NyaoVim.git"
+  },
+  "keywords": [
+    "editor",
+    "extensible",
+    "WebComponents",
+    "Neovim",
+    "nvim",
+    "Electron",
+    "Polymer",
+    "cat",
+    "meow"
+  ],
+  "author": {
+    "name": "rhysd",
+    "email": "lin90162@yahoo.co.jp"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/rhysd/NyaoVim/issues"
+  },
+  "homepage": "https://github.com/rhysd/NyaoVim#readme",
+  "dependencies": {
+    "about-window": "^1.3.1",
+    "deep-extend": "^0.4.1",
+    "electron-prebuilt": "^0.36.7",
+    "electron-window-state": "^2.0.0",
+    "mkdirp": "^0.5.1",
+    "neovim-component": "^0.5.1",
+    "promised-neovim-client": "^1.0.1"
+  },
+  "devDependencies": {
+    "bower": "^1.7.1",
+    "typescript": "^1.8.0",
+    "typings": "^0.6.3"
+  },
+  "gitHead": "915d70b0dab22219a72aa2f174df3cf5c21db323",
+  "_id": "nyaovim@0.0.19",
+  "_shasum": "7217dd6844447d70a48bb0b3cb1bf0960520001c",
+  "_from": ".",
+  "_npmVersion": "2.14.7",
+  "_nodeVersion": "4.2.1",
+  "_npmUser": {
+    "name": "rhysd",
+    "email": "lin90162@yahoo.co.jp"
+  },
+  "dist": {
+    "shasum": "7217dd6844447d70a48bb0b3cb1bf0960520001c",
+    "tarball": "http://registry.npmjs.org/nyaovim/-/nyaovim-0.0.19.tgz"
+  },
+  "maintainers": [
+    {
+      "name": "rhysd",
+      "email": "lin90162@yahoo.co.jp"
+    }
+  ],
+  "_npmOperationalInternal": {
+    "host": "packages-13-west.internal.npmjs.com",
+    "tmp": "tmp/nyaovim-0.0.19.tgz_1457261380438_0.7669123634696007"
+  },
+  "directories": {}
+}

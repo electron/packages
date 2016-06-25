@@ -1,0 +1,86 @@
+{
+  "name": "snacks",
+  "version": "0.3.1",
+  "description": "Irken plugin exposing configuration options",
+  "author": {
+    "name": "Blaine Bublitz",
+    "email": "blaine@iceddev.com",
+    "url": "http://iceddev.com/"
+  },
+  "contributors": [],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/iceddev/snacks.git"
+  },
+  "license": "MIT",
+  "engines": {
+    "node": ">= 0.10"
+  },
+  "main": "index.js",
+  "files": [
+    "LICENSE",
+    "constants.js",
+    "creators",
+    "index.js",
+    "level.js",
+    "reducers"
+  ],
+  "scripts": {
+    "test": "npm run lint && zuul ./src/**/__tests__/**/*.js --local --open --test",
+    "ci": "npm run lint && zuul ./src/**/__tests__/**/*.js --electron --test",
+    "lint": "eslint ./src/",
+    "build": "babel ./src/ --out-dir ./",
+    "prepublish": "npm run build"
+  },
+  "dependencies": {
+    "@phated/redux-create-store": "^0.3.0",
+    "levelup": "^1.2.1",
+    "memdown": "^1.0.0"
+  },
+  "devDependencies": {
+    "@phated/eslint-config-iceddev": "^0.2.1",
+    "babel": "^5.8.21",
+    "babel-core": "^5.8.22",
+    "babel-loader": "^5.3.2",
+    "eslint": "^1.2.1",
+    "eslint-plugin-mocha": "^0.5.1",
+    "eslint-plugin-react": "^3.2.3",
+    "expect": "^1.9.0",
+    "irken": "^0.3.0",
+    "isparta-loader": "^0.2.0",
+    "webpack": "^1.11.0",
+    "zuul": "^3.3.0",
+    "zuul-builder-webpack": "^1.1.0"
+  },
+  "keywords": [
+    "config",
+    "configuration",
+    "irken",
+    "user"
+  ],
+  "gitHead": "5fb99a98468ec525e86376e099dcb9c8ec5a6aeb",
+  "bugs": {
+    "url": "https://github.com/iceddev/snacks/issues"
+  },
+  "homepage": "https://github.com/iceddev/snacks#readme",
+  "_id": "snacks@0.3.1",
+  "_shasum": "c4629e55e77e6f9c1acb6a335709c2f9ef6a73d8",
+  "_from": ".",
+  "_npmVersion": "2.14.3",
+  "_nodeVersion": "0.10.36",
+  "_npmUser": {
+    "name": "phated",
+    "email": "blaine@iceddev.com"
+  },
+  "maintainers": [
+    {
+      "name": "phated",
+      "email": "blaine@iceddev.com"
+    }
+  ],
+  "dist": {
+    "shasum": "c4629e55e77e6f9c1acb6a335709c2f9ef6a73d8",
+    "tarball": "http://registry.npmjs.org/snacks/-/snacks-0.3.1.tgz"
+  },
+  "directories": {}
+}

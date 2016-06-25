@@ -1,0 +1,175 @@
+{
+  "name": "uupaa.nalunit.js",
+  "version": "0.0.13",
+  "description": "MPEG4-15 AVC(H.264) - NAL file format",
+  "url": "https://github.com/uupaa/NALUnit.js",
+  "keywords": [
+    "AVC",
+    "H.264",
+    "NALUnit",
+    "AUD",
+    "EBSP",
+    "IDR",
+    "PPS",
+    "SEI",
+    "SPS",
+    "uupaa",
+    "WebModule",
+    "Unstable"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/uupaa/NALUnit.js.git"
+  },
+  "scripts": {
+    "sync": "node ../WebModule/run/sync.js; npm update; node ../WebModule/run/page.js",
+    "wiki": "node ../WebModule/run/wiki.js",
+    "min": "node ../WebModule/run/minify.js --verbose --strict --keep --pretty",
+    "build": "node ../WebModule/run/minify.js --verbose --strict --keep --release",
+    "watch": "node ../WebModule/run/watch.js --verbose --run lint",
+    "page": "node ../WebModule/run/page.js --verbose",
+    "test": "npm run min; npm run node; npm run browser",
+    "node": "NODE_ENV=production NODE_PATH=lib node test/node/index.js",
+    "noded": "NODE_ENV=production NODE_PATH=lib node --debug-brk test/node/index.js",
+    "browser": "open http://localhost:8000/NALUnit.js/test/browser/index.html",
+    "el": "electron test/el",
+    "nw": "nw test/nw",
+    "add-src": "node ../WebModule/run/add-src.js",
+    "add-subclass": "node ../WebModule/run/add-subclass.js",
+    "sim": "node ../WebModule/run/sim.js http://localhost:8000/NALUnit.js/test/browser/index.html",
+    "simx": "node ../WebModule/run/sim.js stop",
+    "lint": "eslint lib/*.js",
+    "score": "node ../WebModule/run/score.js; open lint/plato/index.html",
+    "patch": "node ../WebModule/run/patch.js",
+    "setup": "node ../WebModule/run/setup.js",
+    "start": "cd ../; Python -m SimpleHTTPServer 8000 &",
+    "stop": "killall -- Python -m SimpleHTTPServer 8000; exit 0",
+    "make_assets": "cd test/assets; ./make_video; cd -",
+    "clean_assets": "cd test/assets; rm -rf ./ff; rm -rf ./js; cd -"
+  },
+  "webmodule": {
+    "develop": false,
+    "label": [
+      "@dev"
+    ],
+    "browser": {
+      "output": "release/NALUnit.b.min.js",
+      "source": [
+        "lib/NALUnitType.js",
+        "lib/NALUnitParameterSet.js",
+        "lib/NALUnitEBSP.js",
+        "lib/NALUnitAUD.js",
+        "lib/NALUnitSPS.js",
+        "lib/NALUnitPPS.js",
+        "lib/NALUnitSEI.js",
+        "lib/NALUnitIDR.js",
+        "lib/NALUnitNON_IDR.js",
+        "lib/NALUnit.js"
+      ]
+    },
+    "worker": {
+      "output": "release/NALUnit.w.min.js",
+      "source": [
+        "lib/NALUnitType.js",
+        "lib/NALUnitParameterSet.js",
+        "lib/NALUnitEBSP.js",
+        "lib/NALUnitAUD.js",
+        "lib/NALUnitSPS.js",
+        "lib/NALUnitPPS.js",
+        "lib/NALUnitSEI.js",
+        "lib/NALUnitIDR.js",
+        "lib/NALUnitNON_IDR.js",
+        "lib/NALUnit.js"
+      ]
+    },
+    "node": {
+      "output": "release/NALUnit.n.min.js",
+      "source": [
+        "lib/NALUnitType.js",
+        "lib/NALUnitParameterSet.js",
+        "lib/NALUnitEBSP.js",
+        "lib/NALUnitAUD.js",
+        "lib/NALUnitSPS.js",
+        "lib/NALUnitPPS.js",
+        "lib/NALUnitSEI.js",
+        "lib/NALUnitIDR.js",
+        "lib/NALUnitNON_IDR.js",
+        "lib/NALUnit.js"
+      ]
+    },
+    "nw": {
+      "output": "release/NALUnit.nw.min.js",
+      "source": [
+        "lib/NALUnitType.js",
+        "lib/NALUnitParameterSet.js",
+        "lib/NALUnitEBSP.js",
+        "lib/NALUnitAUD.js",
+        "lib/NALUnitSPS.js",
+        "lib/NALUnitPPS.js",
+        "lib/NALUnitSEI.js",
+        "lib/NALUnitIDR.js",
+        "lib/NALUnitNON_IDR.js",
+        "lib/NALUnit.js"
+      ]
+    },
+    "el": {
+      "output": "release/NALUnit.el.min.js",
+      "source": [
+        "lib/NALUnitType.js",
+        "lib/NALUnitParameterSet.js",
+        "lib/NALUnitEBSP.js",
+        "lib/NALUnitAUD.js",
+        "lib/NALUnitSPS.js",
+        "lib/NALUnitPPS.js",
+        "lib/NALUnitSEI.js",
+        "lib/NALUnitIDR.js",
+        "lib/NALUnitNON_IDR.js",
+        "lib/NALUnit.js"
+      ]
+    }
+  },
+  "dependencies": {
+    "uupaa.bit.js": "",
+    "uupaa.hexdump.js": ""
+  },
+  "devDependencies": {
+    "uupaa.mpeg2ts.js": "",
+    "uupaa.fileloader.js": "",
+    "uupaa.mpeg4bytestream.js": ""
+  },
+  "lib": "./lib/",
+  "main": "./index.js",
+  "author": {
+    "name": "uupaa"
+  },
+  "license": "Apache-2.0",
+  "contributors": [],
+  "gitHead": "50ca799d0acd9fa66c7b27b6ed547ff9282d7a53",
+  "bugs": {
+    "url": "https://github.com/uupaa/NALUnit.js/issues"
+  },
+  "homepage": "https://github.com/uupaa/NALUnit.js",
+  "_id": "uupaa.nalunit.js@0.0.13",
+  "_shasum": "6c3135028880023f632d1a20a0f7b5c925133819",
+  "_from": ".",
+  "_npmVersion": "2.0.0",
+  "_npmUser": {
+    "name": "uupaa",
+    "email": "uupaa.js@gmail.com"
+  },
+  "maintainers": [
+    {
+      "name": "uupaa",
+      "email": "uupaa.js@gmail.com"
+    }
+  ],
+  "dist": {
+    "shasum": "6c3135028880023f632d1a20a0f7b5c925133819",
+    "tarball": "http://registry.npmjs.org/uupaa.nalunit.js/-/uupaa.nalunit.js-0.0.13.tgz"
+  },
+  "_npmOperationalInternal": {
+    "host": "packages-16-east.internal.npmjs.com",
+    "tmp": "tmp/uupaa.nalunit.js-0.0.13.tgz_1460984890821_0.006098176585510373"
+  },
+  "directories": {}
+}

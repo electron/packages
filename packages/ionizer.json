@@ -1,0 +1,77 @@
+{
+  "name": "ionizer",
+  "version": "2.0.1",
+  "description": "rebuild native node modules against the electron runtime",
+  "main": "lib/main.js",
+  "scripts": {
+    "test": "node test/index.js | faucet",
+    "lint": "jshint .",
+    "validate": "npm ls",
+    "preversion": "git checkout master && git pull && npm ls",
+    "publish-patch": "npm run preversion && npm version patch && git push origin master --tags && npm publish --verbose",
+    "publish-minor": "npm run preversion && npm version minor && git push origin master --tags && npm publish --verbose",
+    "publish-major": "npm run preversion && npm version major && git push origin master --tags && npm publish --verbose"
+  },
+  "bin": {
+    "ionizer": "lib/cli.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cdaringe/ionizer.git"
+  },
+  "keywords": [
+    "electron"
+  ],
+  "author": {
+    "name": "cdaringe"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/cdaringe/ionizer/issues"
+  },
+  "homepage": "https://github.com/cdaringe/ionizer",
+  "dependencies": {
+    "bluebirdify": "1.1.0",
+    "commander": "2.9.0",
+    "lodash": "3.10.1",
+    "npm": "2.14.14",
+    "rimraf": "2.4.3",
+    "squish-squash": "1.0.3",
+    "winston": "2.1.1"
+  },
+  "devDependencies": {
+    "tape": "4.2.1",
+    "ampersand-app": "1.0.4",
+    "electron-prebuilt": "0.35.4",
+    "faucet": "0.0.1",
+    "http-server": "0.8.5",
+    "mock-npm-install": "1.0.4",
+    "precommit-hook": "3.0.0"
+  },
+  "pre-commit": [
+    "lint",
+    "validate",
+    "test"
+  ],
+  "gitHead": "8c7fc41dc676a0f3c3933e8781b47062cc193121",
+  "_id": "ionizer@2.0.1",
+  "_shasum": "e2bf1001feffbb9700aad42ae874e095d303b6ca",
+  "_from": ".",
+  "_npmVersion": "2.14.14",
+  "_nodeVersion": "4.2.4",
+  "_npmUser": {
+    "name": "cdaringe",
+    "email": "cdaringe@gmail.com"
+  },
+  "maintainers": [
+    {
+      "name": "cdaringe",
+      "email": "cdaringe@gmail.com"
+    }
+  ],
+  "dist": {
+    "shasum": "e2bf1001feffbb9700aad42ae874e095d303b6ca",
+    "tarball": "http://registry.npmjs.org/ionizer/-/ionizer-2.0.1.tgz"
+  },
+  "directories": {}
+}

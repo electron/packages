@@ -1,0 +1,139 @@
+{
+  "name": "uupaa.spec.js",
+  "version": "3.2.3",
+  "description": "Mobile Device Spec detection.",
+  "url": "https://github.com/uupaa/Spec.js",
+  "keywords": [
+    "Mobile",
+    "SoC",
+    "CPU",
+    "GPU",
+    "RAM",
+    "BLE",
+    "NFC",
+    "OpenGLES",
+    "OpenCL",
+    "Vulkan",
+    "spec",
+    "uupaa",
+    "WebModule"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/uupaa/Spec.js.git"
+  },
+  "scripts": {
+    "sync": "node ../WebModule/run/sync.js; npm update; node ../WebModule/run/page.js",
+    "wiki": "node ../WebModule/run/wiki.js",
+    "min": "node ../WebModule/run/minify.js --verbose --strict --keep --pretty @fp",
+    "build": "node ../WebModule/run/minify.js --verbose --strict --keep --release @fp",
+    "watch": "node ../WebModule/run/watch.js --verbose --run lint",
+    "page": "node ../WebModule/run/page.js --verbose",
+    "test": "npm run min; npm run node; npm run browser",
+    "node": "NODE_ENV=production NODE_PATH=lib node test/node/index.js",
+    "noded": "NODE_ENV=production NODE_PATH=lib node --debug-brk test/node/index.js",
+    "browser": "open http://localhost:8000/Spec.js/test/browser/index.html",
+    "el": "electron test/el",
+    "nw": "nw test/nw",
+    "add-src": "node ../WebModule/run/add-src.js",
+    "add-subclass": "node ../WebModule/run/add-subclass.js",
+    "pretest": "node tojson",
+    "sim": "node ../WebModule/run/sim.js http://localhost:8000/Spec.js/test/browser/index.html",
+    "simx": "node ../WebModule/run/sim.js stop",
+    "lint": "eslint lib/*.js",
+    "score": "node ../WebModule/run/score.js; open lint/plato/index.html",
+    "patch": "node ../WebModule/run/patch.js",
+    "setup": "node ../WebModule/run/setup.js",
+    "start": "cd ../; Python -m SimpleHTTPServer 8000 &",
+    "stop": "killall -- Python -m SimpleHTTPServer 8000; exit 0"
+  },
+  "webmodule": {
+    "develop": false,
+    "label": [
+      "@dev",
+      "@devicejp",
+      "@kindle",
+      "@windows",
+      "@fp"
+    ],
+    "browser": {
+      "output": "release/Spec.b.min.js",
+      "source": [
+        "lib/SpecCatalog.js",
+        "lib/SpecCatalogFP.js",
+        "lib/Spec.js"
+      ]
+    },
+    "worker": {
+      "output": "release/Spec.w.min.js",
+      "source": [
+        "lib/SpecCatalog.js",
+        "lib/SpecCatalogFP.js",
+        "lib/Spec.js"
+      ]
+    },
+    "node": {
+      "output": "release/Spec.n.min.js",
+      "source": [
+        "lib/SpecCatalog.js",
+        "lib/SpecCatalogFP.js",
+        "lib/Spec.js"
+      ]
+    },
+    "nw": {
+      "output": "release/Spec.nw.min.js",
+      "source": [
+        "lib/SpecCatalog.js",
+        "lib/SpecCatalogFP.js",
+        "lib/Spec.js"
+      ]
+    },
+    "el": {
+      "output": "release/Spec.el.min.js",
+      "source": [
+        "lib/SpecCatalog.js",
+        "lib/SpecCatalogFP.js",
+        "lib/Spec.js"
+      ]
+    }
+  },
+  "dependencies": {
+    "uupaa.useragent.js": ""
+  },
+  "devDependencies": {},
+  "lib": "./lib/",
+  "main": "./index.js",
+  "author": {
+    "name": "uupaa"
+  },
+  "license": "MIT",
+  "contributors": [],
+  "gitHead": "d72a7631b208faab147814bbce77276d9e6ea2e3",
+  "bugs": {
+    "url": "https://github.com/uupaa/Spec.js/issues"
+  },
+  "homepage": "https://github.com/uupaa/Spec.js",
+  "_id": "uupaa.spec.js@3.2.3",
+  "_shasum": "2f5041b3ce96cddd74bbba5f6d11c5ebef0bf5c9",
+  "_from": ".",
+  "_npmVersion": "2.0.0",
+  "_npmUser": {
+    "name": "uupaa",
+    "email": "uupaa.js@gmail.com"
+  },
+  "maintainers": [
+    {
+      "name": "uupaa",
+      "email": "uupaa.js@gmail.com"
+    }
+  ],
+  "dist": {
+    "shasum": "2f5041b3ce96cddd74bbba5f6d11c5ebef0bf5c9",
+    "tarball": "http://registry.npmjs.org/uupaa.spec.js/-/uupaa.spec.js-3.2.3.tgz"
+  },
+  "_npmOperationalInternal": {
+    "host": "packages-16-east.internal.npmjs.com",
+    "tmp": "tmp/uupaa.spec.js-3.2.3.tgz_1465846081467_0.8886005359236151"
+  },
+  "directories": {}
+}

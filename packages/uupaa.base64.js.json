@@ -1,0 +1,119 @@
+{
+  "name": "uupaa.base64.js",
+  "version": "1.0.1",
+  "description": "Base64 functions.",
+  "url": "https://github.com/uupaa/Base64.js",
+  "keywords": [
+    "Base64",
+    "btoa",
+    "atob",
+    "uupaa",
+    "WebModule"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/uupaa/Base64.js.git"
+  },
+  "scripts": {
+    "sync": "node ../WebModule/run/sync.js; npm update; node ../WebModule/run/page.js",
+    "wiki": "node ../WebModule/run/wiki.js",
+    "min": "node ../WebModule/run/minify.js --verbose --strict --keep --pretty",
+    "build": "node ../WebModule/run/minify.js --verbose --strict --keep --release",
+    "watch": "node ../WebModule/run/watch.js --verbose --run lint",
+    "page": "node ../WebModule/run/page.js --verbose",
+    "test": "npm run min; npm run node; npm run browser",
+    "node": "NODE_ENV=production NODE_PATH=lib node test/node/index.js",
+    "noded": "NODE_ENV=production NODE_PATH=lib node --debug-brk test/node/index.js",
+    "browser": "open http://localhost:8000/Base64.js/test/browser/index.html",
+    "el": "electron test/el",
+    "nw": "nw test/nw",
+    "add-src": "node ../WebModule/run/add-src.js",
+    "add-subclass": "node ../WebModule/run/add-subclass.js",
+    "sim": "node ../WebModule/run/sim.js http://localhost:8000/Base64.js/test/browser/index.html",
+    "simx": "node ../WebModule/run/sim.js stop",
+    "lint": "eslint lib/*.js",
+    "score": "node ../WebModule/run/score.js; open lint/plato/index.html",
+    "patch": "node ../WebModule/run/patch.js",
+    "setup": "node ../WebModule/run/setup.js",
+    "start": "cd ../; Python -m SimpleHTTPServer 8000 &",
+    "stop": "killall -- Python -m SimpleHTTPServer 8000; exit 0"
+  },
+  "webmodule": {
+    "develop": false,
+    "label": [
+      "@dev"
+    ],
+    "browser": {
+      "output": "release/Base64.b.min.js",
+      "source": [
+        "lib/Base64.js"
+      ]
+    },
+    "worker": {
+      "output": "release/Base64.w.min.js",
+      "source": [
+        "lib/Base64.js"
+      ]
+    },
+    "node": {
+      "output": "release/Base64.n.min.js",
+      "source": [
+        "lib/Base64.js"
+      ]
+    },
+    "nw": {
+      "output": "release/Base64.nw.min.js",
+      "source": [
+        "lib/Base64.js"
+      ]
+    },
+    "el": {
+      "output": "release/Base64.el.min.js",
+      "source": [
+        "lib/Base64.js"
+      ]
+    }
+  },
+  "dependencies": {
+    "uupaa.typedarray.js": ""
+  },
+  "devDependencies": {
+    "uupaa.random.js": ""
+  },
+  "lib": "./lib/",
+  "main": "./index.js",
+  "author": {
+    "name": "uupaa"
+  },
+  "license": "MIT",
+  "contributors": [],
+  "gitHead": "eb7adf578ab71fbe087424e85e917d30acf28345",
+  "bugs": {
+    "url": "https://github.com/uupaa/Base64.js/issues"
+  },
+  "homepage": "https://github.com/uupaa/Base64.js#readme",
+  "_id": "uupaa.base64.js@1.0.1",
+  "_shasum": "9c6d012c97fecb5eea0107d8a888ac5395bb69fc",
+  "_from": ".",
+  "_npmVersion": "2.14.12",
+  "_nodeVersion": "4.2.4",
+  "_npmUser": {
+    "name": "uupaa",
+    "email": "uupaa.js@gmail.com"
+  },
+  "maintainers": [
+    {
+      "name": "uupaa",
+      "email": "uupaa.js@gmail.com"
+    }
+  ],
+  "dist": {
+    "shasum": "9c6d012c97fecb5eea0107d8a888ac5395bb69fc",
+    "tarball": "http://registry.npmjs.org/uupaa.base64.js/-/uupaa.base64.js-1.0.1.tgz"
+  },
+  "_npmOperationalInternal": {
+    "host": "packages-12-west.internal.npmjs.com",
+    "tmp": "tmp/uupaa.base64.js-1.0.1.tgz_1459851728403_0.2104463456198573"
+  },
+  "directories": {}
+}

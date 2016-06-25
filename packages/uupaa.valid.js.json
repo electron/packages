@@ -1,0 +1,117 @@
+{
+  "name": "uupaa.valid.js",
+  "version": "0.9.23",
+  "description": "Validate functions.",
+  "url": "https://github.com/uupaa/Valid.js",
+  "keywords": [
+    "Validation",
+    "uupaa",
+    "WebModule",
+    "Unstable"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/uupaa/Valid.js.git"
+  },
+  "scripts": {
+    "sync": "node ../WebModule/run/sync.js; npm update; node ../WebModule/run/page.js",
+    "wiki": "node ../WebModule/run/wiki.js",
+    "min": "node ../WebModule/run/minify.js --verbose --strict --keep --pretty",
+    "build": "node ../WebModule/run/minify.js --verbose --strict --keep --release",
+    "watch": "node ../WebModule/run/watch.js --verbose --run lint",
+    "page": "node ../WebModule/run/page.js --verbose",
+    "test": "npm run min; npm run node; npm run browser",
+    "node": "NODE_ENV=production NODE_PATH=lib node test/node/index.js",
+    "noded": "NODE_ENV=production NODE_PATH=lib node --debug-brk test/node/index.js",
+    "browser": "open http://localhost:8000/Valid.js/test/browser/index.html",
+    "el": "electron test/el",
+    "nw": "nw test/nw",
+    "add-src": "node ../WebModule/run/add-src.js",
+    "add-subclass": "node ../WebModule/run/add-subclass.js",
+    "sim": "node ../WebModule/run/sim.js http://localhost:8000/Valid.js/test/browser/index.html",
+    "simx": "node ../WebModule/run/sim.js stop",
+    "lint": "eslint lib/*.js",
+    "score": "node ../WebModule/run/score.js; open lint/plato/index.html",
+    "patch": "node ../WebModule/run/patch.js",
+    "setup": "node ../WebModule/run/setup.js",
+    "start": "cd ../; Python -m SimpleHTTPServer 8000 &",
+    "stop": "killall -- Python -m SimpleHTTPServer 8000; exit 0"
+  },
+  "webmodule": {
+    "develop": false,
+    "label": [
+      "@dev"
+    ],
+    "browser": {
+      "output": "release/Valid.b.min.js",
+      "source": [
+        "lib/Valid.js"
+      ]
+    },
+    "worker": {
+      "output": "release/Valid.w.min.js",
+      "source": [
+        "lib/Valid.js"
+      ]
+    },
+    "node": {
+      "output": "release/Valid.n.min.js",
+      "source": [
+        "lib/Valid.js"
+      ]
+    },
+    "nw": {
+      "output": "release/Valid.nw.min.js",
+      "source": [
+        "lib/Valid.js"
+      ]
+    },
+    "el": {
+      "output": "release/Valid.el.min.js",
+      "source": [
+        "lib/Valid.js"
+      ]
+    }
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "uupaa.task.js": ""
+  },
+  "lib": "./lib/",
+  "main": "./index.js",
+  "author": {
+    "name": "uupaa",
+    "email": "uupaa.js@gmail.com"
+  },
+  "license": "MIT",
+  "contributors": [],
+  "gitHead": "27a7e97ada7781c78894d73f488d477763e9c808",
+  "bugs": {
+    "url": "https://github.com/uupaa/Valid.js/issues"
+  },
+  "homepage": "https://github.com/uupaa/Valid.js#readme",
+  "_id": "uupaa.valid.js@0.9.23",
+  "_shasum": "cf7e062db6b0ee27ef3ff6361794aeeeaa9b11ba",
+  "_from": ".",
+  "_npmVersion": "2.14.12",
+  "_nodeVersion": "4.2.4",
+  "_npmUser": {
+    "name": "uupaa",
+    "email": "uupaa.js@gmail.com"
+  },
+  "maintainers": [
+    {
+      "name": "uupaa",
+      "email": "uupaa.js@gmail.com"
+    }
+  ],
+  "dist": {
+    "shasum": "cf7e062db6b0ee27ef3ff6361794aeeeaa9b11ba",
+    "tarball": "http://registry.npmjs.org/uupaa.valid.js/-/uupaa.valid.js-0.9.23.tgz"
+  },
+  "_npmOperationalInternal": {
+    "host": "packages-9-west.internal.npmjs.com",
+    "tmp": "tmp/uupaa.valid.js-0.9.23.tgz_1456399983125_0.729464273666963"
+  },
+  "directories": {}
+}
