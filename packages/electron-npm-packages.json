@@ -1,10 +1,13 @@
 {
   "name": "electron-npm-packages",
-  "version": "1.3.0",
-  "description": "A collection of all npm packages that mention `electron` in their package.json or README",
+  "version": "1.4.0",
+  "description": "A collection of all npm packages that mention `electron` in their package.json",
   "main": "index.js",
   "scripts": {
-    "build": "node build.js"
+    "build": "mkdir -p packages && rm packages/* && node build.js && npm run docs",
+    "docs": "npm run docs:keywords && npm run docs:packages",
+    "docs:keywords": "node keywords.js > keywords.md",
+    "docs:packages": "node packages.js > packages.md"
   },
   "repository": {
     "type": "git",
@@ -36,11 +39,13 @@
     "normalize-registry-metadata": "^1.1.2"
   },
   "dependencies": {
+    "lodash.find": "^4.4.0",
+    "lodash.sortby": "^4.5.0",
     "require-dir": "^0.3.0"
   },
-  "gitHead": "8006ec7207f42f55608b8279f3635cf9dd5032ea",
-  "_id": "electron-npm-packages@1.3.0",
-  "_shasum": "2e65d69f704887256b79de0c83bb2e22c146c1a3",
+  "gitHead": "6f35a707283d1f3ac8c669a1c08530e5e4141456",
+  "_id": "electron-npm-packages@1.4.0",
+  "_shasum": "6d47494df8b4b7d6091c541b38f23119b3745f4a",
   "_from": ".",
   "_npmVersion": "3.9.3",
   "_nodeVersion": "6.2.1",
@@ -49,8 +54,8 @@
     "email": "zeke@sikelianos.com"
   },
   "dist": {
-    "shasum": "2e65d69f704887256b79de0c83bb2e22c146c1a3",
-    "tarball": "http://registry.npmjs.org/electron-npm-packages/-/electron-npm-packages-1.3.0.tgz"
+    "shasum": "6d47494df8b4b7d6091c541b38f23119b3745f4a",
+    "tarball": "http://registry.npmjs.org/electron-npm-packages/-/electron-npm-packages-1.4.0.tgz"
   },
   "maintainers": [
     {
@@ -60,7 +65,7 @@
   ],
   "_npmOperationalInternal": {
     "host": "packages-16-east.internal.npmjs.com",
-    "tmp": "tmp/electron-npm-packages-1.3.0.tgz_1466748354754_0.7499118188861758"
+    "tmp": "tmp/electron-npm-packages-1.4.0.tgz_1466822301194_0.6162843871861696"
   },
   "directories": {}
 }
