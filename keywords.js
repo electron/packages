@@ -3,9 +3,6 @@ const find = require('lodash.find')
 const sortby = require('lodash.sortby')
 var counts = []
 
-packages = Object.keys(packages)
-  .map(name => packages[name])
-
 packages.forEach(p => {
   if (!p.keywords) return
 

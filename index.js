@@ -1,1 +1,1 @@
-module.exports = require('require-dir')('./packages')
+module.exports = require('object-values')(require('require-dir')('./packages'))

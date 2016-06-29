@@ -1,8 +1,5 @@
 var packages = require('.')
 
-packages = Object.keys(packages)
-  .map(name => packages[name])
-
 console.log(`# ${packages.length} Packages`)
 console.log('\n\nAll of these mention `electron` somewhere in their package.json\n\n')
 
