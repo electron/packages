@@ -4,7 +4,7 @@
   "description": "A collection of all npm packages that mention `electron` in their package.json",
   "main": "index.js",
   "scripts": {
-    "build": "mkdir -p packages && rm packages/* && node build.js && npm run docs",
+    "build": "mkdir -p packages && touch packages/___.json && rm packages/* && node build.js && npm run docs",
     "docs": "npm run docs:keywords && npm run docs:packages",
     "docs:keywords": "node keywords.js > keywords.md",
     "docs:packages": "node packages.js > packages.md"
@@ -27,17 +27,15 @@
   },
   "homepage": "https://github.com/zeke/electron-npm-packages#readme",
   "devDependencies": {
-    "changes-stream": "^1.1.0",
     "got": "^6.3.0",
     "limiter": "^1.1.0",
     "lodash.find": "^4.4.0",
-    "lodash.get": "^4.3.0",
     "lodash.sortby": "^4.5.0",
-    "normalize-registry-metadata": "^1.1.2",
     "path-exists": "^3.0.0"
   },
   "dependencies": {
     "object-values": "^1.0.0",
+    "package-stream": "^1.0.0",
     "require-dir": "^0.3.0"
   }
 }
