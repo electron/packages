@@ -18,8 +18,17 @@
   "reveal": true,
   "main": "lib/index.js",
   "repository": {
-    "type": "git",
-    "url": "git://github.com/mvila/json-web-storage.git"
+    "user": "mvila",
+    "repo": "json-web-storage",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/mvila/json-web-storage/tarball/master",
+    "clone_url": "https://github.com/mvila/json-web-storage",
+    "https_url": "https://github.com/mvila/json-web-storage",
+    "travis_url": "https://travis-ci.org/mvila/json-web-storage",
+    "zip_url": "https://github.com/mvila/json-web-storage/archive/master.zip",
+    "api_url": "https://api.github.com/repos/mvila/json-web-storage"
   },
   "scripts": {
     "compile": "babel src --out-dir lib",
@@ -45,32 +54,54 @@
     "eslint-config-next": "^0.1.12"
   },
   "gitHead": "b3fff9b1150d16d79c07f4988c3afe04bd3a39e0",
-  "bugs": {
-    "url": "https://github.com/mvila/json-web-storage/issues"
-  },
   "homepage": "https://github.com/mvila/json-web-storage#readme",
-  "_id": "json-web-storage@1.0.7",
-  "_shasum": "eb52155b54cd7073a065415025a6af4a9cb9afac",
-  "_from": ".",
   "_npmVersion": "2.14.9",
   "_nodeVersion": "0.12.12",
-  "_npmUser": {
-    "name": "mvila",
-    "email": "mvila@3base.com"
-  },
   "dist": {
     "shasum": "eb52155b54cd7073a065415025a6af4a9cb9afac",
     "tarball": "http://registry.npmjs.org/json-web-storage/-/json-web-storage-1.0.7.tgz"
   },
-  "maintainers": [
+  "versions": [
+    {
+      "number": "1.0.1",
+      "date": "2016-01-31T10:44:58.780Z"
+    },
+    {
+      "number": "1.0.2",
+      "date": "2016-01-31T10:52:02.445Z"
+    },
+    {
+      "number": "1.0.3",
+      "date": "2016-01-31T10:59:30.151Z"
+    },
+    {
+      "number": "1.0.4",
+      "date": "2016-01-31T11:05:34.633Z"
+    },
+    {
+      "number": "1.0.5",
+      "date": "2016-02-02T02:45:02.845Z"
+    },
+    {
+      "number": "1.0.6",
+      "date": "2016-02-18T04:27:53.828Z"
+    },
+    {
+      "number": "1.0.7",
+      "date": "2016-03-29T07:43:39.841Z"
+    }
+  ],
+  "created": "2016-01-31T10:44:58.780Z",
+  "modified": "2016-03-29T07:43:39.841Z",
+  "lastPublisher": {
+    "name": "mvila",
+    "email": "mvila@3base.com"
+  },
+  "owners": [
     {
       "name": "mvila",
       "email": "mvila@3base.com"
     }
   ],
-  "_npmOperationalInternal": {
-    "host": "packages-12-west.internal.npmjs.com",
-    "tmp": "tmp/json-web-storage-1.0.7.tgz_1459237415478_0.5149749964475632"
-  },
-  "directories": {}
+  "readme": "# JSON Web Storage [![Build Status](https://travis-ci.org/mvila/json-web-storage.svg?branch=master)](https://travis-ci.org/mvila/json-web-storage)\n\nSimple localStorage/sessionStorage wrapper providing the exact same API with automatic JSON serialization.\n\n## Installation\n\nWith npm (for Browserify/Webpack):\n\n```\nnpm install --save json-web-storage\n```\n\n## Usage\n\nThe API is identical to the standard [Web Storage API](https://developer.mozilla.org/en-US/docs/Web/API/Storage). The only difference is that the items we put/get are automatically serialized/unserialized with JSON.stringify() and JSON.parse().\n\n## Example\n\n```javascript\nimport { jsonLocalStorage } from 'json-web-storage';\n\njsonLocalStorage.setItem('num', 123.45);\nlet num = jsonLocalStorage.getItem('num');\nconsole.log(typeof num) // => number\nconsole.log(num) // => 123.45\n\njsonLocalStorage.setItem('obj', { name: 'John' });\nlet obj = jsonLocalStorage.getItem('obj');\nconsole.log(typeof obj) // => object\nconsole.log(obj.name) // => John\n```\n\n## License\n\nMIT\n"
 }

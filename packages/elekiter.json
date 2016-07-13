@@ -10,8 +10,17 @@
     "prepublish": "npm test && npm start"
   },
   "repository": {
-    "type": "git",
-    "url": "git+https://github.com/airtoxin/elekiter.git"
+    "user": "airtoxin",
+    "repo": "elekiter",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/airtoxin/elekiter/tarball/master",
+    "clone_url": "https://github.com/airtoxin/elekiter",
+    "https_url": "https://github.com/airtoxin/elekiter",
+    "travis_url": "https://travis-ci.org/airtoxin/elekiter",
+    "zip_url": "https://github.com/airtoxin/elekiter/archive/master.zip",
+    "api_url": "https://api.github.com/repos/airtoxin/elekiter"
   },
   "keywords": [
     "electron",
@@ -23,9 +32,6 @@
     "email": "airtoxin@icloud.com"
   },
   "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/airtoxin/elekiter/issues"
-  },
   "homepage": "https://github.com/airtoxin/elekiter#readme",
   "devDependencies": {
     "babel-cli": "^6.3.17",
@@ -38,28 +44,49 @@
     "neo-async": "^1.6.0"
   },
   "gitHead": "a55795c9ecd961eb39e339b905a33a699a3ddbee",
-  "_id": "elekiter@0.0.6",
-  "_shasum": "7df1f19c402a1f6021382a4144b5474b5a56e89f",
-  "_from": ".",
   "_npmVersion": "2.14.12",
   "_nodeVersion": "4.3.2",
-  "_npmUser": {
+  "dist": {
+    "shasum": "7df1f19c402a1f6021382a4144b5474b5a56e89f",
+    "tarball": "http://registry.npmjs.org/elekiter/-/elekiter-0.0.6.tgz"
+  },
+  "versions": [
+    {
+      "number": "0.0.1",
+      "date": "2015-11-25T22:37:15.472Z"
+    },
+    {
+      "number": "0.0.2",
+      "date": "2015-12-23T09:54:41.789Z"
+    },
+    {
+      "number": "0.0.3",
+      "date": "2016-03-06T12:34:33.086Z"
+    },
+    {
+      "number": "0.0.4",
+      "date": "2016-03-06T13:15:35.810Z"
+    },
+    {
+      "number": "0.0.5",
+      "date": "2016-03-06T13:22:34.987Z"
+    },
+    {
+      "number": "0.0.6",
+      "date": "2016-03-06T13:40:37.918Z"
+    }
+  ],
+  "created": "2015-11-25T22:37:15.472Z",
+  "modified": "2016-03-06T13:40:37.918Z",
+  "lastPublisher": {
     "name": "airtoxin",
     "email": "airtoxin@icloud.com"
   },
-  "maintainers": [
+  "owners": [
     {
       "name": "airtoxin",
       "email": "airtoxin@icloud.com"
     }
   ],
-  "dist": {
-    "shasum": "7df1f19c402a1f6021382a4144b5474b5a56e89f",
-    "tarball": "http://registry.npmjs.org/elekiter/-/elekiter-0.0.6.tgz"
-  },
-  "_npmOperationalInternal": {
-    "host": "packages-13-west.internal.npmjs.com",
-    "tmp": "tmp/elekiter-0.0.6.tgz_1457271636474_0.8099069083109498"
-  },
-  "directories": {}
+  "readme": "# elekiter [![Build Status](https://travis-ci.org/airtoxin/elekiter.svg)](https://travis-ci.org/airtoxin/elekiter) [![npm version](https://badge.fury.io/js/elekiter.svg)](http://badge.fury.io/js/elekiter)\nexpress like electron ipc wrapper library\n\n## Install\n\n`$ npm install elekiter`\n\n## Usage\n\nIn __browser process__ (Main Process)\n\n```js\nvar Elekiter = require('elekiter');\nvar elekiter = new Elekiter();\n\n// regist middleware\nelekiter.use(function (req, res, next) {\n    req.param = req.params[0];\n    next();\n});\n// routing\nelekiter.get('/', function (req, res) {\n    var message = 'Hi! ' + req.param; // req.param was set by middleware\n    var life = req.params[1];\n\n    if (life === 'human') return res.ok(message);\n    if (life === 'alien') return res.ng('can not communicate');\n    res.ng('unknown life');\n});\n```\n\nIn __renderer process__\n\n```js\nvar Elekiter = require('elekiter');\nvar elekiter = new Elekiter();\n\nelekiter.request('/', 'John', 'human').then(function (message) {\n    console.log('@message:', message);\n}).catch(function (error) {\n    console.log('@error:', error);\n});\n```\n"
 }

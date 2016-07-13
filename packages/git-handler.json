@@ -1,0 +1,63 @@
+{
+  "name": "git-handler",
+  "version": "2.0.1",
+  "description": "NPM module for handling git repositories. Makes it easy to add, checkout, branch, clone, commit, pull and push.",
+  "main": "index.js",
+  "scripts": {},
+  "keywords": [
+    "npm",
+    "git",
+    "github",
+    "clone",
+    "push",
+    "pull",
+    "add",
+    "branch",
+    "checkout",
+    "commit",
+    "handle"
+  ],
+  "author": {
+    "name": "unibrowdev",
+    "url": "Josiah Brower"
+  },
+  "license": "ISC",
+  "gitHead": "86525176b2b761783eb8e61e7481652101d46cb5",
+  "_npmVersion": "3.3.6",
+  "_nodeVersion": "5.0.0",
+  "dist": {
+    "shasum": "574f77a2adaeca156cb5dbb978527204199a598b",
+    "tarball": "http://registry.npmjs.org/git-handler/-/git-handler-2.0.1.tgz"
+  },
+  "versions": [
+    {
+      "number": "1.0.0",
+      "date": "2016-02-24T07:46:10.366Z"
+    },
+    {
+      "number": "1.0.1",
+      "date": "2016-02-24T14:39:36.914Z"
+    },
+    {
+      "number": "2.0.0",
+      "date": "2016-02-27T01:13:12.792Z"
+    },
+    {
+      "number": "2.0.1",
+      "date": "2016-02-27T15:05:13.043Z"
+    }
+  ],
+  "created": "2016-02-24T07:46:10.366Z",
+  "modified": "2016-02-27T15:05:13.043Z",
+  "lastPublisher": {
+    "name": "unibrowdev",
+    "email": "josiahb@unibrowdev.com"
+  },
+  "owners": [
+    {
+      "name": "unibrowdev",
+      "email": "josiahb@unibrowdev.com"
+    }
+  ],
+  "readme": "#git-handler\n\nI created `git-handler` mostly because I am using [webpack](https://webpack.github.io/) to bundle an\nelectron application, and I needed some way to pull down a template structure that is being hosted on\ngithub. I tried a lot of the other git modules available, and though they are good they weren't compatible\nwith `webpack`. Hence, the only (that I know of) git module that works with `webpack`.\n\n##Usage\n\nSome new features have been added for version 2 including the ability to do `git add`, `git checkout`, `git clone`,\n`git commit`, `git pull` and `git push`. Again, if you have any ideas or issues please post them to the git repository\nlocated [here](https://github.com/browerjosiahdev/git-handler).\n\n```javascript\nimport Git from 'git-handler'; // If using ES6 import statement.\nconst Git = require('git-handler'); // If using ES Vanilla.\n\nconst RepoUrl = 'https://github.com/user/repo.git';\nconst LocalUrl = '/path/to/local/repository/';\n\n/**\n * @method add\n *\n * Called to add changed items to the local repository so they are ready to be staged.\n *\n * @param Path to the local git repository.\n * @param Callback method for when the process completes.\n**/\nGit.add(LocalUrl, function (details) {\n  if (details.err) {\n    console.error(details.err);\n    return;\n  }\n  console.log(details.stdout);\n  console.log(details.stderr);\n});\n\n/**\n * @method checkout\n *\n * Called to checkout a new or existing branch.\n *\n * @param Path to the local git repository.\n * @param Name of the existing or new branch.\n * @param True to force creation of new branch if doesn't exist, false to throw an error.\n * @param Callback method for when the process completes.\n**/\nGit.checkout(LocalUrl, 'new-branch', true, function (details) {\n  if (details.err) {\n    console.error(details.err);\n    return;\n  }\n  console.log(details.stdout);\n  console.log(details.stderr);\n});\n\n/**\n * @method clone\n *\n * Called to clone a repository.\n *\n * @param HTTPS path to the remote repository.\n * @param Path to where on your machine you would like to clone the repository.\n * @param (optional) array of flags to use with the clone command.\n * @param Callback method for when the process completes.\n**/\nGit.clone(RepoUrl, '/path/to/clone/to', ['-l', '-s'], function (details) {\n  if (details.err) {\n    console.error(details.err);\n    return;\n  }\n  console.log('YAY! The repository was cloned successfully.');\n});\n\n/**\n * @method commit\n *\n * Called to commit unstaged changes to the local repository.\n *\n * @param Path to the local git repository.\n * @param Message to commit with.\n * @param Callback method for when the process completes.\n *\n * NOTE: Commit automatically calls the 'add' method!\n**/\nGit.commit(LocalUrl, 'Commit message', function (details) {\n  if (details.err) {\n    console.error(details.err);\n    return;\n  }\n  console.log(details.stdout);\n  console.log(details.stderr);\n});\n\n/**\n * @method pull\n *\n * Called to pull the latest from the remote repository.\n *\n * @param Path to the local git repository.\n * @param HTTPS path to the remote repository.\n * @param Name of the branch to pull.\n * @param Callback method for when the process completes.\n**/\nGit.pull(LocalUrl, RepoUrl, 'master', function (details) {\n  if (details.err) {\n    console.error(details.err);\n    return;\n  }\n  console.log(details.stdout);\n  console.log(details.stderr);\n});\n\n/**\n * @method push\n *\n * Called to push the staged changes from your local repository to the remote repository.\n *\n * @param Path to the local git repository.\n * @param HTTPS path to the remote repository.\n * @param Name of the branch to push to.\n * @param Credentials object containing { password, userName }\n * @param Callback method for when the process completes.\n**/\nGit.push(LocalUrl, RepoUrl, 'master', { password: '*****', userName: 'unibrowdev' }, function (details) {\n  if (details.err) {\n    console.error(details.err);\n    return;\n  }\n  console.log(details.stdout);\n  console.log(details.stderr);\n});\n```\n"
+}

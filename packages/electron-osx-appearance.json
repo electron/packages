@@ -4,8 +4,17 @@
   "description": "APIs to access the OS X Appearance Settings.",
   "license": "MIT",
   "repository": {
-    "type": "git",
-    "url": "git+https://github.com/danhp/electron-osx-appearance.git"
+    "user": "danhp",
+    "repo": "electron-osx-appearance",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/danhp/electron-osx-appearance/tarball/master",
+    "clone_url": "https://github.com/danhp/electron-osx-appearance",
+    "https_url": "https://github.com/danhp/electron-osx-appearance",
+    "travis_url": "https://travis-ci.org/danhp/electron-osx-appearance",
+    "zip_url": "https://github.com/danhp/electron-osx-appearance/archive/master.zip",
+    "api_url": "https://api.github.com/repos/danhp/electron-osx-appearance"
   },
   "author": {
     "name": "Daniel Pham",
@@ -35,32 +44,34 @@
     ]
   },
   "gitHead": "5e065142482d3c7cc081ebf120ddf1b23865cfd4",
-  "bugs": {
-    "url": "https://github.com/danhp/electron-osx-appearance/issues"
-  },
   "homepage": "https://github.com/danhp/electron-osx-appearance#readme",
-  "_id": "electron-osx-appearance@0.1.1",
-  "_shasum": "2a4e5fa75d17ebda77dc31b1fc21121c41cb79a1",
-  "_from": ".",
   "_npmVersion": "3.8.6",
   "_nodeVersion": "6.0.0",
-  "_npmUser": {
-    "name": "danhp",
-    "email": "pham.dany@gmail.com"
-  },
   "dist": {
     "shasum": "2a4e5fa75d17ebda77dc31b1fc21121c41cb79a1",
     "tarball": "http://registry.npmjs.org/electron-osx-appearance/-/electron-osx-appearance-0.1.1.tgz"
   },
-  "maintainers": [
+  "versions": [
+    {
+      "number": "0.1.0",
+      "date": "2016-04-29T17:18:07.110Z"
+    },
+    {
+      "number": "0.1.1",
+      "date": "2016-04-30T18:01:01.231Z"
+    }
+  ],
+  "created": "2016-04-29T17:18:07.110Z",
+  "modified": "2016-04-30T18:01:01.231Z",
+  "lastPublisher": {
+    "name": "danhp",
+    "email": "pham.dany@gmail.com"
+  },
+  "owners": [
     {
       "name": "danhp",
       "email": "pham.dany@gmail.com"
     }
   ],
-  "_npmOperationalInternal": {
-    "host": "packages-12-west.internal.npmjs.com",
-    "tmp": "tmp/electron-osx-appearance-0.1.1.tgz_1462039258964_0.7003307703416795"
-  },
-  "directories": {}
+  "readme": "# electron-osx-appearance\n\n> APIs for accessing the OS X Appearance Settings.\n\nRequires:\n* **Electron >=0.37.8**\n\n## Why?\n\n* Simple function calls instead of having to remember the name and types of each setting you need to access.\n\n## Install\n\n```\n$ npm install --save electron-osx-appearance\n```\n\n## Usage\n\n```js\nconst osxPrefs = require('electron-osx-appearance');\n\n\nif (process.platform === 'darwin') {\n\tosxPrefs.isDarkMode();\n\n\tosxPrefs.onDarkModeChanged(() => {\n\t\t// Handle the event\n\t});\n}\n\n// ...\n```\n\n**Note**: This module is a wrapper around **OS X specific** methods from Electron's `systemPreferences` module.\n\n## Methods\n\n### `unsubscribe(id)`\n\n* `id` Integer\n\nRemove subscriber with `id`.\n\n### `isDarkMode()`\n\nReturns `true` if the system is in Dark Mode, and `false` otherwise.\n\n### `onDarkModeChanged(callback)`\n\n* `callback` Function\n\nSubstribe to the Dark Mode changed event. Runs `callback` when event is fired.\n\nReturns the `id` with which you can then unsubscribe with.\n\n### `isTintBlue()`\n\nThis method return `true` if the system is using the blue tint, `false` otherwise.\n\n### `getTint()`\n\nReturn a `String` with the system's current Tint.\n\nPossible values are `'blue'` or `'graphite'`.\n\n### `onTintChanged(callback)`\n\n* `callback` Function\n\nSubscribe to the Tint changed event. Runs `callback` when event is fired.\n\nReturns the `id` with which you can then unsubscribe with.\n\n### `getHighlightColour()`\n\nReturns an RGB `array` of the system's current Highlight Colour.\n\nIf none is found, returns `[9, 92, 220]` as default.\n\n### `onHighlightColourChanged(callback)`\n\n* `callback` Function\n\nSubscribe to the Highlight Colour changed event. Runs `callback` when event is fired.\n\nReturns the `id` with which you can then unsubscribe with.\n\n### `getSidebarIconSize()`\n\nReturns `String` with the system's current Sidebar Icon Size.\n\nPossible values are `small`, `medium` or `large`.\n\n### `onSidebarIconSizeChanged(callback)`\n\n* `callback` Function\n\nSubscribe to the Sidebar Icon Size changed event. Runs `callback` when event is fired.\n\nReturns the `id` with which you can then unsubscribe with.\n\n### `getScrollbarVisibility()`\n\nReturns a `String` with the system's current Scrollbar Visibility.\n\nPossible values are `automatic`, `whenscrolling` or `always`.\n\n### `onScrollbarVisibilityChanged(callback)`\n\n* `callback` Function\n\nSubscribe to the Scrollbar Visibility changed event. Runs `callback` when event is fired.\n\nReturns the `id` with which you can then unsubscribe with.\n\n### `isScrollbarPaging()`\n\nReturns `true` if the system is using Scrollbar Paging, `false` otherwise.\n\n### `onScrollbarPagingChanged(callback)`\n\n* `callback` Function\n\nSubscribe to the Scrollbar Paging changed event. Runs `callback` when event is fired.\n\nReturns the `id` with which you can then unsubscribe with.\n\n## License\n\nMIT © Daniel Pham\n"
 }

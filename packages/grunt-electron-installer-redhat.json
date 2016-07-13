@@ -9,8 +9,17 @@
     "url": "http://unindented.org/"
   },
   "repository": {
-    "type": "git",
-    "url": "git://github.com/unindented/grunt-electron-installer-redhat.git"
+    "user": "unindented",
+    "repo": "grunt-electron-installer-redhat",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/unindented/grunt-electron-installer-redhat/tarball/master",
+    "clone_url": "https://github.com/unindented/grunt-electron-installer-redhat",
+    "https_url": "https://github.com/unindented/grunt-electron-installer-redhat",
+    "travis_url": "https://travis-ci.org/unindented/grunt-electron-installer-redhat",
+    "zip_url": "https://github.com/unindented/grunt-electron-installer-redhat/archive/master.zip",
+    "api_url": "https://api.github.com/repos/unindented/grunt-electron-installer-redhat"
   },
   "keywords": [
     "gruntplugin",
@@ -40,32 +49,30 @@
     "grunt": "^0.4.0"
   },
   "gitHead": "573063a1bd5dfd44cdc31824a075c48cf144e130",
-  "bugs": {
-    "url": "https://github.com/unindented/grunt-electron-installer-redhat/issues"
-  },
   "homepage": "https://github.com/unindented/grunt-electron-installer-redhat#readme",
-  "_id": "grunt-electron-installer-redhat@0.3.0",
-  "_shasum": "2f6b21d779742fe9256eb4153e8836df37215f86",
-  "_from": ".",
   "_npmVersion": "2.14.12",
   "_nodeVersion": "4.2.6",
-  "_npmUser": {
+  "dist": {
+    "shasum": "2f6b21d779742fe9256eb4153e8836df37215f86",
+    "tarball": "http://registry.npmjs.org/grunt-electron-installer-redhat/-/grunt-electron-installer-redhat-0.3.0.tgz"
+  },
+  "versions": [
+    {
+      "number": "0.3.0",
+      "date": "2016-02-05T21:00:53.971Z"
+    }
+  ],
+  "created": "2016-02-05T21:00:53.971Z",
+  "modified": "2016-02-05T21:00:53.971Z",
+  "lastPublisher": {
     "name": "unindented",
     "email": "unindented@gmail.com"
   },
-  "maintainers": [
+  "owners": [
     {
       "name": "unindented",
       "email": "unindented@gmail.com"
     }
   ],
-  "dist": {
-    "shasum": "2f6b21d779742fe9256eb4153e8836df37215f86",
-    "tarball": "http://registry.npmjs.org/grunt-electron-installer-redhat/-/grunt-electron-installer-redhat-0.3.0.tgz"
-  },
-  "_npmOperationalInternal": {
-    "host": "packages-9-west.internal.npmjs.com",
-    "tmp": "tmp/grunt-electron-installer-redhat-0.3.0.tgz_1454706051051_0.15636669285595417"
-  },
-  "directories": {}
+  "readme": "![Electron Installer for Red Hat](resources/logo.png)\n\n# grunt-electron-installer-redhat [![Version](https://img.shields.io/npm/v/grunt-electron-installer-redhat.svg)](https://www.npmjs.com/package/grunt-electron-installer-redhat) [![Build Status](https://img.shields.io/travis/unindented/grunt-electron-installer-redhat.svg)](http://travis-ci.org/unindented/grunt-electron-installer-redhat) [![Dependency Status](https://img.shields.io/gemnasium/unindented/grunt-electron-installer-redhat.svg)](https://gemnasium.com/unindented/grunt-electron-installer-redhat)\n\n> Create a Red Hat package for your Electron app.\n\nNot a fan of [Grunt](http://gruntjs.com/)? Use the vanilla module [`electron-installer-redhat`](https://github.com/unindented/electron-installer-redhat)!\n\n\n## Requirements\n\nThis tool requires `rpmbuild` to build the `.rpm` package. On Fedora you can do something like this:\n\n```\n$ sudo dnf install rpm-build\n```\n\nWhile on Ubuntu you'll need to do this instead:\n\n```\n$ sudo apt-get install rpm\n```\n\n\n## Getting Started\n\nThis plugin requires Grunt `~0.4.0`\n\nIf you haven't used [Grunt](http://gruntjs.com/) before, be sure to check out the [Getting Started](http://gruntjs.com/getting-started) guide, as it explains how to create a [Gruntfile](http://gruntjs.com/sample-gruntfile) as well as install and use Grunt plugins. Once you're familiar with that process, you may install this plugin with this command:\n\n```shell\nnpm install grunt-electron-installer-redhat --save-dev\n```\n\nOnce the plugin has been installed, it may be enabled inside your Gruntfile with this line of JavaScript:\n\n```js\ngrunt.loadNpmTasks('grunt-electron-installer-redhat')\n```\n\n*This plugin was designed to work with Grunt 0.4.x. If you're still using grunt v0.3.x it's strongly recommended that [you upgrade](http://gruntjs.com/upgrading-from-0.3-to-0.4), but in case you can't please use [v0.3.2](https://github.com/gruntjs/grunt-contrib-copy/tree/grunt-0.3-stable).*\n\n\n## Installer task\n\n_Run this task with the `grunt electron-installer-redhat` command._\n\nTask targets, files and options may be specified according to the grunt [Configuring tasks](http://gruntjs.com/configuring-tasks) guide.\n\n### Usage\n\nSay your Electron app lives in `path/to/app`, and has a structure like this:\n\n```\n.\n├── LICENSE\n├── README.md\n├── node_modules\n│   ├── electron-packager\n│   └── electron-prebuilt\n├── package.json\n├── resources\n│   ├── Icon.png\n│   ├── IconTemplate.png\n│   └── IconTemplate@2x.png\n└── src\n    ├── index.js\n    ├── main\n    │   └── index.js\n    └── renderer\n        ├── index.html\n        └── index.js\n```\n\nYou now run `electron-packager` to build the app for Red Hat:\n\n```\n$ electron-packager . app --platform linux --arch x64 --out dist/\n```\n\nAnd you end up with something like this in your `dist` folder:\n\n```\n.\n└── dist\n    └── app-linux-x64\n        ├── LICENSE\n        ├── LICENSES.chromium.html\n        ├── content_shell.pak\n        ├── app\n        ├── icudtl.dat\n        ├── libgcrypt.so.11\n        ├── libnode.so\n        ├── locales\n        ├── natives_blob.bin\n        ├── resources\n        ├── snapshot_blob.bin\n        └── version\n```\n\nIn order to create a `.rpm` package for your app, the configuration for your Grunt task would look like this:\n\n```js\n'electron-installer-redhat': {\n  app: {\n    options: {\n      arch: 'x86_64'\n    },\n    src: 'path/to/app/dist/app-linux-x64',\n    dest: 'path/to/app/dist/installers/'\n  }\n}\n```\n\nThe task will try to extract all necessary information from your `package.json`, and then generate your package at `path/to/app/dist/installers/`.\n\nYou can also create different packages for different architectures, while manually overriding certain options:\n\n```js\n'electron-installer-redhat': {\n  options: {\n    productName: 'Foo',\n    productDescription: 'Bar baz qux.',\n    categories: [\n      'Utility'\n    ]\n  },\n\n  linux32: {\n    options: {\n      arch: 'x86'\n    },\n    src: 'path/to/app/dist/app-linux-ia32',\n    dest: 'path/to/app/dist/installers/'\n  },\n\n  linux64: {\n    options: {\n      arch: 'x86_64'\n    },\n    src: 'path/to/app/dist/app-linux-x64',\n    dest: 'path/to/app/dist/installers/'\n  }\n}\n```\n\n### Options\n\nSee the options supported by [`electron-installer-redhat`](https://github.com/unindented/electron-installer-redhat#options).\n\n\n## Meta\n\n* Code: `git clone git://github.com/unindented/grunt-electron-installer-redhat.git`\n* Home: <https://github.com/unindented/grunt-electron-installer-redhat/>\n\n\n## Contributors\n\n* Daniel Perez Alvarez ([unindented@gmail.com](mailto:unindented@gmail.com))\n\n\n## License\n\nCopyright (c) 2016 Daniel Perez Alvarez ([unindented.org](https://unindented.org/)). This is free software, and may be redistributed under the terms specified in the LICENSE file.\n"
 }

@@ -1,0 +1,90 @@
+{
+  "name": "forewarn",
+  "version": "1.0.2",
+  "description": "Scoped and styled warning logger",
+  "license": "MIT",
+  "main": "index.js",
+  "browser": {
+    "chalk": false
+  },
+  "files": [
+    "index.js"
+  ],
+  "author": {
+    "name": "Vincent Weevers",
+    "email": "mail@vincentweevers.nl",
+    "url": "vincentweevers.nl"
+  },
+  "scripts": {
+    "test": "babel-node test.js | tap-spec",
+    "build": "babel src.js > index.js",
+    "prepublish": "npm run build"
+  },
+  "dependencies": {
+    "chalk": "~1.1.1",
+    "detect-node": "~2.0.3",
+    "global": "~4.3.0",
+    "in-production": "~1.0.1"
+  },
+  "devDependencies": {
+    "proxyquire": "~1.7.3",
+    "tape": "~4.2.2"
+  },
+  "keywords": [
+    "warning",
+    "warn",
+    "console"
+  ],
+  "engines": {
+    "node": ">=0.10.0",
+    "npm": ">=2.0.0"
+  },
+  "repository": {
+    "user": "vweevers",
+    "repo": "node-forewarn",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/vweevers/node-forewarn/tarball/master",
+    "clone_url": "https://github.com/vweevers/node-forewarn",
+    "https_url": "https://github.com/vweevers/node-forewarn",
+    "travis_url": "https://travis-ci.org/vweevers/node-forewarn",
+    "zip_url": "https://github.com/vweevers/node-forewarn/archive/master.zip",
+    "api_url": "https://api.github.com/repos/vweevers/node-forewarn"
+  },
+  "homepage": "https://github.com/vweevers/node-forewarn",
+  "gitHead": "40b8977df9b525f27f921397c2de1330464bf415",
+  "_npmVersion": "2.12.1",
+  "_nodeVersion": "2.3.4",
+  "dist": {
+    "shasum": "03f481610ca6124645fb5b7c42b93cca34c587ba",
+    "tarball": "http://registry.npmjs.org/forewarn/-/forewarn-1.0.2.tgz"
+  },
+  "versions": [
+    {
+      "number": "1.0.0",
+      "date": "2015-10-22T23:06:10.294Z"
+    },
+    {
+      "number": "1.0.1",
+      "date": "2015-10-23T09:16:40.150Z"
+    },
+    {
+      "number": "1.0.2",
+      "date": "2015-10-23T09:38:45.037Z"
+    }
+  ],
+  "created": "2015-10-22T23:06:10.294Z",
+  "modified": "2015-10-23T09:38:45.037Z",
+  "lastPublisher": {
+    "name": "vweevers",
+    "email": "dev@vincentweevers.nl"
+  },
+  "owners": [
+    {
+      "name": "vweevers",
+      "email": "dev@vincentweevers.nl"
+    }
+  ],
+  "readme": "# forewarn\r\n\r\n**Scoped and styled warning logger.** Best used sparingly, forewarn writes a message to console unless a condition is falsy or `NODE_ENV` is production. It's meant to advise consumers of your module when some argument is invalid, but you have an alternative code path to follow. Meaning: instead of throwing an error and breaking the flow, you adapt, and through forewarn, you help developers prevent the situation in the future.\r\n\r\n[![npm status](http://img.shields.io/npm/v/forewarn.svg?style=flat-square)](https://www.npmjs.org/package/forewarn) [![Dependency status](https://img.shields.io/david/vweevers/node-forewarn.svg?style=flat-square)](https://david-dm.org/vweevers/node-forewarn)\r\n\r\n![example](https://github.com/vweevers/node-forewarn/raw/master/example.png)\r\n\r\n## about\r\n\r\nThis module is adapted from React's `warning` function:\r\n\r\n>Similar to invariant but only logs a warning if the condition is not met.\r\n This can be used to log issues in development environments in critical\r\n paths. Removing the logging code for production environments will keep the\r\n same logic and follow the same code paths.\r\n\r\nDifferences from React's `warning`:\r\n\r\n- Scoped like `debug`\r\n- The warning message is styled if the execution environment is Chrome, Electron, Firefox with Firebug or Node.js\r\n- The `condition` argument has flipped polarity and is made explicit (because\r\n  it's easier to read IMHO):\r\n    - `warn.when(3 !== 3, 'Three should be three')` reads as \"warn if 3 does not equal 3\"\r\n    - `warn('Three should be three')` always warns.\r\n- Arguments are passed to `console.warn` as is, so you can use all modifiers (depending on environment) instead of just `%s` and an arbitrary number of extra arguments.\r\n\r\n## example\r\n\r\n```js\r\nconst warn = require('forewarn')('my-module')\r\n\r\nlet path = ['a', 'b']\r\n  , length = path.length\r\n  , minimum = 3\r\n\r\nwarn.when( length < minimum\r\n         ,'Ignoring invalid path %o because length %d is less than %d'\r\n         , path, length, minimum )\r\n```\r\n\r\n## api\r\n\r\n### `warn = forewarn(scope)`\r\n\r\nCreate a `warn` function. Messages will be prefixed with the string `scope` (usually the name of your module). Returns a noop in production.\r\n\r\n### `warn(format, ...args)`\r\n\r\nLog a warning.\r\n\r\n### `warn.when(condition, format, ...args)`\r\n\r\nLog a warning if `condition` is truthy.\r\n\r\n## install\r\n\r\nWith [npm](https://npmjs.org) do:\r\n\r\n```\r\nnpm install forewarn\r\n```\r\n\r\n## license\r\n\r\n[MIT](http://opensource.org/licenses/MIT) © [Vincent Weevers](vincentweevers.nl)\r\n"
+}

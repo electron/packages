@@ -1,0 +1,81 @@
+{
+  "name": "webida-restful-api",
+  "version": "0.6.0",
+  "description": "Webida Restful API Spec & generated clients",
+  "license": "Apache-2.0",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "./node_modules/mocha/bin/mocha --recursive"
+  },
+  "repository": {
+    "user": "webida",
+    "repo": "webida-restful-api",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/webida/webida-restful-api/tarball/master",
+    "clone_url": "https://github.com/webida/webida-restful-api",
+    "https_url": "https://github.com/webida/webida-restful-api",
+    "travis_url": "https://travis-ci.org/webida/webida-restful-api",
+    "zip_url": "https://github.com/webida/webida-restful-api/archive/master.zip",
+    "api_url": "https://api.github.com/repos/webida/webida-restful-api"
+  },
+  "dependencies": {
+    "superagent": "2.0.0"
+  },
+  "devDependencies": {
+    "mocha": "~2.3.4",
+    "expect.js": "~0.3.1"
+  },
+  "gitHead": "e6485cbe281b3f2d71f12d9e2dee4edb0f145a23",
+  "homepage": "https://github.com/webida/webida-restful-api#readme",
+  "_npmVersion": "3.8.9",
+  "_nodeVersion": "6.2.0",
+  "dist": {
+    "shasum": "e2acba83d7a9d1f5cc9cebe91a17ec20c1ed1572",
+    "tarball": "http://registry.npmjs.org/webida-restful-api/-/webida-restful-api-0.6.0.tgz"
+  },
+  "versions": [
+    {
+      "number": "0.2.0",
+      "date": "2016-07-07T07:55:53.915Z"
+    },
+    {
+      "number": "0.2.1",
+      "date": "2016-07-07T08:25:23.077Z"
+    },
+    {
+      "number": "0.3.0",
+      "date": "2016-07-08T10:44:00.450Z"
+    },
+    {
+      "number": "0.4.0",
+      "date": "2016-07-10T14:47:20.838Z"
+    },
+    {
+      "number": "0.4.1",
+      "date": "2016-07-11T05:40:11.944Z"
+    },
+    {
+      "number": "0.5.0",
+      "date": "2016-07-11T16:05:24.309Z"
+    },
+    {
+      "number": "0.6.0",
+      "date": "2016-07-13T09:49:07.258Z"
+    }
+  ],
+  "created": "2016-07-07T07:55:53.915Z",
+  "modified": "2016-07-13T09:49:07.258Z",
+  "lastPublisher": {
+    "name": "gotchazipc",
+    "email": "lunaris@gmail.com"
+  },
+  "owners": [
+    {
+      "name": "gotchazipc",
+      "email": "lunaris@gmail.com"
+    }
+  ],
+  "readme": "# webida-restful-api\n\nThis project contains \n - Webida Restful API Spec [swagger.yaml](api-spec/swagger.yaml) \n - Javascript Client code generator (see builder/ directory) using [Swagger Codegen](https://github.com/swagger-api/swagger-codegen) project:\n - Generated Javascript Client sources & [docs](README-API.md) \n    \n## Installation \n\n### For Webida server & node.js env. \n\nSince server has a dependency to webida-resftul-api package already, server developers may not need to install npm package manually. To use client library in other node.js project, just install npm package from public npmjs registry. \n \n``` shell\nnpm install webida-restful-api\n```\n\n### For Webida client \n\nThis project contains already built api-bunldle.js that can be used as AMD module. So, just import api-bundle.js (and api-bundle.js.map) to client code directly, or add respository to bower.json. \n\nIn the case of electron, using node modules in any webida client code is not recommended. Use api-bundle.js directly for better performance & integrity. \n\n\n## For contributors \n\nIf you found any bugs/problems in api spec, fill free to report. To extend features, pile an issue and begin discussion. All contributions for builder script & templates are always welcome. Please, read sections below to change spec & generate client codes and do not include 'generated stuffs' in PR. \n\n\n## Build for your own\n\nIf you're building webida-based product or service, you may want to customize api spec & regenerate client sources & docs. \n\n\n### Pre-requisites\n\n#### node.js\n\nDownload & install [node.js](https://nodejs.org) first, if you don't have one yet.\nFor Windows OS, we recommend to use [nvm-windows](https://github.com/coreybutler/nvm-windows) then official installer.\n\n#### swagger-codegen\n\nDownload or build swagger-codegen-cli.jar from Swagger Codegen project. See [Swagger Codegen](https://github.com/swagger-api/swagger-codegen) project page for details. Then, copy swagger-codegen.cli to builder/ directory. To change the path of jar file, you should edit build.sh directly. \n\n#### webpack\n\nJust install webpack to global. (unlike grunt/gulp, local installation is not mandatory yet)\n``` shell\nnpm install -g webpack\n```\n\n#### bash\n\nFor Windows, use bash from git-for-windows binary to run build.sh \n\n### Editing swagger spec & templates\n\nWe recommend you to use swagger-editor[swagger-editor](https://github.com/swagger-api/swagger-editor) to edit swagger file & on-the-fly validation. Always be sure that swagger.yaml is validated before building. Or, swagger-codegen-cli will produce some weird errors, hard to find why & where. Do not edit swagger.json file directly, for it's generated from yaml file by build.sh. You may need to add some host, port information in api spec for on-the-fly testing with editor UI, but it's not recommended to publish your spec with 'fixed' api endpoint url, in the view point of devops. \n\nTo change package.json generated, edit template files, especially package.mustache. You also need to change\nbuild.sh to set codegen configurations. Since current template has some fixes on several issues, starting\nfrom the code generated by official templates will be helpful to make your own templates. \n\n\n### Building sources & docs\n\nbuild.sh will clear pre-generated sources & docs with prior swagger.yaml and regenerate them.\n``` shell\ncd builder\n./build.sh\n```\n\n### Distributing generated stuffs \n\ngit_push.sh, generated by swagger-codegen, will help you to upload files to git repository. To publish in public package repositories, read & follow instructions of the package system/manager. You may need to upload all generated stuffs to github or some other central code repository. "
+}

@@ -7,8 +7,17 @@
     "test": "node test.js"
   },
   "repository": {
-    "type": "git",
-    "url": "git+https://github.com/jfmdev/simple-spellchecker.git"
+    "user": "jfmdev",
+    "repo": "simple-spellchecker",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/jfmdev/simple-spellchecker/tarball/master",
+    "clone_url": "https://github.com/jfmdev/simple-spellchecker",
+    "https_url": "https://github.com/jfmdev/simple-spellchecker",
+    "travis_url": "https://travis-ci.org/jfmdev/simple-spellchecker",
+    "zip_url": "https://github.com/jfmdev/simple-spellchecker/archive/master.zip",
+    "api_url": "https://api.github.com/repos/jfmdev/simple-spellchecker"
   },
   "keywords": [
     "simple",
@@ -22,9 +31,6 @@
     "name": "JFMDev"
   },
   "license": "LGPL-3.0",
-  "bugs": {
-    "url": "https://github.com/jfmdev/simple-spellchecker/issues"
-  },
   "homepage": "https://github.com/jfmdev/simple-spellchecker#readme",
   "dependencies": {
     "binarysearch": "^0.2.4",
@@ -34,28 +40,29 @@
     "unzip": "^0.1.11"
   },
   "gitHead": "11a83d3e4ca48b24efa78f1a1ad975ed35c7d98b",
-  "_id": "simple-spellchecker@0.9.0",
-  "_shasum": "81f0915f899f2a3b19858538743081286a500c8e",
-  "_from": ".",
   "_npmVersion": "2.14.3",
   "_nodeVersion": "0.12.7",
-  "_npmUser": {
-    "name": "jfmdev",
-    "email": "kudalab@inboxalias.com"
-  },
   "dist": {
     "shasum": "81f0915f899f2a3b19858538743081286a500c8e",
     "tarball": "http://registry.npmjs.org/simple-spellchecker/-/simple-spellchecker-0.9.0.tgz"
   },
-  "maintainers": [
+  "versions": [
+    {
+      "number": "0.9.0",
+      "date": "2016-03-15T16:09:16.330Z"
+    }
+  ],
+  "created": "2016-03-15T16:09:16.330Z",
+  "modified": "2016-03-15T16:09:16.330Z",
+  "lastPublisher": {
+    "name": "jfmdev",
+    "email": "kudalab@inboxalias.com"
+  },
+  "owners": [
     {
       "name": "jfmdev",
       "email": "kudalab@inboxalias.com"
     }
   ],
-  "_npmOperationalInternal": {
-    "host": "packages-13-west.internal.npmjs.com",
-    "tmp": "tmp/simple-spellchecker-0.9.0.tgz_1458058152720_0.3308561146259308"
-  },
-  "directories": {}
+  "readme": "Simple Spellchecker\r\n===================\r\n\r\n> A simple and fast spellchecker with spelling suggestions and Electron's integration\r\n\r\n\r\nFeatures\r\n--------\r\n\r\n**Simple Spellchecker** is a spellchecker module for Node.js, that allows to check if a word is misspelled and to get spelling suggestions.\r\n\r\nIt comes with dictionaries for English, Spanish, French, German and Dutch, but you can easily add more languages by simply defining a text file with a list of valid words.\r\n\r\nIt also has a CLI tool that allows to check words from the command line.\r\n\r\nUsage\r\n-----\r\n\r\nIn order to use the module, you must first install it using NPM.\r\n\r\n    npm install simple-spellchecker\r\n\r\nAnd then require the module, get a `Dictionary` object and invoke their methods.\r\n\r\n```javascript\r\nvar SpellChecker = require('simple-spellchecker');\r\nSpellChecker.getDictionary(\"fr-FR\", function(err, dictionary) {\r\n    if(!err) {\r\n        var misspelled = ! dictionary.spellCheck('maisonn');\r\n        if(misspelled) {\r\n            var suggestions = dictionary.getSuggestions('maisonn');\r\n        }\r\n    }\r\n});    \r\n```\r\n\r\nMethods\r\n-------\r\n\r\n### Module\r\n\r\nThe module has three public methods: `getDictionary()`,  `getDictionarySync()` and `normalizeDictionary()`.\r\n\r\n#### getDictionary(fileName [, folderPath], callback)\r\n\r\nThis method allows to get a `Dictionary` instance from a file. \r\n\r\nParameters:\r\n * `fileName`: The name of the dictionary's file. The method is going to first search a file with `.dic` extension, if not found, then is going to search a `.zip` and is going to unzip it.\r\n * `folderPath`: The folder in which the dictionary's file is located. This parameter is optional, by default it assumes that the file is in the `dict` folder.\r\n * `callback`: A function which is going to be invoked for return the `Dictionary` object.\r\n\r\nExample: \r\n\r\n```javascript\r\nvar SpellChecker = require('simple-spellchecker');\r\nSpellChecker.getDictionary(\"fr-FR\", function(err, result) {\r\n    var dictionary = result;\r\n});    \r\n```\r\n\r\n#### getDictionarySync(fileName [, folderPath])\r\n\r\nThis method allows to get a `Dictionary` instance from a file, in a synchronous way. Unlike `getDictionary`, this method can't open ZIP files.\r\n\r\nParameters:\r\n * `fileName`: The name of the dictionary's file. The file must have `.dic` extension.\r\n * `folderPath`: The folder in which the dictionary's file is located. This parameter is optional, by default it assumes that the file is in the `dict` folder.\r\n\r\nReturns:\r\n * A `Dictionary` object. \r\n\r\nExample: \r\n\r\n```javascript\r\nvar SpellChecker = require('simple-spellchecker');\r\nvar dictionary = SpellChecker.getDictionarySync(\"fr-FR\");    \r\n```\r\n\r\n#### normalizeDictionary(inputPath [, outputPath], callback)\r\n\r\nThis methods reads a UTF-8 dictionary file, removes the BOM and `\\r` characters and sorts the list of words.\r\n\r\nParameters:\r\n * `inputPath`: The path of the dictionary file.\r\n * `outputPath`: The path for the normalized dictionary file. This parameter is optional, by deafult the original file is overwritten.\r\n * `callback`: A function which is going to be invoked when the process has finished.\r\n\r\nExample:\r\n\r\n```javascript\r\nvar SpellChecker = require('simple-spellchecker');\r\nSpellChecker.normalizeDictionary(inputFile, outputFile, function(err, success) {\r\n    if(success) console.log(\"The file was normalized\");\r\n}); \r\n```   \r\n\r\n### Dictionary\r\n\r\nThe `Dictionary` class has six public methods: `getLength()`,  `setWordlist()`,  `spellCheck()`,  `isMisspelled()`,  `getSuggestions()` and `checkAndSuggest()`\r\n\r\n#### getLength()\r\n\r\nThis method allows to get the quantity of words that the dictionary has.\r\n\r\nReturns:\r\n * An integer with the number of words. \r\n\r\n#### setWordlist(wordlist)\r\n\r\nThis method allows to set the words of the dictionary.\r\n\r\nParameter:\r\n * `wordlist`: an array of strings.\r\n\r\n### spellCheck(word)\r\n\r\nThis method allows to verify is a word is correctly written or not.\r\n\r\nParameter:\r\n * `word`: the word to verify.\r\n\r\nReturns:\r\n * `true` if the word is in the dictionary, `false` if not. \r\n\r\n#### isMisspelled(word)\r\n\r\nThis method allows to verify is a word is misspelled or not.\r\n\r\nParameter:\r\n * `word`: the word to verify.\r\n\r\nReturns:\r\n * `true` if the word is misspelled, `false` if not\r\n\r\n#### getSuggestions(word [, limit] [, maxDistance])\r\n\r\nThis method allows to get spelling suggestions for a word.\r\n\r\nParameters:\r\n * `word`: the word used to generate the suggestions.\r\n * `limit`: the maximum number of suggestions to get (by default, 5).\r\n * `maxDistance`: the maximum _edit distance_ that a word can have from the `word` parameter, in order to being considered as a valid suggestion (by default, 2).\r\n\r\nReturns:\r\n * An array of strings.\r\n\r\n#### checkAndSuggest(word [, limit] [, maxDistance])\r\n\r\nThis method allows to verify if a word is misspelled and to get spelling suggestions.\r\n\r\nParameters:\r\n * `word`: the word to verify.\r\n * `limit`: the maximum number of suggestions to get (by default, 5).\r\n * `maxDistance`: the maximum _edit distance_ that a word can have from the `word` parameter, in order to being considered as a valid suggestion (by default, 2).\r\n\r\nReturns:\r\n * An object with the fields `misspelled`, which contains a boolean, and `suggestions`, which contains an array of strings.\r\n\r\nAdd dictionaries\r\n----------------\r\n\r\nIn order to use custom dictionaries, you must define a text file with a list of valid words, where each word is separated by a new line. \r\n\r\n### File's name\r\n\r\nThe file's extension must be `.dic`, and the name should (preferably) be composed by the language code and the region designator (e.g. `es-AR` if the language is Spanish and the region is Argentina).\r\n\r\nOptionally you can also pack the file in a ZIP package, the module is going to be able to unzip it and read it as long as the `.zip` file has the same name has the `.dic` file (e.g. a file `es-AR.zip` that contains the file `es-AR.dic`). \r\n\r\n### File's encoding\r\n\r\nThe file must be encoded in UTF8 (without BOM), the words must be separated with a _Line Feed_ (i.e. `\\n`) and not with a _Carriage Return_ plus a _Line Feed_ (i.e. `\\r\\n`), and the words must be sorted in ascending order.\r\n\r\nThe module can remove all unwanted characters and sort the words, if you either invoke the `normalize()` method or pack the file in a ZIP file (the module automatically calls the `normalize()` method after unzip it).\r\n\r\nCLI tools\r\n---------\r\n\r\nThe module comes with a script that allows to normalize dictionaries and to test them.\r\n\r\n### Test\r\n\r\nIn order to test a dictionary file, you must execute the script indicating the folder and the name of the dictionary's file and the word that you want to test. \r\n\r\nFor example, the following sentence will search in the `dict` folder a dictionary which is either in the file `en-GB.dic` or `en-GB.zip`, and is going to verify if the word `house` is misspelled or not and is going to search some spelling suggestions.\r\n\r\n    node cli.js check \"./dict\" en-GB house\r\n    \r\n\r\n### Normalize\r\n\r\nIn order to normalize a dictionary file, you must execute the script indicating the file's path:\r\n\r\n    node cli.js normalize \"./dict/en-GB.dic\"\r\n\r\nIf you don't want to override the original file, you can specify the path for an output file:\r\n\r\n    node cli.js normalize \"./dict/en-GB.dic\" \"C:/output/en-GB.dic\"\r\n\r\nElectron's integration\r\n----------------------\r\n\r\nThere are several ways in which you can integrate this module with Electron. But if you want a starting point, the following example shows how to enable the English dictionary:\r\n\r\n**1)** Install the module as a dependency of your project (`npm install simple-spellchecker --save`).\r\n\r\n**2)** In the main process, require the module an load the dictionary, and define a function to access to their methods:\r\n\r\n```javascript\r\n// Initialization.\r\nvar SpellChecker = require('simple-spellchecker');\r\nvar myDictionary = null;\r\n\r\n// Load dictionary.\r\nSpellChecker.getDictionary(\"en-US\", \"./node_modules/simple-spellchecker/dict\", function(err, result) {\r\n    if(!err) {\r\n        myDictionary = result;\r\n    }\r\n});\r\n\r\n// Define function for consult the dictionary.\r\nipcMain.on('checkspell', function(event, word) {\r\n    var res = null;\r\n    if(myDictionary != null && word != null) {\r\n        res = myDictionary.spellCheck(word);\r\n    }\r\n    event.returnValue = res;\r\n});\r\n```\r\n\r\n**3)** In the renderer process, define a spell checker provider that uses the previously loaded dictionary.\r\n\r\n```javascript\r\n// Get web frame.\r\nvar webFrame = require('electron').webFrame;\r\n\r\nwebFrame.setSpellCheckProvider(\"en-US\", false, {\r\n    spellCheck: function(text) {      \r\n        var res = ipcRenderer.sendSync('checkspell', text);\r\n        return res != null? res : true;\r\n    }\r\n});\r\n```\r\n\r\nLicense\r\n-------\r\n\r\nSimple Spellchecker is free software: you can redistribute it and/or modify\r\nit under the terms of the GNU Lesser General Public License as published by\r\nthe Free Software Foundation, either version 3 of the License, or\r\n(at your option) any later version.\r\n\r\nSimple Spellchecker is distributed in the hope that it will be useful,\r\nbut WITHOUT ANY WARRANTY; without even the implied warranty of\r\nMERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the\r\nGNU Lesser General Public License for more details.\r\n\r\nYou should have received a copy of the GNU Lesser General Public License\r\nalong with Simple Spellchecker. If not, see <http://www.gnu.org/licenses/>.\r\n"
 }

@@ -18,12 +18,18 @@
     "name": "Oscar Finnsson"
   },
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/finnsson/vicejs/issues"
-  },
   "repository": {
-    "type": "git",
-    "url": "git+ssh://git@github.com/finnsson/vicejs.git"
+    "user": "finnsson",
+    "repo": "vicejs",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/finnsson/vicejs/tarball/master",
+    "clone_url": "https://github.com/finnsson/vicejs",
+    "https_url": "https://github.com/finnsson/vicejs",
+    "travis_url": "https://travis-ci.org/finnsson/vicejs",
+    "zip_url": "https://github.com/finnsson/vicejs/archive/master.zip",
+    "api_url": "https://api.github.com/repos/finnsson/vicejs"
   },
   "homepage": "https://github.com/finnsson/vicejs",
   "dependencies": {
@@ -46,28 +52,70 @@
     "webpack": "^1.12.2"
   },
   "gitHead": "80654620acf9b858e590312f094626161cfaab88",
-  "_id": "vicejs@0.7.0",
-  "_shasum": "761603bc6632fdc371863526761a1415e354fde0",
-  "_from": ".",
   "_npmVersion": "3.3.12",
   "_nodeVersion": "5.5.0",
-  "_npmUser": {
+  "dist": {
+    "shasum": "761603bc6632fdc371863526761a1415e354fde0",
+    "tarball": "http://registry.npmjs.org/vicejs/-/vicejs-0.7.0.tgz"
+  },
+  "stars": 1,
+  "versions": [
+    {
+      "number": "0.1.0",
+      "date": "2015-10-17T07:34:16.439Z"
+    },
+    {
+      "number": "0.1.1",
+      "date": "2015-12-07T19:53:07.197Z"
+    },
+    {
+      "number": "0.1.2",
+      "date": "2015-12-07T19:53:46.724Z"
+    },
+    {
+      "number": "0.1.3",
+      "date": "2015-12-08T18:20:20.226Z"
+    },
+    {
+      "number": "0.2.0",
+      "date": "2016-02-14T18:20:09.836Z"
+    },
+    {
+      "number": "0.3.0",
+      "date": "2016-02-15T18:53:48.413Z"
+    },
+    {
+      "number": "0.4.0",
+      "date": "2016-02-15T19:54:05.107Z"
+    },
+    {
+      "number": "0.5.0",
+      "date": "2016-02-16T20:20:04.462Z"
+    },
+    {
+      "number": "0.6.0",
+      "date": "2016-02-17T20:05:16.399Z"
+    },
+    {
+      "number": "0.6.1",
+      "date": "2016-02-17T20:15:04.791Z"
+    },
+    {
+      "number": "0.7.0",
+      "date": "2016-02-24T06:04:49.858Z"
+    }
+  ],
+  "created": "2015-10-17T07:34:16.439Z",
+  "modified": "2016-02-24T06:04:49.858Z",
+  "lastPublisher": {
     "name": "finnsson",
     "email": "oscar.finnsson@gmail.com"
   },
-  "maintainers": [
+  "owners": [
     {
       "name": "finnsson",
       "email": "oscar.finnsson@gmail.com"
     }
   ],
-  "dist": {
-    "shasum": "761603bc6632fdc371863526761a1415e354fde0",
-    "tarball": "http://registry.npmjs.org/vicejs/-/vicejs-0.7.0.tgz"
-  },
-  "_npmOperationalInternal": {
-    "host": "packages-5-east.internal.npmjs.com",
-    "tmp": "tmp/vicejs-0.7.0.tgz_1456293888879_0.41374477045610547"
-  },
-  "directories": {}
+  "readme": "# vice.js\n\nVirtual DOM for Custom Elements.\n\n    import vice from \"vicejs\";\n\n    class Dog extends HTMLElement {\n      bark() {\n        alert(\"bark!\");\n      }\n\n      render() {\n        return <div on-click={this.bark}>{this.getAttribute(\"name\")}</div>;\n      }\n    }\n\n    var DogTag = vice(Dog, \"x-dog\");\n\n    var dom = <x-dog name=\"Doggy\"></x-dog>;\n\n    patch(document.getElementById(\"test\"), dom);\n\n\n## Table of contents\n\n- [Introduction](#introduction)\n- [API](#api)\n- [Examples](#examples)\n- [Modules](#modules)\n- [Releases](#releases)\n\n## Introduction\n\nVice.js is a small component API that glues together [snabbdom](https://github.com/paldepind/snabbdom)\nand [custom elements](https://github.com/WebReflection/document-register-element).\n\nIt can be used together with [babel-snabbdom-jsx](https://github.com/finnsson/babel-snabbdom-jsx).\n\n## API\n\n### `render()`\n\nReturn a snabbdom vnode.\n\n### `update()`\n\n## Examples\n\n## Modules\n\nSome helpful modules that can be included are\n\n- vice/modules/state\n- vice/modules/customElement\n- vice/modules/elms\n\n## TODO\n\n* babel-snabbdom-jsx should handle vicejs custom elements-functions.\n* create decorator for vice in order to ease export-syntax\n* use tup instead of npm as task manager\n* write unit tests\n* add mixin-ability. Mixins should be able to listen on events automatically,\n  not just add methods.\n* ref-snabbdom-module. Set as named reference.\n  snabbdom-module or JSX? How is React solving it?\n* aref-snabbdom-module. Set as reference in array in first \"named\" parent.\n  snabbdom-module or JSX?\n* render should be able to return an array.\n* create helpers for childElms\n* create helper to convert Node into h(,,).\n* create self- event binder that automatically bind events to this\n* Get vice working with TypeScript for better code completion in Atom.\n  Rename test.jsx to test.tsx and produce test.jsx as artifact from TypeScript.\n* Custom elements and default values on attributes / properties / etc?\n* will snabbdom hooks work for components? Extra implementation needed in vice-components in order to propagate insert-hooks etc?\n\n## Releases\n"
 }

@@ -5,8 +5,17 @@
     "name": "Biko Tushinde"
   },
   "repository": {
-    "type": "git",
-    "url": "git+https://github.com/smashingboxes/smashing-dev-tool.git"
+    "user": "smashingboxes",
+    "repo": "smashing-dev-tool",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/smashingboxes/smashing-dev-tool/tarball/master",
+    "clone_url": "https://github.com/smashingboxes/smashing-dev-tool",
+    "https_url": "https://github.com/smashingboxes/smashing-dev-tool",
+    "travis_url": "https://travis-ci.org/smashingboxes/smashing-dev-tool",
+    "zip_url": "https://github.com/smashingboxes/smashing-dev-tool/archive/master.zip",
+    "api_url": "https://api.github.com/repos/smashingboxes/smashing-dev-tool"
   },
   "description": "A frontend development toolkit for Smashing Boxes.",
   "usage": "[command] <cmd args>",
@@ -156,32 +165,58 @@
   "licenses": [],
   "contributors": [],
   "gitHead": "b7f2170eb26c8a10726c6defc5cfc87da8792e41",
-  "bugs": {
-    "url": "https://github.com/smashingboxes/smashing-dev-tool/issues"
-  },
   "homepage": "https://github.com/smashingboxes/smashing-dev-tool#readme",
-  "_id": "smashing-dev-tool@0.3.1",
-  "_shasum": "b5910851fd29802ae7654d9edead27125877a117",
-  "_from": ".",
   "_npmVersion": "3.7.1",
   "_nodeVersion": "5.5.0",
-  "_npmUser": {
-    "name": "btushinde",
-    "email": "biko@smashingboxes.com"
-  },
   "dist": {
     "shasum": "b5910851fd29802ae7654d9edead27125877a117",
     "tarball": "http://registry.npmjs.org/smashing-dev-tool/-/smashing-dev-tool-0.3.1.tgz"
   },
-  "maintainers": [
+  "versions": [
+    {
+      "number": "0.1.2",
+      "date": "2015-01-23T21:23:30.545Z"
+    },
+    {
+      "number": "0.1.3",
+      "date": "2015-01-23T21:54:46.034Z"
+    },
+    {
+      "number": "0.2.2",
+      "date": "2015-06-24T15:02:26.713Z"
+    },
+    {
+      "number": "0.2.3",
+      "date": "2015-06-28T03:25:58.879Z"
+    },
+    {
+      "number": "0.2.4",
+      "date": "2015-09-22T18:48:30.360Z"
+    },
+    {
+      "number": "0.2.6",
+      "date": "2016-02-15T13:44:05.073Z"
+    },
+    {
+      "number": "0.3.0",
+      "date": "2016-04-21T16:51:14.210Z"
+    },
+    {
+      "number": "0.3.1",
+      "date": "2016-04-21T19:40:42.395Z"
+    }
+  ],
+  "created": "2015-01-23T21:23:30.545Z",
+  "modified": "2016-04-21T19:40:42.395Z",
+  "lastPublisher": {
+    "name": "btushinde",
+    "email": "biko@smashingboxes.com"
+  },
+  "owners": [
     {
       "name": "btushinde",
       "email": "biko@smashingboxes.com"
     }
   ],
-  "_npmOperationalInternal": {
-    "host": "packages-16-east.internal.npmjs.com",
-    "tmp": "tmp/smashing-dev-tool-0.3.1.tgz_1461267640859_0.9591999165713787"
-  },
-  "directories": {}
+  "readme": "# Smashing Dev Tool\n\nThis is a WIP CLI for Smashing Boxes, focusing on frontend tooling and automation. By following the conventions this tool is built on, you can instantly add front end tooling and dev ops goodness to any Smashing Boxes project. Define which asset filetypes you want to include in your Smashfile and it will build a data model of your source code that can be manipulated and queried by other modules.\n\nThe goal of this project is to provide a general toolset for building optimized, well-tested client-side applications with or without backend integration. For this reason, no assumptions are made about 3rd-party libraries that might be used in a given project. Still, some assumptions must be made to maintain a relatively small set of all-purpose commands. Most of these assumptions are captured in `src/config/_smashfile.coffee` and can be overridden in the Smashfile for a given project.\n\n## Prerequisites\n\n+ [Node + NPM](http://nodejs.org/)\n+ [Bower](https://www.npmjs.com/package/bower)\n+ [CoffeeScript](https://www.npmjs.com/package/coffee-script)\n\n## Installation\n`smashing-dev-tool` is available via the NPM registry. It currently depends on Bower and CoffeeScript globally.\n\n```\n  $ npm install -g coffee-script bower smashing-dev-tool\n```\n\nThe `smash` command should now be available globally. Some commands are only available from inside a project with a valid `smashfile.coffee`.\n\n\n\n## Available Commands\n\n### Global\n\n+ `smash`: show available commands and options. Same as `smash help`.\n+ `smash new <project-name>`: generate a new `smashing-dev-tool`-compatible project in a folder called `<project-name>` and `bower install` dependencies for the chosen template\n\n### Per-project\n\n+ `smash compile`: compile the project source into unoptimized HTML, JS and CSS ready for the browser\n+ `smash serve`: run a BrowserSync-based development server and re-compile on file changes\n+ `smash build`: build the compiled source into a minified, otpimized set of files for deployment\n+ `smash docs`: generate a static documentation site for this codebase\n+ `smash clean`: remove all generated files (`/compile`, `/build`, `/docs`)\n+ `smash bump [patch|minor|major|prerelease]`: bump the version by the specified importance level and tag the repo (reuqires a `git init`'d project repo)\n\n---\n\n# `smash`-able Projects\n\n## Project Generation\n\n**Command**: `smash new <project-name>`\n\nSmashing Dev Tool borrows from the [Slush](http://slushjs.github.io/) project to allow for straight-forward, stream-based scaffolding from templates. A template consists of a list of questions contained in `prompts.json`, a `bower.json` manifest containing dependencies needed by the template, and a `smashfile.coffee` that contains configuration used by the tool. The remaining files in a template have no restrictions, but should conform to the default folder assumptions (`/client`, `/compile`, `/build`, `/docs`) unless they are overridden in the included `smashfile.coffee`.\n\nDuring project generation, user input is gathered from the commandline and inserted into the template files using [gulp-template](https://github.com/sindresorhus/gulp-template). Variables can be used in template files as follows:\n\n`prompts.json`:\n```json\n[\n  {\n    \"name\": \"appName\",\n    \"message\": \"What is the name of your project?\",\n    \"default\": \"Sample Application\"\n  },\n  {\n    \"name\": \"appDescription\",\n    \"message\": \"What is the description?\",\n    \"default\": \"A sample application.\"\n  }\n]\n```\n\n`client/index.jade`:\n```jade\ndoctype html\nhead\n  title <%= appNameSlug %>\n\nbody\n  div.container\n    h1 <%= appName %>\n    p <%= appDescription %>\n```\n\nFiles prefixed with `_` will be copied to the destination as dotfiles (`_bowerrc` &rArr; `.bowerrc`) in the generated project. All other files will be copied directly, preserving directory structure and replacing template tags with the appropriate values. After generation [gulp-install](https://github.com/slushjs/gulp-install) will run `bower install` and/or `npm install` inside the project directory. [gulp-conflict](https://github.com/slushjs/gulp-conflict) will prompt the user for action if the project directory contains file conflicts.\n\n_**Note**: at minimum, `appName` is required in `prompts.json` to create a project_\n\n_**Note**: the variable `appNameSlug` is a hyphen-delimited version of `appName` automatically generated and available for use within your templates._\n\n\n## Compling Code\n\n**Command**: `smash compile`\n\nThe compile phase transforms code located in `/client` into browser-ready code located in `/compile`. Preprocessors defined in the Smashfile are run against files with the appropriate extensions (`.coffee`, `.jade`, `.styl`, `.scss`, etc.). Other filetypes defined in the Smashfile are copied directly. The directory structure defined in the source folder (`/client` by default) is maintained in `/compile`.\n\n## Serving Code\n\n**Command**: `smash serve`\n\nFiles are served from `/compile` for development using [BrowserSync](http://www.browsersync.io/). Running `smash serve` will compile source files, start a BrowserSync server and open a browser to the server's URL. Changes to filetypes defined in the Smashfile will cause all connected browsers to refresh\n\n## Building Code\n\n**Command**: `smash build`\n\nThe build phase will first compile the code, then optimize the contents of `/compile` into a production-ready package. Options such as the name of the output folder (`/build` by default) and whether to build all source into a single file are controlled via the Smashfile.\n\n\n## Documentation Generation\n**Command**: `smash docs`\n\nSmashing Dev Tool currently uses [Groc](https://github.com/nevir/groc) to generate a static documentation site in `/docs`. A `.groc.json` file will be dynamically generated each time the command is run and contains settings required for Groc. These settings are based on the local `bower.json` and settings in `smashfile.coffee`.\n\n\n## Example Smashfile\n\nIn each project the `smashfile.coffee` file contains local config used by `smashing-dev-tool` to compile/build/document client-side assets. Default assumptions made by the tool can be overridden here on a per-project basis. The following configuration overrides many of the default assumptions, but for basic projects only the `assets` array is really needed.\n\n```coffee\nmodule.exports =\n\n  # Global filetype settings. Specifies which files `smashing-dev-tool` cares about.\n  assets: [\n    'coffee'\n    'js'\n    'jade'\n    'styl'\n    'json'\n  ]\n\n  # Global directory assumption overrides\n  dir:\n    client: 'WebContent'\n    server: 'src'\n\n  # Global image asset settings\n  images:\n    path: 'images'                   # override default image asset location (`/client/data/images`)\n\n  # Compile phase settings\n  compile:\n    copy: [                          # specify file glob patterns to copy directly\n      'client/**/*.data':''          # ex: '<file-pattern>':'<path/within/compile/directory>'\n    ]\n\n  # Build phase settings\n  build:\n    path:          'pkg'             # override default build path\n    html2js:       true              # compile HTML templates into a JS module\n    css2js:        true              # compile CSS styles into a JS module\n    includeIndex:  false             # include `index.{html,jade}` in built code\n    includeVendor: false             # include vendor libraries in built code\n    exclude: [                       # exclude glob patterns from built code\n      'client/index.jade'\n      'client/main/**/*'\n      'client/data/sample/**/*'\n    ]\n    styles:\n      out: 'sample-app.min.css'      # override default concat'd styles filename (css2js)\n      order: [                       # re-order styles for injection and concatenation\n        'app.css'\n        '**/*.css'\n      ]\n    scripts:\n      out: 'sample-app.min.js'       # override default concat'd scripts filename\n      order: [                       # re-order scripts for injection and concatenation\n        '**/jquery.js'\n        '**/*jquery*.*'\n        '**/angular.js'\n        '**/*angular*.*.js'\n        'components/vendor/**/*.js'\n        'app.js'\n      ]\n    views:\n      out: 'sample-app-views.js'     # override default concat'd views filename (html2js)\n\n    alternates: [\n      [\n        'client/app.coffee',         # use `client/app.coffee` during compile and serve\n        'client/app-build.coffee'    # use `client/app-build.coffee` when building for production\n      ]\n    ]\n```\n\n_**Note**: the Smashfile format changes frequently as we attempt to strike a balance between convention and configuration._\n\n\n## TODO/Future\n+ Automated testing of source code (unit, e2e)\n+ Integration with the [taperole](https://github.com/smashingboxes/taperole) provisioning/deployment tool\n+ API mocking, test data generation\n+ UI/UX deliverables generated from source code (style tiles, style guide, etc.)\n"
 }

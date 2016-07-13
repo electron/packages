@@ -1,0 +1,49 @@
+{
+  "name": "node-java-ipc",
+  "version": "1.0.0",
+  "description": "Node to Java Ipc using stdin, stdout and stderr, using a small and simple protocol allowing node to interact with java",
+  "main": "src/js/index.js",
+  "scripts": {
+    "build": "tsc",
+    "test": "istanbul cover --include-all-sources jasmine",
+    "build_test": "npm run build && npm run test"
+  },
+  "author": {
+    "name": "Abner Oliveira"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "shelljs": "^0.6.0"
+  },
+  "devDependencies": {
+    "istanbul": "^0.4.2",
+    "jasmine": "^2.4.1",
+    "typescript": "^1.7.5"
+  },
+  "gitHead": "bec45af9fc24ddd301045b844519e997e45d9cc2",
+  "_npmVersion": "3.3.12",
+  "_nodeVersion": "5.1.1",
+  "dist": {
+    "shasum": "bba610a1e17d57118f3d146f4b3bf0a3b2bad929",
+    "tarball": "http://registry.npmjs.org/node-java-ipc/-/node-java-ipc-1.0.0.tgz"
+  },
+  "versions": [
+    {
+      "number": "1.0.0",
+      "date": "2016-02-07T20:41:42.219Z"
+    }
+  ],
+  "created": "2016-02-07T20:41:42.219Z",
+  "modified": "2016-02-07T20:41:42.219Z",
+  "lastPublisher": {
+    "name": "abneroliveira",
+    "email": "abner.silva@gmail.com"
+  },
+  "owners": [
+    {
+      "name": "abneroliveira",
+      "email": "abner.silva@gmail.com"
+    }
+  ],
+  "readme": "# java-process\n\nA node module which provides a class JavaProcess which allow to spawn a java proccess within Node and interact with this java process\nthrough the stdin, stderr and stdout.\n\nI personally use this idea to allow a simple and easy integration from NodeJs to Java. \n\nOne of my use case are like this i provide some jar (all-in-one \"one-jar\" or \"fatjar\") app which receives inputs from stdin (System.in), \ndo some task, and then send the response through the stdout (System.out).\n\nWhy to use this approach? In my case i was developing using Electron (node+webkit Desktop solution) and have some needs to provide features related to digital signature\nusing Smart Token. So i already had this solution in Java supporting multiple Token drives. Off course i would provide this from Java to Node\nthrough a Http Service or Socket, but that in some Operating Systems (now Windows i'm talking about you :|) i would face some\nproblems because of firewall blocking and then relying on user to allow the communication. So for this particular user case a interprocess\ncommunication with a child process appears to be a good and simple solution. So far, at least :D\n\n\nObvisously, the java runtime is required, but there is no requirement tied to specific java version. \n\nSo much talk until now, let's go see java_process in action:\n\n\n``` js\n\nvar java_process = require(\"./java_process\");\n\nvar jp = new java_process.config('someApp.jar', 'someArg=1', function() {\n  jp.on('stdout', function(data) {\n    console.log(\"Some message java sent through System.out: \", String(data));\n  });\n  \n  jp.writeDataToProcess('Some message to input to java process');\n});\n```\n\n\n"
+}

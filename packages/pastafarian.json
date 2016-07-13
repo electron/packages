@@ -1,6 +1,6 @@
 {
   "name": "pastafarian",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "A tiny event emitter-based finite state machine",
   "main": "pastafarian.js",
   "scripts": {
@@ -11,8 +11,17 @@
     "test:minified": "electron-mocha --renderer --preload test/browser-shim.js --preload pastafarian.min.js --reporter spec ./test"
   },
   "repository": {
-    "type": "git",
-    "url": "git+https://github.com/orbitbot/pastafarian.git"
+    "user": "orbitbot",
+    "repo": "pastafarian",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/orbitbot/pastafarian/tarball/master",
+    "clone_url": "https://github.com/orbitbot/pastafarian",
+    "https_url": "https://github.com/orbitbot/pastafarian",
+    "travis_url": "https://travis-ci.org/orbitbot/pastafarian",
+    "zip_url": "https://github.com/orbitbot/pastafarian/archive/master.zip",
+    "api_url": "https://api.github.com/repos/orbitbot/pastafarian"
   },
   "files": [
     "pastafarian.js",
@@ -29,9 +38,6 @@
     "email": "patrik@zebros.fi"
   },
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/orbitbot/pastafarian/issues"
-  },
   "homepage": "https://github.com/orbitbot/pastafarian#readme",
   "devDependencies": {
     "chai": "3.5.0",
@@ -40,29 +46,66 @@
     "sinon": "1.17.4",
     "uglify-js": "2.6.2"
   },
-  "gitHead": "5c231f62b94605394100f05b16d81b2fff834d83",
-  "_id": "pastafarian@1.1.0",
-  "_shasum": "acdac0a53170bdf6518d6744ffb81eb3eb2ae1a7",
-  "_from": ".",
-  "_npmVersion": "2.14.12",
-  "_nodeVersion": "4.3.1",
-  "_npmUser": {
+  "gitHead": "d3b6ee8477543471a2bec287d86d142875c895d3",
+  "_npmVersion": "2.15.1",
+  "_nodeVersion": "4.4.4",
+  "dist": {
+    "shasum": "6117501d908851bc36e385a2bd7f2fa0078a1f20",
+    "tarball": "http://registry.npmjs.org/pastafarian/-/pastafarian-1.1.1.tgz"
+  },
+  "versions": [
+    {
+      "number": "0.9.2",
+      "date": "2016-04-15T16:58:45.674Z"
+    },
+    {
+      "number": "0.9.3",
+      "date": "2016-04-15T20:30:46.477Z"
+    },
+    {
+      "number": "0.9.4",
+      "date": "2016-04-18T19:18:23.338Z"
+    },
+    {
+      "number": "0.9.5",
+      "date": "2016-04-23T09:26:16.519Z"
+    },
+    {
+      "number": "0.9.6",
+      "date": "2016-04-23T12:41:42.106Z"
+    },
+    {
+      "number": "1.0.0",
+      "date": "2016-04-23T17:30:23.955Z"
+    },
+    {
+      "number": "1.0.1",
+      "date": "2016-05-02T19:58:37.629Z"
+    },
+    {
+      "number": "1.0.2",
+      "date": "2016-05-04T19:38:25.172Z"
+    },
+    {
+      "number": "1.1.0",
+      "date": "2016-05-19T21:50:30.777Z"
+    },
+    {
+      "number": "1.1.1",
+      "date": "2016-07-10T14:09:16.309Z"
+    }
+  ],
+  "created": "2016-04-15T16:58:45.674Z",
+  "modified": "2016-07-10T14:09:16.309Z",
+  "lastPublisher": {
     "name": "orbitbot",
     "email": "patrik@zebros.fi"
   },
-  "dist": {
-    "shasum": "acdac0a53170bdf6518d6744ffb81eb3eb2ae1a7",
-    "tarball": "http://registry.npmjs.org/pastafarian/-/pastafarian-1.1.0.tgz"
-  },
-  "maintainers": [
+  "owners": [
     {
       "name": "orbitbot",
       "email": "patrik@zebros.fi"
     }
   ],
-  "_npmOperationalInternal": {
-    "host": "packages-12-west.internal.npmjs.com",
-    "tmp": "tmp/pastafarian-1.1.0.tgz_1463694628368_0.9036302256863564"
-  },
-  "directories": {}
+  "readme": "# pastafarian\n> A tiny event emitter-based finite state machine\n\n[![Build Status](https://travis-ci.org/orbitbot/pastafarian.svg?branch=master)](https://travis-ci.org/orbitbot/pastafarian)\n![Uncompressed size](https://badge-size.herokuapp.com/orbitbot/pastafarian/master/pastafarian.js?color=red)\n![minfied size](https://badge-size.herokuapp.com/orbitbot/pastafarian/master/pastafarian.min.js?color=yellow&label=minfied size)\n![minfied+gzipped size](https://badge-size.herokuapp.com/orbitbot/pastafarian/master/pastafarian.min.js?label=gzipped.min&compression=gzip)\n\nGrab a lightweight event emitter implementation, add some logic to track states and Voilà! A tiny finite state machine implementation at little less than 550 bytes minfied and gzipped. `pastafarian` is implemented as a UMD module, so it should run in most javascript setups.\n\n![spaceballs-survive](https://cloud.githubusercontent.com/assets/2631164/14754610/28b3e7b6-08e5-11e6-83a5-da0bd6ced8b9.jpg)\n\n###### Features\n- probably the smallest FSM on the block in javascript-land\n- simple but powerful API\n- no external dependencies\n- synchronous state transitions only (async transitions are actually waiting states... but have a look at [`henderson`](https://github.com/orbitbot/pastafarian) for an almost identical approach with promises)\n- well below 100 LOC, small enough to read and understand immediately\n\n<br>\n\n### Example\n\n```js\nvar state = new StateMachine({\n  initial : 'start',\n  states  : {\n    start : ['end', 'start'],\n    end   : ['start']\n  }\n});\n\nstate.on('*', function(prev, next) {\n  console.log('State changed from ' + prev + ' to ' + next);\n});\n\nstate\n  .on('before:start', function(prev, param) {\n    console.log('Reset with param === \"foo\": ' + param === 'foo');\n  })\n  .on('after:start', function(next) {\n    console.log('Going to ' + next);\n  })\n  .on('end', function(prev, param) {\n    console.log('Now at end, 2 + 2 = ' + param);\n  });\n\nstate.go('end', 2 + 2);\n\nstate.reset = state.go.bind(state, 'start');\nstate.reset('foo');\n```\n\n<br>\n\n### Installation\n\nRight click to save or use the URLs in your script tags\n\n- [`pastafarian.js`](https://cdn.rawgit.com/orbitbot/pastafarian/master/pastafarian.js)\n- [`pastafarian.min.js`](https://cdn.rawgit.com/orbitbot/pastafarian/master/pastafarian.min.js)\n\nor use\n\n```sh\n$ npm install pastafarian\n$ bower install pastafarian\n```\n\nIf you're using `pastafarian` in a browser environment, the constructor is attached to the `StateMachine` global.\n\n<br>\n\n### Usage\n\nThe `StateMachine` global or the `pastafarian` module is a constructor for a finite-state machine. The constructor expects a single configuration object:\n\n| field      | type      | functionality                                                                                                 |\n|:-----------|:----------|:--------------------------------------------------------------------------------------------------------------|\n| `initial`  | string    | the starting state of the state machine                                                                       |\n| `states`   | object    | keys are state names, values are arrays of valid states to transition to  `<state name> : ['<state>', '...']` |\n| `error`    | function  | optional, function that handles errors in state transition callbacks or illegal state transitions             |\n<br>\n\nA simple state machine that describes a traffic light might be defined as\n\n```js\nvar StateMachine = require('pastafarian');\nvar trafficLight = new StateMachine({\n  initial : 'red',\n  states  : {\n    green  : ['yellow'],\n    yellow : ['green', 'red'],\n    red    : ['red'],\n  },\n  error : console.error.bind(console, 'Error: ')\n});\n```\n... which will create a state machine like this diagram:\n\n![ryg-state-sm](https://cloud.githubusercontent.com/assets/2631164/14754614/2daa6754-08e5-11e6-9922-1c63b3c7813f.png)\n\n<br>\n\n##### State machine API\n\nA state machine `var fsm = new StateMachine(config)` will have\n\n\n###### Methods:\n\n**`fsm.bind(eventName, callback) ⇒ fsm`**\n\nAttaches `callback` to be called whenever `eventName` is triggered by a state transition. See the [Event callback API](README.md#event-callback-api) for all possible events for a single transition.\n\n**`fsm.unbind(eventName, callback) ⇒ fsm`**\n\nDe-registers `callback` so it will not be triggered for `eventName`. Previously registered callbacks must be named values for this to have an effect, if a callback was defined as an anonymous function this method will silently fail.\n\n**`fsm.on(eventName, callback) ⇒ fsm`**\n\nSynonym for `fsm.bind`.\n\n**`fsm.go(state /* ...args */) ⇒ fsm`**\n\nTransitions the state machine to `state` and causes any registered callbacks for this transition (including `before:`, `after:` and wildcard callbacks) to be triggered. All parameters after `state` are passed on to each callback along with the states involved in the transition, see the [Event callback API](README.md#event-callback-api) for the exact signatures.\n\nAll methods as well as the constructor return the state machine itself, and are therefore chainable.\n\n<br>\n\n###### Fields:\n\n**`fsm.transitions` : `object`**\n\nAn object where the keys are state names, and the values of each key is an array of the states that can be transitioned to from this state, as defined by `config.states`.\n\n**`fsm.current` : `string`**\n\nTracks the current state, the starting value is `config.initial`. The value changes during state transitions, see [Event callback API](README.md#event-callback-api).\n\n\n**`fsm.error` : `function`**\n\nThe if defined, the function from `config.error`, see [Error handling](README.md#error-handling).\n\nIf you need to change the functionality or state without going through transitions, these fields can be edited as required. See the section on extending below for some ideas.\n\n\n<br>\n\n##### Event callback API\n\nCallbacks triggered on state transitions can be registered with `fsm.on` or `fsm.bind`:\n\n```js\nfsm.on(eventName, function() {\n  // do something\n});\n```\n\nEvery call to `fsm.go` will trigger all callbacks registered for the states involved in the transition according to the following semantics:\n\nAssuming that\n- `fsm` is in state `PREVIOUS_STATE`, and\n- `fsm` can transition from `PREVIOUS_STATE` to `NEXT_STATE`,\n- a call `fsm.go(NEXT_STATE, /* ...args */)`\n- will trigger all callbacks registered for `event` with\n\n| event                      | signature                                   | fsm.current      |\n|:---------------------------|:--------------------------------------------|:-----------------|\n| **`after:PREVIOUS_STATE`** | `function(next /* ...args */) {}`           | `PREVIOUS_STATE` |\n| **`before:NEXT_STATE`**    | `function(previous /* ...args */) {}`       | `PREVIOUS_STATE` |\n| **`NEXT_STATE`**           | `function(previous /* ...args */) {}`       | `NEXT_STATE`     |\n| **`*`**                    | `function(previous, next /* ...args */) {}` | `NEXT_STATE`     |\n\n- in all callback signatures, `next` is `NEXT_STATE` and `previous` is `PREVIOUS_STATE`\n- `before:NEXT_STATE` and `NEXT_STATE` differ only in that `fsm.current` has changed when the callback is being executed\n- the wildcard callback (`*`) is triggered on every successful transition, but not if a transition between states is not possible\n\nAlso note that\n\n- all arguments to `fsm.go` after the first are always passed to the callbacks, according to the above signatures\n- any number of callbacks can be registered for any `event`\n- callbacks will be triggered in the order registered\n- `fsm.on` and `fsm.bind` will accept any valid object key as the first parameter and will perform no checks to ensure a matching state is defined, so watch out for typos\n- `fsm.error` significantly affects how `pastafarian` works in the case of thrown exceptions in callbacks, see [Differences in functionality if `fsm.error` is defined or not](README.md#)\n\nSo, given a basic state machine:\n\n```js\nvar state = new StateMachine({\n  initial : 'start',\n  states  : {\n    start : ['end', 'start'],\n    end   : ['start']\n  }\n});\n```\n... the following callbacks may be triggered as the state changes\n\n```js\nstate.on('*',            function() { });\nstate.on('before:start', function() { });\nstate.on('start',        function() { });\nstate.on('after:start',  function() { });\nstate.on('before:end',   function() { });\nstate.on('end',          function() { });\nstate.on('after:end',    function() { });\n```\n\n\n<br>\n\n##### Error handling\n\nIf defined, the `fsm.error` function will be called in two separate cases:\n\n1. when trying to perform an invalid state transition\n1. when a callback defined for a transition throws an error\n\nThe signature of this function is\n\n```js\nfunction errorHandler(error, prev, next /* ...params */) {\n  if (error.name === 'IllegalTransitionException') {\n    console.log(error.message);\n    // prev is fsm.current\n    // next is the transition attempted, eg. fsm.go(next, ...)\n    // params are any other parameters to fsm.go, eg. fsm.go(next, param1, param2 ...)\n  } else {\n    // error is whatever was thrown in the transition callback that caused the error\n    // prev, next and other arguments will be undefined\n  }\n}\n```\n\nIf the error handler function is not defined, any calls to `fsm.go` may throw errors or exceptions for the above reasons and can be caught similarly using try/catch blocks.\n\n###### Differences in functionality if `fsm.error` is defined or not\n\nThe existance of `fsm.error` has a significant impact on functionality:\n\n- if `fsm.error` is not defined, an uncaught exception in a callback will stop execution and subsequent callbacks will not be triggered, potentially leaving your application in an undefined state if you are relying on the side-effects of a certain callback being applied. `fsm.current` may also still be in the previous state, depending on which events the callbacks were registered to\n- if `fsm.error` is defined, an uncaught exception in a callback will trigger the error handler and stop further execution of the code inside that callback, but all other callbacks will be triggered and the state transition will be completed, which may also cause cause problems with unfinished side-effects\n\n###### IllegalTransitionException\n\n`pastafarian` defines a custom exception which is generated when the transitions array of the current state doesn't contain the state passed to `fsm.go`:\n\n- name: `IllegalTransitionException`\n- message: `Transition from <current> to <next> is not allowed`\n- prev : `<current>`\n- attempt : `<next>`\n\nThe exception is generated inside the library, but in modern environments it should contain a stacktrace that allows you to track which line caused the exception.\n\n<br>\n\n### Extending\n\n`pastafarian` omits most safety checks and a larger API in favor of size, but can be extended in different ways to support different usage patterns and semantics.\n\nIf you find yourself often needing to check the current state or valid transitions, these helpers might provide a nicer interface:\n\n```js\n// is parameter state a valid transition from the current state?\nfsm.can = function(state) {\n  return fsm.transitions[fsm.current].indexOf(state) > -1;\n};\n\n// is parameter state an invalid transition from the current state?\nfsm.cannot = function(state) {\n  return fsm.transitions[fsm.current].indexOf(state) === -1;\n};\n\n// shorthand to check if parameter state is the current one\nfsm.is = function(state) {\n  return fsm.current === state;\n};\n\n// return a list of the valid states to enter from the current state\nfsm.allowed = function() {\n  return fsm.transitions[fsm.current];\n};\n```\n\nA \"fire once\" callback can be implemented with\n\n```js\nfsm.once = function(evt, fn) {\n  fsm.on(evt, function onceCb() {\n    fn.apply(fn, Array.prototype.slice.call(arguments));\n    fsm.unbind(evt, onceCb);\n  });\n  return fsm;\n};\n```\n\nIf you need to add or remove states after the state machine has been initialized, something like the following might serve:\n\n```js\nfsm.add = function(state, from, to) {\n  fsm.transitions[state] = to;\n  from.forEach(function(elem) {\n    fsm.transitions[elem].push(state);\n  });\n};\n\nfsm.remove = function(obsolete) {\n  delete fsm.transitions[obsolete];\n\n  for (var state in fsm.transitions) {\n    if (fsm.transitions.hasOwnProperty(state)) {\n      var index = fsm.transitions[state].indexOf(obsolete);\n      if (index > -1)\n        fsm.transitions[state].splice(index, 1);\n    }\n  }\n  // probably should also set or check fsm.current to see we're still in a valid state\n};\n```\n\nTransitions between states can be removed in a similar fashion.\n\nIf you wish to apply some common sanity checks before state transitions, one way to add these would be by patching the `.go` method:\n\n```js\nfsm.origo = fsm.go;\nfsm.go = function() {\n  // put state validation, parameter checks, anything you might need here\n  return fsm.origo.apply(this, Array.prototype.slice.call(arguments));\n};\n```\n\n<br>\n\n### Alternatives\n\nToo basic? Not quite what you were looking for? Some other alternatives for state machines in javascript are\n\n- [javascript-state-machine](https://github.com/jakesgordon/javascript-state-machine)\n- [machina.js](https://github.com/ifandelse/machina.js)\n\nSearching on bower or npm will probably also find some other takes on the subject.\n\n<br>\n\n### Colophon\n\nThe event emitter pattern that `pastafarian` uses at its core is based on [microevent.js](https://github.com/jeromeetienne/microevent.js).\n\n<br>\n\n### License\n\n`pastafarian` is ISC licensed.\n\n<br>\n\n### Development\n\nA basic development workflow is defined using npm run scripts. Get started with\n\n```sh\n$ git clone https://github.com/orbitbot/pastafarian\n$ npm install\n$ npm run develop\n```\n\nBugfixes and improvements are welcome, however, please open an Issue to discuss any larger changes beforehand, and consider if functionality can be implemented with a simple monkey-patching extension script. Useful extensions are more than welcome!\n\n<br>\n\n##### Possible future\n\n- a transition that throws an error can be canceled, ie. intelligent rollback?\n"
 }

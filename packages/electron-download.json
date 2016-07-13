@@ -10,16 +10,22 @@
     "test": "standard && node test.js && node test_symbols.js && node test_404.js && echo PASSED"
   },
   "repository": {
-    "type": "git",
-    "url": "git+https://github.com/electron-userland/electron-download.git"
+    "user": "electron-userland",
+    "repo": "electron-download",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/electron-userland/electron-download/tarball/master",
+    "clone_url": "https://github.com/electron-userland/electron-download",
+    "https_url": "https://github.com/electron-userland/electron-download",
+    "travis_url": "https://travis-ci.org/electron-userland/electron-download",
+    "zip_url": "https://github.com/electron-userland/electron-download/archive/master.zip",
+    "api_url": "https://api.github.com/repos/electron-userland/electron-download"
   },
   "author": {
     "name": "max ogden"
   },
   "license": "BSD-3-Clause",
-  "bugs": {
-    "url": "https://github.com/electron-userland/electron-download/issues"
-  },
   "homepage": "https://github.com/electron-userland/electron-download#readme",
   "dependencies": {
     "debug": "^2.2.0",
@@ -36,20 +42,94 @@
   },
   "keywords": [],
   "gitHead": "58e20d905b757347dae8e5364a7e6e3c4b340098",
-  "_id": "electron-download@2.1.2",
-  "_shasum": "913b35b07a90ff1b644834e9bf03f5f1d6f24f64",
-  "_from": ".",
   "_npmVersion": "3.8.6",
   "_nodeVersion": "5.11.0",
-  "_npmUser": {
-    "name": "fritx",
-    "email": "uxfritz@163.com"
-  },
   "dist": {
     "shasum": "913b35b07a90ff1b644834e9bf03f5f1d6f24f64",
     "tarball": "http://registry.npmjs.org/electron-download/-/electron-download-2.1.2.tgz"
   },
-  "maintainers": [
+  "stars": 3,
+  "versions": [
+    {
+      "number": "1.0.0",
+      "date": "2015-05-10T20:52:57.922Z"
+    },
+    {
+      "number": "1.0.1",
+      "date": "2015-05-10T22:27:26.103Z"
+    },
+    {
+      "number": "1.0.2",
+      "date": "2015-05-11T04:54:16.741Z"
+    },
+    {
+      "number": "1.0.3",
+      "date": "2015-05-11T19:14:24.826Z"
+    },
+    {
+      "number": "1.0.4",
+      "date": "2015-05-12T00:03:02.196Z"
+    },
+    {
+      "number": "1.0.5",
+      "date": "2015-05-27T20:45:29.931Z"
+    },
+    {
+      "number": "1.0.6",
+      "date": "2015-07-27T19:45:58.913Z"
+    },
+    {
+      "number": "1.0.7",
+      "date": "2015-07-27T22:58:23.656Z"
+    },
+    {
+      "number": "1.0.8",
+      "date": "2015-08-22T11:36:19.573Z"
+    },
+    {
+      "number": "1.1.0",
+      "date": "2015-08-29T19:42:52.799Z"
+    },
+    {
+      "number": "1.2.0",
+      "date": "2015-10-07T02:33:34.122Z"
+    },
+    {
+      "number": "1.3.0",
+      "date": "2015-10-26T17:18:55.842Z"
+    },
+    {
+      "number": "1.4.0",
+      "date": "2015-10-26T17:30:59.254Z"
+    },
+    {
+      "number": "1.4.1",
+      "date": "2015-11-23T18:52:08.138Z"
+    },
+    {
+      "number": "2.0.0",
+      "date": "2016-03-04T02:08:18.219Z"
+    },
+    {
+      "number": "2.1.0",
+      "date": "2016-03-13T22:38:49.028Z"
+    },
+    {
+      "number": "2.1.1",
+      "date": "2016-04-04T23:16:58.527Z"
+    },
+    {
+      "number": "2.1.2",
+      "date": "2016-04-30T07:51:19.812Z"
+    }
+  ],
+  "created": "2015-05-10T20:52:57.922Z",
+  "modified": "2016-04-30T07:51:19.812Z",
+  "lastPublisher": {
+    "name": "fritx",
+    "email": "uxfritz@163.com"
+  },
+  "owners": [
     {
       "name": "fritx",
       "email": "uxfritz@163.com"
@@ -63,9 +143,5 @@
       "email": "max@maxogden.com"
     }
   ],
-  "_npmOperationalInternal": {
-    "host": "packages-16-east.internal.npmjs.com",
-    "tmp": "tmp/electron-download-2.1.2.tgz_1462002678840_0.06077097728848457"
-  },
-  "directories": {}
+  "readme": "# electron-download\n\n[![Build Status](https://travis-ci.org/electron-userland/electron-download.svg?branch=master)](https://travis-ci.org/electron-userland/electron-download)\n\n[![NPM](https://nodei.co/npm/electron-download.png)](https://nodei.co/npm/electron-download/)\n\ndownloads a electron release zip from github\n\nused by [electron-prebuilt](https://npmjs.org/electron-prebuilt) and [electron-packager](https://npmjs.org/electron-packager)\n\n### usage\n\n```plain\n$ npm install --global electron-download\n$ electron-download --version=0.31.1\n```\n\n```\nvar download = require('electron-download')\n\ndownload({\n  version: '0.25.1',\n  arch: 'ia32',\n  platform: 'win32',\n  cache: './zips' // defaults to <users home directory>/.electron\n}, function (err, zipPath) {\n  // zipPath will be the path of the zip that it downloaded.\n  // if the zip was already cached it will skip\n  // downloading and call the cb with the cached zip path\n  // if it wasn't cached it will download the zip and save\n  // it in the cache path\n})\n```\n\nif you don't specify `arch` or `platform` args it will use `require('os')` to get them from the current OS. specifying `version` is mandatory.\n\nIf you would like to override the mirror location, three options are available. The mirror URL is composed as `url = ELECTRON_MIRROR + ELECTRON_CUSTOM_DIR + '/' + ELECTRON_CUSTOM_FILENAME`.\n\nYou can set the `ELECTRON_MIRROR` or [`NPM_CONFIG_ELECTRON_MIRROR`](https://docs.npmjs.com/misc/config#environment-variables) env or `mirror` opt variable to use a custom base URL for grabbing electron zips. The same pattern applies to `ELECTRON_CUSTOM_DIR` and `ELECTRON_CUSTOM_FILENAME`\n\n```plain\n## Electron Mirror of China\nELECTRON_MIRROR=\"https://npm.taobao.org/mirrors/electron/\"\n\n## or for a local mirror\nELECTRON_MIRROR=\"https://10.1.2.105/\"\nELECTRON_CUSTOM_DIR=\"our/internal/filePath\"\n```\n\n"
 }

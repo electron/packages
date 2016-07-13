@@ -22,28 +22,45 @@
     "electron-prebuilt": "^0.33.3"
   },
   "gitHead": "8e02b3f075625cd2990a45c963d36f200fb7e75e",
-  "_id": "pigeon-rest-toolkit@0.0.5",
-  "_shasum": "fb3e79d9a5211e4ed2eb460ca6eb93ff09718832",
-  "_from": ".",
   "_npmVersion": "2.14.18",
   "_nodeVersion": "0.10.41",
-  "_npmUser": {
-    "name": "brandon-fryslie",
-    "email": "brandon@fryslie.com"
-  },
   "dist": {
     "shasum": "fb3e79d9a5211e4ed2eb460ca6eb93ff09718832",
     "tarball": "http://registry.npmjs.org/pigeon-rest-toolkit/-/pigeon-rest-toolkit-0.0.5.tgz"
   },
-  "maintainers": [
+  "versions": [
+    {
+      "number": "0.0.1",
+      "date": "2015-10-05T09:06:48.321Z"
+    },
+    {
+      "number": "0.0.2",
+      "date": "2016-03-01T22:24:56.763Z"
+    },
+    {
+      "number": "0.0.3",
+      "date": "2016-03-01T22:41:37.323Z"
+    },
+    {
+      "number": "0.0.4",
+      "date": "2016-03-02T06:34:42.284Z"
+    },
+    {
+      "number": "0.0.5",
+      "date": "2016-03-03T16:27:12.526Z"
+    }
+  ],
+  "created": "2015-10-05T09:06:48.321Z",
+  "modified": "2016-03-03T16:27:12.526Z",
+  "lastPublisher": {
+    "name": "brandon-fryslie",
+    "email": "brandon@fryslie.com"
+  },
+  "owners": [
     {
       "name": "brandon-fryslie",
       "email": "brandon@fryslie.com"
     }
   ],
-  "_npmOperationalInternal": {
-    "host": "packages-12-west.internal.npmjs.com",
-    "tmp": "tmp/pigeon-rest-toolkit-0.0.5.tgz_1457022429403_0.38044713460840285"
-  },
-  "directories": {}
+  "readme": "This toolkit allows you to script Rally's Pigeon REST Api to watch and unwatch artifacts, and to create webhooks rules (coming soon).\n\n#### Usage\n\nInstall via npm and save to package.json\n\n`npm install --save pigeon-rest-toolkit`\n\nTo use, require the module and instantiate it with your options:\n\n```javascript\n\n#!/usr/bin/env node\n\nvar toolkit = require('pigeon-rest-toolkit');\n\nvar pigeon = toolkit.init({\n  server: 'http://rally.dev:8999',\n  username: 'jimmy@rallydev.com',\n  password: 'very_secure_password',\n  debug: true\n});\n\nvar Query = toolkit.Query;\n\npigeon.watch().then(function(results) {\n  // Watched first 20 artifacts Jimmy has access to\n\n  console.log(results.successful.length + ' succeeded');\n  console.log(results.alreadyWatched.length + ' already watched');\n  console.log(results.failed.length + ' failed');\n});\n\n// Get the watches for a user\npigeon.getWatches().then(function(results) {\n  var watches = results.body;\n  // console.log(watches);\n});\n\npigeon.watch({\n  username: 'bobby@rallydev.com'\n}).then(function(results) {\n  // Added Bobby as a watcher to Jimmy's first 20 artifacts\n\n  console.log(results.successful.length + ' succeeded');\n  console.log(results.alreadyWatched.length + ' already watched');\n  console.log(results.failed.length + ' failed');\n});\n\npigeon.watch({\n  username: 'bobby@rallydev.com',\n  query: Query.where('Name', 'contains', 'Story').and('ScheduleState', '<', 'Completed').toQueryString()\n}).then(function(results) {\n  // Added Bobby as a watcher to artifacts where Name contains 'Story' and 'ScheduleState' is less than 'Completed'\n\n  console.log(results.successful.length + ' succeeded');\n  console.log(results.alreadyWatched.length + ' already watched');\n  console.log(results.failed.length + ' failed');\n});\n\npigeon.unwatch({\n  query: Query.where('Project.Name', '=', 'Sample Project').toQueryString(),\n  pagesize: 200\n}).then(function(results) {\n  // Remove Jimmy as a watcher from all stories in that project\n\n  console.log(results.successful.length + ' succeeded');\n  console.log(results.alreadyUnwatched.length + ' already unwatched');\n  console.log(results.failed.length + ' failed');\n});\n\n// Get all individual watch rules that match a query\npigeon.getWatchRules({\n  query: Query.where('Project.Name', '=', 'Sample Project').toQueryString()\n}).then(function(results) {\n  // console.log('Results', results);\n});\n\n```\nvar pigeon"
 }

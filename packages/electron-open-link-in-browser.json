@@ -35,8 +35,17 @@
   ],
   "license": "MIT",
   "repository": {
-    "type": "git",
-    "url": "git+https://github.com/lyrictenor/electron-open-link-in-browser.git"
+    "user": "lyrictenor",
+    "repo": "electron-open-link-in-browser",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/lyrictenor/electron-open-link-in-browser/tarball/master",
+    "clone_url": "https://github.com/lyrictenor/electron-open-link-in-browser",
+    "https_url": "https://github.com/lyrictenor/electron-open-link-in-browser",
+    "travis_url": "https://travis-ci.org/lyrictenor/electron-open-link-in-browser",
+    "zip_url": "https://github.com/lyrictenor/electron-open-link-in-browser/archive/master.zip",
+    "api_url": "https://api.github.com/repos/lyrictenor/electron-open-link-in-browser"
   },
   "scripts": {
     "build:browser": "npm update && npm prune && npm dedupe && browserify -u shell --standalone electronOpenLinkInBrowser ./index.js | dereserve > build/electron-open-link-in-browser.js",
@@ -50,28 +59,43 @@
     "verify": "npm run lint"
   },
   "gitHead": "d41eb55d67941bcb9e8865527b25995624146824",
-  "bugs": {
-    "url": "https://github.com/lyrictenor/electron-open-link-in-browser/issues"
-  },
   "homepage": "https://github.com/lyrictenor/electron-open-link-in-browser#readme",
-  "_id": "electron-open-link-in-browser@1.0.2",
-  "_shasum": "66e5d584fdf10ce7d5716bbe5d12e41b3568f1a3",
-  "_from": ".",
   "_npmVersion": "2.14.4",
   "_nodeVersion": "3.2.0",
-  "_npmUser": {
+  "dist": {
+    "shasum": "66e5d584fdf10ce7d5716bbe5d12e41b3568f1a3",
+    "tarball": "http://registry.npmjs.org/electron-open-link-in-browser/-/electron-open-link-in-browser-1.0.2.tgz"
+  },
+  "stars": 2,
+  "versions": [
+    {
+      "number": "0.0.1",
+      "date": "2015-08-29T05:55:10.611Z"
+    },
+    {
+      "number": "1.0.0",
+      "date": "2015-08-29T07:06:33.654Z"
+    },
+    {
+      "number": "1.0.1",
+      "date": "2015-08-29T07:36:26.214Z"
+    },
+    {
+      "number": "1.0.2",
+      "date": "2015-09-16T18:59:18.106Z"
+    }
+  ],
+  "created": "2015-08-29T05:55:10.611Z",
+  "modified": "2015-09-16T18:59:18.106Z",
+  "lastPublisher": {
     "name": "sanemat",
     "email": "o.gata.ken@gmail.com"
   },
-  "maintainers": [
+  "owners": [
     {
       "name": "sanemat",
       "email": "o.gata.ken@gmail.com"
     }
   ],
-  "dist": {
-    "shasum": "66e5d584fdf10ce7d5716bbe5d12e41b3568f1a3",
-    "tarball": "http://registry.npmjs.org/electron-open-link-in-browser/-/electron-open-link-in-browser-1.0.2.tgz"
-  },
-  "directories": {}
+  "readme": "# electron-open-link-in-browser\n\n[![NPM version][npm-image]][npm-url] [![Travis-CI Status][travis-image]][travis-url] [![Appveyor Status][appveyor-image]][appveyor-url] [![Daviddm Status][daviddm-image]][daviddm-url]\n\n> Open a link in browser for Electron and browser.\n\n#### Electron app to browser\n\n![Electron to browser](https://cloud.githubusercontent.com/assets/75448/9560922/626a5610-4e6a-11e5-9a1f-af9c2cd43f38.gif)\n\n#### browser to browser\n\n![browser to browser](https://cloud.githubusercontent.com/assets/75448/9560923/6a926ba2-4e6a-11e5-84ff-3be91ad410d3.gif)\n\n\n## Install\n\n```\n$ npm install --save electron-open-link-in-browser\n```\n\n\n## Usage\n\n```html\n<script type=\"text/javascript\" src=\"build/electron-open-link-in-browser.js\"></script>\n<a\n  href=\"https://github.com/lyrictenor/electron-triage-for-github\"\n  onClick=\"electronOpenLinkInBrowser();\"\n  >\n  github.com/lyrictenor/electron-triage-for-github\n</a>\n\n<button\n  type=\"button\"\n  onclick=\"electronOpenLinkInBrowser('http://example.com');\"\n  >\n  Example.com\n</button>\n```\n\n### React.js + JSX + Browserify/Webpack\n\n```html\nvar electronOpenLinkInBrowser = require(\"electron-open-link-in-browser\");\n\n<a\n  href=\"https://github.com/lyrictenor/electron-triage-for-github\"\n  onClick={electronOpenLinkInBrowser.bind(this)}\n  >\n  github.com/lyrictenor/electron-triage-for-github\n</a>\n\n<button\n  type=\"button\"\n  onClick={electronOpenLinkInBrowser.bind(this, \"http://example.com\")}\n  >\n  Example.com\n</button>\n```\n\n\n## API\n\n### electronOpenLinkInBrowser([url,] event)\n\nJump to the href property.\n\n#### url\n\n*Optional*\n\nType: `string`\n\nJump to url.\n\n\n## Changelog\n\n[changelog.md](./changelog.md).\n\n\n## License\n\nMIT © [sanemat](http://sane.jp)\n\n\n[travis-url]: https://travis-ci.org/lyrictenor/electron-open-link-in-browser\n[travis-image]: https://img.shields.io/travis/lyrictenor/electron-open-link-in-browser/master.svg?style=flat-square&label=travis\n[appveyor-url]: https://ci.appveyor.com/project/sanemat/electron-open-link-in-browser/branch/master\n[appveyor-image]: https://img.shields.io/appveyor/ci/sanemat/electron-open-link-in-browser/master.svg?style=flat-square&label=appveyor\n[npm-url]: https://npmjs.org/package/electron-open-link-in-browser\n[npm-image]: https://img.shields.io/npm/v/electron-open-link-in-browser.svg?style=flat-square\n[daviddm-url]: https://david-dm.org/lyrictenor/electron-open-link-in-browser\n[daviddm-image]: https://img.shields.io/david/lyrictenor/electron-open-link-in-browser.svg?style=flat-square\n"
 }

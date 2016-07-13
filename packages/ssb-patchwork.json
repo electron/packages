@@ -1,0 +1,357 @@
+{
+  "name": "ssb-patchwork",
+  "version": "2.9.2",
+  "description": "safe secure sharing",
+  "main": "app/index.js",
+  "repository": {
+    "user": "ssbc",
+    "repo": "patchwork",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/ssbc/patchwork/tarball/master",
+    "clone_url": "https://github.com/ssbc/patchwork",
+    "https_url": "https://github.com/ssbc/patchwork",
+    "travis_url": "https://travis-ci.org/ssbc/patchwork",
+    "zip_url": "https://github.com/ssbc/patchwork/archive/master.zip",
+    "api_url": "https://api.github.com/repos/ssbc/patchwork"
+  },
+  "scripts": {
+    "build-release": "npm run build-release:js && npm run build-release:css",
+    "build-release:js": "cross-env NODE_ENV=production browserify ./ui/main.js --extension=.jsx -o ./ui/main.build.js",
+    "build-release:css": "shx mkdir -p ./ui/css && lessc ./ui/less/main.less --autoprefix ./ui/css/main.css",
+    "build": "npm run build:js && npm run build:css",
+    "build:js": "cross-env NODE_ENV=development browserify ./ui/main.js --extension=.jsx --debug -r react -r react-dom -r react-addons-css-transition-group -o ./ui/main.build.js",
+    "build:css": "shx mkdir -p ./ui/css && lessc ./ui/less/main.less ./ui/css/main.css",
+    "watch": "npm run watch:server & npm run watch:ui",
+    "watch:ui": "npm run watch:js & npm run watch:css",
+    "watch:server": "nodemon -q -w api -w './*.js'",
+    "watch:js": "cross-env NODE_ENV=development watchify ./ui/main.js --extension=.jsx -o ./ui/main.build.js -v --debug -r react -r react-dom -r react-addons-css-transition-group",
+    "watch:css": "shx mkdir -p ./ui/css && nodemon -q -e less -w ./ui/less -x 'lessc --verbose ./ui/less/main.less ./ui/css/main.css'",
+    "start": "node ./index.js",
+    "test": "set -e; for t in api/test/*.js; do node $t; done",
+    "prepublish": "npm run build-release"
+  },
+  "author": {
+    "name": "Paul Frazee",
+    "email": "pfrazee@gmail.com"
+  },
+  "license": "GPL-3.0",
+  "devDependencies": {
+    "babel-preset-es2015": "^6.3.13",
+    "babel-preset-react": "^6.3.13",
+    "babel-preset-stage-0": "^6.3.13",
+    "babelify": "^7.2.0",
+    "browserify": "^12.0.1",
+    "envify": "^3.4.0",
+    "less": "^2.5.3",
+    "nodemon": "^1.8.1",
+    "osenv": "~0.1.0",
+    "rimraf": "~2.2.8",
+    "tape": "~3.0.0",
+    "watchify": "^3.7.0"
+  },
+  "dependencies": {
+    "babel": "^5.8.23",
+    "blob-to-buffer": "^1.2.3",
+    "classnames": "^2.2.3",
+    "cross-env": "^1.0.8",
+    "emoji-named-characters": "^1.0.1",
+    "history": "1.13.1",
+    "hyperscript": "~1.4.6",
+    "image-loaded": "0.0.2",
+    "ip": "^1.0.2",
+    "less-plugin-autoprefix": "^1.5.1",
+    "mime-types": "^2.1.3",
+    "moment": "^2.10.6",
+    "multiblob": "^1.8.0",
+    "multicb": "^1.1.0",
+    "muxrpc": "^6.1.1",
+    "nicedate": "~0.0.0",
+    "observable": "^2.1.3",
+    "once": "~1.3.1",
+    "os-locale": "^1.4.0",
+    "patchkit": "^1.3.0",
+    "patchkit-base-styles": "^1.0.1",
+    "patchkit-channel-list": "^1.1.0",
+    "patchkit-dropdown": "^1.0.0",
+    "patchkit-flat-msg-thread": "^1.1.0",
+    "patchkit-form-flag-msg": "^1.1.0",
+    "patchkit-form-profile-image": "^1.1.0",
+    "patchkit-form-profile-name": "^1.2.0",
+    "patchkit-form-pub-invite": "^1.1.0",
+    "patchkit-hover-shifter": "^1.0.0",
+    "patchkit-image-uploader": "^1.2.0",
+    "patchkit-links": "^1.1.0",
+    "patchkit-ls-persisted": "^1.0.0",
+    "patchkit-markdown": "^1.0.1",
+    "patchkit-mdl-spinner": "^1.0.0",
+    "patchkit-modal": "^1.3.0",
+    "patchkit-msg-content": "^1.1.0",
+    "patchkit-msg-list": "^1.1.0",
+    "patchkit-msg-view": "^1.2.0",
+    "patchkit-nicedate": "^1.0.0",
+    "patchkit-niceraw": "^1.0.1",
+    "patchkit-post-composer": "^1.1.0",
+    "patchkit-radios": "^1.0.1",
+    "patchkit-rainbow-text": "^1.0.0",
+    "patchkit-search-palette": "^1.0.0",
+    "patchkit-selector": "^1.0.0",
+    "patchkit-setup-flow": "^1.0.0",
+    "patchkit-simple-infinite": "^1.0.0",
+    "patchkit-stepped-progress-bar": "^1.0.1",
+    "patchkit-tabs": "^1.0.0",
+    "patchkit-util": "^1.0.1",
+    "patchkit-vertical-filled": "^1.0.0",
+    "patchwork-threads": "^2.2.0",
+    "patchwork-translations": "^1.1.0",
+    "pause-offscreen": "^1.0.0",
+    "published-working-tree": "~0.0.0",
+    "pull-cat": "^1.1.7",
+    "pull-identify-filetype": "^1.0.0",
+    "pull-level": "~1.4.1",
+    "pull-merge": "~1.0.2",
+    "pull-notify": "~0.0.2",
+    "pull-paramap": "^1.1.3",
+    "pull-pushable": "^1.1.4",
+    "pull-serializer": "^0.3.2",
+    "pull-stream": "^2.27.0",
+    "pull-stream-to-stream": "~1.3.0",
+    "pull-ws-server": "^1.6.2",
+    "react": "^0.14.3",
+    "react-addons-css-transition-group": "^0.14.3",
+    "react-clipboard.js": "^0.1.7",
+    "react-dom": "^0.14.3",
+    "react-infinite": "^0.5.10",
+    "react-modal": "^0.6.0",
+    "react-notification": "^4.2.0",
+    "react-router": "1.0.2",
+    "scuttlebot": "^8.1.0",
+    "shx": "^0.1.2",
+    "ssb-config": "^2.0.0",
+    "ssb-keys": "^5.0.0",
+    "ssb-markdown": "^3.0.0",
+    "ssb-msg-schemas": "~6.1.0",
+    "ssb-msgs": "~5.2.0",
+    "ssb-notifier": "^2.0.0",
+    "ssb-ref": "~2.3.0",
+    "stack": "^0.1.0",
+    "stream-to-pull-stream": "^1.6.1",
+    "suggest-box": "^2.0.0",
+    "text-node-searcher": "~1.1.0",
+    "xtend": "^4.0.0"
+  },
+  "bin": {
+    "patchwork": "./index.js"
+  },
+  "browserify": {
+    "transform": [
+      [
+        "envify",
+        {
+          "global": true
+        }
+      ],
+      [
+        "babelify",
+        {
+          "presets": [
+            "es2015",
+            "stage-0",
+            "react"
+          ]
+        }
+      ]
+    ]
+  },
+  "gitHead": "1b3037c4062cc23759386c16ccc722dcdfa9fe8f",
+  "_npmVersion": "1.4.21",
+  "dist": {
+    "shasum": "7fdac425565f6cdd78a5b9560ce35deb07357c0d",
+    "tarball": "http://registry.npmjs.org/ssb-patchwork/-/ssb-patchwork-2.9.2.tgz"
+  },
+  "stars": 2,
+  "versions": [
+    {
+      "number": "0.0.1",
+      "date": "2015-08-07T13:49:40.719Z"
+    },
+    {
+      "number": "0.0.2",
+      "date": "2015-08-12T14:47:56.179Z"
+    },
+    {
+      "number": "0.0.3",
+      "date": "2015-08-13T20:44:25.089Z"
+    },
+    {
+      "number": "0.0.4",
+      "date": "2015-08-22T23:27:28.281Z"
+    },
+    {
+      "number": "0.0.5",
+      "date": "2015-08-27T19:03:21.634Z"
+    },
+    {
+      "number": "1.0.0",
+      "date": "2015-09-29T16:46:52.495Z"
+    },
+    {
+      "number": "1.0.1",
+      "date": "2015-09-29T17:50:58.357Z"
+    },
+    {
+      "number": "1.0.2",
+      "date": "2015-10-01T01:14:27.506Z"
+    },
+    {
+      "number": "1.0.3",
+      "date": "2015-10-15T21:50:26.762Z"
+    },
+    {
+      "number": "1.1.0",
+      "date": "2015-10-16T07:56:15.407Z"
+    },
+    {
+      "number": "1.1.1",
+      "date": "2015-10-16T07:58:07.602Z"
+    },
+    {
+      "number": "1.1.2",
+      "date": "2015-10-17T22:04:59.655Z"
+    },
+    {
+      "number": "2.0.0",
+      "date": "2015-12-05T20:45:21.879Z"
+    },
+    {
+      "number": "2.0.1",
+      "date": "2015-12-07T03:58:39.435Z"
+    },
+    {
+      "number": "2.0.2",
+      "date": "2015-12-11T04:56:36.507Z"
+    },
+    {
+      "number": "2.0.3",
+      "date": "2015-12-12T21:28:34.818Z"
+    },
+    {
+      "number": "2.0.4",
+      "date": "2015-12-18T01:01:19.636Z"
+    },
+    {
+      "number": "2.0.5",
+      "date": "2015-12-19T22:18:45.782Z"
+    },
+    {
+      "number": "2.0.6",
+      "date": "2015-12-27T22:18:55.864Z"
+    },
+    {
+      "number": "2.1.0",
+      "date": "2016-01-21T17:04:39.218Z"
+    },
+    {
+      "number": "2.1.1",
+      "date": "2016-01-22T19:06:12.696Z"
+    },
+    {
+      "number": "2.2.0",
+      "date": "2016-01-27T21:59:52.024Z"
+    },
+    {
+      "number": "2.3.0",
+      "date": "2016-02-09T19:30:40.493Z"
+    },
+    {
+      "number": "2.3.1",
+      "date": "2016-02-09T19:44:43.789Z"
+    },
+    {
+      "number": "2.4.0",
+      "date": "2016-02-17T23:54:19.433Z"
+    },
+    {
+      "number": "2.4.1",
+      "date": "2016-02-19T03:29:01.168Z"
+    },
+    {
+      "number": "2.5.0",
+      "date": "2016-02-22T23:50:36.800Z"
+    },
+    {
+      "number": "2.6.0",
+      "date": "2016-03-01T00:17:38.944Z"
+    },
+    {
+      "number": "2.6.1",
+      "date": "2016-03-02T04:25:54.975Z"
+    },
+    {
+      "number": "2.6.2",
+      "date": "2016-03-07T03:25:44.014Z"
+    },
+    {
+      "number": "2.6.3",
+      "date": "2016-03-07T19:17:49.628Z"
+    },
+    {
+      "number": "2.6.4",
+      "date": "2016-03-07T19:49:38.078Z"
+    },
+    {
+      "number": "2.7.0",
+      "date": "2016-03-27T21:13:33.679Z"
+    },
+    {
+      "number": "2.8.0",
+      "date": "2016-05-08T14:38:40.579Z"
+    },
+    {
+      "number": "2.8.1",
+      "date": "2016-05-08T17:16:18.639Z"
+    },
+    {
+      "number": "2.8.2",
+      "date": "2016-05-29T13:57:04.679Z"
+    },
+    {
+      "number": "2.8.3",
+      "date": "2016-06-13T14:11:06.184Z"
+    },
+    {
+      "number": "2.8.4",
+      "date": "2016-06-13T17:12:41.224Z"
+    },
+    {
+      "number": "2.9.0",
+      "date": "2016-07-07T01:05:42.231Z"
+    },
+    {
+      "number": "2.9.1",
+      "date": "2016-07-07T03:48:06.929Z"
+    },
+    {
+      "number": "2.9.2",
+      "date": "2016-07-07T04:58:27.476Z"
+    }
+  ],
+  "created": "2015-08-07T13:49:40.719Z",
+  "modified": "2016-07-07T04:58:27.476Z",
+  "lastPublisher": {
+    "name": "cel",
+    "email": "npm.cel@celehner.com"
+  },
+  "owners": [
+    {
+      "name": "dominictarr",
+      "email": "dominic.tarr@gmail.com"
+    },
+    {
+      "name": "pfraze",
+      "email": "pfrazee@gmail.com"
+    }
+  ],
+  "readme": "# Patchwork\n\n![screenshot](./screenshot.png)\n\n**Patchwork is a decentralized messaging and sharing app.**\n\nIt's better than email because:\n\n - Private messages are end-to-end encrypted, always.\n - You have to follow somebody to get messages from them, so you won't get spammed.\n - Your mail can be public broadcasts or private, and you'll only see replies by people you follow.\n - The datastructure is a global mesh of append-only logs, which can support new types of data (not just \"mail\").\n - Users are not bound to one server/host (what we call \"pubs\") and do not have to trust the servers.\n - It's very easy to setup and maintain your own pub.\n\nIt's better than twitter and facebook because:\n\n - Private messages are end-to-end encrypted, always.\n - The software runs on your device, so there's nobody tracking your browsing.\n - The application-code is FOSS, so you're free to fork or write new applications without a gatekeeper setting terms.\n - Data is saved to your disk, and so the application works offline.\n - You can sync directly with friends over the wifi. \n\n\nBecause we're still in development, **you'll need to contact an SSB team member (in #scuttlebutt on Freenode) to get onto the network!**\nThat's our informal barrier to entry right now, since we're not prepared for lots of users yet.\n\nPatchwork embeds the [Scuttlebot networked database](https://github.com/ssbc/scuttlebot), so if you're running Patchwork, you don't need to run another scuttlebot server.\n\n## [Install Instructions](./docs/install.md)\n\n## [Electron Version](https://github.com/ssbc/patchwork-electron)\n\n## Docs\n\n- [Help / FAQ](./docs/help-faq.md)\n- [Building Patchwork](./docs/BUILDING.md)\n- [Creating a Testing Environment, and Running Tests](./docs/TESTING.md)\n- [Patchwork Project Structure](./docs/PROJECT-STRUCTURE.md)\n- [SSB Docs Repo](https://github.com/ssbc/docs)\n\n## License\n\nCopyright (C) 2015-2016 Secure Scuttlebutt Consortium\n\nThis program is free software: you can redistribute it and/or modify\nit under the terms of the GNU General Public License as published by\nthe Free Software Foundation, either version 3 of the License, or\n(at your option) any later version.\n\nThis program is distributed in the hope that it will be useful,\nbut WITHOUT ANY WARRANTY; without even the implied warranty of\nMERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the\nGNU General Public License for more details.\n\nYou should have received a copy of the GNU General Public License\nalong with this program.  If not, see <http://www.gnu.org/licenses/>.\n"
+}

@@ -30,12 +30,18 @@
   },
   "description": "run your own distributed key-value store!",
   "version": "1.0.1",
-  "directories": {
-    "test": "test"
-  },
   "repository": {
-    "type": "git",
-    "url": "git+https://github.com/elsehow/swarmkvd.git"
+    "user": "elsehow",
+    "repo": "swarmkvd",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/elsehow/swarmkvd/tarball/master",
+    "clone_url": "https://github.com/elsehow/swarmkvd",
+    "https_url": "https://github.com/elsehow/swarmkvd",
+    "travis_url": "https://travis-ci.org/elsehow/swarmkvd",
+    "zip_url": "https://github.com/elsehow/swarmkvd/archive/master.zip",
+    "api_url": "https://api.github.com/repos/elsehow/swarmkvd"
   },
   "keywords": [
     "swarmkv",
@@ -43,32 +49,35 @@
     "swarmlog",
     "kv"
   ],
-  "bugs": {
-    "url": "https://github.com/elsehow/swarmkvd/issues"
-  },
   "homepage": "https://github.com/elsehow/swarmkvd#readme",
   "gitHead": "0f51baa8fdd6c764a03f6af36931178beb0e0379",
-  "_id": "swarmkvd@1.0.1",
-  "_shasum": "0806f14b5177c75e328685d8d10fd1409b336099",
-  "_from": ".",
   "_npmVersion": "3.7.5",
   "_nodeVersion": "5.7.0",
-  "_npmUser": {
-    "name": "elsehow",
-    "email": "ffff@berkeley.edu"
-  },
   "dist": {
     "shasum": "0806f14b5177c75e328685d8d10fd1409b336099",
     "tarball": "http://registry.npmjs.org/swarmkvd/-/swarmkvd-1.0.1.tgz"
   },
-  "maintainers": [
+  "versions": [
+    {
+      "number": "1.0.0",
+      "date": "2016-04-05T00:51:00.490Z"
+    },
+    {
+      "number": "1.0.1",
+      "date": "2016-04-05T16:56:13.230Z"
+    }
+  ],
+  "created": "2016-04-05T00:51:00.490Z",
+  "modified": "2016-04-05T16:56:13.230Z",
+  "lastPublisher": {
+    "name": "elsehow",
+    "email": "ffff@berkeley.edu"
+  },
+  "owners": [
     {
       "name": "elsehow",
       "email": "ffff@berkeley.edu"
     }
   ],
-  "_npmOperationalInternal": {
-    "host": "packages-12-west.internal.npmjs.com",
-    "tmp": "tmp/swarmkvd-1.0.1.tgz_1459875372693_0.11577481660060585"
-  }
+  "readme": "# empty-package\n\nrun your own distributed key-value store! \n\nlike bittorrent sync, but for a kvstore\n\n## installation\n\n    npm install -g electron-prebuilt\n    npm install -g swarmkvd\n\nnow generate some keys\n\n    node -pe \"JSON.stringify(require('ssb-keys').generate())\" > keys.json\n\n## usage\n\n    swarmkvd start keys.json \n    \n      Host a kv. If keys.json has a public and private key,\n        you can put items. If it has only a public key, you\n        can get and list items.\n    \n        optional: -d [database]\n    \n    swarmkvd get KEY\n    \n      Print a json object for the values at KEY,\n        mapping hashes to values\n    \n    swarmkvd list\n    \n      Print a list of keys and values as json, one per line.\n    \n    swarmkvd put KEY VALUE\n    \n      Assoc VALUE with KEY in the kv\n\n## developing\n\n        npm install\n        npm run watch\n\nnow you can edit `test/index.js` or `src/index.js`\n\n`npm test` will re-run on changes\n"
 }

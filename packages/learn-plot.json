@@ -14,24 +14,29 @@
     "name": "Ezekiel Warren"
   },
   "license": "ISC",
-  "_id": "learn-plot@0.0.1",
-  "_shasum": "22980676a6001a099e42b562b63b563223e06566",
-  "_from": ".",
   "_npmVersion": "2.14.4",
   "_nodeVersion": "4.1.1",
-  "_npmUser": {
+  "dist": {
+    "shasum": "22980676a6001a099e42b562b63b563223e06566",
+    "tarball": "http://registry.npmjs.org/learn-plot/-/learn-plot-0.0.1.tgz"
+  },
+  "versions": [
+    {
+      "number": "0.0.1",
+      "date": "2015-10-24T22:03:04.571Z"
+    }
+  ],
+  "created": "2015-10-24T22:03:04.571Z",
+  "modified": "2015-10-24T22:03:04.571Z",
+  "lastPublisher": {
     "name": "saucy",
     "email": "zekewarren@gmail.com"
   },
-  "maintainers": [
+  "owners": [
     {
       "name": "saucy",
       "email": "zekewarren@gmail.com"
     }
   ],
-  "dist": {
-    "shasum": "22980676a6001a099e42b562b63b563223e06566",
-    "tarball": "http://registry.npmjs.org/learn-plot/-/learn-plot-0.0.1.tgz"
-  },
-  "directories": {}
+  "readme": "## Learn Plot\r\n\r\nLearn Plot is a simple nodejs module used as a learning tool. It creates a __128 x 128__ sized window and couple global functions `plot` and `clearPlots`. These functions act on the window creating little squares with color.\r\n\r\n\r\n#### plot( x, y, color=black )\r\nCreates a single _pixel-like_ square with a color.\r\n\r\n#### clearPlots( color=black )\r\nClears all plots setting whole window to a single color.\r\n\r\n##### The color argument\r\nThe color argument accepts regular JavaScript objects that have the members: red, green, blue or r, g, b respectively. The value of these members can range from 0 to 255.\r\n\r\n### Example Use\r\n```JavaScript\r\nrequire(\"learn-plot\");\r\n\r\n// Define some colors for easy use.\r\nvar red = {\r\n  red: 255,\r\n  green: 0,\r\n  blue: 0\r\n};\r\n\r\nvar green = {\r\n  red: 0,\r\n  green: 255,\r\n  blue: 0\r\n};\r\n\r\nvar blue = {\r\n  red: 0,\r\n  green: 0,\r\n  blue: 255\r\n};\r\n\r\n// Plot a pixel at each corner\r\nplot(0, 0, red);\r\nplot(0, 127, green);\r\nplot(127, 0, green);\r\nplot(127, 127, red);\r\n\r\n```\r\n"
 }

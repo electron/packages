@@ -1,0 +1,294 @@
+{
+  "name": "kinto-admin",
+  "version": "1.1.1",
+  "description": "Kinto Web Administration Console in React.js",
+  "scripts": {
+    "build:readme": "toctoc README.md -w",
+    "dist": "NODE_ENV=production node_modules/.bin/webpack --progress --config webpack.prod.js && cp index.prod.html dist/index.html",
+    "flow-check": "flow check",
+    "lint": "eslint scripts test test-browser",
+    "prepare-gh-pages": "rimraf build && KINTO_ADMIN_PUBLIC_PATH='/kinto-admin/' npm run dist",
+    "publish-to-gh-pages": "npm run prepare-gh-pages && bin/kinto-admin build -d build && gh-pages --add --dist build/",
+    "publish-to-gh-pages-tag": "npm run prepare-gh-pages && bin/kinto-admin build -d build/$npm_package_version && gh-pages --add --dist build/",
+    "publish-to-npm": "KINTO_ADMIN_PUBLIC_PATH='/' npm run dist && npm publish",
+    "start": "NODE_ENV=development node devServer.js",
+    "tdd": "NODE_ENV=test node_modules/.bin/babel-node node_modules/.bin/_mocha --require ./test/setup-jsdom.js 'test/**/*_test.js' --watch",
+    "tdd-browser": "NODE_ENV=test node_modules/.bin/babel-node node_modules/.bin/_mocha 'test-browser/**/*_test.js' --watch",
+    "test": "NODE_ENV=test node_modules/.bin/babel-node node_modules/.bin/_mocha --require ./test/setup-jsdom.js 'test/**/*_test.js'",
+    "test-browser": "NODE_ENV=test node_modules/.bin/babel-node node_modules/.bin/_mocha 'test-browser/**/*_test.js'",
+    "test-all": "npm run lint && npm run flow-check && npm run test"
+  },
+  "bin": {
+    "kinto-admin": "bin/kinto-admin"
+  },
+  "files": [
+    "bin",
+    "dist"
+  ],
+  "engineStrict": false,
+  "engines": {
+    "npm": "^2.14.7",
+    "node": ">=4"
+  },
+  "dependencies": {
+    "express": "^4.14.0",
+    "node-fs-extra": "^0.8.1",
+    "yargs": "^4.4.0"
+  },
+  "devDependencies": {
+    "atob": "^2.0.3",
+    "babel-cli": "^6.10.1",
+    "babel-core": "^6.9.1",
+    "babel-eslint": "^6.0.2",
+    "babel-loader": "^6.2.4",
+    "babel-plugin-react-transform": "^2.0.2",
+    "babel-plugin-syntax-flow": "^6.8.0",
+    "babel-plugin-transform-class-properties": "^6.9.1",
+    "babel-plugin-transform-flow-strip-types": "^6.8.0",
+    "babel-plugin-transform-object-rest-spread": "^6.6.5",
+    "babel-plugin-transform-runtime": "^6.9.0",
+    "babel-preset-es2015": "^6.6.0",
+    "babel-preset-react": "^6.5.0",
+    "bootstrap": "^3.3.6",
+    "btoa": "^1.1.2",
+    "chai": "^3.3.0",
+    "codemirror": "^5.13.2",
+    "css-loader": "^0.23.1",
+    "eslint": "^2.12.0",
+    "eslint-plugin-react": "^5.2.1",
+    "extract-text-webpack-plugin": "^1.0.1",
+    "file-loader": "^0.8.5",
+    "filesize": "^3.3.0",
+    "flow-bin": "^0.27.0",
+    "flow-interfaces": "^0.6.1",
+    "gh-pages": "^0.11.0",
+    "html": "0.0.10",
+    "jsdom": "^9.2.1",
+    "kinto-http": "^1.0.0",
+    "kinto-node-test-server": "0.0.1",
+    "mocha": "^2.5.3",
+    "mocha-generators": "^1.2.0",
+    "nightmare": "^2.5.1",
+    "react": "^15.0.1",
+    "react-addons-test-utils": "^15.0.1",
+    "react-codemirror": "^0.2.3",
+    "react-dom": "^15.0.1",
+    "react-jsonschema-form": "^0.35.0",
+    "react-redux": "^4.0.0",
+    "react-router": "^2.4.1",
+    "react-router-redux": "4.0.5",
+    "react-transform-catch-errors": "^1.0.0",
+    "react-transform-hmr": "^1.0.1",
+    "redbox-react": "^1.2.6",
+    "redux": "^3.0.4",
+    "redux-saga": "^0.10.5",
+    "rimraf": "^2.4.4",
+    "sinon": "^1.17.2",
+    "style-loader": "^0.13.1",
+    "toctoc": "^0.2.3",
+    "url-loader": "^0.5.7",
+    "uuid": "^2.0.2",
+    "webpack": "^1.10.5",
+    "webpack-dev-middleware": "^1.6.1",
+    "webpack-hot-middleware": "^2.6.0"
+  },
+  "repository": {
+    "user": "kinto",
+    "repo": "kinto-admin",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/kinto/kinto-admin/tarball/master",
+    "clone_url": "https://github.com/kinto/kinto-admin",
+    "https_url": "https://github.com/kinto/kinto-admin",
+    "travis_url": "https://travis-ci.org/kinto/kinto-admin",
+    "zip_url": "https://github.com/kinto/kinto-admin/archive/master.zip",
+    "api_url": "https://api.github.com/repos/kinto/kinto-admin"
+  },
+  "keywords": [
+    "kinto",
+    "react",
+    "admin",
+    "json-schema"
+  ],
+  "author": {
+    "name": "Nicolas Perriault",
+    "email": "nperriault@mozilla.com"
+  },
+  "license": "Apache-2.0",
+  "homepage": "https://github.com/kinto/kinto-admin#readme",
+  "gitHead": "1d6697bad6e30fb34bb6b745e9f1c47f106253eb",
+  "_npmVersion": "3.8.6",
+  "_nodeVersion": "6.0.0",
+  "dist": {
+    "shasum": "5d92283ead6a59d6bf1efb37b59529bbab4aa287",
+    "tarball": "http://registry.npmjs.org/kinto-admin/-/kinto-admin-1.1.1.tgz"
+  },
+  "versions": [
+    {
+      "number": "0.2.0",
+      "date": "2015-12-09T19:30:11.150Z"
+    },
+    {
+      "number": "0.3.0",
+      "date": "2015-12-10T18:52:15.112Z"
+    },
+    {
+      "number": "0.4.0",
+      "date": "2015-12-15T13:53:54.215Z"
+    },
+    {
+      "number": "0.4.1",
+      "date": "2015-12-18T08:49:52.656Z"
+    },
+    {
+      "number": "0.5.0",
+      "date": "2015-12-18T16:42:48.719Z"
+    },
+    {
+      "number": "0.5.1",
+      "date": "2015-12-21T21:53:24.518Z"
+    },
+    {
+      "number": "0.6.0",
+      "date": "2016-03-11T11:05:04.454Z"
+    },
+    {
+      "number": "0.7.0",
+      "date": "2016-03-15T10:19:30.714Z"
+    },
+    {
+      "number": "0.8.0",
+      "date": "2016-03-16T10:59:27.618Z"
+    },
+    {
+      "number": "0.9.0",
+      "date": "2016-03-16T15:39:15.300Z"
+    },
+    {
+      "number": "0.10.0",
+      "date": "2016-03-18T14:38:35.356Z"
+    },
+    {
+      "number": "0.10.1",
+      "date": "2016-03-18T16:13:25.989Z"
+    },
+    {
+      "number": "0.10.2",
+      "date": "2016-03-21T20:45:22.402Z"
+    },
+    {
+      "number": "0.10.3",
+      "date": "2016-03-25T10:03:03.531Z"
+    },
+    {
+      "number": "0.11.0",
+      "date": "2016-03-29T14:34:51.921Z"
+    },
+    {
+      "number": "0.11.1",
+      "date": "2016-03-29T14:57:25.764Z"
+    },
+    {
+      "number": "0.12.0",
+      "date": "2016-04-05T13:35:45.245Z"
+    },
+    {
+      "number": "0.12.1",
+      "date": "2016-04-06T15:48:26.150Z"
+    },
+    {
+      "number": "0.12.2",
+      "date": "2016-04-10T13:14:39.347Z"
+    },
+    {
+      "number": "0.12.3",
+      "date": "2016-04-12T08:22:58.657Z"
+    },
+    {
+      "number": "0.12.4",
+      "date": "2016-04-15T13:14:32.870Z"
+    },
+    {
+      "number": "0.13.0",
+      "date": "2016-04-26T21:15:55.827Z"
+    },
+    {
+      "number": "0.13.1",
+      "date": "2016-04-27T17:31:34.342Z"
+    },
+    {
+      "number": "0.13.2",
+      "date": "2016-05-03T15:00:50.714Z"
+    },
+    {
+      "number": "0.14.0",
+      "date": "2016-05-04T08:32:40.022Z"
+    },
+    {
+      "number": "0.15.0",
+      "date": "2016-05-06T17:48:55.424Z"
+    },
+    {
+      "number": "0.16.0",
+      "date": "2016-05-11T08:52:05.552Z"
+    },
+    {
+      "number": "0.16.1",
+      "date": "2016-05-12T08:03:18.049Z"
+    },
+    {
+      "number": "1.0.0",
+      "date": "2016-06-10T08:43:20.085Z"
+    },
+    {
+      "number": "1.0.1",
+      "date": "2016-06-10T09:48:54.052Z"
+    },
+    {
+      "number": "1.0.2",
+      "date": "2016-06-10T21:03:01.917Z"
+    },
+    {
+      "number": "1.1.0",
+      "date": "2016-07-01T09:38:46.239Z"
+    },
+    {
+      "number": "1.1.1",
+      "date": "2016-07-01T09:46:34.986Z"
+    }
+  ],
+  "created": "2015-12-09T19:30:11.150Z",
+  "modified": "2016-07-01T09:46:34.986Z",
+  "lastPublisher": {
+    "name": "n1k0",
+    "email": "nicolas@perriault.net"
+  },
+  "owners": [
+    {
+      "name": "ametaireau",
+      "email": "alexis@notmyidea.org"
+    },
+    {
+      "name": "leplatrem",
+      "email": "leplatrem@gmail.com"
+    },
+    {
+      "name": "magopian",
+      "email": "mathieu@agopian.info"
+    },
+    {
+      "name": "michielbdejong",
+      "email": "michiel@unhosted.org"
+    },
+    {
+      "name": "n1k0",
+      "email": "nicolas@perriault.net"
+    },
+    {
+      "name": "natim",
+      "email": "natim@mozilla.com"
+    }
+  ],
+  "readme": "# Kinto Web Administration Console\n\n[![Build Status](https://travis-ci.org/Kinto/kinto-admin.svg)](https://travis-ci.org/Kinto/kinto-admin)\n\nA Web admin UI to manage data from a [Kinto](https://kinto.readthedocs.io/) server.\n[Give it a go](http://kinto.github.io/kinto-admin/)!\n\n`kinto-admin` wants to be the [pgAdmin](http://pgadmin.org/) for\nKinto. You can also use it to build administration interfaces for\nKinto-based systems.\n\n## Table of Contents\n\n  - [Installation](#installation)\n  - [Standalone local server](#standalone-local-server)\n  - [Building static assets for production hosting](#building-static-assets-for-production-hosting)\n  - [Build kinto-admin locally](#build-kinto-admin-locally)\n  - [Development server](#development-server)\n  - [FAQ](#faq)\n     - [Browser support](#browser-support)\n     - [I get an ENOENT when I go to localhost:3000](#i-get-an-enoent-when-i-go-to-localhost-3000)\n     - [How to display a nested field value using the collection displayFields property?](#how-to-display-a-nested-field-value-using-the-collection-displayfields-property)\n  - [License](#license)\n\n---\n\n## Installation\n\nNodeJS v4+ and npm 2.14+ should be installed and available on your machine.\n\n```bash\n$ npm install -g kinto-admin\n```\n\nOr if you want it to be installed as a project dependency:\n\n```bash\n$ npm install kinto-admin --save\n```\n\n## Standalone local server\n\nThe Web admin UI can be served locally using the `kinto-admin` executable:\n\n```bash\n$ kinto-admin serve\nListening at http://0.0.0.0:3000\n```\n\nYou can specify the port to listen to using the `--port` or `-p` options:\n\n```bash\n$ kinto-admin serve -p 4000\nListening at http://0.0.0.0:4000\n```\n\n## Building static assets for production hosting\n\n```\n$ kinto-admin build -d static-build\n```\n\nHere, production-ready assets are generated into the `static-build/` directory,\nand can be published to any static webserver like\n[github-pages](https://pages.github.com/).\n\n## Build kinto-admin locally\n\nClone repository:\n\n```\n$ git clone https://github.com/Kinto/kinto-admin.git\n```\n\nInstall packages:\n\n```\n$ cd kinto-admin && npm install\n```\n\nAfter installation of packages, run the development server.\n\n## Development server\n\nThe development server should only be used when working on the\nkinto-admin codebase itself. If you're evaluating kinto-admin, or\nbuilding a system that relies on kinto-admin to administer, you should\ninstall kinto-admin using npm and use it as above.\n\nTo run in development mode:\n\n```\n$ npm start\n```\n\nThe application is served at [localhost:3000](http://localhost:3000/), and any\nReact component update will trigger a hot reload.\n\n## Tests\n\nTo run tests:\n\n```\n$ npm run test-all\n```\n\n> Note: The browser test suite is not included in this command as it takes a\nlong time and may result in intermittent failures on Travis\n(see [#146](https://github.com/Kinto/kinto-admin/pull/146)).\n\n## Browser tests\n\nThe browser test suite uses [NightmareJS](http://www.nightmarejs.org/) and\n[Electron](http://electron.atom.io/). To run browser tests:\n\n```\n$ npm run dist\n$ npm run test-browser\n```\n\nTo show the browser interactions while running them, set the `NIGHTMARE_SHOW` env var:\n\n```\n$ NIGHTMARE_SHOW=1 npm run test-browser\n```\n\nThere's also a TDD mode:\n\n```\n$ npm run tdd-browser\n```\n\n## FAQ\n\n### Browser support\n\nLet's be honest, we're mainly testing kinto-admin on recent versions of Firefox\nand Chrome, so we can't really guarantee proper compatibility with IE, Safari,\nOpera and others. We're accepting\n[pull requests](https://github.com/Kinto/kinto-admin/pulls) though.\n\n### I get an ENOENT when I go to localhost:3000\n\nDid you run `bin/kinto-admin` from this repository?\n\nYou can only run `kinto-admin` if you get `kinto-admin` with npm. The\nversion of `kinto-admin` uploaded to npm contains an\nautomatically-built `dist` directory with the artifacts that the\nbrowser needs.\n\nInstead, run the development server, as above.\n\n### How to display a nested field value using the collection displayFields property?\n\nUse the *dot* notation.\n\nFor example, if you have the following record:\n\n```\n{\n  \"data\": {\n    \"attachement\": {\n      \"filename\": \"font.ttf\"\n    }\n  }\n}\n```\n\nYou can use `attachment.filename`.\n\nWe tried our best to make it work with properties having dots in their name.\n\nFor instance:\n\n```\n{\n  \"data\": {\n    \"target\": {\n      \"proof.hash\": \"abcd\",\n      \"merkle.tree\": {\n         \"file.name\": \"foobar\"\n      }\n    }\n  }\n}\n\n```\n\nIf you use `target.merkle.tree.file.name` it will render the string\n`foobar` and `target.proof.hash` will render `abcd`.\n\n## License\n\nApache Licence Version 2.0\n"
+}

@@ -13,8 +13,17 @@
   "private": false,
   "license": "MIT",
   "repository": {
-    "type": "git",
-    "url": "git+https://github.com/MaraniMatias/grunt-electron-packager-builder.git"
+    "user": "MaraniMatias",
+    "repo": "grunt-electron-packager-builder",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/MaraniMatias/grunt-electron-packager-builder/tarball/master",
+    "clone_url": "https://github.com/MaraniMatias/grunt-electron-packager-builder",
+    "https_url": "https://github.com/MaraniMatias/grunt-electron-packager-builder",
+    "travis_url": "https://travis-ci.org/MaraniMatias/grunt-electron-packager-builder",
+    "zip_url": "https://github.com/MaraniMatias/grunt-electron-packager-builder/archive/master.zip",
+    "api_url": "https://api.github.com/repos/MaraniMatias/grunt-electron-packager-builder"
   },
   "files": [
     "tasks"
@@ -106,32 +115,55 @@
     }
   },
   "gitHead": "d6c321b733a096a11dc912afc2be4897e4e2ede2",
-  "bugs": {
-    "url": "https://github.com/MaraniMatias/grunt-electron-packager-builder/issues"
-  },
   "homepage": "https://github.com/MaraniMatias/grunt-electron-packager-builder#readme",
-  "_id": "grunt-electron-packager-builder@0.0.7",
-  "_shasum": "6efc005139f8a79669672ef595b660a34e6c5581",
-  "_from": ".",
   "_npmVersion": "3.9.0",
   "_nodeVersion": "6.1.0",
-  "_npmUser": {
-    "name": "matiasmarani",
-    "email": "maranimatias@gmail.com"
-  },
   "dist": {
     "shasum": "6efc005139f8a79669672ef595b660a34e6c5581",
     "tarball": "http://registry.npmjs.org/grunt-electron-packager-builder/-/grunt-electron-packager-builder-0.0.7.tgz"
   },
-  "maintainers": [
+  "stars": 1,
+  "versions": [
+    {
+      "number": "0.0.1",
+      "date": "2016-02-11T12:37:17.573Z"
+    },
+    {
+      "number": "0.0.2",
+      "date": "2016-02-11T21:00:01.740Z"
+    },
+    {
+      "number": "0.0.3",
+      "date": "2016-02-14T03:44:24.745Z"
+    },
+    {
+      "number": "0.0.4",
+      "date": "2016-02-14T04:28:58.612Z"
+    },
+    {
+      "number": "0.0.5",
+      "date": "2016-02-18T19:45:44.057Z"
+    },
+    {
+      "number": "0.0.6",
+      "date": "2016-02-18T21:02:42.832Z"
+    },
+    {
+      "number": "0.0.7",
+      "date": "2016-05-27T20:37:27.101Z"
+    }
+  ],
+  "created": "2016-02-11T12:37:17.573Z",
+  "modified": "2016-05-27T20:37:27.101Z",
+  "lastPublisher": {
+    "name": "matiasmarani",
+    "email": "maranimatias@gmail.com"
+  },
+  "owners": [
     {
       "name": "matiasmarani",
       "email": "maranimatias@gmail.com"
     }
   ],
-  "_npmOperationalInternal": {
-    "host": "packages-16-east.internal.npmjs.com",
-    "tmp": "tmp/grunt-electron-packager-builder-0.0.7.tgz_1464381445125_0.5976014451589435"
-  },
-  "directories": {}
+  "readme": "# grunt-electron-packager-builder\n\nGrunt tasks for working with electron, can run, compile and generate installers applications.\n\n```\n## I am working to improve this.\nThis task has many errors but works with electron 1.2. *.\nThe task 'installer' (electron-builder) does not work well.\n```\n\n## Install\n```sh\nnpm install grunt-electron-packager-builder --save-dev \n```\n\n## Quick Setup for this task.\n  Gruntfile.js \n```js\nmodule.exports = (grunt) => {\n  require('load-grunt-tasks')(grunt);\n\n  grunt.initConfig({\n    eplus:{\n      run:{ \n        options:{\n          appPath  :  './app' // default './app'\n        }\n      }\n    },\n    epack : {\n      default:{\n        options:{\n          icon      : './app/recursos/icon', //Auto detect platform extension.\n        }\n      }\n    }\n  });\n  \n  grunt.loadNpmTasks('grunt-electron-packager-builder');\n  grunt.registerTask('default', ['eplus:run']);\n};\n```\n\n## Options and Documentation\nDependencies needed to run the tasks\n\n```\nnpm install  electron-prebuilt --save-dev\nnpm install  electron-packager --save-dev\nnpm install  electron-builder --save-dev\nnpm install  electron-rebuild --save-dev\n```\nSee the [electron-prebuilt](https://github.com/mafintosh/electron-prebuilt).\n\nSee the [electron-packager](https://github.com/maxogden/electron-packager).\n\nSee the [electron-builder](https://github.com/loopline-systems/electron-builder).\n\nSee the [electron-rebuild](https://github.com/electron/electron-rebuild).\n\nGruntfile.js\n\n```js\nmodule.exports = (grunt) => {\n  require('load-grunt-tasks')(grunt);\n\n  grunt.initConfig({\n    eplus  :  {\n      run : { \n        options : {\n          appPath  :  './app' // default './app'\n        }\n      },\n      debug : { \n        options : {\n          appPath  :  './app',  // default './app'\n          debug : true,  // default false\n          port  :  5858  // default 5858\n        }\n      }\n    },\n    ebuild : { // electron-packager\n      default:{\n        options: {\n          //overwrite : true,     // default true\n          //platform  : 'all',    // default all\n          //arch      : 'all',    // default all\n          //version   : '0.36.7', // default auto set\n          //name    : 'Electron app', // default (options.dir+'/packeger.json').name\n          icon      : './app/recursos/icon', //Auto detect platform extension.\n          dir       : './app',   // default ./app\n          out       : './build'  // default ./build\n        }\n      },\n      custom:{\n        options: (platform,arch) => {\n          return {\n            platform,\n            arch,\n            icon : './app/recursos/icon'// Auto detect platform extension\n          }\n        }\n      }\n    }// epack  \n  grunt.loadNpmTasks('grunt-electron-packager-builder');\n  grunt.registerTask('default', ['eplus:run']);\n};\n```\n\n## License\nMIT © [Marani Matias Ezequiel](maranimatias@gmail.com)"
 }

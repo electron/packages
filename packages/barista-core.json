@@ -1,0 +1,75 @@
+{
+  "name": "barista-core",
+  "version": "0.0.2",
+  "description": "Contains the core functionality for the NodeJS-based implementation of Barista.",
+  "homepage": "https://github.com/baristalabs/barista-core",
+  "repository": {
+    "user": "baristalabs",
+    "repo": "barista-core",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/baristalabs/barista-core/tarball/master",
+    "clone_url": "https://github.com/baristalabs/barista-core",
+    "https_url": "https://github.com/baristalabs/barista-core",
+    "travis_url": "https://travis-ci.org/baristalabs/barista-core",
+    "zip_url": "https://github.com/baristalabs/barista-core/archive/master.zip",
+    "api_url": "https://api.github.com/repos/baristalabs/barista-core"
+  },
+  "main": "./lib/index.js",
+  "author": {
+    "name": "Oceanswave",
+    "email": "sean.mclellan@baristalabs.com"
+  },
+  "dependencies": {
+    "async": "^1.5.1",
+    "csso": "^1.4.4",
+    "express": "^4.13.3",
+    "generic-pool": "^2.4.0",
+    "handlebars": "^4.0.5",
+    "json-stringify-safe": "^5.0.1",
+    "linq": "^3.0.5",
+    "lodash": "^4.0.1",
+    "memorystream": "^0.3.1",
+    "moment": "^2.11.0",
+    "node-cache": "^3.0.1",
+    "node-uuid": "^1.4.7",
+    "portfinder": "^0.4.0",
+    "q": "^1.4.1",
+    "require-uncached": "^1.0.2",
+    "stack-trace": "0.0.9",
+    "uglify-js": "^2.6.1"
+  },
+  "license": "ISC",
+  "gitHead": "a3812691cbf0b7fcbfd437f80c9074eb646976f0",
+  "scripts": {},
+  "_npmVersion": "3.3.12",
+  "_nodeVersion": "5.3.0",
+  "dist": {
+    "shasum": "bee668108da44b9f1d5e97fd85b55b022060abf7",
+    "tarball": "http://registry.npmjs.org/barista-core/-/barista-core-0.0.2.tgz"
+  },
+  "versions": [
+    {
+      "number": "0.0.1",
+      "date": "2016-01-25T18:31:07.788Z"
+    },
+    {
+      "number": "0.0.2",
+      "date": "2016-02-19T21:21:22.382Z"
+    }
+  ],
+  "created": "2016-01-25T18:31:07.788Z",
+  "modified": "2016-02-19T21:21:22.382Z",
+  "lastPublisher": {
+    "name": "oceanswave",
+    "email": "oceanswave@me.com"
+  },
+  "owners": [
+    {
+      "name": "oceanswave",
+      "email": "oceanswave@me.com"
+    }
+  ],
+  "readme": "﻿# barista-core\r\n\r\n###For those getting started with Barista, see BaristaLabs/barista-cli\r\n\r\n===\r\n\r\n#### Overview\r\n\r\n*This is a continuation of the patterns defined in the (closed-source) Barista implementation built on .NET and SharePoint technologies.*\r\n\r\nIn a nutshell, Barista acts as SaaS to build application-level services.\r\n\r\nOnce you've wrapped your head around that, another description might be that Barista aims to allow end-users to execute scripts in a sandbox while exposing business-level functionality that does not have access to system-level resources. These scripts are executed via a service.\r\n\r\nBy exposing this functionality to CMS and other controlled environments (SharePoint, etc) this allows end-users to develop business functionality that would previously require customizations to the CMS software (E.g. Farm-Level Deployments). Customizations to the CMS software are expensive in terms of time to develop, deploy and the potential of breaking changes when the CMS software is updated. In tighly-controlled environments, approval processes increase the latency between development and availability.\r\n\r\nBarista scripts can be deployed and managed similarly to content within a CMS and allows for a layer of abstraction between the scripts and the platform.\r\n\r\n---\r\n\r\nThe .NET implementation of Barista uses a JavaScript engine, Jurassic, that JIT compiles JS to .NET IL. While JS/ECMAScript has moved forward, Jurassic has not. Other libraries exist for .NET which allow scripts to be interpered or compiled and executed in a similar fashion (JINT/JavaScript.Net/NiL.JS...) however each suffers in its own way, either in performance, lack of full compatability, level of maintence required and so forth. While contributions back to Jurassic, contributions to another library, or a completely custom JS engine built in .NET can be developed, the LOE to do so is extremely high. With Node/V8, there exists a platform that is actively being developed and maintained and incorporaes the latest in ECMAScript standards and focuses on performance and efficency.\r\n\r\nThe challenge here is that Node takes a nice, sandboxed JavaScript environment in V8 (and now Chakra) and rips it wide open -- giving scripts the ability to access system resources (FS, processes, etc). The node implementation of Barista closes this sandbox back up to Barista scripts and exposes only functionality that manipulates resources in (end) user-land.\r\n\r\nSome goals:\r\n* Reimplement Barista using Node to allow for the latest in JS/ECMAScript standards to be used and to provide high levels of peformance while providing multi-platform support (now, not later).\r\n* Barista executes each script in a seperate node process for isolation and fault-tolerance.\r\n* Scripts are time and memory limited so they do not execute indefinitely or use all available system resources.\r\n* Barista module system (similar nee identical to NPM) that allows modules to be installed and extend an otherwise basic level of functionality.\r\n* Available modules (either custom or built-in) do not perform system level actions or grant access to system-level resources.\r\n* Modules are available that perform actions familar to .NET developers and the .NET Implementation of Barista (EPPlus, SharePoint...)\r\n* Modules even though installed, must be whitelisted on a case-by-case basis.\r\n* Scripts can be interactively debugged remotely as an end-user.\r\n\r\nFuture Goals:\r\n* Allow for remote sandbox processes to allow Barista to run in a clustered approach.\r\n* Multi-tenancy to allow Barista to run as a PaaS on AWS/Azure. \r\n\r\n#### Structure\r\n\r\nRepository | Description\r\n---------- | -----------\r\nbarista-core | This repository contains the core barista capabilities that standup and manage sandbox instances, translate http requests to/from barista instances and translate the response back out, module system and so forth.\r\nbarista-fiddle |  Contains a native-web IDE in which Barista scripts can be interactively developed; providing autocomplete, debugging, and other functionality common to development environments.\r\nbarista-scriptbox |  Provides an implementation of a service in which scripts can be persisted.\r\nbarista-server | Acts as a headless-server for Barista; core, fiddle, scriptbox...\r\nbarista-cli | Barista command line tool to interact with barista, start and monitor services, etc.\r\nbarista-coldpress | Hosts Barista within an Electron process.\r\n\r\n#### Modules\r\nTODO...\r\n"
+}

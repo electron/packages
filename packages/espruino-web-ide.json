@@ -10,8 +10,17 @@
     "start": "electron ./electron-app.js"
   },
   "repository": {
-    "type": "git",
-    "url": "git+ssh://git@github.com/Espruino/EspruinoWebIDE.git"
+    "user": "Espruino",
+    "repo": "EspruinoWebIDE",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/Espruino/EspruinoWebIDE/tarball/master",
+    "clone_url": "https://github.com/Espruino/EspruinoWebIDE",
+    "https_url": "https://github.com/Espruino/EspruinoWebIDE",
+    "travis_url": "https://travis-ci.org/Espruino/EspruinoWebIDE",
+    "zip_url": "https://github.com/Espruino/EspruinoWebIDE/archive/master.zip",
+    "api_url": "https://api.github.com/repos/Espruino/EspruinoWebIDE"
   },
   "keywords": [
     "espruino"
@@ -22,9 +31,6 @@
     "url": "http://espruino.com"
   },
   "license": "Apache-2.0",
-  "bugs": {
-    "url": "https://github.com/espruino/EspruinoWebIDE/issues"
-  },
   "homepage": "https://github.com/espruino/EspruinoWebIDE#readme",
   "dependencies": {
     "acorn": ">=0.6.0",
@@ -38,28 +44,49 @@
   },
   "devDependencies": {},
   "gitHead": "4df6e6da1287730f4bbed84241872f19d152b2b4",
-  "_id": "espruino-web-ide@0.60.5",
-  "_shasum": "05b2f4d470296b5ab5dc53e7b009824aa7e962c9",
-  "_from": ".",
   "_npmVersion": "3.7.3",
   "_nodeVersion": "5.8.0",
-  "_npmUser": {
-    "name": "gfwilliams",
-    "email": "gw@pur3.co.uk"
-  },
   "dist": {
     "shasum": "05b2f4d470296b5ab5dc53e7b009824aa7e962c9",
     "tarball": "http://registry.npmjs.org/espruino-web-ide/-/espruino-web-ide-0.60.5.tgz"
   },
-  "maintainers": [
+  "versions": [
+    {
+      "number": "0.60.0",
+      "date": "2016-03-14T12:13:54.721Z"
+    },
+    {
+      "number": "0.60.1",
+      "date": "2016-03-14T12:47:44.491Z"
+    },
+    {
+      "number": "0.60.2",
+      "date": "2016-03-14T13:01:18.559Z"
+    },
+    {
+      "number": "0.60.3",
+      "date": "2016-03-14T13:17:32.215Z"
+    },
+    {
+      "number": "0.60.4",
+      "date": "2016-03-15T10:46:36.795Z"
+    },
+    {
+      "number": "0.60.5",
+      "date": "2016-03-16T10:52:22.745Z"
+    }
+  ],
+  "created": "2016-03-14T12:13:54.721Z",
+  "modified": "2016-03-16T10:52:22.745Z",
+  "lastPublisher": {
+    "name": "gfwilliams",
+    "email": "gw@pur3.co.uk"
+  },
+  "owners": [
     {
       "name": "gfwilliams",
       "email": "gw@pur3.co.uk"
     }
   ],
-  "_npmOperationalInternal": {
-    "host": "packages-12-west.internal.npmjs.com",
-    "tmp": "tmp/espruino-web-ide-0.60.5.tgz_1458125538958_0.5155513589270413"
-  },
-  "directories": {}
+  "readme": "Espruino Web IDE  [![Join the chat at https://gitter.im/espruino/Espruino](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/espruino/Espruino?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)\n======================\n\nA VT100 Serial Terminal as a Chrome Web App (with both syntax highlighted and graphical editors) - designed for writing code on microcontrollers that use the [Espruino JavaScript interpreter](http://www.espruino.com). It can also run natively via [Node.js](https://nodejs.org/en/) and [Electron](http://electron.atom.io/), or a version with limited IO can be used [as a website](https://espruino.github.io/EspruinoWebIDE/).\n\n[![ScreenShot](https://raw.github.com/espruino/EspruinoWebIDE/gh-pages/extras/screenshot.png)](http://youtu.be/Fjju_QhzL-c)\n[![ScreenShot](https://raw.github.com/espruino/EspruinoWebIDE/gh-pages/extras/screenshot2.png)](http://youtu.be/Fjju_QhzL-c)\n\nThis is a Chrome Web App ([mainly](#full-web-version)) that uses [chome.serial](https://developer.chrome.com/apps/serial) to access your PC's serial port. You can download it from the Chrome Web Store: https://chrome.google.com/webstore/detail/espruino-serial-terminal/bleoifhkdalbjfbobjackfdifdneehpo\n\nIt implements basic VT100 terminal features (up/down/left/right/etc) - enough for you to write code using the Espruino. You can also use the right-hand pane to write JavaScript code on the PC, and can then click the 'transfer' icon to send that code directly down the Serial Port.\n\n| Version | Communications | Benefits |\n|---------|----------------|----------|\n| [Chrome Web App](#installing-from-chrome-web-store) | USB, Serial, [Audio](http://www.espruino.com/Headphone), TCP/IP | Easy to install from [Chrome Web Store](https://chrome.google.com/webstore/detail/espruino-serial-terminal/bleoifhkdalbjfbobjackfdifdneehpo) |\n| [Node.js App](#installing-from-npm) | USB, Serial, Bluetooth Low Energy | Can be run of systems without Chrome web browser |\n| [Web Version](#full-web-version) | [Audio](http://www.espruino.com/Headphone), Bluetooth Low Energy (via [Web Bluetooth](https://webbluetoothcg.github.io/web-bluetooth/)) | Just go to [a URL](https://espruino.github.io/EspruinoWebIDE/) |\n\nInstalling From Chrome Web Store\n----------------------------\n\n* Install the [Chrome Web Browser](https://www.google.com/intl/en/chrome/browser/)\n* [Go Here](https://chrome.google.com/webstore/detail/espruino-serial-terminal/bleoifhkdalbjfbobjackfdifdneehpo) to find the app in the Chrome Web Store\n* Click 'Install'\n* Click 'Launch App'\n\nInstalling from NPM\n-------------------\n\nIf you have an up to date version of [Node.js](https://nodejs.org/en/) and [NPM](https://www.npmjs.com/), you can execute the commands:\n\n* `sudo npm install espruino-web-ide -g`\n* `espruino-web-ide`\n\n**Note:** For command-line access you might also want to take a look at [EspruinoTools](https://github.com/espruino/EspruinoTools)\n\nInstalling from GitHub (Latest Version)\n---------------------------------------\n\n* Download the files in [EspruinoWebIDE](https://github.com/espruino/EspruinoWebIDE) to an `EspruinoWebIDE` directory on your PC (either as a [ZIP File](https://github.com/espruino/EspruinoWebIDE/archive/gh-pages.zip), or using git)\n* Download the files in [EspruinoTools](https://github.com/espruino/EspruinoTools) into the `EspruinoWebIDE/EspruinoTools` on your PC (either as a [ZIP File](https://github.com/espruino/EspruinoTools/archive/gh-pages.zip), or using git)\n\n### Running in Chromne\n\n* Install and run the [Chrome Web Browser](https://www.google.com/intl/en/chrome/browser/)\n* Click the menu icon in the top right\n* Click 'Settings'\n* Click 'Extensions' on the left\n* Click 'Load Unpackaged Extension'\n* Navigate to the `EspruinoWebIDE` Directory and click Ok\n* Job Done. It'll now appear as an app with the 'Unpacked' banner so you can tell it apart from the normal Web IDE. You can start it easily by clicking the 'Launch' link on the extensions page, or whenever you open a new tab.\n\n### Running in [Node.js](https://nodejs.org/en/)\n\n* Go to the `EspruinoWebIDE` directory\n* Run `npm install`\n* Run `npm start`\n\n\nChrome Permissions\n------------------\n\nThis web app requires the following permissions:\n* *Serial port access* : So that it can access the Espruino board via USB/Serial\n* *Webcam access* : So that when you click the little person icon in the top-right of the terminal window, you can overlay the terminal on a live video feed\n* *Audio access*: if you want to [communicate with Espruino using your headphone jack](http://www.espruino.com/Headphone)\n* *Filesystem/storage access* : For loading/saving your JavaScript files to your local disk\n\n\nUsing\n-----\n\n* Run the Web app\n* Click the `Help` (?) icon, then the `Tour` button to get a guided tour.\n\n**Running with Node.js/Electron and don't see any ports when you try and connect?** You're probably using a version of Node.js that doesn't match Electron. This causes NPM to load binary modules (for `serialport` and `bleat`) that are for the old version of Node and that won't work in Electron. To fix it, update Node.js, delete `node_modules` and run `npm install` again.\n\n\nFull Web Version\n----------------\n\nThere is also [a web-only version of the Web IDE](https://espruino.github.io/EspruinoWebIDE/) served directly from GitHub.\n\nWeb browser permissions stop this accessing the Serial port, but it can:\n\n* Use the Web Audio API to [fake a serial port over your headphone jack](http://www.espruino.com/Headphone) - this must be turned on using the Web IDE's settings icon first\n* Use [Web Bluetooth API](https://webbluetoothcg.github.io/web-bluetooth/) on compatible devices like the [BBC micro:bit](http://www.espruino.com/MicroBit) to communicate with Espruino via devices that implement a Nordic BLE UART\n\nPotentially it could also communicate directly with Espruino boards via WebSockets or even AJAX, but this isn't implemented yet.\n\n**Note:** Sadly Apple have chosen not to implement `getUserMedia` on their iOS devices at the moment, so Serial over Audio won't work on iPhone/iPad/etc. (The menu item won't appear in the settings page)\n\n\nContributing\n------------\n\nContributions are welcome - especially if they make the Web IDE easier to use for newcomers!\n\n### Getting Started\n\nEspruino Web IDE expects the [EspruinoTools](https://github.com/espruino/EspruinoTools) repository to be in `EspruinoWebIDE/EspruinoTools`. If you're using Git, make sure you add it using the command:\n\n```\ngit submodule add git@github.com:espruino/EspruinoTools.git\n```\n\n### Code Style\n\n * Please stick to a [K&R style](http://en.wikipedia.org/wiki/1_true_brace_style#K.26R_style) with no tabs and 2 spaces per indent\n * Filenames should start with a lowerCase letter, and different words should be capitalised, not split with underscores\n \n### Code Outline\n\n * Core functionality goes in `js/core`, Plugins go in `js/plugins`. See `plugins/_examplePlugin.js` for an example layout\n * Plugins/core need to implement in init function, which is called when the document (and settings) have loaded.\n * Plugins can respond to specific events using `Espruino.addProcessor`. For instance you can use `Espruino.addProcessor(\"transformForEspruino\", function (data,callback) { .. })` and can modify code before it is sent to Espruino.\n * Icons are added using `Espruino.Core.App.addIcon` and are generally added from JsvaScript file that performs the operation\n * Config is stored in `Espruino.Config.FOO` and is changed with `Espruino.Config.set(\"FOO\", value)`. `Espruino.Core.Config.add` can be used to add an option to the Settings menu.\n * Annoyingly, right now plugins still have to be loaded via a `<script>` tag in `main.html`\n\n"
 }

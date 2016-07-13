@@ -1,11 +1,20 @@
 {
   "name": "electron-image-resize",
-  "version": "1.1.0",
+  "version": "1.2.2",
   "description": "Resize images using Electron. Supports all image types that Chromium/Electron supports, outputs to png, jpeg, dataUrl or NativeImage.",
   "license": "MIT",
   "repository": {
-    "type": "git",
-    "url": "git+https://github.com/davej/electron-image-resize.git"
+    "user": "davej",
+    "repo": "electron-image-resize",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/davej/electron-image-resize/tarball/master",
+    "clone_url": "https://github.com/davej/electron-image-resize",
+    "https_url": "https://github.com/davej/electron-image-resize",
+    "travis_url": "https://travis-ci.org/davej/electron-image-resize",
+    "zip_url": "https://github.com/davej/electron-image-resize/archive/master.zip",
+    "api_url": "https://api.github.com/repos/davej/electron-image-resize"
   },
   "author": {
     "name": "DaveJ",
@@ -33,37 +42,56 @@
   ],
   "dependencies": {},
   "devDependencies": {
-    "electron-prebuilt": "^0.37.5",
-    "eslint": "^2.4.0",
-    "eslint-config-airbnb": "^6.1.0"
+    "electron-prebuilt": "^1.2.6",
+    "eslint": "^2.9.0",
+    "eslint-config-airbnb": "^9.0.1",
+    "eslint-plugin-import": "^1.10.2"
   },
-  "gitHead": "2f57a5a3ebd1d4a6771c378d2221f39122acbb95",
-  "bugs": {
-    "url": "https://github.com/davej/electron-image-resize/issues"
-  },
+  "gitHead": "857304887ac212fd6e7328e069cab47b4f28e7e6",
   "homepage": "https://github.com/davej/electron-image-resize#readme",
-  "_id": "electron-image-resize@1.1.0",
-  "_shasum": "291189bffe7e70e8444f2545202c90583ed12d53",
-  "_from": ".",
-  "_npmVersion": "3.6.0",
-  "_nodeVersion": "5.6.0",
-  "_npmUser": {
+  "_npmVersion": "3.10.3",
+  "_nodeVersion": "6.2.0",
+  "dist": {
+    "shasum": "33d8d669e8aa3213188f245a51720f2580741a0b",
+    "tarball": "http://registry.npmjs.org/electron-image-resize/-/electron-image-resize-1.2.2.tgz"
+  },
+  "versions": [
+    {
+      "number": "1.0.0",
+      "date": "2016-03-11T13:42:01.296Z"
+    },
+    {
+      "number": "1.0.1",
+      "date": "2016-03-12T00:23:55.046Z"
+    },
+    {
+      "number": "1.1.0",
+      "date": "2016-04-14T19:21:34.952Z"
+    },
+    {
+      "number": "1.2.0",
+      "date": "2016-07-06T13:57:32.036Z"
+    },
+    {
+      "number": "1.2.1",
+      "date": "2016-07-06T14:19:43.003Z"
+    },
+    {
+      "number": "1.2.2",
+      "date": "2016-07-06T14:30:52.815Z"
+    }
+  ],
+  "created": "2016-03-11T13:42:01.296Z",
+  "modified": "2016-07-06T14:30:52.815Z",
+  "lastPublisher": {
     "name": "davej",
     "email": "dave@davejeffery.com"
   },
-  "dist": {
-    "shasum": "291189bffe7e70e8444f2545202c90583ed12d53",
-    "tarball": "http://registry.npmjs.org/electron-image-resize/-/electron-image-resize-1.1.0.tgz"
-  },
-  "maintainers": [
+  "owners": [
     {
       "name": "davej",
       "email": "dave@davejeffery.com"
     }
   ],
-  "_npmOperationalInternal": {
-    "host": "packages-12-west.internal.npmjs.com",
-    "tmp": "tmp/electron-image-resize-1.1.0.tgz_1460661692285_0.7160855296533555"
-  },
-  "directories": {}
+  "readme": "# electron-image-resize\n\n> Resize images using Electron. Supports all image types that Chromium/Electron supports, outputs to png, jpeg, dataUrl or NativeImage.\n\n\n## Install\n\n```\n$ npm install --save electron-image-resize\n```\n\n\n## Usage\n\n```js\nconst electronImageResize = require('electron-image-resize');\nconst { writeFileSync } = require('fs');\n\n// Resize the svg image to 40x40\nelectronImageResize({\n  url: 'http://electron.atom.io/images/electron-logo.svg',\n  width: 40,\n  height: 40\n}).then(img => {\n  // save it as a png file\n  writeFileSync('/some/path/electron.png', img.toPng());\n})\n```\n\n\n## API\n\n### electronImageResize(options)\n\n#### options\n\n##### url\n\nType: `string`  \n*Required*\n\nURL of image to resize. For local paths prefix the path with '`file://`'.\n\n##### width and height\n\nType: `number`  \n*At Least One Is Required*\n\nThe width in pixels to resize the image to.\nThe height in pixels to resize the image to.\nIf only one dimension is provided, the image will be re-sized so that the original height/width ratio is maintained.\n\n##### delay\n\nType: `boolean`  \nDefault: `500`\n\nWe will wait until the image is loaded but often you will need to also add a delay to give the renderer time to paint the image before capturing it.\n\n\n#### Returns\n\nReturns a promise which resolves to a [NativeImage](https://github.com/atom/electron/blob/master/docs/api/native-image.md). Use methods like `.toPng()` and `.toJpeg()` to get a buffer which you can use to write to the file system.\n\n## License\n\nMIT © [DaveJ](https://twitter.com/DaveJ)\n"
 }

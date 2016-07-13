@@ -4,8 +4,17 @@
   "version": "0.0.1",
   "homepage": "http://github.com/daxtero/electron-gettext",
   "repository": {
-    "type": "git",
-    "url": "git://github.com/daxtero/electron-gettext.git"
+    "user": "daxtero",
+    "repo": "electron-gettext",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/daxtero/electron-gettext/tarball/master",
+    "clone_url": "https://github.com/daxtero/electron-gettext",
+    "https_url": "https://github.com/daxtero/electron-gettext",
+    "travis_url": "https://travis-ci.org/daxtero/electron-gettext",
+    "zip_url": "https://github.com/daxtero/electron-gettext/archive/master.zip",
+    "api_url": "https://api.github.com/repos/daxtero/electron-gettext"
   },
   "author": {
     "name": "André Meyerjürgens",
@@ -18,9 +27,6 @@
     }
   ],
   "main": "./lib/gettext.js",
-  "directories": {
-    "lib": "lib"
-  },
   "script": {
     "test": "./node_modules/.bin/nodeunit test"
   },
@@ -42,28 +48,31 @@
   },
   "license": "LGPL-2.1",
   "gitHead": "d2ca5a7ca62bbf439040b9294272b018e7ff407f",
-  "bugs": {
-    "url": "https://github.com/daxtero/electron-gettext/issues"
-  },
-  "_id": "electron-gettext@0.0.1",
   "scripts": {},
-  "_shasum": "f3eb1ec94cadeb48711b7b5407e3469b1da906fb",
-  "_from": "electron-gettext",
   "_resolved": "file:electron-gettext",
   "_npmVersion": "3.3.11",
   "_nodeVersion": "5.0.0",
-  "_npmUser": {
-    "name": "daxtero",
-    "email": "ameyerjuergens@gmail.com"
-  },
   "dist": {
     "shasum": "f3eb1ec94cadeb48711b7b5407e3469b1da906fb",
     "tarball": "http://registry.npmjs.org/electron-gettext/-/electron-gettext-0.0.1.tgz"
   },
-  "maintainers": [
+  "versions": [
+    {
+      "number": "0.0.1",
+      "date": "2015-11-30T10:04:11.044Z"
+    }
+  ],
+  "created": "2015-11-30T10:04:11.044Z",
+  "modified": "2015-11-30T10:04:11.044Z",
+  "lastPublisher": {
+    "name": "daxtero",
+    "email": "ameyerjuergens@gmail.com"
+  },
+  "owners": [
     {
       "name": "daxtero",
       "email": "ameyerjuergens@gmail.com"
     }
-  ]
+  ],
+  "readme": "electron-gettext\n============\n\nAn adaption of Joshua I. Miller's Javascript Gettext library for node.js.\n\n* Easy to use\n* Loading from \\*.po files.\n* Plural, context and multi-language support\n* Batch loading of entire translation directory trees\n* LGPL licensed\n\nelectron-gettext brings the power of the GNU gettext API to your node.js application.\n\nUsage\n-----\n\nSimply require the library, load a few \\*.po files and start using any of the gettext interfaces to translate your strings:\n\n    var gettext = require('gettext'),\n        _ = gettext.gettext;\n\n    gettext.loadLanguageFile('./locale/de/messages.po', 'de');\n    gettext.loadLanguageFile('./locale/fr/messages.po', 'fr');\n\n    gettext.setlocale('LC_ALL', 'de');\n\n    console.log(_('Hello, World!'));\n\n    gettext.setlocale('LC_ALL', 'fr');\n\n    console.log(_('Hello, World!'));\n\n\nInstall\n-------\n\nInstall via npm\n\n        npm install electron-gettext\n\nDocumentation\n-------------\n\n* `setlocale(category, locale)` - Sets the locale application wide. If `locale` is the empty string, locale will be set to the default value, which is one of the following:\n\n    1. `process.env.LC_ALL`\n    2. `process.env.LC_MESSAGES`\n    3. `process.env.LANGUAGES`\n    4. `process.env.LANG`\n    5. `''` *(empty string)*\n\n    `category` is not used. Set to any value. All subsequent calls to any gettext function will now try to translate to the specified locale.\n\n* `textdomain([domain])` - Returns the currently active domain. If `domain` was specified, sets the currently active domain to `domain`before returning it. \n\n* `loadLanguageFile(file, [locale], [callback])` - Loads the specified \\*.po `file`. The translation table of the specified `locale` will be populated with the data found in the `file`. The textdomain will be set according to the filename. If `locale` was not specified, the data will be stored in the currently active translation table set by `setlocale`. If `callback` was specified it will be called after the translation data was loaded. Since all calls to gettext translation functions will fallback gracefully and return the given string if no applicable translation data was found, waiting for the translation data to be fully loaded before continueing is not required.\n\n* `loadLocaleDirectory(directory, [callback])` - Loads translation data from the given `directory` tree. The function will look for subdirectories in the given `directory`. Those directories' names will be mapped to language/locale identifiers. Then each \\*.po file in each of those subdirectories will be loaded, using the filename as the textdomain. If `callback` is given, it will be called after all files and directories where loaded. Again, due to gracefull fallback it is not necceseraly required to wait for the loading function to finish. An example directory structure could look like follows:\n\n        Directory\n            |\n            |- en\n            |    \\\n            |    |- messages.po\n            |    |- other.po\n            |    o\n            |\n            |- de\n            |    \\\n            |    |- messages.po\n            |    |- other.po\n            |    o\n            |\n            |- fr\n            o    \\\n                 |- messages.po\n                 |- other.po\n                 o\n\n    This `directory` \"Directory\" contains 4 subdirectories \"en\", \"de\" and \"fr\" which represent languages and can be selected using `setlocale`. Each subdirectory itself contains 2 \\*.po files \"messages.po\" and \"other.po\" which can be selected using the `textdomain` function.\n\n* `gettext(string)` - Returns the translation for the given `string`. The translation is determined by evaluating the currently active locale and domain. If no valid translation is found, the given `string` is returned instead.\n\n* `ngettext(singular, plural, n)` - Returns the translation for the given `singular` or `plural` form. Which translation is returned is determined by the amount `n` and the plural forms header. \n\nFor a more detailed documentation please have a look at the [original Javascript Gettext library documentation](http://jsgettext.berlios.de/doc/html/Gettext.html).\n\n* `import(Object)` - Imports the parsed translations into gettext (this will make `loadLanguageFile` or `loadLocaleDirectory` unnecessary). E.g. you can parse PO files in a build job or at first start of your application and saves parsed json on disk. From your second start of application you can load json file and only imports this json object into electron-gettext. \n\n* `export()` - Exports the parsed translations from gettext. This could you do e.g. in a build job or at first start of your application. PO Files will normally not change in usage of your application. \n\nAttribution\n-----------\n\nThis library is based in wide parts on [Joshua I. Miller's Javascript Gettext library](http://jsgettext.berlios.de/)\nand [Daniel Baulig's node-gettext] (http://www.danielbaulig.de).\n\nLicense\n-------\n\n    electron-gettext, an Javascript Gettext adaption for node.js\n\n    Copyright (C) 2008 Joshua I. Miller <unrtst@cpan.org>\n    Copyright (C) 2011 Daniel Baulig <daniel.baulig@gmx.de>\n    Copyright (C) 2015 André Meyerjürgens <ameyerjuergens@gmail.com>\n\n    This library is free software; you can redistribute it and/or\n    modify it under the terms of the GNU Lesser General Public\n    License as published by the Free Software Foundation; either\n    version 2 of the License, or (at your option) any later version.\n\n    This library is distributed in the hope that it will be useful,\n    but WITHOUT ANY WARRANTY; without even the implied warranty of\n    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU\n    Lesser General Public License for more details.\n\n    You should have received a copy of the GNU Lesser General Public\n    License along with this library; if not, write to the Free Software\n    Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307  USA\n"
 }

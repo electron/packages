@@ -1,0 +1,85 @@
+{
+  "name": "os.js",
+  "version": "0.2.1",
+  "description": "Very stupid detection of OS",
+  "main": "bin/os.js",
+  "bin": {
+    "os.js": "bin/cli.js"
+  },
+  "scripts": {
+    "test": "NODE_ENV=test $(npm bin)/mocha -r should -R spec",
+    "clean-cov": "rm -rf coverage/ coverage.html",
+    "prepare-cov": "jscoverage --encoding=utf8 --no-highlight bin coverage",
+    "coverage": "npm run prepare-cov && COVERAGE=1 ./node_modules/.bin/mocha -r should -R html-cov > coverage.html"
+  },
+  "repository": {
+    "user": "LestaD",
+    "repo": "os.js",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/LestaD/os.js/tarball/master",
+    "clone_url": "https://github.com/LestaD/os.js",
+    "https_url": "https://github.com/LestaD/os.js",
+    "travis_url": "https://travis-ci.org/LestaD/os.js",
+    "zip_url": "https://github.com/LestaD/os.js/archive/master.zip",
+    "api_url": "https://api.github.com/repos/LestaD/os.js"
+  },
+  "keywords": [
+    "os",
+    "js",
+    "detect",
+    "version",
+    "release",
+    "arch",
+    "mac",
+    "linux",
+    "windows"
+  ],
+  "author": {
+    "name": "LestaD",
+    "email": "i.am@lestad.net",
+    "url": "Sergey Sova"
+  },
+  "license": "MIT",
+  "homepage": "https://github.com/LestaD/os.js#readme",
+  "devDependencies": {
+    "mocha": "^2.2.5",
+    "should": "^7.0.4",
+    "supertest": "^1.0.1"
+  },
+  "gitHead": "eec3495634829f57e1831196663f3bb2e00a1937",
+  "_npmVersion": "2.14.3",
+  "_nodeVersion": "2.5.0",
+  "dist": {
+    "shasum": "8696e08b9d9b513726c7d99494ccb441ebca5285",
+    "tarball": "http://registry.npmjs.org/os.js/-/os.js-0.2.1.tgz"
+  },
+  "versions": [
+    {
+      "number": "0.1.0",
+      "date": "2015-08-26T12:44:10.734Z"
+    },
+    {
+      "number": "0.2.0",
+      "date": "2015-08-26T14:41:29.153Z"
+    },
+    {
+      "number": "0.2.1",
+      "date": "2015-09-16T11:50:19.967Z"
+    }
+  ],
+  "created": "2015-08-26T12:44:10.734Z",
+  "modified": "2015-09-16T11:50:19.967Z",
+  "lastPublisher": {
+    "name": "lestad",
+    "email": "i.am@lestad.net"
+  },
+  "owners": [
+    {
+      "name": "lestad",
+      "email": "i.am@lestad.net"
+    }
+  ],
+  "readme": "# Readme\nVery stupid detection of OS version and Name for node(io).js\nMore usable for Atom's [Electron](electron.atom.io).\n\n![TravisCI](https://api.travis-ci.org/LestaD/os.js.svg)\n![Dependencies](https://david-dm.org/lestad/os.js.svg)\n![npm version](https://badge.fury.io/js/os.js.svg)\n[![npm](https://img.shields.io/npm/l/os.js.svg)]()\n[![Code Climate](https://codeclimate.com/github/LestaD/os.js/badges/gpa.svg)](https://codeclimate.com/github/LestaD/os.js)\n![GitHub tag](https://img.shields.io/github/tag/lestad/os.js.svg)\n\n\n### Warning!\nThis package under development!\nNow detect only Mac OS X\n\n# Usage\nInstall in your project:\n\n[![NPM](https://nodei.co/npm/os.js.png?compact=true)](https://nodei.co/npm/os.js/)\n\n```bash\nnpm install os.js --save\n```\n\nAnd simple use:\n\n```javascript\nvar osjs = require('os.js');\n\nconsole.log(osjs.os, osjs.version.major + '.' + osjs.version.minor, osjs.version.codename);\n// Output: \n// OS X 10.10 Yosemite\n```\n\nAnd for some user's cli:\n\n```bash\n$ os.js\nOS X 10.10 Yosemite\n```\n\n# Testing\nTests use Mocha and Should\n\n```bash\ngit clone --recursive https://github.com/LestaD/os.js.git\ncd os.js\nnpm install\nnpm test\n```\n\nTested on OS X 10.10, Ubuntu 15 with [iojs-v2.5.0](https://iojs.org/dist/v2.5.0/), [iojs-v3.0.0](https://iojs.org/dist/v3.0.0/), [iojs-v3.2.0](https://iojs.org/dist/v3.2.0/)\n\nNeed testing on Windows 7, 8, 8.1, 10.\n\n    Not detect right version of some Linuxes\n"
+}

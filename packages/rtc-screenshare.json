@@ -1,0 +1,123 @@
+{
+  "name": "rtc-screenshare",
+  "version": "4.1.0",
+  "description": "WebRTC Screensharing Chrome Extension ",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "gendocs": "gendocs > README.md",
+    "start": "beefy --cwd examples examples/share-window.js:bundle.js"
+  },
+  "stability": "experimental",
+  "repository": {
+    "user": "rtc-io",
+    "repo": "rtc-screenshare",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/rtc-io/rtc-screenshare/tarball/master",
+    "clone_url": "https://github.com/rtc-io/rtc-screenshare",
+    "https_url": "https://github.com/rtc-io/rtc-screenshare",
+    "travis_url": "https://travis-ci.org/rtc-io/rtc-screenshare",
+    "zip_url": "https://github.com/rtc-io/rtc-screenshare/archive/master.zip",
+    "api_url": "https://api.github.com/repos/rtc-io/rtc-screenshare"
+  },
+  "keywords": [
+    "webrtc",
+    "rtc.io",
+    "screensharing",
+    "chrome",
+    "extension"
+  ],
+  "author": {
+    "name": "Damon Oehlman",
+    "email": "damon.oehlman@nicta.com.au"
+  },
+  "license": "Apache 2.0",
+  "homepage": "https://github.com/rtc-io/rtc-screenshare",
+  "dependencies": {
+    "chromex": "1.2.0",
+    "cog": "^1.0.0",
+    "crel": "^2.1.8",
+    "eventemitter3": "^1.1.1",
+    "rtc-core": "^4.0.0"
+  },
+  "devDependencies": {
+    "hyperscript": "^1.4.2",
+    "rtc-capture": "^1.0.2",
+    "rtc-captureconfig": "^2.0.0",
+    "rtc-media": "^2.0.1",
+    "rtc-quickconnect": "^4.0.0",
+    "rtc-ui": "^1.1.0"
+  },
+  "contributors": [
+    {
+      "name": "Damon Oehlman",
+      "email": "damon.oehlman@nicta.com.au",
+      "url": "https://github.com/DamonOehlman"
+    },
+    {
+      "name": "Silvia Pfeiffer",
+      "email": "silvia.pfeiffer@nicta.com.au",
+      "url": "https://github.com/silviapfeiffer"
+    }
+  ],
+  "gitHead": "bad15efdfdde2104e5a314090d5a4b4d1586e3c7",
+  "_npmVersion": "2.11.3",
+  "_nodeVersion": "0.12.7",
+  "dist": {
+    "shasum": "fc3281ebcb697613e21e2c4766fa3dc94d5ed3c7",
+    "tarball": "http://registry.npmjs.org/rtc-screenshare/-/rtc-screenshare-4.1.0.tgz"
+  },
+  "versions": [
+    {
+      "number": "1.0.0",
+      "date": "2014-08-07T21:46:50.399Z"
+    },
+    {
+      "number": "2.0.0",
+      "date": "2014-10-28T10:22:51.138Z"
+    },
+    {
+      "number": "3.0.0",
+      "date": "2015-01-16T01:24:50.818Z"
+    },
+    {
+      "number": "3.1.0",
+      "date": "2015-03-27T01:27:24.318Z"
+    },
+    {
+      "number": "3.1.1",
+      "date": "2015-03-27T03:38:37.324Z"
+    },
+    {
+      "number": "4.0.0",
+      "date": "2015-09-21T01:23:42.078Z"
+    },
+    {
+      "number": "4.0.1",
+      "date": "2015-11-10T05:55:39.592Z"
+    },
+    {
+      "number": "4.1.0",
+      "date": "2015-12-14T02:29:33.949Z"
+    }
+  ],
+  "created": "2014-08-07T21:46:50.399Z",
+  "modified": "2015-12-14T02:29:33.949Z",
+  "lastPublisher": {
+    "name": "nathanoehlman",
+    "email": "nathan.oehlman@gmail.com"
+  },
+  "owners": [
+    {
+      "name": "damonoehlman",
+      "email": "damon.oehlman@gmail.com"
+    },
+    {
+      "name": "nathanoehlman",
+      "email": "nathan.oehlman@sidelab.com"
+    }
+  ],
+  "readme": "# rtc-screenshare\n\nThis is module provides a mechanism for integrating with the various\nscreen capture APIs exposed by the browser.  The module is designed to\ninteract with a browser extension (where required) to generate\nsuitable constraints that can be passed onto a `getUserMedia` call.\n\n\n[![NPM](https://nodei.co/npm/rtc-screenshare.png)](https://nodei.co/npm/rtc-screenshare/)\n\n[![experimental](https://img.shields.io/badge/stability-experimental-red.svg)](https://github.com/dominictarr/stability#experimental)\n\n## Example Usage\n\n```js\nvar media = require('rtc-media');\nvar h = require('hyperscript');\nvar crel = require('crel');\nvar screenshare = require('rtc-screenshare')({\n  chromeExtension: 'rtc.io screenshare',\n  version: '^1.0.0'\n});\n\nvar buttons = {\n  install: h('button', 'Install Extension', { onclick: function() {\n    chrome.webstore.install();\n  }}),\n\n  capture: h('button', 'Capture Screen', { onclick: shareScreen })\n};\n\nfunction shareScreen() {\n  screenshare.request(function(err, constraints) {\n    if (err) {\n      return console.error('Could not capture window: ', err);\n    }\n\n    console.log('attempting capture with constraints: ', constraints);\n    media({\n      constraints: constraints,\n      target: document.getElementById('main')\n    });\n  });\n\n  // you better select something quick or this will be cancelled!!!\n  setTimeout(screenshare.cancel, 5e3);\n}\n\n// detect whether the screenshare plugin is available and matches\n// the required version\nscreenshare.available(function(err, version) {\n  var actions = document.getElementById('actions');\n\n  if (err) {\n    return actions.appendChild(buttons.install);\n  }\n\n  actions.appendChild(buttons.capture);\n});\n\n// on install show the capture button and remove the install button if active\nscreenshare.on('activate', function() {\n  if (buttons.install.parentNode) {\n    buttons.install.parentNode.removeChild(buttons.install);\n  }\n\n  document.getElementById('actions').appendChild(buttons.capture);\n});\n\n```\n\n## Template Extensions\n\n### Chrome\n\nTemplate extension\n[source is available](https://github.com/rtc-io/rtc-screenshare-extension) and\nan early, installable version of the extension is available in the\n[Chrome Web Store](https://chrome.google.com/webstore/detail/webrtc-screen-sharing-for/einjngigaajacmojcohefgmnhhdnllic).\n\n__NOTE:__ The extension is not publicly available yet, but using the direct link\nyou can install it.\n\n### Firefox\n\nFirefox allows screensharing without an extension, however, Mozilla only allows white\nlisted domains to share the screen. You can apply for whitelists at https://bugzilla.mozilla.org/form.screen.share.whitelist - alternatively, you can use an [extension](https://github.com/muaz-khan/Firefox-Extensions/tree/master/enable-screen-capturing) to provide local whitelisting.\n\n### Electron\n\n[Electron](http://electron.atom.io/) is supported and will automatically gain access to screensharing features without the use of extensions or whitelisting.\n\nElectron only gained support for individual window captures as of `0.36.0`. In the absence of these features, rtc-screenshare defaults back to sharing the screen only.\n\nElectron does not come with a built-in window selection, so a simple default implementation is provided. You can override this to provide your own display logic by passing in `selectorFn: function(sources, callback)` in the options to `rtc-screenshare`.\n\n## Give it a Try\n\nWe've created a simple demo showing how to broadcast your screen and made it\navailable here at <https://rtc.io/screeny/>\n([source](https://github.com/rtc-io/demo-screenshare)).\n\n## License(s)\n\n### Apache 2.0\n\nCopyright 2014 National ICT Australia Limited (NICTA)\n\n   Licensed under the Apache License, Version 2.0 (the \"License\");\n   you may not use this file except in compliance with the License.\n   You may obtain a copy of the License at\n\n     http://www.apache.org/licenses/LICENSE-2.0\n\n   Unless required by applicable law or agreed to in writing, software\n   distributed under the License is distributed on an \"AS IS\" BASIS,\n   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.\n   See the License for the specific language governing permissions and\n   limitations under the License.\n"
+}

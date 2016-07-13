@@ -33,24 +33,29 @@
     "eslint": "^0.24.1"
   },
   "gitHead": "979ea026d4ef4cdb12436cd9c4d484cd9f274daa",
-  "_id": "electric-huxley@0.0.1",
-  "_shasum": "94fbbdfcf0c65daed0425e740750ad7ae2edcad2",
-  "_from": ".",
   "_npmVersion": "2.12.1",
   "_nodeVersion": "0.12.7",
-  "_npmUser": {
-    "name": "jnetterf",
-    "email": "joshua@nettek.ca"
-  },
   "dist": {
     "shasum": "94fbbdfcf0c65daed0425e740750ad7ae2edcad2",
     "tarball": "http://registry.npmjs.org/electric-huxley/-/electric-huxley-0.0.1.tgz"
   },
-  "maintainers": [
+  "versions": [
+    {
+      "number": "0.0.1",
+      "date": "2015-09-11T00:54:20.381Z"
+    }
+  ],
+  "created": "2015-09-11T00:54:20.381Z",
+  "modified": "2015-09-11T00:54:20.381Z",
+  "lastPublisher": {
+    "name": "jnetterf",
+    "email": "joshua@nettek.ca"
+  },
+  "owners": [
     {
       "name": "jnetterf",
       "email": "joshua@nettek.ca"
     }
   ],
-  "directories": {}
+  "readme": "# electric-huxley\nThis project takes screenshots of your webpages so you can check for changes and regressions.\n\nIt's likely not ready for production use yet, but pull requests are very welcome.\n\nIt aims to complement [node-huxley](https://github.com/chenglou/node-huxley). It aims to have the same API, but\nmakes different trade-offs:\n - it's really fast (a pull request with benchmarks is welcome)\n - it only supports a single target (electron, which renders like Chrome)\n - it only supports static pages (i.e., without JavaScript). If your goal is to test CSS components, or server\n rendered React components, this may suit your needs.\n - it expects all pages to have the same `<head>`\n\nelectric-huxley hasn't implemented all of node-huxley's APIs yet though. Right now electric-huxley only supports:\n - `writeScreenshots` with records that are composed of exactly one action: a screenshot\n - `compareScreenshots` with the same restriction\n\nPull requests are welcome.\n \nSince this project has a similar API to `node-huxley`, you can use this project while developing, and then swap\nthis project out for `node-huxley` to check for pesky cross-platform issues.\n\n## Getting started\n\nYou will likely want to run `electric-huxley` in a virtual machine so that you can get consistent renders across\nphysical machines. I use vagrant and VirtualBox, but you can use whatever you prefer.\n\nYou'll need node, gtk, gconf, nss, grunt, and imagemagick. On Linux, you also need an X server. xvfb should suit your\nneeds, but you may instead use a physical X server if you would like.\n```\nsudo apt-get install -y nodejs npm gtk2.0 libgconf2.0 libnss3 imagemagick xvfb\nnpm install -g grunt-cli\n```\n\nNext, add electric-huxley to your `package.json`:\n```\nnpm install --save-dev jnetterf/electric-huxley\n```\n\nConsult node-huxley's documentation for usage, keeping in mind the above mentioned limitations.\n"
 }

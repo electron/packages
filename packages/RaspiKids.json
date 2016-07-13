@@ -27,36 +27,71 @@
     "start": "electron ui/main.js",
     "postinstall": "node_modules/bower/bin/bower install"
   },
-  "maintainers": [
+  "repository": {
+    "user": "mufty",
+    "repo": "raspikids",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/mufty/raspikids/tarball/master",
+    "clone_url": "https://github.com/mufty/raspikids",
+    "https_url": "https://github.com/mufty/raspikids",
+    "travis_url": "https://travis-ci.org/mufty/raspikids",
+    "zip_url": "https://github.com/mufty/raspikids/archive/master.zip",
+    "api_url": "https://api.github.com/repos/mufty/raspikids"
+  },
+  "gitHead": "46644a828594e751a02dc3c56efa54b11377cf07",
+  "_npmVersion": "3.8.3",
+  "_nodeVersion": "5.10.1",
+  "dist": {
+    "shasum": "9d68262daad2f4b0856742fae80e408916a6b704",
+    "tarball": "http://registry.npmjs.org/RaspiKids/-/RaspiKids-0.1.7.tgz"
+  },
+  "versions": [
+    {
+      "number": "0.1.0",
+      "date": "2016-05-01T11:03:51.197Z"
+    },
+    {
+      "number": "0.1.1",
+      "date": "2016-05-01T11:17:30.681Z"
+    },
+    {
+      "number": "0.1.2",
+      "date": "2016-05-04T14:20:37.333Z"
+    },
+    {
+      "number": "0.1.3",
+      "date": "2016-05-06T12:11:17.750Z"
+    },
+    {
+      "number": "0.1.4",
+      "date": "2016-05-15T12:09:30.098Z"
+    },
+    {
+      "number": "0.1.5",
+      "date": "2016-05-15T15:32:45.154Z"
+    },
+    {
+      "number": "0.1.6",
+      "date": "2016-05-16T17:54:42.963Z"
+    },
+    {
+      "number": "0.1.7",
+      "date": "2016-05-22T17:12:52.665Z"
+    }
+  ],
+  "created": "2016-05-01T11:03:51.197Z",
+  "modified": "2016-05-22T17:12:52.665Z",
+  "lastPublisher": {
+    "name": "mufty",
+    "email": "gubriansky@sernato.sk"
+  },
+  "owners": [
     {
       "name": "mufty",
       "email": "gubriansky@sernato.sk"
     }
   ],
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/mufty/raspikids.git"
-  },
-  "gitHead": "46644a828594e751a02dc3c56efa54b11377cf07",
-  "bugs": {
-    "url": "https://github.com/mufty/raspikids/issues"
-  },
-  "_id": "RaspiKids@0.1.7",
-  "_shasum": "9d68262daad2f4b0856742fae80e408916a6b704",
-  "_from": ".",
-  "_npmVersion": "3.8.3",
-  "_nodeVersion": "5.10.1",
-  "_npmUser": {
-    "name": "mufty",
-    "email": "gubriansky@sernato.sk"
-  },
-  "dist": {
-    "shasum": "9d68262daad2f4b0856742fae80e408916a6b704",
-    "tarball": "http://registry.npmjs.org/RaspiKids/-/RaspiKids-0.1.7.tgz"
-  },
-  "_npmOperationalInternal": {
-    "host": "packages-12-west.internal.npmjs.com",
-    "tmp": "tmp/RaspiKids-0.1.7.tgz_1463937170298_0.4105199729092419"
-  },
-  "directories": {}
+  "readme": "\n\n# Raspi Kids \n\nThe idea of this project is to teach kids programming using raspberry pi (maybe beaglebone or similar generic purpose board later) and GPIO. Our goal is to have everything running on the PI so you don't need anything but the PI, a keyboard and a monitor to start. So we keep it as cheap as possible for schools to be able to afford a simple setup if they want to.\n\n## Dependencies\ngpio-admin: https://github.com/quick2wire/quick2wire-gpio-admin\n\n## Why GPIO?\n\nSo the kids can actually see that if I do this something happened in real world light a servo motor starts spinning or a led light turns on. We can even have a prepared setup in a nice package of a robot, car, or anything like that ready to connect to the GPIO right away.\n \n## How?\n\nWe want to have a workflow like engine running in node.js this workflow would represent the programming language. A single task in the workflow would work something like this. Setup a GPIO pin with this number to output and write this value into it. We want to have logic gates as tasks as well as loops etc.\n\nOn top of this workflow we should have a \"kid friendly\" UI that would generate the workflow diagram as a JSON file. Think of this as a simplified BPM modeling tool.\n\n## Usage\n\nThis project is still under development but the workflow engine can be mess with if you desire.\n\nFor installation just do:\n\nnpm install -g RaspiKids\n\nYou need to have gpio-admin installed on the PI as described here:\n\nhttps://github.com/quick2wire/quick2wire-gpio-admin\n\nWe have an example workflows that you can checkout at: \n\nhttps://github.com/mufty/raspikids-example.git\n\nSo if you create a directory you can just clone these to play around with it.\n\ngit clone https://github.com/mufty/raspikids-example.git\n\n### Workflow engine\n\nTo use just the engine withouth the UI you can execute just some workflow by doing:\n\nsudo raspi-kids-wf lightBlink\n\nThe lightBlink is just an example workflow from our repository as described above.\n\nPlace any new workflows in the \"wf\" sub directory that's where the engine is trying to find them.\n\n### UI\n\nYou can run the ui for the workflow now:\n\nsudo raspi-kids\n\nYou can see all the existing workflows there just click them to load and if you want to start them press the start button. You can also drag and drop the nodes to see the connections. Save button is currently able to just do updates of existing workflows. Creation of new workflows will be available once the UI is able to draw.  \n\n\n## Developing\n\n\n\n### Tools\n\nCreated with [Nodeclipse](https://github.com/Nodeclipse/nodeclipse-1)\n ([Eclipse Marketplace](http://marketplace.eclipse.org/content/nodeclipse), [site](http://www.nodeclipse.org))   \n\nNodeclipse is free open-source project that grows with your contributions.\n"
 }

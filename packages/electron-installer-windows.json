@@ -9,8 +9,17 @@
     "url": "http://unindented.org/"
   },
   "repository": {
-    "type": "git",
-    "url": "git://github.com/unindented/electron-installer-windows.git"
+    "user": "unindented",
+    "repo": "electron-installer-windows",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/unindented/electron-installer-windows/tarball/master",
+    "clone_url": "https://github.com/unindented/electron-installer-windows",
+    "https_url": "https://github.com/unindented/electron-installer-windows",
+    "travis_url": "https://travis-ci.org/unindented/electron-installer-windows",
+    "zip_url": "https://github.com/unindented/electron-installer-windows/archive/master.zip",
+    "api_url": "https://api.github.com/repos/unindented/electron-installer-windows"
   },
   "keywords": [
     "electron",
@@ -48,32 +57,42 @@
     "serve-static": "^1.10.2"
   },
   "gitHead": "e8a252be1c4ffcb20523897d54f8340c29698bc1",
-  "bugs": {
-    "url": "https://github.com/unindented/electron-installer-windows/issues"
-  },
   "homepage": "https://github.com/unindented/electron-installer-windows#readme",
-  "_id": "electron-installer-windows@0.2.0",
-  "_shasum": "cbcf2dc8450c9e6c8abca56f5c87115699e72052",
-  "_from": ".",
   "_npmVersion": "2.14.12",
   "_nodeVersion": "4.2.6",
-  "_npmUser": {
-    "name": "unindented",
-    "email": "unindented@gmail.com"
-  },
   "dist": {
     "shasum": "cbcf2dc8450c9e6c8abca56f5c87115699e72052",
     "tarball": "http://registry.npmjs.org/electron-installer-windows/-/electron-installer-windows-0.2.0.tgz"
   },
-  "maintainers": [
+  "versions": [
+    {
+      "number": "0.0.1",
+      "date": "2016-01-31T18:49:41.675Z"
+    },
+    {
+      "number": "0.1.0",
+      "date": "2016-02-02T19:38:00.112Z"
+    },
+    {
+      "number": "0.1.1",
+      "date": "2016-02-05T21:09:14.638Z"
+    },
+    {
+      "number": "0.2.0",
+      "date": "2016-02-08T16:37:01.446Z"
+    }
+  ],
+  "created": "2016-01-31T18:49:41.675Z",
+  "modified": "2016-02-08T16:37:01.446Z",
+  "lastPublisher": {
+    "name": "unindented",
+    "email": "unindented@gmail.com"
+  },
+  "owners": [
     {
       "name": "unindented",
       "email": "unindented@gmail.com"
     }
   ],
-  "_npmOperationalInternal": {
-    "host": "packages-5-east.internal.npmjs.com",
-    "tmp": "tmp/electron-installer-windows-0.2.0.tgz_1454949420078_0.764820613199845"
-  },
-  "directories": {}
+  "readme": "![Electron Installer for Windows](resources/logo.png)\n\n# electron-installer-windows [![Version](https://img.shields.io/npm/v/electron-installer-windows.svg)](https://www.npmjs.com/package/electron-installer-windows) [![Build Status](https://img.shields.io/travis/unindented/electron-installer-windows.svg)](http://travis-ci.org/unindented/electron-installer-windows) [![Build Status](https://img.shields.io/appveyor/ci/unindented/electron-installer-windows.svg)](https://ci.appveyor.com/project/unindented/electron-installer-windows) [![Dependency Status](https://img.shields.io/gemnasium/unindented/electron-installer-windows.svg)](https://gemnasium.com/unindented/electron-installer-windows)\n\n> Create a Windows package for your Electron app.\n\nThis tool relies on the awesome [Squirrel.Windows](https://github.com/Squirrel/Squirrel.Windows) framework written by [@paulcbetts](https://github.com/paulcbetts). It takes care of creating the actual package, signing it, dealing with updates, and many more things. Gotta give credit where credit is due, ya know.\n\n\n## Requirements\n\nI'd recommend building your packages on your target platform, but if you have to run this on Mac OS X or Linux, you will need to install `mono` and `wine` through [Homebrew](http://brew.sh/):\n\n```\n$ brew install mono wine\n```\n\nYou won't get an `.msi` installer though, only `.nupkg` and `.exe` installers. To get an `.msi` installer you'll need to run on Windows.\n\n\n## Installation\n\nFor use from command-line:\n\n```\n$ npm install -g electron-installer-windows\n```\n\nFor use in npm scripts or programmatically:\n\n```\n$ npm install --save-dev electron-installer-windows\n```\n\n\n## Usage\n\nSay your Electron app lives in `path/to/app`, and has a structure like this:\n\n```\n.\n├── LICENSE\n├── README.md\n├── node_modules\n│   ├── electron-packager\n│   └── electron-prebuilt\n├── package.json\n├── resources\n│   ├── Icon.png\n│   ├── IconTemplate.png\n│   └── IconTemplate@2x.png\n└── src\n    ├── index.js\n    ├── main\n    │   └── index.js\n    └── renderer\n        ├── index.html\n        └── index.js\n```\n\nYou now run `electron-packager` to build the app for Windows:\n\n```\n$ electron-packager . app --platform win32 --arch x64 --out dist/\n```\n\nAnd you end up with something like this in your `dist` folder:\n\n```\n.\n└── dist\n    └── app-win32-x64\n        ├── LICENSE\n        ├── LICENSES.chromium.html\n        ├── content_resources_200_percent.pak\n        ├── content_shell.pak\n        ├── d3dcompiler_47.dll\n        ├── icudtl.dat\n        ├── libEGL.dll\n        ├── libGLESv2.dll\n        ├── locales\n        ├── msvcp120.dll\n        ├── msvcr120.dll\n        ├── natives_blob.bin\n        ├── node.dll\n        ├── pdf.dll\n        ├── app.exe\n        ├── resources\n        ├── snapshot_blob.bin\n        ├── ui_resources_200_percent.pak\n        ├── vccorlib120.dll\n        ├── version\n        └── xinput1_3.dll\n```\n\nHow do you turn that into a Windows package that your users can install?\n\n### Command-Line\n\nIf you want to run `electron-installer-windows` straight from the command-line, install the package globally:\n\n```\n$ npm install -g electron-installer-windows\n```\n\nAnd point it to your built app:\n\n```\n$ electron-installer-windows --src dist/app-win32-x64/ --dest dist/installers/\n```\n\nYou'll end up with the package at `dist/installers/app-0.0.1-setup.exe`.\n\n### Scripts\n\nIf you want to run `electron-installer-windows` through npm, install the package locally:\n\n```\n$ npm install --save-dev electron-installer-windows\n```\n\nEdit the `scripts` section of your `package.json`:\n\n```js\n{\n  \"name\": \"app\",\n  \"description\": \"An awesome app!\",\n  \"version\": \"0.0.1\",\n  \"scripts\": {\n    \"start\": \"electron .\",\n    \"build\": \"electron-packager . app --platform win32 --arch x64 --out dist/\",\n    \"setup\": \"electron-installer-windows --src dist/app-win32-x64/ --dest dist/installers/\"\n  },\n  \"devDependencies\": {\n    \"electron-installer-windows\": \"*\",\n    \"electron-packager\": \"*\",\n    \"electron-prebuilt\": \"*\"\n  }\n}\n```\n\nAnd run the script:\n\n```\n$ npm run setup\n```\n\nYou'll end up with the package at `dist/installers/app-0.0.1-setup.exe`.\n\n### Programmatically\n\nInstall the package locally:\n\n```\n$ npm install --save-dev electron-installer-windows\n```\n\nAnd write something like this:\n\n```js\nvar installer = require('electron-installer-windows')\n\nvar options = {\n  src: 'dist/app-win32-x64/',\n  dest: 'dist/installers/'\n}\n\nconsole.log('Creating package (this may take a while)')\n\ninstaller(options, function (err) {\n  if (err) {\n    console.error(err, err.stack)\n    process.exit(1)\n  }\n\n  console.log('Successfully created package at ' + options.dest)\n})\n```\n\nYou'll end up with the package at `dist/installers/app-0.0.1-setup.exe`.\n\n### Options\n\nEven though you can pass most of these options through the command-line interface, it may be easier to create a configuration file:\n\n```js\n{\n  \"dest\": \"dist/installers/\",\n  \"icon\": \"resources/Icon.ico\",\n  \"tags\": [\n    \"Utility\"\n  ]\n}\n```\n\nAnd pass that instead with the `config` option:\n\n```\n$ electron-installer-windows --src dist/app-win32-x64/ --config config.json\n```\n\nAnyways, here's the full list of options:\n\n#### src\nType: `String`\nDefault: `undefined`\n\nPath to the folder that contains your built Electron application.\n\n#### dest\nType: `String`\nDefault: `undefined`\n\nPath to the folder that will contain your Windows installer.\n\n#### rename\nType: `Function`\nDefault: `function (dest, src) { return path.join(dest, src); }`\n\nFunction that renames all files generated by the task just before putting them in your `dest` folder.\n\n#### options.name\nType: `String`\nDefault: `package.name`\n\nName of the package (e.g. `atom`), used in the [`id` field of the `nuspec` file](https://docs.nuget.org/create/nuspec-reference).\n\n#### options.productName\nType: `String`\nDefault: `package.productName || package.name`\n\nName of the application (e.g. `Atom`), used in the [`title` field of the `nuspec` file](https://docs.nuget.org/create/nuspec-reference).\n\n#### options.description\nType: `String`\nDefault: `package.description`\n\nShort description of the application, used in the [`summary` field of the `nuspec` file](https://docs.nuget.org/create/nuspec-reference).\n\n#### options.productDescription\nType: `String`\nDefault: `package.productDescription || package.description`\n\nLong description of the application, used in the [`description` field of the `nuspec` file](https://docs.nuget.org/create/nuspec-reference).\n\n#### options.version\nType: `String`\nDefault: `package.version`\n\nLong description of the application, used in the [`version` field of the `nuspec` file](https://docs.nuget.org/create/nuspec-reference).\n\n#### options.copyright\nType: `String`\nDefault: `package.copyright`\n\nCopyright details for the package, used in the [`copyright` field of the `nuspec` file](https://docs.nuget.org/create/nuspec-reference).\n\n#### options.authors\nType: `Array[String]`\nDefault: `package.author`\n\nList of authors of the package, used in the [`authors` field of the `spec` file](https://docs.nuget.org/create/nuspec-reference).\n\n#### options.owners\nType: `Array[String]`\nDefault: `package.author`\n\nList of owners of the package, used in the [`authors` field of the `spec` file](https://docs.nuget.org/create/nuspec-reference).\n\n#### options.homepage\nType: `String`\nDefault: `package.homepage || package.author.url`\n\nURL of the homepage for the package, used in the [`projectUrl` field of the `spec` file](https://docs.nuget.org/create/nuspec-reference).\n\n#### options.iconUrl\nType: `String`\nDefault: `undefined`\n\nURL for the image to use as the icon for the package in the *Manage NuGet Packages* dialog box, used in the [`iconUrl` field of the `spec` file](https://docs.nuget.org/create/nuspec-reference).\n\n#### options.licenseUrl\nType: `String`\nDefault: `undefined`\n\nURL for the license that the package is under, used in the [`licenseUrl` field of the `spec` file](https://docs.nuget.org/create/nuspec-reference).\n\n#### options.requireLicenseAcceptance\nType: `String`\nDefault: `false`\n\nWhether the client needs to ensure that the package license (described by `licenseUrl`) is accepted before the package is installed, used in the [`requireLicenseAcceptance` field of the `spec` file](https://docs.nuget.org/create/nuspec-reference).\n\n#### options.tags\nType: `Array[String]`\nDefault: `[]`\n\nList of tags and keywords that describe the package, used in the [`tags` field of the `spec` file](https://docs.nuget.org/create/nuspec-reference).\n\n#### options.certificateFile\nType: `String`\nDefault: `undefined`\n\nPath to an Authenticode Code Signing Certificate.\n\n#### options.certificatePassword\nType: `String`\nDefault: `undefined`\n\nPassword to decrypt the certificate given in `certificateFile`.\n\n#### options.signWithParams\nType: `String`\nDefault: `undefined`\n\nParameters to pass to `signtool`. Overrides `certificateFile` and `certificatePassword`.\n\n#### options.remoteReleases\nType: `String`\nDefault: `undefined`\n\nURL to your existing updates. If given, these will be downloaded to create delta updates.\n\nIf you are using Amazon S3 to store your releases, read the documentation for [Squirrel.Windows on Amazon S3](https://github.com/Squirrel/Squirrel.Windows/blob/master/docs/using/amazon-s3.md).\n\nIf you are using GitHub, read the documentation for [Squirrel.Windows on GitHub](https://github.com/Squirrel/Squirrel.Windows/blob/master/docs/using/github.md).\n\n\n## Signing\n\nInternet Explorer's SmartScreen Filter, and antivirus programs, may flag your package as malware if it's not signed. Luckily, signing your package with `electron-installer-windows` is pretty easy. Let's test the process with a self-signed certificate.\n\nTo generate the certificate, open the *Developer Command Prompt for Visual Studio* and execute the following:\n\n```\n$ makecert -sv my_private_key.pvk -n \"CN=MyTestCertificate\" my_test_certificate.cer -b 01/01/2016 -e 01/01/2026 -r\n$ pvk2pfx -pvk my_private_key.pvk -spc my_test_certificate.cer -pfx my_signing_key.pfx -po my_password\n```\n\nNow we can tell `electron-installer-windows` to sign the packages that it generates with that certificate:\n\n```\n$ electron-installer-windows --src dist/app-win32-x64/ --dest dist/installers/ --certificateFile my_signing_key.pfx --certificatePassword my_password\n```\n\nBoom, that's it. Now [get a standard code signing certificate](https://msdn.microsoft.com/en-us/library/windows/hardware/hh801887.aspx) from a real certificate authority!\n\n\n## Maintenance\n\n### Squirrel\nCurrent version: 1.2.3\n\nTo update [Squirrel](https://github.com/Squirrel/Squirrel.Windows) to the latest version:\n\n```\n$ rm vendor/squirrel/*\n$ mono vendor/nuget/NuGet.exe install squirrel.windows -OutputDirectory vendor/tmp/\n$ cp -r vendor/tmp/squirrel.windows.1.2.3/tools/* vendor/squirrel/\n$ rm -rf vendor/tmp/\n```\n\n### NuGet\nCurrent version: 2.8.5\n\nTo update [NuGet](http://nuget.codeplex.com/) to the latest version, head over to the [releases page](http://nuget.codeplex.com/releases).\n\n\n## Meta\n\n* Code: `git clone git://github.com/unindented/electron-installer-windows.git`\n* Home: <https://github.com/unindented/electron-installer-windows/>\n\n\n## Contributors\n\n* Daniel Perez Alvarez ([unindented@gmail.com](mailto:unindented@gmail.com))\n\n\n## License\n\nCopyright (c) 2016 Daniel Perez Alvarez ([unindented.org](https://unindented.org/)). This is free software, and may be redistributed under the terms specified in the LICENSE file.\n"
 }

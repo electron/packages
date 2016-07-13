@@ -3,9 +3,6 @@
   "version": "0.6.1",
   "description": "Safe communication between main process and renderer processes in Electron",
   "main": "index.js",
-  "directories": {
-    "test": "test"
-  },
   "scripts": {
     "renderer-bundle": "browserify guest.js -o guest-bundle.js -s electronSafeIpc",
     "pretest": "npm run renderer-bundle",
@@ -28,31 +25,76 @@
     "ipc"
   ],
   "repository": {
-    "type": "git",
-    "url": "git+https://github.com/seanchas116/electron-safe-ipc.git"
-  },
-  "bugs": {
-    "url": "https://github.com/seanchas116/electron-safe-ipc/issues"
+    "user": "seanchas116",
+    "repo": "electron-safe-ipc",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/seanchas116/electron-safe-ipc/tarball/master",
+    "clone_url": "https://github.com/seanchas116/electron-safe-ipc",
+    "https_url": "https://github.com/seanchas116/electron-safe-ipc",
+    "travis_url": "https://travis-ci.org/seanchas116/electron-safe-ipc",
+    "zip_url": "https://github.com/seanchas116/electron-safe-ipc/archive/master.zip",
+    "api_url": "https://api.github.com/repos/seanchas116/electron-safe-ipc"
   },
   "homepage": "https://github.com/seanchas116/electron-safe-ipc#readme",
   "gitHead": "15aeceb08d18215f1982f284287fab91ea24e478",
-  "_id": "electron-safe-ipc@0.6.1",
-  "_shasum": "5e12da7db506531238c07270cce2908790dbcf83",
-  "_from": ".",
   "_npmVersion": "2.14.0",
   "_nodeVersion": "2.5.0",
-  "_npmUser": {
-    "name": "seanchas116",
-    "email": "iofg2100@gmail.com"
-  },
   "dist": {
     "shasum": "5e12da7db506531238c07270cce2908790dbcf83",
     "tarball": "http://registry.npmjs.org/electron-safe-ipc/-/electron-safe-ipc-0.6.1.tgz"
   },
-  "maintainers": [
+  "stars": 1,
+  "versions": [
+    {
+      "number": "0.1.0",
+      "date": "2015-07-08T05:22:25.177Z"
+    },
+    {
+      "number": "0.2.0",
+      "date": "2015-07-08T06:02:10.439Z"
+    },
+    {
+      "number": "0.2.1",
+      "date": "2015-07-08T08:18:18.688Z"
+    },
+    {
+      "number": "0.2.2",
+      "date": "2015-07-25T04:09:47.602Z"
+    },
+    {
+      "number": "0.3.0",
+      "date": "2015-08-03T03:13:36.689Z"
+    },
+    {
+      "number": "0.4.0",
+      "date": "2015-08-12T03:37:46.435Z"
+    },
+    {
+      "number": "0.5.0",
+      "date": "2015-08-21T04:02:33.904Z"
+    },
+    {
+      "number": "0.6.0",
+      "date": "2015-09-02T05:07:59.186Z"
+    },
+    {
+      "number": "0.6.1",
+      "date": "2015-09-02T05:16:34.150Z"
+    }
+  ],
+  "created": "2015-07-08T05:22:25.177Z",
+  "modified": "2015-09-02T05:16:34.150Z",
+  "lastPublisher": {
+    "name": "seanchas116",
+    "email": "iofg2100@gmail.com"
+  },
+  "owners": [
     {
       "name": "seanchas116",
       "email": "iofg2100@gmail.com"
     }
-  ]
+  ],
+  "readme": "electron-safe-ipc [![npm version](https://badge.fury.io/js/electron-safe-ipc.svg)](http://badge.fury.io/js/electron-safe-ipc)\n================\n\nelectron-safe-ipc is a safe communication library between the main process and renderer processes in Electron.\n\n\"Safe\" means:\n\n* Works even when `node-integration` == `false` in renderer processes\n* Works without JS object instance sharing\n\nIt uses:\n\n* JSON to pack data\n* Electron `protocol` to send message to main process\n* Electron `WebContents.executeJavaScript` to send message to renderer process\n\nUsed in [Wantedly, Inc.](https://www.wantedly.com/)\n\nInstall\n----------------\n\n```\nnpm install --save electron-safe-ipc\n```\n\nUse\n----------------\n\n### Main process\n\n```js\n// in main\nvar ipc = require(\"electron-safe-ipc/host\");\n\nipc.on(\"fromRenderer\", function (a, b) {\n  console.log(\"fromRenderer received\", a, b);\n});\nipc.send(\"fromMain\", 1, 2);\n```\n\n### Renderer process\n\n#### Node style\n\nIf `\"node-integration\"` is disabled, use bundling tools (e.g., [browserify](http://browserify.org/)).\n\n```js\nvar ipc = require(\"electron-safe-ipc/guest\");\n\nipc.on(\"fromMain\", function (a, b) {\n  ipc.send(\"fromRenderer\", a, b);\n});\n```\n\n#### Traditional style (UMD)\n\n```html\n<script src=\"path/to/node_modules/electron-safe-ipc/guest-bundle.js\"></script>\n<script>\n  electronSafeIpc.on(\"fromMain\", function (a1, a2) {\n    electronSafeIpc.send(\"fromRenderer\", a1, a2);\n  });\n</script>\n```\n\n### Communicate between renderer process and `<webview>`\n\nYou can use electron-safe-ipc to communicate between renderer processes and webviews.\n\nLIMITATION: you cannot use `\"electron-safe-ipc/host-webview\"` multiple times (e.g., reloading renderer window or using multiple windows not supported).\n\n```js\n// in renderer\nvar ipc = require(\"electron-safe-ipc/host-webview\");\n\nipc.on(\"fromWebview\", function (a, b) {\n  console.log(\"fromWebview received\", a, b);\n});\nipc.send(\"fromRenderer\", 1, 2);\n```\n\n```html\n<!-- in webview -->\n<script src=\"path/to/node_modules/electron-safe-ipc/guest-bundle.js\"></script>\n<script>\n  electronSafeIpc.on(\"fromRenderer\", function (a1, a2) {\n    electronSafeIpc.send(\"fromWebview\", a1, a2);\n  });\n</script>\n```\n\nAPI\n----------------\n\n`ipc` is an [`EventEmitter`](https://nodejs.org/api/events.html#events_class_events_eventemitter).\n\n### `ipc.send(channel: string, ...args)`\n\nSend a message between processes.\n\nThe arguments are packed into JSON.\n\nThe message is sent to all renderer processes when you call this from the main process.\n\n### `ipc.on(channel: string, callback: (...args) => void)`\n\nReceive messages.\n\n**Other `EventEmitter` methods can also be used to listen to messages.**\n\n### `ipc.request(requestName: string, ...args): Promise`\n\nSends a request to the other side and get the response as `Promise`.\n\n```js\nvar ipc = require(\"electron-safe-ipc/guest\");\n\nipc.request(\"add\", 1, 2)\n  .then(function(res) {\n    console.log(res);\n  });\n\nipc.request(\"wait\", 1000)\n  .then(function(res) {\n    console.log(\"waited 1000 ms\");\n  });\n```\n\n### `ipc.respond(requestName: string, responder: (...args) => Promise|any)`\n\nRegisters a responder for the request. `responder` can return both `Promise` and normal values.\n\n```js\nvar ipc = require(\"electron-safe-ipc/host\");\n\nipc.respond(\"add\", function (a, b) {\n  return a + b;\n});\n\nipc.respond(\"wait\", function (ms) {\n  return new Promise(function (resolve) {\n    setTimeout(resolve, ms);\n  });\n});\n```\n"
 }

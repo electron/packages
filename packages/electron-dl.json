@@ -4,8 +4,17 @@
   "description": "Simplified file downloads for your Electron app",
   "license": "MIT",
   "repository": {
-    "type": "git",
-    "url": "git+https://github.com/sindresorhus/electron-dl.git"
+    "user": "sindresorhus",
+    "repo": "electron-dl",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/sindresorhus/electron-dl/tarball/master",
+    "clone_url": "https://github.com/sindresorhus/electron-dl",
+    "https_url": "https://github.com/sindresorhus/electron-dl",
+    "travis_url": "https://travis-ci.org/sindresorhus/electron-dl",
+    "zip_url": "https://github.com/sindresorhus/electron-dl/archive/master.zip",
+    "api_url": "https://api.github.com/repos/sindresorhus/electron-dl"
   },
   "author": {
     "name": "Sindre Sorhus",
@@ -39,32 +48,47 @@
     ]
   },
   "gitHead": "d0d91def1680560698671d75e0c30bcf9803790a",
-  "bugs": {
-    "url": "https://github.com/sindresorhus/electron-dl/issues"
-  },
   "homepage": "https://github.com/sindresorhus/electron-dl#readme",
-  "_id": "electron-dl@1.2.0",
-  "_shasum": "824ea6a0125b90e110caf6bc7e63043b39f303de",
-  "_from": ".",
   "_npmVersion": "2.15.0",
   "_nodeVersion": "4.4.2",
-  "_npmUser": {
-    "name": "sindresorhus",
-    "email": "sindresorhus@gmail.com"
-  },
   "dist": {
     "shasum": "824ea6a0125b90e110caf6bc7e63043b39f303de",
     "tarball": "http://registry.npmjs.org/electron-dl/-/electron-dl-1.2.0.tgz"
   },
-  "maintainers": [
+  "stars": 4,
+  "versions": [
+    {
+      "number": "0.1.0",
+      "date": "2015-11-18T08:12:34.521Z"
+    },
+    {
+      "number": "0.2.0",
+      "date": "2015-12-04T16:49:35.726Z"
+    },
+    {
+      "number": "1.0.0",
+      "date": "2016-05-12T05:43:20.022Z"
+    },
+    {
+      "number": "1.1.0",
+      "date": "2016-05-13T09:19:14.099Z"
+    },
+    {
+      "number": "1.2.0",
+      "date": "2016-06-04T10:08:33.936Z"
+    }
+  ],
+  "created": "2015-11-18T08:12:34.521Z",
+  "modified": "2016-06-04T10:08:33.936Z",
+  "lastPublisher": {
+    "name": "sindresorhus",
+    "email": "sindresorhus@gmail.com"
+  },
+  "owners": [
     {
       "name": "sindresorhus",
       "email": "sindresorhus@gmail.com"
     }
   ],
-  "_npmOperationalInternal": {
-    "host": "packages-12-west.internal.npmjs.com",
-    "tmp": "tmp/electron-dl-1.2.0.tgz_1465034911638_0.699275512713939"
-  },
-  "directories": {}
+  "readme": "# electron-dl [![Build Status](https://travis-ci.org/sindresorhus/electron-dl.svg?branch=master)](https://travis-ci.org/sindresorhus/electron-dl)\n\n> Simplified file downloads for your [Electron](http://electron.atom.io) app\n\n\n## Why?\n\n- One function call instead of having to manually implement a lot of [boilerplate](index.js).\n- Saves the file to the users Downloads directory instead of prompting.\n- Bounces the Downloads directory in the dock when done. *(OS X)*\n- Shows download progress. Example on OS X:\n\n<img src=\"screenshot.png\" width=\"82\">\n\n\n## Install\n\n```\n$ npm install --save electron-dl\n```\n\n\n## Usage\n\n### Register it for all windows\n\nThis is probably what you want for your app.\n\n```js\nconst {app, BrowserWindow} = require('electron');\n\nrequire('electron-dl')();\n\nlet win;\n\napp.on('ready', () => {\n\twin = new BrowserWindow();\n});\n```\n\n### Use it manually\n\nThis can be useful if you need download functionality in a reusable module.\n\n```js\nconst {app, BrowserWindow, ipcMain} = require('electron');\nconst {download} = require('electron-dl');\n\nipcMain.on('download-btn', (e, args) => {\n\tdownload(BrowserWindow.getFocusedWindow(), args.url);\n});\n```\n\n\n## License\n\nMIT © [Sindre Sorhus](https://sindresorhus.com)\n"
 }

@@ -32,36 +32,60 @@
     "native-image"
   ],
   "repository": {
-    "type": "git",
-    "url": "git://github.com/mattdesl/electron-canvas-to-buffer.git"
+    "user": "mattdesl",
+    "repo": "electron-canvas-to-buffer",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/mattdesl/electron-canvas-to-buffer/tarball/master",
+    "clone_url": "https://github.com/mattdesl/electron-canvas-to-buffer",
+    "https_url": "https://github.com/mattdesl/electron-canvas-to-buffer",
+    "travis_url": "https://travis-ci.org/mattdesl/electron-canvas-to-buffer",
+    "zip_url": "https://github.com/mattdesl/electron-canvas-to-buffer/archive/master.zip",
+    "api_url": "https://api.github.com/repos/mattdesl/electron-canvas-to-buffer"
   },
   "homepage": "https://github.com/mattdesl/electron-canvas-to-buffer",
-  "bugs": {
-    "url": "https://github.com/mattdesl/electron-canvas-to-buffer/issues"
-  },
   "gitHead": "03dbe5dd44800ab7f86f4d9f85080d362fb90d32",
-  "_id": "electron-canvas-to-buffer@2.0.0",
-  "_shasum": "da92cd7342e47b3b0dde2a3ae79978e5a0761681",
-  "_from": ".",
   "_npmVersion": "3.8.9",
   "_nodeVersion": "6.2.0",
-  "_npmUser": {
-    "name": "mattdesl",
-    "email": "dave.des@gmail.com"
-  },
   "dist": {
     "shasum": "da92cd7342e47b3b0dde2a3ae79978e5a0761681",
     "tarball": "http://registry.npmjs.org/electron-canvas-to-buffer/-/electron-canvas-to-buffer-2.0.0.tgz"
   },
-  "maintainers": [
+  "stars": 1,
+  "versions": [
+    {
+      "number": "1.0.0",
+      "date": "2015-06-20T16:09:00.915Z"
+    },
+    {
+      "number": "1.0.1",
+      "date": "2015-07-08T00:17:27.949Z"
+    },
+    {
+      "number": "1.0.2",
+      "date": "2015-07-08T00:21:30.168Z"
+    },
+    {
+      "number": "1.0.3",
+      "date": "2016-01-08T16:28:38.097Z"
+    },
+    {
+      "number": "2.0.0",
+      "date": "2016-05-26T20:10:35.325Z"
+    }
+  ],
+  "created": "2015-06-20T16:09:00.915Z",
+  "modified": "2016-05-26T20:10:35.325Z",
+  "lastPublisher": {
+    "name": "mattdesl",
+    "email": "dave.des@gmail.com"
+  },
+  "owners": [
     {
       "name": "mattdesl",
       "email": "dave.des@gmail.com"
     }
   ],
-  "_npmOperationalInternal": {
-    "host": "packages-16-east.internal.npmjs.com",
-    "tmp": "tmp/electron-canvas-to-buffer-2.0.0.tgz_1464293433621_0.1082944911904633"
-  },
-  "directories": {}
+  "readme": "# electron-canvas-to-buffer\n\n[![unstable](http://badges.github.io/stability-badges/dist/unstable.svg)](http://github.com/badges/stability-badges)\n\nWith Electron, turns a Canvas element into a Node Buffer.\n\nThis module uses Electron built-ins (native-image), so it is only useful within that environment.\n\n## Example\n\n```js\nvar canvasBuffer = require('electron-canvas-to-buffer')\nvar fs = require('fs')\n\n// your canvas drawing\nvar canvas = document.createElement('canvas')\nvar context = canvas.getContext('2d')\ncontext.fillRect(0, 0, 50, 50)\ncontext.fillStyle = 'red'\ncontext.fillRect(50, 10, 30, 20)\n\n// as a buffer\nvar buffer = canvasBuffer(canvas, 'image/png')\n\n// write canvas to file\nfs.writeFile('image.png', buffer, function (err) {\n  throw err\n})\n```\n\nYou can run the above source through an Electron app with `node-integration` enabled. It should also work with [chromeo](https://github.com/mattdesl/chromeo) (still experimental):\n\n```sh\nchromeo index.js\n```\n\n## Install\n\n```sh\nnpm install electron-canvas-to-buffer --save\n```\n\n## Usage\n\n[![NPM](https://nodei.co/npm/electron-canvas-to-buffer.png)](https://www.npmjs.com/package/electron-canvas-to-buffer)\n\n#### `buf = canvasBuffer(canvas, [type], [quality])`\n\nReturns a Buffer representing the specified `canvas` element. Parameters:\n\n- `type` (String) either `\"image/png\"` (default) or `\"image/jpeg\"`\n- `quality` (Number) for JPG, decides the encoding quality (default 0.9)\n\n## License\n\nMIT, see [LICENSE.md](http://github.com/mattdesl/electron-canvas-to-buffer/blob/master/LICENSE.md) for details.\n"
 }

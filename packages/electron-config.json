@@ -1,11 +1,20 @@
 {
   "name": "electron-config",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "Simple config handling for your Electron app or module",
   "license": "MIT",
   "repository": {
-    "type": "git",
-    "url": "git+https://github.com/sindresorhus/electron-config.git"
+    "user": "sindresorhus",
+    "repo": "electron-config",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/sindresorhus/electron-config/tarball/master",
+    "clone_url": "https://github.com/sindresorhus/electron-config",
+    "https_url": "https://github.com/sindresorhus/electron-config",
+    "travis_url": "https://travis-ci.org/sindresorhus/electron-config",
+    "zip_url": "https://github.com/sindresorhus/electron-config/archive/master.zip",
+    "api_url": "https://api.github.com/repos/sindresorhus/electron-config"
   },
   "author": {
     "name": "Sindre Sorhus",
@@ -35,11 +44,11 @@
     "save"
   ],
   "dependencies": {
-    "conf": "^0.10.0"
+    "conf": "^0.11.1"
   },
   "devDependencies": {
     "ava": "*",
-    "electron-prebuilt": "1.1.1",
+    "electron-prebuilt": "^1.2.6",
     "execa": "^0.4.0",
     "xo": "*"
   },
@@ -53,33 +62,44 @@
       "import/no-extraneous-dependencies": "off"
     }
   },
-  "gitHead": "dbfaa968e7f3164714381fe079a7558fd507ed44",
-  "bugs": {
-    "url": "https://github.com/sindresorhus/electron-config/issues"
-  },
+  "gitHead": "61e80b5242f147868ffcebc410838efec2bf17e0",
   "homepage": "https://github.com/sindresorhus/electron-config#readme",
-  "_id": "electron-config@0.2.0",
-  "_shasum": "2cc32171cb7da9f0f80509c2b850e559b39e707f",
-  "_from": ".",
-  "_npmVersion": "2.15.0",
-  "_nodeVersion": "4.4.2",
-  "_npmUser": {
+  "_npmVersion": "2.15.5",
+  "_nodeVersion": "4.4.5",
+  "dist": {
+    "shasum": "7e12c26412d06bf3ed3896d0479df162986b95ba",
+    "tarball": "http://registry.npmjs.org/electron-config/-/electron-config-0.2.1.tgz"
+  },
+  "stars": 1,
+  "versions": [
+    {
+      "number": "0.1.0",
+      "date": "2016-05-25T10:42:55.819Z"
+    },
+    {
+      "number": "0.1.1",
+      "date": "2016-05-26T06:34:12.551Z"
+    },
+    {
+      "number": "0.2.0",
+      "date": "2016-06-22T00:01:34.052Z"
+    },
+    {
+      "number": "0.2.1",
+      "date": "2016-07-12T15:20:14.501Z"
+    }
+  ],
+  "created": "2016-05-25T10:42:55.819Z",
+  "modified": "2016-07-12T15:20:14.501Z",
+  "lastPublisher": {
     "name": "sindresorhus",
     "email": "sindresorhus@gmail.com"
   },
-  "dist": {
-    "shasum": "2cc32171cb7da9f0f80509c2b850e559b39e707f",
-    "tarball": "http://registry.npmjs.org/electron-config/-/electron-config-0.2.0.tgz"
-  },
-  "maintainers": [
+  "owners": [
     {
       "name": "sindresorhus",
       "email": "sindresorhus@gmail.com"
     }
   ],
-  "_npmOperationalInternal": {
-    "host": "packages-12-west.internal.npmjs.com",
-    "tmp": "tmp/electron-config-0.2.0.tgz_1466553691596_0.7109504619147629"
-  },
-  "directories": {}
+  "readme": "# electron-config [![Build Status: Linux and macOS](https://travis-ci.org/sindresorhus/electron-config.svg?branch=master)](https://travis-ci.org/sindresorhus/electron-config) [![Build status: Windows](https://ci.appveyor.com/api/projects/status/m2m9o6gq77xxi2eg/branch/master?svg=true)](https://ci.appveyor.com/project/sindresorhus/electron-config/branch/master)\n\n> Simple config handling for your [Electron](http://electron.atom.io) app or module\n\nElectron doesn't have a built-in way to persist user settings and other data. This module handles that for you, so you can focus on building your app. Config is saved in a JSON file in [`app.getPath('userData')`](http://electron.atom.io/docs/api/app/#appgetpathname).\n\nYou can use this module directly in both the main and renderer process.\n\n\n## Install\n\n```\n$ npm install --save electron-config\n```\n\n\n## Usage\n\n```js\nconst Config = require('electron-config');\nconst config = new Config();\n\nconfig.set('unicorn', '🦄');\nconsole.log(config.get('unicorn'));\n//=> '🦄'\n\n// use dot-notation to access nested properties\nconfig.set('foo.bar', true);\nconsole.log(config.get('foo'));\n//=> {bar: true}\n\nconfig.delete('unicorn');\nconsole.log(config.get('unicorn'));\n//=> undefined\n```\n\n\n## API\n\n### Config([options])\n\nReturns a new instance.\n\n### options\n\n#### defaults\n\nType: `Object`\n\nDefault config.\n\n#### name\n\nType: `string`<br>\nDefault: `config`\n\nName of the config file (without extension).\n\nThis is useful if you want multiple config files for your app. Or if you're making a reusable Electron module that persists some config, in which case you should **not** use the name `config`.\n\n### Instance\n\nYou can use [dot-notation](https://github.com/sindresorhus/dot-prop) in a `key` to access nested properties.\n\nThe instance is [`iterable`](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Iteration_protocols) so you can use it directly in a [`for…of`](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Statements/for...of) loop.\n\n#### .set(key, value)\n\nSet an item.\n\n#### .set(object)\n\nSet multiple items at once.\n\n#### .get(key)\n\nGet an item.\n\n#### .has(key)\n\nCheck if an item exists.\n\n#### .delete(key)\n\nDelete an item.\n\n#### .clear()\n\nDelete all items.\n\n#### .size\n\nGet the item count.\n\n#### .store\n\nGet all the config as an object or replace the current config with an object:\n\n```js\nconf.store = {\n\thello: 'world'\n};\n```\n\n#### .path\n\nGet the path to the config file.\n\n\n## Related\n\n- [electron-debug](https://github.com/sindresorhus/electron-debug) - Adds useful debug features to your Electron app\n- [electron-context-menu](https://github.com/sindresorhus/electron-context-menu) - Context menu for your Electron app\n- [electron-dl](https://github.com/sindresorhus/electron-dl) - Simplified file downloads for your Electron app\n- [conf](https://github.com/sindresorhus/conf) - Simple config handling for your app or module\n\n\n## License\n\nMIT © [Sindre Sorhus](https://sindresorhus.com)\n"
 }

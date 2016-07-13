@@ -1,6 +1,6 @@
 {
   "name": "electron-settings",
-  "version": "1.0.4",
+  "version": "1.1.1",
   "description": "User settings manager for Electron",
   "main": "index.js",
   "scripts": {
@@ -13,13 +13,33 @@
     "user"
   ],
   "repository": {
-    "type": "git",
-    "url": "git+https://github.com/nathanbuchar/electron-settings.git"
+    "user": "nathanbuchar",
+    "repo": "electron-settings",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/nathanbuchar/electron-settings/tarball/master",
+    "clone_url": "https://github.com/nathanbuchar/electron-settings",
+    "https_url": "https://github.com/nathanbuchar/electron-settings",
+    "travis_url": "https://travis-ci.org/nathanbuchar/electron-settings",
+    "zip_url": "https://github.com/nathanbuchar/electron-settings/archive/master.zip",
+    "api_url": "https://api.github.com/repos/nathanbuchar/electron-settings"
   },
   "author": {
     "name": "Nathan Buchar",
     "email": "hello@nathanbuchar.com"
   },
+  "contributors": [
+    {
+      "name": "Nathan Buchar",
+      "email": "hello@nathanbuchar.com",
+      "url": "http://nathanbuchar,com/"
+    },
+    {
+      "name": "Kai Eichinger",
+      "email": "kai.eichinger@outlook.com"
+    }
+  ],
   "license": "ISC",
   "dependencies": {
     "debug": "^2.2.0",
@@ -35,33 +55,72 @@
     "mocha": "^2.4.5",
     "tmp": "0.0.28"
   },
-  "gitHead": "40e4e1353500bc4f834b2797b92891f7b2166063",
-  "bugs": {
-    "url": "https://github.com/nathanbuchar/electron-settings/issues"
-  },
+  "gitHead": "44a538c8ebd67786c8ba3f9f4ead27fd7a206c60",
   "homepage": "https://github.com/nathanbuchar/electron-settings#readme",
-  "_id": "electron-settings@1.0.4",
-  "_shasum": "88a84bd46f6fca6cd952a24881e2ae4dd2d08f60",
-  "_from": ".",
-  "_npmVersion": "3.8.0",
-  "_nodeVersion": "5.0.0",
-  "_npmUser": {
+  "_npmVersion": "3.9.5",
+  "_nodeVersion": "6.2.2",
+  "dist": {
+    "shasum": "e5ad416324544371d014d2a21f4798301f4d508a",
+    "tarball": "http://registry.npmjs.org/electron-settings/-/electron-settings-1.1.1.tgz"
+  },
+  "stars": 4,
+  "versions": [
+    {
+      "number": "0.0.1",
+      "date": "2015-11-01T23:41:32.408Z"
+    },
+    {
+      "number": "0.0.2",
+      "date": "2015-11-02T18:45:11.757Z"
+    },
+    {
+      "number": "0.1.0",
+      "date": "2015-12-23T22:44:53.316Z"
+    },
+    {
+      "number": "0.1.1",
+      "date": "2016-01-14T04:40:02.565Z"
+    },
+    {
+      "number": "1.0.0",
+      "date": "2016-02-12T16:30:32.135Z"
+    },
+    {
+      "number": "1.0.1",
+      "date": "2016-02-12T16:31:11.034Z"
+    },
+    {
+      "number": "1.0.2",
+      "date": "2016-02-23T04:04:32.330Z"
+    },
+    {
+      "number": "1.0.3",
+      "date": "2016-04-05T21:18:57.931Z"
+    },
+    {
+      "number": "1.0.4",
+      "date": "2016-04-14T22:49:53.731Z"
+    },
+    {
+      "number": "1.1.0",
+      "date": "2016-07-11T23:03:19.560Z"
+    },
+    {
+      "number": "1.1.1",
+      "date": "2016-07-12T16:47:02.423Z"
+    }
+  ],
+  "created": "2015-11-01T23:41:32.408Z",
+  "modified": "2016-07-12T16:47:02.423Z",
+  "lastPublisher": {
     "name": "nathanbuchar",
     "email": "hello@nathanbuchar.com"
   },
-  "dist": {
-    "shasum": "88a84bd46f6fca6cd952a24881e2ae4dd2d08f60",
-    "tarball": "http://registry.npmjs.org/electron-settings/-/electron-settings-1.0.4.tgz"
-  },
-  "maintainers": [
+  "owners": [
     {
       "name": "nathanbuchar",
       "email": "hello@nathanbuchar.com"
     }
   ],
-  "_npmOperationalInternal": {
-    "host": "packages-12-west.internal.npmjs.com",
-    "tmp": "tmp/electron-settings-1.0.4.tgz_1460674193010_0.6204534636344761"
-  },
-  "directories": {}
+  "readme": "ElectronSettings\n================\n\nSave settings to a disk and load them in when your app starts. A user settings manager for Electron, adapted from [Atom/config](https://github.com/atom/atom/blob/master/src/config.coffee).\n\n**Requires Electron 0.35.0 or above.**\n\n\n\n***\n\n\n\nUsage\n-----\n\n**`new ElectronSettings([options])`**\n\n**Arguments**\n\n* **`options`** *(Object)* - Custom options for this `ElectronSettings` instance.\n\n  * `options.configDirPath` *(string)* - Absolute path to the directory where you'd like to save your settings.json file. By default this is in your user data directory. See `app.getPath('userData')`.\n\n  * `options.configFileName` *(string)* - The file name for your settings file. By default this is `settings`. Omit the `.json` extension.\n\n  * `options.debouncedSaveTime` *(number)* - The maximum amount of time in milliseconds that must elapse before saving to disk. Default `100`\n\n\n**Example**\n\nTo use `electron-settings`, first import the class, then create a new `electron-settings` instance:\n\n```js\nconst ElectronSettings = require('electron-settings');\n\nlet settings = new ElectronSettings();\n\nconsole.log(settings.getConfigFilePath());\n// => /Users/Nathan/Library/Application Support/Electron/electron-settings/settings.json\n```\n\nThis will automatically generate a settings.json file in your user data directory if one does not exist. If the file already exists, it will be imported.\n\n\n***\n\n\nDocumentation\n-------------\n\n* [Methods][docs_methods]\n* [Events][docs_events]\n* *More coming soon*\n\n\nContributors\n-------\n* [Nathan Buchar](mailto:hello@nathanbuchar.com)\n* [Kai Eichinger](mailto:kai.eichinger@outlook.com)\n\n\nLicense\n-------\nMIT\n\n\n\n\n[docs_methods]: ./docs/api/methods.md\n[docs_events]: ./docs/api/events.md\n"
 }

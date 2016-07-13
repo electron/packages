@@ -11,8 +11,17 @@
     "node": ">=0.10.0"
   },
   "repository": {
-    "type": "git",
-    "url": "git://github.com/davidmarkclements/bespoke-pdf-electron-helper.git"
+    "user": "davidmarkclements",
+    "repo": "bespoke-pdf-electron-helper",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/davidmarkclements/bespoke-pdf-electron-helper/tarball/master",
+    "clone_url": "https://github.com/davidmarkclements/bespoke-pdf-electron-helper",
+    "https_url": "https://github.com/davidmarkclements/bespoke-pdf-electron-helper",
+    "travis_url": "https://travis-ci.org/davidmarkclements/bespoke-pdf-electron-helper",
+    "zip_url": "https://github.com/davidmarkclements/bespoke-pdf-electron-helper/archive/master.zip",
+    "api_url": "https://api.github.com/repos/davidmarkclements/bespoke-pdf-electron-helper"
   },
   "licenses": [
     {
@@ -30,28 +39,34 @@
   ],
   "scripts": {},
   "gitHead": "ea1154b123e8b35d399ba05ab2a4d931797214c0",
-  "bugs": {
-    "url": "https://github.com/davidmarkclements/bespoke-pdf-electron-helper/issues"
-  },
   "homepage": "https://github.com/davidmarkclements/bespoke-pdf-electron-helper#readme",
-  "_id": "bespoke-pdf-electron-helper@1.0.1",
-  "_shasum": "91a7d31e016577ce349ee08d4100749ce9bd7651",
-  "_from": ".",
   "_npmVersion": "2.11.1",
   "_nodeVersion": "4.2.1",
-  "_npmUser": {
-    "name": "deck",
-    "email": "david.mark.clements@gmail.com"
-  },
   "dist": {
     "shasum": "91a7d31e016577ce349ee08d4100749ce9bd7651",
     "tarball": "http://registry.npmjs.org/bespoke-pdf-electron-helper/-/bespoke-pdf-electron-helper-1.0.1.tgz"
   },
-  "maintainers": [
+  "versions": [
+    {
+      "number": "1.0.0",
+      "date": "2015-10-22T17:53:24.462Z"
+    },
+    {
+      "number": "1.0.1",
+      "date": "2015-10-22T17:57:10.023Z"
+    }
+  ],
+  "created": "2015-10-22T17:53:24.462Z",
+  "modified": "2015-10-22T17:57:10.023Z",
+  "lastPublisher": {
+    "name": "deck",
+    "email": "david.mark.clements@gmail.com"
+  },
+  "owners": [
     {
       "name": "deck",
       "email": "david.mark.clements@gmail.com"
     }
   ],
-  "directories": {}
+  "readme": "# bespoke-pdf-electron-helper\n\nPDF generatation helper for [Bespoke.js](https://github.com/markdalgleish/bespoke.js)\n\n## Bespoke Plugin\n\n### Download\n\n### Usage\n`bespoke-pdf-electron-helper` is a bespoke-plugin that exposes\na global BESPOKE_PDF global within an electron render process.\n\nThis can be used to control the slides and supply PDF specific\nformatting so that electron can take snapshots and populate\na PDF file. \n\n\nFor example, when using CommonJS modules:\n\n```js\nvar bespoke = require('bespoke'),\n  pdf = require('bespoke-pdf-electron-helper');\n\nbespoke.from('article', [\n  pdf()\n]);\n}\n```\n\n#### Options\n\n##### setup [Function]\n\n```\nbespoke.from('article', [\n  pdf({\n    setup: function () {  \n      //prime slide environment for pdf output\n      //for instance, disable the \"camera\" slide or whatever\n    }\n  })\n]);\n```\n\n##### delay [Number]\nDelay before slide taking begins\n\n##### evalDelay [Number]\nDelay between each shot\n\n\nWhen using browser globals:\n\n```js\nbespoke.from('article', [\n  bespoke.plugins.pdf()\n]);\n```\n\n### Install\n\n```bash\n$ npm install bespoke-pdf-electron-helper\n```\n\n### PDF Output Customizations\n\nIn some cases, we don't want certain presentation visuals\nlanding in generated PDF's. During PDF generation, `bespoke-pdf`\nadds a `pdf` class to the root `<html>` element. \nWe can use this class to style any part of the page, \ne.g. in Stylus:\n\n```styl\n  .pdf\n    #my-fancy-overlay\n      display none\n```\n\nLikewise there may be particular slides. Any hidden `section`\nelement will be removed from the deck prior to PDF generation.\n\nFor instance, say we're using `bespoke-hash` and we have a\nslide called `named-route`, we could do\n\n```styl\n  .pdf\n    [data-bespoke-hash=\"named-route\"]\n      display none\n```\n\n`bespoke-pdf` will detect this and remove the slide.\n\nTo enable the use markdown without littering it with\nstructural HTML tags, `bespoke-pdf` also provides another\nway to style and hide slides by adding a `data-pdf-id`\nattribute based on the slides headline, which is determined\nby the first `h1`, `h2`, `h3`, `h4`, `h5`, `li`, `p` or `span` element in that order.\n\nFor instance, say there's a slide with an `h2` element \nnamed \"Emphatic Slide!\". `bespoke-pdf` automatically creates\na `data-pdf-id` attribute with the value of `emphatic-slide!`\n(we lowercase and replace spaces with dashes).\n\nThis allows us to remove it like so:\n\n```styl\n[data-pdf-id=\"emphatic-slide!\"]\n  display none\n```\n\nSee the `example/src/styles/main.styl` file for an\nexample of this - and notice that `example/dist/presentation-hello-world.pdf` lacks the \"Emphatic Slide!\" slide.\n\n\n## License\n\n[MIT License](http://en.wikipedia.org/wiki/MIT_License)\n\n## Sponsorship\n\nSponsored by [nearForm](http://nearform.com)\n\n\n"
 }

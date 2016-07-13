@@ -8,16 +8,22 @@
     "start": "wzrd example/index.js:bundle.js"
   },
   "repository": {
-    "type": "git",
-    "url": "git+https://github.com/fraserxu/element-wrapper.git"
+    "user": "fraserxu",
+    "repo": "element-wrapper",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/fraserxu/element-wrapper/tarball/master",
+    "clone_url": "https://github.com/fraserxu/element-wrapper",
+    "https_url": "https://github.com/fraserxu/element-wrapper",
+    "travis_url": "https://travis-ci.org/fraserxu/element-wrapper",
+    "zip_url": "https://github.com/fraserxu/element-wrapper/archive/master.zip",
+    "api_url": "https://api.github.com/repos/fraserxu/element-wrapper"
   },
   "author": {
     "name": "Fraser Xu"
   },
   "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/fraserxu/element-wrapper/issues"
-  },
   "keywords": [
     "yo-yo",
     "bel",
@@ -37,28 +43,33 @@
     "wzrd": "^1.3.1"
   },
   "gitHead": "a9438d34263a781040c040be7b792cd0477a8e63",
-  "_id": "element-wrapper@1.0.1",
-  "_shasum": "fe3323b4955c4b6f33aa578c2c75fb7941ab9b35",
-  "_from": ".",
   "_npmVersion": "3.7.2",
   "_nodeVersion": "4.2.3",
-  "_npmUser": {
+  "dist": {
+    "shasum": "fe3323b4955c4b6f33aa578c2c75fb7941ab9b35",
+    "tarball": "http://registry.npmjs.org/element-wrapper/-/element-wrapper-1.0.1.tgz"
+  },
+  "versions": [
+    {
+      "number": "1.0.0",
+      "date": "2016-03-25T01:43:11.706Z"
+    },
+    {
+      "number": "1.0.1",
+      "date": "2016-03-25T02:03:05.171Z"
+    }
+  ],
+  "created": "2016-03-25T01:43:11.706Z",
+  "modified": "2016-03-25T02:03:05.171Z",
+  "lastPublisher": {
     "name": "fraserxu",
     "email": "xvfeng123@gmail.com"
   },
-  "maintainers": [
+  "owners": [
     {
       "name": "fraserxu",
       "email": "xvfeng123@gmail.com"
     }
   ],
-  "dist": {
-    "shasum": "fe3323b4955c4b6f33aa578c2c75fb7941ab9b35",
-    "tarball": "http://registry.npmjs.org/element-wrapper/-/element-wrapper-1.0.1.tgz"
-  },
-  "_npmOperationalInternal": {
-    "host": "packages-12-west.internal.npmjs.com",
-    "tmp": "tmp/element-wrapper-1.0.1.tgz_1458871384720_0.61385991377756"
-  },
-  "directories": {}
+  "readme": "element-wrapper\n==================\n\n[![NPM version][npm-image]][npm-url]\n[![build status][travis-image]][travis-url]\n[![Downloads][downloads-image]][downloads-url]\n[![js-standard-style][standard-image]][standard-url]\n\nA simple and safe way to set innerHTML for [yo-yo](https://github.com/maxogden/yo-yo) or [bel](https://github.com/shama/bel) component.\n\n### Intall\n\n```sh\n$ npm i element-wrapper\n```\n\n### Code\n\n```JavaScript\nvar yo = require('yo-yo')\nvar sanitizeHtml = require('sanitize-html')\n\nmodule.exports = function elementWrapper (source, opts) {\n  opts = opts || {}\n\n  // create an empty container\n  var container = document.createElement('span')\n  // use innerHTML to set the content\n  container.innerHTML = sanitizeHtml(source, opts)\n\n  return yo`${container}`\n}\n\n```\n\n### API\n\n```JavaScript\nvar element = elementWrapper(htmlString, opts)\n```\n\nPlease check [sanitize-html](https://www.npmjs.com/package/sanitize-html) for available options.\n\n### Usage\n\n```JavaScript\nvar yo = require('yo-yo')\nvar elementWrapper = require('../index.js')\n\nvar htmlString = '<div class=\"danger\">xx dangerously set html</div>'\nvar app = yo`${elementWrapper(htmlString, {\n  allowedAttributes: {\n    '*': ['class']\n  }\n})}`\n\ndocument.body.appendChild(app)\n```\n\n### License\n\nMIT\n\n[npm-image]: https://img.shields.io/npm/v/element-wrapper.svg?style=flat-square\n[npm-url]: https://npmjs.org/package/element-wrapper\n[travis-image]: https://img.shields.io/travis/fraserxu/element-wrapper/master.svg?style=flat-square\n[travis-url]: https://travis-ci.org/fraserxu/element-wrapper\n[downloads-image]: http://img.shields.io/npm/dm/element-wrapper.svg?style=flat-square\n[downloads-url]: https://npmjs.org/package/element-wrapper\n[standard-image]: https://img.shields.io/badge/code%20style-standard-brightgreen.svg?style=flat-square\n[standard-url]: https://github.com/feross/standard\n"
 }

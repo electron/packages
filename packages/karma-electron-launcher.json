@@ -4,8 +4,17 @@
   "description": "A Karma Plugin. Launcher for github electron shell.",
   "main": "index.js",
   "repository": {
-    "type": "git",
-    "url": "git://github.com/lele85/karma-electron-launcher.git"
+    "user": "lele85",
+    "repo": "karma-electron-launcher",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/lele85/karma-electron-launcher/tarball/master",
+    "clone_url": "https://github.com/lele85/karma-electron-launcher",
+    "https_url": "https://github.com/lele85/karma-electron-launcher",
+    "travis_url": "https://travis-ci.org/lele85/karma-electron-launcher",
+    "zip_url": "https://github.com/lele85/karma-electron-launcher/archive/master.zip",
+    "api_url": "https://api.github.com/repos/lele85/karma-electron-launcher"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -31,27 +40,50 @@
     "karma": ">=0.9"
   },
   "gitHead": "e5a295fd153c1137b07515ed13d94eb6d22de226",
-  "bugs": {
-    "url": "https://github.com/lele85/karma-electron-launcher/issues"
-  },
   "homepage": "https://github.com/lele85/karma-electron-launcher",
-  "_id": "karma-electron-launcher@0.1.0",
-  "_shasum": "2ba577bca3f1e00b19e50173cf74105a755436a4",
-  "_from": ".",
   "_npmVersion": "1.4.28",
-  "_npmUser": {
+  "dist": {
+    "shasum": "2ba577bca3f1e00b19e50173cf74105a755436a4",
+    "tarball": "http://registry.npmjs.org/karma-electron-launcher/-/karma-electron-launcher-0.1.0.tgz"
+  },
+  "stars": 1,
+  "versions": [
+    {
+      "number": "0.0.1",
+      "date": "2015-05-11T15:57:02.009Z"
+    },
+    {
+      "number": "0.0.2",
+      "date": "2015-05-23T11:39:42.076Z"
+    },
+    {
+      "number": "0.0.3",
+      "date": "2015-11-03T13:19:42.476Z"
+    },
+    {
+      "number": "0.0.4",
+      "date": "2015-11-16T14:08:34.448Z"
+    },
+    {
+      "number": "0.0.5",
+      "date": "2015-11-26T16:48:36.462Z"
+    },
+    {
+      "number": "0.1.0",
+      "date": "2015-12-14T14:04:04.168Z"
+    }
+  ],
+  "created": "2015-05-11T15:57:02.009Z",
+  "modified": "2015-12-14T14:04:04.168Z",
+  "lastPublisher": {
     "name": "lele85",
     "email": "emanuele.rampichini@gmail.com"
   },
-  "maintainers": [
+  "owners": [
     {
       "name": "lele85",
       "email": "emanuele.rampichini@gmail.com"
     }
   ],
-  "dist": {
-    "shasum": "2ba577bca3f1e00b19e50173cf74105a755436a4",
-    "tarball": "http://registry.npmjs.org/karma-electron-launcher/-/karma-electron-launcher-0.1.0.tgz"
-  },
-  "directories": {}
+  "readme": "# karma-electron-launcher\n\n> Launcher for electron.\n\n---\n\nKarma launcher for GitHub Electron inspired by [Karma Nodewebkit Launcher](https://github.com/intelligentgolf/karma-nodewebkit-launcher).\n\n---\n\n## Installation\n\nThe easiest way is to keep `karma-electron-launcher` as a devDependency in your `package.json`.\n\nFor `electron<=0.34.3`, use `karma-electron-launcher@~0.0.5`.\n\n    {\n      \"devDependencies\": {\n        \"karma\": \"~0.10\",\n        \"karma-electron-launcher\": \"~0.1.0\"\n      }\n    }\n\n\nYou can do it on the command line by:\n\n    npm install karma-electron-launcher --save-dev\n\n## Configuration\n\n    // karma.conf.js\n    module.exports = function(config) {\n      config.set({\n        browsers: ['Electron']\n      });\n    };\n\n\nYou can pass list of browsers as a CLI argument too:\n\n    karma start --browsers Electron\n\n## Locally-installed Node modules\n\nIf you're using locally-installed Node modules via `require` in your code in the `node_modules` directory, you should be able to just `require` them, and they should be found by the testing environment.\n\n\n## Configuring the Electron BrowserWindow\n\nOptions passed to the `new BrowserWindow()` constructor can be defined by adding an `electronOpts` object to your karma config. Eg.\n\n    // karma.conf.js\n    module.exports = function(config) {\n      config.set({\n        browsers: ['Electron'],\n        electronOpts: {\n          title: 'my window title',\n          // ...\n        }\n      });\n    };\n\nAvailable options are specified\n[in the Electron docs](https://github.com/atom/electron/blob/master/docs/api/browser-window.md#new-browserwindowoptions). By default, only the window dimensions (400x300) are set.\n\n## Application seeds\n\nIf you are looking for an application seed to start from you can check this one out:\n[Karma Electron Launcher Simple Seed](https://github.com/lele85/karma-electron-launcher-simple-seed)\n"
 }

@@ -25,8 +25,17 @@
   },
   "license": "MIT",
   "repository": {
-    "type": "git",
-    "url": "git+https://github.com/MaraniMatias/grunt-electron-packager.git"
+    "user": "MaraniMatias",
+    "repo": "grunt-electron-packager",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/MaraniMatias/grunt-electron-packager/tarball/master",
+    "clone_url": "https://github.com/MaraniMatias/grunt-electron-packager",
+    "https_url": "https://github.com/MaraniMatias/grunt-electron-packager",
+    "travis_url": "https://travis-ci.org/MaraniMatias/grunt-electron-packager",
+    "zip_url": "https://github.com/MaraniMatias/grunt-electron-packager/archive/master.zip",
+    "api_url": "https://api.github.com/repos/MaraniMatias/grunt-electron-packager"
   },
   "files": [
     "tasks"
@@ -42,32 +51,55 @@
     "electron-prebuilt": "^0.36.7"
   },
   "gitHead": "2511515c33efae552486c60ea94084e3ccd0a7ac",
-  "bugs": {
-    "url": "https://github.com/MaraniMatias/grunt-electron-packager/issues"
-  },
   "homepage": "https://github.com/MaraniMatias/grunt-electron-packager#readme",
-  "_id": "grunt-electron-packager@0.0.8",
-  "_shasum": "f148fe371e896c432b8496a8efb03d9bbc90c31c",
-  "_from": ".",
   "_npmVersion": "3.9.0",
   "_nodeVersion": "6.1.0",
-  "_npmUser": {
-    "name": "matiasmarani",
-    "email": "maranimatias@gmail.com"
-  },
   "dist": {
     "shasum": "f148fe371e896c432b8496a8efb03d9bbc90c31c",
     "tarball": "http://registry.npmjs.org/grunt-electron-packager/-/grunt-electron-packager-0.0.8.tgz"
   },
-  "maintainers": [
+  "stars": 0,
+  "versions": [
+    {
+      "number": "0.0.1",
+      "date": "2016-02-03T19:23:34.162Z"
+    },
+    {
+      "number": "0.0.2",
+      "date": "2016-02-03T19:31:42.816Z"
+    },
+    {
+      "number": "0.0.4",
+      "date": "2016-02-03T19:37:44.418Z"
+    },
+    {
+      "number": "0.0.5",
+      "date": "2016-02-03T19:39:48.878Z"
+    },
+    {
+      "number": "0.0.6",
+      "date": "2016-02-03T19:42:44.721Z"
+    },
+    {
+      "number": "0.0.7",
+      "date": "2016-02-03T20:16:03.912Z"
+    },
+    {
+      "number": "0.0.8",
+      "date": "2016-05-27T18:44:48.556Z"
+    }
+  ],
+  "created": "2016-02-03T19:23:34.162Z",
+  "modified": "2016-05-27T18:44:48.556Z",
+  "lastPublisher": {
+    "name": "matiasmarani",
+    "email": "maranimatias@gmail.com"
+  },
+  "owners": [
     {
       "name": "matiasmarani",
       "email": "maranimatias@gmail.com"
     }
   ],
-  "_npmOperationalInternal": {
-    "host": "packages-16-east.internal.npmjs.com",
-    "tmp": "tmp/grunt-electron-packager-0.0.8.tgz_1464374686435_0.36762933363206685"
-  },
-  "directories": {}
+  "readme": "# grunt-electron-packager \n\nGrunt task to create packages [Electron](http://electron.atom.io) using  [`electron-packager`](https://github.com/maxogden/electron-packager)\nThis is mostly intended for those that have an existing grunt setup and want to integrate Electron app packaging.\nIt allows you to create custom options.\n\n## Install\n\n```\n$ npm install grunt-electron-packager --save-dev \n```\n\n## Usage\n\n```js\nconst os = require('os');\nrequire('load-grunt-tasks')(grunt); // npm install --save-dev load-grunt-tasks\n\n  grunt.initConfig({\n    'electron-packager': {\n      build: {\n        options:{\n          platform  : os.platform(),\n          arch      : os.arch(),\n          dir       : './test/app',\n          out       : './test/build',\n          icon      : './test/app/recursos/icon',\n          name      : 'nameBuild',\n          ignore    : 'bower.json',\n          version   : '0.36.7', // set version of electron\n          overwrite : true\n        }\n      },\n      buildCustom: {\n        options: function (name,platform,arch) {\n          return {\n            platform ,\n            arch,\n            dir       : './test/app',\n            out       : './test/build',\n            icon      : './test/app/recursos/icon',\n            name,\n            ignore    : 'bower.json',\n            overwrite : true\n          }\n        }\n      }\n    }\n  });\n  grunt.loadNpmTasks('grunt-electron-packager');\n  grunt.registerTask('default', [\n    'electron-packager:build',\n    'electron-packager:buildCustom:buildCustomName:win32:all'\n  ]);\n\n```\n## Options\n\nSee the `electron-packager` [options](https://github.com/maxogden/electron-packager#usage).\n\n## License\n\nMIT © [Marani Matias Ezequiel](maranimatias@gmail.com)\n"
 }

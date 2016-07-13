@@ -17,39 +17,58 @@
   },
   "license": "Zlib",
   "repository": {
-    "type": "git",
-    "url": "git+ssh://git@github.com/disjukr/electrun.git"
+    "user": "disjukr",
+    "repo": "electrun",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/disjukr/electrun/tarball/master",
+    "clone_url": "https://github.com/disjukr/electrun",
+    "https_url": "https://github.com/disjukr/electrun",
+    "travis_url": "https://travis-ci.org/disjukr/electrun",
+    "zip_url": "https://github.com/disjukr/electrun/archive/master.zip",
+    "api_url": "https://api.github.com/repos/disjukr/electrun"
   },
   "dependencies": {
     "electron-prebuilt": "^0.37.5"
   },
   "gitHead": "9abb6bac5406654072d2e5ac61690a36fa45971b",
-  "bugs": {
-    "url": "https://github.com/disjukr/electrun/issues"
-  },
   "homepage": "https://github.com/disjukr/electrun#readme",
-  "_id": "electrun@0.0.3",
-  "_shasum": "7311ec4e9026726b4f76d68a7c05eb3ce469b39a",
-  "_from": ".",
   "_npmVersion": "3.8.6",
   "_nodeVersion": "6.0.0",
-  "_npmUser": {
+  "dist": {
+    "shasum": "7311ec4e9026726b4f76d68a7c05eb3ce469b39a",
+    "tarball": "http://registry.npmjs.org/electrun/-/electrun-0.0.3.tgz"
+  },
+  "versions": [
+    {
+      "number": "0.0.0",
+      "date": "2016-04-10T16:50:15.910Z"
+    },
+    {
+      "number": "0.0.1",
+      "date": "2016-04-11T03:23:33.839Z"
+    },
+    {
+      "number": "0.0.2",
+      "date": "2016-05-13T16:52:20.339Z"
+    },
+    {
+      "number": "0.0.3",
+      "date": "2016-05-13T17:35:58.279Z"
+    }
+  ],
+  "created": "2016-04-10T16:50:15.910Z",
+  "modified": "2016-05-13T17:35:58.279Z",
+  "lastPublisher": {
     "name": "disjukr",
     "email": "disjukr@naver.com"
   },
-  "maintainers": [
+  "owners": [
     {
       "name": "disjukr",
       "email": "disjukr@naver.com"
     }
   ],
-  "dist": {
-    "shasum": "7311ec4e9026726b4f76d68a7c05eb3ce469b39a",
-    "tarball": "http://registry.npmjs.org/electrun/-/electrun-0.0.3.tgz"
-  },
-  "_npmOperationalInternal": {
-    "host": "packages-16-east.internal.npmjs.com",
-    "tmp": "tmp/electrun-0.0.3.tgz_1463160955158_0.09359651617705822"
-  },
-  "directories": {}
+  "readme": "# electrun\nbrowser automation library.\ninspired by [nightmare](https://github.com/segmentio/nightmare/)\n\n\n## install\n```js\nnpm install --save electrun\n```\n\n\n## example\n```sh\nnpm install -g babel@5\nbabel-node example.js\n```\n\n**example.js**\n```js\nimport Electrun from 'electrun';\n\nasync function main() {\n    let electrun = new Electrun();\n    electrun.process.stdout.pipe(process.stdout);\n    electrun.process.stderr.pipe(process.stderr);\n\n    let w = await electrun.open({ width: 1024, height: 768, show: true });\n    await w.goto('about:blank');\n    await w.devTool(true);\n    await w.eval(`process.stdout.write('hello, electrun!\\\\n')`);\n    await w.eval(`console.log('this will presented on devtool')`);\n    await w.wait(3000);\n    w.goto('http://google.com/');\n    await w.wait('#lst-ib');\n\n    // following code is todo\n    await w.val('#lst-ib', 'electron');\n    await w.submit('form');\n    w.once('did-finish-load', async () => {\n        await w.saveScreenshot('./electron.png');\n    });\n}\n\nmain().catch(err => console.error(err && err.stack || err));\n```\n\n\n## api\n\n### Electrun\n - `open([browserWindowOptions]) -> Promise<BrowserWindow>`: open and returns browser window ([options](https://github.com/electron/electron/blob/master/docs/api/browser-window.md#new-browserwindowoptions))\n - `kill() -> void`: kill electron process\n\n### BrowserWindow\n - `close() -> Promise`: close browser window\n - `auth(username, password) -> Promise`: set user info for passing basic authentication\n - `goto(urlString) -> Promise`: goto url\n - `wait(msOrSelector) -> Promise`: wait till selected element is present\n - `eval(code) -> Promise<JsonValue>`: eval javascript code and return result\n - `click(selector) -> Promise`\n - `mousedown(selector) -> Promise`\n - `reload() -> Promise`: reload page\n - `f5() -> Promise`: same as `reload`\n - `devTool() -> Promise`: toggle developer tool\n - `devTool(true) -> Promise`: open developer tool\n - `devTool(false) -> Promise`: close developer tool\n - `f12() -> Promise`: same as `devTool`\n\n#### todo\n - `val(selector) -> Promise<JsonValue>`\n - `val(selector, value) -> Promise`\n - `screenshot([rect]) -> Promise<Buffer>`: returns screenshot as png buffer ([rect](https://github.com/electron/electron/blob/master/docs/api/browser-window.md#wincapturepagerect-callback))\n - `saveScreenshot(savePath[, rect]) -> Promise`: save screenshot as png\n - `pdf([options]) -> Promise<Buffer>`: ([options](https://github.com/electron/electron/blob/master/docs%2Fapi%2Fweb-contents.md#webcontentsprinttopdfoptions-callback))\n - `savePdf(savePath[, options]) -> Promise`\n\n\n## license\n[zlib](./LICENSE)\n"
 }

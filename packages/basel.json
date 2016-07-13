@@ -47,37 +47,92 @@
     "node": ">=0.8.0"
   },
   "repository": {
-    "type": "git",
-    "url": "git+https://github.com/ClubeDosGeeksCoding/basel.git"
+    "user": "ClubeDosGeeksCoding",
+    "repo": "basel",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/ClubeDosGeeksCoding/basel/tarball/master",
+    "clone_url": "https://github.com/ClubeDosGeeksCoding/basel",
+    "https_url": "https://github.com/ClubeDosGeeksCoding/basel",
+    "travis_url": "https://travis-ci.org/ClubeDosGeeksCoding/basel",
+    "zip_url": "https://github.com/ClubeDosGeeksCoding/basel/archive/master.zip",
+    "api_url": "https://api.github.com/repos/ClubeDosGeeksCoding/basel"
   },
   "gitHead": "d77ac90340653f5c48e63b9a1c59d41ebdd7fdc1",
-  "bugs": {
-    "url": "https://github.com/ClubeDosGeeksCoding/basel/issues"
-  },
   "homepage": "https://github.com/ClubeDosGeeksCoding/basel#readme",
-  "_id": "basel@0.1.1",
   "scripts": {},
-  "_shasum": "38ead2dd6b2d12bc4fd6388834dbe83b1551df25",
-  "_from": ".",
   "_npmVersion": "2.14.12",
   "_nodeVersion": "4.3.1",
-  "_npmUser": {
-    "name": "jayralencar",
-    "email": "jayralencarpereira@gmail.com"
-  },
   "dist": {
     "shasum": "38ead2dd6b2d12bc4fd6388834dbe83b1551df25",
     "tarball": "http://registry.npmjs.org/basel/-/basel-0.1.1.tgz"
   },
-  "maintainers": [
+  "versions": [
+    {
+      "number": "0.0.4",
+      "date": "2016-04-15T18:12:04.023Z"
+    },
+    {
+      "number": "0.0.5",
+      "date": "2016-04-16T00:10:47.129Z"
+    },
+    {
+      "number": "0.0.6",
+      "date": "2016-04-16T00:12:20.860Z"
+    },
+    {
+      "number": "0.0.7",
+      "date": "2016-04-18T15:37:21.674Z"
+    },
+    {
+      "number": "0.0.9",
+      "date": "2016-04-19T16:25:36.878Z"
+    },
+    {
+      "number": "0.0.10",
+      "date": "2016-04-20T15:11:12.901Z"
+    },
+    {
+      "number": "0.0.12",
+      "date": "2016-04-21T19:53:27.536Z"
+    },
+    {
+      "number": "0.0.13",
+      "date": "2016-04-22T16:59:35.664Z"
+    },
+    {
+      "number": "0.0.14",
+      "date": "2016-04-25T17:18:09.266Z"
+    },
+    {
+      "number": "0.0.15",
+      "date": "2016-04-25T18:36:10.237Z"
+    },
+    {
+      "number": "0.0.16",
+      "date": "2016-04-27T16:27:30.789Z"
+    },
+    {
+      "number": "0.0.17",
+      "date": "2016-05-02T21:20:37.941Z"
+    },
+    {
+      "number": "0.1.1",
+      "date": "2016-05-30T19:47:22.679Z"
+    }
+  ],
+  "created": "2016-04-15T18:12:04.023Z",
+  "modified": "2016-05-30T19:47:22.679Z",
+  "lastPublisher": {
+    "name": "jayralencar",
+    "email": "jayralencarpereira@gmail.com"
+  },
+  "owners": [
     {
       "name": "jayralencar",
       "email": "jayralencarpereira@gmail.com"
     }
   ],
-  "_npmOperationalInternal": {
-    "host": "packages-16-east.internal.npmjs.com",
-    "tmp": "tmp/basel-0.1.1.tgz_1464637640613_0.3642399269156158"
-  },
-  "directories": {}
+  "readme": "<p align=\"center\">  <img src=\"http://baseljs.github.io/dist/img/logo_m.fw.png\" height=\"180px\"></p>\r\n<p align=\"center\"> Framework for Bootstrap, AngularJS, SQLite, Electron</p>\r\n## [Documentation](http://baseljs.github.io/#/)\r\n\r\n## Usage\r\nInstall\r\n```shell\r\nnpm install -g basel\r\n```\r\n\r\nCreate App\r\n```shell\r\nbasel-init myApp\r\n```\r\n\r\nInstall dependencies\r\n```shell\r\ncd myApp && npm install\r\n```\r\n\r\nRun\r\n```shell\r\nnpm start\r\n```\r\n\r\n## Database\r\nTo create a new table in the database of your BASEL app. \r\n```shell\r\nbasel-database --table USERS --columns \"id:INTEGER, name:TEXT\" --pk id\r\n```\r\nAnd manipulate the database.\r\n\r\n### Options\r\n```shel\r\n    -h, --help                        output usage information\r\n    -p, --password <password>         Data base encripted passowrd\r\n    -a, --algorithm <algorithm>       Data base encripted algorithm\r\n    -s, --sql <sql>                   Sql to run\r\n    -t, --table <table>               Create database table\r\n    -c, --columns <columns>           Database table columns. Ex: \"id:INTEGER, name:TEXT\"\r\n    -p, --pk <primary>                Database table primary key\r\n    -r, --references <references>     Refences. Ex: \"id\":\"table.id_table\"\r\n    -i, --incremental <incremental>   incremental columns. Ex: id or \"id, number, ...\"\r\n```\r\n\r\n#### Example:\r\n```shell\r\nbasel-database --table USERS --columns \"id:INTEGER, name:CHAR(100), email:TEXT, profile:INTEGER\" --pk id --incremental id --references \"profile:profiles.id\"\r\n```\r\nMean:\r\n```sql\r\nCREATE table USERS(\r\n  id INTEGER PRIMARY KEY AUTOINCREMENT,\r\n  name CHAR (100),\r\n  email TEXT,\r\n  profile INTEGER REFERENCES profiles(id)\r\n);\r\n```\r\n\r\n## CRUD - Creating\r\nTo create CRUD from database tables.\r\n```shell\r\nbasel-crud users --table USERS\r\n```\r\n### Options\r\n```shell\r\n    -h, --help                       output usage information\r\n    -t, --table <table>              Database Table\r\n    -n, --columns <columns>          For new tables. Table columns. Ex: \"id:INTEGER, name:TEXT\"\r\n    -p, --pk <primary>               Primary key of new table\r\n    -f, --references <references>    Refences of new table. Ex: \"profile:profiles.id\"\r\n    -i, --incremental <incremental>  incremental columns. Ex: id or \"id, number, ...\"\r\n    -b, --database <database>        Database\r\n    -c, --controller <controller>    Controller name\r\n    -v, --view <view>                View name (.html)\r\n    -r, --route <route>              Route (Ex.: persons)\r\n    -m, --menu <menu>                Show in main menu (1 - Yes, 0 - No) Default 1\r\n    -d, --delete <id>                To delete CRUD by ID\r\n    -l, --list                       To list CRUDS\r\n```\r\n\r\n#### Examples\r\n```shell\r\nbasel-crud users --table USERS -c userController -v user -r users\r\n```\r\nCreate a CRUD on Controller and view based in table USERS.\r\n\r\n### Create CRUD and Table\r\nyou can create the CRUD and at the same time the table. Inform the table columns using the short <strong>-n</strong> or <strong>--columns</strong> \"id:INTEGER, name:TEXT, ... \".\r\n```shell\r\nbasel-crud users --table USERS -n \"id:INTEGER, name:TEXT\" \r\n```\r\n\r\n## Help\r\n\r\n### Init\r\n```shell\r\nbasel-init --help\r\n```\r\n\r\n### Database\r\n```shell\r\nbasel-database --help\r\n```\r\n### CRUD\r\n```shell\r\nbasel-crud --help\r\n```\r\n"
 }

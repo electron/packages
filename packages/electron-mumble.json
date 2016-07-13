@@ -13,13 +13,19 @@
     }
   ],
   "homepage": "https://github.com/evolvelabs/electron-mumble",
-  "bugs": {
-    "url": "https://github.com/evolvelabs/electron-mumble/issues"
-  },
   "license": "MIT",
   "repository": {
-    "type": "git",
-    "url": "git+ssh://git@github.com/evolvelabs/electron-mumble.git"
+    "user": "evolvelabs",
+    "repo": "electron-mumble",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/evolvelabs/electron-mumble/tarball/master",
+    "clone_url": "https://github.com/evolvelabs/electron-mumble",
+    "https_url": "https://github.com/evolvelabs/electron-mumble",
+    "travis_url": "https://travis-ci.org/evolvelabs/electron-mumble",
+    "zip_url": "https://github.com/evolvelabs/electron-mumble/archive/master.zip",
+    "api_url": "https://api.github.com/repos/evolvelabs/electron-mumble"
   },
   "engines": {
     "node": ">=3.2.0",
@@ -47,25 +53,50 @@
     "mocha": "^2.2.5"
   },
   "gitHead": "46afed9c0e78f42d9a3e7f970de4cc244635eccc",
-  "_id": "electron-mumble@0.4.1",
   "scripts": {},
-  "_shasum": "fe07bb295c16c7ea676bc7ffe7693c4cf94df625",
-  "_from": ".",
   "_npmVersion": "2.14.3",
   "_nodeVersion": "3.3.1",
-  "_npmUser": {
-    "name": "justinmchase",
-    "email": "justin.m.chase@outlook.com"
-  },
   "dist": {
     "shasum": "fe07bb295c16c7ea676bc7ffe7693c4cf94df625",
     "tarball": "http://registry.npmjs.org/electron-mumble/-/electron-mumble-0.4.1.tgz"
   },
-  "maintainers": [
+  "versions": [
+    {
+      "number": "0.1.5",
+      "date": "2015-06-25T20:25:48.556Z"
+    },
+    {
+      "number": "0.1.6",
+      "date": "2015-07-02T21:29:11.833Z"
+    },
+    {
+      "number": "0.2.2",
+      "date": "2015-07-15T18:39:29.209Z"
+    },
+    {
+      "number": "0.3.0",
+      "date": "2015-07-19T08:24:51.659Z"
+    },
+    {
+      "number": "0.4.0",
+      "date": "2015-09-03T22:03:51.549Z"
+    },
+    {
+      "number": "0.4.1",
+      "date": "2015-09-21T17:01:40.821Z"
+    }
+  ],
+  "created": "2015-06-25T20:25:48.556Z",
+  "modified": "2015-10-15T02:43:41.893Z",
+  "lastPublisher": {
+    "name": "justinmchase",
+    "email": "justin.m.chase@outlook.com"
+  },
+  "owners": [
     {
       "name": "justinmchase",
       "email": "justin.m.chase@outlook.com"
     }
   ],
-  "directories": {}
+  "readme": "\nMumble client for Node.js\n=========================\n[![Build Status](https://travis-ci.org/Rantanen/node-mumble.svg?branch=master)](https://travis-ci.org/Rantanen/node-mumble)\n[![Code Climate](https://codeclimate.com/github/Rantanen/node-mumble/badges/gpa.svg)](https://codeclimate.com/github/Rantanen/node-mumble)\n\nThis module implements mumble protocol handling for Node.js\n\nInstallation\n------------\n\n`npm install mumble`\n\nExample\n-------\n\n```javascript\nvar mumble = require('mumble'),\n    fs = require('fs');\n\nvar options = {\n    key: fs.readFileSync( 'private.pem' ),\n    cert: fs.readFileSync( 'public.pem' )\n};\n\nconsole.log( 'Connecting' );\nmumble.connect( 'mumble://example.org', options, function ( error, connection ) {\n    if( error ) { throw new Error( error ); }\n\n    console.log( 'Connected' );\n\n    connection.authenticate( 'ExampleUser' );\n    connection.on( 'initialized', onInit );\n    connection.on( 'voice', onVoice );\n});\n\nvar onInit = function() {\n    console.log( 'Connection initialized' );\n\n    // Connection is authenticated and usable.\n};\n\nvar onVoice = function( voice ) {\n    console.log( 'Mixed voice' );\n\n    var pcmData = voice;\n};\n```\n\nTake a look at the advanced example in \"examples/advanced.js\"!\n\nPlease also take a look at the [wiki](https://github.com/Rantanen/node-mumble/wiki/API) for an complete documentation of the API.\n\nContributing\n------------\n\nPull requests, found issues, etc. are welcome. The authors are tracked in the\nAUTHORS file. This file is kept up to date manually so authors are encouraged\nto pull request the necessary changes to the AUTHORS themselves.\n\nRelated Projects\n----------------\n- [node-mumble-audio](https://github.com:EvolveLabs/node-mumble-audio.git) Add local capture and playback to node-mumble.\n"
 }

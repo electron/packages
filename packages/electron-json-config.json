@@ -1,6 +1,6 @@
 {
   "name": "electron-json-config",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "description": "Simply set and get configuration from a json file for your Electron app",
   "main": "src/index.js",
   "keywords": [
@@ -21,51 +21,70 @@
     "url": "de-luca.io"
   },
   "repository": {
-    "type": "git",
-    "url": "git+https://github.com/de-luca/electron-json-config.git"
+    "user": "de-luca",
+    "repo": "electron-json-config",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/de-luca/electron-json-config/tarball/master",
+    "clone_url": "https://github.com/de-luca/electron-json-config",
+    "https_url": "https://github.com/de-luca/electron-json-config",
+    "travis_url": "https://travis-ci.org/de-luca/electron-json-config",
+    "zip_url": "https://github.com/de-luca/electron-json-config/archive/master.zip",
+    "api_url": "https://api.github.com/repos/de-luca/electron-json-config"
   },
   "scripts": {
     "test": "electron-mocha --recursive test -R progress && electron-mocha --renderer --recursive test -R progress"
   },
   "license": "BSD-2-Clause",
   "dependencies": {
-    "exists-file": "^1.0.1"
+    "exists-file": "^2.0.0"
   },
   "devDependencies": {
-    "electron-mocha": "^1.2.0",
-    "electron-prebuilt": "^0.37.6",
-    "mochainon": "^1.0.0"
+    "electron-mocha": "latest",
+    "electron-prebuilt": "latest",
+    "mochainon": "latest"
   },
   "files": [
     "src/index.js"
   ],
-  "gitHead": "ce9601a07c3e3b4aadb2a21f1c3593b2d2f768db",
-  "bugs": {
-    "url": "https://github.com/de-luca/electron-json-config/issues"
-  },
+  "gitHead": "d285a6b8b8bbde878971ee4c259fe6a01c869c04",
   "homepage": "https://github.com/de-luca/electron-json-config#readme",
-  "_id": "electron-json-config@1.1.0",
-  "_shasum": "1a23c0bcd57766e61276b53df068a642c626fde9",
-  "_from": ".",
-  "_npmVersion": "3.6.0",
+  "_npmVersion": "3.9.3",
   "_nodeVersion": "5.6.0",
-  "_npmUser": {
+  "dist": {
+    "shasum": "63a84b9c2f9beccc4e7cc801f1b1c2e2648dc6f0",
+    "tarball": "http://registry.npmjs.org/electron-json-config/-/electron-json-config-1.2.0.tgz"
+  },
+  "versions": [
+    {
+      "number": "1.0.0",
+      "date": "2016-03-18T15:10:35.844Z"
+    },
+    {
+      "number": "1.0.1",
+      "date": "2016-03-18T15:14:18.587Z"
+    },
+    {
+      "number": "1.1.0",
+      "date": "2016-04-19T19:41:11.227Z"
+    },
+    {
+      "number": "1.2.0",
+      "date": "2016-07-12T19:52:06.396Z"
+    }
+  ],
+  "created": "2016-03-18T15:10:35.844Z",
+  "modified": "2016-07-12T19:52:06.396Z",
+  "lastPublisher": {
     "name": "de-luca",
     "email": "dev@de-luca.io"
   },
-  "dist": {
-    "shasum": "1a23c0bcd57766e61276b53df068a642c626fde9",
-    "tarball": "http://registry.npmjs.org/electron-json-config/-/electron-json-config-1.1.0.tgz"
-  },
-  "maintainers": [
+  "owners": [
     {
       "name": "de-luca",
       "email": "dev@de-luca.io"
     }
   ],
-  "_npmOperationalInternal": {
-    "host": "packages-12-west.internal.npmjs.com",
-    "tmp": "tmp/electron-json-config-1.1.0.tgz_1461094868866_0.8843579136300832"
-  },
-  "directories": {}
+  "readme": "# electron-json-config\n\n> Simply set and get configuration from a json file for your Electron app\n\nThe config file (`config.json`) is located in the path returned by `app.getPath('userData')`.  \nThis package can be used from **browser and renderer** process.\n\n## Usage\n\n```js\nconst config = require('electron-json-config');\n\nconfig.set('foo', 'bar');\nconsole.log(config.get('foo')); // shows 'bar'\n```\n\n\n## API\n\n*All `key` can be a classic key (eg: `foo`) or a multiple level key with levels separated by `.` (eg: `foo.bar`)*\n\n### `config.file()`\nReturns the name of the file the config is stored in.\n\n### `config.has(key)`\nReturns `true` if the key exists, `false` otherwise.\n\n### `config.set(key, value)`\nSet a key with the specified value. If the key is already in use its value will be overwritten.\n\n### `config.get(key)`\nReturns the value associated with the key. If the key is not defined `undefined` is returned.\n\n### `config.keys([key])`\nIf `key` is provided, returns an array containing all keys if the `key` object.  \nIf `key` is omitted, returns an array containing all keys in the config file.\n\n### `config.all()`\nReturns an object with all the data currently saved.\n\n### `config.delete(key)`\nRemove the key and its value from the config file.\n\n### `config.purge()`\nRemove all data from the config file.\n"
 }

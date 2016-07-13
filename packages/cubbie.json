@@ -1,8 +1,8 @@
 {
   "name": "cubbie",
-  "version": "1.3.0",
+  "version": "3.0.0",
   "description": "Stupid simple state storage",
-  "main": "dist/cubbie.bundle.js",
+  "main": "dist/cubbie.min.js",
   "scripts": {
     "prebundle": "npm run -s lint",
     "bundle": "webpack",
@@ -10,11 +10,21 @@
     "screwy": "screwy",
     "electron-demo": "electron demos/electron-demo.js",
     "lint": "eslint --max-warnings 8 -c .eslintrc.json src/",
-    "test": "jasmine"
+    "test": "jasmine",
+    "prebublish": "if [ ! -f dist/cubbie.bundle.js ]; then exit 1; fi"
   },
   "repository": {
-    "type": "git",
-    "url": "git+https://github.com/samueleaton/cubbie.git"
+    "user": "samueleaton",
+    "repo": "cubbie",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/samueleaton/cubbie/tarball/master",
+    "clone_url": "https://github.com/samueleaton/cubbie",
+    "https_url": "https://github.com/samueleaton/cubbie",
+    "travis_url": "https://travis-ci.org/samueleaton/cubbie",
+    "zip_url": "https://github.com/samueleaton/cubbie/archive/master.zip",
+    "api_url": "https://api.github.com/repos/samueleaton/cubbie"
   },
   "keywords": [
     "state",
@@ -24,9 +34,6 @@
     "name": "Sam Eaton"
   },
   "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/samueleaton/cubbie/issues"
-  },
   "homepage": "https://github.com/samueleaton/cubbie#readme",
   "devDependencies": {
     "babel-cli": "^6.4.5",
@@ -40,35 +47,193 @@
   },
   "dependencies": {
     "deep-diff": "^0.3.4",
+    "deep-freeze": "0.0.1",
     "lodash": "^4.6.1"
   },
   "browser": {
     "fs": "./lib/empty",
     "crypto": "./lib/empty"
   },
-  "gitHead": "0bbde29aeaadb1bc2e496616f2753f7ed2da0d56",
-  "_id": "cubbie@1.3.0",
-  "_shasum": "99fed3a5f3d1e7deb1cd653d86d8d474ea2687bf",
-  "_from": ".",
+  "gitHead": "f7de1839cd5c5f2e45b8233bc362a7b8cfdcc433",
   "_npmVersion": "3.8.9",
   "_nodeVersion": "6.2.0",
-  "_npmUser": {
+  "dist": {
+    "shasum": "99bbad448ce61701967bb0fa176fa648fa88d055",
+    "tarball": "http://registry.npmjs.org/cubbie/-/cubbie-3.0.0.tgz"
+  },
+  "versions": [
+    {
+      "number": "0.0.1",
+      "date": "2016-02-23T01:17:15.126Z"
+    },
+    {
+      "number": "0.0.2",
+      "date": "2016-02-23T02:36:14.069Z"
+    },
+    {
+      "number": "0.0.3",
+      "date": "2016-02-23T15:34:13.554Z"
+    },
+    {
+      "number": "0.0.4",
+      "date": "2016-02-23T20:21:05.578Z"
+    },
+    {
+      "number": "0.0.5",
+      "date": "2016-02-24T22:09:04.423Z"
+    },
+    {
+      "number": "0.0.6",
+      "date": "2016-02-25T14:14:31.972Z"
+    },
+    {
+      "number": "0.0.7",
+      "date": "2016-02-27T21:04:45.788Z"
+    },
+    {
+      "number": "0.0.8",
+      "date": "2016-02-28T02:10:43.813Z"
+    },
+    {
+      "number": "0.0.9",
+      "date": "2016-03-03T18:45:02.413Z"
+    },
+    {
+      "number": "0.0.10",
+      "date": "2016-03-03T18:55:44.094Z"
+    },
+    {
+      "number": "0.0.11",
+      "date": "2016-03-04T03:59:28.142Z"
+    },
+    {
+      "number": "0.0.12",
+      "date": "2016-03-10T22:34:43.780Z"
+    },
+    {
+      "number": "0.0.13",
+      "date": "2016-03-10T22:58:35.856Z"
+    },
+    {
+      "number": "0.0.14",
+      "date": "2016-03-11T15:11:59.544Z"
+    },
+    {
+      "number": "0.0.15",
+      "date": "2016-03-21T01:27:58.990Z"
+    },
+    {
+      "number": "0.0.16",
+      "date": "2016-04-01T22:41:17.335Z"
+    },
+    {
+      "number": "0.0.17",
+      "date": "2016-05-07T02:37:41.307Z"
+    },
+    {
+      "number": "0.0.18",
+      "date": "2016-05-17T23:33:21.892Z"
+    },
+    {
+      "number": "0.1.0",
+      "date": "2016-05-29T02:30:58.621Z"
+    },
+    {
+      "number": "0.2.0",
+      "date": "2016-05-29T03:40:28.428Z"
+    },
+    {
+      "number": "0.3.0",
+      "date": "2016-06-16T00:59:48.246Z"
+    },
+    {
+      "number": "0.4.0",
+      "date": "2016-06-16T03:55:21.800Z"
+    },
+    {
+      "number": "0.4.1",
+      "date": "2016-06-17T02:57:15.102Z"
+    },
+    {
+      "number": "1.0.0",
+      "date": "2016-06-18T03:25:15.889Z"
+    },
+    {
+      "number": "1.1.0",
+      "date": "2016-06-18T04:25:02.800Z"
+    },
+    {
+      "number": "1.1.1",
+      "date": "2016-06-18T23:04:05.287Z"
+    },
+    {
+      "number": "1.1.2",
+      "date": "2016-06-19T01:20:56.944Z"
+    },
+    {
+      "number": "1.1.3",
+      "date": "2016-06-19T02:36:55.446Z"
+    },
+    {
+      "number": "1.1.4",
+      "date": "2016-06-19T06:41:23.269Z"
+    },
+    {
+      "number": "1.1.5",
+      "date": "2016-06-20T04:30:19.779Z"
+    },
+    {
+      "number": "1.1.6",
+      "date": "2016-06-21T13:52:13.184Z"
+    },
+    {
+      "number": "1.1.7",
+      "date": "2016-06-21T14:03:35.222Z"
+    },
+    {
+      "number": "1.1.8",
+      "date": "2016-06-21T23:52:54.572Z"
+    },
+    {
+      "number": "1.1.9",
+      "date": "2016-06-22T00:10:29.355Z"
+    },
+    {
+      "number": "1.2.0",
+      "date": "2016-06-22T19:46:40.570Z"
+    },
+    {
+      "number": "1.2.1",
+      "date": "2016-06-23T00:12:41.162Z"
+    },
+    {
+      "number": "1.3.0",
+      "date": "2016-06-24T03:14:23.967Z"
+    },
+    {
+      "number": "2.0.0",
+      "date": "2016-07-03T05:19:59.186Z"
+    },
+    {
+      "number": "2.0.1",
+      "date": "2016-07-10T03:03:28.173Z"
+    },
+    {
+      "number": "3.0.0",
+      "date": "2016-07-10T03:52:59.533Z"
+    }
+  ],
+  "created": "2016-02-23T01:17:15.126Z",
+  "modified": "2016-07-10T03:52:59.533Z",
+  "lastPublisher": {
     "name": "same",
     "email": "sameaton11@gmail.com"
   },
-  "dist": {
-    "shasum": "99fed3a5f3d1e7deb1cd653d86d8d474ea2687bf",
-    "tarball": "http://registry.npmjs.org/cubbie/-/cubbie-1.3.0.tgz"
-  },
-  "maintainers": [
+  "owners": [
     {
       "name": "same",
       "email": "sameaton11@gmail.com"
     }
   ],
-  "_npmOperationalInternal": {
-    "host": "packages-16-east.internal.npmjs.com",
-    "tmp": "tmp/cubbie-1.3.0.tgz_1466738060188_0.06706419494003057"
-  },
-  "directories": {}
+  "readme": "# Cubbie\n\nStupid simple state storage\n\n<br>  \n<p align=\"center\">\n<img width=\"350\" title=\"cubbie\" alt=\"cubbie!\" src=\"https://raw.githubusercontent.com/samueleaton/design/master/cubbie.png\">    \n</p>\n<br>  \n\n> State shouldn't be a chore, keep your state in Cubbie's store\n\n<br>  \n\n## The Lowdown\n\nCubbie allows the creation of state stores. It will keep track of the state history as the state is modified. It is built on an event system that allows anybody to listen for any state event. [Event namespacing](docs/event_system.md#event-namespacing) is available to keep things manageable as lots of events are added.\n\nIf you are using Node.js (e.g. Electron) the entire state history can be synced to and from a file for persistent storage.\n\n## Installation\n\n```\nnpm i -S cubbie\n```\n\n## Usage\n\n### Creating a Store\n\n``` javascript\nconst cubbie = require('cubbie');\n\nconst store = cubbie.createStore();\n```\n\nEach store you create is independent, each managing its own state history. So if you want multiple <sub>smaller stores</sub> in your app rather than one **large store**, Cubbie will allow it.\n\n``` javascript\nconst heroes = cubbie.createStore();\nconst villains = cubbie.createStore();\n```\n\n### Initial State\n\nBefore you can start tracking state, you need to set an initial state:\n\n``` javascript\nstore.initialState = {currentPage: 'home', loggedIn: true, etc: '...'};\n// or\nstore.setInitialState({currentPage: 'home', loggedIn: true, etc: '...'});\n```\n\n`initialState` triggers the `STATE_SET` event. See the **Events** section.\n\nTo get the initial state:\n\n``` javascript\nstore.initialState;\n```\n\n### Current State\n\nAccessing the current state is as simple as accessing the `state` property.\n\n``` javascript\nstore.state;\n```\n\n### Modifying State\n\nThis is the key to Cubbie's simplicity. To modify state, just pass a function to `modifyState`. The only parameter of that function is the new state that you get to modify before it is set as the new state. \n\n``` javascript\nstore.modifyState(state => {\n    state.x = y;\n    state.z = 11;\n    // etc.\n});\n```\n\nThis is an immutable operation and the newly modified state object will be added as the most recent member of the state history family.\n\nYou are modifying a new state object that *will become* the new state—*you are not modifying the \"current state\"*.\n\nExample\n\n``` javascript\nstore.stateHistory.length; // lets say its 1\n\nstore.modifyState(state => {\n    state.x = y;\n    state.z = 11;\n    // etc.\n});\n\nstore.stateHistory.length; // then now its 2\n```\n\n`modifyState` triggers the `STATE_MODIFIED` event. See [The Event System](docs/event_system.md).\n\n`modifyState` will return the new current state.\n\n### State History\n\nReturns array of all of the states in history since the initial state.\n\n``` javascript\nstore.stateHistory;\n```\n\n**Note:** Reverting or resetting the state will remove states from the state history. Modifying the state will append a new state to the state history.\n\nTo get the absolute raw state history (which includes each state timestamp and id) use `store.rawStateHistory`. So if for some reason you want to see the date/time when each state was created, this is how you can access that information.\n\n### Get Previous State\n\nThis returns the state immediately before the current state.\n\n``` javascript\nstore.previousState;\n```\n\n### Resetting State\n\nThis will reset the state to the initial state (the first state in the state history).\n\n``` javascript\nstore.resetState();\n```\n\n`resetState` triggers the `STATE_RESET` event. See the **Events** section.\n\n### Reverting the State\n\nSee [Reverting the State](docs/reverting_state.md)\n\n### Views\n\nSimilar in purpose to SQL views, views allow you to store a function that you can call on at any moment. Its just some good ol' logic abstraction.\n\nExample (using lodash's `maxBy`)\n\n``` javascript\nconsole.log(store.state); /* \n{ people: [\n    {name: 'cat', age: 13}, {name: 'sam', age: 25}, {name: 'jas', age: 20}\n  ]\n}\n*/\n\n\nstore.createView('oldestPerson', state => {\n  return _.maxBy(state.people, person => person.age);\n});\n\nstore.view('oldestPerson'); // {name: 'sam', age: 25}\n```\n\n### Purging the State History\n\nIf you want to clear the state history, for example to save memory, use the `purge` method.\n\nPurging the store will remove all of the states from the state history **except for the current state**. Because the current state is the only state that is not removed, it will become the new initial state.\n\n``` javascript\nstore.purge();\n```\n\nThe `purge` method will trigger the `STORE_PURGED` event.\n\n(**Note**: As of version 2.1.0, `purgeStateHistory` was removed in favor of `purge`, which no longer saves the initial state, just the current state)\n\n### Cleaning the State History\n\nCleaning the store is much more advanced than purging. It will find states that are identical and remove everything in between.\n\n``` javascript\nstore.clean();\n```\n\nSee [Cleaning the Store](docs/cleaning_the_store.md)\n\n### Static State\n\nInternally, static state is a totally separate object from the normal state. It is meant to be set from the beginning of the app and it cannot be changed, unless you totally reset it.\n\nThe purpose is to store information that shouldn't need to be changed, such as URLs, file paths, config information, etc.\n\n**Setting Static State**\n\n``` javascript\nstore.staticState = {x: 11, y: 'yee'};\n```\n\n**Accessing Static State**\n\n``` javascript\nstore.staticState;\n```\n\n### The Event System\n\nSee [The Event System](docs/event_system.md)\n\n### Freezing the Store\n\nSee [Freezing the State Structure](docs/freeze_state.md)\n\n### Enforcing Types and/or Values\n\nSee [State Description: Enforcing Types and/or Values](docs/state_description.md)\n\n### Saving State to Disk\n\nIf, for example, you are building an app in Electron and want to save the state to disk, you totes can.\n\n<img width=\"180\" title=\"cubbie plus node\" alt=\"cubbie plus node\" src=\"https://raw.githubusercontent.com/samueleaton/design/master/cubbie_plus_node.png\"> \n\nSee **[Additional Features for Node](docs/node_features.md)**\n\n\n### Usage with React\n\n<img width=\"180\" title=\"cubbie plus node\" alt=\"cubbie plus node\" src=\"https://raw.githubusercontent.com/samueleaton/design/master/cubbie_plus_react.png\"> \n\nSee **[Using Cubbie With React](docs/cubbie_with_react.md)**\n"
 }

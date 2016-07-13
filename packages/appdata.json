@@ -7,17 +7,23 @@
     "test": "_mocha ./test/*.js"
   },
   "repository": {
-    "type": "git",
-    "url": "git+https://github.com/janbiasi/adstore.git"
+    "user": "janbiasi",
+    "repo": "adstore",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/janbiasi/adstore/tarball/master",
+    "clone_url": "https://github.com/janbiasi/adstore",
+    "https_url": "https://github.com/janbiasi/adstore",
+    "travis_url": "https://travis-ci.org/janbiasi/adstore",
+    "zip_url": "https://github.com/janbiasi/adstore/archive/master.zip",
+    "api_url": "https://api.github.com/repos/janbiasi/adstore"
   },
   "author": {
     "name": "Jan Biasi",
     "email": "biasijan@gmail.com"
   },
   "license": "Apache-2.0",
-  "bugs": {
-    "url": "https://github.com/janbiasi/adstore/issues"
-  },
   "homepage": "https://github.com/janbiasi/adstore#readme",
   "dependencies": {
     "async": "^1.5.2",
@@ -36,28 +42,33 @@
     "mocha": "^2.4.5"
   },
   "gitHead": "a44dff6b35de7bd7b66437080b6ac0e9f9f12cfd",
-  "_id": "appdata@1.1.0",
-  "_shasum": "25501658281a33456bad2c031f1683156be1634a",
-  "_from": ".",
   "_npmVersion": "2.14.7",
   "_nodeVersion": "4.2.2",
-  "_npmUser": {
-    "name": "janbiasi",
-    "email": "biasijan@gmail.com"
-  },
   "dist": {
     "shasum": "25501658281a33456bad2c031f1683156be1634a",
     "tarball": "http://registry.npmjs.org/appdata/-/appdata-1.1.0.tgz"
   },
-  "maintainers": [
+  "versions": [
+    {
+      "number": "1.0.0",
+      "date": "2016-03-18T14:30:24.452Z"
+    },
+    {
+      "number": "1.1.0",
+      "date": "2016-03-21T13:06:53.509Z"
+    }
+  ],
+  "created": "2016-03-18T14:30:24.452Z",
+  "modified": "2016-03-21T13:06:53.509Z",
+  "lastPublisher": {
+    "name": "janbiasi",
+    "email": "biasijan@gmail.com"
+  },
+  "owners": [
     {
       "name": "janbiasi",
       "email": "biasijan@gmail.com"
     }
   ],
-  "_npmOperationalInternal": {
-    "host": "packages-12-west.internal.npmjs.com",
-    "tmp": "tmp/appdata-1.1.0.tgz_1458565610941_0.44038491882383823"
-  },
-  "directories": {}
+  "readme": "AppData is a minimalistic Node.js framework for accessing, writing and manipulating\r\ndatasets in the users AppData (or Homedata) folder. It has a simple API and helps you\r\nsaving persistent data for e.g. an electron desktop application.\r\n\r\n### Installation\r\n\r\n```bash\r\nnpm install --save appdata\r\n\r\n# or via git\r\ngit clone https://github.com/janbiasi/appdata.git\r\n```\r\n\r\n### Usage\r\n\r\n#### Setup\r\n\r\nFirst off you need to create a new AppData Storage object. The AppData module\r\nexports a function which takes one argument, an optional custom settings object.\r\nIf you are wondering which options are supported, take a look at [TODO]().\r\n\r\n```js\r\nconst appdata = require('appdata');\r\n```\r\n\r\n#### Selecting a Database\r\n\r\nNext, you will have to select your database by a name. If the database does not\r\nexists a new set will be created by the system itself. There are only lower-,\r\nuppercase letters, numbers, hyphens and underscores allowed!\r\n\r\n```js\r\nconst database = appdata.connect('database-name', {\r\n    /* options here */\r\n});\r\n```\r\n\r\n###### Signature\r\n\r\n```js\r\nconnect(name: String [, options: Object]): Interface\r\n```\r\n\r\n#### Inserting data\r\n\r\nInserting data is as simple as setting new variables! The key must be a string\r\nand not an integer. But the value can be whatever you'd like to insert.\r\n\r\n```js\r\ndatabase.set('hello', 'world!');\r\ndatabase.set('mynum', 1923);\r\ndatabase.set('coll', [ 0, undefined, 'hey' ]);\r\n```\r\n\r\n###### Signature\r\n\r\n```js\r\nset(key: String, value: <T>): <T>\r\n```\r\n\r\n#### Reading data\r\n\r\nLike inserting, reading is very simple. Grab the key you'd like to find the\r\nvalue for and you'll get the result (or undefined in case the key does not exist).\r\n\r\n```js\r\ndatabase.all(); // { hello: \"world!\" ... }\r\ndatabase.get('hello'); // world!\r\ndatabase.get('mynum'); // 1923\r\n```\r\n\r\n###### Signature\r\n\r\n```js\r\nget(key: String): <T>\r\n```\r\n\r\n#### Deleting and dropping\r\n\r\nDatasets can be deleted by key or can be totally removed by the <code>.drop()</code>\r\nmethod. The methods are pretty simple to use, just look at the example below.\r\n\r\n```js\r\nlet name = storage.delete('name');\r\nstorage.get('name') === name; // false\r\nstorage.drop(); // {}\r\n```\r\n\r\n###### Signature\r\n\r\n```js\r\ndrop(): <T>\r\n```\r\n\r\n#### Eventhandling\r\n\r\nThe Interface inherits from the <code>EventEmitter</code> class, so it implements\r\nits own events. All possible events execute on the storage are listed below with\r\na description and its paramters.\r\n\r\n| Event      | Description            | Paramter  |\r\n|------------|------------------------|-----------|\r\n| <code>connect</code> | Emitted when connected to the database | Database-name |\r\n| <code>sync</code> | Emitted on sync action | Boolean or data synced |\r\n| <code>set</code> | Emitted when setting a new key-value pair | Key and value |\r\n| <code>get</code> | Emitted when getting a key-value pair | Key and value |\r\n| <code>has</code> | Emitted when checking if a key exists | Key and if exists (Boolean) |\r\n| <code>delete</code> | Emitted when deleting a key-value pair | Key and the deleted value |\r\n| <code>drop</code> | Emitted when dropping the database | - |\r\n\r\n###### Signature\r\n\r\n```js\r\non(event: String, handler: Function): void\r\n```\r\n\r\n#### Services\r\n\r\nServices can be created and published as node modules for adding custom functionallity\r\nto the interface of the AppData module. Services can be used e.g. for filtering, querying,\r\nexporting data and much more. Inside the service itself there is an interface property,\r\nwhich will provide you all methods which are listed above! Here is a short example\r\nhow you can create your own service;\r\n\r\n```js\r\nvar Service = require('appdata').Service;\r\nvar MyService = new Service();\r\n\r\nMyService.filter = function(data, options) {\r\n    var data = this.interface.all();\r\n    // ... add your filter logic here\r\n    return [];\r\n};\r\n\r\n// Attach the service to your store instance\r\nstorage.service(MyService);\r\n```\r\n\r\n### License\r\nThis project is licensed under the [Apache 2.0 License](http://www.apache.org/licenses/LICENSE-2.0).\r\n"
 }

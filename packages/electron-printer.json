@@ -14,8 +14,17 @@
     }
   ],
   "repository": {
-    "type": "git",
-    "url": "git://github.com/marcopiraccini/electron-printer.git"
+    "user": "marcopiraccini",
+    "repo": "electron-printer",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/marcopiraccini/electron-printer/tarball/master",
+    "clone_url": "https://github.com/marcopiraccini/electron-printer",
+    "https_url": "https://github.com/marcopiraccini/electron-printer",
+    "travis_url": "https://travis-ci.org/marcopiraccini/electron-printer",
+    "zip_url": "https://github.com/marcopiraccini/electron-printer/archive/master.zip",
+    "api_url": "https://api.github.com/repos/marcopiraccini/electron-printer"
   },
   "engines": {
     "electron": ">=0.36"
@@ -50,34 +59,49 @@
   ],
   "main": "./index",
   "gitHead": "fd60dbe682e9090da29b40d42fd45ba331631a6e",
-  "bugs": {
-    "url": "https://github.com/marcopiraccini/electron-printer/issues"
-  },
   "bundleDependencies": [
     "node-pre-gyp"
   ],
-  "_id": "electron-printer@0.0.5",
-  "_shasum": "2b43681e8d0b58d2b2800113dcb1a0e9fda7a4f3",
-  "_from": ".",
   "_npmVersion": "3.3.12",
   "_nodeVersion": "5.1.1",
-  "_npmUser": {
-    "name": "marcopiraccini",
-    "email": "marco.piraccini@gmail.com"
-  },
   "dist": {
     "shasum": "2b43681e8d0b58d2b2800113dcb1a0e9fda7a4f3",
     "tarball": "http://registry.npmjs.org/electron-printer/-/electron-printer-0.0.5.tgz"
   },
-  "maintainers": [
+  "stars": 1,
+  "versions": [
+    {
+      "number": "0.0.1",
+      "date": "2016-02-12T18:17:01.369Z"
+    },
+    {
+      "number": "0.0.2",
+      "date": "2016-02-12T21:45:47.168Z"
+    },
+    {
+      "number": "0.0.3",
+      "date": "2016-02-13T09:50:35.623Z"
+    },
+    {
+      "number": "0.0.4",
+      "date": "2016-02-13T11:00:28.885Z"
+    },
+    {
+      "number": "0.0.5",
+      "date": "2016-02-15T07:00:55.346Z"
+    }
+  ],
+  "created": "2016-02-12T18:17:01.369Z",
+  "modified": "2016-02-15T07:00:55.346Z",
+  "lastPublisher": {
+    "name": "marcopiraccini",
+    "email": "marco.piraccini@gmail.com"
+  },
+  "owners": [
     {
       "name": "marcopiraccini",
       "email": "marco.piraccini@gmail.com"
     }
   ],
-  "_npmOperationalInternal": {
-    "host": "packages-9-west.internal.npmjs.com",
-    "tmp": "tmp/electron-printer-0.0.5.tgz_1455519650281_0.14673972222954035"
-  },
-  "directories": {}
+  "readme": "# electron-printer\nnode-printer fork to be used with electron. It's a fork from node-printer which binary are released on github.\nIt's a temporary solution until binary package will be available for node 5.1.x and\nwindows / linux platforms for node-printer on electron runtime. Please refer to https://github.com/tojocky/node-printer on\nhow to use these APIs.\n\n# Prerequisite\nInstall the node version used by electron (currently is 5.1.1 for electron 0.36.7).\nA github valid `NODE_PRE_GYP_GITHUB_TOKEN` must be set as env variable.\n\n# Release & Build\nRemember to change the binary host with the correct version (see https://github.com/bchr02/node-pre-gyp-github).\nAfter the release, build the binaries for each OS.\n\n# Linux build\nOn Ubuntu 15.10, install:\n```\nsudo apt-get install libudev-dev libusb-1.0-0-dev g++-multilib libudev-dev:i386 libcups2-dev\n```\nAnd then run `npm run release-linux` (x64) or `npm run release-linux-ia32` (ia32) to publish\nthe binary build\n\n# Windows build\nUse a  Windows 7 on x64. Install Visual Studio (2013 is OK on Windows 7) and Python 2.7.x\nAlways specify the VisualStudio version using `--msvs_version=xxxx`, foor instance\n`npm i --msvs_version=2013`\n\nRelease using  `npm run release-win --msvs_version=2013` (x64) or `npm run release-win-ia32 --msvs_version=2013` (ia32)\n\n# OSx build\nAfter `npm i`, just use `npm run release-darwin` (`npm run release` should work)\n"
 }

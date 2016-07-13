@@ -17,13 +17,19 @@
     "npm": "3.3.12"
   },
   "repository": {
-    "type": "git",
-    "url": "git+https://github.com/olalonde/deisdash.git"
+    "user": "olalonde",
+    "repo": "deisdash",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/olalonde/deisdash/tarball/master",
+    "clone_url": "https://github.com/olalonde/deisdash",
+    "https_url": "https://github.com/olalonde/deisdash",
+    "travis_url": "https://travis-ci.org/olalonde/deisdash",
+    "zip_url": "https://github.com/olalonde/deisdash/archive/master.zip",
+    "api_url": "https://api.github.com/repos/olalonde/deisdash"
   },
   "license": "Apache-2.0",
-  "bugs": {
-    "url": "https://github.com/olalonde/deisdash/issues"
-  },
   "homepage": "http://deisdash.com",
   "dependencies": {
     "babel-polyfill": "^6.3.14",
@@ -80,28 +86,33 @@
     "webpack-hot-middleware": "^2.2.0"
   },
   "gitHead": "5a5b3d46839819b34c77ce3c2ab89d217e11d94e",
-  "_id": "deisdash@0.1.0",
-  "_shasum": "fed02c524d26e57b8fe8c6868e2945edd82062b9",
-  "_from": ".",
   "_npmVersion": "3.8.6",
   "_nodeVersion": "6.0.0",
-  "_npmUser": {
-    "name": "olalonde",
-    "email": "olalonde@gmail.com"
-  },
   "dist": {
     "shasum": "fed02c524d26e57b8fe8c6868e2945edd82062b9",
     "tarball": "http://registry.npmjs.org/deisdash/-/deisdash-0.1.0.tgz"
   },
-  "maintainers": [
+  "versions": [
+    {
+      "number": "0.0.1",
+      "date": "2016-03-20T02:10:44.934Z"
+    },
+    {
+      "number": "0.1.0",
+      "date": "2016-05-28T09:40:20.126Z"
+    }
+  ],
+  "created": "2016-03-20T02:10:44.934Z",
+  "modified": "2016-05-28T09:40:20.126Z",
+  "lastPublisher": {
+    "name": "olalonde",
+    "email": "olalonde@gmail.com"
+  },
+  "owners": [
     {
       "name": "olalonde",
       "email": "olalonde@gmail.com"
     }
   ],
-  "_npmOperationalInternal": {
-    "host": "packages-12-west.internal.npmjs.com",
-    "tmp": "tmp/deisdash-0.1.0.tgz_1464428416761_0.5592096408363432"
-  },
-  "directories": {}
+  "readme": "# Deis Dash\n\nDeis Dash is a web based UI for the [Deis PaaS](http://deis.io/).\n\n[Try it now!](http://www.deisdash.com)\n\n![screenshots](./static/animation.gif)\n\nFeatures:\n\n- Login and register\n- Change password and manage Git ssh keys\n- List users, grant admin, delete user (admin only)\n- List and create new apps\n- Scale app\n- Destroy app\n- Edit app configuration\n- List app builds\n- Add and remove app domain names\n- Add and remove app collaborators\n- Display and filter app logs\n\nRoadmap:\n\n- Test and support Deis v2\n- Support pagination\n- Support for tags, releases, certs, limits\n\n## Install\n\n```bash\n# Clone this repository\ngit clone https://github.com/olalonde/deisdash.git\ncd deisdash\n# Create Deis app\ndeis create dash\n# Configure app\n## tells npm to install devDependencies (needed for build)\ndeis config:set NPM_CONFIG_PRODUCTION=false\n## tells our server to use the built files\ndeis config:set NODE_ENV=production\n# Deploy app\ngit push deis\n# Open Deis Dash in web browser\ndeis open\n```\n\nIt was mainly tested on deis v1.12.2. If you find bugs with your version\nof Deis, please report them through Github issues.\n\n## Configure\n\nOptional configuration:\n\n```\ndeis config:set DEFAULT_CONTROLLER=https://deis.yourdomain.com\n```\n\nSome of those configurations will only take effect when the app is\nrebuilt through a git push.\n\n## Development\n\nDeis Dash is a single page app written with React, Redux and Webpack. If\nyou want to contribute code, try to lint your code with eslint.\n\nTo start contributing, make sure you have Node >v5 installed.\n\n```\nnpm install\n# start development server\nnpm run start\n```\n\n## TODO\n\n- Package as docker image with automated docker build?\n\n## License\n\nCopyright 2016 Olivier Lalonde\n\nLicensed under the Apache License, Version 2.0 (the \"License\"); you may not use this file except in compliance with the License. You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0\n\nUnless required by applicable law or agreed to in writing, software distributed under the License is distributed on an \"AS IS\" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.\n"
 }

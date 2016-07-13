@@ -9,8 +9,17 @@
     "prepublish": "npm run build"
   },
   "repository": {
-    "type": "git",
-    "url": "git+ssh://git@github.com/kasprownik/electron-screencapture.git"
+    "user": "kasprownik",
+    "repo": "electron-screencapture",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/kasprownik/electron-screencapture/tarball/master",
+    "clone_url": "https://github.com/kasprownik/electron-screencapture",
+    "https_url": "https://github.com/kasprownik/electron-screencapture",
+    "travis_url": "https://travis-ci.org/kasprownik/electron-screencapture",
+    "zip_url": "https://github.com/kasprownik/electron-screencapture/archive/master.zip",
+    "api_url": "https://api.github.com/repos/kasprownik/electron-screencapture"
   },
   "keywords": [
     "electron",
@@ -24,9 +33,6 @@
     "url": "https://twitter.com/KasperWargula"
   },
   "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/kasprownik/electron-screencapture/issues"
-  },
   "homepage": "https://github.com/kasprownik/electron-screencapture#readme",
   "devDependencies": {
     "babel-core": "6.4.5",
@@ -41,28 +47,61 @@
     "recordrtc": "5.1.0"
   },
   "gitHead": "0afcacde50e4cbd2e39c07692e9055445bfdf06a",
-  "_id": "electron-screencapture@1.1.0",
-  "_shasum": "6ce7d8419cbe2bbaf7ef608101fc0e514c81f591",
-  "_from": ".",
   "_npmVersion": "3.5.3",
   "_nodeVersion": "5.0.0",
-  "_npmUser": {
-    "name": "kasprownik",
-    "email": "kasper@wargu.la"
-  },
   "dist": {
     "shasum": "6ce7d8419cbe2bbaf7ef608101fc0e514c81f591",
     "tarball": "http://registry.npmjs.org/electron-screencapture/-/electron-screencapture-1.1.0.tgz"
   },
-  "maintainers": [
+  "versions": [
+    {
+      "number": "0.1.0",
+      "date": "2016-05-09T10:32:22.042Z"
+    },
+    {
+      "number": "0.2.0",
+      "date": "2016-05-09T10:38:08.325Z"
+    },
+    {
+      "number": "0.3.0",
+      "date": "2016-05-09T10:42:27.950Z"
+    },
+    {
+      "number": "0.4.0",
+      "date": "2016-05-09T10:47:32.490Z"
+    },
+    {
+      "number": "0.5.0",
+      "date": "2016-05-09T11:04:11.799Z"
+    },
+    {
+      "number": "0.6.0",
+      "date": "2016-05-09T11:19:44.911Z"
+    },
+    {
+      "number": "0.7.0",
+      "date": "2016-05-09T11:27:09.775Z"
+    },
+    {
+      "number": "1.0.0",
+      "date": "2016-05-09T11:33:11.888Z"
+    },
+    {
+      "number": "1.1.0",
+      "date": "2016-05-11T14:57:20.963Z"
+    }
+  ],
+  "created": "2016-05-09T10:32:22.042Z",
+  "modified": "2016-05-11T14:57:20.963Z",
+  "lastPublisher": {
+    "name": "kasprownik",
+    "email": "kasper@wargu.la"
+  },
+  "owners": [
     {
       "name": "kasprownik",
       "email": "kasper@wargu.la"
     }
   ],
-  "_npmOperationalInternal": {
-    "host": "packages-16-east.internal.npmjs.com",
-    "tmp": "tmp/electron-screencapture-1.1.0.tgz_1462978639472_0.035819947021082044"
-  },
-  "directories": {}
+  "readme": "#electron-screencapture\n\nLibrary that allows to take a picture or a video from any fragment of the display.\n\n## API\n\n### `takeScreenshot({x, y, width, height, sourceId})`\nTakes static screenshot and returns promise with the result.\n\n* `x, y, width, height` - these params define the rectangle of the frame\n* `sourceId` - id of the display, primary display by default\n\n####Example\n\n```js\nimport {takeScreenshot} from \"electron-screencapture\";\n\ntakeScreenshot({x: 0, y: 0, width: 800, height: 600}).then(result => {\n    console.log(result);\n});\n```\n\n### `captureVideo({x, y, width, height, sourceId})`\nStarts recording and returns promise with the object with the control api.\n\n* `x, y, width, height` - these params define the rectangle of the frame\n* `sourceId` - id of the display, primary display by default\n\n####Control API object\n\n* `stop()` - stops recording and returns promise with the video\n* `pause()` - pauses recording\n* `resume()` - resumes recording if paused\n\n####Example\n\n```js\nimport {captureVideo} from \"electron-screencapture\";\n\ncaptureVideo({x: 0, y: 0, width: 800, height: 600}).then(recorder => {\n    setTimeout(() => recorder.stop().then(result => {\n        console.log(result);\n    }), 1000);\n});\n```"
 }

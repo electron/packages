@@ -1,0 +1,121 @@
+{
+  "name": "mobx-translate",
+  "version": "0.0.5",
+  "description": "Simple translations library for mobx",
+  "main": "lib/mobx-translate.js",
+  "typings": "lib/mobx-translate.d.ts",
+  "scripts": {
+    "test": "npm run quick-build && npm run tape",
+    "full-test": "npm run small-build && npm run build-tests && npm run use-minified && npm run tape && npm run perf",
+    "tape": "tape test/*.js | faucet",
+    "perf": "npm run small-build && time node --expose-gc test/perf/index.js",
+    "prepublish": "npm run quick-build",
+    "quick-build": "tsc",
+    "small-build": "scripts/single-file-build.sh",
+    "test-browser-electron": "npm run small-build && ( browserify test/*.js | tape-run )",
+    "test-browser-chrome": "npm run small-build && ( browserify test/*.js | tape-run --browser chrome )",
+    "test-browser-safari": "npm run small-build && ( browserify test/*.js -t [ babelify --presets [ es2015 ] ] | tape-run --browser safari )",
+    "test-browser-firefox": "npm run small-build && ( browserify test/*.js  | tape-run --browser firefox )",
+    "test-travis": "npm run small-build && tape test/*.js test/perf/index.js && tsc && istanbul cover tape test/*.js",
+    "coverage": "npm run small-build && npm run build-tests && istanbul cover tape test/*.js test/perf/index.js && cat ./coverage/lcov.info|coveralls",
+    "build-tests": "npm run build-typescript-tests && npm run build-babel-tests",
+    "build-typescript-tests": "tsc -m commonjs -t es5 --experimentalDecorators --noImplicitAny --outDir test test/typescript-tests.ts",
+    "build-babel-tests": "babel test/babel/babel-tests.js -o test/babel-tests.js",
+    "use-minified": "cp lib/mobx.min.js lib/mobx.js",
+    "lint": "tslint -c tslint.json src/*.ts src/types/*.ts src/api/*.ts src/core/*.ts src/utils/*.ts"
+  },
+  "repository": {
+    "user": "tomaash",
+    "repo": "mobx-translate",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/tomaash/mobx-translate/tarball/master",
+    "clone_url": "https://github.com/tomaash/mobx-translate",
+    "https_url": "https://github.com/tomaash/mobx-translate",
+    "travis_url": "https://travis-ci.org/tomaash/mobx-translate",
+    "zip_url": "https://github.com/tomaash/mobx-translate/archive/master.zip",
+    "api_url": "https://api.github.com/repos/tomaash/mobx-translate"
+  },
+  "author": {
+    "name": "Tomas Holas"
+  },
+  "license": "MIT",
+  "files": [
+    "lib",
+    "LICENSE",
+    "bower.json"
+  ],
+  "homepage": "https://github.com/tomaash/mobx-translate",
+  "devDependencies": {
+    "babel-cli": "^6.4.5",
+    "babel-core": "^6.4.5",
+    "babel-plugin-transform-decorators-legacy": "^1.3.4",
+    "babel-preset-es2015": "^6.3.13",
+    "babel-preset-react": "^6.3.13",
+    "babel-preset-stage-1": "^6.3.13",
+    "babelify": "^7.3.0",
+    "browserify": "^12.0.1",
+    "coveralls": "^2.11.4",
+    "faucet": "0.0.1",
+    "istanbul": "^0.3.21",
+    "lodash.intersection": "^3.2.0",
+    "tape": "^4.2.2",
+    "tape-run": "^2.1.0",
+    "typescript": "^1.8.10",
+    "typings": "^1.3.1",
+    "uglify-js": "^2.6.1"
+  },
+  "dependencies": {
+    "mobx": "^2.3.5",
+    "mustache": "^2.2.1"
+  },
+  "keywords": [
+    "mobx",
+    "i18n",
+    "translations",
+    "typescript"
+  ],
+  "gitHead": "e15c20c48aa06b6d60f783f443d9c215ae674808",
+  "_npmVersion": "3.8.6",
+  "_nodeVersion": "5.11.1",
+  "dist": {
+    "shasum": "2896d64551ca374f8fa25cd7e2f6a0aa03fbbdf9",
+    "tarball": "http://registry.npmjs.org/mobx-translate/-/mobx-translate-0.0.5.tgz"
+  },
+  "versions": [
+    {
+      "number": "0.0.1",
+      "date": "2016-07-12T13:27:38.615Z"
+    },
+    {
+      "number": "0.0.2",
+      "date": "2016-07-12T13:31:43.681Z"
+    },
+    {
+      "number": "0.0.3",
+      "date": "2016-07-12T13:47:34.533Z"
+    },
+    {
+      "number": "0.0.4",
+      "date": "2016-07-12T13:52:28.278Z"
+    },
+    {
+      "number": "0.0.5",
+      "date": "2016-07-12T13:59:08.307Z"
+    }
+  ],
+  "created": "2016-07-12T13:27:38.615Z",
+  "modified": "2016-07-12T13:59:08.307Z",
+  "lastPublisher": {
+    "name": "tomaash",
+    "email": "tomas.holas@gmail.com"
+  },
+  "owners": [
+    {
+      "name": "tomaash",
+      "email": "tomas.holas@gmail.com"
+    }
+  ],
+  "readme": "# MobX Translate\n\n## Installation:\n\n`npm install mobx-translate --save`\n\n## Usage\n\nFirst, create interface for your translations:\n\n```js\nexport interface TranslationKeys {\n  list: {\n    HEADING\n    MORE\n  },\n  widget: {\n    HELLO\n    BYE\n  }\n}\n```\n\nThen, define your strings. With code completion for keys, and full Mustache template support in values:\n\n```js\nimport {TranslationKeys} from './translation-keys';\n\nexport const EN:TranslationKeys = {\n  list: {\n    HEADING: 'Available jobs',\n    MORE: 'More'\n  },\n  widget: {\n    HELLO: 'Hello {{name}}',\n    BYE: 'Bye {{name}}'\n  }\n}\n\nexport const DE:TranslationKeys = {\n  list: {\n    HEADING: \"Verfügbare Berufe\",\n    MORE: \"Mehr\"\n  },\n  widget: {\n    HELLO: \"Gutten tag {{name}}\",\n    BYE: \"Auf wiedersehn {{name}}\"\n  }\n}\n```\n\nInitialize MobxTranslate, pass your translations interface as a generic:\n\n```js\nimport {TranslationKeys} from './strings/translation-keys';\nimport {MobxTranslate} from './mobx-translate';\n\nimport {EN} from './strings/en';\nimport {DE} from './strings/de';\n\nconst translateInstance = new MobxTranslate<TranslationKeys>();\n\ntranslateInstance.loadStrings('EN', EN);\ntranslateInstance.loadStrings('DE', DE);\ntranslateInstance.setLanguage('EN');\n\nexport const trans = translateInstance;\n```\n\nAnd then easily switch languages and translate strings in React components. Again, with code completion for translation keys!:\n\n```js\nimport * as React from 'react';\nimport {observer} from 'mobx-react';\n\nimport {trans} from '../stores/translate';\n\n@observer\nexport class Foo extends React.Component<{}, {}> {\n  render() {\n    return (\n    <div className=\"container\">\n      <h1>{trans.key.widget.HELLO({name: 'Joe'})}</h1>\n      <button onClick={trans.setLanguage.bind(trans,'EN')}>EN</button>\n      <button onClick={trans.setLanguage.bind(trans,'DE')}>DE</button>\n      <h1>{trans.key.list.HEADING()}</h1>\n    </div>)\n  }\n}\n```\n"
+}

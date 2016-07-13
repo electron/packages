@@ -1,14 +1,23 @@
 {
   "name": "elnotifier",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "electron notification",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
-    "type": "git",
-    "url": "git+https://github.com/116356754/electron-notifications.git"
+    "user": "116356754",
+    "repo": "electron-notifications",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/116356754/electron-notifications/tarball/master",
+    "clone_url": "https://github.com/116356754/electron-notifications",
+    "https_url": "https://github.com/116356754/electron-notifications",
+    "travis_url": "https://travis-ci.org/116356754/electron-notifications",
+    "zip_url": "https://github.com/116356754/electron-notifications/archive/master.zip",
+    "api_url": "https://api.github.com/repos/116356754/electron-notifications"
   },
   "keywords": [
     "notification",
@@ -18,33 +27,39 @@
     "name": "wangky"
   },
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/116356754/electron-notifications/issues"
-  },
   "homepage": "https://github.com/116356754/electron-notifications#readme",
-  "gitHead": "101368e8748a5c6e14567faecec3dcaf8aefbbda",
-  "_id": "elnotifier@1.1.0",
-  "_shasum": "92a481b364bc4d98afc26ddfcedd97b28b650c7d",
-  "_from": ".",
+  "gitHead": "ee279f7a395d9ed4fe05efdd66a059a5fe40b6be",
   "_npmVersion": "2.14.4",
   "_nodeVersion": "4.1.1",
-  "_npmUser": {
+  "dist": {
+    "shasum": "b185d8c37a68322973fefdf8e6907d3af17e5765",
+    "tarball": "http://registry.npmjs.org/elnotifier/-/elnotifier-1.1.1.tgz"
+  },
+  "versions": [
+    {
+      "number": "1.0.0",
+      "date": "2016-05-31T06:30:29.938Z"
+    },
+    {
+      "number": "1.1.0",
+      "date": "2016-06-03T08:35:16.753Z"
+    },
+    {
+      "number": "1.1.1",
+      "date": "2016-07-13T03:18:14.504Z"
+    }
+  ],
+  "created": "2016-05-31T06:30:29.938Z",
+  "modified": "2016-07-13T03:18:14.504Z",
+  "lastPublisher": {
     "name": "wangky",
     "email": "116356754@qq.com"
   },
-  "dist": {
-    "shasum": "92a481b364bc4d98afc26ddfcedd97b28b650c7d",
-    "tarball": "http://registry.npmjs.org/elnotifier/-/elnotifier-1.1.0.tgz"
-  },
-  "maintainers": [
+  "owners": [
     {
       "name": "wangky",
       "email": "116356754@qq.com"
     }
   ],
-  "_npmOperationalInternal": {
-    "host": "packages-16-east.internal.npmjs.com",
-    "tmp": "tmp/elnotifier-1.1.0.tgz_1464942915471_0.03661004384048283"
-  },
-  "directories": {}
+  "readme": "## elnotifier\n\nA node module for sending notifications in electron applications.\n\n![screenshot](assets/screenshot.png)\n\n##install\n    npm install elnotifier --save\n\n## Quick Usage\n\n\tconst notifier = require('elnotifier')\n\n\t// Just title and content\n\tnotifier.notify('Notification', {\n        message: 'Event begins in 10 minutes3'\n\t});\n\n\n## Introduction\n\nWhen you create a new notification, your notification is queued, since we only\ndisplay one at a time. You get a [BrowserWindow](browserwindow) instance back\nfrom the call.\n\n\n### Clicked\n\nWhen the notification was clicked, but not dragged. This usually does the\ndefault action, or closes the notification.\n\n\tconst notification = notifier.notify('Calendar')\n\t\n\tnotification.on('clicked', () => {\n\t  notification.close()\n\t})\n"
 }

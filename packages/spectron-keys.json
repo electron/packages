@@ -7,16 +7,22 @@
     "test": "mocha --reporter spec --ui bdd"
   },
   "repository": {
-    "type": "git",
-    "url": "git+https://github.com/jsantell/spectron-keys.git"
+    "user": "jsantell",
+    "repo": "spectron-keys",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/jsantell/spectron-keys/tarball/master",
+    "clone_url": "https://github.com/jsantell/spectron-keys",
+    "https_url": "https://github.com/jsantell/spectron-keys",
+    "travis_url": "https://travis-ci.org/jsantell/spectron-keys",
+    "zip_url": "https://github.com/jsantell/spectron-keys/archive/master.zip",
+    "api_url": "https://api.github.com/repos/jsantell/spectron-keys"
   },
   "author": {
     "name": "Jordan Santell"
   },
   "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/jsantell/spectron-keys/issues"
-  },
   "homepage": "https://github.com/jsantell/spectron-keys",
   "dependencies": {},
   "keywords": [
@@ -31,28 +37,29 @@
     "mocha": "^2.4.5"
   },
   "gitHead": "8012dfe384d78596be63d99c4831f66e16d8d1f7",
-  "_id": "spectron-keys@0.0.1",
-  "_shasum": "45c3aa535e85fe5f5c71fd18cfa43927826f65db",
-  "_from": ".",
   "_npmVersion": "3.7.3",
   "_nodeVersion": "5.8.0",
-  "_npmUser": {
-    "name": "jsantell",
-    "email": "jsantell@gmail.com"
-  },
   "dist": {
     "shasum": "45c3aa535e85fe5f5c71fd18cfa43927826f65db",
     "tarball": "http://registry.npmjs.org/spectron-keys/-/spectron-keys-0.0.1.tgz"
   },
-  "maintainers": [
+  "versions": [
+    {
+      "number": "0.0.1",
+      "date": "2016-05-03T22:20:14.079Z"
+    }
+  ],
+  "created": "2016-05-03T22:20:14.079Z",
+  "modified": "2016-05-03T22:20:14.079Z",
+  "lastPublisher": {
+    "name": "jsantell",
+    "email": "jsantell@gmail.com"
+  },
+  "owners": [
     {
       "name": "jsantell",
       "email": "jsantell@gmail.com"
     }
   ],
-  "_npmOperationalInternal": {
-    "host": "packages-12-west.internal.npmjs.com",
-    "tmp": "tmp/spectron-keys-0.0.1.tgz_1462314011620_0.7165457224473357"
-  },
-  "directories": {}
+  "readme": "spectron-keys\n=======\n\n[![Build Status](http://img.shields.io/travis/jsantell/spectron-keys.svg?style=flat-square)](https://travis-ci.org/jsantell/spectron-keys)\n[![Build Status](http://img.shields.io/npm/v/spectron-keys.svg?style=flat-square)](https://www.npmjs.org/package/spectron-keys)\n\nAccelerator mappings for Electron commands to Spectron/WebDriver key codes. Maps [Electron Accelerators](electron.atom.io/docs/latest/api/accelerator/) like `\"CommandOrControl+A\"` to `[\"\\uE03D\", \"a\"]` (on OS X).\n\n## Install\n\n```\nnpm install spectron-keys\n```\n\n## API\n\n### spectronKeys.mapAccelerator(accelerator, platform)\n\nTakes a string `accelerator`, like `\"CommandOrControl+A\"` and an optional `platform` string, and returns an array of WebDriver-ready unicode and keys to consume. `platform` defaults to `require(\"os\").platform()` if not specified.\n\n### spectronKeys.keys\n\nAn object of constants mapping key names and modifiers to their unicode values used by WebDriver. Essentially, just exposes [./lib/webdriver-keys.json](https://github.com/jsantell/spectron-keys/blob/master/lib/webdriver-keys.json).\n\n## Usage\n\n```js\nconst spectronKeys = require(\"spectron-keys\");\nconst { Application } = require(\"spectron\");\nconst config = require(\"./config\");\n\nasync function run () {\n  const app = new Application(config);\n  await app.start();\n  await app.client.keys(spectronKeys.mapAccelerator(\"CommandOrControl+A\"));\n}\n```\n\n## Testing\n\n```\nnpm test\n```\n\n## License\n\nMIT License, Copyright (c) 2016 Jordan Santell\n"
 }

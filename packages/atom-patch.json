@@ -13,8 +13,17 @@
     "ci": "npm run standard && npm run test"
   },
   "repository": {
-    "type": "git",
-    "url": "git+https://github.com/nathansobo/atom-patch.git"
+    "user": "nathansobo",
+    "repo": "atom-patch",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/nathansobo/atom-patch/tarball/master",
+    "clone_url": "https://github.com/nathansobo/atom-patch",
+    "https_url": "https://github.com/nathansobo/atom-patch",
+    "travis_url": "https://travis-ci.org/nathansobo/atom-patch",
+    "zip_url": "https://github.com/nathansobo/atom-patch/archive/master.zip",
+    "api_url": "https://api.github.com/repos/nathansobo/atom-patch"
   },
   "keywords": [
     "patch data-structure"
@@ -24,9 +33,6 @@
     "email": "nathan@github.com"
   },
   "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/nathansobo/atom-patch/issues"
-  },
   "homepage": "https://github.com/nathansobo/atom-patch",
   "devDependencies": {
     "babel": "^5.0.0",
@@ -50,20 +56,69 @@
     ]
   },
   "gitHead": "e4954f332babf328b15b8b48e86ed03977188d1f",
-  "_id": "atom-patch@0.3.0",
-  "_shasum": "e007ac55cb500a8a66c2d8eef7a4375d31428f54",
-  "_from": ".",
   "_npmVersion": "2.14.4",
   "_nodeVersion": "4.1.1",
-  "_npmUser": {
-    "name": "as-cii",
-    "email": "me@as-cii.com"
-  },
   "dist": {
     "shasum": "e007ac55cb500a8a66c2d8eef7a4375d31428f54",
     "tarball": "http://registry.npmjs.org/atom-patch/-/atom-patch-0.3.0.tgz"
   },
-  "maintainers": [
+  "versions": [
+    {
+      "number": "0.0.0",
+      "date": "2015-05-15T19:22:21.261Z"
+    },
+    {
+      "number": "0.0.1",
+      "date": "2015-05-15T19:29:09.022Z"
+    },
+    {
+      "number": "0.0.2",
+      "date": "2016-01-12T00:44:19.781Z"
+    },
+    {
+      "number": "0.0.3",
+      "date": "2016-01-26T18:36:05.681Z"
+    },
+    {
+      "number": "0.0.4",
+      "date": "2016-01-26T23:57:16.204Z"
+    },
+    {
+      "number": "0.0.6",
+      "date": "2016-02-08T08:44:16.128Z"
+    },
+    {
+      "number": "0.0.7",
+      "date": "2016-02-11T02:40:46.591Z"
+    },
+    {
+      "number": "0.0.8",
+      "date": "2016-02-12T07:29:35.092Z"
+    },
+    {
+      "number": "0.0.9",
+      "date": "2016-02-22T15:54:23.884Z"
+    },
+    {
+      "number": "0.1.0",
+      "date": "2016-02-24T13:21:28.602Z"
+    },
+    {
+      "number": "0.2.0",
+      "date": "2016-03-07T08:25:10.775Z"
+    },
+    {
+      "number": "0.3.0",
+      "date": "2016-04-22T09:01:54.375Z"
+    }
+  ],
+  "created": "2015-05-15T19:22:21.261Z",
+  "modified": "2016-04-22T09:01:54.375Z",
+  "lastPublisher": {
+    "name": "as-cii",
+    "email": "me@as-cii.com"
+  },
+  "owners": [
     {
       "name": "as-cii",
       "email": "me@as-cii.com"
@@ -97,9 +152,5 @@
       "email": "danielwh@gmail.com"
     }
   ],
-  "_npmOperationalInternal": {
-    "host": "packages-16-east.internal.npmjs.com",
-    "tmp": "tmp/atom-patch-0.3.0.tgz_1461315712782_0.6028359811753035"
-  },
-  "directories": {}
+  "readme": "# atom-patch [![Build Status](https://travis-ci.org/atom/atom-patch.svg?branch=master)](https://travis-ci.org/atom/atom-patch)\n\nThis data structure efficiently represents a transformation from input to output text, and it's useful for aggregating and combining changes that occur at different points in time and space.\n\n## Contributing\n\n```bash\n# clone this repository\ngit clone https://github.com/atom/atom-patch\n\ncd atom-patch\nnpm install\n```\n\nUse `npm test` or `npm run tdd` to run the test suite.\n\n### Recompiling Patch's Flatbuffer Schema\n\n`Patch` uses [flat buffers](https://google.github.io/flatbuffers/) to represent its serialized state. If you want to make any change to the underlying schema you have to download and compile `flatc` first:\n\n```bash\n# clone flatbuffers repository and checkout the version tested with this library\ngit clone https://github.com/google/flatbuffers\ngit checkout 959866b\n\n# compile flatbuffers\npushd flatbuffers/build/XCode/\nxcodebuild\npopd\n```\n\nThis will create a `flatc` executable in flatbuffers top level directory. You can recompile `src/serialization-schema.fbs` by running:\n\n```bash\ncd atom-patch\n../flatbuffers/flatc -o src --js serialization-schema.fbs\n```\n\nAfter you do that, please make sure to to change the generated file's last line to:\n\n```diff\n// Exports for Node.js and RequireJS\n- this.Serialization = Serialization;\n+ module.exports = Serialization;\n```\n\nPlease, note that we have included a patched version of the flatbuffers javascript library under vendor/flatbuffers.js because the original one has the same problem.\n"
 }

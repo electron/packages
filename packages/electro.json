@@ -4,8 +4,17 @@
   "version": "2.0.0",
   "homepage": "https://github.com/dominictarr/electro",
   "repository": {
-    "type": "git",
-    "url": "git://github.com/dominictarr/electro.git"
+    "user": "dominictarr",
+    "repo": "electro",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/dominictarr/electro/tarball/master",
+    "clone_url": "https://github.com/dominictarr/electro",
+    "https_url": "https://github.com/dominictarr/electro",
+    "travis_url": "https://travis-ci.org/dominictarr/electro",
+    "zip_url": "https://github.com/dominictarr/electro/archive/master.zip",
+    "api_url": "https://api.github.com/repos/dominictarr/electro"
   },
   "dependencies": {
     "minimist": "~1.2.0"
@@ -21,32 +30,62 @@
   },
   "license": "MIT",
   "gitHead": "8da9a4e22e9097ffc6937fb698af06178d225342",
-  "bugs": {
-    "url": "https://github.com/dominictarr/electro/issues"
-  },
-  "_id": "electro@2.0.0",
   "scripts": {},
-  "_shasum": "2120b8196404d9062a800ed71fc78cbb6869b3aa",
-  "_from": ".",
   "_npmVersion": "3.8.6",
   "_nodeVersion": "5.11.1",
-  "_npmUser": {
-    "name": "dominictarr",
-    "email": "dominic.tarr@gmail.com"
-  },
   "dist": {
     "shasum": "2120b8196404d9062a800ed71fc78cbb6869b3aa",
     "tarball": "http://registry.npmjs.org/electro/-/electro-2.0.0.tgz"
   },
-  "maintainers": [
+  "versions": [
+    {
+      "number": "0.0.1",
+      "date": "2015-07-02T19:57:20.409Z"
+    },
+    {
+      "number": "0.0.0",
+      "date": "2015-08-28T05:29:37.748Z"
+    },
+    {
+      "number": "0.0.2",
+      "date": "2015-08-28T06:05:56.069Z"
+    },
+    {
+      "number": "0.0.4",
+      "date": "2015-08-28T06:24:18.673Z"
+    },
+    {
+      "number": "0.0.5",
+      "date": "2015-11-03T01:03:30.653Z"
+    },
+    {
+      "number": "0.0.6",
+      "date": "2016-05-24T21:06:57.000Z"
+    },
+    {
+      "number": "1.0.0",
+      "date": "2016-06-12T11:23:08.921Z"
+    },
+    {
+      "number": "1.0.1",
+      "date": "2016-06-12T11:49:11.595Z"
+    },
+    {
+      "number": "2.0.0",
+      "date": "2016-06-20T23:51:32.459Z"
+    }
+  ],
+  "created": "2015-07-02T19:57:20.409Z",
+  "modified": "2016-06-20T23:51:32.459Z",
+  "lastPublisher": {
+    "name": "dominictarr",
+    "email": "dominic.tarr@gmail.com"
+  },
+  "owners": [
     {
       "name": "dominictarr",
       "email": "dominic.tarr@gmail.com"
     }
   ],
-  "_npmOperationalInternal": {
-    "host": "packages-16-east.internal.npmjs.com",
-    "tmp": "tmp/electro-2.0.0.tgz_1466466689876_0.793811297044158"
-  },
-  "directories": {}
+  "readme": "# electro\n\nelectron and unix make friends\n\n# synopsis\n\nThis is a simple wrapper around electron that kills boilerplate and allows stdio to work correct.\nMaking electron a better unix citizen!\n\n## Example: cat\n\nwrite stdin or the first file to the dom...\n\n``` js\nvar path = require('path')\nvar pre = document.createElement('pre')\ndocument.body.appendChild(pre)\n\n;( process.stdin.isTTY\n  ? require('fs').createReadStream(path.resolve(process.argv[2]))\n  : process.stdin\n)\n.on('data', function (data) {\n  pre.innerText += data.toString()\n})\n.resume()\n```\n\nyou'll find this file in `./examples/cat.js`\n\nthen run it with `electro`\n\n```\n# read the first file\nelectro ./examples/cat.js README.md\n\n# OR, use pipes!\n\nelectro ./examples/cat.js < README.md\n\n```\n\n## Usage\n\nmake sure electron is installed first!\n\n`npm install electron-prebuilt -g`\n\n```\nelectro [electro options] filename {options}\n```\noptions work the same as in node.js.\nany options passed before `filename` are options for\n[chrome](http://electron.atom.io/docs/v0.31.0/api/chrome-command-line-switches/) or electron.\nany [BrowserWindow](http://electron.atom.io/docs/v0.31.0/api/browser-window/#new-browserwindow-options) option can be set this way.\n\nIf no arguments are provided, electro will open a repl (aka, a browser window with devtools)\n\n\n## License\n\nMIT\n"
 }

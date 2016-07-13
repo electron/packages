@@ -9,8 +9,17 @@
     "render-example": "electron-spawn examples/render.js"
   },
   "repository": {
-    "type": "git",
-    "url": "git+https://github.com/mmckegg/audio-timeline.git"
+    "user": "mmckegg",
+    "repo": "audio-timeline",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/mmckegg/audio-timeline/tarball/master",
+    "clone_url": "https://github.com/mmckegg/audio-timeline",
+    "https_url": "https://github.com/mmckegg/audio-timeline",
+    "travis_url": "https://travis-ci.org/mmckegg/audio-timeline",
+    "zip_url": "https://github.com/mmckegg/audio-timeline/archive/master.zip",
+    "api_url": "https://api.github.com/repos/mmckegg/audio-timeline"
   },
   "keywords": [
     "timeline",
@@ -28,9 +37,6 @@
     "name": "Matt McKegg"
   },
   "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/mmckegg/audio-timeline/issues"
-  },
   "homepage": "https://github.com/mmckegg/audio-timeline",
   "devDependencies": {
     "electron-prebuilt": "^0.30.3",
@@ -47,24 +53,49 @@
     "observ-struct": "^6.0.0"
   },
   "gitHead": "c19aa650200b7c8e32ed8aa587f462d2c8f7deab",
-  "_id": "audio-timeline@1.2.0",
-  "_shasum": "3c114ab58da26c9ad3add6ee663b3ad5dfc2fe4b",
-  "_from": ".",
   "_npmVersion": "2.14.4",
   "_nodeVersion": "4.1.1",
-  "_npmUser": {
-    "name": "mmckegg",
-    "email": "matt@wetsand.co.nz"
-  },
   "dist": {
     "shasum": "3c114ab58da26c9ad3add6ee663b3ad5dfc2fe4b",
     "tarball": "http://registry.npmjs.org/audio-timeline/-/audio-timeline-1.2.0.tgz"
   },
-  "maintainers": [
+  "versions": [
+    {
+      "number": "1.0.0",
+      "date": "2015-08-18T05:28:46.537Z"
+    },
+    {
+      "number": "1.0.1",
+      "date": "2015-08-18T05:33:53.857Z"
+    },
+    {
+      "number": "1.0.2",
+      "date": "2015-08-19T13:03:50.381Z"
+    },
+    {
+      "number": "1.1.0",
+      "date": "2015-08-28T06:52:44.901Z"
+    },
+    {
+      "number": "1.1.1",
+      "date": "2015-08-28T16:40:54.829Z"
+    },
+    {
+      "number": "1.2.0",
+      "date": "2015-10-09T08:19:14.181Z"
+    }
+  ],
+  "created": "2015-08-18T05:28:46.537Z",
+  "modified": "2015-10-09T08:19:14.181Z",
+  "lastPublisher": {
+    "name": "mmckegg",
+    "email": "matt@wetsand.co.nz"
+  },
+  "owners": [
     {
       "name": "mmckegg",
       "email": "matt@wetsand.co.nz"
     }
   ],
-  "directories": {}
+  "readme": "audio-timeline\n===\n\n[Observ](https://github.com/raynos/observ-struct) object for arranging, trimming and adjusting multiple audio clips on a timeline using [Web Audio](https://developer.mozilla.org/en-US/docs/Web/API/Web_Audio_API).\n\n[![NPM](https://nodei.co/npm/audio-timeline.png)](https://nodei.co/npm/audio-timeline/)\n\n## Example\n\n```js\nvar Timeline = require('audio-timeline')\nvar audioContext = new window.AudioContext() // Web Audio\n\nvar context = {\n  audio: audioContext,\n  output: audioContext.destination,\n  fs: require('fs'),\n  cwd: __dirname,\n  nodes: {\n    clip: require('audio-timeline/clip')\n  }\n}\n\nvar timeline = Timeline(context)\ntimeline.set({\n  primary: [\n    { node: 'clip',\n      src: 'audio/raw.wav',\n      startOffset: 0,\n      duration: 25\n    },\n    { node: 'clip',\n      src: 'audio/raw.wav',\n      startOffset: 500,\n      duration: 30\n    },\n    { node: 'clip',\n      src: 'audio/raw.wav',\n      startOffset: 1000,\n      duration: 16\n    }\n  ]\n})\n```\n### Playback\n\n```js\nvar startAt = audioContext.currentTime + 0.1\nvar startOffset = 0\nvar duration = 71\n\ntimeline.start(startAt, startOffset, duration)\n```\n\n### Render to disk\n\n```js\nvar RenderStream = require('audio-timeline/render-stream')\nvar WaveFileWriter = require('wav').FileWriter\n\nvar startOffset = 0\nvar duration = 71\nvar bitDepth = 16\n\nvar stream = RenderStream(timeline, startOffset, duration, bitDepth)\n\nstream.pipe(WaveFileWriter('output.wav', {\n  bitDepth: bitDepth,\n  sampleRate: audioContext.sampleRate,\n  channels: 2\n})).on('finish', function() {\n  console.log('done')\n})\n\nstream.progress(function(value) {\n  console.log(Math.round(value*100))\n})\n```"
 }

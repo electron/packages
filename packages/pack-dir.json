@@ -1,0 +1,120 @@
+{
+  "name": "pack-dir",
+  "version": "0.6.0",
+  "description": "Pack/unpack specified directory with native current OS command line tools.",
+  "keywords": [
+    "pack",
+    "extract",
+    "directory",
+    "utility",
+    "dmg",
+    "zip",
+    "unzip",
+    "archive",
+    "Annexare"
+  ],
+  "main": "index.js",
+  "repository": {
+    "user": "annexare",
+    "repo": "PackDir",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/annexare/PackDir/tarball/master",
+    "clone_url": "https://github.com/annexare/PackDir",
+    "https_url": "https://github.com/annexare/PackDir",
+    "travis_url": "https://travis-ci.org/annexare/PackDir",
+    "zip_url": "https://github.com/annexare/PackDir/archive/master.zip",
+    "api_url": "https://api.github.com/repos/annexare/PackDir"
+  },
+  "scripts": {
+    "test": "jest"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "jest-cli": "^13.2.3"
+  },
+  "author": {
+    "name": "Dmytro",
+    "email": "z@annexare.com",
+    "url": "https://github.com/z-ax"
+  },
+  "license": "MIT",
+  "engines": {
+    "node": ">=4.0.0"
+  },
+  "jest": {
+    "collectCoverage": true,
+    "collectCoverageOnlyFrom": {
+      "index.js": true
+    },
+    "testDirectoryName": "tests",
+    "testPathDirs": [
+      "."
+    ]
+  },
+  "gitHead": "e65179510b23fc6bf611a2044e4c9f12ce8fb0ce",
+  "homepage": "https://github.com/annexare/PackDir#readme",
+  "_npmVersion": "3.8.6",
+  "_nodeVersion": "6.1.0",
+  "dist": {
+    "shasum": "7aeadcf133f0e2f774519e9d9afef44c2d6ee9cb",
+    "tarball": "http://registry.npmjs.org/pack-dir/-/pack-dir-0.6.0.tgz"
+  },
+  "stars": 1,
+  "versions": [
+    {
+      "number": "0.1.0",
+      "date": "2016-04-17T20:14:54.522Z"
+    },
+    {
+      "number": "0.1.1",
+      "date": "2016-04-18T00:24:02.896Z"
+    },
+    {
+      "number": "0.2.0",
+      "date": "2016-05-03T15:26:53.649Z"
+    },
+    {
+      "number": "0.2.1",
+      "date": "2016-05-03T17:49:23.451Z"
+    },
+    {
+      "number": "0.3.0",
+      "date": "2016-05-10T13:04:59.177Z"
+    },
+    {
+      "number": "0.4.0",
+      "date": "2016-05-10T17:01:45.852Z"
+    },
+    {
+      "number": "0.4.1",
+      "date": "2016-05-10T21:10:52.779Z"
+    },
+    {
+      "number": "0.5.0",
+      "date": "2016-05-11T23:05:14.513Z"
+    },
+    {
+      "number": "0.5.1",
+      "date": "2016-05-31T10:46:20.500Z"
+    },
+    {
+      "number": "0.6.0",
+      "date": "2016-07-13T14:25:20.416Z"
+    }
+  ],
+  "created": "2016-04-17T20:14:54.522Z",
+  "modified": "2016-07-13T14:25:20.416Z",
+  "lastPublisher": {
+    "name": "z-ax",
+    "email": "z@annexare.com"
+  },
+  "owners": [
+    {
+      "name": "z-ax",
+      "email": "z@annexare.com"
+    }
+  ],
+  "readme": "# PackDir\n\n[![Travis CI](https://api.travis-ci.org/annexare/PackDir.svg \"Travis CI\")](https://travis-ci.org/annexare/PackDir)\n[![AppVeyor CI](https://ci.appveyor.com/api/projects/status/dprobj2m351v6aaa?svg=true \"AppVeyor CI\")](https://ci.appveyor.com/project/z-ax/packdir)\n\nPack specified directory with native current OS command line tools.\n\nMain purpose for this lib was to pack the Electron app.\n<br>\nSo, by default, if specified `path` has a `darwin` in it's name,\nthe directory will be packed as DMG under OS X.\n\n## Usage\n\nGet the package via NPM: `npm install pack-dir`.\n\n```js\nconst Pack = require('pack-dir');\n\n// Set custom DMG RegEx, default is `/darwin/`.\nPack.param('dmg', /osx/);\n\n// Pack the directory\nlet zipPath = Pack.path('some/test/dir');\n// Extract to directory\nlet extractedPath = Pack.extract(zipPath, 'some/destination');\n\n// Async example\nPack.param('isSync', false);\nlet zipPath = Pack.path('some/test/dir', (error, stdout, stderr) => {\n  // ...\n});\n```\n\n### Parameters\n\n* `dmg` `boolean|RegEx`, check to pack into DMG instead of ZIP.\n* `dmgFormat` `string`, the `hdiutil -format` parameter value ([docs](https://developer.apple.com/library/mac/documentation/Darwin/Reference/ManPages/man1/hdiutil.1.html)).\n* `isSilent` `boolean`, `false`, will write only Errors to console.\n* `isSync` `boolean`, `true`, synchronous packaging.\n\n## Credits\n\nCreated by [Annexare Studio](https://annexare.com/).\nFeel free to use it as you need in your apps or send updates into [this](https://github.com/annexare/PackDir) public repository.\nAll code is under MIT license.\n\n## Zip/UnZip for Windows\n\nFor Windows host\n[Zip](http://gnuwin32.sourceforge.net/packages/zip.htm)\n/\n[UnZip](http://gnuwin32.sourceforge.net/packages/unzip.htm)\nstandalone console apps are used\n(~800kB, doesn't require installation, bundled with the package).\n"
+}

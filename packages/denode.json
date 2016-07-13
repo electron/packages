@@ -9,8 +9,17 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
-    "type": "git",
-    "url": "git+https://github.com/steelbrain/denode.git"
+    "user": "steelbrain",
+    "repo": "denode",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/steelbrain/denode/tarball/master",
+    "clone_url": "https://github.com/steelbrain/denode",
+    "https_url": "https://github.com/steelbrain/denode",
+    "travis_url": "https://travis-ci.org/steelbrain/denode",
+    "zip_url": "https://github.com/steelbrain/denode/archive/master.zip",
+    "api_url": "https://api.github.com/repos/steelbrain/denode"
   },
   "keywords": [
     "electron",
@@ -23,36 +32,99 @@
     "name": "steelbrain"
   },
   "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/steelbrain/denode/issues"
-  },
   "homepage": "https://github.com/steelbrain/denode#readme",
   "dependencies": {
     "electron-prebuilt": "^0.37.8"
   },
   "gitHead": "f11011d180da36a761ecb94d4ae9849f86513e37",
-  "_id": "denode@1.6.2",
-  "_shasum": "4b5cad4da46f57f955177f4dd5fe5176ae763429",
-  "_from": ".",
   "_npmVersion": "3.8.6",
   "_nodeVersion": "6.1.0",
-  "_npmUser": {
-    "name": "steelbrain",
-    "email": "de.steelbrain@gmail.com"
-  },
   "dist": {
     "shasum": "4b5cad4da46f57f955177f4dd5fe5176ae763429",
     "tarball": "http://registry.npmjs.org/denode/-/denode-1.6.2.tgz"
   },
-  "maintainers": [
+  "stars": 1,
+  "versions": [
+    {
+      "number": "1.0.0",
+      "date": "2016-04-15T09:03:12.888Z"
+    },
+    {
+      "number": "1.0.1",
+      "date": "2016-04-16T06:50:18.645Z"
+    },
+    {
+      "number": "1.0.2",
+      "date": "2016-04-16T07:36:22.216Z"
+    },
+    {
+      "number": "1.0.3",
+      "date": "2016-04-17T05:45:28.102Z"
+    },
+    {
+      "number": "1.0.4",
+      "date": "2016-04-19T10:16:55.948Z"
+    },
+    {
+      "number": "1.1.0",
+      "date": "2016-04-19T15:58:23.830Z"
+    },
+    {
+      "number": "1.2.0",
+      "date": "2016-04-20T17:38:03.421Z"
+    },
+    {
+      "number": "1.2.1",
+      "date": "2016-04-21T18:58:03.232Z"
+    },
+    {
+      "number": "1.2.2",
+      "date": "2016-04-22T12:27:01.290Z"
+    },
+    {
+      "number": "1.3.0",
+      "date": "2016-04-25T06:16:18.277Z"
+    },
+    {
+      "number": "1.4.0",
+      "date": "2016-04-29T22:58:10.919Z"
+    },
+    {
+      "number": "1.5.0",
+      "date": "2016-05-12T18:32:30.547Z"
+    },
+    {
+      "number": "1.5.1",
+      "date": "2016-05-14T00:43:30.881Z"
+    },
+    {
+      "number": "1.5.2",
+      "date": "2016-05-18T21:37:18.882Z"
+    },
+    {
+      "number": "1.6.0",
+      "date": "2016-06-03T03:50:06.045Z"
+    },
+    {
+      "number": "1.6.1",
+      "date": "2016-06-03T03:54:14.794Z"
+    },
+    {
+      "number": "1.6.2",
+      "date": "2016-06-08T14:01:50.803Z"
+    }
+  ],
+  "created": "2016-04-15T09:03:12.888Z",
+  "modified": "2016-06-08T14:01:50.803Z",
+  "lastPublisher": {
+    "name": "steelbrain",
+    "email": "de.steelbrain@gmail.com"
+  },
+  "owners": [
     {
       "name": "steelbrain",
       "email": "de.steelbrain@gmail.com"
     }
   ],
-  "_npmOperationalInternal": {
-    "host": "packages-12-west.internal.npmjs.com",
-    "tmp": "tmp/denode-1.6.2.tgz_1465394508225_0.3905650661326945"
-  },
-  "directories": {}
+  "readme": "DeNode\n======\n\nDeNode is short for Debug Node, it's a tiny wrapper around [Electron][1] that lets you debug your [Node][2] apps using Chrome Dev Tools :tada:\n\n## Installation\n```sh\nnpm install -g denode\n```\n\n## Usage\n\n```sh\ndenode\ndenode .\ndenode ./index.js\ndenode `which browserify` -r chalk main.js\n```\n\nTo reload the app, simply press CTRL + R on Linux/Windows and CMD + R on Mac OSX.\n\n## Advanced Usage\n\nDeNode tries to load options from the local `package.json` file, you can suppress this behavior by doing `--ignore-local`. Here are the magic fields it understands\n\n```js\n{\n  \"name\": \"my-cool-app\",\n  \"electronMain\": \"./electron.js\",\n  \"electronOptions\": {\n    // All of BrowserWindow options are accepted here\n  },\n  \"denodeOptions\": [\n    \"DENODE_INSECURE\" // Ignore certificate errors\n  ]\n}\n```\nThe `electronOptions` field accepts all of [`BrowserWindow`][3] options, if `electronMain` is present, it is used instead of `main`.\n\n## Screenshot\n\n<img alt=\"DeNode\" src=\"https://cloud.githubusercontent.com/assets/4278113/14579761/20e2a9a2-036b-11e6-8bc7-fba7cda9a026.png\">\n\n## License\n\nDeNode is licensed under the terms of MIT License, see the LICENSE file for more info.\n\n[1]:http://electron.atom.io/\n[2]:http://nodejs.org/\n[3]:http://electron.atom.io/docs/latest/api/browser-window\n"
 }

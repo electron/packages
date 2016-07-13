@@ -1,0 +1,90 @@
+{
+  "name": "node-mac-notifier",
+  "version": "0.0.7",
+  "description": "Create native OS X notifications from Node.js",
+  "main": "index.js",
+  "scripts": {
+    "install": "node-gyp rebuild",
+    "build": "node-gyp build",
+    "test": "mocha"
+  },
+  "repository": {
+    "user": "CharlieHess",
+    "repo": "node-mac-notifier",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/CharlieHess/node-mac-notifier/tarball/master",
+    "clone_url": "https://github.com/CharlieHess/node-mac-notifier",
+    "https_url": "https://github.com/CharlieHess/node-mac-notifier",
+    "travis_url": "https://travis-ci.org/CharlieHess/node-mac-notifier",
+    "zip_url": "https://github.com/CharlieHess/node-mac-notifier/archive/master.zip",
+    "api_url": "https://api.github.com/repos/CharlieHess/node-mac-notifier"
+  },
+  "os": [
+    "darwin"
+  ],
+  "keywords": [
+    "notifier",
+    "notifications",
+    "electron"
+  ],
+  "author": {
+    "name": "Charlie Hess"
+  },
+  "devDependencies": {
+    "mocha": "^2.2.5",
+    "nan": "^2.3.5",
+    "node-gyp": "^3.4.0"
+  },
+  "dependencies": {
+    "bindings": "^1.2.1",
+    "event-target-shim": "^1.1.1",
+    "node-uuid": "^1.4.7"
+  },
+  "gitHead": "3820391c504df15f95496e560a7f2fcb78d85abd",
+  "gypfile": true,
+  "homepage": "https://github.com/CharlieHess/node-mac-notifier#readme",
+  "_npmVersion": "3.6.0",
+  "_nodeVersion": "5.7.1",
+  "dist": {
+    "shasum": "38d341d18c07c6f3c335d82a0aa91e503afb2761",
+    "tarball": "http://registry.npmjs.org/node-mac-notifier/-/node-mac-notifier-0.0.7.tgz"
+  },
+  "stars": 1,
+  "versions": [
+    {
+      "number": "0.0.3",
+      "date": "2016-04-13T22:01:23.962Z"
+    },
+    {
+      "number": "0.0.4",
+      "date": "2016-04-14T21:23:07.315Z"
+    },
+    {
+      "number": "0.0.5",
+      "date": "2016-04-18T17:07:21.026Z"
+    },
+    {
+      "number": "0.0.6",
+      "date": "2016-06-29T22:16:49.187Z"
+    },
+    {
+      "number": "0.0.7",
+      "date": "2016-06-29T23:12:53.031Z"
+    }
+  ],
+  "created": "2016-04-13T22:01:23.962Z",
+  "modified": "2016-06-29T23:12:53.031Z",
+  "lastPublisher": {
+    "name": "charliehess",
+    "email": "ifightnoman@gmail.com"
+  },
+  "owners": [
+    {
+      "name": "charliehess",
+      "email": "ifightnoman@gmail.com"
+    }
+  ],
+  "readme": "# node-mac-notifier\nA native node module that lets you create OS X notifications from Node.js, without spawning a separate process.\nThis is useful for desktop applications built with [Electron](http://electron.atom.io/) (or something similar), as it adheres to the HTML5 [`Notification` API](https://developer.mozilla.org/en-US/docs/Web/API/Notification/Notification). Unlike the Electron [notification](https://github.com/electron/electron/blob/master/docs/tutorial/desktop-environment-integration.md#notifications-windows-linux-os-x) it also supports replies:\n\n![](https://s3.amazonaws.com/f.cl.ly/items/2Q3E1S0o440S043y2k1K/Image%202016-04-14%20at%202.37.47%20PM.png?v=d0388e46)\n\n## Installation\n`npm install node-mac-notifier`\n\n#### Run Tests\n`npm test`\n\n## Usage\nEnsure that this module is called from a renderer process; it will have no effect in the main process. Works with Electron >=0.37.7.\n\n```js\nNotification = require('node-mac-notifier');\nnoti = new Notification('Hello from OS X', {body: 'It Works!'});\nnoti.addEventListener('click', () => console.log('Got a click.'));\n```\n\nIn addition to the standard `click` event, these notifications also support a (non-standard) `reply` event. To enable the reply button, set `canReply` in the options argument. The user's response is included as a parameter on the event:\n```js\nnoti = new Notification('Wow, replies!', {canReply: true});\nnoti.addEventListener('reply', ({response}) => console.log(`User entered: ${response}`));\n```\n\n## API\n### `new Notification(title, options)`\n##### `title` (string) (*required*)\nThe title of the notification.\n##### `options` (Object)\nAdditional parameters to the notification.\n##### `options.id` (string)\nA string identifying the notification. Maps to `NSUserNotification.identifier`. A notification with an `id` matching a previously delivered notification will not be shown. If not provided, defaults to a RFC4122 v4 string.\n##### `options.body` (string)\nThe body text. Maps to `NSUserNotification.informativeText`.\n##### `options.subtitle` (string)\nThe subtitle text. Maps to `NSUserNotification.subtitle`.\n##### `options.icon` (string)\nA URL with image content. Maps to `NSUserNotification.contentImage`. Should be an absolute URL.\n##### `options.soundName` (string)\nThe name of a sound file to play once the notification is delivered. Maps to `NSUserNotification.soundName`. Set to `default` to use `NSUserNotificationDefaultSoundName`, or leave `undefined` for a silent notification.\n##### `options.canReply` (bool)\nIf true, this notification will have a reply action button, and can emit the `reply` event. Maps to `NSUserNotification.hasReplyButton`.\n##### `options.bundleId` (string)\nSet this to override the `NSBundle.bundleIdentifier` used for the notification. This is a brute force way for your notifications to take on the appropriate app icon.\n\n### `close()`\nDismisses the notification immediately.\n"
+}

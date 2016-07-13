@@ -16,28 +16,29 @@
     "errors"
   ],
   "gitHead": "1e4aba02fc9ec9e0ae326f50fdce73361d27efb1",
-  "_id": "chrome-network-errors@1.0.0",
-  "_shasum": "c04c7c6a259cd8c503c63ce87025adb08b39104a",
-  "_from": ".",
   "_npmVersion": "3.8.3",
   "_nodeVersion": "5.10.0",
-  "_npmUser": {
-    "name": "ccnokes",
-    "email": "ccnokes@gmail.com"
-  },
   "dist": {
     "shasum": "c04c7c6a259cd8c503c63ce87025adb08b39104a",
     "tarball": "http://registry.npmjs.org/chrome-network-errors/-/chrome-network-errors-1.0.0.tgz"
   },
-  "maintainers": [
+  "versions": [
+    {
+      "number": "1.0.0",
+      "date": "2016-06-18T05:58:32.751Z"
+    }
+  ],
+  "created": "2016-06-18T05:58:32.751Z",
+  "modified": "2016-06-18T05:58:32.751Z",
+  "lastPublisher": {
+    "name": "ccnokes",
+    "email": "ccnokes@gmail.com"
+  },
+  "owners": [
     {
       "name": "ccnokes",
       "email": "ccnokes@gmail.com"
     }
   ],
-  "_npmOperationalInternal": {
-    "host": "packages-16-east.internal.npmjs.com",
-    "tmp": "tmp/chrome-network-errors-1.0.0.tgz_1466229510226_0.07029639510437846"
-  },
-  "directories": {}
+  "readme": "# Chrome Network Error List\n\nTaken straight from [https://cs.chromium.org/chromium/src/net/base/net_error_list.h](https://cs.chromium.org/chromium/src/net/base/net_error_list.h) and put into JSON.\n\nThis can be useful in Electron apps that load remote URLs.\n\n`npm install chrome-network-errors`\n\nFor example:\n\n```javascript\nchromeErrors = require('chrome-network-errors');\nwebview.addEventListener('did-fail-load', (event, code, desc, url, isMainFrame) => {\n  displayMessageInUI(`Oops, something failed. Error: ${code}, ${chromeErrors[code]}`);\n  writeToLog({ level: 'error', message: `Webview failed to load: ${url}, ${code}, ${chromeErrors[code]}. Bummer.` });\n});\n```\n"
 }

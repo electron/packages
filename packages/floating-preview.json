@@ -8,8 +8,17 @@
   "license": "MIT",
   "homepage": "https://github.com/kitao/floating-preview",
   "repository": {
-    "type": "git",
-    "url": "git+https://github.com/kitao/floating-preview.git"
+    "user": "kitao",
+    "repo": "floating-preview",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/kitao/floating-preview/tarball/master",
+    "clone_url": "https://github.com/kitao/floating-preview",
+    "https_url": "https://github.com/kitao/floating-preview",
+    "travis_url": "https://travis-ci.org/kitao/floating-preview",
+    "zip_url": "https://github.com/kitao/floating-preview/archive/master.zip",
+    "api_url": "https://api.github.com/repos/kitao/floating-preview"
   },
   "main": "./lib/floating-preview",
   "bin": {
@@ -25,31 +34,74 @@
     "node-static": "^0.7.7"
   },
   "gitHead": "e7329cf95b1ea1153b402cbfebc46a6c78e1e83e",
-  "bugs": {
-    "url": "https://github.com/kitao/floating-preview/issues"
-  },
-  "_id": "floating-preview@0.6.5",
-  "_shasum": "0cfc449a559b25cbf22c69cc87463fb4a3d4fa3d",
-  "_from": ".",
   "_npmVersion": "3.6.0",
   "_nodeVersion": "5.6.0",
-  "_npmUser": {
-    "name": "kitao",
-    "email": "takashi.kitao@gmail.com"
-  },
   "dist": {
     "shasum": "0cfc449a559b25cbf22c69cc87463fb4a3d4fa3d",
     "tarball": "http://registry.npmjs.org/floating-preview/-/floating-preview-0.6.5.tgz"
   },
-  "maintainers": [
+  "stars": 2,
+  "versions": [
+    {
+      "number": "0.1.0",
+      "date": "2016-01-11T11:30:44.948Z"
+    },
+    {
+      "number": "0.2.0",
+      "date": "2016-01-13T12:58:09.053Z"
+    },
+    {
+      "number": "0.3.0",
+      "date": "2016-01-14T14:22:47.209Z"
+    },
+    {
+      "number": "0.4.0",
+      "date": "2016-01-15T15:26:39.878Z"
+    },
+    {
+      "number": "0.5.0",
+      "date": "2016-01-16T13:39:59.286Z"
+    },
+    {
+      "number": "0.5.1",
+      "date": "2016-01-17T12:44:42.541Z"
+    },
+    {
+      "number": "0.6.0",
+      "date": "2016-01-18T13:17:24.089Z"
+    },
+    {
+      "number": "0.6.1",
+      "date": "2016-02-02T13:50:24.981Z"
+    },
+    {
+      "number": "0.6.2",
+      "date": "2016-02-02T14:02:24.337Z"
+    },
+    {
+      "number": "0.6.3",
+      "date": "2016-02-03T10:38:47.677Z"
+    },
+    {
+      "number": "0.6.4",
+      "date": "2016-02-03T23:10:07.418Z"
+    },
+    {
+      "number": "0.6.5",
+      "date": "2016-03-01T12:17:58.995Z"
+    }
+  ],
+  "created": "2016-01-11T11:30:44.948Z",
+  "modified": "2016-03-01T12:17:58.995Z",
+  "lastPublisher": {
+    "name": "kitao",
+    "email": "takashi.kitao@gmail.com"
+  },
+  "owners": [
     {
       "name": "kitao",
       "email": "takashi.kitao@gmail.com"
     }
   ],
-  "_npmOperationalInternal": {
-    "host": "packages-5-east.internal.npmjs.com",
-    "tmp": "tmp/floating-preview-0.6.5.tgz_1456834675292_0.12215544190257788"
-  },
-  "directories": {}
+  "readme": "# floating-preview\n\nfloating-preview is a simple browser which shows a web page in a small window always on top and reloads automatically.\n\n![floating-preview](https://raw.githubusercontent.com/kitao/floating-preview/master/floating-preview.gif)\n\n## How to Install\n\n### Preparation\n\nIn order to use floating-preview, installation of Node.js is required. Node.js can be obtained from [the official site](https://nodejs.org/).\n\nIn a proxy environment, the following settings are also needed:\n- Set the proxy server with the `npm config set proxy` and `npm config set https-proxy` commands\n- If on Windows, set the `http_proxy` and `https_proxy` environment variables to install the electron-prebuilt module\n\n### Installing floating-preview\n\nfloating-preview can be installed with the `npm` command of Node.js.\n\n```bash\n$ npm -g install floating-preview\n```\n\nIf a permission error occured while installation, please add the `sudo` command at the head of the above command.\n\n## How to Use\n\n### Usage\n\n```\nfloating-preview [options] [path]\n```\n\nBoth file and directory names can be specified as a path.\n\n### Examples\n\nOpen the `index.html` file in the current directory and watch the changes under the same directory to reload.\n\n```bash\n$ floating-preview\n```\n\nOpen the `index.html` file in the `src` directory and watch the changes under it.\n\n```bash\n$ floating-preview src\n```\n\nOpen the `app.js` file and watch the changes under the same directory.\n\n```bash\n$ floating-preview app.js\n```\n\nOpen the `app.js` file in a window whose size is 400x300.\n\n```bash\n$ floating-preview -s 400x300 app.js\n```\n\n### Options\n\n```\n-h, --help                   output usage information\n-V, --version                output the version number\n-p, --port <n>               the port number for the http server\n-s, --size <width>x<height>  the size of the window\n-m, --margin <n>             the margin of the window to the corner\n-z, --zoom <n>               the zoom percentage of the content\n```\n\n## License\n\nfloating-preview is under [MIT license](http://en.wikipedia.org/wiki/MIT_License).\n"
 }

@@ -3,8 +3,17 @@
   "version": "0.1.0",
   "description": "Creates atom-shell based applications",
   "repository": {
-    "type": "git",
-    "url": "git://github.com/vtherli/grunt-electron-app-builder.git"
+    "user": "vtherli",
+    "repo": "grunt-electron-app-builder",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/vtherli/grunt-electron-app-builder/tarball/master",
+    "clone_url": "https://github.com/vtherli/grunt-electron-app-builder",
+    "https_url": "https://github.com/vtherli/grunt-electron-app-builder",
+    "travis_url": "https://travis-ci.org/vtherli/grunt-electron-app-builder",
+    "zip_url": "https://github.com/vtherli/grunt-electron-app-builder/archive/master.zip",
+    "api_url": "https://api.github.com/repos/vtherli/grunt-electron-app-builder"
   },
   "author": {
     "name": "Vasumithra Therli",
@@ -12,9 +21,6 @@
     "url": "https://github.com/vtherli"
   },
   "license": "Apache-2.0",
-  "bugs": {
-    "url": "https://github.com/vtherli/grunt-electron-app-builder/issues"
-  },
   "homepage": "https://github.com/vtherli/grunt-electron-app-builder",
   "devDependencies": {
     "grunt": "^0.4.5"
@@ -32,24 +38,34 @@
   ],
   "scripts": {},
   "gitHead": "f381809baed1400870f1905b9de97651ee6cd6a5",
-  "_id": "grunt-electron-app-builder@0.1.0",
-  "_shasum": "907b2d45971bd233bfca3686a6358f3dee5fda4c",
-  "_from": ".",
   "_npmVersion": "2.7.5",
   "_nodeVersion": "1.6.4",
-  "_npmUser": {
-    "name": "vtherli",
-    "email": "vtherli@gmail.com"
-  },
   "dist": {
     "shasum": "907b2d45971bd233bfca3686a6358f3dee5fda4c",
     "tarball": "http://registry.npmjs.org/grunt-electron-app-builder/-/grunt-electron-app-builder-0.1.0.tgz"
   },
-  "maintainers": [
+  "stars": 0,
+  "versions": [
+    {
+      "number": "0.0.1",
+      "date": "2015-04-18T21:11:32.575Z"
+    },
+    {
+      "number": "0.1.0",
+      "date": "2015-04-18T21:37:12.245Z"
+    }
+  ],
+  "created": "2015-04-18T21:11:32.575Z",
+  "modified": "2015-04-18T21:37:12.245Z",
+  "lastPublisher": {
+    "name": "vtherli",
+    "email": "vtherli@gmail.com"
+  },
+  "owners": [
     {
       "name": "vtherli",
       "email": "vtherli@gmail.com"
     }
   ],
-  "directories": {}
+  "readme": "# grunt-electron-app-builder\n\nThis is the first electron builder after atom-shell got renamed to electron in this [pull](https://github.com/atom/electron/pull/1389) - inspired from [grunt-electron-app-builder](https://github.com/entropi/grunt-atom-shell-app-builder)\n\nHelps build electron baed applications for mac, win and linux with grunt. It will download the prebuilt binaries for either the latest or a specific version, unpack them, and add your application source to the extracted distirbution.\n\n## Getting Started\nInstall this grunt plugin with: `npm install grunt-electron-app-builder`\n\nThen add this line to your project's gruntfile:\n\n```javascript\ngrunt.loadNpmTasks('grunt-electron-app-builder');\n```\n\n### Example\n\n```javascript\nmodule.exports = function(grunt) {\n  grunt.initConfig({\n    'build-electron-app': {\n        options: {\n            platforms: [\"darwin\", \"win32\"]\n        }\n    }\n  });\n  grunt.loadNpmTasks('grunt-electron-app-builder');\n};\n\n```\n\n## The \"build-electron-app\" task\n\n### Options\n\n#### options.atom_shell_version\nType: `String`\nDefault value: `most recent release`\nRequired: `no`\n\nThe version of electron you want to use (e.g., `'v0.12.5'`). [Here is a list](https://github.com/atom/electron/releases) of available releases. If not specified, it will query github for the latest release.\n\n#### options.build_dir\nType: `String`\nDefault value: `build`\nRequired: `no`\n\nWhere application builds should be placed. Releases will be placed into a platform specific subdirectory. '[build_dir]'/'[platform]/' \n\n\n#### options.cache_dir\nType: `String`\nDefault value: `cache`\nRequired: `no`\n\nWhere downloads of the pre-built binaries should be stored.\n\n#### options.app_dir\nType: `String`\nDefault value: `app`\nRequired: `no`\n\nWhere application source is located. This will be copied to the app directory for each platform build.\n\n#### options.platforms\nType: `String Array`\nDefault value: `[ 'HostPlatform' ]`\nRequired: `no`\n\nThe platforms to download and build packages for. Supported platforms are `'darwin'`, `'win32'`, `'linux32'`, and `'linux64'` (`'linux'` works as well for backwards compatibility, and maps to linux32). If ommitted, defaults to the host platform. \n\nNote that building `'darwin'` packages on a windows host is currently unsupported due to the format of the darwin electron zip, which includes symlinks.\n\n\n## To Do:\n- Add support for further application customization (name, icon, etc)\n\n## Release History\n- 2015-04-19    initial release\n\n## License\nCopyright (c) 2014 Vasumithra Therli\nLicensed under the Apache 2.0 license.\n"
 }

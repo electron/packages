@@ -1,0 +1,275 @@
+{
+  "name": "lowdb",
+  "version": "0.13.1",
+  "description": "JSON database for Node and the browser powered by lodash API",
+  "keywords": [
+    "flat",
+    "file",
+    "local",
+    "database",
+    "storage",
+    "JSON",
+    "lo-dash",
+    "lodash",
+    "underscore",
+    "localStorage",
+    "embed",
+    "embeddable"
+  ],
+  "main": "./lib/index.node.js",
+  "scripts": {
+    "test": "tape -r babel-register -r babel-polyfill test/*.js | tap-spec",
+    "prepublish": "npm run build",
+    "precommit": "npm test",
+    "build": "npm run babel && npm run browserify && npm run uglify",
+    "babel": "babel src --out-dir lib",
+    "browserify": "mkdir -p dist && browserify lib/index.browser.js -o dist/lowdb.js --standalone low",
+    "uglify": "uglifyjs dist/lowdb.js -o dist/lowdb.min.js"
+  },
+  "repository": {
+    "user": "typicode",
+    "repo": "lowdb",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/typicode/lowdb/tarball/master",
+    "clone_url": "https://github.com/typicode/lowdb",
+    "https_url": "https://github.com/typicode/lowdb",
+    "travis_url": "https://travis-ci.org/typicode/lowdb",
+    "zip_url": "https://github.com/typicode/lowdb/archive/master.zip",
+    "api_url": "https://api.github.com/repos/typicode/lowdb"
+  },
+  "author": {
+    "name": "Typicode",
+    "email": "typicode@gmail.com"
+  },
+  "license": "MIT",
+  "homepage": "https://github.com/typicode/lowdb",
+  "dependencies": {
+    "graceful-fs": "^4.1.3",
+    "is-promise": "^2.1.0",
+    "json-parse-helpfulerror": "^1.0.3",
+    "steno": "^0.4.1"
+  },
+  "peerDependencies": {
+    "lodash": "4"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.2.0",
+    "babel-eslint": "^4.1.6",
+    "babel-loader": "^6.2.2",
+    "babel-preset-es2015": "^6.1.18",
+    "babel-preset-stage-3": "^6.3.13",
+    "browserify": "^13.0.1",
+    "husky": "^0.11.4",
+    "lodash": "^4.12.0",
+    "sinon": "^1.17.2",
+    "standard": "^4.0.1",
+    "tap-spec": "^4.1.1",
+    "tape": "^4.2.2",
+    "tempfile": "^1.1.1",
+    "uglify-js": "^2.6.2",
+    "underscore-db": "^0.10.0",
+    "webpack": "^1.12.13"
+  },
+  "engines": {
+    "node": ">= 0.12"
+  },
+  "browser": {
+    "./lib/index.node.js": "./lib/index.browser.js"
+  },
+  "standard": {
+    "parser": "babel-eslint"
+  },
+  "gitHead": "5e8278992b323815372834c061f27b9936535d39",
+  "_npmVersion": "3.8.6",
+  "_nodeVersion": "6.0.0",
+  "dist": {
+    "shasum": "ebb1057269721b40c316cedb1877e68d7f14ca0c",
+    "tarball": "http://registry.npmjs.org/lowdb/-/lowdb-0.13.1.tgz"
+  },
+  "stars": 28,
+  "versions": [
+    {
+      "number": "0.1.0",
+      "date": "2014-04-02T02:21:16.414Z"
+    },
+    {
+      "number": "0.2.0",
+      "date": "2014-05-12T19:50:49.835Z"
+    },
+    {
+      "number": "0.3.0",
+      "date": "2014-06-10T19:03:14.348Z"
+    },
+    {
+      "number": "0.3.1",
+      "date": "2014-08-21T12:54:52.628Z"
+    },
+    {
+      "number": "0.3.2",
+      "date": "2014-08-26T19:42:04.377Z"
+    },
+    {
+      "number": "0.4.0",
+      "date": "2014-09-03T08:20:59.570Z"
+    },
+    {
+      "number": "0.4.1",
+      "date": "2014-09-17T00:04:55.595Z"
+    },
+    {
+      "number": "0.4.2",
+      "date": "2014-10-09T14:22:00.896Z"
+    },
+    {
+      "number": "0.5.0",
+      "date": "2014-10-15T13:28:22.923Z"
+    },
+    {
+      "number": "0.5.1",
+      "date": "2014-10-23T19:31:05.243Z"
+    },
+    {
+      "number": "0.6.0",
+      "date": "2014-12-02T16:02:37.109Z"
+    },
+    {
+      "number": "0.6.1",
+      "date": "2015-01-06T08:32:40.389Z"
+    },
+    {
+      "number": "0.7.0",
+      "date": "2015-02-03T10:59:15.762Z"
+    },
+    {
+      "number": "0.7.1",
+      "date": "2015-02-04T05:10:21.167Z"
+    },
+    {
+      "number": "0.7.2",
+      "date": "2015-03-04T15:49:20.548Z"
+    },
+    {
+      "number": "0.7.3",
+      "date": "2015-04-20T22:18:55.425Z"
+    },
+    {
+      "number": "0.8.0",
+      "date": "2015-06-02T20:24:30.074Z"
+    },
+    {
+      "number": "0.8.1",
+      "date": "2015-06-03T23:02:03.502Z"
+    },
+    {
+      "number": "0.9.0",
+      "date": "2015-06-15T13:54:23.460Z"
+    },
+    {
+      "number": "0.10.0",
+      "date": "2015-06-15T21:55:51.764Z"
+    },
+    {
+      "number": "0.10.1",
+      "date": "2015-06-29T06:52:13.725Z"
+    },
+    {
+      "number": "0.10.2",
+      "date": "2015-07-15T17:12:24.976Z"
+    },
+    {
+      "number": "0.10.3",
+      "date": "2015-12-01T23:05:45.033Z"
+    },
+    {
+      "number": "0.11.0",
+      "date": "2015-12-15T20:10:45.528Z"
+    },
+    {
+      "number": "0.11.1",
+      "date": "2015-12-16T11:31:59.240Z"
+    },
+    {
+      "number": "0.11.2",
+      "date": "2015-12-25T16:33:07.900Z"
+    },
+    {
+      "number": "0.11.3",
+      "date": "2016-01-07T04:45:39.497Z"
+    },
+    {
+      "number": "0.11.4",
+      "date": "2016-01-07T07:32:09.916Z"
+    },
+    {
+      "number": "0.11.5",
+      "date": "2016-01-13T20:37:28.177Z"
+    },
+    {
+      "number": "0.12.0",
+      "date": "2016-01-13T23:05:26.612Z"
+    },
+    {
+      "number": "0.12.1",
+      "date": "2016-01-14T22:12:15.835Z"
+    },
+    {
+      "number": "0.12.2",
+      "date": "2016-01-20T21:12:50.166Z"
+    },
+    {
+      "number": "0.12.3",
+      "date": "2016-02-13T21:42:46.041Z"
+    },
+    {
+      "number": "0.12.4",
+      "date": "2016-02-17T23:38:40.033Z"
+    },
+    {
+      "number": "0.12.5",
+      "date": "2016-02-26T22:59:44.218Z"
+    },
+    {
+      "number": "0.13.0-beta.1",
+      "date": "2016-05-05T13:18:46.653Z"
+    },
+    {
+      "number": "0.13.0-beta.2",
+      "date": "2016-05-08T16:12:55.539Z"
+    },
+    {
+      "number": "0.13.0-beta.3",
+      "date": "2016-05-14T13:15:26.612Z"
+    },
+    {
+      "number": "0.13.0-beta.4",
+      "date": "2016-05-17T11:29:04.399Z"
+    },
+    {
+      "number": "0.13.0-beta-5",
+      "date": "2016-05-27T11:24:55.881Z"
+    },
+    {
+      "number": "0.13.0",
+      "date": "2016-06-06T11:22:41.469Z"
+    },
+    {
+      "number": "0.13.1",
+      "date": "2016-06-08T22:43:04.239Z"
+    }
+  ],
+  "created": "2014-04-02T02:21:16.414Z",
+  "modified": "2016-06-08T22:43:04.239Z",
+  "lastPublisher": {
+    "name": "typicode",
+    "email": "typicode@gmail.com"
+  },
+  "owners": [
+    {
+      "name": "typicode",
+      "email": "typicode@gmail.com"
+    }
+  ],
+  "readme": "# Lowdb [![NPM version](https://badge.fury.io/js/lowdb.svg)](http://badge.fury.io/js/lowdb) [![Build Status](https://travis-ci.org/typicode/lowdb.svg?branch=master)](https://travis-ci.org/typicode/lowdb)\n\n> A small local database for small projects :cat: (powered by lodash API)\n\n```js\nconst db = low('db.json')\n\ndb.defaults({ posts: [], user: {} })\n  .value()\n\ndb.get('posts')\n  .push({ id: 1, title: 'lowdb is awesome'})\n  .value()\n\ndb.set('user.name', 'typicode')\n  .value()\n```\n\nData is __automatically__ saved to `db.json`\n\n```json\n{\n  \"posts\": [\n    { \"id\": 1, \"title\": \"lowdb is awesome\"}\n  ],\n  \"user\": {\n    \"name\": \"typicode\"\n  }\n}\n```\n\nAnd you can query it using [lodash API](https://lodash.com/docs)\n\n```js\ndb.get('posts')\n  .find({ id: 1 })\n  .value()\n```\n\nLowdb is perfect for CLIs, small servers, Electron apps and npm packages in general.\n\nIt supports __Node__, the __browser__ and uses __lodash API__, so it's very simple to learn. Actually... you may already know how to use lowdb :wink:\n\n* [Usage examples](https://github.com/typicode/lowdb/tree/master/examples)\n  * [CLI](https://github.com/typicode/lowdb/tree/master/examples#cli)\n  * [Browser](https://github.com/typicode/lowdb/tree/master/examples#browser)\n  * [Server](https://github.com/typicode/lowdb/tree/master/examples#server)\n  * [In-memory](https://github.com/typicode/lowdb/tree/master/examples#in-memory)\n* [JSFiddle live example](https://jsfiddle.net/typicode/4kd7xxbu/)\n* [__Migrating from 0.12 to 0.13? See this guide.__](https://github.com/typicode/lowdb/releases/tag/v0.13.0)\n\n## Why lowdb?\n\n* Lodash API\n* Minimal and simple to use\n* Highly flexible\n  * __Custom storage__ (file, browser, in-memory, ...)\n  * __Custom format__ (JSON, BSON, YAML, XML, ...)\n  * Mixins (id support, ...)\n  * Read-only or write-only modes\n  * Encryption\n\n__Important__ lowdb doesn't support Cluster.\n\n## Install\n\n```sh\nnpm install lowdb lodash@4 --save\n```\n\nA UMD build is also available on [npmcdn](https://npmcdn.com/) for testing and quick prototyping:\n\n```html\n<script src=\"https://npmcdn.com/lodash@4/lodash.min.js\"></script>\n<script src=\"https://npmcdn.com/lowdb/dist/lowdb.min.js\"></script>\n<script>\n  var db = low('db')\n</script>\n```\n\n## API\n\n__low([source, [options])__\n\n* `source` string or null, will be passed to storage\n* `options` object\n  * `storage` object, by default `lowdb/lib/file-sync` or `lowdb/lib/browser`.\n    * `read` function or null\n    * `write` function or null\n  * `format` object\n    * `serialize` function, by default `JSON.stringify`\n    * `deserialize` function, by default `JSON.parse`\n  * `writeOnChange`boolean\n\nCreates a __lodash chain__, you can use __any__ lodash method on it. When `.value()` is called data is saved using `storage`.\n\nYou can use `options` to configure how lowdb should persist data. Here are some examples:\n\n```js\n// in-memory\nlow()\n\n// persisted using async file storage\nlow('db.json', { storage: require('lowdb/lib/file-async') })\n\n// persisted using a custom storage\nlow('some-source', { storage: require('./my-custom-storage') })\n\n// write on change disabled\nlow('db.json', { writeOnChange: false })\n\n// read-only\nconst fileSync = require('lowdb/lib/file-sync')\nlow('db.json', {\n  storage: {\n    read: fileSync.read\n  }\n})\n\n// write-only\nlow('db.json', {\n  storage: {\n    write: fileSync.write\n  }\n})\n```\n\n__db.___\n\nDatabase lodash instance. Use it to add your own utility functions or third-party mixins like [underscore-contrib](https://github.com/documentcloud/underscore-contrib) or [underscore-db](https://github.com/typicode/underscore-db).\n\n```js\ndb._.mixin({\n  second: function(array) {\n    return array[1]\n  }\n})\n\nconst post1 = db.get('posts').first().value()\nconst post2 = db.get('posts').second().value()\n```\n\n__db.getState()__\n\nUse whenever you want to access the database state.\n\n```js\ndb.getState() // { posts: [ ... ] }\n```\n\n__db.setState(newState)__\n\nUse it to drop database or set a new state (database will be automatically persisted).\n\n```js\nconst newState = {}\ndb.setState(newState)\n```\n\n__db.write([source])__\n\nPersists database using `storage.write` option. Depending on the storage, it may return a promise (for example, with `file-async').\n\nBy default, lowdb automatically calls it when database changes.\n\n```js\nconst db = low('db.json')\ndb.write()            // writes to db.json\ndb.write('copy.json') // writes to copy.json\n```\n\n__db.read([source])__\n\nReads source using `storage.read` option. Depending on the storage, it may return a promise.\n\n```js\nconst db = low('db.json')\ndb.read()            // reads db.json\ndb.read('copy.json') // reads copy.json\n```\n\n## Guide\n\n### How to query\n\nWith lowdb, you get access to the entire [lodash API](http://lodash.com/), so there are many ways to query and manipulate data. Here are a few examples to get you started.\n\nPlease note that data is returned by reference, this means that modifications to returned objects may change the database. To avoid such behaviour, you need to use `.cloneDeep()`.\n\nAlso, the execution of methods is lazy, that is, execution is deferred until `.value()` is called.\n\n#### Examples\n\nCheck if posts exists.\n\n```js\ndb.has('posts')\n  .value()\n```\n\nSet posts.\n\n```js\ndb.set('posts', [])\n  .value()\n```\n\n\nSort the top five posts.\n\n```js\ndb.get('posts')\n  .filter({published: true})\n  .sortBy('views')\n  .take(5)\n  .value()\n```\n\nGet post titles.\n\n```js\ndb.get('posts')\n  .map('title')\n  .value()\n```\n\nGet the number of posts.\n\n```js\ndb.get('posts')\n  .size()\n  .value()\n```\n\nGet the title of first post using a path.\n\n```js\ndb.get('posts[0].title')\n  .value()\n```\n\nUpdate a post.\n\n```js\ndb.get('posts')\n  .find({ title: 'low!' })\n  .assign({ title: 'hi!'})\n  .value()\n```\n\nRemove posts.\n\n```js\ndb.get('posts')\n  .remove({ title: 'low!' })\n  .value()\n```\n\nMake a deep clone of posts.\n\n```js\ndb.get('posts')\n  .cloneDeep()\n  .value()\n```\n\n\n### How to use id based resources\n\nBeing able to get data using an id can be quite useful, particularly in servers. To add id-based resources support to lowdb, you have 2 options.\n\n[underscore-db](https://github.com/typicode/underscore-db) provides a set of helpers for creating and manipulating id-based resources.\n\n```js\nconst db = low('db.json')\n\ndb._.mixin(require('underscore-db'))\n\nconst postId = db.get('posts').insert({ title: 'low!' }).value().id\nconst post = db.get('posts').getById(postId).value()\n```\n\n[uuid](https://github.com/broofa/node-uuid) is more minimalist and returns a unique id that you can use when creating resources.\n\n```js\nconst uuid = require('uuid')\n\nconst postId = db.get('posts').push({ id: uuid(), title: 'low!' }).value().id\nconst post = db.get('posts').find({ id: postId }).value()\n```\n\n### How to use a custom storage or format\n\n`low()` accepts custom storage or format. Simply create objects with `read/write` or `serialize/deserialize` methods. See `src/browser.js` code source for a full example.\n\n```js\nconst myStorage = {\n  read: (source, deserialize) => // must return an object or a Promise\n  write: (source, obj, serialize) => // must return undefined or a Promise\n}\n\nconst myFormat = {\n  serialize: (obj) => // must return data (usually string)\n  deserialize: (data) => // must return an object\n}\n\nlow(source, {\n  storage: myStorage,\n  format: myFormat\n})\n```\n\n### How to encrypt data\n\nSimply `encrypt` and `decrypt` data in `format.serialize` and `format.deserialize` methods.\n\nFor example, using [cryptr](https://github.com/MauriceButler/cryptr):\n\n```js\nconst Cryptr = require(\"./cryptr\"),\nconst cryptr = new Cryptr('my secret key')\n\nconst db = low('db.json', {\n  format: {\n    deserialize: (str) => {\n      const decrypted = cryptr.decrypt(str)\n      const obj = JSON.parse(decrypted)\n      return obj\n    },\n    serialize: (obj) => {\n      const str = JSON.stringify(obj)\n      const encrypted = cryptr.encrypt(str)\n      return encrypted\n    }\n  }\n})\n```\n\n## Changelog\n\nSee changes for each version in the [release notes](https://github.com/typicode/lowdb/releases).\n\n## Limits\n\nlowdb is a convenient method for storing data without setting up a database server. It is fast enough and safe to be used as an embedded database.\n\nHowever, if you seek high performance and scalability more than simplicity, you should probably stick to traditional databases like MongoDB.\n\n## License\n\nMIT - [Typicode](https://github.com/typicode)\n"
+}

@@ -10,8 +10,17 @@
   },
   "homepage": "http://github.com/mongodb-js/electron-installer-fixture-windows",
   "repository": {
-    "type": "git",
-    "url": "git+https://github.com/mongodb-js/electron-installer-fixture-windows.git"
+    "user": "mongodb-js",
+    "repo": "electron-installer-fixture-windows",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/mongodb-js/electron-installer-fixture-windows/tarball/master",
+    "clone_url": "https://github.com/mongodb-js/electron-installer-fixture-windows",
+    "https_url": "https://github.com/mongodb-js/electron-installer-fixture-windows",
+    "travis_url": "https://travis-ci.org/mongodb-js/electron-installer-fixture-windows",
+    "zip_url": "https://github.com/mongodb-js/electron-installer-fixture-windows/archive/master.zip",
+    "api_url": "https://api.github.com/repos/mongodb-js/electron-installer-fixture-windows"
   },
   "devDependencies": {
     "mocha": "^2.2.5"
@@ -25,27 +34,37 @@
     "electron-installer"
   ],
   "gitHead": "aa91ed9ab64c0d56c66ccde87d1d51730549fde8",
-  "bugs": {
-    "url": "https://github.com/mongodb-js/electron-installer-fixture-windows/issues"
-  },
-  "_id": "electron-installer-fixture-windows@0.0.3",
-  "_shasum": "0af8530950599843f470f56b619b080ab3464aa1",
-  "_from": ".",
   "_npmVersion": "2.12.1",
   "_nodeVersion": "0.12.5",
-  "_npmUser": {
+  "dist": {
+    "shasum": "0af8530950599843f470f56b619b080ab3464aa1",
+    "tarball": "http://registry.npmjs.org/electron-installer-fixture-windows/-/electron-installer-fixture-windows-0.0.3.tgz"
+  },
+  "versions": [
+    {
+      "number": "0.0.1",
+      "date": "2015-07-10T18:56:49.715Z"
+    },
+    {
+      "number": "0.0.2",
+      "date": "2015-07-10T19:02:03.334Z"
+    },
+    {
+      "number": "0.0.3",
+      "date": "2015-07-11T18:51:10.206Z"
+    }
+  ],
+  "created": "2015-07-10T18:56:49.715Z",
+  "modified": "2016-05-03T18:18:44.264Z",
+  "lastPublisher": {
     "name": "imlucas",
     "email": "hrabovsky.lucas@gmail.com"
   },
-  "maintainers": [
+  "owners": [
     {
       "name": "imlucas",
       "email": "hrabovsky.lucas@gmail.com"
     }
   ],
-  "dist": {
-    "shasum": "0af8530950599843f470f56b619b080ab3464aa1",
-    "tarball": "http://registry.npmjs.org/electron-installer-fixture-windows/-/electron-installer-fixture-windows-0.0.3.tgz"
-  },
-  "directories": {}
+  "readme": "# electron-installer-fixture-windows [![][appveyor_img]][appveyor_url]\n\n> A fixture [Electron][electron] app for testing tooling on Windows.\n\n## Installation\n\n```\nnpm install --save-dev electron-installer-fixture-windows\n```\n\n## Usage\n\n```javascript\nvar path = require('path');\nvar fs = require('fs');\nvar assert = require('assert');\n\nvar app = {\n  path: require('electron-installer-fixture-windows')\n};\n\ndescribe('electron-installer-squirrel-windows', function(){\n  it('should have a package.json', function(done){\n    var pkg = path.join(app.path, 'resources', 'app', 'package.json');\n    fs.exists(pkg, function(exists){\n      assert(exists);\n      done();\n    });\n  });\n});\n```\n\n## License\n\nApache 2.0\n\n[electron]: https://github.com/atom/electron\n[appveyor_img]: https://ci.appveyor.com/api/projects/status/alotuat82p3423o5/branch/master?svg=true\n[appveyor_url]: https://ci.appveyor.com/project/mongodb-js/electron-installer-fixture-windows/branch/master\n"
 }

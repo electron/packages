@@ -1,0 +1,85 @@
+{
+  "name": "emailjs-tcp-socket",
+  "version": "1.0.2",
+  "main": "src/emailjs-tcp-socket",
+  "description": "This shim brings the W3C Raw Socket API to node.js and Chromium. Its purpose is to enable apps to use the same api in Firefox OS, Chrome OS, and on the server.",
+  "repository": {
+    "user": "emailjs",
+    "repo": "emailjs-tcp-socket",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/emailjs/emailjs-tcp-socket/tarball/master",
+    "clone_url": "https://github.com/emailjs/emailjs-tcp-socket",
+    "https_url": "https://github.com/emailjs/emailjs-tcp-socket",
+    "travis_url": "https://travis-ci.org/emailjs/emailjs-tcp-socket",
+    "zip_url": "https://github.com/emailjs/emailjs-tcp-socket/archive/master.zip",
+    "api_url": "https://api.github.com/repos/emailjs/emailjs-tcp-socket"
+  },
+  "author": {
+    "name": "Felix Hammerl"
+  },
+  "license": "MIT",
+  "scripts": {
+    "pretest": "cd node_modules/node-forge/ && npm install && npm run minify && cd ../..",
+    "test": "grunt"
+  },
+  "homepage": "https://github.com/emailjs/emailjs-tcp-socket",
+  "dependencies": {
+    "node-forge": "^0.6.11"
+  },
+  "devDependencies": {
+    "chai": "~1.7.2",
+    "config": "^1.19.0",
+    "express": "^4.8.6",
+    "grunt": "~0.4.1",
+    "grunt-contrib-clean": "^0.6.0",
+    "grunt-contrib-connect": "~0.6.0",
+    "grunt-contrib-copy": "~0.4.1",
+    "grunt-contrib-jshint": "~0.8.0",
+    "grunt-express-server": "^0.4.19",
+    "grunt-mocha-phantomjs": "~0.4.0",
+    "grunt-mocha-test": "~0.6.2",
+    "mocha": "~1.16.2",
+    "morgan": "^1.6.1",
+    "npmlog": "^2.0.0",
+    "requirejs": "~2.1.10",
+    "sinon": "1.7.3",
+    "socket.io": "^1.0.6",
+    "starttls": "https://github.com/felixhammerl/starttls/tarball/master",
+    "underscore": "^1.6.0"
+  },
+  "gitHead": "dae259defd1d09d851fa0b1ecc137561aa983603",
+  "_npmVersion": "1.4.14",
+  "dist": {
+    "shasum": "acb90929bf194d7cb43d5d6f465726a4d8ae0489",
+    "tarball": "http://registry.npmjs.org/emailjs-tcp-socket/-/emailjs-tcp-socket-1.0.2.tgz"
+  },
+  "versions": [
+    {
+      "number": "1.0.0",
+      "date": "2016-01-06T23:08:53.018Z"
+    },
+    {
+      "number": "1.0.1",
+      "date": "2016-01-12T23:09:41.393Z"
+    },
+    {
+      "number": "1.0.2",
+      "date": "2016-03-10T09:36:48.515Z"
+    }
+  ],
+  "created": "2016-01-06T23:08:53.018Z",
+  "modified": "2016-03-10T09:36:48.515Z",
+  "lastPublisher": {
+    "name": "felixhammerl",
+    "email": "felix.hammerl@gmail.com"
+  },
+  "owners": [
+    {
+      "name": "felixhammerl",
+      "email": "mail@felixhammerl.com"
+    }
+  ],
+  "readme": "tcp-socket\n==========\n\nThis shim brings [Mozilla-flavored](https://developer.mozilla.org/en-US/docs/WebAPI/TCP_Socket) version of the [Raw Socket API](http://www.w3.org/TR/raw-sockets/) to node.js, Chromium apps, Windows/WP 8 apps, and websockets (via socket.io). Its purpose is to enable apps to use the same codebase in Firefox OS, Chrome OS, and on the server.\n\n[![Build Status](https://travis-ci.org/emailjs/emailjs-tcp-socket.svg?branch=master)](https://travis-ci.org/emailjs/emailjs-tcp-socket)\n\n# Usage\n\nInclude the source files and `forge` in your markup. It will attach itself to the navigator object.\n\n    <script src=\"forge.min.js\"></script>\n    <script src=\"emailjs-tcp-socket-tls.js\"></script>\n    <script src=\"emailjs-tcp-socket.js\"></script>\n\n    // creates a TCP socket\n    var tcp = navigator.TCPSocket.open('127.0.0.1', 8000);\n\n    // creates a TLS socket\n    var tls = navigator.TCPSocket.open('127.0.0.1', 9000, {\n        useSecureTransport: true,\n        ca: 'insert PEM-formatted cert here' // certificate pinning\n    });\n\n**A note on node-webkit and electron**:\n\nHybrid native platforms like NW.js (née node-webkit) and electron will be identified via `typeof process !== 'undefined'`. AMD is not supported for these platforms.\n\n**A note on TLS**: Native TLS support is flaky throughout the platforms. If you want to use TLS on a platform that does not natively provide it, we fall back to [forge](https://github.com/digitalbazaar/forge) for TLS, and you must provide a certificate for pinning! Please consult the [forge project page](https://github.com/digitalbazaar/forge) for examples how to make forge available in your application and/or have a look at the example in this repository.\n\nThe following platforms support TLS natively:\n\n* node.js\n* Desktop Chrome Apps on Chrome M38+ with TLS connection (native tls is broken for STARTTLS :( )\n* Windows StreamSocket\n\nThe following implementations use forge as a TLS shim:\n\n* WebSockets\n* Chrome Apps with STARTTLS and Mobile Chrome Apps built with [cca](https://github.com/MobileChromeApps/mobile-chrome-apps) (chrome.sockets.tcp.secure is broken)\n\n**Use of web workers**: If you are on a platform where we fall back to forge for TLS, we can spin up a Web Worker to handle the TLS-related computation. To do this, you need to **browserify** `tcp-socket-tls-worker.js`. Please keep in mind that `forge.min.js` and the browserified version of `tcp-socket-tls-worker.js` **must** in the same folder! If you use a different path relative to your html file, you can provide it this file when you fire up the socket. **If tlsWorkerPath is undefined, no Web Worker will be started and the TLS-relatid computation will happen on the main thread!**\n\n    // creates a TLS socket with a specific TLS worker path\n    var tls = navigator.TCPSocket.open('127.0.0.1', 9000, {\n        useSecureTransport: true,\n        tlsWorkerPath: 'relative/path/to/tcp-socket-tls-worker.js'\n    });\n\nOn a platform where we fall back to forge for TLS, you can either supply the socket with a certificate, or use a trust-on-first-use based approach, where the socket is accepted in the first try and you will receive a callback with the certificate. Use this certificate in subsequent interactions with this host. Host authenticity is evaluated based on their Common Name (or SubjectAltNames) and the certificate's public key fingerprint.\n\n    var tls = navigator.TCPSocket.open('127.0.0.1', 9000, {\n        useSecureTransport: true\n    });\n\n    tls.oncert = function(pemEncodedCertificate) {\n        // do something useful with the certificate, e.g.\n        // store it and reuse it on a trust-on-first-use basis\n    };\n\nHere's how the TLS socket will behave when presented with a server certificate:\n\n* If the server does not present a certificate, it rejects the connection\n* If the server presents a certificate with wrong/missing CN and/or wrong/missing SANs, it rejects the connection\n* If no certificate was pinned, it calls .oncert() with the pem-encoded certificate and accepts the connection\n* If a certificate was pinned, but the server presents another certificate (according to the public key fingerprint), it calls .oncert() to inform you about changes, but rejects the connection\n* If a certificate was pinned and the server certificate's public key fingerprint matches the pinned certificate, the connection is accepted. .oncert will **not** be called in this case!\n\n**A note on STARTTLS**: `upgrateToSecure()` will return immediately. If the TLS negotiation fails, the socket will throw an error and close. The socket buffers writes that occur in the meantime and writes the data out altogether when the TLS handshake is done. If said behavior is a problem in your protocol, please open an issue and/or submit a PR.\n\nFor everything else, see the [Mozilla TCPSocket API Documentation](https://developer.mozilla.org/en-US/docs/Web/API/TCPSocket).\n\n**A note on WebSockets**: Run the websocket proxy (socket.io + express) to use TCPSocket straight from the browser.\n\nWebSocket shim adds a new configuration object `ws` to TCPSocket.open\n\n  * **url** is the url for the WebSocket proxy server (defaults to '/')\n  * **options** are [Socket.io options](http://socket.io/docs/client-api/#io(url:string,-opts:object):socket)\n\n    var socket = TCPSocket.open('127.0.0.1', 9000, {\n        ...\n        ws: {\n            url: 'http://localhost:8889',\n            options: {\n                upgrade: false\n            }\n        }\n    });\n\nTo run WebSocket integration tests that connect to `imap.gmail.com:993` run\n\n    NODE_ENV=integration node ws-proxy/server.js\n\nParallel to that, run\n\n    grunt connect:dev\n\nand open [http://localhost:12345/test/integration/ws/integration.html](http://localhost:12345/test/integration/ws/integration.html) in your browser.\n\nWebSocket integration tests can be run via `grunt ws-integration-test`. They are disabled by default because these do not run correctly under PhantomJS.\n\nTo run the integration tests in Chrome:\n\n1) Install `test/integration/chrome/certificate.crt` to your Chrome certificate storage (On Mac OS, that's the keychain)\n2) Add `test/integration/chrome` as a packaged app\n3) Run `node test/integration/chrome/server.js`\n4) Start the Chrome App.\n\n# Unavailable API\n\nThe following API is not available with this shim:\n\n* #listen\n* #resume\n* #suspend\n\n## Installation\n\n```\nnpm install --save emailjs-tcp-socket\n```\n\n# License\n\nThis library is licensed under the MIT license.\n\n    Copyright (c) 2014 Whiteout Networks\n\n    Permission is hereby granted, free of charge, to any person obtaining a copy\n    of this software and associated documentation files (the \"Software\"), to deal\n    in the Software without restriction, including without limitation the rights\n    to use, copy, modify, merge, publish, distribute, sublicense, and/or sell\n    copies of the Software, and to permit persons to whom the Software is\n    furnished to do so, subject to the following conditions:\n\n    The above copyright notice and this permission notice shall be included in all\n    copies or substantial portions of the Software.\n\n    THE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR\n    IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,\n    FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE\n    AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER\n    LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,\n    OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE\n    SOFTWARE.\n\nThis library uses crypto primitives from [forge](https://github.com/digitalbazaar/forge) by [Digital Bazaar, Inc.](https://github.com/digitalbazaar) which is licensed under BSD and GPL.\n"
+}

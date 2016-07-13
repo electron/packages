@@ -10,8 +10,17 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
-    "type": "git",
-    "url": "git+https://github.com/mmckegg/msi-packager.git"
+    "user": "mmckegg",
+    "repo": "msi-packager",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/mmckegg/msi-packager/tarball/master",
+    "clone_url": "https://github.com/mmckegg/msi-packager",
+    "https_url": "https://github.com/mmckegg/msi-packager",
+    "travis_url": "https://travis-ci.org/mmckegg/msi-packager",
+    "zip_url": "https://github.com/mmckegg/msi-packager/archive/master.zip",
+    "api_url": "https://api.github.com/repos/mmckegg/msi-packager"
   },
   "keywords": [
     "msi",
@@ -28,9 +37,6 @@
     "name": "Matt McKegg"
   },
   "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/mmckegg/msi-packager/issues"
-  },
   "homepage": "https://github.com/mmckegg/msi-packager#readme",
   "dependencies": {
     "async-each": "^0.1.6",
@@ -40,24 +46,37 @@
     "yargs": "^3.15.0"
   },
   "gitHead": "9df8f16baf8ef3b41d3676a5f853ab40048c3e73",
-  "_id": "msi-packager@1.3.0",
-  "_shasum": "affaa387cf7e02df05cda14c5b264d4a1d66151f",
-  "_from": ".",
   "_npmVersion": "2.11.2",
   "_nodeVersion": "0.12.5",
-  "_npmUser": {
-    "name": "mmckegg",
-    "email": "matt@wetsand.co.nz"
-  },
   "dist": {
     "shasum": "affaa387cf7e02df05cda14c5b264d4a1d66151f",
     "tarball": "http://registry.npmjs.org/msi-packager/-/msi-packager-1.3.0.tgz"
   },
-  "maintainers": [
+  "versions": [
+    {
+      "number": "1.0.0",
+      "date": "2015-07-07T08:52:38.936Z"
+    },
+    {
+      "number": "1.1.0",
+      "date": "2015-07-08T07:41:45.279Z"
+    },
+    {
+      "number": "1.3.0",
+      "date": "2015-07-09T00:46:38.266Z"
+    }
+  ],
+  "created": "2015-07-07T08:52:38.936Z",
+  "modified": "2015-07-09T00:46:38.266Z",
+  "lastPublisher": {
+    "name": "mmckegg",
+    "email": "matt@wetsand.co.nz"
+  },
+  "owners": [
     {
       "name": "mmckegg",
       "email": "matt@wetsand.co.nz"
     }
   ],
-  "directories": {}
+  "readme": "msi-packager\n===\n\nBuild MSI (Windows Installer) packages on Mac and Linux.\n\nThe installer has no wizard. Users just run the installer and your app will be installed and shortcuts created.\n\n## Requirements\n\nYou must have `wixl` from [`msitools`](https://wiki.gnome.org/msitools) available in your path.\n\n### Mac\n\n```bash\n$ brew install msitools\n```\n\n### Linux\n\n```bash\n# ubuntu / debian\n$ sudo apt-get install msitools\n```\n\n## Install [via npm](https://www.npmjs.com/package/msi-packager)\n\n```bash\n$ npm install msi-packager\n```\n\n## Node Example\n\n```js\nvar createMsi = require('./')\n\nvar options = {\n\n  // required\n  source: '/Users/matt/Code/loop/loopjs-packager/build/Loop Drop-win32',\n  output: '/Users/matt/Code/loop/loopjs-packager/releases/Loop Drop v1.0.0.msi',\n  name: 'Loop Drop',\n  upgradeCode: 'YOUR-GUID-HERE',\n  version: '1.0.0',\n  manufacturer: 'loopjs.com',\n  iconPath: '/Users/matt/Code/loop/loopjs-packager/icon.ico',\n  executable: 'Loop Drop.exe',\n\n  // optional\n  description: \"Some description\",\n  arch: 'x86',\n  localInstall: true\n\n}\n\ncreateMsi(options, function (err) {\n  if (err) throw err\n  console.log('Outputed to ' + options.output)\n})\n```\n\n## Local User vs Machine Install\n\nBy default the app will be installed for all users under **Program Files**.\n\nIf you specify `localUser: true` as an option, the app will be installed to the user's AppData folder. This allows non-admin users to install your app. \n\n## CLI\n\n```bash\nUsage: msi-packager <source> <output> [options]\n\nsource     Directory containing app to package\noutput     write output .msi to this path\n\nOptions:\n   -n, --name           \n   -v, --version        Specify application version\n   -m, --manufacturer   \n   -a, --arch           Specify the target architecture: x86 or x64 (optional)\n   -u, --upgrade-code   Specify GUID to use for upgrading from other versions\n   -i, --icon           Specify an icon to use on shortcuts and installer\n   -e, --executable     Specify file to create shortcuts for\n   -l, --local          Install per user (no administrator rights required)\n```\n\nAll options are required except for `--local`."
 }

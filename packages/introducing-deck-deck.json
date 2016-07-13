@@ -1,0 +1,64 @@
+{
+  "name": "introducing-deck-deck",
+  "version": "1.0.0",
+  "skin": "@nearform/deck-skin",
+  "files": [
+    "Readme.md",
+    "deck.md",
+    "images",
+    "code"
+  ],
+  "dependencies": {
+    "@deck/present": "^1.1.0",
+    "@nearform/deck-skin": "^1.0.0"
+  },
+  "author": {
+    "name": "David Mark Clements"
+  },
+  "license": "Attribution-ShareAlike 4.0 International",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "user": "davidmarkclements",
+    "repo": "introducing-deck",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/davidmarkclements/introducing-deck/tarball/master",
+    "clone_url": "https://github.com/davidmarkclements/introducing-deck",
+    "https_url": "https://github.com/davidmarkclements/introducing-deck",
+    "travis_url": "https://travis-ci.org/davidmarkclements/introducing-deck",
+    "zip_url": "https://github.com/davidmarkclements/introducing-deck/archive/master.zip",
+    "api_url": "https://api.github.com/repos/davidmarkclements/introducing-deck"
+  },
+  "homepage": "https://github.com/davidmarkclements/introducing-deck#readme",
+  "gitHead": "d2fdc2b96ccc8f025cc4e1b0149906fbcff3b198",
+  "description": "<!-- master: section-title custom:    0:      margin-top: -1em     margin-bottom: .5em",
+  "_npmVersion": "2.11.1",
+  "_nodeVersion": "4.2.1",
+  "dist": {
+    "shasum": "7f63301fe30c550eccc1e9302be196fbf562e380",
+    "tarball": "http://registry.npmjs.org/introducing-deck-deck/-/introducing-deck-deck-1.0.0.tgz"
+  },
+  "versions": [
+    {
+      "number": "1.0.0",
+      "date": "2015-10-27T02:18:34.954Z"
+    }
+  ],
+  "created": "2015-10-27T02:18:34.954Z",
+  "modified": "2015-10-27T02:19:22.672Z",
+  "lastPublisher": {
+    "name": "deck",
+    "email": "david.mark.clements@gmail.com"
+  },
+  "owners": [
+    {
+      "name": "deck",
+      "email": "david.mark.clements@gmail.com"
+    }
+  ],
+  "readme": "<!--\nmaster: section-title\ncustom: \n  0: \n    margin-top: -1em\n    margin-bottom: .5em\n\n  1:\n    width: 60%\n    img:\n      width: 100%\nnotes: |\n  Room stats - who presents\n-->\n\n# introducing...\n\n![](images/deck-logo.svg)\n\n\n---\n<!--\nmaster: bullets\nnotes: |\n  Room stats \n    - who has given a similar talk twice but with slightly diff slides \n    - who has collab'd on slides \n      - over longer period of time\n\n  re workflow - I wrote these slides on iPhone notes \n  whilst on short flight from NI to heathrow.\n-->\n\n# Workflow\n\n* create an outline\n* fill it in/flesh it out\n* generally use markdown-esque syntax\n* transfer outline into Keynote or Powerpoint (painful) \n\n---\n<!--\nmaster: bullets\n-->\n\n# Keynote / PowerPoint\n\n* easy to get started\n* application \n  * dual screen, access file system, open file with \n* easily convert to PDF format for distribution \n* concept of \"master slides\" for easy layout reuse\n* Keynote adds a pleasant aesthetic and feel to slides\n\n---\n<!--\nmaster: bullets\n-->\n\n# Keynote / PowerPoint\n\n* tied to OS\n* hard to track changes over time\n  * Keynote has a binary format  \n    * changes without notice \n  * Powerpoint has an XML format\n    * horrible to version control\n* outline transfer is painful \n  * particularly from markdown \n* have to exit presentation to do demos \n\n---\n<!--\nmaster: bullets\n-->\n\n# Bespoke.js\n\n* supports markdown \n* open source\n* embed demos in the presentation\n* applying version control is possible because of all text source\n* Essentially a web page, so can be accessed online\n\n---\n<!--\nmaster: bullets\n-->\n\n# Bespoke.js\n\n* learning curve \n  * need to be a web dev\n* dual screen is fiddly\n* have to theme it yourself\n  * themes not as nice as Keynote\n* have to build a dist\n* No easy handout format (e.g. PDF)\n* I want my slides to just contain content\n  * No web site boilerplate\n\n\n---\n<!--\nmaster: image\ncustom:\n  1:\n    width: 70%\n    margin-top: 2.5em\n-->\n\n# Deck\n\n![](images/deck-logo-full.svg)\n\n---\n<!--\nmaster: command-bullets\n-->\n\n# Deck\n\n\n```sh\n$ npm i -g @deck/app # npm 2+\n$ npm i -g deck-app # npm 1/node 0.10\n```\n\n* CLI application for content management\n* GUI application for presentation\n  * built for extended-display\n* multi-platform (Linux, Mac, Windows)\n* multiversion (Node 0.10, 0.12, & 4)\n\n---\n<!--\nmaster: command-bullets\n-->\n\n# Deck\n\n```sh\n$ npm i -g @deck/app # npm 2+\n$ npm i -g deck-app # npm 1/node 0.10\n```\n\n* multi-device\n* networked application\n  * slide synchronization\n  * graceful live reload\n  * tunnelling\n* markdown driven (GFM)\n\n---\n<!--\nmaster: image\ncustom:\n  1:\n    margin-top: .5em\n\n-->\n\n# Anatomy\n\n![](images/anatomy.png)\n\n---\n<!--\nmaster: image\ncustom:\n  1:\n    margin-top: 3.75em\nnotes: |\n originally written with nw.js\n\n-->\n\n# Electron vs NW.js\n\n![](images/electron-gt-nw.png)\n\n---\n<!--\nmaster: command-command-command-bullets\n-->\n\n# Content Modules\n\n```sh\ndeck init\n```\n```sh\ndeck install\n```\n```sh\ndeck publish\n```\n\n* A slide deck is simply a module with `deck.md` as the main file \n* Slide decks can be install from npm (or a private repo) and then presented\n* You can also simply clone from a git repo and then run `deck present` within that repo\n\n---\n<!--\nmaster: command-command-bullets\ncustom:\n  1:\n    code:\n      font-size: 0.85em\n  2:\n    code:\n      font-size: 0.85em\n-->\n\n# Content Modules\n\n```sh\nnpm dist-tag add my-deck@2.3.2 advanced\nnpm dist-tag add my-deck@1.1.4 standard\n```\n```sh\nnpm dist-tag add collab-deck@1.2.5 dave\nnpm dist-tag add collab-deck@1.1.4 matteo\n```\n\n* We can use npm tags to install slide deck content variations\n* We map these npm tags to git branches\n\n---\n<!--\nmaster: bullets\n-->\n\n# Content Modules\n\n* For version convention we've informally re-purposed semver as \"seshver\"\n  * Patch version is for typos etc\n  * Minor version is content mutations\n  * Major version denotes estimated duration in \"session\" units\n    * context-relative: for a talk a session could be 10min, for training it could be 90min\n\n\n---\n<!--\nmaster: command-bullets\n-->\n\n# Deck Upstream\n\n```sh\ndeck upstream\n```\n\n* `deck upstream` automatically create a pull-request from content changes even if edits are made against an installed module instead of a git repo\n* the idea is to make it trivial for anyone delivering our content to feedback\n* easy editing with `cmd + e`\n\n---\n<!--\nmaster: bullets\n-->\n\n# Slide Control\n\n* Slides are separated by the markdown HR line `---`\n  * This leads to neat output for normal markdown rendering (e.g on GitHub)\n* Each slide can have a comment header where meta data and instructions can go\n  * `master` - sets the master slide format\n  * `notes` - supply slide notes\n  * `custom` - tweak slide layout with CSS\n\n---\n<!--\nmaster: bullets\n-->\n\n# Skins\n\n* During `deck init` you can supply a skin\n* A skin is simply CSS providing styles on top of bespoke\n  * Deck supports/expects the Stylus `.styl` format but generally Stylus can be written exactly like CSS if preferred\n* Only one public skin `@deck/skin-light`\n  * Attempts to capture Keynote look and feel at a basic level\n  * Meant for forking and customising\n\n---\n<!--\nmaster: bullets\n-->\n\n# Demos\n\n* Live coding is typically fiddly when attempted along side Keynote or Powerpoint\n  * This is why most speakers either do one or the other\n  * In training scenarios you *really* need both\n* Deck supports demos by broadcasting the primary screen into the actual presentation\n* `ctrl + cmd + b`\n\n---\n<!--\nmaster: bullets\n-->\n\n# PDF's\n\n* `ctrl + cmd + p`\n* loops through all the slides, takes pictures and streams to a PDF file\n* generated files aren't small, but it's a start\n\n---\n<!--\nmaster: bullets\n-->\n\n# The Presenter\n\n* When a slide deck is initialized it includes the `@deck/present` dependency\n* `@deck/present` is simply an executable that's responsible for starting a server for the GUI (and audience) to connect to\n* This means it can be replaced with your own custom Bespoke setup\n  * Or something entirely different.\n\n\n---\n<!--\nmaster: bullets\n-->\n\n# Project Status\n\n* Launching today... Now.... It's launched.\n* OPEN open project\n  * Any non-trivial PR will automatically be given collaborator perms\n* nearForm is currently using it (literally, right now, as we speak) to deliver training to clients\n* Our role now is to mostly focus on bug fixing, cross-platform consistency and documentation\n* Happy to incorporate new features in the form of PR's though ;)\n\n---\n<!--\nmaster: bullets\n-->\n\n# Project Future/Ideas\n\n* Docs\n* Incorporate generic tunnelling service (ngrok)\n* Application Packaging\n  * Reduce the learning curve further\n* Easier slide customisation format\n* Implicit master slides based on content\n  * System guesses the correct class to apply\n* Optimize presentation boot up\n* Cross-platform font\n\n\n---\n<!--\nmaster: bullets\n-->\n\n# Project Future/Ideas\n* GUI for content management\n* GUI for content creation/editing\n  * Dynamically Switch between editable markdown and HTML output within the GUI display\n* Integration (gh-pages, slide-share, ...)\n* Dynamic port assignment strategy\n* More skins\n* Configuration story (preferences etc.)\n   \n---\n<!--\nmaster: bullets\n-->\n\n# Summary\n\n* It's getting easier and easier to cater to niche areas with JS\n* There is a place for Networked Desktop applications within the full stack JS context\n\n---\n<!--\nmaster: title-page\n-->\n\n# Thanks\n## @davidmarkclem\n"
+}

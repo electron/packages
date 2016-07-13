@@ -9,13 +9,18 @@
   "bin": {
     "psyclone": "./scripts/cmd.js"
   },
-  "bugs": {
-    "url": "https://git.rsupport.com/psyclone/studio/issues"
-  },
   "repository": {
-    "type": "git",
-    "url": "git+https://github.com/firejune/psyclone.git",
-    "raw": "https://raw.githubusercontent.com/firejune/psyclone/master"
+    "user": "firejune",
+    "repo": "psyclone",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/firejune/psyclone/tarball/master",
+    "clone_url": "https://github.com/firejune/psyclone",
+    "https_url": "https://github.com/firejune/psyclone",
+    "travis_url": "https://travis-ci.org/firejune/psyclone",
+    "zip_url": "https://github.com/firejune/psyclone/archive/master.zip",
+    "api_url": "https://api.github.com/repos/firejune/psyclone"
   },
   "author": {
     "name": "RSUPPORT",
@@ -127,28 +132,29 @@
     "clean": "node ./scripts/clean.js"
   },
   "gitHead": "c80e24ba6a8dfa0fd5d8c3526b669dafbb7210f1",
-  "_id": "psyclone-studio@0.6.0",
-  "_shasum": "fc3c7779efefef193386cd3e9d62834ce0f8191f",
-  "_from": ".",
   "_npmVersion": "3.9.3",
   "_nodeVersion": "5.11.1",
-  "_npmUser": {
-    "name": "firejune",
-    "email": "firejune@gmail.com"
-  },
   "dist": {
     "shasum": "fc3c7779efefef193386cd3e9d62834ce0f8191f",
     "tarball": "http://registry.npmjs.org/psyclone-studio/-/psyclone-studio-0.6.0.tgz"
   },
-  "maintainers": [
+  "versions": [
+    {
+      "number": "0.6.0",
+      "date": "2016-05-24T05:50:21.037Z"
+    }
+  ],
+  "created": "2016-05-24T05:50:21.037Z",
+  "modified": "2016-05-24T05:50:21.037Z",
+  "lastPublisher": {
+    "name": "firejune",
+    "email": "firejune@gmail.com"
+  },
+  "owners": [
     {
       "name": "firejune",
       "email": "firejune@gmail.com"
     }
   ],
-  "_npmOperationalInternal": {
-    "host": "packages-16-east.internal.npmjs.com",
-    "tmp": "tmp/psyclone-studio-0.6.0.tgz_1464069014587_0.15779387205839157"
-  },
-  "directories": {}
+  "readme": "![build status](https://git.rsupport.com/psyclone/studio/badges/master/build.svg)\n[![js-semistandard-style](https://cdn.rawgit.com/flet/semistandard/master/badge.svg)](https://github.com/Flet/semistandard)\n\n# Psyclone - Automated Dynamic Testing Solution\n\n- [Class Hierarchy(PDF)](https://git.rsupport.com/psyclone/studio/raw/master/assets/class-hierarchy.pdf)\n- [Electron Quick Start Guide](http://electron.atom.io/docs/latest/tutorial/quick-start/)\n- [Electron API Documentation](https://github.com/atom/electron/tree/master/docs)\n- [Electron Community](http://discuss.atom.io/category/electron)\n- [Awesome Electron](https://github.com/sindresorhus/awesome-electron)\n\n\n## Key Features:\n---\n- No test codes in your app.\n- Write test code easy as user interact.\n- Screen compare and object tracking oriented.\n- End-to-End Test with ATDD.\n- Realtime debugging and analysis.\n- Support multiple device connection.\n- Possible stress test(continuously).\n- Remote control your mobile device anytime.\n- Mobile game testing.\n\n\n## Architecture\n---\n[![Architecture](https://git.rsupport.com/psyclone/studio/raw/master/assets/architecture.png)](https://git.rsupport.com/psyclone/studio/raw/master/public/architecture.png)\n\n\n## Naming Rule\n```\n# Models:\nProject > Suite > Case > Step\n\n# Properties:\nproject: object\n    id: string\n    name: string\n    description: string\n    type: string\n    manifest: object\n    index: object\n    screenshot: string\n    app: string\n    suites: array\nsuite: object\n    id: string\n    name: string\n    cases: array\ncase: object\n    id: string\n    name: string\n    screen: array\n    units: array\nunit: object\n    id: string\n    name: string\n    type: string\n    data: object\n\n# Methods\nprojects\n    list\n    get\n    insert\n    save\ndevice\n    list\n    connect\n    disconnect\n    getScreenshot\n    getWindowDump\n    monkey\napp\n    install\n    uninstall\n    crawl\n    manifast\n    launch\n    exit\n\n# Events\ndevice\n    'connect'\n    'disconnect'\n\netc\n    'add'\n    'remove'\n    'progress'\n    'data'\n    'start'\n    'end'\n    'error'\n```\n\n## Usage\n---\n1. Download a prebuilt binary or use npm to install from the command line, then check out the Quick Start Guide. Read the documentation or check out projects and build tools created by the community.\n\n```\n$ npm install\n$ npm start\n```\n\n2. Package your electron app in OS executables (.app, .exe, etc) via JS or CLI. Supports building Windows, Linux or Mac executables.\n```\n$ npm run build\n```\n\nTo build for one platform:\n\n```\n$ npm run build [platform]\n```\n\nTo build for target package type with CPU architecture:\n\n```\n$ npm run build -- [platform] --package=[package] --arch=[arch]\n```\n\nWhere `[platform]` is `darwin`, `linux`, `win32`, or `all` (default).\n\nThe following optional arguments are available:\n\n- `--sign` - Sign the application (OS X, Windows)\n- `--package=[type]` - Package single output type.\n   - `deb` - Debian package\n   - `zip` - Linux zip file\n   - `dmg` - OS X disk image\n   - `exe` - Windows installer\n   - `portable` - Windows portable app\n   - `all` - All platforms (default)\n\n- `--arch=[type]` - CPU type.\n   - `x64` - x64 architecture\n   - `x86` - x86 architecture\n   - `all` - All CPU architecture (default)\n\nNote: Even with the `--package` option, the auto-update files (.nupkg for Windows, *-darwin.zip for OS X) will always be produced.\n\n#### Windows build notes\n\nTo package the Windows app from non-Windows platforms, [Wine](https://www.winehq.org/) needs\nto be installed.\n\nOn OS X, first install [XQuartz](http://www.xquartz.org/), then run:\n\n```\nbrew install wine\nbrew install mono\n```\n\n(Requires the [Homebrew](http://brew.sh/) package manager.)\n\n\n## Mockups\n---\n  [![Mockup](https://git.rsupport.com/psyclone/studio/raw/master/assets/mockup.png)](https://git.rsupport.com/psyclone/studio/raw/master/public/mockup.png)\n\n\n## Roadmap\n---\n[![Roadmap](https://git.rsupport.com/psyclone/studio/raw/master/assets/roadmap.png)](https://git.rsupport.com/psyclone/studio/raw/master/public/roadmap.png)\n\n## Cloud Architecture\n---\n[![Cloud Architecture](https://git.rsupport.com/psyclone/studio/raw/master/assets/cloud.png)](https://git.rsupport.com/psyclone/studio/raw/master/public/cloud.png)\n\n## License\n---\nCopyright 2016 RSUPPORT CO., LTD. All rights reserved.\n\nLicensed under the Apache License, Version 2.0 (the \"License\");\nyou may not use this file except in compliance with the License.\nYou may obtain a copy of the License at\n\n    http://www.apache.org/licenses/LICENSE-2.0\n\nUnless required by applicable law or agreed to in writing, software\ndistributed under the License is distributed on an \"AS IS\" BASIS,\nWITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.\nSee the License for the specific language governing permissions and\nlimitations under the License."
 }

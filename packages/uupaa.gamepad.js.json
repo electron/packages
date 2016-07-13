@@ -1,6 +1,6 @@
 {
   "name": "uupaa.gamepad.js",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "description": "Easy way to using GamePad API",
   "url": "https://github.com/uupaa/GamePad.js",
   "keywords": [
@@ -10,8 +10,17 @@
     "Unstable"
   ],
   "repository": {
-    "type": "git",
-    "url": "git+https://github.com/uupaa/GamePad.js.git"
+    "user": "uupaa",
+    "repo": "GamePad.js",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/uupaa/GamePad.js/tarball/master",
+    "clone_url": "https://github.com/uupaa/GamePad.js",
+    "https_url": "https://github.com/uupaa/GamePad.js",
+    "travis_url": "https://travis-ci.org/uupaa/GamePad.js",
+    "zip_url": "https://github.com/uupaa/GamePad.js/archive/master.zip",
+    "api_url": "https://api.github.com/repos/uupaa/GamePad.js"
   },
   "scripts": {
     "sync": "node ../WebModule/run/sync.js; npm update; node ../WebModule/run/page.js",
@@ -75,29 +84,42 @@
   },
   "license": "MIT",
   "contributors": [],
-  "gitHead": "d0f78a0d3e9ee5943035cd7b9b93ebf34e5ca744",
-  "bugs": {
-    "url": "https://github.com/uupaa/GamePad.js/issues"
+  "gitHead": "4d2d40f2950fe35f08296208e7ebe31bafffffd3",
+  "homepage": "https://github.com/uupaa/GamePad.js",
+  "_npmVersion": "2.0.0",
+  "dist": {
+    "shasum": "c771e2cbdd9b8071aa54be41d6061eccecba9852",
+    "tarball": "http://registry.npmjs.org/uupaa.gamepad.js/-/uupaa.gamepad.js-0.0.7.tgz"
   },
-  "homepage": "https://github.com/uupaa/GamePad.js#readme",
-  "_id": "uupaa.gamepad.js@0.0.6",
-  "_shasum": "c6ec92004c3340638c90ed8d0a93df06b3f1631c",
-  "_from": ".",
-  "_npmVersion": "2.14.4",
-  "_nodeVersion": "4.1.1",
-  "_npmUser": {
+  "versions": [
+    {
+      "number": "0.0.2",
+      "date": "2015-07-15T00:10:30.651Z"
+    },
+    {
+      "number": "0.0.5",
+      "date": "2015-10-28T02:47:23.166Z"
+    },
+    {
+      "number": "0.0.6",
+      "date": "2015-10-28T06:28:28.293Z"
+    },
+    {
+      "number": "0.0.7",
+      "date": "2016-07-06T09:00:13.764Z"
+    }
+  ],
+  "created": "2015-07-15T00:10:30.651Z",
+  "modified": "2016-07-06T09:00:13.764Z",
+  "lastPublisher": {
     "name": "uupaa",
     "email": "uupaa.js@gmail.com"
   },
-  "maintainers": [
+  "owners": [
     {
       "name": "uupaa",
       "email": "uupaa.js@gmail.com"
     }
   ],
-  "dist": {
-    "shasum": "c6ec92004c3340638c90ed8d0a93df06b3f1631c",
-    "tarball": "http://registry.npmjs.org/uupaa.gamepad.js/-/uupaa.gamepad.js-0.0.6.tgz"
-  },
-  "directories": {}
+  "readme": "# GamePad.js [![Build Status](https://travis-ci.org/uupaa/GamePad.js.svg)](https://travis-ci.org/uupaa/GamePad.js)\n\n[![npm](https://nodei.co/npm/uupaa.gamepad.js.svg?downloads=true&stars=true)](https://nodei.co/npm/uupaa.gamepad.js/)\n\nEasy way to using GamePad API.\n\n\nThis module made of [WebModule](https://github.com/uupaa/WebModule).\n\n## Documentation\n- [Spec](https://github.com/uupaa/GamePad.js/wiki/)\n- [API Spec](https://github.com/uupaa/GamePad.js/wiki/GamePad)\n\n## Browser, NW.js and Electron\n\n```js\n<script src=\"<module-dir>/lib/WebModule.js\"></script>\n<script src=\"<module-dir>/lib/GamePadDevice.js\"></script>\n<script src=\"<module-dir>/lib/GamePad.js\"></script>\n<script>\nGamePads.VERBOSE = true;\n\nvar players = [{ ... }, { ... }];\n\nvar pad = new GamePad(function(connect(player) {\n    console.log(\"connected. player: \" + player);\n});\n\nfunction gameLoop() {\n    if (pad.connected) {\n        pad.input();\n\n        if (pad[0]) {\n            input(pad[0].values, pad[0].diffs);\n        }\n        if (pad[1]) {\n            input(pad[1].values, pad[1].diffs);\n        }\n    }\n    update();\n    render();\n    requestAnimationFrame(gameLoop);\n}\ngameLoop();\n\n\nfunction input(values,  // @arg Uint8Array - current values\n               diffs) { // @arg Uint8Array - diff values\n    // --- Jump ---\n    if (diffs[GAMEPAD_KEY_A]) {\n        if (values[GAMEPAD_KEY_A]) {  // A BUTTON OFF -> ON\n            startJump(...);\n        } else {       // A BUTTON ON -> OFF\n            endJump(...);\n        }\n    }\n\n    // --- D-PAD ---\n    if (values[GAMEPAD_KEY_L]) {\n        moveLeft(...);\n    } else if (values[GAMEPAD_KEY_R]) {\n        moveRight(...);\n    }\n}\n\n</script>\n```\n\n\n"
 }

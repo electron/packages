@@ -4,8 +4,17 @@
   "description": "Sensu plugins written in Node.js",
   "main": "index.js",
   "repository": {
-    "type": "git",
-    "url": "git@github.com:electronifie/node-sensu-plugins.git"
+    "user": "electronifie",
+    "repo": "node-sensu-plugins",
+    "branch": "master",
+    "host": "github.com",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/electronifie/node-sensu-plugins/tarball/master",
+    "clone_url": "https://github.com/electronifie/node-sensu-plugins",
+    "https_url": "https://github.com/electronifie/node-sensu-plugins",
+    "travis_url": "https://travis-ci.org/electronifie/node-sensu-plugins",
+    "zip_url": "https://github.com/electronifie/node-sensu-plugins/archive/master.zip",
+    "api_url": "https://api.github.com/repos/electronifie/node-sensu-plugins"
   },
   "author": {
     "name": "opensource@electronifie.com"
@@ -33,33 +42,39 @@
     "proc-vm-metrics": "./bin/proc-vm-metrics"
   },
   "gitHead": "96c97044171ca13b7f5f60fffd7123e09a08f1a6",
-  "bugs": {
-    "url": "https://github.com/electronifie/node-sensu-plugins/issues"
-  },
   "homepage": "https://github.com/electronifie/node-sensu-plugins",
-  "_id": "node-sensu-plugins@0.0.9",
   "scripts": {},
-  "_shasum": "68e59fae7726fccd0bbc433b6217cca156125594",
-  "_from": ".",
   "_npmVersion": "3.3.12",
   "_nodeVersion": "5.5.0",
-  "_npmUser": {
-    "name": "electronifie",
-    "email": "opensource@electronifie.com"
-  },
   "dist": {
     "shasum": "68e59fae7726fccd0bbc433b6217cca156125594",
     "tarball": "http://registry.npmjs.org/node-sensu-plugins/-/node-sensu-plugins-0.0.9.tgz"
   },
-  "maintainers": [
+  "versions": [
+    {
+      "number": "0.0.7",
+      "date": "2016-01-21T19:27:28.205Z"
+    },
+    {
+      "number": "0.0.8",
+      "date": "2016-01-21T19:34:29.903Z"
+    },
+    {
+      "number": "0.0.9",
+      "date": "2016-02-05T20:36:04.684Z"
+    }
+  ],
+  "created": "2016-01-21T19:27:28.205Z",
+  "modified": "2016-02-05T20:36:04.684Z",
+  "lastPublisher": {
+    "name": "electronifie",
+    "email": "opensource@electronifie.com"
+  },
+  "owners": [
     {
       "name": "electronifie",
       "email": "opensource@electronifie.com"
     }
   ],
-  "_npmOperationalInternal": {
-    "host": "packages-6-west.internal.npmjs.com",
-    "tmp": "tmp/node-sensu-plugins-0.0.9.tgz_1454704562282_0.4046154823154211"
-  },
-  "directories": {}
+  "readme": "# node-sensu-plugins - Sensu plugins written in Node.js\n### mongodb-metrics\n```\n  Usage: mongo-metrics [options]\n\n  Options:\n\n    -h, --help                 output usage information\n    -V, --version              output the version number\n    -u, --username <username>  Username\n    -p, --password <password>  Password\n    -H, --hostname <hostname>  Server hostname\n    -P, --port <port>          Server port\n    -S, --scheme <scheme>      Scheme\n    -d, --debug                Debug mode - write extra info to stderr\n```\n\n### check-rabbitmq\n```\n  Usage: check-rabbitmq [options]\n\n  Options:\n\n    -h, --help             output usage information\n    -V, --version          output the version number\n    -U, --url <url>        RabbitMQ Manager URL\n    -f, --config <config>  Configuration file\n    -d, --debug            Debug mode - write extra info to stderr\n```\n\nPatterns should be specified in the JSON configuration file specified as an argument to `-f|--config`.  Rules include a regular expression, a warning threshold, and a critical threshold, with these values being compared to the number of messages in the queues whose names match the supplied pattern.  Rules are processed on a first match basis.\n\nThe example configuration file supplied contains the following:\n```\n{\"rules\":[\n  [\".*.error\", -1, 1],\n  [\".*\", 100, 10000]\n]}\n```\nHere the rules mean:\n* For queues with names matching `.*.error`, do nothing for warnings, and if there are >= 1 messages in the queue then print a CRITICAL messages and exit with a return code of 2.\n* For all other queues, with >= 100 messages print a WARNING message and exit 1, and with >= 1,000 messages print a CRITICAL message and exit 2.\n\n\n"
 }

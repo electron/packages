@@ -13,13 +13,19 @@
     }
   ],
   "homepage": "https://github.com/evolvelabs/electron-jitterbuffer",
-  "bugs": {
-    "url": "https://github.com/evolvelabs/electron-jitterbuffer/issues"
-  },
   "license": "MIT",
   "repository": {
-    "type": "git",
-    "url": "git+ssh://git@github.com/evolvelabs/electron-jitterbuffer.git"
+    "user": "evolvelabs",
+    "repo": "electron-jitterbuffer",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/evolvelabs/electron-jitterbuffer/tarball/master",
+    "clone_url": "https://github.com/evolvelabs/electron-jitterbuffer",
+    "https_url": "https://github.com/evolvelabs/electron-jitterbuffer",
+    "travis_url": "https://travis-ci.org/evolvelabs/electron-jitterbuffer",
+    "zip_url": "https://github.com/evolvelabs/electron-jitterbuffer/archive/master.zip",
+    "api_url": "https://api.github.com/repos/evolvelabs/electron-jitterbuffer"
   },
   "main": "./index.js",
   "scripts": {
@@ -55,24 +61,53 @@
   "bundleDependencies": [
     "electron-updater-tools"
   ],
-  "_id": "electron-jitterbuffer@0.2.1",
-  "_shasum": "0c21cb4f9459cbf86d35c4deeac4923c890d927e",
-  "_from": ".",
   "_npmVersion": "2.13.3",
   "_nodeVersion": "3.2.0",
-  "_npmUser": {
-    "name": "justinmchase",
-    "email": "justin.m.chase@outlook.com"
-  },
   "dist": {
     "shasum": "0c21cb4f9459cbf86d35c4deeac4923c890d927e",
     "tarball": "http://registry.npmjs.org/electron-jitterbuffer/-/electron-jitterbuffer-0.2.1.tgz"
   },
-  "maintainers": [
+  "versions": [
+    {
+      "number": "0.1.8",
+      "date": "2015-06-24T21:01:58.940Z"
+    },
+    {
+      "number": "0.1.9",
+      "date": "2015-06-25T20:49:29.227Z"
+    },
+    {
+      "number": "0.1.10",
+      "date": "2015-07-02T19:27:53.250Z"
+    },
+    {
+      "number": "0.1.11",
+      "date": "2015-07-02T21:16:53.840Z"
+    },
+    {
+      "number": "0.1.12",
+      "date": "2015-08-06T20:20:58.682Z"
+    },
+    {
+      "number": "0.2.0",
+      "date": "2015-08-30T14:38:18.121Z"
+    },
+    {
+      "number": "0.2.1",
+      "date": "2015-09-01T19:41:26.134Z"
+    }
+  ],
+  "created": "2015-06-24T21:01:58.940Z",
+  "modified": "2015-10-15T02:43:32.461Z",
+  "lastPublisher": {
+    "name": "justinmchase",
+    "email": "justin.m.chase@outlook.com"
+  },
+  "owners": [
     {
       "name": "justinmchase",
       "email": "justin.m.chase@outlook.com"
     }
   ],
-  "directories": {}
+  "readme": "node-jitterbuffer\n=========\n### NodeJS native bindings to libspeex jitter buffer\n\n    var jitter = require('jitterbuffer').JitterBuffer;\n    var JB = jitter.JitterBuffer;\n    var jb = new JB();\n\n    jb.put({ data: new Buffer(10), timestamp: 10, span: 10 });\n    jb.put({ data: new Buffer(10), timestamp: 30, span: 10 });\n    jb.put({ data: new Buffer(10), timestamp: 20, span: 10 });\n    jb.put({ data: new Buffer(10), timestamp: 50, span: 10 });\n\n    jb.get(10).timestamp; // 10\n    jb.get(10).timestamp; // 20\n    jb.get(10).timestamp; // 30\n    jb.get(10)            // jitter.MISSING\n    jb.get(10).timestamp; // 50\n\n\nPlatform support\n----------------\n\nSupported platforms:\n- Linux x64\n- Darwin x64\n- Windows x64\n\nAdd new supported platforms by running ./configure in deps/speex-1.2rc1 and\ncopying the following files:\n\n- config.h\n- include/speex/speex_config_types.h\n\nto `deps/config/celt-0.7.1/<os>/<arch>` maintaining the relative path. See\nthe existing platforms for an example.\n\nUse the following flags: --enable-static --disable-shared --with-pic\n\nFork Notes\n----------\nThis fork adds electron build support, compatible with [electron-updater](https://github.com/evolvelabs/electron-updater).\n\nBinaries available for various platforms on s3, e.g.:\nhttps://s3.amazonaws.com/evolve-bin/electron-jitterbuffer/electron-jitterbuffer-0.1.8-win32-x64-release-master.tgz\n\nSee the `package.json` for how the url is composed."
 }

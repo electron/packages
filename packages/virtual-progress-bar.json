@@ -9,8 +9,17 @@
     "test": "standard && node test/virtual-progress-bar.js && browserify test/virtual-progress-bar.js | testron"
   },
   "repository": {
-    "type": "git",
-    "url": "git+https://github.com/chinedufn/virtual-progress-bar.git"
+    "user": "chinedufn",
+    "repo": "virtual-progress-bar",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/chinedufn/virtual-progress-bar/tarball/master",
+    "clone_url": "https://github.com/chinedufn/virtual-progress-bar",
+    "https_url": "https://github.com/chinedufn/virtual-progress-bar",
+    "travis_url": "https://travis-ci.org/chinedufn/virtual-progress-bar",
+    "zip_url": "https://github.com/chinedufn/virtual-progress-bar/archive/master.zip",
+    "api_url": "https://api.github.com/repos/chinedufn/virtual-progress-bar"
   },
   "keywords": [
     "virtual",
@@ -25,9 +34,6 @@
     "email": "frankie.nwafili@gmail.com"
   },
   "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/chinedufn/virtual-progress-bar/issues"
-  },
   "homepage": "https://github.com/chinedufn/virtual-progress-bar#readme",
   "devDependencies": {
     "browserify": "^13.0.0",
@@ -48,28 +54,33 @@
     "xtend": "^4.0.1"
   },
   "gitHead": "d0d39bc094b9337b60e0a9ee1f486314e05d8eb8",
-  "_id": "virtual-progress-bar@1.0.0",
-  "_shasum": "c975bcb2b5d3c08d68c8132b11447edfe1e794f2",
-  "_from": ".",
   "_npmVersion": "3.5.2",
   "_nodeVersion": "0.12.2",
-  "_npmUser": {
-    "name": "chinedufn",
-    "email": "frankie.nwafili@gmail.com"
-  },
   "dist": {
     "shasum": "c975bcb2b5d3c08d68c8132b11447edfe1e794f2",
     "tarball": "http://registry.npmjs.org/virtual-progress-bar/-/virtual-progress-bar-1.0.0.tgz"
   },
-  "maintainers": [
+  "versions": [
+    {
+      "number": "0.0.1",
+      "date": "2016-02-11T14:58:17.196Z"
+    },
+    {
+      "number": "1.0.0",
+      "date": "2016-02-12T10:31:38.705Z"
+    }
+  ],
+  "created": "2016-02-11T14:58:17.196Z",
+  "modified": "2016-02-12T10:31:38.705Z",
+  "lastPublisher": {
+    "name": "chinedufn",
+    "email": "frankie.nwafili@gmail.com"
+  },
+  "owners": [
     {
       "name": "chinedufn",
       "email": "frankie.nwafili@gmail.com"
     }
   ],
-  "_npmOperationalInternal": {
-    "host": "packages-5-east.internal.npmjs.com",
-    "tmp": "tmp/virtual-progress-bar-1.0.0.tgz_1455273096961_0.8187352772802114"
-  },
-  "directories": {}
+  "readme": "virtual-progress-bar [![npm version](https://badge.fury.io/js/virtual-progress-bar.svg)](http://badge.fury.io/js/virtual-progress-bar) [![Build Status](https://travis-ci.org/chinedufn/virtual-progress-bar.svg?branch=master)](https://travis-ci.org/chinedufn/virtual-progress-bar)\n===============\n\n> A stateless progress bar component. Takes on its parent element's width and height\n\n[View live demo](http://chinedufn.github.io/virtual-progress-bar/)\n\nExamples:\n\n- [virtual-dom](demo/standalone-virtual-dom.js)\n- [react](demo/react.js)\n\n## To Install\n\n```\n$ npm install --save virtual-progress-bar\n```\n\n## Usage\n\n`virtual-progress-bar` works with [virtual-dom](https://github.com/Matt-Esch/virtual-dom),\n[react](https://npmjs.com/package/react), or any other DOM builder with a [hyperscript](https://github.com/Raynos/virtual-hyperscript#hselector-properties-children) style api\n\n```js\nvar h = require('virtual-dom/h')\nvar ProgressBar = require('virtual-progress-bar')\nProgressBar(h) // returns vtree\n```\n\n```js\nvar h = require('react').createElement\nvar ProgressBar = require('virtual-progress-bar')\nProgressBar(h, {meterColor: 'red'}) // returns vtree\n```\n\n\n```sh\n# view the demo in a local browser by pasting this into your terminal\n# changes to the `demo` and `src` directories will live reload in your browser\ngit clone https://github.com/chinedufn/virtual-progress-bar && cd virtual-progress-bar && npm install && npm run demo\n```\n\n## API\n\n### `ProgressBar.render(h[, opts])` -> `vtree`\n\n#### h\n\n*Required*\n\nType: `function`\n\nYour `hyperscript` style DOM builder\n\n```js\n// standalone virtual-dom example\nvar h = require('virtual-dom/h')\nProgressBar.render(h)\n```\n\n```js\n// React example\nvar React = require('react')\nProgressBar.render(React.createElement)\n```\n\n#### Options\n\n*Optional*\n\nType: `object`\n\n`virtual-progress-bar` comes with [default options](src/default-options.js). Pass in the ones that you'd like to override\n\n```js\n// Example overrides\nvar myOptions = {\n  containerColor: 'rgba(0, 0, 0, .8)',\n  meterColor: '#ff0000'\n  direction: 'column',\n  percent: '90'\n}\nProgressBar.render(h, myOptions)\n```\n\n##### containerColor\n\nType: `string`\n\nDefault: `'#1a1a1a1'`\n\nThe color of your container in [css color notation](https://developer.mozilla.org/en-US/docs/Web/CSS/color)\n\n##### meterColor\n\nType: `string`\n\nDefault: `'#fecf23'`\n\nThe color of your progress meter in [css color notation](https://developer.mozilla.org/en-US/docs/Web/CSS/color)\n\n##### direction\n\nType: `string`\n\nDefault: `'row'`\n\n`'row'` for a horizontal progress bar\n\n`'column'` for a vertical progress bar\n\n##### percent\n\nType: `number`\n\nDefault: `50`\n\nThe percent that your meter is filled\n\n## TODO:\n\n- Clean up examples\n- Think about exposing an api to extend the properties of RenderProgressBar's internal Vnodes\n- Add an animated candy-striped bar example\n\n## See Also\n\n- [virtual-loading-dots](https://github.com/chinedufn/virtual-loading-dots)\n- [virtual-dom](https://github.com/Matt-Esch/virtual-dom)\n\n## License\n\nMIT\n"
 }

@@ -4,8 +4,17 @@
   "description": "Fix the $PATH on OS X when run from a GUI app",
   "license": "MIT",
   "repository": {
-    "type": "git",
-    "url": "https://github.com/sindresorhus/fix-path"
+    "user": "sindresorhus",
+    "repo": "fix-path",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/sindresorhus/fix-path/tarball/master",
+    "clone_url": "https://github.com/sindresorhus/fix-path",
+    "https_url": "https://github.com/sindresorhus/fix-path",
+    "travis_url": "https://travis-ci.org/sindresorhus/fix-path",
+    "zip_url": "https://github.com/sindresorhus/fix-path/archive/master.zip",
+    "api_url": "https://api.github.com/repos/sindresorhus/fix-path"
   },
   "author": {
     "name": "Sindre Sorhus",
@@ -43,24 +52,35 @@
     "xo": "*"
   },
   "gitHead": "46301c684b6ccf5f4e1bca3f77404eab4a91a7ed",
-  "bugs": {
-    "url": "https://github.com/sindresorhus/fix-path/issues"
-  },
   "homepage": "https://github.com/sindresorhus/fix-path",
-  "_id": "fix-path@2.0.0",
-  "_shasum": "f355834d04a59bcba3cda4502e767a8cd8f75e05",
-  "_from": ".",
   "_npmVersion": "2.14.12",
   "_nodeVersion": "4.3.0",
-  "_npmUser": {
-    "name": "sindresorhus",
-    "email": "sindresorhus@gmail.com"
-  },
   "dist": {
     "shasum": "f355834d04a59bcba3cda4502e767a8cd8f75e05",
     "tarball": "http://registry.npmjs.org/fix-path/-/fix-path-2.0.0.tgz"
   },
-  "maintainers": [
+  "stars": 1,
+  "versions": [
+    {
+      "number": "1.0.0",
+      "date": "2015-04-27T10:00:19.743Z"
+    },
+    {
+      "number": "1.1.0",
+      "date": "2015-04-27T17:50:19.661Z"
+    },
+    {
+      "number": "2.0.0",
+      "date": "2016-04-06T16:35:52.754Z"
+    }
+  ],
+  "created": "2015-04-27T10:00:19.743Z",
+  "modified": "2016-04-06T16:35:52.754Z",
+  "lastPublisher": {
+    "name": "sindresorhus",
+    "email": "sindresorhus@gmail.com"
+  },
+  "owners": [
     {
       "name": "silverwind",
       "email": "me@silverwind.io"
@@ -70,9 +90,5 @@
       "email": "sindresorhus@gmail.com"
     }
   ],
-  "_npmOperationalInternal": {
-    "host": "packages-12-west.internal.npmjs.com",
-    "tmp": "tmp/fix-path-2.0.0.tgz_1459960552211_0.5505990979727358"
-  },
-  "directories": {}
+  "readme": "# fix-path [![Build Status](https://travis-ci.org/sindresorhus/fix-path.svg?branch=master)](https://travis-ci.org/sindresorhus/fix-path)\n\n> Fix the `$PATH` on OS X when run from a GUI app\n\nUseful for Electron/NW.js apps as GUI apps on OS X doesn't inherit the `$PATH` defined in your dotfiles *(.bashrc/.bash_profile/.zshrc/etc)*.\n\n\n## Install\n\n```\n$ npm install --save fix-path\n```\n\n\n## Usage\n\n```js\nconst fixPath = require('fix-path');\n\nconsole.log(process.env.PATH);\n//=> '/usr/bin'\n\nfixPath();\n\nconsole.log(process.env.PATH);\n//=> '/usr/local/bin:/usr/bin'\n```\n\n\n## Related\n\n- [shell-path](https://github.com/sindresorhus/shell-path) - Get the `$PATH` from the shell\n\n\n## License\n\nMIT © [Sindre Sorhus](https://sindresorhus.com)\n"
 }

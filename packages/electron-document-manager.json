@@ -21,24 +21,41 @@
     "lodash": "^4.0.0"
   },
   "gitHead": "45357e1cc6d0d568bdbcdbc4d2c2fb24c8575bb8",
-  "_id": "electron-document-manager@0.1.0",
-  "_shasum": "4f6762204bf0dc8d8a8b8df650fda194335d68ea",
-  "_from": ".",
   "_npmVersion": "3.5.3",
   "_nodeVersion": "5.3.0",
-  "_npmUser": {
-    "name": "jacksondc",
-    "email": "jackson@jacksondc.com"
-  },
   "dist": {
     "shasum": "4f6762204bf0dc8d8a8b8df650fda194335d68ea",
     "tarball": "http://registry.npmjs.org/electron-document-manager/-/electron-document-manager-0.1.0.tgz"
   },
-  "maintainers": [
+  "versions": [
+    {
+      "number": "0.0.1",
+      "date": "2016-01-24T01:04:12.220Z"
+    },
+    {
+      "number": "0.0.2",
+      "date": "2016-01-24T05:00:10.817Z"
+    },
+    {
+      "number": "0.0.3",
+      "date": "2016-01-24T05:13:04.917Z"
+    },
+    {
+      "number": "0.1.0",
+      "date": "2016-01-24T05:19:07.465Z"
+    }
+  ],
+  "created": "2016-01-24T01:04:12.220Z",
+  "modified": "2016-01-24T05:19:07.465Z",
+  "lastPublisher": {
+    "name": "jacksondc",
+    "email": "jackson@jacksondc.com"
+  },
+  "owners": [
     {
       "name": "jacksondc",
       "email": "jackson@jacksondc.com"
     }
   ],
-  "directories": {}
+  "readme": "# electron-document-manager\nelectron-document-manager is an [Electron](https://github.com/atom/electron) package that manages opening, saving and closing documents. All you have to do is drop in your web app, define `setContent` and `getContent` methods, and electron-document-manager will manage the rest – including everything in the main process.\n\nSome of the document code is based on jdittrich's fantastic [Electron_appFileOperations](https://github.com/jdittrich/Electron_appFileOperations) script.\n\n## Example Use\n### Main Process\n**main.js**\n```js\nvar DocumentManager = require('electron-document-manager').main;\n\nDocumentManager({ entryPoint: 'file://' + __dirname + '/app/index.html' });\n```\n\n### Renderer Process\n**index.html**\n```html\n<textarea id=\"content\"></textarea>\n<script src=\"index.js\"></script>\n```\n\n**index.js**\n```js\nvar DocumentManager = require('electron-document-manager').getRendererModule();\n\nDocumentManager.setContentSetter(function(content) {\n\tdocument.querySelector('#content').value = content;\n});\n\nDocumentManager.setContentGetter(function() {\n\treturn document.querySelector('#content').value;\n})\n\ndocument.querySelector('#content').addEventListener('input', function() {\n\tDocumentManager.setEdited(true);\n});\n```\n"
 }

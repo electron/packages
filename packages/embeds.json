@@ -14,8 +14,17 @@
     "open-coverage": "npm run test:unit && nyc report --reporter=lcov && open coverage/lcov-report/index.html"
   },
   "repository": {
-    "type": "git",
-    "url": "git+https://github.com/micnews/embeds.git"
+    "user": "micnews",
+    "repo": "embeds",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/micnews/embeds/tarball/master",
+    "clone_url": "https://github.com/micnews/embeds",
+    "https_url": "https://github.com/micnews/embeds",
+    "travis_url": "https://travis-ci.org/micnews/embeds",
+    "zip_url": "https://github.com/micnews/embeds/archive/master.zip",
+    "api_url": "https://api.github.com/repos/micnews/embeds"
   },
   "keywords": [
     "embeds"
@@ -24,9 +33,6 @@
     "name": "mic.com"
   },
   "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/micnews/embeds/issues"
-  },
   "homepage": "https://github.com/micnews/embeds#readme",
   "devDependencies": {
     "babel-cli": "^6.6.5",
@@ -61,20 +67,93 @@
     "virtual-element": "^1.2.0"
   },
   "gitHead": "3a44c5380ff2d91f1a225b9cc890ce53faa784a7",
-  "_id": "embeds@2.5.1",
-  "_shasum": "145941efca8d9e36b48a77ce350fa575992cd787",
-  "_from": ".",
   "_npmVersion": "3.8.3",
   "_nodeVersion": "5.4.1",
-  "_npmUser": {
-    "name": "iefserge",
-    "email": "shayief@gmail.com"
-  },
   "dist": {
     "shasum": "145941efca8d9e36b48a77ce350fa575992cd787",
     "tarball": "http://registry.npmjs.org/embeds/-/embeds-2.5.1.tgz"
   },
-  "maintainers": [
+  "versions": [
+    {
+      "number": "1.0.0",
+      "date": "2016-03-18T08:29:41.199Z"
+    },
+    {
+      "number": "1.1.0",
+      "date": "2016-03-20T19:40:39.740Z"
+    },
+    {
+      "number": "1.2.0",
+      "date": "2016-03-28T14:26:36.909Z"
+    },
+    {
+      "number": "1.2.1",
+      "date": "2016-03-31T12:10:55.999Z"
+    },
+    {
+      "number": "1.3.0",
+      "date": "2016-04-06T07:22:57.224Z"
+    },
+    {
+      "number": "1.4.0",
+      "date": "2016-04-06T13:36:16.418Z"
+    },
+    {
+      "number": "1.4.1",
+      "date": "2016-04-07T06:54:08.256Z"
+    },
+    {
+      "number": "1.4.2",
+      "date": "2016-04-07T15:10:54.162Z"
+    },
+    {
+      "number": "1.4.3",
+      "date": "2016-04-10T21:52:27.702Z"
+    },
+    {
+      "number": "1.5.0",
+      "date": "2016-04-12T21:36:30.059Z"
+    },
+    {
+      "number": "2.0.0",
+      "date": "2016-04-20T08:20:44.709Z"
+    },
+    {
+      "number": "2.0.1",
+      "date": "2016-04-25T07:43:36.470Z"
+    },
+    {
+      "number": "2.1.0",
+      "date": "2016-04-28T15:04:09.055Z"
+    },
+    {
+      "number": "2.2.0",
+      "date": "2016-05-27T08:26:58.759Z"
+    },
+    {
+      "number": "2.3.0",
+      "date": "2016-06-06T15:57:04.675Z"
+    },
+    {
+      "number": "2.4.0",
+      "date": "2016-06-10T10:20:40.755Z"
+    },
+    {
+      "number": "2.5.0",
+      "date": "2016-06-18T09:35:24.834Z"
+    },
+    {
+      "number": "2.5.1",
+      "date": "2016-06-20T14:41:21.290Z"
+    }
+  ],
+  "created": "2016-03-18T08:29:41.199Z",
+  "modified": "2016-06-20T14:41:21.290Z",
+  "lastPublisher": {
+    "name": "iefserge",
+    "email": "shayief@gmail.com"
+  },
+  "owners": [
     {
       "name": "ellell",
       "email": "lisaovermyr@gmail.com"
@@ -92,9 +171,5 @@
       "email": "orry@fancyhands.com"
     }
   ],
-  "_npmOperationalInternal": {
-    "host": "packages-12-west.internal.npmjs.com",
-    "tmp": "tmp/embeds-2.5.1.tgz_1466433678576_0.9686227976344526"
-  },
-  "directories": {}
+  "readme": "# embeds\n\nA javascript module to parse and render embeds - such as images, video, youtube, facebook etc.\n\nCan be used in the browser (through browserify) and node.js.\n\n## Installation\n\n```shell\nnpm install embeds --save\n```\n\n## Usage/example\n\nThe following is an example, using embeds together with [query-dom](https://www.npmjs.com/package/query-dom) so that it can be run in node.js\n\nWhen used in the browser, a browser DOM element can be used instead.\n\n```js\nimport {parse} from 'embeds';\nimport queryDom from 'query-dom';\n\n// embed code for an embed, in this example a simple youtube embed.\n// see all supported embeds further down\nconst embedCode = '<iframe src=\"https://www.youtube.com/embed/pDVmldTurqk\"></iframe>';\nconst parsed = parse(queryDom(embedCode));\n```\n\nYou can also parse input, such as a url.\n\n```js\nimport {parseInput} from 'embeds';\n\nconst parsed = parseInput('https://www.youtube.com/embed/pDVmldTurqk');\n```\n\nFor more examples, please see the [tests](https://github.com/micnews/embeds/tree/master/test).\n"
 }

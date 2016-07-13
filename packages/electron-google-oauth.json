@@ -9,11 +9,17 @@
     "oauth2"
   ],
   "repository": {
-    "type": "git",
-    "url": "git+https://github.com/parro-it/electron-google-oauth.git"
-  },
-  "bugs": {
-    "url": "https://github.com/parro-it/electron-google-oauth/issues"
+    "user": "parro-it",
+    "repo": "electron-google-oauth",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/parro-it/electron-google-oauth/tarball/master",
+    "clone_url": "https://github.com/parro-it/electron-google-oauth",
+    "https_url": "https://github.com/parro-it/electron-google-oauth",
+    "travis_url": "https://travis-ci.org/parro-it/electron-google-oauth",
+    "zip_url": "https://github.com/parro-it/electron-google-oauth/archive/master.zip",
+    "api_url": "https://api.github.com/repos/parro-it/electron-google-oauth"
   },
   "version": "1.3.1",
   "main": "dist/index.js",
@@ -67,24 +73,50 @@
   "license": "MIT",
   "gitHead": "93aaae6c194398afc99cb93788abc6d3f57b9a42",
   "homepage": "https://github.com/parro-it/electron-google-oauth#readme",
-  "_id": "electron-google-oauth@1.3.1",
-  "_shasum": "55ae5da3a13b80ed60995168bf731865bc0139da",
-  "_from": ".",
   "_npmVersion": "3.3.6",
   "_nodeVersion": "5.0.0",
-  "_npmUser": {
-    "name": "parroit",
-    "email": "andrea.parodi@ebansoftware.net"
-  },
   "dist": {
     "shasum": "55ae5da3a13b80ed60995168bf731865bc0139da",
     "tarball": "http://registry.npmjs.org/electron-google-oauth/-/electron-google-oauth-1.3.1.tgz"
   },
-  "maintainers": [
+  "stars": 3,
+  "versions": [
+    {
+      "number": "1.0.1",
+      "date": "2015-08-21T06:43:27.538Z"
+    },
+    {
+      "number": "1.1.0",
+      "date": "2015-08-21T10:08:44.577Z"
+    },
+    {
+      "number": "1.1.4",
+      "date": "2015-10-28T18:02:12.396Z"
+    },
+    {
+      "number": "1.2.0",
+      "date": "2016-01-25T08:32:32.829Z"
+    },
+    {
+      "number": "1.3.0",
+      "date": "2016-01-29T11:04:03.463Z"
+    },
+    {
+      "number": "1.3.1",
+      "date": "2016-01-31T18:33:02.719Z"
+    }
+  ],
+  "created": "2015-08-21T06:43:27.538Z",
+  "modified": "2016-01-31T18:33:02.719Z",
+  "lastPublisher": {
+    "name": "parroit",
+    "email": "andrea.parodi@ebansoftware.net"
+  },
+  "owners": [
     {
       "name": "parroit",
       "email": "andrea.parodi@ebansoftware.net"
     }
   ],
-  "directories": {}
+  "readme": "# electron-google-oauth\n\nGet Google api access token using an electron window\nto let the user authorize the app.\n\n## Installation\n\n```bash\nnpm install --save electron-google-oauth\n```\n\n## Usage\n\n```javascript\n  import electronGoogleOauth from 'electron-google-oauth';\n\n  const browserWindowParams = {\n      'use-content-size': true,\n      center: true,\n      show: false,\n      resizable: false,\n      'always-on-top': true,\n      'standard-window': true,\n      'auto-hide-menu-bar': true,\n      'node-integration': false\n  };\n\n  const googleOauth = electronGoogleOauth(browserWindowParams);\n\n  ( async () => {\n\n    // retrieve  authorization code only\n    const authCode = await googleOauth.getAuthorizationCode(\n      ['https://www.google.com/m8/feeds'],\n      'your-client-id',\n      'your-client-secret',\n      'your-redirect-uri'\n    );\n    console.dir(authCode);\n\n    // retrieve access token and refresh token\n    const result = await googleOauth.getAccessToken(\n      ['https://www.google.com/m8/feeds'],\n      'your-client-id',\n      'your-client-secret',\n      'your-redirect-uri'\n    );\n    console.dir(result);\n\n  })();\n\n```\n\n## Testing\nBuild the app, then run it:\n```\nnpm run build && electron dist/bin.js --scopes 'SCOPES' --clientId 'CLIENTID' --clientSecret 'CLIENTSECRET' --redirectUri 'REDIRECTURI'\n```\n\n## License\nThe MIT License (MIT)\n\nCopyright (c) 2015 Andrea Parodi\n"
 }

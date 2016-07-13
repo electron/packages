@@ -1,0 +1,72 @@
+{
+  "name": "thegamesdb",
+  "author": {
+    "name": "Nauzet Hernandez",
+    "email": "nauzethc@gmail.com",
+    "url": "http://www.nauzethdez.com"
+  },
+  "version": "0.1.2",
+  "description": "TheGamesDB.net API wrapper",
+  "homepage": "https://github.com/nauzethc/thegamesdb-api",
+  "main": "lib/api.js",
+  "scripts": {
+    "build": "babel -d lib src",
+    "prepublish": "npm run build"
+  },
+  "keywords": [
+    "thegamesdb",
+    "api",
+    "games-api",
+    "games",
+    "videogame",
+    "gamedb",
+    "db"
+  ],
+  "respository": {
+    "type": "git",
+    "url": "https://github.com/nauzethc/thegamesdb-api"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "axios": "0.9.1",
+    "xml2js": "0.4.16"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.4.5",
+    "babel-preset-es2015": "^6.3.13"
+  },
+  "gitHead": "81ca15f91aa96402665582ccbfc441a1c55b0098",
+  "_npmVersion": "3.3.9",
+  "_nodeVersion": "5.0.0",
+  "dist": {
+    "shasum": "c1b1a118074c1881f375c40ef32cfdae2b2069f0",
+    "tarball": "http://registry.npmjs.org/thegamesdb/-/thegamesdb-0.1.2.tgz"
+  },
+  "versions": [
+    {
+      "number": "0.1.0",
+      "date": "2016-02-04T14:59:33.739Z"
+    },
+    {
+      "number": "0.1.1",
+      "date": "2016-02-04T15:01:40.166Z"
+    },
+    {
+      "number": "0.1.2",
+      "date": "2016-02-04T16:49:08.486Z"
+    }
+  ],
+  "created": "2016-02-04T14:59:33.739Z",
+  "modified": "2016-02-04T16:49:08.486Z",
+  "lastPublisher": {
+    "name": "nauzethc",
+    "email": "nauzethc@gmail.com"
+  },
+  "owners": [
+    {
+      "name": "nauzethc",
+      "email": "nauzethc@gmail.com"
+    }
+  ],
+  "readme": "# TheGamesDB.js\nJust a Javascript wrapper to [TheGamesDB.net](http://thegamesdb.net/) API. Original API documentation can be found [here](http://wiki.thegamesdb.net/index.php/API_Introduction).\n\n## Introduction\nAlthought other libraries can query the API and parse XML responses, I found that resultant objects were too complex and not so normalized as I wished. So I've used reducer functions to create simpler objects and attributes, with parsed data (numbers and dates) and normalized lists, to be more serializable and JSON friendly.\n\nQuery functions return Javascript *promises* using promise based [axios]([https://github.com/mzabriskie/axios) client library (browser and Node compatible).\n\n## Installation\n```bash\nnpm install thegamesdb\n```\n\n## Usage\n```javascript\n// ES6\nimport thegamesdb from 'thegamesdb';\n\n// ES5\nvar thegamesdb = require('thegamesdb');\n\nthegamesdb.getGame({ id: 1 }).then(cb);\nthegamesdb.getGamesList({ name: 'super mario' }).then(cb).catch(err);\n...\n```\n\n## API\n### thegamesdb.getGame({ *id* }): *Object*\n```javascript\nthegamesdb.getGame({ id: 1})\n```\n```json\n{\n  \"id\": 1,\n  \"title\": \"Halo: Combat Evolved\",\n  \"platform\": \"PC\",\n  \"releaseDate\": \"2001-12-15T00:00:00.000Z\",\n  \"overview\": \"In Halo's twenty-sixth century setting, the player assumes the role of the Master Chief, a cybernetically enhanced super-soldier. The player is accompanied by Cortana, an artificial intelligence who occupies the Master Chief's neural interface. Players battle various aliens on foot and in vehicles as they attempt to uncover the secrets of the eponymous Halo, a ring-shaped artificial planet.\",\n  \"ESRB\": \"T - Teen\",\n  \"genres\": [\n    \"Shooter\"\n  ],\n  \"players\": \"1\",\n  \"youtube\": \"http://www.youtube.com/watch?v=dR3Hm8scbEw\",\n  \"publisher\": \"Microsoft Game Studios\",\n  \"developer\": \"Bungie\",\n  \"rating\": 6.8889,\n  \"similar\": [\n    {\n      \"id\": 3996,\n      \"platformId\": 14\n    }\n  ],\n  \"images\": [\n    {\n      \"type\": \"clearlogo\",\n      \"url\": \"/clearlogo/1.png\",\n      \"width\": 400,\n      \"height\": 200\n    },\n    {\n      \"type\": \"screenshot\",\n      \"url\": \"/screenshots/1-1.jpg\",\n      \"width\": 800,\n      \"height\": 600,\n      \"thumb\": \"/screenshots/thumb/1-1.jpg\"\n    },\n    {\n      \"type\": \"screenshot\",\n      \"url\": \"/screenshots/1-2.jpg\",\n      \"width\": 800,\n      \"height\": 600,\n      \"thumb\": \"/screenshots/thumb/1-2.jpg\"\n    },\n    ...\n  ]\n}\n```\n\n### thegamesdb.getGamesList({ *name* [, *platform* ] }): *Array*\n`name` param is mandatory. You can filter results by including **exact** platform name (not alias or ID).\n```javascript\nthegamesdb.getGamesList({ name: 'super mario', platform: 'Super Nintendo (SNES)'})\n```\n```json\n[\n  {\n    \"id\": 3275,\n    \"title\": \"Super Mario All-Stars + Super Mario World\",\n    \"releaseDate\": \"1994-01-16T00:00:00.000Z\",\n    \"platform\": \"Super Nintendo (SNES)\"\n  },\n  {\n    \"id\": 136,\n    \"title\": \"Super Mario World\",\n    \"releaseDate\": \"1990-12-21T00:00:00.000Z\",\n    \"platform\": \"Super Nintendo (SNES)\"\n  },\n  {\n    \"id\": 21356,\n    \"title\": \"Mario no Super Picross\",\n    \"releaseDate\": \"1995-10-14T00:00:00.000Z\",\n    \"platform\": \"Super Nintendo (SNES)\"\n  },\n  {\n    \"id\": 41,\n    \"title\": \"Super Mario Kart\",\n    \"releaseDate\": \"1992-10-01T00:00:00.000Z\",\n    \"platform\": \"Super Nintendo (SNES)\"\n  },\n  ...\n]\n```\n\n### thegamesdb.getGameArt({ *id* }): *Array*\n```javascript\nthegamesdb.getGameArt({ id: 4 })\n```\n```json\n[\n  {\n    \"type\": \"clearlogo\",\n    \"url\": \"/clearlogo/4.png\",\n    \"width\": 400,\n    \"height\": 148\n  },\n  {\n    \"type\": \"screenshot\",\n    \"url\": \"/screenshots/4-1.jpg\",\n    \"width\": 1920,\n    \"height\": 1080,\n    \"thumb\": \"/screenshots/thumb/4-1.jpg\"\n  },\n  {\n    \"type\": \"banner\",\n    \"url\": \"/graphical/4-g.jpg\",\n    \"width\": 760,\n    \"height\": 140\n  },\n  {\n    \"type\": \"boxart\",\n    \"url\": \"/boxart/original/back/4-1.jpg\",\n    \"width\": 1000,\n    \"height\": 705,\n    \"side\": \"back\"\n  },\n  ...\n]\n```\n\n### thegamesdb.getPlatform({ *id* }): *Object*\n```javascript\nthegamesdb.getPlatform({ id: 1 })\n```\n```json\n{\n  \"id\": 1,\n  \"name\": \"PC\",\n  \"overview\": \"PC stands for Personal Computer. Mass-market consumer computers use highly standardized components and so are simple for an end user to assemble into a working system. A typical desktop computer consists of a computer case which holds the power supply, motherboard, hard disk and often an optical disc drive. External devices such as a computer monitor or visual display unit, keyboard, and a pointing device are usually found in a personal computer.\",\n  \"developer\": \"IBM\",\n  \"cpu\": \"x86 Based\",\n  \"rating\": 7,\n  \"images\": [...]\n}\n```\n\n### thegamesdb.getPlatformsList(): *Array*\n```javascript\nthegamesdb.getPlatformsList()\n```\n```json\n[\n  {\n    \"id\": 25,\n    \"name\": \"3DO\",\n    \"alias\": \"3do\"\n  },\n  {\n    \"id\": 4944,\n    \"name\": \"Acorn Archimedes\",\n    \"alias\": \"acorn-archimedes\"\n  },\n  {\n    \"id\": 4954,\n    \"name\": \"Acorn Electron\",\n    \"alias\": \"acorn-electron\"\n  },\n  {\n    \"id\": 4911,\n    \"name\": \"Amiga\",\n    \"alias\": \"amiga\"\n  },\n  {\n    \"id\": 4947,\n    \"name\": \"Amiga CD32\",\n    \"alias\": \"amiga-cd32\"\n  },\n  ...\n]\n```\n\n### thegamesdb.getPlatformGames({ *id* }): *Array*\n```javascript\nthegamesdb.getPlatformGames({ id: 16 })\n```\n```json\n[\n  {\n    \"id\": 33,\n    \"title\": \"Jet Set Radio\",\n    \"releaseDate\": \"2000-07-28T23:00:00.000Z\"\n  },\n  {\n    \"id\": 195,\n    \"title\": \"Marvel vs. Capcom: Clash of Super Heroes\",\n    \"releaseDate\": \"1998-02-12T00:00:00.000Z\"\n  },\n  {\n    \"id\": 200,\n    \"title\": \"Ikaruga\",\n    \"releaseDate\": \"2002-10-04T23:00:00.000Z\"\n  },\n  {\n    \"id\": 420,\n    \"title\": \"Dino Crisis\",\n    \"releaseDate\": \"2000-12-14T00:00:00.000Z\"\n  },\n  ...\n]\n```\n\n## License\nMIT\n"
+}

@@ -13,14 +13,20 @@
   },
   "preferGlobal": true,
   "repository": {
-    "type": "git",
-    "url": "https://github.com/Urucas/zoster.git"
+    "user": "Urucas",
+    "repo": "zoster",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/Urucas/zoster/tarball/master",
+    "clone_url": "https://github.com/Urucas/zoster",
+    "https_url": "https://github.com/Urucas/zoster",
+    "travis_url": "https://travis-ci.org/Urucas/zoster",
+    "zip_url": "https://github.com/Urucas/zoster/archive/master.zip",
+    "api_url": "https://api.github.com/repos/Urucas/zoster"
   },
   "bin": {
     "zoster": "./bin/zoster"
-  },
-  "bugs": {
-    "url": "https://github.com/Urucas/zoster/issues"
   },
   "engines": {
     "node": ">=0.10.0"
@@ -57,24 +63,102 @@
     "mocha-clean": "^0.4.0"
   },
   "gitHead": "c4dbeb989aa299eca961ef3f350536f90d323584",
-  "_id": "zoster@0.2.3",
-  "_shasum": "fef3a2222452f1b30efea2463af0137012672dc0",
-  "_from": ".",
   "_npmVersion": "2.5.1",
   "_nodeVersion": "1.3.0",
-  "_npmUser": {
+  "dist": {
+    "shasum": "fef3a2222452f1b30efea2463af0137012672dc0",
+    "tarball": "http://registry.npmjs.org/zoster/-/zoster-0.2.3.tgz"
+  },
+  "stars": 1,
+  "versions": [
+    {
+      "number": "0.0.1",
+      "date": "2015-05-02T23:55:28.685Z"
+    },
+    {
+      "number": "0.0.2",
+      "date": "2015-05-03T00:01:28.821Z"
+    },
+    {
+      "number": "0.0.3",
+      "date": "2015-05-04T13:55:22.096Z"
+    },
+    {
+      "number": "0.0.5",
+      "date": "2015-05-05T03:43:43.837Z"
+    },
+    {
+      "number": "0.0.6",
+      "date": "2015-05-05T03:57:12.095Z"
+    },
+    {
+      "number": "0.0.7",
+      "date": "2015-05-05T13:23:43.203Z"
+    },
+    {
+      "number": "0.0.8",
+      "date": "2015-05-06T14:30:06.666Z"
+    },
+    {
+      "number": "0.1.0",
+      "date": "2015-05-06T16:36:05.013Z"
+    },
+    {
+      "number": "0.1.1",
+      "date": "2015-05-06T17:03:57.282Z"
+    },
+    {
+      "number": "0.1.3",
+      "date": "2015-05-08T13:17:47.122Z"
+    },
+    {
+      "number": "0.1.4",
+      "date": "2015-06-19T20:18:52.523Z"
+    },
+    {
+      "number": "0.1.5",
+      "date": "2015-06-22T02:21:20.622Z"
+    },
+    {
+      "number": "0.1.6",
+      "date": "2015-06-25T16:44:46.081Z"
+    },
+    {
+      "number": "0.1.8",
+      "date": "2015-06-29T22:41:28.856Z"
+    },
+    {
+      "number": "0.1.9",
+      "date": "2015-06-30T12:56:50.768Z"
+    },
+    {
+      "number": "0.2.0",
+      "date": "2015-06-30T22:33:43.946Z"
+    },
+    {
+      "number": "0.2.1",
+      "date": "2015-07-02T00:29:20.636Z"
+    },
+    {
+      "number": "0.2.2",
+      "date": "2015-07-02T02:02:12.127Z"
+    },
+    {
+      "number": "0.2.3",
+      "date": "2015-07-02T02:28:28.944Z"
+    }
+  ],
+  "created": "2015-05-02T23:55:28.685Z",
+  "modified": "2015-08-19T00:10:22.752Z",
+  "lastPublisher": {
     "name": "urucas",
     "email": "hello@urucas.com"
   },
-  "maintainers": [
+  "owners": [
     {
       "name": "urucas",
       "email": "hello@urucas.com"
     }
   ],
-  "dist": {
-    "shasum": "fef3a2222452f1b30efea2463af0137012672dc0",
-    "tarball": "http://registry.npmjs.org/zoster/-/zoster-0.2.3.tgz"
-  },
-  "directories": {}
+  "readme": "<img src=\"https://raw.githubusercontent.com/Urucas/zoster/master/logo.png\" />\n# Zoster [![Build Status](https://travis-ci.org/Urucas/zoster.svg?branch=master)](https://travis-ci.org/Urucas/zoster)\n\nZoster is a simple way to automate deep linking url testing on Android, by simply setting a few capabilities and maybe writting some code. \n\n**Why?**\n\nTesting that deep linking url works has always the same premise; open a website > click on a link > wait for an application to open > if it opens everything is ok. Zoster use a preseted appium test to automate this premise and test check it for you.\n\n**How?**\n\nLet's use an example. Following [Android Developer Guide](https://developer.android.com/guide/components/intents-common.html#Browser) we create an intent url, ```intent://zoster/hello?user=vruno#Intent;scheme=zoster;package=com.urucas.zoster_testapp;end``` \nthat will open our open application and send ```vruno``` as user param, which will we setted in an ```TextView```, showing **Hello vruno!**.\n\nTo use this example with Zoster, we create the following capabilities:\n```json\n{\n  \"name\": \"zoster test\",\n  \"intentURL\" : \"intent://zoster/hello?user=vruno#Intent;scheme=zoster;package=com.urucas.zoster_testapp;end\",\n  \"pkg\" : \"com.urucas.zoster_testapp\",\n  \"test_site\": \"http://labs.urucas.com/zoster\"\n}\n```\nWait, I dont have a site to test... yet. No worries, you can set```\"test_site\":\"local\"``` in capabilities and Zoster will create a temporary server with your browsable intent url on a ```<a>``` element to click. \n\nNext, we run zoster:\n```bash\nzoster --test [FULL_PATH_TO_CAPABILITIES]\n```\nThis simple test will check you have the link on the site provided, click on it and evaluate that your application opens.\n\n**What if dont just want to test my application opens after clicking on my browsable intent, I also want to test my application did some magic stuff ?**\n\nInception is here. Zoster let you include your own appium test to run after the application opens in native contexts, this way you can test the full flow of your browsable intent. \n\nIn this example, we said the ```user``` param will be setted in a ```TextView```, so to check the hole flow we create a small test to check our ```TextView``` is setted correctly and include it by setting the ```inception``` capability,\n```json\n{\n  \"name\": \"zoster test with inception\",\n  \"intentURL\" : \"intent://zoster/hello?user=vruno#Intent;scheme=zoster;package=com.urucas.zoster_testapp;end\",\n  \"pkg\" : \"com.urucas.zoster_testapp\",\n  \"test_site\": \"http://labs.urucas.com/zoster\",\n  \"inception\": {\n    \"name\" : \"check_name\",\n    \"path\" : \"[FULL_PATH_TO_TEST]\"\n  }\n}\n```\nOur inception test will look like this,\n```javascript\n// appium code inside test\ntest_name = function(caps, driver, success, error) {\n  var params = caps.params[0];\n  var text_should_be = \"Hello \"+params.value+\"!\";\n  driver.elementById(\"com.urucas.zoster_testapp:id/textView\", function(err, el) {\n    if(err) return error(err);\n    el.text(function(err, text){\n      if(err) return error(err);\n      if(text_should_be == text) {\n        success();\n      }else{\n        error(new Error(\"Test fails\"));\n      }\n    });\n  });\n}\nmodule.exports[\"check_name\"] = test_name;\n```\nNow, we have checked that our browsable intent has opened the Android app and also checked that the android application did the show the correct text.\n<img src=\"https://raw.githubusercontent.com/Urucas/zoster/master/screen.png\" />\n\n\n**Capabilities**\n```json\n{\n  \"name\" : \"your test name\",\n  \"pkg\"  : \"your application package name\",\n  \"intentURL\" : \"your browsable intent url\",\n  \"apk_path\" \"optional, full path to your apk to install before running the test\", \n  \"inception\" : {\n    \"name\" : \"inception test name\",\n    \"path\" : \"full path to your inception test\"\n  },\n  \"test_site\" : \"site url containing the browsable intent link\"\n}\n```\n\n# Install\n```bash\nnpm install -g zoster\nzoster --test [path_to_capabilities]\n```\n**or**\n```bash\ngit clone https://github.com/Urucas/zoster.git && cd zoster\nnpm install\nnpm start -- --test [path_to_capabilities]\n```\n\n# Requirements\n* Appium\n* ADB\n"
 }

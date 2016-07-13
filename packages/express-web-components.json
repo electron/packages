@@ -1,44 +1,96 @@
 {
   "name": "express-web-components",
-  "version": "0.1.4",
-  "description": "Declaratively build ExpressJS applications with web components.",
+  "version": "0.4.2",
+  "description": "Declaratively build Express applications with web components.",
   "keywords": [
     "web-components"
   ],
   "scripts": {
-    "start": "node dev-init.js && electron node_modules/scram-engine/main.js example/app/server/index.html",
-    "dev": "node dev-init.js && electron node_modules/scram-engine/main.js example/app/server/index.html -d"
+    "dev": "node dev-init.js && electron node_modules/scram-engine/main.js example/app/server/index.html",
+    "dev-window": "node dev-init.js && electron node_modules/scram-engine/main.js example/app/server/index.html -d",
+    "dev-file": "electron node_modules/scram-engine/main.js example/app/server/index.html -d -f",
+    "test": "electron node_modules/scram-engine/main.js test/index.html -d -p 5052"
   },
   "license": "MIT",
   "devDependencies": {
-    "@polymer/polymer": "^1.2.5-npm-test.2",
-    "electron-prebuilt": "^1.0.2",
-    "express": "^4.13.4",
-    "scram-engine": "0.0.4"
+    "axios": "^0.12.0",
+    "chai": "^3.5.0",
+    "cors": "^2.7.1",
+    "electron-prebuilt": "^1.2.6",
+    "es-no-build": "^0.1.0",
+    "express": "^4.14.0",
+    "mocha": "^2.5.3",
+    "scram-engine": "^0.3.1"
   },
-  "gitHead": "5118d4f677f1d9d5e76299ea281d14ce50a914a5",
-  "_id": "express-web-components@0.1.4",
-  "_shasum": "00159a1d92b3a0f36594c8972b6c7c4d31dff6b8",
-  "_from": ".",
+  "dependencies": {},
+  "gitHead": "c1efb051d5e65b6e976f2f7537e46d17ddddea51",
   "_npmVersion": "3.8.6",
   "_nodeVersion": "6.0.0",
-  "_npmUser": {
+  "dist": {
+    "shasum": "43a85c3ca39540b446e800922f0f3d1fe2c32d0a",
+    "tarball": "http://registry.npmjs.org/express-web-components/-/express-web-components-0.4.2.tgz"
+  },
+  "versions": [
+    {
+      "number": "0.0.1",
+      "date": "2016-05-03T08:30:04.137Z"
+    },
+    {
+      "number": "0.0.2",
+      "date": "2016-05-03T08:37:19.432Z"
+    },
+    {
+      "number": "0.0.3",
+      "date": "2016-05-05T18:34:08.447Z"
+    },
+    {
+      "number": "0.1.0",
+      "date": "2016-05-07T18:41:34.579Z"
+    },
+    {
+      "number": "0.1.1",
+      "date": "2016-05-07T18:46:20.987Z"
+    },
+    {
+      "number": "0.1.2",
+      "date": "2016-05-07T18:50:47.470Z"
+    },
+    {
+      "number": "0.1.3",
+      "date": "2016-05-07T19:11:19.629Z"
+    },
+    {
+      "number": "0.1.4",
+      "date": "2016-05-13T16:59:40.768Z"
+    },
+    {
+      "number": "0.3.0",
+      "date": "2016-07-09T17:11:50.650Z"
+    },
+    {
+      "number": "0.4.0",
+      "date": "2016-07-09T18:17:58.495Z"
+    },
+    {
+      "number": "0.4.1",
+      "date": "2016-07-09T19:09:57.076Z"
+    },
+    {
+      "number": "0.4.2",
+      "date": "2016-07-09T19:24:57.638Z"
+    }
+  ],
+  "created": "2016-05-03T08:30:04.137Z",
+  "modified": "2016-07-09T19:24:57.638Z",
+  "lastPublisher": {
     "name": "lastmjs",
     "email": "jordan.michael.last@gmail.com"
   },
-  "dist": {
-    "shasum": "00159a1d92b3a0f36594c8972b6c7c4d31dff6b8",
-    "tarball": "http://registry.npmjs.org/express-web-components/-/express-web-components-0.1.4.tgz"
-  },
-  "maintainers": [
+  "owners": [
     {
       "name": "lastmjs",
       "email": "jordan.michael.last@gmail.com"
     }
   ],
-  "_npmOperationalInternal": {
-    "host": "packages-16-east.internal.npmjs.com",
-    "tmp": "tmp/express-web-components-0.1.4.tgz_1463158777599_0.26208265987224877"
-  },
-  "directories": {}
+  "readme": "# What is this?\nThis repo contains web components built with the [Google Polymer library](https://www.polymer-project.org/1.0/) that allow you to create [Express.js](https://github.com/expressjs/express) applications. If you have not heard of web components, then please [start learning today](http://webcomponents.org/). Web components offer a way to modularize and package functionality into reusable components that can be easily shared and composed to create entire applications. Currently they are used mostly for front-end web development. Well, what about the back-end? Web components are not only useful for visual components, as the Polymer project [has shown us](https://elements.polymer-project.org/elements/iron-ajax). Now you can build APIs and other server-side applications, leveraging the same declarativeness of the front-end world. We are one step closer to true Universal JavaScript.\n\n## Mini Application\nJust a preview of what you can expect server-side web component code to look like:\n\n```\n<link rel=\"import\" href=\"bower_components/polymer/polymer.html\">\n<link rel=\"import\" href=\"bower_components/express-web-components/express-app.html\">\n<link rel=\"import\" href=\"bower_components/express-web-components/express-middleware.html\">\n<link rel=\"import\" href=\"bower_components/express-web-components/express-router.html\">\n\n<dom-module id=\"example-app\">\n    <template>\n        <express-app port=\"5000\">\n            <express-middleware method=\"get\" path=\"/\" callback=\"[[index]]\"></express-middleware>\n            <express-middleware callback=\"[[notFound]]\"></express-middleware>\n        </express-app>\n    </template>\n\n    <script>\n        class ExampleAppComponent {\n            beforeRegister() {\n                this.is = 'example-app';\n            }\n\n            ready() {\n                this.index = (req, res) => {\n                    res.send('Hola mundo!');\n                };\n\n                this.notFound = (req, res) => {\n                    res.status(404);\n                    res.send('not found');\n                };\n            }\n        }\n\n        Polymer(ExampleAppComponent);\n    </script>\n</dom-module>\n```\n\n## Examples\nHere are some example Express.js apps that have been rewritten with these web components:\n* https://github.com/scramjs/rest-api-express\n* https://github.com/scramjs/node-api\n* https://github.com/scramjs/node-todo\n* https://github.com/scramjs/node-tutorial-2-restful-app\n* https://github.com/scramjs/node-tutorial-for-frontend-devs\n\nHere is a [live example](http://scramjs.org/), built with web components on the front-end and the back-end.\n\n## Installation\nThese web components are meant to be run using [Scram.js](https://github.com/scramjs/scram-engine), which provides access to the Electron runtime, and Express.js, which is one of the most popular web frameworks running on top of Node.js. You must install these dependencies into your project separately:\n\n```\nbower install --save express-web-components\nnpm install --save express\nnpm install --save electron-prebuilt\nnpm install --save scram-engine\n```\n\n[See here](https://github.com/scramjs/scram-engine) for information on how to use these components with Scram.js.\n\n## Usage\nIn addition to the documentation below, a great place to learn how to use the components is to view this repo's [example](https://github.com/scramjs/express-web-components/tree/master/example/app/server).\n\nAlso, in the documentation I'm attempting to describe the API using TypeScript types. Not all of the types I'm using are real TypeScript types, I'm just hoping it helps describe what is expected. You do not need to use TypeScript to use these components.\n\n### Components\n\n## `<express-app></express-app>`\n\nCreates an Express application and calls the Express [app.listen](http://expressjs.com/en/4x/api.html#app.listen) function.\nThis component is the parent of all other components that you inted \nto be a part of the Express application created. As long as you use different ports,\nyou can have multiple Express applications running for each instance of `<express-app></express-app>`.\nYou can also nest `<express-app></express-app>` elements to create sub-apps.\n\n##### Properties\n\n`port: string | number`\n\nThe port the Express application will run on, as specified by [app.listen](http://expressjs.com/en/4x/api.html#app.listen).\n\n`path?: string`\n\nThe path that this application instance will be mounted at on the parent app, used when creating a sub-app.\n\n`hostname?: string`\n\nAn optional hostname the Express application will run on, as specified by [app.listen](http://expressjs.com/en/4x/api.html#app.listen).\n\n\n`backlog?: number`\n\nAn optional backlog the Express application will use, as specified by [app.listen](http://expressjs.com/en/4x/api.html#app.listen), and for more info see [server.listen](https://nodejs.org/api/http.html#http_server_listen_port_hostname_backlog_callback).\n\n`callback?: (e: NodeListeningEvent) => any`\n\nAn optional callback function to be invoked by app.listen, as specified by [app.listen](http://expressjs.com/en/4x/api.html#app.listen)\n\n## `<express-config></express-config>`\n\nAllows specifying a callback function to be invoked with the current pertinent objects of the parent Express application. This is useful for setting configurations, such as calling `express.static(root, [options])`.\n\n##### Properties\n\n`callback: (app: express.Application, express: Express, router: express.Router, route: express.Route) => any`\n\nA callback function that will be invoked with the the current Express application, the current Express object (from `require('express')`), the current parent router, and the current parent route.\n\n## `<express-middleware></express-middleware>`\n\nAllows hooking up Express middleware, i.e. performs the equivalent of [app.use](http://expressjs.com/en/4x/api.html#app.use), [app.get](http://expressjs.com/en/4x/api.html#app.get.method), [app.post](http://expressjs.com/en/4x/api.html#app.post.method), etc.\n\n##### Properties\n\n`method?: string`\n\nAn optional HTTP method to associate the middleware with, as defined by the Express [app.METHOD](http://expressjs.com/en/4x/api.html#app.METHOD). You must specify a path if you specify a method.\n\n`path?: string`\n\nThe optional URL path that the middleware will be associated with. The path will default to `/` if no method is specified. You must specify a path if you specify a method.\n\n`callback: (req: express.Request, res: express.Response, next: express.NextFunction) => any`\n\nThe callback function to be invoked on a matching request.\n\n`callbacks?: (req: express.Request, res: express.Response, next: express.NextFunction) => any[]`\n\nAn optional list of callback functions to be invoked on a matching request.\n\n## `<express-router></express-router>`\n\nCreates an Express [router](http://expressjs.com/en/4x/api.html#router). All child components are hooked up to this router.\n\n##### Properties\n\n`path?: string`\n\nThe optional URL path that the router will be associated with. Defaults to `/`.\n\n## `<express-route></express-route>`\n\nCreates an Express [route](http://expressjs.com/en/4x/api.html#router.route). All child components are hooked up to this route.\n\n##### Properties\n\n`path: string`\n\nThe URL path that the route will be associated with.\n\n## `<express-param></express-param>`\n\nEquivalent to [app.param()](http://expressjs.com/en/4x/api.html#app.param) or [router.param()](http://expressjs.com/en/4x/api.html#router.param), depending on its immediate parent element.\n\n##### Properties\n\n`name: string`\n\nThe name of the parameter that the callback will be triggered for.\n\n`callback: (req: express.Request, res: express.Response, next: express.NextFunction, value: string, name: string): => any`\n\nThe callback triggered on the corresponding route parameter. The parameters to the callback are the request object, the response object, the next middleware, the value of the route parameter, and the name of the route parameter.\n\nNode.js is a trademark of Joyent, Inc. and is used with its permission. We are not endorsed by or affiliated with Joyent.\n"
 }

@@ -7,8 +7,17 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
-    "type": "git",
-    "url": "git+https://github.com/sintanial/graviton.git"
+    "user": "sintanial",
+    "repo": "graviton",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/sintanial/graviton/tarball/master",
+    "clone_url": "https://github.com/sintanial/graviton",
+    "https_url": "https://github.com/sintanial/graviton",
+    "travis_url": "https://travis-ci.org/sintanial/graviton",
+    "zip_url": "https://github.com/sintanial/graviton/archive/master.zip",
+    "api_url": "https://api.github.com/repos/sintanial/graviton"
   },
   "keywords": [
     "headless",
@@ -26,9 +35,6 @@
     "email": "sintanial@gmail.com"
   },
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/sintanial/graviton/issues"
-  },
   "homepage": "https://github.com/sintanial/graviton#readme",
   "dependencies": {
     "debug": "^2.2.0",
@@ -43,28 +49,33 @@
     "vo": "^2.0.0"
   },
   "gitHead": "37a4c0a70eb140bce0a0927d12c680bcfae52095",
-  "_id": "graviton@0.3.1",
-  "_shasum": "6eec35130399ee741d2bdb542d06bd4a29bb9a79",
-  "_from": ".",
   "_npmVersion": "3.6.0",
   "_nodeVersion": "5.7.1",
-  "_npmUser": {
-    "name": "sintanial",
-    "email": "sintanial@gmail.com"
-  },
   "dist": {
     "shasum": "6eec35130399ee741d2bdb542d06bd4a29bb9a79",
     "tarball": "http://registry.npmjs.org/graviton/-/graviton-0.3.1.tgz"
   },
-  "maintainers": [
+  "versions": [
+    {
+      "number": "0.3.0",
+      "date": "2016-02-19T12:37:11.171Z"
+    },
+    {
+      "number": "0.3.1",
+      "date": "2016-03-09T13:04:02.329Z"
+    }
+  ],
+  "created": "2016-02-19T12:37:11.171Z",
+  "modified": "2016-03-09T13:04:02.329Z",
+  "lastPublisher": {
+    "name": "sintanial",
+    "email": "sintanial@gmail.com"
+  },
+  "owners": [
     {
       "name": "sintanial",
       "email": "sintanial@gmail.com"
     }
   ],
-  "_npmOperationalInternal": {
-    "host": "packages-12-west.internal.npmjs.com",
-    "tmp": "tmp/graviton-0.3.1.tgz_1457528637743_0.03259672434069216"
-  },
-  "directories": {}
+  "readme": "Graviton\n=========\n\nGraviton is a headless browser based on [Electron](http://electron.atom.io/).\n  \nIt's very similar to [Nightmare](https://github.com/segmentio/nightmare), but evaluated directly by electron, without process fork and ipc communication.\n  \nBecause graviton work directly over electron, this allows you to use all features of electron.  \nFor example: listen all available callbacks, use events in callback, manipulate with WindowBrowser, WebContents, and other electron api.  \nAdding new features has become much easier.\n  \nI tried replicate Nightmare API, for simple and fast usage by users which have experience with Nightmare.   \nIf anybody want to help identical copy Nightmare API, pull request welcome. \n \n\n## How to use\n```\nnpm install electron-prebuild\nnpm install graviton\n./node_modules/.bin/electron test.js\n```\n\n\n## Example search in yahoo (like Nightmare yahoo example)\n```javascript\n    var Graviton = require('./lib/graviton');\n    var vo = require(\"vo\");\n    \n    vo(run)(function (err, result) {\n        if (err) throw err;\n    });\n    \n    function *run() {\n        var graviton = yield Graviton.new({electron: {\n            show: true,\n        }});\n    \n        yield graviton.goto('http://yahoo.com', \"dom\");\n        yield graviton.type('#uh-search-box', 'github nightmare');\n        yield graviton.click('#uh-search-button');\n        yield graviton.wait('#main');\n        console.log(yield graviton.evaluate(function () {\n            return document.querySelector('#main .searchCenterMiddle li a').href\n        }));\n    \n        yield graviton.end();\n    }\n```\n\n## Example \n```javascript\n    var Graviton = require(\"graviton\");\n    var vo = require('vo');\n   \n    vo(run)(function (err, result) {\n       if (err) throw err;\n    });\n    \n    const GITHUB_LOGIN = '{SOME_LOGIN}';\n    const GITHUB_PASS = '{SOME_PASS}';\n    \n    function *run() {\n       var graviton = yield Graviton.new({\n           electron: {\n               show: true,\n           }\n       });\n    \n       try {\n           yield graviton.goto(\"https://github.com/\");\n           yield graviton.evaluate(()=> {\n               document.querySelector(`.header-actions .btn[href=\"/login\"`).click();\n           });\n           yield graviton.wait();\n           yield graviton.evaluate((GITHUB_LOGIN, GITHUB_PASS)=> {\n               document.querySelector(\"#login_field\").value = GITHUB_LOGIN;\n               document.querySelector(\"#password\").value = GITHUB_PASS;\n               document.querySelector(\".btn.btn-primary.btn-block\").click();\n           }, GITHUB_LOGIN, GITHUB_PASS);\n    \n           yield graviton.wait();\n           console.log(yield graviton.evaluate(()=> {\n               return document.title;\n           }));\n       } catch (e) {\n           console.log(e);\n       }\n    \n       yield graviton.end();\n    }\n```\n"
 }

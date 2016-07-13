@@ -1,0 +1,78 @@
+{
+  "name": "jibo-analytics",
+  "version": "0.1.8",
+  "description": "Simple Google Measurements Protocol client",
+  "main": "lib/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "user": "sdk",
+    "repo": "jibo-analytics",
+    "host": "github.jibo.com",
+    "branch": "master",
+    "apiHost": "github.jibo.com/api/v3",
+    "tarball_url": "https://github.jibo.com/api/v3/repos/sdk/jibo-analytics/tarball/master",
+    "clone_url": "https://github.jibo.com/sdk/jibo-analytics",
+    "https_url": "https://github.jibo.com/sdk/jibo-analytics",
+    "travis_url": "https://travis-ci.org/sdk/jibo-analytics",
+    "zip_url": "https://github.jibo.com/sdk/jibo-analytics/archive/master.zip",
+    "api_url": "https://github.jibo.com/api/v3/repos/sdk/jibo-analytics"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "jibo-gulp": "^1.6.0"
+  },
+  "gitHead": "1122ef87649de0e30157767b42f34f2f03f0436f",
+  "_npmVersion": "2.14.7",
+  "_nodeVersion": "4.2.1",
+  "dist": {
+    "shasum": "852c6fa100d2bf8bc5c382e9dac4aa6b7613fb4d",
+    "tarball": "http://registry.npmjs.org/jibo-analytics/-/jibo-analytics-0.1.8.tgz"
+  },
+  "versions": [
+    {
+      "number": "0.1.1",
+      "date": "2016-03-22T20:11:26.215Z"
+    },
+    {
+      "number": "0.1.2",
+      "date": "2016-03-22T20:28:34.075Z"
+    },
+    {
+      "number": "0.1.3",
+      "date": "2016-03-22T21:37:17.194Z"
+    },
+    {
+      "number": "0.1.4",
+      "date": "2016-03-22T22:15:07.185Z"
+    },
+    {
+      "number": "0.1.6",
+      "date": "2016-03-30T18:10:52.470Z"
+    },
+    {
+      "number": "0.1.7",
+      "date": "2016-03-30T18:27:47.757Z"
+    },
+    {
+      "number": "0.1.8",
+      "date": "2016-03-30T18:30:01.106Z"
+    }
+  ],
+  "created": "2016-03-22T20:11:26.215Z",
+  "modified": "2016-03-30T18:30:01.106Z",
+  "lastPublisher": {
+    "name": "jibo",
+    "email": "sdkearlyaccess@jibo.com"
+  },
+  "owners": [
+    {
+      "name": "jibo",
+      "email": "sdkearlyaccess@jibo.com"
+    }
+  ],
+  "readme": "### Overview\nBasic wrapped around Google Analytics APIs. Should work for both Node and Electron apps.\n\n### Installation\n\n```bash\nnpm install --save jibo-analytics\n```\n\n### Usage\n\n#### analytics.event(eventCategory, eventAction, extraParameters [optional])\n\n| Parameter | Type | Description | Example  | Optional   |\n|-----------|------|-------------|---|---|\n| **eventCategory** | String  |  Category of the event | `\"toolbar\"`  | false |\n| **eventAction** | String  | Name of the event action  | `\"play\"`  | false |\n| **extrasParameters**  | Object  | If you want to track extra meta data for the event add the fields/values here. | `{mode: \"local\"}`  | true |\n\nExample:\n```js\nimport analytics from 'jibo-analytics';\n\nanalytics.init('UA-*', \"<unique-user-id>\");\nanalytics.event('toolbar', 'play', {\n    mode: 'local'\n});\n```\n\n### Reference\n  - [Working with the Measurement Protocol](https://developers.google.com/analytics/devguides/collection/protocol/v1/devguide)\n  - [Google Hit Builder Playground](https://ga-dev-tools.appspot.com/hit-builder/). Use the following example:\n\n    ```bash\n    v=1&t=event&tid=UA-12345678-9&cid=fa15259f-b078-466f-bf3b-ba0479b008fd&ec=toolbar&ea=play&el=local\n    ```\n"
+}

@@ -3,9 +3,6 @@
   "version": "1.0.2",
   "description": "an api client for github that performs actions needed by editdata applications",
   "main": "index.js",
-  "directories": {
-    "test": "tests"
-  },
   "scripts": {
     "lint": "standard",
     "test:node": "tape tests/*.js | tap-spec",
@@ -16,14 +13,20 @@
     "request": "xhr"
   },
   "repository": {
-    "type": "git",
-    "url": "git+https://github.com/editdata/editdata-github.git"
+    "user": "editdata",
+    "repo": "editdata-github",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/editdata/editdata-github/tarball/master",
+    "clone_url": "https://github.com/editdata/editdata-github",
+    "https_url": "https://github.com/editdata/editdata-github",
+    "travis_url": "https://travis-ci.org/editdata/editdata-github",
+    "zip_url": "https://github.com/editdata/editdata-github/archive/master.zip",
+    "api_url": "https://api.github.com/repos/editdata/editdata-github"
   },
   "author": "",
   "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/editdata/editdata-github/issues"
-  },
   "homepage": "https://github.com/editdata/editdata-github#readme",
   "devDependencies": {
     "documentation-readme": "^2.1.1",
@@ -46,27 +49,37 @@
     "xhr": "^2.2.0"
   },
   "gitHead": "6df797b153319300c783ac854a0b5fad4b68fe2a",
-  "_id": "editdata-github@1.0.2",
-  "_shasum": "17bbfc08b60e673f4bf93750d6f0a04c82b5d2ba",
-  "_from": ".",
   "_npmVersion": "3.8.6",
   "_nodeVersion": "6.0.0",
-  "_npmUser": {
-    "name": "sethvincent",
-    "email": "sethvincent@gmail.com"
-  },
   "dist": {
     "shasum": "17bbfc08b60e673f4bf93750d6f0a04c82b5d2ba",
     "tarball": "http://registry.npmjs.org/editdata-github/-/editdata-github-1.0.2.tgz"
   },
-  "maintainers": [
+  "versions": [
+    {
+      "number": "1.0.0",
+      "date": "2016-05-05T02:33:19.107Z"
+    },
+    {
+      "number": "1.0.1",
+      "date": "2016-05-05T02:35:04.391Z"
+    },
+    {
+      "number": "1.0.2",
+      "date": "2016-05-05T03:00:09.371Z"
+    }
+  ],
+  "created": "2016-05-05T02:33:19.107Z",
+  "modified": "2016-05-05T03:00:09.371Z",
+  "lastPublisher": {
+    "name": "sethvincent",
+    "email": "sethvincent@gmail.com"
+  },
+  "owners": [
     {
       "name": "sethvincent",
       "email": "sethvincent@gmail.com"
     }
   ],
-  "_npmOperationalInternal": {
-    "host": "packages-12-west.internal.npmjs.com",
-    "tmp": "tmp/editdata-github-1.0.2.tgz_1462417208872_0.6621898144949228"
-  }
+  "readme": "# editdata-github\r\n\r\n**Work in progress.** An API client for GitHub that performs common actions needed by EditData projects.\r\n\r\n## What does it do?\r\n- Get a CSV file parsed into an array of objects, make changes, then commit the changes to the CSV.\r\n- Fork a repository, make a branch, commit changes, then open a pull request.\r\n- _probably some other things too_\r\n\r\n## Example\r\n\r\nThis example shows:\r\n\r\n- creating a branch on a repo\r\n- getting a CSV file from the repo\r\n- adding a row to the csv\r\n- committing the change to the branch\r\n- creating a pull request against the `master` branch\r\n\r\n```js\r\nvar gh = require('editdata-github')({ token: process.env.GITHUB_ACCESS_TOKEN })\r\nvar branch = 'refs/heads/test-' + Date.now()\r\ncreateBranch()\r\n\r\nfunction createBranch () {\r\n  var options = {\r\n    owner: 'editdatabot',\r\n    repo: 'test',\r\n    ref: branch,\r\n    sha: 'b6ceaa8cd4ae8f87c620f2504a0d3a42bd7d923f'\r\n  }\r\n\r\n  gh.branch.create(options, function (err, res, body) {\r\n    if (err) return console.log(err)\r\n    editCSV()\r\n  })\r\n}\r\n\r\nfunction editCSV () {\r\n  var options = {\r\n    owner: 'editdatabot',\r\n    repo: 'test',\r\n    path: 'test.csv',\r\n    message: 'add a row',\r\n    branch: branch\r\n  }\r\n\r\n  gh.contents.getCSV(options, function (err, res, data) {\r\n    if (err) return console.log(err)\r\n\r\n    options.data = data\r\n    options.data.push({ a: '4', b: '5', c: '6' })\r\n    options.message = 'add a row'\r\n    options.branch = branch\r\n    options.sha = res.sha\r\n\r\n    gh.contents.putCSV(options, function (err, res, body) {\r\n      if (err) return console.log(err)\r\n      createPR(branch)\r\n    })\r\n  })\r\n}\r\n\r\nfunction createPR (branch) {\r\n  var options = {\r\n    owner: 'editdatabot',\r\n    repo: 'test',\r\n    title: 'this is a pull request',\r\n    user: 'editdatabot',\r\n    head: branch,\r\n    base: 'master',\r\n    body: 'this is the body message of a pull request'\r\n  }\r\n\r\n  gh.pullRequest.create(options, function (err, res, body) {\r\n    if (err) return console.log(err)\r\n  })\r\n}\r\n```\r\n\r\n## Status\r\nStill under heavy development. Functionality is being pulled out of existing EditData projects like [editdata.org](http://github.com/editdata/editdata.org) and [submit-data](http://github.com/editdata/submit-data)\r\n\r\nThe above example is still too verbose, though much of the verbosity is due to the options passed to the methods.\r\n\r\nExpect the API to change considerably.\r\n\r\n## Tests\r\nRight now tests rely on an access token & collaborator access on [editdatabot/test](https://github.com/editdatabot/test).\r\n\r\nIf you're interested in contributing, [make an issue on this repository](https://github.com/editdata/editdata-github/issues/new).\r\n\r\n### Running the tests:\r\n\r\n```bash\r\nnpm test\r\n```\r\n\r\n## Install\r\n\r\n```bash\r\nnpm install --save editdata-github\r\n```\r\n\r\n## license\r\nMIT\r\n"
 }

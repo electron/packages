@@ -3,8 +3,17 @@
   "description": "Nightmare plugin to automatically authenticate, authorize and retrieve a fresh OAuth2 token for Google APIs",
   "version": "0.2.1",
   "repository": {
-    "type": "git",
-    "url": "git+https://github.com/h2non/nightmare-google-oauth2.git"
+    "user": "h2non",
+    "repo": "nightmare-google-oauth2",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/h2non/nightmare-google-oauth2/tarball/master",
+    "clone_url": "https://github.com/h2non/nightmare-google-oauth2",
+    "https_url": "https://github.com/h2non/nightmare-google-oauth2",
+    "travis_url": "https://travis-ci.org/h2non/nightmare-google-oauth2",
+    "zip_url": "https://github.com/h2non/nightmare-google-oauth2/archive/master.zip",
+    "api_url": "https://api.github.com/repos/h2non/nightmare-google-oauth2"
   },
   "license": "MIT",
   "author": {
@@ -42,32 +51,63 @@
     "auth"
   ],
   "gitHead": "1e9d757a6a3ef1c6eabce70303997d24ac11cf91",
-  "bugs": {
-    "url": "https://github.com/h2non/nightmare-google-oauth2/issues"
-  },
   "homepage": "https://github.com/h2non/nightmare-google-oauth2#readme",
-  "_id": "nightmare-google-oauth2@0.2.1",
-  "_shasum": "928ee4061000c64be0720ed48493c563c1e5af29",
-  "_from": ".",
   "_npmVersion": "3.6.0",
   "_nodeVersion": "5.7.0",
-  "_npmUser": {
+  "dist": {
+    "shasum": "928ee4061000c64be0720ed48493c563c1e5af29",
+    "tarball": "http://registry.npmjs.org/nightmare-google-oauth2/-/nightmare-google-oauth2-0.2.1.tgz"
+  },
+  "stars": 1,
+  "versions": [
+    {
+      "number": "0.1.0",
+      "date": "2015-03-03T00:34:42.086Z"
+    },
+    {
+      "number": "0.1.1",
+      "date": "2015-03-19T14:52:58.688Z"
+    },
+    {
+      "number": "0.1.2",
+      "date": "2015-03-19T15:10:51.932Z"
+    },
+    {
+      "number": "0.1.3",
+      "date": "2015-03-25T17:28:01.993Z"
+    },
+    {
+      "number": "0.1.4",
+      "date": "2015-06-17T11:30:34.324Z"
+    },
+    {
+      "number": "0.1.5",
+      "date": "2015-06-17T14:09:24.843Z"
+    },
+    {
+      "number": "0.1.6",
+      "date": "2016-02-22T20:18:33.877Z"
+    },
+    {
+      "number": "0.2.0",
+      "date": "2016-02-24T10:29:36.466Z"
+    },
+    {
+      "number": "0.2.1",
+      "date": "2016-02-24T10:38:56.157Z"
+    }
+  ],
+  "created": "2015-03-03T00:34:42.086Z",
+  "modified": "2016-02-24T10:38:56.157Z",
+  "lastPublisher": {
     "name": "h2non",
     "email": "tomas@aparicio.me"
   },
-  "maintainers": [
+  "owners": [
     {
       "name": "h2non",
       "email": "tomas@aparicio.me"
     }
   ],
-  "dist": {
-    "shasum": "928ee4061000c64be0720ed48493c563c1e5af29",
-    "tarball": "http://registry.npmjs.org/nightmare-google-oauth2/-/nightmare-google-oauth2-0.2.1.tgz"
-  },
-  "_npmOperationalInternal": {
-    "host": "packages-9-west.internal.npmjs.com",
-    "tmp": "tmp/nightmare-google-oauth2-0.2.1.tgz_1456310333379_0.50569515558891"
-  },
-  "directories": {}
+  "readme": "# nightmare-google-oauth2 [![Build Status](https://api.travis-ci.org/h2non/nightmare-google-oauth2.svg?branch=master)][travis] [![NPM version](https://img.shields.io/npm/v/nightmare-google-oauth2.svg)][npm]\n\n[Nightmare](http://github.com/segmentio/nightmare) plugin to automatically authenticate, authorize and retrieve a fresh [OAuth2](https://developers.google.com/accounts/docs/OAuth2WebServer) token ready to be used with [Google APIs](https://developers.google.com/apis-explorer).\n\nThis package was designed to simplify server-to-server tasks automation and avoid headaches when dealing with OAuth, since it is the [unique method](https://developers.google.com/youtube/v3/guides/authentication#OAuth2_Flows) to perform most of the user-related write operations via Google APIs, such as creating a post in Blogspot or uploading a video to YouTube\n\nIt provides reliable [programmatic](#programmatic-api) interface which abstracts you about performing any kind of manual steps related to the authentication, authorization and handshake process to obtain a valid OAuth2 token, which is usually done manually from the user in the web browser. \nIt support multiple associated Google accounts as well, selecting the desired one\n\nFor nightware-agnostic interface and command-line solution, see [google-oauth2-token](https://github.com/h2non/google-oauth2-token).\n\n## Installation\n\n```bash\nnpm install nightmare-google-oauth2 --save\n```\n\n## Google API credentials setup\n\nBe sure you have a project and a Web Application credentials with a Client ID and Client Secret \nfrom the [Google API Console][console] > `API & Auth` > `Credentials`\n\nThen you must add the following URI as allowed redirects (without final slash):\n```\nhttp://localhost:8488\n```\n\nThen you should see something like this:\n\n<img src=\"http://oi59.tinypic.com/2w3udmd.jpg\" />\n\n## Programmatic API\n\n```js\nvar Nightmare = require('nightmare')\nvar NightmareOAuth2 = require('nightmare-google-oauth2')\n```\n\n### Supported params\n\n- **email** - Google Account user email. Example: `john@gmail.com`\n- **password** - Google Account user password. Be aware with this. Use a temporal environment variable to store it\n- **clientId** - Google API Client ID. You can obtain it from the [Google API Console][console]\n- **clientSecret** - Google API Client Secret ID. You can obtain it from the [Google API Console][console]\n- **scope** - Scope permissions URLs separated by spaces. Read more [here](https://developers.google.com/discovery/v1/using#discovery-doc-methods-scopes)\n- **useAccount** - In case of multiple associated Google accounts, define the email of the desired account to use\n- **verificationEmail** - In case that Google asks for the verification email. Not too common anyway.\n\n#### .getToken(params, callback [, onChange ])\n\nReturn an `object` with valid OAuth2 tokens ready to be used to call Google APIs endpoints\n\n```js\n{ \n  access_token: 'H3l5321N123sdI4HLY/RF39FjrCRF39FjrCRF39FjrCRF39FjrC_RF39FjrCRF39FjrC',\n  token_type: 'Bearer',\n  refresh_token: '1/smWJksmWJksmWJksmWJksmWJk_smWJksmWJksmWJksmWJksmWJk',\n  expiry_date: 1425333671141 \n}\n```\n\nRequired params:\n\n- **email**\n- **password**\n- **clientId**\n- **clientSecret**\n- **scope**\n\nExample:\n```js\nvar params = {\n  email: 'my.user@gmail.com',\n  password: 'sup3r_p@s$w0rd',\n  clientId: 'blablabla', // Google API Client ID\n  clientSecret: 'private', // Google API Client Secret\n  scope: 'https://www.googleapis.com/auth/youtube.upload'\n}\n\nnew Nightmare()\n  .use(NightmareOAuth2.getToken(params, function (err, tokens) {\n    if (err) {\n      return console.error('Cannot retrieve the token:', err)\n    }\n\n    console.log('OAuth2 access token:', tokens.access_token)\n    console.log('OAuth2 refresh token:', tokens.refresh_token)\n    console.log('OAuth2 token expiry date:', new Date(tokens.expiry_date))\n  }))\n```\n\n#### .getCode(params, callback)\n\nReturn an `string` with the OAuth2 exchange code to be used during the OAuth2 handshake to obtain a valid token.\nThis process is implicitly made when calling `getToken()`\n\nRequired params:\n\n- **email**\n- **password**\n- **clientId**\n- **scope**\n\nExample:\n```js\nvar params = {\n  email: 'my.user@gmail.com',\n  password: 'sup3r_p@s$w0rd',\n  clientId: 'blablabla', // Google API Client ID\n  scope: 'https://www.googleapis.com/auth/youtube.upload'\n}\n\nnew Nightmare()\n  .use(NightmareOAuth2.getCode(params, function (err, code) {\n    if (err) {\n      return console.error('Cannot retrieve the token:', err)\n    }\n\n    console.log('OAuth2 code:', code)\n  }))\n```\n\n## License \n\n[MIT](http://opensource.org/licenses/MIT) © Tomas Aparicio\n\n[console]: https://code.google.com/apis/console\n[travis]: https://travis-ci.org/h2non/nightmare-google-oauth2\n[npm]: http://npmjs.org/package/nightmare-google-oauth2\n"
 }

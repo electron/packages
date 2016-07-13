@@ -7,8 +7,17 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
-    "type": "git",
-    "url": "git+https://github.com/Rokt33r/electron-stylus.git"
+    "user": "Rokt33r",
+    "repo": "electron-stylus",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/Rokt33r/electron-stylus/tarball/master",
+    "clone_url": "https://github.com/Rokt33r/electron-stylus",
+    "https_url": "https://github.com/Rokt33r/electron-stylus",
+    "travis_url": "https://travis-ci.org/Rokt33r/electron-stylus",
+    "zip_url": "https://github.com/Rokt33r/electron-stylus/archive/master.zip",
+    "api_url": "https://api.github.com/repos/Rokt33r/electron-stylus"
   },
   "keywords": [
     "electron",
@@ -26,27 +35,33 @@
   },
   "homepage": "https://github.com/Rokt33r/electron-stylus#readme",
   "gitHead": "298bb8b3177041342fc43948d93a94391dab61dc",
-  "bugs": {
-    "url": "https://github.com/Rokt33r/electron-stylus/issues"
-  },
-  "_id": "electron-stylus@0.1.1",
-  "_shasum": "443a1c118ec4f6967fd5e9639ad72102a79e0ae6",
-  "_from": ".",
   "_npmVersion": "2.13.2",
   "_nodeVersion": "2.5.0",
-  "_npmUser": {
-    "name": "rokt33r",
-    "email": "fluke8259@gmail.com"
-  },
   "dist": {
     "shasum": "443a1c118ec4f6967fd5e9639ad72102a79e0ae6",
     "tarball": "http://registry.npmjs.org/electron-stylus/-/electron-stylus-0.1.1.tgz"
   },
-  "maintainers": [
+  "versions": [
+    {
+      "number": "0.1.0",
+      "date": "2015-07-26T17:55:36.200Z"
+    },
+    {
+      "number": "0.1.1",
+      "date": "2015-07-30T15:35:14.802Z"
+    }
+  ],
+  "created": "2015-07-26T17:55:36.200Z",
+  "modified": "2015-07-30T15:35:14.802Z",
+  "lastPublisher": {
+    "name": "rokt33r",
+    "email": "fluke8259@gmail.com"
+  },
+  "owners": [
     {
       "name": "rokt33r",
       "email": "fluke8259@gmail.com"
     }
   ],
-  "directories": {}
+  "readme": "# Electron Stylus\n\nA dead simple Stylus loader for Electron app\n\n> This module is on working... take care if you want to use in *Production*.\n\n## How to\n\nInstall it with NPM.\n``` sh\nnpm install -S electron-stylus\n```\n\nUse it in your HTML file.\n\n``` html\n<script>\nrequire('electron-stylus')(__dirname + '/path/to/stylus.styl')\n</script>\n```\n\nIt will return a **Promise** with *css string*.\n\n``` js\nrequire('electron-stylus')(__dirname + '/path/to/stylus.styl')\n  .then(function (css) {\n    console.log(css)\n    console.log('successfully loaded')\n  })\n```\n\nExample code also included. I hope you to enjoy.\n\n## Go scratch\n\nInstall `stylus`\n``` sh\nnpm install -S stylus\n```\n\nWrite this code in your HTML file.\n``` html\n<script>\nvar stylus = require('stylus')\nvar str = require('fs').readFileSync(__dirname + '/../styles/main/index.styl', 'utf8')\n\nstylus(str)\n  .set('filename', __dirname + '/../styles/main/index.styl', 'utf8')\n  .render(function(err, css){\n    if (err) throw err\n      var style = document.createElement('style')\n      style.innerText = css\n      style.type = 'text/css'\n      document.head.appendChild(style)\n  })\n</script>\n```\n\n## License\n\nISC License (ISC)\n\nCopyright (c) 2015, Dick Choi\n"
 }

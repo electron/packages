@@ -1,0 +1,87 @@
+{
+  "name": "satorijs",
+  "version": "0.1.9",
+  "description": "Minimalistic JavaScript reactive view library (ES6 only)",
+  "license": "Apache-2.0",
+  "repository": {
+    "user": "yuryshulaev",
+    "repo": "satori",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/yuryshulaev/satori/tarball/master",
+    "clone_url": "https://github.com/yuryshulaev/satori",
+    "https_url": "https://github.com/yuryshulaev/satori",
+    "travis_url": "https://travis-ci.org/yuryshulaev/satori",
+    "zip_url": "https://github.com/yuryshulaev/satori/archive/master.zip",
+    "api_url": "https://api.github.com/repos/yuryshulaev/satori"
+  },
+  "homepage": "https://github.com/yuryshulaev/satori/",
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "mocha": "^2.4.5"
+  },
+  "gitHead": "ac8eec2a43d49c14adb78e1e19354b809aa6f35a",
+  "scripts": {},
+  "_npmVersion": "3.9.3",
+  "_nodeVersion": "6.2.1",
+  "dist": {
+    "shasum": "6da3639a6ec7e7518b97797a26fc008d210b004d",
+    "tarball": "http://registry.npmjs.org/satorijs/-/satorijs-0.1.9.tgz"
+  },
+  "versions": [
+    {
+      "number": "0.1.0",
+      "date": "2016-05-18T14:26:26.252Z"
+    },
+    {
+      "number": "0.1.1",
+      "date": "2016-05-18T14:27:30.180Z"
+    },
+    {
+      "number": "0.1.2",
+      "date": "2016-05-18T15:18:47.104Z"
+    },
+    {
+      "number": "0.1.3",
+      "date": "2016-05-18T16:35:28.834Z"
+    },
+    {
+      "number": "0.1.4",
+      "date": "2016-05-19T21:16:59.515Z"
+    },
+    {
+      "number": "0.1.5",
+      "date": "2016-05-20T07:07:08.059Z"
+    },
+    {
+      "number": "0.1.6",
+      "date": "2016-05-20T07:12:04.184Z"
+    },
+    {
+      "number": "0.1.7",
+      "date": "2016-06-05T13:32:42.401Z"
+    },
+    {
+      "number": "0.1.8",
+      "date": "2016-06-19T14:54:03.712Z"
+    },
+    {
+      "number": "0.1.9",
+      "date": "2016-06-21T19:38:17.130Z"
+    }
+  ],
+  "created": "2016-05-18T14:26:26.252Z",
+  "modified": "2016-06-21T19:38:17.130Z",
+  "lastPublisher": {
+    "name": "yuryshulaev",
+    "email": "yury.shulaev@gmail.com"
+  },
+  "owners": [
+    {
+      "name": "yuryshulaev",
+      "email": "yury.shulaev@gmail.com"
+    }
+  ],
+  "readme": "# Satori\n\nSatori is a minimalistic JavaScript reactive view library. It uses [ES6 Proxies](https://developers.google.com/web/updates/2016/02/es2015-proxies) for data binding, and because [they are not yet ubiquitous](http://caniuse.com/#feat=proxy), *for now* it is mainly useful for [nw.js](http://nwjs.io/) and [Electron](http://electron.atom.io/) applications.\n\nKey features:\n\n * Unobtrusive — you can keep your model intact. In contrast to non-Proxy solutions, even property additions do not need any special treatment\n * Pure JavaScript [DSL](https://en.wikipedia.org/wiki/Domain-specific_language) makes code reuse more straightforward\n * Expressive — [TodoMVC is only 75 SLOC](https://github.com/yuryshulaev/satori-todomvc) (including most of the markup)\n * It doesn’t dictate you anything — it’s not a framework\n * Tiny — core library is ~700 SLOC, 5 KB gzipped\n * Server-side rendering\n * No dependencies\n * Undo/redo\n * [Fast](#performance)\n\nThese qualities also make it useful for quick prototyping — it won’t interfere with your model code, requires almost zero boilerplate and helps you create and reorganize ad hoc components very quickly.\n\n## Getting started\n\n[Download](https://raw.githubusercontent.com/yuryshulaev/satori/master/satori.js) and include the library:\n\n```html\n<script src=\"satori.js\"></script>\n```\n\nHello, World:\n\n```javascript\nlet view = new Satori();\nlet HelloComponent = name => view.div(['Hello, ', name]);\nview.qs('body').appendChild(HelloComponent('World'));\n```\n\nBut this is just a static element. To make something reactive, first make sure that the root object of your model is wrapped in a proxy:\n\n```javascript\nlet user = view.proxy({name: 'Mike'});\n```\n\nThen just wrap the reactive part in a function:\n\n```javascript\nlet HelloComponent = user => view.div(['Hello, ', view.span(() => user.name)]);\n// >>>                                                      ^^^^^^\nview.qs('body').appendChild(HelloComponent(user));\n// The content of the <span> will be updated automatically\nsetTimeout(() => {user.name = 'Joe'}, 1000);\n```\n\nReactivity is based primarily on registering property accesses via proxies, so the properties you want observed have to be accessed inside the wrapper function. This means you can’t just write `() => name` — that would be static. Also, you can’t make reactive text nodes — you must have an element. This is why we added a `<span>` here.\n\n## Documentation\n\n### Element content\n\nThere are multiple ways to specify element content:\n\nText:\n\n```javascript\nview.div('Hello')\n```\n\nOne child element:\n\n```javascript\nview.div(view.div())\n```\n\nArray of elements and/or strings:\n\n```javascript\nview.div([view.span(), ' ', view.span()])\n```\n\nThis method is called under the hood and supports all of the above:\n\n```javascript\nview.setElementContent(element, content)\n```\n\n### Modifiers\n\nElement modifiers are passed as a first argument to an element factory function:\n\n```javascript\nview.div({…}, content)\n```\n\nModifiers are view object methods and can also be applied to any existing DOM elements:\n\n```javascript\nview.content(view.qs('.name'), () => user.name)\nview.bind(view.qs('.title'), {model: post, key: 'title'})\n```\n\nYou also can use `assign()` method to apply multiple modifiers at once to an existing element:\n\n```javascript\nview.assign(view.qs('.clear-completed'), {\n    show: () => model.completed.length,\n    on: {click: e => {model.clearCompleted()}},\n});\n```\n\nAll available modifiers are listed below.\n\n#### Content: `content`\n\nContent passed to an element factory is handled as `content` modifier internally.\n\n```javascript\n{content: string|Node|[string|Node] | () => string|Node|[string|Node]}\n```\n\nExamples:\n\n```javascript\nview.div({content: 'Text'})\nview.div({content: view.h1('Title')})\nview.div({content: [view.strong(10), ' items']})\nview.div({content: () => page.text})\n```\n\n#### Visibility: `show`\n\nAdds `display: none` style property when the value is false and removes it, when the value is true.\n\n```javascript\n{show: bool | () => bool}\n```\n\n```javascript\nview.div({show: false}, 'Text')\nview.div({show: () => items.length}, 'Text')\n```\n\n#### CSS classes: `class`\n\nPresence of CSS classes is specified using booleans:\n\n```javascript\n{class: string | [string] | {string: bool | () => bool, …}}\n```\n\nSingle static class:\n\n```javascript\nview.div({class: 'active'})\n```\n\nStatic:\n\n```javascript\nview.div({class: ['active']})\nview.div({class: {active: true}})\nview.div({class: {active: user.active}})\n```\n\nReactive:\n\n```javascript\nview.div({class: {active: () => user.active}})\n```\n\n#### Attributes: `attr`\n\n```javascript\n{attr: {string: string | () => string, …}}\n```\n\n```javascript\ninput({attr: {type: 'checkbox'}})\n```\n\n#### Element properties: `prop`\n\n```javascript\n{prop: {string: any | () => any, …}}\n```\n\n```javascript\n{prop: {checked: true}}\n{prop: {value: ''}}\n```\n\n#### Element data-attributes (dataset): `data`\n\n```javascript\n{data: {string: string | () => string, …}}\n```\n\n#### Element style properties: `css`\n\n```javascript\n{css: {string: string | () => string, …}}\n```\n\n```javascript\nview.div({css: {'background-color': 'blue'}})\n```\n\n#### Event handlers: `on`\n\nSimply calls `addEventHandler()` for each key.\n\n```javascript\n{on: {eventType(event) {…}, …}}\n```\n\n```javascript\nview.div({on: {click() {alert('Click!')}}})\n```\n\n#### Capturing event handlers: `onCapture`\n\nFor capturing handlers use `onCapture` modifier instead of `on`:\n\n```javascript\n{onCapture: {eventType(event) {…}, …}}\n```\n\n#### Keyboard event handler: `keydown`, `keyup`\n\n```javascript\n{keydown: {[view.Key.*]: (element, event) => …, …}}\n{keyup: {[view.Key.*]: (element, event) => …, …}}\n```\n\n```javascript\ninput({keydown: {[view.Key.ENTER]: el => {alert(el.value)}, [view.Key.ESCAPE]: () => {alert('Esc')}}})\n```\n\n#### Two-way data binding: `bind`\n\nThe value of the `to` element property gets assigned to the `model[key]` on every event specified in `on`. The opposite happens on every change of `model[key]`. Parameter `to` defaults to `'checked'` for checkboxes or `'value'` for anything else, and `on` defaults to `['change']`.\n\n```javascript\n{bind: {model: proxy, key: string, to: string, on: string|[string]}}\n```\n\n```javascript\nview.input({bind: {model: proxy, key: 'title', to: 'value', on: ['keydown', 'keyup']}})\n```\n\n## Examples\n\n* [TodoMVC](https://github.com/yuryshulaev/satori-todomvc)\n\n## Performance\n\nSatori is very fast. It was built with performance in mind and tries to do only what is essential, so there’s actually not much room left for further optimization of typical operations. It updates the UI asynchronously to make bulk updates faster and reflects array modifications with minimal DOM changes. It shows very good results on the TodoMVC benchmark, but I won’t provide you with them due to its [controversial nature](http://vuejs.org/perf/). In particular, libraries based on virtual DOM, despite performing well in this benchmark, tend to have poor responsiveness when the number of rendered elements is large enough. For instance, simple editing of text in an input field can become irritating because of the delays introduced by rerendering and diffing performed by those libraries on each keystroke.\n\n## Helper functions\n\n * `qs(selector, scope = document)` — alias for `scope.querySelector(selector)`\n * `qsa(selector, scope = document)` — alias for `scope.querySelectorAll(selector)`\n * `each(selector, scope = document, func)` — call `func` for each element in `querySelectorAll()` result\n * `sortCompare(a, b)` — comparer for sorting numbers and strings, for example: `['b', 'a'].sort(sortCompare)`\n * `arrayRemove(array, value)` — remove first occurrence of `value` from `array`\n\n## Debugging\n\nEnable logging of all flushes and affected observers in console:\n\n```javascript\nview.logFlushes = true;\n```\n\nEnable logging of all proxy events:\n\n```javascript\nview.logEvents = true;\n```\n\nHighlight all affected DOM elements:\n\n```javascript\nview.highlightUpdates = true;\n```\n\nTo inspect registered object observers, just explore the `[Symbol(proxyInternals)].observers` property of the proxy object in the developer tools of your browser. Most interesting observer fields are `element` and `name`. When you hover the `element` value, the actual element will usually be highlighted if it is visible.\n\n## License\n\nApache 2.0.\n"
+}

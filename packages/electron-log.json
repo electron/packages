@@ -10,8 +10,17 @@
     "jshint": "jshint --exclude ./node_modules . --verbose"
   },
   "repository": {
-    "type": "git",
-    "url": "git+https://github.com/megahertz/electron-log.git"
+    "user": "megahertz",
+    "repo": "electron-log",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/megahertz/electron-log/tarball/master",
+    "clone_url": "https://github.com/megahertz/electron-log",
+    "https_url": "https://github.com/megahertz/electron-log",
+    "travis_url": "https://travis-ci.org/megahertz/electron-log",
+    "zip_url": "https://github.com/megahertz/electron-log/archive/master.zip",
+    "api_url": "https://api.github.com/repos/megahertz/electron-log"
   },
   "files": [
     "index.js",
@@ -33,9 +42,6 @@
     "name": "Alexey Prokhorov"
   },
   "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/megahertz/electron-log/issues"
-  },
   "homepage": "https://github.com/megahertz/electron-log#readme",
   "devDependencies": {
     "chai": "*",
@@ -46,28 +52,81 @@
     "rewire": "*"
   },
   "gitHead": "2492a3fb4c8ad5ec271a043906ae77463d309b14",
-  "_id": "electron-log@1.0.14",
-  "_shasum": "63eb80e99f36f7b4fc87a6647b6943a1695430b3",
-  "_from": ".",
   "_npmVersion": "3.9.0",
   "_nodeVersion": "6.1.0",
-  "_npmUser": {
-    "name": "megahertz",
-    "email": "alexey.p@l96.ru"
-  },
   "dist": {
     "shasum": "63eb80e99f36f7b4fc87a6647b6943a1695430b3",
     "tarball": "http://registry.npmjs.org/electron-log/-/electron-log-1.0.14.tgz"
   },
-  "maintainers": [
+  "versions": [
+    {
+      "number": "1.0.0",
+      "date": "2016-05-02T08:55:36.487Z"
+    },
+    {
+      "number": "1.0.1",
+      "date": "2016-05-02T09:35:01.367Z"
+    },
+    {
+      "number": "1.0.2",
+      "date": "2016-05-02T10:58:48.530Z"
+    },
+    {
+      "number": "1.0.3",
+      "date": "2016-05-02T11:40:32.167Z"
+    },
+    {
+      "number": "1.0.4",
+      "date": "2016-05-02T13:29:46.063Z"
+    },
+    {
+      "number": "1.0.5",
+      "date": "2016-05-19T05:50:35.313Z"
+    },
+    {
+      "number": "1.0.7",
+      "date": "2016-05-19T06:01:28.631Z"
+    },
+    {
+      "number": "1.0.8",
+      "date": "2016-05-19T06:14:59.605Z"
+    },
+    {
+      "number": "1.0.9",
+      "date": "2016-05-30T10:14:46.629Z"
+    },
+    {
+      "number": "1.0.10",
+      "date": "2016-06-20T07:45:54.615Z"
+    },
+    {
+      "number": "1.0.11",
+      "date": "2016-06-23T11:49:09.164Z"
+    },
+    {
+      "number": "1.0.12",
+      "date": "2016-06-23T12:01:27.801Z"
+    },
+    {
+      "number": "1.0.13",
+      "date": "2016-06-24T08:06:16.105Z"
+    },
+    {
+      "number": "1.0.14",
+      "date": "2016-06-24T08:08:21.610Z"
+    }
+  ],
+  "created": "2016-05-02T08:55:36.487Z",
+  "modified": "2016-06-24T08:08:21.610Z",
+  "lastPublisher": {
+    "name": "megahertz",
+    "email": "alexey.p@l96.ru"
+  },
+  "owners": [
     {
       "name": "megahertz",
       "email": "alexey.p@l96.ru"
     }
   ],
-  "_npmOperationalInternal": {
-    "host": "packages-12-west.internal.npmjs.com",
-    "tmp": "tmp/electron-log-1.0.14.tgz_1466755699231_0.12392546329647303"
-  },
-  "directories": {}
+  "readme": "# electron-log\n[![Build Status](https://travis-ci.org/megahertz/electron-log.svg?branch=master)](https://travis-ci.org/megahertz/electron-log)\n[![npm version](https://badge.fury.io/js/electron-log.svg)](https://badge.fury.io/js/electron-log)\n\n## Description\n\nJust a very simple logging module for your Electron application.\nNo dependencies. No complicated configuration. Just require and use.\nAlso it can be used without Electron.\n\nBy default it writes logs to the following locations:\n\n * **on Linux:** `~/.config/<app name>/log.log`\n * **on OS X:** `~/Library/Logs/<app name>/log.log`\n * **on Windows:** `$HOME/AppData/Roaming/<app name>/log.log`\n\n## Installation\n\nInstall with [npm](https://npmjs.org/package/electron-log):\n\n    npm install electron-log\n\n## Usage\n\n```js\nvar log = require('electron-log');\n\nlog.info('Hello, log');\n```\n    \n\n### Transport\nTransport is a simple function which requires an object which describes a message.\nBy default, two transports is active: console and file. The file path is \ndepend on current platform.\n\n#### Disable default transport:\n\n```js\nlog.transport.file = false;\nlog.transport.console = false;\n```\n    \n#### Override transport:\n\n```js\nlog.transports.console = function(msg) {\n  console.log(`[${msg.date.toLocaleTimeString()} ${msg.level}] ${msg.text}`);\n};\n```\n    \n#### Console Transport\n\n```js\n// Log level\nlog.transports.console.level = 'warning';\n\n/** \n * Set output format template. Available variables:\n * Main: {level}, {text}\n * Date: {y},{m},{d},{h},{i},{s},{ms}\n */\nlog.transports.console.format = '{h}:{i}:{s}:{ms} {text}';\n\n// Set a function which formats output\nlog.transports.console.format = (msg) => msg.text;\n```\n    \n#### File transport\n\n```js\n// Same as for console transport\nlog.transports.file.level = 'warning';\nlog.transports.file.format = '{h}:{i}:{s}:{ms} {text}';\n\n// Set maximum log size in bytes. When it exceeds, old log will be saved\n// as log.old.log file\nlog.transports.file.maxSize = 5 * 1024 * 1024;\n\n// Write to this file, must be set before first logging\nlog.transports.file.file = __dirname + '/log.txt';\n\n// fs.createWriteStream options, must be set before first logging\nlog.transports.file.streamConfig = { flags: 'w' };\n\n// set existed file stream\nlog.transports.file.stream = fs.createWriteStream('log.txt');\n```\n\nBy default, file transport reads a name property from package.json to\ndetermine a log path like `~/.config/<app name>/log.log`.\nIf you have no package.json or you want to specify another <app name>,\njust set the appName property:\n\n```js\nlog.appName = 'test';\n```\n\n## License\n\nLicensed under MIT."
 }

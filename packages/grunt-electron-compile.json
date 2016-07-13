@@ -4,8 +4,17 @@
   "description": "Precompile electron app source files",
   "license": "MIT",
   "repository": {
-    "type": "git",
-    "url": "git+https://github.com/jgeurts/grunt-electron-compile.git"
+    "user": "jgeurts",
+    "repo": "grunt-electron-compile",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/jgeurts/grunt-electron-compile/tarball/master",
+    "clone_url": "https://github.com/jgeurts/grunt-electron-compile",
+    "https_url": "https://github.com/jgeurts/grunt-electron-compile",
+    "travis_url": "https://travis-ci.org/jgeurts/grunt-electron-compile",
+    "zip_url": "https://github.com/jgeurts/grunt-electron-compile/archive/master.zip",
+    "api_url": "https://api.github.com/repos/jgeurts/grunt-electron-compile"
   },
   "author": {
     "name": "Jim Geurts",
@@ -32,29 +41,35 @@
     "grunt": "^0.4.5",
     "grunt-cli": "^0.1.13"
   },
-  "bugs": {
-    "url": "https://github.com/jgeurts/grunt-electron-compile/issues"
-  },
   "homepage": "https://github.com/jgeurts/grunt-electron-compile",
   "gitHead": "aebe7dce3dfd9ff6fcb12530d6a444489ec5594d",
-  "_id": "grunt-electron-compile@1.0.1",
-  "_shasum": "aeaab0804db68e936cb9fbb3614cfc82259a1161",
-  "_from": ".",
   "_npmVersion": "2.14.7",
   "_nodeVersion": "4.2.2",
-  "_npmUser": {
+  "dist": {
+    "shasum": "aeaab0804db68e936cb9fbb3614cfc82259a1161",
+    "tarball": "http://registry.npmjs.org/grunt-electron-compile/-/grunt-electron-compile-1.0.1.tgz"
+  },
+  "versions": [
+    {
+      "number": "1.0.0",
+      "date": "2015-12-11T17:49:05.228Z"
+    },
+    {
+      "number": "1.0.1",
+      "date": "2015-12-14T23:58:35.232Z"
+    }
+  ],
+  "created": "2015-12-11T17:49:05.228Z",
+  "modified": "2015-12-14T23:58:35.232Z",
+  "lastPublisher": {
     "name": "jgeurts",
     "email": "jim@biacreations.com"
   },
-  "maintainers": [
+  "owners": [
     {
       "name": "jgeurts",
       "email": "jim@biacreations.com"
     }
   ],
-  "dist": {
-    "shasum": "aeaab0804db68e936cb9fbb3614cfc82259a1161",
-    "tarball": "http://registry.npmjs.org/grunt-electron-compile/-/grunt-electron-compile-1.0.1.tgz"
-  },
-  "directories": {}
+  "readme": "# grunt-electron-compile\r\n\r\n> Precompile electron app source files with [electron-compile](http://github.com/electronjs/electron-compile)\r\n\r\n[![dependencies](https://img.shields.io/david/jgeurts/grunt-electron-compile.svg)](https://david-dm.org/jgeurts/grunt-electron-compile)\r\n\r\n## Install\r\n\r\n```\r\n$ npm install --save-dev grunt-electron-compile\r\n```\r\n\r\n\r\n## Usage\r\n\r\n```js\r\nrequire('load-grunt-tasks')(grunt); // npm install --save-dev load-grunt-tasks\r\n\r\ngrunt.initConfig({\r\n\t\"electron-compile\": {\r\n\t  dist: {\r\n      files: [{\r\n        expand: true,\r\n        cwd: '.',\r\n        src: ['src/**/*.*', 'static/index.html', 'static/js/**/*.*']\r\n      }],\r\n      options: {\r\n        targetDir: './cache'\r\n      }\r\n\t  }\r\n\t}\r\n});\r\n\r\ngrunt.registerTask('default', ['electron-compile']);\r\n```\r\n\r\n\r\n## License\r\n\r\nMIT © [Jim Geurts](http://github.com/jgeurts)\r\n"
 }

@@ -1,0 +1,65 @@
+{
+  "name": "key-event-to-string",
+  "version": "1.1.1",
+  "description": " Converts a JavaScript key event object into a humanly readable format",
+  "main": "index.js",
+  "scripts": {
+    "test": "standard"
+  },
+  "repository": {
+    "user": "florian",
+    "repo": "key-event-to-string",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/florian/key-event-to-string/tarball/master",
+    "clone_url": "https://github.com/florian/key-event-to-string",
+    "https_url": "https://github.com/florian/key-event-to-string",
+    "travis_url": "https://travis-ci.org/florian/key-event-to-string",
+    "zip_url": "https://github.com/florian/key-event-to-string/archive/master.zip",
+    "api_url": "https://api.github.com/repos/florian/key-event-to-string"
+  },
+  "keywords": [
+    "events"
+  ],
+  "author": {
+    "name": "Florian Hartmann"
+  },
+  "license": "MIT",
+  "homepage": "https://github.com/florian/key-event-to-string#readme",
+  "gitHead": "dec8e7e2638ca848b8cefd0559de9da017a1ebf1",
+  "_npmVersion": "2.14.4",
+  "_nodeVersion": "4.1.1",
+  "dist": {
+    "shasum": "4b42b5bdf39e90c78264ae0f9ef1528b8a57fcc4",
+    "tarball": "http://registry.npmjs.org/key-event-to-string/-/key-event-to-string-1.1.1.tgz"
+  },
+  "stars": 1,
+  "versions": [
+    {
+      "number": "1.0.0",
+      "date": "2016-03-20T10:58:03.956Z"
+    },
+    {
+      "number": "1.1.0",
+      "date": "2016-03-20T11:35:48.417Z"
+    },
+    {
+      "number": "1.1.1",
+      "date": "2016-03-26T13:31:47.568Z"
+    }
+  ],
+  "created": "2016-03-20T10:58:03.956Z",
+  "modified": "2016-03-26T13:31:47.568Z",
+  "lastPublisher": {
+    "name": "jscoder",
+    "email": "jscoderr@gmail.com"
+  },
+  "owners": [
+    {
+      "name": "jscoder",
+      "email": "jscoderr@gmail.com"
+    }
+  ],
+  "readme": "# JavaScript keyboard events to strings\n\nThis library helps converting the event object of a JavaScript keydown event\ninto a humanly readable format.\nThe idea is to use this for UI components that let the user choose keyboard\nshortcuts.\n\nIn other words: This library provides the inverse functionality to common keyboard shortcut binding libraries like [keymaster](https://github.com/madrobby/keymaster) or [Mousetrap](https://craig.is/killing/mice).\n\n[![js-standard-style](https://cdn.rawgit.com/feross/standard/master/badge.svg)](https://github.com/feross/standard)\n\n## Installation\n\n```\n$ npm install --save key-event-to-string\n```\n\n## Usage\n\n```js\nvar event2string = require('key-event-to-string')(options)\n\ndocument.body.onkeydown = (e) => {\n\tvar keys = event2string(e)\n\tconsole.log(keys) // e.g. \"Ctrl + A\"\n}\n```\n\n### Options\n\n`options` is optional and can be an object with the following properties:\n\n| key | value | default value |\n|:--|:--|:--|\n| `cmd` |  What string to display for the Cmd/Meta modifier | `\"Cmd\"` |\n| `ctrl` |  What string to display for the Ctrl modifier | `\"Ctrl\"` |\n| `alt` |  What string to display for the Alt/Option modifier | `\"Alt\"` |\n| `shift` |  What string to display for the Shift modifier | `\"Shift\"` |\n| `joinWith` | The string that's displayed between all keys | `\" + \"`\n\nFor example this could be used to get the Mac style keyboard shortcut strings:\n\n```js\n{\n\tcmd: \"⌘\",\n\tctrl: \"⌃\",\n\talt: \"⌥\",\n\tshift: \"⇧\",\n\tjoinWith: \"\"\n}\n```\n\nThe default settings are compatible with the format that common keyboard shortcut libraries, like [keymaster](https://github.com/madrobby/keymaster) or [Mousetrap](https://craig.is/killing/mice), accept.\n\n### Detailed information\n\n`require('key-event-to-string').details(e)` can be used to get more details. This can be useful for\nvalidating keyboard shortcuts, e.g. for requiring a modifier and a normal key.\nIt returns an object with this information:\n\n- `hasModifier`: True iff atleast one of cmd, ctrl, alt or shift was pressed\n- `hasKey`: True iff a key other than a modifier is pressed\n- `map`: An object containing information which modifier is active and what\n  other key is pressed\n\n\n## Disclaimer\n\n- This library is meant to parse only `keydown` events. `keypress` / `keyup` events have small differences, e..g. `keydown` is needed to capture `Command` on a Mac. So `keydown` is advisible for this anyways.\n- I wrote this library for an Electron side project, so I only needed it to run in the Chrome runtime. It probably won't work well in old browsers\n- JavaScript keyCodes don't work well with special international characters. E.g. the German umlaut `ö` has the same keyCode as `;`, on a German keyboard. This library doesn't try to fix that and I don't think there's a good fix for all those special cases. Other keyboard shortcut libraries (Mousetrap/keymaster e.g.) have the same problem, so it shouldn't be a big problem since this library is meant to be used as a helper for those libraries\n"
+}

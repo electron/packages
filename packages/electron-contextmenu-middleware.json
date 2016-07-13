@@ -3,8 +3,17 @@
   "version": "1.0.2",
   "description": "Build `electron` context menus composing multiple middlewares functions.",
   "repository": {
-    "type": "git",
-    "url": "git+https://github.com/parro-it/electron-contextmenu-middleware.git"
+    "user": "parro-it",
+    "repo": "electron-contextmenu-middleware",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/parro-it/electron-contextmenu-middleware/tarball/master",
+    "clone_url": "https://github.com/parro-it/electron-contextmenu-middleware",
+    "https_url": "https://github.com/parro-it/electron-contextmenu-middleware",
+    "travis_url": "https://travis-ci.org/parro-it/electron-contextmenu-middleware",
+    "zip_url": "https://github.com/parro-it/electron-contextmenu-middleware/archive/master.zip",
+    "api_url": "https://api.github.com/repos/parro-it/electron-contextmenu-middleware"
   },
   "license": "MIT",
   "author": {
@@ -40,32 +49,42 @@
     "comws": "^2.0.2"
   },
   "gitHead": "ea35c152b2f78b5acc3930a40f2efa5039b05bf4",
-  "bugs": {
-    "url": "https://github.com/parro-it/electron-contextmenu-middleware/issues"
-  },
   "homepage": "https://github.com/parro-it/electron-contextmenu-middleware#readme",
-  "_id": "electron-contextmenu-middleware@1.0.2",
-  "_shasum": "9c363911940ae5c7162f48f7f82304b8cb2ce08e",
-  "_from": ".",
   "_npmVersion": "3.8.6",
   "_nodeVersion": "6.0.0",
-  "_npmUser": {
-    "name": "parroit",
-    "email": "andrea@parro.it"
-  },
   "dist": {
     "shasum": "9c363911940ae5c7162f48f7f82304b8cb2ce08e",
     "tarball": "http://registry.npmjs.org/electron-contextmenu-middleware/-/electron-contextmenu-middleware-1.0.2.tgz"
   },
-  "maintainers": [
+  "versions": [
+    {
+      "number": "0.0.1",
+      "date": "2016-03-08T19:46:18.309Z"
+    },
+    {
+      "number": "1.0.0",
+      "date": "2016-03-09T20:19:31.207Z"
+    },
+    {
+      "number": "1.0.1",
+      "date": "2016-03-17T20:15:53.410Z"
+    },
+    {
+      "number": "1.0.2",
+      "date": "2016-05-11T20:25:03.799Z"
+    }
+  ],
+  "created": "2016-03-08T19:46:18.309Z",
+  "modified": "2016-05-11T20:25:03.799Z",
+  "lastPublisher": {
+    "name": "parroit",
+    "email": "andrea@parro.it"
+  },
+  "owners": [
     {
       "name": "parroit",
       "email": "andrea.parodi@ebansoftware.net"
     }
   ],
-  "_npmOperationalInternal": {
-    "host": "packages-16-east.internal.npmjs.com",
-    "tmp": "tmp/electron-contextmenu-middleware-1.0.2.tgz_1462998302259_0.8627797209192067"
-  },
-  "directories": {}
+  "readme": "# electron-contextmenu-middleware\n\n> Build `electron` context menus composing multiple middlewares functions.\n\n[![Travis Build Status](https://img.shields.io/travis/parro-it/electron-contextmenu-middleware.svg)](http://travis-ci.org/parro-it/electron-contextmenu-middleware)\n[![NPM module](https://img.shields.io/npm/v/electron-contextmenu-middleware.svg)](https://npmjs.org/package/electron-contextmenu-middleware)\n[![NPM downloads](https://img.shields.io/npm/dt/electron-contextmenu-middleware.svg)](https://npmjs.org/package/electron-contextmenu-middleware)\n\nThis package born because I've published two other\nnpm packages for electron that provide different context menu for DOM element.\n\n`electron-input-menu` provide Copy&Paste stuff for `input` element, while `debug-menu` provide a Chrome-like \"inspect element\" menu for `electron`.\n\nThey both work well on their own, but if you want to use them together you can only shown one menu or the other, because they `preventDefault` the contextmenu event. If you remove the `preventDefault` call, then you get both, in sequence.\n\n`electron-contextmenu-middleware` grab menus provided by various other packages (the `middlewares` ones) merge them in a single menu, and `popup` it.\n\n\n# Installation\n\n```bash\nnpm install --save electron-contextmenu-middleware\n```\n\n# Usage\n\n```js\n  // in a renderer electron process,\n  // you want to activate context menu provided\n  // by `electron-input-menu` and `debug-menu`\n\n  const context = require('electron-contextmenu-middleware');\n\n  const input = require('electron-input-menu');\n  const debug = require('debug-menu').contextMdw;\n\n  context.use(input);\n  context.use(debug);\n  context.activate();\n```\n\n# Write a middleware\n\nTo write a `middleware` menu, just export a function\nthat receives an option object and a next function.\n\nThe option object is composed by the right-clicked DOM element, the click x and y coord, and an array of `electron` menu item templates.\n\nAppend or insert your menu items to the array in the position you want (or remove existing items inserted by other middlewares) and call `next` when done.\n\n\n```js\nexport default function ({elm, menu, click}, next) {\n  menu.push({\n    label: 'Inspect element',\n    click: () => {\n      require('electron').remote\n        .getCurrentWindow()\n        .inspectElement(\n          click.x,\n          click.y\n        );\n    }\n  });\n}\n```\n\n\n# Related projects\n\n* [electron-input-menu](https://github.com/parro-it/electron-input-menu) - Context menu for [electron](https://github.com/atom/electron) input elements.\n\n* [debug-menu](https://github.com/parro-it/debug-menu) - Chrome-like \"inspect element\" context-menu.\n\n\n# License\n\nThe MIT License (MIT)\n\nCopyright (c) 2016 parro-it\n"
 }

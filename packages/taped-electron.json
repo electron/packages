@@ -1,12 +1,12 @@
 {
   "name": "taped-electron",
-  "version": "0.1.4",
+  "version": "0.2.2",
   "description": "Run tape tests inside electron",
   "bin": {
     "taped-electron": "./taped-electron"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "./taped-electron --main './test/main/**/*-test.js' --renderer './test/renderer/**/*-test.js'"
   },
   "keywords": [
     "electron",
@@ -14,39 +14,67 @@
     "test",
     "baboon"
   ],
-  "babel": {
-    "presets": [
-      "node5"
-    ]
+  "author": {
+    "name": "Mike Nichols",
+    "email": "nichols.mike.s@gmail.com"
   },
-  "author": "",
   "license": "MIT",
   "dependencies": {
-    "babel-preset-node5": "^10.1.2",
-    "babel-register": "^6.3.13",
     "blue-tape": "^0.1.11",
-    "nomnom": "^1.8.1",
-    "tape-catch": "^1.0.4"
+    "debug": "^2.2.0",
+    "minimist": "^1.2.0"
   },
-  "gitHead": "ca6f4bdad972005bdbaa4543bba998426491c5cd",
-  "_id": "taped-electron@0.1.4",
-  "_shasum": "cbb0d4c731b477f72d85eef8504481f3365f227b",
-  "_from": ".",
-  "_npmVersion": "3.5.3",
-  "_nodeVersion": "5.4.0",
-  "_npmUser": {
+  "devDependencies": {
+    "electron-prebuilt-compile": "^1.2.5"
+  },
+  "gitHead": "777667be4bf3a594caa88017fd1632ead33b58da",
+  "_npmVersion": "3.9.3",
+  "_nodeVersion": "6.2.1",
+  "dist": {
+    "shasum": "92ff8796f9d16450bed5f43b3de6dc27c2432178",
+    "tarball": "http://registry.npmjs.org/taped-electron/-/taped-electron-0.2.2.tgz"
+  },
+  "versions": [
+    {
+      "number": "0.1.0",
+      "date": "2016-01-09T21:00:18.671Z"
+    },
+    {
+      "number": "0.1.1",
+      "date": "2016-01-09T21:02:17.454Z"
+    },
+    {
+      "number": "0.1.2",
+      "date": "2016-01-10T03:44:40.837Z"
+    },
+    {
+      "number": "0.1.3",
+      "date": "2016-01-10T03:59:19.280Z"
+    },
+    {
+      "number": "0.1.4",
+      "date": "2016-01-10T22:59:06.081Z"
+    },
+    {
+      "number": "0.2.1",
+      "date": "2016-07-13T05:07:11.215Z"
+    },
+    {
+      "number": "0.2.2",
+      "date": "2016-07-13T05:19:10.619Z"
+    }
+  ],
+  "created": "2016-01-09T21:00:18.671Z",
+  "modified": "2016-07-13T05:19:10.619Z",
+  "lastPublisher": {
     "name": "mnichols",
     "email": "nichols.mike.s@gmail.com"
   },
-  "dist": {
-    "shasum": "cbb0d4c731b477f72d85eef8504481f3365f227b",
-    "tarball": "http://registry.npmjs.org/taped-electron/-/taped-electron-0.1.4.tgz"
-  },
-  "maintainers": [
+  "owners": [
     {
       "name": "mnichols",
       "email": "nichols.mike.s@gmail.com"
     }
   ],
-  "directories": {}
+  "readme": "# Taped Electron\n\nRun tape tests inside electron\n\nThis uses [blue-tape](https://github.com/spion/blue-tape) but is\njust using tto run tests.\n\n## Prerequisites\n\nHave electron installed;\n\n`npm install electron-prebuilt`\n\n## Usage\n\n`taped-electron --renderer {glob} --main {glob}`\n\nWhen no process type is specified, the process is assumed to be the main process.\n\n*Run Tests In Main Process*\n\n`taped-electron /path/to/main/tests/**/*-test.js`\n\nor\n\n`taped-electron -m /path/to/main/tests/**/*-test.js`\n\nor\n\n`taped-electron --main /path/to/main/tests/**/*-test.js`\n\n*Run Tests In Renderer Process*\n\n`taped-electron --renderer /path/to/renderer/tests/**/*-test.js`\n\nor\n\n`taped-electron -r /path/to/renderer/tests/**/*-test.js`\n\n\n*Run Tests In Both Processes*\n\n`taped-electron -r /path/to/renderer/tests/**/*-test.js -m /path/to/main/tests/**/*.js`\n\n*Use with a pretty reporter*\n\n`npm install tap-spec`\n`taped-electron --main ./test/main/**/*.* --renderer ./test/renderer/**/*.* | tap-spec`\n\n## Testing \n\nIf you want to confirm `taped-electron` you can clone the repo and `npm test`. You should see **2 failing tests** as well as **2 passing tests**.\nThis tests both the main and renderer processes.\n"
 }

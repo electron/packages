@@ -1,13 +1,22 @@
 {
   "name": "electron-clr",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "engines": {
     "node": ">=0.12 <5"
   },
   "description": "Electron binding for .NET Framework API",
   "repository": {
-    "type": "git",
-    "url": "git+https://github.com/victorwins/electron-clr.git"
+    "user": "victorwins",
+    "repo": "electron-clr",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/victorwins/electron-clr/tarball/master",
+    "clone_url": "https://github.com/victorwins/electron-clr",
+    "https_url": "https://github.com/victorwins/electron-clr",
+    "travis_url": "https://travis-ci.org/victorwins/electron-clr",
+    "zip_url": "https://github.com/victorwins/electron-clr/archive/master.zip",
+    "api_url": "https://api.github.com/repos/victorwins/electron-clr"
   },
   "main": "lib/clr.js",
   "scripts": {
@@ -34,32 +43,46 @@
   "license": "(ISC OR WTFPL)",
   "gypfile": true,
   "gitHead": "106e0d0ca186f2d1d8b2a69b0f2051d838d27984",
-  "bugs": {
-    "url": "https://github.com/victorwins/electron-clr/issues"
-  },
   "homepage": "https://github.com/victorwins/electron-clr#readme",
-  "_id": "electron-clr@0.2.1",
-  "_shasum": "66113e1586771f8c8a7ed4b57553e607b737d173",
-  "_from": ".",
   "_npmVersion": "3.9.5",
   "_nodeVersion": "4.2.1",
-  "_npmUser": {
+  "dist": {
+    "shasum": "d94923e9f60f417cf888e191812784d671b46fcb",
+    "tarball": "http://registry.npmjs.org/electron-clr/-/electron-clr-0.2.2.tgz"
+  },
+  "versions": [
+    {
+      "number": "0.0.14",
+      "date": "2016-06-09T05:04:05.740Z"
+    },
+    {
+      "number": "0.1.0",
+      "date": "2016-06-14T19:10:41.076Z"
+    },
+    {
+      "number": "0.2.0",
+      "date": "2016-06-19T15:51:42.840Z"
+    },
+    {
+      "number": "0.2.1",
+      "date": "2016-06-21T21:44:55.325Z"
+    },
+    {
+      "number": "0.2.2",
+      "date": "2016-06-29T14:35:06.422Z"
+    }
+  ],
+  "created": "2016-06-09T05:04:05.740Z",
+  "modified": "2016-06-29T14:35:06.422Z",
+  "lastPublisher": {
     "name": "victor.wins",
     "email": "victor.wins@gmail.com"
   },
-  "dist": {
-    "shasum": "66113e1586771f8c8a7ed4b57553e607b737d173",
-    "tarball": "http://registry.npmjs.org/electron-clr/-/electron-clr-0.2.1.tgz"
-  },
-  "maintainers": [
+  "owners": [
     {
       "name": "victor.wins",
       "email": "victor.wins@gmail.com"
     }
   ],
-  "_npmOperationalInternal": {
-    "host": "packages-12-west.internal.npmjs.com",
-    "tmp": "tmp/electron-clr-0.2.1.tgz_1466545492446_0.683900518110022"
-  },
-  "directories": {}
+  "readme": "A fork of node-clr with precompiled Electron native modules and duck typing.\r\n\r\nTo build native modules for a new Electron version:\r\n\r\nbuild.cmd electron.version.here\r\n\r\n# node-clr : .NET Framework API Binding for Node.js\r\n\r\n## Usage:\r\n\t# npm install electron-clr\r\n\t# node\r\n\t\r\n\t> require('electron-clr').init();\r\n\t> System.Console.WriteLine('Hello, {0}!', 'world');\r\n\t'Hello, world!'\r\n\r\n\t> var now = new System.DateTime(2013, 7, 1);\r\n\t> now.ToString();\r\n\t'2013/07/01 0:00:00'\r\n\r\n\t> require('clr').init({ assemblies: [ 'System.Windows.Forms' ] });\r\n\t> with (System.Windows.Forms) {\r\n\t>   var f = new Form();\r\n\t>   \r\n\t>   var p = new FlowLayoutPanel();\r\n\t>   f.Controls.Add(p);\r\n\t>   \r\n\t>   var t = new TextBox();\r\n\t>   t.Text = 'world';\r\n\t>   p.Controls.Add(t);\r\n\t>   \r\n\t>   var b = new Button();\r\n\t>   b.Text = 'Greet';\r\n\t>   b.Click.add(function (thiz, ea) {\r\n\t>     console.log('clicked');\r\n\t>     MessageBox.Show('Hello, ' + t.Text + '!');\r\n\t>   });\r\n\t>   p.Controls.Add(b);\r\n\t> \r\n\t>   Application.Run(f);\r\n\t> }\r\n\t(running WinForm application)\r\n\r\n\r\n## Prerequisites:\r\n\r\nThis library is built and tested on following environment:\r\n\r\n- Node.js v0.12.1\r\n- .NET Framework 4.5\r\n- Visual Studio 2013\r\n- [Node.js native module build environment](https://github.com/TooTallNate/node-gyp)\r\n\r\n\r\n## clr.init([options])\r\n\r\nInitialize CLR rutime with given options. Returns global `namespace`.\r\n\r\n- `options` {Object}\r\n\t- `assemblies` {Array} - An array of assembly name (partial name, full name or absolute path to .dll/.exe).\r\n\t  Defaults to `['mscorlib', 'System', 'System.Core']`.\r\n\t- `global` {boolean} - if `true`, CLR global namespace objects are injected into javascript global object.\r\n\t  Defaults to `true`.\r\n\r\n\r\n## CLR namespaces\r\n\r\n- {Object}\r\n\r\nCLR namespace objects contain nested namespaces or types.\r\n\r\n\r\n## CLR types\r\n\r\n- {Function}\r\n\r\nCLR type functions work as constructor for corresponding CLR types.\r\nThe constructor returns wrapped CLR object.\r\n\r\n\tvar now = new System.DateTime(2013, 7, 1);\r\n\r\nThe code above invokes CLR constructor [`DateTime (Int32, Int32, Int32)`](http://msdn.microsoft.com/ja-jp/library/xcfzdy4x.aspx)\r\nand returns {Object} that wraps `DateTime` instance.\r\n\r\n\r\nCLR type also contains static members.\r\n\r\n\tvar now = System.DateTime.Now;\r\n\r\nThe code above invokes CLR static property getter [`DateTime.Now`](http://msdn.microsoft.com/ja-jp/library/system.datetime.now.aspx).\r\n\r\n\r\n### type.of([type])\r\n\r\nBind generic parameters to type and returns bound CLR type.\r\n\r\n\tvar list = new (System.Collections.Generic.List.of(System.Int32))();\r\n\r\n\r\n## CLR objects\r\n\r\n- {Object}\r\n\r\nJavascript object that wraps CLR instance, which contains instance members.\r\n\r\n\tvar now = System.DateTime.Now;\r\n\tnow.ToString();\r\n\t\r\n\t> '2013/07/01 0:00:00'\r\n\r\n\r\n## CLR methods\r\n\r\n- {Function}\r\n\r\nCLR methods can be invoked as Javascript function. Arguments and return value are marshalled as conventions below.\r\n\r\n\tSystem.Console.WriteLine('Hello, {0}!', 'world');\r\n\t\r\n\t> 'Hello, world!'\r\n\r\n## CLR properties/fields\r\n\r\n- {Getter/Setter}\r\n\r\nCLR properties/fields are exposed as object's getter or setter function.\r\n\r\n\tvar now = System.DateTime.Now;\r\n\r\n\r\n## CLR indexed properties\r\n\r\n### obj.get([index])\r\n\r\nGet object's default indexed property\r\n\r\n\tvar a = \r\n\r\n### obj.set([index], value)\r\n\r\n\r\n## CLR events\r\n\r\n- {Object}\r\n\r\nCLR events can be hooked by `add` and `remove` function.\r\n\r\n\r\n### event.add(handler)\r\n\r\nAdd javascript event handler to specified event.\r\n\r\n- `handler` {Function}\r\n\r\n\r\n### event.remove(handler)\r\n\r\nRemove javascript event handler from event.\r\n\r\n** This isn't working right now **\r\n\r\n- `handler` {Function}\r\n\r\n\r\n## Marshaling:\r\n\r\nV8 => CLR:\r\n\r\n- `null` or `undefined` => `null`\r\n- `boolean` => `System.Boolean`\r\n- `number` => Any numeric type or `System.Double`\r\n- `string` => `System.String` or `System.Char` or Enums\r\n- `Function` => Any delegate type or `System.Func<System.Object[], System.Object>`\r\n- `Array` => Any type of array or `System.Object[]`\r\n- `Buffer` => `System.Byte[]`\r\n- `object` => `System.Dynamic.ExpandoObject`\r\n\r\nCLR => V8:\r\n\r\n- `null` => `null`\r\n- `System.Boolean` => `boolean`\r\n- Any numberic type excepts System.Decimal => `number`\r\n- `System.String` or `System.Char` => `string`\r\n- Any other types => CLR wrapped object\r\n\r\n## Duck typing\r\n\r\n    const implementedInterface = new IMyInterface({\r\n        MyFunc: () => 10,\r\n        set_Prop: value => {},\r\n        get_Prop: () => 12\r\n    });\r\n\r\n## Threading:\r\n\r\nYou can use .NET threads. All Javascript callback functions are invoked in main event loop.\r\n\r\n\tvar t = new System.Threading.Thread(function () {\r\n\t  console.log('Hello, world!');\r\n\t});\r\n\tt.Start();\r\n\t\r\n\t> 'Hello, world!' // will be invoked asynchronously, but in main thread\r\n\r\n\r\n## TODO:\r\n- Unit test\r\n- Better marshaling\r\n  - `Object` => class with `DataContractAttribute`\r\n  - handle cyclic reference\r\n- New Event api, resembles to EventEmitter\r\n- Prototype chain which reflects CLR inheritance\r\n- Generic method\r\n- cast\r\n- valueOf (explicit conversion from wrapped CLR object to javascript types)\r\n- Async invocation\r\n- Compiler API\r\n"
 }

@@ -13,8 +13,17 @@
   ],
   "homepage": "https://github.com/Quramy/electron-connect",
   "repository": {
-    "type": "git",
-    "url": "git+https://github.com/Quramy/electron-connect.git"
+    "user": "Quramy",
+    "repo": "electron-connect",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/Quramy/electron-connect/tarball/master",
+    "clone_url": "https://github.com/Quramy/electron-connect",
+    "https_url": "https://github.com/Quramy/electron-connect",
+    "travis_url": "https://travis-ci.org/Quramy/electron-connect",
+    "zip_url": "https://github.com/Quramy/electron-connect/archive/master.zip",
+    "api_url": "https://api.github.com/repos/Quramy/electron-connect"
   },
   "author": {
     "name": "Quramy",
@@ -33,27 +42,29 @@
     "gulp-mocha": "^2.1.3"
   },
   "gitHead": "481dd3a951bf6fbee30eec34701bb119a7f71ff9",
-  "bugs": {
-    "url": "https://github.com/Quramy/electron-connect/issues"
-  },
-  "_id": "arkenthera-electron-connect@0.3.5",
-  "_shasum": "b6ae86054fe9e221af7a43ca921f2bb1f72ee2b9",
-  "_from": ".",
   "_npmVersion": "3.3.12",
   "_nodeVersion": "5.4.1",
-  "_npmUser": {
-    "name": "arkenthera",
-    "email": "arkenthera@gmail.com"
-  },
   "dist": {
     "shasum": "b6ae86054fe9e221af7a43ca921f2bb1f72ee2b9",
     "tarball": "http://registry.npmjs.org/arkenthera-electron-connect/-/arkenthera-electron-connect-0.3.5.tgz"
   },
-  "maintainers": [
+  "versions": [
+    {
+      "number": "0.3.5",
+      "date": "2016-01-21T17:31:44.200Z"
+    }
+  ],
+  "created": "2016-01-21T17:31:44.200Z",
+  "modified": "2016-01-21T17:31:44.200Z",
+  "lastPublisher": {
+    "name": "arkenthera",
+    "email": "arkenthera@gmail.com"
+  },
+  "owners": [
     {
       "name": "arkenthera",
       "email": "arkenthera@gmail.com"
     }
   ],
-  "directories": {}
+  "readme": "# electron-connect [![Build Status](https://travis-ci.org/Quramy/electron-connect.svg?branch=master)](https://travis-ci.org/Quramy/electron-connect) [![npm version](https://badge.fury.io/js/electron-connect.svg)](http://badge.fury.io/js/electron-connect) ![dependency](https://david-dm.org/quramy/electron-connect.svg)\r\nUtility tool to develop applications with [Electron](http://electron.atom.io/).\r\n\r\nUsing this in your Node.js scripts(e.g. `gulpfile.js`), you can livereload your Electron app.\r\n\r\nIt provides the following features:\r\n\r\n* start(and restart) Electron process in your Node.js script\r\n* reload renderer process in your Node.js script\r\n\r\n## Install\r\nUse npm:\r\n\r\n```bash\r\nnpm install -g electron-prebuilt\r\nnpm install electron-connect\r\n```\r\n\r\n## Usage\r\n`electron-connect` has server and client components. They communicate with each other using WebSocket.\r\nThe server component manages Electron process and broadcasts reload event to client, and client components reload renderer's resources.\r\n\r\n### Server\r\nHere is an example creating a server in [gulpfile](http://gulpjs.com/).\r\n\r\n```js\r\n'use strict';\r\n\r\nvar gulp = require('gulp');\r\nvar electron = require('electron-connect').server.create();\r\n\r\ngulp.task('serve', function () {\r\n\r\n  // Start browser process\r\n  electron.start();\r\n\r\n  // Restart browser process\r\n  gulp.watch('app.js', electron.restart);\r\n\r\n  // Reload renderer process\r\n  gulp.watch(['index.js', 'index.html'], electron.reload);\r\n});\r\n```\r\n\r\n### Client\r\nA client can be created in browser process or renderer process.\r\n\r\n* RendererProcess\r\n```html\r\n<html>\r\n<body>\r\n<!-- build:remove -->\r\n<!-- Connect to server process -->\r\n<script>require('electron-connect').client.create()</script>\r\n<!-- end:build -->\r\n</body>\r\n</html>\r\n```\r\n\r\nDo you want to use this tool for only develop environment ?\r\nYou can remove the `<script>` block in your gulpfile using [gulp-useref](https://www.npmjs.com/package/gulp-useref#usage).\r\n\r\n* BrowserProcess \r\n\r\n```js\r\n'use strict';\r\n\r\nvar app = require('app');\r\nvar BrowserWindow = require('browser-window');\r\nvar client = require('electron-connect').client;\r\n\r\napp.on('ready', function () {\r\n  var mainWindow = new BrowserWindow({\r\n    width: 400,\r\n    height: 300\r\n  });\r\n  mainWindow.loadUrl('file://' + __dirname + '/index.html');\r\n\r\n  // Connect to server process\r\n  client.create(mainWindow);\r\n});\r\n```\r\n\r\nIf you want details, see [example/simple](example/simple).\r\n\r\n## API References\r\n\r\n## server.create([options])\r\n\r\n* `option` Object\r\n * `electron` Object. An `electron-prebuilt` module. Set it If you want to use your forked Electron.\r\n * `useGlobalElectron` Boolean. If set, electron-connect use `electron-prebuilt` installed globally(default: `false`).\r\n * `path` String. A path to your `package.json` file(default: `process.cwd()`).\r\n * `port` Number. WebSocket server port(default: `30080`).\r\n * `spawnOpt` Object. Options for [spawn](https://nodejs.org/api/child_process.html#child_process_child_process_spawn_command_args_options).\r\n\r\nReturns a new `ProcessManager` object.\r\n\r\nIf neither `electron` nor `useGlobalElectron` are set, electron-connect searches `electron-prebuilt` modules automatically.\r\n\r\n1. First, electron-connect searches `electron-prebuilt` installed locally.\r\n1. If not hit, electron-connect uses `electron-prebuilt` installed globally.\r\n\r\n## Class: ProcessManager\r\n\r\n### start([args], [callback])\r\n\r\n* `args` String or Array. Additional arguments used when create a process.\r\n* `callback` Function\r\n\r\nStarts a server and Electron application process.\r\n\r\n### restart([args], [callback])\r\n\r\n* `args` String or Array. Additional arguments used when create a process.\r\n* `callback` Function\r\n\r\nKills Electron process if it exsists, and starts new one.\r\n\r\nThis method is useful for callback of your browserProcess sourcecodes' change event.\r\n\r\n### reload([ids])\r\n\r\n* `ids` String or Array. A list of id of target client.\r\n\r\nEmit reload event to target clients. Broadcasts reload event to all connected `Client` object if `ids` not set.\r\nThis method does not kill any Electron processes.\r\n\r\nThis method is useful for callback of your rendererProcess sourcecodes' change event.\r\n\r\n### stop([callback])\r\n\r\n* `callback` Function\r\n\r\nKills Electron process and stops server.\r\n\r\n### on(eventName, callback)\r\n\r\n* `eventName` String\r\n* `callback` Function\r\n\r\nRegisters an eventhandler. It can be emitted by `Client.sendMessage`.\r\n\r\n### broadcast(eventName, [data])\r\n\r\n* `eventName` String. A message type.\r\n* `data` Object. A message data.\r\n\r\nBroadcasts a event to all clients.\r\n\r\n## client.create([browserWindow], [options], [callback])\r\n\r\n* `browserWindow` Object\r\n* `options` Object\r\n * `port` Number\r\n * `sendBounds` Boolean\r\n* `callback` Function\r\n\r\nCreates a new `Client` object with `browserWindow` and connects to `ProcessManager`. The `browserWindow` should be an Electron [browser-window](https://github.com/atom/electron/blob/master/docs/api/browser-window.md) instance.\r\nOnce a client is created and connects the server, the client can receive events(e.g. reload).\r\nYou can omit `browserWindow` in only rendererProcess.\r\n\r\nIf `sendBounds` is set(default `true`), the client sends a bounds object when `browserWindow` moves or resizes.\r\nAnd when `ProcessManager.restart()` is called, the client recover the bounds stored at server.\r\n\r\n## class: Client\r\n\r\n### id\r\n\r\nAn identifier of this client. It is a same value `browserWindow.id`.\r\n\r\n### on(eventName, callback)\r\n\r\n* `eventName` String\r\n* `callback` Function\r\n\r\nRegisters an eventhandler. It can be emitted by `ProcessManager.broadcast`.\r\n\r\n### sendMessage(eventName, [data])\r\n\r\n* `eventName` String. A message type.\r\n* `data` Object. A message data.\r\n\r\nEmits an event to `ProcessManager`.\r\n\r\n## License\r\nMIT\r\n"
 }

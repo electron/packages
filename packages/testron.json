@@ -10,8 +10,17 @@
     "test": "node test/test.js"
   },
   "repository": {
-    "type": "git",
-    "url": "git+ssh://git@github.com/shama/testron.git"
+    "user": "shama",
+    "repo": "testron",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/shama/testron/tarball/master",
+    "clone_url": "https://github.com/shama/testron",
+    "https_url": "https://github.com/shama/testron",
+    "travis_url": "https://travis-ci.org/shama/testron",
+    "zip_url": "https://github.com/shama/testron/archive/master.zip",
+    "api_url": "https://api.github.com/repos/shama/testron"
   },
   "keywords": [
     "test",
@@ -27,9 +36,6 @@
     "url": "http://dontkry.com"
   },
   "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/shama/testron/issues"
-  },
   "homepage": "https://github.com/shama/testron#readme",
   "dependencies": {
     "electron-spawn": "^3.0.0",
@@ -42,24 +48,38 @@
     "tape": "^4.0.1"
   },
   "gitHead": "f16611a38def6529e537d75ff450956d60c67516",
-  "_id": "testron@1.2.0",
-  "_shasum": "ca762378878fa7c2a45b905a6e81c3d9d7b0e02a",
-  "_from": ".",
   "_npmVersion": "2.12.1",
   "_nodeVersion": "2.3.4",
-  "_npmUser": {
+  "dist": {
+    "shasum": "ca762378878fa7c2a45b905a6e81c3d9d7b0e02a",
+    "tarball": "http://registry.npmjs.org/testron/-/testron-1.2.0.tgz"
+  },
+  "stars": 1,
+  "versions": [
+    {
+      "number": "1.0.0",
+      "date": "2015-07-21T03:22:01.858Z"
+    },
+    {
+      "number": "1.1.0",
+      "date": "2015-07-23T22:42:08.021Z"
+    },
+    {
+      "number": "1.2.0",
+      "date": "2015-07-24T02:21:14.053Z"
+    }
+  ],
+  "created": "2015-07-21T03:22:01.858Z",
+  "modified": "2015-07-24T02:21:14.053Z",
+  "lastPublisher": {
     "name": "shama",
     "email": "kyle@dontkry.com"
   },
-  "maintainers": [
+  "owners": [
     {
       "name": "shama",
       "email": "kyle@dontkry.com"
     }
   ],
-  "dist": {
-    "shasum": "ca762378878fa7c2a45b905a6e81c3d9d7b0e02a",
-    "tarball": "http://registry.npmjs.org/testron/-/testron-1.2.0.tgz"
-  },
-  "directories": {}
+  "readme": "# testron\nCI your client side tests with Electron\n\n[![build status](https://secure.travis-ci.org/shama/testron.svg)](https://travis-ci.org/shama/testron)\n[![NPM version](https://badge.fury.io/js/testron.svg)](https://badge.fury.io/js/testron)\n[![experimental](http://hughsk.github.io/stability-badges/dist/experimental.svg)](http://github.com/hughsk/stability-badges)\n\n# about\nThis uses [Electron](https://github.com/atom/electron) to run tests in\n[Chromium](http://www.chromium.org/).\n\n# usage\n\n* Install to your project: `npm install testron --save-dev`\n* Install Electron: `npm install electron-prebuilt --save-dev`\n* Add a `test` script to your `package.json`:\n```json\n{\n  \"name\": \"my-project\",\n  \"scripts\": {\n    \"test\": \"testron test/client.js\"\n  },\n}\n```\n* Run `npm test` to run the test script in Electron\n\n## writing tests\nCurrently this only supports TAP. Here is an example test written using [tape](https://www.npmjs.com/package/tape):\n\n```js\nvar test = require('tape')\n\ntest('test this', function (t) {\n  t.plan(1)\n  var ul = document.createElement('ul')\n  var li = document.createElement('li')\n  ul.appendChild(li)\n  li.textContent = 'it works'\n  t.equal(ul.outerHTML, '<ul><li>it works</li></ul>')\n  t.end()\n})\n```\n\nIt is recommended bundling your tests and piping to `testron`:\n\n```json\n{\n  \"name\": \"my-project\",\n  \"scripts\": {\n    \"test\": \"browserify test/client.js | testron\"\n  },\n}\n```\n\n## travis-ci integration\nAdd a `.travis.yml` file to your project:\n\n```yml\nlanguage: node_js\nnode_js:\n  - 'iojs'\nbefore_script:\n  - export DISPLAY=:99.0; sh -e /etc/init.d/xvfb start\n```\n\n## API\nThere is also an API:\n\n```js\nvar testron = require('testron')\nvar tests = testron('test/client.js')\ntests.stdout.on('data', function (data) {\n  console.log('line: ' + data.toString())\n})\ntests.on('exit', function () {\n  console.log('Tests are done!')\n})\n```\n\n# license\n(c) 2015 Kyle Robinson Young. MIT License\n"
 }

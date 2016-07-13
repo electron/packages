@@ -37,35 +37,76 @@
     "eventemitter2": "*",
     "debug": "*"
   },
-  "directories": {
-    "test": "tests"
-  },
   "repository": {
-    "type": "git",
-    "url": "git://github.com/aessig/node-arduino-firmata.git"
-  },
-  "bugs": {
-    "url": "https://github.com/aessig/node-arduino-firmata/issues"
+    "user": "aessig",
+    "repo": "node-arduino-firmata",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/aessig/node-arduino-firmata/tarball/master",
+    "clone_url": "https://github.com/aessig/node-arduino-firmata",
+    "https_url": "https://github.com/aessig/node-arduino-firmata",
+    "travis_url": "https://travis-ci.org/aessig/node-arduino-firmata",
+    "zip_url": "https://github.com/aessig/node-arduino-firmata/archive/master.zip",
+    "api_url": "https://api.github.com/repos/aessig/node-arduino-firmata"
   },
   "homepage": "https://github.com/aessig/node-arduino-firmata",
   "gitHead": "f03196e55c5ac8d3bb3faa2a0d45ead139032857",
-  "_id": "arduino-firmata-electron@0.4.1",
-  "_shasum": "0fd463d02e4786cb7eb77f4b23ab83346f8c756c",
-  "_from": ".",
   "_npmVersion": "2.14.2",
   "_nodeVersion": "4.0.0",
-  "_npmUser": {
-    "name": "aessig",
-    "email": "auressig@gmail.com"
-  },
   "dist": {
     "shasum": "0fd463d02e4786cb7eb77f4b23ab83346f8c756c",
     "tarball": "http://registry.npmjs.org/arduino-firmata-electron/-/arduino-firmata-electron-0.4.1.tgz"
   },
-  "maintainers": [
+  "versions": [
+    {
+      "number": "0.3.3",
+      "date": "2015-09-24T21:03:41.753Z"
+    },
+    {
+      "number": "0.3.4",
+      "date": "2015-09-24T21:11:39.317Z"
+    },
+    {
+      "number": "0.4.0",
+      "date": "2015-09-24T21:26:15.280Z"
+    },
+    {
+      "number": "0.3.5",
+      "date": "2015-11-02T20:25:58.738Z"
+    },
+    {
+      "number": "0.3.6",
+      "date": "2015-11-02T20:30:33.371Z"
+    },
+    {
+      "number": "0.3.7",
+      "date": "2015-11-02T21:14:37.015Z"
+    },
+    {
+      "number": "0.3.8",
+      "date": "2015-11-02T23:04:24.067Z"
+    },
+    {
+      "number": "0.3.9",
+      "date": "2015-11-03T12:32:18.908Z"
+    },
+    {
+      "number": "0.4.1",
+      "date": "2015-11-03T16:56:58.852Z"
+    }
+  ],
+  "created": "2015-09-24T21:03:41.753Z",
+  "modified": "2015-11-03T16:56:58.852Z",
+  "lastPublisher": {
+    "name": "aessig",
+    "email": "auressig@gmail.com"
+  },
+  "owners": [
     {
       "name": "aessig",
       "email": "aurelien.essig@gmail.com"
     }
-  ]
+  ],
+  "readme": "arduino-firmata\n===============\nArduino Firmata protocol (http://firmata.org) implementation on Node.js.\n\n- Firmata is a protocol to controll Arduino from software on PC.\n- You can embed Arduino code into Node.js application.\n- Support sharing an Arduino between multiple processes.\n- https://github.com/shokai/node-arduino-firmata\n- https://npmjs.org/package/arduino-firmata\n\n\nInstall\n-------\n\n    % npm install arduino-firmata\n\n\nRequirements\n------------\n\n* Arduino (http://arduino.cc)\n  * testing with\n    * Arduino Diecimila\n    * Arduino Duemillanove\n    * Arduino UNO\n    * Arduino Leonardo\n    * Arduino Micro\n    * Seeduino v2\n* Arduino Standard Firmata v2.2\n  * Arduino IDE -> [File] -> [Examples] -> [Firmata] -> [StandardFirmata]\n\n\nUsage\n-----\n\n### Samples\n\n- https://github.com/shokai/node-arduino-firmata/tree/master/samples\n\n### Setup\n\nConnect\n```javascript\nvar ArduinoFirmata = require('arduino-firmata');\nvar arduino = new ArduinoFirmata();\n\narduino.connect(); // use default arduino\narduino.connect('/dev/tty.usb-device-name');\n\narduino.on('connect', function(){\n\n  console.log(\"board version\"+arduino.boardVersion);\n  // your-code-here\n\n});\n```\n\nReset\n```javascript\narduino.reset(callback);\n```\n\nClose\n```javascript\narduino.close(callback);\n```\n\n\n### I/O\n\nDigital Write\n```javascript\narduino.digitalWrite(13, true, callback);\narduino.digitalWrite(13, false, callback);\n```\n\nDigital Read\n```javascript\narduino.pinMode(7, ArduinoFirmata.INPUT);\nconsole.log( arduino.digitalRead(7) ); // => true/false\n```\n\nDigital Read (event)\n```javascript\narduino.pinMode(7, ArduinoFirmata.INPUT);\n\narduino.on('digitalChange', function(e){\n  console.log(\"pin\" + e.pin + \" : \" + e.old_value + \" -> \" + e.value);\n});\n```\n\nAnalog Write (PWM)\n```\nsetInterval(function(){\n  var an = Math.random()*255; // 0 ~ 255\n  arduino.analogWrite(9, an, callback);\n}, 100);\n```\n\nAnalog Read\n```javascript\nconsole.log( arduino.analogRead(0) ); // => 0 ~ 1023\n```\n\nAnalog Read (event)\n```javascript\narduino.on('analogChange', function(e){\n  console.log(\"pin\" + e.pin + \" : \" + e.old_value + \" -> \" + e.value);\n});\n```\n\nServo Motor\n```javascript\nsetInterval(function(){\n  var angle = Math.random()*180; // 0 ~ 180\n  arduino.servoWrite(11, angle, callback);\n}, 1000);\n```\n\n### Sysex\n\n- http://firmata.org/wiki/V2.1ProtocolDetails#Sysex_Message_Format\n- https://github.com/shokai/node-arduino-firmata/tree/master/samples/sysex\n\nSend\n```javascript\narduino.sysex(0x01, [13, 5, 2], callback);  // command, data_array, callback\n```\n\nRegister Sysex Event\n```javascript\narduino.on('sysex', function(e){\n  console.log(\"command : \" + e.command);\n  console.log(e.data);\n});\n```\n\n\nDevelop\n-------\n\n    % npm install\n    % npm run build\n    # or\n    % npm run watch\n\nTest\n----\n\n### Install SysexLedBlinkFirmata into Arduino\n\n* https://github.com/shokai/node-arduino-firmata/blob/master/samples/sysex/StandardFirmataWithLedBlink/StandardFirmataWithLedBlink.ino\n\n\n### Run Test\n\n    % npm test\n\n\nContributing\n------------\n1. Fork it\n2. Create your feature branch (`git checkout -b my-new-feature`)\n3. Commit your changes (`git commit -am 'Add some feature'`)\n4. Push to the branch (`git push origin my-new-feature`)\n5. Create new Pull Request\n"
 }

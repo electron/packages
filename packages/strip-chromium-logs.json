@@ -40,32 +40,51 @@
     "stdout"
   ],
   "repository": {
-    "type": "git",
-    "url": "git://github.com/mattdesl/strip-chromium-logs.git"
+    "user": "mattdesl",
+    "repo": "strip-chromium-logs",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/mattdesl/strip-chromium-logs/tarball/master",
+    "clone_url": "https://github.com/mattdesl/strip-chromium-logs",
+    "https_url": "https://github.com/mattdesl/strip-chromium-logs",
+    "travis_url": "https://travis-ci.org/mattdesl/strip-chromium-logs",
+    "zip_url": "https://github.com/mattdesl/strip-chromium-logs/archive/master.zip",
+    "api_url": "https://api.github.com/repos/mattdesl/strip-chromium-logs"
   },
   "homepage": "https://github.com/mattdesl/strip-chromium-logs",
-  "bugs": {
-    "url": "https://github.com/mattdesl/strip-chromium-logs/issues"
-  },
   "gitHead": "11846338a5549cfda5d39b016334e557977fcd8c",
-  "_id": "strip-chromium-logs@1.0.2",
-  "_shasum": "db6cbeefdf5163fd80e94908df3efdcc0b010d52",
-  "_from": ".",
   "_npmVersion": "2.1.18",
   "_nodeVersion": "0.10.32",
-  "_npmUser": {
-    "name": "mattdesl",
-    "email": "dave.des@gmail.com"
-  },
   "dist": {
     "shasum": "db6cbeefdf5163fd80e94908df3efdcc0b010d52",
     "tarball": "http://registry.npmjs.org/strip-chromium-logs/-/strip-chromium-logs-1.0.2.tgz"
   },
-  "maintainers": [
+  "versions": [
+    {
+      "number": "1.0.0",
+      "date": "2015-08-02T20:23:19.672Z"
+    },
+    {
+      "number": "1.0.1",
+      "date": "2015-08-02T21:52:28.569Z"
+    },
+    {
+      "number": "1.0.2",
+      "date": "2015-08-02T23:35:19.657Z"
+    }
+  ],
+  "created": "2015-08-02T20:23:19.672Z",
+  "modified": "2015-08-02T23:35:19.657Z",
+  "lastPublisher": {
+    "name": "mattdesl",
+    "email": "dave.des@gmail.com"
+  },
+  "owners": [
     {
       "name": "mattdesl",
       "email": "dave.des@gmail.com"
     }
   ],
-  "directories": {}
+  "readme": "# strip-chromium-logs\n\n[![stable](http://badges.github.io/stability-badges/dist/stable.svg)](http://github.com/badges/stability-badges)\n\nStrips Chromium logs from a stream, mainly useful for cleaning up Electron's `process.stderr` stream.\n\n## Install\n\n```sh\nnpm install strip-chromium-logs --save\n```\n\n## Example\n\n```js\nvar proc = require('child_process')\nvar electron = require('electron-prebuilt')\nvar logger = require('strip-chromium-logs')\nvar path = require('path')\n\nvar args = process.argv.slice(2)\nvar server = path.resolve(__dirname, 'server.js')\n\n// spawn electron and print debugging to console\nvar p = proc.spawn(electron, [ server ].concat(args))\np.stdout.pipe(process.stdout)\np.stderr.pipe(logger()).pipe(process.stderr)\n```\n\nBefore `strip-chromium-logs`:\n\n![before](http://i.imgur.com/p1ZWzX6.png)\n\nAfter `strip-chromium-logs`:\n\n![after](http://i.imgur.com/7rFrX8l.png)\n\n## Usage\n\n[![NPM](https://nodei.co/npm/strip-chromium-logs.png)](https://www.npmjs.com/package/strip-chromium-logs)\n\n#### `stripChromiumLogs()`\n\nReturns a duplexer stream which ignores Chromium-looking logs (which can span several lines) but allows other lines to pass through.\n\n## License\n\nMIT, see [LICENSE.md](http://github.com/mattdesl/strip-chromium-logs/blob/master/LICENSE.md) for details.\n"
 }

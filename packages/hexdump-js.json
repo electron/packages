@@ -4,8 +4,17 @@
   "description": "Hexdump an ArrayBuffer to a String",
   "main": "index.js",
   "repository": {
-    "type": "git",
-    "url": "git://github.com/bma73/hexdump-js.git"
+    "user": "bma73",
+    "repo": "hexdump-js",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/bma73/hexdump-js/tarball/master",
+    "clone_url": "https://github.com/bma73/hexdump-js",
+    "https_url": "https://github.com/bma73/hexdump-js",
+    "travis_url": "https://travis-ci.org/bma73/hexdump-js",
+    "zip_url": "https://github.com/bma73/hexdump-js/archive/master.zip",
+    "api_url": "https://api.github.com/repos/bma73/hexdump-js"
   },
   "homepage": "https://github.com/bma73/hexdump-js",
   "keywords": [
@@ -21,25 +30,28 @@
     "url": "http://www.bjoernacker.de"
   },
   "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/bma73/hexdump-js/issues"
-  },
-  "_id": "hexdump-js@0.1.0",
   "dist": {
     "shasum": "68be81d427823bf69d6f62d7ca2b72059f888a77",
     "tarball": "http://registry.npmjs.org/hexdump-js/-/hexdump-js-0.1.0.tgz"
   },
-  "_from": ".",
   "_npmVersion": "1.4.3",
-  "_npmUser": {
+  "versions": [
+    {
+      "number": "0.1.0",
+      "date": "2014-04-25T23:14:46.963Z"
+    }
+  ],
+  "created": "2014-04-25T23:14:46.963Z",
+  "modified": "2014-04-25T23:14:46.963Z",
+  "lastPublisher": {
     "name": "bma",
     "email": "bjoern@electronauts.net"
   },
-  "maintainers": [
+  "owners": [
     {
       "name": "bma",
       "email": "bjoern@electronauts.net"
     }
   ],
-  "directories": {}
+  "readme": "hexdump-js\r\n=============\r\nHexdump an ArrayBuffer to a String (JS / browser)\r\n\r\n----------\r\n\r\n### Install\r\n\r\n```\r\nnpm install hexdump-js\r\n```\r\n\r\n----------\r\n\r\n###Usage\r\n```js\r\nvar hexdump = require('hexdump-js');\r\n\r\nvar view = new DataView(new ArrayBuffer(0x60));\r\nview.setUint16(0, 0xaaaa);\r\nview.setUint32(0x25, 0x12345678);\r\nview.setUint32(0x50, 0xffffbbbb);\r\n\r\nconsole.log(hexdump(view.buffer));\r\n```\r\nThis outputs the following to the console:\r\n```sh\r\n  Offset  00 01 02 03 04 05 06 07 08 09 0A 0B 0C 0D 0E 0F\r\n00000000  AA AA 00 00 00 00 00 00 00 00 00 00 00 00 00 00  ªª..............\r\n00000010  00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00  ................\r\n00000020  00 00 00 00 00 12 34 56 78 00 00 00 00 00 00 00  ......4Vx.......\r\n00000030  00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00  ................\r\n00000040  00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00  ................\r\n00000050  FF FF BB BB 00 00 00 00 00 00 00 00 00 00 00 00  ÿÿ»»............\r\n```\r\n\r\n\r\nUse [Browserify][1] to ``require`` the npm module e.g.:\r\n```sh\r\nbrowserify example/main.js -o example/bundle.js\r\n```\r\n\r\n\r\n\r\n  [1]: http://browserify.org/"
 }

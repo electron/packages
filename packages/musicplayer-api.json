@@ -1,0 +1,74 @@
+{
+  "name": "musicplayer-api",
+  "version": "0.2.0",
+  "description": "Simple Audio API wrapper",
+  "main": "lib/musicplayer-api.js",
+  "scripts": {
+    "prepublish": "grunt"
+  },
+  "repository": {
+    "user": "frabert",
+    "repo": "musicplayer-api",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/frabert/musicplayer-api/tarball/master",
+    "clone_url": "https://github.com/frabert/musicplayer-api",
+    "https_url": "https://github.com/frabert/musicplayer-api",
+    "travis_url": "https://travis-ci.org/frabert/musicplayer-api",
+    "zip_url": "https://github.com/frabert/musicplayer-api/archive/master.zip",
+    "api_url": "https://api.github.com/repos/frabert/musicplayer-api"
+  },
+  "keywords": [
+    "audio",
+    "audio-api",
+    "music"
+  ],
+  "author": {
+    "name": "Francesco Bertolaccini",
+    "email": "bertolaccinifrancesco@gmail.com"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "coffeelint": "^1.9.4",
+    "grunt": "^0.4.5",
+    "grunt-coffeelint": "0.0.13",
+    "grunt-contrib-coffee": "^0.13.0",
+    "grunt-contrib-uglify": "^0.9.1"
+  },
+  "gitHead": "149f3d9975d7d1fb53880a9bc671077a3ea57d87",
+  "homepage": "https://github.com/frabert/musicplayer-api",
+  "_npmVersion": "2.5.1",
+  "_nodeVersion": "0.12.0",
+  "dist": {
+    "shasum": "836a71133f0544685515d922bfb0c37475e94c5f",
+    "tarball": "http://registry.npmjs.org/musicplayer-api/-/musicplayer-api-0.2.0.tgz"
+  },
+  "versions": [
+    {
+      "number": "0.1.0",
+      "date": "2015-04-29T15:40:58.867Z"
+    },
+    {
+      "number": "0.1.1",
+      "date": "2015-04-29T19:20:06.766Z"
+    },
+    {
+      "number": "0.2.0",
+      "date": "2015-04-29T20:15:22.261Z"
+    }
+  ],
+  "created": "2015-04-29T15:40:58.867Z",
+  "modified": "2015-04-29T20:15:22.261Z",
+  "lastPublisher": {
+    "name": "frabert",
+    "email": "bertolaccinifrancesco@gmail.com"
+  },
+  "owners": [
+    {
+      "name": "frabert",
+      "email": "bertolaccinifrancesco@gmail.com"
+    }
+  ],
+  "readme": "# musicplayer-api\r\n**musicplayer-api** provides a simple way to implement a gapless music player using Web Audio API. It was originally meant to be used in environments such as [electron](https://github.com/atom/electron) but may eventually work in a browser.\r\n\r\nAdd it to your package with\r\n```\r\nnpm install musicplayer-api\r\n```\r\n\r\n## Example of usage\r\n```coffeescript\r\nMusicPlayer = require('musicplayer-api').MusicPlayer\r\n\r\n# The constructor automatically creates a new AudioContext\r\n# and GainNode\r\nplayer = new MusicPlayer()\r\n\r\n# The addTrack is responsible of inserting songs in the\r\n# playlist. It also asynchronously loads songs into memory\r\nplayer.addTrack 'mymusic1.mp3'\r\nplayer.addTrack 'mywav.wav'\r\n\r\nplayer.play()\r\n```\r\n\r\n## API Documentation\r\nWhen used in node, *musicplayer-api* exports an object containing the `MusicPlayer` class. The same object is set to the `mp` global if used in a browser.\r\n\r\n### MusicPlayer class\r\n#### Methods\r\n```coffeescript\r\nplayer.setVolume( value )\r\n```\r\nSets the volume to the specified value, where 0 is muted and 1 is default playback intensity.\r\n\r\n```coffeescript\r\nplayer.getVolume()\r\n```\r\nReturns the playback intensity. Normally is 1.\r\n\r\n```coffeescript\r\nplayer.toggleMuted()\r\n```\r\nToggles between muted and unmuted state.\r\n\r\n```coffeescript\r\nplayer.play()\r\n```\r\nStarts playing or resumes the playback of the current playlist.\r\n\r\n```coffeescript\r\nplayer.stop()\r\n```\r\nStops playing the current song in the playlist. When `play` is called again, the song is restarted from the beginning.\r\n\r\n```coffeescript\r\nplayer.pause()\r\n```\r\nSuspends the playback of the current song.\r\n\r\n```coffeescript\r\nplayer.playNext()\r\n```\r\nSkips to the next song in the playlist.\r\n\r\n```coffeescript\r\nplayer.addTrack( path )\r\n```\r\nAdds the specified song to the playlist.\r\n\r\n```coffeescript\r\nplayer.insertTrack( index, path )\r\n```\r\nAdds the specified song in the specified position of the playlist.\r\n\r\n```coffeescript\r\nplayer.replaceTrack( index, path )\r\n```\r\nReplaces the specified track with another one.\r\n\r\n```coffeescript\r\nplayer.removeTrack( index )\r\n```\r\nRemoves the specified song from the playlist.\r\n\r\n```coffeescript\r\nplayer.removeAllTracks()\r\n```\r\nClears the playlist and stops the playback.\r\n\r\n```coffeescript\r\nplayer.getSongDuration( index )\r\n```\r\nReturns the duration in seconds of the specifed song. If no index is provided, 0 is assumed.\r\n\r\n```coffeescript\r\nplayer.getSongPosition()\r\n```\r\nReturns the playing position of the current song. Returns 0 if the playlist is empty or the song hasn't started yet.\r\n\r\n```coffeescript\r\nplayer.setSongPosition( position )\r\n```\r\nSets the playing position of the current song, expressed in seconds from the beginning. If the playback is stopped before the call, the player is started.\r\n\r\n#### Events\r\n##### onSongFinished\r\nCalled when a song has reached the end.\r\n\r\n*NOTE:* Passes the song's path as an argument.\r\n##### onPlaylistEnded\r\nCalled when the playlist has reached the end.\r\n##### onPlayerStopeed\r\nCalled when the player is stopped programmatically.\r\n##### onPlayerPaused\r\nCalled when the player is paused programmatically.\r\n##### onTrackAdded\r\nCalled when a track is added to the playlist.\r\n\r\n*NOTE:* Passes the track's path as an argument.\r\n##### onTrackRemoved\r\nCalled when a track is removed from the playlist.\r\n##### onTrackLoaded\r\nCalled when a track has finished loading its contents.\r\n\r\n*NOTE:* Passes the track's path as an argument.\r\n##### onVolumeChanged\r\nCalled when the volume is changed programmatically.\r\n\r\n*NOTE:* Passes the volume's value as an argument.\r\n##### onMuted\r\nCalled when the player is muted programmatically.\r\n##### onUnmuted\r\nCalled when the player is unmuted programmatically.\r\n\r\n#### Example\r\n```coffeescript\r\nplayer = new MusicPlayer()\r\nplayer.onVolumeChanged = (value) =>\r\n  console.log 'Current volume: ' + value.toString()\r\n```\r\n"
+}

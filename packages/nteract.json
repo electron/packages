@@ -30,8 +30,17 @@
     "postdist": "npm install"
   },
   "repository": {
-    "type": "git",
-    "url": "git+https://github.com/nteract/nteract.git"
+    "user": "nteract",
+    "repo": "nteract",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/nteract/nteract/tarball/master",
+    "clone_url": "https://github.com/nteract/nteract",
+    "https_url": "https://github.com/nteract/nteract",
+    "travis_url": "https://travis-ci.org/nteract/nteract",
+    "zip_url": "https://github.com/nteract/nteract/archive/master.zip",
+    "api_url": "https://api.github.com/repos/nteract/nteract"
   },
   "keywords": [
     "jupyter",
@@ -44,9 +53,6 @@
     "name": "nteract contributors"
   },
   "license": "MPL-2.0",
-  "bugs": {
-    "url": "https://github.com/nteract/nteract/issues"
-  },
   "homepage": "https://github.com/nteract/nteract",
   "dependencies": {
     "rxjs": "^5.0.0-beta.6",
@@ -107,20 +113,33 @@
     "watch": "^0.17.1"
   },
   "gitHead": "cdac1b6c738567c35d1a0bcb4e87a320b5b89306",
-  "_id": "nteract@0.0.3",
-  "_shasum": "d1bc644940e1b1ef88459282ae6ca56707c0cb73",
-  "_from": ".",
   "_npmVersion": "3.8.6",
   "_nodeVersion": "5.11.0",
-  "_npmUser": {
-    "name": "rgbkrk",
-    "email": "rgbkrk@gmail.com"
-  },
   "dist": {
     "shasum": "d1bc644940e1b1ef88459282ae6ca56707c0cb73",
     "tarball": "http://registry.npmjs.org/nteract/-/nteract-0.0.3.tgz"
   },
-  "maintainers": [
+  "versions": [
+    {
+      "number": "0.0.0",
+      "date": "2015-08-06T21:28:48.017Z"
+    },
+    {
+      "number": "0.0.2",
+      "date": "2016-05-01T04:02:48.469Z"
+    },
+    {
+      "number": "0.0.3",
+      "date": "2016-05-16T02:58:28.384Z"
+    }
+  ],
+  "created": "2015-08-06T21:28:48.017Z",
+  "modified": "2016-05-16T02:58:28.384Z",
+  "lastPublisher": {
+    "name": "rgbkrk",
+    "email": "rgbkrk@gmail.com"
+  },
+  "owners": [
     {
       "name": "betatim",
       "email": "betatim@gmail.com"
@@ -134,9 +153,5 @@
       "email": "rgbkrk@gmail.com"
     }
   ],
-  "_npmOperationalInternal": {
-    "host": "packages-12-west.internal.npmjs.com",
-    "tmp": "tmp/nteract-0.0.3.tgz_1463367505652_0.5688397439662367"
-  },
-  "directories": {}
+  "readme": "![nteract animated logo](https://cloud.githubusercontent.com/assets/836375/15271096/98e4c102-19fe-11e6-999a-a74ffe6e2000.gif)\n\n[![codecov.io](https://codecov.io/github/nteract/nteract/coverage.svg?branch=master)](https://codecov.io/github/nteract/nteract?branch=master)\n[![Build Status](https://travis-ci.org/nteract/nteract.svg)](https://travis-ci.org/nteract/nteract) [![slack in](http://slack.nteract.in/badge.svg)](http://slack.nteract.in)\n\n## Overview\n\n:notebook: It's an Electron-based Notebook! :notebook:\n\n![nteract demo](https://cloud.githubusercontent.com/assets/836375/14068164/6ebbc6ea-f42f-11e5-98bc-eb149d0b0730.gif)\n\nNote: this isn't feature complete yet. There will be :bug:s and we're currently\nlacking a lot of core features like jupyter-js-widgets, introspection, cut/copy/paste of cells.\n\n### Scope and goals\n\n* Notebook environment to explore and get things done\n* Standalone cross-platform desktop application\n* Easy install with pre-configured Python3 and JavaScript runtimes\n* Grow an ecosystem of tooling to allow others to build their own platforms relying on the Jupyter specifications\n\n### Contributing\n\nThe contributors are listed in [contributors](https://github.com/nteract/nteract/graphs/contributors)\n\nnteract uses the [C4.1 (Collective Code Construction Contract)](http://rfc.zeromq.org/spec:22) process for contributions.\n\nThis project adheres to the Contributor Covenant [code of conduct](CODE_OF_CONDUCT.md).\nBy participating, you are expected to uphold this code. Please report unacceptable behavior to rgbkrk@gmail.com.\n\n### Design\n\n* Full compliance with [Jupyter message spec v5](http://jupyter-client.readthedocs.org/en/latest/messaging.html)\n* Full compliance with [Notebook format v4](http://nbformat.readthedocs.org/en/latest/format_description.html)\n* Follow notebook model operations flow from [commutable](https://github.com/nteract/commutable)\n* Rely on common interfaces for kernel communication via [enchannel's comm spec](https://github.com/nteract/enchannel) (Go read it!)\n* Mocks for UI can be explored in issues, while design references go in [mocks](https://github.com/nteract/mocks)\n* React for views (pushing notebook state down into the view)\n* Full node, direct to zmq (no running a Python server underneath)\n\n### Development\n\nTo get started developing install a [python runtime](#python-runtime), the\n[dependencies](#dependencies) and [`nteract` itself](#install-nteract-itself).\n\n#### Python runtime\n\nAt least for now, we need the python 3 kernel installed when hacking on nteract:\n\n```\npython3 -m pip install ipykernel\npython3 -m ipykernel install --user\n```\n\n#### Dependencies\n\nFor all systems, you'll need\n\n- Node.js 5.x\n- [`npm`](https://docs.npmjs.com/getting-started/installing-node)\n- [ZeroMQ](http://zeromq.org/intro:get-the-software)\n- Python 2 (for builds - you can still run Python 3 code)\n\nEach operating system has their own instruction set. Please read on down to save yourself time.\n\n##### OS X\n\n###### homebrew on OS X\n\n- [`pkg-config`](http://www.freedesktop.org/wiki/Software/pkg-config/): `brew install pkg-config`\n- [ZeroMQ](http://zeromq.org/intro:get-the-software): `brew install zeromq`\n\n##### Windows\n\n- You'll need a compiler! [Visual Studio 2013 Community Edition](https://www.visualstudio.com/en-us/downloads/download-visual-studio-vs.aspx) is required to build zmq.node.\n- Python (tread on your own or install [Anaconda](http://continuum.io/downloads))\n\nAfter these are installed, you'll likely need to restart your machine (especially after Visual Studio).\n\n##### Linux\n\nFor Debian/Ubuntu based variants, you'll need `libzmq3-dev` (preferred) or alternatively `libzmq-dev`.   \nFor RedHat/CentOS/Fedora based variants, you'll need `zeromq` and `zeromq-devel`.\n\n#### Install `nteract` itself\n\nRequires node 5.x and npm 3.\n\n1. Fork this repo\n2. Clone it `git clone https://github.com/nteract/nteract`\n3. `cd` to where you `clone`d it\n4. `npm install`\n5. `npm run start`\n\nAssets are compiled via electron-compile directly, no build steps until we make a release. As you hack on components, you can reload directly or pop open the dev console and run `location.reload()`. No hot reloading at the moment.\n\n#### Troubleshooting\n\n> I did: \"$ npm install\", and I got: \"Authorization service failure : @reactivex/rxjs\"\n\n- Try `$ npm login` then `$ npm install`\n- Try `$ npm install @reactivex/rxjs; npm install;`\n- Try `$ npm install @reactivex/rxjs@5.0.0-beta.2; npm install;`\n\n> I did: \"$ npm install\" then \"$ npm start\", and I got: \"no such file or directory, open '.../node_modules/electron-prebuilt/path.txt'\"\n\n- Try `$ npm install electron-prebuilt`\n\n### Frontend background\n\nAs much as possible, we'd like to get people speaking a common language for\ndevelopment of nteract components and packages.\n\nCore tech behind the scenes:\n\n* [Observables](http://cycle.js.org/observables.html) through [RxJS](https://github.com/ReactiveX/RxJS)\n* [React](https://facebook.github.io/react/)\n* [Jupyter Messaging](http://jupyter-client.readthedocs.org/en/latest/messaging.html)\n* [ZeroMQ](http://zguide.zeromq.org/page:all)\n\nThese are our suggested tutorials and background to help you get up to speed:\n\n* [Build your own REPL with enchannel](https://github.com/nteract/docs/blob/master/enchannel/build-your-own-repl.md)\n* [The introduction to Reactive Programming you've been missing](https://gist.github.com/staltz/868e7e9bc2a7b8c1f754)\n* [Full Stack Redux Tutorial](http://teropa.info/blog/2015/09/10/full-stack-redux-tutorial.html)\n\nDepending on where you plug yourself in, you may find the introduction to Reactive\nprogramming is the biggest help.\n\nIf you'd like to experiment with the core Jupyter messaging and Observables\nwithout working with React, check out [ick](https://github.com/nteract/ick),\nan interactive console.\n\nPost in [Slack](http://slack.nteract.in/) if you need help with these or have questions. Several people\nare working through tutorials right now and would love a study group! If you have trouble creating an account, either email rgbkrk@gmail.com or post an issue on GitHub.\n\n### Support\n\n#### Sponsors\n\nWork on the nteract notebook is currently sponsored by\n\n[![Plotly](https://cloud.githubusercontent.com/assets/836375/13661288/0f1d6d8c-e657-11e5-897b-9d047cb30ef4.png)](https://plot.ly/)\n\n[![Domino Data Lab](https://cloud.githubusercontent.com/assets/836375/13661281/052c8506-e657-11e5-8e93-1497c6097519.png)](https://www.dominodatalab.com/)\n\nWe're on a common mission to build a great notebook experience. Feel free to\n[get in touch](mailto:rgbkrk@gmail.com) if you'd like to help. Resources go towards\npaying for additional work by seasoned designers and engineers.\n\n#### Made possible by\n\nThe nteract project was made possible with the support of\n\n[![Carina by Rackspace](https://657cea1304d5d92ee105-33ee89321dddef28209b83f19f06774f.ssl.cf1.rackcdn.com/carina-logo-69ecb9689d028f8d8f0db1caad4b95472040cb3af32104bbc98716fe2088dca4.svg)](https://getcarina.com).\n\nIf your employer allows you to work on nteract during the day and would like\nrecognition, feel free to add them to the \"Made possible by\" list.\n"
 }

@@ -1,0 +1,97 @@
+{
+  "name": "titlebar",
+  "version": "1.4.0",
+  "description": "Emulate OS X window title bar",
+  "main": "index.js",
+  "scripts": {
+    "demo-watch": "wzrd index.js:demo/index.js -- -s titlebar",
+    "demo-build": "browserify index.js -o demo/index.js -s titlebar"
+  },
+  "repository": {
+    "user": "kapetan",
+    "repo": "titlebar",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/kapetan/titlebar/tarball/master",
+    "clone_url": "https://github.com/kapetan/titlebar",
+    "https_url": "https://github.com/kapetan/titlebar",
+    "travis_url": "https://travis-ci.org/kapetan/titlebar",
+    "zip_url": "https://github.com/kapetan/titlebar/archive/master.zip",
+    "api_url": "https://api.github.com/repos/kapetan/titlebar"
+  },
+  "keywords": [
+    "osx",
+    "window",
+    "titlebar",
+    "stoplight"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/kapetan/titlebar",
+  "dependencies": {
+    "brfs": "^1.4.0",
+    "defaultcss": "^1.1.1",
+    "dombo": "^3.2.0",
+    "domify": "^1.3.3"
+  },
+  "devDependencies": {
+    "browserify": "^9.0.8",
+    "wzrd": "^1.2.1"
+  },
+  "browserify": {
+    "transform": [
+      "brfs"
+    ]
+  },
+  "gitHead": "7c27d505cd02242f28bd8dbd89359b5bc10ee5ff",
+  "_npmVersion": "2.9.1",
+  "_nodeVersion": "0.12.3",
+  "dist": {
+    "shasum": "0bb408f6aff814fbeb1b6b298fcddff553fab661",
+    "tarball": "http://registry.npmjs.org/titlebar/-/titlebar-1.4.0.tgz"
+  },
+  "stars": 1,
+  "versions": [
+    {
+      "number": "1.0.0",
+      "date": "2015-04-13T18:59:25.219Z"
+    },
+    {
+      "number": "1.0.1",
+      "date": "2015-04-13T19:27:28.643Z"
+    },
+    {
+      "number": "1.0.2",
+      "date": "2015-04-14T19:28:09.506Z"
+    },
+    {
+      "number": "1.1.0",
+      "date": "2015-04-16T20:17:16.997Z"
+    },
+    {
+      "number": "1.2.0",
+      "date": "2015-05-05T19:57:27.854Z"
+    },
+    {
+      "number": "1.3.0",
+      "date": "2015-05-30T10:50:38.374Z"
+    },
+    {
+      "number": "1.4.0",
+      "date": "2015-10-18T20:23:59.561Z"
+    }
+  ],
+  "created": "2015-04-13T18:59:25.219Z",
+  "modified": "2015-10-18T20:23:59.561Z",
+  "lastPublisher": {
+    "name": "kapetan",
+    "email": "mirza.kapetanovic@gmail.com"
+  },
+  "owners": [
+    {
+      "name": "kapetan",
+      "email": "mirza.kapetanovic@gmail.com"
+    }
+  ],
+  "readme": "# titlebar\n\nEmulate OS X window title bar. Extracted from [mafintosh/playback](https://github.com/mafintosh/playback). See the [live demo](http://kapetan.github.io/titlebar/demo/index.html).\n\n\tnpm install titlebar\n\n# Usage\n\nUsed with browserify or in a similar enviroment.\n\n```javascript\nvar titlebar = require('titlebar');\n\nvar t = titlebar();\nt.appendTo(document.body);\n\nt.on('close', function(e) {\n\tconsole.log('close');\n});\n\n// t.element exposes the root dom element\nt.element.appendChild(document.createElement('div'));\n\n// Clean up after usage\nt.destroy();\n```\n\nThe returned instance emits four events: `close`, `minimize`, `fullscreen` (each corresponding to one of the stoplight buttons) and `maximize` when double clicking on the title bar area, or holding down alt key and clicking `fullscreen`.\n\nThe initializer function accepts an options object.\n\n- `style` (default `true`): Disable default styling.\n- `draggable` (default `true`): Disable the [-webkit-app-region](https://developer.chrome.com/apps/app_window) CSS property on the root element. Allows a frameless windows to be dragged in an `electron` application.\n"
+}

@@ -1,0 +1,70 @@
+{
+  "name": "wsobserver",
+  "version": "1.1.1",
+  "description": "websocket client used in electron main process,pub/sub message in render process",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "user": "116356754",
+    "repo": "wsobserver",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/116356754/wsobserver/tarball/master",
+    "clone_url": "https://github.com/116356754/wsobserver",
+    "https_url": "https://github.com/116356754/wsobserver",
+    "travis_url": "https://travis-ci.org/116356754/wsobserver",
+    "zip_url": "https://github.com/116356754/wsobserver/archive/master.zip",
+    "api_url": "https://api.github.com/repos/116356754/wsobserver"
+  },
+  "keywords": [
+    "electron",
+    "websocket",
+    "pub",
+    "sub"
+  ],
+  "author": {
+    "name": "wangky"
+  },
+  "license": "ISC",
+  "homepage": "https://github.com/116356754/wsobserver#readme",
+  "dependencies": {
+    "ws": "^1.1.1"
+  },
+  "gitHead": "0fe8ffd5f932d736debf4b2f6567f31e3fa580c7",
+  "_npmVersion": "2.14.4",
+  "_nodeVersion": "4.1.1",
+  "dist": {
+    "shasum": "66686031b48925849814a63b8e07b2f17dc7fe08",
+    "tarball": "http://registry.npmjs.org/wsobserver/-/wsobserver-1.1.1.tgz"
+  },
+  "versions": [
+    {
+      "number": "1.0.0",
+      "date": "2016-07-12T03:05:50.943Z"
+    },
+    {
+      "number": "1.1.0",
+      "date": "2016-07-12T03:30:50.423Z"
+    },
+    {
+      "number": "1.1.1",
+      "date": "2016-07-13T07:31:26.185Z"
+    }
+  ],
+  "created": "2016-07-12T03:05:50.943Z",
+  "modified": "2016-07-13T07:31:26.185Z",
+  "lastPublisher": {
+    "name": "wangky",
+    "email": "116356754@qq.com"
+  },
+  "owners": [
+    {
+      "name": "wangky",
+      "email": "116356754@qq.com"
+    }
+  ],
+  "readme": "##wsobserver\r\n\r\nwebsocket client for Electron applications.\r\n\r\nwe use wsobserver module in electron main process,wsobserver use thrid party module to connect remote websocket server.\r\n\r\nElectron render process receive websocket message from Electron main process throught wsobserver module.we only to add render page's webcontent into wsobserver.\r\n\r\n\t\t\r\n##Usage\r\n    npm install wsobserver --save\r\n\r\nRequire the module in an Electron web page.\r\n\r\n    var wsobser = require('wsobserver')\r\n\r\n### Electron main process\r\n#### set up gloabl object\r\n\t\r\n\t//share object in render process and main process\r\n\tglobal.sharedObj = {\r\n\twsObserver:require('wsobserver/observer')};\r\n\r\n####websocket usage\r\n open a websocket client:\r\n\t\r\n    var ws = new wsobser('ws://localhost:8088');\r\n    ws.ws_connect();\r\n    \r\n open a websocket client:\r\n\r\n\tws.ws_sendmsg('hello server');\r\n\r\n close a websocket client:\r\n\r\n\tws.ws_stop();\r\n\r\n\r\n### Electron render process\r\n\r\n    var ipcRenderer = require('electron').ipcRenderer;\r\n    var remote = require('electron').remote;\r\n\t\r\n\t//get wsobserver in main process share object \r\n\tvar observer = remote.getGlobal('sharedObj').wsObserver;\r\n\r\n\t//websocket handle function\r\n    ipcRenderer.on('ws-title-message', function (e, data) {\r\n         alert(data.toString());\r\n    });\r\n\r\n    //listen for websocket message from the main process   \r\n    function setupWSObserver(title) {\r\n       observer.subscribe(remote.getCurrentWebContents(), title, 'ws-title-message');\r\n    }\r\n\r\n    function clearWSObserver(title) {\r\n        observer.unsubscribe(remote.getCurrentWebContents(), title);\r\n    }"
+}

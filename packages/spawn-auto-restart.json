@@ -1,0 +1,78 @@
+{
+  "name": "spawn-auto-restart",
+  "version": "2.0.1",
+  "description": "spawn-auto-restart",
+  "main": "src/index.js",
+  "author": {
+    "name": "Max Claus Nunes",
+    "email": "maxcnunes@gmail.com"
+  },
+  "scripts": {
+    "test": "eslint src/"
+  },
+  "keywords": [
+    "spawn",
+    "watch",
+    "auto",
+    "restart"
+  ],
+  "repository": {
+    "user": "maxcnunes",
+    "repo": "spawn-auto-restart",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/maxcnunes/spawn-auto-restart/tarball/master",
+    "clone_url": "https://github.com/maxcnunes/spawn-auto-restart",
+    "https_url": "https://github.com/maxcnunes/spawn-auto-restart",
+    "travis_url": "https://travis-ci.org/maxcnunes/spawn-auto-restart",
+    "zip_url": "https://github.com/maxcnunes/spawn-auto-restart/archive/master.zip",
+    "api_url": "https://api.github.com/repos/maxcnunes/spawn-auto-restart"
+  },
+  "dependencies": {
+    "chokidar": "^1.2.0",
+    "debug": "^2.2.0"
+  },
+  "devDependencies": {
+    "eslint": "^1.7.1"
+  },
+  "gitHead": "ba0b9cfd4a4b55abe6b65f4c77fc4fa56bff589b",
+  "homepage": "https://github.com/maxcnunes/spawn-auto-restart#readme",
+  "_npmVersion": "2.12.1",
+  "_nodeVersion": "0.12.7",
+  "dist": {
+    "shasum": "5ba30136801fdf6badd7e9d0de92ef40f1d74bc7",
+    "tarball": "http://registry.npmjs.org/spawn-auto-restart/-/spawn-auto-restart-2.0.1.tgz"
+  },
+  "versions": [
+    {
+      "number": "1.0.0",
+      "date": "2015-10-17T19:13:11.625Z"
+    },
+    {
+      "number": "1.0.1",
+      "date": "2015-10-17T23:13:30.642Z"
+    },
+    {
+      "number": "2.0.0",
+      "date": "2015-10-26T00:44:35.661Z"
+    },
+    {
+      "number": "2.0.1",
+      "date": "2015-11-25T21:15:06.365Z"
+    }
+  ],
+  "created": "2015-10-17T19:13:11.625Z",
+  "modified": "2015-11-25T21:15:06.365Z",
+  "lastPublisher": {
+    "name": "maxcnunes",
+    "email": "maxcnunes@gmail.com"
+  },
+  "owners": [
+    {
+      "name": "maxcnunes",
+      "email": "maxcnunes@gmail.com"
+    }
+  ],
+  "readme": "# spawn auto restart\n\n**Important: Use it for dev only!**\n\nIt executes a command through `spawn` and restart the process in case any change has been detected or the child process has crashed.\n\n## Installation\n\nInstall via npm:\n\n```bash\n$ npm install spawn-auto-restart\n```\n\n## Usage\n\n```js\nrequire('spawn-auto-restart')({\n  proc: 'executable path',\n  watch: __dirname\n});\n```\n\nTo enable logs set an environment variable like this:\n\n```shell\nDEBUG=spawn-auto-restart\n```\n\n**advanced args options**\n\n* [spawn](https://nodejs.org/api/child_process.html#child_process_child_process_spawn_command_args_options)\n* [chokidar](https://github.com/paulmillr/chokidar)\n\n```js\nrequire('spawn-auto-restart')({\n  proc: {\n    command: 'executable path',\n    // ... any spawn argument\n    args: ['--dev'],\n    cwd: __dirname\n  },\n  watch: {\n    path: 'file, dir, glob, or array',\n    // ... any chokidar argument\n    ignored: /[\\/\\\\]\\./,\n    persistent: true\n  }\n});\n```\n\n## Example\n\nAuto restarting an [electron](https://github.com/atom/electron) app in development when changes have been applied in the main process.\n\n![](https://www.dropbox.com/s/gxird1lr72tq56s/spawn-auto-restart.gif?raw=1)\n\n**node DEBUG=spawn-auto-restart restart.js**\n```js\n#!/usr/bin/env node\n\nvar join = require('path').join;\nvar electron = require('electron-prebuilt');\n\n\nvar main = join(__dirname, '../src/browser/main.js');\nvar watch = join(__dirname, '../src/browser');\n\n\nrequire('spawn-auto-restart')({\n  proc: {\n    command: electron,\n    args: main\n  },\n  watch: watch\n});\n```\n\n\n## Changelog\n\n**2.0.0**: [Move debug option to env variable](https://github.com/maxcnunes/spawn-auto-restart/commit/e8d85d7681d64ec9d8b1e5cefff25857208c070a).\n\n\n## Contributing\n\nIt is required to use [editorconfig](http://editorconfig.org/).\n\n## License\n\nCopyright (c) 2015 Max Claus Nunes. This software is licensed under the [MIT License](http://raw.github.com/maxcnunes/spawn-auto-restart/master/LICENSE).\n"
+}

@@ -4,8 +4,17 @@
   "description": "Determine if current time is during office hours",
   "main": "index.js",
   "repository": {
-    "type": "git",
-    "url": "git@github.com:electronifie/node-officehours.git"
+    "user": "electronifie",
+    "repo": "node-officehours",
+    "branch": "master",
+    "host": "github.com",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/electronifie/node-officehours/tarball/master",
+    "clone_url": "https://github.com/electronifie/node-officehours",
+    "https_url": "https://github.com/electronifie/node-officehours",
+    "travis_url": "https://travis-ci.org/electronifie/node-officehours",
+    "zip_url": "https://github.com/electronifie/node-officehours/archive/master.zip",
+    "api_url": "https://api.github.com/repos/electronifie/node-officehours"
   },
   "author": {
     "name": "opensource@electronifie.com"
@@ -22,32 +31,30 @@
     "test": "mocha"
   },
   "gitHead": "bbb91c3552fef0b6abd99b7880a67495972a4773",
-  "bugs": {
-    "url": "https://github.com/electronifie/node-officehours/issues"
-  },
   "homepage": "https://github.com/electronifie/node-officehours",
-  "_id": "officehours@0.0.4",
-  "_shasum": "beafba35ea3b20112036100205753d65f99389aa",
-  "_from": ".",
   "_npmVersion": "3.3.12",
   "_nodeVersion": "5.5.0",
-  "_npmUser": {
-    "name": "electronifie",
-    "email": "opensource@electronifie.com"
-  },
   "dist": {
     "shasum": "beafba35ea3b20112036100205753d65f99389aa",
     "tarball": "http://registry.npmjs.org/officehours/-/officehours-0.0.4.tgz"
   },
-  "maintainers": [
+  "versions": [
+    {
+      "number": "0.0.4",
+      "date": "2016-02-05T20:06:00.939Z"
+    }
+  ],
+  "created": "2016-02-05T20:06:00.939Z",
+  "modified": "2016-02-05T20:06:00.939Z",
+  "lastPublisher": {
+    "name": "electronifie",
+    "email": "opensource@electronifie.com"
+  },
+  "owners": [
     {
       "name": "electronifie",
       "email": "opensource@electronifie.com"
     }
   ],
-  "_npmOperationalInternal": {
-    "host": "packages-5-east.internal.npmjs.com",
-    "tmp": "tmp/officehours-0.0.4.tgz_1454702759826_0.7148061178158969"
-  },
-  "directories": {}
+  "readme": "officehours\n====\n\nGiven a set of rules, `officehours(rules[, date])` will return `true` or `false` depending on whether the current or supplied time is during officehours.\n\n### Example rules\nOffice hours are weekdays from 7am to 5pm.\n```\n[\n  { \n    \"days\": [ 1,2,3,4,5 ],\n    \"startTime\": { \"h\": 7, \"m\": 0 }, \n    \"endTime\": { \"h\": 17, \"m\": 0 }\n  }\n]\n```\n\nOffice hours are weekdays from 9am to 6:30pm, and weekends from 10am to 4pm.\n```\n[\n  { \n    \"days\": [ 1,2,3,4,5 ],\n    \"startTime\": { \"h\": 9, \"m\": 0 }, \n    \"endTime\": { \"h\": 18, \"m\": 30 }\n  },\n  { \n    \"days\": [ 0,6 ],\n    \"startTime\": { \"h\": 10, \"m\": 0 }, \n    \"endTime\": { \"h\": 16, \"m\": 0 }\n  }\n]\n```\n"
 }

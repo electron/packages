@@ -1,0 +1,125 @@
+{
+  "name": "github-labeller",
+  "version": "1.3.2",
+  "description": "Automagically create issue labels in your GitHub projects.",
+  "main": "lib/index.js",
+  "bin": {
+    "github-labeller": "./bin/github-labeller"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "user": "IonicaBizau",
+    "repo": "github-labeller",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/IonicaBizau/github-labeller/tarball/master",
+    "clone_url": "https://github.com/IonicaBizau/github-labeller",
+    "https_url": "https://github.com/IonicaBizau/github-labeller",
+    "travis_url": "https://travis-ci.org/IonicaBizau/github-labeller",
+    "zip_url": "https://github.com/IonicaBizau/github-labeller/archive/master.zip",
+    "api_url": "https://api.github.com/repos/IonicaBizau/github-labeller"
+  },
+  "keywords": [
+    "github",
+    "labels",
+    "automatization"
+  ],
+  "author": {
+    "name": "Ionică Bizău",
+    "email": "bizauionica@gmail.com",
+    "url": "http://ionicabizau.net"
+  },
+  "contributors": [
+    {
+      "name": "Ionică Bizău",
+      "email": "bizauionica@gmail.com",
+      "url": "http://ionicabizau.net"
+    },
+    {
+      "name": "Titus Wormer",
+      "email": "tituswormer@gmail.com",
+      "url": "http://wooorm.com"
+    }
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/IonicaBizau/github-labeller#readme",
+  "dependencies": {
+    "abs": "^1.0.0",
+    "bug-killer": "^4.0.0",
+    "clp": "^3.0.0",
+    "gh.js": "^2.2.0",
+    "r-json": "^1.0.0",
+    "same-time": "^2.0.0"
+  },
+  "devDependencies": {},
+  "blah": {
+    "h_img": "http://i.imgur.com/T59a7rb.png",
+    "ex_img": "http://i.imgur.com/jpELj6R.png"
+  },
+  "files": [
+    "bin/",
+    "app/",
+    "lib/",
+    "dist/",
+    "src/",
+    "resources/",
+    "menu/",
+    "scripts/",
+    "cli.js",
+    "index.js"
+  ],
+  "gitHead": "44c1b0f477c28bb2b539eb276eafe9b1d568801d",
+  "_npmVersion": "3.8.9",
+  "_nodeVersion": "6.2.0",
+  "dist": {
+    "shasum": "b2cd9e5fd7edd5436a8a0e03e6c53ed9e36bfd80",
+    "tarball": "http://registry.npmjs.org/github-labeller/-/github-labeller-1.3.2.tgz"
+  },
+  "stars": 1,
+  "versions": [
+    {
+      "number": "1.0.0",
+      "date": "2015-09-24T15:23:33.891Z"
+    },
+    {
+      "number": "1.1.0",
+      "date": "2015-11-12T11:53:11.768Z"
+    },
+    {
+      "number": "1.2.0",
+      "date": "2015-12-03T12:56:39.462Z"
+    },
+    {
+      "number": "1.2.1",
+      "date": "2016-01-14T10:19:04.869Z"
+    },
+    {
+      "number": "1.3.0",
+      "date": "2016-02-06T18:13:15.046Z"
+    },
+    {
+      "number": "1.3.1",
+      "date": "2016-04-26T04:49:58.807Z"
+    },
+    {
+      "number": "1.3.2",
+      "date": "2016-05-25T09:42:20.861Z"
+    }
+  ],
+  "created": "2015-09-24T15:23:33.891Z",
+  "modified": "2016-05-25T09:42:20.861Z",
+  "lastPublisher": {
+    "name": "ionicabizau",
+    "email": "bizauionica@gmail.com"
+  },
+  "owners": [
+    {
+      "name": "ionicabizau",
+      "email": "bizauionica@gmail.com"
+    }
+  ],
+  "readme": "\n[![github-labeller](http://i.imgur.com/T59a7rb.png)](#)\n\n# `$ github-labeller`\n\n [![PayPal](https://img.shields.io/badge/%24-paypal-f39c12.svg)][paypal-donations] [![AMA](https://img.shields.io/badge/ask%20me-anything-1abc9c.svg)](https://github.com/IonicaBizau/ama) [![Version](https://img.shields.io/npm/v/github-labeller.svg)](https://www.npmjs.com/package/github-labeller) [![Downloads](https://img.shields.io/npm/dt/github-labeller.svg)](https://www.npmjs.com/package/github-labeller) [![Get help on Codementor](https://cdn.codementor.io/badges/get_help_github.svg)](https://www.codementor.io/johnnyb?utm_source=github&utm_medium=button&utm_term=johnnyb&utm_campaign=github)\n\n> Automagically create issue labels in your GitHub projects.\n\n[![github-labeller](http://i.imgur.com/jpELj6R.png)](#)\n\n## :cloud: Installation\n\nYou can install the package globally and use it as command line tool:\n\n\n```sh\n$ npm i -g github-labeller\n```\n\n\nThen, run `github-labeller --help` and see what the CLI tool can do.\n\n\n```\n$ github-labeller --help\nUsage: github-labeller [options]\n\nOptions:\n  -r, --repo <user(/repo)>        The repository full name (e.g.\n                                  ionicabizau/github-labeller) or the username.\n  -t, --token <token>             The GitHub token.\n  -c, --config <path>             The configuration file (a JSON file containing an\n                                  array like this: [{ \"color\": \"#4aa3df\", \"name\":\n                                  \"Some label name\" }]).\n  -i, --import <user/repository>  Import labels from a specific repository.\n  -h, --help                      Displays this help.\n  -v, --version                   Displays version information.\n\nExamples:\n  github-labeller -r ionicabizau/github-labeller -t some-token -c my-labels.json\n  github-labeller -r ionicabizau -i jlord/git-it-electron -t some-token # import @jlord's labels in all my projects\n\nDocumentation can be found at https://github.com/IonicaBizau/github-labeller#readme\n```\n\n## :clipboard: Example\n\n\nHere is an example how to use this package as library. To install it locally, as library, you can do that using `npm`:\n\n```sh\n$ npm i --save github-labeller\n```\n\n\n\n```js\n// Dependencies\nvar GitHubLabeller = require(\"github-labeller\");\n\n// Provide the token and some info\nvar labeller = GitHubLabeller([\n    {\n        color: \"#4aa3df\"\n      , name: \"Some blue label\"\n    }\n], {\n    repo: \"jlord/git-it-electron\"\n  , token: \"your token here\"\n}, function (err, data) {\n    if (err) {\n        return console.log(err);\n    }\n    console.log(data);\n});\n\nlabeller.on(\"added\", function (owner, repo, label, err, data) {\n    console.log(label, owner + \"/\" + repo);\n});\n```\n\n## :memo: Documentation\n\nFor full API reference, see the [DOCUMENTATION.md][docs] file.\n\n## :yum: How to contribute\nHave an idea? Found a bug? See [how to contribute][contributing].\n\n\n## :scroll: License\n\n[MIT][license] © [Ionică Bizău][website]\n\n[paypal-donations]: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=RVXDDLKKLQRJW\n[donate-now]: http://i.imgur.com/6cMbHOC.png\n\n[license]: http://showalicense.com/?fullname=Ionic%C4%83%20Biz%C4%83u%20%3Cbizauionica%40gmail.com%3E%20(http%3A%2F%2Fionicabizau.net)&year=2015#license-mit\n[website]: http://ionicabizau.net\n[contributing]: /CONTRIBUTING.md\n[docs]: /DOCUMENTATION.md\n"
+}

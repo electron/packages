@@ -1,0 +1,81 @@
+{
+  "name": "audiobuffer-to-wav",
+  "version": "1.0.0",
+  "description": "convert an AudioBuffer to .wav format",
+  "main": "index.js",
+  "license": "MIT",
+  "author": {
+    "name": "Matt DesLauriers",
+    "email": "dave.des@gmail.com",
+    "url": "https://github.com/mattdesl"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "budo": "^7.0.2",
+    "xhr": "^2.2.0"
+  },
+  "scripts": {
+    "test": "node test.js",
+    "start": "budo demo/index.js --live"
+  },
+  "keywords": [
+    "convert",
+    "AudioBuffer",
+    "to",
+    "wav",
+    "format",
+    "for",
+    "browser",
+    "webaudio",
+    "web audio",
+    "audio",
+    "buffer",
+    "conversion",
+    "formats",
+    "fmt",
+    "riff",
+    "wave",
+    "sound"
+  ],
+  "repository": {
+    "user": "Jam3",
+    "repo": "audiobuffer-to-wav",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/Jam3/audiobuffer-to-wav/tarball/master",
+    "clone_url": "https://github.com/Jam3/audiobuffer-to-wav",
+    "https_url": "https://github.com/Jam3/audiobuffer-to-wav",
+    "travis_url": "https://travis-ci.org/Jam3/audiobuffer-to-wav",
+    "zip_url": "https://github.com/Jam3/audiobuffer-to-wav/archive/master.zip",
+    "api_url": "https://api.github.com/repos/Jam3/audiobuffer-to-wav"
+  },
+  "homepage": "https://github.com/Jam3/audiobuffer-to-wav",
+  "gitHead": "2272eb09bd46a05e50a6d684d908aa6f13c58f63",
+  "_npmVersion": "2.14.2",
+  "_nodeVersion": "4.0.0",
+  "dist": {
+    "shasum": "d5b432271455e7fee56b111cd0f8d620d7f9e105",
+    "tarball": "http://registry.npmjs.org/audiobuffer-to-wav/-/audiobuffer-to-wav-1.0.0.tgz"
+  },
+  "stars": 1,
+  "versions": [
+    {
+      "number": "1.0.0",
+      "date": "2015-12-14T17:00:03.174Z"
+    }
+  ],
+  "created": "2015-12-14T17:00:03.174Z",
+  "modified": "2015-12-14T17:00:03.174Z",
+  "lastPublisher": {
+    "name": "mattdesl",
+    "email": "dave.des@gmail.com"
+  },
+  "owners": [
+    {
+      "name": "mattdesl",
+      "email": "dave.des@gmail.com"
+    }
+  ],
+  "readme": "# audiobuffer-to-wav\n\n[![stable](http://badges.github.io/stability-badges/dist/stable.svg)](http://github.com/badges/stability-badges)\n\nEncodes the contents of an [AudioBuffer](https://developer.mozilla.org/en-US/docs/Web/API/AudioBuffer) from the WebAudio API as WAVE. Supports 16-bit PCM and 32-bit float data.\n\nThe code for this has been adapted from the export feature of [Recorder.js](https://github.com/mattdiamond/Recorderjs).\n\nPRs welcome.\n\n## Install\n\n```sh\nnpm install audiobuffer-to-wav --save\n```\n\n## Example\n\n```js\nvar toWav = require('audiobuffer-to-wav')\nvar xhr = require('xhr')\nvar context = new AudioContext()\n\n// request the MP3 as binary\nxhr({\n  uri: 'audio/track.mp3',\n  responseType: 'arraybuffer'\n}, function (err, body, resp) {\n  if (err) throw err\n  // decode the MP3 into an AudioBuffer\n  audioContext.decodeAudioData(resp, function (buffer) {\n    // encode AudioBuffer to WAV\n    var wav = toWav(buffer)\n    \n    // do something with the WAV ArrayBuffer ...\n  })\n})\n```\n\nSee [the demo](./demo/index.js) for an example of loading MP3, decoding it, and triggering a download of the encoded WAV file.\n\nA more advanced example might be to write the file using Node and Electron or [hihat](https://www.npmjs.com/package/hihat), i.e. an easy way to convert MP3/OGG/etc to WAV.\n\n## Usage\n\n[![NPM](https://nodei.co/npm/audiobuffer-to-wav.png)](https://www.npmjs.com/package/audiobuffer-to-wav)\n\n#### `arrayBuffer = encodeWAV(audioBuffer, [opt])`\n\nEncodes the [AudioBuffer](https://developer.mozilla.org/en-US/docs/Web/API/AudioBuffer) instance as WAV, returning a new array buffer. Interleaves multi-channel data, if necessary.\n\nBy default, exports with 16-bit PCM (format: 1). You can specify `opt.float32` instead, which will write format 3 with 32-bit float data.\n\n## License\n\nMIT, see [LICENSE.md](http://github.com/Jam3/audiobuffer-to-wav/blob/master/LICENSE.md) for details.\n"
+}

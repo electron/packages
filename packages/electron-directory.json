@@ -20,34 +20,50 @@
   "dependencies": {},
   "homepage": "https://github.com/Booster2ooo/electron-directory",
   "repository": {
-    "type": "git",
-    "url": "git://github.com/Booster2ooo/electron-directory.git"
+    "user": "Booster2ooo",
+    "repo": "electron-directory",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/Booster2ooo/electron-directory/tarball/master",
+    "clone_url": "https://github.com/Booster2ooo/electron-directory",
+    "https_url": "https://github.com/Booster2ooo/electron-directory",
+    "travis_url": "https://travis-ci.org/Booster2ooo/electron-directory",
+    "zip_url": "https://github.com/Booster2ooo/electron-directory/archive/master.zip",
+    "api_url": "https://api.github.com/repos/Booster2ooo/electron-directory"
   },
-  "bugs": {
-    "url": "https://github.com/Booster2ooo/electron-directory/issues"
-  },
-  "_id": "electron-directory@0.0.3",
-  "_shasum": "71a2d4b2c6bb88b417c9cabb53a0cb1d5155e6a6",
-  "_from": ".",
   "_npmVersion": "3.8.5",
   "_nodeVersion": "4.2.3",
-  "_npmUser": {
-    "name": "booster2ooo",
-    "email": "the._.truth@hotmail.fr"
-  },
   "dist": {
     "shasum": "71a2d4b2c6bb88b417c9cabb53a0cb1d5155e6a6",
     "tarball": "http://registry.npmjs.org/electron-directory/-/electron-directory-0.0.3.tgz"
   },
-  "maintainers": [
+  "stars": 1,
+  "versions": [
+    {
+      "number": "0.0.1",
+      "date": "2016-04-29T09:56:31.987Z"
+    },
+    {
+      "number": "0.0.2",
+      "date": "2016-04-29T10:01:52.337Z"
+    },
+    {
+      "number": "0.0.3",
+      "date": "2016-04-29T11:30:33.850Z"
+    }
+  ],
+  "created": "2016-04-29T09:56:31.987Z",
+  "modified": "2016-04-29T11:30:33.850Z",
+  "lastPublisher": {
+    "name": "booster2ooo",
+    "email": "the._.truth@hotmail.fr"
+  },
+  "owners": [
     {
       "name": "booster2ooo",
       "email": "the._.truth@hotmail.fr"
     }
   ],
-  "_npmOperationalInternal": {
-    "host": "packages-12-west.internal.npmjs.com",
-    "tmp": "tmp/electron-directory-0.0.3.tgz_1461929431601_0.18751877080649137"
-  },
-  "directories": {}
+  "readme": "# electron-directory\r\n\r\n## Introduction\r\nWhen I started using Electron, I came accros some difficulties to work with path/fs because of the three different states of the application: developpement, packaged or asar packed.\r\nEach one of them has its own way around with directories. That's how I ended up coding this little module to help unify the way I accessed files.\r\n\r\n\r\n## Initialization\r\nThe module is wrapped within a promise, it take the application cwd path as argument as shown here:\r\n\r\n```javascript\r\nvar electronDirectory = require('electron-directory')\r\n  , dirHelper\r\n  , electronExecPath\r\n  , applicationJsPath\r\n  ;\r\n\r\nelectronDirectory(__dirname)\r\n    .then(function(electronDirectoryInstance) {\r\n        dirHelper = electronDirectoryInstance;\r\n        return dirHelper.getElectronPath();\r\n    })\r\n    .then(function(info) {\r\n        electronExecPath = info;        \r\n        return dirHelper.getApplicationPath();\r\n    })\r\n    .then(function(info) {\r\n        applicationJsPath = info;\r\n    });\r\n```\r\nRead the methods section for more info.\r\n\r\n## Methods\r\n**getElectronPath(path)**\r\n\r\nReturns the full path relative to the executing Electron directory.\r\n\r\n```javascript\r\nelectronDirectoryInstance.getElectronPath('config.json')\r\n    .then(function(path) {\r\n        console.log(path);\r\n    });\r\n```\r\n\r\n**getApplicationPath(path)**\r\n\r\nReturns the full path relative to the application directory, whenever it's within the asar or not.\r\n\r\n```javascript\r\nelectronDirectoryInstance.getApplicationPath('/lib/mylib.js')\r\n    .then(function(path) {\r\n        console.log(path);\r\n    });\r\n```\r\n\r\n## Usage sample\r\nHere is a use case that illustrate the whole process. We will grab a default JSON config file in the application directory and, if the config.json doesn't exist yet, will create it into the Electron directory.\r\n\r\n**/app.js**\r\n```javascript\r\n#!/usr/bin/env node\r\n\r\ntry {\r\n    var app = require('app')\r\n      , BrowserWindow = require('browser-window') \r\n      , windows = {}\r\n      ;\r\n    app.on('window-all-closed', function() {\r\n        if (process.platform != 'darwin') {\r\n            app.quit();\r\n        }\r\n    });\r\n    app.on('ready', function() {\r\n        windows[\"main\"] = new BrowserWindow({width: 1000, height: 800, title: \"Electron Directory Sample\", defaultEncoding: \"utf8\"});\r\n        windows[\"main\"].loadURL('file://' + __dirname + '/app.html');\r\n        windows[\"main\"].toggleDevTools();\r\n        windows[\"main\"].on('closed', function() {\r\n            delete windows[\"main\"];\r\n        });\r\n    });\r\n}\r\ncatch(ex) {\r\n    console.log(ex);\r\n    ex.stack && console.log(ex.stack);\r\n}\r\n\r\n```\r\n\r\n**/js/main.js**\r\n```javascript\r\ntry {\r\n    var configHelperModule = require('./js/modules/config-helper.js')\r\n      , configHelper\r\n      , config\r\n      , initConfigHelper = function initConfigHelper() {\r\n            return new Promise(function(resolve, reject) {\r\n                configHelperModule(__dirname)\r\n                    .then(function (helper) {\r\n                        configHelper = helper;\r\n                        return configHelper.getConfig();\r\n                    })\r\n                    .then(function (cfg) {\r\n                        config = cfg;\r\n                        return resolve();\r\n                    })\r\n                    .catch(reject);\r\n            });\r\n        }\r\n      ;\r\n    initConfigHelper()\r\n        .then(function(children_infos) {\r\n            console.log('config loaded');\r\n        })\r\n        .catch(function(err) {\r\n            console.error(err);\r\n            err.stack && console.error(err.stack);\r\n        });\r\n}\r\ncatch(ex) {\r\n    console.error(ex);\r\n    ex.stack && console.error(ex.stack);\r\n}\r\n```\r\n\r\n**/js/modules/config-helper.js**\r\n```javascript\r\nvar path = require('path')\r\n  , fs = require('fs')\r\n  , electronDirectory = require('electron-directory')\r\n\r\n  , readFilePromise = function readFilePromise(file, options) {\r\n        return new Promise(function(resolve, reject) {\r\n            fs.readFile(file, options, function (err, data) {\r\n                if(err) {\r\n                    return reject(err);\r\n                }\r\n                return resolve(data);\r\n            });\r\n        });\r\n    }\r\n  , writeFilePromise = function writeFilePromise(file, data, options) {\r\n        return new Promise(function(resolve, reject) {\r\n            fs.writeFile(file, data, options, function (err) {\r\n                if(err) {\r\n                    return reject(err);\r\n                }\r\n                return resolve();\r\n            });\r\n        });\r\n    }\r\n\r\n\r\n  , _eventsNames = {\r\n        addingConfigServer:     'adding-config-server'\r\n      , addedConfigServer:      'added-config-server'\r\n    }\r\n\r\n  , configHelper = function configHelper(dirname) {\r\n        return new Promise(function(moduleResolve, moduleReject) {\r\n            var configBase = 'config.json'\r\n              , defaultConfigBase = 'config/config.default.json'\r\n              , defaultConfigPath\r\n              , configPath\r\n              , config\r\n              , dirHelper\r\n              , getConfig = function getConfig() {\r\n                    return new Promise(function(resolve, reject) {\r\n                        if(config) {\r\n                            return resolve(config);\r\n                        }\r\n                        readFilePromise(configPath, { encoding:'utf8'})\r\n                            .then(function(data) {\r\n                                config = JSON.parse(data);\r\n                                return resolve(config);\r\n                            })\r\n                            .catch(function(err) {\r\n                                readFilePromise(defaultConfigPath, { encoding:'utf8'})\r\n                                    .then(function(data) {\r\n                                        data = JSON.parse(data);\r\n                                        return setConfig(data);\r\n                                    })\r\n                                    .then(function() {\r\n                                        return resolve(config);\r\n                                    })\r\n                                    .catch(reject);\r\n                            });\r\n                    });\r\n                }\r\n              , setConfig = function setConfig(newConfig) {\r\n                    return new Promise(function(resolve, reject) {\r\n                        var data = JSON.stringify(newConfig, null, '    ');\r\n                        config = newConfig;\r\n                        writeFilePromise(configPath, data, { encoding:'utf8', flag : 'w+'})\r\n                            .then(resolve)\r\n                            .catch(reject);\r\n                    });\r\n                }\r\n              , getServerByAddress = function getServerByAddress(address) {\r\n                    return new Promise(function(resolve, reject) {\r\n                        if(!config.servers || !config.servers.length) {\r\n                            return resolve();\r\n                        }\r\n                        return resolve(config.servers.filter(function(server) {\r\n                            return server.address === address;\r\n                        }));\r\n                    });\r\n                }\r\n              , pushServer = function(server) {\r\n                    return new Promise(function(resolve, reject) {\r\n                        config.servers.push(server);\r\n                        return resolve(server);\r\n                    })\r\n                }\r\n              , emitServerAdded = function(server) {\r\n                    return new Promise(function(resolve, reject) {\r\n                        process.emit(_eventsNames.addedConfigServer,server);\r\n                        return resolve(server);\r\n                    });\r\n                }\r\n              , addServerToConfig = function(server) {\r\n                    return new Promise(function(resolve, reject) {\r\n                        var rejectFound = function rejectFound(result) {\r\n                            if(result && result.length) {\r\n                                return Promise.reject('a server with the same address already exists');\r\n                            }\r\n                            return Promise.resolve(server);\r\n                        };\r\n                        if(!server.address) {\r\n                            return reject('no address specified');\r\n                        }\r\n                        getServerByAddress(server.address)\r\n                            .then(rejectFound)\r\n                            .then(pushServer)\r\n                            .then(emitServerAdded)\r\n                            .then(function() {\r\n                                return setConfig(config);\r\n                            })\r\n                            .then(resolve)\r\n                            .catch(reject);\r\n                    });\r\n                }\r\n              , bindHandlers = function bindHandlers() {\r\n                    return new Promise(function(resolve, reject) {\r\n                        process.on(_eventsNames.addingConfigServer, handlers.onAddingConfigServer);\r\n                        return resolve();\r\n                    });\r\n                }\r\n              , handlers = {\r\n                    onAddingConfigServer: function onAddingConfigServer(server) {\r\n                        addServerToConfig(server);\r\n                    }\r\n                }\r\n              , modulePublics = {\r\n                    getConfig: getConfig\r\n                  , setConfig: setConfig\r\n                  , getServerByAddress: getServerByAddress\r\n                  , eventsNames: _eventsNames\r\n                }\r\n              ;\r\n            electronDirectory(dirname)\r\n                .then(function(helper) {\r\n                    dirHelper = helper;\r\n                    return dirHelper.getElectronPath(configBase);\r\n                })\r\n                .then(function(info) {\r\n                    configPath = info;\r\n                    return dirHelper.getApplicationPath(defaultConfigBase);\r\n                })\r\n                .then(function(info) {\r\n                    defaultConfigPath = info;\r\n                    return bindHandlers();\r\n                })\r\n                .then(function() {\r\n                    return moduleResolve(modulePublics);\r\n                })\r\n                .catch(moduleReject);\r\n        });\r\n    }\r\n  ;\r\n\r\nmodule.exports = configHelper;\r\n```"
 }

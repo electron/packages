@@ -1,0 +1,75 @@
+{
+  "name": "twitch-sdk",
+  "version": "0.3.1",
+  "description": "The Twitch JavaScript SDK rewritten for use with Node.js, IO.js or NW.js",
+  "homepage": "https://github.com/spiffyk/twitch-node-sdk",
+  "author": {
+    "name": "Spiffyk",
+    "url": "http://spiffyk.cz"
+  },
+  "repository": {
+    "user": "spiffyk",
+    "repo": "twitch-node-sdk",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/spiffyk/twitch-node-sdk/tarball/master",
+    "clone_url": "https://github.com/spiffyk/twitch-node-sdk",
+    "https_url": "https://github.com/spiffyk/twitch-node-sdk",
+    "travis_url": "https://travis-ci.org/spiffyk/twitch-node-sdk",
+    "zip_url": "https://github.com/spiffyk/twitch-node-sdk/archive/master.zip",
+    "api_url": "https://api.github.com/repos/spiffyk/twitch-node-sdk"
+  },
+  "main": "twitch.js",
+  "license": "MIT",
+  "devDependencies": {
+    "docco": "latest"
+  },
+  "gitHead": "1bc743e551b5728b7e355d5b41f3c23d23c0faa1",
+  "scripts": {},
+  "_npmVersion": "2.14.20",
+  "_nodeVersion": "4.4.0",
+  "dist": {
+    "shasum": "8602b36fdacd903ea85fcfc65658be92f36892bd",
+    "tarball": "http://registry.npmjs.org/twitch-sdk/-/twitch-sdk-0.3.1.tgz"
+  },
+  "versions": [
+    {
+      "number": "0.1.0",
+      "date": "2015-08-22T15:52:25.177Z"
+    },
+    {
+      "number": "0.1.1",
+      "date": "2015-08-22T17:28:17.275Z"
+    },
+    {
+      "number": "0.1.2",
+      "date": "2015-08-26T18:46:37.087Z"
+    },
+    {
+      "number": "0.2.0",
+      "date": "2015-08-30T14:59:08.319Z"
+    },
+    {
+      "number": "0.3.0",
+      "date": "2016-03-10T09:54:39.125Z"
+    },
+    {
+      "number": "0.3.1",
+      "date": "2016-03-10T10:54:27.175Z"
+    }
+  ],
+  "created": "2015-08-22T15:52:25.177Z",
+  "modified": "2016-03-10T10:54:27.175Z",
+  "lastPublisher": {
+    "name": "spiffyk",
+    "email": "oto.stava@gmail.com"
+  },
+  "owners": [
+    {
+      "name": "spiffyk",
+      "email": "oto.stava@gmail.com"
+    }
+  ],
+  "readme": "# Twitch Node.js SDK\n\nThe Twitch Node.js SDK provides rich functionality for accessing the Twitch API. This includes Twitch Connect, which allows users to bring their Twitch accounts into your application. It is a fork of the official [Twitch JavaScript SDK](http://github.com/justintv/twitch-js-sdk), edited for use with Node.js, IO.js or NW.js.\n\nFor a detailed specification of API resources, see the [wiki](https://github.com/justintv/Twitch-API/wiki/API).\n\n## Installation\n\nTo install the Twitch SDK into your existing NPM module, simply type `npm install twitch-sdk --save`. This will download the SDK for you to use in your application.\n\n## Loading\n\nTo integrate the Twitch JavaScript SDK in your Node application, follow these steps:\n\nFirst, register a [new client application][]. Record the **Client ID** and **Client Secret** you receive in a safe place.\n\nTo load and initialize the SDK, add the following code to your main file, filling in the __Client ID__ of your app:\n\n```javascript\nvar Twitch = require(\"twitch-sdk\");\n\nTwitch.init({clientId: 'YOUR_CLIENT_ID_HERE'}, function(error, status) {\n  // the sdk is now loaded\n});\n```\n\nYou can now perform actions that do not require authorization or have your users log in to Twitch for additional permissions.\n\n[new client application]: http://www.twitch.tv/kraken/oauth2/clients/new\n\n### Login\n\nYou need a GUI for login to work. As of version **0.3**, this SDK is compatible with [Electron](http://electron.atom.io) (formerly *Atom Shell*) and [NW.js](http://nwjs.io) (formerly *node-webkit*).\n\nFirst, you need to set your redirect URI. Go to the Twitch Connections settings of your app and set the *Redirect URI* to `https://api.twitch.tv/kraken/`. The SDK uses that as the 'dummy' page to retrieve its tokens.\n\nTo add login functionality, you need to have the SDK initialized with the GUI.\n\nFor **Electron**, you can initialize with the following code:\n\n```javascript\n// This code needs to be run in the main process\nvar Twitch = require(\"twitch-sdk\");\n\nTwitch.init({clientId: 'YOUR_CLIENT_ID_HERE', electron: true}, function(error, status) {\n  // the SDK is now loaded with Electron\n});\n```\n\nIf you want to use **NW.js**, you can initialize the SDK with the following:\n\n```javascript\n// This code needs to be run in an existing window.\nvar gui = require('nw.gui');\nvar Twitch = require(\"twitch-sdk\");\n\nTwitch.init({clientId: 'YOUR_CLIENT_ID_HERE', nw: gui}, function(error, status) {\n  // the SDK is now loaded with NW.js\n});\n```\n\n#### Assets\n\nYou may use these assets for the Twitch Connect button:\n\n![Connect Light](http://ttv-api.s3.amazonaws.com/assets/connect_light.png)\n\n![Connect Dark](http://ttv-api.s3.amazonaws.com/assets/connect_dark.png)\n\n## Core Methods\n\n### Twitch.init\n\nInitialize the Twitch API with your Client ID. This method must be called prior to other actions.\n\nIf you want your users to be able to authenticate, you need to use a runtime with a GUI (as of **0.3** the compatible runtimes are Electron and NW.js) to show the login popup and initialize it accordingly.\n\nAlso, if your application has a session object stored somewhere, that session can be passed to the init function to speed up the login process.\n\n#### Usage\n\n##### Node.js / IO.js\n```javascript\n// For use with Node.js or IO.js\n// With this, the user cannot authenticate, the application has access to a stored session object.\n\nvar status = retrieveStoredSession();\n\nTwitch.init({\n  clientId: 'YOUR_CLIENT_ID_HERE',\n  session: status\n}, function(error, status) {\n  if (error) {\n    // error encountered while loading\n    console.log(error);\n  }\n  // the sdk is now loaded\n});\n```\n\n##### Electron\n\n```javascript\n// For use with an Electron-compatible runtime\n\nvar status = retrieveStoredSession();\n\nTwitch.init({\n  clientId: 'YOUR_CLIENT_ID_HERE',\n  session: status,\n  electron: true\n}, function(error, status) {\n  if (error) {\n    // error encountered while loading\n    console.log(error);\n  }\n  // the sdk is now loaded\n  if (status.authenticated) {\n    // user is currently logged in\n  }\n});\n```\n\n##### NW.js\n\n```javascript\n// For use with an NW.js-compatible runtime\n\nvar gui = require('nw.gui');\nvar status = retrieveStoredSession();\n\nTwitch.init({\n  clientId: 'YOUR_CLIENT_ID_HERE',\n  session: status,\n  nw: gui\n}, function(error, status) {\n  if (error) {\n    // error encountered while loading\n    console.log(error);\n  }\n  // the sdk is now loaded\n  if (status.authenticated) {\n    // user is currently logged in\n  }\n});\n```\n\n### Twitch.api\n\nMake direct requests to the [Twitch API][] on behalf of your users. This method handles authorization, so any requests you make to the API will automatically be authenticated on behalf of the logged in user.\n\n[Twitch API]: https://github.com/justintv/Twitch-API\n\n#### Usage\n\nGet the logged-in user's channel stream key:\n\n```javascript\nTwitch.api({method: 'channel'}, function(error, channel) {\n  console.log(channel.stream_key);\n});\n```\n\nIf the request you wish to make supports optional [parameters] to augment the amount or type of data received, you may add them to your call by adding a 'params' sub-hash:\n\n```javascript\nTwitch.api({method: 'streams', params: {game:'Diablo III', limit:3} }, function(error, list) {\n  console.debug(list);\n});\n```\n[parameters]: https://github.com/justintv/Twitch-API/blob/master/resources/streams.md#parameters\n\n#### API PUT and DELETE example\n\nSome API endpoints require different HTTP methods, you can achieve this using the verb parameter.\n\n```javascript\nTwitch.api({method: '/users/:user/follows/channels/:target', verb: 'PUT' }, function([...]) {\n  [...]\n});\n```\n\n## Authentication\nThe Twitch JavaScript SDK enables your users to log on or register using their Twitch accounts. The SDK handles synchronizing state between your site and Twitch, so users will stay logged in to your app as long as they have a valid access token.\n\n### Twitch.login\n\nLog in a user or request additional permissions. This operation requires a runtime with a GUI to open a login popup, the SDK initialized with the GUI runtime and the *Redirect URI* in the application's Connection settings set to `https://api.twitch.tv/kraken/`.\n\nAs opposed to the original version of the SDK, the Node version does not store the authentication token into a session storage, for there is none in Node and as Node modules remain loaded until the application is closed, there is no need for that. The token is simply stored in the memory and is lost upon exiting the application, just like the session storage in browsers.\n\n[DOM Storage]: https://developer.mozilla.org/en/DOM/Storage#sessionStorage\n\n#### Usage\n\n```javascript\nTwitch.login({\n  scope: ['user_read', 'channel_read']\n});\n\n// TODO: args list, scopes, popups for advanced functionality\n```\n\n### Twitch.logout\n\nReset the session and delete from memory, which is akin to logging out. This does not deactivate the access token given to your app, so you can continue to perform actions if your server stored the token.\n\n#### Usage\n\n```javascript\nTwitch.logout(function(error) {\n    // the user is now logged out\n});\n```\n\n### Twitch.getStatus\n\nRetrieve the current login status of a user. Whenever possible, `getStatus` will try to use the stored session for speed. You can force `getStatus` to check the stored session against the API if needed. Your application can store this status object and later initialize the SDK with that object to speed up the login process.\n\n#### Usage\n\n```javascript\nTwitch.getStatus(function(err, status) {\n  if (status.authenticated) {\n    console.log('authenticated!');\n  }\n});\n```\n\nForce an update of the status:\n\n```javascript\nTwitch.getStatus({force: true}, function(err, status) {\n  if (status.authenticated) {\n    console.log('authenticated!');\n  }\n}\n```\n\n### Twitch.getToken\n\nRetrieve the current OAuth token for a user, if one exists. This is useful for persisting an OAuth token to your backend, if there is any.\n\n#### Usage\n\n```javascript\nvar token = Twitch.getToken()\nalert(token)\n```\n\n## Events\n\nMost JavaScript-heavy apps use events to be notified of state changes. Some changes might occur due to user actions outside your app's control, so the only way to be notified is through events.\n\n`Twitch.events.addListener` allows you to subscribe to an event:\n\n```javascript\nTwitch.events.addListener('auth.login', function(status) {\n  // user is logged in\n});\n```\n\n`Twitch.events.removeListener` allows you to remove listeners for an event:\n\n```javascript\nvar handleLogin = function(status) {\n  alert(\"you're logged in!\");\n};\n\nTwitch.events.addListener('auth.login', handleLogin);\nTwitch.events.removeListener('auth.login', handleLogin);\n```\n\n`Twitch.events.removeAllListeners` allows you to remove all listeners for an event.\n\n### auth.login\n\nThis event is emitted when we initialize a session for a user, either because the user filled the login form and created a new session or a valid session had been passed to the init function. The listener is passed the session as a parameter.\n\n### auth.logout\n\nThis event is emitted when we no longer have a valid session for a user. This means we either called `Twitch.logout` or the user has revoked access on Twitch for your application.\n\n## Development\n\nFirst, install all the development pre-requisites with npm\n\n```bash\nnpm install\n```\n\n### Building\n\n```bash\nmake\n```\n\n### Docs\n\n```bash\nmake docs\n```\n"
+}

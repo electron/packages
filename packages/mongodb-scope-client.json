@@ -9,8 +9,17 @@
   },
   "homepage": "http://github.com/mongodb-js/scope-client",
   "repository": {
-    "type": "git",
-    "url": "git://github.com/mongodb-js/scope-client.git"
+    "user": "mongodb-js",
+    "repo": "scope-client",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/mongodb-js/scope-client/tarball/master",
+    "clone_url": "https://github.com/mongodb-js/scope-client",
+    "https_url": "https://github.com/mongodb-js/scope-client",
+    "travis_url": "https://travis-ci.org/mongodb-js/scope-client",
+    "zip_url": "https://github.com/mongodb-js/scope-client/archive/master.zip",
+    "api_url": "https://api.github.com/repos/mongodb-js/scope-client"
   },
   "dependency-check": {
     "ignore": [
@@ -76,23 +85,41 @@
     "zuul": "^3.9.0"
   },
   "gitHead": "ce215b478c2eb76e4a70b6562806eb6b1d16ab42",
-  "bugs": {
-    "url": "https://github.com/mongodb-js/scope-client/issues"
-  },
-  "_id": "mongodb-scope-client@0.11.0",
-  "_shasum": "b74be7d5e54421b58286438607b7926553ccd050",
-  "_from": ".",
   "_npmVersion": "3.3.12",
   "_nodeVersion": "5.4.1",
-  "_npmUser": {
-    "name": "imlucas",
-    "email": "hrabovsky.lucas@gmail.com"
-  },
   "dist": {
     "shasum": "b74be7d5e54421b58286438607b7926553ccd050",
     "tarball": "http://registry.npmjs.org/mongodb-scope-client/-/mongodb-scope-client-0.11.0.tgz"
   },
-  "maintainers": [
+  "versions": [
+    {
+      "number": "0.8.0",
+      "date": "2016-01-07T18:49:32.009Z"
+    },
+    {
+      "number": "0.10.0",
+      "date": "2016-03-03T20:54:32.092Z"
+    },
+    {
+      "number": "0.10.1",
+      "date": "2016-03-03T21:48:19.209Z"
+    },
+    {
+      "number": "0.10.2",
+      "date": "2016-03-05T03:00:46.730Z"
+    },
+    {
+      "number": "0.11.0",
+      "date": "2016-03-06T23:07:48.091Z"
+    }
+  ],
+  "created": "2016-01-07T18:49:32.009Z",
+  "modified": "2016-05-03T18:18:41.665Z",
+  "lastPublisher": {
+    "name": "imlucas",
+    "email": "hrabovsky.lucas@gmail.com"
+  },
+  "owners": [
     {
       "name": "durran",
       "email": "durran@gmail.com"
@@ -118,9 +145,5 @@
       "email": "thomas@rueckstiess.net"
     }
   ],
-  "_npmOperationalInternal": {
-    "host": "packages-12-west.internal.npmjs.com",
-    "tmp": "tmp/mongodb-scope-client-0.11.0.tgz_1457305664791_0.5056709779892117"
-  },
-  "directories": {}
+  "readme": "# mongodb-scope-client [![][travis_img]][travis_url] [![][npm_img]][npm_url] [![][inch_img]][inch_url]\n\n> The client to talk to [mongodb-scope-server][server] from node.js or the browser.\n\nWant to see what it can do? [Check out `./examples`][examples].\n\n```\nnpm install --save mongodb-scope-client\n```\n\n## API\n\n```javascript\nvar scope = require('mongodb-scope-client')([endpoint], [connection]);\n```\n\n#### Parameters\n\n- `endpoint` (optional, String) ... Where the server is running [Default `http://localhost:29017`].\n- `connection` (optional, Object|mongodb-connection-model) ... [MongoDB connection][connection-model] options [Default `{}`].\n\n### resource\n\n#### scope.instance (opts, fn)\n\n![production](http://b.repl.ca/v1/stability-production-green.png)\n\nGet details of the instance you're currently connected to\nlike database_names, results of the hostInfo and buildInfo mongo commands.\n\n\n##### Parameters\n\n- `opts` (optional, Object) ... Placeholder for future options\n- `fn` (optional, Function) ... A response callback `(err, data)`\n\n\n#### scope.deployments (opts, fn)\n\n![production](http://b.repl.ca/v1/stability-production-green.png)\n\nList all deployments this scout-server instance has connected to.\n\n\n##### Parameters\n\n- `opts` (optional, Object) ... Placeholder for future options.\n- `fn` (optional, Function) ... A response callback `(err, data)`.\n\n\n#### scope.database (name, opts, fn)\n\n![production](http://b.repl.ca/v1/stability-production-green.png)\n\nList collection names and stats.\n\n\n##### Parameters\n\n- `name` (required, String) ... - The database name.\n- `opts` (optional, Object) ... Placeholder for future options.\n- `fn` (optional, Function) ... A response callback `(err, data)`.\n\n\n#### scope.collection (ns, opts, fn)\n\n![production](http://b.repl.ca/v1/stability-production-green.png)\n\nCollection stats\n\n\n##### Parameters\n\n- `ns` (required, String) ... A namespace string, eg `#{database_name}.#{collection_name}`\n- `opts` (optional, Object) ... Placeholder for future options\n- `fn` (optional, Function) ... A response callback `(err, data)`\n\n\n#### scope.index (ns, name, opts, fn)\n\n![development](http://b.repl.ca/v1/stability-development-yellow.png)\n\nIndex details\n\n\n##### Parameters\n\n- `ns` (required, String) ... A namespace string, eg `#{database_name}.#{collection_name}`\n- `name` (required, String) ... The index name\n- `opts` (optional, Object) ... Placeholder for future options\n- `fn` (optional, Function) ... A response callback `(err, data)`\n\n\n#### scope.document (ns, _id, opts, fn)\n\n![development](http://b.repl.ca/v1/stability-development-yellow.png)\n\nWork with a single document.\n\n\n##### Parameters\n\n- `ns` (required, String) ... A namespace string, eg `#{database_name}.#{collection_name}`\n- `_id` (required, String) ... The document's `_id` value\n- `opts` (optional, Object) ... Placeholder for future options\n- `fn` (optional, Function) ... A response callback `(err, data)`\n\n\n### query\n\n#### scope.find (ns, opts, fn)\n\n![production](http://b.repl.ca/v1/stability-production-green.png)\n\nRun a query on `ns`.\n\n\n##### Parameters\n\n- `ns` (required, String) ... - A namespace string, eg `#{database_name}.#{collection_name}`\n- `opts` (optional, Object) ... - Placeholder for future options\n- `fn` (optional, Function) ... - A response callback `(err, data)`\n\n\n#### scope.count (ns, opts, fn)\n\n![production](http://b.repl.ca/v1/stability-production-green.png)\n\nRun a count on `ns`.\n\n\n##### Parameters\n\n- `ns` (required, String) ... A namespace string, eg `#{database_name}.#{collection_name}`\n- `opts` (optional, Object) ... - Options\n- `fn` (optional, Function) ... A response callback `(err, data)`\n\n\n#### scope.aggregate (ns, pipeline, opts, fn)\n\n![development](http://b.repl.ca/v1/stability-development-yellow.png)\n\nRun an aggregation pipeline on `ns`.\n\n##### Examples\n\n- [chart it](d)\n\n##### Parameters\n\n- `ns` (required, String) ... A namespace string, eg `#{database_name}.#{collection_name}`\n- `pipeline` (required, Array) ... - Agg pipeline to execute.\n- `opts` (optional, Object) ... - Options\n- `fn` (required, Function) ... A response callback `(err, data)`\n\n\n#### scope.sample (ns, opts, fn)\n\n![development](http://b.repl.ca/v1/stability-development-yellow.png)\n\nUse [resevoir sampling](http://en.wikipedia.org/wiki/Reservoir_sampling) to\nget a slice of documents from a collection efficiently.\n\n\n##### Parameters\n\n- `ns` (required, String) ... - A namespace string, eg `#{database_name}.#{collection_name}`\n- `opts` (optional, Object) ... - Options\n- `fn` (required, Function) ... - A response callback `(err, data)`\n\n\n#### scope.random (ns, opts, fn)\n\n![development](http://b.repl.ca/v1/stability-development-yellow.png)\n\nConvenience to get 1 document via `Client.prototype.sample`.\n\n\n##### Parameters\n\n- `ns` (required, String) ... - A namespace string, eg `#{database_name}.#{collection_name}`\n- `opts` (optional, Object) ... - Options\n- `fn` (required, Function) ... - A response callback `(err, data)`\n\n\n\n[travis_img]: https://img.shields.io/travis/mongodb-js/scope-client.svg?style=flat-square\n[travis_url]: https://travis-ci.org/mongodb-js/scope-client\n[npm_img]: https://img.shields.io/npm/v/mongodb-scope-client.svg?style=flat-square\n[npm_url]: https://www.npmjs.org/package/mongodb-scope-client\n[inch_img]: http://inch-ci.org/github/mongodb-js/scope-client.svg?branch=master\n[inch_url]: http://inch-ci.org/github/mongodb-js/scope-client\n[examples]: https://github.com/mongodb-js/scope-client/tree/master/examples\n[server]: https://github.com/mongodb-js/scope-server\n[connection-model]: https://github.com/mongodb-js/connection-model\n"
 }

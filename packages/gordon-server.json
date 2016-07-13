@@ -9,8 +9,17 @@
     "url": "http://www.bjoernacker.de"
   },
   "repository": {
-    "type": "git",
-    "url": "https://github.com/bma73/gordon-server.git"
+    "user": "bma73",
+    "repo": "gordon-server",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/bma73/gordon-server/tarball/master",
+    "clone_url": "https://github.com/bma73/gordon-server",
+    "https_url": "https://github.com/bma73/gordon-server",
+    "travis_url": "https://travis-ci.org/bma73/gordon-server",
+    "zip_url": "https://github.com/bma73/gordon-server/archive/master.zip",
+    "api_url": "https://api.github.com/repos/bma73/gordon-server"
   },
   "licenses": [
     {
@@ -41,25 +50,32 @@
     "as3",
     "socket"
   ],
-  "bugs": {
-    "url": "https://github.com/bma73/gordon-server/issues"
-  },
-  "_id": "gordon-server@0.1.1",
   "dist": {
     "shasum": "9a26e68f45d9873022b82ce82b2b050e9828ce9a",
     "tarball": "http://registry.npmjs.org/gordon-server/-/gordon-server-0.1.1.tgz"
   },
-  "_from": ".",
   "_npmVersion": "1.4.3",
-  "_npmUser": {
+  "versions": [
+    {
+      "number": "0.1.0",
+      "date": "2014-04-23T14:08:26.337Z"
+    },
+    {
+      "number": "0.1.1",
+      "date": "2014-04-23T16:14:25.844Z"
+    }
+  ],
+  "created": "2014-04-23T14:08:26.337Z",
+  "modified": "2014-04-23T16:14:25.844Z",
+  "lastPublisher": {
     "name": "bma",
     "email": "bjoern@electronauts.net"
   },
-  "maintainers": [
+  "owners": [
     {
       "name": "bma",
       "email": "bjoern@electronauts.net"
     }
   ],
-  "directories": {}
+  "readme": "\r\n![Gordon Server Logo][1]\r\nGordon Server\r\n=============\r\nGordon is a lightweight server for developing multiuser apps and games with HTML5 and Adobe Flash/Air.\r\nIt uses a lean binary protocol to exchange data.\r\n\r\n----------\r\n\r\n### Install\r\n\r\nWith [npm](http://npmjs.org) do:\r\n```\r\nnpm install gordon-server\r\n```\r\nSee also [gordon-client][2] and [gordon-examples][3].\r\n\r\n----------\r\n\r\n### Structure\r\n####Session\r\nThe session is the highest object in the Gordon hierarchy. Every session is completely independent from other sessions.\r\nThe session contains all other Gordon objects like rooms, users and dataObjects.\r\n####Room\r\nA session can be divided in any number of rooms. Rooms are where the clients interact.\r\nEvery room is limited to a maximum number of clients/users and can be optionally locked by a password.\r\n####User\r\nEvery client connected to Gordon and joined to a session is represented as a User. Users can interact with each other by updating their dataObjects, sending chat or custom messages.\r\n####DataObjects\r\nDataObject are used to synchronize states between the connected clients.\r\nDataObjects live inside a room.\r\nEvery dataObject consists of key/value pairs, where keys must be unique integers (per DataObject) and the values must be <a href=\"http://nodejs.org/api/buffer.html\">Buffers</a>.\r\nEvery user has his own dataObject. Additional dataObjects could be created by a client or by the server.\r\n\r\nDataObject could be used to represent objects like e.g. bots, windows, laser shots, grenades, barrels, text blocks, cars etc...\r\n\r\n----------\r\n\r\n###Usage\r\n``` js\r\nvar gordon = require('gordon-server');\r\n\r\ngordon.setMaxUsers(1000);\r\ngordon.createTCPServer(9091);\r\ngordon.createWebSocketServer(9092);\r\n\r\nvar session = gordon.createSession('session1', 'A Session');\r\nvar lobby = session.createRoom('lobby', {name:'Lobby',\r\n                                         maxUsers:300,\r\n                                         persistent:true });\r\n                                         \r\nvar room1 = session.createRoom('room1', {name:'Locked Room',\r\n                                         maxUsers:50,\r\n                                         persistent:true,\r\n                                         password:'top-secret'});\r\n```\r\n\r\n####Logic Factory\r\nYou could assign a ``logic factory`` to a session.\r\nThe assigned function is called when a room has been created internally.\r\nThis could be used to modify the room's properties or e.g. attach a custom room logic accordingly by returning a 'room logic object'. \r\nSee ``room logic`` for more infos.\r\n\r\n\r\n``` js\r\n var gordon = require('gordon-server');\r\n //require a custom logic class\r\n var Gamelogic = require('./gamelogic');\r\n\r\n gordon.setMaxUsers(1000);\r\n gordon.createTCPServer(9091);\r\n gordon.createWebSocketServer(9092);\r\n\r\n var session = gordon.createSession('session1', 'A Session');\r\n //The rooms will be created on the fly, when users want to join\r\n session.autoRoomCreate = true;\r\n\r\n session.logicFactory = function (room) {\r\n  var gamelogic;\r\n\r\n  if (room.id == 'room1') {\r\n      gamelogic = new Gamelogic(room, 0x800080);\r\n      //by default rooms will be removed automatically after 2 sec if empty\r\n      //setting the persistent flag to true will prevent this\r\n      room.persistent = true;\r\n      room.name = 'Room#1';\r\n      return gamelogic;\r\n  }\r\n\r\n  if (room.id == 'room2') {\r\n      gamelogic = new Gamelogic(room, 0xFF8000);\r\n      room.persistent = true;\r\n      room.name = 'Locked Room';\r\n      room.password = '12345';\r\n      return gamelogic;\r\n  }\r\n\r\n  if (room.id == 'room3') {\r\n      gamelogic = new Gamelogic(room, 0x80FF00);\r\n      room.persistent = true;\r\n      return gamelogic;\r\n  }\r\n};\r\n```\r\n#### Room Logic\r\nEvery room can have its own custom room logic.\r\nSee the examples for use cases.\r\n\r\n```js\r\nvar Gamelogic = require('./gamelogic');\r\n\r\nvar session = gordon.createSession('session1', 'Session with custom logic');\r\nvar lobby = session.createRoom('lobby');\r\n\r\n//create the logic module and attach it to the room\r\nlobby.logic = new Gamelogic(lobby);\r\n```\r\n\r\nThe logic object could also define the following methods to modify the standard protocol flow:\r\n\r\n```js\r\njoinLogic(user, proceed)\r\nchangeRoomLogic(user, newRoom, oldRoom, proceed)\r\nchatMessageLogic(target, message, proceed)\r\ncustomMessageLogic(buffer, proceed)\r\n```\r\n\r\nCall the passed in proceed function to continue with the\r\nstandard protocol flow.\r\n\r\n```js\r\n//modifying a join request\r\nthis.joinLogic = function (user, proceed) {\r\n    //alter the user's dataObject values\r\n    user.dataObject.getValue(0).writeInt16BE(500, 0);\r\n    user.dataObject.getValue(1).write('the answer is 39!!');\r\n\r\n    //simulating a long running e.g. database query\r\n    setTimeout(function () {\r\n        /*to let the user join pass 'true' to provided proceed function*/\r\n        proceed(true);\r\n\r\n        /*to cancel the join request pass 'false' */\r\n        //proceed(false);\r\n\r\n        /*or close the user's connection*/\r\n        //user.connection.dispose();\r\n        //proceed(false);\r\n\r\n    }, 2000);\r\n};\r\n\r\n//modify a change room request\r\nthis.changeRoomLogic = function (user, newRoom, oldRoom, proceed) {\r\n //don't allow users to change to room3\r\n if (newRoom.id == 'room3') {\r\n      proceed(false);\r\n } else {\r\n     proceed(true);\r\n }\r\n};\r\n\r\n//modifying a chat message\r\np.chatMessageLogic = function (target, message, proceed) {\r\n    //target could be a user or an object with user.id/user key/value\r\n    message = message.split('').reverse().join('');\r\n    proceed(true, message);\r\n};\r\n\r\n//modifying a custom message\r\np.customMessageLogic = function (buffer, proceed) {\r\n    if (buffer.readUInt16BE(0) == 0xc000){\r\n        var b = new Buffer(4);\r\n        b.writeUInt32BE(0xffffffff, 0);\r\n        proceed(true, b);\r\n    }\r\n};\r\n```\r\n####DataObjects\r\nDataObject are used to synchronize states between the connected clients. DataObjects live inside a room. Every DataObject consists of key/value pairs, where keys must be unique integers (per DataObject) and values must be <a href=\"http://nodejs.org/api/buffer.html\">Buffers</a>.\r\n\r\nEvery connected user automatically has its own DataObject. Additional DataObjects can be created with the ``room.createDataObject()`` method.\r\n\r\n```js\r\nvar room = session.createRoom('room1');\r\n\r\nvar values = {};\r\nvalues[0] = new Buffer(1);\r\nvalues[1] = new Buffer(2);\r\nvalues[2] = new Buffer(2);\r\nvalues[3] = new Buffer(1);\r\nvalues[4] = new Buffer(4);\r\n\r\n//write the initial values\r\nvalues[0].writeInt8(1, 0);\r\nvalues[1].writeInt16BE(500, 0);\r\nvalues[2].writeInt16BE(500, 0);\r\nvalues[3].writeInt8(1, 0);\r\nvalues[4].writeInt32BE(0xff00ff, 0);\r\n\r\n//create and broadcast the new DataObject\r\nroom.createDataObject(values, true);\r\n```\r\n\r\nThe server also can update and broadcast values:\r\n\r\n```js\r\nvar dataObject = user.dataObject;\r\ndataObject.getValue(DataKey.X_POS).writeInt16BE(500, 0);\r\ndataObject.getValue(DataKey.Y_POS).writeInt16BE(500, 0);\r\ndataObject.getValue(DataKey.NAME).write('John Doe Jr.');\r\n\r\n//broadcast values to dataObject's room\r\ndataObject.broadcastValues([DataKey.X_POS, DataKey.Y_POS, DataKey.NAME]);\r\n```\r\n\r\n  [1]: https://cloud.githubusercontent.com/assets/7307652/2774582/445a43cc-caba-11e3-92f2-a2bc7600b52b.png\r\n  [2]: https://github.com/bma73/gordon-client\r\n  [3]: https://github.com/bma73/gordon-examples"
 }

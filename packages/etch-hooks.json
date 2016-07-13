@@ -12,8 +12,17 @@
     "clean": "rm -rf dist"
   },
   "repository": {
-    "type": "git",
-    "url": "git+https://github.com/BinaryMuse/etch-hooks.git"
+    "user": "BinaryMuse",
+    "repo": "etch-hooks",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/BinaryMuse/etch-hooks/tarball/master",
+    "clone_url": "https://github.com/BinaryMuse/etch-hooks",
+    "https_url": "https://github.com/BinaryMuse/etch-hooks",
+    "travis_url": "https://travis-ci.org/BinaryMuse/etch-hooks",
+    "zip_url": "https://github.com/BinaryMuse/etch-hooks/archive/master.zip",
+    "api_url": "https://api.github.com/repos/BinaryMuse/etch-hooks"
   },
   "keywords": [
     "virtual-dom dom view element custom-elements dom-diff atom electron hooks etch"
@@ -23,9 +32,6 @@
     "email": "michelle@michelletilley.net"
   },
   "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/BinaryMuse/etch-hooks/issues"
-  },
   "homepage": "https://github.com/BinaryMuse/etch-hooks",
   "devDependencies": {
     "babel": "^5.0.0",
@@ -49,29 +55,30 @@
     ]
   },
   "gitHead": "1fd537bdd20af88a9f5dc94e32dae686a78981fc",
-  "_id": "etch-hooks@0.1.0",
-  "_shasum": "6e91911f9674c23425c435ebf39b4d72254001e2",
-  "_from": ".",
   "_npmVersion": "3.6.0",
   "_nodeVersion": "5.6.0",
-  "_npmUser": {
-    "name": "binarymuse",
-    "email": "michelle@michelletilley.net"
-  },
   "dist": {
     "shasum": "6e91911f9674c23425c435ebf39b4d72254001e2",
     "tarball": "http://registry.npmjs.org/etch-hooks/-/etch-hooks-0.1.0.tgz"
   },
-  "maintainers": [
+  "deprecated": "deprecated in favor of built-in Etch hooks starting in Etch 0.6.0",
+  "versions": [
+    {
+      "number": "0.1.0",
+      "date": "2016-04-12T05:13:17.758Z"
+    }
+  ],
+  "created": "2016-04-12T05:13:17.758Z",
+  "modified": "2016-04-25T19:05:01.416Z",
+  "lastPublisher": {
+    "name": "binarymuse",
+    "email": "michelle@michelletilley.net"
+  },
+  "owners": [
     {
       "name": "binarymuse",
       "email": "michelle@michelletilley.net"
     }
   ],
-  "_npmOperationalInternal": {
-    "host": "packages-12-west.internal.npmjs.com",
-    "tmp": "tmp/etch-hooks-0.1.0.tgz_1460437995514_0.037618809612467885"
-  },
-  "deprecated": "deprecated in favor of built-in Etch hooks starting in Etch 0.6.0",
-  "directories": {}
+  "readme": "# etch-hooks\n\netch-hooks is a library to facilitate hooking into the [Etch](https://github.com/nathansobo/etch) component lifecycle.\n\n### Overview\n\nIt can be useful to hook into the Etch component lifecycle. etch-hooks allows you to hook into either (or both) of the `etch.initialize` and `etch.update` methods:\n\n```javascript\nimport hooks from 'etch-hooks'\n\nclass MyComponent {\n  constructor () {\n    hooks.onInitialize(this, this.onUpdate)\n    hooks.onUpdate(this, this.onUpdate)\n\n    etch.initialize(this)\n    // the `onInitialize` hook runs here\n  }\n\n  async update (props, children) {\n    // ...\n    await etch.update(this)\n    // the `onUpdate` hook runs here;\n    // remember that `etch.update` is asynchronous and returns a promise\n  }\n\n  onUpdate () {\n    console.log(\"I've been rendered!\")\n  }\n\n  render () {\n    // ...\n  }\n}\n```\n"
 }

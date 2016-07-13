@@ -10,11 +10,17 @@
   "license": "ISC",
   "homepage": "https://github.com/ThibWeb/is-js-error#readme",
   "repository": {
-    "type": "git",
-    "url": "git+https://github.com/ThibWeb/is-js-error.git"
-  },
-  "bugs": {
-    "url": "https://github.com/ThibWeb/is-js-error/issues"
+    "user": "ThibWeb",
+    "repo": "is-js-error",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/ThibWeb/is-js-error/tarball/master",
+    "clone_url": "https://github.com/ThibWeb/is-js-error",
+    "https_url": "https://github.com/ThibWeb/is-js-error",
+    "travis_url": "https://travis-ci.org/ThibWeb/is-js-error",
+    "zip_url": "https://github.com/ThibWeb/is-js-error/archive/master.zip",
+    "api_url": "https://api.github.com/repos/ThibWeb/is-js-error"
   },
   "keywords": [
     "browser",
@@ -69,24 +75,53 @@
     "start": "node index.js"
   },
   "gitHead": "58d696da06d1c9199312b0067c25aea1aad2b864",
-  "_id": "is-js-error@0.7.0",
-  "_shasum": "4580b438c35e588790b6a93801e62da8b1e0260b",
-  "_from": ".",
   "_npmVersion": "2.14.7",
   "_nodeVersion": "4.2.3",
-  "_npmUser": {
-    "name": "thibweb",
-    "email": "thib@thib.me"
-  },
   "dist": {
     "shasum": "4580b438c35e588790b6a93801e62da8b1e0260b",
     "tarball": "http://registry.npmjs.org/is-js-error/-/is-js-error-0.7.0.tgz"
   },
-  "maintainers": [
+  "versions": [
+    {
+      "number": "0.1.0",
+      "date": "2015-11-04T04:02:41.416Z"
+    },
+    {
+      "number": "0.2.0",
+      "date": "2015-11-04T04:04:53.199Z"
+    },
+    {
+      "number": "0.4.0",
+      "date": "2015-11-04T04:45:42.676Z"
+    },
+    {
+      "number": "0.5.0",
+      "date": "2015-11-18T11:53:05.732Z"
+    },
+    {
+      "number": "0.6.0",
+      "date": "2015-11-28T03:37:53.552Z"
+    },
+    {
+      "number": "0.6.1",
+      "date": "2015-11-28T03:57:16.798Z"
+    },
+    {
+      "number": "0.7.0",
+      "date": "2015-12-16T12:46:44.328Z"
+    }
+  ],
+  "created": "2015-11-04T04:02:41.416Z",
+  "modified": "2015-12-16T12:46:44.328Z",
+  "lastPublisher": {
+    "name": "thibweb",
+    "email": "thib@thib.me"
+  },
+  "owners": [
     {
       "name": "thibweb",
       "email": "thib@thib.me"
     }
   ],
-  "directories": {}
+  "readme": "is-js-error [![npm](https://img.shields.io/npm/v/is-js-error.svg?style=flat-square)](https://www.npmjs.com/package/is-js-error) [![Build Status](https://img.shields.io/travis/ThibWeb/is-js-error.svg?style=flat-square)](https://travis-ci.org/ThibWeb/is-js-error) [![dependency Status](https://img.shields.io/david/ThibWeb/is-js-error.svg?style=flat-square)](https://david-dm.org/ThibWeb/is-js-error) [![devDependency Status](https://img.shields.io/david/dev/ThibWeb/is-js-error.svg?style=flat-square)](https://david-dm.org/ThibWeb/is-js-error)\n==========\n\n> Check if a page contains a JavaScript error\n\n## Installation\n\n`npm install -g is-js-error`\n\n## Usage\n\nFrom the command line,\n\n```sh\n$ is-js-error example.com\n✔ OK\n# With a specific time to wait for before reporting no error (in ms)\n$ is-js-error example.com --wait 3000\n✔ OK\n```\n\nThe exit status is `1` for a page that fails to load and `2` for a JS error.\n\n### In continuous integration\n\nThis project relies on [Electron](https://github.com/atom/electron), which requires a GUI. See the [following Travis guide](http://docs.travis-ci.com/user/gui-and-headless-browsers/).\n\n## Contributing\n\n> You first need to clone the project on your computer, and to install [Node](https://nodejs.org). This project uses [nvm](https://github.com/creationix/nvm) to execute a specific node version.\n\nInstall the project with:\n\n```sh\ngit clone git@github.com:ThibWeb/is-js-error.git\ncd is-js-error\nnvm install\nnpm install\nnpm install -g eslint babel-eslint eslint-config-airbnb\n./.githooks/deploy\n```\n\nTo run the tests:\n\n```sh\nnpm run test\n```\n\nTest pages:\n\n- https://rawgit.com/ThibWeb/is-js-error/master/test/no-error.html\n- https://rawgit.com/ThibWeb/is-js-error/master/test/error.html\n- https://rawgit.com/ThibWeb/is-js-error/master/test/notfound.html\n\nTo release a new version:\n\n```sh\nnpm version minor -m \"Release %s\"\ngit push origin master\ngit push --tags\nnpm publish\n```\n"
 }

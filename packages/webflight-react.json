@@ -3,9 +3,6 @@
   "version": "0.1.5",
   "description": "WebFlight for React apps",
   "main": "index.js",
-  "directories": {
-    "test": "test"
-  },
   "standard": {
     "parser": "babel-eslint"
   },
@@ -27,30 +24,58 @@
     "build": "jsx components/WebFlight.jsx > components/WebFlight.js"
   },
   "repository": {
-    "type": "git",
-    "url": "git+https://github.com/Team-WebFlight/wf-react.git"
+    "user": "Team-WebFlight",
+    "repo": "wf-react",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/Team-WebFlight/wf-react/tarball/master",
+    "clone_url": "https://github.com/Team-WebFlight/wf-react",
+    "https_url": "https://github.com/Team-WebFlight/wf-react",
+    "travis_url": "https://travis-ci.org/Team-WebFlight/wf-react",
+    "zip_url": "https://github.com/Team-WebFlight/wf-react/archive/master.zip",
+    "api_url": "https://api.github.com/repos/Team-WebFlight/wf-react"
   },
   "author": "",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/Team-WebFlight/wf-react/issues"
-  },
   "homepage": "https://www.webflight.io",
   "gitHead": "2607bc7dbf09a9e0f68c4c01616a1fa85caae4a3",
-  "_id": "webflight-react@0.1.5",
-  "_shasum": "778b84b33337e34437b313162caf362b460c1b12",
-  "_from": ".",
   "_npmVersion": "2.14.12",
   "_nodeVersion": "4.2.6",
-  "_npmUser": {
-    "name": "tbywong",
-    "email": "tbywong@gmail.com"
-  },
   "dist": {
     "shasum": "778b84b33337e34437b313162caf362b460c1b12",
     "tarball": "http://registry.npmjs.org/webflight-react/-/webflight-react-0.1.5.tgz"
   },
-  "maintainers": [
+  "stars": 3,
+  "versions": [
+    {
+      "number": "1.0.0",
+      "date": "2016-04-07T03:00:00.757Z"
+    },
+    {
+      "number": "0.1.2",
+      "date": "2016-04-07T16:34:33.837Z"
+    },
+    {
+      "number": "0.1.3",
+      "date": "2016-04-07T16:36:49.425Z"
+    },
+    {
+      "number": "0.1.4",
+      "date": "2016-04-07T17:00:57.156Z"
+    },
+    {
+      "number": "0.1.5",
+      "date": "2016-04-07T18:52:08.601Z"
+    }
+  ],
+  "created": "2016-04-07T03:00:00.757Z",
+  "modified": "2016-04-07T18:52:08.601Z",
+  "lastPublisher": {
+    "name": "tbywong",
+    "email": "tbywong@gmail.com"
+  },
+  "owners": [
     {
       "name": "carolag",
       "email": "carol.argentina.gonzalez@gmail.com"
@@ -68,8 +93,5 @@
       "email": "tbywong@gmail.com"
     }
   ],
-  "_npmOperationalInternal": {
-    "host": "packages-12-west.internal.npmjs.com",
-    "tmp": "tmp/webflight-react-0.1.5.tgz_1460055126086_0.6131962197832763"
-  }
+  "readme": "[![js-standard-style](https://img.shields.io/badge/code%20style-standard-brightgreen.svg)](https://www.standardjs.com)\n\n# WebFlight for React\nWebFlight enables the users visiting a site to serve the content of that site. P2P content sharing technology powered with :heart: by [WebTorrent](https://webtorrent.io)!\n\n`STATUS: ` WebFlight and WebFlight-React are currently in **alpha**. If you find a bug, please [open an issue](https://github.com/Team-WebFlight/WebFlight-React/issues/new) on GitHub.\n\n### Install\n```bash\nnpm install webflight-react\n```\n\n### Usage: Server\n<i>* WebFlight currently depends on Node v5.x.</i>\n\nIt's easy to incorporate WebFlight into your existing site! Just provide us with a few details on where to find the assets you want to seed, and we'll take care of the rest.\n#### Initialize WebFlight\n\n```javascript\nconst WebFlight = require('webflight-react')\n\nconst webflight = new WebFlight(options, serverRoot)\n\nwebflight.init()\n\napp.use(webflight.redirect.bind(wf))\n```\n\n##### Options\n\n```siteUrl``` - Your website url\n<br>```assetsPath``` - The absolute path(s) to the folder(s) containing your assets\n<br>`serverRoot` - The root path on your server\n<br>```wfPath``` - (optional) The folder WebFlight files will appear in\n<br>```wfRoute``` - (optional) The route that retrieves WebFlight files\n<br>```seedScript``` - (optional) The script that will initialize seeding your assets so they're ready to be downloaded by users after the **userCount** threshold is passed\n<br>`devMode` - (optional) Defaults to true while in development and does not run `Xvfb`\n```\n{\n  siteUrl: String             // Required\n  assetsPath: String|Array    // Required\n  serverRoot: String          // Required\n  wfPath: String              // Optional - defaults to '/wfPath'\n  seedScript: String          // Optional - defaults to 'wf-seed.js'\n  devMode: Boolean            // Optional - defaults to true\n}\n```\n\n#### `webflight.init()`\nMakes a copy of your site in `wfPath` folder and begins seeding assets.\n<br>`NOTE:` Check your terminal to see bot's seeding status.\n\n#### `webflight.redirect()`\nRedirects all requests to `siteUrl` to the WebFlight version of your site where users will begin to download assets from the peer network.\n\n### Usage: React\n** currently compatible with image assets only*\n```javascript\nimport WebFlight from 'webflight-react/components/WebFlight'\n\n```\n\nReplace any image tags with WebFlight components and an `src` tag:\n\n```javascript\n<WebFlight src=\"imgs/bird.jpg\" />\n\n```\n`NOTE:` You can add any additional props to the component as usual:\n```javascript\n<WebFlight src=\"imgs/bird.jpg\" style={{background: 'black'}} onClick={this.update} />\n\n```\n\n---\n\n### License\nMIT License (MIT)\n\nCopyright (c) Team WebFlight\n\nPermission is hereby granted, free of charge, to any person obtaining a copy of\nthis software and associated documentation files (the \"Software\"), to deal in\nthe Software without restriction, including without limitation the rights to\nuse, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of\nthe Software, and to permit persons to whom the Software is furnished to do so,\nsubject to the following conditions:\n\nThe above copyright notice and this permission notice shall be included in all\ncopies or substantial portions of the Software.\n\nTHE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR\nIMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS\nFOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR\nCOPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER\nIN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN\nCONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.\n"
 }

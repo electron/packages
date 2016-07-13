@@ -1,0 +1,73 @@
+{
+  "name": "choose-files",
+  "version": "1.0.1",
+  "description": "Prompt the user to select files, then pass them to a callback.",
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "babel src -s -d dist",
+    "test": "eslint src",
+    "prepublish": "npm run build",
+    "release": "npm run build && git commit -am $npm_package_version && git tag $npm_package_version && git push && git push --tags && npm publish"
+  },
+  "keywords": [
+    "files",
+    "choose",
+    "attach",
+    "browse"
+  ],
+  "author": {
+    "name": "Jason Miller",
+    "email": "jason@developit.ca"
+  },
+  "license": "BSD",
+  "repository": {
+    "user": "synacorinc",
+    "repo": "choose-files",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/synacorinc/choose-files/tarball/master",
+    "clone_url": "https://github.com/synacorinc/choose-files",
+    "https_url": "https://github.com/synacorinc/choose-files",
+    "travis_url": "https://travis-ci.org/synacorinc/choose-files",
+    "zip_url": "https://github.com/synacorinc/choose-files/archive/master.zip",
+    "api_url": "https://api.github.com/repos/synacorinc/choose-files"
+  },
+  "homepage": "https://github.com/synacorinc/choose-files",
+  "devDependencies": {
+    "babel": "^5.8.23",
+    "babel-eslint": "^4.1.3",
+    "eslint": "^1.7.1"
+  },
+  "gitHead": "685992d78872fc484cf014ec443669de487e614f",
+  "_npmVersion": "2.11.3",
+  "_nodeVersion": "0.12.7",
+  "dist": {
+    "shasum": "fe0b27c4f00a893e2e6a91b34440c91217534ef8",
+    "tarball": "http://registry.npmjs.org/choose-files/-/choose-files-1.0.1.tgz"
+  },
+  "stars": 1,
+  "versions": [
+    {
+      "number": "1.0.0",
+      "date": "2015-11-12T16:46:23.795Z"
+    },
+    {
+      "number": "1.0.1",
+      "date": "2015-11-12T20:29:44.228Z"
+    }
+  ],
+  "created": "2015-11-12T16:46:23.795Z",
+  "modified": "2015-11-12T20:29:44.228Z",
+  "lastPublisher": {
+    "name": "developit",
+    "email": "jason@developit.ca"
+  },
+  "owners": [
+    {
+      "name": "developit",
+      "email": "jason@developit.ca"
+    }
+  ],
+  "readme": "# `choose-files`\n\n[![NPM](http://img.shields.io/npm/v/choose-files.svg)](https://www.npmjs.com/package/choose-files)\n[![travis-ci](https://travis-ci.org/synacorinc/choose-files.svg)](https://travis-ci.org/synacorinc/choose-files)\n\nPrompt the user to select files, then pass the [File] objects to a callback.\nIf the user cancels file selection, an empty Array is returned.\n\nWorks in modern browsers, Cordova, Electron, etc.\n\n\n---\n\n\n### Usage\n\n```js\nimport chooseFiles from 'choose-files';\n\nchooseFiles( files => {\n\t// `files` is an Array of File objects\n\n\t// Example - print filenames:\n\tlet names = files.map( file => file.name);\n\tconsole.log(names);\n});\n```\n\n\n---\n\n\n### License\n\nBSD 3-Clause\n\n\n[File]: https://developer.mozilla.org/en-US/docs/Web/API/File\n"
+}

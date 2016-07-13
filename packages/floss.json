@@ -1,6 +1,6 @@
 {
   "name": "floss",
-  "version": "0.6.0",
+  "version": "0.7.0",
   "description": "Unit-testing for those hard to reach places",
   "bin": {
     "floss": "./bin/floss"
@@ -12,8 +12,8 @@
   },
   "dependencies": {
     "chai": "^3.5.0",
+    "colors": "^1.1.2",
     "commander": "^2.9.0",
-    "electron-prebuilt": "^1.1.0",
     "find-root": "^1.0.0",
     "mocha": "^2.4.5",
     "object-assign": "^4.1.0",
@@ -21,25 +21,77 @@
     "sinon": "^1.17.4",
     "sinon-chai": "^2.8.0"
   },
+  "peerDependencies": {
+    "electron-prebuilt": "^1.0.0"
+  },
   "license": "SEE LICENSE IN LICENSE.txt",
   "author": {
     "name": "Jibo, Inc.",
     "email": "sdkearlyaccess@jibo.com"
   },
-  "_id": "floss@0.6.0",
-  "_shasum": "ab747d87a228966c0ecd7dbea90f70d334116086",
-  "_from": ".",
   "_npmVersion": "2.14.20",
   "_nodeVersion": "4.4.0",
-  "_npmUser": {
+  "dist": {
+    "shasum": "8dd6980722ad331a56aa9aa65af959d55a0b5af7",
+    "tarball": "http://registry.npmjs.org/floss/-/floss-0.7.0.tgz"
+  },
+  "versions": [
+    {
+      "number": "0.2.2",
+      "date": "2016-05-03T14:01:04.245Z"
+    },
+    {
+      "number": "0.2.3",
+      "date": "2016-05-03T14:04:41.744Z"
+    },
+    {
+      "number": "0.2.4",
+      "date": "2016-05-03T15:13:59.199Z"
+    },
+    {
+      "number": "0.2.5",
+      "date": "2016-05-03T15:24:44.983Z"
+    },
+    {
+      "number": "0.2.6",
+      "date": "2016-05-03T20:44:38.854Z"
+    },
+    {
+      "number": "0.2.7",
+      "date": "2016-05-04T01:55:07.098Z"
+    },
+    {
+      "number": "0.2.8",
+      "date": "2016-05-04T01:57:14.080Z"
+    },
+    {
+      "number": "0.2.9",
+      "date": "2016-05-05T14:38:41.815Z"
+    },
+    {
+      "number": "0.3.0",
+      "date": "2016-05-16T16:20:02.408Z"
+    },
+    {
+      "number": "0.4.0",
+      "date": "2016-05-19T16:08:09.484Z"
+    },
+    {
+      "number": "0.6.0",
+      "date": "2016-06-12T01:50:17.265Z"
+    },
+    {
+      "number": "0.7.0",
+      "date": "2016-07-01T19:55:48.649Z"
+    }
+  ],
+  "created": "2016-05-03T14:01:04.245Z",
+  "modified": "2016-07-01T19:55:48.649Z",
+  "lastPublisher": {
     "name": "bigtimebuddy",
     "email": "matt@mattkarl.com"
   },
-  "dist": {
-    "shasum": "ab747d87a228966c0ecd7dbea90f70d334116086",
-    "tarball": "http://registry.npmjs.org/floss/-/floss-0.6.0.tgz"
-  },
-  "maintainers": [
+  "owners": [
     {
       "name": "bigtimebuddy",
       "email": "matt@mattkarl.com"
@@ -53,9 +105,5 @@
       "email": "bittam@gmail.com"
     }
   ],
-  "_npmOperationalInternal": {
-    "host": "packages-16-east.internal.npmjs.com",
-    "tmp": "tmp/floss-0.6.0.tgz_1465696214590_0.8237899474333972"
-  },
-  "directories": {}
+  "readme": "# Floss\n\nUnit-testing for those hard to reach places.\n\nUses Electron to provide a Mocha unit-testing environment which can be run headlessly or to debugged with DevTools. This was largely inspired by the [electron-mocha](https://github.com/jprichardson/electron-mocha) and [mocha-electron](https://github.com/tscanlin/mochatron) projects but didn't quite have the debugging features needed to develop tests.\n\n## Gulp Usage\n\n```js\nvar floss = require('floss');\ngulp.task('test', function(done) {\n    floss.run('test/index.js', done);    \n});\n```\n\n### Debug Mode\n\nOpen tests in an Electron window where test can can be debugged with `debugger` and dev tools.\n\n```js\ngulp.task('test', function(done) {\n    floss.run({\n        path: 'test/index.js',\n        debug: true\n    }, done);\n});\n```\n\n### Additional Options\n\nAdditional properties can be passed to the test code by adding more values to the run options.\n\n```js\ngulp.task('test', function(done) {\n    floss.run({\n        path: 'test/index.js',\n        customUrl: 'http://localhost:8080' // <- custom\n    }, done);\n});\n```\n\nThe test code and use the global `options` property to have access to the run options.\n\n```js\nconsole.log(options.customUrl); // logs: http://localhost:8080\n```\n\n## Command Line Usage\n\nInstalled globally via `npm install -g floss electron-prebuilt`.\n\n```bash\nfloss --path test/index.js\n```\n\nOr installed locally:\n\n```bash\nnode node_modules/.bin/floss --path test/index.js\n```\n\n### Debug Mode\n\nOpen tests in an Electron window where test can can be debugged with `debugger` and dev tools.\n\n```bash\nfloss --path test/index.js --debug\n```\n\n## Custom Electron Version\n\nSome application may require a specific version of Electron. Floss uses Electron 1.0.0+, but you can specific the path to your own version. The custom version can be used either through the commandline argument `--electron`, by setting the Node environmental variable `ELECTRON_PATH` or by setting the run option `electron`.\n\n```js\ngulp.task('test', function(done) {\n    floss.run({\n        path: 'test/index.js',\n        electron: require('electron-prebuilt')\n    }, done);\n});\n```\n```bash\nfloss --path test/index.js \\\n\t--electron /usr/local/bin/electron\n```\n\n```bash\nELECTRON_PATH=/usr/local/bin/electron floss --path test/index.js\n```\n\n## Travis Integration\n\nFloss can be used with [Travis CI](https://travis-ci.org/) to run Electron headlessly by utilizing Xvfb. Here's a sample of how to setup this project.\n\n### package.json\n\nNote that scripts `test` must be setup in your **package.json**;\n\n```json\n{\n    \"scripts\": {\n        \"test\": \"gulp test\"\n    }\n}\n```\n\n### .travis.yml\n\n```yml\nlanguage: node_js\nnode_js:\n    - \"4\"\n\ninstall:\n    - npm install xvfb-maybe\n    - npm install\n\nbefore_script:\n  - export DISPLAY=':99.0'\n  - Xvfb :99 -screen 0 1024x768x24 -extension RANDR &\n\nscript:\n    - xvfb-maybe npm test\n```\n"
 }

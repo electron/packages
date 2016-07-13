@@ -10,8 +10,17 @@
     "start": "node bin/mocha-electron.js"
   },
   "repository": {
-    "type": "git",
-    "url": "git+https://github.com/tscanlin/mocha-electron.git"
+    "user": "tscanlin",
+    "repo": "mocha-electron",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/tscanlin/mocha-electron/tarball/master",
+    "clone_url": "https://github.com/tscanlin/mocha-electron",
+    "https_url": "https://github.com/tscanlin/mocha-electron",
+    "travis_url": "https://travis-ci.org/tscanlin/mocha-electron",
+    "zip_url": "https://github.com/tscanlin/mocha-electron/archive/master.zip",
+    "api_url": "https://api.github.com/repos/tscanlin/mocha-electron"
   },
   "keywords": [
     "mocha",
@@ -33,28 +42,54 @@
     "xtend": "^4.0.1"
   },
   "gitHead": "eb334dfa9879ad97b21da4f081d5f66fbcc6a08a",
-  "bugs": {
-    "url": "https://github.com/tscanlin/mocha-electron/issues"
-  },
   "homepage": "https://github.com/tscanlin/mocha-electron#readme",
-  "_id": "mocha-electron@1.0.6",
-  "_shasum": "503950a1aee67c79109c300825b1fc74fe0974b6",
-  "_from": ".",
   "_npmVersion": "3.3.10",
   "_nodeVersion": "5.3.0",
-  "_npmUser": {
-    "name": "tscanlin",
-    "email": "me@timscanlin.net"
-  },
   "dist": {
     "shasum": "503950a1aee67c79109c300825b1fc74fe0974b6",
     "tarball": "http://registry.npmjs.org/mocha-electron/-/mocha-electron-1.0.6.tgz"
   },
-  "maintainers": [
+  "versions": [
+    {
+      "number": "1.0.0",
+      "date": "2015-12-30T08:55:06.221Z"
+    },
+    {
+      "number": "1.0.1",
+      "date": "2015-12-30T20:15:24.565Z"
+    },
+    {
+      "number": "1.0.2",
+      "date": "2015-12-30T21:36:29.566Z"
+    },
+    {
+      "number": "1.0.3",
+      "date": "2015-12-30T23:44:55.008Z"
+    },
+    {
+      "number": "1.0.4",
+      "date": "2015-12-30T23:57:05.740Z"
+    },
+    {
+      "number": "1.0.5",
+      "date": "2015-12-31T00:03:17.181Z"
+    },
+    {
+      "number": "1.0.6",
+      "date": "2015-12-31T00:33:35.844Z"
+    }
+  ],
+  "created": "2015-12-30T08:55:06.221Z",
+  "modified": "2015-12-31T00:33:35.844Z",
+  "lastPublisher": {
+    "name": "tscanlin",
+    "email": "me@timscanlin.net"
+  },
+  "owners": [
     {
       "name": "tscanlin",
       "email": "me@timscanlin.net"
     }
   ],
-  "directories": {}
+  "readme": "# mocha-electron\r\n\r\n## Introduction\r\n\r\nmocha-electron makes integration testing with [mocha](https://mochajs.org/) and [electron](http://electron.atom.io/) easy.\r\n\r\nFeatures:\r\n- Run tests in [electron](http://electron.atom.io/) (fast & modern!) rather than [phantomJS](http://phantomjs.org/) (old & buggy).\r\n- Ability to see test output in node AND the electron window console.\r\n- Option to silently fail on errors so that tests can be run in development with file watching and not stop on an error.\r\n- Option to show the electron window for easier debugging or hide it and run mocha tests headlessly.\r\n\r\n## Install\r\n\r\nInstall it with npm\r\n\r\n```sh\r\nnpm install --save-dev mocha-electron\r\n```\r\n\r\n\r\n## Usage\r\n\r\nUse the script from the command line or node.\r\n\r\n> Note: by default the electron window isn't shown so that the test runs 'headless', but for debugging it can be helpful to see the window so in the config set 'window' to true or pass the '-w' argument.\r\n\r\n```sh\r\nnode .\\node_modules\\mocha-electron -w http://localhost/\r\n```\r\n\r\n```javascript\r\nvar mochaElectron = require('mocha-electron');\r\n\r\nmochaElectron({\r\n  url: 'http://localhost/',\r\n  silent: false,\r\n  window: false\r\n});\r\n```\r\n\r\nI haven't gotten around to making plugins for gulp or grunt yet (Contributions is this area would be welcome) but in the meantime here is an example of how the script can be used from a gulp task.\r\n\r\n```javascript\r\nvar gulp = require('gulp');\r\nvar mochaElectron = require('mocha-electron');\r\n\r\ngulp.task('test', function() {\r\n  mochaElectron({\r\n    url: 'http://localhost/',\r\n    silent: false,\r\n    window: false\r\n  });\r\n});\r\n```\r\n\r\nYou also need to make sure you are including the mocha scripts on the page. If you have already been using mocha for browser testing then this step might already be done for you, but if you haven't, an example of the HTML code required to include mocha might look like this.\r\n\r\n```html\r\n<div id=\"mocha\"></div>\r\n<link rel=\"stylesheet\" href=\"/node_modules/mocha/mocha.css\">\r\n<script src=\"/node_modules/mocha/mocha.js\"></script>\r\n<script src=\"/node_modules/chai/chai.js\"></script>\r\n\r\n<script src=\"/test/test.js\"></script>\r\n\r\n<script>\r\n  if (window.mochaElectron) {\r\n    mochaElectron.run();\r\n  } else {\r\n    mocha.run();\r\n  }\r\n</script>\r\n```\r\n\r\nNote the call to `mochaElectron` AFTER mocha / chai and your test.js file.\r\n\r\n## API\r\n\r\nHere's an example of how to call mochaElectron with all of its default options and comments about them.\r\n\r\n```javascript\r\nmochaElectron({\r\n  // Url to test.\r\n  url: 'http://localhost/',\r\n  // Silently swallow errors.\r\n  silent: false,\r\n  // Show window.\r\n  window: false,\r\n});\r\n```\r\n\r\nFor command line usage this should give you an idea of what arguments can be passed.\r\n\r\n```javascript\r\nvar program = require('commander');\r\n\r\n// Handle command line usage.\r\nprogram\r\n  .version('1.0.2')\r\n  .usage('[options] <url>')\r\n  .option('-w, --window', 'Show window', false)\r\n  .option('-s, --silent', 'Silently swallow errors', false)\r\n  .parse(process.argv);\r\n```\r\n\r\n```sh\r\nnode .\\node_modules\\mocha-electron -w -s http://localhost/\r\n```\r\n\r\n## Roadmap\r\n\r\n- Tests\r\n\r\n\r\n## Changelog\r\n\r\n### v1.0\r\n- Publicly launched\r\n\r\n\r\n## Contributing\r\n\r\nContributions and suggestions are welcome! Please feel free to open an issue if you run into a problem or have a feature request. I'll do my best to respond in a timely fashion.\r\n\r\nIf you want to open a pull request just fork the repo but please make sure all tests and lint pass first.\r\n\r\n\r\n## License\r\n\r\n[MIT]('http://opensource.org/licenses/MIT')\r\n"
 }

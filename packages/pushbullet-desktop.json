@@ -1,7 +1,7 @@
 {
   "name": "pushbullet-desktop",
-  "version": "1.1.0",
-  "description": "A lightweight cross-platform Pushbullet Client for OS X, Windows and Linux. It enables you to receive native system notifications in an unobstrusive way.",
+  "version": "1.4.2",
+  "description": "Lightweight cross-platform Pushbullet desktop application",
   "license": "MIT",
   "main": "./app/index.js",
   "author": {
@@ -9,11 +9,17 @@
     "url": "http://sidneys.github.io/pushbullet-desktop"
   },
   "repository": {
-    "type": "git",
-    "url": "git://github.com/sidneys/pushbullet-desktop.git"
-  },
-  "bugs": {
-    "url": "https://github.com/sidneys/pushbullet-desktop/issues"
+    "user": "sidneys",
+    "repo": "pushbullet-desktop",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/sidneys/pushbullet-desktop/tarball/master",
+    "clone_url": "https://github.com/sidneys/pushbullet-desktop",
+    "https_url": "https://github.com/sidneys/pushbullet-desktop",
+    "travis_url": "https://travis-ci.org/sidneys/pushbullet-desktop",
+    "zip_url": "https://github.com/sidneys/pushbullet-desktop/archive/master.zip",
+    "api_url": "https://api.github.com/repos/sidneys/pushbullet-desktop"
   },
   "homepage": "http://sidneys.github.io/pushbullet-desktop",
   "keywords": [
@@ -36,73 +42,126 @@
   "scripts": {
     "debug": "electron ./app",
     "build": "node ./lib/build.js -- ",
+    "changelog": "node ./lib/changelog.js -- ",
     "publish:github": "node ./lib/publish.js -- "
   },
   "dependencies": {
+    "chalk": "^1.1.3",
     "configstore": "^2.0.0",
     "electron-editor-context-menu": "^1.1.1",
-    "lodash": "^4.13.1"
+    "electron-squirrel-startup": "^1.0.0",
+    "lodash": "^4.13.1",
+    "notificationcenter-settings-macos": "2.1.1",
+    "watch": "^0.19.1",
+    "appdmg": "^0.4.5",
+    "electron-installer-debian": "^0.3.0",
+    "electron-winstaller": "^2.3.1"
   },
   "devDependencies": {
-    "appdmg": "^0.4.5",
+    "app-root-path": "^1.2.1",
     "build-changelog": "^2.1.2",
-    "chalk": "^1.1.3",
     "electron": "^0.4.1",
-    "electron-debug": "^1.0.1",
-    "electron-installer-debian": "^0.3.0",
-    "electron-packager": "^7.0.4",
-    "electron-winstaller": "^2.3.1",
+    "electron-packager": "^7.3.0",
+    "electron-prebuilt": "^1.2.6",
     "filesize": "^3.3.0",
-    "glob": "^7.0.4",
+    "glob": "^7.0.5",
     "mkdirp": "^0.5.1",
     "publish-release": "^1.3.1",
-    "request": "^2.72.0",
-    "rimraf": "^2.5.2",
-    "say": "^0.9.0",
+    "request": "^2.73.0",
+    "rimraf": "^2.5.3",
     "semver-utils": "latest",
     "zip-paths": "^0.3.1"
+  },
+  "optionalDependencies": {
+    "appdmg": "^0.4.5",
+    "electron-installer-debian": "^0.3.0",
+    "electron-winstaller": "^2.3.1"
   },
   "build": {
     "productName": "Pushbullet for Desktop",
     "productDescription": "Pushbullet Client for the Desktop",
+    "id": "de.sidneys.pushbullet-desktop",
+    "company": "sidneys.github.io",
+    "category": "public.app-category.utilities",
+    "electronVersion": "1.2.6",
     "platforms": [
       "darwin",
       "win32",
       "linux"
     ],
-    "directoryStaging": "./build-staging",
-    "directoryRelease": "./build-release",
-    "directoryCache": "./build-cache",
-    "electron": "1.2.5",
-    "company": "sidneys.github.io",
-    "id": "de.sidneys.pushbullet-desktop",
-    "number": 1,
-    "category": "public.app-category.utilities",
-    "iconUrl": "https://github.com/sidneys/pushbullet-desktop/raw/master/icons/win/app-icon.ico"
+    "directoryCache": "build/cache",
+    "directoryStaging": "build/staging",
+    "directoryRelease": "build/release",
+    "iconUrl": "https://github.com/sidneys/pushbullet-desktop/raw/master/icons/win32/icon-app.ico"
   },
-  "gitHead": "04ce8ea10ced9a8015f44f0dc284ceca67bb9986",
-  "_id": "pushbullet-desktop@1.1.0",
-  "_shasum": "9dea5d46e7d1c2f28aef66a14da8ae7f75940b9b",
-  "_from": ".",
-  "_npmVersion": "3.9.6",
-  "_nodeVersion": "6.2.2",
-  "_npmUser": {
+  "gitHead": "bb1b5fd7b9c465c1c331381130d2ab89f457bf3b",
+  "_npmVersion": "3.10.5",
+  "_nodeVersion": "6.3.0",
+  "dist": {
+    "shasum": "dae1681d813e11beced1f1d8c7b7b66de541e739",
+    "tarball": "http://registry.npmjs.org/pushbullet-desktop/-/pushbullet-desktop-1.4.2.tgz"
+  },
+  "versions": [
+    {
+      "number": "0.5.0",
+      "date": "2016-06-03T09:42:55.533Z"
+    },
+    {
+      "number": "0.6.1",
+      "date": "2016-06-03T15:55:12.679Z"
+    },
+    {
+      "number": "0.6.2",
+      "date": "2016-06-03T16:04:10.246Z"
+    },
+    {
+      "number": "0.6.3",
+      "date": "2016-06-03T16:13:06.611Z"
+    },
+    {
+      "number": "0.8.0",
+      "date": "2016-06-03T21:06:31.228Z"
+    },
+    {
+      "number": "1.0.7",
+      "date": "2016-06-21T05:12:23.837Z"
+    },
+    {
+      "number": "1.0.8",
+      "date": "2016-06-21T05:22:52.169Z"
+    },
+    {
+      "number": "1.0.9",
+      "date": "2016-06-24T00:17:03.452Z"
+    },
+    {
+      "number": "1.1.0",
+      "date": "2016-06-24T02:00:54.699Z"
+    },
+    {
+      "number": "1.1.5",
+      "date": "2016-07-01T18:56:18.171Z"
+    },
+    {
+      "number": "1.2.0",
+      "date": "2016-07-09T18:38:10.910Z"
+    },
+    {
+      "number": "1.4.2",
+      "date": "2016-07-11T20:42:14.695Z"
+    }
+  ],
+  "created": "2016-06-03T09:42:55.533Z",
+  "modified": "2016-07-11T20:42:14.695Z",
+  "lastPublisher": {
     "name": "sidneys",
     "email": "sidney.bofah@googlemail.com"
   },
-  "dist": {
-    "shasum": "9dea5d46e7d1c2f28aef66a14da8ae7f75940b9b",
-    "tarball": "http://registry.npmjs.org/pushbullet-desktop/-/pushbullet-desktop-1.1.0.tgz"
-  },
-  "maintainers": [
+  "owners": [
     {
       "name": "sidneys",
       "email": "sidney.bofah@googlemail.com"
     }
   ],
-  "_npmOperationalInternal": {
-    "host": "packages-16-east.internal.npmjs.com",
-    "tmp": "tmp/pushbullet-desktop-1.1.0.tgz_1466733652304_0.4705541501753032"
-  },
-  "directories": {}
+  "readme": "# Pushbullet for Desktop [![Join the chat at https://gitter.im/sidneys/pushbullet-desktop](https://badges.gitter.im/sidneys/pushbullet-desktop.svg)](https://gitter.im/sidneys/pushbullet-desktop?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge) [![build status](http://img.shields.io/travis/sidneys/pushbullet-desktop.svg?style=flat)](http://travis-ci.org/sidneys/pushbullet-desktop) [![issues](https://img.shields.io/github/issues/sidneys/pushbullet-desktop.svg)](https://github.com/sidneys/pushbullet-desktop/issues) [![codeship](https://codeship.com/projects/a273af20-227c-0134-0f44-72d64b61c085/status?branch=master)](https://codeship.com/projects/a273af20-227c-0134-0f44-72d64b61c085/) \n**Pushbullet for Desktop** is a lightweight & unobstrusive cross-platform client for [PushBullet](https://pushbullet.com/).  Receive native push notifications on OS X, Windows and Linux. *Not affiliated with PushBullet Inc..*\n\n## Features\n\n- Receives native PushBullet notifications\n- Runs in the background (as OSX Menubar or Windows Tray app)\n- Simple, Webview-based setup\n- In-Notification Channel images for - for channels like [IFTTT](https://ifttt.com/), [Zapier](https://zapier.com/) or [Pushbullet Chat](http://lifehacker.com/huge-pushbullet-update-adds-instant-messaging-chat-hea-1714870644)\n- Shows in-Notification image previews\n\n## Installation\n\nDownload the latest release at:  [Pushbullet for Desktop Releases](https://github.com/sidneys/pushbullet-desktop/releases)\n\n## Development\n\n### Install required node packages\n\n```\nnpm install\n```\n\n### Start development\nLocal development requires running an Electron instance.   \nTo start one, simply install [electron-prebuilt](https://github.com/electron-userland/electron-prebuilt) globally:\n\n```\nnpm --global electron-prebuilt\n```\nThen simply to the pushbullet-desktop repository folder and start it:\n\n```\nelectron ./app\n```\n\n### Building\n\n> Building Windows binaries requires [Wine](https://winehq.org) and [MakeNSIS](https://nsis.sourceforge.net/Docs/Chapter3.htm). To install it on OSX using [Homebrew](https://brew.sh):\n\n```\nbrew install wine && brew install makensis\n```\n\n> Building Linux binaries requires [fpm](https://github.com/jordansissel/fpm). To install it on OSX using [Homebrew](https://brew.sh):\n\n```\nsudo gem install fpm\n```\n\n\n> To build all platforms (darwin, linux, win32):\n\n```\nnpm run build\n```\n\n> To build a specific platform:\n\n```\nnpm run build <darwin|linux|win32>\n```\n\n### Update Changelog\n\n```\nnpm run-script changelog\n```\n\n___\n\n[![badge](https://nodei.co/npm/pushbullet-desktop.png?downloads=false)](https://www.npmjs.com/package/pushbullet-desktop)"
 }

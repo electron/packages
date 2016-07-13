@@ -6,8 +6,17 @@
     "test": "make test"
   },
   "repository": {
-    "type": "git",
-    "url": "git+https://github.com/juliangruber/electron-stream.git"
+    "user": "juliangruber",
+    "repo": "electron-stream",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/juliangruber/electron-stream/tarball/master",
+    "clone_url": "https://github.com/juliangruber/electron-stream",
+    "https_url": "https://github.com/juliangruber/electron-stream",
+    "travis_url": "https://travis-ci.org/juliangruber/electron-stream",
+    "zip_url": "https://github.com/juliangruber/electron-stream/archive/master.zip",
+    "api_url": "https://api.github.com/repos/juliangruber/electron-stream"
   },
   "devDependencies": {
     "concat-stream": "^1.5.1",
@@ -22,32 +31,106 @@
     "electron-stream": "bin/bin.js"
   },
   "gitHead": "fb600127e9ebd3de85b33d23aaefbda9b8418fd9",
-  "bugs": {
-    "url": "https://github.com/juliangruber/electron-stream/issues"
-  },
   "homepage": "https://github.com/juliangruber/electron-stream#readme",
-  "_id": "electron-stream@3.0.2",
-  "_shasum": "81cc11576065c74827cc365c50fd0abfd8d51ba3",
-  "_from": ".",
   "_npmVersion": "3.3.12",
   "_nodeVersion": "5.4.1",
-  "_npmUser": {
-    "name": "juliangruber",
-    "email": "julian@juliangruber.com"
-  },
   "dist": {
     "shasum": "81cc11576065c74827cc365c50fd0abfd8d51ba3",
     "tarball": "http://registry.npmjs.org/electron-stream/-/electron-stream-3.0.2.tgz"
   },
-  "maintainers": [
+  "versions": [
+    {
+      "number": "1.0.0",
+      "date": "2015-10-28T11:22:46.449Z"
+    },
+    {
+      "number": "1.0.1",
+      "date": "2015-10-28T11:32:03.557Z"
+    },
+    {
+      "number": "1.0.2",
+      "date": "2015-10-28T11:33:09.582Z"
+    },
+    {
+      "number": "1.1.0",
+      "date": "2015-10-28T11:43:06.787Z"
+    },
+    {
+      "number": "1.1.1",
+      "date": "2015-10-29T09:42:02.035Z"
+    },
+    {
+      "number": "2.0.0",
+      "date": "2015-10-29T15:29:09.843Z"
+    },
+    {
+      "number": "2.1.0",
+      "date": "2015-10-29T15:32:34.452Z"
+    },
+    {
+      "number": "2.1.1",
+      "date": "2015-10-29T18:04:14.406Z"
+    },
+    {
+      "number": "2.1.2",
+      "date": "2015-10-29T18:21:09.132Z"
+    },
+    {
+      "number": "2.2.0",
+      "date": "2015-11-16T12:03:04.752Z"
+    },
+    {
+      "number": "2.3.0",
+      "date": "2015-12-11T08:35:13.001Z"
+    },
+    {
+      "number": "2.4.0",
+      "date": "2015-12-31T10:10:36.723Z"
+    },
+    {
+      "number": "2.4.1",
+      "date": "2016-01-07T19:08:58.401Z"
+    },
+    {
+      "number": "2.5.0",
+      "date": "2016-03-14T17:46:24.536Z"
+    },
+    {
+      "number": "2.6.0",
+      "date": "2016-03-27T09:40:30.655Z"
+    },
+    {
+      "number": "2.6.1",
+      "date": "2016-03-31T09:14:55.527Z"
+    },
+    {
+      "number": "2.6.2",
+      "date": "2016-03-31T22:09:12.360Z"
+    },
+    {
+      "number": "3.0.0",
+      "date": "2016-05-11T12:56:57.809Z"
+    },
+    {
+      "number": "3.0.1",
+      "date": "2016-05-11T13:02:30.983Z"
+    },
+    {
+      "number": "3.0.2",
+      "date": "2016-05-22T10:50:38.926Z"
+    }
+  ],
+  "created": "2015-10-28T11:22:46.449Z",
+  "modified": "2016-05-22T10:50:38.926Z",
+  "lastPublisher": {
+    "name": "juliangruber",
+    "email": "julian@juliangruber.com"
+  },
+  "owners": [
     {
       "name": "juliangruber",
       "email": "julian@juliangruber.com"
     }
   ],
-  "_npmOperationalInternal": {
-    "host": "packages-12-west.internal.npmjs.com",
-    "tmp": "tmp/electron-stream-3.0.2.tgz_1463914236608_0.31399946729652584"
-  },
-  "directories": {}
+  "readme": "\n# electron-stream\n\n  Write JavaScript to `electron`, get console output back!\n\n  [![travis](https://travis-ci.org/juliangruber/electron-stream.svg?branch=master)](https://travis-ci.org/juliangruber/electron-stream)\n  [![downloads](https://img.shields.io/npm/dm/electron-stream.svg)](https://www.npmjs.org/package/electron-stream)\n\n## Example\n\n  Boot a hidden electron instance, log to stdout and clean up:\n\n```js\nvar electron = require('electron-stream');\n\nvar browser = electron();\n\nbrowser.pipe(process.stdout);\n\nbrowser.write('console.log(window.location.href);');\nbrowser.write('window.close();');\nbrowser.end();\n```\n\n## Output streams\n\n`electron-stream` lets you read all of the console output together, or split up into `stdout` and `stderr`:\n\n```js\n// console.log and console.error\nbrowser.pipe(...);\nbrowser.stdall.pipe(...);\n\n// console.log only\nbrowser.stdout.pipe(...);\n\n// console.error only\nbrowser.stderr.pipe(...);\n```\n\n## Installation\n\n  To install as a library:\n\n```bash\n$ npm install electron-stream\n```\n\n  To install as a binary:\n\n```bash\n$ npm install -g electron-stream\n$ echo \"console.log('foo');window.close()\" | electron-stream\n```\n\n## Travis\n\nTo use electron on travis, add this to your travis.yml:\n\n```yml\naddons:\n  apt:\n    packages:\n      - xvfb\ninstall:\n  - export DISPLAY=':99.0'\n  - Xvfb :99 -screen 0 1024x768x24 > /dev/null 2>&1 &\n  - npm install\n```\n\n[Source](https://github.com/rhysd/Shiba/blob/055a11a0a2b4f727577fe61371a88d8db9277de5/.travis.yml).\n\n## API\n\n### electron([opts])\n\nCreate a writable stream around a newly spawned `electron` which forwards written data to `electron`. This module bundles [electron-prebuilt](https://npmjs.org/package/electron-prebuilt).\n\nOptions:\n\n  - `show`: Show the electron window. Defaults to `false`.\n  - `nodeIntegration`:  Enable node integration. Defaults to `false`.\n\n### electron#stdout\n### electron#stderr\n### electron#stdall\n\nReadable streams containing the console output. `console.log` will be forwarded to `.stdout`, `console.error` to `.stderr`. `.stdall` has them both.\n\n### electron#kill()\n\nKill the child process.\n\n### electron#on('exit', fn)\n\nEmitted when the underlying `electron` exits. There can be multiple reasons for this:\n\n- `electron#kill()` was called\n- `window.close()` was sent as a script\n- there was a fatal error\n\n## License\n\n  MIT\n\n"
 }

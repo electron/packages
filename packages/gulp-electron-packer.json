@@ -13,8 +13,17 @@
     "url": "https://github.com/alchapone"
   },
   "repository": {
-    "type": "git",
-    "url": "git+ssh://git@github.com/railsware/gulp-electron-packer.git"
+    "user": "railsware",
+    "repo": "gulp-electron-packer",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/railsware/gulp-electron-packer/tarball/master",
+    "clone_url": "https://github.com/railsware/gulp-electron-packer",
+    "https_url": "https://github.com/railsware/gulp-electron-packer",
+    "travis_url": "https://travis-ci.org/railsware/gulp-electron-packer",
+    "zip_url": "https://github.com/railsware/gulp-electron-packer/archive/master.zip",
+    "api_url": "https://api.github.com/repos/railsware/gulp-electron-packer"
   },
   "scripts": {
     "test": "istanbul test _mocha --report html -- test/*.js --reporter spec",
@@ -39,32 +48,34 @@
   },
   "license": "MIT",
   "gitHead": "4cbf923d0a512ab9d49ce8d190fa3178bb613b62",
-  "bugs": {
-    "url": "https://github.com/railsware/gulp-electron-packer/issues"
-  },
   "homepage": "https://github.com/railsware/gulp-electron-packer#readme",
-  "_id": "gulp-electron-packer@0.0.2",
-  "_shasum": "ad8d0ae624184543707ed7819e24894ea1f5f9fc",
-  "_from": ".",
   "_npmVersion": "3.8.3",
   "_nodeVersion": "5.10.1",
-  "_npmUser": {
-    "name": "alchapone",
-    "email": "alchapone@yandex.ru"
-  },
   "dist": {
     "shasum": "ad8d0ae624184543707ed7819e24894ea1f5f9fc",
     "tarball": "http://registry.npmjs.org/gulp-electron-packer/-/gulp-electron-packer-0.0.2.tgz"
   },
-  "maintainers": [
+  "versions": [
+    {
+      "number": "0.0.1",
+      "date": "2016-04-15T16:20:34.778Z"
+    },
+    {
+      "number": "0.0.2",
+      "date": "2016-04-15T16:54:16.796Z"
+    }
+  ],
+  "created": "2016-04-15T16:20:34.778Z",
+  "modified": "2016-04-15T16:54:16.796Z",
+  "lastPublisher": {
+    "name": "alchapone",
+    "email": "alchapone@yandex.ru"
+  },
+  "owners": [
     {
       "name": "alchapone",
       "email": "alchapone@yandex.ru"
     }
   ],
-  "_npmOperationalInternal": {
-    "host": "packages-12-west.internal.npmjs.com",
-    "tmp": "tmp/gulp-electron-packer-0.0.2.tgz_1460739254278_0.257923741126433"
-  },
-  "directories": {}
+  "readme": "\n# gulp-electron-packer\n[![NPM version][npm-image]][npm-url] [![Build Status][travis-image]][travis-url]  [![Coverage Status][coveralls-image]][coveralls-url] [![Dependency Status][depstat-image]][depstat-url]\n\n> A [gulp](https://github.com/wearefractal/gulp) plugin used to create electron based application with electron-packager\n\n## Usage\n\nFirst, install `gulp-electron-packer` as a development dependency:\n\n```shell\nnpm install --save-dev gulp-electron-packer\n```\n\nThen, add it to your `gulpfile.js`:\n\n```javascript\nvar gulp = require(\"gulp\");\nvar electronPacker = require(\"gulp-electron-packer\");\nvar packageJSON = require('./package.json');\n\ngulp.src(\"./src/*.ext\")\n  .pipe(electronPacker(packageJSON))\n  .pipe(gulp.dest(\"./dist\"));\n```\n\n## API\n\n### electronPacker(options)\n\n#### options.name\nType: `String`  \n\nYour application name\n\n#### options.version\nType: `String`\nDefault: `0.0.0`  \n\nApplication version\n\n#### options.packaging\nType: `Object`\n\nOptions for electron-packager\n\n\n## License\n\n[MIT License](http://en.wikipedia.org/wiki/MIT_License)\n\n[npm-url]: https://npmjs.org/package/gulp-electron-packer\n[npm-image]: https://badge.fury.io/js/gulp-electron-packer.png\n\n[travis-url]: http://travis-ci.org/railsware/gulp-electron-packer\n[travis-image]: https://secure.travis-ci.org/railsware/gulp-electron-packer.png?branch=master\n\n[coveralls-url]: https://coveralls.io/r/alchapone/gulp-electron-packer\n[coveralls-image]: https://coveralls.io/repos/alchapone/gulp-electron-packer/badge.png\n\n[depstat-url]: https://david-dm.org/alchapone/gulp-electron-packer\n[depstat-image]: https://david-dm.org/alchapone/gulp-electron-packer.png\n"
 }

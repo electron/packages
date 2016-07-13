@@ -11,16 +11,21 @@
     "test": "NODE_ENV=test istanbul test _mocha -- -R spec",
     "coverage": "NODE_ENV=test istanbul cover _mocha --report lcovonly -- test -R spec"
   },
-  "bugs": {
-    "url": "https://github.com/skibz/swepam/issues",
-    "email": "ant@io.co.za"
-  },
   "engines": {
     "node": ">=0.6"
   },
   "repository": {
-    "url": "git+https://github.com/skibz/swepam.git",
-    "type": "git"
+    "user": "skibz",
+    "repo": "swepam",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/skibz/swepam/tarball/master",
+    "clone_url": "https://github.com/skibz/swepam",
+    "https_url": "https://github.com/skibz/swepam",
+    "travis_url": "https://travis-ci.org/skibz/swepam",
+    "zip_url": "https://github.com/skibz/swepam/archive/master.zip",
+    "api_url": "https://api.github.com/repos/skibz/swepam"
   },
   "keywords": [
     "noaa",
@@ -48,24 +53,97 @@
   },
   "gitHead": "9c3c5263084dbb13c8f3e1363f8eaf38a2ec01d4",
   "homepage": "https://github.com/skibz/swepam#readme",
-  "_id": "swepam@0.4.2",
-  "_shasum": "34f4233a3ff20a8d1a7373a33309c0ced1afbd63",
-  "_from": ".",
   "_npmVersion": "2.14.2",
   "_nodeVersion": "0.12.7",
-  "_npmUser": {
-    "name": "antino",
-    "email": "antony@mycosentino.com"
-  },
   "dist": {
     "shasum": "34f4233a3ff20a8d1a7373a33309c0ced1afbd63",
     "tarball": "http://registry.npmjs.org/swepam/-/swepam-0.4.2.tgz"
   },
-  "maintainers": [
+  "versions": [
+    {
+      "number": "0.0.0",
+      "date": "2015-10-28T10:16:55.905Z"
+    },
+    {
+      "number": "0.0.3",
+      "date": "2015-10-28T10:19:50.381Z"
+    },
+    {
+      "number": "0.0.4",
+      "date": "2015-10-28T10:23:20.254Z"
+    },
+    {
+      "number": "0.0.5",
+      "date": "2015-10-28T10:25:53.960Z"
+    },
+    {
+      "number": "0.0.6",
+      "date": "2015-10-28T12:54:44.581Z"
+    },
+    {
+      "number": "0.0.7",
+      "date": "2015-10-28T13:23:17.716Z"
+    },
+    {
+      "number": "0.0.8",
+      "date": "2015-10-28T13:34:15.709Z"
+    },
+    {
+      "number": "0.0.9",
+      "date": "2015-10-28T13:36:08.394Z"
+    },
+    {
+      "number": "0.0.10",
+      "date": "2015-10-28T13:39:42.649Z"
+    },
+    {
+      "number": "0.1.0",
+      "date": "2015-10-29T09:15:38.399Z"
+    },
+    {
+      "number": "0.1.1",
+      "date": "2015-10-29T09:22:55.986Z"
+    },
+    {
+      "number": "0.2.0",
+      "date": "2015-10-29T11:51:13.919Z"
+    },
+    {
+      "number": "0.2.1",
+      "date": "2015-10-29T12:32:51.628Z"
+    },
+    {
+      "number": "0.2.2",
+      "date": "2015-10-29T13:40:21.935Z"
+    },
+    {
+      "number": "0.3.0",
+      "date": "2015-10-30T08:36:12.456Z"
+    },
+    {
+      "number": "0.4.0",
+      "date": "2015-10-30T08:47:00.179Z"
+    },
+    {
+      "number": "0.4.1",
+      "date": "2015-10-30T08:49:34.616Z"
+    },
+    {
+      "number": "0.4.2",
+      "date": "2015-10-30T08:54:09.882Z"
+    }
+  ],
+  "created": "2015-10-28T10:16:55.905Z",
+  "modified": "2015-10-30T08:54:09.882Z",
+  "lastPublisher": {
+    "name": "antino",
+    "email": "antony@mycosentino.com"
+  },
+  "owners": [
     {
       "name": "antino",
       "email": "antony@mycosentino.com"
     }
   ],
-  "directories": {}
+  "readme": "\n# swepam [![Build Status](https://travis-ci.org/skibz/swepam.svg)](https://travis-ci.org/skibz/swepam) [![Code Climate](https://codeclimate.com/github/skibz/swepam/badges/gpa.svg)](https://codeclimate.com/github/skibz/swepam) [![Test Coverage](https://codeclimate.com/github/skibz/swepam/badges/coverage.svg)](https://codeclimate.com/github/skibz/swepam/coverage)\n\n> :sunny: :dash: :earth_africa: a json interface to the swepam readings\n\nget a solar weather report with this zero-dependency reader for [ace-swepam.txt](http://services.swpc.noaa.gov/text/ace-swepam.txt) data.\n\na web api is hosted [here](http://loada.vg) for free use. you can also request [all](http://loada.vg/all.json) data available instead of the most recent reading, if you wish.\n\n##### install\n\n```bash\nnpm install --global swepam\n```\n\n##### notes\n\nthis program __doesn't__ create an http server, it simply writes json files to disk which can be served with a web server of your choice.\n\n##### environment variables\n\n* `SWEPAM_READINGS_ENDPOINT` - ace-swepam web uri (defaults to 'http://services.swpc.noaa.gov/text/ace-swepam.txt')\n* `SWEPAM_JSON_PATH` - location of json files written to disk (must match up with nginx configuration)\n"
 }

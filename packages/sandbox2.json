@@ -8,8 +8,17 @@
   "homepage": "https://github.com/kaizhu256/node-utility2",
   "name": "sandbox2",
   "repository": {
-    "type": "git",
-    "url": "git+https://github.com/kaizhu256/node-utility2.git"
+    "user": "kaizhu256",
+    "repo": "node-utility2",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/kaizhu256/node-utility2/tarball/master",
+    "clone_url": "https://github.com/kaizhu256/node-utility2",
+    "https_url": "https://github.com/kaizhu256/node-utility2",
+    "travis_url": "https://travis-ci.org/kaizhu256/node-utility2",
+    "zip_url": "https://github.com/kaizhu256/node-utility2/archive/master.zip",
+    "api_url": "https://api.github.com/repos/kaizhu256/node-utility2"
   },
   "scripts": {
     "build-app": "npm test --mode-test-case=testCase_build_app",
@@ -22,31 +31,45 @@
     "version": "npm info sandbox2 version"
   },
   "version": "0.0.1-1",
-  "bugs": {
-    "url": "https://github.com/kaizhu256/node-utility2/issues"
-  },
-  "_id": "sandbox2@0.0.1-1",
-  "_shasum": "c92fb20b14787351f421333f969aa763e75d22fb",
-  "_from": ".",
   "_npmVersion": "3.9.3",
   "_nodeVersion": "6.2.1",
-  "_npmUser": {
-    "name": "kaizhu",
-    "email": "kaizhu256@gmail.com"
-  },
   "dist": {
     "shasum": "c92fb20b14787351f421333f969aa763e75d22fb",
     "tarball": "http://registry.npmjs.org/sandbox2/-/sandbox2-0.0.1-1.tgz"
   },
-  "maintainers": [
+  "versions": [
+    {
+      "number": "2015.4.26-a",
+      "date": "2015-04-26T11:17:31.431Z"
+    },
+    {
+      "number": "2015.4.26-b",
+      "date": "2015-04-26T11:20:22.448Z"
+    },
+    {
+      "number": "2015.4.26-c",
+      "date": "2015-04-26T11:25:22.115Z"
+    },
+    {
+      "number": "0.0.1",
+      "date": "2016-06-12T17:41:18.724Z"
+    },
+    {
+      "number": "0.0.1-1",
+      "date": "2016-06-12T19:39:18.018Z"
+    }
+  ],
+  "created": "2015-04-26T11:17:31.431Z",
+  "modified": "2016-06-12T19:39:18.018Z",
+  "lastPublisher": {
+    "name": "kaizhu",
+    "email": "kaizhu256@gmail.com"
+  },
+  "owners": [
     {
       "name": "kaizhu",
       "email": "kaizhu256@gmail.com"
     }
   ],
-  "_npmOperationalInternal": {
-    "host": "packages-16-east.internal.npmjs.com",
-    "tmp": "tmp/sandbox2-0.0.1-1.tgz_1465760355019_0.8263749552424997"
-  },
-  "directories": {}
+  "readme": "sandbox2\n========\nthis package is a standalone, single-script version of nedb @ 1.8.0 that runs in both browser and nodejs, with zero npm-dependencies\n\n[![travis-ci.org build-status](https://api.travis-ci.org/kaizhu256/node-sandbox2.svg)](https://travis-ci.org/kaizhu256/node-sandbox2)\n\n[![NPM](https://nodei.co/npm/sandbox2.png?downloads=true)](https://www.npmjs.com/package/sandbox2)\n\n\n\n# package.json\n```json\n{\n    \"package.json\": true,\n    \"description\": \"{{packageJson.description}}\",\n    \"devDependencies\": {\n        \"electron-lite\": \"kaizhu256/node-electron-lite#alpha\",\n        \"utility2\": \"kaizhu256/node-utility2#alpha\"\n    },\n    \"homepage\": \"https://github.com/kaizhu256/node-utility2\",\n    \"name\": \"sandbox2\",\n    \"repository\": {\n        \"type\": \"git\",\n        \"url\": \"https://github.com/kaizhu256/node-utility2.git\"\n    },\n    \"scripts\": {\n        \"build-app\": \"npm test --mode-test-case=testCase_build_app\",\n        \"build-ci\": \"utility2 shRun shReadmeBuild\",\n        \"build-doc\": \"npm test --mode-test-case=testCase_build_doc\",\n        \"env\": \"env\",\n        \"test\": \"\\\n. node_modules/.bin/utility2 && shInit && shReadmeExportScripts && \\\nexport PORT=$(utility2 shServerPortRandom) && \\\nutility2 test node test.js\",\n        \"test-published2\": \"utility2 shRun shNpmTestPublished\",\n        \"test-published\": \":\",\n        \"version\": \"npm info sandbox2 version\"\n    },\n    \"version\": \"0.0.1-1\"\n}\n```\n\n\n\n# internal build-script\n- build.sh\n```shell\n# build.sh\n\n# this shell script will run the build for this package\n\nshBuildCiTestPre() {(set -e\n# this function will run the pre-test build\n    exit\n)}\n\nshBuildCiTestPost() {(set -e\n# this function will run the post-test build\n    exit\n)}\n\nshBuild() {(set -e\n# this function will run the main build\n    # init env\n    . node_modules/.bin/utility2 && shInit\n    # cleanup github-gh-pages dir\n    export BUILD_GITHUB_UPLOAD_PRE_SH=\"rm -fr build\"\n    # init github-gh-pages commit-limit\n    export COMMIT_LIMIT=16\n    # if branch is alpha, beta, or master, then run default build\n    if [ \"$CI_BRANCH\" = alpha ] ||\n        [ \"$CI_BRANCH\" = beta ] ||\n        [ \"$CI_BRANCH\" = master ]\n    then\n        shBuildCiDefault\n    fi\n)}\nshBuild\n```\n\n"
 }

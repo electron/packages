@@ -1,0 +1,103 @@
+{
+  "name": "choba-engine",
+  "version": "0.0.4",
+  "description": "A choice-based interactive fiction engine.",
+  "main": "lib/index.js",
+  "jsnext:main": "src/index.js",
+  "files": [
+    "lib"
+  ],
+  "scripts": {
+    "clean": "rimraf lib dist coverage",
+    "lint": "eslint src test",
+    "test": "./node_modules/mocha/bin/mocha --recursive",
+    "test:watch": "npm test -- --watch",
+    "test:cover": "babel-node ./node_modules/isparta/bin/isparta cover ./node_modules/mocha/bin/_mocha -- --recursive",
+    "check:lib": "npm run lint && npm run test",
+    "build:lib": "babel src --out-dir lib",
+    "build": "npm run build:lib",
+    "prepublish": "npm run clean && npm run check:lib && npm run build"
+  },
+  "repository": {
+    "user": "jhorneman",
+    "repo": "choba-engine",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/jhorneman/choba-engine/tarball/master",
+    "clone_url": "https://github.com/jhorneman/choba-engine",
+    "https_url": "https://github.com/jhorneman/choba-engine",
+    "travis_url": "https://travis-ci.org/jhorneman/choba-engine",
+    "zip_url": "https://github.com/jhorneman/choba-engine/archive/master.zip",
+    "api_url": "https://api.github.com/repos/jhorneman/choba-engine"
+  },
+  "keywords": [
+    "interactive-fiction"
+  ],
+  "authors": [
+    "Jurie Horneman <jurie@jurie.org> (http://www.intelligent-artifice.com)"
+  ],
+  "license": "MIT",
+  "url": "https://github.com/jhorneman/choba-engine/blob/master/LICENSE",
+  "homepage": "https://github.com/jhorneman/choba-engine",
+  "devDependencies": {
+    "babel-cli": "^6.4.5",
+    "babel-core": "^6.4.0",
+    "babel-eslint": "^4.1.8",
+    "babel-loader": "^6.2.1",
+    "babel-preset-es2015": "^6.3.13",
+    "babel-preset-react": "^6.3.13",
+    "babel-register": "^6.4.3",
+    "eslint": "^1.10.3",
+    "eslint-plugin-react": "^3.16.1",
+    "expect": "^1.13.4",
+    "isparta": "^4.0.0",
+    "mocha": "^2.3.4",
+    "rimraf": "^2.5.1",
+    "webpack": "^1.12.11",
+    "webpack-dev-server": "^1.14.1"
+  },
+  "dependencies": {
+    "lodash": "^4.0.0",
+    "random-js": "^1.0.8"
+  },
+  "gitHead": "877ccf2aaebf0ab48aa20620886e801c3240b888",
+  "_npmVersion": "3.3.12",
+  "_nodeVersion": "5.3.0",
+  "dist": {
+    "shasum": "dd91adc37dc8b39b1c5b04040b24bf756637af1b",
+    "tarball": "http://registry.npmjs.org/choba-engine/-/choba-engine-0.0.4.tgz"
+  },
+  "stars": 1,
+  "versions": [
+    {
+      "number": "0.0.1",
+      "date": "2016-02-06T15:26:52.058Z"
+    },
+    {
+      "number": "0.0.2",
+      "date": "2016-02-08T11:31:57.040Z"
+    },
+    {
+      "number": "0.0.3",
+      "date": "2016-02-08T17:57:15.441Z"
+    },
+    {
+      "number": "0.0.4",
+      "date": "2016-02-09T09:58:28.190Z"
+    }
+  ],
+  "created": "2016-02-06T15:26:52.058Z",
+  "modified": "2016-02-09T09:58:28.190Z",
+  "lastPublisher": {
+    "name": "jhorneman",
+    "email": "jurie@jurie.org"
+  },
+  "owners": [
+    {
+      "name": "jhorneman",
+      "email": "jurie@jurie.org"
+    }
+  ],
+  "readme": "# Choba\n\nChoba (short for CHOice BAsed) is an experimental interactive storytelling engine written in JavaScript. It is intended to be used for choice-based interactive fiction (IF), and more.\n\n'Experimental' means:\n\n* Choba's inner workings are an experiment. Does it make sense to use something resembling a programming language inside a storytelling engine? Time will tell.\n\n* Choba is intended to be used for experiments in interactive storytelling. Social simulations, world models, procedural content generation: all of these things should hopefully be reasonably easy to add and integrate.\n\n* Choba is intended to be used for experiments in interactive storytelling *tools*. When I wrote my first game in 1991, we used lists of variables to track what the player had done, so we could react accordingly. Today, in 2016... we pretty much still do the same thing. Is it really not possible to do better after 25 years? Can we detect problems before they occur, visualize the game and its state in new ways, run automated tests, identify and reproduce problems, modify content without using state? Can we use analysis and visualization techniques from other domains? (Specifically programming, and that's one reason why Choba internally works like a programming language.) With Choba, we can hopefully try new things and find out what works.\n\n* Choba is intended to be extensible to other game forms. Visual novels, hybrid formats, storytelling engines running inside other games, maybe even parser-based IF: hopefully, this is reasonably easy to do.\n\n* Choba is intended to be portable to many platforms and devices. It's written in JavaScript. It has extremely few external dependencies and doesn't manage its own state. This means it should be possible to port the engine to mobile (using React-Native) and desktop (using NW.js or Electron). It should also be reasonably easy to port the core engine to other languages.\n\n* The first version of Choba is not easy to use. It does not have a parser (!), or a standard way of handling input and output. In other words: out of the box, there is no easy way to either write or play games using Choba. It also does not include tools or easy ways to package games for distribution. It's an engine, not a game-making system. It is, in part, intended to be more useful to programmers than to game designers or writers. But at the same time it is hopefully the basis for a very powerful system for writing, distributing, and playing games.\n"
+}

@@ -1,0 +1,103 @@
+{
+  "name": "babel-jsxgettext",
+  "version": "0.2.0",
+  "description": "A tool like jsxgettext, but works for es6 + jsx that babel support",
+  "main": "index.js",
+  "scripts": {
+    "test": "standard"
+  },
+  "repository": {
+    "user": "fraserxu",
+    "repo": "babel-jsxgettext",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/fraserxu/babel-jsxgettext/tarball/master",
+    "clone_url": "https://github.com/fraserxu/babel-jsxgettext",
+    "https_url": "https://github.com/fraserxu/babel-jsxgettext",
+    "travis_url": "https://travis-ci.org/fraserxu/babel-jsxgettext",
+    "zip_url": "https://github.com/fraserxu/babel-jsxgettext/archive/master.zip",
+    "api_url": "https://api.github.com/repos/fraserxu/babel-jsxgettext"
+  },
+  "keywords": [
+    "i18n",
+    "internationalization",
+    "gettext",
+    "jsxgettext",
+    "babel",
+    "jsx",
+    "es6",
+    "es7"
+  ],
+  "bin": {
+    "babel-jsxgettext": "./bin/cli.js"
+  },
+  "standard": {
+    "parser": "babel-eslint"
+  },
+  "author": {
+    "name": "Fraser Xu"
+  },
+  "license": "MIT",
+  "homepage": "https://github.com/fraserxu/babel-jsxgettext#readme",
+  "dependencies": {
+    "acorn": "^2.4.0",
+    "babylon": "^5.8.23",
+    "gettext-parser": "^1.1.1",
+    "meow": "^3.3.0"
+  },
+  "devDependencies": {
+    "babel-eslint": "^4.1.3",
+    "standard": "^5.3.1"
+  },
+  "gitHead": "df09a5f11db83cc35ed9e9e815d753ff6ae3ceee",
+  "_npmVersion": "3.7.2",
+  "_nodeVersion": "4.2.3",
+  "dist": {
+    "shasum": "b3a9c71a11ec50fa722aa705e7ddeacad2e2af06",
+    "tarball": "http://registry.npmjs.org/babel-jsxgettext/-/babel-jsxgettext-0.2.0.tgz"
+  },
+  "versions": [
+    {
+      "number": "0.0.1",
+      "date": "2015-09-25T04:00:36.098Z"
+    },
+    {
+      "number": "0.0.2",
+      "date": "2015-09-25T04:30:56.621Z"
+    },
+    {
+      "number": "0.0.3",
+      "date": "2015-09-25T05:38:27.485Z"
+    },
+    {
+      "number": "0.1.0",
+      "date": "2015-09-25T08:13:49.437Z"
+    },
+    {
+      "number": "0.1.1",
+      "date": "2015-09-25T08:47:14.545Z"
+    },
+    {
+      "number": "0.1.2",
+      "date": "2016-02-02T12:12:19.253Z"
+    },
+    {
+      "number": "0.2.0",
+      "date": "2016-03-11T22:09:34.427Z"
+    }
+  ],
+  "created": "2015-09-25T04:00:36.098Z",
+  "modified": "2016-03-11T22:09:34.427Z",
+  "lastPublisher": {
+    "name": "fraserxu",
+    "email": "xvfeng123@gmail.com"
+  },
+  "owners": [
+    {
+      "name": "fraserxu",
+      "email": "xvfeng123@gmail.com"
+    }
+  ],
+  "readme": "babel-jsxgettext\n================\n\n[![NPM version][npm-image]][npm-url]\n[![build status][travis-image]][travis-url]\n[![Downloads][downloads-image]][downloads-url]\n[![js-standard-style][standard-image]][standard-url]\n\nA tool like [jsxgettext](https://www.npmjs.com/package/jsxgettext), but works for `es6` + `jsx` that babel support.\n\nI have a blog post explain my translation workflow in an [Electron app with React + Babel](https://fraserxu.me/2015/09/18/translation-workflow-in-Electron-application/).\n\n### Usage\n\n```\n$ npm install babel-jsxgettext --save-dev\n```\n\n### API\n\n```JavaScript\nvar parser = require('babel-jsxgettext')\n\n/**\n * The parser function\n * @param  {String}   input  The path to source JavaScript file\n * @param  {String}   output The path of the output PO file\n * @param  {Function} cb     The callback function\n */\nparser(inputs, output, function (err) {\n  if (err) throw err\n  console.log('Job completed!')\n})\n```\n\n### Command line usage\n\nInstall globally with npm `npm install babel-jsxgettext -g`\n\n```\n  A tool like jsxgettext, but works for es6 + jsx that babel support\n\n  Options\n    --help                     Show this help\n    --version                  Current version of package\n    -i | --input               String - The path to soure JavaScript file\n    -o | --output              String - The path of the output PO file\n\n  Usage\n    $ babel-jsxgettext --help\n    $ babel-jsxgettext <input> <output>\n\n  Examples\n    $ babel-jsxgettext ./test/*.js ./test.po\n```\n\n\n### Why\n\nI'm Using Babel with React + JSX for most of my project, but there's no perfect and direct way to generate `.po` file from ES6 + JSX code(or from a directory).\n\n`acron-jsx` support `jsx` but not all the feature I use in Babel(ES7 etc.,). So I grab the `babylon` parser from Babel and use it to generate `.po` file.\n\n### License\nMIT\n\n[npm-image]: https://img.shields.io/npm/v/babel-jsxgettext.svg?style=flat-square\n[npm-url]: https://npmjs.org/package/babel-jsxgettext\n[travis-image]: https://img.shields.io/travis/fraserxu/babel-jsxgettext/master.svg?style=flat-square\n[travis-url]: https://travis-ci.org/fraserxu/babel-jsxgettext\n[downloads-image]: http://img.shields.io/npm/dm/babel-jsxgettext.svg?style=flat-square\n[downloads-url]: https://npmjs.org/package/babel-jsxgettext\n[standard-image]: https://img.shields.io/badge/code%20style-standard-brightgreen.svg?style=flat-square\n[standard-url]: https://github.com/feross/standard\n"
+}

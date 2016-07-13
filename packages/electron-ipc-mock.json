@@ -9,16 +9,22 @@
     "prepublish": "npm run build"
   },
   "repository": {
-    "type": "git",
-    "url": "git+https://github.com/jsantell/electron-ipc-mock.git"
+    "user": "jsantell",
+    "repo": "electron-ipc-mock",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/jsantell/electron-ipc-mock/tarball/master",
+    "clone_url": "https://github.com/jsantell/electron-ipc-mock",
+    "https_url": "https://github.com/jsantell/electron-ipc-mock",
+    "travis_url": "https://travis-ci.org/jsantell/electron-ipc-mock",
+    "zip_url": "https://github.com/jsantell/electron-ipc-mock/archive/master.zip",
+    "api_url": "https://api.github.com/repos/jsantell/electron-ipc-mock"
   },
   "author": {
     "name": "Jordan Santell`"
   },
   "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/jsantell/electron-ipc-mock/issues"
-  },
   "homepage": "https://github.com/jsantell/electron-ipc-mock",
   "dependencies": {},
   "keywords": [
@@ -34,28 +40,33 @@
     "mocha": "^2.4.5"
   },
   "gitHead": "35965fb7fafa57ecd8f53143de4ba73c65963fb0",
-  "_id": "electron-ipc-mock@0.0.2",
-  "_shasum": "a68ebf057392e93c8d3e95044737c6dd8d42bcab",
-  "_from": ".",
   "_npmVersion": "3.8.9",
   "_nodeVersion": "6.2.0",
-  "_npmUser": {
-    "name": "jsantell",
-    "email": "jsantell@gmail.com"
-  },
   "dist": {
     "shasum": "a68ebf057392e93c8d3e95044737c6dd8d42bcab",
     "tarball": "http://registry.npmjs.org/electron-ipc-mock/-/electron-ipc-mock-0.0.2.tgz"
   },
-  "maintainers": [
+  "versions": [
+    {
+      "number": "0.0.1",
+      "date": "2016-04-20T22:33:20.703Z"
+    },
+    {
+      "number": "0.0.2",
+      "date": "2016-05-26T00:00:00.990Z"
+    }
+  ],
+  "created": "2016-04-20T22:33:20.703Z",
+  "modified": "2016-05-26T00:00:00.990Z",
+  "lastPublisher": {
+    "name": "jsantell",
+    "email": "jsantell@gmail.com"
+  },
+  "owners": [
     {
       "name": "jsantell",
       "email": "jsantell@gmail.com"
     }
   ],
-  "_npmOperationalInternal": {
-    "host": "packages-12-west.internal.npmjs.com",
-    "tmp": "tmp/electron-ipc-mock-0.0.2.tgz_1464220798592_0.3509497460909188"
-  },
-  "directories": {}
+  "readme": "electron-ipc-mock\n=======\n\n[![Build Status](http://img.shields.io/travis/jsantell/electron-ipc-mock.svg?style=flat-square)](https://travis-ci.org/jsantell/electron-ipc-mock)\n[![Build Status](http://img.shields.io/npm/v/electron-ipc-mock.svg?style=flat-square)](https://www.npmjs.org/package/electron-ipc-mock)\n\nMock Communication for Electron's IPC\n\nAn API mimicking [Electron's](http://electron.atom.io/docs/latest/api/ipc-renderer/) [ipcMain](http://electron.atom.io/docs/latest/api/ipc-main/) and [ipcRenderer](http://electron.atom.io/docs/latest/api/ipc-renderer/). Swap out electron calls in your code in tests to access both mock renderer and main process IPC communication calls.\n\n## Install\n\n```\nnpm install electron-ipc-mock\n```\n\n## Usage\n\n```js\nconst { ipcRenderer, ipcMain } = require('electron-ipc-mock')();\n\nipcMain.on('request', function (e, ...args) {\n  console.log(args[0]); // 'hello'\n  e.sender.send('response', 'world');\n});\n\nipcRenderer.on('response', function (e, ...args) {\n  console.log(args[0]); // 'world'\n});\n\nipcRenderer.send('request', 'hello')\n```\n\n## Testing\n\n```\nnpm test\n```\n\n## License\n\nMIT License, Copyright (c) 2016 Jordan Santell\n"
 }

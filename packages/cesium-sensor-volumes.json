@@ -5,8 +5,17 @@
   "homepage": "https://cesiumjs.org",
   "license": "Apache-2.0",
   "repository": {
-    "type": "git",
-    "url": "git+https://github.com/jlouns/cesium-sensor-volumes.git"
+    "user": "jlouns",
+    "repo": "cesium-sensor-volumes",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/jlouns/cesium-sensor-volumes/tarball/master",
+    "clone_url": "https://github.com/jlouns/cesium-sensor-volumes",
+    "https_url": "https://github.com/jlouns/cesium-sensor-volumes",
+    "travis_url": "https://travis-ci.org/jlouns/cesium-sensor-volumes",
+    "zip_url": "https://github.com/jlouns/cesium-sensor-volumes/archive/master.zip",
+    "api_url": "https://api.github.com/repos/jlouns/cesium-sensor-volumes"
   },
   "keywords": [
     "cesium"
@@ -69,31 +78,49 @@
     }
   },
   "gitHead": "5873775553838fcdf63ad28946bf3fb3da49b876",
-  "bugs": {
-    "url": "https://github.com/jlouns/cesium-sensor-volumes/issues"
-  },
-  "_id": "cesium-sensor-volumes@1.20.0",
-  "_shasum": "b4ed6a52b875c3e6db52768ed503feacdd2baeb0",
-  "_from": ".",
   "_npmVersion": "2.15.1",
   "_nodeVersion": "4.4.3",
-  "_npmUser": {
-    "name": "jlouns",
-    "email": "jlouns@gmail.com"
-  },
   "dist": {
     "shasum": "b4ed6a52b875c3e6db52768ed503feacdd2baeb0",
     "tarball": "http://registry.npmjs.org/cesium-sensor-volumes/-/cesium-sensor-volumes-1.20.0.tgz"
   },
-  "maintainers": [
+  "versions": [
+    {
+      "number": "1.16.0",
+      "date": "2016-04-24T17:28:36.698Z"
+    },
+    {
+      "number": "1.16.1",
+      "date": "2016-04-24T17:48:41.251Z"
+    },
+    {
+      "number": "1.17.0",
+      "date": "2016-04-24T18:04:40.893Z"
+    },
+    {
+      "number": "1.18.0",
+      "date": "2016-04-24T18:17:10.292Z"
+    },
+    {
+      "number": "1.19.0",
+      "date": "2016-04-24T18:22:39.126Z"
+    },
+    {
+      "number": "1.20.0",
+      "date": "2016-04-24T18:31:15.270Z"
+    }
+  ],
+  "created": "2016-04-24T17:28:36.698Z",
+  "modified": "2016-04-24T18:31:15.270Z",
+  "lastPublisher": {
+    "name": "jlouns",
+    "email": "jlouns@gmail.com"
+  },
+  "owners": [
     {
       "name": "jlouns",
       "email": "jlouns@gmail.com"
     }
   ],
-  "_npmOperationalInternal": {
-    "host": "packages-16-east.internal.npmjs.com",
-    "tmp": "tmp/cesium-sensor-volumes-1.20.0.tgz_1461522673406_0.39835229283198714"
-  },
-  "directories": {}
+  "readme": "# [cesium](https://cesiumjs.org)-sensor-volumes\n[![Build Status](https://travis-ci.org/jlouns/cesium-sensor-volumes.svg?branch=master)](https://travis-ci.org/jlouns/cesium-sensor-volumes)&nbsp;\n[![npm version](https://badge.fury.io/js/cesium-sensor-volumes.svg)](https://badge.fury.io/js/cesium-sensor-volumes)\n[![Dependency Status](https://david-dm.org/jlouns/cesium-sensor-volumes.svg)](https://david-dm.org/jlouns/cesium-sensor-volumes)\n[![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](http://www.apache.org/licenses/LICENSE-2.0.html)\n\nA Cesium plugin for visualizing sensor volumes. Based on [cesium-sensors](https://github.com/AnalyticalGraphicsInc/cesium-sensors) and evolved to support more recent Cesium versions.\n\n## Install\n\n```sh\n$ npm install --save cesium-sensor-volumes\n```\n\n## Usage\n\nPrebuilt minified and unminified versions of the plugin are in the [dist](dist/) directory.  Include the `cesium-sensor-volumes.js` file using a `script` tag after the `Cesium.js` `script` tag.\n\nThe plugin automatically adds support for the CZML properties `agi_conicSensor`, `agi_customPatternSensor`, and `agi_rectangularSensor`.  The corresponding `Entity` properties are `conicSensor`, `customPatternSensor`, and `rectangularSensor`.\n\nIn order to load data directly into `Entity` objects that you create directly, you must call `entity.addProperty` to create each of the sensor properties you wish to use.  The CZML processing does this automatically.\n\n```html\n<script src=\"path/to/Cesium.js\"></script>\n<script src=\"path/to/cesium-sensor-volumes.js\"></script>\n<script>\n// To create an entity directly\nvar entityCollection = new Cesium.EntityCollection();\n\nvar entity = entityCollection.getOrCreateEntity('test');\nentity.addProperty('conicSensor');\n\n// configure other entity properties, e.g. position and orientation...\n\nentity.conicSensor = new CesiumSensorVolumes.ConicSensorGraphics();\nentity.conicSensor.intersectionColor = new Cesium.ConstantProperty(new Cesium.Color(0.1, 0.2, 0.3, 0.4));\n</script>\n```\n\n### Examples\n\nSimple examples are included in the [examples](examples/) folder.  To run locally, run `npm start` and navigate to [http://localhost:3000](http://localhost:3000) and select the example application to run.\n\n## Build\n\nTo build, run `npm install`, then run `npm run build`.\n\n## License\n\nApache 2.0.  Free for commercial and non-commercial use.  See [LICENSE.md](LICENSE.md).\n"
 }

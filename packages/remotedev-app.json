@@ -1,6 +1,6 @@
 {
   "name": "remotedev-app",
-  "version": "0.4.2",
+  "version": "0.5.0-alpha-2",
   "description": "Remote Redux DevTools web, electron and chrome app.",
   "scripts": {
     "start": "gulp",
@@ -14,8 +14,9 @@
     "compress:app": "npm run build:app && gulp compress:app",
     "clean": "rm -rf build/ && rm -rf dev/",
     "build": "rm -rf ./lib && babel ./src/app --out-dir lib",
-    "prepublish": "eslint ./src/app && npm run build && npm run build:umd && npm run build:umd:min",
-    "lint": "eslint ."
+    "prepublish": "eslint ./src/app && npm run test && npm run build && npm run build:umd && npm run build:umd:min",
+    "lint": "eslint .",
+    "test": "BABEL_ENV=test mocha --require test/setup.js --recursive test"
   },
   "main": "lib/index.js",
   "files": [
@@ -23,8 +24,17 @@
     "dist"
   ],
   "repository": {
-    "type": "git",
-    "url": "https://github.com/zalmoxisus/remotedev-app"
+    "user": "zalmoxisus",
+    "repo": "remotedev-app",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/zalmoxisus/remotedev-app/tarball/master",
+    "clone_url": "https://github.com/zalmoxisus/remotedev-app",
+    "https_url": "https://github.com/zalmoxisus/remotedev-app",
+    "travis_url": "https://travis-ci.org/zalmoxisus/remotedev-app",
+    "zip_url": "https://github.com/zalmoxisus/remotedev-app/archive/master.zip",
+    "api_url": "https://api.github.com/repos/zalmoxisus/remotedev-app"
   },
   "homepage": "https://github.com/zalmoxisus/remotedev-app",
   "keywords": [
@@ -61,14 +71,16 @@
     "eslint": "^1.10.3",
     "eslint-config-airbnb": "^2.1.1",
     "eslint-plugin-react": "^3.11.3",
-    "expect": "^1.13.3",
+    "expect": "^1.20.2",
     "gulp": "^3.9.1",
     "gulp-jade": "1.1.0",
     "gulp-mocha": "^2.2.0",
     "gulp-rename": "^1.2.2",
     "gulp-util": "^3.0.7",
     "gulp-zip": "^3.0.2",
+    "jsdom": "^9.3.0",
     "mocha": "^2.3.4",
+    "mock-local-storage": "^1.0.2",
     "raw-loader": "^0.5.1",
     "react-addons-test-utils": "^15.0.2",
     "react-transform-catch-errors": "^1.0.0",
@@ -84,9 +96,10 @@
     "webpack-hot-middleware": "^2.10.0"
   },
   "dependencies": {
-    "chrome-storage-local": "^0.1.5",
+    "chrome-storage-local": "^0.1.6",
+    "codemirror": "^5.16.0",
     "jsan": "^3.1.2",
-    "material-ui": "^0.15.0",
+    "material-ui": "^0.15.1",
     "react": "^15.1.0",
     "react-addons-shallow-compare": "^15.1.0",
     "react-dom": "^15.1.0",
@@ -100,37 +113,164 @@
     "redux-devtools-dispatch": "^2.2.0",
     "redux-devtools-inspector": "^0.6.1",
     "redux-devtools-log-monitor": "^1.0.11",
+    "redux-devtools-test-generator": "0.0.6",
     "redux-devtools-themes": "^1.0.0",
-    "redux-slider-monitor": "^1.0.5",
+    "redux-slider-monitor": "^1.0.6",
     "redux-thunk": "^1.0.3",
     "socketcluster-client": "^4.3.17"
   },
-  "gitHead": "785f5912febf0c777c568ebf0c509f0cc7073fd1",
-  "bugs": {
-    "url": "https://github.com/zalmoxisus/remotedev-app/issues"
-  },
-  "_id": "remotedev-app@0.4.2",
-  "_shasum": "834779e468f9882e115d0b5b2e73bb06515d5221",
-  "_from": ".",
+  "gitHead": "446a7cbb8b94af3d2865d2e739cd0daf399e629f",
   "_npmVersion": "3.7.3",
   "_nodeVersion": "5.8.0",
-  "_npmUser": {
+  "dist": {
+    "shasum": "278d9f2c00b8f8a3c4cc504dfd4e784770663896",
+    "tarball": "http://registry.npmjs.org/remotedev-app/-/remotedev-app-0.5.0-alpha-2.tgz"
+  },
+  "versions": [
+    {
+      "number": "0.0.1",
+      "date": "2016-01-10T09:59:15.003Z"
+    },
+    {
+      "number": "0.0.2",
+      "date": "2016-01-10T10:38:01.256Z"
+    },
+    {
+      "number": "0.0.3",
+      "date": "2016-01-10T11:01:44.892Z"
+    },
+    {
+      "number": "0.1.0-beta-1",
+      "date": "2016-01-13T17:51:07.079Z"
+    },
+    {
+      "number": "0.1.0",
+      "date": "2016-01-13T18:01:38.573Z"
+    },
+    {
+      "number": "0.1.1",
+      "date": "2016-01-14T15:14:59.376Z"
+    },
+    {
+      "number": "0.1.2",
+      "date": "2016-01-16T16:52:58.068Z"
+    },
+    {
+      "number": "0.2.0",
+      "date": "2016-01-20T11:27:51.204Z"
+    },
+    {
+      "number": "0.2.1",
+      "date": "2016-01-24T09:09:42.198Z"
+    },
+    {
+      "number": "0.2.2",
+      "date": "2016-01-27T11:56:42.152Z"
+    },
+    {
+      "number": "0.2.3",
+      "date": "2016-01-28T09:00:54.931Z"
+    },
+    {
+      "number": "0.2.4",
+      "date": "2016-01-31T17:08:37.006Z"
+    },
+    {
+      "number": "0.2.5",
+      "date": "2016-02-01T13:38:21.945Z"
+    },
+    {
+      "number": "0.2.6",
+      "date": "2016-02-03T18:31:24.561Z"
+    },
+    {
+      "number": "0.2.7",
+      "date": "2016-02-07T20:22:17.948Z"
+    },
+    {
+      "number": "0.2.8",
+      "date": "2016-02-09T18:10:16.497Z"
+    },
+    {
+      "number": "0.2.9",
+      "date": "2016-03-31T18:35:07.911Z"
+    },
+    {
+      "number": "0.3.0",
+      "date": "2016-04-07T10:18:14.177Z"
+    },
+    {
+      "number": "0.3.1",
+      "date": "2016-04-12T09:40:41.534Z"
+    },
+    {
+      "number": "0.3.2",
+      "date": "2016-04-12T19:07:12.070Z"
+    },
+    {
+      "number": "0.3.3",
+      "date": "2016-04-19T09:35:50.036Z"
+    },
+    {
+      "number": "0.3.4",
+      "date": "2016-04-20T18:52:44.677Z"
+    },
+    {
+      "number": "0.3.5",
+      "date": "2016-04-22T08:22:59.640Z"
+    },
+    {
+      "number": "0.3.6",
+      "date": "2016-04-23T14:37:24.091Z"
+    },
+    {
+      "number": "0.3.7",
+      "date": "2016-05-02T15:17:08.992Z"
+    },
+    {
+      "number": "0.3.8",
+      "date": "2016-05-03T19:05:45.937Z"
+    },
+    {
+      "number": "0.4.0-alpha-1",
+      "date": "2016-05-14T14:40:31.562Z"
+    },
+    {
+      "number": "0.4.0-alpha-2",
+      "date": "2016-05-14T15:43:37.297Z"
+    },
+    {
+      "number": "0.4.0",
+      "date": "2016-05-15T15:12:04.772Z"
+    },
+    {
+      "number": "0.4.1",
+      "date": "2016-05-22T10:28:13.132Z"
+    },
+    {
+      "number": "0.4.2",
+      "date": "2016-06-20T08:20:47.805Z"
+    },
+    {
+      "number": "0.5.0-alpha-1",
+      "date": "2016-06-30T09:05:21.805Z"
+    },
+    {
+      "number": "0.5.0-alpha-2",
+      "date": "2016-06-30T09:35:37.330Z"
+    }
+  ],
+  "created": "2016-01-10T09:59:15.003Z",
+  "modified": "2016-06-30T09:35:37.330Z",
+  "lastPublisher": {
     "name": "zalmoxisus",
     "email": "zalmoxisus@gmail.com"
   },
-  "dist": {
-    "shasum": "834779e468f9882e115d0b5b2e73bb06515d5221",
-    "tarball": "http://registry.npmjs.org/remotedev-app/-/remotedev-app-0.4.2.tgz"
-  },
-  "maintainers": [
+  "owners": [
     {
       "name": "zalmoxisus",
       "email": "zalmoxisus@gmail.com"
     }
   ],
-  "_npmOperationalInternal": {
-    "host": "packages-12-west.internal.npmjs.com",
-    "tmp": "tmp/remotedev-app-0.4.2.tgz_1466410844435_0.9273519427515566"
-  },
-  "directories": {}
+  "readme": "Remote Redux DevTools monitor app\n==================================\n\n![Demo](https://raw.githubusercontent.com/zalmoxisus/remote-redux-devtools/master/demo.gif)\n\nWeb, Electron and Chrome app for monitoring [remote-redux-devtools](https://github.com/zalmoxisus/remote-redux-devtools). Uses [browser-redux boilerplate](https://github.com/zalmoxisus/browser-redux).\n\n### License\n\nMIT\n"
 }

@@ -24,28 +24,45 @@
     "path": "^0.12.7"
   },
   "gitHead": "0f1b986f6af96ef0967a7fb2fe9dc07ef7aecc30",
-  "_id": "electron-data@1.2.0",
-  "_shasum": "d0c06d7d76527e1328d93d23f96d8d05d632ad81",
-  "_from": ".",
   "_npmVersion": "3.9.6",
   "_nodeVersion": "6.2.1",
-  "_npmUser": {
-    "name": "sydev",
-    "email": "dominik.winter92@gmail.com"
-  },
   "dist": {
     "shasum": "d0c06d7d76527e1328d93d23f96d8d05d632ad81",
     "tarball": "http://registry.npmjs.org/electron-data/-/electron-data-1.2.0.tgz"
   },
-  "maintainers": [
+  "versions": [
+    {
+      "number": "0.1.0",
+      "date": "2016-03-23T22:49:57.741Z"
+    },
+    {
+      "number": "1.0.0",
+      "date": "2016-03-23T22:50:42.330Z"
+    },
+    {
+      "number": "1.1.0",
+      "date": "2016-04-08T22:58:28.539Z"
+    },
+    {
+      "number": "1.1.1",
+      "date": "2016-04-20T16:55:24.306Z"
+    },
+    {
+      "number": "1.2.0",
+      "date": "2016-06-14T09:18:57.282Z"
+    }
+  ],
+  "created": "2016-03-23T22:49:57.741Z",
+  "modified": "2016-06-14T09:18:57.282Z",
+  "lastPublisher": {
+    "name": "sydev",
+    "email": "dominik.winter92@gmail.com"
+  },
+  "owners": [
     {
       "name": "sydev",
       "email": "dominik.winter92@gmail.com"
     }
   ],
-  "_npmOperationalInternal": {
-    "host": "packages-16-east.internal.npmjs.com",
-    "tmp": "tmp/electron-data-1.2.0.tgz_1465895934332_0.677232283866033"
-  },
-  "directories": {}
+  "readme": "# electron-data\n\nAn easy way to save data, settings or anything else as JSON file in an\napplication folder, using a simple localStorage-like API.\n\nPrimary developed to work with [Electron](https://github.com/atom/electron),\nbut also works in any node application.\n\n## Table of Contents\n- [Installation](#installation)\n- [Usage](#usage)\n-\t[API](#api)\n- [Development](#development)\n-\t[Release Notes](#release-notes)\n\n## Installation\n\n```\nnpm install --save electron-data\n```\n\nThat´s all. You´re done. But wait...You want to use it, too?\n\n## Usage\n\nWith Electron:\n```JavaScript\nvar app = require('electron').app;\nvar ElectronData = require('electron-data');\n\nvar settings = new ElectronData({\n  path: app.getPath('userData'),\n  filename: 'settings'\n});\n```\n\nWithout Electron:\n```JavaScript\nvar ElectronData = require('electron-data');\n\nvar settings = new ElectronData({\n  path: 'path/to/whatever/you/want',\n  filename: 'settings'\n});\n```\n\nWhen using ```electron-data``` without [Electron](https://github.com/atom/electron), the file will be automatically created in your home directory like that: ```/path/to/whatever/you/want/settings.json```.\n\nNow you can do some magic with the ```settings``` variable. How? I will tell you now.\n\n## API\n\n### Methods\n\n##### ```new ElectronData(options)```\nReturns a new ElectronData instance.\n- ```options``` Object (optional)\n    - ```filename``` String - Name for the file that will be stored and used. Default is ```data```\n    - ```path``` String - **When using [Electron](https://github.com/atom/electron), use ```app.getPath('userData')``` as value.** Absolute path to your application directory. Will be created if not already exists. Default is ```home-dir-of-os/.electron-app/```\n    - ```autosave``` Boolean - If ```true```, the file will be updated on every file change. Default is ```false```\n    - ```prettysave``` Boolean - If ```true```, the content of the file will be in a human readable format. Default is ```false```\n    - ```lastUpdate``` Boolean - If \"true\", a property is set, which contains the last update datetime.\n\n##### ```ElectronData.getOptions()```\nReturns the options as object.\n\n\n##### ```ElectronData.has(key)```\nChecks if the data file has a property named ```key```. Returns boolean.\n- ```key``` String - Property name\n\n\n##### ```ElectronData.get(key)```\nIf key is given and the data file has an property named ```key```, returns the value of given ```key```. Else returns all data.\n- ```key``` String (optional) - Property name\n\n\n##### ```ElectronData.set(key, value)```\nSets the given ```value``` to the given ```key``` in the data file. If one of both is missing, returns false.\n- ```key``` String - Property name\n- ```value``` ? - Property value. Can be any JSON conform data.\n\n\n##### ```ElectronData.unset(key)```\nUnsets the property named ```key```.\n- ```key``` String - Property name\n\n\n##### ```ElectronData.clear()```\nClears all data. Be careful, the data can´t be restored.\n\n\n##### ```ElectronData.save(callback)```\nSaves the data to the specified file.\n- ```callback``` Function - callback function\n\n\n# Development\n\nRun test:\n```\nnpm test\n```\n\n\n## Release Notes\n- ```1.2```\n  - removed ```Object.observe``` polyfill and added an elegant Proxy solution.\n  - added ```lastUpdate``` option. Read [Usage](#usage) for further informations.\n- ```1.1.1```\n  - added ```Object.observe``` polyfill, because it will be removed in future V8 releases\n- ```1.1```\n  - removed ```dirname``` from constructor options\n  - added ```autosave```\n  - added ```prettysave```\n  - added callback to ```save``` function\n- ```1.0``` - Initial release\n"
 }

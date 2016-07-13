@@ -1,0 +1,63 @@
+{
+  "name": "windows-shortcut-vbs",
+  "version": "0.5.3",
+  "description": "Creates Windows shortcuts using CScript.exe and temporary VBS files",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "user": "bsharper",
+    "repo": "windows-shortcut-vbs",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/bsharper/windows-shortcut-vbs/tarball/master",
+    "clone_url": "https://github.com/bsharper/windows-shortcut-vbs",
+    "https_url": "https://github.com/bsharper/windows-shortcut-vbs",
+    "travis_url": "https://travis-ci.org/bsharper/windows-shortcut-vbs",
+    "zip_url": "https://github.com/bsharper/windows-shortcut-vbs/archive/master.zip",
+    "api_url": "https://api.github.com/repos/bsharper/windows-shortcut-vbs"
+  },
+  "author": {
+    "name": "Brian Harper",
+    "email": "bharper@gmail.com",
+    "url": "https://github.com/bsharper/"
+  },
+  "license": "ISC",
+  "gitHead": "5f1724a7453da587321d717d627a9a0ecd40bd90",
+  "homepage": "https://github.com/bsharper/windows-shortcut-vbs#readme",
+  "_npmVersion": "3.7.3",
+  "_nodeVersion": "5.9.1",
+  "dist": {
+    "shasum": "835651d2aaa05595d81d234ff0da87c3431494ee",
+    "tarball": "http://registry.npmjs.org/windows-shortcut-vbs/-/windows-shortcut-vbs-0.5.3.tgz"
+  },
+  "versions": [
+    {
+      "number": "0.5.1",
+      "date": "2016-03-31T06:13:25.339Z"
+    },
+    {
+      "number": "0.5.2",
+      "date": "2016-03-31T06:20:05.422Z"
+    },
+    {
+      "number": "0.5.3",
+      "date": "2016-04-02T19:54:24.197Z"
+    }
+  ],
+  "created": "2016-03-31T06:13:25.339Z",
+  "modified": "2016-04-02T19:54:24.197Z",
+  "lastPublisher": {
+    "name": "bharper",
+    "email": "bharper+npm@gmail.com"
+  },
+  "owners": [
+    {
+      "name": "bharper",
+      "email": "bharper+npm@gmail.com"
+    }
+  ],
+  "readme": "# windows-shortcut-vbs\nThis is a really simple package to create Windows shortcuts. It uses VBScript snippets from [this comment from user jorangreef](https://github.com/atom/electron/issues/4414#issuecomment-181281228) to generate a .lnk shortcut. There is no native code, and the only hard dependency is [tmp](https://www.npmjs.com/package/tmp). I am using [prettyjson](https://www.npmjs.com/package/prettyjson) for nice trace output, but that could be removed pretty easily.\n\nScripts are created as needed as temporary files and removed after execution.\n\n### Seriously VBScripts, why?\nI tried it and it worked. It may not work in all situations for a variety of reasons, like your anti-virus not being too happy about running VBScripts. The appeal for me is that there is nothing to compile, and the only external program it calls (cscript) exists by default on most Windows systems.\n\n### How do I use it?\nHere are the exposed functions:\n\n    createDesktopShortcut(exePath, shortcutName, cb)\n    createShortcutInSpecialFolder(specialFolderName, exePath, shortcutName, cb)\n    getSpecialFolder(name, cb)\n\nAll exposed functions return a Promise AND take a callback, use whichever method you want to continue code execution. The callback gets (error, fullShortcutPath).\n\n## Usage\n```js\n\nvar ws_vbs = require('windows-shortcut-vbs');\n// uncomment line below to see lots of trace information\n// ws_vbs.enableTrace(true);\n\n// Creating shortcut to calc.exe using Promises\nws_vbs.createDesktopShortcut('c:\\\\Windows\\\\System32\\\\calc.exe', 'Super Duper Mathematical Adding Machine').then( (shortcutPath) => {\n  console.log(`Shortcut path: ${shortcutPath}`);\n}).catch( (err) => {\n  console.log(err);\n});\n\n// Same as above but using a callback\nws_vbs.createDesktopShortcut('c:\\\\Windows\\\\System32\\\\calc.exe', 'Super Duper Mathematical Adding Machine 2', (err, sp) => {\n  if (err) return console.log(err);\n  console.log('Shortcut path: ' + sp);\n});\n\n```\n"
+}

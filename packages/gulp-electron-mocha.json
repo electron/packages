@@ -1,6 +1,6 @@
 {
   "name": "gulp-electron-mocha",
-  "version": "1.2.1",
+  "version": "1.2.3",
   "description": "Gulp plugin to run Mocha tests in Electron",
   "author": {
     "name": "nodaguti"
@@ -8,9 +8,22 @@
   "license": "MIT",
   "main": "./lib/index.js",
   "repository": {
-    "type": "git",
-    "url": "git+https://github.com/nodaguti/gulp-electron-mocha.git"
+    "user": "nodaguti",
+    "repo": "gulp-electron-mocha",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/nodaguti/gulp-electron-mocha/tarball/master",
+    "clone_url": "https://github.com/nodaguti/gulp-electron-mocha",
+    "https_url": "https://github.com/nodaguti/gulp-electron-mocha",
+    "travis_url": "https://travis-ci.org/nodaguti/gulp-electron-mocha",
+    "zip_url": "https://github.com/nodaguti/gulp-electron-mocha/archive/master.zip",
+    "api_url": "https://api.github.com/repos/nodaguti/gulp-electron-mocha"
   },
+  "files": [
+    "src/",
+    "lib/"
+  ],
   "scripts": {
     "build": "npm-run-all clean babel",
     "babel": "babel src --out-dir lib --source-maps",
@@ -19,7 +32,7 @@
     "test": "npm-run-all lint test:unit test:electronMocha",
     "lint": "eslint src test",
     "test:unit": "mocha test/unit",
-    "test:electronMocha": "mocha test/electronMocha/test.js --timeout 12000"
+    "test:electronMocha": "mocha test/electronMocha/test.js"
   },
   "keywords": [
     "gulpplugin",
@@ -42,7 +55,7 @@
     "babel-plugin-async-to-promises": "^1.0.5",
     "babel-plugin-espower": "^2.2.0",
     "babel-preset-es2015": "^6.9.0",
-    "eslint": "^2.12.0",
+    "eslint": "^2.13.0",
     "eslint-config-airbnb": "^9.0.1",
     "eslint-plugin-import": "^1.8.1",
     "gulp": "^3.9.1",
@@ -50,33 +63,51 @@
     "power-assert": "^1.4.1",
     "rimraf": "^2.5.2"
   },
-  "gitHead": "fa7a8ad89fc9493b243b7930cf85e8633ab1dfee",
-  "bugs": {
-    "url": "https://github.com/nodaguti/gulp-electron-mocha/issues"
-  },
+  "gitHead": "bcb798be2ee0a94d52bc1a01e3118112111899a4",
   "homepage": "https://github.com/nodaguti/gulp-electron-mocha#readme",
-  "_id": "gulp-electron-mocha@1.2.1",
-  "_shasum": "910d702ce271a6f4e6cfb12d659e2eac9445b5dd",
-  "_from": ".",
   "_npmVersion": "3.9.3",
   "_nodeVersion": "6.2.1",
-  "_npmUser": {
+  "dist": {
+    "shasum": "fcdfc95f755b589b2f3b8a1380553341edd49ace",
+    "tarball": "http://registry.npmjs.org/gulp-electron-mocha/-/gulp-electron-mocha-1.2.3.tgz"
+  },
+  "versions": [
+    {
+      "number": "1.0.0",
+      "date": "2015-12-14T15:19:00.644Z"
+    },
+    {
+      "number": "1.1.0",
+      "date": "2015-12-16T15:52:53.595Z"
+    },
+    {
+      "number": "1.2.0",
+      "date": "2016-06-16T06:19:08.678Z"
+    },
+    {
+      "number": "1.2.1",
+      "date": "2016-06-16T06:37:58.599Z"
+    },
+    {
+      "number": "1.2.2",
+      "date": "2016-07-01T04:44:59.246Z"
+    },
+    {
+      "number": "1.2.3",
+      "date": "2016-07-01T04:49:15.132Z"
+    }
+  ],
+  "created": "2015-12-14T15:19:00.644Z",
+  "modified": "2016-07-01T04:49:15.132Z",
+  "lastPublisher": {
     "name": "nodaguti",
     "email": "nodaguti@gmail.com"
   },
-  "dist": {
-    "shasum": "910d702ce271a6f4e6cfb12d659e2eac9445b5dd",
-    "tarball": "http://registry.npmjs.org/gulp-electron-mocha/-/gulp-electron-mocha-1.2.1.tgz"
-  },
-  "maintainers": [
+  "owners": [
     {
       "name": "nodaguti",
       "email": "nodaguti@gmail.com"
     }
   ],
-  "_npmOperationalInternal": {
-    "host": "packages-12-west.internal.npmjs.com",
-    "tmp": "tmp/gulp-electron-mocha-1.2.1.tgz_1466059078213_0.5446502319537103"
-  },
-  "directories": {}
+  "readme": "# gulp-electron-mocha\n> Run client-side Mocha tests in Electron\n\n[![Build Status](https://travis-ci.org/nodaguti/gulp-electron-mocha.svg?branch=master)](https://travis-ci.org/nodaguti/gulp-electron-mocha)\n[![Build Status](https://ci.appveyor.com/api/projects/status/github/nodaguti/gulp-electron-mocha?svg=true)](https://ci.appveyor.com/project/nodaguti/gulp-electron-mocha)\n[![Dependency Status](https://david-dm.org/nodaguti/gulp-electron-mocha.svg)](https://david-dm.org/nodaguti/gulp-electron-mocha)\n[![devDependency Status](https://david-dm.org/nodaguti/gulp-electron-mocha/dev-status.svg)](https://david-dm.org/nodaguti/gulp-electron-mocha#info=devDependencies)\n\nThis is a simple wrapper for [electron-mocha](https://github.com/jprichardson/electron-mocha).\n\nThe implementations are mostly inspired by [gulp-mocha-phantomjs](https://github.com/mrhooray/gulp-mocha-phantomjs).\n\n\n## Installation\n\n```sh\nnpm install --save-dev gulp-electron-mocha\n```\n\nNote that you don't have to install either `electron-mocha` or `electron-prebuilt` globally (i.e. with `npm i -g`).\nAll dependencies are resolved automatically.\n\n\n## Basic Usage\n\n```javascript\nimport gulp from 'gulp';\nimport electronMocha from 'gulp-electron-mocha';\n\ngulp.task('test', () =>\n  gulp.src('./test', { read: false })\n    .pipe(electronMocha())\n);\n```\n\nPlease be aware that you should write `gulp.src('./test')`, not `gulp.src('./test/*.js')`,\nbecause `electron-mocha` requires a directory to test.\n\nYou can also find working tests in `test/` to learn how to make Gulp tasks and client-side Mocha tests with `gulp-electron-mocha`.\n\n\n## Passing additional options to electron-mocha\n\nThe `electronMocha` property of the optional argument to `electronMocha()`\nis passed to `electron-mocha`.\n\nPlease see [electron-mocha's docs](https://github.com/jprichardson/electron-mocha#run-tests)\nto learn what parameters are available.\n\n`gulp-electron-mocha` uses [object-to-spawn-args](https://github.com/75lb/object-to-spawn-args)\nto convert from JavaScript object to command-line argument string.\n\n```javascript\nimport gulp from 'gulp';\nimport electronMocha from 'gulp-electron-mocha';\n\ngulp.task('test', () =>\n  gulp.src('./test', { read: false })\n    .pipe(electronMocha({\n      electronMocha: {\n        renderer: true,\n        'no-timeout': true,\n      },\n    }))\n);\n```\n\n\n## Running ES6 tests\n\n`gulp-electron-mocha` can pass `--compilers` option to Mocha.\nSo just specify `babel-core/register` to `--compilers`.\n\n```javascript\ngulp.src('./test', { read: false })\n  .pipe(electronMocha({\n    electronMocha: {\n      renderer: true,\n      compilers: 'js:babel-core/register',\n      'no-timeout': true,\n    },\n  }))\n```\n\n\n## API\n\n### electronMocha([options])\n#### options\n\n- electronPath\n\n  | Type | Default |\n  |:----:|:----:|\n  | `string` | `undefined` |\n\n  A path to Electron in which tests are executed.\n  If not specified, `gulp-electron-mocha` uses Electron in `node_modules/` by default.\n\n- silent\n\n  | Type | Default |\n  |:----:|:----:|\n  | `bool` | `false` |\n\n  Don't throw an error even if one of the tests is failed.\n\n- suppressStdout\n\n  | Type | Default |\n  |:----:|:----:|\n  | `bool` | `false` |\n\n  Don't redirect electron-mocha's stdout to the console.\n\n- suppressStderr\n\n  | Type | Default |\n  |:----:|:----:|\n  | `bool` | `false` |\n\n  Don't redirect electron-mocha's stderr to the console.\n\n- electronMocha\n\n  | Type | Default |\n  |:----:|:----:|\n  | `Object` | `{}` |\n\n  Options to be passed to electron-mocha.\n  See [electron-mocha's docs](https://github.com/jprichardson/electron-mocha#run-tests)\n  for more details.\n\n  The value will be converted to command-line argument string with\n  [object-to-spawn-args](https://github.com/75lb/object-to-spawn-args).\n\n  For example, if you want to pass `--no-timeout --renderer -s 200 --compilers js:babel-core/register`,\n  specify:\n\n  ```javascript\n  electronMocha: {\n    'no-timeout': true,\n    renderer: true,\n    s: 200,\n    compilers: 'js:babel-core/register',\n  }\n  ```\n\n\n## Events\n\nThis plugin emits events named `electronMochaStdoutData`, `electronMochaStdoutEnd`, `electronMochaStderrData`,\n`electronMochaStderrEnd`, `electronMochaError`, and `electronMochaExit`,\nwhich are implemented by the following code:\n\n```\nelectronMocha.stdout.on('data', stream.emit.bind(stream, 'electronMochaStdoutData'));\nelectronMocha.stdout.on('end', stream.emit.bind(stream, 'electronMochaStdoutEnd'));\n\nelectronMocha.stderr.on('data', stream.emit.bind(stream, 'electronMochaStderrData'));\nelectronMocha.stderr.on('end', stream.emit.bind(stream, 'electronMochaStderrEnd'));\n\nelectronMocha.on('error', stream.emit.bind(stream, 'electronMochaError'));\nelectronMocha.on('exit', stream.emit.bind(stream, 'electronMochaExit'));\n```\n\n## Tests\n```\nnpm test\n```\n\n## Contribution\n\n1. Fork it!\n2. Create your feature branch: `git checkout -b my-new-feature`\n3. Commit your changes: `git commit -am 'Add some feature'`\n4. Push to the branch: `git push origin my-new-feature`\n5. Submit a pull request :D\n\n## License\n\nMIT License (http://nodaguti.mit-license.org/)\n"
 }

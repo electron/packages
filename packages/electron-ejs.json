@@ -12,8 +12,17 @@
   },
   "main": "./index.js",
   "repository": {
-    "type": "git",
-    "url": "git://github.com/jmjuanes/electron-ejs.git"
+    "user": "jmjuanes",
+    "repo": "electron-ejs",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/jmjuanes/electron-ejs/tarball/master",
+    "clone_url": "https://github.com/jmjuanes/electron-ejs",
+    "https_url": "https://github.com/jmjuanes/electron-ejs",
+    "travis_url": "https://travis-ci.org/jmjuanes/electron-ejs",
+    "zip_url": "https://github.com/jmjuanes/electron-ejs/archive/master.zip",
+    "api_url": "https://api.github.com/repos/jmjuanes/electron-ejs"
   },
   "scripts": {},
   "dependencies": {
@@ -22,32 +31,42 @@
   },
   "license": "MIT",
   "gitHead": "3632b4978fe799fb3e3a09b2e2190c75050087d6",
-  "bugs": {
-    "url": "https://github.com/jmjuanes/electron-ejs/issues"
-  },
   "homepage": "https://github.com/jmjuanes/electron-ejs#readme",
-  "_id": "electron-ejs@1.0.2",
-  "_shasum": "ae67e7bd44ba3049121b11abac8a5190b6be18ac",
-  "_from": ".",
   "_npmVersion": "3.8.6",
   "_nodeVersion": "4.2.2",
-  "_npmUser": {
-    "name": "jmjuanes",
-    "email": "josemijuanes@gmail.com"
-  },
   "dist": {
     "shasum": "ae67e7bd44ba3049121b11abac8a5190b6be18ac",
     "tarball": "http://registry.npmjs.org/electron-ejs/-/electron-ejs-1.0.2.tgz"
   },
-  "maintainers": [
+  "versions": [
+    {
+      "number": "0.1.0",
+      "date": "2015-11-25T13:43:27.985Z"
+    },
+    {
+      "number": "1.0.0",
+      "date": "2016-04-05T08:02:39.462Z"
+    },
+    {
+      "number": "1.0.1",
+      "date": "2016-05-14T22:22:11.288Z"
+    },
+    {
+      "number": "1.0.2",
+      "date": "2016-05-14T23:56:49.112Z"
+    }
+  ],
+  "created": "2015-11-25T13:43:27.985Z",
+  "modified": "2016-05-14T23:56:49.112Z",
+  "lastPublisher": {
+    "name": "jmjuanes",
+    "email": "josemijuanes@gmail.com"
+  },
+  "owners": [
     {
       "name": "jmjuanes",
       "email": "josemijuanes@gmail.com"
     }
   ],
-  "_npmOperationalInternal": {
-    "host": "packages-12-west.internal.npmjs.com",
-    "tmp": "tmp/electron-ejs-1.0.2.tgz_1463270206871_0.7897261739708483"
-  },
-  "directories": {}
+  "readme": "# electron-ejs\n\n[![npm](https://img.shields.io/npm/v/electron-ejs.svg?style=flat-square)](https://www.npmjs.com/package/electron-ejs)\n[![npm](https://img.shields.io/npm/dt/electron-ejs.svg?style=flat-square)](https://www.npmjs.com/package/electron-ejs)\n\nSimple Electron plugin for render EJS templates. It allows you to use `ejs` files in your electron projects.\n\n\n## How to use it\n\nFirst, install **electron-ejs** using NPM:\n\n```sh\nnpm install electron-ejs\n```\n\nFor initialize **electron-ejs** on your project, simply add\n\n```javascript\n//Import template parser\nvar electronEjs = require('electron-ejs')(locals);\n```\n\nWhere `locals` is an object where each key is used as a variable in your template.\n\nNow you can load `ejs` files in your electron app:\n\n```javascript\napp.on('ready', function () {\n\t\n\t//Create the new window\n\tmainWindow = new BrowserWindow({ width: 800, height: 600 });\n\n\t//More app configuration\n\t// ....\n\n\t//Load the ejs file\n\tmainWindow.loadUrl('file://' + __dirname + '/index.ejs');\n\n});\n```\n\n\n## Contribute\n\nPull requests and issues are always welcome :)\n\n\n## License\n\n**electron-ejs** is under the [MIT](LICENSE) license.\n"
 }

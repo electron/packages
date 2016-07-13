@@ -9,8 +9,17 @@
     "url": "http://unindented.org/"
   },
   "repository": {
-    "type": "git",
-    "url": "git://github.com/unindented/grunt-electron-redhat-installer.git"
+    "user": "unindented",
+    "repo": "grunt-electron-redhat-installer",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/unindented/grunt-electron-redhat-installer/tarball/master",
+    "clone_url": "https://github.com/unindented/grunt-electron-redhat-installer",
+    "https_url": "https://github.com/unindented/grunt-electron-redhat-installer",
+    "travis_url": "https://travis-ci.org/unindented/grunt-electron-redhat-installer",
+    "zip_url": "https://github.com/unindented/grunt-electron-redhat-installer/archive/master.zip",
+    "api_url": "https://api.github.com/repos/unindented/grunt-electron-redhat-installer"
   },
   "keywords": [
     "gruntplugin",
@@ -42,33 +51,59 @@
     "grunt": "^0.4.0"
   },
   "gitHead": "7cb14cbc0722f3e0feef83fdc5c9ae965589211a",
-  "bugs": {
-    "url": "https://github.com/unindented/grunt-electron-redhat-installer/issues"
-  },
   "homepage": "https://github.com/unindented/grunt-electron-redhat-installer#readme",
-  "_id": "grunt-electron-redhat-installer@0.2.2",
-  "_shasum": "afc2feceb7b098304750b198e4884422fc360834",
-  "_from": ".",
   "_npmVersion": "2.14.12",
   "_nodeVersion": "4.2.6",
-  "_npmUser": {
+  "dist": {
+    "shasum": "afc2feceb7b098304750b198e4884422fc360834",
+    "tarball": "http://registry.npmjs.org/grunt-electron-redhat-installer/-/grunt-electron-redhat-installer-0.2.2.tgz"
+  },
+  "deprecated": "This package has been renamed to grunt-electron-installer-redhat for {{reasons}}.",
+  "versions": [
+    {
+      "number": "0.0.1",
+      "date": "2015-07-20T18:03:40.027Z"
+    },
+    {
+      "number": "0.0.2",
+      "date": "2015-07-20T22:43:12.279Z"
+    },
+    {
+      "number": "0.0.3",
+      "date": "2015-07-22T18:25:02.842Z"
+    },
+    {
+      "number": "0.0.4",
+      "date": "2015-08-07T08:10:21.235Z"
+    },
+    {
+      "number": "0.1.0",
+      "date": "2015-09-11T10:57:22.882Z"
+    },
+    {
+      "number": "0.2.0",
+      "date": "2015-10-18T11:28:44.586Z"
+    },
+    {
+      "number": "0.2.1",
+      "date": "2016-01-26T17:27:21.762Z"
+    },
+    {
+      "number": "0.2.2",
+      "date": "2016-02-05T21:00:03.844Z"
+    }
+  ],
+  "created": "2015-07-20T18:03:40.027Z",
+  "modified": "2016-02-05T21:01:21.062Z",
+  "lastPublisher": {
     "name": "unindented",
     "email": "unindented@gmail.com"
   },
-  "maintainers": [
+  "owners": [
     {
       "name": "unindented",
       "email": "unindented@gmail.com"
     }
   ],
-  "dist": {
-    "shasum": "afc2feceb7b098304750b198e4884422fc360834",
-    "tarball": "http://registry.npmjs.org/grunt-electron-redhat-installer/-/grunt-electron-redhat-installer-0.2.2.tgz"
-  },
-  "_npmOperationalInternal": {
-    "host": "packages-9-west.internal.npmjs.com",
-    "tmp": "tmp/grunt-electron-redhat-installer-0.2.2.tgz_1454706000242_0.3341256787534803"
-  },
-  "deprecated": "This package has been renamed to grunt-electron-installer-redhat for {{reasons}}.",
-  "directories": {}
+  "readme": "# grunt-electron-redhat-installer [![Version](https://img.shields.io/npm/v/grunt-electron-redhat-installer.svg)](https://www.npmjs.com/package/grunt-electron-redhat-installer) [![Build Status](https://img.shields.io/travis/unindented/grunt-electron-redhat-installer.svg)](http://travis-ci.org/unindented/grunt-electron-redhat-installer) [![Dependency Status](https://img.shields.io/gemnasium/unindented/grunt-electron-redhat-installer.svg)](https://gemnasium.com/unindented/grunt-electron-redhat-installer)\n\n> Create a Red Hat package for your Electron app.\n\n\n🚨 This package has been renamed to `grunt-electron-installer-redhat`! 🚨\n\n\n## Requirements\n\nThis tool requires `rpmbuild` to build the `.rpm` package. On Fedora you can do something like this:\n\n```\n$ sudo dnf install rpm-build\n```\n\nWhile on Ubuntu you'll need to do this instead:\n\n```\n$ sudo apt-get install rpm\n```\n\n\n## Getting Started\n\nThis plugin requires Grunt `~0.4.0`\n\nIf you haven't used [Grunt](http://gruntjs.com/) before, be sure to check out the [Getting Started](http://gruntjs.com/getting-started) guide, as it explains how to create a [Gruntfile](http://gruntjs.com/sample-gruntfile) as well as install and use Grunt plugins. Once you're familiar with that process, you may install this plugin with this command:\n\n```shell\nnpm install grunt-electron-redhat-installer --save-dev\n```\n\nOnce the plugin has been installed, it may be enabled inside your Gruntfile with this line of JavaScript:\n\n```js\ngrunt.loadNpmTasks('grunt-electron-redhat-installer');\n```\n\n*This plugin was designed to work with Grunt 0.4.x. If you're still using grunt v0.3.x it's strongly recommended that [you upgrade](http://gruntjs.com/upgrading-from-0.3-to-0.4), but in case you can't please use [v0.3.2](https://github.com/gruntjs/grunt-contrib-copy/tree/grunt-0.3-stable).*\n\n\n## Installer task\n\n_Run this task with the `grunt electron-redhat-installer` command._\n\nTask targets, files and options may be specified according to the grunt [Configuring tasks](http://gruntjs.com/configuring-tasks) guide.\n\n### Usage\n\nSay your app lives in `path/to/app`, and has a structure like this:\n\n```\n$ tree path/to/app/ -L 2\npath/to/app/\n├── LICENSE\n├── index.js\n├── main\n│   ├── index.js\n│   └── squirrel.js\n├── node_modules\n│   ├── fs-plus\n│   └── yargs\n├── package.json\n└── renderer\n    ├── index.css\n    ├── index.html\n    └── index.js\n```\n\nTo create a `.rpm` package from your app, the configuration for your task would look like this:\n\n```js\n'electron-redhat-installer': {\n  app: {\n    options: {\n      arch: 'x86_64'\n    },\n    src: 'path/to/app/',\n    dest: 'path/to/out/'\n  }\n}\n```\n\nThe task will try to extract all necessary information from your `package.json`, and then generate your package at `path/to/out`.\n\nYou can also create different packages for different architectures, while manually overriding certain options:\n\n```js\n'electron-redhat-installer': {\n  options: {\n    productName: 'Foo',\n    productDescription: 'Bar baz qux.',\n    categories: [\n      'Utility'\n    ],\n    rename: function (dest, src) {\n      return dest + '<%= name %>-<%= version %>-<%= revision %>.<%= arch %>.rpm';\n    }\n  },\n\n  linux32: {\n    options: {\n      arch: 'x86'\n    },\n    src: 'path/to/linux32/',\n    dest: 'path/to/out/linux32/'\n  },\n\n  linux64: {\n    options: {\n      arch: 'x86_64'\n    },\n    src: 'path/to/linux64/',\n    dest: 'path/to/out/linux64/'\n  }\n}\n```\n\n### Options\n\n#### src\nType: `String`\nDefault: `undefined`\n\nPath to the folder that contains your built Electron application.\n\n#### dest\nType: `String`\nDefault: `undefined`\n\nPath to the folder that will contain your Red Hat installer.\n\n#### options.name\nType: `String`\nDefault: `package.name`\n\nName of the package (e.g. `atom`), used in the [`Name` field of the `spec` file](https://fedoraproject.org/wiki/How_to_create_an_RPM_package#Creating_a_SPEC_file).\n\nCheck out the [Fedora Naming Guidelines](https://fedoraproject.org/wiki/Packaging:NamingGuidelines#Common_Character_Set_for_Package_Naming).\n\n#### options.productName\nType: `String`\nDefault: `package.productName || package.name`\n\nName of the application (e.g. `Atom`), used in the [`Name` field of the `desktop` specification](http://standards.freedesktop.org/desktop-entry-spec/desktop-entry-spec-latest.html).\n\n#### options.genericName\nType: `String`\nDefault: `package.genericName || package.productName || package.name`\n\nGeneric name of the application (e.g. `Text Editor`), used in the [`GenericName` field of the `desktop` specification](http://standards.freedesktop.org/desktop-entry-spec/desktop-entry-spec-latest.html).\n\n#### options.description\nType: `String`\nDefault: `package.description`\n\nShort description of the application, used in the [`Summary` field of the `spec` file](https://fedoraproject.org/wiki/How_to_create_an_RPM_package#Creating_a_SPEC_file).\n\n#### options.productDescription\nType: `String`\nDefault: `package.productDescription || package.description`\n\nLong description of the application, used in the [`%description` tag of the `spec` file](https://fedoraproject.org/wiki/How_to_create_an_RPM_package#Creating_a_SPEC_file).\n\n#### options.version\nType: `String`\nDefault: `package.version`\n\nVersion number of the package, used in the [`Version` field of the `spec` file](https://fedoraproject.org/wiki/How_to_create_an_RPM_package#Creating_a_SPEC_file).\n\n#### options.revision\nType: `String`\nDefault: `package.revision`\n\nRevision number of the package, used in the [`Release` field of the `spec` file](https://fedoraproject.org/wiki/How_to_create_an_RPM_package#Creating_a_SPEC_file).\n\n#### options.license\nType: `String`\nDefault: `package.license`\n\nLicense of the package, used in the [`License` field of the `spec` file](https://fedoraproject.org/wiki/How_to_create_an_RPM_package#Creating_a_SPEC_file).\n\n#### options.group\nType: `String`\nDefault: `undefined`\n\nGroup of the package, used in the [`Group` field of the `spec` file](https://fedoraproject.org/wiki/How_to_create_an_RPM_package#Creating_a_SPEC_file).\n\n#### options.arch\nType: `String`\nDefault: `undefined`\n\nMachine architecture the package is targeted to, used to set the `--target` option.\n\n#### options.requires\nType: `Array[String]`\nDefault: `['lsb']`\n\nPackages that are required when the program starts, used in the [`Requires` field of the `spec` file](https://fedoraproject.org/wiki/How_to_create_an_RPM_package#Creating_a_SPEC_file).\n\n#### options.homepage\nType: `String`\nDefault: `package.homepage || package.author.url`\n\nURL of the homepage for the package, used in the [`Homepage` field of the `control` specification](https://fedoraproject.org/wiki/How_to_create_an_RPM_package#Creating_a_SPEC_file).\n\n#### options.bin\nType: `String`\nDefault: `package.name`\n\nRelative path to the executable that will act as binary for the application, used in the [`Exec` field of the `desktop` specification](http://standards.freedesktop.org/desktop-entry-spec/desktop-entry-spec-latest.html).\n\nThe generated package will contain a symlink `/usr/bin/<%= options.name %>` pointing to the path provided here.\n\nFor example, providing this configuration:\n\n```js\n{\n  options: {\n    name: 'foo',\n    bin: 'resources/cli/launcher.sh'\n  },\n  src: '...',\n  dest: '...'\n}\n```\n\nWill create a package with the following symlink:\n\n```\nusr/bin/foo@ -> ../share/foo/resources/cli/launcher/sh\n```\n\nAnd a desktop specification with the following `Exec` key:\n\n```\nExec=foo %U\n```\n\n#### options.icon\nType: `String`\nDefault: `undefined`\n\nPath to the image that will act as icon for the application, used in the [`Icon` field of the `desktop` specification](http://standards.freedesktop.org/desktop-entry-spec/desktop-entry-spec-latest.html).\n\n#### options.categories\nType: `Array[String]`\nDefault: `[]`\n\nCategories in which the application should be shown in a menu, used in the [`Categories` field of the `desktop` specification](http://standards.freedesktop.org/desktop-entry-spec/desktop-entry-spec-latest.html).\n\nFor possible values check out the [Desktop Menu Specification](http://standards.freedesktop.org/menu-spec/latest/apa.html).\n\n#### options.rename\nType: `Function`\nDefault: `function (dest, src) { return dest + src; }`\n\nFunction that renames all files generated by the task just before putting them in your `dest` folder.\n\n\n## Meta\n\n* Code: `git clone git://github.com/unindented/grunt-electron-redhat-installer.git`\n* Home: <https://github.com/unindented/grunt-electron-redhat-installer/>\n\n\n## Contributors\n\n* Daniel Perez Alvarez ([unindented@gmail.com](mailto:unindented@gmail.com))\n\n\n## License\n\nCopyright (c) 2015 Daniel Perez Alvarez ([unindented.org](https://unindented.org/)). This is free software, and may be redistributed under the terms specified in the LICENSE file.\n"
 }

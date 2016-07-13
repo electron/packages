@@ -1,0 +1,56 @@
+{
+  "name": "ng2-twitter",
+  "version": "0.1.0",
+  "description": "Angular2 service of authorized request for twitter.",
+  "main": "dist/index.js",
+  "typings": "dist/index.d.ts",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "tsc"
+  },
+  "keywords": [
+    "twitter",
+    "angular2",
+    "oauth"
+  ],
+  "author": {
+    "name": "Aoinu"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "typescript": "^1.8.10"
+  },
+  "dependencies": {
+    "@angular/core": "^2.0.0-rc.4",
+    "@angular/http": "^2.0.0-rc.4",
+    "jssha": "^2.1.0",
+    "rxjs": "^5.0.0-beta.9"
+  },
+  "private": false,
+  "gitHead": "f79650d75cbf9d34bb9eacca9ec1ed36bb25f310",
+  "_npmVersion": "3.9.5",
+  "_nodeVersion": "4.2.6",
+  "dist": {
+    "shasum": "ad552202ccb22100dc797928cfe39814815a9532",
+    "tarball": "http://registry.npmjs.org/ng2-twitter/-/ng2-twitter-0.1.0.tgz"
+  },
+  "versions": [
+    {
+      "number": "0.1.0",
+      "date": "2016-07-02T14:27:46.758Z"
+    }
+  ],
+  "created": "2016-07-02T14:27:46.758Z",
+  "modified": "2016-07-02T14:27:46.758Z",
+  "lastPublisher": {
+    "name": "aoinu",
+    "email": "aoinu607@gmail.com"
+  },
+  "owners": [
+    {
+      "name": "aoinu",
+      "email": "aoinu607@gmail.com"
+    }
+  ],
+  "readme": "#ng2-twitter\r\nAngular2 service of authorized request for twitter.\r\n\r\n##Installation\r\nInstall through `npm`:\r\n\r\n`npm install --save ng2-twitter`\r\n\r\n##Usage\r\n- Provider: `NG2_TWITTER_PROVIDERS`\r\n\r\n```\r\nimport { Component } from '@angular/core';\r\nimport { HTTP_PROVIDERS } from '@angular/http';\r\nimport { AuthorizedRequestService, NG2_TWITTER_PROVIDERS } from 'ng2-twitter';\r\n \r\n@Component({\r\n  template: `\r\n\t\t<button (click)=\"getHomeTimeline()\">get/home_timeline</button>\r\n\t\t<p>{{result}}</p>\r\n  `,\r\n  providers: [HTTP_PROVIDERS, NG2_TWITTER_PROVIDERS,]\r\n})\r\nclass YourApp {\r\n\tresult = '';\r\n\r\n\tconstructor(private twitter: AuthorizedRequestService){}\r\n\r\n\tgetHomeTimeline(){\r\n\t\ttwitter.get(\r\n\t\t\t'https://api.twitter.com/1.1/statuses/home_timeline.json',\r\n\t\t\t{\r\n\t\t\t\tcount: 5\r\n\t\t\t},\r\n\t\t\t{\r\n\t\t\t\tconsumerKey: 'CKey',\r\n\t\t\t\tconsumerSecret: 'CSecret'\r\n\t\t\t},\r\n\t\t\t{\r\n\t\t\t\ttoken: 'Token',\r\n\t\t\t\ttokenSecret: 'TSecret'\r\n\t\t\t}\r\n\t\t).subscribe((res)=>{\r\n\t\t\tthis.result = res.body;\r\n\t\t});\r\n\t}\r\n}\r\n```\r\n\r\n##Note\r\nIn Web browser, JavaScript application cannot access external domain server because of Cross-Origin Resource Sharing.\r\n\r\nThis service supposes to be used in Cordova, Electron, Chrome Extensions or web security disabled browser."
+}

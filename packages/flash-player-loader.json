@@ -3,9 +3,6 @@
   "version": "1.1.1",
   "description": "Makes life easier for the electron apps which need the pepper flash player.",
   "main": "index.js",
-  "directories": {
-    "test": "test"
-  },
   "dependencies": {},
   "devDependencies": {
     "coffee-script": "^1.10.0",
@@ -16,8 +13,17 @@
     "prepublish": "coffee --compile lib/flash-loader.coffee"
   },
   "repository": {
-    "type": "git",
-    "url": "git+https://github.com/alvin-777/flash-player-loader-for-electron.git"
+    "user": "alvin-777",
+    "repo": "flash-player-loader-for-electron",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/alvin-777/flash-player-loader-for-electron/tarball/master",
+    "clone_url": "https://github.com/alvin-777/flash-player-loader-for-electron",
+    "https_url": "https://github.com/alvin-777/flash-player-loader-for-electron",
+    "travis_url": "https://travis-ci.org/alvin-777/flash-player-loader-for-electron",
+    "zip_url": "https://github.com/alvin-777/flash-player-loader-for-electron/archive/master.zip",
+    "api_url": "https://api.github.com/repos/alvin-777/flash-player-loader-for-electron"
   },
   "keywords": [
     "pepper flash player",
@@ -29,32 +35,40 @@
     "url": "https://github.com/alvin-777"
   },
   "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/alvin-777/flash-player-loader-for-electron/issues"
-  },
   "homepage": "https://github.com/alvin-777/flash-player-loader-for-electron#readme",
   "gitHead": "186cb6ff5b9c650c77b7dec81d8f64538e78315d",
-  "_id": "flash-player-loader@1.1.1",
-  "_shasum": "e626752f77a122e5973c8466b7df9d2d82f2fbad",
-  "_from": ".",
   "_npmVersion": "3.7.3",
   "_nodeVersion": "5.8.0",
-  "_npmUser": {
-    "name": "alvin777",
-    "email": "alvin-777@outlook.com"
-  },
   "dist": {
     "shasum": "e626752f77a122e5973c8466b7df9d2d82f2fbad",
     "tarball": "http://registry.npmjs.org/flash-player-loader/-/flash-player-loader-1.1.1.tgz"
   },
-  "maintainers": [
+  "stars": 1,
+  "versions": [
+    {
+      "number": "1.0.0",
+      "date": "2016-03-14T05:29:14.941Z"
+    },
+    {
+      "number": "1.1.0",
+      "date": "2016-03-19T19:59:02.995Z"
+    },
+    {
+      "number": "1.1.1",
+      "date": "2016-04-03T19:05:42.059Z"
+    }
+  ],
+  "created": "2016-03-14T05:29:14.941Z",
+  "modified": "2016-04-03T19:05:42.059Z",
+  "lastPublisher": {
+    "name": "alvin777",
+    "email": "alvin-777@outlook.com"
+  },
+  "owners": [
     {
       "name": "alvin777",
       "email": "alvin_aries@hotmail.com"
     }
   ],
-  "_npmOperationalInternal": {
-    "host": "packages-12-west.internal.npmjs.com",
-    "tmp": "tmp/flash-player-loader-1.1.1.tgz_1459710341560_0.5764782396145165"
-  }
+  "readme": "# Flash Player Loader (for electron apps)\n\nMakes life easier for the [electron](http://electron.atom.io/) apps which need the [Pepper Flash Player][1].\n\nThe path to the Flash Player for your app usually differs between develop (git) version and release (packed) version.  \nThis module manages multiple sources for you, and provides extra debug information and error handling.  \nPlus some handy features (_OS X only_) like automatically locate the Flash Player and get the version of it.\n\nMore details can be found at\n[electron docs](https://github.com/atom/electron/blob/master/docs/tutorial/using-pepper-flash-plugin.md).\n\n## Installation\n\n```sh\nnpm install --save flash-player-loader\n```\n\nTo run the example app:\n```\ncd /path/to/flash-player-loader\nnpm install\nelectron test\n```\nTo run the example app with extra debug output:\n```\nelectron test -d\n```\n\n## Usage\n\n```js\nvar flashLoader = require('flash-player-loader');\nvar path = '/path/to/dir/contains/flash/player';\nflashLoader.addSource(path);\nflashLoader.addSource('/alternative/path');\nflashLoader.load();\n```\n\nAlternatively, you can chain the methods together.\n```js\nrequire('flash-player-loader').addSource('/path/to/dir').load();\n```\n\n_**Do not forget to add the `'web-preferences': {'plugins': true}` option\nwhen creating your BrowserWindow.**_\n\nSee `test/index.js` for more detailed example and explanations.\n\n## Get Pepper Flash Player Plug-in\n\n* Install [Google Chrome](https://www.google.com/chrome/browser/desktop/index.html).  \n  You can find the path to the Pepper Flash Player in the `chrome://plugins` tab.\n* Install the _PPAPI_ [system plug-in][2].\n* You can also download and install any older version of the plug-in from [here][3].\n\n## Troubleshooting\n\n##### The path added is correct, but it doesn't load the plug-in\n1.  Please make sure that you are not mixing the architecture of electron and Flash Player.  \n    That is, 32-bit electron will not work with 64-bit Flash Player, and vice versa.\n2.  Please make sure that you have included the option\n    `'web-preferences': {'plugins': true}` when creating BrowserWindow.\n\n## API\n\n### `flashLoader.getFilename()`\n\nReturns the Flash Player filename according to the running OS.\n\n### `flashLoader.addSource(location[, version])`\n\n* `location` String\n* `version` String (optional)\n\nAdds the location of Pepper Flash Player.\n\n_This method can be called multiple times.\nAll added sources will be validated in the order they are added,\nuntil the first valid one is found._\n\nThe `location` is the _path to the **directory** contains the Pepper Flash Player file_,\nor the _full path to the Pepper Flash Player file_\n(The filename has to match the string returned by `flashLoader.getFilename()`).  \nIf `location` is omitted, `'.'` will be used, i.e., the working directory, where you started your app.  \nOn **_OS X_**, you can also specify `\"@chrome\"` or `\"@system\"` for `location`.   \nIf `\"@chrome\"` is specified, it will automatically look for the [Pepper Flash Player][1]\nintegrated by the newest installed Google Chrome.  \nIf `\"@system\"` is specified, it will look for the\n[Pepper Flash Player system plug-in][2] (**PPAPI**).\n\nYou can optionally pass in a version string, which will be passed to\n[Chromium](http://www.chromium.org) with the `ppapi-flash-version` switch.  \n_Note:_  \n1)  Google Chrome uses this version number to decide which Flash Player to load,\n    and for displaying. However, for (most) electron apps, it's useless.\n    *It's safe to ignore the version string.*  \n2)  On **_OS X_**, the Flash Player version is automatically detected.\n    The passed in string is **ignored**.\n\n_This method returns `this`, so it's possible to chain it._\n\n### `flashLoader.load()`\n\nValidates the source(s) added by `addSource()`, in the order they are added.\nThe first valid one will be loaded.\n\n### `flashLoader.debug([options])`\n\n* `options` Object\n  * `enable` Boolean - Enable/Disable debug mode. Default is `true`.\n  * `log` Function - Customised log function. Default is `console.log`.\n  * `error` Function - Customised error function. Default is `console.error`.\n\nEnable or disable debug mode.  \nWhen enabled, extra information and error messages will be print to the console.  \nYou can also specify a customised log/error function,\nto make the output format match other output of your app,\nor log the information in other forms (e.g., write to a log file).  \n_Note you may need to use `bind` to make you log function callable._  \n_(See the example app for instance.)_\n\n_This method returns `this`, so it's possible to chain it._\n\n### `flashLoader.getVersion(location)` _OS X_\n\n* `location` String\n\nReturns the version of the Flash Player found at the specified location.\nAn empty string is returned if the location is invalid.\n\n\n[1]: https://helpx.adobe.com/flash-player/kb/flash-player-google-chrome.html      \"Flash Player with Google Chrome\"\n[2]: https://get.adobe.com/flashplayer/otherversions/                             \"Download Pepper Flash Player system plug-in\"\n[3]: https://helpx.adobe.com/flash-player/kb/archived-flash-player-versions.html  \"Download archived Pepper Flash Player\"\n"
 }

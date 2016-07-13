@@ -1,0 +1,103 @@
+{
+  "name": "beelzebub",
+  "version": "0.0.2",
+  "description": "One hell of a task master!",
+  "main": "index.js",
+  "bin": {
+    "bz": "./bin/bz"
+  },
+  "license": "MIT",
+  "homepage": "https://github.com/jstty/beelzebub#readme",
+  "keywords": [
+    "node.js",
+    "javascript",
+    "beelzebub",
+    "taskmaster",
+    "task",
+    "tasks",
+    "tasker",
+    "builder"
+  ],
+  "author": {
+    "name": "Joseph E. Sutton",
+    "email": "joe@jstty.com",
+    "url": "http://www.jstty.com"
+  },
+  "repository": {
+    "user": "jstty",
+    "repo": "beelzebub",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/jstty/beelzebub/tarball/master",
+    "clone_url": "https://github.com/jstty/beelzebub",
+    "https_url": "https://github.com/jstty/beelzebub",
+    "travis_url": "https://travis-ci.org/jstty/beelzebub",
+    "zip_url": "https://github.com/jstty/beelzebub/archive/master.zip",
+    "api_url": "https://api.github.com/repos/jstty/beelzebub"
+  },
+  "scripts": {
+    "compile": "babel lib --out-dir legacy",
+    "prepublish": "npm run-script compile",
+    "pretest": "npm run-script compile",
+    "test": "istanbul --config=test/.istanbul.yml cover _mocha -- --check-leaks -t 5000 -b -R spec test/tests.js",
+    "coveralls": "cat ./test/.coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js",
+    "clean": "rm -rf node_modules"
+  },
+  "dependencies": {
+    "co": "^4.6.0",
+    "commander": "^2.9.0",
+    "lodash": "^4.13.1",
+    "stream-to-promise": "^2.1.1",
+    "when": "^3.7.7"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.10.1",
+    "babel-preset-es2015": "^6.9.0",
+    "babel-preset-stage-3": "^6.11.0",
+    "chai": "~3.2.0",
+    "coveralls": "^2.11.4",
+    "istanbul": "^0.3.19",
+    "mocha": "~2.3.0",
+    "supertest": "~1.1.0"
+  },
+  "engines": {
+    "node": ">=0.10.0"
+  },
+  "babel": {
+    "presets": [
+      "es2015",
+      "stage-3"
+    ]
+  },
+  "gitHead": "3fc272aba355e9d5d311908d72e82c895b03f595",
+  "_npmVersion": "3.9.3",
+  "_nodeVersion": "6.2.1",
+  "dist": {
+    "shasum": "fb0d5b34111ae1572fcb6c74ab04f189e27afd2b",
+    "tarball": "http://registry.npmjs.org/beelzebub/-/beelzebub-0.0.2.tgz"
+  },
+  "versions": [
+    {
+      "number": "0.0.1",
+      "date": "2016-06-23T06:58:19.463Z"
+    },
+    {
+      "number": "0.0.2",
+      "date": "2016-07-07T06:41:20.144Z"
+    }
+  ],
+  "created": "2016-06-23T06:58:19.463Z",
+  "modified": "2016-07-07T06:41:20.144Z",
+  "lastPublisher": {
+    "name": "jstty",
+    "email": "joe@jstty.com"
+  },
+  "owners": [
+    {
+      "name": "jstty",
+      "email": "joe@jstty.com"
+    }
+  ],
+  "readme": "# beelzebub\nOne hell of a task master!\n==========================\n\n## Description\nHightly modular promise/yield based build task pipeline, compatiable with gulp, fly, ES5/6/7.\nEasy to create modular tasks and import tasks using npm.\n\n# TODO\n* [ ] add tests\n* [ ] add travis... badges to README\n* [ ] add logo/icon\n* [ ] propaganda page\n* [ ] support decorators (need to wait for offical spec)\n* [ ] support async/await (need to wait for offical spec)\n\n# Add ???\n* [ ] gulp.util type utils? like logging?\n* [ ] add hotfoot\n* [ ] pre/post task functions?\n* [ ] how to handle configs/options pass to sub groups\n* [ ] change task functions to special names?\n  * Add string libs\n    ```javascript\n    bz.use('bz-webpack', 'bz-native-electron', 'bz-native-cordova')\n    ```\n\n# DONE!\n* [x] add CLI app\n  * [x] load 'beelzebub.js' and/or 'beelzebub.json' file like gulpfile.js\n  * [x] load file -f\n* [x] support root level tasks\n* [x] support default task for the given task group\n* [x] support generators\n* [x] support pipe/steams\n  * [x] add function\n  * [x] add example\n\n# Install\n```shell\n$ npm install beelzebub\n```\n\n# Usage\n### Also [See Examples](./examples)\n```javascript\nvar Beelzebub = require('beelzebub');\nBeelzebub({\n    verbose: true\n});\n\nclass MyTasks extends Beelzebub.Tasks {\n    constructor(config) {\n        super(config);\n        this.$setName(\"MyTasks\");\n    }\n\n    task1(){\n        this.logger.log('MyTasks task1');\n    }\n}\nBeelzebub.add( MyTasks );\n\n// ------------------------------------\nBeelzebub.run('MyTasks.task1');\n```\n\n--------\n## Future example\n### in 'bz-tasks.js' file\n```javascript\nconst bz = Beelzebub();\n\nbz.add('bz-frontend-react');\nbz.add('bz-frontend-babel');\nbz.add( require('mytask.js') );\n\nbz.runCli(); // runs commands from CLI\n```\n\n### Running the beelzebub command will auto load the `bz-tasks.js` file\n```shell\n$ bz MyTasks.task1 --my-custom-flag\n```\n### OR\n```shell\n$ node bz-tasks.js MyTasks.task1 --my-custom-flag\n```\n"
+}

@@ -25,8 +25,17 @@
     "url": "http://tootallnate.net"
   },
   "repository": {
-    "type": "git",
-    "url": "git://github.com/EvolveLabs/electron-ref.git"
+    "user": "EvolveLabs",
+    "repo": "electron-ref",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/EvolveLabs/electron-ref/tarball/master",
+    "clone_url": "https://github.com/EvolveLabs/electron-ref",
+    "https_url": "https://github.com/EvolveLabs/electron-ref",
+    "travis_url": "https://travis-ci.org/EvolveLabs/electron-ref",
+    "zip_url": "https://github.com/EvolveLabs/electron-ref/archive/master.zip",
+    "api_url": "https://api.github.com/repos/EvolveLabs/electron-ref"
   },
   "main": "./lib/ref.js",
   "scripts": {
@@ -57,31 +66,73 @@
     "electron-weak": "~0.5.0"
   },
   "gitHead": "6b81692ef9b22c4d76a37afbbf9e8a28869c257d",
-  "bugs": {
-    "url": "https://github.com/EvolveLabs/electron-ref/issues"
-  },
   "homepage": "https://github.com/EvolveLabs/electron-ref#readme",
   "bundleDependencies": [
     "electron-updater-tools"
   ],
-  "_id": "electron-ref@1.1.1",
-  "_shasum": "eee0c6822f093e34c3829c95eb49d858ea780168",
-  "_from": ".",
   "_npmVersion": "2.13.3",
   "_nodeVersion": "3.2.0",
-  "_npmUser": {
-    "name": "justinmchase",
-    "email": "justin.m.chase@outlook.com"
-  },
   "dist": {
     "shasum": "eee0c6822f093e34c3829c95eb49d858ea780168",
     "tarball": "http://registry.npmjs.org/electron-ref/-/electron-ref-1.1.1.tgz"
   },
-  "maintainers": [
+  "versions": [
+    {
+      "number": "1.0.2",
+      "date": "2015-06-25T17:02:07.331Z"
+    },
+    {
+      "number": "1.0.3",
+      "date": "2015-06-25T17:06:30.332Z"
+    },
+    {
+      "number": "1.0.4",
+      "date": "2015-06-25T17:39:27.322Z"
+    },
+    {
+      "number": "1.0.5",
+      "date": "2015-06-25T17:41:49.963Z"
+    },
+    {
+      "number": "1.0.6",
+      "date": "2015-06-25T18:26:58.925Z"
+    },
+    {
+      "number": "1.0.7",
+      "date": "2015-07-01T17:05:05.581Z"
+    },
+    {
+      "number": "1.0.8",
+      "date": "2015-07-01T19:16:54.440Z"
+    },
+    {
+      "number": "1.0.9",
+      "date": "2015-07-01T20:20:04.819Z"
+    },
+    {
+      "number": "1.0.10",
+      "date": "2015-07-02T04:05:20.683Z"
+    },
+    {
+      "number": "1.0.11",
+      "date": "2015-08-06T17:18:59.696Z"
+    },
+    {
+      "number": "1.1.1",
+      "date": "2015-08-29T19:40:05.837Z"
+    }
+  ],
+  "created": "2015-06-25T17:02:07.331Z",
+  "modified": "2015-10-15T02:44:22.381Z",
+  "lastPublisher": {
+    "name": "justinmchase",
+    "email": "justin.m.chase@outlook.com"
+  },
+  "owners": [
     {
       "name": "justinmchase",
       "email": "justin.m.chase@outlook.com"
     }
   ],
-  "directories": {}
+  "readme": "ref\n===\n### Turn Buffer instances into \"pointers\" \n[![Build Status](https://secure.travis-ci.org/EvolveLabs/electron-ref.svg)](https://travis-ci.org/EvolveLabs/electron-ref)\n[![Build status](https://ci.appveyor.com/api/projects/status/lqsc444oyfjpmngk?svg=true)](https://ci.appveyor.com/project/BlairEvolve/electron-ref)\n\n\nThis module is inspired by the old `Pointer` class from node-ffi, but with the\nintent of using Node's fast `Buffer` instances instead of a slow C++ `Pointer`\nclass. These two concepts were previously very similar, but now this module\nbrings over the functionality that Pointers had and Buffers are missing, so\nnow Buffers are a lot more powerful.\n\n### Features:\n\n * Get the memory address of any `Buffer` instance\n * Read/write references to JavaScript Objects into `Buffer` instances\n * Read/write `Buffer` instances' memory addresses to other `Buffer` instances\n * Read/write `int64_t` and `uint64_t` data values (Numbers or Strings)\n * A \"type\" convention, so that you can specify a buffer as an `int *`,\n   and reference/dereference at will.\n * Offers a buffer instance representing the `NULL` pointer\n\n\nInstallation\n------------\n\nInstall with `npm`:\n\n``` bash\n$ npm install ref\n```\n\n\nExamples\n--------\n\n#### referencing and derefencing\n\n``` js\nvar ref = require('ref')\n\n// so we can all agree that a buffer with the int value written\n// to it could be represented as an \"int *\"\nvar buf = new Buffer(4)\nbuf.writeInt32LE(12345, 0)\n\n// first, what is the memory address of the buffer?\nconsole.log(buf.address())  // ← 140362165284824\n\n// using `ref`, you can set the \"type\", and gain magic abilities!\nbuf.type = ref.types.int\n\n// now we can dereference to get the \"meaningful\" value\nconsole.log(buf.deref())  // ← 12345\n\n\n// you can also get references to the original buffer if you need it.\n// this buffer could be thought of as an \"int **\"\nvar one = buf.ref()\n\n// and you can dereference all the way back down to an int\nconsole.log(one.deref().deref())  // ← 12345\n```\n\nSee the [full API Docs][docs] for more examples.\n\n\nThe \"type\" interface\n--------------------\n\nYou can easily define your own \"type\" objects at attach to `Buffer` instances.\nIt just needs to be a regular JavaScript Object that contains the following\nproperties:\n\n| **Name**      | **Data Type**                    | **Description**\n|:--------------|:---------------------------------|:----------------------------------\n| `size`        | Number                           | The size in bytes required to hold this type.\n| `indirection` | Number                           | The current level of indirection of the buffer. Usually this would be _1_, and gets incremented on Buffers from `ref()` calls. A value of less than or equal to _0_ is invalid.\n| `get`         | Function (buffer, offset)        | The function to invoke when dereferencing this type when the indirection level is _1_.\n| `set`         | Function (buffer, offset, value) | The function to invoke when setting a value to a buffer instance.\n| `name`        | String                           | _(optional)_ The name to use during debugging for this type.\n| `alignment`   | Number                           | _(optional)_ The alignment of this type when placed in a struct. Defaults to the type's `size`.\n\nBe sure to check out the Wiki page of [\"Known\nTypes\"](https://github.com/TooTallNate/ref/wiki/Known-%22types%22), for the list\nof built-in ref types, as well as known external type implementations.\n\nFor example, you could define a \"bigint\" type that dereferences into a\n[`bigint`](https://github.com/substack/node-bigint) instance:\n\n``` js\nvar ref = require('ref')\nvar bigint = require('bigint')\n\n// define the \"type\" instance according to the spec\nvar BigintType = {\n    size: ref.sizeof.int64\n  , indirection: 1\n  , get: function (buffer, offset) {\n      // return a bigint instance from the buffer\n      return bigint.fromBuffer(buffer)\n    }\n  , set: function (buffer, offset, value) {\n      // 'value' would be a bigint instance\n      var val = value.toString()\n      return ref.writeInt64(buffer, offset || 0, val)\n    }\n}\n\n// now we can create instances of the type from existing buffers.\n// \"buf\" is some Buffer instance returned from some external data\n// source, which should contain \"bigint\" binary data.\nbuf.type = BigintType\n\n// and now you can create \"bigint\" instances using this generic \"types\" API\nvar val = buf.deref()\n            .add('1234')\n            .sqrt()\n            .shiftLeft(5)\n```\n\nBuild the docs\n--------------\n\nInstall the dev dependencies:\n\n``` bash\n$ npm install\n```\n\nGenerate the docs:\n\n``` bash\n$ npm run docs\n```\n\n\nLicense\n-------\n\n(The MIT License)\n\nCopyright (c) 2012 Nathan Rajlich &lt;nathan@tootallnate.net&gt;\n\nPermission is hereby granted, free of charge, to any person obtaining\na copy of this software and associated documentation files (the\n'Software'), to deal in the Software without restriction, including\nwithout limitation the rights to use, copy, modify, merge, publish,\ndistribute, sublicense, and/or sell copies of the Software, and to\npermit persons to whom the Software is furnished to do so, subject to\nthe following conditions:\n\nThe above copyright notice and this permission notice shall be\nincluded in all copies or substantial portions of the Software.\n\nTHE SOFTWARE IS PROVIDED 'AS IS', WITHOUT WARRANTY OF ANY KIND,\nEXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF\nMERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.\nIN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY\nCLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,\nTORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE\nSOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.\n\n[docs]: http://tootallnate.github.com/ref\n\n\nFork Notes\n----------\nThis fork adds electron build support, compatible with [electron-updater](https://github.com/evolvelabs/electron-updater).\n\nBinaries available for various platforms on s3, e.g.:\nhttps://s3.amazonaws.com/evolve-bin/electron-ref/electron-ref-0.1.7-win32-x64-release-master.tgz\n\nSee the `package.json` for how the url is composed."
 }

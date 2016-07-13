@@ -10,8 +10,17 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
-    "type": "git",
-    "url": "git+https://github.com/mixmaxhq/electron-promote-windows-tray-items.git"
+    "user": "mixmaxhq",
+    "repo": "electron-promote-windows-tray-items",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/mixmaxhq/electron-promote-windows-tray-items/tarball/master",
+    "clone_url": "https://github.com/mixmaxhq/electron-promote-windows-tray-items",
+    "https_url": "https://github.com/mixmaxhq/electron-promote-windows-tray-items",
+    "travis_url": "https://travis-ci.org/mixmaxhq/electron-promote-windows-tray-items",
+    "zip_url": "https://github.com/mixmaxhq/electron-promote-windows-tray-items/archive/master.zip",
+    "api_url": "https://api.github.com/repos/mixmaxhq/electron-promote-windows-tray-items"
   },
   "keywords": [
     "electron",
@@ -24,29 +33,36 @@
     "url": "https://mixmax.com"
   },
   "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/mixmaxhq/electron-promote-windows-tray-items/issues"
-  },
   "homepage": "https://github.com/mixmaxhq/electron-promote-windows-tray-items#readme",
   "gitHead": "1c1912e56dce0d8889846499b626f2e8aa38e4f2",
-  "_id": "electron-promote-windows-tray-items@1.0.1",
-  "_shasum": "fc675cc37532daaf3dad96cdadca5d4a9362a2eb",
-  "_from": ".",
   "_npmVersion": "2.14.7",
   "_nodeVersion": "4.2.1",
-  "_npmUser": {
+  "dist": {
+    "shasum": "fc675cc37532daaf3dad96cdadca5d4a9362a2eb",
+    "tarball": "http://registry.npmjs.org/electron-promote-windows-tray-items/-/electron-promote-windows-tray-items-1.0.1.tgz"
+  },
+  "stars": 1,
+  "versions": [
+    {
+      "number": "1.0.0",
+      "date": "2016-01-05T05:40:57.976Z"
+    },
+    {
+      "number": "1.0.1",
+      "date": "2016-01-05T06:20:24.409Z"
+    }
+  ],
+  "created": "2016-01-05T05:40:57.976Z",
+  "modified": "2016-01-05T06:20:24.409Z",
+  "lastPublisher": {
     "name": "wearhere",
     "email": "jeffreywear@gmail.com"
   },
-  "maintainers": [
+  "owners": [
     {
       "name": "wearhere",
       "email": "jeffreywear@gmail.com"
     }
   ],
-  "dist": {
-    "shasum": "fc675cc37532daaf3dad96cdadca5d4a9362a2eb",
-    "tarball": "http://registry.npmjs.org/electron-promote-windows-tray-items/-/electron-promote-windows-tray-items-1.0.1.tgz"
-  },
-  "directories": {}
+  "readme": "# electron-promote-windows-tray-items\n\nWhen you first create an Electron [tray item][tray item] on Windows, it will show up in the toolbar\ncustomization area:\n\n<img src=\"docs/customization_area.png\" height=\"300\" alt=\"customization area\">\n\nrather than in the toolbar itself:\n\n<img src=\"docs/toolbar.png\" alt=\"toolbar\">\n\nBy default, the user must explicitly choose to show icons in the toolbar. But not only does this\ncreate extra, potentially non-intuitive work for the user, it forces the design of icons that\nwill look good in both the toolbar and the customization area since you\n[can't choose different icons for each location][different icons].\n\nThis package helps you skip this process. For any item in its default state, i.e. the user has not\nexplicitly _hid_ the item from the toolbar, this package will \"promote\" that item from the customization\narea to the toolbar.\n\n## Requirements\n\nThis package may be safely required on non-Windows platforms, though the package will return an error\nif it is attempted to be used on non-Windows platforms.\n\nThis project is currently compatible with Electron 0.36.2 due to its dependence on\n[electron-edge][electron-edge].\n\n## Installation\n\nFor Electron:\n\n```js\nnpm install electron-promote-windows-tray-items --save\n```\n\n## Usage\n\n```js\nvar promoteWindowsTrayItems = require('electron-promote-windows-tray-items');\n\n// Create a tray item.\nvar icon = new Tray(/* ... */);\n\n// Icon will now be in the toolbar customization area without the user explicitly toggling it to show in the toolbar.\n\nif (process.platform === 'win32') {\n  promoteWindowsTrayItems(function(err) {\n    // Icon will now be in the toolbar itself unless the user explicitly hid it from the toolbar.\n  });\n}\n```\n\n## Contributing\n\nWe welcome pull requests! Please lint your code.\n\n## Credits\n\nCreated by [Jeff Wear][Jeff Wear], with the core C# logic used by this module\n[originally developed][original PR] by [Paul Betts][Paul Betts].\n\n## Copyright and License\n\nCopyright 2016 Mixmax, Inc., licensed under the MIT License.\n\nSome portions derived from [Squirrel.Windows][Squirrel.Windows], copyright 2012-2016 GitHub, Inc.,\nlicensed under the MIT License.\n\n[tray item]: https://github.com/atom/electron/blob/master/docs/api/tray.md\n[different icons]: https://github.com/atom/electron/issues/3970\n[electron-edge]: https://github.com/kexplo/electron-edge#electron-edge\n[Jeff Wear]: https://github.com/wearhere\n[original PR]: https://github.com/Squirrel/Squirrel.Windows/pull/447\n[Paul Betts]: https://github.com/paulcbetts\n[Squirrel.Windows]: https://github.com/Squirrel/Squirrel.Windows\n\n## Release History\n\n* 1.0.1 README fixes\n* 1.0.0 Initial release.\n"
 }

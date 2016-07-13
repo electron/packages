@@ -47,39 +47,92 @@
     "zuul": "^3.10.1",
     "zuul-ngrok": "^4.0.0"
   },
-  "directories": {
-    "test": "test"
-  },
   "repository": {
-    "type": "git",
-    "url": "git+https://github.com/mappum/peer-exchange.git"
-  },
-  "bugs": {
-    "url": "https://github.com/mappum/peer-exchange/issues"
+    "user": "mappum",
+    "repo": "peer-exchange",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/mappum/peer-exchange/tarball/master",
+    "clone_url": "https://github.com/mappum/peer-exchange",
+    "https_url": "https://github.com/mappum/peer-exchange",
+    "travis_url": "https://travis-ci.org/mappum/peer-exchange",
+    "zip_url": "https://github.com/mappum/peer-exchange/archive/master.zip",
+    "api_url": "https://api.github.com/repos/mappum/peer-exchange"
   },
   "homepage": "https://github.com/mappum/peer-exchange#readme",
   "gitHead": "5419e10d06b6fe3e9388709130497dd1ad98ca3c",
-  "_id": "peer-exchange@0.5.3",
-  "_shasum": "ef917718ebf0dbe7294317d3b957292ae9e8d5a7",
-  "_from": ".",
   "_npmVersion": "3.8.9",
   "_nodeVersion": "6.2.0",
-  "_npmUser": {
-    "name": "mappum",
-    "email": "mappum@gmail.com"
-  },
   "dist": {
     "shasum": "ef917718ebf0dbe7294317d3b957292ae9e8d5a7",
     "tarball": "http://registry.npmjs.org/peer-exchange/-/peer-exchange-0.5.3.tgz"
   },
-  "maintainers": [
+  "versions": [
+    {
+      "number": "0.0.0",
+      "date": "2016-02-19T05:45:25.726Z"
+    },
+    {
+      "number": "0.1.0",
+      "date": "2016-02-23T19:28:24.846Z"
+    },
+    {
+      "number": "0.1.1",
+      "date": "2016-02-23T22:18:33.100Z"
+    },
+    {
+      "number": "0.1.2",
+      "date": "2016-02-24T03:02:16.764Z"
+    },
+    {
+      "number": "0.2.0",
+      "date": "2016-02-25T22:12:36.985Z"
+    },
+    {
+      "number": "0.3.0",
+      "date": "2016-02-25T23:03:23.258Z"
+    },
+    {
+      "number": "0.3.1",
+      "date": "2016-03-10T18:28:45.510Z"
+    },
+    {
+      "number": "0.4.0",
+      "date": "2016-03-14T18:05:10.044Z"
+    },
+    {
+      "number": "0.4.1",
+      "date": "2016-03-14T22:45:07.307Z"
+    },
+    {
+      "number": "0.5.0",
+      "date": "2016-05-19T07:44:59.255Z"
+    },
+    {
+      "number": "0.5.1",
+      "date": "2016-05-19T20:13:08.311Z"
+    },
+    {
+      "number": "0.5.2",
+      "date": "2016-05-29T05:15:02.789Z"
+    },
+    {
+      "number": "0.5.3",
+      "date": "2016-05-30T02:06:31.606Z"
+    }
+  ],
+  "created": "2016-02-19T05:45:25.726Z",
+  "modified": "2016-05-30T02:06:31.606Z",
+  "lastPublisher": {
+    "name": "mappum",
+    "email": "mappum@gmail.com"
+  },
+  "owners": [
     {
       "name": "mappum",
       "email": "mappum@gmail.com"
     }
   ],
-  "_npmOperationalInternal": {
-    "host": "packages-16-east.internal.npmjs.com",
-    "tmp": "tmp/peer-exchange-0.5.3.tgz_1464573989595_0.3330275509506464"
-  }
+  "readme": "# peer-exchange\n\n[![npm version](https://img.shields.io/npm/v/peer-exchange.svg)](https://www.npmjs.com/package/peer-exchange)\n[![Build Status](https://travis-ci.org/mappum/peer-exchange.svg?branch=master)](https://travis-ci.org/mappum/peer-exchange)\n[![Dependency Status](https://david-dm.org/mappum/peer-exchange.svg)](https://david-dm.org/mappum/peer-exchange)\n\n**Decentralized peer discovery and signaling**\n\n`peer-exchange` is a decentralized protocol for peer exchange and signaling. It reduces dependency on centralized peer exchange hubs, which may be useful in some applications.\n\n## Usage\n\n`npm install peer-exchange`\n\n```js\nvar Exchange = require('peer-exchange')\n\nvar ex = new Exchange('some-network-id') // pick some ID for your network\n\n// optionally specify you want to accept incoming connections\nex.accept('websocket', { port: 8000 })\nex.accept('tcp', { port: 8001 })\nex.accept('webrtc')\n\nex.on('peer', (peer) => {\n  console.log('connected to peer:', peer.socket.transport, peer.remoteAddress)\n})\n\n// bootstrap by connecting to a few already-known initial peers\nex.connect('websocket', '10.0.0.1', { port: 8000 }, (err, peer) => { ... })\nex.connect('tcp', '10.0.0.2', { port: 8000 }, (err, peer) => {\n  // `peer` is a duplex stream\n\n  // now that we're connected, we can request more peers from our current peers.\n  // this selects a peer at random and queries it for a new peer:\n  ex.getNewPeer((err, peer) => {\n    console.log('a random peer sent us a new peer:', peer.socket.transport, peer.remoteAddress)\n    // `peer` is a duplex stream\n  })\n})\n```\n\n### API\n\n## Exchange\n\n```js\nvar Exchange = require('peer-exchange')\n```\n\n#### Methods\n\n\n#### `var ex = new Exchange(networkId, [opts])`\n\nCreates a new exchange, which is used to manage connections to peers in a P2P network. After we establish some initial connections, we can query our current peers for new peers. Additionally, we will share peers when we receive queries.\n\n`networkId` should be a string unique to the network. Nodes can only peer with other nodes that use the same ID. If you need to participate in multiple networks, create multiple `Exchange` instances with different IDs.\n\n`opts` can contain the following properties:\n - `wrtc`, *Object* - A WebRTC implementation for Node.js clients (e.g. [`wrtc`](https://github.com/js-platform/node-webrtc) or [`electron-webrtc`](https://github.com/mappum/electron-webrtc)). In browsers, the built-in implementation is used by default.\n - `transports`, *Object* - Manually specify connection transport interfaces. By default, the available transports are `websocket`, `tcp` (if in Node.js), and `webrtc` (if `wrtc` opt is supplied or if in browser). The built-in transports are exposed as `require('peer-exchange').transports`.\n\n----\n#### `ex.connect(transport, host, opts, [callback])`\n\nManually connects to a peer. This is necessary to bootstrap our exchange with initial peers which we can query for additional peers.\n\n`transport` should be a string that specifies the name of the transport to connect with (e.g. `'websocket'` or `'tcp'`).\n\n`host` is the network address of the remote peer.\n\n`opts` is an object containing transport options (e.g. `{ port: 8000 }`).\n\n`callback` will be called with\n`callback(err, peer)`.\n\n----\n#### `ex.getNewPeer([callback])`\n\nRandomly selects a peer we are connected to, and queries it for a new peer. A connection will be made with the new peer, using the already-connected peer as a relay (for signaling, NAT traversal, etc.).\n\nThis will error if our exchange is not yet connected to any peers.\n\n`callback` will be called with `callback(err, peer)`.\n\n----\n#### `ex.accept(transport, opts, [callback])`\n\nBegins accepting incoming peer connections on a transport.\n\n`transport` should be a string that specifies the name of the transport to accept connections with (e.g. `'websocket'`, `'webrtc'`, or `'tcp'`).\n\n`opts` is an object containing transport options (e.g. `{ port: 8000 }`).\n\n`callback` is called with `callback(err)` when the exchange is ready to accept incoming connections (or when an error occurs during setup).\n\n----\n#### `ex.unaccept(transport)`\n\nStops accepting incoming peer connections on a transport.\n\n`transport` should be a string that specifies the name of the transport to accept connections with (e.g. `'websocket'`, `'webrtc'`, or `'tcp'`).\n\n----\n#### `ex.close([callback])`\n\nCloses all peer connections in the exchange and stops accepting incoming connections.\n\n`callback` is called with `callback(err)` when the exchange is closed (or when an error occurs).\n\n----\n\n#### Properties\n\n#### `ex.peers`\n\nAn array of connected peers. Useful for iterating through peers or getting the number of connections, but mutating this array will cause undefined behavior.\n\n#### `ex.id`\n\nThe network ID provided in the constructor.\n\n----\n\n#### Events\n\n#### `ex.on('peer', function (peer) { ... })`\n\nEmitted whenever a new peer connection is established (both incoming and outgoing).\n\n#### `ex.on('error', function (err) { ... })`\n\nEmitted when an error occurs.\n\n----\n\n## Peer\n\n`Peer` objects are returned by `Exchange#connect()`, `Exchange#getNewPeer()`, and `Exchange#on('peer')`.\n\n`Peer` is a duplex stream, which streams data over the transport to/from the remote peer.\n\n### Methods\n\n#### `peer.getNewPeer([callback])`\n\nQueries this peer for a new peer. A connection will be made with the new peer, using the already-connected peer as a relay (for signaling, NAT traversal, etc.).\n\n`callback` will be called with `callback(err, peer)`.\n\n----\n#### `peer.destroy()`\n\nCloses this peer connection and frees its resources.\n\n----\n#### Properties\n\n#### `peer.socket`\n\nThe transport DuplexStream for this peer connection.\n\n#### `peer.socket.transport`\n\nA string containing the name of the transport this connection is using.\n\n#### `peer.remoteAddress`\n\nA string containing the network address of the remote peer.\n\n----\n#### Events\n\n#### `ex.on('close', function () { ... })`\n\nEmitted when the connection closes.\n\n#### `ex.on('error', function (err) { ... })`\n\nEmitted when an error occurs.\n\n----\n## Transport Interface\n\n**TODO**\n\n(See `src/transports.js` for now)\n\n## Security Notes\n\nSome efforts were made to make this module DoS-resistant, but there are probably still some weaknesses.\n\nIt is recommended to use an authenticated transport (e.g. 'wss') for initial nodes to prevent MITM (attackers would be able to control all your peers, which can be very bad in some applications).\n\n## Comparison with `signalhub`\n\nThis module provides functionality similar to [`signalhub`](https://github.com/mafintosh/signalhub), where P2P nodes can get addresses of new peers and establish connections by relaying signaling data. However, this module differs by getting all nodes to provide this \"hub\" service, rather than a few centralized servers. It also only exchanges currently-connected peer addresses rather than providing general-purpose broadcasting.\n\nNote that `signalhub` may be better suited for some applications, for instance when connecting to peers in small swarms when no peer addresses are initially known (e.g. torrent swarms). In the future, a DHT could help with finding initial peers for this sort of use case.\n"
 }

@@ -1,0 +1,135 @@
+{
+  "name": "newslynx",
+  "description": "A platform for measuring the quantitative and qualitative impact of journalism.",
+  "version": "1.2.1",
+  "scripts": {
+    "test": "mocha",
+    "start": "gulp && forever start ./bin/www.js run",
+    "compile": "gulp",
+    "start-automation": "gulp && forever -a -l /opt/newslynx/logs/app.log start ./bin/www.js run",
+    "forever-list": "forever list",
+    "forever-stop": "forever stop bin/www.js",
+    "forever-restart": "forever restart bin/www.js",
+    "start-https": "NEWSLYNX_ENV=https gulp && forever start ./bin/www.js run",
+    "dev": "bash bin/dev.sh",
+    "watch-files": "gulp watch-files",
+    "watch-server": "nodemon -e jade,json,js,styl --ignore public/* ./bin/www.js run"
+  },
+  "dependencies": {
+    "body-parser": "~1.0.0",
+    "chalk": "^1.0.0",
+    "compression": "^1.2.0",
+    "debug": "~0.7.4",
+    "express": "~4.0.0",
+    "express-session": "^1.11.3",
+    "forever": "^0.14.2",
+    "fs-plus": "^2.8.1",
+    "gulp": "^3.9.0",
+    "gulp-concat": "^2.6.0",
+    "gulp-plumber": "^1.0.1",
+    "gulp-sourcemaps": "^1.5.2",
+    "gulp-stylus": "^2.0.5",
+    "gulp-uglify": "^1.2.0",
+    "indian-ocean": "^0.4.0",
+    "jade": "~1.9.0",
+    "js-yaml": "^3.3.0",
+    "level": "^1.3.0",
+    "level-session-store": "^2.0.1",
+    "mocha": "^2.2.5",
+    "morgan": "~1.0.0",
+    "nib": "^1.1.0",
+    "nodemon": "^1.3.7",
+    "queue-async": "^1.0.7",
+    "request": "2.x",
+    "serve-favicon": "~2.0.1",
+    "stylus": "~0.48.0",
+    "tracer": "~0.7.1",
+    "underscore": "1.6.x",
+    "user-home": "^2.0.0"
+  },
+  "main": "./bin/www",
+  "repository": {
+    "user": "newslynx",
+    "repo": "newslynx-app",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/newslynx/newslynx-app/tarball/master",
+    "clone_url": "https://github.com/newslynx/newslynx-app",
+    "https_url": "https://github.com/newslynx/newslynx-app",
+    "travis_url": "https://travis-ci.org/newslynx/newslynx-app",
+    "zip_url": "https://github.com/newslynx/newslynx-app/archive/master.zip",
+    "api_url": "https://api.github.com/repos/newslynx/newslynx-app"
+  },
+  "keywords": [
+    "analytics",
+    "journalism",
+    "impact",
+    "qualitative",
+    "quantitative",
+    "tow center",
+    "columbia"
+  ],
+  "author": {
+    "name": "Michael Keller"
+  },
+  "license": "CC-BY-NC-SA-4.0",
+  "homepage": "https://github.com/newslynx/newslynx-app#readme",
+  "_npmVersion": "2.11.3",
+  "_nodeVersion": "2.3.3",
+  "dist": {
+    "shasum": "644a9464415a8b144e6189acc1fb31a2bd7f16da",
+    "tarball": "http://registry.npmjs.org/newslynx/-/newslynx-1.2.1.tgz"
+  },
+  "versions": [
+    {
+      "number": "0.0.0",
+      "date": "2015-06-26T17:33:21.119Z"
+    },
+    {
+      "number": "0.0.1",
+      "date": "2015-07-14T04:04:34.745Z"
+    },
+    {
+      "number": "1.0.1",
+      "date": "2015-08-20T04:19:51.921Z"
+    },
+    {
+      "number": "1.0.3",
+      "date": "2015-09-16T00:57:05.362Z"
+    },
+    {
+      "number": "1.0.4",
+      "date": "2015-09-16T01:16:09.116Z"
+    },
+    {
+      "number": "1.0.5",
+      "date": "2015-09-17T01:34:06.588Z"
+    },
+    {
+      "number": "1.1.0",
+      "date": "2015-09-17T01:46:43.385Z"
+    },
+    {
+      "number": "1.2.0",
+      "date": "2015-10-10T04:57:14.286Z"
+    },
+    {
+      "number": "1.2.1",
+      "date": "2015-10-19T02:31:49.572Z"
+    }
+  ],
+  "created": "2015-06-26T17:33:21.119Z",
+  "modified": "2015-10-19T02:31:49.572Z",
+  "lastPublisher": {
+    "name": "mhkeller",
+    "email": "michael.keller@gmail.com"
+  },
+  "owners": [
+    {
+      "name": "mhkeller",
+      "email": "michael.keller@gmail.com"
+    }
+  ],
+  "readme": "NewsLynx App\n============\n\n> The NewsLynx web interface\n\n<a href=\"http://travis-ci.org/newslynx/newslynx-app\"><img src=\"https://camo.githubusercontent.com/507081a96e700a6ff393e8263e71856a85cb2f1a/68747470733a2f2f7365637572652e7472617669732d63692e6f72672f6d686b656c6c65722f696e6469616e2d6f6365616e2e706e673f6272616e63683d6d6173746572267374796c653d666c61742d737175617265\" alt=\"Build Status\" data-canonical-src=\"https://secure.travis-ci.org/newslynx/newslynx-app.png?branch=v2&amp;style=flat-square\" style=\"max-width:100%;\"></a>\n\nThis project is a part of [research project](http://towcenter.org/research/the-newslynx-impact-tracker-produced-these-key-ideas/) at the [Tow Center for Digital Journalism](http://towcenter.org) at Columbia University by Michael Keller & Brian Abelson.\n\nRead our [**full documentation**](http://newslynx.readthedocs.org) for installing your own instance. The instructions below cover installing and developing the app as well as architectural documentation on how it works.\n\nSince a lot of functionality is intertwined across different repositories, **please post all issues to our [project issue tracker](https://github.com/newslynx/opportunities/issues).**\n\n![](assets/articles.png)\n\nGetting started\n---------------\n\nInstall dependencies with `npm install`.\n\nIf you haven't run `newslynx init` by following the [full install instructions](http://newslynx.readthedocs.org/en/latest/config.html), you can still test out the app by creating `.newslynx` folder in your home folder and creating a `config.yaml` file that looks like the following (change the secret key to something else or not if you're simply testing):\n\n````yaml\napi_version: v1\napp_secret_key: chicken-burrito-grande\nhttps: false\napi_url: http://localhost:5000\n````\n\nTo recap, if you want to do a dry run to make sure the app runs locally but you haven't configured / ran the api yet, make a file that looks like the one above and put it in `~/.newslynx/config.yaml`. Without having a server running locally, you won't get passed the login page, but at least you can make sure you get that far.\n\n### Running the server\n\nTo start the server, run\n\n````bash\nnpm start\n````\n\nThis compiles your CSS and JS and runs the server with [Forever](https://github.com/foreverjs/forever).\n\nWhen you see the following, it's done and you can visit <http://localhost:3000>.\n\n**Note**: If you are running this in production, you want to run it in behind https and tell the app you are doing so one of two ways:\n\n1. Run it with the environment variable `NEWSLYNX_ENV=https`\n2. Set `https: true` in your `~/.newslynx/config.yaml` file\n\nThis will make sure your cookies are set securely.\n\n````\n#####################################\n# HTTP listening on 0.0.0.0:3000... #\n#####################################\n````\n\nOther start up commands \n-----\n\nAlternate commands are in [`package.json`](package.json) under [`scripts`](package.json#L5). \n\n#### Developing locally\n\nIf you want to modify files and have the CSS and JS re-compiled automatically and the server restarted if necessary, do:\n\n````\nnpm run dev\n````\n\nIf you just want to watch the CSS and JS and re-compile when on change, do:\n\n````\nnpm run watch-files\n````\n\nIf you just want to watch the Express server and restart when its files change (templates, server js files), do:\n\n````\nnpm run watch-server\n````\n\nThese last two commands are best run in tandem in two separate shell windows. `npm run dev` does them both in one window for convenience.\n\nThe final command listed is `npm test`, which will run a simple test to make sure the server can launch.\n\n*** \n***\n\nDocumentation\n-------------\n\nThis documentation will explain the architecture and design patterns in use in the Express app and each section's Backbone app.\n\n### Overall architecture\n\n---\n\nThe NewsLynx app has two main components:\n\n1. An [ExpressJS server-side](http://expressjs.com/) JavaScript application, which is concerned with authentication, sessioning and requesting data from the api. We'll refer to this as the **\"Express app\"** or the **\"Express side.\"**\n2. A combination of multiple JavaScript [Single-Page Applications](https://en.wikipedia.org/wiki/Single-page_application). Each \"page\" in NewsLynx — currently Settings, Approval River, Articles and the Submit event page — are their own front-end JavaScript apps written using the [Backbone framework](http://backbonejs.org). We'll refer to this as the **\"front-end.\"**\n\nThe front-end code communicates with the Express side through Express **routes** as defined in [`lib/routes/`](lib/routes/). Probaby the most important route [is the one](lib/routes/organizations.js#L49-L52) that redirects any URL that starts with `/api/` to the api endpoint and returns a JSON response.\n\n### Express App architecture \n\n---\n\n#### Running the app\n\nThe main Express app file is [`lib/app.js`]. This file glues all the Express middleware together such as sessioning, cookies, routes and determines some logic for which routes require authentication. \n\nTo run the app, you can start it from the command line through the file [`bin/www.js`](bin/www.js) by providing the `run` argument like so:\n\n````\n./bin/www.js run\n````\n\nIt defaults to port `3000` but that can be changed with a second argument\n\n````\n./bin/www.js run 3001\n````\n\nIn production and development, however, we run the server with [Forever](package.json#L6) and [Nodemon](bin/dev.sh), respectively. These tools have better support for keeping a NodeJS server alive for long periods of time. Nodemon is used in development since it can restart the server whenever files are modified.\n\n#### Templates and loading CSS\n\nTemplates are written in [Jade](http://jade-lang.com/) and found in [`lib/views/`]. They extend from [`lib/views/layout.jade`](lib/views/layout.jade) which specifies \"blocks\" that subviews will insert themselves into. Here's what `layout.jade` looks like:\n\n````jade\ndoctype html\nhtml\n  head\n    title NewsLynx | \n      = info.title\n    block css\n    link(rel='stylesheet', href='/stylesheets/octicon/octicons.css')\n    link(rel='stylesheet', href='/stylesheets/css/#{info.page}.css')\n  body(data-section=\"#{info.page}\")\n    #main-wrapper\n      block main-wrapper-contents\n    #global-loading\n    block bootstrap-data\n    block templates\n    block scripts\n````\n\n**Note:** If you open up [`layout.jade`](lib/views/layout.jade) you'll see it has all of this ugly JavaScript describing menu items like `Copy`, `Paste` and `Reload`. This is to construct menu items for the [Desktop application](http://github.com/newslynx/newslynx-electron) so we're skipping that here.\n\nYou can see two variables here, `title` and `page`. These are important, since, as you can see, that variable name determines what CSS file is loaded, which we'll explain more in the [StyleSheets with Stylus](#stylesheets-with-Sstylus) section below. Generally, you can see that a **page-specifi** variable name will determine which CSS file we load. These variables match exactly the route name, for example, when you go to `/settings`, `info.title` is set to `Settings` in [`lib/routes/pages.js`](lib/routes/pages.js#L103) near line 103, which is then run through the `sanitize` function, which will put it in lowercase and replace spaces with dashes. We'll then fetch the file at `/stylesheets/css/settings.css`. \n\nA **page** data attribute is also set on the body, which is used for loading **page-specific** JavaScript files and is discussed below in [How page-specific JavaScript is loaded](how-page-specific-javascript-is-loaded).\n\nSo, with this main `layout.jade` file, we then have **page-specific** jade files which insert blocks. Each of these inherit from [`lib/views/page.jade`](lib/views/page.jade)\n\nHere's what that file looks like:\n\n````jade\nextends layout\n\nblock main-wrapper-contents\n  include includes/left-rail/index.jade\n  #drawer(data-loading=\"true\")\n    block drawer\n  #content(data-loading=\"true\")\n    block content\n````\n\nTake a look at [`lib/views/settings.jade`](lib/views/settings.jade) for an example of a **\"Page\"** layout file, which inserts code into the `drawer` block, or the `content` block.\n\n#### Authentication & interacting with the Core API\n\nEvery API call must include `org` and `apikey` query parameters. Read more in the [Newslynx Core](http://newslynx.readthedocs.org/en/latest/api.html#authentication) documentation for more specifics. As far as the App is concerned, all user login operations are handled by routes in [`lib/routes/organizations.js`](lib/routes/organizations.js).\n\nLogging in is done by sending a POST request to `/login` containing the following data:\n\n````json\n{\n  \"email\": \"<string>\",\n  \"password\": \"<string>\",\n  \"remember_me\": \"<string>\"\n}\n````\n\nThe `remember_me` value is set via a checkbox, which will serialize to `on` if checked and falsey if not. That value will set the `maxAge` of the session cookie to the distant future so that a user does not need to enter their information until they logout.\n\n[You can see](lib/routes/organizations.js#L26) it's also doing a few things with this `redirect_url` business. The idea here is that if you have not authenticated, and you want to go to, says, `/articles`, you will be redirected to login. After you login, the expectation is that you will proceed to where you originally intended. To do that is both simple and complicated.\n\n**The simple part** is that you can stash the incoming url on the `req.session` object, which is what we do initially in [`app.js`](lib/app.js#L93) near line 93. That url won't include anything in the hash, however, because the server never receives that information — it considers it below its station, it is the domain of the client and must not rise to such peaks.\n\nFor example, if we go to `/articles#detail`, Express only sees `/articles` as the page. This is better than nothing, though, so we save it as `req.session.redirect_page`. So how do we save the `#` stuff?\n\n**The complicated part** is that we can save the hash client-side once we get to the login page by putting in some javascript that writes the hash to a hidden input field. When we submit our login form, we also submit the page where we intended to go. The jade template inserts that markup below the `Remember me` button:\n\n````jade\n  .form-row\n    label \n      input(type='checkbox' name=\"remember_me\") \n      | Remember me\n    //- Handle redirects by stashing the # portion of the url in a hidden field, which will then be picked up by our login POST endpoint\n    script.\n      var href = document.location.href\n      if (href.indexOf('logout') === -1){\n        document.write('<input type=\"hidden\" name=\"redirect_url\" value=\"'+href+'\"/>');\n      }\n````\n\n**Note** How we don't stash this if we are on the `logout` page since we would be redirected to logging out.\n\nSo if we want to go to the `/articles#detail` page, the object we POST actually looks like this:\n\n````json\n{\n  \"email\": \"<string>\",\n  \"password\": \"<string>\",\n  \"remember_me\": \"<string>\",\n  \"redirect_url\": \"/login#detail\"\n}\n````\n\nNotice how it thinks we want to go to the login page, plus our original hash, even though we requested `/articles#detail`. This is because the `document.location.href` is executing on the login page. So it preserves our hash but not the page!\n\nPutting two and two together, Express was able to store the page, but not the hash. The client can store the hash, but not the original page. The rest of the code in our login POST endpoint replaces the `/login` with our previously saved page. Phew!\n\nThis request is then forwarded to the **almighty auth.relay** function, which handles communication with the **Core API**. It deserves a few words.\n\n##### Talking to the Core API\n\nAll communication with the **Core API** is handled throgh [`lib/utils/auth.js`](lib/utils/auth.js). For logging in this, means setting data under `auth`. More generally, it adds our apikey and org id from the session to sign each request and adds the API url, as set in our `config.yaml` file, and **always** returns JSON. The file itself is heavily commented for what each part does specifically but as an overview, if the **Express App** wants to talk to the **Core API**, it goes through the relay.\n\n#### Sessioning with LevelDB\n\nThe app keeps track of whether a user is logged in by setting a cookie on the person's browser with a **Session ID**.The **Session ID** stores the user's api key in a LevelDB database, which is written out to the [`lib/db/`](lib/db/) folder. \n\nThis whole process is largely abstracted thanks to the use of two libraries: \n\n1. [express-session](https://www.npmjs.com/package/express-session) handles communicating with the browser's cookies\n2. [level-session-store](https://www.npmjs.com/package/level-session-store) handles putting our sessions in the database.\n\nThis process is configured in [`lib/app.js`](lib/app.js). We include a flag for storing the session securely if we are in an https production environment, which is set as explained above in [Getting started](#Getting-started).\n\n````js\nvar sessInfo = {\n  store: new LevelStore(path.join(__dirname, 'db')),\n  secret: NEWSLYNX_CONFIG.app_secret_key,\n  resave: true,\n  saveUninitialized: true,\n  unset: 'destroy',\n  cookie: {secure: false}\n};\n\n// If we are running in a secure environment\nif (app.get('env') === 'https' || NEWSLYNX_CONFIG.https === true) {\n  app.set('trust proxy', 1) // Trust the first proxy\n  sessInfo.cookie.secure = true\n}\n````\n\n#### Bootstrapping and transforming data\n\nCurrently, on initial load for any of your main **Pages**, the Express app will make a bunch of calls to the API and package up this data as a global data object called `pageData`. You can see how all this plays out in the [`lib/routes/pages.js`](lib/routes/pages.js) file. \n\nWe currently [have an open issue](https://github.com/newslynx/opportunities/issues/25) to change this pattern so that Backbone collections fetch their own data on load. The advantage with this change is that the user will see the page change more quickly than with the current setup. For example, from the Home screen, if you click \"Approval River,\" that data is all fetched asynchronously by the Express app but then your browser loads it all in one big object, which is why you hang on that Loading gif of Merlynne making potions a few seconds.\n\nWe built it this way, essentially, because that's the way we first set it up. The **benefit** of doing it this way is we are also doing a number of transformations on the data and the fact that we serialize the JSON data (i.e. convert it to a string and then back out to JSON) lets us not worry about mutating data in unexpected ways (because objects are passed by reference, not duplicated in JavaScript, you can easily modify an object in one place and unexpectedly see those changes reflected in elsewhere as well).\n\nFor example, our articles come back from the server with a list of **Subject tag ids**. We then [hydrate](lib/utils/transform.js#L68) these ids with the full subject tag info. If we weren't careful, we would really only have one copy of this object instead of multiple. The consequence of that is if we delete a subject tag off of one article, it would be removed from every article. \n\nThis problem is not insurmountable, but I explain it here to point out some of the advantages of the current system and things to keep in mind for shifting to another system.\n\nAll of the transformations are stored in [`lib/utils/transform.js`](lib/utils/transform.js)\n\n### Front-end architecture\n\n---\n\n#### Build process with Gulp\n\nThe front-end JavaScript is written in separate files that are meant to be concatenated together and minified. We use [Gulp](http://gulpjs.com/) to do this and watch those files for changes. Gulp also transforms our Stylus files into normal CSS files. Checkout the [Gulpfile](gulpfile.js), which orchestrates all the events.\n\nThe final concatenated JavaScript file is saved to [`lib/public/javascripts/main.bundled.js`](lib/public/javascripts/main.bundled.js) and that file is loaded in every **page template**. Let's look at the hierarchy of these javascript files, which are all in\n\nThis is the order in which the gulpfile concatenates them:\n\n````js\n// ...\n  js: [\n    './lib/public/javascripts/namespace.js',\n    './lib/public/javascripts/helpers/*.js',\n    './lib/public/javascripts/models/*.js',\n    './lib/public/javascripts/collections/*.js',\n    './lib/public/javascripts/views/*.js',\n    './lib/public/javascripts/app/*.js',\n    './lib/public/javascripts/routing/*.js',\n    './lib/public/javascripts/init.js'\n  ]\n\n// ...\n````\n\nBecause these files are concatenated in alphabetical order, views or other files that are meant to be extended are given the file name prefix `AA_` to make sure they are loaded first.\n\nLet's look at [`namespace.js`](lib/public/javascripts/namespace.js) in particular, since that's the first file and it will give us some sense of the structure the rest of the files are built around. This file creates our top-level objects we'll be using throughout the app:\n\n````js\n'use strict';\nvar helpers = {};\nvar templates = {};\nvar models = {};\nvar collections = {};\nvar app = {};\nvar views = {};\nvar routing = {};\n````\n\nWe'll look at these more in detail in the [How page-specific JavaScript is loaded](#How-page-specific-JavaScript-is-loaded) section. For now, just note how these main objects are what the rest of the files add functions and objects to.\n\n\nFor styles, gulp puts page-specific CSS files in the `css/` folder. This is discussed more in detail in the next section, [Stylesheets with Stylus](#stylesheets-with-stylus).\n\n#### Stylesheets with Stylus\n\nThe app uses a CSS preprocessor called [Stylus](https://learnboost.github.io/stylus/), which is a NodeJS package. These files are in [`lib/public/stylesheets/`](lib/public/stylesheets/). Each **page** has its own **top level file** such as `articles.styl`, `home.style`, `approval-river.styl` etc.\n\nStyles are broken into smaller files so they can be more easily reused across views. These are all in [`lib/public/stylesheets/blueprint/`](lib/public/stylesheets/blueprint). Even smaller stylus files that are reused across \"blueprint\" files are in the the [`modules`](`lib/public/stylesheets/blueprint/`) subfolder. The nested folder structure helps show which files are meant to be used as shared assets.\n\nDuring the [build process](#build-process-with-gulp), the **top level files** for each **page** are written into the `css/` folder at [`lib/public/stylesheets/css/`](lib/public/stylesheets/css/). To bring it full circle, these files, `articles.css`, `home.css`, `approval-river.css` are what `layout.jade` calls based on the `info.page` variable, [as explained above](#templates-and-loading-CSS).\n\n````jade\nlink(rel='stylesheet', href='/stylesheets/css/#{info.page}.css')\n````\n\n#### How page-specific JavaScript is loaded\n\nAs explained in the [Build process with Gulp](#Build-process-with-Gulp), the JavaScript is baked out into one file [`main.bundled.js`](lib/public/javascripts/main.bundled.js) unlike the CSS files, which are page-specific. Which JavaScript functions get executed, however, is determined through the same `info.page` variable.\n\nIn the main [`layout.jade`](lib/views/page.jade) file, the HTML `<body>` element gets a page-specific data-attribute like so:\n\n````jade\nbody(data-section=\"#{info.page}\")\n````\n\nWhen the JavaScript file are loaded, they call corresponding functions and the page-specific code gets executed. In the [build process section](#Build-process-with-Gulp), we discussed the order in which these files were concatenated,the last element in that list is the first file we look to to run our app, [`init.js`](lib/public/javascripts/init.js).\n\nIf you look at this file, you'll see that each of the objects in our [`namespace.js`](lib/public/javascripts/namespace.js) has an `init` object, that contain **page-specific** functions. When we load a page, we grab that data-attribute off of `<body>` and that dictates which function groups to execute off of these objects.\n\nIn this way, the app's models, collections and views are instantiated by the main `init` object at the bottom of this file, which looks like this:\n\n````js\nvar init = {\n  go: function(){\n    // Call the page specific functions\n    var section = $('body').attr('data-section');\n    // Their `this` should be the root object so you can still say `this.` even though you're nested in the object\n    templates.init[section].call(templates);\n    models.init[section].call(models);\n    collections.init[section].call(collections);\n    app.init[section].call(app);\n    routing.init.go.call(routing, section);\n  }\n}\n\ninit.go();\n````\n\nThe main view for each page is the `app.instance` object.\n\n### Form serialization\n\nThe app uses the library [`jquery.serializeJSON`](https://github.com/marioizquierdo/jquery.serializeJSON) to turn all form elements into JSON objects. Check out the `getSettings` function in [`AA_BaseForm.js`](lib/public/javascripts/views/AA_BaseForm.js#L541) near line 541 for the details of that implementation.\n\n### Settings\n\n#### Change detection\n\n#### Modal windows\n\n### Approval River\n\n#### Form construction\n\n#### Form validation\n\n### Articles\n\n#### Comparison view\n\n#### Isotope\n\n#### Detail view\n\n\n## License\n\n<a rel=\"license\" href=\"http://creativecommons.org/licenses/by-nc-sa/4.0/\"><img alt=\"Creative Commons License\" style=\"border-width:0\" src=\"https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png\" /></a><br />This work is licensed under a <a rel=\"license\" href=\"http://creativecommons.org/licenses/by-nc-sa/4.0/\">Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License</a>.\n\n\n"
+}

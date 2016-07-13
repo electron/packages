@@ -5,11 +5,17 @@
   "main": "lib/storage.js",
   "homepage": "https://github.com/jviotti/electron-json-storage",
   "repository": {
-    "type": "git",
-    "url": "git://github.com/jviotti/electron-json-storage.git"
-  },
-  "directories": {
-    "test": "tests"
+    "user": "jviotti",
+    "repo": "electron-json-storage",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/jviotti/electron-json-storage/tarball/master",
+    "clone_url": "https://github.com/jviotti/electron-json-storage",
+    "https_url": "https://github.com/jviotti/electron-json-storage",
+    "travis_url": "https://travis-ci.org/jviotti/electron-json-storage",
+    "zip_url": "https://github.com/jviotti/electron-json-storage/archive/master.zip",
+    "api_url": "https://api.github.com/repos/jviotti/electron-json-storage"
   },
   "scripts": {
     "test": "electron-mocha --recursive tests -R progress && electron-mocha --renderer --recursive tests -R progress",
@@ -43,30 +49,38 @@
     "rimraf": "^2.5.1"
   },
   "gitHead": "a131b5397651499e479bc4cebf6b8d1a16604892",
-  "bugs": {
-    "url": "https://github.com/jviotti/electron-json-storage/issues"
-  },
-  "_id": "electron-json-storage@2.0.0",
-  "_shasum": "10236154e0b14a2ca84a71fa483579e3213b669c",
-  "_from": ".",
   "_npmVersion": "2.14.12",
   "_nodeVersion": "4.2.4",
-  "_npmUser": {
-    "name": "jviotti",
-    "email": "jviottidc@gmail.com"
-  },
   "dist": {
     "shasum": "10236154e0b14a2ca84a71fa483579e3213b669c",
     "tarball": "http://registry.npmjs.org/electron-json-storage/-/electron-json-storage-2.0.0.tgz"
   },
-  "maintainers": [
+  "stars": 3,
+  "versions": [
+    {
+      "number": "1.0.0",
+      "date": "2016-01-26T00:37:49.647Z"
+    },
+    {
+      "number": "1.1.0",
+      "date": "2016-02-17T21:02:29.826Z"
+    },
+    {
+      "number": "2.0.0",
+      "date": "2016-02-26T14:25:18.267Z"
+    }
+  ],
+  "created": "2016-01-26T00:37:49.647Z",
+  "modified": "2016-02-26T14:25:18.267Z",
+  "lastPublisher": {
+    "name": "jviotti",
+    "email": "jviottidc@gmail.com"
+  },
+  "owners": [
     {
       "name": "jviotti",
       "email": "jviottidc@gmail.com"
     }
   ],
-  "_npmOperationalInternal": {
-    "host": "packages-6-west.internal.npmjs.com",
-    "tmp": "tmp/electron-json-storage-2.0.0.tgz_1456496715480_0.8395055325236171"
-  }
+  "readme": "electron-json-storage\n=====================\n\n> Easily write and read user settings in Electron apps\n\n[![npm version](https://badge.fury.io/js/electron-json-storage.svg)](http://badge.fury.io/js/electron-json-storage)\n[![dependencies](https://david-dm.org/jviotti/electron-json-storage.svg)](https://david-dm.org/jviotti/electron-json-storage.svg)\n[![Build Status](https://travis-ci.org/jviotti/electron-json-storage.svg?branch=master)](https://travis-ci.org/jviotti/electron-json-storage)\n[![Build status](https://ci.appveyor.com/api/projects/status/j9k3k7mgraardwvd/branch/master?svg=true)](https://ci.appveyor.com/project/jviotti/electron-json-storage/branch/master)\n\n[Electron](http://electron.atom.io) lacks an easy way to persist and read user settings for your application. `electron-json-storage` implements an API somehow similar to [localStorage](https://developer.mozilla.org/en/docs/Web/API/Window/localStorage) to write and read JSON objects to/from the operating system application data directory, as defined by `app.getPath('userData')`.\n\nInstallation\n------------\n\nInstall `electron-json-storage` by running:\n\n```sh\n$ npm install --save electron-json-storage\n```\n\nYou can require this module from either the **main** or **renderer** process (with and without `remote`).\n\nDocumentation\n-------------\n\n\n* [storage](#module_storage)\n    * [.get(key, callback)](#module_storage.get)\n    * [.set(key, json, callback)](#module_storage.set)\n    * [.has(key, callback)](#module_storage.has)\n    * [.keys(callback)](#module_storage.keys)\n    * [.remove(key, callback)](#module_storage.remove)\n    * [.clear(callback)](#module_storage.clear)\n\n<a name=\"module_storage.get\"></a>\n### storage.get(key, callback)\nIf the key doesn't exist in the user data, an empty object is returned.\nAlso notice that the `.json` extension is added automatically, but it's\nignored if you pass it yourself.\n\nPassing an extension other than `.json` will result in a file created\nwith both extensions. For example, the key `foo.data` will result in a file\ncalled `foo.data.json`.\n\n**Kind**: static method of <code>[storage](#module_storage)</code>  \n**Summary**: Read user data  \n**Access:** public  \n\n| Param | Type | Description |\n| --- | --- | --- |\n| key | <code>String</code> | key |\n| callback | <code>function</code> | callback (error, data) |\n\n**Example**  \n```js\nconst storage = require('electron-json-storage');\n\nstorage.get('foobar', function(error, data) {\n  if (error) throw error;\n\n  console.log(data);\n});\n```\n<a name=\"module_storage.set\"></a>\n### storage.set(key, json, callback)\n**Kind**: static method of <code>[storage](#module_storage)</code>  \n**Summary**: Write user data  \n**Access:** public  \n\n| Param | Type | Description |\n| --- | --- | --- |\n| key | <code>String</code> | key |\n| json | <code>Object</code> | json object |\n| callback | <code>function</code> | callback (error) |\n\n**Example**  \n```js\nconst storage = require('electron-json-storage');\n\nstorage.set('foobar', { foo: 'bar' }, function(error) {\n  if (error) throw error;\n});\n```\n<a name=\"module_storage.has\"></a>\n### storage.has(key, callback)\n**Kind**: static method of <code>[storage](#module_storage)</code>  \n**Summary**: Check if a key exists  \n**Access:** public  \n\n| Param | Type | Description |\n| --- | --- | --- |\n| key | <code>String</code> | key |\n| callback | <code>function</code> | callback (error, hasKey) |\n\n**Example**  \n```js\nconst storage = require('electron-json-storage');\n\nstorage.has('foobar', function(error, hasKey) {\n  if (error) throw error;\n\n  if (hasKey) {\n    console.log('There is data stored as `foobar`');\n  }\n});\n```\n<a name=\"module_storage.keys\"></a>\n### storage.keys(callback)\n**Kind**: static method of <code>[storage](#module_storage)</code>  \n**Summary**: Get the list of saved keys  \n**Access:** public  \n\n| Param | Type | Description |\n| --- | --- | --- |\n| callback | <code>function</code> | callback (error, keys) |\n\n**Example**  \n```js\nconst storage = require('electron-json-storage');\n\nstorage.keys(function(error, keys) {\n  if (error) throw error;\n\n  for (var key of keys) {\n    console.log('There is a key called: ' + key);\n  }\n});\n```\n<a name=\"module_storage.remove\"></a>\n### storage.remove(key, callback)\nNotice this function does nothing, nor throws any error\nif the key doesn't exist.\n\n**Kind**: static method of <code>[storage](#module_storage)</code>  \n**Summary**: Remove a key  \n**Access:** public  \n\n| Param | Type | Description |\n| --- | --- | --- |\n| key | <code>String</code> | key |\n| callback | <code>function</code> | callback (error) |\n\n**Example**  \n```js\nconst storage = require('electron-json-storage');\n\nstorage.remove('foobar', function(error) {\n  if (error) throw error;\n});\n```\n<a name=\"module_storage.clear\"></a>\n### storage.clear(callback)\n**Kind**: static method of <code>[storage](#module_storage)</code>  \n**Summary**: Clear all stored data  \n**Access:** public  \n\n| Param | Type | Description |\n| --- | --- | --- |\n| callback | <code>function</code> | callback (error) |\n\n**Example**  \n```js\nconst storage = require('electron-json-storage');\n\nstorage.clear(function(error) {\n  if (error) throw error;\n});\n```\n\nSupport\n-------\n\nIf you're having any problem, please [raise an issue](https://github.com/jviotti/electron-json-storage/issues/new) on GitHub and I'll be happy to help.\n\nTests\n-----\n\nRun the test suite by doing:\n\n```sh\n$ npm test\n```\n\nContribute\n----------\n\n- Issue Tracker: [github.com/jviotti/electron-json-storage/issues](https://github.com/jviotti/electron-json-storage/issues)\n- Source Code: [github.com/jviotti/electron-json-storage](https://github.com/jviotti/electron-json-storage)\n\nBefore submitting a PR, please make sure that you include tests, and that [jshint](http://jshint.com) runs without any warning:\n\n```sh\n$ npm run-script lint\n```\n\nLicense\n-------\n\nThe project is licensed under the MIT license.\n"
 }

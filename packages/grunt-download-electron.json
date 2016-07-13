@@ -18,24 +18,71 @@
   ],
   "homepage": "https://github.com/electron/grunt-download-electron",
   "repository": {
-    "type": "git",
-    "url": "git+https://github.com/electron/grunt-download-electron.git"
-  },
-  "bugs": {
-    "url": "https://github.com/electron/grunt-download-electron/issues"
+    "user": "electron",
+    "repo": "grunt-download-electron",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/electron/grunt-download-electron/tarball/master",
+    "clone_url": "https://github.com/electron/grunt-download-electron",
+    "https_url": "https://github.com/electron/grunt-download-electron",
+    "travis_url": "https://travis-ci.org/electron/grunt-download-electron",
+    "zip_url": "https://github.com/electron/grunt-download-electron/archive/master.zip",
+    "api_url": "https://api.github.com/repos/electron/grunt-download-electron"
   },
   "gitHead": "611ec370ccb48f39fc128ddb637af008bb8c9ae4",
-  "_id": "grunt-download-electron@2.1.4",
   "scripts": {},
-  "_shasum": "0556f0a0b0ecf6a5b6d61372f3908dc73d5121c5",
-  "_from": ".",
   "_npmVersion": "2.10.1",
   "_nodeVersion": "0.12.4",
-  "_npmUser": {
+  "dist": {
+    "shasum": "0556f0a0b0ecf6a5b6d61372f3908dc73d5121c5",
+    "tarball": "http://registry.npmjs.org/grunt-download-electron/-/grunt-download-electron-2.1.4.tgz"
+  },
+  "versions": [
+    {
+      "number": "1.0.0",
+      "date": "2015-04-20T01:31:23.611Z"
+    },
+    {
+      "number": "1.0.1",
+      "date": "2015-04-20T01:45:16.369Z"
+    },
+    {
+      "number": "2.0.0",
+      "date": "2015-04-21T00:02:08.275Z"
+    },
+    {
+      "number": "2.0.1",
+      "date": "2015-04-23T21:16:17.755Z"
+    },
+    {
+      "number": "2.1.0",
+      "date": "2015-04-28T16:11:39.534Z"
+    },
+    {
+      "number": "2.1.1",
+      "date": "2015-04-30T22:12:47.452Z"
+    },
+    {
+      "number": "2.1.2",
+      "date": "2015-08-31T17:21:28.067Z"
+    },
+    {
+      "number": "2.1.3",
+      "date": "2016-04-04T19:51:14.351Z"
+    },
+    {
+      "number": "2.1.4",
+      "date": "2016-05-31T16:47:19.896Z"
+    }
+  ],
+  "created": "2015-04-20T01:31:23.611Z",
+  "modified": "2016-05-31T16:47:19.896Z",
+  "lastPublisher": {
     "name": "kevinsawicki",
     "email": "kevinsawicki@gmail.com"
   },
-  "maintainers": [
+  "owners": [
     {
       "name": "atom",
       "email": "nathan@github.com"
@@ -77,13 +124,5 @@
       "email": "zeke@sikelianos.com"
     }
   ],
-  "dist": {
-    "shasum": "0556f0a0b0ecf6a5b6d61372f3908dc73d5121c5",
-    "tarball": "http://registry.npmjs.org/grunt-download-electron/-/grunt-download-electron-2.1.4.tgz"
-  },
-  "_npmOperationalInternal": {
-    "host": "packages-16-east.internal.npmjs.com",
-    "tmp": "tmp/grunt-download-electron-2.1.4.tgz_1464713238004_0.84966059634462"
-  },
-  "directories": {}
+  "readme": "# grunt-download-electron\n\nGrunt tasks for downloading [Electron](https://github.com/electron/electron) and the\ncompatible version of `chromedriver`.\n\n## Installation\n\nInstall npm package, next to your project's `Gruntfile.js` file:\n\n```sh\nnpm install --save-dev grunt-download-electron\n```\n\nAdd this line to your project's `Gruntfile.js`:\n\n```js\ngrunt.loadNpmTasks('grunt-download-electron');\n```\n\n## Options\n\n* `version` - **Required** The version of Electron you want to download.\n* `outputDir` - **Required** Where to put the downloaded Electron release.\n* `downloadDir` - Where to find and save cached downloaded Electron releases.\n* `symbols` - Download debugging symbols instead of binaries, default to `false`.\n* `rebuild` - Whether to rebuild native modules after Electron is downloaded.\n* `apm` - The path to apm.\n* `token` - The [OAuth token](https://developer.github.com/v3/oauth/) to use for GitHub API requests.\n* `appDir` - Where to find the app when rebuilding the native modules.  Defaults to the current directory.\n\n### Usage\n\nAdd the necessary configuration to your `Gruntfile.js`:\n\n```js\nmodule.exports = function(grunt) {\n  grunt.initConfig({\n    'download-electron': {\n      version: '0.24.0',\n      outputDir: 'electron'\n    }\n  });\n};\n```\n\nor your `Gruntfile.coffee`:\n\n```coffee\nmodule.exports = (grunt) ->\n  grunt.initConfig\n    'download-electron':\n      version: '0.24.0'\n      outputDir: 'electron'\n```\n\nThen you can download Electron to the path you specified:\n\n```shell\n$ grunt download-electron\n```\n\nIf you're doing selenium-testing of your Electron app, you'll need\n`chromedriver`, which is distributed with Electron. To download it into the\n`electron` directory:\n\n```shell\n$ grunt download-electron-chromedriver\n```\n"
 }

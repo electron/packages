@@ -1,0 +1,114 @@
+{
+  "name": "file-bin",
+  "version": "0.6.1",
+  "description": "An abstraction for accessing the filesystem in Node.js.",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha",
+    "lint": "eslint index.js lib/ test/"
+  },
+  "repository": {
+    "user": "stevekinney",
+    "repo": "file-bin",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/stevekinney/file-bin/tarball/master",
+    "clone_url": "https://github.com/stevekinney/file-bin",
+    "https_url": "https://github.com/stevekinney/file-bin",
+    "travis_url": "https://travis-ci.org/stevekinney/file-bin",
+    "zip_url": "https://github.com/stevekinney/file-bin/archive/master.zip",
+    "api_url": "https://api.github.com/repos/stevekinney/file-bin"
+  },
+  "keywords": [
+    "filesystem"
+  ],
+  "author": {
+    "name": "Steve Kinney"
+  },
+  "license": "MIT",
+  "homepage": "https://github.com/stevekinney/file-bin#readme",
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "eslint": "^2.2.0",
+    "mocha": "^2.4.5",
+    "mock-fs": "^3.7.0"
+  },
+  "dependencies": {
+    "async": "^1.5.2"
+  },
+  "gitHead": "a92e9d48096b01965a1d2109f758e277f664c4d6",
+  "_npmVersion": "3.8.3",
+  "_nodeVersion": "5.10.1",
+  "dist": {
+    "shasum": "7a8ed65004f8ce5f223dd08a7d77a2c68109f233",
+    "tarball": "http://registry.npmjs.org/file-bin/-/file-bin-0.6.1.tgz"
+  },
+  "versions": [
+    {
+      "number": "0.1.0",
+      "date": "2016-02-17T21:09:51.130Z"
+    },
+    {
+      "number": "0.1.1",
+      "date": "2016-02-17T21:24:30.615Z"
+    },
+    {
+      "number": "0.2.0",
+      "date": "2016-02-18T15:58:41.430Z"
+    },
+    {
+      "number": "0.3.0",
+      "date": "2016-02-24T18:56:04.997Z"
+    },
+    {
+      "number": "0.4.0",
+      "date": "2016-02-24T20:31:15.947Z"
+    },
+    {
+      "number": "0.5.0",
+      "date": "2016-02-24T22:18:36.026Z"
+    },
+    {
+      "number": "0.5.1",
+      "date": "2016-02-25T21:32:11.490Z"
+    },
+    {
+      "number": "0.5.2",
+      "date": "2016-02-28T19:38:21.020Z"
+    },
+    {
+      "number": "0.6.0",
+      "date": "2016-05-03T21:11:06.043Z"
+    },
+    {
+      "number": "0.6.1",
+      "date": "2016-06-27T03:56:27.594Z"
+    }
+  ],
+  "created": "2016-02-17T21:09:51.130Z",
+  "modified": "2016-06-27T03:56:27.594Z",
+  "lastPublisher": {
+    "name": "stevekinney",
+    "email": "hello@stevekinney.net"
+  },
+  "owners": [
+    {
+      "name": "aaronc",
+      "email": "aaroncareaga@gmail.com"
+    },
+    {
+      "name": "joshuajhun",
+      "email": "joshuajhun@gmail.com"
+    },
+    {
+      "name": "rossedfort",
+      "email": "rossedfort@gmail.com"
+    },
+    {
+      "name": "stevekinney",
+      "email": "hello@stevekinney.net"
+    }
+  ],
+  "readme": "# File Bin\n\nFile Bin is an exercise in writing an abstraction for file system access in [Node.js].\n\n[Node.js]: http://nodejs.org\n\n## Why does this even exist?\n\nWe're doing a project at the [Turing School of Software and Design][turing] building a note-taking application using Ember and Electron. Ember Data was designed to work with APIs—not the filesystem.\n\n- `fs.readdir` returns an array of strings. APIs normally return an array of objects.\n- You have to distinguish between directories and files. `fs.read` doesn't work on directories.\n- Ember really likes promises and Node really likes callbacks. It would be nice to have an abstraction to bridge that gap.\n- We don't want to open weird Vim temp files and stuff like that. It would be cool if we could pass in an array of file extensions that we'd like to return.\n\n[turing]: http://turing.io\n\n## How does it work?\n\n### Instantiating an Instance\n\n```js\nconst FileBin = require('file-bin');\n\nlet fileBin = new FileBin('/base-directory', ['.md', '.txt']);\n```\n\nThe constructor takes two arguments:\n\n1. The base directory where we want to look for files.\n2. Valid extensions.\n\nYou can leave either blank. If you do, then it will default to `process.cwd()` and allowing all extensions respectively.\n\n### Finding a File\n\nInstances have a `#find` method that will look for a file with a given file name and return a promise.\n\n```js\nfileBin.find('README.md').then(file => {\n  console.log(file);\n});\n```\n\nThe resuling file has two properties: `id` and `content`. `id` is the file name. `content` is the content of the file.\n\n### Finding All of the Files\n\n`#all` will find all of the files in the base directory. If you provided an array of valid extensions, then it will filter by those extenions. The resulting files are fulling instantiated objects—just like `#find` above.\n\n**Note**: At this moment, File Bin does not support subdirectories. They are omitted.\n\n```js\nfileBin.all().then(files => console.log(files));\n```\n\n### Writing a File\n\n`#write` takes two arguments `fileName` and `content`. It will write the file to the filesystem and then return the object via a promise.\n\n```js\nfileBin.write('CONTRIBUTORS.md', 'Pull requests accepted')\n       .then(file => console.log(file));\n```\n\n### Copying a File\n\n`#copy` takes two arguments `sourceFile` and `copyFile`. It will write the copied file to the filesystem and then return the copy via a promise.\n\n```js\nfileBin.copy('orignal.md', 'original-copy.md')\n       .then(copy => console.log(copy));\n```\n\n### Renaming a file\n\n`#rename` takes two arguments `oldFileName` and `newFileName`. It will rename the old file to the specified new file name and return the file object via a promise.\n\n```js\nfileBin.rename('old-name.md', 'new-name.md')\n       .then((file, oldFileName, newFileName) => console.log(`${oldFileName} was successfully renamed to ${newFileName}.`)\n```\n\n### Destroying a file\n\n`#destroy` takes a single argument of the `fileName` that you want to delete. It will delete the specified file and return the `fileName` via a promise.\n\n```js\nfileBin.destroy('filename.md')\n  .then(console.log(`filename.md`))\n```\n\n### Copying a File\n\n`#copy` takes two arguments `sourceFile` and `copyFile`. It will write the copied file to the filesystem and then return the copy via a promise.\n\n```js\nfileBin.copy('orignal.md', 'original-copy.md')\n       .then(copy => console.log(copy));\n```\n\n### Base Directory Getters and Setters\n\n`#getBaseDirectory` can be called on a FileBin instance and it will return the current base directory.\n\n`#setBaseDirectory('/new/base')` takes in a directory as an argument and will update the FileBin's base directory to the given directory.\n\n`#setBaseDirectory` will emit an event that contains the oldDirectory and the newDirectory.\n\n```js\nvar fileBin = new FileBin('/some/directory')\n\nconsole.log(fileBin.getBaseDirectory()); // --> /some/directory;\n\nfileBin.setBaseDirectory('/new/base');\n\nconsole.log(fileBin.getBaseDirectory()); // --> /new/base;\n```\n"
+}

@@ -1,6 +1,6 @@
 {
   "name": "uplift-csv-cup-ui",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "author": {
     "name": "Adam Harrington",
     "email": "adam.d.harrington@gmail.com",
@@ -16,50 +16,74 @@
   "main": "main.js",
   "scripts": {
     "start": "electron main.js",
-    "package": "node ./node_modules/electron-packager/cli.js ./ UpliftCUP --platform=win32 --arch=x64 --out ./dist --version 0.36.9 --overwrite --icon=./img/UpliftCSVCUPIcon.png.ico",
-    "package-mac": "node ./node_modules/electron-packager/cli.js ./ UpliftCUP --platform=darwin --arch=x64 --out ./dist --version 0.36.9 --overwrite --icon=./img/UpliftCSVCUPIcon.png.icos",
-    "package-all": "node ./node_modules/electron-packager/cli.js ./ UpliftCUP --all --out ./dist --version 0.36.9 --overwrite --icon=./img/UpliftCSVCUPIcon.png.ico",
+    "package": "node ./node_modules/electron-packager/cli.js ./ UpliftCUP --platform=win32 --arch=x64 --out ./dist --version 1.2.5 --overwrite --icon=./img/UpliftCSVCUPIcon.png.ico",
+    "package-mac": "node ./node_modules/electron-packager/cli.js ./ UpliftCUP --platform=darwin --arch=x64 --out ./dist --version 1.2.5 --overwrite --icon=./img/UpliftCSVCUPIcon.png.icos",
+    "package-all": "node ./node_modules/electron-packager/cli.js ./ UpliftCUP --all --out ./dist --version 1.2.5 --overwrite --icon=./img/UpliftCSVCUPIcon.png.ico",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
-    "type": "git",
-    "url": "git+https://github.com/adamdharrington/uplift-csv-cup-ui.git"
+    "user": "adamdharrington",
+    "repo": "uplift-csv-cup-ui",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/adamdharrington/uplift-csv-cup-ui/tarball/master",
+    "clone_url": "https://github.com/adamdharrington/uplift-csv-cup-ui",
+    "https_url": "https://github.com/adamdharrington/uplift-csv-cup-ui",
+    "travis_url": "https://travis-ci.org/adamdharrington/uplift-csv-cup-ui",
+    "zip_url": "https://github.com/adamdharrington/uplift-csv-cup-ui/archive/master.zip",
+    "api_url": "https://api.github.com/repos/adamdharrington/uplift-csv-cup-ui"
   },
   "dependencies": {
     "jquery": "^2.0.0",
-    "uplift-csv-cup": "^1.0.4"
+    "uplift-csv-cup": "^1.0.5"
   },
   "devDependencies": {
-    "electron-packager": "^5.2.1",
-    "electron-prebuilt": "^0.36.0"
+    "electron-packager": "^7.0.0",
+    "electron-prebuilt": "^1.2.5"
   },
   "gitHead": "e63b7f9f91209c78c8060866f9b5ee5a726c3fe6",
-  "bugs": {
-    "url": "https://github.com/adamdharrington/uplift-csv-cup-ui/issues"
+  "homepage": "https://github.com/adamdharrington/uplift-csv-cup-ui#readme",
+  "_npmVersion": "3.9.3",
+  "_nodeVersion": "6.2.1",
+  "dist": {
+    "shasum": "ff47acdf814b73c255c5bf8edcd185f773afdf61",
+    "tarball": "http://registry.npmjs.org/uplift-csv-cup-ui/-/uplift-csv-cup-ui-1.0.5.tgz"
   },
-  "homepage": "https://github.com/adamdharrington/uplift-csv-cup-ui",
-  "_id": "uplift-csv-cup-ui@1.0.4",
-  "_shasum": "2b381aa27bb970f166b66243db3b01e2afacf9f1",
-  "_from": ".",
-  "_npmVersion": "2.7.4",
-  "_nodeVersion": "0.12.2",
-  "_npmUser": {
+  "stars": 1,
+  "versions": [
+    {
+      "number": "1.0.0",
+      "date": "2016-03-05T16:49:32.168Z"
+    },
+    {
+      "number": "1.0.1",
+      "date": "2016-03-05T17:30:50.333Z"
+    },
+    {
+      "number": "1.0.2",
+      "date": "2016-03-07T16:44:43.168Z"
+    },
+    {
+      "number": "1.0.4",
+      "date": "2016-03-07T18:20:59.089Z"
+    },
+    {
+      "number": "1.0.5",
+      "date": "2016-07-02T13:28:43.936Z"
+    }
+  ],
+  "created": "2016-03-05T16:49:32.168Z",
+  "modified": "2016-07-02T13:28:43.936Z",
+  "lastPublisher": {
     "name": "adamdharrington",
     "email": "adamdharrington@gmail.com"
   },
-  "dist": {
-    "shasum": "2b381aa27bb970f166b66243db3b01e2afacf9f1",
-    "tarball": "http://registry.npmjs.org/uplift-csv-cup-ui/-/uplift-csv-cup-ui-1.0.4.tgz"
-  },
-  "maintainers": [
+  "owners": [
     {
       "name": "adamdharrington",
       "email": "adamdharrington@gmail.com"
     }
   ],
-  "_npmOperationalInternal": {
-    "host": "packages-13-west.internal.npmjs.com",
-    "tmp": "tmp/uplift-csv-cup-ui-1.0.4.tgz_1457374854436_0.906578989000991"
-  },
-  "directories": {}
+  "readme": "# Uplift CSV CUP UI (Uplift CSV Upload Program UI)\n\nThis app is designed to lower the bar and reduce human error when processing csv files from Paypal or Stripe.\nIt will produce a number of output csv files properly processed for upload to Engaging Networks.\nIt is an electron app so anyone can easily complete the upload process regardless of technical ability.\nIt has not yet been tested on Mac or Unix, but works fine on Windows.\n\nThis App leverages the custom built module [uplift-csv-cup](https://www.npmjs.com/package/uplift-csv-cup) available from\nNPM.\n\n## Getting data\n\nFor Paypal you can [download from here](https://history.paypal.com/cgi-bin/webscr?cmd=_history-download).\nJust make sure you select all transactions in the period since the last upload... If you don't know when that is, you \nneed to check or you will end up with duplicates.\n\nFor Stripe you should go to [all payments on the dashboard](https://dashboard.stripe.com/payments) and set the filters\nto the correct period. Once again, if you're unsure on the period, find out before processing or you will cause \nduplication.\n\n## Using the app\n\nThe UI is simple, you need to choose three options, the input file, the output directory and whether it is in Stripe\nor PayPal format. It uses native file I/O dialogs and drag & drop file selection. You should only be able to click to process once the options are selected. The app has no test suite\nor programmed feedback loop, so if you encounter difficulties try closing and reopening the application.\n\n## Uploading output\n\nI don't think uploading is within scope of this app, although it wouldn't be much of an extra step to incorporate \na EN transactional import step.\n\n## Rights\n\nThis app was created for Uplift by Adam Harrington. All rights reserved by [Uplift](https://uplift.ie). It is \nlicensed under ISC, feel free to fork or modify for your own needs.\n\n## Contributing\n\nIf you would like to contribute add an issue or PR."
 }

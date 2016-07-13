@@ -3,9 +3,6 @@
   "version": "1.1.1",
   "description": "electron / atom-shell version management",
   "homepage": "https://github.com/omnidan/asv",
-  "bugs": {
-    "url": "https://github.com/omnidan/asv/issues"
-  },
   "bin": {
     "asv": "./bin/asv"
   },
@@ -37,28 +34,70 @@
   ],
   "license": "MIT",
   "repository": {
-    "type": "git",
-    "url": "git://github.com/omnidan/asv.git"
+    "user": "omnidan",
+    "repo": "asv",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/omnidan/asv/tarball/master",
+    "clone_url": "https://github.com/omnidan/asv",
+    "https_url": "https://github.com/omnidan/asv",
+    "travis_url": "https://travis-ci.org/omnidan/asv",
+    "zip_url": "https://github.com/omnidan/asv/archive/master.zip",
+    "api_url": "https://api.github.com/repos/omnidan/asv"
   },
   "gitHead": "15d20cfbbf74130f03646450dfad3e81595f6c1f",
-  "_id": "asv@1.1.1",
-  "_shasum": "e1e24e05c1fc708e5827cc22d2cf4966f460ed1c",
-  "_from": ".",
   "_npmVersion": "2.5.1",
   "_nodeVersion": "0.12.0",
-  "_npmUser": {
+  "dist": {
+    "shasum": "e1e24e05c1fc708e5827cc22d2cf4966f460ed1c",
+    "tarball": "http://registry.npmjs.org/asv/-/asv-1.1.1.tgz"
+  },
+  "versions": [
+    {
+      "number": "0.1.0",
+      "date": "2015-01-11T23:18:35.687Z"
+    },
+    {
+      "number": "0.2.0",
+      "date": "2015-01-12T00:18:12.547Z"
+    },
+    {
+      "number": "1.0.0",
+      "date": "2015-01-12T02:12:03.855Z"
+    },
+    {
+      "number": "1.0.1",
+      "date": "2015-01-12T11:47:40.824Z"
+    },
+    {
+      "number": "1.0.2",
+      "date": "2015-01-29T20:21:18.397Z"
+    },
+    {
+      "number": "1.0.3",
+      "date": "2015-02-13T10:55:18.549Z"
+    },
+    {
+      "number": "1.1.0",
+      "date": "2015-04-17T21:44:17.879Z"
+    },
+    {
+      "number": "1.1.1",
+      "date": "2015-04-19T16:55:11.548Z"
+    }
+  ],
+  "created": "2015-01-11T23:18:35.687Z",
+  "modified": "2015-04-19T16:55:11.548Z",
+  "lastPublisher": {
     "name": "omnidan",
     "email": "daniel.bugl@touchlay.com"
   },
-  "maintainers": [
+  "owners": [
     {
       "name": "omnidan",
       "email": "daniel.bugl@touchlay.com"
     }
   ],
-  "dist": {
-    "shasum": "e1e24e05c1fc708e5827cc22d2cf4966f460ed1c",
-    "tarball": "http://registry.npmjs.org/asv/-/asv-1.1.1.tgz"
-  },
-  "directories": {}
+  "readme": "# asv [![npm version](https://badge.fury.io/js/asv.svg?style=flat)](http://badge.fury.io/js/asv)\n\n [Electron / Atom Shell](https://github.com/atom/electron) version manager\n\n## Installation\n\n    $ npm install -g asv\n\nor\n\n    $ git clone git://github.com/omnidan/asv.git && cd asv && make install\n\n### Quickstart\n    $ asv latest\n    $ atoms\n\n### Installing Binaries\n\nInstall a few versions, the version given becomes the active electron/atom-shell binary once installation is complete.\n\n    $ asv 0.20.5\n    $ asv 0.20.4\n\nRun `atoms` to run the selected version of electron/atom-shell.\n\nList installed binaries:\n\n    $ asv\n\n      0.20.3\n    ο 0.20.4\n      0.20.5\n\nUse or install the latest official release:\n\n    $ asv latest\n\nUse or install the stable official release (_Note: Right now there is no stable version of electron, this will use the latest release_):\n\n    $ asv stable\n\nInstall a custom or patched version of electron/atom-shell from a zipball:\n\n    $ asv custom 0.20.5-me https://github.com/atom/atom-shell/zipball/v0.20.5\n\nInstall a version of electron/atom-shell from source:\n\n    $ asv 0.20.5 source\n\n### Removing Binaries\n\nRemove some versions:\n\n    $ asv rm 0.20.5 0.20.4 0.20.3\n\n_Note that you cannot remove the actively running version. Change to a different version before removing._\n\n### Binary Usage\n\nWhen running multiple versions of electron/atom-shell, we can target\nthem directly by asking `asv` for the binary path:\n\n    $ asv bin 0.20.5\n    /usr/local/asv/versions/0.20.5/bin/\n\nStart up electron/atom-shell 0.20.5 regardless of the active version:\n\n    $ asv use 0.20.5\n\nWhen installing or changing the active version we might want to run custom scripts:\n\n    $ asv pre install /path/to/my/script\n    $ asv post install /path/to/script\n    $ asv pre change /path/to/my/script\n    $ asv post change /path/to/script\n\nMultiple scripts may be added for any event. To add two `pre change` scripts:\n\n    $ asv pre change /path/to/script1\n    $ asv pre change /path/to/script2\n\nScripts are executed in the order they were added.\n\nList all pre change hooks:\n\n    $ asv pre change\n\n    /path/to/script1\n    /path/to/script2\n\nList all post install hooks:\n\n    $ asv post install\n\n    /path/to/scriptA\n    /path/to/scriptB\n    /path/to/scriptC\n\nTo remove a post install hook:\n\n    $ asv post install rm /path/to/scriptB\n\nRemove all post install hooks:\n\n    $ asv post install rm\n\n## Automatically keeping electron / atom-shell up-to-date\nIn order to automatically keep electron / atom-shell up-to-date, run `asv -y latest` in a cronjob.\n\nPassing `-y` will skip the question asv asks you when installing a new version.\n\n## Usage\nOutput from `asv --help`:\n```\n  Usage: asv [options] [COMMAND] [config]\n\n  Commands:\n\n    asv                            Output versions installed\n    asv latest [config ...]        Install or activate the latest electron release\n    asv stable [config ...]        Install or activate the latest stable electron release\n    asv <version> [config ...]     Install and/or use electron <version>\n    asv custom <version> <zipball> [config ...]  Install custom electron <zipball> with [args ...]\n    asv use <version> [args ...]   Execute electron <version> with [args ...]\n    asv bin <version>              Output bin path for <version>\n    asv rm <version ...>           Remove the given version(s)\n    asv --latest                   Output the latest electron version available\n    asv --stable                   Output the latest stable electron version available\n    asv ls                         Output the versions of electron available\n    asv src <version>              Output the url for source used for the given <version>\n                                     (useful if installed from source)\n    asv pre <event> [script]       Declare one or list scripts to execute before <event>\n                                     (scripts must use absolute paths)\n    asv post <event> [script]      Declare one or list scripts to execute after <event>\n                                     (scripts must use absolute paths)\n    asv pre <event> rm [script]    Remove pre <event> script\n    asv post <event> rm [script]   Remove post <event> script\n\n  Events:\n\n    change   Occurs when switching electron versions\n    install  Occurs when installing a previously uninstalled electron version\n\n  Options:\n\n    -v, -V, --version   Output current version of asv\n    -h, --help          Display help information\n    -y                  Skips the question when installing a new version (useful for scripts that automatically update electron)\n\n  Aliases:\n\n    which   bin\n    use     as\n    list    ls\n    custom  c\n```\n\n## Does this work with electron AND atom-shell?\nYes, `asv` checks the version string you passed, for versions <=0.23.0, atom-shell is downloaded and installed instead of electron, for newer versions, electron is downloaded and installed.\n\nThe command `atoms` works just like before. There is also an `electron` command, which is an alias to `atoms`.\n\nEverything else should work just like nothing happened. If you do run into an issue, first make sure you have the latest `asv` version (>=1.1) installed, or update `asv` by running `npm install -g asv` - if it still doesn't work, please report your issue [on github](https://github.com/omnidan/asv/issues), it could be related to the fact that atom-shell was renamed to electron.\n\n## Details\n\n `asv` by default installs electron/atom-shell to _/usr/local/asv/versions_, from\n which it can see what you have currently installed, and activate previously installed versions of electron/atom-shell when `asv <version>` is invoked again.\n\n Activated electron/atom-shell versions are then installed to the prefix _/usr/local_, which may be altered via the __ASV_PREFIX__ environment variable.\n\n To alter where `asv` operates simply export __ASV_PREFIX__ to whatever you prefer.\n\n## License\n\n[MIT](https://github.com/omnidan/asv/blob/master/LICENSE)\n\n## Inspiration\n\nThis is based on [m](https://github.com/aheckmann/m) by aheckmann. Thanks a lot for that, it's a great tool! Because of that, it's also nearly identical to [n](https://github.com/visionmedia/n). Thanks to tj too!\n"
 }

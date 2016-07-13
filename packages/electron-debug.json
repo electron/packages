@@ -4,8 +4,17 @@
   "description": "Adds useful debug features to your Electron app",
   "license": "MIT",
   "repository": {
-    "type": "git",
-    "url": "git+https://github.com/sindresorhus/electron-debug.git"
+    "user": "sindresorhus",
+    "repo": "electron-debug",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/sindresorhus/electron-debug/tarball/master",
+    "clone_url": "https://github.com/sindresorhus/electron-debug",
+    "https_url": "https://github.com/sindresorhus/electron-debug",
+    "travis_url": "https://travis-ci.org/sindresorhus/electron-debug",
+    "zip_url": "https://github.com/sindresorhus/electron-debug/archive/master.zip",
+    "api_url": "https://api.github.com/repos/sindresorhus/electron-debug"
   },
   "author": {
     "name": "Sindre Sorhus",
@@ -48,32 +57,91 @@
     }
   },
   "gitHead": "9f2ffcfdd447ccc65d7654945162e22263828fef",
-  "bugs": {
-    "url": "https://github.com/sindresorhus/electron-debug/issues"
-  },
   "homepage": "https://github.com/sindresorhus/electron-debug#readme",
-  "_id": "electron-debug@1.0.1",
-  "_shasum": "1f3050d619fc552218f0773657240544479f2008",
-  "_from": ".",
   "_npmVersion": "2.15.0",
   "_nodeVersion": "4.4.2",
-  "_npmUser": {
-    "name": "sindresorhus",
-    "email": "sindresorhus@gmail.com"
-  },
   "dist": {
     "shasum": "1f3050d619fc552218f0773657240544479f2008",
     "tarball": "http://registry.npmjs.org/electron-debug/-/electron-debug-1.0.1.tgz"
   },
-  "maintainers": [
+  "stars": 2,
+  "versions": [
+    {
+      "number": "0.1.0",
+      "date": "2015-06-01T11:10:41.709Z"
+    },
+    {
+      "number": "0.1.1",
+      "date": "2015-06-29T10:42:16.010Z"
+    },
+    {
+      "number": "0.2.0",
+      "date": "2015-08-21T07:10:52.370Z"
+    },
+    {
+      "number": "0.2.1",
+      "date": "2015-09-15T06:20:16.897Z"
+    },
+    {
+      "number": "0.3.0",
+      "date": "2015-10-26T10:25:36.897Z"
+    },
+    {
+      "number": "0.3.1",
+      "date": "2015-11-04T05:41:29.342Z"
+    },
+    {
+      "number": "0.3.2",
+      "date": "2015-11-05T08:02:07.442Z"
+    },
+    {
+      "number": "0.4.0",
+      "date": "2015-11-08T09:58:20.182Z"
+    },
+    {
+      "number": "0.4.1",
+      "date": "2015-11-14T19:03:50.630Z"
+    },
+    {
+      "number": "0.5.0",
+      "date": "2015-11-16T18:37:33.081Z"
+    },
+    {
+      "number": "0.5.1",
+      "date": "2015-11-20T08:19:01.342Z"
+    },
+    {
+      "number": "0.5.2",
+      "date": "2016-03-01T10:20:36.131Z"
+    },
+    {
+      "number": "0.6.0",
+      "date": "2016-04-08T16:26:01.981Z"
+    },
+    {
+      "number": "0.7.0",
+      "date": "2016-04-25T12:38:39.892Z"
+    },
+    {
+      "number": "1.0.0",
+      "date": "2016-05-12T05:40:38.500Z"
+    },
+    {
+      "number": "1.0.1",
+      "date": "2016-06-18T22:10:34.737Z"
+    }
+  ],
+  "created": "2015-06-01T11:10:41.709Z",
+  "modified": "2016-06-18T22:10:34.737Z",
+  "lastPublisher": {
+    "name": "sindresorhus",
+    "email": "sindresorhus@gmail.com"
+  },
+  "owners": [
     {
       "name": "sindresorhus",
       "email": "sindresorhus@gmail.com"
     }
   ],
-  "_npmOperationalInternal": {
-    "host": "packages-16-east.internal.npmjs.com",
-    "tmp": "tmp/electron-debug-1.0.1.tgz_1466287833477_0.8033683928661048"
-  },
-  "directories": {}
+  "readme": "# electron-debug\n\n> Adds useful debug features to your [Electron](http://electron.atom.io) app\n\nIdeas for more debug features [welcome!](https://github.com/sindresorhus/electron-debug/issues/new)\n\n\n## Features\n\n### DevTools\n\nToggle DevTools.\n\n- macOS: <kbd>Cmd</kbd> <kbd>Alt</kbd> <kbd>I</kbd> or <kbd>F12</kbd>\n- Linux: <kbd>Ctrl</kbd> <kbd>Shift</kbd> <kbd>I</kbd> or <kbd>F12</kbd>\n- Windows: <kbd>Ctrl</kbd> <kbd>Shift</kbd> <kbd>I</kbd> or <kbd>F12</kbd>\n\n### Reload\n\nForce reload the window.\n\n- macOS: <kbd>Cmd</kbd> <kbd>R</kbd> or <kbd>F5</kbd>\n- Linux: <kbd>Ctrl</kbd> <kbd>R</kbd> or <kbd>F5</kbd>\n- Windows: <kbd>Ctrl</kbd> <kbd>R</kbd> or <kbd>F5</kbd>\n\n### Activates Devtron\n\n[Devtron](http://electron.atom.io/devtron/) is the official Electron DevTools extension.\n\nJust install it in your app and we'll activate it for you.\n\n```\n$ npm install --save-dev devtron\n```\n\n\n## Install\n\n```\n$ npm install --save electron-debug\n```\n\n\n## Usage\n\n```js\nconst {app, BrowserWindow} = require('electron');\n\nrequire('electron-debug')({showDevTools: true});\n\nlet win;\n\napp.on('ready', () => {\n\twin = new BrowserWindow();\n});\n```\n\n\n## API\n\nOnly runs when in [development](https://github.com/sindresorhus/electron-is-dev), unless overridden by the `enabled` option. So no need to guard it for production.\n\n### electronDebug([options])\n\nInstall keyboard shortcuts and optionally activate DevTools on each created `BrowserWindow`.\n\n#### options\n\n##### enabled\n\nType: `boolean`<br>\n\n##### showDevTools\n\nType: `boolean` `string`<br>\nDefault: `false`<br>\nValues: `'right'` `'bottom'` `'undocked'` `false` `true` *(last dock state)*\n\nShow DevTools on each created `BrowserWindow`.\n\n### devTools([window])\n\nToggle DevTools for the specified `BrowserWindow` instance or the focused one.\n\n#### window\n\nType: `BrowserWindow`<br>\nDefault: the focused `BrowserWindow`\n\n### refresh([window])\n\nReload the specified `BrowserWindow` instance or the focused one.\n\n#### window\n\nType: `BrowserWindow`<br>\nDefault: the focused `BrowserWindow`\n\n### openDevTools([window], [showDevTools])\n\nOpen DevTools for the specified `BrowserWindow` instance or the focused one.\n\n#### window\n\nType: `BrowserWindow`<br>\nDefault: the focused `BrowserWindow`\n\n#### showDevTools\n\nType: `boolean` `string`<br>\nDefault: `false`<br>\nValues: `'right'` `'bottom'` `'undocked'` `false` `true` *(last dock state)*\n\nShow DevTools on each created `BrowserWindow`.\n\n\n## Related\n\n- [electron-config](https://github.com/sindresorhus/electron-config) - Simple config handling for your Electron app or module\n- [electron-context-menu](https://github.com/sindresorhus/electron-context-menu) - Context menu for your Electron app\n- [electron-dl](https://github.com/sindresorhus/electron-dl) - Simplified file downloads for your Electron app\n- [electron-is-dev](https://github.com/sindresorhus/electron-is-dev) - Check if Electron is running in development\n- [debug-menu](https://github.com/parro-it/debug-menu) - Chrome-like debug context-menu for Electron\n\n\n## License\n\nMIT © [Sindre Sorhus](https://sindresorhus.com)\n"
 }

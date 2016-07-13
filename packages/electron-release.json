@@ -10,8 +10,17 @@
     "test": "standard src/*.js"
   },
   "repository": {
-    "type": "git",
-    "url": "git+https://github.com/jenslind/electron-release.git"
+    "user": "jenslind",
+    "repo": "electron-release",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/jenslind/electron-release/tarball/master",
+    "clone_url": "https://github.com/jenslind/electron-release",
+    "https_url": "https://github.com/jenslind/electron-release",
+    "travis_url": "https://travis-ci.org/jenslind/electron-release",
+    "zip_url": "https://github.com/jenslind/electron-release/archive/master.zip",
+    "api_url": "https://api.github.com/repos/jenslind/electron-release"
   },
   "author": {
     "name": "Jens Lind",
@@ -19,9 +28,6 @@
     "url": "jenslind.org"
   },
   "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/jenslind/electron-release/issues"
-  },
   "homepage": "https://github.com/jenslind/electron-release",
   "devDependencies": {
     "gulp": "^3.9.0",
@@ -41,20 +47,61 @@
     "write-json-file": "^1.1.1"
   },
   "gitHead": "41f92192aa4bf319a666198d1a5368b1eefa8ed0",
-  "_id": "electron-release@2.2.0",
-  "_shasum": "82fad45318b0b8bfc7f29cd1cf8b91e66fe7ab26",
-  "_from": ".",
   "_npmVersion": "2.14.2",
   "_nodeVersion": "4.0.0",
-  "_npmUser": {
-    "name": "jenslind",
-    "email": "jens@jensl.se"
-  },
   "dist": {
     "shasum": "82fad45318b0b8bfc7f29cd1cf8b91e66fe7ab26",
     "tarball": "http://registry.npmjs.org/electron-release/-/electron-release-2.2.0.tgz"
   },
-  "maintainers": [
+  "versions": [
+    {
+      "number": "2.0.0",
+      "date": "2015-09-19T09:38:27.507Z"
+    },
+    {
+      "number": "2.0.1",
+      "date": "2015-09-19T10:00:50.701Z"
+    },
+    {
+      "number": "2.0.2",
+      "date": "2015-09-19T20:08:04.262Z"
+    },
+    {
+      "number": "2.0.3",
+      "date": "2015-09-20T20:50:04.645Z"
+    },
+    {
+      "number": "2.0.4",
+      "date": "2015-09-21T18:01:30.957Z"
+    },
+    {
+      "number": "2.0.5",
+      "date": "2015-09-21T18:20:14.111Z"
+    },
+    {
+      "number": "2.1.0",
+      "date": "2015-09-25T08:30:51.895Z"
+    },
+    {
+      "number": "2.1.1",
+      "date": "2015-09-27T10:13:07.818Z"
+    },
+    {
+      "number": "2.1.2",
+      "date": "2015-11-11T17:48:24.238Z"
+    },
+    {
+      "number": "2.2.0",
+      "date": "2015-11-23T22:54:55.342Z"
+    }
+  ],
+  "created": "2015-09-19T09:38:27.507Z",
+  "modified": "2015-11-23T22:54:55.342Z",
+  "lastPublisher": {
+    "name": "jenslind",
+    "email": "jens@jensl.se"
+  },
+  "owners": [
     {
       "name": "jenslind",
       "email": "jens@jensl.se"
@@ -64,5 +111,5 @@
       "email": "me@thejameskyle.com"
     }
   ],
-  "directories": {}
+  "readme": "# Electron-release [![js-standard-style](https://img.shields.io/badge/code%20style-standard-brightgreen.svg?style=flat)](https://github.com/feross/standard) [![Build Status](https://travis-ci.org/jenslind/electron-release.svg?branch=master)](https://travis-ci.org/jenslind/electron-release)\n> Publish a new release of your app to Github. Could be used together with: [electron-gh-releases](https://github.com/jenslind/electron-gh-releases).\n\n## Install\n\n```\nnpm install -g electron-release\n```\n\n## What it does\n\n1. Zip compresses your `.app`\n2. Publishes a new release on GitHub with the zip as an asset.\n3. Updates `auto_updater.json` with the new url (if exists).\n\n## Usage\n\n```\nUsage\n  $ electron-release\nOptions\n  --app  [Required] The path to the app to compress and upload, separate with `,` (--app=test.app,test.exe).\n  --token  [Required] GitHub token to be able to publish the release.\n  --tag  The git tag connected to the release, needs to be semver. Defaults to version in package.json\n  --repo  The GitHub repo in the following format: \"username/reponame\". Defaults to repository.url in package.json\n  --name  The name of the release. Defaults to --tag\n  --output  The .zip output folder. Defaults to same folder as app. separate with `,` (--output=test-app.zip,test-exe.zip).\n```\n\n## Tests\n\n```\nnpm test\n```\n\n## License\nMIT\n"
 }

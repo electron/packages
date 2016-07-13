@@ -1,0 +1,81 @@
+{
+  "name": "node-apple-remote",
+  "version": "0.3.0",
+  "description": "Simple event-driven interface to Aluminum Apple Remote",
+  "main": "index.js",
+  "repository": {
+    "user": "dhleong",
+    "repo": "node-apple-remote",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/dhleong/node-apple-remote/tarball/master",
+    "clone_url": "https://github.com/dhleong/node-apple-remote",
+    "https_url": "https://github.com/dhleong/node-apple-remote",
+    "travis_url": "https://travis-ci.org/dhleong/node-apple-remote",
+    "zip_url": "https://github.com/dhleong/node-apple-remote/archive/master.zip",
+    "api_url": "https://api.github.com/repos/dhleong/node-apple-remote"
+  },
+  "keywords": [
+    "apple",
+    "remote",
+    "aluminum"
+  ],
+  "author": {
+    "name": "Daniel Leong",
+    "email": "me@dhleong.net"
+  },
+  "license": "ISC",
+  "homepage": "https://github.com/dhleong/node-apple-remote",
+  "dependencies": {
+    "node-hid": "^0.5.1"
+  },
+  "gitHead": "a4a00d0e18d29dec9adbf977b16dd039be11b337",
+  "scripts": {},
+  "_npmVersion": "3.5.0",
+  "_nodeVersion": "5.10.1",
+  "dist": {
+    "shasum": "9471289de7b975cb1dd8197d656f841eaaae16a7",
+    "tarball": "http://registry.npmjs.org/node-apple-remote/-/node-apple-remote-0.3.0.tgz"
+  },
+  "stars": 3,
+  "versions": [
+    {
+      "number": "0.1.0",
+      "date": "2014-07-08T13:04:36.426Z"
+    },
+    {
+      "number": "0.1.1",
+      "date": "2014-07-12T20:25:37.126Z"
+    },
+    {
+      "number": "0.1.2",
+      "date": "2014-07-27T18:10:26.791Z"
+    },
+    {
+      "number": "0.1.3",
+      "date": "2015-07-06T13:53:33.887Z"
+    },
+    {
+      "number": "0.2.0",
+      "date": "2016-07-03T15:36:59.722Z"
+    },
+    {
+      "number": "0.3.0",
+      "date": "2016-07-08T10:50:31.833Z"
+    }
+  ],
+  "created": "2014-07-08T13:04:36.426Z",
+  "modified": "2016-07-08T10:50:31.833Z",
+  "lastPublisher": {
+    "name": "dhleong",
+    "email": "me@dhleong.net"
+  },
+  "owners": [
+    {
+      "name": "dhleong",
+      "email": "me@dhleong.net"
+    }
+  ],
+  "readme": "node-apple-remote\n=================\n\nSimple node.js library for receiving events from an aluminum Apple Remote\n\n### Usage\n\n[![NPM](https://nodei.co/npm/node-apple-remote.png?mini=true)][1]\n\n```javascript\ntry {\n    require('node-apple-remote')\n        .on('left', /* ... */)\n        .on('left.long', /* ... */)\n        .on('left.long.released', /* ... */)\n        .on('center', /* ... */)\n        .on('center.long', /* ... */)\n} catch (e) {\n    // an exception is thrown if the apple remote\n    //  device was not found on the system\n}\n```\n\n### All events\n\n```javascript\n'raw'                  // Every single event; the Button pressed is passed.\n                       // it is unlikely you will need this\n'button'               // Each parsed button event; for example, 'left'\n                       //  will never have a 'left.released' follow it,\n                       //  though a 'raw' Released event may fire. In\n                       //  most cases, it may be easiest to register\n                       //  specific listeners (below)\n\n'left'                 // single-press\n'left.long'            // long-press (as in rewind); release to follow\n'left.long.released'   // release of long-press \n'right' \n'right.long' \n'right.long.released' \n\n'up'                   // pressed; release ALWAYS follows\n'up.released'          // note that there is no up.long\n'down'\n'down.released'\n\n'center'               // single-press only\n'center.long'          // long-press only (not \"holdable\")\n'playpause'\n'playpause.long'\n'menu'\n'menu.long'\n\n'error'                // emits with the an error Object from node-hid\n```\n\n### node-apple-remote and Electron/NW.js\n\nIf using this library with [Electron][2] or [NW.js][3], see the \n[notes from node-hid][4].\n\n[1]: https://nodei.co/npm/node-apple-remote/\n[2]: http://electron.atom.io/\n[3]: http://nwjs.io\n[4]: https://github.com/node-hid/node-hid#using-node-hid-in-electron-projects\n"
+}

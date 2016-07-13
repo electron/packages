@@ -1,27 +1,26 @@
 {
   "name": "shell-env",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Get environment variables from the shell",
   "license": "MIT",
   "repository": {
-    "type": "git",
-    "url": "git+https://github.com/sindresorhus/shell-env.git"
+    "user": "sindresorhus",
+    "repo": "shell-env",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/sindresorhus/shell-env/tarball/master",
+    "clone_url": "https://github.com/sindresorhus/shell-env",
+    "https_url": "https://github.com/sindresorhus/shell-env",
+    "travis_url": "https://travis-ci.org/sindresorhus/shell-env",
+    "zip_url": "https://github.com/sindresorhus/shell-env/archive/master.zip",
+    "api_url": "https://api.github.com/repos/sindresorhus/shell-env"
   },
   "author": {
     "name": "Sindre Sorhus",
     "email": "sindresorhus@gmail.com",
     "url": "sindresorhus.com"
   },
-  "maintainers": [
-    {
-      "name": "silverwind",
-      "email": "me@silverwind.io"
-    },
-    {
-      "name": "sindresorhus",
-      "email": "sindresorhus@gmail.com"
-    }
-  ],
   "engines": {
     "node": ">=4"
   },
@@ -40,13 +39,14 @@
     "sh",
     "zsh",
     "bash",
+    "macos",
     "osx",
     "electron",
     "nwjs"
   ],
   "dependencies": {
     "default-shell": "^1.0.0",
-    "execa": "^0.2.2",
+    "execa": "^0.4.0",
     "strip-ansi": "^3.0.0"
   },
   "devDependencies": {
@@ -56,27 +56,43 @@
   "xo": {
     "esnext": true
   },
-  "gitHead": "3263dd091691a3a9e64d2511f82a8dec8b426991",
-  "bugs": {
-    "url": "https://github.com/sindresorhus/shell-env/issues"
-  },
+  "gitHead": "07743f314ed0098c2651075fc3213eddebec2a96",
   "homepage": "https://github.com/sindresorhus/shell-env#readme",
-  "_id": "shell-env@0.1.1",
-  "_shasum": "3ddf09e12a838709052670b929ea830dbe26fdf4",
-  "_from": ".",
-  "_npmVersion": "3.3.12",
-  "_nodeVersion": "5.5.0",
-  "_npmUser": {
+  "_npmVersion": "3.10.3",
+  "_nodeVersion": "6.2.1",
+  "dist": {
+    "shasum": "d960cfabe3b4aa8ce8030c11856ebddad08729b3",
+    "tarball": "http://registry.npmjs.org/shell-env/-/shell-env-0.1.2.tgz"
+  },
+  "versions": [
+    {
+      "number": "0.1.0",
+      "date": "2016-01-29T02:34:40.702Z"
+    },
+    {
+      "number": "0.1.1",
+      "date": "2016-02-03T21:13:17.489Z"
+    },
+    {
+      "number": "0.1.2",
+      "date": "2016-07-05T19:15:51.006Z"
+    }
+  ],
+  "created": "2016-01-29T02:34:40.702Z",
+  "modified": "2016-07-05T19:15:51.006Z",
+  "lastPublisher": {
     "name": "silverwind",
     "email": "me@silverwind.io"
   },
-  "dist": {
-    "shasum": "3ddf09e12a838709052670b929ea830dbe26fdf4",
-    "tarball": "http://registry.npmjs.org/shell-env/-/shell-env-0.1.1.tgz"
-  },
-  "_npmOperationalInternal": {
-    "host": "packages-6-west.internal.npmjs.com",
-    "tmp": "tmp/shell-env-0.1.1.tgz_1454533994627_0.14035073015838861"
-  },
-  "directories": {}
+  "owners": [
+    {
+      "name": "silverwind",
+      "email": "me@silverwind.io"
+    },
+    {
+      "name": "sindresorhus",
+      "email": "sindresorhus@gmail.com"
+    }
+  ],
+  "readme": "# shell-env [![Build Status](https://travis-ci.org/sindresorhus/shell-env.svg?branch=master)](https://travis-ci.org/sindresorhus/shell-env)\n\n> Get [environment variables](https://en.wikipedia.org/wiki/Environment_variable) from the [shell](https://en.wikipedia.org/wiki/Shell_(computing))\n\nEspecially useful for Electron/NW.js apps as GUI apps on macOS doesn't inherit the environment variables defined in your dotfiles *(.bashrc/.bash_profile/.zshrc/etc)*.\n\n\n## Install\n\n```\n$ npm install --save shell-env\n```\n\n\n## Usage\n\n```js\nconst shellEnv = require('shell-env');\n\nconsole.log(shellEnv.sync());\n//=> {TERM_PROGRAM: 'Apple_Terminal', SHELL: '/bin/zsh', ...}\n```\n\n\n## API\n\n### shellEnv()\n\nReturn a promise for the environment variables.\n\n### shellEnv.sync()\n\nReturns the environment variables.\n\n\n## Related\n\n- [shell-path](https://github.com/sindresorhus/shell-path) - Get the $PATH from the shell\n- [fix-path](https://github.com/sindresorhus/fix-path) - Fix the $PATH on macOS when run from a GUI app\n- [shell-history](https://github.com/sindresorhus/shell-history) - Get the command history of the user's shell\n\n\n## License\n\nMIT © [Sindre Sorhus](https://sindresorhus.com)\n"
 }

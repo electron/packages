@@ -17,11 +17,17 @@
   },
   "license": "MIT",
   "repository": {
-    "type": "git",
-    "url": "git+https://github.com/bjrmatos/electron-html-to.git"
-  },
-  "bugs": {
-    "url": "https://github.com/bjrmatos/electron-html-to/issues"
+    "user": "bjrmatos",
+    "repo": "electron-html-to",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/bjrmatos/electron-html-to/tarball/master",
+    "clone_url": "https://github.com/bjrmatos/electron-html-to",
+    "https_url": "https://github.com/bjrmatos/electron-html-to",
+    "travis_url": "https://travis-ci.org/bjrmatos/electron-html-to",
+    "zip_url": "https://github.com/bjrmatos/electron-html-to/archive/master.zip",
+    "api_url": "https://api.github.com/repos/bjrmatos/electron-html-to"
   },
   "homepage": "https://github.com/bjrmatos/electron-html-to",
   "keywords": [
@@ -59,28 +65,93 @@
     "should": "9.0.0"
   },
   "gitHead": "239d11f48cdbec858722dce38ba893a2e4646d82",
-  "_id": "electron-html-to@2.1.1",
-  "_shasum": "baa3b8940c6e10e095fcf0030fd2df0437480487",
-  "_from": ".",
   "_npmVersion": "2.15.6",
   "_nodeVersion": "0.10.45",
-  "_npmUser": {
-    "name": "bjrmatos",
-    "email": "bjrmatos@gmail.com"
-  },
   "dist": {
     "shasum": "baa3b8940c6e10e095fcf0030fd2df0437480487",
     "tarball": "http://registry.npmjs.org/electron-html-to/-/electron-html-to-2.1.1.tgz"
   },
-  "maintainers": [
+  "versions": [
+    {
+      "number": "1.0.0-beta",
+      "date": "2015-11-15T19:38:42.235Z"
+    },
+    {
+      "number": "1.0.0",
+      "date": "2015-11-29T21:20:52.571Z"
+    },
+    {
+      "number": "1.0.1",
+      "date": "2015-12-06T02:44:11.395Z"
+    },
+    {
+      "number": "1.0.2",
+      "date": "2015-12-06T06:17:42.199Z"
+    },
+    {
+      "number": "1.0.3",
+      "date": "2015-12-06T21:15:36.309Z"
+    },
+    {
+      "number": "1.0.4",
+      "date": "2015-12-07T04:21:29.938Z"
+    },
+    {
+      "number": "1.1.0",
+      "date": "2015-12-08T21:59:41.770Z"
+    },
+    {
+      "number": "1.1.1",
+      "date": "2015-12-20T03:59:40.294Z"
+    },
+    {
+      "number": "1.1.2",
+      "date": "2015-12-20T04:22:35.353Z"
+    },
+    {
+      "number": "1.1.3",
+      "date": "2015-12-20T04:27:30.840Z"
+    },
+    {
+      "number": "1.1.4",
+      "date": "2016-01-09T16:55:05.979Z"
+    },
+    {
+      "number": "2.0.0-rc1",
+      "date": "2016-01-24T17:02:02.488Z"
+    },
+    {
+      "number": "2.0.0",
+      "date": "2016-01-25T00:02:43.254Z"
+    },
+    {
+      "number": "2.0.1",
+      "date": "2016-02-20T20:57:37.354Z"
+    },
+    {
+      "number": "2.0.2",
+      "date": "2016-02-20T23:06:54.545Z"
+    },
+    {
+      "number": "2.1.0",
+      "date": "2016-06-05T06:23:32.261Z"
+    },
+    {
+      "number": "2.1.1",
+      "date": "2016-06-05T16:41:07.320Z"
+    }
+  ],
+  "created": "2015-11-15T19:38:42.235Z",
+  "modified": "2016-06-05T16:41:07.320Z",
+  "lastPublisher": {
+    "name": "bjrmatos",
+    "email": "bjrmatos@gmail.com"
+  },
+  "owners": [
     {
       "name": "bjrmatos",
       "email": "bjrmatos@gmail.com"
     }
   ],
-  "_npmOperationalInternal": {
-    "host": "packages-12-west.internal.npmjs.com",
-    "tmp": "tmp/electron-html-to-2.1.1.tgz_1465144864737_0.531459498219192"
-  },
-  "directories": {}
+  "readme": "electron-html-to\n================\n\n[![NPM Version](http://img.shields.io/npm/v/electron-html-to.svg?style=flat-square)](https://npmjs.com/package/electron-html-to)[![License](http://img.shields.io/npm/l/electron-html-to.svg?style=flat-square)](http://opensource.org/licenses/MIT)[![Build Status](https://travis-ci.org/bjrmatos/electron-html-to.png?branch=master)](https://travis-ci.org/bjrmatos/electron-html-to)\n\n> **Highly scalable html conversion in scale**\n\nThis module let you convert a web page (html, css, js) in any format you want (via a converter function) using [electron](http://electron.atom.io/).\n\n*Works in electron@>=0.35.x including electron@1*\n\n```js\nvar fs = require('fs'),\n    convertFactory = require('electron-html-to');\n\nvar conversion = convertFactory({\n  converterPath: convertFactory.converters.PDF\n});\n\nconversion({ html: '<h1>Hello World</h1>' }, function(err, result) {\n  if (err) {\n    return console.error(err);\n  }\n\n  console.log(result.numberOfPages);\n  result.stream.pipe(fs.createWriteStream('/path/to/anywhere.pdf'));\n  conversion.kill(); // necessary if you use the electron-server strategy, see bellow for details\n});\n```\n\nBuilt-in converters\n-------------------\n\n-\t`convertFactory.converters.PDF` (html to pdf) -> when the conversion ends the `result` param will have `numberOfPages` (Number) and `stream` (Stream) properties.\n\nCustom converters\n-----------------\n\nConverters are functions that run in the electron process, see the [pdf conversion implementation](https://github.com/bjrmatos/electron-html-to/blob/master/src/converters/pdf.js) for an example.\n\nGlobal options\n--------------\n\n```js\nvar conversion = require('electron-html-to')({\n  /* required absolute path to the converter function to use, every conversion will use the converter specified  */\n  converterPath: '/path/to/a/converter.js'\n  /* number of allocated electron processes (when using electron-server strategy). defaults to 2 */\n  numberOfWorkers: 2,\n  /* timeout in ms for html conversion, when the timeout is reached, the conversion is cancelled. defaults to 180000ms */\n  timeout: 5000,\n  /* directory where are stored temporary html and pdf files, use something like npm package reap to clean this up */\n  tmpDir: 'os/tmpdir',\n  /* optional port range where to start electron server (when using electron-server strategy) */\n  portLeftBoundary: 1000,\n  portRightBoundary: 2000,\n  /* optional hostname where to start electron server when using electron-server strategy) */\n  host: '127.0.0.1',\n  /* set to true to allow request using the file protocol (file:///). defaults to false */\n  allowLocalFilesAccess: false,\n  /* optional chrome command line switches, see http://electron.atom.io/docs/v0.35.0/api/chrome-command-line-switches/ for details. defaults to { 'ignore-certificate-errors': null } */\n  chromeCommandLineSwitches: {\n    'disable-http-cache': null,\n    'log-net-log': '/path/to/save'\n  },\n  /* use rather dedicated process for every conversion,\n    dedicated-process strategy is quite slower but can solve some bugs\n    with corporate proxy. for a description of `electron-server` and `electron-ipc` strategy see [electron-workers docs](https://github.com/bjrmatos/electron-workers/#modes). defaults to electron-ipc strategy */\n  strategy: 'electron-ipc | electron-server | dedicated-process'\n});\n```\n\nLocal options\n-------------\n\n```js\nconversion({\n  html: '<h1>Hello world</h1>',\n  url: 'http://jsreport.net', // set direct url instead of html\n  delay: 0, // time in ms to wait before the conversion\n  waitForJS: true, // set to true to enable programmatically specify (via Javascript of the page) when the conversion starts (see Programmatic conversion section for an example)\n  waitForJSVarName: 'MY_CUSTOM_VAR_NAME', // name of the variable that will be used as the conversion trigger, defaults to \"ELECTRON_HTML_TO_READY\" (see Programmatic pdf printing section for an example)\n  userAgent: 'CUSTOM_USER_AGENT', // set a custom user agent to use in electron's browser window\n  /* custom extra headers to load the html or url */\n  extraHeaders: {\n    'X-Foo': 'foo',\n    'X-Bar': 'bar'\n  },\n  converterPath: '/path/to/a/converter.js', // absolute path to the converter function to use in the local conversion, if no specified the global converterPath option will be used\n\n  // options for electron's browser window, see http://electron.atom.io/docs/v0.35.0/api/browser-window/ for details for each option.\n  // allowed browser-window options\n  browserWindow: {\n    width: 600, // defaults to 600\n    height: 600, // defaults to 600\n    x: 0,\n    y: 0,\n    useContentSize: false,\n    webPreferences: {\n      nodeIntegration: false, // defaults to false\n      partition: '',\n      zoomFactor: 3.0,\n      javascript: true, // defaults to true\n      webSecurity: false, // defaults to false\n      allowDisplayingInsecureContent: true,\n      allowRunningInsecureContent: true,\n      images: true,\n      java: true,\n      webgl: true,\n      webaudio: true,\n      plugins: ,\n      experimentalFeatures: ,\n      experimentalCanvasFeatures: ,\n      overlayScrollbars: ,\n      overlayFullscreenVideo: ,\n      sharedWorker: ,\n      directWrite:\n    }\n  },\n\n  // options to the pdf converter function, see electron's printoToPDF function http://electron.atom.io/docs/v0.35.0/api/web-contents/#webcontents-printtopdf-options-callback for details for each option.\n  // allowed printToPDF options\n  pdf: {\n    marginsType: 0,\n    pageSize: 'A4',\n    printBackground: false,\n    landscape: false\n  }\n}, cb);\n```\n\nKill workers\n------------\n\n```js\n// kill all electron workers when using electron-server strategy\nconversion.kill();\n```\n\nProgrammatic conversion\n-----------------------\n\nIf you need to programmatic trigger the conversion process (because you need to calculate some values or do something async in your page before convert it) you can enable the `waitForJS` local option, when `waitForJS` is set to true the conversion will wait until you set a variable to true in your page, by default the name of the variable is `ELECTRON_HTML_TO_READY` but you can customize it via `waitForJSVarName` option.\n\nExample\n-------\n\nlocal options:\n\n```js\nconversion({\n  html: '<custom html here>',\n  waitForJS: true\n}, cb);\n```\n\ncustom html:\n\n```html\n<h1></h1>\n<script>\n  // do some calculations or something async\n  setTimeout(function() {\n    window.ELECTRON_HTML_TO_READY = true; // this will start the conversion\n  }, 500);\n</script>\n```\n\nDebugging\n---------\n\nTo get more information about what's happening inside the conversion run your app with the `DEBUG` flag. `DEBUG=electron-html-to,electron-html-to:* node app.js` (on Windows use `set DEBUG=electron-html-to,electron-html-to:* & node app.js`).\n\nThis will print out some additional information about what's going on.\n\nRequeriments\n------------\n\n-\tInstall [electron](http://electron.atom.io/) > 0.35.x, the easy way to install electron in your app is `npm install electron-prebuilt --save`\n\nTroubleshooting\n---------------\n\nIf you are using node with [nvm](https://github.com/creationix/nvm) and you have installed electron with `npm install -g electron-prebuilt` you probably will see an error or log with `env: node: No such file or directory`, this is because the electron executable installed by `electron-prebuilt` is a node CLI spawning the real electron executable internally, since nvm don't install/symlink node to `/usr/bin/env/node` when the electron executable installed by `electron-prebuilt` tries to run, it will fail because `node` won't be found in that context..\n\nSolution\n--------\n\n1.- Install `electron-prebuilt` as a dependency in your app, this is the option **recommended** because you probably want to ensure your app always run with the exact version you tested it, and probably you don't want to install electron globally in your system.\n\n2.- You can make a symlink to `/usr/bin/env/node` but this is **not recommended** by nvm authors, because you will loose all the power that nvm brings.\n\n3.- Put the path to the **real electron executable** in your `$PATH`.\n\nLicense\n-------\n\nSee [license](https://github.com/bjrmatos/electron-html-to/blob/master/LICENSE)\n"
 }

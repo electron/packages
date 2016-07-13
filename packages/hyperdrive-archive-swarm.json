@@ -1,20 +1,26 @@
 {
   "name": "hyperdrive-archive-swarm",
-  "version": "3.1.0",
+  "version": "3.1.1",
   "description": "Join the p2p swarm for the given hyperdrive archive",
   "main": "index.js",
   "scripts": {
     "test": "standard && node test.js"
   },
   "repository": {
-    "type": "git",
-    "url": "git+https://github.com/karissa/hyperdrive-archive-swarm.git"
+    "user": "karissa",
+    "repo": "hyperdrive-archive-swarm",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/karissa/hyperdrive-archive-swarm/tarball/master",
+    "clone_url": "https://github.com/karissa/hyperdrive-archive-swarm",
+    "https_url": "https://github.com/karissa/hyperdrive-archive-swarm",
+    "travis_url": "https://travis-ci.org/karissa/hyperdrive-archive-swarm",
+    "zip_url": "https://github.com/karissa/hyperdrive-archive-swarm/archive/master.zip",
+    "api_url": "https://api.github.com/repos/karissa/hyperdrive-archive-swarm"
   },
   "author": "",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/karissa/hyperdrive-archive-swarm/issues"
-  },
   "homepage": "https://github.com/karissa/hyperdrive-archive-swarm#readme",
   "dependencies": {
     "datland-swarm-defaults": "^1.0.0",
@@ -31,21 +37,66 @@
     "standard": "^7.1.2",
     "tape": "^4.6.0"
   },
-  "gitHead": "071e0a9d885487dc7df902f86966c52fa94b0213",
-  "_id": "hyperdrive-archive-swarm@3.1.0",
-  "_shasum": "7af336c50fadf3ecb0c656dbf2aa26b120a00401",
-  "_from": ".",
+  "gitHead": "3c2e4ade216e755041c1ed680785c6da05c9214e",
   "_npmVersion": "3.9.3",
   "_nodeVersion": "6.2.1",
-  "_npmUser": {
+  "dist": {
+    "shasum": "6083cfd1b9a471cd50961a5a7c47ecf9943ad9b5",
+    "tarball": "http://registry.npmjs.org/hyperdrive-archive-swarm/-/hyperdrive-archive-swarm-3.1.1.tgz"
+  },
+  "versions": [
+    {
+      "number": "1.0.0",
+      "date": "2016-06-02T00:58:41.462Z"
+    },
+    {
+      "number": "1.0.1",
+      "date": "2016-06-02T00:58:57.818Z"
+    },
+    {
+      "number": "1.0.2",
+      "date": "2016-06-02T01:10:12.439Z"
+    },
+    {
+      "number": "1.1.0",
+      "date": "2016-06-07T05:45:11.711Z"
+    },
+    {
+      "number": "1.1.1",
+      "date": "2016-06-07T22:59:25.267Z"
+    },
+    {
+      "number": "1.1.2",
+      "date": "2016-06-08T00:37:29.843Z"
+    },
+    {
+      "number": "2.0.0",
+      "date": "2016-06-08T10:27:30.967Z"
+    },
+    {
+      "number": "3.0.0",
+      "date": "2016-06-14T08:12:39.983Z"
+    },
+    {
+      "number": "3.0.1",
+      "date": "2016-06-14T16:14:05.283Z"
+    },
+    {
+      "number": "3.1.0",
+      "date": "2016-06-25T01:43:31.973Z"
+    },
+    {
+      "number": "3.1.1",
+      "date": "2016-07-12T00:28:17.119Z"
+    }
+  ],
+  "created": "2016-06-02T00:58:41.462Z",
+  "modified": "2016-07-12T00:28:17.119Z",
+  "lastPublisher": {
     "name": "karissa",
     "email": "krmckelv@gmail.com"
   },
-  "dist": {
-    "shasum": "7af336c50fadf3ecb0c656dbf2aa26b120a00401",
-    "tarball": "http://registry.npmjs.org/hyperdrive-archive-swarm/-/hyperdrive-archive-swarm-3.1.0.tgz"
-  },
-  "maintainers": [
+  "owners": [
     {
       "name": "juliangruber",
       "email": "julian@juliangruber.com"
@@ -59,9 +110,5 @@
       "email": "mathiasbuus@gmail.com"
     }
   ],
-  "_npmOperationalInternal": {
-    "host": "packages-12-west.internal.npmjs.com",
-    "tmp": "tmp/hyperdrive-archive-swarm-3.1.0.tgz_1466819009405_0.062068558763712645"
-  },
-  "directories": {}
+  "readme": "# hyperdrive-archive-swarm\n\nJoin a hyperdrive archive's p2p swarm in the client and server.\n\n```\nnpm install hyperdrive-archive-swarm\n```\n\n## Usage\n\nRun the following code in two different places and they will replicate the contents of the given `ARCHIVE_KEY`.\n\n```js\nvar hyperdrive = require('hyperdrive')\nvar memdb = require('memdb')\nvar swarm = require('hyperdrive-archive-swarm')\n\nvar drive = hyperdrive(memdb())\nvar archive = drive.createArchive('ARCHIVE_KEY')\n\nvar sw = swarm(archive)\nsw.on('connection', function (peer, type) {\n  console.log('got', peer, type) // type is 'webrtc-swarm' or 'discovery-swarm'\n  console.log('connected to', sw.connections, 'peers')\n  peer.on('close', function () {\n    console.log('peer disconnected')\n  }) \n})\n```\n\nWill use `discovery-swarm`, and `webrtc-swarm` whenever available to attempt to connect peers. Uses `datland-swarm-defaults` for peer introduction defaults on the server side, which can be overwritten (see below).\n\n## API\n\n### `var sw = swarm(archive, opts)`\n\nJoin the p2p swarm for the given hyperdrive archive. The return object, `sw`, is an event emitter that will emit a `peer` event with the peer information when a peer is found.\n\nGet number of currently active connections with ```sw.connections```.\n\n##### Options\n\n  * `signalhub`: the url of the signalhub.\n  * `signalhubPrefix`: the prefix for the archive's signalhub key\n  * `wrtc`: a webrtc instance, e.g. electron-webrtc, if not natively supported\n\nDefaults from datland-swarm-defaults can also be overwritten:\n\n  * `dns.server`: DNS server\n  * `dns.domain`: DNS domain\n  * `dht.bootstrap`: distributed hash table bootstrapping nodes\n"
 }

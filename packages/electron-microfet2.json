@@ -7,8 +7,17 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
-    "type": "git",
-    "url": "git+https://github.com/mpirik/electron-microfet2.git"
+    "user": "mpirik",
+    "repo": "electron-microfet2",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/mpirik/electron-microfet2/tarball/master",
+    "clone_url": "https://github.com/mpirik/electron-microfet2",
+    "https_url": "https://github.com/mpirik/electron-microfet2",
+    "travis_url": "https://travis-ci.org/mpirik/electron-microfet2",
+    "zip_url": "https://github.com/mpirik/electron-microfet2/archive/master.zip",
+    "api_url": "https://api.github.com/repos/mpirik/electron-microfet2"
   },
   "keywords": [
     "electron",
@@ -23,28 +32,34 @@
     "lodash": "^3.10.1"
   },
   "gitHead": "10b468660ff7a28b1667f5d2df035d819db2d392",
-  "bugs": {
-    "url": "https://github.com/mpirik/electron-microfet2/issues"
-  },
   "homepage": "https://github.com/mpirik/electron-microfet2#readme",
-  "_id": "electron-microfet2@0.0.2",
-  "_shasum": "bee365fe3bf1e470d6a47980c1113ef3205eb08a",
-  "_from": ".",
   "_npmVersion": "2.14.12",
   "_nodeVersion": "4.2.4",
-  "_npmUser": {
+  "dist": {
+    "shasum": "bee365fe3bf1e470d6a47980c1113ef3205eb08a",
+    "tarball": "http://registry.npmjs.org/electron-microfet2/-/electron-microfet2-0.0.2.tgz"
+  },
+  "versions": [
+    {
+      "number": "0.0.1",
+      "date": "2016-01-11T20:26:19.301Z"
+    },
+    {
+      "number": "0.0.2",
+      "date": "2016-01-12T22:30:23.574Z"
+    }
+  ],
+  "created": "2016-01-11T20:26:19.301Z",
+  "modified": "2016-01-12T22:30:23.574Z",
+  "lastPublisher": {
     "name": "jgeurts",
     "email": "jim@biacreations.com"
   },
-  "maintainers": [
+  "owners": [
     {
       "name": "jgeurts",
       "email": "jim@biacreations.com"
     }
   ],
-  "dist": {
-    "shasum": "bee365fe3bf1e470d6a47980c1113ef3205eb08a",
-    "tarball": "http://registry.npmjs.org/electron-microfet2/-/electron-microfet2-0.0.2.tgz"
-  },
-  "directories": {}
+  "readme": "# microFET2\r\nNodejs library to access the microFET 2 data\r\n\r\n```\r\nvar MicroFET2 = require('electron-microfet2');\r\n\r\nvar sensor = new MicroFET2();\r\n\r\n//listen for device found event and connect\r\nsensor.on('found', (devices) => {\r\n  devices.forEach((device) => {\r\n    sensor.connect(device.id, device.name, device.port);\r\n  });\r\n});\r\n\r\n//listen for connection and start streaming\r\nsensor.on('connect', (device) => {\r\n  console.log(\"microFET2 connected\");\r\n});\r\n\r\n//listen for data\r\nsensor.on('data', (data) => {\r\n  console.log(data);\r\n});\r\n\r\n//look for devices to connect to\r\nsensor.detect();\r\n\r\n//close the connection after 5 seconds\r\nsetTimeout(function(){\r\n    sensor.disconnect();\r\n    console.log(\"microFET2 disconnected\");\r\n}, 5000);\r\n```\r\n\r\n\r\n------------\r\n## Serial Data Stream For MicroFET 2, ErgoFET 150 and ErgoFET 300\r\n\r\n* 9600 baud, 8 data, 1 stop, no parity \r\n* 4 bytes are sent\r\n* byte.bit(0-7) example: 3.2 is set - third byte bit 2 set \r\n\r\nByte 1 = 255 \r\n\r\n2.7 1 NA \r\n\r\n2.6 NA \r\n\r\n2.5 1=low range 0=high range \r\n\r\n2.4-2.1 NA \r\n\r\n2.0 1=force reading negative (tension) 0=force reading positive (compression) ErgoFET only \r\n\r\nbyte 3 � Most significant 2 digits (99 maximum) \r\n\r\nByte 4 � least significant 2 digits (99 maximum) \r\n\r\nExample: byte 3=12 and byte 4=26 then the force reading is 122.6 pounds"
 }

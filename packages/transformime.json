@@ -22,8 +22,17 @@
     "clean": "rimraf lib/* dist/*"
   },
   "repository": {
-    "type": "git",
-    "url": "git+https://github.com/nteract/transformime.git"
+    "user": "nteract",
+    "repo": "transformime",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/nteract/transformime/tarball/master",
+    "clone_url": "https://github.com/nteract/transformime",
+    "https_url": "https://github.com/nteract/transformime",
+    "travis_url": "https://travis-ci.org/nteract/transformime",
+    "zip_url": "https://github.com/nteract/transformime/archive/master.zip",
+    "api_url": "https://api.github.com/repos/nteract/transformime"
   },
   "keywords": [
     "transform",
@@ -35,9 +44,6 @@
     "name": "nteract"
   },
   "license": "BSD-3-Clause",
-  "bugs": {
-    "url": "https://github.com/nteract/transformime/issues"
-  },
   "homepage": "https://github.com/nteract/transformime#readme",
   "devDependencies": {
     "babel-cli": "^6.8.0",
@@ -67,20 +73,70 @@
     "mathjax-electron": "^0.2.0"
   },
   "gitHead": "47aaaccee8df7c5b71ed3e0b0eb4363ec3ef2e05",
-  "_id": "transformime@3.0.0",
-  "_shasum": "a0554d34767b50fb22566e868038233a02ceb725",
-  "_from": ".",
   "_npmVersion": "3.8.6",
   "_nodeVersion": "6.1.0",
-  "_npmUser": {
-    "name": "lgeiger",
-    "email": "lukas.geiger94@gmail.com"
-  },
   "dist": {
     "shasum": "a0554d34767b50fb22566e868038233a02ceb725",
     "tarball": "http://registry.npmjs.org/transformime/-/transformime-3.0.0.tgz"
   },
-  "maintainers": [
+  "stars": 1,
+  "versions": [
+    {
+      "number": "0.0.0",
+      "date": "2015-07-11T22:00:11.457Z"
+    },
+    {
+      "number": "0.0.1",
+      "date": "2015-07-12T14:23:50.634Z"
+    },
+    {
+      "number": "0.0.2",
+      "date": "2015-07-13T01:31:32.263Z"
+    },
+    {
+      "number": "0.0.3",
+      "date": "2015-07-14T03:47:14.339Z"
+    },
+    {
+      "number": "0.0.4",
+      "date": "2015-07-16T13:57:54.302Z"
+    },
+    {
+      "number": "1.0.0",
+      "date": "2015-07-26T00:43:11.542Z"
+    },
+    {
+      "number": "2.0.0",
+      "date": "2015-08-01T14:29:33.619Z"
+    },
+    {
+      "number": "2.1.0",
+      "date": "2015-11-12T17:59:35.584Z"
+    },
+    {
+      "number": "2.1.1",
+      "date": "2015-12-05T15:49:00.112Z"
+    },
+    {
+      "number": "2.1.2",
+      "date": "2016-03-02T15:35:55.810Z"
+    },
+    {
+      "number": "2.2.0",
+      "date": "2016-03-21T11:12:59.402Z"
+    },
+    {
+      "number": "3.0.0",
+      "date": "2016-05-13T22:26:49.633Z"
+    }
+  ],
+  "created": "2015-07-11T22:00:11.457Z",
+  "modified": "2016-05-13T22:26:49.633Z",
+  "lastPublisher": {
+    "name": "lgeiger",
+    "email": "lukas.geiger94@gmail.com"
+  },
+  "owners": [
     {
       "name": "blink1073",
       "email": "steven.silvester@ieee.org"
@@ -114,9 +170,5 @@
       "email": "wfwhitney@gmail.com"
     }
   ],
-  "_npmOperationalInternal": {
-    "host": "packages-12-west.internal.npmjs.com",
-    "tmp": "tmp/transformime-3.0.0.tgz_1463178406940_0.9278281300794333"
-  },
-  "directories": {}
+  "readme": "# transformime\n\n[![Build Status](https://travis-ci.org/nteract/transformime.svg)](https://travis-ci.org/nteract/transformime)\n\n![Optimus MIME](https://cloud.githubusercontent.com/assets/6437976/8895696/db154a04-3397-11e5-91ca-296b957658a6.png)\n\nTransforms MIMEtype+data to HTML Elements\n\nIntended to be used in context of Jupyter and IPython projects, particularly by display areas.\n\n## Installation\n\n```\nnpm install transformime\n```\n\n## Usage\n\nTransformime works in the browser (via browserify), converting a mimebundle (MIME type + data) into HTML Elements. `transformime.transform` returns promises for all the HTMLElements.\n\n### Using the helper function `createTransform`\n\n```javascript\nvar transformime = require(\"transformime\");\n\nvar transform = transformime.createTransform();\n\ntransform({\n    \"text/plain\": \"Hello, World!\",\n}).then(function onSuccess(result) {\n    mimeType = result.mimetype;\n    htmlElement = result.el;\n    console.log(\"Tranformime: Result:\", mimeType, htmlElement);\n}, function onError(err) {\n    console.error(\"Transformime: Error:\", err);\n});\n```\n\n### Transform a single mimetype\n\n```javascript\n> t = new transformime.Transformime();\n> p1 = t.transform({'text/html': '<h1>Woo</h1>'}, document)\nPromise { <pending> }\n> p1\nPromise {\n  { mimetype: 'text/html',\n  el:\n   { _events: {},\n     _childNodes: [Object],\n     _childNodesList: null,\n     _ownerDocument: [Object],\n     _childrenList: null,\n     _version: 1,\n     _parentNode: null,\n     _memoizedQueries: {},\n     _readonly: false,\n     _namespaceURI: 'http://www.w3.org/1999/xhtml',\n     _prefix: null,\n     _localName: 'div',\n     _attributes: {},\n     _settingCssText: false,\n     _style: [Object] } } }\n> p1.then(function(result){\n...   console.log(result.el.innerHTML);\n...   console.log(result.el.textContent);\n... });\nPromise { <pending> }\n> <h1>Woo</h1>\nWoo\n```\n\nImages get handled as base64 encoded data and become embedded elements.\n\n```javascript\n> // Send an image over\n> p2 = t.transform({'image/png': 'R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7'}, document)\n> p2.then(function(result){\n...     console.log(result.el.src);\n... })\ndata:image/png;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7\n```\n\n### Transform the richest element\n```javascript\n> var mimes = {'text/html': '<code>import this</code>', 'text/plain': 'import this'}\n> var p3 = t.transform(mimes, document);\n> p3.then(function(result){\n...    console.log(result.mimetype + \": \" + result.el.innerHTML)\n... })\ntext/html: <code>import this</code>\n```\n\n### Working with iframes\n\n```javascript\n> // Create an arbitrary iframe and slap it in the body of the document\n> var iframe = document.createElement(\"iframe\");\n> document.querySelector('body').appendChild(iframe);\n> var idoc = iframe.contentDocument;\n> // Pass the iframe's document as the document context for the created element\n> var p5 = t.transform({'text/html': '<h1>mimetic</h1>'}, idoc);\n> p5.then(function(result){\n... idoc.querySelector('body').appendChild(result.el);\n... })\n> idoc.querySelector('body').innerHTML\n'<div><h1>mimetic</h1></div>'\n```\n\n## Development\n\n```\ngit clone https://github.com/nteract/transformime\ncd transformime\nnpm install\nnpm run build\n```\n"
 }

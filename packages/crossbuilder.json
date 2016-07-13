@@ -25,8 +25,17 @@
     "electron": "./node_modules/.bin/electron"
   },
   "repository": {
-    "type": "git",
-    "url": "git+https://github.com/zalmoxisus/browser-extension-boilerplate.git"
+    "user": "zalmoxisus",
+    "repo": "browser-extension-boilerplate",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/zalmoxisus/browser-extension-boilerplate/tarball/master",
+    "clone_url": "https://github.com/zalmoxisus/browser-extension-boilerplate",
+    "https_url": "https://github.com/zalmoxisus/browser-extension-boilerplate",
+    "travis_url": "https://travis-ci.org/zalmoxisus/browser-extension-boilerplate",
+    "zip_url": "https://github.com/zalmoxisus/browser-extension-boilerplate/archive/master.zip",
+    "api_url": "https://api.github.com/repos/zalmoxisus/browser-extension-boilerplate"
   },
   "homepage": "https://github.com/zalmoxisus/browser-extension-boilerplate",
   "keywords": [
@@ -105,27 +114,34 @@
     "redux-thunk": "^1.0.3"
   },
   "gitHead": "5a89b688d1ddfc61b8dab0ae5d7240d0bbcf35f2",
-  "bugs": {
-    "url": "https://github.com/zalmoxisus/browser-extension-boilerplate/issues"
-  },
-  "_id": "crossbuilder@0.7.0",
-  "_shasum": "c74a4f2b025ef9117b5438a767586ee9dc327a85",
-  "_from": ".",
   "_npmVersion": "2.14.4",
   "_nodeVersion": "4.1.2",
-  "_npmUser": {
-    "name": "zalmoxisus",
-    "email": "zalmoxisus@gmail.com"
-  },
   "dist": {
     "shasum": "c74a4f2b025ef9117b5438a767586ee9dc327a85",
     "tarball": "http://registry.npmjs.org/crossbuilder/-/crossbuilder-0.7.0.tgz"
   },
-  "maintainers": [
+  "stars": 2,
+  "versions": [
+    {
+      "number": "0.6.0",
+      "date": "2016-01-09T09:29:57.213Z"
+    },
+    {
+      "number": "0.7.0",
+      "date": "2016-01-24T13:30:18.056Z"
+    }
+  ],
+  "created": "2016-01-09T09:29:57.213Z",
+  "modified": "2016-01-24T13:30:18.056Z",
+  "lastPublisher": {
+    "name": "zalmoxisus",
+    "email": "zalmoxisus@gmail.com"
+  },
+  "owners": [
     {
       "name": "zalmoxisus",
       "email": "zalmoxisus@gmail.com"
     }
   ],
-  "directories": {}
+  "readme": "# CrossBuilder\n\n[![Build Status](https://travis-ci.org/zalmoxisus/crossbuilder.svg)](https://travis-ci.org/zalmoxisus/crossbuilder)  [![Build status Windows](https://ci.appveyor.com/api/projects/status/x1wjnw9ux1g9obx9?svg=true)](https://ci.appveyor.com/project/zalmoxisus/crossbuilder) [![bitHound Score](https://www.bithound.io/github/zalmoxisus/crossbuilder/badges/score.svg)](https://www.bithound.io/github/zalmoxisus/crossbuilder) [![Dependency Status](https://david-dm.org/zalmoxisus/crossbuilder.svg)](https://david-dm.org/zalmoxisus/crossbuilder) [![devDependency Status](https://david-dm.org/zalmoxisus/crossbuilder/dev-status.svg)](https://david-dm.org/zalmoxisus/crossbuilder#info=devDependencies)\n\nBuilding web, Electron, Cordova and Chrome apps, and cross-browser extensions that use Redux actions for messaging.\n\nRedux states are synced between background, injected page, app window, extension popup and badge.\n\nThe developing is the same as for the web apps with React and Redux, just use the `src/app` boilerplate.\n\n## Structure\n\n- `src/app`: React cross-browser application (will be imported in the apps bellow).\n- `src/web`: web app sources.\n- `src/browser`: extensions sources.\n- `src/chromeApp`: Chrome app sources\n- `src/electron`: Electron app sources\n- `test/app`: tests for Redux actions and reducers, and for React components (using [enzyme](http://airbnb.io/enzyme/)).\n- `test/chrome`: tests for Chrome app and extension (using [chromedriver](https://www.npmjs.com/package/chromedriver), [selenium-webdriver](https://www.npmjs.com/package/selenium-webdriver)).\n\n## CrossBuilder included libraries\n - [redux-devtools-extension](https://github.com/zalmoxisus/redux-devtools-extension)\n - [redux-notify](https://github.com/zalmoxisus/redux-notify)\n - [crossmessaging](https://github.com/zalmoxisus/crossmessaging)\n - [chrome-storage-local](https://github.com/zalmoxisus/chrome-storage-local)\n\n## Installation\n\n```bash\n# required node.js/io.js\n# clone it\nnpm install\n```\n\n## Development\n\n```bash\n# build files to './dev'\n# watch files change\n# start WebpackDevServer\nnpm run dev\n```\n\n- Open web app in browser at `localhost:3000`.\n- [Load unpacked extension's `./dev` folder to Chrome.](https://developer.chrome.com/extensions/getstarted#unpacked)\n\n#### React/Flux hot reload\n\nThis boilerplate uses `Webpack` and `react-transform`. You can hot reload by editing related files of `./src/app`. If the inject page for the extension is on https (like `https://github.com`), click the 'shield' icon on the Chrome address bar to allow loading `http://localhost` there (after making any changes in dev mode), so hot reload can work for that page.\n\n#### Debug with Redux DevTools\n\nWe use [Redux DevTools Extension](https://github.com/zalmoxisus/redux-devtools-extension), install it from [Chrome store](https://chrome.google.com/webstore/detail/redux-devtools/lmhkpmbekcpmknklioeibfkpmmfibljd) for debugging.\n\n## Build web app\n\n```bash\n# build files to './build/web'\nnpm run build:web\n```\n\n## Build Electron app\n\n```bash\n# build files to './build/electron'\nnpm run build:electron\n\n# or to start it\nnpm run start:electron\n```\n\n## Build Chrome app\n\n```bash\n# build files to './build/app'\nnpm run build:app\n```\n\n## Build Chrome extension\n\n```bash\n# build files to './build/extension'\nnpm run build:extension\n```\n\n## Build Firefox extension\n\n```bash\n# build files to './build/firefox'\nnpm run build:firefox\n````\nNote that it's [not possible for now to load Firefox extensions from local directories](https://bugzilla.mozilla.org/show_bug.cgi?id=1185460), so use `npm run compress:firefox` instead to generate an xpi file.\n\n## Build & Run Cordova app\n\n1. Install global tools: `npm install -g cordova`.\n2. Add your cordova platform by running `cordova platform add %PLATFORM%` (where `%PLATFORM%` is the platform you deploy for: android and more).\n3. Use `cordova run android` or `cordova build android` to run or build the app (it will execute `npm run build:cordova` automatically [as a hook](https://github.com/zalmoxisus/crossbuilder/blob/master/hooks/build.sh)).\n\n## Build & Compress\n\n```bash\n# build and compress Electron app to [name].dmg, win32-ia32.zip, win32-x64.zip, linux-ia32.zip, linux-x64.zip\nnpm run compress:electron\n\n# compress Chrome app to app.zip\nnpm run compress:app\n\n# compress Chrome extension to extension.zip\nnpm run compress:extension\n\n# compress Firefox extension to firefox.xpi\nnpm run compress:firefox\n```\n\n## Load\n\n- [Load the extension to Chrome](https://developer.chrome.com/extensions/getstarted#unpacked).\n- [Launch your Chrome app](https://developer.chrome.com/apps/first_app#five).\n- Firefox: [Prerequisites](https://developer.mozilla.org/en-US/Add-ons/WebExtensions/Prerequisites), [Installing](https://developer.mozilla.org/en-US/Add-ons/WebExtensions/Packaging_and_installation#Installing_Your_Extension).\n\n## Test\n\n```bash\n# test app\nnpm run test:app\n\n# start Chromedriver for testing with Chrome\nnpm run before:test:chrome\n\n# test Chrome extension\nnpm run test:chrome:extension\n\n# test Chrome app\nnpm run test:chrome:app\n\n# test Chrome extension and app\nnpm run test:chrome\n\n# test everything\nnpm test\n```\n\n## Roadmap\n\n- [x] Web app\n- [x] Electron app\n- [x] Chrome app\n- [x] Chrome extension\n- [x] Firefox extension (see [the current status](https://github.com/zalmoxisus/crossbuilder/issues/12))\n- [ ] Safari extension (based on [Chrome to Safari port](https://code.google.com/p/adblockforchrome/source/browse/trunk/port.js))\n\n## LICENSE\n\n[MIT](LICENSE)"
 }

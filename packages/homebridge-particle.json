@@ -1,0 +1,81 @@
+{
+  "name": "homebridge-particle",
+  "version": "0.0.7",
+  "description": "Particle plugin for homebridge: https://github.com/nfarina/homebridge",
+  "license": "ISC",
+  "repository": {
+    "user": "krvarma",
+    "repo": "homebridge-particle",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/krvarma/homebridge-particle/tarball/master",
+    "clone_url": "https://github.com/krvarma/homebridge-particle",
+    "https_url": "https://github.com/krvarma/homebridge-particle",
+    "travis_url": "https://travis-ci.org/krvarma/homebridge-particle",
+    "zip_url": "https://github.com/krvarma/homebridge-particle/archive/master.zip",
+    "api_url": "https://api.github.com/repos/krvarma/homebridge-particle"
+  },
+  "keywords": [
+    "homebridge-plugin"
+  ],
+  "engines": {
+    "node": ">=0.12.0",
+    "homebridge": ">=0.2.0"
+  },
+  "dependencies": {
+    "request": "^2.65.0",
+    "eventsource": ""
+  },
+  "homepage": "https://github.com/krvarma/homebridge-particle#readme",
+  "scripts": {},
+  "_npmVersion": "2.14.20",
+  "_nodeVersion": "4.4.0",
+  "dist": {
+    "shasum": "d02a114669eda6374d461c93a3c6e26e88f95ea4",
+    "tarball": "http://registry.npmjs.org/homebridge-particle/-/homebridge-particle-0.0.7.tgz"
+  },
+  "versions": [
+    {
+      "number": "0.0.1",
+      "date": "2016-04-21T08:06:48.561Z"
+    },
+    {
+      "number": "0.0.2",
+      "date": "2016-04-21T08:14:16.906Z"
+    },
+    {
+      "number": "0.0.3",
+      "date": "2016-04-21T18:46:04.038Z"
+    },
+    {
+      "number": "0.0.4",
+      "date": "2016-04-22T18:02:23.061Z"
+    },
+    {
+      "number": "0.0.5",
+      "date": "2016-04-22T18:04:08.575Z"
+    },
+    {
+      "number": "0.0.6",
+      "date": "2016-04-22T18:08:44.002Z"
+    },
+    {
+      "number": "0.0.7",
+      "date": "2016-04-22T18:11:43.599Z"
+    }
+  ],
+  "created": "2016-04-21T08:06:48.561Z",
+  "modified": "2016-04-22T18:11:43.599Z",
+  "lastPublisher": {
+    "name": "krvarma",
+    "email": "krvarma@gmail.com"
+  },
+  "owners": [
+    {
+      "name": "krvarma",
+      "email": "krvarma@gmail.com"
+    }
+  ],
+  "readme": "**Particle device plugin for Homebridge**\r\n-------------------------------------\r\n\r\nAs you all know in the new version of [Homebridge](https://github.com/nfarina/homebridge), the plugin architecture is changed. In new Homebridge, plugins are published through NPM with name starts with *homebridge-*. Users can install the plugin using NPM.\r\n\r\nMy previous example of Particle and Homebridge uses old plugin architecture. I have been thinking for a long time to upgrade my previous plugin to the new architecture. But because of many reasons it is delayed. Luckily last week I was able to complete and publish to NPM.\r\n\r\nYou can install it using NPM like all other modules, you can install using:\r\n\r\n`npm install -g homebridge-particle`.\r\n\r\nIn this version, I have made some changes from the older version. Mainly the plugin is now a Homebridge Platform. Also in this version accessories are defined in `config.json` file. The plugin loads the accessories from the `config.json` file and create accessory dynamically. A sample configuration file is like:\r\n\r\n    {\r\n        \"bridge\": {\r\n            \"name\": \"Homebridge\",\r\n            \"username\": \"CC:22:3D:E3:CE:39\",\r\n            \"port\": 51826,\r\n            \"pin\": \"031-45-154\"\r\n        },\r\n        \r\n        \"description\": \"This is an example configuration file with one Particle platform and 3 accessories, two lights and a temperature sensor. You should replace the access token and device id placeholder with your access token and device id\",\r\n    \r\n        \"platforms\": [\r\n            {\r\n                \"platform\": \"Particle\",\r\n                \"name\": \"Particle Devices\",\r\n    \t\t\t\"access_token\": \"<<access token>>\",\r\n    \t\t\t\"cloudurl\": \"https://api.spark.io/v1/devices/\",\r\n    \t\t\t\"devices\": [\r\n    \t\t\t\t{\r\n    \t\t\t\t\t\"accessory\": \"BedroomLight\",\r\n    \t\t\t\t\t\"name\": \"Bedroom Light\",\r\n    \t\t\t\t    \"deviceid\": \"<<device id>>\",\r\n    \t\t\t\t\t\"type\": \"LIGHT\",\r\n    \t\t\t\t\t\"function_name\": \"onoff\",\r\n    \t\t\t\t\t\"args\": \"0={STATE}\"\r\n    \t\t\t\t},\r\n    \t\t\t\t{\r\n    \t\t\t\t\t\"accessory\": \"KitchenLight\",\r\n    \t\t\t\t\t\"name\": \"Kitchen Light\",\r\n    \t\t\t\t\t\"deviceid\": \"<<device id>>\",\r\n    \t\t\t\t\t\"type\": \"LIGHT\",\r\n    \t\t\t\t\t\"function_name\": \"onoff\",\r\n    \t\t\t\t\t\"args\": \"1={STATE}\"\r\n    \t\t\t\t},\r\n    \t\t\t\t{\r\n    \t\t\t\t\t\"accessory\": \"KitchenTemperature\",\r\n    \t\t\t\t\t\"name\": \"Kitchen Temperature\",\r\n    \t\t\t\t\t\"deviceid\": \"<<device id>>\",\r\n    \t\t\t\t\t\"type\": \"SENSOR\",\r\n    \t\t\t\t\t\"sensorType\": \"temperature\",\r\n    \t\t\t\t\t\"key\": \"temperature\",\r\n    \t\t\t\t\t\"event_name\": \"tvalue\"\r\n    \t\t\t\t}\r\n    \t\t\t]\r\n            }\r\n        ]\r\n    }\r\n\r\nAs you can see from the above example this `config.json` file defines 3 accessories. 2 Lights and one Temperature Sensor. The **access_token** defines the Particle Access Token and **cloudurl** defines the base Particle API url. If you are using the Particle Cloud, then the value of *cloudurl* should be https://api.spark.io/v1/devices/. If you are using local cloud, then replace with your sensor address. \r\n\r\nThe `devices` array contains all the accessories. You can see the accessory object defines following string objects:\r\n\r\n - ***accessory*** - Accessory name, this is the name of the accessory.\r\n - ***name*** - Display name, this is the name to be displayed on the HomeKit app.\r\n - ***deviceid*** - Device ID of the Particle Device (Core, Photon or Electron). It is defined in accessory so that you can use different Particle Devices for different accessory.\r\n - ***type*** - Type of the accessoy. As of now, the plugin supports 2 type, LIGHT and SENSOR. Type LIGHT represents a light, such as bedroom light, kitchen light, living room light, etc... Type SENSOR represents sensor accessory such as Temperature sensor, Humidity sensor, Light sensor, etc...\r\n - ***sensorType*** - Optional Sensor Type, this string object is optional. This is only valid when the accessory type is SENSOR. As of now the plugin supports 3 types of sensors, Temperature Sensor, Humidity Sensor and Light Sensor. More sensor will be supports in future versions.\r\n - ***event_name*** - The name of the event to listen for sensor value update. This is only valid if the accessory type is SENSOR. If the accessory is a type of SENSOR, then the plugin listens for events published from Particle  Device (using `Particle.publish`). The device firmware should publish the sensor values in the format `key=value`. The key identifies the sensor value. For a temperature sensor the key should be ***temperature***. For a humidity sensor the key should be ***humidity***. For light sensor it should be ***light***.\r\n - ***key*** - Name of the key, this is not used in this version of the plugin. This is included for future purpose.\r\n\r\n"
+}

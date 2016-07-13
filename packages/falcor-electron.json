@@ -43,24 +43,61 @@
     "node-uuid": "1.4.3"
   },
   "gitHead": "4ef669a3ec34d6b124052b35e37fd4ebeccd2891",
-  "_id": "falcor-electron@0.2.0",
-  "_shasum": "ed114331ab72bee125e17073908dbb0e4652753f",
-  "_from": ".",
   "_npmVersion": "3.3.6",
   "_nodeVersion": "4.0.0",
-  "_npmUser": {
-    "name": "lukewestby",
-    "email": "lwestby@alumni.nd.edu"
-  },
   "dist": {
     "shasum": "ed114331ab72bee125e17073908dbb0e4652753f",
     "tarball": "http://registry.npmjs.org/falcor-electron/-/falcor-electron-0.2.0.tgz"
   },
-  "maintainers": [
+  "versions": [
+    {
+      "number": "0.1.0",
+      "date": "2015-10-11T01:33:11.798Z"
+    },
+    {
+      "number": "0.1.1",
+      "date": "2015-10-11T01:58:34.547Z"
+    },
+    {
+      "number": "0.1.2",
+      "date": "2015-10-11T02:03:28.979Z"
+    },
+    {
+      "number": "0.1.4",
+      "date": "2015-10-11T02:09:02.392Z"
+    },
+    {
+      "number": "0.1.5",
+      "date": "2015-10-11T02:19:14.796Z"
+    },
+    {
+      "number": "0.1.6",
+      "date": "2015-10-11T02:26:30.516Z"
+    },
+    {
+      "number": "0.1.7",
+      "date": "2015-10-11T02:31:08.895Z"
+    },
+    {
+      "number": "0.1.8",
+      "date": "2015-10-11T02:34:16.380Z"
+    },
+    {
+      "number": "0.2.0",
+      "date": "2015-11-09T02:37:11.863Z"
+    }
+  ],
+  "created": "2015-10-11T01:33:11.798Z",
+  "modified": "2015-11-09T02:37:11.863Z",
+  "lastPublisher": {
+    "name": "lukewestby",
+    "email": "lwestby@alumni.nd.edu"
+  },
+  "owners": [
     {
       "name": "lukewestby",
       "email": "lwestby@alumni.nd.edu"
     }
   ],
-  "directories": {}
+  "readme": "# falcor-electron\n[![Build Status](https://travis-ci.org/lukewestby/falcor-electron.svg)](https://travis-ci.org/lukewestby/falcor-electron)\n\n[Falcor](https://github.com/Netflix/falcor) integration for\n[electron](https://github.com/atom/electron) using the `ipc` module.\n\n## Usage\n\nInstall from npm.\n\n```\nnpm install --save falcor-electron\n```\n\nInstall your `Router` as a data source in the main process.\n\n```javascript\nimport ipc from 'ipc';\nimport Router from 'falcor-router';\nimport { installIpcHandler } from 'falcor-electron';\n\ninstallIpcHandler(ipc, () => {\n  return new Router([\n    // ... routes\n  ]);\n});\n```\n\nConfigure your `Model` with an `IpcDataSource` in the renderer process.\n\n```javascript\nimport ipc from 'ipc';\nimport { Model } from 'falcor';\nimport { createIpcDataSource } from 'falcor-electron';\n\nconst model = new Model({\n  source: createIpcDataSource(ipc)\n});\n```\n\n## Contributing\n\nFeature requests and bugs/bug fixes are happily accepted and can be submitted\neither as issues or pull requests.\n\n- Source is compiled with `babel`\n  - Presets:\n    - `es2015`\n    - `stage-1`\n- Source is linted with `eslint`\n- Tests are run with `tape`\n\nFor code contributions, please fork `develop` and submit a PR.\n"
 }

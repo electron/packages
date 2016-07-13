@@ -4,8 +4,17 @@
   "description": "Nightmare (electron based) driver for the x-ray web scraper.",
   "main": "index.js",
   "repository": {
-    "type": "git",
-    "url": "git+https://github.com/phulas/x-ray-nightmare.git"
+    "user": "phulas",
+    "repo": "x-ray-nightmare",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/phulas/x-ray-nightmare/tarball/master",
+    "clone_url": "https://github.com/phulas/x-ray-nightmare",
+    "https_url": "https://github.com/phulas/x-ray-nightmare",
+    "travis_url": "https://travis-ci.org/phulas/x-ray-nightmare",
+    "zip_url": "https://github.com/phulas/x-ray-nightmare/archive/master.zip",
+    "api_url": "https://api.github.com/repos/phulas/x-ray-nightmare"
   },
   "keywords": [
     "x-ray",
@@ -19,9 +28,6 @@
     "email": "mashaalm@phulas.com"
   },
   "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/phulas/x-ray-nightmare/issues"
-  },
   "homepage": "https://github.com/phulas/x-ray-nightmare#readme",
   "dependencies": {
     "debug": "^2.2.0",
@@ -34,29 +40,38 @@
     "x-ray": "^2.3.0"
   },
   "gitHead": "d92f39a46e5e126254cdda6de34d39476fa1f6f8",
-  "_id": "x-ray-nightmare@0.1.2",
   "scripts": {},
-  "_shasum": "1896946974cb168c7d9a7c8f54fae5054bd00aea",
-  "_from": ".",
   "_npmVersion": "3.8.9",
   "_nodeVersion": "6.2.0",
-  "_npmUser": {
-    "name": "mashaalmemon",
-    "email": "mashaalm@phulas.com"
-  },
   "dist": {
     "shasum": "1896946974cb168c7d9a7c8f54fae5054bd00aea",
     "tarball": "http://registry.npmjs.org/x-ray-nightmare/-/x-ray-nightmare-0.1.2.tgz"
   },
-  "maintainers": [
+  "versions": [
+    {
+      "number": "0.1.0",
+      "date": "2016-04-27T23:15:12.506Z"
+    },
+    {
+      "number": "0.1.1",
+      "date": "2016-04-27T23:24:59.548Z"
+    },
+    {
+      "number": "0.1.2",
+      "date": "2016-06-20T18:13:19.743Z"
+    }
+  ],
+  "created": "2016-04-27T23:15:12.506Z",
+  "modified": "2016-06-20T18:13:19.743Z",
+  "lastPublisher": {
+    "name": "mashaalmemon",
+    "email": "mashaalm@phulas.com"
+  },
+  "owners": [
     {
       "name": "mashaalmemon",
       "email": "mashaalm@phulas.com"
     }
   ],
-  "_npmOperationalInternal": {
-    "host": "packages-12-west.internal.npmjs.com",
-    "tmp": "tmp/x-ray-nightmare-0.1.2.tgz_1466446397431_0.20093860616907477"
-  },
-  "directories": {}
+  "readme": "# x-ray-nightmare\nNightmare (electron based) driver for the [x-ray](https://github.com/lapwinglabs/x-ray) web scraper.\n\nThis is an alternative to the [x-ray-phantom](https://github.com/lapwinglabs/x-ray-phantom) driver created by x-ray author [@matthewmueller](https://github.com/matthewmueller).\n\n## Installation\n\n```\nnpm install x-ray-nightmare\n```\n\n## Usage\n\n```js\nvar NightmareElectron = require('x-ray-nightmare');\nvar Xray = require('x-ray');\n\n// instantiate driver for later shutdown\nvar nightmareDriver = NightmareElectron();\n\nvar x = Xray()\n  .driver(nightmareDriver);\n\nx('http://google.com', 'title')(function(err, str) {\n  if (err) return done(err);\n  assert.equal('Google', str);\n  \n  // gracefully shutdown driver\n  nightmareDriver();\n  \n  done();\n})\n```\n\n## API\n\n### NightmareElectron([options|fn], [fn])\n\nInitialize the NightmareElectron driver with `options` being passed to Nightmare and\nan optional custom `fn` with the signature `function(ctx,nightmare)`.\n\nReturns the driver object which must be called as a function once when no longer needed\nin order to gracefully shut down the nightmare object (results in a call to the Nightmare [.end()](https://github.com/segmentio/nightmare#end) function)\n\n##### Options\n\nOptions that can be passed to nightmare are documented [here](https://github.com/segmentio/nightmare#nightmareoptions).\n\n##### Optional function\n\nBy default, a simple page visit by using Nightmare to the URL specified is executed\n\n```js\n// Assume that a nightmare object is instantiated with\n// options as (if) specified\n// var Nightmare = require('nightmare');\n// var nightmare = new Nightmare(options);\n\nnightmare.goto(ctx.url);\n\n```\n\nA custom function to, lets say, take a screenshot and save the file, would replace this simple Nightmare call with this:\n\n```js\n// take a screenshot before passing output to x-ray\nfunction getScreenshot(ctx, nightmare) {\n    nightmare.goto(ctx.url)\n       .screenshot('page.png');\n}\n\n// alternate instantiation of x\nvar x = Xray()\n  .driver(NightmareElectron(getScreenshot));\n\n\n```\nNote that the page html is passed off to x-ray and  `nightmare.end()` is executed by the driver, so there is no need to add this to your custom function.\n\n## Test\n\n```\nnpm install \nnpm install -only=dev\n\n#run mocha on test.js file\n\n```\n\n## Debug Flags\n\nAll x-ray-nightmare messages:\n\n`DEBUG=x-ray:nightmare*`\n\n\n## License\n\nMIT\n"
 }

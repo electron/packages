@@ -1,6 +1,6 @@
 {
   "name": "pomegranate-express",
-  "version": "0.2.2",
+  "version": "1.0.1",
   "description": "Provides an Express server, middleware layer, and route loader to the pomegranate framework.",
   "main": "index.js",
   "scripts": {
@@ -28,11 +28,11 @@
     "express": "^4.13.3",
     "lodash": "^3.10.1",
     "morgan": "^1.6.1",
-    "pomegranate-express-application": "0.0.1",
-    "pomegranate-express-postroute-middleware": "0.0.1",
-    "pomegranate-express-preroute-middleware": "0.0.1",
-    "pomegranate-express-route-directory": "0.0.1",
-    "pomegranate-express-server": "0.0.1",
+    "pomegranate-express-application": "^1.0.0",
+    "pomegranate-express-postroute-middleware": "^1.0.0",
+    "pomegranate-express-preroute-middleware": "^1.0.1",
+    "pomegranate-express-route-directory": "^1.0.0",
+    "pomegranate-express-server": "^1.0.0",
     "response-time": "^2.3.1",
     "serve-static": "^1.10.2"
   },
@@ -41,36 +41,79 @@
     "tap": "^5.1.1"
   },
   "repository": {
-    "type": "git",
-    "url": "https://github.com/Pomegranate/pomegranate-express.git"
-  },
-  "bugs": {
-    "url": "https://github.com/Pomegranate/pomegranate-express/issues"
+    "user": "Pomegranate",
+    "repo": "pomegranate-express",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/Pomegranate/pomegranate-express/tarball/master",
+    "clone_url": "https://github.com/Pomegranate/pomegranate-express",
+    "https_url": "https://github.com/Pomegranate/pomegranate-express",
+    "travis_url": "https://travis-ci.org/Pomegranate/pomegranate-express",
+    "zip_url": "https://github.com/Pomegranate/pomegranate-express/archive/master.zip",
+    "api_url": "https://api.github.com/repos/Pomegranate/pomegranate-express"
   },
   "homepage": "https://github.com/Pomegranate/pomegranate-express",
-  "gitHead": "c9b0962252b0b28981522b4a2e3937629e406af8",
-  "_id": "pomegranate-express@0.2.2",
-  "_shasum": "b8ed034a4271e9f53c2bb98dc6d89357796f3776",
-  "_from": ".",
+  "gitHead": "80bb91aa2a48534218026e9628566d07870d69af",
   "_npmVersion": "2.5.1",
   "_nodeVersion": "0.12.0",
-  "_npmUser": {
+  "dist": {
+    "shasum": "08b5ef91c4c8854ffa6c9db0fcbe00afa1a49c53",
+    "tarball": "http://registry.npmjs.org/pomegranate-express/-/pomegranate-express-1.0.1.tgz"
+  },
+  "versions": [
+    {
+      "number": "0.0.1",
+      "date": "2016-01-21T07:46:21.757Z"
+    },
+    {
+      "number": "0.0.2",
+      "date": "2016-01-28T08:41:28.931Z"
+    },
+    {
+      "number": "0.0.3",
+      "date": "2016-01-29T08:54:06.426Z"
+    },
+    {
+      "number": "0.0.4",
+      "date": "2016-02-05T21:54:03.911Z"
+    },
+    {
+      "number": "0.1.0",
+      "date": "2016-02-10T04:02:56.305Z"
+    },
+    {
+      "number": "0.2.0",
+      "date": "2016-03-03T05:55:03.766Z"
+    },
+    {
+      "number": "0.2.1",
+      "date": "2016-03-04T15:53:09.697Z"
+    },
+    {
+      "number": "0.2.2",
+      "date": "2016-04-29T05:57:18.094Z"
+    },
+    {
+      "number": "1.0.0",
+      "date": "2016-07-04T20:28:50.677Z"
+    },
+    {
+      "number": "1.0.1",
+      "date": "2016-07-07T11:13:03.645Z"
+    }
+  ],
+  "created": "2016-01-21T07:46:21.757Z",
+  "modified": "2016-07-07T11:13:03.645Z",
+  "lastPublisher": {
     "name": "paperelectron",
     "email": "jim.bulkowski@paperelectron.com"
   },
-  "maintainers": [
+  "owners": [
     {
       "name": "paperelectron",
       "email": "jim.bulkowski@paperelectron.com"
     }
   ],
-  "dist": {
-    "shasum": "b8ed034a4271e9f53c2bb98dc6d89357796f3776",
-    "tarball": "http://registry.npmjs.org/pomegranate-express/-/pomegranate-express-0.2.2.tgz"
-  },
-  "_npmOperationalInternal": {
-    "host": "packages-16-east.internal.npmjs.com",
-    "tmp": "tmp/pomegranate-express-0.2.2.tgz_1461909437242_0.44068282726220787"
-  },
-  "directories": {}
+  "readme": "# Pomegranate-Express\n\nA Plugin bundle for the [Pomegranate](https://github.com/Pomegranate/Pomegranate) application framework.\nPomegranate-Express bundles several easily configurable plugins that implement the Express framework.\n\n# Usage and Examples\n\n### Install\n```shell\n$ npm install --save pomegranate pomegranate-express\n$ ./node_modules/.bin/pomegranate init -f . && ./node_modules/.bin/pomegranate build\n$ node pom.js\n```\n\n### Routing.\n\nThe Router plugin creates your route structure based on directory and module names.\nYou can basically treat it exactly like an instance of [Express Router](http://expressjs.com/en/api.html#router)\nbecause that is exactly what it is.\n\nex.\n\n```javascript\n/* file ./routes/index.js */\n\nmodule.exports = function(Router){\n\n  //available at http://localhost:8080/\n  Router.get('/', function(req, res, next){\n    res.send('Hello from the index')\n  })\n\n  // Note: your route files must return\n  // the factory instance of Router provided\n  return Router\n}\n\n```\nYou can define named routes just as easily.\n\n```javascript\n/* file ./routes/hello/index.js */\n\nmodule.exports = function(Router){\n  //available at http://localhost:8080/hello\n  Router.get('/', function(req, res, next){\n    res.send('Hello from a sub directory')\n  })\n\n  //available at http://localhost:8080/hello/world\n  Router.get('/world', function(req, res, next){\n    res.send('Hello from a named route')\n  })\n  return Router\n}\n```\n\nFinally You can name your files if you have complex routes that you wish to segregate.\nThese coexist with index files, so feel free to experiment with what works best for you.\n\n```javascript\n/* file ./routes/hello/name.js */\n\nmodule.exports = function(Router){\n  //available at http://localhost:8080/hello/name/bob\n  Router.get('/:name', function(req, res, next){\n    res.send('Hello from a named file ' + req.params.name)\n  })\n  return Router\n}\n\n```\n### Middleware.\n\nObviously any Express application lives on its middleware stack. Pomegranate makes it easy to create, configure and\nload your middleware functions without a huge boilerplate file.\n\nThe Application Plugin creates a shared object that middleware functions can merge into,\nLater in the Pomegranate bootstrap process, the PreRouter and PostRouter plugins will use this object\nto mount your middleware. The BundleMiddleware plugin provides some stock functions, but you can easily override\nthem by creating your own with the same name.\n\nex.\n\n```javascript\n/* file ./plugins/MyMiddleware.js */\n\nmodule.exports = {\n  options: { //optional but preferred}\n  metadata: {\n    name: 'MyMiddleware',\n    layer: 'dependencies'\n    param: 'Middleware',\n    type: 'merge'\n  },\n  plugin: {\n    load: function(inject, loaded){\n\n      /*\n       * Create one or many middleware functions here, you can split them up into separate files if needed.\n       */\n\n      var myMiddlewares = {\n       awesome: function(req, res, next){\n          console.log('You are really awesome')\n          next()\n       }\n     }\n\n     /*\n      * When you are ready, call loaded with your middlewares as the second param.\n      * If something goes wrong, pass the error to the first param of loaded()\n      */\n\n     loaded(null, myMiddlewares)\n    },\n    start: function(done){\n      done(null)\n    }\n    stop: function(done){\n      done(null)\n    }\n  }\n}\n```\n\n\n# Included Plugins\n\n<a name=\"module_Application\"></a>\n## Application\nProvides the Express App, Express Router Factory and Middleware object.\n\n**Injector**: <code>Dynamic</code> Adds a dynamic number of objects.  \n**Injects**: <code>Service</code> Express - Configurable instance of Express.  \n**Injects**: <code>Factory</code> Router - Provides instances of Express.Router() to define routes on.  \n**Injects**: <code>Merge</code> Middleware - An object spanning all of the middleware in a project.  \n**Properties**\n\n| Name | Type | Default | Description |\n| --- | --- | --- | --- |\n| options | <code>Object</code> |  | Plugin Options |\n| options.caseSensitiveRoutes | <code>Boolean</code> | <code>false</code> |  |\n| options.mergeReqParams | <code>Boolean</code> | <code>false</code> |  |\n| options.strictRouting | <code>Boolean</code> | <code>false</code> |  |\n\n\n<a name=\"module_BundledMiddleware\"></a>\n## BundledMiddleware\nProvides Overrideable standard middleware.\n\n**Injector**: <code>Merge</code> Merges all returned objects into the provided dep name.  \n**Injects:**: <code>function</code> Middleware - 404  \n**Injects:**: <code>function</code> Middleware - 500  \n**Properties**\n\n| Name | Type | Description |\n| --- | --- | --- |\n| options | <code>Object</code> | This plugin has no options |\n\n\n<a name=\"module_PreMiddleware\"></a>\n## PreMiddleware\nConfigures the Express application and mounts all pre-route middleware.\n\n**Injector**: <code>None</code> Adds nothing to the injector.  \n**Properties**\n\n| Name | Type | Description |\n| --- | --- | --- |\n| options | <code>Object</code> | Plugin Options |\n| options.order | <code>Array</code> | Mount order of middleware functions. |\n\n\n<a name=\"module_Router\"></a>\n## Router\nLoads and mounts provided route definition files located in options.workDir\n\n**Injector**: <code>None</code> Adds nothing to the injector.  \n**Properties**\n\n| Name | Type | Default | Description |\n| --- | --- | --- | --- |\n| options | <code>Object</code> |  | Plugin Options |\n| options.workDir | <code>String</code> | <code>./routes</code> | Directory to load routes from. |\n\n\n<a name=\"module_PostMiddleware\"></a>\n## PostMiddleware\nConfigures the Express application and mounts all post-route middleware, including error handlers.\n\n**Injector**: <code>None</code> Adds nothing to the injector.  \n**Properties**\n\n| Name | Type | Default | Description |\n| --- | --- | --- | --- |\n| options | <code>Object</code> |  | Plugin Options |\n| options.order | <code>Array.&lt;String&gt;</code> | <code>&#x27;[&#x27;404&#x27;,&#x27;500&#x27;]&#x27;</code> | Mount order of middleware functions. |\n\n\n<a name=\"module_Launcher\"></a>\n## Launcher\nConfigures the Express application and mounts all pre-route middleware.\n\n**Injector**: <code>None</code> Adds nothing to the injector.  \n**Properties**\n\n| Name | Type | Default | Description |\n| --- | --- | --- | --- |\n| options | <code>Object</code> |  | Plugin Options |\n| options.port | <code>Number</code> | <code>8080</code> | Port to bind server to. |\n| options.address | <code>String</code> | <code>localhost</code> | Address to bind server to. |\n\n\n\n# Bundled Middleware\n<a name=\"module_404\"></a>\n## 404\nBundled 404 handler middleware\n\n\n<a name=\"module_500\"></a>\n## 500\n\n\n"
 }

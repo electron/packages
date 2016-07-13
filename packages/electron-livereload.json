@@ -3,8 +3,17 @@
   "version": "0.0.2",
   "description": "electron live reload",
   "repository": {
-    "type": "git",
-    "url": "git+https://github.com/BoLaMN/electron-livereload.git"
+    "user": "BoLaMN",
+    "repo": "electron-livereload",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/BoLaMN/electron-livereload/tarball/master",
+    "clone_url": "https://github.com/BoLaMN/electron-livereload",
+    "https_url": "https://github.com/BoLaMN/electron-livereload",
+    "travis_url": "https://travis-ci.org/BoLaMN/electron-livereload",
+    "zip_url": "https://github.com/BoLaMN/electron-livereload/archive/master.zip",
+    "api_url": "https://api.github.com/repos/BoLaMN/electron-livereload"
   },
   "main": "index.js",
   "scripts": {
@@ -19,28 +28,35 @@
     "coffee-script": "^1.10.0"
   },
   "gitHead": "86c4663adae9f3e409e00c2619def606c3b17381",
-  "bugs": {
-    "url": "https://github.com/BoLaMN/electron-livereload/issues"
-  },
   "homepage": "https://github.com/BoLaMN/electron-livereload#readme",
-  "_id": "electron-livereload@0.0.2",
-  "_shasum": "24dbc4a34b807b2bc3fa1f3886592651ad5e7125",
-  "_from": ".",
   "_npmVersion": "3.3.5",
   "_nodeVersion": "0.10.32",
-  "_npmUser": {
-    "name": "bolamn",
-    "email": "nathan@bolamn.com"
-  },
   "dist": {
     "shasum": "24dbc4a34b807b2bc3fa1f3886592651ad5e7125",
     "tarball": "http://registry.npmjs.org/electron-livereload/-/electron-livereload-0.0.2.tgz"
   },
-  "maintainers": [
+  "stars": 1,
+  "versions": [
+    {
+      "number": "0.0.1",
+      "date": "2015-10-04T08:04:16.561Z"
+    },
+    {
+      "number": "0.0.2",
+      "date": "2015-10-04T08:08:58.529Z"
+    }
+  ],
+  "created": "2015-10-04T08:04:16.561Z",
+  "modified": "2015-10-04T08:08:58.529Z",
+  "lastPublisher": {
+    "name": "bolamn",
+    "email": "nathan@bolamn.com"
+  },
+  "owners": [
     {
       "name": "bolamn",
       "email": "nathan@bolamn.com"
     }
   ],
-  "directories": {}
+  "readme": "# electron-livereload\n\n## electron main.js  \n```\napp     = require 'app'\nwindow  = require 'browser-window'\n\nlivereload = require 'electron-livereload'\n\napp.on 'ready', ->\n  win = new window\n    title: 'My App'\n    'min-width': 520\n    'min-height': 520\n    frame: false\n    resizable: true\n    icon: 'assets/images/icon.png'\n    transparent: true\n    center: true\n\n  win.loadUrl 'file://' + path.join __dirname, 'index.html'\n  \n  livereload.client win\n```\n## grunt example\n```\nlivereload = require 'electron-livereload'\n\nelectron = livereload.server()\n\nmodule.exports = (grunt) ->\n\n  grunt.initConfig\n\n    watch: \n      options: \n        nospawn: true # !IMPORTANT!\n      client: \n        files: ['src/client/**/*.coffee'], tasks: ['coffee', 'reload-electron']\n      server: \n        files: ['src/server/**/*.coffee'], tasks: ['coffee', 'restart-electron']\n    \n    grunt.registerTask 'start', (env) ->\n      electron.start()\n      grunt.task.run 'watch'\n      \n    grunt.registerTask 'restart-electron', ->\n      electron.restart()\n    \n    grunt.registerTask 'reload-electron', ->\n      electron.reload()\n  ```\n"
 }

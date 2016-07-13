@@ -8,8 +8,17 @@
     "test": "NODE_ENV=test mocha --ui tdd --reporter spec"
   },
   "repository": {
-    "type": "git",
-    "url": "https://github.com/PaperElectron/littoral.git"
+    "user": "PaperElectron",
+    "repo": "littoral",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/PaperElectron/littoral/tarball/master",
+    "clone_url": "https://github.com/PaperElectron/littoral",
+    "https_url": "https://github.com/PaperElectron/littoral",
+    "travis_url": "https://travis-ci.org/PaperElectron/littoral",
+    "zip_url": "https://github.com/PaperElectron/littoral/archive/master.zip",
+    "api_url": "https://api.github.com/repos/PaperElectron/littoral"
   },
   "preferGlobal": true,
   "bin": {
@@ -27,9 +36,6 @@
     "url": "http://paperelectron.com/"
   },
   "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/PaperElectron/littoral/issues"
-  },
   "homepage": "https://github.com/PaperElectron/littoral",
   "dependencies": {
     "commander": "^2.6.0",
@@ -48,24 +54,54 @@
     "mocha": "^2.2.0"
   },
   "gitHead": "0b9f4f02b685109c34948f12f165cea011984396",
-  "_id": "littoral@0.0.7",
-  "_shasum": "6bc70d5ddd84c6d5717bf1eda9144f44f748e4bb",
-  "_from": ".",
   "_npmVersion": "2.5.1",
   "_nodeVersion": "0.12.0",
-  "_npmUser": {
+  "dist": {
+    "shasum": "6bc70d5ddd84c6d5717bf1eda9144f44f748e4bb",
+    "tarball": "http://registry.npmjs.org/littoral/-/littoral-0.0.7.tgz"
+  },
+  "stars": 0,
+  "versions": [
+    {
+      "number": "0.0.1",
+      "date": "2015-03-06T16:34:02.073Z"
+    },
+    {
+      "number": "0.0.2",
+      "date": "2015-03-06T20:01:14.419Z"
+    },
+    {
+      "number": "0.0.3",
+      "date": "2015-03-10T05:43:38.190Z"
+    },
+    {
+      "number": "0.0.4",
+      "date": "2015-03-10T16:52:31.854Z"
+    },
+    {
+      "number": "0.0.5",
+      "date": "2015-03-12T04:38:53.773Z"
+    },
+    {
+      "number": "0.0.6",
+      "date": "2015-03-18T16:16:44.291Z"
+    },
+    {
+      "number": "0.0.7",
+      "date": "2015-03-18T16:20:50.214Z"
+    }
+  ],
+  "created": "2015-03-06T16:34:02.073Z",
+  "modified": "2015-03-18T16:20:50.214Z",
+  "lastPublisher": {
     "name": "paperelectron",
     "email": "jim.bulkowski@paperelectron.com"
   },
-  "maintainers": [
+  "owners": [
     {
       "name": "paperelectron",
       "email": "jim.bulkowski@paperelectron.com"
     }
   ],
-  "dist": {
-    "shasum": "6bc70d5ddd84c6d5717bf1eda9144f44f748e4bb",
-    "tarball": "http://registry.npmjs.org/littoral/-/littoral-0.0.7.tgz"
-  },
-  "directories": {}
+  "readme": "# Littoral\n\n### A self contained, modular, exhibition server.\n\nLittoral, is a simple, reliable way to host example projects in a self contained way. You provide a directory full of example applications and Littoral loads them up and serves them.\n\nMeant to run on docker Littoral has a pre built docker container [paperelectron/littoral-docker](https://registry.hub.docker.com/u/paperelectron/littoral-docker/) it is also a good fit for hosting behind [OctoRP](https://github.com/PaperElectron/OctoRP) if hosting multiple docker apps is your kind of thing.\n\n## Installation\n#### Production - No Docker\n\n```shell\n$ npm install -g littoral\n$ littoral\n```\nThe above will load up the demo content and theme. You probably dont want that, so to get going quickly you can do.\n\n```shell\n$ npm install -g littoral\n$ git clone https://github.com/PaperElectron/littoral-boilerplate.git ~/.littoral\n$ littoral\n```\n\nThis will start a server on localhost:8080 with a very generic theme, and some dummy content to use as a starting point.\n\nYou can also pass a path to the littoral executable and it will attempt to use that directory for its content.\n\n```shell\n$ littoral ~/my/projects\n```\n\n#### Production - Docker.\nThe docker image is built when this repo is committed to.\nIt comes ready to run this app with your data passed in as a\nvolume.\n\n```shell\n$ docker run -p 8080:8080 \\\n-v ~/my/content:/var/littoral/.littoral \\\npaperelectron/littoral-docker\n```\n\n#### Development.\n\n```shell\n$ git clone https://github.com/PaperElectron/littoral\n$ cd littoral && npm install\n$ npm start\n```\n\nThis will give you a running server on localhost:8080 \nwith the demo content loaded.\n\n```shell \n$ npm start ~/my/littoral_content\n```\n\nThis will give you a running server on localhost:8080\nwith your content loaded.\n\n\n## Configuration\n\nConfiguration is provided by the settings.js file found in the root of your content directory. It is pretty self explanatory. [You can read more here](demo_volume/settings.js)\n\n## Themes\n\nThemes are loaded from the themes/ directory inside of your content root, they consist of a directory with a package.json file, a views directory and a public directory.\n\nThe [littoral-boilerplate](PaperElectron/littoral-boilerplate) repo contains a simple theme with all of the nessesary components written in jade. (handlebars coming soon). It is fairly well commented, and pretty easy to spot what is going on, if you want to create your own (You do, the boilerplate is just that.)\n\n## Content\n\nYour content is loaded from the `routes/` directory inside your content root. They consist of a directory containing an `index.js` file, a `views/` directory and a `public/`directory (similar to a theme). You can have as many of these as you want, within reason I havent tested the limits but certainly hundreds. \n[Read more](PaperElectron/littoral-boilerplate/routes)\n\n## Roadmap\n\nThis project started as a quick solution to a problem I had, and as a platform to test one of my other projects. As such its api and design are going to be rather fluid for a bit as things get nailed down.\n\n### Planned features.\n\n* Recursive loading of projects. ie: `/javascript`, `/javascript/demo1`, `/javascript/demo2`\n* Full example themes in handlebars as well as Jade. Currently EJS and plain html are supported. EJS doent have the features needed for a full theme implementation so it will probably be removed.\n* Backend management\n  * git integration, hooks.\n  * Server restarts.\n  * Basic metrics.\n  \n"
 }

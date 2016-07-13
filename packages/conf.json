@@ -1,0 +1,118 @@
+{
+  "name": "conf",
+  "version": "0.11.1",
+  "description": "Simple config handling for your app or module",
+  "license": "MIT",
+  "repository": {
+    "user": "sindresorhus",
+    "repo": "conf",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/sindresorhus/conf/tarball/master",
+    "clone_url": "https://github.com/sindresorhus/conf",
+    "https_url": "https://github.com/sindresorhus/conf",
+    "travis_url": "https://travis-ci.org/sindresorhus/conf",
+    "zip_url": "https://github.com/sindresorhus/conf/archive/master.zip",
+    "api_url": "https://api.github.com/repos/sindresorhus/conf"
+  },
+  "author": {
+    "name": "Sindre Sorhus",
+    "email": "sindresorhus@gmail.com",
+    "url": "sindresorhus.com"
+  },
+  "scripts": {
+    "test": "xo && ava"
+  },
+  "files": [
+    "index.js"
+  ],
+  "keywords": [
+    "config",
+    "store",
+    "app",
+    "storage",
+    "conf",
+    "configuration",
+    "settings",
+    "preferences",
+    "json",
+    "data",
+    "persist",
+    "persistent",
+    "save",
+    "load",
+    "read",
+    "write"
+  ],
+  "dependencies": {
+    "dot-prop": "^3.0.0",
+    "env-paths": "^0.2.0",
+    "mkdirp": "^0.5.1",
+    "pkg-up": "^1.0.0"
+  },
+  "devDependencies": {
+    "ava": "*",
+    "del": "^2.2.1",
+    "tempfile": "^1.1.1",
+    "xo": "*"
+  },
+  "xo": {
+    "esnext": true
+  },
+  "gitHead": "cffd7b58d6245c0f0c2e8b92d8bc45a4caf52a00",
+  "homepage": "https://github.com/sindresorhus/conf#readme",
+  "_npmVersion": "2.15.5",
+  "_nodeVersion": "4.4.5",
+  "dist": {
+    "shasum": "f65c81fca34850959ceb6f248b62aaed3a734fe7",
+    "tarball": "http://registry.npmjs.org/conf/-/conf-0.11.1.tgz"
+  },
+  "versions": [
+    {
+      "number": "0.8.0",
+      "date": "2011-02-27T23:37:13.533Z"
+    },
+    {
+      "number": "0.8.1",
+      "date": "2011-04-27T18:18:32.500Z"
+    },
+    {
+      "number": "0.8.2",
+      "date": "2011-05-30T11:43:31.774Z"
+    },
+    {
+      "number": "0.8.3",
+      "date": "2011-06-08T16:20:20.609Z"
+    },
+    {
+      "number": "0.8.4",
+      "date": "2011-08-23T12:11:02.211Z"
+    },
+    {
+      "number": "0.10.0",
+      "date": "2016-06-21T22:54:59.511Z"
+    },
+    {
+      "number": "0.11.0",
+      "date": "2016-06-24T10:54:20.043Z"
+    },
+    {
+      "number": "0.11.1",
+      "date": "2016-07-12T13:25:39.009Z"
+    }
+  ],
+  "created": "2011-02-27T23:37:13.072Z",
+  "modified": "2016-07-12T13:25:39.009Z",
+  "lastPublisher": {
+    "name": "sindresorhus",
+    "email": "sindresorhus@gmail.com"
+  },
+  "owners": [
+    {
+      "name": "sindresorhus",
+      "email": "sindresorhus@gmail.com"
+    }
+  ],
+  "readme": "# conf [![Build Status: Linux and macOS](https://travis-ci.org/sindresorhus/conf.svg?branch=master)](https://travis-ci.org/sindresorhus/conf) [![Build status: Windows](https://ci.appveyor.com/api/projects/status/n88jwh3aju39i0p2/branch/master?svg=true)](https://ci.appveyor.com/project/sindresorhus/conf/branch/master)\n\n> Simple config handling for your app or module\n\nAll you have to care about is what to persist. This module will handle all the dull details like where and how.\n\n\n## Install\n\n```\n$ npm install --save conf\n```\n\n\n## Usage\n\n```js\nconst Conf = require('conf');\nconst config = new Conf();\n\nconfig.set('unicorn', '🦄');\nconsole.log(config.get('unicorn'));\n//=> '🦄'\n\n// use dot-notation to access nested properties\nconfig.set('foo.bar', true);\nconsole.log(config.get('foo'));\n//=> {bar: true}\n\nconfig.delete('unicorn');\nconsole.log(config.get('unicorn'));\n//=> undefined\n```\n\nOr [create a subclass](https://github.com/sindresorhus/electron-config/blob/master/index.js).\n\n\n## API\n\n### Conf([options])\n\nReturns a new instance.\n\n### options\n\n#### defaults\n\nType: `Object`\n\nDefault config.\n\n#### configName\n\nType: `string`<br>\nDefault: `config`\n\nName of the config file (without extension).\n\nUseful if you need multiple config files for your app or module. For example, different config files between two major versions.\n\n#### projectName\n\nType: `string`<br>\nDefault: The `name` field in your package.json\n\nYou only need to specify this if you don't have a package.json file in your project.\n\n#### cwd\n\nType: `string`<br>\nDefault: System default [user config directory](https://github.com/sindresorhus/env-paths#pathsconfig)\n\n**You most likely don't need this.**\n\nOverrides `projectName`.\n\nThe only use-case I can think of is having the config located in the app directory or on some external storage.\n\n### Instance\n\nYou can use [dot-notation](https://github.com/sindresorhus/dot-prop) in a `key` to access nested properties.\n\nThe instance is [`iterable`](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Iteration_protocols) so you can use it directly in a [`for…of`](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Statements/for...of) loop.\n\n#### .set(key, value)\n\nSet an item.\n\n#### .set(object)\n\nSet multiple items at once.\n\n#### .get(key)\n\nGet an item.\n\n#### .has(key)\n\nCheck if an item exists.\n\n#### .delete(key)\n\nDelete an item.\n\n#### .clear()\n\nDelete all items.\n\n#### .size\n\nGet the item count.\n\n#### .store\n\nGet all the config as an object or replace the current config with an object:\n\n```js\nconf.store = {\n\thello: 'world'\n};\n```\n\n#### .path\n\nGet the path to the config file.\n\n\n\n## FAQ\n\n### How is this different from [`configstore`](https://github.com/yeoman/configstore)?\n\nI'm also the author of `configstore`. While it's pretty good, I did make some mistakes early on that are hard to change at this point. This module is the result of everything I learned from making `configstore`. Mainly where config is stored. In `configstore`, the config is stored in `~/.config` (which is mainly a Linux convention) on all systems, while `conf` stores config in the system default [user config directory](https://github.com/sindresorhus/env-paths#pathsconfig). The `~/.config` directory, it turns out, often have an incorrect permission on macOS and Windows, which has caused a lot of grief for users.\n\n\n## Related\n\n- [electron-config](https://github.com/sindresorhus/electron-config) - Simple config handling for your Electron app or module\n\n\n## License\n\nMIT © [Sindre Sorhus](https://sindresorhus.com)\n"
+}

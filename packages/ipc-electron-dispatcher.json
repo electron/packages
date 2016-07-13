@@ -4,8 +4,17 @@
   "description": "A flux dispatcher that talks through the process barrier for electron apps using ipc",
   "main": "lib/index.js",
   "repository": {
-    "type": "git",
-    "url": "git://github.com/jcblw/ipc-electron-dispatcher.git"
+    "user": "jcblw",
+    "repo": "ipc-electron-dispatcher",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/jcblw/ipc-electron-dispatcher/tarball/master",
+    "clone_url": "https://github.com/jcblw/ipc-electron-dispatcher",
+    "https_url": "https://github.com/jcblw/ipc-electron-dispatcher",
+    "travis_url": "https://travis-ci.org/jcblw/ipc-electron-dispatcher",
+    "zip_url": "https://github.com/jcblw/ipc-electron-dispatcher/archive/master.zip",
+    "api_url": "https://api.github.com/repos/jcblw/ipc-electron-dispatcher"
   },
   "scripts": {
     "test": "standard src",
@@ -25,28 +34,38 @@
     "standard": "^5.3.1"
   },
   "gitHead": "3f035d1049864d70768309939930b3174fba8c95",
-  "bugs": {
-    "url": "https://github.com/jcblw/ipc-electron-dispatcher/issues"
-  },
   "homepage": "https://github.com/jcblw/ipc-electron-dispatcher#readme",
-  "_id": "ipc-electron-dispatcher@0.1.2",
-  "_shasum": "e9674ae269c3b732c1bcc42135cbf682b11fbc1e",
-  "_from": ".",
   "_npmVersion": "3.3.4",
   "_nodeVersion": "4.0.0",
-  "_npmUser": {
-    "name": "jcblw",
-    "email": "jacoblowe2.0@gmail.com"
-  },
   "dist": {
     "shasum": "e9674ae269c3b732c1bcc42135cbf682b11fbc1e",
     "tarball": "http://registry.npmjs.org/ipc-electron-dispatcher/-/ipc-electron-dispatcher-0.1.2.tgz"
   },
-  "maintainers": [
+  "versions": [
+    {
+      "number": "0.1.0",
+      "date": "2015-10-03T17:43:48.877Z"
+    },
+    {
+      "number": "0.1.1",
+      "date": "2015-10-03T17:44:47.289Z"
+    },
+    {
+      "number": "0.1.2",
+      "date": "2015-10-03T17:59:25.184Z"
+    }
+  ],
+  "created": "2015-10-03T17:43:48.877Z",
+  "modified": "2015-10-03T17:59:25.184Z",
+  "lastPublisher": {
+    "name": "jcblw",
+    "email": "jacoblowe2.0@gmail.com"
+  },
+  "owners": [
     {
       "name": "jcblw",
       "email": "jacoblowe2.0@gmail.com"
     }
   ],
-  "directories": {}
+  "readme": "# IPC Electron Dispatcher\n\nThis is just the [flux](https://facebook.github.io/flux/docs/dispatcher.html) wrapped with a small amount of code to allow it to speak to both the renderer process as well as the main process.\n\n[![Build Status](https://travis-ci.org/jcblw/ipc-electron-dispatcher.svg?branch=master)](https://travis-ci.org/jcblw/ipc-electron-dispatcher)\n\n## Install\n\n  npm i ipc-electron-dispatcher -S\n\n## Usage\n\nYou still need to make your own instance of the dispatcher\n\n```javascript\n// dispatcher.js\nconst IPCDispatcher = require('ipc-electron-dispatcher')\nconst dispatcher = new IPCDispatcher()\n\nmodule.exports = dispatcher\n```\n\nNow you may require/register/dispatch from either the main process or the renderer process and the action should propagate to both processes\n\n> Currently this only supports on window applications and will only speak to window after they have attempted to speak to the dispatcher first\n\n> Since the dispatchers are in different processes they will have different data sets for registered callbacks\n\nPatches welcome ^^ :smile:\n\n## Contributing\n\nRight now the only two things are `src` files are the main source file and get compiled into the `lib` dir using `npm run build`. And we use [standardjs](http://standardjs.com/), so by running `npm test` you can test if you code is compliant.\n"
 }

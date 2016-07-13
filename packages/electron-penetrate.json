@@ -8,8 +8,17 @@
     "preinstall": "node-gyp rebuild --dist-url=https://atom.io/download/atom-shell"
   },
   "repository": {
-    "type": "git",
-    "url": "https://github.com/zsxsoft/electron-penetrate.git"
+    "user": "zsxsoft",
+    "repo": "electron-penetrate",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/zsxsoft/electron-penetrate/tarball/master",
+    "clone_url": "https://github.com/zsxsoft/electron-penetrate",
+    "https_url": "https://github.com/zsxsoft/electron-penetrate",
+    "travis_url": "https://travis-ci.org/zsxsoft/electron-penetrate",
+    "zip_url": "https://github.com/zsxsoft/electron-penetrate/archive/master.zip",
+    "api_url": "https://api.github.com/repos/zsxsoft/electron-penetrate"
   },
   "keywords": [
     "transparent",
@@ -20,32 +29,34 @@
     "email": "zsx@zsxsoft.com"
   },
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/zsxsoft/electron-penetrate/issues"
-  },
   "homepage": "https://github.com/zsxsoft/electron-penetrate",
   "engines": {
     "node": ">= 0.12.0"
   },
   "gitHead": "397ef19f5b51b2d93d8e5481b653d5e27f24074a",
-  "_id": "electron-penetrate@0.0.3",
-  "_shasum": "aea9b68d0c23bce71468295501b3ad18e7ac79ff",
-  "_from": ".",
   "_npmVersion": "2.7.4",
   "_nodeVersion": "0.12.2",
-  "_npmUser": {
+  "dist": {
+    "shasum": "aea9b68d0c23bce71468295501b3ad18e7ac79ff",
+    "tarball": "http://registry.npmjs.org/electron-penetrate/-/electron-penetrate-0.0.3.tgz"
+  },
+  "versions": [
+    {
+      "number": "0.0.3",
+      "date": "2015-08-02T07:05:47.454Z"
+    }
+  ],
+  "created": "2015-08-02T07:05:47.454Z",
+  "modified": "2015-08-02T07:05:47.454Z",
+  "lastPublisher": {
     "name": "zsx",
     "email": "zsx@zsxsoft.com"
   },
-  "maintainers": [
+  "owners": [
     {
       "name": "zsx",
       "email": "zsx@zsxsoft.com"
     }
   ],
-  "dist": {
-    "shasum": "aea9b68d0c23bce71468295501b3ad18e7ac79ff",
-    "tarball": "http://registry.npmjs.org/electron-penetrate/-/electron-penetrate-0.0.3.tgz"
-  },
-  "directories": {}
+  "readme": "electron-penetrate\r\n======\r\n\r\n**Windows Only**\r\n\r\n**Tested under Electron 0.30.2**\r\n\r\nIt used Win32 API to make your Electron window penetrable. \r\n\r\nA new branch of https://github.com/zsxsoft/nw-penetrate .\r\n\r\n![Snapshot](http://project.zsxsoft.com/electron-penetrate/snapshot.gif)\r\n\r\n### Installion\r\n```bash \r\n$ npm install electron-penetrate\r\n```\r\n\r\n### Usage\r\nFirst, you should open ``transparent`` in ``package.json``\r\n```javascript\r\nvar browserWindow = new BrowserWindow({\r\n    transparency: true\r\n});\r\n```\r\n\r\nThen, set a unique ``document.title`` dynamically (like ``Math.random()``). \r\n```javascript\r\nvar tranResult = require(\"electron-penetrate\").penetrate(document.title);\r\nconsole.log(tranResult);\r\n```\r\n\r\n\r\n## 中文\r\n\r\n它调用了Win32API来让你的Electron窗口可被鼠标穿过。\r\n\r\n首先打开它的transparent选项；其次，你需要设置一个独一无二的窗口标题。我觉得``Math.random()``是个不错的选择呢。"
 }

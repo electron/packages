@@ -10,8 +10,17 @@
     "WebModule"
   ],
   "repository": {
-    "type": "git",
-    "url": "https://github.com/uupaa/ScreenOrientationEvent.js.git"
+    "user": "uupaa",
+    "repo": "ScreenOrientationEvent.js",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/uupaa/ScreenOrientationEvent.js/tarball/master",
+    "clone_url": "https://github.com/uupaa/ScreenOrientationEvent.js",
+    "https_url": "https://github.com/uupaa/ScreenOrientationEvent.js",
+    "travis_url": "https://travis-ci.org/uupaa/ScreenOrientationEvent.js",
+    "zip_url": "https://github.com/uupaa/ScreenOrientationEvent.js/archive/master.zip",
+    "api_url": "https://api.github.com/repos/uupaa/ScreenOrientationEvent.js"
   },
   "scripts": {
     "sync": "node ../WebModule/run/sync.js; npm update; node ../WebModule/run/page.js",
@@ -80,31 +89,57 @@
   "license": "MIT",
   "contributors": [],
   "gitHead": "19a884e5f5a1f89c18f2873630c1f1787bd954b1",
-  "bugs": {
-    "url": "https://github.com/uupaa/ScreenOrientationEvent.js/issues"
-  },
   "homepage": "https://github.com/uupaa/ScreenOrientationEvent.js",
-  "_id": "uupaa.screenorientationevent.js@0.3.0",
-  "_shasum": "522211185f189d4e706df72b06a9bd9d7e4fe7f1",
-  "_from": ".",
   "_npmVersion": "2.0.0",
-  "_npmUser": {
+  "dist": {
+    "shasum": "522211185f189d4e706df72b06a9bd9d7e4fe7f1",
+    "tarball": "http://registry.npmjs.org/uupaa.screenorientationevent.js/-/uupaa.screenorientationevent.js-0.3.0.tgz"
+  },
+  "versions": [
+    {
+      "number": "0.0.1",
+      "date": "2016-03-13T13:06:22.390Z"
+    },
+    {
+      "number": "0.1.0",
+      "date": "2016-03-13T13:15:54.578Z"
+    },
+    {
+      "number": "0.1.1",
+      "date": "2016-03-13T17:34:27.078Z"
+    },
+    {
+      "number": "0.1.2",
+      "date": "2016-03-13T17:39:42.119Z"
+    },
+    {
+      "number": "0.1.3",
+      "date": "2016-03-13T17:45:32.071Z"
+    },
+    {
+      "number": "0.1.4",
+      "date": "2016-03-13T17:46:38.999Z"
+    },
+    {
+      "number": "0.2.0",
+      "date": "2016-03-14T16:21:02.868Z"
+    },
+    {
+      "number": "0.3.0",
+      "date": "2016-05-31T07:24:04.961Z"
+    }
+  ],
+  "created": "2016-03-13T13:06:22.390Z",
+  "modified": "2016-05-31T07:24:04.961Z",
+  "lastPublisher": {
     "name": "uupaa",
     "email": "uupaa.js@gmail.com"
   },
-  "maintainers": [
+  "owners": [
     {
       "name": "uupaa",
       "email": "uupaa.js@gmail.com"
     }
   ],
-  "dist": {
-    "shasum": "522211185f189d4e706df72b06a9bd9d7e4fe7f1",
-    "tarball": "http://registry.npmjs.org/uupaa.screenorientationevent.js/-/uupaa.screenorientationevent.js-0.3.0.tgz"
-  },
-  "_npmOperationalInternal": {
-    "host": "packages-12-west.internal.npmjs.com",
-    "tmp": "tmp/uupaa.screenorientationevent.js-0.3.0.tgz_1464679444453_0.9250643437262625"
-  },
-  "directories": {}
+  "readme": "# ScreenOrientationEvent.js [![Build Status](https://travis-ci.org/uupaa/ScreenOrientationEvent.js.svg)](https://travis-ci.org/uupaa/ScreenOrientationEvent.js)\n\n[![npm](https://nodei.co/npm/uupaa.screenorientationevent.js.svg?downloads=true&stars=true)](https://nodei.co/npm/uupaa.screenorientationevent.js/)\n\nScreen orientation handler.\n\nThis module made of [WebModule](https://github.com/uupaa/WebModule).\n\n## Documentation\n- [Spec](https://github.com/uupaa/ScreenOrientationEvent.js/wiki/)\n- [API Spec](https://github.com/uupaa/ScreenOrientationEvent.js/wiki/ScreenOrientationEvent)\n\n\n## Browser compatibility\n\n|                       | ScreenOrientation.on | ScreenOrientation.lock |\n|-----------------------|----------------------|------------------------|\n| Chrome                | :o:                  | :o:                    |\n| Chrome for Android    | :o:                  | :o:                    |\n| Firefox for Android   | :o:                  | :o:                    |\n| Edge                  | :o:                  | :o:                    |\n| Mobile Safari         | :o:                  | :x:                    |\n| IE10                  | :x:                  | :x:                    |\n| IE11 (Windows 8.1)    | :x:                  | :x:                    |\n| IE11 (Windows 7)      | :x:                  | :x:                    |\n| Safari                | :x:                  | :x:                    |\n| Android Browser       | :x:                  | :x:                    |\n\n## Browser, NW.js and Electron\n\n```js\n<script src=\"<module-dir>/lib/WebModule.js\"></script>\n<script src=\"<module-dir>/lib/ScreenOrientationEvent.js\"></script>\n<script>\n\nwindow.onload = function() {\n    if (ScreenOrientationEvent.enable) {\n        _setBodyColor(ScreenOrientationEvent.orientation());\n\n        ScreenOrientationEvent.on(function(currentOrientation, eventType) {\n            console.log(currentOrientation, eventType);\n\n            _setBodyColor(currentOrientation);\n        });\n    }\n};\n\nfunction _setBodyColor(orientation) {\n    var color = \"white\";\n    switch (orientation) {\n    case   0: color = \"white\"; break;\n    case  90: color = \"red\";   break;\n    case 180: color = \"green\"; break;\n    case 270: color = \"blue\";  break;\n    }\n    document.body.style.backgroundColor = color;\n}\n\n</script>\n```\n\n\n"
 }

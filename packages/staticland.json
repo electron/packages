@@ -14,8 +14,17 @@
     "test": "npm run deps && npm run lint && npm run test:node && npm run test:testron"
   },
   "repository": {
-    "type": "git",
-    "url": "git+https://github.com/staticland/staticland.git"
+    "user": "staticland",
+    "repo": "staticland",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/staticland/staticland/tarball/master",
+    "clone_url": "https://github.com/staticland/staticland",
+    "https_url": "https://github.com/staticland/staticland",
+    "travis_url": "https://travis-ci.org/staticland/staticland",
+    "zip_url": "https://github.com/staticland/staticland/archive/master.zip",
+    "api_url": "https://api.github.com/repos/staticland/staticland"
   },
   "keywords": [
     "static",
@@ -24,9 +33,6 @@
   ],
   "author": "",
   "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/staticland/staticland/issues"
-  },
   "homepage": "https://github.com/staticland/staticland#readme",
   "devDependencies": {
     "browserify": "^13.0.1",
@@ -49,28 +55,29 @@
     "tar-fs": "^1.12.0"
   },
   "gitHead": "3b7be6b664c7b07f3996cee94a94d413a5f047fe",
-  "_id": "staticland@1.0.0",
-  "_shasum": "fa6b47ca27a86cbefc093a79457c690d1ae5af99",
-  "_from": ".",
   "_npmVersion": "3.8.6",
   "_nodeVersion": "6.0.0",
-  "_npmUser": {
-    "name": "sethvincent",
-    "email": "sethvincent@gmail.com"
-  },
   "dist": {
     "shasum": "fa6b47ca27a86cbefc093a79457c690d1ae5af99",
     "tarball": "http://registry.npmjs.org/staticland/-/staticland-1.0.0.tgz"
   },
-  "maintainers": [
+  "versions": [
+    {
+      "number": "1.0.0",
+      "date": "2016-05-25T00:47:47.755Z"
+    }
+  ],
+  "created": "2016-05-25T00:47:47.755Z",
+  "modified": "2016-05-25T00:47:47.755Z",
+  "lastPublisher": {
+    "name": "sethvincent",
+    "email": "sethvincent@gmail.com"
+  },
+  "owners": [
     {
       "name": "sethvincent",
       "email": "sethvincent@gmail.com"
     }
   ],
-  "_npmOperationalInternal": {
-    "host": "packages-16-east.internal.npmjs.com",
-    "tmp": "tmp/staticland-1.0.0.tgz_1464137266423_0.7306424132548273"
-  },
-  "directories": {}
+  "readme": "# staticland\r\n\r\nPublish static sites with this command-line tool & API client for [static.land](http://static.land)\r\n\r\n## Features\r\n- One command to deploy a site.\r\n- Automatic SSL using Let's Encrypt.\r\n- Use any static site generator.\r\n- Host it yourself. Use it how you want.\r\n\r\n## Limitations\r\n- DNS records must be set up and propogated before deploying a site for the first time.\r\n- Setting aliases or redirects is not currently supported.\r\n- By default the server admin must explicitly give access to users. This will be optional in future releases.\r\n- The staticland server at api.static.land is not yet publicly usable, so you'll need to set up a staticland instance.\r\n\r\n## Deploying sites\r\nSet up a [staticland API server](https://github.com/staticland/staticland-api):\r\n\r\nLogin to a staticland server:\r\n\r\n```\r\n  staticland login \\\r\n    --email wat@static.land \\\r\n    --password thisisnotapassword \\\r\n    --server https://api.static.land\r\n```\r\n\r\nOne command to deploy a site with SSL:\r\n\r\n```\r\n  staticland deploy \\\r\n    --source /path/to/site \\\r\n    --domain example.com\r\n```\r\n\r\n## Install\r\n\r\n```\r\nnpm i -g staticland\r\n```\r\n\r\n## License\r\n[MIT](LICENSE.md)\r\n"
 }

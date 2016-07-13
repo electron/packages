@@ -13,8 +13,17 @@
     "electron"
   ],
   "repository": {
-    "type": "git",
-    "url": "git://github.com/mainyaa/gulp-electron.git"
+    "user": "mainyaa",
+    "repo": "gulp-electron",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/mainyaa/gulp-electron/tarball/master",
+    "clone_url": "https://github.com/mainyaa/gulp-electron",
+    "https_url": "https://github.com/mainyaa/gulp-electron",
+    "travis_url": "https://travis-ci.org/mainyaa/gulp-electron",
+    "zip_url": "https://github.com/mainyaa/gulp-electron/archive/master.zip",
+    "api_url": "https://api.github.com/repos/mainyaa/gulp-electron"
   },
   "author": {
     "name": "mainya@gmail.com"
@@ -46,28 +55,34 @@
     "wrench": "^1.5.8"
   },
   "gitHead": "fad4adb298f0b67809ebe9d2d43d00ff5e2166a2",
-  "bugs": {
-    "url": "https://github.com/mainyaa/gulp-electron/issues"
-  },
   "homepage": "https://github.com/mainyaa/gulp-electron#readme",
-  "_id": "gulp-electron-ionic@0.0.6",
-  "_shasum": "75329d9dead646f00d90ab350d1c2a5f9c420a99",
-  "_from": ".",
   "_npmVersion": "2.10.1",
   "_nodeVersion": "0.12.4",
-  "_npmUser": {
-    "name": "jbavari",
-    "email": "jbavari@gmail.com"
-  },
   "dist": {
     "shasum": "75329d9dead646f00d90ab350d1c2a5f9c420a99",
     "tarball": "http://registry.npmjs.org/gulp-electron-ionic/-/gulp-electron-ionic-0.0.6.tgz"
   },
-  "maintainers": [
+  "versions": [
+    {
+      "number": "0.0.5",
+      "date": "2015-06-15T23:14:04.450Z"
+    },
+    {
+      "number": "0.0.6",
+      "date": "2015-06-15T23:19:12.028Z"
+    }
+  ],
+  "created": "2015-06-15T23:14:04.450Z",
+  "modified": "2015-06-15T23:19:12.028Z",
+  "lastPublisher": {
+    "name": "jbavari",
+    "email": "jbavari@gmail.com"
+  },
+  "owners": [
     {
       "name": "jbavari",
       "email": "jbavari@gmail.com"
     }
   ],
-  "directories": {}
+  "readme": "gulp-electron for [gulp](https://github.com/wearefractal/gulp) [![NPM version](https://badge.fury.io/js/gulp-electron.png)](http://badge.fury.io/js/gulp-electron)\n=======\n\n[![Build Status](https://travis-ci.org/mainyaa/gulp-electron.svg?branch=master)](https://travis-ci.org/mainyaa/gulp-electron) [![AppVayor status](https://ci.appveyor.com/api/projects/status/32r7s2skrgm9ubva/branch/master?svg=true)](https://ci.appveyor.com/project/mainyaa/gulp-electron) [![Dependency Status](https://david-dm.org/mainyaa/gulp-electron.svg)](https://david-dm.org/mainyaa/gulp-electron) [![Coverage Status](https://coveralls.io/repos/mainyaa/gulp-electron/badge.svg)](https://coveralls.io/r/mainyaa/gulp-electron) [![Code Climate](https://codeclimate.com/github/mainyaa/gulp-electron/badges/gpa.svg)](https://codeclimate.com/github/mainyaa/gulp-electron)\n\n> A gulp plugin that creates electron based distributable applications.\n\nInstall\n-----\n\nInstall with [npm](https://npmjs.org/package/gulp-electron).\n\n```sh\nnpm install --save-dev gulp-electron\n```\n\nUsage\n-----\n\n\nAdd a gulp electron task like :\n\n```js\nvar gulp = require('gulp');\nvar electron = require('gulp-electron');\nvar packageJson = require('./src/package.json');\n\ngulp.task('electron', function() {\n\n    gulp.src(\"\")\n    .pipe(electron({\n        src: './src',\n        packageJson: packageJson,\n        release: './release',\n        cache: './cache',\n        version: 'v0.26.1',\n        packaging: true,\n        platforms: ['win32-ia32', 'darwin-x64']\n    }))\n    .pipe(gulp.dest(\"\"));\n});\n```\n\nExecuting `gulp electron` will create an electron package for the specified platforms.\n\nWhen you run code under `process.NODE_ENV = test` more debug information will be displayed.\n\n### `Dependency`\n\nIf you using windows: install 7z(http://www.7-zip.org/).\n\n### `options`\n\n* `src` The root directory of the sources that shall be packaged, **required**.\n* `packageJson` The package.json, **required**.\n* `cache` The download path for the electron package, **required**.\n* `release` is where the release applictions path, **required**.\n* `version` the version of the electron release to be download from the GitHub page, **required**.\n* `platforms` Support `['darwin','win32','linux','darwin-x64','linux-ia32','linux-x64','win32-ia32','win64-64']`, default is `darwin-x64`. If verion is under `v0.13.0` must use `['darwin','win32','linux']`.\n* `apm` Path to the `atom-package-manager` executable. If not specified the default behavior will be to use the globally installed `apm` executable.\n* `rebuild` Default is `false`, when set to `true` then rebuild native-modules.\n* `asar` Default is `false`, when set to `true` then asar pack your app directory. see more docs(https://github.com/atom/electron/blob/master/docs/tutorial/application-packaging.md).\n* `symbols` Default is `false`, when set to `true` the symbols package from GitHub will be downloaded.\n* `packaging` Default is `false`, when set to `true` the packaging zip file.\n\n\nLicense\n-----\n\nMIT\n"
 }

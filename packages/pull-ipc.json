@@ -7,8 +7,17 @@
     "test": "electron --v=-1 test/index.js"
   },
   "repository": {
-    "type": "git",
-    "url": "git+https://github.com/pfraze/pull-ipc.git"
+    "user": "pfraze",
+    "repo": "pull-ipc",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/pfraze/pull-ipc/tarball/master",
+    "clone_url": "https://github.com/pfraze/pull-ipc",
+    "https_url": "https://github.com/pfraze/pull-ipc",
+    "travis_url": "https://travis-ci.org/pfraze/pull-ipc",
+    "zip_url": "https://github.com/pfraze/pull-ipc/archive/master.zip",
+    "api_url": "https://api.github.com/repos/pfraze/pull-ipc"
   },
   "keywords": [
     "pull",
@@ -21,9 +30,6 @@
     "email": "pfrazee@gmail.com"
   },
   "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/pfraze/pull-ipc/issues"
-  },
   "homepage": "https://github.com/pfraze/pull-ipc#readme",
   "dependencies": {
     "pull-pushable": "^1.1.4",
@@ -34,24 +40,33 @@
     "electron-tape": "~1.0.0"
   },
   "gitHead": "9b44481442fef78d1475a2704938b8cdd8d91cd9",
-  "_id": "pull-ipc@0.1.0",
-  "_shasum": "16e5072b525e5064692abd5cc3b5d928a7171090",
-  "_from": ".",
   "_npmVersion": "2.11.1",
   "_nodeVersion": "2.3.0",
-  "_npmUser": {
-    "name": "pfraze",
-    "email": "pfrazee@gmail.com"
-  },
   "dist": {
     "shasum": "16e5072b525e5064692abd5cc3b5d928a7171090",
     "tarball": "http://registry.npmjs.org/pull-ipc/-/pull-ipc-0.1.0.tgz"
   },
-  "maintainers": [
+  "versions": [
+    {
+      "number": "0.0.1",
+      "date": "2015-08-15T22:06:15.493Z"
+    },
+    {
+      "number": "0.1.0",
+      "date": "2015-09-02T20:40:48.284Z"
+    }
+  ],
+  "created": "2015-08-15T22:06:15.493Z",
+  "modified": "2015-09-02T20:40:48.284Z",
+  "lastPublisher": {
+    "name": "pfraze",
+    "email": "pfrazee@gmail.com"
+  },
+  "owners": [
     {
       "name": "pfraze",
       "email": "pfrazee@gmail.com"
     }
   ],
-  "directories": {}
+  "readme": "# pull-ipc\n\nA pull-stream wrapper around electron's ipc channel.\n\n## Usage\n\n```js\npullIpc(channelName, ipc, [window], doneCb)\n```\n\nMain thread:\n\n```js\nvar ipc = require('ipc')\nvar pullIpc = require('pull-ipc')\n\n// `window` is the BrowserWindow instance you want to communicate with\nvar ipcStream = pullIpc('pull-channel', ipc, window, function (err) {\n  console.log('ipc-stream ended', err)\n})\npull(ipcStream, someOtherStream, ipcStream)\n```\n\nUI thread:\n\n```js\nvar ipc = require('ipc')\nvar pullIpc = require('pull-ipc')\n\nvar ipcStream = pullIpc('pull-channel', ipc, function (err) {\n  console.log('ipc-stream ended', err)\n})\npull(ipcStream, someOtherStream, ipcStream)\n```"
 }

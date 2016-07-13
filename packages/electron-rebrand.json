@@ -7,16 +7,22 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
-    "type": "git",
-    "url": "git+https://github.com/alchen/electron-rebrand.git"
+    "user": "alchen",
+    "repo": "electron-rebrand",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/alchen/electron-rebrand/tarball/master",
+    "clone_url": "https://github.com/alchen/electron-rebrand",
+    "https_url": "https://github.com/alchen/electron-rebrand",
+    "travis_url": "https://travis-ci.org/alchen/electron-rebrand",
+    "zip_url": "https://github.com/alchen/electron-rebrand/archive/master.zip",
+    "api_url": "https://api.github.com/repos/alchen/electron-rebrand"
   },
   "author": {
     "name": "Alexander Chen"
   },
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/alchen/electron-rebrand/issues"
-  },
   "homepage": "https://github.com/alchen/electron-rebrand#readme",
   "dependencies": {
     "async": "^1.2.0",
@@ -31,28 +37,45 @@
     "rimraf": "^2.3.2"
   },
   "gitHead": "dfd259c963e92b345d826a78d0b33e0c9584ee86",
-  "_id": "electron-rebrand@1.2.0",
-  "_shasum": "45fdcce80e2f7be15497cd468ac4b44dc5050a67",
-  "_from": ".",
   "_npmVersion": "3.3.12",
   "_nodeVersion": "5.1.0",
-  "_npmUser": {
-    "name": "alchen",
-    "email": "alex7c+npm@gmail.com"
-  },
   "dist": {
     "shasum": "45fdcce80e2f7be15497cd468ac4b44dc5050a67",
     "tarball": "http://registry.npmjs.org/electron-rebrand/-/electron-rebrand-1.2.0.tgz"
   },
-  "maintainers": [
+  "versions": [
+    {
+      "number": "1.0.0",
+      "date": "2015-06-07T01:03:00.656Z"
+    },
+    {
+      "number": "1.1.0",
+      "date": "2015-06-27T02:29:14.486Z"
+    },
+    {
+      "number": "1.1.1",
+      "date": "2015-06-27T02:33:29.306Z"
+    },
+    {
+      "number": "1.1.2",
+      "date": "2016-01-02T07:58:46.985Z"
+    },
+    {
+      "number": "1.2.0",
+      "date": "2016-05-22T13:03:32.192Z"
+    }
+  ],
+  "created": "2015-06-07T01:03:00.656Z",
+  "modified": "2016-05-22T13:03:32.192Z",
+  "lastPublisher": {
+    "name": "alchen",
+    "email": "alex7c+npm@gmail.com"
+  },
+  "owners": [
     {
       "name": "alchen",
       "email": "alex7c@gmail.com"
     }
   ],
-  "_npmOperationalInternal": {
-    "host": "packages-16-east.internal.npmjs.com",
-    "tmp": "tmp/electron-rebrand-1.2.0.tgz_1463922211206_0.4528180214110762"
-  },
-  "directories": {}
+  "readme": "# electron-rebrand\n\nThis tool is mostly based on [electron-packager](https://github.com/maxogden/electron-packager), but in a more stripped down form that does the [complete rebranding](http://electron.atom.io/docs/latest/tutorial/application-distribution/), including the helper apps, and also removes the default app and icon, to make it easier to incorporate into a customizeable build flow.\n\nAt this point, only the OS X and Win32 portions are implementated.\n\n## Usage:\n\n```\nvar packager = require('electron-rebrand');\nvar options = {\n  name: appName,\n  platform: 'darwin',\n  arch: 'x64',\n  version: '0.27.2',\n  'app-bundle-id': 'com.example.' + appName,\n  'app-version': appVersion,\n  out: './output',\n  teamID: \"developerTeamID\"\n};\npackager(options, function (err, appPath) {\n  callback(err);\n});\n```\n\nThis will produce a rebreanded base app in `./output` ready for its icon and app to be copied in to the `resource` folder.\n"
 }

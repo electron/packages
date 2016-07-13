@@ -8,8 +8,17 @@
     "example": "electron-spawn example.js"
   },
   "repository": {
-    "type": "git",
-    "url": "git+https://github.com/livejs/audio-buffer-range-decoder.git"
+    "user": "livejs",
+    "repo": "audio-buffer-range-decoder",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/livejs/audio-buffer-range-decoder/tarball/master",
+    "clone_url": "https://github.com/livejs/audio-buffer-range-decoder",
+    "https_url": "https://github.com/livejs/audio-buffer-range-decoder",
+    "travis_url": "https://travis-ci.org/livejs/audio-buffer-range-decoder",
+    "zip_url": "https://github.com/livejs/audio-buffer-range-decoder/archive/master.zip",
+    "api_url": "https://api.github.com/repos/livejs/audio-buffer-range-decoder"
   },
   "keywords": [
     "AudioBuffer",
@@ -23,9 +32,6 @@
     "name": "Matt McKegg"
   },
   "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/livejs/random-access-audio-buffer/issues"
-  },
   "homepage": "https://github.com/livejs/random-access-audio-buffer",
   "devDependencies": {
     "electron-prebuilt": "^0.30.3",
@@ -33,24 +39,41 @@
     "standard": "^5.0.2"
   },
   "gitHead": "eadf2b3c8ce3c82641b861d1ab1fc349e30bd1e6",
-  "_id": "audio-buffer-range-decoder@1.1.1",
-  "_shasum": "96e88c97dc61660e615686139753922d41e68654",
-  "_from": ".",
   "_npmVersion": "2.11.3",
   "_nodeVersion": "0.12.7",
-  "_npmUser": {
-    "name": "mmckegg",
-    "email": "matt@wetsand.co.nz"
-  },
   "dist": {
     "shasum": "96e88c97dc61660e615686139753922d41e68654",
     "tarball": "http://registry.npmjs.org/audio-buffer-range-decoder/-/audio-buffer-range-decoder-1.1.1.tgz"
   },
-  "maintainers": [
+  "versions": [
+    {
+      "number": "1.0.0",
+      "date": "2015-08-09T08:50:57.587Z"
+    },
+    {
+      "number": "1.0.1",
+      "date": "2015-08-09T08:57:38.904Z"
+    },
+    {
+      "number": "1.1.0",
+      "date": "2015-08-09T14:17:24.425Z"
+    },
+    {
+      "number": "1.1.1",
+      "date": "2015-08-18T05:32:47.170Z"
+    }
+  ],
+  "created": "2015-08-09T08:50:57.587Z",
+  "modified": "2015-08-18T05:32:47.170Z",
+  "lastPublisher": {
+    "name": "mmckegg",
+    "email": "matt@wetsand.co.nz"
+  },
+  "owners": [
     {
       "name": "mmckegg",
       "email": "matt@wetsand.co.nz"
     }
   ],
-  "directories": {}
+  "readme": "audio-buffer-range-decoder\n===\n\nDecode specified ranges of wave file on disk to AudioBuffers.\n\nUseful for streaming large audio files from disk when you don't want to load the whole thing into memory.\n\n[![NPM](https://nodei.co/npm/audio-buffer-range-decoder.png)](https://nodei.co/npm/audio-buffer-range-decoder/)\n\n## API\n\n```js\nvar RangeDecoder = require('audio-buffer-range-decoder')\n```\n\n### `var decodeRange = RangeDecoder(filePath, options, onLoad)`\n\nSpecify `filePath` on disk. Opens the file ready for access. \n\n`onLoad(err, meta)` is called when meta data has loaded.\n\nReturns a `decodeRange` function.\n\n*Options:*\n - `fs`: pass in [fs](https://nodejs.org/api/fs.html) implementation (required)\n - `audio`: instance of `AudioContext` to use for decoding (required)\n\n### `decodeRange(startTime, duration, callback)`\n\nPass in `startTime` and `duration` in seconds. `callback(err, audioBuffer)` will be called when data has been decoded or an error has occurred.\n\n### `decodeRange.close()`\n\nCall this when you are done reading to close the underlying file descriptor."
 }

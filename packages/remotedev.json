@@ -1,0 +1,118 @@
+{
+  "name": "remotedev",
+  "version": "0.1.2",
+  "description": "Remote debugging for any flux implementation.",
+  "main": "lib/index.js",
+  "files": [
+    "lib",
+    "dist"
+  ],
+  "scripts": {
+    "clean": "rimraf lib",
+    "build:lib": "babel src --out-dir lib",
+    "build:umd": "webpack src/index.js dist/remotedev.js --config webpack.config.development.js",
+    "build:umd:min": "webpack src/index.js dist/remotedev.min.js --config webpack.config.production.js",
+    "build": "npm run build:lib && npm run build:umd && npm run build:umd:min",
+    "lint": "eslint src test",
+    "prepublish": "npm run lint && npm run clean && npm run build"
+  },
+  "repository": {
+    "user": "zalmoxisus",
+    "repo": "remotedev",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/zalmoxisus/remotedev/tarball/master",
+    "clone_url": "https://github.com/zalmoxisus/remotedev",
+    "https_url": "https://github.com/zalmoxisus/remotedev",
+    "travis_url": "https://travis-ci.org/zalmoxisus/remotedev",
+    "zip_url": "https://github.com/zalmoxisus/remotedev/archive/master.zip",
+    "api_url": "https://api.github.com/repos/zalmoxisus/remotedev"
+  },
+  "keywords": [
+    "redux",
+    "devtools",
+    "flux",
+    "react",
+    "hot reloading",
+    "time travel",
+    "live edit"
+  ],
+  "author": {
+    "name": "Mihail Diordiev",
+    "email": "zalmoxisus@gmail.com",
+    "url": "https://github.com/zalmoxisus"
+  },
+  "license": "MIT",
+  "homepage": "https://github.com/zalmoxisus/remotedev",
+  "devDependencies": {
+    "babel-cli": "^6.3.15",
+    "babel-core": "^6.1.20",
+    "babel-eslint": "^5.0.0-beta6",
+    "babel-loader": "^6.2.0",
+    "babel-preset-es2015-loose": "^6.1.3",
+    "babel-preset-react": "^6.3.13",
+    "babel-preset-stage-0": "^6.3.13",
+    "eslint": "^1.10.3",
+    "eslint-config-airbnb": "^2.1.1",
+    "eslint-plugin-react": "^3.11.3",
+    "expect": "^1.6.0",
+    "rimraf": "^2.3.4",
+    "webpack": "^1.11.0"
+  },
+  "dependencies": {
+    "jsan": "^2.0.4",
+    "querystring": "^0.2.0",
+    "socketcluster-client": "^4.3.6"
+  },
+  "gitHead": "3634db71faa44e6c1681c3e10f9ed9cf7b8e17b4",
+  "_npmVersion": "2.14.4",
+  "_nodeVersion": "4.1.2",
+  "dist": {
+    "shasum": "d2c1c32f58252636c9d941258c5526404e385f2c",
+    "tarball": "http://registry.npmjs.org/remotedev/-/remotedev-0.1.2.tgz"
+  },
+  "versions": [
+    {
+      "number": "0.0.1",
+      "date": "2015-12-20T12:58:41.576Z"
+    },
+    {
+      "number": "0.0.2",
+      "date": "2016-01-21T11:30:52.762Z"
+    },
+    {
+      "number": "0.0.3",
+      "date": "2016-01-21T11:47:45.334Z"
+    },
+    {
+      "number": "0.0.4",
+      "date": "2016-01-21T14:52:45.624Z"
+    },
+    {
+      "number": "0.1.0",
+      "date": "2016-01-22T15:29:23.340Z"
+    },
+    {
+      "number": "0.1.1",
+      "date": "2016-01-23T09:19:24.708Z"
+    },
+    {
+      "number": "0.1.2",
+      "date": "2016-02-14T18:37:05.532Z"
+    }
+  ],
+  "created": "2015-12-20T12:58:41.576Z",
+  "modified": "2016-02-14T18:37:05.532Z",
+  "lastPublisher": {
+    "name": "zalmoxisus",
+    "email": "zalmoxisus@gmail.com"
+  },
+  "owners": [
+    {
+      "name": "zalmoxisus",
+      "email": "zalmoxisus@gmail.com"
+    }
+  ],
+  "readme": "RemoteDev\n=========\n\nMonitoring flux app's actions along with states to a remote monitor. Meant to be used even in production with any flux architecture for web, universal, React Native, hybrid, desktop and server side apps.\n\n![Demo](demo.gif)\n\n### Installation\n\n##### NPM\n```\nnpm install --save-dev remotedev\n```\n\n##### CDN\n```\n<script src=\"https://npmcdn.com/remotedev/dist/remotedev.min.js\"></script>\n```\n\n### Usage\n\n```js\n// Send initial state to the monitor\nRemoteDev.init({});\n\n// Subscribe to RemoteDev to change state (for time travelling)\nRemoteDev.subscribe(state => {\n  this.setState(state);\n});\n\n// Send changes to the remote monitor\nthis.on('afterEach', action => {\n  RemoteDev.send(action, this.state);\n});\n```\n\nSee [the examples for different flux architectures](https://github.com/zalmoxisus/remotedev/tree/master/examples).\n\n### Remote monitoring\n\nUse one of [our monitor apps](https://github.com/zalmoxisus/remotedev-app) to inspect `action -> state` changes:\n- [web](http://remotedev.io/)\n- [chrome app](https://chrome.google.com/webstore/detail/remotedev/faicmgpfiaijcedapokpbdejaodbelph) (recommended)\n- [electron app](https://github.com/zalmoxisus/remote-redux-devtools/tree/master/install).\n\nThe source code is [here](https://github.com/zalmoxisus/remotedev-app).\n\nAlso, it can be [used in React Native debugger as a dock monitor](https://github.com/jhen0409/remote-redux-devtools-on-debugger).\n\n### Use locally\n\nIn order to make it simple to use, by default, the module and the monitor app communicate via [remotedev.io](http://remotedev.io) server. Use [remotedev-server](https://github.com/zalmoxisus/remotedev-server) cli to run it locally in order to make the connection faster and not to require an internet connection.\n\nAlso, we'll add later the ability to be used with [redux-devtools-extension](https://github.com/zalmoxisus/redux-devtools-extension), so there wouldn't be any server necessary for local deployment of web apps.   \n\n### Limitations\n\n- **Not ready for production yet**, use it only for development.\n- The app and the monitor should be under the same external IP address (will remove this restriction later).\n\n### License\n\nMIT\n"
+}

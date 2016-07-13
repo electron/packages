@@ -7,8 +7,17 @@
     "test": "mocha"
   },
   "repository": {
-    "type": "git",
-    "url": "git+https://github.com/evolvelabs/electron-plugins.git"
+    "user": "evolvelabs",
+    "repo": "electron-plugins",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/evolvelabs/electron-plugins/tarball/master",
+    "clone_url": "https://github.com/evolvelabs/electron-plugins",
+    "https_url": "https://github.com/evolvelabs/electron-plugins",
+    "travis_url": "https://travis-ci.org/evolvelabs/electron-plugins",
+    "zip_url": "https://github.com/evolvelabs/electron-plugins/archive/master.zip",
+    "api_url": "https://api.github.com/repos/evolvelabs/electron-plugins"
   },
   "keywords": [
     "electron",
@@ -18,9 +27,6 @@
     "name": "Evolve LLC"
   },
   "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/evolvelabs/electron-plugins/issues"
-  },
   "homepage": "https://github.com/evolvelabs/electron-plugins",
   "dependencies": {
     "appdirectory": "^0.1.0",
@@ -33,20 +39,50 @@
     "sinon": "^1.14.1"
   },
   "gitHead": "d2cfb87f9824e12aee5d9d1fb55304527f29d235",
-  "_id": "electron-plugins@0.1.0",
-  "_shasum": "2d8a6b835c28fffaf48fff0bf0be5a6be9fa9e0b",
-  "_from": ".",
   "_npmVersion": "3.3.12",
   "_nodeVersion": "5.2.0",
-  "_npmUser": {
-    "name": "justinmchase",
-    "email": "justin.m.chase@outlook.com"
-  },
   "dist": {
     "shasum": "2d8a6b835c28fffaf48fff0bf0be5a6be9fa9e0b",
     "tarball": "http://registry.npmjs.org/electron-plugins/-/electron-plugins-0.1.0.tgz"
   },
-  "maintainers": [
+  "stars": 3,
+  "versions": [
+    {
+      "number": "1.0.0",
+      "date": "2015-05-11T03:11:07.852Z"
+    },
+    {
+      "number": "1.0.1",
+      "date": "2015-05-12T14:56:28.660Z"
+    },
+    {
+      "number": "0.0.1",
+      "date": "2015-05-13T21:08:29.778Z"
+    },
+    {
+      "number": "0.0.2",
+      "date": "2015-06-01T19:00:27.700Z"
+    },
+    {
+      "number": "0.0.3",
+      "date": "2015-06-30T23:24:05.622Z"
+    },
+    {
+      "number": "0.0.4",
+      "date": "2015-10-05T16:55:32.762Z"
+    },
+    {
+      "number": "0.1.0",
+      "date": "2016-05-06T16:29:10.046Z"
+    }
+  ],
+  "created": "2015-05-11T03:11:07.852Z",
+  "modified": "2016-05-06T16:29:10.046Z",
+  "lastPublisher": {
+    "name": "justinmchase",
+    "email": "justin.m.chase@outlook.com"
+  },
+  "owners": [
     {
       "name": "evolvelabs",
       "email": "contact@evolvehq.com"
@@ -56,9 +92,5 @@
       "email": "justin.m.chase@outlook.com"
     }
   ],
-  "_npmOperationalInternal": {
-    "host": "packages-16-east.internal.npmjs.com",
-    "tmp": "tmp/electron-plugins-0.1.0.tgz_1462552148326_0.6832880722358823"
-  },
-  "directories": {}
+  "readme": "# electron-plugins\nPlugin loader for electron applications.\n\n## Installation\n```\nnpm install electron-plugins --save\n```\n\n## Usage\nIn your electron render process you can load your plugins like so:\n```\nvar plugins = require('electron-plugins');\n\ndocument.addEventListener('DOMContentLoaded', function () {\n  var context = { document: document };\n  plugins.load(context, function (err, loaded) {\n    if(err) return console.error(err);\n    console.log('Plugins loaded successfully.');\n  });\n});\n```\n\nYour plugin should export a constructor function, which is passed the context object upon instantiation. You can put whatever you want onto the context object.\n```\nfunction Plugin(context) {\n\tvar d = context.document\n\tvar ul = d.getElementById('plugins')\n\tvar li = d.createElement('li')\n\tli.innerHTML = 'electron-updater-sample-plugin'\n\tul.appendChild(li)\n}\n\nmodule.exports = Plugin\n```\n\n## Examples\n* [electron-updater-sample](https://github.com/EvolveLabs/electron-updater-sample)\n* [electron-updater-sample-plugin](https://github.com/EvolveLabs/electron-updater-sample-plugin)\n\n## Related\n* [electron-updater](https://github.com/EvolveLabs/electron-updater)\n"
 }

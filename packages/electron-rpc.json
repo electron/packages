@@ -16,11 +16,17 @@
     "standard": "^4.5.4"
   },
   "repository": {
-    "type": "git",
-    "url": "git+https://github.com/marcbachmann/electron-rpc.git"
-  },
-  "bugs": {
-    "url": "https://github.com/marcbachmann/electron-rpc/issues"
+    "user": "marcbachmann",
+    "repo": "electron-rpc",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/marcbachmann/electron-rpc/tarball/master",
+    "clone_url": "https://github.com/marcbachmann/electron-rpc",
+    "https_url": "https://github.com/marcbachmann/electron-rpc",
+    "travis_url": "https://travis-ci.org/marcbachmann/electron-rpc",
+    "zip_url": "https://github.com/marcbachmann/electron-rpc/archive/master.zip",
+    "api_url": "https://api.github.com/repos/marcbachmann/electron-rpc"
   },
   "homepage": "https://github.com/marcbachmann/electron-rpc#readme",
   "keywords": [
@@ -31,28 +37,50 @@
     "ipc"
   ],
   "gitHead": "c37b49d87c18af82347237b0641bace645041bff",
-  "_id": "electron-rpc@2.0.1",
-  "_shasum": "0495f1dcf32597320f8661190cff2304a07bddc4",
-  "_from": ".",
   "_npmVersion": "3.8.2",
   "_nodeVersion": "4.2.3",
-  "_npmUser": {
-    "name": "marcbachmann",
-    "email": "marc.brookman@gmail.com"
-  },
   "dist": {
     "shasum": "0495f1dcf32597320f8661190cff2304a07bddc4",
     "tarball": "http://registry.npmjs.org/electron-rpc/-/electron-rpc-2.0.1.tgz"
   },
-  "maintainers": [
+  "stars": 3,
+  "versions": [
+    {
+      "number": "1.0.0",
+      "date": "2015-07-28T23:00:42.863Z"
+    },
+    {
+      "number": "1.0.1",
+      "date": "2015-07-29T07:14:20.638Z"
+    },
+    {
+      "number": "1.0.2",
+      "date": "2015-07-29T07:23:12.602Z"
+    },
+    {
+      "number": "1.0.3",
+      "date": "2015-07-29T22:53:51.170Z"
+    },
+    {
+      "number": "2.0.0",
+      "date": "2016-03-21T20:16:31.892Z"
+    },
+    {
+      "number": "2.0.1",
+      "date": "2016-04-03T09:45:50.367Z"
+    }
+  ],
+  "created": "2015-07-28T23:00:42.863Z",
+  "modified": "2016-04-03T09:45:50.367Z",
+  "lastPublisher": {
+    "name": "marcbachmann",
+    "email": "marc.brookman@gmail.com"
+  },
+  "owners": [
     {
       "name": "marcbachmann",
       "email": "marc.brookman@gmail.com"
     }
   ],
-  "_npmOperationalInternal": {
-    "host": "packages-12-west.internal.npmjs.com",
-    "tmp": "tmp/electron-rpc-2.0.1.tgz_1459676748328_0.06267138360999525"
-  },
-  "directories": {}
+  "readme": "# electron-rpc\n\nA lightweight wrapper around the ipc module of electron\n\nThis module is only compatible with [Electron](https://github.com/atom/electron). It won't work in nodejs directly.\n\n\nPlease use electron-rpc@v2.0.0 if you're using [electron >= v0.35.0](https://github.com/atom/electron/releases/tag/v0.35.0). The ipc module api changed with that version.\n\n\n#### Server API\n```\nvar Server = require('electron-rpc/server')\nvar server = new Server()\nserver.configure(webContents)\nserver.send(action[, body])\nserver.on(action, callback)\nserver.destroy()\n```\n\n#### Client API\n```\nvar Client = require('electron-rpc/client')\nvar client = new Client()\nclient.request(action[, body][, callback])\nclient.on(action, callback)\nclient.removeListener(action, callback)\nclient.destroy()\n```\n\n#### Usage\n##### Server side\n```\nvar Server = require('electron-rpc/server')\nvar app = new Server()\napp.configure(window.webContents) // pass a BrowserWindow.webContents[1] object\n\napp.on('some-action', function(req, next){\n  // req consists of id, action, body\n  someAsyncRequest(function(err, data){\n    if (err) return next(err)\n    next(null, data)\n  })\n})\n\napp.on('some-action-without-callback', function(req){\n    console.log('foo')\n})\n\n// You can also send messages without triggering a request on the client\napp.send('some-server-message', 'bar')\n```\n\nHere's the documentation about the [BrowserWindow.webContents](https://github.com/atom/electron/blob/master/docs/api/browser-window.md#browserwindowwebcontents) object.\n\n##### Client side\n```\nvar Client = require('electron-rpc/client')\nclient = new Client()\n\nclient.request('some-action', function(err, body) {\n  console.log('Error from someAsyncRequest:', err)\n  console.log('Body from someAsyncRequest:', body)\n})\n\n\nclient.request('some-action-without-callback')\n\nclient.on('some-server-message', function(err, body){\n    console.log('foo:', body)\n})\n```\n\n\n\nTo close the connections, you can use `server.destroy()` or `client.destroy()`.\n"
 }

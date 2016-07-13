@@ -3,8 +3,17 @@
   "version": "0.0.10",
   "description": "Use Redux DevTools in the Browser/Electron DevTools",
   "repository": {
-    "type": "git",
-    "url": "git+https://github.com/jhen0409/remotedev-extension.git"
+    "user": "jhen0409",
+    "repo": "remotedev-extension",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/jhen0409/remotedev-extension/tarball/master",
+    "clone_url": "https://github.com/jhen0409/remotedev-extension",
+    "https_url": "https://github.com/jhen0409/remotedev-extension",
+    "travis_url": "https://travis-ci.org/jhen0409/remotedev-extension",
+    "zip_url": "https://github.com/jhen0409/remotedev-extension/archive/master.zip",
+    "api_url": "https://api.github.com/repos/jhen0409/remotedev-extension"
   },
   "keywords": [
     "remote",
@@ -47,32 +56,66 @@
     "remotedev-server": "0.0.6"
   },
   "gitHead": "31b528c5a752367f19cccecf02902b2ddddea74d",
-  "bugs": {
-    "url": "https://github.com/jhen0409/remotedev-extension/issues"
-  },
   "homepage": "https://github.com/jhen0409/remotedev-extension#readme",
-  "_id": "remotedev-extension@0.0.10",
-  "_shasum": "cd0e45eb7de8fddb89522dd97b6f3c1678f28508",
-  "_from": ".",
   "_npmVersion": "3.3.12",
   "_nodeVersion": "5.4.0",
-  "_npmUser": {
-    "name": "jhen0409",
-    "email": "iainst0409@gmail.com"
-  },
   "dist": {
     "shasum": "cd0e45eb7de8fddb89522dd97b6f3c1678f28508",
     "tarball": "http://registry.npmjs.org/remotedev-extension/-/remotedev-extension-0.0.10.tgz"
   },
-  "maintainers": [
+  "versions": [
+    {
+      "number": "0.0.1",
+      "date": "2016-02-04T11:32:29.800Z"
+    },
+    {
+      "number": "0.0.2",
+      "date": "2016-02-04T22:47:53.109Z"
+    },
+    {
+      "number": "0.0.3",
+      "date": "2016-02-05T10:40:53.730Z"
+    },
+    {
+      "number": "0.0.4",
+      "date": "2016-02-05T13:16:56.723Z"
+    },
+    {
+      "number": "0.0.5",
+      "date": "2016-02-06T12:18:52.362Z"
+    },
+    {
+      "number": "0.0.6",
+      "date": "2016-02-08T10:43:07.594Z"
+    },
+    {
+      "number": "0.0.7",
+      "date": "2016-03-30T22:34:29.047Z"
+    },
+    {
+      "number": "0.0.8",
+      "date": "2016-04-02T03:41:27.587Z"
+    },
+    {
+      "number": "0.0.9",
+      "date": "2016-04-04T02:51:35.340Z"
+    },
+    {
+      "number": "0.0.10",
+      "date": "2016-04-07T17:15:15.515Z"
+    }
+  ],
+  "created": "2016-02-04T11:32:29.800Z",
+  "modified": "2016-04-07T17:15:15.515Z",
+  "lastPublisher": {
+    "name": "jhen0409",
+    "email": "iainst0409@gmail.com"
+  },
+  "owners": [
     {
       "name": "jhen0409",
       "email": "iainst0409@gmail.com"
     }
   ],
-  "_npmOperationalInternal": {
-    "host": "packages-12-west.internal.npmjs.com",
-    "tmp": "tmp/remotedev-extension-0.0.10.tgz_1460049314883_0.9861154432874173"
-  },
-  "directories": {}
+  "readme": "# RemoteDev Extension [![NPM version](http://img.shields.io/npm/v/remotedev-extension.svg?style=flat)](https://www.npmjs.com/package/remotedev-extension) [![Dependency Status](https://david-dm.org/jhen0409/remotedev-extension.svg)](https://david-dm.org/jhen0409/remotedev-extension) [![devDependency Status](https://david-dm.org/jhen0409/remotedev-extension/dev-status.svg)](https://david-dm.org/jhen0409/remotedev-extension#info=devDependencies)\n\n> Use Redux DevTools in the Browser/Electron DevTools\n\n![Demo](https://cloud.githubusercontent.com/assets/3001525/14159740/2b6b89b0-f70a-11e5-8d31-20046b482208.png)\n\nThe demo is used [electron-react-boilerplate](https://github.com/chentsulin/electron-react-boilerplate).\n\n## Why?\n\n[Redux DevTools Extension](https://github.com/zalmoxisus/redux-devtools-extension) is awesome, but it [cannot running on Electron](https://github.com/zalmoxisus/redux-devtools-extension/issues/13). This project as a major support for the DevTools Extension of [Electron](https://github.com/atom/electron), it means that it doesn't use __background script__.\n\nThis extension is included [remotedev-app](https://github.com/zalmoxisus/remotedev-app), can be used with [remotedev](https://github.com/zalmoxisus/remotedev) / [remote-redux-devtools](https://github.com/zalmoxisus/remote-redux-devtools).\n\n## Installation\n\n```bash\n$ npm i --save-dev remotedev-extension\n```\n\n## Usage (Browser)\n\n[Download Chrome Extension](https://chrome.google.com/webstore/detail/remotedev-devtools/npmkpkaejamnfodceoimeeioacfcijop)  \n[Download Opera Extension](https://addons.opera.com/extensions/details/remotedev-devtools)\n\n## Usage (Electron)\n\n```js\nconst electron = require('electron');\nconst app = electron.app;\nconst BrowserWindow = electron.BrowserWindow;\n\napp.on('ready', () => {\n  // Add DevTools Extension,\n  // if you want remove it,\n  // Use: BrowserWindow.removeDevToolsExtension('RemoteDev DevTools');\n  BrowserWindow.addDevToolsExtension('node_modules/remotedev-extension/dist');\n\n  // ...\n});\n```\n\n__*NOTE:*__ The Electron v0.37 have a [separate window problem](https://github.com/atom/electron/issues/4958#issuecomment-205121647).\n\n## CLI and node\n\n```bash\n$ remotedev-extension [options]\n```\n\n```js\nrequire('remotedev-extension')(options);\n```\n\n#### Options\n\n* --hostname: the `remotedev-server` hostname, will apply `node_modules/remotedev-extension/dist` settings.  \n(default: `localhost` if `port` is set)\n* --port: the `remotedev-server` port, will apply `node_modules/remotedev-extension/dist` settings.  \n(default: `8000` if `runserver` or `hostname` is set)\n* --runserver: start the `remotedev-server` with options on local.\n* --ui-no-buttonbar: Set `noButtonBar` prop for [remotedev-app](https://github.com/zalmoxisus/remotedev-app/blob/master/src/app/index.js#L19).\n\n## Example of Electron\n\nYou can refer to [example folder](example).\n\n## License\n\n[MIT](LICENSE)\n"
 }

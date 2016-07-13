@@ -1,0 +1,83 @@
+{
+  "name": "headless-google-auth",
+  "version": "0.2.1",
+  "description": "Log into a Google account using OAuth2 without a browser",
+  "main": "index.js",
+  "dependencies": {
+    "debug": "^2.2.0",
+    "es6-promise": "^3.0.2",
+    "googleapis": "^2.1.3",
+    "nightmare": "^2.0.9",
+    "uuid": "^2.0.1",
+    "vo": "^1.0.3"
+  },
+  "repository": {
+    "user": "rosshinkley",
+    "repo": "headless-google-auth",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/rosshinkley/headless-google-auth/tarball/master",
+    "clone_url": "https://github.com/rosshinkley/headless-google-auth",
+    "https_url": "https://github.com/rosshinkley/headless-google-auth",
+    "travis_url": "https://travis-ci.org/rosshinkley/headless-google-auth",
+    "zip_url": "https://github.com/rosshinkley/headless-google-auth/archive/master.zip",
+    "api_url": "https://api.github.com/repos/rosshinkley/headless-google-auth"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": {
+    "name": "Ross Hinkley",
+    "email": "rosshinkley@gmail.com"
+  },
+  "license": "MIT",
+  "keywords": [
+    "google",
+    "oauth2",
+    "headless",
+    "auth",
+    "phantom",
+    "phantomjs",
+    "casper",
+    "casperjs",
+    "nightmare",
+    "nightmarejs"
+  ],
+  "gitHead": "6d6494d71c12b1f36543652d3eb5b58c9197b183",
+  "homepage": "https://github.com/rosshinkley/headless-google-auth#readme",
+  "_npmVersion": "3.3.6",
+  "_nodeVersion": "4.2.3",
+  "dist": {
+    "shasum": "ec2276e7bb4260b896df86d6cc053c1b2c7f1c2c",
+    "tarball": "http://registry.npmjs.org/headless-google-auth/-/headless-google-auth-0.2.1.tgz"
+  },
+  "versions": [
+    {
+      "number": "0.1.0",
+      "date": "2015-09-17T04:24:14.050Z"
+    },
+    {
+      "number": "0.2.0",
+      "date": "2015-12-15T02:21:34.220Z"
+    },
+    {
+      "number": "0.2.1",
+      "date": "2015-12-15T02:23:54.745Z"
+    }
+  ],
+  "created": "2015-09-17T04:24:14.050Z",
+  "modified": "2015-12-15T02:23:54.745Z",
+  "lastPublisher": {
+    "name": "rosshinkley",
+    "email": "rosshinkley@gmail.com"
+  },
+  "owners": [
+    {
+      "name": "rosshinkley",
+      "email": "rosshinkley@gmail.com"
+    }
+  ],
+  "readme": "Log into a Google account, setting up Google's official library without a browser.\n\n## Prerequisites\n\n### Google Client ID and Secret\n\n1. Head to the [Google Developers Console](https://console.developers.google.com).\n1. On the dashboard, click on \"Use Google APIs\".\n1. On the lefthand pane, click on \"Credentials\".\n1. Click the dropdown labelled \"New credentials\".  Select \"OAuth Client ID\".\n1. Click \"Web Application\".  (This will show additional options.)\n1. Enter in a name.  Be sure to name it something informative.\n1. Leave the \"Authorized JavaScript Origins\" blank for the time being.\n1. Add `http://localhost:5678` as an authorized redirect URI.  If you change the callback URI or port in the options (see below), make sure the new URI is added or the existing URI is altered to match.\n1. Review entries and click \"Create\" when finished.\n\nOnce done, you should see a popover that has the client ID and client secret.  If you need to get to it again, you can click on the name selected in step 6.\n\n### NightmareJS\n\n[Nightmare](https://github.com/segmentio/nightmare) is a browser automation toolkit based on [Electron](https://github.com/atom/electron).  Unlike v0.1.x which used [Casper](https://github.com/n1k0/casperjs) and consequently required several special setup steps, Nightmare is installable and usable via NPM.  For most cases, it will Just Work (tm) out of the box.\n\nHowever, Electron requires a video buffer to be available.  If you are using this library on a headless system (eg, a server with no X client,  a Docker instance, or a chroot under Crouton), you will need to use a virtual framebuffer to get this library working.  More information about this [can be found in the Nightmare repository's issues.](https://github.com/segmentio/nightmare/issues/224)\n\n## Installation\n\nUse `npm`: `npm install headless-google-auth`\n\n## Options\n\nThe exposed method takes an options hash:\n\n* **clientId** - the client ID obtained from the Google Developers Console.\n* **clientSecret** - the client secret obtained from the Google Developers Console.\n* **email** - the email address to log into.\n* **password** - the password for the account.\n* **scopes** - scopes to request for the logging in user.  Note that anything specified here is automatically granted.\n* **port** - (optional) the port the ad hoc NodeJS server that gets propped up for the Google callback listens on.  Defaults to `5678`.\n* **callbackUri** - (optional) the fully-qualified port-inclusive URI the Google login is going to call back to. Defaults to `http://localhost:5678`.\n* **accessType** - (optional) the kind of access to get, defaults to \"online\".  (\"offline\" will get a refresh token.)\n\nThe callback (or promise resolution) passes up the newly set up Google client and the tokens used to create that client.\n\n## Usage\n\n### Callbacks\n\nIf you wanted to get a list of GMail messages (albeit only their IDs and thread IDs), for example:\n\n```javascript\nvar headlessAuth = require('headless-google-auth'),\n    gmail = require('googleapis').gmail('v1');\n\nheadlessAuth({\n    clientId: '[client ID from developer's console]',\n    clientSecret: '[client secret from developer's console]',\n    email: 'testemail@gmail.com',\n    password: 'MySuperSecretPassword',\n    scopes:[\n        'https://www.googleapis.com/auth/gmail.readonly',\n    ]\n}, function(err, client, tokens){\n    gmail.users.messages.list({\n        userId: 'testemail@gmail.com'\n        }, function(err, messages){\n            //will print out an array of messages plus the next page token\n            console.dir(messages);\n        });\n});\n```\n\n### Promises\n\nIf you wanted tog et  list of GMail messages like above, but wanted to use promises instead:\n\n```javascript\nvar headlessAuth = require('headless-google-auth'),\n    gmail = require('googleapis').gmail('v1');\n\nvar authPromise = headlessAuth({\n    clientId: '[client ID from developer's console]',\n    clientSecret: '[client secret from developer's console]',\n    email: 'testemail@gmail.com',\n    password: 'MySuperSecretPassword',\n    scopes:[\n        'https://www.googleapis.com/auth/gmail.readonly',\n    ]\n});\n\n//... other code if needed...\n\nauthPromise.then(function(client, tokens){\n    gmail.users.messages.list({\n        userId: 'testemail@gmail.com'\n        }, function(err, messages){\n            //will print out an array of messages plus the next page token\n            console.dir(messages);\n        });\n});\n```\n\n## Further information\n\nTake a look at the [Google NodeJS API Client](https://github.com/google/google-api-nodejs-client) for more information about scopes, authorization schemes, and other API information.\n\nThe [Nightmare API documentation](https://github.com/segmentio/nightmare#api) is also an excellent resource.\n\nThere are also other libraries that accomplish something similar to this one.  Highlighting the differences:\n\n* **[Google CLI Auth](https://www.npmjs.com/package/google-cli-auth)** - uses the `open` library to open the authorization link in the default (or specified) browser.\n* **[Google Auth CLI](https://www.npmjs.com/package/google-auth-cli)** - very similar to the above without the ability to refresh tokens.\n* **[Google OAuth2](https://www.npmjs.com/package/google-oauth2)** - uses PhantomJS only to acheive a similar goal, does not use the official Google API library.\n\n"
+}

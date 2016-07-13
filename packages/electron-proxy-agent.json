@@ -4,8 +4,17 @@
   "description": "NodeJS http(s).Agent implementation for electron shell",
   "main": "index.js",
   "repository": {
-    "type": "git",
-    "url": "git://github.com/felicienfrancois/electron-proxy-agent.git"
+    "user": "felicienfrancois",
+    "repo": "electron-proxy-agent",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/felicienfrancois/electron-proxy-agent/tarball/master",
+    "clone_url": "https://github.com/felicienfrancois/electron-proxy-agent",
+    "https_url": "https://github.com/felicienfrancois/electron-proxy-agent",
+    "travis_url": "https://travis-ci.org/felicienfrancois/electron-proxy-agent",
+    "zip_url": "https://github.com/felicienfrancois/electron-proxy-agent/archive/master.zip",
+    "api_url": "https://api.github.com/repos/felicienfrancois/electron-proxy-agent"
   },
   "keywords": [
     "electron",
@@ -23,9 +32,6 @@
     "Félicien François <felicien@tweakstyle.com>"
   ],
   "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/felicienfrancois/node-electron-proxy-agent/issues"
-  },
   "homepage": "https://github.com/felicienfrancois/node-electron-proxy-agent",
   "dependencies": {
     "agent-base": "2",
@@ -37,25 +43,38 @@
     "socks-proxy-agent": "2"
   },
   "gitHead": "f315d5bef916d205eeebe865296e0200f87a40da",
-  "_id": "electron-proxy-agent@1.0.2",
   "scripts": {},
-  "_shasum": "ca2a0d953fbc52c5d1f51c9dc7ff25fc8e057dc8",
-  "_from": ".",
   "_npmVersion": "3.3.6",
   "_nodeVersion": "5.0.0",
-  "_npmUser": {
-    "name": "felicienfrancois",
-    "email": "felicien@tweakstyle.com"
-  },
   "dist": {
     "shasum": "ca2a0d953fbc52c5d1f51c9dc7ff25fc8e057dc8",
     "tarball": "http://registry.npmjs.org/electron-proxy-agent/-/electron-proxy-agent-1.0.2.tgz"
   },
-  "maintainers": [
+  "versions": [
+    {
+      "number": "1.0.0",
+      "date": "2015-11-21T18:43:35.377Z"
+    },
+    {
+      "number": "1.0.1",
+      "date": "2015-11-21T20:57:07.915Z"
+    },
+    {
+      "number": "1.0.2",
+      "date": "2015-11-23T17:38:05.031Z"
+    }
+  ],
+  "created": "2015-11-21T18:43:35.377Z",
+  "modified": "2015-11-23T17:38:05.031Z",
+  "lastPublisher": {
+    "name": "felicienfrancois",
+    "email": "felicien@tweakstyle.com"
+  },
+  "owners": [
     {
       "name": "felicienfrancois",
       "email": "felicien@tweakstyle.com"
     }
   ],
-  "directories": {}
+  "readme": "electron-proxy-agent\n===============\n### A proxy `http.Agent` implementation for HTTP and HTTPS,\nrewritten to work seamlessly with [Electron](https://github.com/atom/electron) API\n\nThis module provides an `http.Agent` implementation that uses the [session.resolveProxy](https://github.com/atom/electron/blob/master/docs/api/session.md#sesresolveproxyurl-callback) API of [Electron](https://github.com/atom/electron) to resolve which HTTP, HTTPS, or SOCKS proxy, or if a direct connection should be used to connect to the HTTP(S) endpoint.\n\nIt is designed to be be used with the built-in `http` and `https` modules\n\n\nInstallation\n------------\n\nInstall with `npm`:\n\n``` bash\n$ npm install electron-proxy-agent --save\n```\n\n\nExamples\n-------\n\n- Single request\n``` js\nvar url = require('url');\nvar http = require('http');\nvar ElectronProxyAgent = require('electron-proxy-agent');\nvar session = require('session').defaultSession;\n\n// HTTP endpoint for the proxy to connect to\nvar endpoint = 'http://nodejs.org/api/';\nconsole.log('attempting to GET %j', endpoint);\nvar opts = url.parse(endpoint);\n\n// create an instance of the `ElectronProxyAgent` class with the default electron session\nvar agent = new ElectronProxyAgent(session);\nopts.agent = agent;\n\nhttp.get(opts, function (res) {\n  console.log('\"response\" event!', res.headers);\n  res.pipe(process.stdout);\n});\n```\n\n- Global agent\n``` js\nvar http = require('http');\nvar https = require('http');\nvar ElectronProxyAgent = require('electron-proxy-agent');\nvar session = require('session').defaultSession;\n\n// use ElectronProxyAgent as http and https globalAgents\nhttp.globalAgent = https.globalAgent = new ElectronProxyAgent(session);\n```\n\nNotes\n-----\n- Passing no or invalid parameter to the constructor would result in trying to use default session.\n```\nnew ElectronProxyAgent() // try to use default session\n```\n- Could be used or mocked out of Electron by passing an object that implements resolveProxy\n```\nnew ElectronProxyAgent({\n  resolveProxy : function(url, callback) {\n    callback(\"PROXY 127.0.0.1:8888; DIRECT\"); // return a valid pac syntax\n  }\n})\n```\n\n\nLicense\n-------\n\n(The MIT License)\n\nCopyright (c) 2014 Nathan Rajlich &lt;nathan@tootallnate.net&gt;\nCopyright (c) 2015 Félicien François &lt;felicien@tweakstyle.com&gt;\n\nPermission is hereby granted, free of charge, to any person obtaining\na copy of this software and associated documentation files (the\n'Software'), to deal in the Software without restriction, including\nwithout limitation the rights to use, copy, modify, merge, publish,\ndistribute, sublicense, and/or sell copies of the Software, and to\npermit persons to whom the Software is furnished to do so, subject to\nthe following conditions:\n\nThe above copyright notice and this permission notice shall be\nincluded in all copies or substantial portions of the Software.\n\nTHE SOFTWARE IS PROVIDED 'AS IS', WITHOUT WARRANTY OF ANY KIND,\nEXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF\nMERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.\nIN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY\nCLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,\nTORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE\nSOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.\n\n"
 }

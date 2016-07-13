@@ -3,8 +3,17 @@
   "version": "2.0.1",
   "description": "Install electron debug symbols using npm",
   "repository": {
-    "type": "git",
-    "url": "https://github.com/Ivshti/electron-debug-symbols"
+    "user": "Ivshti",
+    "repo": "electron-debug-symbols",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/Ivshti/electron-debug-symbols/tarball/master",
+    "clone_url": "https://github.com/Ivshti/electron-debug-symbols",
+    "https_url": "https://github.com/Ivshti/electron-debug-symbols",
+    "travis_url": "https://travis-ci.org/Ivshti/electron-debug-symbols",
+    "zip_url": "https://github.com/Ivshti/electron-debug-symbols/archive/master.zip",
+    "api_url": "https://api.github.com/repos/Ivshti/electron-debug-symbols"
   },
   "scripts": {
     "postinstall": "./fetch.sh 0.29.2"
@@ -15,29 +24,55 @@
     "name": "Ivo Georgiev"
   },
   "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/Ivshti/electron-debug-symbols/issues"
-  },
   "homepage": "https://github.com/Ivshti/electron-debug-symbols",
   "gitHead": "9e88343fde9cd616ecf771079ec37be3582efb21",
-  "_id": "electron-debug-symbols@2.0.1",
-  "_shasum": "2b9c4bdc85ee6eac1553a12352523f7f233e7831",
-  "_from": ".",
   "_npmVersion": "2.7.5",
   "_nodeVersion": "0.12.2",
-  "_npmUser": {
+  "dist": {
+    "shasum": "2b9c4bdc85ee6eac1553a12352523f7f233e7831",
+    "tarball": "http://registry.npmjs.org/electron-debug-symbols/-/electron-debug-symbols-2.0.1.tgz"
+  },
+  "versions": [
+    {
+      "number": "0.29.2",
+      "date": "2015-07-15T09:05:36.502Z"
+    },
+    {
+      "number": "1.0.0",
+      "date": "2015-07-15T09:24:24.918Z"
+    },
+    {
+      "number": "1.0.1",
+      "date": "2015-07-15T09:31:30.825Z"
+    },
+    {
+      "number": "1.0.2",
+      "date": "2015-07-15T09:32:55.625Z"
+    },
+    {
+      "number": "1.0.3",
+      "date": "2015-07-15T09:42:38.854Z"
+    },
+    {
+      "number": "2.0.0",
+      "date": "2015-07-17T15:05:03.824Z"
+    },
+    {
+      "number": "2.0.1",
+      "date": "2015-07-17T15:32:39.886Z"
+    }
+  ],
+  "created": "2015-07-15T09:05:36.502Z",
+  "modified": "2015-07-17T15:32:39.886Z",
+  "lastPublisher": {
     "name": "ivogeorgiev",
     "email": "ivo@linvo.com"
   },
-  "maintainers": [
+  "owners": [
     {
       "name": "ivogeorgiev",
       "email": "ivo@linvo.com"
     }
   ],
-  "dist": {
-    "shasum": "2b9c4bdc85ee6eac1553a12352523f7f233e7831",
-    "tarball": "http://registry.npmjs.org/electron-debug-symbols/-/electron-debug-symbols-2.0.1.tgz"
-  },
-  "directories": {}
+  "readme": "# electron-debug-symbols\nnpm module to install electron debug symbols\n\n# usage\n```javascript\nvar minidump = require(\"minidump\");\nminidump.addSymbolPath.apply(minidump, require(\"electron-debug-symbols\").paths);\n\n// now when using minidump.walkStack, it would give a more understandable report due to having debug symbols\n```\n\nYou can use ELECTRON_VERSIONS environment variables to make the module install custom versions, for example when deploying to heroku.\n```\nheroku config:set ELECTRON_VERSIONS=\"0.29.2 0.27.1\"\n```"
 }

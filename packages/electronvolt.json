@@ -7,8 +7,17 @@
     "test": "gulp test"
   },
   "repository": {
-    "type": "git",
-    "url": "https://github.com/susisu/eV.git"
+    "user": "susisu",
+    "repo": "eV",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/susisu/eV/tarball/master",
+    "clone_url": "https://github.com/susisu/eV",
+    "https_url": "https://github.com/susisu/eV",
+    "travis_url": "https://travis-ci.org/susisu/eV",
+    "zip_url": "https://github.com/susisu/eV/archive/master.zip",
+    "api_url": "https://api.github.com/repos/susisu/eV"
   },
   "keywords": [
     "event, events, observer, listener"
@@ -19,9 +28,6 @@
     "url": "https://github.com/susisu"
   },
   "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/susisu/eV/issues"
-  },
   "homepage": "https://github.com/susisu/eV",
   "devDependencies": {
     "chai": "^1.10.0",
@@ -30,24 +36,37 @@
     "gulp-webpack": "^1.1.2"
   },
   "gitHead": "93596390891461e670f7338b508e19348543d359",
-  "_id": "electronvolt@1.0.2",
-  "_shasum": "294aa56eae586dc1c831a526d79809eedf1ad67b",
-  "_from": ".",
   "_npmVersion": "2.7.5",
   "_nodeVersion": "2.3.4",
-  "_npmUser": {
+  "dist": {
+    "shasum": "294aa56eae586dc1c831a526d79809eedf1ad67b",
+    "tarball": "http://registry.npmjs.org/electronvolt/-/electronvolt-1.0.2.tgz"
+  },
+  "versions": [
+    {
+      "number": "1.0.0",
+      "date": "2014-12-22T05:22:15.754Z"
+    },
+    {
+      "number": "1.0.1",
+      "date": "2014-12-22T16:38:36.377Z"
+    },
+    {
+      "number": "1.0.2",
+      "date": "2015-07-31T06:36:33.499Z"
+    }
+  ],
+  "created": "2014-12-22T05:22:15.754Z",
+  "modified": "2015-07-31T06:36:33.499Z",
+  "lastPublisher": {
     "name": "susisu",
     "email": "susisu2413@yahoo.co.jp"
   },
-  "maintainers": [
+  "owners": [
     {
       "name": "susisu",
       "email": "susisu2413@yahoo.co.jp"
     }
   ],
-  "dist": {
-    "shasum": "294aa56eae586dc1c831a526d79809eedf1ad67b",
-    "tarball": "http://registry.npmjs.org/electronvolt/-/electronvolt-1.0.2.tgz"
-  },
-  "directories": {}
+  "readme": "# eV\nThe eV (electronvolt) provides a simple DOM-like event system.\n\n## Installation\n``` shell\n$ npm install electronvolt\n```\n\n## Example\n``` javascript\nvar ev = require(\"electronvolt\");\n\n// create event nodes\nvar node = new ev.EventNode();\nvar parent = new ev.EventNode();\n\n// compose event flow\nnode.parentNode = parent;\n\nvar listener = function (event) {\n    switch (event.eventPhase) {\n        case ev.EventPhase.AT_TARGET:\n            console.log(\"at target\");\n            break;\n        case ev.EventPhase.BUBBLING_PHASE:\n            console.log(\"bubbling phase\");\n            break;\n        case ev.EventPhase.CAPTURING_PHASE:\n            console.log(\"capturing phase\");\n            break;\n    }\n};\n\n// add event listeners\nnode.addEventListener(\"example\", listener);\nparent.addEventListener(\"example\", listener);\nparent.addEventListener(\"example\", listener, true);\n\n// dispatch event into the event flow\nnode.dispatchEvent(new ev.Event(\"example\", true));\n// -> capturing phase\n// -> at target\n// -> bubbling phase\n```\n\n## License\n[MIT License](http://opensource.org/licenses/mit-license.php)\n\n## Author\nSusisu ([GitHub](https://github.com/susisu), [Twitter](https://twitter.com/susisu2413))\n"
 }

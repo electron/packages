@@ -1,6 +1,6 @@
 {
   "name": "electron-toaster",
-  "version": "2.0.1",
+  "version": "2.0.2",
   "description": "A simple toaster for electron",
   "main": "index.js",
   "scripts": {
@@ -8,8 +8,17 @@
     "bump": "npm version patch && git push && git push --tags && npm publish"
   },
   "repository": {
-    "type": "git",
-    "url": "git+https://github.com/s-a/electron-toaster.git"
+    "user": "s-a",
+    "repo": "electron-toaster",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/s-a/electron-toaster/tarball/master",
+    "clone_url": "https://github.com/s-a/electron-toaster",
+    "https_url": "https://github.com/s-a/electron-toaster",
+    "travis_url": "https://travis-ci.org/s-a/electron-toaster",
+    "zip_url": "https://github.com/s-a/electron-toaster/archive/master.zip",
+    "api_url": "https://api.github.com/repos/s-a/electron-toaster"
   },
   "keywords": [
     "electron",
@@ -23,29 +32,64 @@
     "url": "https://github.com/s-a"
   },
   "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/s-a/electron-toaster/issues"
-  },
   "homepage": "https://github.com/s-a/electron-toaster#readme",
-  "gitHead": "565ef8ecc810b54cef1901438b4ba4e91caa8b8d",
-  "_id": "electron-toaster@2.0.1",
-  "_shasum": "8f85136226f3ab22fd1b9731128343a0e7808d3b",
-  "_from": ".",
-  "_npmVersion": "2.14.7",
-  "_nodeVersion": "4.2.2",
-  "_npmUser": {
+  "gitHead": "2d63feee72381591ec4b20aeac238e6b22288c46",
+  "_npmVersion": "3.9.5",
+  "_nodeVersion": "6.2.2",
+  "dist": {
+    "shasum": "d97dece0236d6d0c81cf5431eb072d9ab2fe2047",
+    "tarball": "http://registry.npmjs.org/electron-toaster/-/electron-toaster-2.0.2.tgz"
+  },
+  "stars": 4,
+  "versions": [
+    {
+      "number": "1.0.2",
+      "date": "2015-08-05T18:50:23.049Z"
+    },
+    {
+      "number": "1.0.3",
+      "date": "2015-08-06T16:56:42.646Z"
+    },
+    {
+      "number": "1.0.4",
+      "date": "2015-08-06T16:59:16.749Z"
+    },
+    {
+      "number": "1.0.5",
+      "date": "2015-08-06T18:16:05.574Z"
+    },
+    {
+      "number": "1.0.6",
+      "date": "2015-08-06T18:22:33.037Z"
+    },
+    {
+      "number": "1.0.7",
+      "date": "2015-08-06T18:37:53.377Z"
+    },
+    {
+      "number": "1.0.8",
+      "date": "2015-08-09T13:37:11.581Z"
+    },
+    {
+      "number": "2.0.1",
+      "date": "2015-12-12T06:21:05.587Z"
+    },
+    {
+      "number": "2.0.2",
+      "date": "2016-07-08T12:05:59.782Z"
+    }
+  ],
+  "created": "2015-08-05T18:50:23.049Z",
+  "modified": "2016-07-08T12:05:59.782Z",
+  "lastPublisher": {
     "name": "s-a",
     "email": "stephan.ahlf@gmail.com"
   },
-  "maintainers": [
+  "owners": [
     {
       "name": "s-a",
       "email": "stephan.ahlf@gmail.com"
     }
   ],
-  "dist": {
-    "shasum": "8f85136226f3ab22fd1b9731128343a0e7808d3b",
-    "tarball": "http://registry.npmjs.org/electron-toaster/-/electron-toaster-2.0.1.tgz"
-  },
-  "directories": {}
+  "readme": "# Installation\r\n\r\n```bash\r\n$ npm install electron-toaster;\r\n```\r\n\r\n# Usage\r\n\r\n```javascript\r\n// In main process.\r\nvar app = require('app');  // Module to control application life.\r\nvar BrowserWindow = require('browser-window');  // Module to create native browser window.\r\n\r\nvar Toaster = require('electron-toaster');\r\nvar toaster = new Toaster();\r\n\r\n// Keep a global reference of the window object, if you don't, the window will\r\n// be closed automatically when the javascript object is GCed.\r\nvar mainWindow = null;\r\n\r\napp.on('window-all-closed', function() {\r\n\tif (process.platform !== 'darwin'){\r\n\t\tapp.quit();\r\n\t}\r\n});\r\n\r\napp.on('ready', function() {\r\n\tmainWindow = new BrowserWindow({});\r\n\ttoaster.init(mainWindow);\r\n\r\n  \tmainWindow.on('devtools-opened', function() {\r\n        mainWindow.loadUrl('file://' + __dirname + '/index.html');\r\n    });\r\n\r\n\tmainWindow.on('closed', function() {\r\n\t\tmainWindow = null;\r\n\t});\r\n});\r\n```\r\n\r\n\r\n```javascript\r\n// In renderer process (web page).\r\n\r\nvar ipc = require(\"electron\").ipcRenderer;\r\nvar msg = {\r\n    title : \"Awesome!\",\r\n    message : \"Check this out!<br>Check this out!<br>Check this out!<br>Check this out!<br>Check this out!<br>Check this out!<br>\",\r\n    detail : \"PI is equal to 3! - 0.0<br>PI is equal to 3! - 0.0<br>PI is equal to 3! - 0.0<br>PI is equal to 3! - 0.0<br>\",\r\n    width : 440,\r\n    // height : 160, window will be autosized\r\n    timeout : 6000,\r\n    focus: true // set focus back to main window\r\n};\r\nipc.send('electron-toaster-message', msg);\r\n```\r\n\r\n![screenshot](/screenshot.png)\r\n"
 }

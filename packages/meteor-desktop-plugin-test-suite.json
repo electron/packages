@@ -1,6 +1,6 @@
 {
   "name": "meteor-desktop-plugin-test-suite",
-  "version": "0.0.5",
+  "version": "0.0.7",
   "engines": {
     "node": ">=4.0.0"
   },
@@ -31,8 +31,17 @@
     "shelljs": "^0.7.0"
   },
   "repository": {
-    "type": "git",
-    "url": "git+https://github.com/wojtkowiak/meteor-desktop-plugin-test-suite.git"
+    "user": "wojtkowiak",
+    "repo": "meteor-desktop-plugin-test-suite",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/wojtkowiak/meteor-desktop-plugin-test-suite/tarball/master",
+    "clone_url": "https://github.com/wojtkowiak/meteor-desktop-plugin-test-suite",
+    "https_url": "https://github.com/wojtkowiak/meteor-desktop-plugin-test-suite",
+    "travis_url": "https://travis-ci.org/wojtkowiak/meteor-desktop-plugin-test-suite",
+    "zip_url": "https://github.com/wojtkowiak/meteor-desktop-plugin-test-suite/archive/master.zip",
+    "api_url": "https://api.github.com/repos/wojtkowiak/meteor-desktop-plugin-test-suite"
   },
   "keywords": [
     "electron",
@@ -40,33 +49,55 @@
     "packager",
     "desktop"
   ],
-  "bugs": {
-    "url": "https://github.com/wojtkowiak/meteor-desktop-plugin-test-suite/issues"
-  },
   "homepage": "https://github.com/wojtkowiak/meteor-desktop-plugin-test-suite",
-  "gitHead": "bc4f1c623c677fbb005ecd33a1a29cbf9b46527b",
-  "_id": "meteor-desktop-plugin-test-suite@0.0.5",
-  "_shasum": "0e542349b9fac49b4a67addf42fcf3dddda23a06",
-  "_from": ".",
-  "_npmVersion": "3.8.7",
-  "_nodeVersion": "4.4.5",
-  "_npmUser": {
+  "gitHead": "2884d2577b3c3924b6615fce37de6b9491fe411a",
+  "_npmVersion": "3.8.3",
+  "_nodeVersion": "4.4.0",
+  "dist": {
+    "shasum": "2349fe174f14e9e62b68a81cbbd469778b4e099e",
+    "tarball": "http://registry.npmjs.org/meteor-desktop-plugin-test-suite/-/meteor-desktop-plugin-test-suite-0.0.7.tgz"
+  },
+  "versions": [
+    {
+      "number": "0.0.1",
+      "date": "2016-06-02T09:25:12.723Z"
+    },
+    {
+      "number": "0.0.2",
+      "date": "2016-06-02T09:26:09.868Z"
+    },
+    {
+      "number": "0.0.3",
+      "date": "2016-06-02T09:30:38.612Z"
+    },
+    {
+      "number": "0.0.4",
+      "date": "2016-06-02T20:07:26.920Z"
+    },
+    {
+      "number": "0.0.5",
+      "date": "2016-06-16T21:44:29.421Z"
+    },
+    {
+      "number": "0.0.6",
+      "date": "2016-06-27T12:55:28.101Z"
+    },
+    {
+      "number": "0.0.7",
+      "date": "2016-06-27T12:57:00.021Z"
+    }
+  ],
+  "created": "2016-06-02T09:25:12.723Z",
+  "modified": "2016-06-27T12:57:00.021Z",
+  "lastPublisher": {
     "name": "wojtkowiak",
     "email": "bartosz@wojtkowiak.it"
   },
-  "dist": {
-    "shasum": "0e542349b9fac49b4a67addf42fcf3dddda23a06",
-    "tarball": "http://registry.npmjs.org/meteor-desktop-plugin-test-suite/-/meteor-desktop-plugin-test-suite-0.0.5.tgz"
-  },
-  "maintainers": [
+  "owners": [
     {
       "name": "wojtkowiak",
       "email": "bartosz@wojtkowiak.it"
     }
   ],
-  "_npmOperationalInternal": {
-    "host": "packages-16-east.internal.npmjs.com",
-    "tmp": "tmp/meteor-desktop-plugin-test-suite-0.0.5.tgz_1466113468309_0.7697450974956155"
-  },
-  "directories": {}
+  "readme": "## Meteor Desktop Plugin Test Suite\n\nFew utils to ease out functional testing of Meteor Desktop plugins.\n\n### `getElectronPath`\nReturns path to electron bin.\n\n### `createTestApp(installPath, pluginName)`\nCreates a test app with the your plugin included.\n```javascript\n/**\n * @param {string} installPath - Path at which to install the app.\n * @param {string} pluginName - Name of the npm package (plugin) you are testing.\n * @returns {Promise}\n */\n```\nThe test app provides two methods through accessible through IPC.\n\n- #### `constructPlugin` params `log, app, appSettings, systemEvents, modules, settings`\nIt is just constructing your plugin. Pass `undefined` if your plugin does not use certain param.\n\n- #### `fireSystemEvent` params `systemEvent, ...args`\nFires an system event, so you can simulate a systemEvent on which you plugin is listening. You need to pass `undefined` as `systemEvents` params to make this work.   \n\n\n### `sendIpc(app, ...args)`\nSends an IPC message to the main process. You can use `constructPlugin`\n```javascript\n/**\n * @param {Object} app - The app ref from Spectron.\n * @param {Array} args - Array of arguments to pass to ipc.send.\n * @returns {*}\n */\n```\n\n### `sendModuleEvent(app, module, event, ...args)`\nSends an IPC event to your module.\nUse if your plugin/module registers itself via `let module = new Module('myModuleName')`.  \n```javascript\n/**\n * @param {Object} app - The app ref from Spectron.\n * @param {string} module - The module name your plugin is registerting.\n * @param {string} event - Event from your module.\n * @param {Array} args - Array of arguments to pass to ipc.send.\n */\n```\n\n### `class Logger(show, showErrors)`\nFake logger that eventually can write the logs to the console. You can set `show` to `false` and `showErrors` to `true` to only see errors passed to it. \n\n## Example\n\nAn example of usage in tests is here [meteor-desktop-splash-screen](https://github.com/wojtkowiak/meteor-desktop-splash-screen/blob/master/test/functional/test.js)\n"
 }

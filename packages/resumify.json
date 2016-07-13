@@ -14,8 +14,17 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
-    "type": "git",
-    "url": "git+https://github.com/ysugimoto/resumify.git"
+    "user": "ysugimoto",
+    "repo": "resumify",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/ysugimoto/resumify/tarball/master",
+    "clone_url": "https://github.com/ysugimoto/resumify",
+    "https_url": "https://github.com/ysugimoto/resumify",
+    "travis_url": "https://travis-ci.org/ysugimoto/resumify",
+    "zip_url": "https://github.com/ysugimoto/resumify/archive/master.zip",
+    "api_url": "https://api.github.com/repos/ysugimoto/resumify"
   },
   "keywords": [
     "electron",
@@ -25,29 +34,39 @@
     "name": "Yoshiaki Sugimoto"
   },
   "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/ysugimoto/resumify/issues"
-  },
   "homepage": "https://github.com/ysugimoto/resumify#readme",
   "gitHead": "5812f694e587c36772e7674b41a2fbf90e9b566f",
-  "_id": "resumify@0.8.2",
-  "_shasum": "4022bd2cd16d110997462e6e7ab63f6b5de75107",
-  "_from": ".",
   "_npmVersion": "2.14.12",
   "_nodeVersion": "4.2.4",
-  "_npmUser": {
-    "name": "ysugimoto",
-    "email": "sugimoto@wnotes.net"
-  },
   "dist": {
     "shasum": "4022bd2cd16d110997462e6e7ab63f6b5de75107",
     "tarball": "http://registry.npmjs.org/resumify/-/resumify-0.8.2.tgz"
   },
-  "maintainers": [
+  "versions": [
+    {
+      "number": "0.8.0",
+      "date": "2016-01-20T05:25:46.453Z"
+    },
+    {
+      "number": "0.8.1",
+      "date": "2016-01-20T06:18:33.757Z"
+    },
+    {
+      "number": "0.8.2",
+      "date": "2016-01-20T07:46:14.985Z"
+    }
+  ],
+  "created": "2016-01-20T05:25:46.453Z",
+  "modified": "2016-01-20T07:46:14.985Z",
+  "lastPublisher": {
+    "name": "ysugimoto",
+    "email": "sugimoto@wnotes.net"
+  },
+  "owners": [
     {
       "name": "ysugimoto",
       "email": "sugimoto@wnotes.net"
     }
   ],
-  "directories": {}
+  "readme": "# resumify\n\nCapture screenshot and make PDF on your HTML presentation.\n\n## Requirements\n\n- `node.js`: main program  ( recommend 4.2.x, at least 4.x )\n- `electron`: Capturing screenshot ( this package has dependency installtion `electron-prebuilt` )\n- `ImageMagick`: PDF creation ( install and set PATH )\n\n## Installation\n\nUse `npm` simply, we recommend global install:\n\n```\n$ npm install -g resumify\n```\n\n## Usage\n\n### 1. Local Presentation\n\nChange to directory to slide-HTML file existing, run the command:\n\n```\n$ cd /path/to/presentation/\n$ resumify\n```\n\n`resumify` will auto detecting HTML file, and processing.\n\n### 2. Remote Presentation\n\nIf slide has remote server (e.g. AWS S3), supply URL with `-u` or `--url` option:\n\n```\n$ resumify -u http://example.com/path/to/presentation/index.html\n```\n\nNote that URL must be fully format ( including .html ).\n\n## Options\n\n`resumify` has some options to manage processing:\n\n| option        | description                                         | default   |\n|---------------|-----------------------------------------------------|-----------|\n| -s, --size    | Capture screen size with `[width]x[height]` format. | 1280x800  |\n| --skip        | Skip capturing slide number like `2,3,4,...` format | -         |\n| -e, --end     | End of slide number                                 | 1         |\n| -u, --url     | Remote slide URL                                    | -         |\n| -h, --help    | Show help                                           | -         |\n| -v, --version | Show program version                                | -         |\n| -o, --output  | Determine output PDF filename                       | slide.pdf |\n\n## Author\n\nYoshiaki Sugimoto\n\n## License\n\nMIT\n"
 }

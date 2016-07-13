@@ -6,16 +6,22 @@
     "tron": "commands/cli"
   },
   "repository": {
-    "type": "git",
-    "url": "git+https://github.com/bengfarrell/tron-cli.git"
+    "user": "bengfarrell",
+    "repo": "tron-cli",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/bengfarrell/tron-cli/tarball/master",
+    "clone_url": "https://github.com/bengfarrell/tron-cli",
+    "https_url": "https://github.com/bengfarrell/tron-cli",
+    "travis_url": "https://travis-ci.org/bengfarrell/tron-cli",
+    "zip_url": "https://github.com/bengfarrell/tron-cli/archive/master.zip",
+    "api_url": "https://api.github.com/repos/bengfarrell/tron-cli"
   },
   "keywords": [
     "electron"
   ],
   "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/bengfarrell/tron-cli/issues"
-  },
   "homepage": "https://github.com/bengfarrell/tron-cli",
   "dependencies": {
     "commander": "^2.5.0",
@@ -26,25 +32,58 @@
   },
   "gitHead": "5ee42333671b65ddaef3bfa28794e47af09c8583",
   "description": "Version 0.2.3",
-  "_id": "tron-cli@0.2.4",
   "scripts": {},
-  "_shasum": "22a15218b89f12077a34453194ee674a59fac86c",
-  "_from": ".",
   "_npmVersion": "2.10.1",
   "_nodeVersion": "0.12.4",
-  "_npmUser": {
-    "name": "bengfarrell",
-    "email": "ben@benfarrell.com"
-  },
   "dist": {
     "shasum": "22a15218b89f12077a34453194ee674a59fac86c",
     "tarball": "http://registry.npmjs.org/tron-cli/-/tron-cli-0.2.4.tgz"
   },
-  "maintainers": [
+  "versions": [
+    {
+      "number": "0.1.0",
+      "date": "2015-06-27T23:51:45.539Z"
+    },
+    {
+      "number": "0.1.1",
+      "date": "2015-06-29T22:09:30.965Z"
+    },
+    {
+      "number": "0.1.2",
+      "date": "2015-06-29T23:06:28.638Z"
+    },
+    {
+      "number": "0.2.0",
+      "date": "2015-06-30T01:35:53.968Z"
+    },
+    {
+      "number": "0.2.1",
+      "date": "2015-06-30T03:36:18.735Z"
+    },
+    {
+      "number": "0.2.2",
+      "date": "2015-06-30T17:20:26.777Z"
+    },
+    {
+      "number": "0.2.3",
+      "date": "2015-06-30T20:37:37.386Z"
+    },
+    {
+      "number": "0.2.4",
+      "date": "2015-07-28T22:23:45.641Z"
+    }
+  ],
+  "created": "2015-06-27T23:51:45.539Z",
+  "modified": "2015-07-28T22:23:45.641Z",
+  "lastPublisher": {
+    "name": "bengfarrell",
+    "email": "ben@benfarrell.com"
+  },
+  "owners": [
     {
       "name": "bengfarrell",
       "email": "ben@benfarrell.com"
     }
   ],
-  "directories": {}
+  "readme": "# Tron-CLI\nVersion\n0.2.3\n\nTron-CLI is a quick way to create and run your [Electron](http://electron.atom.io/) projects.\n\nTron offers 4 major things\n\n  - Create an entire barebones Electron project from scratch in your project directory\n  - Run your project in development mode via Tron's CLI\n  - Run and list your components (assuming they can be run standalone)\n  - Rebuild your node modules for Electron (courtesy electron-rebuild)\n\n\nTron does NOT offer a way to make application distributions, it's strictly for development usage. For this, you may want to try [Electron-Packager](https://github.com/maxogden/electron-packager)\n\n\n### Installation\n\n```\n$ npm install tron-cli\n```\n\n### Usage\n\n** All commands **\n\nGet the Tron version:\n```\n$ tron version\n```\n\nGet Tron help\n```\n$ tron --help\n```\n\nCreate a Tron project\n```\n$ tron create\n```\n\nRun your Tron project\n```\n$ tron run\n```\n\nRun a component demo\n```\n$ tron comp <component name>\n```\n\nRun a component demo or main project in debug mode\n```\n$ tron run -d\n$ tron run --debug\n$ tron comp <component name> --debug\n$ tron comp <component name> -d\n```\n\nRun a component demo or main project in fullscreen mode\n```\n$ tron run -f\n$ tron run --fullscreen\n$ tron comp <component name> --fullscreen\n$ tron comp <component name> -f\n```\n\nList components\n```\n$ tron comp list\n```\n\nList components of a certain prefix (ex: Polymer's paper-button)\n```\n$ tron comp list --prefix paper\n$ tron comp list -p paper\n```\n\nDownload Electron binaries (without using tron create)\n```\n$ tron installelectron\n```\n\nMake Tron config file (without using tron create)\n```\n$ tron makeconfig\n```\n\nView Tron config in shell\n```\n$ tron defaults\n```\n\nRebuild your Electron Application's Node Modules\n(important: Rebuild will not work without the electron-rebuild as a dependency in your app's package.json. From your application directory, run npm install --save electron-rebuild.\nBe aware that this requires you to have XCode or Visual Studio installed as rebuild helps you to rebuild your C++ node modules. If you don't have any, then this step isn't necessary)\n```\n$ tron rebuild\n```\n\n** Basic Usage **\n\nOnce installed, Tron-CLI will be available via the command line. To demonstrate that it's installed and working you can try the following basic commands:\n```\n$ tron version\n```\n\n```\n$ tron --help\n```\n\n** Create your project **\n\nElectron is honestly super easy to use and get going, but there can be a fair number of steps to get a barebones project up and running. For newcomers to Electron, if you make a bad package.json file, you'll get a broken project without a helpful error message to tell you what went wrong.\n\nAdditionally, there is little bit of code for creating your app and the window. Tron takes care of this for you. You may outgrow Tron's app startup code fairly quickly as your application gets bigger! That's why Tron is really for beginners or those that want to get an application setup in seconds and will start replacing code later.\n\nTo create your Tron project, go to the root of your project and type:\n\n```\n$ tron create\n```\n\nThe \"create\" command does several things.\n* Creates an 'app' folder for your Electron project files\n* Creates a components directory, .bowerrc, and bower.json file\n* Copies over some starter Electron application JS so you can run your application right away with no coding by you\n* Copies over a package.json file and does the npm install for you\n* Downloads the Electron binaries file into a binaries folder at your project root\n* Creates an editable config file (tron.json) that you can tweak paths and settings for your Tron project\n\nThe \"create\" commaned won't overwrite any bower.json, package.json, .bowerrc, index.html, or main.js files you already have (although...please do be safe and backup your files in case there are any bugs with Tron)\n\nAdditionally, you can call pieces of the create through different commands:\n\nTo JUST download the Electron binaries:\n```\n$ tron installelectron\n```\n\nTo JUST create a config file:\n```\n$ tron makeconfig\n```\n\nAny remaining tasks that \"create\" does can simply be done by grabbing files from your \"node_modules/tron-cli/starter-files\" folder. If this doesn't exist (because maybe you wiped out your node_modules folder), simply run \"npm install tron-cli\".\n\n** Run your project **\n\nRunning your project is simple.\n\n```\n$ tron run\n```\n\n\"Run\" will target the <yourproject>/app/index.html file as the main HTML window for your application. \"Run\" DOES rely on some Javascript application logic provided by Tron - so if you chose not to use Tron's application JS, this command would not function.\n\nSimilarly, extra \"run\" arguments require Tron application code to function.\nCurrently the only arguments supported are -d (--debug) and -f (--fullscreen).\n\nTo run your project with the Chromium developer tools launched at start:\n```\n$ tron run -d\n```\n\nor\n\n```\n$ tron run --debug\n```\n\n\n** Working with Components **\n\nNot all components are self-runnable. This part of Tron is heavily inspired for use with [Polymer](https://www.polymer-project.org).\nPolymer is geared towards Web Component creation, and an artifact of this workflow is that each and every component you make should be\nrunnable and demonstratable on its own. Polymer is new, and subject to change, but it's demo files are typically run from <yourcomponent>/demo/index.html.\nTron uses this path to target your component when trying to run it. This path can be changed via the \"tron.config\" file if you like.\nIn fact, Google's Polymer components offer a demo in the component root /demo.html. Meanwhile, components generated with the Yeoman Polymer Generator\nwill put your demo file as /demo/index.html. Tron assumes the latter, but feel free to change the path in tron.json.\n\nTo run a component demo:\n```\n$ tron comp <your component name>\n```\n\nDebug mode also works here:\n\n```\n$ tron comp <your component name> -d\n```\n\nAdditionally. The \"comp\" (component) command can list out your components in the terminal. Assuming all bower.json files in your components are valid JSON, you can list your components like this:\n\n```\n$ tron comp list\n```\n\nThis might not be INCREDIBLY useful - though, especially with Polymer, you may prefix your components a certain way using a dash. Polymer likes to suggest the following:\n\n\"<component namespace>-<component-name>\"\n\nSo for example, Google's Material design components for Polymer are under the namespace \"paper\". So a button component would be \"paper-button\". This is where Tron's component lister may come in handy. If you'd like to make a list of all components with a specific prefix, use the --prefix or -p argument. So if you'd like to list all components in your project that are \"paper\", simply type:\n\n```\n$ tron comp list -p paper\n```\n\n### Thanks!\n* [Github](https://github.com/) for Atom and Electron\n* [Electron-Rebuild](https://github.com/paulcbetts/electron-rebuild) to rebuild your Node C++ based modules for Electron\n* [Gulp-Download-Electron](https://github.com/kitematic/gulp-download-electron) because Tron uses it to download Electron binaries\n* [Commander](https://github.com/tj/commander.js) because CLI tools like Tron are built more easily with it\n* And any other dependencies Tron uses\n"
 }

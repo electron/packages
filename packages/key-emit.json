@@ -1,0 +1,75 @@
+{
+  "name": "key-emit",
+  "version": "0.0.4",
+  "description": "simplified key emitter",
+  "main": "index.js",
+  "scripts": {
+    "build-js": "browserify main.js -o dist/key-emit.js"
+  },
+  "author": {
+    "name": "Scott Frees"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "chai": "^3.2.0",
+    "mocha": "^2.2.5"
+  },
+  "dependencies": {
+    "wolfy87-eventemitter": "^4.2.11"
+  },
+  "repository": {
+    "user": "freezer333",
+    "repo": "key-emit",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/freezer333/key-emit/tarball/master",
+    "clone_url": "https://github.com/freezer333/key-emit",
+    "https_url": "https://github.com/freezer333/key-emit",
+    "travis_url": "https://travis-ci.org/freezer333/key-emit",
+    "zip_url": "https://github.com/freezer333/key-emit/archive/master.zip",
+    "api_url": "https://api.github.com/repos/freezer333/key-emit"
+  },
+  "keywords": [
+    "keyboard"
+  ],
+  "homepage": "https://github.com/freezer333/key-emit#readme",
+  "gitHead": "6b016f5f25571f19ecf4e80707b46924893edf2d",
+  "_npmVersion": "2.11.2",
+  "_nodeVersion": "0.12.5",
+  "dist": {
+    "shasum": "0f9e90252b1cca20911617e8ccf2a53dbc48d768",
+    "tarball": "http://registry.npmjs.org/key-emit/-/key-emit-0.0.4.tgz"
+  },
+  "versions": [
+    {
+      "number": "0.0.1",
+      "date": "2015-07-22T23:20:12.719Z"
+    },
+    {
+      "number": "0.0.2",
+      "date": "2015-07-22T23:21:00.224Z"
+    },
+    {
+      "number": "0.0.3",
+      "date": "2015-07-23T00:18:56.973Z"
+    },
+    {
+      "number": "0.0.4",
+      "date": "2015-09-04T20:04:49.809Z"
+    }
+  ],
+  "created": "2015-07-22T23:20:12.719Z",
+  "modified": "2015-09-04T20:04:49.809Z",
+  "lastPublisher": {
+    "name": "freezer3",
+    "email": "scott.frees@gmail.com"
+  },
+  "owners": [
+    {
+      "name": "freezer3",
+      "email": "scott.frees@gmail.com"
+    }
+  ],
+  "readme": "# key-emit\nThis module creates node.js -styled event emitters for the key down, key up, and key press events and reformats the events so you can listen specifically for certain keys.  \n\nThe module also turns all key events into easier to digest/remember key strings, using a familiar format.   Basically, it removed some of the annoyances of dealing with key codes...\n\n# Examples\nThe module returns a constructor that takes the dom element to listen on for key events.\n\nIf your in the node environment (electron, nw..)\n\n```js\nke = require('key-emit')(document);\n```\n\nIf you are in the browser straight up, include the browserified bundle\n\n```html\n<script src=\"../dist/key-emit.js\" type=\"text/javascript\"></script>\n\n<script type=\"text/javascript\">\n\n    // key_emit is a global added by the key-emit.js include ^\n    var ke = key_emit(document);\n```\n\nThe ke object created by the constructor creates three event emitters for down/up and press events.\n\n## Responding to key press events\nKey press events can be captured using standard printable strings.  So if you want to register a handler for the ! character, you just do this:\n\n```js\nke.pressed.on('!', function() {\n    console.log(\"Pressed -> Hurrary!\");\n});\n```\n\nUpper and lower case letters are distinct:\n\n```js\nke.pressed.on('A', function() {\n\tconsole.log(\"Capital A\");\n})\nke.pressed.on('a', function(){\n\tconsole.log(\"Lower case a\");\n})\n```\n\nSee the listings of character string below for details about special characters.\n\n## Responding to key down and up events\nThere is literally no difference when using key down and key up events, however there are more events fired (for instance, the Ctrl key doesn't generate a key press, but it does generate and up/down event).\n\n**Note - you don't need to worry about character codes or anything like that...**  In addition, it does away with the differences between keys that really print the same.  For example, the `+` sign will always generate the '+' event, no matter if it is the result of the number pad key or the shift+= key.  Same with upper/lower case as well.\n\n```js\nke.down.on('!', function() {\n    console.log(\"Down -> Hurrary!\");\n});\nke.up.on('A', function() {\n\tconsole.log(\"Capital A released\");\n})\nke.up.on('a', function(){\n\tconsole.log(\"Lower case a released\");\n})\n```\n\n## Modifiers\nYou can listen for modifier commands as well - but this is a bit different than typically usage in JavaScript.\n\nThe shift modifier gets swallowed in most situations.  For example, if the user presses shift+c, the key down/up events will fire with the event \"C\", not \"shift+c\" as is commonly done.\n\nCtrl modifiers can be listened for, but only for down/up events (pressed events don't fire - at least not in electon.\n\n```js\nke.down.on('ctrl H', function() {\n   console.log(\"Pressed -> ctrl H\");\n});\n```  \nUnlike normal characters, the ctrl modifier always fires events with the upper case version of the ascii letter pressed.  \n\n## Numeric events\nLots of time you want to use the individual numbers (as integers), 0-9.  key-emit will emit a special event (in addition to the normal press/up/down events) when a character 0-9 is pressed.  It will send the numeric value of the key as an event argument, so you don't need to bother with converting ascii to the number.\n\n```js\nkey.pressed.on(\"0-9\", function(value){\n    my_array[value] = true;  // if user types \"2\", my_array[2] will be set to true\n})\n```\n\n## Where's the any key?\nYou can also add a handler on \"[any_key](http://cdn.meme.am/instances/43637787.jpg)\" event.  The emitters will all generate this event whenever anything is pressed.  The actual event string (ex. \"A\") will be sent as the argument.  This is nice for debugging and logging.\n\n```js\nkey.pressed.on(\"any_key\", function(key_event) {\n    console.log(\"User pressed \" + key_event);\n});\n```\n\n## Event list\n\nThe following are a list of events that can be listened for on the down/up/pressed event emitters.  You just register handlers for these strings - no mess no fuss.  Your event handler will be called no matter how the user managed to enter the character.\n\n```\n0-9 (number send as argument)\nbackspace\ntab\nenter\nshift\nctrl\nalt\npause/break\ncapslock\nescape\nspace\npageup\npagedown\nend\nhome\nleft\nup\nright\ndown\ninsert\ndelete\nleftwindow\nrightwindow\nselect\nnumlock\nscrolllock\nf1\nf2\nf3\nf4\nf5\nf6\nf7\nf8\nf9\nf10\nf11\nf12\n0\n1\n2\n3\n4\n5\n6\n7\n8\n9\na\nb\nc\nd\ne\nf\ng\nh\ni\nj\nk\nl\nm\nn\no\np\nq\nr\ns\nt\nu\nv\nw\nx\ny\nz\nA\nB\nC\nD\nE\nF\nG\nH\nI\nJ\nK\nL\nM\nN\nO\nP\nQ\nR\nS\nT\nU\nV\nW\nX\nY\nZ\n*\n+\n-\n.\n/\n:\n<\n_\n>\n?\n~\n{\n|\n}\n\\\n;\n=\n,\n`\n[\n]\n'\n)\n!\n@\n#\n$\n%\n^\n&\n(\n```"
+}

@@ -7,8 +7,17 @@
     "test": "cd test && gulp"
   },
   "repository": {
-    "type": "git",
-    "url": "git+https://github.com/thesbros/gulp-run-electron.git"
+    "user": "thesbros",
+    "repo": "gulp-run-electron",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/thesbros/gulp-run-electron/tarball/master",
+    "clone_url": "https://github.com/thesbros/gulp-run-electron",
+    "https_url": "https://github.com/thesbros/gulp-run-electron",
+    "travis_url": "https://travis-ci.org/thesbros/gulp-run-electron",
+    "zip_url": "https://github.com/thesbros/gulp-run-electron/archive/master.zip",
+    "api_url": "https://api.github.com/repos/thesbros/gulp-run-electron"
   },
   "keywords": [
     "gulp",
@@ -23,9 +32,6 @@
     "email": "ops991923 [at] gmail.com"
   },
   "license": "Apache-2.0",
-  "bugs": {
-    "url": "https://github.com/thesbros/gulp-run-electron/issues"
-  },
   "homepage": "https://github.com/thesbros/gulp-run-electron",
   "dependencies": {
     "gulp-util": "^3.0.7",
@@ -38,28 +44,54 @@
     "gulp": "^3.9.1"
   },
   "gitHead": "12e4d37cb019e1f2eaf08cebb3a68e874bdaa171",
-  "_id": "gulp-run-electron@2.0.0",
-  "_shasum": "96dfd39d8d5aa40f3a7c223ff1c076c204856760",
-  "_from": ".",
   "_npmVersion": "3.8.1",
   "_nodeVersion": "5.9.0",
-  "_npmUser": {
+  "dist": {
+    "shasum": "96dfd39d8d5aa40f3a7c223ff1c076c204856760",
+    "tarball": "http://registry.npmjs.org/gulp-run-electron/-/gulp-run-electron-2.0.0.tgz"
+  },
+  "stars": 1,
+  "versions": [
+    {
+      "number": "1.0.0",
+      "date": "2015-04-27T06:33:54.459Z"
+    },
+    {
+      "number": "1.1.0",
+      "date": "2015-04-27T21:34:04.501Z"
+    },
+    {
+      "number": "1.1.1",
+      "date": "2015-04-27T21:35:33.743Z"
+    },
+    {
+      "number": "1.2.0",
+      "date": "2015-06-19T04:26:48.736Z"
+    },
+    {
+      "number": "1.2.1",
+      "date": "2015-07-03T01:25:33.482Z"
+    },
+    {
+      "number": "1.2.2",
+      "date": "2015-10-10T22:10:37.593Z"
+    },
+    {
+      "number": "2.0.0",
+      "date": "2016-05-21T19:44:42.659Z"
+    }
+  ],
+  "created": "2015-04-27T06:33:54.459Z",
+  "modified": "2016-05-21T19:44:42.659Z",
+  "lastPublisher": {
     "name": "thesbros",
     "email": "ops991923@gmail.com"
   },
-  "maintainers": [
+  "owners": [
     {
       "name": "thesbros",
       "email": "ops991923@gmail.com"
     }
   ],
-  "dist": {
-    "shasum": "96dfd39d8d5aa40f3a7c223ff1c076c204856760",
-    "tarball": "http://registry.npmjs.org/gulp-run-electron/-/gulp-run-electron-2.0.0.tgz"
-  },
-  "_npmOperationalInternal": {
-    "host": "packages-16-east.internal.npmjs.com",
-    "tmp": "tmp/gulp-run-electron-2.0.0.tgz_1463859880430_0.8561850599944592"
-  },
-  "directories": {}
+  "readme": "# gulp-run-electron\nGulp plugin for starting Electron.\nRequires a peer dependency of `electron-prebuilt`.\n\n## Usage\n```js\nvar runElectron = require(\"gulp-run-electron\");\ngulp.src(\"app\")\n\t.pipe(runElectron([\"--cli-argument\", \"--another\"], {cwd: \"path\"}));\n```\n\n### runElectron(args: array, opts: object)\nRuns the electron executable on the src folder with the specified arguments, and\npasses the opts object to child_process.spawn.\n\nBoth arguments are optional. If you only want to use the opts object, pass an\nempty array for args.\n\n### runElectron.rerun\nFor gulp.watch, exits Electron and opens it again; use like so:\n```js\ngulp.watch(\"files/*\", [\"files\", runElectron.rerun]);\n```\n"
 }

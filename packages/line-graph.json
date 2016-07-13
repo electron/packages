@@ -1,0 +1,99 @@
+{
+  "name": "line-graph",
+  "description": "very simple line-graph",
+  "version": "2.0.2",
+  "homepage": "https://github.com/dominictarr/line-graph",
+  "repository": {
+    "user": "dominictarr",
+    "repo": "line-graph",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/dominictarr/line-graph/tarball/master",
+    "clone_url": "https://github.com/dominictarr/line-graph",
+    "https_url": "https://github.com/dominictarr/line-graph",
+    "travis_url": "https://travis-ci.org/dominictarr/line-graph",
+    "zip_url": "https://github.com/dominictarr/line-graph/archive/master.zip",
+    "api_url": "https://api.github.com/repos/dominictarr/line-graph"
+  },
+  "dependencies": {
+    "dat-table": "~0.2",
+    "optimist": "~0.6.0",
+    "color": "~0.5.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "set -e; for t in test/*.js; do node $t; done"
+  },
+  "bin": {
+    "line-graph": "./bin.js"
+  },
+  "author": {
+    "name": "Dominic Tarr",
+    "email": "dominic.tarr@gmail.com",
+    "url": "dominictarr.com"
+  },
+  "license": "MIT",
+  "gitHead": "81b3d0eed7b6b2809a4aff0fc990e00df325ab30",
+  "_npmVersion": "3.8.6",
+  "_nodeVersion": "5.11.1",
+  "dist": {
+    "shasum": "cc87d91cd31fd11a4af89ac0288a56944bb7ff52",
+    "tarball": "http://registry.npmjs.org/line-graph/-/line-graph-2.0.2.tgz"
+  },
+  "versions": [
+    {
+      "number": "0.0.1",
+      "date": "2013-12-18T04:59:28.149Z"
+    },
+    {
+      "number": "1.0.0",
+      "date": "2013-12-18T09:42:59.595Z"
+    },
+    {
+      "number": "1.0.1",
+      "date": "2013-12-18T09:56:09.412Z"
+    },
+    {
+      "number": "1.0.2",
+      "date": "2013-12-18T10:23:40.826Z"
+    },
+    {
+      "number": "1.0.3",
+      "date": "2013-12-18T10:28:37.923Z"
+    },
+    {
+      "number": "1.0.4",
+      "date": "2013-12-18T11:49:57.091Z"
+    },
+    {
+      "number": "1.0.5",
+      "date": "2014-04-04T07:59:53.284Z"
+    },
+    {
+      "number": "1.0.6",
+      "date": "2014-04-04T09:19:57.409Z"
+    },
+    {
+      "number": "2.0.1",
+      "date": "2015-08-28T06:58:42.461Z"
+    },
+    {
+      "number": "2.0.2",
+      "date": "2016-06-12T11:43:20.187Z"
+    }
+  ],
+  "created": "2013-12-18T04:57:49.175Z",
+  "modified": "2016-06-12T11:43:20.187Z",
+  "lastPublisher": {
+    "name": "dominictarr",
+    "email": "dominic.tarr@gmail.com"
+  },
+  "owners": [
+    {
+      "name": "dominictarr",
+      "email": "dominic.tarr@gmail.com"
+    }
+  ],
+  "readme": "# line-graph\n\nI wanted a graph that I could install with npm and pipe a csv to, so I wrote one.\n\nWorks both in js in the browser, and via command line.\n\n## example, terminal\n\nwith [electro](https://github.com/dominictarr/electro), use this as a cli too.\n\n`npm install -g electron-prebuilt electro line-graph`\n\npipe a csv file into line-graph:\n\n```\nline-graph < table.csv\n```\nan electron window will open and display the graph!\n\nor, pipe the output to a png file:\n```\nline-graph < table.csv > table.png\n```\n\n# example, browser\n\n``` js\nvar graph = require('line-graph')\nvar Table = require('dat-table')\n\nvar canvas = document.createElement('canvas')\nvar ctx = canvas.getContext('2d')\n\ngraph(ctx, Table.createTable(TABLE_OF_DATA_WITH_HEADERS), opts)\n\ndocument.body.appendChild(canvas)\n```\n\nIf your data has headers and units how [dat-table](https://github.com/dominictarr/dat-table)\nlikes it, you should get a pretty good graph the first time.\n\n<img src=https://raw.github.com/dominictarr/line-graph/master/test/fib.png>\n\n## License\n\nMIT\n"
+}

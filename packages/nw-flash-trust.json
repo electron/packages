@@ -9,36 +9,55 @@
   "main": "main.js",
   "homepage": "https://github.com/szwacz/nw-flash-trust",
   "repository": {
-    "type": "git",
-    "url": "https://github.com/szwacz/nw-flash-trust.git"
+    "user": "szwacz",
+    "repo": "nw-flash-trust",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/szwacz/nw-flash-trust/tarball/master",
+    "clone_url": "https://github.com/szwacz/nw-flash-trust",
+    "https_url": "https://github.com/szwacz/nw-flash-trust",
+    "travis_url": "https://travis-ci.org/szwacz/nw-flash-trust",
+    "zip_url": "https://github.com/szwacz/nw-flash-trust/archive/master.zip",
+    "api_url": "https://api.github.com/repos/szwacz/nw-flash-trust"
   },
   "licence": "MIT",
   "dependencies": {
     "mkdirp": "^0.5.1"
   },
   "gitHead": "ff93ba09e6a62d647e473a70c35667a91aa7897c",
-  "bugs": {
-    "url": "https://github.com/szwacz/nw-flash-trust/issues"
-  },
-  "_id": "nw-flash-trust@0.3.0",
   "scripts": {},
-  "_shasum": "101d34175bac5068a08e6101b0fc804c82a8548a",
-  "_from": ".",
   "_npmVersion": "2.7.3",
   "_nodeVersion": "0.12.1",
-  "_npmUser": {
+  "dist": {
+    "shasum": "101d34175bac5068a08e6101b0fc804c82a8548a",
+    "tarball": "http://registry.npmjs.org/nw-flash-trust/-/nw-flash-trust-0.3.0.tgz"
+  },
+  "versions": [
+    {
+      "number": "0.1.1",
+      "date": "2013-12-07T11:40:47.498Z"
+    },
+    {
+      "number": "0.2.0",
+      "date": "2015-05-18T05:52:54.101Z"
+    },
+    {
+      "number": "0.3.0",
+      "date": "2015-07-19T09:16:42.527Z"
+    }
+  ],
+  "created": "2013-12-07T11:40:41.909Z",
+  "modified": "2015-07-19T09:16:42.527Z",
+  "lastPublisher": {
     "name": "szwacz",
     "email": "jakub@szwacz.com"
   },
-  "maintainers": [
+  "owners": [
     {
       "name": "szwacz",
       "email": "jakub@szwacz.com"
     }
   ],
-  "dist": {
-    "shasum": "101d34175bac5068a08e6101b0fc804c82a8548a",
-    "tarball": "http://registry.npmjs.org/nw-flash-trust/-/nw-flash-trust-0.3.0.tgz"
-  },
-  "directories": {}
+  "readme": "# nw-flash-trust\n\nCross-platform solution for [NW.js](http://nwjs.io/) and [Electron](http://electron.atom.io/) to make your Flash plugins trusted, so they can run smoothly.\n\n## Why this is needed?\n\nNW.js uses local `file://` protocol to render pages. Unfortunately, for security reasons Flash Player doesn't like SWFs embedded locally and applies very restrictive policy to them. Such SWF lands in one of two possible [local sandboxes](http://help.adobe.com/en_US/ActionScript/3.0_ProgrammingAS3/WS5b3ccc516d4fbf351e63e3d118a9b90204-7e3f.html), and communication via [ExternalInterface](http://help.adobe.com/en_US/FlashPlatform/reference/actionscript/3/flash/external/ExternalInterface.html) is blocked.\n\nFortunately there is officially supported way of making your local SWF trusted, so previously mentioned restrictions don't apply. Full explanation can be found in [Adobe Flash Player Administration Guide](http://www.adobe.com/devnet/flashplayer/articles/flash_player_admin_guide.html).\n\nLong story short: you have to put text file in special directory provided by Flash Player and save to this file paths of SWFs you want to be trusted. **This library provides cross-platform API for doing just that.**\n\n## Installation\n\n```\nnpm install nw-flash-trust\n```\n\n## Usage & API\n\nFor simplicity API is fully synchronous. It does a little of I/O, but so little it shouldn't be an issue.\n\n```javascript\nvar path = require('path');\nvar flashTrust = require('nw-flash-trust');\n\n// appName could be any globally unique string containing only\n// big and small letters, numbers and chars \"-._\"\n// It specifies name of file where trusted paths will be stored.\n// Best practice is to feed it with \"name\" value from your package.json file.\nvar appName = 'myApp';\n\n// Initialization and parsing config file for given appName (if already exists).\nvar trustManager = flashTrust.initSync(appName);\n\n// Alternatively you can provide a custom flash config folder for initialization.\n// This is useful for example if you use Atom Electron and a PPAPI flash plugin (like Pepper Flash),\n// as the flash config folder in this case would be in the Atom Electron data path folder.\nvar trustManager = flashTrust.initSync(appName, '/yourApp-data-path/Pepper Data/Shockwave Flash/WritableRoot');\n\n// adds given filepath to trusted locations\n// paths must be absolute\ntrustManager.add(path.resolve('path-to', 'file.swf'));\n\n// whole folders are also allowed\ntrustManager.add(path.resolve('path-to', 'folder'));\n\n// removes given path from trusted locations\ntrustManager.remove(path.resolve('path-to', 'file.swf'));\n\n// returns true or false whether given path is trusted or not\nvar isTrusted = trustManager.isTrusted(path.resolve('path-to', 'file.swf'));\n\n// returns array containing all trusted paths\nvar list = trustManager.list();\n\n// removes all trusted locations from config file\ntrustManager.empty();\n```\n\n## License\n\nMIT\n"
 }

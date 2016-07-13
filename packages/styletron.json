@@ -8,11 +8,17 @@
   },
   "homepage": "https://github.com/rtsao/styletron",
   "repository": {
-    "type": "git",
-    "url": "git+ssh://git@github.com/rtsao/styletron.git"
-  },
-  "bugs": {
-    "url": "https://github.com/rtsao/styletron/issues"
+    "user": "rtsao",
+    "repo": "styletron",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/rtsao/styletron/tarball/master",
+    "clone_url": "https://github.com/rtsao/styletron",
+    "https_url": "https://github.com/rtsao/styletron",
+    "travis_url": "https://travis-ci.org/rtsao/styletron",
+    "zip_url": "https://github.com/rtsao/styletron/archive/master.zip",
+    "api_url": "https://api.github.com/repos/rtsao/styletron"
   },
   "main": "index.js",
   "scripts": {
@@ -31,28 +37,49 @@
   },
   "license": "MIT",
   "gitHead": "b2d8a08b0698ec78ccde6459a08ea956a40a5861",
-  "_id": "styletron@1.0.0",
-  "_shasum": "649edc2d147470a181212c8bf754115653ffc616",
-  "_from": ".",
   "_npmVersion": "3.8.6",
   "_nodeVersion": "0.10.32",
-  "_npmUser": {
-    "name": "rtsao",
-    "email": "ryan.j.tsao@gmail.com"
-  },
   "dist": {
     "shasum": "649edc2d147470a181212c8bf754115653ffc616",
     "tarball": "http://registry.npmjs.org/styletron/-/styletron-1.0.0.tgz"
   },
-  "maintainers": [
+  "versions": [
+    {
+      "number": "0.1.0",
+      "date": "2016-03-31T23:59:41.626Z"
+    },
+    {
+      "number": "0.1.1",
+      "date": "2016-04-13T23:20:38.906Z"
+    },
+    {
+      "number": "0.2.0",
+      "date": "2016-04-15T00:34:20.418Z"
+    },
+    {
+      "number": "0.2.1",
+      "date": "2016-04-15T01:22:50.586Z"
+    },
+    {
+      "number": "0.2.2",
+      "date": "2016-04-28T20:36:30.603Z"
+    },
+    {
+      "number": "1.0.0",
+      "date": "2016-04-29T21:46:15.576Z"
+    }
+  ],
+  "created": "2016-03-31T23:59:41.626Z",
+  "modified": "2016-04-29T21:46:15.576Z",
+  "lastPublisher": {
+    "name": "rtsao",
+    "email": "ryan.j.tsao@gmail.com"
+  },
+  "owners": [
     {
       "name": "rtsao",
       "email": "ryan.j.tsao@gmail.com"
     }
   ],
-  "_npmOperationalInternal": {
-    "host": "packages-12-west.internal.npmjs.com",
-    "tmp": "tmp/styletron-1.0.0.tgz_1461966375141_0.645532074617222"
-  },
-  "directories": {}
+  "readme": "# styletron\n\n[![build status][build-badge]][build-href]\n[![dependencies status][deps-badge]][deps-href]\n[![npm version][npm-badge]][npm-href]\n\nA generic server-rendering helper for css-in-js tools\n\nThis module provides functionality for:\n * Injection of CSS into the document head in browsers\n   * Buffering of multiple injections into a single update\n   * Ignoring of duplicate style injections\n * Extraction of CSS at render-time on the server, which can be sent down along with markup\n\nThis concept behind this module is originally from https://github.com/Khan/aphrodite, but this module is smaller in scope and more generic.\n\n## Usage\n\n#### Injecting a style into document `<head>`\n\n```js\nconst styletron = require('styletron');\nstyletron.injectOnce('.foo { color: red }', 'someUniqueId');\n```\n\n#### Extracting \"injected\" CSS at render-time on the server\n\n**See [`styletron-server`](https://github.com/rtsao/styletron-server)**\n\n## [API documentation](docs/api.md)\n\n[build-badge]: https://travis-ci.org/rtsao/styletron.svg?branch=master\n[build-href]: https://travis-ci.org/rtsao/styletron\n[deps-badge]: https://david-dm.org/rtsao/styletron.svg\n[deps-href]: https://david-dm.org/rtsao/styletron\n[npm-badge]: https://badge.fury.io/js/styletron.svg\n[npm-href]: https://www.npmjs.com/package/styletron\n"
 }

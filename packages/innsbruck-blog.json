@@ -11,17 +11,23 @@
     "electron": "electron ./desktop"
   },
   "repository": {
-    "type": "git",
-    "url": "git+https://github.com/quietshu/innsbruck.git"
+    "user": "quietshu",
+    "repo": "innsbruck",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/quietshu/innsbruck/tarball/master",
+    "clone_url": "https://github.com/quietshu/innsbruck",
+    "https_url": "https://github.com/quietshu/innsbruck",
+    "travis_url": "https://travis-ci.org/quietshu/innsbruck",
+    "zip_url": "https://github.com/quietshu/innsbruck/archive/master.zip",
+    "api_url": "https://api.github.com/repos/quietshu/innsbruck"
   },
   "author": {
     "name": "Shu Ding",
     "email": "quietshu@gmail.com"
   },
   "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/quietshu/innsbruck/issues"
-  },
   "homepage": "https://github.com/quietshu/innsbruck",
   "dependencies": {
     "co-busboy": "^1.3.1",
@@ -43,28 +49,69 @@
     "supertest": "^1.2.0"
   },
   "gitHead": "e8e4ba471a3a921ba5ce28797266a55b9b1c5f61",
-  "_id": "innsbruck-blog@0.5.1",
-  "_shasum": "488e1ab1486576ad47e39962e8b7d1344dcd5da7",
-  "_from": ".",
   "_npmVersion": "3.9.2",
   "_nodeVersion": "6.2.0",
-  "_npmUser": {
-    "name": "quietshu",
-    "email": "ds303077135@gmail.com"
-  },
   "dist": {
     "shasum": "488e1ab1486576ad47e39962e8b7d1344dcd5da7",
     "tarball": "http://registry.npmjs.org/innsbruck-blog/-/innsbruck-blog-0.5.1.tgz"
   },
-  "maintainers": [
+  "versions": [
+    {
+      "number": "0.0.2",
+      "date": "2016-05-11T03:15:54.066Z"
+    },
+    {
+      "number": "0.2.0",
+      "date": "2016-05-21T17:12:20.879Z"
+    },
+    {
+      "number": "0.2.1",
+      "date": "2016-05-21T17:24:06.803Z"
+    },
+    {
+      "number": "0.3.0",
+      "date": "2016-05-22T06:16:50.515Z"
+    },
+    {
+      "number": "0.3.1",
+      "date": "2016-05-22T09:56:53.527Z"
+    },
+    {
+      "number": "0.3.2",
+      "date": "2016-05-22T17:08:19.384Z"
+    },
+    {
+      "number": "0.4.0",
+      "date": "2016-05-23T20:49:52.511Z"
+    },
+    {
+      "number": "0.4.1",
+      "date": "2016-05-23T23:30:37.185Z"
+    },
+    {
+      "number": "0.4.2",
+      "date": "2016-05-24T07:21:12.460Z"
+    },
+    {
+      "number": "0.5.0",
+      "date": "2016-05-26T02:34:36.420Z"
+    },
+    {
+      "number": "0.5.1",
+      "date": "2016-05-26T02:38:08.199Z"
+    }
+  ],
+  "created": "2016-05-11T03:15:54.066Z",
+  "modified": "2016-05-26T02:38:08.199Z",
+  "lastPublisher": {
+    "name": "quietshu",
+    "email": "ds303077135@gmail.com"
+  },
+  "owners": [
     {
       "name": "quietshu",
       "email": "ds303077135@gmail.com"
     }
   ],
-  "_npmOperationalInternal": {
-    "host": "packages-16-east.internal.npmjs.com",
-    "tmp": "tmp/innsbruck-blog-0.5.1.tgz_1464230284996_0.6681593093089759"
-  },
-  "directories": {}
+  "readme": "# innsbruck\n\n[![https://img.shields.io/travis/quietshu/innsbruck.svg](https://img.shields.io/travis/quietshu/innsbruck.svg)](https://travis-ci.org/quietshu/innsbruck)\n[![https://img.shields.io/npm/v/innsbruck-blog.svg](https://img.shields.io/npm/v/innsbruck-blog.svg)](https://www.npmjs.com/package/innsbruck-blog)\n[![https://img.shields.io/npm/l/innsbruck-blog.svg](https://img.shields.io/npm/l/innsbruck-blog.svg)](https://www.npmjs.com/package/innsbruck-blog)\n\nA minimal, static, content focused and super light weighted blogging tool. For humans.\n\n## usage (for developers)\n\n0. Make sure you have:\n    1. Node.js >= 5.0.0 (use `$ node -v` to print the version (you can use the library `n` to switch Node.js version))\n    2. NPM\n1. Clone this repo into your `username.github.io` repo (GitHub Pages)\n2. Cd into the repo path: `$ cd username.github.io`\n3. Install dependencies: `$ npm install`\n4. Start: `$ npm start` and you will see the server running on port 3000\n5. ~~Open http://localhost:3000 in your browser~~\n6. Manage your site / write posts, any change will trigger the static site building automatically (yeah, in this root directory)\n7. Git push\n\nTerminal arguments:\n- Custom port number: `$ node index.js --port=2000`\n- Do not open in the browser automatically when starting up: `$ node index.js -s`\n\n### build with electron (not ready!)\n\nDevelop build:\n\n1. Install the latest version of __electron-prebuilt__, which supports ES6: `$ electron -v` >= 1.1.1.\n2. `$ npm run prebuild-desktop`\n3. `$ npm run electron`\n\nProduction build: \n\n1. Install __electron-packager__ globally: `$ npm i electron-packager -g`\n2. `$ electron-packager . innsbruck --out=build --platform=darwin --arch=x64 --version=1.1.1 --overwrite`\n3. Built app will be in the `build` folder\n\n## usage (binary application)\n\nTODO.\n\n## changelog\n\nTODO.\n\n## demo\n\nhttp://quietshu.github.io/\n\n[![screen shot](./screenshot.png)](http://quietshu.github.io/)\n\n## plugins\n\nSee /plugin/google-fonts.js.\n\n## other\n\n- Accessibility\n- Custom CSS\n- Google Analytics\n- Disqus\n- ~~Supports `<noscript>` tag~~\n- Plugin System\n\n## acknowledgements\n\n- by Shu Ding\n- koa, ejs, lowdb, marked\n- MIT licensed\n\n<3, bye!\n"
 }

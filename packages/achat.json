@@ -1,0 +1,69 @@
+{
+  "name": "achat",
+  "version": "1.0.0",
+  "description": "Chat that scales predictably.",
+  "main": "index.js",
+  "files_to_deploy": [
+    "package.json",
+    "index.js",
+    "lib/"
+  ],
+  "scripts": {
+    "test": "tape",
+    "deploy": "node ./node_modules/dpl/dpl.js"
+  },
+  "repository": {
+    "user": "dwyl",
+    "repo": "chat",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/dwyl/chat/tarball/master",
+    "clone_url": "https://github.com/dwyl/chat",
+    "https_url": "https://github.com/dwyl/chat",
+    "travis_url": "https://travis-ci.org/dwyl/chat",
+    "zip_url": "https://github.com/dwyl/chat/archive/master.zip",
+    "api_url": "https://api.github.com/repos/dwyl/chat"
+  },
+  "keywords": [
+    "Chat",
+    "AWS",
+    "Serverless",
+    "Demo",
+    "Example"
+  ],
+  "author": {
+    "name": "dwyl"
+  },
+  "license": "GPL-2.0",
+  "homepage": "https://github.com/dwyl/chat#readme",
+  "devDependencies": {
+    "dpl": "^2.0.0"
+  },
+  "gitHead": "852bc191c461fd70c7f5ca0a090b357acfc2a82c",
+  "_npmVersion": "2.14.7",
+  "_nodeVersion": "4.2.3",
+  "dist": {
+    "shasum": "203a3ae7016500d25cca2c9ca586dad3e96fd702",
+    "tarball": "http://registry.npmjs.org/achat/-/achat-1.0.0.tgz"
+  },
+  "versions": [
+    {
+      "number": "1.0.0",
+      "date": "2016-04-17T20:25:02.217Z"
+    }
+  ],
+  "created": "2016-04-17T20:25:02.217Z",
+  "modified": "2016-04-17T20:25:02.217Z",
+  "lastPublisher": {
+    "name": "nelsonic",
+    "email": "contact.nelsonic@gmail.com"
+  },
+  "owners": [
+    {
+      "name": "nelsonic",
+      "email": "contact.nelsonic@gmail.com"
+    }
+  ],
+  "readme": "# chat\n\nA technology showcase.\n\n## Why?\n\nThis repo is designed as a *showcase* for how to build apps that scale.\n\nWe have built chat example apps a couple of times\n[*before*](https://github.com/dwyl/hapi-socketio-redis-chat-example)\nand the response has been good,  \nthis time our mission is to operate within a *very tight* set of ***constraints***:\n\n1. No *Servers*\n2. Progressive Enhancement (_Works when JavaScript is **OFF**_!)\n3. Precisely Predictable (*Linear*) Performance\n\n## What?\n\nChat. Probably the most scalable implementation you will see.\n\n## How?\n\n### Lambda\n\n### S3\n\nWe use S3 to render our initial page and host all our static content.\nhttps://aws.amazon.com/s3/\n\n### API Gateway\n\nAPI Gateway routes the requests we make from the front-end through to\nthe Lambda function that will process it.\nhttps://aws.amazon.com/api-gateway/\n\n### Lambda\n\nhttps://aws.amazon.com/lambda/\n\n### DynamoDB\n\nhttps://aws.amazon.com/dynamodb/\n\n### Cognito\n\n### IOT\n\n### WebRTC?\n\nOver **50% of browsers** (Firefox & Chrome) which means\nwe can cut-out paying for IOT messages for the people\nwho are using good browsers.\n\nhttp://caniuse.com/#feat=rtcpeerconnection\n\nThis also means when we use Electron\n\n## How *much* ($£€) ?\n\nHow much does all of this cost...?\n\nLet's break down the cost in the order of the Tech Stack.\n\n### S3\n\nhttps://aws.amazon.com/s3/pricing/\n\n### API Gateway\n\nhttps://aws.amazon.com/api-gateway/pricing/\n\n> What is a read/write capacity unit?\nhttp://aws.amazon.com/dynamodb/faqs/#What_is_a_readwrite_capacity_unit\n\n### Lambda\n\nhttps://aws.amazon.com/lambda/pricing/\n\n### DynamoDB\n\nhttps://aws.amazon.com/dynamodb/pricing/\n\n### Cognito\n\nAmazon Cognito costs $0.15 for each 10,000 sync operations and $0.15 per GB of sync store per month.\n\nhttps://aws.amazon.com/cognito/pricing/\n\n### IOT\n\n$5 per million messages.\n\nA message is a 512-byte block of data processed by AWS IoT – either published to or delivered by the Service. For example, a 900-byte payload is billed as two messages.\n\nhttps://aws.amazon.com/iot/pricing/\n\n\n\n## Background Reading\n\n### Learning by Doing\n\n+ Access HTTP Headers:\nhttp://stackoverflow.com/questions/31372167/how-to-access-http-headers-for-request-to-aws-api-gateway-using-lambda\n+ Cookies on Lambda:\nhttp://stackoverflow.com/questions/31851860/access-http-request-headers-query-string-cookies-body-object-in-lambda-with\n+ Invoke Lambda by HTTP Request:\nhttp://stackoverflow.com/questions/29877220/invoke-a-aws-lambda-function-by-a-http-request\n\n### Discussion\n\nWe considered using S3 as our primary data store, but soon realized its not that \"*simple*\"...\nsee: Why does S3 still not support Appending? https://news.ycombinator.com/item?id=10746969\n"
+}

@@ -15,8 +15,17 @@
   },
   "homepage": "http://github.com/mongodb-js/hadron-ipc",
   "repository": {
-    "type": "git",
-    "url": "git://github.com/mongodb-js/hadron-ipc.git"
+    "user": "mongodb-js",
+    "repo": "hadron-ipc",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/mongodb-js/hadron-ipc/tarball/master",
+    "clone_url": "https://github.com/mongodb-js/hadron-ipc",
+    "https_url": "https://github.com/mongodb-js/hadron-ipc",
+    "travis_url": "https://travis-ci.org/mongodb-js/hadron-ipc",
+    "zip_url": "https://github.com/mongodb-js/hadron-ipc/archive/master.zip",
+    "api_url": "https://api.github.com/repos/mongodb-js/hadron-ipc"
   },
   "dependencies": {
     "debug": "^2.2.0",
@@ -34,31 +43,57 @@
   },
   "license": "Apache-2.0",
   "gitHead": "9f75c6a17d44ecd1a74724cd14a8a3f23b65144b",
-  "bugs": {
-    "url": "https://github.com/mongodb-js/hadron-ipc/issues"
-  },
-  "_id": "hadron-ipc@0.0.8",
-  "_shasum": "785b806302d46429cdfdca84c9dee8f8617fb058",
-  "_from": ".",
   "_npmVersion": "3.9.6",
   "_nodeVersion": "5.10.1",
-  "_npmUser": {
-    "name": "imlucas",
-    "email": "hrabovsky.lucas@gmail.com"
-  },
   "dist": {
     "shasum": "785b806302d46429cdfdca84c9dee8f8617fb058",
     "tarball": "http://registry.npmjs.org/hadron-ipc/-/hadron-ipc-0.0.8.tgz"
   },
-  "maintainers": [
+  "versions": [
+    {
+      "number": "0.0.1",
+      "date": "2016-04-14T16:05:47.920Z"
+    },
+    {
+      "number": "0.0.2",
+      "date": "2016-04-14T19:01:46.036Z"
+    },
+    {
+      "number": "0.0.3",
+      "date": "2016-04-24T22:08:47.440Z"
+    },
+    {
+      "number": "0.0.4",
+      "date": "2016-04-25T16:04:14.667Z"
+    },
+    {
+      "number": "0.0.5",
+      "date": "2016-04-25T16:16:10.154Z"
+    },
+    {
+      "number": "0.0.6",
+      "date": "2016-04-25T18:04:49.030Z"
+    },
+    {
+      "number": "0.0.7",
+      "date": "2016-04-27T01:53:16.074Z"
+    },
+    {
+      "number": "0.0.8",
+      "date": "2016-06-23T17:34:49.210Z"
+    }
+  ],
+  "created": "2016-04-14T16:05:47.920Z",
+  "modified": "2016-06-23T17:34:49.210Z",
+  "lastPublisher": {
+    "name": "imlucas",
+    "email": "hrabovsky.lucas@gmail.com"
+  },
+  "owners": [
     {
       "name": "imlucas",
       "email": "hrabovsky.lucas@gmail.com"
     }
   ],
-  "_npmOperationalInternal": {
-    "host": "packages-12-west.internal.npmjs.com",
-    "tmp": "tmp/hadron-ipc-0.0.8.tgz_1466703286754_0.4175228988751769"
-  },
-  "directories": {}
+  "readme": "# hadron-ipc [![travis][travis_img]][travis_url] [![npm][npm_img]][npm_url]\n\n> Simplified IPC for electron apps.\n\n## Example\n\nFrom the main process, use `.respondTo(methodName, handler)`:\n\n```javascript\nprocess.env.DEBUG = 'hadron-*';\n\nconst app = require('electron').app;\nconst ipc = require('hadron-ipc');\n\nipc.respondTo('application:ping', (sender) => {\n  console.log('processing application:quit from BrowserWindow', sender);\n  return 'pong';\n});\n```\n\nFrom a renderer process, use `.call(methodName, handler)`:\n\n```javascript\nprocess.env.DEBUG = 'hadron-*';\n\nconst ipc = require('hadron-ipc');\n\nipc.call('application:ping', (res) => {\n  console.log('main process says', res);\n});\n```\n\n## License\n\nApache 2.0\n\n[travis_img]: https://img.shields.io/travis/mongodb-js/hadron-ipc.svg\n[travis_url]: https://travis-ci.org/mongodb-js/hadron-ipc\n[npm_img]: https://img.shields.io/npm/v/hadron-ipc.svg\n[npm_url]: https://npmjs.org/package/hadron-ipc\n"
 }

@@ -11,8 +11,17 @@
     "prepublish": "npm run lint"
   },
   "repository": {
-    "type": "git",
-    "url": "git+https://github.com/squelch-irc/less-hot.git"
+    "user": "squelch-irc",
+    "repo": "less-hot",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/squelch-irc/less-hot/tarball/master",
+    "clone_url": "https://github.com/squelch-irc/less-hot",
+    "https_url": "https://github.com/squelch-irc/less-hot",
+    "travis_url": "https://travis-ci.org/squelch-irc/less-hot",
+    "zip_url": "https://github.com/squelch-irc/less-hot/archive/master.zip",
+    "api_url": "https://api.github.com/repos/squelch-irc/less-hot"
   },
   "keywords": [
     "less",
@@ -26,9 +35,6 @@
     "email": "rahatarmanahmed@gmail.com"
   },
   "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/squelch-irc/less-hot/issues"
-  },
   "homepage": "https://github.com/squelch-irc/less-hot#readme",
   "dependencies": {
     "chokidar": "^1.0.3",
@@ -39,24 +45,29 @@
     "jshint": "^2.8.0"
   },
   "gitHead": "eeb965f39ed62504e602e527894852fd5ed549eb",
-  "_id": "less-hot@1.0.0",
-  "_shasum": "43c0f4d5d93a9602ac1ac5d5a445cf802e69857e",
-  "_from": ".",
   "_npmVersion": "2.11.3",
   "_nodeVersion": "0.12.2",
-  "_npmUser": {
+  "dist": {
+    "shasum": "43c0f4d5d93a9602ac1ac5d5a445cf802e69857e",
+    "tarball": "http://registry.npmjs.org/less-hot/-/less-hot-1.0.0.tgz"
+  },
+  "versions": [
+    {
+      "number": "1.0.0",
+      "date": "2015-06-26T19:50:09.900Z"
+    }
+  ],
+  "created": "2015-06-26T19:50:09.900Z",
+  "modified": "2015-06-26T19:50:09.900Z",
+  "lastPublisher": {
     "name": "rahatarmanahmed",
     "email": "rahatarmanahmed@gmail.com"
   },
-  "maintainers": [
+  "owners": [
     {
       "name": "rahatarmanahmed",
       "email": "rahatarmanahmed@gmail.com"
     }
   ],
-  "dist": {
-    "shasum": "43c0f4d5d93a9602ac1ac5d5a445cf802e69857e",
-    "tarball": "http://registry.npmjs.org/less-hot/-/less-hot-1.0.0.tgz"
-  },
-  "directories": {}
+  "readme": "# less-hot\nA hot loader for LESS, primarily intended for use with Electron.\n\nIt compiles the LESS file, registers a watcher on the file, and returns a `<style>` element. Whenever the file is changed, the contents of that element will be updated.\n\n# Install\n\nWith [npm](https://npmjs.org/) do:\n\n```shell\nnpm install less-hot\n```\n\n# Example\n\n```javascript\nvar LessHotLoader = require('less-hot');\nvar lessLoader = new LessLoader();\ndocument.querySelector('head').appendChild(lessLoader('test.less'));\n```\n\n# Options\n\nYou can pass in an optional object to specify the cache directory for the less files. It will use a temporary directory by default.\n\n```javascript\nvar lessLoader = new LessLoader({cacheDir: '/path/to/dir/'});\n```\n\n"
 }

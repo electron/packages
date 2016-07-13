@@ -13,9 +13,6 @@
     "name": "Oscar Finnsson"
   },
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/finnsson/flyd-mirror/issues"
-  },
   "homepage": "https://github.com/finnsson/flyd-mirror",
   "dependencies": {
     "flyd": "^0.2.1"
@@ -27,28 +24,53 @@
     "uglify-js": "^2.6.1"
   },
   "gitHead": "ae006a8136cf7f5ebf9bb7c45cd507f38f85e7a5",
-  "_id": "flyd-mirror@0.7.0",
-  "_shasum": "f25ee7802dd4aa756bce22b9157b92e9de5e3bf1",
-  "_from": ".",
   "_npmVersion": "3.3.12",
   "_nodeVersion": "5.5.0",
-  "_npmUser": {
+  "dist": {
+    "shasum": "f25ee7802dd4aa756bce22b9157b92e9de5e3bf1",
+    "tarball": "http://registry.npmjs.org/flyd-mirror/-/flyd-mirror-0.7.0.tgz"
+  },
+  "versions": [
+    {
+      "number": "0.1.0",
+      "date": "2016-02-07T16:46:29.485Z"
+    },
+    {
+      "number": "0.2.0",
+      "date": "2016-02-08T20:53:03.667Z"
+    },
+    {
+      "number": "0.3.0",
+      "date": "2016-02-11T21:31:02.514Z"
+    },
+    {
+      "number": "0.4.0",
+      "date": "2016-02-12T19:07:02.250Z"
+    },
+    {
+      "number": "0.5.0",
+      "date": "2016-02-14T10:27:06.669Z"
+    },
+    {
+      "number": "0.6.1",
+      "date": "2016-02-15T18:42:18.969Z"
+    },
+    {
+      "number": "0.7.0",
+      "date": "2016-02-15T19:52:12.225Z"
+    }
+  ],
+  "created": "2016-02-07T16:46:29.485Z",
+  "modified": "2016-02-15T19:52:12.225Z",
+  "lastPublisher": {
     "name": "finnsson",
     "email": "oscar.finnsson@gmail.com"
   },
-  "maintainers": [
+  "owners": [
     {
       "name": "finnsson",
       "email": "oscar.finnsson@gmail.com"
     }
   ],
-  "dist": {
-    "shasum": "f25ee7802dd4aa756bce22b9157b92e9de5e3bf1",
-    "tarball": "http://registry.npmjs.org/flyd-mirror/-/flyd-mirror-0.7.0.tgz"
-  },
-  "_npmOperationalInternal": {
-    "host": "packages-5-east.internal.npmjs.com",
-    "tmp": "tmp/flyd-mirror-0.7.0.tgz_1455565930082_0.910882794065401"
-  },
-  "directories": {}
+  "readme": "# flyd-mirror\n\nA small (0.8 kB min+gzip) module for [flyd](https://github.com/paldepind/flyd)\nthat can generate `mirror`s and `image`s, useful when you want to combine\nreactive programming with plain old JavaScript objects.\n\n## Install\n\n```bash\nnpm install flyd-mirror\n```\n\n## Examples\n\n`image` is mirroring streams...\n\n```javascript\nvar data = {\n  name: flyd.stream(\"Fry\"),\n  age: flyd.stream(1023)\n};\nvar image = fm.image(data);\nassert.equal(image.name(), \"Fry\");\nassert.equal(image.age(), 1023);\n```\n\n...while `mirror` is listening to these images...\n\n```javascript\nvar sq = fm.mirror(function() {\n  return image.age()*image.age();\n});\nassert.equal(sq(), 1046529);\ndata.age(1024); // happy birthday!\nassert.equal(sq(), 1048576);\n```\n\nmaking it possible for the mirror to automatically update when the underlying streams are updated.\n"
 }

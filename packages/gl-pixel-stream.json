@@ -1,0 +1,98 @@
+{
+  "name": "gl-pixel-stream",
+  "version": "1.0.2",
+  "description": "streaming gl.readPixels from an FBO",
+  "main": "index.js",
+  "license": "MIT",
+  "author": {
+    "name": "Matt DesLauriers",
+    "email": "dave.des@gmail.com",
+    "url": "https://github.com/mattdesl"
+  },
+  "dependencies": {
+    "readable-stream": "^2.0.3"
+  },
+  "devDependencies": {
+    "a-big-triangle": "^1.0.2",
+    "concat-stream": "^1.5.1",
+    "faucet": "0.0.1",
+    "gl-fbo": "^2.0.5",
+    "gl-shader": "^4.0.5",
+    "glsl-earth": "^1.0.2",
+    "glsl-film-grain": "^1.0.2",
+    "glsl-shader-basic": "^1.0.0",
+    "glslify": "^2.3.1",
+    "png-stream": "^1.0.4",
+    "tape": "^4.2.2",
+    "webgl-context": "^2.2.0"
+  },
+  "scripts": {
+    "dev": "hihat demo.js --node --browser-field -- -t glslify",
+    "start": "NODE_ENV=production hihat demo.js --exec --node --browser-field -- -t glslify",
+    "test": "hihat test.js --exec --timeout=1000 | faucet"
+  },
+  "keywords": [
+    "streaming",
+    "fbo",
+    "stackgl",
+    "readPixels",
+    "gl",
+    "webgl",
+    "glsl",
+    "save",
+    "export",
+    "write",
+    "render",
+    "png",
+    "image",
+    "framebuffer"
+  ],
+  "repository": {
+    "user": "Jam3",
+    "repo": "gl-pixel-stream",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/Jam3/gl-pixel-stream/tarball/master",
+    "clone_url": "https://github.com/Jam3/gl-pixel-stream",
+    "https_url": "https://github.com/Jam3/gl-pixel-stream",
+    "travis_url": "https://travis-ci.org/Jam3/gl-pixel-stream",
+    "zip_url": "https://github.com/Jam3/gl-pixel-stream/archive/master.zip",
+    "api_url": "https://api.github.com/repos/Jam3/gl-pixel-stream"
+  },
+  "homepage": "https://github.com/Jam3/gl-pixel-stream",
+  "gitHead": "2147d0244585424d4e9a881cb15908a708576099",
+  "_npmVersion": "2.14.5",
+  "_nodeVersion": "0.12.7",
+  "dist": {
+    "shasum": "569913533bfe4345d94df4ae6707f067f44bbc9c",
+    "tarball": "http://registry.npmjs.org/gl-pixel-stream/-/gl-pixel-stream-1.0.2.tgz"
+  },
+  "versions": [
+    {
+      "number": "1.0.0",
+      "date": "2015-10-27T21:54:27.906Z"
+    },
+    {
+      "number": "1.0.1",
+      "date": "2015-10-27T22:04:50.651Z"
+    },
+    {
+      "number": "1.0.2",
+      "date": "2015-11-02T00:04:13.142Z"
+    }
+  ],
+  "created": "2015-10-27T21:54:27.906Z",
+  "modified": "2015-11-02T00:04:13.142Z",
+  "lastPublisher": {
+    "name": "mattdesl",
+    "email": "dave.des@gmail.com"
+  },
+  "owners": [
+    {
+      "name": "mattdesl",
+      "email": "dave.des@gmail.com"
+    }
+  ],
+  "readme": "# gl-pixel-stream\n\n[![experimental](http://badges.github.io/stability-badges/dist/experimental.svg)](http://github.com/badges/stability-badges)\n\nStreams chunks of `gl.readPixels` from the specified FrameBuffer Object. This is primarily useful for exporting WebGL scenes and textures to high resolution images (i.e. print-ready). \n\nBefore calling this method, ensure your FBO is populated with the content you wish to export. On each chunk, this will bind the given FBO, set the viewport, read the new pixels, and then unbind all FBOs.\n\nThe following image was generated with the [demo.js](./demo.js) in this module. This approach can render upwards of 10000x10000 images on a late 2013 MacBookPro.\n\n![earth](http://i.imgur.com/ee6nE6i.png)\n\n[(download full 3200x1800 image)](https://www.dropbox.com/s/crojjnh5in2bgsi/gl-pixel-stream.png?dl=0)\n\n## Install\n\n```sh\nnpm install gl-pixel-stream --save\n```\n\n## Example\n\nA simple example with [gl-fbo](https://github.com/stackgl/gl-fbo) might look like this:\n\n```js\nvar pixelStream = require('gl-pixel-stream')\n\n// bind your FBO\nfbo.bind()\n\n// draw your scene to it\ndrawScene()\n\n// get a pixel stream\nvar stream = pixelStream(gl, fbo.handle, fbo.shape)\n\n// pipe it out somewhere\nstream.pipe(output)\n```\n\nA more practical example involves streaming through [png-stream/encoder](https://github.com/devongovett/png-stream) to a write stream. See [demo.js](./demo.js) for an example of this, which uses Electron (through [hihat](https://github.com/Jam3/hihat)) to merge the WebGL and Node.js APIs.\n\nSee [Running From Source](#running-from-source) for details.\n\n## Usage\n\n[![NPM](https://nodei.co/npm/gl-pixel-stream.png)](https://www.npmjs.com/package/gl-pixel-stream)\n\n#### `stream = glPixelStream(gl, fboHandle, shape, [opts])`\n\nCreates a new stream which streams the data from `gl.readPixels`, reading from the given FrameBuffer. It is assumed to already be populated with your scene/texture.\n\nThe stream emits a `Buffer` containing the uint8 pixels, default RGBA.\n\n- `gl` (required) the WebGL context\n- `fboHandle` (required) the handle for the WebGLFramebuffer instance\n- `shape` (required) an Array, the `[width, height]` of the output\n- `opts` (optional) additional settings\n\nThe additional settings can be:\n\n- `chunkSize` (Number) the number of rows to fetch from the GPU in a single call to `gl.readPixels`, defaults to 128\n- `flipY` (Boolean) whether to flip the output image on the Y axis (default false)\n- `format` a WebGL format like `gl.RGBA` or `gl.RGB` for reading, default `gl.RGBA`\n- `stride` (Number) the number of channels in a pixel, guessed from the specified `format`, or defaults to `4`\n\n## Running from Source\n\nClone and install:\n\n```sh\ngit clone https://github.com/Jam3/gl-pixel-stream.git\ncd gl-pixel-stream\nnpm install\n```\n\nTo run the tests:\n\n```sh\nnpm run test\n```\n\nTo run the demo in \"production\" mode (no DevTools window). This will output an `image.png` in the current folder.\n\n```sh\nnpm run start\n```\n\nTo run the demo in \"development\" mode. This opens a DevTools window and reloads the bundle on `demo.js` file-save.\n\n```sh\nnpm run dev\n```\n\nThe output `image.png` should look like this, and be the size specified in the `demo.js` file:\n\n![earth](http://i.imgur.com/ee6nE6i.png)\n\n## License\n\nMIT, see [LICENSE.md](http://github.com/Jam3/gl-pixel-stream/blob/master/LICENSE.md) for details.\n"
+}

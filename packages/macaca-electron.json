@@ -8,8 +8,17 @@
   ],
   "main": "./lib/macaca-electron",
   "repository": {
-    "type": "git",
-    "url": "git://github.com/macacajs/macaca-electron.git"
+    "user": "macacajs",
+    "repo": "macaca-electron",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/macacajs/macaca-electron/tarball/master",
+    "clone_url": "https://github.com/macacajs/macaca-electron",
+    "https_url": "https://github.com/macacajs/macaca-electron",
+    "travis_url": "https://travis-ci.org/macacajs/macaca-electron",
+    "zip_url": "https://github.com/macacajs/macaca-electron/archive/master.zip",
+    "api_url": "https://api.github.com/repos/macacajs/macaca-electron"
   },
   "dependencies": {
     "co": "^4.6.0",
@@ -41,23 +50,57 @@
   "homepage": "https://github.com/macacajs/macaca-electron",
   "license": "MIT",
   "gitHead": "a54de00f34b992c1c164773c8f7d7e9d960918cf",
-  "bugs": {
-    "url": "https://github.com/macacajs/macaca-electron/issues"
-  },
-  "_id": "macaca-electron@1.0.7",
-  "_shasum": "2f0fa67ffdea58a4379f18c45324484a036f3b90",
-  "_from": ".",
   "_npmVersion": "3.8.6",
   "_nodeVersion": "6.0.0",
-  "_npmUser": {
-    "name": "ziczhu",
-    "email": "zic.zhu@gmail.com"
-  },
   "dist": {
     "shasum": "2f0fa67ffdea58a4379f18c45324484a036f3b90",
     "tarball": "http://registry.npmjs.org/macaca-electron/-/macaca-electron-1.0.7.tgz"
   },
-  "maintainers": [
+  "versions": [
+    {
+      "number": "0.1.0",
+      "date": "2016-03-29T06:49:45.566Z"
+    },
+    {
+      "number": "1.0.0",
+      "date": "2016-04-25T10:04:33.335Z"
+    },
+    {
+      "number": "1.0.1",
+      "date": "2016-04-25T10:30:47.774Z"
+    },
+    {
+      "number": "1.0.2",
+      "date": "2016-04-25T13:36:53.970Z"
+    },
+    {
+      "number": "1.0.3",
+      "date": "2016-04-26T04:52:11.955Z"
+    },
+    {
+      "number": "1.0.4",
+      "date": "2016-04-26T10:43:07.824Z"
+    },
+    {
+      "number": "1.0.5",
+      "date": "2016-04-26T11:49:57.459Z"
+    },
+    {
+      "number": "1.0.6",
+      "date": "2016-05-23T12:04:04.859Z"
+    },
+    {
+      "number": "1.0.7",
+      "date": "2016-06-07T05:56:12.375Z"
+    }
+  ],
+  "created": "2016-03-29T06:49:45.566Z",
+  "modified": "2016-06-07T05:56:12.375Z",
+  "lastPublisher": {
+    "name": "ziczhu",
+    "email": "zic.zhu@gmail.com"
+  },
+  "owners": [
     {
       "name": "meowtec",
       "email": "bertonzh@gmail.com"
@@ -71,9 +114,5 @@
       "email": "zic.zhu@gmail.com"
     }
   ],
-  "_npmOperationalInternal": {
-    "host": "packages-12-west.internal.npmjs.com",
-    "tmp": "tmp/macaca-electron-1.0.7.tgz_1465278969434_0.26394246122799814"
-  },
-  "directories": {}
+  "readme": "# macaca-electron\n\n[![Gitter Chat][gitter-image]][gitter-url]\n[![NPM version][npm-image]][npm-url]\n[![build status][travis-image]][travis-url]\n[![Test coverage][coveralls-image]][coveralls-url]\n[![node version][node-image]][node-url]\n\n[gitter-image]: https://img.shields.io/badge/GITTER-join%20chat-green.svg?style=flat-square\n[gitter-url]: https://gitter.im/alibaba/macaca\n[npm-image]: https://img.shields.io/npm/v/macaca-electron.svg?style=flat-square\n[npm-url]: https://npmjs.org/package/macaca-electron\n[travis-image]: https://img.shields.io/travis/macacajs/macaca-electron.svg?style=flat-square\n[travis-url]: https://travis-ci.org/macacajs/macaca-electron\n[coveralls-image]: https://img.shields.io/coveralls/macacajs/macaca-electron.svg?style=flat-square\n[coveralls-url]: https://coveralls.io/r/macacajs/macaca-electron?branch=master\n[node-image]: https://img.shields.io/badge/node.js-%3E=_4-green.svg?style=flat-square\n[node-url]: http://nodejs.org/download/\n\n> macaca electron driver\n\n## Installment\n\n```shell\n$ npm i macaca-electron --save\n```\n\n## Standalone usage\n\n```javascript\n\nconst co = require('co');\nconst fs = require('fs');\nconst path = require('path');\nconst Electron = require('macaca-electron');\n\nconst electron = new Electron();\n\nco(function *() {\n  yield electron.startDevice({\n    window: false // in silence\n  });\n\n  yield electron.maximize();\n  yield electron.setWindowSize(null, 500, 500);\n  yield electron.get('https://www.baidu.com');\n  const imgData = yield electron.getScreenshot();\n  const img = new Buffer(imgData, 'base64');\n  const p = path.join(__dirname, '..', 'screenshot.png')\n  fs.writeFileSync(p, img.toString('binary'), 'binary');\n  console.log(`screenshot: ${p}`);\n\n  yield electron.stopDevice();\n});\n\n```\n\n- [sample macaca-electron-screenshot](https://github.com/xudafeng/macaca-electron-screenshot)\n- [More API](//macacajs.github.io/macaca-electron/docs/)\n"
 }

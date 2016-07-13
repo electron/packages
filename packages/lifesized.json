@@ -19,11 +19,17 @@
   },
   "license": "MIT",
   "repository": {
-    "type": "git",
-    "url": "git+https://github.com/francoislaberge/lifesized.git"
-  },
-  "bugs": {
-    "url": "https://github.com/francoislaberge/lifesized/issues"
+    "user": "francoislaberge",
+    "repo": "lifesized",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/francoislaberge/lifesized/tarball/master",
+    "clone_url": "https://github.com/francoislaberge/lifesized",
+    "https_url": "https://github.com/francoislaberge/lifesized",
+    "travis_url": "https://travis-ci.org/francoislaberge/lifesized",
+    "zip_url": "https://github.com/francoislaberge/lifesized/archive/master.zip",
+    "api_url": "https://api.github.com/repos/francoislaberge/lifesized"
   },
   "homepage": "https://github.com/francoislaberge/lifesized",
   "keywords": [
@@ -35,24 +41,93 @@
     "Ratio"
   ],
   "gitHead": "0955473f3366e56388f7e274f5edc702ff7626db",
-  "_id": "lifesized@0.10.2",
-  "_shasum": "e944d495ee221000af501a5a32bb51e7281d0d9b",
-  "_from": ".",
   "_npmVersion": "2.14.4",
   "_nodeVersion": "4.1.2",
-  "_npmUser": {
+  "dist": {
+    "shasum": "e944d495ee221000af501a5a32bb51e7281d0d9b",
+    "tarball": "http://registry.npmjs.org/lifesized/-/lifesized-0.10.2.tgz"
+  },
+  "versions": [
+    {
+      "number": "0.0.0",
+      "date": "2015-02-08T04:34:31.601Z"
+    },
+    {
+      "number": "0.0.1",
+      "date": "2015-02-08T04:50:33.463Z"
+    },
+    {
+      "number": "0.0.2",
+      "date": "2015-02-08T05:14:49.418Z"
+    },
+    {
+      "number": "0.0.3",
+      "date": "2015-02-08T17:22:40.377Z"
+    },
+    {
+      "number": "0.0.4",
+      "date": "2015-02-08T19:44:51.817Z"
+    },
+    {
+      "number": "0.0.5",
+      "date": "2015-02-08T19:47:24.171Z"
+    },
+    {
+      "number": "0.0.6",
+      "date": "2015-02-08T21:41:23.335Z"
+    },
+    {
+      "number": "0.1.0",
+      "date": "2015-10-12T00:44:17.882Z"
+    },
+    {
+      "number": "0.1.1",
+      "date": "2015-10-12T01:30:12.472Z"
+    },
+    {
+      "number": "0.7.0",
+      "date": "2015-10-12T01:31:30.638Z"
+    },
+    {
+      "number": "0.7.1",
+      "date": "2015-10-12T01:32:45.520Z"
+    },
+    {
+      "number": "0.7.2",
+      "date": "2015-10-12T01:33:54.607Z"
+    },
+    {
+      "number": "0.8.0",
+      "date": "2015-10-12T01:37:32.885Z"
+    },
+    {
+      "number": "0.8.1",
+      "date": "2015-10-12T04:21:24.905Z"
+    },
+    {
+      "number": "0.10.0",
+      "date": "2015-10-12T18:14:23.518Z"
+    },
+    {
+      "number": "0.10.1",
+      "date": "2015-10-12T18:15:59.549Z"
+    },
+    {
+      "number": "0.10.2",
+      "date": "2015-10-12T19:45:38.630Z"
+    }
+  ],
+  "created": "2015-02-08T04:34:31.601Z",
+  "modified": "2015-10-12T19:45:38.630Z",
+  "lastPublisher": {
     "name": "francoislaberge",
     "email": "francoislaberge@gmail.com"
   },
-  "maintainers": [
+  "owners": [
     {
       "name": "francoislaberge",
       "email": "francoislaberge@gmail.com"
     }
   ],
-  "dist": {
-    "shasum": "e944d495ee221000af501a5a32bb51e7281d0d9b",
-    "tarball": "http://registry.npmjs.org/lifesized/-/lifesized-0.10.2.tgz"
-  },
-  "directories": {}
+  "readme": "### Overview\nAn Electron module for displaying objects in physically accurate sizes on screens.\n\n[Downloadable versions of the Demos are available](https://github.com/francoislaberge/lifesized/releases) for Macs.\n\n**I hope this module and its uses will convince browser makers to provide this as a native API or at least to Electron in its core**\n\n### Installation\n\n```bash\nnpm install --save lifesized\n```\n\n### Usage\n\n```js\nvar lifesized = require('lifesized');\n\n// Get the pixels per inch of the display the current render process' BrowserWindow\n// is mostly overlayed on\nvar pixelsPerInch = lifesized.ppi();\n```\n\nSee the [Demos](#demo) and their [source](https://github.com/francoislaberge/lifesized/tree/master/examples) for a working example.\n\n### API\n\n#### lifesized.ppi(display)\nGet the Pixels Per Inch of a display.\n\n  - **display** (optional*) - The Display who's PPI you want. If not provided it use the display the current BrowserWindow is most over.\n\n**Returns**: (Number) The displays Pixels Per Inch.\n\n\n#### lifesized.scale(objectRealSize, objectPixelSize, display)\nCalculate how much you have to scale an object in an image to make it appear life sized on the screen.\n\n  - **objectRealSize** (Number) Real size of an object in inches\n  - **objectPixelSize** (Number) Size of the object in an image in pixels\n  - **display** (optional*) The Display you want to show the object on. If not provided it use the display the current BrowserWindow is most over.\n\n**Returns**: (Number) Scale factor to use to scale images (1.0 === 100%)\n\n\\* Some OSs display windows on multiple displays at once when a Window spans\nmore than one display, some do not. We use the best guest using Electron's ```screen.getDisplayMatching(rect)```\n\n### Demos\nTo run the coins app that shows this off do the following:\n\n 1. Get the code and npm install things\n\n            git clone git@github.com:francoislaberge/lifesized.git\n            cd lifesized\n            npm Install\n\n 2. Launch the coins demo\n\n            npm run coins\n\n 3. Get some coins and verify that they are the same size in real life as they are on screen.\n\n<img src=\"https://raw.githubusercontent.com/francoislaberge/lifesized/master/demos/coins/screenshot.jpg\" width=\"360\">\n\n 4. Run other demos via ```npm run shaqs-hands``` or ```npm run ruler```\n\n### Limitations\n  - Only accurate on OSX right now, falls back to a sane default of 72 pixels/inch (Pull Requests welcome, I will add Windows/Linux support as soon as I can)\n  - Doesn't currently detect when a BrowserWindow's Display changes (This should be detectable, will add ASAP)\n\n### Contributing\nSee the [Todos](https://github.com/francoislaberge/lifesized/blob/master/TODOS.md) for planned work if you want to chip in.\n"
 }

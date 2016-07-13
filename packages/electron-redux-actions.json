@@ -1,6 +1,6 @@
 {
   "name": "electron-redux-actions",
-  "version": "0.0.2",
+  "version": "0.0.4",
   "description": "Redux middleware for sharing actions across processes in electron.",
   "main": "./lib/index.js",
   "scripts": {
@@ -24,32 +24,44 @@
     ]
   },
   "dependencies": {
-    "electron": "^0.4.1",
     "is-electron-renderer": "^2.0.0"
   },
-  "gitHead": "0176d03e46519179f1cbdff25c27059e5b049faa",
-  "_id": "electron-redux-actions@0.0.2",
-  "_shasum": "c9cb6b059b6d273e348b8c2ee1199e0815ddd644",
-  "_from": ".",
+  "gitHead": "32d8be015d0965e27ab1be733ae5257964c41e49",
   "_npmVersion": "3.5.0",
   "_nodeVersion": "5.0.0",
-  "_npmUser": {
+  "dist": {
+    "shasum": "7ea21f2197528bf1c6da06c02f66d3874235113f",
+    "tarball": "http://registry.npmjs.org/electron-redux-actions/-/electron-redux-actions-0.0.4.tgz"
+  },
+  "versions": [
+    {
+      "number": "0.0.1",
+      "date": "2016-05-18T12:17:08.835Z"
+    },
+    {
+      "number": "0.0.2",
+      "date": "2016-05-18T12:33:48.549Z"
+    },
+    {
+      "number": "0.0.3",
+      "date": "2016-07-03T15:46:46.699Z"
+    },
+    {
+      "number": "0.0.4",
+      "date": "2016-07-03T15:49:57.533Z"
+    }
+  ],
+  "created": "2016-05-18T12:17:08.835Z",
+  "modified": "2016-07-03T15:49:57.533Z",
+  "lastPublisher": {
     "name": "jodusnodus",
     "email": "thomas.billiet@yahoo.com"
   },
-  "dist": {
-    "shasum": "c9cb6b059b6d273e348b8c2ee1199e0815ddd644",
-    "tarball": "http://registry.npmjs.org/electron-redux-actions/-/electron-redux-actions-0.0.2.tgz"
-  },
-  "maintainers": [
+  "owners": [
     {
       "name": "jodusnodus",
       "email": "thomas.billiet@yahoo.com"
     }
   ],
-  "_npmOperationalInternal": {
-    "host": "packages-12-west.internal.npmjs.com",
-    "tmp": "tmp/electron-redux-actions-0.0.2.tgz_1463574826034_0.40256867185235023"
-  },
-  "directories": {}
+  "readme": "## Why\nIn my electron app I wanted to control the Tray from the main process so that the app could operate without an open window. So i used redux in the main process and then made all async calls from the main process. But if a browser window was open it should receive the same information at the same time without having to make duplicate calls.\n\n## What\nThe middleware sends all the actions to all other processes using the middleware including the browser windows and the main process. This way all processes receive the same actions. You can use this functionality to react to other processes' actions or dispatch actions to communicate between processes.\n\n## Install\n`npm install --save electron-redux-actions`\n\n## Use\n```\nimport { createStore, applyMiddleware } from 'redux'\nimport electronMiddleware from \"electron-redux-actions\"\nimport rootReducer from '../reducers'\n\nconst enhancer = applyMiddleware(electronMiddleware)\n\nexport default function configureStore(initialState) {\n  return createStore(rootReducer, initialState, enhancer)\n}\n```\n\nEach action, foreign to the process has 2 extra key's:\n- **fromMain**, *bool*, wheter or not the action was dispatched from the main process.\n- **fromWindow**, *number*, the window ID of the process where the action was dispatched.\n\nTo exclude an action from being dispatched to other processes just set `private` to `true` in the action.\n"
 }

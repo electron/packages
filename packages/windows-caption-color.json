@@ -1,0 +1,87 @@
+{
+  "name": "windows-caption-color",
+  "version": "0.0.6",
+  "description": "Get the caption color of an active windows in Windows 8+",
+  "main": "index.js",
+  "scripts": {
+    "preinstall": "node-gyp rebuild"
+  },
+  "repository": {
+    "user": "zsxsoft",
+    "repo": "windows-caption-color",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/zsxsoft/windows-caption-color/tarball/master",
+    "clone_url": "https://github.com/zsxsoft/windows-caption-color",
+    "https_url": "https://github.com/zsxsoft/windows-caption-color",
+    "travis_url": "https://travis-ci.org/zsxsoft/windows-caption-color",
+    "zip_url": "https://github.com/zsxsoft/windows-caption-color/archive/master.zip",
+    "api_url": "https://api.github.com/repos/zsxsoft/windows-caption-color"
+  },
+  "keywords": [
+    "Windows",
+    "Caption",
+    "Color",
+    "dwm"
+  ],
+  "author": {
+    "name": "zsx",
+    "email": "zsx@zsxsoft.com"
+  },
+  "license": "MIT",
+  "homepage": "https://github.com/zsxsoft/windows-caption-color",
+  "engines": {
+    "node": ">= 0.12.0"
+  },
+  "dependencies": {
+    "bindings": "^1.2.1",
+    "winreg": "0.0.12"
+  },
+  "gitHead": "db86d5d14f05e74ca06cc8a9b4ce647748a6384e",
+  "_npmVersion": "3.7.1",
+  "_nodeVersion": "5.5.0",
+  "dist": {
+    "shasum": "99f81c18a8365f38574c2f3043a4eb4f172d59bc",
+    "tarball": "http://registry.npmjs.org/windows-caption-color/-/windows-caption-color-0.0.6.tgz"
+  },
+  "versions": [
+    {
+      "number": "0.0.1",
+      "date": "2015-10-02T02:22:24.037Z"
+    },
+    {
+      "number": "0.0.2",
+      "date": "2015-10-02T02:26:44.409Z"
+    },
+    {
+      "number": "0.0.3",
+      "date": "2015-10-02T04:55:38.473Z"
+    },
+    {
+      "number": "0.0.4",
+      "date": "2015-10-02T05:29:54.277Z"
+    },
+    {
+      "number": "0.0.5",
+      "date": "2016-05-06T12:23:33.595Z"
+    },
+    {
+      "number": "0.0.6",
+      "date": "2016-05-13T11:44:19.264Z"
+    }
+  ],
+  "created": "2015-10-02T02:22:24.037Z",
+  "modified": "2016-05-13T11:44:19.264Z",
+  "lastPublisher": {
+    "name": "zsx",
+    "email": "zsx@zsxsoft.com"
+  },
+  "owners": [
+    {
+      "name": "zsx",
+      "email": "zsx@zsxsoft.com"
+    }
+  ],
+  "readme": "windows-caption-color\r\n===================================\r\n\r\nIt's a node extension to get the caption color of an active windows in Windows 8+. In non-Windows, it will always return false.\r\n## Installion\r\n``npm install windows-caption-color --save``\r\n## Requirement\r\nNode 0.12+ / Electron / nwjs 0.12+\r\n\r\n## Example\r\n```javascript\r\nrequire('windows-caption-color').get(function(err, ret) {\r\n    if (err === null) {\r\n        console.log(ret);\r\n    }\r\n});\r\n```\r\nWill return: \r\n```javascript\r\n{\r\n    \"dwm\": {\r\n        \"hsv\": \"c73eb8d0\",\r\n        \"opaque\": true,\r\n        \"a\": 0.78,\r\n        \"r\": 62,\r\n        \"g\": 184,\r\n        \"b\": 208\r\n    },\r\n    \"reg\": {\r\n        \"hsv\": \"af4adbf8\",\r\n        \"balance\": 4,\r\n        \"a\": 0.69,\r\n        \"r\": 74,\r\n        \"g\": 219,\r\n        \"b\": 248\r\n    }\r\n}\r\n```\r\n\r\n``dwm`` is from ``DwmGetColorizationColor`` API, description: https://msdn.microsoft.com/en-us/library/windows/desktop/aa969513(v=vs.85).aspx.\r\n\r\n``reg`` is from ``HKCU\\Software\\Microsoft\\Windows\\DWM``.\r\n\r\nHowever, the result from ``GetSysColor(COLOR_ACTIVECAPTION)`` is wrong.\r\n\r\n## Example\r\n\r\nIn Windows 10, the following code can set your ``document.body``'s background color same as the caption color.\r\n```javascript\r\n    require('windows-caption-color').get(function(err, ret) {\r\n        if (err === null) {\r\n            window.document.body.style.background = `rgba(${ret.reg.r}, ${ret.reg.g}, ${ret.reg.b}, ${ret.reg.a})`;\r\n        }\r\n    });\r\n```\r\nAnd, screenshots here.\r\n\r\n### Windows 10\r\n![Windows 10](https://raw.githubusercontent.com/zsxsoft/zsxsoft.github.io/master/projects/windows-caption-color/win10.png)\r\n\r\n### Windows 8.1\r\n![Windows 8.1](https://raw.githubusercontent.com/zsxsoft/zsxsoft.github.io/master/projects/windows-caption-color/win81.png)\r\n\r\n### Windows 7\r\n![Windows 7](https://raw.githubusercontent.com/zsxsoft/zsxsoft.github.io/master/projects/windows-caption-color/win7.png)\r\n\r\n## Why?\r\n\r\nIf you want to use it directly, you will get a wrong result. And you have to refer to the following article.\r\n\r\nhttp://stackoverflow.com/questions/24555827/how-to-get-title-bar-color-of-wpf-window-in-windows-8-1\r\n\r\nhttp://stackoverflow.com/questions/3560890/vista-7-how-to-get-glass-color\r\n\r\n## License\r\nThe MIT License"
+}

@@ -9,8 +9,17 @@
     "url": "http://www.bjoernacker.de"
   },
   "repository": {
-    "type": "git",
-    "url": "https://github.com/bma73/gordon-client.git"
+    "user": "bma73",
+    "repo": "gordon-client",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/bma73/gordon-client/tarball/master",
+    "clone_url": "https://github.com/bma73/gordon-client",
+    "https_url": "https://github.com/bma73/gordon-client",
+    "travis_url": "https://travis-ci.org/bma73/gordon-client",
+    "zip_url": "https://github.com/bma73/gordon-client/archive/master.zip",
+    "api_url": "https://api.github.com/repos/bma73/gordon-client"
   },
   "licenses": [
     {
@@ -40,25 +49,28 @@
     "as3",
     "socket"
   ],
-  "bugs": {
-    "url": "https://github.com/bma73/gordon-client/issues"
-  },
-  "_id": "gordon-client@0.1.0",
   "dist": {
     "shasum": "d418aad6e9f8a14888cb516f5902c9d11fd8f889",
     "tarball": "http://registry.npmjs.org/gordon-client/-/gordon-client-0.1.0.tgz"
   },
-  "_from": ".",
   "_npmVersion": "1.4.3",
-  "_npmUser": {
+  "versions": [
+    {
+      "number": "0.1.0",
+      "date": "2014-04-23T14:12:04.099Z"
+    }
+  ],
+  "created": "2014-04-23T14:12:04.099Z",
+  "modified": "2014-04-23T14:12:04.099Z",
+  "lastPublisher": {
     "name": "bma",
     "email": "bjoern@electronauts.net"
   },
-  "maintainers": [
+  "owners": [
     {
       "name": "bma",
       "email": "bjoern@electronauts.net"
     }
   ],
-  "directories": {}
+  "readme": "\r\n![Gordon Server Logo][1]\r\nGordon Client\r\n=============\r\nThere are currently two client APIs for the Gordon Server available:\r\n\r\n - HTML5/JS\r\n - Adobe Flash/Air\r\n\r\n----------\r\n\r\n### Install\r\n\r\nWith [npm](http://npmjs.org) do:\r\n```\r\nnpm install gordon-client\r\n```\r\nThis will also download the Flex SDK (BIG!) to build the SWC file.\r\nIf you don't want to rebuild the JS or AS3 version this might be better:\r\n```\r\nnpm install gordon-client --production\r\n```\r\n\r\nThe HTML5/JS version is found under ``lib/js/src`` or ``lib/js/dist``.<br>\r\nThe Adobe Flash/Air version is found under ``lib/as3/src`` or ``lib/as3/dist``.\r\n\r\n\r\nSee also [gordon-server][2] and [gordon-examples][3].\r\n\r\n----------\r\n\r\n###Usage\r\n####HTML5/JS\r\nIn your HTML file import the script:\r\n```html\r\n<script src=\"js/gordon-client-0.1.0.min.js\"></script>\r\n```\r\n\r\nThe JS client uses the ``gordon`` namespace.\r\n```JS\r\n  var g = new gordon.Client();\r\n  //Connect to the server\r\n  g.connect('ws://127.0.0.1:9092', function (err) {\r\n    if (err) {\r\n        console.log('Connection error. Code:', err.id);\r\n        return;\r\n    }\r\n\r\n    var name = 'Gordon' + Math.round(Math.random() * 1000);\r\n    console.log('Connected.');\r\n\r\n    //Join a session and room\r\n    g.join('session1', 'lobby', name, null, function (err, user) {\r\n       if (err) {\r\n            console.log('Join error. Code:', err.id);\r\n            return;\r\n        }\r\n        console.log('Joined. User id:', user.id);\r\n    });\r\n});\r\n```\r\n\r\nJoin a session with a custom DataObject\r\n\r\n```JS\r\n//create the users's dataObject\r\nvar dataObject = new gordon.DataObject();\r\ndataObject.setInt16(0, -200);\r\ndataObject.setInt16(1, -200);\r\ng.join('session1', 'lobby', name, dataObject, function (err, user) {\r\n   if (err) {\r\n        console.log('Join error. Code:', err.id);\r\n        return;\r\n    }\r\n    console.log('Joined. User id:', user.id);\r\n});\r\n```\r\n\r\n####Adobe Flash/Air\r\nEither add the ``src`` folder to your classpath or add the provided ``swc`` file to your library.\r\n```JS\r\npublic function init():void\r\n{\r\n    _gordon = new GordonClient();\r\n\r\n    _gordon.events.onConnect.add(onConnect);\r\n    _gordon.events.onDisconnect.add(onDisconnect);\r\n    _gordon.events.onJoin.add(onJoin);\r\n\t_gordon.events.onJoinError.add(onJoinError);\r\n\r\n    _gordon.connect(\"127.0.0.1\", 9091);\r\n}\r\n\r\nprotected function onConnect():void\r\n{\r\n\ttrace(\"Connected!\");\r\n\tvar name:String = \"gordon\" + int(Math.random() * 1000);\r\n\ttrace(\"Joining as\", name, \"...\");\r\n\t_gordon.join(\"session1\", \"lobby\", name);\r\n}\r\n\r\nprotected function onDisconnect():void\r\n{\r\n\ttrace(\"Disconnected!\");\r\n}\r\n\r\nprotected function onJoinError(errorCode:int):void\r\n{\r\n\ttrace(\"Join error. Code:\", errorCode);\r\n}\r\n\r\nprotected function onJoin(user:User):void\r\n{\r\n\ttrace(\"Joined.\");\r\n}\r\n```\r\nJoin a session with a custom DataObject\r\n```JS\r\nprotected function onConnect():void\r\n{\r\n\ttrace(\"Connected!\");\r\n\r\n\tvar dataObject:DataObject = new DataObject();\r\n\tdataObject.setShort(PlayerDataKey.X_POS, -200);\r\n\tdataObject.setShort(PlayerDataKey.Y_POS, -200);\r\n\r\n\tvar name:String = \"gordon\" + int(Math.random() * 1000);\r\n\r\n\ttrace(\"Joining as\", name, \"...\");\r\n\t_gordon.join(\"session1\", \"lobby\", name, dataObject);\r\n}\r\n\r\n```\r\n\r\n\r\n\r\n  [1]: https://cloud.githubusercontent.com/assets/7307652/2774582/445a43cc-caba-11e3-92f2-a2bc7600b52b.png\r\n  [2]: https://github.com/bma73/gordon-server\r\n  [3]: https://github.com/bma73/gordon-examples"
 }

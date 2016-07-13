@@ -24,36 +24,43 @@
     "mocha": "^2.4.5"
   },
   "repository": {
-    "type": "git",
-    "url": "https://github.com/maael/electron-jade-protocol"
-  },
-  "bugs": {
-    "url": "https://github.com/maael/electron-jade-protocol/issues"
+    "user": "maael",
+    "repo": "electron-jade-protocol",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/maael/electron-jade-protocol/tarball/master",
+    "clone_url": "https://github.com/maael/electron-jade-protocol",
+    "https_url": "https://github.com/maael/electron-jade-protocol",
+    "travis_url": "https://travis-ci.org/maael/electron-jade-protocol",
+    "zip_url": "https://github.com/maael/electron-jade-protocol/archive/master.zip",
+    "api_url": "https://api.github.com/repos/maael/electron-jade-protocol"
   },
   "homepage": "https://github.com/maael/electron-jade-protocol",
   "gitHead": "9f82b15d1c8dfea2870a72cb123776a94667e80d",
-  "_id": "electron-jade-protocol@1.0.0",
-  "_shasum": "b8874d09e946ffb614ded08c3174ae1099b6f898",
-  "_from": ".",
   "_npmVersion": "2.4.0",
   "_nodeVersion": "0.10.40",
-  "_npmUser": {
+  "dist": {
+    "shasum": "b8874d09e946ffb614ded08c3174ae1099b6f898",
+    "tarball": "http://registry.npmjs.org/electron-jade-protocol/-/electron-jade-protocol-1.0.0.tgz"
+  },
+  "versions": [
+    {
+      "number": "1.0.0",
+      "date": "2016-02-07T01:29:45.391Z"
+    }
+  ],
+  "created": "2016-02-07T01:29:45.391Z",
+  "modified": "2016-02-07T01:29:45.391Z",
+  "lastPublisher": {
     "name": "maael",
     "email": "matthew.elphick@clock.co.uk"
   },
-  "maintainers": [
+  "owners": [
     {
       "name": "maael",
       "email": "matthew.elphick@clock.co.uk"
     }
   ],
-  "dist": {
-    "shasum": "b8874d09e946ffb614ded08c3174ae1099b6f898",
-    "tarball": "http://registry.npmjs.org/electron-jade-protocol/-/electron-jade-protocol-1.0.0.tgz"
-  },
-  "_npmOperationalInternal": {
-    "host": "packages-9-west.internal.npmjs.com",
-    "tmp": "tmp/electron-jade-protocol-1.0.0.tgz_1454808582801_0.5468902157153934"
-  },
-  "directories": {}
+  "readme": "# Electron Jade Protocol\n\n[![Build Status](https://img.shields.io/travis/maael/electron-jade-protocol.svg)](https://travis-ci.org/maael/electron-jade-protocol)\n[![Code Climate](https://img.shields.io/codeclimate/github/maael/electron-jade-protocol.svg)](https://codeclimate.com/github/maael/electron-jade-protocol)\n\n## Install\n```\nnpm install --save electron-jade-protocol\n```\n\n## Usage\n\n### Registering the protocol\n\nThis will wait until the application is ready, and will then register a buffer protocol intercept for the `file` scheme, which will intercept all `file://...` requests, and if a request is for a jade file, it will compile it.\n\n```js\njadeProtocol = require('electron-jade-protocol')(jadeOptions, globalLocals)\n```\n\n### Updating the protocol with local variables\n\nThese variables will be cleared once the next jade file has been requested.\n\n```js\njadeProtocol(locals)\n```\n"
 }

@@ -11,8 +11,17 @@
     "start": "npm run dep && npm run build && npm run example"
   },
   "repository": {
-    "type": "git",
-    "url": "git+https://github.com/rhysd/about-window.git"
+    "user": "rhysd",
+    "repo": "about-window",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/rhysd/about-window/tarball/master",
+    "clone_url": "https://github.com/rhysd/about-window",
+    "https_url": "https://github.com/rhysd/about-window",
+    "travis_url": "https://travis-ci.org/rhysd/about-window",
+    "zip_url": "https://github.com/rhysd/about-window/archive/master.zip",
+    "api_url": "https://api.github.com/repos/rhysd/about-window"
   },
   "keywords": [
     "Electron",
@@ -24,9 +33,6 @@
     "email": "lin90162@yahoo.co.jp"
   },
   "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/rhysd/about-window/issues"
-  },
   "homepage": "https://github.com/rhysd/about-window#readme",
   "devDependencies": {
     "typescript": "^1.7.5",
@@ -36,28 +42,57 @@
     "object-assign": "^4.0.1"
   },
   "gitHead": "e5ed29d60abf191d400ab24e3937d02c51828b9e",
-  "_id": "about-window@1.3.1",
-  "_shasum": "6384ced349a682e12f9b9d534974a62aef303630",
-  "_from": ".",
   "_npmVersion": "3.3.12",
   "_nodeVersion": "5.3.0",
-  "_npmUser": {
-    "name": "rhysd",
-    "email": "lin90162@yahoo.co.jp"
-  },
   "dist": {
     "shasum": "6384ced349a682e12f9b9d534974a62aef303630",
     "tarball": "http://registry.npmjs.org/about-window/-/about-window-1.3.1.tgz"
   },
-  "maintainers": [
+  "versions": [
+    {
+      "number": "0.0.1",
+      "date": "2015-12-25T03:02:45.492Z"
+    },
+    {
+      "number": "0.1.0",
+      "date": "2015-12-26T13:39:57.949Z"
+    },
+    {
+      "number": "0.1.1",
+      "date": "2016-01-28T17:04:52.673Z"
+    },
+    {
+      "number": "1.0.0",
+      "date": "2016-02-01T10:56:17.457Z"
+    },
+    {
+      "number": "1.0.1",
+      "date": "2016-02-01T11:07:54.694Z"
+    },
+    {
+      "number": "1.1.0",
+      "date": "2016-02-02T01:40:50.417Z"
+    },
+    {
+      "number": "1.2.0",
+      "date": "2016-02-02T02:08:22.973Z"
+    },
+    {
+      "number": "1.3.1",
+      "date": "2016-02-02T04:41:28.346Z"
+    }
+  ],
+  "created": "2015-12-25T03:02:45.492Z",
+  "modified": "2016-02-02T04:41:28.346Z",
+  "lastPublisher": {
+    "name": "rhysd",
+    "email": "lin90162@yahoo.co.jp"
+  },
+  "owners": [
     {
       "name": "rhysd",
       "email": "lin90162@yahoo.co.jp"
     }
   ],
-  "_npmOperationalInternal": {
-    "host": "packages-5-east.internal.npmjs.com",
-    "tmp": "tmp/about-window-1.3.1.tgz_1454388086049_0.7201499852817506"
-  },
-  "directories": {}
+  "readme": "'About This App' window for [Electron](https://github.com/atom/electron) apps\n=============================================================================\n\n[This package](https://www.npmjs.com/package/about-window) provides 'About This App' window for [Electron](https://github.com/atom/electron) applications.\n\n- [x] Create 'About This App' window from given parameters\n  - [x] Icon path\n  - [x] Copy right\n  - [x] App name and Versions\n  - [x] Description\n- [x] Gather package information from package.json\n- [x] Automatically detect package.json\n- [ ] Adjust window size to its contents automatically\n- [x] CSS customizability\n\nYou can install this module via [npm](https://www.npmjs.com/).\n\n```sh\n$ npm install about-window\n```\n\nOnly one function is exported as default.  Please see [TypeScript type definition](index.d.ts).\n\n```typescript\nexport default function openAboutWindow(info: {\n    icon_path: string;\n    package_json_dir?: string;\n    bug_report_url?: string;\n    copyright?: string;\n    homepage?: string;\n    description?: string;\n    license?: string;\n    css_path?: string;\n    adjust_window_size?: boolean;\n    win_options?: BrowserWindowOptions;\n}): BrowserWindow\n```\n\nOnly `icon_path` property is required, others are optional.  I recommend to specify as below to extract information from package.json as much as possible.  Path to package.json is also automatically detected if possible.\n\n```typescript\nopenAboutWindow({\n    icon_path: 'path/to/icon.png'\n});\n```\n\nYou can check [example app](example) to know how to use this package.\n\n```sh\n$ git clone https://github.com/rhysd/about-window.git\n$ cd about-window/example\n$ npm install\n$ npm start\n```\n\n### Parameter's properties of `openAboutWindow()`\n\n| Name | Description | Type |\n|------|-------------|------|\n| `icon_path` | Path to icon file of the application. **Required** | string |\n| `package_json_dir` | Path to directory which contains package.json.  If not specified, it will try to detect a path to package.json.  If also failed, it gives up and show less information in 'About This App' window. **Optional** | string |\n| `bug_report_url` | URL to bug report page.  If not specified, 'bugs' entry in package.json is used. **Optional** | string |\n| `copyright` | Copyright notice shown in window.  If not specified, it is replaced with license description generated by 'license' entry of package.json. **Optional** | string |\n| `homepage` | URL of application's web page.  If not specified, 'homepage' entry of package.json is used instead. **Optional** | string |\n| `description` | Description of the application.  If not specified, 'description' entry of package.json is used instead. **Optional** | string |\n| `license` | License of the application.  If not specified, 'license' entry of package.json is used instead. This property is used when `copyright` is not specified. **Optional** | string |\n| `win_options` | Options of 'About This App' window.  It is merged into default options. **Optional** | [BrowserWindow options object](https://github.com/atom/electron/blob/master/docs/api/browser-window.md#new-browserwindowoptions) |\n| `css_path` | Path to user-defined CSS file.  It will be inserted to DOM of the window. **Optional** | string |\n| `adjust_window_size` | Adjust the window size to its content not to show scroll bar. **Optional** | boolean |\n| `open_devtools` | For debug purpose, Chrome DevTools will start when the window is opened **Optional** | boolean |\n\n## Screen Shots\n\n### Linux\n\n![Linux screenshot](https://raw.githubusercontent.com/rhysd/ss/master/about-window/about-window-linux.png)\n\n### OS X\n\n![OS X screenshot](https://raw.githubusercontent.com/rhysd/ss/master/about-window/about-window-os-x.png)\n\n### Windows\n\n![Windows screenshot](https://raw.githubusercontent.com/rhysd/ss/master/about-window/about-window-windows.png)\n\n## License\n\n[MIT License](/LICENSE.txt).\n\n"
 }

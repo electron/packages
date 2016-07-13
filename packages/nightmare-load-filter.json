@@ -8,8 +8,17 @@
     "test": "mocha test"
   },
   "repository": {
-    "type": "git",
-    "url": "git+https://github.com/rosshinkley/nightmare-load-filter.git"
+    "user": "rosshinkley",
+    "repo": "nightmare-load-filter",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/rosshinkley/nightmare-load-filter/tarball/master",
+    "clone_url": "https://github.com/rosshinkley/nightmare-load-filter",
+    "https_url": "https://github.com/rosshinkley/nightmare-load-filter",
+    "travis_url": "https://travis-ci.org/rosshinkley/nightmare-load-filter",
+    "zip_url": "https://github.com/rosshinkley/nightmare-load-filter/archive/master.zip",
+    "api_url": "https://api.github.com/repos/rosshinkley/nightmare-load-filter"
   },
   "author": {
     "name": "Ross Hinkley"
@@ -39,32 +48,38 @@
     "serve-static": "^1.10.0"
   },
   "gitHead": "b8cc6c76f5b797d9e0e543bb019ea531c526b9b2",
-  "bugs": {
-    "url": "https://github.com/rosshinkley/nightmare-load-filter/issues"
-  },
   "homepage": "https://github.com/rosshinkley/nightmare-load-filter#readme",
-  "_id": "nightmare-load-filter@0.2.0",
-  "_shasum": "962841b1b8590dab711365a08e5283cf0fc38009",
-  "_from": ".",
   "_npmVersion": "3.3.6",
   "_nodeVersion": "4.4.0",
-  "_npmUser": {
-    "name": "rosshinkley",
-    "email": "rosshinkley@gmail.com"
-  },
   "dist": {
     "shasum": "962841b1b8590dab711365a08e5283cf0fc38009",
     "tarball": "http://registry.npmjs.org/nightmare-load-filter/-/nightmare-load-filter-0.2.0.tgz"
   },
-  "maintainers": [
+  "versions": [
+    {
+      "number": "0.1.0",
+      "date": "2016-04-02T23:01:35.186Z"
+    },
+    {
+      "number": "0.1.1",
+      "date": "2016-04-08T16:54:27.425Z"
+    },
+    {
+      "number": "0.2.0",
+      "date": "2016-05-22T17:26:34.419Z"
+    }
+  ],
+  "created": "2016-04-02T23:01:35.186Z",
+  "modified": "2016-05-22T17:26:34.419Z",
+  "lastPublisher": {
+    "name": "rosshinkley",
+    "email": "rosshinkley@gmail.com"
+  },
+  "owners": [
     {
       "name": "rosshinkley",
       "email": "rosshinkley@gmail.com"
     }
   ],
-  "_npmOperationalInternal": {
-    "host": "packages-16-east.internal.npmjs.com",
-    "tmp": "tmp/nightmare-load-filter-0.2.0.tgz_1463937993429_0.48295648978091776"
-  },
-  "directories": {}
+  "readme": "nightmare-load-filter\n======================\n\nAdd pre-load content filtering to your [Nightmare](http://github.com/segmentio/nightmare) scripts.\n\n## Usage\nRequire the library and pass the Nightmare library as a reference to attach the plugin actions:\n\n```js\nvar Nightmare = require('nightmare');\nrequire('nightmare-load-filter')(Nightmare);\n```\n\n### .filter(filter, fn)\nAdds a prerequest call to `fn` filtered to the URLs specified in `filter`.  The `fn` parameter must be a function that accepts details and a callback.  When complete, the callback must specify a response object, even if it is empty.  Note that `filter` is of the same form and works in the same way that the [Electron filter does](https://github.com/atom/electron/blob/master/docs/api/session.md#seswebrequest).  See the [`onBeforeRequest` documentation](https://github.com/atom/electron/blob/master/docs/api/session.md#seswebrequestonbeforerequestfilter-listener) in the Electron documentation for more information.\n\n## Example\n\n```js\nyield nightmare\n  .filter({\n    urls:[\n      'http://example.com'\n    ]\n  }, function(details, cb){\n    //cancel a specific file\n    return cb({cancel: (details.url === 'http://example.com/some-resource.js')});\n  })\n  .goto('http://example.com');\n```\n"
 }

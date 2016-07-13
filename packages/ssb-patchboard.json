@@ -1,0 +1,75 @@
+{
+  "name": "ssb-patchboard",
+  "description": "a pluggable patchwork",
+  "version": "0.1.0",
+  "homepage": "https://github.com/dominictarr/ssb-patchboard",
+  "repository": {
+    "user": "dominictarr",
+    "repo": "ssb-patchboard",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/dominictarr/ssb-patchboard/tarball/master",
+    "clone_url": "https://github.com/dominictarr/ssb-patchboard",
+    "https_url": "https://github.com/dominictarr/ssb-patchboard",
+    "travis_url": "https://travis-ci.org/dominictarr/ssb-patchboard",
+    "zip_url": "https://github.com/dominictarr/ssb-patchboard/archive/master.zip",
+    "api_url": "https://api.github.com/repos/dominictarr/ssb-patchboard"
+  },
+  "dependencies": {
+    "depject": "0.0.2",
+    "hyperscript": "^1.4.7",
+    "hypertabs": "^0.1.0",
+    "moment": "^2.13.0",
+    "pull-cat": "^1.1.9",
+    "pull-paramap": "^1.1.6",
+    "pull-sort": "^1.0.0",
+    "pull-stream": "^3.3.2",
+    "ssb-client": "^3.0.1",
+    "ssb-markdown": "^3.0.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "set -e; for t in test/*.js; do node $t; done"
+  },
+  "author": {
+    "name": "Dominic Tarr",
+    "email": "dominic.tarr@gmail.com",
+    "url": "http://dominictarr.com"
+  },
+  "license": "MIT",
+  "gitHead": "d8ca14eba0e96bb071a1a3988d540bc00e49bd38",
+  "_npmVersion": "3.6.0",
+  "_nodeVersion": "5.6.0",
+  "dist": {
+    "shasum": "562ca1f9fcb9d136cf2b9122c1d4d0c62e12a67b",
+    "tarball": "http://registry.npmjs.org/ssb-patchboard/-/ssb-patchboard-0.1.0.tgz"
+  },
+  "versions": [
+    {
+      "number": "0.0.0",
+      "date": "2016-05-11T01:39:22.079Z"
+    },
+    {
+      "number": "0.0.1",
+      "date": "2016-05-11T01:40:59.547Z"
+    },
+    {
+      "number": "0.1.0",
+      "date": "2016-05-12T09:42:21.035Z"
+    }
+  ],
+  "created": "2016-05-11T01:39:22.079Z",
+  "modified": "2016-05-12T09:42:21.035Z",
+  "lastPublisher": {
+    "name": "dominictarr",
+    "email": "dominic.tarr@gmail.com"
+  },
+  "owners": [
+    {
+      "name": "dominictarr",
+      "email": "dominic.tarr@gmail.com"
+    }
+  ],
+  "readme": "# ssb-patchboard\n\nPrototype of a pluggable patchwork.\n\nPatchboard uses [depject](https://npm.im/depject) to provide\na highly composable api. all scripts in the `./modules` directory\nare loaded and combined using [depject](https://npm.im/depject)\n\nThis makes in very easy to create say, a renderer for a new message type,\nor switch to a different method for choosing user names.\n\nCurrently, this is a proof of concept, there is a basic way to switch\nbetween tabs, and you can view the main log, user feeds, or threads.\nThis should obviously be improved with a module that can\nscroll properly scoll through a feed.\n\nNo \"write\" methods have been implemented yet.\n\n## overview\n\nCurrently, the main module is `tabs.js` which plugs into\nthe `app` socket, and provides the `screen_view` socket.\nwhen you click a link, `screen_view` socket with the link path,\nwhich returns a html element which becomes a new tab.\n\ncurrently, `main.js` `feed.js` and `thread.js` plug into `screen_view`\nand then in turn, call the `message_render` socket, which calls\n`message_content` `avatar` `message_meta` `message_action` and `message_link`.\n\n`avatar.js` plugs into `avatar`, and provides the `avatar_name` socket.\nit just returns a link to the public key, labled with what it gets back\nfrom `avatar_name` socket. this is in turn provided by the `names.js` module.\n\nTwo modules plug into `message_content`, `post.js` and `like.js`\n\nNo plugs into the `message_action` socket have been implemented yet,\nbut whatever is returned from this will inserted into the dom at the bottom\nof the message (by the `message` module) so this would be the plug to\nuse for implementing a like/+1/fav/dig/yup button, or a reply button.\n\n## other ideas\n\nEditable messages would probably need to plug into several sockets.\nfirstly they would render content differently, so probably use the `message_content` socket.\nsecondly they would need to show edit state, which would probably use `message_meta`\nand finially they'd need to provide the ability to edit the message!\nthat would use `message_action`\n\nImplementing a \"events\" message type would be easy, just implement another\nplug for `message_content`, that renders events.\n\nInstead of reading all the modules in a directory, it would be better\nto load these from configuration. Then, modules could be distributed\nas browserify bundles, and distributed over ssb. Configuration\ncould just be a list of hashes - but you could also disable specific\nsockets or plugs if necessary (leaving them unconnected).\n\nThen, that configuration could be shared over ssb!\n\n## higher level ui\n\nInstead of just taking the latest 100 messages, what would actually be useful\nis ways to efficiently view messages, open threads, etc.\nbut if we can create a plug for rendering a stream of messages,\nwe can provide a socket for that in a module that implements tabs, or\ncolumns, or whatever.\n\n## Running\n\n```\n# assuming that patchwork@2.8 is already running...\ngit clone https://github.com/dominictarr/patchboard.git\ncd patchboard\nnpm install electro electron-prebuilt -g\npatchwork plugins.install ssb-links # must have patchwork >=2.8\nelectro index.js\n```\n\n\n## License\n\nMIT\n\n\n\n"
+}

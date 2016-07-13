@@ -1,0 +1,78 @@
+{
+  "name": "openfin-react-popup",
+  "description": "General-purpose React popup component, <div/> in browsers, frameless Window in OpenFin",
+  "version": "0.8.2",
+  "devDependencies": {
+    "webpack": "~1.13.1",
+    "webpack-dev-server": "~1.14.1",
+    "babel-loader": "~6.2.4",
+    "babel-preset-es2015": "~6.9.0",
+    "babel-preset-react": "~6.11.1",
+    "openfin-cli": "~1.1.4"
+  },
+  "dependencies": {
+    "react": ">=0.14.0",
+    "react-dom": ">=0.14.0"
+  },
+  "repository": {
+    "user": "openfin",
+    "repo": "react-popup",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/openfin/react-popup/tarball/master",
+    "clone_url": "https://github.com/openfin/react-popup",
+    "https_url": "https://github.com/openfin/react-popup",
+    "travis_url": "https://travis-ci.org/openfin/react-popup",
+    "zip_url": "https://github.com/openfin/react-popup/archive/master.zip",
+    "api_url": "https://api.github.com/repos/openfin/react-popup"
+  },
+  "license": "MIT",
+  "scripts": {
+    "webpack:demo": "npm run prepublish && webpack --config demo.config.js",
+    "webpack:dist": "webpack --config dist.config.js",
+    "wds": "npm run prepublish && webpack-dev-server --config demo.config.js --inline",
+    "openfin": "openfin -l -u http://localhost:8080/",
+    "prepublish": "npm run webpack:dist"
+  },
+  "main": "dist/react-popup.min.js",
+  "gitHead": "86cc3f3b3a9029569cbf6218817169bb5bd83f0a",
+  "homepage": "https://github.com/openfin/react-popup#readme",
+  "_npmVersion": "3.10.3",
+  "_nodeVersion": "6.3.0",
+  "dist": {
+    "shasum": "f8e8e086bbb8380042924be97bd90511a01cfbc7",
+    "tarball": "http://registry.npmjs.org/openfin-react-popup/-/openfin-react-popup-0.8.2.tgz"
+  },
+  "versions": [
+    {
+      "number": "0.0.0",
+      "date": "2016-07-13T10:11:15.931Z"
+    },
+    {
+      "number": "0.8.0",
+      "date": "2016-07-13T10:19:32.589Z"
+    },
+    {
+      "number": "0.8.1",
+      "date": "2016-07-13T10:23:58.754Z"
+    },
+    {
+      "number": "0.8.2",
+      "date": "2016-07-13T10:42:25.153Z"
+    }
+  ],
+  "created": "2016-07-13T10:11:15.931Z",
+  "modified": "2016-07-13T10:42:25.153Z",
+  "lastPublisher": {
+    "name": "vp2177",
+    "email": "vp2177@gmail.com"
+  },
+  "owners": [
+    {
+      "name": "vp2177",
+      "email": "vp2177@gmail.com"
+    }
+  ],
+  "readme": "## Quick start\r\n\r\nInstall:\r\n\r\n\tnpm install -S openfin-react-popup\r\n\r\nUse: \r\n\r\n        import Popup from 'openfin-react-popup'\r\n\t    ...\r\n\t    return (\r\n\t\t\t... \r\n\t\t\t<Popup width={100} hidden={!this.state.showPopup}>\r\n\t\t\t\t<Any JSX here...>\r\n\t\t\t</Popup>\r\n\t\t\t...\r\n\t\t)\r\n\r\n## Known issues / TODO\r\n\r\n- When the parent `Window` is moved, the popup doesn't track it\r\n- Electron support?\r\n- The popup isn't always destroyed when the parent `Window` is closed\r\n- Styling \r\n- `.ts.d`"
+}

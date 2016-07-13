@@ -11,8 +11,17 @@
     "unit": "tape -r babel-core/register tests/*.test.js tests/integration/*.test.js | tap-spec"
   },
   "repository": {
-    "type": "git",
-    "url": "git+https://github.com/jprichardson/ripdb.git"
+    "user": "jprichardson",
+    "repo": "ripdb",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/jprichardson/ripdb/tarball/master",
+    "clone_url": "https://github.com/jprichardson/ripdb",
+    "https_url": "https://github.com/jprichardson/ripdb",
+    "travis_url": "https://travis-ci.org/jprichardson/ripdb",
+    "zip_url": "https://github.com/jprichardson/ripdb/archive/master.zip",
+    "api_url": "https://api.github.com/repos/jprichardson/ripdb"
   },
   "keywords": [
     "time",
@@ -29,9 +38,6 @@
     "name": "JP Richardson"
   },
   "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/jprichardson/ripdb/issues"
-  },
   "homepage": "https://github.com/jprichardson/ripdb#readme",
   "devDependencies": {
     "babel-cli": "^6.3.17",
@@ -65,24 +71,33 @@
     "ymd": "^1.0.0"
   },
   "gitHead": "4b1e60eda923deefa5fa284935edfda0d83364d9",
-  "_id": "ripdb@0.0.2",
-  "_shasum": "6c74a2a1696d7f1d0a0ebcd20fdd217760149282",
-  "_from": ".",
   "_npmVersion": "3.3.12",
   "_nodeVersion": "5.3.0",
-  "_npmUser": {
+  "dist": {
+    "shasum": "6c74a2a1696d7f1d0a0ebcd20fdd217760149282",
+    "tarball": "http://registry.npmjs.org/ripdb/-/ripdb-0.0.2.tgz"
+  },
+  "versions": [
+    {
+      "number": "0.0.1",
+      "date": "2015-12-23T21:31:51.299Z"
+    },
+    {
+      "number": "0.0.2",
+      "date": "2015-12-26T15:10:27.082Z"
+    }
+  ],
+  "created": "2015-12-23T21:31:51.299Z",
+  "modified": "2015-12-26T15:10:27.082Z",
+  "lastPublisher": {
     "name": "jprichardson",
     "email": "jprichardson@gmail.com"
   },
-  "maintainers": [
+  "owners": [
     {
       "name": "jprichardson",
       "email": "jprichardson@gmail.com"
     }
   ],
-  "dist": {
-    "shasum": "6c74a2a1696d7f1d0a0ebcd20fdd217760149282",
-    "tarball": "http://registry.npmjs.org/ripdb/-/ripdb-0.0.2.tgz"
-  },
-  "directories": {}
+  "readme": "RipDB\n=====\n\n[![build status](https://api.travis-ci.org/jprichardson/ripdb.svg)](http://travis-ci.org/jprichardson/ripdb)\n[![windows build status](https://ci.appveyor.com/api/projects/status/github/jprichardson/ripdb?branch=master&svg=true)](https://ci.appveyor.com/project/jprichardson/ripdb/branch/master)\n[![npm](https://img.shields.io/npm/v/ripdb.svg?style=flat)](https://npmjs.org/package/ripdb)\n[![js-standard-style](https://img.shields.io/badge/code%20style-standard-brightgreen.svg)](http://standardjs.com/)\n\nA 100% JavaScript embeddable JSON time series database.\n\n**API is unstable.**\n\n### Name\n\nThe name \"Rip\" in RipDB is from [Rip Van Winkle](https://en.wikipedia.org/wiki/Rip_Van_Winkle).\n\n\n### Why?\n\nOften times it's useful to have data indexed by date/time. Examples of such data would be\nlog data, stock data, etc. There are plenty of time series databases, however, none that\nI'm aware of that are embeddable.\n\nRipDB is useful if you're building an [Electron](https://github.com/atom/electron)\napp and you don't want to recompile LevelUp for every target platform.\n\n\n### Design Goals\n\n- No native modules, 100% embeddable.\n- Super simple file format. Indexed (typically by day) newline delimited JSON (`.ndjson`) with two top level fields\n`d`, and `t`.\n- Simple interface. Node.js streams only to read or write.\n\n\n### Caveat Emptor\n\nI don't maintain that this is a good idea, nor is even fast/efficient. This should be thought of as\nmore of an experiment. If your data set is larger than 100 MB, you may be better served\nby another embeddable database or time series database.\n\n\nUsage\n-----\n\n### Install\n\n    npm i --save ripdb\n\n\n### API\n\n#### create()\n\n`create(path, [indexFn])`\n\n**Parameters:**\n- `path`: The path directory to read / write a RipDB database.\n- `indexFn`: Optional function to use for indexing. Defaults to returning a path that indexes\nlike `${path}/YYYY/mm-dd.ndjson`. Files should easily fit in memory.\n\n**Returns:** An instance of RipDB.\n\n```js\nvar ripdb = require('ripdb')\nvar db = ripdb.create('~/data/stocks')\n```\n\n#### prototype.path\n\n#### prototype.createReader()\n\nReturns an instance of [Readable stream](https://nodejs.org/api/stream.html#stream_class_stream_readable) used to read data\nfrom the database. Starts from the most recent.\n\n```js\nvar ripdb = require('ripdb')\nvar db = ripdb.create('~/data/stocks')\nvar reader = db.createReader()\n\nreader.on('readable', function () {\n  var record = reader.read()\n  console.dir(record)\n  // => { index: '2015/12-05', t: '2015-12-05T10:36:56-06:00', d: data... }\n})\n```\n\nWill support middleware, JSON revivers, etc.\n\n\n#### prototype.createWriter()\n\nReturns an instance of a [Writable stream](https://nodejs.org/api/stream.html#stream_class_stream_writable) used to write data.\n\n```js\nvar ripdb = require('ripdb')\nvar db = ripdb.create('~/data/stocks')\nvar writer = db.createWriter()\n\nwriter.write({\n  t: new Date() // expected to be instance of Date\n  d: { ...data } // your data\n})\n```\n\nWill support middleware, JSON replacers, etc.\n\n\nLicense\n-------\n\nMIT\n\nCopyright (c) [JP Richardson](https://github.com/jprichardson)\n"
 }

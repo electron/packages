@@ -9,8 +9,17 @@
   },
   "homepage": "http://github.com/mongodb-js/electron-installer-zip",
   "repository": {
-    "type": "git",
-    "url": "git://github.com/mongodb-js/electron-installer-zip.git"
+    "user": "mongodb-js",
+    "repo": "electron-installer-zip",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/mongodb-js/electron-installer-zip/tarball/master",
+    "clone_url": "https://github.com/mongodb-js/electron-installer-zip",
+    "https_url": "https://github.com/mongodb-js/electron-installer-zip",
+    "travis_url": "https://travis-ci.org/mongodb-js/electron-installer-zip",
+    "zip_url": "https://github.com/mongodb-js/electron-installer-zip/archive/master.zip",
+    "api_url": "https://api.github.com/repos/mongodb-js/electron-installer-zip"
   },
   "scripts": {
     "test": "mocha",
@@ -52,31 +61,53 @@
     "electron create zip"
   ],
   "gitHead": "c52c21f5c57b94bda12c40c706ac4b3864fd39d4",
-  "bugs": {
-    "url": "https://github.com/mongodb-js/electron-installer-zip/issues"
-  },
-  "_id": "electron-installer-zip@0.1.2",
-  "_shasum": "e529b70ad26107a1211cfb93d6951d50cb52f096",
-  "_from": ".",
   "_npmVersion": "3.8.3",
   "_nodeVersion": "5.10.1",
-  "_npmUser": {
-    "name": "imlucas",
-    "email": "hrabovsky.lucas@gmail.com"
-  },
   "dist": {
     "shasum": "e529b70ad26107a1211cfb93d6951d50cb52f096",
     "tarball": "http://registry.npmjs.org/electron-installer-zip/-/electron-installer-zip-0.1.2.tgz"
   },
-  "maintainers": [
+  "versions": [
+    {
+      "number": "0.0.1",
+      "date": "2016-03-28T17:59:09.731Z"
+    },
+    {
+      "number": "0.0.2",
+      "date": "2016-03-28T19:25:24.278Z"
+    },
+    {
+      "number": "0.0.3",
+      "date": "2016-04-01T16:41:51.776Z"
+    },
+    {
+      "number": "0.0.4",
+      "date": "2016-04-01T16:48:39.404Z"
+    },
+    {
+      "number": "0.1.0",
+      "date": "2016-04-01T16:49:23.159Z"
+    },
+    {
+      "number": "0.1.1",
+      "date": "2016-04-26T14:23:52.802Z"
+    },
+    {
+      "number": "0.1.2",
+      "date": "2016-04-26T17:04:23.556Z"
+    }
+  ],
+  "created": "2016-03-28T17:59:09.731Z",
+  "modified": "2016-04-26T17:04:23.556Z",
+  "lastPublisher": {
+    "name": "imlucas",
+    "email": "hrabovsky.lucas@gmail.com"
+  },
+  "owners": [
     {
       "name": "imlucas",
       "email": "hrabovsky.lucas@gmail.com"
     }
   ],
-  "_npmOperationalInternal": {
-    "host": "packages-12-west.internal.npmjs.com",
-    "tmp": "tmp/electron-installer-zip-0.1.2.tgz_1461690261018_0.3932103398256004"
-  },
-  "directories": {}
+  "readme": "# electron-installer-zip [![travis][travis_img]][travis_url] [![npm][npm_img]][npm_url]\n\n> Create a zip file with support for symlinks required by electron on osx.\n\n## Installation\n\n```\n# For use in npm scripts\nnpm i electron-installer-zip --save-dev\n\n# For use from cli\nnpm i electron-installer-zip -g\n```\n\n## Usage\n\n```bash\nelectron-installer-zip <dir> <out>\n\nOptions:\n  --verbose  Confused or trying to track down a bug and want lots of debug\n             output?                                  [boolean] [default: false]\n  --help     Show help                                                 [boolean]\n```\n\n```javascript\nvar zip = require('electron-installer-zip');\n\nvar opts = {\n  dir: 'dist/MongoDB Compass-darwin-x64/MongoDB Compass.app',\n  out: 'dist/'\n};\n\nzip(opts, function(err, res) {\n  if (err) {\n    console.error(err);\n    process.exit(1);\n  }\n  console.log('Zip file written to: ', res);\n});\n\n```\n\n## License\n\nApache 2.0\n\n[travis_img]: https://img.shields.io/travis/mongodb-js/electron-installer-zip.svg\n[travis_url]: https://travis-ci.org/mongodb-js/electron-installer-zip\n[npm_img]: https://img.shields.io/npm/v/electron-installer-zip.svg\n[npm_url]: https://npmjs.org/package/electron-installer-zip\n[electron-packager]: https://github.com/maxogden/electron-packager\n[appzip]: https://github.com/LinusU/node-appzip\n"
 }

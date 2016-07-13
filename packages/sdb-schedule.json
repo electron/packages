@@ -1,0 +1,102 @@
+{
+  "name": "sdb-schedule",
+  "version": "1.0.10",
+  "description": "schedule framework",
+  "main": "./lib/yz_schedule.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "schedule"
+  ],
+  "author": {
+    "name": "shudingbo",
+    "email": "shudingbo@qq.com"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "async": "^2.0.0-rc.6",
+    "node-schedule": "^1.1.0",
+    "redis": "^2.6.1"
+  },
+  "repository": {
+    "user": "shudingbo",
+    "repo": "sdb-schedule",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/shudingbo/sdb-schedule/tarball/master",
+    "clone_url": "https://github.com/shudingbo/sdb-schedule",
+    "https_url": "https://github.com/shudingbo/sdb-schedule",
+    "travis_url": "https://travis-ci.org/shudingbo/sdb-schedule",
+    "zip_url": "https://github.com/shudingbo/sdb-schedule/archive/master.zip",
+    "api_url": "https://api.github.com/repos/shudingbo/sdb-schedule"
+  },
+  "gitHead": "f18d8d0e27ba728c4e8d42b523757916f4e1de6f",
+  "homepage": "https://github.com/shudingbo/sdb-schedule#readme",
+  "_npmVersion": "3.7.5",
+  "_nodeVersion": "4.4.5",
+  "dist": {
+    "shasum": "4b396009d0d227e35df5897975e14b02ce582dbe",
+    "tarball": "http://registry.npmjs.org/sdb-schedule/-/sdb-schedule-1.0.10.tgz"
+  },
+  "versions": [
+    {
+      "number": "1.0.0",
+      "date": "2016-05-27T03:50:52.865Z"
+    },
+    {
+      "number": "1.0.1",
+      "date": "2016-05-27T04:50:30.581Z"
+    },
+    {
+      "number": "1.0.2",
+      "date": "2016-05-27T09:56:01.150Z"
+    },
+    {
+      "number": "1.0.3",
+      "date": "2016-06-04T05:05:10.365Z"
+    },
+    {
+      "number": "1.0.4",
+      "date": "2016-06-04T15:01:13.545Z"
+    },
+    {
+      "number": "1.0.5",
+      "date": "2016-06-06T07:37:37.596Z"
+    },
+    {
+      "number": "1.0.6",
+      "date": "2016-06-07T00:32:31.652Z"
+    },
+    {
+      "number": "1.0.7",
+      "date": "2016-06-17T09:52:36.519Z"
+    },
+    {
+      "number": "1.0.8",
+      "date": "2016-07-08T10:21:51.031Z"
+    },
+    {
+      "number": "1.0.9",
+      "date": "2016-07-12T03:33:12.626Z"
+    },
+    {
+      "number": "1.0.10",
+      "date": "2016-07-12T10:25:45.839Z"
+    }
+  ],
+  "created": "2016-05-27T03:50:52.865Z",
+  "modified": "2016-07-12T10:25:45.839Z",
+  "lastPublisher": {
+    "name": "shudingbo",
+    "email": "shudingbo@qq.com"
+  },
+  "owners": [
+    {
+      "name": "shudingbo",
+      "email": "shudingbo@qq.com"
+    }
+  ],
+  "readme": "\r\n# Simple schedule framework\r\n[中文看这里]\r\n\r\n![Setting][idSet]\r\n\r\n## Installation\r\n\r\nUsing npm:\r\n\r\n    $ npm install sdb-schedule\r\n\r\nTo run the tests:\r\n\r\n    $ node test.js\r\n\r\n## Description\r\nThis is schedule framework base **[node-schedule]**. Through a simple configuration, you can control schedule jobs.\r\nThis module provides follow function:\r\n\r\n - Cron format string config schedule\r\n - Can dynamic control tasks on/off/update\r\n - Config and task script can In any position\r\n\r\n## APP(UI)\r\nNow we implement an app [sdb-schedule-ui],using admin schedules( only support redis drv ),you can [download] it.\r\n- Base Electron\r\n\r\n\r\n## Plugin \r\n### scp-cleanRedis （ auto Clean redis data）\r\n Clean Redis Data. You Can See document from [scp-cleanRedis].\r\n - support regex\r\n - support clean ZSET,List  \r\n\r\n\r\n\r\n### Changelog\r\n#### 1.0.10\r\n- Fix Bug, when Job cron parse error, stop job should exception.\r\n\r\n#### 1.0.9\r\n- support require module in ./node_modules Path.  Using module in node_modules folder,you should only set the module's name in Fun Param.\r\n\r\n#### 1.0.8\r\n- Implement #4,Can Edid job's config.\r\n\r\n#### 1.0.6\r\nfixed #1\r\n\r\n#### 1.0.5\r\nfixed using RedisDrv，Job startTime/stopTime can't record.\r\n\r\n#### 1.0.4\r\nAdd RedisDrv(Redis configuration manager module),using [node-redis];\r\n\r\n#### 1.0.3\r\nRefactor the code, separate configuration management module. Now can easy support. Are now able to support more than one type of configuration file management more easily. For example, using the **File/Redis/SQL** Server storage management plan task configuration File.\r\n - Add File Config module support.\r\n\r\n\r\n\r\n## Configuration AND Configuration file Manager\r\n### Configuration\r\n  Configuration file using the json format, defined the schedules,as shown below:\r\n```javascript\r\n{\r\n\t\"schedules\":{\r\n\t\t\"enableRoom\":{\r\n\t\t\t\"cron\":\"*/5 * * * * *\",\r\n\t\t\t\"fun\":\"./sc/enableRoom.js\",\r\n\t\t\t\"switch\":true\r\n\t\t},\r\n\t\t\"disableRoom\":{\r\n\t\t\t\"cron\":\"*/5 * * * * *\",\r\n\t\t\t\"fun\":\"./sc/disableRoom.js\",\r\n\t\t\t\"switch\":false\r\n\t\t}\r\n\t}\r\n}\r\n```\r\n\r\nAll job defined in **schedules** fields, each job define as json object,must have 3 fields:(cron,fun and switch).\r\n\r\n  - **cron** , define job cron string.\r\n  - **fun**  , is the node function module, called when the time of arrival\r\n  - **switch**, switch,told sdb-schedules on/off this job\r\n\r\nThe cron format consists of:\r\n```\r\n*    *    *    *    *    *\r\n┬    ┬    ┬    ┬    ┬    ┬\r\n│    │    │    │    │    |\r\n│    │    │    │    │    └ day of week (0 - 7) (0 or 7 is Sun)\r\n│    │    │    │    └───── month (1 - 12)\r\n│    │    │    └────────── day of month (1 - 31)\r\n│    │    └─────────────── hour (0 - 23)\r\n│    └──────────────────── minute (0 - 59)\r\n└───────────────────────── second (0 - 59, OPTIONAL)\r\n```\r\n#### Unsupported Cron Features\r\n\r\nCurrently, `W` (nearest weekday), `L` (last day of month/week), and `#` (nth weekday\r\nof the month) are not supported. Most other features supported by popular cron\r\nimplementations should work just fine.\r\n\r\n[cron-parser] is used to parse crontab instructions.\r\n\r\n### configure manager\r\nSince version 1.0.3, profile management as a separate module, the default now provides a kind of configuration file management module (FileDrv), you can extend the configuration file management module based on the requirements, such as using redis configuration management module.\r\nWe can create the sdb-schedule by the incoming parameters, using the configuration management module specified:\r\n\r\n```javascript\r\nvar app = sc({\r\n\t\t\t\t'cfg_drv':'filedrv.js',\r\n\t\t\t\t'cfg_opt':{\r\n\t\t\t\t\t'cfgFile':\"./config.json\"\r\n\t\t\t\t}\r\n\t\t\t});\r\n```\r\n - **cfg_drv**,Specify the use of configuration file management module;\r\n - **cfg_opt**,Specify the parameters of the configuration file management module, when  construct configuration file management module,passed it as parameter.\r\n\r\n#### FileDrv ( File Configuration Manager Module)\r\nUsing file manager the configuration. \r\n\r\ncfg_opt:\r\n - **cfgFile**,Config file path;\r\n\r\n\r\n\r\n#### RedisDrv ( Redis Configuration Manager Module)\r\nUsing Redis manager the configuration. [node-redis]\r\n\r\ncfg_opt:\r\n - **host**, redis server's host;\r\n - **port**, redis server's port;\r\n - **keyPre**, redis key's pre;\r\n - **checkInterval**, check config interval, mill sec;\r\n\r\n\r\n## API\r\nI am schedule framework, have two part:Frame and JobPlugin.\r\n\r\n - **[Frame](#frame)**, admin the Job Plugin.\r\n - **[Job Plugin](#jobplugin)**, Implement the schedule Job work.\r\n\r\n Work flow like this:\r\n\r\n 1. `var sc = require(\"sdb-schedule\"); `  Require module sdb-schedules.\r\n 1. `var app = sc( { 'cfg_drv':'filedrv.js','cfg_opt':{} });` Construct sc object and give her ths config file path.\r\n 1. `app.run();` Call run() start work.\r\n 1. `app.stop();`  Stop work.\r\n\r\n### Frame\r\n - [run()](#run), start schedules.\r\n - [stop()](#stop), stop schedules.\r\n - [updateJob(name,scCfg)](#updatejob), add/update schedule job.\r\n - [runJob(name)](#runjob), run job by name.\r\n - [stopJob(name)](#stopjob), stop job by name.\r\n - [getConfig(name)](#getConfig), 获取名称的工作任务的配置.\r\n\r\n#### run\r\nRun all job that *switch* is `true`.  \r\nNo parames.\r\n\r\n#### stop\r\nStop all job.\r\nNo parames.\r\n\r\n#### updateJob\r\n`updateJob(name,scCfg )`\r\n\r\n - **name**, Job's name, string.\r\n - **scCfg**, Job's cfg.\r\n```javascript\r\n    {\r\n    \t\"corn\":<* * * * * * *>,\r\n        \"fun\":\"\",\r\n        \"switch\":true|false\r\n    }\r\n```\r\n Update Job，\r\n\r\n - If cron or fun has change,and the job is running,then restart job.\r\n - If job not run,only change the config.\r\n - If job not exist, add new job,but can't run it ,you must manual run it( call runJob );\r\n\r\n\r\n#### runJob\r\n`runJob(name)`\r\n\r\n - **name**, Job's name, string.\r\n\r\n#### stopJob\r\n`stopJob(name)`\r\n\r\n - **name**, Job's name, string.\r\n\r\n#### getConfig\r\n`getConfig(name)`\r\n\r\n - **name**, Job's name, string.\r\n - **return**, json's format object.\r\n\r\n### JobPlugin\r\nJob Plugin,is node module, export as function has three parames.\r\n`module.exports = function(sc,job,isStop){}`\r\n\r\n - **sc**, {object},instance of sdb-schedule, you can call function\r\n - **job**, {object},this job info\r\n - **isStop**,{boolean} ,true means this is stop callback,you can clear resource and so on.\r\n - ***return 'msg string'***, {string},function can return string msg. If you using RedisDrv,msg will record to redis,you can look it.\r\n\r\nThe following is a complete example, example demonstrates the following features:\r\n\r\n - Dynamically change the task properties\r\n - Stop the task\r\n\r\n```javascript\r\nmodule.exports = function(sc,job,isStop){\r\n\tif( isStop === true ){\r\n\t\treturn stop( sc,job );\r\n\t}else{\r\n\t\treturn run( sc,job );\r\n\t}\r\n};\r\n\r\nvar g_cnt = 0;\r\nfunction run( sc,job)\r\n{\r\n    console.log( 'run ' + 20002222 );\r\n\tg_cnt++;\r\n\tconsole.log( job['name'] + \"  \" + g_cnt +\" : \" + job['cron'] );\r\n\tif( g_cnt > 10 ){\r\n\t\tsc.stopJob( job['name'] );  // example stop this job\r\n\t}\r\n\tif( g_cnt > 3 ){\r\n\t\tsc.updateJob( job['name'], {\r\n\t\t\t\"cron\":\"*/2 * * * * *\",\r\n\t\t\t\"fun\":\"./sc/enableRoom.js\",\r\n\t\t\t\"switch\":true\r\n\t\t});\r\n\t}\r\n    return 'Run OK';\r\n}\r\n\r\nfunction stop(sc,job)\r\n{\r\n\tconsole.log( 'stop ' + 20002222 );\r\n    return;\r\n}\r\n\r\n```\r\n\r\n## Copyright and license\r\n\r\nCopyright 2016+ shudingbo\r\n\r\nLicensed under the **[MIT License]**.\r\n\r\n[node-schedule]: https://github.com/node-schedule/node-schedule\r\n[cron-parser]: https://github.com/harrisiirak/cron-parser\r\n[node-redis]:https://github.com/NodeRedis/node_redis\r\n[scp-cleanRedis]: https://github.com/shudingbo/scp-cleanRedis\r\n[中文看这里]:https://github.com/shudingbo/sdb-schedule/blob/master/README-cn.md\r\n[sdb-schedule-ui]: https://github.com/shudingbo/sdb-schedule-ui\r\n[download]: https://github.com/shudingbo/sdb-public/blob/master/sdb-schedule-ui/sdb-schedule-ui.7z\r\n[idMain]: https://github.com/shudingbo/sdb-public/blob/master/sdb-schedule-ui/main.jpg  \"Main\"\r\n[idSet]: https://github.com/shudingbo/sdb-public/blob/master/sdb-schedule-ui/setting.jpg  \"Setting\"\r\n"
+}

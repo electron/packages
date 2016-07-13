@@ -10,8 +10,17 @@
     "open-test": "open spec/browser/jasmine.html"
   },
   "repository": {
-    "type": "git",
-    "url": "git+https://github.com/mixmaxhq/electron-accelerator-formatter.git"
+    "user": "mixmaxhq",
+    "repo": "electron-accelerator-formatter",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/mixmaxhq/electron-accelerator-formatter/tarball/master",
+    "clone_url": "https://github.com/mixmaxhq/electron-accelerator-formatter",
+    "https_url": "https://github.com/mixmaxhq/electron-accelerator-formatter",
+    "travis_url": "https://travis-ci.org/mixmaxhq/electron-accelerator-formatter",
+    "zip_url": "https://github.com/mixmaxhq/electron-accelerator-formatter/archive/master.zip",
+    "api_url": "https://api.github.com/repos/mixmaxhq/electron-accelerator-formatter"
   },
   "keywords": [
     "electron",
@@ -24,33 +33,47 @@
     "url": "https://mixmax.com"
   },
   "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/mixmaxhq/electron-accelerator-formatter/issues"
-  },
   "homepage": "https://github.com/mixmaxhq/electron-accelerator-formatter#readme",
   "devDependencies": {
     "jasmine": "^2.4.1",
     "webpack": "^1.12.9"
   },
   "gitHead": "6fafb1f929a2b16902f6efca87bc51209dac6c68",
-  "_id": "electron-accelerator-formatter@1.1.1",
-  "_shasum": "8306879f22d368fc6e4c6aa63d3402ab3f218809",
-  "_from": ".",
   "_npmVersion": "2.14.7",
   "_nodeVersion": "4.2.1",
-  "_npmUser": {
+  "dist": {
+    "shasum": "8306879f22d368fc6e4c6aa63d3402ab3f218809",
+    "tarball": "http://registry.npmjs.org/electron-accelerator-formatter/-/electron-accelerator-formatter-1.1.1.tgz"
+  },
+  "versions": [
+    {
+      "number": "1.0.0",
+      "date": "2015-12-15T02:34:49.792Z"
+    },
+    {
+      "number": "1.0.1",
+      "date": "2015-12-15T02:39:31.336Z"
+    },
+    {
+      "number": "1.1.0",
+      "date": "2015-12-15T05:57:32.709Z"
+    },
+    {
+      "number": "1.1.1",
+      "date": "2015-12-15T06:06:11.885Z"
+    }
+  ],
+  "created": "2015-12-15T02:34:49.792Z",
+  "modified": "2015-12-15T06:06:11.885Z",
+  "lastPublisher": {
     "name": "wearhere",
     "email": "jeffreywear@gmail.com"
   },
-  "maintainers": [
+  "owners": [
     {
       "name": "wearhere",
       "email": "jeffreywear@gmail.com"
     }
   ],
-  "dist": {
-    "shasum": "8306879f22d368fc6e4c6aa63d3402ab3f218809",
-    "tarball": "http://registry.npmjs.org/electron-accelerator-formatter/-/electron-accelerator-formatter-1.1.1.tgz"
-  },
-  "directories": {}
+  "readme": "# electron-accelerator-formatter\n\nFormats an [accelerator](https://github.com/atom/electron/blob/master/docs/api/accelerator.md)\nas a string of Unicode characters.\n\nHandles Windows and Mac, not yet Linux.\n\nWorks in both Electron (i.e. Node) and the browser!\n\n## Installation\n\nFor Electron:\n\n```js\nnpm install electron-accelerator-formatter --save\n```\n\nFor the browser:\n\n```js\nbower install electron-accelerator-formatter --save\n```\n\n## Usage\n\nIn Electron:\n\n```js\nvar acceleratorFormatter = require('electron-accelerator-formatter');\n\nvar accelerator = 'CmdOrCtrl+Shift+M';\n\n// Prints '⌘⇧M' on Mac, '^⇧M' on Windows\nconsole.log(acceleratorFormatter(accelerator));\n```\n\nIn the browser:\n\n```html\n<!-- Loads `electronAcceleratorFormatter` into `window`. -->\n<script src=\"bower_components/electron-accelerator-formatter/dist/bundle.min.js\"></script>\n\n<script type=\"text/javascript\">\n  var accelerator = 'CmdOrCtrl+Shift+M';\n\n  // Prints '⌘⇧M' on Mac, '^⇧M' on Windows\n  console.log(electronAcceleratorFormatter(accelerator));\n</script>\n```\n\n## Contributing\n\nWe welcome pull requests! Please lint your code.\n\n### Running tests\n\nTo run the Node tests: `npm test`.\n\nTo run the browser tests: `npm run-script build-test && npm run-script open-test`.\n\n### Building for release\n\n`npm run-script build`\n\n## Release History\n\n* 1.1.1 Add bower.json file\n* 1.1.0 Works in the browser!\n* 1.0.1 Documentation fix\n* 1.0.0 Initial release.\n"
 }

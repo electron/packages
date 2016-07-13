@@ -1,8 +1,17 @@
 {
   "name": "electron-oauth-twitter",
   "repository": {
-    "type": "git",
-    "url": "git+https://github.com/uraway/electron-oauth-twitter.git"
+    "user": "uraway",
+    "repo": "electron-oauth-twitter",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/uraway/electron-oauth-twitter/tarball/master",
+    "clone_url": "https://github.com/uraway/electron-oauth-twitter",
+    "https_url": "https://github.com/uraway/electron-oauth-twitter",
+    "travis_url": "https://travis-ci.org/uraway/electron-oauth-twitter",
+    "zip_url": "https://github.com/uraway/electron-oauth-twitter/archive/master.zip",
+    "api_url": "https://api.github.com/repos/uraway/electron-oauth-twitter"
   },
   "author": {
     "name": "Masato Urai @uraway_"
@@ -10,9 +19,6 @@
   "email": "masato.u0107@gmail.com",
   "homepage": "https://github.com/uraway/electron-oauth-twitter",
   "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/uraway/electron-oauth-twitter/issues"
-  },
   "version": "1.0.0",
   "description": "Twitter OAuth Window library.",
   "main": "lib/OauthTwitter.js",
@@ -20,9 +26,6 @@
     "lib",
     "src"
   ],
-  "directories": {
-    "test": "test"
-  },
   "scripts": {
     "build": "babel src --out-dir lib --source-maps",
     "watch": "babel src --out-dir lib --watch --source-maps",
@@ -57,27 +60,53 @@
     "sourceType": "module"
   },
   "gitHead": "55c5ff893d63cbf5dcfa154786eab9fdb844dc7e",
-  "_id": "electron-oauth-twitter@1.0.0",
-  "_shasum": "faf0c188ea6f9cba0d7a8f172211a29877d02281",
-  "_from": ".",
   "_npmVersion": "3.3.6",
   "_nodeVersion": "5.0.0",
-  "_npmUser": {
-    "name": "uraway",
-    "email": "masato.u0107@gmail.com"
-  },
   "dist": {
     "shasum": "faf0c188ea6f9cba0d7a8f172211a29877d02281",
     "tarball": "http://registry.npmjs.org/electron-oauth-twitter/-/electron-oauth-twitter-1.0.0.tgz"
   },
-  "maintainers": [
+  "versions": [
+    {
+      "number": "0.0.1",
+      "date": "2016-02-16T04:17:12.306Z"
+    },
+    {
+      "number": "0.0.2",
+      "date": "2016-02-16T04:22:32.358Z"
+    },
+    {
+      "number": "0.0.3",
+      "date": "2016-02-16T07:21:33.654Z"
+    },
+    {
+      "number": "0.0.4",
+      "date": "2016-02-16T07:28:16.746Z"
+    },
+    {
+      "number": "0.0.5",
+      "date": "2016-02-17T02:40:49.119Z"
+    },
+    {
+      "number": "0.0.6",
+      "date": "2016-02-19T00:49:45.567Z"
+    },
+    {
+      "number": "1.0.0",
+      "date": "2016-05-22T09:17:18.084Z"
+    }
+  ],
+  "created": "2016-02-16T04:17:12.306Z",
+  "modified": "2016-05-22T09:17:18.084Z",
+  "lastPublisher": {
+    "name": "uraway",
+    "email": "masato.u0107@gmail.com"
+  },
+  "owners": [
     {
       "name": "uraway",
       "email": "masato.u0107@gmail.com"
     }
   ],
-  "_npmOperationalInternal": {
-    "host": "packages-16-east.internal.npmjs.com",
-    "tmp": "tmp/electron-oauth-twitter-1.0.0.tgz_1463908636075_0.5830902687739581"
-  }
+  "readme": "# electron-oauth-twitter\nThis is [Electron](http://electron.atom.io/) module that easily OAuth authenticates your Electron app with twitter.\n\n### Install\n```\nnpm install electron-oauth-twitter\n```\n\n### Diving into OAuth\n1. [Register your app](https://apps.twitter.com/).\n\n2. You need **Consumer Key (API Key)** and **Consumer Secret (API Secret)**.\n\n3. Set **Callback URL** at settings of you app. If you do not set Callback URL, it will evoke [PIN Based OAuth](https://dev.twitter.com/oauth/pin-based).\n\n  ![](http://i.imgur.com/MKLABt3.png)\n\n4. Edit your Electron main file. See [example](https://github.com/uraway/electron-oauth-twitter/tree/master/example). Dive into OAuth!\n\n\n```javascript\nvar dialog = require('electron').dialog;\n\nvar OauthTwitter = require('electron-oauth-twitter');\n\nvar twitter = new OauthTwitter({\n  key: '****',\n  secret: '****',\n});\n\ntwitter.startRequest().then(function(result) {\n  var accessToken = result.oauth_access_token;\n  var accessTokenSecret = result.oauth_access_token_secret;\n  dialog.showErrorBox('Status', 'Token: ' + accessToken + '\\nSecret: ' + accessTokenSecret);\n}).catch(function(error) {\n  console.error(error, error.stack);\n});\n```\n\n---\nMIT licensed\n"
 }

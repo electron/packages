@@ -3,15 +3,21 @@
   "version": "1.1.1",
   "description": "Enable the native right-click menu in Electron.",
   "main": "src/index.js",
-  "directories": {
-    "doc": "docs"
-  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
-    "type": "git",
-    "url": "git+https://github.com/mixmaxhq/electron-editor-context-menu.git"
+    "user": "mixmaxhq",
+    "repo": "electron-editor-context-menu",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/mixmaxhq/electron-editor-context-menu/tarball/master",
+    "clone_url": "https://github.com/mixmaxhq/electron-editor-context-menu",
+    "https_url": "https://github.com/mixmaxhq/electron-editor-context-menu",
+    "travis_url": "https://travis-ci.org/mixmaxhq/electron-editor-context-menu",
+    "zip_url": "https://github.com/mixmaxhq/electron-editor-context-menu/archive/master.zip",
+    "api_url": "https://api.github.com/repos/mixmaxhq/electron-editor-context-menu"
   },
   "keywords": [
     "electron",
@@ -29,9 +35,6 @@
     "url": "https://mixmax.com"
   },
   "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/mixmaxhq/electron-editor-context-menu/issues"
-  },
   "homepage": "https://github.com/mixmaxhq/electron-editor-context-menu#readme",
   "dependencies": {
     "lodash.clonedeep": "^4.3.0",
@@ -41,27 +44,38 @@
     "lodash.isfunction": "^3.0.8"
   },
   "gitHead": "d1703f7b7e4523af8c9c088d4a1efc06e2dc3b12",
-  "_id": "electron-editor-context-menu@1.1.1",
-  "_shasum": "dc30098e0dfb37f62628e43303124c7f3379572d",
-  "_from": ".",
   "_npmVersion": "2.14.7",
   "_nodeVersion": "4.2.1",
-  "_npmUser": {
+  "dist": {
+    "shasum": "dc30098e0dfb37f62628e43303124c7f3379572d",
+    "tarball": "http://registry.npmjs.org/electron-editor-context-menu/-/electron-editor-context-menu-1.1.1.tgz"
+  },
+  "stars": 2,
+  "versions": [
+    {
+      "number": "1.0.0",
+      "date": "2016-02-06T01:24:37.825Z"
+    },
+    {
+      "number": "1.1.0",
+      "date": "2016-02-26T04:13:38.238Z"
+    },
+    {
+      "number": "1.1.1",
+      "date": "2016-03-09T19:47:49.046Z"
+    }
+  ],
+  "created": "2016-02-06T01:24:37.825Z",
+  "modified": "2016-03-09T19:47:49.046Z",
+  "lastPublisher": {
     "name": "wearhere",
     "email": "jeffreywear@gmail.com"
   },
-  "maintainers": [
+  "owners": [
     {
       "name": "wearhere",
       "email": "jeffreywear@gmail.com"
     }
   ],
-  "dist": {
-    "shasum": "dc30098e0dfb37f62628e43303124c7f3379572d",
-    "tarball": "http://registry.npmjs.org/electron-editor-context-menu/-/electron-editor-context-menu-1.1.1.tgz"
-  },
-  "_npmOperationalInternal": {
-    "host": "packages-12-west.internal.npmjs.com",
-    "tmp": "tmp/electron-editor-context-menu-1.1.1.tgz_1457552868261_0.027367881732061505"
-  }
+  "readme": "# electron-editor-context-menu\n\nIn Electron, right-clicking in text editors does… nothing.\n\nThis module enables the menu you'd expect, with optional\n[spell-checker integration][spell-checker integration].\n\n<img src=\"docs/menu.png\" height=\"300\" alt=\"menu\">\n\n## Installation\n\n```js\nnpm install electron-editor-context-menu --save\n```\n\n## Usage\n\n```js\n// In the renderer process:\nvar remote = require('electron').remote;\n// `remote.require` since `Menu` is a main-process module.\nvar buildEditorContextMenu = remote.require('electron-editor-context-menu');\n\nwindow.addEventListener('contextmenu', function(e) {\n  // Only show the context menu in text editors.\n  if (!e.target.closest('textarea, input, [contenteditable=\"true\"]')) return;\n\n  var menu = buildEditorContextMenu();\n\n  // The 'contextmenu' event is emitted after 'selectionchange' has fired but possibly before the\n  // visible selection has changed. Try to wait to show the menu until after that, otherwise the\n  // visible selection will update after the menu dismisses and look weird.\n  setTimeout(function() {\n    menu.popup(remote.getCurrentWindow());\n  }, 30);\n});\n```\n\n### Spell-checker integration\n\nShow spelling suggestions by passing a _selection_ object when building the menu:\n\n```js\nvar selection = {\n  isMisspelled: true,\n  spellingSuggestions: [\n    'men',\n    'mean',\n    'menu'\n  ]\n};\n\nvar menu = buildEditorContextMenu(selection);\n```\n\nGet these suggestions when your [spell-check provider][setSpellCheckProvider] runs\n&mdash;Electron will poll it immediately before the `'contextmenu'` event fires.\n\nFor a complete example using `electron-spell-check-provider`, see\n[here][spell-checker integration example].\n\n## Credits\n\nCreated by [Jeff Wear][Jeff Wear].\n\nThanks to https://github.com/atom/electron/pull/942#issuecomment-171445954 for\nthe initial sketch of this.\n\n## Copyright and License\n\nCopyright 2016 Mixmax, Inc., licensed under the MIT License.\n\n[spell-checker integration]: #spell-checker-integration\n[setSpellCheckProvider]: https://github.com/atom/electron/blob/master/docs/api/web-frame.md#webframesetspellcheckproviderlanguage-autocorrectword-provider\n[spell-checker integration example]: https://github.com/mixmaxhq/electron-spell-check-provider#but-how-do-i-show-spelling-suggestions-in-the-context-menu\n[Jeff Wear]: https://github.com/wearhere\n\n## Release History\n\n* 1.1.1 Fix compatibility with electron-builder\n* 1.1.0 Add the ability to customize the main template and the suggestions template.\n* 1.0.0 Initial release.\n\n"
 }

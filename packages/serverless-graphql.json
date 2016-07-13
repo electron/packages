@@ -1,0 +1,61 @@
+{
+  "name": "serverless-graphql",
+  "version": "0.0.4",
+  "description": "The Serverless GraphQL Application Boilerplate",
+  "author": {
+    "name": "me"
+  },
+  "license": "MIT",
+  "private": false,
+  "repository": {
+    "user": "serverless",
+    "repo": "serverless-graphql",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/serverless/serverless-graphql/tarball/master",
+    "clone_url": "https://github.com/serverless/serverless-graphql",
+    "https_url": "https://github.com/serverless/serverless-graphql",
+    "travis_url": "https://travis-ci.org/serverless/serverless-graphql",
+    "zip_url": "https://github.com/serverless/serverless-graphql/archive/master.zip",
+    "api_url": "https://api.github.com/repos/serverless/serverless-graphql"
+  },
+  "dependencies": {
+    "aws-sdk": "^2.3.0",
+    "jsonwebtoken": "^5.7.0",
+    "lodash": "^4.6.1",
+    "bluebird": "^3.3.4",
+    "serverless-client-s3": "^2.0.0",
+    "serverless-cors-plugin": "^0.4.1",
+    "serverless-meta-sync": "^0.1.0",
+    "serverless-offline": "^2.2.4"
+  },
+  "gitHead": "b9f33cf6201c959416a830cb0145a15f7c3d21aa",
+  "homepage": "https://github.com/serverless/serverless-graphql#readme",
+  "scripts": {},
+  "_npmVersion": "3.7.3",
+  "_nodeVersion": "4.2.6",
+  "dist": {
+    "shasum": "3da4be6380d065a1befa3dd9ffd41c6da6dde0c8",
+    "tarball": "http://registry.npmjs.org/serverless-graphql/-/serverless-graphql-0.0.4.tgz"
+  },
+  "versions": [
+    {
+      "number": "0.0.4",
+      "date": "2016-04-16T01:07:13.088Z"
+    }
+  ],
+  "created": "2016-04-16T01:07:13.088Z",
+  "modified": "2016-04-16T01:07:13.088Z",
+  "lastPublisher": {
+    "name": "ac360",
+    "email": "austen@servant.co"
+  },
+  "owners": [
+    {
+      "name": "ac360",
+      "email": "austen@servant.co"
+    }
+  ],
+  "readme": "![Serverless GraphQL Architecture Application Boilerplate](/readme_boilerplate_graphql.gif)\n\n# Serverless GraphQL Boilerplate\n[![serverless](http://public.serverless.com/badges/v3.svg)](http://www.serverless.com)\n\nThis is a web application boilerplate for a remarkably efficent Graph API.  This Graph API is powered by a single AWS Lambda function containing GraphQL, accessible via one HTTP endpoint.  Through this endpoint, you can request any custom shape of data, across records stored in multiple DynamoDB tables, and GraphQL will return it.  The result is a very low *total cost of ownership* (i.e., least amount of code, administration, cost).  \n\nUsers CRUD has been implemented, as well as authentication and authorization via JSON webtokens.  Also provided is an entire front-end built in React.  You can deploy everything easily via the [**Serverless Framework**](http://www.serverless.com).  A plugin for the Framework allowing you to easily deploy your front-end assets to S3 is also included.   \n\nFor more information, please read the [**FAQ**](#faq) at the bottom, and be sure to enjoy! - serverless.com\n\n## Setup\n\nIf you haven't yet installed `serverless` on your machine, run:\n\n```\nnpm install -g serverless\n```\nthen install the GraphQL Boilerplate in the CWD by running:\n\n```\nsls project install serverless-boilerplate-graphql\ncd serverless-boilerplate-graphql\n```\n\n### Back\nAdd the `authTokenSecret` variable to `_meta/variables/s-variables-STAGE-REGION.json` and give it a strong value. This is the secret used to generate JSON web tokens. Then:\n\n```\ncd back/api\nnpm install\nsls function deploy --all\nsls endpoint deploy --all\n```\n\n### Client\nSet `API_URL` in `client/src/app/js/actions/index.js`. Then:\n\n```\ncd ../../client/src\nnpm install\nnpm start\n```\n\nThis will run the client locally. You can then deploy the client to an S3 bucket with:\n\n```\nnpm run build\nsls client deploy\n```\n\n### Deploying to S3 bucket\nMake sure you're still in the `client/src` folder mentioned above, then run:\n\n```\nnpm run build\nsls client deploy\n```\n\n### Testing With GraphiQL\nIf you're running OSX, you can use the [GraphiQL Electron App](https://github.com/skevy/graphiql-app) to test the GraphQL backend without a client:\n\n- Install [brew cask](https://caskroom.github.io) for easy installation: `brew tap caskroom/cask`\n- Install GraphiQL App: `brew cask install graphiql`\n- Open GraphiQL application. Just search for `GraphiQL` using OSX Spotlight Search!\n- Add your `data` endpoint to the \"GraphQL Endpoint\" text field, and make sure the \"Method\" is set to `POST`.\n- Try this mutation to create the first user:\n\n\n```\nmutation createUserTest {\n  createUser (username: \"serverless\", name: \"Serverless Inc.\", email: \"hello@serverless.com\", password: \"secret\") {\n    id \n    username \n    name \n    email  \n  }\n}\n```\n\n- Now list all users using the following query:\n\n\n```\nquery getUsersTest { \n  users {\n    id\n    username\n    name\n    email\n  } \n}\n```\n\n- You should get the user you just created:\n\n\n```\n{\n  \"data\": {\n    \"users\": [\n      {\n        \"id\": \"aca42ee0-f509-11e5-bc11-0d8b1f79b4b9\",\n        \"username\": \"serverless\",\n        \"name\": \"Serverless Inc.\",\n        \"email\": \"hello@serverless.com\"\n      }\n    ]\n  }\n}\n```\n\n### Team Workflow with Meta Sync Plugin\nThis boilerplate includes the [Meta Sync Plugin](https://github.com/serverless/serverless-meta-sync). To start using it you need to add the following serverless variables to `_meta/variables/s-variables-common.json`:\n\n```js\n\"meta_bucket\" : \"SOME_BUCKET_NAME\",\n\"meta_bucket_region\" : \"us-east-1\" // or any other region\n```\n\n### Testing With A Local DynamoDB Instance\n- Install [Docker](https://www.docker.com/)\n- Run `docker-compose up` to install and run DynamoDB.\n- Add the `localDynamoDbEndpoint` variable with the value `http://<DOCKER-MACHINE-IP>:8000` to `_meta/variables/s-variables-common.json`. Example value:  `http://192.168.99.100:8000`.\n- Run `sls setup db -s <stage> -r <region>` to create tables in the local DynamoDB instance.\n- Run `sls offline start` to start [the offline server](https://github.com/dherault/serverless-offline).\n\n## <a name=\"faq\"></a>FAQ\n\n### Why use GraphQL + Lambda?\nLambda is a revolutionary compute service that makes it really easy to build and maintain microservices at a fraction of the cost. GraphQL is equally revolutionary in its ability to receive and return requests for custom data shapes from records across different data sources.  We thought these two technologies would work well together.\n\nGraphQL reduces the amount of endpoints required in a traditional REST API back-end, to 1-2 graph API endpoints, significantly reducing development and maintenance time, as well as network overhead.  Further, multiple client applications (and their many versions) can request any data they need to populate their views via these same API endpoints.  It's incredible efficiency.\n\nPutting GraphQL in AWS Lambda means simple Graph APIs, requiring zero administration, and you only get charged when that API is used.\n\n### How to add more data records?\nIn this boilerplate, we're managing all data records using GraphQL. Currently the boilerplate only has a Users record/collection. But you can easily add any other data collection (i.e.. `Posts`) in the `back/api/lib/graphql/collections` directory. Just follow the same pattern in the `Users` collection.\n\n### How does validation work with GraphQL?\nEach data collection has a `validate.js` file. This is where you should keep your validation logic, and call the validation functions on the data received from GraphQL before you resolve them. GraphQL has its own validation implementation, but it's at a very early stage at this point.\n\n### How does authentication work with GraphQL?\nIn this boilerplate, we're using JSON Web Token for authentication. You can find this logic in the `back/api/lib/auth.js` file. You can simply switch to another authentication mechanism by editing this file.\n\n### Where to add more business logic?\nThis is a new architecture and there are still some questions left unanswered.  The biggest question is where should further business logic go (e.g., sending transactional email after a user is created)?  We have two answers for that:\n\n* **Monolithic** - Add business logic into the single AWS Lambda function and build out a monolithic Lambda.\n* **Microservices** - Add business logic in separate Lambda functions which you can invoke asynchronously.  In the GraphQL `resolve` functions is where you should make these calls.  And you can store these extra Lambda functions in `api/events`.  Doing synchronous calls to other Lambda functions will likely result in too much latency.  But logic that can be done in the background can easily be isolated in separate Lambda functions.  We've included some code to help you invoke separate Lambda functions and we've even added it already to the `users create` resolve function.\n\nThere are some challenges here.  However, building and maintaining another large REST API requires a lot of time and effort.  This requires significantly less.\n\n### What plugins are included with this boilerplate?\n- [serverless-client-s3](https://github.com/serverless/serverless-client-s3): To deploy front end assets to S3\n- [serverless-cors-plugin](https://github.com/joostfarla/serverless-cors-plugin): To enable CORS for your data endpoint and give the client access to your backend.\n- [serverless-meta-sync](https://github.com/serverless/serverless-meta-sync): To collaborate with your teammates and sync your `_meta` folder with them securely using an S3 bucket.\n- [serverless-offline](https://github.com/dherault/serverless-offline): To test your project locally during development. That also includes a local dynamoDB instance.\n\n### What's the difference between installing vs cloning & initing the boilerplate?\nThey both achieve the same goal. However, Installing the boilerplate with `sls project install` is simpler because it also handles installing the project dependencies. We recommend using `sls project init` only if you clone the project to contribute/make a PR.\n\n### Why do we have to `npm install` 2-3 times?\nBecause we're dealing with isolated micro services architecture, we have some separation of concerns around different areas of the project. So dependencies are managed at three levels:\n- Project Dependencies: by running `npm install` in the root of the project. This is done for your automatically when you run `sls project install`. This mostly handles installing the plugins.\n- Backend Dependencies: by running `npm install` in the root of the `data/api` directory. This makes all the `node_modules` required by the boilerplate available for deployment with your functions.\n- Frontend Dependencies: by running `npm install` in the root of the `client/src` directory. This installs all the client side dependencies to make your React application work.\n\n### Why can't we deploy with `sls dash deploy`?\nYou can deploy with `sls dash deploy`, however the Serverless CORS Plugin requires that you deploy your endpoints with `sls endpoint deploy` so that it can fire the necessary pre hooks that will enable CORS.\n\n### How to connect the client to the Serverless backend?\nBy setting the `API_URL` variable in `client/src/app/js/actions/index.js` Please keep in mind that this is the **root of your API** not the endpoint url you get from `sls endpoint deploy`\n\n---\n\n## Team\n* [@kevinold](https://github.com/kevinold)\n* [@pmuens](https://github.com/pmuens)\n* [@breandr](https://github.com/breandr)\n* [@erikerikson](https://github.com/erikerikson)\n* [@ryansb](https://github.com/ryansb)\n* [@eahefnawy](https://github.com/eahefnawy)\n* [@minibikini](https://github.com/minibikini)\n* [@ac360](https://github.com/ac360)\n"
+}

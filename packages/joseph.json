@@ -3,9 +3,6 @@
   "version": "0.2.9",
   "description": "Better dream interpretation support for Nightmare.",
   "main": "lib/",
-  "directories": {
-    "test": "test"
-  },
   "dependencies": {
     "debug": "^2.2.0"
   },
@@ -24,8 +21,17 @@
     "prepublish": "cake build"
   },
   "repository": {
-    "type": "git",
-    "url": "git+https://github.com/zeekay/joseph.git"
+    "user": "zeekay",
+    "repo": "joseph",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/zeekay/joseph/tarball/master",
+    "clone_url": "https://github.com/zeekay/joseph",
+    "https_url": "https://github.com/zeekay/joseph",
+    "travis_url": "https://travis-ci.org/zeekay/joseph",
+    "zip_url": "https://github.com/zeekay/joseph/archive/master.zip",
+    "api_url": "https://api.github.com/repos/zeekay/joseph"
   },
   "keywords": [
     "async",
@@ -40,28 +46,67 @@
     "url": "http://zeekay.io"
   },
   "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/zeekay/joseph/issues"
-  },
   "homepage": "https://github.com/zeekay/joseph#readme",
   "gitHead": "24d50b2ec3518686036f4707640b19f5e400c6a4",
-  "_id": "joseph@0.2.9",
-  "_shasum": "04dc6ade3aa83fb836060898f6798d69285bb429",
-  "_from": ".",
   "_npmVersion": "3.4.0",
   "_nodeVersion": "5.1.0",
-  "_npmUser": {
+  "dist": {
+    "shasum": "04dc6ade3aa83fb836060898f6798d69285bb429",
+    "tarball": "http://registry.npmjs.org/joseph/-/joseph-0.2.9.tgz"
+  },
+  "versions": [
+    {
+      "number": "0.2.0",
+      "date": "2015-11-26T22:47:28.577Z"
+    },
+    {
+      "number": "0.2.1",
+      "date": "2015-11-26T22:53:31.346Z"
+    },
+    {
+      "number": "0.2.2",
+      "date": "2015-11-26T22:59:29.394Z"
+    },
+    {
+      "number": "0.2.3",
+      "date": "2015-11-26T23:02:13.355Z"
+    },
+    {
+      "number": "0.2.4",
+      "date": "2015-11-26T23:35:42.245Z"
+    },
+    {
+      "number": "0.2.5",
+      "date": "2015-11-26T23:38:03.021Z"
+    },
+    {
+      "number": "0.2.6",
+      "date": "2015-11-26T23:39:08.848Z"
+    },
+    {
+      "number": "0.2.7",
+      "date": "2015-12-02T01:11:43.156Z"
+    },
+    {
+      "number": "0.2.8",
+      "date": "2015-12-02T01:31:47.569Z"
+    },
+    {
+      "number": "0.2.9",
+      "date": "2015-12-02T02:41:40.503Z"
+    }
+  ],
+  "created": "2015-11-26T22:47:28.577Z",
+  "modified": "2015-12-02T02:41:40.503Z",
+  "lastPublisher": {
     "name": "zeekay",
     "email": "zk@monoid.io"
   },
-  "maintainers": [
+  "owners": [
     {
       "name": "zeekay",
       "email": "zk@monoid.io"
     }
   ],
-  "dist": {
-    "shasum": "04dc6ade3aa83fb836060898f6798d69285bb429",
-    "tarball": "http://registry.npmjs.org/joseph/-/joseph-0.2.9.tgz"
-  }
+  "readme": "# joseph [![Build Status](https://travis-ci.org/zeekay/joseph.svg?branch=master)](https://travis-ci.org/zeekay/joseph) [![npm version](https://badge.fury.io/js/joseph.svg)](https://badge.fury.io/js/joseph)\n##### Do promises and asynchronous code give you nightmares? We're here to help!\n\nUpdates Nightmare's `evaluate` with support for promises, Node.js style\ncallbacks, generators and more.\n\n## Install\n```bash\n$ npm install joseph\n```\n\n## Usage\n```javascript\n\n// Patch Nightmare\nvar Nightmare = require('joseph')(require('nightmare'))\n// ...or\nvar Nightmare = require('joseph/nightmare');\n\nfunction *run() {\n  var nightmare = Nightmare();\n\n  // Go somewhere\n  nightmare.goto('about:config')\n\n  // Return promises\n  var res = yield nightmare.evaluate(function() {\n    return Promise.resolve('promise all the things')\n  });\n  console.log(res);\n\n  // Generators for control-flow\n  var res = yield nightmare.evaluate(function *() {\n    var msg = '';\n    msg += yield Promise.resolve('generators');\n    msg += yield Promise.resolve(' + ');\n    msg += yield Promise.resolve('promises');\n    msg += yield Promise.resolve(' = <3 ');\n    yield msg;\n  });\n  console.log(res);\n\n  // Callbacks are okay too!\n  var res = yield nightmare.evaluate(function (cb) {\n    cb(null, 'callbacks are still hip')\n  });\n  console.log(res);\n\n  yield nightmare.end();\n}\n\n// Run with vo\nrequire('vo')(run)(function (err) {\n  if (err) console.error(err.stack);\n});\n```\n"
 }

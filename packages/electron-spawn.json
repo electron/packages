@@ -20,8 +20,17 @@
   },
   "license": "BSD-2-Clause",
   "repository": {
-    "type": "git",
-    "url": "http://github.com/maxogden/electron-spawn.git"
+    "user": "maxogden",
+    "repo": "electron-spawn",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/maxogden/electron-spawn/tarball/master",
+    "clone_url": "https://github.com/maxogden/electron-spawn",
+    "https_url": "https://github.com/maxogden/electron-spawn",
+    "travis_url": "https://travis-ci.org/maxogden/electron-spawn",
+    "zip_url": "https://github.com/maxogden/electron-spawn/archive/master.zip",
+    "api_url": "https://api.github.com/repos/maxogden/electron-spawn"
   },
   "standard": {
     "ignore": [
@@ -37,24 +46,83 @@
     "tape": "^4.0.1"
   },
   "gitHead": "842e498ebcdf40bfcdd67cc68f954454890af08a",
-  "bugs": {
-    "url": "https://github.com/maxogden/electron-spawn/issues"
-  },
   "homepage": "https://github.com/maxogden/electron-spawn",
-  "_id": "electron-spawn@5.0.0",
-  "_shasum": "59dcfbe31be3d1c70119764f0fcdd9c941812f58",
-  "_from": ".",
   "_npmVersion": "2.15.1",
   "_nodeVersion": "4.4.3",
-  "_npmUser": {
-    "name": "mafintosh",
-    "email": "mathiasbuus@gmail.com"
-  },
   "dist": {
     "shasum": "59dcfbe31be3d1c70119764f0fcdd9c941812f58",
     "tarball": "http://registry.npmjs.org/electron-spawn/-/electron-spawn-5.0.0.tgz"
   },
-  "maintainers": [
+  "stars": 1,
+  "versions": [
+    {
+      "number": "1.0.0",
+      "date": "2015-04-28T19:59:17.211Z"
+    },
+    {
+      "number": "1.0.1",
+      "date": "2015-04-28T20:16:05.409Z"
+    },
+    {
+      "number": "2.0.0",
+      "date": "2015-04-28T20:55:26.098Z"
+    },
+    {
+      "number": "2.0.1",
+      "date": "2015-04-28T22:06:46.757Z"
+    },
+    {
+      "number": "2.0.2",
+      "date": "2015-07-20T19:28:48.418Z"
+    },
+    {
+      "number": "3.0.0",
+      "date": "2015-07-23T22:05:45.606Z"
+    },
+    {
+      "number": "3.1.0",
+      "date": "2015-08-11T11:15:40.970Z"
+    },
+    {
+      "number": "3.1.1",
+      "date": "2015-12-11T23:05:15.765Z"
+    },
+    {
+      "number": "3.2.0",
+      "date": "2016-02-07T20:59:41.851Z"
+    },
+    {
+      "number": "3.2.1",
+      "date": "2016-02-07T22:13:10.411Z"
+    },
+    {
+      "number": "3.3.0",
+      "date": "2016-02-07T22:45:04.955Z"
+    },
+    {
+      "number": "4.0.0",
+      "date": "2016-02-16T03:29:24.855Z"
+    },
+    {
+      "number": "4.1.0",
+      "date": "2016-02-16T06:31:30.591Z"
+    },
+    {
+      "number": "4.1.1",
+      "date": "2016-02-27T00:47:52.668Z"
+    },
+    {
+      "number": "5.0.0",
+      "date": "2016-06-06T19:45:28.043Z"
+    }
+  ],
+  "created": "2015-04-28T19:59:17.211Z",
+  "modified": "2016-06-06T19:45:28.043Z",
+  "lastPublisher": {
+    "name": "mafintosh",
+    "email": "mathiasbuus@gmail.com"
+  },
+  "owners": [
     {
       "name": "mafintosh",
       "email": "mathiasbuus@gmail.com"
@@ -72,9 +140,5 @@
       "email": "substack@gmail.com"
     }
   ],
-  "_npmOperationalInternal": {
-    "host": "packages-16-east.internal.npmjs.com",
-    "tmp": "tmp/electron-spawn-5.0.0.tgz_1465242326274_0.8490272702183574"
-  },
-  "directories": {}
+  "readme": "# electron-spawn\n\nrun code easily inside of headless electron (chromium) windows from the command line\n\n## usage\n\n```\n$ npm i electron-prebuilt -g\n$ npm i electron-spawn -g\n$ echo \"console.log('hello')\" > foo.js\n$ electron-spawn foo.js\n```\n\nyou can also export a function that takes arguments to get all the arguments passed in to your program:\n\n```\n$ echo \"module.exports = function (args) { console.log(args) }\" > foo.js\n$ electron-spawn foo.js bar baz\n# outputs ['bar', 'baz']\n```\n\nor you can use `process.argv` like an ordinary node program:\n\n```\n$ echo 'console.log(process.argv.slice(2))' > hello.js\n$ electron-spawn hello.js beep boop\n# outputs: ['beep', 'boop']\n```\n\n`process.stdin` works too:\n\n``` js\nprocess.stdin.on('data', function (buf) {\n  console.log('buf=', buf)\n})\n```\n\n```\n$ echo beep boop | electron-spawn stdin.js\nbuf= <Buffer 62 65 65 70 20 62 6f 6f 70 0a>\n```\n\n## api\n\n### `var spawn = require('electron-spawn')`\n\nreturn a function that spawn electron\n\n### `var electron = spawn(scriptname[, params..., execOptions])`\n\nreturns a child process running electron with the given `scriptname`\n\n`params` are a list of arguments passed to the process\n\n`execOptions` is an object literal to set options on how the process gets spawned\n\n```js\nvar spawn = require('electron-spawn')\nvar electron = spawn('foo.js', 'bar', 'baz', {\n  detached: true\n})\nelectron.stderr.on('data', function (data) {\n  console.error(data.toString())\n})\nelectron.stdout.on('data', function (data) {\n  console.log(data.toString())\n})\n```\n\nlimitations:\n\n- cannot automatically yet exit your program like how node does when you have no more activity on the event loop  \n  But in your script you can call `require('electron').remote.app.quit()` to quit when it's done:\n```js\nmodule.exports = function (args) {\n  var img = new Image()\n  img.onload = function () {\n    require('electron').remote.app.quit()\n  }\n  img.src = 'http://example.com/cat.gif'\n}\n```\n\nor you can call `process.exit()` like an ordinary node program.\n"
 }

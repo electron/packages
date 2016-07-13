@@ -1,0 +1,61 @@
+{
+  "name": "dom-copy-image",
+  "version": "1.0.0",
+  "description": "Copy an image file in a DOM environment",
+  "main": "copyimage.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "copy",
+    "image",
+    "canvas",
+    "dom"
+  ],
+  "author": {
+    "name": "Quentin Engles",
+    "email": "hollowdoor99@gmail.com"
+  },
+  "license": "MIT",
+  "dependencies": {},
+  "repository": {
+    "user": "hollowdoor",
+    "repo": "dom_copy_image",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/hollowdoor/dom_copy_image/tarball/master",
+    "clone_url": "https://github.com/hollowdoor/dom_copy_image",
+    "https_url": "https://github.com/hollowdoor/dom_copy_image",
+    "travis_url": "https://travis-ci.org/hollowdoor/dom_copy_image",
+    "zip_url": "https://github.com/hollowdoor/dom_copy_image/archive/master.zip",
+    "api_url": "https://api.github.com/repos/hollowdoor/dom_copy_image"
+  },
+  "gitHead": "51fa9dbb81a67455ff72ddd1e92889ff85569194",
+  "homepage": "https://github.com/hollowdoor/dom_copy_image#readme",
+  "_npmVersion": "2.9.0",
+  "_nodeVersion": "1.8.4",
+  "dist": {
+    "shasum": "b06727fc2aa6b60c255ce1996759c3712e800780",
+    "tarball": "http://registry.npmjs.org/dom-copy-image/-/dom-copy-image-1.0.0.tgz"
+  },
+  "versions": [
+    {
+      "number": "1.0.0",
+      "date": "2015-09-27T17:49:18.027Z"
+    }
+  ],
+  "created": "2015-09-27T17:49:18.027Z",
+  "modified": "2015-09-27T17:49:18.027Z",
+  "lastPublisher": {
+    "name": "hollowdoor",
+    "email": "hollowdoor99@gmail.com"
+  },
+  "owners": [
+    {
+      "name": "hollowdoor",
+      "email": "hollowdoor99@gmail.com"
+    }
+  ],
+  "readme": "Install\n-------\n\n`npm install --save dom-copy-image`\n\nUsage\n-----\n\n```html\n<!DOCTYPE html>\n<html>\n    <head>\n    <title>dom copy!</title>\n    </head>\n<body>\n    <button>Copy Image</button>\n    <button id=\"make-thumb\">Make thumbnail</button>\n    <p></p>\n    <script>\n    var copyImage = require('dom-copy-image'),\n        path = require('path');\n\n    document.querySelector('button').addEventListener('click', function(e){\n        copyImage('original.jpg', 'new.png').then(function(data){\n            console.log(data.file+' was copied.');\n            document.querySelector('p').innerHTML = data.file+' was copied.';\n        });\n    });\n\n    document.querySelector('#make-thumb').addEventListener('click', function(e){\n        //Make a small image copy\n        copyImage('original.jpg', 'thumb.png', {width: 100}).then(function(data){\n            var img = document.createElement('img');\n            img.src = 'thumb.png';\n            document.querySelector('body').appendChild(img);\n        });\n    });\n\n    </script>\n  </body>\n</html>\n\n```\n\ncopyImage(source, destination, options) -> Promise\n--------------------------------------------------\n\nThe **destination**, and **options** arguments are optional.\n\nResolved value from the promise is an object\n--------------------------------------------\n\nvalue.file = String;\n\nvalue.dataURL = String;\n\nvalue.destination = String;\n\noptions\n-------\n\n### options.width / options.height = Integer\n\nSets the output dimensions. These should be integers in **pixels**. Only one needs to be set.\n\n### options.ratio = Boolean\n\nThe default is true. Should the output preserve it's dimension ratio?\n\n### options.type = String\n\nThe default is image/png. What image type should the output be?\n\n### options.quality = Integer\n\nAn integer between 0, and 1. What quality should the output image have?\n\nAbout\n-----\n\nThis module only works in a client DOM environment that can use node/iojs modules. For instance it will work well with [electron](http://electron.atom.io/).\n\nIt can copy images, but if you don't specify a destination you can just use it as a resize function getting back a dataURL from the resolved promise to use as a `img` tag `src`.\n"
+}

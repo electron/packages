@@ -10,9 +10,6 @@
   "bin": {
     "webtorrent-hybrid": "./bin/cmd.js"
   },
-  "bugs": {
-    "url": "https://github.com/feross/webtorrent-hybrid/issues"
-  },
   "dependencies": {
     "create-torrent": "^3.23.1",
     "electron-webrtc": "^0.2.1",
@@ -37,35 +34,102 @@
   "license": "MIT",
   "main": "index.js",
   "repository": {
-    "type": "git",
-    "url": "git://github.com/feross/webtorrent-hybrid.git"
+    "user": "feross",
+    "repo": "webtorrent-hybrid",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/feross/webtorrent-hybrid/tarball/master",
+    "clone_url": "https://github.com/feross/webtorrent-hybrid",
+    "https_url": "https://github.com/feross/webtorrent-hybrid",
+    "travis_url": "https://travis-ci.org/feross/webtorrent-hybrid",
+    "zip_url": "https://github.com/feross/webtorrent-hybrid/archive/master.zip",
+    "api_url": "https://api.github.com/repos/feross/webtorrent-hybrid"
   },
   "scripts": {
     "test": "standard"
   },
   "gitHead": "327082d2d658c6b2fb62fb8f70377cb6d47f2ff8",
-  "_id": "webtorrent-hybrid@1.0.3",
-  "_shasum": "36ce9be402b473a18cabc14632d36d665e431721",
-  "_from": ".",
   "_npmVersion": "3.8.9",
   "_nodeVersion": "6.2.0",
-  "_npmUser": {
-    "name": "feross",
-    "email": "feross@feross.org"
-  },
   "dist": {
     "shasum": "36ce9be402b473a18cabc14632d36d665e431721",
     "tarball": "http://registry.npmjs.org/webtorrent-hybrid/-/webtorrent-hybrid-1.0.3.tgz"
   },
-  "maintainers": [
+  "stars": 1,
+  "versions": [
+    {
+      "number": "0.35.0",
+      "date": "2015-05-04T02:00:28.512Z"
+    },
+    {
+      "number": "0.37.1",
+      "date": "2015-05-05T04:47:48.573Z"
+    },
+    {
+      "number": "0.38.0",
+      "date": "2015-05-05T21:20:57.816Z"
+    },
+    {
+      "number": "0.38.1",
+      "date": "2015-05-22T14:13:05.668Z"
+    },
+    {
+      "number": "0.38.2",
+      "date": "2015-05-22T14:19:59.194Z"
+    },
+    {
+      "number": "0.38.3",
+      "date": "2015-06-12T20:42:00.886Z"
+    },
+    {
+      "number": "0.38.4",
+      "date": "2015-06-16T07:22:51.280Z"
+    },
+    {
+      "number": "0.39.0",
+      "date": "2015-08-08T12:48:19.226Z"
+    },
+    {
+      "number": "0.40.0",
+      "date": "2016-02-07T23:13:00.696Z"
+    },
+    {
+      "number": "0.41.0",
+      "date": "2016-03-12T00:51:42.867Z"
+    },
+    {
+      "number": "0.42.0",
+      "date": "2016-03-16T05:12:19.955Z"
+    },
+    {
+      "number": "1.0.0",
+      "date": "2016-03-16T05:12:53.991Z"
+    },
+    {
+      "number": "1.0.1",
+      "date": "2016-04-04T11:09:34.132Z"
+    },
+    {
+      "number": "1.0.2",
+      "date": "2016-04-10T23:50:25.197Z"
+    },
+    {
+      "number": "1.0.3",
+      "date": "2016-06-16T00:45:43.628Z"
+    }
+  ],
+  "created": "2015-05-04T02:00:28.512Z",
+  "modified": "2016-06-16T00:45:43.628Z",
+  "lastPublisher": {
+    "name": "feross",
+    "email": "feross@feross.org"
+  },
+  "owners": [
     {
       "name": "feross",
       "email": "feross@feross.org"
     }
   ],
-  "_npmOperationalInternal": {
-    "host": "packages-16-east.internal.npmjs.com",
-    "tmp": "tmp/webtorrent-hybrid-1.0.3.tgz_1466037941552_0.8799507420044392"
-  },
-  "directories": {}
+  "readme": "# WebTorrent (with WebRTC support in Node.js)\n\n[![Build Status][webtorrent-ti]][webtorrent-tu]\n[![NPM Version][webtorrent-ni]][webtorrent-nu]\n[![NPM Downloads][webtorrent-downloads-image]][webtorrent-downloads-url]\n\n### Streaming torrent client for node environments\n\nIn node.js, the `webtorrent` package only connects to normal TCP/UDP peers, not WebRTC peers. If you want to connect to all types of peers, including WebRTC peers, from node.js, you need to use this package (`webtorrent-hybrid`).\n\nPrevious versions (0.x) of this package used [wrtc](https://github.com/js-platform/node-webrtc), a WebRTC implementation via native extensions, the current one is based on [electron-webrtc](https://github.com/mappum/electron-webrtc) (which in turn uses [electron-prebuilt](https://github.com/electron-userland/electron-prebuilt)) for better compatibility. It creates a hidden Electron process (which is based on Chromium, so WebRTC support is great!) and communicates with that process to enable WebRTC in Node.js. This adds a lot of overhead, so we are looking forward to using a pure JavaScript implementation, like perhaps [Node-RTCPeerConnection](https://github.com/nickdesaulniers/node-rtc-peer-connection) when it's ready.\n\nTo run this package on a headless server execute [the provided script](bin/prepareHeadless.sh) or follow [these instructions](https://github.com/mappum/electron-webrtc#running-on-a-headless-server).\n\n[![js-standard-style](https://cdn.rawgit.com/feross/standard/master/badge.svg)](https://github.com/feross/standard)\n\n## Install\n\nTo install WebTorrent:\n\n```bash\nnpm install webtorrent-hybrid\n```\n\nTo install a `webtorrent-hybrid` command line program, run:\n\n```bash\nnpm install webtorrent-hybrid -g\n```\n\n### OS X\n\nOn OS X, this should Just Work™.\n\n### Linux\n\nThe current version of `webtorrent-hybrid` requires a screen, since the headless Electron\ninstance expects one. If you're running in a screenless environment (like on a server),\nyou must use a virtual screen such as `xvfb`. You must install it and run it before using\n`webtorrent-hybrid`.\n\n#### For Debian-based OSs:\n\n```bash\nsudo apt-get install xvfb\nexport DISPLAY='0:99'\nXvfb :99 -screen 0 1024x768x24 > /dev/null 2>&1 &\n```\n\n#### For CentOS / RHEL:\n\n```bash\nsudo yum install xorg-x11-server-Xvfb\nexport DISPLAY='0:99'\nXvfb :99 -screen 0 1024x768x24 > /dev/null 2>&1 &\n```\n\n### Node.js API\n\nIf you're using `webtorrent-hybrid` in a node.js project, you can start Xvfb within your\napp:\n\n```\nnpm install xvfb\n```\n\n```js\nvar Xvfb = require('xvfb')\nvar xvfb = new Xvfb()\nxvfb.startSync()\n\nvar WebTorrent = require('webtorrent-hybrid')\n```\n\n## Usage\n\n`webtorrent-hybrid` has the same command line interface (CLI) and module API as\n[`webtorrent`](https://github.com/feross/webtorrent). Just `require('webtorrent-hybrid')`\ninstead of `require('webtorrent')`.\n\nSee the [WebTorrent docs](https://github.com/feross/webtorrent).\n\n## License\n\nMIT. Copyright (c) [WebTorrent, LLC](https://webtorrent.io).\n\n[webtorrent]: https://github.com/feross/webtorrent-hybrid\n[webtorrent-ti]: https://img.shields.io/travis/feross/webtorrent-hybrid/master.svg\n[webtorrent-tu]: https://travis-ci.org/feross/webtorrent-hybrid\n[webtorrent-ni]: https://img.shields.io/npm/v/webtorrent-hybrid.svg\n[webtorrent-nu]: https://npmjs.org/package/webtorrent-hybrid\n[webtorrent-downloads-image]: https://img.shields.io/npm/dm/webtorrent-hybrid.svg\n[webtorrent-downloads-url]: https://npmjs.org/package/webtorrent-hybrid\n[webtorrent-gratipay-image]: https://img.shields.io/gratipay/feross.svg\n[webtorrent-gratipay-url]: https://gratipay.com/feross/\n[webtorrent-sauce-image]: https://saucelabs.com/browser-matrix/webtorrent-hybrid.svg\n[webtorrent-sauce-url]: https://saucelabs.com/u/webtorrent-hybrid\n"
 }

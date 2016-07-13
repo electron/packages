@@ -12,8 +12,17 @@
     "deploy": "npm run build:docs && gh-pages -d dist"
   },
   "repository": {
-    "type": "git",
-    "url": "git+https://github.com/sethvincent/send-action.git"
+    "user": "sethvincent",
+    "repo": "send-action",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/sethvincent/send-action/tarball/master",
+    "clone_url": "https://github.com/sethvincent/send-action",
+    "https_url": "https://github.com/sethvincent/send-action",
+    "travis_url": "https://travis-ci.org/sethvincent/send-action",
+    "zip_url": "https://github.com/sethvincent/send-action/archive/master.zip",
+    "api_url": "https://api.github.com/repos/sethvincent/send-action"
   },
   "keywords": [
     "state",
@@ -24,9 +33,6 @@
     "name": "sethvincent"
   },
   "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/sethvincent/send-action/issues"
-  },
   "homepage": "https://github.com/sethvincent/send-action#readme",
   "dependencies": {
     "xtend": "^4.0.1"
@@ -46,28 +52,58 @@
     "yo-yo": "^1.1.1"
   },
   "gitHead": "f22ca4a49342db92f3a7c011b31d2bbfe34a5180",
-  "_id": "send-action@2.0.2",
-  "_shasum": "dd82c422713bb7cacac8a574b7db8918c3596251",
-  "_from": ".",
   "_npmVersion": "3.8.9",
   "_nodeVersion": "6.2.0",
-  "_npmUser": {
-    "name": "sethvincent",
-    "email": "sethvincent@gmail.com"
-  },
   "dist": {
     "shasum": "dd82c422713bb7cacac8a574b7db8918c3596251",
     "tarball": "http://registry.npmjs.org/send-action/-/send-action-2.0.2.tgz"
   },
-  "maintainers": [
+  "stars": 1,
+  "versions": [
+    {
+      "number": "1.0.0",
+      "date": "2016-03-30T00:23:59.695Z"
+    },
+    {
+      "number": "1.0.1",
+      "date": "2016-04-03T05:16:24.010Z"
+    },
+    {
+      "number": "1.0.2",
+      "date": "2016-04-03T05:35:37.255Z"
+    },
+    {
+      "number": "1.0.3",
+      "date": "2016-04-06T23:37:52.039Z"
+    },
+    {
+      "number": "1.1.0",
+      "date": "2016-04-14T01:37:04.947Z"
+    },
+    {
+      "number": "2.0.0",
+      "date": "2016-06-06T04:22:49.520Z"
+    },
+    {
+      "number": "2.0.1",
+      "date": "2016-06-14T04:26:03.052Z"
+    },
+    {
+      "number": "2.0.2",
+      "date": "2016-06-15T17:07:28.895Z"
+    }
+  ],
+  "created": "2016-03-30T00:23:59.695Z",
+  "modified": "2016-06-15T17:07:28.895Z",
+  "lastPublisher": {
+    "name": "sethvincent",
+    "email": "sethvincent@gmail.com"
+  },
+  "owners": [
     {
       "name": "sethvincent",
       "email": "sethvincent@gmail.com"
     }
   ],
-  "_npmOperationalInternal": {
-    "host": "packages-16-east.internal.npmjs.com",
-    "tmp": "tmp/send-action-2.0.2.tgz_1466010443806_0.8255927078425884"
-  },
-  "directories": {}
+  "readme": "# send-action\n\nA simple state container. \n\n[![npm](https://img.shields.io/npm/v/send-action.svg)](http://npmjs.com/send-action)\n\n## Resources\n- [Docs](http://sethvincent.com/send-action)\n- [Examples](https://github.com/sethvincent/send-action/tree/master/examples)\n\n## Install\n\n```\nnpm i --save send-action\n```\n\n## About\n\n`send-action` is meant to be the smallest, simplest redux-like state management library. The focus is on providing a concise method for triggering actions, and on avoiding complex middleware & development dependencies.\n\nThe API is significantly different from redux, but the pattern is similar. \n\nUsing `send-action` you trigger actions, modify state based on those actions, and listen to the changes to render your application.\n\n## Minimal example\n\n```js\nvar sendAction = require('send-action')\n\n/*\n* Create send function.\n*/\nvar send = sendAction({\n  onaction: function (action, state) {\n    // return a new object based on the action\n    if (action.type === 'example') {\n      return { example: action.value }\n    }\n  },\n  onchange: function (action, state, oldstate) {\n    // render your application\n    console.log(action, state, oldstate)\n  },\n  state: {\n    example: null\n  }\n})\n\n/*\n* Send an action to the store\n*/\nsend({ type: 'example' value: 'ok' })\n\n/*\n* Alternate `send` syntax\n*/\nsend('example', { value: 'cool' })\n```\n\n## Using send-action with xtend\n\nYou may want to use a module like [xtend](http://npmjs.com/xtend) to create new objects by extending the existing state.\n\n```js\nvar xtend = require('xtend')\nvar sendAction = require('send-action')\n\n/*\n* Create send function.\n*/\nvar send = sendAction({\n  onaction: function (action, state) {\n    // return a new object based on the action using xtend\n    if (action.type === 'example') {\n      return xtend(state, { example: action.value })\n    }\n  },\n  onchange: function (action, state, oldstate) {\n    // render your application\n    console.log(action, state, oldstate)\n  },\n  state: {\n    example: null\n  }\n})\n```\n\n## Examples with common UI modules\n\n- [yo-yo.js](/docs/yo-yo.md)\n- [react](/docs/react.md)\n- [virtual-dom](/docs/virtual-dom.md)\n\n## See also\n- [choo](https://github.com/yoshuawuyts/choo) - a frontend framework built from small modules, including `send-action`\n\n## License\n[MIT](LICENSE.md)\n"
 }

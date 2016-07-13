@@ -1,0 +1,84 @@
+{
+  "name": "os-idle-timer",
+  "version": "1.0.6",
+  "description": "Cross platform os idle timer",
+  "main": "index.js",
+  "private": false,
+  "gypfile": true,
+  "scripts": {
+    "install": "node-gyp rebuild",
+    "electron-install": "node ./scripts/build.js"
+  },
+  "author": {
+    "name": "superdoli@gmail.com"
+  },
+  "license": "MIT",
+  "repository": {
+    "user": "goldworm",
+    "repo": "os-idle-timer",
+    "host": "bitbucket.org",
+    "branch": "master",
+    "apiHost": "bitbucket.org/api/v3",
+    "tarball_url": "https://bitbucket.org/api/v3/repos/goldworm/os-idle-timer/tarball/master",
+    "clone_url": "https://bitbucket.org/goldworm/os-idle-timer",
+    "https_url": "https://bitbucket.org/goldworm/os-idle-timer",
+    "travis_url": "https://travis-ci.org/goldworm/os-idle-timer",
+    "zip_url": "https://bitbucket.org/goldworm/os-idle-timer/archive/master.zip",
+    "api_url": "https://bitbucket.org/api/v3/repos/goldworm/os-idle-timer"
+  },
+  "os": [
+    "darwin",
+    "win32"
+  ],
+  "devDependencies": {
+    "electron-prebuilt": "^1.2.6",
+    "node-gyp": "^3.4.0"
+  },
+  "gitHead": "79da9374ba6350ba9e8252c522d849e2afaead61",
+  "homepage": "https://bitbucket.org/goldworm/os-idle-timer#readme",
+  "_npmVersion": "3.10.5",
+  "_nodeVersion": "6.2.0",
+  "dist": {
+    "shasum": "537d0f9c83438117395c8e177047924a451a1c0e",
+    "tarball": "http://registry.npmjs.org/os-idle-timer/-/os-idle-timer-1.0.6.tgz"
+  },
+  "versions": [
+    {
+      "number": "1.0.1",
+      "date": "2016-07-07T06:46:30.103Z"
+    },
+    {
+      "number": "1.0.2",
+      "date": "2016-07-07T07:08:07.779Z"
+    },
+    {
+      "number": "1.0.3",
+      "date": "2016-07-12T02:19:07.456Z"
+    },
+    {
+      "number": "1.0.4",
+      "date": "2016-07-13T04:35:44.935Z"
+    },
+    {
+      "number": "1.0.5",
+      "date": "2016-07-13T05:06:09.859Z"
+    },
+    {
+      "number": "1.0.6",
+      "date": "2016-07-13T09:58:27.795Z"
+    }
+  ],
+  "created": "2016-07-07T06:46:30.103Z",
+  "modified": "2016-07-13T09:58:27.795Z",
+  "lastPublisher": {
+    "name": "goldworm",
+    "email": "goldworm@nomadconnection.com"
+  },
+  "owners": [
+    {
+      "name": "goldworm",
+      "email": "goldworm@nomadconnection.com"
+    }
+  ],
+  "readme": "# os-idle-timer\nDetect user's system inactivity.  \nWindows and Mac only\n\n# Requisites\n* windows: msvs\n* mac: xcode\n\n# Installation\n```\nnpm install os-idle-timer\n```\n\n# Example\n``` js\nconst idleTimer = require('os-idle-timer');\n\n/**\n * Once an idleTimer callback is called,\n * it is automatically cleared from idleTimer.\n */\nfunction callback(idleTime_ms) {\n    console.log('idleTimer is called. ' + idleTime_ms);\n}\n\n// Set a new idle timer in milliseconds.\nvar handle = idleTimer.setIdleTimer(callback, 5000);\n\n// Remove the idle timer indicated by handle.\nidleTimer.clearIdleTimer(handle);\n\n// Remove all idleTimers.\nidleTimer.clearIdleTimers();\n\n// Get the current idle time in milliseconds.\nvar idleTime_ms = idleTimer.getIdleTime_ms();\nconsole.log(idleTime_ms);\n\nsetInterval(() => {\n    console.log(idleTimer.getIdleTime_ms());\n}, 2000);\n\nidleTimer.setIdleTimer(callback, 5000);\n```\n"
+}

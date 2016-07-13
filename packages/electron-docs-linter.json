@@ -1,0 +1,90 @@
+{
+  "name": "electron-docs-linter",
+  "description": "A JSON object describing Electron's APIs",
+  "version": "1.0.1",
+  "author": {
+    "name": "Zeke Sikelianos",
+    "email": "zeke@sikelianos.com",
+    "url": "http://zeke.sikelianos.com"
+  },
+  "dependencies": {
+    "decamelize": "^1.2.0",
+    "electron-docs": "^1.1.0",
+    "keyed-array": "^1.0.0",
+    "lodash.pick": "^4.2.1",
+    "marky-markdown-lite": "^1.1.0",
+    "omit-empty": "^0.4.1",
+    "pify": "^2.3.0",
+    "revalidator": "^0.3.1",
+    "to-markdown": "^3.0.0"
+  },
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "heads": "^1.1.0",
+    "mocha": "^2.5.3",
+    "standard": "^7.1.2"
+  },
+  "homepage": "https://github.com/zeke/electron-docs-linter#readme",
+  "keywords": [
+    "api",
+    "documentation",
+    "electron",
+    "json",
+    "markdown",
+    "node",
+    "schema"
+  ],
+  "license": "MIT",
+  "main": "index.js",
+  "repository": {
+    "user": "zeke",
+    "repo": "electron-docs-linter",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/zeke/electron-docs-linter/tarball/master",
+    "clone_url": "https://github.com/zeke/electron-docs-linter",
+    "https_url": "https://github.com/zeke/electron-docs-linter",
+    "travis_url": "https://travis-ci.org/zeke/electron-docs-linter",
+    "zip_url": "https://github.com/zeke/electron-docs-linter/archive/master.zip",
+    "api_url": "https://api.github.com/repos/zeke/electron-docs-linter"
+  },
+  "scripts": {
+    "test": "mocha && standard"
+  },
+  "standard": {
+    "env": {
+      "mocha": true
+    }
+  },
+  "gitHead": "b5a9608f4cbfbff9e32ec4c5771fe488d24d9c2b",
+  "_npmVersion": "3.9.5",
+  "_nodeVersion": "6.2.2",
+  "dist": {
+    "shasum": "0afc095f4e9162ed2f7a9607bb3d6fd9bd65e4f9",
+    "tarball": "http://registry.npmjs.org/electron-docs-linter/-/electron-docs-linter-1.0.1.tgz"
+  },
+  "versions": [
+    {
+      "number": "1.0.0",
+      "date": "2016-07-06T23:59:06.821Z"
+    },
+    {
+      "number": "1.0.1",
+      "date": "2016-07-08T23:29:53.035Z"
+    }
+  ],
+  "created": "2016-07-06T23:59:06.821Z",
+  "modified": "2016-07-08T23:29:53.035Z",
+  "lastPublisher": {
+    "name": "zeke",
+    "email": "zeke@sikelianos.com"
+  },
+  "owners": [
+    {
+      "name": "zeke",
+      "email": "zeke@sikelianos.com"
+    }
+  ],
+  "readme": "# electron-docs-linter [![Build Status](https://travis-ci.org/zeke/electron-docs-linter.svg?branch=master)](https://travis-ci.org/zeke/electron-docs-linter)\n\nParse and validate Electron's markdown API documentation.\n\n## Installation\n\n```sh\nnpm install electron-docs-linter --save\n```\n\n## Usage\n\nThe module exports a function that parses markdown docs in a given directory,\nthen returns a JSON representation of the docs.\n\n```js\nconst lint = require('electron-docs-linter')\nconst docPath = './vendor/electron/docs/api'\nconst targetVersion = '1.2.3' // the soon-to-be-released version of electron\n\nlint(docPath, targetVersion).then(function (apis) {\n  // `apis` is an array of API objects. To find one:\n  var win = apis.find(api => api.name === 'BrowserWindow')\n\n  // The array also has a string key for each API name, so\n  // you can access APIs like this too:\n  win = apis.BrowserWindow\n\n  win.events.length\n  // => 25\n\n  win.events[0]\n  // {\n  //   \"name\": \"page-title-updated\",\n  //   \"description\": \"Emitted when the document...\",\n  //   \"returns\": [\n  //     {\n  //       \"name\": \"event\",\n  //       \"type\": \"Event\"\n  //     }\n  //   ]\n  // }\n\n  win.instanceMethods[20]\n  // {\n  //   name: 'setSize',\n  //   signature: '(width, height[, animate])'\n  // }\n})\n```\n\n## How It Works\n\nThe linter starts with [a list of all the API names](/lib/seeds.json) as seed data.\n\nEach API's structure is inferred by parsing its raw markdown documentation from\nthe [electron repo](https://github.com/electron/electron/tree/master/docs/api).\nThe [electron-docs](https://github.com/zeke/electron-docs) module abstracts away\nthe challenges of fetching file contents in bulk.\n\nElectron's API documentation adheres to\n[Electron Coding Style](https://github.com/electron/electron/blob/master/docs/development/coding-style.md#naming-things)\nand the\n[Electron Styleguide](https://github.com/electron/electron/blob/master/docs/styleguide.md),\nso its content can be programmatically parsed. To make the content easy to parse,\nthe raw markdown is converted to HTML using\n[marky-markdown-lite](https://ghub.io/marky-markdown-lite),\nwhich returns a [cheerio](https://ghub.io/cheerio) DOM object that can be queried\nand traversed using familiar CSS selectors.\n\nThe result is an array of API objects. The following\nmetadata is included for each API, where appropriate:\n\n- name\n- description\n- type (Class or Object)\n- process (main, renderer, or both)\n- methods\n- instance methods\n- events\n- website URL\n- GitHub repository URL\n\n\n## Related Things and Prior Art\n\n- https://github.com/atom/autocomplete-atom-api\n- https://kapeli.com/docsets#dashDocset\n- [issue: Publish the public API as JSON](https://github.com/electron/electron/issues/3375)\n- https://raw.githubusercontent.com/atom/autocomplete-atom-api/master/completions.json\n- [devdocs.io](http://devdocs.io/)\n- [Node.js - About this Documentation](https://nodejs.org/dist/latest-v6.x/docs/api/documentation.html)\n\n## Dependencies\n\n- [decamelize](https://github.com/sindresorhus/decamelize): Convert a camelized string into a lowercased one with a custom separator: unicornRainbow → unicorn_rainbow\n- [electron-docs](https://github.com/zeke/electron-docs): Fetch Electron documentation as raw markdown strings\n- [lodash.pick](https://github.com/lodash/lodash): The lodash method `_.pick` exported as a module.\n- [marky-markdown-lite](https://github.com/zeke/marky-markdown-lite): A version of marky-markdown that does less\n- [omit-empty](https://github.com/jonschlinkert/omit-empty): Recursively omit empty properties from an object. Omits empty objects, arrays, strings or zero.\n- [pify](https://github.com/sindresorhus/pify): Promisify a callback-style function\n- [revalidator](https://github.com/flatiron/revalidator): A cross-browser / node.js validator powered by JSON Schema\n- [to-markdown](https://github.com/domchristie/to-markdown): HTML-to-Markdown converter\n\n## Dev Dependencies\n\n- [chai](https://github.com/chaijs/chai): BDD/TDD assertion library for node.js and the browser. Test framework agnostic.\n- [heads](https://github.com/zeke/heads): Make parallel HEAD requests for an array of URLs and get back their HTTP status codes.\n- [mocha](https://github.com/mochajs/mocha): simple, flexible, fun test framework\n- [standard](https://github.com/feross/standard): JavaScript Standard Style\n\n## License\n\nMIT\n"
+}

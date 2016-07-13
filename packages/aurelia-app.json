@@ -1,0 +1,41 @@
+{
+  "name": "aurelia-app",
+  "version": "1.0.0",
+  "description": "## Running The App",
+  "main": "index.js",
+  "dependencies": {
+    "gulp": "^3.9.1",
+    "watch": "^0.17.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "_npmVersion": "3.8.6",
+  "_nodeVersion": "4.4.2",
+  "dist": {
+    "shasum": "30dadb57cee3bc15ae7f6ce8cc3a458ff76bd7c9",
+    "tarball": "http://registry.npmjs.org/aurelia-app/-/aurelia-app-1.0.0.tgz"
+  },
+  "versions": [
+    {
+      "number": "1.0.0",
+      "date": "2016-04-10T19:59:55.956Z"
+    }
+  ],
+  "created": "2016-04-10T19:59:55.956Z",
+  "modified": "2016-04-10T19:59:55.956Z",
+  "lastPublisher": {
+    "name": "dolbyover",
+    "email": "martinkzach@gmail.com"
+  },
+  "owners": [
+    {
+      "name": "dolbyover",
+      "email": "martinkzach@gmail.com"
+    }
+  ],
+  "readme": "# aurelia-skeleton-navigation\n\n## Running The App\n\nTo run the app, follow these steps.\n\n1. Ensure that [NodeJS](http://nodejs.org/) is installed. This provides the platform on which the build tooling runs.\n2. From the project folder, execute the following command:\n\n  ```shell\n  npm install\n  ```\n3. Ensure that [Gulp](http://gulpjs.com/) is installed globally. If you need to install it, use the following command:\n\n  ```shell\n  npm install -g gulp\n  ```\n  > **Note:** Gulp must be installed globally, but a local version will also be installed to ensure a compatible version is used for the project.\n4. Ensure that [jspm](http://jspm.io/) is installed globally. If you need to install it, use the following command:\n\n  ```shell\n  npm install -g jspm\n  ```\n  > **Note:** jspm must be installed globally, but a local version will also be installed to ensure a compatible version is used for the project.\n\n  > **Note:** jspm queries GitHub to install semver packages, but GitHub has a rate limit on anonymous API requests. It is advised that you configure jspm with your GitHub credentials in order to avoid problems. You can do this by executing `jspm registry config github` and following the prompts. If you choose to authorize jspm by an access token instead of giving your password (see GitHub `Settings > Personal Access Tokens`), `public_repo` access for the token is required.\n5. Install the client-side dependencies with jspm:\n\n  ```shell\n  jspm install -y\n  ```\n  >**Note:** Windows users, if you experience an error of \"unknown command unzip\" you can solve this problem by doing `npm install -g unzip` and then re-running `jspm install`.\n6. To run the app, execute the following command:\n\n  ```shell\n  gulp watch\n  ```\n7. Browse to [http://localhost:9000](http://localhost:9000) to see the app. You can make changes in the code found under `src` and the browser should auto-refresh itself as you save files.\n\n> The Skeleton App uses [BrowserSync](http://www.browsersync.io/) for automated page refreshes on code/markup changes concurrently across multiple browsers. If you prefer to disable the mirroring feature set the [ghostMode option](http://www.browsersync.io/docs/options/#option-ghostMode) to false\n\n## Running The App under Electron\n\nTo run the app under [Electron](http://electron.atom.io), follow these steps.\n\n1. Install [Electron](http://electron.atom.io)\n\n  ```shell\n  npm install electron-prebuilt -g\n  ```\n2. To start the app, execute the following command:\n\n  ```shell\n  electron index.js\n  ```\n>**Note:** If you use electron every time or are packaging and so-forth, Then change this line in package.json from\n`\"main\": \"dist/main.js\",` to `\"main\": \"index.js\",`\nBuild the app (this will give you a dist directory)\n```shell\ngulp build\n```\nTo start the app, execute the following command:\n```shell\n   electron .\n```\n\n\n## Bundling\nBundling is performed by [Aurelia Bundler](http://github.com/aurelia/bundler). A gulp task is already configured for that. Use the following command to bundle the app:\n\n  ```shell\n    gulp bundle\n  ```\n\nYou can also unbundle using the command bellow:\n\n  ```shell\n    gulp unbundle\n  ```\n\nTo start the bundled app, execute the following command:\n\n  ```shell\n    gulp serve-bundle\n  ```\n#### Configuration\nThe configuration is done by ```bundles.js``` file.\n##### Optional\nUnder ```options``` of ```dist/aurelia``` add ```rev: true``` to add bundle file revision/version.\n\n## Running The Unit Tests\n\nTo run the unit tests, first ensure that you have followed the steps above in order to install all dependencies and successfully build the library. Once you have done that, proceed with these additional steps:\n\n1. Ensure that the [Karma](http://karma-runner.github.io/) CLI is installed. If you need to install it, use the following command:\n\n  ```shell\n  npm install -g karma-cli\n  ```\n2. Install Aurelia libs for test visibility:\n\n```shell\njspm install aurelia-framework\njspm install aurelia-http-client\njspm install aurelia-router\n```\n3. You can now run the tests with this command:\n\n  ```shell\n  karma start\n  ```\n\n## Running The E2E Tests\nIntegration tests are performed with [Protractor](http://angular.github.io/protractor/#/).\n\n1. Place your E2E-Tests into the folder ```test/e2e/src```\n2. Install the necessary webdriver\n\n  ```shell\n  gulp webdriver-update\n  ```\n\n3. Configure the path to the webdriver by opening the file ```protractor.conf.js``` and adjusting the ```seleniumServerJar``` property. Typically its only needed to adjust the version number.\n\n4. Make sure your app runs and is accessible\n\n  ```shell\n  gulp watch\n  ```\n\n5. In another console run the E2E-Tests\n\n  ```shell\n  gulp e2e\n  ```\n\n## Exporting bundled production version\nA gulp task is already configured for that. Use the following command to export the app:\n\n  ```shell\n    gulp export\n  ```\nThe app will be exported into ```export``` directory preserving the directory structure.\n#### Configuration\nThe configuration is done by ```bundles.js``` file.\nIn addition, ```export.js``` file is available for including individual files.\n"
+}

@@ -1,14 +1,23 @@
 {
   "name": "woverlay",
-  "version": "0.0.12",
+  "version": "0.0.13",
   "description": "WebRTC based overlay network.",
   "main": "index.js",
   "scripts": {
     "test": "tape test/*.test.js"
   },
   "repository": {
-    "type": "git",
-    "url": "git+https://github.com/michaelwoodson/woverlay.git"
+    "user": "michaelwoodson",
+    "repo": "woverlay",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/michaelwoodson/woverlay/tarball/master",
+    "clone_url": "https://github.com/michaelwoodson/woverlay",
+    "https_url": "https://github.com/michaelwoodson/woverlay",
+    "travis_url": "https://travis-ci.org/michaelwoodson/woverlay",
+    "zip_url": "https://github.com/michaelwoodson/woverlay/archive/master.zip",
+    "api_url": "https://api.github.com/repos/michaelwoodson/woverlay"
   },
   "keywords": [
     "webrtc",
@@ -18,47 +27,93 @@
     "name": "Michael Woodson"
   },
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/michaelwoodson/woverlay/issues"
-  },
   "dependencies": {
     "big-integer": "1.6.15",
     "compression": "1.6.2",
     "crypto-js": "3.1.6",
-    "express": "4.13.4",
-    "node-rsa": "0.3.2",
-    "ws": "1.1.0"
+    "express": "4.14.0",
+    "node-rsa": "0.4.0",
+    "ws": "1.1.1"
   },
   "devDependencies": {
     "browserify": "13.0.1",
-    "electron-prebuilt": "1.2.1",
-    "tape": "4.5.1",
+    "electron-prebuilt": "1.2.5",
+    "tape": "4.6.0",
     "tape-run": "2.1.4"
   },
   "homepage": "https://github.com/michaelwoodson/woverlay#readme",
-  "gitHead": "abdeab43d3720c57218a7f41f7cc244206691043",
-  "_id": "woverlay@0.0.12",
-  "_shasum": "ec2676d78143dc37c9e2fb932570220f8f14406f",
-  "_from": ".",
+  "gitHead": "bd34fa8a00a4cccf5ee2cf7d09a6f170dac0de5b",
   "_npmVersion": "3.8.6",
   "_nodeVersion": "6.0.0",
-  "_npmUser": {
+  "dist": {
+    "shasum": "1567eb19cc6f0929030d89f6039c486915cf3779",
+    "tarball": "http://registry.npmjs.org/woverlay/-/woverlay-0.0.13.tgz"
+  },
+  "versions": [
+    {
+      "number": "0.0.1",
+      "date": "2016-04-28T02:20:54.671Z"
+    },
+    {
+      "number": "0.0.2",
+      "date": "2016-04-28T11:52:41.537Z"
+    },
+    {
+      "number": "0.0.3",
+      "date": "2016-04-28T13:39:37.394Z"
+    },
+    {
+      "number": "0.0.4",
+      "date": "2016-04-30T21:24:40.320Z"
+    },
+    {
+      "number": "0.0.5",
+      "date": "2016-05-11T11:48:09.814Z"
+    },
+    {
+      "number": "0.0.6",
+      "date": "2016-05-12T09:35:41.911Z"
+    },
+    {
+      "number": "0.0.7",
+      "date": "2016-05-12T12:09:26.238Z"
+    },
+    {
+      "number": "0.0.8",
+      "date": "2016-05-12T13:24:37.096Z"
+    },
+    {
+      "number": "0.0.9",
+      "date": "2016-05-13T12:11:31.446Z"
+    },
+    {
+      "number": "0.0.10",
+      "date": "2016-05-16T23:48:15.166Z"
+    },
+    {
+      "number": "0.0.11",
+      "date": "2016-06-04T11:40:23.699Z"
+    },
+    {
+      "number": "0.0.12",
+      "date": "2016-06-15T11:59:17.121Z"
+    },
+    {
+      "number": "0.0.13",
+      "date": "2016-07-01T12:15:36.620Z"
+    }
+  ],
+  "created": "2016-04-28T02:20:54.671Z",
+  "modified": "2016-07-01T12:15:36.620Z",
+  "lastPublisher": {
     "name": "michaelwoodson",
     "email": "michael.woodson@gmail.com"
   },
-  "dist": {
-    "shasum": "ec2676d78143dc37c9e2fb932570220f8f14406f",
-    "tarball": "http://registry.npmjs.org/woverlay/-/woverlay-0.0.12.tgz"
-  },
-  "maintainers": [
+  "owners": [
     {
       "name": "michaelwoodson",
       "email": "michael.woodson@gmail.com"
     }
   ],
-  "_npmOperationalInternal": {
-    "host": "packages-12-west.internal.npmjs.com",
-    "tmp": "tmp/woverlay-0.0.12.tgz_1465991954581_0.19833339098840952"
-  },
-  "directories": {}
+  "readme": "# woverlay\n\n## Status\n\nThis module is a work in progress as the version number indicates.\nI'm currently using it as the basis for a couple projects, but as of 0.0.x haven't even tested beyond a local network.\nOnce the module is stabilized I'll document the api.\n\n## What is it?\n\nThe w in \"woverlay\" is for WebRTC; woverlay is a peer 2 peer overlay network built on WebRTC.\nDepending on your disposition you can read it as a Keanu Reeves \"woah\" or a more shakespearean \"woe\".\nThe network is similar a variant of a \"Chord\" network.\n\nThe architecture uses a central websocket server for bootstrapping into the network.\nOnce a peer is bootstrapped it uses WebRTC for building the rest of the network and signaling, so the load on the server should be minimal.\n\n* No effort to support browsers that don't have WebRTC, so most ES6 features can be used without transpiling (browserify, but no need to babelify).\n* Requires bootstrapping peers to connect in both directions with only STUN servers, asymmetric NATs and tight firewalls won't be able to join the network.\n"
 }

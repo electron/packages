@@ -9,8 +9,17 @@
     "start": "node server.js"
   },
   "repository": {
-    "type": "git",
-    "url": "git+https://github.com/Cu3PO42/electron-ipc-tunnel.git"
+    "user": "Cu3PO42",
+    "repo": "electron-ipc-tunnel",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/Cu3PO42/electron-ipc-tunnel/tarball/master",
+    "clone_url": "https://github.com/Cu3PO42/electron-ipc-tunnel",
+    "https_url": "https://github.com/Cu3PO42/electron-ipc-tunnel",
+    "travis_url": "https://travis-ci.org/Cu3PO42/electron-ipc-tunnel",
+    "zip_url": "https://github.com/Cu3PO42/electron-ipc-tunnel/archive/master.zip",
+    "api_url": "https://api.github.com/repos/Cu3PO42/electron-ipc-tunnel"
   },
   "keywords": [
     "electron",
@@ -20,33 +29,67 @@
     "name": "Tobias Zimmermann"
   },
   "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/Cu3PO42/electron-ipc-tunnel/issues"
-  },
   "homepage": "https://github.com/Cu3PO42/electron-ipc-tunnel#readme",
   "gitHead": "6a0d215c1fd84d089af03522520826fcf8083251",
-  "_id": "electron-ipc-tunnel@3.1.0",
-  "_shasum": "14a5b854d2e7bc54d68e3add02a2d6795a561d26",
-  "_from": ".",
   "_npmVersion": "3.3.12",
   "_nodeVersion": "5.4.0",
-  "_npmUser": {
-    "name": "cu3po42",
-    "email": "cu3po42@gmail.com"
-  },
   "dist": {
     "shasum": "14a5b854d2e7bc54d68e3add02a2d6795a561d26",
     "tarball": "http://registry.npmjs.org/electron-ipc-tunnel/-/electron-ipc-tunnel-3.1.0.tgz"
   },
-  "maintainers": [
+  "versions": [
+    {
+      "number": "1.0.0",
+      "date": "2015-07-15T16:26:43.510Z"
+    },
+    {
+      "number": "1.0.1",
+      "date": "2015-07-15T16:49:12.624Z"
+    },
+    {
+      "number": "1.0.2",
+      "date": "2016-01-13T22:49:21.664Z"
+    },
+    {
+      "number": "2.0.0",
+      "date": "2016-01-16T10:48:29.924Z"
+    },
+    {
+      "number": "2.0.1",
+      "date": "2016-01-16T13:32:54.271Z"
+    },
+    {
+      "number": "2.0.2",
+      "date": "2016-01-16T22:55:56.118Z"
+    },
+    {
+      "number": "3.0.0",
+      "date": "2016-01-25T20:27:45.779Z"
+    },
+    {
+      "number": "3.0.1",
+      "date": "2016-02-05T11:38:44.168Z"
+    },
+    {
+      "number": "3.0.2",
+      "date": "2016-02-10T21:25:44.813Z"
+    },
+    {
+      "number": "3.1.0",
+      "date": "2016-04-17T18:19:38.931Z"
+    }
+  ],
+  "created": "2015-07-15T16:26:43.510Z",
+  "modified": "2016-04-17T18:19:38.931Z",
+  "lastPublisher": {
+    "name": "cu3po42",
+    "email": "cu3po42@gmail.com"
+  },
+  "owners": [
     {
       "name": "cu3po42",
       "email": "cu3po42@gmail.com"
     }
   ],
-  "_npmOperationalInternal": {
-    "host": "packages-16-east.internal.npmjs.com",
-    "tmp": "tmp/electron-ipc-tunnel-3.1.0.tgz_1460917177777_0.47792754555121064"
-  },
-  "directories": {}
+  "readme": "# electron-ipc-tunnel\nCreate tunneled connections over Electron's interprocess communication module.\n\nThe `ipc` module is great for interprocess communication, but lacks the ability to have dedicated endpoints. I.e. you might have multiple instances of the same code running in the browser that needs to communicate with the same backend service. Unfortunately there is no way to differentiate these instances other than by introducing message IDs, giving each instance a unique handle, etc.  \nThis module abstracts that away.  \nIn my experience I also want exactly one response from a query I send, that is, I basically want to call a method over IPC asynchronously. This is greatly simplified with this module as it will return a `Promise` of the return value.\n\n## Usage\n### On the client side\n\nCreate a new instance of `IpcClient` and call the `send` method to send an asynchronous method. You will get a promise of the return value.\n\n    import IpcClient from \"electron-ipc-tunnel/client\";\n    // var IpcClient = require(\"electron-ipc-tunnel/client\").default;\n\n    var client = new IpcClient();\n\n    var result = await client.send(\"message\", \"foo\");\n\n### On the server side\n\nThis module exposes a single function to use on the server side to register handlers.\n\n    import { registerIpc } from \"electron-ipc-tunnel/server\";\n    // var registerIpc = require(\"electron-ipc-tunnel/server\").registerIpc;\n\n    registerIpc(\"message\", async function(reply, arg1, arg2) {\n        console.log(`Received message with args: ${arg1} ${arg2}`);\n        reply(\"intermediate-update\", \"I'm still calculating foo!\");\n        return \"foo\";\n    });\n\nA callback function will always receive a callback to send a message to the client. It returns a `Promise` for the value to send to the client. As such the `reply` callback should only be used if we need to send multiple/intermediate messages, e.g. to report a percentage of the progress.\n\n## Implementation\n\nUpon creation an `IpcClient` gets a unique handle for itself from the server synchronously. It then wraps any message originating from `send` inside a *paired-message*, which includes the channel, the passed arguments, the unique client handle and the internal message id, that is sent over IPC. The method returns a promise and stores `resolve` and `reject` handlers internally.  \nOn the server side this message is unwrapped, calling a registered handler for the message type with the given arguments, passing a reply function, that will again, wrap the reply, which will be unwrapped on the client side. The server also waits for the `Promise` returned from the handler to resolve and sends an appropriate message to the client, which then resolves or rejects the Promise returned by `send`.\n"
 }

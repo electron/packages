@@ -15,8 +15,17 @@
     "url": "http://debrisapron.me"
   },
   "repository": {
-    "type": "git",
-    "url": "git+https://github.com/debrisapron/eldritch.git"
+    "user": "debrisapron",
+    "repo": "eldritch",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/debrisapron/eldritch/tarball/master",
+    "clone_url": "https://github.com/debrisapron/eldritch",
+    "https_url": "https://github.com/debrisapron/eldritch",
+    "travis_url": "https://travis-ci.org/debrisapron/eldritch",
+    "zip_url": "https://github.com/debrisapron/eldritch/archive/master.zip",
+    "api_url": "https://api.github.com/repos/debrisapron/eldritch"
   },
   "license": "ISC",
   "dependencies": {
@@ -31,32 +40,34 @@
     "tape": "^4.5.1"
   },
   "gitHead": "b1a774d79d8040427f62fd9b066ce5a960f04459",
-  "bugs": {
-    "url": "https://github.com/debrisapron/eldritch/issues"
-  },
   "homepage": "https://github.com/debrisapron/eldritch#readme",
-  "_id": "eldritch@0.0.2",
-  "_shasum": "e3b7ae874d782db4a05a803dbee7010775ad8162",
-  "_from": ".",
   "_npmVersion": "3.8.9",
   "_nodeVersion": "6.2.0",
-  "_npmUser": {
-    "name": "debrisapron",
-    "email": "debrisapron@gmail.com"
-  },
   "dist": {
     "shasum": "e3b7ae874d782db4a05a803dbee7010775ad8162",
     "tarball": "http://registry.npmjs.org/eldritch/-/eldritch-0.0.2.tgz"
   },
-  "maintainers": [
+  "versions": [
+    {
+      "number": "0.0.1",
+      "date": "2016-06-11T00:59:34.268Z"
+    },
+    {
+      "number": "0.0.2",
+      "date": "2016-06-11T01:06:34.070Z"
+    }
+  ],
+  "created": "2016-06-11T00:59:34.268Z",
+  "modified": "2016-06-11T01:06:34.070Z",
+  "lastPublisher": {
+    "name": "debrisapron",
+    "email": "debrisapron@gmail.com"
+  },
+  "owners": [
     {
       "name": "debrisapron",
       "email": "debrisapron@gmail.com"
     }
   ],
-  "_npmOperationalInternal": {
-    "host": "packages-16-east.internal.npmjs.com",
-    "tmp": "tmp/eldritch-0.0.2.tgz_1465607191464_0.9818715553265065"
-  },
-  "directories": {}
+  "readme": "# 👁 ELDRITCH 👁\n\nWatch js files and run them in a hidden Electron browser window when they change. Useful for prototyping, debugging, live-coding, that sort of thing.\n\n## Installation\n\n```\nnpm install -g electron-prebuilt\nnpm install -g eldritch\n```\n\n## Example\n\nIn one console:\n```\n$ eldritch foo.js\n```\nIn another:\n```\n$ echo \"console.log('CTHULHU FHTAGN!')\" > foo.js\n$ echo \"let c = new AudioContext; let o = c.createOscillator(); o.connect(c.destination); o.start()\" > foo.js\n```\nThe result should be an unearthly greeting accompanied by the thin monotonous whine of accursed flutes. Pretty cool.\n\n## Usage\n\n```\neldritch <pattern> [<pattern>...] [options]\n```\n\nPatterns and options are passed to `chokidar.watch` https://github.com/paulmillr/chokidar#api\n\nYour watched files are running in a hidden Electron window so you can use all the usual browser APIs. Every time you make a change the watched files are re-required in the same context. In other words, global & window state are persisted between changes.\n\nAlso, every time a watched file is changed, *all* watched files are re-required. However, unwatched dependencies of those files will not be re-required.\n\nInside the browser, `console` is patched to output to the node console instead of writing to the browser's own console.\n\n## Disclaimer\n\nPlease do not use ELDRITCH to open doors man was not meant to open or meddle with forces you cannot possibly control.\n"
 }

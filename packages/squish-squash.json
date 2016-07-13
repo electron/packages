@@ -29,28 +29,53 @@
     "os-tmpdir": "^1.0.1"
   },
   "gitHead": "41a960353695882b9c0cd832e24fcf1d21e533d5",
-  "_id": "squish-squash@1.0.6",
-  "_shasum": "873e7fcb21c164b4c2cd2d28e4ced147f579776f",
-  "_from": ".",
   "_npmVersion": "3.8.6",
   "_nodeVersion": "5.11.0",
-  "_npmUser": {
+  "dist": {
+    "shasum": "873e7fcb21c164b4c2cd2d28e4ced147f579776f",
+    "tarball": "http://registry.npmjs.org/squish-squash/-/squish-squash-1.0.6.tgz"
+  },
+  "versions": [
+    {
+      "number": "1.0.0",
+      "date": "2015-12-06T19:04:27.504Z"
+    },
+    {
+      "number": "1.0.1",
+      "date": "2015-12-06T19:06:30.065Z"
+    },
+    {
+      "number": "1.0.2",
+      "date": "2015-12-06T19:09:48.173Z"
+    },
+    {
+      "number": "1.0.3",
+      "date": "2015-12-14T16:10:41.177Z"
+    },
+    {
+      "number": "1.0.4",
+      "date": "2016-04-27T05:16:59.619Z"
+    },
+    {
+      "number": "1.0.5",
+      "date": "2016-04-27T05:21:46.895Z"
+    },
+    {
+      "number": "1.0.6",
+      "date": "2016-04-27T05:36:40.233Z"
+    }
+  ],
+  "created": "2015-12-06T19:04:27.504Z",
+  "modified": "2016-04-27T05:36:40.233Z",
+  "lastPublisher": {
     "name": "cdaringe",
     "email": "cdaringe@gmail.com"
   },
-  "maintainers": [
+  "owners": [
     {
       "name": "cdaringe",
       "email": "cdaringe@gmail.com"
     }
   ],
-  "dist": {
-    "shasum": "873e7fcb21c164b4c2cd2d28e4ced147f579776f",
-    "tarball": "http://registry.npmjs.org/squish-squash/-/squish-squash-1.0.6.tgz"
-  },
-  "_npmOperationalInternal": {
-    "host": "packages-12-west.internal.npmjs.com",
-    "tmp": "tmp/squish-squash-1.0.6.tgz_1461735396433_0.0029198068659752607"
-  },
-  "directories": {}
+  "readme": "# squish-squash\noverride a command for for all child processes\n\n<img width=\"100px\" height=\"100px\" src=\"https://raw.githubusercontent.com/cdaringe/squish-squash/master/img/squash.png\"></img>\n\n[ ![Codeship Status for cdaringe/squish-squash](https://codeship.com/projects/c36a2050-7e77-0133-211d-62403764d7f5/status?branch=master)](https://codeship.com/projects/120328)\n\n## install\n`npm install squish-squash [--save|--save-dev]`\n\n## example\n```js\nconst ss = require('squish-squash');\n// example of squashing system or user cmds with arbitrary command\nss({\n    squash: 'node',\n    cmdpath: '/path/to/my/other/node/or/Electron'\n});\n\n// examples of squashing system or user cmds with system commands\n// when any process calls `more`, `less` will actually run\nss({\n    squash: 'more',\n    syscmd: 'less'\n});\n// prefer the silver-searcher over grep\nss({\n    squash: 'grep',\n    syscmd: 'ag'\n});\n```\n\n## why\nBecause sometimes you gotta.  Use with caution!\n\n# todo\n- [ ] windoze support!  if you know windows, it'd be great to get your input\n"
 }

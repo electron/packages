@@ -3,8 +3,17 @@
   "version": "0.4.0",
   "description": "Chrome-like \"inspect element\" context-menu",
   "repository": {
-    "type": "git",
-    "url": "git+https://github.com/parro-it/debug-menu.git"
+    "user": "parro-it",
+    "repo": "debug-menu",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/parro-it/debug-menu/tarball/master",
+    "clone_url": "https://github.com/parro-it/debug-menu",
+    "https_url": "https://github.com/parro-it/debug-menu",
+    "travis_url": "https://travis-ci.org/parro-it/debug-menu",
+    "zip_url": "https://github.com/parro-it/debug-menu/archive/master.zip",
+    "api_url": "https://api.github.com/repos/parro-it/debug-menu"
   },
   "author": {
     "name": "andrea@parro.it"
@@ -41,32 +50,54 @@
     "electron-debug": "^0.5.2"
   },
   "gitHead": "67527a44142a624e1dbc448a8b077a88106689ca",
-  "bugs": {
-    "url": "https://github.com/parro-it/debug-menu/issues"
-  },
   "homepage": "https://github.com/parro-it/debug-menu#readme",
-  "_id": "debug-menu@0.4.0",
-  "_shasum": "c8fb7cd07a230ba4cc19629faac508eaa76b382e",
-  "_from": ".",
   "_npmVersion": "3.3.6",
   "_nodeVersion": "5.0.0",
-  "_npmUser": {
-    "name": "parroit",
-    "email": "andrea.parodi@ebansoftware.net"
-  },
   "dist": {
     "shasum": "c8fb7cd07a230ba4cc19629faac508eaa76b382e",
     "tarball": "http://registry.npmjs.org/debug-menu/-/debug-menu-0.4.0.tgz"
   },
-  "maintainers": [
+  "versions": [
+    {
+      "number": "0.0.1",
+      "date": "2015-11-07T21:08:14.804Z"
+    },
+    {
+      "number": "0.1.0",
+      "date": "2015-11-07T21:40:41.060Z"
+    },
+    {
+      "number": "0.1.1",
+      "date": "2015-11-07T21:43:55.283Z"
+    },
+    {
+      "number": "0.2.0",
+      "date": "2015-11-19T21:28:10.323Z"
+    },
+    {
+      "number": "0.2.1",
+      "date": "2016-02-08T21:48:06.357Z"
+    },
+    {
+      "number": "0.3.0",
+      "date": "2016-03-05T14:34:28.377Z"
+    },
+    {
+      "number": "0.4.0",
+      "date": "2016-03-17T20:39:07.056Z"
+    }
+  ],
+  "created": "2015-11-07T21:08:14.804Z",
+  "modified": "2016-03-17T20:39:07.056Z",
+  "lastPublisher": {
+    "name": "parroit",
+    "email": "andrea.parodi@ebansoftware.net"
+  },
+  "owners": [
     {
       "name": "parroit",
       "email": "andrea.parodi@ebansoftware.net"
     }
   ],
-  "_npmOperationalInternal": {
-    "host": "packages-12-west.internal.npmjs.com",
-    "tmp": "tmp/debug-menu-0.4.0.tgz_1458247144439_0.6130789183080196"
-  },
-  "directories": {}
+  "readme": "# debug-menu\n\nChrome-like \"inspect element\" context-menu for [Electron](http://electron.atom.io)\n\n> This module was extracted from [electron-debug](https://github.com/sindresorhus/electron-debug) to keep it focused on its main features.\n\n[![Travis Build Status](https://img.shields.io/travis/parro-it/debug-menu.svg)](http://travis-ci.org/parro-it/debug-menu)\n[![npm module](https://img.shields.io/npm/v/debug-menu.svg)](https://npmjs.org/package/debug-menu)\n[![npm downloads](https://img.shields.io/npm/dt/debug-menu.svg)](https://npmjs.org/package/debug-menu)\n\n# Context menu items\n\n## Inspect element\n\nInspect the clicked HTML element.\nIt shows DevTools if it's not already opened.\n\n\n# Install\n\n```\n$ npm install --save-dev debug-menu\n```\n\n# Usage\n\nWhen you use this module in renderer process code,\n`BrowserWindow` instance need to be opened with node integration enabled.\n\nWe usually load this module only if the `DEBUG` environment variable is defined, to avoid end users of the app inadvertently opening DevTools.\n\n```js\nconst debugMenu = require('debug-menu');\ndebugMenu.install();  // activate context menu\n\n// later, if needed\ndebugMenu.uninstall();  // deactivate context menu\n```\n\n# API\n\n## debugMenu.install()\n\nActivate context menu. This method add a listener on `window` DOM object `contextmenu` event.\n\n## debugMenu.middleware\n\nExpose a middleware context menu that can be mounted with [electron-contextmenu-middleware](https://github.com/parro-it/electron-contextmenu-middleware). See [related example](#middleware-example)\n\n\n\n## debugMenu.uninstall()\n\nDeactivate context menu. This method remove the listener on `window` object.\n\n## debugMenu.windowDebugMenu(win);\n\nThe debug [Menu](http://electron.atom.io/docs/latest/api/menu/) object template. You can use it to integrate with your own app context or `BrowserWindow` menu.\n\n### Arguments\n\n* win\n\n`BrowserWindow` instance to use for this Menu.\n\nType: `BrowserWindow`<br>\nDefault: the currently focused `BrowserWindow`.\n\n# Example\n\n```js\n  // ... require electorn module\n\n  const debugMenu = require('debug-menu');\n  const win = new BrowserWindow();\n\n  const menu = Menu.buildFromTemplate([{\n    label: 'Debug',\n    submenu: debugMenu.windowDebugMenu(win)\n  }]);\n\n  if (process.platform !== 'darwin') {\n    win.setMenu(menu);\n  } else {\n    electron.Menu.setApplicationMenu(menu);\n  }\n\n  // ... show window\n```\n\n# Middleware example\n\n```js\n  const debugMenu = require('debug-menu').middleware;\n  const context = require('electron-contextmenu-middleware');\n\n  context.use(debugMenu);\n\n  context.activate();\n```\n\n# Related projects\n\n* [electron-contextmenu-middleware](https://github.com/parro-it/electron-contextmenu-middleware) - Build `electron` context menus composing multiple middlewares functions.\n\n* [electron-input-menu](https://github.com/parro-it/electron-input-menu) - Context menu for [electron](https://github.com/atom/electron) input elements.\n\n\n# License\n\nThe MIT License (MIT)\n\nCopyright (c) 2016 Andrea Parodi\n\n\n\n"
 }

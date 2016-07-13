@@ -7,8 +7,17 @@
     "test": "mocha"
   },
   "repository": {
-    "type": "git",
-    "url": "git+https://github.com/andrewpmckenzie/chainbuilder-log-console.git"
+    "user": "andrewpmckenzie",
+    "repo": "chainbuilder-log-console",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/andrewpmckenzie/chainbuilder-log-console/tarball/master",
+    "clone_url": "https://github.com/andrewpmckenzie/chainbuilder-log-console",
+    "https_url": "https://github.com/andrewpmckenzie/chainbuilder-log-console",
+    "travis_url": "https://travis-ci.org/andrewpmckenzie/chainbuilder-log-console",
+    "zip_url": "https://github.com/andrewpmckenzie/chainbuilder-log-console/archive/master.zip",
+    "api_url": "https://api.github.com/repos/andrewpmckenzie/chainbuilder-log-console"
   },
   "keywords": [
     "chainbuilder",
@@ -21,9 +30,6 @@
     "name": "andrewpmckenzie@gmail.com"
   },
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/andrewpmckenzie/chainbuilder-log-console/issues"
-  },
   "homepage": "https://github.com/andrewpmckenzie/chainbuilder-log-console#readme",
   "dependencies": {
     "colors": "^1.1.2",
@@ -39,28 +45,49 @@
     "sinon": "^1.17.2"
   },
   "gitHead": "aa92241286910d4531b42b5693f295ab0a515ff5",
-  "_id": "chainbuilder-log-console@1.2.1",
-  "_shasum": "4070d73162d6f0fd2fe2bd3c85866b4b18a3e592",
-  "_from": ".",
   "_npmVersion": "3.6.0",
   "_nodeVersion": "5.6.0",
-  "_npmUser": {
+  "dist": {
+    "shasum": "4070d73162d6f0fd2fe2bd3c85866b4b18a3e592",
+    "tarball": "http://registry.npmjs.org/chainbuilder-log-console/-/chainbuilder-log-console-1.2.1.tgz"
+  },
+  "versions": [
+    {
+      "number": "1.0.0",
+      "date": "2016-02-08T13:34:41.474Z"
+    },
+    {
+      "number": "1.0.1",
+      "date": "2016-02-08T16:51:04.963Z"
+    },
+    {
+      "number": "1.0.2",
+      "date": "2016-02-08T18:56:44.697Z"
+    },
+    {
+      "number": "1.0.3",
+      "date": "2016-02-09T15:39:03.956Z"
+    },
+    {
+      "number": "1.2.0",
+      "date": "2016-03-18T21:29:47.881Z"
+    },
+    {
+      "number": "1.2.1",
+      "date": "2016-03-18T21:47:30.341Z"
+    }
+  ],
+  "created": "2016-02-08T13:34:41.474Z",
+  "modified": "2016-03-18T21:47:30.341Z",
+  "lastPublisher": {
     "name": "andrewpmckenzie",
     "email": "andrew.mckenzie@electronifie.com"
   },
-  "maintainers": [
+  "owners": [
     {
       "name": "andrewpmckenzie",
       "email": "andrewpmckenzie@gmail.com"
     }
   ],
-  "dist": {
-    "shasum": "4070d73162d6f0fd2fe2bd3c85866b4b18a3e592",
-    "tarball": "http://registry.npmjs.org/chainbuilder-log-console/-/chainbuilder-log-console-1.2.1.tgz"
-  },
-  "_npmOperationalInternal": {
-    "host": "packages-13-west.internal.npmjs.com",
-    "tmp": "tmp/chainbuilder-log-console-1.2.1.tgz_1458337648209_0.8870187976863235"
-  },
-  "directories": {}
+  "readme": "# chainbuilder-log-console [![Build Status](https://travis-ci.org/andrewpmckenzie/chainbuilder-log-console.svg)](https://travis-ci.org/andrewpmckenzie/chainbuilder-log-console)\n\nA console logger for [chainbuilder](https://www.npmjs.com/package/chainbuilder). \n\n**Installation** `npm install chainbuilder chainbuilder-log-console --save`\n\n**Usage**  \n```javascript\nvar chainBuilder = require('chainbuilder');\n\nvar myChain = chainBuilder({\n  methods: {\n    /* ... your methods ... */\n  },\n  mixins: [\n    require('chainbuilder-log-console')({\n      // logs to debug instead of directly to console\n      log: require('debug')('chainbuilder'),\n      // includes args and results in output\n      detailed: true,\n      // experimental!\n      colors: true\n    })\n  ]\n});\n```\n\n**Example detailed output**  \n```\n┬ ⟸  3\n│\n├→ $beginWhile()\n│ ┬ ⟸  3\n│ │\n│ ├→ plus(1)\n│ │← 4                               0ms\n│ │\n│ ├→ times(3)\n│ │← 12                              2ms\n│ │\n│ ┴ ⟹  12\n│ ┬ ⟸  12\n│ │\n│ ├→ plus(1)\n│ │← 13                              0ms\n│ │\n│ ├→ times(3)\n│ │← 39                              2ms\n│ │\n│ ┴ ⟹  39\n│← 39                                4ms\n│\n├→ plus(1)\n│← 40                                0ms\n│\n┴ ⟹  40\n```\n\n**Key:**\n\n| symbol           |  description                                       |\n|------------------|----------------------------------------------------|\n| `┬ ⟸ 12`        | initial value (of `12`)                            |\n| `┴ ⟹  \"onetwo\"` | result (of `'onetwo'`)                             |\n| `├→ plus(1)`     | call (of `plus(1)`)                                |\n| `│⤸ plus(1)`     | skipped call (because a previous call errored)     |\n| `│← 1`           | successful result (of 1)                           |\n| `│✕ BANG`        | call resulted in an error (of `new Error('BANG')`) |\n\nblock call of `$beginMap`/`$endMap` with result `[4,6]`, and an iteration with initial value of `2`:\n```\n├→ $beginMap()\n...\n│ ┬ ⟸  2\n│ ├→ plus(2)\n│ │← 12\n│ ┴ ⟹  4\n...\n│← [4,6]\n```\n"
 }

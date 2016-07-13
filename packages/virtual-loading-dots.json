@@ -3,17 +3,23 @@
   "version": "1.1.1",
   "description": "Virtual-dom loading dots component",
   "main": "src/virtual-loading-dots.js",
-  "directories": {
-    "test": "test"
-  },
   "scripts": {
     "demo": "budo demo/browser.js --open --live",
     "deploy": "mkdirp example-dist && browserify demo/browser.js | htmlify > example-dist/index.html && gh-pages -d example-dist",
     "test": "standard && node test/virtual-loading-dots.js && browserify test/virtual-loading-dots.js | testron"
   },
   "repository": {
-    "type": "git",
-    "url": "git+https://github.com/chinedufn/virtual-loading-dots.git"
+    "user": "chinedufn",
+    "repo": "virtual-loading-dots",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/chinedufn/virtual-loading-dots/tarball/master",
+    "clone_url": "https://github.com/chinedufn/virtual-loading-dots",
+    "https_url": "https://github.com/chinedufn/virtual-loading-dots",
+    "travis_url": "https://travis-ci.org/chinedufn/virtual-loading-dots",
+    "zip_url": "https://github.com/chinedufn/virtual-loading-dots/archive/master.zip",
+    "api_url": "https://api.github.com/repos/chinedufn/virtual-loading-dots"
   },
   "keywords": [
     "component",
@@ -30,9 +36,6 @@
     "email": "frankie.nwafili@gmail.com"
   },
   "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/chinedufn/virtual-loading-dots/issues"
-  },
   "homepage": "https://github.com/chinedufn/virtual-loading-dots#readme",
   "dependencies": {
     "create-keyframe": "^1.0.1",
@@ -54,27 +57,73 @@
     "virtual-dom": "^2.1.1"
   },
   "gitHead": "c45d2377942f71d16d3d70d89ebe0f3b015a4d3e",
-  "_id": "virtual-loading-dots@1.1.1",
-  "_shasum": "5dcdb24688898e8033d8d6c4f845740c9848a738",
-  "_from": ".",
   "_npmVersion": "3.5.2",
   "_nodeVersion": "0.12.2",
-  "_npmUser": {
-    "name": "chinedufn",
-    "email": "frankie.nwafili@gmail.com"
-  },
   "dist": {
     "shasum": "5dcdb24688898e8033d8d6c4f845740c9848a738",
     "tarball": "http://registry.npmjs.org/virtual-loading-dots/-/virtual-loading-dots-1.1.1.tgz"
   },
-  "maintainers": [
+  "versions": [
+    {
+      "number": "0.0.1",
+      "date": "2016-02-06T21:34:58.448Z"
+    },
+    {
+      "number": "0.1.0",
+      "date": "2016-02-07T14:15:35.968Z"
+    },
+    {
+      "number": "0.2.1",
+      "date": "2016-02-07T16:45:41.857Z"
+    },
+    {
+      "number": "0.6.0",
+      "date": "2016-02-07T17:59:49.662Z"
+    },
+    {
+      "number": "0.6.1",
+      "date": "2016-02-07T18:12:04.233Z"
+    },
+    {
+      "number": "0.6.2",
+      "date": "2016-02-07T19:21:23.715Z"
+    },
+    {
+      "number": "0.6.3",
+      "date": "2016-02-08T01:00:25.227Z"
+    },
+    {
+      "number": "1.0.0",
+      "date": "2016-02-09T10:58:12.963Z"
+    },
+    {
+      "number": "1.0.1",
+      "date": "2016-02-10T01:23:33.814Z"
+    },
+    {
+      "number": "1.0.2",
+      "date": "2016-02-10T10:32:18.014Z"
+    },
+    {
+      "number": "1.1.0",
+      "date": "2016-02-10T11:09:08.850Z"
+    },
+    {
+      "number": "1.1.1",
+      "date": "2016-02-11T10:29:57.033Z"
+    }
+  ],
+  "created": "2016-02-06T21:34:58.448Z",
+  "modified": "2016-02-11T10:29:57.033Z",
+  "lastPublisher": {
+    "name": "chinedufn",
+    "email": "frankie.nwafili@gmail.com"
+  },
+  "owners": [
     {
       "name": "chinedufn",
       "email": "frankie.nwafili@gmail.com"
     }
   ],
-  "_npmOperationalInternal": {
-    "host": "packages-5-east.internal.npmjs.com",
-    "tmp": "tmp/virtual-loading-dots-1.1.1.tgz_1455186595236_0.9616227680817246"
-  }
+  "readme": "virtual-loading-dots [![npm version](https://badge.fury.io/js/virtual-loading-dots.svg)](http://badge.fury.io/js/virtual-loading-dots) [![Build Status](https://travis-ci.org/chinedufn/virtual-loading-dots.svg?branch=master)](https://travis-ci.org/chinedufn/virtual-loading-dots)\n===============\n\n> A stateless loading dots component. Takes on its parent element's width and height. Uses [css @keyframes](https://developer.mozilla.org/en-US/docs/Web/CSS/@keyframes) for animations\n\n[View live demo](http://chinedufn.github.io/virtual-loading-dots)\n\nExamples:\n\n- [virtual-dom](demo/pure-virtual-dom.js)\n- [react](demo/react.js)\n- [custom animation](demo/custom-animation.js)\n\n## To Install\n\n```\n$ npm install --save virtual-loading-dots\n```\n\n## Usage\n\n`virtual-loading-dots` works with [virtual-dom](https://github.com/Matt-Esch/virtual-dom),\n[react](https://npmjs.com/package/react), or any other DOM builder with a [hyperscript](https://github.com/Raynos/virtual-hyperscript#hselector-properties-children) style api\n\n```js\nvar h = require('virtual-dom/h')\nvar LoadingDots = require('virtual-loading-dots')\nLoadingDots.render(h) // returns vtree\n```\n\n\n```sh\n# view the demo in a local browser by pasting this into your terminal:\n# changes to the `demo` directory will live reload in your browser\ngit clone https://github.com/chinedufn/virtual-loading-dots && cd virtual-loading-dots && npm install && npm run demo\n```\n\n## API\n\n### `LoadingDots.render(h[, opts])` -> `vtree`\n\n#### h\n\n*Required*\n\nType: `function`\n\nYour `hyperscript` style DOM builder\n\n```js\n// standalone virtual-dom example\nvar h = require('virtual-dom/h')\nLoadingDots.render(h)\n```\n\n```js\n// React example\nvar React = require('react')\nLoadingDots.render(React.createElement)\n```\n\n#### Options\n\n*Optional*\n\nType: `object`\n\n`virtual-loading-dots` comes with [default options](src/default-options.js). Pass in the ones that you'd like to override\n\n```js\n// Example overrides\nvar myOptions = {\n  animation: 'my-cool-animation 2.5s ease-in-out infinite both',\n  borderRadius: '50',\n  color: '#ff0000',\n  count: '4',\n  direction: 'column',\n  delay: '0.3'\n}\nLoadingDots.render(h, myOptions)\n```\n\n##### animation\n\nType: `string`\n\nDefault: use [default-animation](src/default-animation.js#L25) as a reference example\n\nThe animation for your dots\n\n##### borderRadius\n\nType: `number` or `string`\n\nDefault: `50`\n\n`0` for squares, `50` for circles, anything in between for a hybrid shape\n\n##### color\n\nType: `string`\n\nDefault: `'black'`\n\nThe color of your dots in [css color notation](https://developer.mozilla.org/en-US/docs/Web/CSS/color)\n\n##### count\n\nType: `number`\n\nDefault: `3`\n\nThe number of dots\n\n##### direction\n\nType: `string`\n\nDefault: `row`\n\n`'row'` or `'column'`. Whether your dots are horizontal or vertical\n\n##### delay\n\nType: `number`\n\nDefault: `0.16`\n\nThe [animation-delay](https://developer.mozilla.org/en-US/docs/Web/CSS/animation-delay) between each neighboring dot\n\n## TODO:\n\n- Add a few different `loadingDots` usage examples\n- Add documentation to highlight the importance of framework agnostic components\n- Research React and update the React example if necessary\n- Maybe add .jsx and hyperx examples\n- Add a script tag example\n- Think about exposing an api to extend the properties of Loading Dots' internal Vnodes\n\n## See Also\n\n- [virtual-dom](https://github.com/Matt-Esch/virtual-dom)\n\n## License\n\nMIT\n"
 }

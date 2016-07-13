@@ -10,16 +10,22 @@
     "package": "node ./build/scripts/buildPackage.js"
   },
   "repository": {
-    "type": "git",
-    "url": "git+https://github.com/exponentjs/xde.git"
+    "user": "exponentjs",
+    "repo": "xde",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/exponentjs/xde/tarball/master",
+    "clone_url": "https://github.com/exponentjs/xde",
+    "https_url": "https://github.com/exponentjs/xde",
+    "travis_url": "https://travis-ci.org/exponentjs/xde",
+    "zip_url": "https://github.com/exponentjs/xde/archive/master.zip",
+    "api_url": "https://api.github.com/repos/exponentjs/xde"
   },
   "author": {
     "name": "exponent.team@gmail.com"
   },
   "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/exponentjs/xde/issues"
-  },
   "homepage": "https://github.com/exponentjs/xde#readme",
   "devDependencies": {
     "@exponent/gulp-babel": "^7.1.0",
@@ -59,24 +65,29 @@
     "url": "^0.10.3"
   },
   "gitHead": "2e1f9c3d8a34b22ee449a0476918c95507d28713",
-  "_id": "xde@0.2.0",
-  "_shasum": "ea4a4aa29412cbabb553d00128af7034f8eafaf9",
-  "_from": ".",
   "_npmVersion": "2.14.2",
   "_nodeVersion": "4.0.0",
-  "_npmUser": {
-    "name": "exponent",
-    "email": "exponent.team@gmail.com"
-  },
   "dist": {
     "shasum": "ea4a4aa29412cbabb553d00128af7034f8eafaf9",
     "tarball": "http://registry.npmjs.org/xde/-/xde-0.2.0.tgz"
   },
-  "maintainers": [
+  "versions": [
+    {
+      "number": "0.2.0",
+      "date": "2015-09-11T07:00:56.625Z"
+    }
+  ],
+  "created": "2015-09-11T07:00:56.625Z",
+  "modified": "2015-09-11T07:00:56.625Z",
+  "lastPublisher": {
+    "name": "exponent",
+    "email": "exponent.team@gmail.com"
+  },
+  "owners": [
     {
       "name": "exponent",
       "email": "exponent.team@gmail.com"
     }
   ],
-  "directories": {}
+  "readme": "# xde [![Slack](http://slack.exponentjs.com/badge.svg)](http://slack.exponentjs.com)\nThe Exponent Development Environment - Beta release\n\nxde is currently in beta but we're really happy for you to try it out!\n\n\n## Quick Start Instructions\n\nWe're going to bundle it up so that you just have to download one standalone application but we haven't had a chance yet.\n\nIn the meantime, you can perform the following steps:\n  * `git clone` this repository,\n  * Make sure you have iojs version 2.3.1. If you don't have it, use [nvm]( https://github.com/creationix/nvm) to install it. It won't clobber other installations of node you have and you can choose just to use it for npm installing xde (which is all you need it for).\n\n```shell\n  touch ~/.profile\n  curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.26.1/install.sh | bash\n   [Open a new terminal window]\n  nvm install iojs-v2.3.1\n  nvm use iojs-v2.3.1\n```\n\n  * Go into the `xde/` directory where you cloned the Git repo and run `npm install`.\n  * Once that completes, run `npm start` to start the GUI.\n\n### Making a New Project\n\nTo make a new project, just click the \"New\" button in the upper left hand corner of the window. Then choose or make an empty directory where you want your project to live and hit OK.\n\nThis will setup that directory with a very basic React Native project that will work with Exponent and show off some basic but still cool things about React Native.\n\n### Viewing a Project on Your Phone\n\nOnce you create a new project (or open an existing project), you'll see some log messages that the packager has started and ngrok has started and the URL bar will get populated.\n\nThe url that begins with `exp://...` is the URL you can use to access your project while you're developing it. To view this on your phone, do the following:\n\n  * Go get the Exponent app on your iPhone or iPad. It's available [here](https://itunes.com/apps/exponent). We'll produce an Android version as soon as React Native for Android is ready, but for now it's only iOS!\n\n  * Open the Exponent app and put in your e-mail address.\n\n  * Go back to the xde GUI on your computer and put in your phone number or e-mail address into the text box in the header, then hit the \"Send Link\" button. This will send a link via e-mail or text message, so make sure you use an address or phone number you can access from your phone.\n\n  * Check your e-mail or texts and tap the link. The Exponent app should open and you should be able to view your experience there!\n\n### Converting an existing project to work with Exponent\n\nReact Native apps that don't use native modules can work with Exponent. To configure them, you typically need to do a few quick steps:\n\n  * In the directory that contains your React Native JavaScript source code, make sure there is a `package.json` file. There may already be one, but if not, run `npm init` to create one.\n\n  * If the entry point of your app is not `index.js` then add an entry `\"main\"` in your `package.json` and give the filename that is the entry point for your app. Entry point basically means the file that contains the root component of your app.\n\n  * At the bottom of your entry point file, add a line like this:\n\n  ```js\n  AppRegistry.registerComponent('main', () => MyRootComponentName);\n  ```\n\n  where `MyRootComponentName` is the name of your app's root component. There may already be a line like\n\n  ```js\n  AppRegistry.registerComponent('MyRootComponentName', () => MyRootComponentName);\n  ```\n\n  Just leave that; it's totally fine to register the same component twice under two different names. Exponent by default looks for the `main` entry.\n\n  Now you can open this directory in xde and send the URL to yourself and view what you've made.\n\n### Publishing a Project\n\nTo publish something you've made, just follow these steps:\n\n  * In xde, create an Exponent account or login to an existing one using the pane on the right of the header.\n\n  * Once you're logged in, open the project directory for the thing you want to publish. The packager should start, etc.\n\n  * Check to make sure you can load your app by sending the link to yourself and opening it in the Exponent app.\n\n  * Once everything looks good, hit the \"Publish\" button. A few seconds later, you should get a clean URL sent to you that points to the exp.host server where your package was published to.\n\nYou can publish as many times as you want and it will replace your old version, so don't worry about making a mistake!\n"
 }

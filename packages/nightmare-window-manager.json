@@ -8,8 +8,17 @@
     "test": "mocha test"
   },
   "repository": {
-    "type": "git",
-    "url": "git+https://github.com/rosshinkley/nightmare-window-manager.git"
+    "user": "rosshinkley",
+    "repo": "nightmare-window-manager",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/rosshinkley/nightmare-window-manager/tarball/master",
+    "clone_url": "https://github.com/rosshinkley/nightmare-window-manager",
+    "https_url": "https://github.com/rosshinkley/nightmare-window-manager",
+    "travis_url": "https://travis-ci.org/rosshinkley/nightmare-window-manager",
+    "zip_url": "https://github.com/rosshinkley/nightmare-window-manager/archive/master.zip",
+    "api_url": "https://api.github.com/repos/rosshinkley/nightmare-window-manager"
   },
   "author": {
     "name": "Ross Hinkley"
@@ -40,32 +49,38 @@
     "serve-static": "^1.10.0"
   },
   "gitHead": "28a0d7eb0fca1a72fa85ecb14d1a60b5701f2c8d",
-  "bugs": {
-    "url": "https://github.com/rosshinkley/nightmare-window-manager/issues"
-  },
   "homepage": "https://github.com/rosshinkley/nightmare-window-manager#readme",
-  "_id": "nightmare-window-manager@0.2.2",
-  "_shasum": "8ee9052f8a2351a8bddb6db492785d4e23db0ee8",
-  "_from": ".",
   "_npmVersion": "3.3.6",
   "_nodeVersion": "4.4.0",
-  "_npmUser": {
-    "name": "rosshinkley",
-    "email": "rosshinkley@gmail.com"
-  },
   "dist": {
     "shasum": "8ee9052f8a2351a8bddb6db492785d4e23db0ee8",
     "tarball": "http://registry.npmjs.org/nightmare-window-manager/-/nightmare-window-manager-0.2.2.tgz"
   },
-  "maintainers": [
+  "versions": [
+    {
+      "number": "0.2.0",
+      "date": "2016-05-22T16:51:15.144Z"
+    },
+    {
+      "number": "0.2.1",
+      "date": "2016-05-23T16:05:34.928Z"
+    },
+    {
+      "number": "0.2.2",
+      "date": "2016-05-23T16:10:19.053Z"
+    }
+  ],
+  "created": "2016-05-22T16:51:15.144Z",
+  "modified": "2016-05-23T16:10:19.053Z",
+  "lastPublisher": {
+    "name": "rosshinkley",
+    "email": "rosshinkley@gmail.com"
+  },
+  "owners": [
     {
       "name": "rosshinkley",
       "email": "rosshinkley@gmail.com"
     }
   ],
-  "_npmOperationalInternal": {
-    "host": "packages-12-west.internal.npmjs.com",
-    "tmp": "tmp/nightmare-window-manager-0.2.2.tgz_1464019816626_0.9924578473437577"
-  },
-  "directories": {}
+  "readme": "nightmare-window-manager\n======================\nAdd window management to your [Nightmare](http://github.com/segmentio/nightmare) scripts.\n\n## Usage\nSimply require the library:\n\n```js\nvar Nightmare = require('nightmare')\nrequire('nightmare-window-manager')(Nightmare)\n```\n... and then enable the window manager with `.windowManager()`.  It should be the first call in your Nightmare chain.\n\n### .windowManager()\nSets up window management.\n\n### .windows()\nGets a listing of the windows currently open under the Nightmare instance.\n\n### .waitWindowLoad()\nWaits for all of the windows to no longer be in a loading state.\n\n### .currentWindow()\nGets the current window.\n\n### .closeWindow(windowId)\nCloses the window specified by the window ID.  If the current window is the one being closed, the first non-closed window is set as focused.  __WARNING__: do not close the ID 1 as that will dispose the Nightmare plumbing.\n\n### focusWindow(windowId)\nSets the given window ID as focused.\n\n### evaluateWindow(fn[, arg1, arg2, ...])\nInvokes `fn` on the currently selected window with the arguments supplied.  All of the arguments are optional.  On completion, it returns the return value of `fn`, same as Nightmare's `.evaluate()`.\n\n## Example\n```js\nvar Nightmare = require('nightmare');\nrequire('nightmare-window-manager')(Nightmare);\nvar nightmare = Nightmare();\nnightmare\n    .windowManager()\n    .goto(url)\n    .click('#something_opens_a_window')\n    .waitWindowLoad()\n    .currentWindow()\n    .then(function(window){\n          //window contains useful information about the newly-opened window,\n          //including the window ID\n          console.dir(window)\n    });\n```\n"
 }

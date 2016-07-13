@@ -15,8 +15,17 @@
     "name": "freeman-lab"
   },
   "repository": {
-    "type": "git",
-    "url": "git+https://github.com/freeman-lab/pdf-to-png.git"
+    "user": "freeman-lab",
+    "repo": "pdf-to-png",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/freeman-lab/pdf-to-png/tarball/master",
+    "clone_url": "https://github.com/freeman-lab/pdf-to-png",
+    "https_url": "https://github.com/freeman-lab/pdf-to-png",
+    "travis_url": "https://travis-ci.org/freeman-lab/pdf-to-png",
+    "zip_url": "https://github.com/freeman-lab/pdf-to-png/archive/master.zip",
+    "api_url": "https://api.github.com/repos/freeman-lab/pdf-to-png"
   },
   "license": "MIT",
   "dependencies": {
@@ -31,32 +40,42 @@
     "tape": "^4.4.0"
   },
   "gitHead": "2575a4dcb6573263c65eb8dab4a8e1a5bb7efc6e",
-  "bugs": {
-    "url": "https://github.com/freeman-lab/pdf-to-png/issues"
-  },
   "homepage": "https://github.com/freeman-lab/pdf-to-png#readme",
-  "_id": "pdf-to-png@1.0.3",
-  "_shasum": "b4e48b02d800633d3711d6e8d288011c5e429696",
-  "_from": ".",
   "_npmVersion": "3.3.12",
   "_nodeVersion": "5.5.0",
-  "_npmUser": {
+  "dist": {
+    "shasum": "b4e48b02d800633d3711d6e8d288011c5e429696",
+    "tarball": "http://registry.npmjs.org/pdf-to-png/-/pdf-to-png-1.0.3.tgz"
+  },
+  "versions": [
+    {
+      "number": "1.0.0",
+      "date": "2016-02-20T20:09:54.138Z"
+    },
+    {
+      "number": "1.0.1",
+      "date": "2016-02-21T23:22:51.726Z"
+    },
+    {
+      "number": "1.0.2",
+      "date": "2016-02-22T01:50:58.998Z"
+    },
+    {
+      "number": "1.0.3",
+      "date": "2016-04-12T06:32:38.371Z"
+    }
+  ],
+  "created": "2016-02-20T20:09:54.138Z",
+  "modified": "2016-04-12T06:32:38.371Z",
+  "lastPublisher": {
     "name": "freeman-lab",
     "email": "the.freeman.lab@gmail.com"
   },
-  "maintainers": [
+  "owners": [
     {
       "name": "freeman-lab",
       "email": "the.freeman.lab@gmail.com"
     }
   ],
-  "dist": {
-    "shasum": "b4e48b02d800633d3711d6e8d288011c5e429696",
-    "tarball": "http://registry.npmjs.org/pdf-to-png/-/pdf-to-png-1.0.3.tgz"
-  },
-  "_npmOperationalInternal": {
-    "host": "packages-16-east.internal.npmjs.com",
-    "tmp": "tmp/pdf-to-png-1.0.3.tgz_1460442756927_0.6019979470875114"
-  },
-  "directories": {}
+  "readme": "# pdf-to-png\n\nRender a PDF to a PNG, useful for generating thumbnails. Uses [`electron-spawn`](https://github.com/maxogden/electron-spawn) and [`pdf.js`](https://mozilla.github.io/pdf.js/), so it doesn't require any image processing libraries. Supports a custom scale factor. Currently only renders the first page.\n\n[![js-standard-style](https://cdn.rawgit.com/feross/standard/master/badge.svg)](https://github.com/feross/standard)\n\n## install\n\n```\nnpm install pdf-to-png\n```\n\n## example\n\nUse as a command line tool\n\n```bash\npdf-to-png -i goat.pdf -o goat.png\n```\n\nOr as a module\n\n```javascript\nrequire('pdf-to-png')({\n\tinput: 'goat.pdf',\n\toutput: 'goat.png'\n})\n```\n\nTo run the included example clone this repo then call\n\n```\nnpm run example\n```\n\n## usage\n\n##### `pdf-to-png -i input -o output -s scale`\n\n- `input`: input file\n- `output`: output file\n- `scale`: fraction of full size\n\n##### `require('pdf-to-png')(opts, [cb])`\n\n- `opts.input`: input file\n- `opts.output`: output file\n- `opts.scale`: fraction of full size\n- `cb`: optional callback to be called on completion\n\n"
 }

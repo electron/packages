@@ -1,0 +1,88 @@
+{
+  "name": "taglib2",
+  "version": "2.5.6",
+  "description": "taglib version2 bindings",
+  "dependencies": {
+    "cmake-js": "2",
+    "nan": "2"
+  },
+  "scripts": {
+    "test": "tape ./tests",
+    "install": "bash ./install.sh"
+  },
+  "devDependencies": {
+    "mkdirp": "^0.5.1",
+    "rimraf": "^2.5.2",
+    "tape": "*"
+  },
+  "gitHead": "501138c6f0d1e17c9137952570e87f900aeba597",
+  "_npmVersion": "3.9.5",
+  "_nodeVersion": "6.2.2",
+  "dist": {
+    "shasum": "f22e2755c94cbfc997f1b08c118d4c473d7208a6",
+    "tarball": "http://registry.npmjs.org/taglib2/-/taglib2-2.5.6.tgz"
+  },
+  "versions": [
+    {
+      "number": "1.0.0",
+      "date": "2016-04-10T03:25:11.995Z"
+    },
+    {
+      "number": "1.1.0",
+      "date": "2016-04-10T19:18:15.790Z"
+    },
+    {
+      "number": "1.2.1",
+      "date": "2016-04-12T19:21:30.374Z"
+    },
+    {
+      "number": "1.3.1",
+      "date": "2016-04-19T21:28:26.098Z"
+    },
+    {
+      "number": "1.4.1",
+      "date": "2016-04-22T20:52:48.351Z"
+    },
+    {
+      "number": "1.5.1",
+      "date": "2016-04-23T19:16:44.827Z"
+    },
+    {
+      "number": "2.5.1",
+      "date": "2016-04-24T17:35:32.766Z"
+    },
+    {
+      "number": "2.5.2",
+      "date": "2016-05-26T16:09:54.490Z"
+    },
+    {
+      "number": "2.5.3",
+      "date": "2016-06-02T19:14:48.958Z"
+    },
+    {
+      "number": "2.5.4",
+      "date": "2016-07-07T16:50:27.153Z"
+    },
+    {
+      "number": "2.5.5",
+      "date": "2016-07-08T20:23:24.311Z"
+    },
+    {
+      "number": "2.5.6",
+      "date": "2016-07-13T20:39:32.444Z"
+    }
+  ],
+  "created": "2016-04-10T03:25:11.995Z",
+  "modified": "2016-07-13T20:39:32.444Z",
+  "lastPublisher": {
+    "name": "hij1nx",
+    "email": "paolo@async.ly"
+  },
+  "owners": [
+    {
+      "name": "hij1nx",
+      "email": "paolo@async.ly"
+    }
+  ],
+  "readme": "# SYNOPSIS\ntaglib version 2 bindings\n\n# USAGE\nFor example, with electron...\n\n```\nELECTRON=1 npm install\n```\n\n### WRITING TAGS\nNote that `track` will overwrite `tracknumber` if specified in the same write.\n\n```js\nconst taglib = require('taglib2')\nconst mime = require('node-mime')\nconst fs = require('fs')\n\nconst props = {\n  artist: 'Howlin\\' Wolf',\n  title: 'Evil is goin\\' on',\n  album: 'Smokestack Lightnin\\'',\n  comment: 'Chess Master Series',\n  genre: 'blues',\n  year: 1951,\n  track: 3,\n  tracknumber: '1/1',\n  discnumber: '1/1',\n  pictures: [\n    {\n      \"mimetype\": mime('./cover.jpg'),\n      \"picture\": fs.readFileSync('./cover.jpg')\n    } \n  ],\n}\n\ntaglib.writeTagsSync('./file.mp3', props)\n```\n\n### READING TAGS\n\n```js\nconst taglib = require('taglib2')\nconst tags = taglib.readTagsSync('./file.mp3')\n```\n\n#### OUTPUT\n`tags.pictures` will be an array of buffers that contain image data.\n\n```json\n{\n  \"artist\": \"Howlin' Wolf\",\n  \"albumartist\": \"Howlin' Wolf\",\n  \"title\": \"Evil is goin' on\",\n  \"album\": \"Smokestack Lightnin'\",\n  \"comment\": \"Chess Master Series\",\n  \"composer\": \"Chester Burnett\",\n  \"genre\": \"blues\",\n  \"year\": 1951,\n  \"track\": 3,\n  \"tracknumber\": \"3/3\",\n  \"discnumber\": \"1/1\",\n  \"pictures\": [\n    {\n      \"mimetype\": \"image/jpeg\",\n      \"picture\": <Buffer ff d8 ff e0 00 10 4a 46 49 46 00 01 ... >\n    } \n  ],\n  \"bitrate\": 192,\n  \"bpm\": 120,\n  \"samplerate\": 44100,\n  \"channels\": 2,\n  \"compilation\": false,\n  \"time\": \"1:30\",\n  \"length\": 90\n}\n```\n\n"
+}

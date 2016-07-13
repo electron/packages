@@ -15,8 +15,17 @@
     "LICENSE"
   ],
   "repository": {
-    "type": "git",
-    "url": "git://github.com/maxkueng/chromium-net-errors.git"
+    "user": "maxkueng",
+    "repo": "chromium-net-errors",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/maxkueng/chromium-net-errors/tarball/master",
+    "clone_url": "https://github.com/maxkueng/chromium-net-errors",
+    "https_url": "https://github.com/maxkueng/chromium-net-errors",
+    "travis_url": "https://travis-ci.org/maxkueng/chromium-net-errors",
+    "zip_url": "https://github.com/maxkueng/chromium-net-errors/archive/master.zip",
+    "api_url": "https://api.github.com/repos/maxkueng/chromium-net-errors"
   },
   "scripts": {
     "generate": "node tools/generate.js",
@@ -44,28 +53,42 @@
     "through2": "^0.6.5"
   },
   "gitHead": "260d1f7172d965b5a587694225e850f8382fdc0c",
-  "bugs": {
-    "url": "https://github.com/maxkueng/chromium-net-errors/issues"
-  },
   "homepage": "https://github.com/maxkueng/chromium-net-errors#readme",
-  "_id": "chromium-net-errors@1.0.3",
-  "_shasum": "95c2361efbfb1eb2d385933a57d93559d9c7bf01",
-  "_from": ".",
   "_npmVersion": "3.5.2",
   "_nodeVersion": "5.3.0",
-  "_npmUser": {
-    "name": "maxkueng",
-    "email": "me@maxkueng.com"
-  },
   "dist": {
     "shasum": "95c2361efbfb1eb2d385933a57d93559d9c7bf01",
     "tarball": "http://registry.npmjs.org/chromium-net-errors/-/chromium-net-errors-1.0.3.tgz"
   },
-  "maintainers": [
+  "versions": [
+    {
+      "number": "1.0.0",
+      "date": "2015-04-26T04:53:46.980Z"
+    },
+    {
+      "number": "1.0.1",
+      "date": "2015-04-26T05:03:18.524Z"
+    },
+    {
+      "number": "1.0.2",
+      "date": "2015-04-26T05:30:49.652Z"
+    },
+    {
+      "number": "1.0.3",
+      "date": "2016-01-07T11:10:07.485Z"
+    }
+  ],
+  "created": "2015-04-26T04:53:46.980Z",
+  "modified": "2016-01-07T11:10:07.485Z",
+  "lastPublisher": {
+    "name": "maxkueng",
+    "email": "me@maxkueng.com"
+  },
+  "owners": [
     {
       "name": "maxkueng",
       "email": "me@maxkueng.com"
     }
   ],
-  "directories": {}
+  "readme": "Chromium Network Errors\n=======================\n\n[![Build Status](https://secure.travis-ci.org/maxkueng/chromium-net-errors.png?branch=master)](http://travis-ci.org/maxkueng/chromium-net-errors)\n\nProvides Chromium network errors found in\n[net_error_list.h](http://src.chromium.org/svn/trunk/src/net/base/net_error_list.h)\nas custom errors for Node.js. \n\nThey correspond to the error codes that could be provided by\n[Electron](https://github.com/atom/electron)'s `did-fail-load` event, for\nexample.\n\n## Install\n\n```sh\nnpm install chromium-net-errors --save\n```\n\n## Example Electron app\n\n```js\nvar app = require('app');\nvar BrowserWindow = require('browser-window');\nvar networkErrors = require('chromium-net-errors');\n\napp.on('ready', function () {\n\n  var win = new BrowserWindow({ width: 800, height: 600 });\n\n  win.webContents.on('did-fail-load', function (e, errorCode) {\n    throw networkErrors.createByCode(errorCode);\n  });\n\n  win.loadUrl('http://blablanotexist.com');\n\n});\n```\n\nWill pop-up the following error:\n\n```\nUncaught Exception:\nNameNotResolvedError: The host name could not be resolved.\n    at Object.exports.createByCode (/tmp/ele/node_modules/chromium-net-errors/index.js:72:9)\n    at EventEmitter.<anonymous> (/tmp/ele/app.js:10:25)\n    at emitThree (events.js:97:13)\n    at EventEmitter.emit (events.js:172:7)\n```\n\n## Usage\n\n```js\nvar cne = require('chromium-net-errors');\n```\n\n### Create new errors\n\n```js\nvar err = new cne.ConnectionTimedOutError();\n\nconsole.log(err instanceof Error); // true\nconsole.log(err instanceof cne.ChromiumNetError); // true\nconsole.log(err instanceof cne.ConnectionTimedOutError); // true\n```\n\n### Create errors by code\n\n```js\nvar err = cne.createByCode(-201);\n\nconsole.log(err instanceof cne.CertDateInvalidError);\n// true\n\nconsole.log(err.isCertificateError());\n// true\n\nconsole.log(err.type); \n// certificate\n\nconsole.log(err.message);\n// The server responded with a certificate that is signed by an authority\n// we don't trust.  The could mean:\n//\n// 1. An attacker has substituted the real certificate for a cert that\n//    contains his public key and is signed by his cousin.\n//\n// 2. The server operator has a legitimate certificate from a CA we don't\n//    know about, but should trust.\n//\n// 3. The server is presenting a self-signed certificate, providing no\n//    defense against active attackers (but foiling passive attackers).\n```\n\n## License\n\nMIT\n"
 }

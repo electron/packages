@@ -7,41 +7,64 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
-    "type": "git",
-    "url": "git+https://github.com/romeobalta/electron-simple-templates.git"
+    "user": "romeobalta",
+    "repo": "electron-simple-templates",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/romeobalta/electron-simple-templates/tarball/master",
+    "clone_url": "https://github.com/romeobalta/electron-simple-templates",
+    "https_url": "https://github.com/romeobalta/electron-simple-templates",
+    "travis_url": "https://travis-ci.org/romeobalta/electron-simple-templates",
+    "zip_url": "https://github.com/romeobalta/electron-simple-templates/archive/master.zip",
+    "api_url": "https://api.github.com/repos/romeobalta/electron-simple-templates"
   },
   "author": {
     "name": "Romeo Balta",
     "email": "romeobalta@gmail.com"
   },
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/romeobalta/electron-simple-templates/issues"
-  },
   "homepage": "https://github.com/romeobalta/electron-simple-templates#readme",
   "gitHead": "dda67853e7bea6c8bf2a2b4ff701c66e38ae6f2b",
-  "_id": "electron-simple-templates@1.1.0",
-  "_shasum": "3da6e471f0ba0566f84fba35c2e713ab1656cb40",
-  "_from": ".",
   "_npmVersion": "2.14.12",
   "_nodeVersion": "4.3.1",
-  "_npmUser": {
-    "name": "romeobalta",
-    "email": "romeobalta@gmail.com"
-  },
   "dist": {
     "shasum": "3da6e471f0ba0566f84fba35c2e713ab1656cb40",
     "tarball": "http://registry.npmjs.org/electron-simple-templates/-/electron-simple-templates-1.1.0.tgz"
   },
-  "maintainers": [
+  "versions": [
+    {
+      "number": "1.0.0",
+      "date": "2016-02-25T18:47:12.799Z"
+    },
+    {
+      "number": "1.0.1",
+      "date": "2016-02-25T18:58:39.354Z"
+    },
+    {
+      "number": "1.0.2",
+      "date": "2016-02-25T21:51:37.466Z"
+    },
+    {
+      "number": "1.0.3",
+      "date": "2016-02-26T20:52:03.797Z"
+    },
+    {
+      "number": "1.1.0",
+      "date": "2016-02-26T21:33:16.061Z"
+    }
+  ],
+  "created": "2016-02-25T18:47:12.799Z",
+  "modified": "2016-02-26T21:33:16.061Z",
+  "lastPublisher": {
+    "name": "romeobalta",
+    "email": "romeobalta@gmail.com"
+  },
+  "owners": [
     {
       "name": "romeobalta",
       "email": "romeobalta@gmail.com"
     }
   ],
-  "_npmOperationalInternal": {
-    "host": "packages-9-west.internal.npmjs.com",
-    "tmp": "tmp/electron-simple-templates-1.1.0.tgz_1456522393117_0.9157376915682107"
-  },
-  "directories": {}
+  "readme": "# electron-simple-templates\nSimple templating system for electron.\n\n## Instalation\n\n```sh\n$ npm install electron-simple-templates --save\n```\n\n## How to use\n\nInitialize the module then set the path to the views folder:\n\n```javascript\nvar template = require('electron-simple-templates');\ntemplate.path('app/views');\n```\n\nViews folder should have a `blocks` folder and a `templates` folder like in the picture:\n\n![Folder structure](https://raw.githubusercontent.com/romeobalta/electron-simple-templates/master/folder-structure.png)\n\nAs you can see in the folder structure too, we have two types of elements:\n\n### 1. Templates\n\nTemplates elements look like this in the html:\n\n```html\n<tpl name=\"template\"></tpl>\n<tpl name=\"template2\"></tpl>\n```\n\nWhen you run\n\n```javascript\ntemplate.build();\n```\nThe content in `template.tp` will be compiled and set in `<tpl name=\"template\"></tpl>` and `template2.tp` compiled then set in `<tpl name=\"template2\"></tpl>`\n\nVariables look like this:\n```html\n<!-- template.tp -->\n<p>This is a {{ element.name }}</p>\n```\n\nAnd their data can be set by:\n```javascript\ntemplate.data('template', { element : { name : 'paragraph' } } );\n```\nThe first parameter is the template name, the second data in `JSON` format.\nData is compiled when the `build()` command is run. You can set data then call `build()` again to recompile.\nYou can also compile only one template using\n\n```javascript\ntemplate.build('template');\n```\n\n### 2. Blocks\n\nBlocks elements look like this in the html:\n\n```html\n<block name=\"container\"></block>\n```\n\nThese are not automatically compile.\nIf you want the set the content of a block, you do it like this:\n\n```javascript\ntemplate.block('container').set('login');\n```\n\nThis will take the content in `login.bp` and set it in `<block name=\"container\"></block>`"
 }

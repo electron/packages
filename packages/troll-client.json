@@ -1,0 +1,63 @@
+{
+  "name": "troll-client",
+  "repository": {
+    "user": "benmccormick",
+    "repo": "trello-client",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/benmccormick/trello-client/tarball/master",
+    "clone_url": "https://github.com/benmccormick/trello-client",
+    "https_url": "https://github.com/benmccormick/trello-client",
+    "travis_url": "https://travis-ci.org/benmccormick/trello-client",
+    "zip_url": "https://github.com/benmccormick/trello-client/archive/master.zip",
+    "api_url": "https://api.github.com/repos/benmccormick/trello-client"
+  },
+  "version": "0.0.3",
+  "description": "A promise based Trello client usable from npm",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": {
+    "name": "benmccormick",
+    "email": "ben.mccormick@alumni.duke.edu",
+    "url": "http://benmccormick.org/"
+  },
+  "license": "MIT",
+  "gitHead": "48d50ad0b2aed5c69163a8607c4c4adcda18b3f1",
+  "homepage": "https://github.com/benmccormick/trello-client#readme",
+  "_npmVersion": "3.8.6",
+  "_nodeVersion": "6.0.0",
+  "dist": {
+    "shasum": "fdd2149df8edd46949b46a111380eb0092a8a1e8",
+    "tarball": "http://registry.npmjs.org/troll-client/-/troll-client-0.0.3.tgz"
+  },
+  "versions": [
+    {
+      "number": "0.0.1",
+      "date": "2016-05-15T03:51:37.919Z"
+    },
+    {
+      "number": "0.0.2",
+      "date": "2016-05-15T04:25:40.210Z"
+    },
+    {
+      "number": "0.0.3",
+      "date": "2016-05-16T02:50:24.215Z"
+    }
+  ],
+  "created": "2016-05-15T03:51:37.919Z",
+  "modified": "2016-05-16T02:50:24.215Z",
+  "lastPublisher": {
+    "name": "benmccormick",
+    "email": "ben.mccormick@alumni.duke.edu"
+  },
+  "owners": [
+    {
+      "name": "benmccormick",
+      "email": "ben.mccormick@alumni.duke.edu"
+    }
+  ],
+  "readme": "### Troll-Client: A Modern Trello Client For Browsers/Electron\n\nThis is still a (big-time) WIP, but is an attempt to port Trello's [client.js](https://developers.trello.com/clientjs) to be more useful\nin a modern setup.  It loses the jQuery dependency, instead depending on fetch and promises.  \n\nCurrently it is only usable in modern browsers, I intend to make it easier to use with fetch polyfills on Node, and may explore\ntranspiling away the ES6 features currently used in the code.  This is early days, but contributions are welcome.\n\n\n**Usage**\n\n```\nvar Trello = require('troll-client');\nvar t = new Trello('<application-key>');\n\n\nt.authorize({\n  type: 'popup',\n  name: 'Getting Started Application',\n  scope: {\n    read: true,\n    write: true\n  },\n  expiration: 'never',\n}).then(() => {\n    t.get('members/me').then((data) => console.log(data));\n})\n```\n"
+}

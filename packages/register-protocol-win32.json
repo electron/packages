@@ -7,8 +7,17 @@
     "test": "mocha"
   },
   "repository": {
-    "type": "git",
-    "url": "git+https://github.com/dennyferra/register-protocol-win32.git"
+    "user": "dennyferra",
+    "repo": "register-protocol-win32",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/dennyferra/register-protocol-win32/tarball/master",
+    "clone_url": "https://github.com/dennyferra/register-protocol-win32",
+    "https_url": "https://github.com/dennyferra/register-protocol-win32",
+    "travis_url": "https://travis-ci.org/dennyferra/register-protocol-win32",
+    "zip_url": "https://github.com/dennyferra/register-protocol-win32/archive/master.zip",
+    "api_url": "https://api.github.com/repos/dennyferra/register-protocol-win32"
   },
   "keywords": [
     "register",
@@ -22,9 +31,6 @@
     "name": "Denny Ferrassoli"
   },
   "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/dennyferra/register-protocol-win32/issues"
-  },
   "homepage": "https://github.com/dennyferra/register-protocol-win32#readme",
   "dependencies": {
     "winreg": "^1.1.1"
@@ -35,28 +41,29 @@
     "mocha": "^2.4.5"
   },
   "gitHead": "92618cd9f4b86c3bdd8b4aa77d95bd4efc661e9d",
-  "_id": "register-protocol-win32@1.0.0",
-  "_shasum": "2482771fc837730cb260307ebe82e6b9caca0810",
-  "_from": ".",
   "_npmVersion": "3.7.3",
   "_nodeVersion": "5.8.0",
-  "_npmUser": {
-    "name": "dennyferra",
-    "email": "denny.ferrassoli@gmail.com"
-  },
   "dist": {
     "shasum": "2482771fc837730cb260307ebe82e6b9caca0810",
     "tarball": "http://registry.npmjs.org/register-protocol-win32/-/register-protocol-win32-1.0.0.tgz"
   },
-  "maintainers": [
+  "versions": [
+    {
+      "number": "1.0.0",
+      "date": "2016-04-16T18:05:42.210Z"
+    }
+  ],
+  "created": "2016-04-16T18:05:42.210Z",
+  "modified": "2016-04-16T18:05:42.210Z",
+  "lastPublisher": {
+    "name": "dennyferra",
+    "email": "denny.ferrassoli@gmail.com"
+  },
+  "owners": [
     {
       "name": "dennyferra",
       "email": "denny.ferrassoli@gmail.com"
     }
   ],
-  "_npmOperationalInternal": {
-    "host": "packages-12-west.internal.npmjs.com",
-    "tmp": "tmp/register-protocol-win32-1.0.0.tgz_1460829941776_0.16354899480938911"
-  },
-  "directories": {}
+  "readme": "# register-protocol-win32\r\n\r\nRegister a custom protocol (ie. myapp://) on Windows.\r\n\r\nInstall\r\n-------\r\n\r\nInstall via npm\r\n\r\n    npm install register-protocol-win32\r\n\r\nDocumentation\r\n-------------\r\n\r\n* `install(protocol, command, options)` *(promise)* - Creates a new, or updates if existing, protocol in the Windows registry. Returns a promise.\r\n    + `protocol` *(string required)* - The name of the protocol you want to register, example: `myapp`\r\n\t+ `command` *(string required)* - The command that will be executed when your protocol is run, example: `\"C:\\\\Program Files\\\\myapp.exe\" \"%1\" \"%2\"`\r\n\t+ `options` *(object optional)* -\r\n\t    + `allUsers` *(boolean)* - If `true` creates protocol in HKEY_LOCAL_MACHINE (**requires administrator privileges**) otherwise creates in HKEY_CURRENT_USER\r\n        + `icon` *(string)* - The path to the icon, example: `C:\\\\Program Files\\\\myapp.exe,1`\r\n\t\t}\r\n\r\n* `uninstall(protocol, options)` (promise) - Removes the specified protocol from the Windows registry. Returns a promise.\r\n\t+ `protocol` *(string required)* - The name of the protocol to remove, example: *myapp*\r\n\t+ `options` *(object optional)*\r\n\t\t+ `allUsers` (boolean) - If `true` removes protocol from HKEY_LOCAL_MACHINE (**requires administrator privileges**) otherwise removes from HKEY_CURRENT_USER\r\n\r\nUsage\r\n-----\r\n\r\n```javascript\r\nvar protocol = require('register-protocol-win32');\r\n\r\nprotocol.install('myapp', '\"C:\\\\myapp.exe\" \"%1\"')\r\n    .then(function() {\r\n        // Success\r\n    })\r\n    .catch(function(err) {\r\n        // Failed\r\n    });\r\n\r\nprotocol.uninstall('myapp')\r\n    .then(function() {\r\n        // Success\r\n    })\r\n    .catch(function(err) {\r\n        // Failed\r\n    });\r\n```\r\n\r\nTests\r\n-----\r\n\r\nRun via npm\r\n\r\n\tnpm test\r\n\r\nAttribution\r\n-----------\r\n\r\nThis library is based in part by work done on [WebTorrent Desktop](https://github.com/feross/webtorrent-desktop) by [Feross Aboukhadijeh](http://feross.org/).\r\n\r\nLicense\r\n-------\r\n\r\nMIT. Copyright (c) [Denny Ferrassoli](http://www.dennyferra.com)\r\n"
 }

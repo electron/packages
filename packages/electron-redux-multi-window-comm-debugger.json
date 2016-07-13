@@ -55,35 +55,42 @@
   "homepage": "https://github.com/MichalBures/electron-redux-multi-window-comm-debugger",
   "license": "MIT",
   "repository": {
-    "type": "git",
-    "url": "git+https://github.com/MichalBures/electron-redux-multi-window-comm-debugger.git"
+    "user": "MichalBures",
+    "repo": "electron-redux-multi-window-comm-debugger",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/MichalBures/electron-redux-multi-window-comm-debugger/tarball/master",
+    "clone_url": "https://github.com/MichalBures/electron-redux-multi-window-comm-debugger",
+    "https_url": "https://github.com/MichalBures/electron-redux-multi-window-comm-debugger",
+    "travis_url": "https://travis-ci.org/MichalBures/electron-redux-multi-window-comm-debugger",
+    "zip_url": "https://github.com/MichalBures/electron-redux-multi-window-comm-debugger/archive/master.zip",
+    "api_url": "https://api.github.com/repos/MichalBures/electron-redux-multi-window-comm-debugger"
   },
   "gitHead": "48fed8bb61756fd35ffe3cc05302fb6d69efda2a",
-  "bugs": {
-    "url": "https://github.com/MichalBures/electron-redux-multi-window-comm-debugger/issues"
-  },
-  "_id": "electron-redux-multi-window-comm-debugger@1.0.0",
-  "_shasum": "955767d8e7db18c0f79a01f74ccc57fae70e5c61",
-  "_from": ".",
   "_npmVersion": "3.3.3",
   "_nodeVersion": "5.6.0",
-  "_npmUser": {
-    "name": "michalbures",
-    "email": "hello@bures.io"
-  },
   "dist": {
     "shasum": "955767d8e7db18c0f79a01f74ccc57fae70e5c61",
     "tarball": "http://registry.npmjs.org/electron-redux-multi-window-comm-debugger/-/electron-redux-multi-window-comm-debugger-1.0.0.tgz"
   },
-  "maintainers": [
+  "versions": [
+    {
+      "number": "1.0.0",
+      "date": "2016-04-14T17:36:42.006Z"
+    }
+  ],
+  "created": "2016-04-14T17:36:42.006Z",
+  "modified": "2016-04-14T17:36:42.006Z",
+  "lastPublisher": {
+    "name": "michalbures",
+    "email": "hello@bures.io"
+  },
+  "owners": [
     {
       "name": "michalbures",
       "email": "hello@bures.io"
     }
   ],
-  "_npmOperationalInternal": {
-    "host": "packages-12-west.internal.npmjs.com",
-    "tmp": "tmp/electron-redux-multi-window-comm-debugger-1.0.0.tgz_1460655399632_0.5314849740825593"
-  },
-  "directories": {}
+  "readme": "# Debugger for electron-redux-multi-window-comm\r\n\r\nDebugger for [electron-redux-multi-window-comm](https://github.com/MichalBures/electron-redux-multi-window-comm) in the form of a React component.\r\n\r\nThis debugger component displays:\r\n\r\n* List of currently tracked windows\r\n* Current window's subscriptions and their status\r\n* List of subscribers to this window state or actions\r\n* List of Global Actions (needs to be enabled in enhancer options)\r\n\r\n## Instalation\r\n\r\n`npm install electron-redux-multi-window-comm-debugger --save-dev`\r\n\r\n\r\n## Config\r\n\r\nIn order to display Global Actions the debug mode needs to be enabled in [electron-redux-multi-window-comm](http://aaa.aa \"electron-redux-multi-window-comm\") enhancer options.\r\n\r\n```javascript\r\n{\r\n\"debug\": {\r\n    \"enabled\": true,\r\n    \"numOfActionsToStore\": 20\r\n  }\r\n}\r\n```\r\n\r\n## Usage\r\n\r\n```javascript\r\nimport Debugger from 'electron-redux-multi-window-comm-debugger';\r\n// Import css styles when using webpack or copy them to your css folder\r\nimport 'electron-redux-multi-window-comm-debugger/lib/styles.css';\r\n\r\nrender() {\r\n  return <Debugger />\r\n}\r\n```\r\nOr you can import only parts of the debugger:\r\n\r\n```javascript\r\nimport {\r\n  SubscribersList,\r\n  SubscriptionList,\r\n  WindowsList,\r\n  GlobalActionList,\r\n} from 'electron-redux-multi-window-comm-debugger';\r\n\r\nrender() {\r\n  return <GlobalActionList />\r\n}\r\n```\r\n \r\n## Screenshots\r\n\r\n![Debugger](http://i.imgur.com/xnfXAvw.png)\r\n\r\n\r\n\r\n## License\r\n\r\nMIT"
 }

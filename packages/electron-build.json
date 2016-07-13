@@ -6,7 +6,7 @@
     "name": "help@electronbuild.com"
   },
   "license": "MIT",
-  "repository": {},
+  "repository": null,
   "bin": {
     "ebuild": "./index.js"
   },
@@ -21,29 +21,38 @@
     "request": "2.72.0",
     "url": "0.11.0"
   },
-  "_id": "electron-build@0.0.3",
   "scripts": {},
-  "_shasum": "1096e019adb0bedfaf217610d7296f1baaf04638",
-  "_from": ".",
   "_npmVersion": "2.15.1",
   "_nodeVersion": "4.4.4",
-  "_npmUser": {
-    "name": "damiant",
-    "email": "help@electronbuild.com"
-  },
   "dist": {
     "shasum": "1096e019adb0bedfaf217610d7296f1baaf04638",
     "tarball": "http://registry.npmjs.org/electron-build/-/electron-build-0.0.3.tgz"
   },
-  "maintainers": [
+  "versions": [
+    {
+      "number": "0.0.1",
+      "date": "2016-05-19T04:53:02.910Z"
+    },
+    {
+      "number": "0.0.2",
+      "date": "2016-05-19T05:22:23.596Z"
+    },
+    {
+      "number": "0.0.3",
+      "date": "2016-05-19T05:23:24.515Z"
+    }
+  ],
+  "created": "2016-05-19T04:53:02.910Z",
+  "modified": "2016-05-19T05:23:24.515Z",
+  "lastPublisher": {
+    "name": "damiant",
+    "email": "help@electronbuild.com"
+  },
+  "owners": [
     {
       "name": "damiant",
       "email": "help@electronbuild.com"
     }
   ],
-  "_npmOperationalInternal": {
-    "host": "packages-16-east.internal.npmjs.com",
-    "tmp": "tmp/electron-build-0.0.3.tgz_1463635399880_0.8201195748988539"
-  },
-  "directories": {}
+  "readme": "# electron-build\r\n\r\n> Upload your app (html, css, js) to the Electron Build Service (www.electronbuild.com) to package it up into an installable Windows or Mac App.  \r\n\r\n## Getting Started\r\nThis package provides a command line for the Electron Build Service. You will need a username and password on www.electronbuild.com in order to use this tool.\r\n\r\n```shell\r\n> npm install electron-build -g\r\n```\r\n\r\nOnce installed, you can access it via command line:\r\n```shell\r\n> ebuild mySourceFolder --app MyAppName\r\n```\r\nThis will upload everything in the folder mySourceFolder and package it up as an app called \"MyAppName\". It will wait until complete and then download the packages to the local folder\r\n- For Windows this will create an installer called InstallMyAppName.exe\r\n- For Mac this will create an installer called MyAppName.dmg\r\n- Linux downloads coming soon....\r\n\r\n\r\n## Automatically entering username & password\r\nUse the flags --username and --password (or -u and -p) as below:\r\n```shell\r\n> ebuild mySourceFolder --app MyAppName --username [username] --password [password]\r\n```\r\nWhere [username] and [password] are your login credentials at www.electronbuild.com\r\n\r\n## Other Flags\r\n```shell\r\n  --app         Specify the application's name or alternatively specify the appid (alternative flag is -a)\r\n  --username    Your username at www.electronbuild.com\r\n  --password    Your password at www.electronbuild.com\r\n  --list        List all applications and downloads you have created (alternative flag is -l)  \r\n  --verbose     Log verbose information (alternative flag is -v)\r\n  --skipwait    Dont wait to download installations. Just upload to Electron Build for processing (alternative flag is -sw)\r\n```\r\n\r\n## Getting Help\r\nThis will display all command line options.\r\n```shell\r\n> ebuild --help\r\n```\r\n\r\n## Why have a build service?\r\nThe Electron Build Service provides these features that do not come with the free Electron tools:\r\n- A Mac, Windows (& soon to come Linux) installs without requiring that hardware\r\n- Offloading of the heavy lifting of building for each of those platforms (ie faster builds)\r\n- Packaging of the app in a simple installation with its own icon\r\n- App is available in Windows \"Add/Remove programs\" and is uninstallable and versioned"
 }

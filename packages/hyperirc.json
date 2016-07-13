@@ -26,17 +26,23 @@
     "test": "standard"
   },
   "repository": {
-    "type": "git",
-    "url": "https://github.com/mafintosh/hyperirc.git"
+    "user": "mafintosh",
+    "repo": "hyperirc",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/mafintosh/hyperirc/tarball/master",
+    "clone_url": "https://github.com/mafintosh/hyperirc",
+    "https_url": "https://github.com/mafintosh/hyperirc",
+    "travis_url": "https://travis-ci.org/mafintosh/hyperirc",
+    "zip_url": "https://github.com/mafintosh/hyperirc/archive/master.zip",
+    "api_url": "https://api.github.com/repos/mafintosh/hyperirc"
   },
   "author": {
     "name": "Mathias Buus",
     "url": "@mafintosh"
   },
   "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/mafintosh/hyperirc/issues"
-  },
   "homepage": "https://github.com/mafintosh/hyperirc",
   "optionalDependencies": {
     "electron-webrtc": "^0.2.5",
@@ -45,28 +51,45 @@
     "webrtc-swarm": "^2.4.0"
   },
   "gitHead": "301a1f44c6444ba5a628aadb2a3b7a18ca2bae10",
-  "_id": "hyperirc@2.0.0",
-  "_shasum": "422ce9f215fd7315a6f539f9cd526b26cc0921b3",
-  "_from": ".",
   "_npmVersion": "2.15.1",
   "_nodeVersion": "4.4.3",
-  "_npmUser": {
-    "name": "mafintosh",
-    "email": "mathiasbuus@gmail.com"
-  },
   "dist": {
     "shasum": "422ce9f215fd7315a6f539f9cd526b26cc0921b3",
     "tarball": "http://registry.npmjs.org/hyperirc/-/hyperirc-2.0.0.tgz"
   },
-  "maintainers": [
+  "versions": [
+    {
+      "number": "1.0.0",
+      "date": "2016-06-09T20:37:46.830Z"
+    },
+    {
+      "number": "1.0.1",
+      "date": "2016-06-09T20:41:01.559Z"
+    },
+    {
+      "number": "1.1.0",
+      "date": "2016-06-09T22:25:54.174Z"
+    },
+    {
+      "number": "1.2.0",
+      "date": "2016-06-10T23:56:41.156Z"
+    },
+    {
+      "number": "2.0.0",
+      "date": "2016-06-13T15:12:49.778Z"
+    }
+  ],
+  "created": "2016-06-09T20:37:46.830Z",
+  "modified": "2016-06-13T15:12:49.778Z",
+  "lastPublisher": {
+    "name": "mafintosh",
+    "email": "mathiasbuus@gmail.com"
+  },
+  "owners": [
     {
       "name": "mafintosh",
       "email": "mathiasbuus@gmail.com"
     }
   ],
-  "_npmOperationalInternal": {
-    "host": "packages-12-west.internal.npmjs.com",
-    "tmp": "tmp/hyperirc-2.0.0.tgz_1465830767585_0.07531857118010521"
-  },
-  "directories": {}
+  "readme": "# hyperirc\n\nRead IRC through hypercore.\n\n## What is it?\n\n[Hypercore](https://github.com/mafintosh/hypercore) is the underlying p2p network that powers [Dat](https://dat-data.com)\n\nHyperirc is a bot that mirrors irc channels to a hypercore append-only log.\nThis allows you to read an IRC channel using the hypercore p2p network. Anyone who is reading the irc logs is also helping hosting them.\n\n## Usage\n\n```\nnpm install -g hyperirc\n```\n\n## Usage\n\nFirst, somewhere, start a mirror.\n\n``` sh\nhyperirc --mirror=an-irc-channel\n```\n\nThis will mirror `an-irc-channel` on freenode into a hyperdrive feed.\nThe feed key is printed out.\n\nThen on a couple of other computers run this to tail the channel\n\n``` sh\nhyperirc --tail=the-key-printed-out-above\n```\n\nThats it! Every peer tailing (and the peer mirroring) will join the p2p network and help eachother host the irc logs.\n\nBy default, hyperirc will save its database under `~/.hyperirc.db`. You may choose your own location.\n\n```sh\nhyperirc --mirror=an-irc-channel --database=/path/to/db\n```\n\nFor more options run `hyperirc --help`.\n\n## Browser support\n\nYou can also seed the irc logs to the browser by adding the `--webrtc` option. This will make hyperirc join a p2p webrtc swarm\nas well.\n\n``` sh\nhyperirc --tail=the-key-printed-out-above --webrtc\n```\n\nTo view the logs in the browser visit the static website hosted here, https://github.com/mafintosh/hyperirc-www\n\n## Mirrored IRC channels\n\n* #dat on freenode, `hyperirc --tail=4e397d94d0f5df0e2268b2b7b23948b6dddfca66f91c2d452f404202e6d0f626`\n* #cphftw on freenode, `hyperirc --tail=a8d20e7d305a95904798142de0b75dff251b84db73873fd4aba73d5bdc7b50cf`\n\nIf you mirror a channel open a PR and add your key.\n\n## License\n\nMIT\n"
 }

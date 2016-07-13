@@ -27,8 +27,17 @@
   ],
   "version": "0.5.0",
   "repository": {
-    "type": "git",
-    "url": "git://github.com/evolvelabs/electron-weak.git"
+    "user": "evolvelabs",
+    "repo": "electron-weak",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/evolvelabs/electron-weak/tarball/master",
+    "clone_url": "https://github.com/evolvelabs/electron-weak",
+    "https_url": "https://github.com/evolvelabs/electron-weak",
+    "travis_url": "https://travis-ci.org/evolvelabs/electron-weak",
+    "zip_url": "https://github.com/evolvelabs/electron-weak/archive/master.zip",
+    "api_url": "https://api.github.com/repos/evolvelabs/electron-weak"
   },
   "main": "lib/weak.js",
   "scripts": {
@@ -51,31 +60,65 @@
     "mocha": "~2.1.0"
   },
   "gitHead": "acb340889f78b6620cd0bdbc18a5ed7ff66528fa",
-  "bugs": {
-    "url": "https://github.com/evolvelabs/electron-weak/issues"
-  },
   "homepage": "https://github.com/evolvelabs/electron-weak#readme",
   "bundleDependencies": [
     "electron-updater-tools"
   ],
-  "_id": "electron-weak@0.5.0",
-  "_shasum": "2ec7f531e403be018555880f401808f52f6943a6",
-  "_from": ".",
   "_npmVersion": "2.13.3",
   "_nodeVersion": "3.1.0",
-  "_npmUser": {
-    "name": "justinmchase",
-    "email": "justin.m.chase@outlook.com"
-  },
   "dist": {
     "shasum": "2ec7f531e403be018555880f401808f52f6943a6",
     "tarball": "http://registry.npmjs.org/electron-weak/-/electron-weak-0.5.0.tgz"
   },
-  "maintainers": [
+  "versions": [
+    {
+      "number": "0.4.1",
+      "date": "2015-06-25T16:20:24.728Z"
+    },
+    {
+      "number": "0.4.2",
+      "date": "2015-06-25T16:33:21.632Z"
+    },
+    {
+      "number": "0.4.3",
+      "date": "2015-06-25T16:38:30.399Z"
+    },
+    {
+      "number": "0.4.4",
+      "date": "2015-06-25T16:41:42.170Z"
+    },
+    {
+      "number": "0.4.6",
+      "date": "2015-06-30T20:16:45.614Z"
+    },
+    {
+      "number": "0.4.7",
+      "date": "2015-07-01T14:05:16.447Z"
+    },
+    {
+      "number": "0.4.8",
+      "date": "2015-07-02T03:26:59.194Z"
+    },
+    {
+      "number": "0.4.9",
+      "date": "2015-08-06T04:11:52.876Z"
+    },
+    {
+      "number": "0.5.0",
+      "date": "2015-08-28T18:59:26.351Z"
+    }
+  ],
+  "created": "2015-06-25T16:20:24.728Z",
+  "modified": "2015-10-15T02:45:32.377Z",
+  "lastPublisher": {
+    "name": "justinmchase",
+    "email": "justin.m.chase@outlook.com"
+  },
+  "owners": [
     {
       "name": "justinmchase",
       "email": "justin.m.chase@outlook.com"
     }
   ],
-  "directories": {}
+  "readme": "node-weak\n=========\n### Make weak references to JavaScript Objects.\n[![Build Status](https://travis-ci.org/evolvelabs/electron-weak.svg?branch=master)](https://travis-ci.org/evolvelabs/electron-weak)\n[![Build status](https://ci.appveyor.com/api/projects/status/sebw262und14jd6m?svg=true)](https://ci.appveyor.com/project/EvolveLabs/electron-weak)\n\nOn certain rarer occasions, you run into the need to be notified when a JavaScript\nobject is going to be garbage collected. This feature is exposed to V8's C++ API,\nbut not to JavaScript.\n\nThat's where `node-weak` comes in! This module exports V8's `Persistent<Object>`\nfunctionality to JavaScript. This allows you to create weak references, and\noptionally attach a callback function to any arbitrary JS object. The callback\nfunction will be invoked right before the Object is garbage collected (i.e. after\nthere are no more remaining references to the Object in JS-land).\n\nThis module can, for example, be used for debugging; to determine whether or not\nan Object is being garbage collected as it should.\nTake a look at the example below for commented walkthrough scenario.\n\n\nInstallation\n------------\n\nInstall with `npm`:\n\n``` bash\n$ npm install weak\n```\n\n\nExample\n-------\n\nHere's an example of calling a `cleanup()` function on a Object before it gets\ngarbage collected:\n\n``` js\nvar weak = require('weak')\n\n// we are going to \"monitor\" this Object and invoke \"cleanup\"\n// before the object is garbage collected\nvar obj = {\n    a: true\n  , foo: 'bar'\n}\n\n// The function to call before Garbage Collection.\n// Note that by the time this is called, 'obj' has been set to `null`.\nfunction cleanup (o) {\n  delete o.a\n  delete o.foo\n}\n\n// Here's where we set up the weak reference\nvar ref = weak(obj, function (obj) {\n  // `this` inside the callback is the EventEmitter.\n  // The first argument to the callback is the `obj`.\n  // DO NOT store any new references to the object, and\n  // DO NOT use the object in any async functions.\n  cleanup(obj)\n})\n\n// While `obj` is alive, `ref` proxies everything to it, so:\nref.a   === obj.a\nref.foo === obj.foo\n\n// Clear out any references to the object, so that it will be GC'd at some point...\nobj = null\n\n//\n//// Time passes, and the garbage collector is run\n//\n\n// `callback()` above is called, and `ref` now acts like an empty object.\ntypeof ref.foo === 'undefined'\n```\n\n\nWeak Callback Function \"Best Practices\"\n---------------------------------------\n\nIt's important to be careful when using the \"callbacks\" feature of `node-weak`,\notherwise you can end up in a situation where the watched object will never\nbe garbage collected.\n\nYou _should **not**_ define the callback function in the same scope as the\nobject that is being watched. It's often best to define the callback function\nat the highest scope possible (top-level being the best). Named functions\nwork really well for this:\n\n``` js\nvar http = require('http')\n  , weak = require('weak')\n\nhttp.createServer(function (req, res) {\n  weak(req, gcReq)\n  weak(res, gcRes)\n  res.end('Hello World\\n')\n}).listen(3000)\n\nfunction gcReq () {\n  console.log('GC\\'d `req` object')\n}\n\nfunction gcRes () {\n  console.log('GC\\'d `res` object')\n}\n```\n\n\nAPI\n---\n\n### Weakref weak(Object obj [, Function callback])\n\nThe main exports is the function that creates the weak reference.\nThe first argument is the Object that should be monitored.\nThe Object can be a regular Object, an Array, a Function, a RegExp, or any of\nthe primitive types or constructor function created with `new`.\n\nOptionally, you can set a callback function to be invoked\nbefore the object is garbage collected. The callback will\nbe invoked with `obj` as its first argument.\n\n\n### Object weak.get(Weakref ref)\n\n`get()` returns the actual reference to the Object that this weak reference was\ncreated with. If this is called with a dead reference, `undefined` is returned.\n\n\n### Boolean weak.isDead(Weakref ref)\n\nChecks to see if `ref` is a dead reference. Returns `true` if the original Object\nhas already been GC'd, `false` otherwise.\n\n\n### Boolean weak.isNearDeath(Weakref ref)\n\nChecks to see if `ref` is \"near death\". This will be `true` exactly during the\nweak reference callback function, and `false` any other time.\n\n\n### Boolean weak.isWeakRef(Object obj)\n\nChecks to see if `obj` is \"weak reference\" instance. Returns `true` if the\npassed in object is a \"weak reference\", `false` otherwise.\n\n\n### undefined weak.addCallback(Weakref ref, Function callback)\n\nAdds `callback` to the Array of callback functions that will be invoked before the\nObject gets garbage collected. The callbacks get executed in the order that they\nare added.\n\n\n### Array weak.callbacks(Weakref ref)\n\nReturns the internal `Array` that `ref` iterates through to invoke the GC\ncallbacks. The array can be `push()`ed or `unshift()`ed onto, to have more control\nover the execution order of the callbacks. This is similar in concept to node's\n`EventEmitter#listeners()` function.\n\nFork Notes\n----------\nThis fork adds electron build support, compatible with [electron-updater](https://github.com/evolvelabs/electron-updater).\n\nSee the `package.json` for pre-built binary url."
 }

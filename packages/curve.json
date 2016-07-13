@@ -5,8 +5,17 @@
   "description": "Vector drawing library",
   "license": "MIT",
   "repository": {
-    "type": "git",
-    "url": "git+https://github.com/benogle/curve.git"
+    "user": "benogle",
+    "repo": "curve",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/benogle/curve/tarball/master",
+    "clone_url": "https://github.com/benogle/curve",
+    "https_url": "https://github.com/benogle/curve",
+    "travis_url": "https://travis-ci.org/benogle/curve",
+    "zip_url": "https://github.com/benogle/curve/archive/master.zip",
+    "api_url": "https://api.github.com/repos/benogle/curve"
   },
   "scripts": {
     "prepublish": "grunt coffee",
@@ -30,28 +39,50 @@
     "object-assign": "^3.0.0"
   },
   "gitHead": "4474fe66c39c6758352f4bd5880a694068f50d48",
-  "bugs": {
-    "url": "https://github.com/benogle/curve/issues"
-  },
   "homepage": "https://github.com/benogle/curve#readme",
-  "_id": "curve@0.1.1",
-  "_shasum": "7c3377efe37d978a8d0dca9839064664cac7f52b",
-  "_from": ".",
   "_npmVersion": "2.11.3",
   "_nodeVersion": "0.12.7",
-  "_npmUser": {
+  "dist": {
+    "shasum": "7c3377efe37d978a8d0dca9839064664cac7f52b",
+    "tarball": "http://registry.npmjs.org/curve/-/curve-0.1.1.tgz"
+  },
+  "versions": [
+    {
+      "number": "0.0.2",
+      "date": "2015-08-17T03:03:10.261Z"
+    },
+    {
+      "number": "0.0.3",
+      "date": "2015-08-17T03:07:49.202Z"
+    },
+    {
+      "number": "0.0.4",
+      "date": "2015-08-17T03:09:19.345Z"
+    },
+    {
+      "number": "0.0.5",
+      "date": "2015-08-17T03:13:21.870Z"
+    },
+    {
+      "number": "0.1.0",
+      "date": "2015-08-17T23:18:01.239Z"
+    },
+    {
+      "number": "0.1.1",
+      "date": "2015-08-18T19:51:11.953Z"
+    }
+  ],
+  "created": "2015-08-17T03:03:10.261Z",
+  "modified": "2015-08-18T19:51:11.953Z",
+  "lastPublisher": {
     "name": "benogle",
     "email": "ogle.ben@gmail.com"
   },
-  "maintainers": [
+  "owners": [
     {
       "name": "benogle",
       "email": "ogle.ben@gmail.com"
     }
   ],
-  "dist": {
-    "shasum": "7c3377efe37d978a8d0dca9839064664cac7f52b",
-    "tarball": "http://registry.npmjs.org/curve/-/curve-0.1.1.tgz"
-  },
-  "directories": {}
+  "readme": "# Curve\n\nCurve is a vector drawing library providing a layer of user interaction tools over SVG. It is used in an [Electron][electron]-based vector drawing app called [Curve.app][app].\n\n![shot](https://cloud.githubusercontent.com/assets/69169/9297079/56f79f34-444e-11e5-82ad-f36889ee524f.png)\n\nBuilt on top of [svg.js][svg].\n\n* Will load any svg file\n* Will serialize (save!) the loaded svg file\n* Can create paths (pen tool), rectangles, and ellipses\n* Can select and modify paths, rectangles, and ellipses\n\n## Running the example\n\n* `python -m SimpleHTTPServer 8080`\n* Load up http://localhost:8080/examples/example.html\n\n## Usage\n\nCurve is built with [browserify][browserify] and works in the browser, and node.js and Electron applications.\n\n### In the browser\n\nThe only dependency is svg.js which is bundled in `curve.js` and `curve.min.js`. Download curve.js or curve.min.js, and include it in your page\n\n```html\n<!DOCTYPE html>\n<html>\n<head>\n  <meta charset=\"utf-8\">\n  <title>Curve App</title>\n  <script src=\"curve.min.js\"></script>\n</head>\n<body>\n  <div id=\"canvas\"></div>\n</body>\n</html>\n```\n\nThen in your JS:\n\n```js\nvar doc = new Curve.SVGDocument(\"canvas\")\nvar svgString = \"<svg .....>...</svg>\"\ndoc.deserialize(svgString)\ndoc.initializeTools()\n```\n\n### In a node/io.js or Electron app\n\n```bash\nnpm install --save curve\n```\n\nAnd it works similarly\n\n```js\nvar SVGDocument = require('curve').SVGDocument\n\nvar canvas = document.createElement('div')\nvar doc = new Curve.SVGDocument(canvas)\nvar svgString = \"<svg .....>...</svg>\"\ndoc.deserialize(svgString)\ndoc.initializeTools()\n```\n\n## Browser support\n\nOfficially tested on Chrome\n\n## Testing/Building\n\n* Requires grunt `npm install -g grunt-cli`\n* Install grunt modules `npm install`\n* Automatically compile changes `grunt watch`\n* Run tests with `npm test`\n\n## License\n\nMIT License\n\n[electron]:http://electron.atom.io\n[app]:https://github.com/benogle/curve-app\n[svg]:https://github.com/wout/svg.js\n[browserify]:http://browserify.org/\n"
 }

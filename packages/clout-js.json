@@ -44,28 +44,97 @@
     "should": "^8.3.1"
   },
   "gitHead": "1733b78ba748ff5d2597edf41d4b47edf91b41f4",
-  "_id": "clout-js@1.0.9",
-  "_shasum": "7ccd41fef539d1df797799e8961ea763d503f525",
-  "_from": ".",
   "_npmVersion": "3.8.9",
   "_nodeVersion": "0.12.14",
-  "_npmUser": {
-    "name": "muhammaddadu",
-    "email": "muhammad@dadu.co"
-  },
   "dist": {
     "shasum": "7ccd41fef539d1df797799e8961ea763d503f525",
     "tarball": "http://registry.npmjs.org/clout-js/-/clout-js-1.0.9.tgz"
   },
-  "maintainers": [
+  "versions": [
+    {
+      "number": "0.0.1",
+      "date": "2015-08-27T14:41:52.206Z"
+    },
+    {
+      "number": "0.0.2",
+      "date": "2015-09-29T12:44:27.950Z"
+    },
+    {
+      "number": "0.0.4",
+      "date": "2015-10-13T21:33:35.051Z"
+    },
+    {
+      "number": "0.0.5",
+      "date": "2015-10-17T17:24:21.135Z"
+    },
+    {
+      "number": "0.0.6",
+      "date": "2015-11-02T00:09:57.458Z"
+    },
+    {
+      "number": "0.0.7",
+      "date": "2015-11-04T17:33:26.753Z"
+    },
+    {
+      "number": "0.0.8",
+      "date": "2015-12-24T16:37:49.485Z"
+    },
+    {
+      "number": "0.0.9",
+      "date": "2016-01-30T16:31:20.398Z"
+    },
+    {
+      "number": "0.0.10",
+      "date": "2016-03-24T20:21:21.485Z"
+    },
+    {
+      "number": "0.1.1",
+      "date": "2016-03-30T20:40:50.343Z"
+    },
+    {
+      "number": "1.0.0",
+      "date": "2016-05-24T16:41:25.057Z"
+    },
+    {
+      "number": "1.0.2",
+      "date": "2016-05-24T19:12:39.802Z"
+    },
+    {
+      "number": "1.0.4",
+      "date": "2016-05-25T02:03:14.936Z"
+    },
+    {
+      "number": "1.0.5",
+      "date": "2016-05-25T13:12:25.147Z"
+    },
+    {
+      "number": "1.0.6",
+      "date": "2016-05-25T14:27:52.313Z"
+    },
+    {
+      "number": "1.0.7",
+      "date": "2016-05-25T16:02:03.907Z"
+    },
+    {
+      "number": "1.0.8",
+      "date": "2016-06-13T01:04:21.689Z"
+    },
+    {
+      "number": "1.0.9",
+      "date": "2016-06-15T02:32:57.336Z"
+    }
+  ],
+  "created": "2015-08-27T14:41:52.206Z",
+  "modified": "2016-06-15T02:32:57.336Z",
+  "lastPublisher": {
+    "name": "muhammaddadu",
+    "email": "muhammad@dadu.co"
+  },
+  "owners": [
     {
       "name": "muhammaddadu",
       "email": "muhammad@dadu.co"
     }
   ],
-  "_npmOperationalInternal": {
-    "host": "packages-16-east.internal.npmjs.com",
-    "tmp": "tmp/clout-js-1.0.9.tgz_1465957973859_0.34064541570842266"
-  },
-  "directories": {}
+  "readme": "Clout Javascript Framework\n===========\n\n## Install\n```\n$ npm install clout-js\n```\n\n## Project Structure\n```\n/conf \t\t\t- contains configuration w/ support for NODE_ENV\n/apis \t\t\t- contains apis for the application\n/hooks\t\t\t- hooks which can be invoked before an api\n/models \t\t- contains models (native support for sequalize)\n/public \t\t- public folder\n/controllers \t- contains controllers for application\n```\n\n## Usage\n### app.js example\n```\nvar clout = require('clout-js');\n\nclout.on('started', function () {\n\tif (clout.server.https) {\n\t\tconsole.info('http server started on port %s', clout.server.https.address().port);\n\t}\n\tif (clout.server.http) {\n\t\tconsole.info('http server started on port %s', clout.server.http.address().port);\n\t}\n});\n\nclout.app.use(function (req, res, next) {\n\tnext();\n});\n\nclout.start();\n```\n### /api/ping.js example\n```\nvar clout = require('clout-js');\n\nmodule.exports = {\n\tlist: {\n\t\tpath: '/ping',\n\t\tdescription: 'ping service',\n\t\tmethod: 'get',\n\t\tfn: function get(req, res) {\n\t\t\tres.ok('GET REQUEST');\n\t\t}\n\t},\n\tpublish: {\n\t\tpath: '/ping',\n\t\tdescription: 'ping service',\n\t\tmethod: 'post',\n\t\t// hooks: [ auth.isLoggedIn() ],\n\t\tfn: function post(req, res) {\n\t\t\tres.ok('POST REQUEST');\n\t\t}\n\t}\n}\n```\n"
 }

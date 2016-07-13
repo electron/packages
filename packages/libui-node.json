@@ -1,0 +1,147 @@
+{
+  "name": "libui-node",
+  "version": "0.0.11",
+  "description": "Node.js bindings for libui",
+  "repository": {
+    "user": "parro-it",
+    "repo": "libui-node",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/parro-it/libui-node/tarball/master",
+    "clone_url": "https://github.com/parro-it/libui-node",
+    "https_url": "https://github.com/parro-it/libui-node",
+    "travis_url": "https://travis-ci.org/parro-it/libui-node",
+    "zip_url": "https://github.com/parro-it/libui-node/archive/master.zip",
+    "api_url": "https://api.github.com/repos/parro-it/libui-node"
+  },
+  "license": "MIT",
+  "libui": "pre5.alpha.4",
+  "contributors": [
+    {
+      "name": "Chan Guan Hao",
+      "email": "guanhao3797@gmail.com",
+      "url": "http://mavenave.me"
+    },
+    {
+      "name": "Andrea Parodi",
+      "email": "andrea@parro.it",
+      "url": "http://www.parro.it"
+    }
+  ],
+  "scripts": {
+    "test": "NO_AT_BRIDGE=1 ava && xo",
+    "start": "NO_AT_BRIDGE=1 node examples/control-gallery.js",
+    "start-np": "NO_AT_BRIDGE=1 node examples/node-pad.js",
+    "start-core": "NO_AT_BRIDGE=1 node examples/core-api.js",
+    "autogypi": "autogypi",
+    "node-gyp": "node-gyp",
+    "install": "libui-download ${npm_package_libui} && autogypi && npm run build",
+    "build": "node-gyp configure build",
+    "clean": "rm -rf build; rm *.h; rm *.dylib"
+  },
+  "keywords": [
+    "libui",
+    "desktop",
+    "multiplatform",
+    "GUI"
+  ],
+  "engines": {
+    "node": ">=0.12"
+  },
+  "files": [
+    "index.js",
+    "src",
+    "binding.gyp",
+    "auto-top.gypi",
+    "auto.gypi",
+    "autogypi.json"
+  ],
+  "devDependencies": {
+    "ava": "^0.14.0",
+    "humanize": "0.0.9",
+    "proc-stats": "0.0.4",
+    "xo": "^0.14.0"
+  },
+  "dependencies": {
+    "autogypi": "^0.2.2",
+    "libui-download": "0.0.3",
+    "nbind": "^0.2.1",
+    "node-gyp": "^3.3.1"
+  },
+  "gitHead": "4de7259057f1000c9ac6631a1102646e87f7b800",
+  "homepage": "https://github.com/parro-it/libui-node#readme",
+  "_npmVersion": "2.15.1",
+  "_nodeVersion": "0.12.15",
+  "dist": {
+    "shasum": "b3d6e98b1d2d37ffb667d61b86e37762deeec489",
+    "tarball": "http://registry.npmjs.org/libui-node/-/libui-node-0.0.11.tgz"
+  },
+  "versions": [
+    {
+      "number": "0.0.0",
+      "date": "2016-05-24T18:09:08.212Z"
+    },
+    {
+      "number": "0.0.1",
+      "date": "2016-06-22T13:58:45.073Z"
+    },
+    {
+      "number": "0.0.2",
+      "date": "2016-06-22T15:34:24.556Z"
+    },
+    {
+      "number": "0.0.3",
+      "date": "2016-06-22T15:45:43.030Z"
+    },
+    {
+      "number": "0.0.4",
+      "date": "2016-06-23T06:00:04.123Z"
+    },
+    {
+      "number": "0.0.5",
+      "date": "2016-06-23T06:15:20.710Z"
+    },
+    {
+      "number": "0.0.6",
+      "date": "2016-06-23T06:21:44.930Z"
+    },
+    {
+      "number": "0.0.7",
+      "date": "2016-06-23T06:45:47.199Z"
+    },
+    {
+      "number": "0.0.8",
+      "date": "2016-06-25T15:06:02.811Z"
+    },
+    {
+      "number": "0.0.9",
+      "date": "2016-06-26T19:46:20.518Z"
+    },
+    {
+      "number": "0.0.10",
+      "date": "2016-07-02T09:14:14.945Z"
+    },
+    {
+      "number": "0.0.11",
+      "date": "2016-07-11T18:29:26.513Z"
+    }
+  ],
+  "created": "2016-05-24T18:09:08.212Z",
+  "modified": "2016-07-11T18:29:26.513Z",
+  "lastPublisher": {
+    "name": "parroit",
+    "email": "andrea@parro.it"
+  },
+  "owners": [
+    {
+      "name": "mavenave",
+      "email": "guanhao3797@gmail.com"
+    },
+    {
+      "name": "parroit",
+      "email": "andrea@parro.it"
+    }
+  ],
+  "readme": "# libui-node\n\n> libui Node.js bindings.\n\n[![Travis Build Status](https://img.shields.io/travis/parro-it/libui-node/master.svg)](http://travis-ci.org/parro-it/libui-node)\n[![NPM module](https://img.shields.io/npm/v/libui-node.svg)](https://npmjs.org/package/libui-node)\n[![NPM downloads](https://img.shields.io/npm/dt/libui-node.svg)](https://npmjs.org/package/libui-node)\n\n[libui](https://github.com/andlabs/libui) is a simple and portable (but not inflexible) GUI library in C that uses the native GUI technologies of each platform it supports.\n\nIt is in early stage of development, but is evolving at great pace and is really awesome.\n\nIt could become an awesome, lightweight alternative to Electron to develop multiplatform GUI.\n\n**Linux**\n![Linux](docs/media/Window-Linux.png)\n\n**macOS**\n![macOS](docs/media/Window-macOS.png)\n\n\n# Supported platform\n\n* Windows: Windows Vista SP2 with Platform Update or newer\n* Unix: GTK+ 3.10 or newer\n* Mac OS X: OS X 10.8 or newer\n\n# Node version requirement\n\nThe project run on any node version > 0.12.\n\n# Installation\n\nWe had published a first pre-release to npm.\nYou can now install `libui-node` as a simple dependency in your project:\n\n```bash\nnpm install -S libui-node\n```\n\n`libui` prebuilt binaries are automatically downloaded after install.\n\nThis is tested with:\n\n* Linux 64bit\n* Linux 32bit\n* macOS\n\nWindows is not supported for the moment, I didn't yet get the time to write build script for it.\n\n\n# Documentation\n\nYou can find ongoing documentation in [docs folder](docs).\n\nPlase look in [examples folder](https://github.com/parro-it/libui-node/tree/master/examples) for working examples.\n\nSome example uses ES6 syntax. We will soon configure babel transpilation for them. Meanwhile, if you are testing the project on Node.js < 6, you can check `examples/core-api.js` that use ES5 syntax.\n\n## Run examples\n\nFirst, you have to clone the GitHub repo and npm install it:\n\n```bash\ngit clone https://github.com/parro-it/libui-node.git\nnpm install\n```\n\nThen, to run the control gallery example (requires Node.js >= 6), type:\n\n```bash\nnpm start\n```\n\nFor the core api, example, type:\n\n```bash\nnpm run start-core\n```\n\n# Project status\n\n* All current `libui` API, except for [these ones](https://github.com/parro-it/libui-node/issues?q=is%3Aissue+is%3Aopen+label%3A%22Missing+bind%22) are implemented.\n* I'm developing on `linux`, so this is the preferred platform to test. macOS should work too, but it's not tested. Windows has yet to be configured in build scripts, but it will be supported in further releases.\n* There are some tests developed, and they are passing in `Travis` thank you to @jjrv awesome work, both on macOS and on Linux, in Node > 0.12\n* This is not yet battle-tested in a real app, but the control gallery example you saw in the screenshot above is fully working.\n\n\n\n# Future directions of the project\n\n## API\n\nThis binding is actually implementing low-level API straight to the `libui` ones.\nWe plan to add another level of API on top of it to simplify GUI building. You can get a taste of how they will be in [example utils.js file](https://github.com/parro-it/libui-node/blob/master/examples/utils.js).\n\nThis new API will support transpilation from JSX to further simplify GUI building.\n\nThese works will become in future the base for a React-Native like project.\n\n# Contribution & design\n\n* Each `libui` widget implementaion is written in it's own C++ file in `src` folder.\n* Each widget is implemented in it's own C++ class, each class is a simple wrapper for related libui C functions.\n* There is an header file called `src/ui-node.h` that contains all classes definitions.\n* Widget events does not follow `node` convention: if you attach an handler to an event, previous one will be overwritten and never be called. This will be resolved on future high-level API repo, where each widget will be an `EventEmitter` instance.\n* We build the project using the awesome [nbind](https://github.com/charto/nbind) tool, that automate the process of linking a straight C++ class to Node.js stuff...\n* All the GUI code run in the node javascript main thread. You must call `libui.startLoop` to start the GUI event loop. It run one step at a time, you can see in [index.js](https://github.com/parro-it/libui-node/blob/master/index.js) how this is implemented.\n\n## Useful NPM scripts\n\n* test - run AVA tests && XO linting.\n* start - start the control gallery example\n* build - rebuild C++ sources\n\n## Related projects\n\n* [libui](https://github.com/andlabs/libui) - Simple and portable (but not inflexible) GUI library in C that uses the native GUI technologies of each platform it supports.\n* [nbind](https://github.com/charto/nbind) - Magical headers that make your C++ library accessible from JavaScript\n\n# Contributors\n\n\n[![Andrea Parodi](https://avatars0.githubusercontent.com/u/11197111?s=130)](https://github.com/parro-it) | [![Juha Järvi](https://avatars3.githubusercontent.com/u/778781?s=130)](https://github.com/jjrv) | [![Chan Guan Hao](https://avatars1.githubusercontent.com/u/5748750?s=130)](https://github.com/mavenave)\n---|---|---\n[Andrea Parodi](https://github.com/parro-it) | [Juha Järvi](https://github.com/jjrv) | [Chan Guan Hao](https://github.com/mavenave)\n\n\n\n# License\n\nThe MIT License (MIT)\n\nCopyright (c) 2016 parro-it\n"
+}

@@ -22,8 +22,17 @@
   },
   "main": "./usb",
   "repository": {
-    "type": "git",
-    "url": "git://github.com/marcopiraccini/electron-usb.git"
+    "user": "marcopiraccini",
+    "repo": "electron-usb",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/marcopiraccini/electron-usb/tarball/master",
+    "clone_url": "https://github.com/marcopiraccini/electron-usb",
+    "https_url": "https://github.com/marcopiraccini/electron-usb",
+    "travis_url": "https://travis-ci.org/marcopiraccini/electron-usb",
+    "zip_url": "https://github.com/marcopiraccini/electron-usb/archive/master.zip",
+    "api_url": "https://api.github.com/repos/marcopiraccini/electron-usb"
   },
   "scripts": {
     "install": "node-pre-gyp install --fallback-to-build",
@@ -53,35 +62,66 @@
   },
   "license": "MIT",
   "gitHead": "5c88e3d19ca86baa150b6cd911124e0d3a834663",
-  "bugs": {
-    "url": "https://github.com/marcopiraccini/electron-usb/issues"
-  },
   "homepage": "https://github.com/marcopiraccini/electron-usb#readme",
   "bundleDependencies": [
     "node-pre-gyp"
   ],
-  "_id": "electron-usb@0.0.11",
-  "_shasum": "99407479c318d382b2f20d5024493e7f415a7e0a",
-  "_from": ".",
   "_npmVersion": "2.14.12",
   "_nodeVersion": "4.2.4",
-  "_npmUser": {
-    "name": "marcopiraccini",
-    "email": "marco.piraccini@gmail.com"
-  },
   "dist": {
     "shasum": "99407479c318d382b2f20d5024493e7f415a7e0a",
     "tarball": "http://registry.npmjs.org/electron-usb/-/electron-usb-0.0.11.tgz"
   },
-  "maintainers": [
+  "stars": 1,
+  "versions": [
+    {
+      "number": "0.0.3",
+      "date": "2016-02-03T22:31:29.520Z"
+    },
+    {
+      "number": "0.0.4",
+      "date": "2016-02-03T22:45:09.130Z"
+    },
+    {
+      "number": "0.0.5",
+      "date": "2016-02-03T22:49:00.724Z"
+    },
+    {
+      "number": "0.0.6",
+      "date": "2016-02-03T22:52:31.917Z"
+    },
+    {
+      "number": "0.0.7",
+      "date": "2016-02-03T22:56:32.174Z"
+    },
+    {
+      "number": "0.0.8",
+      "date": "2016-02-03T22:58:36.100Z"
+    },
+    {
+      "number": "0.0.9",
+      "date": "2016-02-04T17:48:23.477Z"
+    },
+    {
+      "number": "0.0.10",
+      "date": "2016-02-04T18:20:05.832Z"
+    },
+    {
+      "number": "0.0.11",
+      "date": "2016-02-04T21:18:04.931Z"
+    }
+  ],
+  "created": "2016-02-03T22:31:29.520Z",
+  "modified": "2016-02-04T21:18:04.931Z",
+  "lastPublisher": {
+    "name": "marcopiraccini",
+    "email": "marco.piraccini@gmail.com"
+  },
+  "owners": [
     {
       "name": "marcopiraccini",
       "email": "marco.piraccini@gmail.com"
     }
   ],
-  "_npmOperationalInternal": {
-    "host": "packages-6-west.internal.npmjs.com",
-    "tmp": "tmp/electron-usb-0.0.11.tgz_1454620681103_0.3109962015878409"
-  },
-  "directories": {}
+  "readme": "# electron-usb\nnode-usb fork to be used with electron. It's a fork from node-usb which binary are released on github.\nIt's a temporary solution until binary package will be available for node 5.1.x and\nwindows / linux platforms on node-usb. Pleas refer to https://github.com/nonolith/node-usb on\nhow to use these APIs.\n\n# Prerequisite\nInstall the node version used by electron (currently is 5.1.1 for electron 0.36.7).\nA github valid `NODE_PRE_GYP_GITHUB_TOKEN` to be set as env variable.\n\n# Release & Build\nRemember to change the binary host with the correct version (see https://github.com/bchr02/node-pre-gyp-github).\nAfter the release, build the binaries for each OS.\n\n# Linux build\nOn Ubuntu 15.10, install:\n```\nsudo apt-get install libudev-dev libusb-1.0-0-dev g++-multilib libudev-dev:i386\n```\nAnd then run `npm run release-linux` (x64) or `npm run release-linux-ia32` (ia32) to publish\nthe binary build\n\n# Windows build\nUse a  Windows 7 on x64. Install Visual Studio (2013 is OK on Windows 7) and Python 2.7.x\nAlways specify the VisualStudio version using `--msvs_version=xxxx`, foor instance\n`npm i --msvs_version=2013`\n\nRelease using  `npm run release-win --msvs_version=2013` (x64) or `npm run release-win-ia32 --msvs_version=2013` (ia32)\n\n# OSx build\nAfter `npm i`, just use `npm run release`\n"
 }

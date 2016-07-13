@@ -1,0 +1,847 @@
+{
+  "name": "skypager",
+  "version": "2.74.1",
+  "description": "skypager is a framework for managing a portfolio of applications, modules, and components. Skypager makes working with react, babel, webpack and other ecosystems a breeze.",
+  "skypager": {
+    "main": "skypager.js",
+    "plugins": []
+  },
+  "main": "index.js",
+  "dependencies": {
+    "babel-preset-skypager": "2.58.0",
+    "babel-register": "^6.7.2",
+    "babel-runtime": "^6.6.1",
+    "skypager-cli": "2.61.0",
+    "skypager-devpack": "2.70.0",
+    "skypager-project": "2.72.1",
+    "skypager-server": "2.72.0",
+    "skypager-themes": "2.52.0",
+    "skypager-ui": "2.59.0",
+    "skypager-ui-bundle": "2.56.0"
+  },
+  "devDependencies": {
+    "async": "^2.0.0-rc.2",
+    "nodemon": "^1.9.1",
+    "babel-eslint": "^6.0.0",
+    "babel-preset-react-hmre": "^1.1.0",
+    "bluebird": "^3.3.4",
+    "chai": "^3.5.0",
+    "chai-as-promised": "^5.3.0",
+    "chai-http": "^2.0.1",
+    "colors": "^1.1.2",
+    "dotenv": "^2.0.0",
+    "eslint": "^1.10.3",
+    "eslint-config-standard": "^4.4.0",
+    "eslint-loader": "^1.3.0",
+    "eslint-plugin-babel": "^3.1.0",
+    "eslint-plugin-react": "^4.2.3",
+    "eslint-plugin-standard": "^1.3.1",
+    "exit-on-dirty-git": "^1.0.1",
+    "mkdirp": "^0.5.1",
+    "mocha": "^2.3.4",
+    "node-emoji": "^1.2.1",
+    "require-self": "^0.1.0",
+    "require-subvert": "^0.1.0",
+    "rimraf": "^2.5.2",
+    "sinon": "^1.17.3",
+    "sinon-chai": "^2.8.0"
+  },
+  "repository": {
+    "user": "skypager",
+    "repo": "skypager",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/skypager/skypager/tarball/master",
+    "clone_url": "https://github.com/skypager/skypager",
+    "https_url": "https://github.com/skypager/skypager",
+    "travis_url": "https://travis-ci.org/skypager/skypager",
+    "zip_url": "https://github.com/skypager/skypager/archive/master.zip",
+    "api_url": "https://api.github.com/repos/skypager/skypager"
+  },
+  "author": {
+    "name": "Jonathan Soeder"
+  },
+  "license": "SEE LICENSE IN License.md",
+  "scripts": {
+    "start": "skypager serve web",
+    "test": "make test",
+    "test:watch": "make test-watch",
+    "compile": "make build",
+    "compile:watch": "make watch",
+    "preversion": "make test",
+    "version": "make prepare-release",
+    "postversion": "make publish"
+  },
+  "files": [
+    "bin",
+    "lib",
+    "index.js",
+    "Makefile",
+    "each",
+    "plugin.js"
+  ],
+  "gitHead": "ff8d56685849eed5e27c022259ae0a7b0d02ccbf",
+  "homepage": "https://github.com/skypager/skypager#readme",
+  "_npmVersion": "3.8.9",
+  "_nodeVersion": "5.10.1",
+  "dist": {
+    "shasum": "e39817f251f8f8127371d3f23db46e2664e8b2f7",
+    "tarball": "http://registry.npmjs.org/skypager/-/skypager-2.74.1.tgz"
+  },
+  "versions": [
+    {
+      "number": "0.0.2",
+      "date": "2015-10-31T02:39:24.098Z"
+    },
+    {
+      "number": "0.0.3",
+      "date": "2015-11-30T07:30:14.713Z"
+    },
+    {
+      "number": "1.8.0",
+      "date": "2016-01-07T09:25:26.624Z"
+    },
+    {
+      "number": "1.8.1",
+      "date": "2016-01-07T09:35:44.770Z"
+    },
+    {
+      "number": "1.8.3",
+      "date": "2016-01-07T21:49:19.568Z"
+    },
+    {
+      "number": "1.8.4",
+      "date": "2016-01-07T22:05:08.190Z"
+    },
+    {
+      "number": "1.8.5",
+      "date": "2016-01-07T23:14:49.778Z"
+    },
+    {
+      "number": "1.8.7",
+      "date": "2016-01-10T01:15:24.263Z"
+    },
+    {
+      "number": "1.8.8",
+      "date": "2016-01-10T01:38:49.744Z"
+    },
+    {
+      "number": "1.8.9",
+      "date": "2016-01-10T21:10:53.041Z"
+    },
+    {
+      "number": "1.9.0",
+      "date": "2016-01-11T06:04:11.971Z"
+    },
+    {
+      "number": "1.9.1",
+      "date": "2016-01-11T11:25:09.718Z"
+    },
+    {
+      "number": "1.9.2",
+      "date": "2016-01-11T11:31:52.149Z"
+    },
+    {
+      "number": "1.9.3",
+      "date": "2016-01-11T22:20:39.712Z"
+    },
+    {
+      "number": "1.9.5",
+      "date": "2016-01-13T05:43:19.314Z"
+    },
+    {
+      "number": "1.9.6",
+      "date": "2016-01-13T22:37:10.353Z"
+    },
+    {
+      "number": "1.17.1",
+      "date": "2016-02-06T08:17:24.128Z"
+    },
+    {
+      "number": "1.20.0",
+      "date": "2016-02-08T08:53:53.147Z"
+    },
+    {
+      "number": "1.21.0",
+      "date": "2016-02-09T01:28:44.908Z"
+    },
+    {
+      "number": "1.22.0",
+      "date": "2016-02-10T05:37:59.174Z"
+    },
+    {
+      "number": "1.24.0",
+      "date": "2016-02-10T08:10:39.231Z"
+    },
+    {
+      "number": "1.25.0",
+      "date": "2016-02-10T08:33:04.452Z"
+    },
+    {
+      "number": "1.25.2",
+      "date": "2016-02-10T10:05:34.410Z"
+    },
+    {
+      "number": "1.26.0",
+      "date": "2016-02-10T10:50:01.365Z"
+    },
+    {
+      "number": "1.26.1",
+      "date": "2016-02-10T10:53:19.982Z"
+    },
+    {
+      "number": "1.27.0",
+      "date": "2016-02-10T11:34:15.257Z"
+    },
+    {
+      "number": "1.27.2",
+      "date": "2016-02-10T12:14:40.557Z"
+    },
+    {
+      "number": "1.27.3",
+      "date": "2016-02-10T13:22:47.492Z"
+    },
+    {
+      "number": "1.27.5",
+      "date": "2016-02-10T15:48:23.586Z"
+    },
+    {
+      "number": "1.28.0",
+      "date": "2016-02-10T16:47:52.731Z"
+    },
+    {
+      "number": "1.29.0",
+      "date": "2016-02-10T17:22:00.679Z"
+    },
+    {
+      "number": "1.30.0",
+      "date": "2016-02-10T19:33:02.839Z"
+    },
+    {
+      "number": "1.31.0",
+      "date": "2016-02-10T22:03:26.349Z"
+    },
+    {
+      "number": "1.32.0",
+      "date": "2016-02-11T21:21:41.011Z"
+    },
+    {
+      "number": "1.33.0",
+      "date": "2016-02-12T08:50:52.895Z"
+    },
+    {
+      "number": "1.34.0",
+      "date": "2016-02-12T11:25:25.474Z"
+    },
+    {
+      "number": "1.36.0",
+      "date": "2016-02-17T07:21:35.008Z"
+    },
+    {
+      "number": "1.36.1",
+      "date": "2016-02-17T07:25:58.715Z"
+    },
+    {
+      "number": "1.36.3",
+      "date": "2016-02-17T08:43:59.608Z"
+    },
+    {
+      "number": "1.36.4",
+      "date": "2016-02-17T08:54:00.798Z"
+    },
+    {
+      "number": "1.36.5",
+      "date": "2016-02-17T09:35:07.623Z"
+    },
+    {
+      "number": "1.36.6",
+      "date": "2016-02-17T10:22:17.273Z"
+    },
+    {
+      "number": "1.36.7",
+      "date": "2016-02-17T10:34:47.976Z"
+    },
+    {
+      "number": "1.36.8",
+      "date": "2016-02-17T10:48:37.476Z"
+    },
+    {
+      "number": "1.36.9",
+      "date": "2016-02-17T10:53:17.810Z"
+    },
+    {
+      "number": "1.36.10",
+      "date": "2016-02-17T11:47:43.182Z"
+    },
+    {
+      "number": "1.37.0",
+      "date": "2016-02-17T22:38:50.734Z"
+    },
+    {
+      "number": "1.38.1",
+      "date": "2016-02-18T01:03:23.854Z"
+    },
+    {
+      "number": "1.38.2",
+      "date": "2016-02-18T02:58:18.515Z"
+    },
+    {
+      "number": "2.0.0-beta1",
+      "date": "2016-02-18T04:34:13.758Z"
+    },
+    {
+      "number": "2.0.1-beta1",
+      "date": "2016-02-18T05:11:10.624Z"
+    },
+    {
+      "number": "2.1.0-beta1",
+      "date": "2016-02-18T06:23:53.840Z"
+    },
+    {
+      "number": "2.1.1-beta1",
+      "date": "2016-02-18T06:24:58.398Z"
+    },
+    {
+      "number": "2.1.2-beta1",
+      "date": "2016-02-18T06:30:44.296Z"
+    },
+    {
+      "number": "2.1.3-beta1",
+      "date": "2016-02-18T23:36:35.816Z"
+    },
+    {
+      "number": "2.1.4-beta1",
+      "date": "2016-02-18T23:39:14.335Z"
+    },
+    {
+      "number": "2.1.5-beta1",
+      "date": "2016-02-18T23:54:12.833Z"
+    },
+    {
+      "number": "2.1.6-beta1",
+      "date": "2016-02-18T23:55:20.523Z"
+    },
+    {
+      "number": "2.2.1",
+      "date": "2016-02-19T10:43:40.972Z"
+    },
+    {
+      "number": "2.5.0",
+      "date": "2016-02-24T11:14:03.038Z"
+    },
+    {
+      "number": "2.5.2",
+      "date": "2016-02-24T11:27:53.184Z"
+    },
+    {
+      "number": "2.6.0",
+      "date": "2016-02-25T08:18:39.642Z"
+    },
+    {
+      "number": "2.7.1",
+      "date": "2016-02-25T11:05:07.706Z"
+    },
+    {
+      "number": "2.7.2",
+      "date": "2016-02-25T11:35:15.427Z"
+    },
+    {
+      "number": "2.7.3",
+      "date": "2016-02-25T11:51:35.339Z"
+    },
+    {
+      "number": "2.7.5",
+      "date": "2016-02-25T12:20:28.011Z"
+    },
+    {
+      "number": "2.8.1",
+      "date": "2016-02-25T12:36:59.146Z"
+    },
+    {
+      "number": "2.8.3",
+      "date": "2016-02-25T13:51:34.349Z"
+    },
+    {
+      "number": "2.8.4",
+      "date": "2016-02-25T14:21:19.434Z"
+    },
+    {
+      "number": "2.8.5",
+      "date": "2016-02-25T14:29:49.532Z"
+    },
+    {
+      "number": "2.8.9",
+      "date": "2016-02-25T14:55:42.726Z"
+    },
+    {
+      "number": "2.10.2",
+      "date": "2016-02-26T05:29:05.696Z"
+    },
+    {
+      "number": "2.10.3",
+      "date": "2016-02-26T07:47:07.914Z"
+    },
+    {
+      "number": "2.11.0",
+      "date": "2016-02-26T08:12:53.190Z"
+    },
+    {
+      "number": "2.12.0",
+      "date": "2016-02-26T13:22:36.344Z"
+    },
+    {
+      "number": "2.13.0",
+      "date": "2016-02-28T10:09:46.040Z"
+    },
+    {
+      "number": "2.13.4",
+      "date": "2016-03-01T07:50:41.062Z"
+    },
+    {
+      "number": "2.14.0",
+      "date": "2016-03-01T08:05:50.866Z"
+    },
+    {
+      "number": "2.14.2",
+      "date": "2016-03-01T08:38:20.379Z"
+    },
+    {
+      "number": "2.16.3",
+      "date": "2016-03-09T05:54:06.317Z"
+    },
+    {
+      "number": "2.18.1",
+      "date": "2016-03-10T06:57:44.427Z"
+    },
+    {
+      "number": "2.19.4",
+      "date": "2016-03-14T02:11:11.773Z"
+    },
+    {
+      "number": "2.19.5",
+      "date": "2016-03-14T02:18:56.554Z"
+    },
+    {
+      "number": "2.20.3",
+      "date": "2016-03-14T03:32:47.209Z"
+    },
+    {
+      "number": "2.20.4",
+      "date": "2016-03-14T03:37:51.576Z"
+    },
+    {
+      "number": "2.20.6",
+      "date": "2016-03-14T05:01:43.279Z"
+    },
+    {
+      "number": "2.21.0",
+      "date": "2016-03-15T07:11:46.137Z"
+    },
+    {
+      "number": "2.24.3",
+      "date": "2016-03-18T09:59:00.847Z"
+    },
+    {
+      "number": "2.24.4",
+      "date": "2016-03-18T10:23:02.553Z"
+    },
+    {
+      "number": "2.24.5",
+      "date": "2016-03-18T10:37:55.315Z"
+    },
+    {
+      "number": "2.24.7",
+      "date": "2016-03-18T10:52:07.289Z"
+    },
+    {
+      "number": "2.24.8",
+      "date": "2016-03-18T12:03:46.856Z"
+    },
+    {
+      "number": "2.24.9",
+      "date": "2016-03-18T12:21:10.445Z"
+    },
+    {
+      "number": "2.24.10",
+      "date": "2016-03-18T16:58:59.292Z"
+    },
+    {
+      "number": "2.24.12",
+      "date": "2016-03-18T21:15:19.549Z"
+    },
+    {
+      "number": "2.24.15",
+      "date": "2016-03-19T03:33:41.464Z"
+    },
+    {
+      "number": "2.26.2",
+      "date": "2016-03-21T05:57:03.867Z"
+    },
+    {
+      "number": "2.26.3",
+      "date": "2016-03-21T22:20:37.689Z"
+    },
+    {
+      "number": "2.28.0",
+      "date": "2016-03-24T08:20:50.796Z"
+    },
+    {
+      "number": "2.28.1",
+      "date": "2016-03-24T08:27:43.025Z"
+    },
+    {
+      "number": "2.29.0",
+      "date": "2016-03-26T05:39:29.888Z"
+    },
+    {
+      "number": "2.30.0",
+      "date": "2016-03-26T10:49:58.522Z"
+    },
+    {
+      "number": "2.33.2",
+      "date": "2016-03-27T10:02:55.014Z"
+    },
+    {
+      "number": "2.34.0",
+      "date": "2016-03-28T09:40:15.671Z"
+    },
+    {
+      "number": "2.35.1",
+      "date": "2016-03-31T22:14:25.238Z"
+    },
+    {
+      "number": "2.35.2",
+      "date": "2016-03-31T23:25:14.312Z"
+    },
+    {
+      "number": "2.35.3",
+      "date": "2016-04-01T01:24:57.481Z"
+    },
+    {
+      "number": "2.35.4",
+      "date": "2016-04-01T02:57:45.864Z"
+    },
+    {
+      "number": "2.35.5",
+      "date": "2016-04-01T03:05:17.959Z"
+    },
+    {
+      "number": "2.35.6",
+      "date": "2016-04-01T03:14:02.111Z"
+    },
+    {
+      "number": "2.36.0",
+      "date": "2016-04-01T03:30:45.487Z"
+    },
+    {
+      "number": "2.36.1",
+      "date": "2016-04-01T03:50:57.005Z"
+    },
+    {
+      "number": "2.36.2",
+      "date": "2016-04-01T03:56:39.801Z"
+    },
+    {
+      "number": "2.38.1",
+      "date": "2016-04-01T04:25:01.231Z"
+    },
+    {
+      "number": "2.38.2",
+      "date": "2016-04-01T04:33:25.304Z"
+    },
+    {
+      "number": "2.38.3",
+      "date": "2016-04-01T04:51:48.886Z"
+    },
+    {
+      "number": "2.38.4",
+      "date": "2016-04-01T05:43:57.839Z"
+    },
+    {
+      "number": "2.39.0",
+      "date": "2016-04-02T05:46:01.110Z"
+    },
+    {
+      "number": "2.39.1",
+      "date": "2016-04-03T05:37:10.165Z"
+    },
+    {
+      "number": "2.40.0",
+      "date": "2016-04-04T07:40:37.206Z"
+    },
+    {
+      "number": "2.41.0",
+      "date": "2016-04-07T08:36:34.736Z"
+    },
+    {
+      "number": "2.42.0",
+      "date": "2016-04-08T23:59:23.355Z"
+    },
+    {
+      "number": "2.42.1",
+      "date": "2016-04-09T00:26:50.293Z"
+    },
+    {
+      "number": "2.44.0",
+      "date": "2016-04-09T04:33:34.992Z"
+    },
+    {
+      "number": "2.44.1",
+      "date": "2016-04-09T05:14:24.868Z"
+    },
+    {
+      "number": "2.45.0",
+      "date": "2016-04-09T07:37:16.011Z"
+    },
+    {
+      "number": "2.46.0",
+      "date": "2016-04-11T15:13:00.538Z"
+    },
+    {
+      "number": "2.47.0",
+      "date": "2016-04-14T02:21:28.808Z"
+    },
+    {
+      "number": "2.47.1",
+      "date": "2016-04-14T02:24:54.651Z"
+    },
+    {
+      "number": "2.48.0",
+      "date": "2016-04-15T07:37:21.269Z"
+    },
+    {
+      "number": "2.49.0",
+      "date": "2016-04-18T06:22:01.371Z"
+    },
+    {
+      "number": "2.49.1",
+      "date": "2016-04-18T06:23:43.885Z"
+    },
+    {
+      "number": "2.49.2",
+      "date": "2016-04-18T07:22:18.818Z"
+    },
+    {
+      "number": "2.49.3",
+      "date": "2016-04-18T07:33:26.517Z"
+    },
+    {
+      "number": "2.50.0",
+      "date": "2016-04-18T08:04:34.642Z"
+    },
+    {
+      "number": "2.50.1",
+      "date": "2016-04-18T09:49:16.566Z"
+    },
+    {
+      "number": "2.51.0",
+      "date": "2016-04-18T11:41:31.006Z"
+    },
+    {
+      "number": "2.51.1",
+      "date": "2016-04-18T11:58:46.421Z"
+    },
+    {
+      "number": "2.51.2",
+      "date": "2016-04-18T12:08:12.681Z"
+    },
+    {
+      "number": "2.51.3",
+      "date": "2016-04-18T12:24:32.863Z"
+    },
+    {
+      "number": "2.51.4",
+      "date": "2016-04-18T21:04:39.019Z"
+    },
+    {
+      "number": "2.51.5",
+      "date": "2016-04-18T23:34:38.136Z"
+    },
+    {
+      "number": "2.52.0",
+      "date": "2016-04-19T10:09:53.084Z"
+    },
+    {
+      "number": "2.52.1",
+      "date": "2016-04-19T10:48:47.005Z"
+    },
+    {
+      "number": "2.54.0",
+      "date": "2016-04-21T21:49:19.104Z"
+    },
+    {
+      "number": "2.54.1",
+      "date": "2016-04-21T22:43:45.780Z"
+    },
+    {
+      "number": "2.54.2",
+      "date": "2016-04-21T22:49:54.489Z"
+    },
+    {
+      "number": "2.54.3",
+      "date": "2016-04-21T22:55:44.338Z"
+    },
+    {
+      "number": "2.55.0",
+      "date": "2016-04-23T04:23:23.477Z"
+    },
+    {
+      "number": "2.55.1",
+      "date": "2016-04-23T04:27:25.475Z"
+    },
+    {
+      "number": "2.55.2",
+      "date": "2016-04-23T04:50:17.357Z"
+    },
+    {
+      "number": "2.55.4",
+      "date": "2016-04-23T08:03:48.184Z"
+    },
+    {
+      "number": "2.56.0",
+      "date": "2016-04-26T13:30:13.740Z"
+    },
+    {
+      "number": "2.56.1",
+      "date": "2016-04-26T19:22:42.762Z"
+    },
+    {
+      "number": "2.56.2",
+      "date": "2016-04-26T19:24:27.786Z"
+    },
+    {
+      "number": "2.56.3",
+      "date": "2016-04-26T19:27:21.474Z"
+    },
+    {
+      "number": "2.56.4",
+      "date": "2016-04-26T19:33:08.301Z"
+    },
+    {
+      "number": "2.57.0",
+      "date": "2016-04-26T20:40:23.751Z"
+    },
+    {
+      "number": "2.57.1",
+      "date": "2016-04-27T05:30:00.932Z"
+    },
+    {
+      "number": "2.57.2",
+      "date": "2016-04-27T07:24:10.975Z"
+    },
+    {
+      "number": "2.58.0",
+      "date": "2016-04-27T08:02:12.120Z"
+    },
+    {
+      "number": "2.58.1",
+      "date": "2016-04-27T09:04:18.721Z"
+    },
+    {
+      "number": "2.58.2",
+      "date": "2016-04-27T09:07:11.118Z"
+    },
+    {
+      "number": "2.58.3",
+      "date": "2016-04-27T09:22:46.624Z"
+    },
+    {
+      "number": "2.58.5",
+      "date": "2016-04-27T10:16:19.125Z"
+    },
+    {
+      "number": "2.59.0",
+      "date": "2016-04-27T10:50:25.772Z"
+    },
+    {
+      "number": "2.60.0",
+      "date": "2016-04-27T14:08:40.728Z"
+    },
+    {
+      "number": "2.60.1",
+      "date": "2016-04-27T14:28:00.495Z"
+    },
+    {
+      "number": "2.70.0",
+      "date": "2016-05-12T08:58:19.061Z"
+    },
+    {
+      "number": "2.70.1",
+      "date": "2016-05-12T09:25:28.214Z"
+    },
+    {
+      "number": "2.70.2",
+      "date": "2016-05-12T18:40:09.103Z"
+    },
+    {
+      "number": "2.70.3",
+      "date": "2016-05-13T06:41:57.711Z"
+    },
+    {
+      "number": "2.70.4",
+      "date": "2016-05-13T07:22:47.424Z"
+    },
+    {
+      "number": "2.70.5",
+      "date": "2016-05-13T08:13:15.067Z"
+    },
+    {
+      "number": "2.70.6",
+      "date": "2016-05-13T09:37:11.255Z"
+    },
+    {
+      "number": "2.71.7",
+      "date": "2016-05-13T10:01:16.744Z"
+    },
+    {
+      "number": "2.71.8",
+      "date": "2016-05-13T20:08:00.765Z"
+    },
+    {
+      "number": "2.71.10",
+      "date": "2016-05-16T02:17:23.299Z"
+    },
+    {
+      "number": "2.71.12",
+      "date": "2016-05-16T18:40:23.867Z"
+    },
+    {
+      "number": "2.72.0",
+      "date": "2016-05-17T02:40:01.813Z"
+    },
+    {
+      "number": "2.72.1",
+      "date": "2016-05-17T05:22:00.598Z"
+    },
+    {
+      "number": "2.72.2",
+      "date": "2016-05-21T02:56:12.007Z"
+    },
+    {
+      "number": "2.73.0",
+      "date": "2016-05-24T09:11:02.867Z"
+    },
+    {
+      "number": "2.74.0",
+      "date": "2016-05-26T08:14:42.591Z"
+    },
+    {
+      "number": "2.74.1",
+      "date": "2016-06-12T06:36:12.006Z"
+    }
+  ],
+  "created": "2015-10-31T02:39:24.098Z",
+  "modified": "2016-06-12T06:36:12.006Z",
+  "lastPublisher": {
+    "name": "soederpop",
+    "email": "jon@chicago.com"
+  },
+  "owners": [
+    {
+      "name": "soederpop",
+      "email": "jon@architects.io"
+    }
+  ],
+  "readme": "# Skypager\n\nThis is the portfolio project for Skypager.  A Portfolio is a parent repository which contains multiple sub projects, some of which which support or depend on one another.  All of the projects will share dependencies and tooling by virtue of the project's folder structure.\n\n**Note:** This project is very alpha.\n\n## Skypager Projects\n\nSkypager Projects are npm modules which contain source code and other assets. They must have a `skypager` key in their package.json.  The contents of these projects are parsed and indexed based on configuration rules, and can be bundled up and exported as websites, mobile applications, desktop applications, or whatever else you can imagine.  \n\nEach project consists of Asset collections and Helper registries.  \n\n#### Asset Collections\n\nAsset Collections are different types of source files which get parsed into an AST format using popular AST libraries:\n\n- remark for markdown\n- postCSS for CSS, Less, Sass etc\n- babel for javascript\n- cheerio for XML and other DOMs\n\nThey provide a queryable data store for your application to be able to work with your application's code in a way that is not restricted by what exists in the file.\n\n```js\n// load the project from current directory \nlet project = require('skypager-project').load()\nlet docs = project.content.docs\nlet scripts = project.content.scripts\n\n// find all of the test files\nscripts.where({filename: /-spec/})\n\n// find all of the react components\nlet components = scripts.where({category: 'components'})\n\n// use the react-docgen parser on them\nlet componentData = \n\ncomponents\n  .map(c => c.parser = require('react-docgen').parse && c)\n  .filter(c => c.parsed)\n\n// save that as a new data source\nlet dataSource = project.data.createAsset('component/docs.yml')\ndataSource.set(componentData)\ndataSource.save()\n```\n\nThe example above is close to a real world example and is\ncertainly possible.  What we did was work with the react\ncomponent javascript files as if they were records in a\ndatabase.  \n\nThis allows us to do programmatic manipulation of\nproject code based on their AST forms.\n\nWe can work with the ASTs of Javascript, Markdown, CSS, SVG,\nHTML, and more. \n\n```javascript\n\n// find all of the documents in draft status\ndocs.query({status:'draft'})\n\n// combine all of the documents about italy into one HTML\nlet italy = docs.query((d) => d.data.tags.indexOf('Italy') >= 0)\n\nlet html = `\n<html>\n  <body>\n    ${ italy.map(doc => doc.html) } \n  </body>\n</html>\n`\n```\n\n\n#### Helper Registries\n\nHelpers are functions which do various things on your behalf.\n\n- **Actions** are functions which provide an interface to\n  the outside world to make small, well defined requests to\n  **do something to or with** the project.  Whether it is\n  generating new assets, or converting existing assets like\n  SVGs to React Components, or downloading a spreadsheet and\n  converting it to JSON, actions are reusable chunks of\n  functionality which can be used to accomplish the task.\n  Actions can be exposed via a CLI, Web Server, Websocket,\n  or IPC.\n\n- **Importers** and **Exporters** are functions which pull\n  assets into the project, or export project assets into\n  other forms.  There are a variety of these helpers provided by\n  the framework and new ones can be found in plugins. \n\n- **Models** are functions which extract structured data and\n  attributes about the **things** that exist in the project,\n  or that relate to the project.\n\n- **Renderers** are functions which take the project's\n  assets in AST form and combine them in whatever way is\n  desired.\n\n#### Registries\n\nHelpers are accessible via the Registry system.  The\n`Skypager` framework itself has a registry, as does every\nproject.  The Skypager framework registry is a fallback for\nwhen a helper is requested by the project and does not exist\nlocally.\n\n```js\nlet project = require('skypager-project').load()\n\n// run the dropbox sync action\nproject.run.action('dropbox/sync')\n\n// view the required parameters for an action\nproject.actions.lookup('dropbox/sync').definition.parameters\n\n// query the available actions to see which have a CLI\nproject.actions.query(a => a.get('definition.interfaces.cli'))\n\n// export the project as an asar archive\nproject.run.exporter('packager/asar')\n\n```\n\n\n## Getting Started\n\n```\ngit clone git@github.com:architects/skypager-central.git\ncd skypager-central\nnpm install\n```\n\nOnce this project is cloned and the dependencies are installed, you should be able to run `npm run test` and see that the entire test suite runs for each package in the portfolio.\n\n## Skypager CLI\n\nThe `skypager` cli should be installed globally automatically when you run npm install inside this project.\n\nYou can run `skypager --help` to see the available options.\n\nHere are the important commands:\n\n- `skypager init` will create a new skypager project based on the package found in `packages/skypager-template-project`\n- `skypager dev` will start a webpack development server.\n- `skypager build` will run a production webpack build.\n- `skypager author` will open up skypager-electron\n\n## Webpack & React Devserver\n\nYou can checkout `packages/skypager-template-project` to see\nwhat the default skypager project will look like.\n\n```\ncd packages/skypager-template-project\nskypager dev\n```\n\nThe dev server will be running on http://localhost:3000\n\n## Skypager UI Docs\n\nThe `skypager-ui` package contains shared UI components,\nPage Layouts, and Application Shells.  You can view the docs\nproject by:\n\n```\ncd packages/skypager-ui\nskypager dev web\n```\n\nIt will be running on localhost at the configured port (3000\nby default)\n\n"
+}

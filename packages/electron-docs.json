@@ -1,6 +1,6 @@
 {
   "name": "electron-docs",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "description": "Fetch Electron documentation as raw markdown strings",
   "main": "index.js",
   "bin": {
@@ -10,8 +10,17 @@
     "test": "node test/index.js | tap-spec"
   },
   "repository": {
-    "type": "git",
-    "url": "git+https://github.com/zeke/electron-docs.git"
+    "user": "zeke",
+    "repo": "electron-docs",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/zeke/electron-docs/tarball/master",
+    "clone_url": "https://github.com/zeke/electron-docs",
+    "https_url": "https://github.com/zeke/electron-docs",
+    "travis_url": "https://travis-ci.org/zeke/electron-docs",
+    "zip_url": "https://github.com/zeke/electron-docs/archive/master.zip",
+    "api_url": "https://api.github.com/repos/zeke/electron-docs"
   },
   "keywords": [
     "electron",
@@ -28,9 +37,6 @@
     "url": "http://zeke.sikelianos.com"
   },
   "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/zeke/electron-docs/issues"
-  },
   "homepage": "https://github.com/zeke/electron-docs#readme",
   "dependencies": {
     "bluebird": "^3.4.0",
@@ -47,29 +53,58 @@
     "tap-spec": "^4.1.1",
     "tape": "^4.5.1"
   },
-  "gitHead": "79ee5d8c05fc0a9ea7f390428111c865e6fe6e7e",
-  "_id": "electron-docs@1.1.0",
-  "_shasum": "42f5903daec14bf3f1b21c141ac0515c5e332e16",
-  "_from": ".",
+  "gitHead": "ad0ac6a62ac67a57c85e48edf3a98492fd6039a6",
   "_npmVersion": "3.9.3",
   "_nodeVersion": "6.2.1",
-  "_npmUser": {
+  "dist": {
+    "shasum": "c97ca71bb47a117e1e2ba6c34000ac5219bd519d",
+    "tarball": "http://registry.npmjs.org/electron-docs/-/electron-docs-1.2.0.tgz"
+  },
+  "versions": [
+    {
+      "number": "1.0.0",
+      "date": "2016-06-16T22:43:23.590Z"
+    },
+    {
+      "number": "1.0.1",
+      "date": "2016-06-17T02:27:56.643Z"
+    },
+    {
+      "number": "1.0.2",
+      "date": "2016-06-17T02:30:18.243Z"
+    },
+    {
+      "number": "1.0.3",
+      "date": "2016-06-17T02:37:18.796Z"
+    },
+    {
+      "number": "1.0.4",
+      "date": "2016-06-17T21:51:28.243Z"
+    },
+    {
+      "number": "1.0.5",
+      "date": "2016-06-17T22:06:00.195Z"
+    },
+    {
+      "number": "1.1.0",
+      "date": "2016-06-24T23:41:07.084Z"
+    },
+    {
+      "number": "1.2.0",
+      "date": "2016-06-29T00:54:53.268Z"
+    }
+  ],
+  "created": "2016-06-16T22:43:23.590Z",
+  "modified": "2016-06-29T00:54:53.268Z",
+  "lastPublisher": {
     "name": "zeke",
     "email": "zeke@sikelianos.com"
   },
-  "dist": {
-    "shasum": "42f5903daec14bf3f1b21c141ac0515c5e332e16",
-    "tarball": "http://registry.npmjs.org/electron-docs/-/electron-docs-1.1.0.tgz"
-  },
-  "maintainers": [
+  "owners": [
     {
       "name": "zeke",
       "email": "zeke@sikelianos.com"
     }
   ],
-  "_npmOperationalInternal": {
-    "host": "packages-12-west.internal.npmjs.com",
-    "tmp": "tmp/electron-docs-1.1.0.tgz_1466811666470_0.6847120702732354"
-  },
-  "directories": {}
+  "readme": "# electron-docs [![Build Status](https://travis-ci.org/zeke/electron-docs.svg?branch=master)](https://travis-ci.org/zeke/electron-docs)\n\nThis package consumes the [electron/electron](https://github.com/electron/electron)\nrepo in search of markdown files, and returns an array of file objects with stringified\nfile contents.\n\n## Installation\n\n```sh\nnpm install electron-docs --save\n```\n\n## Programmatic Usage\n\nRequire it and invoke the function with no arguments:\n\n```js\nconst electronDocs = require('electron-docs')\n\nelectronDocs().then(function(docs) {\n  // docs is an array of objects, one for each markdown file in /docs\n})\n```\n\nEach object in the `docs` array looks like this:\n\n```js\n{\n slug: \"windows-store-guide\",\n filename: \"docs/tutorial/windows-store-guide.md\",\n markdown_content: \"# Windows Store Guide\\n\\n...\"\n}\n```\n\nThe latest version of Electron is fetched by default. If you need a different\nversion, specify it as the first argument:\n\n```js\nelectronDocs('1.2.0').then(function(docs) {\n  // ...\n})\n```\n\nYou can also point to a local directory instead of downloading a tarball:\n\n```js\nconst path = require('path')\nconst docsPath = path.join(__dirname, 'docs')\nelectronDocs(docsPath).then(function(docs) {\n  // ...\n})\n```\n\nIf you prefer node-style callbacks instead of promises, those are supported too:\n\n```js\n// latest\nelectronDocs(function(err, docs) {\n  console.log(err, docs)\n})\n\n// a specific version\nelectronDocs('1.0.0', function(err, docs) {\n  console.log(err, docs)\n})\n```\n\n## CLI Usage\n\nAdd this to your package.json file:\n\n```json\n{\n  \"scripts\": {\n    \"docs\": \"electron-docs > docs.json\"\n  }\n}\n```\n\nWhen you run `npm run docs`, the module writes the stringified JSON object to\n`stdout`, and the output is piped into a file.\n\n`stdout` ftw!\n\n## Tests\n\n```sh\nnpm i && npm t\n```\n\n## Dependencies\n\n- [bluebird](https://github.com/petkaantonov/bluebird): Full featured Promises/A+ implementation with exceptionally good performance\n- [github-latest-release](https://github.com/chentsulin/github-latest-release): Get latest release information from github repository\n- [got](https://github.com/sindresorhus/got): Simplified HTTP requests\n- [gunzip-maybe](https://github.com/mafintosh/gunzip-maybe): Transform stream that gunzips its input if it is gzipped and just echoes it if not\n- [node-dir](https://github.com/fshost/node-dir): asynchronous file and directory operations for Node.js\n- [ora](https://github.com/sindresorhus/ora): Elegant terminal spinner\n- [tar-fs](https://github.com/mafintosh/tar-fs): filesystem bindings for tar-stream\n\n## Dev Dependencies\n\n- [tap-spec](https://github.com/scottcorgan/tap-spec): Formatted TAP output like Mocha&#39;s spec reporter\n- [tape](https://github.com/substack/tape): tap-producing test harness for node and browsers\n\n\n## License\n\nMIT\n"
 }

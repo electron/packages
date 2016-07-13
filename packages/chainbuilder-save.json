@@ -7,8 +7,17 @@
     "test": "mocha"
   },
   "repository": {
-    "type": "git",
-    "url": "git+https://github.com/andrewpmckenzie/chainbuilder-save.git"
+    "user": "andrewpmckenzie",
+    "repo": "chainbuilder-save",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/andrewpmckenzie/chainbuilder-save/tarball/master",
+    "clone_url": "https://github.com/andrewpmckenzie/chainbuilder-save",
+    "https_url": "https://github.com/andrewpmckenzie/chainbuilder-save",
+    "travis_url": "https://travis-ci.org/andrewpmckenzie/chainbuilder-save",
+    "zip_url": "https://github.com/andrewpmckenzie/chainbuilder-save/archive/master.zip",
+    "api_url": "https://api.github.com/repos/andrewpmckenzie/chainbuilder-save"
   },
   "keywords": [
     "chainbuilder",
@@ -20,9 +29,6 @@
     "name": "andrewpmckenzie@gmail.com"
   },
   "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/andrewpmckenzie/chainbuilder-save/issues"
-  },
   "homepage": "https://github.com/andrewpmckenzie/chainbuilder-save",
   "dependencies": {},
   "peerDependencies": {
@@ -36,24 +42,29 @@
     "sinon": "^1.17.2"
   },
   "gitHead": "7d00c4bd1bbef9146abc014d7ebc641777b3b270",
-  "_id": "chainbuilder-save@1.0.0",
-  "_shasum": "6b109ff900384ca8fc539f255d6ecf9175baed36",
-  "_from": ".",
   "_npmVersion": "3.3.12",
   "_nodeVersion": "5.3.0",
-  "_npmUser": {
+  "dist": {
+    "shasum": "6b109ff900384ca8fc539f255d6ecf9175baed36",
+    "tarball": "http://registry.npmjs.org/chainbuilder-save/-/chainbuilder-save-1.0.0.tgz"
+  },
+  "versions": [
+    {
+      "number": "1.0.0",
+      "date": "2015-12-31T16:00:37.673Z"
+    }
+  ],
+  "created": "2015-12-31T16:00:37.673Z",
+  "modified": "2015-12-31T16:00:37.673Z",
+  "lastPublisher": {
     "name": "andrewpmckenzie",
     "email": "andrew.mckenzie@electronifie.com"
   },
-  "maintainers": [
+  "owners": [
     {
       "name": "andrewpmckenzie",
       "email": "andrew.mckenzie@electronifie.com"
     }
   ],
-  "dist": {
-    "shasum": "6b109ff900384ca8fc539f255d6ecf9175baed36",
-    "tarball": "http://registry.npmjs.org/chainbuilder-save/-/chainbuilder-save-1.0.0.tgz"
-  },
-  "directories": {}
+  "readme": "# chainbuilder-save [![Build Status](https://travis-ci.org/andrewpmckenzie/chainbuilder-save.svg)](https://travis-ci.org/andrewpmckenzie/chainbuilder-save)\n\nA [chainbuilder](https://www.npmjs.com/package/chainbuilder) mixin for saving/restoring values. \n\n**Installation** `npm install chainbuilder chainbuilder-save --save`\n\n**Usage**  \n```javascript\nvar chainBuilder = require('chainbuilder');\n\nvar myChain = chainBuilder({\n  methods: {/* ... your methods ... */},\n  mixins: [\n    /* ... other mixins ... */\n    require('chainbuilder-save')()\n  ]\n});\n```\n\n**Example**  \n\n```javascript\nmyChain(2)\n  .plus(1)\n  .save('var1')           // Saves 3 to 'var1'\n  .plus(5)\n  .save('var2')           // Save 8 to 'var2'\n  .injectSaved('var1')    // Value in the chain is now 3\n  .plus(1)\n  .end(function (err, result) {\n    console.log(result);                // > 4\n    console.log(this.getSaved('var1')); // > 3\n    console.log(this.getSaved('var2')); // > 8\n  });\n```\n\n## Methods\n\n#### require('chainbuilder-save')()\nInit the mixin.\n\n#### save(varName)\nSave the previous result.\n\n**`@param {String} varName`** a name for the variable (re-using a name will override the value).\n\n#### injectSaved(varName)\nInject the saved value back into the chain.\n\n**`@param {String} varName`** name of the variable to restore.\n\n#### this.getSaved(varName) _context method_\nGet a saved value from within a chainbuilder context (e.g. a `tap`, `transform` or `end` callback).\n\n**`@param {String} varName`** name of the variable to get.\n"
 }

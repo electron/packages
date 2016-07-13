@@ -10,8 +10,17 @@
     "electron"
   ],
   "repository": {
-    "type": "git",
-    "url": "git+https://github.com/Sethorax/electron-window-state-manager.git"
+    "user": "Sethorax",
+    "repo": "electron-window-state-manager",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/Sethorax/electron-window-state-manager/tarball/master",
+    "clone_url": "https://github.com/Sethorax/electron-window-state-manager",
+    "https_url": "https://github.com/Sethorax/electron-window-state-manager",
+    "travis_url": "https://travis-ci.org/Sethorax/electron-window-state-manager",
+    "zip_url": "https://github.com/Sethorax/electron-window-state-manager/archive/master.zip",
+    "api_url": "https://api.github.com/repos/Sethorax/electron-window-state-manager"
   },
   "author": {
     "name": "sethorax"
@@ -25,28 +34,47 @@
     "jasmine": "^2.4.1"
   },
   "gitHead": "8a18d218bb6f4c2e26c626dbd94ae484ed8a67ba",
-  "bugs": {
-    "url": "https://github.com/Sethorax/electron-window-state-manager/issues"
-  },
   "homepage": "https://github.com/Sethorax/electron-window-state-manager#readme",
-  "_id": "electron-window-state-manager@0.2.1",
-  "_shasum": "8592297ad7ad896cbba9c33d809d3dcfc21e4e43",
-  "_from": ".",
   "_npmVersion": "3.3.12",
   "_nodeVersion": "5.3.0",
-  "_npmUser": {
-    "name": "sethorax",
-    "email": "sethorax@gmail.com"
-  },
   "dist": {
     "shasum": "8592297ad7ad896cbba9c33d809d3dcfc21e4e43",
     "tarball": "http://registry.npmjs.org/electron-window-state-manager/-/electron-window-state-manager-0.2.1.tgz"
   },
-  "maintainers": [
+  "stars": 1,
+  "versions": [
+    {
+      "number": "0.1.0",
+      "date": "2016-01-09T21:35:14.885Z"
+    },
+    {
+      "number": "0.1.1",
+      "date": "2016-01-09T22:48:42.215Z"
+    },
+    {
+      "number": "0.1.2",
+      "date": "2016-01-12T21:03:19.050Z"
+    },
+    {
+      "number": "0.2.0",
+      "date": "2016-01-12T21:14:11.200Z"
+    },
+    {
+      "number": "0.2.1",
+      "date": "2016-01-13T17:57:44.965Z"
+    }
+  ],
+  "created": "2016-01-09T21:35:14.885Z",
+  "modified": "2016-01-13T17:57:44.965Z",
+  "lastPublisher": {
+    "name": "sethorax",
+    "email": "sethorax@gmail.com"
+  },
+  "owners": [
     {
       "name": "sethorax",
       "email": "sethorax@gmail.com"
     }
   ],
-  "directories": {}
+  "readme": "# electron-window-state-manager [![Build Status](https://travis-ci.org/Sethorax/electron-window-state-manager.svg?branch=master)](https://travis-ci.org/Sethorax/electron-window-state-manager)\n\nThe Electron Window State Manager is a small package that gives you the ability to save the state of a `BrowserWindow` and retreive the saved data of the state later.\n\n# Installation\n```\nnpm install electron-window-state-manager\n```\n\n# What does it do?\n\nThe Window State Manager can store the dimensions (width and height), the position (x and y coordinates) and the current state (maximized or not) of a `BrowserWindow` and save it to a json file.  \nThe saved state can than later be retreived when using the same window name at the instance creation.\nThe saved state's data will be automatically retreived when creating a `WindowStateManager`instance with an already saved window name.\n\n## Usage\n\nTo be able to use this package in your project you need to require it:\n```javascript\nconst WindowStateManager = require('electron-window-state-manager');\n```\n\n#### Class: WindowStateManager\n\nIt creates a new `WindowStateManager` with a `name` and default properties as set by the `options`.\n\n### `new WindowStateManager(name, [options])`\n\n* `name` String - Name of the window.\n* `options` Object\n  * `defaultWidth` Integer - Default window width in pixels.\n  * `defaultHeight` Integer - Default window height in pixels.\n\nThe value of `name` is used to reference a saved state in the json file. If you create a new instance of `WindowStateManager` with a name which was already saved previously, the data of this state will be loaded.\n\nIf a state with the value of `name` cannot be found in the json file or a saved state has wrong data, the default values assigned in the `options` Object will be used.\n\n### Methods\n\nThe `WindowStateManager` class has the following methods:\n\n#### `WindowStateManager.saveState(window)`\n\n* `window` [BrowserWindow](https://github.com/atom/electron/blob/master/docs/api/browser-window.md)\n\nSaves the state of the passed `BrowserWindow` and returns `true`or `false` depending on whether the state was successfully saved to the json file.\n\nIn case the state of a window in fullscreen is saved, the saving process will not succeed because we don't want to save the dimensions of a fullscreen window.\n\nThe method returns `false` and will not save anything if a window in fullscreen is saved, because we don't want to save the dimensions of a fullscreen window.\n\nIf a maximized window is saved, the dimensions and position of the window will not be stored, only the previously saved values or the default values will be saved.\nHowever the maximized state of the window will be saved, so that you can open the window in a maximized state again later if the window was closed in a maximized state.\n\n\n## Example\n```javascript\nconst app = require('electron').app;\nconst BrowserWindow = require('electron').BrowserWindow;\nconst WindowStateManager = require('electron-window-state-manager');\n\nconst mainWindow;\n\n// Create a new instance of the WindowStateManager\n// and pass it the name and the default properties\nconst mainWindowState = new WindowStateManager('mainWindow', {\n    defaultWidth: 1024,\n    defaultHeight: 768\n});\n\napp.on('ready', () => {\n    // When creating a new BrowserWindow\n    // you can assign the properties of the mainWindowState.\n    // If a window with the name 'main' was saved before,\n    // the saved values will now be assigned to the BrowserWindow again\n    mainWindow = new BrowserWindow({\n        width: mainWindowState.width,\n        height: mainWindowState.height,\n        x: mainWindowState.x,\n        y: mainWindowState.y,\n    });\n\n    // You can check if the window was closed in a maximized saveState\n    // If so you can maximize the BrowserWindow again\n    if (mainWindowState.maximized) {\n        mainWindow.maximize();\n    }\n\n    // Don't forget to save the current state\n    // of the Browser window when it's about to be closed\n    mainWindow.on('close', () => {\n        mainWindowState.saveState(mainWindow);\n    });\n});\n```\n"
 }

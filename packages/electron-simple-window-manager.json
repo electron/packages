@@ -42,35 +42,46 @@
   "homepage": "https://github.com/MichalBures/electron-simple-window-manager",
   "license": "MIT",
   "repository": {
-    "type": "git",
-    "url": "git+https://github.com/MichalBures/electron-simple-window-manager.git"
+    "user": "MichalBures",
+    "repo": "electron-simple-window-manager",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/MichalBures/electron-simple-window-manager/tarball/master",
+    "clone_url": "https://github.com/MichalBures/electron-simple-window-manager",
+    "https_url": "https://github.com/MichalBures/electron-simple-window-manager",
+    "travis_url": "https://travis-ci.org/MichalBures/electron-simple-window-manager",
+    "zip_url": "https://github.com/MichalBures/electron-simple-window-manager/archive/master.zip",
+    "api_url": "https://api.github.com/repos/MichalBures/electron-simple-window-manager"
   },
   "gitHead": "03058323675e58b7d8306915ff49127d6a1c6150",
-  "bugs": {
-    "url": "https://github.com/MichalBures/electron-simple-window-manager/issues"
-  },
-  "_id": "electron-simple-window-manager@1.0.1",
-  "_shasum": "b9a35faf62c0a0458070a5085ef01849407ce286",
-  "_from": ".",
   "_npmVersion": "3.8.7",
   "_nodeVersion": "5.11.0",
-  "_npmUser": {
-    "name": "michalbures",
-    "email": "hello@bures.io"
-  },
   "dist": {
     "shasum": "b9a35faf62c0a0458070a5085ef01849407ce286",
     "tarball": "http://registry.npmjs.org/electron-simple-window-manager/-/electron-simple-window-manager-1.0.1.tgz"
   },
-  "maintainers": [
+  "versions": [
+    {
+      "number": "1.0.0",
+      "date": "2016-05-02T20:12:06.466Z"
+    },
+    {
+      "number": "1.0.1",
+      "date": "2016-05-02T20:15:42.394Z"
+    }
+  ],
+  "created": "2016-05-02T20:12:06.466Z",
+  "modified": "2016-05-02T20:15:42.394Z",
+  "lastPublisher": {
+    "name": "michalbures",
+    "email": "hello@bures.io"
+  },
+  "owners": [
     {
       "name": "michalbures",
       "email": "hello@bures.io"
     }
   ],
-  "_npmOperationalInternal": {
-    "host": "packages-16-east.internal.npmjs.com",
-    "tmp": "tmp/electron-simple-window-manager-1.0.1.tgz_1462220141340_0.16665120306424797"
-  },
-  "directories": {}
+  "readme": "# electron-simple-window-manager\r\n\r\nEasily manage (open, hide, move, ...) you [Electron](https://github.com/electron/electron) windows.\r\n\r\n\r\n## Getting Started\r\n\r\n### Installation\r\n\r\n`npm install electron-simple-window-manager --save`\r\n\r\n### Usage\r\n\r\nThe idea behind this library is that you declare all your windows in the electron's browser process and then you can access and manage those windows just by their name\r\n\r\n\r\n```javascript\r\nimport initSimpleWindowManager from 'electron-simple-window-manager'\r\n\r\nlet windows = [\r\n  {\r\n    name: 'window1',\r\n    config: {\r\n      options: {\r\n        width: 100,\r\n        height: 100,\r\n        show: false,\r\n      },\r\n      url: 'https://github.com',\r\n      setup: function(window) {\r\n        window.openDevTools();\r\n      },\r\n      onClosed: function(window) {\r\n        console.log('Window is closing');\r\n      }\r\n    }\r\n  }\r\n]\r\n\r\n// windows is an array or a map of {name, config}\r\ninitSimpleWindowManager(windows)\r\n```\r\n*Add window configurations in the browser process*\r\n\r\n\r\n\r\n#### Direct use\r\n\r\n```javascript\r\nimport {openWindow} from 'electron-simple-window-manager/utils'\r\n\r\nopenWindow({windowName: 'window1'})\r\n```\r\n\r\n#### Use with redux and redux-saga\r\n\r\nFirst you need to add and run the `SimpleWindowManagerSaga`\r\n```javascript\r\nimport {SimpleWindowManagerSaga} from 'electron-simple-window-manager'\r\n```\r\n*If you are not familiar with `redux-saga` go [see its documentation](https://github.com/yelouafi/redux-saga#mainjs)*\r\n\r\nNow that our helper saga is up and running you can `dispatch` on of the available actions and the saga will process it.\r\n\r\n```javascript\r\nimport {openWindow} from 'electron-simple-window-manager/actions'\r\n\r\ndispatch(openWindow({windowName: 'window1'}))\r\n```\r\n\r\n## Config\r\n\r\n* **options**: (*object*) - Same as [`BrowserWindow` options](https://github.com/electron/electron/blob/master/docs/api/browser-window.md#new-browserwindowoptions)\r\n* **url**: (*url*) - Url to load with [`loadUrl`](https://github.com/electron/electron/blob/master/docs/api/browser-window.md#winloadurlurl-options)\r\n* **setup**: (*function*) - After the window is created and the url loaded this setup function will receive the newly created window as its argument\r\n* **onClosed**: (*function*) - Called during the `closed` window event with the closing window as its argument\r\n\r\n```javascript\r\nimport initSimpleWindowManager from 'electron-simple-window-manager'\r\n\r\nlet config = {\r\n  name: 'window1',\r\n  config: {\r\n    options: {\r\n      width: 100,\r\n      height: 100,\r\n      show: false,\r\n    },\r\n    url: 'https://github.com',\r\n    setup: function(window) {\r\n      window.openDevTools();\r\n    },\r\n    onClosed: function(window) {\r\n      console.log('Window is closing');\r\n    }\r\n  }\r\n}\r\n```\r\n\r\n## Utils\r\n\r\n* **openWindow**: Open window by name\r\n\t* **windowName**\r\n* **closeWindow**: Close window by name or id\r\n\t* **{windowName, windowId}**\r\n* **showWindow**: Show window by name or id\r\n\t* **{windowName, windowId}**\r\n* **hideWindow**: Hide window by name or id\r\n\t* **{windowName, windowId}**\r\n* **openDevTools**: Open DevTools in given window\r\n\t* **{windowName, windowId}** - if no name or id is given the current window will be used\r\n\t* **options** - same as in the [Electron documentation](https://github.com/electron/electron/blob/master/docs/api/web-contents.md#webcontentsopendevtoolsoptions)\r\n* **closeDevTools**: Close DevTools in given window\r\n\t* **{windowName, windowId}** - if no name or id is given the current window will be used\r\n* **setBounds**: Move or resize given window ([see documentation](https://github.com/electron/electron/blob/master/docs/api/browser-window.md#winsetboundsoptions-animate))\r\n\t* **{windowName, windowId}** - if no name or id is given the current window will be used\r\n\t* **options** - You don't have to provide all the arguments as in the official function. Using `{x: 0}` will move the window along the x axis and keep the rest unchanged. \r\n\t\t* x\r\n\t\t* y\r\n\t\t* width\r\n\t\t* height\r\n\t* **animate**: true/false\r\n* **getCurrentWindow**: Returns current `BrowserWindow`\r\n* **getCurrentWindowName**: Returns name of the current window\r\n* **getWindow**:\r\n\t* **{windowName, windowId}** - if no name or id is given the current window will be used\r\n* **getWindowNames**: Returns list of all known window names\r\n\r\n## Actions\r\n\r\n* **openWindow**: Open window by name\r\n\t* **windowName**\r\n* **closeWindow**: Close window by name or id\r\n\t* **{windowName, windowId}**\r\n* **showWindow**: Show window by name or id\r\n\t* **{windowName, windowId}**\r\n* **hideWindow**: Hide window by name or id\r\n\t* **{windowName, windowId}**\r\n* **openDevTools**: Open DevTools in given window\r\n\t* **{windowName, windowId}** - if no name or id is given the current window will be used\r\n\t* **options** - same as in the [Electron documentation](https://github.com/electron/electron/blob/master/docs/api/web-contents.md#webcontentsopendevtoolsoptions)\r\n* **closeDevTools**: Close DevTools in given window\r\n\t* **{windowName, windowId}** - if no name or id is given the current window will be used\r\n* **setBounds**: Move or resize given window ([see documentation](https://github.com/electron/electron/blob/master/docs/api/browser-window.md#winsetboundsoptions-animate))\r\n\t* **{windowName, windowId}** - if no name or id is given the current window will be used\r\n\t* **options** - You don't have to provide all the arguments as in the official function. Using `{x: 0}` will move the window along the x axis and keep the rest unchanged. \r\n\t\t* x\r\n\t\t* y\r\n\t\t* width\r\n\t\t* height\r\n\t* **animate**: true/false"
 }

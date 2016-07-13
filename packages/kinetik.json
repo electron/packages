@@ -7,8 +7,17 @@
   "description": "A storage-agnostic, tag centric job queue for distributed applications.",
   "version": "0.3.1",
   "repository": {
-    "type": "git",
-    "url": "git://github.com/qualiancy/kinetik.git"
+    "user": "qualiancy",
+    "repo": "kinetik",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/qualiancy/kinetik/tarball/master",
+    "clone_url": "https://github.com/qualiancy/kinetik",
+    "https_url": "https://github.com/qualiancy/kinetik",
+    "travis_url": "https://travis-ci.org/qualiancy/kinetik",
+    "zip_url": "https://github.com/qualiancy/kinetik/archive/master.zip",
+    "api_url": "https://api.github.com/repos/qualiancy/kinetik"
   },
   "main": "./index",
   "scripts": {
@@ -32,22 +41,88 @@
     "seed-mongodb": "*"
   },
   "optionalDependencies": {},
-  "readme": "# Kinetik [![Build Status](https://secure.travis-ci.org/qualiancy/kinetik.png?branch=master)](http://travis-ci.org/qualiancy/kinetik)\n\n> A storage-agnostic, tag centric job queue for distributed applications.\n\n#### Features\n\n- storage-agnostic, thanks to [seed](https://github.com/qualiancy/seed)\n- distribute workers across processes and servers\n- tag and priority based processing\n- middleware capable\n- cli management suite\n- job delays\n- per-job logging\n- chainable api\n\nFor full usage and API documentation, view the [documentation](http://kinetik.qualiancy.com/).\n\n#### Installation\n\n`kinetik` package is available for node through [npm](http://npmjs.org).\n\n```bash\nnpm install kinetik\n```\n\n#### Contributors\n\nInterested in contributing? Fork to get started. Contact [@logicalparadox](http://github.com/logicalparadox) \nif you are interested in being regular contributor.\n\n* Jake Luer ([@logicalparadox](http://github.com/logicalparadox))\n\n#### License\n\n(The MIT License)\n\nCopyright (c) 2012 Jake Luer <jake@qualiancy.com>\n\nPermission is hereby granted, free of charge, to any person obtaining a copy\nof this software and associated documentation files (the \"Software\"), to deal\nin the Software without restriction, including without limitation the rights\nto use, copy, modify, merge, publish, distribute, sublicense, and/or sell\ncopies of the Software, and to permit persons to whom the Software is\nfurnished to do so, subject to the following conditions:\n\nThe above copyright notice and this permission notice shall be included in\nall copies or substantial portions of the Software.\n\nTHE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR\nIMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,\nFITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE\nAUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER\nLIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,\nOUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN\nTHE SOFTWARE.\n",
-  "_id": "kinetik@0.3.1",
+  "readme": "# Kinetik\n\n> A tag-based job queue backed by [Seed](http://github.com/qualiancy/seed).\n\nKinetik jobs are placed in a background queue and categoried by tag. Workers can then be spawned to focus\non a given set of tags. \n\n*Kinetik is in early-alpha. Don't forget to `watch` for further developments.*\n\n##### What is Seed?\n\n[Seed](http://github.com/qualiancy/seed), which stands for _storage-agnostic, event emitting datasets_, \nis a library of components that provide a common API for working with data, no matter the source. \n\nBy using Seed, a Kinetik queue can be stored using any of Seed's storage adapters, including\n[Redis](https://github.com/qualiancy/seed-redis) or [MongoDB](https://github.com/qualiancy/seed-mongodb).\n\n[Visit the Seed project page](http://github.com/qualiancy/seed) to learn more, and see alternative storage solutions.\n\n## Installation\n\nKinetik is available on NPM.\n\n      $ npm install kinetik\n\n## Basic Usage\n\n#### Choose Your Storage\n\nThe first step to using Kinetik is creating a new Queue using one of Seed's storage engines.\n\n```js\nvar kinetik = require('kinetik')\n  , RedisStore = require('seed-redis').Store;\n\n// we are using a redis with a default config\nvar queue = kinetik.createQueue({\n  store: new RedisStore()\n});\n```\n\nYou can use any of Seed's available storage adapters. See that adapater's documentation for relevant configurations.\n\n#### Defining Jobs\n\nNext, you will need to define a job.\n\n```js\nqueue\n  .define('send email')\n  .tag('notifications')\n  .action(function (job, done) {\n    var email = job.data.email\n      , subject = job.data.subject;\n    myAsyncMailer(email, subject, function (err) {\n      if (err) return done(err);\n      done();\n    });\n  });\n\n// tell our queue to process all incoming `notifications`.\nqueue.process([ 'notifications' ]);\n```\n\n*Notes*\n\n* The `tag` \"notifications\" allows us to group common types of jobs together for completion by a single worker process.\n* The `job` parameter for the action will be comprised of all relevant data needed to complete the task.\n* The `done` parameter for the action accepts an error object as parameter. If sent, will flag job as `failed`, otherwise will flag as `complete`.\n\n#### Adding Jobs\n\nNext, you will need to create jobs...\n\n```js\nqueue.create('send email', {\n    email: 'ford@hitchhikersguide.com'\n  , subject: 'Hello Universe'\n});\n```\nSince our queue is processing `notifications`, this will job will be processed on the iteration through the `notifications` tag.\n\n## Advanced Usage\n\nComing soon as the API progresses.\n\n## Contributing\n\nInterested in contributing? Fork to get started. Contact [@logicalparadox](http://github.com/logicalparadox) \nif you are interested in being regular contributor.\n\n##### Contibutors \n\n* Jake Luer ([Github: @logicalparadox](http://github.com/logicalparadox)) ([Twitter: @jakeluer](http://twitter.com/jakeluer)) ([Website](http://alogicalparadox.com))\n\n## License\n\n    (The MIT License)\n\n    Copyright (c) 2011-2012 Jake Luer <jake@alogicalparadox.com>\n\n    Permission is hereby granted, free of charge, to any person obtaining a copy\n    of this software and associated documentation files (the \"Software\"), to deal\n    in the Software without restriction, including without limitation the rights\n    to use, copy, modify, merge, publish, distribute, sublicense, and/or sell\n    copies of the Software, and to permit persons to whom the Software is\n    furnished to do so, subject to the following conditions:\n\n    The above copyright notice and this permission notice shall be included in\n    all copies or substantial portions of the Software.\n\n    THE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR\n    IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,\n    FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE\n    AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER\n    LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,\n    OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN\n    THE SOFTWARE.\n",
   "dist": {
     "shasum": "7b7ddff2410e19f70d14367c4cd77e9769210c2a",
     "tarball": "http://registry.npmjs.org/kinetik/-/kinetik-0.3.1.tgz"
   },
   "_npmVersion": "1.1.62",
-  "_npmUser": {
+  "versions": [
+    {
+      "number": "0.0.1",
+      "date": "2012-02-12T01:59:04.625Z"
+    },
+    {
+      "number": "0.0.2",
+      "date": "2012-02-12T17:32:30.734Z"
+    },
+    {
+      "number": "0.0.3",
+      "date": "2012-03-06T01:07:07.655Z"
+    },
+    {
+      "number": "0.0.4",
+      "date": "2012-03-07T19:31:07.677Z"
+    },
+    {
+      "number": "0.0.5",
+      "date": "2012-03-08T01:48:25.687Z"
+    },
+    {
+      "number": "0.0.6",
+      "date": "2012-03-08T06:08:12.127Z"
+    },
+    {
+      "number": "0.0.7",
+      "date": "2012-03-09T02:26:15.627Z"
+    },
+    {
+      "number": "0.0.8",
+      "date": "2012-03-14T04:46:08.639Z"
+    },
+    {
+      "number": "0.0.9",
+      "date": "2012-03-14T04:52:12.577Z"
+    },
+    {
+      "number": "0.0.10",
+      "date": "2012-05-22T22:23:57.444Z"
+    },
+    {
+      "number": "0.0.11",
+      "date": "2012-05-25T09:07:09.650Z"
+    },
+    {
+      "number": "0.1.0",
+      "date": "2012-06-29T18:46:59.943Z"
+    },
+    {
+      "number": "0.2.0",
+      "date": "2012-07-11T01:35:48.766Z"
+    },
+    {
+      "number": "0.2.1",
+      "date": "2012-07-11T16:00:36.186Z"
+    },
+    {
+      "number": "0.3.0",
+      "date": "2012-09-04T23:27:02.553Z"
+    },
+    {
+      "number": "0.3.1",
+      "date": "2012-09-26T17:16:36.900Z"
+    }
+  ],
+  "created": "2012-02-12T01:59:03.828Z",
+  "modified": "2012-09-26T17:16:36.900Z",
+  "lastPublisher": {
     "name": "jakeluer",
     "email": "jake@alogicalparadox.com"
   },
-  "maintainers": [
+  "owners": [
     {
       "name": "jakeluer",
       "email": "jake.luer@incatern.com"
     }
-  ],
-  "directories": {}
+  ]
 }

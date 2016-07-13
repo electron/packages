@@ -55,39 +55,54 @@
     "viewer"
   ],
   "repository": {
-    "type": "git",
-    "url": "git://github.com/Jam3/preview-dds.git"
+    "user": "Jam3",
+    "repo": "preview-dds",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/Jam3/preview-dds/tarball/master",
+    "clone_url": "https://github.com/Jam3/preview-dds",
+    "https_url": "https://github.com/Jam3/preview-dds",
+    "travis_url": "https://travis-ci.org/Jam3/preview-dds",
+    "zip_url": "https://github.com/Jam3/preview-dds/archive/master.zip",
+    "api_url": "https://api.github.com/repos/Jam3/preview-dds"
   },
   "homepage": "https://github.com/Jam3/preview-dds",
-  "bugs": {
-    "url": "https://github.com/Jam3/preview-dds/issues"
-  },
   "bin": {
     "preview-dds": "./bin/cli.js"
   },
   "gitHead": "d1f480540ed97e40c5799689a5d9c5e9cc109926",
-  "_id": "preview-dds@1.0.1",
-  "_shasum": "22f0912facbdc5d286d59cd5420a143bcb057bb9",
-  "_from": ".",
   "_npmVersion": "2.14.12",
   "_nodeVersion": "5.0.0",
-  "_npmUser": {
-    "name": "mattdesl",
-    "email": "dave.des@gmail.com"
-  },
   "dist": {
     "shasum": "22f0912facbdc5d286d59cd5420a143bcb057bb9",
     "tarball": "http://registry.npmjs.org/preview-dds/-/preview-dds-1.0.1.tgz"
   },
-  "maintainers": [
+  "versions": [
+    {
+      "number": "0.0.0",
+      "date": "2015-07-08T01:02:11.561Z"
+    },
+    {
+      "number": "1.0.0",
+      "date": "2015-07-08T01:34:28.423Z"
+    },
+    {
+      "number": "1.0.1",
+      "date": "2016-04-08T22:23:08.247Z"
+    }
+  ],
+  "created": "2015-07-08T01:02:11.561Z",
+  "modified": "2016-04-08T22:23:08.247Z",
+  "lastPublisher": {
+    "name": "mattdesl",
+    "email": "dave.des@gmail.com"
+  },
+  "owners": [
     {
       "name": "mattdesl",
       "email": "dave.des@gmail.com"
     }
   ],
-  "_npmOperationalInternal": {
-    "host": "packages-16-east.internal.npmjs.com",
-    "tmp": "tmp/preview-dds-1.0.1.tgz_1460154186257_0.8245342841837555"
-  },
-  "directories": {}
+  "readme": "# preview-dds\n\n[![stable](http://badges.github.io/stability-badges/dist/stable.svg)](http://github.com/badges/stability-badges)\n\nPreview and convert DDS files from the command line (compressed textures and HDR cubemaps). \n\nThis only supports a limited range of DDS formats, see [here](https://github.com/Jam3/parse-dds).\n\n<img src=\"http://i.imgur.com/gibac6e.png\" width=\"80%\" />\n\n## Install\n\n```sh\nnpm install preview-dds -g\n```\n\n## Usage\n\n[![NPM](https://nodei.co/npm/preview-dds.png)](https://www.npmjs.com/package/preview-dds)\n\nThe CLI options are as follows:\n\n```sh\nUsage:\n  preview-dds file [opt]\n\nOptions:\n  --level, -l   optional mipmap level (default 0)\n  --face, -f    optional cubemap face to preview (default all)\n  --output, -o  write image to stdout (default: not used)\n  --quality, -q if output is JPG, encoder quality (0.0 - 1.0)\n```\n\n## Basic Examples\n\nPreview a cubemap as an unwrapped cross:\n\n```sh\npreview-dds my-cubemap.dds\n```\n\nOr, preview a single face and mipmap level of the cubemap:\n\n```sh\npreview-dds my-cubemap.dds --level=1 --face=px\n```\n\nWhere `face` option can be a string like `px`, `py`, or `pz` -- or a number index into the faces array (see [cube-face-name](https://github.com/Jam3/cube-face-name)).\n\nIf no `face` is specified, all faces are shown together.\n\n## Convert DDS to PNG/JPG\n\nYou can also use this tool to extract compressed textures and cube faces from a DDS file, by specifying `--output=png|jpg`. \n\nFor example:\n\n```sh\npreview-dds my-cubemap.dds --output=jpg -q 0.8 -l 2 -f px > cube-face.jpg\n```\n\nThe above writes a new file `cube-face.jpg` with a quality of 0.8, showing mipmap level 2 and the \"positive x\" face. Result:\n\n![face](http://i.imgur.com/Rq0WrIB.jpg)\n\nThe `--output` flag (or `-o`) defaults to PNG.\n\n## License\n\nMIT, see [LICENSE.md](http://github.com/Jam3/preview-dds/blob/master/LICENSE.md) for details.\n"
 }

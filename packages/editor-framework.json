@@ -4,16 +4,22 @@
   "description": "A simple framework for making panel based applications.",
   "homepage": "https://github.com/cocos-creator/editor-framework",
   "repository": {
-    "type": "git",
-    "url": "git+https://github.com/cocos-creator/editor-framework.git"
+    "user": "cocos-creator",
+    "repo": "editor-framework",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/cocos-creator/editor-framework/tarball/master",
+    "clone_url": "https://github.com/cocos-creator/editor-framework",
+    "https_url": "https://github.com/cocos-creator/editor-framework",
+    "travis_url": "https://travis-ci.org/cocos-creator/editor-framework",
+    "zip_url": "https://github.com/cocos-creator/editor-framework/archive/master.zip",
+    "api_url": "https://api.github.com/repos/cocos-creator/editor-framework"
   },
   "author": {
     "name": "Firebox Technology"
   },
   "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/cocos-creator/editor-framework/issues"
-  },
   "scripts": {
     "build": "node ./tasks/build-css.js",
     "build:dev": "node ./tasks/build-css.js --dev",
@@ -60,28 +66,65 @@
     "chokidar"
   ],
   "gitHead": "2a000212ec34aff0d7356c73137e46a8b450de5d",
-  "_id": "editor-framework@0.6.1",
-  "_shasum": "5246bf572644e3155e9882064447c29ede2e40a8",
-  "_from": ".",
   "_npmVersion": "3.7.3",
   "_nodeVersion": "5.4.0",
-  "_npmUser": {
+  "dist": {
+    "shasum": "5246bf572644e3155e9882064447c29ede2e40a8",
+    "tarball": "http://registry.npmjs.org/editor-framework/-/editor-framework-0.6.1.tgz"
+  },
+  "versions": [
+    {
+      "number": "0.3.12",
+      "date": "2015-07-20T16:57:23.144Z"
+    },
+    {
+      "number": "0.3.13",
+      "date": "2015-07-20T17:21:51.492Z"
+    },
+    {
+      "number": "0.3.16",
+      "date": "2015-10-05T13:58:46.690Z"
+    },
+    {
+      "number": "0.3.17",
+      "date": "2015-10-14T07:27:53.447Z"
+    },
+    {
+      "number": "0.5.0",
+      "date": "2016-04-07T09:29:13.837Z"
+    },
+    {
+      "number": "0.5.1",
+      "date": "2016-04-13T13:47:00.524Z"
+    },
+    {
+      "number": "0.5.2",
+      "date": "2016-04-19T02:53:58.485Z"
+    },
+    {
+      "number": "0.5.3",
+      "date": "2016-04-22T09:10:31.302Z"
+    },
+    {
+      "number": "0.6.0",
+      "date": "2016-05-13T11:23:10.393Z"
+    },
+    {
+      "number": "0.6.1",
+      "date": "2016-05-31T08:53:47.130Z"
+    }
+  ],
+  "created": "2015-07-20T16:57:23.144Z",
+  "modified": "2016-05-31T08:53:47.130Z",
+  "lastPublisher": {
     "name": "firebox",
     "email": "team@firebox.im"
   },
-  "maintainers": [
+  "owners": [
     {
       "name": "firebox",
       "email": "team@firebox.im"
     }
   ],
-  "dist": {
-    "shasum": "5246bf572644e3155e9882064447c29ede2e40a8",
-    "tarball": "http://registry.npmjs.org/editor-framework/-/editor-framework-0.6.1.tgz"
-  },
-  "_npmOperationalInternal": {
-    "host": "packages-12-west.internal.npmjs.com",
-    "tmp": "tmp/editor-framework-0.6.1.tgz_1464684826670_0.12422497454099357"
-  },
-  "directories": {}
+  "readme": "# Editor Framework\n\n[Documentation](https://github.com/cocos-creator/editor-framework/tree/master/docs) |\n[Downloads](https://github.com/cocos-creator/editor-framework/releases/) |\n[Install](#install) |\n[Features](#features)\n\n[![Circle CI](https://circleci.com/gh/cocos-creator/editor-framework.svg?style=svg)](https://circleci.com/gh/cocos-creator/editor-framework)\n[![Build Status](https://travis-ci.org/cocos-creator/editor-framework.svg?branch=master)](https://travis-ci.org/cocos-creator/editor-framework)\n[![Build status](https://ci.appveyor.com/api/projects/status/ugkft1nmcy2wklrl?svg=true)](https://ci.appveyor.com/project/jwu/editor-framework)\n[![bitHound Overall Score](https://www.bithound.io/github/cocos-creator/editor-framework/badges/score.svg)](https://www.bithound.io/github/cocos-creator/editor-framework)\n[![Dependency Status](https://david-dm.org/cocos-creator/editor-framework.svg)](https://david-dm.org/cocos-creator/editor-framework)\n[![devDependency Status](https://david-dm.org/cocos-creator/editor-framework/dev-status.svg)](https://david-dm.org/cocos-creator/editor-framework#info=devDependencies)\n\nEditor Framework gives you power to easily write professional multi-panel desktop software in HTML5 and node.js.\n\nThe framework is based on top of [Electron](http://github.com/atom/electron) ~~and [Polymer](http://github.com/polymer/polymer)~~(Polymer will be removed soon, and editor-framework will be unlimited for any gui framework).\nIt is designed conforming to Electron’s [main and renderer process architecture](https://github.com/atom/electron/blob/master/docs/tutorial/quick-start.md).\nTo make multiple windows communicate easily, Editor Framework extends [Electron’s IPC message API](https://github.com/atom/electron/blob/master/docs/api/ipc-renderer.md), making it easier to send and receive callbacks between the main and renderer processes.\n\nIt is designed for full extensibility. In the main process, we achieve this by introducing a package management module and several registration APIs. The user can load or unload packages on the fly without closing or restarting the app. In the renderer process, we use HTML5 Web Component standards. The user can extend the widgets and panels, then refresh the page to apply the changes.\n\n![screen shot](https://cloud.githubusercontent.com/assets/174891/11186940/24a90d74-8cbf-11e5-9ea5-fc2610ebbd79.png)\n\n\n## Install\n\nSuppose you have an Electron project, if not, just create an empty directory and run `npm init` in it.\nAfter that, install editor-framework as a package of your project:\n\n```bash\nnpm install --save editor-framework\n```\n\n## Usage\n\nHere is a simple example to show you how to use editor-framework in your Electron project.\n\n**package.json**\n\n```json\n{\n  \"name\": \"your app name\",\n  \"version\": \"0.0.1\",\n  \"description\": \"A simple app based on editor-framework.\",\n  \"dependencies\": {},\n  \"main\": \"main.js\"\n}\n```\n\n**main.js**\n\n```javascript\nconst Editor = require('editor-framework');\n\nEditor.App.extend({\n  init ( opts, cb ) {\n    Editor.init({\n      'package-search-path': [\n        Editor.url('app://packages/'),\n      ],\n    });\n\n    if ( cb ) {\n      cb ();\n    }\n  },\n\n  run () {\n    // create main window\n    let mainWin = new Editor.Window('main', {\n      title: 'Editor Framework',\n      width: 900,\n      height: 700,\n      minWidth: 900,\n      minHeight: 700,\n      show: false,\n      resizable: true,\n    });\n    Editor.Window.main = mainWin;\n\n    // restore window size and position\n    mainWin.restorePositionAndSize();\n\n    // load and show main window\n    mainWin.load( 'app://index.html' );\n    mainWin.show();\n\n    // open dev tools if needed\n    if ( Editor.argv.showDevtools ) {\n      // NOTE: open dev-tools before did-finish-load will make it insert an unused <style> in page-level\n      mainWin.nativeWin.webContents.once('did-finish-load', function () {\n        mainWin.openDevTools({\n          detach: true\n        });\n      });\n    }\n    mainWin.focus();\n  },\n});\n```\n\n**index.html**\n\n```html\n<html>\n  <head>\n    <title>Main Window</title>\n    <meta charset=\"utf-8\">\n\n    <style>\n      #mainDock {\n        position: relative;\n      }\n    </style>\n  </head>\n\n  <body class=\"layout vertical\">\n    <main-dock class=\"flex-1\"></main-dock>\n  </body>\n</html>\n```\n\n## Features\n\n - Package Management\n   - Dynamically load and unload packages\n   - Can use any web language (Less, Sass, CoffeeScript, TypeScript, …) for your package; editor-framework will build it first before loading the package.\n   - Watch package changes and reload or notify changes immediately\n   - Manage your packages in [package manager](https://github.com/fireball-packages/package-manager)\n - Panel Management\n   - Freely docks panel anywhere in multiple windows\n   - Dynamically load user define panels from package\n   - Easily register and respond to ipc messages for your panel\n   - Easily register shortcuts (hotkeys) for your panel\n   - Save and load layout in json\n   - Save and load panel profiles\n - Menu Extends\n   - Dynamically add and remove menu item\n   - Dynamically change menu item state (enabled, checked, visible, …)\n   - Load user menu from packages\n - Commands (under development)\n   - Register and customize commands for your App\n   - A powerful command window (CmdP) for searching and executing your commands\n - Profiles\n   - Allow user to register different types of profile to their need (global, local, project, …)\n   - Load and save profiles through unified API\n - Logs\n   - Use Winston for low level logs\n   - Log to file\n   - Integrate with [console](https://github.com/fireball-packages/console) for display and query your logs\n - Global Selection\n   - Selection cached and synced among windows\n   - User can register his own selection type\n   - Automatically filtering selections\n - Global Undo and Redo\n - Enhance the native Dialog (under development)\n   - Remember dialog last edit position\n - Enhance IPC Programming Experience\n   - Add more ipc methods to help sending and recieving ipc messages in different level\n   - Allow sending ipc message to specific panel\n   - Allow sending ipc message to specific window\n   - Allow sending ipc request and waiting for the reply in callback function\n   - Integrate with [ipc-debugger](https://github.com/fireball-packages/ipc-debugger) to help you writing better ipc code\n - An Auto-Test Workflow\n   - Detect your package changes and automatically run tests under it in [tester](https://github.com/fireball-packages/tester)\n   - Integrate [Mocha](mochajs.org), [Chai](http://chaijs.com/) and [Sinon](sinonjs.org) to our test framework\n   - A ghost-tester to simulate UI events and behaviours for testing\n   - Automatically recreate your test target (widgets, panels) after each test case\n\n## Develop\n\n### Getting Start\n\nClone the repo:\n\n```bash\ngit clone https://github.com/cocos-creator/editor-framework\n```\n\nRun `npm install` in it:\n\n```bash\nnpm install\nnpm run build # build styles\n```\n\n### Install and Run Examples\n\n#### example-apps\n\n```bash\ngit clone https://github.com/exsdk/example-apps\nnpm start ./example-apps/${example-name}\n```\n\n#### example-apps/demo\n\nThe example-apps provide a demo project to help user developing packages. To use the demo project,\nfirst we need to install it. Go to the demo folder and run the following command:\n\n```bash\ncd ./example-apps/demo\nnpm install\nbower install\ngulp update\n```\n\nAfter you success to install it, you can run the demo in editor-framework root directory through the command:\n\n```bash\nnpm start ./example-apps/demo\n```\n\n### Test Environment\n\nTo test the editor-framework itself, just run:\n\n```bash\nnpm test [./your/test/file] -- [options]\n\n## or\n\nnpm start ./test -- test ./your/test/file [options]\n```\n\nYou can also run a single test or a bunch of tests in one directory by:\n\n```bash\nnpm test ${your/test/path}\n```\n\nYou can also force to run tests in renderer by `--renderer` option:\n\n```bash\nnpm test ${your/test/path} -- --renderer\n```\n\nYou can load specific package and run its tests by `--package` option:\n\n```bash\nnpm test ${your/test/path} -- --package\n```\n\nTo debug a test, use `--detail` option:\n\n```bash\nnpm test ${your/test/path} -- --detail\n```\n\nTo change a reporter, use `--reporter name` option:\n\n```bash\nnpm test ${your/test/path} -- --reporter classic\n```\n\n### Write Your Test\n\n**Main Process**\n\n```js\nsuite(tap, 'Test Main Process', t => {\n  t.test ('should be ok', t => {\n    t.end();\n  });\n});\n```\n\n**Renderer Process**\n\n```html\n<template id=\"basic\">\n  <div class=\"title\">Hello World</div>\n</template>\n```\n\n```js\nsuite(tap, 'Test Renderer Process', t => {\n  t.test('should be ok', t => {\n    helper.runElement(\n      'app://test/my-template.html', 'basic', 'div.title',\n      el => {\n        t.assert(el, 'element not found');\n        t.equal(el.innertText, 'Hello World');\n\n        t.end();\n      }\n    );\n  });\n});\n```\n\n**NOTE** The first describe callback can not use arrow function.\n\n### Generate Documentation\n\nTo generate the document, just run:\n\n```bash\nnpm run api\n```\n\nIt will generate the API document in `./apidocs`, you can browse it by open `./apidocs/index.html`.\n\n## License (MIT)\n\nCopyright (c) 2015 Cocos Creator\n\nPermission is hereby granted, free of charge, to any person obtaining a copy\nof this software and associated documentation files (the \"Software\"), to deal\nin the Software without restriction, including without limitation the rights\nto use, copy, modify, merge, publish, distribute, sublicense, and/or sell\ncopies of the Software, and to permit persons to whom the Software is\nfurnished to do so, subject to the following conditions:\n\nThe above copyright notice and this permission notice shall be included in all\ncopies or substantial portions of the Software.\n\nTHE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR\nIMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,\nFITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE\nAUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER\nLIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,\nOUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE\nSOFTWARE.\n"
 }

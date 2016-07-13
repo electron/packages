@@ -1,0 +1,60 @@
+{
+  "name": "serverless-graphql-blog",
+  "version": "0.0.2",
+  "description": "A Serverless GraphQL blog.",
+  "author": {
+    "name": "me"
+  },
+  "license": "MIT",
+  "private": false,
+  "repository": {
+    "user": "serverless",
+    "repo": "serverless-graphql-blog",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/serverless/serverless-graphql-blog/tarball/master",
+    "clone_url": "https://github.com/serverless/serverless-graphql-blog",
+    "https_url": "https://github.com/serverless/serverless-graphql-blog",
+    "travis_url": "https://travis-ci.org/serverless/serverless-graphql-blog",
+    "zip_url": "https://github.com/serverless/serverless-graphql-blog/archive/master.zip",
+    "api_url": "https://api.github.com/repos/serverless/serverless-graphql-blog"
+  },
+  "dependencies": {
+    "babelify": "^7.2.0",
+    "babel-preset-es2015": "^6.3.13",
+    "serverless-optimizer-plugin": "^2.5.1"
+  },
+  "gitHead": "0131f90eeaee0147aca4e7801d5ae787b14b42dc",
+  "homepage": "https://github.com/serverless/serverless-graphql-blog#readme",
+  "scripts": {},
+  "_npmVersion": "3.8.9",
+  "_nodeVersion": "6.2.0",
+  "dist": {
+    "shasum": "52d317b4a5b88309394b941272b346153cc47df1",
+    "tarball": "http://registry.npmjs.org/serverless-graphql-blog/-/serverless-graphql-blog-0.0.2.tgz"
+  },
+  "versions": [
+    {
+      "number": "0.0.1",
+      "date": "2016-02-01T22:07:47.879Z"
+    },
+    {
+      "number": "0.0.2",
+      "date": "2016-05-31T03:30:47.078Z"
+    }
+  ],
+  "created": "2016-02-01T22:07:47.879Z",
+  "modified": "2016-05-31T03:30:47.078Z",
+  "lastPublisher": {
+    "name": "kevinold",
+    "email": "kevinold@gmail.com"
+  },
+  "owners": [
+    {
+      "name": "kevinold",
+      "email": "kevinold@gmail.com"
+    }
+  ],
+  "readme": "![Serverless GraphQL Blog AWS Lambda API Gateway](serverless_graphql_blog.png)\n\n[![serverless](http://public.serverless.com/badges/v3.svg)](http://www.serverless.com)\n\n#serverless-graphql-blog\n\nThis [Serverless Framework](http://www.serverless.com) Project creates a REST API for a basic blog structure, including Posts, Authors and Comments utilizing [GraphQL][1] and DynamoDB for persistent storage.  What's unique about this implementation is the entire REST API consists of only 1 endpoint.\n\nNote: This project automatically creates 3 DynamoDB tables upon `serverless project install`.  They are defined in `s-project.json`.\n\n* [Blog Post](http://kevinold.com/2016/02/01/serverless-graphql.html)\n* [Video Walkthrough](https://www.youtube.com/watch?v=lgE5-mm8gX4)\n* [Email Updates](http://eepurl.com/bvz5Nj)\n* [Gitter Chat Room](https://gitter.im/serverless/serverless)\n* [Serverless Documentation](http://docs.serverless.com)\n* [Twitter](https://www.twitter.com/goserverless)\n\nEnjoy,<br/>\nKevin Old ([Twitter](https://twitter.com/kevinold))\n\n## Install & Deploy\n\nMake sure you have the most recent version of the [Serverless Framework](http://www.serverless.com) (0.5.x and higher) and you are using NodeV4 or greater.\n\n```\nnpm install serverless -g\n```\n\nInstall this Serverless Project:\n\n```\nserverless project install serverless-graphql-blog\n```\n\nInstall (top level) npm dependencies\n\n```\nnpm install\n```\n\nView project summary:\n\n```\nserverless dash summary\n```\nDeploy the project's Function and Endpoint:\n\n```\nserverless dash deploy\n```\n\n[![Serverless GraphQL Blog Video Walkthrough](video_serverless_blog_graphql.png)](https://www.youtube.com/watch?v=lgE5-mm8gX4)\n\n### Querying with GraphiQL\n\nThe [graphql-js][1] endpoint provided in this Serverless Project is compatible with [GraphiQL][2], a query visualization tool used with [graphql-js][1].\n\nUsage with [GraphiQL.app][3] (an Electron wrapper around [GraphiQL][2]) is recommended and is shown below:\n\n![GraphiQL.app demo](https://s3.amazonaws.com/various-image-files/graphiql-serverless-graphql-blog-screenshot.png)\n\n### Sample GraphQL queries\n\n#### List of author names\n```\ncurl -XPOST -d '{\"query\": \"{ authors { name } }\"}' <endpoint>/dev/blog/graphql\n```\n\n#### Results\n```\n{\n  \"data\":{\n    \"authors\":[\n      {\"name\":\"Kevin\"}\n    ]\n  }\n}\n```\n\n### List of posts with id and title\n```\ncurl -XPOST -d '{\"query\": \"{ posts { id, title } }\"}' <endpoint>/dev/blog/graphql\n```\n\n#### Results\n```\n{\n  \"data\": {\n    \"posts\": [\n      { \"id\":\"1\",\n        \"title\":\"First Post Title\"\n      }\n    ]\n  }\n}\n```\n\n#### List of posts with id, title and *nested* author name\n```\ncurl -XPOST -d '{\"query\": \"{ posts { id, title, author { name } } }\"}' <endpoint>/dev/blog/graphql\n```\n\n#### Results\n```\n{\n  \"data\": {\n    \"posts\": [\n      { \"id\":\"1\",\n        \"title\":\"First Post Title\",\n        \"author\":{\n          \"name\":\"Kevin\"\n        }\n      }\n    ]\n  }\n}\n```\n\n#### List of posts with post, author and comments information (for a Post with no comments, i.e. comments:[])\n```\ncurl -XPOST -d '{\"query\": \"{ posts { id, title, author { id, name }, comments { id, content, author { name } } } }\"}' <endpoint>/dev/blog/graphql\n```\n\n#### Results\n```\n{\n  \"data\":{\n    \"posts\":[\n    {\n      \"id\":\"1\",\n        \"title\":\"First Post Title\",\n        \"author\":{\n          \"id\":\"1\",\n          \"name\":\"Kevin\"\n        },\n        \"comments\":[]\n    }\n    ]\n  }\n}\n```\n\n\n### Sample GraphQL Mutations\n\n#### Create Post\n```\ncurl -XPOST -d '{\"query\": \"mutation createNewPost { post: createPost (id: \\\"5\\\", title: \\\"Fifth post!\\\", bodyContent: \\\"Test content\\\", author: \\\"1\\\") { id, title } }\"}' <endpoint>/dev/blog/graphql\n```\n\n#### Results\n```\n{\n  \"data\":{\n    \"post\":{\n      \"id\":\"5\",\n      \"title\":\"Fifth post!\"\n    }\n  }\n}\n```\n\n\n#### Mutation Validation\n\nValidations defined using [graphql-custom-types][4] in [blog/lib/schema.js][5]\n```\ncurl -XPOST -d '{\"query\": \"mutation createNewPost { post: createPost (id: \\\"8\\\", title: \\\"123456789\\\", bodyContent: \\\"Test content 5\\\") { id, title } }\"}' <endpoint>/dev/blog/graphql\n```\n\n#### Results\n```\n{\n  \"errors\":[\n  {\n    \"message\":\"Query error: String not long enough\"}\n  ]\n}\n```\n\n\n### Introspection Query\n```\ncurl -XPOST -d '{\"query\": \"{__schema { queryType { name, fields { name, description} }}}\"}' <endpoint>/dev/blog/graphql\n```\n\nReturns:\n```\n{\n  \"data\":{\n    \"__schema\":{\n      \"queryType\":{\n        \"name\":\"BlogSchema\",\n          \"fields\":[\n          {\n            \"name\":\"posts\",\n            \"description\":\"List of posts in the blog\"\n          },\n          {\n            \"name\":\"authors\",\n            \"description\":\"List of Authors\"\n          },\n          {\n            \"name\":\"author\",\n            \"description\":\"Get Author by id\"\n          }\n        ]\n      }\n    }\n  }\n}\n```\n\n[1]: https://github.com/graphql/graphql-js\n[2]: https://github.com/graphql/graphiql\n[3]: https://github.com/skevy/graphiql-app\n[4]: https://github.com/stylesuxx/graphql-custom-types\n[5]: https://github.com/serverless/serverless-graphql-blog/blob/master/blog/lib/schema.js#L100\n"
+}

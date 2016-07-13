@@ -1,0 +1,62 @@
+{
+  "name": "removeNPMAbsolutePaths",
+  "version": "0.0.1",
+  "description": "Remove the fields containing local aboslute paths created by NPM",
+  "keywords": [
+    "npm",
+    "modules"
+  ],
+  "main": "src/removeNPMAbsolutePaths.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": {
+    "name": "Juanjo Diaz",
+    "email": "juanjo.diazmo@gmail.com"
+  },
+  "repository": {
+    "user": "juanjoDiaz",
+    "repo": "removeNPMAbsolutePaths",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/juanjoDiaz/removeNPMAbsolutePaths/tarball/master",
+    "clone_url": "https://github.com/juanjoDiaz/removeNPMAbsolutePaths",
+    "https_url": "https://github.com/juanjoDiaz/removeNPMAbsolutePaths",
+    "travis_url": "https://travis-ci.org/juanjoDiaz/removeNPMAbsolutePaths",
+    "zip_url": "https://github.com/juanjoDiaz/removeNPMAbsolutePaths/archive/master.zip",
+    "api_url": "https://api.github.com/repos/juanjoDiaz/removeNPMAbsolutePaths"
+  },
+  "license": "MIT",
+  "preferGlobal": "true",
+  "bin": {
+    "removeNPMAbsolutePaths": "bin/removeNPMAbsolutePaths"
+  },
+  "gitHead": "7b26f08a872446063b2a1b135df57549154802bd",
+  "homepage": "https://github.com/juanjoDiaz/removeNPMAbsolutePaths#readme",
+  "_npmVersion": "3.3.12",
+  "_nodeVersion": "5.3.0",
+  "dist": {
+    "shasum": "446ce1d88fa7777c96ae7369956e6ab4a61bd853",
+    "tarball": "http://registry.npmjs.org/removeNPMAbsolutePaths/-/removeNPMAbsolutePaths-0.0.1.tgz"
+  },
+  "versions": [
+    {
+      "number": "0.0.1",
+      "date": "2016-04-05T11:00:53.019Z"
+    }
+  ],
+  "created": "2016-04-05T11:00:53.019Z",
+  "modified": "2016-04-05T11:00:53.019Z",
+  "lastPublisher": {
+    "name": "juanjodiaz",
+    "email": "juanjo.diazmo@gmail.com"
+  },
+  "owners": [
+    {
+      "name": "juanjodiaz",
+      "email": "juanjo.diazmo@gmail.com"
+    }
+  ],
+  "readme": "# removeNPMAbsolutePaths\nremoveNPMAbsolutePaths is a small utility to remove the fields that npm adds to the modules in `node_modules` containing local aboslute paths.\n\nIt has been noted that the `package.json` of modules in the `node_modules` folder contain some extra fields lie `_args` and `where` which contain the absolute path of the module. According to NPM those fields are not even used.\n\nThe problem comes when you are planning to package your application using electron, NW.js or similar and distribute it. You might not one to distribute files containing absolutes path within your computer.\n\nA feature request has been raised to NPM to fix this issue.\n  - https://github.com/npm/npm/issues/12110 (feature request)\n  - https://github.com/npm/npm/issues/10393 (discussion about the topic)\n\n### Using removeNPMAbsolutePaths\nremoveNPMAbsolutePaths simple loop through all the files in the given folder, open the files called `package.json` an remove all the fields stating with an underscore (`_`).\n\nYou can  install removeNPMAbsolutePaths globally and use it from the command line\n```Javascript\nnpm install -g removeNPMAbsolutePaths\nremoveNPMAbsolutePaths \"<PROJECT_FOLDER>\"\n```\nor use it from whithin your code\n```Javascript\nvar removeNPMAbsolutePaths = require('mkLib');\nremoveNPMAbsolutePaths(\"<PROJECT_FOLDER>\");\n```\n\n### Version\n0.0.1\n\n### License\nMIT"
+}

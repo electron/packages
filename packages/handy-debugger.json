@@ -17,37 +17,44 @@
   },
   "license": "BSD-2-Clause",
   "repository": {
-    "type": "git",
-    "url": "git+ssh://git@github.com/brandon-fryslie/handy-debugger.git"
+    "user": "brandon-fryslie",
+    "repo": "handy-debugger",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/brandon-fryslie/handy-debugger/tarball/master",
+    "clone_url": "https://github.com/brandon-fryslie/handy-debugger",
+    "https_url": "https://github.com/brandon-fryslie/handy-debugger",
+    "travis_url": "https://travis-ci.org/brandon-fryslie/handy-debugger",
+    "zip_url": "https://github.com/brandon-fryslie/handy-debugger/archive/master.zip",
+    "api_url": "https://api.github.com/repos/brandon-fryslie/handy-debugger"
   },
   "gitHead": "e6909c6bec15abe06b18a20ddac889495bd3e661",
-  "bugs": {
-    "url": "https://github.com/brandon-fryslie/handy-debugger/issues"
-  },
   "homepage": "https://github.com/brandon-fryslie/handy-debugger#readme",
-  "_id": "handy-debugger@0.1.0",
   "scripts": {},
-  "_shasum": "6265acf0171147f5b0d9f461562223bd5ae8d446",
-  "_from": ".",
   "_npmVersion": "2.15.0",
   "_nodeVersion": "4.4.2",
-  "_npmUser": {
-    "name": "brandon-fryslie",
-    "email": "brandon@fryslie.com"
-  },
   "dist": {
     "shasum": "6265acf0171147f5b0d9f461562223bd5ae8d446",
     "tarball": "http://registry.npmjs.org/handy-debugger/-/handy-debugger-0.1.0.tgz"
   },
-  "maintainers": [
+  "versions": [
+    {
+      "number": "0.1.0",
+      "date": "2016-04-18T05:15:14.459Z"
+    }
+  ],
+  "created": "2016-04-18T05:15:14.459Z",
+  "modified": "2016-04-18T05:15:14.459Z",
+  "lastPublisher": {
+    "name": "brandon-fryslie",
+    "email": "brandon@fryslie.com"
+  },
+  "owners": [
     {
       "name": "brandon-fryslie",
       "email": "brandon@fryslie.com"
     }
   ],
-  "_npmOperationalInternal": {
-    "host": "packages-16-east.internal.npmjs.com",
-    "tmp": "tmp/handy-debugger-0.1.0.tgz_1460956512224_0.13796885288320482"
-  },
-  "directories": {}
+  "readme": "# handy-debugger\n\nRun your Node.js apps in an Electron window for dead-simple debugging\n\nThis works by starting an Electron instance, and then loading your code into the Electron instance.\n\n## Why not use node-inspector, debugger, or XYZ npm package?\n\n- less dependencies\n- handy-debugger will hot-reload code changes and rerun your script when you refresh the window (ctrl/cmd + r), unlike node-inspector\n- does not install electron-prebuilt locally, relying on a globally installed Electron binary\n- provides stdout and stderr both on the command line, and in the devtools\n- stdin in the terminal will continue to work as expected for interactive node software\n- generally works more consistently and throws less errors, which is useful in a debugging tool\n\n## Dependencies\n\nYou must have the Electron binary available on your path:\n\n`npm install -g electron-prebuilt`\n\n## usage\n\n### From the command line (preferred):\n\n`handy-debugger path/to/my/script anArgument anotherArg endlessArgs ...`\n\n`handy-debugger global-npm-command someArg`\n\n### In your script:\n```\nif (!require('handy-debugger')()) {\n  doTheScriptStuff();\n}\n```\n\nThe guard is required to prevent your script continuing to run outside of the debugger instance.  The debugger will launch your script as well,\n\nYou should prevent your script from doing work if it is running outside Electron, as Electron will launch your script as well, potentially leading to two copies of your script executing in parallel.\n\nNote: You may need to refresh the electron window after the initial load to hit your breakpoints.  Refreshing the debugger will reload any code changes and rerun the script.\n\n## API\n\n### `var spawn = require('handy-debugger')`\n\nReturns a function that spawns the debugger.  The function will return `false` when your script is being run in the debugger.\nThe function will return the Electron child process when your script is running outside of the debugger.\n"
 }

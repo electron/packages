@@ -1,14 +1,23 @@
 {
   "name": "teeny-conf",
-  "version": "0.2.1",
+  "version": "1.0.1",
   "description": "A small npm package to handle config files in Node apps. Works fine with Electron and NW.js",
   "main": "src/main.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
-    "type": "git",
-    "url": "git+https://github.com/KeitIG/teeny-conf.git"
+    "user": "KeitIG",
+    "repo": "teeny-conf",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/KeitIG/teeny-conf/tarball/master",
+    "clone_url": "https://github.com/KeitIG/teeny-conf",
+    "https_url": "https://github.com/KeitIG/teeny-conf",
+    "travis_url": "https://travis-ci.org/KeitIG/teeny-conf",
+    "zip_url": "https://github.com/KeitIG/teeny-conf/archive/master.zip",
+    "api_url": "https://api.github.com/repos/KeitIG/teeny-conf"
   },
   "keywords": [
     "conf",
@@ -21,29 +30,47 @@
     "name": "Pierre de la Martinière"
   },
   "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/KeitIG/teeny-conf/issues"
-  },
   "homepage": "https://github.com/KeitIG/teeny-conf#readme",
-  "gitHead": "7fe289b2ed34a5883a9a8c3deb90093fce8d6980",
-  "_id": "teeny-conf@0.2.1",
-  "_shasum": "256aeb2595da2eac8470ac1547c34a72370cfb1b",
-  "_from": ".",
-  "_npmVersion": "2.14.12",
-  "_nodeVersion": "4.2.4",
-  "_npmUser": {
+  "gitHead": "ee4990990163ecd6fddc5f6c43616b8d551b54ae",
+  "_npmVersion": "2.15.5",
+  "_nodeVersion": "4.4.5",
+  "dist": {
+    "shasum": "19533395c7244498a7477991f9c43e2fdece7934",
+    "tarball": "http://registry.npmjs.org/teeny-conf/-/teeny-conf-1.0.1.tgz"
+  },
+  "versions": [
+    {
+      "number": "0.1.0",
+      "date": "2015-12-21T16:47:37.122Z"
+    },
+    {
+      "number": "0.1.1",
+      "date": "2015-12-22T00:17:51.530Z"
+    },
+    {
+      "number": "0.2.0",
+      "date": "2016-01-06T09:32:58.602Z"
+    },
+    {
+      "number": "0.2.1",
+      "date": "2016-01-13T09:43:58.309Z"
+    },
+    {
+      "number": "1.0.1",
+      "date": "2016-06-28T18:39:36.296Z"
+    }
+  ],
+  "created": "2015-12-21T16:47:37.122Z",
+  "modified": "2016-06-28T18:39:36.296Z",
+  "lastPublisher": {
     "name": "keitig",
     "email": "pierre.de.la.martiniere@gmail.com"
   },
-  "dist": {
-    "shasum": "256aeb2595da2eac8470ac1547c34a72370cfb1b",
-    "tarball": "http://registry.npmjs.org/teeny-conf/-/teeny-conf-0.2.1.tgz"
-  },
-  "maintainers": [
+  "owners": [
     {
       "name": "keitig",
       "email": "pierre.de.la.martiniere@gmail.com"
     }
   ],
-  "directories": {}
+  "readme": "# teeny-conf\nA small npm package to handle one or multiple config files in Node apps. Works fine with Electron and NW.js.\n\nAPI asynchronous or synchronous, depending of your needs.\n\n## Why another ?\n\nI didn't find what I wanted on npm, I was needing a conf I could put in a variable, so I could export it without any problem to another scope.\n\n## Example\n\n### Basic\n\nconfig.js:\n``` javascript\nvar teeny = require('teeny-conf');\n\nvar config = new teeny('config.json'));\nconfig.loadOrCreateSync();\n```\n\n### with a module.exports\n\nconfig.js:\n``` javascript\nvar teeny = require('teeny-conf');\n\nvar config = new teeny('config.json'));\nconfig.loadOrCreateSync();\n\nmodule.exports = config;\n```\n\nmain.js\n``` javascript\nvar config = require('./config.js');\n// now you can use config.set(), config.get(), etc...\n```\n\n## API\n\nAll operations are synchronous to avoid multiple successive save conflicts. An async mode may come in the future if people ask for it.\n\n### Constructor\n\n`new teeny(configPath)`, `configPath` being the filename where you want your config.\n\n### teenyconf.loadOrCreate(defaultConfig, callback)\n\nload a config file or create it if it does not exist. If `pathToFile` does not exist, a file will be created with the wanted name, and `defaultConfig` in. If `defaultConfig` is not defined, this will be an empty object.\n\n### teenyconf.loadOrCreateSync(defaultConfig)\n\nsynchronous `loadOrCreate`.\n\n### teenyconf.getAll()\n\nget the whole conf\n\n### teenyconf.get(key)\n\nget `key`\n\n### teenyconf.set(key, value)\n\nset `key` to `value`\n\n### teenyconf.save(minify, callback)\n\nsave config file with `callback`. `minify` is optional and let you minify the json output.\n\n### teenyconf.saveSync(minify)\n\nsave config file synchronously. `minify` is optional and let you minify the json output.\n"
 }

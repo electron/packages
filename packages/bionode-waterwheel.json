@@ -1,0 +1,78 @@
+{
+  "name": "bionode-waterwheel",
+  "version": "0.1.1",
+  "description": "Streaming workflow engine for bionformatics pipelines",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "repository": {
+    "user": "bionode",
+    "repo": "bionode-waterwheel",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/bionode/bionode-waterwheel/tarball/master",
+    "clone_url": "https://github.com/bionode/bionode-waterwheel",
+    "https_url": "https://github.com/bionode/bionode-waterwheel",
+    "travis_url": "https://travis-ci.org/bionode/bionode-waterwheel",
+    "zip_url": "https://github.com/bionode/bionode-waterwheel/archive/master.zip",
+    "api_url": "https://api.github.com/repos/bionode/bionode-waterwheel"
+  },
+  "keywords": [
+    "bionode",
+    "pipeline",
+    "workflow",
+    "parallel",
+    "streams",
+    "streaming",
+    "ngs",
+    "bioinformatics",
+    "computational",
+    "biology"
+  ],
+  "author": {
+    "name": "Julian Mazzitelli",
+    "email": "mazzitelli.julian@gmail.com"
+  },
+  "license": "MIT",
+  "homepage": "https://github.com/bionode/bionode-waterwheel#readme",
+  "devDependencies": {
+    "bionode-ncbi": "^1.6.1",
+    "request": "^2.72.0"
+  },
+  "dependencies": {
+    "globby": "^5.0.0",
+    "js-yaml": "^3.6.1"
+  },
+  "gitHead": "2b354de8aa01d31c8096d774782fe3ead9b60c0f",
+  "_npmVersion": "3.8.0",
+  "_nodeVersion": "4.2.1",
+  "dist": {
+    "shasum": "454fc9af87dfcef814acf31105aac17c8c396999",
+    "tarball": "http://registry.npmjs.org/bionode-waterwheel/-/bionode-waterwheel-0.1.1.tgz"
+  },
+  "versions": [
+    {
+      "number": "0.1.0",
+      "date": "2016-06-24T06:04:12.641Z"
+    },
+    {
+      "number": "0.1.1",
+      "date": "2016-06-24T07:32:06.831Z"
+    }
+  ],
+  "created": "2016-06-24T06:04:12.641Z",
+  "modified": "2016-06-24T07:32:06.831Z",
+  "lastPublisher": {
+    "name": "thejmazz",
+    "email": "mazzitelli.julian@gmail.com"
+  },
+  "owners": [
+    {
+      "name": "thejmazz",
+      "email": "mazzitelli.julian@gmail.com"
+    }
+  ],
+  "readme": "# bionode-waterwheel\n*Waterwheel: A Streaming Workflow Engine*\n\nSee this [draft blog post](https://github.com/thejmazz/jmazz.me/blob/master/content/post/ngs-workflow.md) for an introduction to why this tool was developed, specifically with respect to improving upon ideas introduced by [Snakemake](https://bitbucket.org/snakemake/snakemake/wiki/Home) and [Nextflow](http://www.nextflow.io/) while introducing the notion of *streaming data* via [Stream](https://nodejs.org/api/stream.html).\n\n### Who is this tool for?\n\nWaterwheel is for **programmers** who desire an efficient and easy-to-write methodology for developing complex and dynamic data pipelines, while handling parallelization as much as possible. Waterwheel is an npm module, and is accessible by anyone willing to learn a little JavaScript. This is in contrast to other tools which develop their own DSL (domain specific language), which is not useful outside the tool. By leveraging the npm ecosystem and JavaScript on the client, Waterwheel can be built upon for inclusion on web apis, modern web applications, as well as native applications through [Electron](http://electron.atom.io/). Look forward to seeing Galaxy-like applications backed by a completely configurable Node API.\n\nWaterwheel is for **biologists** who understand it is important to experiment with sample data, parameter values, and tools. Compared to other workflow systems, the ease of swapping around parameters and tools is much improved, allowing you to iteratively compare results and construct more confident inferences. Consider the ability to construct your own [Teaser](https://genomebiology.biomedcentral.com/articles/10.1186/s13059-015-0803-1) for *your data* with a *simple syntax*, and getting utmost performance out of the box.\n\n### How does it work?\n\nWaterwheel is a pipeline tool following the dataflow paradigm. Data is transferred between tasks using Node streams. This lets us describe UNIX pipes with multiple *tasks* that can then be piped into each other. Why is this is useful? Consider the following\nNextflow process:\n\n```groovy\nprocess alignAndSort {\n  container: 'needsManyTools'\n\n  input:\n    file reference from referenceGenome\n    file referenceIndex from referenceIndex\n    file sample from reads\n  output: file 'reads.bam' into readsBAM\n\n  \"\"\"\n  bwa mem -t $THREADS $reference $sample | samtools view -Sbh - | samtools sort $sam -o reads.bam\n  \"\"\"\n}\n```\n\nWhile this is performant and neat, and in practice most workflows will execute these three commands in this order, there a few issues:\n- will need to make a custom Dockerfile, whereas Biodocker has existing images for the individual tools used\n- paramaters for multiple tools are bundled into one task. this decreases modularity and experimentation.\n\nThe Snakemake counterpart would have the same issue.\n\nWouldn't it be neat to declare the parameters for `bwa mem` elsewhere than you do for `samtools sort`? With Node we can use the Streams API to make this possible:\n\n```js\nconst bwaMem = task({\n  input: {\n    reference: new File('*_genomic.fna.gz'),\n    reads: new File('*.fastq.gz')\n  },\n  output: stdout()\n}, ({ input }) => shell(`bwa mem ${input.reference} ${input.reads}`))\n\nconst samtoolsView = task({\n  input: stdin(),\n  output: stdout()\n}, () => shell(`samtools view -Sbh -`))\n\nconst samtoolsSort = task({\n  input: stdin()\n  output: new File('reads.bam')\n}, () => shell('samtools sort - -o reads.bam'))\n\nconst alignAndSort = join(bwaMem, samtoolsView, samtoolsSort)\n```\n\nThis way, we still maintain the \"complete task\", yet each component can be\nconfigured  on its own. With a public repository of tools, this would enable\nincreased modularity and the ability to plug and play together pipelines.\nMoreover, each task can be  easily Dockerized without the use of a homemade, one\ntime use, polyglot Dockerfile.\n\n`bwa mem` has many options. None are actually being used above. But consider\nsomething like this:\n\n```js\nconst bwaMems = ['-option1', '-option2'].map(opts => makeBwaMemTask(opts))\n\nconst alignAndSortAndCompareOptions = join(bwaMems, samtoolsView, samtoolsSort)\n```\n\nIn this case, `bwaMems` will return multiple tasks. Join will automatically\nhandle that and fork the stream upstream to account for this, and create two\n(samtoolsView, samtoolsSort) throughways. This will let researchers easily swap\nin and out new parameters and tools so they can quickly compare results: tools\nact differently on different datasets!\n\n*While `bwa mem | samtools view | samtools sort` may not be the best example for\nthis, the idea is that one can modularize a whole pipeline down to individual\nprocesses with individual parameters. Then let Waterwheel compose it all together.*\n\n### Getting Started\n\nOnce you have a Node runtime installed on your system, we can begin writing the \"hello world\" pipeline. For this we will illustrate how streams and parrallezation can be leveraged to improve the performance of our pipeline while also improving readability, atomicity of tool descriptions, and self-documentation of the pipeline.\n\n```javascript\nconst waterwheel = require('bionode-waterwheel')\nconst { task, taskYAML, join, parallel } = waterwheel\nconst { File } = waterwheel.types\nconst { shell, shellPipe } = waterwheel.wrappers\n\nconst fs = require('fs')\nconst ncbi = require('bionode-ncbi')\nconst request = require('request')\n\nconst THREADS = 4\nconst config = {\n  sraAccession: '2492428',\n  referenceURL: 'http://ftp.ncbi.nlm.nih.gov/genomes/all/GCA_000988525.2_ASM98852v2/GCA_000988525.2_ASM98852v2_genomic.fna.gz'\n}\n\n// task(props, cb)\n// cb(props) will be called after Files in props are resolved with globby\n// cb is the \"task action creator\" and should return a Stream, Promise, or callback\n\nconst samples = task({\n  input: {\n    db: 'sra',\n    accession: config.sraAccession\n  },\n  output: '**/*.sra'\n}, ({ input }) => ncbi.download(input.db, input.accession) )\n\nconst fastqDump = task({\n  input: new File('**/*.sra'),\n  output: [1, 2].map(n => new File(`*_${n}.fastq.gz`))\n}, ({ input }) => shell(`fastq-dump --split-files --skip-technical --gzip ${input}`) )\n\nconst downloadReference = task({\n  input: config.referenceURL,\n  output: new File(config.referenceURL.split('/').pop())\n}, ({ input, output }) => request(input).pipe(fs.createWriteStream(output.value)) )\n\nconst bwaIndex = task({\n  input: new File('*_genomic.fna.gz'),\n  // Self-document by clearly describing expected output files\n  output: ['amb', 'ann', 'bwt', 'pac', 'sa'].map(suffix => new File(`*_genomic.fna.gz.${suffix}`))\n}, ({ input }) => shell(`bwa index ${input}`) )\n\nconst alignAndSort = task({\n  input: [new File('*_genomic.fna.gz'), new File('*.fastq.gz')],\n  output: new File('reads.bam')\n}, ({ input }) => shellPipe([\n  `bwa mem -t ${THREADS} ${input[0]} ${input[1]} ${input[2]}`,\n  'samtools view -Sbh -',\n  'samtools sort - -o reads.bam'\n]) )\n\nconst samtoolsIndex = task({\n  input: new File('*.bam'),\n  output: new File('*.bam.bai')\n}, ({ input }) => shell(`samtools index ${input}`) )\n\nconst decompressReference = task({\n  input: new File('*_genomic.fna.gz'),\n  output: new File('*_genomic.fna')\n}, ({ input }) => shell(`bgzip -d ${input}`) )\n\nconst mpileupAndCall = task({\n  input: [new File('*_genomic.fna'), new File('*.bam'), new File('*.bam.bai')],\n  output: new File('variants.vcf')\n}, ({ input }) => shellPipe([\n  `samtools mpileup -uf ${input[0]} ${input[1]}`,\n  'bcftools call -c - > variants.vcf'\n]) )\n\nconst pipeline = parallel({\n  taskLists: [[samples, fastqDump], [downloadReference, bwaIndex]],\n  next: join(alignAndSort, samtoolsIndex, decompressReference, mpileupAndCall)\n})\npipeline()\n```\n\n### DSL Support\n\nThere is early prototypic DSL support using YAML syntax:\n\n```yaml\nfastqDump:\n  input: \"**/*.sra\"\n  output:\n    - \"*_1.fastq.gz\"\n    - \"*_2.fastq.gz\"\n  task: \"`fastq-dump --split-files --skip-technical --gzip ${input}`\"\n```\n\nAnd consumed with:\n\n```js\nconst defs = yaml.safeLoad(fs.readFileSync('pipeline.yaml', 'utf-8'))\n\nconst fastqDump = taskYAML(defs.fastqDump)\n```\n\n### API\n\n**task**: first param is an object with `input` and `ouput`, second is a callack\nfunction that will be passed a resolved version of the first param object\n\n**join**(...tasks): given an arbitrary number of tasks, return a new task\n\n**parallel**([lists], next): given an array of arrays of tasks, and a next task\nrun the lists tasks in parallel then call next. returns a task.\n"
+}

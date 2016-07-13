@@ -4,8 +4,17 @@
   "description": "Loading a menu template for app running on current platform",
   "license": "MIT",
   "repository": {
-    "type": "git",
-    "url": "git+https://github.com/ragingwind/electron-menu-loader.git"
+    "user": "ragingwind",
+    "repo": "electron-menu-loader",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/ragingwind/electron-menu-loader/tarball/master",
+    "clone_url": "https://github.com/ragingwind/electron-menu-loader",
+    "https_url": "https://github.com/ragingwind/electron-menu-loader",
+    "travis_url": "https://travis-ci.org/ragingwind/electron-menu-loader",
+    "zip_url": "https://github.com/ragingwind/electron-menu-loader/archive/master.zip",
+    "api_url": "https://api.github.com/repos/ragingwind/electron-menu-loader"
   },
   "author": {
     "name": "ragingwind",
@@ -37,28 +46,43 @@
     "node": true
   },
   "gitHead": "06869543b67b1288d1eedc09a27a92ce08d1a10c",
-  "bugs": {
-    "url": "https://github.com/ragingwind/electron-menu-loader/issues"
-  },
   "homepage": "https://github.com/ragingwind/electron-menu-loader#readme",
-  "_id": "electron-menu-loader@0.0.3",
-  "_shasum": "1c959c9267bcb5bb1305c0c5821360a73c167711",
-  "_from": ".",
   "_npmVersion": "2.11.3",
   "_nodeVersion": "0.12.7",
-  "_npmUser": {
-    "name": "ragingwind",
-    "email": "ragingwind@gmail.com"
-  },
   "dist": {
     "shasum": "1c959c9267bcb5bb1305c0c5821360a73c167711",
     "tarball": "http://registry.npmjs.org/electron-menu-loader/-/electron-menu-loader-0.0.3.tgz"
   },
-  "maintainers": [
+  "stars": 2,
+  "versions": [
+    {
+      "number": "0.0.1",
+      "date": "2015-10-06T06:25:05.669Z"
+    },
+    {
+      "number": "0.0.2",
+      "date": "2015-10-06T22:17:29.481Z"
+    },
+    {
+      "number": "0.0.3",
+      "date": "2015-10-07T22:45:07.585Z"
+    },
+    {
+      "number": "0.0.4",
+      "date": "2015-10-27T05:58:01.949Z"
+    }
+  ],
+  "created": "2015-10-06T06:25:05.669Z",
+  "modified": "2015-10-27T06:37:27.325Z",
+  "lastPublisher": {
+    "name": "ragingwind",
+    "email": "ragingwind@gmail.com"
+  },
+  "owners": [
     {
       "name": "ragingwind",
       "email": "ragingwind@gmail.com"
     }
   ],
-  "directories": {}
+  "readme": "# electron-menu-loader\n\n> Loading menu template with custom events\n\n\n## Install\n\n```\n$ npm install --save electron-menu-loader\n```\n\n## Usage\n\n```js\n// application, using loader\nvar loader = require('electron-menu-loader')('menu', [process.platform, 'help'], {\n\tappMenu: true\n});\n\n// template, menu.js\nmodule.exports = {\n\tdarwin: {\n\t\tlabel: appName,\n\t\tsubmenu: [{\n\t\t\tlabel: `About ${appName}`,\n\t\t\trole: 'about'\n\t\t}]\n\t},\n\tlinux: {\n\t\tlabel: 'File',\n\t\tsubmenu: [{\n\t\t\tlabel: 'New file',\n\t\t\tevent: 'new-file'\n\t\t}]\n\t},\n\thelp: [{\n\t\tlabel: 'Help',\n\t\tsubmenu: []\n\t}]\n};\n```\n\n## API\n\n### electronMenuLoader(file, [items], [options])\n\n#### template\n\nType: `string`\n\npath of the file content with the sets of the menu items\n\n#### items\n\nType: 'array'\n\nnames of the item that will be picked up for menu to build up the `menu` instance of electron. such as 'darwin', returns value of process.platform or 'help'.\n\n#### options\n\n##### appMenu\n\nif true, register menu to application menu. default is true.\n\n## Events\n\n`menu loader` supports `event` property on each menu item which will be translated to custom event function. Custom event will be fired named as [meuitem-click](https://github.com/ragingwind/electron-menu-loader/blob/master/index.js#L9) by Electron click event\n\n## License\n\nMIT © [Jimmy Moon](http://ragingwind.me)\n"
 }

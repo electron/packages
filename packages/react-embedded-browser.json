@@ -16,11 +16,17 @@
     "email": "lin90162@yahoo.co.jp"
   },
   "repository": {
-    "type": "git",
-    "url": "git+https://github.com/rhysd/react-embedded-browser.git"
-  },
-  "bugs": {
-    "url": "https://github.com/rhysd/react-embedded-browser/issues"
+    "user": "rhysd",
+    "repo": "react-embedded-browser",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/rhysd/react-embedded-browser/tarball/master",
+    "clone_url": "https://github.com/rhysd/react-embedded-browser",
+    "https_url": "https://github.com/rhysd/react-embedded-browser",
+    "travis_url": "https://travis-ci.org/rhysd/react-embedded-browser",
+    "zip_url": "https://github.com/rhysd/react-embedded-browser/archive/master.zip",
+    "api_url": "https://api.github.com/repos/rhysd/react-embedded-browser"
   },
   "license": "MIT",
   "devDependencies": {
@@ -33,24 +39,45 @@
   },
   "gitHead": "305c665f15c67676f6cccf2106802b89bf63ec25",
   "homepage": "https://github.com/rhysd/react-embedded-browser#readme",
-  "_id": "react-embedded-browser@0.1.1",
-  "_shasum": "ece63327d427601a712a650c4842531a2a393e10",
-  "_from": ".",
   "_npmVersion": "2.10.1",
   "_nodeVersion": "0.12.4",
-  "_npmUser": {
-    "name": "rhysd",
-    "email": "lin90162@yahoo.co.jp"
-  },
   "dist": {
     "shasum": "ece63327d427601a712a650c4842531a2a393e10",
     "tarball": "http://registry.npmjs.org/react-embedded-browser/-/react-embedded-browser-0.1.1.tgz"
   },
-  "maintainers": [
+  "versions": [
+    {
+      "number": "0.0.1",
+      "date": "2015-09-11T07:19:07.204Z"
+    },
+    {
+      "number": "0.0.2",
+      "date": "2015-09-11T08:29:00.748Z"
+    },
+    {
+      "number": "0.0.3",
+      "date": "2015-09-11T09:18:27.849Z"
+    },
+    {
+      "number": "0.1.0",
+      "date": "2015-09-12T06:06:44.277Z"
+    },
+    {
+      "number": "0.1.1",
+      "date": "2015-09-12T18:42:53.145Z"
+    }
+  ],
+  "created": "2015-09-11T07:19:07.204Z",
+  "modified": "2015-09-12T18:42:53.145Z",
+  "lastPublisher": {
+    "name": "rhysd",
+    "email": "lin90162@yahoo.co.jp"
+  },
+  "owners": [
     {
       "name": "rhysd",
       "email": "lin90162@yahoo.co.jp"
     }
   ],
-  "directories": {}
+  "readme": "React Embedded Browser Component for Electron\n=============================================\n\nThis is a [React.js](http://facebook.github.io/react/) component to provide an embedded browser like mobile apps.  This component is assumed to be used in [Electron](http://electron.atom.io/) app.\n\n![screenshot](https://raw.githubusercontent.com/rhysd/ss/master/react-embedded-browser/main.gif)\n\n## Usage\n\nYou can try [the example in this repository](example/);\n\nInsall as [npm package](https://www.npmjs.com/package/react-embedded-browser)\n\n```\n$ npm install react-embedded-browser\n```\n\nYou can use `default.css` and `EmbeddedBrowser` component as below:\n\n```javascript\nimport React from 'react';\nimport EmbeddedBrowser from 'react-embedded-browser';\n\nReact.render(\n    <div>\n        <button onClick={show}>push me</button>\n        <EmbeddedBrowser />\n    </div>,\n    document.body\n);\n```\n\nAnd you can open URL with `open()` method of DOM node of `<EmbeddedBrowser/>`.\n\n```\nlet browser = document.querySelector('.embedded-browser');\nbrowser.open('https://example.com');\n```\n\n__Note:__ Only one embedded browser can exist in the app.\n\n__Note:__ `<EmbeddedBrowser>` depends on [FontAwesome](https://fortawesome.github.io/Font-Awesome/).  Please be sure to install it in your project.\n\n## Customization\n\nIf you only want to change the design of embedded browser, prepare your favorite CSS file and simply use it.  You can copy the `default.css` and modify it.\n\nIf you want to arrange the back/forward buttons, external buttons, title and webview, you can use the each components and you can make your own embedded browser as you like.  Please use `<BackButton>`, `<ForwardButton>`, `<PageTitle>`, `<ExternalButton>` and `<BrowserBody>` as below.  Note that each elements don't depend on FontAwesome.\n\n```javascript\nimport {BackButton ForwardButton PageTitle ExternalButton BrowserBody} from 'react-embedded-browser';\n\nReact.render(\n        <div className=\"my-so-cool-browser\">\n            <div className=\"my-so-cool-title-bar\">\n                <BackButton className=\"page-back\">\n                    Back!\n                </BackButton>\n                <ForwardButton className=\"page-forward\">\n                    Forward!\n                </ForwardButton>\n                <PageTitle className=\"page-title\"/>\n                <ExternalButton className=\"page-external\">\n                    Open in external browser!\n                </ExternalButton>\n            </div>\n            <BrowserBody className=\"page-body\" ref=\"body\"/>\n        </div>,\n        document.body\n    );\n```\n\nTo tell which URL should be open, you can use `open()` method in `<BrowserBody/>` DOM node.\n\n## License\n\nThis repository is licensed under [the MIT License](LICENSE.txt).\n"
 }

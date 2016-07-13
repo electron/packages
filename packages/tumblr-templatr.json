@@ -8,8 +8,17 @@
     "test": "node test/test.js"
   },
   "repository": {
-    "type": "git",
-    "url": "git+https://github.com/positlabs/tumblr-templatr.git"
+    "user": "positlabs",
+    "repo": "tumblr-templatr",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/positlabs/tumblr-templatr/tarball/master",
+    "clone_url": "https://github.com/positlabs/tumblr-templatr",
+    "https_url": "https://github.com/positlabs/tumblr-templatr",
+    "travis_url": "https://travis-ci.org/positlabs/tumblr-templatr",
+    "zip_url": "https://github.com/positlabs/tumblr-templatr/archive/master.zip",
+    "api_url": "https://api.github.com/repos/positlabs/tumblr-templatr"
   },
   "keywords": [
     "tumblr",
@@ -33,28 +42,46 @@
     "request": "^2.67.0"
   },
   "gitHead": "176129dba695b3121274124fefceaf174501a616",
-  "bugs": {
-    "url": "https://github.com/positlabs/tumblr-templatr/issues"
-  },
   "homepage": "https://github.com/positlabs/tumblr-templatr#readme",
-  "_id": "tumblr-templatr@0.0.5",
-  "_shasum": "dda149bd1637ce232baafc62f75b4f734e600822",
-  "_from": ".",
   "_npmVersion": "3.3.12",
   "_nodeVersion": "5.4.1",
-  "_npmUser": {
-    "name": "positlabs",
-    "email": "josh.beckwith@gmail.com"
-  },
   "dist": {
     "shasum": "dda149bd1637ce232baafc62f75b4f734e600822",
     "tarball": "http://registry.npmjs.org/tumblr-templatr/-/tumblr-templatr-0.0.5.tgz"
   },
-  "maintainers": [
+  "versions": [
+    {
+      "number": "0.0.1",
+      "date": "2016-01-13T00:29:54.617Z"
+    },
+    {
+      "number": "0.0.2",
+      "date": "2016-01-13T00:50:42.461Z"
+    },
+    {
+      "number": "0.0.3",
+      "date": "2016-01-14T23:41:56.021Z"
+    },
+    {
+      "number": "0.0.4",
+      "date": "2016-01-20T23:13:58.153Z"
+    },
+    {
+      "number": "0.0.5",
+      "date": "2016-01-21T02:06:54.698Z"
+    }
+  ],
+  "created": "2016-01-13T00:29:54.617Z",
+  "modified": "2016-01-21T02:06:54.698Z",
+  "lastPublisher": {
+    "name": "positlabs",
+    "email": "josh.beckwith@gmail.com"
+  },
+  "owners": [
     {
       "name": "positlabs",
       "email": "josh.beckwith@gmail.com"
     }
   ],
-  "directories": {}
+  "readme": "# tumblr-templatr\nSync local tumblr theme templates to tumblr.com. \n\n![](https://positlabs.github.io/tumblr-templatr/assets/imgs/templatr-infographic.jpg)\n\n\n## Install\n`npm install --save-dev tumblr-templatr`\n\n\n## Usage\n\n### Configuration.\n\n```\nvar config = {\n\n\t// tumblr credentials\n\t// I RECOMMEND YOU STORE THESE IN A NON-COMMITTED FILE!!\n\temail: 'your_email@gmail.com',\n\tusername: 'tumblr_user_name',\n\tpassword: 'tumblr_password',\n\n\t// absolute path to template file\n\ttemplate: path.join(__dirname, 'index.html'),\n\n\t// should it automatically publish, or just update preview?\n\t// useful for collaborative dev where you don't want to nuke other's changes\n\tautoPublish: false\n}\n```\n\n\n### Start templatr.\n\n\n```\nvar Templatr = require('tumblr-templatr');\n\n// this will boot up electron client, log in, and open the template editing page\nvar templatr = new Templatr( config );\n\n// wait for template to become editable\ntemplatr.on('editable', ()=>{\n\ttemplatr.preview('<h1>hello tumblr!</h1>');\n\t// or\n\ttemplatr.publish('<h1>hello tumblr!</h1>');\n});\n```\n\n\n## Notes\n\nThis hack makes it much faster to preview changes to templates, without having to use the custom editor on tumblr.com. However, it won't work well if multiple devs are working on the same tumblr blog. \n"
 }

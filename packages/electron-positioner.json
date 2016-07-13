@@ -9,8 +9,17 @@
     "prepublish": "npm run build"
   },
   "repository": {
-    "type": "git",
-    "url": "git+https://github.com/jenslind/electron-positioner.git"
+    "user": "jenslind",
+    "repo": "electron-positioner",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/jenslind/electron-positioner/tarball/master",
+    "clone_url": "https://github.com/jenslind/electron-positioner",
+    "https_url": "https://github.com/jenslind/electron-positioner",
+    "travis_url": "https://travis-ci.org/jenslind/electron-positioner",
+    "zip_url": "https://github.com/jenslind/electron-positioner/archive/master.zip",
+    "api_url": "https://api.github.com/repos/jenslind/electron-positioner"
   },
   "author": {
     "name": "Jens Lind",
@@ -18,9 +27,6 @@
     "url": "jenslind.org"
   },
   "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/jenslind/electron-positioner/issues"
-  },
   "homepage": "https://github.com/jenslind/electron-positioner",
   "devDependencies": {
     "babel-cli": "^6.8.0",
@@ -34,28 +40,54 @@
     ]
   },
   "gitHead": "2452b8f94447fff231e88a8cb6ce43dfb60f200e",
-  "_id": "electron-positioner@3.0.0",
-  "_shasum": "1a3b75c9cc1e29dd37c663b23fd876d4ffab9996",
-  "_from": ".",
   "_npmVersion": "3.3.6",
   "_nodeVersion": "5.0.0",
-  "_npmUser": {
-    "name": "jenslind",
-    "email": "jens@jensl.se"
-  },
   "dist": {
     "shasum": "1a3b75c9cc1e29dd37c663b23fd876d4ffab9996",
     "tarball": "http://registry.npmjs.org/electron-positioner/-/electron-positioner-3.0.0.tgz"
   },
-  "maintainers": [
+  "stars": 3,
+  "versions": [
+    {
+      "number": "1.0.1",
+      "date": "2015-08-16T19:39:00.597Z"
+    },
+    {
+      "number": "1.1.0",
+      "date": "2015-08-17T16:00:25.284Z"
+    },
+    {
+      "number": "2.0.0",
+      "date": "2015-08-22T08:32:32.814Z"
+    },
+    {
+      "number": "2.0.1",
+      "date": "2015-09-09T09:53:03.545Z"
+    },
+    {
+      "number": "2.0.2",
+      "date": "2015-09-27T08:51:05.402Z"
+    },
+    {
+      "number": "2.0.3",
+      "date": "2015-12-11T13:17:16.466Z"
+    },
+    {
+      "number": "3.0.0",
+      "date": "2016-05-12T17:24:36.731Z"
+    }
+  ],
+  "created": "2015-08-16T19:39:00.597Z",
+  "modified": "2016-05-12T17:24:36.731Z",
+  "lastPublisher": {
+    "name": "jenslind",
+    "email": "jens@jensl.se"
+  },
+  "owners": [
     {
       "name": "jenslind",
       "email": "jens@jensl.se"
     }
   ],
-  "_npmOperationalInternal": {
-    "host": "packages-16-east.internal.npmjs.com",
-    "tmp": "tmp/electron-positioner-3.0.0.tgz_1463073874965_0.9001172948628664"
-  },
-  "directories": {}
+  "readme": "# Electron-positioner [![Build Status](https://travis-ci.org/jenslind/electron-positioner.svg?branch=master)](https://travis-ci.org/jenslind/electron-positioner) [![js-standard-style](https://img.shields.io/badge/code%20style-standard-brightgreen.svg?style=flat)](https://github.com/feross/standard)\n> Helps positioning your electron windows.\n\n## Install\n```\nnpm install --save electron-positioner\n```\n\n## Usage\n```Javascript\nvar Positioner = require('electron-positioner')\nvar positioner = new Positioner(browserWindow)\n\n// Moves the window top right on the screen.\npositioner.move('topRight')\n\n// Returns `{x,y}`\npositioner.calculate('trayCenter', trayBounds)\n\n// Note, `trayBounds` is only required with the positions that starts with `tray`.\n```\n\n## Docs\n\n#### new Positioner (browserWindow)\nConstructor\n\n##### browserWindow\nThe [browser-window](https://github.com/atom/electron/blob/master/docs/api/browser-window.md) instance.\n\n#### calculate (position, trayBounds)\nReturns coordinates `{x,y}`.\n\n#### move (position, trayBounds)\nMoves the window with `browserWindow.setPosition()`\n\n##### position\nA string telling where to place the window.\nAllowed values:\n- `trayLeft`\n- `trayBottomLeft`\n- `trayRight`\n- `trayBottomRight`\n- `trayCenter`\n- `trayBottomCenter`\n- `topLeft`\n- `topRight`\n- `bottomLeft`\n- `bottomRight`\n- `topCenter`\n- `bottomCenter`\n- `center`\n\n##### trayBounds\nTray bounds, only needed for the following positions:\n- `trayLeft`\n- `trayBottomLeft`\n- `trayRight`\n- `trayBottomRight`\n- `trayCenter`\n- `trayBottomCenter`\n\n## Tests\n```\nnpm test\n```\n\n## License\nMIT\n"
 }

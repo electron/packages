@@ -1,0 +1,73 @@
+{
+  "name": "hypertunes-spotify",
+  "version": "1.1.0",
+  "description": "A Spotify plugin for HyperTunes",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"No test\"",
+    "postinstall": "bower install"
+  },
+  "repository": {
+    "user": "facekapow",
+    "repo": "hypertunes-spotify",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/facekapow/hypertunes-spotify/tarball/master",
+    "clone_url": "https://github.com/facekapow/hypertunes-spotify",
+    "https_url": "https://github.com/facekapow/hypertunes-spotify",
+    "travis_url": "https://travis-ci.org/facekapow/hypertunes-spotify",
+    "zip_url": "https://github.com/facekapow/hypertunes-spotify/archive/master.zip",
+    "api_url": "https://api.github.com/repos/facekapow/hypertunes-spotify"
+  },
+  "keywords": [
+    "hypertunes",
+    "music",
+    "plugin",
+    "spotify"
+  ],
+  "author": {
+    "name": "facekapow"
+  },
+  "license": "MIT",
+  "homepage": "https://github.com/facekapow/hypertunes-spotify#readme",
+  "hypertunes": {
+    "headless": false,
+    "main": "main.html",
+    "icon": "images/spotify_icon.png"
+  },
+  "dependencies": {
+    "libspotify": "github:facekapow/node-libspotify",
+    "tmp": "0.0.28"
+  },
+  "gitHead": "dde658f651046d3a4251b5b4d04a25575947c7f0",
+  "_npmVersion": "3.9.3",
+  "_nodeVersion": "6.2.1",
+  "dist": {
+    "shasum": "a9adc38356c6545779cc281c11d4097b40508a1b",
+    "tarball": "http://registry.npmjs.org/hypertunes-spotify/-/hypertunes-spotify-1.1.0.tgz"
+  },
+  "versions": [
+    {
+      "number": "1.0.0",
+      "date": "2016-06-19T13:28:54.858Z"
+    },
+    {
+      "number": "1.1.0",
+      "date": "2016-06-22T15:48:42.468Z"
+    }
+  ],
+  "created": "2016-06-19T13:28:54.858Z",
+  "modified": "2016-06-22T15:48:42.468Z",
+  "lastPublisher": {
+    "name": "facekapow",
+    "email": "facekapow@earthlink.net"
+  },
+  "owners": [
+    {
+      "name": "facekapow",
+      "email": "facekapow@earthlink.net"
+    }
+  ],
+  "readme": "# hypertunes-spotify\n\nA Spotify plugin for [HyperTunes](https://github.com/facekapow/hypertunes)\n\n## Requirements\n\nLibspotify must be installed:\n\n### Mac\n\nMake sure you have [Homebrew](http://brew.sh/) installed, and...\n```bash\nbrew install homebrew/binary/libspotify\nsudo ln -s /usr/local/opt/libspotify/lib/libspotify.12.1.51.dylib /usr/local/opt/libspotify/lib/libspotify\n```\n\n**You must also get an app key, [here](https://devaccount.spotify.com/my-account/keys/), and put it in this plugin's folder**. Sorry, I\ncan't give you mine (per the Spotify Developer Terms of Service).\n\n## Installation\n\nI'll add an easy way to install plugins in HyperTunes soon, but for now:\n\nOpen a terminal (or command prompt) and go to your HyperTunes plugins folder (`/Users/USERNAME/Library/Application Support/HyperTunes/plugins` on macOS, `C:\\Users\\USERNAME\\AppData\\Roaming\\HyperTunes\\plugins` on Windows, `/home/USERNAME/.config/HyperTunes/plugins` or `/home/USERNAME/.HyperTunes/plugins` on Ubuntu/Linux).\nRun the following:\n\n```bash\nnpm install hypertunes-spotify\n\n# more info here: https://github.com/electron/electron/blob/master/docs/tutorial/using-native-node-modules.md#using-npm\n# for Windows, replace `export` with `set`\n\n# Electron's version.\nexport npm_config_target=1.2.3\n# The architecture of Electron, can be ia32 or x64.\nexport npm_config_arch=x64\n# Download headers for Electron.\nexport npm_config_disturl=https://atom.io/download/atom-shell\n# Tell node-pre-gyp that we are building for Electron.\nexport npm_config_runtime=electron\n# Tell node-pre-gyp to build module from source code.\nexport npm_config_build_from_source=true\n# Install all dependencies, and store cache to ~/.electron-gyp.\n# I don't know what the Windows equivalent for this is, sorry.\nHOME=~/.electron-gyp npm install\n```\n\n## Note\n\nCurrently, using this plugin (selecting it in the sidebar), causes HyperTunes' memory usage to double from `200mb` to `400mb`. I believe it has to do with the Web Audio API, possibly the buffers aren't being released or something like that. Anyways, this is just a warning, but if you have plenty of memory on your PC/Mac, it shouldn't be a problem.\n"
+}

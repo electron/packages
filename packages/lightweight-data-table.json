@@ -1,0 +1,65 @@
+{
+  "name": "lightweight-data-table",
+  "version": "4.1.0",
+  "description": "lightweight searchable data collection with import and export functionality",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha test.js --harmony --full-trace"
+  },
+  "author": {
+    "name": "Clinton Brooks"
+  },
+  "license": "ISC",
+  "dependencies": {
+    "mocha": "latest"
+  },
+  "_npmVersion": "2.7.4",
+  "_nodeVersion": "0.12.2",
+  "dist": {
+    "shasum": "d7ba03910e217a2b2d207a9f48e07e23e511dde2",
+    "tarball": "http://registry.npmjs.org/lightweight-data-table/-/lightweight-data-table-4.1.0.tgz"
+  },
+  "versions": [
+    {
+      "number": "1.1.1",
+      "date": "2015-12-30T22:02:08.833Z"
+    },
+    {
+      "number": "3.0.0",
+      "date": "2016-01-05T22:52:50.925Z"
+    },
+    {
+      "number": "3.1.0",
+      "date": "2016-01-05T23:38:49.965Z"
+    },
+    {
+      "number": "3.2.0",
+      "date": "2016-01-06T00:02:05.913Z"
+    },
+    {
+      "number": "3.2.1",
+      "date": "2016-01-06T00:03:27.025Z"
+    },
+    {
+      "number": "4.0.0",
+      "date": "2016-01-06T00:04:07.481Z"
+    },
+    {
+      "number": "4.1.0",
+      "date": "2016-01-13T06:43:35.934Z"
+    }
+  ],
+  "created": "2015-12-30T22:02:08.833Z",
+  "modified": "2016-01-13T06:43:35.934Z",
+  "lastPublisher": {
+    "name": "brain-bit-studios",
+    "email": "clinton@brainbitstudios.net"
+  },
+  "owners": [
+    {
+      "name": "brain-bit-studios",
+      "email": "clinton@brainbitstudios.net"
+    }
+  ],
+  "readme": "# Data Table\n\nThis module is designed to provide a lightweight searchable data collection in browser with easy import and export functionalizty. Inspired by c#'s lists and linq. Origionaly built to provide data management in an electron app.  \n\n## Example Usage\n```\n\"use strict\";\n\nconst table = require('./index.js').table; //lightweight-data-table\n\n/*\nDefine your schema\n */\nconst schema = {};\n\nschema.person = {\n\tname: 'New Person',\n\tage: 0,\n\texport: function() {\n\t\treturn {\n\t\t\ttypeName: 'person',\n\t\t\tcontent: {\n\t\t\t\tname: this.name,\n\t\t\t    age: this.age\n\t\t\t}\n\t\t};\n\t},\n\timport: function(data, schema) {\n\t\tthis.name = data.name;\n\t\tthis.age = data.age;\n\t}\n};\n\nschema.group = {\n\tname: \"New Place\",\n\tmembers: new table(),\n\texport: function(data, schema) {\n\t\treturn {\n\t\t\ttypeName: 'group',\n\t\t\tcontent: {\n\t\t\t\tname: this.name,\n\t\t\t\tmembers: this.members.export()\n\t\t\t}\n\t\t};\n\t},\n\timport: function(data, schema) {\n\t\tthis.name = data.name;\n\t\tthis.members.import(data.members, schema);\n\t}\n};\n\n\nconst people = new table();\nconst groups = new table();\n\n/*\nAdd entries to table\n */\n\nconst me = Object.create(schema.person);\nme.name = \"Joe\";\npeople.add(me);\n\nconst group = Object.create(schema.group);\ngroup.name = 'JS Developers';\ngroup.members.add(me);\n\ngroups.add(group);\n\n\n/*\nGet values from table\n */\n\nlet person = people.get(1); //This will get the person entry with an Id of 1. In this case it will be our me var.\n\n/*\nExport data\n */\nlet data = groups.export();\n\n/*\n\nExported Data:\n\n[{\n\ttypeName: 'group',\n\tcontent: {\n\t\tname: 'JS Developers',\n\t\tmembers: [{\n\t\t\ttypeName: 'person',\n\t\t\tcontent: {\n\t\t\t\tname: 'Joe',\n\t\t\t\tage: 0\n\t\t\t}\n\t\t}]\n\t}\n}]\n*/\n\n/*\nImport data\n */\nlet newGroupTable = new table();\nnewGroupTable.import(data, schema);\n\n/*\nSearch Data (support multiple search arguments)\n */\ngroups.select([{\n\t//Can also be path to field, e.g. 'Field.ParentObjectField.ParentObjectField.etc'. Path can include functions with no arguments.\n\tfield: 'name', \n\n\t// Supports 'greater', 'equal', 'less than', and regular expressions. For regex the value field is ignored.\n\tmatch: 'equal', \n\t//Value to search for. Supports numbers, dates, and strings.\n\tvalue: 'JS Developers' \n}]);\n\n```"
+}

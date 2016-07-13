@@ -9,8 +9,17 @@
   },
   "contributors": [],
   "repository": {
-    "type": "git",
-    "url": "git+https://github.com/iceddev/gitkit-widgets.git"
+    "user": "iceddev",
+    "repo": "gitkit-widgets",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/iceddev/gitkit-widgets/tarball/master",
+    "clone_url": "https://github.com/iceddev/gitkit-widgets",
+    "https_url": "https://github.com/iceddev/gitkit-widgets",
+    "travis_url": "https://travis-ci.org/iceddev/gitkit-widgets",
+    "zip_url": "https://github.com/iceddev/gitkit-widgets/archive/master.zip",
+    "api_url": "https://api.github.com/repos/iceddev/gitkit-widgets"
   },
   "license": "MIT",
   "engines": {
@@ -43,28 +52,34 @@
     "widget"
   ],
   "gitHead": "9f96e61228b98d6df1419df5eb956d6fb070519f",
-  "bugs": {
-    "url": "https://github.com/iceddev/gitkit-widgets/issues"
-  },
   "homepage": "https://github.com/iceddev/gitkit-widgets#readme",
-  "_id": "gitkit-widgets@0.1.1",
-  "_shasum": "0aad5622d4276b587a09618772476a465eb07df8",
-  "_from": ".",
   "_npmVersion": "2.8.3",
   "_nodeVersion": "0.10.36",
-  "_npmUser": {
+  "dist": {
+    "shasum": "0aad5622d4276b587a09618772476a465eb07df8",
+    "tarball": "http://registry.npmjs.org/gitkit-widgets/-/gitkit-widgets-0.1.1.tgz"
+  },
+  "versions": [
+    {
+      "number": "0.1.0",
+      "date": "2015-06-19T19:15:06.634Z"
+    },
+    {
+      "number": "0.1.1",
+      "date": "2015-06-25T01:37:35.126Z"
+    }
+  ],
+  "created": "2015-06-19T19:15:06.634Z",
+  "modified": "2016-01-11T18:35:50.897Z",
+  "lastPublisher": {
     "name": "phated",
     "email": "blaine@iceddev.com"
   },
-  "maintainers": [
+  "owners": [
     {
       "name": "phated",
       "email": "blaine@iceddev.com"
     }
   ],
-  "dist": {
-    "shasum": "0aad5622d4276b587a09618772476a465eb07df8",
-    "tarball": "http://registry.npmjs.org/gitkit-widgets/-/gitkit-widgets-0.1.1.tgz"
-  },
-  "directories": {}
+  "readme": "# gitkit-widgets\n\n[![Travis Build Status](https://img.shields.io/travis/iceddev/gitkit-widgets/master.svg?label=travis&style=flat-square)](https://travis-ci.org/iceddev/gitkit-widgets)\n\nConvenience library for initializing Google Identity Toolkit widgets\n\n## Usage\n\n```js\nvar gitkit = require('gitkit-widgets');\n\nvar config = {\n  loginUrl: '/login',\n  logoutUrl: '/',\n  popup: true\n};\n\ngitkit.login('#loginButton', config, function(err){\n  // button is ready\n});\n```\n\n## API\n\n### `login(selector, [options], [callback])`\n\nAttach a login widget, configured by `options`, to all elements that match the `selector`.\n\n#### `selector`\n\nAny valid selector to pass to `document.querySelectorAll`.\n\n#### `options`\n\nOptional configuration for the login button. Takes any of the [Gitkit widget options](https://developers.google.com/identity/toolkit/web/setup-frontend#page_with_sign_in_button) or nicer options as defined below.\n\n__Note: all Gitkit widget option names take precedence over the names below.__\n\n##### `options.loginUrl` (default: '/login')\n\nThe location a user is redirected to during login. The location must contain a login widget.\n\n##### `options.logoutUrl` (default: '/')\n\nThe location a user is redirected to during logout.\n\n##### `options.popup` (default: false)\n\nWhether the login page should show in a popup or not.\n\n##### `options.cookie` (default: 'gtoken')\n\nThe cookie where a user's login token is saved.\n\n#### `callback`\n\nOptional callback that is invoked upon completion of login button construction.\n\n## License\n\nMIT\n"
 }

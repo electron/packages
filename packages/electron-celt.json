@@ -13,13 +13,19 @@
     }
   ],
   "homepage": "https://github.com/evolvelabs/electron-celt",
-  "bugs": {
-    "url": "https://github.com/evolvelabs/electron-celt/issues"
-  },
   "license": "MIT",
   "repository": {
-    "type": "git",
-    "url": "git+ssh://git@github.com/evolvelabs/electron-celt.git"
+    "user": "evolvelabs",
+    "repo": "electron-celt",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/evolvelabs/electron-celt/tarball/master",
+    "clone_url": "https://github.com/evolvelabs/electron-celt",
+    "https_url": "https://github.com/evolvelabs/electron-celt",
+    "travis_url": "https://travis-ci.org/evolvelabs/electron-celt",
+    "zip_url": "https://github.com/evolvelabs/electron-celt/archive/master.zip",
+    "api_url": "https://api.github.com/repos/evolvelabs/electron-celt"
   },
   "main": "./index.js",
   "scripts": {
@@ -55,24 +61,53 @@
   "bundleDependencies": [
     "electron-updater-tools"
   ],
-  "_id": "electron-celt@0.2.1",
-  "_shasum": "1e654fb7ae32a9c8df2db2b3ab8c2a9759d307e0",
-  "_from": ".",
   "_npmVersion": "2.13.3",
   "_nodeVersion": "3.2.0",
-  "_npmUser": {
-    "name": "justinmchase",
-    "email": "justin.m.chase@outlook.com"
-  },
   "dist": {
     "shasum": "1e654fb7ae32a9c8df2db2b3ab8c2a9759d307e0",
     "tarball": "http://registry.npmjs.org/electron-celt/-/electron-celt-0.2.1.tgz"
   },
-  "maintainers": [
+  "versions": [
+    {
+      "number": "0.1.7",
+      "date": "2015-06-24T20:59:32.491Z"
+    },
+    {
+      "number": "0.1.8",
+      "date": "2015-06-25T20:46:35.427Z"
+    },
+    {
+      "number": "0.1.9",
+      "date": "2015-07-02T18:50:41.511Z"
+    },
+    {
+      "number": "0.1.10",
+      "date": "2015-07-02T20:00:33.587Z"
+    },
+    {
+      "number": "0.1.12",
+      "date": "2015-08-06T20:22:16.939Z"
+    },
+    {
+      "number": "0.2.0",
+      "date": "2015-08-30T00:13:15.493Z"
+    },
+    {
+      "number": "0.2.1",
+      "date": "2015-09-01T15:58:38.629Z"
+    }
+  ],
+  "created": "2015-06-24T20:59:32.491Z",
+  "modified": "2015-10-15T02:43:08.713Z",
+  "lastPublisher": {
+    "name": "justinmchase",
+    "email": "justin.m.chase@outlook.com"
+  },
+  "owners": [
     {
       "name": "justinmchase",
       "email": "justin.m.chase@outlook.com"
     }
   ],
-  "directories": {}
+  "readme": "node-celt\n=========\n### NodeJS native bindings to libcelt\n\nThis module implements bindings for Celt v0.7.0 for Node.js.\n\n    celt = require('node-celt');\n\n    // Create the encoder.\n    // Specify 48kHz sampling rate and 10ms frame size.\n    // NOTE: The decoder must use the same values when decoding the packets.\n    var rate = 48000;\n    var frame_size = rate/100;\n    var encoder = new celt.CeltEncoder( rate );\n\n    // Encode and decode.\n    var encoded = encoder.encode( buffer );\n    var decoded = encoder.decode( encoded );\n\nPlatform support\n----------------\n\nSupported platforms:\n- Linux x64\n- Linux arm\n- Darwin x64 (mac osx)\n- FreeBSD x64\n- Windows x64\n\nAdd new supported platforms by running ./configure in deps/celt-0.7.1 and\ncopying the resulting config.h to deps/config/celt-0.7.1/<os>/<arch>.\n\nUse the following flags: --enable-static --disable-shared --with-pic\n\nFork Notes\n----------\nThis fork adds electron build support, compatible with [electron-updater](https://github.com/evolvelabs/electron-updater).\n\nSee the `package.json` for how the url is composed."
 }

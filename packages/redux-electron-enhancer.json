@@ -16,8 +16,17 @@
     "lib"
   ],
   "repository": {
-    "type": "git",
-    "url": "git+https://github.com/fasterthanlime/redux-electron-enhancer.git"
+    "user": "fasterthanlime",
+    "repo": "redux-electron-enhancer",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/fasterthanlime/redux-electron-enhancer/tarball/master",
+    "clone_url": "https://github.com/fasterthanlime/redux-electron-enhancer",
+    "https_url": "https://github.com/fasterthanlime/redux-electron-enhancer",
+    "travis_url": "https://travis-ci.org/fasterthanlime/redux-electron-enhancer",
+    "zip_url": "https://github.com/fasterthanlime/redux-electron-enhancer/archive/master.zip",
+    "api_url": "https://api.github.com/repos/fasterthanlime/redux-electron-enhancer"
   },
   "keywords": [
     "redux",
@@ -37,9 +46,6 @@
     }
   ],
   "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/fasterthanlime/redux-electron-enhancer/issues"
-  },
   "homepage": "https://github.com/fasterthanlime/redux-electron-enhancer#readme",
   "dependencies": {},
   "devDependencies": {
@@ -57,28 +63,73 @@
     "tape": "^4.4.0"
   },
   "gitHead": "855603cf64afd523f6ba33dee7ac393cc85fb93c",
-  "_id": "redux-electron-enhancer@1.11.0",
-  "_shasum": "943c532cbc501bc20d4735138ccdd1f8a409eb26",
-  "_from": ".",
   "_npmVersion": "3.6.0",
   "_nodeVersion": "5.7.1",
-  "_npmUser": {
-    "name": "fasterthanlime",
-    "email": "amoswenger@gmail.com"
-  },
   "dist": {
     "shasum": "943c532cbc501bc20d4735138ccdd1f8a409eb26",
     "tarball": "http://registry.npmjs.org/redux-electron-enhancer/-/redux-electron-enhancer-1.11.0.tgz"
   },
-  "maintainers": [
+  "versions": [
+    {
+      "number": "1.0.0",
+      "date": "2016-03-10T18:41:46.855Z"
+    },
+    {
+      "number": "1.1.0",
+      "date": "2016-03-10T18:52:12.161Z"
+    },
+    {
+      "number": "1.2.0",
+      "date": "2016-03-10T18:54:44.261Z"
+    },
+    {
+      "number": "1.3.0",
+      "date": "2016-03-10T19:00:15.660Z"
+    },
+    {
+      "number": "1.4.0",
+      "date": "2016-03-10T19:30:49.841Z"
+    },
+    {
+      "number": "1.5.0",
+      "date": "2016-03-10T20:05:15.700Z"
+    },
+    {
+      "number": "1.6.0",
+      "date": "2016-03-10T20:28:28.104Z"
+    },
+    {
+      "number": "1.7.0",
+      "date": "2016-03-10T20:34:02.030Z"
+    },
+    {
+      "number": "1.8.0",
+      "date": "2016-03-10T20:55:41.246Z"
+    },
+    {
+      "number": "1.9.0",
+      "date": "2016-03-12T22:32:31.273Z"
+    },
+    {
+      "number": "1.10.0",
+      "date": "2016-03-13T17:08:25.009Z"
+    },
+    {
+      "number": "1.11.0",
+      "date": "2016-03-20T11:11:07.095Z"
+    }
+  ],
+  "created": "2016-03-10T18:41:46.855Z",
+  "modified": "2016-03-20T11:11:07.095Z",
+  "lastPublisher": {
+    "name": "fasterthanlime",
+    "email": "amoswenger@gmail.com"
+  },
+  "owners": [
     {
       "name": "fasterthanlime",
       "email": "amoswenger@gmail.com"
     }
   ],
-  "_npmOperationalInternal": {
-    "host": "packages-13-west.internal.npmjs.com",
-    "tmp": "tmp/redux-electron-enhancer-1.11.0.tgz_1458472264690_0.8781394329853356"
-  },
-  "directories": {}
+  "readme": "\n# redux-electron-enhancer\n\n[![js-standard-style](https://img.shields.io/badge/code%20style-standard-brightgreen.svg)](http://standardjs.com/)\n[![Build Status](https://travis-ci.org/fasterthanlime/redux-electron-enhancer.svg?branch=master)](https://travis-ci.org/fasterthanlime/redux-electron-enhancer)\n[![Coverage Status](https://coveralls.io/repos/github/fasterthanlime/redux-electron-enhancer/badge.svg?branch=master)](https://coveralls.io/github/fasterthanlime/redux-electron-enhancer?branch=master)\n[![Maintainer status](https://img.shields.io/badge/maintained%3F-no!-red.svg?style=flat)](https://twitter.com/fasterthanlime/status/706856384835485696)\n\nThis library is a fork of [redux-electron-store][] with the following changes:\n\n  * **Compatibility with [redux-saga][]**\n  * Removed features:\n    * Removed support for renderer-side reducers / 'synchronous' mode of operation\n    * Removed pre-dispatch and post-dispatch callbacks\n    * Removed 'only sending actions when watched state changes',\n      renderer stores now get all actions, regardless of whether it's in the filter or not\n  * Minor changes:\n    * Drop dependency on lodash\n    * Use const whenever possible\n    * Javascript standard style instead of airbnb's eslint preset\n\n[redux-electron-store]: https://github.com/samiskin/redux-electron-store\n[redux-saga]: https://github.com/yelouafi/redux-saga/\n\n**This is an internal fork built for a specific purpose — PRs that add features\nor complexity will be rejected, as I have no time to maintain it.**\n\n## Installation\n\n```bash\nnpm i redux-electron-enhancer\n```\n## Usage\n\n#### Main Process\n\n\n```javascript\nimport {createStore, applyMiddleware, compose} from 'redux'\nimport {electronEnhancer} from 'redux-electron-enhancer'\n\n// this is required so that injected events (received from renderers via IPC)\n// go through the entire middleware stack again (e.g. redux-saga 'take' effects)\nconst inject = (x) => store.dispatch(x)\n\nconst enhancer = compose(\n  applyMiddleware(...middleware),\n  // electronEnhancer needs to be last in the chain so that it can dispatch\n  // all actions to renderers via IPC (e.g. redux-saga 'put' effects)\n  electronEnhancer({inject})\n)\n\n// Note: passing enhancer as the last argument to createStore requires redux@>=3.1.0\nconst store = createStore(reducer, initialState, enhancer)\n```\n\n#### Renderer / Webview Process\n\nIn the renderer process, the store will handle the `filter` property in its\nparameter.  `filter` is a way of describing exactly what data this renderer\nprocess wishes to be notified of.  If a filter is provided, all updates which do\nnot change a property which passes the filter will not be forwarded to the\ncurrent renderer.\n```javascript\nconst filter = {\n  notifications: true,\n  settings: true\n}\n\nconst enhancer = compose(\n  applyMiddleware(...middleware),\n  electronEnhancer({filter}),\n  DevTools.instrument()\n)\n\n// Note: passing enhancer as the last argument to createStore requires redux@>=3.1.0\nconst store = createStore(reducer, initialState, enhancer)\n```\n\n##### Filters\n\n A filter can be an `object`, a `function`, or `true`.\n\nIf the filter is `true`, the entire variable will pass through the filter.\n\nIf the filter is a `function`, the function will be called with the variable the\nfilter is acting on as a parameter, and the return value of the function must\nitself be a filter (either an `object` or `true`)\n\nIf the filter is an `object`, its keys must be properties of the variable the\nfilter is acting on, and its values are themselves filters which describe the\nvalue(s) of that property that will pass through the filter.\n\n**Example Problem**:\n\n > I am creating a Notifications window for Slack's application.  For this to\nwork, I need to know the position to display the notifications, the\nnotifications themselves, and the icons for each team to display as a\nthumbnail. Any other data in my app has no bearing on this window, therefore\nit would be a waste for this window to have updates for any other data sent to\nit.\n\n**Solution**:\n\n```javascript\n// Note: The Lodash library is being used here as _\nconst filter = {\n  notifications: true,\n  settings: {\n    notifyPosition: true\n  },\n  teams: (teams) => {\n    return _.mapValues(teams, (team) => {\n      return {icons: true}\n    })\n  }\n}\n```\n\nMore options are documented in the [api\ndocs](https://github.com/fasterthanlime/redux-electron-enhancer/blob/master/docs/api.md).\n\n### License\n\nMIT\n"
 }

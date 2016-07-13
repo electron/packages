@@ -20,8 +20,17 @@
     }
   ],
   "repository": {
-    "type": "git",
-    "url": "git://github.com/evolvelabs/electron-ref-array.git"
+    "user": "evolvelabs",
+    "repo": "electron-ref-array",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/evolvelabs/electron-ref-array/tarball/master",
+    "clone_url": "https://github.com/evolvelabs/electron-ref-array",
+    "https_url": "https://github.com/evolvelabs/electron-ref-array",
+    "travis_url": "https://travis-ci.org/evolvelabs/electron-ref-array",
+    "zip_url": "https://github.com/evolvelabs/electron-ref-array/archive/master.zip",
+    "api_url": "https://api.github.com/repos/evolvelabs/electron-ref-array"
   },
   "main": "./lib/array.js",
   "scripts": {
@@ -43,28 +52,42 @@
     "nan": "~2.0.0"
   },
   "gitHead": "83390b83e7cfd0505c80d1858169e52a0468bf97",
-  "bugs": {
-    "url": "https://github.com/evolvelabs/electron-ref-array/issues"
-  },
   "homepage": "https://github.com/evolvelabs/electron-ref-array#readme",
-  "_id": "electron-ref-array@1.2.0",
-  "_shasum": "ae2dc2b6ea9152e41d96b17c54b887f243af7d0b",
-  "_from": ".",
   "_npmVersion": "2.13.3",
   "_nodeVersion": "3.2.0",
-  "_npmUser": {
-    "name": "justinmchase",
-    "email": "justin.m.chase@outlook.com"
-  },
   "dist": {
     "shasum": "ae2dc2b6ea9152e41d96b17c54b887f243af7d0b",
     "tarball": "http://registry.npmjs.org/electron-ref-array/-/electron-ref-array-1.2.0.tgz"
   },
-  "maintainers": [
+  "versions": [
+    {
+      "number": "1.1.1",
+      "date": "2015-06-25T17:47:32.897Z"
+    },
+    {
+      "number": "1.1.2",
+      "date": "2015-06-25T18:36:13.315Z"
+    },
+    {
+      "number": "1.1.4",
+      "date": "2015-07-02T16:21:03.002Z"
+    },
+    {
+      "number": "1.2.0",
+      "date": "2015-08-29T21:57:04.384Z"
+    }
+  ],
+  "created": "2015-06-25T17:47:32.897Z",
+  "modified": "2015-10-15T02:44:32.497Z",
+  "lastPublisher": {
+    "name": "justinmchase",
+    "email": "justin.m.chase@outlook.com"
+  },
+  "owners": [
     {
       "name": "justinmchase",
       "email": "justin.m.chase@outlook.com"
     }
   ],
-  "directories": {}
+  "readme": "ref-array\n=========\n### Create C typed \"array\" instances on top of Buffers\n[![Build Status](https://secure.travis-ci.org/EvolveLabs/ref-array.svg)](https://travis-ci.org/EvolveLabs/ref-array)\n[![Build status](https://ci.appveyor.com/api/projects/status/dqhcl0k54333n069?svg=true)](https://ci.appveyor.com/project/BlairEvolve/electron-ref-array)\n\n\nThis module offers an \"array\" implementation on top of Node.js Buffers using\nthe ref \"type\" interface.\n\nInstallation\n------------\n\nInstall with `npm`:\n\n``` bash\n$ npm install ref-array\n```\n\n\nExamples\n--------\n\n#### Basic usage\n\n``` js\nvar ref = require('electron-ref')\nvar ArrayType = require('electron-ref-array')\n\n// typedef\nvar int = ref.types.int\n\n// define the \"int[]\" type\nvar IntArray = ArrayType(int)\n\n// now we can create array instances; the constructor takes the same arguments\n// the native JS Array class\n\nvar a = new IntArray(5) // by length\na.length // 5\na[0] = 0\na[1] = 1\na[2] = -1\na[3] = 2\na[4] = -2\n\nvar b = new IntArray([1, 2, 3, 4, 5]) // with an existing Array\nb.length // 5\nb[0] // 1\nb[1] // 2\nb[2] // 3\nb[3] // 4\nb[4] // 5\n```\n\n#### Reading a `NULL`-terminated Array\n\n``` js\n// sometimes you get a variable length array that is terminated by a NULL byte.\nvar buf = new Buffer(int.size * 3)\nint.set(buf, int.size * 0, 5)\nint.set(buf, int.size * 1, 8)\nint.set(buf, int.size * 2, 0) // <- terminate with 0s\n\n// you can create an array instance with the length automatically determined\nvar array = IntArray.untilZeros(buf)\nconsole.log(array.length)\n// 2\nconsole.log(array)\n// [ 5, 8 ]\n```\n\n#### With `node-ffi`\n\n``` js\nvar ffi = require('ffi')\n\n// the \"int[]\" type may be used as a \"type\" in FFI'd functions or callbacks\nvar func = ffi.ForeignFunction(funcPointer, int, [ IntArray, int ])\n\nvar arg = new IntArray(3)\narg[0] = 1234\narg[1] = -9999\narg[2] = 1\n\nvar rtn = func(arg, arg.length)\n```\n\n\nLicense\n-------\n\n(The MIT License)\n\nCopyright (c) 2012 Nathan Rajlich &lt;nathan@tootallnate.net&gt;\n\nPermission is hereby granted, free of charge, to any person obtaining\na copy of this software and associated documentation files (the\n'Software'), to deal in the Software without restriction, including\nwithout limitation the rights to use, copy, modify, merge, publish,\ndistribute, sublicense, and/or sell copies of the Software, and to\npermit persons to whom the Software is furnished to do so, subject to\nthe following conditions:\n\nThe above copyright notice and this permission notice shall be\nincluded in all copies or substantial portions of the Software.\n\nTHE SOFTWARE IS PROVIDED 'AS IS', WITHOUT WARRANTY OF ANY KIND,\nEXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF\nMERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.\nIN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY\nCLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,\nTORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE\nSOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.\n\nFork Notes\n----------\nThis fork adds electron build support, compatible with [electron-updater](https://github.com/evolvelabs/electron-updater).\n\nIt does not directly contain binaries but depends on [electron-ref](https://github.com/evolvelabs/electron-ref), which does."
 }

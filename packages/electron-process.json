@@ -24,11 +24,17 @@
   },
   "license": "ISC",
   "repository": {
-    "type": "git",
-    "url": "git+https://github.com/smith-kyle/electron-process.git"
-  },
-  "bugs": {
-    "url": "https://github.com/smith-kyle/electron-process/issues"
+    "user": "smith-kyle",
+    "repo": "electron-process",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/smith-kyle/electron-process/tarball/master",
+    "clone_url": "https://github.com/smith-kyle/electron-process",
+    "https_url": "https://github.com/smith-kyle/electron-process",
+    "travis_url": "https://travis-ci.org/smith-kyle/electron-process",
+    "zip_url": "https://github.com/smith-kyle/electron-process/archive/master.zip",
+    "api_url": "https://api.github.com/repos/smith-kyle/electron-process"
   },
   "homepage": "https://github.com/smith-kyle/electron-process#readme",
   "devDependencies": {
@@ -45,28 +51,46 @@
     "uuid": "^2.0.1"
   },
   "gitHead": "bd25acb596a60675541931a5db583279336c708d",
-  "_id": "electron-process@0.2.0",
-  "_shasum": "df48a9cf4af6626c1e3eadc8fed2b1403de1afa0",
-  "_from": ".",
   "_npmVersion": "3.9.0",
   "_nodeVersion": "5.11.1",
-  "_npmUser": {
-    "name": "smith-kyle",
-    "email": "kyle.r.smiff@gmail.com"
-  },
   "dist": {
     "shasum": "df48a9cf4af6626c1e3eadc8fed2b1403de1afa0",
     "tarball": "http://registry.npmjs.org/electron-process/-/electron-process-0.2.0.tgz"
   },
-  "maintainers": [
+  "stars": 1,
+  "versions": [
+    {
+      "number": "0.1.0",
+      "date": "2016-01-17T00:26:50.084Z"
+    },
+    {
+      "number": "0.1.1",
+      "date": "2016-01-17T00:48:47.865Z"
+    },
+    {
+      "number": "0.1.2",
+      "date": "2016-01-17T20:39:31.725Z"
+    },
+    {
+      "number": "0.1.3",
+      "date": "2016-01-17T20:51:00.353Z"
+    },
+    {
+      "number": "0.2.0",
+      "date": "2016-05-20T01:26:16.262Z"
+    }
+  ],
+  "created": "2016-01-17T00:26:50.084Z",
+  "modified": "2016-05-20T01:26:16.262Z",
+  "lastPublisher": {
+    "name": "smith-kyle",
+    "email": "kyle.r.smiff@gmail.com"
+  },
+  "owners": [
     {
       "name": "smith-kyle",
       "email": "kyle.r.smiff@gmail.com"
     }
   ],
-  "_npmOperationalInternal": {
-    "host": "packages-12-west.internal.npmjs.com",
-    "tmp": "tmp/electron-process-0.2.0.tgz_1463707575610_0.788252143189311"
-  },
-  "directories": {}
+  "readme": "# electron-process\n\nSend blocking operations to a background process. Example application available [here](https://github.com/smith-kyle/electron-background-process-app).\n\n## Installation\n\n```\nnpm install --save electron-process\n```\n\n## Usage\n`electron-process` uses a hidden `BrowserWindow` to do all the blocking operations that your heart desires. Create the background process in the main electron process, register modules you wish to run in the background, then call those functions within the `BrowserWindow`s that you consider the foreground.\n\n### Main\n```javascript\nconst main = require('electron-process').main;\n\napp.on('ready', function() {\n  const backgroundURL = 'file://' + __dirname + '/background.html';\n  const backgroundProcessHandler = main.createBackgroundProcess(backgroundURL, true);\n  mainWindow = new BrowserWindow({width: 1280, height: 600});\n  backgroundProcessHandler.addWindow(mainWindow);\n  mainWindow.loadURL('file://' + __dirname + '/foreground.html');\n});\n```\n### Foreground\n```javascript\nconst foreground = require('electron-process').foreground;\nconst someModule = foreground.getModule(require('./someModule'));\nsomeModule.doStuff()\n  .then((result) => console.log(result));\n```\n\n### Background\n```javascript\nconst background = require('electron-process').background;\nbackground.registerModule(require('./someModule'));\n```\n"
 }

@@ -7,8 +7,17 @@
     "test": "mocha test"
   },
   "repository": {
-    "type": "git",
-    "url": "git+https://github.com/kanekotic/oauth-electron-twitter.git"
+    "user": "kanekotic",
+    "repo": "oauth-electron-twitter",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/kanekotic/oauth-electron-twitter/tarball/master",
+    "clone_url": "https://github.com/kanekotic/oauth-electron-twitter",
+    "https_url": "https://github.com/kanekotic/oauth-electron-twitter",
+    "travis_url": "https://travis-ci.org/kanekotic/oauth-electron-twitter",
+    "zip_url": "https://github.com/kanekotic/oauth-electron-twitter/archive/master.zip",
+    "api_url": "https://api.github.com/repos/kanekotic/oauth-electron-twitter"
   },
   "keywords": [
     "twitter",
@@ -24,9 +33,6 @@
       "url": "https://github.com/kanekotic/oauth-electron-twitter/blob/master/LICENSE"
     }
   ],
-  "bugs": {
-    "url": "https://github.com/kanekotic/oauth-electron-twitter/issues"
-  },
   "devDependencies": {
     "blanket": "^1.2.1",
     "chai": "^3.4.1",
@@ -40,28 +46,29 @@
   },
   "gitHead": "cd25a0a47bc43fec5b2ed663732f02b6ae36e0b5",
   "homepage": "https://github.com/kanekotic/oauth-electron-twitter#readme",
-  "_id": "oauth-electron-twitter@0.1.1",
-  "_shasum": "658b3ef9fec2451f20b4c28046f9f95fc3997a5b",
-  "_from": ".",
   "_npmVersion": "2.15.1",
   "_nodeVersion": "4.4.3",
-  "_npmUser": {
-    "name": "kanekotic",
-    "email": "alvarojosepl@gmail.com"
-  },
   "dist": {
     "shasum": "658b3ef9fec2451f20b4c28046f9f95fc3997a5b",
     "tarball": "http://registry.npmjs.org/oauth-electron-twitter/-/oauth-electron-twitter-0.1.1.tgz"
   },
-  "maintainers": [
+  "versions": [
+    {
+      "number": "0.1.1",
+      "date": "2016-04-21T18:48:17.117Z"
+    }
+  ],
+  "created": "2016-04-21T18:48:17.117Z",
+  "modified": "2016-04-21T18:48:17.117Z",
+  "lastPublisher": {
+    "name": "kanekotic",
+    "email": "alvarojosepl@gmail.com"
+  },
+  "owners": [
     {
       "name": "kanekotic",
       "email": "alvarojosepl@gmail.com"
     }
   ],
-  "_npmOperationalInternal": {
-    "host": "packages-12-west.internal.npmjs.com",
-    "tmp": "tmp/oauth-electron-twitter-0.1.1.tgz_1461264494732_0.507706661010161"
-  },
-  "directories": {}
+  "readme": "# ![logo](https://cloud.githubusercontent.com/assets/3071208/14719944/55c32866-07ff-11e6-9821-1a564a0cf065.png)\n\n\nUse Twitter OAuth in a simple way inside your electron App.\n\n## Usage\n\nadd the require for ouath and twitter specific code from this package\n\n```js\nvar oauth = require('oauth-electron-twitter').oauth;\nvar twitter = require('oauth-electron-twitter').twitter;\n```\n\ndeclare a twitter object, and use it as parameter for the oauth in conjuntion with the electron window used to display the login\n```js\nvar info = new twitter(\"key\",\"secret\");\nvar auth = new oauth();\nauth.login(info, window);\n```\nthe login function will return a Promise with the acces token and secret\n```\n{\n    oauth_access_token: ***,\n    oauth_access_token_secret: ***\n}\n```\n\n\n\n###### logo: Award graphic by <a href=\"http://www.freepik.com/\">Freepik</a> and Twitter graphic by <a href=\"http://www.icomoon.io\">Icomoon</a> from <a href=\"http://www.flaticon.com/\">Flaticon</a> are licensed under <a href=\"http://creativecommons.org/licenses/by/3.0/\" title=\"Creative Commons BY 3.0\">CC BY 3.0</a>. Made and modified with <a href=\"http://logomakr.com\" title=\"Logo Maker\">Logo Maker </a>\n"
 }

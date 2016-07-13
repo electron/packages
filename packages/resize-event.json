@@ -8,8 +8,17 @@
     "test": "browserify test.js -o bundle.js && testron bundle.js"
   },
   "repository": {
-    "type": "git",
-    "url": "git+ssh://git@github.com/shama/resize-event.git"
+    "user": "shama",
+    "repo": "resize-event",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/shama/resize-event/tarball/master",
+    "clone_url": "https://github.com/shama/resize-event",
+    "https_url": "https://github.com/shama/resize-event",
+    "travis_url": "https://travis-ci.org/shama/resize-event",
+    "zip_url": "https://github.com/shama/resize-event/archive/master.zip",
+    "api_url": "https://api.github.com/repos/shama/resize-event"
   },
   "keywords": [
     "resize",
@@ -22,9 +31,6 @@
     "url": "http://dontkry.com"
   },
   "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/shama/resize-event/issues"
-  },
   "homepage": "https://github.com/shama/resize-event#readme",
   "devDependencies": {
     "browserify": "^11.0.0",
@@ -38,24 +44,37 @@
     "mutationobserver-shim": "^0.3.1"
   },
   "gitHead": "fd7459d07cdb36bcbb5ecb64b16aace072628d51",
-  "_id": "resize-event@1.1.0",
-  "_shasum": "533123d4ac98d71f7579bf8396c2334d27722032",
-  "_from": ".",
   "_npmVersion": "2.12.1",
   "_nodeVersion": "2.3.4",
-  "_npmUser": {
+  "dist": {
+    "shasum": "533123d4ac98d71f7579bf8396c2334d27722032",
+    "tarball": "http://registry.npmjs.org/resize-event/-/resize-event-1.1.0.tgz"
+  },
+  "versions": [
+    {
+      "number": "1.0.0",
+      "date": "2015-07-23T01:34:07.779Z"
+    },
+    {
+      "number": "1.0.1",
+      "date": "2015-07-23T01:46:47.149Z"
+    },
+    {
+      "number": "1.1.0",
+      "date": "2015-07-23T17:38:32.997Z"
+    }
+  ],
+  "created": "2015-07-23T01:34:07.779Z",
+  "modified": "2015-07-23T17:38:32.997Z",
+  "lastPublisher": {
     "name": "shama",
     "email": "kyle@dontkry.com"
   },
-  "maintainers": [
+  "owners": [
     {
       "name": "shama",
       "email": "kyle@dontkry.com"
     }
   ],
-  "dist": {
-    "shasum": "533123d4ac98d71f7579bf8396c2334d27722032",
-    "tarball": "http://registry.npmjs.org/resize-event/-/resize-event-1.1.0.tgz"
-  },
-  "directories": {}
+  "readme": "# resize-event\nDetect resize on an element without polling or iframes\n\n[![build status](https://secure.travis-ci.org/shama/resize-event.svg)](https://travis-ci.org/shama/resize-event)\n[![NPM version](https://badge.fury.io/js/resize-event.svg)](https://badge.fury.io/js/resize-event)\n\nThis uses a [MutationObserver](https://developer.mozilla.org/en-US/docs/Web/API/MutationObserver)\nto detect changes to the `style` attribute of an element and then compares the\nwidth/height to check if it has changed.\n\nA polyfill is provided which will use polling on older browsers.\n\n## usage\n\n```js\nvar onResize = require('resize-event')\n\n// Create or select an element, must be in the DOM\nvar element = document.createElement('div')\ndocument.body.appendChild(element)\n\n// Bind the event\nonResize(element, function () {\n  console.log('element was resized')\n})\n\n// Trigger the event\nelement.style.width = '500px'\n```\n\n## install\n\n```shell\nnpm install resize-event --save\n```\n\nThen use a CommonJS compatible module bundler to `require('resize-event')`.\n\n# license\n(c) 2015 Kyle Robinson Young. MIT License\n"
 }

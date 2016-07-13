@@ -1,0 +1,60 @@
+{
+  "name": "datamapper",
+  "version": "1.0.5",
+  "description": "A unique, easy to use but powerful ORM",
+  "main": "Mapper.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": {
+    "name": "Tom Butler",
+    "email": "tom@r.je",
+    "url": "https://r.je"
+  },
+  "license": "ISC",
+  "Dependencies": {
+    "synket": "^1.0.0"
+  },
+  "gitHead": "9569f01e25413ed1182a3d6856287ba941107c13",
+  "_npmVersion": "3.10.2",
+  "_nodeVersion": "6.2.2",
+  "dist": {
+    "shasum": "bb68e7d346fe916a8a4f8bfa11d998849d43a4bd",
+    "tarball": "http://registry.npmjs.org/datamapper/-/datamapper-1.0.5.tgz"
+  },
+  "versions": [
+    {
+      "number": "1.0.0",
+      "date": "2016-07-05T17:01:16.286Z"
+    },
+    {
+      "number": "1.0.1",
+      "date": "2016-07-05T17:04:53.092Z"
+    },
+    {
+      "number": "1.0.3",
+      "date": "2016-07-05T17:32:19.601Z"
+    },
+    {
+      "number": "1.0.4",
+      "date": "2016-07-06T13:20:01.871Z"
+    },
+    {
+      "number": "1.0.5",
+      "date": "2016-07-06T17:33:58.725Z"
+    }
+  ],
+  "created": "2016-07-05T17:01:16.286Z",
+  "modified": "2016-07-06T17:33:58.725Z",
+  "lastPublisher": {
+    "name": "tombutler",
+    "email": "tom@r.je"
+  },
+  "owners": [
+    {
+      "name": "tombutler",
+      "email": "tom@r.je"
+    }
+  ],
+  "readme": "DataMapper\n==========\n\nDataMapper is an ORM with a focus on being easy to use. \n\n\n**DataMapper works Synchronously and is designed for applications where multiple concurrent requests are not important. It will reduce the concurrency of web servers. DataMapper was originally designed for use in an *Electron Application* where concurrency is not an issue and should not be used on web servers**\n\n\nCurrently it only supports MySQL using the `mysql` package.\n\nThis is a **Work in progress** and currently only supports basic features:\n\n- Entirely synchronous code\n- Look up records by ID\n- Loop through all records in the table\n\n\nDataMapper allows you to access any database table as if it was a simple array. No callback hell, no obscure function names, just a simple array interface for all your database tables.\n\n**DataMapper does not load the entire  database table into memory, it queries the database for just-in-time responses**\n\nUsage:\n\n\n```js\n\n//Load the MySQL module\nconst MySQL = require('mysql');\n\n//Load the DataMapper module\nconst DataMapper = require('datamapper');\n\n//Connect to the database and select a database:\n\nvar connection = new mysql.createConnection({\n\thost: '127.0.0.1',\n\tuser: 'youruser',\n\tpassword: 'yourpassword',\n\tdatabase: 'databasename'\n});\n\n\n//Now create a DataMapper instance by passing it a database connection and a table name, and name of the primary key column:\n\nvar albums = DataMapper.MySQL(connection, 'albums', 'id');\n\n//Perform a SELECT query using the primary key:\n//This will perform SELECT * FROM albums WHERE id = 123 and return the resulting record.\nvar album = albums[123];\n\nconsole.log('Selected album title:');\nconsole.log(album.title);\n\nconsole.log('Selected album artist:');\nconsole.log(album.artist);\n\nconsole.log('end');\n\n\n```\n\nDataMapper is entirely synchronous so each command will run in order, avoiding callback hell and needlessly confusing code.\n\nThe code above will output something like:\n\n```\n\nSelected album title:\nEmpires\nSelected album artist:\nVNV Nation\nend\n```\n\nYou can also use the array directly:\n\n```php\n\nvar albums = DataMapper.MySQL(connection, 'albums', 'id');\n\nconsole.log(albums[123].title);\nconsole.log(albums[123].artist);\n\n```\n\nDataMapper will cache the record internally so this will only perform a single `SELECT` query.\n\nLooping through results\n=======================\n\nYou can loop through all the records in the table using a simple `for..of` loop:\n\n```js\n\nvar albums = Mapper.MySQL(connection, 'albums', 'id');\n\nconsole.log('All albums:');\n\nfor (var album of albums) {\n\tconsole.log(album.id + ': ' + album.artist + ': ' + album.title);\n}\n\nconsole.log('End of list');\n```\n\nWill output something like\n\n```\nAll albums:\n123: VNV Nation: Empires\n124: Tool: Lateralus\n125: Gary Numan: Splinter\n126: VNV Nation: Transnational\n127: VNV Nation: Automatic\nEnd of list\n\n```\n\nSearching, limits and offsets\n=============================\n\nYou can search for records using a simple API and the `for...of` loop:\n\n```js\n\nvar albums = Mapper.MySQL(connection, 'albums', 'id');\n\n\nfor (album of album.filter({artist: 'VNV Nation'})) {\n\tconsole.log(album.id + ': ' + album.artist + ': ' + album.title);\n}\n\n```\n\nWhich will output something like:\n\n```\n123: VNV Nation: Empires\n126: VNV Nation: Transnational\n127: VNV Nation: Automatic\n\n```\n\nYou can also apply limits and offsets:\n\n```js\nvar albums = Mapper.MySQL(connection, 'albums', 'id');\n\n\nfor (album of album.filter({artist: 'VNV Nation'}).limit(2).offset(1)) {\n\tconsole.log(album.id + ': ' + album.artist + ': ' + album.title);\n}\n\n```\n\n:\n\n```\n126: VNV Nation: Transnational\n127: VNV Nation: Automatic\n\n```\n\n\n\nInserting data\n==============\n\nTo insert data you can either write to a specific primary key, e.g.\n\n```js\n//Issue an INSERT query, automatically setting the primary key\nalbums[1000] = {name: 'OK Computer', artist: 'Radiohead'};\n```\n\nThis will create an `INSERT` query: `INSER INTO albums (id, name, artist) VALUES (1000, 'OK Computer', 'Radiohead')`.\n\nIf there is already a record using the ID 1000, it will issue an update query: `UPDATE albums SET artist = 'Radiohead', name = 'OK Computer' WHERE id = 1000`\n\n\nAlternatively you can write to the end of the table (For MySQL the primary key must be `auto_increment` for SQLite, `ROWID` is used):\n\n```js\n\nvar newAlbum = {artist: 'Covenant', name: 'Northern Light'};\nalbums.push(newAlbum);\n\n```\n\nThis will also set the primary key on the object:\n\n```js\nvar newAlbum = {artist: 'Covenant', name: 'Northern Light'};\nalbums.push(newAlbum);\n\nconsole.log(newAlbum.id); //The automatically generated ID e.g. `145`\n```\n\n\n"
+}

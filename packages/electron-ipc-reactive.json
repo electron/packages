@@ -4,8 +4,17 @@
   "description": "Reactive Elements for Electron via IPC",
   "main": "ipcRenderer.js",
   "repository": {
-    "type": "git",
-    "url": "git+https://github.com/simonhochrein/electron-ipc-reactive.git"
+    "user": "simonhochrein",
+    "repo": "electron-ipc-reactive",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/simonhochrein/electron-ipc-reactive/tarball/master",
+    "clone_url": "https://github.com/simonhochrein/electron-ipc-reactive",
+    "https_url": "https://github.com/simonhochrein/electron-ipc-reactive",
+    "travis_url": "https://travis-ci.org/simonhochrein/electron-ipc-reactive",
+    "zip_url": "https://github.com/simonhochrein/electron-ipc-reactive/archive/master.zip",
+    "api_url": "https://api.github.com/repos/simonhochrein/electron-ipc-reactive"
   },
   "scripts": {
     "start": "electron app.js"
@@ -18,32 +27,42 @@
     "reactive"
   ],
   "gitHead": "2816f1a21539360f32ec244da3921d05bdfb4331",
-  "bugs": {
-    "url": "https://github.com/simonhochrein/electron-ipc-reactive/issues"
-  },
   "homepage": "https://github.com/simonhochrein/electron-ipc-reactive#readme",
-  "_id": "electron-ipc-reactive@1.0.6",
-  "_shasum": "efcd70bf6b33895e7138eb163e446cb33e74d14d",
-  "_from": ".",
   "_npmVersion": "3.9.5",
   "_nodeVersion": "6.2.2",
-  "_npmUser": {
-    "name": "simon.hochrein",
-    "email": "simon@ministrycrm.com"
-  },
   "dist": {
     "shasum": "efcd70bf6b33895e7138eb163e446cb33e74d14d",
     "tarball": "http://registry.npmjs.org/electron-ipc-reactive/-/electron-ipc-reactive-1.0.6.tgz"
   },
-  "maintainers": [
+  "versions": [
+    {
+      "number": "1.0.2",
+      "date": "2016-06-20T13:22:54.431Z"
+    },
+    {
+      "number": "1.0.3",
+      "date": "2016-06-20T13:23:40.742Z"
+    },
+    {
+      "number": "1.0.4",
+      "date": "2016-06-20T13:26:32.709Z"
+    },
+    {
+      "number": "1.0.6",
+      "date": "2016-06-20T15:17:25.198Z"
+    }
+  ],
+  "created": "2016-06-20T13:22:54.431Z",
+  "modified": "2016-06-20T15:17:25.198Z",
+  "lastPublisher": {
+    "name": "simon.hochrein",
+    "email": "simon@ministrycrm.com"
+  },
+  "owners": [
     {
       "name": "simon.hochrein",
       "email": "simon@ministrycrm.com"
     }
   ],
-  "_npmOperationalInternal": {
-    "host": "packages-16-east.internal.npmjs.com",
-    "tmp": "tmp/electron-ipc-reactive-1.0.6.tgz_1466435843677_0.7544793565757573"
-  },
-  "directories": {}
+  "readme": "# Electron IPC Reactive\n\n![Screenshot](https://raw.githubusercontent.com/simonhochrein/electron-ipc-reactive/master/Screen%20Recording.gif)\n## Examples\n```\n// app.js\n'use strict';\nconst {app,BrowserWindow} = require('electron');\napp.on('ready',function(){\n  // other init stuff here\n  require('electron-ipc-reactive/main');\n});\n```\n```\n// renderer.js\nrequire('electron-ipc-reactive');\n```\n```\n<!-- index.html -->\n<!doctype html>\n<html>\n  <body>\n    <input type=\"checkbox\" ipc-value-bind=\"theme_blue\"/>\n    <div ipc-class='{\"blue\":\"theme_blue\"}'></div>\n    <input type=\"text\" ipc-value-bind=\"textbox\"/>\n    <div ipc-value-bind=\"textbox\"></div>\n    <script src=\"renderer.js\"></script>\n  </body>\n</html>\n```\n\nAs always,\nThe source is the best documentation.\n\n### Contributing\nFeel free to send me a pull request\n"
 }

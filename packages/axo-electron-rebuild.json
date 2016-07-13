@@ -12,8 +12,17 @@
     "electron-rebuild": "lib/cli.js"
   },
   "repository": {
-    "type": "git",
-    "url": "git+https://github.com/maxkorp/electron-rebuild.git"
+    "user": "maxkorp",
+    "repo": "electron-rebuild",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/maxkorp/electron-rebuild/tarball/master",
+    "clone_url": "https://github.com/maxkorp/electron-rebuild",
+    "https_url": "https://github.com/maxkorp/electron-rebuild",
+    "travis_url": "https://travis-ci.org/maxkorp/electron-rebuild",
+    "zip_url": "https://github.com/maxkorp/electron-rebuild/archive/master.zip",
+    "api_url": "https://api.github.com/repos/maxkorp/electron-rebuild"
   },
   "keywords": [
     "electron"
@@ -23,9 +32,6 @@
     "email": "paul@paulbetts.org"
   },
   "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/maxkorp/electron-rebuild/issues"
-  },
   "homepage": "https://github.com/maxkorp/electron-rebuild",
   "dependencies": {
     "babel-runtime": "^5.8.20",
@@ -45,24 +51,29 @@
     "mocha": "^2.3.0"
   },
   "gitHead": "76cab8cb7e888967a05bd2abdc5bede1120c770f",
-  "_id": "axo-electron-rebuild@1.0.2",
-  "_shasum": "5ba8c6d4d67521f25dc3a77491bfec937d06532d",
-  "_from": ".",
   "_npmVersion": "2.14.8",
   "_nodeVersion": "0.12.7",
-  "_npmUser": {
-    "name": "maxkorp",
-    "email": "maxkorp@8bytealchemy.com"
-  },
   "dist": {
     "shasum": "5ba8c6d4d67521f25dc3a77491bfec937d06532d",
     "tarball": "http://registry.npmjs.org/axo-electron-rebuild/-/axo-electron-rebuild-1.0.2.tgz"
   },
-  "maintainers": [
+  "versions": [
+    {
+      "number": "1.0.2",
+      "date": "2015-11-05T16:02:37.533Z"
+    }
+  ],
+  "created": "2015-11-05T16:02:37.533Z",
+  "modified": "2015-11-05T16:02:37.533Z",
+  "lastPublisher": {
+    "name": "maxkorp",
+    "email": "maxkorp@8bytealchemy.com"
+  },
+  "owners": [
     {
       "name": "maxkorp",
       "email": "maxkorp@8bytealchemy.com"
     }
   ],
-  "directories": {}
+  "readme": "## Electron-Rebuild\n\nThis executable rebuilds native io.js modules against the version of io.js\nthat your Electron project is using. This allows you to use native io.js\nmodules in Electron apps without your system version of io.js matching exactly\n(which is often not the case, and sometimes not even possible).\n\n### How does it work?\n\nInstall the package with `--save-dev`:\n\n```sh\nnpm install --save-dev electron-rebuild\n```\n\nThen, whenever you install a new npm package, rerun electron-rebuild:\n\n```sh\n./node_modules/.bin/electron-rebuild\n```\n\nOr if you're on Windows:\n\n```sh\n.\\node_modules\\.bin\\electron-rebuild.cmd\n```\n\n### How can I integrate this into Grunt / Gulp / Whatever?\n\nelectron-rebuild is also a library that you can just require into your app or\nbuild process. It has two main methods:\n\n```js\nimport { installNodeHeaders, rebuildNativeModules, shouldRebuildNativeModules } from 'electron-rebuild';\n\n// Public: Determines whether we need to rebuild native modules (i.e. if they're \n// already compiled for the right version of Electron, no need to rebuild them!)\n//\n// pathToElectronExecutable - Path to the electron executable that we'll use \n//                            to determine NODE_MODULE_VERSION\n// explicitNodeVersion (optional) - If given, use this instead of probing Electron\n//\n// Returns a Promise that if true, indicates you should build native modules\nlet shouldBuild = shouldRebuildNativeModules('/path/to/Electron');\n\n// Public: Downloads and installs the header / lib files required to build\n// native modules.\n//\n// nodeVersion - the version of Electron to download headers for\n// nodeDistUrl (optional) - the URL to download the distribution from\n// headersDir (optional) - where to put the headers\n// arch (optional) - The architecture to build against (for building 32-bit apps \n//                   on 64-bit Windows for example)\n//\n// Returns a Promise indicating whether the operation succeeded or not\nlet headerResult = installNodeHeaders('v0.25.0');\n\n// Public: Rebuilds a node_modules directory with the given Electron version.\n//\n// nodeVersion - the version of Electron to download headers for\n// nodeModulesPath - the path to a node_modules directory\n// headersDir (optional) - where to find the headers\n// Returns a Promise indicating whether the operation succeeded or not\nheaderResult.then(() => rebuildNativeModules('v0.25.0', './node_modules'));\n```\n\nA full build process might look something like:\n\n```js\nshouldRebuildNativeModules(pathToElectron)\n  .then((shouldBuild) => {\n    if (!shouldBuild) return true;\n    \n    return installNodeHeaders('v0.27.2')\n      .then(() => rebuildNativeModules('v0.27.2', './node_modules'));\n  })\n  .catch((e) => {\n    console.error(\"Building modules didn't work!\");\n    console.error(e);\n  });\n```\n"
 }

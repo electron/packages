@@ -7,8 +7,17 @@
     "test": "mocha"
   },
   "repository": {
-    "type": "git",
-    "url": "git+https://github.com/andrewpmckenzie/chainbuilder-retry.git"
+    "user": "andrewpmckenzie",
+    "repo": "chainbuilder-retry",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/andrewpmckenzie/chainbuilder-retry/tarball/master",
+    "clone_url": "https://github.com/andrewpmckenzie/chainbuilder-retry",
+    "https_url": "https://github.com/andrewpmckenzie/chainbuilder-retry",
+    "travis_url": "https://travis-ci.org/andrewpmckenzie/chainbuilder-retry",
+    "zip_url": "https://github.com/andrewpmckenzie/chainbuilder-retry/archive/master.zip",
+    "api_url": "https://api.github.com/repos/andrewpmckenzie/chainbuilder-retry"
   },
   "keywords": [
     "chainbuilder",
@@ -20,9 +29,6 @@
     "name": "andrewpmckenzie@gmail.com"
   },
   "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/andrewpmckenzie/chainbuilder-retry/issues"
-  },
   "homepage": "https://github.com/andrewpmckenzie/chainbuilder-retry",
   "dependencies": {
     "retry": "^0.8.0"
@@ -35,24 +41,29 @@
     "sinon": "^1.17.2"
   },
   "gitHead": "67c2984cf794fdbe44598e1c72d704e368e9eaa6",
-  "_id": "chainbuilder-retry@1.0.1",
-  "_shasum": "8fe2879a40e517e3d2fecef0359a2ae78abafa2a",
-  "_from": ".",
   "_npmVersion": "3.3.12",
   "_nodeVersion": "5.3.0",
-  "_npmUser": {
+  "dist": {
+    "shasum": "8fe2879a40e517e3d2fecef0359a2ae78abafa2a",
+    "tarball": "http://registry.npmjs.org/chainbuilder-retry/-/chainbuilder-retry-1.0.1.tgz"
+  },
+  "versions": [
+    {
+      "number": "1.0.1",
+      "date": "2015-12-29T19:02:49.409Z"
+    }
+  ],
+  "created": "2015-12-29T19:02:49.409Z",
+  "modified": "2015-12-29T19:02:49.409Z",
+  "lastPublisher": {
     "name": "andrewpmckenzie",
     "email": "andrew.mckenzie@electronifie.com"
   },
-  "maintainers": [
+  "owners": [
     {
       "name": "andrewpmckenzie",
       "email": "andrew.mckenzie@electronifie.com"
     }
   ],
-  "dist": {
-    "shasum": "8fe2879a40e517e3d2fecef0359a2ae78abafa2a",
-    "tarball": "http://registry.npmjs.org/chainbuilder-retry/-/chainbuilder-retry-1.0.1.tgz"
-  },
-  "directories": {}
+  "readme": "# chainbuilder-retry [![Build Status](https://travis-ci.org/andrewpmckenzie/chainbuilder-retry.svg)](https://travis-ci.org/andrewpmckenzie/chainbuilder-retry)\n\nA [retry](https://github.com/tim-kos/node-retry) mixin for [chainbuilder](https://www.npmjs.com/package/chainbuilder). \n\n**Installation** `npm install chainbuilder chainbuilder-retry --save`\n\n**Usage**  \n```javascript\nvar chainBuilder = require('chainbuilder');\n\nvar myChain = chainBuilder({\n  methods: {/* ... your methods ... */},\n  mixins: [\n    /* ... other mixins ... */\n    require('chainbuilder-retry')({ attempts: 5, maxTimeout: 100 })\n  ]\n});\n```\n\n**Example**  \nWill retry the `myMethodTwo().myMethodThree()` chain up to two times until no error is received. `myMethodTwo()` will have\naccess to the result of `myMethodOne()` (via `previousResult()`), and `myMethodFour()` will have access to the result of \n`myMethodThree()`.  \n\n```javascript\nmyChain()\n  .myMethodOne()\n  .$beginRetry({ attempts: 2 }}\n    .myMethodTwo()\n    .myMethodThree()\n  .$endRetry()\n  .myMethodFour()\n```\n\n## Methods\n\n#### require('chainbuilder-retry')(options)\nInit the mixin with default options.\n\n**`@param {Object} options`** (optional) default [retry](https://github.com/tim-kos/node-retry) options.\n\n#### $beginRetry(options)\nBegin a retry block.\n\n**`@param {Object} options`** (optional) retry options for this block.\n\n#### $endRetry()\nEnd a retry block.\n"
 }

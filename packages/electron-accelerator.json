@@ -19,8 +19,17 @@
   },
   "license": "MIT",
   "repository": {
-    "type": "git",
-    "url": "https://github.com/ammeep/electron-accelerator/"
+    "user": "ammeep",
+    "repo": "electron-accelerator",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/ammeep/electron-accelerator/tarball/master",
+    "clone_url": "https://github.com/ammeep/electron-accelerator",
+    "https_url": "https://github.com/ammeep/electron-accelerator",
+    "travis_url": "https://travis-ci.org/ammeep/electron-accelerator",
+    "zip_url": "https://github.com/ammeep/electron-accelerator/archive/master.zip",
+    "api_url": "https://api.github.com/repos/ammeep/electron-accelerator"
   },
   "dependencies": {
     "colors": "^1.1.2",
@@ -32,25 +41,47 @@
     "yargs": "^3.24.0"
   },
   "gitHead": "9e5c2c58575e7c0a24107c61f6c12482be6626f2",
-  "_id": "electron-accelerator@0.0.5",
   "scripts": {},
-  "_shasum": "309885c7ec484e8f672f383ea4d725b362212f6a",
-  "_from": ".",
   "_npmVersion": "2.12.1",
   "_nodeVersion": "0.12.7",
-  "_npmUser": {
-    "name": "ammeep",
-    "email": "amy@palamounta.in"
-  },
   "dist": {
     "shasum": "309885c7ec484e8f672f383ea4d725b362212f6a",
     "tarball": "http://registry.npmjs.org/electron-accelerator/-/electron-accelerator-0.0.5.tgz"
   },
-  "maintainers": [
+  "stars": 4,
+  "versions": [
+    {
+      "number": "0.0.1",
+      "date": "2015-09-02T04:20:57.238Z"
+    },
+    {
+      "number": "0.0.2",
+      "date": "2015-09-02T04:22:16.777Z"
+    },
+    {
+      "number": "0.0.3",
+      "date": "2015-09-02T08:49:14.841Z"
+    },
+    {
+      "number": "0.0.4",
+      "date": "2015-09-08T14:23:01.187Z"
+    },
+    {
+      "number": "0.0.5",
+      "date": "2015-11-30T03:55:08.144Z"
+    }
+  ],
+  "created": "2015-09-02T04:20:57.238Z",
+  "modified": "2015-11-30T03:55:08.144Z",
+  "lastPublisher": {
+    "name": "ammeep",
+    "email": "amy@palamounta.in"
+  },
+  "owners": [
     {
       "name": "ammeep",
       "email": "amy@palamounta.in"
     }
   ],
-  "directories": {}
+  "readme": "# Electron-accelerator\n\n[![npm version](https://badge.fury.io/js/electron-accelerator.svg)](http://badge.fury.io/js/electron-accelerator)\n\nGet up and running with a customisable electron build process!\n\nThis tool will request some configuration for your new electron project and then:\n\n- Unpack a template to the current working directory.\n- Apply your custom configuration\n\nThe end result is a project scaffold that supports building, debugging and releasing for Windows, Linux and Mac platforms.\n\n### Installation\n\n```\nnpm i electron-accelerator -g\n```\n\n### Usage\n\nElectron accelerator has a handful of commands\n\n```\nelectron-accelerator <command> [options]\n\nCommands:\n  init            initalise an electron project in a given directory\n  setup-squirrel  setup a project for releases with Squirrel\n  version         display the version of electron-accelerator\n\n```\n\n### Initalize an Electron project\n\nTo initialise an electron project: use the ``init`` command in the project directory:\n\n```\nUsage: electron-accelerator init -p [platform] -a [architecture]\n\nExample:\n$ mkdir my-sweet-app\n$ cd my-sweet-app\n$ electron-accelerator init -p all -a x64 --application-name my-sweet-app\n\nRequired arguments:\n\n-p, --platform             build for              [choices: \"all\", \"darwin\", \"win32\", \"linux\"]\n-a, --architecture         build as               [choices: \"all\", \"x64\", \"ia32\"]\n\n\nOptional arguments:\n\n--application-name         the application name         [default: \"electron-accelerator\"]\n--authors-name             application author           [default: \"human\"]\n--application-description  a short description          [default: \"\"]\n--repository-url           a git url                    [default: \"\"]\n--debug                    debug output                 [default: false]\n\n```\n\nThis will:\n\n- Unpack a template to the current working directory.\n- Apply your custom configuration\n- Write a ``readme.md`` to your project. The read me will describe how to build and release your electron app.\n- Your new project will support\n  - ``script/bootstrap`` - quickly and easily set up everything you need to get started with electron development\n  - ``script/build`` - create custom builds for your required platforms\n  - ``script/server`` - quickly run up your electron build to test\n  - ``script/server-debug`` - quickly run up your electron build with node-inspector debugging\n\n### Configure automatic updates\n\nTo configure your pre-initalized electron accelerator project for automatic updates via Squirrel, use the ``setup-squirrel`` command.\n\n\n*Right now this only supports setting up squirrel releases for windows via s3 (watch this space)*\n\n#### Usage: setup-squirrel windows\n\n```\n\nUsage: electron-accelerator setup-squirrel windows-s3 -d [directory] -b [bucket] -p [prefix] -u [update-url]\n\nExample: electron-accelerator setup-squirrel windows-s3 -d ./ -b windows-updates -p 'electron' -u http://myapp.com/updates\n\nRequired arguments:\n  -d, --directory      the directory of a pre-initalized electron-accelerator project [default: \".\"]\n  -b, --bucket-name    the s3 bucket that the windows build will be served from\n  -p, --bucket-prefix  the s3 bucket prefix that the windows build will be served from                                                                      \n  -u, --update-url     the url to update from\n\n```\n\nThis will write the following entries to your projects ``config.json``\n\n - ``s3BucketName`` The top level bucket for which your app updates will be uploaded to\n - ``s3PrefixName`` The prefix where your application will live under the given bucket\n - ``windowsUpdateUrl`` The update Url for your application\n\n And add the following helper scripts to get you started releasing your application.\n\n - ``script/release`` - quickly release your electron application to any configured squirrel endpoints.\n\n### Related projects and reading\nThis project stands on the shoulders of giants. It uses the following packages:\n\n- [electron-packager](https://github.com/maxogden/electron-packager)\n- [electron-prebuilt](https://github.com/mafintosh/electron-prebuilt)\n- [grunt-electron-installer](https://github.com/atom/grunt-electron-installer)\n"
 }

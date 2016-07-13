@@ -11,8 +11,17 @@
     "prepublish": "npm run test"
   },
   "repository": {
-    "type": "git",
-    "url": "git+https://github.com/geowarin/electron-hot-loader.git"
+    "user": "geowarin",
+    "repo": "electron-hot-loader",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/geowarin/electron-hot-loader/tarball/master",
+    "clone_url": "https://github.com/geowarin/electron-hot-loader",
+    "https_url": "https://github.com/geowarin/electron-hot-loader",
+    "travis_url": "https://travis-ci.org/geowarin/electron-hot-loader",
+    "zip_url": "https://github.com/geowarin/electron-hot-loader/archive/master.zip",
+    "api_url": "https://api.github.com/repos/geowarin/electron-hot-loader"
   },
   "keywords": [
     "electron",
@@ -23,9 +32,6 @@
     "name": "Geoffroy Warin"
   },
   "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/geowarin/electron-hot-loader/issues"
-  },
   "homepage": "https://github.com/geowarin/electron-hot-loader#readme",
   "dependencies": {
     "esprima-fb": "^15001.1.0-dev-harmony-fb",
@@ -53,28 +59,69 @@
     ]
   },
   "gitHead": "e70ff622fee4f3fe38e4508db7be61935d917723",
-  "_id": "electron-hot-loader@0.8.0",
-  "_shasum": "4ba708181960d6d0b918fd3e68e39330ded28b51",
-  "_from": ".",
   "_npmVersion": "3.7.3",
   "_nodeVersion": "5.9.1",
-  "_npmUser": {
-    "name": "geowarin",
-    "email": "geowarin@gmail.com"
-  },
   "dist": {
     "shasum": "4ba708181960d6d0b918fd3e68e39330ded28b51",
     "tarball": "http://registry.npmjs.org/electron-hot-loader/-/electron-hot-loader-0.8.0.tgz"
   },
-  "maintainers": [
+  "versions": [
+    {
+      "number": "0.1.0",
+      "date": "2016-03-05T20:15:04.693Z"
+    },
+    {
+      "number": "0.1.1",
+      "date": "2016-03-05T21:10:49.641Z"
+    },
+    {
+      "number": "0.1.2",
+      "date": "2016-03-07T14:48:16.280Z"
+    },
+    {
+      "number": "0.2.0",
+      "date": "2016-03-09T11:11:37.768Z"
+    },
+    {
+      "number": "0.3.0",
+      "date": "2016-03-09T15:08:07.311Z"
+    },
+    {
+      "number": "0.4.0",
+      "date": "2016-03-10T14:56:36.941Z"
+    },
+    {
+      "number": "0.5.0",
+      "date": "2016-03-10T22:15:20.732Z"
+    },
+    {
+      "number": "0.6.0",
+      "date": "2016-03-11T15:13:13.362Z"
+    },
+    {
+      "number": "0.6.1",
+      "date": "2016-03-13T08:03:54.143Z"
+    },
+    {
+      "number": "0.7.0",
+      "date": "2016-03-26T14:34:42.218Z"
+    },
+    {
+      "number": "0.8.0",
+      "date": "2016-03-26T15:40:37.631Z"
+    }
+  ],
+  "created": "2016-03-05T20:15:04.693Z",
+  "modified": "2016-03-26T15:40:37.631Z",
+  "lastPublisher": {
+    "name": "geowarin",
+    "email": "geowarin@gmail.com"
+  },
+  "owners": [
     {
       "name": "geowarin",
       "email": "geowarin@gmail.com"
     }
   ],
-  "_npmOperationalInternal": {
-    "host": "packages-16-east.internal.npmjs.com",
-    "tmp": "tmp/electron-hot-loader-0.8.0.tgz_1459006836649_0.8401580764912069"
-  },
-  "directories": {}
+  "readme": "# Electron-hot-loader\n\n[![npm](https://img.shields.io/npm/v/electron-hot-loader.svg)](https://www.npmjs.com/package/electron-hot-loader)\n[![Build Status](https://travis-ci.org/geowarin/electron-hot-loader.svg?branch=master)](https://travis-ci.org/geowarin/electron-hot-loader)\n[![Build status](https://ci.appveyor.com/api/projects/status/29rs2pt350ravclk?svg=true)](https://ci.appveyor.com/project/geowarin/electron-hot-loader)\n\nHot reloading for React components in electron without babel nor webpack\n\nThis package leverages `react-proxy` and electron's access to the file system to enable\nhot reloading on React components at really high speed.\n\n![Demo of electron-hot-boilerplate](http://i.imgur.com/soKDmIq.gif)\n\nDemo: [electron-hot-boilerplate](https://github.com/geowarin/electron-hot-boilerplate)\n\n## Setup\n\nPut the following code at the top of `index.js`, the javascript entry point of your application in the browser.\nIt is generally included in your `index.html`.\n\n```js\nif (process.env.NODE_ENV === 'development') {\n    const electronHot = require('electron-hot-loader');\n    electronHot.install();\n    electronHot.watchJsx(['src/**/*.jsx']);\n    electronHot.watchCss(['src/assets/**/*.css']);\n}\n\n// We can now require our jsx files, they will be compiled for us\nrequire('./index.jsx');\n\n// In production you should not rely on the auto-transform.\n// Pre-compile your react components with your build system instead.\n\n// But, you can do this if your really want to:\n// require('electron-hot-loader').install({doNotInstrument: true});\n\n```\n\nThe `index.jsx` file is just the classic React initialization:\n\n```jsx\nconst React = require('react');\nconst ReactDOM = require('react-dom');\nconst App = require('./ui/App.jsx');\n\nReactDOM.render(<App/>, document.getElementById('root'));\n```\n\n`electron-hot-loader` will instrument all your React components and wrap them in proxies.\nWhen a file is updated on your disk, the proxies will update and a render will be forced on the\nroot component.\n\nThis is very similar to what `react-transform-hmr` does but without dependencies to babel or webpack.\n\nFor your tests you can add this to your mocha config, it will compile your jsx without instrumenting them:\n\n```\n-u bdd\n--recursive ./test/**/*.jsx\n--full-trace\n--reporter spec\n--require electron-hot-loader/compiler\n```\n\n## Higher order components\n\nA [higher order component](https://medium.com/@dan_abramov/mixins-are-dead-long-live-higher-order-components-94a0d2f9e750#.r6nqzwnwc)\nis a function that takes a component and returns another, decorated, component.\n\nSome libraries (like Redux with `connect`) use higher-order components.\nWith only access to the AST, it is impossible to find out if a function will return a component\nor not.\n\nSo you will need to explicitly register the names of the higher order components when installing\n`electron-hot-loader`:\n\n```js\nelectronHot.install({higherOrderFunctions: ['connect']});\n```\n\nA demo of electron-hot-loader working with redux is available [on the redux branch](https://github.com/geowarin/electron-hot-boilerplate#redux) of electron-hot-boilerplate.\n\n## Goal\n\nSince electron is both node and a browser, I figured we could try experimenting hot reloading without webpack\nin this context.\n\nIn its latest versions, node has access to a lot of [ES2015 features](https://nodejs.org/en/docs/es6/#ref-1). There seems to be\nlittle need for a babel transpilation... If you can live with the lack of es6 modules and spread operators!\n\nIn exchange, you will get a much better developer experience. Not much overhead or config and very fast reloads.\nAlso, as soon as those features land in V8, we'll get them for free!\n\n## Principle\n\nInstalling `electron-hot-loader` will use [require extensions](https://nodejs.org/api/globals.html#globals_require_extensions)\n(don't pay attention to the deprecation warning, it's just for development, right?) to compile JSX files as your `require`\nthem in your application.\n\nSince we have access to all the compiled components, we can use `esprima` to get the AST of each one.\n\nThe `ReactDOM.render` method has a distinctive signature that we can use to identify the root of our application.\n\nWhen a user component is included in a JSX file, it is compiled to `React.createElement()`.\nWe can wrap all those calls in a `register()` method, keep track of all the components created that way, and wrap them with `react-proxy`.\n\nThen, it is just a matter of watching the file system to know which components have been updated and force a re-render\non them.\n\nThe application will keep all its state and you will get unprecedented productivity.\n\n## Disclaimer\n\nThis is still a POC.\nI plan to use it in my current project where I was a little upset with the overhead of using webpack\nin electron so I will be the first to eat my own dog food.\n\nCritiques and ideas are warmly welcomed so do not hesitate to open issues and sumit pull requests.\n\n## Roadmap\n\n- [x] Write some tests\n- [ ] Write some more tests\n- [ ] Welcome feedback and ideas\n- [x] Support source maps\n\n## Example\n\nHave a look at [electron-hot-boilerplate](https://github.com/geowarin/electron-hot-boilerplate) for a complete example.\n\n## Thanks\n\nDan Abramov and the [other commiters](https://github.com/gaearon/react-proxy/graphs/contributors) for their incredible work on [react-proxy](https://github.com/gaearon/react-proxy/).\n\n[Gurdas Nijor](https://github.com/gurdasnijor) for his [inspirational talk](https://www.youtube.com/watch?v=OZGgVxFxSIs) at ReactJS 2015 and his [repo](https://github.com/gurdasnijor/component-flow-loader) demonstrating esprima tranforms for React.\n"
 }

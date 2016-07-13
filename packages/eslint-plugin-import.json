@@ -1,0 +1,368 @@
+{
+  "name": "eslint-plugin-import",
+  "version": "1.10.2",
+  "description": "Import with sanity.",
+  "main": "lib/index.js",
+  "files": [
+    "lib",
+    "config",
+    "memo-parser"
+  ],
+  "scripts": {
+    "watch": "cross-env NODE_PATH=./lib gulp watch-test",
+    "cover": "gulp pretest && cross-env NODE_PATH=./lib istanbul cover --dir reports/coverage _mocha tests/lib/ -- --recursive -R progress",
+    "posttest": "eslint ./src",
+    "test": "cross-env NODE_PATH=./lib gulp test",
+    "test-all": "npm test && for resolver in ./resolvers/*; do cd $resolver && npm test && cd ../..; done",
+    "ci-test": "eslint ./src && gulp pretest && cross-env NODE_PATH=./lib istanbul cover --report lcovonly --dir reports/coverage _mocha tests/lib/ -- --recursive --reporter dot",
+    "debug": "cross-env NODE_PATH=./lib mocha debug --recursive --reporter dot tests/lib/",
+    "prepublish": "gulp prepublish",
+    "coveralls": "cat ./reports/coverage/lcov.info | coveralls"
+  },
+  "repository": {
+    "user": "benmosher",
+    "repo": "eslint-plugin-import",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/benmosher/eslint-plugin-import/tarball/master",
+    "clone_url": "https://github.com/benmosher/eslint-plugin-import",
+    "https_url": "https://github.com/benmosher/eslint-plugin-import",
+    "travis_url": "https://travis-ci.org/benmosher/eslint-plugin-import",
+    "zip_url": "https://github.com/benmosher/eslint-plugin-import/archive/master.zip",
+    "api_url": "https://api.github.com/repos/benmosher/eslint-plugin-import"
+  },
+  "keywords": [
+    "eslint",
+    "eslintplugin",
+    "es6",
+    "jsnext",
+    "modules",
+    "import",
+    "export"
+  ],
+  "author": {
+    "name": "Ben Mosher",
+    "email": "me@benmosher.com"
+  },
+  "license": "MIT",
+  "homepage": "https://github.com/benmosher/eslint-plugin-import",
+  "devDependencies": {
+    "babel-eslint": "next",
+    "babel-preset-es2015": "^6.6.0",
+    "babel-preset-es2015-loose": "^7.0.0",
+    "chai": "^3.4.0",
+    "coveralls": "^2.11.4",
+    "cross-env": "^1.0.7",
+    "eslint": "3.x",
+    "eslint-import-resolver-node": "file:./resolvers/node",
+    "eslint-import-resolver-webpack": "file:./resolvers/webpack",
+    "glob": "^6.0.2",
+    "gulp": "^3.9.0",
+    "gulp-babel": "6.1.2",
+    "gulp-changed": "^1.3.0",
+    "gulp-mocha": "^2.2.0",
+    "istanbul": "^0.4.0",
+    "mocha": "^2.2.1",
+    "redux": "^3.0.4",
+    "rimraf": "2.5.2"
+  },
+  "peerDependencies": {
+    "eslint": "2.x - 3.x"
+  },
+  "dependencies": {
+    "builtin-modules": "^1.1.1",
+    "contains-path": "^0.1.0",
+    "doctrine": "1.2.x",
+    "es6-map": "^0.1.3",
+    "es6-set": "^0.1.4",
+    "es6-symbol": "*",
+    "eslint-import-resolver-node": "^0.2.0",
+    "lodash.cond": "^4.3.0",
+    "lodash.endswith": "^4.0.1",
+    "lodash.find": "^4.3.0",
+    "lodash.findindex": "^4.3.0",
+    "object-assign": "^4.0.1",
+    "pkg-dir": "^1.0.0",
+    "pkg-up": "^1.0.0"
+  },
+  "gitHead": "1bb07bc23f75340957a4fe232a28a32bc86fe69e",
+  "_npmVersion": "3.7.2",
+  "_nodeVersion": "4.2.5",
+  "dist": {
+    "shasum": "75a98aa51aa9e756166d1a607b85f0a0028027e3",
+    "tarball": "http://registry.npmjs.org/eslint-plugin-import/-/eslint-plugin-import-1.10.2.tgz"
+  },
+  "stars": 6,
+  "versions": [
+    {
+      "number": "0.3.0",
+      "date": "2015-03-19T16:11:14.740Z"
+    },
+    {
+      "number": "0.3.2",
+      "date": "2015-03-20T11:19:08.159Z"
+    },
+    {
+      "number": "0.3.3",
+      "date": "2015-03-23T10:41:39.461Z"
+    },
+    {
+      "number": "0.3.4",
+      "date": "2015-03-24T11:23:25.156Z"
+    },
+    {
+      "number": "0.3.5",
+      "date": "2015-03-24T11:51:44.130Z"
+    },
+    {
+      "number": "0.3.6",
+      "date": "2015-03-24T13:03:49.571Z"
+    },
+    {
+      "number": "0.3.8",
+      "date": "2015-03-25T11:07:27.391Z"
+    },
+    {
+      "number": "0.3.9",
+      "date": "2015-03-25T11:09:43.314Z"
+    },
+    {
+      "number": "0.3.10",
+      "date": "2015-03-25T11:34:13.844Z"
+    },
+    {
+      "number": "0.3.11",
+      "date": "2015-03-26T10:57:37.784Z"
+    },
+    {
+      "number": "0.3.12",
+      "date": "2015-03-29T21:09:26.523Z"
+    },
+    {
+      "number": "0.3.13",
+      "date": "2015-03-30T09:08:04.622Z"
+    },
+    {
+      "number": "0.4.0",
+      "date": "2015-04-01T10:53:13.330Z"
+    },
+    {
+      "number": "0.4.1",
+      "date": "2015-04-09T11:37:53.569Z"
+    },
+    {
+      "number": "0.4.2",
+      "date": "2015-04-15T11:00:51.720Z"
+    },
+    {
+      "number": "0.4.3",
+      "date": "2015-04-24T11:20:09.996Z"
+    },
+    {
+      "number": "0.4.4",
+      "date": "2015-05-01T11:41:24.719Z"
+    },
+    {
+      "number": "0.4.5",
+      "date": "2015-06-05T12:25:18.503Z"
+    },
+    {
+      "number": "0.5.1",
+      "date": "2015-07-14T13:38:29.540Z"
+    },
+    {
+      "number": "0.5.2",
+      "date": "2015-07-15T10:43:35.751Z"
+    },
+    {
+      "number": "0.6.0",
+      "date": "2015-07-15T19:32:46.549Z"
+    },
+    {
+      "number": "0.7.0",
+      "date": "2015-07-16T03:05:32.388Z"
+    },
+    {
+      "number": "0.7.1",
+      "date": "2015-07-16T20:49:35.672Z"
+    },
+    {
+      "number": "0.7.2",
+      "date": "2015-07-17T02:06:28.563Z"
+    },
+    {
+      "number": "0.7.3",
+      "date": "2015-07-22T11:09:04.900Z"
+    },
+    {
+      "number": "0.7.4",
+      "date": "2015-07-22T15:37:47.342Z"
+    },
+    {
+      "number": "0.7.5",
+      "date": "2015-07-22T22:33:06.662Z"
+    },
+    {
+      "number": "0.7.6",
+      "date": "2015-07-29T18:00:18.804Z"
+    },
+    {
+      "number": "0.7.7",
+      "date": "2015-07-29T18:30:54.968Z"
+    },
+    {
+      "number": "0.7.8",
+      "date": "2015-08-12T23:33:01.417Z"
+    },
+    {
+      "number": "0.7.9",
+      "date": "2015-09-10T01:39:16.876Z"
+    },
+    {
+      "number": "0.8.0",
+      "date": "2015-10-09T17:39:38.320Z"
+    },
+    {
+      "number": "0.8.1",
+      "date": "2015-10-16T16:56:30.191Z"
+    },
+    {
+      "number": "0.9.1",
+      "date": "2015-11-05T14:01:23.760Z"
+    },
+    {
+      "number": "0.10.0",
+      "date": "2015-11-15T00:53:49.361Z"
+    },
+    {
+      "number": "0.10.1",
+      "date": "2015-11-25T22:05:38.448Z"
+    },
+    {
+      "number": "0.11.0",
+      "date": "2015-11-28T01:54:36.407Z"
+    },
+    {
+      "number": "0.12.0",
+      "date": "2015-12-14T12:25:04.853Z"
+    },
+    {
+      "number": "0.12.1",
+      "date": "2015-12-17T15:49:28.989Z"
+    },
+    {
+      "number": "0.12.2",
+      "date": "2016-02-08T12:46:18.440Z"
+    },
+    {
+      "number": "0.13.0",
+      "date": "2016-02-08T20:30:40.943Z"
+    },
+    {
+      "number": "1.0.0-beta.0",
+      "date": "2016-02-14T00:42:02.483Z"
+    },
+    {
+      "number": "1.0.0",
+      "date": "2016-02-24T12:49:55.845Z"
+    },
+    {
+      "number": "1.0.1",
+      "date": "2016-02-25T12:11:25.952Z"
+    },
+    {
+      "number": "1.0.2",
+      "date": "2016-02-26T11:21:32.074Z"
+    },
+    {
+      "number": "1.0.3",
+      "date": "2016-02-26T12:47:03.144Z"
+    },
+    {
+      "number": "1.0.4",
+      "date": "2016-03-11T12:05:50.612Z"
+    },
+    {
+      "number": "1.1.0",
+      "date": "2016-03-15T11:26:54.097Z"
+    },
+    {
+      "number": "1.2.0",
+      "date": "2016-03-19T11:48:30.979Z"
+    },
+    {
+      "number": "1.3.0",
+      "date": "2016-03-20T20:04:20.784Z"
+    },
+    {
+      "number": "1.4.0",
+      "date": "2016-03-25T10:54:21.862Z"
+    },
+    {
+      "number": "1.5.0",
+      "date": "2016-04-18T10:55:21.267Z"
+    },
+    {
+      "number": "1.6.0",
+      "date": "2016-04-25T18:29:47.966Z"
+    },
+    {
+      "number": "1.6.1",
+      "date": "2016-04-28T10:52:06.548Z"
+    },
+    {
+      "number": "1.7.0",
+      "date": "2016-05-06T12:30:00.927Z"
+    },
+    {
+      "number": "1.8.0",
+      "date": "2016-05-11T12:17:14.765Z"
+    },
+    {
+      "number": "1.8.1",
+      "date": "2016-05-26T10:50:27.220Z"
+    },
+    {
+      "number": "1.9.0",
+      "date": "2016-06-09T12:35:01.392Z"
+    },
+    {
+      "number": "1.9.1",
+      "date": "2016-06-16T10:17:47.589Z"
+    },
+    {
+      "number": "1.9.2",
+      "date": "2016-06-21T12:16:57.094Z"
+    },
+    {
+      "number": "1.10.0",
+      "date": "2016-06-30T11:47:10.353Z"
+    },
+    {
+      "number": "1.10.1",
+      "date": "2016-07-03T11:13:42.756Z"
+    },
+    {
+      "number": "1.10.2",
+      "date": "2016-07-05T01:01:08.665Z"
+    },
+    {
+      "number": "1.10.3",
+      "date": "2016-07-12T23:50:38.567Z"
+    }
+  ],
+  "created": "2015-03-19T16:11:14.740Z",
+  "modified": "2016-07-12T23:50:38.567Z",
+  "lastPublisher": {
+    "name": "benmosher",
+    "email": "me@benmosher.com"
+  },
+  "owners": [
+    {
+      "name": "benmosher",
+      "email": "me@benmosher.com"
+    }
+  ],
+  "readme": "# eslint-plugin-import\n\n[![build status](https://travis-ci.org/benmosher/eslint-plugin-import.svg?branch=master)](https://travis-ci.org/benmosher/eslint-plugin-import)\n[![Coverage Status](https://coveralls.io/repos/benmosher/eslint-plugin-import/badge.svg?branch=master&service=github)](https://coveralls.io/github/benmosher/eslint-plugin-import?branch=coverage)\n[![win32 build status](https://ci.appveyor.com/api/projects/status/3mw2fifalmjlqf56/branch/master?svg=true)](https://ci.appveyor.com/project/benmosher/eslint-plugin-import/branch/master)\n[![npm](https://img.shields.io/npm/v/eslint-plugin-import.svg)](https://www.npmjs.com/package/eslint-plugin-import)\n\nThis plugin intends to support linting of ES2015+ (ES6+) import/export syntax, and prevent issues with misspelling of file paths and import names. All the goodness that the ES2015+ static module syntax intends to provide, marked up in your editor.\n\n**IF YOU ARE USING THIS WITH SUBLIME**: see the [bottom section](#sublimelinter-eslint) for important info.\n\n## Rules\n\n**Static analysis:**\n\n* Ensure imports point to a file/module that can be resolved. ([`no-unresolved`])\n* Ensure named imports correspond to a named export in the remote file. ([`named`])\n* Ensure a default export is present, given a default import. ([`default`])\n* Ensure imported namespaces contain dereferenced properties as they are dereferenced. ([`namespace`])\n* Restrict which files can be imported in a given folder ([`no-restricted-paths`])\n\n[`no-unresolved`]: ./docs/rules/no-unresolved.md\n[`named`]: ./docs/rules/named.md\n[`default`]: ./docs/rules/default.md\n[`namespace`]: ./docs/rules/namespace.md\n[`no-restricted-paths`]: ./docs/rules/no-restricted-paths.md\n\n**Helpful warnings:**\n\n* Report any invalid exports, i.e. re-export of the same name ([`export`])\n* Report use of exported name as identifier of default export ([`no-named-as-default`])\n* Report use of exported name as property of default export ([`no-named-as-default-member`])\n* Report imported names marked with `@deprecated` documentation tag ([`no-deprecated`])\n* Forbid the use of extraneous packages ([`no-extraneous-dependencies`])\n* Forbid the use of mutable exports with `var` or `let`. ([`no-mutable-exports`])\n\n[`export`]: ./docs/rules/export.md\n[`no-named-as-default`]: ./docs/rules/no-named-as-default.md\n[`no-named-as-default-member`]: ./docs/rules/no-named-as-default-member.md\n[`no-deprecated`]: ./docs/rules/no-deprecated.md\n[`no-extraneous-dependencies`]: ./docs/rules/no-extraneous-dependencies.md\n[`no-mutable-exports`]: ./docs/rules/no-mutable-exports.md\n\n**Module systems:**\n\n* Report CommonJS `require` calls and `module.exports` or `exports.*`. ([`no-commonjs`])\n* Report AMD `require` and `define` calls. ([`no-amd`])\n* No Node.js builtin modules. ([`no-nodejs-modules`])\n\n[`no-commonjs`]: ./docs/rules/no-commonjs.md\n[`no-amd`]: ./docs/rules/no-amd.md\n[`no-nodejs-modules`]: ./docs/rules/no-nodejs-modules.md\n\n**Style guide:**\n\n* Ensure all imports appear before other statements ([`imports-first`])\n* Report repeated import of the same module in multiple places ([`no-duplicates`])\n* Report namespace imports ([`no-namespace`])\n* Ensure consistent use of file extension within the import path ([`extensions`])\n* Enforce a convention in module import order ([`order`])\n* Enforce a newline after import statements ([`newline-after-import`])\n* Prefer a default export if module exports a single name ([`prefer-default-export`])\n\n[`imports-first`]: ./docs/rules/imports-first.md\n[`no-duplicates`]: ./docs/rules/no-duplicates.md\n[`no-namespace`]: ./docs/rules/no-namespace.md\n[`extensions`]: ./docs/rules/extensions.md\n[`order`]: ./docs/rules/order.md\n[`newline-after-import`]: ./docs/rules/newline-after-import.md\n[`prefer-default-export`]: ./docs/rules/prefer-default-export.md\n\n\n## Installation\n\n```sh\nnpm install eslint-plugin-import -g\n```\n\nor if you manage ESLint as a dev dependency:\n\n```sh\n# inside your project's working tree\nnpm install eslint-plugin-import --save-dev\n```\n\nAll rules are off by default. However, you may configure them manually\nin your `.eslintrc.(yml|json|js)`, or extend one of the canned configs:\n\n```yaml\n---\nextends:\n  - eslint:recommended\n  - plugin:import/errors\n  - plugin:import/warnings\n\n# or configure manually:\nplugins:\n  - import\n\nrules:\n  import/no-unresolved: [2, {commonjs: true, amd: true}]\n  import/named: 2\n  import/namespace: 2\n  import/default: 2\n  import/export: 2\n  # etc...\n```\n\n# Resolvers\n\nWith the advent of module bundlers and the current state of modules and module\nsyntax specs, it's not always obvious where `import x from 'module'` should look\nto find the file behind `module`.\n\nUp through v0.10ish, this plugin has directly used substack's [`resolve`] plugin,\nwhich implements Node's import behavior. This works pretty well in most cases.\n\nHowever, Webpack allows a number of things in import module source strings that\nNode does not, such as loaders (`import 'file!./whatever'`) and a number of\naliasing schemes, such as [`externals`]: mapping a module id to a global name at\nruntime (allowing some modules to be included more traditionally via script tags).\n\nIn the interest of supporting both of these, v0.11 introduces resolvers.\n\nCurrently [Node] and [Webpack] resolution have been implemented, but the\nresolvers are just npm packages, so [third party packages are supported](https://github.com/benmosher/eslint-plugin-import/wiki/Resolvers) (and encouraged!).\n\nYou can reference resolvers in several ways(in order of precedence):\n\n- as a conventional `eslint-import-resolver` name, like `eslint-import-resolver-foo`:\n\n```yaml\n# .eslintrc.yml\nsettings:\n  # uses 'eslint-import-resolver-foo':\n  import/resolver: foo\n```\n```js\n// .eslintrc.js\nmodule.exports = {\n  settings: {\n    'import/resolver': {\n      foo: { someConfig: value }\n    }\n  }\n}\n```\n\n- with a full npm module name, like `my-awesome-npm-module`:\n\n```yaml\n# .eslintrc.yml\nsettings:\n  import/resolver: 'my-awesome-npm-module'\n```\n```js\n// .eslintrc.js\nmodule.exports = {\n  settings: {\n    'import/resolver': {\n      'my-awesome-npm-module': { someConfig: value }\n    }\n  }\n}\n```\n\n- with a filesystem path to resolver, defined in this example as a `computed property` name:\n\n```js\n// .eslintrc.js\nmodule.exports = {\n  settings: {\n    'import/resolver': {\n      [path.resolve('../../../my-resolver')]: { someConfig: value }\n    }\n  }\n}\n```\n\nRelative paths will be resolved relative to the source's nearest `package.json` or\nthe process's current working directory if no `package.json` is found.\n\n\n\nIf you are interesting in writing a resolver, see the [spec](./resolvers/README.md) for more details.\n\n[`resolve`]: https://www.npmjs.com/package/resolve\n[`externals`]: http://webpack.github.io/docs/library-and-externals.html\n\n[Node]: https://www.npmjs.com/package/eslint-import-resolver-node\n[Webpack]: https://www.npmjs.com/package/eslint-import-resolver-webpack\n\n# Settings\n\nYou may set the following settings in your `.eslintrc`:\n\n#### `import/extensions`\n\nA whitelist of file extensions that will be parsed as modules and inspected for\n`export`s.\n\nThis will default to `['.js']` in the next major revision of this plugin, unless\nyou are using the `react` shared config, in which case it is specified as `['.js', '.jsx']`.\n\nNote that this is different from (and likely a subset of) any `import/resolver`\nextensions settings, which may include `.json`, `.coffee`, etc. which will still\nfactor into the `no-unresolved` rule.\n\nAlso, `import/ignore` patterns will overrule this whitelist, so `node_modules` that\nend in `.js` will still be ignored by default.\n\n#### `import/ignore`\n\nA list of regex strings that, if matched by a path, will\nnot report the matching module if no `export`s are found.\nIn practice, this means rules other than [`no-unresolved`](./docs/rules/no-unresolved.md#ignore) will not report on any\n`import`s with (absolute) paths matching this pattern, _unless_ `export`s were\nfound when parsing. This allows you to ignore `node_modules` but still properly\nlint packages that define a [`jsnext:main`] in `package.json` (Redux, D3's v4 packages, etc.).\n\n`no-unresolved` has its own [`ignore`](./docs/rules/no-unresolved.md#ignore) setting.\n\n**Note**: setting this explicitly will replace the default of `node_modules`, so you\nmay need to include it in your own list if you still want to ignore it. Example:\n\n```yaml\nsettings:\n  import/ignore:\n    - node_modules       # mostly CommonJS (ignored by default)\n    - \\.coffee$          # fraught with parse errors\n    - \\.(scss|less|css)$ # can't parse unprocessed CSS modules, either\n```\n\n[`jsnext:main`]: https://github.com/rollup/rollup/wiki/jsnext:main\n\n#### `import/core-modules`\n\nAn array of additional modules to consider as \"core\" modules--modules that should\nbe considered resolved but have no path on the filesystem. Your resolver may\nalready define some of these (for example, the Node resolver knows about `fs` and\n`path`), so you need not redefine those.\n\nFor example, Electron exposes an `electron` module:\n\n```js\nimport 'electron'  // without extra config, will be flagged as unresolved!\n```\n\nthat would otherwise be unresolved. To avoid this, you may provide `electron` as a\ncore module:\n\n```yaml\n# .eslintrc.yml\nsettings:\n  import/core-modules: [ electron ]\n```\n\nIn Electron's specific case, there is a shared config named `electron`\nthat specifies this for you.\n\nContribution of more such shared configs for other platforms are welcome!\n\n#### `import/resolver`\n\nSee [resolvers](#resolvers).\n\n#### `import/cache`\n\nSettings for cache behavior. Memoization is used at various levels to avoid the copious amount of `fs.statSync`/module parse calls required to correctly report errors.\n\nFor normal `eslint` console runs, the cache lifetime is irrelevant, as we can strongly assume that files should not be changing during the lifetime of the linter process (and thus, the cache in memory)\n\nFor long-lasting processes, like [`eslint_d`] or [`eslint-loader`], however, it's important that there be some notion of staleness.\n\nIf you never use [`eslint_d`] or [`eslint-loader`], you may set the cache lifetime to `Infinity` and everything should be fine:\n\n```yaml\n# .eslintrc.yml\nsettings:\n  import/cache:\n    lifetime: ∞  # or Infinity\n```\n\nOtherwise, set some integer, and cache entries will be evicted after that many seconds have elapsed:\n\n```yaml\n# .eslintrc.yml\nsettings:\n  import/cache:\n    lifetime: 5  # 30 is the default\n```\n\n[`eslint_d`]: https://www.npmjs.com/package/eslint_d\n[`eslint-loader`]: https://www.npmjs.com/package/eslint-loader\n\n## SublimeLinter-eslint\n\nSublimeLinter-eslint introduced a change to support `.eslintignore` files\nwhich altered the way file paths are passed to ESLint when linting during editing.\nThis change sends a relative path instead of the absolute path to the file (as ESLint\nnormally provides), which can make it impossible for this plugin to resolve dependencies\non the filesystem.\n\nThis workaround should no longer be necessary with the release of ESLint 2.0, when\n`.eslintignore` will be updated to work more like a `.gitignore`, which should\nsupport proper ignoring of absolute paths via `--stdin-filename`.\n\nIn the meantime, see [roadhump/SublimeLinter-eslint#58](https://github.com/roadhump/SublimeLinter-eslint/issues/58)\nfor more details and discussion, but essentially, you may find you need to add the following\n`SublimeLinter` config to your Sublime project file:\n\n```json\n{\n    \"folders\":\n    [\n        {\n            \"path\": \"code\"\n        }\n    ],\n    \"SublimeLinter\":\n    {\n        \"linters\":\n        {\n            \"eslint\":\n            {\n                \"chdir\": \"${project}/code\"\n            }\n        }\n    }\n}\n```\n\nNote that `${project}/code` matches the `code` provided at `folders[0].path`.\n\nThe purpose of the `chdir` setting, in this case, is to set the working directory\nfrom which ESLint is executed to be the same as the directory on which SublimeLinter-eslint\nbases the relative path it provides.\n\nSee the SublimeLinter docs on [`chdir`](http://www.sublimelinter.com/en/latest/linter_settings.html#chdir)\nfor more information, in case this does not work with your project.\n\nIf you are not using `.eslintignore`, or don't have a Sublime project file, you can also\ndo the following via a `.sublimelinterrc` file in some ancestor directory of your\ncode:\n\n```json\n{\n  \"linters\": {\n    \"eslint\": {\n      \"args\": [\"--stdin-filename\", \"@\"]\n    }\n  }\n}\n```\n\nI also found that I needed to set `rc_search_limit` to `null`, which removes the file\nhierarchy search limit when looking up the directory tree for `.sublimelinterrc`:\n\nIn Package Settings / SublimeLinter / User Settings:\n```json\n{\n  \"user\": {\n    \"rc_search_limit\": null\n  }\n}\n```\n\nI believe this defaults to `3`, so you may not need to alter it depending on your\nproject folder max depth.\n"
+}

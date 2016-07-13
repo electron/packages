@@ -1,0 +1,84 @@
+{
+  "name": "nice-dialogs",
+  "version": "0.3.0",
+  "description": "Awesome replace for alert, confirm & prompt js commands.",
+  "repository": {
+    "user": "parro-it",
+    "repo": "nice-dialogs",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/parro-it/nice-dialogs/tarball/master",
+    "clone_url": "https://github.com/parro-it/nice-dialogs",
+    "https_url": "https://github.com/parro-it/nice-dialogs",
+    "travis_url": "https://travis-ci.org/parro-it/nice-dialogs",
+    "zip_url": "https://github.com/parro-it/nice-dialogs/archive/master.zip",
+    "api_url": "https://api.github.com/repos/parro-it/nice-dialogs"
+  },
+  "license": "MIT",
+  "author": {
+    "name": "parro-it"
+  },
+  "scripts": {
+    "test": "eslint . && node test | faucet"
+  },
+  "keywords": [],
+  "eslintConfig": {
+    "extends": "eslint-config-devenv"
+  },
+  "devDependencies": {
+    "co": "^4.6.0",
+    "nightmare": "^2.0.7",
+    "tape": "^4.2.2"
+  },
+  "files": [
+    "src",
+    "index.js"
+  ],
+  "dependencies": {
+    "insert-css": "^0.2.0"
+  },
+  "gitHead": "2a5464b94f07e464b8e05841278b9efdaa1622f5",
+  "homepage": "https://github.com/parro-it/nice-dialogs#readme",
+  "_npmVersion": "2.14.7",
+  "_nodeVersion": "4.2.1",
+  "dist": {
+    "shasum": "8d2f14bcf4be9354136d21698d5a5052ddf774e5",
+    "tarball": "http://registry.npmjs.org/nice-dialogs/-/nice-dialogs-0.3.0.tgz"
+  },
+  "versions": [
+    {
+      "number": "0.0.1",
+      "date": "2015-11-13T15:41:50.610Z"
+    },
+    {
+      "number": "0.1.0",
+      "date": "2015-11-23T08:27:30.927Z"
+    },
+    {
+      "number": "0.1.1",
+      "date": "2015-11-23T08:58:16.736Z"
+    },
+    {
+      "number": "0.2.0",
+      "date": "2015-11-23T09:06:27.575Z"
+    },
+    {
+      "number": "0.3.0",
+      "date": "2015-11-23T18:50:04.832Z"
+    }
+  ],
+  "created": "2015-11-13T15:41:50.610Z",
+  "modified": "2015-11-23T18:50:04.832Z",
+  "lastPublisher": {
+    "name": "parroit",
+    "email": "andrea.parodi@ebansoftware.net"
+  },
+  "owners": [
+    {
+      "name": "parroit",
+      "email": "andrea.parodi@ebansoftware.net"
+    }
+  ],
+  "readme": "# nice-dialogs\n\nAwesome replace for alert, confirm & prompt js commands.\n\n> This is built with [Electron](https://github.com/atom/electron) usage in mind, but should flawlessy work\n> on any modern browser that support the [dialog](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/dialog) element. The module is tested\n> only on Electron. Open an issue if you find bugs on some other browser engine.\n\n> Templates use CSS classes from [Photon](https://github.com/connors/photon).\n> However, Photon css file are not included, so you can style it whatever you whant.\n\n> We provide only the commonjs module. If you want to use it in a browser, you can use [browserify](https://github.com/substack/node-browserify) to bundle it with your code. Be sure to include [brfs](https://www.npmjs.com/package/brfs) transform, because assets are read using `fs.readFileSync` and you want to include their content in your bundle.\n\n[![Travis Build Status](https://img.shields.io/travis/parro-it/nice-dialogs.svg)](http://travis-ci.org/parro-it/nice-dialogs)\n[![NPM module](https://img.shields.io/npm/v/nice-dialogs.svg)](https://npmjs.org/package/nice-dialogs)\n[![NPM downloads](https://img.shields.io/npm/dt/nice-dialogs.svg)](https://npmjs.org/package/nice-dialogs)\n\n![alert](media/alert.png)\n![confirm](media/confirm.png)\n\n> Example of dialogs when styled using [Photon](https://github.com/connors/photon)\n\n## Installation\n\n```bash\nnpm install --save nice-dialogs\n```\n\n## Usage\n\n```javascript\n  const dialogs = require('nice-dialogs');\n  dialogs.confirm('Are you sure?', 'title')\n    .then(result => console.log(result))  // true/false\n\n  dialogs.alert('Something happened!', 'Title')\n    .then(result => console.log(result))  // always true\n```\n\n\n\n\n## License\n\nMIT License.\n\nCopyright (c) 2015 Andrea Parodi\n"
+}

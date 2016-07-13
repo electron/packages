@@ -1,6 +1,6 @@
 {
   "name": "web-mqtt-client",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "description": "A better MQTT API for the browser",
   "main": "mqtt-client.js",
   "files": [
@@ -18,8 +18,17 @@
     "ghp-deploy": "git subtree push --prefix demo origin gh-pages"
   },
   "repository": {
-    "type": "git",
-    "url": "git+https://github.com/orbitbot/web-mqtt-client.git"
+    "user": "orbitbot",
+    "repo": "web-mqtt-client",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/orbitbot/web-mqtt-client/tarball/master",
+    "clone_url": "https://github.com/orbitbot/web-mqtt-client",
+    "https_url": "https://github.com/orbitbot/web-mqtt-client",
+    "travis_url": "https://travis-ci.org/orbitbot/web-mqtt-client",
+    "zip_url": "https://github.com/orbitbot/web-mqtt-client/archive/master.zip",
+    "api_url": "https://api.github.com/repos/orbitbot/web-mqtt-client"
   },
   "keywords": [
     "mqtt",
@@ -31,9 +40,6 @@
     "email": "patrik@zebros.fi"
   },
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/orbitbot/web-mqtt-client/issues"
-  },
   "homepage": "https://github.com/orbitbot/web-mqtt-client#readme",
   "devDependencies": {
     "chai": "3.5.0",
@@ -49,29 +55,50 @@
     "sinon": "1.17.4",
     "uglify-js": "2.6.2"
   },
-  "gitHead": "5b025568f37dcd792f5e79cbcfa8e83059bd5713",
-  "_id": "web-mqtt-client@1.2.0",
-  "_shasum": "702e889947183d7765c975b165ff9a4b1a9cc059",
-  "_from": ".",
+  "gitHead": "9ec19c258ebd681c6a1cacaf25023ae31fafd344",
   "_npmVersion": "2.15.1",
   "_nodeVersion": "4.4.4",
-  "_npmUser": {
+  "dist": {
+    "shasum": "75b895eb4e54bb2e09df8a2fbbab7385f6962b26",
+    "tarball": "http://registry.npmjs.org/web-mqtt-client/-/web-mqtt-client-1.2.1.tgz"
+  },
+  "versions": [
+    {
+      "number": "0.9.0",
+      "date": "2016-03-03T19:18:26.740Z"
+    },
+    {
+      "number": "1.0.0",
+      "date": "2016-03-28T14:12:57.043Z"
+    },
+    {
+      "number": "1.0.1",
+      "date": "2016-05-22T14:36:16.727Z"
+    },
+    {
+      "number": "1.1.0",
+      "date": "2016-05-26T15:07:33.207Z"
+    },
+    {
+      "number": "1.2.0",
+      "date": "2016-06-06T15:25:26.052Z"
+    },
+    {
+      "number": "1.2.1",
+      "date": "2016-07-08T15:06:42.912Z"
+    }
+  ],
+  "created": "2016-03-03T19:18:26.740Z",
+  "modified": "2016-07-08T15:06:42.912Z",
+  "lastPublisher": {
     "name": "orbitbot",
     "email": "patrik@zebros.fi"
   },
-  "dist": {
-    "shasum": "702e889947183d7765c975b165ff9a4b1a9cc059",
-    "tarball": "http://registry.npmjs.org/web-mqtt-client/-/web-mqtt-client-1.2.0.tgz"
-  },
-  "maintainers": [
+  "owners": [
     {
       "name": "orbitbot",
       "email": "patrik@zebros.fi"
     }
   ],
-  "_npmOperationalInternal": {
-    "host": "packages-16-east.internal.npmjs.com",
-    "tmp": "tmp/web-mqtt-client-1.2.0.tgz_1465226724302_0.3480024372693151"
-  },
-  "directories": {}
+  "readme": "# web-mqtt-client\n> A better MQTT API for the browser\n\n`web-mqtt-client` is a wrapper around the [Eclipse Paho MQTT javascript client](https://eclipse.org/paho/clients/js/), and offers an improved programmatic API somewhat similar to [MQTT.js](https://github.com/mqttjs/MQTT.js) in a much smaller package than the latter browserified. Further improvements will also be implemented as this library matures (see Roadmap below).\n\nAn example of this library in use is available on [`gh-pages`](https://orbitbot.github.io/web-mqtt-client), source code and resources for the example under the `demo/` folder.\n\n<br>\n### Installation\n\n```sh\n$ npm install web-mqtt-client\n$ bower install web-mqtt-client\n```\n\nIn addition to `mqtt-client.js`, you will also need to add `mqttws31.js` from [Eclipse Paho](https://eclipse.org/paho/clients/js/) to your html, eg.\n\n```html\n<script src=\"path/to/mqttws31.js\"></script>\n<script src=\"path/to/mqtt-client.js\"></script>\n```\n\n`mqtt-client.js` expects the globals from Eclipse Paho to be available when initialized, so the order of evaluation matters. When the scripts have been evaluated, `web-mqtt-client` is available through the `MqttClient` global.\n\n<br>\n### Usage\n\nAn MQTT client is intialized with the call to `new MqttClient` with a configuration object. The configuration object is required to contain `host` and `port`, but accepts multiple other values:\n\n| Parameter     | Mandatory | Type          | Default   |\n|:--------------|:----------|:--------------|:----------|\n| `host`        | required  | String        |           |\n| `port`        | required  | Number        |           |\n| `clientId`    | optional  | String        | generated |\n| `timeout`     | optional  | Number        | 10        |\n| `keepalive`   | optional  | Number        | 30        |\n| `mqttVersion` | optional  | Number [3,4]  |           |\n| `username`    | optional  | String        |           |\n| `password`    | optional  | String        |           |\n| `ssl`         | optional  | boolean       |           |\n| `clean`       | optional  | boolean       |           |\n| `will`        | optional  | Object        |           |\n| `reconnect`   | optional  | Number        | undefined |\n\n`reconnect` is the time to wait in milliseconds before trying to connect if a client loses its connection to the broker. If not defined, automatic reconnection is disabled.\n\nSome further details for the parameters can be found in the [Paho documentation](http://www.eclipse.org/paho/files/jsdoc/symbols/Paho.MQTT.Client.html).\n\nExample:\n\n```js\nvar client = new MqttClient({\n  host : 'some.domain.tld/mqtt',\n  port : 5678,\n  will : {\n    topic   : 'farewells',\n    payload : 'So long!',\n  }\n});\n```\n\nThe `will` object is specified as follows and has the typical MQTT message attributes\n\n| field     | Mandatory | Type                  | Default   |\n|:----------|:----------|:----------------------|:----------|\n| `topic`   | required  | String                |           |\n| `payload` | required  | String or ArrayBuffer |           |\n| `qos`     | optional  | Number [0,1,2]        | 0         |\n| `retain`  | optional  | boolean               | false     |\n\n<br>\n\n##### Client API\n\nA client `var client = new MqttClient(opts)` initialized as above will have\n\n###### Fields:\n\n**`client.connected` : `boolean`**\n\nSimplified connection state, ie. `true` if connected or `false` otherwise. If you need more detailed connection state tracking, this can be implemented by attaching callbacks to connection lifecycle events (see below).\n\n<br>\n\n###### Methods:\n\n**`client.connect() ⇒ client`**\n\nConnect client to the broker specified in the configuration object.\n\n**`client.disconnect() ⇒ undefined`**\n\nDisconnect from the currently connected broker.\n\n**`client.subscribe(topic, function callback(error, granted) { }) ⇒ undefined`**\n\n**`client.subscribe(topic, qos, function callback(error, granted) { }) ⇒ undefined`**\n\nSubscribe to `topic`. `qos` and `callback` are optional, if two parameters are used the second one is assumed to be a callback function and the default QoS 0 is used. Note that if QoS 0 is passed, the broker does not actually acknowledge receiving the subscription message, so the callback firing essentially only means that the Paho library has processed the function call.\n\nThe callback function parameter `error` is the error object returned by Paho, and `granted` is the QoS level (0,1 or 2) granted by the broker.\n\n\n**`client.unsubscribe(topic, function callback (error) { }) ⇒ undefined`**\n\nUnsubscribe from `topic`. The optional `callback` will be fired when the broker acknowledges the request.\n\nThe callback function gets a single error parameter if something went wrong, containing the error object returned by Paho.\n\n**`client.publish(topic, payload, options, callback) ⇒ undefined`**\n\nPublish `payload` to `topic`, `callback` will be fired when the broker acknowledges the request. **NB.** if qos is 0 and a callback is provieded functionality is identical to the `subscribe` callback. The callback getting triggered may also be broker-dependant, so verify the functionality before depending on a callback being fired.\n\n`options` are optional and can specify the following:\n```js\n{\n    qos    : <optional> - default 0,\n    retain : <optional> - deafult false,\n}\n```\n\n<br>\n\n\nThe following event methods are used to attach callbacks to the events specified in the next section.\n\n**`client.bind(event, callback) ⇒ client`**\n\nAttaches `callback` to be called whenever `event` is triggered by the library. See Events below for possible events.\n\n**`client.on(event, callback) ⇒ client`**\n\nSynonym for `client.bind`.\n\n**`client.unbind(event, callback) ⇒ client`**\n\nDe-register `callback` from being called when `event` is triggered. Previously registered callbacks must be named values for this to work, otherwise the method will fail silently.\n\n**`client.once(event, callback) ⇒ client`**\n\nJust like `bind`/`on`, but is automatically de-registered after being called.\n\n<br>\n\n##### Messages API\n\nThe client has a utility API that compliments the `client.on('message', callback)` pattern.\n\n**`client.messages.bind(topic, callback) ⇒ client`**\n\nAttaches `callback` to be called whenever a message arrives that match the MQTT `topic`. The topic string supports both MQTT wildcard characters, so it can be used fairly flexibly, but verify that your usecase is covered with `client.convertTopic()`.\n\n**`client.messages.on(topic, callback) ⇒ client`**\n\nSynonym for `client.messages.bind`.\n\n**`client.messages.unbind(callback) ⇒ client`**\n\nDe-register `callback` from being called when incoming messages that matches its `topic` arrive. Previously registered callbacks must be named values for this to work, otherwise the method will fail silently.\n\n\n<br>\n\n###### Utils:\n\n**`client.convertTopic(topic) ⇒ RegEx`**\n\nConverts string `topic` to a matching regular expression that supports the MQTT topic wildcards (`#` and `+`), used internally. The implementation is not bullet-proof, see tests and verify that the functionality matches your use-case.\n\n<br>\n\n###### Events:\n\nThe client emits the following events\n\n- `'connecting'`: client has started connecting to a broker\n- `'connect'`: client has successfully connected to broker\n- `'disconnect'`: client was disconnected from broker for whatever reason\n- `'offline'`: client is disconnected and no automatic reconnection attempts will be made\n- `'message'`: client received an MQTT message\n\n\nAs outlined above, callbacks can be attached to these events through `client.on` or `client.bind` and removed with `client.unbind`.\n\n```js\nclient\n  .on('connecting', function() { console.log('connecting...'); })\n  .on('connect', function() { console.log(\"hooraah, I'm connected\"); })\n  .on('disconnect', function() { console.log('oh noes!'); })\n  .on('offline', function() { console.log('stopped trying, call connect manually'); });\n\nclient.on('message', console.log.bind(console, 'MQTT message arrived: '));\n```\n\nThe callback attached to the `message` event has the following signature\n\n```js\nclient.on('message', function handleMessage(topic, payload, details) {\n  // ..\n});\n```\n\n- `payload` is either the UTF-8 encoded String in the message if parsed by Paho, or the payload as an ArrayBuffer\n- `details` is an object containing\n\n```js\n{\n    topic     : /* String */,\n    qos       : /* 0 | 1 | 2 */,\n    retained  : /* boolean  */,\n    payload   : /* payloadBytes */,\n    duplicate : /* boolean */,\n}\n```\n\nThe meaning of the fields are explained in the [Paho documentation](http://www.eclipse.org/paho/files/jsdoc/symbols/Paho.MQTT.Message.html).\n\n<br>\n\n### Colophon\n\nThe event emitter pattern that `web-mqtt-client` uses is based on [microevent.js](https://github.com/jeromeetienne/microevent.js).\n\n### License\n\n`web-mqtt-client` is ISC licensed.\n\n<br>\n\n### Roadmap & Changelog\n\n**1.3.0**\n\n- [ ] Messages API automatically subscribes and unsubscribes from topics\n- [ ] filter subscription/unsubscription calls to broker if topic has other callbacks\n\n**1.2.1**\n\n- [x] fix for #2 Cannot send retained messages using MqttClient's publish method\n\n**1.2.0**\n\n- [x] separate messages event API\n- [x] MQTT topic regex support\n\n**1.1.0**\n\n- [x] automatic reconnection interval\n- [x] extended connection lifecycle callbacks\n- [ ] ~~optional logging support~~ dropped, since it's currently easy to attach logging to callbacks if needed\n- [x] integration tests against Mosca\n\n**1.0.1**\n\n- [x] improve test coverage\n- [x] fix publish API (call w/o payload, options, callback)\n- [x] subscribe API (document callback, callback this reference)\n- [x] unsubscribe API (document callback, callback this reference)\n\n**1.0.0**\n\n- [x] unit test setup\n- [x] CI test configuration (travis)\n- [x] eslint configuration\n- [x] test coverage x\n- [x] lightweight API documentation\n- [x] publish demo to gh-pages\n\n**0.9.0**\n\n- [x] randomly generated clientIds\n- [x] subscribe / unsubscribe API\n- [x] event for incoming messages\n- [x] publish API\n- [x] lwt support\n- [x] minfied build\n- [x] public release npm/bower\n\n**Future**\n\n- [ ] ~~reconnection callback~~ abandoned, can easily be implemented with attaching a function that calls `client.connect()` to the `offline` event\n- [ ] better example in README\n- [ ] rewrite Paho Errors\n- [ ] proper linting config\n- [ ] test coverage x\n- [ ] filter sub/unsub is QoS-aware\n- [ ] automatic resubscription of topics on reconnect\n- [ ] optimize compression\n- [ ] provide sourcemaps\n\n<br>\n\n### Notes\n\n- Paho documentation http://www.eclipse.org/paho/files/jsdoc/index.html\n- promise support for methods? or example for wrapping\n- publish callback if qos 0 is essentially nothing more than a message that message has been delivered to Paho lib...\n- piggyback on Paho error reporting or do own validation?\n\n"
 }

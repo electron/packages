@@ -12,8 +12,17 @@
     "clean": "rm -rf dist"
   },
   "repository": {
-    "type": "git",
-    "url": "git+https://github.com/BinaryMuse/etch-stateless.git"
+    "user": "BinaryMuse",
+    "repo": "etch-stateless",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/BinaryMuse/etch-stateless/tarball/master",
+    "clone_url": "https://github.com/BinaryMuse/etch-stateless",
+    "https_url": "https://github.com/BinaryMuse/etch-stateless",
+    "travis_url": "https://travis-ci.org/BinaryMuse/etch-stateless",
+    "zip_url": "https://github.com/BinaryMuse/etch-stateless/archive/master.zip",
+    "api_url": "https://api.github.com/repos/BinaryMuse/etch-stateless"
   },
   "keywords": [
     "virtual-dom dom view element custom-elements dom-diff atom electron stateless etch"
@@ -23,9 +32,6 @@
     "email": "michelle@michelletilley.net"
   },
   "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/BinaryMuse/etch-stateless/issues"
-  },
   "homepage": "https://github.com/BinaryMuse/etch-stateless",
   "devDependencies": {
     "babel": "^5.0.0",
@@ -46,28 +52,29 @@
     ]
   },
   "gitHead": "9ebe36718f18f429f77c507273236ef912f5773b",
-  "_id": "etch-stateless@1.0.0",
-  "_shasum": "d8a89f3402d95ade9ea0a6b6cff4921a8195d51a",
-  "_from": ".",
   "_npmVersion": "3.6.0",
   "_nodeVersion": "5.6.0",
-  "_npmUser": {
-    "name": "binarymuse",
-    "email": "michelle@michelletilley.net"
-  },
   "dist": {
     "shasum": "d8a89f3402d95ade9ea0a6b6cff4921a8195d51a",
     "tarball": "http://registry.npmjs.org/etch-stateless/-/etch-stateless-1.0.0.tgz"
   },
-  "maintainers": [
+  "versions": [
+    {
+      "number": "1.0.0",
+      "date": "2016-04-25T18:54:26.007Z"
+    }
+  ],
+  "created": "2016-04-25T18:54:26.007Z",
+  "modified": "2016-04-25T18:55:26.262Z",
+  "lastPublisher": {
+    "name": "binarymuse",
+    "email": "michelle@michelletilley.net"
+  },
+  "owners": [
     {
       "name": "binarymuse",
       "email": "michelle@michelletilley.net"
     }
   ],
-  "_npmOperationalInternal": {
-    "host": "packages-16-east.internal.npmjs.com",
-    "tmp": "tmp/etch-stateless-1.0.0.tgz_1461610464021_0.22780766850337386"
-  },
-  "directories": {}
+  "readme": "# etch-stateless\n\netch-stateless is a library to facilitate creating Etch components from functions that take props and children and return JSX.\n\n### API\n\n`stateless(etch, renderFn)`\n\n* `etch` - an instance of the Etch library\n* `renderFn(props, children)` - a function that takes properties and children and returns Etch-based virtual DOM nodes\n\n### Overview\n\nIf your Etch component doesn't manage any internal state, it can be useful to describe the component in terms of a function that takes some input and returns JSX:\n\n```javascript\nimport etch from 'etch'\nimport stateless from 'etch-stateless'\n\nconst MyComponent = stateless(etch, function(props, children) {\n  return <div prop={props.myProp}>{children}</div>\n})\n```\n\nThe component will automatically re-render using the supplied function any time a parent calls the component's `update` hook (which happens whenever new props or children are passed to the component).\n\n### Under the Hood\n\netch-stateless is simply sugar for a plain Etch component. For example,\n\n```javascript\nconst MyComponent = stateless(etch, function(props, children) {\n  return <div prop={props.myProp}>{children}</div>\n})\n```\n\nis the same as:\n\n```javascript\nclass MyComponent {\n  constructor (props, children) {\n    this.props = props\n    this.children = children\n    etch.initialize(this)\n  }\n\n  update (props, children) {\n    this.props = props\n    this.children = children\n    etch.update(this)\n  }\n\n  render () {\n    return <div prop={this.props.myProp}>{this.children}</div>\n  }\n}\n```\n"
 }

@@ -19,17 +19,23 @@
     "clean": "rimraf lib/*"
   },
   "repository": {
-    "type": "git",
-    "url": "git+https://github.com/nteract/transformime-react.git"
+    "user": "nteract",
+    "repo": "transformime-react",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/nteract/transformime-react/tarball/master",
+    "clone_url": "https://github.com/nteract/transformime-react",
+    "https_url": "https://github.com/nteract/transformime-react",
+    "travis_url": "https://travis-ci.org/nteract/transformime-react",
+    "zip_url": "https://github.com/nteract/transformime-react/archive/master.zip",
+    "api_url": "https://api.github.com/repos/nteract/transformime-react"
   },
   "author": {
     "name": "Kyle Kelley",
     "email": "rgbkrk@gmail.com"
   },
   "license": "BSD-3-Clause",
-  "bugs": {
-    "url": "https://github.com/nteract/transformime-react/issues"
-  },
   "babel": {
     "presets": [
       "es2015",
@@ -78,20 +84,81 @@
     "react-markdown": "^2.1.1"
   },
   "gitHead": "cfaa3b591934916cbcd583923bf1070f9e328dd6",
-  "_id": "transformime-react@1.0.1",
-  "_shasum": "269315e353cfc776cc5a00cb1ca0444be5bb56f2",
-  "_from": ".",
   "_npmVersion": "3.7.2",
   "_nodeVersion": "5.3.0",
-  "_npmUser": {
-    "name": "jdfreder",
-    "email": "jon.freder@gmail.com"
-  },
   "dist": {
     "shasum": "269315e353cfc776cc5a00cb1ca0444be5bb56f2",
     "tarball": "http://registry.npmjs.org/transformime-react/-/transformime-react-1.0.1.tgz"
   },
-  "maintainers": [
+  "versions": [
+    {
+      "number": "0.0.1",
+      "date": "2016-01-02T23:52:57.689Z"
+    },
+    {
+      "number": "0.0.2",
+      "date": "2016-01-03T00:11:37.020Z"
+    },
+    {
+      "number": "0.1.0",
+      "date": "2016-01-03T03:58:07.428Z"
+    },
+    {
+      "number": "0.2.0",
+      "date": "2016-01-03T09:58:03.719Z"
+    },
+    {
+      "number": "0.2.1",
+      "date": "2016-01-04T20:44:00.103Z"
+    },
+    {
+      "number": "0.2.2",
+      "date": "2016-01-04T20:48:23.774Z"
+    },
+    {
+      "number": "0.3.0",
+      "date": "2016-01-06T16:21:46.918Z"
+    },
+    {
+      "number": "0.4.0",
+      "date": "2016-03-19T22:05:45.630Z"
+    },
+    {
+      "number": "0.5.0",
+      "date": "2016-04-09T01:37:54.787Z"
+    },
+    {
+      "number": "0.6.0",
+      "date": "2016-04-23T04:45:33.348Z"
+    },
+    {
+      "number": "0.6.1",
+      "date": "2016-05-03T21:15:16.434Z"
+    },
+    {
+      "number": "0.6.2",
+      "date": "2016-05-05T02:33:51.771Z"
+    },
+    {
+      "number": "0.7.0",
+      "date": "2016-05-05T23:08:40.984Z"
+    },
+    {
+      "number": "1.0.0",
+      "date": "2016-05-05T23:11:55.217Z"
+    },
+    {
+      "number": "1.0.1",
+      "date": "2016-05-06T00:00:45.121Z"
+    }
+  ],
+  "created": "2016-01-02T23:52:57.689Z",
+  "modified": "2016-05-06T00:00:45.121Z",
+  "lastPublisher": {
+    "name": "jdfreder",
+    "email": "jon.freder@gmail.com"
+  },
+  "owners": [
     {
       "name": "betatim",
       "email": "betatim@gmail.com"
@@ -109,9 +176,5 @@
       "email": "ken_wheeler@me.com"
     }
   ],
-  "_npmOperationalInternal": {
-    "host": "packages-12-west.internal.npmjs.com",
-    "tmp": "tmp/transformime-react-1.0.1.tgz_1462492844633_0.7251613375265151"
-  },
-  "directories": {}
+  "readme": "# transformime-react\n\n[![Build Status](https://travis-ci.org/nteract/transformime-react.svg)](https://travis-ci.org/nteract/transformime-react)\n\nTransforms MIMEtype+data to pure React Elements.\n\n![Optimus MIME](https://cloud.githubusercontent.com/assets/6437976/8895696/db154a04-3397-11e5-91ca-296b957658a6.png)\n\n## Installation\n\n```\nnpm install transformime-react\n```\n\nNote that `react` and `immutable` are peer dependencies; you'll need to install those as well if they're not in your project (hint: they're definitely needed to make this package useful at all).\n\n```\nnpm install immutable@3.7.x react@0.14.x\n```\n\n## Usage\n\n```es6\nimport { richestMimetype, transforms } from 'transformime-react';\nimport Immutable from 'immutable';\n\n// Jupyter style MIME bundle\nconst bundle = new Immutable.Map({\n  'text/plain': 'This is great',\n  'image/png': 'R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7'\n});\n\n// Find out which mimetype is the richest\nconst mimetype = richestMimetype(bundle); \n\n// Get the matching React.Component for that mimetype\nlet Transform = transforms.get(mimetype);\n\n// Create a React element\nreturn <Transform data={bundle.get(mimetype)} />;\n```\n\nwhich will return:\n\n```jsx\n<img src='data:image/png;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7' />\n```\n\nas a React element. It chose 'image/png' as richer than 'text/plain' for representation.\n\n### Override the default transforms and display order\n\n```es6\nconst myOrder = Immutable.List(['text/plain', 'image/png']);\n\nconst CodeAsText = React.createClass({\n  render: function() {\n    return (\n      <code>{this.props.data}</code>\n    );\n  }\n});\n\nconst myTransforms = transforms.set('text/plain', CodeAsText);\n\nconst mimetype = richestMimetype(bundle, myOrder, myTransforms); \nTransform = myTransforms.get(mimetype);\n\nreturn <Transform data={bundle.get(mimetype)} />;\n```\n\nUsing the bundle from above, we'll get back:\n\n```jsx\n<code>This is great</code>\n```\n\n"
 }

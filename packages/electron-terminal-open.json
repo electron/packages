@@ -4,8 +4,17 @@
   "description": "Open App from Command Line Interface for Electron App.",
   "license": "MIT",
   "repository": {
-    "type": "git",
-    "url": "git+https://github.com/akameco/electron-terminal-open.git"
+    "user": "akameco",
+    "repo": "electron-terminal-open",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/akameco/electron-terminal-open/tarball/master",
+    "clone_url": "https://github.com/akameco/electron-terminal-open",
+    "https_url": "https://github.com/akameco/electron-terminal-open",
+    "travis_url": "https://travis-ci.org/akameco/electron-terminal-open",
+    "zip_url": "https://github.com/akameco/electron-terminal-open/archive/master.zip",
+    "api_url": "https://api.github.com/repos/akameco/electron-terminal-open"
   },
   "author": {
     "name": "akameco",
@@ -37,32 +46,46 @@
     "xo": "^0.15.0"
   },
   "gitHead": "d18144a3e0e8660f3a18a563b20b7c74fae5f061",
-  "bugs": {
-    "url": "https://github.com/akameco/electron-terminal-open/issues"
-  },
   "homepage": "https://github.com/akameco/electron-terminal-open#readme",
-  "_id": "electron-terminal-open@0.1.1",
-  "_shasum": "419dd4ac570104c2d433f6602ad31d0ec33bb679",
-  "_from": ".",
   "_npmVersion": "3.8.9",
   "_nodeVersion": "5.11.0",
-  "_npmUser": {
-    "name": "akameco",
-    "email": "akameco.t@gmail.com"
-  },
   "dist": {
     "shasum": "419dd4ac570104c2d433f6602ad31d0ec33bb679",
     "tarball": "http://registry.npmjs.org/electron-terminal-open/-/electron-terminal-open-0.1.1.tgz"
   },
-  "maintainers": [
+  "versions": [
+    {
+      "number": "0.0.1",
+      "date": "2016-05-12T07:05:06.846Z"
+    },
+    {
+      "number": "0.0.2",
+      "date": "2016-05-12T07:15:07.016Z"
+    },
+    {
+      "number": "0.0.3",
+      "date": "2016-05-12T07:26:17.959Z"
+    },
+    {
+      "number": "0.1.0",
+      "date": "2016-05-12T07:47:01.570Z"
+    },
+    {
+      "number": "0.1.1",
+      "date": "2016-05-12T07:56:04.886Z"
+    }
+  ],
+  "created": "2016-05-12T07:05:06.846Z",
+  "modified": "2016-05-12T07:56:04.886Z",
+  "lastPublisher": {
+    "name": "akameco",
+    "email": "akameco.t@gmail.com"
+  },
+  "owners": [
     {
       "name": "akameco",
       "email": "akameco.t@gmail.com"
     }
   ],
-  "_npmOperationalInternal": {
-    "host": "packages-16-east.internal.npmjs.com",
-    "tmp": "tmp/electron-terminal-open-0.1.1.tgz_1463039761873_0.5527348080649972"
-  },
-  "directories": {}
+  "readme": "# electron-terminal-open [![Build Status](https://travis-ci.org/akameco/electron-terminal-open.svg?branch=master)](https://travis-ci.org/akameco/electron-terminal-open)\n\n> Open App from Command Line Interface for Electron.\n\n\n## Install\n\n```\n$ npm install --save electron-terminal-open\n```\n\n\n## Usage\n\nrequire electron.\n\n```js\n'use strict';\nconst {BrowserWindow, app} = require('electron');\nconst parseArgs = require('minimist');\nconst electronTerminalOpen = require('electron-terminal-open');\n\nlet mainWindow;\n\nfunction createMainWindow() {\n\tconst win = new BrowserWindow({\n\t\ttitle: 'sample-app',\n\t\twidth: 400,\n\t\theight: 500\n\t});\n\n\tif (process.env.NODE_ENV === 'development') {\n\t\twin.openDevTools();\n\t}\n\n\twin.loadURL(`https://kangax.github.io/compat-table/es6/`);\n\twin.on('closed', () => {\n\t\tmainWindow = null;\n\t});\n\n\treturn win;\n}\n\nconst args = parseArgs(process.argv.slice(1));\n\nif (args.h || args.help) {\n\tconsole.log(`help sample`);\n\tprocess.exit(0); // eslint-disable-line\n}\n\nif (args.v || args.version) {\n\tconsole.log(app.getName(), app.getVersion());\n\tprocess.exit(0); // eslint-disable-line\n}\n\napp.on('ready', () => {\n\telectronTerminalOpen(app).then(() => {\n\t\tmainWindow = createMainWindow();\n\t}).catch(err => {\n\t\tconsole.log(err);\n\t});\n});\n\napp.on('window-all-closed', () => {\n\tif (process.platform !== 'darwin') {\n\t\tapp.quit();\n\t}\n});\n\n\n```\n\nSee example.\n\n### Support\nAdd executed-from prop to process.args.\n\n```sh\n$ pwd\n/a/b/c\n$ sample-app .\n```\n\n```js\nargs['executed-from'] // => /a/b/c\n```\n\n\n## API\n\n### electronTerminalOpen(app, [options])\n\n#### app\n\nType: `object`\n\nelectron.app\n\n#### options\n\n##### bundleId\n\nType: `string`<br>\nDefault: `com.electron.${app.getName()}`\n\napp-bundle-id\n\n## License\n\nMIT © [akameco](https://akameco.github.io)\n"
 }

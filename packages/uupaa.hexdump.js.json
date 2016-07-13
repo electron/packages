@@ -9,8 +9,17 @@
     "Unstable"
   ],
   "repository": {
-    "type": "git",
-    "url": "git+https://github.com/uupaa/HexDump.js.git"
+    "user": "uupaa",
+    "repo": "HexDump.js",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/uupaa/HexDump.js/tarball/master",
+    "clone_url": "https://github.com/uupaa/HexDump.js",
+    "https_url": "https://github.com/uupaa/HexDump.js",
+    "travis_url": "https://travis-ci.org/uupaa/HexDump.js",
+    "zip_url": "https://github.com/uupaa/HexDump.js/archive/master.zip",
+    "api_url": "https://api.github.com/repos/uupaa/HexDump.js"
   },
   "scripts": {
     "sync": "node ../WebModule/run/sync.js; npm update; node ../WebModule/run/page.js",
@@ -83,28 +92,46 @@
   "license": "MIT",
   "contributors": [],
   "gitHead": "150016afc5ec6c4825a07228f6f1b7f25c7dc9ad",
-  "bugs": {
-    "url": "https://github.com/uupaa/HexDump.js/issues"
-  },
   "homepage": "https://github.com/uupaa/HexDump.js#readme",
-  "_id": "uupaa.hexdump.js@0.0.5",
-  "_shasum": "c6d6ff4f8eef92099fffa4248333c6682732838a",
-  "_from": ".",
   "_npmVersion": "2.14.4",
   "_nodeVersion": "4.1.1",
-  "_npmUser": {
+  "dist": {
+    "shasum": "c6d6ff4f8eef92099fffa4248333c6682732838a",
+    "tarball": "http://registry.npmjs.org/uupaa.hexdump.js/-/uupaa.hexdump.js-0.0.5.tgz"
+  },
+  "versions": [
+    {
+      "number": "0.0.0",
+      "date": "2015-11-26T07:16:28.153Z"
+    },
+    {
+      "number": "0.0.1",
+      "date": "2015-11-27T09:07:08.261Z"
+    },
+    {
+      "number": "0.0.2",
+      "date": "2015-11-30T06:53:48.169Z"
+    },
+    {
+      "number": "0.0.4",
+      "date": "2015-12-01T18:41:20.634Z"
+    },
+    {
+      "number": "0.0.5",
+      "date": "2015-12-01T21:05:59.817Z"
+    }
+  ],
+  "created": "2015-11-26T07:16:28.153Z",
+  "modified": "2015-12-01T21:05:59.817Z",
+  "lastPublisher": {
     "name": "uupaa",
     "email": "uupaa.js@gmail.com"
   },
-  "maintainers": [
+  "owners": [
     {
       "name": "uupaa",
       "email": "uupaa.js@gmail.com"
     }
   ],
-  "dist": {
-    "shasum": "c6d6ff4f8eef92099fffa4248333c6682732838a",
-    "tarball": "http://registry.npmjs.org/uupaa.hexdump.js/-/uupaa.hexdump.js-0.0.5.tgz"
-  },
-  "directories": {}
+  "readme": "# HexDump.js [![Build Status](https://travis-ci.org/uupaa/HexDump.js.svg)](https://travis-ci.org/uupaa/HexDump.js)\n\n[![npm](https://nodei.co/npm/uupaa.hexdump.js.svg?downloads=true&stars=true)](https://nodei.co/npm/uupaa.hexdump.js/)\n\nHex dump\n\nThis module made of [WebModule](https://github.com/uupaa/WebModule).\n\n## Documentation\n- [Spec](https://github.com/uupaa/HexDump.js/wiki/)\n- [API Spec](https://github.com/uupaa/HexDump.js/wiki/HexDump)\n\n## Browser, NW.js and Electron\n\n```js\n<script src=\"<module-dir>/lib/WebModule.js\"></script>\n<script src=\"<module-dir>/lib/HexDump.js\"></script>\n<script>\nHexDump([1,2,3], {\n    title: \"Example\",\n    begin: 0,\n    end:   3,\n    rule: {\n        values1: { style: \"color:red\",  values: [0xEA, 0xE6, 0xAA, 0xB0] },\n        values2: { style: \"color:blue\", values: [0x5E, 0x46, 0x43, 0x2C] },\n        range1:  { style: \"color:green\", begin: 8, end: 10 },\n        range2:  { style: \"background-color:yellow\", begin: 0x23 },\n        valuesWithRange0x50: { bold: true, style: \"color:blue\", begin: 0x1a, values: [0x50] },\n        valuesWithRange0x51: { bold: true, style: \"color:blue\", begin: 0x1a, values: [0x51] },\n        valuesWithRange0x52: { bold: true, style: \"color:blue\", begin: 0x1a, values: [0x52] },\n    }\n});\n</script>\n```\n\n## WebWorkers\n\n```js\nimportScripts(\"<module-dir>lib/WebModule.js\");\nimportScripts(\"<module-dir>lib/HexDump.js\");\n\n...\n```\n\n## Node.js\n\n```js\nrequire(\"<module-dir>lib/WebModule.js\");\nrequire(\"<module-dir>lib/HexDump.js\");\n\n...\n```\n\n"
 }

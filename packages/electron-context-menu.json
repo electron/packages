@@ -1,11 +1,20 @@
 {
   "name": "electron-context-menu",
-  "version": "0.2.0",
+  "version": "0.3.1",
   "description": "Context menu for your Electron app",
   "license": "MIT",
   "repository": {
-    "type": "git",
-    "url": "git+https://github.com/sindresorhus/electron-context-menu.git"
+    "user": "sindresorhus",
+    "repo": "electron-context-menu",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/sindresorhus/electron-context-menu/tarball/master",
+    "clone_url": "https://github.com/sindresorhus/electron-context-menu",
+    "https_url": "https://github.com/sindresorhus/electron-context-menu",
+    "travis_url": "https://travis-ci.org/sindresorhus/electron-context-menu",
+    "zip_url": "https://github.com/sindresorhus/electron-context-menu/archive/master.zip",
+    "api_url": "https://api.github.com/repos/sindresorhus/electron-context-menu"
   },
   "author": {
     "name": "Sindre Sorhus",
@@ -34,7 +43,7 @@
     "electron-is-dev": "^0.1.1"
   },
   "devDependencies": {
-    "electron-prebuilt": "^1.2.1",
+    "electron-prebuilt": "^1.2.6",
     "xo": "*"
   },
   "xo": {
@@ -47,33 +56,60 @@
       "import/no-extraneous-dependencies": "off"
     }
   },
-  "gitHead": "f1414406f0a939272c093bde4b2c8e032cb9169d",
-  "bugs": {
-    "url": "https://github.com/sindresorhus/electron-context-menu/issues"
-  },
+  "gitHead": "7fef954ec32130a44103c1ec28e032e6980278c5",
   "homepage": "https://github.com/sindresorhus/electron-context-menu#readme",
-  "_id": "electron-context-menu@0.2.0",
-  "_shasum": "9108c37adc4059a24e779ccd87f28fbc64857731",
-  "_from": ".",
-  "_npmVersion": "2.15.0",
-  "_nodeVersion": "4.4.2",
-  "_npmUser": {
+  "_npmVersion": "2.15.5",
+  "_nodeVersion": "4.4.5",
+  "dist": {
+    "shasum": "4fe65910058da9cb99f52d73eab90f47d33db663",
+    "tarball": "http://registry.npmjs.org/electron-context-menu/-/electron-context-menu-0.3.1.tgz"
+  },
+  "stars": 1,
+  "versions": [
+    {
+      "number": "0.1.0",
+      "date": "2016-06-04T10:40:41.326Z"
+    },
+    {
+      "number": "0.1.1",
+      "date": "2016-06-04T12:41:36.484Z"
+    },
+    {
+      "number": "0.1.2",
+      "date": "2016-06-04T13:26:56.093Z"
+    },
+    {
+      "number": "0.1.3",
+      "date": "2016-06-17T16:30:43.749Z"
+    },
+    {
+      "number": "0.2.0",
+      "date": "2016-06-22T17:06:32.515Z"
+    },
+    {
+      "number": "0.2.1",
+      "date": "2016-06-27T17:40:28.364Z"
+    },
+    {
+      "number": "0.3.0",
+      "date": "2016-07-06T10:51:17.822Z"
+    },
+    {
+      "number": "0.3.1",
+      "date": "2016-07-06T20:56:09.586Z"
+    }
+  ],
+  "created": "2016-06-04T10:40:41.326Z",
+  "modified": "2016-07-06T20:56:09.586Z",
+  "lastPublisher": {
     "name": "sindresorhus",
     "email": "sindresorhus@gmail.com"
   },
-  "dist": {
-    "shasum": "9108c37adc4059a24e779ccd87f28fbc64857731",
-    "tarball": "http://registry.npmjs.org/electron-context-menu/-/electron-context-menu-0.2.0.tgz"
-  },
-  "maintainers": [
+  "owners": [
     {
       "name": "sindresorhus",
       "email": "sindresorhus@gmail.com"
     }
   ],
-  "_npmOperationalInternal": {
-    "host": "packages-16-east.internal.npmjs.com",
-    "tmp": "tmp/electron-context-menu-0.2.0.tgz_1466615190572_0.959495090181008"
-  },
-  "directories": {}
+  "readme": "# electron-context-menu [![Build Status](https://travis-ci.org/sindresorhus/electron-context-menu.svg?branch=master)](https://travis-ci.org/sindresorhus/electron-context-menu)\n\n> Context menu for your [Electron](http://electron.atom.io) app\n\n<img src=\"screenshot.png\" width=\"125\" align=\"right\">\n\nElectron doesn't have a built-in context menu. You're supposed to handle that yourself. But it's both tedious and hard to get right. This module gives you a nice extensible context menu with items like `Cut`/`Copy`/`Paste` for text, `Save Image` for images, and `Copy Link` for links. It also adds an `Inspect Element` menu item when in development to quickly view items in the inspector like in Chrome.\n\nYou can use this module directly in both the main and renderer process.\n\n\n## Install\n\n```\n$ npm install --save electron-context-menu\n```\n\n\n## Usage\n\n```js\nconst {app, BrowserWindow} = require('electron');\n\nrequire('electron-context-menu')({\n\tprepend: params => [{\n\t\tlabel: 'Rainbow'\n\t\t// only show it when right-clicking images\n\t\tvisible: params.mediaType === 'image'\n\t}]\n});\n\nlet win;\n\napp.on('ready', () => {\n\twin = new BrowserWindow();\n});\n```\n\n\n## API\n\n### contextMenu([options])\n\n### options\n\n#### window\n\nType: `BrowserWindow`<br>\n\nWindow to add the context menu to.\n\nWhen not specified, the context menu will be added to all existing and new windows.\n\n#### prepend\n\nType: `Function`\n\nShould return an array of [MenuItem](http://electron.atom.io/docs/api/menu-item/)'s to be prepended to the context menu. The first argument is [this `params` object](http://electron.atom.io/docs/api/web-contents/#event-context-menu).\n\n#### append\n\nType: `Function`\n\nShould return an array of [MenuItem](http://electron.atom.io/docs/api/menu-item/)'s to be appended to the context menu. The first argument is [this `params` object](http://electron.atom.io/docs/api/web-contents/#event-context-menu).\n\n\n## Related\n\n- [electron-debug](https://github.com/sindresorhus/electron-debug) - Adds useful debug features to your Electron app\n- [electron-config](https://github.com/sindresorhus/electron-config) - Simple config handling for your Electron app or module\n\n\n## License\n\nMIT © [Sindre Sorhus](https://sindresorhus.com)\n"
 }

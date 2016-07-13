@@ -14,10 +14,6 @@
     "email": "sy@another-d-mention.ro",
     "url": "https://github.com/cthackers"
   },
-  "bugs": {
-    "url": "https://github.com/cthackers/adm-zip/issues",
-    "email": "sy@another-d-mention.ro"
-  },
   "licenses": [
     {
       "type": "MIT",
@@ -34,32 +30,46 @@
   ],
   "main": "adm-zip.js",
   "repository": {
-    "type": "git",
-    "url": "git+https://github.com/cthackers/adm-zip.git"
+    "user": "cthackers",
+    "repo": "adm-zip",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/cthackers/adm-zip/tarball/master",
+    "clone_url": "https://github.com/cthackers/adm-zip",
+    "https_url": "https://github.com/cthackers/adm-zip",
+    "travis_url": "https://travis-ci.org/cthackers/adm-zip",
+    "zip_url": "https://github.com/cthackers/adm-zip/archive/master.zip",
+    "api_url": "https://api.github.com/repos/cthackers/adm-zip"
   },
   "engines": {
     "node": ">=0.3.0"
   },
   "gitHead": "49b10ded18680dadb73b85fc5dfa1dbaddc52a28",
-  "_id": "adm-zip-electron@0.4.7",
   "scripts": {},
-  "_shasum": "485784511896c46b7a2e0f503805d4b62aab4b4b",
-  "_from": ".",
   "_npmVersion": "2.14.3",
   "_nodeVersion": "4.1.0",
-  "_npmUser": {
-    "name": "kadledav",
-    "email": "kadledav@gmail.com"
-  },
   "dist": {
     "shasum": "485784511896c46b7a2e0f503805d4b62aab4b4b",
     "tarball": "http://registry.npmjs.org/adm-zip-electron/-/adm-zip-electron-0.4.7.tgz"
   },
-  "maintainers": [
+  "versions": [
+    {
+      "number": "0.4.7",
+      "date": "2015-11-10T15:19:12.230Z"
+    }
+  ],
+  "created": "2015-11-10T15:19:12.230Z",
+  "modified": "2015-11-10T15:19:12.230Z",
+  "lastPublisher": {
+    "name": "kadledav",
+    "email": "kadledav@gmail.com"
+  },
+  "owners": [
     {
       "name": "kadledav",
       "email": "kadledav@gmail.com"
     }
   ],
-  "directories": {}
+  "readme": "# ADM-ZIP for NodeJS with added support for electron original-fs\r\n\r\n* see comit https://github.com/kadledav/adm-zip/commit/3902bb2639dc4a39f1a2e8566219e085ff12a9d0\r\n\r\nADM-ZIP is a pure JavaScript implementation for zip data compression for [NodeJS](http://nodejs.org/). \r\n\r\n# Installation\r\n\r\nWith [npm](http://npmjs.org) do:\r\n\r\n    $ npm install adm-zip\r\n\t\r\n## What is it good for?\r\nThe library allows you to:\r\n\r\n* decompress zip files directly to disk or in memory buffers\r\n* compress files and store them to disk in .zip format or in compressed buffers\r\n* update content of/add new/delete files from an existing .zip\r\n\r\n# Dependencies\r\nThere are no other nodeJS libraries that ADM-ZIP is dependent of\r\n\r\n# Examples\r\n\r\n## Basic usage\r\n```javascript\r\n\r\n\tvar AdmZip = require('adm-zip');\r\n\r\n\t// reading archives\r\n\tvar zip = new AdmZip(\"./my_file.zip\");\r\n\tvar zipEntries = zip.getEntries(); // an array of ZipEntry records\r\n\r\n\tzipEntries.forEach(function(zipEntry) {\r\n\t    console.log(zipEntry.toString()); // outputs zip entries information\r\n\t\tif (zipEntry.entryName == \"my_file.txt\") {\r\n\t\t     console.log(zipEntry.data.toString('utf8')); \r\n\t\t}\r\n\t});\r\n\t// outputs the content of some_folder/my_file.txt\r\n\tconsole.log(zip.readAsText(\"some_folder/my_file.txt\")); \r\n\t// extracts the specified file to the specified location\r\n\tzip.extractEntryTo(/*entry name*/\"some_folder/my_file.txt\", /*target path*/\"/home/me/tempfolder\", /*maintainEntryPath*/false, /*overwrite*/true);\r\n\t// extracts everything\r\n\tzip.extractAllTo(/*target path*/\"/home/me/zipcontent/\", /*overwrite*/true);\r\n\t\r\n\t\r\n\t// creating archives\r\n\tvar zip = new AdmZip();\r\n\t\r\n\t// add file directly\r\n\tzip.addFile(\"test.txt\", new Buffer(\"inner content of the file\"), \"entry comment goes here\");\r\n\t// add local file\r\n\tzip.addLocalFile(\"/home/me/some_picture.png\");\r\n\t// get everything as a buffer\r\n\tvar willSendthis = zip.toBuffer();\r\n\t// or write everything to disk\r\n\tzip.writeZip(/*target file name*/\"/home/me/files.zip\");\r\n\t\r\n\t\r\n\t// ... more examples in the wiki\r\n```\r\n\r\nFor more detailed information please check out the [wiki](https://github.com/cthackers/adm-zip/wiki).\r\n\r\n[![build status](https://secure.travis-ci.org/cthackers/adm-zip.png)](http://travis-ci.org/cthackers/adm-zip)\r\n"
 }

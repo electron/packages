@@ -9,8 +9,17 @@
     "coveralls": "nyc report --reporter=text-lcov | coveralls"
   },
   "repository": {
-    "type": "git",
-    "url": "git+https://github.com/stefanjudis/electron-patch-fs.git"
+    "user": "stefanjudis",
+    "repo": "electron-patch-fs",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/stefanjudis/electron-patch-fs/tarball/master",
+    "clone_url": "https://github.com/stefanjudis/electron-patch-fs",
+    "https_url": "https://github.com/stefanjudis/electron-patch-fs",
+    "travis_url": "https://travis-ci.org/stefanjudis/electron-patch-fs",
+    "zip_url": "https://github.com/stefanjudis/electron-patch-fs/archive/master.zip",
+    "api_url": "https://api.github.com/repos/stefanjudis/electron-patch-fs"
   },
   "keywords": [
     "electron",
@@ -22,9 +31,6 @@
     "email": "stefanjudis@gmail.com"
   },
   "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/stefanjudis/electron-patch-fs/issues"
-  },
   "config": {
     "nyc": {
       "exclude": [
@@ -45,24 +51,41 @@
     "proxyquire": "^1.7.3"
   },
   "gitHead": "4a03618a6b152d9e7e1f183a3a2a84fe678c6719",
-  "_id": "electron-patch-fs@1.0.3",
-  "_shasum": "1c1b8711b182bdfe9f1329f5b7679d63e736a422",
-  "_from": ".",
   "_npmVersion": "3.5.2",
   "_nodeVersion": "5.0.0",
-  "_npmUser": {
-    "name": "stefanjudis",
-    "email": "stefanjudis@gmail.com"
-  },
   "dist": {
     "shasum": "1c1b8711b182bdfe9f1329f5b7679d63e736a422",
     "tarball": "http://registry.npmjs.org/electron-patch-fs/-/electron-patch-fs-1.0.3.tgz"
   },
-  "maintainers": [
+  "versions": [
+    {
+      "number": "1.0.0",
+      "date": "2016-01-04T20:53:11.729Z"
+    },
+    {
+      "number": "1.0.1",
+      "date": "2016-01-04T21:09:02.817Z"
+    },
+    {
+      "number": "1.0.2",
+      "date": "2016-01-06T22:07:11.878Z"
+    },
+    {
+      "number": "1.0.3",
+      "date": "2016-01-06T22:23:52.198Z"
+    }
+  ],
+  "created": "2016-01-04T20:53:11.729Z",
+  "modified": "2016-01-06T22:23:52.198Z",
+  "lastPublisher": {
+    "name": "stefanjudis",
+    "email": "stefanjudis@gmail.com"
+  },
+  "owners": [
     {
       "name": "stefanjudis",
       "email": "stefanjudis@gmail.com"
     }
   ],
-  "directories": {}
+  "readme": "[![Build Status](http://img.shields.io/travis/stefanjudis/electron-patch-fs.svg?style=flat)](https://travis-ci.org/stefanjudis/electron-patch-fs) [![npm version](http://img.shields.io/npm/v/electron-patch-fs.svg?style=flat)](https://www.npmjs.org/package/electron-patch-fs) [![npm downloads](http://img.shields.io/npm/dm/electron-patch-fs.svg?style=flat)](https://www.npmjs.org/package/electron-patch-fs) [![Coverage Status](http://img.shields.io/coveralls/stefanjudis/electron-patch-fs.svg?style=flat)](https://coveralls.io/r/stefanjudis/electron-patch-fs?branch=master) [![Uses greenkeeper.io](https://img.shields.io/badge/Uses-greenkeeper.io-green.svg)](http://greenkeeper.io/)\n\n\n# electron-patch-fs\n\nMonkey patch electrons fs functions with the original ones\n\nElectron patches the native `fs` functions `open` and `openSync` which can lead to errors when dealing with `.asar` file operations like copying and unzipping.\n\nTo avoid these errors `electron-patch-fs` brings back the native functionality.\n\n## Install\n\n```\nnpm install electron-patch-fs\n```\n\n## Basic usage\n\n### `patchFs.patch()`\n\nMonkey patch the file system functions and replace them with the original ones.\nThis goes for the functions `open` and `openSync`.\n\n**Note:** Repeated calls will throw an exception ( unpatch first again ).\n\n### `patchFs.unpatch()`\n\nUndo monkey patch and bring back electrons patched fs functions.\n\n**Note:** Repeated calls will throw an exception ( patch first ).\n\n\n### Example\n\n```javascript\nconst patchFs = require( 'electron-patch-fs' );\nconst fs      = require( 'fs' );\n\n// monkey patch the file system functions\n// and replace them with the original ones\npatchFs.patch();\n\nfs.open( '/some/path/foo.asar', 'r', function() {\n  // undo monkey patch and bring back electrons\n  // patched fs functions\n  patchFs.unpatch();\n} );\n```\n\n### Thanks\n\nI want to thank all these [people](./THANKS.md) for their great work!!!\n\n### License\n\nMIT\n"
 }

@@ -13,8 +13,17 @@
     "Unstable"
   ],
   "repository": {
-    "type": "git",
-    "url": "git+https://github.com/uupaa/H264Profile.js.git"
+    "user": "uupaa",
+    "repo": "H264Profile.js",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/uupaa/H264Profile.js/tarball/master",
+    "clone_url": "https://github.com/uupaa/H264Profile.js",
+    "https_url": "https://github.com/uupaa/H264Profile.js",
+    "travis_url": "https://travis-ci.org/uupaa/H264Profile.js",
+    "zip_url": "https://github.com/uupaa/H264Profile.js/archive/master.zip",
+    "api_url": "https://api.github.com/repos/uupaa/H264Profile.js"
   },
   "scripts": {
     "sync": "node ../WebModule/run/sync.js; npm update; node ../WebModule/run/page.js",
@@ -86,32 +95,38 @@
   "license": "MIT",
   "contributors": [],
   "gitHead": "5bc6b47e5094dc7f7ea7eb717c95859810ba66e3",
-  "bugs": {
-    "url": "https://github.com/uupaa/H264Profile.js/issues"
-  },
   "homepage": "https://github.com/uupaa/H264Profile.js#readme",
-  "_id": "uupaa.h264profile.js@0.0.3",
-  "_shasum": "e3889b2cc5caed4bca340df4d02417e11d4fffa4",
-  "_from": ".",
   "_npmVersion": "2.14.12",
   "_nodeVersion": "4.2.4",
-  "_npmUser": {
+  "dist": {
+    "shasum": "e3889b2cc5caed4bca340df4d02417e11d4fffa4",
+    "tarball": "http://registry.npmjs.org/uupaa.h264profile.js/-/uupaa.h264profile.js-0.0.3.tgz"
+  },
+  "versions": [
+    {
+      "number": "0.0.1",
+      "date": "2016-04-07T07:14:34.180Z"
+    },
+    {
+      "number": "0.0.2",
+      "date": "2016-04-07T08:16:50.143Z"
+    },
+    {
+      "number": "0.0.3",
+      "date": "2016-04-10T17:20:02.422Z"
+    }
+  ],
+  "created": "2016-04-07T07:14:34.180Z",
+  "modified": "2016-04-10T17:20:02.422Z",
+  "lastPublisher": {
     "name": "uupaa",
     "email": "uupaa.js@gmail.com"
   },
-  "maintainers": [
+  "owners": [
     {
       "name": "uupaa",
       "email": "uupaa.js@gmail.com"
     }
   ],
-  "dist": {
-    "shasum": "e3889b2cc5caed4bca340df4d02417e11d4fffa4",
-    "tarball": "http://registry.npmjs.org/uupaa.h264profile.js/-/uupaa.h264profile.js-0.0.3.tgz"
-  },
-  "_npmOperationalInternal": {
-    "host": "packages-16-east.internal.npmjs.com",
-    "tmp": "tmp/uupaa.h264profile.js-0.0.3.tgz_1460308799833_0.8449962835293263"
-  },
-  "directories": {}
+  "readme": "# H264Profile.js [![Build Status](https://travis-ci.org/uupaa/H264Profile.js.svg)](https://travis-ci.org/uupaa/H264Profile.js)\n\n[![npm](https://nodei.co/npm/uupaa.h264profile.js.svg?downloads=true&stars=true)](https://nodei.co/npm/uupaa.h264profile.js/)\n\nH264(AVC) Profile and Level detection.\n\nThis module made of [WebModule](https://github.com/uupaa/WebModule).\n\n## Documentation\n- [Spec](https://github.com/uupaa/H264Profile.js/wiki/)\n- [API Spec](https://github.com/uupaa/H264Profile.js/wiki/H264Profile)\n\n## Browser, NW.js and Electron\n\n```js\n<script src=\"<module-dir>/lib/WebModule.js\"></script>\n<script src=\"<module-dir>/lib/H264Profile.js\"></script>\n<script>\n\nvar codecs     = \"mp4a.40.2, avc1.4d4015\";\nvar codecArray = codecs.split(\",\"); // -> [\"mp4a.40.2\", \" avc1.42c01e\"]\n\nfor (var i = 0, iz = codecArray.length; i < iz; ++i) {\n    var codec = codecArray[i].trim();\n\n    if (/avc1/.test(codec)) {\n        console.info( H264Profile.getProfile(codec) ); // -> \"Base\";\n        console.info( H264Profile.getLevel(codec)   ); // -> \"3.0\";\n    }\n}\n\n</script>\n```\n\n## WebWorkers\n\n```js\nimportScripts(\"<module-dir>/lib/WebModule.js\");\nimportScripts(\"<module-dir>/lib/H264Profile.js\");\n\n```\n\n## Node.js\n\n```js\nrequire(\"<module-dir>/lib/WebModule.js\");\nrequire(\"<module-dir>/lib/H264Profile.js\");\n\n```\n\n"
 }

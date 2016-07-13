@@ -9,8 +9,17 @@
     "url": "http://unindented.org/"
   },
   "repository": {
-    "type": "git",
-    "url": "git://github.com/unindented/electron-installer-debian.git"
+    "user": "unindented",
+    "repo": "electron-installer-debian",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/unindented/electron-installer-debian/tarball/master",
+    "clone_url": "https://github.com/unindented/electron-installer-debian",
+    "https_url": "https://github.com/unindented/electron-installer-debian",
+    "travis_url": "https://travis-ci.org/unindented/electron-installer-debian",
+    "zip_url": "https://github.com/unindented/electron-installer-debian/archive/master.zip",
+    "api_url": "https://api.github.com/repos/unindented/electron-installer-debian"
   },
   "keywords": [
     "electron",
@@ -53,32 +62,46 @@
     "rimraf": "^2.5.1"
   },
   "gitHead": "f08cc07d1e33aacb04e0e11365d77e4c8dd5d809",
-  "bugs": {
-    "url": "https://github.com/unindented/electron-installer-debian/issues"
-  },
   "homepage": "https://github.com/unindented/electron-installer-debian#readme",
-  "_id": "electron-installer-debian@0.3.0",
-  "_shasum": "35b77d78a86fe7a1e7a0a7d9e7e9f2bdb50d3f73",
-  "_from": ".",
   "_npmVersion": "2.14.12",
   "_nodeVersion": "4.2.6",
-  "_npmUser": {
-    "name": "unindented",
-    "email": "unindented@gmail.com"
-  },
   "dist": {
     "shasum": "35b77d78a86fe7a1e7a0a7d9e7e9f2bdb50d3f73",
     "tarball": "http://registry.npmjs.org/electron-installer-debian/-/electron-installer-debian-0.3.0.tgz"
   },
-  "maintainers": [
+  "versions": [
+    {
+      "number": "0.0.1",
+      "date": "2016-01-28T12:20:28.770Z"
+    },
+    {
+      "number": "0.1.0",
+      "date": "2016-02-02T19:38:04.756Z"
+    },
+    {
+      "number": "0.1.1",
+      "date": "2016-02-05T21:07:40.284Z"
+    },
+    {
+      "number": "0.2.0",
+      "date": "2016-02-07T18:59:18.119Z"
+    },
+    {
+      "number": "0.3.0",
+      "date": "2016-04-21T16:49:30.002Z"
+    }
+  ],
+  "created": "2016-01-28T12:20:28.770Z",
+  "modified": "2016-04-21T16:49:30.002Z",
+  "lastPublisher": {
+    "name": "unindented",
+    "email": "unindented@gmail.com"
+  },
+  "owners": [
     {
       "name": "unindented",
       "email": "unindented@gmail.com"
     }
   ],
-  "_npmOperationalInternal": {
-    "host": "packages-16-east.internal.npmjs.com",
-    "tmp": "tmp/electron-installer-debian-0.3.0.tgz_1461257368604_0.23913182970136404"
-  },
-  "directories": {}
+  "readme": "![Electron Installer for Debian](resources/logo.png)\n\n# electron-installer-debian [![Version](https://img.shields.io/npm/v/electron-installer-debian.svg)](https://www.npmjs.com/package/electron-installer-debian) [![Build Status](https://img.shields.io/travis/unindented/electron-installer-debian.svg)](http://travis-ci.org/unindented/electron-installer-debian) [![Dependency Status](https://img.shields.io/gemnasium/unindented/electron-installer-debian.svg)](https://gemnasium.com/unindented/electron-installer-debian)\n\n> Create a Debian package for your Electron app.\n\n\n## Requirements\n\nThis tool requires `fakeroot` and `dpkg` to build the `.deb` package.\n\nI'd recommend building your packages on your target platform, but if you insist on using Mac OS X, you can install these tools through [Homebrew](http://brew.sh/):\n\n```\n$ brew install fakeroot dpkg\n```\n\n\n## Installation\n\nFor use from command-line:\n\n```\n$ npm install -g electron-installer-debian\n```\n\nFor use in npm scripts or programmatically:\n\n```\n$ npm install --save-dev electron-installer-debian\n```\n\n\n## Usage\n\nSay your Electron app lives in `path/to/app`, and has a structure like this:\n\n```\n.\n├── LICENSE\n├── README.md\n├── node_modules\n│   ├── electron-packager\n│   └── electron-prebuilt\n├── package.json\n├── resources\n│   ├── Icon.png\n│   ├── IconTemplate.png\n│   └── IconTemplate@2x.png\n└── src\n    ├── index.js\n    ├── main\n    │   └── index.js\n    └── renderer\n        ├── index.html\n        └── index.js\n```\n\nYou now run `electron-packager` to build the app for Debian:\n\n```\n$ electron-packager . app --platform linux --arch x64 --out dist/\n```\n\nAnd you end up with something like this in your `dist` folder:\n\n```\n.\n└── dist\n    └── app-linux-x64\n        ├── LICENSE\n        ├── LICENSES.chromium.html\n        ├── content_shell.pak\n        ├── app\n        ├── icudtl.dat\n        ├── libgcrypt.so.11\n        ├── libnode.so\n        ├── locales\n        ├── natives_blob.bin\n        ├── resources\n        ├── snapshot_blob.bin\n        └── version\n```\n\nHow do you turn that into a Debian package that your users can install?\n\n### Command-Line\n\nIf you want to run `electron-installer-debian` straight from the command-line, install the package globally:\n\n```\n$ npm install -g electron-installer-debian\n```\n\nAnd point it to your built app:\n\n```\n$ electron-installer-debian --src dist/app-linux-x64/ --dest dist/installers/ --arch amd64\n```\n\nYou'll end up with the package at `dist/installers/app_0.0.1_amd64.deb`.\n\n### Scripts\n\nIf you want to run `electron-installer-debian` through npm, install the package locally:\n\n```\n$ npm install --save-dev electron-installer-debian\n```\n\nEdit the `scripts` section of your `package.json`:\n\n```js\n{\n  \"name\": \"app\",\n  \"description\": \"An awesome app!\",\n  \"version\": \"0.0.1\",\n  \"scripts\": {\n    \"start\": \"electron .\",\n    \"build\": \"electron-packager . app --platform linux --arch x64 --out dist/\",\n    \"deb64\": \"electron-installer-debian --src dist/app-linux-x64/ --dest dist/installers/ --arch amd64\"\n  },\n  \"devDependencies\": {\n    \"electron-installer-debian\": \"*\",\n    \"electron-packager\": \"*\",\n    \"electron-prebuilt\": \"*\"\n  }\n}\n```\n\nAnd run the script:\n\n```\n$ npm run deb64\n```\n\nYou'll end up with the package at `dist/installers/app_0.0.1_amd64.deb`.\n\n### Programmatically\n\nInstall the package locally:\n\n```\n$ npm install --save-dev electron-installer-debian\n```\n\nAnd write something like this:\n\n```js\nvar installer = require('electron-installer-debian')\n\nvar options = {\n  src: 'dist/app-linux-x64/',\n  dest: 'dist/installers/',\n  arch: 'amd64'\n}\n\nconsole.log('Creating package (this may take a while)')\n\ninstaller(options, function (err) {\n  if (err) {\n    console.error(err, err.stack)\n    process.exit(1)\n  }\n\n  console.log('Successfully created package at ' + options.dest)\n})\n```\n\nYou'll end up with the package at `dist/installers/app_0.0.1_amd64.deb`.\n\n### Options\n\nEven though you can pass most of these options through the command-line interface, it may be easier to create a configuration file:\n\n```js\n{\n  \"dest\": \"dist/installers/\",\n  \"icon\": \"resources/Icon.png\",\n  \"categories\": [\n    \"Utility\"\n  ],\n  \"lintianOverrides\": [\n    \"changelog-file-missing-in-native-package\"\n  ]\n}\n```\n\nAnd pass that instead with the `config` option:\n\n```\n$ electron-installer-debian --src dist/app-linux-x64/ --arch amd64 --config config.json\n```\n\nAnyways, here's the full list of options:\n\n#### src\nType: `String`\nDefault: `undefined`\n\nPath to the folder that contains your built Electron application.\n\n#### dest\nType: `String`\nDefault: `undefined`\n\nPath to the folder that will contain your Debian installer.\n\n#### rename\nType: `Function`\nDefault: `function (dest, src) { return path.join(dest, src); }`\n\nFunction that renames all files generated by the task just before putting them in your `dest` folder.\n\n#### options.name\nType: `String`\nDefault: `package.name`\n\nName of the package (e.g. `atom`), used in the [`Package` field of the `control` specification](https://www.debian.org/doc/debian-policy/ch-controlfields.html#s-f-Package).\n\nAccording to the *Debian Policy Manual*:\n\n> Package names [...] must consist only of lower case letters (a-z), digits (0-9), plus (+) and minus (-) signs, and periods (.). They must be at least two characters long and must start with an alphanumeric character.\n\n#### options.productName\nType: `String`\nDefault: `package.productName || package.name`\n\nName of the application (e.g. `Atom`), used in the [`Name` field of the `desktop` specification](http://standards.freedesktop.org/desktop-entry-spec/desktop-entry-spec-latest.html).\n\n#### options.genericName\nType: `String`\nDefault: `package.genericName || package.productName || package.name`\n\nGeneric name of the application (e.g. `Text Editor`), used in the [`GenericName` field of the `desktop` specification](http://standards.freedesktop.org/desktop-entry-spec/desktop-entry-spec-latest.html).\n\n#### options.description\nType: `String`\nDefault: `package.description`\n\nShort description of the application, used in the [`Description` field of the `control` specification](https://www.debian.org/doc/debian-policy/ch-controlfields.html#s-f-Description).\n\n#### options.productDescription\nType: `String`\nDefault: `package.productDescription || package.description`\n\nLong description of the application, used in the [`Description` field of the `control` specification](https://www.debian.org/doc/debian-policy/ch-controlfields.html#s-f-Description).\n\n#### options.version\nType: `String`\nDefault: `package.version`\n\nVersion number of the package, used in the [`Version` field of the `control` specification](https://www.debian.org/doc/debian-policy/ch-controlfields.html#s-f-Version).\n\n#### options.revision\nType: `String`\nDefault: `package.revision`\n\nRevision number of the package, used in the [`Version` field of the `control` specification](https://www.debian.org/doc/debian-policy/ch-controlfields.html#s-f-Version).\n\n#### options.section\nType: `String`\nDefault: `\"utils\"`\n\nApplication area into which the package has been classified, used in the [`Section` field of the `control` specification](https://www.debian.org/doc/debian-policy/ch-controlfields.html#s-f-Section).\n\nYou can read more about [sections](https://www.debian.org/doc/debian-policy/ch-archive.html#s-subsections), and also check out the [list of existing sections in Debian unstable](https://packages.debian.org/unstable/).\n\n#### options.priority\nType: `String`\nDefault: `\"optional\"`\n\nHow important it is that the user have the package installed., used in the [`Priority` field of the `control` specification](https://www.debian.org/doc/debian-policy/ch-controlfields.html#s-f-Priority).\n\nYou can read more about [priorities](https://www.debian.org/doc/debian-policy/ch-archive.html#s-priorities).\n\n#### options.arch\nType: `String`\nDefault: `undefined`\n\nMachine architecture the package is targeted to, used in the [`Architecture` field of the `control` specification](https://www.debian.org/doc/debian-policy/ch-controlfields.html#s-f-Architecture).\n\nFor possible values see the output of `dpkg-architecture -L`.\n\n#### options.size\nType: `Integer`\nDefault: `size of the folder`\n\nEstimate of the total amount of disk space required to install the named package, used in the [`Installed-Size` field of the `control` specification](https://www.debian.org/doc/debian-policy/ch-controlfields.html#s-f-Installed-Size).\n\n#### options.depends et al\nType: `Array[String]`\nDefault: `[]`\n\nRelationships to other packages, used in the [`Depends`, `Recommends`, `Suggests`, `Enhances` and `Pre-Depends` fields of the `control` specification](https://www.debian.org/doc/debian-policy/ch-relationships.html#s-binarydeps).\n\n#### options.maintainer\nType: `String`\nDefault: `package.author.name (package.author.email)`\n\nMaintainer of the package, used in the [`Maintainer` field of the `control` specification](https://www.debian.org/doc/debian-policy/ch-controlfields.html#s-f-Maintainer).\n\n#### options.homepage\nType: `String`\nDefault: `package.homepage || package.author.url`\n\nURL of the homepage for the package, used in the [`Homepage` field of the `control` specification](https://www.debian.org/doc/debian-policy/ch-controlfields.html#s-f-Homepage).\n\n#### options.bin\nType: `String`\nDefault: `package.name`\n\nRelative path to the executable that will act as binary for the application, used in the [`Exec` field of the `desktop` specification](http://standards.freedesktop.org/desktop-entry-spec/desktop-entry-spec-latest.html).\n\nThe generated package will contain a symlink `/usr/bin/<%= options.name %>` pointing to the path provided here.\n\nFor example, providing this configuration:\n\n```js\n{\n  src: '...',\n  dest: '...',\n  name: 'foo',\n  bin: 'resources/cli/launcher.sh'\n}\n```\n\nWill create a package with the following symlink:\n\n```\nusr/bin/foo@ -> ../share/foo/resources/cli/launcher/sh\n```\n\nAnd a desktop specification with the following `Exec` key:\n\n```\nExec=foo %U\n```\n\n#### options.icon\nType: `String` or `Object[String:String]`\nDefault: `undefined`\n\nPath to a single image that will act as icon for the application:\n\n```js\n{\n  icon: 'resources/Icon.png'\n}\n```\n\nOr multiple images with their corresponding resolutions:\n\n```js\n{\n  icon: {\n    '48x48': 'resources/Icon48.png',\n    '64x64': 'resources/Icon64.png',\n    '128x128': 'resources/Icon128.png',\n    '256x256': 'resources/Icon256.png'\n  }\n}\n```\n\n#### options.categories\nType: `Array[String]`\nDefault: `[]`\n\nCategories in which the application should be shown in a menu, used in the [`Categories` field of the `desktop` specification](http://standards.freedesktop.org/desktop-entry-spec/desktop-entry-spec-latest.html).\n\nFor possible values check out the [Desktop Menu Specification](http://standards.freedesktop.org/menu-spec/latest/apa.html).\n\n#### options.mimeType\nType: `Array[String]`\nDefault: `[]`\n\nMIME types the application is able to open, used in the [`MimeType` field of the `desktop` specification](http://standards.freedesktop.org/desktop-entry-spec/desktop-entry-spec-latest.html).\n\n#### options.lintianOverrides\nType: `Array[String]`\nDefault: `[]`\n\nYou can use these to quieten [`lintian`](https://lintian.debian.org/manual/).\n\n\n## Meta\n\n* Code: `git clone git://github.com/unindented/electron-installer-debian.git`\n* Home: <https://github.com/unindented/electron-installer-debian/>\n\n\n## Contributors\n\n* Daniel Perez Alvarez ([unindented@gmail.com](mailto:unindented@gmail.com))\n\n\n## License\n\nCopyright (c) 2016 Daniel Perez Alvarez ([unindented.org](https://unindented.org/)). This is free software, and may be redistributed under the terms specified in the LICENSE file.\n"
 }

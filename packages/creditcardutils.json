@@ -1,0 +1,75 @@
+{
+  "name": "creditcardutils",
+  "version": "1.0.0",
+  "description": "A general purpose javascript library for credit card number validation and formatting. Based on https://github.com/jondavidjohn/payform and https://github.com/stripe/jquery.payment. Usable in React Native and Node.",
+  "keywords": [
+    "payment",
+    "form",
+    "cc",
+    "card",
+    "credit card",
+    "formatting",
+    "validation",
+    "jquery-plugin",
+    "ecosystem:react",
+    "ecosystem:react-native"
+  ],
+  "author": {
+    "name": "Faaez Ul Haq",
+    "email": "faaez.ulhaq@gmail.com"
+  },
+  "license": "MIT",
+  "repository": {
+    "user": "faaez",
+    "repo": "creditcardutils",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/faaez/creditcardutils/tarball/master",
+    "clone_url": "https://github.com/faaez/creditcardutils",
+    "https_url": "https://github.com/faaez/creditcardutils",
+    "travis_url": "https://travis-ci.org/faaez/creditcardutils",
+    "zip_url": "https://github.com/faaez/creditcardutils/archive/master.zip",
+    "api_url": "https://api.github.com/repos/faaez/creditcardutils"
+  },
+  "main": "dist/creditcardutils.js",
+  "scripts": {
+    "test": "make test",
+    "build": "make build",
+    "watch": "make watch"
+  },
+  "devDependencies": {
+    "watch": "~0.13.0",
+    "uglify": "~0.1.1",
+    "mocha": "~2.1.0",
+    "browserify": "~8.1.3",
+    "coffeeify": "~1.0.0",
+    "bundle-collapser": "~1.1.1"
+  },
+  "homepage": "https://github.com/faaez/creditcardutils#readme",
+  "_npmVersion": "3.3.12",
+  "_nodeVersion": "5.5.0",
+  "dist": {
+    "shasum": "c94ad8e6f5ef249b0463e0e5ea8d7a7c4e9ce425",
+    "tarball": "http://registry.npmjs.org/creditcardutils/-/creditcardutils-1.0.0.tgz"
+  },
+  "versions": [
+    {
+      "number": "1.0.0",
+      "date": "2016-03-05T23:54:43.534Z"
+    }
+  ],
+  "created": "2016-03-05T23:54:43.534Z",
+  "modified": "2016-03-05T23:54:43.534Z",
+  "lastPublisher": {
+    "name": "faaez",
+    "email": "faaez.ulhaq@gmail.com"
+  },
+  "owners": [
+    {
+      "name": "faaez",
+      "email": "faaez.ulhaq@gmail.com"
+    }
+  ],
+  "readme": "# creditcardutils\n\n[![Build Status](https://travis-ci.org/faaez/creditcardutils.svg?branch=master)](https://travis-ci.org/faaez/creditcardutils)\n![Dependencies](https://david-dm.org/faaez/creditcardutils.svg)\n\n[![npm](https://nodei.co/npm/creditcardutils.png)](https://npmjs.org/package/creditcardutils)\n\nA general purpose javascript library for credit card number validation and formatting. Based on [`jondavidjohn/payform`](https://github.com/jondavidjohn/payform) and [`jquery.payment`](https://github.com/stripe/jquery.payment). Usable in React Native and Node. \n\nSupported card types:\n\n* Visa\n* MasterCard\n* American Express\n* Diners Club\n* Discover\n* UnionPay\n* JCB\n* Visa Electron\n* Maestro\n* Forbrugsforeningen\n* Dankort\n\n(Custom card types are also [supported](#custom-cards))\n\n## Installation / Usage\n\n### npm (Node and Browserify)\n\n```sh\nnpm install creditcardutils --save\n```\n\n```javascript\nvar creditcardutils = require('creditcardutils');\n\n// Format input for card number \ncreditcardutils.formatCardNumber(input); //=> returns formatted card number\n\n// Validate a credit card number\ncreditcardutils.validateCardNumber('4242 4242 4242 4242'); //=> true\n\n// Get card type from number\ncreditcardutils.parseCardType('4242 4242 4242 4242'); //=> 'visa'\n```\n\n## API\n\n### General Formatting and Validation\n\n#### creditcardutils.formatCardNumber(input)\n\nFormats card numbers:\n\n* Includes a space between every 4 digits\n* Restricts input to numbers\n* Limits to 16 numbers\n* Supports American Express formatting\n\nExample:\n\n``` javascript\ncreditcardutils.formatCardNumber(input); //=>returns formatted card number\n```\n\n#### creditcardutils.validateCardNumber(number)\n\nValidates a card number:\n\n* Validates numbers\n* Validates Luhn algorithm\n* Validates length\n\nExample:\n\n``` javascript\ncreditcardutils.validateCardNumber('4242 4242 4242 4242'); //=> true\n```\n\n#### creditcardutils.validateCardExpiry(month, year)\n\nValidates a card expiry:\n\n* Validates numbers\n* Validates in the future\n* Supports year shorthand\n\nExample:\n\n``` javascript\ncreditcardutils.validateCardExpiry('05', '20'); //=> true\ncreditcardutils.validateCardExpiry('05', '2015'); //=> true\ncreditcardutils.validateCardExpiry('05', '05'); //=> false\n```\n\n#### creditcardutils.validateCardCVC(cvc, type)\n\nValidates a card CVC:\n\n* Validates number\n* Validates length to 4\n\nExample:\n\n``` javascript\ncreditcardutils.validateCardCVC('123'); //=> true\ncreditcardutils.validateCardCVC('123', 'amex'); //=> true\ncreditcardutils.validateCardCVC('1234', 'amex'); //=> true\ncreditcardutils.validateCardCVC('12344'); //=> false\n```\n\n#### creditcardutils.parseCardType(number)\n\nReturns a card type. Either:\n\n* `visa`\n* `mastercard`\n* `amex`\n* `dinersclub`\n* `discover`\n* `unionpay`\n* `jcb`\n* `visaelectron`\n* `maestro`\n* `forbrugsforeningen`\n* `dankort`\n\nThe function will return `null` if the card type can't be determined.\n\nExample:\n\n``` javascript\ncreditcardutils.parseCardType('4242 4242 4242 4242'); //=> 'visa'\ncreditcardutils.parseCardType('hello world?'); //=> null\n```\n\n#### creditcardutils.parseCardExpiry(string)\n\nParses a credit card expiry in the form of MM/YYYY, returning an object containing the `month` and `year`. Shorthand years, such as `13` are also supported (and converted into the longhand, e.g. `2013`).\n\n``` javascript\ncreditcardutils.parseCardExpiry('03 / 2025'); //=> {month: 3: year: 2025}\ncreditcardutils.parseCardExpiry('05 / 04'); //=> {month: 5, year: 2004}\n```\n\nThis function doesn't perform any validation of the month or year; use `creditcardutils.validateCardExpiry(month, year)` for that.\n\n### Custom Cards\n\n#### creditcardutils.cards\n\nArray of objects that describe valid card types. Each object should contain the following fields:\n\n``` javascript\n{\n  // Card type, as returned by creditcardutils.parseCardType.\n  type: 'mastercard',\n  // Regex used to identify the card type. For the best experience, this should be\n  // the shortest pattern that can guarantee the card is of a particular type.\n  pattern: /^5[0-5]/,\n  // Array of valid card number lengths.\n  length: [16],\n  // Array of valid card CVC lengths.\n  cvcLength: [3],\n  // Boolean indicating whether a valid card number should satisfy the Luhn check.\n  luhn: true,\n  // Regex used to format the card number. Each match is joined with a space.\n  format: /(\\d{1,4})/g\n}\n```\n\nWhen identifying a card type, the array is traversed in order until the card number matches a `pattern`. For this reason, patterns with higher specificity should appear towards the beginning of the array.\n\n## Development\n\nPlease see [CONTRIBUTING.md](https://github.com/faaez/creditcardutils/blob/develop/CONTRIBUTING.md).\n"
+}

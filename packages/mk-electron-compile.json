@@ -14,8 +14,17 @@
     "electron-packager-compile": "lib/packager-cli.js"
   },
   "repository": {
-    "type": "git",
-    "url": "git+https://github.com/paulcbetts/electron-compile.git"
+    "user": "paulcbetts",
+    "repo": "electron-compile",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/paulcbetts/electron-compile/tarball/master",
+    "clone_url": "https://github.com/paulcbetts/electron-compile",
+    "https_url": "https://github.com/paulcbetts/electron-compile",
+    "travis_url": "https://travis-ci.org/paulcbetts/electron-compile",
+    "zip_url": "https://github.com/paulcbetts/electron-compile/archive/master.zip",
+    "api_url": "https://api.github.com/repos/paulcbetts/electron-compile"
   },
   "keywords": [
     "electron"
@@ -25,9 +34,6 @@
     "email": "paul@paulbetts.org"
   },
   "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/paulcbetts/electron-compile/issues"
-  },
   "homepage": "https://github.com/paulcbetts/electron-compile",
   "main": "lib/index.js",
   "dependencies": {
@@ -65,28 +71,53 @@
     "mocha": "^2.3.4"
   },
   "gitHead": "14b64c8bb8ae99c33968ee0762e4376741cd9092",
-  "_id": "mk-electron-compile@3.1.3",
-  "_shasum": "1368893003f92c5100023d62ea182f67a57a6874",
-  "_from": ".",
   "_npmVersion": "3.7.2",
   "_nodeVersion": "5.6.0",
-  "_npmUser": {
-    "name": "maxkorp",
-    "email": "maxkorp@8bytealchemy.com"
-  },
   "dist": {
     "shasum": "1368893003f92c5100023d62ea182f67a57a6874",
     "tarball": "http://registry.npmjs.org/mk-electron-compile/-/mk-electron-compile-3.1.3.tgz"
   },
-  "maintainers": [
+  "versions": [
+    {
+      "number": "1.0.1",
+      "date": "2015-10-22T22:56:52.732Z"
+    },
+    {
+      "number": "1.0.2",
+      "date": "2015-10-22T23:16:20.275Z"
+    },
+    {
+      "number": "0.1.2",
+      "date": "2015-11-19T15:50:41.586Z"
+    },
+    {
+      "number": "0.1.3",
+      "date": "2015-11-19T16:15:27.764Z"
+    },
+    {
+      "number": "0.1.4",
+      "date": "2015-11-19T17:04:14.398Z"
+    },
+    {
+      "number": "3.1.2",
+      "date": "2016-05-09T22:04:36.587Z"
+    },
+    {
+      "number": "3.1.3",
+      "date": "2016-05-09T23:15:54.071Z"
+    }
+  ],
+  "created": "2015-10-22T22:56:52.732Z",
+  "modified": "2016-05-09T23:15:54.071Z",
+  "lastPublisher": {
+    "name": "maxkorp",
+    "email": "maxkorp@8bytealchemy.com"
+  },
+  "owners": [
     {
       "name": "maxkorp",
       "email": "maxkorp@8bytealchemy.com"
     }
   ],
-  "_npmOperationalInternal": {
-    "host": "packages-12-west.internal.npmjs.com",
-    "tmp": "tmp/mk-electron-compile-3.1.3.tgz_1462835751396_0.7980889861937612"
-  },
-  "directories": {}
+  "readme": "## electron-compile\n\n![](https://img.shields.io/npm/dm/electron-compile.svg) <a href=\"http://electron.github.io/electron-compile/docs\">![](http://electron.github.io/electron-compile/docs/badge.svg)</a>\n\nelectron-compile compiles JS and CSS on the fly with a single call in your app's 'ready' function.\n\nFor JavaScript:\n\n* JavaScript ES6/ES7 (via Babel)\n* TypeScript\n* CoffeeScript\n\nFor CSS:\n\n* Less\n\nFor HTML:\n\n* Jade\n\nFor JSON:\n\n* CSON\n\n### How does it work? (Easiest Way)\n\nChange your reference to `electron-prebuilt` to `electron-prebuilt-compile`. Tada! You did it.\n\n### Wait, seriously?\n\nYeah. `electron-prebuilt-compile` is like an `electron-prebuilt` that Just Works with all of these languages above.\n\n### How does it work? (Slightly Harder Way)\n\nFirst, add `electron-compile` and `electron-compilers` as a `devDependency`.\n\n```sh\nnpm install --save electron-compile\nnpm install --save-dev electron-compilers\n```\n\nCreate a new file that will be the entry point of your app (perhaps changing 'main' in package.json) - you need to pass in the root directory of your application, which will vary based on your setup. The root directory is the directory that your `package.json` is in.\n\n```js\n// Assuming this file is ./src/es6-init.js\nvar appRoot = path.join(__dirname, '..');\n\n// ...and that your main app is called ./src/main.js. This is written as if\n// you were going to `require` the file from here.\nrequire('electron-compile').init(appRoot, './main');\n```\n\n\n### I did it, now what?\n\nFrom then on, you can now simply include files directly in your HTML, no need for cross-compilation:\n\n```html\n<head>\n  <script src=\"main.coffee\"></script>\n  <link rel=\"stylesheet\" href=\"main.less\" />\n</head>\n```\n\nor just require them in:\n\n```js\nrequire('./mylib')   // mylib.ts\n```\n\n### Something isn't working / I'm getting weird errors\n\nelectron-compile uses the [debug module](https://github.com/visionmedia/debug), set the DEBUG environment variable to debug what electron-compile is doing:\n\n```sh\n## Debug just electron-compile\nDEBUG=electron-compile:* npm start\n\n## Grab everything except for Babel which is very noisy\nDEBUG=*,-babel npm start\n```\n\n### How do I set up (Babel / Less / whatever) the way I want?\n\nIf you've got a `.babelrc` and that's all you want to customize, you can simply use it directly. electron-compile will respect it, even the environment-specific settings. If you want to customize other compilers, use a `.compilerc` file. Here's an example:\n\n```js\n{\n  \"application/javascript\": {\n    \"presets\": [\"stage-0\", \"es2015\", \"react\"],\n    \"sourceMaps\": \"inline\"\n  },\n  \"text/less\": {\n    \"dumpLineNumbers\": \"comments\"\n  }\n}\n```\n\n`.compilerc` also accepts environments with the same syntax as `.babelrc`:\n\n```js\n{\n  \"env\": {\n    \"development\": {\n      \"application/javascript\": {\n        \"presets\": [\"stage-0\", \"es2015\", \"react\"],\n        \"sourceMaps\": \"inline\"\n      },\n      \"text/less\": {\n        \"dumpLineNumbers\": \"comments\"\n      }\n    },\n    \"production\": {\n      \"application/javascript\": {\n        \"presets\": [\"stage-0\", \"es2015\", \"react\"],\n        \"sourceMaps\": \"none\"\n      }\n    }\n  }\n}\n```\n\nThe opening Object is a list of MIME Types, and options passed to the compiler implementation. These parameters are documented here:\n\n* Babel - http://babeljs.io/docs/usage/options\n* CoffeeScript - http://coffeescript.org/documentation/docs/coffee-script.html#section-5\n* TypeScript - https://github.com/Microsoft/TypeScript/blob/v1.5.0-beta/bin/typescriptServices.d.ts#L1076\n* Less - http://lesscss.org/usage/index.html#command-line-usage-options\n* Jade - http://jade-lang.com/api\n\n## How can I precompile my code for release-time?\n\nelectron-compile comes with a wrapper around the [electron-packager](https://github.com/electron-userland/electron-packager) project, `electron-packager-compile` (if you use the `electron-prebuilt-compile` project, this will just be `electron-packager`). Run it the same way you run `electron-packager` and the compilation wire-up will be done in the background.\n\n## How can I precompile my code for release-time? (the hard way)\n\nelectron-compile comes with a command-line application to pre-create a cache for you.\n\n```sh\nUsage: electron-compile --appdir [root-app-dir] paths...\n\nOptions:\n  -a, --appdir  The top-level application directory (i.e. where your\n                package.json is)\n  -v, --verbose  Print verbose information\n  -h, --help     Show help\n```\n\nRun `electron-compile` on all of your application assets, even if they aren't strictly code (i.e. your static assets like PNGs). electron-compile will recursively walk the given directories.\n\n```sh\nelectron-compile --appDir /path/to/my/app ./src ./static\n```\n\n### But I use Grunt / Gulp / I want to do Something Interesting\n\nCompilation also has its own API, check out the [documentation](http://electron.github.io/electron-compile/docs/) for more information.\n"
 }

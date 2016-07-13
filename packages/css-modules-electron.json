@@ -9,8 +9,17 @@
     "prepublish": "in-publish && npm run build || in-install"
   },
   "repository": {
-    "type": "git",
-    "url": "git+https://github.com/kenpowers/css-modules-electron.git"
+    "user": "kenpowers",
+    "repo": "css-modules-electron",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/kenpowers/css-modules-electron/tarball/master",
+    "clone_url": "https://github.com/kenpowers/css-modules-electron",
+    "https_url": "https://github.com/kenpowers/css-modules-electron",
+    "travis_url": "https://travis-ci.org/kenpowers/css-modules-electron",
+    "zip_url": "https://github.com/kenpowers/css-modules-electron/archive/master.zip",
+    "api_url": "https://api.github.com/repos/kenpowers/css-modules-electron"
   },
   "keywords": [
     "css-modules",
@@ -24,9 +33,6 @@
     "url": "http://knpw.rs"
   },
   "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/kenpowers/css-modules-electron/issues"
-  },
   "homepage": "https://github.com/kenpowers/css-modules-electron#readme",
   "devDependencies": {
     "auto-plug": "^1.1.0",
@@ -48,24 +54,29 @@
     "postcss-url": "^4.0.1"
   },
   "gitHead": "3c1a5fb13349a12c94b2620df292c80bc080a4d3",
-  "_id": "css-modules-electron@1.0.0",
-  "_shasum": "ac432cec698037bfe85fd9dd3395fb253ce18384",
-  "_from": ".",
   "_npmVersion": "2.14.2",
   "_nodeVersion": "4.0.0",
-  "_npmUser": {
-    "name": "kenpowers",
-    "email": "ken@kenpowers.net"
-  },
   "dist": {
     "shasum": "ac432cec698037bfe85fd9dd3395fb253ce18384",
     "tarball": "http://registry.npmjs.org/css-modules-electron/-/css-modules-electron-1.0.0.tgz"
   },
-  "maintainers": [
+  "versions": [
+    {
+      "number": "1.0.0",
+      "date": "2015-10-06T01:44:14.503Z"
+    }
+  ],
+  "created": "2015-10-06T01:44:14.503Z",
+  "modified": "2015-10-06T01:44:14.503Z",
+  "lastPublisher": {
+    "name": "kenpowers",
+    "email": "ken@kenpowers.net"
+  },
+  "owners": [
     {
       "name": "kenpowers",
       "email": "ken@kenpowers.net"
     }
   ],
-  "directories": {}
+  "readme": "# css-modules-electron\n\nLoad [CSS Modules] in [Electron]. Once registered, you can `require` CSS modules\nand they will automatically be compiled and injected into the `head` element of\nyour [Electron] app.\n\n## Usage\n\nThis module has the same requirements as [`css-modules-require-hook`]. That\nmeans you must have the following modules installed:\n\n* `postcss` version 4 or higher\n* `postcss-modules-extract-imports`\n* `postcss-modules-local-by-default`\n* `postcss-modules-scope`\n\nYou can register the hook in Electron by requiring the `register` module:\n\n```js\nrequire('css-modules-electron/register');\n```\n\nYou can also specify options using the same API as [`css-modules-require-hook`]\nby requiring the core module directly:\n\n```js\nrequire('css-modules-electron')({\n  // `css-modules-require-hook` options here\n});\n```\n\nSee `example/src/front.js` for a working example.\n\n## Running the Example\n\n```sh\nnpm i\nnpm start\n```\n\n[`css-modules-require-hook`]: https://github.com/css-modules/css-modules-require-hook/tree/552c64a920c6c0b67a6d47aac100e1a43ba781ef \"css-modules-require-hook\"\n[CSS Modules]: https://github.com/css-modules \"CSS Modules\"\n[Electron]: http://electron.atom.io/ \"Electron\"\n"
 }

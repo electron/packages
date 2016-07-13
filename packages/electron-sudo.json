@@ -1,11 +1,20 @@
 {
   "name": "electron-sudo",
-  "version": "3.0.6",
+  "version": "3.0.9",
   "description": "Electron subprocess with administrative privileges, prompting the user with an OS dialog if necessary.",
   "main": "index.js",
   "repository": {
-    "type": "git",
-    "url": "git+ssh://git@github.com/automation-stack/electron-sudo.git"
+    "user": "automation-stack",
+    "repo": "electron-sudo",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/automation-stack/electron-sudo/tarball/master",
+    "clone_url": "https://github.com/automation-stack/electron-sudo",
+    "https_url": "https://github.com/automation-stack/electron-sudo",
+    "travis_url": "https://travis-ci.org/automation-stack/electron-sudo",
+    "zip_url": "https://github.com/automation-stack/electron-sudo/archive/master.zip",
+    "api_url": "https://api.github.com/repos/automation-stack/electron-sudo"
   },
   "keywords": [
     "sudo",
@@ -29,34 +38,69 @@
     "Joran Dirk Gree"
   ],
   "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/automation-stack/electron-sudo/issues"
-  },
   "homepage": "https://github.com/automation-stack/electron-sudo#readme",
   "scripts": {},
-  "gitHead": "9d2e5576e66b155bf316ab5e42260095686286d2",
-  "_id": "electron-sudo@3.0.6",
-  "_shasum": "13ed78cb58a52f0f357e0019a8321103d8299b46",
-  "_from": ".",
+  "gitHead": "e14a6227c22f4a65933404ef7771c80188760292",
   "_npmVersion": "3.3.12",
   "_nodeVersion": "5.1.1",
-  "_npmUser": {
+  "dist": {
+    "shasum": "6ecf43a6d3431f14271e66f7ece4040bc7294612",
+    "tarball": "http://registry.npmjs.org/electron-sudo/-/electron-sudo-3.0.9.tgz"
+  },
+  "stars": 4,
+  "versions": [
+    {
+      "number": "3.0.0",
+      "date": "2015-11-25T09:52:25.591Z"
+    },
+    {
+      "number": "3.0.1",
+      "date": "2015-11-26T14:08:51.165Z"
+    },
+    {
+      "number": "3.0.2",
+      "date": "2015-11-26T14:16:18.021Z"
+    },
+    {
+      "number": "3.0.3",
+      "date": "2016-02-25T09:25:12.432Z"
+    },
+    {
+      "number": "3.0.4",
+      "date": "2016-04-10T18:30:54.814Z"
+    },
+    {
+      "number": "3.0.5",
+      "date": "2016-04-27T15:09:04.511Z"
+    },
+    {
+      "number": "3.0.6",
+      "date": "2016-06-09T01:26:23.329Z"
+    },
+    {
+      "number": "3.0.7",
+      "date": "2016-06-27T11:20:27.489Z"
+    },
+    {
+      "number": "3.0.8",
+      "date": "2016-06-30T10:29:40.788Z"
+    },
+    {
+      "number": "3.0.9",
+      "date": "2016-07-01T15:29:08.835Z"
+    }
+  ],
+  "created": "2015-11-25T09:52:25.591Z",
+  "modified": "2016-07-01T15:29:08.835Z",
+  "lastPublisher": {
     "name": "automation-stack",
     "email": "aleksandr.komlev@gmail.com"
   },
-  "dist": {
-    "shasum": "13ed78cb58a52f0f357e0019a8321103d8299b46",
-    "tarball": "http://registry.npmjs.org/electron-sudo/-/electron-sudo-3.0.6.tgz"
-  },
-  "maintainers": [
+  "owners": [
     {
       "name": "automation-stack",
       "email": "aleksandr.komlev@gmail.com"
     }
   ],
-  "_npmOperationalInternal": {
-    "host": "packages-16-east.internal.npmjs.com",
-    "tmp": "tmp/electron-sudo-3.0.6.tgz_1465435581236_0.2345191277563572"
-  },
-  "directories": {}
+  "readme": "## Electron subprocess with administrative privileges\n\n[![Join the chat at https://gitter.im/automation-stack/electron-sudo](https://badges.gitter.im/automation-stack/electron-sudo.svg)](https://gitter.im/automation-stack/electron-sudo?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)\n\nRun a subprocess with administrative privileges, prompting the user with a graphical OS dialog if necessary. Useful for background subprocesse which run native Electron apps that need sudo.\n\n`electron-sudo` provides a native OS dialog prompt on **Windows** (UAC), on **OS X** and **Linux** with custom name and optional icon, `has no external dependencies and does not require any native bindings`.\n\n`electron-sudo` is based on [sudo-prompt](https://github.com/jorangreef/sudo-prompt), but fully cross-platform more configurable and adaptive for native Electron applications.\n\n- `Windows`, use native \"User Account Control\" (UAC)\n\n    <img width=\"330px\" src=\"./win32/sample.png\">\n\n- `OS X`, use bundled applet\n\n    <img width=\"330px\" src=\"./darwin/sample.png\">\n\n- `Linux`, we try to use system pkexec, gksudo or kdesudo, if it not found then use bundled gksu.\n\n    <img src=\"./linux/sample1.png\" width=\"330px\">\n\n    <img src=\"./linux/sample2.png\" width=\"330px\">\n\n## Platform-specific sources\n\n- [Applet [OSx]](https://github.com/automation-stack/electron-sudo/tree/master/darwin/applet.app/Contents)\n- [Elevate.exe sources [Win32/64]](https://github.com/automation-stack/electron-sudo/tree/master/win32/src)\n- [GKsu sources [Linux]](https://github.com/automation-stack/electron-sudo/tree/master/linux)\n\nIf you don't trust binaries bundled in NPM package you can manually build tools and use them instead.\n\n## Installation\n```\nnpm install electron-sudo\n```\n\n## Usage\nNote: Your command should not start with the `sudo` prefix.\n```js\nvar sudo = require('electron-sudo');\nvar options = {\n  name: 'Your application name',\n  icns: '/path/to/icns/file' // (optional, only for MacOS),\n  process: {\n    options: {\n      // Can use custom environment variables for your privileged subprocess\n      env: {'VAR': 'VALUE'}\n      // ... and all other subprocess options described here\n      // https://nodejs.org/api/child_process.html#child_process_child_process_exec_command_options_callback\n    },\n    on: function(ps) {\n      ps.stdout.on('data', function(data) {});\n      setTimeout(function() {\n        ps.kill()\n      }.bind(ps), 50000);\n    }\n  }\n};\nsudo.exec('echo hello', options, function(error) {});\n```\n\n`electron-sudo` will use `process.title` as `options.name` if `options.name` is not provided. `options.name` must be alphanumeric only (spaces are supported) and at most 70 characters.\n\n\n## Behavior\n- ```OS X```, `electron-sudo` should behave just like the `sudo` command in the shell. If your command does not work with the `sudo` command in the shell (perhaps because it uses `>` redirection to a restricted file), then it will not work with `electron-sudo`. However, it is still possible to use electron-sudo to get a privileged shell.\n\n*Please note that Linux support is currently in beta and requires more testing across Linux distributions.*\n\n- ```Linux```, `electron-sudo` will use embedded `gksu` to show the password prompt and run your command. Where possible, `electron-sudo` will try and get these to mimic `sudo` as much as possible (for example by preserving environment), but your command should not rely on any environment variables or relative paths, in order to work correctly. Depending on which binary is used, and due to the limitations of some binaries, the name of your program or the command itself may be displayed to your user.\n\nJust as you should never use `sudo` to launch any graphical applications, you should never use `electron-sudo` to launch any graphical applications. Doing so could cause files in your home directory to become owned by root. `electron-sudo` is explicitly designed to launch non-graphical terminal commands. For more information, [read this post](http://www.psychocats.net/ubuntu/graphicalsudo).\n\n## Concurrency\n- ```OS X```, you can issue multiple calls to `sudo.exec` concurrently, and `electron-sudo` will batch up multiple permission requests into a single password prompt. These calls will be batched to the extent that they share the same `options.name` and `options.icns` arguments (including the actual content of `options.icns` if provided).\n\n- ```Linux```, `sudo` usually has `tty-tickets` enabled. This prevents `electron-sudo` from batching up multiple permission requests, and will result in a separate password prompt for each call.\n\n- ```Windows```, `sudo` usually use VBS for elevating needed right with UAC. This prevents `electron-sudo` from batching up multiple permission requests, and will result in a separate password prompt for each call.\n\nWhile `electron-sudo` may batch up calls, you should never rely on `electron-sudo` to execute your calls in order. For example, several calls may be waiting on a password prompt, and the next call after the password prompt may execute before any of these calls. If you need to enforce ordering of calls, then you should explicitly order your calls in your application.\n"
 }

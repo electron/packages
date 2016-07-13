@@ -15,8 +15,17 @@
   },
   "description": "An electron app using johnny-five to read a sensor and plot the results",
   "repository": {
-    "type": "git",
-    "url": "git+https://github.com/sofroniewn/electron-johnny-five-examples.git"
+    "user": "sofroniewn",
+    "repo": "electron-johnny-five-examples",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/sofroniewn/electron-johnny-five-examples/tarball/master",
+    "clone_url": "https://github.com/sofroniewn/electron-johnny-five-examples",
+    "https_url": "https://github.com/sofroniewn/electron-johnny-five-examples",
+    "travis_url": "https://travis-ci.org/sofroniewn/electron-johnny-five-examples",
+    "zip_url": "https://github.com/sofroniewn/electron-johnny-five-examples/archive/master.zip",
+    "api_url": "https://api.github.com/repos/sofroniewn/electron-johnny-five-examples"
   },
   "keywords": [
     "electron",
@@ -28,32 +37,30 @@
     "name": "Nicholas Sofroniew"
   },
   "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/sofroniewn/electron-johnny-five-examples/issues"
-  },
   "homepage": "https://github.com/sofroniewn/electron-johnny-five-examples#readme",
-  "_id": "electron-johnny-five-sensor-example@0.1.0",
-  "_shasum": "aa2881cc98081ca7f6ed7ed81c36e094bea1eb22",
-  "_from": ".",
   "_npmVersion": "2.11.3",
   "_nodeVersion": "0.12.7",
-  "_npmUser": {
-    "name": "sofroniewn",
-    "email": "sofroniewn@gmail.com"
-  },
   "dist": {
     "shasum": "aa2881cc98081ca7f6ed7ed81c36e094bea1eb22",
     "tarball": "http://registry.npmjs.org/electron-johnny-five-sensor-example/-/electron-johnny-five-sensor-example-0.1.0.tgz"
   },
-  "maintainers": [
+  "versions": [
+    {
+      "number": "0.1.0",
+      "date": "2016-02-19T07:03:16.976Z"
+    }
+  ],
+  "created": "2016-02-19T07:03:16.976Z",
+  "modified": "2016-02-19T07:03:16.976Z",
+  "lastPublisher": {
+    "name": "sofroniewn",
+    "email": "sofroniewn@gmail.com"
+  },
+  "owners": [
     {
       "name": "sofroniewn",
       "email": "sofroniewn@gmail.com"
     }
   ],
-  "_npmOperationalInternal": {
-    "host": "packages-9-west.internal.npmjs.com",
-    "tmp": "tmp/electron-johnny-five-sensor-example-0.1.0.tgz_1455865392293_0.15780141041614115"
-  },
-  "directories": {}
+  "readme": "#5-sensor\n**This app reads the values of a potentiometer and plots them**\n\n##Setting up the hardware\n\nI used an [arduino mega](https://www.arduino.cc/en/Main/ArduinoBoardMega2560) for this example, but any of the [boards](http://johnny-five.io/platform-support/) supported by johnny-five should work.\n\nConnect a potentiometer to A0\n\n<img src=\"./assets/board.png\" width=\"500\">\n\n##Setting up the code\n\n\nTo run, first clone the repo and npm install the example directory\n\n```\ngit clone https://github.com/sofroniewn/electron-johnny-five-examples\ncd electron-johnny-five-examples/5-sensor\nnpm install\n```\n\nUnfortunately the serial port may not work right away and might need to be rebuilt\n\n```\n./node_modules/.bin/electron-rebuild\n```\n\nAt this point if you try to starting the app with\n\n```\nnpm start\n```\nYou may get an error if the path to <code>serialport.node</code> is wrong\n\n```\nUncaught Error: Cannot find module '/Users/sofroniewn/github/electron-johnny-five-examples/1-led/node_modules/johnny-five/node_modules/serialport/build/Release/node-v47-darwin-x64/serialport.node'\n```\n\nThis can easily be fixed by\n\n```\nmv ./node_modules/johnny-five/node_modules/serialport/build/Release/electron-v0.36-darwin-x64/ ./node_modules/johnny-five/node_modules/serialport/build/Release/node-v47-darwin-x64/\n```\n\nYou're now ready to run the app!\n\nFor more information about that error and using electron with johnny-five and node-serialport in general, check out this super helpful [blog post](http://meow.noopkat.com/using-node-serialport-in-an-electron-app/) by [@noopkat](https://github.com/noopkat)\n\n##Running the app\nAfter setting up the [hardware](https://github.com/sofroniewn/electron-johnny-five-examples/tree/master/5-sensor#setting-up-the-hardware) and the [code](https://github.com/sofroniewn/electron-johnny-five-examples/tree/master/5-sensor#setting-up-the-code) you are now ready to run the app with \n\n```\nnpm start\n```\n\nOnce the board has been found and the green status light in the top right has turned on, you should be able to click the **start** button in the top left corner. Sensor values will then start being acquired and plotted to the screen using a [lightning](http://lightning-viz.org/) vizualization.\n\n<img src=\"./assets/screenshot.png\" width=\"500\">\n\n**Congrats!** Check out the next example [6-sensor-servo](https://github.com/sofroniewn/electron-johnny-five-examples/tree/master/6-sensor-servo)"
 }

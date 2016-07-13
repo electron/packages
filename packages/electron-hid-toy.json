@@ -1,0 +1,100 @@
+{
+  "name": "electron-hid-toy",
+  "version": "0.1.0",
+  "description": "Play with Electron and node-hid",
+  "main": "main.js",
+  "author": {
+    "name": "Tod Kurt",
+    "email": "todbotdotcom@gmail.com",
+    "url": "https://github.com/todbot"
+  },
+  "license": "ISC",
+  "repository": {
+    "user": "todbot",
+    "repo": "electron-hid-toy",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/todbot/electron-hid-toy/tarball/master",
+    "clone_url": "https://github.com/todbot/electron-hid-toy",
+    "https_url": "https://github.com/todbot/electron-hid-toy",
+    "travis_url": "https://travis-ci.org/todbot/electron-hid-toy",
+    "zip_url": "https://github.com/todbot/electron-hid-toy/archive/master.zip",
+    "api_url": "https://api.github.com/repos/todbot/electron-hid-toy"
+  },
+  "scripts": {
+    "start": "electron . --enable-logging --remote-debugging-port=9222",
+    "dev": "NODE_ENV='development' npm run start",
+    "dist": "build -owl --x64 && build -wl --ia32",
+    "dist:mac": "build --mac",
+    "reload": "live-reload app --port 35729",
+    "electron-rebuild": "electron-rebuild -v 1.2.6 --pre-gyp-fix --force --module_dir . -w node-hid -e node_modules/electron-prebuilt",
+    "postinstall": "npm run electron-rebuild"
+  },
+  "build": {
+    "app-bundle-id": "com.todbot.electron-hid-toy",
+    "app-category-type": "public.app-category.utilities",
+    "iconUrl": "http://eatodo.s3.amazonaws.com/icon.ico",
+    "mac": {
+      "title": "Electron HID Toy",
+      "background": "build/background.png",
+      "icon": "build/icon.icns",
+      "icon-size": 128,
+      "contents": [
+        {
+          "x": 355,
+          "y": 125,
+          "type": "link",
+          "path": "/Applications"
+        },
+        {
+          "x": 155,
+          "y": 125,
+          "type": "file"
+        }
+      ]
+    }
+  },
+  "dependencies": {
+    "babel-cli": "^6.10.1",
+    "babel-preset-react": "^6.3.13",
+    "babel-register": "^6.9.0",
+    "bootstrap": "^3.3.5",
+    "node-hid": "^0.5.1",
+    "react": "^0.14.2",
+    "react-bootstrap": "^0.27.3",
+    "react-dom": "^0.14.2"
+  },
+  "devDependencies": {
+    "electron-prebuilt": "^1.2.6",
+    "electron-builder": "^5.10.5",
+    "electron-rebuild": "^1.1.5"
+  },
+  "gitHead": "335c48ea1b3196f4c757f2d8763f8e01510841d1",
+  "homepage": "https://github.com/todbot/electron-hid-toy#readme",
+  "_npmVersion": "3.10.3",
+  "_nodeVersion": "6.3.0",
+  "dist": {
+    "shasum": "03297821db751b85890c22039627679dc3d833fb",
+    "tarball": "http://registry.npmjs.org/electron-hid-toy/-/electron-hid-toy-0.1.0.tgz"
+  },
+  "versions": [
+    {
+      "number": "0.1.0",
+      "date": "2016-07-08T17:48:19.987Z"
+    }
+  ],
+  "created": "2016-07-08T17:48:19.987Z",
+  "modified": "2016-07-08T17:48:19.987Z",
+  "lastPublisher": {
+    "name": "todbot",
+    "email": "todbotdotcom@gmail.com"
+  },
+  "owners": [
+    {
+      "name": "todbot",
+      "email": "todbotdotcom@gmail.com"
+    }
+  ],
+  "readme": "# electron-hid-toy\n\nA simple Electron app to experiment with `node-hid`.\n\nTested on Electron v1.2.6.\n\nTo use:\n```\nnpm install\nnpm start\n```\n\n![screenshot](./screenshot.png)\n\nUses the magic of `require('babel-register')` in both the app and renderer to do on-the-fly transpiling\n\nThis project leans heavily on https://github.com/b52/electron-es6-react\nand http://electron.rocks/electron-builder-explained/\n"
+}

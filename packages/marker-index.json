@@ -15,8 +15,17 @@
     "install": "node-gyp rebuild"
   },
   "repository": {
-    "type": "git",
-    "url": "git+https://github.com/atom/marker-index.git"
+    "user": "atom",
+    "repo": "marker-index",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/atom/marker-index/tarball/master",
+    "clone_url": "https://github.com/atom/marker-index",
+    "https_url": "https://github.com/atom/marker-index",
+    "travis_url": "https://travis-ci.org/atom/marker-index",
+    "zip_url": "https://github.com/atom/marker-index/archive/master.zip",
+    "api_url": "https://api.github.com/repos/atom/marker-index"
   },
   "keywords": [
     "patch data-structure"
@@ -26,9 +35,6 @@
     "email": "nathan@github.com"
   },
   "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/atom/marker-index/issues"
-  },
   "homepage": "https://github.com/atom/marker-index",
   "devDependencies": {
     "babel": "^5.0.0",
@@ -53,20 +59,85 @@
   },
   "gypfile": true,
   "gitHead": "14f5ad27a7fbdbce507ebc257a7abefb86af6994",
-  "_id": "marker-index@4.0.0",
-  "_shasum": "13a1e2fcace43afc4dba1fdc497664b16e5b7e11",
-  "_from": ".",
   "_npmVersion": "2.14.4",
   "_nodeVersion": "4.1.1",
-  "_npmUser": {
-    "name": "as-cii",
-    "email": "me@as-cii.com"
-  },
   "dist": {
     "shasum": "13a1e2fcace43afc4dba1fdc497664b16e5b7e11",
     "tarball": "http://registry.npmjs.org/marker-index/-/marker-index-4.0.0.tgz"
   },
-  "maintainers": [
+  "versions": [
+    {
+      "number": "1.0.0",
+      "date": "2015-09-25T03:52:54.379Z"
+    },
+    {
+      "number": "1.0.1",
+      "date": "2015-09-25T03:57:28.917Z"
+    },
+    {
+      "number": "1.0.2",
+      "date": "2015-09-25T15:19:44.623Z"
+    },
+    {
+      "number": "1.0.3",
+      "date": "2015-09-25T17:56:32.001Z"
+    },
+    {
+      "number": "2.0.0",
+      "date": "2015-10-22T22:51:55.687Z"
+    },
+    {
+      "number": "2.1.0",
+      "date": "2015-11-03T19:28:38.530Z"
+    },
+    {
+      "number": "2.1.1",
+      "date": "2015-11-16T07:33:33.819Z"
+    },
+    {
+      "number": "3.0.0",
+      "date": "2015-11-20T02:54:26.710Z"
+    },
+    {
+      "number": "3.0.1",
+      "date": "2015-11-20T03:05:09.940Z"
+    },
+    {
+      "number": "3.0.2",
+      "date": "2015-11-20T05:48:59.622Z"
+    },
+    {
+      "number": "3.0.3",
+      "date": "2015-11-23T18:30:29.492Z"
+    },
+    {
+      "number": "3.0.4",
+      "date": "2015-11-24T13:39:57.910Z"
+    },
+    {
+      "number": "3.1.0-0",
+      "date": "2015-12-16T22:40:41.363Z"
+    },
+    {
+      "number": "3.1.0-1",
+      "date": "2015-12-16T23:03:33.205Z"
+    },
+    {
+      "number": "3.1.0",
+      "date": "2015-12-17T03:52:39.188Z"
+    },
+    {
+      "number": "4.0.0",
+      "date": "2016-04-13T11:47:31.698Z"
+    }
+  ],
+  "created": "2015-09-25T03:52:54.379Z",
+  "modified": "2016-04-13T11:47:31.698Z",
+  "lastPublisher": {
+    "name": "as-cii",
+    "email": "me@as-cii.com"
+  },
+  "owners": [
     {
       "name": "as-cii",
       "email": "me@as-cii.com"
@@ -84,9 +155,5 @@
       "email": "nathan@github.com"
     }
   ],
-  "_npmOperationalInternal": {
-    "host": "packages-12-west.internal.npmjs.com",
-    "tmp": "tmp/marker-index-4.0.0.tgz_1460548048890_0.7612095384392887"
-  },
-  "directories": {}
+  "readme": "# marker-index\n\nThis module is used by Atom to efficiently track logical locations in a text buffer as the contents of the buffer are changed.\n\n## Example\n\n```js\nimport MarkerIndex from 'marker-index'\n\nlet index = new MarkerIndex\n\n// associate a marker id with two ordered start and end points\nindex.insert(1, {row: 2, column: 5}, {row: 4, column: 10})\n// splice represents a change to the text file\n// you pass it a starting point, then points representing the old and new extent\nindex.splice({row: 3, column: 5}, {row: 0, column: 0}, {row: 1, column: 0})\n// the marker's end point was updated by the splice\nindex.getEnd(1) // => {row: 5, column: 10}\n```\n\n## `MarkerIndex` API\n\n### `insert (id, start, end)`\n\nAssociates the given non-negative integer with a range represented by two `{row: number, column: number}` objects.\n\n### `splice (start, oldExtent, newExtent)`\n\nUpdate the locations of all markers based on the description of a change to the text. The range of the replaced text is described by *traversing* from `start` by `oldExtent`. The range of the new text is described by *traversing* from `start` to `newExtent`.\n\n*Traversal* means that beginning with the `start` location, we arrive at a new location by performing X line feeds and carriage returns and then walk forward Y columns, where X is the `row` of the given traversal extent and Y is its `column`. So basically `start`, `oldExtent`, and `newExtent` describe two ranges in the file, basically the spatial before and after effects of a change.\n\nThis method returns an object that describes what markers were *invalidated* by the change based on various invalidation strategies. If a marker is in a set for a given strategy, it was invalidated according to that strategy. The strategies are as follows:\n\n* `touch` Contains markers that the change touched in any way.\n* `inside` Contains markers that the change touched, but not markers with endpoints immediately adjacent to the change.\n* `overlap` Contains markers that had one or both of their endpoints surrounded by the change.s\n* `surround` Contains markers that had both endpoints surrounded by the change.\n\n### `setExclusive (markerId, boolean)`\n\n*Exclusive* markers have a different behavior with respect to *insertions*, which are splice operations with an `oldExtent` of `{row: 0, column: 0}`. Normally, insertions are assumed to occur inside markers. Exclusive markers will prefer to interpret changes as being outside their boundaries. That is, an insertion at a markers start point will push it over, but an insertion at a marker's endpoint will not change its location.\n\n### `isExclusive (markerId)`\n\nReturns whether the given marker id has been set to behave exclusively via `setExclusive`.\n\n### `delete (markerId)`\n\nRemoves the specified marker from the index.\n\n### `getRange (markerId)`\n\nReturns the range for the given marker id, in the form of an object with `start` and `end` points.\n\n### `getStart (markerId)`\n\nReturns a `{row: number, column: number}` object representing the start of the specified marker.\n\n### `getEnd (markerId)`\n\nReturns a `{row: number, column: number}` object representing the end of the specified marker.\n\n### `dump ()`\n\nReturns the current location of every marker in the index, represented as an object mapping marker ids to range objects. For example:\n\n```js\n{\n  '1': {start: {row: 2, column: 5}, end: {row: 5, column: 10}},\n  '2': {start: {row: 4, column: 10}, end: {row: 6, column: 3}}\n}\n```\n\n### `findIntersecting (start, end = start)`\n\nReturns a set with the ids of all markers intersecting the specified point range.\n\n### `findContaining (start, end = start)`\n\nReturns a set with the ids of all markers intersecting the specified point range.\n\n### `findContainedIn (start, end)`\n\nReturns a set with the ids of all markers contained in the specified point range.\n\n### `findStartingIn (start, end)`\n\nReturns a set with the ids of all markers starting in the specified point range.\n\n### `findEndingIn (start, end)`\n\nReturns a set with the ids of all markers ending in the specified point range.\n\n### `findStartingAt (position)`\n\nReturns a set with the ids of all markers starting at the specified point.\n\n### `findEndingAt (position)`\n\nReturns a set with the ids of all markers ending at the specified point.\n"
 }

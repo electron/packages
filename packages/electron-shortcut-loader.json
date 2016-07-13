@@ -4,8 +4,17 @@
   "description": "Loading pre-defined shortcuts with custom events and more options",
   "license": "MIT",
   "repository": {
-    "type": "git",
-    "url": "git+https://github.com/ragingwind/electron-shortcut-loader.git"
+    "user": "ragingwind",
+    "repo": "electron-shortcut-loader",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/ragingwind/electron-shortcut-loader/tarball/master",
+    "clone_url": "https://github.com/ragingwind/electron-shortcut-loader",
+    "https_url": "https://github.com/ragingwind/electron-shortcut-loader",
+    "travis_url": "https://travis-ci.org/ragingwind/electron-shortcut-loader",
+    "zip_url": "https://github.com/ragingwind/electron-shortcut-loader/archive/master.zip",
+    "api_url": "https://api.github.com/repos/ragingwind/electron-shortcut-loader"
   },
   "author": {
     "name": "ragingwind",
@@ -50,28 +59,58 @@
     "node": true
   },
   "gitHead": "16b70e00724ab2b36ddb3e251d42e167a336273b",
-  "bugs": {
-    "url": "https://github.com/ragingwind/electron-shortcut-loader/issues"
-  },
   "homepage": "https://github.com/ragingwind/electron-shortcut-loader#readme",
-  "_id": "electron-shortcut-loader@0.4.0",
-  "_shasum": "c180da7f31b04f27a555133e778b642271cc4bec",
-  "_from": ".",
   "_npmVersion": "2.14.4",
   "_nodeVersion": "4.1.2",
-  "_npmUser": {
-    "name": "ragingwind",
-    "email": "ragingwind@gmail.com"
-  },
   "dist": {
     "shasum": "c180da7f31b04f27a555133e778b642271cc4bec",
     "tarball": "http://registry.npmjs.org/electron-shortcut-loader/-/electron-shortcut-loader-0.4.0.tgz"
   },
-  "maintainers": [
+  "versions": [
+    {
+      "number": "0.0.0",
+      "date": "2015-10-14T04:40:01.865Z"
+    },
+    {
+      "number": "0.1.0",
+      "date": "2015-10-14T04:40:22.145Z"
+    },
+    {
+      "number": "0.1.1",
+      "date": "2015-10-14T22:11:54.745Z"
+    },
+    {
+      "number": "0.1.2",
+      "date": "2015-10-27T05:58:19.697Z"
+    },
+    {
+      "number": "0.1.3",
+      "date": "2015-10-27T10:14:30.737Z"
+    },
+    {
+      "number": "0.2.0",
+      "date": "2015-11-14T21:34:38.805Z"
+    },
+    {
+      "number": "0.3.0",
+      "date": "2015-11-15T20:48:53.545Z"
+    },
+    {
+      "number": "0.4.0",
+      "date": "2015-12-21T19:17:43.278Z"
+    }
+  ],
+  "created": "2015-10-14T04:40:01.865Z",
+  "modified": "2015-12-21T19:17:43.278Z",
+  "lastPublisher": {
+    "name": "ragingwind",
+    "email": "ragingwind@gmail.com"
+  },
+  "owners": [
     {
       "name": "ragingwind",
       "email": "ragingwind@gmail.com"
     }
   ],
-  "directories": {}
+  "readme": "# electron-shortcut-loader\n\n> Loading pre-defined shortcuts with custom events and more options\n\n![](https://cloud.githubusercontent.com/assets/124117/11163454/1605df60-8b14-11e5-99b6-0ba3006528fb.png)\n\n## Install\n\n```\n$ npm install --save electron-shortcut-loader\n```\n\n\n## Usage\n\nShortcutLoader can load pre-defined shortcuts data from a javascript file with `module.exports` in node\n\n```js\n'use strict';\n\nmodule.exports = {\n\t'Command+A': {\n\t\tevent: 'select-all'\n\t},\n\t'Cmd+Alt+I': {\n\t\tevent: 'show-devtool'\n\t},\n\t'CommandOrControl+?': {\n\t\tevent: 'focus'\n\t},\n\t'Command+?': {\n\t\tevent: 'focus'\n\t},\n\t'Command+J': {\n\t\tevent: () => {\n\t\t\tconsole.log('You can register individual event');\n\t\t}\n\t}\n};\n```\n, or a JSON object in code.\n\n```js\nconst ShortcutLoader = require('ShortcutLoader');\n\nShortcutLoader.load({\n\t'Command+A': {\n\t\tevent: 'select-all'\n\t},\n\t'Cmd+Alt+I': {\n\t\tevent: 'show-devtool'\n\t},\n});\n```\n\nIt supports two types of API, `static` and `instance` methods that allow you to manage shortcuts on `global` and `local`. For global, the shortcut loader manage the one instances dealing with static method and on the other hand, You can manage multiple set of shortcuts depending on your purpose. For example, it could be possible that create each shortcut loader per browser window.\n\nLet see how to use static method on global mode.\n\n```js\nconst ShortcutLoader = require('electron-shortcut-loader');\n\nShortcutLoader.load('./shortcuts', {\n\tautoRegister: false,\n\tcmdOrCtrl: true,\n}, app);\n\n// register shortcuts in manually\napp.on('ready', function () {\n\tshortcuts.register();\n});\n\napp.on('will-quit', function () {\n\tshortcuts.unregister();\n});\n\n// 'shortcut-pressed' is custom event named from Shortcut Loader\napp.on('shortcut-pressed', function (e) {\n\tconsole.log(e.shortcut, e.event, 'key-event has been fired');\n});\n```\n\n, or You can create a instance by hand to create and manage multiple shortcut set.\n\n```js\nconst loader = new ShortcutLoader();\n\n// with common anonymous function\nloader.load('./shortcuts', {\n\tautoRegister: false,\n\tcmdOrCtrl: true,\n}, (e) =>\n\tconsole.log(e.shortcut, e.event, 'key-event has been fired');\n});\n\n// You can use `app`, the instance of EventEmitter, as a event handler.\n// See demo/index.js for further information.\nconst loaderWithApp = new ShortcutLoader();\nloader.load('./shortcuts2', {\n\tautoRegister: true,\n\tcmdOrCtrl: true,\n}, app);\n\n// events, registered with loaderWithApp, will be fired with `shortcut-pressed` event through to `app`\napp.on('shortcut-pressed', function (e) {\n\tconsole.log(e.shortcut, e.event, 'key-event has been fired');\n});\n```\n\n## API\n\n### ShortcutLoader.load, un/register\n\nStatic methods for ShortcutLoader. see below information of APIs for further information.\n\n### ShortcutLoader()\n\nconstructor of ShortcutLoader.\n\n#### load(input, [options], handler)\n\nLoad shortcuts coming from a file or object.\n\n##### input\n\nType: `string` or `object`\n\nA path of shortcuts file or JSON data which has the set of shortcuts as JSON data, will be registered by `register` method. __the path will be resolved with path of current module willing to import shortcuts.__ See more detailed structure of JSON data.\n\n##### options\n\nWill be delivered to each shortcut created by `electron-shortcut`. See further information of [options](https://github.com/ragingwind/electron-shortcut#options).\n\n##### handler\n\nEvent handler, the instance of `EventEmitter` such as `app` or anonymous function. If is not set, `app` is the default event handler and `shortcut-pressed` is the pre-defined name for event handler.\n\n#### register\n\nshortcuts will be registered.\n\n#### unregister\n\nshortcuts will be unregistered.\n\n## Pre-defined shortcut data\n\nIt should consist of accelerator name and event handler. the accelerator name is the key and event handler could be the name of event or anonymous function for an individual event. not allows extra options in a event.\n\n- `event`: event name which will be fired to the instance of `EventEmitter` such as `app` or through to anonymous function. If is not set? will be fired by the name of accelerator\n\n```js\n// predefine shortcuts with events and options in shortcuts.js\n'use strict';\nmodule.exports = {\n\t'Command+A': {\n\t\tevent: 'select-all'\n\t},\n\t'Cmd+Alt+I': {},\n\t'CommandOrControl+?': {\n\t\tevent: e => {}\n\t}\n};\n```\n\n## Event\n\nWhen a specific shortcut key has been pressed, `event` object pass through to the event handler.  For `EventEmitter` event handler, `shortcut-pressed` is the pre-defined name of the event and you can use the custom event name. If you set anonymous function at event, the `shortcut name` will be used as the name of the event and both of property of `event`, `shortcut` and `event` will be same.\n\n```js\nShortcutLoader.load('Command+A', e => {\n\tconsole.log(\n\t\te.shortcut, // the name of accelerator\n\t\te.event // the name of accelerator\n\t)\n});\n\napp.on('shortcut-pressed', e => {\n\tconsole.log(\n\t\te.shortcut, // the name of accelerator\n\t\te.event // the custom name for the event or accelerator\n\t);\n})\n```\n\n## Run demo\n\n```\n$ npm install && npm start\n```\n\n## License\n\nMIT © [ragingwind](http://ragingwind.me)\n"
 }

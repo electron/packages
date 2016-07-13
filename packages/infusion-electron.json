@@ -8,11 +8,17 @@
   },
   "license": "BSD-3-Clause",
   "repository": {
-    "type": "git",
-    "url": "git://github.com/colinbdclark/infusion-electron.git"
-  },
-  "bugs": {
-    "url": "http://github.com/colinbdclark/infusion-electron/issues"
+    "user": "colinbdclark",
+    "repo": "infusion-electron",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/colinbdclark/infusion-electron/tarball/master",
+    "clone_url": "https://github.com/colinbdclark/infusion-electron",
+    "https_url": "https://github.com/colinbdclark/infusion-electron",
+    "travis_url": "https://travis-ci.org/colinbdclark/infusion-electron",
+    "zip_url": "https://github.com/colinbdclark/infusion-electron/archive/master.zip",
+    "api_url": "https://api.github.com/repos/colinbdclark/infusion-electron"
   },
   "homepage": "http://github.com/colinbdclark/infusion-electron",
   "dependencies": {
@@ -28,24 +34,29 @@
     "dedupe-infusion": "node -e \"require('dedupe-infusion')();\""
   },
   "gitHead": "d5c639c47524138e11aab54af8b5079f03295bf3",
-  "_id": "infusion-electron@0.2.0",
-  "_shasum": "4e5a69a26f05e9423a71351719b6526f0c3ffd94",
-  "_from": ".",
   "_npmVersion": "2.14.7",
   "_nodeVersion": "4.2.1",
-  "_npmUser": {
-    "name": "colinbdclark",
-    "email": "colinbdclark@gmail.com"
-  },
   "dist": {
     "shasum": "4e5a69a26f05e9423a71351719b6526f0c3ffd94",
     "tarball": "http://registry.npmjs.org/infusion-electron/-/infusion-electron-0.2.0.tgz"
   },
-  "maintainers": [
+  "versions": [
+    {
+      "number": "0.2.0",
+      "date": "2015-11-04T01:00:17.667Z"
+    }
+  ],
+  "created": "2015-11-04T01:00:17.667Z",
+  "modified": "2015-11-04T01:00:17.667Z",
+  "lastPublisher": {
+    "name": "colinbdclark",
+    "email": "colinbdclark@gmail.com"
+  },
+  "owners": [
     {
       "name": "colinbdclark",
       "email": "colinbdclark@gmail.com"
     }
   ],
-  "directories": {}
+  "readme": "infusion-electron\n=================\n\nInfusion-Electron is a collection of [Fluid Infusion](https://github.com/fluid-project/infusion) components that make it easier to use [Atom Electron](https://github.com/atom/electron).\n\nUsing Infusion-Electron\n-----------------------\n\n### Deduplicating Infusion\n\nFluid Infusion requires that a single instance of its module be loaded per Node.js application. To ensure that you don't have multiple copies of Infusion installed, you'll need to use the [dedupe-infusion](https://github.com/fluid-project/dedupe-infusion) after installing (or prior to running) your application. Here's how:\n\nIn your <code>package.json</code>, you'll need to declare a dependency on <code>dedupe-infusion</code>:\n\n    {\n        \"dependencies\": {\n            \"dedupe-infusion\": \"1.0.0\"\n        }\n    }\n\nAnd you'll also want to include a script that takes care of deduplicating after installation. Please note that npm's postinstall scripts are susceptible to race conditions and aren't appropriate for this task.\n\n    {\n        \"scripts\": {\n            \"dedupe-infusion\": \"node -e \\\"require('dedupe-infusion')()\\\"\",\n            \"fullinstall\": \"npm install && npm run dedupe-infusion\"\n        }\n    }\n\nTo install your application, you can run:\n\n    npm run fullinstall\n\nAttribution and License\n-----------------------\n\nThis library was written by Colin Clark and is distributed under the \"new\" BSD 3-clause license.\n"
 }

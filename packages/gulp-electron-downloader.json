@@ -7,8 +7,17 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
-    "type": "git",
-    "url": "git+https://github.com/smebberson/gulp-electron-downloader.git"
+    "user": "smebberson",
+    "repo": "gulp-electron-downloader",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/smebberson/gulp-electron-downloader/tarball/master",
+    "clone_url": "https://github.com/smebberson/gulp-electron-downloader",
+    "https_url": "https://github.com/smebberson/gulp-electron-downloader",
+    "travis_url": "https://travis-ci.org/smebberson/gulp-electron-downloader",
+    "zip_url": "https://github.com/smebberson/gulp-electron-downloader/archive/master.zip",
+    "api_url": "https://api.github.com/repos/smebberson/gulp-electron-downloader"
   },
   "keywords": [
     "gulpplugin",
@@ -18,9 +27,6 @@
     "name": "Scott Mebberson"
   },
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/smebberson/gulp-electron-downloader/issues"
-  },
   "homepage": "https://github.com/smebberson/gulp-electron-downloader",
   "dependencies": {
     "async": "^0.9.0",
@@ -31,28 +37,54 @@
     "request": "^2.55.0"
   },
   "gitHead": "1ecaef83671f39fcde0db5bbda32aa5dac7946b1",
-  "_id": "gulp-electron-downloader@0.1.6",
-  "_shasum": "467d59a0122adca58aa363c26ba104f18cb8e507",
-  "_from": ".",
   "_npmVersion": "3.6.0",
   "_nodeVersion": "0.10.38",
-  "_npmUser": {
-    "name": "smebberson",
-    "email": "scott@scottmebberson.com"
-  },
   "dist": {
     "shasum": "467d59a0122adca58aa363c26ba104f18cb8e507",
     "tarball": "http://registry.npmjs.org/gulp-electron-downloader/-/gulp-electron-downloader-0.1.6.tgz"
   },
-  "maintainers": [
+  "stars": 1,
+  "versions": [
+    {
+      "number": "0.0.1",
+      "date": "2015-05-08T03:50:38.999Z"
+    },
+    {
+      "number": "0.1.1",
+      "date": "2015-07-03T12:48:45.855Z"
+    },
+    {
+      "number": "0.1.2",
+      "date": "2015-09-14T06:07:16.921Z"
+    },
+    {
+      "number": "0.1.3",
+      "date": "2015-09-14T07:02:57.850Z"
+    },
+    {
+      "number": "0.1.4",
+      "date": "2015-09-17T00:38:17.365Z"
+    },
+    {
+      "number": "0.1.5",
+      "date": "2015-09-17T08:05:49.726Z"
+    },
+    {
+      "number": "0.1.6",
+      "date": "2016-02-04T22:48:07.422Z"
+    }
+  ],
+  "created": "2015-05-08T03:50:38.999Z",
+  "modified": "2016-02-04T22:48:07.422Z",
+  "lastPublisher": {
+    "name": "smebberson",
+    "email": "scott@scottmebberson.com"
+  },
+  "owners": [
     {
       "name": "smebberson",
       "email": "scott@scottmebberson.com"
     }
   ],
-  "_npmOperationalInternal": {
-    "host": "packages-9-west.internal.npmjs.com",
-    "tmp": "tmp/gulp-electron-downloader-0.1.6.tgz_1454626086874_0.44258991489186883"
-  },
-  "directories": {}
+  "readme": "# gulp-electron-downloader\n\nA gulp.js plugin to download electron. Super simple, it will simply download (and cache) and extract to a directory of your choice. You can run with zero-configuration, and use the defaults. Or configure as you wish.\n\nThis plugin makes it really easy to get any electron binary you need, where as most others only download electron for the platform for the host.\n\nIf you're wanting to build an electron release, you'll need another plugin for that.\n\n## Installation\n\nInstall gulp plugin package:\n\n```sh\nnpm install --save-dev gulp-electron-downloader\n```\n\n## Usage\n\nThe most simple is the following:\n\n```js\nvar gulp = require('gulp');\nvar electronDownloader = require('gulp-electron-downloader');\n\ngulp.task('download-electron', function(cb){\n\n    electronDownloader(cb);\n\n});\n\ngulp.task('default', ['download-electron']);\n```\n\nThis will download the latest release of electron, matching the platform and architecture of the host. The `./electron/cache` folder will be used to store downloads, and the final output will end up `./electron/binaries`.\n\nThe plugin makes unauthenticated requests to GitHub API. If you get rate-limit errors, use your own token by setting the env var `GITHUB_OAUTH_TOKEN`.\n\n### Constructor\n\n```js\nelectronDownloader([options], callback)\n```\n\n### Options\n\nYou can customise what is downloaded with the following:\n\n- `version` - the version of electron you want to download. This defaults to the latest release.\n- `platform` - the platform you want to download. Choices are `darwin`, `win32`, `linux`. This defaults to the host platform.\n- `arch` - the architecture of the platform you want to download. This defaults to the host architecture.\n- `cacheDir` - the location of the caching directory in which downloads will be stored. This defaults to `./electron/cache`.\n- `outputDir` - the location of the unzipped binary. This defaults to `./electron/binaries/platform-arch/`.\n- `downloadMirror` - a function that provided the official electron download URL for a particular version, returns a URL to a mirror of your choice. An example for China:\n\n```\ndownloadMirror: function (downloadUrl) {\n    return downloadUrl.replace('https://github.com/atom/electron/releases/download/v', 'https://npm.taobao.org/mirrors/electron/');\n}\n```\n"
 }

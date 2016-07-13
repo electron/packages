@@ -1,5 +1,54 @@
 
 
+### app (44)
+
+
+- [PupaFM](http://npm.im/PupaFM) - douban.fm Music Desktop Player
+- [app-root-path](http://npm.im/app-root-path) - Determine an app's root path from anywhere inside the app
+- [chromeo](http://npm.im/chromeo) - experimental Node-Browser bridge
+- [conf](http://npm.im/conf) - Simple config handling for your app or module
+- [crossbuilder](http://npm.im/crossbuilder) - Building web, Electron and Chrome apps, and cross-browser extensions with React, Redux and Webpack. 'Write once, build everywhere' concept in practice.
+- [electron-builder](http://npm.im/electron-builder) - Complete solution to build ready for distribution and 'auto update' Electron App installers
+- [electron-complete-builder](http://npm.im/electron-complete-builder) - Complete solution to build ready for distribution and 'auto update' Electron App installers
+- [electron-config](http://npm.im/electron-config) - Simple config handling for your Electron app or module
+- [electron-context-menu](http://npm.im/electron-context-menu) - Context menu for your Electron app
+- [electron-debug](http://npm.im/electron-debug) - Adds useful debug features to your Electron app
+- [electron-dl](http://npm.im/electron-dl) - Simplified file downloads for your Electron app
+- [electron-is-dev](http://npm.im/electron-is-dev) - Check if Electron is running in development
+- [electron-johnny-five-led-example](http://npm.im/electron-johnny-five-led-example) - An electron app using johnny-five to turn an led on and off
+- [electron-johnny-five-potentiometer-example](http://npm.im/electron-johnny-five-potentiometer-example) - An electron app using johnny-five to control a servo based on a potentiometer
+- [electron-johnny-five-sensor-example](http://npm.im/electron-johnny-five-sensor-example) - An electron app using johnny-five to read a sensor and plot the results
+- [electron-johnny-five-sensor-led-example](http://npm.im/electron-johnny-five-sensor-led-example) - An electron app using johnny-five to read a sensor, plot the results and control an led if a threshold is crossed
+- [electron-johnny-five-sensor-log-example](http://npm.im/electron-johnny-five-sensor-log-example) - An electron app using johnny-five to out put a strobe pulse, read a sensor, plot the results, and log the results
+- [electron-johnny-five-sensor-servo-example](http://npm.im/electron-johnny-five-sensor-servo-example) - An electron app using johnny-five to read a sensor, plot the results and control a servo
+- [electron-johnny-five-sensor-strobe-example](http://npm.im/electron-johnny-five-sensor-strobe-example) - An electron app using johnny-five to out put a strobe pulse, read a sensor, and plot the results
+- [electron-johnny-five-servo-example](http://npm.im/electron-johnny-five-servo-example) - An electron app using johnny-five to control a servo
+- [electron-johnny-five-switch-example](http://npm.im/electron-johnny-five-switch-example) - An electron app using johnny-five to respond to a switch and turn an led on and off
+- [electron-json-storage](http://npm.im/electron-json-storage) - Easily write and read user settings in Electron apps
+- [electron-notification-shim](http://npm.im/electron-notification-shim) - Get Notification API events in Electron main-process. Perfect for adding Notification toasters in Windows with node-notifier or other solution.
+- [electron-notifier](http://npm.im/electron-notifier) - Add cross-platform notifications to Electron apps.
+- [generator-electron-extra](http://npm.im/generator-electron-extra) - Scaffold out an Electron app boilerplate with sass, webpack, and browsersync
+- [generator-electron-soixante](http://npm.im/generator-electron-soixante) - Scaffold out an Electron app boilerplate
+- [generator-electron-stack](http://npm.im/generator-electron-stack) - Scaffold out an Electron app boilerplate with Angular.js or React + Redux
+- [generator-electron](http://npm.im/generator-electron) - Scaffold out an Electron app boilerplate
+- [generator-neodymium](http://npm.im/generator-neodymium) - Scaffolds a clean and combat ready electron app.
+- [gmail-app](http://npm.im/gmail-app) - A native gmail client.
+- [grunt-electron-itchio](http://npm.im/grunt-electron-itchio) - Package Electron apps
+- [grunt-electron-packager-builder](http://npm.im/grunt-electron-packager-builder) - Package Electron apps. Grunt task to electron-prebuilt , electron-packager and electron-builder.
+- [grunt-electron-packager](http://npm.im/grunt-electron-packager) - Package Electron apps. Grunt task to create packages electron using electron-packager
+- [grunt-electron](http://npm.im/grunt-electron) - Package Electron apps
+- [hihat](http://npm.im/hihat) - local Node/Browser development with Chrome DevTools
+- [ionic-brunch-es6-seed](http://npm.im/ionic-brunch-es6-seed) - An Ionic starter project with Babel and Brunch
+- [menubar-extra](http://npm.im/menubar-extra) - High level way to create menubar desktop applications with electron. Forked from menubar with extra options.
+- [menubar](http://npm.im/menubar) - high level way to create menubar desktop applications with electron
+- [nativefier](http://npm.im/nativefier) - Wrap web apps natively
+- [neutronkit](http://npm.im/neutronkit) - The easiest way to build Electron apps for OS X, Windows, Linux
+- [nx-app-root-path](http://npm.im/nx-app-root-path) - Determine an app's root path from anywhere inside the app
+- [react-cpc](http://npm.im/react-cpc) - React Cross Platform Components for desktop apps
+- [react-photon](http://npm.im/react-photon) - Photon component built with React
+- [reactors](http://npm.im/reactors) - Framework based on React to build hybrid apps that run web, mobile and desktop.
+
+
 ### WebModule (43)
 
 
@@ -96,53 +145,52 @@
 - [uupaa.webgldetector.js](http://npm.im/uupaa.webgldetector.js) - [![npm](https://nodei.co/npm/uupaa.webgldetector.js.svg?downloads=true&stars=true)](https://nodei.co/npm/uupaa.webgldetector.js/)
 
 
-### app (41)
+### react (40)
 
 
 - [PupaFM](http://npm.im/PupaFM) - douban.fm Music Desktop Player
-- [chromeo](http://npm.im/chromeo) - experimental Node-Browser bridge
+- [cncjs](http://npm.im/cncjs) - A web-based CNC milling controller for the Arduino running GRBL
 - [crossbuilder](http://npm.im/crossbuilder) - Building web, Electron and Chrome apps, and cross-browser extensions with React, Redux and Webpack. 'Write once, build everywhere' concept in practice.
-- [electron-builder](http://npm.im/electron-builder) - Complete solution to build ready for distribution and 'auto update' Electron App installers
-- [electron-complete-builder](http://npm.im/electron-complete-builder) - Complete solution to build ready for distribution and 'auto update' Electron App installers
-- [electron-config](http://npm.im/electron-config) - Simple config handling for your Electron app or module
-- [electron-context-menu](http://npm.im/electron-context-menu) - Context menu for your Electron app
-- [electron-debug](http://npm.im/electron-debug) - Adds useful debug features to your Electron app
-- [electron-dl](http://npm.im/electron-dl) - Simplified file downloads for your Electron app
-- [electron-is-dev](http://npm.im/electron-is-dev) - Check if Electron is running in development
-- [electron-johnny-five-led-example](http://npm.im/electron-johnny-five-led-example) - An electron app using johnny-five to turn an led on and off
-- [electron-johnny-five-potentiometer-example](http://npm.im/electron-johnny-five-potentiometer-example) - An electron app using johnny-five to control a servo based on a potentiometer
-- [electron-johnny-five-sensor-example](http://npm.im/electron-johnny-five-sensor-example) - An electron app using johnny-five to read a sensor and plot the results
-- [electron-johnny-five-sensor-led-example](http://npm.im/electron-johnny-five-sensor-led-example) - An electron app using johnny-five to read a sensor, plot the results and control an led if a threshold is crossed
-- [electron-johnny-five-sensor-log-example](http://npm.im/electron-johnny-five-sensor-log-example) - An electron app using johnny-five to out put a strobe pulse, read a sensor, plot the results, and log the results
-- [electron-johnny-five-sensor-servo-example](http://npm.im/electron-johnny-five-sensor-servo-example) - An electron app using johnny-five to read a sensor, plot the results and control a servo
-- [electron-johnny-five-sensor-strobe-example](http://npm.im/electron-johnny-five-sensor-strobe-example) - An electron app using johnny-five to out put a strobe pulse, read a sensor, and plot the results
-- [electron-johnny-five-servo-example](http://npm.im/electron-johnny-five-servo-example) - An electron app using johnny-five to control a servo
-- [electron-johnny-five-switch-example](http://npm.im/electron-johnny-five-switch-example) - An electron app using johnny-five to respond to a switch and turn an led on and off
-- [electron-json-storage](http://npm.im/electron-json-storage) - Easily write and read user settings in Electron apps
-- [electron-notification-shim](http://npm.im/electron-notification-shim) - Get Notification API events in Electron main-process. Perfect for adding Notification toasters in Windows with node-notifier or other solution.
-- [electron-notifier](http://npm.im/electron-notifier) - Add cross-platform notifications to Electron apps.
-- [generator-electron-extra](http://npm.im/generator-electron-extra) - Scaffold out an Electron app boilerplate with sass, webpack, and browsersync
-- [generator-electron-soixante](http://npm.im/generator-electron-soixante) - Scaffold out an Electron app boilerplate
+- [electon-react-boilerplate](http://npm.im/electon-react-boilerplate) - Electron React Boilerplate
+- [electron-hot-loader](http://npm.im/electron-hot-loader) - Hot reloading for React components in electron without babel nor webpack
+- [electron-meteor](http://npm.im/electron-meteor) - Full Meteor Client for Electron
+- [electron-react-boilerplate](http://npm.im/electron-react-boilerplate) - Electron application boilerplate based on React, React Router, Webpack, React Hot Loader for rapid application development
+- [electron-tap](http://npm.im/electron-tap) - Electron test runner for Tape
+- [geckoman](http://npm.im/geckoman) - a gecko wandering on your screen
 - [generator-electron-stack](http://npm.im/generator-electron-stack) - Scaffold out an Electron app boilerplate with Angular.js or React + Redux
-- [generator-electron](http://npm.im/generator-electron) - Scaffold out an Electron app boilerplate
-- [generator-neodymium](http://npm.im/generator-neodymium) - Scaffolds a clean and combat ready electron app.
-- [gmail-app](http://npm.im/gmail-app) - A native gmail client.
-- [grunt-electron-itchio](http://npm.im/grunt-electron-itchio) - Package Electron apps
-- [grunt-electron-packager-builder](http://npm.im/grunt-electron-packager-builder) - Package Electron apps. Grunt task to electron-prebuilt , electron-packager and electron-builder.
-- [grunt-electron-packager](http://npm.im/grunt-electron-packager) - Package Electron apps. Grunt task to create packages electron using electron-packager
-- [grunt-electron](http://npm.im/grunt-electron) - Package Electron apps
-- [hihat](http://npm.im/hihat) - local Node/Browser development with Chrome DevTools
-- [ionic-brunch-es6-seed](http://npm.im/ionic-brunch-es6-seed) - An Ionic starter project with Babel and Brunch
-- [menubar-extra](http://npm.im/menubar-extra) - High level way to create menubar desktop applications with electron. Forked from menubar with extra options.
-- [menubar](http://npm.im/menubar) - high level way to create menubar desktop applications with electron
-- [nativefier](http://npm.im/nativefier) - Wrap web apps natively
-- [neutronkit](http://npm.im/neutronkit) - The easiest way to build Electron apps for OS X, Windows, Linux
+- [gorgon-editor](http://npm.im/gorgon-editor) - 2D Game Sprite & Animation Editor
+- [kinto-admin](http://npm.im/kinto-admin) - Kinto Web Administration Console in React.js
+- [mobx](http://npm.im/mobx) - Simple, scalable state management.
+- [munchkin](http://npm.im/munchkin) - Android Finder
+- [norme](http://npm.im/norme) - Opinionated JavaScript linter
+- [preempt](http://npm.im/preempt) - Framework for React Native
 - [react-cpc](http://npm.im/react-cpc) - React Cross Platform Components for desktop apps
+- [react-desktop](http://npm.im/react-desktop) - React UI Components for macOS Sierra and Windows 10
+- [react-electron-webview](http://npm.im/react-electron-webview) - React component for the <webview> element in Electron.
+- [react-embedded-browser](http://npm.im/react-embedded-browser) - Embedded browser component for React.js
+- [react-map-gl](http://npm.im/react-map-gl) - A React wrapper for MapboxGL-js and overlay API.
+- [react-native-debugger-open](http://npm.im/react-native-debugger-open) - Replace `open debugger-ui with Chrome` to `open React Native Debugger` from react-native packager
+- [react-native-log-monitor](http://npm.im/react-native-log-monitor) - React Native Log monitor web, electron and chrome app.
 - [react-photon](http://npm.im/react-photon) - Photon component built with React
+- [react-photonkit](http://npm.im/react-photonkit) - Photon components built with React
+- [react-todo](http://npm.im/react-todo) - This is a demo application boilerplate for usage in your own setups. This is not a boilerplate to create your own application.
 - [reactors](http://npm.im/reactors) - Framework based on React to build hybrid apps that run web, mobile and desktop.
+- [redux-cli-logger](http://npm.im/redux-cli-logger) - Redux logger for a node environment
+- [relik](http://npm.im/relik) - React Electron Interface Kit
+- [remote-redux-devtools](http://npm.im/remote-redux-devtools) - Relay Redux actions to remote Redux DevTools.
+- [remotedev-app-slider](http://npm.im/remotedev-app-slider) - Remote Redux DevTools web, electron and chrome app. slider version
+- [remotedev-app](http://npm.im/remotedev-app) - Remote Redux DevTools web, electron and chrome app.
+- [remotedev-extension](http://npm.im/remotedev-extension) - Use Redux DevTools in the Browser/Electron DevTools
+- [remotedev](http://npm.im/remotedev) - Remote debugging for any flux implementation.
+- [riot](http://npm.im/riot) - A React-like user interface micro-library
+- [simple-react-server](http://npm.im/simple-react-server) - A basic express-based React server with model syncing, client-server RPC, less compilation + browserify. Intended for quick hackery, not production.
+- [sweet-vpn](http://npm.im/sweet-vpn) - A sweet VPN client
+- [tooling](http://npm.im/tooling) - One tooling, No setup.
+- [virtual-loading-dots](http://npm.im/virtual-loading-dots) - Virtual-dom loading dots component
+- [virtual-progress-bar](http://npm.im/virtual-progress-bar) - virtual-dom progress bar component
 
 
-### desktop (35)
+### desktop (38)
 
 
 - [PupaFM](http://npm.im/PupaFM) - douban.fm Music Desktop Player
@@ -153,6 +201,7 @@
 - [desktop-normalize](http://npm.im/desktop-normalize) - CSS base styles for HTML5 desktop applications
 - [dimeshift-desktop](http://npm.im/dimeshift-desktop) - The easiest and desktop way to track your expenses. Free. Open-source.
 - [electrify-elasticsearch](http://npm.im/electrify-elasticsearch) - ElasticSearch plugin for Electrify
+- [electrify-updated-test](http://npm.im/electrify-updated-test) - Package your Meteor apps with Electron, and butter.
 - [electrify](http://npm.im/electrify) - Package your Meteor apps with Electron, and butter.
 - [electron-angular-boilerplate](http://npm.im/electron-angular-boilerplate) - A basic electron app using AngularJS and Skeleton CSS with ES6 support
 - [electron-log](http://npm.im/electron-log) - Just a very simple logging module for your Electron application
@@ -168,18 +217,58 @@
 - [generator-neodymium](http://npm.im/generator-neodymium) - Scaffolds a clean and combat ready electron app.
 - [hydraux](http://npm.im/hydraux) - Fast and beautiful Desktop UX design
 - [ionic-brunch-es6-seed](http://npm.im/ionic-brunch-es6-seed) - An Ionic starter project with Babel and Brunch
+- [libui-node](http://npm.im/libui-node) - Node.js bindings for libui
 - [meteor-desktop-plugin-test-suite](http://npm.im/meteor-desktop-plugin-test-suite) - Few utils to ease out functional testing of Meteor Desktop plugins.
 - [meteor-desktop-splash-screen](http://npm.im/meteor-desktop-splash-screen) - Meteor Desktop splash screen plugin.
 - [meteor-desktop](http://npm.im/meteor-desktop) - Build a Meteor's desktop client with hot code push.
 - [meteor-electron-desktop-client](http://npm.im/meteor-electron-desktop-client) - Build a Meteor's desktop client with hot code push.
 - [nativefier](http://npm.im/nativefier) - Wrap web apps natively
 - [neutronkit](http://npm.im/neutronkit) - The easiest way to build Electron apps for OS X, Windows, Linux
-- [pushbullet-desktop](http://npm.im/pushbullet-desktop) - A lightweight cross-platform Pushbullet Client for OS X, Windows and Linux. It enables you to receive native system notifications in an unobstrusive way.
+- [pushbullet-desktop](http://npm.im/pushbullet-desktop) - Lightweight cross-platform Pushbullet desktop application
 - [react-cpc](http://npm.im/react-cpc) - React Cross Platform Components for desktop apps
 - [react-desktop](http://npm.im/react-desktop) - React UI Components for macOS Sierra and Windows 10
 - [react-photon](http://npm.im/react-photon) - Photon component built with React
 - [reactors](http://npm.im/reactors) - Framework based on React to build hybrid apps that run web, mobile and desktop.
+- [robotjs](http://npm.im/robotjs) - Node.js Desktop Automation.
 - [webtorrent-desktop](http://npm.im/webtorrent-desktop) - WebTorrent, the streaming torrent client. For OS X, Windows, and Linux.
+
+
+### node (33)
+
+
+- [app-root-path](http://npm.im/app-root-path) - Determine an app's root path from anywhere inside the app
+- [benja](http://npm.im/benja) - Bootable Electron Node JS Application helper.
+- [chromeo](http://npm.im/chromeo) - experimental Node-Browser bridge
+- [denode](http://npm.im/denode) - Debug node apps like a pro
+- [dhtmlx-desktop-chat](http://npm.im/dhtmlx-desktop-chat) - Just a simple desktop chat built using DHTMLX on client and Node.js (Express + ws) && Redis on back end
+- [electon-react-boilerplate](http://npm.im/electon-react-boilerplate) - Electron React Boilerplate
+- [electro-dojo](http://npm.im/electro-dojo) - Electron based Coding Dojo tool
+- [electron-apis](http://npm.im/electron-apis) - A JSON object describing Electron's APIs
+- [electron-docs-linter](http://npm.im/electron-docs-linter) - A JSON object describing Electron's APIs
+- [electron-jade](http://npm.im/electron-jade) - Simple electron module to render Jade template
+- [electron-markdownify](http://npm.im/electron-markdownify) - A minimalist Markdown Editor
+- [electron-process](http://npm.im/electron-process) - Send blocking operations to a background process in electron
+- [electron-pug](http://npm.im/electron-pug) - Simple electron module to render Pug (former Jade) templates
+- [electron-reload](http://npm.im/electron-reload) - Simplest way to reload an electron app on file changes!
+- [filteron](http://npm.im/filteron) - A minimalist image editor based on CSS filters
+- [generator-electron-extra](http://npm.im/generator-electron-extra) - Scaffold out an Electron app boilerplate with sass, webpack, and browsersync
+- [generator-electron-soixante](http://npm.im/generator-electron-soixante) - Scaffold out an Electron app boilerplate
+- [generator-electron-stack](http://npm.im/generator-electron-stack) - Scaffold out an Electron app boilerplate with Angular.js or React + Redux
+- [generator-electron](http://npm.im/generator-electron) - Scaffold out an Electron app boilerplate
+- [generator-neodymium](http://npm.im/generator-neodymium) - Scaffolds a clean and combat ready electron app.
+- [hihat](http://npm.im/hihat) - local Node/Browser development with Chrome DevTools
+- [native-builder](http://npm.im/native-builder) - A utility to build native packages according to your engine in Node.js
+- [netbeast-cli](http://npm.im/netbeast-cli) - Netbeast OS dashboard, IoT apps manager
+- [node-tg-bot](http://npm.im/node-tg-bot) - Node Telegram Bot Api Interface
+- [node.os](http://npm.im/node.os) - OS detect for both nodejs and browser
+- [nootb](http://npm.im/nootb) - Node Out Of The Box, a Node.JS (really)IDE
+- [nterm](http://npm.im/nterm) - A Node Terminal
+- [nw-requirejs](http://npm.im/nw-requirejs) - Node JS : Load node module in RequireJS
+- [nx-app-root-path](http://npm.im/nx-app-root-path) - Determine an app's root path from anywhere inside the app
+- [popsicle](http://npm.im/popsicle) - Simple HTTP requests for node and the browser
+- [project-bin-node](http://npm.im/project-bin-node) - bin helper to initialize a node project.
+- [pushbullet-desktop](http://npm.im/pushbullet-desktop) - Lightweight cross-platform Pushbullet desktop application
+- [redux-cli-logger](http://npm.im/redux-cli-logger) - Redux logger for a node environment
 
 
 ### Unstable (31)
@@ -218,38 +307,39 @@
 - [uupaa.webaudio.js](http://npm.im/uupaa.webaudio.js) - Create new WebAudio context.
 
 
-### react (29)
+### browser (30)
 
 
-- [PupaFM](http://npm.im/PupaFM) - douban.fm Music Desktop Player
-- [cncjs](http://npm.im/cncjs) - A web-based CNC milling controller for the Arduino running GRBL
-- [crossbuilder](http://npm.im/crossbuilder) - Building web, Electron and Chrome apps, and cross-browser extensions with React, Redux and Webpack. 'Write once, build everywhere' concept in practice.
-- [electon-react-boilerplate](http://npm.im/electon-react-boilerplate) - Electron React Boilerplate
-- [electron-hot-loader](http://npm.im/electron-hot-loader) - Hot reloading for React components in electron without babel nor webpack
-- [electron-meteor](http://npm.im/electron-meteor) - Full Meteor Client for Electron
-- [electron-react-boilerplate](http://npm.im/electron-react-boilerplate) - Electron application boilerplate based on React, React Router, Webpack, React Hot Loader for rapid application development
-- [electron-tap](http://npm.im/electron-tap) - Electron test runner for Tape
-- [geckoman](http://npm.im/geckoman) - a gecko wandering on your screen
-- [generator-electron-stack](http://npm.im/generator-electron-stack) - Scaffold out an Electron app boilerplate with Angular.js or React + Redux
-- [gorgon-editor](http://npm.im/gorgon-editor) - 2D Game Sprite & Animation Editor
-- [munchkin](http://npm.im/munchkin) - Android Finder
-- [react-cpc](http://npm.im/react-cpc) - React Cross Platform Components for desktop apps
-- [react-desktop](http://npm.im/react-desktop) - React UI Components for macOS Sierra and Windows 10
-- [react-electron-webview](http://npm.im/react-electron-webview) - React component for the <webview> element in Electron.
+- [audiobuffer-to-wav](http://npm.im/audiobuffer-to-wav) - convert an AudioBuffer to .wav format
+- [browser-run](http://npm.im/browser-run) - Transform stream that executes JavaScript it receives in a real browser and outputs console output
+- [chromeo](http://npm.im/chromeo) - experimental Node-Browser bridge
+- [elec-tester](http://npm.im/elec-tester) - Tiny Electron application for quick tests
+- [electron-browser-window-options](http://npm.im/electron-browser-window-options) - Reference for default Electron BrowserWindow options.
+- [electron-lite](http://npm.im/electron-lite) - this package will dynamically download and install electron @ 1.1.3 from https://github.com/atom/electron/releases with zero npm-dependencies
+- [electron-mocha](http://npm.im/electron-mocha) - Mocha tests in Electron.
+- [electron-open-link-in-browser](http://npm.im/electron-open-link-in-browser) - Open a link in browser for Electron and browser.
+- [electron-prebuilt-lite](http://npm.im/electron-prebuilt-lite) - lightweight version of electron-prebuilt with zero npm-dependencies
+- [electron-window-manager](http://npm.im/electron-window-manager) - A NodeJs module that handles window management for Electron (Atom Shell, previously)
+- [electrun](http://npm.im/electrun) - run on electron
+- [graviton](http://npm.im/graviton) - Headless browser for web testing, scrapping
+- [hihat](http://npm.im/hihat) - local Node/Browser development with Chrome DevTools
+- [is-js-error](http://npm.im/is-js-error) - Check if a page contains a JavaScript error
+- [navit](http://npm.im/navit) - Wrapper for PhantomJS and SlimerJS to simplify browser tests scripting
+- [nedb-lite](http://npm.im/nedb-lite) - this package is a standalone, single-script version of nedb @ 1.8.0 that runs in both browser and nodejs, with zero npm-dependencies
+- [nimble-elements](http://npm.im/nimble-elements) - Lightweight Web Application Framework - 2015.11.02
+- [node.os](http://npm.im/node.os) - OS detect for both nodejs and browser
+- [notedit](http://npm.im/notedit) - Limited browser for note.mu
+- [photon-browser](http://npm.im/photon-browser) - A tiny web browser based on Photon and Electron.
+- [popsicle](http://npm.im/popsicle) - Simple HTTP requests for node and the browser
 - [react-embedded-browser](http://npm.im/react-embedded-browser) - Embedded browser component for React.js
-- [react-native-debugger-open](http://npm.im/react-native-debugger-open) - Replace `open debugger-ui with Chrome` to `open React Native Debugger` from react-native packager
-- [react-native-log-monitor](http://npm.im/react-native-log-monitor) - React Native Log monitor web, electron and chrome app.
-- [react-photon](http://npm.im/react-photon) - Photon component built with React
-- [reactors](http://npm.im/reactors) - Framework based on React to build hybrid apps that run web, mobile and desktop.
-- [relik](http://npm.im/relik) - React Electron Interface Kit
-- [remotedev-app-slider](http://npm.im/remotedev-app-slider) - Remote Redux DevTools web, electron and chrome app. slider version
-- [remotedev-app](http://npm.im/remotedev-app) - Remote Redux DevTools web, electron and chrome app.
-- [remotedev-extension](http://npm.im/remotedev-extension) - Use Redux DevTools in the Browser/Electron DevTools
-- [simple-react-server](http://npm.im/simple-react-server) - A basic express-based React server with model syncing, client-server RPC, less compilation + browserify. Intended for quick hackery, not production.
-- [sweet-vpn](http://npm.im/sweet-vpn) - A sweet VPN client
-- [tooling](http://npm.im/tooling) - One tooling, No setup.
-- [virtual-loading-dots](http://npm.im/virtual-loading-dots) - Virtual-dom loading dots component
-- [virtual-progress-bar](http://npm.im/virtual-progress-bar) - virtual-dom progress bar component
+- [splat-ecs](http://npm.im/splat-ecs) - A 2D HTML5 Canvas game engine
+- [swagger-lite](http://npm.im/swagger-lite) - this package will run a virtual swagger-ui server with persistent storage in the browser, that your webapp can use (in-place of a real backend)
+- [swagger-ui-lite](http://npm.im/swagger-ui-lite) - minimal npm installer for swagger-ui asset files with zero npm-dependencies
+- [tilectron](http://npm.im/tilectron) - Tiling window browser built on Electron
+- [utility2](http://npm.im/utility2) - this package will run dynamic browser tests with coverage (via istanbul and electron)
+- [vmd](http://npm.im/vmd) - vmd
+- [web-term](http://npm.im/web-term) - A full screen terminal in your browser.
+- [web-window](http://npm.im/web-window) - A wrapper of BrowserWindow from Electron, for easy CSS / JS Injection.
 
 
 ### atom (27)
@@ -269,7 +359,7 @@
 - [electron-window](http://npm.im/electron-window) - Convenience methods for Electron windows.
 - [electronify-server](http://npm.im/electronify-server) - electronify-server is a tool which presents local web servers in an Electron shell.
 - [ember-electron](http://npm.im/ember-electron) - An addon for building Desktop apps with Ember and Electron.
-- [evm](http://npm.im/evm) - Electron Version Manager
+- [evm](http://npm.im/evm) - [Deprecated] Electron Version Manager
 - [gulp-atom-electron](http://npm.im/gulp-atom-electron) - gulp plugin for packaging Electron applications
 - [gulp-atom-shell](http://npm.im/gulp-atom-shell) - gulp plugin for packaging Atom Shell applications
 - [gulp-atom](http://npm.im/gulp-atom) - A gulp plugin for atom-shell distribute applications.
@@ -299,7 +389,7 @@
 - [electron-spawn](http://npm.im/electron-spawn) - easy way to run code inside of a headless electron window from the CLI
 - [electron-window](http://npm.im/electron-window) - Convenience methods for Electron windows.
 - [electron-windows-installer](http://npm.im/electron-windows-installer) - Build Windows installers for Electron apps using Squirrel. Works with Gulp!
-- [evm](http://npm.im/evm) - Electron Version Manager
+- [evm](http://npm.im/evm) - [Deprecated] Electron Version Manager
 - [generate-evb](http://npm.im/generate-evb) - Generate an 'Enigma Virtual Box' project file (*.evb)
 - [generator-easyelectron](http://npm.im/generator-easyelectron) - Very simple Yeoman Electron app generator.
 - [generator-electron-extra](http://npm.im/generator-electron-extra) - Scaffold out an Electron app boilerplate with sass, webpack, and browsersync
@@ -314,64 +404,6 @@
 - [gulp-electron](http://npm.im/gulp-electron) - A gulp plugin for Electron distribute applications.
 - [shell-path](http://npm.im/shell-path) - Get the $PATH from the shell
 - [utility2](http://npm.im/utility2) - this package will run dynamic browser tests with coverage (via istanbul and electron)
-
-
-### browser (24)
-
-
-- [browser-run](http://npm.im/browser-run) - Transform stream that executes JavaScript it receives in a real browser and outputs console output
-- [chromeo](http://npm.im/chromeo) - experimental Node-Browser bridge
-- [elec-tester](http://npm.im/elec-tester) - Tiny Electron application for quick tests
-- [electron-browser-window-options](http://npm.im/electron-browser-window-options) - Reference for default Electron BrowserWindow options.
-- [electron-lite](http://npm.im/electron-lite) - this package will dynamically download and install electron @ 1.1.3 from https://github.com/atom/electron/releases with zero npm-dependencies
-- [electron-mocha](http://npm.im/electron-mocha) - Mocha tests in Electron.
-- [electron-open-link-in-browser](http://npm.im/electron-open-link-in-browser) - Open a link in browser for Electron and browser.
-- [electron-prebuilt-lite](http://npm.im/electron-prebuilt-lite) - lightweight version of electron-prebuilt with zero npm-dependencies
-- [electron-window-manager](http://npm.im/electron-window-manager) - A NodeJs module that handles window management for Electron (Atom Shell, previously)
-- [electrun](http://npm.im/electrun) - run on electron
-- [graviton](http://npm.im/graviton) - Headless browser for web testing, scrapping
-- [hihat](http://npm.im/hihat) - local Node/Browser development with Chrome DevTools
-- [is-js-error](http://npm.im/is-js-error) - Check if a page contains a JavaScript error
-- [navit](http://npm.im/navit) - Wrapper for PhantomJS and SlimerJS to simplify browser tests scripting
-- [nedb-lite](http://npm.im/nedb-lite) - this package is a standalone, single-script version of nedb @ 1.8.0 that runs in both browser and nodejs, with zero npm-dependencies
-- [notedit](http://npm.im/notedit) - Limited browser for note.mu
-- [photon-browser](http://npm.im/photon-browser) - A tiny web browser based on Photon and Electron.
-- [react-embedded-browser](http://npm.im/react-embedded-browser) - Embedded browser component for React.js
-- [swagger-lite](http://npm.im/swagger-lite) - this package will run a virtual swagger-ui server with persistent storage in the browser, that your webapp can use (in-place of a real backend)
-- [swagger-ui-lite](http://npm.im/swagger-ui-lite) - minimal npm installer for swagger-ui asset files with zero npm-dependencies
-- [tilectron](http://npm.im/tilectron) - Tiling window browser built on Electron
-- [utility2](http://npm.im/utility2) - this package will run dynamic browser tests with coverage (via istanbul and electron)
-- [vmd](http://npm.im/vmd) - vmd
-- [web-window](http://npm.im/web-window) - A wrapper of BrowserWindow from Electron, for easy CSS / JS Injection.
-
-
-### node (24)
-
-
-- [benja](http://npm.im/benja) - Bootable Electron Node JS Application
-- [chromeo](http://npm.im/chromeo) - experimental Node-Browser bridge
-- [denode](http://npm.im/denode) - Debug node apps like a pro
-- [dhtmlx-desktop-chat](http://npm.im/dhtmlx-desktop-chat) - Just a simple desktop chat built using DHTMLX on client and Node.js (Express + ws) && Redis on back end
-- [electon-react-boilerplate](http://npm.im/electon-react-boilerplate) - Electron React Boilerplate
-- [electro-dojo](http://npm.im/electro-dojo) - Electron based Coding Dojo tool
-- [electron-apis](http://npm.im/electron-apis) - A JSON object describing Electron's APIs
-- [electron-jade](http://npm.im/electron-jade) - Simple electron module to render Jade template
-- [electron-markdownify](http://npm.im/electron-markdownify) - A minimalist Markdown Editor
-- [electron-process](http://npm.im/electron-process) - Send blocking operations to a background process in electron
-- [electron-pug](http://npm.im/electron-pug) - Simple electron module to render Pug (former Jade) templates
-- [electron-reload](http://npm.im/electron-reload) - Simplest way to reload an electron app on file changes!
-- [filteron](http://npm.im/filteron) - A minimalist image editor based on CSS filters
-- [generator-electron-extra](http://npm.im/generator-electron-extra) - Scaffold out an Electron app boilerplate with sass, webpack, and browsersync
-- [generator-electron-soixante](http://npm.im/generator-electron-soixante) - Scaffold out an Electron app boilerplate
-- [generator-electron-stack](http://npm.im/generator-electron-stack) - Scaffold out an Electron app boilerplate with Angular.js or React + Redux
-- [generator-electron](http://npm.im/generator-electron) - Scaffold out an Electron app boilerplate
-- [generator-neodymium](http://npm.im/generator-neodymium) - Scaffolds a clean and combat ready electron app.
-- [hihat](http://npm.im/hihat) - local Node/Browser development with Chrome DevTools
-- [node-tg-bot](http://npm.im/node-tg-bot) - Node Telegram Bot Api Interface
-- [nootb](http://npm.im/nootb) - Node Out Of The Box, a Node.JS (really)IDE
-- [nterm](http://npm.im/nterm) - A Node Terminal
-- [nw-requirejs](http://npm.im/nw-requirejs) - Node JS : Load node module in RequireJS
-- [pushbullet-desktop](http://npm.im/pushbullet-desktop) - A lightweight cross-platform Pushbullet Client for OS X, Windows and Linux. It enables you to receive native system notifications in an unobstrusive way.
 
 
 ### electron-app (23)
@@ -400,6 +432,184 @@
 - [vgj](http://npm.im/vgj) - A simple GeoJSON viewer, inspired by the incredible convenience of [vmd](https://github.com/yoshuawuyts/vmd).  Built with [mapbox-gl](https://github.com/mapbox/mapbox-gl-js).
 - [web-window](http://npm.im/web-window) - A wrapper of BrowserWindow from Electron, for easy CSS / JS Injection.
 - [webtorrent-desktop](http://npm.im/webtorrent-desktop) - WebTorrent, the streaming torrent client. For OS X, Windows, and Linux.
+
+
+### nightmare (20)
+
+
+- [async-chainable-nightmare](http://npm.im/async-chainable-nightmare) - Plugin for async-chainable that wraps Nightmare
+- [headless-google-auth](http://npm.im/headless-google-auth) - Log into a Google account using OAuth2 without a browser
+- [headless-trello-auth](http://npm.im/headless-trello-auth) - Automatically grant access for your application in Trello
+- [is-js-error](http://npm.im/is-js-error) - Check if a page contains a JavaScript error
+- [joseph](http://npm.im/joseph) - Better dream interpretation support for Nightmare.
+- [nightmare-bmg](http://npm.im/nightmare-bmg) - A high-level browser automation library.
+- [nightmare-download-manager](http://npm.im/nightmare-download-manager) - Add download management to NightmareJS
+- [nightmare-evaluate-async](http://npm.im/nightmare-evaluate-async) - Adds evaluateAsync method to Nightmare.
+- [nightmare-google-oauth2](http://npm.im/nightmare-google-oauth2) - Nightmare plugin to automatically authenticate, authorize and retrieve a fresh OAuth2 token for Google APIs
+- [nightmare-gremlins](http://npm.im/nightmare-gremlins) - Monkey testing via Gremlins.js for Nightmare.js
+- [nightmare-inline-download](http://npm.im/nightmare-inline-download) - Add inline download management to NightmareJS
+- [nightmare-load-filter](http://npm.im/nightmare-load-filter) - Filter requests in NightmareJS
+- [nightmare-meteor](http://npm.im/nightmare-meteor) - forked Nightmare compatible with meteor 1.3 and some goodies
+- [nightmare-navigation-lock](http://npm.im/nightmare-navigation-lock) - Lock navigation in NightmareJS
+- [nightmare-plus](http://npm.im/nightmare-plus) - copy of Nightmare to add stuff
+- [nightmare-upload](http://npm.im/nightmare-upload) - upload files using NightmareJS
+- [nightmare-webrequest-addon](http://npm.im/nightmare-webrequest-addon) - webRequest API addon
+- [nightmare-window-manager](http://npm.im/nightmare-window-manager) - add window management to your Nightmare scripts
+- [nightmare](http://npm.im/nightmare) - A high-level browser automation library.
+- [x-ray-nightmare](http://npm.im/x-ray-nightmare) - Nightmare (electron based) driver for the x-ray web scraper.
+
+
+### windows (18)
+
+
+- [check-max-path](http://npm.im/check-max-path) - Will you hit the Windows Maximum Path Length Limitation?
+- [dimeshift-desktop](http://npm.im/dimeshift-desktop) - The easiest and desktop way to track your expenses. Free. Open-source.
+- [electron-installer-windows](http://npm.im/electron-installer-windows) - Create a Windows package for your Electron app.
+- [electron-log](http://npm.im/electron-log) - Just a very simple logging module for your Electron application
+- [electron-promote-windows-tray-items](http://npm.im/electron-promote-windows-tray-items) - Ensure Windows tray items created by an Electron app show up in the toolbar, not the customization area.
+- [electron-single-instance](http://npm.im/electron-single-instance) - Allows only one instance of an application to run at a time.  Helpful for Electron apps in Windows
+- [electron-windows-installer](http://npm.im/electron-windows-installer) - Build Windows installers for Electron apps using Squirrel. Works with Gulp!
+- [elevator](http://npm.im/elevator) - Windows UAC elevation that just works
+- [league-companion](http://npm.im/league-companion) - A companion application for League of Legends built in Electron for Windows/Mac
+- [msi-packager-extended](http://npm.im/msi-packager-extended) - Build MSI (Windows Installer) packages on Mac and Linux. Provides fix for desktop and app icon. Warning: Package may disappear soon.
+- [msi-packager](http://npm.im/msi-packager) - Build MSI (Windows Installer) packages on Mac and Linux
+- [npm-run-posix-or-windows](http://npm.im/npm-run-posix-or-windows) - Portable NPM scripts when those have to work on Windows too
+- [os.js](http://npm.im/os.js) - Very stupid detection of OS
+- [prt](http://npm.im/prt) - Package Manager for Windows
+- [pushbullet-desktop](http://npm.im/pushbullet-desktop) - Lightweight cross-platform Pushbullet desktop application
+- [react-desktop](http://npm.im/react-desktop) - React UI Components for macOS Sierra and Windows 10
+- [register-protocol-win32](http://npm.im/register-protocol-win32) - Registers a custom protocol (ie. myapp://) on Windows
+- [yourfukurou](http://npm.im/yourfukurou) - Twitter client for perspecuity of timeline
+
+
+### database (18)
+
+
+- [admin-mongo](http://npm.im/admin-mongo) - A Web user interface to administer MongoDB databases built using Express
+- [ankara](http://npm.im/ankara) - A database centered on connections
+- [dboa-untangler](http://npm.im/dboa-untangler) - An electron application to help you untangle your (postgres) database.
+- [eazydb](http://npm.im/eazydb) - [![Build Status](https://travis-ci.org/Finkes/eazydb.svg?branch=master)](https://travis-ci.org/Finkes/eazydb)
+- [electrify-elasticsearch](http://npm.im/electrify-elasticsearch) - ElasticSearch plugin for Electrify
+- [happn-nedb](http://npm.im/happn-nedb) - File-based embedded data store for node.js
+- [isotropy-nedb](http://npm.im/isotropy-nedb) - Isotropy port of NeDB by Louis Chatriot. File-based embedded data store for node.js
+- [jatabase](http://npm.im/jatabase) - JSON file database
+- [linvodb3](http://npm.im/linvodb3) - Model-oriented embedded database, inspired by Mongoose & MongoDB, over LevelUP
+- [lowdb](http://npm.im/lowdb) - JSON database for Node and the browser powered by lodash API
+- [marsdb](http://npm.im/marsdb) - MarsDB is a lightweight client-side MongoDB-like database, Promise based, written in ES6
+- [nedb-isotropy](http://npm.im/nedb-isotropy) - Isotropy port of NeDB by Louis Chatriot. File-based embedded data store for node.js
+- [nedb](http://npm.im/nedb) - File-based embedded data store for node.js
+- [newdb](http://npm.im/newdb) - Fork of NeDB, the file-based embedded data store for node.js
+- [node-flat-db](http://npm.im/node-flat-db) - JSON database for Node and the browser powered by lodash
+- [ripdb](http://npm.im/ripdb) - JavaScript embeddable JSON time series database.
+- [selfup-rejs](http://npm.im/selfup-rejs) - Event based, key value store on the file system. Basic server side db in js for node developers. Geared towards NodeBots/IoT.
+- [yunodb](http://npm.im/yunodb) - portable, persistent, electron compatible fulltext search database
+
+
+### json (17)
+
+
+- [async-json-serializer](http://npm.im/async-json-serializer) - A library to serialize a JSON object across multiple async callbacks.
+- [conf](http://npm.im/conf) - Simple config handling for your app or module
+- [configurizer](http://npm.im/configurizer) - Simply load a config file from your projects root directory
+- [dota2-manta-config-engine-standalone](http://npm.im/dota2-manta-config-engine-standalone) - Allows you to customize your Dota 2 Autoexec on-the-fly.
+- [editdata](http://npm.im/editdata) - A desktop app for editing data.
+- [electron-apis](http://npm.im/electron-apis) - A JSON object describing Electron's APIs
+- [electron-config](http://npm.im/electron-config) - Simple config handling for your Electron app or module
+- [electron-docs-linter](http://npm.im/electron-docs-linter) - A JSON object describing Electron's APIs
+- [electron-json-config](http://npm.im/electron-json-config) - Simply set and get configuration from a json file for your Electron app
+- [electron-json-storage](http://npm.im/electron-json-storage) - Easily write and read user settings in Electron apps
+- [electron-storage](http://npm.im/electron-storage) - module for managing storage in electron applications
+- [isopod](http://npm.im/isopod) - Universal (isomorphic) Javascript object serialization / deserialization
+- [jatabase](http://npm.im/jatabase) - JSON file database
+- [json-web-storage](http://npm.im/json-web-storage) - Simple localStorage/sessionStorage wrapper providing the exact same API with automatic JSON serialization
+- [strudl](http://npm.im/strudl) - structured data viewer
+- [uupaa.fileloader.js](http://npm.im/uupaa.fileloader.js) - URL loader and type converter. URL -> String/JSON/Blob/ArrayBuffer, Blob/TypedArray/ArrayBuffer -> ArrayBuffer
+- [yunodb](http://npm.im/yunodb) - portable, persistent, electron compatible fulltext search database
+
+
+### redux (17)
+
+
+- [PupaFM](http://npm.im/PupaFM) - douban.fm Music Desktop Player
+- [crossbuilder](http://npm.im/crossbuilder) - Building web, Electron and Chrome apps, and cross-browser extensions with React, Redux and Webpack. 'Write once, build everywhere' concept in practice.
+- [cubbie](http://npm.im/cubbie) - Stupid simple state storage
+- [geckoman](http://npm.im/geckoman) - a gecko wandering on your screen
+- [generator-electron-stack](http://npm.im/generator-electron-stack) - Scaffold out an Electron app boilerplate with Angular.js or React + Redux
+- [redux-cli-logger](http://npm.im/redux-cli-logger) - Redux logger for a node environment
+- [redux-electron-enhancer](http://npm.im/redux-electron-enhancer) - Redux store which synchronizes between instances in multiple process
+- [redux-electron-ipc](http://npm.im/redux-electron-ipc) - Redux Electron IPC Middleware
+- [redux-electron-store](http://npm.im/redux-electron-store) - Redux store which synchronizes between instances in multiple process
+- [redux-electron](http://npm.im/redux-electron) - ## Installation ```bash npm install redux-electron ``` ## Usage #### Main Process ```javascript import { applyMiddleware, compose } from 'redux'; import { createMainStore } from 'redux-electron';
+- [redux-storage-engine-electronjsonstorage](http://npm.im/redux-storage-engine-electronjsonstorage) - electron-json-storage based engine for redux-storage
+- [remote-redux-devtools](http://npm.im/remote-redux-devtools) - Relay Redux actions to remote Redux DevTools.
+- [remotedev-app-slider](http://npm.im/remotedev-app-slider) - Remote Redux DevTools web, electron and chrome app. slider version
+- [remotedev-app](http://npm.im/remotedev-app) - Remote Redux DevTools web, electron and chrome app.
+- [remotedev-extension](http://npm.im/remotedev-extension) - Use Redux DevTools in the Browser/Electron DevTools
+- [remotedev](http://npm.im/remotedev) - Remote debugging for any flux implementation.
+- [send-action](http://npm.im/send-action) - simple state management
+
+
+### yeoman-generator (16)
+
+
+- [generator-easyelectron](http://npm.im/generator-easyelectron) - Very simple Yeoman Electron app generator.
+- [generator-electron-angular2](http://npm.im/generator-electron-angular2) - starter project for electron with angular2
+- [generator-electron-app](http://npm.im/generator-electron-app) - Scaffold for Electron application
+- [generator-electron-extra](http://npm.im/generator-electron-extra) - Scaffold out an Electron app boilerplate with sass, webpack, and browsersync
+- [generator-electron-naive](http://npm.im/generator-electron-naive) - Create desktop app for a website in one minute
+- [generator-electron-soixante](http://npm.im/generator-electron-soixante) - Scaffold out an Electron app boilerplate
+- [generator-electron-stack](http://npm.im/generator-electron-stack) - Scaffold out an Electron app boilerplate with Angular.js or React + Redux
+- [generator-electron](http://npm.im/generator-electron) - Scaffold out an Electron app boilerplate
+- [generator-hybrid](http://npm.im/generator-hybrid) - Creates a project for developing a web portal and hybrid iOS and Android apps using AngularJS and Ionic Framework
+- [generator-neodymium](http://npm.im/generator-neodymium) - Scaffolds a clean and combat ready electron app.
+- [generator-neutron](http://npm.im/generator-neutron) - Convenient Yeoman generator for neutron
+- [generator-pomegranate](http://npm.im/generator-pomegranate) - Model, controller, route generators for the Pomegranate framework
+- [generator-tsweb](http://npm.im/generator-tsweb) - Yeoman generator for Typescript + Web
+- [generator-universal-web-template](http://npm.im/generator-universal-web-template) - Yeoman generator for an universal web proejct template - let you quickly set up a project using Handlebars, sass and ReactJS for front-end templating. It can be adopted with most modern CMS.
+- [generator-vrjs](http://npm.im/generator-vrjs) - Generator for vrjs projects
+- [generator-websemble](http://npm.im/generator-websemble) - Websemble app generator.
+
+
+### test (16)
+
+
+- [browser-run](http://npm.im/browser-run) - Transform stream that executes JavaScript it receives in a real browser and outputs console output
+- [chromeo](http://npm.im/chromeo) - experimental Node-Browser bridge
+- [electron-cucumber](http://npm.im/electron-cucumber) - Cucumber feature testing for Electron applications
+- [electron-mocha](http://npm.im/electron-mocha) - Mocha tests in Electron.
+- [electrun](http://npm.im/electrun) - run on electron
+- [fake-require-main](http://npm.im/fake-require-main) - Fakes require.main for debug and testing purposes.
+- [graviton](http://npm.im/graviton) - Headless browser for web testing, scrapping
+- [hihat](http://npm.im/hihat) - local Node/Browser development with Chrome DevTools
+- [mirror-mirror](http://npm.im/mirror-mirror) - Test your UI changes in production before deploying to production
+- [mocha-electron](http://npm.im/mocha-electron) - mocha testing in electron
+- [mochatron](http://npm.im/mochatron) - mocha testing in electron
+- [tape-run](http://npm.im/tape-run) - Headless tape test runner
+- [taped-electron](http://npm.im/taped-electron) - Run tape tests inside electron
+- [testron](http://npm.im/testron) - CI your client side tests with Electron
+- [ugnis-test](http://npm.im/ugnis-test) - Ugnis test config
+- [utility2](http://npm.im/utility2) - this package will run dynamic browser tests with coverage (via istanbul and electron)
+
+
+### shell (16)
+
+
+- [asv](http://npm.im/asv) - electron / atom-shell version management
+- [black-screen](http://npm.im/black-screen) - A terminal emulator for the 21st century.
+- [cmjs-shell](http://npm.im/cmjs-shell) - Command shell based on CodeMirror.
+- [console-redirect](http://npm.im/console-redirect) - redirect console methods to streams
+- [desktop-normalize](http://npm.im/desktop-normalize) - CSS base styles for HTML5 desktop applications
+- [electron-cookies](http://npm.im/electron-cookies) - Adds support for cookies in Electron.
+- [electron-menus](http://npm.im/electron-menus) - Easily add menus to modules running in Electron.
+- [fix-path](http://npm.im/fix-path) - Fix the $PATH on OS X when run from a GUI app
+- [gulp-atom-electron](http://npm.im/gulp-atom-electron) - gulp plugin for packaging Electron applications
+- [gulp-atom-shell](http://npm.im/gulp-atom-shell) - gulp plugin for packaging Atom Shell applications
+- [menubar-extra](http://npm.im/menubar-extra) - High level way to create menubar desktop applications with electron. Forked from menubar with extra options.
+- [menubar](http://npm.im/menubar) - high level way to create menubar desktop applications with electron
+- [npm-run-posix-or-windows](http://npm.im/npm-run-posix-or-windows) - Portable NPM scripts when those have to work on Windows too
+- [open-ssh-tunnel](http://npm.im/open-ssh-tunnel) - Easy ssh2 tunneling
+- [shell-env](http://npm.im/shell-env) - Get environment variables from the shell
+- [shell-path](http://npm.im/shell-path) - Get the $PATH from the shell
 
 
 ### Plugin (15)
@@ -442,10 +652,11 @@
 - [pomegranate-wrapper](http://npm.im/pomegranate-wrapper) - Wraps plain dependencies in a Pomegranate multi plugin.
 
 
-### packager (14)
+### packager (15)
 
 
 - [electrify-elasticsearch](http://npm.im/electrify-elasticsearch) - ElasticSearch plugin for Electrify
+- [electrify-updated-test](http://npm.im/electrify-updated-test) - Package your Meteor apps with Electron, and butter.
 - [electrify](http://npm.im/electrify) - Package your Meteor apps with Electron, and butter.
 - [electron-builder](http://npm.im/electron-builder) - Complete solution to build ready for distribution and 'auto update' Electron App installers
 - [electron-complete-builder](http://npm.im/electron-complete-builder) - Complete solution to build ready for distribution and 'auto update' Electron App installers
@@ -461,45 +672,27 @@
 - [meteor-electron-desktop-client](http://npm.im/meteor-electron-desktop-client) - Build a Meteor's desktop client with hot code push.
 
 
-### windows (14)
+### web (15)
 
 
-- [check-max-path](http://npm.im/check-max-path) - Will you hit the Windows Maximum Path Length Limitation?
-- [dimeshift-desktop](http://npm.im/dimeshift-desktop) - The easiest and desktop way to track your expenses. Free. Open-source.
-- [electron-installer-windows](http://npm.im/electron-installer-windows) - Create a Windows package for your Electron app.
-- [electron-log](http://npm.im/electron-log) - Just a very simple logging module for your Electron application
-- [electron-promote-windows-tray-items](http://npm.im/electron-promote-windows-tray-items) - Ensure Windows tray items created by an Electron app show up in the toolbar, not the customization area.
-- [electron-single-instance](http://npm.im/electron-single-instance) - Allows only one instance of an application to run at a time.  Helpful for Electron apps in Windows
-- [electron-windows-installer](http://npm.im/electron-windows-installer) - Build Windows installers for Electron apps using Squirrel. Works with Gulp!
-- [league-companion](http://npm.im/league-companion) - A companion application for League of Legends built in Electron for Windows/Mac
-- [msi-packager-extended](http://npm.im/msi-packager-extended) - Build MSI (Windows Installer) packages on Mac and Linux. Provides fix for desktop and app icon. Warning: Package may disappear soon.
-- [msi-packager](http://npm.im/msi-packager) - Build MSI (Windows Installer) packages on Mac and Linux
-- [pushbullet-desktop](http://npm.im/pushbullet-desktop) - A lightweight cross-platform Pushbullet Client for OS X, Windows and Linux. It enables you to receive native system notifications in an unobstrusive way.
-- [react-desktop](http://npm.im/react-desktop) - React UI Components for macOS Sierra and Windows 10
-- [register-protocol-win32](http://npm.im/register-protocol-win32) - Registers a custom protocol (ie. myapp://) on Windows
-- [yourfukurou](http://npm.im/yourfukurou) - Twitter client for perspecuity of timeline
+- [admin-mongo](http://npm.im/admin-mongo) - A Web user interface to administer MongoDB databases built using Express
+- [awesome-webcomponents](http://npm.im/awesome-webcomponents) - awesome native js web components
+- [electron-angular-boilerplate](http://npm.im/electron-angular-boilerplate) - A basic electron app using AngularJS and Skeleton CSS with ES6 support
+- [electron-lite](http://npm.im/electron-lite) - this package will dynamically download and install electron @ 1.1.3 from https://github.com/atom/electron/releases with zero npm-dependencies
+- [electron-prebuilt-lite](http://npm.im/electron-prebuilt-lite) - lightweight version of electron-prebuilt with zero npm-dependencies
+- [electron-speech](http://npm.im/electron-speech) - speech recognition cli and api for node using electron
+- [graphcalc-web](http://npm.im/graphcalc-web) - A web interface for graph-calc.
+- [ngn-chassis-components](http://npm.im/ngn-chassis-components) - NGN Chassis Web Components
+- [reactors](http://npm.im/reactors) - Framework based on React to build hybrid apps that run web, mobile and desktop.
+- [swagger-lite](http://npm.im/swagger-lite) - this package will run a virtual swagger-ui server with persistent storage in the browser, that your webapp can use (in-place of a real backend)
+- [swagger-ui-lite](http://npm.im/swagger-ui-lite) - minimal npm installer for swagger-ui asset files with zero npm-dependencies
+- [utility2](http://npm.im/utility2) - this package will run dynamic browser tests with coverage (via istanbul and electron)
+- [websandbox](http://npm.im/websandbox) - A sandbox library for runnung javascript inside HTML5 sandboxed iframe
+- [websemble](http://npm.im/websemble) - Desktop application framework based on web technology.
+- [x-ray-nightmare](http://npm.im/x-ray-nightmare) - Nightmare (electron based) driver for the x-ray web scraper.
 
 
-### redux (14)
-
-
-- [PupaFM](http://npm.im/PupaFM) - douban.fm Music Desktop Player
-- [crossbuilder](http://npm.im/crossbuilder) - Building web, Electron and Chrome apps, and cross-browser extensions with React, Redux and Webpack. 'Write once, build everywhere' concept in practice.
-- [cubbie](http://npm.im/cubbie) - Stupid simple state storage
-- [geckoman](http://npm.im/geckoman) - a gecko wandering on your screen
-- [generator-electron-stack](http://npm.im/generator-electron-stack) - Scaffold out an Electron app boilerplate with Angular.js or React + Redux
-- [redux-electron-enhancer](http://npm.im/redux-electron-enhancer) - Redux store which synchronizes between instances in multiple process
-- [redux-electron-ipc](http://npm.im/redux-electron-ipc) - Redux Electron IPC Middleware
-- [redux-electron-store](http://npm.im/redux-electron-store) - Redux store which synchronizes between instances in multiple process
-- [redux-electron](http://npm.im/redux-electron) - ## Installation ```bash npm install redux-electron ``` ## Usage #### Main Process ```javascript import { applyMiddleware, compose } from 'redux'; import { createMainStore } from 'redux-electron';
-- [redux-storage-engine-electronjsonstorage](http://npm.im/redux-storage-engine-electronjsonstorage) - electron-json-storage based engine for redux-storage
-- [remotedev-app-slider](http://npm.im/remotedev-app-slider) - Remote Redux DevTools web, electron and chrome app. slider version
-- [remotedev-app](http://npm.im/remotedev-app) - Remote Redux DevTools web, electron and chrome app.
-- [remotedev-extension](http://npm.im/remotedev-extension) - Use Redux DevTools in the Browser/Electron DevTools
-- [send-action](http://npm.im/send-action) - simple state management
-
-
-### gruntplugin (13)
+### gruntplugin (14)
 
 
 - [grunt-electron-builder-wrapper](http://npm.im/grunt-electron-builder-wrapper) - Grunt plugin for electron-builder
@@ -515,60 +708,61 @@
 - [grunt-electron-redhat-installer](http://npm.im/grunt-electron-redhat-installer) - Create a Red Hat package for your Electron app.
 - [grunt-electron-windows-installer](http://npm.im/grunt-electron-windows-installer) - Create a Windows package for your Electron app.
 - [grunt-electron](http://npm.im/grunt-electron) - Package Electron apps
+- [grunt-vueify](http://npm.im/grunt-vueify) - Translate `.vue` files to pure JavaScript, without using Browserify.
 
 
-### yeoman-generator (13)
+### image (13)
 
 
-- [generator-easyelectron](http://npm.im/generator-easyelectron) - Very simple Yeoman Electron app generator.
-- [generator-electron-angular2](http://npm.im/generator-electron-angular2) - starter project for electron with angular2
-- [generator-electron-app](http://npm.im/generator-electron-app) - Scaffold for Electron application
-- [generator-electron-extra](http://npm.im/generator-electron-extra) - Scaffold out an Electron app boilerplate with sass, webpack, and browsersync
-- [generator-electron-naive](http://npm.im/generator-electron-naive) - Create desktop app for a website in one minute
-- [generator-electron-soixante](http://npm.im/generator-electron-soixante) - Scaffold out an Electron app boilerplate
-- [generator-electron-stack](http://npm.im/generator-electron-stack) - Scaffold out an Electron app boilerplate with Angular.js or React + Redux
-- [generator-electron](http://npm.im/generator-electron) - Scaffold out an Electron app boilerplate
-- [generator-neodymium](http://npm.im/generator-neodymium) - Scaffolds a clean and combat ready electron app.
-- [generator-neutron](http://npm.im/generator-neutron) - Convenient Yeoman generator for neutron
-- [generator-pomegranate](http://npm.im/generator-pomegranate) - Model, controller, route generators for the Pomegranate framework
-- [generator-tsweb](http://npm.im/generator-tsweb) - Yeoman generator for Typescript + Web
-- [generator-websemble](http://npm.im/generator-websemble) - Websemble app generator.
+- [dom-copy-image](http://npm.im/dom-copy-image) - Copy an image file in a DOM environment
+- [electron-canvas-to-buffer](http://npm.im/electron-canvas-to-buffer) - in Electron, turns a Canvas into a Buffer
+- [electron-context-menu](http://npm.im/electron-context-menu) - Context menu for your Electron app
+- [electron-html-to](http://npm.im/electron-html-to) - Convert html to html/image using electron
+- [electron-image-resize](http://npm.im/electron-image-resize) - Resize images using Electron. Supports all image types that Chromium/Electron supports, outputs to png, jpeg, dataUrl or NativeImage.
+- [filteron](http://npm.im/filteron) - A minimalist image editor based on CSS filters
+- [gallezy](http://npm.im/gallezy) - Super Simple Image Gallery App http://anseki.github.io/gallezy/
+- [gl-pixel-stream](http://npm.im/gl-pixel-stream) - streaming gl.readPixels from an FBO
+- [image-clipper](http://npm.im/image-clipper) - Node.js module for clipping & cropping JPEG, PNG, WebP images purely using the native Canvas APIs, excellent compatibility with the Browser & Electron & NW.js (Node-webkit), itself doesn't relies on any image processing libraries.
+- [photo-compare-sort](http://npm.im/photo-compare-sort) - A photo sort by user comparation
+- [preview-dds](http://npm.im/preview-dds) - preview and save DDS textures from the command line
+- [robotjs](http://npm.im/robotjs) - Node.js Desktop Automation.
+- [three-png-stream](http://npm.im/three-png-stream) - streams ThreeJS render target pixel data
 
 
-### test (13)
+### api (13)
 
 
-- [browser-run](http://npm.im/browser-run) - Transform stream that executes JavaScript it receives in a real browser and outputs console output
-- [chromeo](http://npm.im/chromeo) - experimental Node-Browser bridge
-- [electron-cucumber](http://npm.im/electron-cucumber) - Cucumber feature testing for Electron applications
-- [electron-mocha](http://npm.im/electron-mocha) - Mocha tests in Electron.
-- [electrun](http://npm.im/electrun) - run on electron
-- [graviton](http://npm.im/graviton) - Headless browser for web testing, scrapping
-- [hihat](http://npm.im/hihat) - local Node/Browser development with Chrome DevTools
-- [mocha-electron](http://npm.im/mocha-electron) - mocha testing in electron
-- [mochatron](http://npm.im/mochatron) - mocha testing in electron
-- [taped-electron](http://npm.im/taped-electron) - Run tape tests inside electron
-- [testron](http://npm.im/testron) - CI your client side tests with Electron
-- [ugnis-test](http://npm.im/ugnis-test) - Ugnis test config
+- [dimeshift-desktop](http://npm.im/dimeshift-desktop) - The easiest and desktop way to track your expenses. Free. Open-source.
+- [dimeshift](http://npm.im/dimeshift) - Webapp to track and manage personal finances
+- [discord-bot-github](http://npm.im/discord-bot-github) - A bot for discord which consumes the GitHub API and gives you updates.
+- [electron-apis](http://npm.im/electron-apis) - A JSON object describing Electron's APIs
+- [electron-docs-linter](http://npm.im/electron-docs-linter) - A JSON object describing Electron's APIs
+- [electron-docs](http://npm.im/electron-docs) - Fetch Electron documentation as raw markdown strings
+- [graphcalc-api](http://npm.im/graphcalc-api) - A RESTful API server for graph-calc.
+- [nw-auto-updater](http://npm.im/nw-auto-updater) - A high level API to make node-webkit apps auto updating easy
+- [phidgetapi](http://npm.im/phidgetapi) - Full official phidget interface API for node.js
+- [swagger-lite](http://npm.im/swagger-lite) - this package will run a virtual swagger-ui server with persistent storage in the browser, that your webapp can use (in-place of a real backend)
+- [swagger-ui-lite](http://npm.im/swagger-ui-lite) - minimal npm installer for swagger-ui asset files with zero npm-dependencies
+- [thegamesdb](http://npm.im/thegamesdb) - TheGamesDB.net API wrapper
+- [vue-electron](http://npm.im/vue-electron) - The vue plugin that attaches electron APIs to the Vue object, making them accessible to all components.
+
+
+### build (13)
+
+
+- [cmake-js](http://npm.im/cmake-js) - CMake.js - a Node.js/io.js native addon build tool
+- [electron-builder](http://npm.im/electron-builder) - Complete solution to build ready for distribution and 'auto update' Electron App installers
+- [electron-complete-builder](http://npm.im/electron-complete-builder) - Complete solution to build ready for distribution and 'auto update' Electron App installers
+- [grunt-electron-builder](http://npm.im/grunt-electron-builder) - Grunt plugin to build your electron app
+- [grunt-electron-itchio](http://npm.im/grunt-electron-itchio) - Package Electron apps
+- [grunt-electron-packager-builder](http://npm.im/grunt-electron-packager-builder) - Package Electron apps. Grunt task to electron-prebuilt , electron-packager and electron-builder.
+- [grunt-electron-packager](http://npm.im/grunt-electron-packager) - Package Electron apps. Grunt task to create packages electron using electron-packager
+- [grunt-electron](http://npm.im/grunt-electron) - Package Electron apps
+- [node-cmake](http://npm.im/node-cmake) - A CMake-based build system for node.js native modules
+- [nw-zip-builder](http://npm.im/nw-zip-builder) - nw.js builder wrapper
 - [utility2](http://npm.im/utility2) - this package will run dynamic browser tests with coverage (via istanbul and electron)
-
-
-### shell (13)
-
-
-- [asv](http://npm.im/asv) - electron / atom-shell version management
-- [black-screen](http://npm.im/black-screen) - A terminal emulator for the 21st century.
-- [console-redirect](http://npm.im/console-redirect) - redirect console methods to streams
-- [desktop-normalize](http://npm.im/desktop-normalize) - CSS base styles for HTML5 desktop applications
-- [electron-cookies](http://npm.im/electron-cookies) - Adds support for cookies in Electron.
-- [electron-menus](http://npm.im/electron-menus) - Easily add menus to modules running in Electron.
-- [fix-path](http://npm.im/fix-path) - Fix the $PATH on OS X when run from a GUI app
-- [gulp-atom-electron](http://npm.im/gulp-atom-electron) - gulp plugin for packaging Electron applications
-- [gulp-atom-shell](http://npm.im/gulp-atom-shell) - gulp plugin for packaging Atom Shell applications
-- [menubar-extra](http://npm.im/menubar-extra) - High level way to create menubar desktop applications with electron. Forked from menubar with extra options.
-- [menubar](http://npm.im/menubar) - high level way to create menubar desktop applications with electron
-- [shell-env](http://npm.im/shell-env) - Get environment variables from the shell
-- [shell-path](http://npm.im/shell-path) - Get the $PATH from the shell
+- [vbuild](http://npm.im/vbuild) - Preset build tool for Vue.js apps.
+- [vulcan-ui](http://npm.im/vulcan-ui) - Node build tool for npm, gulp, grunt
 
 
 ### arduino (13)
@@ -589,55 +783,170 @@
 - [selfup-rejs](http://npm.im/selfup-rejs) - Event based, key value store on the file system. Basic server side db in js for node developers. Geared towards NodeBots/IoT.
 
 
-### nightmare (12)
+### webgl (13)
 
 
-- [is-js-error](http://npm.im/is-js-error) - Check if a page contains a JavaScript error
-- [joseph](http://npm.im/joseph) - Better dream interpretation support for Nightmare.
-- [nightmare-bmg](http://npm.im/nightmare-bmg) - A high-level browser automation library.
-- [nightmare-evaluate-async](http://npm.im/nightmare-evaluate-async) - Adds evaluateAsync method to Nightmare.
-- [nightmare-google-oauth2](http://npm.im/nightmare-google-oauth2) - Nightmare plugin to automatically authenticate, authorize and retrieve a fresh OAuth2 token for Google APIs
-- [nightmare-gremlins](http://npm.im/nightmare-gremlins) - Monkey testing via Gremlins.js for Nightmare.js
-- [nightmare-load-filter](http://npm.im/nightmare-load-filter) - Filter requests in NightmareJS
-- [nightmare-meteor](http://npm.im/nightmare-meteor) - forked Nightmare compatible with meteor 1.3 and some goodies
-- [nightmare-plus](http://npm.im/nightmare-plus) - copy of Nightmare to add stuff
-- [nightmare-window-manager](http://npm.im/nightmare-window-manager) - add window management to your Nightmare scripts
-- [nightmare](http://npm.im/nightmare) - A high-level browser automation library.
-- [x-ray-nightmare](http://npm.im/x-ray-nightmare) - Nightmare (electron based) driver for the x-ray web scraper.
+- [alembic-viewer](http://npm.im/alembic-viewer) - alembic (.abc) viewer
+- [cesium](http://npm.im/cesium) - Cesium is a JavaScript library for creating 3D globes and 2D maps in a web browser without a plugin.
+- [deck.gl](http://npm.im/deck.gl) - A suite of 3D-enabled data visualization overlays, suitable for react-map-gl
+- [gl-pixel-stream](http://npm.im/gl-pixel-stream) - streaming gl.readPixels from an FBO
+- [gl](http://npm.im/gl) - Creates a WebGL context without a window
+- [glantern](http://npm.im/glantern) - A library intended for a Flash-HTML5 shim layer.
+- [hihat](http://npm.im/hihat) - local Node/Browser development with Chrome DevTools
+- [luma.gl](http://npm.im/luma.gl) - A WebGL JavaScript visualization library.
+- [myou-engine](http://npm.im/myou-engine) - Myou is a game engine for web, it features an editor based on Blender.
+- [preview-dds](http://npm.im/preview-dds) - preview and save DDS textures from the command line
+- [shadertoy-export](http://npm.im/shadertoy-export) - render ShaderToy demos to PNG
+- [terriajs-cesium](http://npm.im/terriajs-cesium) - Cesium for TerriaJS.
+- [uglymol](http://npm.im/uglymol) - Macromolecular viewer for crystallographers used to coot
 
 
-### web (12)
+### installer (12)
 
 
-- [electron-angular-boilerplate](http://npm.im/electron-angular-boilerplate) - A basic electron app using AngularJS and Skeleton CSS with ES6 support
+- [electron-builder](http://npm.im/electron-builder) - Complete solution to build ready for distribution and 'auto update' Electron App installers
+- [electron-complete-builder](http://npm.im/electron-complete-builder) - Complete solution to build ready for distribution and 'auto update' Electron App installers
+- [electron-installer-dmg](http://npm.im/electron-installer-dmg) - Create DMG installers for your electron apps.
+- [electron-installer-zip](http://npm.im/electron-installer-zip) - Create a zip file with support for symlinks required by electron on osx.
+- [electron-meshblu-connector-installer](http://npm.im/electron-meshblu-connector-installer) - Meshblu Connector Installer
+- [electron-windows-installer](http://npm.im/electron-windows-installer) - Build Windows installers for Electron apps using Squirrel. Works with Gulp!
+- [grunt-electron-packager-builder](http://npm.im/grunt-electron-packager-builder) - Package Electron apps. Grunt task to electron-prebuilt , electron-packager and electron-builder.
+- [jvi](http://npm.im/jvi) - JDK (Java Development Kit) installer for Debian-based linux distributions
+- [libui-download](http://npm.im/libui-download) - download libui prebuilt binary zips from github releases
+- [msi-packager-extended](http://npm.im/msi-packager-extended) - Build MSI (Windows Installer) packages on Mac and Linux. Provides fix for desktop and app icon. Warning: Package may disappear soon.
+- [msi-packager](http://npm.im/msi-packager) - Build MSI (Windows Installer) packages on Mac and Linux
+- [npm-gui](http://npm.im/npm-gui) - Graphic User Interface for NPM packages/tasks for front and back -end users.
+
+
+### native (12)
+
+
+- [cmake-js](http://npm.im/cmake-js) - CMake.js - a Node.js/io.js native addon build tool
+- [electron-canvas-to-buffer](http://npm.im/electron-canvas-to-buffer) - in Electron, turns a Canvas into a Buffer
+- [electron-ref](http://npm.im/electron-ref) - This is a fork of the ref project, adding electron build support and binaries
+- [native-builder](http://npm.im/native-builder) - A utility to build native packages according to your engine in Node.js
+- [nativefier](http://npm.im/nativefier) - Wrap web apps natively
+- [node-cmake](http://npm.im/node-cmake) - A CMake-based build system for node.js native modules
+- [node-pre-gyp](http://npm.im/node-pre-gyp) - Node.js native addon binary install tool
+- [positron-cli](http://npm.im/positron-cli) - Compile Javascript apps for Android
+- [pushbullet-desktop](http://npm.im/pushbullet-desktop) - Lightweight cross-platform Pushbullet desktop application
+- [react-desktop](http://npm.im/react-desktop) - React UI Components for macOS Sierra and Windows 10
+- [react-native-log-monitor](http://npm.im/react-native-log-monitor) - React Native Log monitor web, electron and chrome app.
+- [reactors](http://npm.im/reactors) - Framework based on React to build hybrid apps that run web, mobile and desktop.
+
+
+### headless (12)
+
+
+- [browser-run](http://npm.im/browser-run) - Transform stream that executes JavaScript it receives in a real browser and outputs console output
 - [electron-lite](http://npm.im/electron-lite) - this package will dynamically download and install electron @ 1.1.3 from https://github.com/atom/electron/releases with zero npm-dependencies
 - [electron-prebuilt-lite](http://npm.im/electron-prebuilt-lite) - lightweight version of electron-prebuilt with zero npm-dependencies
-- [electron-speech](http://npm.im/electron-speech) - speech recognition cli and api for node using electron
-- [graphcalc-web](http://npm.im/graphcalc-web) - A web interface for graph-calc.
-- [reactors](http://npm.im/reactors) - Framework based on React to build hybrid apps that run web, mobile and desktop.
-- [swagger-lite](http://npm.im/swagger-lite) - this package will run a virtual swagger-ui server with persistent storage in the browser, that your webapp can use (in-place of a real backend)
-- [swagger-ui-lite](http://npm.im/swagger-ui-lite) - minimal npm installer for swagger-ui asset files with zero npm-dependencies
+- [electron-spawn](http://npm.im/electron-spawn) - easy way to run code inside of a headless electron window from the CLI
+- [electron-workers](http://npm.im/electron-workers) - Run electron scripts in managed workers
+- [gl](http://npm.im/gl) - Creates a WebGL context without a window
+- [graviton](http://npm.im/graviton) - Headless browser for web testing, scrapping
+- [handy-debugger](http://npm.im/handy-debugger) - easily debug your Nodejs app in the Chromium Devtools
+- [headless-google-auth](http://npm.im/headless-google-auth) - Log into a Google account using OAuth2 without a browser
+- [headless-trello-auth](http://npm.im/headless-trello-auth) - Automatically grant access for your application in Trello
+- [tape-run](http://npm.im/tape-run) - Headless tape test runner
 - [utility2](http://npm.im/utility2) - this package will run dynamic browser tests with coverage (via istanbul and electron)
-- [websandbox](http://npm.im/websandbox) - A sandbox library for runnung javascript inside HTML5 sandboxed iframe
-- [websemble](http://npm.im/websemble) - Desktop application framework based on web technology.
-- [x-ray-nightmare](http://npm.im/x-ray-nightmare) - Nightmare (electron based) driver for the x-ray web scraper.
 
 
-### json (12)
+### phantomjs (12)
 
 
-- [async-json-serializer](http://npm.im/async-json-serializer) - A library to serialize a JSON object across multiple async callbacks.
-- [configurizer](http://npm.im/configurizer) - Simply load a config file from your projects root directory
-- [dota2-manta-config-engine-standalone](http://npm.im/dota2-manta-config-engine-standalone) - Allows you to customize your Dota 2 Autoexec on-the-fly.
-- [editdata](http://npm.im/editdata) - A desktop app for editing data.
+- [browser-run](http://npm.im/browser-run) - Transform stream that executes JavaScript it receives in a real browser and outputs console output
+- [headless-google-auth](http://npm.im/headless-google-auth) - Log into a Google account using OAuth2 without a browser
+- [headless-trello-auth](http://npm.im/headless-trello-auth) - Automatically grant access for your application in Trello
+- [navit](http://npm.im/navit) - Wrapper for PhantomJS and SlimerJS to simplify browser tests scripting
+- [nightmare-download-manager](http://npm.im/nightmare-download-manager) - Add download management to NightmareJS
+- [nightmare-google-oauth2](http://npm.im/nightmare-google-oauth2) - Nightmare plugin to automatically authenticate, authorize and retrieve a fresh OAuth2 token for Google APIs
+- [nightmare-inline-download](http://npm.im/nightmare-inline-download) - Add inline download management to NightmareJS
+- [nightmare-load-filter](http://npm.im/nightmare-load-filter) - Filter requests in NightmareJS
+- [nightmare-navigation-lock](http://npm.im/nightmare-navigation-lock) - Lock navigation in NightmareJS
+- [nightmare-window-manager](http://npm.im/nightmare-window-manager) - add window management to your Nightmare scripts
+- [tape-run](http://npm.im/tape-run) - Headless tape test runner
+- [utility2](http://npm.im/utility2) - this package will run dynamic browser tests with coverage (via istanbul and electron)
+
+
+### markdown (12)
+
+
+- [bespoke-pdf-electron-helper](http://npm.im/bespoke-pdf-electron-helper) - PDF plugin for Bespoke.js
 - [electron-apis](http://npm.im/electron-apis) - A JSON object describing Electron's APIs
-- [electron-config](http://npm.im/electron-config) - Simple config handling for your Electron app or module
-- [electron-json-config](http://npm.im/electron-json-config) - Simply set and get configuration from a json file for your Electron app
-- [electron-json-storage](http://npm.im/electron-json-storage) - Easily write and read user settings in Electron apps
-- [json-web-storage](http://npm.im/json-web-storage) - Simple localStorage/sessionStorage wrapper providing the exact same API with automatic JSON serialization
-- [strudl](http://npm.im/strudl) - structured data viewer
-- [uupaa.fileloader.js](http://npm.im/uupaa.fileloader.js) - URL loader and type converter. URL -> String/JSON/Blob/ArrayBuffer, Blob/TypedArray/ArrayBuffer -> ArrayBuffer
-- [yunodb](http://npm.im/yunodb) - portable, persistent, electron compatible fulltext search database
+- [electron-docs-linter](http://npm.im/electron-docs-linter) - A JSON object describing Electron's APIs
+- [electron-docs](http://npm.im/electron-docs) - Fetch Electron documentation as raw markdown strings
+- [electron-markdown-editor](http://npm.im/electron-markdown-editor) - A markdown editor built with electron, uikit, and markdown-it
+- [electron-markdownify](http://npm.im/electron-markdownify) - A minimalist Markdown Editor
+- [entu-cms](http://npm.im/entu-cms) - Simple (Jade) filebased CMS
+- [hyperpdf](http://npm.im/hyperpdf) - A command line tool to generate PDF from URL, HTML or Markdown files
+- [markn](http://npm.im/markn) - Lightweight markdown viewer
+- [md-paint](http://npm.im/md-paint) - View rendered markdown files with github flavored markdown while using your favorite editor
+- [shiba](http://npm.im/shiba) - Live markdown previewer with linter
+- [vmd](http://npm.im/vmd) - vmd
+
+
+### webrtc (11)
+
+
+- [electron-screencapture](http://npm.im/electron-screencapture) - Library that allows to take a picture or a video from any fragment of the display
+- [electron-webrtc](http://npm.im/electron-webrtc) - Use WebRTC in Node.js via a hidden Electron process
+- [peerbot](http://npm.im/peerbot) - Message seeding utility for friends p2p chat.
+- [rtc-screenshare](http://npm.im/rtc-screenshare) - WebRTC Screensharing Chrome Extension 
+- [rtcninja-js-sl](http://npm.im/rtcninja-js-sl) - WebRTC API wrapper to deal with different browsers
+- [rtcninja](http://npm.im/rtcninja) - WebRTC API wrapper to deal with different browsers
+- [swarmbot](http://npm.im/swarmbot) - mirroring for a p2p mesh of swarmlogs
+- [webtorrent-hybrid-electron](http://npm.im/webtorrent-hybrid-electron) - Streaming torrent client with reliable WebRTC support for node.js
+- [webtorrent-hybrid](http://npm.im/webtorrent-hybrid) - Streaming torrent client
+- [webtorrent](http://npm.im/webtorrent) - Streaming torrent client
+- [woverlay](http://npm.im/woverlay) - WebRTC based overlay network.
+
+
+### npm (11)
+
+
+- [electron-npm-packages](http://npm.im/electron-npm-packages) - A collection of all npm packages that mention `electron` in their package.json
+- [git-handler](http://npm.im/git-handler) - NPM module for handling git repositories. Makes it easy to add, checkout, branch, clone, commit, pull and push.
+- [install-missing](http://npm.im/install-missing) - install latest missing modules
+- [lookerupper](http://npm.im/lookerupper) - Copy to your clipboard a package's name and use `CmdOrCtrl+Shift+L` to lookup its documentation on GitHub
+- [npm-gui](http://npm.im/npm-gui) - Graphic User Interface for NPM packages/tasks for front and back -end users.
+- [pushbullet-desktop](http://npm.im/pushbullet-desktop) - Lightweight cross-platform Pushbullet desktop application
+- [quickslot](http://npm.im/quickslot) - A GUI shortcut for your npm scripts
+- [random-world](http://npm.im/random-world) - Nodejs. module to generate random collections of data.
+- [removeNPMAbsolutePaths](http://npm.im/removeNPMAbsolutePaths) - Remove the fields containing local aboslute paths created by NPM
+- [vulcan-ui](http://npm.im/vulcan-ui) - Node build tool for npm, gulp, grunt
+
+
+### package (11)
+
+
+- [electron-is-running-in-asar](http://npm.im/electron-is-running-in-asar) - Check if the application is running from inside an asar package
+- [electron-packager-interactive](http://npm.im/electron-packager-interactive) - An interactive implementation of electron-packager
+- [electron-zip-packager](http://npm.im/electron-zip-packager) - A wrapper of electron-packager. Package your electron app and zipped!
+- [grunt-electron-itchio](http://npm.im/grunt-electron-itchio) - Package Electron apps
+- [grunt-electron-packager-builder](http://npm.im/grunt-electron-packager-builder) - Package Electron apps. Grunt task to electron-prebuilt , electron-packager and electron-builder.
+- [grunt-electron-packager](http://npm.im/grunt-electron-packager) - Package Electron apps. Grunt task to create packages electron using electron-packager
+- [grunt-electron](http://npm.im/grunt-electron) - Package Electron apps
+- [load-plugin](http://npm.im/load-plugin) - Load a submodule / plugin
+- [lookerupper](http://npm.im/lookerupper) - Copy to your clipboard a package's name and use `CmdOrCtrl+Shift+L` to lookup its documentation on GitHub
+- [prt](http://npm.im/prt) - Package Manager for Windows
+- [typings](http://npm.im/typings) - The TypeScript Definition Manager
+
+
+### download (11)
+
+
+- [electron-dl](http://npm.im/electron-dl) - Simplified file downloads for your Electron app
+- [electron-gh-releases-updater](http://npm.im/electron-gh-releases-updater) - Updates an app based on GH Electron from GH releases.
+- [grunt-download-wcjs](http://npm.im/grunt-download-wcjs) - Grunt task to download pre-built WebChimera.js for Electron & NW.JS.
+- [java-download](http://npm.im/java-download) - Downloads a JVM release archive from Oracle
+- [moebius](http://npm.im/moebius) - Command-Line tool to find and download comics (As well as NodeJS module)
+- [nightmare-download-manager](http://npm.im/nightmare-download-manager) - Add download management to NightmareJS
+- [nightmare-inline-download](http://npm.im/nightmare-inline-download) - Add inline download management to NightmareJS
+- [prebuilt-download](http://npm.im/prebuilt-download) - Downloads prebuilt binaries based on URL/filename templates
+- [webtorrent-hybrid-electron](http://npm.im/webtorrent-hybrid-electron) - Streaming torrent client with reliable WebRTC support for node.js
+- [webtorrent-hybrid](http://npm.im/webtorrent-hybrid) - Streaming torrent client
+- [webtorrent](http://npm.im/webtorrent) - Streaming torrent client
 
 
 ### boilerplate (11)
@@ -656,35 +965,97 @@
 - [generator-neodymium](http://npm.im/generator-neodymium) - Scaffolds a clean and combat ready electron app.
 
 
-### build (11)
+### promise (11)
 
 
-- [cmake-js](http://npm.im/cmake-js) - CMake.js - a Node.js/io.js native addon build tool
-- [electron-builder](http://npm.im/electron-builder) - Complete solution to build ready for distribution and 'auto update' Electron App installers
-- [electron-complete-builder](http://npm.im/electron-complete-builder) - Complete solution to build ready for distribution and 'auto update' Electron App installers
-- [grunt-electron-builder](http://npm.im/grunt-electron-builder) - Grunt plugin to build your electron app
-- [grunt-electron-itchio](http://npm.im/grunt-electron-itchio) - Package Electron apps
+- [chainbuilder-flow](http://npm.im/chainbuilder-flow) - Flow blocks (each, map, if, while) for chainbuilder.
+- [chainbuilder-lodash](http://npm.im/chainbuilder-lodash) - Lodash mixin for chainbuilder.
+- [chainbuilder-log-console](http://npm.im/chainbuilder-log-console) - Console logging mixin for chainbuilder.
+- [chainbuilder-request](http://npm.im/chainbuilder-request) - Request mixin for chainbuilder.
+- [chainbuilder-retry](http://npm.im/chainbuilder-retry) - Retry mixin for chainbuilder.
+- [chainbuilder-save](http://npm.im/chainbuilder-save) - Chainbuilder mixin for saving/restoring values.
+- [chainbuilder](http://npm.im/chainbuilder) - Construct a chainable library from a set of async functions.
+- [chillout](http://npm.im/chillout) - Reduce CPU usage in JavaScript
+- [henderson](http://npm.im/henderson) - A tiny event emitter-based finite state machine with promises
+- [popsicle](http://npm.im/popsicle) - Simple HTTP requests for node and the browser
+- [rpcjs](http://npm.im/rpcjs) - Promise-based RPC. Works in browser, node, electron, you name it. Any transport you like.
+
+
+### application (11)
+
+
+- [bozon](http://npm.im/bozon) - Framework for building Electron applications
+- [dimeshift-desktop](http://npm.im/dimeshift-desktop) - The easiest and desktop way to track your expenses. Free. Open-source.
+- [dimeshift](http://npm.im/dimeshift) - Webapp to track and manage personal finances
+- [generator-electron-extra](http://npm.im/generator-electron-extra) - Scaffold out an Electron app boilerplate with sass, webpack, and browsersync
+- [generator-electron-soixante](http://npm.im/generator-electron-soixante) - Scaffold out an Electron app boilerplate
+- [generator-electron-stack](http://npm.im/generator-electron-stack) - Scaffold out an Electron app boilerplate with Angular.js or React + Redux
+- [generator-electron](http://npm.im/generator-electron) - Scaffold out an Electron app boilerplate
+- [generator-neodymium](http://npm.im/generator-neodymium) - Scaffolds a clean and combat ready electron app.
+- [league-companion](http://npm.im/league-companion) - A companion application for League of Legends built in Electron for Windows/Mac
+- [lucidity](http://npm.im/lucidity) - An electron application for live arts, shader fun and game prototypes.
+- [lucy-boot](http://npm.im/lucy-boot) - Bootstrap Lucidity, an electron application.
+
+
+### tutorial (11)
+
+
+- [billcurt-electron-test-auto-update](http://npm.im/billcurt-electron-test-auto-update) - A minimal auto-updating Electron application
+- [electron-adventure](http://npm.im/electron-adventure) -  Learn the basic of Electron (formerly atom-shell) with this educational workshop
+- [electron-app-test](http://npm.im/electron-app-test) - A minimal Electron application
+- [electron-app](http://npm.im/electron-app) - A minimal Electron application
+- [electron-node-red](http://npm.im/electron-node-red) - Electron Node-RED template
+- [electron-quick-start](http://npm.im/electron-quick-start) - A minimal Electron application
+- [electron-test](http://npm.im/electron-test) - A minimal Electron application
+- [elementary-electron](http://npm.im/elementary-electron) - nodeschool workshop to learn electron
+- [firewall-authenticatoe-iitm](http://npm.im/firewall-authenticatoe-iitm) - An application to automatically refresh
+- [firewall-authenticator-iitm](http://npm.im/firewall-authenticator-iitm) - An application to automatically refresh
+- [nutella-scrape](http://npm.im/nutella-scrape) - a nodeschool workshop to teach scraping
+
+
+### linux (11)
+
+
+- [benja](http://npm.im/benja) - Bootable Electron Node JS Application helper.
+- [dimeshift-desktop](http://npm.im/dimeshift-desktop) - The easiest and desktop way to track your expenses. Free. Open-source.
+- [electron-log](http://npm.im/electron-log) - Just a very simple logging module for your Electron application
+- [electron-packager-interactive](http://npm.im/electron-packager-interactive) - An interactive implementation of electron-packager
 - [grunt-electron-packager-builder](http://npm.im/grunt-electron-packager-builder) - Package Electron apps. Grunt task to electron-prebuilt , electron-packager and electron-builder.
-- [grunt-electron-packager](http://npm.im/grunt-electron-packager) - Package Electron apps. Grunt task to create packages electron using electron-packager
-- [grunt-electron](http://npm.im/grunt-electron) - Package Electron apps
-- [utility2](http://npm.im/utility2) - this package will run dynamic browser tests with coverage (via istanbul and electron)
-- [vbuild](http://npm.im/vbuild) - Preset build tool for Vue.js apps.
-- [vulcan-ui](http://npm.im/vulcan-ui) - Node build tool for npm, gulp, grunt
+- [os.js](http://npm.im/os.js) - Very stupid detection of OS
+- [plaidchat](http://npm.im/plaidchat) - A Linux client for Slack
+- [pushbullet-desktop](http://npm.im/pushbullet-desktop) - Lightweight cross-platform Pushbullet desktop application
+- [reactors](http://npm.im/reactors) - Framework based on React to build hybrid apps that run web, mobile and desktop.
+- [record-desktop](http://npm.im/record-desktop) - Record gifs and take screenshots on linux, built with electron.
+- [yourfukurou](http://npm.im/yourfukurou) - Twitter client for perspecuity of timeline
 
 
-### installer (10)
+### ipc (10)
 
 
-- [electron-builder](http://npm.im/electron-builder) - Complete solution to build ready for distribution and 'auto update' Electron App installers
-- [electron-complete-builder](http://npm.im/electron-complete-builder) - Complete solution to build ready for distribution and 'auto update' Electron App installers
-- [electron-installer-dmg](http://npm.im/electron-installer-dmg) - Create DMG installers for your electron apps.
-- [electron-installer-zip](http://npm.im/electron-installer-zip) - Create a zip file with support for symlinks required by electron on osx.
-- [electron-meshblu-connector-installer](http://npm.im/electron-meshblu-connector-installer) - Meshblu Connector Installer
-- [electron-windows-installer](http://npm.im/electron-windows-installer) - Build Windows installers for Electron apps using Squirrel. Works with Gulp!
-- [grunt-electron-packager-builder](http://npm.im/grunt-electron-packager-builder) - Package Electron apps. Grunt task to electron-prebuilt , electron-packager and electron-builder.
-- [msi-packager-extended](http://npm.im/msi-packager-extended) - Build MSI (Windows Installer) packages on Mac and Linux. Provides fix for desktop and app icon. Warning: Package may disappear soon.
-- [msi-packager](http://npm.im/msi-packager) - Build MSI (Windows Installer) packages on Mac and Linux
-- [npm-gui](http://npm.im/npm-gui) - Graphic User Interface for NPM packages/tasks for front and back -end users.
+- [electron-ipc-mock](http://npm.im/electron-ipc-mock) - Mocked electron ipc communication module
+- [electron-ipc-responder](http://npm.im/electron-ipc-responder) - A simple request/response based communication protocol for Electrons IPC functionality
+- [electron-ipc-stream](http://npm.im/electron-ipc-stream) - Duplex stream over IPC for main/renderer to communicate with each other.
+- [electron-ipc-tunnel](http://npm.im/electron-ipc-tunnel) - Create tunelled conncections over Electron's IPC.
+- [electron-rpc](http://npm.im/electron-rpc) - A lightweight rpc-style wrapper for the ipc module of electron
+- [electron-safe-ipc](http://npm.im/electron-safe-ipc) - Safe communication between main process and renderer processes in Electron
+- [elekiter](http://npm.im/elekiter) - express like electron ipc wrapper library
+- [pauls-electron-rpc](http://npm.im/pauls-electron-rpc) - My RPC solution for exporting APIs from the electron background process to renderers and webviews.
+- [pull-ipc](http://npm.im/pull-ipc) - pull-stream wrapper around electron's ipc channel
+- [redux-electron-ipc](http://npm.im/redux-electron-ipc) - Redux Electron IPC Middleware
+
+
+### meteor (10)
+
+
+- [electrify-elasticsearch](http://npm.im/electrify-elasticsearch) - ElasticSearch plugin for Electrify
+- [electrify-updated-test](http://npm.im/electrify-updated-test) - Package your Meteor apps with Electron, and butter.
+- [electrify](http://npm.im/electrify) - Package your Meteor apps with Electron, and butter.
+- [electron-meteor](http://npm.im/electron-meteor) - Full Meteor Client for Electron
+- [marsdb-sync-client](http://npm.im/marsdb-sync-client) - Standalone Meteor DDP client based on MarsDB
+- [meteor-desktop-plugin-test-suite](http://npm.im/meteor-desktop-plugin-test-suite) - Few utils to ease out functional testing of Meteor Desktop plugins.
+- [meteor-desktop-splash-screen](http://npm.im/meteor-desktop-splash-screen) - Meteor Desktop splash screen plugin.
+- [meteor-desktop](http://npm.im/meteor-desktop) - Build a Meteor's desktop client with hot code push.
+- [meteor-electron-desktop-client](http://npm.im/meteor-electron-desktop-client) - Build a Meteor's desktop client with hot code push.
 
 
 ### testing (10)
@@ -702,34 +1073,34 @@
 - [spectron-keys](http://npm.im/spectron-keys) - Accelerator mappings for Electron commands to Spectron/WebDriver key codes.
 
 
-### application (10)
+### pdf (10)
 
 
-- [bozon](http://npm.im/bozon) - Framework for building Electron applications
-- [dimeshift-desktop](http://npm.im/dimeshift-desktop) - The easiest and desktop way to track your expenses. Free. Open-source.
-- [generator-electron-extra](http://npm.im/generator-electron-extra) - Scaffold out an Electron app boilerplate with sass, webpack, and browsersync
-- [generator-electron-soixante](http://npm.im/generator-electron-soixante) - Scaffold out an Electron app boilerplate
-- [generator-electron-stack](http://npm.im/generator-electron-stack) - Scaffold out an Electron app boilerplate with Angular.js or React + Redux
-- [generator-electron](http://npm.im/generator-electron) - Scaffold out an Electron app boilerplate
-- [generator-neodymium](http://npm.im/generator-neodymium) - Scaffolds a clean and combat ready electron app.
-- [league-companion](http://npm.im/league-companion) - A companion application for League of Legends built in Electron for Windows/Mac
-- [lucidity](http://npm.im/lucidity) - An electron application for live arts, shader fun and game prototypes.
-- [lucy-boot](http://npm.im/lucy-boot) - Bootstrap Lucidity, an electron application.
+- [easy-pdf-merge](http://npm.im/easy-pdf-merge) - A node module to merge PDFs. Uses Apache PDFBox library.
+- [electron-html-to](http://npm.im/electron-html-to) - Convert html to html/image using electron
+- [electron-pdf-js](http://npm.im/electron-pdf-js) - A fork of the original electron-pdf package to add in additional features such as enabling javascript, debug mode and allowing use of insecure external content.
+- [electron-pdf](http://npm.im/electron-pdf) - A command line tool to generate PDF from URL, HTML or Markdown files
+- [electron-render-service](http://npm.im/electron-render-service) - Microservice for rendering PDF/PNG/JPEG from HTML with Electron
+- [fidor-kontoauszug](http://npm.im/fidor-kontoauszug) - ## About
+- [hyperpdf](http://npm.im/hyperpdf) - A command line tool to generate PDF from URL, HTML or Markdown files
+- [jsreport-electron-pdf](http://npm.im/jsreport-electron-pdf) - jsreport recipe which renders pdf from html using electron
+- [kabelschland](http://npm.im/kabelschland) - ## About
+- [pdffiller-lite](http://npm.im/pdffiller-lite) - A lite version of the popular pdffiller package for using in an electron app.
 
 
-### linux (10)
+### github (10)
 
 
-- [benja](http://npm.im/benja) - Bootable Electron Node JS Application
-- [dimeshift-desktop](http://npm.im/dimeshift-desktop) - The easiest and desktop way to track your expenses. Free. Open-source.
-- [electron-log](http://npm.im/electron-log) - Just a very simple logging module for your Electron application
-- [electron-packager-interactive](http://npm.im/electron-packager-interactive) - An interactive implementation of electron-packager
-- [grunt-electron-packager-builder](http://npm.im/grunt-electron-packager-builder) - Package Electron apps. Grunt task to electron-prebuilt , electron-packager and electron-builder.
-- [plaidchat](http://npm.im/plaidchat) - A Linux client for Slack
-- [pushbullet-desktop](http://npm.im/pushbullet-desktop) - A lightweight cross-platform Pushbullet Client for OS X, Windows and Linux. It enables you to receive native system notifications in an unobstrusive way.
-- [reactors](http://npm.im/reactors) - Framework based on React to build hybrid apps that run web, mobile and desktop.
-- [record-desktop](http://npm.im/record-desktop) - Record gifs and take screenshots on linux, built with electron.
-- [yourfukurou](http://npm.im/yourfukurou) - Twitter client for perspecuity of timeline
+- [discord-bot-github](http://npm.im/discord-bot-github) - A bot for discord which consumes the GitHub API and gives you updates.
+- [electron-gh-releases-updater](http://npm.im/electron-gh-releases-updater) - Updates an app based on GH Electron from GH releases.
+- [electron-gh-updater](http://npm.im/electron-gh-updater) - Automatic updater for electron app's using Github releases.
+- [git-handler](http://npm.im/git-handler) - NPM module for handling git repositories. Makes it easy to add, checkout, branch, clone, commit, pull and push.
+- [git-shas](http://npm.im/git-shas) - This module returns the list of all shas (git commit hashes) from a git repository.
+- [github-labeller](http://npm.im/github-labeller) - Automagically create issue labels in your GitHub projects.
+- [gulp-atom-electron](http://npm.im/gulp-atom-electron) - gulp plugin for packaging Electron applications
+- [gulp-atom-shell](http://npm.im/gulp-atom-shell) - gulp plugin for packaging Atom Shell applications
+- [lookerupper](http://npm.im/lookerupper) - Copy to your clipboard a package's name and use `CmdOrCtrl+Shift+L` to lookup its documentation on GitHub
+- [vmd](http://npm.im/vmd) - vmd
 
 
 ### editor (10)
@@ -747,6 +1118,63 @@
 - [nyaovim](http://npm.im/nyaovim) - Web-enhanced Extensible Neovim Frontend
 
 
+### cli (10)
+
+
+- [ansi2html-cli](http://npm.im/ansi2html-cli) - Converts piped ansi to html using rburns's ansi-to-html.
+- [commandant](http://npm.im/commandant) - A command line framework for node.js
+- [confluence-starter](http://npm.im/confluence-starter) - A module to download Confluence standalone instances and start them automatically.
+- [electron-open](http://npm.im/electron-open) - Open a URL in Electron (atom-shell)
+- [electron](http://npm.im/electron) - A simple command-line interface framework for node.js.
+- [github-latest-release](http://npm.im/github-latest-release) - Get latest release information from github repository
+- [tooling](http://npm.im/tooling) - One tooling, No setup.
+- [yargs-cn](http://npm.im/yargs-cn) - Light-weight option parsing with an argv hash. No optstrings attached.
+- [yargs](http://npm.im/yargs) - yargs the modern, pirate-themed, successor to optimist.
+
+
+### Windows (10)
+
+
+- [PowerPlanDisplay](http://npm.im/PowerPlanDisplay) - Shows your active Windows powerplan in a window containing all the available powerplans, and allows you to change powerplan with a single click
+- [electron-builder](http://npm.im/electron-builder) - Complete solution to build ready for distribution and 'auto update' Electron App installers
+- [electron-complete-builder](http://npm.im/electron-complete-builder) - Complete solution to build ready for distribution and 'auto update' Electron App installers
+- [electron-screen](http://npm.im/electron-screen) - Small Module that returns an array with all the monitors connected to the pc with their resolution and position.
+- [electron-windows-store](http://npm.im/electron-windows-store) - Compile Electron Apps into Windows Store AppX packages
+- [generate-evb](http://npm.im/generate-evb) - Generate an 'Enigma Virtual Box' project file (*.evb)
+- [grunt-electron-packager-builder](http://npm.im/grunt-electron-packager-builder) - Package Electron apps. Grunt task to electron-prebuilt , electron-packager and electron-builder.
+- [node-hide](http://npm.im/node-hide) - A Node Module to Ease Hiding/Showing Other Windows
+- [windows-caption-color](http://npm.im/windows-caption-color) - Get the caption color of an active windows in Windows 8+
+- [windows-fs](http://npm.im/windows-fs) - Windows utilities when working with the file system
+
+
+### template (9)
+
+
+- [generator-electron-extra](http://npm.im/generator-electron-extra) - Scaffold out an Electron app boilerplate with sass, webpack, and browsersync
+- [generator-electron-soixante](http://npm.im/generator-electron-soixante) - Scaffold out an Electron app boilerplate
+- [generator-electron-stack](http://npm.im/generator-electron-stack) - Scaffold out an Electron app boilerplate with Angular.js or React + Redux
+- [generator-electron](http://npm.im/generator-electron) - Scaffold out an Electron app boilerplate
+- [generator-neodymium](http://npm.im/generator-neodymium) - Scaffolds a clean and combat ready electron app.
+- [holon](http://npm.im/holon) - Leight-weight DSL-free dual-side composable reactive components
+- [htags](http://npm.im/htags) - htags is a simple library for working with html intended to use with coffeescript in electron or browserify
+- [riot](http://npm.im/riot) - A React-like user interface micro-library
+- [tumblr-templatr](http://npm.im/tumblr-templatr) - Sync local tumblr theme templates to tumblr.com.
+
+
+### gulpplugin (9)
+
+
+- [electron-windows-installer](http://npm.im/electron-windows-installer) - Build Windows installers for Electron apps using Squirrel. Works with Gulp!
+- [gulp-atom-electron](http://npm.im/gulp-atom-electron) - gulp plugin for packaging Electron applications
+- [gulp-atom-shell](http://npm.im/gulp-atom-shell) - gulp plugin for packaging Atom Shell applications
+- [gulp-cordova-app-loader-manifest](http://npm.im/gulp-cordova-app-loader-manifest) - Create manifest.js for cordova-app-loader
+- [gulp-electron-downloader](http://npm.im/gulp-electron-downloader) - A gulp.js plugin to help download electron.
+- [gulp-electron-mocha](http://npm.im/gulp-electron-mocha) - Gulp plugin to run Mocha tests in Electron
+- [gulp-electron-packer](http://npm.im/gulp-electron-packer) - Gulp wrapper for electron packager
+- [gulp-run-electron](http://npm.im/gulp-run-electron) - Gulp plugin for starting Electron.
+- [gulp-vueify](http://npm.im/gulp-vueify) - Compile .vue files using vueify
+
+
 ### johnny-five (9)
 
 
@@ -761,60 +1189,130 @@
 - [electron-johnny-five-switch-example](http://npm.im/electron-johnny-five-switch-example) - An electron app using johnny-five to respond to a switch and turn an led on and off
 
 
-### ipc (9)
+### oauth (9)
 
 
-- [electron-ipc-mock](http://npm.im/electron-ipc-mock) - Mocked electron ipc communication module
-- [electron-ipc-responder](http://npm.im/electron-ipc-responder) - A simple request/response based communication protocol for Electrons IPC functionality
-- [electron-ipc-stream](http://npm.im/electron-ipc-stream) - Duplex stream over IPC for main/renderer to communicate with each other.
-- [electron-ipc-tunnel](http://npm.im/electron-ipc-tunnel) - Create tunelled conncections over Electron's IPC.
-- [electron-rpc](http://npm.im/electron-rpc) - A lightweight rpc-style wrapper for the ipc module of electron
-- [electron-safe-ipc](http://npm.im/electron-safe-ipc) - Safe communication between main process and renderer processes in Electron
-- [elekiter](http://npm.im/elekiter) - express like electron ipc wrapper library
-- [pull-ipc](http://npm.im/pull-ipc) - pull-stream wrapper around electron's ipc channel
-- [redux-electron-ipc](http://npm.im/redux-electron-ipc) - Redux Electron IPC Middleware
+- [electron-authentication-hatena](http://npm.im/electron-authentication-hatena) - Hatena OAuth Window library.
+- [electron-google-oauth](http://npm.im/electron-google-oauth) - Google api access token in electron
+- [electron-oauth-github](http://npm.im/electron-oauth-github) - Github OAuth Window library.
+- [electron-oauth-twitter](http://npm.im/electron-oauth-twitter) - Twitter OAuth Window library.
+- [ng2-twitter](http://npm.im/ng2-twitter) - Angular2 service of authorized request for twitter.
+- [nightmare-google-oauth2](http://npm.im/nightmare-google-oauth2) - Nightmare plugin to automatically authenticate, authorize and retrieve a fresh OAuth2 token for Google APIs
+- [oauth-electron-facebook](http://npm.im/oauth-electron-facebook) - oauth for facebook inside electron
+- [oauth-electron-twitter](http://npm.im/oauth-electron-twitter) - oauth for twitter inside electron
+- [oauth-electron](http://npm.im/oauth-electron) - easy oauth generic handling for electron
 
 
-### image (9)
+### osx (9)
 
 
-- [electron-canvas-to-buffer](http://npm.im/electron-canvas-to-buffer) - in Electron, turns a Canvas into a Buffer
-- [electron-context-menu](http://npm.im/electron-context-menu) - Context menu for your Electron app
-- [electron-html-to](http://npm.im/electron-html-to) - Convert html to html/image using electron
-- [electron-image-resize](http://npm.im/electron-image-resize) - Resize images using Electron. Supports all image types that Chromium/Electron supports, outputs to png, jpeg, dataUrl or NativeImage.
-- [filteron](http://npm.im/filteron) - A minimalist image editor based on CSS filters
-- [gallezy](http://npm.im/gallezy) - Super Simple Image Gallery App http://anseki.github.io/gallezy/
-- [image-clipper](http://npm.im/image-clipper) - Node.js module for clipping & cropping JPEG, PNG, WebP images purely using the native Canvas APIs, excellent compatibility with the Browser & Electron & NW.js (Node-webkit), itself doesn't relies on any image processing libraries.
-- [photo-compare-sort](http://npm.im/photo-compare-sort) - A photo sort by user comparation
-- [preview-dds](http://npm.im/preview-dds) - preview and save DDS textures from the command line
+- [dimeshift-desktop](http://npm.im/dimeshift-desktop) - The easiest and desktop way to track your expenses. Free. Open-source.
+- [electron-log](http://npm.im/electron-log) - Just a very simple logging module for your Electron application
+- [electron-osx-appearance](http://npm.im/electron-osx-appearance) - APIs to access the OS X Appearance Settings.
+- [electron-packager-interactive](http://npm.im/electron-packager-interactive) - An interactive implementation of electron-packager
+- [fix-path](http://npm.im/fix-path) - Fix the $PATH on OS X when run from a GUI app
+- [photon-browser](http://npm.im/photon-browser) - A tiny web browser based on Photon and Electron.
+- [shell-env](http://npm.im/shell-env) - Get environment variables from the shell
+- [shell-path](http://npm.im/shell-path) - Get the $PATH from the shell
+- [titlebar](http://npm.im/titlebar) - Emulate OS X window title bar
 
 
-### promise (9)
+### command (9)
 
 
-- [chainbuilder-flow](http://npm.im/chainbuilder-flow) - Flow blocks (each, map, if, while) for chainbuilder.
-- [chainbuilder-lodash](http://npm.im/chainbuilder-lodash) - Lodash mixin for chainbuilder.
+- [clp](http://npm.im/clp) - A tiny and fast command line arguments parser.
+- [commandant](http://npm.im/commandant) - A command line framework for node.js
+- [electron-sudo](http://npm.im/electron-sudo) - Electron subprocess with administrative privileges, prompting the user with an OS dialog if necessary.
+- [electron](http://npm.im/electron) - A simple command-line interface framework for node.js.
+- [grunt-electron-packager](http://npm.im/grunt-electron-packager) - Package Electron apps. Grunt task to create packages electron using electron-packager
+- [squish-squash](http://npm.im/squish-squash) - overrides a system or user command for for all child processes
+- [sudo-prompt](http://npm.im/sudo-prompt) - Run a command using sudo, prompting the user with an OS dialog if necessary
+- [yargs-cn](http://npm.im/yargs-cn) - Light-weight option parsing with an argv hash. No optstrings attached.
+- [yargs](http://npm.im/yargs) - yargs the modern, pirate-themed, successor to optimist.
+
+
+### logging (9)
+
+
 - [chainbuilder-log-console](http://npm.im/chainbuilder-log-console) - Console logging mixin for chainbuilder.
-- [chainbuilder-request](http://npm.im/chainbuilder-request) - Request mixin for chainbuilder.
-- [chainbuilder-retry](http://npm.im/chainbuilder-retry) - Retry mixin for chainbuilder.
-- [chainbuilder-save](http://npm.im/chainbuilder-save) - Chainbuilder mixin for saving/restoring values.
-- [chainbuilder](http://npm.im/chainbuilder) - Construct a chainable library from a set of async functions.
-- [henderson](http://npm.im/henderson) - A tiny event emitter-based finite state machine with promises
-- [rpcjs](http://npm.im/rpcjs) - Promise-based RPC. Works in browser, node, electron, you name it. Any transport you like.
+- [console-redirect](http://npm.im/console-redirect) - redirect console methods to streams
+- [electron-clean-logging](http://npm.im/electron-clean-logging) - strips Electron/Chromium logs from stderr
+- [electron-log](http://npm.im/electron-log) - Just a very simple logging module for your Electron application
+- [electron-winstontransports](http://npm.im/electron-winstontransports) - Moves Winston loggers boilerplate out of sight.
+- [onmem-logger](http://npm.im/onmem-logger) - A simple on-memory logger for Node.js app
+- [ownanylitics](http://npm.im/ownanylitics) - Self hosted anylitics
+- [redux-cli-logger](http://npm.im/redux-cli-logger) - Redux logger for a node environment
+- [strip-chromium-logs](http://npm.im/strip-chromium-logs) - strips chromium logs from a stream
 
 
-### markdown (9)
+### framework (9)
 
 
-- [bespoke-pdf-electron-helper](http://npm.im/bespoke-pdf-electron-helper) - PDF plugin for Bespoke.js
-- [electron-docs](http://npm.im/electron-docs) - Fetch Electron documentation as raw markdown strings
-- [electron-markdown-editor](http://npm.im/electron-markdown-editor) - A markdown editor built with electron, uikit, and markdown-it
-- [electron-markdownify](http://npm.im/electron-markdownify) - A minimalist Markdown Editor
-- [hyperpdf](http://npm.im/hyperpdf) - A command line tool to generate PDF from URL, HTML or Markdown files
-- [markn](http://npm.im/markn) - Lightweight markdown viewer
-- [md-paint](http://npm.im/md-paint) - View rendered markdown files with github flavored markdown while using your favorite editor
-- [shiba](http://npm.im/shiba) - Live markdown previewer with linter
-- [vmd](http://npm.im/vmd) - vmd
+- [bozon](http://npm.im/bozon) - Framework for building Electron applications
+- [choo](http://npm.im/choo) - A 5kb framework for creating sturdy frontend applications
+- [clout-js](http://npm.im/clout-js) - Clean, simplistic, enterprise grade full-stack NodeJS framework
+- [commandant](http://npm.im/commandant) - A command line framework for node.js
+- [generator-universal-web-template](http://npm.im/generator-universal-web-template) - Yeoman generator for an universal web proejct template - let you quickly set up a project using Handlebars, sass and ReactJS for front-end templating. It can be adopted with most modern CMS.
+- [micro-app-framework](http://npm.im/micro-app-framework) - Framework for building/running micro-apps
+- [nimble-elements](http://npm.im/nimble-elements) - Lightweight Web Application Framework - 2015.11.02
+- [preempt](http://npm.im/preempt) - Framework for React Native
+- [riot](http://npm.im/riot) - A React-like user interface micro-library
+
+
+### client (9)
+
+
+- [boorium](http://npm.im/boorium) - beautiful booru client
+- [choo](http://npm.im/choo) - A 5kb framework for creating sturdy frontend applications
+- [foj](http://npm.im/foj) - FOJ-Client
+- [marsdb-sync-client](http://npm.im/marsdb-sync-client) - Standalone Meteor DDP client based on MarsDB
+- [neta](http://npm.im/neta) - A chatting client.
+- [npm-gui](http://npm.im/npm-gui) - Graphic User Interface for NPM packages/tasks for front and back -end users.
+- [open-ssh-tunnel](http://npm.im/open-ssh-tunnel) - Easy ssh2 tunneling
+- [testron](http://npm.im/testron) - CI your client side tests with Electron
+- [yourfukurou](http://npm.im/yourfukurou) - Twitter client for perspecuity of timeline
+
+
+### quick (9)
+
+
+- [billcurt-electron-test-auto-update](http://npm.im/billcurt-electron-test-auto-update) - A minimal auto-updating Electron application
+- [electron-app-test](http://npm.im/electron-app-test) - A minimal Electron application
+- [electron-app](http://npm.im/electron-app) - A minimal Electron application
+- [electron-node-red](http://npm.im/electron-node-red) - Electron Node-RED template
+- [electron-quick-start](http://npm.im/electron-quick-start) - A minimal Electron application
+- [electron-test](http://npm.im/electron-test) - A minimal Electron application
+- [firewall-authenticatoe-iitm](http://npm.im/firewall-authenticatoe-iitm) - An application to automatically refresh
+- [firewall-authenticator-iitm](http://npm.im/firewall-authenticator-iitm) - An application to automatically refresh
+- [quick-coder](http://npm.im/quick-coder) - Live Coding of node, es, React jsx, and webView based on Electron, like jsFiddle
+
+
+### es6 (9)
+
+
+- [babel-jsxgettext](http://npm.im/babel-jsxgettext) - A tool like jsxgettext, but works for es6 + jsx that babel support
+- [deck.gl](http://npm.im/deck.gl) - A suite of 3D-enabled data visualization overlays, suitable for react-map-gl
+- [eslint-plugin-import](http://npm.im/eslint-plugin-import) - Import with sanity.
+- [express-compile](http://npm.im/express-compile) - Supporting package to compile JS and CSS in Express applications
+- [ionic-brunch-es6-seed](http://npm.im/ionic-brunch-es6-seed) - An Ionic starter project with Babel and Brunch
+- [nimble-elements](http://npm.im/nimble-elements) - Lightweight Web Application Framework - 2015.11.02
+- [norme](http://npm.im/norme) - Opinionated JavaScript linter
+- [selfup-rejs](http://npm.im/selfup-rejs) - Event based, key value store on the file system. Basic server side db in js for node developers. Geared towards NodeBots/IoT.
+- [uupaa.es.js](http://npm.im/uupaa.es.js) - [![npm](https://nodei.co/npm/uupaa.es.js.svg?downloads=true&stars=true)](https://nodei.co/npm/uupaa.es.js/)
+
+
+### stream (9)
+
+
+- [audio-buffer-stream](http://npm.im/audio-buffer-stream) - Get a PCM stream from input AudioBuffers (Web Audio API). Can be used to implement a streaming audio recorder.
+- [bittorrent-tracker](http://npm.im/bittorrent-tracker) - Simple, robust, BitTorrent tracker (client & server) implementation
+- [browser-run](http://npm.im/browser-run) - Transform stream that executes JavaScript it receives in a real browser and outputs console output
+- [console-redirect](http://npm.im/console-redirect) - redirect console methods to streams
+- [electron-ipc-stream](http://npm.im/electron-ipc-stream) - Duplex stream over IPC for main/renderer to communicate with each other.
+- [electron-npm-packages](http://npm.im/electron-npm-packages) - A collection of all npm packages that mention `electron` in their package.json
+- [pull-ipc](http://npm.im/pull-ipc) - pull-stream wrapper around electron's ipc channel
+- [strip-chromium-logs](http://npm.im/strip-chromium-logs) - strips chromium logs from a stream
+- [three-png-stream](http://npm.im/three-png-stream) - streams ThreeJS render target pixel data
 
 
 ### gulp (9)
@@ -831,83 +1329,111 @@
 - [vulcan-ui](http://npm.im/vulcan-ui) - Node build tool for npm, gulp, grunt
 
 
-### webgl (9)
+### file (9)
 
 
-- [alembic-viewer](http://npm.im/alembic-viewer) - alembic (.abc) viewer
-- [cesium](http://npm.im/cesium) - Cesium is a JavaScript library for creating 3D globes and 2D maps in a web browser without a plugin.
-- [deck.gl](http://npm.im/deck.gl) - A suite of 3D-enabled data visualization overlays, suitable for react-map-gl
-- [hihat](http://npm.im/hihat) - local Node/Browser development with Chrome DevTools
-- [luma.gl](http://npm.im/luma.gl) - A WebGL JavaScript visualization library.
+- [ampersand-file-drop-view](http://npm.im/ampersand-file-drop-view) - Drag-and-drop file view based on ampersand-view, and for use in ampersand-form-view
+- [dedupe-htmlguy](http://npm.im/dedupe-htmlguy) - File Deduplicator
+- [elchecksum](http://npm.im/elchecksum) - check electron's exe and app resources md5 validate
+- [electron-dl](http://npm.im/electron-dl) - Simplified file downloads for your Electron app
+- [jspm-caddy-hmr](http://npm.im/jspm-caddy-hmr) - jspm & caddy => HMR :)
+- [lowdb](http://npm.im/lowdb) - JSON database for Node and the browser powered by lodash API
+- [minicloud-storage](http://npm.im/minicloud-storage) - minicloud Lightweight distributed file storage
+- [minicloud](http://npm.im/minicloud) - file hybrid cloud management software,support docx/doc/pptx/ppt/xlsx/xls/pdf online browse view and full text search
+- [node-flat-db](http://npm.im/node-flat-db) - JSON database for Node and the browser powered by lodash
+
+
+### game (9)
+
+
+- [always-gravity](http://npm.im/always-gravity) - Create shooter game for training.
+- [audiosource](http://npm.im/audiosource) - utility for managing audio buffers
+- [bloxparty](http://npm.im/bloxparty) - Multiplayer Tetris built with Electron
+- [electron-noveljs-boilerplate](http://npm.im/electron-noveljs-boilerplate) - Create standalone Novel.js adventures!
+- [lyre](http://npm.im/lyre) - An abstraction for making atom-style apps with packages.
+- [lyrebird](http://npm.im/lyrebird) - A unified launcher for organized gamers.
 - [myou-engine](http://npm.im/myou-engine) - Myou is a game engine for web, it features an editor based on Blender.
-- [preview-dds](http://npm.im/preview-dds) - preview and save DDS textures from the command line
-- [shadertoy-export](http://npm.im/shadertoy-export) - render ShaderToy demos to PNG
-- [terriajs-cesium](http://npm.im/terriajs-cesium) - Cesium for TerriaJS.
+- [novel-js](http://npm.im/novel-js) - A lightweight JavaScript text game engine
+- [splat-ecs](http://npm.im/splat-ecs) - A 2D HTML5 Canvas game engine
 
 
-### template (8)
+### babel (9)
 
 
-- [generator-electron-extra](http://npm.im/generator-electron-extra) - Scaffold out an Electron app boilerplate with sass, webpack, and browsersync
-- [generator-electron-soixante](http://npm.im/generator-electron-soixante) - Scaffold out an Electron app boilerplate
-- [generator-electron-stack](http://npm.im/generator-electron-stack) - Scaffold out an Electron app boilerplate with Angular.js or React + Redux
-- [generator-electron](http://npm.im/generator-electron) - Scaffold out an Electron app boilerplate
-- [generator-neodymium](http://npm.im/generator-neodymium) - Scaffolds a clean and combat ready electron app.
-- [holon](http://npm.im/holon) - Leight-weight DSL-free dual-side composable reactive components
-- [htags](http://npm.im/htags) - htags is a simple library for working with html intended to use with coffeescript in electron or browserify
-- [tumblr-templatr](http://npm.im/tumblr-templatr) - Sync local tumblr theme templates to tumblr.com.
+- [PupaFM](http://npm.im/PupaFM) - douban.fm Music Desktop Player
+- [babel-jsxgettext](http://npm.im/babel-jsxgettext) - A tool like jsxgettext, but works for es6 + jsx that babel support
+- [babel-preset-electron](http://npm.im/babel-preset-electron) - Babel preset with all plugins for Electron.
+- [deck.gl](http://npm.im/deck.gl) - A suite of 3D-enabled data visualization overlays, suitable for react-map-gl
+- [express-compile](http://npm.im/express-compile) - Supporting package to compile JS and CSS in Express applications
+- [ionic-brunch-es6-seed](http://npm.im/ionic-brunch-es6-seed) - An Ionic starter project with Babel and Brunch
+- [nimble-elements](http://npm.im/nimble-elements) - Lightweight Web Application Framework - 2015.11.02
+- [tooling](http://npm.im/tooling) - One tooling, No setup.
+- [vbuild](http://npm.im/vbuild) - Preset build tool for Vue.js apps.
 
 
-### gulpplugin (8)
+### embedded (8)
 
 
-- [electron-windows-installer](http://npm.im/electron-windows-installer) - Build Windows installers for Electron apps using Squirrel. Works with Gulp!
-- [gulp-atom-electron](http://npm.im/gulp-atom-electron) - gulp plugin for packaging Electron applications
-- [gulp-atom-shell](http://npm.im/gulp-atom-shell) - gulp plugin for packaging Atom Shell applications
-- [gulp-cordova-app-loader-manifest](http://npm.im/gulp-cordova-app-loader-manifest) - Create manifest.js for cordova-app-loader
-- [gulp-electron-downloader](http://npm.im/gulp-electron-downloader) - A gulp.js plugin to help download electron.
-- [gulp-electron-mocha](http://npm.im/gulp-electron-mocha) - Gulp plugin to run Mocha tests in Electron
-- [gulp-electron-packer](http://npm.im/gulp-electron-packer) - Gulp wrapper for electron packager
-- [gulp-run-electron](http://npm.im/gulp-run-electron) - Gulp plugin for starting Electron.
+- [happn-nedb](http://npm.im/happn-nedb) - File-based embedded data store for node.js
+- [isotropy-nedb](http://npm.im/isotropy-nedb) - Isotropy port of NeDB by Louis Chatriot. File-based embedded data store for node.js
+- [linvodb3](http://npm.im/linvodb3) - Model-oriented embedded database, inspired by Mongoose & MongoDB, over LevelUP
+- [marsdb](http://npm.im/marsdb) - MarsDB is a lightweight client-side MongoDB-like database, Promise based, written in ES6
+- [nedb-isotropy](http://npm.im/nedb-isotropy) - Isotropy port of NeDB by Louis Chatriot. File-based embedded data store for node.js
+- [nedb-lite](http://npm.im/nedb-lite) - this package is a standalone, single-script version of nedb @ 1.8.0 that runs in both browser and nodejs, with zero npm-dependencies
+- [nedb](http://npm.im/nedb) - File-based embedded data store for node.js
+- [newdb](http://npm.im/newdb) - Fork of NeDB, the file-based embedded data store for node.js
 
 
-### webrtc (8)
+### mac (8)
 
 
-- [electron-screencapture](http://npm.im/electron-screencapture) - Library that allows to take a picture or a video from any fragment of the display
-- [electron-webrtc](http://npm.im/electron-webrtc) - Use WebRTC in Node.js via a hidden Electron process
-- [peerbot](http://npm.im/peerbot) - Message seeding utility for friends p2p chat.
-- [swarmbot](http://npm.im/swarmbot) - mirroring for a p2p mesh of swarmlogs
-- [webtorrent-hybrid-electron](http://npm.im/webtorrent-hybrid-electron) - Streaming torrent client with reliable WebRTC support for node.js
-- [webtorrent-hybrid](http://npm.im/webtorrent-hybrid) - Streaming torrent client
-- [webtorrent](http://npm.im/webtorrent) - Streaming torrent client
-- [woverlay](http://npm.im/woverlay) - WebRTC based overlay network.
+- [electron-log](http://npm.im/electron-log) - Just a very simple logging module for your Electron application
+- [league-companion](http://npm.im/league-companion) - A companion application for League of Legends built in Electron for Windows/Mac
+- [menubar-extra](http://npm.im/menubar-extra) - High level way to create menubar desktop applications with electron. Forked from menubar with extra options.
+- [menubar](http://npm.im/menubar) - high level way to create menubar desktop applications with electron
+- [os.js](http://npm.im/os.js) - Very stupid detection of OS
+- [pushbullet-desktop](http://npm.im/pushbullet-desktop) - Lightweight cross-platform Pushbullet desktop application
+- [react-desktop](http://npm.im/react-desktop) - React UI Components for macOS Sierra and Windows 10
+- [yourfukurou](http://npm.im/yourfukurou) - Twitter client for perspecuity of timeline
 
 
-### package (8)
+### mongodb.js (8)
 
 
-- [electron-is-running-in-asar](http://npm.im/electron-is-running-in-asar) - Check if the application is running from inside an asar package
-- [electron-packager-interactive](http://npm.im/electron-packager-interactive) - An interactive implementation of electron-packager
-- [electron-zip-packager](http://npm.im/electron-zip-packager) - A wrapper of electron-packager. Package your electron app and zipped!
-- [grunt-electron-itchio](http://npm.im/grunt-electron-itchio) - Package Electron apps
-- [grunt-electron-packager-builder](http://npm.im/grunt-electron-packager-builder) - Package Electron apps. Grunt task to electron-prebuilt , electron-packager and electron-builder.
-- [grunt-electron-packager](http://npm.im/grunt-electron-packager) - Package Electron apps. Grunt task to create packages electron using electron-packager
-- [grunt-electron](http://npm.im/grunt-electron) - Package Electron apps
-- [lookerupper](http://npm.im/lookerupper) - Copy to your clipboard a package's name and use `CmdOrCtrl+Shift+L` to lookup its documentation on GitHub
+- [electron-installer-codesign](http://npm.im/electron-installer-codesign) - Sign your electron apps on OSX.
+- [electron-installer-dmg](http://npm.im/electron-installer-dmg) - Create DMG installers for your electron apps.
+- [electron-installer-fixture-windows](http://npm.im/electron-installer-fixture-windows) - A fixture Electron app for testing tooling on Windows.
+- [electron-installer-squirrel-windows](http://npm.im/electron-installer-squirrel-windows) - Generate Windows installers for Electron apps using Squirrel.
+- [electron-installer-zip](http://npm.im/electron-installer-zip) - Create a zip file with support for symlinks required by electron on osx.
+- [electron-squirrel-startup](http://npm.im/electron-squirrel-startup) - Default Squirrel.Windows event handler for your Electron apps.
+- [electron-squirrel-windows-installer](http://npm.im/electron-squirrel-windows-installer) - Generate Windows installers for Electron apps using Squirrel.
+- [mongodb-redact](http://npm.im/mongodb-redact) - Remove potentially sensitive information from objects without changing the shape.
 
 
-### oauth (8)
+### process (8)
 
 
-- [electron-authentication-hatena](http://npm.im/electron-authentication-hatena) - Hatena OAuth Window library.
-- [electron-google-oauth](http://npm.im/electron-google-oauth) - Google api access token in electron
-- [electron-oauth-github](http://npm.im/electron-oauth-github) - Github OAuth Window library.
-- [electron-oauth-twitter](http://npm.im/electron-oauth-twitter) - Twitter OAuth Window library.
-- [nightmare-google-oauth2](http://npm.im/nightmare-google-oauth2) - Nightmare plugin to automatically authenticate, authorize and retrieve a fresh OAuth2 token for Google APIs
-- [oauth-electron-facebook](http://npm.im/oauth-electron-facebook) - oauth for facebook inside electron
-- [oauth-electron-twitter](http://npm.im/oauth-electron-twitter) - oauth for twitter inside electron
-- [oauth-electron](http://npm.im/oauth-electron) - easy oauth generic handling for electron
+- [electron-detach](http://npm.im/electron-detach) - restart electron app as a detached child process
+- [electron-ipc-responder](http://npm.im/electron-ipc-responder) - A simple request/response based communication protocol for Electrons IPC functionality
+- [electron-is](http://npm.im/electron-is) - An 'is' utility for Electron which provides a set of handy functions, with a self-descriptive name.
+- [electron-process](http://npm.im/electron-process) - Send blocking operations to a background process in electron
+- [fs-access](http://npm.im/fs-access) - Node.js 0.12 fs.access() & fs.accessSync() ponyfill
+- [is-electron-renderer](http://npm.im/is-electron-renderer) - Check if code is running in Electron renderer process.
+- [is-electron](http://npm.im/is-electron) - Detect if running in Electron.
+- [spawno](http://npm.im/spawno) - Easily work with child processes.
+
+
+### window (8)
+
+
+- [electron-browser-window-options](http://npm.im/electron-browser-window-options) - Reference for default Electron BrowserWindow options.
+- [electron-drag](http://npm.im/electron-drag) - Window dragging for electron applications
+- [electron-window-manager](http://npm.im/electron-window-manager) - A NodeJs module that handles window management for Electron (Atom Shell, previously)
+- [electron-window](http://npm.im/electron-window) - Convenience methods for Electron windows.
+- [hihat](http://npm.im/hihat) - local Node/Browser development with Chrome DevTools
+- [reactors](http://npm.im/reactors) - Framework based on React to build hybrid apps that run web, mobile and desktop.
+- [tilectron](http://npm.im/tilectron) - Tiling window browser built on Electron
+- [titlebar](http://npm.im/titlebar) - Emulate OS X window title bar
 
 
 ### electron-installer (8)
@@ -923,30 +1449,55 @@
 - [electron-squirrel-windows-installer](http://npm.im/electron-squirrel-windows-installer) - Generate Windows installers for Electron apps using Squirrel.
 
 
-### osx (8)
+### devtools (8)
 
 
-- [dimeshift-desktop](http://npm.im/dimeshift-desktop) - The easiest and desktop way to track your expenses. Free. Open-source.
-- [electron-log](http://npm.im/electron-log) - Just a very simple logging module for your Electron application
-- [electron-osx-appearance](http://npm.im/electron-osx-appearance) - APIs to access the OS X Appearance Settings.
-- [electron-packager-interactive](http://npm.im/electron-packager-interactive) - An interactive implementation of electron-packager
-- [fix-path](http://npm.im/fix-path) - Fix the $PATH on OS X when run from a GUI app
-- [photon-browser](http://npm.im/photon-browser) - A tiny web browser based on Photon and Electron.
-- [shell-env](http://npm.im/shell-env) - Get environment variables from the shell
-- [shell-path](http://npm.im/shell-path) - Get the $PATH from the shell
+- [devtron](http://npm.im/devtron) - Electron DevTools Extension
+- [electron-debug](http://npm.im/electron-debug) - Adds useful debug features to your Electron app
+- [electron-react-devtools](http://npm.im/electron-react-devtools) - React DevTools Extension for Electron
+- [remote-redux-devtools](http://npm.im/remote-redux-devtools) - Relay Redux actions to remote Redux DevTools.
+- [remotedev-app-slider](http://npm.im/remotedev-app-slider) - Remote Redux DevTools web, electron and chrome app. slider version
+- [remotedev-app](http://npm.im/remotedev-app) - Remote Redux DevTools web, electron and chrome app.
+- [remotedev-extension](http://npm.im/remotedev-extension) - Use Redux DevTools in the Browser/Electron DevTools
+- [remotedev](http://npm.im/remotedev) - Remote debugging for any flux implementation.
 
 
-### native (8)
+### parser (8)
 
 
-- [cmake-js](http://npm.im/cmake-js) - CMake.js - a Node.js/io.js native addon build tool
+- [clp](http://npm.im/clp) - A tiny and fast command line arguments parser.
+- [commandant](http://npm.im/commandant) - A command line framework for node.js
+- [electron](http://npm.im/electron) - A simple command-line interface framework for node.js.
+- [graviton](http://npm.im/graviton) - Headless browser for web testing, scrapping
+- [posthtml](http://npm.im/posthtml) - HTML/XML processor
+- [yargs-cn](http://npm.im/yargs-cn) - Light-weight option parsing with an argv hash. No optstrings attached.
+- [yargs](http://npm.im/yargs) - yargs the modern, pirate-themed, successor to optimist.
+
+
+### chrome (8)
+
+
+- [chrome-network-errors](http://npm.im/chrome-network-errors) - A list of all of Chrome's network errors codes.
+- [chromeo](http://npm.im/chromeo) - experimental Node-Browser bridge
+- [crossbuilder](http://npm.im/crossbuilder) - Building web, Electron and Chrome apps, and cross-browser extensions with React, Redux and Webpack. 'Write once, build everywhere' concept in practice.
+- [hihat](http://npm.im/hihat) - local Node/Browser development with Chrome DevTools
+- [macaca-chrome](http://npm.im/macaca-chrome) - macaca chrome
+- [remotedev-extension](http://npm.im/remotedev-extension) - Use Redux DevTools in the Browser/Electron DevTools
+- [rtc-screenshare](http://npm.im/rtc-screenshare) - WebRTC Screensharing Chrome Extension 
+- [yez](http://npm.im/yez) - Chrome extension which acts as task runner
+
+
+### save (8)
+
+
+- [chainbuilder-save](http://npm.im/chainbuilder-save) - Chainbuilder mixin for saving/restoring values.
+- [conf](http://npm.im/conf) - Simple config handling for your app or module
 - [electron-canvas-to-buffer](http://npm.im/electron-canvas-to-buffer) - in Electron, turns a Canvas into a Buffer
-- [electron-ref](http://npm.im/electron-ref) - This is a fork of the ref project, adding electron build support and binaries
-- [nativefier](http://npm.im/nativefier) - Wrap web apps natively
-- [pushbullet-desktop](http://npm.im/pushbullet-desktop) - A lightweight cross-platform Pushbullet Client for OS X, Windows and Linux. It enables you to receive native system notifications in an unobstrusive way.
-- [react-desktop](http://npm.im/react-desktop) - React UI Components for macOS Sierra and Windows 10
-- [react-native-log-monitor](http://npm.im/react-native-log-monitor) - React Native Log monitor web, electron and chrome app.
-- [reactors](http://npm.im/reactors) - Framework based on React to build hybrid apps that run web, mobile and desktop.
+- [electron-config](http://npm.im/electron-config) - Simple config handling for your Electron app or module
+- [electron-context-menu](http://npm.im/electron-context-menu) - Context menu for your Electron app
+- [electron-json-config](http://npm.im/electron-json-config) - Simply set and get configuration from a json file for your Electron app
+- [gl-pixel-stream](http://npm.im/gl-pixel-stream) - streaming gl.readPixels from an FBO
+- [three-png-stream](http://npm.im/three-png-stream) - streams ThreeJS render target pixel data
 
 
 ### log (8)
@@ -962,43 +1513,82 @@
 - [strip-chromium-logs](http://npm.im/strip-chromium-logs) - strips chromium logs from a stream
 
 
-### headless (8)
-
-
-- [browser-run](http://npm.im/browser-run) - Transform stream that executes JavaScript it receives in a real browser and outputs console output
-- [electron-lite](http://npm.im/electron-lite) - this package will dynamically download and install electron @ 1.1.3 from https://github.com/atom/electron/releases with zero npm-dependencies
-- [electron-prebuilt-lite](http://npm.im/electron-prebuilt-lite) - lightweight version of electron-prebuilt with zero npm-dependencies
-- [electron-spawn](http://npm.im/electron-spawn) - easy way to run code inside of a headless electron window from the CLI
-- [electron-workers](http://npm.im/electron-workers) - Run electron scripts in managed workers
-- [graviton](http://npm.im/graviton) - Headless browser for web testing, scrapping
-- [handy-debugger](http://npm.im/handy-debugger) - easily debug your Nodejs app in the Chromium Devtools
-- [utility2](http://npm.im/utility2) - this package will run dynamic browser tests with coverage (via istanbul and electron)
-
-
-### tutorial (8)
+### start (8)
 
 
 - [billcurt-electron-test-auto-update](http://npm.im/billcurt-electron-test-auto-update) - A minimal auto-updating Electron application
-- [electron-adventure](http://npm.im/electron-adventure) -  Learn the basic of Electron (formerly atom-shell) with this educational workshop
 - [electron-app-test](http://npm.im/electron-app-test) - A minimal Electron application
 - [electron-app](http://npm.im/electron-app) - A minimal Electron application
 - [electron-node-red](http://npm.im/electron-node-red) - Electron Node-RED template
 - [electron-quick-start](http://npm.im/electron-quick-start) - A minimal Electron application
 - [electron-test](http://npm.im/electron-test) - A minimal Electron application
-- [elementary-electron](http://npm.im/elementary-electron) - nodeschool workshop to learn electron
+- [firewall-authenticatoe-iitm](http://npm.im/firewall-authenticatoe-iitm) - An application to automatically refresh
+- [firewall-authenticator-iitm](http://npm.im/firewall-authenticator-iitm) - An application to automatically refresh
 
 
-### stream (8)
+### nodejs (8)
 
 
-- [audio-buffer-stream](http://npm.im/audio-buffer-stream) - Get a PCM stream from input AudioBuffers (Web Audio API). Can be used to implement a streaming audio recorder.
-- [bittorrent-tracker](http://npm.im/bittorrent-tracker) - Simple, robust, BitTorrent tracker (client & server) implementation
-- [browser-run](http://npm.im/browser-run) - Transform stream that executes JavaScript it receives in a real browser and outputs console output
-- [console-redirect](http://npm.im/console-redirect) - redirect console methods to streams
-- [electron-ipc-stream](http://npm.im/electron-ipc-stream) - Duplex stream over IPC for main/renderer to communicate with each other.
-- [electron-npm-packages](http://npm.im/electron-npm-packages) - A collection of all npm packages that mention `electron` in their package.json or README
-- [pull-ipc](http://npm.im/pull-ipc) - pull-stream wrapper around electron's ipc channel
-- [strip-chromium-logs](http://npm.im/strip-chromium-logs) - strips chromium logs from a stream
+- [benja](http://npm.im/benja) - Bootable Electron Node JS Application helper.
+- [desktop-mp3-player](http://npm.im/desktop-mp3-player) - deskop music player
+- [handy-debugger](http://npm.im/handy-debugger) - easily debug your Nodejs app in the Chromium Devtools
+- [hexdump-nodejs](http://npm.im/hexdump-nodejs) - Hexdump an ArrayBuffer to a String (NodeJS)
+- [httpjs](http://npm.im/httpjs) - A simple HTTP server
+- [nw-requirejs](http://npm.im/nw-requirejs) - Node JS : Load node module in RequireJS
+- [pdffiller-lite](http://npm.im/pdffiller-lite) - A lite version of the popular pdffiller package for using in an electron app.
+- [ul](http://npm.im/ul) - A minimalist utility library.
+
+
+### javascript (8)
+
+
+- [basel-cli](http://npm.im/basel-cli) - Client package for Basel
+- [beelzebub](http://npm.im/beelzebub) - One hell of a task master!
+- [electron-weak](http://npm.im/electron-weak) - This is a fork of the node-weak project, adding electron builds and binaries.
+- [jsreport-core](http://npm.im/jsreport-core) - javascript based business reporting
+- [jsreport](http://npm.im/jsreport) - javascript based business reporting
+- [mancy](http://npm.im/mancy) - Install latest binary for mancy repl
+- [norme](http://npm.im/norme) - Opinionated JavaScript linter
+- [novel-js](http://npm.im/novel-js) - A lightweight JavaScript text game engine
+
+
+### async (8)
+
+
+- [async-chainable-nightmare](http://npm.im/async-chainable-nightmare) - Plugin for async-chainable that wraps Nightmare
+- [async-json-serializer](http://npm.im/async-json-serializer) - A library to serialize a JSON object across multiple async callbacks.
+- [chainbuilder](http://npm.im/chainbuilder) - Construct a chainable library from a set of async functions.
+- [chillout](http://npm.im/chillout) - Reduce CPU usage in JavaScript
+- [joseph](http://npm.im/joseph) - Better dream interpretation support for Nightmare.
+- [nightmare-evaluate-async](http://npm.im/nightmare-evaluate-async) - Adds evaluateAsync method to Nightmare.
+- [rpcjs](http://npm.im/rpcjs) - Promise-based RPC. Works in browser, node, electron, you name it. Any transport you like.
+- [uupaa.task.js](http://npm.im/uupaa.task.js) - Counter based task executor.
+
+
+### module (8)
+
+
+- [app-root-path](http://npm.im/app-root-path) - Determine an app's root path from anywhere inside the app
+- [chainbuilder](http://npm.im/chainbuilder) - Construct a chainable library from a set of async functions.
+- [cmake-js](http://npm.im/cmake-js) - CMake.js - a Node.js/io.js native addon build tool
+- [holon](http://npm.im/holon) - Leight-weight DSL-free dual-side composable reactive components
+- [jspm-caddy-hmr](http://npm.im/jspm-caddy-hmr) - jspm & caddy => HMR :)
+- [node-cmake](http://npm.im/node-cmake) - A CMake-based build system for node.js native modules
+- [node-pre-gyp](http://npm.im/node-pre-gyp) - Node.js native addon binary install tool
+- [nx-app-root-path](http://npm.im/nx-app-root-path) - Determine an app's root path from anywhere inside the app
+
+
+### html (8)
+
+
+- [ansi2html-cli](http://npm.im/ansi2html-cli) - Converts piped ansi to html using rburns's ansi-to-html.
+- [electron-html-to](http://npm.im/electron-html-to) - Convert html to html/image using electron
+- [electron-markdownify](http://npm.im/electron-markdownify) - A minimalist Markdown Editor
+- [electron-render-service](http://npm.im/electron-render-service) - Microservice for rendering PDF/PNG/JPEG from HTML with Electron
+- [entu-cms](http://npm.im/entu-cms) - Simple (Jade) filebased CMS
+- [htags](http://npm.im/htags) - htags is a simple library for working with html intended to use with coffeescript in electron or browserify
+- [on-load](http://npm.im/on-load) - On load/unload events for DOM elements using a MutationObserver
+- [posthtml](http://npm.im/posthtml) - HTML/XML processor
 
 
 ### webpack (8)
@@ -1012,6 +1602,19 @@
 - [munchkin](http://npm.im/munchkin) - Android Finder
 - [vbuild](http://npm.im/vbuild) - Preset build tool for Vue.js apps.
 - [webpack-target-electron-renderer](http://npm.im/webpack-target-electron-renderer) - webpack target function for electron renderer
+
+
+### ui (8)
+
+
+- [ETK](http://npm.im/ETK) - Electron toolkit
+- [admin-mongo](http://npm.im/admin-mongo) - A Web user interface to administer MongoDB databases built using Express
+- [electron-sudo](http://npm.im/electron-sudo) - Electron subprocess with administrative privileges, prompting the user with an OS dialog if necessary.
+- [gitkit-widgets](http://npm.im/gitkit-widgets) - Convenience library for initializing Google Identity Toolkit widgets
+- [react-desktop](http://npm.im/react-desktop) - React UI Components for macOS Sierra and Windows 10
+- [relik](http://npm.im/relik) - React Electron Interface Kit
+- [velik](http://npm.im/velik) - Vue Electron Interface Kit
+- [vulcan-ui](http://npm.im/vulcan-ui) - Node build tool for npm, gulp, grunt
 
 
 ### AVC (7)
@@ -1038,87 +1641,76 @@
 - [pomegranate-express](http://npm.im/pomegranate-express) - Provides an Express server, middleware layer, and route loader to the pomegranate framework.
 
 
-### npm (7)
+### iot (7)
 
 
-- [electron-npm-packages](http://npm.im/electron-npm-packages) - A collection of all npm packages that mention `electron` in their package.json or README
-- [lookerupper](http://npm.im/lookerupper) - Copy to your clipboard a package's name and use `CmdOrCtrl+Shift+L` to lookup its documentation on GitHub
-- [npm-gui](http://npm.im/npm-gui) - Graphic User Interface for NPM packages/tasks for front and back -end users.
-- [pushbullet-desktop](http://npm.im/pushbullet-desktop) - A lightweight cross-platform Pushbullet Client for OS X, Windows and Linux. It enables you to receive native system notifications in an unobstrusive way.
-- [quickslot](http://npm.im/quickslot) - A GUI shortcut for your npm scripts
-- [vulcan-ui](http://npm.im/vulcan-ui) - Node build tool for npm, gulp, grunt
+- [micro-app-graph-dashboard](http://npm.im/micro-app-graph-dashboard) - Dashboard to display graph data from sensors
+- [micro-app-home-alarm](http://npm.im/micro-app-home-alarm) - Alarm dashboard written in node
+- [micro-app-mqtt-x10-bridge](http://npm.im/micro-app-mqtt-x10-bridge) - mqtt to x10 bridge
+- [micro-app-remote-control](http://npm.im/micro-app-remote-control) - Remote control in node
+- [netbeast-cli](http://npm.im/netbeast-cli) - Netbeast OS dashboard, IoT apps manager
+- [node-red-contrib-particle](http://npm.im/node-red-contrib-particle) - Node-RED node to connect to Particle devices. Used to call functions, read variables or listen to Server-Sent Events (SSEs)
+- [xbmq](http://npm.im/xbmq) - XBee to MQTT gateway
 
 
-### mac (7)
+### micro-app (7)
 
 
-- [electron-log](http://npm.im/electron-log) - Just a very simple logging module for your Electron application
-- [league-companion](http://npm.im/league-companion) - A companion application for League of Legends built in Electron for Windows/Mac
-- [menubar-extra](http://npm.im/menubar-extra) - High level way to create menubar desktop applications with electron. Forked from menubar with extra options.
-- [menubar](http://npm.im/menubar) - high level way to create menubar desktop applications with electron
-- [pushbullet-desktop](http://npm.im/pushbullet-desktop) - A lightweight cross-platform Pushbullet Client for OS X, Windows and Linux. It enables you to receive native system notifications in an unobstrusive way.
-- [react-desktop](http://npm.im/react-desktop) - React UI Components for macOS Sierra and Windows 10
-- [yourfukurou](http://npm.im/yourfukurou) - Twitter client for perspecuity of timeline
+- [micro-app-cloud-backup](http://npm.im/micro-app-cloud-backup) - micro app to do backups to cloud storage services
+- [micro-app-electron-launcher](http://npm.im/micro-app-electron-launcher) - Launcher for micro-apps using electron
+- [micro-app-framework](http://npm.im/micro-app-framework) - Framework for building/running micro-apps
+- [micro-app-graph-dashboard](http://npm.im/micro-app-graph-dashboard) - Dashboard to display graph data from sensors
+- [micro-app-home-alarm](http://npm.im/micro-app-home-alarm) - Alarm dashboard written in node
+- [micro-app-mqtt-x10-bridge](http://npm.im/micro-app-mqtt-x10-bridge) - mqtt to x10 bridge
+- [micro-app-remote-control](http://npm.im/micro-app-remote-control) - Remote control in node
 
 
-### mongodb.js (7)
+### datastore (7)
 
 
-- [electron-installer-codesign](http://npm.im/electron-installer-codesign) - Sign your electron apps on OSX.
-- [electron-installer-dmg](http://npm.im/electron-installer-dmg) - Create DMG installers for your electron apps.
-- [electron-installer-fixture-windows](http://npm.im/electron-installer-fixture-windows) - A fixture Electron app for testing tooling on Windows.
-- [electron-installer-squirrel-windows](http://npm.im/electron-installer-squirrel-windows) - Generate Windows installers for Electron apps using Squirrel.
-- [electron-installer-zip](http://npm.im/electron-installer-zip) - Create a zip file with support for symlinks required by electron on osx.
-- [electron-squirrel-startup](http://npm.im/electron-squirrel-startup) - Default Squirrel.Windows event handler for your Electron apps.
-- [electron-squirrel-windows-installer](http://npm.im/electron-squirrel-windows-installer) - Generate Windows installers for Electron apps using Squirrel.
+- [happn-nedb](http://npm.im/happn-nedb) - File-based embedded data store for node.js
+- [isotropy-nedb](http://npm.im/isotropy-nedb) - Isotropy port of NeDB by Louis Chatriot. File-based embedded data store for node.js
+- [linvodb3](http://npm.im/linvodb3) - Model-oriented embedded database, inspired by Mongoose & MongoDB, over LevelUP
+- [marsdb](http://npm.im/marsdb) - MarsDB is a lightweight client-side MongoDB-like database, Promise based, written in ES6
+- [nedb-isotropy](http://npm.im/nedb-isotropy) - Isotropy port of NeDB by Louis Chatriot. File-based embedded data store for node.js
+- [nedb](http://npm.im/nedb) - File-based embedded data store for node.js
+- [newdb](http://npm.im/newdb) - Fork of NeDB, the file-based embedded data store for node.js
 
 
-### download (7)
+### screenshot (7)
 
 
-- [electron-dl](http://npm.im/electron-dl) - Simplified file downloads for your Electron app
+- [electron-image-resize](http://npm.im/electron-image-resize) - Resize images using Electron. Supports all image types that Chromium/Electron supports, outputs to png, jpeg, dataUrl or NativeImage.
+- [electron-lite](http://npm.im/electron-lite) - this package will dynamically download and install electron @ 1.1.3 from https://github.com/atom/electron/releases with zero npm-dependencies
+- [electron-prebuilt-lite](http://npm.im/electron-prebuilt-lite) - lightweight version of electron-prebuilt with zero npm-dependencies
+- [electron-screencapture](http://npm.im/electron-screencapture) - Library that allows to take a picture or a video from any fragment of the display
+- [electron-screenshot-app](http://npm.im/electron-screenshot-app) - electron module to create screenshots
+- [robotjs](http://npm.im/robotjs) - Node.js Desktop Automation.
+- [screenshot-pool](http://npm.im/screenshot-pool) - A rock solid screenshot service using pooled electron workers
+
+
+### update (7)
+
+
+- [electron-asar-updater](http://npm.im/electron-asar-updater) - Handles Electron app.asar updates.
+- [electron-basic-updater](http://npm.im/electron-basic-updater) - Handles Electron application updates, IN THE MOST BASIC WAY.
 - [electron-gh-releases-updater](http://npm.im/electron-gh-releases-updater) - Updates an app based on GH Electron from GH releases.
-- [grunt-download-wcjs](http://npm.im/grunt-download-wcjs) - Grunt task to download pre-built WebChimera.js for Electron & NW.JS.
-- [moebius](http://npm.im/moebius) - Command-Line tool to find and download comics (As well as NodeJS module)
-- [webtorrent-hybrid-electron](http://npm.im/webtorrent-hybrid-electron) - Streaming torrent client with reliable WebRTC support for node.js
-- [webtorrent-hybrid](http://npm.im/webtorrent-hybrid) - Streaming torrent client
-- [webtorrent](http://npm.im/webtorrent) - Streaming torrent client
+- [elupdater](http://npm.im/elupdater) - run in main process to update frame and app
+- [nutjar](http://npm.im/nutjar) - Squirrel update handling server for node to simplify things
+- [nw-auto-updater](http://npm.im/nw-auto-updater) - A high level API to make node-webkit apps auto updating easy
+- [youtube-video-api](http://npm.im/youtube-video-api) - Straightforward programmatic and command-line interface for YouTube Videos using Google API v3
 
 
-### window (7)
+### debug (7)
 
 
-- [electron-browser-window-options](http://npm.im/electron-browser-window-options) - Reference for default Electron BrowserWindow options.
-- [electron-drag](http://npm.im/electron-drag) - Window dragging for electron applications
-- [electron-window-manager](http://npm.im/electron-window-manager) - A NodeJs module that handles window management for Electron (Atom Shell, previously)
-- [electron-window](http://npm.im/electron-window) - Convenience methods for Electron windows.
-- [hihat](http://npm.im/hihat) - local Node/Browser development with Chrome DevTools
-- [reactors](http://npm.im/reactors) - Framework based on React to build hybrid apps that run web, mobile and desktop.
-- [tilectron](http://npm.im/tilectron) - Tiling window browser built on Electron
-
-
-### meteor (7)
-
-
-- [electrify-elasticsearch](http://npm.im/electrify-elasticsearch) - ElasticSearch plugin for Electrify
-- [electrify](http://npm.im/electrify) - Package your Meteor apps with Electron, and butter.
-- [electron-meteor](http://npm.im/electron-meteor) - Full Meteor Client for Electron
-- [meteor-desktop-plugin-test-suite](http://npm.im/meteor-desktop-plugin-test-suite) - Few utils to ease out functional testing of Meteor Desktop plugins.
-- [meteor-desktop-splash-screen](http://npm.im/meteor-desktop-splash-screen) - Meteor Desktop splash screen plugin.
-- [meteor-desktop](http://npm.im/meteor-desktop) - Build a Meteor's desktop client with hot code push.
-- [meteor-electron-desktop-client](http://npm.im/meteor-electron-desktop-client) - Build a Meteor's desktop client with hot code push.
-
-
-### api (7)
-
-
-- [dimeshift-desktop](http://npm.im/dimeshift-desktop) - The easiest and desktop way to track your expenses. Free. Open-source.
-- [electron-apis](http://npm.im/electron-apis) - A JSON object describing Electron's APIs
-- [electron-docs](http://npm.im/electron-docs) - Fetch Electron documentation as raw markdown strings
-- [graphcalc-api](http://npm.im/graphcalc-api) - A RESTful API server for graph-calc.
-- [swagger-lite](http://npm.im/swagger-lite) - this package will run a virtual swagger-ui server with persistent storage in the browser, that your webapp can use (in-place of a real backend)
-- [swagger-ui-lite](http://npm.im/swagger-ui-lite) - minimal npm installer for swagger-ui asset files with zero npm-dependencies
-- [vue-electron](http://npm.im/vue-electron) - The vue plugin that attaches electron APIs to the Vue object, making them accessable to all components.
+- [debug-menu](http://npm.im/debug-menu) - Chrome-like "inspect element" context-menu
+- [denode](http://npm.im/denode) - Debug node apps like a pro
+- [electron-debug](http://npm.im/electron-debug) - Adds useful debug features to your Electron app
+- [electron-is-dev](http://npm.im/electron-is-dev) - Check if Electron is running in development
+- [fake-require-main](http://npm.im/fake-require-main) - Fakes require.main for debug and testing purposes.
+- [onmem-logger](http://npm.im/onmem-logger) - A simple on-memory logger for Node.js app
+- [silence-chromium](http://npm.im/silence-chromium) - Silence non-essential output from electron/chromium/etc.
 
 
 ### state (7)
@@ -1133,6 +1725,30 @@
 - [thingamabob](http://npm.im/thingamabob) - A tiny event emitter-based finite state machine
 
 
+### data (7)
+
+
+- [conf](http://npm.im/conf) - Simple config handling for your app or module
+- [editdata](http://npm.im/editdata) - A desktop app for editing data.
+- [electron-config](http://npm.im/electron-config) - Simple config handling for your Electron app or module
+- [electron-json-config](http://npm.im/electron-json-config) - Simply set and get configuration from a json file for your Electron app
+- [electron-json-storage](http://npm.im/electron-json-storage) - Easily write and read user settings in Electron apps
+- [nteract](http://npm.im/nteract) - :notebook: the nteract notebook
+- [strudl](http://npm.im/strudl) - structured data viewer
+
+
+### store (7)
+
+
+- [conf](http://npm.im/conf) - Simple config handling for your app or module
+- [electron-config](http://npm.im/electron-config) - Simple config handling for your Electron app or module
+- [electron-json-config](http://npm.im/electron-json-config) - Simply set and get configuration from a json file for your Electron app
+- [rdfstore](http://npm.im/rdfstore) - RDF graph store supporting the SPARQL query language
+- [selfup-rejs](http://npm.im/selfup-rejs) - Event based, key value store on the file system. Basic server side db in js for node developers. Geared towards NodeBots/IoT.
+- [send-action](http://npm.im/send-action) - simple state management
+- [yunodb](http://npm.im/yunodb) - portable, persistent, electron compatible fulltext search database
+
+
 ### dev (7)
 
 
@@ -1145,16 +1761,16 @@
 - [hihat](http://npm.im/hihat) - local Node/Browser development with Chrome DevTools
 
 
-### logging (7)
+### storage (7)
 
 
-- [chainbuilder-log-console](http://npm.im/chainbuilder-log-console) - Console logging mixin for chainbuilder.
-- [console-redirect](http://npm.im/console-redirect) - redirect console methods to streams
-- [electron-clean-logging](http://npm.im/electron-clean-logging) - strips Electron/Chromium logs from stderr
-- [electron-log](http://npm.im/electron-log) - Just a very simple logging module for your Electron application
-- [electron-winstontransports](http://npm.im/electron-winstontransports) - Moves Winston loggers boilerplate out of sight.
-- [ownanylitics](http://npm.im/ownanylitics) - Self hosted anylitics
-- [strip-chromium-logs](http://npm.im/strip-chromium-logs) - strips chromium logs from a stream
+- [chotadb](http://npm.im/chotadb) - A wrapper over localStorage to provide MongoDB-like interface.
+- [conf](http://npm.im/conf) - Simple config handling for your app or module
+- [electron-config](http://npm.im/electron-config) - Simple config handling for your Electron app or module
+- [electron-json-storage](http://npm.im/electron-json-storage) - Easily write and read user settings in Electron apps
+- [electron-storage](http://npm.im/electron-storage) - module for managing storage in electron applications
+- [lowdb](http://npm.im/lowdb) - JSON database for Node and the browser powered by lodash API
+- [minicloud-storage](http://npm.im/minicloud-storage) - minicloud Lightweight distributed file storage
 
 
 ### chain (7)
@@ -1169,28 +1785,108 @@
 - [chainbuilder](http://npm.im/chainbuilder) - Construct a chainable library from a set of async functions.
 
 
-### quick (7)
+### node-webkit (7)
 
 
-- [billcurt-electron-test-auto-update](http://npm.im/billcurt-electron-test-auto-update) - A minimal auto-updating Electron application
-- [electron-app-test](http://npm.im/electron-app-test) - A minimal Electron application
-- [electron-app](http://npm.im/electron-app) - A minimal Electron application
-- [electron-node-red](http://npm.im/electron-node-red) - Electron Node-RED template
-- [electron-quick-start](http://npm.im/electron-quick-start) - A minimal Electron application
-- [electron-test](http://npm.im/electron-test) - A minimal Electron application
-- [quick-coder](http://npm.im/quick-coder) - Live Coding of node, es, React jsx, and webView based on Electron, like jsFiddle
-
-
-### ui (7)
-
-
-- [ETK](http://npm.im/ETK) - Electron toolkit
-- [electron-sudo](http://npm.im/electron-sudo) - Electron subprocess with administrative privileges, prompting the user with an OS dialog if necessary.
-- [gitkit-widgets](http://npm.im/gitkit-widgets) - Convenience library for initializing Google Identity Toolkit widgets
+- [auto-launch](http://npm.im/auto-launch) - Launch node applications or executables at login (Mac, Windows, and Linux)
+- [cozy-auto-launch](http://npm.im/cozy-auto-launch) - Launch node-webkit apps at login (mac & windows)
+- [generate-evb](http://npm.im/generate-evb) - Generate an 'Enigma Virtual Box' project file (*.evb)
+- [nw-auto-updater](http://npm.im/nw-auto-updater) - A high level API to make node-webkit apps auto updating easy
+- [nw-zip-builder](http://npm.im/nw-zip-builder) - nw.js builder wrapper
+- [plaidchat](http://npm.im/plaidchat) - A Linux client for Slack
 - [react-desktop](http://npm.im/react-desktop) - React UI Components for macOS Sierra and Windows 10
-- [relik](http://npm.im/relik) - React Electron Interface Kit
-- [velik](http://npm.im/velik) - Vue Electron Interface Kit
+
+
+### music (7)
+
+
+- [audiosource](http://npm.im/audiosource) - utility for managing audio buffers
+- [google-music-electron](http://npm.im/google-music-electron) - Desktop app for Google Music on top of Electron
+- [hypertunes-spotify](http://npm.im/hypertunes-spotify) - A Spotify plugin for HyperTunes
+- [musicplayer-api](http://npm.im/musicplayer-api) - Simple Audio API wrapper
+- [myplayer](http://npm.im/myplayer) - Player for Music. Simple, clean and easy.
+- [ooz](http://npm.im/ooz) - A hackable music player.
+- [osc-electron](http://npm.im/osc-electron) - A JavaScript Open Sound Control (OSC) library that works in Node.js and the browser.
+
+
+### audio (7)
+
+
+- [audiobuffer-to-wav](http://npm.im/audiobuffer-to-wav) - convert an AudioBuffer to .wav format
+- [audiosource](http://npm.im/audiosource) - utility for managing audio buffers
+- [beam-soundly-interactive](http://npm.im/beam-soundly-interactive) - Interactive Sound Board for Beam
+- [musicplayer-api](http://npm.im/musicplayer-api) - Simple Audio API wrapper
+- [ooz](http://npm.im/ooz) - A hackable music player.
+- [osc-electron](http://npm.im/osc-electron) - A JavaScript Open Sound Control (OSC) library that works in Node.js and the browser.
+
+
+### require (7)
+
+
+- [app-root-path](http://npm.im/app-root-path) - Determine an app's root path from anywhere inside the app
+- [css-modules-electron](http://npm.im/css-modules-electron) - A require hook to compile and use CSS modules in Electron.
+- [css-modules-require-hook](http://npm.im/css-modules-require-hook) - A require hook to compile CSS Modules on the fly
+- [electron-require](http://npm.im/electron-require) - Simplified require in electron applications
+- [karma-electronrequire-preprocessor](http://npm.im/karma-electronrequire-preprocessor) - karma electron require
+- [nw-requirejs](http://npm.im/nw-requirejs) - Node JS : Load node module in RequireJS
+- [nx-app-root-path](http://npm.im/nx-app-root-path) - Determine an app's root path from anywhere inside the app
+
+
+### db (7)
+
+
+- [ankara](http://npm.im/ankara) - A database centered on connections
+- [chotadb](http://npm.im/chotadb) - A wrapper over localStorage to provide MongoDB-like interface.
+- [nedb-lite](http://npm.im/nedb-lite) - this package is a standalone, single-script version of nedb @ 1.8.0 that runs in both browser and nodejs, with zero npm-dependencies
+- [ripdb](http://npm.im/ripdb) - JavaScript embeddable JSON time series database.
+- [selfup-rejs](http://npm.im/selfup-rejs) - Event based, key value store on the file system. Basic server side db in js for node developers. Geared towards NodeBots/IoT.
+- [swagger-lite](http://npm.im/swagger-lite) - this package will run a virtual swagger-ui server with persistent storage in the browser, that your webapp can use (in-place of a real backend)
+- [thegamesdb](http://npm.im/thegamesdb) - TheGamesDB.net API wrapper
+
+
+### gui (7)
+
+
+- [admin-mongo](http://npm.im/admin-mongo) - A Web user interface to administer MongoDB databases built using Express
+- [chromeo](http://npm.im/chromeo) - experimental Node-Browser bridge
+- [electron-largetype](http://npm.im/electron-largetype) - Large Type functionality for Electron apps
+- [electron-window](http://npm.im/electron-window) - Convenience methods for Electron windows.
+- [emojiui](http://npm.im/emojiui) - Emoji GUI in Electron
+- [npm-gui](http://npm.im/npm-gui) - Graphic User Interface for NPM packages/tasks for front and back -end users.
 - [vulcan-ui](http://npm.im/vulcan-ui) - Node build tool for npm, gulp, grunt
+
+
+### mqtt (6)
+
+
+- [micro-app-graph-dashboard](http://npm.im/micro-app-graph-dashboard) - Dashboard to display graph data from sensors
+- [micro-app-home-alarm](http://npm.im/micro-app-home-alarm) - Alarm dashboard written in node
+- [micro-app-mqtt-x10-bridge](http://npm.im/micro-app-mqtt-x10-bridge) - mqtt to x10 bridge
+- [micro-app-remote-control](http://npm.im/micro-app-remote-control) - Remote control in node
+- [web-mqtt-client](http://npm.im/web-mqtt-client) - A better MQTT API for the browser
+- [xbmq](http://npm.im/xbmq) - XBee to MQTT gateway
+
+
+### vue (6)
+
+
+- [grunt-vueify](http://npm.im/grunt-vueify) - Translate `.vue` files to pure JavaScript, without using Browserify.
+- [gulp-vueify](http://npm.im/gulp-vueify) - Compile .vue files using vueify
+- [tooling](http://npm.im/tooling) - One tooling, No setup.
+- [vbuild](http://npm.im/vbuild) - Preset build tool for Vue.js apps.
+- [velik](http://npm.im/velik) - Vue Electron Interface Kit
+- [vue-electron](http://npm.im/vue-electron) - The vue plugin that attaches electron APIs to the Vue object, making them accessible to all components.
+
+
+### graph (6)
+
+
+- [graph-calc](http://npm.im/graph-calc) - Construct graphs with multiple node/edge types and helpers to perform selective traversals and calculations.
+- [graphcalc-api](http://npm.im/graphcalc-api) - A RESTful API server for graph-calc.
+- [graphcalc-web](http://npm.im/graphcalc-web) - A web interface for graph-calc.
+- [gremlin-lab](http://npm.im/gremlin-lab) - An IDE-like console for Apache TinkerPop's Gremlin Server
+- [micro-app-graph-dashboard](http://npm.im/micro-app-graph-dashboard) - Dashboard to display graph data from sensors
+- [rdfstore](http://npm.im/rdfstore) - RDF graph store supporting the SPARQL query language
 
 
 ### preview (6)
@@ -1204,48 +1900,26 @@
 - [vmd](http://npm.im/vmd) - vmd
 
 
-### screenshot (6)
+### logger (6)
 
 
-- [electron-image-resize](http://npm.im/electron-image-resize) - Resize images using Electron. Supports all image types that Chromium/Electron supports, outputs to png, jpeg, dataUrl or NativeImage.
-- [electron-lite](http://npm.im/electron-lite) - this package will dynamically download and install electron @ 1.1.3 from https://github.com/atom/electron/releases with zero npm-dependencies
-- [electron-prebuilt-lite](http://npm.im/electron-prebuilt-lite) - lightweight version of electron-prebuilt with zero npm-dependencies
-- [electron-screencapture](http://npm.im/electron-screencapture) - Library that allows to take a picture or a video from any fragment of the display
-- [electron-screenshot-app](http://npm.im/electron-screenshot-app) - electron module to create screenshots
-- [screenshot-pool](http://npm.im/screenshot-pool) - A rock solid screenshot service using pooled electron workers
+- [electron-log](http://npm.im/electron-log) - Just a very simple logging module for your Electron application
+- [electron-logger](http://npm.im/electron-logger) - a simple tool to help my electron develop work and keep user client running log.
+- [onmem-logger](http://npm.im/onmem-logger) - A simple on-memory logger for Node.js app
+- [react-native-log-monitor](http://npm.im/react-native-log-monitor) - React Native Log monitor web, electron and chrome app.
+- [redux-cli-logger](http://npm.im/redux-cli-logger) - Redux logger for a node environment
+- [winston-electron-console](http://npm.im/winston-electron-console) - A simple console logger for Winston for use with Electron.
 
 
-### pdf (6)
+### os (6)
 
 
-- [electron-html-to](http://npm.im/electron-html-to) - Convert html to html/image using electron
-- [electron-pdf-js](http://npm.im/electron-pdf-js) - A fork of the original electron-pdf package to add in additional features such as enabling javascript, debug mode and allowing use of insecure external content.
-- [electron-pdf](http://npm.im/electron-pdf) - A command line tool to generate PDF from URL, HTML or Markdown files
-- [electron-render-service](http://npm.im/electron-render-service) - Microservice for rendering PDF/PNG/JPEG from HTML with Electron
-- [hyperpdf](http://npm.im/hyperpdf) - A command line tool to generate PDF from URL, HTML or Markdown files
-- [jsreport-electron-pdf](http://npm.im/jsreport-electron-pdf) - jsreport recipe which renders pdf from html using electron
-
-
-### github (6)
-
-
-- [electron-gh-releases-updater](http://npm.im/electron-gh-releases-updater) - Updates an app based on GH Electron from GH releases.
-- [electron-gh-updater](http://npm.im/electron-gh-updater) - Automatic updater for electron app's using Github releases.
-- [gulp-atom-electron](http://npm.im/gulp-atom-electron) - gulp plugin for packaging Electron applications
-- [gulp-atom-shell](http://npm.im/gulp-atom-shell) - gulp plugin for packaging Atom Shell applications
-- [lookerupper](http://npm.im/lookerupper) - Copy to your clipboard a package's name and use `CmdOrCtrl+Shift+L` to lookup its documentation on GitHub
-- [vmd](http://npm.im/vmd) - vmd
-
-
-### process (6)
-
-
-- [electron-detach](http://npm.im/electron-detach) - restart electron app as a detached child process
-- [electron-ipc-responder](http://npm.im/electron-ipc-responder) - A simple request/response based communication protocol for Electrons IPC functionality
 - [electron-is](http://npm.im/electron-is) - An 'is' utility for Electron which provides a set of handy functions, with a self-descriptive name.
-- [electron-process](http://npm.im/electron-process) - Send blocking operations to a background process in electron
-- [is-electron-renderer](http://npm.im/is-electron-renderer) - Check if code is running in Electron renderer process.
-- [is-electron](http://npm.im/is-electron) - Detect if running in Electron.
+- [electron-sudo](http://npm.im/electron-sudo) - Electron subprocess with administrative privileges, prompting the user with an OS dialog if necessary.
+- [node.os](http://npm.im/node.os) - OS detect for both nodejs and browser
+- [os.js](http://npm.im/os.js) - Very stupid detection of OS
+- [sudo-prompt](http://npm.im/sudo-prompt) - Run a command using sudo, prompting the user with an OS dialog if necessary
+- [windows-fs](http://npm.im/windows-fs) - Windows utilities when working with the file system
 
 
 ### menu (6)
@@ -1259,48 +1933,59 @@
 - [menubar](http://npm.im/menubar) - high level way to create menubar desktop applications with electron
 
 
-### store (6)
+### git (6)
 
 
+- [discord-bot-github](http://npm.im/discord-bot-github) - A bot for discord which consumes the GitHub API and gives you updates.
+- [git-handler](http://npm.im/git-handler) - NPM module for handling git repositories. Makes it easy to add, checkout, branch, clone, commit, pull and push.
+- [git-shas](http://npm.im/git-shas) - This module returns the list of all shas (git commit hashes) from a git repository.
+- [stylish-commit-auto-hook-install](http://npm.im/stylish-commit-auto-hook-install) - Automatically install git pre-commit hooks for stylish-commit.
+- [stylish-commit](http://npm.im/stylish-commit) - Check staged changes with style scripts before commiting with git.
+- [viewdiff](http://npm.im/viewdiff) - View your diffs a separate window.
+
+
+### settings (6)
+
+
+- [conf](http://npm.im/conf) - Simple config handling for your app or module
 - [electron-config](http://npm.im/electron-config) - Simple config handling for your Electron app or module
 - [electron-json-config](http://npm.im/electron-json-config) - Simply set and get configuration from a json file for your Electron app
-- [rdfstore](http://npm.im/rdfstore) - RDF graph store supporting the SPARQL query language
-- [selfup-rejs](http://npm.im/selfup-rejs) - Event based, key value store on the file system. Basic server side db in js for node developers. Geared towards NodeBots/IoT.
-- [send-action](http://npm.im/send-action) - simple state management
-- [yunodb](http://npm.im/yunodb) - portable, persistent, electron compatible fulltext search database
+- [electron-osx-appearance](http://npm.im/electron-osx-appearance) - APIs to access the OS X Appearance Settings.
+- [electron-settings](http://npm.im/electron-settings) - User settings manager for Electron
+- [storage-mixin](http://npm.im/storage-mixin) - Ampersand model mixin to persist data via various storage backends
 
 
-### Windows (6)
+### configuration (6)
 
 
-- [electron-builder](http://npm.im/electron-builder) - Complete solution to build ready for distribution and 'auto update' Electron App installers
-- [electron-complete-builder](http://npm.im/electron-complete-builder) - Complete solution to build ready for distribution and 'auto update' Electron App installers
-- [electron-screen](http://npm.im/electron-screen) - Small Module that returns an array with all the monitors connected to the pc with their resolution and position.
-- [electron-windows-store](http://npm.im/electron-windows-store) - Compile Electron Apps into Windows Store AppX packages
-- [generate-evb](http://npm.im/generate-evb) - Generate an 'Enigma Virtual Box' project file (*.evb)
-- [grunt-electron-packager-builder](http://npm.im/grunt-electron-packager-builder) - Package Electron apps. Grunt task to electron-prebuilt , electron-packager and electron-builder.
-
-
-### data (6)
-
-
-- [editdata](http://npm.im/editdata) - A desktop app for editing data.
+- [conf](http://npm.im/conf) - Simple config handling for your app or module
+- [configurizer](http://npm.im/configurizer) - Simply load a config file from your projects root directory
+- [dota2-manta-config-engine-standalone](http://npm.im/dota2-manta-config-engine-standalone) - Allows you to customize your Dota 2 Autoexec on-the-fly.
 - [electron-config](http://npm.im/electron-config) - Simple config handling for your Electron app or module
 - [electron-json-config](http://npm.im/electron-json-config) - Simply set and get configuration from a json file for your Electron app
-- [electron-json-storage](http://npm.im/electron-json-storage) - Easily write and read user settings in Electron apps
-- [nteract](http://npm.im/nteract) - :notebook: the nteract notebook
-- [strudl](http://npm.im/strudl) - structured data viewer
+- [snacks](http://npm.im/snacks) - Irken plugin exposing configuration options
 
 
-### devtools (6)
+### config (6)
 
 
-- [devtron](http://npm.im/devtron) - Electron DevTools Extension
-- [electron-debug](http://npm.im/electron-debug) - Adds useful debug features to your Electron app
-- [electron-react-devtools](http://npm.im/electron-react-devtools) - React DevTools Extension for Electron
-- [remotedev-app-slider](http://npm.im/remotedev-app-slider) - Remote Redux DevTools web, electron and chrome app. slider version
-- [remotedev-app](http://npm.im/remotedev-app) - Remote Redux DevTools web, electron and chrome app.
-- [remotedev-extension](http://npm.im/remotedev-extension) - Use Redux DevTools in the Browser/Electron DevTools
+- [conf](http://npm.im/conf) - Simple config handling for your app or module
+- [configurizer](http://npm.im/configurizer) - Simply load a config file from your projects root directory
+- [electron-config](http://npm.im/electron-config) - Simple config handling for your Electron app or module
+- [electron-json-config](http://npm.im/electron-json-config) - Simply set and get configuration from a json file for your Electron app
+- [snacks](http://npm.im/snacks) - Irken plugin exposing configuration options
+- [teeny-conf](http://npm.im/teeny-conf) - A small npm package to handle config files in Node apps. Works fine with Electron and NW.js
+
+
+### dashboard (6)
+
+
+- [chronoswe](http://npm.im/chronoswe) - A dashboard extensibile with plugin
+- [micro-app-graph-dashboard](http://npm.im/micro-app-graph-dashboard) - Dashboard to display graph data from sensors
+- [micro-app-home-alarm](http://npm.im/micro-app-home-alarm) - Alarm dashboard written in node
+- [micro-app-mqtt-x10-bridge](http://npm.im/micro-app-mqtt-x10-bridge) - mqtt to x10 bridge
+- [micro-app-remote-control](http://npm.im/micro-app-remote-control) - Remote control in node
+- [netbeast-cli](http://npm.im/netbeast-cli) - Netbeast OS dashboard, IoT apps manager
 
 
 ### chromium (6)
@@ -1310,30 +1995,8 @@
 - [electron-image-resize](http://npm.im/electron-image-resize) - Resize images using Electron. Supports all image types that Chromium/Electron supports, outputs to png, jpeg, dataUrl or NativeImage.
 - [ember-electron](http://npm.im/ember-electron) - An addon for building Desktop apps with Ember and Electron.
 - [hihat](http://npm.im/hihat) - local Node/Browser development with Chrome DevTools
-- [pushbullet-desktop](http://npm.im/pushbullet-desktop) - A lightweight cross-platform Pushbullet Client for OS X, Windows and Linux. It enables you to receive native system notifications in an unobstrusive way.
+- [pushbullet-desktop](http://npm.im/pushbullet-desktop) - Lightweight cross-platform Pushbullet desktop application
 - [strip-chromium-logs](http://npm.im/strip-chromium-logs) - strips chromium logs from a stream
-
-
-### gui (6)
-
-
-- [chromeo](http://npm.im/chromeo) - experimental Node-Browser bridge
-- [electron-largetype](http://npm.im/electron-largetype) - Large Type functionality for Electron apps
-- [electron-window](http://npm.im/electron-window) - Convenience methods for Electron windows.
-- [emojiui](http://npm.im/emojiui) - Emoji GUI in Electron
-- [npm-gui](http://npm.im/npm-gui) - Graphic User Interface for NPM packages/tasks for front and back -end users.
-- [vulcan-ui](http://npm.im/vulcan-ui) - Node build tool for npm, gulp, grunt
-
-
-### chrome (6)
-
-
-- [chrome-network-errors](http://npm.im/chrome-network-errors) - A list of all of Chrome's network errors codes.
-- [chromeo](http://npm.im/chromeo) - experimental Node-Browser bridge
-- [crossbuilder](http://npm.im/crossbuilder) - Building web, Electron and Chrome apps, and cross-browser extensions with React, Redux and Webpack. 'Write once, build everywhere' concept in practice.
-- [hihat](http://npm.im/hihat) - local Node/Browser development with Chrome DevTools
-- [remotedev-extension](http://npm.im/remotedev-extension) - Use Redux DevTools in the Browser/Electron DevTools
-- [yez](http://npm.im/yez) - Chrome extension which acts as task runner
 
 
 ### chainbuilder (6)
@@ -1347,113 +2010,103 @@
 - [chainbuilder-save](http://npm.im/chainbuilder-save) - Chainbuilder mixin for saving/restoring values.
 
 
-### phantomjs (6)
+### p2p (6)
 
 
-- [browser-run](http://npm.im/browser-run) - Transform stream that executes JavaScript it receives in a real browser and outputs console output
-- [navit](http://npm.im/navit) - Wrapper for PhantomJS and SlimerJS to simplify browser tests scripting
-- [nightmare-google-oauth2](http://npm.im/nightmare-google-oauth2) - Nightmare plugin to automatically authenticate, authorize and retrieve a fresh OAuth2 token for Google APIs
-- [nightmare-load-filter](http://npm.im/nightmare-load-filter) - Filter requests in NightmareJS
-- [nightmare-window-manager](http://npm.im/nightmare-window-manager) - add window management to your Nightmare scripts
-- [utility2](http://npm.im/utility2) - this package will run dynamic browser tests with coverage (via istanbul and electron)
+- [bitcoin-net](http://npm.im/bitcoin-net) - Bitcoin P2P networking tht works in Node and the browser
+- [bittorrent-tracker](http://npm.im/bittorrent-tracker) - Simple, robust, BitTorrent tracker (client & server) implementation
+- [peer-exchange](http://npm.im/peer-exchange) - Decentralized peer discovery and signaling
+- [peerbot](http://npm.im/peerbot) - Message seeding utility for friends p2p chat.
+- [swarmbot](http://npm.im/swarmbot) - mirroring for a p2p mesh of swarmlogs
+- [webtorrent](http://npm.im/webtorrent) - Streaming torrent client
 
 
-### client (6)
+### plugin (6)
 
 
-- [boorium](http://npm.im/boorium) - beautiful booru client
-- [foj](http://npm.im/foj) - FOJ-Client
-- [neta](http://npm.im/neta) - A chatting client.
-- [npm-gui](http://npm.im/npm-gui) - Graphic User Interface for NPM packages/tasks for front and back -end users.
-- [testron](http://npm.im/testron) - CI your client side tests with Electron
-- [yourfukurou](http://npm.im/yourfukurou) - Twitter client for perspecuity of timeline
-
-
-### start (6)
-
-
-- [billcurt-electron-test-auto-update](http://npm.im/billcurt-electron-test-auto-update) - A minimal auto-updating Electron application
-- [electron-app-test](http://npm.im/electron-app-test) - A minimal Electron application
-- [electron-app](http://npm.im/electron-app) - A minimal Electron application
-- [electron-node-red](http://npm.im/electron-node-red) - Electron Node-RED template
-- [electron-quick-start](http://npm.im/electron-quick-start) - A minimal Electron application
-- [electron-test](http://npm.im/electron-test) - A minimal Electron application
-
-
-### nodejs (6)
-
-
-- [benja](http://npm.im/benja) - Bootable Electron Node JS Application
-- [desktop-mp3-player](http://npm.im/desktop-mp3-player) - deskop music player
-- [handy-debugger](http://npm.im/handy-debugger) - easily debug your Nodejs app in the Chromium Devtools
-- [hexdump-nodejs](http://npm.im/hexdump-nodejs) - Hexdump an ArrayBuffer to a String (NodeJS)
-- [httpjs](http://npm.im/httpjs) - A simple HTTP server
-- [nw-requirejs](http://npm.im/nw-requirejs) - Node JS : Load node module in RequireJS
-
-
-### async (6)
-
-
-- [async-json-serializer](http://npm.im/async-json-serializer) - A library to serialize a JSON object across multiple async callbacks.
-- [chainbuilder](http://npm.im/chainbuilder) - Construct a chainable library from a set of async functions.
-- [joseph](http://npm.im/joseph) - Better dream interpretation support for Nightmare.
-- [nightmare-evaluate-async](http://npm.im/nightmare-evaluate-async) - Adds evaluateAsync method to Nightmare.
-- [rpcjs](http://npm.im/rpcjs) - Promise-based RPC. Works in browser, node, electron, you name it. Any transport you like.
-- [uupaa.task.js](http://npm.im/uupaa.task.js) - Counter based task executor.
-
-
-### cli (6)
-
-
-- [ansi2html-cli](http://npm.im/ansi2html-cli) - Converts piped ansi to html using rburns's ansi-to-html.
-- [commandant](http://npm.im/commandant) - A command line framework for node.js
-- [electron-open](http://npm.im/electron-open) - Open a URL in Electron (atom-shell)
-- [electron](http://npm.im/electron) - A simple command-line interface framework for node.js.
-- [tooling](http://npm.im/tooling) - One tooling, No setup.
-
-
-### html (6)
-
-
-- [ansi2html-cli](http://npm.im/ansi2html-cli) - Converts piped ansi to html using rburns's ansi-to-html.
-- [electron-html-to](http://npm.im/electron-html-to) - Convert html to html/image using electron
-- [electron-markdownify](http://npm.im/electron-markdownify) - A minimalist Markdown Editor
-- [electron-render-service](http://npm.im/electron-render-service) - Microservice for rendering PDF/PNG/JPEG from HTML with Electron
-- [htags](http://npm.im/htags) - htags is a simple library for working with html intended to use with coffeescript in electron or browserify
-- [on-load](http://npm.im/on-load) - On load/unload events for DOM elements using a MutationObserver
-
-
-### database (6)
-
-
-- [ankara](http://npm.im/ankara) - A database centered on connections
-- [dboa-untangler](http://npm.im/dboa-untangler) - An electron application to help you untangle your (postgres) database.
-- [electrify-elasticsearch](http://npm.im/electrify-elasticsearch) - ElasticSearch plugin for Electrify
-- [ripdb](http://npm.im/ripdb) - JavaScript embeddable JSON time series database.
-- [selfup-rejs](http://npm.im/selfup-rejs) - Event based, key value store on the file system. Basic server side db in js for node developers. Geared towards NodeBots/IoT.
-- [yunodb](http://npm.im/yunodb) - portable, persistent, electron compatible fulltext search database
-
-
-### game (6)
-
-
-- [always-gravity](http://npm.im/always-gravity) - Create shooter game for training.
-- [bloxparty](http://npm.im/bloxparty) - Multiplayer Tetris built with Electron
-- [electron-noveljs-boilerplate](http://npm.im/electron-noveljs-boilerplate) - Create standalone Novel.js adventures!
-- [lyre](http://npm.im/lyre) - An abstraction for making atom-style apps with packages.
-- [lyrebird](http://npm.im/lyrebird) - A unified launcher for organized gamers.
-- [myou-engine](http://npm.im/myou-engine) - Myou is a game engine for web, it features an editor based on Blender.
-
-
-### babel (6)
-
-
-- [PupaFM](http://npm.im/PupaFM) - douban.fm Music Desktop Player
 - [babel-preset-electron](http://npm.im/babel-preset-electron) - Babel preset with all plugins for Electron.
-- [deck.gl](http://npm.im/deck.gl) - A suite of 3D-enabled data visualization overlays, suitable for react-map-gl
-- [ionic-brunch-es6-seed](http://npm.im/ionic-brunch-es6-seed) - An Ionic starter project with Babel and Brunch
-- [tooling](http://npm.im/tooling) - One tooling, No setup.
-- [vbuild](http://npm.im/vbuild) - Preset build tool for Vue.js apps.
+- [chronoswe](http://npm.im/chronoswe) - A dashboard extensibile with plugin
+- [electron-connect-webpack-plugin](http://npm.im/electron-connect-webpack-plugin) - electron-connect integration for webpack.
+- [gulp-run-electron](http://npm.im/gulp-run-electron) - Gulp plugin for starting Electron.
+- [hypertunes-spotify](http://npm.im/hypertunes-spotify) - A Spotify plugin for HyperTunes
+- [load-plugin](http://npm.im/load-plugin) - Load a submodule / plugin
+
+
+### login (6)
+
+
+- [auto-launch](http://npm.im/auto-launch) - Launch node applications or executables at login (Mac, Windows, and Linux)
+- [cozy-auto-launch](http://npm.im/cozy-auto-launch) - Launch node-webkit apps at login (mac & windows)
+- [gitkit-widgets](http://npm.im/gitkit-widgets) - Convenience library for initializing Google Identity Toolkit widgets
+- [oauth-electron-facebook](http://npm.im/oauth-electron-facebook) - oauth for facebook inside electron
+- [oauth-electron-twitter](http://npm.im/oauth-electron-twitter) - oauth for twitter inside electron
+- [oauth-electron](http://npm.im/oauth-electron) - easy oauth generic handling for electron
+
+
+### buffer (6)
+
+
+- [audiobuffer-to-wav](http://npm.im/audiobuffer-to-wav) - convert an AudioBuffer to .wav format
+- [audiosource](http://npm.im/audiosource) - utility for managing audio buffers
+- [electron-canvas-to-buffer](http://npm.im/electron-canvas-to-buffer) - in Electron, turns a Canvas into a Buffer
+- [electron-ref](http://npm.im/electron-ref) - This is a fork of the ref project, adding electron build support and binaries
+- [hexdump-js](http://npm.im/hexdump-js) - Hexdump an ArrayBuffer to a String
+- [hexdump-nodejs](http://npm.im/hexdump-nodejs) - Hexdump an ArrayBuffer to a String (NodeJS)
+
+
+### terminal (6)
+
+
+- [atomic-terminal](http://npm.im/atomic-terminal) - A terminal powered by Electron
+- [black-screen](http://npm.im/black-screen) - A terminal emulator for the 21st century.
+- [console-redirect](http://npm.im/console-redirect) - redirect console methods to streams
+- [magnesium](http://npm.im/magnesium) - A terminal emulator based on Electron.
+- [nterm](http://npm.im/nterm) - A Node Terminal
+- [web-term](http://npm.im/web-term) - A full screen terminal in your browser.
+
+
+### updater (6)
+
+
+- [asar-updater](http://npm.im/asar-updater) - Auto update asar file
+- [electron-asar-updater](http://npm.im/electron-asar-updater) - Handles Electron app.asar updates.
+- [electron-basic-updater](http://npm.im/electron-basic-updater) - Handles Electron application updates, IN THE MOST BASIC WAY.
+- [electron-gh-releases-updater](http://npm.im/electron-gh-releases-updater) - Updates an app based on GH Electron from GH releases.
+- [electron-gh-updater](http://npm.im/electron-gh-updater) - Automatic updater for electron app's using Github releases.
+- [electron-resources-updater](http://npm.im/electron-resources-updater) - only update resources
+
+
+### path (6)
+
+
+- [app-root-path](http://npm.im/app-root-path) - Determine an app's root path from anywhere inside the app
+- [electron-bin-path](http://npm.im/electron-bin-path) - Find a path of electron bin installed in local or global node_modules
+- [fix-path](http://npm.im/fix-path) - Fix the $PATH on OS X when run from a GUI app
+- [nx-app-root-path](http://npm.im/nx-app-root-path) - Determine an app's root path from anywhere inside the app
+- [shell-path](http://npm.im/shell-path) - Get the $PATH from the shell
+- [windows-fs](http://npm.im/windows-fs) - Windows utilities when working with the file system
+
+
+### user (6)
+
+
+- [admin-mongo](http://npm.im/admin-mongo) - A Web user interface to administer MongoDB databases built using Express
+- [electron-json-storage](http://npm.im/electron-json-storage) - Easily write and read user settings in Electron apps
+- [electron-settings](http://npm.im/electron-settings) - User settings manager for Electron
+- [fs-access](http://npm.im/fs-access) - Node.js 0.12 fs.access() & fs.accessSync() ponyfill
+- [react-desktop](http://npm.im/react-desktop) - React UI Components for macOS Sierra and Windows 10
+- [snacks](http://npm.im/snacks) - Irken plugin exposing configuration options
+
+
+### GUI (6)
+
+
+- [admin-mongo](http://npm.im/admin-mongo) - A Web user interface to administer MongoDB databases built using Express
+- [libui-node](http://npm.im/libui-node) - Node.js bindings for libui
+- [mancy](http://npm.im/mancy) - Install latest binary for mancy repl
+- [photo-compare-sort](http://npm.im/photo-compare-sort) - A photo sort by user comparation
+- [robotjs](http://npm.im/robotjs) - Node.js Desktop Automation.
+- [silk-gui](http://npm.im/silk-gui) - GUI for developers and Node OS
 
 
 ### MP4 (5)
@@ -1486,14 +2139,54 @@
 - [webtorrent](http://npm.im/webtorrent) - Streaming torrent client
 
 
-### graph (5)
+### photon (5)
 
 
-- [graph-calc](http://npm.im/graph-calc) - Construct graphs with multiple node/edge types and helpers to perform selective traversals and calculations.
-- [graphcalc-api](http://npm.im/graphcalc-api) - A RESTful API server for graph-calc.
-- [graphcalc-web](http://npm.im/graphcalc-web) - A web interface for graph-calc.
-- [gremlin-lab](http://npm.im/gremlin-lab) - An IDE-like console for Apache TinkerPop's Gremlin Server
-- [rdfstore](http://npm.im/rdfstore) - RDF graph store supporting the SPARQL query language
+- [node-red-contrib-particle](http://npm.im/node-red-contrib-particle) - Node-RED node to connect to Particle devices. Used to call functions, read variables or listen to Server-Sent Events (SSEs)
+- [preact-photon](http://npm.im/preact-photon) - Preact + Photon = <3
+- [react-photon](http://npm.im/react-photon) - Photon component built with React
+- [react-photonkit](http://npm.im/react-photonkit) - Photon components built with React
+- [teamhours](http://npm.im/teamhours) - Triple Helix login frontend built with Photon.
+
+
+### nedb (5)
+
+
+- [isotropy-nedb](http://npm.im/isotropy-nedb) - Isotropy port of NeDB by Louis Chatriot. File-based embedded data store for node.js
+- [marsdb](http://npm.im/marsdb) - MarsDB is a lightweight client-side MongoDB-like database, Promise based, written in ES6
+- [nedb-isotropy](http://npm.im/nedb-isotropy) - Isotropy port of NeDB by Louis Chatriot. File-based embedded data store for node.js
+- [nedb-lite](http://npm.im/nedb-lite) - this package is a standalone, single-script version of nedb @ 1.8.0 that runs in both browser and nodejs, with zero npm-dependencies
+- [swagger-lite](http://npm.im/swagger-lite) - this package will run a virtual swagger-ui server with persistent storage in the browser, that your webapp can use (in-place of a real backend)
+
+
+### webtorrent (5)
+
+
+- [hyperlog-webtorrent-seed](http://npm.im/hyperlog-webtorrent-seed) - seed webtorrent magnet links from a hyperlog
+- [webtorrent-desktop](http://npm.im/webtorrent-desktop) - WebTorrent, the streaming torrent client. For OS X, Windows, and Linux.
+- [webtorrent-hybrid-electron](http://npm.im/webtorrent-hybrid-electron) - Streaming torrent client with reliable WebRTC support for node.js
+- [webtorrent-hybrid](http://npm.im/webtorrent-hybrid) - Streaming torrent client
+- [webtorrent](http://npm.im/webtorrent) - Streaming torrent client
+
+
+### browserify (5)
+
+
+- [holon](http://npm.im/holon) - Leight-weight DSL-free dual-side composable reactive components
+- [install-missing](http://npm.im/install-missing) - install latest missing modules
+- [nimble-elements](http://npm.im/nimble-elements) - Lightweight Web Application Framework - 2015.11.02
+- [positron-cli](http://npm.im/positron-cli) - Compile Javascript apps for Android
+- [simple-react-server](http://npm.im/simple-react-server) - A basic express-based React server with model syncing, client-server RPC, less compilation + browserify. Intended for quick hackery, not production.
+
+
+### phantom (5)
+
+
+- [headless-google-auth](http://npm.im/headless-google-auth) - Log into a Google account using OAuth2 without a browser
+- [headless-trello-auth](http://npm.im/headless-trello-auth) - Automatically grant access for your application in Trello
+- [is-js-error](http://npm.im/is-js-error) - Check if a page contains a JavaScript error
+- [mirror-mirror](http://npm.im/mirror-mirror) - Test your UI changes in production before deploying to production
+- [utility2](http://npm.im/utility2) - this package will run dynamic browser tests with coverage (via istanbul and electron)
 
 
 ### scaffold (5)
@@ -1504,6 +2197,86 @@
 - [generator-electron-stack](http://npm.im/generator-electron-stack) - Scaffold out an Electron app boilerplate with Angular.js or React + Redux
 - [generator-electron](http://npm.im/generator-electron) - Scaffold out an Electron app boilerplate
 - [generator-neodymium](http://npm.im/generator-neodymium) - Scaffolds a clean and combat ready electron app.
+
+
+### flash (5)
+
+
+- [flash-player-loader](http://npm.im/flash-player-loader) - Makes life easier for the electron apps which need the pepper flash player.
+- [glantern](http://npm.im/glantern) - A library intended for a Flash-HTML5 shim layer.
+- [gordon-client](http://npm.im/gordon-client) - Multiplayer Server for NodeJS
+- [gordon-examples](http://npm.im/gordon-examples) - Examples for the Gordon server
+- [gordon-server](http://npm.im/gordon-server) - Multiplayer Server for NodeJS, HTML5 and Adobe Flash/Air
+
+
+### google (5)
+
+
+- [extract-streetview](http://npm.im/extract-streetview) - extract street view spherical images and depth information
+- [google-music-electron](http://npm.im/google-music-electron) - Desktop app for Google Music on top of Electron
+- [headless-google-auth](http://npm.im/headless-google-auth) - Log into a Google account using OAuth2 without a browser
+- [micro-app-cloud-backup](http://npm.im/micro-app-cloud-backup) - micro app to do backups to cloud storage services
+- [nightmare-google-oauth2](http://npm.im/nightmare-google-oauth2) - Nightmare plugin to automatically authenticate, authorize and retrieve a fresh OAuth2 token for Google APIs
+
+
+### typescript (5)
+
+
+- [express-compile](http://npm.im/express-compile) - Supporting package to compile JS and CSS in Express applications
+- [generator-tsweb](http://npm.im/generator-tsweb) - Yeoman generator for Typescript + Web
+- [mancy](http://npm.im/mancy) - Install latest binary for mancy repl
+- [mobx-translate](http://npm.im/mobx-translate) - Simple translations library for mobx
+- [typings](http://npm.im/typings) - The TypeScript Definition Manager
+
+
+### remote (5)
+
+
+- [electron-remote](http://npm.im/electron-remote) - Execute JavaScript in remote Electron processes, but more betterer
+- [micro-app-remote-control](http://npm.im/micro-app-remote-control) - Remote control in node
+- [node-apple-remote](http://npm.im/node-apple-remote) - Simple event-driven interface to Aluminum Apple Remote
+- [open-ssh-tunnel](http://npm.im/open-ssh-tunnel) - Easy ssh2 tunneling
+- [remotedev-extension](http://npm.im/remotedev-extension) - Use Redux DevTools in the Browser/Electron DevTools
+
+
+### twitter (5)
+
+
+- [electron-oauth-twitter](http://npm.im/electron-oauth-twitter) - Twitter OAuth Window library.
+- [electron-twitter](http://npm.im/electron-twitter) - Tutorial / Hello world style application on top of Electron to give it a good spin
+- [koteky-twitter](http://npm.im/koteky-twitter) - twitter plugin for the koteky
+- [ng2-twitter](http://npm.im/ng2-twitter) - Angular2 service of authorized request for twitter.
+- [oauth-electron-twitter](http://npm.im/oauth-electron-twitter) - oauth for twitter inside electron
+
+
+### toaster (5)
+
+
+- [electron-notification-shim](http://npm.im/electron-notification-shim) - Get Notification API events in Electron main-process. Perfect for adding Notification toasters in Windows with node-notifier or other solution.
+- [electron-notifications](http://npm.im/electron-notifications) - A node module for sending notifications in electron applications
+- [electron-notifier](http://npm.im/electron-notifier) - Add cross-platform notifications to Electron apps.
+- [electron-toaster](http://npm.im/electron-toaster) - A simple toaster for electron
+- [node-notifier](http://npm.im/node-notifier) - A Node.js module for sending notifications on native Mac, Windows (post and pre 8) and Linux (or Growl as fallback)
+
+
+### notify (5)
+
+
+- [electron-notification-shim](http://npm.im/electron-notification-shim) - Get Notification API events in Electron main-process. Perfect for adding Notification toasters in Windows with node-notifier or other solution.
+- [electron-notifications](http://npm.im/electron-notifications) - A node module for sending notifications in electron applications
+- [electron-notifier](http://npm.im/electron-notifier) - Add cross-platform notifications to Electron apps.
+- [electron-toaster](http://npm.im/electron-toaster) - A simple toaster for electron
+- [node-notifier](http://npm.im/node-notifier) - A Node.js module for sending notifications on native Mac, Windows (post and pre 8) and Linux (or Growl as fallback)
+
+
+### notification (5)
+
+
+- [electron-notification-shim](http://npm.im/electron-notification-shim) - Get Notification API events in Electron main-process. Perfect for adding Notification toasters in Windows with node-notifier or other solution.
+- [electron-notifications](http://npm.im/electron-notifications) - A node module for sending notifications in electron applications
+- [electron-notifier](http://npm.im/electron-notifier) - Add cross-platform notifications to Electron apps.
+- [elnotifier](http://npm.im/elnotifier) - electron notification
+- [node-notifier](http://npm.im/node-notifier) - A Node.js module for sending notifications on native Mac, Windows (post and pre 8) and Linux (or Growl as fallback)
 
 
 ### light (5)
@@ -1520,20 +2293,30 @@
 
 
 - [electron-is](http://npm.im/electron-is) - An 'is' utility for Electron which provides a set of handy functions, with a self-descriptive name.
-- [evm](http://npm.im/evm) - Electron Version Manager
+- [evm](http://npm.im/evm) - [Deprecated] Electron Version Manager
 - [fix-path](http://npm.im/fix-path) - Fix the $PATH on OS X when run from a GUI app
 - [shell-env](http://npm.im/shell-env) - Get environment variables from the shell
 - [shell-path](http://npm.im/shell-path) - Get the $PATH from the shell
 
 
-### settings (5)
+### oauth2 (5)
 
 
-- [electron-config](http://npm.im/electron-config) - Simple config handling for your Electron app or module
-- [electron-json-config](http://npm.im/electron-json-config) - Simply set and get configuration from a json file for your Electron app
-- [electron-osx-appearance](http://npm.im/electron-osx-appearance) - APIs to access the OS X Appearance Settings.
-- [electron-settings](http://npm.im/electron-settings) - User settings manager for Electron
-- [storage-mixin](http://npm.im/storage-mixin) - Ampersand model mixin to persist data via various storage backends
+- [electron-google-oauth](http://npm.im/electron-google-oauth) - Google api access token in electron
+- [electron-oauth2](http://npm.im/electron-oauth2) - An OAuth2 module for your Electron app.
+- [headless-google-auth](http://npm.im/headless-google-auth) - Log into a Google account using OAuth2 without a browser
+- [headless-trello-auth](http://npm.im/headless-trello-auth) - Automatically grant access for your application in Trello
+- [nightmare-google-oauth2](http://npm.im/nightmare-google-oauth2) - Nightmare plugin to automatically authenticate, authorize and retrieve a fresh OAuth2 token for Google APIs
+
+
+### png (5)
+
+
+- [electron-canvas-to-buffer](http://npm.im/electron-canvas-to-buffer) - in Electron, turns a Canvas into a Buffer
+- [electron-image-resize](http://npm.im/electron-image-resize) - Resize images using Electron. Supports all image types that Chromium/Electron supports, outputs to png, jpeg, dataUrl or NativeImage.
+- [electron-render-service](http://npm.im/electron-render-service) - Microservice for rendering PDF/PNG/JPEG from HTML with Electron
+- [gl-pixel-stream](http://npm.im/gl-pixel-stream) - streaming gl.readPixels from an FBO
+- [preview-dds](http://npm.im/preview-dds) - preview and save DDS textures from the command line
 
 
 ### msi (5)
@@ -1546,14 +2329,24 @@
 - [msi-packager](http://npm.im/msi-packager) - Build MSI (Windows Installer) packages on Mac and Linux
 
 
-### updater (5)
+### dmg (5)
 
 
-- [electron-asar-updater](http://npm.im/electron-asar-updater) - Handles Electron app.asar updates.
-- [electron-basic-updater](http://npm.im/electron-basic-updater) - Handles Electron application updates, IN THE MOST BASIC WAY.
-- [electron-gh-releases-updater](http://npm.im/electron-gh-releases-updater) - Updates an app based on GH Electron from GH releases.
-- [electron-gh-updater](http://npm.im/electron-gh-updater) - Automatic updater for electron app's using Github releases.
-- [electron-resources-updater](http://npm.im/electron-resources-updater) - only update resources
+- [electron-builder](http://npm.im/electron-builder) - Complete solution to build ready for distribution and 'auto update' Electron App installers
+- [electron-complete-builder](http://npm.im/electron-complete-builder) - Complete solution to build ready for distribution and 'auto update' Electron App installers
+- [electron-installer-dmg](http://npm.im/electron-installer-dmg) - Create DMG installers for your electron apps.
+- [grunt-electron-packager-builder](http://npm.im/grunt-electron-packager-builder) - Package Electron apps. Grunt task to electron-prebuilt , electron-packager and electron-builder.
+- [pack-dir](http://npm.im/pack-dir) - Pack/unpack specified directory with native current OS command line tools.
+
+
+### install (5)
+
+
+- [electron-builder](http://npm.im/electron-builder) - Complete solution to build ready for distribution and 'auto update' Electron App installers
+- [electron-complete-builder](http://npm.im/electron-complete-builder) - Complete solution to build ready for distribution and 'auto update' Electron App installers
+- [grunt-electron-packager-builder](http://npm.im/grunt-electron-packager-builder) - Package Electron apps. Grunt task to electron-prebuilt , electron-packager and electron-builder.
+- [install-missing](http://npm.im/install-missing) - install latest missing modules
+- [prt](http://npm.im/prt) - Package Manager for Windows
 
 
 ### atom shell (5)
@@ -1564,6 +2357,56 @@
 - [electron-proxy-agent](http://npm.im/electron-proxy-agent) - NodeJS http(s).Agent implementation for electron shell
 - [electron-window-manager](http://npm.im/electron-window-manager) - A NodeJs module that handles window management for Electron (Atom Shell, previously)
 - [karma-electron-launcher](http://npm.im/karma-electron-launcher) - A Karma Plugin. Launcher for github electron shell.
+
+
+### documentation (5)
+
+
+- [electron-apis](http://npm.im/electron-apis) - A JSON object describing Electron's APIs
+- [electron-docs-linter](http://npm.im/electron-docs-linter) - A JSON object describing Electron's APIs
+- [electron-docs](http://npm.im/electron-docs) - Fetch Electron documentation as raw markdown strings
+- [lookerupper](http://npm.im/lookerupper) - Copy to your clipboard a package's name and use `CmdOrCtrl+Shift+L` to lookup its documentation on GitHub
+- [rest-api-doc-gui](http://npm.im/rest-api-doc-gui) - A GUI for creating REST API documentation Easily.
+
+
+### dom (5)
+
+
+- [dom-copy-image](http://npm.im/dom-copy-image) - Copy an image file in a DOM environment
+- [electron-tree-view](http://npm.im/electron-tree-view) - A tree viewer for Electron webviews with virtual dom.
+- [matchbox-dom](http://npm.im/matchbox-dom) - Matchbox View and dom library
+- [on-load](http://npm.im/on-load) - On load/unload events for DOM elements using a MutationObserver
+- [virtual-progress-bar](http://npm.im/virtual-progress-bar) - virtual-dom progress bar component
+
+
+### canvas (5)
+
+
+- [dom-copy-image](http://npm.im/dom-copy-image) - Copy an image file in a DOM environment
+- [electron-canvas-to-buffer](http://npm.im/electron-canvas-to-buffer) - in Electron, turns a Canvas into a Buffer
+- [image-clipper](http://npm.im/image-clipper) - Node.js module for clipping & cropping JPEG, PNG, WebP images purely using the native Canvas APIs, excellent compatibility with the Browser & Electron & NW.js (Node-webkit), itself doesn't relies on any image processing libraries.
+- [luma.gl](http://npm.im/luma.gl) - A WebGL JavaScript visualization library.
+- [splat-ecs](http://npm.im/splat-ecs) - A 2D HTML5 Canvas game engine
+
+
+### Database (5)
+
+
+- [dinxe](http://npm.im/dinxe) - Save time with Dinxe Database, local host only, Insert, get, update and delete data from your app.
+- [land-js](http://npm.im/land-js) - Save time with land-js Database, local host only, Insert, get, update and delete data from your app.
+- [landb](http://npm.im/landb) - Save time with land-js Database, local host only, Insert, get, update and delete data from your app.
+- [pomegranate-sequelize-core](http://npm.im/pomegranate-sequelize-core) - Provides sequelize to downstream plugins.
+- [pomegranate-sequelize-pg](http://npm.im/pomegranate-sequelize-pg) - Loads Postgres support into the Pomegranate framework.
+
+
+### websocket (5)
+
+
+- [dhtmlx-desktop-chat](http://npm.im/dhtmlx-desktop-chat) - Just a simple desktop chat built using DHTMLX on client and Node.js (Express + ws) && Redis on back end
+- [gordon-client](http://npm.im/gordon-client) - Multiplayer Server for NodeJS
+- [gordon-examples](http://npm.im/gordon-examples) - Examples for the Gordon server
+- [gordon-server](http://npm.im/gordon-server) - Multiplayer Server for NodeJS, HTML5 and Adobe Flash/Air
+- [wsobserver](http://npm.im/wsobserver) - websocket client used in electron main process,pub/sub message in render process
 
 
 ### css (5)
@@ -1586,54 +2429,34 @@
 - [space-radar](http://npm.im/space-radar) - Disk Usage Electron App
 
 
-### debug (5)
+### payment (5)
 
 
-- [debug-menu](http://npm.im/debug-menu) - Chrome-like "inspect element" context-menu
-- [denode](http://npm.im/denode) - Debug node apps like a pro
-- [electron-debug](http://npm.im/electron-debug) - Adds useful debug features to your Electron app
-- [electron-is-dev](http://npm.im/electron-is-dev) - Check if Electron is running in development
-- [silence-chromium](http://npm.im/silence-chromium) - Silence non-essential output from electron/chromium/etc.
+- [creditcardutils](http://npm.im/creditcardutils) - A general purpose javascript library for credit card number validation and formatting. Based on https://github.com/jondavidjohn/payform and https://github.com/stripe/jquery.payment. Usable in React Native and Node.
+- [fidor-kontoauszug](http://npm.im/fidor-kontoauszug) - ## About
+- [jquery.payment](http://npm.im/jquery.payment) - A general purpose library for building credit card forms, validating inputs and formatting numbers.
+- [kabelschland](http://npm.im/kabelschland) - ## About
+- [payform](http://npm.im/payform) - A general purpose library for building credit card forms, validating inputs, and formatting numbers.
 
 
-### configuration (5)
+### local (5)
 
 
-- [configurizer](http://npm.im/configurizer) - Simply load a config file from your projects root directory
-- [dota2-manta-config-engine-standalone](http://npm.im/dota2-manta-config-engine-standalone) - Allows you to customize your Dota 2 Autoexec on-the-fly.
-- [electron-config](http://npm.im/electron-config) - Simple config handling for your Electron app or module
-- [electron-json-config](http://npm.im/electron-json-config) - Simply set and get configuration from a json file for your Electron app
-- [snacks](http://npm.im/snacks) - Irken plugin exposing configuration options
+- [chotadb](http://npm.im/chotadb) - A wrapper over localStorage to provide MongoDB-like interface.
+- [chromeo](http://npm.im/chromeo) - experimental Node-Browser bridge
+- [hihat](http://npm.im/hihat) - local Node/Browser development with Chrome DevTools
+- [lowdb](http://npm.im/lowdb) - JSON database for Node and the browser powered by lodash API
+- [node-flat-db](http://npm.im/node-flat-db) - JSON database for Node and the browser powered by lodash
 
 
-### config (5)
+### minimal (5)
 
 
-- [configurizer](http://npm.im/configurizer) - Simply load a config file from your projects root directory
-- [electron-config](http://npm.im/electron-config) - Simple config handling for your Electron app or module
-- [electron-json-config](http://npm.im/electron-json-config) - Simply set and get configuration from a json file for your Electron app
-- [snacks](http://npm.im/snacks) - Irken plugin exposing configuration options
-- [teeny-conf](http://npm.im/teeny-conf) - A small npm package to handle config files in Node apps. Works fine with Electron and NW.js
-
-
-### command (5)
-
-
-- [commandant](http://npm.im/commandant) - A command line framework for node.js
-- [electron-sudo](http://npm.im/electron-sudo) - Electron subprocess with administrative privileges, prompting the user with an OS dialog if necessary.
-- [electron](http://npm.im/electron) - A simple command-line interface framework for node.js.
-- [grunt-electron-packager](http://npm.im/grunt-electron-packager) - Package Electron apps. Grunt task to create packages electron using electron-packager
-- [squish-squash](http://npm.im/squish-squash) - overrides a system or user command for for all child processes
-
-
-### save (5)
-
-
-- [chainbuilder-save](http://npm.im/chainbuilder-save) - Chainbuilder mixin for saving/restoring values.
-- [electron-canvas-to-buffer](http://npm.im/electron-canvas-to-buffer) - in Electron, turns a Canvas into a Buffer
-- [electron-config](http://npm.im/electron-config) - Simple config handling for your Electron app or module
-- [electron-context-menu](http://npm.im/electron-context-menu) - Context menu for your Electron app
-- [electron-json-config](http://npm.im/electron-json-config) - Simply set and get configuration from a json file for your Electron app
+- [choo](http://npm.im/choo) - A 5kb framework for creating sturdy frontend applications
+- [electron-lite](http://npm.im/electron-lite) - this package will dynamically download and install electron @ 1.1.3 from https://github.com/atom/electron/releases with zero npm-dependencies
+- [electron-markdownify](http://npm.im/electron-markdownify) - A minimalist Markdown Editor
+- [nedb-lite](http://npm.im/nedb-lite) - this package is a standalone, single-script version of nedb @ 1.8.0 that runs in both browser and nodejs, with zero npm-dependencies
+- [riot](http://npm.im/riot) - A React-like user interface micro-library
 
 
 ### standalone (5)
@@ -1646,6 +2469,16 @@
 - [vmd](http://npm.im/vmd) - vmd
 
 
+### console (5)
+
+
+- [black-screen](http://npm.im/black-screen) - A terminal emulator for the 21st century.
+- [cmjs-shell](http://npm.im/cmjs-shell) - Command shell based on CodeMirror.
+- [console-redirect](http://npm.im/console-redirect) - redirect console methods to streams
+- [forewarn](http://npm.im/forewarn) - Scoped and styled warning logger
+- [npm-gui](http://npm.im/npm-gui) - Graphic User Interface for NPM packages/tasks for front and back -end users.
+
+
 ### torrent (5)
 
 
@@ -1656,13 +2489,13 @@
 - [webtorrent](http://npm.im/webtorrent) - Streaming torrent client
 
 
-### p2p (5)
+### streaming (5)
 
 
-- [bittorrent-tracker](http://npm.im/bittorrent-tracker) - Simple, robust, BitTorrent tracker (client & server) implementation
-- [peer-exchange](http://npm.im/peer-exchange) - Decentralized peer discovery and signaling
-- [peerbot](http://npm.im/peerbot) - Message seeding utility for friends p2p chat.
-- [swarmbot](http://npm.im/swarmbot) - mirroring for a p2p mesh of swarmlogs
+- [bionode-waterwheel](http://npm.im/bionode-waterwheel) - Streaming workflow engine for bionformatics pipelines
+- [gl-pixel-stream](http://npm.im/gl-pixel-stream) - streaming gl.readPixels from an FBO
+- [webtorrent-hybrid-electron](http://npm.im/webtorrent-hybrid-electron) - Streaming torrent client with reliable WebRTC support for node.js
+- [webtorrent-hybrid](http://npm.im/webtorrent-hybrid) - Streaming torrent client
 - [webtorrent](http://npm.im/webtorrent) - Streaming torrent client
 
 
@@ -1676,44 +2509,54 @@
 - [resize-event](http://npm.im/resize-event) - Detect resize on an element without polling or iframes
 
 
-### documentation (5)
+### builder (5)
 
 
-- [awesome-electron](http://npm.im/awesome-electron) - Useful resources for creating apps with Electron
-- [electron-apis](http://npm.im/electron-apis) - A JSON object describing Electron's APIs
-- [electron-docs](http://npm.im/electron-docs) - Fetch Electron documentation as raw markdown strings
-- [lookerupper](http://npm.im/lookerupper) - Copy to your clipboard a package's name and use `CmdOrCtrl+Shift+L` to lookup its documentation on GitHub
-- [rest-api-doc-gui](http://npm.im/rest-api-doc-gui) - A GUI for creating REST API documentation Easily.
+- [beelzebub](http://npm.im/beelzebub) - One hell of a task master!
+- [electron-builder](http://npm.im/electron-builder) - Complete solution to build ready for distribution and 'auto update' Electron App installers
+- [electron-complete-builder](http://npm.im/electron-complete-builder) - Complete solution to build ready for distribution and 'auto update' Electron App installers
+- [grunt-electron-packager-builder](http://npm.im/grunt-electron-packager-builder) - Package Electron apps. Grunt task to electron-prebuilt , electron-packager and electron-builder.
+- [native-builder](http://npm.im/native-builder) - A utility to build native packages according to your engine in Node.js
 
 
-### terminal (5)
+### asar (5)
 
 
-- [atomic-terminal](http://npm.im/atomic-terminal) - A terminal powered by Electron
-- [black-screen](http://npm.im/black-screen) - A terminal emulator for the 21st century.
-- [console-redirect](http://npm.im/console-redirect) - redirect console methods to streams
-- [magnesium](http://npm.im/magnesium) - A terminal emulator based on Electron.
-- [nterm](http://npm.im/nterm) - A Node Terminal
+- [asar-archive](http://npm.im/asar-archive) - Small lib to read/write electron asar archives.
+- [asar-cli](http://npm.im/asar-cli) - CLI utility to read/write electron asar archives.
+- [asar-updater](http://npm.im/asar-updater) - Auto update asar file
+- [electron-is-running-in-asar](http://npm.im/electron-is-running-in-asar) - Check if the application is running from inside an asar package
+- [electron-patch-fs](http://npm.im/electron-patch-fs) - Monkey path electrons fs functions with the original ones
 
 
-### db (5)
+### angular (5)
 
 
-- [ankara](http://npm.im/ankara) - A database centered on connections
-- [nedb-lite](http://npm.im/nedb-lite) - this package is a standalone, single-script version of nedb @ 1.8.0 that runs in both browser and nodejs, with zero npm-dependencies
-- [ripdb](http://npm.im/ripdb) - JavaScript embeddable JSON time series database.
-- [selfup-rejs](http://npm.im/selfup-rejs) - Event based, key value store on the file system. Basic server side db in js for node developers. Geared towards NodeBots/IoT.
-- [swagger-lite](http://npm.im/swagger-lite) - this package will run a virtual swagger-ui server with persistent storage in the browser, that your webapp can use (in-place of a real backend)
+- [angular-electron](http://npm.im/angular-electron) - angularjs helpers for electron apps
+- [basel-cli](http://npm.im/basel-cli) - Client package for Basel
+- [electron-angular-boilerplate](http://npm.im/electron-angular-boilerplate) - A basic electron app using AngularJS and Skeleton CSS with ES6 support
+- [generator-electron-stack](http://npm.im/generator-electron-stack) - Scaffold out an Electron app boilerplate with Angular.js or React + Redux
+- [ng2-magic-forms](http://npm.im/ng2-magic-forms) - Inspired by <a href="https://github.com/formly-js/angular-formly">angular-formly</a>
 
 
-### file (5)
+### view (5)
 
 
 - [ampersand-file-drop-view](http://npm.im/ampersand-file-drop-view) - Drag-and-drop file view based on ampersand-view, and for use in ampersand-form-view
-- [dedupe-htmlguy](http://npm.im/dedupe-htmlguy) - File Deduplicator
-- [elchecksum](http://npm.im/elchecksum) - check electron's exe and app resources md5 validate
-- [electron-dl](http://npm.im/electron-dl) - Simplified file downloads for your Electron app
-- [jspm-caddy-hmr](http://npm.im/jspm-caddy-hmr) - jspm & caddy => HMR :)
+- [electron-tree-view](http://npm.im/electron-tree-view) - A tree viewer for Electron webviews with virtual dom.
+- [extract-streetview](http://npm.im/extract-streetview) - extract street view spherical images and depth information
+- [npm-gui](http://npm.im/npm-gui) - Graphic User Interface for NPM packages/tasks for front and back -end users.
+- [riot](http://npm.im/riot) - A React-like user interface micro-library
+
+
+### zip (5)
+
+
+- [adm-zip-electron](http://npm.im/adm-zip-electron) - Fork of a Javascript implementation of zip for nodejs with support for electron original-fs. Allows user to create or extract zip files both in memory or to/from disk
+- [electron-installer-zip](http://npm.im/electron-installer-zip) - Create a zip file with support for symlinks required by electron on osx.
+- [electron-zip-packager](http://npm.im/electron-zip-packager) - A wrapper of electron-packager. Package your electron app and zipped!
+- [nw-zip-builder](http://npm.im/nw-zip-builder) - nw.js builder wrapper
+- [pack-dir](http://npm.im/pack-dir) - Pack/unpack specified directory with native current OS command line tools.
 
 
 ### electron-component (5)
@@ -1726,15 +2569,6 @@
 - [is-electron-renderer](http://npm.im/is-electron-renderer) - Check if code is running in Electron renderer process.
 
 
-### webtorrent (4)
-
-
-- [webtorrent-desktop](http://npm.im/webtorrent-desktop) - WebTorrent, the streaming torrent client. For OS X, Windows, and Linux.
-- [webtorrent-hybrid-electron](http://npm.im/webtorrent-hybrid-electron) - Streaming torrent client with reliable WebRTC support for node.js
-- [webtorrent-hybrid](http://npm.im/webtorrent-hybrid) - Streaming torrent client
-- [webtorrent](http://npm.im/webtorrent) - Streaming torrent client
-
-
 ### AAC (4)
 
 
@@ -1744,13 +2578,31 @@
 - [uupaa.ts2aac.js](http://npm.im/uupaa.ts2aac.js) - Convert MPEG2-TS to AAC.
 
 
-### vue (4)
+### runner (4)
 
 
-- [tooling](http://npm.im/tooling) - One tooling, No setup.
-- [vbuild](http://npm.im/vbuild) - Preset build tool for Vue.js apps.
-- [velik](http://npm.im/velik) - Vue Electron Interface Kit
-- [vue-electron](http://npm.im/vue-electron) - The vue plugin that attaches electron APIs to the Vue object, making them accessable to all components.
+- [npm-gui](http://npm.im/npm-gui) - Graphic User Interface for NPM packages/tasks for front and back -end users.
+- [tape-run](http://npm.im/tape-run) - Headless tape test runner
+- [testron](http://npm.im/testron) - CI your client side tests with Electron
+- [yez](http://npm.im/yez) - Chrome extension which acts as task runner
+
+
+### player (4)
+
+
+- [myplayer](http://npm.im/myplayer) - Player for Music. Simple, clean and easy.
+- [ooz](http://npm.im/ooz) - A hackable music player.
+- [wcjs-player](http://npm.im/wcjs-player) - Player for WebChimera.js (libvlc wrapper)
+- [webchimera.js](http://npm.im/webchimera.js) - libvlc binding for node.js/io.js/NW.js/Electron
+
+
+### sensor (4)
+
+
+- [micro-app-graph-dashboard](http://npm.im/micro-app-graph-dashboard) - Dashboard to display graph data from sensors
+- [micro-app-home-alarm](http://npm.im/micro-app-home-alarm) - Alarm dashboard written in node
+- [micro-app-mqtt-x10-bridge](http://npm.im/micro-app-mqtt-x10-bridge) - mqtt to x10 bridge
+- [micro-app-remote-control](http://npm.im/micro-app-remote-control) - Remote control in node
 
 
 ### viewer (4)
@@ -1769,6 +2621,33 @@
 - [magnum-loader](http://npm.im/magnum-loader) - Plugin loader for the Magnum DI dependency injection framework.
 - [magnum-plugin-utils](http://npm.im/magnum-plugin-utils) - Utility functions to simplify Pomegranate plugin development.
 - [pomegranate](http://npm.im/pomegranate) - Super flexible whitebox web application framework
+
+
+### list (4)
+
+
+- [made-in-brazil](http://npm.im/made-in-brazil) - A list of neat projects made in Brazil.
+- [made-in-india](http://npm.im/made-in-india) - A list of neat projects made in India.
+- [made-in-romania](http://npm.im/made-in-romania) - A list of cool projects made in Romania.
+- [youtube-video-api](http://npm.im/youtube-video-api) - Straightforward programmatic and command-line interface for YouTube Videos using Google API v3
+
+
+### embed (4)
+
+
+- [lowdb](http://npm.im/lowdb) - JSON database for Node and the browser powered by lodash API
+- [nedb-lite](http://npm.im/nedb-lite) - this package is a standalone, single-script version of nedb @ 1.8.0 that runs in both browser and nodejs, with zero npm-dependencies
+- [node-flat-db](http://npm.im/node-flat-db) - JSON database for Node and the browser powered by lodash
+- [ripdb](http://npm.im/ripdb) - JavaScript embeddable JSON time series database.
+
+
+### of (4)
+
+
+- [league-companion](http://npm.im/league-companion) - A companion application for League of Legends built in Electron for Windows/Mac
+- [made-in-brazil](http://npm.im/made-in-brazil) - A list of neat projects made in Brazil.
+- [made-in-india](http://npm.im/made-in-india) - A list of neat projects made in India.
+- [made-in-romania](http://npm.im/made-in-romania) - A list of cool projects made in Romania.
 
 
 ### karma-plugin (4)
@@ -1798,6 +2677,24 @@
 - [virtual-progress-bar](http://npm.im/virtual-progress-bar) - virtual-dom progress bar component
 
 
+### event (4)
+
+
+- [henderson](http://npm.im/henderson) - A tiny event emitter-based finite state machine with promises
+- [nightmare-navigation-lock](http://npm.im/nightmare-navigation-lock) - Lock navigation in NightmareJS
+- [pastafarian](http://npm.im/pastafarian) - A tiny event emitter-based finite state machine
+- [resize-event](http://npm.im/resize-event) - Detect resize on an element without polling or iframes
+
+
+### mongodb-js (4)
+
+
+- [hadron-events](http://npm.im/hadron-events) - Hadron Events
+- [hadron-test-utils](http://npm.im/hadron-test-utils) - Hadron Test Utils
+- [mongodb-test-utils](http://npm.im/mongodb-test-utils) - MongoDB Test Utils
+- [storage-mixin](http://npm.im/storage-mixin) - Ampersand model mixin to persist data via various storage backends
+
+
 ### apps (4)
 
 
@@ -1816,31 +2713,31 @@
 - [vulcan-ui](http://npm.im/vulcan-ui) - Node build tool for npm, gulp, grunt
 
 
-### music (4)
+### vlc (4)
 
 
-- [google-music-electron](http://npm.im/google-music-electron) - Desktop app for Google Music on top of Electron
-- [myplayer](http://npm.im/myplayer) - Player for Music. Simple, clean and easy.
-- [ooz](http://npm.im/ooz) - A hackable music player.
-- [osc-electron](http://npm.im/osc-electron) - A JavaScript Open Sound Control (OSC) library that works in Node.js and the browser.
+- [grunt-download-wcjs](http://npm.im/grunt-download-wcjs) - Grunt task to download pre-built WebChimera.js for Electron & NW.JS.
+- [wcjs-player](http://npm.im/wcjs-player) - Player for WebChimera.js (libvlc wrapper)
+- [wcjs-prebuilt](http://npm.im/wcjs-prebuilt) - Install WebChimera.js pre-built binaries via npm
+- [webchimera.js](http://npm.im/webchimera.js) - libvlc binding for node.js/io.js/NW.js/Electron
 
 
-### login (4)
+### tcp (4)
 
 
-- [gitkit-widgets](http://npm.im/gitkit-widgets) - Convenience library for initializing Google Identity Toolkit widgets
-- [oauth-electron-facebook](http://npm.im/oauth-electron-facebook) - oauth for facebook inside electron
-- [oauth-electron-twitter](http://npm.im/oauth-electron-twitter) - oauth for twitter inside electron
-- [oauth-electron](http://npm.im/oauth-electron) - easy oauth generic handling for electron
-
-
-### flash (4)
-
-
-- [flash-player-loader](http://npm.im/flash-player-loader) - Makes life easier for the electron apps which need the pepper flash player.
 - [gordon-client](http://npm.im/gordon-client) - Multiplayer Server for NodeJS
 - [gordon-examples](http://npm.im/gordon-examples) - Examples for the Gordon server
 - [gordon-server](http://npm.im/gordon-server) - Multiplayer Server for NodeJS, HTML5 and Adobe Flash/Air
+- [open-ssh-tunnel](http://npm.im/open-ssh-tunnel) - Easy ssh2 tunneling
+
+
+### gl (4)
+
+
+- [gl-pixel-stream](http://npm.im/gl-pixel-stream) - streaming gl.readPixels from an FBO
+- [gl](http://npm.im/gl) - Creates a WebGL context without a window
+- [preview-dds](http://npm.im/preview-dds) - preview and save DDS textures from the command line
+- [shadertoy-export](http://npm.im/shadertoy-export) - render ShaderToy demos to PNG
 
 
 ### nwjs (4)
@@ -1852,49 +2749,58 @@
 - [shell-path](http://npm.im/shell-path) - Get the $PATH from the shell
 
 
-### dom (4)
+### js (4)
 
 
-- [electron-tree-view](http://npm.im/electron-tree-view) - A tree viewer for Electron webviews with virtual dom.
-- [matchbox-dom](http://npm.im/matchbox-dom) - Matchbox View and dom library
-- [on-load](http://npm.im/on-load) - On load/unload events for DOM elements using a MutationObserver
-- [virtual-progress-bar](http://npm.im/virtual-progress-bar) - virtual-dom progress bar component
+- [electron-weak](http://npm.im/electron-weak) - This is a fork of the node-weak project, adding electron builds and binaries.
+- [os.js](http://npm.im/os.js) - Very stupid detection of OS
+- [selfup-rejs](http://npm.im/selfup-rejs) - Event based, key value store on the file system. Basic server side db in js for node developers. Geared towards NodeBots/IoT.
+- [web-window](http://npm.im/web-window) - A wrapper of BrowserWindow from Electron, for easy CSS / JS Injection.
 
 
-### twitter (4)
+### text (4)
 
 
-- [electron-oauth-twitter](http://npm.im/electron-oauth-twitter) - Twitter OAuth Window library.
-- [electron-twitter](http://npm.im/electron-twitter) - Tutorial / Hello world style application on top of Electron to give it a good spin
-- [koteky-twitter](http://npm.im/koteky-twitter) - twitter plugin for the koteky
-- [oauth-electron-twitter](http://npm.im/oauth-electron-twitter) - oauth for twitter inside electron
+- [electron-text-substitutions](http://npm.im/electron-text-substitutions) - Substitute text in an input field based on OS X System Preferences
+- [mingalaba](http://npm.im/mingalaba) - Unicode strings text editor for developers
+- [novel-js](http://npm.im/novel-js) - A lightweight JavaScript text game engine
+- [says](http://npm.im/says) - cross-platform 'say' command using Electron
 
 
-### toaster (4)
+### tape (4)
 
 
-- [electron-notification-shim](http://npm.im/electron-notification-shim) - Get Notification API events in Electron main-process. Perfect for adding Notification toasters in Windows with node-notifier or other solution.
-- [electron-notifications](http://npm.im/electron-notifications) - A node module for sending notifications in electron applications
-- [electron-notifier](http://npm.im/electron-notifier) - Add cross-platform notifications to Electron apps.
-- [electron-toaster](http://npm.im/electron-toaster) - A simple toaster for electron
+- [electron-tap](http://npm.im/electron-tap) - Electron test runner for Tape
+- [electron-tape](http://npm.im/electron-tape) - Tape testing harness for electron apps
+- [tape-run](http://npm.im/tape-run) - Headless tape test runner
+- [taped-electron](http://npm.im/taped-electron) - Run tape tests inside electron
 
 
-### notify (4)
+### key (4)
 
 
-- [electron-notification-shim](http://npm.im/electron-notification-shim) - Get Notification API events in Electron main-process. Perfect for adding Notification toasters in Windows with node-notifier or other solution.
-- [electron-notifications](http://npm.im/electron-notifications) - A node module for sending notifications in electron applications
-- [electron-notifier](http://npm.im/electron-notifier) - Add cross-platform notifications to Electron apps.
-- [electron-toaster](http://npm.im/electron-toaster) - A simple toaster for electron
+- [electron-shortcut-normalizer](http://npm.im/electron-shortcut-normalizer) - Normalize electron keyboard shortcuts so they work on different operating systems
+- [selfup-rejs](http://npm.im/selfup-rejs) - Event based, key value store on the file system. Basic server side db in js for node developers. Geared towards NodeBots/IoT.
+- [tweetnacl-rn](http://npm.im/tweetnacl-rn) - Port of TweetNaCl cryptographic library to JavaScript
+- [tweetnacl](http://npm.im/tweetnacl) - Port of TweetNaCl cryptographic library to JavaScript
 
 
-### notification (4)
+### http (4)
 
 
-- [electron-notification-shim](http://npm.im/electron-notification-shim) - Get Notification API events in Electron main-process. Perfect for adding Notification toasters in Windows with node-notifier or other solution.
-- [electron-notifications](http://npm.im/electron-notifications) - A node module for sending notifications in electron applications
-- [electron-notifier](http://npm.im/electron-notifier) - Add cross-platform notifications to Electron apps.
-- [elnotifier](http://npm.im/elnotifier) - electron notification
+- [electron-proxy-agent](http://npm.im/electron-proxy-agent) - NodeJS http(s).Agent implementation for electron shell
+- [httpjs](http://npm.im/httpjs) - A simple HTTP server
+- [popsicle](http://npm.im/popsicle) - Simple HTTP requests for node and the browser
+- [sundry](http://npm.im/sundry) - A dynamically configurable, load balancing, reverse proxy.
+
+
+### fs (4)
+
+
+- [electron-patch-fs](http://npm.im/electron-patch-fs) - Monkey path electrons fs functions with the original ones
+- [frylord](http://npm.im/frylord) - Irken plugin exposing workspaces
+- [fs-access](http://npm.im/fs-access) - Node.js 0.12 fs.access() & fs.accessSync() ponyfill
+- [jspm-caddy-hmr](http://npm.im/jspm-caddy-hmr) - jspm & caddy => HMR :)
 
 
 ### electron-tool (4)
@@ -1915,13 +2821,22 @@
 - [mochatron](http://npm.im/mochatron) - mocha testing in electron
 
 
-### user (4)
+### screen (4)
 
 
-- [electron-json-storage](http://npm.im/electron-json-storage) - Easily write and read user settings in Electron apps
-- [electron-settings](http://npm.im/electron-settings) - User settings manager for Electron
-- [react-desktop](http://npm.im/react-desktop) - React UI Components for macOS Sierra and Windows 10
-- [snacks](http://npm.im/snacks) - Irken plugin exposing configuration options
+- [electron-lite](http://npm.im/electron-lite) - this package will dynamically download and install electron @ 1.1.3 from https://github.com/atom/electron/releases with zero npm-dependencies
+- [electron-prebuilt-lite](http://npm.im/electron-prebuilt-lite) - lightweight version of electron-prebuilt with zero npm-dependencies
+- [electron-screen](http://npm.im/electron-screen) - Small Module that returns an array with all the monitors connected to the pc with their resolution and position.
+- [robotjs](http://npm.im/robotjs) - Node.js Desktop Automation.
+
+
+### lightweight (4)
+
+
+- [electron-lite](http://npm.im/electron-lite) - this package will dynamically download and install electron @ 1.1.3 from https://github.com/atom/electron/releases with zero npm-dependencies
+- [nedb-lite](http://npm.im/nedb-lite) - this package is a standalone, single-script version of nedb @ 1.8.0 that runs in both browser and nodejs, with zero npm-dependencies
+- [nimble-elements](http://npm.im/nimble-elements) - Lightweight Web Application Framework - 2015.11.02
+- [swagger-lite](http://npm.im/swagger-lite) - this package will run a virtual swagger-ui server with persistent storage in the browser, that your webapp can use (in-place of a real backend)
 
 
 ### renderer (4)
@@ -1942,6 +2857,15 @@
 - [gulp-download-electron](http://npm.im/gulp-download-electron) - gulp plugin to download electron
 
 
+### check (4)
+
+
+- [electron-editor-context-menu](http://npm.im/electron-editor-context-menu) - Enable the native right-click menu in Electron.
+- [electron-is-dev](http://npm.im/electron-is-dev) - Check if Electron is running in development
+- [fs-access](http://npm.im/fs-access) - Node.js 0.12 fs.access() & fs.accessSync() ponyfill
+- [is2](http://npm.im/is2) - A type checking library where each exported function returns either true or false and does not throw. Also added tests.
+
+
 ### jpeg (4)
 
 
@@ -1960,40 +2884,31 @@
 - [preview-dds](http://npm.im/preview-dds) - preview and save DDS textures from the command line
 
 
-### png (4)
-
-
-- [electron-canvas-to-buffer](http://npm.im/electron-canvas-to-buffer) - in Electron, turns a Canvas into a Buffer
-- [electron-image-resize](http://npm.im/electron-image-resize) - Resize images using Electron. Supports all image types that Chromium/Electron supports, outputs to png, jpeg, dataUrl or NativeImage.
-- [electron-render-service](http://npm.im/electron-render-service) - Microservice for rendering PDF/PNG/JPEG from HTML with Electron
-- [preview-dds](http://npm.im/preview-dds) - preview and save DDS textures from the command line
-
-
-### buffer (4)
-
-
-- [electron-canvas-to-buffer](http://npm.im/electron-canvas-to-buffer) - in Electron, turns a Canvas into a Buffer
-- [electron-ref](http://npm.im/electron-ref) - This is a fork of the ref project, adding electron build support and binaries
-- [hexdump-js](http://npm.im/hexdump-js) - Hexdump an ArrayBuffer to a String
-- [hexdump-nodejs](http://npm.im/hexdump-nodejs) - Hexdump an ArrayBuffer to a String (NodeJS)
-
-
-### dmg (4)
+### pack (4)
 
 
 - [electron-builder](http://npm.im/electron-builder) - Complete solution to build ready for distribution and 'auto update' Electron App installers
 - [electron-complete-builder](http://npm.im/electron-complete-builder) - Complete solution to build ready for distribution and 'auto update' Electron App installers
-- [electron-installer-dmg](http://npm.im/electron-installer-dmg) - Create DMG installers for your electron apps.
 - [grunt-electron-packager-builder](http://npm.im/grunt-electron-packager-builder) - Package Electron apps. Grunt task to electron-prebuilt , electron-packager and electron-builder.
+- [pack-dir](http://npm.im/pack-dir) - Pack/unpack specified directory with native current OS command line tools.
 
 
-### update (4)
+### schema (4)
 
 
-- [electron-asar-updater](http://npm.im/electron-asar-updater) - Handles Electron app.asar updates.
-- [electron-basic-updater](http://npm.im/electron-basic-updater) - Handles Electron application updates, IN THE MOST BASIC WAY.
-- [electron-gh-releases-updater](http://npm.im/electron-gh-releases-updater) - Updates an app based on GH Electron from GH releases.
-- [elupdater](http://npm.im/elupdater) - run in main process to update frame and app
+- [electron-apis](http://npm.im/electron-apis) - A JSON object describing Electron's APIs
+- [electron-docs-linter](http://npm.im/electron-docs-linter) - A JSON object describing Electron's APIs
+- [electron-docs](http://npm.im/electron-docs) - Fetch Electron documentation as raw markdown strings
+- [swagger-ui-lite](http://npm.im/swagger-ui-lite) - minimal npm installer for swagger-ui asset files with zero npm-dependencies
+
+
+### adventure (4)
+
+
+- [electron-adventure](http://npm.im/electron-adventure) -  Learn the basic of Electron (formerly atom-shell) with this educational workshop
+- [electron-noveljs-boilerplate](http://npm.im/electron-noveljs-boilerplate) - Create standalone Novel.js adventures!
+- [elementary-electron](http://npm.im/elementary-electron) - nodeschool workshop to learn electron
+- [novel-js](http://npm.im/novel-js) - A lightweight JavaScript text game engine
 
 
 ### squirrel.windows (4)
@@ -2005,31 +2920,58 @@
 - [electron-squirrel-windows-installer](http://npm.im/electron-squirrel-windows-installer) - Generate Windows installers for Electron apps using Squirrel.
 
 
-### websocket (4)
+### directory (4)
 
 
-- [dhtmlx-desktop-chat](http://npm.im/dhtmlx-desktop-chat) - Just a simple desktop chat built using DHTMLX on client and Node.js (Express + ws) && Redis on back end
-- [gordon-client](http://npm.im/gordon-client) - Multiplayer Server for NodeJS
-- [gordon-examples](http://npm.im/gordon-examples) - Examples for the Gordon server
-- [gordon-server](http://npm.im/gordon-server) - Multiplayer Server for NodeJS, HTML5 and Adobe Flash/Air
+- [elchecksum](http://npm.im/elchecksum) - check electron's exe and app resources md5 validate
+- [pack-dir](http://npm.im/pack-dir) - Pack/unpack specified directory with native current OS command line tools.
+- [windows-fs](http://npm.im/windows-fs) - Windows utilities when working with the file system
+- [windows-watcher](http://npm.im/windows-watcher) - Node.js directory watcher built with the native windows FileSystemWatcher
 
 
-### es6 (4)
+### crypto (4)
 
 
-- [deck.gl](http://npm.im/deck.gl) - A suite of 3D-enabled data visualization overlays, suitable for react-map-gl
-- [ionic-brunch-es6-seed](http://npm.im/ionic-brunch-es6-seed) - An Ionic starter project with Babel and Brunch
-- [selfup-rejs](http://npm.im/selfup-rejs) - Event based, key value store on the file system. Basic server side db in js for node developers. Geared towards NodeBots/IoT.
-- [uupaa.es.js](http://npm.im/uupaa.es.js) - [![npm](https://nodei.co/npm/uupaa.es.js.svg?downloads=true&stars=true)](https://nodei.co/npm/uupaa.es.js/)
+- [ecdsa](http://npm.im/ecdsa) - Elliptic Curve Cryptography Digital Signing
+- [peerbot](http://npm.im/peerbot) - Message seeding utility for friends p2p chat.
+- [tweetnacl-rn](http://npm.im/tweetnacl-rn) - Port of TweetNaCl cryptographic library to JavaScript
+- [tweetnacl](http://npm.im/tweetnacl) - Port of TweetNaCl cryptographic library to JavaScript
 
 
-### require (4)
+### bot (4)
 
 
-- [css-modules-electron](http://npm.im/css-modules-electron) - A require hook to compile and use CSS modules in Electron.
-- [electron-require](http://npm.im/electron-require) - Simplified require in electron applications
-- [karma-electronrequire-preprocessor](http://npm.im/karma-electronrequire-preprocessor) - karma electron require
-- [nw-requirejs](http://npm.im/nw-requirejs) - Node JS : Load node module in RequireJS
+- [discord-bot-github](http://npm.im/discord-bot-github) - A bot for discord which consumes the GitHub API and gives you updates.
+- [node-tg-bot](http://npm.im/node-tg-bot) - Node Telegram Bot Api Interface
+- [peerbot](http://npm.im/peerbot) - Message seeding utility for friends p2p chat.
+- [wxbot](http://npm.im/wxbot) - 普通个人号 微信机器人/外挂
+
+
+### devdocs (4)
+
+
+- [devdocs-native](http://npm.im/devdocs-native) - A native API Documentation Browser based on Devdocs & Electron
+- [devdogs](http://npm.im/devdogs) - DevdoGs, Unofficial Devdocs app for Mac
+- [elaunch-plugin-devdocs](http://npm.im/elaunch-plugin-devdocs) - devdocs.io plugin for ELaunch
+- [electron-plugin-devdocs](http://npm.im/electron-plugin-devdocs) - devdocs.io plugin for ELaunch
+
+
+### extension (4)
+
+
+- [crossbuilder](http://npm.im/crossbuilder) - Building web, Electron and Chrome apps, and cross-browser extensions with React, Redux and Webpack. 'Write once, build everywhere' concept in practice.
+- [remotedev-extension](http://npm.im/remotedev-extension) - Use Redux DevTools in the Browser/Electron DevTools
+- [rtc-screenshare](http://npm.im/rtc-screenshare) - WebRTC Screensharing Chrome Extension 
+- [yez](http://npm.im/yez) - Chrome extension which acts as task runner
+
+
+### flux (4)
+
+
+- [crossbuilder](http://npm.im/crossbuilder) - Building web, Electron and Chrome apps, and cross-browser extensions with React, Redux and Webpack. 'Write once, build everywhere' concept in practice.
+- [electron-react-boilerplate](http://npm.im/electron-react-boilerplate) - Electron application boilerplate based on React, React Router, Webpack, React Hot Loader for rapid application development
+- [remote-redux-devtools](http://npm.im/remote-redux-devtools) - Relay Redux actions to remote Redux DevTools.
+- [remotedev](http://npm.im/remotedev) - Remote debugging for any flux implementation.
 
 
 ### hot (4)
@@ -2041,6 +2983,33 @@
 - [hihat](http://npm.im/hihat) - local Node/Browser development with Chrome DevTools
 
 
+### card (4)
+
+
+- [creditcardutils](http://npm.im/creditcardutils) - A general purpose javascript library for credit card number validation and formatting. Based on https://github.com/jondavidjohn/payform and https://github.com/stripe/jquery.payment. Usable in React Native and Node.
+- [is2](http://npm.im/is2) - A type checking library where each exported function returns either true or false and does not throw. Also added tests.
+- [jquery.payment](http://npm.im/jquery.payment) - A general purpose library for building credit card forms, validating inputs and formatting numbers.
+- [payform](http://npm.im/payform) - A general purpose library for building credit card forms, validating inputs, and formatting numbers.
+
+
+### validation (4)
+
+
+- [creditcards-types](http://npm.im/creditcards-types) - Card type definitions and methods for creditcards
+- [creditcardutils](http://npm.im/creditcardutils) - A general purpose javascript library for credit card number validation and formatting. Based on https://github.com/jondavidjohn/payform and https://github.com/stripe/jquery.payment. Usable in React Native and Node.
+- [is2](http://npm.im/is2) - A type checking library where each exported function returns either true or false and does not throw. Also added tests.
+- [payform](http://npm.im/payform) - A general purpose library for building credit card forms, validating inputs, and formatting numbers.
+
+
+### cordova (4)
+
+
+- [cordova-plugin-qrscanner](http://npm.im/cordova-plugin-qrscanner) - Cordova QR Scanner Plugin
+- [holon](http://npm.im/holon) - Leight-weight DSL-free dual-side composable reactive components
+- [ionic-brunch-es6-seed](http://npm.im/ionic-brunch-es6-seed) - An Ionic starter project with Babel and Brunch
+- [nixie](http://npm.im/nixie) - Coming soon!
+
+
 ### err (4)
 
 
@@ -2049,12 +3018,22 @@
 - [strip-chromium-logs](http://npm.im/strip-chromium-logs) - strips chromium logs from a stream
 
 
-### parser (4)
+### conf (4)
 
 
-- [commandant](http://npm.im/commandant) - A command line framework for node.js
-- [electron](http://npm.im/electron) - A simple command-line interface framework for node.js.
-- [graviton](http://npm.im/graviton) - Headless browser for web testing, scrapping
+- [conf](http://npm.im/conf) - Simple config handling for your app or module
+- [electron-config](http://npm.im/electron-config) - Simple config handling for your Electron app or module
+- [electron-json-config](http://npm.im/electron-json-config) - Simply set and get configuration from a json file for your Electron app
+- [teeny-conf](http://npm.im/teeny-conf) - A small npm package to handle config files in Node apps. Works fine with Electron and NW.js
+
+
+### c++ (4)
+
+
+- [cmake-js](http://npm.im/cmake-js) - CMake.js - a Node.js/io.js native addon build tool
+- [electron-ref-struct](http://npm.im/electron-ref-struct) - This is a fork of the ref-struct project, adding electron build and binary support
+- [electron-ref](http://npm.im/electron-ref) - This is a fork of the ref project, adding electron build support and binaries
+- [node-pre-gyp](http://npm.im/node-pre-gyp) - Node.js native addon binary install tool
 
 
 ### error (4)
@@ -2084,13 +3063,13 @@
 - [error-tracker-client](http://npm.im/error-tracker-client) - Error tracker client
 
 
-### module (4)
+### request (4)
 
 
-- [chainbuilder](http://npm.im/chainbuilder) - Construct a chainable library from a set of async functions.
-- [cmake-js](http://npm.im/cmake-js) - CMake.js - a Node.js/io.js native addon build tool
-- [holon](http://npm.im/holon) - Leight-weight DSL-free dual-side composable reactive components
-- [jspm-caddy-hmr](http://npm.im/jspm-caddy-hmr) - jspm & caddy => HMR :)
+- [chainbuilder-request](http://npm.im/chainbuilder-request) - Request mixin for chainbuilder.
+- [electron-ipc-responder](http://npm.im/electron-ipc-responder) - A simple request/response based communication protocol for Electrons IPC functionality
+- [electron-proxy-agent](http://npm.im/electron-proxy-agent) - NodeJS http(s).Agent implementation for electron shell
+- [popsicle](http://npm.im/popsicle) - Simple HTTP requests for node and the browser
 
 
 ### multiplayer (4)
@@ -2111,6 +3090,15 @@
 - [webtorrent](http://npm.im/webtorrent) - Streaming torrent client
 
 
+### bitcoin (4)
+
+
+- [bitcoin-net](http://npm.im/bitcoin-net) - Bitcoin P2P networking tht works in Node and the browser
+- [ecdsa](http://npm.im/ecdsa) - Elliptic Curve Cryptography Digital Signing
+- [exandria](http://npm.im/exandria) - A decentralized file sharing system that includes search
+- [format-currency](http://npm.im/format-currency) - Format strings or numbers to currency strings.
+
+
 ### virtual-dom (4)
 
 
@@ -2120,60 +3108,106 @@
 - [virtual-loading-dots](http://npm.im/virtual-loading-dots) - Virtual-dom loading dots component
 
 
-### plugin (4)
+### task (4)
 
 
-- [babel-preset-electron](http://npm.im/babel-preset-electron) - Babel preset with all plugins for Electron.
-- [chronoswe](http://npm.im/chronoswe) - A dashboard extensibile with plugin
-- [electron-connect-webpack-plugin](http://npm.im/electron-connect-webpack-plugin) - electron-connect integration for webpack.
-- [gulp-run-electron](http://npm.im/gulp-run-electron) - Gulp plugin for starting Electron.
-
-
-### reference (4)
-
-
-- [awesome-electron](http://npm.im/awesome-electron) - Useful resources for creating apps with Electron
-- [electron-docs](http://npm.im/electron-docs) - Fetch Electron documentation as raw markdown strings
-- [electron-ref](http://npm.im/electron-ref) - This is a fork of the ref project, adding electron build support and binaries
-- [electron-weak](http://npm.im/electron-weak) - This is a fork of the node-weak project, adding electron builds and binaries.
-
-
-### asar (4)
-
-
-- [asar-archive](http://npm.im/asar-archive) - Small lib to read/write electron asar archives.
-- [asar-cli](http://npm.im/asar-cli) - CLI utility to read/write electron asar archives.
-- [electron-is-running-in-asar](http://npm.im/electron-is-running-in-asar) - Check if the application is running from inside an asar package
-- [electron-patch-fs](http://npm.im/electron-patch-fs) - Monkey path electrons fs functions with the original ones
-
-
-### angular (4)
-
-
-- [angular-electron](http://npm.im/angular-electron) - angularjs helpers for electron apps
-- [basel-cli](http://npm.im/basel-cli) - Client package for Basel
-- [electron-angular-boilerplate](http://npm.im/electron-angular-boilerplate) - A basic electron app using AngularJS and Skeleton CSS with ES6 support
-- [generator-electron-stack](http://npm.im/generator-electron-stack) - Scaffold out an Electron app boilerplate with Angular.js or React + Redux
-
-
-### view (4)
-
-
-- [ampersand-file-drop-view](http://npm.im/ampersand-file-drop-view) - Drag-and-drop file view based on ampersand-view, and for use in ampersand-form-view
-- [electron-tree-view](http://npm.im/electron-tree-view) - A tree viewer for Electron webviews with virtual dom.
-- [extract-streetview](http://npm.im/extract-streetview) - extract street view spherical images and depth information
+- [beelzebub](http://npm.im/beelzebub) - One hell of a task master!
 - [npm-gui](http://npm.im/npm-gui) - Graphic User Interface for NPM packages/tasks for front and back -end users.
+- [uupaa.task.js](http://npm.im/uupaa.task.js) - Counter based task executor.
+- [yez](http://npm.im/yez) - Chrome extension which acts as task runner
+
+
+### es7 (4)
+
+
+- [babel-jsxgettext](http://npm.im/babel-jsxgettext) - A tool like jsxgettext, but works for es6 + jsx that babel support
+- [norme](http://npm.im/norme) - Opinionated JavaScript linter
+- [selfup-rejs](http://npm.im/selfup-rejs) - Event based, key value store on the file system. Basic server side db in js for node developers. Geared towards NodeBots/IoT.
+- [uupaa.es.js](http://npm.im/uupaa.es.js) - [![npm](https://nodei.co/npm/uupaa.es.js.svg?downloads=true&stars=true)](https://nodei.co/npm/uupaa.es.js/)
+
+
+### components (4)
+
+
+- [awesome-webcomponents](http://npm.im/awesome-webcomponents) - awesome native js web components
+- [holon](http://npm.im/holon) - Leight-weight DSL-free dual-side composable reactive components
+- [ngn-chassis-components](http://npm.im/ngn-chassis-components) - NGN Chassis Web Components
+- [websemble](http://npm.im/websemble) - Desktop application framework based on web technology.
+
+
+### AudioBuffer (4)
+
+
+- [audio-buffer-range-decoder](http://npm.im/audio-buffer-range-decoder) - Decode specified ranges of wave file on disk to AudioBuffers.
+- [audio-buffer-stream](http://npm.im/audio-buffer-stream) - Get a PCM stream from input AudioBuffers (Web Audio API). Can be used to implement a streaming audio recorder.
+- [audiobuffer-to-wav](http://npm.im/audiobuffer-to-wav) - convert an AudioBuffer to .wav format
+- [observ-fs-audio-buffer](http://npm.im/observ-fs-audio-buffer) - Observable AudioBuffer for use with fs.
+
+
+### version (4)
+
+
+- [asv](http://npm.im/asv) - electron / atom-shell version management
+- [electron-version](http://npm.im/electron-version) - utility function for getting electron version string
+- [evm](http://npm.im/evm) - [Deprecated] Electron Version Manager
+- [os.js](http://npm.im/os.js) - Very stupid detection of OS
+
+
+### modules (4)
+
+
+- [app-root-path](http://npm.im/app-root-path) - Determine an app's root path from anywhere inside the app
+- [eslint-plugin-import](http://npm.im/eslint-plugin-import) - Import with sanity.
+- [nx-app-root-path](http://npm.im/nx-app-root-path) - Determine an app's root path from anywhere inside the app
+- [removeNPMAbsolutePaths](http://npm.im/removeNPMAbsolutePaths) - Remove the fields containing local aboslute paths created by NPM
+
+
+### utility (4)
+
+
+- [app-root-path](http://npm.im/app-root-path) - Determine an app's root path from anywhere inside the app
+- [chainbuilder](http://npm.im/chainbuilder) - Construct a chainable library from a set of async functions.
+- [nx-app-root-path](http://npm.im/nx-app-root-path) - Determine an app's root path from anywhere inside the app
+- [pack-dir](http://npm.im/pack-dir) - Pack/unpack specified directory with native current OS command line tools.
+
+
+### parsing (4)
+
+
+- [anitomy-node](http://npm.im/anitomy-node) - Anitomy on Node
+- [graviton](http://npm.im/graviton) - Headless browser for web testing, scrapping
+- [yargs-cn](http://npm.im/yargs-cn) - Light-weight option parsing with an argv hash. No optstrings attached.
+- [yargs](http://npm.im/yargs) - yargs the modern, pirate-themed, successor to optimist.
+
+
+### interface (4)
+
+
+- [admin-mongo](http://npm.im/admin-mongo) - A Web user interface to administer MongoDB databases built using Express
+- [react-desktop](http://npm.im/react-desktop) - React UI Components for macOS Sierra and Windows 10
+- [relik](http://npm.im/relik) - React Electron Interface Kit
+- [velik](http://npm.im/velik) - Vue Electron Interface Kit
+
+
+### manager (4)
+
+
+- [admin-mongo](http://npm.im/admin-mongo) - A Web user interface to administer MongoDB databases built using Express
+- [electron-settings](http://npm.im/electron-settings) - User settings manager for Electron
+- [evm](http://npm.im/evm) - [Deprecated] Electron Version Manager
+- [typings](http://npm.im/typings) - The TypeScript Definition Manager
+
+
+### mongodb (4)
+
+
+- [admin-mongo](http://npm.im/admin-mongo) - A Web user interface to administer MongoDB databases built using Express
+- [mongodb-redact](http://npm.im/mongodb-redact) - Remove potentially sensitive information from objects without changing the shape.
+- [nedb-lite](http://npm.im/nedb-lite) - this package is a standalone, single-script version of nedb @ 1.8.0 that runs in both browser and nodejs, with zero npm-dependencies
+- [swagger-lite](http://npm.im/swagger-lite) - this package will run a virtual swagger-ui server with persistent storage in the browser, that your webapp can use (in-place of a real backend)
 
 
 ### webrtc data (3)
-
-
-- [webtorrent-hybrid-electron](http://npm.im/webtorrent-hybrid-electron) - Streaming torrent client with reliable WebRTC support for node.js
-- [webtorrent-hybrid](http://npm.im/webtorrent-hybrid) - Streaming torrent client
-- [webtorrent](http://npm.im/webtorrent) - Streaming torrent client
-
-
-### streaming (3)
 
 
 - [webtorrent-hybrid-electron](http://npm.im/webtorrent-hybrid-electron) - Streaming torrent client with reliable WebRTC support for node.js
@@ -2189,20 +3223,20 @@
 - [webtorrent](http://npm.im/webtorrent) - Streaming torrent client
 
 
+### video (3)
+
+
+- [wcjs-player](http://npm.im/wcjs-player) - Player for WebChimera.js (libvlc wrapper)
+- [webchimera.js](http://npm.im/webchimera.js) - libvlc binding for node.js/io.js/NW.js/Electron
+- [youtube-video-api](http://npm.im/youtube-video-api) - Straightforward programmatic and command-line interface for YouTube Videos using Google API v3
+
+
 ### WebAudio (3)
 
 
 - [uupaa.audioclock.js](http://npm.im/uupaa.audioclock.js) - WebAudio based high precision timer.
 - [uupaa.clicktoplay.js](http://npm.im/uupaa.clicktoplay.js) - Management of the Click-To-Play resources.
 - [uupaa.webaudio.js](http://npm.im/uupaa.webaudio.js) - Create new WebAudio context.
-
-
-### git (3)
-
-
-- [stylish-commit-auto-hook-install](http://npm.im/stylish-commit-auto-hook-install) - Automatically install git pre-commit hooks for stylish-commit.
-- [stylish-commit](http://npm.im/stylish-commit) - Check staged changes with style scripts before commiting with git.
-- [viewdiff](http://npm.im/viewdiff) - View your diffs a separate window.
 
 
 ### tsd-ambient (3)
@@ -2229,44 +3263,28 @@
 - [retyped-github-electron-tsd-ambient](http://npm.im/retyped-github-electron-tsd-ambient) - TypeScript typings for github-electron
 
 
-### interface (3)
+### sync (3)
 
 
-- [react-desktop](http://npm.im/react-desktop) - React UI Components for macOS Sierra and Windows 10
-- [relik](http://npm.im/relik) - React Electron Interface Kit
-- [velik](http://npm.im/velik) - Vue Electron Interface Kit
+- [redux-electron-enhancer](http://npm.im/redux-electron-enhancer) - Redux store which synchronizes between instances in multiple process
+- [redux-electron-store](http://npm.im/redux-electron-store) - Redux store which synchronizes between instances in multiple process
+- [synket](http://npm.im/synket) - Synchronous sockets for node
 
 
-### photon (3)
+### react-native (3)
 
 
-- [preact-photon](http://npm.im/preact-photon) - Preact + Photon = <3
-- [react-photon](http://npm.im/react-photon) - Photon component built with React
-- [teamhours](http://npm.im/teamhours) - Triple Helix login frontend built with Photon.
+- [preempt](http://npm.im/preempt) - Framework for React Native
+- [react-native-debugger-open](http://npm.im/react-native-debugger-open) - Replace `open debugger-ui with Chrome` to `open React Native Debugger` from react-native packager
+- [reactors](http://npm.im/reactors) - Framework based on React to build hybrid apps that run web, mobile and desktop.
 
 
-### runner (3)
+### bash (3)
 
 
-- [npm-gui](http://npm.im/npm-gui) - Graphic User Interface for NPM packages/tasks for front and back -end users.
-- [testron](http://npm.im/testron) - CI your client side tests with Electron
-- [yez](http://npm.im/yez) - Chrome extension which acts as task runner
-
-
-### task (3)
-
-
-- [npm-gui](http://npm.im/npm-gui) - Graphic User Interface for NPM packages/tasks for front and back -end users.
-- [uupaa.task.js](http://npm.im/uupaa.task.js) - Counter based task executor.
-- [yez](http://npm.im/yez) - Chrome extension which acts as task runner
-
-
-### bot (3)
-
-
-- [node-tg-bot](http://npm.im/node-tg-bot) - Node Telegram Bot Api Interface
-- [peerbot](http://npm.im/peerbot) - Message seeding utility for friends p2p chat.
-- [wxbot](http://npm.im/wxbot) - 普通个人号 微信机器人/外挂
+- [npm-run-posix-or-windows](http://npm.im/npm-run-posix-or-windows) - Portable NPM scripts when those have to work on Windows too
+- [oargv](http://npm.im/oargv) - Turns an object into a bash command.
+- [shell-env](http://npm.im/shell-env) - Get environment variables from the shell
 
 
 ### filter (3)
@@ -2277,12 +3295,20 @@
 - [strudl](http://npm.im/strudl) - structured data viewer
 
 
-### player (3)
+### router (3)
 
 
-- [myplayer](http://npm.im/myplayer) - Player for Music. Simple, clean and easy.
-- [ooz](http://npm.im/ooz) - A hackable music player.
-- [webchimera.js](http://npm.im/webchimera.js) - libvlc binding for node.js/io.js/NW.js/Electron
+- [netbeast-cli](http://npm.im/netbeast-cli) - Netbeast OS dashboard, IoT apps manager
+- [riot](http://npm.im/riot) - A React-like user interface micro-library
+- [sundry](http://npm.im/sundry) - A dynamically configurable, load balancing, reverse proxy.
+
+
+### minicloud (3)
+
+
+- [minicloud-js-sdk](http://npm.im/minicloud-js-sdk) - minicloud js sdk
+- [minicloud-storage](http://npm.im/minicloud-storage) - minicloud Lightweight distributed file storage
+- [minicloud](http://npm.im/minicloud) - file hybrid cloud management software,support docx/doc/pptx/ppt/xlsx/xls/pdf online browse view and full text search
 
 
 ### menubar (3)
@@ -2293,12 +3319,84 @@
 - [trendy](http://npm.im/trendy) - Menubar app to keep you in the loop of trend
 
 
-### GUI (3)
+### projects (3)
 
 
-- [mancy](http://npm.im/mancy) - Install latest binary for mancy repl
-- [photo-compare-sort](http://npm.im/photo-compare-sort) - A photo sort by user comparation
-- [silk-gui](http://npm.im/silk-gui) - GUI for developers and Node OS
+- [made-in-brazil](http://npm.im/made-in-brazil) - A list of neat projects made in Brazil.
+- [made-in-india](http://npm.im/made-in-india) - A list of neat projects made in India.
+- [made-in-romania](http://npm.im/made-in-romania) - A list of cool projects made in Romania.
+
+
+### cool (3)
+
+
+- [made-in-brazil](http://npm.im/made-in-brazil) - A list of neat projects made in Brazil.
+- [made-in-india](http://npm.im/made-in-india) - A list of neat projects made in India.
+- [made-in-romania](http://npm.im/made-in-romania) - A list of cool projects made in Romania.
+
+
+### a (3)
+
+
+- [made-in-brazil](http://npm.im/made-in-brazil) - A list of neat projects made in Brazil.
+- [made-in-india](http://npm.im/made-in-india) - A list of neat projects made in India.
+- [made-in-romania](http://npm.im/made-in-romania) - A list of cool projects made in Romania.
+
+
+### in (3)
+
+
+- [made-in-brazil](http://npm.im/made-in-brazil) - A list of neat projects made in Brazil.
+- [made-in-india](http://npm.im/made-in-india) - A list of neat projects made in India.
+- [made-in-romania](http://npm.im/made-in-romania) - A list of cool projects made in Romania.
+
+
+### made (3)
+
+
+- [made-in-brazil](http://npm.im/made-in-brazil) - A list of neat projects made in Brazil.
+- [made-in-india](http://npm.im/made-in-india) - A list of neat projects made in India.
+- [made-in-romania](http://npm.im/made-in-romania) - A list of cool projects made in Romania.
+
+
+### macaca (3)
+
+
+- [macaca-chrome](http://npm.im/macaca-chrome) - macaca chrome
+- [macaca-electron](http://npm.im/macaca-electron) - macaca-electron
+- [macaca-wd](http://npm.im/macaca-wd) - macaca wd client
+
+
+### embeddable (3)
+
+
+- [lowdb](http://npm.im/lowdb) - JSON database for Node and the browser powered by lodash API
+- [node-flat-db](http://npm.im/node-flat-db) - JSON database for Node and the browser powered by lodash
+- [ripdb](http://npm.im/ripdb) - JavaScript embeddable JSON time series database.
+
+
+### JSON (3)
+
+
+- [lowdb](http://npm.im/lowdb) - JSON database for Node and the browser powered by lodash API
+- [node-flat-db](http://npm.im/node-flat-db) - JSON database for Node and the browser powered by lodash
+- [ripdb](http://npm.im/ripdb) - JavaScript embeddable JSON time series database.
+
+
+### social-network (3)
+
+
+- [koteky-facebook](http://npm.im/koteky-facebook) - facebook plugin for the koteky
+- [koteky-lib](http://npm.im/koteky-lib) - shared library for the koteky project
+- [koteky-twitter](http://npm.im/koteky-twitter) - twitter plugin for the koteky
+
+
+### koteky (3)
+
+
+- [koteky-facebook](http://npm.im/koteky-facebook) - facebook plugin for the koteky
+- [koteky-lib](http://npm.im/koteky-lib) - shared library for the koteky project
+- [koteky-twitter](http://npm.im/koteky-twitter) - twitter plugin for the koteky
 
 
 ### facebook (3)
@@ -2317,6 +3415,21 @@
 - [karma-electron](http://npm.im/karma-electron) - Karma launcher and preprocessor for Electron
 
 
+### localStorage (3)
+
+
+- [json-web-storage](http://npm.im/json-web-storage) - Simple localStorage/sessionStorage wrapper providing the exact same API with automatic JSON serialization
+- [lowdb](http://npm.im/lowdb) - JSON database for Node and the browser powered by lodash API
+- [node-flat-db](http://npm.im/node-flat-db) - JSON database for Node and the browser powered by lodash
+
+
+### spark (3)
+
+
+- [johnny-five-electron](http://npm.im/johnny-five-electron) - Temporary fork to support Electron (to be deprecated)
+- [node-red-contrib-particle](http://npm.im/node-red-contrib-particle) - Node-RED node to connect to Particle devices. Used to call functions, read variables or listen to Server-Sent Events (SSEs)
+
+
 ### ci (3)
 
 
@@ -2331,14 +3444,6 @@
 - [insert-hover-class](http://npm.im/insert-hover-class) - Insert a :hover class into the DOM and return the classname
 - [vicejs](http://npm.im/vicejs) - Virtual DOM for Custom Elements
 - [virtual-loading-dots](http://npm.im/virtual-loading-dots) - Virtual-dom loading dots component
-
-
-### cordova (3)
-
-
-- [holon](http://npm.im/holon) - Leight-weight DSL-free dual-side composable reactive components
-- [ionic-brunch-es6-seed](http://npm.im/ionic-brunch-es6-seed) - An Ionic starter project with Babel and Brunch
-- [nixie](http://npm.im/nixie) - Coming soon!
 
 
 ### generator (3)
@@ -2365,14 +3470,6 @@
 - [uupaa.fileloader.js](http://npm.im/uupaa.fileloader.js) - URL loader and type converter. URL -> String/JSON/Blob/ArrayBuffer, Blob/TypedArray/ArrayBuffer -> ArrayBuffer
 
 
-### event (3)
-
-
-- [henderson](http://npm.im/henderson) - A tiny event emitter-based finite state machine with promises
-- [pastafarian](http://npm.im/pastafarian) - A tiny event emitter-based finite state machine
-- [resize-event](http://npm.im/resize-event) - Detect resize on an element without polling or iframes
-
-
 ### fsm (3)
 
 
@@ -2389,12 +3486,20 @@
 - [thingamabob](http://npm.im/thingamabob) - A tiny event emitter-based finite state machine
 
 
-### mongodb-js (3)
+### auth (3)
 
 
-- [hadron-test-utils](http://npm.im/hadron-test-utils) - Hadron Test Utils
-- [mongodb-test-utils](http://npm.im/mongodb-test-utils) - MongoDB Test Utils
-- [storage-mixin](http://npm.im/storage-mixin) - Ampersand model mixin to persist data via various storage backends
+- [headless-google-auth](http://npm.im/headless-google-auth) - Log into a Google account using OAuth2 without a browser
+- [headless-trello-auth](http://npm.im/headless-trello-auth) - Automatically grant access for your application in Trello
+- [nightmare-google-oauth2](http://npm.im/nightmare-google-oauth2) - Nightmare plugin to automatically authenticate, authorize and retrieve a fresh OAuth2 token for Google APIs
+
+
+### wcjs (3)
+
+
+- [grunt-download-wcjs](http://npm.im/grunt-download-wcjs) - Grunt task to download pre-built WebChimera.js for Electron & NW.JS.
+- [wcjs-gs](http://npm.im/wcjs-gs) - WebChimera.js GStreamer edition
+- [webchimera.js](http://npm.im/webchimera.js) - libvlc binding for node.js/io.js/NW.js/Electron
 
 
 ### d3 (3)
@@ -2421,14 +3526,6 @@
 - [gordon-server](http://npm.im/gordon-server) - Multiplayer Server for NodeJS, HTML5 and Adobe Flash/Air
 
 
-### tcp (3)
-
-
-- [gordon-client](http://npm.im/gordon-client) - Multiplayer Server for NodeJS
-- [gordon-examples](http://npm.im/gordon-examples) - Examples for the Gordon server
-- [gordon-server](http://npm.im/gordon-server) - Multiplayer Server for NodeJS, HTML5 and Adobe Flash/Air
-
-
 ### realtime (3)
 
 
@@ -2445,12 +3542,20 @@
 - [gordon-server](http://npm.im/gordon-server) - Multiplayer Server for NodeJS, HTML5 and Adobe Flash/Air
 
 
-### node-webkit (3)
+### hash (3)
 
 
-- [generate-evb](http://npm.im/generate-evb) - Generate an 'Enigma Virtual Box' project file (*.evb)
-- [plaidchat](http://npm.im/plaidchat) - A Linux client for Slack
-- [react-desktop](http://npm.im/react-desktop) - React UI Components for macOS Sierra and Windows 10
+- [git-shas](http://npm.im/git-shas) - This module returns the list of all shas (git commit hashes) from a git repository.
+- [tweetnacl-rn](http://npm.im/tweetnacl-rn) - Port of TweetNaCl cryptographic library to JavaScript
+- [tweetnacl](http://npm.im/tweetnacl) - Port of TweetNaCl cryptographic library to JavaScript
+
+
+### string (3)
+
+
+- [format-currency](http://npm.im/format-currency) - Format strings or numbers to currency strings.
+- [hexdump-js](http://npm.im/hexdump-js) - Hexdump an ArrayBuffer to a String
+- [hexdump-nodejs](http://npm.im/hexdump-nodejs) - Hexdump an ArrayBuffer to a String (NodeJS)
 
 
 ### zsh (3)
@@ -2493,20 +3598,43 @@
 - [shell-path](http://npm.im/shell-path) - Get the $PATH from the shell
 
 
-### google (3)
+### glsl (3)
 
 
 - [extract-streetview](http://npm.im/extract-streetview) - extract street view spherical images and depth information
-- [google-music-electron](http://npm.im/google-music-electron) - Desktop app for Google Music on top of Electron
-- [nightmare-google-oauth2](http://npm.im/nightmare-google-oauth2) - Nightmare plugin to automatically authenticate, authorize and retrieve a fresh OAuth2 token for Google APIs
+- [gl-pixel-stream](http://npm.im/gl-pixel-stream) - streaming gl.readPixels from an FBO
+- [shadertoy-export](http://npm.im/shadertoy-export) - render ShaderToy demos to PNG
 
 
 ### web-components (3)
 
 
-- [express-web-components](http://npm.im/express-web-components) - Declaratively build ExpressJS applications with web components.
+- [express-web-components](http://npm.im/express-web-components) - Declaratively build Express applications with web components.
 - [scram-engine](http://npm.im/scram-engine) - Provides access to markup rendering in Node.js. Write your server semantically and declaratively with web components.
 - [vicejs](http://npm.im/vicejs) - Virtual DOM for Custom Elements
+
+
+### less (3)
+
+
+- [express-compile](http://npm.im/express-compile) - Supporting package to compile JS and CSS in Express applications
+- [less-hot](http://npm.im/less-hot) - A hot loader for LESS, primarily intended for use with Electron.
+- [simple-react-server](http://npm.im/simple-react-server) - A basic express-based React server with model syncing, client-server RPC, less compilation + browserify. Intended for quick hackery, not production.
+
+
+### export (3)
+
+
+- [eslint-plugin-import](http://npm.im/eslint-plugin-import) - Import with sanity.
+- [gl-pixel-stream](http://npm.im/gl-pixel-stream) - streaming gl.readPixels from an FBO
+- [three-png-stream](http://npm.im/three-png-stream) - streams ThreeJS render target pixel data
+
+
+### static (3)
+
+
+- [entu-cms](http://npm.im/entu-cms) - Simple (Jade) filebased CMS
+- [staticland](http://npm.im/staticland) - Publish static sites
 
 
 ### ember-addon (3)
@@ -2517,28 +3645,44 @@
 - [ember-electron](http://npm.im/ember-electron) - An addon for building Desktop apps with Ember and Electron.
 
 
-### js (3)
+### option (3)
 
 
-- [electron-weak](http://npm.im/electron-weak) - This is a fork of the node-weak project, adding electron builds and binaries.
-- [selfup-rejs](http://npm.im/selfup-rejs) - Event based, key value store on the file system. Basic server side db in js for node developers. Geared towards NodeBots/IoT.
-- [web-window](http://npm.im/web-window) - A wrapper of BrowserWindow from Electron, for easy CSS / JS Injection.
+- [electron](http://npm.im/electron) - A simple command-line interface framework for node.js.
+- [yargs-cn](http://npm.im/yargs-cn) - Light-weight option parsing with an argv hash. No optstrings attached.
+- [yargs](http://npm.im/yargs) - yargs the modern, pirate-themed, successor to optimist.
 
 
-### text (3)
+### port (3)
 
 
-- [electron-text-substitutions](http://npm.im/electron-text-substitutions) - Substitute text in an input field based on OS X System Preferences
-- [mingalaba](http://npm.im/mingalaba) - Unicode strings text editor for developers
-- [says](http://npm.im/says) - cross-platform 'say' command using Electron
+- [electron-tunnels](http://npm.im/electron-tunnels) - Electron app to manage your ssh tunnels
+- [natman-api](http://npm.im/natman-api) - Natman converted into an useable API.
+- [prt](http://npm.im/prt) - Package Manager for Windows
 
 
-### tape (3)
+### exec (3)
 
 
-- [electron-tap](http://npm.im/electron-tap) - Electron test runner for Tape
-- [electron-tape](http://npm.im/electron-tape) - Tape testing harness for electron apps
-- [taped-electron](http://npm.im/taped-electron) - Run tape tests inside electron
+- [electron-sudo](http://npm.im/electron-sudo) - Electron subprocess with administrative privileges, prompting the user with an OS dialog if necessary.
+- [open-ssh-tunnel](http://npm.im/open-ssh-tunnel) - Easy ssh2 tunneling
+- [sudo-prompt](http://npm.im/sudo-prompt) - Run a command using sudo, prompting the user with an OS dialog if necessary
+
+
+### checker (3)
+
+
+- [electron-spell-check-provider](http://npm.im/electron-spell-check-provider) - Because Electron's spell-check APIs are just a little too low-level.
+- [is2](http://npm.im/is2) - A type checking library where each exported function returns either true or false and does not throw. Also added tests.
+- [simple-spellchecker](http://npm.im/simple-spellchecker) - A simple spellchecker compatible with Electron
+
+
+### recognition (3)
+
+
+- [electron-speech](http://npm.im/electron-speech) - speech recognition cli and api for node using electron
+- [robotjs](http://npm.im/robotjs) - Node.js Desktop Automation.
+- [uupaa.speech.js](http://npm.im/uupaa.speech.js) - Speech Synthesis and Recognition.
 
 
 ### speech (3)
@@ -2549,12 +3693,28 @@
 - [uupaa.speech.js](http://npm.im/uupaa.speech.js) - Speech Synthesis and Recognition.
 
 
+### keyboard (3)
+
+
+- [electron-shortcut-normalizer](http://npm.im/electron-shortcut-normalizer) - Normalize electron keyboard shortcuts so they work on different operating systems
+- [key-emit](http://npm.im/key-emit) - simplified key emitter
+- [robotjs](http://npm.im/robotjs) - Node.js Desktop Automation.
+
+
 ### monitor (3)
 
 
 - [electron-screen](http://npm.im/electron-screen) - Small Module that returns an array with all the monitors connected to the pc with their resolution and position.
 - [hihat](http://npm.im/hihat) - local Node/Browser development with Chrome DevTools
 - [swepam](http://npm.im/swepam) - a json interface to the swepam readings
+
+
+### rpc (3)
+
+
+- [electron-rpc](http://npm.im/electron-rpc) - A lightweight rpc-style wrapper for the ipc module of electron
+- [pauls-electron-rpc](http://npm.im/pauls-electron-rpc) - My RPC solution for exporting APIs from the electron background process to renderers and webviews.
+- [rpcjs](http://npm.im/rpcjs) - Promise-based RPC. Works in browser, node, electron, you name it. Any transport you like.
 
 
 ### animation (3)
@@ -2565,22 +3725,6 @@
 - [luma.gl](http://npm.im/luma.gl) - A WebGL JavaScript visualization library.
 
 
-### http (3)
-
-
-- [electron-proxy-agent](http://npm.im/electron-proxy-agent) - NodeJS http(s).Agent implementation for electron shell
-- [httpjs](http://npm.im/httpjs) - A simple HTTP server
-- [sundry](http://npm.im/sundry) - A dynamically configurable, load balancing, reverse proxy.
-
-
-### fs (3)
-
-
-- [electron-patch-fs](http://npm.im/electron-patch-fs) - Monkey path electrons fs functions with the original ones
-- [frylord](http://npm.im/frylord) - Irken plugin exposing workspaces
-- [jspm-caddy-hmr](http://npm.im/jspm-caddy-hmr) - jspm & caddy => HMR :)
-
-
 ### authentication (3)
 
 
@@ -2589,20 +3733,35 @@
 - [nightmare-google-oauth2](http://npm.im/nightmare-google-oauth2) - Nightmare plugin to automatically authenticate, authorize and retrieve a fresh OAuth2 token for Google APIs
 
 
-### logger (3)
+### growl (3)
 
 
-- [electron-log](http://npm.im/electron-log) - Just a very simple logging module for your Electron application
-- [electron-logger](http://npm.im/electron-logger) - a simple tool to help my electron develop work and keep user client running log.
-- [react-native-log-monitor](http://npm.im/react-native-log-monitor) - React Native Log monitor web, electron and chrome app.
+- [electron-notifications](http://npm.im/electron-notifications) - A node module for sending notifications in electron applications
+- [electron-notifier](http://npm.im/electron-notifier) - Add cross-platform notifications to Electron apps.
+- [node-notifier](http://npm.im/node-notifier) - A Node.js module for sending notifications on native Mac, Windows (post and pre 8) and Linux (or Growl as fallback)
 
 
-### screen (3)
+### shim (3)
 
 
-- [electron-lite](http://npm.im/electron-lite) - this package will dynamically download and install electron @ 1.1.3 from https://github.com/atom/electron/releases with zero npm-dependencies
-- [electron-prebuilt-lite](http://npm.im/electron-prebuilt-lite) - lightweight version of electron-prebuilt with zero npm-dependencies
-- [electron-screen](http://npm.im/electron-screen) - Small Module that returns an array with all the monitors connected to the pc with their resolution and position.
+- [electron-notification-shim](http://npm.im/electron-notification-shim) - Get Notification API events in Electron main-process. Perfect for adding Notification toasters in Windows with node-notifier or other solution.
+- [electron-notifier](http://npm.im/electron-notifier) - Add cross-platform notifications to Electron apps.
+- [fs-access](http://npm.im/fs-access) - Node.js 0.12 fs.access() & fs.accessSync() ponyfill
+
+
+### node-red (3)
+
+
+- [electron-node-red](http://npm.im/electron-node-red) - Electron Node-RED template
+- [node-red-contrib-particle](http://npm.im/node-red-contrib-particle) - Node-RED node to connect to Particle devices. Used to call functions, read variables or listen to Server-Sent Events (SSEs)
+
+
+### react-component (3)
+
+
+- [electron-meteor](http://npm.im/electron-meteor) - Full Meteor Client for Electron
+- [mobx](http://npm.im/mobx) - Simple, scalable state management.
+- [react-desktop](http://npm.im/react-desktop) - React UI Components for macOS Sierra and Windows 10
 
 
 ### scraper (3)
@@ -2613,23 +3772,15 @@
 - [x-ray-nightmare](http://npm.im/x-ray-nightmare) - Nightmare (electron based) driver for the x-ray web scraper.
 
 
-### minimal (3)
+### scrape (3)
 
 
 - [electron-lite](http://npm.im/electron-lite) - this package will dynamically download and install electron @ 1.1.3 from https://github.com/atom/electron/releases with zero npm-dependencies
-- [electron-markdownify](http://npm.im/electron-markdownify) - A minimalist Markdown Editor
-- [nedb-lite](http://npm.im/nedb-lite) - this package is a standalone, single-script version of nedb @ 1.8.0 that runs in both browser and nodejs, with zero npm-dependencies
+- [electron-prebuilt-lite](http://npm.im/electron-prebuilt-lite) - lightweight version of electron-prebuilt with zero npm-dependencies
+- [nutella-scrape](http://npm.im/nutella-scrape) - a nodeschool workshop to teach scraping
 
 
 ### lite (3)
-
-
-- [electron-lite](http://npm.im/electron-lite) - this package will dynamically download and install electron @ 1.1.3 from https://github.com/atom/electron/releases with zero npm-dependencies
-- [nedb-lite](http://npm.im/nedb-lite) - this package is a standalone, single-script version of nedb @ 1.8.0 that runs in both browser and nodejs, with zero npm-dependencies
-- [swagger-lite](http://npm.im/swagger-lite) - this package will run a virtual swagger-ui server with persistent storage in the browser, that your webapp can use (in-place of a real backend)
-
-
-### lightweight (3)
 
 
 - [electron-lite](http://npm.im/electron-lite) - this package will dynamically download and install electron @ 1.1.3 from https://github.com/atom/electron/releases with zero npm-dependencies
@@ -2645,12 +3796,52 @@
 - [utility2](http://npm.im/utility2) - this package will run dynamic browser tests with coverage (via istanbul and electron)
 
 
+### sdk (3)
+
+
+- [electron-kinect2](http://npm.im/electron-kinect2) - Electron library to access the kinect 2 data from the official MS SDK
+- [kinect2](http://npm.im/kinect2) - Nodejs library to access the kinect 2 data from the official MS SDK
+- [minicloud-js-sdk](http://npm.im/minicloud-js-sdk) - minicloud js sdk
+
+
+### jade (3)
+
+
+- [electron-jade-protocol](http://npm.im/electron-jade-protocol) - A jade protocol for electron.
+- [electron-jade](http://npm.im/electron-jade) - Simple electron module to render Jade template
+- [entu-cms](http://npm.im/entu-cms) - Simple (Jade) filebased CMS
+
+
+### release (3)
+
+
+- [electron-is](http://npm.im/electron-is) - An 'is' utility for Electron which provides a set of handy functions, with a self-descriptive name.
+- [nw-zip-builder](http://npm.im/nw-zip-builder) - nw.js builder wrapper
+- [os.js](http://npm.im/os.js) - Very stupid detection of OS
+
+
+### type (3)
+
+
+- [electron-is](http://npm.im/electron-is) - An 'is' utility for Electron which provides a set of handy functions, with a self-descriptive name.
+- [electron-ref](http://npm.im/electron-ref) - This is a fork of the ref project, adding electron build support and binaries
+- [is2](http://npm.im/is2) - A type checking library where each exported function returns either true or false and does not throw. Also added tests.
+
+
 ### communication (3)
 
 
 - [electron-ipc-responder](http://npm.im/electron-ipc-responder) - A simple request/response based communication protocol for Electrons IPC functionality
 - [elekiter](http://npm.im/elekiter) - express like electron ipc wrapper library
 - [peerbot](http://npm.im/peerbot) - Message seeding utility for friends p2p chat.
+
+
+### reactive (3)
+
+
+- [electron-ipc-reactive](http://npm.im/electron-ipc-reactive) - Reactive Elements for Electron via IPC
+- [holon](http://npm.im/holon) - Leight-weight DSL-free dual-side composable reactive components
+- [mobx](http://npm.im/mobx) - Simple, scalable state management.
 
 
 ### squirrel (3)
@@ -2669,12 +3860,12 @@
 - [electron-shortcut-normalizer](http://npm.im/electron-shortcut-normalizer) - Normalize electron keyboard shortcuts so they work on different operating systems
 
 
-### oauth2 (3)
+### spawn (3)
 
 
-- [electron-google-oauth](http://npm.im/electron-google-oauth) - Google api access token in electron
-- [electron-oauth2](http://npm.im/electron-oauth2) - An OAuth2 module for your Electron app.
-- [nightmare-google-oauth2](http://npm.im/nightmare-google-oauth2) - Nightmare plugin to automatically authenticate, authorize and retrieve a fresh OAuth2 token for Google APIs
+- [electron-eval](http://npm.im/electron-eval) - Run code inside a hidden Electron window
+- [spawn-auto-restart](http://npm.im/spawn-auto-restart) - spawn-auto-restart
+- [spawno](http://npm.im/spawno) - Easily work with child processes.
 
 
 ### spell (3)
@@ -2685,12 +3876,12 @@
 - [simple-spellchecker](http://npm.im/simple-spellchecker) - A simple spellchecker compatible with Electron
 
 
-### conf (3)
+### reference (3)
 
 
-- [electron-config](http://npm.im/electron-config) - Simple config handling for your Electron app or module
-- [electron-json-config](http://npm.im/electron-json-config) - Simply set and get configuration from a json file for your Electron app
-- [teeny-conf](http://npm.im/teeny-conf) - A small npm package to handle config files in Node apps. Works fine with Electron and NW.js
+- [electron-docs](http://npm.im/electron-docs) - Fetch Electron documentation as raw markdown strings
+- [electron-ref](http://npm.im/electron-ref) - This is a fork of the ref project, adding electron build support and binaries
+- [electron-weak](http://npm.im/electron-weak) - This is a fork of the node-weak project, adding electron builds and binaries.
 
 
 ### clean (3)
@@ -2699,14 +3890,6 @@
 - [electron-clean-logging](http://npm.im/electron-clean-logging) - strips Electron/Chromium logs from stderr
 - [electronize](http://npm.im/electronize) - Boilerplate for Electron applications
 - [strip-chromium-logs](http://npm.im/strip-chromium-logs) - strips chromium logs from a stream
-
-
-### canvas (3)
-
-
-- [electron-canvas-to-buffer](http://npm.im/electron-canvas-to-buffer) - in Electron, turns a Canvas into a Buffer
-- [image-clipper](http://npm.im/image-clipper) - Node.js module for clipping & cropping JPEG, PNG, WebP images purely using the native Canvas APIs, excellent compatibility with the Browser & Electron & NW.js (Node-webkit), itself doesn't relies on any image processing libraries.
-- [luma.gl](http://npm.im/luma.gl) - A WebGL JavaScript visualization library.
 
 
 ### Mac (3)
@@ -2749,52 +3932,12 @@
 - [grunt-electron-packager-builder](http://npm.im/grunt-electron-packager-builder) - Package Electron apps. Grunt task to electron-prebuilt , electron-packager and electron-builder.
 
 
-### pack (3)
+### usb (3)
 
 
-- [electron-builder](http://npm.im/electron-builder) - Complete solution to build ready for distribution and 'auto update' Electron App installers
-- [electron-complete-builder](http://npm.im/electron-complete-builder) - Complete solution to build ready for distribution and 'auto update' Electron App installers
-- [grunt-electron-packager-builder](http://npm.im/grunt-electron-packager-builder) - Package Electron apps. Grunt task to electron-prebuilt , electron-packager and electron-builder.
-
-
-### install (3)
-
-
-- [electron-builder](http://npm.im/electron-builder) - Complete solution to build ready for distribution and 'auto update' Electron App installers
-- [electron-complete-builder](http://npm.im/electron-complete-builder) - Complete solution to build ready for distribution and 'auto update' Electron App installers
-- [grunt-electron-packager-builder](http://npm.im/grunt-electron-packager-builder) - Package Electron apps. Grunt task to electron-prebuilt , electron-packager and electron-builder.
-
-
-### builder (3)
-
-
-- [electron-builder](http://npm.im/electron-builder) - Complete solution to build ready for distribution and 'auto update' Electron App installers
-- [electron-complete-builder](http://npm.im/electron-complete-builder) - Complete solution to build ready for distribution and 'auto update' Electron App installers
-- [grunt-electron-packager-builder](http://npm.im/grunt-electron-packager-builder) - Package Electron apps. Grunt task to electron-prebuilt , electron-packager and electron-builder.
-
-
-### path (3)
-
-
-- [electron-bin-path](http://npm.im/electron-bin-path) - Find a path of electron bin installed in local or global node_modules
-- [fix-path](http://npm.im/fix-path) - Fix the $PATH on OS X when run from a GUI app
-- [shell-path](http://npm.im/shell-path) - Get the $PATH from the shell
-
-
-### schema (3)
-
-
-- [electron-apis](http://npm.im/electron-apis) - A JSON object describing Electron's APIs
-- [electron-docs](http://npm.im/electron-docs) - Fetch Electron documentation as raw markdown strings
-- [swagger-ui-lite](http://npm.im/swagger-ui-lite) - minimal npm installer for swagger-ui asset files with zero npm-dependencies
-
-
-### adventure (3)
-
-
-- [electron-adventure](http://npm.im/electron-adventure) -  Learn the basic of Electron (formerly atom-shell) with this educational workshop
-- [electron-noveljs-boilerplate](http://npm.im/electron-noveljs-boilerplate) - Create standalone Novel.js adventures!
-- [elementary-electron](http://npm.im/elementary-electron) - nodeschool workshop to learn electron
+- [electron-blink1-toy](http://npm.im/electron-blink1-toy) - Play with Electron and node-blink1
+- [electron-usb](http://npm.im/electron-usb) - Library to access USB devices
+- [johnny-five-electron](http://npm.im/johnny-five-electron) - Temporary fork to support Electron (to be deprecated)
 
 
 ### accelerator (3)
@@ -2803,6 +3946,14 @@
 - [electron-accelerator-formatter](http://npm.im/electron-accelerator-formatter) - Formats an Electron accelerator as a string of Unicode characters.
 - [electron-shortcut-normalizer](http://npm.im/electron-shortcut-normalizer) - Normalize electron keyboard shortcuts so they work on different operating systems
 - [spectron-keys](http://npm.im/spectron-keys) - Accelerator mappings for Electron commands to Spectron/WebDriver key codes.
+
+
+### watch (3)
+
+
+- [electromon](http://npm.im/electromon) - Nodemon for Electron
+- [jspm-caddy-hmr](http://npm.im/jspm-caddy-hmr) - jspm & caddy => HMR :)
+- [spawn-auto-restart](http://npm.im/spawn-auto-restart) - spawn-auto-restart
 
 
 ### code (3)
@@ -2829,12 +3980,92 @@
 - [vgj](http://npm.im/vgj) - A simple GeoJSON viewer, inspired by the incredible convenience of [vmd](https://github.com/yoshuawuyts/vmd).  Built with [mapbox-gl](https://github.com/mapbox/mapbox-gl-js).
 
 
+### cryptography (3)
+
+
+- [ecdsa](http://npm.im/ecdsa) - Elliptic Curve Cryptography Digital Signing
+- [tweetnacl-rn](http://npm.im/tweetnacl-rn) - Port of TweetNaCl cryptographic library to JavaScript
+- [tweetnacl](http://npm.im/tweetnacl) - Port of TweetNaCl cryptographic library to JavaScript
+
+
 ### swarmlog (3)
 
 
 - [dswarmd](http://npm.im/dswarmd) - device swarm daemon
 - [swarmbot](http://npm.im/swarmbot) - mirroring for a p2p mesh of swarmlogs
 - [swarmkvd](http://npm.im/swarmkvd) - run your own distributed key-value store!
+
+
+### parse json (3)
+
+
+- [dinxe](http://npm.im/dinxe) - Save time with Dinxe Database, local host only, Insert, get, update and delete data from your app.
+- [land-js](http://npm.im/land-js) - Save time with land-js Database, local host only, Insert, get, update and delete data from your app.
+- [landb](http://npm.im/landb) - Save time with land-js Database, local host only, Insert, get, update and delete data from your app.
+
+
+### find data (3)
+
+
+- [dinxe](http://npm.im/dinxe) - Save time with Dinxe Database, local host only, Insert, get, update and delete data from your app.
+- [land-js](http://npm.im/land-js) - Save time with land-js Database, local host only, Insert, get, update and delete data from your app.
+- [landb](http://npm.im/landb) - Save time with land-js Database, local host only, Insert, get, update and delete data from your app.
+
+
+### save data (3)
+
+
+- [dinxe](http://npm.im/dinxe) - Save time with Dinxe Database, local host only, Insert, get, update and delete data from your app.
+- [land-js](http://npm.im/land-js) - Save time with land-js Database, local host only, Insert, get, update and delete data from your app.
+- [landb](http://npm.im/landb) - Save time with land-js Database, local host only, Insert, get, update and delete data from your app.
+
+
+### app data (3)
+
+
+- [dinxe](http://npm.im/dinxe) - Save time with Dinxe Database, local host only, Insert, get, update and delete data from your app.
+- [land-js](http://npm.im/land-js) - Save time with land-js Database, local host only, Insert, get, update and delete data from your app.
+- [landb](http://npm.im/landb) - Save time with land-js Database, local host only, Insert, get, update and delete data from your app.
+
+
+### app database (3)
+
+
+- [dinxe](http://npm.im/dinxe) - Save time with Dinxe Database, local host only, Insert, get, update and delete data from your app.
+- [land-js](http://npm.im/land-js) - Save time with land-js Database, local host only, Insert, get, update and delete data from your app.
+- [landb](http://npm.im/landb) - Save time with land-js Database, local host only, Insert, get, update and delete data from your app.
+
+
+### local database (3)
+
+
+- [dinxe](http://npm.im/dinxe) - Save time with Dinxe Database, local host only, Insert, get, update and delete data from your app.
+- [land-js](http://npm.im/land-js) - Save time with land-js Database, local host only, Insert, get, update and delete data from your app.
+- [landb](http://npm.im/landb) - Save time with land-js Database, local host only, Insert, get, update and delete data from your app.
+
+
+### currency (3)
+
+
+- [dimeshift-desktop](http://npm.im/dimeshift-desktop) - The easiest and desktop way to track your expenses. Free. Open-source.
+- [dimeshift](http://npm.im/dimeshift) - Webapp to track and manage personal finances
+- [format-currency](http://npm.im/format-currency) - Format strings or numbers to currency strings.
+
+
+### dialog (3)
+
+
+- [dialogs](http://npm.im/dialogs) - non blocking alert confirm and prompt dialogs
+- [electron-sudo](http://npm.im/electron-sudo) - Electron subprocess with administrative privileges, prompting the user with an OS dialog if necessary.
+- [sudo-prompt](http://npm.im/sudo-prompt) - Run a command using sudo, prompting the user with an OS dialog if necessary
+
+
+### prompt (3)
+
+
+- [dialogs](http://npm.im/dialogs) - non blocking alert confirm and prompt dialogs
+- [electron-sudo](http://npm.im/electron-sudo) - Electron subprocess with administrative privileges, prompting the user with an OS dialog if necessary.
+- [sudo-prompt](http://npm.im/sudo-prompt) - Run a command using sudo, prompting the user with an OS dialog if necessary
 
 
 ### chat (3)
@@ -2853,20 +4084,36 @@
 - [hexdump-nodejs](http://npm.im/hexdump-nodejs) - Hexdump an ArrayBuffer to a String (NodeJS)
 
 
-### extension (3)
-
-
-- [crossbuilder](http://npm.im/crossbuilder) - Building web, Electron and Chrome apps, and cross-browser extensions with React, Redux and Webpack. 'Write once, build everywhere' concept in practice.
-- [remotedev-extension](http://npm.im/remotedev-extension) - Use Redux DevTools in the Browser/Electron DevTools
-- [yez](http://npm.im/yez) - Chrome extension which acts as task runner
-
-
 ### live (3)
 
 
 - [crossbuilder](http://npm.im/crossbuilder) - Building web, Electron and Chrome apps, and cross-browser extensions with React, Redux and Webpack. 'Write once, build everywhere' concept in practice.
 - [hihat](http://npm.im/hihat) - local Node/Browser development with Chrome DevTools
 - [is-js-error](http://npm.im/is-js-error) - Check if a page contains a JavaScript error
+
+
+### reactjs (3)
+
+
+- [crossbuilder](http://npm.im/crossbuilder) - Building web, Electron and Chrome apps, and cross-browser extensions with React, Redux and Webpack. 'Write once, build everywhere' concept in practice.
+- [gorgon-editor](http://npm.im/gorgon-editor) - 2D Game Sprite & Animation Editor
+- [mobx](http://npm.im/mobx) - Simple, scalable state management.
+
+
+### formatting (3)
+
+
+- [creditcardutils](http://npm.im/creditcardutils) - A general purpose javascript library for credit card number validation and formatting. Based on https://github.com/jondavidjohn/payform and https://github.com/stripe/jquery.payment. Usable in React Native and Node.
+- [format-currency](http://npm.im/format-currency) - Format strings or numbers to currency strings.
+- [payform](http://npm.im/payform) - A general purpose library for building credit card forms, validating inputs, and formatting numbers.
+
+
+### cc (3)
+
+
+- [creditcardutils](http://npm.im/creditcardutils) - A general purpose javascript library for credit card number validation and formatting. Based on https://github.com/jondavidjohn/payform and https://github.com/stripe/jquery.payment. Usable in React Native and Node.
+- [jquery.payment](http://npm.im/jquery.payment) - A general purpose library for building credit card forms, validating inputs and formatting numbers.
+- [payform](http://npm.im/payform) - A general purpose library for building credit card forms, validating inputs, and formatting numbers.
 
 
 ### logs (3)
@@ -2877,12 +4124,60 @@
 - [strip-chromium-logs](http://npm.im/strip-chromium-logs) - strips chromium logs from a stream
 
 
-### c++ (3)
+### warning (3)
+
+
+- [console-redirect](http://npm.im/console-redirect) - redirect console methods to streams
+- [electron-clean-logging](http://npm.im/electron-clean-logging) - strips Electron/Chromium logs from stderr
+- [forewarn](http://npm.im/forewarn) - Scoped and styled warning logger
+
+
+### yaml (3)
+
+
+- [configurizer](http://npm.im/configurizer) - Simply load a config file from your projects root directory
+- [entu-cms](http://npm.im/entu-cms) - Simple (Jade) filebased CMS
+- [strudl](http://npm.im/strudl) - structured data viewer
+
+
+### load (3)
+
+
+- [conf](http://npm.im/conf) - Simple config handling for your app or module
+- [load-plugin](http://npm.im/load-plugin) - Load a submodule / plugin
+- [virtual-loading-dots](http://npm.im/virtual-loading-dots) - Virtual-dom loading dots component
+
+
+### persistent (3)
+
+
+- [conf](http://npm.im/conf) - Simple config handling for your app or module
+- [electron-config](http://npm.im/electron-config) - Simple config handling for your Electron app or module
+- [electron-json-config](http://npm.im/electron-json-config) - Simply set and get configuration from a json file for your Electron app
+
+
+### preferences (3)
+
+
+- [conf](http://npm.im/conf) - Simple config handling for your app or module
+- [electron-config](http://npm.im/electron-config) - Simple config handling for your Electron app or module
+- [storage-mixin](http://npm.im/storage-mixin) - Ampersand model mixin to persist data via various storage backends
+
+
+### nw.js (3)
+
+
+- [cmake-js](http://npm.im/cmake-js) - CMake.js - a Node.js/io.js native addon build tool
+- [nw-zip-builder](http://npm.im/nw-zip-builder) - nw.js builder wrapper
+- [teeny-conf](http://npm.im/teeny-conf) - A small npm package to handle config files in Node apps. Works fine with Electron and NW.js
+
+
+### c (3)
 
 
 - [cmake-js](http://npm.im/cmake-js) - CMake.js - a Node.js/io.js native addon build tool
 - [electron-ref-struct](http://npm.im/electron-ref-struct) - This is a fork of the ref-struct project, adding electron build and binary support
-- [electron-ref](http://npm.im/electron-ref) - This is a fork of the ref project, adding electron build support and binaries
+- [node-pre-gyp](http://npm.im/node-pre-gyp) - Node.js native addon binary install tool
 
 
 ### tool (3)
@@ -2901,12 +4196,20 @@
 - [hihat](http://npm.im/hihat) - local Node/Browser development with Chrome DevTools
 
 
-### request (3)
+### html5 (3)
 
 
-- [chainbuilder-request](http://npm.im/chainbuilder-request) - Request mixin for chainbuilder.
-- [electron-ipc-responder](http://npm.im/electron-ipc-responder) - A simple request/response based communication protocol for Electrons IPC functionality
-- [electron-proxy-agent](http://npm.im/electron-proxy-agent) - NodeJS http(s).Agent implementation for electron shell
+- [chotadb](http://npm.im/chotadb) - A wrapper over localStorage to provide MongoDB-like interface.
+- [generator-websemble](http://npm.im/generator-websemble) - Websemble app generator.
+- [splat-ecs](http://npm.im/splat-ecs) - A 2D HTML5 Canvas game engine
+
+
+### lodash (3)
+
+
+- [chainbuilder-lodash](http://npm.im/chainbuilder-lodash) - Lodash mixin for chainbuilder.
+- [lowdb](http://npm.im/lowdb) - JSON database for Node and the browser powered by lodash API
+- [node-flat-db](http://npm.im/node-flat-db) - JSON database for Node and the browser powered by lodash
 
 
 ### map (3)
@@ -2925,22 +4228,6 @@
 - [sundry](http://npm.im/sundry) - A dynamically configurable, load balancing, reverse proxy.
 
 
-### framework (3)
-
-
-- [bozon](http://npm.im/bozon) - Framework for building Electron applications
-- [clout-js](http://npm.im/clout-js) - Clean, simplistic, enterprise grade full-stack NodeJS framework
-- [commandant](http://npm.im/commandant) - A command line framework for node.js
-
-
-### console (3)
-
-
-- [black-screen](http://npm.im/black-screen) - A terminal emulator for the 21st century.
-- [console-redirect](http://npm.im/console-redirect) - redirect console methods to streams
-- [npm-gui](http://npm.im/npm-gui) - Graphic User Interface for NPM packages/tasks for front and back -end users.
-
-
 ### peer-to-peer (3)
 
 
@@ -2949,44 +4236,140 @@
 - [webtorrent](http://npm.im/webtorrent) - Streaming torrent client
 
 
-### audio (3)
+### tasks (3)
+
+
+- [beelzebub](http://npm.im/beelzebub) - One hell of a task master!
+- [parched-tasks-electron](http://npm.im/parched-tasks-electron) - Run Electron main-process files through Parched
+- [typhonjs-core-gulptasks](http://npm.im/typhonjs-core-gulptasks) - Provides common gulp tasks shared by TyphonJS and beyond for JSPM / SystemJS projects.
+
+
+### node.js (3)
+
+
+- [beelzebub](http://npm.im/beelzebub) - One hell of a task master!
+- [chromeo](http://npm.im/chromeo) - experimental Node-Browser bridge
+- [nootb](http://npm.im/nootb) - Node Out Of The Box, a Node.JS (really)IDE
+
+
+### interactive (3)
 
 
 - [beam-soundly-interactive](http://npm.im/beam-soundly-interactive) - Interactive Sound Board for Beam
-- [ooz](http://npm.im/ooz) - A hackable music player.
+- [electron-noveljs-boilerplate](http://npm.im/electron-noveljs-boilerplate) - Create standalone Novel.js adventures!
+- [novel-js](http://npm.im/novel-js) - A lightweight JavaScript text game engine
+
+
+### bootstrap (3)
+
+
+- [basel](http://npm.im/basel) - Framework for Bootstrap, AngularJS, SQLite, Electron
+- [install-missing](http://npm.im/install-missing) - install latest missing modules
+- [peer-exchange](http://npm.im/peer-exchange) - Decentralized peer discovery and signaling
+
+
+### jsx (3)
+
+
+- [babel-jsxgettext](http://npm.im/babel-jsxgettext) - A tool like jsxgettext, but works for es6 + jsx that babel support
+- [norme](http://npm.im/norme) - Opinionated JavaScript linter
+- [riot](http://npm.im/riot) - A React-like user interface micro-library
+
+
+### i18n (3)
+
+
+- [babel-jsxgettext](http://npm.im/babel-jsxgettext) - A tool like jsxgettext, but works for es6 + jsx that babel support
+- [mingalaba](http://npm.im/mingalaba) - Unicode strings text editor for developers
+- [mobx-translate](http://npm.im/mobx-translate) - Simple translations library for mobx
+
+
+### boot (3)
+
+
+- [auto-launch](http://npm.im/auto-launch) - Launch node applications or executables at login (Mac, Windows, and Linux)
+- [cozy-auto-launch](http://npm.im/cozy-auto-launch) - Launch node-webkit apps at login (mac & windows)
+- [lucy-boot](http://npm.im/lucy-boot) - Bootstrap Lucidity, an electron application.
+
+
+### sound (3)
+
+
+- [audiobuffer-to-wav](http://npm.im/audiobuffer-to-wav) - convert an AudioBuffer to .wav format
+- [beam-soundly-interactive](http://npm.im/beam-soundly-interactive) - Interactive Sound Board for Beam
 - [osc-electron](http://npm.im/osc-electron) - A JavaScript Open Sound Control (OSC) library that works in Node.js and the browser.
 
 
-### javascript (3)
+### frp (3)
 
 
-- [basel-cli](http://npm.im/basel-cli) - Client package for Basel
-- [electron-weak](http://npm.im/electron-weak) - This is a fork of the node-weak project, adding electron builds and binaries.
-- [mancy](http://npm.im/mancy) - Install latest binary for mancy repl
-
-
-### AudioBuffer (3)
-
-
-- [audio-buffer-range-decoder](http://npm.im/audio-buffer-range-decoder) - Decode specified ranges of wave file on disk to AudioBuffers.
-- [audio-buffer-stream](http://npm.im/audio-buffer-stream) - Get a PCM stream from input AudioBuffers (Web Audio API). Can be used to implement a streaming audio recorder.
+- [audio-timeline](http://npm.im/audio-timeline) - Observ object for arranging, trimming and adjusting multiple audio clips on a timeline using Web Audio.
+- [mobx](http://npm.im/mobx) - Simple, scalable state management.
 - [observ-fs-audio-buffer](http://npm.im/observ-fs-audio-buffer) - Observable AudioBuffer for use with fs.
 
 
-### version (3)
+### access (3)
+
+
+- [audio-buffer-range-decoder](http://npm.im/audio-buffer-range-decoder) - Decode specified ranges of wave file on disk to AudioBuffers.
+- [electron-proxy-agent](http://npm.im/electron-proxy-agent) - NodeJS http(s).Agent implementation for electron shell
+- [fs-access](http://npm.im/fs-access) - Node.js 0.12 fs.access() & fs.accessSync() ponyfill
+
+
+### serialize (3)
+
+
+- [async-json-serializer](http://npm.im/async-json-serializer) - A library to serialize a JSON object across multiple async callbacks.
+- [isopod](http://npm.im/isopod) - Universal (isomorphic) Javascript object serialization / deserialization
+- [json-web-storage](http://npm.im/json-web-storage) - Simple localStorage/sessionStorage wrapper providing the exact same API with automatic JSON serialization
+
+
+### binary (3)
 
 
 - [asv](http://npm.im/asv) - electron / atom-shell version management
-- [electron-version](http://npm.im/electron-version) - utility function for getting electron version string
-- [evm](http://npm.im/evm) - Electron Version Manager
+- [evm](http://npm.im/evm) - [Deprecated] Electron Version Manager
+- [node-pre-gyp](http://npm.im/node-pre-gyp) - Node.js native addon binary install tool
 
 
-### zip (3)
+### node_modules (3)
 
 
-- [adm-zip-electron](http://npm.im/adm-zip-electron) - Fork of a Javascript implementation of zip for nodejs with support for electron original-fs. Allows user to create or extract zip files both in memory or to/from disk
-- [electron-installer-zip](http://npm.im/electron-installer-zip) - Create a zip file with support for symlinks required by electron on osx.
-- [electron-zip-packager](http://npm.im/electron-zip-packager) - A wrapper of electron-packager. Package your electron app and zipped!
+- [app-root-path](http://npm.im/app-root-path) - Determine an app's root path from anywhere inside the app
+- [electron-bin-path](http://npm.im/electron-bin-path) - Find a path of electron bin installed in local or global node_modules
+- [nx-app-root-path](http://npm.im/nx-app-root-path) - Determine an app's root path from anywhere inside the app
+
+
+### util (3)
+
+
+- [app-root-path](http://npm.im/app-root-path) - Determine an app's root path from anywhere inside the app
+- [nx-app-root-path](http://npm.im/nx-app-root-path) - Determine an app's root path from anywhere inside the app
+- [ul](http://npm.im/ul) - A minimalist utility library.
+
+
+### express (3)
+
+
+- [admin-mongo](http://npm.im/admin-mongo) - A Web user interface to administer MongoDB databases built using Express
+- [express-compile](http://npm.im/express-compile) - Supporting package to compile JS and CSS in Express applications
+- [express-compilers](http://npm.im/express-compilers) - Compiler implementations for express-compile
+
+
+### admin (3)
+
+
+- [admin-mongo](http://npm.im/admin-mongo) - A Web user interface to administer MongoDB databases built using Express
+- [kinto-admin](http://npm.im/kinto-admin) - Kinto Web Administration Console in React.js
+- [swagger-lite](http://npm.im/swagger-lite) - this package will run a virtual swagger-ui server with persistent storage in the browser, that your webapp can use (in-place of a real backend)
+
+
+### mongo (3)
+
+
+- [admin-mongo](http://npm.im/admin-mongo) - A Web user interface to administer MongoDB databases built using Express
+- [nedb-lite](http://npm.im/nedb-lite) - this package is a standalone, single-script version of nedb @ 1.8.0 that runs in both browser and nodejs, with zero npm-dependencies
+- [swagger-lite](http://npm.im/swagger-lite) - this package will run a virtual swagger-ui server with persistent storage in the browser, that your webapp can use (in-place of a real backend)
 
 
 ### REST (3)
@@ -2997,6 +4380,14 @@
 - [rest-api-doc-gui](http://npm.im/rest-api-doc-gui) - A GUI for creating REST API documentation Easily.
 
 
+### finance (3)
+
+
+- [accountifie-svc](http://npm.im/accountifie-svc) - A simple REST ledger service with running balances. Perfect for use with accountifie.
+- [dimeshift-desktop](http://npm.im/dimeshift-desktop) - The easiest and desktop way to track your expenses. Free. Open-source.
+- [dimeshift](http://npm.im/dimeshift) - Webapp to track and manage personal finances
+
+
 ### 3D (3)
 
 
@@ -3005,11 +4396,39 @@
 - [terriajs-cesium](http://npm.im/terriajs-cesium) - Cesium for TerriaJS.
 
 
-### mqtt (2)
+### args (2)
 
 
-- [web-mqtt-client](http://npm.im/web-mqtt-client) - A better MQTT API for the browser
-- [xbmq](http://npm.im/xbmq) - XBee to MQTT gateway
+- [yargs-cn](http://npm.im/yargs-cn) - Light-weight option parsing with an argv hash. No optstrings attached.
+- [yargs](http://npm.im/yargs) - yargs the modern, pirate-themed, successor to optimist.
+
+
+### argument (2)
+
+
+- [yargs-cn](http://npm.im/yargs-cn) - Light-weight option parsing with an argv hash. No optstrings attached.
+- [yargs](http://npm.im/yargs) - yargs the modern, pirate-themed, successor to optimist.
+
+
+### libvlc (2)
+
+
+- [wcjs-player](http://npm.im/wcjs-player) - Player for WebChimera.js (libvlc wrapper)
+- [webchimera.js](http://npm.im/webchimera.js) - libvlc binding for node.js/io.js/NW.js/Electron
+
+
+### webchimera.js (2)
+
+
+- [wcjs-player](http://npm.im/wcjs-player) - Player for WebChimera.js (libvlc wrapper)
+- [wcjs-prebuilt](http://npm.im/wcjs-prebuilt) - Install WebChimera.js pre-built binaries via npm
+
+
+### webchimera (2)
+
+
+- [wcjs-player](http://npm.im/wcjs-player) - Player for WebChimera.js (libvlc wrapper)
+- [wcjs-prebuilt](http://npm.im/wcjs-prebuilt) - Install WebChimera.js pre-built binaries via npm
 
 
 ### Muxer (2)
@@ -3096,6 +4515,83 @@
 - [uupaa.aacprofile.js](http://npm.im/uupaa.aacprofile.js) - AAC Profile and Level detection.
 
 
+### Stripe (2)
+
+
+- [uplift-csv-cup-ui](http://npm.im/uplift-csv-cup-ui) - A GUI CSV processor for transforming payment logs from PayPal or Stripe (or others if extended) into Engaging Networks transaction imports.
+- [uplift-csv-cup](http://npm.im/uplift-csv-cup) - A CSV processor for transforming payment logs from PayPal or Stripe (or others if extended) into Engaging Networks transaction imports.
+
+
+### CSV Processing (2)
+
+
+- [uplift-csv-cup-ui](http://npm.im/uplift-csv-cup-ui) - A GUI CSV processor for transforming payment logs from PayPal or Stripe (or others if extended) into Engaging Networks transaction imports.
+- [uplift-csv-cup](http://npm.im/uplift-csv-cup) - A CSV processor for transforming payment logs from PayPal or Stripe (or others if extended) into Engaging Networks transaction imports.
+
+
+### Engaging Networks (2)
+
+
+- [uplift-csv-cup-ui](http://npm.im/uplift-csv-cup-ui) - A GUI CSV processor for transforming payment logs from PayPal or Stripe (or others if extended) into Engaging Networks transaction imports.
+- [uplift-csv-cup](http://npm.im/uplift-csv-cup) - A CSV processor for transforming payment logs from PayPal or Stripe (or others if extended) into Engaging Networks transaction imports.
+
+
+### signatures (2)
+
+
+- [tweetnacl-rn](http://npm.im/tweetnacl-rn) - Port of TweetNaCl cryptographic library to JavaScript
+- [tweetnacl](http://npm.im/tweetnacl) - Port of TweetNaCl cryptographic library to JavaScript
+
+
+### salsa20 (2)
+
+
+- [tweetnacl-rn](http://npm.im/tweetnacl-rn) - Port of TweetNaCl cryptographic library to JavaScript
+- [tweetnacl](http://npm.im/tweetnacl) - Port of TweetNaCl cryptographic library to JavaScript
+
+
+### public (2)
+
+
+- [tweetnacl-rn](http://npm.im/tweetnacl-rn) - Port of TweetNaCl cryptographic library to JavaScript
+- [tweetnacl](http://npm.im/tweetnacl) - Port of TweetNaCl cryptographic library to JavaScript
+
+
+### poly1305 (2)
+
+
+- [tweetnacl-rn](http://npm.im/tweetnacl-rn) - Port of TweetNaCl cryptographic library to JavaScript
+- [tweetnacl](http://npm.im/tweetnacl) - Port of TweetNaCl cryptographic library to JavaScript
+
+
+### nacl (2)
+
+
+- [tweetnacl-rn](http://npm.im/tweetnacl-rn) - Port of TweetNaCl cryptographic library to JavaScript
+- [tweetnacl](http://npm.im/tweetnacl) - Port of TweetNaCl cryptographic library to JavaScript
+
+
+### encrypt (2)
+
+
+- [tweetnacl-rn](http://npm.im/tweetnacl-rn) - Port of TweetNaCl cryptographic library to JavaScript
+- [tweetnacl](http://npm.im/tweetnacl) - Port of TweetNaCl cryptographic library to JavaScript
+
+
+### ed25519 (2)
+
+
+- [tweetnacl-rn](http://npm.im/tweetnacl-rn) - Port of TweetNaCl cryptographic library to JavaScript
+- [tweetnacl](http://npm.im/tweetnacl) - Port of TweetNaCl cryptographic library to JavaScript
+
+
+### curve25519 (2)
+
+
+- [tweetnacl-rn](http://npm.im/tweetnacl-rn) - Port of TweetNaCl cryptographic library to JavaScript
+- [tweetnacl](http://npm.im/tweetnacl) - Port of TweetNaCl cryptographic library to JavaScript
+
+
 ### swarm (2)
 
 
@@ -3166,12 +4662,6 @@
 - [yunodb](http://npm.im/yunodb) - portable, persistent, electron compatible fulltext search database
 
 
-### static (2)
-
-
-- [staticland](http://npm.im/staticland) - Publish static sites
-
-
 ### note (2)
 
 
@@ -3200,13 +4690,6 @@
 - [snaptron](http://npm.im/snaptron) - It's snap, the visual, blocks based programming language stuffed in electron to control mbots
 
 
-### es7 (2)
-
-
-- [selfup-rejs](http://npm.im/selfup-rejs) - Event based, key value store on the file system. Basic server side db in js for node developers. Geared towards NodeBots/IoT.
-- [uupaa.es.js](http://npm.im/uupaa.es.js) - [![npm](https://nodei.co/npm/uupaa.es.js.svg?downloads=true&stars=true)](https://nodei.co/npm/uupaa.es.js/)
-
-
 ### xvfb (2)
 
 
@@ -3221,18 +4704,53 @@
 - [uupaa.speech.js](http://npm.im/uupaa.speech.js) - Speech Synthesis and Recognition.
 
 
+### pixel (2)
+
+
+- [robotjs](http://npm.im/robotjs) - Node.js Desktop Automation.
+- [three-png-stream](http://npm.im/three-png-stream) - streams ThreeJS render target pixel data
+
+
+### mvc (2)
+
+
+- [riot](http://npm.im/riot) - A React-like user interface micro-library
+- [simple-react-server](http://npm.im/simple-react-server) - A basic express-based React server with model syncing, client-server RPC, less compilation + browserify. Intended for quick hackery, not production.
+
+
+### minimalist (2)
+
+
+- [riot](http://npm.im/riot) - A React-like user interface micro-library
+- [ul](http://npm.im/ul) - A minimalist utility library.
+
+
+### live edit (2)
+
+
+- [remote-redux-devtools](http://npm.im/remote-redux-devtools) - Relay Redux actions to remote Redux DevTools.
+- [remotedev](http://npm.im/remotedev) - Remote debugging for any flux implementation.
+
+
+### time travel (2)
+
+
+- [remote-redux-devtools](http://npm.im/remote-redux-devtools) - Relay Redux actions to remote Redux DevTools.
+- [remotedev](http://npm.im/remotedev) - Remote debugging for any flux implementation.
+
+
+### hot reloading (2)
+
+
+- [remote-redux-devtools](http://npm.im/remote-redux-devtools) - Relay Redux actions to remote Redux DevTools.
+- [remotedev](http://npm.im/remotedev) - Remote debugging for any flux implementation.
+
+
 ### kit (2)
 
 
 - [relik](http://npm.im/relik) - React Electron Interface Kit
 - [velik](http://npm.im/velik) - Vue Electron Interface Kit
-
-
-### sync (2)
-
-
-- [redux-electron-enhancer](http://npm.im/redux-electron-enhancer) - Redux store which synchronizes between instances in multiple process
-- [redux-electron-store](http://npm.im/redux-electron-store) - Redux store which synchronizes between instances in multiple process
 
 
 ### reducer (2)
@@ -3242,6 +4760,13 @@
 - [redux-electron-store](http://npm.im/redux-electron-store) - Redux store which synchronizes between instances in multiple process
 
 
+### middleware (2)
+
+
+- [redux-cli-logger](http://npm.im/redux-cli-logger) - Redux logger for a node environment
+- [redux-electron-ipc](http://npm.im/redux-electron-ipc) - Redux Electron IPC Middleware
+
+
 ### gif (2)
 
 
@@ -3249,25 +4774,32 @@
 - [record-desktop](http://npm.im/record-desktop) - Record gifs and take screenshots on linux, built with electron.
 
 
-### react-native (2)
+### bin (2)
 
 
-- [react-native-debugger-open](http://npm.im/react-native-debugger-open) - Replace `open debugger-ui with Chrome` to `open React Native Debugger` from react-native packager
+- [project-bin-node](http://npm.im/project-bin-node) - bin helper to initialize a node project.
+- [project-bin](http://npm.im/project-bin) - scripts for my projects
+
+
+### prebuilt (2)
+
+
+- [prebuilt-download](http://npm.im/prebuilt-download) - Downloads prebuilt binaries based on URL/filename templates
+- [wcjs-prebuilt](http://npm.im/wcjs-prebuilt) - Install WebChimera.js pre-built binaries via npm
+
+
+### transform (2)
+
+
+- [posthtml](http://npm.im/posthtml) - HTML/XML processor
+- [transformime](http://npm.im/transformime) - Transforms MIMEtypes to HTML Elements
+
+
+### android (2)
+
+
+- [positron-cli](http://npm.im/positron-cli) - Compile Javascript apps for Android
 - [reactors](http://npm.im/reactors) - Framework based on React to build hybrid apps that run web, mobile and desktop.
-
-
-### gl (2)
-
-
-- [preview-dds](http://npm.im/preview-dds) - preview and save DDS textures from the command line
-- [shadertoy-export](http://npm.im/shadertoy-export) - render ShaderToy demos to PNG
-
-
-### Database (2)
-
-
-- [pomegranate-sequelize-core](http://npm.im/pomegranate-sequelize-core) - Provides sequelize to downstream plugins.
-- [pomegranate-sequelize-pg](http://npm.im/pomegranate-sequelize-pg) - Loads Postgres support into the Pomegranate framework.
 
 
 ### SQL (2)
@@ -3284,11 +4816,11 @@
 - [plaidchat](http://npm.im/plaidchat) - A Linux client for Slack
 
 
-### tasks (2)
+### auto (2)
 
 
-- [parched-tasks-electron](http://npm.im/parched-tasks-electron) - Run Electron main-process files through Parched
-- [typhonjs-core-gulptasks](http://npm.im/typhonjs-core-gulptasks) - Provides common gulp tasks shared by TyphonJS and beyond for JSPM / SystemJS projects.
+- [nw-auto-updater](http://npm.im/nw-auto-updater) - A high level API to make node-webkit apps auto updating easy
+- [spawn-auto-restart](http://npm.im/spawn-auto-restart) - spawn-auto-restart
 
 
 ### nteract (2)
@@ -3303,6 +4835,62 @@
 
 - [nteract](http://npm.im/nteract) - :notebook: the nteract notebook
 - [react-jupyter-display-area](http://npm.im/react-jupyter-display-area) - Jupyter Display Area as a React Component
+
+
+### scripts (2)
+
+
+- [npm-run-posix-or-windows](http://npm.im/npm-run-posix-or-windows) - Portable NPM scripts when those have to work on Windows too
+- [quickslot](http://npm.im/quickslot) - A GUI shortcut for your npm scripts
+
+
+### lint (2)
+
+
+- [norme](http://npm.im/norme) - Opinionated JavaScript linter
+- [stylish-commit](http://npm.im/stylish-commit) - Check staged changes with style scripts before commiting with git.
+
+
+### es5 (2)
+
+
+- [norme](http://npm.im/norme) - Opinionated JavaScript linter
+- [uupaa.es.js](http://npm.im/uupaa.es.js) - [![npm](https://nodei.co/npm/uupaa.es.js.svg?downloads=true&stars=true)](https://nodei.co/npm/uupaa.es.js/)
+
+
+### notifications (2)
+
+
+- [node-mac-notifier](http://npm.im/node-mac-notifier) - Create native OS X notifications from Node.js
+- [pushbullet-desktop](http://npm.im/pushbullet-desktop) - Lightweight cross-platform Pushbullet desktop application
+
+
+### compiler (2)
+
+
+- [nimble-elements](http://npm.im/nimble-elements) - Lightweight Web Application Framework - 2015.11.02
+- [solc](http://npm.im/solc) - Solidity compiler
+
+
+### shadow dom (2)
+
+
+- [nimble-elements](http://npm.im/nimble-elements) - Lightweight Web Application Framework - 2015.11.02
+- [riot](http://npm.im/riot) - A React-like user interface micro-library
+
+
+### custom elements (2)
+
+
+- [nimble-elements](http://npm.im/nimble-elements) - Lightweight Web Application Framework - 2015.11.02
+- [riot](http://npm.im/riot) - A React-like user interface micro-library
+
+
+### upload (2)
+
+
+- [nightmare-upload](http://npm.im/nightmare-upload) - upload files using NightmareJS
+- [youtube-video-api](http://npm.im/youtube-video-api) - Straightforward programmatic and command-line interface for YouTube Videos using Google API v3
 
 
 ### content (2)
@@ -3326,32 +4914,53 @@
 - [nightmare-window-manager](http://npm.im/nightmare-window-manager) - add window management to your Nightmare scripts
 
 
-### nedb (2)
+### googleapis (2)
 
 
-- [nedb-lite](http://npm.im/nedb-lite) - this package is a standalone, single-script version of nedb @ 1.8.0 that runs in both browser and nodejs, with zero npm-dependencies
-- [swagger-lite](http://npm.im/swagger-lite) - this package will run a virtual swagger-ui server with persistent storage in the browser, that your webapp can use (in-place of a real backend)
+- [nightmare-google-oauth2](http://npm.im/nightmare-google-oauth2) - Nightmare plugin to automatically authenticate, authorize and retrieve a fresh OAuth2 token for Google APIs
+- [youtube-video-api](http://npm.im/youtube-video-api) - Straightforward programmatic and command-line interface for YouTube Videos using Google API v3
 
 
-### mongodb (2)
+### downloads (2)
 
 
-- [nedb-lite](http://npm.im/nedb-lite) - this package is a standalone, single-script version of nedb @ 1.8.0 that runs in both browser and nodejs, with zero npm-dependencies
-- [swagger-lite](http://npm.im/swagger-lite) - this package will run a virtual swagger-ui server with persistent storage in the browser, that your webapp can use (in-place of a real backend)
+- [nightmare-download-manager](http://npm.im/nightmare-download-manager) - Add download management to NightmareJS
+- [nightmare-inline-download](http://npm.im/nightmare-inline-download) - Add inline download management to NightmareJS
 
 
-### mongo (2)
+### qualitative (2)
 
 
-- [nedb-lite](http://npm.im/nedb-lite) - this package is a standalone, single-script version of nedb @ 1.8.0 that runs in both browser and nodejs, with zero npm-dependencies
-- [swagger-lite](http://npm.im/swagger-lite) - this package will run a virtual swagger-ui server with persistent storage in the browser, that your webapp can use (in-place of a real backend)
+- [newslynx-electron](http://npm.im/newslynx-electron) - A desktop version of the NewsLynx web app.
+- [newslynx](http://npm.im/newslynx) - A platform for measuring the quantitative and qualitative impact of journalism.
 
 
-### embed (2)
+### quantitative (2)
 
 
-- [nedb-lite](http://npm.im/nedb-lite) - this package is a standalone, single-script version of nedb @ 1.8.0 that runs in both browser and nodejs, with zero npm-dependencies
-- [ripdb](http://npm.im/ripdb) - JavaScript embeddable JSON time series database.
+- [newslynx-electron](http://npm.im/newslynx-electron) - A desktop version of the NewsLynx web app.
+- [newslynx](http://npm.im/newslynx) - A platform for measuring the quantitative and qualitative impact of journalism.
+
+
+### impact (2)
+
+
+- [newslynx-electron](http://npm.im/newslynx-electron) - A desktop version of the NewsLynx web app.
+- [newslynx](http://npm.im/newslynx) - A platform for measuring the quantitative and qualitative impact of journalism.
+
+
+### journalism (2)
+
+
+- [newslynx-electron](http://npm.im/newslynx-electron) - A desktop version of the NewsLynx web app.
+- [newslynx](http://npm.im/newslynx) - A platform for measuring the quantitative and qualitative impact of journalism.
+
+
+### polymer (2)
+
+
+- [neovim-component](http://npm.im/neovim-component) - Polymer component for Neovim frontend
+- [riot](http://npm.im/riot) - A React-like user interface micro-library
 
 
 ### slimerjs (2)
@@ -3365,7 +4974,7 @@
 
 
 - [nativefier](http://npm.im/nativefier) - Wrap web apps natively
-- [vue-electron](http://npm.im/vue-electron) - The vue plugin that attaches electron APIs to the Vue object, making them accessable to all components.
+- [vue-electron](http://npm.im/vue-electron) - The vue plugin that attaches electron APIs to the Vue object, making them accessible to all components.
 
 
 ### candle (2)
@@ -3396,6 +5005,27 @@
 - [msi-packager](http://npm.im/msi-packager) - Build MSI (Windows Installer) packages on Mac and Linux
 
 
+### authoring (2)
+
+
+- [motives](http://npm.im/motives) - Storytelling and mindmapping tool
+- [writers_studio](http://npm.im/writers_studio) - A tool for writers
+
+
+### model (2)
+
+
+- [mobx](http://npm.im/mobx) - Simple, scalable state management.
+- [riot](http://npm.im/riot) - A React-like user interface micro-library
+
+
+### mobx (2)
+
+
+- [mobx-translate](http://npm.im/mobx-translate) - Simple translations library for mobx
+- [mobx](http://npm.im/mobx) - Simple, scalable state management.
+
+
 ### Utilities (2)
 
 
@@ -3408,6 +5038,13 @@
 
 - [magnum-di](http://npm.im/magnum-di) - A super simple Key,Value Dependency Injection framework for NodeJS
 - [magnum-loader](http://npm.im/magnum-loader) - Plugin loader for the Magnum DI dependency injection framework.
+
+
+### webdriver (2)
+
+
+- [macaca-wd](http://npm.im/macaca-wd) - macaca wd client
+- [spectron-keys](http://npm.im/spectron-keys) - Accelerator mappings for Electron commands to Spectron/WebDriver key codes.
 
 
 ### lyrebird (2)
@@ -3424,6 +5061,41 @@
 - [lucy-boot](http://npm.im/lucy-boot) - Bootstrap Lucidity, an electron application.
 
 
+### underscore (2)
+
+
+- [lowdb](http://npm.im/lowdb) - JSON database for Node and the browser powered by lodash API
+- [node-flat-db](http://npm.im/node-flat-db) - JSON database for Node and the browser powered by lodash
+
+
+### lo-dash (2)
+
+
+- [lowdb](http://npm.im/lowdb) - JSON database for Node and the browser powered by lodash API
+- [node-flat-db](http://npm.im/node-flat-db) - JSON database for Node and the browser powered by lodash
+
+
+### flat (2)
+
+
+- [lowdb](http://npm.im/lowdb) - JSON database for Node and the browser powered by lodash API
+- [node-flat-db](http://npm.im/node-flat-db) - JSON database for Node and the browser powered by lodash
+
+
+### mongoose (2)
+
+
+- [linvodb3](http://npm.im/linvodb3) - Model-oriented embedded database, inspired by Mongoose & MongoDB, over LevelUP
+- [marsdb](http://npm.im/marsdb) - MarsDB is a lightweight client-side MongoDB-like database, Promise based, written in ES6
+
+
+### levelup (2)
+
+
+- [linvodb3](http://npm.im/linvodb3) - Model-oriented embedded database, inspired by Mongoose & MongoDB, over LevelUP
+- [marsdb](http://npm.im/marsdb) - MarsDB is a lightweight client-side MongoDB-like database, Promise based, written in ES6
+
+
 ### atom lines data-structure (2)
 
 
@@ -3431,25 +5103,32 @@
 - [line-top-index](http://npm.im/line-top-index) - A data structure to efficiently represent the top position of lines in the presence of fixed-height blocks.
 
 
-### less (2)
+### three.js (2)
 
 
-- [less-hot](http://npm.im/less-hot) - A hot loader for LESS, primarily intended for use with Electron.
-- [simple-react-server](http://npm.im/simple-react-server) - A basic express-based React server with model syncing, client-server RPC, less compilation + browserify. Intended for quick hackery, not production.
+- [lightning-server](http://npm.im/lightning-server) - lightning dataviz notebooks
+- [three-png-stream](http://npm.im/three-png-stream) - streams ThreeJS render target pixel data
 
 
-### social-network (2)
+### libui (2)
 
 
-- [koteky-facebook](http://npm.im/koteky-facebook) - facebook plugin for the koteky
-- [koteky-twitter](http://npm.im/koteky-twitter) - twitter plugin for the koteky
+- [libui-download](http://npm.im/libui-download) - download libui prebuilt binary zips from github releases
+- [libui-node](http://npm.im/libui-node) - Node.js bindings for libui
 
 
-### koteky (2)
+### security (2)
 
 
-- [koteky-facebook](http://npm.im/koteky-facebook) - facebook plugin for the koteky
-- [koteky-twitter](http://npm.im/koteky-twitter) - twitter plugin for the koteky
+- [keepass](http://npm.im/keepass) - Node.js library for reading and writing KeePass databases
+- [websandbox](http://npm.im/websandbox) - A sandbox library for runnung javascript inside HTML5 sandboxed iframe
+
+
+### writer (2)
+
+
+- [keepass](http://npm.im/keepass) - Node.js library for reading and writing KeePass databases
+- [writers_studio](http://npm.im/writers_studio) - A tool for writers
 
 
 ### karma-preprocessor (2)
@@ -3459,11 +5138,32 @@
 - [karma-electronrequire-preprocessor](http://npm.im/karma-electronrequire-preprocessor) - karma electron require
 
 
+### business (2)
+
+
+- [jsreport-core](http://npm.im/jsreport-core) - javascript based business reporting
+- [jsreport](http://npm.im/jsreport) - javascript based business reporting
+
+
+### report (2)
+
+
+- [jsreport-core](http://npm.im/jsreport-core) - javascript based business reporting
+- [jsreport](http://npm.im/jsreport) - javascript based business reporting
+
+
 ### jspm (2)
 
 
 - [jspm-caddy-hmr](http://npm.im/jspm-caddy-hmr) - jspm & caddy => HMR :)
 - [typhonjs-core-gulptasks](http://npm.im/typhonjs-core-gulptasks) - Provides common gulp tasks shared by TyphonJS and beyond for JSPM / SystemJS projects.
+
+
+### watcher (2)
+
+
+- [jspm-caddy-hmr](http://npm.im/jspm-caddy-hmr) - jspm & caddy => HMR :)
+- [windows-watcher](http://npm.im/windows-watcher) - Node.js directory watcher built with the native windows FileSystemWatcher
 
 
 ### raspberry pi (2)
@@ -3473,10 +5173,11 @@
 - [selfup-rejs](http://npm.im/selfup-rejs) - Event based, key value store on the file system. Basic server side db in js for node developers. Geared towards NodeBots/IoT.
 
 
-### spark (2)
+### particle (2)
 
 
 - [johnny-five-electron](http://npm.im/johnny-five-electron) - Temporary fork to support Electron (to be deprecated)
+- [node-red-contrib-particle](http://npm.im/node-red-contrib-particle) - Node-RED node to connect to Particle devices. Used to call functions, read variables or listen to Server-Sent Events (SSEs)
 
 
 ### serial (2)
@@ -3492,14 +5193,35 @@
 - [johnny-five-electron](http://npm.im/johnny-five-electron) - Temporary fork to support Electron (to be deprecated)
 
 
+### java (2)
+
+
+- [java-download](http://npm.im/java-download) - Downloads a JVM release archive from Oracle
+- [jvi](http://npm.im/jvi) - JDK (Java Development Kit) installer for Debian-based linux distributions
+
+
+### isotropy (2)
+
+
+- [isotropy-nedb](http://npm.im/isotropy-nedb) - Isotropy port of NeDB by Louis Chatriot. File-based embedded data store for node.js
+- [nedb-isotropy](http://npm.im/nedb-isotropy) - Isotropy port of NeDB by Louis Chatriot. File-based embedded data store for node.js
+
+
+### serialization (2)
+
+
+- [isopod](http://npm.im/isopod) - Universal (isomorphic) Javascript object serialization / deserialization
+- [json-web-storage](http://npm.im/json-web-storage) - Simple localStorage/sessionStorage wrapper providing the exact same API with automatic JSON serialization
+
+
+### utilities (2)
+
+
+- [is2](http://npm.im/is2) - A type checking library where each exported function returns either true or false and does not throw. Also added tests.
+- [mini-utils](http://npm.im/mini-utils) - A mini script of utilities for Node and the Browser.
+
+
 ### slimer (2)
-
-
-- [is-js-error](http://npm.im/is-js-error) - Check if a page contains a JavaScript error
-- [utility2](http://npm.im/utility2) - this package will run dynamic browser tests with coverage (via istanbul and electron)
-
-
-### phantom (2)
 
 
 - [is-js-error](http://npm.im/is-js-error) - Check if a page contains a JavaScript error
@@ -3527,6 +5249,20 @@
 - [ltimer](http://npm.im/ltimer) - A timer for LTs (Electron)
 
 
+### seed (2)
+
+
+- [hyperlog-webtorrent-seed](http://npm.im/hyperlog-webtorrent-seed) - seed webtorrent magnet links from a hyperlog
+- [peer-exchange](http://npm.im/peer-exchange) - Decentralized peer discovery and signaling
+
+
+### hyperlog (2)
+
+
+- [hyperlog-webtorrent-seed](http://npm.im/hyperlog-webtorrent-seed) - seed webtorrent magnet links from a hyperlog
+- [swarmkvd](http://npm.im/swarmkvd) - run your own distributed key-value store!
+
+
 ### theme (2)
 
 
@@ -3548,18 +5284,25 @@
 - [testron](http://npm.im/testron) - CI your client side tests with Electron
 
 
-### components (2)
+### templating (2)
 
 
 - [holon](http://npm.im/holon) - Leight-weight DSL-free dual-side composable reactive components
-- [websemble](http://npm.im/websemble) - Desktop application framework based on web technology.
+- [riot](http://npm.im/riot) - A React-like user interface micro-library
 
 
-### browserify (2)
+### universal (2)
 
 
 - [holon](http://npm.im/holon) - Leight-weight DSL-free dual-side composable reactive components
-- [simple-react-server](http://npm.im/simple-react-server) - A basic express-based React server with model syncing, client-server RPC, less compilation + browserify. Intended for quick hackery, not production.
+- [isopod](http://npm.im/isopod) - Universal (isomorphic) Javascript object serialization / deserialization
+
+
+### isomorphic (2)
+
+
+- [holon](http://npm.im/holon) - Leight-weight DSL-free dual-side composable reactive components
+- [isopod](http://npm.im/isopod) - Universal (isomorphic) Javascript object serialization / deserialization
 
 
 ### Webhooks (2)
@@ -3576,13 +5319,6 @@
 - [holdfast](http://npm.im/holdfast) - A state based manager for running multiple docker containers
 
 
-### string (2)
-
-
-- [hexdump-js](http://npm.im/hexdump-js) - Hexdump an ArrayBuffer to a String
-- [hexdump-nodejs](http://npm.im/hexdump-nodejs) - Hexdump an ArrayBuffer to a String (NodeJS)
-
-
 ### dump (2)
 
 
@@ -3590,11 +5326,39 @@
 - [hexdump-nodejs](http://npm.im/hexdump-nodejs) - Hexdump an ArrayBuffer to a String (NodeJS)
 
 
+### Units (2)
+
+
+- [hephys](http://npm.im/hephys) - High Energy Physics Units and Constants
+- [lifesized](http://npm.im/lifesized) - Display things in life size
+
+
 ### promises (2)
 
 
 - [henderson](http://npm.im/henderson) - A tiny event emitter-based finite state machine with promises
 - [joseph](http://npm.im/joseph) - Better dream interpretation support for Nightmare.
+
+
+### nightmarejs (2)
+
+
+- [headless-google-auth](http://npm.im/headless-google-auth) - Log into a Google account using OAuth2 without a browser
+- [headless-trello-auth](http://npm.im/headless-trello-auth) - Automatically grant access for your application in Trello
+
+
+### casperjs (2)
+
+
+- [headless-google-auth](http://npm.im/headless-google-auth) - Log into a Google account using OAuth2 without a browser
+- [headless-trello-auth](http://npm.im/headless-trello-auth) - Automatically grant access for your application in Trello
+
+
+### casper (2)
+
+
+- [headless-google-auth](http://npm.im/headless-google-auth) - Log into a Google account using OAuth2 without a browser
+- [headless-trello-auth](http://npm.im/headless-trello-auth) - Automatically grant access for your application in Trello
 
 
 ### debugger (2)
@@ -3618,6 +5382,34 @@
 - [gulp-electron](http://npm.im/gulp-electron) - A gulp plugin for Electron distribute applications.
 
 
+### vuejs (2)
+
+
+- [grunt-vueify](http://npm.im/grunt-vueify) - Translate `.vue` files to pure JavaScript, without using Browserify.
+- [gulp-vueify](http://npm.im/gulp-vueify) - Compile .vue files using vueify
+
+
+### vueify (2)
+
+
+- [grunt-vueify](http://npm.im/grunt-vueify) - Translate `.vue` files to pure JavaScript, without using Browserify.
+- [gulp-vueify](http://npm.im/gulp-vueify) - Compile .vue files using vueify
+
+
+### cmd (2)
+
+
+- [grunt-electron-packager](http://npm.im/grunt-electron-packager) - Package Electron apps. Grunt task to create packages electron using electron-packager
+- [windows-fs](http://npm.im/windows-fs) - Windows utilities when working with the file system
+
+
+### OSX (2)
+
+
+- [grunt-electron-packager-builder](http://npm.im/grunt-electron-packager-builder) - Package Electron apps. Grunt task to electron-prebuilt , electron-packager and electron-builder.
+- [node-osx-prefs](http://npm.im/node-osx-prefs) - Node API for some of OSX System Preferences
+
+
 ### customer (2)
 
 
@@ -3630,20 +5422,6 @@
 
 - [grunt-electron-itchio](http://npm.im/grunt-electron-itchio) - Package Electron apps
 - [grunt-electron](http://npm.im/grunt-electron) - Package Electron apps
-
-
-### vlc (2)
-
-
-- [grunt-download-wcjs](http://npm.im/grunt-download-wcjs) - Grunt task to download pre-built WebChimera.js for Electron & NW.JS.
-- [webchimera.js](http://npm.im/webchimera.js) - libvlc binding for node.js/io.js/NW.js/Electron
-
-
-### wcjs (2)
-
-
-- [grunt-download-wcjs](http://npm.im/grunt-download-wcjs) - Grunt task to download pre-built WebChimera.js for Electron & NW.JS.
-- [webchimera.js](http://npm.im/webchimera.js) - libvlc binding for node.js/io.js/NW.js/Electron
 
 
 ### grunt plugin (2)
@@ -3667,6 +5445,27 @@
 - [graphcalc-web](http://npm.im/graphcalc-web) - A web interface for graph-calc.
 
 
+### games (2)
+
+
+- [gorgon-editor](http://npm.im/gorgon-editor) - 2D Game Sprite & Animation Editor
+- [thegamesdb](http://npm.im/thegamesdb) - TheGamesDB.net API wrapper
+
+
+### stackgl (2)
+
+
+- [gl-pixel-stream](http://npm.im/gl-pixel-stream) - streaming gl.readPixels from an FBO
+- [preview-dds](http://npm.im/preview-dds) - preview and save DDS textures from the command line
+
+
+### fbo (2)
+
+
+- [gl-pixel-stream](http://npm.im/gl-pixel-stream) - streaming gl.readPixels from an FBO
+- [three-png-stream](http://npm.im/three-png-stream) - streams ThreeJS render target pixel data
+
+
 ### widget (2)
 
 
@@ -3674,11 +5473,32 @@
 - [websandbox](http://npm.im/websandbox) - A sandbox library for runnung javascript inside HTML5 sandboxed iframe
 
 
-### typescript (2)
+### commit (2)
+
+
+- [git-handler](http://npm.im/git-handler) - NPM module for handling git repositories. Makes it easy to add, checkout, branch, clone, commit, pull and push.
+- [git-shas](http://npm.im/git-shas) - This module returns the list of all shas (git commit hashes) from a git repository.
+
+
+### pull (2)
+
+
+- [git-handler](http://npm.im/git-handler) - NPM module for handling git repositories. Makes it easy to add, checkout, branch, clone, commit, pull and push.
+- [pull-ipc](http://npm.im/pull-ipc) - pull-stream wrapper around electron's ipc channel
+
+
+### push (2)
+
+
+- [git-handler](http://npm.im/git-handler) - NPM module for handling git repositories. Makes it easy to add, checkout, branch, clone, commit, pull and push.
+- [pushbullet-desktop](http://npm.im/pushbullet-desktop) - Lightweight cross-platform Pushbullet desktop application
+
+
+### angular2 (2)
 
 
 - [generator-tsweb](http://npm.im/generator-tsweb) - Yeoman generator for Typescript + Web
-- [mancy](http://npm.im/mancy) - Install latest binary for mancy repl
+- [ng2-twitter](http://npm.im/ng2-twitter) - Angular2 service of authorized request for twitter.
 
 
 ### neutron (2)
@@ -3695,6 +5515,20 @@
 - [neovim-component](http://npm.im/neovim-component) - Polymer component for Neovim frontend
 
 
+### polyfill (2)
+
+
+- [fs-access](http://npm.im/fs-access) - Node.js 0.12 fs.access() & fs.accessSync() ponyfill
+- [uupaa.es.js](http://npm.im/uupaa.es.js) - [![npm](https://nodei.co/npm/uupaa.es.js.svg?downloads=true&stars=true)](https://nodei.co/npm/uupaa.es.js/)
+
+
+### core (2)
+
+
+- [fs-access](http://npm.im/fs-access) - Node.js 0.12 fs.access() & fs.accessSync() ponyfill
+- [node-red-contrib-particle](http://npm.im/node-red-contrib-particle) - Node-RED node to connect to Particle devices. Used to call functions, read variables or listen to Server-Sent Events (SSEs)
+
+
 ### irken (2)
 
 
@@ -3702,11 +5536,95 @@
 - [snacks](http://npm.im/snacks) - Irken plugin exposing configuration options
 
 
-### glsl (2)
+### ethereum (2)
+
+
+- [format-currency](http://npm.im/format-currency) - Format strings or numbers to currency strings.
+- [solc](http://npm.im/solc) - Solidity compiler
+
+
+### tax (2)
+
+
+- [fidor-kontoauszug](http://npm.im/fidor-kontoauszug) - ## About
+- [kabelschland](http://npm.im/kabelschland) - ## About
+
+
+### invoice (2)
+
+
+- [fidor-kontoauszug](http://npm.im/fidor-kontoauszug) - ## About
+- [kabelschland](http://npm.im/kabelschland) - ## About
+
+
+### statement (2)
+
+
+- [fidor-kontoauszug](http://npm.im/fidor-kontoauszug) - ## About
+- [kabelschland](http://npm.im/kabelschland) - ## About
+
+
+### rechnung (2)
+
+
+- [fidor-kontoauszug](http://npm.im/fidor-kontoauszug) - ## About
+- [kabelschland](http://npm.im/kabelschland) - ## About
+
+
+### extract (2)
 
 
 - [extract-streetview](http://npm.im/extract-streetview) - extract street view spherical images and depth information
-- [shadertoy-export](http://npm.im/shadertoy-export) - render ShaderToy demos to PNG
+- [pack-dir](http://npm.im/pack-dir) - Pack/unpack specified directory with native current OS command line tools.
+
+
+### import (2)
+
+
+- [eslint-plugin-import](http://npm.im/eslint-plugin-import) - Import with sanity.
+- [sequelize-auto-import](http://npm.im/sequelize-auto-import) - Import sequelize models automagically
+
+
+### eslint (2)
+
+
+- [eslint-plugin-import](http://npm.im/eslint-plugin-import) - Import with sanity.
+- [typhonjs-core-gulptasks](http://npm.im/typhonjs-core-gulptasks) - Provides common gulp tasks shared by TyphonJS and beyond for JSPM / SystemJS projects.
+
+
+### cms (2)
+
+
+- [entu-cms](http://npm.im/entu-cms) - Simple (Jade) filebased CMS
+- [swagger-lite](http://npm.im/swagger-lite) - this package will run a virtual swagger-ui server with persistent storage in the browser, that your webapp can use (in-place of a real backend)
+
+
+### titlebar (2)
+
+
+- [eltitlebar](http://npm.im/eltitlebar) - windows titlebar in electron
+- [titlebar](http://npm.im/titlebar) - Emulate OS X window title bar
+
+
+### win32 (2)
+
+
+- [elevator](http://npm.im/elevator) - Windows UAC elevation that just works
+- [register-protocol-win32](http://npm.im/register-protocol-win32) - Registers a custom protocol (ie. myapp://) on Windows
+
+
+### nodeschool (2)
+
+
+- [elementary-electron](http://npm.im/elementary-electron) - nodeschool workshop to learn electron
+- [nutella-scrape](http://npm.im/nutella-scrape) - a nodeschool workshop to teach scraping
+
+
+### yo-yo (2)
+
+
+- [element-wrapper](http://npm.im/element-wrapper) - A simple and safe way to set innerHTML for yo-yo or bel component.
+- [on-load](http://npm.im/on-load) - On load/unload events for DOM elements using a MutationObserver
 
 
 ### bar (2)
@@ -3730,6 +5648,13 @@
 - [screenshot-pool](http://npm.im/screenshot-pool) - A rock solid screenshot service using pooled electron workers
 
 
+### winston (2)
+
+
+- [electron-winstontransports](http://npm.im/electron-winstontransports) - Moves Winston loggers boilerplate out of sight.
+- [winston-electron-console](http://npm.im/winston-electron-console) - A simple console logger for Winston for use with Electron.
+
+
 ### object (2)
 
 
@@ -3737,11 +5662,25 @@
 - [yunodb](http://npm.im/yunodb) - portable, persistent, electron compatible fulltext search database
 
 
-### usb (2)
+### forwarding (2)
 
 
-- [electron-usb](http://npm.im/electron-usb) - Library to access USB devices
-- [johnny-five-electron](http://npm.im/johnny-five-electron) - Temporary fork to support Electron (to be deprecated)
+- [electron-tunnels](http://npm.im/electron-tunnels) - Electron app to manage your ssh tunnels
+- [natman-api](http://npm.im/natman-api) - Natman converted into an useable API.
+
+
+### tunnel (2)
+
+
+- [electron-tunnels](http://npm.im/electron-tunnels) - Electron app to manage your ssh tunnels
+- [open-ssh-tunnel](http://npm.im/open-ssh-tunnel) - Easy ssh2 tunneling
+
+
+### ssh (2)
+
+
+- [electron-tunnels](http://npm.im/electron-tunnels) - Electron app to manage your ssh tunnels
+- [open-ssh-tunnel](http://npm.im/open-ssh-tunnel) - Easy ssh2 tunneling
 
 
 ### virtual (2)
@@ -3751,25 +5690,25 @@
 - [virtual-progress-bar](http://npm.im/virtual-progress-bar) - virtual-dom progress bar component
 
 
-### checker (2)
+### elevate (2)
 
 
-- [electron-spell-check-provider](http://npm.im/electron-spell-check-provider) - Because Electron's spell-check APIs are just a little too low-level.
-- [simple-spellchecker](http://npm.im/simple-spellchecker) - A simple spellchecker compatible with Electron
+- [electron-sudo](http://npm.im/electron-sudo) - Electron subprocess with administrative privileges, prompting the user with an OS dialog if necessary.
+- [elevator](http://npm.im/elevator) - Windows UAC elevation that just works
 
 
-### recognition (2)
+### sudo (2)
 
 
-- [electron-speech](http://npm.im/electron-speech) - speech recognition cli and api for node using electron
-- [uupaa.speech.js](http://npm.im/uupaa.speech.js) - Speech Synthesis and Recognition.
+- [electron-sudo](http://npm.im/electron-sudo) - Electron subprocess with administrative privileges, prompting the user with an OS dialog if necessary.
+- [sudo-prompt](http://npm.im/sudo-prompt) - Run a command using sudo, prompting the user with an OS dialog if necessary
 
 
-### key (2)
+### get (2)
 
 
-- [electron-shortcut-normalizer](http://npm.im/electron-shortcut-normalizer) - Normalize electron keyboard shortcuts so they work on different operating systems
-- [selfup-rejs](http://npm.im/selfup-rejs) - Event based, key value store on the file system. Basic server side db in js for node developers. Geared towards NodeBots/IoT.
+- [electron-storage](http://npm.im/electron-storage) - module for managing storage in electron applications
+- [git-shas](http://npm.im/git-shas) - This module returns the list of all shas (git commit hashes) from a git repository.
 
 
 ### electron-shortcut (2)
@@ -3786,13 +5725,6 @@
 - [electron-shortcut](http://npm.im/electron-shortcut) - Helper for global shortcut registering
 
 
-### manager (2)
-
-
-- [electron-settings](http://npm.im/electron-settings) - User settings manager for Electron
-- [evm](http://npm.im/evm) - Electron Version Manager
-
-
 ### screencast (2)
 
 
@@ -3800,11 +5732,11 @@
 - [record-a-cast](http://npm.im/record-a-cast) - Select and record a portion of your desktop
 
 
-### rpc (2)
+### render (2)
 
 
-- [electron-rpc](http://npm.im/electron-rpc) - A lightweight rpc-style wrapper for the ipc module of electron
-- [rpcjs](http://npm.im/rpcjs) - Promise-based RPC. Works in browser, node, electron, you name it. Any transport you like.
+- [electron-render-service](http://npm.im/electron-render-service) - Microservice for rendering PDF/PNG/JPEG from HTML with Electron
+- [gl-pixel-stream](http://npm.im/gl-pixel-stream) - streaming gl.readPixels from an FBO
 
 
 ### rx (2)
@@ -3812,13 +5744,6 @@
 
 - [electron-remote](http://npm.im/electron-remote) - Execute JavaScript in remote Electron processes, but more betterer
 - [electron-spellchecker](http://npm.im/electron-spellchecker) - Implement spellchecking, correctly
-
-
-### remote (2)
-
-
-- [electron-remote](http://npm.im/electron-remote) - Execute JavaScript in remote Electron processes, but more betterer
-- [remotedev-extension](http://npm.im/remotedev-extension) - Use Redux DevTools in the Browser/Electron DevTools
 
 
 ### reload (2)
@@ -3856,6 +5781,13 @@
 - [httpjs](http://npm.im/httpjs) - A simple HTTP server
 
 
+### agent (2)
+
+
+- [electron-proxy-agent](http://npm.im/electron-proxy-agent) - NodeJS http(s).Agent implementation for electron shell
+- [popsicle](http://npm.im/popsicle) - Simple HTTP requests for node and the browser
+
+
 ### tray (2)
 
 
@@ -3887,29 +5819,120 @@
 ### registry (2)
 
 
-- [electron-npm-packages](http://npm.im/electron-npm-packages) - A collection of all npm packages that mention `electron` in their package.json or README
+- [electron-npm-packages](http://npm.im/electron-npm-packages) - A collection of all npm packages that mention `electron` in their package.json
 - [register-protocol-win32](http://npm.im/register-protocol-win32) - Registers a custom protocol (ie. myapp://) on Windows
 
 
-### growl (2)
+### interactive fiction (2)
+
+
+- [electron-noveljs-boilerplate](http://npm.im/electron-noveljs-boilerplate) - Create standalone Novel.js adventures!
+- [novel-js](http://npm.im/novel-js) - A lightweight JavaScript text game engine
+
+
+### prose (2)
+
+
+- [electron-noveljs-boilerplate](http://npm.im/electron-noveljs-boilerplate) - Create standalone Novel.js adventures!
+- [novel-js](http://npm.im/novel-js) - A lightweight JavaScript text game engine
+
+
+### fiction (2)
+
+
+- [electron-noveljs-boilerplate](http://npm.im/electron-noveljs-boilerplate) - Create standalone Novel.js adventures!
+- [novel-js](http://npm.im/novel-js) - A lightweight JavaScript text game engine
+
+
+### text game (2)
+
+
+- [electron-noveljs-boilerplate](http://npm.im/electron-noveljs-boilerplate) - Create standalone Novel.js adventures!
+- [novel-js](http://npm.im/novel-js) - A lightweight JavaScript text game engine
+
+
+### visual novel (2)
+
+
+- [electron-noveljs-boilerplate](http://npm.im/electron-noveljs-boilerplate) - Create standalone Novel.js adventures!
+- [novel-js](http://npm.im/novel-js) - A lightweight JavaScript text game engine
+
+
+### choose your own adventure (2)
+
+
+- [electron-noveljs-boilerplate](http://npm.im/electron-noveljs-boilerplate) - Create standalone Novel.js adventures!
+- [novel-js](http://npm.im/novel-js) - A lightweight JavaScript text game engine
+
+
+### game engine (2)
+
+
+- [electron-noveljs-boilerplate](http://npm.im/electron-noveljs-boilerplate) - Create standalone Novel.js adventures!
+- [novel-js](http://npm.im/novel-js) - A lightweight JavaScript text game engine
+
+
+### text adventure (2)
+
+
+- [electron-noveljs-boilerplate](http://npm.im/electron-noveljs-boilerplate) - Create standalone Novel.js adventures!
+- [novel-js](http://npm.im/novel-js) - A lightweight JavaScript text game engine
+
+
+### novel (2)
+
+
+- [electron-noveljs-boilerplate](http://npm.im/electron-noveljs-boilerplate) - Create standalone Novel.js adventures!
+- [novel-js](http://npm.im/novel-js) - A lightweight JavaScript text game engine
+
+
+### novel.js (2)
+
+
+- [electron-noveljs-boilerplate](http://npm.im/electron-noveljs-boilerplate) - Create standalone Novel.js adventures!
+- [novel-js](http://npm.im/novel-js) - A lightweight JavaScript text game engine
+
+
+### noveljs (2)
+
+
+- [electron-noveljs-boilerplate](http://npm.im/electron-noveljs-boilerplate) - Create standalone Novel.js adventures!
+- [novel-js](http://npm.im/novel-js) - A lightweight JavaScript text game engine
+
+
+### novel-js (2)
+
+
+- [electron-noveljs-boilerplate](http://npm.im/electron-noveljs-boilerplate) - Create standalone Novel.js adventures!
+- [novel-js](http://npm.im/novel-js) - A lightweight JavaScript text game engine
+
+
+### terminal-notifier (2)
 
 
 - [electron-notifications](http://npm.im/electron-notifications) - A node module for sending notifications in electron applications
-- [electron-notifier](http://npm.im/electron-notifier) - Add cross-platform notifications to Electron apps.
+- [node-notifier](http://npm.im/node-notifier) - A Node.js module for sending notifications on native Mac, Windows (post and pre 8) and Linux (or Growl as fallback)
 
 
-### shim (2)
+### notify-send (2)
 
 
-- [electron-notification-shim](http://npm.im/electron-notification-shim) - Get Notification API events in Electron main-process. Perfect for adding Notification toasters in Windows with node-notifier or other solution.
-- [electron-notifier](http://npm.im/electron-notifier) - Add cross-platform notifications to Electron apps.
+- [electron-notifications](http://npm.im/electron-notifications) - A node module for sending notifications in electron applications
+- [node-notifier](http://npm.im/node-notifier) - A Node.js module for sending notifications on native Mac, Windows (post and pre 8) and Linux (or Growl as fallback)
 
 
-### react-component (2)
+### notification center (2)
+
+
+- [electron-notifications](http://npm.im/electron-notifications) - A node module for sending notifications in electron applications
+- [node-notifier](http://npm.im/node-notifier) - A Node.js module for sending notifications on native Mac, Windows (post and pre 8) and Linux (or Growl as fallback)
+
+
+### ddp (2)
 
 
 - [electron-meteor](http://npm.im/electron-meteor) - Full Meteor Client for Electron
-- [react-desktop](http://npm.im/react-desktop) - React UI Components for macOS Sierra and Windows 10
+- [marsdb-sync-client](http://npm.im/marsdb-sync-client) - Standalone Meteor DDP client based on MarsDB
 
 
 ### meshblu (2)
@@ -3947,13 +5970,6 @@
 - [electron-prebuilt-lite](http://npm.im/electron-prebuilt-lite) - lightweight version of electron-prebuilt with zero npm-dependencies
 
 
-### scrape (2)
-
-
-- [electron-lite](http://npm.im/electron-lite) - this package will dynamically download and install electron @ 1.1.3 from https://github.com/atom/electron/releases with zero npm-dependencies
-- [electron-prebuilt-lite](http://npm.im/electron-prebuilt-lite) - lightweight version of electron-prebuilt with zero npm-dependencies
-
-
 ### electron-prebuilt (2)
 
 
@@ -3968,18 +5984,18 @@
 - [electron-prebuilt-lite](http://npm.im/electron-prebuilt-lite) - lightweight version of electron-prebuilt with zero npm-dependencies
 
 
+### kinect2 (2)
+
+
+- [electron-kinect2](http://npm.im/electron-kinect2) - Electron library to access the kinect 2 data from the official MS SDK
+- [kinect2](http://npm.im/kinect2) - Nodejs library to access the kinect 2 data from the official MS SDK
+
+
 ### protocol (2)
 
 
 - [electron-jade-protocol](http://npm.im/electron-jade-protocol) - A jade protocol for electron.
 - [register-protocol-win32](http://npm.im/register-protocol-win32) - Registers a custom protocol (ie. myapp://) on Windows
-
-
-### jade (2)
-
-
-- [electron-jade-protocol](http://npm.im/electron-jade-protocol) - A jade protocol for electron.
-- [electron-jade](http://npm.im/electron-jade) - Simple electron module to render Jade template
 
 
 ### is (2)
@@ -3989,18 +6005,11 @@
 - [elis](http://npm.im/elis) - get environment variable in electron
 
 
-### os (2)
+### arch (2)
 
 
 - [electron-is](http://npm.im/electron-is) - An 'is' utility for Electron which provides a set of handy functions, with a self-descriptive name.
-- [electron-sudo](http://npm.im/electron-sudo) - Electron subprocess with administrative privileges, prompting the user with an OS dialog if necessary.
-
-
-### type (2)
-
-
-- [electron-is](http://npm.im/electron-is) - An 'is' utility for Electron which provides a set of handy functions, with a self-descriptive name.
-- [electron-ref](http://npm.im/electron-ref) - This is a fork of the ref project, adding electron build support and binaries
+- [os.js](http://npm.im/os.js) - Very stupid detection of OS
 
 
 ### platform (2)
@@ -4010,11 +6019,18 @@
 - [react-cpc](http://npm.im/react-cpc) - React Cross Platform Components for desktop apps
 
 
-### reactive (2)
+### detect (2)
 
 
-- [electron-ipc-reactive](http://npm.im/electron-ipc-reactive) - Reactive Elements for Electron via IPC
-- [holon](http://npm.im/holon) - Leight-weight DSL-free dual-side composable reactive components
+- [electron-is-dev](http://npm.im/electron-is-dev) - Check if Electron is running in development
+- [os.js](http://npm.im/os.js) - Very stupid detection of OS
+
+
+### mode (2)
+
+
+- [electron-is-dev](http://npm.im/electron-is-dev) - Check if Electron is running in development
+- [fs-access](http://npm.im/fs-access) - Node.js 0.12 fs.access() & fs.accessSync() ponyfill
 
 
 ### Mobile (2)
@@ -4066,13 +6082,6 @@
 - [uupaa.pagevisibilityevent.js](http://npm.im/uupaa.pagevisibilityevent.js) - PageVisibility event dispatcher.
 
 
-### check (2)
-
-
-- [electron-editor-context-menu](http://npm.im/electron-editor-context-menu) - Enable the native right-click menu in Electron.
-- [electron-is-dev](http://npm.im/electron-is-dev) - Check if Electron is running in development
-
-
 ### contextmenu (2)
 
 
@@ -4080,11 +6089,25 @@
 - [electron-input-menu](http://npm.im/electron-input-menu) - Context menu for electron input elements.
 
 
+### mouse (2)
+
+
+- [electron-drag](http://npm.im/electron-drag) - Window dragging for electron applications
+- [robotjs](http://npm.im/robotjs) - Node.js Desktop Automation.
+
+
 ### progress (2)
 
 
 - [electron-dl](http://npm.im/electron-dl) - Simplified file downloads for your Electron app
 - [virtual-progress-bar](http://npm.im/virtual-progress-bar) - virtual-dom progress bar component
+
+
+### child (2)
+
+
+- [electron-detach](http://npm.im/electron-detach) - restart electron app as a detached child process
+- [spawno](http://npm.im/spawno) - Easily work with child processes.
 
 
 ### debugging (2)
@@ -4120,27 +6143,6 @@
 
 - [electron-context-menu](http://npm.im/electron-context-menu) - Context menu for your Electron app
 - [electron-editor-context-menu](http://npm.im/electron-editor-context-menu) - Enable the native right-click menu in Electron.
-
-
-### persistent (2)
-
-
-- [electron-config](http://npm.im/electron-config) - Simple config handling for your Electron app or module
-- [electron-json-config](http://npm.im/electron-json-config) - Simply set and get configuration from a json file for your Electron app
-
-
-### preferences (2)
-
-
-- [electron-config](http://npm.im/electron-config) - Simple config handling for your Electron app or module
-- [storage-mixin](http://npm.im/storage-mixin) - Ampersand model mixin to persist data via various storage backends
-
-
-### storage (2)
-
-
-- [electron-config](http://npm.im/electron-config) - Simple config handling for your Electron app or module
-- [electron-json-storage](http://npm.im/electron-json-storage) - Easily write and read user settings in Electron apps
 
 
 ### verbose (2)
@@ -4192,11 +6194,18 @@
 - [generate-evb](http://npm.im/generate-evb) - Generate an 'Enigma Virtual Box' project file (*.evb)
 
 
-### watch (2)
+### restart (2)
 
 
 - [electromon](http://npm.im/electromon) - Nodemon for Electron
-- [jspm-caddy-hmr](http://npm.im/jspm-caddy-hmr) - jspm & caddy => HMR :)
+- [spawn-auto-restart](http://npm.im/spawn-auto-restart) - spawn-auto-restart
+
+
+### client-side (2)
+
+
+- [electric-huxley](http://npm.im/electric-huxley) - Codeless front-end testing with an emphasis on speed
+- [riot](http://npm.im/riot) - A React-like user interface micro-library
 
 
 ### fast (2)
@@ -4206,18 +6215,60 @@
 - [hihat](http://npm.im/hihat) - local Node/Browser development with Chrome DevTools
 
 
-### bitcoin (2)
+### ELaunch (2)
 
 
-- [ecdsa](http://npm.im/ecdsa) - Elliptic Curve Cryptography Digital Signing
-- [exandria](http://npm.im/exandria) - A decentralized file sharing system that includes search
+- [elaunch-plugin-devdocs](http://npm.im/elaunch-plugin-devdocs) - devdocs.io plugin for ELaunch
+- [electron-plugin-devdocs](http://npm.im/electron-plugin-devdocs) - devdocs.io plugin for ELaunch
 
 
-### crypto (2)
+### restify (2)
 
 
-- [ecdsa](http://npm.im/ecdsa) - Elliptic Curve Cryptography Digital Signing
-- [peerbot](http://npm.im/peerbot) - Message seeding utility for friends p2p chat.
+- [dimeshift-desktop](http://npm.im/dimeshift-desktop) - The easiest and desktop way to track your expenses. Free. Open-source.
+- [dimeshift](http://npm.im/dimeshift) - Webapp to track and manage personal finances
+
+
+### backbonejs (2)
+
+
+- [dimeshift-desktop](http://npm.im/dimeshift-desktop) - The easiest and desktop way to track your expenses. Free. Open-source.
+- [dimeshift](http://npm.im/dimeshift) - Webapp to track and manage personal finances
+
+
+### russian (2)
+
+
+- [dimeshift-desktop](http://npm.im/dimeshift-desktop) - The easiest and desktop way to track your expenses. Free. Open-source.
+- [dimeshift](http://npm.im/dimeshift) - Webapp to track and manage personal finances
+
+
+### ukrainian (2)
+
+
+- [dimeshift-desktop](http://npm.im/dimeshift-desktop) - The easiest and desktop way to track your expenses. Free. Open-source.
+- [dimeshift](http://npm.im/dimeshift) - Webapp to track and manage personal finances
+
+
+### economy (2)
+
+
+- [dimeshift-desktop](http://npm.im/dimeshift-desktop) - The easiest and desktop way to track your expenses. Free. Open-source.
+- [dimeshift](http://npm.im/dimeshift) - Webapp to track and manage personal finances
+
+
+### saas (2)
+
+
+- [dimeshift-desktop](http://npm.im/dimeshift-desktop) - The easiest and desktop way to track your expenses. Free. Open-source.
+- [dimeshift](http://npm.im/dimeshift) - Webapp to track and manage personal finances
+
+
+### financial (2)
+
+
+- [dimeshift-desktop](http://npm.im/dimeshift-desktop) - The easiest and desktop way to track your expenses. Free. Open-source.
+- [dimeshift](http://npm.im/dimeshift) - Webapp to track and manage personal finances
 
 
 ### os x (2)
@@ -4225,20 +6276,6 @@
 
 - [dimeshift-desktop](http://npm.im/dimeshift-desktop) - The easiest and desktop way to track your expenses. Free. Open-source.
 - [react-desktop](http://npm.im/react-desktop) - React UI Components for macOS Sierra and Windows 10
-
-
-### dialog (2)
-
-
-- [dialogs](http://npm.im/dialogs) - non blocking alert confirm and prompt dialogs
-- [electron-sudo](http://npm.im/electron-sudo) - Electron subprocess with administrative privileges, prompting the user with an OS dialog if necessary.
-
-
-### prompt (2)
-
-
-- [dialogs](http://npm.im/dialogs) - non blocking alert confirm and prompt dialogs
-- [electron-sudo](http://npm.im/electron-sudo) - Electron subprocess with administrative privileges, prompting the user with an OS dialog if necessary.
 
 
 ### diagrams (2)
@@ -4275,13 +6312,6 @@
 - [electron-react-devtools](http://npm.im/electron-react-devtools) - React DevTools Extension for Electron
 
 
-### devdocs (2)
-
-
-- [devdocs-native](http://npm.im/devdocs-native) - A native API Documentation Browser based on Devdocs & Electron
-- [devdogs](http://npm.im/devdogs) - DevdoGs, Unofficial Devdocs app for Mac
-
-
 ### overlay (2)
 
 
@@ -4289,53 +6319,60 @@
 - [woverlay](http://npm.im/woverlay) - WebRTC based overlay network.
 
 
-### i2c (2)
+### postgres (2)
 
 
-- [cylon-i2cexpander](http://npm.im/cylon-i2cexpander) - A cylon driver for the able-electroncs i2c 32 GPIO board for the raspberry pi
-- [johnny-five-electron](http://npm.im/johnny-five-electron) - Temporary fork to support Electron (to be deprecated)
+- [dboa-untangler](http://npm.im/dboa-untangler) - An electron application to help you untangle your (postgres) database.
+- [norm-sql](http://npm.im/norm-sql) - A SQL builder that doesn't force its opinions on you. Paste SQL together, but with flexibility.
 
 
-### keyboard (2)
+### hook (2)
 
 
-- [cylon-i2cexpander](http://npm.im/cylon-i2cexpander) - A cylon driver for the able-electroncs i2c 32 GPIO board for the raspberry pi
-- [electron-shortcut-normalizer](http://npm.im/electron-shortcut-normalizer) - Normalize electron keyboard shortcuts so they work on different operating systems
+- [css-modules-electron](http://npm.im/css-modules-electron) - A require hook to compile and use CSS modules in Electron.
+- [css-modules-require-hook](http://npm.im/css-modules-require-hook) - A require hook to compile CSS Modules on the fly
 
 
-### hardware (2)
+### css-modules (2)
 
 
-- [cylon-i2cexpander](http://npm.im/cylon-i2cexpander) - A cylon driver for the able-electroncs i2c 32 GPIO board for the raspberry pi
-- [electron-usb](http://npm.im/electron-usb) - Library to access USB devices
+- [css-modules-electron](http://npm.im/css-modules-electron) - A require hook to compile and use CSS modules in Electron.
+- [css-modules-require-hook](http://npm.im/css-modules-require-hook) - A require hook to compile CSS Modules on the fly
 
 
-### iot (2)
+### jquery-plugin (2)
 
 
-- [cylon-i2cexpander](http://npm.im/cylon-i2cexpander) - A cylon driver for the able-electroncs i2c 32 GPIO board for the raspberry pi
-- [xbmq](http://npm.im/xbmq) - XBee to MQTT gateway
+- [creditcardutils](http://npm.im/creditcardutils) - A general purpose javascript library for credit card number validation and formatting. Based on https://github.com/jondavidjohn/payform and https://github.com/stripe/jquery.payment. Usable in React Native and Node.
+- [payform](http://npm.im/payform) - A general purpose library for building credit card forms, validating inputs, and formatting numbers.
 
 
-### robot (2)
+### credit card (2)
 
 
-- [cylon-i2cexpander](http://npm.im/cylon-i2cexpander) - A cylon driver for the able-electroncs i2c 32 GPIO board for the raspberry pi
-- [johnny-five-electron](http://npm.im/johnny-five-electron) - Temporary fork to support Electron (to be deprecated)
+- [creditcardutils](http://npm.im/creditcardutils) - A general purpose javascript library for credit card number validation and formatting. Based on https://github.com/jondavidjohn/payform and https://github.com/stripe/jquery.payment. Usable in React Native and Node.
+- [payform](http://npm.im/payform) - A general purpose library for building credit card forms, validating inputs, and formatting numbers.
 
 
-### flux (2)
+### form (2)
 
 
-- [crossbuilder](http://npm.im/crossbuilder) - Building web, Electron and Chrome apps, and cross-browser extensions with React, Redux and Webpack. 'Write once, build everywhere' concept in practice.
-- [electron-react-boilerplate](http://npm.im/electron-react-boilerplate) - Electron application boilerplate based on React, React Router, Webpack, React Hot Loader for rapid application development
+- [creditcardutils](http://npm.im/creditcardutils) - A general purpose javascript library for credit card number validation and formatting. Based on https://github.com/jondavidjohn/payform and https://github.com/stripe/jquery.payment. Usable in React Native and Node.
+- [payform](http://npm.im/payform) - A general purpose library for building credit card forms, validating inputs, and formatting numbers.
 
 
-### reactjs (2)
+### credit (2)
 
 
-- [crossbuilder](http://npm.im/crossbuilder) - Building web, Electron and Chrome apps, and cross-browser extensions with React, Redux and Webpack. 'Write once, build everywhere' concept in practice.
-- [gorgon-editor](http://npm.im/gorgon-editor) - 2D Game Sprite & Animation Editor
+- [creditcards-types](http://npm.im/creditcards-types) - Card type definitions and methods for creditcards
+- [is2](http://npm.im/is2) - A type checking library where each exported function returns either true or false and does not throw. Also added tests.
+
+
+### reader (2)
+
+
+- [cordova-plugin-qrscanner](http://npm.im/cordova-plugin-qrscanner) - Cordova QR Scanner Plugin
+- [keepass](http://npm.im/keepass) - Node.js library for reading and writing KeePass databases
 
 
 ### stderr (2)
@@ -4359,11 +6396,11 @@
 - [strip-chromium-logs](http://npm.im/strip-chromium-logs) - strips chromium logs from a stream
 
 
-### warning (2)
+### warn (2)
 
 
 - [console-redirect](http://npm.im/console-redirect) - redirect console methods to streams
-- [electron-clean-logging](http://npm.im/electron-clean-logging) - strips Electron/Chromium logs from stderr
+- [forewarn](http://npm.im/forewarn) - Scoped and styled warning logger
 
 
 ### monkey (2)
@@ -4380,39 +6417,81 @@
 - [element-status](http://npm.im/element-status) - An electron based status bar
 
 
-### yaml (2)
+### write (2)
 
 
-- [configurizer](http://npm.im/configurizer) - Simply load a config file from your projects root directory
-- [strudl](http://npm.im/strudl) - structured data viewer
+- [conf](http://npm.im/conf) - Simple config handling for your app or module
+- [gl-pixel-stream](http://npm.im/gl-pixel-stream) - streaming gl.readPixels from an FBO
 
 
-### nw.js (2)
+### persist (2)
+
+
+- [conf](http://npm.im/conf) - Simple config handling for your app or module
+- [electron-config](http://npm.im/electron-config) - Simple config handling for your Electron app or module
+
+
+### nicovideo (2)
+
+
+- [comelon](http://npm.im/comelon) - nicolive comment viewer on electron
+- [nicolive](http://npm.im/nicolive) - Command line comment viewer
+
+
+### cmake (2)
 
 
 - [cmake-js](http://npm.im/cmake-js) - CMake.js - a Node.js/io.js native addon build tool
-- [teeny-conf](http://npm.im/teeny-conf) - A small npm package to handle config files in Node apps. Works fine with Electron and NW.js
+- [node-cmake](http://npm.im/node-cmake) - A CMake-based build system for node.js native modules
 
 
-### c (2)
+### bindings (2)
 
 
 - [cmake-js](http://npm.im/cmake-js) - CMake.js - a Node.js/io.js native addon build tool
-- [electron-ref-struct](http://npm.im/electron-ref-struct) - This is a fork of the ref-struct project, adding electron build and binary support
+- [node-pre-gyp](http://npm.im/node-pre-gyp) - Node.js native addon binary install tool
 
 
-### node.js (2)
+### addon (2)
 
 
-- [chromeo](http://npm.im/chromeo) - experimental Node-Browser bridge
-- [nootb](http://npm.im/nootb) - Node Out Of The Box, a Node.JS (really)IDE
+- [cmake-js](http://npm.im/cmake-js) - CMake.js - a Node.js/io.js native addon build tool
+- [node-pre-gyp](http://npm.im/node-pre-gyp) - Node.js native addon binary install tool
 
 
-### local (2)
+### arguments (2)
 
 
-- [chromeo](http://npm.im/chromeo) - experimental Node-Browser bridge
-- [hihat](http://npm.im/hihat) - local Node/Browser development with Chrome DevTools
+- [clp](http://npm.im/clp) - A tiny and fast command line arguments parser.
+- [oargv](http://npm.im/oargv) - Turns an object into a bash command.
+
+
+### line (2)
+
+
+- [clp](http://npm.im/clp) - A tiny and fast command line arguments parser.
+- [commandant](http://npm.im/commandant) - A command line framework for node.js
+
+
+### nosql (2)
+
+
+- [chotadb](http://npm.im/chotadb) - A wrapper over localStorage to provide MongoDB-like interface.
+- [nedb-lite](http://npm.im/nedb-lite) - this package is a standalone, single-script version of nedb @ 1.8.0 that runs in both browser and nodejs, with zero npm-dependencies
+
+
+### files (2)
+
+
+- [choose-files](http://npm.im/choose-files) - Prompt the user to select files, then pass them to a callback.
+- [windows-watcher](http://npm.im/windows-watcher) - Node.js directory watcher built with the native windows FileSystemWatcher
+
+
+### composable (2)
+
+
+- [choo](http://npm.im/choo) - A 5kb framework for creating sturdy frontend applications
+- [holon](http://npm.im/holon) - Leight-weight DSL-free dual-side composable reactive components
 
 
 ### callback (2)
@@ -4434,6 +6513,48 @@
 
 - [cesium](http://npm.im/cesium) - Cesium is a JavaScript library for creating 3D globes and 2D maps in a web browser without a plugin.
 - [terriajs-cesium](http://npm.im/terriajs-cesium) - Cesium for TerriaJS.
+
+
+### clickjacking (2)
+
+
+- [busted](http://npm.im/busted) - A node module that detects improper iframe busting code
+- [frame-buster](http://npm.im/frame-buster) - A node module that detect improper iframe busting code
+
+
+### content-security-policy (2)
+
+
+- [busted](http://npm.im/busted) - A node module that detects improper iframe busting code
+- [frame-buster](http://npm.im/frame-buster) - A node module that detect improper iframe busting code
+
+
+### x-frame-options (2)
+
+
+- [busted](http://npm.im/busted) - A node module that detects improper iframe busting code
+- [frame-buster](http://npm.im/frame-buster) - A node module that detect improper iframe busting code
+
+
+### iframe (2)
+
+
+- [busted](http://npm.im/busted) - A node module that detects improper iframe busting code
+- [frame-buster](http://npm.im/frame-buster) - A node module that detect improper iframe busting code
+
+
+### busted (2)
+
+
+- [busted](http://npm.im/busted) - A node module that detects improper iframe busting code
+- [frame-buster](http://npm.im/frame-buster) - A node module that detect improper iframe busting code
+
+
+### Node (2)
+
+
+- [browster](http://npm.im/browster) - A web browser with tab treeview built on Electron
+- [node-hide](http://npm.im/node-hide) - A Node Module to Ease Hiding/Showing Other Windows
 
 
 ### Web (2)
@@ -4471,32 +6592,25 @@
 - [peer-exchange](http://npm.im/peer-exchange) - Decentralized peer discovery and signaling
 
 
+### networking (2)
+
+
+- [bitcoin-net](http://npm.im/bitcoin-net) - Bitcoin P2P networking tht works in Node and the browser
+- [is2](http://npm.im/is2) - A type checking library where each exported function returns either true or false and does not throw. Also added tests.
+
+
+### streams (2)
+
+
+- [bionode-waterwheel](http://npm.im/bionode-waterwheel) - Streaming workflow engine for bionformatics pipelines
+- [electron-ipc-stream](http://npm.im/electron-ipc-stream) - Duplex stream over IPC for main/renderer to communicate with each other.
+
+
 ### IoT (2)
 
 
-- [benja](http://npm.im/benja) - Bootable Electron Node JS Application
+- [benja](http://npm.im/benja) - Bootable Electron Node JS Application helper.
 - [electron-io](http://npm.im/electron-io) - Particle Electron IO Plugin for Johnny-Five
-
-
-### interactive (2)
-
-
-- [beam-soundly-interactive](http://npm.im/beam-soundly-interactive) - Interactive Sound Board for Beam
-- [electron-noveljs-boilerplate](http://npm.im/electron-noveljs-boilerplate) - Create standalone Novel.js adventures!
-
-
-### sound (2)
-
-
-- [beam-soundly-interactive](http://npm.im/beam-soundly-interactive) - Interactive Sound Board for Beam
-- [osc-electron](http://npm.im/osc-electron) - A JavaScript Open Sound Control (OSC) library that works in Node.js and the browser.
-
-
-### bootstrap (2)
-
-
-- [basel](http://npm.im/basel) - Framework for Bootstrap, AngularJS, SQLite, Electron
-- [peer-exchange](http://npm.im/peer-exchange) - Decentralized peer discovery and signaling
 
 
 ### basel (2)
@@ -4513,11 +6627,94 @@
 - [dota2-manta-config-engine-standalone](http://npm.im/dota2-manta-config-engine-standalone) - Allows you to customize your Dota 2 Autoexec on-the-fly.
 
 
+### webcomponents (2)
+
+
+- [awesome-webcomponents](http://npm.im/awesome-webcomponents) - awesome native js web components
+- [generator-websemble](http://npm.im/generator-websemble) - Websemble app generator.
+
+
 ### awesome (2)
 
 
-- [awesome-electron](http://npm.im/awesome-electron) - Useful resources for creating apps with Electron
+- [awesome-webcomponents](http://npm.im/awesome-webcomponents) - awesome native js web components
 - [reactors](http://npm.im/reactors) - Framework based on React to build hybrid apps that run web, mobile and desktop.
+
+
+### login-items (2)
+
+
+- [auto-launch](http://npm.im/auto-launch) - Launch node applications or executables at login (Mac, Windows, and Linux)
+- [cozy-auto-launch](http://npm.im/cozy-auto-launch) - Launch node-webkit apps at login (mac & windows)
+
+
+### launch (2)
+
+
+- [auto-launch](http://npm.im/auto-launch) - Launch node applications or executables at login (Mac, Windows, and Linux)
+- [cozy-auto-launch](http://npm.im/cozy-auto-launch) - Launch node-webkit apps at login (mac & windows)
+
+
+### ogg (2)
+
+
+- [audiosource](http://npm.im/audiosource) - utility for managing audio buffers
+- [electron-ogg-packet](http://npm.im/electron-ogg-packet) - This is a fork of the node-ogg-packet project, which support electron binaries
+
+
+### mp3 (2)
+
+
+- [audiosource](http://npm.im/audiosource) - utility for managing audio buffers
+- [ooz](http://npm.im/ooz) - A hackable music player.
+
+
+### playback (2)
+
+
+- [audiosource](http://npm.im/audiosource) - utility for managing audio buffers
+
+
+### conversion (2)
+
+
+- [audiobuffer-to-wav](http://npm.im/audiobuffer-to-wav) - convert an AudioBuffer to .wav format
+- [electron-html-to](http://npm.im/electron-html-to) - Convert html to html/image using electron
+
+
+### webaudio (2)
+
+
+- [audiobuffer-to-wav](http://npm.im/audiobuffer-to-wav) - convert an AudioBuffer to .wav format
+- [audiosource](http://npm.im/audiosource) - utility for managing audio buffers
+
+
+### format (2)
+
+
+- [audiobuffer-to-wav](http://npm.im/audiobuffer-to-wav) - convert an AudioBuffer to .wav format
+- [format-currency](http://npm.im/format-currency) - Format strings or numbers to currency strings.
+
+
+### wav (2)
+
+
+- [audiobuffer-to-wav](http://npm.im/audiobuffer-to-wav) - convert an AudioBuffer to .wav format
+- [audiosource](http://npm.im/audiosource) - utility for managing audio buffers
+
+
+### to (2)
+
+
+- [audiobuffer-to-wav](http://npm.im/audiobuffer-to-wav) - convert an AudioBuffer to .wav format
+- [preview-dds](http://npm.im/preview-dds) - preview and save DDS textures from the command line
+
+
+### convert (2)
+
+
+- [audiobuffer-to-wav](http://npm.im/audiobuffer-to-wav) - convert an AudioBuffer to .wav format
+- [preview-dds](http://npm.im/preview-dds) - preview and save DDS textures from the command line
 
 
 ### observ (2)
@@ -4527,11 +6724,11 @@
 - [observ-fs-audio-buffer](http://npm.im/observ-fs-audio-buffer) - Observable AudioBuffer for use with fs.
 
 
-### frp (2)
+### wave (2)
 
 
 - [audio-timeline](http://npm.im/audio-timeline) - Observ object for arranging, trimming and adjusting multiple audio clips on a timeline using Web Audio.
-- [observ-fs-audio-buffer](http://npm.im/observ-fs-audio-buffer) - Observable AudioBuffer for use with fs.
+- [audiobuffer-to-wav](http://npm.im/audiobuffer-to-wav) - convert an AudioBuffer to .wav format
 
 
 ### edit (2)
@@ -4548,11 +6745,11 @@
 - [observ-fs-audio-buffer](http://npm.im/observ-fs-audio-buffer) - Observable AudioBuffer for use with fs.
 
 
-### access (2)
+### random (2)
 
 
 - [audio-buffer-range-decoder](http://npm.im/audio-buffer-range-decoder) - Decode specified ranges of wave file on disk to AudioBuffers.
-- [electron-proxy-agent](http://npm.im/electron-proxy-agent) - NodeJS http(s).Agent implementation for electron shell
+- [random-world](http://npm.im/random-world) - Nodejs. module to generate random collections of data.
 
 
 ### patch data-structure (2)
@@ -4560,20 +6757,6 @@
 
 - [atom-patch](http://npm.im/atom-patch) - A data structure to efficiently represent the results of applying patches.
 - [marker-index](http://npm.im/marker-index) - A data structure to track logical text annotations.
-
-
-### serialize (2)
-
-
-- [async-json-serializer](http://npm.im/async-json-serializer) - A library to serialize a JSON object across multiple async callbacks.
-- [json-web-storage](http://npm.im/json-web-storage) - Simple localStorage/sessionStorage wrapper providing the exact same API with automatic JSON serialization
-
-
-### binary (2)
-
-
-- [asv](http://npm.im/asv) - electron / atom-shell version management
-- [evm](http://npm.im/evm) - Electron Version Manager
 
 
 ### livereload (2)
@@ -4588,6 +6771,20 @@
 
 - [arduino-firmata-electron](http://npm.im/arduino-firmata-electron) - Arduino Firmata implementation for Node.js
 - [johnny-five-electron](http://npm.im/johnny-five-electron) - Temporary fork to support Electron (to be deprecated)
+
+
+### root (2)
+
+
+- [app-root-path](http://npm.im/app-root-path) - Determine an app's root path from anywhere inside the app
+- [nx-app-root-path](http://npm.im/nx-app-root-path) - Determine an app's root path from anywhere inside the app
+
+
+### color (2)
+
+
+- [ansi2html-cli](http://npm.im/ansi2html-cli) - Converts piped ansi to html using rburns's ansi-to-html.
+- [robotjs](http://npm.im/robotjs) - Node.js Desktop Automation.
 
 
 ### engine (2)
@@ -4618,11 +6815,39 @@
 - [electron-drag](http://npm.im/electron-drag) - Window dragging for electron applications
 
 
-### finance (2)
+### document (2)
 
 
-- [accountifie-svc](http://npm.im/accountifie-svc) - A simple REST ledger service with running balances. Perfect for use with accountifie.
-- [dimeshift-desktop](http://npm.im/dimeshift-desktop) - The easiest and desktop way to track your expenses. Free. Open-source.
+- [admin-mongo](http://npm.im/admin-mongo) - A Web user interface to administer MongoDB databases built using Express
+- [minicloud](http://npm.im/minicloud) - file hybrid cloud management software,support docx/doc/pptx/ppt/xlsx/xls/pdf online browse view and full text search
+
+
+### manage (2)
+
+
+- [admin-mongo](http://npm.im/admin-mongo) - A Web user interface to administer MongoDB databases built using Express
+- [asv](http://npm.im/asv) - electron / atom-shell version management
+
+
+### unzip (2)
+
+
+- [adm-zip-electron](http://npm.im/adm-zip-electron) - Fork of a Javascript implementation of zip for nodejs with support for electron original-fs. Allows user to create or extract zip files both in memory or to/from disk
+- [pack-dir](http://npm.im/pack-dir) - Pack/unpack specified directory with native current OS command line tools.
+
+
+### archive (2)
+
+
+- [adm-zip-electron](http://npm.im/adm-zip-electron) - Fork of a Javascript implementation of zip for nodejs with support for electron original-fs. Allows user to create or extract zip files both in memory or to/from disk
+- [pack-dir](http://npm.im/pack-dir) - Pack/unpack specified directory with native current OS command line tools.
+
+
+### learning (2)
+
+
+- [RaspiKids](http://npm.im/RaspiKids) - Raspberry PI GPIO framework for teaching kids programming
+- [robotjs](http://npm.im/robotjs) - Node.js Desktop Automation.
 
 
 ### search-index (1)
@@ -4641,6 +6866,72 @@
 
 
 - [yunodb](http://npm.im/yunodb) - portable, persistent, electron compatible fulltext search database
+
+
+### yunyinyue (1)
+
+
+- [yun-playlist-downloader](http://npm.im/yun-playlist-downloader) - NetEase CloudMusic downloader
+
+
+### cloudmusic (1)
+
+
+- [yun-playlist-downloader](http://npm.im/yun-playlist-downloader) - NetEase CloudMusic downloader
+
+
+### 163 (1)
+
+
+- [yun-playlist-downloader](http://npm.im/yun-playlist-downloader) - NetEase CloudMusic downloader
+
+
+### thumbnail (1)
+
+
+- [youtube-video-api](http://npm.im/youtube-video-api) - Straightforward programmatic and command-line interface for YouTube Videos using Google API v3
+
+
+### rate (1)
+
+
+- [youtube-video-api](http://npm.im/youtube-video-api) - Straightforward programmatic and command-line interface for YouTube Videos using Google API v3
+
+
+### videos (1)
+
+
+- [youtube-video-api](http://npm.im/youtube-video-api) - Straightforward programmatic and command-line interface for YouTube Videos using Google API v3
+
+
+### remove (1)
+
+
+- [youtube-video-api](http://npm.im/youtube-video-api) - Straightforward programmatic and command-line interface for YouTube Videos using Google API v3
+
+
+### delete (1)
+
+
+- [youtube-video-api](http://npm.im/youtube-video-api) - Straightforward programmatic and command-line interface for YouTube Videos using Google API v3
+
+
+### insert (1)
+
+
+- [youtube-video-api](http://npm.im/youtube-video-api) - Straightforward programmatic and command-line interface for YouTube Videos using Google API v3
+
+
+### mp4 (1)
+
+
+- [youtube-video-api](http://npm.im/youtube-video-api) - Straightforward programmatic and command-line interface for YouTube Videos using Google API v3
+
+
+### youtube (1)
+
+
+- [youtube-video-api](http://npm.im/youtube-video-api) - Straightforward programmatic and command-line interface for YouTube Videos using Google API v3
 
 
 ### Twitter (1)
@@ -4691,16 +6982,64 @@
 - [wxbot](http://npm.im/wxbot) - 普通个人号 微信机器人/外挂
 
 
-### authoring (1)
+### drawing (1)
 
 
-- [writers_studio](http://npm.im/writers_studio) - A tool for writers
+- [ww-draw](http://npm.im/ww-draw) - A time-based drawing library for capturing and replaying multi-layered, multi-author drawings
 
 
-### writer (1)
+### sub (1)
 
 
-- [writers_studio](http://npm.im/writers_studio) - A tool for writers
+- [wsobserver](http://npm.im/wsobserver) - websocket client used in electron main process,pub/sub message in render process
+
+
+### pub (1)
+
+
+- [wsobserver](http://npm.im/wsobserver) - websocket client used in electron main process,pub/sub message in render process
+
+
+### folder (1)
+
+
+- [windows-watcher](http://npm.im/windows-watcher) - Node.js directory watcher built with the native windows FileSystemWatcher
+
+
+### unc (1)
+
+
+- [windows-fs](http://npm.im/windows-fs) - Windows utilities when working with the file system
+
+
+### size (1)
+
+
+- [windows-fs](http://npm.im/windows-fs) - Windows utilities when working with the file system
+
+
+### drive mount (1)
+
+
+- [windows-fs](http://npm.im/windows-fs) - Windows utilities when working with the file system
+
+
+### dwm (1)
+
+
+- [windows-caption-color](http://npm.im/windows-caption-color) - Get the caption color of an active windows in Windows 8+
+
+
+### Color (1)
+
+
+- [windows-caption-color](http://npm.im/windows-caption-color) - Get the caption color of an active windows in Windows 8+
+
+
+### Caption (1)
+
+
+- [windows-caption-color](http://npm.im/windows-caption-color) - Get the caption color of an active windows in Windows 8+
 
 
 ### web torrent (1)
@@ -4728,12 +7067,6 @@
 
 
 ### restricted (1)
-
-
-- [websandbox](http://npm.im/websandbox) - A sandbox library for runnung javascript inside HTML5 sandboxed iframe
-
-
-### security (1)
 
 
 - [websandbox](http://npm.im/websandbox) - A sandbox library for runnung javascript inside HTML5 sandboxed iframe
@@ -4769,18 +7102,6 @@
 - [webchimera.js](http://npm.im/webchimera.js) - libvlc binding for node.js/io.js/NW.js/Electron
 
 
-### video (1)
-
-
-- [webchimera.js](http://npm.im/webchimera.js) - libvlc binding for node.js/io.js/NW.js/Electron
-
-
-### libvlc (1)
-
-
-- [webchimera.js](http://npm.im/webchimera.js) - libvlc binding for node.js/io.js/NW.js/Electron
-
-
 ### injection (1)
 
 
@@ -4799,6 +7120,18 @@
 - [web-mqtt-client](http://npm.im/web-mqtt-client) - A better MQTT API for the browser
 
 
+### gstreamer (1)
+
+
+- [wcjs-gs](http://npm.im/wcjs-gs) - WebChimera.js GStreamer edition
+
+
+### vrjs-objects (1)
+
+
+- [vrjs-axis](http://npm.im/vrjs-axis) - axis object for vrjs
+
+
 ### dots (1)
 
 
@@ -4812,12 +7145,6 @@
 
 
 ### loading (1)
-
-
-- [virtual-loading-dots](http://npm.im/virtual-loading-dots) - Virtual-dom loading dots component
-
-
-### load (1)
 
 
 - [virtual-loading-dots](http://npm.im/virtual-loading-dots) - Virtual-dom loading dots component
@@ -4845,6 +7172,18 @@
 
 
 - [vanguard-core](http://npm.im/vanguard-core) - Web Application Framework with Support for MSSQL
+
+
+### harmony flags (1)
+
+
+- [v8flags](http://npm.im/v8flags) - Get available v8 flags.
+
+
+### v8 flags (1)
+
+
+- [v8flags](http://npm.im/v8flags) - Get available v8 flags.
 
 
 ### WebGL (1)
@@ -5267,18 +7606,6 @@
 - [uupaa.expgolomb.js](http://npm.im/uupaa.expgolomb.js) - Exponential-Golomb coding implement.
 
 
-### polyfill (1)
-
-
-- [uupaa.es.js](http://npm.im/uupaa.es.js) - [![npm](https://nodei.co/npm/uupaa.es.js.svg?downloads=true&stars=true)](https://nodei.co/npm/uupaa.es.js/)
-
-
-### es5 (1)
-
-
-- [uupaa.es.js](http://npm.im/uupaa.es.js) - [![npm](https://nodei.co/npm/uupaa.es.js.svg?downloads=true&stars=true)](https://nodei.co/npm/uupaa.es.js/)
-
-
 ### cookie (1)
 
 
@@ -5459,24 +7786,6 @@
 - [utility2](http://npm.im/utility2) - this package will run dynamic browser tests with coverage (via istanbul and electron)
 
 
-### Stripe (1)
-
-
-- [uplift-csv-cup-ui](http://npm.im/uplift-csv-cup-ui) - A GUI CSV processor for transforming payment logs from PayPal or Stripe (or others if extended) into Engaging Networks transaction imports.
-
-
-### CSV Processing (1)
-
-
-- [uplift-csv-cup-ui](http://npm.im/uplift-csv-cup-ui) - A GUI CSV processor for transforming payment logs from PayPal or Stripe (or others if extended) into Engaging Networks transaction imports.
-
-
-### Engaging Networks (1)
-
-
-- [uplift-csv-cup-ui](http://npm.im/uplift-csv-cup-ui) - A GUI CSV processor for transforming payment logs from PayPal or Stripe (or others if extended) into Engaging Networks transaction imports.
-
-
 ### unitnote (1)
 
 
@@ -5495,6 +7804,60 @@
 - [ugnis-test](http://npm.im/ugnis-test) - Ugnis test config
 
 
+### structure (1)
+
+
+- [uglymol](http://npm.im/uglymol) - Macromolecular viewer for crystallographers used to coot
+
+
+### protein (1)
+
+
+- [uglymol](http://npm.im/uglymol) - Macromolecular viewer for crystallographers used to coot
+
+
+### coot (1)
+
+
+- [uglymol](http://npm.im/uglymol) - Macromolecular viewer for crystallographers used to coot
+
+
+### biochemistry (1)
+
+
+- [uglymol](http://npm.im/uglymol) - Macromolecular viewer for crystallographers used to coot
+
+
+### crystallography (1)
+
+
+- [uglymol](http://npm.im/uglymol) - Macromolecular viewer for crystallographers used to coot
+
+
+### typed (1)
+
+
+- [typings](http://npm.im/typings) - The TypeScript Definition Manager
+
+
+### declaration (1)
+
+
+- [typings](http://npm.im/typings) - The TypeScript Definition Manager
+
+
+### definition (1)
+
+
+- [typings](http://npm.im/typings) - The TypeScript Definition Manager
+
+
+### typings (1)
+
+
+- [typings](http://npm.im/typings) - The TypeScript Definition Manager
+
+
 ### typhonjs (1)
 
 
@@ -5502,12 +7865,6 @@
 
 
 ### systemjs (1)
-
-
-- [typhonjs-core-gulptasks](http://npm.im/typhonjs-core-gulptasks) - Provides common gulp tasks shared by TyphonJS and beyond for JSPM / SystemJS projects.
-
-
-### eslint (1)
 
 
 - [typhonjs-core-gulptasks](http://npm.im/typhonjs-core-gulptasks) - Provides common gulp tasks shared by TyphonJS and beyond for JSPM / SystemJS projects.
@@ -5597,12 +7954,6 @@
 - [transformime](http://npm.im/transformime) - Transforms MIMEtypes to HTML Elements
 
 
-### transform (1)
-
-
-- [transformime](http://npm.im/transformime) - Transforms MIMEtypes to HTML Elements
-
-
 ### postcss (1)
 
 
@@ -5615,10 +7966,70 @@
 - [tooling](http://npm.im/tooling) - One tooling, No setup.
 
 
+### stoplight (1)
+
+
+- [titlebar](http://npm.im/titlebar) - Emulate OS X window title bar
+
+
 ### tile (1)
 
 
 - [tilectron](http://npm.im/tilectron) - Tiling window browser built on Electron
+
+
+### rgba (1)
+
+
+- [three-png-stream](http://npm.im/three-png-stream) - streams ThreeJS render target pixel data
+
+
+### rgb (1)
+
+
+- [three-png-stream](http://npm.im/three-png-stream) - streams ThreeJS render target pixel data
+
+
+### pixels (1)
+
+
+- [three-png-stream](http://npm.im/three-png-stream) - streams ThreeJS render target pixel data
+
+
+### three (1)
+
+
+- [three-png-stream](http://npm.im/three-png-stream) - streams ThreeJS render target pixel data
+
+
+### threejs (1)
+
+
+- [three-png-stream](http://npm.im/three-png-stream) - streams ThreeJS render target pixel data
+
+
+### gamedb (1)
+
+
+- [thegamesdb](http://npm.im/thegamesdb) - TheGamesDB.net API wrapper
+
+
+### videogame (1)
+
+
+- [thegamesdb](http://npm.im/thegamesdb) - TheGamesDB.net API wrapper
+
+
+### games-api (1)
+
+
+- [thegamesdb](http://npm.im/thegamesdb) - TheGamesDB.net API wrapper
+
+
+### thegamesdb (1)
+
+
+- [thegamesdb](http://npm.im/thegamesdb) - TheGamesDB.net API wrapper
 
 
 ### telehash (1)
@@ -5663,6 +8074,12 @@
 - [taped-electron](http://npm.im/taped-electron) - Run tape tests inside electron
 
 
+### tap (1)
+
+
+- [tape-run](http://npm.im/tape-run) - Headless tape test runner
+
+
 ### tape tests atom-shell electron testing (1)
 
 
@@ -5673,6 +8090,24 @@
 
 
 - [tape-run-atom-shell](http://npm.im/tape-run-atom-shell) - tape tests run in atom-shell
+
+
+### blocking (1)
+
+
+- [synket](http://npm.im/synket) - Synchronous sockets for node
+
+
+### synchronous (1)
+
+
+- [synket](http://npm.im/synket) - Synchronous sockets for node
+
+
+### sockets (1)
+
+
+- [synket](http://npm.im/synket) - Synchronous sockets for node
 
 
 ### alpha (1)
@@ -5741,12 +8176,6 @@
 - [swarmkvd](http://npm.im/swarmkvd) - run your own distributed key-value store!
 
 
-### hyperlog (1)
-
-
-- [swarmkvd](http://npm.im/swarmkvd) - run your own distributed key-value store!
-
-
 ### swarmkv (1)
 
 
@@ -5783,19 +8212,7 @@
 - [swagger-lite](http://npm.im/swagger-lite) - this package will run a virtual swagger-ui server with persistent storage in the browser, that your webapp can use (in-place of a real backend)
 
 
-### cms (1)
-
-
-- [swagger-lite](http://npm.im/swagger-lite) - this package will run a virtual swagger-ui server with persistent storage in the browser, that your webapp can use (in-place of a real backend)
-
-
 ### admin-ui (1)
-
-
-- [swagger-lite](http://npm.im/swagger-lite) - this package will run a virtual swagger-ui server with persistent storage in the browser, that your webapp can use (in-place of a real backend)
-
-
-### admin (1)
 
 
 - [swagger-lite](http://npm.im/swagger-lite) - this package will run a virtual swagger-ui server with persistent storage in the browser, that your webapp can use (in-place of a real backend)
@@ -5805,18 +8222,6 @@
 
 
 - [sundry](http://npm.im/sundry) - A dynamically configurable, load balancing, reverse proxy.
-
-
-### router (1)
-
-
-- [sundry](http://npm.im/sundry) - A dynamically configurable, load balancing, reverse proxy.
-
-
-### lint (1)
-
-
-- [stylish-commit](http://npm.im/stylish-commit) - Check staged changes with style scripts before commiting with git.
 
 
 ### link (1)
@@ -5975,12 +8380,6 @@
 - [spectron](http://npm.im/spectron) - Easily test your Electron apps using ChromeDriver and WebdriverIO.
 
 
-### webdriver (1)
-
-
-- [spectron-keys](http://npm.im/spectron-keys) - Accelerator mappings for Electron commands to Spectron/WebDriver key codes.
-
-
 ### spectron (1)
 
 
@@ -6003,6 +8402,12 @@
 
 
 - [space-radar](http://npm.im/space-radar) - Disk Usage Electron App
+
+
+### solidity (1)
+
+
+- [solc](http://npm.im/solc) - Solidity compiler
 
 
 ### Frontend (1)
@@ -6083,12 +8488,6 @@
 - [simple-spellchecker](http://npm.im/simple-spellchecker) - A simple spellchecker compatible with Electron
 
 
-### mvc (1)
-
-
-- [simple-react-server](http://npm.im/simple-react-server) - A basic express-based React server with model syncing, client-server RPC, less compilation + browserify. Intended for quick hackery, not production.
-
-
 ### Silk (1)
 
 
@@ -6101,7 +8500,7 @@
 - [silk-gui](http://npm.im/silk-gui) - GUI for developers and Node OS
 
 
-### bash (1)
+### macos (1)
 
 
 - [shell-env](http://npm.im/shell-env) - Get environment variables from the shell
@@ -6147,6 +8546,18 @@
 
 
 - [sf-tool](http://npm.im/sf-tool) - SalesForce Development Tool
+
+
+### sequelize models (1)
+
+
+- [sequelize-auto-import](http://npm.im/sequelize-auto-import) - Import sequelize models automagically
+
+
+### sequelize (1)
+
+
+- [sequelize-auto-import](http://npm.im/sequelize-auto-import) - Import sequelize models automagically
 
 
 ### value (1)
@@ -6197,6 +8608,18 @@
 - [secc-scheduler-gui](http://npm.im/secc-scheduler-gui) - This is GUI scheduler for secc
 
 
+### sealious (1)
+
+
+- [sealious](http://npm.im/sealious) - A declarative framework for fast & easy app development.
+
+
+### schedule (1)
+
+
+- [sdb-schedule](http://npm.im/sdb-schedule) - schedule framework
+
+
 ### autoscale (1)
 
 
@@ -6245,19 +8668,43 @@
 - [says](http://npm.im/says) - cross-platform 'say' command using Electron
 
 
+### screensharing (1)
+
+
+- [rtc-screenshare](http://npm.im/rtc-screenshare) - WebRTC Screensharing Chrome Extension 
+
+
+### rtc.io (1)
+
+
+- [rtc-screenshare](http://npm.im/rtc-screenshare) - WebRTC Screensharing Chrome Extension 
+
+
+### machine (1)
+
+
+- [robotjs](http://npm.im/robotjs) - Node.js Desktop Automation.
+
+
+### autohotkey (1)
+
+
+- [robotjs](http://npm.im/robotjs) - Node.js Desktop Automation.
+
+
+### robotjs (1)
+
+
+- [robotjs](http://npm.im/robotjs) - Node.js Desktop Automation.
+
+
+### Automation (1)
+
+
+- [robotjs](http://npm.im/robotjs) - Node.js Desktop Automation.
+
+
 ### date (1)
-
-
-- [ripdb](http://npm.im/ripdb) - JavaScript embeddable JSON time series database.
-
-
-### embeddable (1)
-
-
-- [ripdb](http://npm.im/ripdb) - JavaScript embeddable JSON time series database.
-
-
-### JSON (1)
 
 
 - [ripdb](http://npm.im/ripdb) - JavaScript embeddable JSON time series database.
@@ -6273,6 +8720,54 @@
 
 
 - [ripdb](http://npm.im/ripdb) - JavaScript embeddable JSON time series database.
+
+
+### riot.js (1)
+
+
+- [riot](http://npm.im/riot) - A React-like user interface micro-library
+
+
+### riotjs (1)
+
+
+- [riot](http://npm.im/riot) - A React-like user interface micro-library
+
+
+### controller (1)
+
+
+- [riot](http://npm.im/riot) - A React-like user interface micro-library
+
+
+### data binding (1)
+
+
+- [riot](http://npm.im/riot) - A React-like user interface micro-library
+
+
+### declarative (1)
+
+
+- [riot](http://npm.im/riot) - A React-like user interface micro-library
+
+
+### virtual dom (1)
+
+
+- [riot](http://npm.im/riot) - A React-like user interface micro-library
+
+
+### web components (1)
+
+
+- [riot](http://npm.im/riot) - A React-like user interface micro-library
+
+
+### custom tags (1)
+
+
+- [riot](http://npm.im/riot) - A React-like user interface micro-library
 
 
 ### talkie (1)
@@ -6305,12 +8800,6 @@
 - [remotedev-app-slider](http://npm.im/remotedev-app-slider) - Remote Redux DevTools web, electron and chrome app. slider version
 
 
-### win32 (1)
-
-
-- [register-protocol-win32](http://npm.im/register-protocol-win32) - Registers a custom protocol (ie. myapp://) on Windows
-
-
 ### register (1)
 
 
@@ -6333,12 +8822,6 @@
 
 
 - [redux-storage-engine-electronjsonstorage](http://npm.im/redux-storage-engine-electronjsonstorage) - electron-json-storage based engine for redux-storage
-
-
-### middleware (1)
-
-
-- [redux-electron-ipc](http://npm.im/redux-electron-ipc) - Redux Electron IPC Middleware
 
 
 ### cast (1)
@@ -6371,16 +8854,16 @@
 - [reactors](http://npm.im/reactors) - Framework based on React to build hybrid apps that run web, mobile and desktop.
 
 
-### android (1)
-
-
-- [reactors](http://npm.im/reactors) - Framework based on React to build hybrid apps that run web, mobile and desktop.
-
-
 ### reactors (1)
 
 
 - [reactors](http://npm.im/reactors) - Framework based on React to build hybrid apps that run web, mobile and desktop.
+
+
+### todo (1)
+
+
+- [react-todo](http://npm.im/react-todo) - This is a demo application boilerplate for usage in your own setups. This is not a boilerplate to create your own application.
 
 
 ### redux-devtools (1)
@@ -6393,6 +8876,30 @@
 
 
 - [react-native-debugger-open](http://npm.im/react-native-debugger-open) - Replace `open debugger-ui with Chrome` to `open React Native Debugger` from react-native packager
+
+
+### react mapbox (1)
+
+
+- [react-map-gl](http://npm.im/react-map-gl) - A React wrapper for MapboxGL-js and overlay API.
+
+
+### react-mapbox-gl (1)
+
+
+- [react-map-gl](http://npm.im/react-map-gl) - A React wrapper for MapboxGL-js and overlay API.
+
+
+### mapbox-gl (1)
+
+
+- [react-map-gl](http://npm.im/react-map-gl) - A React wrapper for MapboxGL-js and overlay API.
+
+
+### mapbox (1)
+
+
+- [react-map-gl](http://npm.im/react-map-gl) - A React wrapper for MapboxGL-js and overlay API.
 
 
 ### webview (1)
@@ -6425,10 +8932,10 @@
 - [rdfstore](http://npm.im/rdfstore) - RDF graph store supporting the SPARQL query language
 
 
-### scripts (1)
+### random-data (1)
 
 
-- [quickslot](http://npm.im/quickslot) - A GUI shortcut for your npm scripts
+- [random-world](http://npm.im/random-world) - Nodejs. module to generate random collections of data.
 
 
 ### coder (1)
@@ -6437,37 +8944,67 @@
 - [quick-coder](http://npm.im/quick-coder) - Live Coding of node, es, React jsx, and webView based on Electron, like jsFiddle
 
 
+### Touch Sensor (1)
+
+
+- [qtouch](http://npm.im/qtouch) - interaction with qtouch component : AT42QT1070 Touch Sensor IC
+
+
+### IC (1)
+
+
+- [qtouch](http://npm.im/qtouch) - interaction with qtouch component : AT42QT1070 Touch Sensor IC
+
+
+### capteur capacitif (1)
+
+
+- [qtouch](http://npm.im/qtouch) - interaction with qtouch component : AT42QT1070 Touch Sensor IC
+
+
+### AT42QT1070 (1)
+
+
+- [qtouch](http://npm.im/qtouch) - interaction with qtouch component : AT42QT1070 Touch Sensor IC
+
+
+### qtouch (1)
+
+
+- [qtouch](http://npm.im/qtouch) - interaction with qtouch component : AT42QT1070 Touch Sensor IC
+
+
 ### pushover (1)
 
 
-- [pushbullet-desktop](http://npm.im/pushbullet-desktop) - A lightweight cross-platform Pushbullet Client for OS X, Windows and Linux. It enables you to receive native system notifications in an unobstrusive way.
+- [pushbullet-desktop](http://npm.im/pushbullet-desktop) - Lightweight cross-platform Pushbullet desktop application
 
 
-### push (1)
+### prt (1)
 
 
-- [pushbullet-desktop](http://npm.im/pushbullet-desktop) - A lightweight cross-platform Pushbullet Client for OS X, Windows and Linux. It enables you to receive native system notifications in an unobstrusive way.
+- [prt](http://npm.im/prt) - Package Manager for Windows
 
 
-### notifications (1)
+### helper (1)
 
 
-- [pushbullet-desktop](http://npm.im/pushbullet-desktop) - A lightweight cross-platform Pushbullet Client for OS X, Windows and Linux. It enables you to receive native system notifications in an unobstrusive way.
+- [project-bin-node](http://npm.im/project-bin-node) - bin helper to initialize a node project.
 
 
-### pull (1)
+### project (1)
 
 
-- [pull-ipc](http://npm.im/pull-ipc) - pull-stream wrapper around electron's ipc channel
+- [project-bin-node](http://npm.im/project-bin-node) - bin helper to initialize a node project.
+
+
+### init (1)
+
+
+- [project-bin-node](http://npm.im/project-bin-node) - bin helper to initialize a node project.
 
 
 ### texture (1)
-
-
-- [preview-dds](http://npm.im/preview-dds) - preview and save DDS textures from the command line
-
-
-### to (1)
 
 
 - [preview-dds](http://npm.im/preview-dds) - preview and save DDS textures from the command line
@@ -6479,19 +9016,7 @@
 - [preview-dds](http://npm.im/preview-dds) - preview and save DDS textures from the command line
 
 
-### convert (1)
-
-
-- [preview-dds](http://npm.im/preview-dds) - preview and save DDS textures from the command line
-
-
 ### compressed (1)
-
-
-- [preview-dds](http://npm.im/preview-dds) - preview and save DDS textures from the command line
-
-
-### stackgl (1)
 
 
 - [preview-dds](http://npm.im/preview-dds) - preview and save DDS textures from the command line
@@ -6543,6 +9068,54 @@
 
 
 - [preact-photon](http://npm.im/preact-photon) - Preact + Photon = <3
+
+
+### processor (1)
+
+
+- [posthtml](http://npm.im/posthtml) - HTML/XML processor
+
+
+### preprocessor (1)
+
+
+- [posthtml](http://npm.im/posthtml) - HTML/XML processor
+
+
+### manipulation (1)
+
+
+- [posthtml](http://npm.im/posthtml) - HTML/XML processor
+
+
+### transformations (1)
+
+
+- [posthtml](http://npm.im/posthtml) - HTML/XML processor
+
+
+### postproccessor (1)
+
+
+- [posthtml](http://npm.im/posthtml) - HTML/XML processor
+
+
+### xml (1)
+
+
+- [posthtml](http://npm.im/posthtml) - HTML/XML processor
+
+
+### happiness (1)
+
+
+- [positron-cli](http://npm.im/positron-cli) - Compile Javascript apps for Android
+
+
+### ajax (1)
+
+
+- [popsicle](http://npm.im/popsicle) - Simple HTTP requests for node and the browser
 
 
 ### IoC (1)
@@ -6629,6 +9202,24 @@
 - [photo-compare-sort](http://npm.im/photo-compare-sort) - A photo sort by user comparation
 
 
+### node-phidgets (1)
+
+
+- [phidgetapi](http://npm.im/phidgetapi) - Full official phidget interface API for node.js
+
+
+### phidgets (1)
+
+
+- [phidgetapi](http://npm.im/phidgetapi) - Full official phidget interface API for node.js
+
+
+### phidget (1)
+
+
+- [phidgetapi](http://npm.im/phidgetapi) - Full official phidget interface API for node.js
+
+
 ### team chat (1)
 
 
@@ -6671,12 +9262,6 @@
 - [peer-exchange](http://npm.im/peer-exchange) - Decentralized peer discovery and signaling
 
 
-### seed (1)
-
-
-- [peer-exchange](http://npm.im/peer-exchange) - Decentralized peer discovery and signaling
-
-
 ### exchange (1)
 
 
@@ -6689,10 +9274,46 @@
 - [peer-exchange](http://npm.im/peer-exchange) - Decentralized peer discovery and signaling
 
 
+### pdffiller-lite (1)
+
+
+- [pdffiller-lite](http://npm.im/pdffiller-lite) - A lite version of the popular pdffiller package for using in an electron app.
+
+
+### fdf (1)
+
+
+- [pdffiller-lite](http://npm.im/pdffiller-lite) - A lite version of the popular pdffiller package for using in an electron app.
+
+
+### pdftk (1)
+
+
+- [pdffiller-lite](http://npm.im/pdffiller-lite) - A lite version of the popular pdffiller package for using in an electron app.
+
+
+### ecosystem:browserify (1)
+
+
+- [payform](http://npm.im/payform) - A general purpose library for building credit card forms, validating inputs, and formatting numbers.
+
+
+### ecosystem:jquery (1)
+
+
+- [payform](http://npm.im/payform) - A general purpose library for building credit card forms, validating inputs, and formatting numbers.
+
+
 ### parched (1)
 
 
 - [parched-tasks-electron](http://npm.im/parched-tasks-electron) - Run Electron main-process files through Parched
+
+
+### Annexare (1)
+
+
+- [pack-dir](http://npm.im/pack-dir) - Pack/unpack specified directory with native current OS command line tools.
 
 
 ### anylitics (1)
@@ -6731,10 +9352,28 @@
 - [osc-electron](http://npm.im/osc-electron) - A JavaScript Open Sound Control (OSC) library that works in Node.js and the browser.
 
 
-### mp3 (1)
+### socket opencv node (1)
 
 
-- [ooz](http://npm.im/ooz) - A hackable music player.
+- [opencv-server-socket](http://npm.im/opencv-server-socket) - Simple opencv server who emit faces position
+
+
+### secure (1)
+
+
+- [open-ssh-tunnel](http://npm.im/open-ssh-tunnel) - Easy ssh2 tunneling
+
+
+### sftp (1)
+
+
+- [open-ssh-tunnel](http://npm.im/open-ssh-tunnel) - Easy ssh2 tunneling
+
+
+### ssh2 (1)
+
+
+- [open-ssh-tunnel](http://npm.im/open-ssh-tunnel) - Easy ssh2 tunneling
 
 
 ### unload (1)
@@ -6747,6 +9386,18 @@
 
 
 - [on-load](http://npm.im/on-load) - On load/unload events for DOM elements using a MutationObserver
+
+
+### commands (1)
+
+
+- [oargv](http://npm.im/oargv) - Turns an object into a bash command.
+
+
+### oargv (1)
+
+
+- [oargv](http://npm.im/oargv) - Turns an object into a bash command.
 
 
 ### meow (1)
@@ -6923,6 +9574,30 @@
 - [nw-requirejs](http://npm.im/nw-requirejs) - Node JS : Load node module in RequireJS
 
 
+### help (1)
+
+
+- [nutella-scrape](http://npm.im/nutella-scrape) - a nodeschool workshop to teach scraping
+
+
+### exercise (1)
+
+
+- [nutella-scrape](http://npm.im/nutella-scrape) - a nodeschool workshop to teach scraping
+
+
+### school (1)
+
+
+- [nutella-scrape](http://npm.im/nutella-scrape) - a nodeschool workshop to teach scraping
+
+
+### scraping (1)
+
+
+- [nutella-scrape](http://npm.im/nutella-scrape) - a nodeschool workshop to teach scraping
+
+
 ### Atom (1)
 
 
@@ -6933,6 +9608,24 @@
 
 
 - [nterm](http://npm.im/nterm) - A Node Terminal
+
+
+### posix (1)
+
+
+- [npm-run-posix-or-windows](http://npm.im/npm-run-posix-or-windows) - Portable NPM scripts when those have to work on Windows too
+
+
+### alternative (1)
+
+
+- [npm-run-posix-or-windows](http://npm.im/npm-run-posix-or-windows) - Portable NPM scripts when those have to work on Windows too
+
+
+### portable (1)
+
+
+- [npm-run-posix-or-windows](http://npm.im/npm-run-posix-or-windows) - Portable NPM scripts when those have to work on Windows too
 
 
 ### dependencies (1)
@@ -6947,6 +9640,90 @@
 - [notedit](http://npm.im/notedit) - Limited browser for note.mu
 
 
+### norm (1)
+
+
+- [norme](http://npm.im/norme) - Opinionated JavaScript linter
+
+
+### linting (1)
+
+
+- [norme](http://npm.im/norme) - Opinionated JavaScript linter
+
+
+### linter (1)
+
+
+- [norme](http://npm.im/norme) - Opinionated JavaScript linter
+
+
+### ecmascript7 (1)
+
+
+- [norme](http://npm.im/norme) - Opinionated JavaScript linter
+
+
+### ecmascript6 (1)
+
+
+- [norme](http://npm.im/norme) - Opinionated JavaScript linter
+
+
+### ecmascript5 (1)
+
+
+- [norme](http://npm.im/norme) - Opinionated JavaScript linter
+
+
+### esnext (1)
+
+
+- [norme](http://npm.im/norme) - Opinionated JavaScript linter
+
+
+### ecmascriptnext (1)
+
+
+- [norme](http://npm.im/norme) - Opinionated JavaScript linter
+
+
+### ecmascript (1)
+
+
+- [norme](http://npm.im/norme) - Opinionated JavaScript linter
+
+
+### mysql (1)
+
+
+- [norm-sql](http://npm.im/norm-sql) - A SQL builder that doesn't force its opinions on you. Paste SQL together, but with flexibility.
+
+
+### xor (1)
+
+
+- [norm-sql](http://npm.im/norm-sql) - A SQL builder that doesn't force its opinions on you. Paste SQL together, but with flexibility.
+
+
+### sql-builder (1)
+
+
+- [norm-sql](http://npm.im/norm-sql) - A SQL builder that doesn't force its opinions on you. Paste SQL together, but with flexibility.
+
+
+### sql (1)
+
+
+- [norm-sql](http://npm.im/norm-sql) - A SQL builder that doesn't force its opinions on you. Paste SQL together, but with flexibility.
+
+
+### orm (1)
+
+
+- [norm-sql](http://npm.im/norm-sql) - A SQL builder that doesn't force its opinions on you. Paste SQL together, but with flexibility.
+
+
 ### ide (1)
 
 
@@ -6959,25 +9736,151 @@
 - [node-tg-bot](http://npm.im/node-tg-bot) - Node Telegram Bot Api Interface
 
 
+### device (1)
+
+
+- [node-red-contrib-particle](http://npm.im/node-red-contrib-particle) - Node-RED node to connect to Particle devices. Used to call functions, read variables or listen to Server-Sent Events (SSEs)
+
+
+### P1 (1)
+
+
+- [node-red-contrib-particle](http://npm.im/node-red-contrib-particle) - Node-RED node to connect to Particle devices. Used to call functions, read variables or listen to Server-Sent Events (SSEs)
+
+
+### dark mode (1)
+
+
+- [node-osx-prefs](http://npm.im/node-osx-prefs) - Node API for some of OSX System Preferences
+
+
+### nodobjc (1)
+
+
+- [node-osx-prefs](http://npm.im/node-osx-prefs) - Node API for some of OSX System Preferences
+
+
+### Preferences (1)
+
+
+- [node-osx-prefs](http://npm.im/node-osx-prefs) - Node API for some of OSX System Preferences
+
+
+### System (1)
+
+
+- [node-osx-prefs](http://npm.im/node-osx-prefs) - Node API for some of OSX System Preferences
+
+
+### windows 8 notification (1)
+
+
+- [node-notifier](http://npm.im/node-notifier) - A Node.js module for sending notifications on native Mac, Windows (post and pre 8) and Linux (or Growl as fallback)
+
+
+### mac os x 10.8 (1)
+
+
+- [node-notifier](http://npm.im/node-notifier) - A Node.js module for sending notifications on native Mac, Windows (post and pre 8) and Linux (or Growl as fallback)
+
+
+### notifier (1)
+
+
+- [node-mac-notifier](http://npm.im/node-mac-notifier) - Create native OS X notifications from Node.js
+
+
+### node-libcurl (1)
+
+
+- [node-libcurl](http://npm.im/node-libcurl) - Node bindings for libcurl. Based on the work from node-curl.
+
+
+### libcurl (1)
+
+
+- [node-libcurl](http://npm.im/node-libcurl) - Node bindings for libcurl. Based on the work from node-curl.
+
+
+### curl (1)
+
+
+- [node-libcurl](http://npm.im/node-libcurl) - Node bindings for libcurl. Based on the work from node-curl.
+
+
+### node-curl (1)
+
+
+- [node-libcurl](http://npm.im/node-libcurl) - Node bindings for libcurl. Based on the work from node-curl.
+
+
+### Hider (1)
+
+
+- [node-hide](http://npm.im/node-hide) - A Node Module to Ease Hiding/Showing Other Windows
+
+
+### Hide (1)
+
+
+- [node-hide](http://npm.im/node-hide) - A Node Module to Ease Hiding/Showing Other Windows
+
+
+### extendable (1)
+
+
+- [node-flat-db](http://npm.im/node-flat-db) - JSON database for Node and the browser powered by lodash
+
+
+### aluminum (1)
+
+
+- [node-apple-remote](http://npm.im/node-apple-remote) - Simple event-driven interface to Aluminum Apple Remote
+
+
+### apple (1)
+
+
+- [node-apple-remote](http://npm.im/node-apple-remote) - Simple event-driven interface to Aluminum Apple Remote
+
+
 ### koa (1)
 
 
 - [nixie](http://npm.im/nixie) - Coming soon!
 
 
-### auth (1)
+### compile (1)
 
 
-- [nightmare-google-oauth2](http://npm.im/nightmare-google-oauth2) - Nightmare plugin to automatically authenticate, authorize and retrieve a fresh OAuth2 token for Google APIs
+- [nimble-elements](http://npm.im/nimble-elements) - Lightweight Web Application Framework - 2015.11.02
+
+
+### light weight (1)
+
+
+- [nimble-elements](http://npm.im/nimble-elements) - Lightweight Web Application Framework - 2015.11.02
+
+
+### webapp (1)
+
+
+- [nimble-elements](http://npm.im/nimble-elements) - Lightweight Web Application Framework - 2015.11.02
+
+
+### web app (1)
+
+
+- [nimble-elements](http://npm.im/nimble-elements) - Lightweight Web Application Framework - 2015.11.02
+
+
+### webrequest (1)
+
+
+- [nightmare-webrequest-addon](http://npm.im/nightmare-webrequest-addon) - webRequest API addon
 
 
 ### token (1)
-
-
-- [nightmare-google-oauth2](http://npm.im/nightmare-google-oauth2) - Nightmare plugin to automatically authenticate, authorize and retrieve a fresh OAuth2 token for Google APIs
-
-
-### googleapis (1)
 
 
 - [nightmare-google-oauth2](http://npm.im/nightmare-google-oauth2) - Nightmare plugin to automatically authenticate, authorize and retrieve a fresh OAuth2 token for Google APIs
@@ -6989,28 +9892,70 @@
 - [nightmare-google-oauth2](http://npm.im/nightmare-google-oauth2) - Nightmare plugin to automatically authenticate, authorize and retrieve a fresh OAuth2 token for Google APIs
 
 
-### qualitative (1)
+### webcomponent (1)
 
 
-- [newslynx-electron](http://npm.im/newslynx-electron) - A desktop version of the NewsLynx web app.
+- [ngn-chassis-components](http://npm.im/ngn-chassis-components) - NGN Chassis Web Components
 
 
-### quantitative (1)
+### chassis (1)
 
 
-- [newslynx-electron](http://npm.im/newslynx-electron) - A desktop version of the NewsLynx web app.
+- [ngn-chassis-components](http://npm.im/ngn-chassis-components) - NGN Chassis Web Components
 
 
-### impact (1)
+### ngn (1)
 
 
-- [newslynx-electron](http://npm.im/newslynx-electron) - A desktop version of the NewsLynx web app.
+- [ngn-chassis-components](http://npm.im/ngn-chassis-components) - NGN Chassis Web Components
 
 
-### journalism (1)
+### form library (1)
 
 
-- [newslynx-electron](http://npm.im/newslynx-electron) - A desktop version of the NewsLynx web app.
+- [ng2-magic-forms](http://npm.im/ng2-magic-forms) - Inspired by <a href="https://github.com/formly-js/angular-formly">angular-formly</a>
+
+
+### dynamic forms (1)
+
+
+- [ng2-magic-forms](http://npm.im/ng2-magic-forms) - Inspired by <a href="https://github.com/formly-js/angular-formly">angular-formly</a>
+
+
+### angular 2 (1)
+
+
+- [ng2-magic-forms](http://npm.im/ng2-magic-forms) - Inspired by <a href="https://github.com/formly-js/angular-formly">angular-formly</a>
+
+
+### formly (1)
+
+
+- [ng2-magic-forms](http://npm.im/ng2-magic-forms) - Inspired by <a href="https://github.com/formly-js/angular-formly">angular-formly</a>
+
+
+### forms (1)
+
+
+- [ng2-magic-forms](http://npm.im/ng2-magic-forms) - Inspired by <a href="https://github.com/formly-js/angular-formly">angular-formly</a>
+
+
+### columbia (1)
+
+
+- [newslynx](http://npm.im/newslynx) - A platform for measuring the quantitative and qualitative impact of journalism.
+
+
+### tow center (1)
+
+
+- [newslynx](http://npm.im/newslynx) - A platform for measuring the quantitative and qualitative impact of journalism.
+
+
+### analytics (1)
+
+
+- [newslynx](http://npm.im/newslynx) - A platform for measuring the quantitative and qualitative impact of journalism.
 
 
 ### newslynx (1)
@@ -7025,6 +9970,24 @@
 - [neutronkit](http://npm.im/neutronkit) - The easiest way to build Electron apps for OS X, Windows, Linux
 
 
+### smart (1)
+
+
+- [netbeast-cli](http://npm.im/netbeast-cli) - Netbeast OS dashboard, IoT apps manager
+
+
+### beast (1)
+
+
+- [netbeast-cli](http://npm.im/netbeast-cli) - Netbeast OS dashboard, IoT apps manager
+
+
+### netbeast (1)
+
+
+- [netbeast-cli](http://npm.im/netbeast-cli) - Netbeast OS dashboard, IoT apps manager
+
+
 ### customizable (1)
 
 
@@ -7032,12 +9995,6 @@
 
 
 ### WebComponent (1)
-
-
-- [neovim-component](http://npm.im/neovim-component) - Polymer component for Neovim frontend
-
-
-### polymer (1)
 
 
 - [neovim-component](http://npm.im/neovim-component) - Polymer component for Neovim frontend
@@ -7061,12 +10018,6 @@
 - [nedb-lite](http://npm.im/nedb-lite) - this package is a standalone, single-script version of nedb @ 1.8.0 that runs in both browser and nodejs, with zero npm-dependencies
 
 
-### nosql (1)
-
-
-- [nedb-lite](http://npm.im/nedb-lite) - this package is a standalone, single-script version of nedb @ 1.8.0 that runs in both browser and nodejs, with zero npm-dependencies
-
-
 ### no-sql (1)
 
 
@@ -7085,16 +10036,52 @@
 - [nedb-lite](http://npm.im/nedb-lite) - this package is a standalone, single-script version of nedb @ 1.8.0 that runs in both browser and nodejs, with zero npm-dependencies
 
 
-### embedded (1)
+### nat (1)
 
 
-- [nedb-lite](http://npm.im/nedb-lite) - this package is a standalone, single-script version of nedb @ 1.8.0 that runs in both browser and nodejs, with zero npm-dependencies
+- [natman-api](http://npm.im/natman-api) - Natman converted into an useable API.
+
+
+### upnp (1)
+
+
+- [natman-api](http://npm.im/natman-api) - Natman converted into an useable API.
+
+
+### pmp (1)
+
+
+- [natman-api](http://npm.im/natman-api) - Natman converted into an useable API.
+
+
+### natman (1)
+
+
+- [natman-api](http://npm.im/natman-api) - Natman converted into an useable API.
+
+
+### nachos (1)
+
+
+- [native-builder](http://npm.im/native-builder) - A utility to build native packages according to your engine in Node.js
 
 
 ### blender (1)
 
 
 - [myou-engine](http://npm.im/myou-engine) - Myou is a game engine for web, it features an editor based on Blender.
+
+
+### audio-api (1)
+
+
+- [musicplayer-api](http://npm.im/musicplayer-api) - Simple Audio API wrapper
+
+
+### storytelling (1)
+
+
+- [motives](http://npm.im/motives) - Storytelling and mindmapping tool
 
 
 ### moon (1)
@@ -7133,10 +10120,88 @@
 - [moebius](http://npm.im/moebius) - Command-Line tool to find and download comics (As well as NodeJS module)
 
 
-### i18n (1)
+### data flow (1)
 
 
-- [mingalaba](http://npm.im/mingalaba) - Unicode strings text editor for developers
+- [mobx](http://npm.im/mobx) - Simple, scalable state management.
+
+
+### state management (1)
+
+
+- [mobx](http://npm.im/mobx) - Simple, scalable state management.
+
+
+### functional-reactive-programming (1)
+
+
+- [mobx](http://npm.im/mobx) - Simple, scalable state management.
+
+
+### observable (1)
+
+
+- [mobx](http://npm.im/mobx) - Simple, scalable state management.
+
+
+### mobservable (1)
+
+
+- [mobx](http://npm.im/mobx) - Simple, scalable state management.
+
+
+### translations (1)
+
+
+- [mobx-translate](http://npm.im/mobx-translate) - Simple translations library for mobx
+
+
+### docx/doc/pptx/ppt/xlsx/xls/pdf full text search (1)
+
+
+- [minicloud](http://npm.im/minicloud) - file hybrid cloud management software,support docx/doc/pptx/ppt/xlsx/xls/pdf online browse view and full text search
+
+
+### docx/doc/pptx/ppt/xlsx/xls/pdf view (1)
+
+
+- [minicloud](http://npm.im/minicloud) - file hybrid cloud management software,support docx/doc/pptx/ppt/xlsx/xls/pdf online browse view and full text search
+
+
+### hybrid cloud (1)
+
+
+- [minicloud](http://npm.im/minicloud) - file hybrid cloud management software,support docx/doc/pptx/ppt/xlsx/xls/pdf online browse view and full text search
+
+
+### enterprise (1)
+
+
+- [minicloud](http://npm.im/minicloud) - file hybrid cloud management software,support docx/doc/pptx/ppt/xlsx/xls/pdf online browse view and full text search
+
+
+### distributed (1)
+
+
+- [minicloud-storage](http://npm.im/minicloud-storage) - minicloud Lightweight distributed file storage
+
+
+### mini-utils (1)
+
+
+- [mini-utils](http://npm.im/mini-utils) - A mini script of utilities for Node and the Browser.
+
+
+### utils (1)
+
+
+- [mini-utils](http://npm.im/mini-utils) - A mini script of utilities for Node and the Browser.
+
+
+### mini (1)
+
+
+- [mini-utils](http://npm.im/mini-utils) - A mini script of utilities for Node and the Browser.
 
 
 ### unicode (1)
@@ -7145,16 +10210,70 @@
 - [mingalaba](http://npm.im/mingalaba) - Unicode strings text editor for developers
 
 
+### remote control (1)
+
+
+- [micro-app-remote-control](http://npm.im/micro-app-remote-control) - Remote control in node
+
+
+### x10 (1)
+
+
+- [micro-app-mqtt-x10-bridge](http://npm.im/micro-app-mqtt-x10-bridge) - mqtt to x10 bridge
+
+
+### webcam (1)
+
+
+- [micro-app-home-alarm](http://npm.im/micro-app-home-alarm) - Alarm dashboard written in node
+
+
+### sms (1)
+
+
+- [micro-app-home-alarm](http://npm.im/micro-app-home-alarm) - Alarm dashboard written in node
+
+
+### twillio (1)
+
+
+- [micro-app-home-alarm](http://npm.im/micro-app-home-alarm) - Alarm dashboard written in node
+
+
+### alarm (1)
+
+
+- [micro-app-home-alarm](http://npm.im/micro-app-home-alarm) - Alarm dashboard written in node
+
+
 ### IOT (1)
 
 
 - [micro-app-electron-launcher](http://npm.im/micro-app-electron-launcher) - Launcher for micro-apps using electron
 
 
-### micro-app (1)
+### google drive (1)
 
 
-- [micro-app-electron-launcher](http://npm.im/micro-app-electron-launcher) - Launcher for micro-apps using electron
+- [micro-app-cloud-backup](http://npm.im/micro-app-cloud-backup) - micro app to do backups to cloud storage services
+
+
+### drive (1)
+
+
+- [micro-app-cloud-backup](http://npm.im/micro-app-cloud-backup) - micro app to do backups to cloud storage services
+
+
+### docker (1)
+
+
+- [micro-app-cloud-backup](http://npm.im/micro-app-cloud-backup) - micro app to do backups to cloud storage services
+
+
+### backup (1)
+
+
+- [micro-app-cloud-backup](http://npm.im/micro-app-cloud-backup) - micro app to do backups to cloud storage services
 
 
 ### splashscreen (1)
@@ -7167,6 +10286,54 @@
 
 
 - [meteor-desktop-splash-screen](http://npm.im/meteor-desktop-splash-screen) - Meteor Desktop splash screen plugin.
+
+
+### "geometry" (1)
+
+
+- [meshdiff](http://npm.im/meshdiff) - A utility to visually diff 3D objects.
+
+
+### "math" (1)
+
+
+- [meshdiff](http://npm.im/meshdiff) - A utility to visually diff 3D objects.
+
+
+### "WebGL" (1)
+
+
+- [meshdiff](http://npm.im/meshdiff) - A utility to visually diff 3D objects.
+
+
+### "Three" (1)
+
+
+- [meshdiff](http://npm.im/meshdiff) - A utility to visually diff 3D objects.
+
+
+### "ThreeJS" (1)
+
+
+- [meshdiff](http://npm.im/meshdiff) - A utility to visually diff 3D objects.
+
+
+### "CAD" (1)
+
+
+- [meshdiff](http://npm.im/meshdiff) - A utility to visually diff 3D objects.
+
+
+### "mesh" (1)
+
+
+- [meshdiff](http://npm.im/meshdiff) - A utility to visually diff 3D objects.
+
+
+### "3D" (1)
+
+
+- [meshdiff](http://npm.im/meshdiff) - A utility to visually diff 3D objects.
 
 
 ### menubar-extra (1)
@@ -7187,6 +10354,18 @@
 - [matterfront](http://npm.im/matterfront) - Mattermost frontend app powered by electron
 
 
+### matrix (1)
+
+
+- [matrix-authorization](http://npm.im/matrix-authorization) - A permissions based matrix authorization strategy.
+
+
+### authorization (1)
+
+
+- [matrix-authorization](http://npm.im/matrix-authorization) - A permissions based matrix authorization strategy.
+
+
 ### mathjax (1)
 
 
@@ -7203,6 +10382,24 @@
 
 
 - [matchbox-dom](http://npm.im/matchbox-dom) - Matchbox View and dom library
+
+
+### linvodb3 (1)
+
+
+- [marsdb](http://npm.im/marsdb) - MarsDB is a lightweight client-side MongoDB-like database, Promise based, written in ES6
+
+
+### marsdb (1)
+
+
+- [marsdb-sync-client](http://npm.im/marsdb-sync-client) - Standalone Meteor DDP client based on MarsDB
+
+
+### minimongo (1)
+
+
+- [marsdb-sync-client](http://npm.im/marsdb-sync-client) - Standalone Meteor DDP client based on MarsDB
 
 
 ### md2react (1)
@@ -7283,10 +10480,28 @@
 - [magicmirror](http://npm.im/magicmirror) - A modular interface for smart mirrors.
 
 
-### macaca (1)
+### romania (1)
 
 
-- [macaca-electron](http://npm.im/macaca-electron) - macaca-electron
+- [made-in-romania](http://npm.im/made-in-romania) - A list of cool projects made in Romania.
+
+
+### india (1)
+
+
+- [made-in-india](http://npm.im/made-in-india) - A list of neat projects made in India.
+
+
+### brazil (1)
+
+
+- [made-in-brazil](http://npm.im/made-in-brazil) - A list of neat projects made in Brazil.
+
+
+### wd (1)
+
+
+- [macaca-wd](http://npm.im/macaca-wd) - macaca wd client
 
 
 ### laucher (1)
@@ -7311,12 +10526,6 @@
 
 
 - [luma.gl](http://npm.im/luma.gl) - A WebGL JavaScript visualization library.
-
-
-### boot (1)
-
-
-- [lucy-boot](http://npm.im/lucy-boot) - Bootstrap Lucidity, an electron application.
 
 
 ### runtime (1)
@@ -7433,6 +10642,36 @@
 - [logrr-electron-auth](http://npm.im/logrr-electron-auth) - SAML 2.0 authentication library for Electron and OpenFin
 
 
+### submodule (1)
+
+
+- [load-plugin](http://npm.im/load-plugin) - Load a submodule / plugin
+
+
+### evil corp (1)
+
+
+- [live-wallpaper-ecorp](http://npm.im/live-wallpaper-ecorp) - Electron-based live wallpaper showing a glitched E Corp / Evil Corp logo.
+
+
+### e corp (1)
+
+
+- [live-wallpaper-ecorp](http://npm.im/live-wallpaper-ecorp) - Electron-based live wallpaper showing a glitched E Corp / Evil Corp logo.
+
+
+### fsociety (1)
+
+
+- [live-wallpaper-ecorp](http://npm.im/live-wallpaper-ecorp) - Electron-based live wallpaper showing a glitched E Corp / Evil Corp logo.
+
+
+### mr robot (1)
+
+
+- [live-wallpaper-ecorp](http://npm.im/live-wallpaper-ecorp) - Electron-based live wallpaper showing a glitched E Corp / Evil Corp logo.
+
+
 ### Demos (1)
 
 
@@ -7464,12 +10703,6 @@
 
 
 ### data viz (1)
-
-
-- [lightning-server](http://npm.im/lightning-server) - lightning dataviz notebooks
-
-
-### three.js (1)
 
 
 - [lightning-server](http://npm.im/lightning-server) - lightning dataviz notebooks
@@ -7517,16 +10750,28 @@
 - [lifesized](http://npm.im/lifesized) - Display things in life size
 
 
-### Units (1)
-
-
-- [lifesized](http://npm.im/lifesized) - Display things in life size
-
-
 ### CSS (1)
 
 
 - [lifesized](http://npm.im/lifesized) - Display things in life size
+
+
+### multiplatform (1)
+
+
+- [libui-node](http://npm.im/libui-node) - Node.js bindings for libui
+
+
+### libui-node (1)
+
+
+- [libui-download](http://npm.im/libui-download) - download libui prebuilt binary zips from github releases
+
+
+### leto (1)
+
+
+- [letojs](http://npm.im/letojs) - A Framework, for building real-time appications
 
 
 ### hot-swap (1)
@@ -7583,16 +10828,58 @@
 - [league-companion](http://npm.im/league-companion) - A companion application for League of Legends built in Electron for Windows/Mac
 
 
-### of (1)
-
-
-- [league-companion](http://npm.im/league-companion) - A companion application for League of Legends built in Electron for Windows/Mac
-
-
 ### league (1)
 
 
 - [league-companion](http://npm.im/league-companion) - A companion application for League of Legends built in Electron for Windows/Mac
+
+
+### json-schema (1)
+
+
+- [kinto-admin](http://npm.im/kinto-admin) - Kinto Web Administration Console in React.js
+
+
+### kinto (1)
+
+
+- [kinto-admin](http://npm.im/kinto-admin) - Kinto Web Administration Console in React.js
+
+
+### events (1)
+
+
+- [key-event-to-string](http://npm.im/key-event-to-string) -  Converts a JavaScript key event object into a humanly readable format
+
+
+### keyfile (1)
+
+
+- [keepass](http://npm.im/keepass) - Node.js library for reading and writing KeePass databases
+
+
+### password (1)
+
+
+- [keepass](http://npm.im/keepass) - Node.js library for reading and writing KeePass databases
+
+
+### kdb4 (1)
+
+
+- [keepass](http://npm.im/keepass) - Node.js library for reading and writing KeePass databases
+
+
+### kdbx (1)
+
+
+- [keepass](http://npm.im/keepass) - Node.js library for reading and writing KeePass databases
+
+
+### keepass (1)
+
+
+- [keepass](http://npm.im/keepass) - Node.js library for reading and writing KeePass databases
 
 
 ### karma-adapter (1)
@@ -7605,6 +10892,48 @@
 
 
 - [karma-electron-launcher2](http://npm.im/karma-electron-launcher2) - Karma launcher and framework for Electron
+
+
+### kabelschland (1)
+
+
+- [kabelschland](http://npm.im/kabelschland) - ## About
+
+
+### kabel deutschland (1)
+
+
+- [kabelschland](http://npm.im/kabelschland) - ## About
+
+
+### vodafone (1)
+
+
+- [kabelschland](http://npm.im/kabelschland) - ## About
+
+
+### jdk-installer (1)
+
+
+- [jvi](http://npm.im/jvi) - JDK (Java Development Kit) installer for Debian-based linux distributions
+
+
+### java-installer (1)
+
+
+- [jvi](http://npm.im/jvi) - JDK (Java Development Kit) installer for Debian-based linux distributions
+
+
+### jvi (1)
+
+
+- [jvi](http://npm.im/jvi) - JDK (Java Development Kit) installer for Debian-based linux distributions
+
+
+### jdk (1)
+
+
+- [jvi](http://npm.im/jvi) - JDK (Java Development Kit) installer for Debian-based linux distributions
 
 
 ### output (1)
@@ -7643,25 +10972,7 @@
 - [jspm-caddy-hmr](http://npm.im/jspm-caddy-hmr) - jspm & caddy => HMR :)
 
 
-### watcher (1)
-
-
-- [jspm-caddy-hmr](http://npm.im/jspm-caddy-hmr) - jspm & caddy => HMR :)
-
-
-### serialization (1)
-
-
-- [json-web-storage](http://npm.im/json-web-storage) - Simple localStorage/sessionStorage wrapper providing the exact same API with automatic JSON serialization
-
-
 ### sessionStorage (1)
-
-
-- [json-web-storage](http://npm.im/json-web-storage) - Simple localStorage/sessionStorage wrapper providing the exact same API with automatic JSON serialization
-
-
-### localStorage (1)
 
 
 - [json-web-storage](http://npm.im/json-web-storage) - Simple localStorage/sessionStorage wrapper providing the exact same API with automatic JSON serialization
@@ -7727,7 +11038,7 @@
 - [johnny-five-electron](http://npm.im/johnny-five-electron) - Temporary fork to support Electron (to be deprecated)
 
 
-### particle (1)
+### i2c (1)
 
 
 - [johnny-five-electron](http://npm.im/johnny-five-electron) - Temporary fork to support Electron (to be deprecated)
@@ -7745,10 +11056,46 @@
 - [johnny-five-electron](http://npm.im/johnny-five-electron) - Temporary fork to support Electron (to be deprecated)
 
 
+### robot (1)
+
+
+- [johnny-five-electron](http://npm.im/johnny-five-electron) - Temporary fork to support Electron (to be deprecated)
+
+
 ### serialport (1)
 
 
 - [johnny-five-electron](http://npm.im/johnny-five-electron) - Temporary fork to support Electron (to be deprecated)
+
+
+### JVM (1)
+
+
+- [java-download](http://npm.im/java-download) - Downloads a JVM release archive from Oracle
+
+
+### deserialization (1)
+
+
+- [isopod](http://npm.im/isopod) - Universal (isomorphic) Javascript object serialization / deserialization
+
+
+### deserialize (1)
+
+
+- [isopod](http://npm.im/isopod) - Universal (isomorphic) Javascript object serialization / deserialization
+
+
+### network (1)
+
+
+- [is2](http://npm.im/is2) - A type checking library where each exported function returns either true or false and does not throw. Also added tests.
+
+
+### checking (1)
+
+
+- [is2](http://npm.im/is2) - A type checking library where each exported function returns either true or false and does not throw. Also added tests.
 
 
 ### running (1)
@@ -7787,6 +11134,12 @@
 - [irasutoyer](http://npm.im/irasutoyer) - Desktop client for Irasutoya
 
 
+### IPFS (1)
+
+
+- [ipsurge](http://npm.im/ipsurge) - Quick and simple deploy tool to host Native Web Applications and Static Web Pages in IPFS
+
+
 ### phonegap (1)
 
 
@@ -7815,6 +11168,24 @@
 
 
 - [ionic-brunch-es6-seed](http://npm.im/ionic-brunch-es6-seed) - An Ionic starter project with Babel and Brunch
+
+
+### requirebin (1)
+
+
+- [install-missing](http://npm.im/install-missing) - install latest missing modules
+
+
+### browserify-plugin (1)
+
+
+- [install-missing](http://npm.im/install-missing) - install latest missing modules
+
+
+### package.json (1)
+
+
+- [install-missing](http://npm.im/install-missing) - install latest missing modules
 
 
 ### class (1)
@@ -7887,6 +11258,30 @@
 
 
 - [idle-timer](http://npm.im/idle-timer) - Checks if a user is idle for a configurable amount of time and fires a callback
+
+
+### spotify (1)
+
+
+- [hypertunes-spotify](http://npm.im/hypertunes-spotify) - A Spotify plugin for HyperTunes
+
+
+### hypertunes (1)
+
+
+- [hypertunes-spotify](http://npm.im/hypertunes-spotify) - A Spotify plugin for HyperTunes
+
+
+### mirror (1)
+
+
+- [hyperlog-webtorrent-seed](http://npm.im/hyperlog-webtorrent-seed) - seed webtorrent magnet links from a hyperlog
+
+
+### magnet (1)
+
+
+- [hyperlog-webtorrent-seed](http://npm.im/hyperlog-webtorrent-seed) - seed webtorrent magnet links from a hyperlog
 
 
 ### ux (1)
@@ -7973,6 +11368,12 @@
 - [hotel-clerk](http://npm.im/hotel-clerk) - Hotel Clerk helps you run your hotel from a convenient menubar app
 
 
+### homebridge-plugin (1)
+
+
+- [homebridge-particle](http://npm.im/homebridge-particle) - Particle plugin for homebridge: https://github.com/nfarina/homebridge
+
+
 ### partials (1)
 
 
@@ -7991,31 +11392,7 @@
 - [holon](http://npm.im/holon) - Leight-weight DSL-free dual-side composable reactive components
 
 
-### templating (1)
-
-
-- [holon](http://npm.im/holon) - Leight-weight DSL-free dual-side composable reactive components
-
-
-### composable (1)
-
-
-- [holon](http://npm.im/holon) - Leight-weight DSL-free dual-side composable reactive components
-
-
 ### generate (1)
-
-
-- [holon](http://npm.im/holon) - Leight-weight DSL-free dual-side composable reactive components
-
-
-### universal (1)
-
-
-- [holon](http://npm.im/holon) - Leight-weight DSL-free dual-side composable reactive components
-
-
-### isomorphic (1)
 
 
 - [holon](http://npm.im/holon) - Leight-weight DSL-free dual-side composable reactive components
@@ -8057,10 +11434,46 @@
 - [hihat](http://npm.im/hihat) - local Node/Browser development with Chrome DevTools
 
 
+### Constants (1)
+
+
+- [hephys](http://npm.im/hephys) - High Energy Physics Units and Constants
+
+
+### Physics (1)
+
+
+- [hephys](http://npm.im/hephys) - High Energy Physics Units and Constants
+
+
+### Energy (1)
+
+
+- [hephys](http://npm.im/hephys) - High Energy Physics Units and Constants
+
+
+### High (1)
+
+
+- [hephys](http://npm.im/hephys) - High Energy Physics Units and Constants
+
+
+### HEP (1)
+
+
+- [hephys](http://npm.im/hephys) - High Energy Physics Units and Constants
+
+
 ### hearthstone (1)
 
 
 - [hearthstone-tracker](http://npm.im/hearthstone-tracker) - An electron based Hearthstone tracker
+
+
+### trello (1)
+
+
+- [headless-trello-auth](http://npm.im/headless-trello-auth) - Automatically grant access for your application in Trello
 
 
 ### momoiroclover (1)
@@ -8081,16 +11494,28 @@
 - [gulp-run-electron](http://npm.im/gulp-run-electron) - Gulp plugin for starting Electron.
 
 
+### stremio-addons (1)
+
+
+- [guidebox-stremio](http://npm.im/guidebox-stremio) - Find where to stream your favorite movies and shows amongst Netflix, Hulu, Amazon and other UK/US services.
+
+
+### stremio (1)
+
+
+- [guidebox-stremio](http://npm.im/guidebox-stremio) - Find where to stream your favorite movies and shows amongst Netflix, Hulu, Amazon and other UK/US services.
+
+
+### guidebox (1)
+
+
+- [guidebox-stremio](http://npm.im/guidebox-stremio) - Find where to stream your favorite movies and shows amongst Netflix, Hulu, Amazon and other UK/US services.
+
+
 ### procfile (1)
 
 
 - [gryn](http://npm.im/gryn) - Procfile based process management.
-
-
-### cmd (1)
-
-
-- [grunt-electron-packager](http://npm.im/grunt-electron-packager) - Package Electron apps. Grunt task to create packages electron using electron-packager
 
 
 ### rpm (1)
@@ -8106,12 +11531,6 @@
 
 
 ### electron plus (1)
-
-
-- [grunt-electron-packager-builder](http://npm.im/grunt-electron-packager-builder) - Package Electron apps. Grunt task to electron-prebuilt , electron-packager and electron-builder.
-
-
-### OSX (1)
 
 
 - [grunt-electron-packager-builder](http://npm.im/grunt-electron-packager-builder) - Package Electron apps. Grunt task to electron-prebuilt , electron-packager and electron-builder.
@@ -8195,12 +11614,6 @@
 - [gremlin-lab](http://npm.im/gremlin-lab) - An IDE-like console for Apache TinkerPop's Gremlin Server
 
 
-### parsing (1)
-
-
-- [graviton](http://npm.im/graviton) - Headless browser for web testing, scrapping
-
-
 ### grabber (1)
 
 
@@ -8243,12 +11656,6 @@
 - [gorgon-editor](http://npm.im/gorgon-editor) - 2D Game Sprite & Animation Editor
 
 
-### games (1)
-
-
-- [gorgon-editor](http://npm.im/gorgon-editor) - 2D Game Sprite & Animation Editor
-
-
 ### gorgon (1)
 
 
@@ -8285,28 +11692,190 @@
 - [glot.io](http://npm.im/glot.io) - A package to interface with the glot.io api
 
 
+### graphics (1)
+
+
+- [glantern](http://npm.im/glantern) - A library intended for a Flash-HTML5 shim layer.
+
+
+### gpgpu (1)
+
+
+- [gl](http://npm.im/gl) - Creates a WebGL context without a window
+
+
+### server (1)
+
+
+- [gl](http://npm.im/gl) - Creates a WebGL context without a window
+
+
+### opengl (1)
+
+
+- [gl](http://npm.im/gl) - Creates a WebGL context without a window
+
+
+### framebuffer (1)
+
+
+- [gl-pixel-stream](http://npm.im/gl-pixel-stream) - streaming gl.readPixels from an FBO
+
+
+### readPixels (1)
+
+
+- [gl-pixel-stream](http://npm.im/gl-pixel-stream) - streaming gl.readPixels from an FBO
+
+
 ### gitkit (1)
 
 
 - [gitkit-widgets](http://npm.im/gitkit-widgets) - Convenience library for initializing Google Identity Toolkit widgets
 
 
-### html5 (1)
+### cli-app (1)
 
 
-- [generator-websemble](http://npm.im/generator-websemble) - Websemble app generator.
+- [github-latest-release](http://npm.im/github-latest-release) - Get latest release information from github repository
 
 
-### webcomponents (1)
+### automatization (1)
 
 
-- [generator-websemble](http://npm.im/generator-websemble) - Websemble app generator.
+- [github-labeller](http://npm.im/github-labeller) - Automagically create issue labels in your GitHub projects.
 
 
-### angular2 (1)
+### labels (1)
 
 
-- [generator-tsweb](http://npm.im/generator-tsweb) - Yeoman generator for Typescript + Web
+- [github-labeller](http://npm.im/github-labeller) - Automagically create issue labels in your GitHub projects.
+
+
+### rev (1)
+
+
+- [git-shas](http://npm.im/git-shas) - This module returns the list of all shas (git commit hashes) from a git repository.
+
+
+### rev-parse (1)
+
+
+- [git-shas](http://npm.im/git-shas) - This module returns the list of all shas (git commit hashes) from a git repository.
+
+
+### rev-list (1)
+
+
+- [git-shas](http://npm.im/git-shas) - This module returns the list of all shas (git commit hashes) from a git repository.
+
+
+### revision (1)
+
+
+- [git-shas](http://npm.im/git-shas) - This module returns the list of all shas (git commit hashes) from a git repository.
+
+
+### Head (1)
+
+
+- [git-shas](http://npm.im/git-shas) - This module returns the list of all shas (git commit hashes) from a git repository.
+
+
+### HEAD (1)
+
+
+- [git-shas](http://npm.im/git-shas) - This module returns the list of all shas (git commit hashes) from a git repository.
+
+
+### commits (1)
+
+
+- [git-shas](http://npm.im/git-shas) - This module returns the list of all shas (git commit hashes) from a git repository.
+
+
+### hashes (1)
+
+
+- [git-shas](http://npm.im/git-shas) - This module returns the list of all shas (git commit hashes) from a git repository.
+
+
+### handle (1)
+
+
+- [git-handler](http://npm.im/git-handler) - NPM module for handling git repositories. Makes it easy to add, checkout, branch, clone, commit, pull and push.
+
+
+### checkout (1)
+
+
+- [git-handler](http://npm.im/git-handler) - NPM module for handling git repositories. Makes it easy to add, checkout, branch, clone, commit, pull and push.
+
+
+### branch (1)
+
+
+- [git-handler](http://npm.im/git-handler) - NPM module for handling git repositories. Makes it easy to add, checkout, branch, clone, commit, pull and push.
+
+
+### add (1)
+
+
+- [git-handler](http://npm.im/git-handler) - NPM module for handling git repositories. Makes it easy to add, checkout, branch, clone, commit, pull and push.
+
+
+### clone (1)
+
+
+- [git-handler](http://npm.im/git-handler) - NPM module for handling git repositories. Makes it easy to add, checkout, branch, clone, commit, pull and push.
+
+
+### vrjs (1)
+
+
+- [generator-vrjs](http://npm.im/generator-vrjs) - Generator for vrjs projects
+
+
+### virtual reality (1)
+
+
+- [generator-vrjs](http://npm.im/generator-vrjs) - Generator for vrjs projects
+
+
+### browser-sync (1)
+
+
+- [generator-universal-web-template](http://npm.im/generator-universal-web-template) - Yeoman generator for an universal web proejct template - let you quickly set up a project using Handlebars, sass and ReactJS for front-end templating. It can be adopted with most modern CMS.
+
+
+### ReactJs (1)
+
+
+- [generator-universal-web-template](http://npm.im/generator-universal-web-template) - Yeoman generator for an universal web proejct template - let you quickly set up a project using Handlebars, sass and ReactJS for front-end templating. It can be adopted with most modern CMS.
+
+
+### Handlebars (1)
+
+
+- [generator-universal-web-template](http://npm.im/generator-universal-web-template) - Yeoman generator for an universal web proejct template - let you quickly set up a project using Handlebars, sass and ReactJS for front-end templating. It can be adopted with most modern CMS.
+
+
+### Sass (1)
+
+
+- [generator-universal-web-template](http://npm.im/generator-universal-web-template) - Yeoman generator for an universal web proejct template - let you quickly set up a project using Handlebars, sass and ReactJS for front-end templating. It can be adopted with most modern CMS.
+
+
+### web template (1)
+
+
+- [generator-universal-web-template](http://npm.im/generator-universal-web-template) - Yeoman generator for an universal web proejct template - let you quickly set up a project using Handlebars, sass and ReactJS for front-end templating. It can be adopted with most modern CMS.
+
+
+### font-end (1)
+
+
+- [generator-universal-web-template](http://npm.im/generator-universal-web-template) - Yeoman generator for an universal web proejct template - let you quickly set up a project using Handlebars, sass and ReactJS for front-end templating. It can be adopted with most modern CMS.
 
 
 ### Virtualization (1)
@@ -8393,10 +11962,52 @@
 - [gallezy](http://npm.im/gallezy) - Super Simple Image Gallery App http://anseki.github.io/gallezy/
 
 
+### permission (1)
+
+
+- [fs-access](http://npm.im/fs-access) - Node.js 0.12 fs.access() & fs.accessSync() ponyfill
+
+
+### stat (1)
+
+
+- [fs-access](http://npm.im/fs-access) - Node.js 0.12 fs.access() & fs.accessSync() ponyfill
+
+
+### ponyfill (1)
+
+
+- [fs-access](http://npm.im/fs-access) - Node.js 0.12 fs.access() & fs.accessSync() ponyfill
+
+
+### built-in (1)
+
+
+- [fs-access](http://npm.im/fs-access) - Node.js 0.12 fs.access() & fs.accessSync() ponyfill
+
+
 ### workspaces (1)
 
 
 - [frylord](http://npm.im/frylord) - Irken plugin exposing workspaces
+
+
+### money (1)
+
+
+- [format-currency](http://npm.im/format-currency) - Format strings or numbers to currency strings.
+
+
+### number-unit (1)
+
+
+- [format-currency](http://npm.im/format-currency) - Format strings or numbers to currency strings.
+
+
+### number (1)
+
+
+- [format-currency](http://npm.im/format-currency) - Format strings or numbers to currency strings.
 
 
 ### FreestyleOJ (1)
@@ -8429,10 +12040,46 @@
 - [filteron](http://npm.im/filteron) - A minimalist image editor based on CSS filters
 
 
+### filesystem (1)
+
+
+- [file-bin](http://npm.im/file-bin) - An abstraction for accessing the filesystem in Node.js.
+
+
+### bank statement (1)
+
+
+- [fidor-kontoauszug](http://npm.im/fidor-kontoauszug) - ## About
+
+
+### kontoauszüge (1)
+
+
+- [fidor-kontoauszug](http://npm.im/fidor-kontoauszug) - ## About
+
+
+### kontoauszug (1)
+
+
+- [fidor-kontoauszug](http://npm.im/fidor-kontoauszug) - ## About
+
+
+### fidor (1)
+
+
+- [fidor-kontoauszug](http://npm.im/fidor-kontoauszug) - ## About
+
+
 ### Utility (1)
 
 
 - [falseorvalue](http://npm.im/falseorvalue) - Returns the value of supplied argument, or false.
+
+
+### iron-node-tool (1)
+
+
+- [fake-require-main](http://npm.im/fake-require-main) - Fakes require.main for debug and testing purposes.
 
 
 ### F# (1)
@@ -8483,12 +12130,6 @@
 - [extract-streetview](http://npm.im/extract-streetview) - extract street view spherical images and depth information
 
 
-### extract (1)
-
-
-- [extract-streetview](http://npm.im/extract-streetview) - extract street view spherical images and depth information
-
-
 ### street (1)
 
 
@@ -8499,6 +12140,18 @@
 
 
 - [extract-streetview](http://npm.im/extract-streetview) - extract street view spherical images and depth information
+
+
+### scss (1)
+
+
+- [express-compile](http://npm.im/express-compile) - Supporting package to compile JS and CSS in Express applications
+
+
+### sass (1)
+
+
+- [express-compile](http://npm.im/express-compile) - Supporting package to compile JS and CSS in Express applications
 
 
 ### webcoin (1)
@@ -8528,13 +12181,13 @@
 ### switcher (1)
 
 
-- [evm](http://npm.im/evm) - Electron Version Manager
+- [evm](http://npm.im/evm) - [Deprecated] Electron Version Manager
 
 
 ### evm (1)
 
 
-- [evm](http://npm.im/evm) - Electron Version Manager
+- [evm](http://npm.im/evm) - [Deprecated] Electron Version Manager
 
 
 ### virtual-dom dom view element custom-elements dom-diff atom electron (1)
@@ -8561,6 +12214,18 @@
 - [espruino-web-ide](http://npm.im/espruino-web-ide) - A Terminal and Graphical code Editor for Espruino JavaScript Microcontrollers
 
 
+### jsnext (1)
+
+
+- [eslint-plugin-import](http://npm.im/eslint-plugin-import) - Import with sanity.
+
+
+### eslintplugin (1)
+
+
+- [eslint-plugin-import](http://npm.im/eslint-plugin-import) - Import with sanity.
+
+
 ### tracking (1)
 
 
@@ -8585,16 +12250,22 @@
 - [embeds](http://npm.im/embeds) - Parse & render embeds
 
 
-### titlebar (1)
-
-
-- [eltitlebar](http://npm.im/eltitlebar) - windows titlebar in electron
-
-
 ### pdf.js (1)
 
 
 - [elpdfview](http://npm.im/elpdfview) - use pdf.js view pdf file in electron
+
+
+### elevator (1)
+
+
+- [elevator](http://npm.im/elevator) - Windows UAC elevation that just works
+
+
+### uac (1)
+
+
+- [elevator](http://npm.im/elevator) - Windows UAC elevation that just works
 
 
 ### electron-monitor (1)
@@ -8615,12 +12286,6 @@
 - [elemon](http://npm.im/elemon) - live-reload tool for developing electron application
 
 
-### nodeschool (1)
-
-
-- [elementary-electron](http://npm.im/elementary-electron) - nodeschool workshop to learn electron
-
-
 ### sanitize-html (1)
 
 
@@ -8633,16 +12298,16 @@
 - [element-wrapper](http://npm.im/element-wrapper) - A simple and safe way to set innerHTML for yo-yo or bel component.
 
 
-### yo-yo (1)
-
-
-- [element-wrapper](http://npm.im/element-wrapper) - A simple and safe way to set innerHTML for yo-yo or bel component.
-
-
 ### automation (1)
 
 
 - [electrun](http://npm.im/electrun) - run on electron
+
+
+### electrum (1)
+
+
+- [electrum-events](http://npm.im/electrum-events) - Electrum Events forwards web component events to the bus.
 
 
 ### event, events, observer, listener (1)
@@ -8669,22 +12334,10 @@
 - [electron](http://npm.im/electron) - A simple command-line interface framework for node.js.
 
 
-### option (1)
-
-
-- [electron](http://npm.im/electron) - A simple command-line interface framework for node.js.
-
-
 ### electron spawn (1)
 
 
 - [electron-workers](http://npm.im/electron-workers) - Run electron scripts in managed workers
-
-
-### winston (1)
-
-
-- [electron-winstontransports](http://npm.im/electron-winstontransports) - Moves Winston loggers boilerplate out of sight.
 
 
 ### UWP (1)
@@ -8729,6 +12382,12 @@
 - [electron-version](http://npm.im/electron-version) - utility function for getting electron version string
 
 
+### hardware (1)
+
+
+- [electron-usb](http://npm.im/electron-usb) - Library to access USB devices
+
+
 ### electron-updater (1)
 
 
@@ -8745,30 +12404,6 @@
 
 
 - [electron-twitter](http://npm.im/electron-twitter) - Tutorial / Hello world style application on top of Electron to give it a good spin
-
-
-### forwarding (1)
-
-
-- [electron-tunnels](http://npm.im/electron-tunnels) - Electron app to manage your ssh tunnels
-
-
-### port (1)
-
-
-- [electron-tunnels](http://npm.im/electron-tunnels) - Electron app to manage your ssh tunnels
-
-
-### tunnel (1)
-
-
-- [electron-tunnels](http://npm.im/electron-tunnels) - Electron app to manage your ssh tunnels
-
-
-### ssh (1)
-
-
-- [electron-tunnels](http://npm.im/electron-tunnels) - Electron app to manage your ssh tunnels
 
 
 ### tree (1)
@@ -8837,28 +12472,22 @@
 - [electron-sudo](http://npm.im/electron-sudo) - Electron subprocess with administrative privileges, prompting the user with an OS dialog if necessary.
 
 
-### elevate (1)
-
-
-- [electron-sudo](http://npm.im/electron-sudo) - Electron subprocess with administrative privileges, prompting the user with an OS dialog if necessary.
-
-
-### exec (1)
-
-
-- [electron-sudo](http://npm.im/electron-sudo) - Electron subprocess with administrative privileges, prompting the user with an OS dialog if necessary.
-
-
-### sudo (1)
-
-
-- [electron-sudo](http://npm.im/electron-sudo) - Electron subprocess with administrative privileges, prompting the user with an OS dialog if necessary.
-
-
 ### stylus (1)
 
 
 - [electron-stylus](http://npm.im/electron-stylus) - A dead simple Stylus loader for Electron app
+
+
+### isPathExists (1)
+
+
+- [electron-storage](http://npm.im/electron-storage) - module for managing storage in electron applications
+
+
+### set (1)
+
+
+- [electron-storage](http://npm.im/electron-storage) - module for managing storage in electron applications
 
 
 ### spelling (1)
@@ -8934,12 +12563,6 @@
 
 
 ### microservice (1)
-
-
-- [electron-render-service](http://npm.im/electron-render-service) - Microservice for rendering PDF/PNG/JPEG from HTML with Electron
-
-
-### render (1)
 
 
 - [electron-render-service](http://npm.im/electron-render-service) - Microservice for rendering PDF/PNG/JPEG from HTML with Electron
@@ -9059,12 +12682,6 @@
 - [electron-proxy-agent](http://npm.im/electron-proxy-agent) - NodeJS http(s).Agent implementation for electron shell
 
 
-### agent (1)
-
-
-- [electron-proxy-agent](http://npm.im/electron-proxy-agent) - NodeJS http(s).Agent implementation for electron shell
-
-
 ### thread (1)
 
 
@@ -9167,12 +12784,6 @@
 - [electron-ogg-packet](http://npm.im/electron-ogg-packet) - This is a fork of the node-ogg-packet project, which support electron binaries
 
 
-### ogg (1)
-
-
-- [electron-ogg-packet](http://npm.im/electron-ogg-packet) - This is a fork of the node-ogg-packet project, which support electron binaries
-
-
 ### OCR (1)
 
 
@@ -9212,97 +12823,25 @@
 ### follower (1)
 
 
-- [electron-npm-packages](http://npm.im/electron-npm-packages) - A collection of all npm packages that mention `electron` in their package.json or README
+- [electron-npm-packages](http://npm.im/electron-npm-packages) - A collection of all npm packages that mention `electron` in their package.json
 
 
 ### couchdb (1)
 
 
-- [electron-npm-packages](http://npm.im/electron-npm-packages) - A collection of all npm packages that mention `electron` in their package.json or README
+- [electron-npm-packages](http://npm.im/electron-npm-packages) - A collection of all npm packages that mention `electron` in their package.json
 
 
 ### ecosystem (1)
 
 
-- [electron-npm-packages](http://npm.im/electron-npm-packages) - A collection of all npm packages that mention `electron` in their package.json or README
+- [electron-npm-packages](http://npm.im/electron-npm-packages) - A collection of all npm packages that mention `electron` in their package.json
 
 
 ### community (1)
 
 
-- [electron-npm-packages](http://npm.im/electron-npm-packages) - A collection of all npm packages that mention `electron` in their package.json or README
-
-
-### interactive fiction (1)
-
-
-- [electron-noveljs-boilerplate](http://npm.im/electron-noveljs-boilerplate) - Create standalone Novel.js adventures!
-
-
-### prose (1)
-
-
-- [electron-noveljs-boilerplate](http://npm.im/electron-noveljs-boilerplate) - Create standalone Novel.js adventures!
-
-
-### fiction (1)
-
-
-- [electron-noveljs-boilerplate](http://npm.im/electron-noveljs-boilerplate) - Create standalone Novel.js adventures!
-
-
-### text game (1)
-
-
-- [electron-noveljs-boilerplate](http://npm.im/electron-noveljs-boilerplate) - Create standalone Novel.js adventures!
-
-
-### visual novel (1)
-
-
-- [electron-noveljs-boilerplate](http://npm.im/electron-noveljs-boilerplate) - Create standalone Novel.js adventures!
-
-
-### choose your own adventure (1)
-
-
-- [electron-noveljs-boilerplate](http://npm.im/electron-noveljs-boilerplate) - Create standalone Novel.js adventures!
-
-
-### game engine (1)
-
-
-- [electron-noveljs-boilerplate](http://npm.im/electron-noveljs-boilerplate) - Create standalone Novel.js adventures!
-
-
-### text adventure (1)
-
-
-- [electron-noveljs-boilerplate](http://npm.im/electron-noveljs-boilerplate) - Create standalone Novel.js adventures!
-
-
-### novel (1)
-
-
-- [electron-noveljs-boilerplate](http://npm.im/electron-noveljs-boilerplate) - Create standalone Novel.js adventures!
-
-
-### novel.js (1)
-
-
-- [electron-noveljs-boilerplate](http://npm.im/electron-noveljs-boilerplate) - Create standalone Novel.js adventures!
-
-
-### noveljs (1)
-
-
-- [electron-noveljs-boilerplate](http://npm.im/electron-noveljs-boilerplate) - Create standalone Novel.js adventures!
-
-
-### novel-js (1)
-
-
-- [electron-noveljs-boilerplate](http://npm.im/electron-noveljs-boilerplate) - Create standalone Novel.js adventures!
+- [electron-npm-packages](http://npm.im/electron-npm-packages) - A collection of all npm packages that mention `electron` in their package.json
 
 
 ### balloon (1)
@@ -9323,30 +12862,6 @@
 - [electron-notifier](http://npm.im/electron-notifier) - Add cross-platform notifications to Electron apps.
 
 
-### terminal-notifier (1)
-
-
-- [electron-notifications](http://npm.im/electron-notifications) - A node module for sending notifications in electron applications
-
-
-### notify-send (1)
-
-
-- [electron-notifications](http://npm.im/electron-notifications) - A node module for sending notifications in electron applications
-
-
-### notification center (1)
-
-
-- [electron-notifications](http://npm.im/electron-notifications) - A node module for sending notifications in electron applications
-
-
-### node-red (1)
-
-
-- [electron-node-red](http://npm.im/electron-node-red) - Electron Node-RED template
-
-
 ### browser testing (1)
 
 
@@ -9363,12 +12878,6 @@
 
 
 - [electron-microfet2](http://npm.im/electron-microfet2) - Electron library to access the MicroFet2 data
-
-
-### ddp (1)
-
-
-- [electron-meteor](http://npm.im/electron-meteor) - Full Meteor Client for Electron
 
 
 ### connector (1)
@@ -9419,31 +12928,67 @@
 - [electron-markdown-editor](http://npm.im/electron-markdown-editor) - A markdown editor built with electron, uikit, and markdown-it
 
 
-### sdk (1)
+### restrictions (1)
 
 
-- [electron-kinect2](http://npm.im/electron-kinect2) - Electron library to access the kinect 2 data from the official MS SDK
+- [electron-machine-id](http://npm.im/electron-machine-id) - Unique machine (desktop) id for Electron application (no admin privileges required).
 
 
-### kinect2 (1)
+### unique identifier (1)
 
 
-- [electron-kinect2](http://npm.im/electron-kinect2) - Electron library to access the kinect 2 data from the official MS SDK
+- [electron-machine-id](http://npm.im/electron-machine-id) - Unique machine (desktop) id for Electron application (no admin privileges required).
+
+
+### electron platform id (1)
+
+
+- [electron-machine-id](http://npm.im/electron-machine-id) - Unique machine (desktop) id for Electron application (no admin privileges required).
+
+
+### unique platform id (1)
+
+
+- [electron-machine-id](http://npm.im/electron-machine-id) - Unique machine (desktop) id for Electron application (no admin privileges required).
+
+
+### machine id (1)
+
+
+- [electron-machine-id](http://npm.im/electron-machine-id) - Unique machine (desktop) id for Electron application (no admin privileges required).
+
+
+### user id (1)
+
+
+- [electron-machine-id](http://npm.im/electron-machine-id) - Unique machine (desktop) id for Electron application (no admin privileges required).
+
+
+### user license (1)
+
+
+- [electron-machine-id](http://npm.im/electron-machine-id) - Unique machine (desktop) id for Electron application (no admin privileges required).
+
+
+### trial (1)
+
+
+- [electron-machine-id](http://npm.im/electron-machine-id) - Unique machine (desktop) id for Electron application (no admin privileges required).
+
+
+### license (1)
+
+
+- [electron-machine-id](http://npm.im/electron-machine-id) - Unique machine (desktop) id for Electron application (no admin privileges required).
+
+
+### unique id (1)
+
+
+- [electron-machine-id](http://npm.im/electron-machine-id) - Unique machine (desktop) id for Electron application (no admin privileges required).
 
 
 ### main (1)
-
-
-- [electron-is](http://npm.im/electron-is) - An 'is' utility for Electron which provides a set of handy functions, with a self-descriptive name.
-
-
-### release (1)
-
-
-- [electron-is](http://npm.im/electron-is) - An 'is' utility for Electron which provides a set of handy functions, with a self-descriptive name.
-
-
-### arch (1)
 
 
 - [electron-is](http://npm.im/electron-is) - An 'is' utility for Electron which provides a set of handy functions, with a self-descriptive name.
@@ -9453,12 +12998,6 @@
 
 
 - [electron-is-running-in-asar](http://npm.im/electron-is-running-in-asar) - Check if the application is running from inside an asar package
-
-
-### detect (1)
-
-
-- [electron-is-dev](http://npm.im/electron-is-dev) - Check if Electron is running in development
 
 
 ### production (1)
@@ -9473,12 +13012,6 @@
 - [electron-is-dev](http://npm.im/electron-is-dev) - Check if Electron is running in development
 
 
-### mode (1)
-
-
-- [electron-is-dev](http://npm.im/electron-is-dev) - Check if Electron is running in development
-
-
 ### writeable (1)
 
 
@@ -9486,12 +13019,6 @@
 
 
 ### readable (1)
-
-
-- [electron-ipc-stream](http://npm.im/electron-ipc-stream) - Duplex stream over IPC for main/renderer to communicate with each other.
-
-
-### streams (1)
 
 
 - [electron-ipc-stream](http://npm.im/electron-ipc-stream) - Duplex stream over IPC for main/renderer to communicate with each other.
@@ -9587,12 +13114,6 @@
 - [electron-image-menu](http://npm.im/electron-image-menu) - Context menu for img tags with the "Save image as" function in electron
 
 
-### conversion (1)
-
-
-- [electron-html-to](http://npm.im/electron-html-to) - Convert html to html/image using electron
-
-
 ### loader (1)
 
 
@@ -9617,12 +13138,6 @@
 - [electron-gh-releases-updater](http://npm.im/electron-gh-releases-updater) - Updates an app based on GH Electron from GH releases.
 
 
-### spawn (1)
-
-
-- [electron-eval](http://npm.im/electron-eval) - Run code inside a hidden Electron window
-
-
 ### eval (1)
 
 
@@ -9641,12 +13156,6 @@
 - [electron-editor-context-menu](http://npm.im/electron-editor-context-menu) - Enable the native right-click menu in Electron.
 
 
-### mouse (1)
-
-
-- [electron-drag](http://npm.im/electron-drag) - Window dragging for electron applications
-
-
 ### raw (1)
 
 
@@ -9660,12 +13169,6 @@
 
 
 ### detached (1)
-
-
-- [electron-detach](http://npm.im/electron-detach) - restart electron app as a detached child process
-
-
-### child (1)
 
 
 - [electron-detach](http://npm.im/electron-detach) - restart electron app as a detached child process
@@ -9699,12 +13202,6 @@
 
 
 - [electron-connect-webpack-plugin](http://npm.im/electron-connect-webpack-plugin) - electron-connect integration for webpack.
-
-
-### persist (1)
-
-
-- [electron-config](http://npm.im/electron-config) - Simple config handling for your Electron app or module
 
 
 ### API Bridge (1)
@@ -9797,6 +13294,24 @@
 - [electron-breakpoint](http://npm.im/electron-breakpoint) - breakpoint and open devtools in electron
 
 
+### node-hid (1)
+
+
+- [electron-blink1-toy](http://npm.im/electron-blink1-toy) - Play with Electron and node-blink1
+
+
+### blink1 (1)
+
+
+- [electron-blink1-toy](http://npm.im/electron-blink1-toy) - Play with Electron and node-blink1
+
+
+### blink(1) (1)
+
+
+- [electron-blink1-toy](http://npm.im/electron-blink1-toy) - Play with Electron and node-blink1
+
+
 ### electron-bin (1)
 
 
@@ -9807,12 +13322,6 @@
 
 
 - [electron-bin](http://npm.im/electron-bin) - Install electron prebuilt binaries for the command-line use using npm
-
-
-### node_modules (1)
-
-
-- [electron-bin-path](http://npm.im/electron-bin-path) - Find a path of electron bin installed in local or global node_modules
 
 
 ### find (1)
@@ -9869,12 +13378,6 @@
 - [electron-accelerator-formatter](http://npm.im/electron-accelerator-formatter) - Formats an Electron accelerator as a string of Unicode characters.
 
 
-### restart (1)
-
-
-- [electromon](http://npm.im/electromon) - Nodemon for Electron
-
-
 ### coding (1)
 
 
@@ -9899,12 +13402,6 @@
 - [electrify-elasticsearch](http://npm.im/electrify-elasticsearch) - ElasticSearch plugin for Electrify
 
 
-### client-side (1)
-
-
-- [electric-huxley](http://npm.im/electric-huxley) - Codeless front-end testing with an emphasis on speed
-
-
 ### screenshots (1)
 
 
@@ -9921,12 +13418,6 @@
 
 
 - [elec-tester](http://npm.im/elec-tester) - Tiny Electron application for quick tests
-
-
-### directory (1)
-
-
-- [elchecksum](http://npm.im/elchecksum) - check electron's exe and app resources md5 validate
 
 
 ### md5 (1)
@@ -10007,10 +13498,46 @@
 - [ecdsa](http://npm.im/ecdsa) - Elliptic Curve Cryptography Digital Signing
 
 
-### cryptography (1)
+### file-based (1)
 
 
-- [ecdsa](http://npm.im/ecdsa) - Elliptic Curve Cryptography Digital Signing
+- [eazydb](http://npm.im/eazydb) - [![Build Status](https://travis-ci.org/Finkes/eazydb.svg?branch=master)](https://travis-ci.org/Finkes/eazydb)
+
+
+### easy-merge-pdf (1)
+
+
+- [easy-pdf-merge](http://npm.im/easy-pdf-merge) - A node module to merge PDFs. Uses Apache PDFBox library.
+
+
+### easy-pdf-merge (1)
+
+
+- [easy-pdf-merge](http://npm.im/easy-pdf-merge) - A node module to merge PDFs. Uses Apache PDFBox library.
+
+
+### merge-pdf (1)
+
+
+- [easy-pdf-merge](http://npm.im/easy-pdf-merge) - A node module to merge PDFs. Uses Apache PDFBox library.
+
+
+### pdf-merge (1)
+
+
+- [easy-pdf-merge](http://npm.im/easy-pdf-merge) - A node module to merge PDFs. Uses Apache PDFBox library.
+
+
+### easy (1)
+
+
+- [easy-pdf-merge](http://npm.im/easy-pdf-merge) - A node module to merge PDFs. Uses Apache PDFBox library.
+
+
+### merge (1)
+
+
+- [easy-pdf-merge](http://npm.im/easy-pdf-merge) - A node module to merge PDFs. Uses Apache PDFBox library.
 
 
 ### dns (1)
@@ -10067,10 +13594,22 @@
 - [dota2-manta-config-engine-standalone](http://npm.im/dota2-manta-config-engine-standalone) - Allows you to customize your Dota 2 Autoexec on-the-fly.
 
 
+### domoto (1)
+
+
+- [domoto-cli](http://npm.im/domoto-cli) - Administrador de dispositivos inteligentes con el cual se permite aumentar el comportamiento de los dispositivos buscando la interacción entre los mismos
+
+
 ### domotica (1)
 
 
-- [domoto](http://npm.im/domoto) - Administrador de dispositivos inteligentes con el cual se permite aumentar el comportamiento de los dispositivos buscando la interacción entre los mismos
+- [domoto-cli](http://npm.im/domoto-cli) - Administrador de dispositivos inteligentes con el cual se permite aumentar el comportamiento de los dispositivos buscando la interacción entre los mismos
+
+
+### copy (1)
+
+
+- [dom-copy-image](http://npm.im/dom-copy-image) - Copy an image file in a DOM environment
 
 
 ### atom display index data-structure (1)
@@ -10079,46 +13618,34 @@
 - [display-index](http://npm.im/display-index) - Used by Atom to track the correspondence between on-screen lines and the underlying buffer.
 
 
-### restify (1)
+### integration (1)
 
 
-- [dimeshift-desktop](http://npm.im/dimeshift-desktop) - The easiest and desktop way to track your expenses. Free. Open-source.
+- [discord-bot-github](http://npm.im/discord-bot-github) - A bot for discord which consumes the GitHub API and gives you updates.
 
 
-### backbonejs (1)
+### discordapp (1)
 
 
-- [dimeshift-desktop](http://npm.im/dimeshift-desktop) - The easiest and desktop way to track your expenses. Free. Open-source.
+- [discord-bot-github](http://npm.im/discord-bot-github) - A bot for discord which consumes the GitHub API and gives you updates.
 
 
-### russian (1)
+### discord (1)
 
 
-- [dimeshift-desktop](http://npm.im/dimeshift-desktop) - The easiest and desktop way to track your expenses. Free. Open-source.
+- [discord-bot-github](http://npm.im/discord-bot-github) - A bot for discord which consumes the GitHub API and gives you updates.
 
 
-### ukrainian (1)
+### single page application (1)
 
 
-- [dimeshift-desktop](http://npm.im/dimeshift-desktop) - The easiest and desktop way to track your expenses. Free. Open-source.
+- [dimeshift](http://npm.im/dimeshift) - Webapp to track and manage personal finances
 
 
-### economy (1)
+### single page (1)
 
 
-- [dimeshift-desktop](http://npm.im/dimeshift-desktop) - The easiest and desktop way to track your expenses. Free. Open-source.
-
-
-### currency (1)
-
-
-- [dimeshift-desktop](http://npm.im/dimeshift-desktop) - The easiest and desktop way to track your expenses. Free. Open-source.
-
-
-### saas (1)
-
-
-- [dimeshift-desktop](http://npm.im/dimeshift-desktop) - The easiest and desktop way to track your expenses. Free. Open-source.
+- [dimeshift](http://npm.im/dimeshift) - Webapp to track and manage personal finances
 
 
 ### desktop applications (1)
@@ -10146,12 +13673,6 @@
 
 
 ### electron app (1)
-
-
-- [dimeshift-desktop](http://npm.im/dimeshift-desktop) - The easiest and desktop way to track your expenses. Free. Open-source.
-
-
-### financial (1)
 
 
 - [dimeshift-desktop](http://npm.im/dimeshift-desktop) - The easiest and desktop way to track your expenses. Free. Open-source.
@@ -10349,52 +13870,34 @@
 - [dboa-untangler](http://npm.im/dboa-untangler) - An electron application to help you untangle your (postgres) database.
 
 
-### postgres (1)
+### steam (1)
 
 
-- [dboa-untangler](http://npm.im/dboa-untangler) - An electron application to help you untangle your (postgres) database.
+- [csgo-gsi-model](http://npm.im/csgo-gsi-model) - A CSGO Game State Integration (GSI) module with custom functions to use with game data
 
 
-### robotics (1)
+### csgo-gsi (1)
 
 
-- [cylon-i2cexpander](http://npm.im/cylon-i2cexpander) - A cylon driver for the able-electroncs i2c 32 GPIO board for the raspberry pi
+- [csgo-gsi-model](http://npm.im/csgo-gsi-model) - A CSGO Game State Integration (GSI) module with custom functions to use with game data
 
 
-### robots (1)
+### game-state-integration (1)
 
 
-- [cylon-i2cexpander](http://npm.im/cylon-i2cexpander) - A cylon driver for the able-electroncs i2c 32 GPIO board for the raspberry pi
+- [csgo-gsi-model](http://npm.im/csgo-gsi-model) - A CSGO Game State Integration (GSI) module with custom functions to use with game data
 
 
-### cylons (1)
+### gsi (1)
 
 
-- [cylon-i2cexpander](http://npm.im/cylon-i2cexpander) - A cylon driver for the able-electroncs i2c 32 GPIO board for the raspberry pi
+- [csgo-gsi-model](http://npm.im/csgo-gsi-model) - A CSGO Game State Integration (GSI) module with custom functions to use with game data
 
 
-### cylonjs (1)
+### csgo (1)
 
 
-- [cylon-i2cexpander](http://npm.im/cylon-i2cexpander) - A cylon driver for the able-electroncs i2c 32 GPIO board for the raspberry pi
-
-
-### cylon (1)
-
-
-- [cylon-i2cexpander](http://npm.im/cylon-i2cexpander) - A cylon driver for the able-electroncs i2c 32 GPIO board for the raspberry pi
-
-
-### hook (1)
-
-
-- [css-modules-electron](http://npm.im/css-modules-electron) - A require hook to compile and use CSS modules in Electron.
-
-
-### css-modules (1)
-
-
-- [css-modules-electron](http://npm.im/css-modules-electron) - A require hook to compile and use CSS modules in Electron.
+- [csgo-gsi-model](http://npm.im/csgo-gsi-model) - A CSGO Game State Integration (GSI) module with custom functions to use with game data
 
 
 ### safari (1)
@@ -10409,13 +13912,61 @@
 - [crossbuilder](http://npm.im/crossbuilder) - Building web, Electron and Chrome apps, and cross-browser extensions with React, Redux and Webpack. 'Write once, build everywhere' concept in practice.
 
 
+### ecosystem:react-native (1)
+
+
+- [creditcardutils](http://npm.im/creditcardutils) - A general purpose javascript library for credit card number validation and formatting. Based on https://github.com/jondavidjohn/payform and https://github.com/stripe/jquery.payment. Usable in React Native and Node.
+
+
+### ecosystem:react (1)
+
+
+- [creditcardutils](http://npm.im/creditcardutils) - A general purpose javascript library for credit card number validation and formatting. Based on https://github.com/jondavidjohn/payform and https://github.com/stripe/jquery.payment. Usable in React Native and Node.
+
+
+### cards (1)
+
+
+- [creditcards-types](http://npm.im/creditcards-types) - Card type definitions and methods for creditcards
+
+
+### cordova-ios (1)
+
+
+- [cordova-plugin-qrscanner](http://npm.im/cordova-plugin-qrscanner) - Cordova QR Scanner Plugin
+
+
+### ecosystem:cordova (1)
+
+
+- [cordova-plugin-qrscanner](http://npm.im/cordova-plugin-qrscanner) - Cordova QR Scanner Plugin
+
+
+### scanner (1)
+
+
+- [cordova-plugin-qrscanner](http://npm.im/cordova-plugin-qrscanner) - Cordova QR Scanner Plugin
+
+
+### qr code (1)
+
+
+- [cordova-plugin-qrscanner](http://npm.im/cordova-plugin-qrscanner) - Cordova QR Scanner Plugin
+
+
+### qr (1)
+
+
+- [cordova-plugin-qrscanner](http://npm.im/cordova-plugin-qrscanner) - Cordova QR Scanner Plugin
+
+
+### R (1)
+
+
+- [controlr](http://npm.im/controlr) - R process module
+
+
 ### oout (1)
-
-
-- [console-redirect](http://npm.im/console-redirect) - redirect console methods to streams
-
-
-### warn (1)
 
 
 - [console-redirect](http://npm.im/console-redirect) - redirect console methods to streams
@@ -10445,16 +13996,22 @@
 - [conkie](http://npm.im/conkie) - JavaScript desktop widgets
 
 
-### line (1)
+### confluence (1)
 
 
-- [commandant](http://npm.im/commandant) - A command line framework for node.js
+- [confluence-starter](http://npm.im/confluence-starter) - A module to download Confluence standalone instances and start them automatically.
 
 
-### nicovideo (1)
+### atlassian (1)
 
 
-- [comelon](http://npm.im/comelon) - nicolive comment viewer on electron
+- [confluence-starter](http://npm.im/confluence-starter) - A module to download Confluence standalone instances and start them automatically.
+
+
+### read (1)
+
+
+- [conf](http://npm.im/conf) - Simple config handling for your app or module
 
 
 ### niconico (1)
@@ -10505,22 +14062,10 @@
 - [cmake-js](http://npm.im/cmake-js) - CMake.js - a Node.js/io.js native addon build tool
 
 
-### cmake (1)
+### clp (1)
 
 
-- [cmake-js](http://npm.im/cmake-js) - CMake.js - a Node.js/io.js native addon build tool
-
-
-### bindings (1)
-
-
-- [cmake-js](http://npm.im/cmake-js) - CMake.js - a Node.js/io.js native addon build tool
-
-
-### addon (1)
-
-
-- [cmake-js](http://npm.im/cmake-js) - CMake.js - a Node.js/io.js native addon build tool
+- [clp](http://npm.im/clp) - A tiny and fast command line arguments parser.
 
 
 ### clout (1)
@@ -10535,28 +14080,88 @@
 - [clipboard-manager](http://npm.im/clipboard-manager) - A simple clipboard manager
 
 
-### dashboard (1)
-
-
-- [chronoswe](http://npm.im/chronoswe) - A dashboard extensibile with plugin
-
-
 ### unit (1)
 
 
 - [chromeo](http://npm.im/chromeo) - experimental Node-Browser bridge
 
 
+### clientside (1)
+
+
+- [chotadb](http://npm.im/chotadb) - A wrapper over localStorage to provide MongoDB-like interface.
+
+
+### chota (1)
+
+
+- [chotadb](http://npm.im/chotadb) - A wrapper over localStorage to provide MongoDB-like interface.
+
+
+### browse (1)
+
+
+- [choose-files](http://npm.im/choose-files) - Prompt the user to select files, then pass them to a callback.
+
+
+### attach (1)
+
+
+- [choose-files](http://npm.im/choose-files) - Prompt the user to select files, then pass them to a callback.
+
+
+### choose (1)
+
+
+- [choose-files](http://npm.im/choose-files) - Prompt the user to select files, then pass them to a callback.
+
+
+### tiny (1)
+
+
+- [choo](http://npm.im/choo) - A 5kb framework for creating sturdy frontend applications
+
+
+### frontend (1)
+
+
+- [choo](http://npm.im/choo) - A 5kb framework for creating sturdy frontend applications
+
+
+### interactive-fiction (1)
+
+
+- [choba-engine](http://npm.im/choba-engine) - A choice-based interactive fiction engine.
+
+
+### setimmediate (1)
+
+
+- [chillout](http://npm.im/chillout) - Reduce CPU usage in JavaScript
+
+
+### iterator (1)
+
+
+- [chillout](http://npm.im/chillout) - Reduce CPU usage in JavaScript
+
+
+### iterate (1)
+
+
+- [chillout](http://npm.im/chillout) - Reduce CPU usage in JavaScript
+
+
+### cpu (1)
+
+
+- [chillout](http://npm.im/chillout) - Reduce CPU usage in JavaScript
+
+
 ### MAX_PATH (1)
 
 
 - [check-max-path](http://npm.im/check-max-path) - Will you hit the Windows Maximum Path Length Limitation?
-
-
-### utility (1)
-
-
-- [chainbuilder](http://npm.im/chainbuilder) - Construct a chainable library from a set of async functions.
 
 
 ### retry (1)
@@ -10569,12 +14174,6 @@
 
 
 - [chainbuilder-request](http://npm.im/chainbuilder-request) - Request mixin for chainbuilder.
-
-
-### lodash (1)
-
-
-- [chainbuilder-lodash](http://npm.im/chainbuilder-lodash) - Lodash mixin for chainbuilder.
 
 
 ### loops (1)
@@ -10613,6 +14212,18 @@
 - [cesium-sensor-volumes](http://npm.im/cesium-sensor-volumes) - A Cesium plugin for visualizing sensor volumes.
 
 
+### material design lite (1)
+
+
+- [catberry-mdl](http://npm.im/catberry-mdl) - Google Material Desing Lite javascript connector for Catberry framework
+
+
+### catberry (1)
+
+
+- [catberry-mdl](http://npm.im/catberry-mdl) - Google Material Desing Lite javascript connector for Catberry framework
+
+
 ### balance (1)
 
 
@@ -10631,12 +14242,6 @@
 - [carbon](http://npm.im/carbon) - Middleware based proxy for cluster or table based routing.
 
 
-### Node (1)
-
-
-- [browster](http://npm.im/browster) - A web browser with tab treeview built on Electron
-
-
 ### Browser (1)
 
 
@@ -10647,6 +14252,12 @@
 
 
 - [bozon](http://npm.im/bozon) - Framework for building Electron applications
+
+
+### pseudocode (1)
+
+
+- [boscode-learn](http://npm.im/boscode-learn) - Learn javascript using boscode https://www.npmjs.com/package/boscode
 
 
 ### booru (1)
@@ -10665,6 +14276,60 @@
 
 
 - [bittorrent-tracker](http://npm.im/bittorrent-tracker) - Simple, robust, BitTorrent tracker (client & server) implementation
+
+
+### bitcore (1)
+
+
+- [bitcoin-net](http://npm.im/bitcoin-net) - Bitcoin P2P networking tht works in Node and the browser
+
+
+### biology (1)
+
+
+- [bionode-waterwheel](http://npm.im/bionode-waterwheel) - Streaming workflow engine for bionformatics pipelines
+
+
+### computational (1)
+
+
+- [bionode-waterwheel](http://npm.im/bionode-waterwheel) - Streaming workflow engine for bionformatics pipelines
+
+
+### bioinformatics (1)
+
+
+- [bionode-waterwheel](http://npm.im/bionode-waterwheel) - Streaming workflow engine for bionformatics pipelines
+
+
+### ngs (1)
+
+
+- [bionode-waterwheel](http://npm.im/bionode-waterwheel) - Streaming workflow engine for bionformatics pipelines
+
+
+### parallel (1)
+
+
+- [bionode-waterwheel](http://npm.im/bionode-waterwheel) - Streaming workflow engine for bionformatics pipelines
+
+
+### workflow (1)
+
+
+- [bionode-waterwheel](http://npm.im/bionode-waterwheel) - Streaming workflow engine for bionformatics pipelines
+
+
+### pipeline (1)
+
+
+- [bionode-waterwheel](http://npm.im/bionode-waterwheel) - Streaming workflow engine for bionformatics pipelines
+
+
+### bionode (1)
+
+
+- [bionode-waterwheel](http://npm.im/bionode-waterwheel) - Streaming workflow engine for bionformatics pipelines
 
 
 ### presentation (1)
@@ -10700,19 +14365,19 @@
 ### JS (1)
 
 
-- [benja](http://npm.im/benja) - Bootable Electron Node JS Application
+- [benja](http://npm.im/benja) - Bootable Electron Node JS Application helper.
 
 
 ### archlinux (1)
 
 
-- [benja](http://npm.im/benja) - Bootable Electron Node JS Application
+- [benja](http://npm.im/benja) - Bootable Electron Node JS Application helper.
 
 
 ### kiosk (1)
 
 
-- [benja](http://npm.im/benja) - Bootable Electron Node JS Application
+- [benja](http://npm.im/benja) - Bootable Electron Node JS Application helper.
 
 
 ### bellerophon (1)
@@ -10733,6 +14398,24 @@
 - [bel](http://npm.im/bel) - A simple extension to native elements
 
 
+### tasker (1)
+
+
+- [beelzebub](http://npm.im/beelzebub) - One hell of a task master!
+
+
+### taskmaster (1)
+
+
+- [beelzebub](http://npm.im/beelzebub) - One hell of a task master!
+
+
+### beelzebub (1)
+
+
+- [beelzebub](http://npm.im/beelzebub) - One hell of a task master!
+
+
 ### beam (1)
 
 
@@ -10751,10 +14434,22 @@
 - [basel-cli](http://npm.im/basel-cli) - Client package for Basel
 
 
-### guide (1)
+### jsxgettext (1)
 
 
-- [awesome-electron](http://npm.im/awesome-electron) - Useful resources for creating apps with Electron
+- [babel-jsxgettext](http://npm.im/babel-jsxgettext) - A tool like jsxgettext, but works for es6 + jsx that babel support
+
+
+### gettext (1)
+
+
+- [babel-jsxgettext](http://npm.im/babel-jsxgettext) - A tool like jsxgettext, but works for es6 + jsx that babel support
+
+
+### internationalization (1)
+
+
+- [babel-jsxgettext](http://npm.im/babel-jsxgettext) - A tool like jsxgettext, but works for es6 + jsx that babel support
 
 
 ### electron.nw.js (1)
@@ -10769,6 +14464,72 @@
 - [autoupdaty](http://npm.im/autoupdaty) - Autoupdater for Electron/NW.js apps
 
 
+### coffeescript generator (1)
+
+
+- [autocode](http://npm.im/autocode) - spec-driven code generator
+
+
+### javascript generator (1)
+
+
+- [autocode](http://npm.im/autocode) - spec-driven code generator
+
+
+### php generator (1)
+
+
+- [autocode](http://npm.im/autocode) - spec-driven code generator
+
+
+### python generator (1)
+
+
+- [autocode](http://npm.im/autocode) - spec-driven code generator
+
+
+### node.js generator (1)
+
+
+- [autocode](http://npm.im/autocode) - spec-driven code generator
+
+
+### metaprogramming (1)
+
+
+- [autocode](http://npm.im/autocode) - spec-driven code generator
+
+
+### code generation (1)
+
+
+- [autocode](http://npm.im/autocode) - spec-driven code generator
+
+
+### code generator (1)
+
+
+- [autocode](http://npm.im/autocode) - spec-driven code generator
+
+
+### codegen (1)
+
+
+- [autocode](http://npm.im/autocode) - spec-driven code generator
+
+
+### crystal (1)
+
+
+- [autocode](http://npm.im/autocode) - spec-driven code generator
+
+
+### autocode (1)
+
+
+- [autocode](http://npm.im/autocode) - spec-driven code generator
+
+
 ### bomb! (1)
 
 
@@ -10779,6 +14540,54 @@
 
 
 - [aurelia-bacon](http://npm.im/aurelia-bacon) - ## Running The App
+
+
+### visualizations (1)
+
+
+- [audiosource](http://npm.im/audiosource) - utility for managing audio buffers
+
+
+### fft (1)
+
+
+- [audiosource](http://npm.im/audiosource) - utility for managing audio buffers
+
+
+### samples (1)
+
+
+- [audiosource](http://npm.im/audiosource) - utility for managing audio buffers
+
+
+### riff (1)
+
+
+- [audiobuffer-to-wav](http://npm.im/audiobuffer-to-wav) - convert an AudioBuffer to .wav format
+
+
+### fmt (1)
+
+
+- [audiobuffer-to-wav](http://npm.im/audiobuffer-to-wav) - convert an AudioBuffer to .wav format
+
+
+### formats (1)
+
+
+- [audiobuffer-to-wav](http://npm.im/audiobuffer-to-wav) - convert an AudioBuffer to .wav format
+
+
+### web audio (1)
+
+
+- [audiobuffer-to-wav](http://npm.im/audiobuffer-to-wav) - convert an AudioBuffer to .wav format
+
+
+### for (1)
+
+
+- [audiobuffer-to-wav](http://npm.im/audiobuffer-to-wav) - convert an AudioBuffer to .wav format
 
 
 ### audio-slot (1)
@@ -10805,22 +14614,10 @@
 - [audio-timeline](http://npm.im/audio-timeline) - Observ object for arranging, trimming and adjusting multiple audio clips on a timeline using Web Audio.
 
 
-### wave (1)
-
-
-- [audio-timeline](http://npm.im/audio-timeline) - Observ object for arranging, trimming and adjusting multiple audio clips on a timeline using Web Audio.
-
-
 ### timeline (1)
 
 
 - [audio-timeline](http://npm.im/audio-timeline) - Observ object for arranging, trimming and adjusting multiple audio clips on a timeline using Web Audio.
-
-
-### random (1)
-
-
-- [audio-buffer-range-decoder](http://npm.im/audio-buffer-range-decoder) - Decode specified ranges of wave file on disk to AudioBuffers.
 
 
 ### range (1)
@@ -10853,10 +14650,28 @@
 - [async-json-serializer](http://npm.im/async-json-serializer) - A library to serialize a JSON object across multiple async callbacks.
 
 
-### manage (1)
+### async-chainable (1)
 
 
-- [asv](http://npm.im/asv) - electron / atom-shell version management
+- [async-chainable-nightmare](http://npm.im/async-chainable-nightmare) - Plugin for async-chainable that wraps Nightmare
+
+
+### zce (1)
+
+
+- [asar-updater](http://npm.im/asar-updater) - Auto update asar file
+
+
+### iceStone (1)
+
+
+- [asar-updater](http://npm.im/asar-updater) - Auto update asar file
+
+
+### auto-updater (1)
+
+
+- [asar-updater](http://npm.im/asar-updater) - Auto update asar file
 
 
 ### oanda (1)
@@ -10883,10 +14698,10 @@
 - [argo-trading](http://npm.im/argo-trading) - HTML5 interface for the OANDA platform
 
 
-### color (1)
+### app-frame (1)
 
 
-- [ansi2html-cli](http://npm.im/ansi2html-cli) - Converts piped ansi to html using rburns's ansi-to-html.
+- [app-frame-cli](http://npm.im/app-frame-cli) - App Frame CLI
 
 
 ### ansi (1)
@@ -10911,6 +14726,18 @@
 
 
 - [ankara](http://npm.im/ankara) - A database centered on connections
+
+
+### anime file parse (1)
+
+
+- [anitomy-node](http://npm.im/anitomy-node) - Anitomy on Node
+
+
+### anitomy (1)
+
+
+- [anitomy-node](http://npm.im/anitomy-node) - Anitomy on Node
 
 
 ### dnd (1)
@@ -10943,22 +14770,64 @@
 - [alembic-viewer](http://npm.im/alembic-viewer) - alembic (.abc) viewer
 
 
-### unzip (1)
+### collection (1)
 
 
-- [adm-zip-electron](http://npm.im/adm-zip-electron) - Fork of a Javascript implementation of zip for nodejs with support for electron original-fs. Allows user to create or extract zip files both in memory or to/from disk
+- [admin-mongo](http://npm.im/admin-mongo) - A Web user interface to administer MongoDB databases built using Express
 
 
-### archive (1)
+### administer (1)
 
 
-- [adm-zip-electron](http://npm.im/adm-zip-electron) - Fork of a Javascript implementation of zip for nodejs with support for electron original-fs. Allows user to create or extract zip files both in memory or to/from disk
+- [admin-mongo](http://npm.im/admin-mongo) - A Web user interface to administer MongoDB databases built using Express
+
+
+### DB (1)
+
+
+- [admin-mongo](http://npm.im/admin-mongo) - A Web user interface to administer MongoDB databases built using Express
+
+
+### UI (1)
+
+
+- [admin-mongo](http://npm.im/admin-mongo) - A Web user interface to administer MongoDB databases built using Express
 
 
 ### methods (1)
 
 
 - [adm-zip-electron](http://npm.im/adm-zip-electron) - Fork of a Javascript implementation of zip for nodejs with support for electron original-fs. Allows user to create or extract zip files both in memory or to/from disk
+
+
+### Example (1)
+
+
+- [achat](http://npm.im/achat) - Chat that scales predictably.
+
+
+### Demo (1)
+
+
+- [achat](http://npm.im/achat) - Chat that scales predictably.
+
+
+### Serverless (1)
+
+
+- [achat](http://npm.im/achat) - Chat that scales predictably.
+
+
+### AWS (1)
+
+
+- [achat](http://npm.im/achat) - Chat that scales predictably.
+
+
+### Chat (1)
+
+
+- [achat](http://npm.im/achat) - Chat that scales predictably.
 
 
 ### transaction (1)
@@ -10998,12 +14867,6 @@
 
 
 ### kids (1)
-
-
-- [RaspiKids](http://npm.im/RaspiKids) - Raspberry PI GPIO framework for teaching kids programming
-
-
-### learning (1)
 
 
 - [RaspiKids](http://npm.im/RaspiKids) - Raspberry PI GPIO framework for teaching kids programming
@@ -11049,6 +14912,18 @@
 
 
 - [PupaFM](http://npm.im/PupaFM) - douban.fm Music Desktop Player
+
+
+### Power Plan (1)
+
+
+- [PowerPlanDisplay](http://npm.im/PowerPlanDisplay) - Shows your active Windows powerplan in a window containing all the available powerplans, and allows you to change powerplan with a single click
+
+
+### powerplan (1)
+
+
+- [PowerPlanDisplay](http://npm.im/PowerPlanDisplay) - Shows your active Windows powerplan in a window containing all the available powerplans, and allows you to change powerplan with a single click
 
 
 ### menu-icons (1)

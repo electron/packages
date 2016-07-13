@@ -1,0 +1,114 @@
+{
+  "name": "libui-download",
+  "version": "0.1.1",
+  "description": "download libui prebuilt binary zips from github releases",
+  "main": "es5.js",
+  "bin": {
+    "libui-download": "cli.js"
+  },
+  "scripts": {
+    "test": "ava -s && xo --ignore es5.js",
+    "build": "babel index.js --out-file es5.js"
+  },
+  "files": [
+    "es5.js",
+    "cli.js"
+  ],
+  "repository": {
+    "user": "parro-it",
+    "repo": "libui-download",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/parro-it/libui-download/tarball/master",
+    "clone_url": "https://github.com/parro-it/libui-download",
+    "https_url": "https://github.com/parro-it/libui-download",
+    "travis_url": "https://travis-ci.org/parro-it/libui-download",
+    "zip_url": "https://github.com/parro-it/libui-download/archive/master.zip",
+    "api_url": "https://api.github.com/repos/parro-it/libui-download"
+  },
+  "author": {
+    "name": "Andrea Parodi"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "debug": "^2.2.0",
+    "home-path": "^1.0.1",
+    "mkdirp": "^0.5.0",
+    "mv": "^2.0.3",
+    "pify": "^2.3.0",
+    "pinkie-promise": "^2.0.1",
+    "rc": "^1.1.2",
+    "regenerator-runtime": "^0.9.5",
+    "request": "^2.72.0",
+    "tar.gz": "^1.0.5"
+  },
+  "devDependencies": {
+    "ava": "^0.15.2",
+    "babel-cli": "^6.10.1",
+    "babel-core": "^6.9.1",
+    "babel-plugin-syntax-async-functions": "^6.8.0",
+    "babel-plugin-transform-regenerator": "^6.9.0",
+    "babel-preset-es2015": "^6.9.0",
+    "babel-register": "^6.9.0",
+    "rimraf": "^2.5.2",
+    "xo": "^0.16.0"
+  },
+  "keywords": [
+    "libui",
+    "libui-node",
+    "installer"
+  ],
+  "babel": {
+    "presets": [
+      "es2015"
+    ],
+    "plugins": [
+      "transform-regenerator",
+      "syntax-async-functions"
+    ]
+  },
+  "gitHead": "f36ec99ea735f210b6ae385beb3cda1c9bdcf04e",
+  "homepage": "https://github.com/parro-it/libui-download#readme",
+  "_npmVersion": "2.15.1",
+  "_nodeVersion": "0.12.15",
+  "dist": {
+    "shasum": "d32b43546de21f75d513be24836d25ff6586c63b",
+    "tarball": "http://registry.npmjs.org/libui-download/-/libui-download-0.1.1.tgz"
+  },
+  "versions": [
+    {
+      "number": "0.0.1",
+      "date": "2016-06-19T17:25:14.160Z"
+    },
+    {
+      "number": "0.0.2",
+      "date": "2016-06-22T07:57:39.557Z"
+    },
+    {
+      "number": "0.0.3",
+      "date": "2016-06-22T09:12:44.571Z"
+    },
+    {
+      "number": "0.1.0",
+      "date": "2016-07-07T23:50:29.852Z"
+    },
+    {
+      "number": "0.1.1",
+      "date": "2016-07-07T23:50:58.812Z"
+    }
+  ],
+  "created": "2016-06-19T17:25:14.160Z",
+  "modified": "2016-07-07T23:50:58.812Z",
+  "lastPublisher": {
+    "name": "parroit",
+    "email": "andrea@parro.it"
+  },
+  "owners": [
+    {
+      "name": "parroit",
+      "email": "andrea@parro.it"
+    }
+  ],
+  "readme": "# libui-download\n\n[![Build Status](https://travis-ci.org/parro-it/libui-download.svg?branch=master)](https://travis-ci.org/parro-it/libui-download)\n\n[![NPM](https://nodei.co/npm/libui-download.png)](https://nodei.co/npm/libui-download/)\n\ndownloads a libui release zip from github\n\nused by [libui-node](https://npmjs.org/libui-node)\n\n### usage\n\n```plain\n$ npm install --global libui-download\n$ libui-download --version=0.31.1\n```\n\n```js\nvar download = require('libui-download');\n\nconst zipPath = await download({\n\tversion: '0.25.1',\n\tarch: 'ia32',\n\tplatform: 'win32',\n\tcache: './zips' // defaults to <user home directory>/.libui\n});\n\n// zipPath will be the path of the zip that it downloaded.\n// if the zip was already cached it will skip\n// downloading and call the cb with the cached zip path\n// if it wasn't cached it will download the zip and save\n// it in the cache path\n\n```\n\nif you don't specify `arch` or `platform` args it will use `require('os')` to get them from the current OS. specifying `version` is mandatory.\n\nIf you would like to override the mirror location, three options are available. The mirror URL is composed as `url = LIBUI_MIRROR + LIBUI_CUSTOM_DIR + '/' + LIBUI_CUSTOM_FILENAME`.\n\nYou can set the `LIBUI_MIRROR` or [`NPM_CONFIG_LIBUI_MIRROR`](https://docs.npmjs.com/misc/config#environment-variables) env or `mirror` opt variable to use a custom base URL for grabbing libui zips. The same pattern applies to `LIBUI_CUSTOM_DIR` and `LIBUI_CUSTOM_FILENAME`\n\n```plain\n## for a local mirror\nLIBUI_MIRROR=\"https://10.1.2.105/\"\nLIBUI_CUSTOM_DIR=\"our/internal/filePath\"\n```\n\n# Attribution\n\nThis is based on [electron-download](https://github.com/electron-userland/electron-download)\nby @maxogden @mafintosh and @fritx. Thank you!\n\n# License\n\nThe MIT License (MIT)\n\nCopyright (c) 2016 parro-it\n"
+}

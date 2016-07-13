@@ -32,28 +32,37 @@
   },
   "gitHead": "6f9012998874b9a71519448466f4904e0dc77bc8",
   "description": "[![Join the chat at https://gitter.im/fritx/nixe](https://badges.gitter.im/fritx/nixe.svg)](https://gitter.im/fritx/nixe?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)&nbsp;&nbsp;<a href=\"https://circleci.com/gh/fritx/nixe/tree",
-  "_id": "nixe@0.0.2",
-  "_shasum": "da577ced324ae66c36867648b9defb61cac193d2",
-  "_from": ".",
   "_npmVersion": "2.12.1",
   "_nodeVersion": "5.0.0",
-  "_npmUser": {
-    "name": "fritx",
-    "email": "uxfritz@163.com"
-  },
   "dist": {
     "shasum": "da577ced324ae66c36867648b9defb61cac193d2",
     "tarball": "http://registry.npmjs.org/nixe/-/nixe-0.0.2.tgz"
   },
-  "maintainers": [
+  "versions": [
+    {
+      "number": "0.0.0",
+      "date": "2016-02-20T06:56:13.065Z"
+    },
+    {
+      "number": "0.0.1",
+      "date": "2016-02-25T16:03:20.757Z"
+    },
+    {
+      "number": "0.0.2",
+      "date": "2016-02-29T15:03:39.538Z"
+    }
+  ],
+  "created": "2016-02-20T06:56:13.065Z",
+  "modified": "2016-02-29T15:03:39.538Z",
+  "lastPublisher": {
+    "name": "fritx",
+    "email": "uxfritz@163.com"
+  },
+  "owners": [
     {
       "name": "fritx",
       "email": "uxfritz@163.com"
     }
   ],
-  "_npmOperationalInternal": {
-    "host": "packages-5-east.internal.npmjs.com",
-    "tmp": "tmp/nixe-0.0.2.tgz_1456758216717_0.6232499936595559"
-  },
-  "directories": {}
+  "readme": "# nixe\n\n[![Join the chat at https://gitter.im/fritx/nixe](https://badges.gitter.im/fritx/nixe.svg)](https://gitter.im/fritx/nixe?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)&nbsp;&nbsp;<a href=\"https://circleci.com/gh/fritx/nixe/tree/dev\"><img width=\"73\" height=\"20\" src=\"https://circleci.com/gh/fritx/nixe/tree/dev.svg?style=svg\"></a>\n\nAnother high-level browser automation library.\n\nHeavily inspired by [nightmare][1]\n\n\n## Compared to Nightmare\n\n- [x] ES2015+ Build System\n- [x] Async/Await Style\n- [x] Simpler Codebase\n- [ ] Seamless Access to Electron Objects\n\n\n## Usage\n\n```plain\n$ cd my/project\n$ npm install -S electron-prebuilt\n$ npm install nixe\n```\n\n```js\nimport Nixe from 'nixe'\n\nnew Nixe().ready()\n  .goto('https://www.baidu.com')\n  .execute('alert(123)')\n  .queue(async () => 333)\n  .run()\n\n// `run` is optional with await/then style\nnew Nixe().ready()\n  .goto('https://www.baidu.com')\n  .evaluate(() => document.title)\n  .then((title) => {})\n\n// or async/await style\n;(async () => {\n  const title = await new Nixe().ready()\n    .goto('https://www.baidu.com')\n    .evaluate(() => document.title)\n})()\n```\n\n\n## Dev & Test\n\n```plain\n$ npm install -g webpack mocha\n$ cd nixe\n$ npm install\n$ npm run dev\n$ npm test\n```\n\n## Chinese Mirror for Electron\n\n```plain\nELECTRON_MIRROR=https://npm.taobao.org/mirrors/electron/\n```\n\n\n[1]: https://github.com/segmentio/nightmare\n"
 }

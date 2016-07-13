@@ -1,0 +1,111 @@
+{
+  "name": "deck-app",
+  "version": "1.4.13",
+  "description": "This allows a Node 0.10 (or npm 1) users to install `@deck/app`",
+  "main": "index.js",
+  "bin": {
+    "deck": "cmd.js"
+  },
+  "scripts": {
+    "postinstall": "npm i @deck/app@$(node -p 'require(\"./package.json\").version')"
+  },
+  "author": {
+    "name": "David Mark Clements"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "npm": "^2.0.0"
+  },
+  "repository": {
+    "user": "nearform",
+    "repo": "deck-app-unscoped",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/nearform/deck-app-unscoped/tarball/master",
+    "clone_url": "https://github.com/nearform/deck-app-unscoped",
+    "https_url": "https://github.com/nearform/deck-app-unscoped",
+    "travis_url": "https://travis-ci.org/nearform/deck-app-unscoped",
+    "zip_url": "https://github.com/nearform/deck-app-unscoped/archive/master.zip",
+    "api_url": "https://api.github.com/repos/nearform/deck-app-unscoped"
+  },
+  "homepage": "https://github.com/nearform/deck-app-unscoped#readme",
+  "gitHead": "3e9ac8f2c9aee0035e16820afd886ee1bd51619d",
+  "_npmVersion": "2.11.1",
+  "_nodeVersion": "4.2.1",
+  "dist": {
+    "shasum": "fed4b3983d7c33f69c3458bfcd6ca12fc6b24b04",
+    "tarball": "http://registry.npmjs.org/deck-app/-/deck-app-1.4.13.tgz"
+  },
+  "versions": [
+    {
+      "number": "0.0.0",
+      "date": "2015-10-24T15:55:12.040Z"
+    },
+    {
+      "number": "0.0.1",
+      "date": "2015-10-24T16:01:16.643Z"
+    },
+    {
+      "number": "0.0.2",
+      "date": "2015-10-24T16:03:29.011Z"
+    },
+    {
+      "number": "1.3.3",
+      "date": "2015-10-24T16:53:31.985Z"
+    },
+    {
+      "number": "1.4.0",
+      "date": "2015-10-26T01:08:32.684Z"
+    },
+    {
+      "number": "1.4.1",
+      "date": "2015-10-26T15:41:02.190Z"
+    },
+    {
+      "number": "1.4.2",
+      "date": "2015-10-27T00:03:49.833Z"
+    },
+    {
+      "number": "1.4.3",
+      "date": "2015-10-27T00:13:29.671Z"
+    },
+    {
+      "number": "1.4.4",
+      "date": "2015-10-27T00:23:19.609Z"
+    },
+    {
+      "number": "1.4.7",
+      "date": "2015-10-27T00:28:50.013Z"
+    },
+    {
+      "number": "1.4.8",
+      "date": "2015-10-27T01:52:55.437Z"
+    },
+    {
+      "number": "1.4.12",
+      "date": "2015-10-27T12:04:41.531Z"
+    },
+    {
+      "number": "1.4.13",
+      "date": "2015-10-27T12:34:08.507Z"
+    }
+  ],
+  "created": "2015-10-24T15:55:12.040Z",
+  "modified": "2015-10-27T12:34:08.507Z",
+  "lastPublisher": {
+    "name": "deck",
+    "email": "david.mark.clements@gmail.com"
+  },
+  "owners": [
+    {
+      "name": "davidmarkclements",
+      "email": "huperekchuno@googlemail.com"
+    },
+    {
+      "name": "deck",
+      "email": "david.mark.clements@gmail.com"
+    }
+  ],
+  "readme": "# deck-app\n\nThis allows a Node 0.10 (or npm 1) users to install `@deck/app`\n\n[![js-standard-style](https://img.shields.io/badge/code%20style-standard-brightgreen.svg?style=flat)](http://standardjs.com/)\n\n\n## Install\n\n```sh\nnpm i -g deck-app # node .10\n```\n\nIf you're using (or have access to) Node .12 or Node 4 (and therefore npm 2+) you'll be better off installing <https://www.npmjs.com/package/@deck/app>. \n\nOnce installed switching Node versions shouldn't require\na reinstall anyway. \n\n\n## CLI\n\n```sh\ndeck <command> [arguments]\n```\n\nThe `@deck/app` module acts as an entry point and CLI tool for deck.\n\nTo learn how to use the GUI (e.g. global hot keys) see <https://github.com/nearform/deck-gui>\n\n### Commands\n\n#### Create\n\nA slide deck is a \"content module\": a folder with at least a\n`package.json` and `deck.md` file.\n\n\n```javascript\ndeck init\n```\n\nAnalogous to `npm init`, the `deck init` command provisions\na folder with the files that make up a slide deck. \n\n#### Get Dependencies\n\n```javascript\ndeck install\n```\n\nMuch like `npm install` when run without options `deck install` will install dependencies for a slide deck (generally we would do this after a `deck init`)\n\n#### Fetch\n\n```javascript\ndeck install <slide deck name>\n```\n\nWhen a slide deck is specified, `deck` will use npm to download \nand install the content module. Unlike an npm install, the resulting\nslide deck folder will placed in the current working directory instead\nof a `node_modules` folder. Otherwise all other `npm` behaviours apply (e.g. will lookup from repo as per `npm config` etc.)\n\n#### Present\n\n```sh\ndeck present [<slide deck path>] [!]\n```\n\nWhen run in a slide deck folder, this will build a presentation from the `deck.md` file in the current folder then open `@deck/gui` for viewing and presenting. \n\nIf a path to a slide deck is supplied it will likewise be presented.\n\nA special syntax `deck present !` instructs `deck` to present the \nmost recently installed content module. \n\n#### Edit\n\n```sh\ndeck edit [<slide deck path>]\n```\n\nOpens a slide decks `deck.md` file in the default systen editor (as per the `$EDITOR` environment variable). If given a path the `deck.md` file at the supplied path will be opened, otherwise a `deck.md` in the current folder will be opened.\n\n#### Upstream\n\n```sh\ndeck upstream [<slide deck path>]\n```\n\nCreates a new branch on GitHub, pushes modified content and \nmakes a pull request with the change. \n\nThe slide deck does not need to be a git repository for `upstream`\nto function - however Github keys are required (see https://github.com/nearform/deck-upstream)\n\nIf a path is not supplied, the current folder is assumed.\n\n## Technologies\n\nThe deck system is built on and/or utilizes:\n\n* [Electron](http://electron.atom.io)\n* [Gulp](http://gulpjs.com/)\n* [Bespoke.js](http://markdalgleish.com/projects/bespoke.js/)\n* [Markdown](https://daringfireball.net/projects/markdown/)\n* [YAML](http://yaml.org)\n* [NPM](http://npmjs.org)\n* [GitHub](http://github.com)\n\n![](anatomy.png)\n\n## Ecosystem\n\nTo view other pieces of the deck system see <https://github.com/nearform/deck>\n\n## Issues and PR's\n\n* Please open any issues for any deck related module on the <https://github.com/nearform/deck> community repo.\n* Any module specific PR's are welcomed on the corresponding repo.\n\n## Credits\n\nSponsored by <a href=\"http://nearform.com\">nearForm</a>\n\n### Contributors\n\n  * David Mark Clements\n  * Mihai Dima\n  * Cristian Kiss\n\n### Contributing\n\nDeck is an **OPEN Open Source Project**. This means that:\n\n> Individuals making significant and valuable contributions are given commit-access to a project to contribute as they see fit. A project is more like an open wiki than a standard guarded open source project.\n\nSee the [`CONTRIBUTING.md`](CONTRIBUTING.md) file for more details.\n\n"
+}

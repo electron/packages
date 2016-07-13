@@ -1,0 +1,565 @@
+{
+  "name": "terriajs",
+  "version": "4.0.0-preview5",
+  "description": "Geospatial data visualization platform.",
+  "license": "Apache-2.0",
+  "engines": {
+    "node": ">= 5.10.0",
+    "npm": ">= 3.0.0"
+  },
+  "repository": {
+    "user": "TerriaJS",
+    "repo": "terriajs",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/TerriaJS/terriajs/tarball/master",
+    "clone_url": "https://github.com/TerriaJS/terriajs",
+    "https_url": "https://github.com/TerriaJS/terriajs",
+    "travis_url": "https://travis-ci.org/TerriaJS/terriajs",
+    "zip_url": "https://github.com/TerriaJS/terriajs/archive/master.zip",
+    "api_url": "https://api.github.com/repos/TerriaJS/terriajs"
+  },
+  "dependencies": {
+    "babel-core": "^6.7.4",
+    "babel-loader": "^6.2.4",
+    "babel-preset-es2015": "^6.6.0",
+    "babel-preset-react": "^6.5.0",
+    "class-list": "^0.1.1",
+    "classnames": "^2.2.3",
+    "d3": "^3.5.14",
+    "dateformat": "^1.0.12",
+    "dompurify": "^0.7.3",
+    "extract-text-webpack-plugin": "git://github.com/TerriaJS/extract-text-webpack-plugin.git#order-undefined-error",
+    "file-loader": "^0.8.5",
+    "gulp": "^3.9.1",
+    "hammerjs": "^2.0.6",
+    "html-to-react": "git://github.com/TerriaJS/html-to-react.git#merged",
+    "html2canvas": "0.5.0-alpha2",
+    "imports-loader": "^0.6.5",
+    "javascript-natural-sort": "^0.7.1",
+    "json5": "^0.5.0",
+    "json-loader": "^0.5.4",
+    "jsx-control-statements": "3.1.2",
+    "leaflet": "0.7.3",
+    "linkify-it": "^2.0.0",
+    "markdown-it": "^7.0.0",
+    "mustache": "^2.2.1",
+    "mutationobserver-shim": "^0.3.1",
+    "proj4": "^2.3.14",
+    "raw-loader": "^0.5.1",
+    "react-addons-pure-render-mixin": "15.2.0",
+    "resolve": "^1.1.7",
+    "resolve-url-loader": "^1.4.3",
+    "sass-loader": "^3.2.0",
+    "simple-statistics": "^2.0.0",
+    "string-replace-webpack-plugin": "0.0.3",
+    "style-loader": "git://github.com/TerriaJS/style-loader.git#chromeWorkaround",
+    "superagent": "^2.0.0",
+    "terriajs-cesium": "1.20.1",
+    "togeojson": "^0.13.0",
+    "urijs": "^1.17.1",
+    "url-loader": "^0.5.7",
+    "urthecast": "^1.0.0",
+    "webpack": "^1.12.14",
+    "worker-loader": "^0.7.0",
+    "pbf": "^1.3.2",
+    "vector-tile": "1.2.0",
+    "point-in-polygon": "1.0.0"
+  },
+  "devDependencies": {
+    "babel-eslint": "^6.0.2",
+    "css-loader": "^0.23.1",
+    "electron-prebuilt": "^1.2.3",
+    "eslint": "^3.0.0",
+    "eslint-plugin-jsx-control-statements": "2.1.1",
+    "eslint-plugin-react": "^4.3.0",
+    "generate-terriajs-schema": "^1.2.1",
+    "glob-all": "^3.0.1",
+    "gulp-ruby-sass": "^2.0.5",
+    "gulp-util": "^3.0.7",
+    "jasmine-core": "^2.4.1",
+    "jsdoc": "^3.4.0",
+    "karma": "^1.1.0",
+    "karma-browserstack-launcher": "^1.0.1",
+    "karma-chrome-launcher": "^1.0.1",
+    "karma-detect-browsers": "^2.0.2",
+    "karma-electron-launcher": "^0.1.0",
+    "karma-firefox-launcher": "^1.0.0",
+    "karma-ie-launcher": "^1.0.0",
+    "karma-jasmine": "^1.0.2",
+    "karma-opera-launcher": "^1.0.0",
+    "karma-safari-launcher": "^1.0.0",
+    "karma-sauce-launcher": "^1.0.0",
+    "karma-spec-reporter": "^0.0.26",
+    "kss": "^2.1.1",
+    "node-notifier": "^4.5.0",
+    "node-sass": "^3.4.2",
+    "react": "15.2.0",
+    "react-addons-test-utils": "15.2.0",
+    "react-dom": "15.2.0",
+    "react-shallow-testutils": "^2.0.0",
+    "svg-sprite-loader": "0.0.23",
+    "socket.io": "1.4.7",
+    "terriajs-jasmine-ajax": "^3.2.1",
+    "terriajs-server": "^2.5.1",
+    "webpack-dev-server": "^1.14.1"
+  },
+  "peerDependencies": {
+    "react": "^15.2.0",
+    "react-dom": "^15.2.0"
+  },
+  "scripts": {
+    "prepublish": "gulp post-npm-install",
+    "postpublish": "bash -c \"git tag -a ${npm_package_version} -m \"${npm_package_version}\" && git push origin ${npm_package_version}\"",
+    "postinstall": "gulp post-npm-install",
+    "make-schema": "gulp make-schema",
+    "start": "bash ./node_modules/terriajs-server/run_server.sh --port 3002",
+    "dev": "webpack-dev-server --inline --config buildprocess/webpack.config.dev.js --host 0.0.0.0",
+    "hot": "webpack-dev-server --inline --config buildprocess/webpack.config.hot.js --hot --host 0.0.0.0"
+  },
+  "gitHead": "ada5ba1216345af93dbc2c05e559674f408573e5",
+  "homepage": "https://github.com/TerriaJS/terriajs#readme",
+  "_npmVersion": "3.8.6",
+  "_nodeVersion": "5.12.0",
+  "dist": {
+    "shasum": "85dc4072bbe6853f59b47a3ced232693f86d1cd4",
+    "tarball": "http://registry.npmjs.org/terriajs/-/terriajs-4.0.0-preview5.tgz"
+  },
+  "stars": 1,
+  "versions": [
+    {
+      "number": "0.0.0",
+      "date": "2015-04-15T07:17:19.603Z"
+    },
+    {
+      "number": "0.0.1",
+      "date": "2015-04-15T07:30:17.958Z"
+    },
+    {
+      "number": "0.0.2",
+      "date": "2015-04-16T00:12:41.856Z"
+    },
+    {
+      "number": "0.0.3",
+      "date": "2015-04-16T00:26:12.504Z"
+    },
+    {
+      "number": "0.0.4",
+      "date": "2015-04-16T01:04:34.143Z"
+    },
+    {
+      "number": "0.0.5",
+      "date": "2015-04-16T01:30:10.247Z"
+    },
+    {
+      "number": "0.0.6",
+      "date": "2015-04-16T01:38:29.372Z"
+    },
+    {
+      "number": "0.0.7",
+      "date": "2015-04-16T01:52:31.700Z"
+    },
+    {
+      "number": "0.0.8",
+      "date": "2015-04-16T02:35:17.333Z"
+    },
+    {
+      "number": "0.0.9",
+      "date": "2015-04-16T02:38:44.236Z"
+    },
+    {
+      "number": "0.0.10",
+      "date": "2015-04-16T03:03:45.112Z"
+    },
+    {
+      "number": "0.0.11",
+      "date": "2015-04-16T03:18:31.769Z"
+    },
+    {
+      "number": "0.0.12",
+      "date": "2015-04-16T03:29:12.681Z"
+    },
+    {
+      "number": "0.0.13",
+      "date": "2015-04-17T05:39:34.151Z"
+    },
+    {
+      "number": "0.0.14",
+      "date": "2015-04-17T05:55:52.224Z"
+    },
+    {
+      "number": "0.0.16",
+      "date": "2015-04-17T06:26:06.777Z"
+    },
+    {
+      "number": "0.0.17",
+      "date": "2015-04-17T06:41:33.529Z"
+    },
+    {
+      "number": "0.0.18",
+      "date": "2015-04-20T05:51:20.935Z"
+    },
+    {
+      "number": "0.0.19",
+      "date": "2015-04-20T07:08:41.991Z"
+    },
+    {
+      "number": "0.0.20",
+      "date": "2015-04-21T01:43:27.437Z"
+    },
+    {
+      "number": "0.0.21",
+      "date": "2015-04-21T05:53:04.404Z"
+    },
+    {
+      "number": "0.0.22",
+      "date": "2015-04-22T05:27:45.023Z"
+    },
+    {
+      "number": "0.0.23",
+      "date": "2015-04-23T00:31:07.839Z"
+    },
+    {
+      "number": "0.0.24",
+      "date": "2015-04-24T02:08:29.939Z"
+    },
+    {
+      "number": "0.0.25",
+      "date": "2015-04-24T02:40:40.647Z"
+    },
+    {
+      "number": "0.0.26",
+      "date": "2015-04-24T05:06:24.028Z"
+    },
+    {
+      "number": "0.0.27",
+      "date": "2015-04-24T05:36:23.657Z"
+    },
+    {
+      "number": "0.0.28",
+      "date": "2015-04-24T07:27:33.574Z"
+    },
+    {
+      "number": "1.0.0",
+      "date": "2015-04-28T02:29:39.499Z"
+    },
+    {
+      "number": "1.0.1",
+      "date": "2015-04-28T05:48:12.778Z"
+    },
+    {
+      "number": "1.0.2",
+      "date": "2015-04-28T05:51:57.208Z"
+    },
+    {
+      "number": "1.0.3",
+      "date": "2015-04-28T07:10:12.948Z"
+    },
+    {
+      "number": "1.0.4",
+      "date": "2015-04-29T06:19:06.320Z"
+    },
+    {
+      "number": "1.0.5",
+      "date": "2015-04-29T23:52:24.476Z"
+    },
+    {
+      "number": "1.0.6",
+      "date": "2015-05-01T00:48:11.855Z"
+    },
+    {
+      "number": "1.0.7",
+      "date": "2015-05-11T07:07:46.121Z"
+    },
+    {
+      "number": "1.0.8",
+      "date": "2015-05-14T03:35:56.732Z"
+    },
+    {
+      "number": "1.0.9",
+      "date": "2015-05-15T01:39:14.074Z"
+    },
+    {
+      "number": "1.0.10",
+      "date": "2015-05-15T04:57:03.255Z"
+    },
+    {
+      "number": "1.0.11",
+      "date": "2015-05-15T06:27:29.702Z"
+    },
+    {
+      "number": "1.0.12",
+      "date": "2015-05-19T23:37:35.280Z"
+    },
+    {
+      "number": "1.0.13",
+      "date": "2015-05-27T06:50:07.374Z"
+    },
+    {
+      "number": "1.0.14",
+      "date": "2015-05-28T02:37:52.625Z"
+    },
+    {
+      "number": "1.0.15",
+      "date": "2015-05-28T03:05:07.885Z"
+    },
+    {
+      "number": "1.0.16",
+      "date": "2015-06-03T06:47:03.176Z"
+    },
+    {
+      "number": "1.0.17",
+      "date": "2015-06-05T00:00:26.913Z"
+    },
+    {
+      "number": "1.0.18",
+      "date": "2015-06-11T07:33:06.968Z"
+    },
+    {
+      "number": "1.0.19",
+      "date": "2015-06-12T02:31:48.707Z"
+    },
+    {
+      "number": "1.0.20",
+      "date": "2015-06-15T01:15:29.329Z"
+    },
+    {
+      "number": "1.0.21",
+      "date": "2015-06-15T02:59:59.329Z"
+    },
+    {
+      "number": "1.0.22",
+      "date": "2015-06-15T06:23:09.736Z"
+    },
+    {
+      "number": "1.0.23",
+      "date": "2015-06-16T00:10:21.346Z"
+    },
+    {
+      "number": "1.0.24",
+      "date": "2015-06-20T10:07:51.465Z"
+    },
+    {
+      "number": "1.0.25",
+      "date": "2015-06-23T01:08:04.346Z"
+    },
+    {
+      "number": "1.0.26",
+      "date": "2015-06-23T01:56:33.134Z"
+    },
+    {
+      "number": "1.0.27",
+      "date": "2015-06-23T02:14:05.822Z"
+    },
+    {
+      "number": "1.0.28",
+      "date": "2015-06-23T04:45:36.548Z"
+    },
+    {
+      "number": "1.0.29",
+      "date": "2015-06-25T01:33:45.818Z"
+    },
+    {
+      "number": "1.0.30",
+      "date": "2015-07-02T07:31:20.143Z"
+    },
+    {
+      "number": "1.0.31",
+      "date": "2015-07-02T07:53:34.020Z"
+    },
+    {
+      "number": "1.0.32",
+      "date": "2015-07-03T00:44:17.101Z"
+    },
+    {
+      "number": "1.0.33",
+      "date": "2015-07-08T03:48:13.191Z"
+    },
+    {
+      "number": "1.0.34",
+      "date": "2015-07-13T01:37:36.102Z"
+    },
+    {
+      "number": "1.0.35",
+      "date": "2015-07-15T00:33:36.662Z"
+    },
+    {
+      "number": "1.0.36",
+      "date": "2015-07-17T07:09:29.909Z"
+    },
+    {
+      "number": "1.0.37",
+      "date": "2015-07-29T05:17:15.959Z"
+    },
+    {
+      "number": "1.0.38",
+      "date": "2015-07-30T05:25:24.752Z"
+    },
+    {
+      "number": "1.0.39",
+      "date": "2015-07-31T02:54:19.874Z"
+    },
+    {
+      "number": "1.0.40",
+      "date": "2015-08-03T05:24:09.923Z"
+    },
+    {
+      "number": "1.0.41",
+      "date": "2015-08-03T06:14:46.749Z"
+    },
+    {
+      "number": "1.0.42",
+      "date": "2015-09-16T05:24:53.718Z"
+    },
+    {
+      "number": "1.0.43",
+      "date": "2015-09-16T06:48:01.797Z"
+    },
+    {
+      "number": "1.0.44",
+      "date": "2015-10-14T04:52:32.375Z"
+    },
+    {
+      "number": "1.0.45",
+      "date": "2015-10-28T22:52:10.006Z"
+    },
+    {
+      "number": "1.0.46",
+      "date": "2015-10-28T23:09:26.647Z"
+    },
+    {
+      "number": "1.0.47",
+      "date": "2015-11-13T05:00:46.583Z"
+    },
+    {
+      "number": "1.0.48",
+      "date": "2015-11-16T02:59:59.082Z"
+    },
+    {
+      "number": "1.0.49",
+      "date": "2015-12-07T01:37:50.955Z"
+    },
+    {
+      "number": "1.0.50",
+      "date": "2015-12-14T23:00:13.698Z"
+    },
+    {
+      "number": "1.0.51",
+      "date": "2015-12-21T01:36:07.396Z"
+    },
+    {
+      "number": "1.0.52",
+      "date": "2016-01-11T05:38:23.203Z"
+    },
+    {
+      "number": "1.0.53",
+      "date": "2016-01-14T01:42:39.864Z"
+    },
+    {
+      "number": "1.0.54",
+      "date": "2016-01-14T05:10:09.937Z"
+    },
+    {
+      "number": "2.0.0",
+      "date": "2016-02-12T04:42:18.607Z"
+    },
+    {
+      "number": "2.0.1",
+      "date": "2016-02-15T02:31:27.284Z"
+    },
+    {
+      "number": "2.1.0",
+      "date": "2016-02-24T04:10:25.902Z"
+    },
+    {
+      "number": "2.1.1",
+      "date": "2016-02-24T05:42:35.773Z"
+    },
+    {
+      "number": "2.2.0",
+      "date": "2016-03-14T10:25:29.002Z"
+    },
+    {
+      "number": "2.2.1",
+      "date": "2016-03-15T00:36:41.275Z"
+    },
+    {
+      "number": "2.3.0",
+      "date": "2016-04-15T02:03:42.030Z"
+    },
+    {
+      "number": "3.0.0",
+      "date": "2016-04-27T07:21:53.453Z"
+    },
+    {
+      "number": "3.1.0",
+      "date": "2016-05-13T00:37:05.091Z"
+    },
+    {
+      "number": "3.2.0",
+      "date": "2016-05-20T04:13:43.969Z"
+    },
+    {
+      "number": "3.2.1",
+      "date": "2016-05-20T06:33:02.703Z"
+    },
+    {
+      "number": "3.3.0",
+      "date": "2016-06-15T05:05:01.152Z"
+    },
+    {
+      "number": "3.4.0",
+      "date": "2016-06-20T04:31:12.001Z"
+    },
+    {
+      "number": "3.5.0",
+      "date": "2016-07-07T06:09:58.787Z"
+    },
+    {
+      "number": "4.0.0-preview1",
+      "date": "2016-07-12T10:18:36.377Z"
+    },
+    {
+      "number": "4.0.0-preview2",
+      "date": "2016-07-12T23:58:02.414Z"
+    },
+    {
+      "number": "4.0.0-preview3",
+      "date": "2016-07-13T04:27:06.051Z"
+    },
+    {
+      "number": "4.0.0-preview4",
+      "date": "2016-07-13T06:36:03.913Z"
+    },
+    {
+      "number": "4.0.0-preview5",
+      "date": "2016-07-13T07:33:37.463Z"
+    }
+  ],
+  "created": "2015-04-15T07:17:19.603Z",
+  "modified": "2016-07-13T07:33:37.463Z",
+  "lastPublisher": {
+    "name": "kring",
+    "email": "kevin-npm@kotachrome.com"
+  },
+  "owners": [
+    {
+      "name": "artstr",
+      "email": "arthur@racingtadpole.com"
+    },
+    {
+      "name": "kring",
+      "email": "kevin-npm@kotachrome.com"
+    },
+    {
+      "name": "stevage",
+      "email": "stevage@gmail.com"
+    },
+    {
+      "name": "terria",
+      "email": "terriajs@lists.nicta.com.au"
+    }
+  ],
+  "readme": "\nTerriaJS\n============\n\n[![Join the chat at https://gitter.im/TerriaJS/terriajs](https://badges.gitter.im/TerriaJS/terriajs.svg)](https://gitter.im/TerriaJS/terriajs?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge) [![Build Status](https://travis-ci.org/TerriaJS/terriajs.svg?branch=master)](https://travis-ci.org/TerriaJS/terriajs) [![Docs](https://img.shields.io/badge/docs-online-blue.svg)](http://terria.io/Documentation)\n\n![Terria logo](terria-logo.png \"Terria logo\")\n\nTerriaJS is a library for building rich, web-based geospatial data explorers, used to drive [National Map](http://nationalmap.gov.au), [AREMI](http://nationalmap.gov.au/renewables) and [NEII Viewer](neiiviewer.nicta.com.au).  It uses [Cesium](https://cesiumjs.org) and WebGL for a full 3D globe in the browser with no plugins.  It gracefully falls back to 2D with [Leaflet](http://leafletjs.com/) on systems that can't run Cesium. It can handle catalogs of thousands of layers, with dozens of geospatial file and web service types supported. It is almost entirely JavaScript in the browser, meaning it can even be deployed as a static website, making it simple and cheap to host.\n\n### Features\n\n* Nested catalog of layers which can be independently enabled to create mashups of many layers.\n* Supports GeoJSON, KML, CSV (point and region-mapped), GPX and CZML file types natively, and others including zipped shapefiles with an optional server-side conversion service.\n* Supports WMS, WFS, Esri MapServer, ABS ITT, Bing Maps, OpenStreetMap-style raster tiles, Mapbox, Urthecast, and WMTS item types.\n* Supports querying WMS, WFS, Esri MapServer, CSW, CKAN and Socrata services for groups of items.\n* 3D globe (Cesium) or 2D mode (Leaflet). 3D objects supported in CZML format.\n* Time dimensions supported for CSV, CZML, WMS. Automatically animate layers, or slide the time control forward and backward.\n* Drag-and-drop files from your desktop the browser, for instant visualisation (no file upload to server required).\n* Wider range of file types supported through server-side OGR2OGR service (requires upload).\n* All ASGS (Australian Statistical Geographic Standard) region types (LGA, SA2, commonwealth electoral district etc) supported for [CSV region mapping](https://github.com/NICTA/nationalmap/wiki/csv-geo-au), plus several others: Primary Health Networks, Statistical Local Areas, ISO 3 letter country codes, etc.\n* Users can generate a reusable URL link of their current map view, to quickly share mashups of web-hosted data. Google's URL shortener is optionally used.\n\n![Terria screenshot](terria-screenshot.png \"Terria screenshot\")\n\n### Who's using TerriaJS?\n\n#### Sites developed by Data61\n\n* [National Map](http://nationalmap.gov.au)\n* [AREMI](http://nationalmap.gov.au/renewables)\n* [Northern Australia Investment Map](http://nationalmap.gov.au/northernaustralia)\n* [NEII Viewer](http://neii.org.au/viewer)\n* [Global Risk Map](http://globalriskmap.nicta.com.au)\n* [Ground Water Visualisation System](http://groundwater-vis.research.nicta.com.au/)\n\n#### Prototypes and sites in development\n\n* [ParlMap](http://parlmap.terria.io/) (authorisation required)\n* [City of Sydney data explorer](http://data.cityofsydney.nsw.gov.au/map)\n* [GeoGLAM Rangeland and Pasture Productivity](http://map.geo-rapp.org/)\n* [Greater Sydney Commission](http://nationalmap.research.nicta.com.au/greatersydney/)\n\n#### Not Data61\n\nSites we're aware of that are using TerriaJS. These are not endorsements or testimonials.\n\n* [AURIN Map](http://map.aurin.org.au/)\n* [WA Map](http://map.beta.data.wa.gov.au/)\n* [Australian Wave Energy Atlas](http://awavea.csiro.au/)\n* [Leylines](http://maps.leylines.ch/)\n* [PropellerAero](http://www.propelleraero.com/)\n* [Tampa Bay Map](http://tampabaymap.org/)\n* [Latin America Map](http://www.latam-map.org/) \n* [USGS Protected Areas database](https://maps.usgs.gov/beta/padus/) (beta)\n* [Map-N-Tour](http://mapntour.squarespace.com/news/?tag=3D+Map+Platforms)\n* [Innovisite France Beta](http://www.innovisite.com/map/france/)\n\n### Technical\n\n* Built in Ecmascript 2015, compiled with Babel to ES5 using Gulp.\n* Supports IE9 and later.\n* [TerriaJS Server component](https://github.com/TerriajS/TerriaJS-Server) runs in NodeJS and provides proxying for web services that don't support CORS or require authentication.\n* Dependencies are [managed in NPM](https://www.npmjs.com/~terria) and assembled using WebPack.\n\n### Getting Started ###\nThe easiest way to build your own Terria-based map is using the TerriaMap starting point. This gives you the HTML structure, server and build processes you need to get a site up and running immediately.\n\nPre-requisites: Git, NodeJS, NPM, GDAL (optional).\n \n```\nsudo npm install -g gulp                           # Install gulp, the build tool\ngit clone https://github.com/TerriaJS/TerriaMap    # Get the code\ncd TerriaMap                                       \nnpm install                                        # Install dependencies\nnpm start                                          # Start the server in the background\ngulp watch                                         # Build the site, and watch for changes.\n```\n\nNow visit the site in your browser at `http://localhost:3001`.\n \nMore information: [Deploying your own Terria Map](https://github.com/NICTA/nationalmap/wiki/Deploying-your-own-Terria-Map)\n\nDocumentation about working with Terria and developing it is at http://terria.io/Documentation\n\nJavaScript documentation is at http://nationalmap.gov.au/build/TerriaJS/doc\n\n### Components and naming\n\n* **[Terria™](http://terria.io)** is the overall name for the spatial data platform, including closed-source spatial analytics developed by Data61.\n* **TerriaJS** is this JavaScript library consisting of the 2D/3D map, catalog management and many spatial data connectors.\n* **[Cesium](https://github.com/TerriaJS/Cesium)** is the 3D WebGL rendering library used by TerriaJS, which provides many low-level functions for loading and displaying imagery and spatial formats such as GeoJSON and KML.\n* **[TerriaMap](https://github.com/TerriaJS/TerriaMap)** is a complete website starting point, using TerriaJS.\n* **[TerriaJS-Server](https://github.com/TerriaJS/TerriaJS-Server)** is a NodeJS-based server that provides proxying and support services for TerriaJS.\n* **[NationalMap](https://github.com/NICTA/NationalMap)** is the flagship Terria deployment, and the origin of the TerriaJS library.\n\n#### Related components\n\n* **[Catalog Editor](https://github.com/TerriaJS/catalog-editor)**, an automatically generated web interface for creating and editing catalog (init) files.\n* **[Generate-TerriaJS-Schema](https://github.com/TerriaJS/generate-terriajs-schema)**, a tool which automatically generates a schema for validating catalog files, and also the editor, by processing TerriaJS source code.\n* **[TerriaMapStatic](https://github.com/terriajs/terriamapstatic)**, a pre-built version of TerriaMap, which can be deployed as a static HTML website, such as on Github Pages.\n\n### Using TerriaJS in an existing application\n\n```\nnpm install terriajs\n```\n\nTerriaJS is composed of a number of CommonJS modules, making it easy to incorporate only the parts you need into your application.  Building a TerriaJS application consists of three steps:\n\n1. Build the code with [webpack](https://webpack.github.io/) (or a similar tool).\n2. Build the CSS with [less](http://lesscss.org/).\n3. Copy the runtime resources to a directory accessible from your application's web server.\n\nThe entire process can be easily automated using [gulp](http://gulpjs.com/).  See TerriaMap's [gulpfile.js](https://github.com/TerriaJS/TerriaMap/blob/master/gulpfile.js) for an example.\n\n[index.js](https://github.com/NICTA/nationalmap/blob/master/index.js) requires-in various TerriaJS components and initializes the user interface.\n\n[index.less](https://github.com/NICTA/nationalmap/blob/master/index.less) customizes various aspects of the appearance and `@import`s the less files for the TerriaJS components that the application uses.\n\nAll assets in `node_modules/terriajs/wwwroot` should be copied to `[your app's web root directory]/build/TerriaJS`.\n\nWe'd like to thank these awesome online services that provide us with free accounts for our open source work!  [BrowserStack](https://www.browserstack.com), [Sauce Labs](https://saucelabs.com/), [Travis CI](https://travis-ci.org/)\n"
+}

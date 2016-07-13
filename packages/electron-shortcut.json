@@ -4,8 +4,17 @@
   "description": "Helper for global shortcut registering",
   "license": "MIT",
   "repository": {
-    "type": "git",
-    "url": "git+https://github.com/ragingwind/electron-shortcut.git"
+    "user": "ragingwind",
+    "repo": "electron-shortcut",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/ragingwind/electron-shortcut/tarball/master",
+    "clone_url": "https://github.com/ragingwind/electron-shortcut",
+    "https_url": "https://github.com/ragingwind/electron-shortcut",
+    "travis_url": "https://travis-ci.org/ragingwind/electron-shortcut",
+    "zip_url": "https://github.com/ragingwind/electron-shortcut/archive/master.zip",
+    "api_url": "https://api.github.com/repos/ragingwind/electron-shortcut"
   },
   "author": {
     "name": "ragingwind",
@@ -47,28 +56,47 @@
     "object-assign": "^4.0.1"
   },
   "gitHead": "4a7866f97b5414e7ac766f27d1a16711a1e015ea",
-  "bugs": {
-    "url": "https://github.com/ragingwind/electron-shortcut/issues"
-  },
   "homepage": "https://github.com/ragingwind/electron-shortcut#readme",
-  "_id": "electron-shortcut@0.4.1",
-  "_shasum": "da00787956df7a51bec6d1c6ba12d98db2553b6c",
-  "_from": ".",
   "_npmVersion": "2.14.4",
   "_nodeVersion": "4.1.2",
-  "_npmUser": {
-    "name": "ragingwind",
-    "email": "ragingwind@gmail.com"
-  },
   "dist": {
     "shasum": "da00787956df7a51bec6d1c6ba12d98db2553b6c",
     "tarball": "http://registry.npmjs.org/electron-shortcut/-/electron-shortcut-0.4.1.tgz"
   },
-  "maintainers": [
+  "stars": 1,
+  "versions": [
+    {
+      "number": "0.2.0",
+      "date": "2015-12-03T21:57:18.394Z"
+    },
+    {
+      "number": "0.2.1",
+      "date": "2015-12-03T21:57:40.545Z"
+    },
+    {
+      "number": "0.3.0",
+      "date": "2015-12-05T22:35:13.113Z"
+    },
+    {
+      "number": "0.4.0",
+      "date": "2015-12-09T09:10:05.365Z"
+    },
+    {
+      "number": "0.4.1",
+      "date": "2015-12-21T19:15:45.829Z"
+    }
+  ],
+  "created": "2015-12-03T21:57:18.394Z",
+  "modified": "2015-12-21T19:15:45.829Z",
+  "lastPublisher": {
+    "name": "ragingwind",
+    "email": "ragingwind@gmail.com"
+  },
+  "owners": [
     {
       "name": "ragingwind",
       "email": "ragingwind@gmail.com"
     }
   ],
-  "directories": {}
+  "readme": "# electron-shortcut\n\n> Helper for registering global shortcut\n\n\n## Install\n\n```\n$ npm install --save electron-shortcut\n```\n\n\n## Usage\n\n```js\nconst Shortcut = require('electron-shortcut');\n\n// create and register a shortcut with auto-register when windows got focus\nvar shortcut = new Shortcut('Command+1', handler);\n\n// create and register shortcuts with manual-register\nvar shortcut = new Shortcut(['Command+2', 'Command+3'], {\n\tautoRegister: false\n}, handler);\n\nshortcut.register();\n\n// with static method\nShortcut.register('Command+1', {autoRegister: true}, handler);\nShortcut.unregister();\n```\n\n## Shortcut(events, [options], handler)\n\n#### events\n\nType: `string` or 'array'\n\nNames for shortcut to register as global shortcut\n\n#### options\n\n- `autoRegister`: default: true, Auto un/register shortcuts on windows got focus.\n- `cmdOrCtrl`: default: false, All events of Command or Cmd will be changed into Control or Ctrl by OS running your application on\n\n#### handler\n\nGlobal event handler for events\n\n### register()\n\nRegister shortcuts with shortcut list already added.\n\n### unregister()\n\nUnregister shortcuts with shortcut list already added.\n\n### add(events, [options], handler)\n\nAdd a new shortcut\n\n### remove(events)\n\nRemove a shortcut. If events is not set, remove all of events.\n\n### get(events)\n\nReturn array of shortcut by event names\n\n### set(events, [options], handler)\n\nUpdate shortcut with new options by event name\n\n## Shortcut.register(events, [options], handler)\n\nRegister events with static method. See [Shortcut](#shortcutevents-options-handler) for more information of arguments.\n\n## Shortcut.unregister([events])\n\nUnregister events with static method\n\n## License\n\nMIT © [ragingwind](http://ragingwind.me)\n"
 }

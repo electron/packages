@@ -7,8 +7,17 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
-    "type": "git",
-    "url": "git+https://github.com/andrewpmckenzie/simple-react-server.git"
+    "user": "andrewpmckenzie",
+    "repo": "simple-react-server",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/andrewpmckenzie/simple-react-server/tarball/master",
+    "clone_url": "https://github.com/andrewpmckenzie/simple-react-server",
+    "https_url": "https://github.com/andrewpmckenzie/simple-react-server",
+    "travis_url": "https://travis-ci.org/andrewpmckenzie/simple-react-server",
+    "zip_url": "https://github.com/andrewpmckenzie/simple-react-server/archive/master.zip",
+    "api_url": "https://api.github.com/repos/andrewpmckenzie/simple-react-server"
   },
   "keywords": [
     "react",
@@ -38,31 +47,37 @@
     "supervisor": "^0.9.1"
   },
   "gitHead": "f6a4a68d80175a095768c71c06d0407db86eb191",
-  "bugs": {
-    "url": "https://github.com/andrewpmckenzie/simple-react-server/issues"
-  },
-  "_id": "simple-react-server@0.0.3",
-  "_shasum": "e0c00297798553e5942295991e8ce1f9ea916006",
-  "_from": ".",
   "_npmVersion": "3.6.0",
   "_nodeVersion": "5.6.0",
-  "_npmUser": {
+  "dist": {
+    "shasum": "e0c00297798553e5942295991e8ce1f9ea916006",
+    "tarball": "http://registry.npmjs.org/simple-react-server/-/simple-react-server-0.0.3.tgz"
+  },
+  "versions": [
+    {
+      "number": "0.0.1",
+      "date": "2016-01-16T04:20:07.107Z"
+    },
+    {
+      "number": "0.0.2",
+      "date": "2016-02-17T21:38:42.568Z"
+    },
+    {
+      "number": "0.0.3",
+      "date": "2016-02-18T15:17:34.388Z"
+    }
+  ],
+  "created": "2016-01-16T04:20:07.107Z",
+  "modified": "2016-02-18T15:17:34.388Z",
+  "lastPublisher": {
     "name": "andrewpmckenzie",
     "email": "andrew.mckenzie@electronifie.com"
   },
-  "maintainers": [
+  "owners": [
     {
       "name": "andrewpmckenzie",
       "email": "andrewpmckenzie@gmail.com"
     }
   ],
-  "dist": {
-    "shasum": "e0c00297798553e5942295991e8ce1f9ea916006",
-    "tarball": "http://registry.npmjs.org/simple-react-server/-/simple-react-server-0.0.3.tgz"
-  },
-  "_npmOperationalInternal": {
-    "host": "packages-5-east.internal.npmjs.com",
-    "tmp": "tmp/simple-react-server-0.0.3.tgz_1455808651858_0.46465567708946764"
-  },
-  "directories": {}
+  "readme": "# simple-react-server\n\nAn ExpressJS based React server made for hacking. Wired together with browserify, socket.io, and less CSS. \n\nAlso features:\n - A basic Collection class with syncing from server to client\n - Basic RPC message passing from client to server\n\nNote:\n - there is no persistence. The collections are kept only in memory, so will die with your app.\n - this isn't intended as a production-ready server. It's just for quick hacks / prototypes.\n\n## To run the example\n1. clone this repo\n2. `npm install`\n3. `make run-example`\n\n## Basic wiring\nThis is a rather contrived example that wires together an 'app' that displays\n'clocks' with an updating time pushed from the server. Clicking a button on the\nclient will add a new clock to the list.\n\n```javascript\n// index.js\nvar path = require('path');\nvar Server = require('simple-react-server').Server;\n\nvar collections = require('./shared/collections');\nvar rpcs = require('./shared/rpcs');\n\nvar server = new Server({\n  collections:   collections,\n  rpcs:          rpcs,\n  // Anything placed in here will be served from /\n  staticRoot:    path.join(__dirname, 'client/public'),\n  // Anything in this folder will be available as css under /css/yourLessFileName.css\n  lessRoot:      path.join(__dirname, 'client/less'),\n  // The root class for the browserfy bundle\n  clientAppPath: path.join(__dirname, 'client/app.js')\n});\nserver.run();\n\n// Handle RPC requests + update models\n\ntick = () => setTimeout(() => {\n  collections.clocks.all().forEach((clock) => {\n    clock.time = new Date().toString();\n    clock.updates++;\n    collections.clocks.update(clock.id, clock);\n  });\n  tick();\n}, 1000);\ntick();\n\nvar idCounter = 0;\nrpcs.addClock.invoke((options) => {\n  var id = idCounter++;\n  collections.clocks.add(id, {\n    id: id,\n    name: options.name,\n    time: new Date().toString()\n  });\n});\n```\n\n```javascript\n// shared/collections.js\n// Collection objects used to store models. \n// Collection events: 'created', 'updated', 'deleted'.\n// Collection methods: \n//   add(id, item), update(id, item), remove(id)\n//   item(id):Item, all():Item[], indexed():Object.<ID,Item>\n//   on(CB.<EventName, ID, Item>)\nvar Collection = require('simple-react-server').Collection;\nmodule.exports = {\n  clocks: new Collection()\n}\n```\n\n```javascript\n// shared/rpcs.js\n// RPC methods used to send messages from the client to the server. \n// Handle events on the server with:\n//   require('../shared/rpcs').addClock.invoke(function (request) { ... });\n// Send events on the client with:\n//   require('../shared/rpcs').addClock({ ...request... });\nvar RPC = require('simple-react-server').RPC;\nmodule.exports = {\n  addClock: new RPC()\n}\n```\n\n```javascript\n// client/app.js\nvar AppView = require('./AppView.jsx');\nvar Client = require('simple-react-server').Client;\nvar collections = require('../shared/collections.js');\nvar rpcs = require('../shared/rpcs.js');\n\nvar client = new Client({ collections: collections, rpcs: rpcs });\nclient.render(AppView);\n```\n\n```jsx\n// client/AppView.jsx\nvar collections = require('../shared/collections.js');\nvar React = require('react');\nvar rpcs = require('../shared/rpcs.js');\n\nclass Clock extends React.Component {\n  render () { return <div>{this.props.name}: {this.props.time}</div> }\n}\n\nclass AppView extends React.Component {\n  constructor () {\n    super();\n    this.state = { clocks: [] };\n  }\n\n  componentDidMount () {\n    collections.clocks.on('created', this.updateClocks.bind(this));\n    collections.clocks.on('updated', this.updateClocks.bind(this));\n    collections.clocks.on('deleted', this.updateClocks.bind(this));\n  }\n\n  updateClocks () { this.setState({ clocks: collections.clocks.all() }); }\n\n  // Send an RPC message to the server\n  addClock () { rpcs.addClock({ name: 'Foo clock' }); }\n\n  renderClocks () { this.state.clocks.map((clock) => <Clock {...clock} />); }\n\n  render () {\n    return <div>\n      <div className='clocks'>{this.renderClocks()}</div>\n      <button onClick={this.addClock.bind(this)}>Add clock</button>\n    </div>\n  }\n};\n\nmodule.exports = AppView;\n```\n"
 }

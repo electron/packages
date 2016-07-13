@@ -7,8 +7,17 @@
     "test": "mocha"
   },
   "repository": {
-    "type": "git",
-    "url": "git+https://github.com/andrewpmckenzie/chainbuilder-flow.git"
+    "user": "andrewpmckenzie",
+    "repo": "chainbuilder-flow",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/andrewpmckenzie/chainbuilder-flow/tarball/master",
+    "clone_url": "https://github.com/andrewpmckenzie/chainbuilder-flow",
+    "https_url": "https://github.com/andrewpmckenzie/chainbuilder-flow",
+    "travis_url": "https://travis-ci.org/andrewpmckenzie/chainbuilder-flow",
+    "zip_url": "https://github.com/andrewpmckenzie/chainbuilder-flow/archive/master.zip",
+    "api_url": "https://api.github.com/repos/andrewpmckenzie/chainbuilder-flow"
   },
   "keywords": [
     "chainbuilder",
@@ -25,9 +34,6 @@
     "name": "andrewpmckenzie@gmail.com"
   },
   "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/andrewpmckenzie/chainbuilder-flow/issues"
-  },
   "homepage": "https://github.com/andrewpmckenzie/chainbuilder-flow",
   "dependencies": {
     "async": "^1.5.0"
@@ -40,24 +46,37 @@
     "sinon": "^1.17.2"
   },
   "gitHead": "9385e1837bd5302ee301d77aaaa7064a7687aa76",
-  "_id": "chainbuilder-flow@1.0.2",
-  "_shasum": "8f5d409faf5603578ec361bb5bcbc2d9a8db3a51",
-  "_from": ".",
   "_npmVersion": "3.3.12",
   "_nodeVersion": "5.3.0",
-  "_npmUser": {
+  "dist": {
+    "shasum": "8f5d409faf5603578ec361bb5bcbc2d9a8db3a51",
+    "tarball": "http://registry.npmjs.org/chainbuilder-flow/-/chainbuilder-flow-1.0.2.tgz"
+  },
+  "versions": [
+    {
+      "number": "1.0.0",
+      "date": "2015-12-29T18:29:59.295Z"
+    },
+    {
+      "number": "1.0.1",
+      "date": "2015-12-29T18:59:37.833Z"
+    },
+    {
+      "number": "1.0.2",
+      "date": "2015-12-30T14:50:27.781Z"
+    }
+  ],
+  "created": "2015-12-29T18:29:59.295Z",
+  "modified": "2015-12-30T14:50:27.781Z",
+  "lastPublisher": {
     "name": "andrewpmckenzie",
     "email": "andrew.mckenzie@electronifie.com"
   },
-  "maintainers": [
+  "owners": [
     {
       "name": "andrewpmckenzie",
       "email": "andrewpmckenzie@gmail.com"
     }
   ],
-  "dist": {
-    "shasum": "8f5d409faf5603578ec361bb5bcbc2d9a8db3a51",
-    "tarball": "http://registry.npmjs.org/chainbuilder-flow/-/chainbuilder-flow-1.0.2.tgz"
-  },
-  "directories": {}
+  "readme": "# chainbuilder-flow [![Build Status](https://travis-ci.org/andrewpmckenzie/chainbuilder-flow.svg)](https://travis-ci.org/andrewpmckenzie/chainbuilder-flow)\n\nFlow block (each, map, if, while) mixins for [chainbuilder](https://www.npmjs.com/package/chainbuilder). \n\n**Installation** `npm install chainbuilder chainbuilder-flow --save`\n\n**Usage**  \n```javascript\nvar chainBuilder = require('chainbuilder');\n\nvar myChain = chainBuilder({\n  methods: {/* ... your methods ... */},\n  mixins: [\n    /* ... other mixins ... */\n    require('chainbuilder-flow')()\n  ]\n});\n```\n\n## Methods\n\n#### #$beginMap(options), #$endMap()\nBegin and end a map block. The map will be made in parallel by default.  \n\n_e.g._  \n```javascript\nmyChain([1, 2, 3])\n  .$beginMap({ series: true })\n    .add(1)\n    .times(2)\n  .$endMap()\n  .end(function (err, result) {\n    console.log(result); // > [4, 6, 8]\n  });\n```\n\n**`@param {Object} options`** (optional) flow control options.\n**`@param {Boolean} options.series`** (optional) run the block in series (one at a time).\n**`@param {Number} options.limit`** (optional) limit to running n items in parallel at a time.\n**`@alias #$beginEach(options), #$endEach()`**\n\n#### #$beginIf(conditionFn), #$endIf()\nBegin and end a conditional block.  \n\n_e.g._  \n```javascript\nmyChain(2)\n\n  .$beginIf(function (result) { return result === 1; })\n    .inject(3)\n  .$endIf()\n  .end(function (err, result) { console.log(result); // > 2 })\n  \n  .$beginIf(function (result) { return result === 2; })\n    .inject(3)\n  .$endIf()\n  .end(function (err, result) { console.log(result); // > 3 });\n```\n\n**`@param {function(result):boolean} conditionFn`** block will run if `true` is returned.\n\n#### #$beginWhile(checkFn), #$endWhile()\nBegin and end a block that is executed while the condition is true.  \n\n_e.g._  \n```javascript\nmyChain(1)\n  .$beginWhile(function (result) { return result < 4; })\n    .transform(function (err, result, done) { done(null, result + 1); })\n  .$endWhile()\n  .end(function (err, result) { console.log(result); // > 4 })\n```\n\n**`@param {function(result):boolean} conditionFn`** block will run while `true` is returned.\n"
 }

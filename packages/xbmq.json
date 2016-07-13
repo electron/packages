@@ -17,8 +17,17 @@
     "url": "http://angryelectron.com"
   },
   "repository": {
-    "type": "git",
-    "url": "git+https://github.com/angryelectron/xbmq-js.git"
+    "user": "angryelectron",
+    "repo": "xbmq-js",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/angryelectron/xbmq-js/tarball/master",
+    "clone_url": "https://github.com/angryelectron/xbmq-js",
+    "https_url": "https://github.com/angryelectron/xbmq-js",
+    "travis_url": "https://travis-ci.org/angryelectron/xbmq-js",
+    "zip_url": "https://github.com/angryelectron/xbmq-js/archive/master.zip",
+    "api_url": "https://api.github.com/repos/angryelectron/xbmq-js"
   },
   "license": "GPL-3.0",
   "dependencies": {
@@ -43,9 +52,6 @@
     "sinon": "^1.17.3"
   },
   "gitHead": "2c1fd03b9cff73de00fc53c8c0907e0b7dc5cbde",
-  "bugs": {
-    "url": "https://github.com/angryelectron/xbmq-js/issues"
-  },
   "homepage": "https://github.com/angryelectron/xbmq-js#readme",
   "bundleDependencies": [
     "mqtt",
@@ -54,28 +60,45 @@
     "xbee-api",
     "nconf"
   ],
-  "_id": "xbmq@1.2.0",
-  "_shasum": "e81a3fa6d52e55c2df8e718d94168df2004e22b3",
-  "_from": ".",
   "_npmVersion": "2.14.2",
   "_nodeVersion": "4.0.0",
-  "_npmUser": {
-    "name": "abythell",
-    "email": "abythell@ieee.org"
-  },
   "dist": {
     "shasum": "e81a3fa6d52e55c2df8e718d94168df2004e22b3",
     "tarball": "http://registry.npmjs.org/xbmq/-/xbmq-1.2.0.tgz"
   },
-  "maintainers": [
+  "versions": [
+    {
+      "number": "1.0.0",
+      "date": "2016-02-25T00:44:22.062Z"
+    },
+    {
+      "number": "1.1.0",
+      "date": "2016-04-06T05:38:56.420Z"
+    },
+    {
+      "number": "1.1.1",
+      "date": "2016-04-06T23:45:56.559Z"
+    },
+    {
+      "number": "1.1.2",
+      "date": "2016-04-18T23:07:39.815Z"
+    },
+    {
+      "number": "1.2.0",
+      "date": "2016-05-25T19:03:20.954Z"
+    }
+  ],
+  "created": "2016-02-25T00:44:22.062Z",
+  "modified": "2016-05-25T19:03:20.954Z",
+  "lastPublisher": {
+    "name": "abythell",
+    "email": "abythell@ieee.org"
+  },
+  "owners": [
     {
       "name": "abythell",
       "email": "abythell@ieee.org"
     }
   ],
-  "_npmOperationalInternal": {
-    "host": "packages-16-east.internal.npmjs.com",
-    "tmp": "tmp/xbmq-1.2.0.tgz_1464202996625_0.39136217115446925"
-  },
-  "directories": {}
+  "readme": "XBee to MQTT Gateway\n====================\n`xbmq` is a NodeJs XBee-to-MQTT gateway.  It allows two-way communication with\nXBee networks through MQTT messages and aims to do as little processing as\npossible, allowing it to run reliably and on low-power / embedded devices.\n\nQuick Start\n------------\nInstall xbmq via `npm install xbmq`. \n\nConfigure the local XBee:\n\n* ID - set the same for all radios in the network.\n* AP=1 or 2 - xbmq uses API mode to communicate with the local XBee.\n* NI - the Node Identifier of the local XBee is used as an MQTT topic.  Optional,\nbut recommended.\n* Connect the local XBee using a serial port adapter (Sparkfun's XBee Explorer,\nAdafruit's XBee Adapter, etc.)\n\nConfigure xbmq with your mqtt and serial port settings using command-line\narguments.  The arguments and their default values are:\n\n* --rootTopic xbmq\n* --broker mqtt://test.mosquitto.org\n* --username (none)\n* --password (none)\n* --port /dev/ttyUSB0\n* --baud 9600\n* --log ./xbmq.log\n* --loglevel info\n* --apiMode 2\n\nAlternatively, use a config file instead.  Copy or rename `config.json.sample` to \n`config.json`.  Note: Command-line arguments override config.json.\n\n\nOperation\n---------\nAll MQTT messages (to and from the XBee network) are published to subtopics of\n`rootTopic/gatewayIdentifier`, where `rootTopic` is configured as above\nand `gatewayIdentifier` is the NI value of the local XBee.  If NI is not set, the\nradio's 64-bit address will be used instead.\n\n### Topic: rootTopic/gatewayIdentifier/online\n* _Message Type:_ String\n* _Message Value:_ \"1\" for online, \"0\" for offline\n* _Description:_ Messages are published to this topic by the gateway to \n  indicate the gateway's online status.  \n\n### Topic: rootTopic/gatewayIdentifier/response\n* _Message Type:_ JSON\n* _Message Value:_ An [xbee-api](https://www.npmjs.com/package/xbee-api) frame\n* _Description:_ Messages from the XBee network are published to this topic. \n\n### Topic: rootTopic/gatewayIdentifier/request\n* _Message Type:_ JSON\n* _Message Value:_ An [xbee-api](https://www.npmjs.com/package/xbee-api) frame\n* _Description:_ Mqtt clients can publish to this topic to issue commands to the \n  XBee network.  Because JSON does not support hexadecimal numbers, `type` and \n  `id` must be passed in decimal or as hedecimal strings (ie. 16, \"0x10\").  \n  Since many XBee commands don't require a commandParameter, it can be \n  omitted from the message if desired.\n\n### Topic: rootTopic/gatewayIdentifier/log\n* _Message Type:_ JSON\n* _Message Value:_ Log messages.  Verbosity is controlled by `--loglevel`.\n* _Description:_ Similar to what appears in the local log file.\n\nTips for Using with MQTT Clients\n--------------------------------\n### MQTT module for NodeJS \n* Call JSON.parse(message) on messages received from the `request` topic.\n* Call JSON.stringify(message) on XBee frame objects before publishing.\n\n### Node-Red\n* Connect a JSON node to the output of the MQTT node that is subscribed to the\n`request` topic.\n\nEmbedded Application Note\n-------------------------\nxbmq-js is intended to run on single board computers, OpenWrt routers,\nand other devices with limited resources that either can't access npm repositories,\ndon't have native compilers, or just take forever to run `npm install`.\n\nThis is why dependencies without native components have been bundled with the \napplication.  `serialport` is listed as an optional dependency because \ninstalling it involves native compiling, which typically can't be done on these\nlimited devices.\n\nAbout\n-----\n* xbmq-js, copyright 2015-2016 Andrew Bythell, [abythell@ieee.org](mailto:abythell@ieee.org)\n* http://github.com/angryelectron/xbmq-js\n\nxbmq is free software: you can redistribute it and/or modify it under the terms\nof the GNU General Public License as published by the Free Software Foundation,\neither version 3 of the License, or (at your option) any later version.\n\nxbmq is distributed in the hope that it will be useful, but WITHOUT ANY\nWARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A\nPARTICULAR PURPOSE. See the GNU General Public License for more details.\n\nYou should have received a copy of the GNU General Public License along with\nxbmq. If not, see http://www.gnu.org/licenses/.\n"
 }

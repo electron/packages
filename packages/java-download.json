@@ -1,0 +1,77 @@
+{
+  "name": "java-download",
+  "version": "0.1.0",
+  "description": "Downloads a JVM release archive from Oracle",
+  "main": "index.js",
+  "bin": {
+    "java-download": "cli.js",
+    "javadl": "cli.js"
+  },
+  "scripts": {
+    "test": "node test.js"
+  },
+  "repository": {
+    "user": "blahah",
+    "repo": "java-download",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/blahah/java-download/tarball/master",
+    "clone_url": "https://github.com/blahah/java-download",
+    "https_url": "https://github.com/blahah/java-download",
+    "travis_url": "https://travis-ci.org/blahah/java-download",
+    "zip_url": "https://github.com/blahah/java-download/archive/master.zip",
+    "api_url": "https://api.github.com/repos/blahah/java-download"
+  },
+  "keywords": [
+    "java",
+    "download",
+    "JVM"
+  ],
+  "author": {
+    "name": "Richard Smith-Unna",
+    "email": "rik@fathomlabs.io"
+  },
+  "license": "MIT",
+  "homepage": "https://github.com/blahah/java-download#readme",
+  "devDependencies": {
+    "lodash.isequal": "^4.1.4"
+  },
+  "dependencies": {
+    "debug": "^2.2.0",
+    "home-path": "^1.0.3",
+    "lodash": "^4.11.1",
+    "minimist": "^1.2.0",
+    "mkdirp": "^0.5.1",
+    "mv": "^2.1.1",
+    "nugget": "^2.0.0",
+    "path-exists": "^2.1.0",
+    "rc": "^1.1.6"
+  },
+  "gitHead": "d64cc7a8bc03d25fd4d7a27049c3ee915394df31",
+  "_npmVersion": "3.6.0",
+  "_nodeVersion": "5.7.1",
+  "dist": {
+    "shasum": "7fa265f6abc124b484e430456dd040e74872088f",
+    "tarball": "http://registry.npmjs.org/java-download/-/java-download-0.1.0.tgz"
+  },
+  "versions": [
+    {
+      "number": "0.1.0",
+      "date": "2016-05-08T18:56:09.551Z"
+    }
+  ],
+  "created": "2016-05-08T18:56:09.551Z",
+  "modified": "2016-05-08T18:56:09.551Z",
+  "lastPublisher": {
+    "name": "blahah",
+    "email": "rds45@cam.ac.uk"
+  },
+  "owners": [
+    {
+      "name": "blahah",
+      "email": "rds45@cam.ac.uk"
+    }
+  ],
+  "readme": "# java-download\n\ndownloads a Java JVM release package from Oracle\n\njust [electron-download](https://github.com/electron-userland/electron-download) by modified to get java.\n\nThis is mostly a mashup of [electron-download](https://github.com/electron-userland/electron-download) and [Java-JRE-JDK-Downloader](https://github.com/inetquestion/Java-JRE-JDK-Downloader)\n\n### usage\n\n```plain\n$ npm install --global java-download\n$ java-download --version=8 --type=jre\n$ javadl --version=8 --type=jre --platform=linux\n```\n\n```js\nvar download = require('java-download')\n\ndownload({\n  version: 8,\n  arch: 'x64',\n  platform: 'windows',\n  cache: './zips' // defaults to <user home directory>/.java\n}, function (err, path) {\n  // path will be the path of the file that it downloaded.\n  // if the file was already cached it will skip\n  // downloading and call the cb with the cached file path\n  // if it wasn't cached it will download the file and save\n  // it in the cache path\n})\n```\n"
+}

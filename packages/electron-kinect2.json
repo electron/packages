@@ -7,8 +7,17 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
-    "type": "git",
-    "url": "git+https://github.com/mpirik/kinect2.git"
+    "user": "mpirik",
+    "repo": "kinect2",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/mpirik/kinect2/tarball/master",
+    "clone_url": "https://github.com/mpirik/kinect2",
+    "https_url": "https://github.com/mpirik/kinect2",
+    "travis_url": "https://travis-ci.org/mpirik/kinect2",
+    "zip_url": "https://github.com/mpirik/kinect2/archive/master.zip",
+    "api_url": "https://api.github.com/repos/mpirik/kinect2"
   },
   "keywords": [
     "electron",
@@ -19,33 +28,83 @@
     "name": "Wouter Verweirder"
   },
   "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/wouterverweirder/kinect2/issues"
-  },
   "homepage": "https://github.com/wouterverweirder/kinect2",
   "dependencies": {
     "edge-atom-shell": "^5.0.0",
     "lodash": "^3.10.1"
   },
   "gitHead": "ce95a68fdc71f3c6b5d723212a0f88a727008702",
-  "_id": "electron-kinect2@0.0.21",
-  "_shasum": "26fe17240dd7219c0c64ac2d1b64bc34519a86ac",
-  "_from": ".",
   "_npmVersion": "2.14.7",
   "_nodeVersion": "4.2.2",
-  "_npmUser": {
+  "dist": {
+    "shasum": "26fe17240dd7219c0c64ac2d1b64bc34519a86ac",
+    "tarball": "http://registry.npmjs.org/electron-kinect2/-/electron-kinect2-0.0.21.tgz"
+  },
+  "versions": [
+    {
+      "number": "0.0.8",
+      "date": "2015-06-05T18:19:19.510Z"
+    },
+    {
+      "number": "0.0.9",
+      "date": "2015-06-16T15:08:02.418Z"
+    },
+    {
+      "number": "0.0.10",
+      "date": "2015-06-16T15:20:32.800Z"
+    },
+    {
+      "number": "0.0.11",
+      "date": "2015-06-16T20:20:36.019Z"
+    },
+    {
+      "number": "0.0.12",
+      "date": "2015-06-17T21:02:53.892Z"
+    },
+    {
+      "number": "0.0.13",
+      "date": "2015-07-31T14:33:15.525Z"
+    },
+    {
+      "number": "0.0.14",
+      "date": "2015-09-09T14:59:17.224Z"
+    },
+    {
+      "number": "0.0.15",
+      "date": "2015-09-14T15:27:08.271Z"
+    },
+    {
+      "number": "0.0.16",
+      "date": "2015-09-15T19:24:10.232Z"
+    },
+    {
+      "number": "0.0.17",
+      "date": "2015-09-15T22:16:44.237Z"
+    },
+    {
+      "number": "0.0.18",
+      "date": "2015-09-24T21:18:42.873Z"
+    },
+    {
+      "number": "0.0.20",
+      "date": "2015-11-24T23:25:16.314Z"
+    },
+    {
+      "number": "0.0.21",
+      "date": "2015-11-24T23:35:27.021Z"
+    }
+  ],
+  "created": "2015-06-05T18:19:19.510Z",
+  "modified": "2015-11-24T23:35:27.021Z",
+  "lastPublisher": {
     "name": "jgeurts",
     "email": "jim@biacreations.com"
   },
-  "maintainers": [
+  "owners": [
     {
       "name": "jgeurts",
       "email": "jim@biacreations.com"
     }
   ],
-  "dist": {
-    "shasum": "26fe17240dd7219c0c64ac2d1b64bc34519a86ac",
-    "tarball": "http://registry.npmjs.org/electron-kinect2/-/electron-kinect2-0.0.21.tgz"
-  },
-  "directories": {}
+  "readme": "# Node-Kinect2\r\n\r\nNodejs library to access the kinect 2 data from the official MS SDK\r\n\r\nStill very early / experimental.\r\n\r\n![Screenshot](https://raw.githubusercontent.com/wouterverweirder/node-kinect2/master/node-kinect2-skeleton.png)\r\n\r\n```\r\nvar Kinect2 = require('kinect2');\r\n\r\nvar kinect = new Kinect2();\r\n\r\nif(kinect.open()) {\r\n\tconsole.log(\"Kinect Opened\");\r\n\t//listen for body frames\r\n\tkinect.on('bodyFrame', function(bodies){\r\n\t\tfor(var i = 0;  i < bodies.length; i++) {\r\n\t\t\tconsole.log(bodies[i]);\r\n\t\t}\r\n\t});\r\n\r\n\t//request body frames\r\n\tkinect.openBodyReader();\r\n\r\n\t//close the kinect after 5 seconds\r\n\tsetTimeout(function(){\r\n\t\tkinect.close();\r\n\t\tconsole.log(\"Kinect Closed\");\r\n\t}, 5000);\r\n}\r\n```\r\n"
 }

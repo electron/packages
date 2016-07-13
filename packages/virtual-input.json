@@ -1,0 +1,48 @@
+{
+  "name": "virtual-input",
+  "version": "0.0.2",
+  "description": "Node.js virtual input library",
+  "main": "app/virtual_gamepad_sep.js",
+  "author": {
+    "name": "omeryagmurlu"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "ioctl": "~1.0.0",
+    "ref": "^1.3.2",
+    "ref-array": "^1.1.2",
+    "ref-struct": "^1.0.2",
+    "struct": "~0.0.8"
+  },
+  "devDependencies": {
+    "eslint": "^2.0.0",
+    "eslint-config-google": "^0.3.0"
+  },
+  "gitHead": "226b0d99e0cab283d761ee76a597776bea6f658f",
+  "scripts": {},
+  "_npmVersion": "2.14.12",
+  "_nodeVersion": "4.3.0",
+  "dist": {
+    "shasum": "5f347235cf337dfc334874b4b57b4fc70be0567d",
+    "tarball": "http://registry.npmjs.org/virtual-input/-/virtual-input-0.0.2.tgz"
+  },
+  "versions": [
+    {
+      "number": "0.0.2",
+      "date": "2016-02-14T18:25:14.738Z"
+    }
+  ],
+  "created": "2016-02-14T18:25:14.738Z",
+  "modified": "2016-02-14T18:25:14.738Z",
+  "lastPublisher": {
+    "name": "omeryagmurlu",
+    "email": "omeryagmurlu@gmail.com"
+  },
+  "owners": [
+    {
+      "name": "omeryagmurlu",
+      "email": "omeryagmurlu@gmail.com"
+    }
+  ],
+  "readme": "# node-virtual-input\n\nThis nodejs lib lets you simulate keypresses, gamepad controls, joystick controls, mouse movement and clicks; all _*natively*_ using ```uinput```.\n\n##Prerequisite\n------------\nThis is only compatible with Linux OS with the **uinput** kernel module installed.\n\n##Installation\n------------\n    npm install --save virtual-input\n\n##Usage\n-----\n```\nconst Input = require('virtual-input');\n\nlet opts = {};\nlet input = new Input(opts);\n```\n\n##Methods\n--------\n\n```.connect(callback)```\nConnects input device to device.\n\n```.disconnect(callback)```\nDisconnects input device from device.\n\n```.sendEvent({type: <EVENTTYPE>, code: <EVENTCODE>, value: <VALUE>})```\nSends an event.\n\n```type``` and ```code``` are numbers based on [the event types](https://www.kernel.org/doc/Documentation/input/event-codes.txt) and [the event codes](http://lxr.free-electrons.com/source/include/uapi/linux/input-event-codes.h).\nSome of these types and codes are included in ```lib/uinput.js```, if ```type``` and ```code``` are given strings, their value will be taken from there. (not all codes exist there).\n\n##Options\n--------\n```opts.ioctlArray```\nYou may supply an array of two array pairs of ioctl 'features'.\n\n```\nlet input = new Input({ioctlArray: [\n\t['UI_SET_KEYBIT', 'BTN_MIDDLE'],\n\t['UI_SET_KEYBIT', 'BTN_EXTRA']\n]});\n```\n\n##Examples\n----------\n\nThere is ```rectangle.js``` in examples dir. If you want real code samples, then you can check out my sphero-as-joystick repo.\n\nForked and Worked on [node-virtual-gamepads](https://github.com/miroof/node-virtual-gamepads)\n"
+}

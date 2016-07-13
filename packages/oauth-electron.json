@@ -7,8 +7,17 @@
     "test": "mocha test"
   },
   "repository": {
-    "type": "git",
-    "url": "git+https://github.com/kanekotic/oauth-electron.git"
+    "user": "kanekotic",
+    "repo": "oauth-electron",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/kanekotic/oauth-electron/tarball/master",
+    "clone_url": "https://github.com/kanekotic/oauth-electron",
+    "https_url": "https://github.com/kanekotic/oauth-electron",
+    "travis_url": "https://travis-ci.org/kanekotic/oauth-electron",
+    "zip_url": "https://github.com/kanekotic/oauth-electron/archive/master.zip",
+    "api_url": "https://api.github.com/repos/kanekotic/oauth-electron"
   },
   "keywords": [
     "facebook",
@@ -24,9 +33,6 @@
       "url": "https://github.com/kanekotic/oauth-electron/blob/master/LICENSE"
     }
   ],
-  "bugs": {
-    "url": "https://github.com/kanekotic/oauth-electron/issues"
-  },
   "devDependencies": {
     "blanket": "^1.2.1",
     "chai": "^3.4.1",
@@ -40,28 +46,29 @@
   },
   "gitHead": "0b9c03eeaceee6a51b30db9929d4b6102d5f51f3",
   "homepage": "https://github.com/kanekotic/oauth-electron#readme",
-  "_id": "oauth-electron@0.1.0",
-  "_shasum": "31ea134cc24629a97e88a3f37c0f624dcc6cf7cd",
-  "_from": ".",
   "_npmVersion": "2.15.1",
   "_nodeVersion": "4.4.3",
-  "_npmUser": {
-    "name": "kanekotic",
-    "email": "alvarojosepl@gmail.com"
-  },
   "dist": {
     "shasum": "31ea134cc24629a97e88a3f37c0f624dcc6cf7cd",
     "tarball": "http://registry.npmjs.org/oauth-electron/-/oauth-electron-0.1.0.tgz"
   },
-  "maintainers": [
+  "versions": [
+    {
+      "number": "0.1.0",
+      "date": "2016-04-28T06:13:08.382Z"
+    }
+  ],
+  "created": "2016-04-28T06:13:08.382Z",
+  "modified": "2016-04-28T06:13:08.382Z",
+  "lastPublisher": {
+    "name": "kanekotic",
+    "email": "alvarojosepl@gmail.com"
+  },
+  "owners": [
     {
       "name": "kanekotic",
       "email": "alvarojosepl@gmail.com"
     }
   ],
-  "_npmOperationalInternal": {
-    "host": "packages-16-east.internal.npmjs.com",
-    "tmp": "tmp/oauth-electron-0.1.0.tgz_1461823987290_0.8848454256076366"
-  },
-  "directories": {}
+  "readme": "# ![drawing 1](https://cloud.githubusercontent.com/assets/3071208/14776049/cb6164ea-0ac3-11e6-8219-c8a46a56e3e5.png)\n\n**this package is currently in development and is not available for use**\n\nUse OAuth in a simple way inside your electron App.\n\n## Installation\n\nadd it to your elenctron project using npm command\n```\nnpm install oauth-electron --save\n```\n\n## Usage\n\n### Oauth1\n\nadd the require for ouath and twitter specific code from this package\n\n```js\nvar oauth = require('oauth-electron-twitter').oauth2;\nvar data = require('oauth-electron-twitter').oauth2_data;\n```\n\nuse or extend the oauth object as per your requirements\n```\n{\n    \"key\" : \"\",\n    \"secret\" : \"\";\n    \"window\" : \"\";\n    \"url\" : \"\";\n    \"request_token\" : \"\";\n    \"access_token\" : \"\";\n    \"version\" : \"\";\n    \"callback\" : \"\";\n    \"signature_method\" : \"\";\n}\n```\npass the previously named object and a the widow to display into the login process.\n```js\nvar auth = new oauth();\nauth.login(info, window);\n```\nthe login function will return a Promise with the acces token and secret\n```\n{\n    oauth_access_token: ***,\n    oauth_access_token_secret: ***\n}\n```\n\n### Oauth2\n\nadd the require for ouath and twitter specific code from this package\n\n```js\nvar oauth = require('oauth-electron-twitter').oauth2;\nvar data = require('oauth-electron-twitter').oauth2_data;\n```\nuse or extend the oauth object as per your requirements\n```\n{\n    \"key\" : \"\",\n    \"secret\" : \"\";\n    \"window\" : \"\";\n    \"base_url\" : \"\";\n    \"auth_path\" : \"\";\n    \"token_path\" : \"\";\n    \"customHeaders\" : \"\";\n    \"scope\" : \"\";\n}\n```\npass the previously named object and a the widow to display into the login process.\n```js\nvar auth = new oauth();\nauth.login(info, window);\n```\nthe login function will return a Promise with the acces token and secret\n```\n{\n    oauth_access_token: ***,\n    oauth_refresh_token: ***\n}\n```\n\n\n###### logo: Award,Passport graphics by <a href=\"http://www.freepik.com/\">Freepik</a> from <a href=\"http://www.flaticon.com/\">Flaticon</a> are licensed under <a href=\"http://creativecommons.org/licenses/by/3.0/\" title=\"Creative Commons BY 3.0\">CC BY 3.0</a>. Made with <a href=\"http://logomakr.com\" title=\"Logo Maker\">Logo Maker</a>\n"
 }

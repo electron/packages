@@ -6,8 +6,17 @@
   "main": "index.js",
   "version": "0.1.5",
   "repository": {
-    "type": "git",
-    "url": "git+https://github.com/tundrax/electron-tap.git"
+    "user": "tundrax",
+    "repo": "electron-tap",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/tundrax/electron-tap/tarball/master",
+    "clone_url": "https://github.com/tundrax/electron-tap",
+    "https_url": "https://github.com/tundrax/electron-tap",
+    "travis_url": "https://travis-ci.org/tundrax/electron-tap",
+    "zip_url": "https://github.com/tundrax/electron-tap/archive/master.zip",
+    "api_url": "https://api.github.com/repos/tundrax/electron-tap"
   },
   "keywords": [
     "electron",
@@ -27,29 +36,51 @@
   },
   "gitHead": "1154623099d6e4c8efa2459fe06a28286cfc340d",
   "description": "Electron test runner for Tape",
-  "bugs": {
-    "url": "https://github.com/tundrax/electron-tap/issues"
-  },
   "homepage": "https://github.com/tundrax/electron-tap#readme",
-  "_id": "electron-tap@0.1.5",
   "scripts": {},
-  "_shasum": "a029302e56bdb129dcef0ec7e57569f6220763c0",
-  "_from": ".",
   "_npmVersion": "3.3.6",
   "_nodeVersion": "5.0.0",
-  "_npmUser": {
-    "name": "tundrax",
-    "email": "sherzod@gmail.com"
-  },
   "dist": {
     "shasum": "a029302e56bdb129dcef0ec7e57569f6220763c0",
     "tarball": "http://registry.npmjs.org/electron-tap/-/electron-tap-0.1.5.tgz"
   },
-  "maintainers": [
+  "versions": [
+    {
+      "number": "0.1.0",
+      "date": "2016-01-19T09:49:26.217Z"
+    },
+    {
+      "number": "0.1.1",
+      "date": "2016-01-20T08:28:06.389Z"
+    },
+    {
+      "number": "0.1.2",
+      "date": "2016-01-20T08:31:16.629Z"
+    },
+    {
+      "number": "0.1.3",
+      "date": "2016-01-20T08:53:17.909Z"
+    },
+    {
+      "number": "0.1.4",
+      "date": "2016-01-20T09:31:05.521Z"
+    },
+    {
+      "number": "0.1.5",
+      "date": "2016-01-25T05:56:11.477Z"
+    }
+  ],
+  "created": "2016-01-19T09:49:26.217Z",
+  "modified": "2016-01-25T05:56:11.477Z",
+  "lastPublisher": {
+    "name": "tundrax",
+    "email": "sherzod@gmail.com"
+  },
+  "owners": [
     {
       "name": "tundrax",
       "email": "sherzod@gmail.com"
     }
   ],
-  "directories": {}
+  "readme": "# electron-tap\nElectron test runner for Tape\n\n![electron-tap](https://raw.githubusercontent.com/tundrax/electron-tap/master/images/demo.gif)\n## Installation\n```bash\n$ cd your-project\n$ npm i --save-dev tape electron-tap\n```\n## Usage\nDefine a new script in your `package.json`.\n`--renderer` option accepts a `glob`.\n```js\n// ...\n\"scripts\": {\n  \"test:renderer\": \"electron-tap --renderer 'test/**/renderer/*test.js?(x)'\"\n}\n```\nAs an example we will test a React component.\nCreate a new test file in directory `test/renderer/Dummy-test.jsx`.\n```jsx\n// Dummy-test.jsx\nimport test from 'tape';\nimport reporter from 'electron-tap/reporter';\n\nimport React from 'react';\nimport ReactDOM from 'react-dom';\nimport ReactTestUtils from 'react-addons-test-utils';\n\nclass Dummy extends Component {\n  render() {\n    const style = {\n      height: '60px',\n      padding: '10px'\n    };\n\n    return (\n      <div style={style}>Dummy component</div>\n    )\n  }\n}\n\ntest('Dummy Component', function (t) {\n  const container = document.createElement('div');\n  document.body.appendChild(container);\n\n  const component = ReactDOM.render(<Dummy />, container);\n  const node = ReactDOM.findDOMNode(component);\n\n  // assertion fails because of paddings and box-model\n  t.equal(node.offsetHeight, 60, 'control height is 60px');\n\n  document.body.removeChild(container);\n  container = null;\n  t.end();\n});\n```\nNow run your test.\n```bash\n$ npm run test:renderer\n```\nThis will open `electron` window, run all tests, output `spec`-like results to the `Console` tab in `dev-tools`, watch for changes in test files.\n"
 }

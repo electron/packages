@@ -1,0 +1,74 @@
+{
+  "name": "headless-trello-auth",
+  "version": "0.1.0",
+  "description": "Automatically grant access for your application in Trello",
+  "main": "index.js",
+  "dependencies": {
+    "co-prompt": "^1.0.0",
+    "debug": "^2.2.0",
+    "nightmare": "^2.0.9",
+    "uuid": "^2.0.1",
+    "vo": "^1.0.3"
+  },
+  "repository": {
+    "user": "rosshinkley",
+    "repo": "headless-trello-auth",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/rosshinkley/headless-trello-auth/tarball/master",
+    "clone_url": "https://github.com/rosshinkley/headless-trello-auth",
+    "https_url": "https://github.com/rosshinkley/headless-trello-auth",
+    "travis_url": "https://travis-ci.org/rosshinkley/headless-trello-auth",
+    "zip_url": "https://github.com/rosshinkley/headless-trello-auth/archive/master.zip",
+    "api_url": "https://api.github.com/repos/rosshinkley/headless-trello-auth"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": {
+    "name": "Ross Hinkley",
+    "email": "rosshinkley@gmail.com"
+  },
+  "license": "MIT",
+  "keywords": [
+    "trello",
+    "oauth2",
+    "headless",
+    "auth",
+    "phantom",
+    "phantomjs",
+    "casper",
+    "casperjs",
+    "nightmare",
+    "nightmarejs"
+  ],
+  "gitHead": "1340599aed467d5cd54559a64a93a852a07e9166",
+  "homepage": "https://github.com/rosshinkley/headless-trello-auth#readme",
+  "_npmVersion": "3.3.6",
+  "_nodeVersion": "4.2.3",
+  "dist": {
+    "shasum": "5e21cb575f9b2725a829221776763c1e5a0cbb98",
+    "tarball": "http://registry.npmjs.org/headless-trello-auth/-/headless-trello-auth-0.1.0.tgz"
+  },
+  "versions": [
+    {
+      "number": "0.1.0",
+      "date": "2015-12-17T04:24:22.571Z"
+    }
+  ],
+  "created": "2015-12-17T04:24:22.571Z",
+  "modified": "2015-12-17T04:24:22.571Z",
+  "lastPublisher": {
+    "name": "rosshinkley",
+    "email": "rosshinkley@gmail.com"
+  },
+  "owners": [
+    {
+      "name": "rosshinkley",
+      "email": "rosshinkley@gmail.com"
+    }
+  ],
+  "readme": "Log into a Trello account and get an authorization token for the Trello API.\n\n## Installation\n\nUse `npm`: `npm install headless-trello-auth`\n\n### Quick Aside About NightmareJS\n\n[Nightmare](https://github.com/segmentio/nightmare) is a browser automation toolkit based on [Electron](https://github.com/atom/electron).  Nightmare is installable and usable via NPM natively.  For most cases, it will Just Work (tm) out of the box.\n\nHowever, Electron requires a video buffer to be available.  If you are using this library on a headless system (eg, a server with no X client,  a Docker instance, or a chroot under Crouton), you will need to use a virtual framebuffer to get this library working.  More information about this [can be found in the Nightmare repository's issues.](https://github.com/segmentio/nightmare/issues/224)\n\n## Options\n\nThe exposed method takes an options hash:\n\n* **username** - the email address to log into.\n* **password** - the password for the account.\n* **scopes** - scopes to request for the logging in user.  Note that anything specified here is automatically granted.\n* **applicationName** - the name of the application to grant access for.  This can be revoked from user settings at any time.\n* **noPrompts** - forces an exception if 2-factor authentication is detected.\n\nThe callback (or promise resolution) passes up the newly minted token from Trello.\n\n## Usage\n\n### Callbacks\n\nSay you wanted to add a card using the [Trello API wrapper](https://github.com/norberteder/trello):\n\n```javascript\nvar headlessAuth = require('headless-trello-auth');\nheadlessAuth({\n    username: 'user@example.com',\n    password: 'MySuperSecretPassword',\n    scopes: 'read,write',\n    applicationName: 'headless-auth-test'\n}, function(err, token){\n    trello = new (require('trello'))('[application key]', token);\n    trello.addCard('Clean car', 'Wax on, wax off', listId,\n        function(err, trelloCard){\n            if(err){\n                console.log('Could not add card: ', err);\n            } else {\n                console.log('added card: ', trelloCard);\n            }\n        });\n});\n```\n\n### Promises\n\nIf you wanted to use promises instead, using the same example as above:\n\n```javascript\nvar headlessAuth = require('headless-trello-auth');\nvar promise = headlessAuth({\n    username: 'user@example.com',\n    password: 'MySuperSecretPassword',\n    scopes: 'read,write',\n    applicationName: 'headless-auth-test'\n}); \n\n//... other code as needed ...\n\npromise.then(function(token){\n    trello = new (require('trello'))('[application key]', token);\n    trello.addCard('Clean car', 'Wax on, wax off', listId,\n        function(err, trelloCard){\n            if(err){\n                console.log('Could not add card: ', err);\n            } else {\n                console.log('added card: ', trelloCard);\n            }\n        });\n});\n```\n\n### Two-Factor Authentication\nIf two-factor authentication is required and detected, there will be a prompt for the SMS code unless `noPrompts` is specified.\n"
+}

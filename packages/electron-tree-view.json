@@ -1,6 +1,6 @@
 {
   "name": "electron-tree-view",
-  "version": "1.0.5",
+  "version": "1.1.0",
   "description": "A tree viewer for Electron webviews with virtual dom.",
   "main": "index.js",
   "scripts": {
@@ -29,36 +29,67 @@
     "virtual-dom": "^2.1.1"
   },
   "repository": {
-    "type": "git",
-    "url": "git://github.com/gerhardberger/electron-tree-view.git"
+    "user": "gerhardberger",
+    "repo": "electron-tree-view",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/gerhardberger/electron-tree-view/tarball/master",
+    "clone_url": "https://github.com/gerhardberger/electron-tree-view",
+    "https_url": "https://github.com/gerhardberger/electron-tree-view",
+    "travis_url": "https://travis-ci.org/gerhardberger/electron-tree-view",
+    "zip_url": "https://github.com/gerhardberger/electron-tree-view/archive/master.zip",
+    "api_url": "https://api.github.com/repos/gerhardberger/electron-tree-view"
   },
   "homepage": "https://github.com/gerhardberger/electron-tree-view",
-  "gitHead": "92211add2648f056647ccd393db0aa1ab9b62eeb",
-  "bugs": {
-    "url": "https://github.com/gerhardberger/electron-tree-view/issues"
-  },
-  "_id": "electron-tree-view@1.0.5",
-  "_shasum": "d445d0f2c051f0622124bfbea5cf7d6ee15ba76c",
-  "_from": ".",
+  "gitHead": "d5364078fc29fcecf88092579eca14d46f1354a5",
   "_npmVersion": "3.8.9",
   "_nodeVersion": "6.2.0",
-  "_npmUser": {
+  "dist": {
+    "shasum": "fc3dd1110b2ced1e23ae31a77805fbfd7458cf7c",
+    "tarball": "http://registry.npmjs.org/electron-tree-view/-/electron-tree-view-1.1.0.tgz"
+  },
+  "versions": [
+    {
+      "number": "1.0.0",
+      "date": "2016-04-22T19:58:31.828Z"
+    },
+    {
+      "number": "1.0.1",
+      "date": "2016-04-28T14:13:46.868Z"
+    },
+    {
+      "number": "1.0.2",
+      "date": "2016-05-03T10:22:57.969Z"
+    },
+    {
+      "number": "1.0.3",
+      "date": "2016-05-03T10:25:49.225Z"
+    },
+    {
+      "number": "1.0.4",
+      "date": "2016-05-12T13:29:17.864Z"
+    },
+    {
+      "number": "1.0.5",
+      "date": "2016-06-20T10:46:30.746Z"
+    },
+    {
+      "number": "1.1.0",
+      "date": "2016-07-11T10:01:06.233Z"
+    }
+  ],
+  "created": "2016-04-22T19:58:31.828Z",
+  "modified": "2016-07-11T10:01:06.233Z",
+  "lastPublisher": {
     "name": "gerhardberger",
     "email": "93.morph@gmail.com"
   },
-  "dist": {
-    "shasum": "d445d0f2c051f0622124bfbea5cf7d6ee15ba76c",
-    "tarball": "http://registry.npmjs.org/electron-tree-view/-/electron-tree-view-1.0.5.tgz"
-  },
-  "maintainers": [
+  "owners": [
     {
       "name": "gerhardberger",
       "email": "93.morph@gmail.com"
     }
   ],
-  "_npmOperationalInternal": {
-    "host": "packages-16-east.internal.npmjs.com",
-    "tmp": "tmp/electron-tree-view-1.0.5.tgz_1466419589395_0.44902585190720856"
-  },
-  "directories": {}
+  "readme": "# electron tree view\nA very minimal tree viewer for [electron](http://electron.atom.io/) webviews with [virtual dom](https://github.com/Matt-Esch/virtual-dom).\n\n![](https://media.giphy.com/media/3o6ozmXesqgxoS4n0A/giphy.gif)\n\n## install\n```\n$ npm i electron-tree-view\n```\n\n## usage\n``` js\nconst root = {\n  name: 'foo',\n  children: [{\n    name: 'bar',\n    children: [{\n      name: 'bar',\n      children: []\n    }, {\n      name: 'baz',\n      children: []\n    }]\n  }]\n}\n\nconst tree = require('electron-tree-view')({\n  root,\n  container: document.querySelector('.container'),\n  children: c => c.children,\n  label: c => c.name\n})\n\ntree.on('selected', item => {\n  // adding a new children to every selected item\n  item.children.push({ name: 'foo', children: [] })\n\n  tree.loop.update({ root })\n\n  console.log('item selected')\n})\n```\n\n## api\n#### `const tree = require('electron-tree-view')(opts)`\ncreates a new tree view. the `opts` object can contain:\n- `root`: the root node of the tree data structure. **required**\n- `container`: a DOM node to which the tree will be appended. **required**\n- `children`: by default the program checks for the `children` property of a tree node to add children, but if it called something else, or you want custom behaviour, then implement this `function` that returns the children as an `array`.\n- `label`: by default the program checks for the `name` property of a tree node to display a text for a node, but if it called something else, or you want custom behaviour, then implement this `function` that returns a `string` to display.\n- `filter`: a function (`Child => Boolean`) that can determine which child element to let through to display. This can be used to hide certain children nodes.\n- overwrite rendering of nodes - see [overwriting rendering](#overwriting-rendering) below.\n\n#### `tree.on('selected', item => {})`\nfires when an `item` has been clicked.\n\n#### `tree.on('deselected', item => {})`\nfires when an `item` has been clicked again and it closed.\n\n#### `tree.select(node)`\nselects `node` of the tree programatically.\n\n## overwriting rendering\n\n#### `opts.renderRoot = (hx, children) => {}`\noverwrite the rendering of the root element.\n- `hx` template string function used for rendering dom nodes\n- `children` string containing traversed children\n\ndefault:\n``` js\n(hx, children) => {\n  return hx`<div class=\"tree-view\">${children}</div>`\n}\n```\n\nnotes:\n* make sure you include the `tree-view` class\n\n#### `opts.renderItem = (hx, data, children, loadHook, clickElem, createChild) => {}`\noverwrite the rendering of each node.\n- `hx` template string function used for rendering dom nodes\n- `data` data for the current node being rendered\n- `children` array of children below the current node\n- `loadHook` hook to setup the click handler properly\n- `clickElem` click handler to attach to the anchor\n- `createChild` function used to render child nodes\n\ndefault:\n``` js\n(hx, data, children, loadHook, clickElem, createChild) => {\n  return hx`<div class=\"elem\" loaded=${loadHook}>\n    <a href=\"#\" class=\"header\" onclick=${clickElem}>\n      <div>\n        ${children.length === 0 ? '' : hx`<img src=\"${__dirname + '/images/chevron.png'}\" class=\"chevron\" />`}\n        <span>${opts.label ? opts.label(data) : data.name}</span>\n      </div>\n    </a>\n    <ul>\n      ${children.map(createChild)}\n    </ul>\n  </div>`\n}\n```\n\nnotes:\n* make sure the parent element includes the `loaded` attribute set to `loadHook`\n* make sure a clickable element has `onclick` attribute set to `clickElem`\n* make sure the parent element has the class `elem`\n* you can't use `opts` here; label function will not be used\n\n#### `opts.renderChild = (hx, children) => {}`\noverwrite the rendering of a child node.\n- `hx` template string function used for rendering dom nodes\n- `children` string containing traversed child\n\ndefault:\n``` js\n(hx, children) => {\n  return hx`<li>${children}</li>`\n}\n```\n"
 }

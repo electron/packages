@@ -17,16 +17,22 @@
     ]
   },
   "repository": {
-    "type": "git",
-    "url": "git+https://github.com/Team-Webflight/WebFlight.git"
+    "user": "Team-Webflight",
+    "repo": "WebFlight",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/Team-Webflight/WebFlight/tarball/master",
+    "clone_url": "https://github.com/Team-Webflight/WebFlight",
+    "https_url": "https://github.com/Team-Webflight/WebFlight",
+    "travis_url": "https://travis-ci.org/Team-Webflight/WebFlight",
+    "zip_url": "https://github.com/Team-Webflight/WebFlight/archive/master.zip",
+    "api_url": "https://api.github.com/repos/Team-Webflight/WebFlight"
   },
   "author": {
     "name": "Team WebFlight"
   },
   "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/Team-WebFlight/WebFlight/issues"
-  },
   "dependencies": {
     "babel-eslint": "^5.0.0",
     "casperjs": "^1.1.0-beta5",
@@ -54,21 +60,59 @@
     "standard": "^6.0.8"
   },
   "homepage": "https://github.com/Team-Webflight/WebFlight#readme",
-  "_id": "webflight@0.1.8",
-  "_shasum": "8f52f79ec46e16d20dd4ea6712e1506c001f4014",
   "_resolved": "file:webflight-0.1.8.tgz",
-  "_from": "webflight-0.1.8.tgz",
   "_npmVersion": "3.8.3",
   "_nodeVersion": "5.10.0",
-  "_npmUser": {
-    "name": "jfowler",
-    "email": "jaredafowler@gmail.com"
-  },
   "dist": {
     "shasum": "8f52f79ec46e16d20dd4ea6712e1506c001f4014",
     "tarball": "http://registry.npmjs.org/webflight/-/webflight-0.1.8.tgz"
   },
-  "maintainers": [
+  "stars": 4,
+  "versions": [
+    {
+      "number": "0.1.0",
+      "date": "2016-03-18T03:25:36.556Z"
+    },
+    {
+      "number": "0.1.1",
+      "date": "2016-03-18T21:55:07.955Z"
+    },
+    {
+      "number": "0.1.2",
+      "date": "2016-03-22T18:17:20.217Z"
+    },
+    {
+      "number": "0.1.3",
+      "date": "2016-03-22T18:39:12.749Z"
+    },
+    {
+      "number": "0.1.4",
+      "date": "2016-03-23T19:15:59.344Z"
+    },
+    {
+      "number": "0.1.5",
+      "date": "2016-03-29T23:17:26.189Z"
+    },
+    {
+      "number": "0.1.6",
+      "date": "2016-03-30T21:15:53.663Z"
+    },
+    {
+      "number": "0.1.7",
+      "date": "2016-04-07T17:09:44.421Z"
+    },
+    {
+      "number": "0.1.8",
+      "date": "2016-04-07T19:00:30.640Z"
+    }
+  ],
+  "created": "2016-03-18T03:25:36.556Z",
+  "modified": "2016-04-07T19:00:30.640Z",
+  "lastPublisher": {
+    "name": "jfowler",
+    "email": "jaredafowler@gmail.com"
+  },
+  "owners": [
     {
       "name": "carolag",
       "email": "carol.argentina.gonzalez@gmail.com"
@@ -86,9 +130,5 @@
       "email": "tbywong@gmail.com"
     }
   ],
-  "_npmOperationalInternal": {
-    "host": "packages-12-west.internal.npmjs.com",
-    "tmp": "tmp/webflight-0.1.8.tgz_1460055629892_0.8914207119960338"
-  },
-  "directories": {}
+  "readme": "\n[![js-standard-style](https://img.shields.io/badge/code%20style-standard-brightgreen.svg)](https://www.standardjs.com)\n[![Build\nStatus](https://travis-ci.org/Team-WebFlight/WebFlight.svg?branch=master)](https://travis-ci.org/Team-WebFlight/WebFlight)\n# WebFlight\nWebFlight enables the users visiting a site to serve the content of that site. P2P content sharing technology powered with :heart: by [WebTorrent](https://webtorrent.io)!\n\n### Install\n```bash\nnpm install webflight\n```\n\n### Usage\n\nIt's easy to incorporate WebFlight into your existing site! Just provide us with a few details on where to find the assets you want to seed, and we'll take care of the rest. __Note: WebFlight currently requires Node 5.x__\n\n#### Initialize WebFlight\n\n```javascript\nconst WebFlight = require('webflight')\nconst wf = new WebFlight(options, path)\nconst express = require('express')\nconst app = express()\n\n// start up WebFlight\nwf.init()\n\n// then use it on your express routes\napp.use(wf.redirect)\n\n```\n\n##### Options\n\n```siteUrl``` - Your website url\n<br>```assetsPath``` - An array of the absolute path(s) to the folder(s) containing your assets\n<br>```assetsRoute``` - An array of the server route(s) to your assets\n<br>```routes: { '/route': '/path/to/route.html' }``` - The routes and corresponding paths to your html files\n<br>```userCount``` - The number of simultaneous users on your site at which WebFlight will begin to send subsequent users to the peer-hosted version of your site\n<br>```wfPath``` - (optional) The folder WebFlight files will appear in\n<br>```wfRoute``` - (optional) The route that retrieves WebFlight files\n<br>```seedScript``` - (optional) The script that will initialize seeding your assets so they're ready to be downloaded by users after the **userCount** threshold is passed\n<br>`path` - The root path on your server\n<br>`statusBar` - Dropdown element that will appear on your website that shows users what is being seeded\n<br>`devMode` - Turns off xvcb by default. Xvcb is required to launch Electron\non a server, but breaks development on OSX. Set to false before deploying your app with WebFlight\n```\n{\n  siteURL: String             // Required\n  assetsPath: Array           // Required\n  assetsRoute: Array          // Required\n  routes: Object              // Required\n  userCount: Number           // Optional - defaults to 10\n  wfPath: String              // Optional - defaults to '/wfPath'\n  wfRoute: String             // Optional - defaults to '/wfRoute'\n  seedScript: String          // Optional - defaults to 'wf-seed.js'\n  statusBar: Boolean          // Optional - defaults to true\n  devMode: Boolean            // Optional - defaults to true\n}\n```\n\n## `webflight.redirect(req, res, next)`\nOnce seeding threshold is met, redirect requests to webflight routes.\n\n## `webflight.start()`\nCall starts the seeding process on all assets in assetsPath.\n\n## `webflight.watch(req, res, next)`\nWatches for http requests to server. Based on a threshold specified in opts, `.watch()` will call `.start()` to begin seeding. When peers are connected, initial seeds are no longer necessary and are killed\n\n---\n\n### License\nMIT License (MIT)\n\nCopyright (c) Team WebFlight\n\n"
 }

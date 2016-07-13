@@ -34,36 +34,83 @@
     "node": ">=4.0.0"
   },
   "repository": {
-    "type": "git",
-    "url": "git+https://github.com/mawni/elemon.git"
-  },
-  "bugs": {
-    "url": "https://github.com/mawni/elemon/issues"
+    "user": "mawni",
+    "repo": "elemon",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/mawni/elemon/tarball/master",
+    "clone_url": "https://github.com/mawni/elemon",
+    "https_url": "https://github.com/mawni/elemon",
+    "travis_url": "https://travis-ci.org/mawni/elemon",
+    "zip_url": "https://github.com/mawni/elemon/archive/master.zip",
+    "api_url": "https://api.github.com/repos/mawni/elemon"
   },
   "homepage": "https://github.com/mawni/elemon#readme",
   "gitHead": "b6091ea175fa0da844cd850a33e3e674adc957d8",
-  "_id": "elemon@3.0.3",
-  "_shasum": "81e4a96c4d8bea50bbd1a4441cfd8b37b635f1cd",
-  "_from": ".",
   "_npmVersion": "3.9.0",
   "_nodeVersion": "6.2.0",
-  "_npmUser": {
-    "name": "mawni",
-    "email": "maawni@gmail.com"
-  },
   "dist": {
     "shasum": "81e4a96c4d8bea50bbd1a4441cfd8b37b635f1cd",
     "tarball": "http://registry.npmjs.org/elemon/-/elemon-3.0.3.tgz"
   },
-  "maintainers": [
+  "versions": [
+    {
+      "number": "1.0.0",
+      "date": "2016-05-18T14:49:26.323Z"
+    },
+    {
+      "number": "1.0.1",
+      "date": "2016-05-18T14:59:32.947Z"
+    },
+    {
+      "number": "1.0.2",
+      "date": "2016-05-18T15:31:58.647Z"
+    },
+    {
+      "number": "1.0.3",
+      "date": "2016-05-18T15:53:58.587Z"
+    },
+    {
+      "number": "1.0.4",
+      "date": "2016-05-18T15:58:51.799Z"
+    },
+    {
+      "number": "2.0.0",
+      "date": "2016-05-21T09:50:05.043Z"
+    },
+    {
+      "number": "2.0.1",
+      "date": "2016-05-21T10:46:54.183Z"
+    },
+    {
+      "number": "3.0.0",
+      "date": "2016-05-25T08:00:12.352Z"
+    },
+    {
+      "number": "3.0.1",
+      "date": "2016-05-25T08:47:07.278Z"
+    },
+    {
+      "number": "3.0.2",
+      "date": "2016-05-26T17:51:43.267Z"
+    },
+    {
+      "number": "3.0.3",
+      "date": "2016-05-28T00:30:58.093Z"
+    }
+  ],
+  "created": "2016-05-18T14:49:26.323Z",
+  "modified": "2016-05-28T00:30:58.093Z",
+  "lastPublisher": {
+    "name": "mawni",
+    "email": "maawni@gmail.com"
+  },
+  "owners": [
     {
       "name": "mawni",
       "email": "maawni@gmail.com"
     }
   ],
-  "_npmOperationalInternal": {
-    "host": "packages-12-west.internal.npmjs.com",
-    "tmp": "tmp/elemon-3.0.3.tgz_1464395455657_0.46925256843678653"
-  },
-  "directories": {}
+  "readme": "#elemon\n\n[![travis build][travis-image]][travis-url] [![npm version][npm-image]][npm-url] \n\n`elemon` is a [node.js](https://nodejs.org) module that tries to cleanly monitor an [electron](https://github.com/electron/electron) application and automatically reloads the app upon any changes. It sets up an static server using [node-static](https://github.com/cloudhead/node-static) and [socket.io](https://github.com/socketio/socket.io) in order to run the electron main process and cleanly terminate it upon changes in the main script file and reloads the app. Notice it only reloads the entire app (main process) if the main script file is the one that you changed. For all files other than the main app file, it only reloads the corresponding browser window(s) that is associated with the changed file (just notice the example down below). So, it can easily be used as a practical live-reload tool for developing [electron](https://github.com/electron/electron) application.\n\n####Install\nPlease use `npm install --save-dev elemon`.\n\n####How to use\n\nIt is naturally presumed that [electron-prebuilt](https://github.com/electron-userland/electron-prebuilt) is installed either locally or globally in your system and `electron` binaries are available.\n\nSo, while you are in your project's directory, simply run:\n\n`./node_modules/.bin/elemon ./node_modules/.bin/electron .` \n\nThe argument `.` is any valid `electron` argument.\n\nOr if you want, you can use npm `scripts` in your `package.json`,\n\n```javascript\n\"scripts\": {\n  \"start\": \"./node_modules/.bin/elemon ./node_modules/.bin/electron .\"\n}\n```\nand then, just run `npm start`.\n\nIf [electron-prebuilt](https://github.com/electron-userland/electron-prebuilt) is installed globally, simply run:\n\n`./node_modules/.bin/elemon electron .`\n\n\n*Important Notice: For any reasons, if you want to quit your running `electron` application immediately, please don't close the app by just clicking on the close button. Instead, terminate (Ctrl-C) the running `elemon` process and your running application will be terminated accordingly and cleanly.*\n\nIf you want to use `elemon`, you just need to pass a few reasonable data to the local server. It needs the following data:\n\n**1. The main script (main app) file name** (exp: `app.js`)\n\n**2. The id of every browser window in your application**\n\n**3. The name (only filename is enough, no need the file's path) of all resources (js, css, and other files) that are associated with the browser window**\n\n####Example\n\nSuppose it is the app file structure,\n```\nyourproj\n  |__view\n  |     |__windows\n  |     |   |__main-win\n  |     |   |\t |__mainwin.html\n  |     |   |\n  |     |   |__second-win\n  |     |      |__secwin.html\n  |     |      |__secwin-controller.js\n  |     |\n  |     |__stylesheets\n  |         |__style.css\n  |\n  |__app.js\n```\n\nthen, in the main process file where usually app and browser windows are created,\n\n*app.js*\n```javascript\n'use strict';\n\nconst electron = require('electron');\nconst app = electron.app;\nconst BrowserWindow = electron.BrowserWindow;\nconst elemon_client = require('elemon/elemon-client');\n\nvar g_wins = []; // keep the reference to all browser windows\n\nfunction create_wins() {\n  main_win = new BrowserWindow({\n    width: 800,\n    height: 600\n  });\n  main_win.loadURL('file://' + __dirname + '/view/windows/main-win/mainwin.html');\n  \n  second_win = new BrowserWindow({\n    width: 500,\n    height: 300\n  });\n  second_win.loadURL('file://' + __dirname + '/view/windows/second-win/secwin.html');\n  \n  // ... and all other usual stuff\n  \n  // keep the reference to the all browser windows for live-reload\n  g_wins.push(main_win);\n  g_wins.push(second_win);\n}\n\napp.on('ready', function() {\n  create_wins();\n \n  // emit 'appdata' event with the required data for live-reload\n  elemon_client.socket.emit('appdata', {\n    main_script: 'app.js',\n    browserWindows: [{\n      id: main_win.id,\n      resources: ['mainwin.html', 'style.css']\n    }, {\n      id: second_win.id,\n      resources: ['secwin.html', 'secwin-controller.js', 'style.css']\n    }]\n  });\n});\n\n// listen to 'reload' event and reload the app\nelemon_client.socket.on('reload', function(data) {\n  elemon_client.reload(g_wins, data);\n});\n```\n\n###elemon-client api\n\n`elemon-client` is a [socket.io-client](https://github.com/socketio/socket.io-client) and is exposed as you install `elemon`. By default, it listens to the port `process.env.PORT || 19024`. It supports the following events:\n\n**client socket event**: 'appdata'\n\nemit the `appdata` event with the required data for live-reload to the server.\n\n*example*\n```javascript\nconst elemon_client = require('elemon/elemon-client');\nelemon_client.socket.emit('appdata', {\n  main_script: 'app.js',\n  browserWindows: [{\n    id: main_win.id,\n    resources: ['mainwin.html', 'style.css']\n  }, {\n    id: second_win.id,\n    resources: ['secwin.html', 'secwin-controller.js', 'style.css']\n  }]\n});\n```\n**client socket event**: 'reload'\n\non `reload` event, reload the app.\n\n*example*\n```javascript\nelemon_client.socket.on('reload', function(data) {\n  elemon_client.reload(g_wins, data);\n});\n```\n\nThat's it. Have fun writing your [electron](https://github.com/electron/electron) applications.\n\n[travis-image]: https://img.shields.io/travis/mawni/elemon/master.svg\n[travis-url]: https://travis-ci.org/mawni/elemon\n[npm-image]: https://img.shields.io/npm/v/elemon.svg?maxAge=2592000\n[npm-url]: https://npmjs.org/package/elemon\n[downloads-image]: https://img.shields.io/npm/dm/elemon.svg?maxAge=2592000\n[downloads-url]: https://npmjs.org/package/elemon\n"
 }

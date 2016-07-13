@@ -7,8 +7,17 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
-    "type": "git",
-    "url": "git+https://github.com/loki951753/electron-logger.git"
+    "user": "loki951753",
+    "repo": "electron-logger",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/loki951753/electron-logger/tarball/master",
+    "clone_url": "https://github.com/loki951753/electron-logger",
+    "https_url": "https://github.com/loki951753/electron-logger",
+    "travis_url": "https://travis-ci.org/loki951753/electron-logger",
+    "zip_url": "https://github.com/loki951753/electron-logger/archive/master.zip",
+    "api_url": "https://api.github.com/repos/loki951753/electron-logger"
   },
   "keywords": [
     "electron",
@@ -20,9 +29,6 @@
     "url": "https://github.com/loki951753"
   },
   "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/loki951753/electron-logger/issues"
-  },
   "homepage": "https://github.com/loki951753/electron-logger#readme",
   "devDependencies": {
     "coffee-script": "^1.10.0"
@@ -32,28 +38,38 @@
     "merge": "^1.2.0"
   },
   "gitHead": "85ba2e2da55794069e9cf502e95227fb170a53bd",
-  "_id": "electron-logger@0.0.3",
-  "_shasum": "5166e62f4ed6e1cb941fdd6ba1d787b18073b29a",
-  "_from": ".",
   "_npmVersion": "3.5.1",
   "_nodeVersion": "0.12.4",
-  "_npmUser": {
-    "name": "loki951753",
-    "email": "loki951753@gmail.com"
-  },
   "dist": {
     "shasum": "5166e62f4ed6e1cb941fdd6ba1d787b18073b29a",
     "tarball": "http://registry.npmjs.org/electron-logger/-/electron-logger-0.0.3.tgz"
   },
-  "maintainers": [
+  "stars": 1,
+  "versions": [
+    {
+      "number": "0.0.1",
+      "date": "2016-02-14T05:02:30.029Z"
+    },
+    {
+      "number": "0.0.2",
+      "date": "2016-02-24T10:17:40.722Z"
+    },
+    {
+      "number": "0.0.3",
+      "date": "2016-02-27T05:07:15.526Z"
+    }
+  ],
+  "created": "2016-02-14T05:02:30.029Z",
+  "modified": "2016-02-27T05:07:15.526Z",
+  "lastPublisher": {
+    "name": "loki951753",
+    "email": "loki951753@gmail.com"
+  },
+  "owners": [
     {
       "name": "loki951753",
       "email": "loki951753@gmail.com"
     }
   ],
-  "_npmOperationalInternal": {
-    "host": "packages-5-east.internal.npmjs.com",
-    "tmp": "tmp/electron-logger-0.0.3.tgz_1456549634132_0.5951357572339475"
-  },
-  "directories": {}
+  "readme": "# electron-logger\na simple tool to help my electron develop work and keep user client running log.\n\nelectron-logger is a simple tool, while still can satisfy my electron develop work. Any PR(format, writstream, etc..) will be appreciated.\n\n#usage\n```javascript\nvar logger = require('electron-logger');\n\n//output format:\n//{{timestamp}} [{{filename}}:{{lineNumber}}]>> {{log_content}}\n//16:46:55:111 [test.js:4]>>a info message\nlogger.info(\"a info message\");\n\n\nlogger.setLevel(\"info\");\nlogger.setLevel(1);\n\nlogger.getLevel();//\"info\"\n\nlogger.close();\nlogger.pause();\nlogger.open();\n\nlogger.setOutput({file:\"./tmp.log\"});\n```\n\n#practice\nI set the output to be `{terminal:false;file:%APPDATA%}` by default in production. Add a hot-key in the render process, when user encounts some bug, fire the hot-key and open the `%APPDATA%` directory then send the log to customer service(you can also add a backend port to send the message to the server).\n"
 }

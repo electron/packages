@@ -1,8 +1,17 @@
 {
   "name": "electron-oauth-github",
   "repository": {
-    "type": "git",
-    "url": "git+https://github.com/uraway/electron-oauth-github.git"
+    "user": "uraway",
+    "repo": "electron-oauth-github",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/uraway/electron-oauth-github/tarball/master",
+    "clone_url": "https://github.com/uraway/electron-oauth-github",
+    "https_url": "https://github.com/uraway/electron-oauth-github",
+    "travis_url": "https://travis-ci.org/uraway/electron-oauth-github",
+    "zip_url": "https://github.com/uraway/electron-oauth-github/archive/master.zip",
+    "api_url": "https://api.github.com/repos/uraway/electron-oauth-github"
   },
   "author": {
     "name": "Masato Urai @uraway_"
@@ -10,9 +19,6 @@
   "email": "masato.u0107@gmail.com",
   "homepage": "https://github.com/uraway/electron-oauth-github",
   "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/uraway/electron-oauth-github/issues"
-  },
   "version": "1.0.0",
   "description": "Github OAuth Window library.",
   "main": "lib/OauthGithub.js",
@@ -20,9 +26,6 @@
     "lib",
     "src"
   ],
-  "directories": {
-    "test": "test"
-  },
   "scripts": {
     "build": "babel src --out-dir lib --source-maps",
     "watch": "babel src --out-dir lib --watch --source-maps",
@@ -54,27 +57,41 @@
     "sourceType": "module"
   },
   "gitHead": "7a139299b9f912da7155c71c753db92890de9b2f",
-  "_id": "electron-oauth-github@1.0.0",
-  "_shasum": "c67c1f6ae9bf9a4634247395120b9b65df24f1bf",
-  "_from": ".",
   "_npmVersion": "3.3.6",
   "_nodeVersion": "5.0.0",
-  "_npmUser": {
-    "name": "uraway",
-    "email": "masato.u0107@gmail.com"
-  },
   "dist": {
     "shasum": "c67c1f6ae9bf9a4634247395120b9b65df24f1bf",
     "tarball": "http://registry.npmjs.org/electron-oauth-github/-/electron-oauth-github-1.0.0.tgz"
   },
-  "maintainers": [
+  "versions": [
+    {
+      "number": "0.0.1",
+      "date": "2016-02-16T07:45:19.950Z"
+    },
+    {
+      "number": "0.0.2",
+      "date": "2016-02-19T00:59:19.046Z"
+    },
+    {
+      "number": "0.0.3",
+      "date": "2016-02-20T14:48:01.706Z"
+    },
+    {
+      "number": "1.0.0",
+      "date": "2016-05-22T09:31:14.888Z"
+    }
+  ],
+  "created": "2016-02-16T07:45:19.950Z",
+  "modified": "2016-05-22T09:31:14.888Z",
+  "lastPublisher": {
+    "name": "uraway",
+    "email": "masato.u0107@gmail.com"
+  },
+  "owners": [
     {
       "name": "uraway",
       "email": "masato.u0107@gmail.com"
     }
   ],
-  "_npmOperationalInternal": {
-    "host": "packages-12-west.internal.npmjs.com",
-    "tmp": "tmp/electron-oauth-github-1.0.0.tgz_1463909474478_0.07129899295978248"
-  }
+  "readme": "# electron-oauth-github\nThis is Electron module that OAuth authenticates your Electron app with Github.\n\n### Install\n```\nnpm install electron-oauth-github\n```\n\n### Diving into OAuth\n1. [Register your app](https://github.com/settings/developers)\n\n2. Get **Client ID** and **Client Secret**\n\n3. Set **Client ID**, **Client Secret** and [scopes](https://developer.github.com/v3/oauth/#scopes). See [example](https://github.com/uraway/electron-oauth-github/tree/master/example).\n\n```javascript\nvar dialog = require('electron').dialog;\n\nvar OauthGithub = require('electron-oauth-github');\n\nvar github = new OauthGithub({\n  id: '****',\n  secret: '****',\n  scopes: ['user:email', 'notifications'],\n});\n\ngithub.startRequest(function(access_token, err) {\n  if (err) {\n    console.error(err);\n  }\n\n  dialog.showErrorBox('Satus', 'access_token: ' + access_token);\n});\n```\n\nNow you have got access token. Dive into OAuth!\n"
 }

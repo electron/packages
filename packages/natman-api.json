@@ -1,0 +1,71 @@
+{
+  "name": "natman-api",
+  "version": "0.0.2",
+  "description": "Natman converted into an useable API.",
+  "main": "natman.js",
+  "dependencies": {
+    "nat-pmp": "0.0.1",
+    "nat-upnp": "^1.0.0",
+    "network": "^0.1.3"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "node test.js"
+  },
+  "keywords": [
+    "natman",
+    "pmp",
+    "upnp",
+    "nat",
+    "port",
+    "forwarding"
+  ],
+  "author": {
+    "name": "Bram van der Veen"
+  },
+  "license": "MIT",
+  "repository": {
+    "user": "96AA48",
+    "repo": "node-natman-api",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/96AA48/node-natman-api/tarball/master",
+    "clone_url": "https://github.com/96AA48/node-natman-api",
+    "https_url": "https://github.com/96AA48/node-natman-api",
+    "travis_url": "https://travis-ci.org/96AA48/node-natman-api",
+    "zip_url": "https://github.com/96AA48/node-natman-api/archive/master.zip",
+    "api_url": "https://api.github.com/repos/96AA48/node-natman-api"
+  },
+  "homepage": "https://github.com/96AA48/node-natman-api#readme",
+  "gitHead": "42f8e21a63cdae2926e83818bd238f1b1ae9c670",
+  "_npmVersion": "3.8.9",
+  "_nodeVersion": "6.2.0",
+  "dist": {
+    "shasum": "a340411551b623e3ded191dae66e25d397d7616c",
+    "tarball": "http://registry.npmjs.org/natman-api/-/natman-api-0.0.2.tgz"
+  },
+  "versions": [
+    {
+      "number": "0.0.1",
+      "date": "2015-10-09T11:32:44.903Z"
+    },
+    {
+      "number": "0.0.2",
+      "date": "2016-05-29T14:02:09.965Z"
+    }
+  ],
+  "created": "2015-10-09T11:32:44.903Z",
+  "modified": "2016-05-29T14:02:09.965Z",
+  "lastPublisher": {
+    "name": "96aa48",
+    "email": "96aa48@gmail.com"
+  },
+  "owners": [
+    {
+      "name": "96aa48",
+      "email": "96aa48@gmail.com"
+    }
+  ],
+  "readme": "# node-natman-api\n\nnode-natman-api is a simple api wrapper for the npm package [`natman`](https://www.npmjs.org/package/natman) by [Marak](https://github.com/Marak/). All props should go to him, I just made it reusable as an API.\n\nI ran into a problem working on a project of mine: I wanted the user to be able to port forward without going into their router. This proved to be more difficult than I had thought, since that most PMP or UPNP packages were either crappy or based on native modules that would make compiling with NW.js or Electron really hard. So I came across `natman` a cli utility that actually worked and had a strong codebase. I just removed the cli bit and made it into an API. I also removed [`netroute`](https://npmjs.org/package/netroute) as it would require building of native modules. [`network`](https://npmjs.org/package/network) has been used instead.\n\n### Installation\n\n```\nnpm install natman-api  \n```\n\n## Usage\n```javascript\nvar natman = require('natman-api');\n\nvar privatePort = 8080; //The port on your machine that you want to forward\nvar publicPort = 80 //The port you want to open to the rest of the world.\n\nnatman(privatePort, publicPort);\n```\n\n### License\n\n[Marak](https://github.com/Marak)'s repo didn't specify any `LICENSE` but his npm package did, so this repo includes a `LICENSE` attributed to him.\n"
+}

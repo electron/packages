@@ -1,0 +1,77 @@
+{
+  "name": "micro-app-cloud-backup",
+  "version": "0.1.0",
+  "description": "micro app to do backups to cloud storage services",
+  "main": "lib/server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node lib/server.js"
+  },
+  "repository": {
+    "user": "mhdawson",
+    "repo": "micro-app-cloud-backup",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/mhdawson/micro-app-cloud-backup/tarball/master",
+    "clone_url": "https://github.com/mhdawson/micro-app-cloud-backup",
+    "https_url": "https://github.com/mhdawson/micro-app-cloud-backup",
+    "travis_url": "https://travis-ci.org/mhdawson/micro-app-cloud-backup",
+    "zip_url": "https://github.com/mhdawson/micro-app-cloud-backup/archive/master.zip",
+    "api_url": "https://api.github.com/repos/mhdawson/micro-app-cloud-backup"
+  },
+  "dependencies": {
+    "google-auth-wrapper": "^0.5.0",
+    "google-drive-wrapper": "^0.6.0",
+    "dockerode": "^2.2.10",
+    "node-crontab": "^0.0.8",
+    "micro-app-framework": "^0.1.1",
+    "socket.io": "^1.3.7",
+    "twilio": "^2.2.0"
+  },
+  "keywords": [
+    "micro-app",
+    "backup",
+    "docker",
+    "google",
+    "drive",
+    "google drive"
+  ],
+  "author": {
+    "name": "Michael Dawson"
+  },
+  "license": "MIT",
+  "homepage": "https://github.com/mhdawson/micro-app-cloud-backup#readme",
+  "contributors": [
+    {
+      "name": "Michael Dawson",
+      "email": "mdawson@devrus.com"
+    }
+  ],
+  "gitHead": "01be25cae4bc3d50ea1fc907dab13b6725e0505d",
+  "_npmVersion": "2.14.12",
+  "_nodeVersion": "4.3.2",
+  "dist": {
+    "shasum": "fb2763f9d10aa3d48e809b6d731dc9af2e1b9ef4",
+    "tarball": "http://registry.npmjs.org/micro-app-cloud-backup/-/micro-app-cloud-backup-0.1.0.tgz"
+  },
+  "versions": [
+    {
+      "number": "0.1.0",
+      "date": "2016-06-13T02:11:28.996Z"
+    }
+  ],
+  "created": "2016-06-13T02:11:28.996Z",
+  "modified": "2016-06-13T02:11:28.996Z",
+  "lastPublisher": {
+    "name": "mhdawson1",
+    "email": "mdawson@devrus.com"
+  },
+  "owners": [
+    {
+      "name": "mhdawson1",
+      "email": "mdawson@devrus.com"
+    }
+  ],
+  "readme": "# micro-app-cloud-backup\n\nMicro app to do backups for docker images, upload contents of\none or more directories and download the contents of one or\nmore directories.  It currently supports backups and\nupload/downloads to your google drive.  It uses\nthe [google-drive-wrapper](https://github.com/mhdawson/google-drive-wrapper)\nproject/npm and you must set up google drive credentials as\noutlined in the readme for that project.\n\nFor me the initial use case will be to backup docker images\nand lxc images which I have running in virtual machines\nhosted in the cloud. \n\nFor docker image backups, a new copy will only be upload\nif the image has changed or the target folder on google\ndrive does not already include a backup that matches the\ncurrent version of the image.\n\nFor files being uploaded, the contents of the specified\ndirectories will be uploaded and once each file is uploaded\nit will be transferred to the specified \"Move To\" directory\nsuch that the source directory will be empty at the end\nof the transfer.\n\nFor downloaded files, files will only be downloaded from\nthe source google drive folder if a copy does not already\nexist in the local destination folder.\n\nDocker images and files which are uploaded are both\nencrypted and compressed as part of the upload.  Before using\nplease ensure you have validated that the encryption is suitable\nfor the data you are protecting and that you have verified the implementation.\n\nThe GUI for the micro app allows the docker images that will \nbe backed up to be configured.  It is possible to exclude images\nfrom the available list through a blacklist in the configuration\nfile.  For folders that will be uploaded/download these can\nonly be configured in the config file and the GUI provides\nonly a read only view of the configuration.  The GUI also\nhas a tab to display the log events.\n\nAs backups are important the micro-app also supports\nsending sms messages (using https://www.twilio.com/) when\nerrors that may affect backup/upload/download progress\noccur.\n\nYou can use the micro-app in the browser or get native\nlook and feel on desktop and mobile devices with the\n[micro-app-cordova-launcher](https://github.com/mhdawson/micro-app-cordova-launcher)\nand [micro-app-electron-launcher](https://github.com/mhdawson/micro-app-electron-launcher)\nprojects.\n\nYou will want to setup your docker configuration so that docker\ncommands can be issued by a non-root user as you don't want\nto run the micro-app as root. Some instructions on how to do\nthat are available here:\nhttp://askubuntu.com/questions/477551/how-can-i-use-docker-without-sudo\n\nHere are some sample screenshots:\n\n![Docker tab](https://raw.githubusercontent.com/mhdawson/micro-app-cloud-backup/master/pictures/docker.png?raw=true)\n\n![Upload tab](https://raw.githubusercontent.com/mhdawson/micro-app-cloud-backup/master/pictures/upload.png?raw=true)\n\n![Download tab](https://raw.githubusercontent.com/mhdawson/micro-app-cloud-backup/master/pictures/download.png?raw=true)\n\n![EventLog tab](https://raw.githubusercontent.com/mhdawson/micro-app-cloud-backup/master/pictures/event-log.png?raw=true)\n\n\n# Configuration\n\nMost of the configuration is done in the lib/config.json\nfile which supports the following configuration options:\n\n\n* title - title used to name the page for the app.\n* serverPort - port on which the micro-app is listening for connections.\n* tls - if this value is the string \"true\" then the server will\n  only support connections using tls. In this case there must\n  be a cert.pem and key.pem which contain the key and\n  certificate that will be used by the server in the lib directory.\n* authenticate - set to \"true\" to enable basic authentication. If set\n  to true then you must provide the \"authInfo\" values described below.\n* authInfo - object with username, password and realm values.\n  authInfo.password is the hashed password that will be used to\n  authenticate to the micro-app.  This can be generated with the\n  utility in the micro-app framework which is called:\n   .../node_modules/micro-app-framework/lib/gen_password.js.\n  The first parameter is the password to be hashed.\n* twilio - object specifying the accountSID, accountAuthToken, fromNumber \n  and toNumber that will be used to send SMS notifications.\n* clientSecretDir - the directory in which the client\n  secret needed to use the google APIs will be located.  See\n  [google-drive-wrapper](https://github.com/mhdawson/google-drive-wrapper)\n  for more details.\n* clientSecret - name of the file that contains\n  the client secret needed to use the google APIs.  See\n  [google-drive-wrapper](https://github.com/mhdawson/google-drive-wrapper)\n  for more details.\n* encPassword - the password that will be used to encrypt/decrypt when\n  uploading/downloading from google drive.\n* gdriveDockDir - the folder in your google drive to which docker\n  images will be backed up.\n* dockerSchedule - schedule in cron format for times at which\n  docker backups will be scheduled.\n* eventLogPrefix - directory in which log file will be written.\n* uploadDirs - array with zero or more entries for directories\n  that will be uploaded to your google drive. As described below.\n* downloadDirs - array with zero or more entries for folders\n  on your google drive that will be downloaded.  As described\n  below. \n* blacklist - array with zero or more entries, each entry \n  being the tag for a docker image that should not be\n  in the list of images available to be selected for backup.\n\n\nEach of the entries for uploadDirs has the following fields:\n\n* localdir - local directory containing the files to be uploaded.\n* localdirDone - directory to which files will be moved\n  once they have been uploaded.\n* gdriveDir - google drive folder to which files will be\n  transferred.\n* schedule - schedule in cron format for times at which\n  uploads will be scheduled.\n\nEach of the entries for downloadDirs has the following fields:\n\n* gdriveDir - folder on your google drive from which files\n  will be downloaded.\n* localdir - local folder into which files will be downloaded.\n* schedule - schedule in cron format for times at which\n  downloads will be scheduled.\n \nIf required the key/certificate can be created using a command along \nthese lines (if tls is \"true\"):\n\n<PRE>\nopenssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout key.pem -out cert.pem\n</PRE>\n\n\nThis is an example of a configuration file with sensitive parts masked out:\n<PRE>\n{\n  \"serverPort\": 9000,\n  \"tls\": \"true\",\n  \"authenticate\": \"true\",\n  \"authInfo\": {\"username\": \"xxxxxx\", \"password\": \"xxxxxxxxxxx\", \"realm\": \"backup\"},\n  \"clientSecretDir\": \"/home/user1/\",\n  \"clientSecret\": \"client_secret\",\n  \"encPassword\": \"xxxxxxx\",\n  \"gdriveDockDir\": \"/backups/machine1\",\n  \"dockerSchedule\": \"32 * * * *\",\n  \"eventLogPrefix\": \"./\",\n  \"uploadDirs\": [ { \"localdir\": \"/home/user1/upload1\", \"localdirDone\": \"/home/user1/uploadDone\",\n                    \"gdriveDir\": \"/backups/back1\", \"schedule\": \"10 * * * *\" },\n                  { \"localdir\": \"/home/user1/upload2\", \"localdirDone\": \"/home/user1/uploadDone\",\n                    \"gdriveDir\": \"/backups/back2\", \"schedule\": \"15 * * * *\" } ],\n  \"downloadDirs\": [ { \"gdriveDir\": \"/backups/back1\", \"localdir\": \"/home/user1/download1\",\n                      \"schedule\": \"1 * * * *\" }],\n  \"twilio\": { \"accountSID\": \"xxxxxxxxxxxxxxxxxxx\",\n              \"accountAuthToken\": \"xxxxxxxxxxxxxxxxxx\",\n              \"fromNumber\": \"xxxxxxxxxx\",\n              \"toNumber\": \"xxxxxxxxxxx\",\n              \"sendError\": true  },\n  \"blacklist\": [ \"ubuntux:latest\" ]\n}\n</PRE>\n\n\n# Installation\n\nThe easiest way to install is to run:\n\n<PRE>\nnpm install micro-app-cloud-backup\n</PRE>\n\nand then configure the default config.json file in the lib directory as described\nin the configuration section above.\n\n# Running\n\nSimply cd to the directory where the npm was installed and type:\n\n<PRE>\nnpm start\n</PRE>\n\n\n\n"
+}

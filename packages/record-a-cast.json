@@ -9,11 +9,17 @@
     "url": "http://twolfson.com/"
   },
   "repository": {
-    "type": "git",
-    "url": "git://github.com/twolfson/record-a-cast.git"
-  },
-  "bugs": {
-    "url": "https://github.com/twolfson/record-a-cast/issues"
+    "user": "twolfson",
+    "repo": "record-a-cast",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/twolfson/record-a-cast/tarball/master",
+    "clone_url": "https://github.com/twolfson/record-a-cast",
+    "https_url": "https://github.com/twolfson/record-a-cast",
+    "travis_url": "https://travis-ci.org/twolfson/record-a-cast",
+    "zip_url": "https://github.com/twolfson/record-a-cast/archive/master.zip",
+    "api_url": "https://api.github.com/repos/twolfson/record-a-cast"
   },
   "bin": {
     "record-a-cast": "bin/record-a-cast.js"
@@ -60,28 +66,53 @@
     ]
   },
   "gitHead": "aee9f955b89325da1e57dbb2fb5444913796661f",
-  "_id": "record-a-cast@1.4.1",
-  "_shasum": "10381a065b43cec63b8dc2f95f7017070f3326b7",
-  "_from": ".",
   "_npmVersion": "2.14.19",
   "_nodeVersion": "4.3.1",
-  "_npmUser": {
+  "dist": {
+    "shasum": "10381a065b43cec63b8dc2f95f7017070f3326b7",
+    "tarball": "http://registry.npmjs.org/record-a-cast/-/record-a-cast-1.4.1.tgz"
+  },
+  "versions": [
+    {
+      "number": "1.0.0",
+      "date": "2016-03-17T18:55:47.697Z"
+    },
+    {
+      "number": "1.0.1",
+      "date": "2016-03-18T02:39:58.521Z"
+    },
+    {
+      "number": "1.1.0",
+      "date": "2016-03-18T03:42:36.638Z"
+    },
+    {
+      "number": "1.2.0",
+      "date": "2016-03-18T04:07:24.900Z"
+    },
+    {
+      "number": "1.3.0",
+      "date": "2016-03-18T04:29:18.397Z"
+    },
+    {
+      "number": "1.4.0",
+      "date": "2016-03-18T05:18:07.134Z"
+    },
+    {
+      "number": "1.4.1",
+      "date": "2016-03-21T03:28:05.390Z"
+    }
+  ],
+  "created": "2016-03-17T18:55:47.697Z",
+  "modified": "2016-03-21T03:28:05.390Z",
+  "lastPublisher": {
     "name": "twolfson",
     "email": "todd@twolfson.com"
   },
-  "maintainers": [
+  "owners": [
     {
       "name": "twolfson",
       "email": "todd@twolfson.com"
     }
   ],
-  "dist": {
-    "shasum": "10381a065b43cec63b8dc2f95f7017070f3326b7",
-    "tarball": "http://registry.npmjs.org/record-a-cast/-/record-a-cast-1.4.1.tgz"
-  },
-  "_npmOperationalInternal": {
-    "host": "packages-12-west.internal.npmjs.com",
-    "tmp": "tmp/record-a-cast-1.4.1.tgz_1458530883106_0.9589952875394374"
-  },
-  "directories": {}
+  "readme": "# record-a-cast [![Build status](https://travis-ci.org/twolfson/record-a-cast.svg?branch=master)](https://travis-ci.org/twolfson/record-a-cast)\n\nSelect and record a portion of your desktop\n\n`record-a-cast` was created out of frustration for either poor UI, poor compatibility with Linux, or both. It's based on well-tested technologies (e.g. [Electron][], [FFmpeg][]) so it should work well on most environments.\n\n[Electron]: https://github.com/atom/electron\n[FFmpeg]: https://www.ffmpeg.org/\n\n## Demonstration\n**1) Select an area**\n\n![Select an area image][]\n\n[Select an area image]: http://i.imgur.com/hOIceGa.png)\n\n**2) Get a screencast**\n\n![Get a screencast image][]\n\n[Get a screencast image]: http://i.imgur.com/jO8vvMa.gif\n\n## Donating\nSupport this project and [others by twolfson][twolfson-projects] via [PayPal][paypal-twolfson].\n\n[![Support via PayPal][paypal-button]][paypal-twolfson]\n\n[twolfson-projects]: http://twolfson.com/projects\n[paypal-button]: http://rawgit.com/twolfson/paypal-github-button/1.x.x/dist/button.svg\n[paypal-twolfson]: http://bit.ly/twolfson-paypal-5\n\n## Requirements\n- X11 server, [FFmpeg][] requires this for its `x11grab` functionality\n- [npm][], usually installed with [Node.js][]\n    - Used for installing dependencies\n    - We recommend installing via: <https://github.com/nodesource/distributions>\n- [FFmpeg][], used for recording the screen\n    - This might be known as `avconv` on your distribution\n    - For `apt` installation, this might be one of:\n        - `apt-get install ffmpeg`\n        - `apt-get install libav-tools`\n\n[npm]: http://npmjs.org/\n[Node.js]: http://nodejs.org/\n\n## Getting Started\n1) Install the module globally via `npm install -g record-a-cast`\n\n2) Start running `record-a-cast` via `record-a-cast recording.mov`\n\n3) Select an area via a draggable/resizable window\n\n![Select an area image][]\n\n4) Press `Enter` and FFmpeg will begin recording that area\n\n5) To stop recording, send a keyboard interrupt to `record-a-cast` (typically `Ctrl+C`)\n\n6) Your recording will be available at `recording.mov`\n\n![Recording image][Get a screencast image]\n\n## Documentation\n### CLI usage\nOur CLI currently supports the following:\n\n```\n$ record-a-cast --help\n\n  Usage: record-a-cast [options] <outfile> [-- ffmpeg-options]\n\n  Options:\n\n    -h, --help                  output usage information\n    -V, --version               output the version number\n    --delay <delay>             Milliseconds to wait before recording starts\n                       (default: 50 to prevent visible overlays)\n    --height-divisor <divisor>  Resize only to heights divisible by `m`\n    --width-divisor <divisor>   Resize only to widths divisible by `n`\n\n```\n\nAs noted, we support passing through options to FFmpeg via a `--` delimiter. For example, we can pass `-r 10` (record at 10FPS) to `ffmpeg`:\n\n```bash\nrecord-a-cast out.mov -- -r 10\n# Invokes: /usr/bin/ffmpeg -video_size 20x20 -f x11grab -i :0+20,20 -y -r 10 out.mov\n```\n\n### Environment variables\nWe support the following environment variables:\n\n- FFMPEG_BIN `String` - Path to desired FFmpeg executable\n    - By default, we will search for `ffmpeg` and `avconv` on `PATH`\n\n## Examples\n### Custom height/width divisors\nOn some computers, we can encounter errors like:\n\n```\n[libx264 @ 0x12f24c0] width not divisible by 2 (801x600)\n```\n\nThese are caused by our codec requiring even heights/widths for its format. To work around this, we support snapping our selection to height/widths that are only even (e.g. `801 -> 802`).\n\nTo run `record-a-cast` with snapping to even heights/widths, use:\n\n```bash\nrecord-a-cast --height-divisor 2 --width-divisor 2--out.mov\n```\n\n### Custom framerate\nWhen recording something like a GIF, we might want a reduced framerate to save on size and poor frame delays. Here's an example of recording a movie at 10FPS:\n\n```bash\nrecord-a-cast out.mov -- -r 10\n# Invokes: /usr/bin/ffmpeg -video_size 20x20 -f x11grab -i :0+20,20 -y -r 10 out.mov\n```\n\n### Duration\nSometimes we might want to only record for a few seconds. In this example, we will set our framerate to 24FPS and record for 3 seconds (72 frames).\n\n```bash\nrecord-a-cast out.mov -- -r 24 -frames 72\n# Invokes: /usr/bin/ffmpeg -video_size 20x20 -f x11grab -i :0+20,20 -y -r 24 -frames 72 out.mov\n\n# Compute duration dynamically in bash\n# record-a-cast out.mov -- -r 24 -frames \"$((3 * 24))\"\n```\n\n### Creating a GIF\n**Requirements:**\n\n- [ImageMagick][], image manipulation library which is much better at generating GIFs than FFmpeg\n    - `apt-get install imagemagick`\n\n[ImageMagick]: http://www.imagemagick.org/script/index.php\n\n**Script:**\n\n```bash\n# Record our screencast with a reduced framerate\n# DEV: We use `-r 10` to output 10FPS since GIFs move slower\nrecord-a-cast recording.mov -- -r 10\n\n# Output each frame to a folder\n# DEV: When we tried to record directly to PNGs via FFmpeg, they were all empty\n#   Hence, this 2 step process\nmkdir frames\nffmpeg -i recording.mov frames/recording%03d.png\n\n# DEV: If you want to remove any frames from the final product\n#   then navigate to `frames` and delete them\n\n# Combine our frames into a GIF via ImageMagick\nconvert -loop 0 frames/recording*.png recording.gif\n```\n\nWant more variations on this? See the following links:\n\n- https://gist.github.com/dergachev/4627207\n- https://gist.github.com/SlexAxton/4989674\n\n## Contributing\nIn lieu of a formal styleguide, take care to maintain the existing coding style. Add unit tests for any new or changed functionality. Lint via `npm run lint` and test via `npm test`.\n\n## Unlicense\nAs of Mar 17 2016, Todd Wolfson has released this repository and its contents to the public domain.\n\nIt has been released under the [UNLICENSE][].\n\n[UNLICENSE]: UNLICENSE\n"
 }
