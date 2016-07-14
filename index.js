@@ -1,9 +1,12 @@
 const fs = require('fs')
 const path = require('path')
-
+const objectValues = require('object-values')
+const requireDir = require('require-dir')
 const exists = require('path-exists').sync
-var packages = require('object-values')(require('require-dir')('./packages'))
-
+const Package = require('nice-package')
+var packages = objectValues(requireDir('./packages')).map(pkg => {
+  return new Package(pkg)
+})
 
 packages.forEach(p => {
   var file = path.join(__dirname, `./downloads/${p.name}.json`)
