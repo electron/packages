@@ -1,0 +1,55 @@
+{
+  "name": "electron-dev",
+  "version": "1.0.1",
+  "description": "**note this is not for reloading your BrowserWindow -- tools exist for that already, this is for code related to the main process**",
+  "main": "index.js",
+  "bin": {
+    "electron-dev": "bin/electron-dev"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "babel-core": "^6.13.2",
+    "babel-plugin-detective": "^2.0.0",
+    "bluebird": "^3.4.1",
+    "chokidar": "^1.6.0",
+    "cross-spawn": "^4.0.0",
+    "electron": "^1.3.3",
+    "minimist": "^1.2.0",
+    "resolve": "^1.1.7"
+  },
+  "gitHead": "21c417555f19d26e3d147e67818fe6f04449ce96",
+  "_npmVersion": "3.8.3",
+  "_nodeVersion": "5.10.0",
+  "dist": {
+    "shasum": "1811c6a7cbaf7df6ce3ba30b947f7836aa746402",
+    "tarball": "http://registry.npmjs.org/electron-dev/-/electron-dev-1.0.1.tgz"
+  },
+  "versions": [
+    {
+      "number": "1.0.0",
+      "date": "2016-08-16T22:52:05.668Z"
+    },
+    {
+      "number": "1.0.1",
+      "date": "2016-08-16T23:08:44.802Z"
+    }
+  ],
+  "created": "2016-08-16T22:52:05.668Z",
+  "modified": "2016-08-16T23:08:44.802Z",
+  "lastPublisher": {
+    "name": "keyvanfatehi",
+    "email": "keyvanfatehi@gmail.com"
+  },
+  "owners": [
+    {
+      "name": "keyvanfatehi",
+      "email": "keyvanfatehi@gmail.com"
+    }
+  ],
+  "readme": "# electron-dev\n\n**note this is not for reloading your BrowserWindow -- tools exist for that already, this is for code related to the main process**\n\nit's like [node-dev](https://github.com/fgnass/node-dev) except for electron apps \n\nlike node-dev, electron-dev wraps your program, however where node-dev actually hooks into `require()`,\nelectron-dev uses [babel-plugin-detective](https://github.com/avajs/babel-plugin-detective) to acquire a list of all the javascript files your app uses.\n\nwe then use [chokidar](https://github.com/paulmillr/chokidar) to watch for changes to to these files, restarting electron if any happen to change.\n\n## usage\n\n`electron-dev --dir . --script .` (defaults)\n\nif you are happy with those defaults you can just run `electron-dev` from your project root\n"
+}

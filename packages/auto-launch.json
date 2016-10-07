@@ -1,10 +1,13 @@
 {
   "name": "auto-launch",
-  "version": "2.1.0",
+  "version": "5.0.1",
   "description": "Launch node applications or executables at login (Mac, Windows, and Linux)",
   "main": "dist/index.js",
   "scripts": {
     "test": "gulp test"
+  },
+  "engines": {
+    "node": ">=4.0.0"
   },
   "repository": {
     "user": "4ver",
@@ -23,6 +26,7 @@
     "login",
     "launch",
     "node-webkit",
+    "electron",
     "boot",
     "login-items"
   ],
@@ -44,26 +48,26 @@
     "gulp-coffeelint": "^0.6.0",
     "gulp-coffeelint-threshold": "^1.0.0",
     "gulp-load-plugins": "^1.2.0",
-    "gulp-mocha": "^2.2.0",
+    "gulp-mocha": "^3.0.1",
     "gulp-util": "^3.0.7",
     "teamwork-coffeelint-rules": "0.0.1"
   },
   "homepage": "https://github.com/4ver/node-auto-launch",
   "dependencies": {
     "applescript": "^1.0.0",
-    "es6-promise": "^3.1.2",
     "mkdirp": "^0.5.1",
-    "untildify": "^2.1.0",
-    "winreg": "1.0.1"
+    "path-is-absolute": "^1.0.0",
+    "untildify": "^3.0.2",
+    "winreg": "1.2.2"
   },
-  "gitHead": "5953a1365ec1a74cec2787cfe2ed123357488435",
-  "_npmVersion": "2.14.2",
+  "gitHead": "0ccd48446d3e7762f17da8920d0c660b4b0e41a9",
+  "_npmVersion": "3.10.6",
   "_nodeVersion": "4.0.0",
   "dist": {
-    "shasum": "4f20ee782dedf6b8e209cf6a8a8aa1fb68454837",
-    "tarball": "http://registry.npmjs.org/auto-launch/-/auto-launch-2.1.0.tgz"
+    "shasum": "2015a8a30384abe0e7f98cbdca8145cf154753ae",
+    "tarball": "http://registry.npmjs.org/auto-launch/-/auto-launch-5.0.1.tgz"
   },
-  "stars": 11,
+  "stars": 13,
   "versions": [
     {
       "number": "0.1.0",
@@ -172,10 +176,38 @@
     {
       "number": "2.1.0",
       "date": "2016-07-03T00:54:09.073Z"
+    },
+    {
+      "number": "3.0.0",
+      "date": "2016-08-10T12:25:43.039Z"
+    },
+    {
+      "number": "4.0.0",
+      "date": "2016-08-24T11:25:41.526Z"
+    },
+    {
+      "number": "4.0.1",
+      "date": "2016-09-12T20:02:18.853Z"
+    },
+    {
+      "number": "5.0.0-rc.0",
+      "date": "2016-09-17T04:15:02.537Z"
+    },
+    {
+      "number": "5.0.0-rc.1",
+      "date": "2016-09-17T04:17:11.412Z"
+    },
+    {
+      "number": "5.0.0",
+      "date": "2016-09-17T04:57:52.997Z"
+    },
+    {
+      "number": "5.0.1",
+      "date": "2016-09-19T21:47:17.997Z"
     }
   ],
   "created": "2014-08-20T17:20:41.064Z",
-  "modified": "2016-07-03T00:54:09.073Z",
+  "modified": "2016-10-06T14:02:37.829Z",
   "lastPublisher": {
     "name": "adam-lynch",
     "email": "contact@adamlynch.ie"
@@ -190,5 +222,5 @@
       "email": "contact@adamlynch.ie"
     }
   ],
-  "readme": "node-auto-launch\r\n==============\r\n\r\n[![NPM version][npm-image]][npm-url] [![Build Status][travis-image]][travis-url] [![Windows Build Status][appveyor-image]][appveyor-url] [![Dependency Status][depstat-image]][depstat-url]\r\n\r\n---\r\n\r\nLaunch applications or executables at login (Mac, Windows and Linux). Perfect for [NW.js](https://github.com/nwjs/nw.js) and [Electron](http://electron.atom.io/) apps.\r\n\r\n## Installation\r\n\r\n`npm install auto-launch`\r\n\r\n## Usage\r\n\r\nThe API consists only of `enable`, `disable`, and `isEnabled`.\r\n\r\n```javascript\r\nvar AutoLaunch = require('auto-launch');\r\n\r\nvar minecraftAutoLauncher = new AutoLaunch({\r\n\tname: 'Minecraft',\r\n\tpath: '/Applications/Minecraft.app',\r\n\tisHidden: true\r\n});\r\n\r\nminecraftAutoLauncher.enable();\r\n//minecraftAutoLauncher.disable();\r\n```\r\n\r\nFor NW.js or Electron apps you don't have to specify the path. It gets read from `process.execPath` :)\r\n\r\n```javascript\r\nvar AutoLaunch = require('auto-launch');\r\n\r\nvar appLauncher = new AutoLaunch({\r\n\tname: 'My NW.js or Electron app'\r\n});\r\n\r\nappLauncher.isEnabled().then(function(enabled){\r\n\tif(enabled) return;\r\n\treturn appLauncher.enable()\r\n}).then(function(err){\r\n\t\r\n});\r\n```\r\n\r\nNote: I added a method (`removeNwjsLoginItem`) to remove 'nwjs helper' app login item that might have been added to peoples accounts since the name change from node-webkit to NW.js.\r\n\r\n\r\n## TODO:\r\n\r\n- Add `getCurrentPath` - So you can check if the app has moved around.\r\n\r\n\r\n[npm-url]: https://npmjs.org/package/auto-launch\r\n[npm-image]: http://img.shields.io/npm/v/auto-launch.svg?style=flat\r\n\r\n[appveyor-url]: https://ci.appveyor.com/project/adam-lynch/node-auto-launch/branch/master\r\n[appveyor-image]: https://ci.appveyor.com/api/projects/status/0sraxp65vrj2axc3/branch/master?svg=true\r\n\r\n[travis-url]: http://travis-ci.org/Teamwork/node-auto-launch\r\n[travis-image]: http://img.shields.io/travis/Teamwork/node-auto-launch.svg?style=flat\r\n\r\n[depstat-url]: https://david-dm.org/teamwork/node-auto-launch\r\n[depstat-image]: https://david-dm.org/teamwork/node-auto-launch.svg?style=flat\r\n"
+  "readme": "node-auto-launch\r\n==============\r\n\r\n[![NPM version][npm-image]][npm-url] [![Build Status][travis-image]][travis-url] [![Windows Build Status][appveyor-image]][appveyor-url] [![Dependency Status][depstat-image]][depstat-url]\r\n\r\n---\r\n\r\nAuto-launch your app on login.\r\n\r\n- :star: Launch any application or executable at startup / login / boot.\r\n- :star: Supports Linux, Mac (via AppleScript or Launch Agent), and Windows.\r\n- :star: Supports [NW.js](http://nwjs.io/) and [Electron](http://electron.atom.io/) (with or without Squirrel; i.e. even if you're using Electron's built-in [`autoUpdater``](http://electron.atom.io/docs/api/auto-updater/) API).\r\n- :star: Auto-detects your app path for NW.js and Electron apps.\r\n- :disappointed: Not Mac App Store friendly. See [Make this Mac App Store compatible](https://github.com/Teamwork/node-auto-launch/issues/43) for more information.\r\n\r\n\r\n## Usage\r\n\r\n```javascript\r\nvar AutoLaunch = require('auto-launch');\r\n\r\nvar minecraftAutoLauncher = new AutoLaunch({\r\n\tname: 'Minecraft',\r\n\tpath: '/Applications/Minecraft.app',\r\n});\r\n\r\nminecraftAutoLauncher.enable();\r\n\r\n//minecraftAutoLauncher.disable();\r\n\r\n\r\nminecraftAutoLauncher.isEnabled()\r\n.then(function(isEnabled){\r\n\tif(isEnabled){\r\n\t    return;\r\n\t}\r\n\tminecraftAutoLauncher.enable();\r\n})\r\n.catch(function(err){\r\n    // handle error\r\n});\r\n```\r\n\r\n## Installation\r\n\r\n`npm install --save auto-launch`\r\n\r\n\r\n## API\r\n\r\n### `new AutoLaunch(options)`\r\n\r\n**`options`** - Object\r\n\r\n**`options.name`** - String\r\n\r\nThe name of your app.\r\n\r\n**`options.path`** - String (optional for NW.js and Electron apps)\r\n\r\nThe absolute path to your app.\r\n\r\nFor NW.js and Electron apps, you don't have to specify the path. We guess based on `process.execPath`.\r\n\r\n**`options.isHidden`** - (Optional) Boolean\r\n\r\nIf `true`, we instruct the operating system to launch your app in hidden mode when launching at login. Defaults to `false`.\r\n\r\n**`options.mac`** (Optional) object\r\n\r\nFor Mac-only options.\r\n\r\n**`options.mac.useLaunchAgent`** (optional) Boolean.\r\n\r\nBy default, we use AppleScript to add a Login Item. If this is `true`, we use a Launch Agent to auto-launch your app. Defaults to `false`. For more information, see [How does it work? (mac)](#mac) below.\r\n\r\n\r\n### `.enable`\r\n\r\nSets your app to auto-launch at startup. Returns a Promise.\r\n\r\n\r\n### `.disable`\r\n\r\nDisables your app from auto-launching at startup. Returns a Promise.\r\n\r\n\r\n### `.isEnabled()`\r\n\r\nReturns a Promise which resolves to a Boolean; `true` if your app is set to launch on startup.\r\n\r\n\r\n## How does it work?\r\n\r\n### Linux\r\n\r\nA [Desktop Entry](https://specifications.freedesktop.org/desktop-entry-spec/desktop-entry-spec-latest.html) is created; i.e. a `.desktop` file is created in `~/.config/autostart/`.\r\n\r\nNote: if auto-launch is enabled and then your app is removed, this desktop entry file would be left behind on the user's machine.\r\n\r\n\r\n### Mac\r\n\r\n#### AppleScript (default)\r\n\r\nWe execute an AppleScript command to instruct `System Events` to add or remove a Login Item for your app. There are no files involved. To see your Login Items, you can go to *System Preferences*, *Users & Groups*, then *Login Items*. End users can add or disable items (including your app) here also, but most typical users aren't aware of it.\r\n\r\n![Login Items screenshot](images/loginItemsScreenshot.png)\r\n\r\nNote: This is not Mac App Store friendly; if you use it in your app, it will be rejected by the Mac App Store. We're only 99% sure on this as we haven't actually tried ourselves. See [Make this Mac App Store compatible](https://github.com/Teamwork/node-auto-launch/issues/43) for more information.\r\n\r\n\r\n#### Launch Agent\r\n\r\nThis is a file-based method like Linux's Desktop Entry method. We add a `.plist` file in the user's `Library/LaunchAgents` directory to create a [Launch Agent](https://developer.apple.com/library/content/documentation/MacOSX/Conceptual/BPSystemStartup/Chapters/CreatingLaunchdJobs.html) for your app.\r\n\r\n**Pros**\r\n\r\n- Launch Agents are intended for daemons / something without UI, which might be applicable depending on your app.\r\n- We *think* this method *seems* to be faster, as in to enable or disable auto-launching (there is no difference in the amount of time it takes your app to launch). Although, that's not really a concern.\r\n- You might not trust AppleScript.\r\n\r\n**Cons**\r\n\r\n- Your app will not appear in the user's Login Items. Therefore the user can only toggle auto-launching inside your app, if you provide them with a setting of course (which you should!). This is not a huge deal as most users are not aware of Login Items preferences, but it would be ideal if your app appeared there.\r\n- If the user was to remove your app, the file would be left behind on the user's machine.\r\n\r\nIf you find that the AppleScript method doesn't work for you and this method does, please let us know by [creating an issue](https://github.com/Teamwork/node-auto-launch/issues/new).\r\n\r\nNote: This is not Mac App Store friendly; if you use it in your app, it will be rejected by the Mac App Store as this reaches outside of the app sandbox. See [Make this Mac App Store compatible](https://github.com/Teamwork/node-auto-launch/issues/43) for more information.\r\n\r\n\r\n### Windows\r\n\r\nWe add a registry entry under `\\Software\\Microsoft\\Windows\\CurrentVersion\\Run`.\r\n\r\nNote: If the user was to remove your app, this would be left in the registry, but that's not such a big deal. You can probably configure your uninstaller to unset it.\r\n\r\n\r\n#### Squirrel.Windows\r\n\r\nIf you're using [Squirrel.Windows](https://github.com/Squirrel/Squirrel.Windows), i.e. what's underneath Electron's built-in [`autoUpdater`](http://electron.atom.io/docs/api/auto-updater/) API on Windows, we add a registry entry for your app's `Update.exe` instead of your actual application. This is due to how Squirrel.Windows works under the hood. What if we didn't? Well, if the user started / restarted their machine after updating your app, it would launch the old version by mistake.\r\n\r\n\r\n# Would you like to contribute?\r\n\r\nWe're always open to your help and feedback. See our [CONTRIBUTING.md](CONTRIBUTING.md).\r\n\r\n\r\n[npm-url]: https://npmjs.org/package/auto-launch\r\n[npm-image]: http://img.shields.io/npm/v/auto-launch.svg?style=flat\r\n\r\n[appveyor-url]: https://ci.appveyor.com/project/adam-lynch/node-auto-launch/branch/master\r\n[appveyor-image]: https://ci.appveyor.com/api/projects/status/0sraxp65vrj2axc3/branch/master?svg=true\r\n\r\n[travis-url]: http://travis-ci.org/Teamwork/node-auto-launch\r\n[travis-image]: http://img.shields.io/travis/Teamwork/node-auto-launch.svg?style=flat\r\n\r\n[depstat-url]: https://david-dm.org/teamwork/node-auto-launch\r\n[depstat-image]: https://david-dm.org/teamwork/node-auto-launch.svg?style=flat"
 }

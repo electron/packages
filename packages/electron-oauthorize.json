@@ -1,0 +1,84 @@
+{
+  "name": "electron-oauthorize",
+  "version": "0.3.2",
+  "description": "OAuth application authorization wrapped for Electron",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "user": "ArtistStudio",
+    "repo": "electron-oauthorize",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/ArtistStudio/electron-oauthorize/tarball/master",
+    "clone_url": "https://github.com/ArtistStudio/electron-oauthorize",
+    "https_url": "https://github.com/ArtistStudio/electron-oauthorize",
+    "travis_url": "https://travis-ci.org/ArtistStudio/electron-oauthorize",
+    "zip_url": "https://github.com/ArtistStudio/electron-oauthorize/archive/master.zip",
+    "api_url": "https://api.github.com/repos/ArtistStudio/electron-oauthorize"
+  },
+  "keywords": [
+    "electron",
+    "authorize",
+    "oauth",
+    "oauth2"
+  ],
+  "author": {
+    "name": "Florian Grber",
+    "email": "fg@artiststud.io"
+  },
+  "license": "MIT",
+  "homepage": "https://github.com/ArtistStudio/electron-oauthorize#readme",
+  "dependencies": {
+    "oauth": "^0.9.14",
+    "qs": "^6.2.1"
+  },
+  "gitHead": "ee7a40a4c1fcd6b8c944773b80d6f5ac2fefee87",
+  "_npmVersion": "3.10.3",
+  "_nodeVersion": "6.3.0",
+  "dist": {
+    "shasum": "4f8fee4797b5d2dbe6657c192d53cfdd66f40544",
+    "tarball": "http://registry.npmjs.org/electron-oauthorize/-/electron-oauthorize-0.3.2.tgz"
+  },
+  "versions": [
+    {
+      "number": "0.1.0",
+      "date": "2016-09-23T10:00:26.053Z"
+    },
+    {
+      "number": "0.1.1",
+      "date": "2016-09-23T10:28:56.898Z"
+    },
+    {
+      "number": "0.2.0",
+      "date": "2016-09-26T12:58:47.782Z"
+    },
+    {
+      "number": "0.2.1",
+      "date": "2016-09-26T13:38:59.937Z"
+    },
+    {
+      "number": "0.3.1",
+      "date": "2016-09-29T10:55:06.914Z"
+    },
+    {
+      "number": "0.3.2",
+      "date": "2016-10-01T14:17:26.866Z"
+    }
+  ],
+  "created": "2016-09-23T10:00:26.053Z",
+  "modified": "2016-10-01T14:17:26.866Z",
+  "lastPublisher": {
+    "name": "artiststudio",
+    "email": "hello@artiststud.io"
+  },
+  "owners": [
+    {
+      "name": "artiststudio",
+      "email": "hello@artiststud.io"
+    }
+  ],
+  "readme": "# electron-oauthorize\r\n[![npm](https://img.shields.io/npm/v/electron-oauthorize.svg?maxAge=259200&style=flat-square)](https://www.npmjs.com/package/electron-oauthorize)\r\n[![License](https://img.shields.io/npm/l/electron-oauthorize.svg?maxAge=259200&style=flat-square)](https://github.com/ArtistStudio/electron-oauthorize/blob/master/LICENSE)\r\n[![Docs](https://img.shields.io/badge/docs-here-brightgreen.svg?style=flat-square)](https://github.com/ArtistStudio/electron-oauthorize/tree/master/docs)\r\n\r\n__OAuth application authorization wrapped for Electron__\r\n\r\nTested / With presets for:\r\n- __Twitter__ OAuth 1.0A\r\n- __Tumblr__ OAuth 1.0A\r\n- __SoundCloud__ OAuth 2\r\n- __DeviantArt__ OAuth 2\r\n\r\n### Usage Example\r\n```\r\nconst electronOAuthorize = require('electron-oauthorize')\r\n\r\nlet options = electronOAuthorize.getPreset('soundcloud')\r\n    options.client_id     = 'soundcloud_client_id'\r\n    options.client_secret = 'soundcloud_client_secret'\r\n    options.scope         = 'non-expiring'\r\n    options.access_type   = null\r\n\r\nlet window_options = {\r\n    width            : 450,\r\n    height           : 626,\r\n    parent           : BrowserWindow.fromId(1),\r\n    modal            : true,\r\n    show             : false,\r\n    fullscreenable   : false,\r\n    maximizable      : false,\r\n    minimizable      : false,\r\n}\r\n\r\nlet authorization = new electronOAuthorize.OAuth2(options, window_options)\r\n    .then(authSuccess, authFailure)\r\n\r\nfunction authSuccess(result) {\r\n  // result.access_token, result.refresh_token\r\n}\r\n\r\nfunction authFailure(error) {\r\n  // console.log(error.message)\r\n}\r\n```\r\n"
+}

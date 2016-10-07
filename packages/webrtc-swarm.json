@@ -1,6 +1,6 @@
 {
   "name": "webrtc-swarm",
-  "version": "2.6.1",
+  "version": "2.8.0",
   "description": "Create a swarm of p2p connections using webrtc and a signalhub",
   "main": "index.js",
   "scripts": {
@@ -39,14 +39,14 @@
   },
   "license": "MIT",
   "homepage": "https://github.com/mafintosh/webrtc-swarm",
-  "gitHead": "bf871424ac9d58401a396c42a2e7b2e3cf6816e8",
+  "gitHead": "a74e395fd795ac987c191cf5f1f2de7314f2aaa6",
   "_npmVersion": "2.15.9",
   "_nodeVersion": "4.4.3",
   "dist": {
-    "shasum": "ecd015c949323aee731f5d9d85c989932818a39c",
-    "tarball": "http://registry.npmjs.org/webrtc-swarm/-/webrtc-swarm-2.6.1.tgz"
+    "shasum": "00e366ae46a09cafb49968f1e32d5f10febefe92",
+    "tarball": "http://registry.npmjs.org/webrtc-swarm/-/webrtc-swarm-2.8.0.tgz"
   },
-  "stars": 2,
+  "stars": 3,
   "versions": [
     {
       "number": "1.0.0",
@@ -103,10 +103,18 @@
     {
       "number": "2.6.1",
       "date": "2016-07-05T21:12:49.588Z"
+    },
+    {
+      "number": "2.7.0",
+      "date": "2016-08-07T19:43:23.590Z"
+    },
+    {
+      "number": "2.8.0",
+      "date": "2016-08-28T07:40:14.897Z"
     }
   ],
   "created": "2015-04-26T20:58:04.019Z",
-  "modified": "2016-07-05T21:12:49.588Z",
+  "modified": "2016-08-28T07:40:14.897Z",
   "lastPublisher": {
     "name": "mafintosh",
     "email": "mathiasbuus@gmail.com"
@@ -121,5 +129,5 @@
       "email": "max@maxogden.com"
     }
   ],
-  "readme": "# webrtc-swarm\n\n> Create a swarm of p2p connections using webrtc and a\n[signalhub](https://github.com/mafintosh/signalhub).\n\n```\nnpm install webrtc-swarm\n```\n\n## Usage\n\n``` js\nvar swarm = require('webrtc-swarm')\nvar signalhub = require('signalhub')\n\nvar hub = signalhub('swarm-example', ['http://yourdomain.com'])\n\nvar sw = swarm(hub, {\n  wrtc: require('wrtc') // don't need this if used in the browser\n})\n\nsw.on('peer', function (peer, id) {\n  console.log('connected to a new peer:', id)\n  console.log('total peers:', sw.peers.length)\n})\n\nsw.on('disconnect', function (peer, id) {\n  console.log('disconnected from a peer:', id)\n  console.log('total peers:', sw.peers.length)\n})\n```\n\n## API\n\n```js\nvar swarm = require('webrtc-swarm')\n```\n\n### var sw = swarm(hub, opts)\n\nCreates a new webrtc swarm using\n[signalhub](https://github.com/mafintosh/signalhub) `hub` for discovery and\nconnection brokering.\n\nValid keys for `opts` include\n\n- `wrtc` - (optional) a reference to the `wrtc` library, if using Node.\n- `uuid` - (optional) a unique identifier for this peer. One is generated for you\nif not supplied.\n- `maxPeers` - (optional) the maximum number of peers you wish to connect to.\nDefaults to unlimited.\n\n### sw.close()\n\nDisconnect from swarm\n\n### sw.on('peer|connect', peer, id)\n\n`peer` and `connect` are interchangeable. Fires when a connection has been\nestablished to a new peer `peer`, with unique id `id`.\n\n### sw.on('disconnect', peer, id)\n\nFires when an existing peer connection is lost.\n\n### sw.on('close')\n\nFires when all peer and signalhub connections are closed\n\n### sw.peers\n\nA list of peers that `sw` is currently connected to.\n\n### swarm.WEBRTC_SUPPORT\n\nDetect native WebRTC support in the javascript environment.\n\n```js\nvar swarm = require('webrtc-swarm')\n\nif (swarm.WEBRTC_SUPPORT) {\n  // webrtc support!\n} else {\n  // fallback\n}\n```\n\n## License\n\nMIT\n"
+  "readme": "# webrtc-swarm\n\n> Create a swarm of p2p connections using webrtc and a\n[signalhub](https://github.com/mafintosh/signalhub).\n\n```\nnpm install webrtc-swarm\n```\n\n## Usage\n\n``` js\nvar swarm = require('webrtc-swarm')\nvar signalhub = require('signalhub')\n\nvar hub = signalhub('swarm-example', ['http://yourdomain.com'])\n\nvar sw = swarm(hub, {\n  wrtc: require('wrtc') // don't need this if used in the browser\n})\n\nsw.on('peer', function (peer, id) {\n  console.log('connected to a new peer:', id)\n  console.log('total peers:', sw.peers.length)\n})\n\nsw.on('disconnect', function (peer, id) {\n  console.log('disconnected from a peer:', id)\n  console.log('total peers:', sw.peers.length)\n})\n```\n\n## API\n\n```js\nvar swarm = require('webrtc-swarm')\n```\n\n### var sw = swarm(hub, opts)\n\nCreates a new webrtc swarm using\n[signalhub](https://github.com/mafintosh/signalhub) `hub` for discovery and\nconnection brokering.\n\nValid keys for `opts` include:\n\n- `wrtc` - (optional) a reference to the `wrtc` library, if using Node.\n- `uuid` - (optional) a unique identifier for this peer. One is generated for\nyou if not supplied.\n- `maxPeers` - (optional) the maximum number of peers you wish to connect to.\nDefaults to unlimited.\n\nAdditional optional keys can be passed through to the underlying\n[simple-peer](https://www.npmjs.com/package/simple-peer) instances:\n\n- `channelConfig` -  custom webrtc data channel configuration (used by\n`createDataChannel`)\n- `config` - custom webrtc configuration (used by `RTCPeerConnection`\nconstructor)\n- `stream` - if video/voice is desired, pass stream returned from\n`getUserMedia`\n\n\n### sw.close()\n\nDisconnect from swarm\n\n### sw.on('peer|connect', peer, id)\n\n`peer` and `connect` are interchangeable. Fires when a connection has been\nestablished to a new peer `peer`, with unique id `id`.\n\n### sw.on('disconnect', peer, id)\n\nFires when an existing peer connection is lost.\n\n`peer` is a [simple-peer](https://www.npmjs.com/package/simple-peer) instance.\n\n### sw.on('close')\n\nFires when all peer and signalhub connections are closed\n\n### sw.peers\n\nA list of peers that `sw` is currently connected to.\n\n### swarm.WEBRTC_SUPPORT\n\nDetect native WebRTC support in the javascript environment.\n\n```js\nvar swarm = require('webrtc-swarm')\n\nif (swarm.WEBRTC_SUPPORT) {\n  // webrtc support!\n} else {\n  // fallback\n}\n```\n\n## License\n\nMIT\n"
 }

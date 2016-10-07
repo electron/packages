@@ -1,11 +1,11 @@
 {
   "name": "devtron",
-  "version": "1.2.1",
+  "version": "1.4.0",
   "description": "Electron DevTools Extension",
   "main": "./api.js",
   "scripts": {
-    "prepublish": "browserify lib/*.js -o out/index.js --ignore-missing --entry lib/index.js",
-    "start": "watchify lib/*.js -o out/index.js --ignore-missing --entry lib/index.js --verbose",
+    "prepublish": "browserify lib/*.js -o out/index.js --ignore-missing --entry lib/index.js && browserify lib/browser-globals.js -o out/browser-globals.js",
+    "start": "browserify lib/browser-globals.js -o out/browser-globals.js && watchify lib/*.js -o out/index.js --ignore-missing --entry lib/index.js --verbose",
     "test": "mocha test/unit/*-test.js test/integration/*-test.js && standard"
   },
   "repository": {
@@ -47,6 +47,7 @@
     "watchify": "^3.7.0"
   },
   "dependencies": {
+    "accessibility-developer-tools": "^2.11.0",
     "highlight.js": "^9.3.0",
     "humanize-plus": "^1.8.1"
   },
@@ -55,12 +56,12 @@
       "/out/index.js"
     ]
   },
-  "gitHead": "10604bddb15df0837897d64c2e133f901c746d14",
+  "gitHead": "2635504cc8ada0501e286493a7e50a23bc0791ae",
   "_npmVersion": "3.8.3",
   "_nodeVersion": "5.10.0",
   "dist": {
-    "shasum": "7dbd7a4a25078916d7bd1972d2068a3787f0fc30",
-    "tarball": "http://registry.npmjs.org/devtron/-/devtron-1.2.1.tgz"
+    "shasum": "b5e748bd6e95bbe70bfcc68aae6fe696119441e1",
+    "tarball": "http://registry.npmjs.org/devtron/-/devtron-1.4.0.tgz"
   },
   "stars": 1,
   "versions": [
@@ -91,15 +92,27 @@
     {
       "number": "1.2.1",
       "date": "2016-06-17T23:33:08.606Z"
+    },
+    {
+      "number": "1.3.0",
+      "date": "2016-08-02T21:30:58.320Z"
+    },
+    {
+      "number": "1.4.0",
+      "date": "2016-10-07T18:27:12.004Z"
     }
   ],
   "created": "2016-05-11T05:38:20.380Z",
-  "modified": "2016-06-17T23:33:08.606Z",
+  "modified": "2016-10-07T18:27:12.004Z",
   "lastPublisher": {
     "name": "kevinsawicki",
     "email": "kevinsawicki@gmail.com"
   },
   "owners": [
+    {
+      "name": "electron",
+      "email": "electron@github.com"
+    },
     {
       "name": "jlord",
       "email": "to.jlord@gmail.com"
@@ -117,5 +130,5 @@
       "email": "zeke@sikelianos.com"
     }
   ],
-  "readme": "# <img src=\"https://cloud.githubusercontent.com/assets/378023/15063285/cf554e40-1383-11e6-9b9c-45d381b03f9f.png\" width=\"60px\" align=\"center\" alt=\"Devtron icon\"> Devtron\n\nAn [Electron](http://electron.atom.io) [DevTools](https://developer.chrome.com/devtools)\nextension to help you inspect, monitor, and debug your app.\n\n[![Travis Build Status](https://travis-ci.org/electron/devtron.svg?branch=master)](https://travis-ci.org/electron/devtron)\n[![AppVeyor Build status](https://ci.appveyor.com/api/projects/status/m8bl2rgi5loud7jy/branch/master?svg=true)](https://ci.appveyor.com/project/Atom/devtron/branch/master)\n[![js-standard-style](https://img.shields.io/badge/code%20style-standard-brightgreen.svg?style=flat)](http://standardjs.com/)\n[![downloads:?](https://img.shields.io/npm/dm/devtron.svg)](https://www.npmjs.com/packages/devtron)\n\n![screenshot](https://cloud.githubusercontent.com/assets/378023/15036521/e3e7cd06-12ca-11e6-8054-ed0455015f05.png)\n\n## Features\n\n  * **Require graph** to help you visualize your app's internal and external\n    library dependencies in both the main and renderer processes.\n  * **IPC monitor** to track and inspect the messages sent and received\n    between the renderer and main processes in your app.\n  * **Event inspector** that shows the events and listeners that are registered\n    in your app on the core Electron APIs such as the window, the app, and the\n    processes.\n  * **App Linter** that checks your apps for possible issues and missing\n    functionality.\n\n## Installing\n\n```sh\nnpm install --save-dev devtron\n```\n\nThen execute the following from the Console tab of your running Electron app's\ndeveloper tools:\n\n```js\nrequire('devtron').install()\n```\n\nYou should then see a `Devtron` tab added.\n\n## Disabled Node Integration\n\nIf your application's `BrowserWindow` was created with `nodeIntegration` set\nto `false` then you will need to expose some globals via a [preload](http://electron.atom.io/docs/api/browser-window/#new-browserwindowoptions)\nscript to allow Devtron access to Electron APIs:\n\n```js\nwindow.__devtron = {require: require, process: process}\n```\n\nThen restart your application and Devtron should successfully load. You may\nwant to guard this assignment with a `if (process.env.NODE_ENV === 'development')`\ncheck to ensure these variables aren't exposed in production.\n\n## Developing locally\n\n```\ngit clone https://github.com/electron/devtron\ncd devtron\nnpm install\nnpm start\n```\n\nThis will start a process that watches and compiles the extension as files\nare modified.\n\nThen open the Console tab of your Electron app and run the following with the\npath updated for the location that you've cloned devtron to:\n\n```js\nrequire('/Users/me/code/devtron').install()\n```\n\nThen a Devtron tab should appear and it will now be enabled for that\napplication.\n\nYou can reload the extension by closing and reopening the dev tools.\n\n### Running in a browser\n\nTo make developing and debugging the extension easier, you can run it in a\nChrome tab that will talk remotely to a running Electron app over HTTP.\n\n- Set the `DEVTRON_DEBUG_PATH` environment variable to the path of the cloned\n  devtron repository.\n- Start your Electron application.\n- Click the **Devtron** tab.\n- You should then see the following messages logged to the **Console** tab:\n\n  > Devtron server listening on http://localhost:3948\n  >\n  > Open file:///Users/me/devtron/static/index.html to view\n\n- Then open `/Users/me/devtron/static/index.html` in Chrome\n- The page there will talk remotely to the running Electron app so you'll\n  be able to fully interact with each pane with real data.\n\n## Contributing\n\nHave an idea for something this extension could do to make debugging Electron\napps easier? Please [open an issue](https://github.com/electron/devtron/issues/new).\n\nPull requests are also welcome and appreciated. Run `npm test` to run the\nexisting tests. This project uses the [standard JavaScript style](http://standardjs.com).\n"
+  "readme": "# <img src=\"https://cloud.githubusercontent.com/assets/378023/15063285/cf554e40-1383-11e6-9b9c-45d381b03f9f.png\" width=\"60px\" align=\"center\" alt=\"Devtron icon\"> Devtron\n\nAn [Electron](http://electron.atom.io) [DevTools](https://developer.chrome.com/devtools)\nextension to help you inspect, monitor, and debug your app.\n\n[![Travis Build Status](https://travis-ci.org/electron/devtron.svg?branch=master)](https://travis-ci.org/electron/devtron)\n[![AppVeyor Build status](https://ci.appveyor.com/api/projects/status/m8bl2rgi5loud7jy/branch/master?svg=true)](https://ci.appveyor.com/project/Atom/devtron/branch/master)\n[![js-standard-style](https://img.shields.io/badge/code%20style-standard-brightgreen.svg?style=flat)](http://standardjs.com/)\n[![downloads:?](https://img.shields.io/npm/dm/devtron.svg)](https://www.npmjs.com/packages/devtron)\n\n![screenshot](https://cloud.githubusercontent.com/assets/378023/15036521/e3e7cd06-12ca-11e6-8054-ed0455015f05.png)\n\n## Features\n\n  * **Require graph** to help you visualize your app's internal and external\n    library dependencies in both the main and renderer processes.\n  * **IPC monitor** to track and inspect the messages sent and received\n    between the renderer and main processes in your app.\n  * **Event inspector** that shows the events and listeners that are registered\n    in your app on the core Electron APIs such as the window, the app, and the\n    processes.\n  * **App Linter** that checks your apps for possible issues and missing\n    functionality.\n\n## Installing\n\n```sh\nnpm install --save-dev devtron\n```\n\nThen execute the following from the Console tab of your running Electron app's\ndeveloper tools:\n\n```js\nrequire('devtron').install()\n```\n\nYou should then see a `Devtron` tab added.\n\n## Disabled Node Integration\n\nIf your application's `BrowserWindow` was created with `nodeIntegration` set\nto `false` then you will need to expose some globals via a [preload](http://electron.atom.io/docs/api/browser-window/#new-browserwindowoptions)\nscript to allow Devtron access to Electron APIs:\n\n```js\nwindow.__devtron = {require: require, process: process}\n```\n\nThen restart your application and Devtron should successfully load. You may\nwant to guard this assignment with a `if (process.env.NODE_ENV === 'development')`\ncheck to ensure these variables aren't exposed in production.\n\n## Developing locally\n\n```\ngit clone https://github.com/electron/devtron\ncd devtron\nnpm install\nnpm start\n```\n\nThis will start a process that watches and compiles the extension as files\nare modified.\n\nThen open the Console tab of your Electron app and run the following with the\npath updated for the location that you've cloned devtron to:\n\n```js\nrequire('/Users/me/code/devtron').install()\n```\n\nThen a Devtron tab should appear and it will now be enabled for that\napplication.\n\nYou can reload the extension by closing and reopening the dev tools.\n\n### Running in a browser\n\nTo make developing and debugging the extension easier, you can run it in a\nChrome tab that will talk remotely to a running Electron app over HTTP.\n\n- Set the `DEVTRON_DEBUG_PATH` environment variable to the path of the cloned\n  devtron repository.\n- Start your Electron application.\n- Click the **Devtron** tab.\n- You should then see the following messages logged to the **Console** tab:\n\n  > Devtron server listening on http://localhost:3948\n  >\n  > Open file:///Users/me/devtron/static/index.html to view\n\n- Then open `/Users/me/devtron/static/index.html` in Chrome\n- The page there will talk remotely to the running Electron app so you'll\n  be able to fully interact with each pane with real data.\n\n## Contributing\n\nHave an idea for something this extension could do to make debugging Electron\napps easier? Please [open an issue](https://github.com/electron/devtron/issues/new).\n\nPull requests are also welcome and appreciated. Run `npm test` to run the\nexisting tests. This project uses the [standard JavaScript style](http://standardjs.com).\n\n## License\n\nMIT\n"
 }

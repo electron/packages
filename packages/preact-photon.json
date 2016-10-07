@@ -1,6 +1,6 @@
 {
   "name": "preact-photon",
-  "version": "1.1.1",
+  "version": "1.3.0",
   "description": "Preact + Photon = <3",
   "main": "preact-photon.js",
   "scripts": {
@@ -41,19 +41,19 @@
   },
   "devDependencies": {
     "babel": "^5.8.23",
-    "babel-eslint": "^5.0.0",
+    "babel-eslint": "^7.0.0",
     "chai": "^3.5.0",
-    "eslint": "^2.0.0",
-    "mocha": "^2.4.5",
-    "preact": "^4.1.1",
-    "preact-render-to-string": "^2.0.0"
+    "eslint": "^3.1.0",
+    "mocha": "^3.0.0",
+    "preact": "^6.0.1",
+    "preact-render-to-string": "^3.0.0"
   },
-  "gitHead": "feb7b18ea2cefbe149600add51cb3ba0ed834305",
-  "_npmVersion": "2.14.7",
-  "_nodeVersion": "4.2.2",
+  "gitHead": "dee77f5bb47df749b1c7c8ad2a805614b2bad025",
+  "_npmVersion": "3.10.3",
+  "_nodeVersion": "6.3.1",
   "dist": {
-    "shasum": "ac198f5a0e076a9082b5f7e20bccd5bc5871f7b8",
-    "tarball": "http://registry.npmjs.org/preact-photon/-/preact-photon-1.1.1.tgz"
+    "shasum": "b447c27f49bb12636eca265e33f77771baee6118",
+    "tarball": "http://registry.npmjs.org/preact-photon/-/preact-photon-1.3.0.tgz"
   },
   "versions": [
     {
@@ -111,10 +111,18 @@
     {
       "number": "1.1.1",
       "date": "2016-03-03T02:08:29.445Z"
+    },
+    {
+      "number": "1.2.0",
+      "date": "2016-07-18T12:31:31.705Z"
+    },
+    {
+      "number": "1.3.0",
+      "date": "2016-10-07T02:48:53.772Z"
     }
   ],
   "created": "2015-10-17T04:01:44.219Z",
-  "modified": "2016-03-03T02:08:29.445Z",
+  "modified": "2016-10-07T02:48:53.772Z",
   "lastPublisher": {
     "name": "developit",
     "email": "jason@developit.ca"
@@ -125,5 +133,5 @@
       "email": "jason@developit.ca"
     }
   ],
-  "readme": "# preact-photon\n\n[![NPM](http://img.shields.io/npm/v/preact-photon.svg?style=flat)](https://www.npmjs.org/package/preact-photon)\n[![travis-ci](https://travis-ci.org/developit/preact-photon.svg?branch=master)](https://travis-ci.org/developit/preact-photon)\n\n\nA little wrapper around [photon] to make it cake to use via [preact] _(or React `*`)_.\n\nThis requires that you already have the [photon] CSS included in your app.\n\n\n## What does it look like?\n\nWell, this: **[Preact + Photon = <3](http://codepen.io/developit/pen/ZbajXQ?editors=001)** _(@ [CodePen](http://codepen.io/developit/pen/ZbajXQ?editors=001) or [JSFiddle](https://jsfiddle.net/developit/g5qnLnue/))_\n\n<img src=\"http://i.imgur.com/9EgPkqg.png\" width=\"646\" height=\"346\" title=\"preact+photon\">\n\n\n---\n\n\n## Usage\n\n```js\nimport { h, render } from 'preact';\nimport { Header, Title, Footer, Button } from 'preact-photon';\n\n/** Example app component */\nconst App = () => (\n\t<div id=\"app\">\n\t\t<Header>\n\t\t\t<Title>Great App</Title>\n\t\t\t<Button icon=\"home\">Home</Button>\n\t\t<Header>\n\n\t\t<section>\n\t\t\tHello there.\n\t\t</section>\n\n\t\t<Footer>\n\t\t\t<span>Some great content here.</span>\n\t\t</Footer>\n\t</div>\n);\n\nrender(<App />, document.body);\n```\n\n---\n\n## License\n\n[MIT]\n\n---\n\n`*` ... though I haven't tested it.\n\n[photon]: https://github.com/connors/photon\n[preact]: https://github.com/developit/preact\n[MIT]: http://choosealicense.com/licenses/mit\n"
+  "readme": "# preact-photon\n\n[![NPM](http://img.shields.io/npm/v/preact-photon.svg?style=flat)](https://www.npmjs.org/package/preact-photon)\n[![travis-ci](https://travis-ci.org/developit/preact-photon.svg?branch=master)](https://travis-ci.org/developit/preact-photon)\n\n\nA little wrapper around [photon] to make it cake to use via [preact] _(or React `*`)_.\n\nThis requires that you already have the [photon] CSS included in your app.\n\n\n## What does it look like?\n\nWell, this: **[Preact + Photon = <3](http://codepen.io/developit/pen/ZbajXQ?editors=001)** _(@ [CodePen](http://codepen.io/developit/pen/ZbajXQ?editors=001) or [JSFiddle](https://jsfiddle.net/developit/g5qnLnue/))_\n\n<img src=\"http://i.imgur.com/9EgPkqg.png\" width=\"646\" height=\"346\" title=\"preact+photon\">\n\n\n---\n\n\n## Usage\n\n```js\nimport { h, render } from 'preact';\nimport { Header, Title, Footer, Button } from 'preact-photon';\n\n/** Example app component */\nconst App = () => (\n\t<div id=\"app\">\n\t\t<Header>\n\t\t\t<Title>Great App</Title>\n\t\t\t<Button icon=\"home\">Home</Button>\n\t\t</Header>\n\n\t\t<section>\n\t\t\tHello there.\n\t\t</section>\n\n\t\t<Footer>\n\t\t\t<span>Some great content here.</span>\n\t\t</Footer>\n\t</div>\n);\n\nrender(<App />, document.body);\n```\n\n---\n\n## License\n\n[MIT]\n\n---\n\n`*` ... though I haven't tested it.\n\n[photon]: https://github.com/connors/photon\n[preact]: https://github.com/developit/preact\n[MIT]: http://choosealicense.com/licenses/mit\n"
 }

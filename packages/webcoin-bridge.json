@@ -1,0 +1,153 @@
+{
+  "name": "webcoin-bridge",
+  "version": "1.1.1",
+  "description": "Bridge connections from the Websocket/WebRTC network to the TCP network",
+  "main": "lib/bridge.js",
+  "bin": {
+    "webcoin-bridge": "bin/bridge.js"
+  },
+  "scripts": {
+    "test": "standard src/*.js bin/*.js && dependency-check package.json",
+    "build": "rm -rf lib && babel --presets es2015 src -d lib",
+    "source": "rm -rf lib && ln -s src lib",
+    "prepublish": "npm run build",
+    "publish": "npm run source"
+  },
+  "keywords": [
+    "webcoin",
+    "webrtc",
+    "websocket",
+    "bridge",
+    "p2p",
+    "bitcoin"
+  ],
+  "author": {
+    "name": "Matt Bell",
+    "email": "mappum@gmail.com"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "electron-webrtc": "^0.2.12",
+    "minimist": "^1.2.0",
+    "old": "^0.1.3",
+    "on-object": "^1.0.0",
+    "once": "^1.4.0",
+    "peer-exchange": "^2.0.0",
+    "webcoin-bitcoin": "^3.0.0",
+    "websocket-stream": "^3.3.0",
+    "wrtc": "0.0.61"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.16.0",
+    "babel-preset-es2015": "^6.16.0",
+    "dependency-check": "^2.6.0",
+    "standard": "^8.3.0"
+  },
+  "repository": {
+    "user": "mappum",
+    "repo": "webcoin-bridge",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/mappum/webcoin-bridge/tarball/master",
+    "clone_url": "https://github.com/mappum/webcoin-bridge",
+    "https_url": "https://github.com/mappum/webcoin-bridge",
+    "travis_url": "https://travis-ci.org/mappum/webcoin-bridge",
+    "zip_url": "https://github.com/mappum/webcoin-bridge/archive/master.zip",
+    "api_url": "https://api.github.com/repos/mappum/webcoin-bridge"
+  },
+  "homepage": "https://github.com/mappum/webcoin-bridge#readme",
+  "optionalDependencies": {
+    "wrtc": "0.0.61"
+  },
+  "gitHead": "d821436b8f32b1b2994e9e0f47613cd873bf8b64",
+  "_npmVersion": "3.10.3",
+  "_nodeVersion": "6.7.0",
+  "dist": {
+    "shasum": "60da0d600252f20006b2518c04d6cf242d35052c",
+    "tarball": "http://registry.npmjs.org/webcoin-bridge/-/webcoin-bridge-1.1.1.tgz"
+  },
+  "versions": [
+    {
+      "number": "0.0.0",
+      "date": "2016-02-25T22:48:31.922Z"
+    },
+    {
+      "number": "0.0.1",
+      "date": "2016-02-25T23:05:31.933Z"
+    },
+    {
+      "number": "0.0.2",
+      "date": "2016-02-25T23:09:32.338Z"
+    },
+    {
+      "number": "0.0.3",
+      "date": "2016-02-27T21:43:01.566Z"
+    },
+    {
+      "number": "0.0.4",
+      "date": "2016-03-10T20:11:39.214Z"
+    },
+    {
+      "number": "0.0.5",
+      "date": "2016-03-10T20:33:51.382Z"
+    },
+    {
+      "number": "0.0.6",
+      "date": "2016-03-14T22:45:22.650Z"
+    },
+    {
+      "number": "0.0.7",
+      "date": "2016-05-18T20:22:05.687Z"
+    },
+    {
+      "number": "0.0.8",
+      "date": "2016-05-19T03:12:36.585Z"
+    },
+    {
+      "number": "0.1.0",
+      "date": "2016-05-19T08:02:12.601Z"
+    },
+    {
+      "number": "0.1.1",
+      "date": "2016-05-19T08:40:46.337Z"
+    },
+    {
+      "number": "0.1.2",
+      "date": "2016-05-19T08:48:27.279Z"
+    },
+    {
+      "number": "0.1.3",
+      "date": "2016-05-19T09:57:10.489Z"
+    },
+    {
+      "number": "0.1.4",
+      "date": "2016-05-20T01:05:33.955Z"
+    },
+    {
+      "number": "1.0.0",
+      "date": "2016-10-03T19:10:39.758Z"
+    },
+    {
+      "number": "1.1.0",
+      "date": "2016-10-06T19:45:46.542Z"
+    },
+    {
+      "number": "1.1.1",
+      "date": "2016-10-06T19:56:11.473Z"
+    }
+  ],
+  "created": "2016-02-25T22:48:31.922Z",
+  "modified": "2016-10-06T19:56:11.473Z",
+  "lastPublisher": {
+    "name": "mappum",
+    "email": "mappum@gmail.com"
+  },
+  "owners": [
+    {
+      "name": "mappum",
+      "email": "mappum@gmail.com"
+    }
+  ],
+  "readme": "# webcoin-bridge\n\n[![npm version](https://img.shields.io/npm/v/webcoin-bridge.svg)](https://www.npmjs.com/package/webcoin-bridge)\n[![Build Status](https://travis-ci.org/mappum/webcoin-bridge.svg?branch=master)](https://travis-ci.org/mappum/webcoin-bridge)\n[![Dependency Status](https://david-dm.org/mappum/webcoin-bridge.svg)](https://david-dm.org/mappum/webcoin-bridge)\n\n**Bridge connections from the Websocket/WebRTC network to the TCP network**\n\nUse `webcoin-bridge` to run a node that accepts connections from Webcoin browser peers (via Websocket and WebRTC) and proxies them to a random TCP Bitcoin peer, in order to help bridge the networks.\n\n## Usage\n\n```sh\n$ npm install -g webcoin-bridge\n$ webcoin-bridge\n```\n"
+}

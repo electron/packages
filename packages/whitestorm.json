@@ -1,0 +1,235 @@
+{
+  "name": "whitestorm",
+  "version": "0.10.7",
+  "description": "Framework for developing 3D web apps with physics.",
+  "main": "lib/index.js",
+  "scripts": {
+    "build": "gulp src:build",
+    "dev": "gulp dev",
+    "test": "gulp src:karma",
+    "build:node": "gulp src:build:node",
+    "build:browser": "gulp src:build:browser",
+    "lint": "gulp src:lint"
+  },
+  "repository": {
+    "user": "WhitestormJS",
+    "repo": "whitestorm.js",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/WhitestormJS/whitestorm.js/tarball/master",
+    "clone_url": "https://github.com/WhitestormJS/whitestorm.js",
+    "https_url": "https://github.com/WhitestormJS/whitestorm.js",
+    "travis_url": "https://travis-ci.org/WhitestormJS/whitestorm.js",
+    "zip_url": "https://github.com/WhitestormJS/whitestorm.js/archive/master.zip",
+    "api_url": "https://api.github.com/repos/WhitestormJS/whitestorm.js"
+  },
+  "keywords": [
+    "three.js",
+    "cannon.js",
+    "webgl",
+    "wagner",
+    "api",
+    "3d",
+    "web",
+    "javascript"
+  ],
+  "author": {
+    "name": "Alexander Buzin"
+  },
+  "license": "ISC",
+  "homepage": "https://github.com/WhitestormJS/whitestorm.js#readme",
+  "dependencies": {
+    "inline-worker": "^1.1.0",
+    "minivents": "^2.0.2",
+    "stats.js": "^0.16.0",
+    "three": "^0.79.0",
+    "three-obj-loader": "^1.0.2",
+    "three-orbit-controls": "^72.0.0",
+    "webworkify-webpack": "^1.1.0",
+    "whs-ammo": "^0.0.6"
+  },
+  "devDependencies": {
+    "babel-loader": "^6.2.4",
+    "babel-plugin-add-module-exports": "^0.2.1",
+    "babel-plugin-transform-es2015-modules-commonjs": "^6.8.0",
+    "babel-plugin-transform-runtime": "^6.9.0",
+    "babel-preset-es2015": "^6.6.0",
+    "babel-preset-es2015-rollup": "^1.1.1",
+    "babel-preset-es2015-webpack": "^6.4.1",
+    "babel-preset-stage-1": "^6.5.0",
+    "babel-register": "^6.8.0",
+    "babelify": "^7.3.0",
+    "benchmark": "^2.1.0",
+    "browserify": "^13.0.1",
+    "browserify-shim": "^3.8.12",
+    "cli-table": "^0.3.1",
+    "del": "^2.2.0",
+    "gulp": "^3.9.1",
+    "gulp-babel": "^6.1.2",
+    "gulp-benchmark": "^1.1.1",
+    "gulp-browser-basedir": "^1.0.1",
+    "gulp-browserify": "^0.5.1",
+    "gulp-cached": "^1.1.0",
+    "gulp-changed": "^1.3.0",
+    "gulp-if": "^2.0.0",
+    "gulp-load-plugins": "^1.2.2",
+    "gulp-plumber": "^1.1.0",
+    "gulp-rename": "^1.2.2",
+    "gulp-rollup": "^1.9.0",
+    "gulp-sourcemaps": "^2.0.0-alpha",
+    "gulp-swig": "^0.8.0",
+    "gulp-util": "^3.0.7",
+    "gulp-xo": "^0.11.0",
+    "happypack": "^2.1.1",
+    "karma": "^1.0.0",
+    "karma-benchmark-reporter": "^0.1.1",
+    "karma-chrome-launcher": "^1.0.1",
+    "karma-logcapture-reporter": "0.0.1",
+    "karma-requirejs": "^1.0.0",
+    "karma-webpack": "^1.7.0",
+    "karma-whitestormjs-reporter": "^0.0.6",
+    "karma-whs-benchmark": "^0.0.1",
+    "path": "^0.12.7",
+    "requirejs": "^2.2.0",
+    "run-sequence": "^1.1.5",
+    "stats.js": "^0.16.0",
+    "stream-browserify": "^2.0.1",
+    "string-replace-loader": "^1.0.2",
+    "swig": "^1.4.2",
+    "swig-webpack-plugin": "^0.5.1",
+    "webpack": "^1.13.1",
+    "webpack-dev-server": "^1.14.1",
+    "webpack-stream": "^3.2.0",
+    "webworkify-webpack": "1.1.2",
+    "whs-terrain": "0.0.10",
+    "xo": "^0.15.1"
+  },
+  "xo": {
+    "space": 2,
+    "esnext": true,
+    "envs": [
+      "node",
+      "browser",
+      "es6"
+    ],
+    "rules": {
+      "operator-linebreak": [
+        2,
+        "before"
+      ],
+      "curly": [
+        2,
+        "multi-or-nest"
+      ],
+      "one-var": 0,
+      "no-else-return": 1,
+      "no-undef": 0,
+      "no-new": 0,
+      "camelcase": 0,
+      "new-cap": [
+        1,
+        {
+          "newIsCap": true,
+          "capIsNew": true,
+          "properties": false
+        }
+      ],
+      "babel/new-cap": [
+        1,
+        {
+          "newIsCap": true,
+          "capIsNew": true,
+          "properties": false
+        }
+      ],
+      "babel/arrow-parens": 0,
+      "xo/filename-case": 0
+    }
+  },
+  "eslintConfig": {
+    "ecmaFeatures": {
+      "modules": true,
+      "spread": true,
+      "restParams": true
+    },
+    "env": {
+      "es6": true,
+      "node": true,
+      "browser": true
+    },
+    "parserOptions": {
+      "ecmaVersion": 6,
+      "sourceType": "module",
+      "ecmaFeatures": {
+        "jsx": true
+      }
+    }
+  },
+  "browserify": {
+    "transform": [
+      [
+        "babelify",
+        {
+          "presets": [
+            "es2015"
+          ]
+        }
+      ],
+      [
+        "browserify-shim"
+      ]
+    ]
+  },
+  "browserify-shim": {
+    "three": "global:THREE",
+    "whitestormjs": "global:WHS",
+    "whitestormjs-physijs": "global:Physijs"
+  },
+  "gitHead": "90e3c07db83de32c5819a466ae584dc56886c8bc",
+  "_npmVersion": "3.10.3",
+  "_nodeVersion": "6.3.1",
+  "dist": {
+    "shasum": "c9f91e5cda61490334c94099aeb5b71767d2d51a",
+    "tarball": "http://registry.npmjs.org/whitestorm/-/whitestorm-0.10.7.tgz"
+  },
+  "versions": [
+    {
+      "number": "0.10.2",
+      "date": "2016-08-15T14:18:15.118Z"
+    },
+    {
+      "number": "0.10.3",
+      "date": "2016-08-15T14:31:05.890Z"
+    },
+    {
+      "number": "0.10.4",
+      "date": "2016-08-15T14:36:30.233Z"
+    },
+    {
+      "number": "0.10.5",
+      "date": "2016-08-15T15:16:15.370Z"
+    },
+    {
+      "number": "0.10.6",
+      "date": "2016-08-15T15:27:37.902Z"
+    },
+    {
+      "number": "0.10.7",
+      "date": "2016-08-15T15:29:57.239Z"
+    }
+  ],
+  "created": "2016-08-15T14:18:15.118Z",
+  "modified": "2016-08-15T15:29:57.239Z",
+  "lastPublisher": {
+    "name": "carnewal",
+    "email": "bradster@live.be"
+  },
+  "owners": [
+    {
+      "name": "carnewal",
+      "email": "bradster@live.be"
+    }
+  ],
+  "readme": "\n\n<p align=\"center\"><img src=\"https://raw.githubusercontent.com/WhitestormJS/whitestorm.js/master/media/art/logo/big.png\"></p>\n\n<p align=\"center\">\n    <a href=\"https://travis-ci.org/WhitestormJS/whitestorm.js\" align=\"center\"><img src=\"http://wsbadge.herokuapp.com/travis/WhitestormJS/whitestorm.js.svg?style=flat-square\"></a>&nbsp;&nbsp;\n    <a href=\"https://www.npmjs.com/package/whitestormjs\"><img src=\"http://wsbadge.herokuapp.com/npm/v/whitestormjs.svg?style=flat-square\"></a>&nbsp;&nbsp;          \n    <a href=\"https://github.com/WhitestormJS/whitestorm.js\"><img src=\"http://wsbadge.herokuapp.com/bower/v/whitestormjs.svg?style=flat-square\"></a>&nbsp;&nbsp;\n    <a href=\"https://raw.githubusercontent.com/WhitestormJS/whitestorm.js/master/LICENSE\" alt=\"License\"><img src=\"http://wsbadge.herokuapp.com/github/license/WhitestormJS/whitestorm.js.svg?style=flat-square\"></a>&nbsp;&nbsp;\n    <a href=\"https://whslack.herokuapp.com/\"><img src=\"https://whslack.herokuapp.com/badge.svg?style=flat-square\"></a>\n\n\n    <p align=\"center\"><i><b>Framework for developing 3D web apps with physics.</b></i></p>\n</p>\n\n<br>\n\n------\n\n## FEATURES\n\n* **Simple shape crafting** — We use a JSON-like structure for creating objects from inputted data and adding them to your 3D world.\n\n* **Physics with WebWorkers** — We use the [Physi.js](https://github.com/chandlerprall/Physijs/blob/master/physi.js) library for calculating physics of 3D shapes with **WebWorkers technology** that allows for rendering and calculating physics in multiple threads.\n\n* **Plugin system** — Our framework supports *plugins & components* made by other users. You need to include them after whitestorm.js and follow provided instructions.\n\n* **Automatization of rendering** — Our framework does rendering automatically and doesn't need a to be called. Functionality like the `resize` function can be called automatically by setting additional parameters such as `autoresize: true`.\n\n* **ES6 Features** - Our framework is written using the latest features of ECMAScript 6 and ECMAScript 7 (beta) features and compiled with [Babel](https://babeljs.io/).\n\n* **Softbodies** - WhitestormJS is the only engine (except native ammo.js) that supports softbodies.\n\n## PLAYGROUND :rocket:\n<a href=\"http://ow.ly/J4Tw302obGz\"><img src=\"http://i.imgur.com/6EdMjm1.gif\"></a>\n\n## GAME EXAMPLE :video_game:\n<a href=\"http://192.241.128.187/current/examples/fps/shooter/\" target=\"_blank\"><img src=\"https://raw.githubusercontent.com/WhitestormJS/whitestorm.js/master/media/art/splash.png\"></a>\n\n## INSTALLATION &#10540; USAGE\n\n#### NODE\n\n```bash\nnpm install whitestormjs\n```\n\n#### BROWSER\n\nInclude a script tag linking the [WhitestormJS](https://cdn.jsdelivr.net/whitestormjs/latest/whitestorm.min.js) library in your `head` or after your `body`:\n\n```html\n<script src=\"{path_to_lib}/whitestorm.js\"></script>\n```\n\nAfter adding these libraries, you can configure your app:\n```javascript\nconst world = new WHS.World({\n    stats: \"fps\", // fps, ms, mb or false if not need.\n    autoresize: true,\n\n    gravity: { // Physic gravity.\n        x: 0,\n        y: -100,\n        z: 0\n    },\n    \n    camera: {\n      z: 50 // Move camera.\n    }\n});\n\nconst sphere = new WHS.Sphere({ // Create sphere object.\n  geometry: {\n    radius: 3\n  },\n\n  mass: 10, // Mass of physics object.\n\n  material: {\n    color: 0xffffff,\n    kind: 'basic'\n  },\n\n  pos: {\n    x: 0,\n    y: 100,\n    z: 0\n  }\n});\n\nsphere.addTo(GAME);\nsphere.getNative(); // Returns THREE.Mesh of this object.\n\nworld.start(); // Start animations and physics simulation.\n```\n\n<br>\n\n## [Examples](http://192.241.128.187/current/examples/):\n\n#### :space_invader: BASIC:\n * [Basic / Hello world](http://192.241.128.187/current/examples/basic/helloworld/)  (Basic \"Hello world!\" example.)\n * [Basic / Model](http://192.241.128.187/current/examples/basic/model/)  (Basic model example.)\n * [Basic / Debugging](http://192.241.128.187/current/examples/basic/debugging/)  (Object's debug example.)\n * [Basic / Extending API](http://192.241.128.187/current/examples/basic/extending/)  (Extending api example.)\n * [Basic / Softbody](http://192.241.128.187/current/examples/basic/softbody/)  (Basic softbody implementation.)\n * [Basic / Three.js](http://192.241.128.187/current/examples/basic/threejs/)  (Importing three.js scene to whitestormjs core.)\n\n#### :gem: DESIGN:\n * [Design / Saturn](http://192.241.128.187/current/examples/design/saturn/)  (Saturn planet example from: http://codepen.io/Yakudoo/pen/qbygaJ)\n * [Design / Easter](http://192.241.128.187/current/examples/design/easter/)  (Easter rabbit with easter eggs.)\n * [Design / Points](http://192.241.128.187/current/examples/design/points/)  (Using WHS.Points to make a point cloud shaped in cube.)\n\n#### :snowboarder: FIRST-PERSON:\n * [FPS / Shooter](http://192.241.128.187/current/examples/fps/shooter/)  (First person example with Wagner effects and terrain. + fog)\n * [FPS / Fog](http://192.241.128.187/current/examples/fps/fog/)  (First person game with animated objects)\n\n#### :bowling: PHYSICS:\n * [Physics / Dominos](http://192.241.128.187/current/examples/physics/domino/)  (Physics example with dominos.)\n\n#### :rocket: PERFORMANCE:\n * [Performance / Sticks](http://192.241.128.187/current/examples/performance/sticks/)  (Collisions performance of 320 basic box objects.)\n\n----\n\n#### :chart_with_upwards_trend: [Changelog](https://github.com/WhitestormJS/whitestorm.js/blob/master/CHANGELOG.md) | :book: [Documentation](http://whitestormjs.xyz/) | :video_game: [Playground](http://whitestormjs.xyz/playground/)\n\n----\n\n## [Contributors](https://github.com/WhitestormJS/whitestorm.js/graphs/contributors):\n[![Author](http://wsbadge.herokuapp.com/badge/Author-Alexander%20Buzin-red.svg)](https://github.com/sasha240100)\n\n[![Contributor](http://wsbadge.herokuapp.com/badge/Contributor-jackdalton-blue.svg)](https://github.com/jackdalton)\n\n[![Contributor](http://wsbadge.herokuapp.com/badge/Contributor-Noctisdark-blue.svg)](https://github.com/noctisdark)\n\n[![Contributor](http://wsbadge.herokuapp.com/badge/Contributor-bdirl-blue.svg)](https://github.com/bdirl)\n\n[![Contributor](http://wsbadge.herokuapp.com/badge/Contributor-preco21-blue.svg)](https://github.com/preco21)\n\n[![Contributor](http://wsbadge.herokuapp.com/badge/Contributor-yeliex-blue.svg)](https://github.com/yeliex)\n\n[![Contributor](http://wsbadge.herokuapp.com/badge/Contributor-electron0zero-blue.svg)](https://github.com/electron0zero)\n\n<br>\n\n[![forthebadge](http://forthebadge.com/images/badges/built-with-love.svg)](https://alexbuzin.me/)   <a rel=\"license\" href=\"http://creativecommons.org/licenses/by-nc-nd/4.0/\"><img alt=\"Лицензия Creative Commons\" style=\"border-width:0\" src=\"https://i.creativecommons.org/l/by-nc-nd/4.0/88x31.png\" /></a>\n"
+}

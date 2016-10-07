@@ -1,0 +1,185 @@
+{
+  "name": "mobx-remotedev",
+  "version": "0.2.2",
+  "description": "Remote debugging for mobx.",
+  "main": "lib/index.js",
+  "files": [
+    "src",
+    "lib",
+    "dist"
+  ],
+  "scripts": {
+    "clean": "rimraf lib",
+    "build:lib": "babel src --out-dir lib",
+    "build:umd": "webpack src/index.js dist/mobx-remotedev.js --config webpack.config.development.js",
+    "build:umd:min": "webpack src/index.js dist/mobx-remotedev.min.js --config webpack.config.production.js",
+    "build": "npm run build:lib && npm run build:umd && npm run build:umd:min",
+    "lint": "eslint src test",
+    "prepublish": "npm run lint && npm run clean && npm run build"
+  },
+  "repository": {
+    "user": "zalmoxisus",
+    "repo": "mobx-remotedev",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/zalmoxisus/mobx-remotedev/tarball/master",
+    "clone_url": "https://github.com/zalmoxisus/mobx-remotedev",
+    "https_url": "https://github.com/zalmoxisus/mobx-remotedev",
+    "travis_url": "https://travis-ci.org/zalmoxisus/mobx-remotedev",
+    "zip_url": "https://github.com/zalmoxisus/mobx-remotedev/archive/master.zip",
+    "api_url": "https://api.github.com/repos/zalmoxisus/mobx-remotedev"
+  },
+  "keywords": [
+    "mobx",
+    "devtools",
+    "flux",
+    "react",
+    "hot reloading",
+    "time travel",
+    "live edit"
+  ],
+  "author": {
+    "name": "Mihail Diordiev",
+    "email": "zalmoxisus@gmail.com",
+    "url": "https://github.com/zalmoxisus"
+  },
+  "license": "MIT",
+  "homepage": "https://github.com/zalmoxisus/mobx-remotedev",
+  "devDependencies": {
+    "babel-cli": "^6.10.1",
+    "babel-core": "^6.10.4",
+    "babel-eslint": "^6.0.5",
+    "babel-loader": "^6.2.4",
+    "babel-plugin-transform-decorators-legacy": "^1.3.4",
+    "babel-preset-es2015": "^6.9.0",
+    "babel-preset-es2015-loose": "^7.0.0",
+    "babel-preset-react": "^6.5.0",
+    "babel-preset-stage-0": "^6.5.0",
+    "eslint": "^2.13.1",
+    "eslint-config-airbnb": "^9.0.1",
+    "eslint-plugin-import": "^1.9.2",
+    "eslint-plugin-jsx-a11y": "^1.5.3",
+    "eslint-plugin-react": "^5.2.2",
+    "expect": "^1.20.1",
+    "mobx": "^2.4.3",
+    "mocha": "^2.5.3",
+    "rimraf": "^2.5.2",
+    "webpack": "^1.13.1"
+  },
+  "peerDependencies": {
+    "mobx": ">=2.3.0"
+  },
+  "npmName": "mobx-remotedev",
+  "npmFileMap": [
+    {
+      "basePath": "/dist/",
+      "files": [
+        "*.js"
+      ]
+    }
+  ],
+  "dependencies": {
+    "jsan": "^3.1.3",
+    "remotedev": "^0.2.2",
+    "remotedev-utils": "^0.0.3"
+  },
+  "gitHead": "c668cc9537dafcb4cc86720b37902d55a92b8556",
+  "_npmVersion": "3.7.3",
+  "_nodeVersion": "5.8.0",
+  "dist": {
+    "shasum": "71a1fccef277d80f15e7979ed9639e6af3f5b0d4",
+    "tarball": "http://registry.npmjs.org/mobx-remotedev/-/mobx-remotedev-0.2.2.tgz"
+  },
+  "versions": [
+    {
+      "number": "0.0.1-alpha-1",
+      "date": "2016-07-03T15:19:29.998Z"
+    },
+    {
+      "number": "0.0.1-alpha-2",
+      "date": "2016-07-18T18:47:09.958Z"
+    },
+    {
+      "number": "0.0.1",
+      "date": "2016-07-19T11:55:52.551Z"
+    },
+    {
+      "number": "0.0.2-alpha-1",
+      "date": "2016-07-19T16:58:35.899Z"
+    },
+    {
+      "number": "0.0.2-alpha-2",
+      "date": "2016-07-19T17:33:46.473Z"
+    },
+    {
+      "number": "0.0.2-alpha-3",
+      "date": "2016-07-19T17:37:52.033Z"
+    },
+    {
+      "number": "0.0.2-alpha-4",
+      "date": "2016-07-19T18:59:14.564Z"
+    },
+    {
+      "number": "0.0.2-alpha-5",
+      "date": "2016-07-19T19:05:56.938Z"
+    },
+    {
+      "number": "0.0.2-alpha-6",
+      "date": "2016-07-19T19:07:59.969Z"
+    },
+    {
+      "number": "0.0.2-beta-1",
+      "date": "2016-07-21T14:25:25.498Z"
+    },
+    {
+      "number": "0.0.2",
+      "date": "2016-07-21T14:35:00.464Z"
+    },
+    {
+      "number": "0.1.0",
+      "date": "2016-08-01T18:37:01.317Z"
+    },
+    {
+      "number": "0.1.1",
+      "date": "2016-08-07T13:21:52.652Z"
+    },
+    {
+      "number": "0.1.2",
+      "date": "2016-08-07T15:19:50.638Z"
+    },
+    {
+      "number": "0.1.3",
+      "date": "2016-08-08T12:58:29.490Z"
+    },
+    {
+      "number": "0.2.0-beta-1",
+      "date": "2016-08-23T14:26:27.086Z"
+    },
+    {
+      "number": "0.2.0",
+      "date": "2016-08-23T16:41:24.000Z"
+    },
+    {
+      "number": "0.2.1",
+      "date": "2016-08-24T16:41:04.599Z"
+    },
+    {
+      "number": "0.2.2",
+      "date": "2016-09-09T07:51:44.909Z"
+    }
+  ],
+  "created": "2016-07-03T15:19:29.998Z",
+  "modified": "2016-09-09T07:51:44.909Z",
+  "lastPublisher": {
+    "name": "zalmoxisus",
+    "email": "zalmoxisus@gmail.com"
+  },
+  "owners": [
+    {
+      "name": "zalmoxisus",
+      "email": "zalmoxisus@gmail.com"
+    }
+  ],
+  "readme": "Remote debugging for MobX with [Redux DevTools extension](https://github.com/zalmoxisus/redux-devtools-extension) (and [remotedev](https://github.com/zalmoxisus/remotedev) coming soon) \n\n![Demo](demo.gif) \n\n## Installation\n\n#### 1. Get the extension\n##### 1.1 For Chrome\n - from [Chrome Web Store](https://chrome.google.com/webstore/detail/redux-devtools/lmhkpmbekcpmknklioeibfkpmmfibljd)\n - or build it with `npm i & npm run build:extension` and [load the extension's folder](https://developer.chrome.com/extensions/getstarted#unpacked) `./build/extension`\n - or run it in dev mode with `npm i & npm start` and [load the extension's folder](https://developer.chrome.com/extensions/getstarted#unpacked) `./dev`.\n\n##### 1.2 For Firefox\n - from [AMO](https://addons.mozilla.org/en-US/firefox/addon/remotedev/)\n - or build it with `npm i & npm run build:firefox` and [load the extension's folder](https://developer.mozilla.org/en-US/Add-ons/WebExtensions/Temporary_Installation_in_Firefox) `./build/firefox`.\n\n##### 1.3 For Electron\n  - just specify `REDUX_DEVTOOLS` in [`electron-devtools-installer`](https://github.com/GPMDP/electron-devtools-installer).\n\n##### 1.4 For other browsers, for React Native, hybrid, desktop and server side apps\n  - Use [remotedev.io](http://remotedev.io/local/) or if you have the extension select `Remote DevTools` from the context menu. Just specify `remote` parameter, and optionally `hostname` and `port`. [See the API](https://github.com/zalmoxisus/mobx-remotedev#remotedevstore-config) for details. \n\n#### 2. Install the library\n\n```\nnpm install --save mobx-remotedev\n```\n\n## Usage\n\n```js\nimport remotedev from 'mobx-remotedev';\n// or import remotedev from 'mobx-remotedev/lib/dev'\n// in case you want to use it in production or don't have process.env.NODE_ENV === 'development'\n\nconst appStore = observable({\n  // ...\n});\n\n// Or\nclass appStore {\n\t// ...\n}\n\nexport default remotedev(appStore);\n```\n\nSee [counter](https://github.com/zalmoxisus/mobx-remotedev/blob/master/examples/counter/stores/appState.js) and [todomvc](https://github.com/zalmoxisus/mobx-remotedev/tree/master/examples/todomvc/src/stores) examples.\n\n## API\n#### `remotedev(store, [config])`\n  - arguments\n    - **store** *observable or class* to be monitored. In case you want to change its values (to time travel or cancel actions), you should export its result as in the example above (so we can extend the class). \n    - **config** *object* (optional as the parameters bellow)\n      - **name** *string* - the instance name to be showed on the monitor page. Default value is document.title.\n      - **onlyActions** *boolean* - set it to `true` to have a clear log only with actions. If MobX is in strict mode, it is `true` by default. Don't forget about [async actions](https://github.com/zalmoxisus/mobx-remotedev#how-to-handle-async-actions).\n      - **global** *boolean* - set it to `true` in order to assign dispatching of all unhandled actions to this store. Useful for nested classes / observables or when having async actions without specifying the `scope` explicitly. \n      - **shouldStringify** *boolean* - set it to `true` when having circular references or special types like ImmutableJS. By default is `false`.\n      - **filters** *object* - map of arrays named `whitelist` or `blacklist` to filter action types. You can also set it globally in the extension settings.\n        - **blacklist** *array of (regex as string)* - actions to be hidden in DevTools.\n        - **whitelist** *array of (regex as string)* - all other actions will be hidden in DevTools (the `blacklist` parameter will be ignored).\n      - **remote** *boolean* - set it to `true` to have remote monitoring via the local or `remotedev.io` server.\n      - **hostname** *string* - use to specify host for [`remotedev-server`](https://github.com/zalmoxisus/remotedev-server). If `port` is specified, default value is `localhost`.\n      - **port** *number* - use to specify host's port for [`remotedev-server`](https://github.com/zalmoxisus/remotedev-server).\n\nAlso see [the extension API](https://github.com/zalmoxisus/redux-devtools-extension#documentation) and [my presentation at React Europe](https://youtu.be/YU8jQ2HtqH4).\n\n## Exclude / include DevTools in production builds\n\nBy default use\n```js\nimport remotedev from 'mobx-remotedev';\n```\n\nIt will work only when `process.env.NODE_ENV === 'development'`, otherwise the code will be stripped.\n\nIn case you want to use it in production or cannot set `process.env.NODE_ENV`, use\n```js\nimport remotedev from 'mobx-remotedev/lib/dev';\n```\nSo, the code will not be stripped from production bundle and you can use the extension even in production. It wouldn't affect the performance for end-users who don't have the extension installed. \n\n## FAQ\n\n### How to monitor (show changes) for inner items\n\nUse `remotedev` function for them as well. [Example](https://github.com/zalmoxisus/mobx-remotedev/blob/master/examples/simple-todo/index.js#L22) \n\n### How to set data correctly when time traveling\n\nBy default it will try to set the properties of the class or observable object, but, if you have an `importState` method, it will be used. [Example](https://github.com/zalmoxisus/mobx-remotedev/blob/master/examples/todomvc/src/stores/TodoStore.js#L56)\n\n### How to disable computations when time traveling\n\nCheck `__isRemotedevAction` of your class or observable object, which will be set to true when it's a monitor action. [Example](https://github.com/zalmoxisus/mobx-remotedev/blob/master/examples/todomvc/src/stores/TodoStore.js#L22)  \n\n### How to handle async actions\n\nUse `runInAction` and don't forget about the second / third parameter which will be `this` if you're using arrow functions. If you don't want to specify it, set the `global` parameter to `true`. [Example](https://github.com/zalmoxisus/mobx-remotedev/blob/master/examples/counter/stores/appState.js#L14)  \n\n### How to show actions for nested classes / observables\n\nJust set the `global` parameter to `true` like `remotedev(store, { global: true })`. If you want more details about the nested tree, see [#5](https://github.com/zalmoxisus/mobx-remotedev/pull/5).  \n\n## LICENSE\n\n[MIT](LICENSE)\n\n## Created By\n\nIf you like this, follow [@mdiordiev](https://twitter.com/mdiordiev) on twitter.\n"
+}

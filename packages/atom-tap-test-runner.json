@@ -1,0 +1,99 @@
+{
+  "name": "atom-tap-test-runner",
+  "version": "1.0.1",
+  "description": "Run Atom package tests using TAP",
+  "license": "MIT",
+  "keywords": [
+    "atom",
+    "test",
+    "anything",
+    "tap"
+  ],
+  "repository": {
+    "user": "wooorm",
+    "repo": "atom-tap-test-runner",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/wooorm/atom-tap-test-runner/tarball/master",
+    "clone_url": "https://github.com/wooorm/atom-tap-test-runner",
+    "https_url": "https://github.com/wooorm/atom-tap-test-runner",
+    "travis_url": "https://travis-ci.org/wooorm/atom-tap-test-runner",
+    "zip_url": "https://github.com/wooorm/atom-tap-test-runner/archive/master.zip",
+    "api_url": "https://api.github.com/repos/wooorm/atom-tap-test-runner"
+  },
+  "author": {
+    "name": "Titus Wormer",
+    "email": "tituswormer@gmail.com",
+    "url": "http://wooorm.com"
+  },
+  "contributors": [
+    {
+      "name": "Titus Wormer",
+      "email": "tituswormer@gmail.com",
+      "url": "http://wooorm.com"
+    }
+  ],
+  "files": [
+    "index.js"
+  ],
+  "dependencies": {
+    "debug": "^2.2.0",
+    "glob": "^7.0.5",
+    "tap-parser": "^3.0.0",
+    "tmp": "^0.0.29",
+    "through2": "^2.0.1"
+  },
+  "devDependencies": {
+    "execa": "^0.4.0",
+    "remark-cli": "^2.0.0",
+    "remark-preset-wooorm": "^1.0.0",
+    "tape": "^4.6.0",
+    "xo": "^0.16.0"
+  },
+  "scripts": {
+    "build": "remark . --quiet --frail",
+    "lint": "xo",
+    "test-api": "tape test",
+    "test": "npm run build && npm run lint && npm run test-api"
+  },
+  "atomTestRunner": "./index.js",
+  "xo": {
+    "space": true
+  },
+  "remarkConfig": {
+    "output": true,
+    "presets": "wooorm"
+  },
+  "gitHead": "30f1565f38402a18b8c52f6b328d90bfc1ef1aab",
+  "homepage": "https://github.com/wooorm/atom-tap-test-runner#readme",
+  "_npmVersion": "3.7.3",
+  "_nodeVersion": "5.9.1",
+  "dist": {
+    "shasum": "7aab8283f2309b7af7e9dc84b1fe6c8775e9bdfe",
+    "tarball": "http://registry.npmjs.org/atom-tap-test-runner/-/atom-tap-test-runner-1.0.1.tgz"
+  },
+  "versions": [
+    {
+      "number": "1.0.0",
+      "date": "2016-08-03T18:06:40.303Z"
+    },
+    {
+      "number": "1.0.1",
+      "date": "2016-09-18T14:21:03.771Z"
+    }
+  ],
+  "created": "2016-08-03T18:06:40.303Z",
+  "modified": "2016-09-18T14:21:03.771Z",
+  "lastPublisher": {
+    "name": "wooorm",
+    "email": "tituswormer@gmail.com"
+  },
+  "owners": [
+    {
+      "name": "wooorm",
+      "email": "tituswormer@gmail.com"
+    }
+  ],
+  "readme": "# atom-tap-test-runner [![Build Status][travis-badge]][travis]\n\nSince [atom/atom#8968][pr], it’s possible to test projects in Atom\nwithout needing to use Jasmine.  Time for Tap!\n\nThis project runs [TAP][] producing test files in an environment with\n`atom` available.\n\n## Installation\n\n[npm][]:\n\n```bash\nnpm install atom-tap-test-runner --save-dev\n```\n\n## Usage\n\nAdd the following line to your `package.json`:\n\n```diff\n {\n   \"name\": \"my-package\",\n   // ...\n+  \"atomTestRunner\": \"atom-tap-test-runner\",\n   // ...\n }\n```\n\nThen, add a [TAP][]-producing test file, such as the following\n`test.js` (note: I like [tape][], but you can use whatever):\n\n```js\nvar test = require('tape');\n\ntest('atom', function (t) {\n  t.plan(3);\n  t.ok('loadTime' in atom, 'should have a `loadTime` prop');\n  t.equal(typeof atom.loadTime, 'number', '`loadTime` should be a number');\n  t.ok(atom.loadTime < 1000, '`loadTime` should be less than a second');\n});\n```\n\nNow, to run your tests, run the following in your shell:\n\n```sh\natom --test test.js\n```\n\nDepending on how fast Atom started, you’ll see [successful][] or\n[erroneous][] output.\n\n## API\n\nThere’s not much API.  There’s the `atom` global added to the global\nscope.\n\n###### Multiple files\n\nPassing globs, or multiple files, can be done like so:\n\n```sh\natom --test 'test/**/*.js' 'test.js'\n```\n\nThe quotes are only needed if you want glob-supporting shells to\n_not_ expand globs, and have [**glob**][glob] handle them instead.\n\n###### `TAP_TIMEOUT`\n\nBecause Atom doesn’t `process.exit()`, **atom-tap-test-runner** simulates\nthe project exiting after a second of no output (`console.log` or\n`process.stdout`).  This timeout can be changed by setting `TAP_TIMEOUT`:\n\n```sh\nTAP_TIMEOUT=5000 atom --test test.js\n```\n\n###### Chromium Logging\n\nTo remove Chromium logging, either uses [**silence-chromium**][silence-chromium]\n(a good solution), or direct all **stderr**(4) output to `/dev/null`\n(not a very good solution):\n\n```sh\natom --test test.js 2> /dev/null\n```\n\n###### Formatters\n\nAny [TAP reporters][reporters] works (be careful of exit codes though),\nhere’s an example of [**tap-difflet**][tap-difflet]:\n\n```sh\natom --test test.js 2> silence-chromium | tap-difflet\n```\n\nYields:\n\n```txt\n    Window load time: 769ms\n\n  atom\n    ✓ should have a `loadTime` prop\n    ✓ `loadTime` should be a number\n    ✓ `loadTime` should be less than a second\n\n3 passing (3.1s)\n```\n\n###### Successful Output\n\nIf the tests succeeded, you’ll see something like this (the first two\nlines are debugging from Electron/Atom):\n\n```txt\n[22204:0803/174406:WARNING:resource_bundle.cc(311)] locale_file_path.empty() for locale English\nWindow load time: 944ms\nTAP version 13\n# atom\nok 1 should have a `loadTime` prop\nok 2 `loadTime` should be a number\nok 3 `loadTime` should be less than a second\n\n1..3\n# tests 3\n# pass  3\n\n# ok\n```\n\n...and the exit code:\n\n```sh\necho $?\n```\n\nYields (0 is OK):\n\n```txt\n0\n```\n\n###### Erroneous Output\n\nIf the tests failed, you’ll see something like this (the first two\nlines are debugging from Electron/Atom):\n\n```txt\n[22315:0803/175537:WARNING:resource_bundle.cc(311)] locale_file_path.empty() for locale English\nWindow load time: 1274ms\nTAP version 13\n# testing atom\nIt works!\nok 1 `atom` should have a `loadTime` prop\nok 2 `loadTime` should be a number\nnot ok 3 `loadTime` should be less than a second\n  ---\n    operator: ok\n    expected: true\n    actual:   false\n    at: Test.<anonymous> (~/my-package/test.js:11:5)\n  ...\n\n1..3\n# tests 3\n# pass  2\n# fail  1\n```\n\n...and the exit code:\n\n```sh\necho $?\n```\n\nYields (1 is not OK):\n\n```txt\n1\n```\n\n## License\n\n[MIT][license] © [Titus Wormer][author]\n\n<!-- Definitions -->\n\n[travis-badge]: https://img.shields.io/travis/wooorm/atom-tap-test-runner.svg\n\n[travis]: https://travis-ci.org/wooorm/atom-tap-test-runner\n\n[npm]: https://docs.npmjs.com/cli/install\n\n[license]: LICENSE\n\n[author]: http://wooorm.com\n\n[pr]: https://github.com/atom/atom/pull/8968\n\n[tap]: http://testanything.org\n\n[tape]: https://github.com/substack/tape\n\n[silence-chromium]: https://github.com/beaugunderson/silence-chromium\n\n[successful]: #successful-output\n\n[erroneous]: #erroneous-output\n\n[reporters]: https://github.com/substack/tape#pretty-reporters\n\n[tap-difflet]: https://github.com/namuol/tap-difflet\n\n[glob]: https://www.npmjs.com/package/glob\n"
+}

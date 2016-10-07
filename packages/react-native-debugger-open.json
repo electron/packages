@@ -1,6 +1,6 @@
 {
   "name": "react-native-debugger-open",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "description": "Replace `open debugger-ui with Chrome` to `open React Native Debugger` from react-native packager",
   "bin": {
     "rndebugger-open": "bin/rndebugger-open.js"
@@ -42,11 +42,11 @@
     "minimist": "^1.2.0"
   },
   "scripts": {},
-  "_npmVersion": "3.8.9",
-  "_nodeVersion": "6.2.0",
+  "_npmVersion": "3.10.5",
+  "_nodeVersion": "6.2.2",
   "dist": {
-    "shasum": "8e350e552dd58f85b1e5554ff3a6cb39892a6c75",
-    "tarball": "http://registry.npmjs.org/react-native-debugger-open/-/react-native-debugger-open-0.3.0.tgz"
+    "shasum": "bb07f4b9768a6aaeae4c1e18189a93e9c391da3c",
+    "tarball": "http://registry.npmjs.org/react-native-debugger-open/-/react-native-debugger-open-0.3.1.tgz"
   },
   "versions": [
     {
@@ -68,10 +68,14 @@
     {
       "number": "0.3.0",
       "date": "2016-07-06T11:17:02.476Z"
+    },
+    {
+      "number": "0.3.1",
+      "date": "2016-08-09T12:47:01.867Z"
     }
   ],
   "created": "2016-06-03T12:50:54.266Z",
-  "modified": "2016-07-06T11:17:02.476Z",
+  "modified": "2016-08-09T12:47:01.867Z",
   "lastPublisher": {
     "name": "jhen0409",
     "email": "iainst0409@gmail.com"
@@ -82,5 +86,5 @@
       "email": "iainst0409@gmail.com"
     }
   ],
-  "readme": "# react-native-debugger-open\n\n> Replace `open debugger-ui with Chrome` to `open React Native Debugger` from react-native packager\n\n__[macOS]__ If you opened the app before (registered URI scheme), you can use this patch open the app automatically.  \n__[Linux / Windows]__ Currently it cannot open the app automatically, it just send `set-debugger-loc` request, so you need open the app yourself.\n\n__*NOTE*__ This patch is only work with React Native Debugger ^0.2.0. __Linux / Windows__ version work with ^0.3.0.\n\n## Screenshot\n\n![demo](https://cloud.githubusercontent.com/assets/3001525/15777379/59a9c654-29c1-11e6-8656-247b8450bc47.gif)\n\n## Installation\n\nFirst, install [React Native Debugger](https://github.com/jhen0409/react-native-debugger#installation).\n\nIn your React Native project:\n\n```bash\n$ npm i --save-dev react-native-debugger-open\n```\n\n## Usage\n\nAdd command to your project's package.json:\n\n```\n\"scripts\": {\n  \"postinstall\": \"rndebugger-open\"\n}\n```\n\nIt will be run after `npm install`. (You can run `npm run postinstall` first)  \nThe `./node_modules/react-native/local-cli/server/middleware/getDevToolsMiddleware.js` code will be replaced.\n\n#### Options (--option)\n\nName                  | Description\n-------------         | -------------\n`desktop`             | Use [react-native-desktop](https://github.com/ptmt/react-native-desktop) module name instead of react-native. Default is `false`\n`revert`              | Revert rndebugger-open injection. Default is `false`\n\nYou can also use following command instead of this patch:\n\n```bash\n# macOS\n$ open \"rndebugger://set-debugger-loc?host=localhost&port=8082\"\n```\n\n## LICENSE\n\n[MIT](https://github.com/jhen0409/react-native-debugger/blob/master/LICENSE.md)\n"
+  "readme": "# react-native-debugger-open\n\n> Replace `open debugger-ui with Chrome` to `open React Native Debugger` from react-native packager\n\n__[macOS]__ If you opened the app before (registered URI scheme), you can use this patch open the app automatically.  \n__[Linux / Windows]__ Currently it cannot open the app automatically, it just send `set-debugger-loc` request, so you need open the app yourself.\n\n__*NOTE*__ This patch is only work with React Native Debugger ^0.2.0. __Linux / Windows__ version work with ^0.3.0.\n\n## Screenshot\n\n![demo](https://cloud.githubusercontent.com/assets/3001525/15777379/59a9c654-29c1-11e6-8656-247b8450bc47.gif)\n\n## Installation\n\nFirst, install [React Native Debugger](https://github.com/jhen0409/react-native-debugger#installation).\n\nIn your React Native project:\n\n```bash\n$ npm i --save-dev react-native-debugger-open\n```\n\n## Usage\n\nAdd command to your project's package.json:\n\n```\n\"scripts\": {\n  \"postinstall\": \"rndebugger-open\"\n}\n```\n\nIt will be run after `npm install`. (You can run `npm run postinstall` first)  \nThe `./node_modules/react-native/local-cli/server/middleware/getDevToolsMiddleware.js` code will be replaced.\n\n#### Options (--option)\n\nName                  | Description\n-------------         | -------------\n`macos`             | Use [react-native-macos](https://github.com/ptmt/react-native-macos) module name instead of react-native. Default is `false`\n`revert`              | Revert rndebugger-open injection. Default is `false`\n\nYou can also use following command instead of this patch:\n\n```bash\n# macOS\n$ open \"rndebugger://set-debugger-loc?host=localhost&port=8082\"\n```\n\n## LICENSE\n\n[MIT](https://github.com/jhen0409/react-native-debugger/blob/master/LICENSE.md)\n"
 }

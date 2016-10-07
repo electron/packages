@@ -1,0 +1,96 @@
+{
+  "name": "pixiv-app-api",
+  "version": "0.3.0",
+  "description": "Promise base pixiv API client",
+  "license": "MIT",
+  "repository": {
+    "user": "akameco",
+    "repo": "pixiv-app-api",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/akameco/pixiv-app-api/tarball/master",
+    "clone_url": "https://github.com/akameco/pixiv-app-api",
+    "https_url": "https://github.com/akameco/pixiv-app-api",
+    "travis_url": "https://travis-ci.org/akameco/pixiv-app-api",
+    "zip_url": "https://github.com/akameco/pixiv-app-api/archive/master.zip",
+    "api_url": "https://api.github.com/repos/akameco/pixiv-app-api"
+  },
+  "author": {
+    "name": "akameco",
+    "email": "akameco.t@gmail.com",
+    "url": "akameco.github.io"
+  },
+  "engines": {
+    "node": ">=4"
+  },
+  "scripts": {
+    "test": "xo && ava"
+  },
+  "files": [
+    "index.js"
+  ],
+  "keywords": [
+    "pixiv",
+    "api-client",
+    "pixiv-app",
+    "pixiv-app-api",
+    "pixiv-api"
+  ],
+  "dependencies": {
+    "got": "^6.3.0",
+    "pixiv-auth-got": "^0.2.0"
+  },
+  "devDependencies": {
+    "ava": "^0.16.0",
+    "co": "^4.6.0",
+    "is-plain-obj": "^1.1.0",
+    "pixiv-img": "^0.3.1",
+    "xo": "^0.16.0"
+  },
+  "xo": {
+    "esnext": true,
+    "rules": {
+      "camelcase": 0
+    }
+  },
+  "gitHead": "7e2a750c08e2c58d27a35234d5f7afe3d61ca081",
+  "homepage": "https://github.com/akameco/pixiv-app-api#readme",
+  "_npmVersion": "3.10.3",
+  "_nodeVersion": "6.5.0",
+  "dist": {
+    "shasum": "f5916fadff092473a48f575cf0b15442fb409818",
+    "tarball": "http://registry.npmjs.org/pixiv-app-api/-/pixiv-app-api-0.3.0.tgz"
+  },
+  "versions": [
+    {
+      "number": "0.1.0",
+      "date": "2016-08-15T14:40:54.024Z"
+    },
+    {
+      "number": "0.1.1",
+      "date": "2016-08-20T10:41:06.824Z"
+    },
+    {
+      "number": "0.2.0",
+      "date": "2016-09-03T14:34:57.711Z"
+    },
+    {
+      "number": "0.3.0",
+      "date": "2016-09-05T15:54:00.702Z"
+    }
+  ],
+  "created": "2016-08-15T14:40:54.024Z",
+  "modified": "2016-09-05T15:54:00.702Z",
+  "lastPublisher": {
+    "name": "akameco",
+    "email": "akameco.t@gmail.com"
+  },
+  "owners": [
+    {
+      "name": "akameco",
+      "email": "akameco.t@gmail.com"
+    }
+  ],
+  "readme": "# pixiv-app-api [![Build Status](https://travis-ci.org/akameco/pixiv-app-api.svg?branch=master)](https://travis-ci.org/akameco/pixiv-app-api)\n\n> Promise base pixiv API client\n\n<img src=\"media/image.jpg\" width=200>\n\nInspired by  [upbit/pixivpy: Pixiv API for Python](https://github.com/upbit/pixivpy).\n\n## Install\n\n```\n$ npm install --save pixiv-app-api\n```\n\n\n## Usage\n\n```js\nconst PixivAppApi = require('pixiv-app-api');\nconst pixivImg = require('pixiv-img');\nconst pixiv = new PixivAppApi('your username', 'your password');\n\nconst word = '艦これ10000users入り';\n\npixiv.searchIllust(word)\n\t.then(json => {\n\t\tconsole.log(json);\n\t\treturn pixiv.next();\n\t})\n\t.then(json => {\n\t\tconsole.log(`downloading ${json.illusts[0].title}`);\n\t\treturn pixivImg(json.illusts[0].image_urls.large);\n\t}).then(() => {\n\t\tconsole.log('finish');\n\t});\n```\n\nSee examples.\n\n\n## API\n\n### PixivAppApi(username, password)\n\n`username`: your pixiv username<br>\n`password`: your pixiv username\n\n<hr>\n\n#### pixiv.userDetail(userId, [query])\n\n#### userId\n\nType: `number` or `string`\n\n\n#### pixiv.userIllusts(userId, [query])\n\n#### pixiv.userBookmarksIllust(userId, [query])\n\n##### query\nrestrict: `public` | `private`\n\n#### pixiv.illustDetail(illustId, [query])\n\n#### pixiv.illustFollow([query])\n\n##### query\nrestrict: `public` | `private`\n\n#### pixiv.illustComments(illustId, [query])\n\n#### illustId\n\nType: `number` or `string`\n\n#### pixiv.illustRelated(illustId, [query])\n\n#### pixiv.illustRecommended([query])\n\n#### pixiv.illustRanking([query])\n\n##### query\nrestrict: `public` | `private`<br>\ndate: `2016-08-15`<br>\nmode: `day` | `week` | `month` | `day_male` | `day_female` | `week_original` | `week_rookie` | `day_mang` | `day_r18` | `day_male_r18` | `day_female_r18` | `week_r18` | `week_r18g`<br>\n\n#### pixiv.trendingTagsIllust([query])\n\n#### pixiv.searchIllust(word, [searchOptions])\n\n##### word\n\nType: `string`\n\n##### searchOptions\n\nsearch_target: `partial_match_for_tags` | `exact_match_for_tags` | `title_and_caption` <br>\nsort: `date_desc` | `date_asc`<br>\nduration: `within_last_day` | `within_last_week` | `within_last_month`\n\n#### pixiv.illustBookmarkDetail(illustId, [query])\n\n#### pixiv.illustBookmarkAdd(illustId, [body])\n\n#### pixiv.illustBookmarkDelete(illustId, [body])\n\n#### pixiv.userBookmarkTagsIllust([query])\n\n<hr>\n\n#### default options\nrestrict: `public`<br>\nmode: `day`<br>\nsort: `date_desc`<br>\n\n<hr>\n\n#### pixiv.next()\n\nReturn next request result.\n\n##### usage\n\n```js\npixiv.searchIllust(word)\n\t.then(() => pixiv.next())\n\t.then(() => pixiv.next())\n\t.then(json => {\n\t\tconsole.log(json);\n\t});\n```\n\n#### pixiv.hasNext()\n\nReturn `true` if `pixiv.next()` is able to run.\n\n##### usage\n\n```js\nif (pixiv.hasNext()) {\n\tpixiv.next().then();\n}\n```\n\n#### pixiv.nextQuery()\n\nReturn next query parameter.\n\n## Tests\n\nExport your pixiv username and password before running Tests.\n\n```\n$ export USERNAME=your pixiv username...\n$ export PASSWORD=your pixiv password...\n```\n\n```\n$ npm test\n```\n\n## Related\n\n- [pixiv-img](https://github.com/akameco/pixiv-img) - save the image of pixiv\n- [pixiv-dl](https://github.com/akameco/pixiv-dl) - pixiv image downloader\n- [pixiv-dl-preview](https://github.com/akameco/pixiv-dl-preview) - electron pixiv downloader\n\n- [pixiv](https://github.com/akameco/pixiv) - pixiv client for public api\n\n## License\n\nMIT © [akameco](http://akameco.github.io)\n"
+}

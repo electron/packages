@@ -1,0 +1,112 @@
+{
+  "name": "node-machine-id",
+  "version": "1.1.1",
+  "main": "./dist/index.js",
+  "description": "Unique machine (desktop) id (no admin privileges required).",
+  "author": {
+    "name": "Aleksandr Komlev"
+  },
+  "license": "MIT",
+  "repository": {
+    "user": "automation-stack",
+    "repo": "node-machine-id",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/automation-stack/node-machine-id/tarball/master",
+    "clone_url": "https://github.com/automation-stack/node-machine-id",
+    "https_url": "https://github.com/automation-stack/node-machine-id",
+    "travis_url": "https://travis-ci.org/automation-stack/node-machine-id",
+    "zip_url": "https://github.com/automation-stack/node-machine-id/archive/master.zip",
+    "api_url": "https://api.github.com/repos/automation-stack/node-machine-id"
+  },
+  "keywords": [
+    "unique id",
+    "license",
+    "trial",
+    "user license",
+    "user id",
+    "machine id",
+    "unique platform id",
+    "node platform id",
+    "unique identifier",
+    "restrictions",
+    "electron id",
+    "nw.js id"
+  ],
+  "homepage": "https://github.com/automation-stack/node-machine-id#readme",
+  "scripts": {
+    "build": "WEBPACK=node_modules/webpack/bin/webpack.js && $WEBPACK --config webpack.config.babel.js",
+    "prepublish": "npm run test",
+    "lint": "node_modules/eslint/bin/eslint.js -c .eslintrc ./src",
+    "test": "node_modules/mocha/bin/mocha --compilers js:babel-core/register ./tests"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.7.7",
+    "babel-core": "^6.7.7",
+    "babel-eslint": "^6.0.0",
+    "babel-loader": "^6.2.4",
+    "babel-plugin-array-includes": "^2.0.3",
+    "babel-plugin-lodash": "^2.2.1",
+    "babel-plugin-module-alias": "^1.2.0",
+    "babel-plugin-syntax-async-functions": "^6.5.0",
+    "babel-plugin-syntax-decorators": "^6.5.0",
+    "babel-plugin-syntax-flow": "^6.8.0",
+    "babel-plugin-syntax-object-rest-spread": "^6.5.0",
+    "babel-plugin-transform-async-to-module-method": "^6.7.0",
+    "babel-plugin-transform-class-properties": "^6.6.0",
+    "babel-plugin-transform-decorators-legacy": "^1.3.4",
+    "babel-plugin-transform-flow-strip-types": "^6.8.0",
+    "babel-plugin-transform-regenerator": "^6.6.5",
+    "babel-plugin-transform-runtime": "^6.6.0",
+    "babel-polyfill": "^6.7.2",
+    "babel-preset-es2015": "^6.6.0",
+    "babel-preset-stage-0": "^6.5.0",
+    "babel-runtime": "^6.6.1",
+    "chai": "^3.5.0",
+    "copy-webpack-plugin": "^1.1.1",
+    "eslint": "^2.6.0",
+    "eslint-loader": "^1.3.0",
+    "eslint-plugin-babel": "^3.2.0",
+    "eslint-plugin-flowtype": "^2.3.0",
+    "estraverse-fb": "^1.3.1",
+    "html-webpack-plugin": "^2.10.0",
+    "json-loader": "^0.5.4",
+    "mocha": "^2.4.5",
+    "raw-loader": "^0.5.1",
+    "source-map-support": "^0.4.0",
+    "webpack": "^1.12.14",
+    "webpack-dev-server": "^1.14.1",
+    "webpack-module-hot-accept": "^1.0.4"
+  },
+  "gitHead": "e95eae59d401895106899a2105288bdb42144723",
+  "_npmVersion": "3.10.3",
+  "_nodeVersion": "6.5.0",
+  "dist": {
+    "shasum": "57f339391506f504df508a2128a594e4b4958902",
+    "tarball": "http://registry.npmjs.org/node-machine-id/-/node-machine-id-1.1.1.tgz"
+  },
+  "versions": [
+    {
+      "number": "1.1.0",
+      "date": "2016-09-04T19:24:57.937Z"
+    },
+    {
+      "number": "1.1.1",
+      "date": "2016-09-23T12:32:23.460Z"
+    }
+  ],
+  "created": "2016-09-04T19:24:57.937Z",
+  "modified": "2016-09-23T12:32:23.460Z",
+  "lastPublisher": {
+    "name": "automation-stack",
+    "email": "aleksandr.komlev@gmail.com"
+  },
+  "owners": [
+    {
+      "name": "automation-stack",
+      "email": "aleksandr.komlev@gmail.com"
+    }
+  ],
+  "readme": "## Unique machine (desktop) id\n\n## Use cases\n- Software restrictions\n- Installation tracking\n\n## Features\n- Hardware independent\n- Unique within the OS installation\n- No elevated rights required\n- No external dependencies and does not require any native bindings\n- Cross-platform (OSx, Win, Linux)\n\n## How it works\n\nModule based on OS native UUID/GUID which used for internal needs.\n\n**All others approaches requires elevated rights or much depends on hardware components, but this approach summarize the methods of selecting the most reliable unique identifier**\n\n- **Win32/64** uses key ```MachineGuid``` in registry\n```HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Cryptography``` **(can be changed by administrator but with unpredictable consequences)**\n>   It is generated during OS installation and won't change unless you make another OS\n>   updates or reinstall. Depending on the OS version it may contain the network adapter\n>   MAC address embedded (plus some other numbers, including random), or a pseudorandom number.\n\n- **OSx** uses ```IOPlatformUUID``` (the same Hardware UUID)\n``` ioreg -rd1 -c IOPlatformExpertDevice ```\n>   Value from I/O Kit registry in IOPlatformExpertDevice class\n\n- **Linux** uses ```/var/lib/dbus/machine-id``` **(can be changed by ```root``` but with unpredictable consequences)**\nhttp://man7.org/linux/man-pages/man5/machine-id.5.html\n>   The /var/lib/dbus/machine-id file contains the unique machine ID of the local\n>   system that is set during installation. The machine ID is a single\n>   newline-terminated, hexadecimal, 32-character, lowercase machine ID\n>   string. When decoded from hexadecimal, this corresponds with a\n>   16-byte/128-bit string.\n>\n>   The machine ID is usually generated from a random source during\n>   system installation and stays constant for all subsequent boots.\n>   Optionally, for stateless systems, it is generated during runtime at\n>   early boot if it is found to be empty.\n>\n>   The machine ID does not change based on user configuration or when\n>   hardware is replaced.\n\n\n## Installation\n```\nnpm install node-machine-id\n```\n\n## Usage\n### Function: machineId(original)\n- **original** ```<Boolean>```, If ```true``` return original value of machine id, otherwise return hashed value (sha-256), default: ```false```\n\n### Function: machineIdSync(original);\n- syncronous version of ```machineId```\n\n```js\nimport {machineId, machineIdSync} from 'node-machine-id';\n\n// Asyncronous call with async/await or Promise\n\nasync function getMachineId() {\n    let id = await machineId();\n    ...\n}\n\nmachineId().then((id) => {\n    ...\n})\n\n// Syncronous call\n\nlet id = machineIdSync()\n// id = c24b0fe51856497eebb6a2bfcd120247aac0d6334d670bb92e09a00ce8169365\nlet id = machineIdSync({original: true})\n// id = 98912984-c4e9-5ceb-8000-03882a0485e4\n```\n"
+}

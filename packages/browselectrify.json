@@ -1,0 +1,73 @@
+{
+  "name": "browselectrify",
+  "description": "make a browserify bundle that also works in electron.",
+  "version": "1.0.1",
+  "homepage": "https://github.com/dominictarr/browselectrify",
+  "repository": {
+    "user": "dominictarr",
+    "repo": "browselectrify",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/dominictarr/browselectrify/tarball/master",
+    "clone_url": "https://github.com/dominictarr/browselectrify",
+    "https_url": "https://github.com/dominictarr/browselectrify",
+    "travis_url": "https://travis-ci.org/dominictarr/browselectrify",
+    "zip_url": "https://github.com/dominictarr/browselectrify/archive/master.zip",
+    "api_url": "https://api.github.com/repos/dominictarr/browselectrify"
+  },
+  "dependencies": {
+    "browserify": "^13.0.1",
+    "pull-cat": "^1.1.10",
+    "pull-file": "^0.5.0",
+    "pull-stream": "^3.4.3",
+    "stream-to-pull-stream": "^1.7.0"
+  },
+  "devDependencies": {},
+  "bin": {
+    "browselectrify": "bin.js"
+  },
+  "scripts": {
+    "build": "browserify index.js  --exclude electron> _bundle.js && cat _bundle.js suffix.js > bundle.js"
+  },
+  "author": {
+    "name": "'Dominic Tarr'",
+    "email": "dominic.tarr@gmail.com",
+    "url": "dominictarr.com"
+  },
+  "license": "MIT",
+  "gitHead": "9ffc24af07a202823fde571b93d43dc998c5f56c",
+  "_npmVersion": "3.8.9",
+  "_nodeVersion": "6.2.0",
+  "dist": {
+    "shasum": "6e21e4bbdd6ad9af42bd6de07a1ba87e04df9860",
+    "tarball": "http://registry.npmjs.org/browselectrify/-/browselectrify-1.0.1.tgz"
+  },
+  "versions": [
+    {
+      "number": "0.0.0",
+      "date": "2016-08-03T09:16:18.416Z"
+    },
+    {
+      "number": "1.0.0",
+      "date": "2016-08-03T09:27:03.287Z"
+    },
+    {
+      "number": "1.0.1",
+      "date": "2016-08-03T09:36:07.449Z"
+    }
+  ],
+  "created": "2016-08-03T09:16:18.416Z",
+  "modified": "2016-08-03T09:36:07.449Z",
+  "lastPublisher": {
+    "name": "dominictarr",
+    "email": "dominic.tarr@gmail.com"
+  },
+  "owners": [
+    {
+      "name": "dominictarr",
+      "email": "dominic.tarr@gmail.com"
+    }
+  ],
+  "readme": "# browselectrify\n\nmake a browserify bundle that also works in electron.\n\nbasically, this makes a browserify bundle that doesn't have\nany node globals set (process, Buffer, etc) or core modules,\nand then it concatenates that to a bundle that provides those,\nbut turns off in electron.\n\nThis makes the electron bundle 106k longer, but it will work\nin the browser.\n\n```\nnpm install browselectrify electro electron-prebuilt -g\nbrowselectrify index.js > bundle.js\nelectro index.js # run electron directly, loading with sync require's\nelectro bundle.js # run electron on bundle, this will load faster!\n```\n\n[electro](https://github.com/dominictarr/electro) is a boilerplate\nkilling wrapper around electron. if you just want to run a js file\ninside an electron instance, electro does that.\n\n## License\n\nMIT\n\n"
+}

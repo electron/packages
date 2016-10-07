@@ -1,12 +1,13 @@
 {
   "name": "electron-image-menu",
   "description": "Context menu for img tags with the \"Save image as\" function in electron",
-  "version": "1.0.0",
-  "main": "dist/index.js",
-  "dependencies": {},
-  "peerDependencies": {
-    "electron-contextmenu-middleware": "^1.0.1",
+  "version": "1.0.1",
+  "main": "index.js",
+  "dependencies": {
     "electron-save-file": "^1.0.1"
+  },
+  "peerDependencies": {
+    "electron-contextmenu-middleware": "^1.0.1"
   },
   "devDependencies": {
     "babel-eslint": "^5.0.0-beta9",
@@ -26,7 +27,6 @@
     "index.js"
   ],
   "license": "MIT",
-  "preferGlobal": "true",
   "repository": {
     "user": "ewnd9",
     "repo": "electron-image-menu",
@@ -44,22 +44,27 @@
     "lint": "eslint src/*",
     "prepush": "npm run lint && npm test"
   },
-  "gitHead": "50aabcfe300b265ce118a073359688125858fcde",
+  "gitHead": "e9bd36b9fc013147505cf6fd1238cf854b082550",
   "homepage": "https://github.com/ewnd9/electron-image-menu#readme",
-  "_npmVersion": "3.8.0",
-  "_nodeVersion": "5.6.0",
+  "_npmVersion": "3.10.3",
+  "_nodeVersion": "6.4.0",
   "dist": {
-    "shasum": "bb5cc876e14f6afad6f7be7dc85d78a8f2dc7c9d",
-    "tarball": "http://registry.npmjs.org/electron-image-menu/-/electron-image-menu-1.0.0.tgz"
+    "shasum": "fc542901fa68f26e47a5999f2f121c5d9a67608c",
+    "tarball": "http://registry.npmjs.org/electron-image-menu/-/electron-image-menu-1.0.1.tgz"
   },
+  "stars": 1,
   "versions": [
     {
       "number": "1.0.0",
       "date": "2016-04-07T14:27:57.363Z"
+    },
+    {
+      "number": "1.0.1",
+      "date": "2016-09-27T12:13:28.573Z"
     }
   ],
   "created": "2016-04-07T14:27:57.363Z",
-  "modified": "2016-04-07T14:27:57.363Z",
+  "modified": "2016-09-27T12:13:28.573Z",
   "lastPublisher": {
     "name": "ewnd9",
     "email": "ewndnine@gmail.com"
@@ -70,5 +75,5 @@
       "email": "ewndnine@gmail.com"
     }
   ],
-  "readme": "# electron-image-menu\n\nContext menu for `img` tags with the \"Save image as\" function in [`electron`](https://github.com/electron-userland/electron-prebuilt).\n\n| Demo |\n|:------:|\n|![Demonstration](/demo.gif?raw=true)|\n\n## Install\n\n```\n$ npm install electron-save-file --save\n$ npm install electron-contextmenu-middleware --save\n$ npm install electron-image-menu --save\n```\n\n## Usage\n\n```js\nconst context = require('electron-contextmenu-middleware');\ncontext.use(require('electron-image-menu'));\ncontext.activate();\n```\n\nThere is also [demo application](./demo) in the repository.\n\n## Related\n\n- [`electron-save-file`](https://github.com/ewnd9/electron-save-file) - api for this module\n- [`electron-input-menu`](https://github.com/parro-it/electron-input-menu) - context menu for `input` tags\n- [`electron-contextmenu-middleware`](https://github.com/parro-it/electron-contextmenu-middleware) - context menu middleware\n\n## License\n\nMIT © [ewnd9](http://ewnd9.com)\n"
+  "readme": "# electron-image-menu\n\nContext menu for `img` tags with the \"Save image as\" function in [`electron`](https://github.com/electron-userland/electron-prebuilt).\n\n| Demo |\n|:------:|\n|![Demonstration](/demo.gif?raw=true)|\n\n## Install\n\n```\n$ npm install electron-contextmenu-middleware --save\n$ npm install electron-image-menu --save\n```\n\n:warning: If you bundle your frontend dependencies, you should also install `electron-file-save` as a dependency. It is used with electron [remote](https://github.com/electron/electron/blob/577480421d51d67149158732119f136f30d25522/docs/api/remote.md) module.\n\n```\n$ npm install electron-save-file --save\n```\n\n## Usage\n\n```js\nconst context = require('electron-contextmenu-middleware');\ncontext.use(require('electron-image-menu'));\ncontext.activate();\n```\n\nThere is also [demo application](./demo) in the repository.\n\n## Related\n\n- [`electron-save-file`](https://github.com/ewnd9/electron-save-file) - api for this module\n- [`electron-input-menu`](https://github.com/parro-it/electron-input-menu) - context menu for `input` tags\n- [`electron-contextmenu-middleware`](https://github.com/parro-it/electron-contextmenu-middleware) - context menu middleware\n\n## License\n\nMIT © [ewnd9](http://ewnd9.com)\n"
 }

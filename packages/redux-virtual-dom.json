@@ -1,0 +1,177 @@
+{
+  "jspm": {
+    "name": "redux-virtual-dom",
+    "dependencies": {
+      "babel": "babel-core@^6.11.4",
+      "deep-equal": "^1.0.1"
+    },
+    "devDependencies": {
+      "plugin-babel": "systemjs-plugin-babel@^0.0.12",
+      "redux": "^3.5.2",
+      "reselect": "^2.5.3",
+      "snabbdom": "^0.5.1"
+    },
+    "peerDependencies": {
+      "assert": "github:jspm/nodelibs-assert@^0.2.0-alpha",
+      "buffer": "github:jspm/nodelibs-buffer@^0.2.0-alpha",
+      "child_process": "github:jspm/nodelibs-child_process@^0.2.0-alpha",
+      "events": "github:jspm/nodelibs-events@^0.2.0-alpha",
+      "fs": "github:jspm/nodelibs-fs@^0.2.0-alpha",
+      "http": "github:jspm/nodelibs-http@^0.2.0-alpha",
+      "module": "github:jspm/nodelibs-module@^0.2.0-alpha",
+      "path": "github:jspm/nodelibs-path@^0.2.0-alpha",
+      "process": "github:jspm/nodelibs-process@^0.2.0-alpha",
+      "stream": "github:jspm/nodelibs-stream@^0.2.0-alpha",
+      "url": "github:jspm/nodelibs-url@^0.2.0-alpha",
+      "util": "github:jspm/nodelibs-util@^0.2.0-alpha"
+    },
+    "overrides": {
+      "npm:debug@2.2.0": {
+        "main": "browser.js",
+        "jspmNodeConversion": false,
+        "format": "cjs",
+        "map": {
+          "./browser.js": {
+            "node": "./node.js"
+          },
+          "fs": "@node/fs",
+          "net": "@node/net",
+          "tty": "@node/tty",
+          "util": "@node/util"
+        }
+      },
+      "npm:inherits@2.0.1": {
+        "ignore": [
+          "test.js"
+        ]
+      },
+      "npm:lodash@4.14.0": {
+        "map": {
+          "buffer": "@empty",
+          "process": "@empty"
+        }
+      },
+      "npm:lodash@4.14.1": {
+        "map": {
+          "buffer": "@empty",
+          "process": "@empty"
+        }
+      },
+      "npm:ms@0.7.1": {
+        "jspmNodeConversion": false,
+        "format": "cjs"
+      }
+    }
+  },
+  "name": "redux-virtual-dom",
+  "description": "connect redux to any virtual-dom library like react-redux ✨",
+  "version": "0.9.1",
+  "dependencies": {},
+  "devDependencies": {
+    "babel-core": "^6.10.4",
+    "babel-plugin-transform-object-rest-spread": "^6.8.0",
+    "babel-preset-es2015": "^6.9.0",
+    "chai": "^3.5.0",
+    "chai-as-promised": "^5.3.0",
+    "coveralls": "^2.11.12",
+    "electron-prebuilt": "^1.2.2",
+    "jspm": "^0.17.0-beta.24",
+    "karma": "^1.1.2",
+    "karma-babel-preprocessor": "^6.0.1",
+    "karma-chai": "^0.1.0",
+    "karma-chrome-launcher": "^1.0.1",
+    "karma-coverage": "^1.1.1",
+    "karma-coveralls": "^1.1.2",
+    "karma-firefox-launcher": "^1.0.0",
+    "karma-jspm": "^2.2.0",
+    "karma-mocha": "^1.1.1",
+    "karma-sinon": "^1.0.5",
+    "mocha": "^2.5.3",
+    "sinon": "^1.17.4",
+    "sinon-chai": "^2.8.0"
+  },
+  "jspmPackage": true,
+  "files": [
+    "package.json",
+    "README.md",
+    "README-ja.md",
+    "dist",
+    "lib"
+  ],
+  "browser": "dist/redux-virtual-dom.js",
+  "main": "dist/redux-virtual-dom.js",
+  "format": "amd",
+  "scripts": {
+    "test": "./node_modules/karma/bin/karma start",
+    "bundle": "jspm bundle example/app.js -wid",
+    "unbundle": "jspm unbundle example/app.js",
+    "serve": "caddy & npm run bundle",
+    "build-dev": "jspm build lib/redux-virtual-dom.js dist/redux-virtual-dom.js --format umd",
+    "build": "jspm build lib/redux-virtual-dom.js dist/redux-virtual-dom.js --format umd --skip-source-maps --minify",
+    "prepublish": "npm run build"
+  },
+  "repository": {
+    "user": "subuta",
+    "repo": "redux-virtual-dom",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/subuta/redux-virtual-dom/tarball/master",
+    "clone_url": "https://github.com/subuta/redux-virtual-dom",
+    "https_url": "https://github.com/subuta/redux-virtual-dom",
+    "travis_url": "https://travis-ci.org/subuta/redux-virtual-dom",
+    "zip_url": "https://github.com/subuta/redux-virtual-dom/archive/master.zip",
+    "api_url": "https://api.github.com/repos/subuta/redux-virtual-dom"
+  },
+  "keywords": [
+    "redux",
+    "virtual-dom",
+    "react-redux"
+  ],
+  "author": {
+    "name": "subuta",
+    "email": "shunta.3110@gmail.com",
+    "url": "https://github.com/subuta"
+  },
+  "license": "MIT",
+  "registry": "npm",
+  "homepage": "https://github.com/subuta/redux-virtual-dom#readme",
+  "gitHead": "0ef1da98a240619d86c0e0a97e70f68934e1e7d6",
+  "_npmVersion": "3.8.1",
+  "_nodeVersion": "5.5.0",
+  "dist": {
+    "shasum": "77ab7e50f2785e6aba6b1306282a4ad2a6976530",
+    "tarball": "http://registry.npmjs.org/redux-virtual-dom/-/redux-virtual-dom-0.9.1.tgz"
+  },
+  "versions": [
+    {
+      "number": "0.1.0",
+      "date": "2016-07-25T15:24:24.513Z"
+    },
+    {
+      "number": "0.1.1",
+      "date": "2016-07-25T15:25:14.502Z"
+    },
+    {
+      "number": "0.9.0",
+      "date": "2016-07-31T00:59:42.027Z"
+    },
+    {
+      "number": "0.9.1",
+      "date": "2016-07-31T10:17:04.984Z"
+    }
+  ],
+  "created": "2016-07-25T15:24:24.513Z",
+  "modified": "2016-07-31T10:17:04.984Z",
+  "lastPublisher": {
+    "name": "subuta",
+    "email": "shunta.3110@gmail.com"
+  },
+  "owners": [
+    {
+      "name": "subuta",
+      "email": "shunta.3110@gmail.com"
+    }
+  ],
+  "readme": "# redux-virtual-dom [![Build Status](https://travis-ci.org/subuta/redux-virtual-dom.svg?branch=master)](https://travis-ci.org/subuta/redux-virtual-dom) [![Coverage Status](https://coveralls.io/repos/github/subuta/redux-virtual-dom/badge.svg?branch=master)](https://coveralls.io/github/subuta/redux-virtual-dom?branch=master)\n[react-redux](https://github.com/reactjs/react-redux) for your vdom library :)\n\n- Make your vdom-based development flow easy.\n  - with [virtual-dom](https://github.com/Matt-Esch/virtual-dom)\n  - or [snabbdom](https://github.com/paldepind/snabbdom)\n- Convenient utility(only ~100 line) for Redux. \n- Automatically memoize your `render` function for better performance!\n\n[README - 日本語版](README-ja.md)\n\n## Installation\n```\nnpm install redux-virtual-dom --save\n```\n\n## Documentation\n\nBasic idea came from [react-redux](https://github.com/reactjs/react-redux/blob/master/README.md) thanks!\n\n### `injectCreator`\nwhen you import `redux-virtual-dom`, it gives you `injectCreator`,\nyou need to pass `store` to `injectCreator`, and it returns `{inject, connect}` for later use. \nthis acts like react-redux's `Provider` component.  \n\n- `export const {inject, connect} = injectCreator(store)`\n\n### `inject`\nthis function injects `{props, dispatch, state}` to your own render function.\nlike [deku](https://github.com/anthonyshort/deku)'s way\n\n- `inject(render, [mapStateToProps], [mapDispatchToProps]) -> render([props])`\n\ncall returned `render` with an object will passed as a `props` and\n`redux-virtual-dom` will inject `dispatch/state` also.\n\n#### example\n```javascript\n// your own implementation\nconst render = ({props, dispatch, state}) => {\n  return h('div', {}, [props.counter]);\n}\n\nconst wrappedRender = inject(render);\n\n// will return virtual-dom tree.\nreturn wrappedRender({counter: 1});\n```\n\n### connect\nis another syntax for `inject`. it behaves like [react-redux](https://github.com/reactjs/react-redux/blob/master/README.md)'s `connect` function.\n\n- `connect([mapStateToProps], [mapDispatchToProps])(render)`\n\n## Example\nYou need to pass your `redux store` to `redux-virtual-dom` like below.\n\n```javascript\n// 1. get redux store from somewhere\nimport store from './store.js';\n// 2. import `redux-virtual-dom`\nimport injectCreator from 'redux-virtual-dom';\n\n// 3. call `redux-virtual-dom` and export `inject/connect` for your store.\nexport const {inject, connect} = injectCreator(store);\n```\n\nthen call `connect/inject` API from everywhere to access redux's `dispatch/state`\n\n```javascript\nimport h from 'snabbdom/h';\n\n// 4. import your `inject/connect` from somewhere(maybe in your store.js)\nimport {connect, inject} from 'example/store.js'\n\n// other redux things ...\nimport {createSelector} from 'reselect';\nimport { bindActionCreators } from 'redux'\nimport {getCount} from 'example/reducers/counter.js';\n\nconst dummyActions = {\n  dummyAction: () => {\n    return {\n      type: 'dummy'\n    }\n  }\n};\n\nconst mapStateToProps = (state) => {\n  return {\n    count: getCount(state)\n  }\n};\n\n//// ** Or you can use [reselect](https://github.com/reactjs/reselect) if you want **\n// const mapStateToProps = createSelector(\n//   getCount,\n//   (count) => {\n//     return {\n//       count\n//     }\n//   }\n// );\n\nconst mapDispatchToProps = (dispatch) => {\n  return {\n    ...bindActionCreators(dummyActions, dispatch)\n  }\n};\n\nconst render = ({props}) => {\n  console.log('render called!');\n  return h(`span`, {\n    on: {\n      'click': function (ev) {\n        return props.dummyAction();\n      }\n    }\n  }, [props.count]);\n};\n\n// ** react-redux like API for you. **\nexport default connect(\n  mapStateToProps,\n  mapDispatchToProps\n)(render);\n\n//// ** you can do same thing as deku flavored way **\n// export default inject(({props}) => {\n//     return h(`span`, {\n//       on: {\n//         'click': function (ev) {\n//           return props.dummyAction();\n//         }\n//       }\n//     }, [props.count]);\n//   },\n//   mapStateToProps,\n//   mapDispatchToProps\n// );\n```\n\n## Development\n### 1. Clone this repo\n\n```\ngit clone https://github.com/subuta/redux-virtual-dom\ncd ./redux-virtual-dom\n```\n\n### 2. Install dependencies\n\n- Caddy (Web server for Development)\n- jspm@beta (for package management/build)\n\n```\nbrew install caddy\nnpm install jspm@beta -g\nnpm i\njspm i\n```\n\n### 3. Run example app\n\n```\ncaddy\n\n# open link.\nopen http://localhost:3000\n```\n\n## LICENSE\n[MIT](https://opensource.org/licenses/MIT)\n"
+}

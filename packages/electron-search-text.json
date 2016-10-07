@@ -1,0 +1,81 @@
+{
+  "name": "electron-search-text",
+  "version": "0.3.0",
+  "description": "Search in text module for electron",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "electron"
+  ],
+  "author": {
+    "name": "nakajmg"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "eventemitter2": "^2.0.1",
+    "lodash": "^4.14.1"
+  },
+  "repository": {
+    "user": "nakajmg",
+    "repo": "electron-search-text",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/nakajmg/electron-search-text/tarball/master",
+    "clone_url": "https://github.com/nakajmg/electron-search-text",
+    "https_url": "https://github.com/nakajmg/electron-search-text",
+    "travis_url": "https://travis-ci.org/nakajmg/electron-search-text",
+    "zip_url": "https://github.com/nakajmg/electron-search-text/archive/master.zip",
+    "api_url": "https://api.github.com/repos/nakajmg/electron-search-text"
+  },
+  "homepage": "https://github.com/nakajmg/electron-search-text#readme",
+  "gitHead": "31eab6f1c5b60109e4ce7d3fd44657fca6efeadf",
+  "_npmVersion": "3.10.3",
+  "_nodeVersion": "4.4.7",
+  "dist": {
+    "shasum": "eff07aa9e95f9b3783a93197362c8be3788a3d3d",
+    "tarball": "http://registry.npmjs.org/electron-search-text/-/electron-search-text-0.3.0.tgz"
+  },
+  "stars": 1,
+  "versions": [
+    {
+      "number": "0.0.1",
+      "date": "2016-08-02T16:44:20.522Z"
+    },
+    {
+      "number": "0.0.2",
+      "date": "2016-08-03T01:43:08.321Z"
+    },
+    {
+      "number": "0.1.0",
+      "date": "2016-09-22T16:21:24.505Z"
+    },
+    {
+      "number": "0.1.1",
+      "date": "2016-09-22T18:27:35.724Z"
+    },
+    {
+      "number": "0.2.0",
+      "date": "2016-09-22T18:41:16.810Z"
+    },
+    {
+      "number": "0.3.0",
+      "date": "2016-09-22T18:45:08.715Z"
+    }
+  ],
+  "created": "2016-08-02T16:44:20.522Z",
+  "modified": "2016-09-22T18:45:08.715Z",
+  "lastPublisher": {
+    "name": "nakajmg",
+    "email": "nakajmg@pxgrid.com"
+  },
+  "owners": [
+    {
+      "name": "nakajmg",
+      "email": "nakajmg@pxgrid.com"
+    }
+  ],
+  "readme": "# electron-search-text\nelectron findInPage wrapper module\n\nsee and try [example](./example)\n\n![./example/example.gif](./example/example.gif)\n\n## usage\n\n```html\n<!DOCTYPE html>\n<html lang=\"ja\">\n<head>\n  <meta charset=\"UTF-8\">\n  <title>electron-search-text</title>\n  <style>\n    .electronSearchText-box {\n      display: none;\n    }\n    .electronSearchText-visible {\n      display: block;\n    }\n  </style>\n</head>\n<body>\n<div class=\"electronSearchText-box\">\n  <input type=\"text\" class=\"electronSearchText-input\">\n  <span class=\"electronSearchText-count\"></span>\n</div>\n<webview id=\"preview\" src=\"./webview.html\" preload=\"./webview.js\"></webview>\n<script>\n  const {ipcRenderer} = require('electron');\n\n  const ElectronSearchText = require('./electron-search-text');\n  const searcher = new ElectronSearchText({\n    target: '#preview'\n  });\n\n  ipcRenderer.on('toggleSearch', function() {\n    searcher.emit('toggle');\n  });\n</script>\n</body>\n</html>\n```\n\n## options\n\n```js\nconst searcher = new ElectronSearchText({\n  target: 'webview', // selector for search target\n  delay: 150, // delay call search function\n  visibleClass: '.electronSearchText-visible', // for toggle search box\n  input: '.electronSearchText-input', // selector for search input\n  count: '.electronSearchText-count', // selector for search results count\n  box: '.electronSearchText-box', // selector for search box\n});\n```\n"
+}

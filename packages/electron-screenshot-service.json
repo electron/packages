@@ -2,7 +2,7 @@
   "name": "electron-screenshot-service",
   "main": "src/index.js",
   "description": "Take screenshots using electron",
-  "version": "3.1.3",
+  "version": "4.0.1",
   "author": {
     "name": "Fabrice Weinberg",
     "email": "Fabrice@weinberg.me"
@@ -22,7 +22,7 @@
   },
   "license": "MIT",
   "scripts": {
-    "postinstall": "cd ./electron-service; npm install .",
+    "postinstall": "cd ./electron-service && npm install .",
     "test": "./node_modules/mocha/bin/mocha test"
   },
   "files": [
@@ -37,11 +37,11 @@
     "axon": "^2.0.2",
     "bluebird": "^3.4.0",
     "cross-spawn": "^4.0.0",
-    "electron-prebuilt": "1.2.6"
+    "electron": "1.4.1"
   },
   "devDependencies": {
     "is-png": "^1.0.0",
-    "xo": "^0.15.1",
+    "xo": "^0.16.0",
     "mocha": "^2.5.3",
     "pngparse": "^2.0.1"
   },
@@ -51,13 +51,13 @@
       "node"
     ]
   },
-  "gitHead": "0e97e228b9cc21fb0dcef2f8b2a84b4339c98036",
+  "gitHead": "b1833ce8d6e4d5e3269d1fea1ed40da1ec9cbdaa",
   "homepage": "https://github.com/FWeinb/electron-screenshot-service#readme",
   "_npmVersion": "3.9.3",
   "_nodeVersion": "6.2.1",
   "dist": {
-    "shasum": "0e3f250681a6414a8fa340ffa7e3f7845fa0ce42",
-    "tarball": "http://registry.npmjs.org/electron-screenshot-service/-/electron-screenshot-service-3.1.3.tgz"
+    "shasum": "d835610293d4074158342e1e6084b85c88097c20",
+    "tarball": "http://registry.npmjs.org/electron-screenshot-service/-/electron-screenshot-service-4.0.1.tgz"
   },
   "stars": 2,
   "versions": [
@@ -180,10 +180,34 @@
     {
       "number": "3.1.3",
       "date": "2016-07-08T09:44:43.970Z"
+    },
+    {
+      "number": "3.2.1",
+      "date": "2016-07-17T09:44:30.482Z"
+    },
+    {
+      "number": "3.2.2",
+      "date": "2016-07-17T11:22:54.008Z"
+    },
+    {
+      "number": "3.2.3",
+      "date": "2016-07-18T14:30:27.427Z"
+    },
+    {
+      "number": "3.3.1",
+      "date": "2016-08-27T11:34:02.617Z"
+    },
+    {
+      "number": "4.0.0",
+      "date": "2016-09-21T19:43:51.583Z"
+    },
+    {
+      "number": "4.0.1",
+      "date": "2016-09-23T21:14:42.632Z"
     }
   ],
   "created": "2015-04-24T16:53:55.314Z",
-  "modified": "2016-07-08T09:44:43.970Z",
+  "modified": "2016-09-23T21:14:42.632Z",
   "lastPublisher": {
     "name": "fweinb",
     "email": "Fabrice@weinberg.me"
@@ -194,5 +218,5 @@
       "email": "Fabrice@weinberg.me"
     }
   ],
-  "readme": "electron-screenshot-service [![Build Status](https://travis-ci.org/FWeinb/electron-screenshot-service.svg?branch=master)](https://travis-ci.org/FWeinb/electron-screenshot-service)\n====================\n> Take screenshots using electron\n\n# Install\n\n```shell\nnpm install electron-screenshot-service\n```\n\n## Usage\n\n```js\nvar fs = require('fs');\nvar screenshot = require('electron-screenshot-service');\n\nscreenshot({\n  url : 'http://google.de',\n  width : 1024,\n  height : 768\n})\n.then(function(img){\n  fs.writeFile('./out.png', img.data, function(err){\n    screenshot.close();\n  });\n});\n```\n\n#### screenshot(options)\n\nWill return a Promise containing an object like:\n\n```js\n{\n  data: <Buffer >\n  size: {\n    width: X\n    height: N\n  }\n}\n```\n\nIn addition to [all options](http://electron.atom.io/docs/v0.36.5/api/browser-window/#new-browserwindow-options) that can be passed to the BrowserWindow you can pass:\n\n##### delay\n\nType: `number` *(seconds)*  \nDefault: `0`\n\nDelay capturing the screenshot.\n\nUseful when the site does things after loading that you want to capture.\n\n##### width\n\nType: `number`\nDefault: `0`\n\nSpecify the with of the browser window\n\n##### height\n\nType: `number`\nDefault: `0`\n\nSpecify the height of the browser window\n\n##### crop\n\nType: `Object`  \nDefault: `undefined`\n\nAn crop object may look like this:\n```js\n{\n  x : 10,\n  y : 10,\n  width : 100,\n  height : 100\n}\n```\n\n##### css\n\nType: `String`  \nDefault: `undefined`\n\nThis css will be injected into the page before the screenshot is taken.\n\n##### transparent\n\nType: `Boolean`  \nDefault: `false`\n\nThis will enable transparency. Keep in mind that most site do set a background color on the html/body tag.\nYou can overwrite this by using the `css` option using something like `html,body{ background-color: transparent !important;}`.\n\n##### page\n\nType: `Boolean`  \nDefault: `false`\n\nThis will try to capture the whole page. `width` and `height` are considered the minimum size.\n\n#### screenshot.close()\n\nWill close the screenshot service. Needed to let the node process exit\n\n#### screenshot.scale(scale)\n\nScale the number of electron processes to `scale` processes. This will round-robin the screenshot\njobs across `scale` instances.\n\n# Changelog\n\n\n##### `3.1.3`\n\n* Update to `electron@1.2.6`\n* Fix bug in keeping `browserCount` correct. (Thanks to [jerbob92](https://github.com/FWeinb/electron-screenshot-service/pull/22))\n\n##### `3.1.2`\n\n* Update to `electron@1.2.5`\n\n##### `3.1.1`\n\n* Fix bug that prevent running in node `^6.0.0`\n\n##### `3.1.0`\n\n* Update to `electron@1.2.0`\n* Use `cross-spawn` insated of `cross-spawn-async`\n* Update dependencies\n\n##### `3.0.0`\n\n* Update to `electron@1.1.0`\n* Update to `electron-screenshot-app@3.0.0`\n\n##### `2.3.1`\n\n* Update to `electron@0.37.7`\n\n##### `2.3.0`\n\n* Update to `electron@0.37.2`\n\n##### `2.2.1`\n\n* Fix a bug in `count` not being updated when an electron process dies (Thanks to [asafyish](https://github.com/asafyish))\n* Update to `electron@0.36.8`\n\n##### `2.2.1`\n\n* Fix installation on windows (#14)\n\n##### `2.2.0`\n\n* Upgrade to `electron@0.36.7`.\n* Update to `electron-screenshot-app@2.2.0`\n\n##### `2.1.0`\n\n* Upgrade to `electron@0.36.6`.\n* Update to `electron-screenshot-app@2.1.0` fixing #11\n\n\n##### `2.0.0`\n\n* Upgrade to `electron@0.36.5`.\n* Fix race-condition in error reporting.\n* Add `screenshot.scale` API\n\n##### `1.7.0`\n\n* Upgrade to `electron@0.35.2`.\n\n##### `1.6.0`\n\n* Upgrade to `electron@0.34.0`.\n\n##### `1.5.3`\n\n* Upgrade to `electron@0.33.8`.\n\n##### `1.5.3`\n\n* Fix a typo in error handeling code. (Thanks to [@adig](https://github.com/adig) [#6](https://github.com/FWeinb/electron-screenshot-service/pull/6))\n* Pin `electron` to version `0.33.4`\n\n##### `1.5.2`\n\n* Upgrade to `electron@0.33.4`.\n\n##### `1.5.1`\n\n* Upgrade to `electron@0.33.1`.\n\n##### `1.5.0`\n\n* Upgrade to `electron@0.33.0`.\n\n##### `1.4.1`\n\n* Upgrade to `electron@0.32.2`.\n\n##### `1.4.0`\n\n* Upgrade to `electron@0.32.1`.\n\n##### `1.3.1`\n\n* Upgrade to `electron@0.31.1`.\n* Upgrade to `electron-screenshot-app@1.1.0`.\n\n##### `1.3.0`\n\n* Upgrade to `electron@0.31.0`.\n\n##### `1.2.2`\n\n* Upgrade to `electron@0.30.4`.\n\n##### `1.2.1`\n\n* Upgrade to `electron@0.30.2`.\n\n##### `1.2.0`\n\n  * Upgrade to `electron@0.30.1`.\n  * Extract core functionality into [electron-screenshot-app](https://github.com/FWeinb/electron-screenshot-app) (See [#4](https://github.com/FWeinb/electron-screenshot-service/issues/4))\n\n##### `1.1.4`\n\n  * Upgrade to `electron@0.30.0`.\n\n##### `1.1.3`\n\n  * Upgrade to `electron@0.28.1`.\n\n##### `1.1.1`\n\n  * Fixed some issues with error handeling\n  * Stop `electron` from closing when last window was closed\n\n##### `1.1.0`\n\n  * Upgrade to `electron@0.27.1`.\n  * Use `electron-downloader`.\n  * Add `transparent` support.\n\n##### `1.0.2`\n\n  * Upgrade to `electron@0.25.1`\n\n##### `1.0.1`\n\n  * Hide the window again.\n\n##### `1.0.0`\n\n  * Upgrade to `electron@0.24.0`\n  * Renamed to `electron-screenshot-service`\n\n##### `0.5.0`\n\n  * Upgrade to `atom-shell@0.21.3`\n  * The Promise will no return the image `data` and `size`.\n\n##### `0.4.5`\n\n  * Fix bug on linux (X11)\n\n##### `0.4.4`\n\n  * Update to atom-shell `.0.22.7`\n  * Improved perfomance by switching to [`axon`](https://github.com/tj/axon) for ipc.\n\n##### `0.4.3`\n\n  * Fix scroll jumping\n\n##### `0.4.1`\n\n  * Cleanup repository\n  * Remove duplicated dependency to `socket.io-client`\n\n##### `0.4.0`\n\n  * Update to atom-shell `0.20.6`.\n  * Better handeling of pages with iframes\n  * Include `jquery` because of a \"bug\" in `atom-shell` (See [#254](See https://github.com/atom/atom-shell/issues/254))\n  * Better error handeling\n\n##### `0.3.2`\n\n  * Use `window.requestAnimationFrame` to be sure that at least one paint has happend.\n\n##### `0.3.1`\n\n  * Force a redraw after injecting css\n\n##### `0.3.0`\n\n  * Add `css` option to inject custom css\n\n##### `0.2.0`\n\n  * Update to atom-shell `0.20.5`\n  * Add `close()` method\n\n##### `0.1.3`\n\n  * Update to atom-shell `0.19.5`\n\n##### `0.1.2`\n\n  * Update to atom-shell `0.15.8`\n\n##### `0.1.1`\n\n  * Update to atom-shell `0.15.4`\n\n##### `0.1.0`\n\n  * 0.1.0 Inital release\n"
+  "readme": "electron-screenshot-service [![Build Status](https://travis-ci.org/FWeinb/electron-screenshot-service.svg?branch=master)](https://travis-ci.org/FWeinb/electron-screenshot-service)\n====================\n> Take screenshots using electron\n\n# Install\n\n```shell\nnpm install electron-screenshot-service\n```\n\n## Usage\n\n```js\nvar fs = require('fs');\nvar screenshot = require('electron-screenshot-service');\n\nscreenshot({\n  url : 'http://google.de',\n  width : 1024,\n  height : 768\n})\n.then(function(img){\n  fs.writeFile('./out.png', img.data, function(err){\n    screenshot.close();\n  });\n});\n```\n\n#### screenshot(options)\n\nWill return a Promise containing an object like:\n\n```js\n{\n  data: <Buffer >\n  size: {\n    width: X\n    height: N\n  }\n}\n```\n\nIn addition to [all options](http://electron.atom.io/docs/v0.36.5/api/browser-window/#new-browserwindow-options) that can be passed to the BrowserWindow you can pass:\n\n##### delay\n\nType: `number` *(milliseconds)*  \nDefault: `0`\n\nDelay capturing the screenshot.\n\nUseful when the site does things after loading that you want to capture.\n\n##### width\n\nType: `number`\nDefault: `0`\n\nSpecify the with of the browser window\n\n##### height\n\nType: `number`\nDefault: `0`\n\nSpecify the height of the browser window\n\n##### crop\n\nType: `Object`  \nDefault: `undefined`\n\nAn crop object may look like this:\n```js\n{\n  x : 10,\n  y : 10,\n  width : 100,\n  height : 100\n}\n```\n\n##### css\n\nType: `String`  \nDefault: `undefined`\n\nThis css will be injected into the page before the screenshot is taken.\n\n##### js\n\nType: `String`  \nDefault: `undefined`\n\nIt must contain a function definition that takes on parameter e.g.\n```js\njs: 'function(takeScreenshot){ /*Do some stuff*/ takeScreenshot();}'\n```\nor\n```js\njs: 'takeScreenshot => { /*Do some stuff*/ takeScreenshot();}'\n```\n\n##### transparent\n\nType: `Boolean`  \nDefault: `false`\n\nThis will enable transparency. Keep in mind that most site do set a background color on the html/body tag.\nYou can overwrite this by using the `css` option using something like `html,body{ background-color: transparent !important;}`.\n\n##### page\n\nType: `Boolean`  \nDefault: `false`\n\nThis will try to capture the whole page. `width` and `height` are considered the minimum size.\n\n#### screenshot.close()\n\nWill close the screenshot service. Needed to let the node process exit\n\n#### screenshot.scale(scale)\n\nScale the number of electron processes to `scale` processes. This will round-robin the screenshot\njobs across `scale` instances.\n\n# Changelog\n\n##### `4.0.1`\n\n* Update to `electron@1.4.1`\n\n##### `4.0.0`\n\n* Update to `electron@1.4.0`\n\n##### `3.3.1`\n\n* Update to `electron@1.3.4`\n\n##### `3.3.0`\n\n* Update to `electron@1.3.1`\n\n##### `3.2.3`\n\n* Fix PORT bug on windows (Thanks to [peerbolte](https://github.com/FWeinb/electron-screenshot-service/pull/26))\n\n##### `3.2.2`\n\n* Update to `electron@1.2.7`\n\n##### `3.2.1`\n\n* Fix post install script on windows\n\n##### `3.2.0`\n\n* Update to `electron-screenshot-app@3.1.0`\n* Support `options.js`\n\n##### `3.1.3`\n\n* Update to `electron@1.2.6`\n* Fix bug in keeping `browserCount` correct. (Thanks to [jerbob92](https://github.com/FWeinb/electron-screenshot-service/pull/22))\n\n##### `3.1.2`\n\n* Update to `electron@1.2.5`\n\n##### `3.1.1`\n\n* Fix bug that prevent running in node `^6.0.0`\n\n##### `3.1.0`\n\n* Update to `electron@1.2.0`\n* Use `cross-spawn` insated of `cross-spawn-async`\n* Update dependencies\n\n##### `3.0.0`\n\n* Update to `electron@1.1.0`\n* Update to `electron-screenshot-app@3.0.0`\n\n##### `2.3.1`\n\n* Update to `electron@0.37.7`\n\n##### `2.3.0`\n\n* Update to `electron@0.37.2`\n\n##### `2.2.1`\n\n* Fix a bug in `count` not being updated when an electron process dies (Thanks to [asafyish](https://github.com/asafyish))\n* Update to `electron@0.36.8`\n\n##### `2.2.1`\n\n* Fix installation on windows (#14)\n\n##### `2.2.0`\n\n* Upgrade to `electron@0.36.7`.\n* Update to `electron-screenshot-app@2.2.0`\n\n##### `2.1.0`\n\n* Upgrade to `electron@0.36.6`.\n* Update to `electron-screenshot-app@2.1.0` fixing #11\n\n\n##### `2.0.0`\n\n* Upgrade to `electron@0.36.5`.\n* Fix race-condition in error reporting.\n* Add `screenshot.scale` API\n\n##### `1.7.0`\n\n* Upgrade to `electron@0.35.2`.\n\n##### `1.6.0`\n\n* Upgrade to `electron@0.34.0`.\n\n##### `1.5.3`\n\n* Upgrade to `electron@0.33.8`.\n\n##### `1.5.3`\n\n* Fix a typo in error handeling code. (Thanks to [@adig](https://github.com/adig) [#6](https://github.com/FWeinb/electron-screenshot-service/pull/6))\n* Pin `electron` to version `0.33.4`\n\n##### `1.5.2`\n\n* Upgrade to `electron@0.33.4`.\n\n##### `1.5.1`\n\n* Upgrade to `electron@0.33.1`.\n\n##### `1.5.0`\n\n* Upgrade to `electron@0.33.0`.\n\n##### `1.4.1`\n\n* Upgrade to `electron@0.32.2`.\n\n##### `1.4.0`\n\n* Upgrade to `electron@0.32.1`.\n\n##### `1.3.1`\n\n* Upgrade to `electron@0.31.1`.\n* Upgrade to `electron-screenshot-app@1.1.0`.\n\n##### `1.3.0`\n\n* Upgrade to `electron@0.31.0`.\n\n##### `1.2.2`\n\n* Upgrade to `electron@0.30.4`.\n\n##### `1.2.1`\n\n* Upgrade to `electron@0.30.2`.\n\n##### `1.2.0`\n\n  * Upgrade to `electron@0.30.1`.\n  * Extract core functionality into [electron-screenshot-app](https://github.com/FWeinb/electron-screenshot-app) (See [#4](https://github.com/FWeinb/electron-screenshot-service/issues/4))\n\n##### `1.1.4`\n\n  * Upgrade to `electron@0.30.0`.\n\n##### `1.1.3`\n\n  * Upgrade to `electron@0.28.1`.\n\n##### `1.1.1`\n\n  * Fixed some issues with error handeling\n  * Stop `electron` from closing when last window was closed\n\n##### `1.1.0`\n\n  * Upgrade to `electron@0.27.1`.\n  * Use `electron-downloader`.\n  * Add `transparent` support.\n\n##### `1.0.2`\n\n  * Upgrade to `electron@0.25.1`\n\n##### `1.0.1`\n\n  * Hide the window again.\n\n##### `1.0.0`\n\n  * Upgrade to `electron@0.24.0`\n  * Renamed to `electron-screenshot-service`\n\n##### `0.5.0`\n\n  * Upgrade to `atom-shell@0.21.3`\n  * The Promise will no return the image `data` and `size`.\n\n##### `0.4.5`\n\n  * Fix bug on linux (X11)\n\n##### `0.4.4`\n\n  * Update to atom-shell `.0.22.7`\n  * Improved perfomance by switching to [`axon`](https://github.com/tj/axon) for ipc.\n\n##### `0.4.3`\n\n  * Fix scroll jumping\n\n##### `0.4.1`\n\n  * Cleanup repository\n  * Remove duplicated dependency to `socket.io-client`\n\n##### `0.4.0`\n\n  * Update to atom-shell `0.20.6`.\n  * Better handeling of pages with iframes\n  * Include `jquery` because of a \"bug\" in `atom-shell` (See [#254](See https://github.com/atom/atom-shell/issues/254))\n  * Better error handeling\n\n##### `0.3.2`\n\n  * Use `window.requestAnimationFrame` to be sure that at least one paint has happend.\n\n##### `0.3.1`\n\n  * Force a redraw after injecting css\n\n##### `0.3.0`\n\n  * Add `css` option to inject custom css\n\n##### `0.2.0`\n\n  * Update to atom-shell `0.20.5`\n  * Add `close()` method\n\n##### `0.1.3`\n\n  * Update to atom-shell `0.19.5`\n\n##### `0.1.2`\n\n  * Update to atom-shell `0.15.8`\n\n##### `0.1.1`\n\n  * Update to atom-shell `0.15.4`\n\n##### `0.1.0`\n\n  * 0.1.0 Inital release\n"
 }

@@ -1,6 +1,6 @@
 {
   "name": "pauls-electron-rpc",
-  "version": "1.3.1",
+  "version": "2.0.0",
   "description": "My RPC solution for exporting APIs from the electron background process to renderers and webviews.",
   "main": "index.js",
   "scripts": {
@@ -36,12 +36,12 @@
     "tape": "^4.6.0",
     "tape-dom": "0.0.10"
   },
-  "gitHead": "a7a2626959f264bb8cf9fee7bb0e968ce175b6ff",
+  "gitHead": "1cb82e1d5dbc95d837d75a420057e639ac6d5f37",
   "_npmVersion": "3.9.3",
   "_nodeVersion": "6.2.1",
   "dist": {
-    "shasum": "ffefd720d1334f0e843704a9a511999f807d9803",
-    "tarball": "http://registry.npmjs.org/pauls-electron-rpc/-/pauls-electron-rpc-1.3.1.tgz"
+    "shasum": "26d9b0e2eb1f4d806cf849b9854508de5f544b99",
+    "tarball": "http://registry.npmjs.org/pauls-electron-rpc/-/pauls-electron-rpc-2.0.0.tgz"
   },
   "versions": [
     {
@@ -63,10 +63,22 @@
     {
       "number": "1.3.1",
       "date": "2016-07-13T00:30:44.340Z"
+    },
+    {
+      "number": "1.4.0",
+      "date": "2016-07-20T17:40:16.510Z"
+    },
+    {
+      "number": "1.5.0",
+      "date": "2016-07-27T16:03:42.020Z"
+    },
+    {
+      "number": "2.0.0",
+      "date": "2016-08-04T23:21:52.976Z"
     }
   ],
   "created": "2016-07-09T19:01:57.837Z",
-  "modified": "2016-07-13T00:30:44.340Z",
+  "modified": "2016-08-04T23:21:52.976Z",
   "lastPublisher": {
     "name": "pfraze",
     "email": "pfrazee@gmail.com"
@@ -77,5 +89,5 @@
       "email": "pfrazee@gmail.com"
     }
   ],
-  "readme": "# pauls-electron-rpc\n\nFeatures:\n\n - Supports RPC calls from the renderer or webview to the background process\n - Supports methods which return:\n   - Sync values\n   - Async CBs\n   - Readable streams\n - Permissions by examining the sender of the call\n - Monitors renderer/webview lifetime to automatically release streams.\n\nPossible future additions:\n\n - Writable streams\n - Duplex streams\n - Return objects with their own exported APIs\n\nTodos:\n\n - [ ] Make sure buffers are sent in a useful form. (I'm not sure what the buffer behaviors should be inside webpages, yet.)\n\n## Example usage\n\nIn a shared `example-api-manifest.js`:\n\n```js\nmodule.exports = {\n  // simple method-types\n  readFile: 'async',\n  readFileSync: 'sync',\n  createReadStream: 'readable'\n}\n```\n\nIn the main electron process:\n\n```js\nvar rpc = require('pauls-electron-rpc')\nvar manifest = require('./example-api-manifest')\nvar fs = require('fs')\n\n// export over the 'example-api' channel\nvar api = rpc.exportAPI('example-api', manifest, {\n  // the exported API behaves like normal calls:\n  readFile: fs.readFile,\n  readFileSync: fs.readFileSync,\n  createReadStream: fs.createReadStream\n})\n\n// log any errors\napi.on('error', console.log)\n```\n\nIn the renderer or webview process:\n\n```js\nvar rpc = require('pauls-electron-rpc')\nvar manifest = require('./example-api-manifest')\n\n// import over the 'example-api' channel\nvar api = rpc.importAPI('example-api', manifest)\n\n// now use, as usual:\napi.readFileSync('/etc/hosts') // => '...'\n```\n\n## API\n\n### rpc.exportAPI(channelName, manifest, methods)\n\nMethods will be called with a `this` set to the `event` object from [electron ipc](http://electron.atom.io/docs/api/ipc-main/#event-object).\nDon't touch `returnValue`.\n\n### rpc.importAPI(channelName, manifest)\n\n## Readable Streams\n\nReadable streams in the clientside are given a `.close()` method.\nAll serverside streams MUST implement `.close()` or `.destroy()`, either of which will be called."
+  "readme": "# pauls-electron-rpc\n\nFeatures:\n\n - Supports RPC calls from the renderer or webview to the background process\n - Supports methods which return:\n   - Sync values\n   - Async CBs\n   - Promises\n   - Readable streams\n   - Writable streams\n - Permissions by examining the sender of the call\n - Monitors renderer/webview lifetime to automatically release streams\n - Optional timeout for async methods\n\nPossible future additions:\n\n - Duplex streams\n - Return objects with their own exported APIs\n\nTodos:\n\n - [ ] Make sure buffers are sent in a useful form. (I'm not sure what the buffer behaviors should be inside webpages, yet.)\n\n## Example usage\n\nIn a shared `example-api-manifest.js`:\n\n```js\nmodule.exports = {\n  // simple method-types\n  readFile: 'async',\n  readFileSync: 'sync',\n  sayHello: 'promise',\n  createReadStream: 'readable'\n}\n```\n\nIn the main electron process:\n\n```js\nvar rpc = require('pauls-electron-rpc')\nvar manifest = require('./example-api-manifest')\nvar fs = require('fs')\n\n// export over the 'example-api' channel\nvar api = rpc.exportAPI('example-api', manifest, {\n  // the exported API behaves like normal calls:\n  readFile: fs.readFile,\n  readFileSync: fs.readFileSync,\n  sayHello: () => return Promise.resolve('hello!'),\n  createReadStream: fs.createReadStream\n})\n\n// log any errors\napi.on('error', console.log)\n```\n\nIn the renderer or webview process:\n\n```js\nvar rpc = require('pauls-electron-rpc')\nvar manifest = require('./example-api-manifest')\n\n// import over the 'example-api' channel\nvar api = rpc.importAPI('example-api', manifest, { timeout: 30e3 })\n\n// now use, as usual:\napi.readFileSync('/etc/hosts') // => '...'\n```\n\n## API\n\n### rpc.exportAPI(channelName, manifest, methods)\n\nMethods will be called with a `this` set to the `event` object from [electron ipc](http://electron.atom.io/docs/api/ipc-main/#event-object).\nDon't touch `returnValue`.\n\n### rpc.importAPI(channelName, manifest [,options])\n\nThe `options` may include a `timeout`, to specify how long async methods wait before erroring.\nSet to `false` to disable timeout.\n\n## Readable Streams\n\nReadable streams in the clientside are given a `.close()` method.\nAll serverside streams MUST implement `.close()` or `.destroy()`, either of which will be called."
 }

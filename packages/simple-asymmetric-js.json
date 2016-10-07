@@ -1,22 +1,18 @@
 {
   "name": "simple-asymmetric-js",
-  "version": "0.0.7",
+  "version": "0.0.12",
   "description": "Typescript port of simple-asymmetric-python",
-  "main": "js/index.js",
-  "typings": "js/index",
-  "repository": {
-    "user": "burke-software",
-    "repo": "simple-asymmetric-js",
-    "host": "gitlab.com",
-    "branch": "master",
-    "apiHost": "gitlab.com/api/v3",
-    "tarball_url": "https://gitlab.com/api/v3/repos/burke-software/simple-asymmetric-js/tarball/master",
-    "clone_url": "https://gitlab.com/burke-software/simple-asymmetric-js",
-    "https_url": "https://gitlab.com/burke-software/simple-asymmetric-js",
-    "travis_url": "https://travis-ci.org/burke-software/simple-asymmetric-js",
-    "zip_url": "https://gitlab.com/burke-software/simple-asymmetric-js/archive/master.zip",
-    "api_url": "https://gitlab.com/api/v3/repos/burke-software/simple-asymmetric-js"
+  "scripts": {
+    "prepublish": "tsc"
   },
+  "main": "js/index.js",
+  "typings": "js/index.d.ts",
+  "files": [
+    "js",
+    "simple_asym",
+    "typings.json"
+  ],
+  "repository": null,
   "author": {
     "name": "Burke Software and Consulting LLC"
   },
@@ -36,18 +32,16 @@
     "webpack-dev-server": "^1.14.1"
   },
   "dependencies": {
-    "unibabel": "^2.1.3",
     "fernet": "^0.3.0",
-    "node-forge": "^0.6.39",
+    "node-forge": "github:ysangkok/forge",
     "pem-jwk": "^1.5.1"
   },
-  "gitHead": "3255a0553aa1e148ba07a7de7c741d376787f9ba",
-  "scripts": {},
-  "_npmVersion": "2.15.8",
-  "_nodeVersion": "4.4.7",
+  "gitHead": "2e0f9d8ecc7d3bb9e83ff9d6d6fe7162d8110309",
+  "_npmVersion": "3.10.7",
+  "_nodeVersion": "6.3.1",
   "dist": {
-    "shasum": "10cd8e7a6fb8b577e30d4d895969ff7cbc79f9ce",
-    "tarball": "http://registry.npmjs.org/simple-asymmetric-js/-/simple-asymmetric-js-0.0.7.tgz"
+    "shasum": "26b26f8cdee4953eea91b718798f1b025624f8e5",
+    "tarball": "http://registry.npmjs.org/simple-asymmetric-js/-/simple-asymmetric-js-0.0.12.tgz"
   },
   "versions": [
     {
@@ -77,13 +71,29 @@
     {
       "number": "0.0.7",
       "date": "2016-07-04T15:34:33.158Z"
+    },
+    {
+      "number": "0.0.9",
+      "date": "2016-07-29T22:20:07.663Z"
+    },
+    {
+      "number": "0.0.10",
+      "date": "2016-08-16T20:15:40.412Z"
+    },
+    {
+      "number": "0.0.11",
+      "date": "2016-08-16T20:42:20.041Z"
+    },
+    {
+      "number": "0.0.12",
+      "date": "2016-08-16T20:47:32.489Z"
     }
   ],
   "created": "2016-06-11T21:07:56.661Z",
-  "modified": "2016-07-04T15:34:33.158Z",
+  "modified": "2016-08-16T20:47:32.489Z",
   "lastPublisher": {
-    "name": "bufke",
-    "email": "david@burkesoftware.com"
+    "name": "saulshanabrook",
+    "email": "s.shanabrook@gmail.com"
   },
   "owners": [
     {
@@ -91,5 +101,5 @@
       "email": "david@burkesoftware.com"
     }
   ],
-  "readme": "Javascript port of simple-asymmetric-python\n\nThe goal is to create a \"developer usable\" crypto library as a wrapper around various more trusted libraries in various languages and provide a consistent and fully interoperable api.\n\n# Status\n\nFeature complete - but very new. Use at your own risk. I strongly recommend having the code audited before using in a production environment. Want to split the cost of a security audit? Open an issue and let's talk.\n\n# Developing\n\nWe use webpack, docker, typescript, and jasmine. Jasmine must run in a real browser as it requires web crpyto.\n\n1. Install Docker and Docker Compose\n2. `docker-compose up`\n3. Go to http://localhost:8080/ to view passing tests\n\n## CI\n\nSaucelabs is used for CI - since we can't run subtle crypto in phantomjs or node. See karma.conf.js and .gitlab-ci.yml\n\nEverything runs from Docker - so you should be able to run something like \n\n1. `docker-compose run --rm app bash`\n2. Set saucelab env vars (username and access key)\n3. `karma start`\n\n## Releasing to NPM\n\nCompile typescript and npm publish.\n\n## Note on style\n\nsnake_case is used often. This is because the library was developed in Python first and it provides some consistency. Use snake_case when matching python names. Otherwise use best practices JavaScript which is typically camelCase.\n\nsimple_asym/crypto.ts should contain only wrappers around existing crypto libraries\nsimple_asym/asymmetric_encryption.ts should contain only application logic. It should never contain any crypto. Never use window.crypto or related functions here.\n\n# How\n\nSymmetrical encryption uses Fernet provided by the fernet package\n\nAsmmetrical encryption uses RSA with \n- OAEP padding and SHA384 mgf and algorithm.\n- 4096 modulus\n- Powered by [Subtle Crypto](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto)\n\nAt this time text must be encoded as UTF-8. In theory we could give options as to which encoding to use. If you need that - submit a merge requests with tests to verify all supported encodings. The project intends to do things like store a UTF-8 string generated from the python version in base64 format and then convert it back. As such we must agree on encodings.\n\nUtilities:\n\n- Node Forge - To convert web crypto generated Private jwk to an encrypted PEM\n- pem-jwk - To convert web crypto generated Public jwk to PEM\n\nBasically Subtle Crypto can't deal with PEM, but PEM is a popular storage for keys. Implimenting our own logic to convert would be more error prone than using existing libraries. That said Forge is a pretty giant dependency for doing so little. Merge requests welcome.\n\n# Supported platforms\n\nTested against latest Chrome and Firefox. Does not run in Node due to dependency on web crypto. Should run in Electron (TODO verify).\n\n# Contributing\n\nSome ideas for improving\n\n- Remove node forge dependency (so build a lighter weight import and export encrypted PEM)\n- Make it somehow work in Node.\n- How to use this in React Native?\n- Document simply-asymmetic-* specification\n- Security auditing\n- Add option for other encoding with default to remain utf-8\n\nMerge requests require tests.\n\nNo core features will be accepted without discussion and inclusion on simple-asymmetic-python. For example adding an alternative encryption algorithm would be rejected without much discussion and a python port. Something like node support would be gladly accepted.\n"
+  "readme": "Javascript port of simple-asymmetric-python\n\nThe goal is to create a \"developer usable\" crypto library as a wrapper around various more trusted libraries in various languages and provide a consistent and fully interoperable api.\n\n# Status\n\nFeature complete - but very new. Use at your own risk. I strongly recommend having the code audited before using in a production environment. Want to split the cost of a security audit? Open an issue and let's talk.\n\n# Developing\n\nWe use webpack, docker, typescript, and jasmine. Jasmine must run in a real browser as it requires web crpyto.\n\n1. Install Docker and Docker Compose\n2. `docker-compose up`\n3. Go to http://localhost:8080/ to view passing tests\n\n## CI\n\nSaucelabs is used for CI - since we can't run subtle crypto in phantomjs or node. See karma.conf.js and .gitlab-ci.yml\n\nEverything runs from Docker - so you should be able to run something like \n\n1. `docker-compose run --rm app bash`\n2. Set saucelab env vars (username and access key)\n3. `karma start`\n\n## Note on style\n\nsnake_case is used often. This is because the library was developed in Python first and it provides some consistency. Use snake_case when matching python names. Otherwise use best practices JavaScript which is typically camelCase.\n\nsimple_asym/crypto.ts should contain only wrappers around existing crypto libraries\nsimple_asym/asymmetric_encryption.ts should contain only application logic. It should never contain any crypto. Never use window.crypto or related functions here.\n\n# How\n\nSymmetrical encryption uses Fernet provided by the fernet package\n\nAsmmetrical encryption uses RSA with \n- OAEP padding and SHA384 mgf and algorithm.\n- 4096 modulus\n- Powered by [Subtle Crypto](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto)\n\nAt this time text must be encoded as UTF-8. In theory we could give options as to which encoding to use. If you need that - submit a merge requests with tests to verify all supported encodings. The project intends to do things like store a UTF-8 string generated from the python version in base64 format and then convert it back. As such we must agree on encodings.\n\nUtilities:\n\n- Node Forge - To convert web crypto generated Private jwk to an encrypted PEM\n- pem-jwk - To convert web crypto generated Public jwk to PEM\n\nBasically Subtle Crypto can't deal with PEM, but PEM is a popular storage for keys. Implimenting our own logic to convert would be more error prone than using existing libraries. That said Forge is a pretty giant dependency for doing so little. Merge requests welcome.\n\n# Supported platforms\n\nTested against latest Chrome and Firefox. Does not run in Node due to dependency on web crypto. Should run in Electron (TODO verify).\n\n# Contributing\n\nSome ideas for improving\n\n- Remove node forge dependency (so build a lighter weight import and export encrypted PEM)\n- Make it somehow work in Node.\n- How to use this in React Native?\n- Document simply-asymmetic-* specification\n- Security auditing\n- Add option for other encoding with default to remain utf-8\n\nMerge requests require tests.\n\nNo core features will be accepted without discussion and inclusion on simple-asymmetic-python. For example adding an alternative encryption algorithm would be rejected without much discussion and a python port. Something like node support would be gladly accepted.\n"
 }

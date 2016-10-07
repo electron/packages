@@ -1,6 +1,6 @@
 {
   "name": "electron-docs",
-  "version": "1.2.0",
+  "version": "1.2.3",
   "description": "Fetch Electron documentation as raw markdown strings",
   "main": "index.js",
   "bin": {
@@ -10,17 +10,17 @@
     "test": "node test/index.js | tap-spec"
   },
   "repository": {
-    "user": "zeke",
+    "user": "electron",
     "repo": "electron-docs",
     "host": "github.com",
     "branch": "master",
     "apiHost": "api.github.com",
-    "tarball_url": "https://api.github.com/repos/zeke/electron-docs/tarball/master",
-    "clone_url": "https://github.com/zeke/electron-docs",
-    "https_url": "https://github.com/zeke/electron-docs",
-    "travis_url": "https://travis-ci.org/zeke/electron-docs",
-    "zip_url": "https://github.com/zeke/electron-docs/archive/master.zip",
-    "api_url": "https://api.github.com/repos/zeke/electron-docs"
+    "tarball_url": "https://api.github.com/repos/electron/electron-docs/tarball/master",
+    "clone_url": "https://github.com/electron/electron-docs",
+    "https_url": "https://github.com/electron/electron-docs",
+    "travis_url": "https://travis-ci.org/electron/electron-docs",
+    "zip_url": "https://github.com/electron/electron-docs/archive/master.zip",
+    "api_url": "https://api.github.com/repos/electron/electron-docs"
   },
   "keywords": [
     "electron",
@@ -37,7 +37,6 @@
     "url": "http://zeke.sikelianos.com"
   },
   "license": "MIT",
-  "homepage": "https://github.com/zeke/electron-docs#readme",
   "dependencies": {
     "bluebird": "^3.4.0",
     "github-latest-release": "^0.1.1",
@@ -53,13 +52,15 @@
     "tap-spec": "^4.1.1",
     "tape": "^4.5.1"
   },
-  "gitHead": "ad0ac6a62ac67a57c85e48edf3a98492fd6039a6",
-  "_npmVersion": "3.9.3",
-  "_nodeVersion": "6.2.1",
+  "gitHead": "6add7d94e30cfdf2313a448770e97fc6edfb5e5f",
+  "homepage": "https://github.com/electron/electron-docs#readme",
+  "_npmVersion": "3.10.3",
+  "_nodeVersion": "6.4.0",
   "dist": {
-    "shasum": "c97ca71bb47a117e1e2ba6c34000ac5219bd519d",
-    "tarball": "http://registry.npmjs.org/electron-docs/-/electron-docs-1.2.0.tgz"
+    "shasum": "6be65107dfa704bcc6c178a780c18086f48f058c",
+    "tarball": "http://registry.npmjs.org/electron-docs/-/electron-docs-1.2.3.tgz"
   },
+  "stars": 1,
   "versions": [
     {
       "number": "1.0.0",
@@ -92,10 +93,22 @@
     {
       "number": "1.2.0",
       "date": "2016-06-29T00:54:53.268Z"
+    },
+    {
+      "number": "1.2.1",
+      "date": "2016-09-09T17:49:06.282Z"
+    },
+    {
+      "number": "1.2.2",
+      "date": "2016-09-09T17:52:09.098Z"
+    },
+    {
+      "number": "1.2.3",
+      "date": "2016-10-05T01:39:21.339Z"
     }
   ],
   "created": "2016-06-16T22:43:23.590Z",
-  "modified": "2016-06-29T00:54:53.268Z",
+  "modified": "2016-10-05T01:39:21.339Z",
   "lastPublisher": {
     "name": "zeke",
     "email": "zeke@sikelianos.com"
@@ -106,5 +119,5 @@
       "email": "zeke@sikelianos.com"
     }
   ],
-  "readme": "# electron-docs [![Build Status](https://travis-ci.org/zeke/electron-docs.svg?branch=master)](https://travis-ci.org/zeke/electron-docs)\n\nThis package consumes the [electron/electron](https://github.com/electron/electron)\nrepo in search of markdown files, and returns an array of file objects with stringified\nfile contents.\n\n## Installation\n\n```sh\nnpm install electron-docs --save\n```\n\n## Programmatic Usage\n\nRequire it and invoke the function with no arguments:\n\n```js\nconst electronDocs = require('electron-docs')\n\nelectronDocs().then(function(docs) {\n  // docs is an array of objects, one for each markdown file in /docs\n})\n```\n\nEach object in the `docs` array looks like this:\n\n```js\n{\n slug: \"windows-store-guide\",\n filename: \"docs/tutorial/windows-store-guide.md\",\n markdown_content: \"# Windows Store Guide\\n\\n...\"\n}\n```\n\nThe latest version of Electron is fetched by default. If you need a different\nversion, specify it as the first argument:\n\n```js\nelectronDocs('1.2.0').then(function(docs) {\n  // ...\n})\n```\n\nYou can also point to a local directory instead of downloading a tarball:\n\n```js\nconst path = require('path')\nconst docsPath = path.join(__dirname, 'docs')\nelectronDocs(docsPath).then(function(docs) {\n  // ...\n})\n```\n\nIf you prefer node-style callbacks instead of promises, those are supported too:\n\n```js\n// latest\nelectronDocs(function(err, docs) {\n  console.log(err, docs)\n})\n\n// a specific version\nelectronDocs('1.0.0', function(err, docs) {\n  console.log(err, docs)\n})\n```\n\n## CLI Usage\n\nAdd this to your package.json file:\n\n```json\n{\n  \"scripts\": {\n    \"docs\": \"electron-docs > docs.json\"\n  }\n}\n```\n\nWhen you run `npm run docs`, the module writes the stringified JSON object to\n`stdout`, and the output is piped into a file.\n\n`stdout` ftw!\n\n## Tests\n\n```sh\nnpm i && npm t\n```\n\n## Dependencies\n\n- [bluebird](https://github.com/petkaantonov/bluebird): Full featured Promises/A+ implementation with exceptionally good performance\n- [github-latest-release](https://github.com/chentsulin/github-latest-release): Get latest release information from github repository\n- [got](https://github.com/sindresorhus/got): Simplified HTTP requests\n- [gunzip-maybe](https://github.com/mafintosh/gunzip-maybe): Transform stream that gunzips its input if it is gzipped and just echoes it if not\n- [node-dir](https://github.com/fshost/node-dir): asynchronous file and directory operations for Node.js\n- [ora](https://github.com/sindresorhus/ora): Elegant terminal spinner\n- [tar-fs](https://github.com/mafintosh/tar-fs): filesystem bindings for tar-stream\n\n## Dev Dependencies\n\n- [tap-spec](https://github.com/scottcorgan/tap-spec): Formatted TAP output like Mocha&#39;s spec reporter\n- [tape](https://github.com/substack/tape): tap-producing test harness for node and browsers\n\n\n## License\n\nMIT\n"
+  "readme": "# electron-docs [![Build Status](https://travis-ci.org/electron/electron-docs.svg?branch=master)](https://travis-ci.org/electron/electron-docs)\n\nThis package consumes the [electron/electron](https://github.com/electron/electron)\nrepo in search of markdown files, and returns an array of file objects with stringified\nfile contents.\n\nIt is used by Electron's [docs linter](https://github.com/electron/electron-docs-linter).\n\n## Installation\n\n```sh\nnpm install electron-docs --save\n```\n\n## Programmatic Usage\n\nRequire it and invoke the function with no arguments:\n\n```js\nconst electronDocs = require('electron-docs')\n\nelectronDocs().then(function(docs) {\n  // docs is an array of objects, one for each markdown file in /docs\n})\n```\n\nEach object in the `docs` array looks like this:\n\n```js\n{\n slug: \"windows-store-guide\",\n filename: \"docs/tutorial/windows-store-guide.md\",\n markdown_content: \"# Windows Store Guide\\n\\n...\"\n}\n```\n\nThe latest version of Electron is fetched by default. If you need a different\nversion, specify it as the first argument:\n\n```js\nelectronDocs('1.2.0').then(function(docs) {\n  // ...\n})\n```\n\nYou can also point to a local directory instead of downloading a tarball:\n\n```js\nconst path = require('path')\nconst docsPath = path.join(__dirname, 'docs')\nelectronDocs(docsPath).then(function(docs) {\n  // ...\n})\n```\n\nIf you prefer node-style callbacks instead of promises, those are supported too:\n\n```js\n// latest\nelectronDocs(function(err, docs) {\n  console.log(err, docs)\n})\n\n// a specific version\nelectronDocs('1.0.0', function(err, docs) {\n  console.log(err, docs)\n})\n```\n\n## CLI Usage\n\nAdd this to your package.json file:\n\n```json\n{\n  \"scripts\": {\n    \"docs\": \"electron-docs > docs.json\"\n  }\n}\n```\n\nWhen you run `npm run docs`, the module writes the stringified JSON object to\n`stdout`, and the output is piped into a file.\n\n`stdout` ftw!\n\n## Tests\n\n```sh\nnpm i && npm t\n```\n\n## Dependencies\n\n- [bluebird](https://github.com/petkaantonov/bluebird): Full featured Promises/A+ implementation with exceptionally good performance\n- [github-latest-release](https://github.com/chentsulin/github-latest-release): Get latest release information from github repository\n- [got](https://github.com/sindresorhus/got): Simplified HTTP requests\n- [gunzip-maybe](https://github.com/mafintosh/gunzip-maybe): Transform stream that gunzips its input if it is gzipped and just echoes it if not\n- [node-dir](https://github.com/fshost/node-dir): asynchronous file and directory operations for Node.js\n- [ora](https://github.com/sindresorhus/ora): Elegant terminal spinner\n- [tar-fs](https://github.com/mafintosh/tar-fs): filesystem bindings for tar-stream\n\n## Dev Dependencies\n\n- [tap-spec](https://github.com/scottcorgan/tap-spec): Formatted TAP output like Mocha&#39;s spec reporter\n- [tape](https://github.com/substack/tape): tap-producing test harness for node and browsers\n\n\n## License\n\nMIT\n"
 }

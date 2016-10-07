@@ -1,0 +1,68 @@
+{
+  "author": {
+    "name": "Kevin Whitman",
+    "url": "https://github.com/keverw"
+  },
+  "name": "electron-irpc",
+  "description": "inter-process communication(IPC) and remote procedure call (RPC) combined.",
+  "version": "0.0.2",
+  "keywords": [
+    "electron",
+    "RPC",
+    "IPC",
+    "IPRC"
+  ],
+  "dependencies": {
+    "bson": "^0.5.3"
+  },
+  "repository": {
+    "user": "keverw",
+    "repo": "electron-irpc",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/keverw/electron-irpc/tarball/master",
+    "clone_url": "https://github.com/keverw/electron-irpc",
+    "https_url": "https://github.com/keverw/electron-irpc",
+    "travis_url": "https://travis-ci.org/keverw/electron-irpc",
+    "zip_url": "https://github.com/keverw/electron-irpc/archive/master.zip",
+    "api_url": "https://api.github.com/repos/keverw/electron-irpc"
+  },
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org/"
+  },
+  "main": "index.js",
+  "license": "BSD-2-Clause",
+  "gitHead": "d902650d671e69c859772eaf8f8756eaf65780b0",
+  "homepage": "https://github.com/keverw/electron-irpc#readme",
+  "scripts": {},
+  "_npmVersion": "2.15.5",
+  "_nodeVersion": "4.4.5",
+  "dist": {
+    "shasum": "46d86358f412d3fb1938b8a5db153b2970b6bc67",
+    "tarball": "http://registry.npmjs.org/electron-irpc/-/electron-irpc-0.0.2.tgz"
+  },
+  "versions": [
+    {
+      "number": "0.0.1",
+      "date": "2016-08-22T05:20:25.154Z"
+    },
+    {
+      "number": "0.0.2",
+      "date": "2016-09-04T17:40:49.034Z"
+    }
+  ],
+  "created": "2016-08-22T05:20:25.154Z",
+  "modified": "2016-09-04T17:40:49.034Z",
+  "lastPublisher": {
+    "name": "keverw",
+    "email": "keverw92@gmail.com"
+  },
+  "owners": [
+    {
+      "name": "keverw",
+      "email": "keverw92@gmail.com"
+    }
+  ],
+  "readme": "# electron-irpc v0.0.2\n[![npm version](https://badge.fury.io/js/electron-irpc.svg)](https://badge.fury.io/js/electron-irpc) &nbsp; [![Build Status](https://travis-ci.org/keverw/electron-irpc.svg?branch=master)](https://travis-ci.org/keverw/electron-irpc)\n\ninter-process communication(IPC) and remote procedure call (RPC) combined. Makes Electron IPC work more like callbacks.\n\nSo instead of calling the main thread, it is replying back, etc. and manually keeping track of everything. This module abstracts it away where you can call functions added to IRPC in the main thread and get a callback as if it was a local function even though it's running in the main thread.\n\n<!-- START doctoc generated TOC please keep comment here to allow auto update -->\n<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->\n\n\n- [Install](#install)\n- [main.js](#mainjs)\n- [renderer.js](#rendererjs)\n\n<!-- END doctoc generated TOC please keep comment here to allow auto update -->\n\n## Install\n\nTo set up geoipfind on your Node.js server use npm.\n\n`npm install electron-irpc`\n\n## main.js\n\nInitially this in the main thread. Only one allowed per app, so if you want to access it outside of main.js, set it as a global or pass it to other modules in main.\n\n```js\nvar irpc = require('electron-irpc');\n\nvar irpcMain = irpc.main();\n\n// Then within the process, you can add in functions, variables or functions/variables in the same format as modules\n// Also note function names, variable names and namespaces are automatically lowercased when added and called\n\nirpcMain.addFunction('hello', function(parameters, cb)\n{\n    cb(null, {\n        msg: 'Hello, World...'\n    });\n});\n\nirpcMain.addVariable('version', 'V9000');\n\nirpcMain.addModule({\n    ping: function(parameters, cb)\n    {\n        //callback - error, result\n        cb(null, '2ms');\n    },\n    version: '9.0'\n}, 'testModule'); //testModule is the namespace\n\n```\n\n## renderer.js\n\n```js\nvar irpc = require('electron-irpc');\n\nvar irpcRenderer = irpc.renderer();\n\nirpcRenderer.call('hello', {}, function(err, result)\n{\n    console.log(err, result);\n});\n\nirpcRenderer.get('version', function(err, result)\n{\n    console.log(err, result);\n});\n\nirpcRenderer.call('testModule.ping', {}, function(err, result)\n{\n    console.log(err, result);\n});\n\nirpcRenderer.get('testModule.version', function(err, result)\n{\n    console.log(err, result);\n});\n```\n"
+}

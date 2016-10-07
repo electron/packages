@@ -1,8 +1,8 @@
 {
   "name": "electron-markdown-editor",
   "productName": "ElectronMarkdownEditor",
-  "version": "1.0.17",
-  "electronVersion": "0.37.8",
+  "version": "2.0.5",
+  "electronVersion": "1.3.3",
   "description": "A markdown editor built with electron, uikit, and markdown-it",
   "keywords": [
     "markdown",
@@ -46,28 +46,28 @@
   },
   "license": "MIT",
   "dependencies": {
-    "codemirror": "^5.10.0",
-    "electron-prebuilt": "^0.37",
-    "electron-window": "^0.8",
+    "codemirror": "^5.18.0",
+    "electron-debug": "^1.0.1",
+    "electron-prebuilt": "^1.3.3",
+    "electron-window": "0.8.1",
     "highlightjs": "^8.7.0",
     "isbinaryfile": "^3.0.0",
     "jquery": "^2.1.4",
     "markdown-it-embed-mathjax-highlight": "^1.0.1",
     "markdown-table-template": "^1.0.1",
-    "mathjax": "^2.5.1",
+    "mathjax": "^2.6.1",
     "open": "0.0.5",
     "plist": "^1.2.0",
     "relative": "^3.0.2",
-    "translate.js": "^0.4.1",
-    "uikit": "^2.24.3"
+    "uikit": "^2.26.3"
   },
-  "gitHead": "61a8eb5e68d9599702e648008f2b57070615aa80",
+  "gitHead": "c64b4ffedc981a61095f865ce4e5631c9715a971",
   "homepage": "https://github.com/diversen/electron-markdown-editor#readme",
-  "_npmVersion": "2.15.5",
-  "_nodeVersion": "4.4.5",
+  "_npmVersion": "3.10.3",
+  "_nodeVersion": "6.4.0",
   "dist": {
-    "shasum": "0eab1f6353020ec5bff09d44b97bb74cb0be1719",
-    "tarball": "http://registry.npmjs.org/electron-markdown-editor/-/electron-markdown-editor-1.0.17.tgz"
+    "shasum": "bf742ad640134382139064debf12f782b8016fbf",
+    "tarball": "http://registry.npmjs.org/electron-markdown-editor/-/electron-markdown-editor-2.0.5.tgz"
   },
   "stars": 2,
   "versions": [
@@ -130,10 +130,34 @@
     {
       "number": "1.0.17",
       "date": "2016-06-07T10:13:39.802Z"
+    },
+    {
+      "number": "2.0.0",
+      "date": "2016-08-10T14:47:03.260Z"
+    },
+    {
+      "number": "2.0.1",
+      "date": "2016-08-10T14:49:39.258Z"
+    },
+    {
+      "number": "2.0.2",
+      "date": "2016-08-11T06:15:39.981Z"
+    },
+    {
+      "number": "2.0.3",
+      "date": "2016-08-16T18:01:11.410Z"
+    },
+    {
+      "number": "2.0.4",
+      "date": "2016-08-31T09:02:35.946Z"
+    },
+    {
+      "number": "2.0.5",
+      "date": "2016-08-31T09:59:09.043Z"
     }
   ],
   "created": "2016-01-01T19:38:13.405Z",
-  "modified": "2016-06-07T10:13:39.802Z",
+  "modified": "2016-08-31T09:59:09.043Z",
   "lastPublisher": {
     "name": "diversen",
     "email": "dennis.iversen@gmail.com"
@@ -144,5 +168,5 @@
       "email": "dennis.iversen@gmail.com"
     }
   ],
-  "readme": "# Electron markdown editor\n\n## Screenshot\n\n![Screenshot](https://cdn.rawgit.com/diversen/electron-markdown-editor/master/resources/electron-markdown.png) \n\n\n[<img src=\"https://cdn.rawgit.com/diversen/electron-markdown-editor/master/resources/electron-logo.svg\" align=\"right\" width=\"200\">](http://electron.atom.io)\n\nA markdown editor for the desktop using:\n\n* [Electron](http://electron.atom.io/)\n* The CSS frammework [Uikit](http://getuikit.com/) \n* The Uikit [HTML-editor](http://getuikit.com/docs/htmleditor.html)\n\n## Features\n\n* WYSIWYG\n* Dialog for image\n* Dialog for videos (mp4)\n* Dialog for tables\n* Live preview of code [highlight.js](https://highlightjs.org/) with `tiles`, e.g.: \n\n    \\~~~php\n    &lt;?php\n\n    echo \"hello world\";\n\n    ?>\n    \\~~~\n\nBecomes: \n\n~~~php\n<?php\n\necho \"hello world\";\n\n?>\n~~~\n\n* Live preview of Math [MathJax](https://www.mathjax.org/), e.g.:\n\n$$\\sum_{i=0}^n i^2 = \\frac{(n^2+n)(2n+1)}{6}$$\n\n\n* The parsing of markdown is done with [markdown-it](https://github.com/markdown-it/markdown-it) \n\n## Install\n\nUse npm:\n\nGlobal: \n\n    sudo npm install electron-markdown-editor -g\n    \nYou can specify one file on the commandline. E.g.: \n    \n    electron-markdown-editor README.md\n\n## Development: \n\n    git clone https://github.com/diversen/electron-markdown-editor\n    cd electron-markdown-editor \n    npm install\n\nRun electron-markdown-editor: \n\n    ./bin/electron-markdown-editor README.md\n"
+  "readme": "# Electron markdown editor\n\n## Screenshot\n\n![Screenshot](https://cdn.rawgit.com/diversen/electron-markdown-editor/master/resources/electron-markdown.png) \n\n[<img src=\"https://cdn.rawgit.com/diversen/electron-markdown-editor/master/resources/electron-logo.svg\" align=\"right\" width=\"200\">](http://electron.atom.io)\n\nA markdown editor for the desktop using:\n\n* [Electron](http://electron.atom.io/)\n* The CSS frammework [Uikit](http://getuikit.com/) \n* The Uikit [HTML-editor](http://getuikit.com/docs/htmleditor.html)\n\n## Features\n\n* WYSIWYG\n* Shortcuts (ctrl-S, Ctrl-O) `save` and `open`\n* Dialog for image\n* Dialog for videos (mp4)\n* Dialog for tables\n* Live preview of code [highlight.js](https://highlightjs.org/) with `tiles`, e.g.: \n\n    \\~~~php\n    &lt;?php\n\n    echo \"hello world\";\n\n    ?>\n    \\~~~\n\nBecomes: \n\n~~~php\n<?php\n\necho \"hello world\";\n\n?>\n~~~\n\n* Live preview of Math [MathJax](https://www.mathjax.org/), e.g.:\n\n$$\\sum_{i=0}^n i^2 = \\frac{(n^2+n)(2n+1)}{6}$$\n\n\n* The parsing of markdown is done with [markdown-it](https://github.com/markdown-it/markdown-it) \n\n## Install\n\nUse npm:\n\nGlobal: \n\n    sudo npm install electron-markdown-editor -g\n    \nYou can specify a file on the commandline. E.g.: \n    \n    electron-markdown-editor README.md\n\n## Development: \n\n    git clone https://github.com/diversen/electron-markdown-editor\n    cd electron-markdown-editor \n    npm install\n\nRun electron-markdown-editor: \n\n    ./bin/electron-markdown-editor README.md\n\n"
 }

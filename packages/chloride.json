@@ -1,0 +1,140 @@
+{
+  "name": "chloride",
+  "version": "2.2.3",
+  "author": {
+    "name": "Dominic Tarr"
+  },
+  "license": "MIT",
+  "description": "node.js sodium bindings + pure js polyfil",
+  "dependencies": {
+    "is-electron": "^2.0.0",
+    "sodium-browserify": "^1.0.3",
+    "sodium-browserify-tweetnacl": "^0.2.0",
+    "sodium-prebuilt": "^1.0.22"
+  },
+  "optionalDependencies": {
+    "sodium-prebuilt": "^1.0.22"
+  },
+  "repository": {
+    "user": "dominictarr",
+    "repo": "chloride",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/dominictarr/chloride/tarball/master",
+    "clone_url": "https://github.com/dominictarr/chloride",
+    "https_url": "https://github.com/dominictarr/chloride",
+    "travis_url": "https://travis-ci.org/dominictarr/chloride",
+    "zip_url": "https://github.com/dominictarr/chloride/archive/master.zip",
+    "api_url": "https://api.github.com/repos/dominictarr/chloride"
+  },
+  "keywords": [
+    "encryption",
+    "ed25519",
+    "curve25519",
+    "NaCl",
+    "libsodium",
+    "crypto",
+    "unique",
+    "stamp"
+  ],
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "http://opensource.org/licenses/mit-license.php"
+    }
+  ],
+  "gitHead": "1fffc3db9e557579ae16b1e9bfefefc6ecf878ab",
+  "homepage": "https://github.com/dominictarr/chloride#readme",
+  "scripts": {},
+  "_npmVersion": "3.10.3",
+  "_nodeVersion": "6.4.0",
+  "dist": {
+    "shasum": "ff50353050360dc15ab2a23585948d84d8826e64",
+    "tarball": "http://registry.npmjs.org/chloride/-/chloride-2.2.3.tgz"
+  },
+  "stars": 2,
+  "versions": [
+    {
+      "number": "1.0.20-1",
+      "date": "2015-07-31T16:05:31.911Z"
+    },
+    {
+      "number": "1.0.22",
+      "date": "2015-10-12T03:00:48.656Z"
+    },
+    {
+      "number": "1.0.22-simple",
+      "date": "2015-10-16T04:32:48.179Z"
+    },
+    {
+      "number": "1.0.22-3",
+      "date": "2015-10-16T05:02:39.044Z"
+    },
+    {
+      "number": "1.0.23",
+      "date": "2015-10-16T05:15:58.767Z"
+    },
+    {
+      "number": "2.0.0",
+      "date": "2015-12-05T07:46:11.821Z"
+    },
+    {
+      "number": "2.0.1",
+      "date": "2015-12-05T07:47:57.625Z"
+    },
+    {
+      "number": "2.0.2",
+      "date": "2016-03-14T04:43:42.363Z"
+    },
+    {
+      "number": "2.0.3",
+      "date": "2016-03-20T23:02:04.727Z"
+    },
+    {
+      "number": "2.1.0",
+      "date": "2016-03-21T22:45:41.337Z"
+    },
+    {
+      "number": "2.1.1",
+      "date": "2016-03-25T01:48:57.627Z"
+    },
+    {
+      "number": "2.1.3",
+      "date": "2016-07-21T07:46:52.489Z"
+    },
+    {
+      "number": "2.1.4",
+      "date": "2016-07-21T07:51:59.854Z"
+    },
+    {
+      "number": "2.2.0",
+      "date": "2016-07-30T01:47:31.041Z"
+    },
+    {
+      "number": "2.2.1",
+      "date": "2016-07-30T01:54:33.739Z"
+    },
+    {
+      "number": "2.2.2",
+      "date": "2016-08-04T06:41:29.434Z"
+    },
+    {
+      "number": "2.2.3",
+      "date": "2016-09-03T04:25:38.509Z"
+    }
+  ],
+  "created": "2015-07-31T16:05:31.911Z",
+  "modified": "2016-09-03T04:25:38.509Z",
+  "lastPublisher": {
+    "name": "dominictarr",
+    "email": "dominic.tarr@gmail.com"
+  },
+  "owners": [
+    {
+      "name": "dominictarr",
+      "email": "dominic.tarr@gmail.com"
+    }
+  ],
+  "readme": "# chloride\n\nChloride is a Cryptography Library (Cl) for javascript enviroments.\n\n## about\n\nChloride decends from Dan J. Bernstein's [NaCl](http://nacl.cr.yp.to/) library (\"Networking And Cryptography Library\",\nnot to be confused with the other NaCl, google's Native Client)\ndjb wrote nacl, but did not maintain it, some ideas in the library (in particular the networking part)\nwasn't really fully baked, and the best parts where taken and maintained as [libsodium](http://libsodium.org)\n(although \"Na\" represents the element sodium, so they took the wrong part of the acronym)\n\nchloride is a compatibility layer that gives you bindings to [libsodium](https://npm.im/sodium) when used in node.js,\nand either the [libsodium-wrappers](https://npm.im/libsodium-wrappers) which is libsodium compiled to javascript via [emscripten](http://kripken.github.io/emscripten-site/)\nif performance is important but code size isn't.\nOr, if you are not doing many crypto operations, it uses\n[tweetnacl](https://www.npmjs.com/package/tweetnacl), which is a handwritten\nport, and 1/10 the size of libsodium-wrappers.\n\n## support\n\nI have wrapped and tested enough functions for my crypto modules to work.\n\n  * [private-box](https://github.com/auditdrivencrypto/private-box) write a shortish message to multiple recipients.\n  * [pull-box-stream](https://github.com/dominictarr/pull-box-stream) encrypt (every byte in) a one-way stream.\n  * [secret-handshake](https://github.com/dominictarr/secret-handshake) create an authenticated private channel to a public key.\n\nThis is probably everything you need, nacl doesn't have a very large api, so this is probably everything.\n\n## do i need performance or code size?\n\nnacl was written with performance in mind, unfortunately a lot of that is lost when you compile it to javascript.\nHowever, chloride still has the fastest _javascript_ elliptic curve signature that I am aware of.\n(and asymmetric crypto is much slower than symmetric, so this is always the weak point)\n\nIf you are only doing a symmetric ciphers (crypto_box) or a signature or two,\nthen performance is probably not a problem. If you are veryify _many_ signatures,\nperformance _may_ be a problem. Bear in mind that an asymetric operation\n(sign, verify, scalarmult, keygen) are usually 50 times slower than a symmetric operation,\nsay a hash.\n\nSee [sodiumperf](https://github.com/dominictarr/sodiumperf) performance comparisons.\n\nto run chloride in performance mode, load via\n\n``` js\nvar chloride = require('chloride')\n```\nto run in low size mode\n\n``` js\nvar chloride = require('chloride/small')\n```\n\nThis only applies to enviroments that only support javascript.\nIf you are running this on the server and could compile sodium,\nthen you have the same fast crypto either way.\n\n## License\n\nMIT\n"
+}

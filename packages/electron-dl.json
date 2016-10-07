@@ -1,6 +1,6 @@
 {
   "name": "electron-dl",
-  "version": "1.2.0",
+  "version": "1.5.0",
   "description": "Simplified file downloads for your Electron app",
   "license": "MIT",
   "repository": {
@@ -36,8 +36,11 @@
     "downloader",
     "progress"
   ],
+  "dependencies": {
+    "unused-filename": "^0.1.0"
+  },
   "devDependencies": {
-    "electron-prebuilt": "^1.0.2",
+    "electron": "^1.3.3",
     "xo": "*"
   },
   "xo": {
@@ -45,17 +48,20 @@
     "envs": [
       "node",
       "browser"
-    ]
+    ],
+    "rules": {
+      "import/no-extraneous-dependencies": "off"
+    }
   },
-  "gitHead": "d0d91def1680560698671d75e0c30bcf9803790a",
+  "gitHead": "02844f07b71db3ca45605899e94a664478d012a1",
   "homepage": "https://github.com/sindresorhus/electron-dl#readme",
-  "_npmVersion": "2.15.0",
-  "_nodeVersion": "4.4.2",
+  "_npmVersion": "2.15.9",
+  "_nodeVersion": "4.5.0",
   "dist": {
-    "shasum": "824ea6a0125b90e110caf6bc7e63043b39f303de",
-    "tarball": "http://registry.npmjs.org/electron-dl/-/electron-dl-1.2.0.tgz"
+    "shasum": "b58d654e53eb2b58790dd6fb44942bed1af7c1b6",
+    "tarball": "http://registry.npmjs.org/electron-dl/-/electron-dl-1.5.0.tgz"
   },
-  "stars": 4,
+  "stars": 5,
   "versions": [
     {
       "number": "0.1.0",
@@ -76,10 +82,22 @@
     {
       "number": "1.2.0",
       "date": "2016-06-04T10:08:33.936Z"
+    },
+    {
+      "number": "1.3.0",
+      "date": "2016-07-22T21:46:36.875Z"
+    },
+    {
+      "number": "1.4.0",
+      "date": "2016-08-27T15:48:47.089Z"
+    },
+    {
+      "number": "1.5.0",
+      "date": "2016-08-28T11:25:23.691Z"
     }
   ],
   "created": "2015-11-18T08:12:34.521Z",
-  "modified": "2016-06-04T10:08:33.936Z",
+  "modified": "2016-08-28T11:25:23.691Z",
   "lastPublisher": {
     "name": "sindresorhus",
     "email": "sindresorhus@gmail.com"
@@ -90,5 +108,5 @@
       "email": "sindresorhus@gmail.com"
     }
   ],
-  "readme": "# electron-dl [![Build Status](https://travis-ci.org/sindresorhus/electron-dl.svg?branch=master)](https://travis-ci.org/sindresorhus/electron-dl)\n\n> Simplified file downloads for your [Electron](http://electron.atom.io) app\n\n\n## Why?\n\n- One function call instead of having to manually implement a lot of [boilerplate](index.js).\n- Saves the file to the users Downloads directory instead of prompting.\n- Bounces the Downloads directory in the dock when done. *(OS X)*\n- Shows download progress. Example on OS X:\n\n<img src=\"screenshot.png\" width=\"82\">\n\n\n## Install\n\n```\n$ npm install --save electron-dl\n```\n\n\n## Usage\n\n### Register it for all windows\n\nThis is probably what you want for your app.\n\n```js\nconst {app, BrowserWindow} = require('electron');\n\nrequire('electron-dl')();\n\nlet win;\n\napp.on('ready', () => {\n\twin = new BrowserWindow();\n});\n```\n\n### Use it manually\n\nThis can be useful if you need download functionality in a reusable module.\n\n```js\nconst {app, BrowserWindow, ipcMain} = require('electron');\nconst {download} = require('electron-dl');\n\nipcMain.on('download-btn', (e, args) => {\n\tdownload(BrowserWindow.getFocusedWindow(), args.url);\n});\n```\n\n\n## License\n\nMIT © [Sindre Sorhus](https://sindresorhus.com)\n"
+  "readme": "# electron-dl [![Build Status](https://travis-ci.org/sindresorhus/electron-dl.svg?branch=master)](https://travis-ci.org/sindresorhus/electron-dl)\n\n> Simplified file downloads for your [Electron](http://electron.atom.io) app\n\n\n## Why?\n\n- One function call instead of having to manually implement a lot of [boilerplate](index.js).\n- Saves the file to the users Downloads directory instead of prompting.\n- Bounces the Downloads directory in the dock when done. *(macOS)*\n- Shows download progress. Example on macOS:\n\n<img src=\"screenshot.png\" width=\"82\">\n\n\n## Install\n\n```\n$ npm install --save electron-dl\n```\n\n\n## Usage\n\n### Register it for all windows\n\nThis is probably what you want for your app.\n\n```js\nconst {app, BrowserWindow} = require('electron');\n\nrequire('electron-dl')();\n\nlet win;\n\napp.on('ready', () => {\n\twin = new BrowserWindow();\n});\n```\n\n### Use it manually\n\nThis can be useful if you need download functionality in a reusable module.\n\n```js\nconst {app, BrowserWindow, ipcMain} = require('electron');\nconst {download} = require('electron-dl');\n\nipcMain.on('download-btn', (e, args) => {\n\tdownload(BrowserWindow.getFocusedWindow(), args.url)\n\t\t.then(dl => console.log(dl.getSavePath()))\n\t\t.catch(console.error);\n});\n```\n\n## API\n\n### electronDl([options])\n\n### electronDl.download(window, url, [options]): Promise<[DownloadItem](https://github.com/electron/electron/blob/master/docs/api/download-item.md)>\n\n### window\n\nType: `BrowserWindow`\n\nWindow to register the behavior on.\n\n### url\n\nType: `string`\n\nURL to download.\n\n### options\n\n#### saveAs\n\nType: `boolean`<br>\nDefault: `false`\n\nShow a `Save As…` dialog instead of downloading immediately.\n\nNote: Only use this option when strictly necessary. Downloading directly without a prompt is a much better user experience.\n\n#### directory\n\nType: `string`<br>\nDefault: [User's downloads directory](http://electron.atom.io/docs/api/app/#appgetpathname)\n\nDirectory to save the file in.\n\n\n## Related\n\n- [electron-debug](https://github.com/sindresorhus/electron-debug) - Adds useful debug features to your Electron app\n- [electron-context-menu](https://github.com/sindresorhus/electron-context-menu) - Context menu for your Electron app\n- [electron-config](https://github.com/sindresorhus/electron-config) - Simple config handling for your Electron app or module\n\n\n## License\n\nMIT © [Sindre Sorhus](https://sindresorhus.com)\n"
 }

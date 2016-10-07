@@ -1,0 +1,147 @@
+{
+  "name": "trilogy",
+  "version": "0.9.2",
+  "description": "100% pure JS SQLite, built on Knex & SQL.js",
+  "main": "dist/trilogy.js",
+  "jsnext:main": "dist/trilogy.mjs",
+  "scripts": {
+    "prebuild": "eslint src tests",
+    "build": "rimraf dist/** && rollup -c && npm run docs",
+    "watch": "rimraf dist/** && rollup -c -w",
+    "pretest": "npm run build",
+    "test": "ava",
+    "flow": "flow check",
+    "docs": "rimraf docs/** && jsdoc -c .jsdoc.json",
+    "pages": "git subtree split --prefix docs -b gh-pages && git push -f origin gh-pages:gh-pages && git branch -D gh-pages",
+    "prepublish": "npm test",
+    "commit": "git-cz"
+  },
+  "repository": {
+    "user": "citycide",
+    "repo": "trilogy",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/citycide/trilogy/tarball/master",
+    "clone_url": "https://github.com/citycide/trilogy",
+    "https_url": "https://github.com/citycide/trilogy",
+    "travis_url": "https://travis-ci.org/citycide/trilogy",
+    "zip_url": "https://github.com/citycide/trilogy/archive/master.zip",
+    "api_url": "https://api.github.com/repos/citycide/trilogy"
+  },
+  "keywords": [
+    "es6",
+    "es2015",
+    "es2016",
+    "modules",
+    "rollup",
+    "knex",
+    "sqlite",
+    "sql.js"
+  ],
+  "author": {
+    "name": "citycide"
+  },
+  "license": "MIT",
+  "files": [
+    "src",
+    "dist",
+    "flow"
+  ],
+  "homepage": "https://github.com/citycide/trilogy#readme",
+  "dependencies": {
+    "arify": "^0.6.1",
+    "babel-runtime": "^6.11.6",
+    "fs-jetpack": "^0.9.2",
+    "is-plain-obj": "^1.1.0",
+    "knex": "^0.11.10",
+    "lodash.foreach": "^4.5.0",
+    "native-or-lie": "^1.0.2",
+    "sql.js": "^0.3.2"
+  },
+  "devDependencies": {
+    "ava": "^0.16.0",
+    "babel-core": "^6.13.2",
+    "babel-eslint": "^6.1.0",
+    "babel-plugin-syntax-flow": "^6.13.0",
+    "babel-plugin-transform-flow-strip-types": "^6.14.0",
+    "babel-plugin-transform-runtime": "^6.15.0",
+    "babel-preset-es2015": "^6.14.0",
+    "babel-preset-stage-0": "^6.5.0",
+    "babel-register": "^6.14.0",
+    "commitizen": "^2.8.6",
+    "cz-conventional-changelog": "^1.1.6",
+    "docdash": "^0.4.0",
+    "eslint": "^3.5.0",
+    "eslint-config-standard": "^6.0.0",
+    "eslint-plugin-babel": "^3.3.0",
+    "eslint-plugin-flowtype": "^2.17.1",
+    "eslint-plugin-promise": "^2.0.1",
+    "eslint-plugin-standard": "^2.0.0",
+    "flow-bin": "^0.32.0",
+    "jsdoc": "3.4.0",
+    "jsdoc-babel": "^0.2.1",
+    "jsdoc-strip-async-await": "^0.1.0",
+    "rimraf": "^2.5.4",
+    "rollup": "^0.34.10",
+    "rollup-plugin-babel": "^2.6.1",
+    "rollup-watch": "^2.5.0"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  },
+  "ava": {
+    "files": [
+      "tests/**/*.js"
+    ],
+    "verbose": true
+  },
+  "gitHead": "018779bd5acab70eb1f4f384c1cbc893534ba830",
+  "_npmVersion": "3.8.5",
+  "_nodeVersion": "6.3.0",
+  "dist": {
+    "shasum": "7fea138a5776369bb63a0fc0bf5e5a95215203b5",
+    "tarball": "http://registry.npmjs.org/trilogy/-/trilogy-0.9.2.tgz"
+  },
+  "versions": [
+    {
+      "number": "0.5.0",
+      "date": "2016-07-27T08:27:23.471Z"
+    },
+    {
+      "number": "0.7.0",
+      "date": "2016-08-15T01:23:40.481Z"
+    },
+    {
+      "number": "0.7.1",
+      "date": "2016-08-15T02:53:20.734Z"
+    },
+    {
+      "number": "0.8.2",
+      "date": "2016-08-23T06:29:41.961Z"
+    },
+    {
+      "number": "0.9.1",
+      "date": "2016-09-13T04:21:27.960Z"
+    },
+    {
+      "number": "0.9.2",
+      "date": "2016-09-14T05:25:17.501Z"
+    }
+  ],
+  "created": "2016-07-27T08:27:23.471Z",
+  "modified": "2016-09-14T05:25:17.501Z",
+  "lastPublisher": {
+    "name": "citycide",
+    "email": "thecitycide@gmail.com"
+  },
+  "owners": [
+    {
+      "name": "citycide",
+      "email": "thecitycide@gmail.com"
+    }
+  ],
+  "readme": "<p align=\"center\">\r\n  <img src=\"https://rawgit.com/citycide/trilogy/master/media/logo.svg\" width=\"420\" alt=\"trilogy\">\r\n  <br>\r\n  <a href=\"https://www.npmjs.com/package/trilogy\"><img src=\"https://img.shields.io/npm/v/trilogy.svg?style=flat-square\" alt=\"Version\"></a>\r\n  <a href=\"https://www.npmjs.com/package/trilogy\"><img src=\"https://img.shields.io/npm/l/trilogy.svg?style=flat-square\" alt=\"License\"></a>\r\n  <a href=\"https://travis-ci.org/citycide/trilogy\"><img src=\"https://img.shields.io/travis/citycide/trilogy.svg?style=flat-square\" alt=\"Travis CI\"></a>\r\n  <a href=\"https://standardjs.com\"><img src=\"https://img.shields.io/badge/code%20style-standard-brightgreen.svg?style=flat-square\" alt=\"JavaScript Standard Style\"></a>\r\n</p>\r\n\r\n> ***trilogy*** is SQLite - but 100% pure JavaScript. Its core is built on two modules: [SQL.js][sqljs] for accessing and writing to database files and [knex][knex] for building its queries.\r\n\r\n## Why?\r\n\r\n- No need for `node-gyp` or `node-pre-gyp`\r\n\r\n  You can stop building and rebuilding `sqlite3` for every platform - we already have a JS-only implementation in `SQL.js`. Forget about gyp or pre-gyp compilation issues. This is especially helpful when developing multi-platform applications in [Electron][electron] or [NW.js][nwjs].\r\n\r\n- No long, unwieldy SQLite query strings\r\n\r\n  `knex` can do the job easier and in a more JS-friendly syntax. We just need to bridge the gaps between JavaScript & SQLite and `knex` and `SQL.js`.\r\n\r\n- Simple database embedding\r\n\r\n  Combine SQLite's relational power with the simplicity of something like the `nedb` embedded database. That's what you get when you use trilogy. Since trilogy doesn't require any kind of build-step ala `sqlite3`, your build steps can be simpler.\r\n  \r\n- Powerful polymorphic API\r\n\r\n  trilogy's API can let you do your thing in different ways. You can overload most of the functions to use them in varying ways by providing different arguments or leaving them out entirely. This is built using [arify][arify].\r\n\r\n## Installation\r\n\r\n`npm i trilogy`\r\n\r\n## Usage\r\n\r\nSee the [documentation here][docs] for the full API - including usage syntax and examples.\r\n\r\n## Contributing\r\n\r\nI am open to input and discussion about the project. Feel free to open an issue or submit a pull request. For large changes, please open an issue to discuss the revisions first.\r\n\r\n## License\r\n\r\nMIT © Bo Lingen / citycide\r\n\r\nSee [LICENSE](LICENSE)\r\n\r\n[sqljs]: https://github.com/kripken/sql.js\r\n[knex]: https://github.com/tgriesser/knex\r\n[electron]: https://github.com/electron/electron\r\n[nwjs]: https://github.com/nwjs/nw.js\r\n[arify]: https://github.com/citycide/arify\r\n[docs]: https://citycide.github.io/trilogy\r\n[mdnslice]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/slice\r\n"
+}

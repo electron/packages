@@ -1,11 +1,13 @@
 {
   "name": "uupaa.uri.js",
-  "version": "0.10.3",
+  "version": "0.10.5",
   "description": "URL parse and build.",
   "url": "https://github.com/uupaa/URI.js",
   "keywords": [
     "URL",
     "URI",
+    "URLSearchParams",
+    "URISearchParams",
     "uupaa",
     "WebModule"
   ],
@@ -54,36 +56,36 @@
     "browser": {
       "output": "release/URI.b.min.js",
       "source": [
-        "lib/URI.js",
-        "lib/URISearchParams.js"
+        "lib/URISearchParams.js",
+        "lib/URI.js"
       ]
     },
     "worker": {
       "output": "release/URI.w.min.js",
       "source": [
-        "lib/URI.js",
-        "lib/URISearchParams.js"
+        "lib/URISearchParams.js",
+        "lib/URI.js"
       ]
     },
     "node": {
       "output": "release/URI.n.min.js",
       "source": [
-        "lib/URI.js",
-        "lib/URISearchParams.js"
+        "lib/URISearchParams.js",
+        "lib/URI.js"
       ]
     },
     "nw": {
       "output": "release/URI.nw.min.js",
       "source": [
-        "lib/URI.js",
-        "lib/URISearchParams.js"
+        "lib/URISearchParams.js",
+        "lib/URI.js"
       ]
     },
     "el": {
       "output": "release/URI.el.min.js",
       "source": [
-        "lib/URI.js",
-        "lib/URISearchParams.js"
+        "lib/URISearchParams.js",
+        "lib/URI.js"
       ]
     }
   },
@@ -96,12 +98,12 @@
   },
   "license": "MIT",
   "contributors": [],
-  "gitHead": "6573f595f234737bac3f3167247a6236ac239db6",
+  "gitHead": "8b9c5c7ed875002d44f052eef2a76e2fdc3136d2",
   "homepage": "https://github.com/uupaa/URI.js",
   "_npmVersion": "2.0.0",
   "dist": {
-    "shasum": "cba920f3b476cdcba8da577cd0bef95bad5c313c",
-    "tarball": "http://registry.npmjs.org/uupaa.uri.js/-/uupaa.uri.js-0.10.3.tgz"
+    "shasum": "840ff56168fd67e08cb7092f0aa1c6d2d443edb1",
+    "tarball": "http://registry.npmjs.org/uupaa.uri.js/-/uupaa.uri.js-0.10.5.tgz"
   },
   "versions": [
     {
@@ -235,10 +237,18 @@
     {
       "number": "0.10.3",
       "date": "2016-06-26T11:27:57.537Z"
+    },
+    {
+      "number": "0.10.4",
+      "date": "2016-09-13T21:01:39.766Z"
+    },
+    {
+      "number": "0.10.5",
+      "date": "2016-09-13T23:33:26.082Z"
     }
   ],
   "created": "2014-01-20T18:07:22.989Z",
-  "modified": "2016-06-26T11:27:57.537Z",
+  "modified": "2016-09-13T23:33:26.082Z",
   "lastPublisher": {
     "name": "uupaa",
     "email": "uupaa.js@gmail.com"
@@ -249,5 +259,5 @@
       "email": "uupaa.js@gmail.com"
     }
   ],
-  "readme": "# URI.js [![Build Status](https://travis-ci.org/uupaa/URI.js.svg)](https://travis-ci.org/uupaa/URI.js)\n\n[![npm](https://nodei.co/npm/uupaa.uri.js.svg?downloads=true&stars=true)](https://nodei.co/npm/uupaa.uri.js/)\n\nURL parse and build.\n\n\nThis module made of [WebModule](https://github.com/uupaa/WebModule).\n\n## Documentation\n- [Spec](https://github.com/uupaa/URI.js/wiki/)\n- [API Spec](https://github.com/uupaa/URI.js/wiki/URI)\n\n## Browser, NW.js and Electron\n\n```js\n<script src=\"<module-dir>/lib/WebModule.js\"></script>\n<script src=\"<module-dir>/lib/URI.js\"></script>\n<script>\nvar urlObject = WebModule.URI(\"http://user:pass@example.com:8080/dir1/dir2/file.ext?a=b;c=d#hash\");\n\n// urlObject = {\n//     href:       \"http://user:pass@example.com:8080/dir1/dir2/file.ext?a=b;c=d#hash\",\n//     protocol:   \"http:\",\n//     origin:     \"http://example.com:8080\",\n//     host:       \"example.com:8080\",\n//     hostname:   \"example.com\",\n//     port:       \"8080\",\n//     username:   \"user\",\n//     password:   \"pass\",\n//     pathname:   \"/dir1/dir2/file.ext\",\n//     search:     \"?a=b;c=d\",\n//     hash:       \"#hash\",\n//     // --- extras properties ---\n//     scheme:     \"http:\",\n//     path:       \"/dir1/dir2/file.ext?a=b;c=d\",\n//     dir:        \"/dir1/dir2/\",                // [!] has last slash\n//     file:       \"file.ext\",\n//     fragment:   \"#fragment\"\n// };\n\n</script>\n```\n\n## WebWorkers\n\n```js\nimportScripts(\"<module-dir>lib/WebModule.js\");\nimportScripts(\"<module-dir>lib/URI.js\");\n\n```\n\n## Node.js\n\n```js\nrequire(\"<module-dir>lib/WebModule.js\");\nrequire(\"<module-dir>lib/URI.js\");\n\n```\n\n"
+  "readme": "# URI.js [![Build Status](https://travis-ci.org/uupaa/URI.js.svg)](https://travis-ci.org/uupaa/URI.js)\n\n[![npm](https://nodei.co/npm/uupaa.uri.js.svg?downloads=true&stars=true)](https://nodei.co/npm/uupaa.uri.js/)\n\nURL parse and build.\n\n\nThis module made of [WebModule](https://github.com/uupaa/WebModule).\n\n## Documentation\n- [Spec](https://github.com/uupaa/URI.js/wiki/)\n- [API Spec](https://github.com/uupaa/URI.js/wiki/URI)\n\n## Browser, NW.js and Electron\n\n```js\n<script src=\"<module-dir>/lib/WebModule.js\"></script>\n<script src=\"<module-dir>/lib/URISearchParams.js\"></script>\n<script src=\"<module-dir>/lib/URI.js\"></script>\n<script>\nvar urlObject = WebModule.URI(\"http://user:pass@example.com:8080/dir1/dir2/file.ext?a=b;c=d#hash\");\n\n// urlObject = {\n//     href:         \"http://user:pass@example.com:8080/dir1/dir2/file.ext?a=b;c=d#hash\",\n//     preifx:       \"\",\n//     protocol:     \"http:\",\n//     origin:       \"http://example.com:8080\",\n//     host:         \"example.com:8080\",\n//     hostname:     \"example.com\",\n//     port:         \"8080\",\n//     username:     \"user\",\n//     password:     \"pass\",\n//     pathname:     \"/dir1/dir2/file.ext\",\n//     search:       \"?a=b;c=d\",\n//     hash:         \"#hash\",\n//     // --- extras properties ---\n//     params:       new URISearchParams(\"a=b;c=d\"),\n//     scheme:       \"http:\",\n//     path:         \"/dir1/dir2/file.ext?a=b;c=d\",\n//     dir:          \"/dir1/dir2/\",                // [!] has last slash\n//     file:         \"file.ext\",\n//     fragment:     \"#fragment\"\n// };\n\n</script>\n```\n\n## WebWorkers\n\n```js\nimportScripts(\"<module-dir>lib/WebModule.js\");\nimportScripts(\"<module-dir>lib/URISearchParams.js\");\nimportScripts(\"<module-dir>lib/URI.js\");\n\n```\n\n## Node.js\n\n```js\nrequire(\"<module-dir>lib/WebModule.js\");\nrequire(\"<module-dir>lib/URISearchParams.js\");\nrequire(\"<module-dir>lib/URI.js\");\n\n```\n\n"
 }

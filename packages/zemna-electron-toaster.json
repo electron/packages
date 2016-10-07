@@ -1,0 +1,63 @@
+{
+  "name": "zemna-electron-toaster",
+  "version": "1.0.0",
+  "description": "A simple toaster for electron",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "bump": "npm version patch && git push && git push --tags && npm publish"
+  },
+  "repository": {
+    "user": "zemna",
+    "repo": "electron-toaster",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/zemna/electron-toaster/tarball/master",
+    "clone_url": "https://github.com/zemna/electron-toaster",
+    "https_url": "https://github.com/zemna/electron-toaster",
+    "travis_url": "https://travis-ci.org/zemna/electron-toaster",
+    "zip_url": "https://github.com/zemna/electron-toaster/archive/master.zip",
+    "api_url": "https://api.github.com/repos/zemna/electron-toaster"
+  },
+  "keywords": [
+    "electron",
+    "toaster",
+    "notify",
+    "desktop-notification"
+  ],
+  "author": {
+    "name": "zemna",
+    "email": "zemna@zemna.net",
+    "url": "https://github.com/zemna"
+  },
+  "license": "MIT",
+  "homepage": "https://github.com/zemna/electron-toaster#readme",
+  "gitHead": "2d63feee72381591ec4b20aeac238e6b22288c46",
+  "_npmVersion": "3.10.3",
+  "_nodeVersion": "4.4.5",
+  "dist": {
+    "shasum": "3dbc3a53d554e68ca67826d420931d03c588193d",
+    "tarball": "http://registry.npmjs.org/zemna-electron-toaster/-/zemna-electron-toaster-1.0.0.tgz"
+  },
+  "stars": 1,
+  "versions": [
+    {
+      "number": "1.0.0",
+      "date": "2016-07-14T00:14:32.495Z"
+    }
+  ],
+  "created": "2016-07-14T00:14:32.495Z",
+  "modified": "2016-07-14T00:14:32.495Z",
+  "lastPublisher": {
+    "name": "zemna",
+    "email": "zemna@zemna.net"
+  },
+  "owners": [
+    {
+      "name": "zemna",
+      "email": "zemna@zemna.net"
+    }
+  ],
+  "readme": "# Installation\r\n\r\n```bash\r\n$ npm install electron-toaster;\r\n```\r\n\r\n# Usage\r\n\r\n```javascript\r\n// In main process.\r\nvar app = require('app');  // Module to control application life.\r\nvar BrowserWindow = require('browser-window');  // Module to create native browser window.\r\n\r\nvar Toaster = require('electron-toaster');\r\nvar toaster = new Toaster();\r\n\r\n// Keep a global reference of the window object, if you don't, the window will\r\n// be closed automatically when the javascript object is GCed.\r\nvar mainWindow = null;\r\n\r\napp.on('window-all-closed', function() {\r\n\tif (process.platform !== 'darwin'){\r\n\t\tapp.quit();\r\n\t}\r\n});\r\n\r\napp.on('ready', function() {\r\n\tmainWindow = new BrowserWindow({});\r\n\ttoaster.init(mainWindow);\r\n\r\n  \tmainWindow.on('devtools-opened', function() {\r\n        mainWindow.loadUrl('file://' + __dirname + '/index.html');\r\n    });\r\n\r\n\tmainWindow.on('closed', function() {\r\n\t\tmainWindow = null;\r\n\t});\r\n});\r\n```\r\n\r\n\r\n```javascript\r\n// In renderer process (web page).\r\n\r\nvar ipc = require(\"electron\").ipcRenderer;\r\nvar msg = {\r\n    title : \"Awesome!\",\r\n    message : \"Check this out!<br>Check this out!<br>Check this out!<br>Check this out!<br>Check this out!<br>Check this out!<br>\",\r\n    detail : \"PI is equal to 3! - 0.0<br>PI is equal to 3! - 0.0<br>PI is equal to 3! - 0.0<br>PI is equal to 3! - 0.0<br>\",\r\n    width : 440,\r\n    // height : 160, window will be autosized\r\n    timeout : 6000,\r\n    focus: true // set focus back to main window\r\n};\r\nipc.send('electron-toaster-message', msg);\r\n```\r\n\r\n![screenshot](/screenshot.png)\r\n"
+}

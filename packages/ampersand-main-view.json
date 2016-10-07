@@ -1,0 +1,102 @@
+{
+  "name": "ampersand-main-view",
+  "description": "A view providing helpers to initialize and manage the main view of your single-page app",
+  "version": "1.0.3",
+  "author": {
+    "name": "Luke Karrys",
+    "email": "luke@lukekarrys.com"
+  },
+  "browser": "ampersand-main-view.js",
+  "dependencies": {
+    "ampersand-dom": "^1.5.0",
+    "ampersand-router": "^4.0.0",
+    "ampersand-view": "^10.0.1",
+    "ampersand-view-switcher": "^2.1.0",
+    "local-links": "^1.4.0",
+    "lodash": "^4.14.1"
+  },
+  "devDependencies": {
+    "browserify": "^13.1.0",
+    "domready": "^1.0.8",
+    "electron-prebuilt": "^1.3.2",
+    "hapi": "^14.1.0",
+    "jshint": "^2.9.2",
+    "moonboots_hapi": "^7.0.0",
+    "precommit-hook": "^3.0.0",
+    "run-browser": "^2.0.2",
+    "tap-spec": "^4.1.1",
+    "tape": "^4.6.0",
+    "tape-run": "^2.1.4"
+  },
+  "homepage": "https://github.com/lukekarrys/ampersand-main-view",
+  "keywords": [
+    "ampersand",
+    "ampersand-router",
+    "ampersand-view"
+  ],
+  "license": "MIT",
+  "main": "ampersand-main-view.js",
+  "pre-commit": [
+    "lint",
+    "test",
+    "validate"
+  ],
+  "repository": {
+    "user": "lukekarrys",
+    "repo": "ampersand-main-view",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/lukekarrys/ampersand-main-view/tarball/master",
+    "clone_url": "https://github.com/lukekarrys/ampersand-main-view",
+    "https_url": "https://github.com/lukekarrys/ampersand-main-view",
+    "travis_url": "https://travis-ci.org/lukekarrys/ampersand-main-view",
+    "zip_url": "https://github.com/lukekarrys/ampersand-main-view/archive/master.zip",
+    "api_url": "https://api.github.com/repos/lukekarrys/ampersand-main-view"
+  },
+  "scripts": {
+    "demo": "node sample/server",
+    "lint": "jshint .",
+    "start": "run-browser test/*",
+    "test": "browserify test/*.js | tape-run | tap-spec",
+    "validate": "npm ls"
+  },
+  "gitHead": "c7564d2c9efa3a61c4f53f8f4dc20f8460eb65ff",
+  "_npmVersion": "3.10.5",
+  "_nodeVersion": "5.12.0",
+  "dist": {
+    "shasum": "036c4d4b48e6741539ca2457ea5290c541e4295b",
+    "tarball": "http://registry.npmjs.org/ampersand-main-view/-/ampersand-main-view-1.0.3.tgz"
+  },
+  "versions": [
+    {
+      "number": "1.0.0",
+      "date": "2015-01-11T05:21:34.414Z"
+    },
+    {
+      "number": "1.0.1",
+      "date": "2015-03-31T21:47:23.445Z"
+    },
+    {
+      "number": "1.0.2",
+      "date": "2016-08-06T06:21:59.604Z"
+    },
+    {
+      "number": "1.0.3",
+      "date": "2016-08-06T20:23:01.649Z"
+    }
+  ],
+  "created": "2015-01-11T05:21:34.414Z",
+  "modified": "2016-08-06T20:23:01.649Z",
+  "lastPublisher": {
+    "name": "lukekarrys",
+    "email": "luke@lukekarrys.com"
+  },
+  "owners": [
+    {
+      "name": "lukekarrys",
+      "email": "luke@lukekarrys.com"
+    }
+  ],
+  "readme": "ampersand-main-view\n===================\n\n[![Build Status](https://travis-ci.org/lukekarrys/ampersand-main-view.png?branch=master)](https://travis-ci.org/lukekarrys/ampersand-main-view)\n\n[![NPM](https://nodei.co/npm/ampersand-main-view.png)](https://nodei.co/npm/ampersand-main-view/)\n\nA view providing helpers to initialize and manage the main view of your single-page app.\n\n\n## Install\n\n`npm install ampersand-main-view --save`\n\n\n## Why\n\nThere is a fair amount that happens every time I start up a new [`ampersandjs`](http://ampersandjs.com/)\nproject. This aims to be a starting point for a basic main view that you would have in your app.\nIt handles link clicks, navigation, intial rendering to the body, routing, page switching,\nand navigation link activating.\n\n\n## What does it do?\n\nGlad you asked! When you initialize an `ampersand-main-view` it will:\n\n1. Create an `amperand-router` with the `router` options you pass in\n2. Add a helper funciton to the router called `triggerPage`\n3. Render itself\n5. Initialize an [`ampersand-view-switcher`](https://www.npmjs.org/package/ampersand-view-switcher) for the `pageRegion`\n6. Start the router\n\nAfter all that is done, the newly created router will start the clientside routing\nflow. You can call `this.triggerPage(pageInstance)` from inside any router\nfunction, and it will initialize that `pageInstance` inside the `pageRegion`.\n\nThat's a high-level overviewg of what it does. Check out the API reference below\nto see what each function does.\n\n\n\n## API\n\n### Options\n\n```js\n// Defaults\nnew MainView({\n    pageEvent: 'newPage',\n    pageRegion: '[data-hook=\"page\"]',\n    pageOptions: {},\n    navRegion: '[data-hook=\"navigation\"]',\n    navItem: 'a',\n    navActiveClass: 'active',\n    router: {}\n});\n```\n\n#### `pageEvent` (String, default: `newPage`)\n\nThis is the event that will be trigged on the `router` when `router.triggerPage`\nis called. You shouldn't have to change this unless it is conficting with an\nalready existing event on the views in your app.\n\n#### `pageRegion` (selector String or HTMLElement, default: `[data-hook=page]`)\n\nThis is the element on the page where the view switcher will swap out pages.\n\n#### `pageOptions` (Object, default: `{}`)\n\nThese options will be passed as the second argument to the view switcher. Check\nout the [`ampersand-view-switcher` API](https://github.com/ampersandjs/ampersand-view-switcher#api-reference)\nfor more reference.\n\n#### `navRegion` (selector String or HTMLElement, default: `[data-hook=navigation]`)\n\nThis is the element on the page with `navItem`s. `navItem`s will be\ntoggled with the `navActiveClass` based on if their `pathname` matches the\ncurrent page's pathname. Set to a falsy value to cancel all nav updating.\n\n#### `navItem` (selector String, default: `a`)\n\nThis is the selector that will be used to find all the navigation links within\nthe `navRegion`.  Set to a falsy value to cancel all nav updating.\n\n#### `navActiveClass` (String, default: 'active')\n\nThis is a class name which will be added to `navItem`s in the `navRegion`.\n Set to a falsy value to cancel all nav updating.\n\n#### `router` (Object or Router, default: `{}`)\n\nThis object will be passed directly to `Router.extend` and then initialized. If\nyou pass in a Router, it won't be initiliazed again. \n\n\n\n### Router Methods\n\n#### `router.triggerPage(pageInstance)`\n\nThis method can be called on the router to make a new page. This allows you to do\nsomething like this in the `router` options that you pass to the main view:\n\n```js\nnew MainView({\n    router: {\n        routes: {\n            '': 'index',\n            'users': 'users'\n        },\n        index: function () {\n            this.triggerPage(new HomePage());\n        },\n        users: function () {\n            this.triggerPage(new UsersPage());\n        }\n    }\n});\n```\n\n\n\n### View Methods\n\nThe main idea behind `ampersand-main-view` is to have some sane defaults for the\nmain view of your app. All the methods below can be overridden with `extend` should\nyou need more flexibility.\n\n#### Initialization Methods\n##### `startViewSwitcher`\n##### `startRouter`\n\n#### Page Handling Methods\n##### `updatePage`\n\n#### Navigation Methods\n##### `updateNav`\n##### `setActiveNavItems`\n##### `setActiveNavItem`\n##### `isNavItemActive`\n\n#### Route Handling Methods\n##### `handleLinkClick`\n##### `handleHashLinkClick`\n##### `navigate`"
+}

@@ -1,0 +1,93 @@
+{
+  "name": "electron-forge",
+  "version": "0.0.2",
+  "description": "A complete tool for building modern Electron applications",
+  "main": "index.js",
+  "bin": {
+    "electron-forge": "dist/cli.js"
+  },
+  "scripts": {
+    "build": "gulp build",
+    "lint": "eslint src",
+    "prepublish": "npm run build",
+    "test": "npm run lint && mocha test --compilers js:babel-register",
+    "watch": "gulp watch"
+  },
+  "author": {
+    "name": "Samuel Attard"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "babel-eslint": "^7.0.0",
+    "babel-plugin-syntax-async-functions": "^6.13.0",
+    "babel-plugin-transform-async-to-module-method": "^6.16.0",
+    "babel-plugin-transform-runtime": "^6.15.0",
+    "babel-preset-es2015": "^6.16.0",
+    "babel-register": "^6.16.3",
+    "chai": "^3.5.0",
+    "eslint": "^3.7.1",
+    "eslint-config-airbnb-base": "^8.0.0",
+    "eslint-plugin-import": "^1.16.0",
+    "gulp": "^3.9.1",
+    "gulp-babel": "^6.1.2",
+    "mocha": "^3.1.0"
+  },
+  "babel": {
+    "presets": [
+      "es2015"
+    ],
+    "plugins": [
+      "transform-runtime",
+      "syntax-async-functions",
+      [
+        "transform-async-to-module-method",
+        {
+          "module": "bluebird",
+          "method": "coroutine"
+        }
+      ]
+    ]
+  },
+  "dependencies": {
+    "bluebird": "^3.4.6",
+    "colors": "^1.1.2",
+    "commander": "^2.9.0",
+    "fs-promise": "^0.5.0",
+    "inquirer": "^1.2.1",
+    "log-symbols": "^1.0.2",
+    "mkdirp": "^0.5.1",
+    "ora": "^0.3.0",
+    "semver": "^5.3.0",
+    "username": "^2.2.2"
+  },
+  "gitHead": "4ce914fbd3e3dfc74a443406ec95d51643371ade",
+  "_npmVersion": "3.10.5",
+  "_nodeVersion": "6.3.1",
+  "dist": {
+    "shasum": "ebbb5d11c2a731cfbf6ea0070f401854423b2edc",
+    "tarball": "http://registry.npmjs.org/electron-forge/-/electron-forge-0.0.2.tgz"
+  },
+  "versions": [
+    {
+      "number": "0.0.1",
+      "date": "2016-10-05T15:09:34.738Z"
+    },
+    {
+      "number": "0.0.2",
+      "date": "2016-10-05T15:38:24.836Z"
+    }
+  ],
+  "created": "2016-10-05T15:09:34.738Z",
+  "modified": "2016-10-05T15:38:24.836Z",
+  "lastPublisher": {
+    "name": "marshallofsound",
+    "email": "samuel.r.attard@gmail.com"
+  },
+  "owners": [
+    {
+      "name": "marshallofsound",
+      "email": "samuel.r.attard@gmail.com"
+    }
+  ],
+  "readme": "Electron Forge\n--------------\n[![Build Status](https://travis-ci.org/MarshallOfSound/electron-forge.svg?branch=master)](https://travis-ci.org/MarshallOfSound/electron-forge)\n\n> The simple way to get started with Electron\n\n# Let's do it!\n\n```bash\nnpm install -g electron-forge\nelectron-forge init my-new-app\ncd my-new-app\nelectron-forge start\n```\n\n# Urgh, really...  Another build tool\n\nFunnily enough, no :D.  This is not another build tool, `electron-forge` simply\nunifies the existing (and well maintained) build tools for Electron development\ninto one, simple, easy to use package so that anyone can just jump right in\nto Electron development.\n\n# So what's the point\n\nThis project has a few main goals.\n\n1. Starting with Electron should be as simple as a single command\n2. Developers shouldn't have to worry about `babel`, `browserify`, `webpack` or\nany of that nonsense.  Everything should just work for them out of the box.\n3. Everything from creating the project to packaging the project for release\nshould be handled by one dependency in a standard way while still offering users\nmaximum choice and freedom.\n\nWith these goals in mind, under the hood this project uses\n[`electron-compile`](https://github.com/electron/electron-compile).  A tool\nthat lets you use modern and futuristic langauges inside Electron without\nworrying about transpiling or build tooling.\n\n# So go on then... How do I use the thing :)\n\nGlad you asked, it's beyond easy to get started with `electron-forge`.\n\n```bash\nnpm install -g electron-forge\nelectron-forge init my-new-project\n```\n\nThis command will generate you a brand new project folder and install all your\nNPM dependencies so you will be all set to go.\n\nWhen you want to start your app it's as simple as\n\n```bash\nelectron-forge start\n```\n\nAnd when you get round to packaging your application, all you have to do is:\n\n```bash\nelectron-forge package\n```\n\n# But I want to set [insert property here] to `electron-packager`\n\nGood news, the `package` command also passes through any arguments you give it\ndirectly to `electron-packager`.  So if you want the all the power, you have it.\n\n# CLI Usage\n\n```bash\nelectron-forge --help\n```\n\nRunning `--help` will give you a lot of the syntax that `electron-forge` expects.\n\nBasically there are 4 top level commands to provide `electron-forge`.\n* `init` - Similar to `git init` and `npm init`.  It creates a new project from\nscratch and sets everything up for you\n* `lint` - Run basic JS style linting across your application.  Good for sanity\nchecking your code.\n* `package` - Packages your application into a platform specific format.  Windows\nwill get `.exe`, macOS will get `.app` and so on.\n* `start` - Immediately launches your application\n"
+}

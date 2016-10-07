@@ -1,0 +1,900 @@
+{
+  "name": "paraviewweb",
+  "version": "2.2.34",
+  "description": "Web framework for building interactive visualization relying on VTK or ParaView to produce visualization data",
+  "repository": {
+    "user": "kitware",
+    "repo": "paraviewweb",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/kitware/paraviewweb/tarball/master",
+    "clone_url": "https://github.com/kitware/paraviewweb",
+    "https_url": "https://github.com/kitware/paraviewweb",
+    "travis_url": "https://travis-ci.org/kitware/paraviewweb",
+    "zip_url": "https://github.com/kitware/paraviewweb/archive/master.zip",
+    "api_url": "https://api.github.com/repos/kitware/paraviewweb"
+  },
+  "license": "BSD-3-Clause",
+  "homepage": "https://github.com/kitware/paraviewweb#readme",
+  "engines": {
+    "npm": ">=3.0.0",
+    "node": ">=4.0.0"
+  },
+  "main": "./dist/ParaViewWeb.js",
+  "dependencies": {
+    "autobahn": "0.9.6",
+    "when": "3.7.7",
+    "ws": "0.8.1",
+    "plotly.js": "1.14.0",
+    "commander": "2.9.0",
+    "shelljs": "0.7.4",
+    "gh-pages": "0.11.0"
+  },
+  "devDependencies": {
+    "monologue.js": "0.3.5",
+    "mout": "1.0.0",
+    "react": "15.3.1",
+    "react-dom": "15.3.1",
+    "d3": "3.5.17",
+    "axios": "0.14.0",
+    "gl-matrix": "2.3.1",
+    "hammerjs": "2.0.8",
+    "font-awesome": "4.5.0",
+    "normalize.css": "4.1.1",
+    "tonic-arctic-sample-data": "http://www.kitware.com/in-situ-data/npm/tonic-arctic-sample-data-1.2.2.tgz",
+    "kw-web-suite": "2.2.1",
+    "kw-doc": "1.0.15",
+    "babel-plugin-istanbul": "2.0.0",
+    "babel-polyfill": "6.16.0",
+    "karma": "1.2.0",
+    "karma-chrome-launcher": "2.0.0",
+    "karma-coverage": "1.1.1",
+    "karma-electron": "4.1.0",
+    "karma-tap": "2.1.4",
+    "karma-tap-pretty-reporter": "1.1.0",
+    "karma-webpack": "1.8.0",
+    "electron": "1.3.4",
+    "resemblejs": "2.2.1",
+    "tap-spec": "4.1.1",
+    "tap-markdown": "1.2.1",
+    "tape": "4.6.0",
+    "tape-catch": "1.0.6"
+  },
+  "scripts": {
+    "install:global": "npm install -g commitizen@2.5.0",
+    "bin:fix-autobahn": "node ./tools/fix-autobahn/patch-autobahn-0.9.6-cli.js",
+    "doc": "kw-doc -c ./documentation/config.js",
+    "doc:www": "kw-doc -c ./documentation/config.js -s",
+    "predoc:publish": "./tools/install-data/install-sample-data-cli.js",
+    "doc:publish": "kw-doc -c ./documentation/config.js -p",
+    "build": "npm run bin:fix-autobahn && webpack --progress --colors",
+    "build:release": "npm run bin:fix-autobahn && export NODE_ENV=production && npm run build -- -p",
+    "test": "karma start karma.conf.js",
+    "test:travis": "karma start karma.conf.js --browsers Electron --single-run",
+    "commit": "git cz",
+    "semantic-release": "semantic-release pre && npm publish && semantic-release post"
+  },
+  "config": {
+    "commitizen": {
+      "path": "node_modules/cz-conventional-changelog"
+    }
+  },
+  "bin": {
+    "fix-autobahn": "./tools/fix-autobahn/patch-autobahn-0.9.6-cli.js"
+  },
+  "gitHead": "5ba396b9c05e843214cb31589409a51b9001a226",
+  "_npmVersion": "3.10.3",
+  "_nodeVersion": "6.7.0",
+  "dist": {
+    "shasum": "fee1a7ecfb72805e0319328774041cdbbc29a524",
+    "tarball": "http://registry.npmjs.org/paraviewweb/-/paraviewweb-2.2.34.tgz"
+  },
+  "versions": [
+    {
+      "number": "1.0.0",
+      "date": "2016-02-18T00:03:28.475Z"
+    },
+    {
+      "number": "1.0.1",
+      "date": "2016-02-18T00:41:27.259Z"
+    },
+    {
+      "number": "1.0.2",
+      "date": "2016-02-18T20:14:40.938Z"
+    },
+    {
+      "number": "1.0.3",
+      "date": "2016-02-19T00:24:34.608Z"
+    },
+    {
+      "number": "1.0.4",
+      "date": "2016-02-19T00:49:57.758Z"
+    },
+    {
+      "number": "1.0.5",
+      "date": "2016-02-20T09:15:57.270Z"
+    },
+    {
+      "number": "1.0.6",
+      "date": "2016-02-20T09:48:28.324Z"
+    },
+    {
+      "number": "1.0.7",
+      "date": "2016-02-20T09:57:45.907Z"
+    },
+    {
+      "number": "1.0.8",
+      "date": "2016-02-22T21:13:23.529Z"
+    },
+    {
+      "number": "1.0.9",
+      "date": "2016-02-22T23:20:17.918Z"
+    },
+    {
+      "number": "1.0.10",
+      "date": "2016-02-23T00:22:51.680Z"
+    },
+    {
+      "number": "1.1.0",
+      "date": "2016-02-24T19:24:11.337Z"
+    },
+    {
+      "number": "1.1.1",
+      "date": "2016-02-24T20:29:52.892Z"
+    },
+    {
+      "number": "1.1.2",
+      "date": "2016-02-25T00:26:04.928Z"
+    },
+    {
+      "number": "1.1.3",
+      "date": "2016-02-25T18:47:33.042Z"
+    },
+    {
+      "number": "1.1.4",
+      "date": "2016-02-26T21:33:33.941Z"
+    },
+    {
+      "number": "1.1.5",
+      "date": "2016-02-26T23:12:52.299Z"
+    },
+    {
+      "number": "1.2.0",
+      "date": "2016-02-26T23:39:57.940Z"
+    },
+    {
+      "number": "1.2.1",
+      "date": "2016-02-28T23:02:42.350Z"
+    },
+    {
+      "number": "1.2.2",
+      "date": "2016-02-29T18:33:06.368Z"
+    },
+    {
+      "number": "1.2.3",
+      "date": "2016-03-01T18:45:44.116Z"
+    },
+    {
+      "number": "1.2.4",
+      "date": "2016-03-01T21:46:08.574Z"
+    },
+    {
+      "number": "1.2.5",
+      "date": "2016-03-02T16:30:55.326Z"
+    },
+    {
+      "number": "1.2.6",
+      "date": "2016-03-02T18:44:56.360Z"
+    },
+    {
+      "number": "1.2.7",
+      "date": "2016-03-02T22:33:59.762Z"
+    },
+    {
+      "number": "1.2.8",
+      "date": "2016-03-03T00:12:37.806Z"
+    },
+    {
+      "number": "1.2.9",
+      "date": "2016-03-03T00:23:11.961Z"
+    },
+    {
+      "number": "1.2.10",
+      "date": "2016-03-03T00:35:14.517Z"
+    },
+    {
+      "number": "1.2.11",
+      "date": "2016-03-04T22:17:25.109Z"
+    },
+    {
+      "number": "1.2.12",
+      "date": "2016-03-07T18:11:12.758Z"
+    },
+    {
+      "number": "1.2.13",
+      "date": "2016-03-07T18:37:14.670Z"
+    },
+    {
+      "number": "1.2.14",
+      "date": "2016-03-08T23:46:35.461Z"
+    },
+    {
+      "number": "1.2.15",
+      "date": "2016-03-11T19:43:18.449Z"
+    },
+    {
+      "number": "1.2.16",
+      "date": "2016-03-11T23:14:42.500Z"
+    },
+    {
+      "number": "1.2.17",
+      "date": "2016-03-11T23:39:22.364Z"
+    },
+    {
+      "number": "1.2.18",
+      "date": "2016-03-14T19:03:32.594Z"
+    },
+    {
+      "number": "1.2.19",
+      "date": "2016-03-14T23:52:26.972Z"
+    },
+    {
+      "number": "1.2.20",
+      "date": "2016-03-15T00:26:46.585Z"
+    },
+    {
+      "number": "1.2.21",
+      "date": "2016-03-15T17:51:09.079Z"
+    },
+    {
+      "number": "1.2.22",
+      "date": "2016-03-17T00:01:27.556Z"
+    },
+    {
+      "number": "1.2.23",
+      "date": "2016-03-18T15:16:25.075Z"
+    },
+    {
+      "number": "1.2.24",
+      "date": "2016-03-18T21:37:37.915Z"
+    },
+    {
+      "number": "1.2.25",
+      "date": "2016-03-18T22:00:53.580Z"
+    },
+    {
+      "number": "1.2.26",
+      "date": "2016-03-18T22:21:49.477Z"
+    },
+    {
+      "number": "1.2.27",
+      "date": "2016-03-21T18:10:30.741Z"
+    },
+    {
+      "number": "1.2.28",
+      "date": "2016-03-24T00:32:17.705Z"
+    },
+    {
+      "number": "1.2.29",
+      "date": "2016-03-29T18:36:17.488Z"
+    },
+    {
+      "number": "1.2.30",
+      "date": "2016-03-30T21:01:15.711Z"
+    },
+    {
+      "number": "1.2.31",
+      "date": "2016-04-06T12:41:57.399Z"
+    },
+    {
+      "number": "1.2.32",
+      "date": "2016-04-06T13:22:37.928Z"
+    },
+    {
+      "number": "1.3.0",
+      "date": "2016-04-11T22:11:03.962Z"
+    },
+    {
+      "number": "1.3.1",
+      "date": "2016-04-13T00:01:35.121Z"
+    },
+    {
+      "number": "1.3.2",
+      "date": "2016-04-13T23:06:34.714Z"
+    },
+    {
+      "number": "1.3.3",
+      "date": "2016-04-14T20:55:42.953Z"
+    },
+    {
+      "number": "1.3.4",
+      "date": "2016-04-21T19:13:21.477Z"
+    },
+    {
+      "number": "1.3.5",
+      "date": "2016-04-21T23:10:17.341Z"
+    },
+    {
+      "number": "1.3.6",
+      "date": "2016-04-22T21:48:59.975Z"
+    },
+    {
+      "number": "1.3.7",
+      "date": "2016-04-25T17:49:49.370Z"
+    },
+    {
+      "number": "1.3.8",
+      "date": "2016-04-27T19:09:54.922Z"
+    },
+    {
+      "number": "1.3.9",
+      "date": "2016-04-27T22:23:45.738Z"
+    },
+    {
+      "number": "1.3.10",
+      "date": "2016-04-27T23:07:07.715Z"
+    },
+    {
+      "number": "1.3.11",
+      "date": "2016-04-28T17:29:08.743Z"
+    },
+    {
+      "number": "1.3.12",
+      "date": "2016-04-28T18:37:59.094Z"
+    },
+    {
+      "number": "1.3.13",
+      "date": "2016-04-28T18:50:44.343Z"
+    },
+    {
+      "number": "1.3.14",
+      "date": "2016-04-28T20:14:06.218Z"
+    },
+    {
+      "number": "1.4.0",
+      "date": "2016-04-29T17:57:00.944Z"
+    },
+    {
+      "number": "1.4.1",
+      "date": "2016-04-29T18:30:06.751Z"
+    },
+    {
+      "number": "1.5.0",
+      "date": "2016-04-29T21:34:25.047Z"
+    },
+    {
+      "number": "1.5.1",
+      "date": "2016-05-03T19:54:09.378Z"
+    },
+    {
+      "number": "1.5.2",
+      "date": "2016-05-11T14:09:38.324Z"
+    },
+    {
+      "number": "1.5.3",
+      "date": "2016-05-11T22:21:01.587Z"
+    },
+    {
+      "number": "1.5.4",
+      "date": "2016-05-13T15:05:30.031Z"
+    },
+    {
+      "number": "1.5.5",
+      "date": "2016-05-16T16:57:35.126Z"
+    },
+    {
+      "number": "1.5.6",
+      "date": "2016-05-16T17:44:33.098Z"
+    },
+    {
+      "number": "1.5.7",
+      "date": "2016-05-17T16:54:01.286Z"
+    },
+    {
+      "number": "1.5.8",
+      "date": "2016-05-19T03:02:11.837Z"
+    },
+    {
+      "number": "1.5.9",
+      "date": "2016-05-20T16:31:28.612Z"
+    },
+    {
+      "number": "1.5.10",
+      "date": "2016-05-20T17:47:22.727Z"
+    },
+    {
+      "number": "1.5.11",
+      "date": "2016-05-20T21:10:13.694Z"
+    },
+    {
+      "number": "1.5.12",
+      "date": "2016-05-24T18:47:52.909Z"
+    },
+    {
+      "number": "1.5.13",
+      "date": "2016-05-25T21:07:41.618Z"
+    },
+    {
+      "number": "1.5.14",
+      "date": "2016-05-27T21:49:41.509Z"
+    },
+    {
+      "number": "1.5.15",
+      "date": "2016-05-30T21:32:34.140Z"
+    },
+    {
+      "number": "1.6.0",
+      "date": "2016-05-31T19:15:38.526Z"
+    },
+    {
+      "number": "1.6.1",
+      "date": "2016-05-31T22:01:57.947Z"
+    },
+    {
+      "number": "1.6.2",
+      "date": "2016-06-01T18:23:58.382Z"
+    },
+    {
+      "number": "1.6.3",
+      "date": "2016-06-02T17:26:31.134Z"
+    },
+    {
+      "number": "1.6.4",
+      "date": "2016-06-02T18:04:42.107Z"
+    },
+    {
+      "number": "1.6.5",
+      "date": "2016-06-02T19:07:43.193Z"
+    },
+    {
+      "number": "1.6.6",
+      "date": "2016-06-02T21:21:44.262Z"
+    },
+    {
+      "number": "1.6.7",
+      "date": "2016-06-09T21:16:06.906Z"
+    },
+    {
+      "number": "1.6.8",
+      "date": "2016-06-14T15:43:31.843Z"
+    },
+    {
+      "number": "1.7.0",
+      "date": "2016-06-24T14:58:32.029Z"
+    },
+    {
+      "number": "1.7.1",
+      "date": "2016-06-28T17:50:28.348Z"
+    },
+    {
+      "number": "1.7.2",
+      "date": "2016-06-28T20:40:33.096Z"
+    },
+    {
+      "number": "1.8.0",
+      "date": "2016-06-29T19:40:01.507Z"
+    },
+    {
+      "number": "1.8.1",
+      "date": "2016-06-29T21:14:35.602Z"
+    },
+    {
+      "number": "1.8.2",
+      "date": "2016-06-29T22:03:39.397Z"
+    },
+    {
+      "number": "1.8.3",
+      "date": "2016-06-30T21:31:50.858Z"
+    },
+    {
+      "number": "1.9.0",
+      "date": "2016-06-30T21:42:28.152Z"
+    },
+    {
+      "number": "1.9.1",
+      "date": "2016-06-30T22:52:30.754Z"
+    },
+    {
+      "number": "1.9.2",
+      "date": "2016-07-01T19:16:44.732Z"
+    },
+    {
+      "number": "1.9.3",
+      "date": "2016-07-01T23:11:22.490Z"
+    },
+    {
+      "number": "1.10.0",
+      "date": "2016-07-04T16:11:32.934Z"
+    },
+    {
+      "number": "1.10.1",
+      "date": "2016-07-08T19:59:00.167Z"
+    },
+    {
+      "number": "1.10.2",
+      "date": "2016-07-08T21:26:28.320Z"
+    },
+    {
+      "number": "1.11.0",
+      "date": "2016-07-11T15:22:20.886Z"
+    },
+    {
+      "number": "1.12.0",
+      "date": "2016-07-14T18:25:52.970Z"
+    },
+    {
+      "number": "1.12.1",
+      "date": "2016-07-19T21:46:18.575Z"
+    },
+    {
+      "number": "1.13.0",
+      "date": "2016-07-22T00:57:02.362Z"
+    },
+    {
+      "number": "1.13.1",
+      "date": "2016-07-22T22:02:56.595Z"
+    },
+    {
+      "number": "1.13.2",
+      "date": "2016-07-26T21:08:53.335Z"
+    },
+    {
+      "number": "1.14.0",
+      "date": "2016-07-27T17:45:35.941Z"
+    },
+    {
+      "number": "1.15.0",
+      "date": "2016-07-27T19:24:46.843Z"
+    },
+    {
+      "number": "1.15.1",
+      "date": "2016-07-27T21:21:57.197Z"
+    },
+    {
+      "number": "1.15.2",
+      "date": "2016-07-27T22:12:37.606Z"
+    },
+    {
+      "number": "1.15.3",
+      "date": "2016-07-28T17:36:58.903Z"
+    },
+    {
+      "number": "1.15.4",
+      "date": "2016-07-28T18:44:09.481Z"
+    },
+    {
+      "number": "1.16.0",
+      "date": "2016-07-29T20:18:38.349Z"
+    },
+    {
+      "number": "1.16.1",
+      "date": "2016-07-30T02:19:34.017Z"
+    },
+    {
+      "number": "1.16.2",
+      "date": "2016-08-02T17:51:51.850Z"
+    },
+    {
+      "number": "1.16.3",
+      "date": "2016-08-02T23:44:09.118Z"
+    },
+    {
+      "number": "1.17.0",
+      "date": "2016-08-03T20:45:51.328Z"
+    },
+    {
+      "number": "1.17.1",
+      "date": "2016-08-04T14:56:39.307Z"
+    },
+    {
+      "number": "1.17.2",
+      "date": "2016-08-04T17:14:16.790Z"
+    },
+    {
+      "number": "1.17.3",
+      "date": "2016-08-04T17:51:06.018Z"
+    },
+    {
+      "number": "1.18.0",
+      "date": "2016-08-05T00:53:05.952Z"
+    },
+    {
+      "number": "1.18.1",
+      "date": "2016-08-05T21:39:56.201Z"
+    },
+    {
+      "number": "1.18.2",
+      "date": "2016-08-05T22:21:14.970Z"
+    },
+    {
+      "number": "2.0.0",
+      "date": "2016-08-08T21:28:41.990Z"
+    },
+    {
+      "number": "2.0.1",
+      "date": "2016-08-09T16:36:54.974Z"
+    },
+    {
+      "number": "2.0.2",
+      "date": "2016-08-09T18:40:30.431Z"
+    },
+    {
+      "number": "2.0.3",
+      "date": "2016-08-09T22:22:54.427Z"
+    },
+    {
+      "number": "2.0.4",
+      "date": "2016-08-10T18:16:00.357Z"
+    },
+    {
+      "number": "2.0.5",
+      "date": "2016-08-11T19:28:34.237Z"
+    },
+    {
+      "number": "2.0.6",
+      "date": "2016-08-11T20:54:57.060Z"
+    },
+    {
+      "number": "2.0.7",
+      "date": "2016-08-11T23:57:03.190Z"
+    },
+    {
+      "number": "2.0.8",
+      "date": "2016-08-12T04:24:26.395Z"
+    },
+    {
+      "number": "2.0.9",
+      "date": "2016-08-12T20:45:35.717Z"
+    },
+    {
+      "number": "2.0.10",
+      "date": "2016-08-12T22:46:26.139Z"
+    },
+    {
+      "number": "2.0.11",
+      "date": "2016-08-13T04:19:16.586Z"
+    },
+    {
+      "number": "2.0.12",
+      "date": "2016-08-15T16:40:14.509Z"
+    },
+    {
+      "number": "2.0.13",
+      "date": "2016-08-15T18:23:17.470Z"
+    },
+    {
+      "number": "2.0.14",
+      "date": "2016-08-15T19:46:56.695Z"
+    },
+    {
+      "number": "2.0.15",
+      "date": "2016-08-16T17:22:24.738Z"
+    },
+    {
+      "number": "2.0.16",
+      "date": "2016-08-16T22:49:21.938Z"
+    },
+    {
+      "number": "2.0.17",
+      "date": "2016-08-16T23:49:53.260Z"
+    },
+    {
+      "number": "2.0.18",
+      "date": "2016-08-17T00:08:59.689Z"
+    },
+    {
+      "number": "2.0.19",
+      "date": "2016-08-17T15:42:37.866Z"
+    },
+    {
+      "number": "2.0.20",
+      "date": "2016-08-17T17:52:14.474Z"
+    },
+    {
+      "number": "2.0.21",
+      "date": "2016-08-17T19:40:08.135Z"
+    },
+    {
+      "number": "2.0.22",
+      "date": "2016-08-17T20:01:22.170Z"
+    },
+    {
+      "number": "2.0.23",
+      "date": "2016-08-17T20:51:35.652Z"
+    },
+    {
+      "number": "2.0.24",
+      "date": "2016-08-17T23:30:28.489Z"
+    },
+    {
+      "number": "2.0.25",
+      "date": "2016-08-18T23:13:19.812Z"
+    },
+    {
+      "number": "2.0.26",
+      "date": "2016-08-19T07:14:58.432Z"
+    },
+    {
+      "number": "2.0.27",
+      "date": "2016-08-26T19:07:08.359Z"
+    },
+    {
+      "number": "2.0.28",
+      "date": "2016-08-29T21:29:42.296Z"
+    },
+    {
+      "number": "2.0.29",
+      "date": "2016-08-31T21:30:12.817Z"
+    },
+    {
+      "number": "2.1.0",
+      "date": "2016-09-02T15:19:40.695Z"
+    },
+    {
+      "number": "2.1.1",
+      "date": "2016-09-02T18:04:03.999Z"
+    },
+    {
+      "number": "2.1.2",
+      "date": "2016-09-06T17:22:52.552Z"
+    },
+    {
+      "number": "2.1.3",
+      "date": "2016-09-07T18:03:48.166Z"
+    },
+    {
+      "number": "2.2.0",
+      "date": "2016-09-08T19:17:38.867Z"
+    },
+    {
+      "number": "2.2.1",
+      "date": "2016-09-12T17:32:04.906Z"
+    },
+    {
+      "number": "2.2.2",
+      "date": "2016-09-15T19:31:35.707Z"
+    },
+    {
+      "number": "2.2.3",
+      "date": "2016-09-16T19:53:09.243Z"
+    },
+    {
+      "number": "2.2.4",
+      "date": "2016-09-19T16:40:13.155Z"
+    },
+    {
+      "number": "2.2.5",
+      "date": "2016-09-21T19:43:01.365Z"
+    },
+    {
+      "number": "2.2.6",
+      "date": "2016-09-24T21:20:05.554Z"
+    },
+    {
+      "number": "2.2.7",
+      "date": "2016-09-26T18:55:23.437Z"
+    },
+    {
+      "number": "2.2.8",
+      "date": "2016-09-27T16:48:48.442Z"
+    },
+    {
+      "number": "2.2.9",
+      "date": "2016-09-27T17:44:32.304Z"
+    },
+    {
+      "number": "2.2.10",
+      "date": "2016-09-27T19:38:54.057Z"
+    },
+    {
+      "number": "2.2.11",
+      "date": "2016-09-27T20:23:51.839Z"
+    },
+    {
+      "number": "2.2.12",
+      "date": "2016-09-27T22:23:03.072Z"
+    },
+    {
+      "number": "2.2.13",
+      "date": "2016-09-27T22:43:24.765Z"
+    },
+    {
+      "number": "2.2.14",
+      "date": "2016-09-28T00:30:34.326Z"
+    },
+    {
+      "number": "2.2.15",
+      "date": "2016-09-28T14:36:27.913Z"
+    },
+    {
+      "number": "2.2.16",
+      "date": "2016-09-28T18:13:16.924Z"
+    },
+    {
+      "number": "2.2.17",
+      "date": "2016-09-28T22:19:23.817Z"
+    },
+    {
+      "number": "2.2.18",
+      "date": "2016-09-29T17:27:34.326Z"
+    },
+    {
+      "number": "2.2.19",
+      "date": "2016-09-29T20:32:38.549Z"
+    },
+    {
+      "number": "2.2.20",
+      "date": "2016-09-29T21:42:30.662Z"
+    },
+    {
+      "number": "2.2.21",
+      "date": "2016-09-30T19:15:26.991Z"
+    },
+    {
+      "number": "2.2.22",
+      "date": "2016-09-30T20:33:45.934Z"
+    },
+    {
+      "number": "2.2.23",
+      "date": "2016-09-30T20:39:55.796Z"
+    },
+    {
+      "number": "2.2.24",
+      "date": "2016-09-30T21:24:19.176Z"
+    },
+    {
+      "number": "2.2.25",
+      "date": "2016-10-03T21:37:19.758Z"
+    },
+    {
+      "number": "2.2.26",
+      "date": "2016-10-04T16:27:21.201Z"
+    },
+    {
+      "number": "2.2.27",
+      "date": "2016-10-05T14:29:02.215Z"
+    },
+    {
+      "number": "2.2.28",
+      "date": "2016-10-05T20:17:21.887Z"
+    },
+    {
+      "number": "2.2.29",
+      "date": "2016-10-05T23:36:54.266Z"
+    },
+    {
+      "number": "2.2.30",
+      "date": "2016-10-07T14:22:45.915Z"
+    },
+    {
+      "number": "2.2.31",
+      "date": "2016-10-07T14:53:02.002Z"
+    },
+    {
+      "number": "2.2.32",
+      "date": "2016-10-07T17:03:27.142Z"
+    },
+    {
+      "number": "2.2.33",
+      "date": "2016-10-07T18:10:11.732Z"
+    },
+    {
+      "number": "2.2.34",
+      "date": "2016-10-07T21:06:15.652Z"
+    }
+  ],
+  "created": "2016-02-18T00:03:28.475Z",
+  "modified": "2016-10-07T21:06:15.652Z",
+  "lastPublisher": {
+    "name": "sebastien.jourdain",
+    "email": "sebastien.jourdain@kitware.com"
+  },
+  "owners": [
+    {
+      "name": "sebastien.jourdain",
+      "email": "sebastien.jourdain@kitware.com"
+    }
+  ],
+  "readme": "## [ParaViewWeb](http://kitware.github.io/ParaViewWeb/)\n\n[![Build Status](https://travis-ci.org/Kitware/paraviewweb.svg)](https://travis-ci.org/Kitware/paraviewweb)\n[![Dependency Status](https://david-dm.org/kitware/paraviewweb.svg)](https://david-dm.org/kitware/paraviewweb)\n[![semantic-release](https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg)](https://github.com/semantic-release/semantic-release)\n![npm-download](https://img.shields.io/npm/dm/paraviewweb.svg)\n![npm-version-requirement](https://img.shields.io/badge/npm->=3.0.0-brightgreen.svg)\n![node-version-requirement](https://img.shields.io/badge/node->=5.0.0-brightgreen.svg)\n\n### Introduction\n\nParaViewWeb aims to provide a framework for building interactive\nweb visualizations which rely on VTK or ParaView to produce visualization data.\n\nThis data can be static or dynamic ranging from a no-server setup to\nhaving a ParaView or VTK backend sending either geometry or images to the client.\n\n## Documentation\n\nSee the [documentation](https://kitware.github.io/paraviewweb) for a\ngetting started guide, advanced documentation, and API descriptions.\n\n## Development\n\nYou can start building the ParaViewWeb library by itself with the following\nset of commands:\n\n```js\n$ git clone https://github.com/kitware/paraviewweb.git\n$ cd paraviewweb\n$ npm run install:global\n$ npm install\n$ npm run build\n```\n\n### Licensing\n\n**ParaViewWeb** is licensed under the [BSD 3-Clause License](LICENSE).\n\n### Getting Involved\n\nFork our repository and do great things. At [Kitware](http://www.kitware.com),\nwe've been contributing to open-source software for 15 years and counting, and\nwant to make **ParaViewWeb** useful to as many people as possible.\n"
+}

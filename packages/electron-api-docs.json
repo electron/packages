@@ -1,0 +1,93 @@
+{
+  "name": "electron-api-docs",
+  "version": "1.4.3",
+  "description": "Electron's API documentation in a structured JSON format",
+  "main": "index.js",
+  "scripts": {
+    "build": "node build.js",
+    "release": "./release.sh",
+    "test": "node test.js | tap-spec && standard && standard-markdown"
+  },
+  "repository": {
+    "user": "electron",
+    "repo": "electron-api-docs",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/electron/electron-api-docs/tarball/master",
+    "clone_url": "https://github.com/electron/electron-api-docs",
+    "https_url": "https://github.com/electron/electron-api-docs",
+    "travis_url": "https://travis-ci.org/electron/electron-api-docs",
+    "zip_url": "https://github.com/electron/electron-api-docs/archive/master.zip",
+    "api_url": "https://api.github.com/repos/electron/electron-api-docs"
+  },
+  "keywords": [
+    "electron",
+    "documentation",
+    "docs",
+    "json",
+    "reference",
+    "schema",
+    "offline",
+    "api"
+  ],
+  "author": {
+    "name": "Zeke Sikelianos",
+    "email": "zeke@sikelianos.com",
+    "url": "http://zeke.sikelianos.com"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "gh-latest-release": "^1.0.0",
+    "json": "^9.0.4",
+    "nugget": "^2.0.1",
+    "pify": "^2.3.0",
+    "standard": "^8.1.0",
+    "standard-markdown": "^1.2.1",
+    "tap-spec": "^4.1.1",
+    "tape": "^4.6.0"
+  },
+  "dependencies": {
+    "keyed-array": "^2.1.0"
+  },
+  "standard": {
+    "env": {
+      "mocha": true
+    }
+  },
+  "gitHead": "17705822f9c825c0554c1527b798d898de2b65e5",
+  "homepage": "https://github.com/electron/electron-api-docs#readme",
+  "_npmVersion": "3.8.6",
+  "_nodeVersion": "5.11.1",
+  "dist": {
+    "shasum": "98ab7fd071caf8f53f441861fd6ee4f412b88448",
+    "tarball": "http://registry.npmjs.org/electron-api-docs/-/electron-api-docs-1.4.3.tgz"
+  },
+  "versions": [
+    {
+      "number": "1.4.1",
+      "date": "2016-09-23T20:00:01.979Z"
+    },
+    {
+      "number": "1.4.2",
+      "date": "2016-09-30T12:23:13.558Z"
+    },
+    {
+      "number": "1.4.3",
+      "date": "2016-10-06T10:13:14.199Z"
+    }
+  ],
+  "created": "2016-09-23T20:00:01.979Z",
+  "modified": "2016-10-06T10:13:14.199Z",
+  "lastPublisher": {
+    "name": "electron",
+    "email": "electron@github.com"
+  },
+  "owners": [
+    {
+      "name": "electron",
+      "email": "electron@github.com"
+    }
+  ],
+  "readme": "# electron-api-docs [![Build Status](https://travis-ci.org/electron/electron-api-docs.svg?branch=master)](https://travis-ci.org/electron/electron-api-docs)\n\nElectron's API documentation in a structured JSON format.\n\n## Installation\n\n```sh\nnpm install electron-api-docs --save\n```\n\nOr take it for a spin in your Node.js REPL:\n\n```sh\nnpm i -g trymodule && trymodule electron-api-docs=apis\n```\n\nNote: This package is not semantically versioned. It is published in step with\nElectron. When you install `electron-api-docs@1.4.1`, you're getting the API\ndocs from Electron v1.4.1.\n\n## Usage\n\n```js\nconst apis = require('electron-api-docs')\n```\n\nWhen you require it, you get an array of API objects\n\n```js\napis.length\n// => 33\n```\n\nThe array has a key for each API `name`, for convenient access:\n\n```js\napis.BrowserWindow\napis.BrowserWindow.staticMethods.getAllWindows.description\napis.WebContents.instanceMethods.savePage.parameters.saveType.possibleValues\napis.app.events.quit\n```\n\nAll of the arrays have named keys, but they're still actually arrays, so\nfunctional methods like `find`, `map`, `filter`, and `every` can be used:\n\n```js\napis.find(api => api.name === 'BrowserWindow')\n\napis.filter(api => api.type === 'Class')\n\napis.filter(api => api.type === 'Module')\n\napis.map(api => api.name)\n\n// All arrays have named keys, not just the top-level array!\napis.BrowserWindow.instanceMethods.map(method => method.name)\n```\n\n## Tests\n\n```sh\nnpm install\nnpm test\n```\n\n## Dependencies\n\n- [keyed-array](https://github.com/zeke/keyed-array): Recursively add named keys to arrays of objects\n\n## Dev Dependencies\n\n- [chai](https://github.com/chaijs/chai): BDD/TDD assertion library for node.js and the browser. Test framework agnostic.\n- [gh-latest-release](https://github.com/shinnn/gh-latest-release): Get the latest published full release for the Github repository\n- [json](https://github.com/trentm/json): a &#39;json&#39; command for massaging and processing JSON on the command line\n- [mocha](https://github.com/mochajs/mocha): simple, flexible, fun test framework\n- [standard](https://github.com/feross/standard): JavaScript Standard Style\n- [standard-markdown](https://github.com/zeke/standard-markdown): Test your Markdown files for Standard JavaScript Style™\n\n\n## License\n\nMIT\n"
+}

@@ -1,0 +1,109 @@
+{
+  "name": "screenshotron",
+  "version": "0.1.0",
+  "description": "The most aptly-named way to take screenshots of pages with Electron",
+  "author": {
+    "name": "Thibaud Colas",
+    "email": "thib@thib.me",
+    "url": "https://github.com/thibaudcolas"
+  },
+  "license": "ISC",
+  "homepage": "https://github.com/springload/screenshotron#readme",
+  "repository": {
+    "user": "springload",
+    "repo": "screenshotron",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/springload/screenshotron/tarball/master",
+    "clone_url": "https://github.com/springload/screenshotron",
+    "https_url": "https://github.com/springload/screenshotron",
+    "travis_url": "https://travis-ci.org/springload/screenshotron",
+    "zip_url": "https://github.com/springload/screenshotron/archive/master.zip",
+    "api_url": "https://api.github.com/repos/springload/screenshotron"
+  },
+  "keywords": [
+    "browser",
+    "screenshot",
+    "screencap",
+    "capture",
+    "ci",
+    "qa",
+    "nightmare",
+    "phantom",
+    "slimer",
+    "electron",
+    "website",
+    "webpage",
+    "ip",
+    "live",
+    "running"
+  ],
+  "engines": {
+    "node": ">=4.0"
+  },
+  "preferGlobal": true,
+  "bin": {
+    "screenshotron": "./index.js"
+  },
+  "dependencies": {
+    "babel-polyfill": "^6.0.16",
+    "easydate": "^2.1.0",
+    "filenamify-url": "^1.0.0",
+    "got": "^5.1.0",
+    "lodash.template": "^4.4.0",
+    "log-symbols": "^1.0.2",
+    "meow": "^3.4.2",
+    "nightmare": "^2.7.0",
+    "normalize-url": "^1.3.1",
+    "plur": "^2.1.2",
+    "vo": "^1.0.3"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.1.1",
+    "babel-core": "^6.0.20",
+    "babel-eslint": "^4.1.3",
+    "babel-preset-es2015": "^6.0.15",
+    "chai": "^3.3.0",
+    "eslint": "^1.8.0",
+    "eslint-config-airbnb": "^0.1.1",
+    "mocha": "^2.3.3",
+    "rollup": "^0.20.5"
+  },
+  "scripts": {
+    "lint": "eslint --cache .",
+    "pretest": "npm run lint -s",
+    "test:output": "./test.sh",
+    "test:unit": "mocha --compilers js:babel-core/register -- test/*.spec.js",
+    "test": "npm run build -s && npm run test:unit -s && npm run test:output -s",
+    "prepublish": "npm run build -s",
+    "build": "rollup cli.js > tmp.js && babel tmp.js > es5-bundle.js && rm -rf tmp.js",
+    "start": "node index.js"
+  },
+  "gitHead": "d74c8efca155050be4839aa9f09de2c90da2e637",
+  "_npmVersion": "2.15.8",
+  "_nodeVersion": "4.4.7",
+  "dist": {
+    "shasum": "e697e2c01350f1cbc64915a7da53dd7c4a3480fd",
+    "tarball": "http://registry.npmjs.org/screenshotron/-/screenshotron-0.1.0.tgz"
+  },
+  "versions": [
+    {
+      "number": "0.1.0",
+      "date": "2016-09-29T14:52:00.425Z"
+    }
+  ],
+  "created": "2016-09-29T14:52:00.425Z",
+  "modified": "2016-09-29T14:52:00.425Z",
+  "lastPublisher": {
+    "name": "thibaudcolas",
+    "email": "thibaudcolas@gmail.com"
+  },
+  "owners": [
+    {
+      "name": "thibaudcolas",
+      "email": "thibaudcolas@gmail.com"
+    }
+  ],
+  "readme": "screenshotron [![npm](https://img.shields.io/npm/v/screenshotron.svg?style=flat-square)](https://www.npmjs.com/package/screenshotron) [![Build Status](https://img.shields.io/travis/springload/screenshotron.svg?style=flat-square)](https://travis-ci.org/springload/screenshotron) [![dependency Status](https://img.shields.io/david/springload/screenshotron.svg?style=flat-square)](https://david-dm.org/springload/screenshotron) [![devDependency Status](https://img.shields.io/david/dev/springload/screenshotron.svg?style=flat-square)](https://david-dm.org/springload/screenshotron)\n==========\n\n> The most aptly-named way to take screenshots of pages with [Electron](http://electron.atom.io/).\n\n## Installation\n\nRequires Node 4+. From the command line, run\n\n```sh\nnpm install -g screenshotron\n```\n\n## Usage\n\nFrom the command line, run\n\n```sh\nscreenshotron example.com\n✔ Generated 1 screenshot from 1 url and 1 size\n# With a specific time to wait for before screenshotroning\nscreenshotron --delay 3000 example.com bananas.com\n✔ Generated 2 screenshots from 2 urls and 1 size\n```\n\n## Contributing\n\n> You first need to clone the project on your computer, and to install [Node](https://nodejs.org). This project uses [nvm](https://github.com/creationix/nvm) to execute a specific node version.\n\nInstall the project with:\n\n```sh\ngit clone git@github.com:springload/screenshotron.git\ncd screenshotron\nnvm install\nnpm install\nnpm install -g eslint babel-eslint eslint-config-airbnb\n./.githooks/deploy\n```\n\nTo run the tests:\n\n```sh\nnpm run test\n```\n\nTo release a new version:\n\n```sh\nnpm version minor -m \"Release %s\"\ngit push origin master\ngit push --tags\nnpm publish\n```\n\n## Resources on automated screenshot taking\n\n- Nightmare screenshots implementation https://github.com/segmentio/nightmare/blob/master/lib/runner.js#L416\n- Pageres https://github.com/sindresorhus/pageres/, https://github.com/kevva/screenshot-stream\n- Electron screenshot https://github.com/electron/electron/blob/master/docs/api/browser-window.md#wincapturepagerect-callback, https://gist.github.com/twolfson/0d374d9d7f26eefe7d38\n- https://github.com/FWeinb/electron-screenshot-app\n- https://github.com/FWeinb/electron-screenshot-service\n- https://github.com/JamesKyburz/electron-screenshot\n\nCode originally taken from https://github.com/thibaudcolas/is-js-error, and https://github.com/sindresorhus/pageres/\n"
+}

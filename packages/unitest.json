@@ -1,6 +1,6 @@
 {
   "name": "unitest",
-  "version": "0.10.2",
+  "version": "0.14.2",
   "description": "Run browser and node tests with coverage reports",
   "author": {
     "name": "Ryan Tsao",
@@ -28,6 +28,7 @@
     "test": "node test/index.js"
   },
   "dependencies": {
+    "backoff": "^2.5.0",
     "electron-prebuilt": "^1.0.0",
     "exit-code": "^1.0.2",
     "getport": "^0.1.0",
@@ -44,13 +45,16 @@
     "tap-parser": "~0.2.0",
     "tape": "^4.4.0"
   },
+  "engines": {
+    "npm": "^3.0.0"
+  },
   "license": "MIT",
-  "gitHead": "f8ad7bf8405ddec32ed904dc033347366e750941",
-  "_npmVersion": "3.8.6",
-  "_nodeVersion": "0.10.32",
+  "gitHead": "07dca4d47ab341f72e92b36c9f94df4c2a028b74",
+  "_npmVersion": "3.9.3",
+  "_nodeVersion": "6.2.1",
   "dist": {
-    "shasum": "d8d5d88db5e3071a11a33df59523160918e64360",
-    "tarball": "http://registry.npmjs.org/unitest/-/unitest-0.10.2.tgz"
+    "shasum": "1835c55177bcb19ffd3160e5bf329dd7cbc1ad58",
+    "tarball": "http://registry.npmjs.org/unitest/-/unitest-0.14.2.tgz"
   },
   "versions": [
     {
@@ -152,10 +156,42 @@
     {
       "number": "0.10.2",
       "date": "2016-07-12T20:08:17.973Z"
+    },
+    {
+      "number": "0.10.3",
+      "date": "2016-07-14T19:36:43.153Z"
+    },
+    {
+      "number": "0.11.0",
+      "date": "2016-08-25T00:47:30.428Z"
+    },
+    {
+      "number": "0.12.0",
+      "date": "2016-09-12T06:46:22.993Z"
+    },
+    {
+      "number": "0.12.1",
+      "date": "2016-09-12T07:11:44.322Z"
+    },
+    {
+      "number": "0.13.0",
+      "date": "2016-09-13T19:31:21.555Z"
+    },
+    {
+      "number": "0.14.0",
+      "date": "2016-09-13T19:47:49.841Z"
+    },
+    {
+      "number": "0.14.1",
+      "date": "2016-09-13T20:10:39.019Z"
+    },
+    {
+      "number": "0.14.2",
+      "date": "2016-09-13T20:47:22.052Z"
     }
   ],
   "created": "2016-04-07T06:02:58.362Z",
-  "modified": "2016-07-12T20:08:17.973Z",
+  "modified": "2016-09-13T20:47:22.052Z",
   "lastPublisher": {
     "name": "rtsao",
     "email": "ryan.j.tsao@gmail.com"
@@ -166,5 +202,5 @@
       "email": "ryan.j.tsao@gmail.com"
     }
   ],
-  "readme": "# [![unitest logo](https://cdn.rawgit.com/rtsao/unitest/logo/logo.svg \"unitest\")](https://github.com/rtsao/unitest)\n\n[![build status][build-badge]][build-href]\n[![dependencies status][deps-badge]][deps-href]\n[![npm version][npm-badge]][npm-href]\n\nSeamless node and browser unit testing with code coverage\n\n##### Features\n\n- Unified node and browser tests with merged TAP output, code coverage reports, and exit status codes.\n- [Electron](https://github.com/electron/electron)-powered browser testing for a fast, modern browser testing environment.\n- Bundler-agnostic usage. Use browserify, webpack, or something else.\n- Designed to be used with [Babel-powered coverage instrumentation](https://github.com/dtinth/babel-plugin-__coverage__) for fast, efficient testing with code coverage.\n- Support for all coverage reporting options in [Istanbul](https://github.com/gotwarlost/istanbul), including `html`, `text`, `cobertura`, etc.\n\n\n## Usage\n```\nUsage: unitest {OPTIONS}\n\nOptions:\n\n    --version, -v  Print version and exit\n\n       --help, -h  Print usage information\n\n       --node, -n  Path to node test entry file\n\n    --browser, -c  Path to browser test entry file\n\n     --report, -r  Istanbul coverage report\n```\n\n## Getting Started\n\n### Run node and browser tests\n\n1. Transpile source code with Babel *(optional)*\n2. Bundle browser code *(this step is possibly optional since `require` works in electron)*\n3. Run `unitest`, specifying test entry files\n\n```\nbabel src -d build\nbrowserify build/test/browser.js > build/test/browser-bundle.js\nunitest --browser=build/test/browser-bundle.js --node=build/test/node.js\n```\n\n### Run node and browser tests with coverage report\n\nRunning tests with coverage involves the exact same steps, but with an additional [coverage instrumentation Babel plugin](https://github.com/dtinth/babel-plugin-__coverage__).\n\n```\nbabel src -d build --plugins=__coverage__\nbrowserify build/test/browser.js > build/test/browser-bundle.js\nunitest --browser=build/test/browser.js --node=build/test/node.js --report=html\n```\n\n#### Merged test output\n\nThe separate TAP and coverage output along with exit code for your node and browser tests will be merged intelligently.\n\n## Debugging\n\n### Debug node tests\n\nNo magic here, just use [`node-inspector`](https://github.com/node-inspector/node-inspector).\n\n```\nnpm install node-inspector -g\nnode-debug build/test/node.js\n```\n\n### Debug browser (electron) tests\n\nNo magic here, just use [`devtool`](https://github.com/Jam3/devtool).\n\n```\nnpm install devtool -g\ndevtool build/test/browser-bundle.js\n```\n\n[build-badge]: https://travis-ci.org/rtsao/unitest.svg?branch=master\n[build-href]: https://travis-ci.org/rtsao/unitest\n[deps-badge]: https://david-dm.org/rtsao/unitest.svg\n[deps-href]: https://david-dm.org/rtsao/unitest\n[npm-badge]: https://badge.fury.io/js/unitest.svg\n[npm-href]: https://www.npmjs.com/package/unitest\n"
+  "readme": "# [![unitest logo](https://cdn.rawgit.com/rtsao/unitest/logo/logo.svg \"unitest\")](https://github.com/rtsao/unitest)\n\n[![build status][build-badge]][build-href]\n[![dependencies status][deps-badge]][deps-href]\n[![npm version][npm-badge]][npm-href]\n\nSeamless node and browser unit testing with code coverage\n\n##### Features\n\n- Unified node and browser tests with merged TAP output, code coverage reports, and exit status codes.\n- [Electron](https://github.com/electron/electron)-powered browser testing for a fast, modern browser testing environment.\n- Bundler-agnostic usage. Use browserify, webpack, or something else.\n- Designed to be used with [Babel-powered coverage instrumentation](https://github.com/istanbuljs/babel-plugin-istanbul) for fast, efficient testing with code coverage.\n- Support for all coverage reporting options in [Istanbul](https://github.com/gotwarlost/istanbul), including `html`, `text`, `cobertura`, etc.\n\n\n## Usage\n```\nUsage: unitest {OPTIONS}\n\nOptions:\n\n    --version, -v  Print version and exit\n\n       --help, -h  Print usage information\n\n       --node, -n  Path to node test entry file\n\n    --browser, -c  Path to browser test entry file\n\n     --report, -r  Istanbul coverage report\n```\n\n## Getting Started\n\n### Run node and browser tests\n\n1. Transpile source code with Babel *(optional)*\n2. Bundle browser code *(this step is possibly optional since `require` works in electron)*\n3. Run `unitest`, specifying test entry files\n\n```\nbabel src -d build\nbrowserify build/test/browser.js > build/test/browser-bundle.js\nunitest --browser=build/test/browser-bundle.js --node=build/test/node.js\n```\n\n### Run node and browser tests with coverage report\n\nRunning tests with coverage involves the exact same steps, but with an additional [coverage instrumentation Babel plugin](https://github.com/istanbuljs/babel-plugin-istanbul).\n\n```\nbabel src -d build --plugins=istanbul\nbrowserify build/test/browser.js > build/test/browser-bundle.js\nunitest --browser=build/test/browser.js --node=build/test/node.js --report=html\n```\n\n#### Merged test output\n\nThe separate TAP and coverage output along with exit code for your node and browser tests will be merged seamlessly.\n\n## Debugging\n\n### Debug node tests\n\nNo magic here, just use [`node-inspector`](https://github.com/node-inspector/node-inspector) or plain node.\n\n```\nnpm install node-inspector -g\nnode-debug build/test/node.js\n```\n\n### Debug browser (electron) tests\n\nNo magic here, just use [`devtool`](https://github.com/Jam3/devtool).\n\n```\nnpm install devtool -g\ndevtool build/test/browser-bundle.js\n```\n\n[build-badge]: https://travis-ci.org/rtsao/unitest.svg?branch=master\n[build-href]: https://travis-ci.org/rtsao/unitest\n[deps-badge]: https://david-dm.org/rtsao/unitest.svg\n[deps-href]: https://david-dm.org/rtsao/unitest\n[npm-badge]: https://badge.fury.io/js/unitest.svg\n[npm-href]: https://www.npmjs.com/package/unitest\n"
 }

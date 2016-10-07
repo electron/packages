@@ -1,0 +1,93 @@
+{
+  "name": "pps-keymap",
+  "version": "6.3.2",
+  "description": "Pps's DOM-aware keymap module",
+  "main": "./lib/keymap-manager",
+  "scripts": {
+    "clean": "rmdir /s /q lib && rmdir /s /q api.json",
+    "compile": "coffee --no-header --output lib --compile src && babel src --out-dir lib",
+    "lint": "coffeelint -r src spec && eslint src spec",
+    "test": "devtool  --quit --console node_modules/mocha/bin/_mocha --colors spec/helpers/setup.js spec/*",
+    "test-drive": "SUPPRESS_EXIT=true devtool --quit node_modules/mocha/bin/_mocha --no-colors spec/helpers/setup.js spec/*",
+    "ci": "npm run compile && npm run lint && npm run test"
+  },
+  "repository": null,
+  "license": "MIT",
+  "dependencies": {
+    "clear-cut": "^2",
+    "emissary": "^1.1.0",
+    "event-kit": "^1.0.0",
+    "fs-plus": "^2.0.4",
+    "grim": "^1.2.1",
+    "pathwatcher": "^6.2",
+    "property-accessors": "^1",
+    "season": "^5.0.2"
+  },
+  "devDependencies": {
+    "babel-cli": "6.5.1",
+    "babel-eslint": "5.0.0-beta10",
+    "babel-preset-es2015": "6.5.0",
+    "babel-preset-stage-0": "6.5.0",
+    "babel-register": "6.5.2",
+    "chai": "3.5.0",
+    "coffee-cache": "0.2.0",
+    "coffee-script": "1.7.0",
+    "coffeelint": "1.14.2",
+    "debounce": "1.0.0",
+    "devtool": "1.9.1",
+    "electron-rebuild": "1.1.3",
+    "eslint": "2.2.0",
+    "eslint-config-standard": "5.1.0",
+    "eslint-plugin-promise": "1.0.8",
+    "eslint-plugin-standard": "1.3.1",
+    "grunt": "0.4.1",
+    "grunt-cli": "0.1.8",
+    "grunt-coffeelint": "0.0.6",
+    "grunt-contrib-coffee": "0.9.0",
+    "grunt-shell": "0.2.2",
+    "jasmine-focused": "1.0.4",
+    "lolex": "1.4.0",
+    "mocha": "2.4.5",
+    "rimraf": "2.2.2",
+    "sinon": "1.17.3",
+    "space-pencil": "0.3.0",
+    "temp": "0.8.3"
+  },
+  "coffeelintConfig": {
+    "no_empty_param_list": {
+      "level": "error"
+    },
+    "max_line_length": {
+      "level": "ignore"
+    },
+    "indentation": {
+      "level": "ignore"
+    }
+  },
+  "gitHead": "5805954e6a1f62b5e0c4e752316c46ce240f356e",
+  "_npmVersion": "3.9.5",
+  "_nodeVersion": "6.2.1",
+  "dist": {
+    "shasum": "fe03232d02720d0a7b41c91e4c942ce0b9bf8fde",
+    "tarball": "http://registry.npmjs.org/pps-keymap/-/pps-keymap-6.3.2.tgz"
+  },
+  "versions": [
+    {
+      "number": "6.3.2",
+      "date": "2016-08-09T11:36:44.745Z"
+    }
+  ],
+  "created": "2016-08-09T11:36:44.745Z",
+  "modified": "2016-08-09T11:36:44.745Z",
+  "lastPublisher": {
+    "name": "montaldo",
+    "email": "marc@offthegrid.software"
+  },
+  "owners": [
+    {
+      "name": "montaldo",
+      "email": "marc@offthegrid.software"
+    }
+  ],
+  "readme": "Pps's DOM-aware keymap module\r\n\r\n```js\r\nvar KeymapManager, keymaps;\r\nKeymapManager = require('pps-keymap')\r\n\r\nkeymaps = new KeymapManager\r\nkeymaps.defaultTarget = document.body\r\n\r\n// Pass all the window's keydown events to the KeymapManager\r\ndocument.addEventListener('keydown', function(event) {\r\n  keymaps.handleKeyboardEvent(event)\r\n})\r\n\r\n// Add some keymaps\r\nkeymaps.loadKeymap('/path/to/keymap-file.json') // can also be a directory of json / cson files\r\n// OR\r\nkeymaps.add('/key/for/these/keymaps', {\r\n  \"body\": {\r\n    \"up\": \"core:move-up\",\r\n    \"down\": \"core:move-down\"\r\n  }\r\n})\r\n\r\n// When a keybinding is triggered, it will dispatch it on the node that was focused\r\nwindow.addEventListener('core:move-up', (event) => console.log('up', event))\r\nwindow.addEventListener('core:move-down', (event) => console.log('down', event))\r\n"
+}

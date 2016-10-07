@@ -1,57 +1,56 @@
 {
-  "author": {
-    "name": "Jake Luer",
-    "email": "jake@alogicalparadox.com"
-  },
   "name": "electron",
-  "description": "A simple command-line interface framework for node.js.",
-  "keywords": [
-    "cli",
-    "command",
-    "option",
-    "parser",
-    "argv"
-  ],
-  "homepage": "http://alogicalparadox.com/electron",
-  "license": "MIT",
-  "version": "0.4.1",
+  "version": "1.4.3",
+  "description": "Install prebuilt electron binaries for the command-line using npm",
   "repository": {
-    "user": "logicalparadox",
-    "repo": "electron",
+    "user": "electron-userland",
+    "repo": "electron-prebuilt",
     "host": "github.com",
     "branch": "master",
     "apiHost": "api.github.com",
-    "tarball_url": "https://api.github.com/repos/logicalparadox/electron/tarball/master",
-    "clone_url": "https://github.com/logicalparadox/electron",
-    "https_url": "https://github.com/logicalparadox/electron",
-    "travis_url": "https://travis-ci.org/logicalparadox/electron",
-    "zip_url": "https://github.com/logicalparadox/electron/archive/master.zip",
-    "api_url": "https://api.github.com/repos/logicalparadox/electron"
+    "tarball_url": "https://api.github.com/repos/electron-userland/electron-prebuilt/tarball/master",
+    "clone_url": "https://github.com/electron-userland/electron-prebuilt",
+    "https_url": "https://github.com/electron-userland/electron-prebuilt",
+    "travis_url": "https://travis-ci.org/electron-userland/electron-prebuilt",
+    "zip_url": "https://github.com/electron-userland/electron-prebuilt/archive/master.zip",
+    "api_url": "https://api.github.com/repos/electron-userland/electron-prebuilt"
   },
-  "main": "./index",
   "scripts": {
-    "test": "make test"
+    "cache-clean": "rm -rf ~/.electron && rm -rf dist",
+    "postinstall": "node install.js",
+    "pretest": "npm run cache-clean && npm run postinstall",
+    "test": "tape test/*.js && standard"
   },
+  "bin": {
+    "electron": "cli.js"
+  },
+  "main": "index.js",
   "dependencies": {
-    "drip": "1.1.x"
+    "extract-zip": "^1.0.3",
+    "electron-download": "^3.0.1"
   },
   "devDependencies": {
-    "mocha": "*",
-    "chai": "*",
-    "chai-spies": "*"
+    "home-path": "^0.1.1",
+    "path-exists": "^2.0.0",
+    "standard": "^5.4.1",
+    "tape": "^3.0.1"
   },
-  "optionalDependencies": {},
-  "engines": {
-    "node": "*"
+  "author": {
+    "name": "Mathias Buus"
   },
-  "gitHead": "f779bc71a2cf9bf094a8d037ffd5756cec4964d4",
-  "_npmVersion": "2.0.0",
+  "license": "MIT",
+  "keywords": [
+    "electron"
+  ],
+  "homepage": "https://github.com/electron-userland/electron-prebuilt#readme",
+  "_resolved": "https://api.github.com/repos/electron-userland/electron-prebuilt/tarball/v1.4.3",
+  "_npmVersion": "2.15.9",
+  "_nodeVersion": "2.2.1",
   "dist": {
-    "shasum": "a78a051a7882f4e542d6e207d8a1a73076b30144",
-    "tarball": "http://registry.npmjs.org/electron/-/electron-0.4.1.tgz"
+    "shasum": "b67566bd86b59d89c1172bade27ebd888e0304b7",
+    "tarball": "http://registry.npmjs.org/electron/-/electron-1.4.3.tgz"
   },
-  "deprecated": "The original electron project has been moved. Visit github.com/logicalparadox/electron for more details.",
-  "stars": 11,
+  "stars": 32,
   "versions": [
     {
       "number": "0.1.0",
@@ -84,19 +83,91 @@
     {
       "number": "0.4.1",
       "date": "2014-12-15T16:00:19.916Z"
+    },
+    {
+      "number": "1.3.1",
+      "date": "2016-07-28T16:32:17.329Z"
+    },
+    {
+      "number": "1.3.2",
+      "date": "2016-08-02T23:27:42.035Z"
+    },
+    {
+      "number": "1.3.3",
+      "date": "2016-08-10T11:09:39.987Z"
+    },
+    {
+      "number": "1.3.4",
+      "date": "2016-08-23T10:50:42.594Z"
+    },
+    {
+      "number": "1.3.5",
+      "date": "2016-09-02T07:57:18.244Z"
+    },
+    {
+      "number": "1.3.6",
+      "date": "2016-09-14T07:18:46.295Z"
+    },
+    {
+      "number": "1.4.0",
+      "date": "2016-09-15T07:25:36.907Z"
+    },
+    {
+      "number": "1.4.1",
+      "date": "2016-09-22T11:25:49.509Z"
+    },
+    {
+      "number": "1.3.7",
+      "date": "2016-09-27T10:03:30.522Z"
+    },
+    {
+      "number": "1.4.2",
+      "date": "2016-09-30T12:23:01.465Z"
+    },
+    {
+      "number": "1.4.3",
+      "date": "2016-10-06T10:08:01.790Z"
     }
   ],
   "created": "2012-05-18T23:11:55.741Z",
-  "modified": "2016-07-06T16:30:36.324Z",
+  "modified": "2016-10-06T10:08:01.790Z",
   "lastPublisher": {
-    "name": "jakeluer",
-    "email": "jake@alogicalparadox.com"
+    "name": "electron",
+    "email": "electron@github.com"
   },
   "owners": [
     {
-      "name": "jakeluer",
-      "email": "jake.luer@incatern.com"
+      "name": "electron",
+      "email": "electron@github.com"
+    },
+    {
+      "name": "jlord",
+      "email": "to.jlord@gmail.com"
+    },
+    {
+      "name": "kevinsawicki",
+      "email": "kevinsawicki@gmail.com"
+    },
+    {
+      "name": "mafintosh",
+      "email": "mathiasbuus@gmail.com"
+    },
+    {
+      "name": "mattdesl",
+      "email": "dave.des@gmail.com"
+    },
+    {
+      "name": "maxogden",
+      "email": "max@maxogden.com"
+    },
+    {
+      "name": "zcbenz",
+      "email": "zcbenz@gmail.com"
+    },
+    {
+      "name": "zeke",
+      "email": "zeke@sikelianos.com"
     }
   ],
-  "readme": "# Electron [![Build Status](https://secure.travis-ci.org/logicalparadox/electron.png?branch=master)](http://travis-ci.org/logicalparadox/electron)\n\n> A simple command-line interface framework for [node.js](http://nodejs.org).\n\n#### Features\n\n- reimagined `process.argv` parsing utility\n- framework for single or multiple command programs\n- automatic `--help` command generation with multiple theming options\n- built in cli coloring \n- chainable api\n\n## Quick Start Guide\n\nThis \"Quick Start Guide\" and the full API reference can be found \non [electron's documentation website](http://alogicalparadox.com/electron).\n\n#### Installation\n\nThe `electron` package is available through [npm](http://npmjs.org). It is recommended\nthat you add it to your project's `package.json`.\n\n```bash\nnpm install electron\n```\n\n#### Parsing Arguments\n\nThe argument parsing utility can be used independently of the program\nframework. Just pass the `process.argv` from any node modules and your\nready to go.\n\nThe following command execution...\n\n```bash\n$ node cli.js build --minify --out saved.min.js\n```\n\nCould be captured as so...\n\n```javascript\nvar argv = require('electron').argv();\n\n// objects\nargv.commands;               // [ 'build' ]\nargv.modes;                  // [ 'minify' ]\nargv.params;                 // { out: 'saved.min.js' }\n\n// helpers\nargv.command('build');       // true\nargv.mode('m', 'minify');    // true\nargv.param('o', 'out');      // 'saved.min.js'\n```\n\nRecommend reading the \"Argument Parsing Utility\" section of the \n[documentation](http://alogicalpardox.com/electron)\nto learn about the methodologies and specifics of each of the helpers.\n\n#### Your First Program\n\nTo construct your first program, simply execute the electron export\nwith a parameter of the namespace you wish to use for your program.\nThen proceed to define your settings and commands.\n\n```javascript\nvar myApp = require('../lib/myapp')\n  , program = require('electron')('myapp');\n\n/**\n * Define your program settings\n */\n\nprogram\n  .name('My Cool App')\n  .desc('http://docs.mycoolapp.com')\n  .version(myApp.version);\n\n/**\n * Define your first command\n */\n\nprogram\n  .command('build')\n  .desc('start a build task')\n  .option('-m, --minify', 'flag to set enable minification')\n  .option('-o, --out [file.js]', 'name of output file')\n  .action(function (argv) {\n    var minify = argv.mode('m', 'minify')\n      , savefile = argv.param('o', 'out')\n      , cwd = argv.cwd;\n\n   program.colorize();\n   console.log('Welcome to myApp'.gray + myApp.version);\n   console.log('It works if it ends with '.gray + 'myApp ' + 'ok'.green);\n   // etc...\n  });\n\n/**\n * Parse argv and execute respective command\n */\n\nprogram.parse();\n```\n\nYour `-h, --help` and `-v, --version` will be generated for you automatically.\n\nRecommend reading the \"Program Framework\" and \"Constructing Commands\" sections\nof the [documentation](http://alogicalpardox.com/electron)\nto learn about all of the available chainable commands and theming options \navailable to construct your programs.\n\n## Tests\n\nTests are writting in [Mocha](http://github.com/visionmedia/mocha) using \nthe [Chai](http://chaijs.com) `should` BDD assertion library. To make sure you \nhave that installed, clone this repo, install dependacies using `npm install`.\n\n    $ npm test\n\n## Contributors\n\nInterested in contributing? Fork to get started. Contact [@logicalparadox](http://github.com/logicalparadox) \nif you are interested in being regular contributor.\n\n* Jake Luer ([@logicalparadox](http://github.com/logicalparadox))\n\n## License\n\n(The MIT License)\n\nCopyright (c) 2012 Jake Luer <jake@alogicalparadox.com>\n\nPermission is hereby granted, free of charge, to any person obtaining a copy\nof this software and associated documentation files (the \"Software\"), to deal\nin the Software without restriction, including without limitation the rights\nto use, copy, modify, merge, publish, distribute, sublicense, and/or sell\ncopies of the Software, and to permit persons to whom the Software is\nfurnished to do so, subject to the following conditions:\n\nThe above copyright notice and this permission notice shall be included in\nall copies or substantial portions of the Software.\n\nTHE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR\nIMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,\nFITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE\nAUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER\nLIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,\nOUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN\nTHE SOFTWARE.\n"
+  "readme": "# electron-prebuilt\n\n[![Travis build status](http://img.shields.io/travis/electron-userland/electron-prebuilt.svg?style=flat)](http://travis-ci.org/electron-userland/electron-prebuilt)\n[![AppVeyor build status](https://ci.appveyor.com/api/projects/status/qd978ky9axl8m1m1?svg=true)](https://ci.appveyor.com/project/Atom/electron-prebuilt)\n\n[![badge](https://nodei.co/npm/electron-prebuilt.png?downloads=true)](https://www.npmjs.com/package/electron-prebuilt)\n\nInstall [Electron](https://github.com/electron/electron) prebuilt binaries for\ncommand-line use using npm. This module helps you easily install the `electron`\ncommand for use on the command line without having to compile anything.\n\n[Electron](http://electron.atom.io) is a JavaScript runtime that bundles Node.js\nand Chromium. You use it similar to the `node` command on the command line for\nexecuting JavaScript programs. For more info you can read [this intro blog post](http://maxogden.com/electron-fundamentals.html)\nor dive into the [Electron documentation](http://electron.atom.io/docs).\n\n## Installation\n\n**Note** As of version 1.3.1, this package is published to npm under two names:\n`electron` and `electron-prebuilt`. You can currently use either name, but\n`electron` is recommended, as the `electron-prebuilt` name is deprecated, and\nwill only be published until the end of 2016.\n\nDownload and install the latest build of Electron for your OS and add it to your\nproject's `package.json` as a `devDependency`:\n\n```shell\nnpm install electron --save-dev\n```\n\nThis is the preferred way to use Electron, as it doesn't require users to\ninstall Electron globally.\n\nYou can also use the `-g` flag (global) to symlink it into your PATH:\n\n```shell\nnpm install -g electron\n```\n\nIf that command fails with an `EACCESS` error you may have to run it again with `sudo`:\n\n```shell\nsudo npm install -g electron\n```\n\nNow you can just run `electron` to run electron:\n\n```shell\nelectron\n```\n\nIf you need to use an HTTP proxy you can [set these environment variables](https://github.com/request/request/tree/f0c4ec061141051988d1216c24936ad2e7d5c45d#controlling-proxy-behaviour-using-environment-variables).\n\nIf you want to change the architecture that is downloaded (e.g., `ia32` on an\n`x64` machine), you can use the `--arch` flag with npm install or set the\n`npm_config_arch` environment variable:\n\n```shell\nnpm install --arch=ia32 electron\n```\n\n## About\n\nWorks on Mac, Windows and Linux OSes that Electron supports (e.g. Electron\n[does not support Windows XP](https://github.com/electron/electron/issues/691)).\n\nThe version numbers of this module match the version number of the [official\nElectron releases](https://github.com/electron/electron/releases), which\n[do not follow semantic versioning](http://electron.atom.io/docs/tutorial/electron-versioning/).\n\nThis module is automatically released whenever a new version of Electron is\nreleased thanks to [electron-prebuilt-updater](https://github.com/electron/electron-prebuilt-updater),\noriginally written by [John Muhl](https://github.com/johnmuhl/).\n\n## Usage\n\nFirst, you have to [write an Electron application](http://electron.atom.io/docs/tutorial/quick-start/).\n\nThen, you can run your app using:\n\n```shell\nelectron your-app/\n```\n\n## Related modules\n\n- [electron-packager](https://github.com/electron-userland/electron-packager) -\n  Package and distribute your Electron app with OS-specific bundles\n  (.app, .exe etc)\n- [electron-builder](https://github.com/electron-userland/electron-builder) -\n  create installers\n- [menubar](https://github.com/maxogden/menubar) - high level way to create\n  menubar desktop applications with electron\n\nFind more at the [awesome-electron](https://github.com/sindresorhus/awesome-electron) list.\n\n## Programmatic usage\n\nMost people use this from the command line, but if you require `electron` inside\nyour **Node app** (not your Electron app) it will return the file path to the\nbinary. Use this to spawn Electron from Node scripts:\n\n```javascript\nvar electron = require('electron')\nvar proc = require('child_process')\n\n// will something similar to print /Users/maf/.../Electron\nconsole.log(electron)\n\n// spawn Electron\nvar child = proc.spawn(electron)\n```\n"
 }

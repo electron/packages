@@ -1,6 +1,6 @@
 {
   "name": "staticland",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "description": "Publish static sites",
   "main": "index.js",
   "bin": {
@@ -9,9 +9,7 @@
   "scripts": {
     "deps": "dependency-check . && dependency-check . --unused --no-dev",
     "lint": "standard",
-    "test:testron": "browserify index.js | testron | tap-spec",
-    "test:node": "tape tests/*.js | tap-spec",
-    "test": "npm run deps && npm run lint && npm run test:node && npm run test:testron"
+    "test": "NODE_ENV=test npm run deps && npm run lint && tape tests/*.js | tap-spec"
   },
   "repository": {
     "user": "staticland",
@@ -45,30 +43,33 @@
   },
   "dependencies": {
     "exit": "^0.1.2",
+    "ignore-file": "^1.1.2",
     "is-number": "^2.1.0",
     "is-string": "^1.0.4",
-    "minimist": "^1.2.0",
     "os-homedir": "^1.0.1",
     "request": "^2.72.0",
-    "single-line-log": "^1.1.1",
     "subcommand": "^2.0.3",
     "tar-fs": "^1.12.0"
   },
-  "gitHead": "3b7be6b664c7b07f3996cee94a94d413a5f047fe",
-  "_npmVersion": "3.8.6",
-  "_nodeVersion": "6.0.0",
+  "gitHead": "ddeaaed3c539d5e83e0329c4f2c9933819ae2106",
+  "_npmVersion": "3.10.2",
+  "_nodeVersion": "6.2.0",
   "dist": {
-    "shasum": "fa6b47ca27a86cbefc093a79457c690d1ae5af99",
-    "tarball": "http://registry.npmjs.org/staticland/-/staticland-1.0.0.tgz"
+    "shasum": "bd68d05aea0506e83942b3fa5dafcf47b5b874aa",
+    "tarball": "http://registry.npmjs.org/staticland/-/staticland-2.0.0.tgz"
   },
   "versions": [
     {
       "number": "1.0.0",
       "date": "2016-05-25T00:47:47.755Z"
+    },
+    {
+      "number": "2.0.0",
+      "date": "2016-07-25T21:57:39.393Z"
     }
   ],
   "created": "2016-05-25T00:47:47.755Z",
-  "modified": "2016-05-25T00:47:47.755Z",
+  "modified": "2016-07-25T21:57:39.393Z",
   "lastPublisher": {
     "name": "sethvincent",
     "email": "sethvincent@gmail.com"
@@ -79,5 +80,5 @@
       "email": "sethvincent@gmail.com"
     }
   ],
-  "readme": "# staticland\r\n\r\nPublish static sites with this command-line tool & API client for [static.land](http://static.land)\r\n\r\n## Features\r\n- One command to deploy a site.\r\n- Automatic SSL using Let's Encrypt.\r\n- Use any static site generator.\r\n- Host it yourself. Use it how you want.\r\n\r\n## Limitations\r\n- DNS records must be set up and propogated before deploying a site for the first time.\r\n- Setting aliases or redirects is not currently supported.\r\n- By default the server admin must explicitly give access to users. This will be optional in future releases.\r\n- The staticland server at api.static.land is not yet publicly usable, so you'll need to set up a staticland instance.\r\n\r\n## Deploying sites\r\nSet up a [staticland API server](https://github.com/staticland/staticland-api):\r\n\r\nLogin to a staticland server:\r\n\r\n```\r\n  staticland login \\\r\n    --email wat@static.land \\\r\n    --password thisisnotapassword \\\r\n    --server https://api.static.land\r\n```\r\n\r\nOne command to deploy a site with SSL:\r\n\r\n```\r\n  staticland deploy \\\r\n    --source /path/to/site \\\r\n    --domain example.com\r\n```\r\n\r\n## Install\r\n\r\n```\r\nnpm i -g staticland\r\n```\r\n\r\n## License\r\n[MIT](LICENSE.md)\r\n"
+  "readme": "# staticland\n\nPublish static sites with this command-line tool & API client for [static.land](http://static.land)\n\n## Features\n- One command to deploy a site.\n- Automatic SSL using Let's Encrypt.\n- Use any static site generator.\n- Host it yourself. Use it how you want.\n\n## Limitations\n- DNS records must be set up and propogated before deploying a site for the first time.\n- Setting aliases or redirects is not currently supported.\n- By default the server admin must explicitly give access to users. This will be optional in future releases.\n- The staticland server at api.static.land is not yet publicly usable, so you'll need to set up a staticland instance.\n\n## Deploying sites\nSet up a [staticland API server](https://github.com/staticland/staticland-api):\n\nCreate an account on a staticland server:\n\n```\n  staticland register \\\n    --email wat@static.land \\\n    --password thisisnotapassword \\\n    --server your.staticlandserver.com\n```\n\nOne command to deploy a site with SSL:\n\n```\n  staticland deploy \\\n    --source /path/to/site \\\n    --domain example.com\n```\n\n## Install\n\n```\nnpm i -g staticland\n```\n\n## Usage\n\n```\nUSAGE:\n  staticland {command} [options]\n\nCOMMANDS:\n  register,  create an account on a staticland server\n  login,     log in to a staticland server\n  logout,    log out of a staticland server\n  deploy,    deploy a static site to a staticland server\n  password,  change your password on a staticland server\n  server,    switch between staticland servers you've logged in to\n  whoami,    show which user you're using on which staticland server\n  domain,    check if domain dns is correctly set up with a staticland server\n  help,      show this help message\n\nDEPLOY\n  staticland deploy --path site/ --domain example.com --server api.static.land\n\nHELP\n  staticland help\n\nLOGIN\n  staticland login --email hi@example.com --password sosecret --server api.static.land\n\nSERVER\n  staticland server api.static.land\n\nWHOAMI\n  staticland whoami\n```\n\n## License\n[MIT](LICENSE.md)\n"
 }

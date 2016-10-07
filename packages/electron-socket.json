@@ -1,0 +1,81 @@
+{
+  "name": "electron-socket",
+  "version": "1.0.0",
+  "description": "Electron Socket",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "homepage": "https://github.com/simov/electron-socket",
+  "author": {
+    "name": "Simeon Velichkov",
+    "email": "simeonvelichkov@gmail.com",
+    "url": "http://simov.github.io"
+  },
+  "repository": {
+    "user": "simov",
+    "repo": "electron-socket",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/simov/electron-socket/tarball/master",
+    "clone_url": "https://github.com/simov/electron-socket",
+    "https_url": "https://github.com/simov/electron-socket",
+    "travis_url": "https://travis-ci.org/simov/electron-socket",
+    "zip_url": "https://github.com/simov/electron-socket/archive/master.zip",
+    "api_url": "https://api.github.com/repos/simov/electron-socket"
+  },
+  "dependencies": {
+    "electron": "^1.3.5",
+    "engine.io": "^1.6.11",
+    "engine.io-client": "^1.6.11"
+  },
+  "devDependencies": {
+    "eslint": "^3.4.0",
+    "eslint-config-standard": "^6.0.0",
+    "eslint-plugin-promise": "^2.0.1",
+    "eslint-plugin-standard": "^2.0.0",
+    "istanbul": "^0.4.5",
+    "mocha": "^3.0.2"
+  },
+  "main": "index.js",
+  "files": [
+    "lib/",
+    "LICENSE",
+    "README.md",
+    "index.js"
+  ],
+  "scripts": {
+    "test": "npm run lint && npm run test-ci",
+    "test-ci": "mocha test/",
+    "test-cov": "istanbul cover _mocha",
+    "lint": "eslint **/*.js && echo Lint Passed"
+  },
+  "engines": {
+    "node": ">=4.0.0"
+  },
+  "gitHead": "eb19a050537a61fce2b705e6f0a4119539aa8a89",
+  "_npmVersion": "2.15.9",
+  "_nodeVersion": "6.5.0",
+  "dist": {
+    "shasum": "cd1f98daef55355442411d9cf2933af1412a2f0e",
+    "tarball": "http://registry.npmjs.org/electron-socket/-/electron-socket-1.0.0.tgz"
+  },
+  "versions": [
+    {
+      "number": "1.0.0",
+      "date": "2016-09-13T11:33:26.901Z"
+    }
+  ],
+  "created": "2016-09-13T11:33:26.901Z",
+  "modified": "2016-09-13T11:33:26.901Z",
+  "lastPublisher": {
+    "name": "simov",
+    "email": "simeonvelichkov@gmail.com"
+  },
+  "owners": [
+    {
+      "name": "simov",
+      "email": "simeonvelichkov@gmail.com"
+    }
+  ],
+  "readme": "\n# Environment Variables\n\n```bash\nWS_PORT=3011 EL_PORT=3012 EL_APP=/path/to/app\n```\n\n# WebSocket Messages\n\n- `connect` - used for spawing the electron process from a web(ws)-server, returns a `connected` message\n- `disconnect` - used for closing the spawned electron window and web socket, returns a `disconnected` message\n"
+}

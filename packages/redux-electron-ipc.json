@@ -1,12 +1,12 @@
 {
   "name": "redux-electron-ipc",
-  "version": "1.0.1",
+  "version": "1.1.3",
   "description": "Redux Electron IPC Middleware",
   "main": "index.js",
   "scripts": {
     "test": "mocha --compilers js:babel-core/register",
     "lint": "eslint .",
-    "build": "webpack && WEBPACK_ENV=production ./node_modules/.bin/webpack",
+    "build": "webpack && cross-env WEBPACK_ENV=production ./node_modules/.bin/webpack",
     "dev": "webpack --watch"
   },
   "keywords": [
@@ -41,20 +41,23 @@
     "babel-preset-es2015": "^6.9.0",
     "babel-register": "^6.9.0",
     "chai": "^3.5.0",
+    "cross-env": "^2.0.1",
     "eslint": "^2.11.1",
     "mocha": "^2.5.3",
     "proxyquire": "^1.7.9",
     "redux": "^3.5.2",
+    "redux-thunk": "^2.1.0",
     "webpack": "^1.13.1"
   },
-  "gitHead": "b7bdb5e61e11a2c037bed18fb851b26975aaceb7",
+  "gitHead": "2528390adb85e6fd28d4c1f622cd63ee42d0c333",
   "homepage": "https://github.com/mariotacke/redux-electron-ipc#readme",
-  "_npmVersion": "3.8.6",
-  "_nodeVersion": "5.11.1",
+  "_npmVersion": "3.10.3",
+  "_nodeVersion": "6.7.0",
   "dist": {
-    "shasum": "b3b5ee84aefb59a84d2b64e16c2388117cb4a760",
-    "tarball": "http://registry.npmjs.org/redux-electron-ipc/-/redux-electron-ipc-1.0.1.tgz"
+    "shasum": "024174e9a2b7c9e310db34bfcc48f56c28c2ab20",
+    "tarball": "http://registry.npmjs.org/redux-electron-ipc/-/redux-electron-ipc-1.1.3.tgz"
   },
+  "stars": 1,
   "versions": [
     {
       "number": "1.0.0",
@@ -63,10 +66,26 @@
     {
       "number": "1.0.1",
       "date": "2016-06-01T17:49:59.035Z"
+    },
+    {
+      "number": "1.1.0",
+      "date": "2016-06-03T00:01:40.209Z"
+    },
+    {
+      "number": "1.1.1",
+      "date": "2016-09-07T02:12:55.110Z"
+    },
+    {
+      "number": "1.1.2",
+      "date": "2016-09-29T19:42:14.248Z"
+    },
+    {
+      "number": "1.1.3",
+      "date": "2016-09-29T20:15:23.691Z"
     }
   ],
   "created": "2016-06-01T00:05:02.979Z",
-  "modified": "2016-06-01T17:49:59.035Z",
+  "modified": "2016-10-03T16:01:53.021Z",
   "lastPublisher": {
     "name": "mariotacke",
     "email": "tacke.mario@gmail.com"
@@ -77,5 +96,5 @@
       "email": "tacke.mario@gmail.com"
     }
   ],
-  "readme": "# Redux Electron IPC Middleware\n[![Build Status](https://travis-ci.org/mariotacke/redux-electron-ipc.svg?branch=master)](https://travis-ci.org/mariotacke/redux-electron-ipc) [![npm version](https://badge.fury.io/js/redux-electron-ipc.svg)](https://badge.fury.io/js/redux-electron-ipc)\n\nA [Redux](https://github.com/reactjs/redux) middleware to reduce code around ipc\ncalls in an [Electron](http://electron.atom.io/) application. You can send and\nreceive [IPC](https://github.com/electron/electron/blob/master/docs/api/ipc-main.md)\nevents with a simple api.\n\n## Install\n\n### [npm](https://www.npmjs.com/package/redux-electron-ipc)\n```sh\nnpm install --save redux-electron-ipc\n```\n\n## Usage\nCheck out the full [demo](https://github.com/mariotacke/redux-electron-ipc/tree/master/example)\napplication.\n\n### Window\n```js\nimport { applyMiddleware, createStore } from 'redux';\nimport createIpc from 'redux-electron-ipc';\nimport { pingActionCreator, pongActionCreator } from './actions';\nimport { exampleReducer } from './reducer';\n\n// register an action creator to an ipc channel (key/channel, value/action creator)\nconst ipc = createIpc({\n    'pong': pongActionCreator, // receive a message\n    ...\n});\n\nconst store = createStore(exampleReducer, applyMiddleware(ipc));\n\n// send a message with arguments\nstore.dispatch(pingActionCreator('redux', 'electron', 'ipc'));\n```\n\n### Main\n```js\nconst electron = require('electron');\nconst { ipcMain } = electron;\n\n...\n\n// pong event with arguments back to caller\nipcMain.on('ping', (event, ...args) => {\n    console.log('Ping', ...args);\n    event.sender.send('pong', ...args);\n});\n```\n\n## API\n\n`redux-electron-ipc` has a single constructor function for creating ipc\nmiddleware.\n\n```js\ncreateIpc(events?: Object, prefix?: string) => IpcMiddleware\n```\n\n### Events\nEach key on the `events` object (default: `{}`) registers a single ipc channel\nresponse. The key designates the `ipc` channel; the value is a redux action\ncreator to be dispatched.\n\n```js\n{\n    'ipc channel name': (event, ...args) => {\n        return {\n            type: 'YOUR_ACTION_TYPE',\n            ... optional mapping of arguments ...\n        }\n    }\n}\n```\n\n### Prefix\nThe optional prefix (default: `IPC_`) determines which actions to forward to ipc\nwhen dispatched through the redux store.\n\n### Examples\n\n#### Sending an IPC event\nThe following `dispatch` will be intercepted by the `redux electron ipc`\nmiddleware and triggers an ipc event because the action type is in the form of\n`IPC_`... and a `channel` is specified.\n\n```js\nstore.dispatch({\n    type: IPC_ACTION_NAME, // IPC_ prefix + action name\n    channel: 'ipc event channel',\n    payload: {\n        key: value\n    }\n});\n```\n\n#### Receiving an IPC event\nTo receive events, register a channel response when configuring the middleware.\n\n```js\nconst ipc = createIpc({\n    'channel to listen to': () => {\n        return {\n            action: 'IPC_RESPONSE_ACTION',\n            ... optional mapping of arguments ...\n        }\n    }\n    ...\n});\n\nconst store = createStore(exampleReducer, applyMiddleware(ipc));\n```\n\n## Questions\nFor any questions, please open an [issue](https://github.com/mariotacke/redux-electron-ipc/issues).\nPull requests (with tests) are appreciated.\n"
+  "readme": "# Redux Electron IPC Middleware\n[![Build Status](https://travis-ci.org/mariotacke/redux-electron-ipc.svg?branch=master)](https://travis-ci.org/mariotacke/redux-electron-ipc) [![npm version](https://badge.fury.io/js/redux-electron-ipc.svg)](https://badge.fury.io/js/redux-electron-ipc) [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/mariotacke/redux-electron-ipc/master/LICENSE)\n\nA [Redux](https://github.com/reactjs/redux) middleware to reduce code around ipc\ncalls in an [Electron](http://electron.atom.io/) application. You can send and\nreceive [IPC](https://github.com/electron/electron/blob/master/docs/api/ipc-main.md)\nevents with a simple api.\n\n## Install\n\n### [npm](https://www.npmjs.com/package/redux-electron-ipc)\n```sh\nnpm install --save redux-electron-ipc\n```\n\n## Usage\nCheck out the full [demo](https://github.com/mariotacke/redux-electron-ipc/tree/master/example)\napplication.\n\n### Window\n```js\nimport { applyMiddleware, createStore } from 'redux';\nimport createIpc, { send } from 'redux-electron-ipc';\nimport { pongActionCreator } from './actions';\nimport { exampleReducer } from './reducer';\n\n// register an action creator to an ipc channel (key/channel, value/action creator)\nconst ipc = createIpc({\n    'pong': pongActionCreator, // receive a message\n    ...\n});\n\nconst store = createStore(exampleReducer, applyMiddleware(ipc));\n\n// send a message with arguments through the `send` utility function\nstore.dispatch(send('ping', 'redux', 'electron', 'ipc'));\n```\n\n### Main\n```js\n// your regular ipc setup\nconst electron = require('electron');\nconst { ipcMain } = electron;\n\n...\n\n// pong event with arguments back to caller\nipcMain.on('ping', (event, ...args) => {\n    console.log('Ping', ...args);\n    event.sender.send('pong', ...args);\n});\n```\n\n## API\n\n`redux-electron-ipc` has a default constructor function for creating ipc\nmiddleware, and a named `send` utility function.\n\n```js\ncreateIpc(events?: Object) => IpcMiddleware\nsend(channel: string, ...arg1?: Object, arg2?: Object, ..., argN?:Object) => Action\n```\n\n### Events\nEach key on the `events` object (default: `{}`) registers a single ipc channel\nresponse. The key designates the `ipc` channel; the value is a redux action\ncreator to be dispatched.\n\n```js\n{\n    'ipc channel name': (event, ...args) => {\n        return {\n            type: 'YOUR_ACTION_TYPE',\n            ... optional mapping of arguments ...\n        }\n    }\n}\n```\n\n### Examples\n\n#### Sending an IPC event\nUse the utility function `send` to issue an ipc message to the main thread. The\nmethod signature is the same as ipcRenderer's send.\n\nBehind the scenes, the ipc middleware will trigger the ipc on the given channel\nwith any number of arguments.\n\n```js\nimport { send } from 'redux-electron-ipc';\n\nstore.dispatch(send('ipc event channel', ...args));\n```\n\n#### Receiving an IPC event\nTo receive events, register a channel response when configuring the middleware.\n\n```js\nconst ipc = createIpc({\n    'channel to listen to': () => {\n        return {\n            action: 'IPC_RESPONSE_ACTION',\n            ... optional mapping of arguments ...\n        }\n    }\n    ...\n});\n\nconst store = createStore(exampleReducer, applyMiddleware(ipc));\n```\n\n## What about `redux-thunk`?\n`redux-electron-ipc` supports thunks out of the box as long as you install `redux-thunk` and apply the thunk middleware before the ipc middleware.\n\n### Example\n```js\nconst ipc = createIpc({\n    'ipc channel name': () => dispatch =>\n        dispatch({ type: 'DELAYED_ACTION_TYPE' })\n});\nconst store = createStore(exampleReducer, applyMiddleware(thunk, ipc));\n```\n\n## Questions\nFor any questions, please open an [issue](https://github.com/mariotacke/redux-electron-ipc/issues).\nPull requests (with tests) are appreciated.\n"
 }

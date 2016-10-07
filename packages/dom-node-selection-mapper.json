@@ -1,0 +1,72 @@
+{
+  "name": "dom-node-selection-mapper",
+  "version": "1.0.0",
+  "description": "A client-side JS lib for producing reusable selector strings to target DOM nodes on an HTML page",
+  "main": "index.js",
+  "scripts": {
+    "test": "gulp test",
+    "dev": "gulp dev"
+  },
+  "repository": {
+    "user": "ecaroth",
+    "repo": "dom-node-selection-mapper",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/ecaroth/dom-node-selection-mapper/tarball/master",
+    "clone_url": "https://github.com/ecaroth/dom-node-selection-mapper",
+    "https_url": "https://github.com/ecaroth/dom-node-selection-mapper",
+    "travis_url": "https://travis-ci.org/ecaroth/dom-node-selection-mapper",
+    "zip_url": "https://github.com/ecaroth/dom-node-selection-mapper/archive/master.zip",
+    "api_url": "https://api.github.com/repos/ecaroth/dom-node-selection-mapper"
+  },
+  "author": {
+    "name": "Evan Carothers"
+  },
+  "license": "MIT",
+  "homepage": "https://github.com/ecaroth/dom-node-selection-mapper#readme",
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "gulp": "^3.9.1",
+    "gulp-concat": "^2.6.0",
+    "gulp-electron-mocha": "^1.1.0",
+    "gulp-insert": "^0.5.0",
+    "gulp-install": "^0.6.0",
+    "gulp-jshint": "^1.0.2",
+    "gulp-mocha": "^2.2.0",
+    "gulp-replace": "^0.5.4",
+    "gulp-uglify": "^1.5.3",
+    "gulp-webserver": "^0.9.1",
+    "jquery": "^2.2.4",
+    "jsdom": "^9.2.0",
+    "jshint": "^2.9.2",
+    "mocha": "^2.4.5",
+    "mocha-jsdom": "^1.1.0"
+  },
+  "gitHead": "8ac60c157fc21991e4c52a8010d3134e3ecf1662",
+  "_npmVersion": "3.7.3",
+  "_nodeVersion": "5.9.1",
+  "dist": {
+    "shasum": "b565955cd63a29988dc1e4066042aa5ab9c63ac0",
+    "tarball": "http://registry.npmjs.org/dom-node-selection-mapper/-/dom-node-selection-mapper-1.0.0.tgz"
+  },
+  "versions": [
+    {
+      "number": "1.0.0",
+      "date": "2016-09-07T21:51:34.218Z"
+    }
+  ],
+  "created": "2016-09-07T21:51:34.218Z",
+  "modified": "2016-09-07T21:51:34.218Z",
+  "lastPublisher": {
+    "name": "ecaroth",
+    "email": "evan.carothers@gmail.com"
+  },
+  "owners": [
+    {
+      "name": "ecaroth",
+      "email": "evan.carothers@gmail.com"
+    }
+  ],
+  "readme": "# DOM Node Selection Mapper\n\nThis is a client-side JS library that allows you to pass in an HTML Element node and identifiable string(s) associated with that node, and builds a resuable CSS selector string that allows you to target that same node again in the future.\n\nIt conforms to [CSS Level 3](https://www.w3.org/TR/css3-selectors/) specifications, and builds selectors that are usable directly from javascript (aka ```document.querySelectorAll```) or via jQuery's sizzle selector engine.\n\nIt also allows you to build _loose_ selectors that can be flexible as the page format & item attributes change, or high-specificity selectors that target element attributes with exact matching based on your classifiers (such as ID & name attributes).\n\n*Authored by* [Evan Carothers](https://github.com/ecaroth)\n\nWhat can I use this library for?\n------\n\nIt is ideally designed for use cases where a user selects an element on an HTML page, and you need to programatically target that same element in the future (on this _exact_ page , or pages with similar structure/formatting).\n\nInstallation\n------\n\nThe package is available directly on github, or via package management (bower / npm):\n```\nbower install dom-node-selection-mapper --save\n```\n```\nnpm install git+https://github.com/ecaroth/dom-node-selection-mapper --save\n```\n\nUsage\n------\n\nInclude the script file `/dist/dom_node_selection_mapper.min.js` on your webpage. This creates a global object __DOMNodeSelectionMapper__, which exposes a single static function:\n\n####```DOMNodeSelectionMapper.mapNode( node, mappings, loose_match)``` \n> `node` _(HTML Element)_ DOM node that you wish to map selector for\n> \n> `mappings` _(string or array of strings)_ Matches that you want to use when building the selector string that can help identify the node and it's parents\n>\n> `loose_match` _(boolean)_ Allow loose attribute matching based on mapping values, else uses strict attribute matching which can tighten up selector specificity, but also allows for less flexibility in the selector reuse if you expect changes in IDs/classnames/etc\n\n\nFor example, given the following HTML fragment:\n```HTML\n<body>\n    <form>\n        <div class=\"row address\">\n            <label>\n                <input name=\"street\" id=\"street_1\" placeholder=\"Enter your street\">\n            </label>\n            <label>\n                <input name=\"city\" id=\"city_1\" placeholder=\"Enter your city\">\n            </label>\n        </div>\n        <div class=\"row address\">\n            <label>\n                <input name=\"street\" id=\"street_2\" placeholder=\"Enter your street\">\n            </label>\n            <label>\n                <input name=\"city\" id=\"city_2\" placeholder=\"Enter your city\">\n            </label>\n        </div>\n    </form>\n</body>\n```\nyou can leverage the object to build reusable selectors to the **id=\"city_2\"** input like so:\n```javascript\nvar node = document.getElementById('city_2');\nvar selector = DOMNodeSelectionMapper.mapNode( node, ['address','city'], false );\n```\nwith _loose_match_ set to **true** you would get a resulting selector string like:\n> __FORM > DIV[class*=\"address\"]:nth-of-type(2) INPUT[id*=\"city\"][name*=\"city\"]__\n\nand with _loose_match_ set to **false** you would get a resulting selector string like:\n> __INPUT[id=\"city_2\"][name=\"city\"]__\n\n\nSpecificity and mapping inputs\n------\n\nYou will notice that for non-loose matching, more specificity is used which often means more brevity for the selector. And, when a match with high confidence can be found (aka with an ID or name attribute) then the selector mapping ends there matching the specific high-confidence values, since that will be adequite for reuse.\n\nIn the example above, you are able to get a more replicatable match by providing more than  1 item in **mappings**. If you were to simply pass in 'city' you would get a loose match result like:\n> __FORM > DIV:nth-of-type(2) INPUT[id*=\"city\"][name*=\"city\"]__\n\nLoose matching is intended for use cases where the context of the DOM node on the page might not be consistent, but you want to try and match it if possible. It _can_ lead to edge cases where more than 1 element on the page can be matched from the generated selector, but it usually does a good job of coercing the selector to include only the specificity it needs to match in the current context and leave it flexible enough for reuse.\n\nDevelopment\n------\n\nThe dev server runs on localhost:3003. Once running you can load the JS in running local pages from _localhost:3003/dom_node_selection_mapper.js_\n\n```\nnpm install\nnpm run dev\n```\n\nWhen working with the `DOMNodeSelectionMapper` object, you can enable a debug mode with verbose logging by setting the debug param to true\n\n```javascript\nDOMNodeSelectionMapper.debug = true;\n```\n\nThere is an example of a page you can use locally for development in `dev/sample_dev_page.html`\n\n### Testing\n\nThe test suite builds and checks for exact and loose matches in variety of HTML templates in the /test/templates directory.\nTo execute the tests you must install all the npm dependencies\n```\nnpm test\n```\n\n### Building for distribution\n\nYou can generate the needed (dev & minified) files by running the gulp build command, which builds scripts in the _/dist_ directory\n```\ngulp build\n```"
+}

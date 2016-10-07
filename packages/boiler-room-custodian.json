@@ -1,0 +1,87 @@
+{
+  "name": "boiler-room-custodian",
+  "version": "0.4.2",
+  "description": "Mop up those boilerplates",
+  "main": "./bin/mop",
+  "bin": {
+    "mop": "./bin/mop"
+  },
+  "scripts": {
+    "test": "mocha"
+  },
+  "keywords": [],
+  "author": {
+    "name": "Thomas Stringer"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "eslint": "^3.5.0",
+    "mocha": "^3.0.2"
+  },
+  "dependencies": {
+    "chalk": "^1.1.3",
+    "commander": "^2.9.0",
+    "rimraf": "^2.5.4"
+  },
+  "repository": {
+    "user": "tstringer",
+    "repo": "boiler-room-custodian",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/tstringer/boiler-room-custodian/tarball/master",
+    "clone_url": "https://github.com/tstringer/boiler-room-custodian",
+    "https_url": "https://github.com/tstringer/boiler-room-custodian",
+    "travis_url": "https://travis-ci.org/tstringer/boiler-room-custodian",
+    "zip_url": "https://github.com/tstringer/boiler-room-custodian/archive/master.zip",
+    "api_url": "https://api.github.com/repos/tstringer/boiler-room-custodian"
+  },
+  "gitHead": "37d1b5169d2c76f5fd7ed524e87b1f607a07942a",
+  "homepage": "https://github.com/tstringer/boiler-room-custodian#readme",
+  "_npmVersion": "3.10.6",
+  "_nodeVersion": "6.4.0",
+  "dist": {
+    "shasum": "5f7aad3e7eb4b6f2777674e776d1d2bb8a72fcd2",
+    "tarball": "http://registry.npmjs.org/boiler-room-custodian/-/boiler-room-custodian-0.4.2.tgz"
+  },
+  "versions": [
+    {
+      "number": "0.1.1",
+      "date": "2016-09-19T23:08:53.191Z"
+    },
+    {
+      "number": "0.2.0",
+      "date": "2016-09-20T13:18:10.869Z"
+    },
+    {
+      "number": "0.3.0",
+      "date": "2016-09-22T11:50:40.128Z"
+    },
+    {
+      "number": "0.4.0",
+      "date": "2016-09-23T13:33:26.974Z"
+    },
+    {
+      "number": "0.4.1",
+      "date": "2016-09-23T13:53:52.575Z"
+    },
+    {
+      "number": "0.4.2",
+      "date": "2016-10-02T14:38:31.736Z"
+    }
+  ],
+  "created": "2016-09-19T23:08:53.191Z",
+  "modified": "2016-10-02T14:38:31.736Z",
+  "lastPublisher": {
+    "name": "tstringer",
+    "email": "tr.stringer@outlook.com"
+  },
+  "owners": [
+    {
+      "name": "tstringer",
+      "email": "tr.stringer@outlook.com"
+    }
+  ],
+  "readme": "# :eyeglasses: Boiler Room Custodian\n\n*Because boilerplates need a little cleanup sometimes* :honeybee:\n\n![demo](demo.gif)\n\n## :exclamation: :question: Why :question: :exclamation:\n\nSimple :full_moon_with_face: There are lots of amazing boilerplates out there that do a great job of giving us what we need.  They also often include minimal sample app code just so we can \"see it run\".  What `boiler-plate-custodian` aims to do is have a way to use configuration to clean that all up when ready to start development on the project.\n\n## :bulb: What should this turn into? :bulb:\n\nIdeally the best place for a cleanup configuration to be stored would be in the root directory of the boilerplate repositories themselves.  Then have a little npm script that runs `mop` (the bin of `boiler-plate-custodian`).  That way the boilerplate consumers would have a typical workflow of...\n\n 1. clone the boilerplate\n 2. run the boilerplate as-is viewing functionality/sample\n 3. run `boiler-plate-custodian` (i.e. `npm run cleanup`)\n 4. start development on minified project\n\n## :boom: (boilerplate maintainers) What should you do? :boom:\n\n 1. `npm install --save-dev boiler-room-custodian`\n 2. create [`setup.js`](#page_facing_up-cleanupjs-structuresample-page_facing_up) in the root dir of the boilerplate\n 3. note what it would take (files removed, added, modified) to remove unnecessary code/files\n 4. inject the item changes in the `setup.js` configuration\n 5. create an npm script i.e. `\"cleanup\": \"mop -v\"`\n\n## :page_facing_up: `setup.js` structure/sample :page_facing_up:\n\n*The below example uses a cleanup configuration for the extremely useful [electron-react-boilerplate](https://github.com/chentsulin/electron-react-boilerplate)*\n\n**[Pull Request illustrating the code changes for this boilerplate](https://github.com/chentsulin/electron-react-boilerplate/pull/402)**\n\n```javascript\nmodule.exports = {\n  // remove the following files as they are mostly \n  // related to the sample counter page and functionality\n  remove: [\n    { file: 'app/actions/counter.js' },\n    { file: 'app/components/Counter.css' },\n    { file: 'app/components/Counter.js' },\n    { file: 'app/containers/CounterPage.js' },\n    { file: 'app/reducers/counter.js' },\n    { file: 'test/actions/counter.spec.js' },\n    { file: 'test/components/Counter.spec.js' },\n    { file: 'test/containers/CounterPage.spec.js' },\n    { file: 'test/reducers/counter.spec.js' },\n    { file: 'CHANGELOG.md' },\n    { file: 'erb-logo.png' }\n  ],\n  // clean the following files by either clearing them \n  // (by specifying {clear: true}) or by removing lines \n  // that match a regex pattern\n  clean: [\n    {\n      file: 'app/reducers/index.js',\n      pattern: /counter/\n    },\n    {\n      file: 'app/store/configureStore.development.js',\n      pattern: /counterActions/\n    },\n    {\n      file: 'app/app.global.css',\n      clear: true\n    },\n    {\n      file: 'app/routes.js',\n      pattern: /CounterPage/\n    },\n    {\n      file: 'test/e2e.js',\n      clear: true\n    },\n    {\n      file: 'README.md',\n      clear: true\n    },\n    {\n      file: 'app/components/Home.js',\n      pattern: /(h2|Link to)/\n    }\n  ],\n  // add the following files to the project, mostly \n  // related to .gitkeep for version control\n  add: [\n    { file: 'app/actions/.gitkeep' },\n    { file: 'test/actions/.gitkeep' },\n    { file: 'test/components/.gitkeep' },\n    { file: 'test/containers/.gitkeep' },\n    { file: 'test/reducers/.gitkeep' }\n  ]\n};\n```\n"
+}

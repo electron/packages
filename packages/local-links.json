@@ -1,0 +1,146 @@
+{
+  "name": "local-links",
+  "description": "Determine cross-browser if an event or anchor element should be handled locally.",
+  "version": "1.4.1",
+  "author": {
+    "name": "Luke Karrys",
+    "email": "luke@lukekarrys.com"
+  },
+  "devDependencies": {
+    "browserify": "^13.1.0",
+    "electron-prebuilt": "^1.3.2",
+    "git-validate": "^2.1.4",
+    "jquery": "^3.1.0",
+    "lodash.partial": "^4.2.0",
+    "run-browser": "^2.0.2",
+    "standard": "^8.0.0-beta.3",
+    "tap-spec": "^4.1.1",
+    "tape": "^4.6.0",
+    "tape-run": "^2.1.4",
+    "zuul": "^3.10.3",
+    "zuul-ngrok": "^4.0.0"
+  },
+  "homepage": "https://github.com/lukekarrys/local-links",
+  "keywords": [
+    "IE",
+    "links",
+    "local"
+  ],
+  "license": "MIT",
+  "main": "local-links.js",
+  "pre-commit": [
+    "lint",
+    "test",
+    "validate"
+  ],
+  "repository": {
+    "user": "lukekarrys",
+    "repo": "local-links",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/lukekarrys/local-links/tarball/master",
+    "clone_url": "https://github.com/lukekarrys/local-links",
+    "https_url": "https://github.com/lukekarrys/local-links",
+    "travis_url": "https://travis-ci.org/lukekarrys/local-links",
+    "zip_url": "https://github.com/lukekarrys/local-links/archive/master.zip",
+    "api_url": "https://api.github.com/repos/lukekarrys/local-links"
+  },
+  "scripts": {
+    "lint": "standard",
+    "start": "run-browser test/index.js",
+    "start-80": "run-browser test/index.js --port 80",
+    "test": "browserify test/index.js | tape-run -b electron | tap-spec",
+    "test-travis": "npm test && npm run zuul",
+    "validate": "npm ls",
+    "zuul": "zuul --ui tape -- test/index.js",
+    "zuul-local": "zuul --local 8080 --ui tape -- test/index.js"
+  },
+  "gitHead": "792ba70eb3193b08ae958f21b6e33fb09dfdae13",
+  "_npmVersion": "3.10.5",
+  "_nodeVersion": "5.12.0",
+  "dist": {
+    "shasum": "bfc94f3d09cc444f0d14408f80f9c59292c57e35",
+    "tarball": "http://registry.npmjs.org/local-links/-/local-links-1.4.1.tgz"
+  },
+  "stars": 6,
+  "versions": [
+    {
+      "number": "1.0.0",
+      "date": "2014-08-14T22:33:06.486Z"
+    },
+    {
+      "number": "1.0.1",
+      "date": "2014-08-14T22:54:40.274Z"
+    },
+    {
+      "number": "1.0.2",
+      "date": "2014-08-14T22:59:26.772Z"
+    },
+    {
+      "number": "1.0.3",
+      "date": "2014-08-14T23:59:48.194Z"
+    },
+    {
+      "number": "1.0.4",
+      "date": "2014-08-15T00:02:40.975Z"
+    },
+    {
+      "number": "1.0.5",
+      "date": "2014-08-15T00:24:25.544Z"
+    },
+    {
+      "number": "1.0.6",
+      "date": "2014-08-15T00:43:29.680Z"
+    },
+    {
+      "number": "1.0.7",
+      "date": "2014-10-08T20:39:41.827Z"
+    },
+    {
+      "number": "1.0.8",
+      "date": "2014-10-08T22:12:57.769Z"
+    },
+    {
+      "number": "1.0.9",
+      "date": "2014-12-04T00:57:18.411Z"
+    },
+    {
+      "number": "1.0.10",
+      "date": "2014-12-04T01:43:44.240Z"
+    },
+    {
+      "number": "1.1.0",
+      "date": "2015-02-07T22:09:54.613Z"
+    },
+    {
+      "number": "1.2.0",
+      "date": "2015-02-10T21:19:58.905Z"
+    },
+    {
+      "number": "1.3.0",
+      "date": "2015-02-24T06:21:32.394Z"
+    },
+    {
+      "number": "1.4.0",
+      "date": "2015-04-21T06:53:11.429Z"
+    },
+    {
+      "number": "1.4.1",
+      "date": "2016-09-01T23:56:13.450Z"
+    }
+  ],
+  "created": "2014-08-14T22:33:06.486Z",
+  "modified": "2016-09-01T23:56:13.450Z",
+  "lastPublisher": {
+    "name": "lukekarrys",
+    "email": "luke@lukekarrys.com"
+  },
+  "owners": [
+    {
+      "name": "lukekarrys",
+      "email": "luke@lukekarrys.com"
+    }
+  ],
+  "readme": "local-links\n===========\n\nDetermine cross-browser if an event or anchor element should be handled locally.\n\n[![NPM](https://nodei.co/npm/local-links.png)](https://nodei.co/npm/local-links/)\n[![Build Status](https://travis-ci.org/lukekarrys/local-links.png?branch=master)](https://travis-ci.org/lukekarrys/local-links)\n[![Sauce Test Status](https://saucelabs.com/browser-matrix/lukekarrys-loclinks.svg)](https://saucelabs.com/u/lukekarrys-loclinks)\n\n## Install\n\n`npm install local-links --save`\n\n## Why?\n\nBrowsers have quirks. Knowing if a link is local should be easy, since we\njust want to know if the hosts are the same. But this can be difficult because\nof the aforementioned browser quirks. A few of them:\n\n- IE9 will add `:80` to the host of an anchor, but not the window\n- IE9 wont put a leading slash on the pathname of an anchor, but will on the window\n- Chrome 36 will report anchor.hash as '' if it has `href=\"#\"`\n- More? Please report test cases!\n\nBecause of that and a few other things I was doing all the time, such as\nfinding the closest anchor to an element based on an event object, I decided\nit would be a good module (that at least I would use all the time).\n\n## Usage\n\n```html\n<a href='/page2' id=\"local\">Local</a>\n<a href='#hash' id=\"hash\">Local</a>\n<a href='http://google.com' id=\"google\">Google</a>\n```\n\n```js\nvar local = require('local-links');\n\n// `pathname()` will return the pathname as a string\n// if the link is local, otherwise it will return null\nlocal.pathname(document.getElementById('local')) // '/page2'\nlocal.pathname(document.getElementById('hash')) // null\nlocal.pathname(document.getElementById('google')) // null\n\n// `hash()` will return the hash as a string\n// if the hash is to this page, otherwise it will return null\nlocal.hash(document.getElementById('local')) // null\nlocal.hash(document.getElementById('hash')) // '#hash'\nlocal.hash(document.getElementById('google')) // null\n```\n\n\n## API\n\n\n### Methods\n\n#### `getLocalPathname(Event or HTMLElement [, HTMLElement])`\n\nReturns the pathname if it is a non-hash local link, or null if it is not.\nAlways includes the leading `/`.\n\n*Alias: `pathname`*\n\n#### `getLocalHash(Event or HTMLElement [, HTMLElement])`\n\nReturns the hash if it is an in-page hash link, or null if it is not. Always\nincludes the leading `#`.\n\n*Alias: `hash`*\n\n#### `isActive(Event or HTMLElement [, String comparePath])`\n\nReturns true/false depending on if the anchor pathname is equal to the `comparePath`\n(which defaults to `window.location.pathname`). Calls `pathname()` internally.\n\n*Alias: `active`*\n\n#### `isLocal(event, anchor, [, Boolean lookForHash])`\n\nReturns the pathname (or hash if `lookForHash` is true) for local links, or null\nif it is not. This is used by `pathname()` and `hash()` under the hood. The main\ndifference here is that you need to specify the `event` and `anchor` yourself, and\nthe `anchor` wont be looked up from `event.target` like it would from the other methods.\n\n\n#### Supply either Event or HTMLElement\n\nThe above methods will accept an `Event` object, like the one you get from\nclick event handlers, or any `HTMLElement`. You can also supply an `Event` object\nand a different `HTMLElement` as the second parameter and it will take precedence.\n\nIf only an `Event` object is supplied, the `HTMLElement` will be found from\n`Event.target`.\n\n\n#### Nested HTML Elements\n\nIn the case that any `HTMLElement` your provide is not an anchor\nelement, the module will look up `parentNodes` until an anchor is found.\n\n\n#### Events\n\nIf an `Event` object is supplied, all methods will return `null` if any of the following\nare true `altKey`, `ctrlKey`, `metaKey`, `shiftKey`. This is because you almost always\nwant to treat modified click events as external page clicks.\n\n\n#### `target=\"_blank\"`\n\nIf the anchor has target=\"_blank\" it will return `null` for both the `pathname()` and\n`hash()` methods.\n\n\n#### Hash links\n\nUsing the `pathname` method will return null for hash links that do not point\nto a different page. To get the hash for one of these links use the `hash()` method.\n\n\n### Tests\n\nRun `npm start` and open [`http://localhost:3000`](http://localhost:3000) to run the tests in your browser.\n\nIt is also a good idea to run `sudo npm run start-80` (requires admin) which will run the tests on [`http://localhost`](http://localhost)\nbecause there can be unexpected behavior when the host has no port in [IE9](https://github.com/lukekarrys/local-links/blob/master/local-links.js#L26) and [IE10](https://github.com/lukekarrys/local-links/blob/master/local-links.js#L28).\n\nTo run the tests in the cli, just run `npm test`.\n\n\n#### License\n\nMIT\n"
+}

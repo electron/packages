@@ -1,0 +1,160 @@
+{
+  "name": "startr",
+  "productName": "Startr",
+  "version": "0.0.6",
+  "description": "A desktop app for bootstrapping new projects",
+  "main": "main.js",
+  "scripts": {
+    "test": "cross-env NODE_ENV=test mocha --compilers js:babel-register --recursive --require ./test/setup.js test/**/*.spec.js",
+    "test-watch": "npm test -- --watch",
+    "test-e2e": "cross-env NODE_ENV=test mocha --compilers js:babel-register --require ./test/setup.js --require co-mocha ./test/e2e.js",
+    "lint": "eslint app test *.js",
+    "hot-server": "node -r babel-register server.js",
+    "build-main": "cross-env NODE_ENV=production node -r babel-register ./node_modules/webpack/bin/webpack --config webpack.config.electron.js --progress --profile --colors",
+    "build-renderer": "cross-env NODE_ENV=production node -r babel-register ./node_modules/webpack/bin/webpack --config webpack.config.production.js --progress --profile --colors",
+    "build": "npm run build-main && npm run build-renderer",
+    "start": "cross-env NODE_ENV=production electron ./",
+    "start-hot": "cross-env HOT=1 NODE_ENV=development electron -r babel-register -r babel-polyfill ./main.development",
+    "package": "cross-env NODE_ENV=production node -r babel-register package.js",
+    "package-all": "npm run package -- --all",
+    "postinstall": "node node_modules/fbjs-scripts/node/check-dev-engines.js package.json",
+    "dev": "concurrently --kill-others \"npm run hot-server\" \"npm run start-hot\""
+  },
+  "bin": {
+    "electron": "./node_modules/.bin/electron"
+  },
+  "repository": {
+    "user": "jkup",
+    "repo": "startr",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/jkup/startr/tarball/master",
+    "clone_url": "https://github.com/jkup/startr",
+    "https_url": "https://github.com/jkup/startr",
+    "travis_url": "https://travis-ci.org/jkup/startr",
+    "zip_url": "https://github.com/jkup/startr/archive/master.zip",
+    "api_url": "https://api.github.com/repos/jkup/startr"
+  },
+  "author": {
+    "name": "Jon Kuperman",
+    "email": "jon.kuperman@gmail.com",
+    "url": "https://jonkuperman.com"
+  },
+  "license": "MIT",
+  "keywords": [
+    "electron",
+    "boilerplate",
+    "starter",
+    "starter-kit"
+  ],
+  "homepage": "https://github.com/jkup/startr#readme",
+  "devDependencies": {
+    "asar": "^0.12.0",
+    "babel-core": "^6.9.0",
+    "babel-eslint": "^6.0.4",
+    "babel-loader": "^6.2.4",
+    "babel-plugin-add-module-exports": "^0.2.1",
+    "babel-plugin-dev-expression": "^0.2.1",
+    "babel-plugin-transform-remove-console": "^6.8.0",
+    "babel-plugin-transform-remove-debugger": "^6.8.0",
+    "babel-plugin-webpack-loaders": "^0.7.0",
+    "babel-polyfill": "^6.9.0",
+    "babel-preset-es2015": "^6.9.0",
+    "babel-preset-react": "^6.5.0",
+    "babel-preset-react-hmre": "^1.1.1",
+    "babel-preset-react-optimize": "^1.0.1",
+    "babel-preset-stage-0": "^6.5.0",
+    "babel-register": "^6.9.0",
+    "chai": "^3.5.0",
+    "co-mocha": "^1.1.2",
+    "concurrently": "^2.1.0",
+    "cross-env": "^1.0.8",
+    "css-loader": "^0.23.1",
+    "del": "^2.2.0",
+    "devtron": "^1.2.0",
+    "electron-devtools-installer": "^1.1.5",
+    "electron-packager": "^7.0.2",
+    "electron-prebuilt": "^1.2.3",
+    "electron-rebuild": "^1.1.4",
+    "eslint": "^2.10.2",
+    "eslint-config-airbnb": "^9.0.1",
+    "eslint-import-resolver-webpack": "^0.4.0",
+    "eslint-plugin-import": "^1.8.1",
+    "eslint-plugin-jsx-a11y": "^1.2.2",
+    "eslint-plugin-react": "^5.1.1",
+    "express": "^4.13.4",
+    "extract-text-webpack-plugin": "^1.0.1",
+    "fbjs-scripts": "^0.7.1",
+    "jsdom": "^9.2.0",
+    "json-loader": "^0.5.4",
+    "minimist": "^1.2.0",
+    "mocha": "^2.5.3",
+    "node-libs-browser": "^1.0.0",
+    "react-addons-test-utils": "^15.1.0",
+    "redux-logger": "^2.6.1",
+    "sinon": "^1.17.4",
+    "spectron": "^3.2.4",
+    "style-loader": "^0.13.1",
+    "webpack": "^1.13.1",
+    "webpack-dev-middleware": "^1.6.1",
+    "webpack-hot-middleware": "^2.10.0",
+    "webpack-merge": "^0.14.0"
+  },
+  "dependencies": {
+    "css-modules-require-hook": "^4.0.0",
+    "electron-debug": "^1.0.1",
+    "font-awesome": "^4.6.3",
+    "postcss": "^5.0.21",
+    "react": "^15.1.0",
+    "react-dom": "^15.1.0",
+    "react-redux": "^4.4.5",
+    "react-router": "^2.4.1",
+    "react-router-redux": "^4.0.4",
+    "redux": "^3.5.2",
+    "redux-thunk": "^2.1.0",
+    "source-map-support": "^0.4.0"
+  },
+  "devEngines": {
+    "node": "4.x || 5.x || 6.x",
+    "npm": "2.x || 3.x"
+  },
+  "gitHead": "f01ee25d4d77790d1ab07bad41779a76889744b4",
+  "_npmVersion": "3.10.6",
+  "_nodeVersion": "6.2.0",
+  "dist": {
+    "shasum": "1b5055d4097231e8b450f9b3613942df9140040c",
+    "tarball": "http://registry.npmjs.org/startr/-/startr-0.0.6.tgz"
+  },
+  "versions": [
+    {
+      "number": "0.0.2",
+      "date": "2016-07-21T21:02:29.900Z"
+    },
+    {
+      "number": "0.0.3",
+      "date": "2016-07-21T21:25:01.084Z"
+    },
+    {
+      "number": "0.0.5",
+      "date": "2016-07-21T22:43:43.811Z"
+    },
+    {
+      "number": "0.0.6",
+      "date": "2016-07-21T22:48:23.699Z"
+    }
+  ],
+  "created": "2016-07-21T21:02:29.900Z",
+  "modified": "2016-07-21T22:48:23.699Z",
+  "lastPublisher": {
+    "name": "jkup",
+    "email": "jon.kuperman@gmail.com"
+  },
+  "owners": [
+    {
+      "name": "jkup",
+      "email": "jon.kuperman@gmail.com"
+    }
+  ],
+  "readme": "# Startr\n\n> Live editing development on desktop app\n\n[Electron](http://electron.atom.io/) application boilerplate based on [React](https://facebook.github.io/react/), [Redux](https://github.com/reactjs/redux), [React Router](https://github.com/reactjs/react-router), [Webpack](http://webpack.github.io/docs/), [React Transform HMR](https://github.com/gaearon/react-transform-hmr) for rapid application development\n\n## Run\n\nRun this two commands __simultaneously__ in different console tabs.\n\n```bash\n$ npm run hot-server\n$ npm run start-hot\n```\n\nor run two servers with one command\n\n```bash\n$ npm run dev\n```\n\n*Note: requires a node version >= 4 and an npm version >= 2.*\n\n\n## DevTools\n\n#### Toggle Chrome DevTools\n\n- OS X: <kbd>Cmd</kbd> <kbd>Alt</kbd> <kbd>I</kbd> or <kbd>F12</kbd>\n- Linux: <kbd>Ctrl</kbd> <kbd>Shift</kbd> <kbd>I</kbd> or <kbd>F12</kbd>\n- Windows: <kbd>Ctrl</kbd> <kbd>Shift</kbd> <kbd>I</kbd> or <kbd>F12</kbd>\n\n*See [electron-debug](https://github.com/sindresorhus/electron-debug) for more information.*\n\n#### Redux DevTools\n\nWe used [redux-devtools-extension](https://github.com/zalmoxisus/redux-devtools-extension), you can find the `Redux` tab on Chrome DevTools.\n\n## Externals\n\nIf you use any 3rd party libraries which can't be built with webpack, you must list them in your `webpack.config.base.js`：\n\n```javascript\nexternals: [\n  // put your node 3rd party libraries which can't be built with webpack here (mysql, mongodb, and so on..)\n]\n```\n\nYou can find those lines in the file.\n\n\n## CSS Modules\n\nThis boilerplate out of the box is configured to use [css-modules](https://github.com/css-modules/css-modules).\n\nAll `.css` file extensions will use css-modules unless it has `.global.css`.\n\nIf you need global styles, stylesheets with `.global.css` will not go through the\ncss-modules loader. e.g. `app.global.css`\n\n\n## Package\n\n```bash\n$ npm run package\n```\n\nTo package apps for all platforms:\n\n```bash\n$ npm run package-all\n```\n\n#### Options\n\n- --name, -n: Application name (default: ElectronReact)\n- --version, -v: Electron version (default: latest version)\n- --asar, -a: [asar](https://github.com/atom/asar) support (default: false)\n- --icon, -i: Application icon\n- --all: pack for all platforms\n\nUse `electron-packager` to pack your app with `--all` options for darwin (osx), linux and win32 (windows) platform. After build, you will find them in `release` folder. Otherwise, you will only find one for your os.\n\n`test`, `tools`, `release` folder and devDependencies in `package.json` will be ignored by default.\n\n#### Default Ignore modules\n\nWe add some module's `peerDependencies` to ignore option as default for application size reduction.\n\n- `babel-core` is required by `babel-loader` and its size is ~19 MB\n- `node-libs-browser` is required by `webpack` and its size is ~3MB.\n\n> **Note:** If you want to use any above modules in runtime, for example: `require('babel/register')`, you should move them from `devDependencies` to `dependencies`.\n\n#### Building windows apps from non-windows platforms\n\nPlease checkout [Building windows apps from non-windows platforms](https://github.com/maxogden/electron-packager#building-windows-apps-from-non-windows-platforms).\n\n## Dispatching redux actions from main process\n\nsee discusses in [#118](https://github.com/chentsulin/electron-react-boilerplate/issues/118) and [#108](https://github.com/chentsulin/electron-react-boilerplate/issues/108)\n\n## How hot-reloading works on Electron\n\nWe use [webpack-target-electron-renderer](https://github.com/chentsulin/webpack-target-electron-renderer) to provide a build target for electron renderer process. Read more information [here](https://github.com/chentsulin/webpack-target-electron-renderer#how-this-module-works).\n\n> Note: webpack >= 1.12.15 has built-in support for `electron-main` and `electron-renderer` targets.\n\n## How to keep the boilerplate updated\n\nIf your application is a fork from this repo, you can add this repo to another git remote:\n\n```sh\ngit remote add upstream https://github.com/chentsulin/electron-react-boilerplate.git\n```\n\nThen, use git to merge some latest commits:\n\n```sh\ngit pull upstream master\n```\n\n## Native-like UI\n\nIf you want to have native-like User Interface (OS X El Capitan and Windows 10), [react-desktop](https://github.com/gabrielbull/react-desktop) may perfect suit for you.\n\n\n## License\nMIT"
+}

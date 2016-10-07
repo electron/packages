@@ -1,0 +1,83 @@
+{
+  "name": "electron-dataminer",
+  "version": "1.2.3",
+  "description": "Extract data from internet using reusable modules ",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron main.js",
+    "test": "npm start test/config.js"
+  },
+  "keywords": [
+    "data",
+    "mining",
+    "miner",
+    "electron"
+  ],
+  "author": {
+    "name": "Rurik Bogdanov"
+  },
+  "license": "AGPL-3.0",
+  "repository": {
+    "user": "alsenet-labs",
+    "repo": "electron-dataminer",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/alsenet-labs/electron-dataminer/tarball/master",
+    "clone_url": "https://github.com/alsenet-labs/electron-dataminer",
+    "https_url": "https://github.com/alsenet-labs/electron-dataminer",
+    "travis_url": "https://travis-ci.org/alsenet-labs/electron-dataminer",
+    "zip_url": "https://github.com/alsenet-labs/electron-dataminer/archive/master.zip",
+    "api_url": "https://api.github.com/repos/alsenet-labs/electron-dataminer"
+  },
+  "homepage": "https://github.com/alsenet-labs/electron-dataminer#readme",
+  "dependencies": {
+    "console-redirect": "^1.0.0"
+  },
+  "gitHead": "b36ea78361a9f9d7fc2bb04bbb923b5b99990576",
+  "_npmVersion": "3.10.3",
+  "_nodeVersion": "6.5.0",
+  "dist": {
+    "shasum": "b05371691d300c6cbb3f423af0c94b491f75b7e9",
+    "tarball": "http://registry.npmjs.org/electron-dataminer/-/electron-dataminer-1.2.3.tgz"
+  },
+  "versions": [
+    {
+      "number": "1.0.0",
+      "date": "2016-07-23T05:27:13.839Z"
+    },
+    {
+      "number": "1.1.0",
+      "date": "2016-07-23T17:16:31.076Z"
+    },
+    {
+      "number": "1.2.0",
+      "date": "2016-08-01T03:57:27.277Z"
+    },
+    {
+      "number": "1.2.1",
+      "date": "2016-08-01T14:14:15.620Z"
+    },
+    {
+      "number": "1.2.2",
+      "date": "2016-08-01T15:11:00.317Z"
+    },
+    {
+      "number": "1.2.3",
+      "date": "2016-09-29T10:02:04.366Z"
+    }
+  ],
+  "created": "2016-07-23T05:27:13.839Z",
+  "modified": "2016-09-29T10:02:04.366Z",
+  "lastPublisher": {
+    "name": "bugdanov",
+    "email": "rurik.bugdanov@alsenet.com"
+  },
+  "owners": [
+    {
+      "name": "bugdanov",
+      "email": "rurik.bugdanov@alsenet.com"
+    }
+  ],
+  "readme": "# electron-dataminer\n\nThe aim of electron-dataminer is to extract data from specific websites using reusable modules and to centralize the configuration and the source code as much as possible.\n\nWith electron there's 3 levels of scripting:\n\n1. **main process**: The node-electron javascript application\n\n2. **renderer process**: The web page loaded in the electron browser window (index.html)\n\n3. **webview process**: The webview(s) added to index.html according to the configuration file (config.js)\n\n\nEach script can communicate with other ones using ipc events.\n\nYou can define event handlers at those three levels, either directly in the configuration\n\nfile, or (preferred) in a separate module.\n\nYou will specify the module used to navigate in a given website with the config.webviews[name].pageClass property (see config.js below)\n\nYou will specify the module used for data extraction with the config.webviews[name].api property (see config.js below)\n\nExample:\n\nconfig.js:\n```\nvar config={\n\n  // Show chrome developer tools for main window\n  devTools: true,\n\n  // Configure the main browserWindow\n  // You can hide the main browser window with options show: false,\n  // but to run \"headless\" you need something like Xvfb or Xvnc\n  browserWindow: {\n//  show: false,\n    width: '100%',\n    height: '100%'\n  },\n\n  url: `file://${__dirname}/index.html`,\n\n  // Configure webviews\n  webviews: {\n\n    // The webview DOM element id\n    webview1:  {\n\n      // you can set optional webview attributes below eg:\n      attr: {\n        partition: 'persist:webview1'\n      },\n\n      // The pageClass module name for this webview\n      // (will be stored in config.pageClass['my-page'])\n      pageClass: 'my-page',\n\n      /*\n       For example if you declare:\n         pageClass: 'mypage',\n       then electron-dataminer will try to load:\n         1. A module named __dirname/page/mypage.js (see electron-dataminer/test/page/my-page.js)\n         2. A module named electron-dataminer-mypage (see npm package electron-dataminer-mypage in electron-dataminer/test/page/)\n         3. A module named mypage (figure it out)\n       the module should export a function returning the module exports (see page/my-page.js below)\n          \n       The same rules apply for the \"my-api\" module declared below\n      */\n\n      // The api module name for this webview\n      // (will be stored in config.api['my-api'])\n      api: 'my-api',\n\n      // The url to load in the webview\n      // (Can be overriden by the pageClass or api module with the value\n      // returned by optional function <module>.renderer.loadURL())\n      url: 'http://fsf.org',\n      /*\n       When the url above is loaded in the webview, the webview process will send\n       a 'processPage' event to the renderer process which can be\n       handled in the pageClass or/and api module (module.exports.ipcEvents.processPage)\n       Code specific to a page class may override code specific to the type of data to mine,\n       so the event handler for the page is called first.\n      */\n\n      devTools: true,\n\n      // webcontents.loadURL_options\n      loadURL_options: {\n        // see https://github.com/electron/electron/blob/master/docs/api/web-contents.md#webcontentsloadurlurl-options\n      }\n\n      // You can add here any other option specific to this webview to be used\n      // by the pageClass or the api modules\n\n    }\n  },\n\n  api: {\n    // api modules specified in the webview options will be stored here.\n    // You could require (but should not define) apis here\n    // eg with:\n    //  'my-api': require('electron-dataminer-test')(global.electron,config,'my-api','api')\n\n  },\n\n  pageClass: {\n    // pageClass modules specified in the webview options will be stored here.\n    // You could require (but should not define) page classes here\n  }\n\n}\n\nmodule.exports=config;\n```\n\npage/my-page.js:\n```\n// This module should be specific to the webpage(s) you want to mine\nmodule.exports=function(electron){\n\n  return {\n\n    // electron.app related configuration (optional)\n    app: {\n\n      // electron.app event handlers\n      events: {\n        'browser-window-created': function(e,window){\n          window.setMenu(null);\n        }\n      }  \n\n    },\n\n    // main process related configuration (optional)\n    main: {\n\n      // will be run from main.js (main process) at init time\n      init: function myPage_main_init(config){\n        var someVariable='initialized';\n      },\n\n      // electrion.ipcMain event handlers for the main process\n      // that you will probably trigger from the renderer process\n      // using electron.ipcRenderer\n      ipcEvents: {\n\n        ping: function ping(){\n          console.log('received: ping');\n          console.log(someVariable);\n          setTimeout(function(){\n            global.mainWindow.webContents.send('nextPage');\n          },5000);\n        }\n      }\n    },\n\n    // renderer process related configuration (optional)\n    renderer: {\n\n      // will be run from renderer.js (renderer process) at init time\n      init: function myPage_renderer_init(config){\n      },\n\n      // ipc event handlers for renderer process\n      ipcEvents: {\n\n        // processPage is emitted by renderer.js when it receive\n        // 'document-ready' (emitted from webview.js on jQuery document ready)\n        'processPage': function renderer_processPage(){\n          // trigger a 'ping' event for the main process\n          console.log('send: ping');\n          electron.ipcRenderer.send('ping');\n        },\n\n        'nextPage': function renderer_nextPage(){\n          console.log('nextPage');\n        }\n      }\n    },\n\n    // webview process related configuration (optional)\n    webview: {\n      // same format than \"renderer\" and \"main\" above\n    }\n  };\n}\n\n\n```\n\napi/my-api.js:\n```\n// This module should be specific to the data you want to mine\n// (could be from one or many page classes / webviews / electron instances)\n// The format is the same than for the pageClass module above.\nmodule.exports=function(electron){\n  return {\n\n  };\n}\n```\n## To Use\n\nTo clone and run this repository you'll need the following installed on your computer:\n* [Git](https://git-scm.com)\n* [Node.js](https://nodejs.org/en/download/) (which comes with [npm](http://npmjs.com))\n\n  I recommend using [nvm](https://github.com/creationix/nvm) to install/upgrade nodejs along with installed npm packages without hassle and so that \"global\" packages can be installed at the user level without administrator privileges.\n\n  Also, after installing nodejs, install npm v3 with ```npm install -g npm``` for deeper better and slower dependencies checking (put ```progress=false``` in ~/.npmrc for less slower operation)\n\n* [electron-prebuilt](https://github.com/electron-userland/electron-prebuilt)\n\n  Install electron globally with ```npm install -g electron-prebuilt```.\n\n  IMPORTANT: never use ```sudo``` to install npm packages since package installation scripts (and their dependencies) can run any code with the permissions of the current user. Paranoid users should even use a secondary user account or a virtual machine for working with node and npm.\n\n## Test\n\nFor developing or testing purpose you can clone the electron-dataminer project and add a subdirectory for your configuration, eg ./test. In this directory you can put your config.js (see test/config.js or example/config.js) and add your pageClass or api modules (scripts) in folders ./test/api/ and ./test/page/\n\nThen you can run your code from the project root folder with eg: ```npm start ./test/config.js```\n\nTo run the test from the command line:\n```bash\n# Clone this repository\ngit clone https://github.com/alsenet-labs/electron-dataminer\n# Go into the repository\ncd electron-dataminer\n# Install dependencies and run the test app\ncd test && npm install && bower install && cd ..\nnpm i && bower i && npm start test/config.js\n```\n\nYou can also use the test directory structure for standalone project if you add electron-dataminer as a dependency in package.json with ```npm install --save electron-dataminer```\n\n\n## Example\nLook at the [example package](https://github.com/alsenet-labs/electron-dataminer/blob/master/example) structure if you intend to develop or share reusable pageClass or api modules for electron-dataminer.\n\nInstead of using the ./api and ./page directories to store pageClass and api modules like in the [test directory](https://github.com/bugdanov/electron-dataminer/blob/master/test/) , you have to create separate npm packages for each pageClass or api modules (eg: [electron-dataminer-example-page](https://github.com/bugdanov/electron-dataminer/blob/master/test/page) or [electron-dataminer-example-api](https://github.com/bugdanov/electron-dataminer/blob/master/test/api))\n\nAt this time you can specify only one module of each class per webview, but a module could require another one(s)\n\n```bash\ncd example\nnpm i && bower i && npm start\n```\n\n## Quickstart\n\nYou can either use the example or test directories as starting point or begin a new project with eg:\n\n```bash\nmkdir newProject\ncd newProject\nnpm init .\nnpm install --save electron-dataminer\necho \"var edm=require('electron-dataminer');\" > index.js\n```\n\nThen create an index.html with a div#webview\n```<div id=\"webview\" />```\n\nAnd require jquery and electron-dataminer/renderer.js, eg:\n```\n<script>\nwindow.jQuery=window.$=require('./bower_components/jquery/dist/jquery.js');\nrequire(path.join(process.cwd(),'node_modules','electron-dataminer','renderer.js'));\n</script>\n```\n\nFinally you can write your configuration file eg [config.js](https://github.com/alsenet-labs/electron-dataminer/blob/master/test/config.js) then test your application with ```npm start [<path to config.js>]```\n\n\nLearn more about electron-dataminer usage in [test/config.js](https://github.com/alsenet-labs/electron-dataminer/blob/master/test/config.js) and [test/page/my-page.js](https://github.com/alsenet-labs/electron-dataminer/blob/master/test/config.js)\n\nLearn more about Electron and its API in the [documentation](http://electron.atom.io/docs/latest).\n\n#### License [AGPLv3](LICENSE.md)\n"
+}

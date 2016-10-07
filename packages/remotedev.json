@@ -1,6 +1,6 @@
 {
   "name": "remotedev",
-  "version": "0.1.2",
+  "version": "0.2.2",
   "description": "Remote debugging for any flux implementation.",
   "main": "lib/index.js",
   "files": [
@@ -61,16 +61,16 @@
     "webpack": "^1.11.0"
   },
   "dependencies": {
-    "jsan": "^2.0.4",
+    "jsan": "^3.1.3",
     "querystring": "^0.2.0",
-    "socketcluster-client": "^4.3.6"
+    "socketcluster-client": "^5.0.0"
   },
-  "gitHead": "3634db71faa44e6c1681c3e10f9ed9cf7b8e17b4",
-  "_npmVersion": "2.14.4",
-  "_nodeVersion": "4.1.2",
+  "gitHead": "b1815aca28318c8d8bf5049f35469e25577f6997",
+  "_npmVersion": "3.7.3",
+  "_nodeVersion": "5.8.0",
   "dist": {
-    "shasum": "d2c1c32f58252636c9d941258c5526404e385f2c",
-    "tarball": "http://registry.npmjs.org/remotedev/-/remotedev-0.1.2.tgz"
+    "shasum": "8242b8879b6b8714aa2501de86f87781c879971c",
+    "tarball": "http://registry.npmjs.org/remotedev/-/remotedev-0.2.2.tgz"
   },
   "versions": [
     {
@@ -100,10 +100,38 @@
     {
       "number": "0.1.2",
       "date": "2016-02-14T18:37:05.532Z"
+    },
+    {
+      "number": "0.2.0-beta-1",
+      "date": "2016-08-20T14:11:09.097Z"
+    },
+    {
+      "number": "0.2.0-beta-2",
+      "date": "2016-08-20T14:57:09.610Z"
+    },
+    {
+      "number": "0.2.0-beta-3",
+      "date": "2016-08-20T15:28:48.783Z"
+    },
+    {
+      "number": "0.2.0-beta-4",
+      "date": "2016-08-21T09:40:02.405Z"
+    },
+    {
+      "number": "0.2.0",
+      "date": "2016-08-23T14:06:28.396Z"
+    },
+    {
+      "number": "0.2.1",
+      "date": "2016-08-23T16:34:29.636Z"
+    },
+    {
+      "number": "0.2.2",
+      "date": "2016-08-24T16:16:11.076Z"
     }
   ],
   "created": "2015-12-20T12:58:41.576Z",
-  "modified": "2016-02-14T18:37:05.532Z",
+  "modified": "2016-08-24T16:16:11.076Z",
   "lastPublisher": {
     "name": "zalmoxisus",
     "email": "zalmoxisus@gmail.com"
@@ -114,5 +142,5 @@
       "email": "zalmoxisus@gmail.com"
     }
   ],
-  "readme": "RemoteDev\n=========\n\nMonitoring flux app's actions along with states to a remote monitor. Meant to be used even in production with any flux architecture for web, universal, React Native, hybrid, desktop and server side apps.\n\n![Demo](demo.gif)\n\n### Installation\n\n##### NPM\n```\nnpm install --save-dev remotedev\n```\n\n##### CDN\n```\n<script src=\"https://npmcdn.com/remotedev/dist/remotedev.min.js\"></script>\n```\n\n### Usage\n\n```js\n// Send initial state to the monitor\nRemoteDev.init({});\n\n// Subscribe to RemoteDev to change state (for time travelling)\nRemoteDev.subscribe(state => {\n  this.setState(state);\n});\n\n// Send changes to the remote monitor\nthis.on('afterEach', action => {\n  RemoteDev.send(action, this.state);\n});\n```\n\nSee [the examples for different flux architectures](https://github.com/zalmoxisus/remotedev/tree/master/examples).\n\n### Remote monitoring\n\nUse one of [our monitor apps](https://github.com/zalmoxisus/remotedev-app) to inspect `action -> state` changes:\n- [web](http://remotedev.io/)\n- [chrome app](https://chrome.google.com/webstore/detail/remotedev/faicmgpfiaijcedapokpbdejaodbelph) (recommended)\n- [electron app](https://github.com/zalmoxisus/remote-redux-devtools/tree/master/install).\n\nThe source code is [here](https://github.com/zalmoxisus/remotedev-app).\n\nAlso, it can be [used in React Native debugger as a dock monitor](https://github.com/jhen0409/remote-redux-devtools-on-debugger).\n\n### Use locally\n\nIn order to make it simple to use, by default, the module and the monitor app communicate via [remotedev.io](http://remotedev.io) server. Use [remotedev-server](https://github.com/zalmoxisus/remotedev-server) cli to run it locally in order to make the connection faster and not to require an internet connection.\n\nAlso, we'll add later the ability to be used with [redux-devtools-extension](https://github.com/zalmoxisus/redux-devtools-extension), so there wouldn't be any server necessary for local deployment of web apps.   \n\n### Limitations\n\n- **Not ready for production yet**, use it only for development.\n- The app and the monitor should be under the same external IP address (will remove this restriction later).\n\n### License\n\nMIT\n"
+  "readme": "RemoteDev\n=========\n\nMonitoring flux app's actions along with states to a remote monitor. Meant to be used even in production with any flux architecture for web, universal, React Native, hybrid, desktop and server side apps.\n\n![Demo](demo.gif)\n\n### Installation\n\n##### NPM\n```\nnpm install --save-dev remotedev\n```\n\n##### CDN\n```\n<script src=\"https://npmcdn.com/remotedev/dist/remotedev.min.js\"></script>\n```\n\n### Usage\n\n```js\nimport { connectViaExtension, extractState } from 'remotedev';\n// It will try to use Redux DevTools extension first if installed\n// In case you want only remote monitoring use `connect`:\n// import { connect, extractState } from 'remotedev';\n\n// Connect to the monitor\nremotedev = connectViaExtension();\n\n// Subscribe to change state (if need more than just logging)\nremotedev.subscribe(message => {\n  // Helper when only time travelling needed\n  extractState(message, state => {\n    this.setState(state);\n  });\n});\n\n// Send changes to the remote monitor\nremotedev.send(action, state);\n```\n\nSee [the examples for different flux architectures](https://github.com/zalmoxisus/remotedev/tree/master/examples).\n\n### Monitoring\n\nUse one of our monitor apps to inspect and dispatch actions:\n* [web](http://remotedev.io/local)\n* [redux-devtools-extension](https://github.com/zalmoxisus/redux-devtools-extension) - Click \"Remote\" button (or press [`Cmd+Ctrl+Arrow up`](https://github.com/zalmoxisus/redux-devtools-extension#keyboard-shortcuts)) to open remote monitoring.\n* [react-native-debugger](https://github.com/jhen0409/react-native-debugger) - Electron app, which already includes `remotedev-server`, `remotedev-app` and even React DevTools.\n* [chrome app](https://chrome.google.com/webstore/detail/remotedev/faicmgpfiaijcedapokpbdejaodbelph).\n* [remote-redux-devtools-on-debugger](https://github.com/jhen0409/remote-redux-devtools-on-debugger) - Used in React Native debugger as a dock monitor.\n* [atom-redux-devtools](https://github.com/zalmoxisus/atom-redux-devtools) - Used in Atom editor.\n* [redux-dispatch-cli](https://github.com/jhen0409/redux-dispatch-cli) - A CLI tool for Redux remote dispatch.\n\nUse [remotedev-app](https://github.com/zalmoxisus/remotedev-app) to create your own monitor app.\n\n### Communicate via local server\n\nIn order to make it simple to use, by default, the module and the monitor app communicate via [remotedev.io](http://remotedev.io) server. Use [remotedev-server](https://github.com/zalmoxisus/remotedev-server) cli to run it locally in order to make the connection faster and not to require an internet connection.\nYou can import it in your `server.js` script and start remotedev server together with your development server:\n```js\nvar remotedev = require('remotedev-server');\nremotedev({ hostname: 'localhost', port: 8000 });\n```\nSee [remotedev-server](https://github.com/zalmoxisus/remotedev-server) repository for more details.\nFor React Native you can use [react-native-debugger](https://github.com/jhen0409/react-native-debugger) or [remote-redux-devtools-on-debugger](https://github.com/jhen0409/remote-redux-devtools-on-debugger), which already include `remotedev-server`.\n\n### License\n\nMIT\n"
 }

@@ -1,0 +1,62 @@
+{
+  "name": "styletron-legacy",
+  "version": "2.0.0-beta.3",
+  "description": "A generic server-rendering helper for css-in-js tools",
+  "author": {
+    "name": "Ryan Tsao",
+    "email": "ryan.j.tsao@gmail.com"
+  },
+  "homepage": "https://github.com/rtsao/styletron",
+  "repository": {
+    "user": "rtsao",
+    "repo": "styletron",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/rtsao/styletron/tarball/master",
+    "clone_url": "https://github.com/rtsao/styletron",
+    "https_url": "https://github.com/rtsao/styletron",
+    "travis_url": "https://travis-ci.org/rtsao/styletron",
+    "zip_url": "https://github.com/rtsao/styletron/archive/master.zip",
+    "api_url": "https://api.github.com/repos/rtsao/styletron"
+  },
+  "main": "index.js",
+  "scripts": {
+    "build-docs": "docdown ./index.js docs/api.md url='https://github.com/rtsao/styletron/blob/master/index.js' toc='categories' title='API documentation'",
+    "test": "node test/index.js"
+  },
+  "dependencies": {
+    "asap": "^2.0.3"
+  },
+  "devDependencies": {
+    "docdown": "^0.7.1",
+    "electron-spawn": "^5.0.0",
+    "through2": "^2.0.1"
+  },
+  "license": "MIT",
+  "_npmVersion": "3.10.3",
+  "_nodeVersion": "6.7.0",
+  "dist": {
+    "shasum": "7946916d331881d6b919ff8091243e7076208460",
+    "tarball": "http://registry.npmjs.org/styletron-legacy/-/styletron-legacy-2.0.0-beta.3.tgz"
+  },
+  "versions": [
+    {
+      "number": "2.0.0-beta.3",
+      "date": "2016-10-03T18:15:10.068Z"
+    }
+  ],
+  "created": "2016-10-03T18:15:10.068Z",
+  "modified": "2016-10-03T18:15:12.827Z",
+  "lastPublisher": {
+    "name": "rtsao",
+    "email": "ryan.j.tsao@gmail.com"
+  },
+  "owners": [
+    {
+      "name": "rtsao",
+      "email": "ryan.j.tsao@gmail.com"
+    }
+  ],
+  "readme": "# styletron\n\n[![build status][build-badge]][build-href]\n[![dependencies status][deps-badge]][deps-href]\n[![npm version][npm-badge]][npm-href]\n\nA generic server-rendering helper for css-in-js tools\n\nThis module provides functionality for:\n * Injection of CSS into the document head in browsers\n   * Buffering of multiple injections into a single update\n   * Ignoring of duplicate style injections\n * Extraction of CSS at render-time on the server, which can be sent down along with markup\n\nThis concept behind this module is originally from https://github.com/Khan/aphrodite, but this module is smaller in scope and more generic.\n\n## Usage\n\n#### Injecting a style into document `<head>`\n\n```js\nconst styletron = require('styletron');\nstyletron.injectOnce('.foo { color: red }', 'someUniqueId');\n```\n\n#### Extracting \"injected\" CSS at render-time on the server\n\n**See [`styletron-server`](https://github.com/rtsao/styletron-server)**\n\n## [API documentation](docs/api.md)\n\n[build-badge]: https://travis-ci.org/rtsao/styletron.svg?branch=v1\n[build-href]: https://travis-ci.org/rtsao/styletron\n[deps-badge]: https://david-dm.org/rtsao/styletron.svg\n[deps-href]: https://david-dm.org/rtsao/styletron\n[npm-badge]: https://badge.fury.io/js/styletron.svg\n[npm-href]: https://www.npmjs.com/package/styletron\n"
+}

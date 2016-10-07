@@ -21,63 +21,39 @@
     "zip_url": "https://github.com/parro-it/electron-google-oauth/archive/master.zip",
     "api_url": "https://api.github.com/repos/parro-it/electron-google-oauth"
   },
-  "version": "1.3.1",
-  "main": "dist/index.js",
+  "version": "2.0.0",
   "bin": {
-    "ego": "dist/bin.js"
+    "ego": "bin.js"
   },
   "dependencies": {
-    "babel-runtime": "^5.8.20",
-    "eslint-plugin-react": "^3.6.3",
+    "co": "^4.6.0",
     "googleapis": "^2.1.3",
     "node-fetch": "^1.3.2",
     "yargs": "^3.20.0"
   },
+  "files": [
+    "bin.js",
+    "index.js"
+  ],
   "author": {
     "name": "parro-it"
   },
   "scripts": {
-    "test": "mocha test/*_test.js test/**/*_test.js --require ./test/_init || echo failed",
-    "test-release": "export TEST_RELEASE=1 && mocha dist_test/*_test.js dist_test/**/*_test.js --require ./dist_test/_init-release",
-    "build": "babel es6 --out-dir dist",
-    "watch": "babel es6 --watch --out-dir dist",
-    "build-test": "babel test --out-dir dist_test",
-    "lint": "lint",
-    "check": "npm run build",
-    "prepublish": "npm run check"
-  },
-  "eslintConfig": {
-    "extends": "eslint-config-airbnb",
-    "plugins": [
-      "babel"
-    ]
-  },
-  "babel": {
-    "stage": 0,
-    "optional": [
-      "runtime"
-    ]
+    "test": "xo",
+    "start": "electron bin.js --scopes https://www.google.com/m8/feeds --clientId $CLIENTID --clientSecret $CLIENTSECRET"
   },
   "devDependencies": {
-    "babel": "^5.1.11",
-    "babel-eslint": "^4.0.5",
-    "chai": "^3.4.0",
-    "co": "^4.5.2",
-    "co-mocha": "^1.1.0",
-    "eslint": "^1.7.3",
-    "eslint-config-airbnb": "0.1.0",
-    "eslint-plugin-babel": "^2.1.1",
-    "mocha": "^2.2.4",
-    "thenify": "^3.1.0"
+    "electron-prebuilt": "^1.3.3",
+    "xo": "^0.16.0"
   },
   "license": "MIT",
-  "gitHead": "93aaae6c194398afc99cb93788abc6d3f57b9a42",
+  "gitHead": "9e467c7566842111c65c1ab4ce939a3fd5e530a2",
   "homepage": "https://github.com/parro-it/electron-google-oauth#readme",
-  "_npmVersion": "3.3.6",
-  "_nodeVersion": "5.0.0",
+  "_npmVersion": "2.15.1",
+  "_nodeVersion": "0.12.15",
   "dist": {
-    "shasum": "55ae5da3a13b80ed60995168bf731865bc0139da",
-    "tarball": "http://registry.npmjs.org/electron-google-oauth/-/electron-google-oauth-1.3.1.tgz"
+    "shasum": "d0853a755d166ad2ff4fbc33b3e23b1848fdd54f",
+    "tarball": "http://registry.npmjs.org/electron-google-oauth/-/electron-google-oauth-2.0.0.tgz"
   },
   "stars": 3,
   "versions": [
@@ -104,13 +80,17 @@
     {
       "number": "1.3.1",
       "date": "2016-01-31T18:33:02.719Z"
+    },
+    {
+      "number": "2.0.0",
+      "date": "2016-08-20T06:44:43.786Z"
     }
   ],
   "created": "2015-08-21T06:43:27.538Z",
-  "modified": "2016-01-31T18:33:02.719Z",
+  "modified": "2016-08-20T06:44:43.786Z",
   "lastPublisher": {
     "name": "parroit",
-    "email": "andrea.parodi@ebansoftware.net"
+    "email": "andrea@parro.it"
   },
   "owners": [
     {
@@ -118,5 +98,5 @@
       "email": "andrea.parodi@ebansoftware.net"
     }
   ],
-  "readme": "# electron-google-oauth\n\nGet Google api access token using an electron window\nto let the user authorize the app.\n\n## Installation\n\n```bash\nnpm install --save electron-google-oauth\n```\n\n## Usage\n\n```javascript\n  import electronGoogleOauth from 'electron-google-oauth';\n\n  const browserWindowParams = {\n      'use-content-size': true,\n      center: true,\n      show: false,\n      resizable: false,\n      'always-on-top': true,\n      'standard-window': true,\n      'auto-hide-menu-bar': true,\n      'node-integration': false\n  };\n\n  const googleOauth = electronGoogleOauth(browserWindowParams);\n\n  ( async () => {\n\n    // retrieve  authorization code only\n    const authCode = await googleOauth.getAuthorizationCode(\n      ['https://www.google.com/m8/feeds'],\n      'your-client-id',\n      'your-client-secret',\n      'your-redirect-uri'\n    );\n    console.dir(authCode);\n\n    // retrieve access token and refresh token\n    const result = await googleOauth.getAccessToken(\n      ['https://www.google.com/m8/feeds'],\n      'your-client-id',\n      'your-client-secret',\n      'your-redirect-uri'\n    );\n    console.dir(result);\n\n  })();\n\n```\n\n## Testing\nBuild the app, then run it:\n```\nnpm run build && electron dist/bin.js --scopes 'SCOPES' --clientId 'CLIENTID' --clientSecret 'CLIENTSECRET' --redirectUri 'REDIRECTURI'\n```\n\n## License\nThe MIT License (MIT)\n\nCopyright (c) 2015 Andrea Parodi\n"
+  "readme": "# electron-google-oauth\n\nGet Google api access token using an electron window\nto let the user authorize the app.\n\n[![Travis Build Status](https://img.shields.io/travis/parro-it/electron-google-oauth/master.svg)](http://travis-ci.org/parro-it/electron-google-oauth)\n\n## Installation\n\n```bash\nnpm install --save electron-google-oauth\n```\n\n## Usage\n\n```javascript\n  import electronGoogleOauth from 'electron-google-oauth';\n\n  const browserWindowParams = {\n      'use-content-size': true,\n      center: true,\n      show: false,\n      resizable: false,\n      'always-on-top': true,\n      'standard-window': true,\n      'auto-hide-menu-bar': true,\n      'node-integration': false\n  };\n\n  const googleOauth = electronGoogleOauth(browserWindowParams);\n\n  ( async () => {\n\n    // retrieve  authorization code only\n    const authCode = await googleOauth.getAuthorizationCode(\n      ['https://www.google.com/m8/feeds'],\n      'your-client-id',\n      'your-client-secret',\n      'your-redirect-uri'\n    );\n    console.dir(authCode);\n\n    // retrieve access token and refresh token\n    const result = await googleOauth.getAccessToken(\n      ['https://www.google.com/m8/feeds'],\n      'your-client-id',\n      'your-client-secret',\n      'your-redirect-uri'\n    );\n    console.dir(result);\n\n  })();\n\n```\n\n## Testing\n\nTo test the library, clone this git repo, then define CLIENTSECRET and CLIENTID environment variables holding your Google API details, then run:\n\n\n```bash\nnpm install\nnpm start\n```\n\n## License\n\nThe MIT License (MIT)\n\nCopyright (c) 2015 Andrea Parodi\n"
 }

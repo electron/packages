@@ -1,0 +1,69 @@
+{
+  "name": "electron-css-reload",
+  "version": "1.0.3",
+  "description": "reload css on change in your electron app",
+  "main": "reload.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "user": "dperrymorrow",
+    "repo": "electron-css-reload",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/dperrymorrow/electron-css-reload/tarball/master",
+    "clone_url": "https://github.com/dperrymorrow/electron-css-reload",
+    "https_url": "https://github.com/dperrymorrow/electron-css-reload",
+    "travis_url": "https://travis-ci.org/dperrymorrow/electron-css-reload",
+    "zip_url": "https://github.com/dperrymorrow/electron-css-reload/archive/master.zip",
+    "api_url": "https://api.github.com/repos/dperrymorrow/electron-css-reload"
+  },
+  "keywords": [
+    "electron",
+    "css"
+  ],
+  "author": {
+    "name": "David Morrow"
+  },
+  "license": "MIT",
+  "homepage": "https://github.com/dperrymorrow/electron-css-reload#readme",
+  "gitHead": "6ad916171d64df7e472aafd342d83d49fd56a2eb",
+  "_npmVersion": "3.10.7",
+  "_nodeVersion": "4.3.2",
+  "dist": {
+    "shasum": "1693d0f0437435a863f9cdc0cb380c1e8830220e",
+    "tarball": "http://registry.npmjs.org/electron-css-reload/-/electron-css-reload-1.0.3.tgz"
+  },
+  "versions": [
+    {
+      "number": "1.0.0",
+      "date": "2016-09-10T00:18:06.111Z"
+    },
+    {
+      "number": "1.0.1",
+      "date": "2016-09-12T19:19:33.960Z"
+    },
+    {
+      "number": "1.0.2",
+      "date": "2016-09-12T19:26:46.736Z"
+    },
+    {
+      "number": "1.0.3",
+      "date": "2016-09-26T23:02:06.378Z"
+    }
+  ],
+  "created": "2016-09-10T00:18:06.111Z",
+  "modified": "2016-09-26T23:02:06.378Z",
+  "lastPublisher": {
+    "name": "dperrymorrow",
+    "email": "dperrymorrow@gmail.com"
+  },
+  "owners": [
+    {
+      "name": "dperrymorrow",
+      "email": "dperrymorrow@gmail.com"
+    }
+  ],
+  "readme": "# electron-css-reload\nforce reload CSS on change in your electron App\n\nReload style sheets on your page on change in your electron App.\n\n## Usage\n\n```javascript\nconst reload = require('electron-css-reload');\n```\n\nThen, open your devtools window and invoke the method to begin watching for CSS changes in your Electron app.\n\n```javascript\n// from your console\nreload()\n```\n\nOr, when in dev mode, invoke the method from the start.\n\n```javascript\nrequire('electron-css-reload')();\n```\n\nThat't it, enjoy not restarting your Electron app every time you wanna see a CSS change.\n\n## How does it work?\n\nSince Electron has access to the file system, it uses ```fs.watchFile``` to watch for changes to the files loaded via ```<link>``` tags on the page. \n\nWhen a change event fires, a ```?nocache={timestamp}``` is added to the href on the stylesheet link on the page.\nThis forces the browser to reload the sheet as it sees it as a new url.\n"
+}

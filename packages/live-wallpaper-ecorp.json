@@ -1,6 +1,6 @@
 {
   "name": "live-wallpaper-ecorp",
-  "version": "1.0.7",
+  "version": "1.2.2",
   "description": "Electron-based live wallpaper showing a glitched E Corp / Evil Corp logo.",
   "license": "MIT",
   "author": {
@@ -21,6 +21,10 @@
     "api_url": "https://api.github.com/repos/sidneys/live-wallpaper-ecorp"
   },
   "homepage": "http://sidneys.github.io/live-wallpaper-ecorp",
+  "os": [
+    "darwin",
+    "linux"
+  ],
   "keywords": [
     "mr robot",
     "fsociety",
@@ -30,57 +34,62 @@
   "engines": {
     "node": ">=6.0.0"
   },
-  "main": "./app/index.js",
-  "bin": {
-    "live-wallpaper-ecorp": "./app/index.js"
-  },
   "scripts": {
-    "debug": "electron ./app",
     "build": "node ./lib/build.js -- ",
-    "upload": "node ./lib/publish.js -- "
+    "cache-get": "source ./scripts/deploy-bintray.sh && ecd_cache_get && ecd_cache_install",
+    "cache-put": "source ./scripts/deploy-bintray.sh && ecd_cache_pack && ecd_cache_put",
+    "deploy-bintray": "source ./scripts/deploy-bintray.sh && ecd_app_deploy ./build/release/*.zip",
+    "deploy-github": "node ./lib/deploy-github.js -- "
+  },
+  "main": "./app/main.js",
+  "bin": {
+    "live-wallpaper-ecorp": "./bin/cli.js"
   },
   "dependencies": {
-    "app-root-path": "^1.2.1",
     "chalk": "^1.1.3",
-    "lodash": "^4.13.1"
+    "electron-prebuilt": "^1.3.0",
+    "lodash": "^4.14.0",
+    "appdmg": "^0.4.5",
+    "electron-installer-debian": "^0.3.0",
+    "electron-winstaller": "^2.3.3"
   },
   "devDependencies": {
-    "app-root-path": "^1.2.1",
-    "appdmg": "^0.4.5",
-    "electron": "^0.4.1",
-    "electron-installer-debian": "^0.3.0",
-    "electron-packager": "^7.2.0",
-    "electron-prebuilt": "^1.2.6",
-    "electron-winstaller": "^2.3.1",
+    "electron-packager": "^7.3.0",
     "filesize": "^3.3.0",
-    "git-rev-sync": "^1.6.0",
+    "glob": "^7.0.5",
+    "mkdirp": "^0.5.1",
+    "progress": "^1.1.8",
     "publish-release": "^1.3.1",
-    "rimraf": "^2.5.3",
-    "say": "^0.9.0",
-    "semver-utils": "^1.1.1",
+    "rimraf": "^2.5.4",
     "zip-paths": "^0.3.1"
   },
+  "optionalDependencies": {
+    "appdmg": "^0.4.5",
+    "electron-installer-debian": "^0.3.0",
+    "electron-winstaller": "^2.3.3"
+  },
   "build": {
+    "platforms": [
+      "darwin",
+      "linux"
+    ],
+    "electronVersion": "1.3.0",
     "productName": "live-wallpaper-ecorp",
     "productDescription": "Live Wallpaper",
     "id": "de.sidneys.live-wallpaper-ecorp",
     "company": "sidneys.github.io",
     "category": "public.app-category.utilities",
-    "electronVersion": "1.2.6",
-    "platforms": [
-      "darwin"
-    ],
     "directoryCache": "build/cache",
     "directoryStaging": "build/staging",
     "directoryRelease": "build/release",
     "iconUrl": "https://github.com/sidneys/live-wallpaper-ecorp/raw/master/icons/win32/icon-app.ico"
   },
-  "gitHead": "25be4ff82cfe41e9d03fd66e93846ac157ec3fb0",
-  "_npmVersion": "3.10.3",
-  "_nodeVersion": "6.2.2",
+  "gitHead": "310eee82e07e56f25552aba73d627504ac84dcad",
+  "_npmVersion": "3.10.6",
+  "_nodeVersion": "6.3.1",
   "dist": {
-    "shasum": "85b4bda970a94709887247bab5785899e303354d",
-    "tarball": "http://registry.npmjs.org/live-wallpaper-ecorp/-/live-wallpaper-ecorp-1.0.7.tgz"
+    "shasum": "cf823bb64cee3f14f02a99c54c38e1298037051a",
+    "tarball": "http://registry.npmjs.org/live-wallpaper-ecorp/-/live-wallpaper-ecorp-1.2.2.tgz"
   },
   "versions": [
     {
@@ -98,10 +107,42 @@
     {
       "number": "1.0.7",
       "date": "2016-07-06T16:27:21.976Z"
+    },
+    {
+      "number": "1.1.0",
+      "date": "2016-07-22T14:52:48.651Z"
+    },
+    {
+      "number": "1.1.1",
+      "date": "2016-07-26T04:52:40.800Z"
+    },
+    {
+      "number": "1.1.2",
+      "date": "2016-07-26T05:54:33.706Z"
+    },
+    {
+      "number": "1.1.4",
+      "date": "2016-07-26T06:06:47.907Z"
+    },
+    {
+      "number": "1.1.5",
+      "date": "2016-07-26T07:00:52.444Z"
+    },
+    {
+      "number": "1.1.6",
+      "date": "2016-07-26T07:17:07.283Z"
+    },
+    {
+      "number": "1.1.7",
+      "date": "2016-07-26T07:20:37.674Z"
+    },
+    {
+      "number": "1.2.2",
+      "date": "2016-07-26T16:07:11.432Z"
     }
   ],
   "created": "2016-07-05T18:52:09.698Z",
-  "modified": "2016-07-06T16:27:21.976Z",
+  "modified": "2016-07-26T16:07:11.432Z",
   "lastPublisher": {
     "name": "sidneys",
     "email": "sidney.bofah@googlemail.com"
@@ -112,5 +153,5 @@
       "email": "sidney.bofah@googlemail.com"
     }
   ],
-  "readme": "# Live Wallpaper: E Corp [![Join the chat at https://gitter.im/sidneys/pushbullet-desktop](https://badges.gitter.im/sidneys/pushbullet-desktop.svg)](https://gitter.im/sidneys/pushbullet-desktop?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge) [![issues](https://img.shields.io/github/issues/sidneys/pushbullet-desktop.svg)](https://github.com/sidneys/pushbullet-desktop/issues)\n**live-wallpaper-ecorp** is a 'live wallpaper' app showing the 'glitched' logo from the fictional [E Corp/Evil Corp](http://mrrobot.wikia.com/wiki/E_Corp) company, known from the [Mr. Robot](https://www.whoismrrobot.com) television show. Based on [Node.js](https://nodejs.org), [npm](https://www.npmjs.com) and [Electron](http://electron.atom.io).\n\n*Not affiliated with USA Network, Anonymous Content, Universal Cable Productions or NBC Universal Television Distribution*.\n\n## Screencast\n\n![live-wallpaper-ecorp](https://i.redd.it/tkotc6oqjh7x.gif)\n\n## Caveats\n\n - Currently OSX only\n -  Currently only supports the primary display\n - Features a menubar item for quitting the application\n\n## Installation\n\nDownload the latest version at the [Releases](https://github.com/sidneys/pushbullet-desktop/releases)  page.\n\n## Installation via Node\n\nInstall the module globally\n\n```\nnpm --global live-wallpaper-ecorp\n```\nRun it\n\n```\nlive-wallpaper-ecorp\n```\n\n\n___\n\n[![badge](https://nodei.co/npm/live-wallpaper-ecorp.png?downloads=false)](https://www.npmjs.com/package/live-wallpaper-ecorp)"
+  "readme": "# E Corp (Evil Corp) Live Wallpaper [![Gitter](https://badges.gitter.im/sidneys/live-wallpaper-ecorp.svg)](https://gitter.im/sidneys/live-wallpaper-ecorp?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge) [![Issues](https://img.shields.io/github/issues/sidneys/live-wallpaper-ecorp.svg)](https://github.com/sidneys/live-wallpaper-ecorp/issues)   \n[![badge](https://nodei.co/npm/live-wallpaper-ecorp.png?downloads=true)](https://www.npmjs.com/package/live-wallpaper-ecorp)\n---\n**live-wallpaper-ecorp** is a live (animated) wallpaper app showing the 'glitched' logo from the fictional [E Corp/Evil Corp](http://mrrobot.wikia.com/wiki/E_Corp) company, known from the [Mr. Robot](https://www.whoismrrobot.com) television show. Based on [Node.js](https://nodejs.org), [npm](https://www.npmjs.com) and [Electron](http://electron.atom.io).\n\n*Not affiliated with USA Network, Anonymous Content, Universal Cable Productions or NBC Universal Television Distribution*.\n\n## Demo\n\n![macOS Screencast](https://github.com/sidneys/live-wallpaper-ecorp/raw/master/screenshots/screen-darwin-2.gif)   \n\n## <a name=\"platforms\"></a>Platforms\n\n### macOS  \nTested on Sierra Developer Preview 2 (10.12), El Capitan (10.11), Yosemite (10.10)\n\n### Linux \nTested on Ubuntu Desktop 16.04, Ubuntu Desktop 14.04\n\n## Installation\n\nDownload the latest version [here](https://github.com/sidneys/live-wallpaper-ecorp/releases).\n\n### Linux\n\nInstall the *App Indicator Library* to enable Icon support:\n\n```bash\nsudo apt-get install libappindicator1\n```\n\n## Usage\n\nTo enable, simply launch the app.\n\nTo disable it, use the menu bar / system tray icons:\n\n### macOS \n![macOS Tray](https://github.com/sidneys/live-wallpaper-ecorp/raw/master/screenshots/tray-darwin-1.gif)\n\n### Linux\n![Linux* Tray](https://github.com/sidneys/live-wallpaper-ecorp/raw/master/screenshots/tray-linux-1.gif)\n\n\n\n## Developers\n\n### Install the global npm package\n\n```bash\nnpm install --global live-wallpaper-ecorp\n```\n\n### Run it via CLI\n\n```bash\nlive-wallpaper-ecorp\n```\n\n## Roadmap\n\n### Windows Version\nAt time of print, wallpaper apps - which are in essence Desktop applications claiming a special UI layer between the icon- and wallpaper space - are not readily implementable using the [Electron framework](http://electron.atom.io), due to current limitations of the [BrowserWindow](https://github.com/electron/electron/blob/master/docs/api/browser-window.md) API with regards to the Windows platform.\n\nIf this status quo changes, so will this application.\n\n\n## <a name=\"author\"></a>Author\n\n[sidneys](http://sidneys.github.io)\n\n## <a name=\"author\"></a>The Show\n\n<img data-canonical-src=\"https://upload.wikimedia.org/wikipedia/commons/4/4b/Mr._Robot_Logo.svg\" src=\"https://upload.wikimedia.org/wikipedia/commons/4/4b/Mr._Robot_Logo.svg\" width=\"200\" />   \n[whoismrrobot.com](https://www.whoismrrobot.com) \n\n\n"
 }

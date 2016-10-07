@@ -1,0 +1,132 @@
+{
+  "name": "rethinkdb-websocket-client",
+  "version": "0.5.1",
+  "description": "RethinkDB driver monkey-patched to connect via WebSocket. Works in browser.",
+  "author": {
+    "name": "Mike Mintz"
+  },
+  "license": "MIT",
+  "repository": {
+    "user": "mikemintz",
+    "repo": "rethinkdb-websocket-client",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/mikemintz/rethinkdb-websocket-client/tarball/master",
+    "clone_url": "https://github.com/mikemintz/rethinkdb-websocket-client",
+    "https_url": "https://github.com/mikemintz/rethinkdb-websocket-client",
+    "travis_url": "https://travis-ci.org/mikemintz/rethinkdb-websocket-client",
+    "zip_url": "https://github.com/mikemintz/rethinkdb-websocket-client/archive/master.zip",
+    "api_url": "https://api.github.com/repos/mikemintz/rethinkdb-websocket-client"
+  },
+  "scripts": {
+    "test": "eslint test && mocha --compilers js:babel/register",
+    "prepublish": "webpack --config webpack/browser.config.js && webpack --config webpack/node.config.js"
+  },
+  "main": "dist/index.js",
+  "files": [
+    "dist",
+    "webpack"
+  ],
+  "dependencies": {
+    "blob-to-buffer": "^1.2.3",
+    "bluebird": "^2.9.27",
+    "eventemitter2": "^0.4.14",
+    "node-libs-browser": ">= 0.4.0 <=0.6.0",
+    "rethinkdb": "~2.2.3",
+    "ws": "^0.8.0"
+  },
+  "devDependencies": {
+    "babel": "^5.5.6",
+    "babel-core": "^5.5.6",
+    "babel-eslint": "^4.0.5",
+    "babel-loader": "^5.1.4",
+    "eslint": "^1.1.0",
+    "eslint-loader": "^1.0.0",
+    "mocha": "^2.2.5",
+    "webpack": "^1.9.10"
+  },
+  "gitHead": "e2959f8d127431aa3e6c7c24b55f7824df4522ce",
+  "homepage": "https://github.com/mikemintz/rethinkdb-websocket-client#readme",
+  "_npmVersion": "3.10.6",
+  "_nodeVersion": "6.5.0",
+  "dist": {
+    "shasum": "7fc309baaeb6b5efbe6c35b143eea46e9cc98ff0",
+    "tarball": "http://registry.npmjs.org/rethinkdb-websocket-client/-/rethinkdb-websocket-client-0.5.1.tgz"
+  },
+  "versions": [
+    {
+      "number": "0.1.0",
+      "date": "2015-06-12T07:22:31.782Z"
+    },
+    {
+      "number": "0.1.1",
+      "date": "2015-06-30T02:25:41.938Z"
+    },
+    {
+      "number": "0.2.0",
+      "date": "2015-07-04T10:08:27.191Z"
+    },
+    {
+      "number": "0.2.1",
+      "date": "2015-07-10T01:49:01.316Z"
+    },
+    {
+      "number": "0.3.0",
+      "date": "2015-07-20T03:18:02.681Z"
+    },
+    {
+      "number": "0.4.0",
+      "date": "2015-07-22T08:43:26.702Z"
+    },
+    {
+      "number": "0.4.1",
+      "date": "2015-08-12T19:04:08.026Z"
+    },
+    {
+      "number": "0.4.2",
+      "date": "2015-08-12T21:29:08.671Z"
+    },
+    {
+      "number": "0.4.3",
+      "date": "2015-10-01T01:28:47.606Z"
+    },
+    {
+      "number": "0.4.4",
+      "date": "2015-11-03T07:59:26.594Z"
+    },
+    {
+      "number": "0.4.5",
+      "date": "2015-11-13T05:07:34.094Z"
+    },
+    {
+      "number": "0.4.6",
+      "date": "2016-02-07T06:38:59.140Z"
+    },
+    {
+      "number": "0.4.7",
+      "date": "2016-03-31T00:28:35.054Z"
+    },
+    {
+      "number": "0.5.0",
+      "date": "2016-07-04T22:36:07.258Z"
+    },
+    {
+      "number": "0.5.1",
+      "date": "2016-09-04T02:54:30.009Z"
+    }
+  ],
+  "created": "2015-06-12T07:22:31.782Z",
+  "modified": "2016-09-04T02:54:30.009Z",
+  "lastPublisher": {
+    "name": "mikemintz",
+    "email": "mikemintz@cs.stanford.edu"
+  },
+  "owners": [
+    {
+      "name": "mikemintz",
+      "email": "mikemintz@cs.stanford.edu"
+    }
+  ],
+  "readme": "[![npm version](https://img.shields.io/npm/v/rethinkdb-websocket-client.svg)](https://www.npmjs.com/package/rethinkdb-websocket-client)\n[![Travis](https://img.shields.io/travis/mikemintz/rethinkdb-websocket-client.svg)](https://travis-ci.org/mikemintz/rethinkdb-websocket-client)\n\n# rethinkdb-websocket-client\n\nRethinkDB JavaScript driver monkey-patched to connect via WebSocket. Works in\nbrowser, Electron and Node.JS environments.\n\n## What is this?\n\nThis library wraps the [official JavaScript RethinkDB\ndriver](http://rethinkdb.com/docs/install-drivers/javascript/), monkey-patching\nthe node.js net module so that it connects over WebSocket. Other than calling\n`RethinkdbWebsocketClient.connect` instead of `rethinkdb.connect`, the API is\nidentical. And other than the HTTP upgrade request at the start, the protocol\nover the wire is unchanged.\n\nSince RethinkDB does not accept WebSocket connections, you will have to use a\nproxy on the server that accepts WebSocket connects and proxies them to the\nRethinkDB TCP port:\n* [websockify](https://github.com/kanaka/websockify) is a server that listens\n  for incoming WebSocket connections, and blindly forwards traffic in both\n  directions to a specified TCP address. To set up a websockify server at that\n  forwards WebSocket port 8015 to RethinkDB running locally on port 28015, run\n  `./run localhost:8015 localhost:28015`\n* [rethinkdb-websocket-server](https://github.com/mikemintz/rethinkdb-websocket-server)\n  is a node.js server library that functions similarly to websockify. However,\n  it parses incoming RethinkDB queries from browser clients and runs them\n  through custom validation before forwarding the query to the RethinkDB\n  server.\n\n## How do I use this?\n\nThis package should be installed with [npm](https://www.npmjs.com/). You\nprobably want to use something like [webpack](http://webpack.github.io/) or\n[browserify](http://browserify.org/) to include it in your web application. In\ntheory it will also run on node.js, but I have not yet tested that.\n\nHere is a simple example of how to use it:\n\n```js\nvar RethinkdbWebsocketClient = require('rethinkdb-websocket-client');\nvar r = RethinkdbWebsocketClient.rethinkdb;\n\n// In case you want bluebird, which is bundled with the rethinkdb driver\nvar Promise = RethinkdbWebsocketClient.Promise;\n\nvar options = {\n  host: 'localhost',       // hostname of the websocket server\n  port: 8015,              // port number of the websocket server\n  path: '/',               // HTTP path to websocket route\n  wsProtocols: ['binary'], // sub-protocols for websocket, required for websockify\n  secure: false,           // set true to use secure TLS websockets\n  db: 'test',              // default database, passed to rethinkdb.connect\n  simulatedLatencyMs: 100, // wait 100ms before sending each message (optional)\n};\n\nRethinkdbWebsocketClient.connect(options).then(function(conn) {\n  var query = r.table('turtles');\n  query.run(conn, function(err, cursor) {\n    cursor.toArray(function(err, results) {\n      console.log(results);\n    });\n  });\n});\n```\n\n## Other environments\n\n### React\n\nFor [React](http://facebook.github.io/react/) integration, see the\n[react-rethinkdb](https://github.com/mikemintz/react-rethinkdb) library.\n\n### Node.JS and Electron\n\nTo use inside Electron or on the server in Node.JS (as opposed to the browser), use the following\npath when importing the module:\n```js\nvar RethinkdbWebsocketClient = require('rethinkdb-websocket-client/dist/node');\n```\n\nIf you need to route the WebSocket through a proxy server you can provide your own `agent` via the `wsProtocols` configuration parameter, e.g.:\n\n```js\nvar Socks = require('socks');\nvar options = {\n  host: 'localhost',       // hostname of the websocket server\n  port: 8015,              // port number of the websocket server\n  path: '/',               // HTTP path to websocket route\n  wsProtocols: {\n    agent: new Socks.Agent({\n      proxy: { ipaddress: '127.0.0.1', port: 8080, type: 5 }\n    })\n  },\n  secure: false,           // set true to use secure TLS websockets\n  db: 'test',              // default database, passed to rethinkdb.connect\n  simulatedLatencyMs: 100, // wait 100ms before sending each message (optional)\n};\n```\n"
+}

@@ -1,0 +1,110 @@
+{
+  "name": "ransomaware",
+  "productName": "Ransom Aware",
+  "version": "0.0.7",
+  "description": "Detect ransomware before it does damage.",
+  "main": "src/app.js",
+  "bin": {
+    "ransomaware": "src/ransomAware.js"
+  },
+  "scripts": {
+    "start": "electron src/app.js",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "postinstall": "install-app-deps",
+    "pack": "build --dir",
+    "dist": "build --win",
+    "postpublish": "build --win --publish onTagOrDraft"
+  },
+  "build": {
+    "appId": "com.npmjs.package.ransomaware",
+    "app-category-type": "public.app-category.utilities",
+    "win": {
+      "iconUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/84/Folder-saved-search.svg/240px-Folder-saved-search.svg.png",
+      "remoteReleases": "https://github.com/wmhilton/ransomAware"
+    }
+  },
+  "keywords": [],
+  "author": {
+    "name": "William Hilton",
+    "email": "wmhilton@gmail.com"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "electron-settings": "^1.1.1",
+    "ext-list": "^2.2.0",
+    "fs-extra": "^0.30.0",
+    "lodash": "^4.13.1",
+    "node-notifier": "^4.6.0",
+    "opener": "^1.4.1",
+    "user-startup": "^0.2.1",
+    "vue": "^1.0.26"
+  },
+  "devDependencies": {
+    "electron-builder": "^5.12.1",
+    "electron-prebuilt": "^1.2.7"
+  },
+  "repository": {
+    "user": "wmhilton",
+    "repo": "ransomAware",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/wmhilton/ransomAware/tarball/master",
+    "clone_url": "https://github.com/wmhilton/ransomAware",
+    "https_url": "https://github.com/wmhilton/ransomAware",
+    "travis_url": "https://travis-ci.org/wmhilton/ransomAware",
+    "zip_url": "https://github.com/wmhilton/ransomAware/archive/master.zip",
+    "api_url": "https://api.github.com/repos/wmhilton/ransomAware"
+  },
+  "homepage": "https://github.com/wmhilton/ransomAware#readme",
+  "gitHead": "92f8a57c68572adedefd2ef8249317a8ffed9af4",
+  "_npmVersion": "3.10.2",
+  "_nodeVersion": "5.3.0",
+  "dist": {
+    "shasum": "b72b6396df471dd4a8a524fe74339cbbab384f34",
+    "tarball": "http://registry.npmjs.org/ransomaware/-/ransomaware-0.0.7.tgz"
+  },
+  "versions": [
+    {
+      "number": "0.0.1",
+      "date": "2016-07-10T04:06:06.044Z"
+    },
+    {
+      "number": "0.0.2",
+      "date": "2016-07-10T04:21:04.014Z"
+    },
+    {
+      "number": "0.0.3",
+      "date": "2016-07-11T21:29:19.247Z"
+    },
+    {
+      "number": "0.0.4",
+      "date": "2016-07-18T01:04:54.981Z"
+    },
+    {
+      "number": "0.0.6",
+      "date": "2016-07-18T05:31:33.937Z"
+    },
+    {
+      "number": "0.0.5",
+      "date": "2016-07-18T05:38:41.575Z"
+    },
+    {
+      "number": "0.0.7",
+      "date": "2016-07-22T03:02:16.834Z"
+    }
+  ],
+  "created": "2016-07-10T04:06:06.044Z",
+  "modified": "2016-07-22T03:02:16.834Z",
+  "lastPublisher": {
+    "name": "wmhilton",
+    "email": "wmhilton@gmail.com"
+  },
+  "owners": [
+    {
+      "name": "wmhilton",
+      "email": "wmhilton@gmail.com"
+    }
+  ],
+  "readme": "# ransomAware.js\nBe notified the moment you get ransomware by monitoring the filesystem\n\n# Motivation\nI was inspired by a group of University of Florida researchers who found a way to [stop ransomeware dead in its tracks](http://news.ufl.edu/articles/2016/07/extortion-extinction-researchers-develop-a-way-to-stop-ransomware.php) by detecting rather than preventing infection. Quote:\n\n> “Our system is more of an early-warning system. It doesn’t prevent the ransomware from starting ... it prevents the ransomware from completing its task … so you lose only a couple of pictures or a couple of documents rather than everything that’s on your hard drive, and it relieves you of the burden of having to pay the ransom,” said Nolen Scaife, a UF doctoral student and founding member of UF’s Florida Institute for Cybersecurity Research.\n\nAccording to the article, they \"have a functioning prototype\" but are \"seeking a partner to commercialize it and make it available publicly.\" I'm going to reach out to the original research group over Twitter to get more details and make sure this tool is free. Because if not, well, that's understandable. The FBI estimates that ransomware creators made $24 million in successful ransoms last year. If UF sells the cure, part of that money could be going to UF. Regardless, I've already started working on something (without even reading the journal paper) based on my own knowledge of ransomeware, and it's gonna be free.\n\n# Concepts\nMost ransomware changes the filename and adds .crypt or .enc or something stupid. In hindsight, that's incredibly dumb. Because in a half hour, I can code up a software that tracks all file system modifications and alerts the user if files ending with known crypto-locker file extensions are created. The problem with that is they can simply change the file extension to something new, which is what they do.\n\nSo I do that, but I do one step more. ANY file extension that is 'new' and hasn't appeared in a folder before triggers an alert. So you get a lot of notifications up front, but after a learning period it learns what file types are \"normal\" to expect, and you'll only get alerts when something \"unusual\" happens.\n\nThis project is a work in progress, but already is capable of detecting the kinds of ransomware that 3 of my friends have been plagued by. Currently only installable via github or npm, but hopefully I'll come up with a simpler distribution mechanism.\n\n# Installation\n```\nnpm i -g ransomaware\n```\n\n# Usage\n```\nnpm run electron\n```\n\nIt has a GUI now and lives in the system tray. It can be started / paused from the tray menu.\nDouble-click or use the tray menu to open the Settings window. Settings are applied immediately as you change them,\nalthough changing the watched directory seems to not always work and sometimes requires a restart.\n\nAlerts via node-notifier\n"
+}

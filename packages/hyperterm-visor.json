@@ -1,0 +1,77 @@
+{
+  "name": "hyperterm-visor",
+  "version": "0.1.3",
+  "description": "Open your HyperTerm terminal from anywhere with a global hotkey.",
+  "repository": {
+    "user": "cwspear",
+    "repo": "hyperterm-visor",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/cwspear/hyperterm-visor/tarball/master",
+    "clone_url": "https://github.com/cwspear/hyperterm-visor",
+    "https_url": "https://github.com/cwspear/hyperterm-visor",
+    "travis_url": "https://travis-ci.org/cwspear/hyperterm-visor",
+    "zip_url": "https://github.com/cwspear/hyperterm-visor/archive/master.zip",
+    "api_url": "https://api.github.com/repos/cwspear/hyperterm-visor"
+  },
+  "author": {
+    "name": "Cameron Spear",
+    "email": "cameronspear@gmail.com",
+    "url": "cameronspear.com"
+  },
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"no tests\" && exit 0"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "electron": "^0.4.1",
+    "lodash.remove": "^4.5.0"
+  },
+  "keywords": [
+    "hyperterm",
+    "hyperterm-plugin",
+    "visor"
+  ],
+  "gitHead": "bc77e59f5d08a1de125debc5b54e3fc3db2cf1d3",
+  "homepage": "https://github.com/cwspear/hyperterm-visor#readme",
+  "_npmVersion": "2.15.8",
+  "_nodeVersion": "4.4.7",
+  "dist": {
+    "shasum": "0a09ec4cf3fe55fa3db53d13dc8dd3ebb482e2c8",
+    "tarball": "http://registry.npmjs.org/hyperterm-visor/-/hyperterm-visor-0.1.3.tgz"
+  },
+  "stars": 2,
+  "versions": [
+    {
+      "number": "0.1.0",
+      "date": "2016-07-18T06:37:06.030Z"
+    },
+    {
+      "number": "0.1.1",
+      "date": "2016-07-18T06:40:55.025Z"
+    },
+    {
+      "number": "0.1.2",
+      "date": "2016-07-18T07:03:14.707Z"
+    },
+    {
+      "number": "0.1.3",
+      "date": "2016-07-18T07:08:06.470Z"
+    }
+  ],
+  "created": "2016-07-18T06:37:06.030Z",
+  "modified": "2016-07-18T07:08:06.470Z",
+  "lastPublisher": {
+    "name": "cwspear",
+    "email": "cam@cameronspear.com"
+  },
+  "owners": [
+    {
+      "name": "cwspear",
+      "email": "cam@cameronspear.com"
+    }
+  ],
+  "readme": "# HyperTerm Visor\n\nOpen your [HyperTerm](https://hyperterm.org/) terminal from anywhere with a global hotkey.\n\n![HyperTerm Visor](https://cloud.githubusercontent.com/assets/495855/16907220/809ea6d0-4c76-11e6-956c-3329a0afc475.gif)\n\n## Installation\n\nIn your `~/.hyperterm.js`, add `hyperterm-visor` to the list of `plugins`.\n\n## Config\n\nIn your `~/.hyperterm.js`, you can define your hotkey (required) and the position (optional) you want your visor to be. It automatically will open on the screen where your mouse is.\n\n```js\nmodules.exports = {\n  config: {\n    // other config...\n    visor: {\n      hotkey: 'CommandOrControl+Shift+Z',\n      position: 'top', // or left, right, bottom\n    },\n  },\n  // ...\n};\n```\n\nYou can define hotkeys as specified in the [Electron Accelerator docs](https://github.com/electron/electron/blob/master/docs/api/accelerator.md).\n\n## Roadmap\n\n* Better customization of where you can make the terminal appear.\n* Option to always open on a specific monitor, etc.\n* Double press mod keys to activate (i.e. hit Ctrl twice to activate).\n* Create window if all windows have been closed.\n\n## Caveats\n\n* It always uses the most recently open window as your visor window.\n* If all windows have been closed, it won't do anything until you manually open a new window.\n\nThis is pretty basic in its current form, and I'm labeling it as a beta as I use it and patch up edge cases, etc. I will build out more functionality and beef up this README as we go. \n"
+}

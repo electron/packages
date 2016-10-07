@@ -1,10 +1,10 @@
 {
   "name": "electron-npm-packages",
-  "version": "1.4.0",
+  "version": "2.0.0",
   "description": "A collection of all npm packages that mention `electron` in their package.json",
   "main": "index.js",
   "scripts": {
-    "build": "mkdir -p packages && rm packages/* && node build.js && npm run docs",
+    "build": "mkdir -p packages && touch packages/___.json && rm packages/* && node build.js && npm run docs",
     "docs": "npm run docs:keywords && npm run docs:packages",
     "docs:keywords": "node keywords.js > keywords.md",
     "docs:packages": "node packages.js > packages.md"
@@ -40,21 +40,24 @@
   "license": "MIT",
   "homepage": "https://github.com/zeke/electron-npm-packages#readme",
   "devDependencies": {
-    "changes-stream": "^1.1.0",
-    "lodash.get": "^4.3.0",
-    "normalize-registry-metadata": "^1.1.2"
-  },
-  "dependencies": {
+    "got": "^6.3.0",
+    "limiter": "^1.1.0",
     "lodash.find": "^4.4.0",
     "lodash.sortby": "^4.5.0",
+    "path-exists": "^3.0.0"
+  },
+  "dependencies": {
+    "nice-package": "^1.0.5",
+    "object-values": "^1.0.0",
+    "package-stream": "^1.0.0",
     "require-dir": "^0.3.0"
   },
-  "gitHead": "6f35a707283d1f3ac8c669a1c08530e5e4141456",
-  "_npmVersion": "3.9.3",
-  "_nodeVersion": "6.2.1",
+  "gitHead": "110976b81a476ae5005c72d6f482ce29d0bfaa56",
+  "_npmVersion": "3.10.3",
+  "_nodeVersion": "6.3.0",
   "dist": {
-    "shasum": "6d47494df8b4b7d6091c541b38f23119b3745f4a",
-    "tarball": "http://registry.npmjs.org/electron-npm-packages/-/electron-npm-packages-1.4.0.tgz"
+    "shasum": "af8e1ef8554c982081e7797e103b0a0e3ab5426a",
+    "tarball": "http://registry.npmjs.org/electron-npm-packages/-/electron-npm-packages-2.0.0.tgz"
   },
   "versions": [
     {
@@ -76,10 +79,18 @@
     {
       "number": "1.4.0",
       "date": "2016-06-25T02:38:25.094Z"
+    },
+    {
+      "number": "1.5.0",
+      "date": "2016-07-13T22:25:29.111Z"
+    },
+    {
+      "number": "2.0.0",
+      "date": "2016-07-14T22:20:01.143Z"
     }
   ],
   "created": "2016-06-24T04:41:09.163Z",
-  "modified": "2016-06-25T02:38:25.094Z",
+  "modified": "2016-07-14T22:20:01.143Z",
   "lastPublisher": {
     "name": "zeke",
     "email": "zeke@sikelianos.com"

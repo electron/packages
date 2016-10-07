@@ -1,0 +1,74 @@
+{
+  "name": "mapbox-map-image-export",
+  "version": "1.0.0",
+  "description": "Export a Mapbox GL map to a hi-res image for printing",
+  "main": "index.js",
+  "bin": {
+    "export-map": "./cmd.js"
+  },
+  "license": "MIT",
+  "author": {
+    "name": "Gregor MacLennan",
+    "url": "Digital Democracy"
+  },
+  "dependencies": {
+    "blob-to-buffer": "^1.2.6",
+    "devtool": "^2.0.3",
+    "geo-viewport": "^0.1.1",
+    "js-quantities": "^1.6.1",
+    "mapbox-gl": "^0.20.1",
+    "minimist": "^1.2.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "example": "node ./cmd.js mapbox://styles/mapbox/streets-v9 -w=11in -h=8.5in -b=-7.1354,57.9095,-6.1357,58.516 -t=pk.eyJ1IjoidGF0aWFuYSIsImEiOiJjaWs1bzRiZGQwMDdjcHRrc285bTdwcWU5In0.0EWPVHyjaE9jTzNvOiIO-w -o=lewis.png"
+  },
+  "keywords": [
+    "mapbox",
+    "mapbox-gl",
+    "print",
+    "image",
+    "export",
+    "map"
+  ],
+  "repository": {
+    "user": "digidem",
+    "repo": "mapbox-map-image-export",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/digidem/mapbox-map-image-export/tarball/master",
+    "clone_url": "https://github.com/digidem/mapbox-map-image-export",
+    "https_url": "https://github.com/digidem/mapbox-map-image-export",
+    "travis_url": "https://travis-ci.org/digidem/mapbox-map-image-export",
+    "zip_url": "https://github.com/digidem/mapbox-map-image-export/archive/master.zip",
+    "api_url": "https://api.github.com/repos/digidem/mapbox-map-image-export"
+  },
+  "homepage": "https://github.com/digidem/mapbox-map-image-export#readme",
+  "gitHead": "2b42af2074bec4a2d53ad6a5c45f24666dabc205",
+  "_npmVersion": "3.9.3",
+  "_nodeVersion": "6.2.1",
+  "dist": {
+    "shasum": "4654e33dbed60a17a3eaf090dd4e784a1f2b9659",
+    "tarball": "http://registry.npmjs.org/mapbox-map-image-export/-/mapbox-map-image-export-1.0.0.tgz"
+  },
+  "versions": [
+    {
+      "number": "1.0.0",
+      "date": "2016-07-15T23:43:34.711Z"
+    }
+  ],
+  "created": "2016-07-15T23:43:34.711Z",
+  "modified": "2016-07-15T23:43:34.711Z",
+  "lastPublisher": {
+    "name": "gmaclennan",
+    "email": "gmaclennan@digital-democracy.org"
+  },
+  "owners": [
+    {
+      "name": "gmaclennan",
+      "email": "gmaclennan@digital-democracy.org"
+    }
+  ],
+  "readme": "# mapbox-map-image-export\n\n> :warning: This tool is experimental. :warning:\n\nA command-line tool to export a [Mapbox vector map][1], such as one created with [Mapbox Studio][2], to a high-resolution image for printing etc.\n\nMapbox has a [Maps static API][3] for exporting images, but it is limited to `1280px`, and exports as jpeg, with visible compression artifacts. `mapbox-map-image-export` renders the map in a headless browser and exports by default to uncompressed png. You can adjust the dpi setting for high-quality printing. `144dpi` (the default) is good enough for most print applications, but if you want better quality try `288dpi`. Icons will be 144dpi (retina) due to the way sprites are handled by `mapbox-gl-js`.\n\nThe Mapbox [wmts service][4] is another option for creating maps for printing in QGIS or ArcMap, but it does not currently support retina maps, so is limited to printing at around 72dpi, and is also only jpeg right now.\n\n[1]: https://www.mapbox.com/maps/\n[2]: https://www.mapbox.com/mapbox-studio/\n[3]: https://www.mapbox.com/api-documentation/#static\n[4]: https://www.mapbox.com/help/mapbox-arcgis-qgis/\n\n```sh\nexport MAPBOX_TOKEN=pk.eyJ1IjoidGF0aWFuYSIsImEiOiJjaWs1bzRiZGQwMDdjcHRrc285bTdwcWU5In0.0EWPVHyjaE9jTzNvOiIO-w\n\nexport-map mapbox://styles/mapbox/streets-v9 -w=11in -h=8.5in \\\n  -b=-7.1354,57.9095,-6.1357,58.516 -t=$MAPBOX_TOKEN -o=lewis.png\n```\n\n![lewis](lewis.png)\n\n## Install\n\nThis tool uses Electron to render the map using [mapbox-gl-js][3], so it is fairly heavy (~100mb). Install with latest [npm](https://www.npmjs.com/).\n\n[5]: https://www.mapbox.com/mapbox-gl-js/api/\n\n```sh\nnpm install mapbox-map-image-export -g\n```\n\n## Usage\n\n```txt\nUsage:\n  export-map mapboxStyleUrl\n\nOptions:\n  --bounds, -b      comma-separated bounding box [required] 'minLon,minLat,maxLon,maxLat' eg. '-7.1354,57.9095,-6.1357,58.516'\n  --token, -t       Mapbox API token [required]: https://www.mapbox.com/studio/account/tokens/\n  --output, -o      image output path, optional, defaults to std.out\n  --dpi, -d         dpi of output image, default 144dpi (equivalent to how the map renders on a retina screen)\n  --format, -f      output format, \"jpg\", \"webp\" or \"png\" (default)\n  --quality, -q     encoding quality for jpg and webp, default 0.9\n  --width, -w       output width for printing e.g. 11in or 297mm\n  --height, -h      output height for printing\n```\n\nExports a map for a given mapbox style url for the specified bounding box.\n\nIf no `--output` is given, the PNG is written to stdout.\n\n## What does 'dpi' mean?\n\nMapbox Studio and Mapbox GL maps are designed for the screen, as such 'dpi' (dots per inch), a print term, does not have any real meaning. However, the standard screen resolution is equivalent to between 72 and 96dpi (e.g. 72 screen pixels will measure approximately 1 inch on a standard screen). Mapbox GL maps are designed by zoom level, and this tool assumes you want maps to look on paper roughly the same as they look on screen at the same size. `mapbox-map-image-export` assumes a standard resolution mapbox map is 72dpi, and a retina (@2x) map is 144dpi. You can set 288dpi if you like, and this will render as if to an ultra-retina screen with a devicePixelRatio=4. Keep dpi to a multiple of `72` if you want icons to look good.\n\n## Limitations\n\nDue to a [bug in mapbox-gl-js][6] trying to export an image that is larger than 2000px width or height may not work correctly - it will not export the bounds that you expect it to.\n\n[6]: https://github.com/mapbox/mapbox-gl-js/issues/2863\n\n## License\n\nMIT\n"
+}

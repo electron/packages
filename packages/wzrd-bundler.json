@@ -1,0 +1,78 @@
+{
+  "name": "wzrd-bundler",
+  "version": "1.0.0",
+  "description": "Create JavaScript bundles in the browser using the Browserify CDN [wzrd.in](https://wzrd.in) with optional, debuggable local overrides of modules.",
+  "main": "index.js",
+  "scripts": {
+    "test:electron": "browserify tests/index.js | tape-run",
+    "test:node": "node tests/index.js | tap-spec",
+    "test": "npm run test:node"
+  },
+  "repository": {
+    "user": "sethvincent",
+    "repo": "wzrd-bundler",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/sethvincent/wzrd-bundler/tarball/master",
+    "clone_url": "https://github.com/sethvincent/wzrd-bundler",
+    "https_url": "https://github.com/sethvincent/wzrd-bundler",
+    "travis_url": "https://travis-ci.org/sethvincent/wzrd-bundler",
+    "zip_url": "https://github.com/sethvincent/wzrd-bundler/archive/master.zip",
+    "api_url": "https://api.github.com/repos/sethvincent/wzrd-bundler"
+  },
+  "author": {
+    "name": "sethvincent"
+  },
+  "license": "MIT",
+  "homepage": "https://github.com/sethvincent/wzrd-bundler#readme",
+  "dependencies": {
+    "browser-module-cache": "^0.1.3",
+    "browser-resolve": "^1.11.2",
+    "browserify": "^13.0.1",
+    "detective": "^4.3.1",
+    "each-async": "^1.1.1",
+    "from2-string": "^1.1.0",
+    "is-stream": "^1.1.0",
+    "quote-stream": "^1.0.2",
+    "semver": "^5.2.0",
+    "wzrd-api-client": "^1.0.0",
+    "xtend": "^4.0.1"
+  },
+  "devDependencies": {
+    "brfs": "^1.4.3",
+    "browserify": "^13.0.1",
+    "choo": "^3.1.1",
+    "create-iframe": "^1.0.0",
+    "standard": "^7.1.2",
+    "tap-spec": "^4.1.1",
+    "tape": "^4.6.0",
+    "tape-run": "^2.1.4"
+  },
+  "gitHead": "a5eea2d7f4dc8db95d2da35f0216f33b44e9c8d9",
+  "_npmVersion": "3.10.2",
+  "_nodeVersion": "6.2.0",
+  "dist": {
+    "shasum": "a551e29dfda72052a949dda1120f7494e1000ef1",
+    "tarball": "http://registry.npmjs.org/wzrd-bundler/-/wzrd-bundler-1.0.0.tgz"
+  },
+  "versions": [
+    {
+      "number": "1.0.0",
+      "date": "2016-07-18T00:46:48.450Z"
+    }
+  ],
+  "created": "2016-07-18T00:46:48.450Z",
+  "modified": "2016-07-18T00:46:48.450Z",
+  "lastPublisher": {
+    "name": "sethvincent",
+    "email": "sethvincent@gmail.com"
+  },
+  "owners": [
+    {
+      "name": "sethvincent",
+      "email": "sethvincent@gmail.com"
+    }
+  ],
+  "readme": "# wzrd-bundler\n\nCreate JavaScript bundles in the browser using the Browserify CDN [wzrd.in](https://wzrd.in) with optional, debuggable local overrides of modules.\n\n```js\nnpm install --save wzrd-bundler\n```\n\n## Usage\n\n```js\nvar createBundler = require('wzrd-bundler')\n\nvar bundler = createBundler({\n  host: 'https://wzrd.in'\n})\n\nvar code = `var bunny = require('bunny')`\n\nvar versions = {\n  bunny: '1.0.1'\n}\n\nbundler(code, versions, function (err, bundle, packages) {\n  // bundle is all bundled modules as a string\n  // packages is an object with package information about all bundled modules\n})\n```\n\n## Using local module overrides\n\nInstead of specifying `latest` or a specific version of a module, you can instead use the `wzrd-bundler/local-module` module to force the bundler to use your local version of a module in the browser bundle. This is important for debugging, or overriding the behavior of modules for demo purposes.\n\nIt is *required* to use the built in browserify transform module in order to bundle this code for the browser.\n\n```js\nvar createBundler = require('wzrd-bundler')\nvar local = require('wzrd-bundler/local-module')\n\nvar bundler = createBundler({\n  host: 'https://wzrd.in'\n})\n\nvar code = `var bunny = require('bunny')`\n\nvar versions = {\n  bunny: local('./bunny')\n}\n\nbundler(code, versions, function (err, bundle, packages) {\n  // bundle is all bundled modules as a string\n  // packages is an object with package information about all bundled modules\n  // local packages are given the version `local`\n})\n```\n\n### Using the browserify transform\n\nExample of using the wzrd-bundler transform:\n\n```\nbrowserify index.js -t wzrd-bundler/transform -o bundle.js\n```\n\n## License\n[MIT](LICENSE.md)\n"
+}

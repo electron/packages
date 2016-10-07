@@ -1,7 +1,7 @@
 {
   "name": "nyaovim",
   "productName": "NyaoVim",
-  "version": "0.0.19",
+  "version": "0.0.22",
   "description": "Web-enhanced Extensible Neovim Frontend",
   "main": "main/main.js",
   "bin": {
@@ -9,15 +9,17 @@
   },
   "scripts": {
     "dep": "npm install && bower install && typings install",
-    "build-main": "tsc --pretty -p $(npm prefix)/main",
-    "build-renderer": "tsc --pretty -p $(npm prefix)/renderer",
+    "build-main": "tsc --pretty -p main",
+    "build-renderer": "tsc --pretty -p renderer",
     "build": "npm run build-main && npm run build-renderer",
-    "lint": "tslint $(git ls-files | grep -E \".ts$\")",
+    "lint": "tslint $(git ls-files | grep -E \"\\\\.ts$\")",
     "app": "electron $(npm prefix)",
-    "debug": "NODE_ENV=debug electron $(npm prefix)",
+    "debug": "ELECTRON_ENABLE_STACK_DUMPING=true NODE_ENV=debug electron $(npm prefix)",
     "start": "npm run dep && npm run build && npm run app",
-    "watch": "cd $(npm prefix) && guard --watchdir main renderer typings",
-    "clean": "cd $(npm prefix) && rm -rf build typings bower_components node_modules"
+    "build-test": "tsc --pretty -p test/",
+    "smoke-test": "npm run build-test && mocha test/smoke",
+    "watch": "guard --watchdir main renderer test",
+    "clean": "rm -rf build typings bower_components node_modules"
   },
   "repository": {
     "user": "rhysd",
@@ -52,23 +54,27 @@
   "dependencies": {
     "about-window": "^1.3.1",
     "deep-extend": "^0.4.1",
-    "electron-prebuilt": "^0.36.7",
-    "electron-window-state": "^2.0.0",
+    "electron-prebuilt": "^1.3.5",
+    "electron-window-state": "^3.0.4",
     "mkdirp": "^0.5.1",
-    "neovim-component": "^0.5.1",
-    "promised-neovim-client": "^1.0.1"
+    "neovim-component": "^0.8.0",
+    "promised-neovim-client": "^2.0.2"
   },
   "devDependencies": {
     "bower": "^1.7.1",
-    "typescript": "^1.8.0",
-    "typings": "^0.6.3"
+    "chai": "^3.5.0",
+    "mocha": "^3.0.2",
+    "spectron": "^3.3.0",
+    "tslint": "^3.15.1",
+    "typescript": "^2.0.0",
+    "typings": "^1.3.3"
   },
-  "gitHead": "915d70b0dab22219a72aa2f174df3cf5c21db323",
-  "_npmVersion": "2.14.7",
-  "_nodeVersion": "4.2.1",
+  "gitHead": "b70f222f4d230b2cc0bc35675bb755f3d0466019",
+  "_npmVersion": "3.9.3",
+  "_nodeVersion": "6.2.1",
   "dist": {
-    "shasum": "7217dd6844447d70a48bb0b3cb1bf0960520001c",
-    "tarball": "http://registry.npmjs.org/nyaovim/-/nyaovim-0.0.19.tgz"
+    "shasum": "74aa84a1c030b08ba61e10838373ebf029a0ab18",
+    "tarball": "http://registry.npmjs.org/nyaovim/-/nyaovim-0.0.22.tgz"
   },
   "stars": 1,
   "versions": [
@@ -147,10 +153,22 @@
     {
       "number": "0.0.19",
       "date": "2016-03-06T10:49:41.746Z"
+    },
+    {
+      "number": "0.0.20",
+      "date": "2016-07-18T07:37:55.119Z"
+    },
+    {
+      "number": "0.0.21",
+      "date": "2016-09-10T15:33:15.353Z"
+    },
+    {
+      "number": "0.0.22",
+      "date": "2016-09-29T14:06:01.952Z"
     }
   ],
   "created": "2015-09-10T18:28:34.224Z",
-  "modified": "2016-03-06T10:49:41.746Z",
+  "modified": "2016-09-29T14:06:01.952Z",
   "lastPublisher": {
     "name": "rhysd",
     "email": "lin90162@yahoo.co.jp"
@@ -161,5 +179,5 @@
       "email": "lin90162@yahoo.co.jp"
     }
   ],
-  "readme": "![NyaoVim](resources/title-bar.png)\n===================================\n\nThis is a [Neovim](https://neovim.io/) frontend built on [Electron](http://electron.atom.io/).  Neovim editor is [composed as Web Component](https://github.com/rhysd/neovim-component) and users can extend UI by reusable Web Components, HTML, CSS and JavaScript.\n\n**This repository is being heavily developed.  Everything is unstable.**\n\n`:help design-not` says:\n\n> Use Vim as a component from a shell or in an IDE.\n\nNyaoVim has the same spirit as this.  NyaoVim contains Neovim editor as Web Component and enables to extend its UI with web technology as recent modern editors and IDEs (e.g. [Atom](http://atom.io/), [VS Code](https://github.com/Microsoft/vscode), [LightTable](http://lighttable.com/)).\n\n## Goals\n\n- **NyaoVim bundles no extended UI by default.**  It only provides the nice UI plugin architecture.  Users can compose their favorite UI with Web Components, HTML and CSS.  It is also easy to make NyaVim distribution where useful components are bundled.\n- **Do not introduce another plugin manager.**  HTML for Web Component should be bundled with Vim plugin.  Therefore Vim plugin manager can handle UI components and it enables to bundle JS codes and Vim script codes.\n- **Do not lose Vim's comfortability by default.**  It should be aware of performance.\n- **UI component creators can use powerful APIs, packages and tools**; [Node.js APIs](https://nodejs.org/en/docs/), [Electron APIs](https://github.com/atom/electron/tree/master/docs/api), [Neovim msgpack-rpc APIs](https://neovim.io/doc/user/msgpack_rpc.html)), so many [npm packages](https://www.npmjs.com/) and [Chrome DevTools](https://developers.google.com/web/tools/chrome-devtools/).\n- **Cross Platform** (Linux, OS X, Windows)\n\nMemo: 'nyao' is 'meow' in Japanese and its pronounce resembles 'neo'.  It is also an acronym for 'Not Yet Another Original'.\n\n## App Structure\n\nNyaoVim consists Web Components on Electron as following figure.  At first there is only `<neovim-editor>` and you can add/remove additional components.\n\n![structure](https://raw.githubusercontent.com/rhysd/ss/master/NyaoVim/structure.png)\n\n## UI Plugin Examples\n\nUI plugins are easily installed to NyaoVim the same as other normal plugins.  Each of them is written within 100~300 lines.  You can create reusable Web Components and integrate it to NyaoVim.\n\n- [nyaovim-markdown-preview](https://github.com/rhysd/nyaovim-markdown-preview)\n\n![nyaovim-markdown-preview screenshot](https://raw.githubusercontent.com/rhysd/ss/master/nyaovim-markdown-preview/main.gif)\n\n- [nyaovim-popup-tooltip](https://github.com/rhysd/nyaovim-popup-tooltip)\n\n![nyaovim-popup-tooltip screenshot](https://raw.githubusercontent.com/rhysd/ss/master/nyaovim-popup-tooltip/main.gif)\n\n- [nyaovim-mini-browser](https://github.com/rhysd/nyaovim-mini-browser)\n\n![nyaovim-mini-browser screenshot](https://raw.githubusercontent.com/rhysd/ss/master/nyaovim-mini-browser/main.gif)\n\n\n## Usage\n\n### Getting Started\n\nYou can install NyaoVim as [npm package](https://www.npmjs.com/package/nyaovim).  Currently no packaging release is available yet.  If you use Windows and haven't install Neovim yet, please read [first tips](docs/tips.md) at first.\n\n```sh\n$ npm install -g nyaovim\n```\n\nIf you don't install Neovim yet, please install it following [Neovim's instaruction](https://github.com/neovim/neovim/wiki/Installing-Neovim) because NyaoVim internally uses `nvim` command.\n\nYou can start NyaoVim with `nyaovim` command if you install this app with npm.\n\n```sh\n$ nyaovim [files...]\n```\n\nYou would see minimal Neovim GUI editor (as normal gVim).  This is Electron app and Neovim is drawn on `<canvas>`.  You can see DevTools of this app with 'Developer Tools' menu item.\n\nOn first start up of NyaoVim, it creates `~/.config/nyaovim/nyaovimrc.html` for UI configuration (`%AppData%` instead of `.config` in Windows).  Yes, you can extend and configure UI components with HTML and CSS!\n\n### Configure Editor Options\n\nI guess you're now thinking 'Hmm, font is not good and too small...'. You can configure some editor options by properties of [`<neovim-editor>` properties](https://github.com/rhysd/neovim-component#neovim-editor-properties).\nFor example, below configures font face and font size by `font` and `font-size` properties.  Then set line-height to 1.5 (for example, Atom adopts 1.5 as line-height).\n\n```html\n<neovim-editor\n    id=\"nyaovim-editor\"\n    argv$=\"[[argv]]\"\n    font-size=\"14\"\n    font=\"Ricty,monospace\"\n    line-height=\"1.5\"\n></neovim-editor>\n```\n\nAnd you can also configure browser window options with `browser-config.json` (e.g. Preserving window state, Single instance app, and so on). See [tips](docs/tips.md) for more detail.\n\n### Install UI Plugin\n\nFor example, let's install [nyaovim-popup-tooltip](https://github.com/rhysd/nyaovim-popup-tooltip).\n\nAs described in Goal section, UI plugin is a normal Neovim plugin.  You can install it as other Neovim plugin.  If you use [vim-plug](https://github.com/junegunn/vim-plug), all you need is adding below line to your `init.vim`.\n\n```vim\nPlug 'rhysd/nyaovim-popup-tooltip'\n```\n\nThen you need to put popup tooltip UI to your NyaoVim interface.  Please open `~/.config/nyaovim/nyaovimrc.html` (`%AppData%` instead of `.config` in Windows).  As described in Goal section, user can put UI with HTML and CSS with high customization.\n\nPlease add `<popup-tooltip>` tag under `<neovim-editor>` tag as below\n\n```html\n<neovim-editor id=\"nyaovim-editor\" argv$=\"[[argv]]\"></neovim-editor>\n<popup-tooltip editor=\"[[editor]]\"></popup-tooltip>\n```\n\n`<popup-tooltip>` is a [Polymer](https://github.com/Polymer/polymer) component.  `editor=\"[[editor]]\"` is a data binding to pass editor instance to `<popup-tooltip>`.\n\nAfter installing nyaovim-popup-tooltip as Neovim plugin and adding UI to HTML, all has done!  Open NyaoVim, move cursor to any image path, and enter `gi`.  NyaoVim would load image and show it in popup tooltip as below.\n\n![nyaovim-popup-tooltip screenshot](https://raw.githubusercontent.com/rhysd/ss/master/nyaovim-popup-tooltip/main.gif)\n\n\n## Documents\n\nMore documents are put in [docs directory](docs).\n\n- [How to Make UI Plugin](docs/make-ui-plugin.md)\n- [Tips](docs/tips.md)\n- [FAQ](docs/faq.md)\n- [Runtime API](docs/runtime-api.md)\n- [Browser Config](docs/browser-config.md)\n\n## License\n\n[MIT License](/LICENSE.txt).\n\nLogo of this app is created based on [Neovim logo](https://neovim.io/) licensed under [CCA 3.0 Unported](https://creativecommons.org/licenses/by/3.0/legalcode).\n\n> The Neovim logo by Jason Long is licensed under the Creative Commons Attribution 3.0 Unported License.\n"
+  "readme": "![NyaoVim](resources/title-bar.png)\n===================================\n\nThis is a [Neovim](https://neovim.io/) frontend built on [Electron](http://electron.atom.io/).  The Neovim editor is [composed as a Web Component](https://github.com/rhysd/neovim-component) and users can extend the UI with reusable Web Components, HTML, CSS and JavaScript.\n\n**This repository is being heavily developed.  Everything is unstable.**\n\n`:help design-not` says:\n\n> Use Vim as a component from a shell or in an IDE.\n\nNyaoVim is built in the same spirit.  NyaoVim contains the Neovim editor as a Web Component and extends its UI with web technology, as in other modern editors and IDEs (e.g. [Atom](http://atom.io/), [VS Code](https://github.com/Microsoft/vscode), [LightTable](http://lighttable.com/)).\n\n## Goals\n\n- **NyaoVim bundles no extended UI by default.**  It only provides the nice UI plugin architecture.  Users can compose their favorite UI with Web Components, HTML and CSS.  It is also easy to make a NyaoVim distribution where useful components are bundled.\n- **Do not introduce another plugin manager.**  HTML for Web Components should be bundled with Vim plugins.  Therefore, a Vim plugin manager can handle UI components, letting us bundle JS and Vim script code.\n- **Do not lose Vim's comfortability by default.**  It should be aware of performance.\n- **UI component creators can use powerful APIs, packages and tools**; [Node.js APIs](https://nodejs.org/en/docs/), [Electron APIs](https://github.com/atom/electron/tree/master/docs/api), [Neovim msgpack-rpc APIs](https://neovim.io/doc/user/msgpack_rpc.html)), so many [npm packages](https://www.npmjs.com/) and [Chrome DevTools](https://developers.google.com/web/tools/chrome-devtools/).\n- **Cross Platform** (Linux, OS X, Windows)\n\nMemo: 'nyao' is 'meow' in Japanese and its pronounce resembles 'neo'.  It is also an acronym for 'Not Yet Another Original'.\n\n## App Structure\n\nNyaoVim consists of Web Components on Electron as seen in the following figure.  At first there is only `<neovim-editor>` and you can add/remove additional components.\n\n![structure](https://raw.githubusercontent.com/rhysd/ss/master/NyaoVim/structure.png)\n\n## UI Plugin Examples\n\nUI plugins are installable as easily as regular plugins.  Each of them is written within 100~300 lines.  You can also create reusable Web Components and integrate them into NyaoVim.\n\n- [nyaovim-markdown-preview](https://github.com/rhysd/nyaovim-markdown-preview)\n\n![nyaovim-markdown-preview screenshot](https://raw.githubusercontent.com/rhysd/ss/master/nyaovim-markdown-preview/main.gif)\n\n- [nyaovim-popup-tooltip](https://github.com/rhysd/nyaovim-popup-tooltip)\n\n![nyaovim-popup-tooltip screenshot](https://raw.githubusercontent.com/rhysd/ss/master/nyaovim-popup-tooltip/main.gif)\n\n- [nyaovim-mini-browser](https://github.com/rhysd/nyaovim-mini-browser)\n\n![nyaovim-mini-browser screenshot](https://raw.githubusercontent.com/rhysd/ss/master/nyaovim-mini-browser/main.gif)\n\n\n## Usage\n\n### Getting Started\n\nYou can install NyaoVim as an [npm package](https://www.npmjs.com/package/nyaovim).  Currently no packaging release is available yet.  If you use Windows and haven't installed Neovim yet, please read [first tips](docs/tips.md) first.\n\n```sh\n$ npm install -g nyaovim\n```\n\nIf you haven't installed Neovim yet, please install it following [Neovim's instructions](https://github.com/neovim/neovim/wiki/Installing-Neovim) because NyaoVim internally uses the `nvim` command.  **Note that `nvim` v0.1.6 or later is needed.**\n\nYou can start NyaoVim with the `nyaovim` command if you install this app with npm.\n\n```sh\n$ nyaovim [files...]\n```\n\nYou would see a minimal Neovim GUI editor (like gVim).  This is an Electron app and Neovim is drawn on `<canvas>`.  You can see the DevTools of this app with the 'Developer Tools' menu item.\n\nOn first start up of NyaoVim, it creates `~/.config/nyaovim/nyaovimrc.html` for UI configuration (`%AppData%` instead of `.config` in Windows).  Yes, you can extend and configure UI components with HTML and CSS!\n\n### Configure Editor Options\n\nI guess you're now thinking 'Hmm, font is not good and too small...'. You can configure some editor options by properties of [`<neovim-editor>` properties](https://github.com/rhysd/neovim-component#neovim-editor-properties).\nFor example, below configures font face and font size by `font` and `font-size` properties.  Then set line-height to 1.5 (for example, Atom adopts 1.5 as line-height).\n\n```html\n<neovim-editor\n    id=\"nyaovim-editor\"\n    argv=\"[[argv]]\"\n    font-size=\"14\"\n    font=\"Ricty,monospace\"\n    line-height=\"1.5\"\n></neovim-editor>\n```\n\nAnd you can also configure browser window options with `browser-config.json` (e.g. Preserving window state, Single instance app, and so on). See [tips](docs/tips.md) for more detail.\n\n### Install UI Plugin\n\nFor example, let's install [nyaovim-popup-tooltip](https://github.com/rhysd/nyaovim-popup-tooltip).\n\nAs described in the Goals section, a UI plugin is a normal Neovim plugin.  You can install it like any other Neovim plugin.  If you use [vim-plug](https://github.com/junegunn/vim-plug), all you need is adding below line to your `init.vim`.\n\n```vim\nPlug 'rhysd/nyaovim-popup-tooltip'\n```\n\nThen you need to put the popup tooltip UI on your NyaoVim interface.  Please open `~/.config/nyaovim/nyaovimrc.html` (`%AppData%` instead of `.config` in Windows).  As described in the Goals section, a user can build a UI with HTML and CSS with high customization.\n\nPlease add `<popup-tooltip>` tag under `<neovim-editor>` tag as below\n\n```html\n<neovim-editor id=\"nyaovim-editor\" argv$=\"[[argv]]\"></neovim-editor>\n<popup-tooltip editor=\"[[editor]]\"></popup-tooltip>\n```\n\n`<popup-tooltip>` is a [Polymer](https://github.com/Polymer/polymer) component.  `editor=\"[[editor]]\"` is a data binding to pass editor instance to `<popup-tooltip>`.\n\nAfter installing nyaovim-popup-tooltip as a Neovim plugin and adding UI to HTML, you're all done!  Open NyaoVim, move the cursor to any image path, and enter `gi`.  NyaoVim will load the image and show it in a popup tooltip as below.\n\n![nyaovim-popup-tooltip screenshot](https://raw.githubusercontent.com/rhysd/ss/master/nyaovim-popup-tooltip/main.gif)\n\n\n## Documents\n\nThere is more in documentation in the [docs directory](docs).\n\n- [How to Make UI Plugin](docs/make-ui-plugin.md)\n- [Tips](docs/tips.md)\n- [FAQ](docs/faq.md)\n- [Runtime API](docs/runtime-api.md)\n- [Browser Config](docs/browser-config.md)\n\n## License\n\n[MIT License](/LICENSE.txt).\n\nLogo of this app is created based on [Neovim logo](https://neovim.io/) licensed under [CCA 3.0 Unported](https://creativecommons.org/licenses/by/3.0/legalcode).\n\n> The Neovim logo by Jason Long is licensed under the Creative Commons Attribution 3.0 Unported License.\n"
 }

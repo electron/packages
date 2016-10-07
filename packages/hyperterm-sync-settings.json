@@ -1,0 +1,83 @@
+{
+  "name": "hyperterm-sync-settings",
+  "version": "1.5.1",
+  "description": "Sync HyperTerm settings with Github.",
+  "main": "index.js",
+  "scripts": {
+    "test": ""
+  },
+  "repository": {
+    "user": "dfrankland",
+    "repo": "hyperterm-sync-settings",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/dfrankland/hyperterm-sync-settings/tarball/master",
+    "clone_url": "https://github.com/dfrankland/hyperterm-sync-settings",
+    "https_url": "https://github.com/dfrankland/hyperterm-sync-settings",
+    "travis_url": "https://travis-ci.org/dfrankland/hyperterm-sync-settings",
+    "zip_url": "https://github.com/dfrankland/hyperterm-sync-settings/archive/master.zip",
+    "api_url": "https://api.github.com/repos/dfrankland/hyperterm-sync-settings"
+  },
+  "keywords": [
+    "hyperterm",
+    "sync",
+    "settings",
+    "backup",
+    "restore"
+  ],
+  "author": {
+    "name": "Dylan Frankland",
+    "email": "dylan@frankland.io"
+  },
+  "license": "MIT",
+  "homepage": "https://github.com/dfrankland/hyperterm-sync-settings#readme",
+  "dependencies": {
+    "bluebird": "^3.4.1",
+    "fs-extra": "^0.30.0",
+    "moment": "^2.14.1",
+    "nodegit": "^0.15.1"
+  },
+  "engines": {
+    "electron": "1.2.5"
+  },
+  "gitHead": "8c210de2183a322b29a5f2bd1af70dca6babfa69",
+  "_npmVersion": "3.10.6",
+  "_nodeVersion": "6.3.1",
+  "dist": {
+    "shasum": "e198af32a4b2229cbd59db5d553b2bb1ea040bb1",
+    "tarball": "http://registry.npmjs.org/hyperterm-sync-settings/-/hyperterm-sync-settings-1.5.1.tgz"
+  },
+  "stars": 5,
+  "versions": [
+    {
+      "number": "1.0.0",
+      "date": "2016-07-19T06:01:49.359Z"
+    },
+    {
+      "number": "1.1.0",
+      "date": "2016-07-20T00:21:57.703Z"
+    },
+    {
+      "number": "1.5.0",
+      "date": "2016-07-22T22:30:07.993Z"
+    },
+    {
+      "number": "1.5.1",
+      "date": "2016-09-22T20:24:06.421Z"
+    }
+  ],
+  "created": "2016-07-19T06:01:49.359Z",
+  "modified": "2016-09-22T20:24:06.421Z",
+  "lastPublisher": {
+    "name": "dfrankland",
+    "email": "dylan@frankland.io"
+  },
+  "owners": [
+    {
+      "name": "dfrankland",
+      "email": "dylan@frankland.io"
+    }
+  ],
+  "readme": "# HyperTerm Sync Settings\n\n> Sync HyperTerm settings with Github.\n\n## Setup\n\n1.  Create a [new personal access token](https://github.com/settings/tokens/new)\n    which has the `gist` scope. Save your token to `personalAccessToken` inside\n    `~/.hyperterm_plugins/.hyperterm-sync-settings.json`. Alternatively, set the\n    `HYPERTERM_SYNC_SETTINGS_PERSONAL_ACCESS_TOKEN` environmental variable using\n    this token.\n\n2.  Create a [new gist](https://gist.github.com/) and save it. Save your gist id\n    (last part of the url after the username) to `gistId` inside\n    `~/.hyperterm_plugins/.hyperterm-sync-settings.json`. Alternatively, set the\n    `HYPERTERM_SYNC_SETTINGS_GIST_ID` environmental variable using this id.\n\n3.  Restart HyperTerm.\n\n**Disclaimer:** Github Gists are by default **public**. If you don't want other\npeople to easily find your gist (i.e. if you use certain packages, storing\nauth-tokens, a malicious party could abuse them), you should make sure to\n**create a secret gist**.\n\n## How to use\n\n![alt demo](http://i.giphy.com/9CNA0ceu5iuoU.gif)\n\nUse the commands below in the menu:\n\n1.  `Plugins > Sync Settings > Check for Updates`\n\n    Checks Github to see if there are any updates available for your settings.\n\n2.  `Plugins > Sync Settings > Backup Settings`\n\n    Copies your `~/.hyperterm.js` file to your local repository and pushes it to\n    Github.\n\n3.  `Plugins > Sync Settings > Restore Settings`\n\n    Fast forwards local repo with all new commits from Github and copies the new\n    settings to your `~/.hyperterm.js` file.\n\n4.  `Plugins > Sync Settings > Open >`\n\n    *   `Gist`: Opens the link to the configured Gist.\n\n    *   `Repo`: Opens the local repo that is cloned from the Gist.\n\n    *   `Configuration`: Opens the\n        `~/.hyperterm_plugins/.hyperterm-sync-settings.json` config file.\n\n## Configuration\nAdd `syncSettings` in your `.hyperterm.js` config. The configuration below shows all existing configuration values in their default states.\n\n```javascript\nmodule.exports = {\n  config: {\n    // other configs...\n    syncSettings: {\n      quiet: false\n    },\n  },\n  // ...\n}\n```\n\n#### `config.syncSettings.quiet`\n* Type: boolean\n* Default: false\n\n Mute the notification saying \"Your settings are up to date\". This will not hide any other notifications.\n\n## Contribution\n\nPlease help improve this package! There's lots of room for stability and new\nfeatures to be made, so I would love if you could help improve it :)\n\n## Credit\n\nCredit where credit's due; the idea of this comes directly from\n[`atom-sync-settings`](https://github.com/atom-community/sync-settings).\n"
+}

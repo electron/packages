@@ -1,6 +1,6 @@
 {
   "name": "electron-compilers",
-  "version": "3.1.5",
+  "version": "4.0.0",
   "description": "Compiler implementations for electron-compile",
   "main": "lib/main.js",
   "scripts": {
@@ -30,39 +30,46 @@
   },
   "license": "MIT",
   "homepage": "https://github.com/paulcbetts/electron-compilers",
+  "engines": {
+    "node": ">= 5.0"
+  },
   "dependencies": {
-    "babel-core": "^6.1.2",
-    "babel-preset-es2015": "^6.1.2",
+    "@paulcbetts/mime-types": "^2.1.10",
+    "@paulcbetts/typescript-simple": "^6.0.0",
+    "babel-core": "^6.13.2",
+    "babel-preset-es2015": "^6.13.2",
     "btoa": "^1.1.2",
-    "cheerio": "^0.19.0",
+    "cheerio": "^0.20.0",
     "coffee-script": "^1.10.0",
     "cson": "^3.0.2",
     "debug-electron": "0.0.1",
     "jade": "^1.11.0",
-    "less": "^2.5.3",
-    "@paulcbetts/mime-types": "^2.1.9",
+    "less": "^2.7.1",
     "mkdirp": "^0.5.1",
-    "rimraf": "^2.4.3",
+    "nib": "^1.1.2",
+    "rimraf": "^2.5.4",
     "stylus": "^0.54.5",
-    "typescript-simple": "^2.0.0"
+    "typescript": "^2.0.3"
   },
   "devDependencies": {
-    "babel-cli": "^6.1.2",
-    "babel-eslint": "^4.1.3",
-    "babel-preset-es2015": "^6.1.2",
-    "babel-preset-react": "^6.1.2",
-    "babel-preset-stage-0": "^6.1.2",
-    "esdoc": "^0.4.3",
+    "babel-cli": "^6.11.4",
+    "babel-eslint": "^6.1.2",
+    "babel-plugin-transform-async-to-generator": "^6.8.0",
+    "babel-plugin-transform-object-rest-spread": "^6.8.0",
+    "babel-plugin-transform-runtime": "^6.12.0",
+    "babel-preset-es2016-node5": "^1.1.2",
+    "babel-preset-react": "^6.11.1",
+    "esdoc": "^0.4.8",
     "esdoc-es7-plugin": "0.0.3",
     "esdoc-plugin-async-to-sync": "^0.5.0",
-    "eslint": "^1.5.1"
+    "eslint": "^3.3.0"
   },
-  "gitHead": "8b77d4cb5ed5c3843f6efcc3fb158f442e053f92",
-  "_npmVersion": "3.9.2",
-  "_nodeVersion": "6.2.0",
+  "gitHead": "46529210996df11b9fde260111df1ca6cd3c1dc8",
+  "_npmVersion": "3.10.8",
+  "_nodeVersion": "6.6.0",
   "dist": {
-    "shasum": "79d30fab8ec23fcda2db7b9e5fe785597b835788",
-    "tarball": "http://registry.npmjs.org/electron-compilers/-/electron-compilers-3.1.5.tgz"
+    "shasum": "0079e8875787c06002225bcf8bce30aa8920f299",
+    "tarball": "http://registry.npmjs.org/electron-compilers/-/electron-compilers-4.0.0.tgz"
   },
   "versions": [
     {
@@ -200,10 +207,18 @@
     {
       "number": "3.1.5",
       "date": "2016-07-12T19:08:51.075Z"
+    },
+    {
+      "number": "3.1.6",
+      "date": "2016-07-20T16:59:12.261Z"
+    },
+    {
+      "number": "4.0.0",
+      "date": "2016-09-23T23:52:45.511Z"
     }
   ],
   "created": "2015-07-14T01:15:18.848Z",
-  "modified": "2016-07-12T19:08:51.075Z",
+  "modified": "2016-09-23T23:52:45.511Z",
   "lastPublisher": {
     "name": "paulcbetts",
     "email": "paul@paulbetts.org"
@@ -214,5 +229,5 @@
       "email": "paul@paulbetts.org"
     }
   ],
-  "readme": "## electron-compilers\r\n\r\n<a href=\"http://electron.github.io/electron-compilers/docs\">\r\n![](http://electron.github.io/electron-compilers/docs/badge.svg)\r\n</a>\r\n\r\nelectron-compilers are the actual implementations of classes that power\r\n[electron-compile](https://github.com/electron/electron-compile)\r\n\r\nFor JavaScript:\r\n\r\n* JavaScript ES6/ES7 (via Babel)\r\n* TypeScript\r\n* CoffeeScript\r\n\r\nFor CSS:\r\n\r\n* LESS\r\n* Stylus\r\n\r\nFor HTML:\r\n\r\n* Jade\r\n\r\nFor JSON:\r\n\r\n* CSON\r\n\r\n### Why is this a separate repo?!\r\n\r\nShipping compilers for all of these languages will add a ton of weight to your\r\ndownload size. Making this a separate top-level module allows you to mark it\r\nas a `devDependency` and not include it in the final app.\r\n"
+  "readme": "## electron-compilers\n\n<a href=\"http://electron.github.io/electron-compilers/docs\">\n![](http://electron.github.io/electron-compilers/docs/badge.svg)\n</a>\n\nelectron-compilers are the actual implementations of classes that power\n[electron-compile](https://github.com/electron/electron-compile)\n\nFor JavaScript:\n\n* JavaScript ES6/ES7 (via Babel)\n* TypeScript\n* CoffeeScript\n\nFor CSS:\n\n* LESS\n* Stylus (with optional nib)\n\nFor HTML:\n\n* Jade\n\nFor JSON:\n\n* CSON\n\n### Why is this a separate repo?!\n\nShipping compilers for all of these languages will add a ton of weight to your\ndownload size. Making this a separate top-level module allows you to mark it\nas a `devDependency` and not include it in the final app.\n"
 }

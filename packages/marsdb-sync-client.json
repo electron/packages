@@ -1,6 +1,6 @@
 {
   "name": "marsdb-sync-client",
-  "version": "0.2.3",
+  "version": "0.2.12",
   "author": {
     "name": "Artem Artemev",
     "email": "art@studytime.me"
@@ -85,12 +85,12 @@
   },
   "main": "index.js",
   "license": "MIT",
-  "gitHead": "51cfd8a1ae3c00c50f45accdaa37563c2a69cef8",
-  "_npmVersion": "3.3.12",
-  "_nodeVersion": "5.5.0",
+  "gitHead": "5a62e297fac4bb17f57950f031838baac0848485",
+  "_npmVersion": "3.8.3",
+  "_nodeVersion": "5.10.1",
   "dist": {
-    "shasum": "e6107f8b6fa38d94e7aca22231fcdaf52bb6e9db",
-    "tarball": "http://registry.npmjs.org/marsdb-sync-client/-/marsdb-sync-client-0.2.3.tgz"
+    "shasum": "ec4d4b9940459bbb683bc6b4e6c69b44033be4fc",
+    "tarball": "http://registry.npmjs.org/marsdb-sync-client/-/marsdb-sync-client-0.2.12.tgz"
   },
   "versions": [
     {
@@ -140,10 +140,46 @@
     {
       "number": "0.2.3",
       "date": "2016-03-13T15:25:57.729Z"
+    },
+    {
+      "number": "0.2.4",
+      "date": "2016-09-05T18:33:18.668Z"
+    },
+    {
+      "number": "0.2.5",
+      "date": "2016-09-05T18:50:18.969Z"
+    },
+    {
+      "number": "0.2.6",
+      "date": "2016-09-06T07:36:24.989Z"
+    },
+    {
+      "number": "0.2.7",
+      "date": "2016-09-06T08:56:36.804Z"
+    },
+    {
+      "number": "0.2.8",
+      "date": "2016-09-06T10:19:49.303Z"
+    },
+    {
+      "number": "0.2.9",
+      "date": "2016-09-06T10:38:02.475Z"
+    },
+    {
+      "number": "0.2.10",
+      "date": "2016-09-06T17:02:46.200Z"
+    },
+    {
+      "number": "0.2.11",
+      "date": "2016-09-06T17:34:02.042Z"
+    },
+    {
+      "number": "0.2.12",
+      "date": "2016-09-07T09:17:52.671Z"
     }
   ],
   "created": "2016-02-04T08:00:54.786Z",
-  "modified": "2016-03-13T15:25:57.729Z",
+  "modified": "2016-09-07T09:17:52.671Z",
   "lastPublisher": {
     "name": "a.artemev",
     "email": "art@studytime.me"
@@ -154,5 +190,5 @@
       "email": "art@studytime.me"
     }
   ],
-  "readme": "[MarsDB DDP Client](https://github.com/c58/marsdb-sync-client)\n=========\n\n[![Build Status](https://travis-ci.org/c58/marsdb-sync-client.svg?branch=master)](https://travis-ci.org/c58/marsdb-sync-client)\n[![npm version](https://badge.fury.io/js/marsdb-sync-client.svg)](https://www.npmjs.com/package/marsdb-sync-client)\n[![Coverage Status](https://coveralls.io/repos/c58/marsdb-sync-client/badge.svg?branch=master&service=github)](https://coveralls.io/github/c58/marsdb-sync-client?branch=master)\n[![Dependency Status](https://david-dm.org/c58/marsdb-sync-client.svg)](https://david-dm.org/c58/marsdb-sync-client)\n\nIt's a Meteor compatible [DDP](https://github.com/meteor/meteor/blob/devel/packages/ddp/DDP.md) client, based on [MarsDB](https://github.com/c58/marsdb). It supports **methods**, **pub/sub** and **collection operations**. It is very similar to Meteor, but it also have some killer features...\n\n## Features\n\n* **Cache collections** – with [LocalForage](https://github.com/c58/marsdb-localforage), for example\n* **Auto subcribe/unsubscribe** - see [examples](https://github.com/c58/marsdb-sync-client#examples)\n* **Smart subscriptions** – any subscription will be stopped only after 15 sec delay.\n* **Framework agnostic**\n* **Works in any JS environment** – browser, Node.JS, Electron, NW.js, Cordova\n\n## WARNING\n\nIt's only a concept until 1.0. Use it for your own risk.\n\n## Examples\n\n### Basic example\nThe repository comes with a simple example. To try it out:\n\n```\ngit clone https://github.com/c58/marsdb-sync-client.git\ncd marsdb-sync-client/example && npm install\nnpm start\n```\n\nThen, just point your browser at `http://localhost:3000`.\n\n### Usage with Meteor server and LocalForage\n`marsdb-sync-client` is a DDP client, so it should work well with Meteor server.\nBut it have an extension for syncing local cache with a server side. The extension is\nimplemented by `marsdb-sync-server` and is follow:\n\n  * Each collection have additional server method called `/${myCollection}/sync`\n  * This method invoked by MarsSync client on init stage for each collection\n  * Method invoked with one argument: list of all available document ids in a local cache\n  * Method must return a sublist of given ids that is NOT presented in a server anymore (deleted ids).\n\nYou should implement it by yourself for each collection in Meteor's server-side code.\nIn the future it might be a package for Meteor (it would be great if you implement it).\n\nExample of a sync method for some collection:\n\n```javascript\n// /server/collections/Posts.js\nPosts = new Meteor.Collection('posts');\n\nMeteor.method('/posts/sync', function(remoteIds) {\n  const existingDocs = Posts.find({_id: {$in: remoteIds}}, {fields: {_id: 1}}).fetch();\n  const existingIdsSet = new Set(existingDocs.map(doc => doc._id));\n  return remoteIds.filter(id => !existingIdsSet.has(id));\n});\n```\n\n### Configure a client\n```javascript\nimport Collection from 'marsdb';\nimport * as MarsSync from 'marsdb-sync-client';\n\n// Setup marsdb-sync-client\nMarsSync.configure({ url: 'ws://localhost:3000' });\n\n// User your collections\nconst posts = new Collection('posts');\nconst observer = posts.find(\n  {author: 'me'},\n  {sub: ['postsByAuthor', 'me']}\n).observe((posts) => {\n  // Subscribe to \"postsByAuthor\" publisher and update any time when\n  // some documents added (but with debounce)\n});\n\n// When you stop all observers of a cursor\n// subscription will be automatically stopped\n// (after 15 sec for optimal client/server communication)\nobserver.stop();\n```\n\n### Wait for subscription ready\n```javascript\n// Sometimes you need to show a result only when\n// all documents of a subscription received.\n// There is special options \"waitReady\" for this.\nconst posts = new Collection('posts');\nposts.find(\n  {author: 'me'},\n  {sub: ['postsByAuthor', 'me'], waitReady: true}\n).observe((posts) => {\n  // Subscribe to \"postsByAuthor\" publisher and wait until\n  // subscription ready (observer called only when sub ready)\n});\n```\n\n### Decide when to use cache\n```javascript\n// Cache is good, but sometimes you need to decide when to use\n// cache, and when to wait new data from the server...\nconst posts = new Collection('posts');\nposts.find(\n  {author: 'me'},\n  {sub: ['postsByAuthor', 'me'], tryCache: true}\n).observe((posts) => {\n  // Subscribe to \"postsByAuthor\" publisher and try\n  // to get posts from cache. If \"tryCache\" is true, then\n  // cache is used when it's not empty array or not empty object.\n  // In other cases it will wait subscription ready.\n});\n\nposts.find(\n  {author: 'not_me'},\n  {sub: ['postsByAuthor', 'not_me'], tryCache: (posts) => true}\n).observe((posts) => {\n  // Subscribe to \"postsByAuthor\" publisher and try\n  // to get posts from cache. If \"tryCache\" is a function, then\n  // the function will be called with cache result. If function returns\n  // true, then cache will be used.\n});\n```\n\n### Methods and subscriptions\n```javascript\nimport * as MarsSync from 'marsdb-sync-client';\n\nMarsSync.call('myMethod', 1, 2, 3).result().then((res) => {\n  // Result of the method in \"res\"\n}).updated().then(() => {\n  // Invoked when \"updated\" message received.\n});\n\n// Similar for \"apply\"\nMarsSync.apply('myMethod', [1, 2, 3])\n\n// You can also subscribe just like in Meteor\nconst sub = MarsSync.subscribe('myPublisher', 1, 2, '3th arg');\nsub.ready().then(() => {\n  // When ready\n}).stopped().then(() => {\n  // When stopped\n});\n// Stop the subscription\nsub.stop();\n```\n\n## Roadmap\n* More examples of usage and tests\n* Documentation\n\n## Contributing\nI'm waiting for your pull requests and issues.\nDon't forget to execute `gulp lint` before requesting. Accepted only requests without errors.\n\n## License\nSee [License](LICENSE)\n"
+  "readme": "[MarsDB DDP Client](https://github.com/c58/marsdb-sync-client)\n=========\n\n[![Build Status](https://travis-ci.org/c58/marsdb-sync-client.svg?branch=master)](https://travis-ci.org/c58/marsdb-sync-client)\n[![npm version](https://badge.fury.io/js/marsdb-sync-client.svg)](https://www.npmjs.com/package/marsdb-sync-client)\n[![Coverage Status](https://coveralls.io/repos/c58/marsdb-sync-client/badge.svg?branch=master&service=github)](https://coveralls.io/github/c58/marsdb-sync-client?branch=master)\n[![Dependency Status](https://david-dm.org/c58/marsdb-sync-client.svg)](https://david-dm.org/c58/marsdb-sync-client)\n\nIt's a Meteor compatible [DDP](https://github.com/meteor/meteor/blob/devel/packages/ddp/DDP.md) client, based on [MarsDB](https://github.com/c58/marsdb). It supports **methods**, **pub/sub** and **collection operations**. It is very similar to Meteor, but it also have some killer features...\n\n## Features\n\n* **Cache collections** – with [LocalForage](https://github.com/c58/marsdb-localforage), for example\n* **Auto subcribe/unsubscribe** - see [examples](https://github.com/c58/marsdb-sync-client#examples)\n* **Smart subscriptions** – any subscription will be stopped only after 15 sec delay.\n* **Framework agnostic**\n* **Works in any JS environment** – browser, Node.JS, Electron, NW.js, Cordova\n\n## WARNING\n\nIt's only a concept until 1.0. Use it for your own risk.\n\n## Examples\n\n### Basic example\nThe repository comes with a simple example. To try it out:\n\n```\ngit clone https://github.com/c58/marsdb-sync-client.git\ncd marsdb-sync-client/example && npm install\nnpm start\n```\n\nThen, just point your browser at `http://localhost:3000`.\n\n### Usage with Meteor server and LocalForage\n`marsdb-sync-client` is a DDP client, so it should work well with Meteor server.\nBut it have an extension for syncing local cache with a server side. The extension is\nimplemented by `marsdb-sync-server` and is follow:\n\n  * Each collection have additional server method called `/${myCollection}/sync`\n  * This method invoked by MarsSync client on init stage for each collection\n  * Method invoked with one argument: list of all available document ids in a local cache\n  * Method must return a sublist of given ids that is NOT presented in a server anymore (deleted ids).\n\nYou should implement it by yourself for each collection in Meteor's server-side code.\nIn the future it might be a package for Meteor (it would be great if you implement it).\n\nExample of a sync method for some collection:\n\n```javascript\n// /server/collections/Posts.js\nPosts = new Meteor.Collection('posts');\n\nMeteor.methods({\n  '/posts/sync': function(remoteIds) {\n    const existingDocs = Posts.find({_id: {$in: remoteIds}}, {fields: {_id: 1}}).fetch();\n    const existingIdsSet = new Set(existingDocs.map(doc => doc._id));\n    return remoteIds.filter(id => !existingIdsSet.has(id));\n  }\n});\n```\n\n### Configure a client\n```javascript\nimport Collection from 'marsdb';\nimport * as MarsSync from 'marsdb-sync-client';\n\n// Setup marsdb-sync-client\nMarsSync.configure({ url: 'ws://localhost:3000' });\n\n// User your collections\nconst posts = new Collection('posts');\nconst observer = posts.find(\n  {author: 'me'},\n  {sub: ['postsByAuthor', 'me']}\n).observe((posts) => {\n  // Subscribe to \"postsByAuthor\" publisher and update any time when\n  // some documents added (but with debounce)\n});\n\n// When you stop all observers of a cursor\n// subscription will be automatically stopped\n// (after 15 sec for optimal client/server communication)\nobserver.stop();\n```\n\n### Wait for subscription ready\n```javascript\n// Sometimes you need to show a result only when\n// all documents of a subscription received.\n// There is special options \"waitReady\" for this.\nconst posts = new Collection('posts');\nposts.find(\n  {author: 'me'},\n  {sub: ['postsByAuthor', 'me'], waitReady: true}\n).observe((posts) => {\n  // Subscribe to \"postsByAuthor\" publisher and wait until\n  // subscription ready (observer called only when sub ready)\n});\n```\n\n### Decide when to use cache\n```javascript\n// Cache is good, but sometimes you need to decide when to use\n// cache, and when to wait new data from the server...\nconst posts = new Collection('posts');\nposts.find(\n  {author: 'me'},\n  {sub: ['postsByAuthor', 'me'], tryCache: true}\n).observe((posts) => {\n  // Subscribe to \"postsByAuthor\" publisher and try\n  // to get posts from cache. If \"tryCache\" is true, then\n  // cache is used when it's not empty array or not empty object.\n  // In other cases it will wait subscription ready.\n});\n\nposts.find(\n  {author: 'not_me'},\n  {sub: ['postsByAuthor', 'not_me'], tryCache: (posts) => true}\n).observe((posts) => {\n  // Subscribe to \"postsByAuthor\" publisher and try\n  // to get posts from cache. If \"tryCache\" is a function, then\n  // the function will be called with cache result. If function returns\n  // true, then cache will be used.\n});\n```\n\n### Methods and subscriptions\n```javascript\nimport * as MarsSync from 'marsdb-sync-client';\n\nMarsSync.call('myMethod', 1, 2, 3).result().then((res) => {\n  // Result of the method in \"res\"\n}).updated().then(() => {\n  // Invoked when \"updated\" message received.\n});\n\n// Similar for \"apply\"\nMarsSync.apply('myMethod', [1, 2, 3])\n\n// You can also subscribe just like in Meteor\nconst sub = MarsSync.subscribe('myPublisher', 1, 2, '3th arg');\nsub.ready().then(() => {\n  // When ready\n}).stopped().then(() => {\n  // When stopped\n});\n// Stop the subscription\nsub.stop();\n```\n\n## Roadmap\n* More examples of usage and tests\n* Documentation\n\n## Contributing\nI'm waiting for your pull requests and issues.\nDon't forget to execute `gulp lint` before requesting. Accepted only requests without errors.\n\n## License\nSee [License](LICENSE)\n"
 }

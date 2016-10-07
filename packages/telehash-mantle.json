@@ -1,0 +1,124 @@
+{
+  "name": "telehash-mantle",
+  "version": "0.0.29",
+  "description": "repository of middlewares for telehash-core",
+  "main": "index.js",
+  "jsnext:main": "index.es.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "NODE_PATH=. node scripts/build.js",
+    "publish": "NODE_PATH=. node scripts/publish.js"
+  },
+  "bin": {
+    "mantle": "./scripts/generate.js"
+  },
+  "author": {
+    "name": "Ryan Bennett"
+  },
+  "license": "ISC",
+  "devDependencies": {
+    "chokidar": "^1.5.2",
+    "cordova-plugin-device": "^1.1.2",
+    "filemode": "^2.0.1",
+    "fs-jetpack": "^0.9.2",
+    "keytar": "^3.0.2",
+    "noble": "^1.6.0",
+    "react-native-ble-manager": "0.0.14",
+    "rollup": "^0.31.2",
+    "serialport": "^3.1.2"
+  },
+  "dependencies": {
+    "babel-preset-es2015-rollup": "^1.1.1",
+    "fs-jetpack": "^0.9.1",
+    "keytar": "^3.0.2",
+    "minimist": "^1.2.0",
+    "rollup": "^0.32.0",
+    "rollup-plugin-alias": "^1.2.0",
+    "rollup-plugin-babel": "^2.6.1",
+    "rollup-plugin-commonjs": "git+https://github.com/rollup/rollup-plugin-commonjs.git",
+    "rollup-plugin-node-builtins": "^1.0.4",
+    "rollup-plugin-node-globals": "^1.0.3",
+    "rollup-plugin-node-resolve": "^1.7.0",
+    "rollup-plugin-string": "^2.0.0",
+    "serialport": "^3.1.2",
+    "thc": "=0.12.4"
+  },
+  "gitHead": "55bf2d25f3c078d47b223cc3e94c97b7ed38758d",
+  "_npmVersion": "3.9.3",
+  "_nodeVersion": "6.2.1",
+  "dist": {
+    "shasum": "823eb118cb37063c8cbe36c9d442d5adf024b16e",
+    "tarball": "http://registry.npmjs.org/telehash-mantle/-/telehash-mantle-0.0.29.tgz"
+  },
+  "versions": [
+    {
+      "number": "0.0.24",
+      "date": "2016-06-23T07:13:23.218Z"
+    },
+    {
+      "number": "0.0.22",
+      "date": "2016-06-23T22:07:27.907Z"
+    },
+    {
+      "number": "0.0.23",
+      "date": "2016-06-23T22:08:01.270Z"
+    },
+    {
+      "number": "0.0.25",
+      "date": "2016-06-24T00:29:10.518Z"
+    },
+    {
+      "number": "0.0.12",
+      "date": "2016-06-24T05:12:27.883Z"
+    },
+    {
+      "number": "0.0.13",
+      "date": "2016-06-24T05:13:14.998Z"
+    },
+    {
+      "number": "0.0.26",
+      "date": "2016-06-25T22:14:06.285Z"
+    },
+    {
+      "number": "0.0.27",
+      "date": "2016-06-25T22:21:54.471Z"
+    },
+    {
+      "number": "0.0.28",
+      "date": "2016-06-27T19:27:35.309Z"
+    },
+    {
+      "number": "0.12.2",
+      "date": "2016-06-29T22:05:40.460Z"
+    },
+    {
+      "number": "0.12.3",
+      "date": "2016-07-11T22:13:53.771Z"
+    },
+    {
+      "number": "0.12.3-a",
+      "date": "2016-07-11T22:14:51.935Z"
+    },
+    {
+      "number": "0.12.5",
+      "date": "2016-07-20T19:42:31.375Z"
+    },
+    {
+      "number": "0.0.29",
+      "date": "2016-07-27T22:53:18.555Z"
+    }
+  ],
+  "created": "2016-06-23T07:13:23.218Z",
+  "modified": "2016-07-27T22:53:18.555Z",
+  "lastPublisher": {
+    "name": "rynomad",
+    "email": "nomad.ry@gmail.com"
+  },
+  "owners": [
+    {
+      "name": "rynomad",
+      "email": "nomad.ry@gmail.com"
+    }
+  ],
+  "readme": "# telehash-mantle-js\ntelehash-mantle is a shared repository and cli tool for building a telehash sdk for node, electron, and cordova.\n\nWhy one repository?\n---\nTo leverage JavaScript code portability\n\nWhy a cli build tool instead of just one node module\n---\nBecause Javascript code portability is a dirty lie.\n\nUsage\n---\n\n```\nnpm install -g telehash-mantle\ncd myproject\nmantle -o ground.js --platform=<node/electron/cordova> --target=<version (electron only)> --format=<es/cjs> --transports=<serial-host,ble-central> --keystore=local\n```\n\nThis will generate a `ground.js` file that is tailored to your platform.\n\nAPI example\n----\nUsage is modeled after express. The flow is to initialize your app, configure middlewares, and turn it on\n\n```javascript\n//main.js\nvar Ground = require(\"./ground.js\");\n\nvar app = Ground({/*options*/},function(err){\n  if (err) console.log(\"error initializing telehash\");\n})\n//whitelist connections\napp.accept(\"asdf1234\");\napp.accept(\"mnbv9876\");\n//blacklist connections\napp.reject(\"lkjhgfds\");\n\n// asyncronously accept connections\napp.on('discover',function(greeting, accept){\n  promtUserToAcceptLink(greeting.json.hashname, function(){\n    link = accept();\n    //do stuff with link;\n  })\n})\n\n//handle new links\n\napp.on('link', function(link){\n  //send a console command to a link\n  link.console(\"report()\",function(err,result){\n    if (err) return console.log(err);\n    console.log(result);\n  })\n  \n  // create a generic channel, inherits from node streams\n  \n  var chan = link.channel({json: {type : \"event\", label: \"report\"}, body: new Buffer(\"binary payload\")});\n  \n  //data events;\n  chan.on('data', function(packet){\n    console.log(packet.json, packet.body) // {stuff}, <Buffer >\n  })\n  \n  //pipe as stream\n  chan.pipe(fs.createWriteStream(\"out.txt\"));\n\n  // send a one-off channel packet, no reply\n  link.direct({type : \"event\", label:\"stuff\"}, new Buffer(\"payload\"));\n\n  // set an init script\n  link.init(fs.readFileSync(\"path/to/script.js\"), function(err, res){\n    \n  })\n})\n\n// iterate through all open links\napp._links.forEach((link) => {\n  link.console(\"parralel execution\", ...)\n})\n\n// use middlewares (coming soon)\nlet mysql_sink = require(\"telehash-mysql-sink\");\nvar instance1 = mysql_sink({host: localhost...});\nvar instance2 = mysql_sink({host : amazon...});\napp.use(instance1);\napp.use(instance2);\n\n//generic event middleware\nlet events = require(\"filement-event\");\n\napp.use(events({label:\"adfadf\",callback: function(label, stuff){\n  doStuffWithMatchingNetworkEvent(label, stuff)\n})\n\n//start app\napp.start()\napp.listen();\n// -- OR --\napp.start(true);\n\n```\n"
+}

@@ -1,0 +1,93 @@
+{
+  "name": "porthog",
+  "version": "0.0.4",
+  "description": "Identify which process is using the port you want to use.",
+  "main": "index.js",
+  "scripts": {
+    "test": "tape test/**/*.js | tap-spec && snazzy --verbose"
+  },
+  "bin": {
+    "porthog": "cli.js"
+  },
+  "repository": {
+    "user": "coreybutler",
+    "repo": "porthog",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/coreybutler/porthog/tarball/master",
+    "clone_url": "https://github.com/coreybutler/porthog",
+    "https_url": "https://github.com/coreybutler/porthog",
+    "travis_url": "https://travis-ci.org/coreybutler/porthog",
+    "zip_url": "https://github.com/coreybutler/porthog/archive/master.zip",
+    "api_url": "https://api.github.com/repos/coreybutler/porthog"
+  },
+  "keywords": [
+    "port",
+    "available",
+    "use"
+  ],
+  "author": {
+    "name": "Corey Butler"
+  },
+  "license": "MIT",
+  "homepage": "https://github.com/coreybutler/porthog#readme",
+  "engines": {
+    "node": ">=6.0.0"
+  },
+  "devDependencies": {
+    "babel-eslint": "^4.1.3",
+    "gulp": "^3.9.1",
+    "snazzy": "^2.0.1",
+    "standard": "^5.3.1",
+    "standard-tap": "^1.0.1",
+    "tap-spec": "^4.1.0",
+    "tape": "^4.2.2"
+  },
+  "standard": {
+    "parser": "babel-eslint",
+    "ignore": [
+      "_*",
+      "_**/*"
+    ],
+    "globals": []
+  },
+  "gitHead": "58c94eada6867aecff69b2a63c38c705e734b2a0",
+  "_npmVersion": "3.9.5",
+  "_nodeVersion": "6.2.2",
+  "dist": {
+    "shasum": "387cea5ed959eea3a8864f23da22d2cda2ef36c8",
+    "tarball": "http://registry.npmjs.org/porthog/-/porthog-0.0.4.tgz"
+  },
+  "versions": [
+    {
+      "number": "0.0.1",
+      "date": "2016-09-05T23:08:16.764Z"
+    },
+    {
+      "number": "0.0.2",
+      "date": "2016-09-06T17:11:03.969Z"
+    },
+    {
+      "number": "0.0.3",
+      "date": "2016-09-19T02:41:30.433Z"
+    },
+    {
+      "number": "0.0.4",
+      "date": "2016-09-19T21:42:41.232Z"
+    }
+  ],
+  "created": "2016-09-05T23:08:16.764Z",
+  "modified": "2016-09-19T21:42:41.232Z",
+  "lastPublisher": {
+    "name": "cbutler",
+    "email": "corey@coreybutler.com"
+  },
+  "owners": [
+    {
+      "name": "cbutler",
+      "email": "corey@coreybutler.com"
+    }
+  ],
+  "readme": "# porthog\n\nThis module identifies which application is using a specified\nport, providing the process name and PID. Works for Windows, OSX, and most flavors of Unix that support the `lsof` operation.\n\n<table>\n  <tr>\n    <td>OSX & Linux</td><td><img src=\"https://travis-ci.org/coreybutler/porthog.svg?branch=master\"/></td>\n    <td rowspan=\"2\">\n      <a href=\"https://github.com/feross/standard\" target=\"_blank\">\n        <img src=\"https://cdn.rawgit.com/feross/standard/master/badge.svg\"/>\n      </a>\n    </td>\n    <td rowspan=\"2\">\n      <a href=\"https://npmjs.org/package/porthog\" target=\"_blank\"><img src=\"https://nodei.co/npm/porthog.png\"/></a>\n    </td>\n  </tr>\n  <tr>\n    <td>Windows</td><td><img src=\"https://ci.appveyor.com/api/projects/status/9bno1artnhr9r45o\"/></td>\n  </tr>\n</table>\n\n## CLI Implementation\n\n`npm install -g porthog`\n\n`porthog 33649 80`\n\nOutputs:\n\n```sh\nPORT      PID       PROCESS\n--------------------------------------------------\n33649     43580     node-webkit Helper (cbutler)\n80        -         -\n```\n\n## API Implementation Example\n\n```js\nconst porthog = require('porthog')\nconst data = porthog(80)\n\nconsole.log(data.user, 'is running', data.process + ' (PID ' + data.pid + ') on port 80.')\n\n// Output\n// cbutler is running node.exe (PID 656) on port 80.\n```\n\n_This operation may require elevated/root privileges._\n\n## Uses\n\nWe're using this in [Fenix Web Server](http://fenixwebserver.com)\nto resolve port conflicts. When a user tries to launch a server\non an occupied port, we use porthog to determine which app is\n\"hogging\" the port and provide the user an option to stop/kill the offending process.\n\nWe also use this in combination with [node-windows](https://github.com/coreybutler/node-windows),\n[node-mac](https://github.com/coreybutler/node-mac), and\n[node-linux](https://github.com/coreybutler/node-linux) to\ncreate background processes that monitor ports and notify\nusers what's running on the ports they want to use.\n\nThere are certainly many other uses. If you use this, be\nwarned that some operating systems (Windows in particular)\nmay require elevated permissions. This is dependent on\neach user's environment, so it's not always predictable. To\nget around this, we've found the aforementioned node-* modules\nto be useful when creating daemons (especially the [binary utilities and extra  scripts](https://github.com/coreybutler/node-windows/tree/master/bin) for Windows). For Electron/NW.js apps,\n[sudo-prompt](https://github.com/jorangreef/sudo-prompt) has been\nquite helpful.\n\n# License\n\nMIT\n"
+}

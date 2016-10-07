@@ -1,6 +1,6 @@
 {
   "name": "pack-dir",
-  "version": "0.6.0",
+  "version": "0.7.1",
   "description": "Pack/unpack specified directory with native current OS command line tools.",
   "keywords": [
     "pack",
@@ -11,6 +11,8 @@
     "zip",
     "unzip",
     "archive",
+    "7z",
+    "7zip",
     "Annexare"
   ],
   "main": "index.js",
@@ -48,18 +50,15 @@
     "collectCoverageOnlyFrom": {
       "index.js": true
     },
-    "testDirectoryName": "tests",
-    "testPathDirs": [
-      "."
-    ]
+    "testRegex": "(/tests/.*|\\.(test|spec))\\.js$"
   },
-  "gitHead": "e65179510b23fc6bf611a2044e4c9f12ce8fb0ce",
+  "gitHead": "c27083bbbe0ee3dd22125206f503d77519752c8d",
   "homepage": "https://github.com/annexare/PackDir#readme",
   "_npmVersion": "3.8.6",
   "_nodeVersion": "6.1.0",
   "dist": {
-    "shasum": "7aeadcf133f0e2f774519e9d9afef44c2d6ee9cb",
-    "tarball": "http://registry.npmjs.org/pack-dir/-/pack-dir-0.6.0.tgz"
+    "shasum": "72a2f733c3f4371d5fa46abe3d713a1028660ef8",
+    "tarball": "http://registry.npmjs.org/pack-dir/-/pack-dir-0.7.1.tgz"
   },
   "stars": 1,
   "versions": [
@@ -102,10 +101,18 @@
     {
       "number": "0.6.0",
       "date": "2016-07-13T14:25:20.416Z"
+    },
+    {
+      "number": "0.7.0",
+      "date": "2016-09-02T16:22:19.935Z"
+    },
+    {
+      "number": "0.7.1",
+      "date": "2016-09-02T16:36:02.346Z"
     }
   ],
   "created": "2016-04-17T20:14:54.522Z",
-  "modified": "2016-07-13T14:25:20.416Z",
+  "modified": "2016-09-02T16:36:02.346Z",
   "lastPublisher": {
     "name": "z-ax",
     "email": "z@annexare.com"
@@ -116,5 +123,5 @@
       "email": "z@annexare.com"
     }
   ],
-  "readme": "# PackDir\n\n[![Travis CI](https://api.travis-ci.org/annexare/PackDir.svg \"Travis CI\")](https://travis-ci.org/annexare/PackDir)\n[![AppVeyor CI](https://ci.appveyor.com/api/projects/status/dprobj2m351v6aaa?svg=true \"AppVeyor CI\")](https://ci.appveyor.com/project/z-ax/packdir)\n\nPack specified directory with native current OS command line tools.\n\nMain purpose for this lib was to pack the Electron app.\n<br>\nSo, by default, if specified `path` has a `darwin` in it's name,\nthe directory will be packed as DMG under OS X.\n\n## Usage\n\nGet the package via NPM: `npm install pack-dir`.\n\n```js\nconst Pack = require('pack-dir');\n\n// Set custom DMG RegEx, default is `/darwin/`.\nPack.param('dmg', /osx/);\n\n// Pack the directory\nlet zipPath = Pack.path('some/test/dir');\n// Extract to directory\nlet extractedPath = Pack.extract(zipPath, 'some/destination');\n\n// Async example\nPack.param('isSync', false);\nlet zipPath = Pack.path('some/test/dir', (error, stdout, stderr) => {\n  // ...\n});\n```\n\n### Parameters\n\n* `dmg` `boolean|RegEx`, check to pack into DMG instead of ZIP.\n* `dmgFormat` `string`, the `hdiutil -format` parameter value ([docs](https://developer.apple.com/library/mac/documentation/Darwin/Reference/ManPages/man1/hdiutil.1.html)).\n* `isSilent` `boolean`, `false`, will write only Errors to console.\n* `isSync` `boolean`, `true`, synchronous packaging.\n\n## Credits\n\nCreated by [Annexare Studio](https://annexare.com/).\nFeel free to use it as you need in your apps or send updates into [this](https://github.com/annexare/PackDir) public repository.\nAll code is under MIT license.\n\n## Zip/UnZip for Windows\n\nFor Windows host\n[Zip](http://gnuwin32.sourceforge.net/packages/zip.htm)\n/\n[UnZip](http://gnuwin32.sourceforge.net/packages/unzip.htm)\nstandalone console apps are used\n(~800kB, doesn't require installation, bundled with the package).\n"
+  "readme": "# PackDir\n\n[![NPM](https://img.shields.io/npm/v/pack-dir.svg \"NPM package version\")](https://www.npmjs.com/package/pack-dir)\n[![Travis CI](https://api.travis-ci.org/annexare/PackDir.svg \"Travis CI\")](https://travis-ci.org/annexare/PackDir)\n[![AppVeyor CI](https://ci.appveyor.com/api/projects/status/dprobj2m351v6aaa?svg=true \"AppVeyor CI\")](https://ci.appveyor.com/project/z-ax/packdir)\n\nPack specified directory with native current OS command line tools.\n\nMain purpose for this lib was to pack the Electron app.\n<br>\nSo, by default, if specified `path` has a `darwin` in it's name,\nthe directory will be packed as DMG under OS X.\n\n## Usage\n\nGet the package via NPM: `npm install pack-dir`.\n\n```js\nconst Pack = require('pack-dir');\n\n// Set custom DMG RegEx, default is `/darwin/`.\nPack.param('dmg', /osx/);\n\n// Pack the directory\nlet zipPath = Pack.path('some/test/dir');\n// Extract to directory\nlet extractedPath = Pack.extract(zipPath, 'some/destination');\n\n// Async example\nPack.param('isSync', false);\nlet zipPath = Pack.path('some/test/dir', (error, stdout, stderr) => {\n  // ...\n});\n```\n\n### Parameters\n\n* `dmg` `boolean|RegEx`, check to pack into DMG instead of ZIP.\n* `dmgFormat` `string`, the `hdiutil -format` parameter value ([docs](https://developer.apple.com/library/mac/documentation/Darwin/Reference/ManPages/man1/hdiutil.1.html)).\n* `isSilent` `boolean`, `false`, will write only Errors to console.\n* `isSync` `boolean`, `true`, synchronous packaging.\n* `skipDirName` `boolean`, `true`, don't create extra directory inside ZIP archive.\n\n## Credits\n\nCreated by [Annexare Studio](https://annexare.com/).\nFeel free to use it as you need in your apps or send updates into [this](https://github.com/annexare/PackDir) public repository.\nAll code is under MIT license.\n\n## Zip/UnZip for Windows\n\nFor Windows host\n[Zip](http://gnuwin32.sourceforge.net/packages/zip.htm)\n/\n[UnZip](http://gnuwin32.sourceforge.net/packages/unzip.htm)\nstandalone console apps are used\n(~800kB, doesn't require installation, bundled with the package).\n"
 }

@@ -1,6 +1,6 @@
 {
   "name": "article-json-to-contenteditable",
-  "version": "2.0.0",
+  "version": "6.0.0",
   "description": "## Installation",
   "main": "dist/index.js",
   "scripts": {
@@ -44,31 +44,33 @@
     "electron-prebuilt": "^0.37.7",
     "faucet": "0.0.1",
     "semistandard-deku": "github:micnews/semistandard#deku",
-    "snazzy": "^3.0.0",
+    "snazzy": "^4.0.1",
     "tape": "^4.5.1",
     "tape-catch": "^1.0.5",
     "testron": "^1.2.0"
   },
   "dependencies": {
-    "article-json-html-render": "^2.1.0",
+    "article-json-html-render": "^2.5.0",
     "deku": "^1.0.0",
     "embeds": "^2.5.1",
-    "get-selection-range-from-elm": "^1.0.0",
+    "get-selection-range-from-elm": "^2.0.1",
     "html-to-article-json": "^1.12.4",
+    "immutable-array-methods": "^1.3.0",
+    "immutable-object-methods": "^1.3.0",
     "is-image": "^1.0.1",
     "is-url": "^1.2.1",
     "keycode": "^2.1.1",
     "magic-virtual-element": "^1.0.6",
-    "morphdom": "^1.3.0",
+    "morphdom": "^2.0.0",
     "object-assign": "^4.1.0",
-    "save-selection": "^1.0.0"
+    "save-selection": "^2.0.0"
   },
-  "gitHead": "73a97a23bb50cf597e5e2b5e4df9940885c7855d",
-  "_npmVersion": "3.9.2",
-  "_nodeVersion": "5.9.0",
+  "gitHead": "cf053530553f38c8ad3be3e4a50407339f7a702a",
+  "_npmVersion": "3.9.5",
+  "_nodeVersion": "4.0.0",
   "dist": {
-    "shasum": "089f289074c6610cc3caaf5e04964e5256fa98d0",
-    "tarball": "http://registry.npmjs.org/article-json-to-contenteditable/-/article-json-to-contenteditable-2.0.0.tgz"
+    "shasum": "dbfae78f643128649852de90b2f8f0f644c81e02",
+    "tarball": "http://registry.npmjs.org/article-json-to-contenteditable/-/article-json-to-contenteditable-6.0.0.tgz"
   },
   "versions": [
     {
@@ -86,13 +88,57 @@
     {
       "number": "2.0.0",
       "date": "2016-06-22T08:37:25.181Z"
+    },
+    {
+      "number": "2.1.0",
+      "date": "2016-08-05T12:41:20.010Z"
+    },
+    {
+      "number": "2.2.0",
+      "date": "2016-08-10T12:30:01.407Z"
+    },
+    {
+      "number": "2.2.1",
+      "date": "2016-08-15T10:38:17.852Z"
+    },
+    {
+      "number": "2.2.2",
+      "date": "2016-08-15T16:57:57.361Z"
+    },
+    {
+      "number": "2.3.0",
+      "date": "2016-08-19T12:10:49.183Z"
+    },
+    {
+      "number": "3.0.0",
+      "date": "2016-08-24T07:47:34.279Z"
+    },
+    {
+      "number": "4.0.0",
+      "date": "2016-08-24T13:41:34.595Z"
+    },
+    {
+      "number": "4.0.1",
+      "date": "2016-08-30T14:18:28.392Z"
+    },
+    {
+      "number": "5.0.0",
+      "date": "2016-09-01T12:48:32.888Z"
+    },
+    {
+      "number": "5.0.1",
+      "date": "2016-09-12T15:56:57.132Z"
+    },
+    {
+      "number": "6.0.0",
+      "date": "2016-09-28T15:36:01.861Z"
     }
   ],
   "created": "2016-05-17T08:22:20.172Z",
-  "modified": "2016-06-22T08:37:25.181Z",
+  "modified": "2016-09-28T15:36:01.861Z",
   "lastPublisher": {
-    "name": "kesla",
-    "email": "david.bjorklund@gmail.com"
+    "name": "ellell",
+    "email": "lisaovermyr@gmail.com"
   },
   "owners": [
     {
@@ -104,5 +150,5 @@
       "email": "david.bjorklund@gmail.com"
     }
   ],
-  "readme": "# article-json-to-contenteditable\n\n## Installation\n\nDownload node at [nodejs.org](http://nodejs.org) and install it, if you haven't already.\n\n```sh\nnpm install article-json-to-contenteditable --save\n```\n## Example\n```js\nimport {render, tree} from 'deku';\nimport Article from '../lib';\nimport element from 'magic-virtual-element';\n\nconst container = document.querySelector('#editor');\n\nconst items = [\n  {\n    type: 'paragraph',\n    children: [{\n      type: 'text',\n      content: 'Text text text',\n      href: null,\n      italic: false,\n      bold: false,\n      mark: false,\n      markClass: null\n    }]\n  }, {\n    type: 'embed',\n    embedType: 'facebook',\n    url: 'https://www.facebook.com/david.bjorklund/posts/10153809692501070',\n    embedAs: 'post',\n    date: 'Thursday, January 21, 2016',\n    user: 'David Pop Hipsterson',\n    text: [{\n      content: 'Hey!So, for the last few weeks I\\'ve worked on http://mic.com/ - the new home for mic.com (on desktop) - please take a look :)',\n      href: null\n    }]\n  }\n];\n\nconst onInput = ({items}) => {\n  console.log('in client.js onInput');\n  app.mount(<Article items={items} onInput={onInput} />);\n};\n\nconst app = tree(<Article items={items} onInput={onInput} />);\n\nrender(app, container);\n\n```\n\n## Tests\n\n```sh\nnpm install\nnpm test\n```\n\n## Dependencies\n\n- [article-json-html-render](https://github.com/micnews/article-json-html-render): Base for html-based article-json renderer, such as [article-json-to-amp](https://www.npmjs.com/package/article-json-to-amp)\n- [deku](https://github.com/dekujs/deku): Create view components using a virtual DOM\n- [embeds](https://github.com/micnews/embeds): Parse &amp; render embeds\n- [html-to-article-json](https://github.com/micnews/html-to-article-json): Converting HTML to article-json\n- [keycode](https://github.com/timoxley/keycode): Convert between keyboard keycodes and keynames and vice versa.\n- [magic-virtual-element](https://github.com/dekujs/magic-virtual-element): Build virtual tree elements with magic attributes\n- [morphdom](https://github.com/patrick-steele-idem/morphdom): Morph a DOM tree to another DOM tree (no virtual DOM needed)\n- [save-selection](https://github.com/micnews/save-selection): Save &amp; restore selections in a document, using `&lt;mark&gt;` elements\n\n## Dev Dependencies\n\n- [babel-cli](https://github.com/babel/babel/tree/master/packages): Babel command line.\n- [babel-plugin-transform-react-jsx](https://github.com/babel/babel/tree/master/packages): Turn JSX into React function calls\n- [babel-preset-es2015](https://github.com/babel/babel/tree/master/packages): Babel preset for all es2015 plugins.\n- [babel-tape-runner](https://github.com/wavded/babel-tape-runner): Babel + Tape for running your ES Next tests\n- [babelify](https://github.com/babel/babelify): Babel browserify transform\n- [beefy](https://github.com/chrisdickinson/beefy): local development server that aims to make using browserify fast and fun\n- [brfs](https://github.com/substack/brfs): browserify fs.readFileSync() static asset inliner\n- [browserify](https://github.com/substack/node-browserify): browser-side require() the node way\n- [create-event](https://github.com/kenany/create-event): Create an event object\n- [electron-prebuilt](https://github.com/electron-userland/electron-prebuilt): Install electron prebuilt binaries for the command-line use using npm\n- [faucet](https://github.com/substack/faucet): human-readable TAP summarizer\n- [semistandard-deku](https://github.com/micnews/semistandard-deku): All the goodness of `feross/standard` with semicolons sprinkled on top. Adapted for deku\n- [snazzy](https://github.com/feross/snazzy): Format JavaScript Standard Style as Stylish (i.e. snazzy) output\n- [tape](https://github.com/substack/tape): tap-producing test harness for node and browsers\n- [tape-catch](https://github.com/michaelrhodes/tape-catch): a wrapper around tape that catches and reports exceptions\n- [testron](https://github.com/shama/testron): CI your client side tests with Electron\n\n\n## License\n\nMIT\n\n_Generated by [package-json-to-readme](https://github.com/zeke/package-json-to-readme)_\n"
+  "readme": "# article-json-to-contenteditable\n\n## Installation\n\nDownload node at [nodejs.org](http://nodejs.org) and install it, if you haven't already.\n\n```sh\nnpm install article-json-to-contenteditable --save\n```\n## Example\n```js\nimport {render, tree} from 'deku';\nimport setupArticle from '../lib';\nimport element from 'magic-virtual-element';\n\nconst Article = setupArticle();\nconst container = document.querySelector('#editor');\n\nconst items = [\n  {\n    type: 'paragraph',\n    children: [{\n      type: 'text',\n      content: 'Text text text',\n      href: null,\n      italic: false,\n      bold: false,\n      mark: false,\n      markClass: null\n    }]\n  }, {\n    type: 'embed',\n    embedType: 'facebook',\n    url: 'https://www.facebook.com/david.bjorklund/posts/10153809692501070',\n    embedAs: 'post',\n    date: 'Thursday, January 21, 2016',\n    user: 'David Pop Hipsterson',\n    text: [{\n      content: 'Hey!So, for the last few weeks I\\'ve worked on http://mic.com/ - the new home for mic.com (on desktop) - please take a look :)',\n      href: null\n    }]\n  }\n];\n\nconst getCustomKeyDown = (e) => {\n  // Return method(s) to handle any keydown events you want custom\n  // handling for, like undo/redo etc.\n  const zKeyCode = 90;\n  if (e.metaKey && e.keyCode === zKeyCode) {\n    return function handleUndoRedo () {\n      console.log('should undo/redo');\n    };\n  }\n};\n\nconst onUpdate = ({items, selectionBoundingClientRect, activeItem}) => {\n  console.log('in client.js onUpdate');\n  console.log('selectionBoundingClientRect:', selectionBoundingClientRect);\n  console.log('activeItem:', activeItem);\n  app.mount(<Article items={items} onUpdate={onUpdate} getCustomKeyDown={getCustomKeyDown} />);\n};\n\nconst app = tree(<Article items={items} onUpdate={onUpdate} getCustomKeyDown={getCustomKeyDown} />);\n\nrender(app, container);\n\n```\n\n## Tests\n\n```sh\nnpm install\nnpm test\n```\n\n## Dependencies\n\n- [article-json-html-render](https://github.com/micnews/article-json-html-render): Base for html-based article-json renderer, such as [article-json-to-amp](https://www.npmjs.com/package/article-json-to-amp)\n- [deku](https://github.com/dekujs/deku): Create view components using a virtual DOM\n- [embeds](https://github.com/micnews/embeds): Parse &amp; render embeds\n- [html-to-article-json](https://github.com/micnews/html-to-article-json): Converting HTML to article-json\n- [keycode](https://github.com/timoxley/keycode): Convert between keyboard keycodes and keynames and vice versa.\n- [magic-virtual-element](https://github.com/dekujs/magic-virtual-element): Build virtual tree elements with magic attributes\n- [morphdom](https://github.com/patrick-steele-idem/morphdom): Morph a DOM tree to another DOM tree (no virtual DOM needed)\n- [save-selection](https://github.com/micnews/save-selection): Save &amp; restore selections in a document, using `&lt;mark&gt;` elements\n\n## Dev Dependencies\n\n- [babel-cli](https://github.com/babel/babel/tree/master/packages): Babel command line.\n- [babel-plugin-transform-react-jsx](https://github.com/babel/babel/tree/master/packages): Turn JSX into React function calls\n- [babel-preset-es2015](https://github.com/babel/babel/tree/master/packages): Babel preset for all es2015 plugins.\n- [babel-tape-runner](https://github.com/wavded/babel-tape-runner): Babel + Tape for running your ES Next tests\n- [babelify](https://github.com/babel/babelify): Babel browserify transform\n- [beefy](https://github.com/chrisdickinson/beefy): local development server that aims to make using browserify fast and fun\n- [brfs](https://github.com/substack/brfs): browserify fs.readFileSync() static asset inliner\n- [browserify](https://github.com/substack/node-browserify): browser-side require() the node way\n- [create-event](https://github.com/kenany/create-event): Create an event object\n- [electron-prebuilt](https://github.com/electron-userland/electron-prebuilt): Install electron prebuilt binaries for the command-line use using npm\n- [faucet](https://github.com/substack/faucet): human-readable TAP summarizer\n- [semistandard-deku](https://github.com/micnews/semistandard-deku): All the goodness of `feross/standard` with semicolons sprinkled on top. Adapted for deku\n- [snazzy](https://github.com/feross/snazzy): Format JavaScript Standard Style as Stylish (i.e. snazzy) output\n- [tape](https://github.com/substack/tape): tap-producing test harness for node and browsers\n- [tape-catch](https://github.com/michaelrhodes/tape-catch): a wrapper around tape that catches and reports exceptions\n- [testron](https://github.com/shama/testron): CI your client side tests with Electron\n\n\n## License\n\nMIT\n\n_Generated by [package-json-to-readme](https://github.com/zeke/package-json-to-readme)_\n"
 }

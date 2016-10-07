@@ -1,0 +1,66 @@
+{
+  "name": "electron-menu",
+  "description": "Convenience module to build Electron menus.",
+  "version": "0.0.1",
+  "author": {
+    "name": "JP Richardson",
+    "email": "jprichardson@gmail.com"
+  },
+  "devDependencies": {
+    "standard": "*",
+    "tap-spec": "^4.0.2",
+    "tape": "^4.0.0"
+  },
+  "homepage": "https://github.com/jprichardson/electron-menu",
+  "keywords": [
+    "electron",
+    "menu"
+  ],
+  "license": "MIT",
+  "main": "index.js",
+  "repository": {
+    "user": "jprichardson",
+    "repo": "electron-menu",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/jprichardson/electron-menu/tarball/master",
+    "clone_url": "https://github.com/jprichardson/electron-menu",
+    "https_url": "https://github.com/jprichardson/electron-menu",
+    "travis_url": "https://travis-ci.org/jprichardson/electron-menu",
+    "zip_url": "https://github.com/jprichardson/electron-menu/archive/master.zip",
+    "api_url": "https://api.github.com/repos/jprichardson/electron-menu"
+  },
+  "scripts": {
+    "lint": "standard",
+    "test": "npm run lint && npm run unit",
+    "unit": " tape test/*.js | tap-spec"
+  },
+  "gitHead": "4c9a9feb086231498837b5e19729e36211c54f3f",
+  "_npmVersion": "3.8.6",
+  "_nodeVersion": "6.1.0",
+  "dist": {
+    "shasum": "38a53090ce30215280c8b67d2f876b2a1f84b37c",
+    "tarball": "http://registry.npmjs.org/electron-menu/-/electron-menu-0.0.1.tgz"
+  },
+  "stars": 2,
+  "versions": [
+    {
+      "number": "0.0.1",
+      "date": "2016-08-05T16:16:36.842Z"
+    }
+  ],
+  "created": "2016-08-05T16:16:36.842Z",
+  "modified": "2016-08-05T16:16:36.842Z",
+  "lastPublisher": {
+    "name": "jprichardson",
+    "email": "jprichardson@gmail.com"
+  },
+  "owners": [
+    {
+      "name": "jprichardson",
+      "email": "jprichardson@gmail.com"
+    }
+  ],
+  "readme": "electron-menu\n==============\n\n[![npm][npm-image]][npm-url]\n[![travis][travis-image]][travis-url]\n[![standard][standard-image]][standard-url]\n\n[npm-image]: https://img.shields.io/npm/v/electron-menu.svg?style=flat-square\n[npm-url]: https://www.npmjs.com/package/electron-menu\n[travis-image]: https://img.shields.io/travis/jprichardson/electron-menu.svg?style=flat-square\n[travis-url]: https://travis-ci.org/jprichardson/electron-menu\n[standard-image]: https://img.shields.io/badge/code%20style-standard-brightgreen.svg?style=flat-square\n[standard-url]: http://npm.im/standard\n\nConvenience module to build Electron menus templates.\n\nInstall\n-------\n\n    npm install --save electron-menu\n\n\nUsage\n-----\n\nconverts this:\n\n```js\nconst em = require('electron-menu')\n\nconst menu = em(['Coins', [\n  ['Bitcoin', bitcoinClick],\n  ['Litecoin', litecoinClick],\n  ['Tokens', [\n    ['Omni', omniClick],\n    ['Counterparty', 'Cmd+H', bitcoinClick],\n    '-',\n    ['Example role', 'hide']\n  ]]\n]])\n```\n\nto\n\n```js\n{\n  label: 'Coins',\n  submenu: [\n    { label: 'Bitcoin', click: bitcoinClick },\n    { label: 'Litecoin', click: litecoinClick },\n    { label: 'Tokens', submenu: [\n      { label: 'Omni', click: omniClick },\n      { label: 'Counterparty', accelerator: 'Cmd+H', click: bitcoinClick },\n      { type: 'separator' },\n      { label: 'Example role', role: 'hide' }\n    ]}\n  ]\n}\n```\n\n\n\nLicense\n--------\n\nCopyright [JP Richardson](https://github.com/jprichardson)\n\n[MIT](LICENSE.md)\n"
+}

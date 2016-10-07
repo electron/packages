@@ -1,0 +1,147 @@
+{
+  "name": "webcoin",
+  "version": "2.0.1",
+  "description": "Bitcoin client for Node.js and the browser",
+  "main": "index.js",
+  "dependencies": {
+    "bitcoin-filter": "^0.1.4",
+    "bitcoin-inventory": "^1.0.2",
+    "bitcoin-net": "^4.4.0",
+    "blockchain-download": "^1.0.0",
+    "blockchain-spv": "^2.1.0",
+    "object-assign": "^4.1.0",
+    "old": "^0.1.3",
+    "pump": "^1.0.1",
+    "sublevelup": "^4.0.0"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.14.0",
+    "babel-preset-es2015": "^6.14.0",
+    "faucet": "0.0.1",
+    "levelup": "^1.3.2",
+    "memdown": "^1.2.0",
+    "nyc": "^8.1.0",
+    "standard": "^8.0.0",
+    "tape": "^4.6.0",
+    "webcoin-bitcoin": "^3.1.1"
+  },
+  "scripts": {
+    "test": "standard index.js src/*.js && nyc tape test/*.js | faucet && nyc report",
+    "test-browser": "npm run build && ./test/browser.sh && npm run source",
+    "build": "rm -rf lib && babel --presets es2015 src -d lib",
+    "source": "rm -rf lib && ln -s src lib",
+    "prepublish": "npm run build",
+    "publish": "npm run source"
+  },
+  "repository": {
+    "user": "mappum",
+    "repo": "webcoin",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/mappum/webcoin/tarball/master",
+    "clone_url": "https://github.com/mappum/webcoin",
+    "https_url": "https://github.com/mappum/webcoin",
+    "travis_url": "https://travis-ci.org/mappum/webcoin",
+    "zip_url": "https://github.com/mappum/webcoin/archive/master.zip",
+    "api_url": "https://api.github.com/repos/mappum/webcoin"
+  },
+  "keywords": [
+    "webcoin",
+    "bitcoin",
+    "spv",
+    "client",
+    "webrtc",
+    "p2p",
+    "network",
+    "coins"
+  ],
+  "author": {
+    "name": "Matt Bell",
+    "email": "mappum@gmail.com"
+  },
+  "license": "MIT",
+  "homepage": "https://github.com/mappum/webcoin#readme",
+  "gitHead": "4659914306b32eacd6c3e22cb6669e1c73b46c95",
+  "_npmVersion": "3.10.3",
+  "_nodeVersion": "6.3.0",
+  "dist": {
+    "shasum": "a295337e4dc6b45fea80d63aea621d82f9996711",
+    "tarball": "http://registry.npmjs.org/webcoin/-/webcoin-2.0.1.tgz"
+  },
+  "versions": [
+    {
+      "number": "0.0.0",
+      "date": "2015-04-21T21:35:11.470Z"
+    },
+    {
+      "number": "0.0.1",
+      "date": "2015-04-23T05:53:09.877Z"
+    },
+    {
+      "number": "0.1.0",
+      "date": "2015-05-02T04:10:53.821Z"
+    },
+    {
+      "number": "0.1.1",
+      "date": "2015-05-29T20:39:35.501Z"
+    },
+    {
+      "number": "0.1.2",
+      "date": "2015-05-29T22:19:37.390Z"
+    },
+    {
+      "number": "0.2.0",
+      "date": "2015-06-02T06:04:07.581Z"
+    },
+    {
+      "number": "0.3.0",
+      "date": "2015-06-24T18:47:46.828Z"
+    },
+    {
+      "number": "0.3.1",
+      "date": "2015-06-25T21:12:51.575Z"
+    },
+    {
+      "number": "0.3.2",
+      "date": "2015-06-26T00:12:48.625Z"
+    },
+    {
+      "number": "0.3.3",
+      "date": "2015-06-26T00:18:24.689Z"
+    },
+    {
+      "number": "1.0.0",
+      "date": "2016-01-05T03:11:58.371Z"
+    },
+    {
+      "number": "1.0.1",
+      "date": "2016-01-05T09:22:08.316Z"
+    },
+    {
+      "number": "1.0.2",
+      "date": "2016-01-26T02:52:48.403Z"
+    },
+    {
+      "number": "2.0.0",
+      "date": "2016-08-29T22:11:40.984Z"
+    },
+    {
+      "number": "2.0.1",
+      "date": "2016-08-29T23:00:48.460Z"
+    }
+  ],
+  "created": "2015-04-21T21:35:11.470Z",
+  "modified": "2016-08-29T23:00:48.460Z",
+  "lastPublisher": {
+    "name": "mappum",
+    "email": "mappum@gmail.com"
+  },
+  "owners": [
+    {
+      "name": "mappum",
+      "email": "mappum@gmail.com"
+    }
+  ],
+  "readme": "![Webcoin](img/logo.png)\n\n### A Bitcoin client for Node.js and the browser\n\n[![Build Status](https://travis-ci.org/mappum/webcoin.svg?branch=master)](https://travis-ci.org/mappum/webcoin)\n[![Dependency Status](https://david-dm.org/mappum/webcoin.svg)](https://david-dm.org/mappum/webcoin)\n[![npm version](https://img.shields.io/npm/v/webcoin.svg)](https://www.npmjs.com/package/webcoin)\n[![Join the chat at https://gitter.im/mappum/webcoin](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/mappum/webcoin?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)\n\n----\n\nWebcoin is a Bitcoin client that works in Node.js and the browser. In the browser, it uses WebRTC to make P2P connections rather than relying on a centralized server to get data (like all the other JS Bitcoin libraries). It's kind of like the Bitcoin equivalent of [WebTorrent](https://github.com/feross/webtorrent).\n\nYou can use Webcoin to add Bitcoin payments to your application, without the need to hold your users' funds, and without making them trust any third-parties with their money. Webcoin is an [SPV](https://en.bitcoin.it/wiki/Thin_Client_Security#Simplified_Payment_Verification_.28SPV.29_Clients) light client, so it only uses a minimal amount of bandwidth and storage; it even works great on mobile devices!\n\n## Status\n\nMuch of Webcoin is already written and works well, including:\n\n- Downloading block headers from peers\n- Verifying block headers\n- Creating HD wallets\n- Filtering transactions with Bloom filters\n- Detecting incoming transactions confirmed in blocks\n\nI am currently making some major refactors to the codebase, and documenting all of it. Much of the code in this repo is being broken out into smaller modules, each with comprehensive tests and docs.\n\n### Modules\n\nWebcoin is made up of many small modules, most of which can each be used independently.\n\n| module | version | tests | issues | description |\n|---|---|---|---|---|\n| **[webcoin][webcoin]** | [![][webcoin-ni]][webcoin-nu] | [![][webcoin-ti]][webcoin-tu] | [![][webcoin-ii]][webcoin-iu] | **SPV Bitcoin client for Node and the browser (this module)** |\n| [peer-exchange][peer-exchange] | [![][peer-exchange-ni]][peer-exchange-nu] | [![][peer-exchange-ti]][peer-exchange-tu] | [![][peer-exchange-ii]][peer-exchange-iu] | Decentralized p2p signalling and discovery |\n| [blockchain-spv][blockchain-spv] | [![][blockchain-spv-ni]][blockchain-spv-nu] | [![][blockchain-spv-ti]][blockchain-spv-tu] | [![][blockchain-spv-ii]][blockchain-spv-iu] | Stores blockchain headers and verifies with SPV |\n| [blockchain-download][blockchain-download] | [![][blockchain-download-ni]][blockchain-download-nu] | [![][blockchain-download-ti]][blockchain-download-tu] | [![][blockchain-download-ii]][blockchain-download-iu] | Download blockchain data from peers |\n| [bitcoin-wallet][bitcoin-wallet] | [![][bitcoin-wallet-ni]][bitcoin-wallet-nu] | [![][bitcoin-protocol-ti]][bitcoin-protocol-tu] | [![][bitcoin-wallet-ii]][bitcoin-wallet-iu] | Sends and receives coins\n| [bitcoin-protocol][bitcoin-protocol] | [![][bitcoin-protocol-ni]][bitcoin-protocol-nu] | [![][bitcoin-protocol-ti]][bitcoin-protocol-tu] | [![][bitcoin-protocol-ii]][bitcoin-protocol-iu] | Bitcoin network protocol streams |\n| [bitcoin-inventory][bitcoin-inventory] | [![][bitcoin-inventory-ni]][bitcoin-inventory-nu] | [![][bitcoin-inventory-ti]][bitcoin-inventory-tu] | [![][bitcoin-inventory-ii]][bitcoin-inventory-iu] | Exchange transactions with peers |\n| [bitcoin-util][bitcoin-util] | [![][bitcoin-util-ni]][bitcoin-util-nu] | [![][bitcoin-util-ti]][bitcoin-util-tu] | [![][bitcoin-util-ii]][bitcoin-util-iu] | Utility functions for Bitcoin hashes and targets |\n| [bitcoin-merkle-proof][bitcoin-merkle-proof] | [![][bitcoin-merkle-proof-ni]][bitcoin-merkle-proof-nu] | [![][bitcoin-merkle-proof-ti]][bitcoin-merkle-proof-tu] | [![][bitcoin-merkle-proof-ii]][bitcoin-merkle-proof-iu] | Verify bitcoin Merkle proofs |\n| [bitcoin-filter][bitcoin-filter] | [![][bitcoin-filter-ni]][bitcoin-filter-nu] | [![][bitcoin-filter-ti]][bitcoin-filter-tu] | [![][bitcoin-filter-ii]][bitcoin-filter-iu] | Bloom filtering (BIP37) |\n| [webcoin-bridge][webcoin-bridge] | [![][webcoin-bridge-ni]][webcoin-bridge-nu] | [![][webcoin-bridge-ti]][webcoin-bridge-tu] | [![][webcoin-bridge-ii]][webcoin-bridge-iu] | A proxy that bridges the Bitcoin TCP and WebRTC networks |\n| [webcoin-params][webcoin-params] | [![][webcoin-params-ni]][webcoin-params-nu] | [![][webcoin-params-ti]][webcoin-params-tu] | [![][webcoin-params-ii]][webcoin-params-iu] | Abstract parameters, used for supporting other cryptocurrencies |\n| [webcoin-param-tests][webcoin-param-tests] | [![][webcoin-param-tests-ni]][webcoin-param-tests-nu] | [![][webcoin-param-tests-ti]][webcoin-param-tests-tu] | [![][webcoin-param-tests-ii]][webcoin-param-tests-iu] | Tests for parameters |\n| [electron-webrtc][electron-webrtc] | [![][electron-webrtc-ni]][electron-webrtc-nu] | [![][electron-webrtc-ti]][electron-webrtc-tu] | [![][electron-webrtc-ii]][electron-webrtc-iu] | WebRTC for Node via a hidden Electron process |\n\n[webcoin]: https://github.com/mappum/webcoin\n[webcoin-ni]: https://img.shields.io/npm/v/webcoin.svg\n[webcoin-nu]: https://www.npmjs.com/package/webcoin\n[webcoin-ti]:https://travis-ci.org/mappum/webcoin.svg?branch=master\n[webcoin-tu]: https://travis-ci.org/mappum/webcoin\n[webcoin-ii]: https://img.shields.io/github/issues-raw/mappum/webcoin.svg\n[webcoin-iu]: https://github.com/mappum/webcoin/issues\n\n[peer-exchange]: https://github.com/mappum/peer-exchange\n[peer-exchange-ni]: https://img.shields.io/npm/v/peer-exchange.svg\n[peer-exchange-nu]: https://www.npmjs.com/package/peer-exchange\n[peer-exchange-ti]:https://travis-ci.org/mappum/peer-exchange.svg?branch=master\n[peer-exchange-tu]: https://travis-ci.org/mappum/peer-exchange\n[peer-exchange-ii]: https://img.shields.io/github/issues-raw/mappum/peer-exchange.svg\n[peer-exchange-iu]: https://github.com/mappum/peer-exchange/issues\n\n[blockchain-spv]: https://github.com/mappum/blockchain-spv\n[blockchain-spv-ni]: https://img.shields.io/npm/v/blockchain-spv.svg\n[blockchain-spv-nu]: https://www.npmjs.com/package/blockchain-spv\n[blockchain-spv-ti]:https://travis-ci.org/mappum/blockchain-spv.svg?branch=master\n[blockchain-spv-tu]: https://travis-ci.org/mappum/blockchain-spv\n[blockchain-spv-ii]: https://img.shields.io/github/issues-raw/mappum/blockchain-spv.svg\n[blockchain-spv-iu]: https://github.com/mappum/blockchain-spv/issues\n\n[blockchain-download]: https://github.com/mappum/blockchain-download\n[blockchain-download-ni]: https://img.shields.io/npm/v/blockchain-download.svg\n[blockchain-download-nu]: https://www.npmjs.com/package/blockchain-download\n[blockchain-download-ti]:https://travis-ci.org/mappum/blockchain-download.svg?branch=master\n[blockchain-download-tu]: https://travis-ci.org/mappum/blockchain-download\n[blockchain-download-ii]: https://img.shields.io/github/issues-raw/mappum/blockchain-download.svg\n[blockchain-download-iu]: https://github.com/mappum/blockchain-download/issues\n\n[bitcoin-inventory]: https://github.com/mappum/bitcoin-inventory\n[bitcoin-inventory-ni]: https://img.shields.io/npm/v/bitcoin-inventory.svg\n[bitcoin-inventory-nu]: https://www.npmjs.com/package/bitcoin-inventory\n[bitcoin-inventory-ti]: https://travis-ci.org/mappum/bitcoin-inventory.svg?branch=master\n[bitcoin-inventory-tu]: https://travis-ci.org/mappum/bitcoin-inventory\n[bitcoin-inventory-ii]: https://img.shields.io/github/issues-raw/mappum/bitcoin-inventory.svg\n[bitcoin-inventory-iu]: https://github.com/mappum/bitcoin-inventory/issues\n\n[bitcoin-util]: https://github.com/mappum/bitcoin-util\n[bitcoin-util-ni]: https://img.shields.io/npm/v/bitcoin-util.svg\n[bitcoin-util-nu]: https://www.npmjs.com/package/bitcoin-util\n[bitcoin-util-ti]: https://travis-ci.org/mappum/bitcoin-util.svg?branch=master\n[bitcoin-util-tu]: https://travis-ci.org/mappum/bitcoin-util\n[bitcoin-util-ii]: https://img.shields.io/github/issues-raw/mappum/bitcoin-util.svg\n[bitcoin-util-iu]: https://github.com/mappum/bitcoin-util/issues\n\n[bitcoin-merkle-proof]: https://github.com/mappum/bitcoin-merkle-proof\n[bitcoin-merkle-proof-ni]: https://img.shields.io/npm/v/bitcoin-merkle-proof.svg\n[bitcoin-merkle-proof-nu]: https://www.npmjs.com/package/bitcoin-merkle-proof\n[bitcoin-merkle-proof-ti]: https://travis-ci.org/mappum/bitcoin-merkle-proof.svg?branch=master\n[bitcoin-merkle-proof-tu]: https://travis-ci.org/mappum/bitcoin-merkle-proof\n[bitcoin-merkle-proof-ii]: https://img.shields.io/github/issues-raw/mappum/bitcoin-merkle-proof.svg\n[bitcoin-merkle-proof-iu]: https://github.com/mappum/bitcoin-merkle-proof/issues\n\n[bitcoin-filter]: https://github.com/mappum/bitcoin-filter\n[bitcoin-filter-ni]: https://img.shields.io/npm/v/bitcoin-filter.svg\n[bitcoin-filter-nu]: https://www.npmjs.com/package/bitcoin-filter\n[bitcoin-filter-ti]: https://travis-ci.org/mappum/bitcoin-filter.svg?branch=master\n[bitcoin-filter-tu]: https://travis-ci.org/mappum/bitcoin-filter\n[bitcoin-filter-ii]: https://img.shields.io/github/issues-raw/mappum/bitcoin-filter.svg\n[bitcoin-filter-iu]: https://github.com/mappum/bitcoin-filter/issues\n\n[bitcoin-wallet]: https://github.com/mappum/bitcoin-wallet\n[bitcoin-wallet-ni]: https://img.shields.io/npm/v/bitcoin-wallet.svg\n[bitcoin-wallet-nu]: https://www.npmjs.com/package/bitcoin-wallet\n[bitcoin-wallet-ti]: https://travis-ci.org/mappum/bitcoin-wallet.svg?branch=master\n[bitcoin-wallet-tu]: https://travis-ci.org/mappum/bitcoin-wallet\n[bitcoin-wallet-ii]: https://img.shields.io/github/issues-raw/mappum/bitcoin-wallet.svg\n[bitcoin-wallet-iu]: https://github.com/mappum/bitcoin-wallet/issues\n\n[bitcoin-net]: https://github.com/mappum/bitcoin-net\n[bitcoin-net-ni]: https://img.shields.io/npm/v/bitcoin-net.svg\n[bitcoin-net-nu]: https://www.npmjs.com/package/bitcoin-net\n[bitcoin-net-ti]: https://travis-ci.org/mappum/bitcoin-net.svg?branch=master\n[bitcoin-net-tu]: https://travis-ci.org/mappum/bitcoin-net\n[bitcoin-net-ii]: https://img.shields.io/github/issues-raw/mappum/bitcoin-net.svg\n[bitcoin-net-iu]: https://github.com/mappum/bitcoin-net/issues\n\n[bitcoin-protocol]: https://github.com/mappum/bitcoin-protocol\n[bitcoin-protocol-ni]: https://img.shields.io/npm/v/bitcoin-protocol.svg\n[bitcoin-protocol-nu]: https://www.npmjs.com/package/bitcoin-protocol\n[bitcoin-protocol-ti]: https://travis-ci.org/mappum/bitcoin-protocol.svg?branch=master\n[bitcoin-protocol-tu]: https://travis-ci.org/mappum/bitcoin-protocol\n[bitcoin-protocol-ii]: https://img.shields.io/github/issues-raw/mappum/bitcoin-protocol.svg\n[bitcoin-protocol-iu]: https://github.com/mappum/bitcoin-protocol/issues\n\n[webcoin-bridge]: https://github.com/mappum/webcoin-bridge\n[webcoin-bridge-ni]: https://img.shields.io/npm/v/webcoin-bridge.svg\n[webcoin-bridge-nu]: https://www.npmjs.com/package/webcoin-bridge\n[webcoin-bridge-ti]: https://travis-ci.org/mappum/webcoin-bridge.svg?branch=master\n[webcoin-bridge-tu]: https://travis-ci.org/mappum/webcoin-bridge\n[webcoin-bridge-ii]: https://img.shields.io/github/issues-raw/mappum/webcoin-bridge.svg\n[webcoin-bridge-iu]: https://github.com/mappum/webcoin-bridge/issues\n\n[webcoin-params]: https://github.com/mappum/webcoin-params\n[webcoin-params-ni]: https://img.shields.io/npm/v/webcoin-params.svg\n[webcoin-params-nu]: https://www.npmjs.com/package/webcoin-params\n[webcoin-params-ti]: https://travis-ci.org/mappum/webcoin-params.svg?branch=master\n[webcoin-params-tu]: https://travis-ci.org/mappum/webcoin-params\n[webcoin-params-ii]: https://img.shields.io/github/issues-raw/mappum/webcoin-params.svg\n[webcoin-params-iu]: https://github.com/mappum/webcoin-params/issues\n\n[webcoin-param-tests]: https://github.com/mappum/webcoin-param-tests\n[webcoin-param-tests-ni]: https://img.shields.io/npm/v/webcoin-param-tests.svg\n[webcoin-param-tests-nu]: https://www.npmjs.com/package/webcoin-param-tests\n[webcoin-param-tests-ti]: https://travis-ci.org/mappum/webcoin-param-tests.svg?branch=master\n[webcoin-param-tests-tu]: https://travis-ci.org/mappum/webcoin-param-tests\n[webcoin-param-tests-ii]: https://img.shields.io/github/issues-raw/mappum/webcoin-param-tests.svg\n[webcoin-param-tests-iu]: https://github.com/mappum/webcoin-param-tests/issues\n\n[electron-webrtc]: https://github.com/mappum/electron-webrtc\n[electron-webrtc-ni]: https://img.shields.io/npm/v/electron-webrtc.svg\n[electron-webrtc-nu]: https://www.npmjs.com/package/electron-webrtc\n[electron-webrtc-ti]: https://travis-ci.org/mappum/electron-webrtc.svg?branch=master\n[electron-webrtc-tu]: https://travis-ci.org/mappum/electron-webrtc\n[electron-webrtc-ii]: https://img.shields.io/github/issues-raw/mappum/electron-webrtc.svg\n[electron-webrtc-iu]: https://github.com/mappum/electron-webrtc/issues\n\n#### Parameters\n\nWebcoin was built from the ground-up with multiple cryptocurrencies in mind. The following modules are parameters which can be plugged in to Webcoin in order to support other currency networks.\n\n| network | module | version | tests |\n|---|---|---|---|\n| Bitcoin | [webcoin-bitcoin][webcoin-bitcoin] | [![][webcoin-bitcoin-ni]][webcoin-bitcoin-nu] | [![][webcoin-bitcoin-ti]][webcoin-bitcoin-tu] |\n| Bitcoin Testnet | [webcoin-bitcoin-testnet][webcoin-bitcoin-testnet] | [![][webcoin-bitcoin-testnet-ni]][webcoin-bitcoin-testnet-nu] | [![][webcoin-bitcoin-testnet-ti]][webcoin-bitcoin-testnet-tu] |\n| Litecoin | [webcoin-litecoin][webcoin-litecoin] (UNFINISHED) | [![][webcoin-litecoin-ni]][webcoin-litecoin-nu] | [![][webcoin-litecoin-ti]][webcoin-litecoin-tu] |\n| Zcash Alpha | [webcoin-zcash-alpha][webcoin-zcash-alpha] (UNFINISHED) | [![][webcoin-zcash-alpha-ni]][webcoin-zcash-alpha-nu] | [![][webcoin-zcash-alpha-ti]][webcoin-zcash-alpha-tu] |\n\n\n[webcoin-bitcoin]: https://github.com/mappum/webcoin-bitcoin\n[webcoin-bitcoin-ni]: https://img.shields.io/npm/v/webcoin-bitcoin.svg\n[webcoin-bitcoin-nu]: https://www.npmjs.com/package/webcoin-bitcoin\n[webcoin-bitcoin-ti]: https://travis-ci.org/mappum/webcoin-bitcoin.svg?branch=master\n[webcoin-bitcoin-tu]: https://travis-ci.org/mappum/webcoin-bitcoin\n[webcoin-bitcoin-ii]: https://img.shields.io/github/issues-raw/mappum/webcoin-bitcoin.svg\n[webcoin-bitcoin-iu]: https://github.com/mappum/webcoin-bitcoin/issues\n\n[webcoin-bitcoin-testnet]: https://github.com/mappum/webcoin-bitcoin-testnet\n[webcoin-bitcoin-testnet-ni]: https://img.shields.io/npm/v/webcoin-bitcoin-testnet.svg\n[webcoin-bitcoin-testnet-nu]: https://www.npmjs.com/package/webcoin-bitcoin-testnet\n[webcoin-bitcoin-testnet-ti]: https://travis-ci.org/mappum/webcoin-bitcoin-testnet.svg?branch=master\n[webcoin-bitcoin-testnet-tu]: https://travis-ci.org/mappum/webcoin-bitcoin-test\n[webcoin-bitcoin-test-ii]: https://img.shields.io/github/issues-raw/mappum/webcoin-bitcoin-test.svg\n[webcoin-bitcoin-test-iu]: https://github.com/mappum/webcoin-bitcoin-test/issues\n\n[webcoin-litecoin]: https://github.com/mappum/webcoin-litecoin\n[webcoin-litecoin-ni]: https://img.shields.io/npm/v/webcoin-litecoin.svg\n[webcoin-litecoin-nu]: https://www.npmjs.com/package/webcoin-litecoin\n[webcoin-litecoin-ti]: https://travis-ci.org/mappum/webcoin-litecoin.svg?branch=master\n[webcoin-litecoin-tu]: https://travis-ci.org/mappum/webcoin-litecoin\n[webcoin-litecoin-ii]: https://img.shields.io/github/issues-raw/mappum/webcoin-litecoin.svg\n[webcoin-litecoin-iu]: https://github.com/mappum/webcoin-litecoin/issues\n\n[webcoin-zcash-alpha]: https://github.com/mappum/webcoin-zcash-alpha\n[webcoin-zcash-alpha-ni]: https://img.shields.io/npm/v/webcoin-zcash-alpha.svg\n[webcoin-zcash-alpha-nu]: https://www.npmjs.com/package/webcoin-zcash-alpha\n[webcoin-zcash-alpha-ti]: https://travis-ci.org/mappum/webcoin-zcash-alpha.svg?branch=master\n[webcoin-zcash-alpha-tu]: https://travis-ci.org/mappum/webcoin-zcash-alpha\n[webcoin-zcash-alpha-ii]: https://img.shields.io/github/issues-raw/mappum/webcoin-zcash-alpha.svg\n[webcoin-zcash-alpha-iu]: https://github.com/mappum/webcoin-zcash-alpha/issues\n\n## License (MIT)\n\nCopyright 2015 Matt Bell\n\nPermission is hereby granted, free of charge, to any person obtaining a copy\nof this software and associated documentation files (the \"Software\"), to deal\nin the Software without restriction, including without limitation the rights\nto use, copy, modify, merge, publish, distribute, sublicense, and/or sell\ncopies of the Software, and to permit persons to whom the Software is\nfurnished to do so, subject to the following conditions:\n\nThe above copyright notice and this permission notice shall be included in\nall copies or substantial portions of the Software.\n\nTHE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR\nIMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,\nFITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE\nAUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER\nLIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,\nOUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN\nTHE SOFTWARE.\n"
+}

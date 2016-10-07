@@ -1,6 +1,6 @@
 {
   "name": "sudo-prompt",
-  "version": "5.1.0",
+  "version": "6.2.0",
   "description": "Run a command using sudo, prompting the user with an OS dialog if necessary",
   "main": "index.js",
   "repository": {
@@ -22,7 +22,13 @@
     "dialog",
     "prompt",
     "command",
-    "exec"
+    "exec",
+    "user access control",
+    "UAC",
+    "privileges",
+    "administrative",
+    "elevate",
+    "run as administrator"
   ],
   "author": {
     "name": "Joran Dirk Greef"
@@ -30,12 +36,12 @@
   "license": "MIT",
   "homepage": "https://github.com/jorangreef/sudo-prompt#readme",
   "scripts": {},
-  "gitHead": "a9511da6c275748d5b81b7f080e51407da012713",
+  "gitHead": "9f964d408560857eba795f455308bd2f4a378b6c",
   "_npmVersion": "3.8.3",
   "_nodeVersion": "5.10.1",
   "dist": {
-    "shasum": "35c7a56454e7285bdc781a8a48c29bcbafad0741",
-    "tarball": "http://registry.npmjs.org/sudo-prompt/-/sudo-prompt-5.1.0.tgz"
+    "shasum": "ee934899993afe6e631d1b1c2d0faaf57022fdcd",
+    "tarball": "http://registry.npmjs.org/sudo-prompt/-/sudo-prompt-6.2.0.tgz"
   },
   "stars": 3,
   "versions": [
@@ -146,10 +152,30 @@
     {
       "number": "5.1.0",
       "date": "2016-06-30T16:20:11.659Z"
+    },
+    {
+      "number": "6.0.0",
+      "date": "2016-07-15T15:13:50.906Z"
+    },
+    {
+      "number": "6.0.1",
+      "date": "2016-07-15T16:27:51.590Z"
+    },
+    {
+      "number": "6.0.2",
+      "date": "2016-07-21T08:38:40.285Z"
+    },
+    {
+      "number": "6.1.0",
+      "date": "2016-08-02T16:06:41.781Z"
+    },
+    {
+      "number": "6.2.0",
+      "date": "2016-08-17T10:51:48.775Z"
     }
   ],
   "created": "2015-06-08T13:29:46.227Z",
-  "modified": "2016-06-30T16:20:11.659Z",
+  "modified": "2016-08-17T10:51:48.775Z",
   "lastPublisher": {
     "name": "jorandirkgreef",
     "email": "joran@ronomon.com"
@@ -160,5 +186,5 @@
       "email": "joran@ronomon.com"
     }
   ],
-  "readme": "# sudo-prompt\n\nRun a non-graphical terminal command using `sudo`, prompting the user with a graphical OS dialog if necessary. Useful for background Node.js applications or native Electron apps that need sudo.\n\n![A sudo prompt on OS X for an app called \"Ronomon\"](./osx.png)\n\n`sudo-prompt` provides a native OS dialog prompt on **OS X** and **Linux** with custom name and optional icon.\n\n`sudo-prompt` has no external dependencies and does not require any native bindings.\n\n## Installation\n```\nnpm install sudo-prompt\n```\n\n## Usage\nNote: Your command should not start with the `sudo` prefix.\n```\nvar sudo = require('sudo-prompt');\nvar options = {\n  name: 'Ronomon',\n  icns: '/path/to/icns/file', // (optional)\n};\nsudo.exec('echo hello', options, function(error, stdout, stderr) {});\n```\n\n`sudo-prompt` will use `process.title` as `options.name` if `options.name` is not provided. `options.name` must be alphanumeric only (spaces are supported) and at most 70 characters.\n\nYour command should not depend on any current working directory or environment variables in order to execute correctly, and you should take care to use absolute paths and not relative paths.\n\n## Behavior\nOn OS X, `sudo-prompt` should behave just like the `sudo` command in the shell. If your command does not work with the `sudo` command in the shell (perhaps because it uses `>` redirection to a restricted file), then it may not work with `sudo-prompt`. However, it is still possible to use sudo-prompt to get a privileged shell, [see this closed issue for more information](https://github.com/jorangreef/sudo-prompt/issues/1).\n\nOn Linux, `sudo-prompt` will use either `pkexec` or `kdesudo` to show the password prompt and run your command. Where possible, `sudo-prompt` will try and get these to mimic `sudo`. Depending on which binary is used, and due to the limitations of some binaries, the name of your program or the command itself may be displayed to your user. Passing `options.icns` is currently not supported by `sudo-prompt` on Linux. Patches are welcome to add support for icons based on `polkit`.\n\n## Non-graphical terminal commands only\nJust as you should never use `sudo` to launch any graphical applications, you should never use `sudo-prompt` to launch any graphical applications. Doing so could cause files in your home directory to become owned by root. `sudo-prompt` is explicitly designed to launch non-graphical terminal commands. For more information, [read this post](http://www.psychocats.net/ubuntu/graphicalsudo).\n\n## Concurrency\nOn systems where the user has opted to have `tty-tickets` enabled, each call to `exec()` will result in a separate password prompt. Where `tty-tickets` are disabled, subsequent calls to `exec()` (but not concurrent calls) will not require a password prompt, so long as the user's `sudo` timestamp file remains valid.\n\nYou should never rely on `sudo-prompt` to execute your calls in order. If you need to enforce ordering of calls, then you should explicitly order your calls in your application. Where your commands are short-lived, you should queue your calls to `exec()` to make sure your user is not overloaded with password prompts.\n\n## Invalidating the timestamp\nYou can invalidate the user's `sudo` timestamp file to force the prompt to appear by running the following command in your terminal:\n\n```sh\n$ sudo -k\n```\n"
+  "readme": "# sudo-prompt\n\nRun a non-graphical terminal command using `sudo`, prompting the user with a graphical OS dialog if necessary. Useful for background Node.js applications or native Electron apps that need `sudo`.\n\n## Cross-Platform\n`sudo-prompt` provides a native OS dialog prompt on **macOS**, **Linux** and **Windows**.\n\n![macOS](./macos.png)\n\n![Linux](./linux.png)\n\n![Windows](./windows.png)\n\n## Installation\n`sudo-prompt` has no external dependencies and does not require any native bindings.\n```\nnpm install sudo-prompt\n```\n\n## Usage\nNote: Your command should not start with the `sudo` prefix.\n```\nvar sudo = require('sudo-prompt');\nvar options = {\n  name: 'Electron',\n  icns: '/Applications/Electron.app/Contents/Resources/Electron.icns', // (optional)\n};\nsudo.exec('echo hello', options, function(error, stdout, stderr) {});\n```\n\n`sudo-prompt` will use `process.title` as `options.name` if `options.name` is not provided. `options.name` must be alphanumeric only (spaces are supported) and at most 70 characters.\n\nYour command should not depend on any current working directory or environment variables in order to execute correctly, and you should take care to use absolute paths and not relative paths.\n\n## Behavior\nOn macOS, `sudo-prompt` should behave just like the `sudo` command in the shell. If your command does not work with the `sudo` command in the shell (perhaps because it uses `>` redirection to a restricted file), then it may not work with `sudo-prompt`. However, it is still possible to use sudo-prompt to get a privileged shell, [see this closed issue for more information](https://github.com/jorangreef/sudo-prompt/issues/1).\n\nOn Linux, `sudo-prompt` will use either `pkexec` or `kdesudo` to show the password prompt and run your command. Where possible, `sudo-prompt` will try and get these to mimic `sudo`. Depending on which binary is used, and due to the limitations of some binaries, the name of your program or the command itself may be displayed to your user. `sudo-prompt` will not use `gksudo` since `gksudo` does not support concurrent prompts. Passing `options.icns` is currently not supported by `sudo-prompt` on Linux. Patches are welcome to add support for icons based on `polkit`.\n\nOn Windows, `sudo-prompt` will elevate your command using User Account Control (UAC). Passing `options.name` or `options.icns` is currently not supported by `sudo-prompt` on Windows.\n\n## Non-graphical terminal commands only\nJust as you should never use `sudo` to launch any graphical applications, you should never use `sudo-prompt` to launch any graphical applications. Doing so could cause files in your home directory to become owned by root. `sudo-prompt` is explicitly designed to launch non-graphical terminal commands. For more information, [read this post](http://www.psychocats.net/ubuntu/graphicalsudo).\n\n## Concurrency\nOn systems where the user has opted to have `tty-tickets` enabled, each call to `exec()` will result in a separate password prompt. Where `tty-tickets` are disabled, subsequent calls to `exec()` (but not concurrent calls) will not require a password prompt, so long as the user's `sudo` timestamp file remains valid.\n\nYou should never rely on `sudo-prompt` to execute your calls in order. If you need to enforce ordering of calls, then you should explicitly order your calls in your application. Where your commands are short-lived, you should queue your calls to `exec()` to make sure your user is not overloaded with password prompts.\n\n## Invalidating the timestamp\nOn macOS and Linux, you can invalidate the user's `sudo` timestamp file to force the prompt to appear by running the following command in your terminal:\n\n```sh\n$ sudo -k\n```\n"
 }

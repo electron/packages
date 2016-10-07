@@ -1,8 +1,12 @@
 {
   "name": "electron-notifications",
-  "version": "0.0.3",
+  "version": "0.1.1",
   "description": "A node module for sending notifications in electron applications",
   "main": "index.js",
+  "scripts": {
+    "playbook": "electron playbook/main.js",
+    "lint": "standard"
+  },
   "keywords": [
     "electron",
     "notification",
@@ -30,16 +34,27 @@
     "name": "Blaine Schmeisser"
   },
   "license": "MIT",
-  "gitHead": "5e8ae903991afb9621c3cbb6ec0f503d306475de",
-  "homepage": "https://github.com/blainesch/electron-notifications#readme",
-  "scripts": {},
-  "_npmVersion": "3.7.1",
-  "_nodeVersion": "5.4.1",
-  "dist": {
-    "shasum": "a498ac4caa387def7a44a9deb8f6787982b720c0",
-    "tarball": "http://registry.npmjs.org/electron-notifications/-/electron-notifications-0.0.3.tgz"
+  "standard": {
+    "globals": [
+      "CodeMirror"
+    ],
+    "ignore": [
+      "playbook/assets/vendor"
+    ]
   },
-  "stars": 2,
+  "devDependencies": {
+    "electron": "^1.3.4",
+    "standard": "^8.0.0"
+  },
+  "gitHead": "25a53b3eba90a869208305597103854b8b51edb6",
+  "homepage": "https://github.com/blainesch/electron-notifications#readme",
+  "_npmVersion": "3.10.3",
+  "_nodeVersion": "6.3.0",
+  "dist": {
+    "shasum": "4bfad992072ce523add2ffd7cb4c1b536b13fadc",
+    "tarball": "http://registry.npmjs.org/electron-notifications/-/electron-notifications-0.1.1.tgz"
+  },
+  "stars": 4,
   "versions": [
     {
       "number": "0.0.1",
@@ -52,10 +67,18 @@
     {
       "number": "0.0.3",
       "date": "2016-04-18T22:41:14.906Z"
+    },
+    {
+      "number": "0.1.0",
+      "date": "2016-08-28T19:04:23.343Z"
+    },
+    {
+      "number": "0.1.1",
+      "date": "2016-09-24T15:35:43.904Z"
     }
   ],
   "created": "2016-04-18T22:11:58.922Z",
-  "modified": "2016-04-18T22:41:14.906Z",
+  "modified": "2016-09-24T15:35:43.904Z",
   "lastPublisher": {
     "name": "blainesch",
     "email": "blainesch@gmail.com"
@@ -66,5 +89,5 @@
       "email": "blainesch@gmail.com"
     }
   ],
-  "readme": "## Electron Notifier\n\nA node module for sending notifications in electron applications.\n\n![screenshot](assets/screenshot.png)\n\n## Quick Usage\n\n~~~ javascript\nconst notifier = require('electron-notifications')\n\n// Just title\nnotifier.notify('Calendar')\n\n// Full Options\nnotifier.notify('Calendar', {\n  message: 'Event begins in 10 minutes',\n  icon: 'http://cl.ly/J49B/3951818241085781941.png',\n  buttons: ['Dismiss', 'Snooze'],\n})\n~~~\n\n## Introduction\n\nWhen you create a new notification, your notification is queued, since we only\ndisplay one at a time. You get a [BrowserWindow](browserwindow) instance back\nfrom the call.\n\n## Options\n\nAll options are optional.\n\n* `message`: A message to display under the title.\n* `icon`: The absolute URL of a icon displayed to the left of the text.\n* `buttons`: One or two buttons to display on the right of the notification.\n\n## Events\n\nIn addition to the [events provided by electron](events) you also have access to\nthe following 3 additional events.\n\n\n### Clicked\n\nWhen the notification was clicked, but not dragged. This usually does the\ndefault action, or closes the notification.\n\n~~~ javascript\nconst notification = notifier.notify('Calendar')\n\nnotification.on('clicked', () => {\n  notification.close()\n})\n~~~\n\n### Swiped Right\n\nWhen the notification has been swiped to the right. This usually indiciated the\nuser wants to dismiss the notification.\n\n~~~ javascript\nconst notification = notifier.notify('Calendar')\n\nnotification.on('swipedRight', () => {\n  notification.close()\n})\n~~~\n\n### Button Clicked\n\nWhen any one of the buttons are clicked, it'll trigger a `buttonClicked` event,\nand pass the text that was clicked to the handler.\n\n~~~ javascript\nconst notification = notifier.notify('Calendar', {\n  buttons: ['Dismiss', 'Snooze'],\n})\n\nnotification.on('buttonClicked', (text) => {\n  if (text === 'Snooze') {\n    // Snooze!\n  }\n  notification.close()\n})\n~~~\n\n[events]: https://github.com/electron/electron/blob/master/docs/api/browser-window.md#events\n[browserwindow]: https://github.com/electron/electron/blob/master/docs/api/browser-window.md\n"
+  "readme": "## Electron Notifications\n\nA node module for sending notifications in electron applications.\n\n![screenshot](assets/screenshot.png)\n\n## Quick Usage\n\n~~~ javascript\nconst notifier = require('electron-notifications')\n\n// Just title\nnotifier.notify('Calendar')\n\n// Full Options\nnotifier.notify('Calendar', {\n  message: 'Event begins in 10 minutes',\n  icon: 'http://cl.ly/J49B/3951818241085781941.png',\n  buttons: ['Dismiss', 'Snooze'],\n})\n~~~\n\n## Installation\n\n~~~\nnpm install --save electron-notifications\n~~~\n\n## Playbook\n\nIf you'd like to see this in action you can run the playbook and try out live\nexamples and edit the code in place.\n\n~~~\ngit clone git@github.com:blainesch/electron-notifications.git\nnpm run playbook\n~~~\n\n## Introduction\n\nWhen you create a new notification, your notification is queued, since we only\ndisplay one at a time. Each notification is a [BrowserWindow](browserwindow)\ninstance, so it's completely cross platform.\n\n## Options\n\nAll options are optional.\n\n* `message`: A message to display under the title.\n* `icon`: The absolute URL of a icon displayed to the left of the text.\n* `buttons`: One or two buttons to display on the right of the notification.\n* `vertical`: Boolean (default: false) that specifies that the buttons should be stacked vertically.\n\n## Events\n\nIn addition to the [events provided by electron](events) you also have access to\nthe following 3 additional events.\n\n\n### Clicked\n\nWhen the notification was clicked, but not dragged. This usually does the\ndefault action, or closes the notification.\n\n~~~ javascript\nconst notification = notifier.notify('Calendar')\n\nnotification.on('clicked', () => {\n  notification.close()\n})\n~~~\n\n### Swiped Right\n\nWhen the notification has been swiped to the right. This usually indicates that\nthe user wants to dismiss the notification.\n\n~~~ javascript\nconst notification = notifier.notify('Calendar')\n\nnotification.on('swipedRight', () => {\n  notification.close()\n})\n~~~\n\n### Button Clicked\n\nWhen any one of the buttons are clicked, it'll trigger a `buttonClicked` event,\nand pass the text that was clicked to the handler.\n\n~~~ javascript\nconst notification = notifier.notify('Calendar', {\n  buttons: ['Dismiss', 'Snooze'],\n})\n\nnotification.on('buttonClicked', (text) => {\n  if (text === 'Snooze') {\n    // Snooze!\n  }\n  notification.close()\n})\n~~~\n\n[events]: https://github.com/electron/electron/blob/master/docs/api/browser-window.md#events\n[browserwindow]: https://github.com/electron/electron/blob/master/docs/api/browser-window.md\n"
 }

@@ -1,6 +1,6 @@
 {
   "name": "iron-node",
-  "version": "3.0.8",
+  "version": "3.0.15",
   "description": "Debug Node.js code on the fly with Chrome Developer Tools on Linux, Windows and OS X.",
   "main": "index.js",
   "bin": {
@@ -8,10 +8,11 @@
   },
   "preferGlobal": true,
   "scripts": {
+    "start": "node bin/run.js",
     "mdlint": "mdlint glob \"docs/*.md\"",
-    "test": "mocha",
-    "test2": "node bin/run.js c:/git/time-track/lib/index.js",
-    "changelog": "changelog -m",
+    "test": "node node_modules/mocha/bin/_mocha",
+    "test2": "node bin/run.js ./../test.js",
+    "changelog": "node node_modules/changelog/bin/changelog.js all --markdown  > ./CHANGELOG.md",
     "dev": "node bin/run.js",
     "node-sass-test": "electron ./app ..\\require\\node-sass.js",
     "pipe-test": "echo var i = 0;debugger; | node bin/run.js",
@@ -53,7 +54,7 @@
   "dependencies": {
     "commander": "^2.9.0",
     "deep-extend": "^0.4.1",
-    "electron-prebuilt": "^1.2.7",
+    "electron-prebuilt": "^1.4.1",
     "electron-recompile": "^1.0.16",
     "markdown": "^0.5.0",
     "nmp": "^1.0.3",
@@ -62,19 +63,23 @@
     "syntax-error": "^1.1.6"
   },
   "devDependencies": {
+    "changelog": "^1.0.7",
+    "eslint": "^3.6.1",
+    "eslint-config-xo-space": "^0.14.0",
     "jshint": "^2.8.0",
+    "mdlint": "^0.1.0",
     "mocha": "^2.2.5",
     "pre-commit": "^1.1.1",
     "should": "^8.1.1"
   },
-  "gitHead": "35ae46ef7d129042ecbb85fd38dc36c4243ab42d",
-  "_npmVersion": "3.10.3",
+  "gitHead": "1018b51a1b018d69fe51d411766a925bb3c58de2",
+  "_npmVersion": "3.10.8",
   "_nodeVersion": "6.3.0",
   "dist": {
-    "shasum": "56a3c7769c4cc1db0f3cdc47ca4c88e808d6426a",
-    "tarball": "http://registry.npmjs.org/iron-node/-/iron-node-3.0.8.tgz"
+    "shasum": "cdba0f883988a8feb100fcea41a99978f147e00a",
+    "tarball": "http://registry.npmjs.org/iron-node/-/iron-node-3.0.15.tgz"
   },
-  "stars": 10,
+  "stars": 12,
   "versions": [
     {
       "number": "0.0.0",
@@ -303,10 +308,38 @@
     {
       "number": "3.0.8",
       "date": "2016-07-13T09:39:00.643Z"
+    },
+    {
+      "number": "3.0.9",
+      "date": "2016-07-21T08:04:52.212Z"
+    },
+    {
+      "number": "3.0.10",
+      "date": "2016-07-26T07:44:45.502Z"
+    },
+    {
+      "number": "3.0.11",
+      "date": "2016-08-02T09:19:53.207Z"
+    },
+    {
+      "number": "3.0.12",
+      "date": "2016-09-27T13:45:52.545Z"
+    },
+    {
+      "number": "3.0.13",
+      "date": "2016-09-28T07:21:02.572Z"
+    },
+    {
+      "number": "3.0.14",
+      "date": "2016-09-30T09:04:50.711Z"
+    },
+    {
+      "number": "3.0.15",
+      "date": "2016-09-30T09:06:02.012Z"
     }
   ],
   "created": "2015-07-17T08:18:54.409Z",
-  "modified": "2016-07-13T09:39:00.643Z",
+  "modified": "2016-10-04T21:48:10.612Z",
   "lastPublisher": {
     "name": "s-a",
     "email": "stephan.ahlf@gmail.com"
@@ -317,5 +350,5 @@
       "email": "stephan.ahlf@gmail.com"
     }
   ],
-  "readme": "[![ironNode](logo/logo.png)](http://s-a.github.io/iron-node/)  \r\n[![NPM Version](http://img.shields.io/npm/v/iron-node.svg)](https://www.npmjs.org/package/iron-node)\r\n[![Build Status](https://travis-ci.org/s-a/iron-node.svg)](https://travis-ci.org/s-a/iron-node)\r\n[![Codacy Badge](https://www.codacy.com/project/badge/9abe33d152db40bfa5833f2388b32646)](https://www.codacy.com/app/stephanahlf/iron-node)\r\n[![Dependency Status](https://david-dm.org/s-a/iron-node.svg)](https://david-dm.org/s-a/iron-node)\r\n[![devDependency Status](https://david-dm.org/s-a/iron-node/dev-status.svg)](https://david-dm.org/s-a/iron-node#info=devDependencies)\r\n[![NPM Downloads](https://img.shields.io/npm/dm/iron-node.svg)](https://www.npmjs.org/package/iron-node)\r\n[![Massachusetts Institute of Technology (MIT)](https://s-a.github.io/license/img/mit.svg)](/LICENSE.md#mit)\r\n[![Donate](http://s-a.github.io/donate/donate.svg)](http://s-a.github.io/donate/)\r\n\r\n\r\n## Debug Node.js code with Chrome Developer Tools on Linux, Windows and OS X.\r\nI hated attaching processes, watching files, restart processes and to debug Node.js code. For this reason I wrote this software to make those things easier. With [ironNode](https://github.com/s-a/iron-node) you have the full power of [JavaScript debugging](https://developer.chrome.com/devtools/docs/javascript-debugging) within Chrome Developer Tools.\r\n\r\n## Installation\r\n```npm install iron-node -g;```\r\n\r\n## Usage\r\nThe usage is the same as ```node```. Use ```iron-node``` instead of ```node```.  \r\nKeep in mind to place the keyword ```debugger;``` to a place where you want to stop. Run a debug session with the given JavaScript file. \r\n```bash\r\niron-node PATH_TO_NODE_JS_FILE [--customparm1=foo --customparm2=bar];\r\n```\r\n\r\n## Demo\r\n![Version details](/docs/iron-node-demo.gif)\r\n\r\n## Supports piped data now\r\n![Debug piped result](/docs/debug-piped-result-of-coffee-script.jpg)\r\n\r\n## [More screenshots and demos](http://s-a.github.io/iron-node/)\r\n\r\n## [Documentation](/docs/)\r\n - [Features](/docs/FEATURES.md)\r\n - [Master the break-points](/docs/MASTER-THE-BREAKPOINTS.md)\r\n - [How to profile? - Optimize JavaScript execution and discover memory leaks.](/docs/PROFILE.md)\r\n - [Change electron module version](/docs//CHANGE-ELECTRON-VERSION.md). See #103\r\n - [Local and global configuration](/docs/CONFIGURATION.md)\r\n - [How to use native modules?](/docs/NATIVE-MODULES.md)\r\n - [Packages aka addons or plugins](/docs/PACKAGES.md) -> [Package-Channel](https://www.npmjs.com/browse/keyword/iron-node)\r\n - [Version details](/docs/VERSION-DETAILS.md)\r\n - [How to debug Grunt, Gulp, Mocha or other commandline app tasks based on Node.js?](/docs/DEBUG-NODEJS-COMMANDLINE-APPS.md)\r\n - [Supported platforms](/docs/supported-platforms.md)\r\n - [How to debug Meteor apps?](/docs/METEOR.md)\r\n\r\n## Support\r\n - https://stackoverflow.com/questions/tagged/iron-node\r\n\r\n## [Contributing](/CONTRIBUTING.md)\r\n\r\n## [License](/LICENSE.md)\r\n"
+  "readme": "[![ironNode](logo/logo.png)](http://s-a.github.io/iron-node/)  \r\n[![NPM Version](http://img.shields.io/npm/v/iron-node.svg)](https://www.npmjs.org/package/iron-node)\r\n[![Build Status](https://travis-ci.org/s-a/iron-node.svg)](https://travis-ci.org/s-a/iron-node)\r\n[![Codacy Badge](https://www.codacy.com/project/badge/9abe33d152db40bfa5833f2388b32646)](https://www.codacy.com/app/stephanahlf/iron-node)\r\n[![Dependency Status](https://david-dm.org/s-a/iron-node.svg)](https://david-dm.org/s-a/iron-node)\r\n[![devDependency Status](https://david-dm.org/s-a/iron-node/dev-status.svg)](https://david-dm.org/s-a/iron-node#info=devDependencies)\r\n[![NPM Downloads](https://img.shields.io/npm/dm/iron-node.svg)](https://www.npmjs.org/package/iron-node)\r\n[![Massachusetts Institute of Technology (MIT)](https://s-a.github.io/license/img/mit.svg)](/LICENSE.md#mit)\r\n[![Donate](http://s-a.github.io/donate/donate.svg)](http://s-a.github.io/donate/)\r\n\r\n\r\n## Debug Node.js code with Chrome Developer Tools on Linux, Windows and OS X.\r\nThis software aims to make things easier :smile:. With [ironNode](https://github.com/s-a/iron-node) you have the full power of [JavaScript debugging](https://developer.chrome.com/devtools/docs/javascript-debugging) within Chrome Developer Tools.\r\n\r\n## Installation\r\n```npm install iron-node -g;```\r\n\r\n## Usage\r\nThe usage is the same as ```node```. Use ```iron-node``` instead of ```node```.  \r\nKeep in mind to place the keyword ```debugger;``` to a place where you want to stop. Run a debug session with the given JavaScript file.\r\n```bash\r\niron-node PATH_TO_NODE_JS_FILE [--customparm1=foo --customparm2=bar];\r\n```\r\n\r\n## Demo\r\n![Version details](/docs/iron-node-demo.gif)\r\n\r\n## [More screenshots and demos](http://s-a.github.io/iron-node/)\r\n\r\n## [Documentation](/docs/)\r\n - [Features](/docs/FEATURES.md)\r\n - [How to hide the Markdown information Window?](https://github.com/s-a/iron-node/blob/10ecde9d6c5c96f383998e7c4a895f8e70b231b1/.iron-node.js#L10-L11)\r\n - [Master the break-points](/docs/MASTER-THE-BREAKPOINTS.md)\r\n - [How to profile? - Optimize JavaScript execution and discover memory leaks.](/docs/PROFILE.md)\r\n - [Change electron module version](/docs//CHANGE-ELECTRON-VERSION.md). See #103\r\n - [Local and global configuration](/docs/CONFIGURATION.md)\r\n - [How to use native modules?](/docs/NATIVE-MODULES.md)\r\n - [Packages aka addons or plugins](/docs/PACKAGES.md) -> [Package-Channel](https://www.npmjs.com/browse/keyword/iron-node)\r\n - [Version details](/docs/VERSION-DETAILS.md)\r\n - [How to debug Grunt, Gulp, Mocha or other commandline app tasks based on Node.js?](/docs/DEBUG-NODEJS-COMMANDLINE-APPS.md)\r\n - [Supported platforms](/docs/supported-platforms.md)\r\n - [How to debug Meteor apps?](/docs/METEOR.md)\r\n\r\n## Support\r\n - https://stackoverflow.com/questions/tagged/iron-node\r\n\r\n## [Contributing](/CONTRIBUTING.md)\r\n\r\n## [License](/LICENSE.md)\r\n"
 }

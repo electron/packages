@@ -1,0 +1,67 @@
+{
+  "name": "hyperdrive-archive-swarm-browserify",
+  "version": "4.1.6",
+  "description": "Join the p2p swarm for the given hyperdrive archive",
+  "main": "browser/build.js",
+  "scripts": {
+    "test": "standard && node test.js"
+  },
+  "repository": {
+    "user": "karissa",
+    "repo": "hyperdrive-archive-swarm",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/karissa/hyperdrive-archive-swarm/tarball/master",
+    "clone_url": "https://github.com/karissa/hyperdrive-archive-swarm",
+    "https_url": "https://github.com/karissa/hyperdrive-archive-swarm",
+    "travis_url": "https://travis-ci.org/karissa/hyperdrive-archive-swarm",
+    "zip_url": "https://github.com/karissa/hyperdrive-archive-swarm/archive/master.zip",
+    "api_url": "https://api.github.com/repos/karissa/hyperdrive-archive-swarm"
+  },
+  "author": "",
+  "license": "ISC",
+  "homepage": "https://github.com/karissa/hyperdrive-archive-swarm#readme",
+  "dependencies": {
+    "datland-swarm-defaults": "^1.0.0",
+    "discovery-swarm": "^4.0.1",
+    "inherits": "^2.0.1",
+    "pump": "^1.0.1",
+    "signalhub": "^4.7.4",
+    "hybrid-swarm": "^1.0.0",
+    "webrtc-swarm": "^2.6.0"
+  },
+  "devDependencies": {
+    "electron-webrtc": "^0.2.6",
+    "hyperdrive": "^7.4.0",
+    "memdb": "^1.3.1",
+    "standard": "^7.1.2",
+    "tape": "^4.6.0"
+  },
+  "gitHead": "1adac51aced2502af3eff023ea4525c4ca85087d",
+  "_npmVersion": "3.8.9",
+  "_nodeVersion": "6.2.0",
+  "dist": {
+    "shasum": "993182e9bcad121468fb7abdb641b2409066a02e",
+    "tarball": "http://registry.npmjs.org/hyperdrive-archive-swarm-browserify/-/hyperdrive-archive-swarm-browserify-4.1.6.tgz"
+  },
+  "versions": [
+    {
+      "number": "4.1.6",
+      "date": "2016-10-03T02:53:49.772Z"
+    }
+  ],
+  "created": "2016-10-03T02:53:49.772Z",
+  "modified": "2016-10-03T02:53:49.772Z",
+  "lastPublisher": {
+    "name": "mvegeto",
+    "email": "michael.vegeto@gmail.com"
+  },
+  "owners": [
+    {
+      "name": "mvegeto",
+      "email": "michael.vegeto@gmail.com"
+    }
+  ],
+  "readme": "# hyperdrive-archive-swarm\n\nJoin a hyperdrive archive's & hypercore feed's p2p swarm in the client and server.\n\n```\nnpm install hyperdrive-archive-swarm\n```\n\n## Usage\n\nRun the following code in two different places and they will replicate the contents of the given `ARCHIVE_KEY`.\n\n```js\nvar hyperdrive = require('hyperdrive')\nvar memdb = require('memdb')\nvar swarm = require('hyperdrive-archive-swarm')\n\nvar drive = hyperdrive(memdb())\nvar archive = drive.createArchive('ARCHIVE_KEY')\n\nvar sw = swarm(archive)\nsw.on('connection', function (peer, type) {\n  console.log('got', peer, type) // type is 'webrtc-swarm' or 'discovery-swarm'\n  console.log('connected to', sw.connections, 'peers')\n  peer.on('close', function () {\n    console.log('peer disconnected')\n  }) \n})\n```\n\nWill use `discovery-swarm`, and `webrtc-swarm` whenever available to attempt to connect peers. Uses `datland-swarm-defaults` for peer introduction defaults on the server side, which can be overwritten (see below).\n\nThe module can also create and join a swarm for a hypercore feed:\n\n```js\nvar hypercore = require('hypercore')\nvar memdb = require('memdb')\nvar swarm = require('hyperdrive-archive-swarm')\n\nvar core = hypercore(memdb())\nvar feed = core.createFeed()\nvar sw = swarm(feed)\n```\n\n## API\n\n### `var sw = swarm(archive, opts)`\n\nJoin the p2p swarm for the given hyperdrive archive. The return object, `sw`, is an event emitter that will emit a `peer` event with the peer information when a peer is found.\n\nGet number of currently active connections with ```sw.connections```.\n\n##### Options\n\n  * `signalhub`: the url of the signalhub.\n  * `signalhubPrefix`: the prefix for the archive's signalhub key\n  * `wrtc`: a webrtc instance, e.g. electron-webrtc, if not natively supported\n  * `upload`: bool, upload data to the other peer?\n  * `download`: bool, download data from the other peer?\n  * `port`: port for discovery swarm\n  * `utp`: use utp in discovery swarm\n  * `tcp`: use tcp in discovery swarm\n\nDefaults from datland-swarm-defaults can also be overwritten:\n\n  * `dns.server`: DNS server\n  * `dns.domain`: DNS domain\n  * `dht.bootstrap`: distributed hash table bootstrapping nodes\n"
+}

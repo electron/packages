@@ -1,0 +1,81 @@
+{
+  "name": "pixi-createfrom",
+  "version": "0.0.2",
+  "description": "Create sprites trees from an objet",
+  "main": "index.js",
+  "scripts": {
+    "test": "electron-mocha --bail --renderer",
+    "buildE2E": "webpack",
+    "E2ETest": "webpack && cd test/E2E && static-server -p 80"
+  },
+  "repository": {
+    "user": "florianbellazouz",
+    "repo": "pixi-createfrom",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/florianbellazouz/pixi-createfrom/tarball/master",
+    "clone_url": "https://github.com/florianbellazouz/pixi-createfrom",
+    "https_url": "https://github.com/florianbellazouz/pixi-createfrom",
+    "travis_url": "https://travis-ci.org/florianbellazouz/pixi-createfrom",
+    "zip_url": "https://github.com/florianbellazouz/pixi-createfrom/archive/master.zip",
+    "api_url": "https://api.github.com/repos/florianbellazouz/pixi-createfrom"
+  },
+  "keywords": [
+    "pixijs",
+    "pixi",
+    "pixi.js",
+    "plugin"
+  ],
+  "author": {
+    "name": "florianbellazouz"
+  },
+  "license": "ISC",
+  "homepage": "https://github.com/florianbellazouz/pixi-createfrom#readme",
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "electron-mocha": "^3.1.1",
+    "electron-prebuilt": "^1.4.2",
+    "mocha": "^3.1.0",
+    "static-server": "^2.0.3",
+    "webpack": "^1.13.2"
+  },
+  "dependencies": {
+    "lodash": "^4.16.2",
+    "pixi.js": "^4.0.3"
+  },
+  "gitHead": "165d8b5f49cea2be8cd0d84c3f9646f5e83283a3",
+  "_npmVersion": "3.10.3",
+  "_nodeVersion": "6.4.0",
+  "dist": {
+    "shasum": "6e51a012161cd24c5068972a06c6ebcea6a7e2af",
+    "tarball": "http://registry.npmjs.org/pixi-createfrom/-/pixi-createfrom-0.0.2.tgz"
+  },
+  "versions": [
+    {
+      "number": "0.0.0",
+      "date": "2016-10-04T08:19:02.447Z"
+    },
+    {
+      "number": "0.0.1",
+      "date": "2016-10-07T06:13:48.527Z"
+    },
+    {
+      "number": "0.0.2",
+      "date": "2016-10-07T06:35:43.932Z"
+    }
+  ],
+  "created": "2016-10-04T08:19:02.447Z",
+  "modified": "2016-10-07T06:35:43.932Z",
+  "lastPublisher": {
+    "name": "florianbellazouz",
+    "email": "bellazouz.florian@gmail.com"
+  },
+  "owners": [
+    {
+      "name": "florianbellazouz",
+      "email": "bellazouz.florian@gmail.com"
+    }
+  ],
+  "readme": "# pixi-createfrom\r\nCreate sprites trees from an objet\r\n\r\n## instalation\r\n\r\n**with npm :**\r\n````js\r\nnpm i pixi-createFrom\r\n````\r\n**with html** :\r\n````js\r\n<script src=\"url\"></script>\r\n````\r\n\r\n## example\r\n````js\r\nvar CreateFrom = require('pixi-createfrom')\r\n\r\nvar doc = {\r\n  name:'main',\r\n  type:container,\r\n  children:[\r\n    {\r\n      type:'sprite',\r\n      src:'/assets/bunny.png',\r\n      x:100,\r\n      y:100,\r\n      children:[\r\n        type:'sprite',\r\n        src:'/assets/glass.png',\r\n        x:0,\r\n        y:5\r\n      ]\r\n    }\r\n  ]\r\n}\r\n\r\nvar stage = CreateFrom(doc)\r\n\r\nPixi.renderer.render(stage)\r\n\r\n````\r\n## plug-in\r\n**pixi-createFrom-photoshop**\r\n\r\nThis repo was create to be combine with **pixi-createFrom-photoshop.** <br/>\r\n**Photoshop** is well know and awesome to create pixels. <br/>\r\n\r\n1- We will use this tools to generate an json <br/> \r\n2- this json will be read by **pixi-createFrom** <br/>\r\n3- pixi-createFrom will create an PIXI.Container with a tree of Sprites <br/>\r\n4- and this PIXI.Container will be render by Pixi !\r\n\r\n\r\n## API\r\n\r\n### createFrom(object)\r\nreturn PIXI.Container\r\n"
+}

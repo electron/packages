@@ -1,0 +1,58 @@
+{
+  "name": "electron-url",
+  "version": "0.0.1",
+  "description": "A simple way to load a file/url in electron using patterns.",
+  "keywords": [
+    "electron",
+    "url",
+    "patterns"
+  ],
+  "author": {
+    "name": "Josemi Juanes",
+    "email": "josemijuanes@gmail.com"
+  },
+  "main": "./index.js",
+  "repository": {
+    "user": "jmjuanes",
+    "repo": "electron-url",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/jmjuanes/electron-url/tarball/master",
+    "clone_url": "https://github.com/jmjuanes/electron-url",
+    "https_url": "https://github.com/jmjuanes/electron-url",
+    "travis_url": "https://travis-ci.org/jmjuanes/electron-url",
+    "zip_url": "https://github.com/jmjuanes/electron-url/archive/master.zip",
+    "api_url": "https://api.github.com/repos/jmjuanes/electron-url"
+  },
+  "scripts": {},
+  "dependencies": {},
+  "license": "MIT",
+  "gitHead": "2d4ef7fd67bb4d34e587a3a88c4662f51323685b",
+  "homepage": "https://github.com/jmjuanes/electron-url#readme",
+  "_npmVersion": "3.8.6",
+  "_nodeVersion": "4.2.2",
+  "dist": {
+    "shasum": "e488db06761143edf4b00a1deedb3be1e556771f",
+    "tarball": "http://registry.npmjs.org/electron-url/-/electron-url-0.0.1.tgz"
+  },
+  "versions": [
+    {
+      "number": "0.0.1",
+      "date": "2016-09-15T09:56:31.658Z"
+    }
+  ],
+  "created": "2016-09-15T09:56:31.658Z",
+  "modified": "2016-09-15T09:56:31.658Z",
+  "lastPublisher": {
+    "name": "jmjuanes",
+    "email": "josemijuanes@gmail.com"
+  },
+  "owners": [
+    {
+      "name": "jmjuanes",
+      "email": "josemijuanes@gmail.com"
+    }
+  ],
+  "readme": "# electron-url \n\n[![npm](https://img.shields.io/npm/v/electron-url.svg?style=flat-square)](https://www.npmjs.com/package/electron-url)\n[![npm](https://img.shields.io/npm/dt/electron-url.svg?style=flat-square)](https://www.npmjs.com/package/electron-url)\n\nA simple way to load a file/url in electron using patterns. \n\n## Install \n\n```\nnpm install --save electron-url\n```\n\n## Usage \n\n```javascript \n//Import dependencies\nvar electron = require('electron');\nvar electronUrl = require('electron-url'); \nvar path = require('path');\n\n//Import electron modules\nvar app = electron.app;\nvar BrowserWindow = electron.BrowserWindow; \n\n//Initialize the url pattern \nelectronUrl.pattern(path.join('file://' + __dirname, './{file}')); \n\n//Initialize the app \napp.on('ready', function()\n{\n  //Create the new window\n  var mainWindow = new BrowserWindow({ width: 800, height: 600 });\n\n  //More app configuration\n  // ....\n\n  //Load the file\n  electronUrl.load(mainWindow, { file: 'index.html' });\n});\n```\n\n## API \n\n### .load(window, replace) \n\nLoad a file or an url on the `window`. \n\n#### window \n\nA `BrowserWindow` object where you want to load the url or file. Read the [electron documentation](http://electron.atom.io/docs/api/browser-window/) for more info.\n\n#### replace\n\nAn object where each key will be replaced on the url pattern with the value provided. \n\nFor example, on the following url pattern: \n\n```\nfile://{path}/{file}.html\n```\n\nIf you provide the following replace object: \n\n```json\n{ \"path\": \"my/path\", \"file\": \"test\" }\n```\n\nThe following url will be generated: \n\n``` \nfile://my/path/test.html\n```\n\n### .pattern(value)\n\nSet the default pattern.\n\n#### value \n\nA string with the pattern.\n\n## Related \n\n- [electron-ejs](https://github.com/jmjuanes/electron-ejs): use ejs files in electron.\n\n## License \n\n[MIT LICENSE](./LICENSE) &copy; Josemi Juanes.\n"
+}

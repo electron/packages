@@ -1,0 +1,85 @@
+{
+  "name": "electron-load-devtool",
+  "version": "0.3.0",
+  "description": "Easily load dev-tool for electron",
+  "license": "MIT",
+  "repository": {
+    "user": "akameco",
+    "repo": "electron-load-devtool",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/akameco/electron-load-devtool/tarball/master",
+    "clone_url": "https://github.com/akameco/electron-load-devtool",
+    "https_url": "https://github.com/akameco/electron-load-devtool",
+    "travis_url": "https://travis-ci.org/akameco/electron-load-devtool",
+    "zip_url": "https://github.com/akameco/electron-load-devtool/archive/master.zip",
+    "api_url": "https://api.github.com/repos/akameco/electron-load-devtool"
+  },
+  "author": {
+    "name": "akameco",
+    "email": "akameco.t@gmail.com",
+    "url": "akameco.github.io"
+  },
+  "scripts": {
+    "start": "electron fixture.js",
+    "test": "xo"
+  },
+  "files": [
+    "index.js"
+  ],
+  "keywords": [
+    "electron",
+    "chrome",
+    "extention"
+  ],
+  "dependencies": {
+    "electron-is-dev": "^0.1.2"
+  },
+  "devDependencies": {
+    "electron": "^1.3.3",
+    "xo": "^0.16.0"
+  },
+  "xo": {
+    "esnext": true,
+    "envs": [
+      "node",
+      "browser"
+    ]
+  },
+  "gitHead": "0557c0d0011c07adb6a3de67d9d22fbe5e16bf83",
+  "homepage": "https://github.com/akameco/electron-load-devtool#readme",
+  "_npmVersion": "3.10.3",
+  "_nodeVersion": "6.4.0",
+  "dist": {
+    "shasum": "0bf9b155c843158a83b1547168231f5102ad3332",
+    "tarball": "http://registry.npmjs.org/electron-load-devtool/-/electron-load-devtool-0.3.0.tgz"
+  },
+  "versions": [
+    {
+      "number": "0.1.0",
+      "date": "2016-08-15T18:22:16.587Z"
+    },
+    {
+      "number": "0.2.0",
+      "date": "2016-08-17T19:00:16.484Z"
+    },
+    {
+      "number": "0.3.0",
+      "date": "2016-08-24T04:44:51.841Z"
+    }
+  ],
+  "created": "2016-08-15T18:22:16.587Z",
+  "modified": "2016-08-24T04:44:51.841Z",
+  "lastPublisher": {
+    "name": "akameco",
+    "email": "akameco.t@gmail.com"
+  },
+  "owners": [
+    {
+      "name": "akameco",
+      "email": "akameco.t@gmail.com"
+    }
+  ],
+  "readme": "# electron-load-devtool [![Build Status](https://travis-ci.org/akameco/electron-load-devtool.svg?branch=master)](https://travis-ci.org/akameco/electron-load-devtool)\n\n> Easily Load devtools-extension for electron\n\n## why?\n\nElectron supports the Chrome DevTools Extension.\nBut, it's a [very bother](https://github.com/electron/electron/blob/master/docs/tutorial/devtools-extension.md).\nThis module can load simply for your development environment.\nAnd, support some devtool-extensions like redux-devtools by default.\n\n## Install\n\n```\n$ npm install --save-dev electron-load-devtool\n```\n\n\n## Usage\n\n```js\nconst electron = require('electron');\nconst loadDevtool = require('electron-load-devtool');\n\nelectron.app.on('ready', () => {\n\tconst win = new electron.BrowserWindow({width: 400, height: 400});\n\twin.loadURL(`file://${__dirname}/index.html`);\n\n\tloadDevtool(loadDevtool.REDUX_DEVTOOLS);\n\n\twin.openDevTools();\n});\n```\n\n## API\n\n### `loadDevtool(devtoolId, [options])`\n\n#### devtoolId\n\nType: `string`\n\n#### options\n\n##### name\n\nType: `string`<br>\nDefault: `google-chrome`\n\nIf you using chromium on Linux, set `chromium`.\n\n##### version\n\nType: `string`<br>\nDefault: `latest`\n\nSpecific devtools-extension version.\n\n### `loadDevtool.REDUX_DEVTOOLS`\n\n### `loadDevtool.EMBER_INSPECTOR`\n\n### `loadDevtool.REACT_DEVELOPER_TOOLS`\n\n### `loadDevtool.BACKBONE_DEBUGGER`\n\n### `loadDevtool.JQUERY_DEBUGGER`\n\n### `loadDevtool.ANGULARJS_BATARANG`\n\n### `loadDevtool.VUEJS_DEVTOOLS`\n\n## License\n\nMIT © [akameco](http://akameco.github.io)\n"
+}

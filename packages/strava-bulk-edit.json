@@ -1,0 +1,127 @@
+{
+  "name": "strava-bulk-edit",
+  "description": "A plugin to add bulk editing to activities on Strava.com.",
+  "version": "1.0.3",
+  "author": {
+    "name": "Luke Karrys",
+    "email": "luke@lukekarrys.com"
+  },
+  "browserify": {
+    "transform": [
+      "babelify"
+    ]
+  },
+  "dependencies": {
+    "lodash.pull": "^4.1.0"
+  },
+  "devDependencies": {
+    "babel": "^6.5.2",
+    "babel-core": "^6.13.2",
+    "babel-eslint": "^6.1.2",
+    "babel-loader": "^6.2.4",
+    "babel-preset-es2015": "^6.13.2",
+    "babel-preset-stage-0": "^6.5.0",
+    "babelify": "^7.3.0",
+    "browserify": "^13.1.0",
+    "electron-prebuilt": "^1.3.2",
+    "git-validate": "^2.1.4",
+    "rimraf": "^2.5.4",
+    "standard": "^7.1.2",
+    "tap-spec": "^4.1.1",
+    "tape": "^4.6.0",
+    "tape-run": "^2.1.4",
+    "webpack": "^1.13.1"
+  },
+  "files": [
+    "dist/*"
+  ],
+  "homepage": "https://github.com/lukekarrys/strava-bulk-edit",
+  "keywords": [
+    "strava"
+  ],
+  "license": "MIT",
+  "main": "dist/StravaBulkEdit.js",
+  "pre-commit": [
+    "lint",
+    "validate",
+    "test"
+  ],
+  "repository": {
+    "user": "lukekarrys",
+    "repo": "strava-bulk-edit",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/lukekarrys/strava-bulk-edit/tarball/master",
+    "clone_url": "https://github.com/lukekarrys/strava-bulk-edit",
+    "https_url": "https://github.com/lukekarrys/strava-bulk-edit",
+    "travis_url": "https://travis-ci.org/lukekarrys/strava-bulk-edit",
+    "zip_url": "https://github.com/lukekarrys/strava-bulk-edit/archive/master.zip",
+    "api_url": "https://api.github.com/repos/lukekarrys/strava-bulk-edit"
+  },
+  "scripts": {
+    "debug": "npm run development && cat dist/StravaBulkEdit.dev.js | pbcopy",
+    "development": "webpack src/index.js dist/StravaBulkEdit.dev.js",
+    "lint": "standard",
+    "preversion": "npm run development && npm run production && npm run validate && npm run lint",
+    "production": "NODE_ENV=production webpack -p src/index.js dist/StravaBulkEdit.js",
+    "test": "browserify test/index.js | tape-run | tap-spec",
+    "validate": "npm ls >/dev/null"
+  },
+  "standard": {
+    "ignore": [
+      "dist/**"
+    ],
+    "parser": "babel-eslint"
+  },
+  "gitHead": "36f8a43369da6e07950d73f6842a167b71efe495",
+  "_npmVersion": "3.10.5",
+  "_nodeVersion": "5.12.0",
+  "dist": {
+    "shasum": "0530feef341f68686badd5991f621e01cc0c8a10",
+    "tarball": "http://registry.npmjs.org/strava-bulk-edit/-/strava-bulk-edit-1.0.3.tgz"
+  },
+  "versions": [
+    {
+      "number": "0.3.0",
+      "date": "2015-12-03T23:17:48.566Z"
+    },
+    {
+      "number": "0.4.0",
+      "date": "2015-12-03T23:30:31.913Z"
+    },
+    {
+      "number": "0.4.1",
+      "date": "2015-12-09T02:34:41.818Z"
+    },
+    {
+      "number": "1.0.0",
+      "date": "2015-12-17T17:02:28.990Z"
+    },
+    {
+      "number": "1.0.1",
+      "date": "2016-03-05T17:35:28.282Z"
+    },
+    {
+      "number": "1.0.2",
+      "date": "2016-03-07T17:56:59.147Z"
+    },
+    {
+      "number": "1.0.3",
+      "date": "2016-08-08T04:26:54.860Z"
+    }
+  ],
+  "created": "2015-12-03T23:17:48.566Z",
+  "modified": "2016-08-08T04:26:54.860Z",
+  "lastPublisher": {
+    "name": "lukekarrys",
+    "email": "luke@lukekarrys.com"
+  },
+  "owners": [
+    {
+      "name": "lukekarrys",
+      "email": "luke@lukekarrys.com"
+    }
+  ],
+  "readme": "strava-bulk-edit\n========================\n\n[![Build Status](https://travis-ci.org/lukekarrys/strava-bulk-edit.png?branch=master)](https://travis-ci.org/lukekarrys/strava-bulk-edit)\n[![js-standard-style](https://img.shields.io/badge/code%20style-standard-brightgreen.svg?style=flat)](https://github.com/feross/standard)\n\n## What is this?\n\nI really wanted bulk editing for my 224 Strava activities so I could make them all public. It started as simple script I wrote in the browser console and ended up as this.\n\n\n## Installation\n\nCurrently the only way to use this is to load it in the console of Strava.com. This must be done after any page changing navigation since a browser reload will clear any external scripts.\n\nThis is just a quick WIP for now, in the future there will be a better installation process, if I deem this useful enough.\n\n```js\n> jQuery.getScript('https://npmcdn.com/strava-bulk-edit')\n```\n\n\n## Usage\n\nLoading the script will do the following:\n\n- Create `window.StravaBulkEdit` containing the API methods\n- Attach any necessary DOM elements to the current page\n\n### Training Page Bulk Editing\n\nOn the training page, it will add a dropdown to edit all activities to either public or private. It will do this by iterating over each one on the current page, and when it reaches the end of the page, navigating to the next page and starting over. It will also add a Cancel button while it's happening to abort any remaming activities.\n\n![](https://cldup.com/7pZH0ZPSnR.gif)\n\nOr you can use the API to edit any part of the row using some JS in the console.\n\n```js\n// $row is always is a jQuery object\nStravaBulkEdit.editAll({\n  // Run the action that you want to perform on each activity row\n  action: function ($row) {\n    // e.g. Set the description of each row to \"Big climb!\"\n    $row.find('[name=description]').val('Big climb!');\n  },\n  // Optionally, only run the action on certain rows, by default, the action will\n  // run for all rows. Return true or false from this to determine if the activity\n  // row should have the action peformed on it.\n  condition: function ($row) {\n    // e.g. Only set the description if the elevation is more than 1000\n    var elevation = $row.find('li:contains(Elevation)').text().replace(/\\D/g, '');\n    return parseInt(elevation, 10) > 1000;\n  }\n})\n```\n\n## Disclaimer\n\nThis is in not affiliated with Strava, Inc. in any way. The term STRAVA and the Strava logo are the exclusive trademarks of, and are owned by, Strava Inc.\n\n## LICENSE\n\nMIT\n"
+}

@@ -1,0 +1,108 @@
+{
+  "name": "ampersand-chess-view",
+  "description": "An ampersand-view for playing chess games.",
+  "version": "1.0.2",
+  "author": {
+    "name": "Luke Karrys",
+    "email": "luke@lukekarrys.com"
+  },
+  "dependencies": {
+    "ampersand-chess-state": "^1.0.1",
+    "ampersand-view": "^10.0.1"
+  },
+  "devDependencies": {
+    "beefy": "^2.1.8",
+    "browserify": "^13.1.0",
+    "electron-prebuilt": "^1.3.2",
+    "jquery": "^3.1.0",
+    "jshint": "^2.9.2",
+    "precommit-hook": "^3.0.0",
+    "run-browser": "^2.0.2",
+    "tap-spec": "^4.1.1",
+    "tape": "^4.6.0",
+    "tape-run": "^2.1.4"
+  },
+  "homepage": "https://github.com/lukekarrys/ampersand-chess-view",
+  "keywords": [
+    "ampersand",
+    "chess",
+    "chessboard"
+  ],
+  "license": "MIT",
+  "main": "ampersand-chess-view.js",
+  "pre-commit": [
+    "lint",
+    "test",
+    "validate"
+  ],
+  "repository": {
+    "user": "lukekarrys",
+    "repo": "ampersand-chess-view",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/lukekarrys/ampersand-chess-view/tarball/master",
+    "clone_url": "https://github.com/lukekarrys/ampersand-chess-view",
+    "https_url": "https://github.com/lukekarrys/ampersand-chess-view",
+    "travis_url": "https://travis-ci.org/lukekarrys/ampersand-chess-view",
+    "zip_url": "https://github.com/lukekarrys/ampersand-chess-view/archive/master.zip",
+    "api_url": "https://api.github.com/repos/lukekarrys/ampersand-chess-view"
+  },
+  "scripts": {
+    "demo": "beefy demo/demo.js --index=demo/index.html",
+    "lint": "jshint .",
+    "start": "run-browser test/* --port 3001",
+    "test": "browserify test/*.js | tape-run | tap-spec",
+    "validate": "npm ls"
+  },
+  "gitHead": "610ea66adcd191bc51c4083562d6076152d0ab56",
+  "_npmVersion": "3.10.5",
+  "_nodeVersion": "5.12.0",
+  "dist": {
+    "shasum": "0eb269ce6dca5da286abee32dceff2c1e4931c16",
+    "tarball": "http://registry.npmjs.org/ampersand-chess-view/-/ampersand-chess-view-1.0.2.tgz"
+  },
+  "versions": [
+    {
+      "number": "0.0.1",
+      "date": "2015-01-20T08:56:28.373Z"
+    },
+    {
+      "number": "0.1.0",
+      "date": "2015-01-20T09:04:28.252Z"
+    },
+    {
+      "number": "0.2.0",
+      "date": "2015-01-24T23:43:30.927Z"
+    },
+    {
+      "number": "0.2.1",
+      "date": "2015-03-31T21:58:27.876Z"
+    },
+    {
+      "number": "0.2.2",
+      "date": "2015-05-13T03:38:48.873Z"
+    },
+    {
+      "number": "1.0.0",
+      "date": "2015-05-13T03:39:07.151Z"
+    },
+    {
+      "number": "1.0.2",
+      "date": "2016-08-06T05:43:25.874Z"
+    }
+  ],
+  "created": "2015-01-20T08:56:28.373Z",
+  "modified": "2016-08-06T05:43:25.874Z",
+  "lastPublisher": {
+    "name": "lukekarrys",
+    "email": "luke@lukekarrys.com"
+  },
+  "owners": [
+    {
+      "name": "lukekarrys",
+      "email": "luke@lukekarrys.com"
+    }
+  ],
+  "readme": "ampersand-chess-view\n-------------------------\n\n[![Build Status](https://travis-ci.org/lukekarrys/ampersand-chess-view.png?branch=master)](https://travis-ci.org/lukekarrys/ampersand-chess-view)\n[![NPM](https://nodei.co/npm/ampersand-chess-view.png)](https://nodei.co/npm/ampersand-chess-view/)\n\n\n## Install\n`npm install ampersand-chess-view`\n\n\n## What?\n\n`ampersand-chess-view` is an [`ampersand-view`](https://npmjs.org/ampersand-view) that uses [`ampersand-chess-state`](https://npmjs.org/ampersand-chess-state) to render most of the things necessary for a playable chess board.\n\n\n## Demo\n\nClone the repo and run `npm install && npm run demo`.\n\nTry opening up these three windows to see a game that is playable as [white](http://localhost:9966/#white), [black](http://localhost:9966/#black), and a [watcher](http://localhost:9966/).\n\n![black, white, watcher](https://cldup.com/It2mBLh4yT.gif)\n\n\n## API\n\n### props\n\n#### `boardConfig` (object, optional)\n#### `Chessboard` (function, optional)\n\nThese are the config and the constructor for the draggable, playable chessboard. It has been tested with [`chessboard.js`](http://chessboardjs.com/). See the options for the config on the [documentation page](http://chessboardjs.com/docs).\n\nThis library isn't bundled with `ampersand-chess-view` in case you only want to use other parts of it.\n\n#### `role` (string, ['black', 'white', 'watcher', 'analysis'], default: 'watcher')\nThis is either the color that you want to be the active player for the board. Here's what each does:\n\n- `white` White is the currently playable color\n- `black` Black is the currently playable color\n- `analysis` Both colors are playable\n- `watcher` neither color is playable. This is useful if you want to have the board be playable for two players and watchable by the rest.\n\n#### `computer` (boolean, false)\n\nSet to `true` to have a computer player initialized for the unplayed `role`. By default the computer will play a random move in 1 second. Extend the `playComputer()` method to change this behavior.\n\n#### `chess` (object)\n\nThis object will be passed directly to [`ampersand-chess-state`](https://npmjs.org/ampersand-chess-state). See the documentation there for more details. You can use this to set the initial position with its `pgn` or `fen` properties.\n\n\n### data-hooks\n\nOut of the box, this view provides bindings and derived properties to bind some of the helpful [`ampersand-chess-state`](https://npmjs.org/ampersand-chess-state) values with elements in the default template. Most of the time you'ree going to want to supply your own template, but you can populate it with the following `data-hook`s and they'll be populated and auto-upadte with the necessary values.\n\n#### `[data-hook=board]`\nThe element that will house the [`chessboard.js`](http://chessboardjs.com/) board.\n\n#### `[data-hook=status]`\nThe element will be populated with the current text status. This includes the current color's turn if the game is still going or the end result of the game if it is finished. Also changes to include \"you/your\" in place of the color based on the user's `role`.\n\n#### `[data-hook=ascii]`\nThis will set the `innerHTML` of the elment to an ascii version of the position. Works best with a `<pre>` element.\n\n#### `[data-hook=pgn]`\nThis element will have its text set to the [`PGN`](http://en.wikipedia.org/wiki/Portable_Game_Notation) of the game. It is based on a derived property of the view which parses the [`pgnArray`](https://github.com/lukekarrys/ampersand-chess-state/blob/master/README.md#pgnarray-array) from `ampersand-chess-state`.\n\n#### `[data-hook=fen]`\nThis will be set to the text of the [`FEN`](http://en.wikipedia.org/wiki/Forsyth%E2%80%93Edwards_Notation) of the current position.\n\n#### `[data-hook=first]`\n#### `[data-hook=undo]`\n#### `[data-hook=redo]`\n#### `[data-hook=last]`\nThese are bound with click events which will call the data-hook's method on the [`ampersand-chess-state`](https://github.com/lukekarrys/ampersand-chess-state/blob/master/README.md#undooptions) object.\n\nThese will be disabled based on if there is the ability to undo/redo moves in the game. Watchers can always undo/redo but the current players cannot.\n\n#### `[data-hook=black-time]`\n#### `[data-hook=white-time]`\nThese will be updated with the current time left for each side. Will be displayed as `mm:ss` with the milliseconds visible if the time is below 60 seconds.\n\n\n## Tests\nRun `npm test` for the command line tests (using phantomjs) or `npm start` to open a browser with the tests. Could use some more.\n\n\n## LICENSE\nMIT\n"
+}

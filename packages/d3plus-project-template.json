@@ -1,0 +1,86 @@
+{
+  "name": "d3plus-project-template",
+  "version": "0.2.3",
+  "description": "A starter environment for D3plus modules.",
+  "main": "build/d3plus-project-template.js",
+  "jsnext:main": "index",
+  "license": "MIT",
+  "homepage": "https://d3plus.org",
+  "repository": {
+    "user": "d3plus",
+    "repo": "d3plus-project-template",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/d3plus/d3plus-project-template/tarball/master",
+    "clone_url": "https://github.com/d3plus/d3plus-project-template",
+    "https_url": "https://github.com/d3plus/d3plus-project-template",
+    "travis_url": "https://travis-ci.org/d3plus/d3plus-project-template",
+    "zip_url": "https://github.com/d3plus/d3plus-project-template/archive/master.zip",
+    "api_url": "https://api.github.com/repos/d3plus/d3plus-project-template"
+  },
+  "keywords": [
+    "project-template",
+    "d3",
+    "d3plus",
+    "data",
+    "visualization"
+  ],
+  "author": {
+    "name": "Dave Landry",
+    "email": "landry.dave@gmail.com",
+    "url": "http://www.dave-landry.com"
+  },
+  "dependencies": {
+    "d3plus-common": "^0.5.3"
+  },
+  "scripts": {
+    "dev": "d3plus-dev",
+    "docs": "d3plus-docs",
+    "examples": "d3plus-examples",
+    "release": "d3plus-release",
+    "test": "d3plus-test"
+  },
+  "gitHead": "93f70b1e440b7d2f67560b7d5e10ace152aa63b4",
+  "_npmVersion": "3.9.5",
+  "_nodeVersion": "6.2.2",
+  "dist": {
+    "shasum": "862d71fbacd4561714e621dd731ed06b83e04aa6",
+    "tarball": "http://registry.npmjs.org/d3plus-project-template/-/d3plus-project-template-0.2.3.tgz"
+  },
+  "versions": [
+    {
+      "number": "0.1.0",
+      "date": "2016-04-25T19:49:42.404Z"
+    },
+    {
+      "number": "0.2.0",
+      "date": "2016-06-20T14:21:20.441Z"
+    },
+    {
+      "number": "0.2.1",
+      "date": "2016-06-20T14:24:59.121Z"
+    },
+    {
+      "number": "0.2.2",
+      "date": "2016-06-20T14:26:00.540Z"
+    },
+    {
+      "number": "0.2.3",
+      "date": "2016-07-22T23:01:03.633Z"
+    }
+  ],
+  "created": "2016-04-25T19:49:42.404Z",
+  "modified": "2016-07-22T23:01:03.633Z",
+  "lastPublisher": {
+    "name": "davelandry",
+    "email": "landry.dave@gmail.com"
+  },
+  "owners": [
+    {
+      "name": "davelandry",
+      "email": "landry.dave@gmail.com"
+    }
+  ],
+  "readme": "# d3plus-project-template\n\n[![NPM Release](http://img.shields.io/npm/v/d3plus-project-template.svg?style=flat-square)](https://www.npmjs.org/package/d3plus-project-template)\n[![Build Status](https://travis-ci.org/d3plus/d3plus-project-template.svg?branch=master)](https://travis-ci.org/d3plus/d3plus-project-template)\n[![Dependency Status](http://img.shields.io/david/d3plus/d3plus-project-template.svg?style=flat-square)](https://david-dm.org/d3plus/d3plus-project-template)\n\nA starter environment for D3plus modules.\n\n## Installing\n\nIf you use NPM, `npm install d3plus-project-template`. Otherwise, download the [latest release](https://github.com/d3plus/d3plus-project-template/releases/latest). The released bundle supports AMD, CommonJS, and vanilla environments. Create a [custom bundle using Rollup](https://github.com/rollup/rollup) or your preferred bundler. You can also load directly from [d3plus.org](https://d3plus.org):\n\n```html\n<script src=\"https://d3plus.org/js/d3plus-project-template.v0.2.full.min.js\"></script>\n```\n\n\n## Getting Started\n\nThis is the place to be if you want to create your own D3plus module. Here are the steps to get your module up and running:\n\n1. Copy the contents of this repo into your new repository.\n2. Install the Node Package Manager (NPM).\n> <sub>If on a Mac, we suggest using [Homebrew](http://brew.sh/) to install packages on your machine. Once that's installed, you can install node (which includes npm) by running: `brew install node`</sub>\n3. Install all current dependencies:\n```sh\nnpm i\n```\n\nAnd that's it! Now your environment should be all set up and ready to go.\n\n### Writing Code\n\nWith the introduction of modules in D3plus 2.0, all code is transpiled using [buble](http://buble.surge.sh/), which allows usage of most of good bits from ES6. If you are unfamiliar with ES6, then normal vanilla javascript works fine as well. All source code lives in the `/src/` director.\n\n### Running the Development Server\n\nTo test your code live in a browser, with auto-compiling and hot reloading, type this into your shell:\n\n```sh\nnpm run dev\n```\n\nYou can then go to `http://localhost:4000/test/` in your preferred browser to test your code live.\n\n### Code Documentation\n\nAll of the Documentation you see in the README file is generated automagically based on the [JSDoc](http://usejsdoc.org/) formatted comments within each source file. This removes the nuscence of having to write documentation after the fact, and enforces strict code commenting. To regenerate the documentation, simply run:\n\n```sh\nnpm run docs\n```\n\n### Tests\n\nAny time you write a new feature in your module, you should also be writing tests. D3plus modules come bundled with a test suite that let's you write [tape](https://github.com/substack/tape) tests using full ES6, which are then run directly in a headless Electron browser.\n\nAll tests need to be placed in the `/test/` directory, and the filenames should match up to the components in `/src/`. To run all tests, run:\n\n```sh\nnpm test\n```\n\n### Examples\n\nAll D3plus 2.0 examples seen on [d3plus.org](https://d3plus.org) are created from within their respective repositories. The examples are parsed from any markdown files placed in the `/example/` directory, with the following rules:\n\n#### Title\n\nExample titles are extracted from the first H1 present in the file. Generally, the first line of the file will be the title:\n\n```md\n## My Cool Example\n```\n\n#### Slug\n\nThe slug used in the URL on [d3plus.org](https://d3plus.org) is taken directly from the filename. A file with the following path:\n\n```sh\n/example/my-cool-example.md\n```\n\nWould end up at the following URL:\n\n```sh\nhttps://d3plus.org/examples/d3plus-project-template/my-cool-example/\n```\n\n#### HTML\n\nAny `css`, `html`, or `js` code block present in an example will be extracted and rendered into a static HTML file. This is what gets used on [d3plus.org](https://d3plus.org), and also let's us take screenshots!\n\n#### Screenshots\n\nA screenshot of each example is generated from the rendered HTML. By default, each screenshot is 990x400 in size, but specific dimensions can be given using markdown relative links:\n\n```md\n[width]: 400\n[height]: 300\n```\n\n\n[Click here](https://d3plus.org/examples/d3plus-project-template/getting-started/) to view this example live on the web.\n\n[![Getting Started](/example/getting-started.png)](https://d3plus.org/examples/d3plus-project-template/getting-started/)\n\n\n\n\n\n## API Reference\n<a name=\"sample\"></a>\n\n### sample([data])\nA sample chainable function. If *data* is specified, immediately draws and returns this sample generator. If *data* is not specified on instantiation, it can be passed/updated after instantiation using the [data](#sample.data) method.\n\n**Kind**: global function  \n\n| Param | Type | Default |\n| --- | --- | --- |\n| [data] | <code>Array</code> | <code>[]</code> | \n\n\n* [sample([data])](#sample)\n    * [.id([*value*])](#sample.id)\n    * [.sampleConstant([*value*])](#sample.sampleConstant)\n\n<a name=\"sample.id\"></a>\n\n#### sample.id([*value*])\nIf *value* is specified, sets the id accessor to the specified function and returns this generator. If *value* is not specified, returns the current id accessor.\n\n**Kind**: static method of <code>[sample](#sample)</code>  \n\n| Param | Type |\n| --- | --- |\n| [*value*] | <code>function</code> | \n\n**Example**  \n```js\nfunction(d) {\n  return d.id;\n}\n```\n<a name=\"sample.sampleConstant\"></a>\n\n#### sample.sampleConstant([*value*])\nIf *value* is specified, sets the accessor to the specified function or value and returns this generator. If *value* is not specified, returns the current accessor.\n\n**Kind**: static method of <code>[sample](#sample)</code>  \n\n| Param | Type | Default |\n| --- | --- | --- |\n| [*value*] | <code>function</code> &#124; <code>Number</code> &#124; <code>String</code> | <code>&quot;sample&quot;</code> | \n\n\n\n###### <sub>Documentation generated on Fri, 22 Jul 2016 23:01:16 GMT</sub>\n"
+}

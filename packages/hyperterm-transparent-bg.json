@@ -1,0 +1,74 @@
+{
+  "name": "hyperterm-transparent-bg",
+  "version": "1.5.1",
+  "description": "An emulated transparent background for HyperTerm!",
+  "main": "index.js",
+  "scripts": {
+    "test": ""
+  },
+  "repository": {
+    "user": "dfrankland",
+    "repo": "hyperterm-transparent-bg",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/dfrankland/hyperterm-transparent-bg/tarball/master",
+    "clone_url": "https://github.com/dfrankland/hyperterm-transparent-bg",
+    "https_url": "https://github.com/dfrankland/hyperterm-transparent-bg",
+    "travis_url": "https://travis-ci.org/dfrankland/hyperterm-transparent-bg",
+    "zip_url": "https://github.com/dfrankland/hyperterm-transparent-bg/archive/master.zip",
+    "api_url": "https://api.github.com/repos/dfrankland/hyperterm-transparent-bg"
+  },
+  "keywords": [
+    "hyperterm",
+    "background",
+    "bg",
+    "transparent",
+    "cool"
+  ],
+  "author": {
+    "name": "Dylan Frankland",
+    "email": "dylan@frankland.io"
+  },
+  "license": "MIT",
+  "homepage": "https://github.com/dfrankland/hyperterm-transparent-bg#readme",
+  "dependencies": {
+    "electron": "^0.4.1",
+    "uuid": "^2.0.2"
+  },
+  "gitHead": "0e1cf06998a5a0b43a16440d8b0dce63bc49d2a3",
+  "_npmVersion": "3.10.3",
+  "_nodeVersion": "6.3.0",
+  "dist": {
+    "shasum": "44f086aa7e07a802abdd317c32322d8c6ad787ec",
+    "tarball": "http://registry.npmjs.org/hyperterm-transparent-bg/-/hyperterm-transparent-bg-1.5.1.tgz"
+  },
+  "stars": 2,
+  "versions": [
+    {
+      "number": "1.0.0",
+      "date": "2016-07-17T07:10:58.214Z"
+    },
+    {
+      "number": "1.5.0",
+      "date": "2016-07-19T22:25:18.888Z"
+    },
+    {
+      "number": "1.5.1",
+      "date": "2016-07-19T22:48:19.122Z"
+    }
+  ],
+  "created": "2016-07-17T07:10:58.214Z",
+  "modified": "2016-07-19T22:48:19.122Z",
+  "lastPublisher": {
+    "name": "dfrankland",
+    "email": "dylan@frankland.io"
+  },
+  "owners": [
+    {
+      "name": "dfrankland",
+      "email": "dylan@frankland.io"
+    }
+  ],
+  "readme": "# HyperTerm Transparent Background Plugin\n\n> An emulated transparent background for [HyperTerm](https://hyperterm.org/)!\n\n## WAT HOW DOES IT WORK\n\n![alt wat][1]\n\nIt's an HTML5 `<video />` of the entire screen that's moved when the window\nmoves. CSS is used to make it transparent and add other effects.\n\n**If you don't want a blur or other effects added to your background, but you\nstill want it to be transparent, just use [an 8 digit hexcidecimal `#AARRGGBB`\ncolor][2] as your `config.backgroundColor`\n(ex `config.backgroundColor: '#AA000000'`).**\n\n### Demo\n\n![alt demo][3]\n\n### Configuration\n\n#### Usage with themes\n\nYes, it works with themes! All that is needed is to add this package anywhere\nafter the theme package and it will automatically apply the effects from the\n`config.transparentBg` property below to the background from the theme.\n\nFor example using the [`hyperterm-material`](https://github.com/dperrera/hyperterm-material) theme:\n\n```javascript\nmodule.exports = {\n  plugins: [\n    'hyperterm-material',\n    'hyperterm-transparent-bg',\n  ],\n};\n```\n\n##### Properties\n\nAdd these properties to your `~/.hyperterm.js` file to configure\n`hyperterm-transparent-bg`.\n\n###### `config.backgroundColor`\n\n*   Type: string (hex color '#AARRGGBB')\n*   Default: `'#000'`\n\nThe normal background property for HyperTerm.\n\n###### `config.transparentBg`\n\n*   Type: object\n*   Default: `{ WebkitFilter: 'blur(5px)', opacity: '0.3' }`\n\nThis object can be any [CSSStyleDeclaration][4] allowed.\nEssentially pass an inline style object [the same way you would with React][5].\n\nBy default there is blur and opacity applied.\nA value of `opacity: 1` will have no background color applied to it.\nA value of `opacity: 0` for opacity will have no \"transparency\" and only have\ncolor.\n\n### Development / Debugging / More WAT\n\nSetting the `DEBUG` environmental variable to a [truthy value][6] will make the\nplugin `console.log` the commands that are being sent to the window.\n\n[1]: http://i.giphy.com/12mPcp41D9a1i0.gif\n[2]: https://developer.mozilla.org/en-US/docs/Web/CSS/color_value#rgba()\n[3]: http://i.giphy.com/3o6ZsYOu9C7RhSWFBS.gif\n[4]: https://developer.mozilla.org/en-US/docs/Web/API/CSSStyleDeclaration/cssText\n[5]: https://facebook.github.io/react/tips/inline-styles.html\n[6]: https://developer.mozilla.org/en-US/docs/Glossary/Truthy\n"
+}

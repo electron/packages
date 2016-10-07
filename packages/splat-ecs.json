@@ -1,6 +1,6 @@
 {
   "name": "splat-ecs",
-  "version": "6.1.0",
+  "version": "7.4.0",
   "description": "A 2D HTML5 Canvas game engine",
   "main": "lib/main.js",
   "scripts": {
@@ -37,22 +37,23 @@
   "dependencies": {
     "box-intersect": "^1.0.1",
     "easing-js": "^1.0.1",
-    "entity-component-system": "^3.0.0",
+    "entity-component-system": "^4.0.4",
     "game-keyboard": "0.1.0",
     "html5-gamepad": "^0.1.4",
-    "mersenne-twister": "^1.0.1",
+    "mersenne-twister": "^1.1.0",
+    "pako": "^1.0.3",
     "time-accumulator": "0.0.0"
   },
   "devDependencies": {
-    "eslint": "^1.10.1",
+    "eslint": "^3.3.1",
     "jsdoc": "^3.4.0"
   },
-  "gitHead": "e92ac0a2ff777a4850b19c538cea85631157e469",
-  "_npmVersion": "3.9.3",
-  "_nodeVersion": "6.2.1",
+  "gitHead": "59cec7ab4d0c28c4d0610dce7ae66e43f6821134",
+  "_npmVersion": "3.10.3",
+  "_nodeVersion": "6.3.1",
   "dist": {
-    "shasum": "007cb273fc2928a4089d95caf04540d4e212d8b0",
-    "tarball": "http://registry.npmjs.org/splat-ecs/-/splat-ecs-6.1.0.tgz"
+    "shasum": "1255a1f2de5dc70fc5a23cc2a96d945b2453ff78",
+    "tarball": "http://registry.npmjs.org/splat-ecs/-/splat-ecs-7.4.0.tgz"
   },
   "versions": [
     {
@@ -210,10 +211,38 @@
     {
       "number": "6.1.0",
       "date": "2016-07-02T21:09:16.017Z"
+    },
+    {
+      "number": "7.0.0",
+      "date": "2016-08-23T22:37:02.163Z"
+    },
+    {
+      "number": "7.1.0",
+      "date": "2016-08-24T01:41:17.199Z"
+    },
+    {
+      "number": "7.2.0",
+      "date": "2016-08-27T17:17:54.982Z"
+    },
+    {
+      "number": "7.2.1",
+      "date": "2016-08-27T19:52:40.357Z"
+    },
+    {
+      "number": "7.2.2",
+      "date": "2016-08-28T18:55:02.811Z"
+    },
+    {
+      "number": "7.3.0",
+      "date": "2016-09-03T01:16:33.086Z"
+    },
+    {
+      "number": "7.4.0",
+      "date": "2016-09-29T22:25:01.694Z"
     }
   ],
   "created": "2015-11-24T02:54:07.472Z",
-  "modified": "2016-07-02T21:09:16.017Z",
+  "modified": "2016-09-29T22:25:01.694Z",
   "lastPublisher": {
     "name": "ericlathrop",
     "email": "eric@ericlathrop.com"
@@ -224,5 +253,5 @@
       "email": "eric@ericlathrop.com"
     }
   ],
-  "readme": "![Splat ECS](./images/splat-ecs-logo.png)\n\nA 2d HTML5 Canvas game engine\n\nSplat ECS is a 2d game engine made for creating multi-platform games entirely in JavaScript. Splat ECS is built around the [Entity Component System](https://github.com/ericlathrop/entity-component-system) pattern, which is flexible and promotes composition of behaviors.\n\n# Features\n\n* Rectangles!\n* Keyboard, mouse, touch, & gamepad input\n* Sounds and music (Web Audio API and HTML5 Audio)\n* Sprite animation\n* Asset loading, and built-in loading screen\n* Games work well on phones, tablets, and desktop browsers.\n* A\\* Pathfinding\n* Particles\n* Tiled map editor support\n* Easing\n\n# Supported (tested) Platforms\n\n* Chrome (desktop & mobile)\n* Firefox\n* Internet Explorer (desktop & mobile)\n* Safari (desktop & mobile)\n* Mac using [Electron](https://github.com/atom/electron)\n* Linux x64 using [Electron](https://github.com/atom/electron)\n* iOS using [Ejecta](http://impactjs.com/ejecta)\n* Chrome Web Store\n\nSplat ECS works in PhoneGap/Cordova, but it seems like the apps it produces lack hardware acceleration, making games unplayable.\nSplat ECS may or may not work on other platforms, please let us know what you find out.\n\n# Create a new Game (recommended)\n\n[Fork the starter project](https://github.com/SplatJS/splat-ecs-starter-project)\n\n# Install through [NPM](https://www.npmjs.org)\n\n```\n$ npm install --save splat-ecs\n```\nThen require Splat ECS into your game:\n```\nvar Splat = require(\"splat-ecs\");\n```\nThen use [browserify](http://browserify.org/) to bundle your game as a single JavaScript file for the browser.\n\n# Games using Splat ECS\n\n* [Splat ECS starter project](https://github.com/SplatJS/splat-ecs-starter-project)\n* [Polymorphic](https://github.com/RiseAndShineGames/Polymorphic)\n* [Electropolis](https://github.com/twoscoopgames/electropolis)\n* [Cluster Junk](https://github.com/TwoScoopGames/Cluster-Junk)\n* [Zen Madness](https://github.com/aquisenberry/ggj_meditate)\n* [Treatment and Control](https://github.com/TwoScoopGames/Treatment-and-Control)\n* [Uprooted](https://github.com/TwoScoopGames/ld32)\n* [The Day the World Changed](https://github.com/TwoScoopGames/ggj15)\n\nSend a pull request to add your game to the list!\n"
+  "readme": "![Splat ECS](./images/splat-logo.png)\n\nA 2d HTML5 Canvas game engine\n\nSplat ECS is a 2d game engine made for creating multi-platform games entirely in JavaScript. Splat ECS is built around the [Entity Component System](https://github.com/ericlathrop/entity-component-system) pattern, which is flexible and promotes composition of behaviors.\n\n# Features\n\n* Rectangles!\n* Keyboard, mouse, touch, & gamepad input\n* Sounds and music (Web Audio API and HTML5 Audio)\n* Sprite animation\n* Asset loading, and built-in loading screen\n* Games work well on phones, tablets, and desktop browsers.\n* A\\* Pathfinding\n* Particles\n* SCREENSHAKE\n* Tiled map editor support\n* Easing\n\n# Supported (tested) Platforms\n\n* Chrome (desktop & mobile)\n* Firefox\n* Internet Explorer (desktop & mobile)\n* Safari (desktop & mobile)\n* Mac using [Electron](https://github.com/atom/electron)\n* Linux x64 using [Electron](https://github.com/atom/electron)\n* Chrome Web Store (currently broken [see issue #69](https://github.com/SplatJS/splat-ecs/issues/69))\n* Android using [Cordova](https://cordova.apache.org/)\n\nSplat now works in Cordova, and due to updates to recent phone browsers we have seen good framerates on Android in google Chome. We have not tested Cordova builds on iOS yet, please let us know what you find out.\n\n# Requirements\n* Browser (like Firefox or Chrome)\n* Text editor\n* Terminal\n* [Node.js](https://nodejs.org/en/)\n\n# New to Splat?\nIf you are new to Splat, it is highly recommended that you try out the [tutorial project](http://splatjs.com/tutorials/splatformer).\n\n# Create a new Game\n1. [Clone or download a zip of the starter project](https://github.com/SplatJS/splat-ecs-starter-project)\n\n2. (skip this step if you are cloning the repo) The zip file should be called splat-ecs-starter-project-master.zip. Unzip this file and you will be left with a folder named splat-ecs-starter-project.\n\n3. In your terminal navigate into the splat-ecs-starter-project folder.\n\n `cd /Path/To/splat-ecs-starter-project`\n\n4. Next we will run npm install to install Splat ECS and all of it's modules:\n\n `npm install`\n5. This will install all of the game and engine dependencies from NPM — it can take a couple of minutes. If you see any warning (denoted by npm WARN) this is okay, this just means that a package Splat-ECS uses is out of date it should not effect your game and newer versions of Splat-ECS Starter Project will take care of this issue. You will know npm install is finished when the terminal returns to your command prompt (you will see your username).\n\n6. To run a Splat ECS game all you need to do is navigate to the project folder in your terminal and type `npm start`\nThis will run webpack, which builds your game and also runs eslint which checks your JavaScript code for errors.\n\n7. You should try running your game to make sure it is working before you continue. When the last line in your terminal reads 'webpack: bundle is now VALID.' this means webpack is done and now you can open a browser and go to `localhost:4000`.\n\nThe Splat ECS sample game is just white screen with a black-outlined square you can control with WASD, or arrow keys. Test that this is working and note that if the keys are not working you may need to click inside the browser window to give the game your 'focus'.\n\n# Games using Splat (ECS)\n* [Cluster Junk](https://github.com/TwoScoopGames/Cluster-Junk)\n* [Cali Bunga](https://riseshinegames.itch.io/cali-bunga)\n* [Flip Flap Pong](https://riseshinegames.itch.io/flip-flap-pong)\n* [Polymorphic](http://riseandshinegames.github.io/Polymorphic/build/)\n* [Electropolis](https://two-scoop-games.itch.io/electropolis)\n* [Morning Ritual](http://twoscoopgames.com/morningritual/game/)\n* [Drunken Boss Fight](http://aquisenberry.itch.io/jam-build)\n* [Zen Madness](http://aquisenberry.github.io/ggj_meditate/build/)\n* [Treatment and Control](http://twoscoopgames.com/ggj15/)\n* [The Day the World Changed](https://github.com/TwoScoopGames/ggj15)\n* [Uprooted](http://twoscoopgames.com/ld32/)\n\nSee more Splat games at [http://splatjs.com/](http://splatjs.com/)\n\nSend a pull request to add your game to the list!\n\n## Contributing\n\nIf you are interested in participating in this project, please read [CODE_OF_CONDUCT.md](CODE_OF_CONDUCT.md) for details on our code of conduct.\n\n## Versioning\n\nWe use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/SplatJS/splat-ecs/tags).\n\n## Authors\n\n* **[Eric Lathrop](https://github.com/ericlathrop)** - *Initial work*\n\nSee also the list of [contributors](https://github.com/SplatJS/splat-ecs/contributors) who participated in this project.\n\n## License\n\nThis project is licensed under the MIT License - see the [LICENSE.TXT](LICENSE.TXT) file for details\n"
 }

@@ -1,0 +1,157 @@
+{
+  "name": "mobx-input",
+  "version": "0.0.13",
+  "description": "Form library for MobX, with observable state and validations",
+  "main": "lib/mobx-input.js",
+  "typings": "lib/mobx-input.d.ts",
+  "scripts": {
+    "test": "npm run quick-build && npm run tape",
+    "full-test": "npm run small-build && npm run build-tests && npm run use-minified && npm run tape && npm run perf",
+    "tape": "tape test/*.js | faucet",
+    "perf": "npm run small-build && time node --expose-gc test/perf/index.js",
+    "prepublish": "npm run quick-build",
+    "quick-build": "tsc",
+    "small-build": "scripts/single-file-build.sh",
+    "test-browser-electron": "npm run small-build && ( browserify test/*.js | tape-run )",
+    "test-browser-chrome": "npm run small-build && ( browserify test/*.js | tape-run --browser chrome )",
+    "test-browser-safari": "npm run small-build && ( browserify test/*.js -t [ babelify --presets [ es2015 ] ] | tape-run --browser safari )",
+    "test-browser-firefox": "npm run small-build && ( browserify test/*.js  | tape-run --browser firefox )",
+    "test-travis": "npm run small-build && tape test/*.js test/perf/index.js && tsc && istanbul cover tape test/*.js",
+    "coverage": "npm run small-build && npm run build-tests && istanbul cover tape test/*.js test/perf/index.js && cat ./coverage/lcov.info|coveralls",
+    "build-tests": "npm run build-typescript-tests && npm run build-babel-tests",
+    "build-typescript-tests": "tsc -m commonjs -t es5 --experimentalDecorators --noImplicitAny --outDir test test/typescript-tests.ts",
+    "build-babel-tests": "babel test/babel/babel-tests.js -o test/babel-tests.js",
+    "use-minified": "cp lib/mobx.min.js lib/mobx.js",
+    "lint": "tslint -c tslint.json src/*.ts src/types/*.ts src/api/*.ts src/core/*.ts src/utils/*.ts"
+  },
+  "repository": {
+    "user": "tomaash",
+    "repo": "mobx-input",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/tomaash/mobx-input/tarball/master",
+    "clone_url": "https://github.com/tomaash/mobx-input",
+    "https_url": "https://github.com/tomaash/mobx-input",
+    "travis_url": "https://travis-ci.org/tomaash/mobx-input",
+    "zip_url": "https://github.com/tomaash/mobx-input/archive/master.zip",
+    "api_url": "https://api.github.com/repos/tomaash/mobx-input"
+  },
+  "author": {
+    "name": "Tomas Holas"
+  },
+  "license": "MIT",
+  "files": [
+    "lib",
+    "LICENSE",
+    "bower.json"
+  ],
+  "homepage": "https://github.com/tomaash/mobx-input",
+  "devDependencies": {
+    "babel-cli": "^6.4.5",
+    "babel-core": "^6.4.5",
+    "babel-plugin-transform-decorators-legacy": "^1.3.4",
+    "babel-preset-es2015": "^6.3.13",
+    "babel-preset-react": "^6.3.13",
+    "babel-preset-stage-1": "^6.3.13",
+    "babelify": "^7.3.0",
+    "browserify": "^12.0.1",
+    "coveralls": "^2.11.4",
+    "faucet": "0.0.1",
+    "istanbul": "^0.3.21",
+    "lodash.intersection": "^3.2.0",
+    "tape": "^4.2.2",
+    "tape-run": "^2.1.0",
+    "typescript": "^1.8.10",
+    "typings": "^1.3.1",
+    "uglify-js": "^2.6.1"
+  },
+  "dependencies": {
+    "validator": "^5.5.0"
+  },
+  "peerDependencies": {
+    "mobx": "^2.5.1",
+    "mobx-react": "^3.5.5",
+    "react": "^15.3.0"
+  },
+  "keywords": [
+    "mobx",
+    "i18n",
+    "translations",
+    "typescript"
+  ],
+  "gitHead": "dc206560de52ecb5939dd5d5a8f07b2589a90c33",
+  "_npmVersion": "3.10.3",
+  "_nodeVersion": "6.3.1",
+  "dist": {
+    "shasum": "1dbd1bd18d4c2790ac8bb944ea22c4119d6b902d",
+    "tarball": "http://registry.npmjs.org/mobx-input/-/mobx-input-0.0.13.tgz"
+  },
+  "versions": [
+    {
+      "number": "0.0.1",
+      "date": "2016-08-16T12:18:57.423Z"
+    },
+    {
+      "number": "0.0.2",
+      "date": "2016-08-24T08:45:57.101Z"
+    },
+    {
+      "number": "0.0.3",
+      "date": "2016-09-12T11:21:06.899Z"
+    },
+    {
+      "number": "0.0.4",
+      "date": "2016-09-12T11:29:51.743Z"
+    },
+    {
+      "number": "0.0.5",
+      "date": "2016-09-12T11:33:57.537Z"
+    },
+    {
+      "number": "0.0.6",
+      "date": "2016-09-13T07:40:18.030Z"
+    },
+    {
+      "number": "0.0.7",
+      "date": "2016-09-13T11:44:05.475Z"
+    },
+    {
+      "number": "0.0.8",
+      "date": "2016-09-13T13:24:21.630Z"
+    },
+    {
+      "number": "0.0.9",
+      "date": "2016-09-14T10:18:38.731Z"
+    },
+    {
+      "number": "0.0.10",
+      "date": "2016-09-14T12:27:07.792Z"
+    },
+    {
+      "number": "0.0.11",
+      "date": "2016-09-15T13:42:24.022Z"
+    },
+    {
+      "number": "0.0.12",
+      "date": "2016-09-22T13:36:34.972Z"
+    },
+    {
+      "number": "0.0.13",
+      "date": "2016-09-23T08:51:50.738Z"
+    }
+  ],
+  "created": "2016-08-16T12:18:57.423Z",
+  "modified": "2016-09-23T08:51:50.738Z",
+  "lastPublisher": {
+    "name": "tomaash",
+    "email": "tomas.holas@gmail.com"
+  },
+  "owners": [
+    {
+      "name": "tomaash",
+      "email": "tomas.holas@gmail.com"
+    }
+  ],
+  "readme": "# Form validation for [MobX](https://github.com/mobxjs/mobx)\n\nTaken strong inspiration from: [react-bootstrap-validation](https://github.com/heilhead/react-bootstrap-validation), but `mobx-input` depends just on [validator.js](https://github.com/chriso/validator.js/)(18kb minified). React, MobX and `mobx-react` are peerDependencies, assuming you are already using those anyway.\n\n## Installation:\n\n`npm install mobx-input --save`\n\n## Usage - Example Form:\n\n```js\nimport React from 'react'\nimport { ValidatedInput, submit } from 'mobx-input'\n\nexport class UserRegisterComponent extends React.Component {\n\tonSubmit = () => {\n\t\tconst result = submit(this.props.controller.formData)\n\t\tif (result.valid) {\n\t\t\tthis.props.controller.registerUser(result.values)\n\t\t}\n\t}\n\n\trender() {\n\t\tconst {appState, controller} = this.props\n\t\tconst job = appState.currentJob\n\n\t\treturn (\n\t\t\t<div className='container'>\n\t\t\t\t<ValidatedInput\n\t\t\t\t\ttype='text'\n\t\t\t\t\tlabel='First Name'\n\t\t\t\t\tname='firstName'\n\t\t\t\t\tvalidate='required'\n\t\t\t\t\tmodel={controller.formData}\n\t\t\t\t\terrorHelp={{\n\t\t\t\t\t\trequired: 'First Name is required'\n\t\t\t\t\t}}\n\t\t\t\t\t/>\n\t\t\t\t<ValidatedInput\n\t\t\t\t\ttype='text'\n\t\t\t\t\tlabel='Last Name'\n\t\t\t\t\tname='lastName'\n\t\t\t\t\tvalidate='required'\n\t\t\t\t\tmodel={controller.formData}\n\t\t\t\t\terrorHelp={{\n\t\t\t\t\t\trequired: 'Last Name is required'\n\t\t\t\t\t}}\n\t\t\t\t\t/>\n\t\t\t\t<ValidatedInput\n\t\t\t\t\ttype='text'\n\t\t\t\t\tlabel='Email'\n\t\t\t\t\tname='emailAddress'\n\t\t\t\t\tvalidate='required,isEmail'\n\t\t\t\t\tmodel={controller.formData}\n\t\t\t\t\terrorHelp={{\n\t\t\t\t\t\tisEmail: 'Email is invalid',\n\t\t\t\t\t\trequired: 'Email is required'\n\t\t\t\t\t}}\n\t\t\t\t\t/>\n\t\t\t\t<ValidatedInput\n\t\t\t\t\ttype='password'\n\t\t\t\t\tlabel='Password'\n\t\t\t\t\tname='password'\n\t\t\t\t\tvalidate='required,isLength:4:60'\n\t\t\t\t\tmodel={controller.formData}\n\t\t\t\t\terrorHelp={{\n\t\t\t\t\t\tisLength: 'Password must be at least 4 characters long',\n\t\t\t\t\t\trequired: 'Password is required'\n\t\t\t\t\t}}\n\t\t\t\t\t/>\n\t\t\t\t<button\n\t\t\t\t\ttype='submit'\n\t\t\t\t\tonClick={this.onSubmit}>\n\t\t\t\t\t\tRegister\n\t\t\t\t</button>\n\t\t\t</div>\n\t\t)\n\t}\n}\n```\n\nJust provide any MobX observable object as `model` to all form fields. All values and validation data will be stored there. Pass this object to `submit` function to trigger validations for untouched components. Validation rules are specified in `validate` attribute, and error messages in `errorHelp`\n\n### `ValidatedInput`\n\nShould be used instead of the original one for all the fields that need to be validated. All `ValidatedInput`s should have `name` property defined.\n\n**Properties**\n\n##### `name: String` **required**\nThis property is inherited from `Input` with only difference that it is required for `ValidatedInput`.\n\n```js\n<ValidatedInput\n\tname='email'\n\tvalidate='required,isEmail'\n/>\n```\n\n##### `validate: String`\n\nValidation rule is a combination of validator.js method names separated with comma.\n```js\n<ValidatedInput\n\tname='email'\n\tvalidate='required,isEmail,isLength:5:60'\n/>\n```\nIn the example above, input's value will be validated with three methods. `isLength` method also receives additional params. Inverse rules (like `!isNull`) are supported, although in `errorHelp` object they're looked up without the exclamation mark.\n\n##### `errorHelp: Object|String`\nCan be either a string with error text or an object with map `ruleName => errorText`.\n```js\n<ValidatedInput\n\tname=\"email\"\n\tvalidate='required,isEmail',\n\terrorHelp={{\n\t\trequired: 'Please enter your email',\n\t\tisEmail: 'Invalid email'\n}}\n/>\n```\n\n##### `model: Object`\nAny MobX observable object to store all form data\n\n### Custom render function and validation function\nIt's also possible to provide custom render and validation functions to allow for different design or specialized validated components\n```js\nconst telephoneInputRenderer =\n\n<ValidatedInput\n\tlabel='Phone number'\n\tname='callNumber'\n\tvalidate={(x) => PhoneNumber.parse(x)}\n\terrorHelp='Phone number is not valid'\n\tmodel={appState.currentForm}\n\trenderFunction={(props) =>\n\t\t<FormGroup controlId={props.id} validationState={props.validationState} >\n\t\t\t<ControlLabel>{props.label} </ControlLabel>\n\t\t\t<ReactTelephoneInput\n\t\t\t\tid={props.id}\n\t\t\t\tdefaultCountry='nl'\n\t\t\t\tflagsImagePath='/images/flags.png'\n\t\t\t\tvalue={props.value}\n\t\t\t\tonChange={this.handlePhoneChange.bind(this, props.changeHandler)}\n\t\t\t\t/>\n\t\t\t{props.help && <HelpBlock>{props.help} </HelpBlock>}\n\t\t</FormGroup>\n\t}\n/>\n```\n\n### Default render function\n\nYou can also specify `defaultRenderFunction` in case you don't want to repeat yourself in every `ValidatedInput`. Just import `{ config }` from `mobx-input`, and override it.\n\n```js\nimport { config, ValidatedInput, submit } from 'mobx-input'\n\nconst myDefaultRenderFunction = (props) =>\n    <div className={`form-group ${props.validationState ? 'has-error' : ''}`}>\n      <h1>My Own Mega Label</h1>\n      <label for={props.id} className='control-label'>\n        {props.label}\n      </label>\n      {props.componentClass === 'textarea' ?\n        <textarea\n          id={props.id}\n          className='form-control'\n          placeholder={props.placeholder}\n          value={props.value}\n          onChange = {props.changeHandler}\n          />\n        :\n        <input\n          id={props.id}\n          className='form-control'\n          type={props.type}\n          placeholder={props.placeholder}\n          value={props.value}\n          onChange = {props.changeHandler}\n          />\n      }\n      {props.help && <span className='help-block'>\n        {props.help}\n      </span>}\n    </div>\n\nconfig.defaultRenderFunction = myDefaultRenderFunction\n```\n"
+}

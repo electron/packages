@@ -1,0 +1,69 @@
+{
+  "name": "myoui",
+  "version": "0.0.2",
+  "description": "MyoUI is a basic UI elements library.",
+  "main": "./main.js",
+  "scripts": {
+    "build": "webpack"
+  },
+  "dependencies": {
+    "coffee-loader": "^0.7.2",
+    "coffee-script": "^1.10.0",
+    "file-loader": "^0.8.5",
+    "react-select": "^1.0.0-beta13",
+    "url-loader": "^0.5.7",
+    "raw-loader": "^0.5.1",
+    "json-loader": "^0.5.4",
+    "imports": "^1.0.0",
+    "radium": "^0.18.0",
+    "react": "^15.0.2",
+    "react-dom": "^15.0.2",
+    "chroma-js": "^1.1.1"
+  },
+  "devDependencies": {
+    "source-map-loader": "^0.1.5",
+    "webpack": "^1.12.11"
+  },
+  "repository": null,
+  "keywords": [
+    "UI",
+    "elements",
+    "myou"
+  ],
+  "author": {
+    "name": "Julio Manuel López",
+    "email": "julio@pixelements.net",
+    "url": "http://pixelements.net"
+  },
+  "license": "SEE LICENSE IN <LICENSE>",
+  "gitHead": "cdadaa0fd4973a7f31fd1a085979b7d99e2c0c65",
+  "_npmVersion": "3.9.5",
+  "_nodeVersion": "6.2.2",
+  "dist": {
+    "shasum": "34cc1fdf4f4d8520684465a373b61d12c4a11359",
+    "tarball": "http://registry.npmjs.org/myoui/-/myoui-0.0.2.tgz"
+  },
+  "versions": [
+    {
+      "number": "0.0.1",
+      "date": "2016-09-19T13:19:04.424Z"
+    },
+    {
+      "number": "0.0.2",
+      "date": "2016-09-23T15:57:22.892Z"
+    }
+  ],
+  "created": "2016-09-19T13:19:04.424Z",
+  "modified": "2016-09-23T15:57:22.892Z",
+  "lastPublisher": {
+    "name": "pixelements",
+    "email": "julio@pixelements.net"
+  },
+  "owners": [
+    {
+      "name": "pixelements",
+      "email": "julio@pixelements.net"
+    }
+  ],
+  "readme": "# MyoUI\r\n\r\nMyoUI is a __basic UI elements__ library and you can use it to make your own user interface.\r\nMyoUI is currently used in the [Myou Editor](https://github.com/myou-engine/myou-engine).\r\n\r\nThis library was created as a part of Myou Editor, but we moved it to an independent repository\r\nto use it on any other project.\r\n\r\nMyoUI is based on React and you don't need to append any extra css file to your project to use it.\r\n\r\nThe basic UI theme can be easily replaced or extended with your own theme using some tools included in the library.\r\n\r\n-----\r\n## Usage\r\nAll the code used in the examples has been written in coffee-script.\r\n### Install the package\r\n```\r\nnpm install --save myoui\r\n```\r\n\r\n### Initializing MyoUI\r\n```coffee-script\r\n{MyoUI, Theme, mixins, css_utils, react_utils} = require 'myoui'\r\n\r\n# adding default css code to the document:\r\nrequire 'myoui/default_fonts'\r\nrequire 'myoui/default_animations'\r\n\r\n# Creating a myoui instance\r\nmyoui = new MyoUI new Theme\r\n```\r\n\r\n### Using a custom theme\r\n```coffee-script\r\ncustom_theme = new Theme\r\n    # In this theme spacing and colors will\r\n    # be overwrited in the default theme\r\n    spacing: 10 #px\r\n    colors:\r\n        t1: '#5a5a5a'\r\n        light: '#eaeaea'\r\n        dark: '#828282'\r\n        yellow: 'FFD111'\r\n        green: '#BCE346'\r\n        blue: '#00BEFF'\r\n        red: '#f16b5c'\r\n        purple: '#c188cf'\r\n\r\n\r\n# Creating a myoui instance\r\nmyoui = new MyoUI custom_theme\r\n```\r\n\r\n\r\n### Adding a custom CSS\r\n\r\nIn this example we will add a css wich contains custom fonts and animations instead of using default_fonts and default animations.\r\n\r\nThis code\r\n```coffee-script\r\nrequire 'myoui/default_animations'\r\nrequire 'myoui/default_fonts'\r\n```\r\n\r\nwill be replaced by\r\n\r\n```coffee-script\r\nif process.browser # browser code\r\n    css_code = require 'raw!./css/fonts_and_animations.css'\r\nelse # electron code\r\n    fs = require 'fs'\r\n    dirname =  __dirname.replace(/\\\\/g, '/')\r\n    css_code = fs.readFileSync dirname + '/css/fonts_and_animations.css', 'utf8'\r\n\r\ncss_utils.add_css css_code\r\n```\r\n\r\nWhere the css file will be required depending if your app is being executed\r\nin electron or in a browser (using webpack).\r\n\r\nAlternatively you can simply add the css files in your html or generate the css code using the css utils included in the MyoUI package.\r\n\r\n### Rendering a MyoUI basic element (complete example)\r\n```coffee-script\r\n{MyoUI, Theme, mixins, react_utils} = require 'myoui'\r\n\r\n# adding default css code to the document:\r\nrequire 'myoui/default_fonts'\r\nrequire 'myoui/default_animations'\r\n\r\n# Creating a myoui instance\r\nmyoui = new MyoUI new Theme\r\n\r\n# Creating a button\r\nbtn = new myoui.Button\r\n\r\n{Component, React, ReactDOM} = react_utils\r\n{div} = React.DOM\r\n\r\nmain_component = Component\r\n    render: ->\r\n        div\r\n            className: 'ButtonExample'\r\n            style:\r\n                backgroundColor: mixins.colors.dark\r\n                width: '100vw'\r\n                height: '100vh'\r\n\r\n            btn.ui {\r\n                label: 'Button example'\r\n                icon: require './static_files/images/icon.png'\r\n                onMouseUp: (event)-> alert 'Hi!'\r\n            }\r\n\r\nReactDOM.render component(), document.getElementById('app')\r\n\r\n```\r\n\r\n### Basic elements properties\r\n#### Button\r\n```coffee-script\nbutton_props =\n    label: 'string'\n        # it could be a string or null\n\n    icon: require '../../static_files/images/icon.png'\n        # it could be a URL or a component or null\n\n    onMouseUp: (event)-> alert 'Hi!'\n        # this is a regular onMouseUp function\n\n```\r\n#### Slider\r\n```coffee-script\r\nvariable = 10\r\n\r\nslider_props =\r\n    label: 'string'\r\n        # it could be a string or null\r\n\r\n    icon: require '../../static_files/images/icon.png'\r\n        # it could be a URL or a component or null\r\n\r\n    min: -100 # absolute min\r\n    softMin: 0 # visible min (softMin = min by default)\r\n    softMax: 10 # visible max (softMax = max by default)\r\n    max: 100 # absolute max\r\n\r\n    read: ->\r\n        # It will be called when the component will be mounted and\r\n        # if onChange is enabled it will be called onSlideEnd\r\n        # its prurpose is to update the slider value\r\n        return variable\r\n\r\n    onChange: (value) ->\r\n        # It will be called each slide gesture frame\r\n        # here you can write the value of the slider\r\n        variable = value\r\n\r\n    onSlideEnd: (value) ->\r\n        # It will be called in the slide gesture end\r\n        # here you can write the value of the slider\r\n        variable = value\r\n\r\n    step: 1\r\n        # the slide will move jumping step by step\r\n        # This option is disabled by default\r\n        # To enable it you must assign any positive number\r\n\r\n    unit: '<value> px'\r\n        # the value will be inserted in <value> tag\r\n        # you can use only 1 <value> tag\r\n        # if the <value> tag is not used, the unit will be placed after the value.\r\n\r\n    allowManualEdit: true\r\n        # This is true by default.\r\n        # If true, the user can click to enter a numeric value\r\n\r\n    hideValue: false\r\n        # If it is enabled, removes the value from the sldier.\r\n\r\n    barColor: (f)->\r\n        # It could be a css color (string) or\r\n        # a function wich returns a css color (string).\r\n        # the argument of the function is a factor (max_width_of_bar/current_size_of_bar).\r\n        # This function is defined by default in mixins.coffee\r\n\r\n        # Example of custom barColor function:\r\n        v = Math.floor(255*f)\r\n        return \"rgb(#{v + 20},#{255 - v},#{200})\"\r\n\r\n    movementAccuracy: 1 # lower movementAccuracy makes slower the slide movement\r\n\r\n\r\n\r\n```\r\n\r\n#### Switch\r\n```coffee-script\r\nvariable = 10\r\n\r\nswitch_props =\r\n    label: 'string'\r\n        # it could be a string or null\r\n\r\n    icon: require '../../static_files/images/icon.png'\r\n        # it could be a URL or a component or null\r\n\r\n    states: 3 # 2 by default\r\n        # number of different states, the switch supports any number of\r\n        # states but we recomend use 2 or 3. More states could be confusing.\r\n\r\n    read: -> variable\r\n        # It will be called on render\r\n        # its purpose is to update the switch current state reading it\r\n        # from a external variable.\r\n\r\n    write: (currentState)-> variable = (currentState + 1) % 3\r\n        # It will save the new state on a external variable.\r\n        # It will be called on mouse up\r\n\r\n    switchColor: (colorFactor)->\r\n        # It could be a css color (string) or\r\n        # a function wich returns a css color (string).\r\n        # the argument of the function is colorFactor defined by\r\n        # (current_state/number_of_states).\r\n        # It is defined by default in mixins.coffee\r\n\r\n        return mixins.colorInterpolation colors.red, colors.green, colorFactor\r\n```\r\n\r\n#### TextInput\r\n```coffee-script\r\ntext_input_props =\r\n    label: 'string'\r\n        # it could be a string or null\r\n\r\n    icon: require '../../static_files/images/icon.png'\r\n        # it could be a URL or a component or null\r\n\r\n    read: -> text\r\n        # It will be called on render\r\n        # its purpose is to update the current tex value reading it\r\n        # from a external variable.\r\n\r\n    onSubmit: (t)-> text = t\r\n        # It will save the new value on a external variable.\r\n        # It will be called on submit (enter)\r\n\r\n    onChange: (t)-> text = t\r\n        # It will save the new value on a external variable.\r\n        # It will be called on each keydown\r\n```\r\n\r\n#### Vector\r\n```coffee-script\r\nvector = [0,0,1]\r\n\r\nvector_props =\r\n    label: 'string'\r\n        # it could be a string or null\r\n\r\n    icon: require '../../static_files/images/icon.png'\r\n        # it could be a URL or a component or null\r\n\r\n    min: -100 # absolute min\r\n    softMin: 0 # visible min (softMin = min by default)\r\n    softMax: 10 # visible max (softMax = max by default)\r\n    max: 100 # absolute max\r\n\r\n    read: (i)->\r\n        # It will be called when the component will be mounted and\r\n        # if onChange is enabled it will be called onSlideEnd\r\n        # its prurpose is to update the slider value\r\n        return vector[i]\r\n\r\n    onChange: (value, i) ->\r\n        # It will be called each slide gesture frame\r\n        # here you can write the value of the slider\r\n        vector[i] = value\r\n\r\n    onSlideEnd: (value, i) ->\r\n        # It will be called in the slide gesture end\r\n        # here you can write the value of the slider\r\n        vector[i] = value\r\n\r\n    step: 1\r\n        # the slide will move jumping step by step\r\n        # This option is disabled by default\r\n        # To enable it you must assign any positive number\r\n\r\n    unit: '$ <value> px'\r\n        # the value will be inserted in <value> tag\r\n        # you can use only 1 <value> tag\r\n        # if the <value> tag is not used, the unit will be placed after the value.\r\n\r\n    allowManualEdit: true\r\n        # This is true by default.\r\n        # If it is false, the value manual edition mode\r\n        # will be disabled.\r\n\r\n    hideValue: false\r\n        # If it is enabled, removes the value from the sldier.\r\n\r\n    barColor: (f)->\r\n        # It could be a css color (string) or\r\n        # a function wich returns a css color (string).\r\n        # the argument of the function is a factor (max_width_of_bar/current_size_of_bar).\r\n        # This function is defined by default in mixins.coffee\r\n\r\n        # Example of custom barColor function:\r\n        v = Math.floor(255*f)\r\n        return \"rgb(#{v + 20},#{255 - v},#{200})\"\r\n\r\n    vertical: false\r\n        # vertical UI false by default.\r\n    movementAccuracy: 1 (lower movementAccuracy makes slower the slide movement)\r\n\r\n```\r\n\r\n#### Splitter\r\n```coffee-script\r\nsplitter_props =\r\n    label: 'string'\r\n        # it could be a string or null\r\n```\r\n## Documentation\r\nIt will improved soon.\r\n\r\n## Examples\r\nIt will be added soon.\r\n\r\n## Feedback\r\n\r\nYou can send any feedback or question to:\r\n* Julio Manuel López <julio@pixlements.net>\r\n"
+}

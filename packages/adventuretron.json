@@ -1,0 +1,155 @@
+{
+  "name": "adventuretron",
+  "version": "0.0.15",
+  "description": "Create self-guided workshops using electron",
+  "main": "main.js",
+  "browser": "renderer/index.js",
+  "style": "renderer/css/bundle.css",
+  "scripts": {
+    "test": "tape tests/*.js",
+    "build": "browserify renderer/index.js -t sheetify/transform -p [ css-extract -o renderer/css/bundle.css ] -o /dev/null",
+    "watch": "watchify renderer/index.js -t sheetify/transform -p [ css-extract -o renderer/css/bundle.css ] -o /dev/null",
+    "prepublish": "npm run build"
+  },
+  "bin": {
+    "adventuretron": "bin/index.js"
+  },
+  "repository": {
+    "user": "adventuretron",
+    "repo": "adventuretron",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/adventuretron/adventuretron/tarball/master",
+    "clone_url": "https://github.com/adventuretron/adventuretron",
+    "https_url": "https://github.com/adventuretron/adventuretron",
+    "travis_url": "https://travis-ci.org/adventuretron/adventuretron",
+    "zip_url": "https://github.com/adventuretron/adventuretron/archive/master.zip",
+    "api_url": "https://api.github.com/repos/adventuretron/adventuretron"
+  },
+  "keywords": [
+    "nodeschool",
+    "workshopper",
+    "adventure",
+    "electron"
+  ],
+  "author": {
+    "name": "sethvincent"
+  },
+  "license": "MIT",
+  "homepage": "https://github.com/adventuretron/adventuretron#readme",
+  "devDependencies": {
+    "browserify": "^13.1.0",
+    "css-extract": "^1.1.2",
+    "electron-packager": "^7.3.0",
+    "standard": "^7.1.2",
+    "tape": "^4.6.0",
+    "watchify": "^3.7.0"
+  },
+  "dependencies": {
+    "beldown": "^1.1.0",
+    "bulk-require": "^1.0.0",
+    "choo": "^3.1.1",
+    "choo-log": "^1.1.0",
+    "create-html": "^1.1.0",
+    "dom-css": "^2.0.1",
+    "domify": "^1.4.0",
+    "each-async": "^1.1.1",
+    "electron": "^1.4.1",
+    "execspawn": "^1.0.1",
+    "glob": "^7.0.6",
+    "highlight.js": "^9.6.0",
+    "insert-css": "^1.0.0",
+    "interactive-sandbox": "^1.1.0",
+    "level": "^1.4.0",
+    "marked": "^0.3.6",
+    "maxstache-stream": "^1.0.4",
+    "sheetify": "^5.1.0",
+    "subcommand": "^2.0.3",
+    "tachyons": "^4.2.0",
+    "tar-fs": "^1.13.2",
+    "xtend": "^4.0.1"
+  },
+  "gitHead": "bd7ef95ebe6f9d0f3cc168949e0efb2fb8cf40c9",
+  "_npmVersion": "3.10.2",
+  "_nodeVersion": "6.2.0",
+  "dist": {
+    "shasum": "260573388064b1dd104c5602998e87e17f35db97",
+    "tarball": "http://registry.npmjs.org/adventuretron/-/adventuretron-0.0.15.tgz"
+  },
+  "versions": [
+    {
+      "number": "0.0.1",
+      "date": "2016-09-01T22:11:23.610Z"
+    },
+    {
+      "number": "0.0.2",
+      "date": "2016-09-07T21:00:01.122Z"
+    },
+    {
+      "number": "0.0.3",
+      "date": "2016-09-07T22:13:33.749Z"
+    },
+    {
+      "number": "0.0.4",
+      "date": "2016-09-09T23:08:31.537Z"
+    },
+    {
+      "number": "0.0.5",
+      "date": "2016-09-14T00:12:09.106Z"
+    },
+    {
+      "number": "0.0.6",
+      "date": "2016-09-14T23:24:42.693Z"
+    },
+    {
+      "number": "0.0.7",
+      "date": "2016-09-15T04:18:35.081Z"
+    },
+    {
+      "number": "0.0.8",
+      "date": "2016-09-15T04:31:00.623Z"
+    },
+    {
+      "number": "0.0.9",
+      "date": "2016-09-16T03:55:59.560Z"
+    },
+    {
+      "number": "0.0.10",
+      "date": "2016-09-22T23:55:45.985Z"
+    },
+    {
+      "number": "0.0.11",
+      "date": "2016-09-24T22:41:43.959Z"
+    },
+    {
+      "number": "0.0.12",
+      "date": "2016-09-26T01:02:20.941Z"
+    },
+    {
+      "number": "0.0.13",
+      "date": "2016-09-27T21:23:25.724Z"
+    },
+    {
+      "number": "0.0.14",
+      "date": "2016-09-29T20:27:10.871Z"
+    },
+    {
+      "number": "0.0.15",
+      "date": "2016-09-29T20:51:13.626Z"
+    }
+  ],
+  "created": "2016-09-01T22:11:23.610Z",
+  "modified": "2016-09-29T20:51:13.626Z",
+  "lastPublisher": {
+    "name": "sethvincent",
+    "email": "sethvincent@gmail.com"
+  },
+  "owners": [
+    {
+      "name": "sethvincent",
+      "email": "sethvincent@gmail.com"
+    }
+  ],
+  "readme": "# adventuretron\n\nCreate self-guided workshops using electron.\n\n## Work in progress\n\nWhat you see here is a very early version of Adventuretron. Expect breaking changes.\n\n### Adventuretron is alive!\n\nTo see an example of an Adventuretron workshop, check out this work in progress workshop that teaches creating Adventuretron workshops: [adventuretron-adventure](https://github.com/adventuretron/adventuretron-adventure).\n\n### Features\n\n- basic i18n support.\n- value, code, & file input challenges\n- navigation & verification of challenges\n\n## Get involved\n\n- [adventuretron.org](https://adventuretron.org)\n- [documentation](https://docs.adventuretron.org)\n- [github org](https://github.com/adventuretron)\n- [chat](https://gitter.im/adventuretron/discuss)\n\n## Code of conduct\nAll participants in the production of Adventuretron projects are expected to follow the [code of conduct](CONDUCT.md).\n\n## Inspiration\n\nThis project is inspired by a number of others:\n\n- The original terminal-based packages for creating [NodeSchool](http://nodeschool.io/#workshoppers) workshops: [adventure](https://github.com/substack/adventure) & [workshopper](https://github.com/workshopper/workshopper).\n- [jlord](https://github.com/jlord)'s awesome [git-it-electron](https://github.com/jlord/git-it-electron) workshop.\n- [shader school](https://github.com/stackgl/shader-school) & [webgl-workshop](https://github.com/stackgl/webgl-workshop) by [hughsk](https://github.com/hughsk) & [mikolalysenko](https://github.com/mikolalysenko)\n\n## Why make this?\n\nAfter making [javascripting](https://github.com/sethvincent/javascripting) and running a few nodeschool events, I've found that folks struggle with reading all the instructions in the terminal. In part this can be due to various cross-platform issues with specific versions of node. Additionally, trying to have colorized terminal output that is accessible for everybody seems weirdly difficult.\n\nElectron can help with this. [git-it-electron](https://github.com/jlord/git-it-electron) is a great example of how we can have clear, readable instructions in a cross-platform desktop app that still encourages people to learn using the same tools they'd regularly use doing this kind of work.\n\n## Open Questions\n\nThis is still early in development, so there are a few undecided elements of this project that you might be able to help with. Each item below has a corresponding [issue](https://github.com/sethvincent/adventuretron/issues).\n\n### Would a different name be better?\n\nI like imagining a robot named `adventuretron` adventuring around the interwebs teaching technology & advancing digital equity. But it's not really a clear name. It does reasonably portray the origins and prior art of the project: a package based on [adventure](https://github.com/substack/adventure) that depends on [electron](http://electron.atom.io). Your thoughts?\n[Issue #1](https://github.com/sethvincent/adventuretron/issues/1)\n\n### Are you trying to make workshops that run as both websites & electron apps?\n\nThere are some file system limitations to building apps that work on the web compared to building them as electron apps. But maybe those can be overcome?\n[Issue #2](https://github.com/sethvincent/adventuretron/issues/2)\n\n### What should the API/usage of adventuretron look like?\n\nI expect there will be separate adventuretron modules for the main electron process and the renderer process. See an early sketch of how the API might look: [Issue #3](https://github.com/sethvincent/adventuretron/issues/3)\n\n### What do you need to make localization easy?\n\nBased in part on the i18n implementation in the workshopper-adventure module, I'm making localization in adventuretron a high priority. What will make translating adventuretron apps easiest for you? [Issue #4](https://github.com/sethvincent/adventuretron/issues/4)\n\n## Dependencies\n\nThe main dependencies of Adventuretron are [electron](http://electron.atom.io/) & [choo](https://github.com/yoshuawuyts/choo).\n"
+}

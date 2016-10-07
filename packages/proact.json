@@ -1,0 +1,107 @@
+{
+  "name": "proact",
+  "version": "0.0.4",
+  "description": "Universal/Electron React+Redux application boilerplate, etc.",
+  "main": "index.js",
+  "bin": {
+    "proact-api": "./bin/api.js",
+    "proact-server": "./bin/server.js"
+  },
+  "scripts": {
+    "test": "mocha -R spec test/",
+    "build": "babel src -d lib"
+  },
+  "author": {
+    "name": "Joshua Gross",
+    "email": "joshua.gross@gmail.com"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "body-parser": "^1.15.2",
+    "express": "^4.14.0",
+    "express-session": "^1.14.1",
+    "less": "^2.7.1",
+    "piping": "^1.0.0-rc.3",
+    "pretty-error": "^2.0.0",
+    "socket.io": "^1.4.8",
+    "ts-babel-node": "^1.0.0",
+    "typescript": "^1.8.10"
+  },
+  "peerDependencies": {
+    "babel-core": "^6.14.0",
+    "babel-eslint": "^6.1.2",
+    "babel-loader": "^6.2.5",
+    "babel-plugin-add-module-exports": "^0.2.1",
+    "babel-plugin-dev-expression": "^0.2.1",
+    "babel-plugin-transform-decorators-legacy": "^1.3.4",
+    "babel-plugin-transform-object-rest-spread": "^6.8.0",
+    "babel-plugin-transform-react-display-name": "^6.8.0",
+    "babel-plugin-transform-remove-console": "^6.8.0",
+    "babel-plugin-transform-remove-debugger": "^6.8.0",
+    "babel-plugin-transform-runtime": "^6.15.0",
+    "babel-plugin-typecheck": "^3.9.0",
+    "babel-plugin-unassert": "^2.1.1",
+    "babel-plugin-webpack-loaders": "^0.7.1",
+    "babel-polyfill": "^6.13.0",
+    "babel-preset-es2015": "^6.14.0",
+    "babel-preset-react": "^6.11.1",
+    "babel-preset-react-hmre": "^1.1.1",
+    "babel-preset-react-optimize": "^1.0.1",
+    "babel-preset-stage-0": "^6.5.0",
+    "babel-register": "^6.14.0",
+    "webpack": "^1.12.9",
+    "clean-webpack-plugin": "^0.1.6",
+    "webpack-dev-middleware": "^1.4.0",
+    "webpack-hot-middleware": "^2.5.0",
+    "webpack-isomorphic-tools": "^2.2.18",
+    "extract-text-webpack-plugin": "^1.0.1",
+    "font-awesome": "^4.4.0",
+    "font-awesome-webpack": "0.0.4",
+    "webpack-sources": "0.1.2"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.14.0"
+  },
+  "gitHead": "b8c31f95cf38ec06bf0dbbd20b0749f6a01dec3c",
+  "_npmVersion": "3.10.3",
+  "_nodeVersion": "6.4.0",
+  "dist": {
+    "shasum": "ba2d1d744e4a5e9a17f40f03870ffaa0a42a9ede",
+    "tarball": "http://registry.npmjs.org/proact/-/proact-0.0.4.tgz"
+  },
+  "versions": [
+    {
+      "number": "0.0.0",
+      "date": "2014-09-26T18:48:37.221Z"
+    },
+    {
+      "number": "0.0.1",
+      "date": "2014-09-27T23:22:30.242Z"
+    },
+    {
+      "number": "0.0.2",
+      "date": "2014-09-27T23:32:44.500Z"
+    },
+    {
+      "number": "0.0.3",
+      "date": "2014-09-27T23:34:42.199Z"
+    },
+    {
+      "number": "0.0.4",
+      "date": "2016-09-15T02:06:42.568Z"
+    }
+  ],
+  "created": "2014-09-26T18:48:37.221Z",
+  "modified": "2016-09-15T02:06:42.568Z",
+  "lastPublisher": {
+    "name": "joshuagross",
+    "email": "joshua.gross@gmail.com"
+  },
+  "owners": [
+    {
+      "name": "joshuagross",
+      "email": "joshua.gross@gmail.com"
+    }
+  ],
+  "readme": "# proact\n\nThis is an experiment to create a single source of truth to bootstrap, develop, package, and distribute universal and Electron React/Redux apps.\n\nproact is a framework that attempts to make it easy to bootstrap an application, but also to make your application code ultimately more\nreadable, maintanable, and production-ready.\n\nSome view frameworks like proact as [evil][library-frameworks-evil]. The arguments are legitimate, but [I](http://www.github.com/joshuagross)\ngrew sick of each of my applications having slightly different, slightly incompatible copies of boilerplate. My feeling is that by restricting\napplications to a subset of common dependencies and patterns, complexity over many applications can be reduced.\n\n# Components\n\n* API server - done.\n* babel config - done.\n* eslint config - done (separate repo).\n* Install instructions. TODO\n* Upgrade instructions. TODO\n* Universal server. TODO\n* API Server documentation. TODO\n* Fileserver / proxy. TODO\n* Pluggable API and server. TODO\n\n# Install\n\nUnfortunately babel plugins, webpack + plugins, and other dependencies (which?) must be installed to the project root:\n\n```\n(\n  export PKG=proact;\n  npm info \"$PKG\" peerDependencies --json | command sed 's/[\\{\\},]//g ; s/: /@/g' | xargs npm install --save-dev \"$PKG\"\n)\n```\n\nwebpack and babel really make a lot of assumptions about where plugins are residing, and for the most part\nassume that everything is under the project root.\n\n# License\n\nCopyright 2016, Swift Nav, All Rights Reserved.\n\nMIT license.\n\n[library-frameworks-evil]: http://tomasp.net/blog/2015/library-frameworks/\n"
+}

@@ -1,0 +1,114 @@
+{
+  "name": "xtorage",
+  "version": "0.0.5",
+  "description": "Web Storage made simple and more powerful.",
+  "main": "dist/commonjs/xtorage.min.js",
+  "scripts": {
+    "compile": "tsc",
+    "coveralls": "gulp coveralls",
+    "test": "gulp unit_test",
+    "build": "npm t && gulp build",
+    "prepublish": "npm run compile && npm build"
+  },
+  "repository": {
+    "user": "ericmdantas",
+    "repo": "xtorage",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/ericmdantas/xtorage/tarball/master",
+    "clone_url": "https://github.com/ericmdantas/xtorage",
+    "https_url": "https://github.com/ericmdantas/xtorage",
+    "travis_url": "https://travis-ci.org/ericmdantas/xtorage",
+    "zip_url": "https://github.com/ericmdantas/xtorage/archive/master.zip",
+    "api_url": "https://api.github.com/repos/ericmdantas/xtorage"
+  },
+  "author": {
+    "name": "Eric Mendes Dantas",
+    "email": "ericdantas0@gmail.com",
+    "url": "https://github.com/ericmdantas"
+  },
+  "license": "MIT",
+  "keywords": [
+    "storage",
+    "web",
+    "xtorage",
+    "angular2",
+    "angular-xtorage",
+    "angular2-xtorage",
+    "sessionStorage",
+    "localStorage",
+    "client-storage"
+  ],
+  "babel": {
+    "presets": [
+      "es2015",
+      "es2016"
+    ]
+  },
+  "homepage": "https://github.com/ericmdantas/xtorage",
+  "devDependencies": {
+    "@types/jasmine": "^2.2.31",
+    "babel-preset-es2015": "^6.13.2",
+    "babel-preset-es2016": "^6.11.3",
+    "babel-register": "^6.11.6",
+    "babelify": "^7.3.0",
+    "browserify": "^13.1.0",
+    "gulp": "^3.9.1",
+    "gulp-babel": "^6.1.2",
+    "gulp-browserify": "^0.5.1",
+    "gulp-coveralls": "^0.1.4",
+    "gulp-rename": "^1.2.2",
+    "gulp-uglify": "^2.0.0",
+    "jasmine-core": "^2.4.1",
+    "karma": "^1.2.0",
+    "karma-browserify": "^5.1.0",
+    "karma-chrome-launcher": "^1.0.1",
+    "karma-jasmine": "^1.0.2",
+    "typescript": "^2.0.0"
+  },
+  "dependencies": {},
+  "gitHead": "f1c04e71c5fd1e6c386e097cee0c9b1c70efca6c",
+  "_npmVersion": "3.10.3",
+  "_nodeVersion": "6.3.0",
+  "dist": {
+    "shasum": "c9530c62ca36827d75be666efbc43cb04634e9d6",
+    "tarball": "http://registry.npmjs.org/xtorage/-/xtorage-0.0.5.tgz"
+  },
+  "stars": 2,
+  "versions": [
+    {
+      "number": "0.0.1",
+      "date": "2015-08-27T00:11:24.428Z"
+    },
+    {
+      "number": "0.0.2",
+      "date": "2015-08-27T10:46:10.951Z"
+    },
+    {
+      "number": "0.0.3",
+      "date": "2015-09-12T03:15:00.071Z"
+    },
+    {
+      "number": "0.0.4",
+      "date": "2015-09-12T03:20:50.423Z"
+    },
+    {
+      "number": "0.0.5",
+      "date": "2016-08-18T11:29:46.176Z"
+    }
+  ],
+  "created": "2015-08-27T00:11:24.428Z",
+  "modified": "2016-08-18T11:29:46.176Z",
+  "lastPublisher": {
+    "name": "ericmdantas",
+    "email": "ericdantas0@gmail.com"
+  },
+  "owners": [
+    {
+      "name": "ericmdantas",
+      "email": "ericdantas0@gmail.com"
+    }
+  ],
+  "readme": "# Xtorage\n\n[![Build Status](https://travis-ci.org/ericmdantas/xtorage.svg?branch=master)](https://travis-ci.org/ericmdantas/xtorage)\n[![Coverage Status](https://coveralls.io/repos/ericmdantas/xtorage/badge.svg?branch=master)](https://coveralls.io/r/ericmdantas/xtorage?branch=master)\n[![npm version](https://badge.fury.io/js/xtorage.svg)](https://badge.fury.io/js/xtorage)\n\n# Install\n\n```shell\n$ npm i --save xtorage\n```\n\n# What is this?\n\nThis is a tiny, yet powerful *framework-agnostic* wrapper for the web storage.\n\nYou shouldn't keep parsing strings/arrays/numbers/objects left and right to save/retrieve stuff into and from the storage.\n\nJust call ```save()```, ```saveInFirstPosition()```, ```remove()```, ```removeLast()``` and so on.\n\nYou can use it pretty much everywhere that is javascript in the client; So, it'll work for: `angular`, `aurelia`, `vue`, `electron`, etc.\n\n\n### API\n\n#### constructor\n\n```ts\nnew Xtorage(storage: 'localStorage' | 'sessionStorage', unique: boolean)\n```\n\n```js\n  let _x1 = new Xtorage('localStorage');\n  _x1.save('k', 1); // saves 1, with the key 'k' in the localStorage\n\n  let _x2 = new Xtorage('sessionStorage');  \n  _x2.save('k', 2); // saves 1, with the key 'k' in the sessionStorage\n\n  let _x3 = new Xtorage();\n  _x3.save('k', 3); // saves 1, with the key 'k' in the localStorage - which is the default\n\n\n  let _x4 = new Xtorage(undefined, true);\n\n  _x4.saveInFirstPosition('k', 1); // array length is 1  \n  _x4.saveInFirstPosition('k', 1); // array length is still 1, unique is set to true\n\n  let _x5 = new Xtorage(undefined, false);\n\n  _x5.saveInFirstPosition('k', 1); // array length is 1  \n  _x5.saveInFirstPosition('k', 1); // array length is 2, unique is set to false\n\n  let _x6 = new Xtorage();\n\n  _x6.saveInFirstPosition('k', 1); // array length is 1  \n  _x6.saveInFirstPosition('k', 1); // array length is 2, unique, by default, is false\n```\n\n#### save\n\n```ts\nsave(key:string, info:any):void\n```\n\n```js\n  let _x = new Xtorage();\n\n  _x.save('k', {a: 1});\n\n  console.log(_x.get('k')); // {a: 1}\n\n```\n\n#### saveInFirstPosition\n\n```ts\n  saveInFirstPosition(key:string, info:any):void\n```\n\n```js\n  let _x = new Xtorage();\n\n  _x.saveInFirstPosition('k', {a: 1});\n\n  console.log(_x.get('k')); // [{a: 1}]\n\n  _x.saveInFirstPosition('k', {b: 2});\n\n  console.log(_x.get('k')); // [{b: 2}, {a: 1}]\n```\n\n#### saveInLastPosition\n\n```ts\nsaveInLastPosition(key:string, info:any):void\n```\n\n```js\n  let _x = new Xtorage();\n\n  _x.saveInLastPosition('k', {a: 1});\n\n  console.log(_x.get('k')); // [{a: 1}]\n\n  _x.saveInLastPosition('k', {b: 2});\n\n  console.log(_x.get('k')); // [{a: 1}, {b: 2}]\n```\n\n#### get\n\n```ts\nget(key:string):any\n```\n\n```js\n  let _x = new Xtorage();\n\n  _x.save('k', [1, true, {a: 1}, [{c: 'abc'}]);\n\n  console.log(_x.get('k')); // [1, true, {a: 1}, [{c: 'abc'}]\n```\n\n\n#### getFirst\n\n```ts\ngetFirst(key:string):void\n```\n\n```js\n  let _x = new Xtorage();\n\n  _x.saveInLastPosition('k', {a: 1});\n\n  console.log(_x.getFirst('k')); // {a: 1}\n\n  _x.saveInLastPosition('k', {b: 2});\n\n  console.log(_x.get('k')); // {a: 1}\n```\n\n#### getLast\n\n```ts\ngetLast(key:string):void\n```\n\n```js\n  let _x = new Xtorage();\n\n  _x.saveInLastPosition('k', {a: 1});\n\n  console.log(_x.getFirst('k')); // {a: 1}\n\n  _x.saveInLastPosition('k', {b: 2});\n\n  console.log(_x.get('k')); // {b: 2}\n```\n\n#### remove\n\n```ts\nremove(key:string):void\n```\n\n```js\n  let _x = new Xtorage();\n\n  _x.save('k', {a: 1});\n\n  console.log(_x.getFirst('k')); // {a: 1}\n\n  _x.remove('k');\n\n  console.log(_x.get('k')); // undefined\n```\n\n#### removeAll\n\n```ts\nremoveAll():void\n```\n\n```js\n  let _x = new Xtorage();\n\n  _x.save('k', {a: 1});\n  _x.save('y', [{somethingElse: true}]);\n\n  console.log(_x.get('k')); // {a: 1}\n  console.log(_x.get('y')); // [{somethingElse: true}]\n\n  _x.removeAll();\n\n  console.log(_x.get('k')); // undefined\n  console.log(_x.get('y')); // undefined\n```\n\n#### removeFirst\n\n```ts\nremoveFirst(key:string):void\n```\n\n```js\n  let _x = new Xtorage();\n\n  _x.saveInFirstPosition('k', {a: 1});\n  _x.saveInLastPosition('k', {b: 2});\n\n  console.log(_x.get('k')); // [{a: 1}, {b: 2}]\n\n  _x.removeFirst('k');\n\n  console.log(_x.get('k')); // [{b: 2}]\n```\n\n#### removeLast\n\n```ts\nremoveLast(key:string):void\n```\n\n```js\n  let _x = new Xtorage();\n\n  _x.saveInFirstPosition('k', {a: 1});\n  _x.saveInLastPosition('k', {b: 2});\n\n  console.log(_x.get('k')); // [{a: 1}, {b: 2}]\n\n  _x.removeLast('k');\n\n  console.log(_x.get('k')); // [{a: 1}]\n```\n"
+}

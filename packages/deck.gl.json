@@ -2,7 +2,7 @@
   "name": "deck.gl",
   "description": "A suite of 3D-enabled data visualization overlays, suitable for react-map-gl",
   "license": "MIT",
-  "version": "2.2.4",
+  "version": "2.4.10",
   "keywords": [
     "webgl",
     "visualization",
@@ -46,6 +46,7 @@
     "geojson-normalize": "0.0.1",
     "get-pixels": "^3.3.0",
     "gl-matrix": "^2.3.2",
+    "glslify": "^5.0.0",
     "global": "^4.3.0",
     "lodash.flattendeep": "^3.0.2",
     "lodash.isequal": "^3.0.4",
@@ -75,10 +76,9 @@
     "eslint-plugin-react": "^3.13.1",
     "faucet": "0.0.1",
     "gl": "^4.0.1",
-    "glslify": "^5.0.0",
     "immutable": "^3.7.5",
     "jsdom": "^9.2.1",
-    "luma.gl": "^2.4.1",
+    "luma.gl": "^2.5.3",
     "react": "^15.0.2",
     "react-addons-test-utils": "^15.0.2",
     "react-dom": "^15.0.2",
@@ -94,7 +94,7 @@
   "peerDependencies": {
     "react": "0.14.x - 15.x",
     "react-dom": "0.14.x - 15.x",
-    "luma.gl": "^2.4.0"
+    "luma.gl": "^2.5.3"
   },
   "scripts": {
     "build": "npm run build-clean && npm run build-compile && npm run build-script && npm run build-script-min",
@@ -111,13 +111,13 @@
     "test-electron": "browserify test/electron.js | testron | faucet",
     "start": "budo example/main.js:example/bundle.js --live --open --port 3000 --css example/main.css --title 'deck.gl' --watch-glob '**/*.{html,css,js,glsl}' -- -t babelify -t envify"
   },
-  "gitHead": "bb0afc3a37cbc4de063d034adc26cd9b5393f1db",
+  "gitHead": "6bdc276dc2e9f8289f416bf19b58c1cc30bd364a",
   "homepage": "https://github.com/uber/deck.gl#readme",
-  "_npmVersion": "3.10.5",
-  "_nodeVersion": "0.12.13",
+  "_npmVersion": "2.15.1",
+  "_nodeVersion": "0.12.15",
   "dist": {
-    "shasum": "b32a9022e7d9c97debf2ae9f83b6e4bb9f752103",
-    "tarball": "http://registry.npmjs.org/deck.gl/-/deck.gl-2.2.4.tgz"
+    "shasum": "397987f206106a5565c6104906d6d67f56340ea2",
+    "tarball": "http://registry.npmjs.org/deck.gl/-/deck.gl-2.4.10.tgz"
   },
   "stars": 1,
   "versions": [
@@ -236,13 +236,81 @@
     {
       "number": "2.2.4",
       "date": "2016-07-13T18:50:52.941Z"
+    },
+    {
+      "number": "2.2.5",
+      "date": "2016-08-02T18:42:34.624Z"
+    },
+    {
+      "number": "2.3.0",
+      "date": "2016-08-07T04:51:25.960Z"
+    },
+    {
+      "number": "2.4.0",
+      "date": "2016-08-12T21:39:16.625Z"
+    },
+    {
+      "number": "2.4.1",
+      "date": "2016-08-15T18:17:08.502Z"
+    },
+    {
+      "number": "2.4.2",
+      "date": "2016-08-16T23:43:03.072Z"
+    },
+    {
+      "number": "2.4.3",
+      "date": "2016-08-17T01:58:12.960Z"
+    },
+    {
+      "number": "2.4.4",
+      "date": "2016-08-17T19:54:37.334Z"
+    },
+    {
+      "number": "2.4.5",
+      "date": "2016-08-31T22:06:41.610Z"
+    },
+    {
+      "number": "2.4.6",
+      "date": "2016-09-07T01:05:40.281Z"
+    },
+    {
+      "number": "2.4.7",
+      "date": "2016-09-07T02:23:23.361Z"
+    },
+    {
+      "number": "3.0.0-beta13",
+      "date": "2016-09-07T22:08:38.789Z"
+    },
+    {
+      "number": "3.0.0-beta14",
+      "date": "2016-09-10T01:04:44.382Z"
+    },
+    {
+      "number": "2.4.8",
+      "date": "2016-09-10T18:25:40.167Z"
+    },
+    {
+      "number": "2.4.9",
+      "date": "2016-09-16T23:34:32.864Z"
+    },
+    {
+      "number": "3.0.0-beta15",
+      "date": "2016-09-16T23:46:26.660Z"
+    },
+    {
+      "number": "3.0.0-beta16",
+      "date": "2016-09-19T21:10:01.839Z"
+    },
+    {
+      "number": "2.4.10",
+      "date": "2016-09-21T03:50:33.817Z"
     }
   ],
   "created": "2015-12-23T18:18:42.390Z",
-  "modified": "2016-07-13T18:50:52.941Z",
+  "modified": "2016-09-21T03:50:33.817Z",
   "lastPublisher": {
-    "name": "ibgreen",
-    "email": "ib.green.home@gmail.com"
+    "name": "gnavvy",
+    "email": "gnavvy@gmail.com"
   },
   "owners": [
     {
@@ -258,5 +326,5 @@
       "email": "ib.green.home@gmail.com"
     }
   ],
-  "readme": "# deck.gl\n\nA WebGL overlay suite for React providing a set of highly performant\ndata visualization overlays.\n\n![screenshot](screenshot.png)\n\nDesign goals:\n- Provide overlays that plug directly into react-map-gl's overlay model,\n  enabling overlays to work on maps.\n- Provide highly performant data visualization overlays in 2 and 3 dimensions.\n- Provide tested, highly performant layers for basic data visualization\n  use cases, scatterplots, choropleths etc.\n- Allows easy creation of custom WebGL layers by subclassing `Layer`.\n- Support efficient WebGL rendering in \"data flow architecture\" applications\n  (i.e. React).\n- Special focus on buffer management, allowing both automatic buffer updates\n  but also full application control of buffer allocation and management\n\n\nFeatures:\n- Web Mercator projections are handled in shader on GPU. No projections are\n  done in JavaScript (unless needed for a uniform calculation or reverse\n  projection of e.g. picked coordinate etc). Specify your lat,lon once and\n  never touch it again.\n- Can accept data stored in any ES6 container\n  (supporting \\[Symbol.iterator\\] iteration).\n- Automatic and manual WebGL buffer management to support.\n\n## Installation\n\n```\nnpm install --save deck.gl\n```\n\n## Usage\n\n```\nimport {\n  WebGLOverlay,\n  /* import layers here */\n} from 'deck.gl';\n\nconst mapState = {\n  latitude: 37.55,\n  longitude: -122.2,\n  zoom: 9,\n  ...\n}\n\n<WebGLOverlay\n  width={1920}\n  height={1080}\n  mapState={mapState},  // optional\n  layers={[/* put layer instances here */]}\n/>\n```\n---\n\n### WebGLOverlay:\n\n* **webgl-overlay**\nA react component that takes in viewport parameters, layer instances and\ngenerates an overlay consists of single/multiple layers sharing the same\nrendering context. Internally, the webgl-overlay initializes a WebGL context\nattached to a canvas element, sets up the animation loop and calls provided\ncallbacks on initial load and for each rendering frames. The webgl-overlay\nalso handles events propagation across layers, and prevents unnecessary\ncalculation taking advantage of the react lifecycle functions.\n\n  **Parameters**\n  * `width` (number, required) width of the canvas\n  * `height` (number, required) height of the canvas\n  * `longitude` (number, required) longitude of the map center\n  * `latitude` (number, required) latitude of the map center\n  * `zoom` (number, required) zoom level of the map\n\n  **Callbacks**\n  * `onAfterRender` [function, optional] callback after rendering is finished\n  for the current frame\n\n### Supported Layers:\n\n* #### Choropleth Layer\nThe Choropleth Layer takes in [GeoJson](http://geojson.org/) formatted data and\nrenders it as interactive choropleths.\n\n  **Common Parameters**\n\n  * `id` (string, required): layer ID\n  * `width` (number, required) width of the layer\n  * `height` (number, required) height of the layer\n  * `longitude` (number, required) longitude of the map center\n  * `latitude` (number, required) latitude of the map center\n  * `zoom` (number, required) zoom level of the map\n  * `opacity` (number, required) opacity of the layer\n  * `isPickable` [bool, optional, default=false] whether layer responses to\n  mouse events\n\n  **Layer-specific Parameters**\n\n  * `data` (object, required) input data in GeoJson format\n  * `drawContour` [bool, optional, default=false] draw choropleth contour if\n  true, else fill choropleth area\n\n  **Callbacks**\n\n  * `onChoroplethHovered` [function, optional] bubbles choropleth properties\n  when mouse hovering\n  * `onChoroplethClicked` [function, optional] bubbles choropleth properties\n  when mouse clicking\n\n* #### Hexagon Layer\n  The Hexagon Layer takes in a list of hexagon objects and renders them as\n  interactive hexagons.\n\n    **Common Parameters**\n\n    * `id` (string, required): layer ID\n    * `width` (number, required) width of the layer\n    * `height` (number, required) height of the layer\n    * `opacity` (number, required) opacity of the layer\n    * `isPickable` [bool, optional, default=false] whether layer responses to\n    mouse events\n\n    **Layer-specific Parameters**\n\n    * `data` (array, required) array of hexagon objects: [{ centroid, vertices,\n    color }, ...]\n    * `dotRadius` [number, optional, default=10] radius of each hexagon\n    * `elevation` [number, optional, default=0.02] height scale of hexagons\n    * `lightingEnabled` [bool, optional, default=false] whether lighting is\n    enabled\n\n    **Callbacks**\n\n    * `onHexagonHovered` [function, optional] bubbles selection index when mouse\n    hovering\n    * `onHexagonClicked` [function, optional] bubbles selection index when mouse\n    clicking\n\n* #### Scatterplot Layer\n  The Scatterplot Layer takes in and renders an array of latitude and longitude\n  coordinated points.\n\n    **Common Parameters**\n\n    * `id` (string, required): layer ID\n    * `width` (number, required) width of the layer\n    * `height` (number, required) height of the layer\n    * `opacity` (number, required) opacity of the layer\n    * `isPickable` [bool, optional, default=false] whether layer responses to\n    mouse events\n\n    **Layer-specific Parameters**\n\n    * `data` (array, required) array of objects: [{ position, color }, ...]\n    * `radius` [number, optional, default=10] radius of each marker\n\n* #### Arc Layer\n  The Arc Layer takes in paired latitude and longitude coordinated points and\n  render them as arcs that links the starting and ending points.\n\n    **Common Parameters**\n\n    * `id` (string, required): layer ID\n    * `width` (number, required) width of the layer\n    * `height` (number, required) height of the layer\n    * `opacity` (number, required) opacity of the layer\n    * `isPickable` [bool, optional, default=false] whether layer responses to\n    mouse events\n\n    **Layer-specific Parameters**\n\n    * `data` (array, required) array of objects: [{ position: {x0, y0, x1, y1},\n    color }, ...]\n\n* #### Grid Layer\n  The Grid Layer takes in an array of latitude and longitude coordinated points,\n  aggregates them into histogram bins and renders as a grid.\n\n    **Common Parameters**\n\n    * `id` (string, required): layer ID\n    * `width` (number, required) width of the layer\n    * `height` (number, required) height of the layer\n    * `opacity` (number, required) opacity of the layer\n    * `isPickable` [bool, optional, default=false] whether layer responses to\n    mouse events\n\n    **Layer-specific Parameters**\n\n    * `data` (array, required) array of objects: [{ position, color }, ...]\n    * `unitWidth` [number, optional, default=100] unit width of the bins\n    * `unitHeight` [number, optional, default=100] unit height of the bins\n\n\n## Notes on data property\n\nThe `data` property will accept any containers that can be iterated over using\nES6 for-of iteration, this includes e.g. native Arrays, ES6 Sets and Maps,\nall Immutable.js containers etc. The notable exception are native JavaScript\nobject maps. It is recommended to use ES6 Maps instead.\n\nIt is recommended, but not required, to use immutable data (containers AND\nobjects) as it ensures that changes to `data` property trigger a rerender.\n(See the notes on `rerenderCount` and `updateCount` properties.)\n\n\n## Notes on picking\n\n**Note**: Because DeckGL layers are designed to take any type of iterable\ncollection as data (which may not support \"random access\" array style\nreferences of its elements), the picking calculates and index but the\nactual object.\n\nFEATURE IDEA: The base layer could take an optional getObject(index) accessor\nand call it if supplied.\n\n\n## Notes on WebGL buffer management\n\ndeck.gl Layers were designed with data flow architectures like React in mind.\nThe challenge is of course that in the react model, every change to application\nstate causes a full rerender. The rendering callbacks are then supposed to\ndetect what changes were made a limit rerendering as appropriate. When you\nhave a couple of 100K element WebGL buffers to update, this can become quite\nexpensive unless change detection is well managed.\n\n\n### Data Management using automatic Buffer updates\n\nThe layer will expect each object to provide a number of \"attributes\" that it\ncan use to set the GL buffers. By default, the layer will look for these\nattributes to be available as fields directly on the objects during iteration\nover the supplied data set. To gain more control of attribute access and/or\nto do on-the-fly calculation of attributes.\n\n\n### Manual Buffer Management\n\nFor ultimate performance and control of updates, the application can do its\nown management of the glbuffers. Each Layer can accept buffers directly as\nprops.\n\n**Note:** The application can provide some buffers and let others be managed\nby the layer. As an example management of the `instancePickingColors` buffer is\nnormally left to the layer.\n\n**Note**: A layer only renders when a property change is detected. For\nperformance reasons, property change detection uses shallow compare,\nwhich means that mutating an element inside a buffer or a mutable data array\ndoes not register as a property change, and thus does not trigger a rerender.\nTo force trigger a render after mutating buffers, simply increment the\n`renderCount` property. To force trigger a buffer update after mutating data,\nincrement the `updateCount` property.\n\n\n## Notes on Blending Modes\n\nTo get a handle on blending modes, it helps to consider that deck.gl\nrenders in a separate transparent div on top of the map div,\nso it is actually the browser that blends the deck.gl output into the map,\nnot WebGL, and the default blending in the browser typically does not give\nideal effects.\n\nThere is a CSS property `mix-blend-mode` in modern browsers\nthat allows control over blending:\n```\n.overlays canvas {\n  mix-blend-mode: multiply;\n}\n```\n`multiply` blend mode is usually the right choice, as it only darkens.\nThis will keep your overlay colors, but let map legends underneath\nremain black and legible.\n\n**Note:** that there is a caveat with setting `mix-blend-mode`:\nit can affect other peer HTML elements, especially other map children (perhaps\ncontrols or legends that are being rendered on top of the map).\nIf this is an issue, set isolation CSS prop on the map (DeckGLOverlay parent)\nelement.\n```\n     isolation: 'isolate'\n```\n\n## Example\n```\nnpm run start\n```\n\n## Data source\n\nhttps://data.sfgov.org/\n"
+  "readme": "# deck.gl\n\nA WebGL overlay suite for React providing a set of highly performant\ndata visualization overlays.\n\n![screenshot](screenshot.png)\n\nDesign goals:\n- Provide overlays that plug directly into react-map-gl's overlay model,\n  enabling overlays to work on maps.\n- Provide highly performant data visualization overlays in 2 and 3 dimensions.\n- Provide tested, highly performant layers for basic data visualization\n  use cases, scatterplots, choropleths etc.\n- Allows easy creation of custom WebGL layers by subclassing `BaseLayer`.\n- Support efficient WebGL rendering in \"data flow architecture\" applications\n  (i.e. React).\n- Special focus on buffer management, allowing both automatic buffer updates\n  but also full application control of buffer allocation and management\n\n\nFeatures:\n- Web Mercator projections are handled in shader on GPU. No projections are\n  done in JavaScript (unless needed for a uniform calculation or reverse\n  projection of e.g. picked coordinate etc). Specify your lat,lon once and\n  never touch it again.\n- Can accept data stored in any ES6 container\n  (supporting \\[Symbol.iterator\\] iteration).\n- Automatic and manual WebGL buffer management to support.\n\n## Installation\n\n```\nnpm install --save deck.gl\n```\nNote: deck.gl has a dependency on node version 0.12 or higher. If you use an older version, you can install a node version manager like nvm and use a separate shell to install and build deck.gl\n```\nnpm install -g nvm && nvm install 0.12 && nvm use 0.12\n```\n\n## Usage\n\n```\nimport {\n  DeckGLOverlay,\n  /* import layers here */\n} from 'deck.gl';\n\nconst mapState = {\n  latitude: 37.55,\n  longitude: -122.2,\n  zoom: 9,\n  ...\n}\n\n<DeckGLOverlay\n  width={1920}\n  height={1080}\n  mapState={mapState},  // optional\n  layers={[/* put layer instances here */]}\n/>\n```\n---\n\n### DeckGLOverlay:\n\n* **deckgl-overlay**\nA react component that takes in viewport parameters, layer instances and\ngenerates an overlay consists of single/multiple layers sharing the same\nrendering context. Internally, the deckgl-overlay initializes a WebGL context\nattached to a canvas element, sets up the animation loop and calls provided\ncallbacks on initial load and for each rendering frames. The deckgl-overlay\nalso handles events propagation across layers, and prevents unnecessary\ncalculation taking advantage of the react lifecycle functions.\n\n  **Parameters**\n  * `id` (string, optional) canvas ID for customizing styling\n  * `width` (number, required) width of the canvas\n  * `height` (number, required) height of the canvas\n  * `layers` (array, required) the list of layers to be rendered\n  * `blending` (object, optional) blending settings\n  * `gl` (object, optional) gl context\n  * `debug` (bool, optional) boolean flag for enabling debug mode\n  * `camera` (Camera, optional) a luma.gl camera instance\n  * `style` (object, optional) css styles for the deckgl-canvas\n  * `pixelRatio` (number, optional) pixelRatio, will use device ratio by default\n\n  **Callbacks**\n  * `onWebGLInitialized` [function, optional] callback on initiating gl-context\n\n### Supported Layers:\n\n* #### Choropleth Layer\nThe Choropleth Layer takes in [GeoJson](http://geojson.org/) formatted data and\nrenders it as interactive choropleths.\n\n  **Common Parameters**\n\n  * `id` (string, required): layer ID\n  * `width` (number, required) width of the layer\n  * `height` (number, required) height of the layer\n  * `longitude` (number, required) longitude of the map center\n  * `latitude` (number, required) latitude of the map center\n  * `zoom` (number, required) zoom level of the map\n  * `opacity` (number, required) opacity of the layer\n  * `isPickable` [bool, optional, default=false] whether layer responses to\n  mouse events\n  * `lineWidth` [number, optional, default=1] the line width of the contour\n\n  **Layer-specific Parameters**\n\n  * `data` (object, required) input data in GeoJson format\n  * `drawContour` [bool, optional, default=false] draw choropleth contour if\n  true, else fill choropleth area\n\n  **Callbacks**\n\n  * `onChoroplethHovered` [function, optional] bubbles choropleth properties\n  when mouse hovering\n  * `onChoroplethClicked` [function, optional] bubbles choropleth properties\n  when mouse clicking\n\n* #### Hexagon Layer\n  The Hexagon Layer takes in a list of hexagon objects and renders them as\n  interactive hexagons.\n\n    **Common Parameters**\n\n    * `id` (string, required): layer ID\n    * `width` (number, required) width of the layer\n    * `height` (number, required) height of the layer\n    * `longitude` (number, required) longitude of the map center\n    * `latitude` (number, required) latitude of the map center\n    * `zoom` (number, required) zoom level of the map\n    * `opacity` (number, required) opacity of the layer\n    * `isPickable` [bool, optional, default=false] whether layer responses to\n    mouse events\n\n    **Layer-specific Parameters**\n\n    * `data` (array, required) array of hexagon objects: [{ centroid, vertices,\n    color }, ...]\n    * `dotRadius` [number, optional, default=10] radius of each hexagon\n    * `elevation` [number, optional, default=0.02] height scale of hexagons\n    * `lightingEnabled` [bool, optional, default=false] whether lighting is\n    enabled\n\n    **Callbacks**\n\n    * `onHexagonHovered` [function, optional] bubbles selection index when mouse\n    hovering\n    * `onHexagonClicked` [function, optional] bubbles selection index when mouse\n    clicking\n\n* #### Scatterplot Layer\n  The Scatterplot Layer takes in and renders an array of latitude and longitude\n  coordinated points.\n\n    **Common Parameters**\n\n    * `id` (string, required): layer ID\n    * `width` (number, required) width of the layer\n    * `height` (number, required) height of the layer\n    * `longitude` (number, required) longitude of the map center\n    * `latitude` (number, required) latitude of the map center\n    * `zoom` (number, required) zoom level of the map\n    * `opacity` (number, required) opacity of the layer\n    * `isPickable` [bool, optional, default=false] whether layer responses to\n    mouse events\n\n    **Layer-specific Parameters**\n\n    * `data` (array, required) array of objects: [{ position, color, radius }, ...]\n    * `radius` [number, optional, default=10] global radius across all markers\n\n* #### Arc Layer\n  The Arc Layer takes in paired latitude and longitude coordinated points and\n  render them as arcs that links the starting and ending points.\n\n    **Common Parameters**\n\n    * `id` (string, required): layer ID\n    * `width` (number, required) width of the layer\n    * `height` (number, required) height of the layer\n    * `longitude` (number, required) longitude of the map center\n    * `latitude` (number, required) latitude of the map center\n    * `zoom` (number, required) zoom level of the map\n    * `opacity` (number, required) opacity of the layer\n    * `isPickable` [bool, optional, default=false] whether layer responses to\n    mouse events\n\n    **Layer-specific Parameters**\n\n    * `data` (array, required) array of objects: [{ position: {x0, y0, x1, y1},\n    color }, ...]\n\n* #### Grid Layer\n  The Grid Layer takes in an array of latitude and longitude coordinated points,\n  aggregates them into histogram bins and renders as a grid.\n\n    **Common Parameters**\n\n    * `id` (string, required): layer ID\n    * `width` (number, required) width of the layer\n    * `height` (number, required) height of the layer\n    * `longitude` (number, required) longitude of the map center\n    * `latitude` (number, required) latitude of the map center\n    * `zoom` (number, required) zoom level of the map\n    * `opacity` (number, required) opacity of the layer\n    * `isPickable` [bool, optional, default=false] whether layer responses to\n    mouse events\n\n    **Layer-specific Parameters**\n\n    * `data` (array, required) array of objects: [{ position, color }, ...]\n    * `unitWidth` [number, optional, default=100] unit width of the bins\n    * `unitHeight` [number, optional, default=100] unit height of the bins\n\n\n## Notes on data property\n\nThe `data` property will accept any containers that can be iterated over using\nES6 for-of iteration, this includes e.g. native Arrays, ES6 Sets and Maps,\nall Immutable.js containers etc. The notable exception are native JavaScript\nobject maps. It is recommended to use ES6 Maps instead.\n\nIt is recommended, but not required, to use immutable data (containers AND\nobjects) as it ensures that changes to `data` property trigger a rerender.\n(See the notes on `rerenderCount` and `updateCount` properties.)\n\n\n## Notes on picking\n\n**Note**: Because DeckGL layers are designed to take any type of iterable\ncollection as data (which may not support \"random access\" array style\nreferences of its elements), the picking calculates and index but the\nactual object.\n\nFEATURE IDEA: The base layer could take an optional getObject(index) accessor\nand call it if supplied.\n\n\n## Notes on WebGL buffer management\n\ndeck.gl Layers were designed with data flow architectures like React in mind.\nThe challenge is of course that in the react model, every change to application\nstate causes a full rerender. The rendering callbacks are then supposed to\ndetect what changes were made a limit rerendering as appropriate. When you\nhave a couple of 100K element WebGL buffers to update, this can become quite\nexpensive unless change detection is well managed.\n\n\n### Data Management using automatic Buffer updates\n\nThe layer will expect each object to provide a number of \"attributes\" that it\ncan use to set the GL buffers. By default, the layer will look for these\nattributes to be available as fields directly on the objects during iteration\nover the supplied data set. To gain more control of attribute access and/or\nto do on-the-fly calculation of attributes.\n\n\n### Manual Buffer Management\n\nFor ultimate performance and control of updates, the application can do its\nown management of the glbuffers. Each Layer can accept buffers directly as\nprops.\n\n**Note:** The application can provide some buffers and let others be managed\nby the layer. As an example management of the `instancePickingColors` buffer is\nnormally left to the layer.\n\n**Note**: A layer only renders when a property change is detected. For\nperformance reasons, property change detection uses shallow compare,\nwhich means that mutating an element inside a buffer or a mutable data array\ndoes not register as a property change, and thus does not trigger a rerender.\nTo force trigger a render after mutating buffers, simply increment the\n`renderCount` property. To force trigger a buffer update after mutating data,\nincrement the `updateCount` property.\n\n\n## Notes on Blending Modes\n\nTo get a handle on blending modes, it helps to consider that deck.gl\nrenders in a separate transparent div on top of the map div,\nso it is actually the browser that blends the deck.gl output into the map,\nnot WebGL, and the default blending in the browser typically does not give\nideal effects.\n\nThere is a CSS property `mix-blend-mode` in modern browsers\nthat allows control over blending:\n```\n.overlays canvas {\n  mix-blend-mode: multiply;\n}\n```\n`multiply` blend mode is usually the right choice, as it only darkens.\nThis will keep your overlay colors, but let map legends underneath\nremain black and legible.\n\n**Note:** that there is a caveat with setting `mix-blend-mode`:\nit can affect other peer HTML elements, especially other map children (perhaps\ncontrols or legends that are being rendered on top of the map).\nIf this is an issue, set isolation CSS prop on the map (DeckGLOverlay parent)\nelement.\n```\n     isolation: 'isolate'\n```\n\n## Example\n```\nnpm run start\n```\n\n## Data source\n\nhttps://data.sfgov.org/\n"
 }

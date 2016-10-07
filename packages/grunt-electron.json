@@ -1,6 +1,6 @@
 {
   "name": "grunt-electron",
-  "version": "4.0.0",
+  "version": "5.0.0",
   "description": "Package Electron apps",
   "license": "MIT",
   "repository": {
@@ -22,10 +22,10 @@
     "url": "sindresorhus.com"
   },
   "engines": {
-    "node": ">=0.10.0"
+    "node": ">=4"
   },
   "scripts": {
-    "test": "grunt"
+    "test": "xo && grunt"
   },
   "files": [
     "tasks"
@@ -41,27 +41,31 @@
     "apps"
   ],
   "dependencies": {
-    "electron-packager": "^7.0.0"
+    "electron-packager": "^8.0.0"
   },
   "devDependencies": {
     "grunt": "^1.0.1",
     "grunt-cli": "^1.2.0",
     "grunt-contrib-clean": "^1.0.0",
     "grunt-contrib-nodeunit": "^1.0.0",
-    "path-exists": "^2.0.0"
+    "path-exists": "^3.0.0",
+    "xo": "*"
   },
   "peerDependencies": {
     "grunt": ">=0.4.0"
   },
-  "gitHead": "7fef6ea896a6ed8fc277396c96d08663cc9c9fe8",
-  "homepage": "https://github.com/sindresorhus/grunt-electron#readme",
-  "_npmVersion": "2.15.0",
-  "_nodeVersion": "4.4.2",
-  "dist": {
-    "shasum": "068f8967ea5bd424c711ed748d49dbe7b154fb4f",
-    "tarball": "http://registry.npmjs.org/grunt-electron/-/grunt-electron-4.0.0.tgz"
+  "xo": {
+    "esnext": true
   },
-  "stars": 2,
+  "gitHead": "fe70311aa098c25e5b5ea3fef56b7c0ea39614f3",
+  "homepage": "https://github.com/sindresorhus/grunt-electron#readme",
+  "_npmVersion": "3.10.3",
+  "_nodeVersion": "6.4.0",
+  "dist": {
+    "shasum": "156d5c71c8389a0aa1f1b9ef360bd067ab24e777",
+    "tarball": "http://registry.npmjs.org/grunt-electron/-/grunt-electron-5.0.0.tgz"
+  },
+  "stars": 3,
   "versions": [
     {
       "number": "1.0.0",
@@ -82,10 +86,14 @@
     {
       "number": "4.0.0",
       "date": "2016-04-23T16:09:25.227Z"
+    },
+    {
+      "number": "5.0.0",
+      "date": "2016-09-04T16:44:20.940Z"
     }
   ],
   "created": "2015-05-11T17:39:44.777Z",
-  "modified": "2016-04-23T16:09:25.227Z",
+  "modified": "2016-09-04T16:44:20.940Z",
   "lastPublisher": {
     "name": "sindresorhus",
     "email": "sindresorhus@gmail.com"
@@ -96,5 +104,5 @@
       "email": "sindresorhus@gmail.com"
     }
   ],
-  "readme": "# grunt-electron [![Build Status](https://travis-ci.org/sindresorhus/grunt-electron.svg?branch=master)](https://travis-ci.org/sindresorhus/grunt-electron)\n\n> Package [Electron](http://electron.atom.io) apps using [`electron-packager`](https://github.com/maxogden/electron-packager)\n\n*Issues should be reported on the `electron-packager` [issue tracker](https://github.com/maxogden/electron-packager/issues).*\n\nPlease think hard if you really need grunt for this. A simple vanilla node build script would probably be better.\n\nThis is mostly intended for those that have an existing grunt setup and want to integrate Electron app packaging.\n\n\n## Install\n\n```\n$ npm install --save-dev grunt-electron\n```\n\n\n## Usage\n\n```js\nrequire('load-grunt-tasks')(grunt); // npm install --save-dev load-grunt-tasks\n\ngrunt.initConfig({\n\telectron: {\n\t\tosxBuild: {\n\t\t\toptions: {\n\t\t\t\tname: 'Fixture',\n\t\t\t\tdir: 'app',\n\t\t\t\tout: 'dist',\n\t\t\t\tversion: '0.25.3',\n\t\t\t\tplatform: 'darwin',\n\t\t\t\tarch: 'x64'\n\t\t\t}\n\t\t}\n\t}\n});\n\ngrunt.registerTask('default', ['electron']);\n```\n\n\n## Options\n\nSee the `electron-packager` [options](https://github.com/maxogden/electron-packager#usage).\n\nIn addition you need to supply the `name` of your app and the `dir` where your app is located.\n\n\n## License\n\nMIT © [Sindre Sorhus](http://sindresorhus.com)\n"
+  "readme": "# grunt-electron [![Build Status](https://travis-ci.org/sindresorhus/grunt-electron.svg?branch=master)](https://travis-ci.org/sindresorhus/grunt-electron)\n\n> Package [Electron](http://electron.atom.io) apps using [`electron-packager`](https://github.com/electron-userland/electron-packager)\n\n*Issues should be reported on the `electron-packager` [issue tracker](https://github.com/electron-userland/electron-packager/issues).*\n\nPlease think hard if you really need grunt for this. A simple vanilla node build script would probably be better.\n\nThis is mostly intended for those that have an existing grunt setup and want to integrate Electron app packaging.\n\n\n## Install\n\n```\n$ npm install --save-dev grunt-electron\n```\n\n\n## Usage\n\n```js\nrequire('load-grunt-tasks')(grunt); // npm install --save-dev load-grunt-tasks\n\ngrunt.initConfig({\n\telectron: {\n\t\tmacosBuild: {\n\t\t\toptions: {\n\t\t\t\tname: 'Fixture',\n\t\t\t\tdir: 'app',\n\t\t\t\tout: 'dist',\n\t\t\t\tversion: '1.3.5',\n\t\t\t\tplatform: 'darwin',\n\t\t\t\tarch: 'x64'\n\t\t\t}\n\t\t}\n\t}\n});\n\ngrunt.registerTask('default', ['electron']);\n```\n\n\n## Options\n\nSee the `electron-packager` [options](https://github.com/electron-userland/electron-packager#usage).\n\nIn addition you need to supply the `name` of your app and the `dir` where your app is located.\n\n\n## License\n\nMIT © [Sindre Sorhus](https://sindresorhus.com)\n"
 }

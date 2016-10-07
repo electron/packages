@@ -1,6 +1,6 @@
 {
   "name": "piano.js",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "Customizable virtual keyboard written in pure ES6",
   "main": "./dist/piano.js",
   "style": "piano.css",
@@ -11,7 +11,8 @@
     "watch": "gulp watch",
     "build": "gulp build",
     "coverage": "gulp coverage",
-    "dev": "budo --live"
+    "dev": "budo --live",
+    "patch": "./node_modules/np/cli.js patch"
   },
   "repository": {
     "user": "soixantecircuits",
@@ -61,6 +62,7 @@
     "isparta": "^4.0.0",
     "json-loader": "^0.5.3",
     "mocha": "^2.3.4",
+    "np": "^2.9.0",
     "script-loader": "^0.6.1",
     "sinon": "^1.17.2",
     "sinon-chai": "^2.8.0",
@@ -72,12 +74,12 @@
     "entryFileName": "piano",
     "mainVarName": "piano"
   },
-  "gitHead": "aa60fc6877ab9b8f2d24ec4e723496920526f87c",
-  "_npmVersion": "2.14.4",
-  "_nodeVersion": "4.1.1",
+  "gitHead": "7ba717623582d23c3344397a2f103b4e4bb16859",
+  "_npmVersion": "3.8.6",
+  "_nodeVersion": "5.11.1",
   "dist": {
-    "shasum": "f8334ec5f5419819678fe387c9bfca5c038b7240",
-    "tarball": "http://registry.npmjs.org/piano.js/-/piano.js-0.0.3.tgz"
+    "shasum": "9b0b618ef338f387f135ae594852e8248ff90750",
+    "tarball": "http://registry.npmjs.org/piano.js/-/piano.js-0.0.4.tgz"
   },
   "versions": [
     {
@@ -91,18 +93,26 @@
     {
       "number": "0.0.3",
       "date": "2016-03-18T17:15:54.579Z"
+    },
+    {
+      "number": "0.0.4",
+      "date": "2016-08-24T15:02:41.438Z"
     }
   ],
   "created": "2016-03-17T14:29:55.655Z",
-  "modified": "2016-03-18T17:15:54.579Z",
+  "modified": "2016-08-24T15:02:41.438Z",
   "lastPublisher": {
-    "name": "art2b",
-    "email": "arthur.battut@gmail.com"
+    "name": "brendaoud",
+    "email": "brendan@soixantecircuits.fr"
   },
   "owners": [
     {
       "name": "art2b",
       "email": "arthur.battut@gmail.com"
+    },
+    {
+      "name": "brendaoud",
+      "email": "brendan@soixantecircuits.fr"
     },
     {
       "name": "gabrielstuff",
@@ -113,5 +123,5 @@
       "email": "hugo@soixantecircuits.fr"
     }
   ],
-  "readme": "# Piano ⌨\n\n#### Customizable virtual keyboard written in pure JavaScript.\n\n[![js-standard-style](https://img.shields.io/badge/code%20style-standard-brightgreen.svg)](http://standardjs.com/)\n[![Join the chat at https://gitter.im/soixantecircuits/piano](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/soixantecircuits/piano?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)\n\n*Piano is still under active development.*\n\n# Usage with webpack\n1. `require('piano.js/piano.css')` (probably `entry.js` is a good place to do that)\n2. `var Piano = require('piano.js')` wherever you want to use _piano.js_\n3. Require layouts you want\n```\nvar azerty = require('piano.js/layouts/azerty')\n  , qwerty = require('piano.js/layouts/qwerty')\n```\n4. Instantiate Piano\n```\nvar keyboard = new Piano({\n  layouts: {\n    'azerty': azerty,\n    'qwerty': qwerty\n  },\n  slideContent: true\n})```\n\n5. Use data-attributes in your view\n```html\n<input type=\"text\" data-piano data-piano-scale=\"1.5\" data-piano-layout=\"azerty\" data-piano-event-id=\"do-stuff\" />\n```\n\n6. Use listener in your code\n```\ndocument.querySelector('[data-piano-event-id=\"do-stuff\"]').addEventListener('do-stuff', doStuffCallback)\n```\n\n7. Enjoy!\n# Usage\n\nDownload [piano](piano.js) and at least the [default layout](layouts/default.js) into your project and load them.\n\n```html\n  <!-- Load the librarie -->\n  <script src=\"path/to/piano.js\"></script>\n  <!-- And at least the default layout -->\n  <script src=\"path/to/layouts/default.js\"></script>\n```\n\nThen, add the `data-piano` attribute to trigger the keyboard on click/touch and call `piano.init()` in your js.\n\nA basic `init()` looks like this:\n\n```\npiano.init({\n  triggers: ['click', 'touchstart'],\n  slideContent: true,\n  slideContainer: '.demo-container',\n  onHidden: function () {\n    console.log(\"hidden\")\n  },\n  onBeforeHidden: function () {\n    console.log(\"hidding...\")\n  }\n})\n```\n\nSee the demo for more information.\n\n#### Demo\n\nMake sure you have `node`, `npm` and `gulp` installed. After you have installed development dependencies with `npm i`, you can run `gulp serve` and go to `http://localhost:8080/demo` to check a demo.\n\nOr you can check it out [here](http://soixantecircuits.github.io/piano).\n\n## Positionning / styling\n\nYou can define positionning with the `data-piano-position` attribute. You can use the following:\n\n`'left', 'center', 'right' -> x axis`\n\n`'top', 'middle', 'bottom' -> y axis`\n\nFor example:\n\n```html\n<input type=\"text\" data-piano data-piano-position=\"left, center\" />\n```\n\nOr, with the `absolute` keyword, you can define absolute x and y positions:\n\n```html\n<input type=\"text\" data-piano data-piano-position=\"absolute, 100, 150\" />\n```\n\nDefault positions are `'center, bottom'`.\n\n## Submit\n\nYou can define a `data-piano-event-id` attribute on your element and then listen to it.\nFor example, if you have a `data-piano-event-id=\"input-event\"`:\n\n```javascript\nelement.addEventListener('input-event', function (event) {\n  console.log('element with id \"%s\" submitted.', event.target.id)\n})\n```\n\n## Animations\n\nPiano provide has built-in but yet optionnal support for [Animate.css](https://daneden.github.io/animate.css/).\n\nBy default, it will add `fadeInUp` and `fadeOutDown` classes to your container. Just load the animate.css stylesheet and you'll have nice animations. You can also use the `data-piano-animation-in` and `data-piano-animation-out` attributes to define custom classes to toggle on hide/show.\n\nYou can also choose to create your own animations, and thus just use the classes toggled by piano to trigger them.\n\n## Tactile events\n\nPiano's support for tactile events is still in development (I know, for a virtual keyboard destined to touchscreens, it's kinda lame ...). However, it should work (though not ideally and efficiently) with the browser emulation of the `click` event on touchscreens. You can also define your own event to listen to in the initialization : `piano.init('touchstart')` for example (default is `'click'`).\n\nThis will be optimized very soon. If you have any ideas, suggestions, or even want to get your hands dirty hand submit a PR, you are more than welcome !\n\n# Options\nYou can pass options to your `piano.init()` call. Here they are:\n- trigger: **Array** of event triggers you want Piano to react\n- slideContent: **bool** [true, false], _default to false_. Allow to define if the content should _slide_\n- slideContainer: **string** ['.demo-container'], _no default_. Allow to define the part of the DOM you want to _slide_\n- onHidden: **function**, _default to empty function_. Allow to call a function when the keyboard is hidden\n- onBeforeHidden: **function**, _default to empty function_. Allow to call a function before the keyboard is hidden\n\n## Layouts\n\n*Soon.*\n\n# Development\n\nCreate a `feature-[name-of-the-feature]` branch and make PR on the `dev` branch. Please use the [standard js coding style](https://github.com/feross/standard).\n\n# To Do\n\n- Support accentuation. (partial support for now).\n- Support hammer.js and/or other touch events librarie.\n- Make sure it works well with ~~requireJS~~, AngularJS, MeteorJS, React.\n- Publish it to bower and be famous.\n- Test with IE11, Chrome, Firefox.\n- Test embeded in ~~electron~~ and nwjs.\n"
+  "readme": "# Piano ⌨\n\n> Customizable virtual keyboard written in pure JavaScript.\n\n[![js-standard-style](https://img.shields.io/badge/code%20style-standard-brightgreen.svg)](http://standardjs.com/)\n[![Join the chat at https://gitter.im/soixantecircuits/piano](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/soixantecircuits/piano?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)\n\n*Piano is still under active development.*\n\n## Table of contents\n\n<!-- TOC depthFrom:2 depthTo:6 withLinks:1 updateOnSave:1 orderedList:0 -->\n\n- [Table of contents](#table-of-contents)\n- [Installation](#installation)\n\t- [Installation with Webpack](#installation-with-webpack)\n\t- [Installation without Webpack](#installation-without-webpack)\n- [Usage](#usage)\n\t- [Positionning / styling](#positionning-styling)\n\t- [Submit](#submit)\n\t- [Animations](#animations)\n\t- [Tactile events](#tactile-events)\n- [Options](#options)\n- [Demo](#demo)\n- [Layouts](#layouts)\n- [Development](#development)\n- [To Do](#to-do)\n\n<!-- /TOC -->\n\n\n## Installation\n\n### Installation with Webpack\n\n1 - Install the package and save it as a dependency\n```bash\nnpm i -S piano.js\n```\n\n2 - Add some lines to your javascript code\n```js\n// Add the styling (in entry.js for instance)\nrequire('piano.js/piano.css')\n\n// Require piano wherever you want to use it\nconst Piano = require('piano.js')\n\n// Choose the layouts you want\nconst azerty = require('piano.js/layouts/azerty')\nconst qwerty = require('piano.js/layouts/qwerty')\n\n// Instantiate Piano\nconst keyboard = new Piano({\n  layouts: {\n    'azerty': azerty,\n    'qwerty': qwerty\n  },\n  slideContent: true\n})\n```\n\n3 - Use data-attributes in your view\n```html\n<input type=\"text\"\n  data-piano data-piano-scale=\"1.5\"\n  data-piano-layout=\"azerty\"\n  data-piano-event-id=\"do-stuff\"\n/>\n```\n\n4 -  Use listener in your code\n```js\ndocument\n  .querySelector('[data-piano-event-id=\"do-stuff\"]')\n  .addEventListener('do-stuff', doStuffCallback)\n```\n\n5 -  Enjoy!\n\n### Installation without Webpack\n\nDownload [piano](piano.js) and at least the [default layout](layouts/default.js) into your project and load them.\n\n```html\n<!-- Load the librarie -->\n<script src=\"path/to/piano.js\"></script>\n<!-- And at least the default layout -->\n<script src=\"path/to/layouts/default.js\"></script>\n```\n\nThen, add the `data-piano` attribute to trigger the keyboard on click/touch and call `piano.init()` in your js.\n\nA basic `init()` looks like this:\n\n```js\npiano.init({\n  triggers: ['click', 'touchstart'],\n  slideContainer: '.demo-container',\n  slideContent: true,\n  onHidden: function () {\n    console.log('hidden')\n  },\n  onBeforeHidden: function () {\n    console.log('hidding...')\n  }\n})\n```\n\nSee the [demo](#demo) for more information.\n\n\n## Usage\n\n### Positionning / styling\n\nYou can define positionning with the `data-piano-position` attribute. You can use the following:\n- `'left', 'center', 'right' -> x axis`\n- `'top', 'middle', 'bottom' -> y axis`\n\nFor example:\n```html\n<input type=\"text\" data-piano data-piano-position=\"left, center\" />\n```\n\nOr, with the `absolute` keyword, you can define absolute x and y positions:\n```html\n<input type=\"text\" data-piano data-piano-position=\"absolute, 100, 150\" />\n```\n\nDefault positions are `'center, bottom'`.\n\n\n### Submit\n\nYou can define a `data-piano-event-id` attribute on your element and then listen to it.\nFor example, if you have a `data-piano-event-id=\"input-event\"`:\n\n```js\nelement.addEventListener('input-event', function (event) {\n  console.log('element with id \"%s\" submitted.', event.target.id)\n})\n```\n\n\n### Animations\n\nPiano provide has built-in but yet optionnal support for [Animate.css](https://daneden.github.io/animate.css/).\n\nBy default, it will add `fadeInUp` and `fadeOutDown` classes to your container. Just load the animate.css stylesheet and you'll have nice animations. You can also use the `data-piano-animation-in` and `data-piano-animation-out` attributes to define custom classes to toggle on hide/show.\n\nYou can also choose to create your own animations, and thus just use the classes toggled by piano to trigger them.\n\n\n### Tactile events\n\nPiano's support for tactile events is still in development (I know, for a virtual keyboard destined to touchscreens, it's kinda lame ...). However, it should work (though not ideally and efficiently) with the browser emulation of the `click` event on touchscreens. You can also define your own event to listen to in the initialization : `piano.init('touchstart')` for example (default is `'click'`).\n\nThis will be optimized very soon. If you have any ideas, suggestions, or even want to get your hands dirty hand submit a PR, you are more than welcome !\n\n\n## Options\nYou can pass options to your `piano.init()` call. Here they are:\n- trigger: **Array** of event triggers you want Piano to react\n- slideContent: **bool** [true, false], _default to false_. Allow to define if the content should _slide_\n- slideContainer: **string** ['.demo-container'], _no default_. Allow to define the part of the DOM you want to _slide_\n- onHidden: **function**, _default to empty function_. Allow to call a function when the keyboard is hidden\n- onBeforeHidden: **function**, _default to empty function_. Allow to call a function before the keyboard is hidden\n\n\n## Demo\nMake sure you have `node`, `npm` and `gulp` installed. After you have installed development dependencies with `npm i`, you can run `npm run dev` and go to `http://localhost:9966/demo` to check a demo.\n\nOr you can check it out [here](http://soixantecircuits.github.io/piano).\n\n## Layouts\n*Soon.*\n\n## Development\nCreate a `feature-[name-of-the-feature]` branch and make PR on the `dev` branch. Please use the [standard js coding style](https://github.com/feross/standard).\n\n## To Do\n- Support accentuation. (partial support for now).\n- Support hammer.js and/or other touch events librarie.\n- Make sure it works well with ~~requireJS~~, AngularJS, MeteorJS, React.\n- Publish it to bower and be famous.\n- Test with IE11, Chrome, Firefox.\n- Test embeded in ~~electron~~ and nwjs.\n"
 }

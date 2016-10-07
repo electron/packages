@@ -1,16 +1,30 @@
 {
   "name": "electron-settings",
-  "version": "1.1.1",
-  "description": "User settings manager for Electron",
+  "version": "2.2.1",
+  "description": "A simple persistent user settings manager for Electron.",
   "main": "index.js",
   "scripts": {
-    "test": "mocha test"
+    "test": "npm run test:main && npm run test:renderer",
+    "test:main": "electron-mocha test",
+    "test:renderer": "electron-mocha test --renderer"
   },
   "keywords": [
     "electron",
+    "app",
+    "user",
+    "data",
     "settings",
     "manager",
-    "user"
+    "config",
+    "json",
+    "storage",
+    "promise",
+    "has",
+    "get",
+    "set",
+    "delete",
+    "reset",
+    "clear"
   ],
   "repository": {
     "user": "nathanbuchar",
@@ -42,28 +56,29 @@
   ],
   "license": "ISC",
   "dependencies": {
+    "clone": "^1.0.2",
     "debug": "^2.2.0",
-    "deep-diff": "^0.3.3",
-    "ensure-array": "0.0.5",
-    "fs-extra": "^0.26.0",
-    "key-mirror": "^1.0.1",
-    "lodash": "^3.10.1",
-    "minimatch": "^3.0.0"
+    "deep-equal": "^1.0.1",
+    "deep-extend": "^0.4.1",
+    "file-exists": "^2.0.0",
+    "fs-extra": "^0.30.0",
+    "key-path-helpers": "^0.4.0"
   },
   "devDependencies": {
     "chai": "^3.5.0",
-    "mocha": "^2.4.5",
-    "tmp": "0.0.28"
+    "electron-mocha": "^3.0.0",
+    "electron-prebuilt": "^1.2.6",
+    "mocha": "^3.0.2"
   },
-  "gitHead": "44a538c8ebd67786c8ba3f9f4ead27fd7a206c60",
+  "gitHead": "33a3036a4dce645b8f023cfe7c920748788b35da",
   "homepage": "https://github.com/nathanbuchar/electron-settings#readme",
   "_npmVersion": "3.9.5",
   "_nodeVersion": "6.2.2",
   "dist": {
-    "shasum": "e5ad416324544371d014d2a21f4798301f4d508a",
-    "tarball": "http://registry.npmjs.org/electron-settings/-/electron-settings-1.1.1.tgz"
+    "shasum": "ce2c835e9dedff62aaa67086c9fa521ca509f082",
+    "tarball": "http://registry.npmjs.org/electron-settings/-/electron-settings-2.2.1.tgz"
   },
-  "stars": 4,
+  "stars": 6,
   "versions": [
     {
       "number": "0.0.1",
@@ -108,10 +123,38 @@
     {
       "number": "1.1.1",
       "date": "2016-07-12T16:47:02.423Z"
+    },
+    {
+      "number": "2.0.0",
+      "date": "2016-08-01T01:38:44.698Z"
+    },
+    {
+      "number": "2.0.1",
+      "date": "2016-08-01T02:01:02.058Z"
+    },
+    {
+      "number": "2.0.2",
+      "date": "2016-08-01T02:06:24.427Z"
+    },
+    {
+      "number": "2.1.0",
+      "date": "2016-08-02T08:06:34.130Z"
+    },
+    {
+      "number": "2.1.1",
+      "date": "2016-08-03T06:43:42.712Z"
+    },
+    {
+      "number": "2.2.0",
+      "date": "2016-09-01T01:00:27.311Z"
+    },
+    {
+      "number": "2.2.1",
+      "date": "2016-09-01T16:56:49.319Z"
     }
   ],
   "created": "2015-11-01T23:41:32.408Z",
-  "modified": "2016-07-12T16:47:02.423Z",
+  "modified": "2016-09-01T16:56:49.319Z",
   "lastPublisher": {
     "name": "nathanbuchar",
     "email": "hello@nathanbuchar.com"
@@ -122,5 +165,5 @@
       "email": "hello@nathanbuchar.com"
     }
   ],
-  "readme": "ElectronSettings\n================\n\nSave settings to a disk and load them in when your app starts. A user settings manager for Electron, adapted from [Atom/config](https://github.com/atom/atom/blob/master/src/config.coffee).\n\n**Requires Electron 0.35.0 or above.**\n\n\n\n***\n\n\n\nUsage\n-----\n\n**`new ElectronSettings([options])`**\n\n**Arguments**\n\n* **`options`** *(Object)* - Custom options for this `ElectronSettings` instance.\n\n  * `options.configDirPath` *(string)* - Absolute path to the directory where you'd like to save your settings.json file. By default this is in your user data directory. See `app.getPath('userData')`.\n\n  * `options.configFileName` *(string)* - The file name for your settings file. By default this is `settings`. Omit the `.json` extension.\n\n  * `options.debouncedSaveTime` *(number)* - The maximum amount of time in milliseconds that must elapse before saving to disk. Default `100`\n\n\n**Example**\n\nTo use `electron-settings`, first import the class, then create a new `electron-settings` instance:\n\n```js\nconst ElectronSettings = require('electron-settings');\n\nlet settings = new ElectronSettings();\n\nconsole.log(settings.getConfigFilePath());\n// => /Users/Nathan/Library/Application Support/Electron/electron-settings/settings.json\n```\n\nThis will automatically generate a settings.json file in your user data directory if one does not exist. If the file already exists, it will be imported.\n\n\n***\n\n\nDocumentation\n-------------\n\n* [Methods][docs_methods]\n* [Events][docs_events]\n* *More coming soon*\n\n\nContributors\n-------\n* [Nathan Buchar](mailto:hello@nathanbuchar.com)\n* [Kai Eichinger](mailto:kai.eichinger@outlook.com)\n\n\nLicense\n-------\nMIT\n\n\n\n\n[docs_methods]: ./docs/api/methods.md\n[docs_events]: ./docs/api/events.md\n"
+  "readme": "electron-settings\n=================\n\nA simple persistent user settings manager for [Electron][external_electron]. Originally adapted from [Atom's own configuration manager][external_atom-config], electron-settings allows you to save user settings to the disk so that they can be loaded in the next time your app starts.\n\nAlso, you can [observe key paths][method_observe] and get notified if their value changes. So that's pretty neat.\n\n**Note:** v2 is not compatible with earlier versions of electron-settings.\n\n[![npm version](https://badge.fury.io/js/electron-settings.svg)](http://badge.fury.io/js/electron-settings)\n[![dependencies](https://david-dm.org/nathanbuchar/electron-settings.svg)](https://david-dm.org/nathanbuchar/electron-settings)\n[![Build Status](https://travis-ci.org/nathanbuchar/electron-settings.svg?branch=master)](https://travis-ci.org/nathanbuchar/electron-settings)\n[![Join the chat at https://gitter.im/nathanbuchar/electron-settings](https://badges.gitter.im/nathanbuchar/electron-settings.svg)](https://gitter.im/nathanbuchar/electron-settings?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)\n\n\n\n***\n\n\n\nInstall\n---------\n\n```\n$ npm install electron-settings\n```\n\n\nQuick Start\n-----------\n\n```js\nconst settings = require('electron-settings');\n\nsettings.set('name', {\n  first: 'Cosmo',\n  last: 'Kramer'\n}).then(() => {\n  settings.get('name.first').then(val => {\n    console.log(val);\n    // => \"Cosmo\"\n  });\n});\n\nsettings.getSettingsFilePath();\n// => /Users/You/Library/Application Support/YourApp/Settings\n```\n\n\nDefault Settings\n----------------\n\nYou can configure default settings by using [`settings.defaults()`][method_defaults]. This will set the defaults object globally. If this is the first time the settings file is being accessed, the defaults will be applied automatically.\n\n```js\nsettings.defaults({\n  foo: 'bar'\n});\n\nsettings.get('foo').then(val => {\n  console.log(val);\n  // => 'bar'\n});\n```\n\nAdditionally, you can use [`applyDefaults()`][method_apply-defaults] or [`resetToDefaults()`][method_reset-to-defaults] to fit your needs.\n\n\n\nFAQ\n---\n\n* **What is a \"key path\"?**\n\n  With electron-settings, you are not just setting keys like you would with local storage. Instead, you are working with a JSON object, and a key path is a string that points to a specific key within that object—essentially object dot notation in string form.\n\n  For example, in the JSON object below the value at the key path `\"foo.bar\"` is `\"baz\"`.\n\n  ```json\n  {\n    \"foo\": {\n      \"bar\": \"baz\"\n    }\n  }\n  ```\n\n* **Can I use electron-settings in both the main and renderer processes?**\n\n  Yes! Just be aware that if the window closes during an async operation, data may be lost.\n\n* **What data types may be stored?**\n\n  You may set a key path to any value supported by JSON: an object, array, string, number, boolean, or `null`.\n\n* **Why do I have to use promises?**\n\n  electron-settings reads and writes to the file system asynchronously. In order to ensure data integrity, you should use promises. Alternatively, all methods have a synchronous counterpart that you may use instead.\n\n* **Where is the settings file saved?**\n\n  The settings file is named `Settings` and is saved in your app's [user data directory](http://electron.atom.io/docs/api/app/#appgetpathname):\n\n    * `~/Library/Application Support/YourApp` on MacOS.\n    * `%APPDATA%/YourApp` on Windows.\n    * `$XDG_CONFIG_HOME/YourApp` or `~/.config/YourApp` on Linux.\n\n  You can use [`getSettingsFilePath()`][method_get-settings-file-path] to get the full path to the settings file.\n\n\n\n***\n\n\n\nDocumentation\n-------------\n* [Events][docs_events]\n* [Methods][docs_methods]\n\n\nContributors\n-------\n* [Nathan Buchar](mailto:hello@nathanbuchar.com) (Owner)\n* [Kai Eichinger](mailto:kai.eichinger@outlook.com)\n* *You?*\n\n\nLicense\n-------\n[ISC][license]\n\n\n***\n<small>Last updated **Aug. 16th, 2016** by [Nathan Buchar].</small>\n\n<small>**Having trouble?** [Get help on Gitter][external_gitter].</small>\n\n\n\n\n\n\n[license]: ./LICENSE.md\n\n[Nathan Buchar]: mailto:hello@nathanbuchar.com\n\n[section_install]: #install\n[section_quick-start]: #quick-start\n[section_default-settings]: #default-settings\n[section_faq]: #faq\n[section_documentation]: #documentation\n[section_contributors]: #contributors\n[section_license]: #license\n\n[docs_events]: ./docs/events.md\n[docs_methods]: ./docs/methods.md\n\n[method_get-settings-file-path]: ./docs/methods.md#getsettingsfilepath\n[method_observe]: ./docs/methods.md#observe\n[method_defaults]: ./docs/methods.md#defaults\n[method_apply-defaults]: ./docs/methods.md#applydefaults\n[method_reset-to-defaults]: ./docs/methods.md#resettodefaults\n\n[external_electron]: https://electron.atom.com\n[external_atom-config]: https://github.com/atom/atom/blob/master/src/config.coffee\n[external_gitter]: https://gitter.im/nathanbuchar/electron-settings\n"
 }

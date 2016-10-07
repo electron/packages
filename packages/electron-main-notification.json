@@ -1,0 +1,71 @@
+{
+  "name": "electron-main-notification",
+  "version": "1.0.0",
+  "description": "Display notifications from the electron main process",
+  "main": "index.js",
+  "scripts": {
+    "test": "standard"
+  },
+  "repository": {
+    "user": "MaxGfeller",
+    "repo": "electron-main-notification",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/MaxGfeller/electron-main-notification/tarball/master",
+    "clone_url": "https://github.com/MaxGfeller/electron-main-notification",
+    "https_url": "https://github.com/MaxGfeller/electron-main-notification",
+    "travis_url": "https://travis-ci.org/MaxGfeller/electron-main-notification",
+    "zip_url": "https://github.com/MaxGfeller/electron-main-notification/archive/master.zip",
+    "api_url": "https://api.github.com/repos/MaxGfeller/electron-main-notification"
+  },
+  "keywords": [
+    "electron",
+    "desktop",
+    "notifications",
+    "desktop",
+    "notification",
+    "notifications",
+    "main",
+    "main",
+    "process"
+  ],
+  "author": {
+    "name": "Max Gfeller",
+    "email": "max.gfeller@gmail.com"
+  },
+  "license": "ISC",
+  "homepage": "https://github.com/MaxGfeller/electron-main-notification#readme",
+  "devDependencies": {
+    "standard": "^8.0.0"
+  },
+  "dependencies": {
+    "uuid": "^2.0.2"
+  },
+  "gitHead": "6991a24d18126322e72cc219763cff82498a990e",
+  "_npmVersion": "3.10.7",
+  "_nodeVersion": "6.3.1",
+  "dist": {
+    "shasum": "1e31ab186b539316883cc515f79910451628fe32",
+    "tarball": "http://registry.npmjs.org/electron-main-notification/-/electron-main-notification-1.0.0.tgz"
+  },
+  "versions": [
+    {
+      "number": "1.0.0",
+      "date": "2016-09-13T12:44:24.963Z"
+    }
+  ],
+  "created": "2016-09-13T12:44:24.963Z",
+  "modified": "2016-09-13T12:44:24.963Z",
+  "lastPublisher": {
+    "name": "maxgfeller",
+    "email": "max.gfeller@gmail.com"
+  },
+  "owners": [
+    {
+      "name": "maxgfeller",
+      "email": "max.gfeller@gmail.com"
+    }
+  ],
+  "readme": "# electron-main-notification\n\n[![JavaScript Style Guide](https://img.shields.io/badge/code%20style-standard-brightgreen.svg)](http://standardjs.com/)\n\nEasily display native desktop applications from your Electron main process.\n\nBecause Notifications use the HTML 5 Notification API, this usually only works\nfrom renderer processes.\n\nHowever, this modules simplifies this whole thing a bit and automatically\ncreates an invisible browser window over which those notifications can be\ndisplayed.\n\n## Usage\n\nActually really easy to use:\n\n```javascript\nconst { app } = require('electron')\nconst notify = require('electron-main-notification')\n\napp.on('ready', () => {\n  notify('This is a notification!', { body: 'See? Really easy to use!' }, () => {\n    console.log('The notification got clicked on!')\n  })\n})\n```\n"
+}

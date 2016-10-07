@@ -1,0 +1,95 @@
+{
+  "name": "eslint-config-swift",
+  "version": "1.0.5",
+  "description": "eslint config used by Swift for frontend apps; based on airbnb's eslint config, but stricter.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"nope\""
+  },
+  "repository": {
+    "user": "swift-nav",
+    "repo": "eslint-config-swift",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/swift-nav/eslint-config-swift/tarball/master",
+    "clone_url": "https://github.com/swift-nav/eslint-config-swift",
+    "https_url": "https://github.com/swift-nav/eslint-config-swift",
+    "travis_url": "https://travis-ci.org/swift-nav/eslint-config-swift",
+    "zip_url": "https://github.com/swift-nav/eslint-config-swift/archive/master.zip",
+    "api_url": "https://api.github.com/repos/swift-nav/eslint-config-swift"
+  },
+  "keywords": [
+    "eslint",
+    "eslintconfig",
+    "swift",
+    "es6",
+    "javascript"
+  ],
+  "author": {
+    "name": "Joshua Gross",
+    "email": "joshua.gross@gmail.com"
+  },
+  "license": "MIT",
+  "homepage": "https://github.com/swift-nav/eslint-config-swift#readme",
+  "peerDependencies": {
+    "eslint-import-resolver-webpack": "^0.6.0",
+    "eslint": "^3.7.0",
+    "eslint-config-airbnb": "^12.0.0",
+    "eslint-config-airbnb-base": "^8.0.0",
+    "eslint-plugin-import": "^2.0.0",
+    "eslint-plugin-jsx-a11y": "^2.2.1",
+    "eslint-plugin-react": "^6.2.0",
+    "babel-eslint": "^7.0.0"
+  },
+  "gitHead": "931231628a477e09d5ea9c4253a36ed9982ef7e1",
+  "_npmVersion": "3.10.3",
+  "_nodeVersion": "6.4.0",
+  "dist": {
+    "shasum": "98aa394d2207b66bab2cbf5c984dc956de7a42af",
+    "tarball": "http://registry.npmjs.org/eslint-config-swift/-/eslint-config-swift-1.0.5.tgz"
+  },
+  "versions": [
+    {
+      "number": "1.0.0",
+      "date": "2016-09-01T01:46:16.928Z"
+    },
+    {
+      "number": "1.0.1",
+      "date": "2016-09-01T02:16:56.880Z"
+    },
+    {
+      "number": "1.0.2",
+      "date": "2016-09-01T02:55:13.827Z"
+    },
+    {
+      "number": "1.0.3",
+      "date": "2016-09-01T02:59:27.806Z"
+    },
+    {
+      "number": "1.0.4",
+      "date": "2016-10-03T20:05:20.413Z"
+    },
+    {
+      "number": "1.0.5",
+      "date": "2016-10-03T20:06:00.065Z"
+    }
+  ],
+  "created": "2016-09-01T01:46:16.928Z",
+  "modified": "2016-10-03T20:06:00.065Z",
+  "lastPublisher": {
+    "name": "joshuagross",
+    "email": "joshua.gross@gmail.com"
+  },
+  "owners": [
+    {
+      "name": "joshuagross",
+      "email": "joshua.gross@gmail.com"
+    },
+    {
+      "name": "mookerji",
+      "email": "mookerji@gmail.com"
+    }
+  ],
+  "readme": "# eslint-config-swift\neslint config used by Swift for frontend apps; based on airbnb's eslint config, but stricter.\n\n## Usage\n\n```shell\nnpm install --save-dev eslint-config-swift\n```\n\nThen you need to install plugins required for our config and `airbnb`'s:\n\n```shell\n(\n  export PKG=eslint-config-swift;\n  npm info \"$PKG\" peerDependencies --json | command sed 's/[\\{\\},]//g ; s/: /@/g' | xargs npm install --save-dev \"$PKG\"\n)\n```\n\nIn your own `.eslintrc`, you can include the \"universal\" config for React/Redux apps or \"electron\" for Electron apps:\n\n```\n{\n  \"extends\": \"swift/universal\"\n}\n```\n\nor \n\n```\n{\n  \"extends\": \"swift/electron\"\n}\n```\n\nAnd you probably want this in your `package.json`:\n\n```json\n{\n  \"scripts\": {\n    ...\n    \"lint\": \"eslint -c .eslintrc --ext .jsx,.js list of source directories\"\n    ...\n  }\n}\n```\n\n## webpack resolution\n\nFor the webpack import resolver to work, `webpack.config.js` must be in the filesystem adjacent to your `package.json`.\n\nYou probably want it to look something like this:\n\n```javascript\n// here for eslint-import-resolver-webpack\nrequire('babel-register');\nmodule.exports = require('./webpack.config.development.js');\n```\n"
+}

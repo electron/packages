@@ -1,0 +1,114 @@
+{
+  "name": "ut-front",
+  "version": "5.8.4",
+  "description": "Frontend module",
+  "main": "index.js",
+  "scripts": {
+    "lint": "ut-lint .",
+    "release": "ut-release",
+    "changelog": "ut-changelog",
+    "check": "ut-check",
+    "cover": "ut-cover",
+    "gitlab": "ut-gitlab",
+    "jenkins": "ut-jenkins",
+    "lint-js": "ut-lint-js .",
+    "postpublish": "ut-postpublish",
+    "postversion": "ut-postversion",
+    "precommit": "ut-precommit",
+    "prepublish": "ut-prepublish",
+    "prepush": "ut-prepush",
+    "pretest": "ut-pretest",
+    "preversion": "ut-preversion",
+    "test": "ut-test",
+    "version": "ut-version"
+  },
+  "dependencies": {
+    "history": "2.1.2",
+    "inert": "4.0.1",
+    "lodash.assign": "4.0.9",
+    "os-browserify": "0.2.1",
+    "react": "15.2.1",
+    "react-css-modules": "3.7.7",
+    "react-redux": "4.4.5",
+    "react-router": "2.5.2",
+    "react-router-redux": "4.0.5",
+    "redux": "3.5.2",
+    "redux-thunk": "2.1.0",
+    "stream-browserify": "2.0.1",
+    "lodash.map": "4.4.0"
+  },
+  "devDependencies": {
+    "ut-tools": "^5.6.0"
+  },
+  "peerDependencies": {
+    "babel-loader": "6.2.4",
+    "babel-preset-es2015-without-strict": "0.0.2",
+    "babel-preset-es2015": "6.9.0",
+    "babel-preset-react": "6.11.1",
+    "babel-preset-stage-0": "6.5.0",
+    "bell-on-bundler-error-plugin": "1.0.8",
+    "css-loader": "0.23.1",
+    "json-loader": "0.5.4",
+    "style-loader": "0.13.1",
+    "react-hot-loader": "1.3.0",
+    "url-loader": "0.5.7",
+    "webpack": "2.1.0-beta.15"
+  },
+  "implDependencies": {
+    "electron-packager": "5.0.1",
+    "electron-prebuilt": "0.34.5",
+    "lasso": "2.1.4",
+    "lasso-marko": "2.0.7",
+    "lasso-minify-js": "1.2.0"
+  },
+  "repository": {
+    "user": "softwaregroup-bg",
+    "repo": "ut-front",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/softwaregroup-bg/ut-front/tarball/master",
+    "clone_url": "https://github.com/softwaregroup-bg/ut-front",
+    "https_url": "https://github.com/softwaregroup-bg/ut-front",
+    "travis_url": "https://travis-ci.org/softwaregroup-bg/ut-front",
+    "zip_url": "https://github.com/softwaregroup-bg/ut-front/archive/master.zip",
+    "api_url": "https://api.github.com/repos/softwaregroup-bg/ut-front"
+  },
+  "author": "",
+  "license": "Apache-2.0",
+  "gitHead": "ecf26d6b1b5469012233f614d272ec91cb1fca88",
+  "homepage": "https://github.com/softwaregroup-bg/ut-front#readme",
+  "_npmVersion": "3.10.7",
+  "_nodeVersion": "4.4.1",
+  "dist": {
+    "shasum": "0b3ea502e311c183db118a5c41f79fac9d32b68b",
+    "tarball": "http://registry.npmjs.org/ut-front/-/ut-front-5.8.4.tgz"
+  },
+  "versions": [
+    {
+      "number": "5.8.2",
+      "date": "2016-08-12T18:33:57.057Z"
+    },
+    {
+      "number": "5.8.3",
+      "date": "2016-08-31T08:12:51.272Z"
+    },
+    {
+      "number": "5.8.4",
+      "date": "2016-09-20T09:19:36.773Z"
+    }
+  ],
+  "created": "2016-08-12T18:33:57.057Z",
+  "modified": "2016-09-20T09:19:36.773Z",
+  "lastPublisher": {
+    "name": "kalin.krustev",
+    "email": "kalin.krustev@gmail.com"
+  },
+  "owners": [
+    {
+      "name": "kalin.krustev",
+      "email": "kalin.krustev@gmail.com"
+    }
+  ],
+  "readme": "## module configuration\n\n```javascript\n{\n    packer: 'webpack|lasso' // packer package, currently available: webpack and lasso, defaults to lasso\n}\n```\n\n## React module: What is exporting?\n - `UtFront` - app root element\n## Props\n  - `UtFront.environment` - based on this prop module will toggle react DevTools (production: hidden, all other: vissible)\n  - `UtFront.reducers` - this property should be of type object that holds app reducers.\n  - `UtFront.middlewares` - this property should be of type array that holds middlewares.\n  - `UtFront.utBus` - is used to pass ut-bus instance to all child elements.. it can be obtained in the following manner [Official documentation](https://facebook.github.io/react/docs/context.html#passing-info-automatically-through-a-tree)\n### Default middleware\n  There is few default middlewares that makes our life easy\n  - `method` middleware(work in progress, still alpha): will watch for parameters `method` - string and `params` - object, method should be utBus method name to be called and params will be message data, lets say we need to do a login request, what should we dispatch in order to make request to utbus? The object should be as follows:\n\n```javascript\n{\n    type: 'LOGIN',\n    method: 'user.user.login',\n    params: {\n        'username': '...',\n        'password': '...'\n    }\n}\n```\n\nthis will be cought by method middleware, it will send the request, return promise and will pass following object to redux store:\n\n```javascript\n{\n    type: 'LOGIN',\n    methodRequestState: 'requested'\n    // ..... if there is some extra data it will reside here, but field data and method will be removed or altered!!!\n}\n```\n\nafter we receive the response action following object will be resolved in promise and dispached to redux store:\n\n```javascript\n{\n    type: 'LOGIN',\n    methodRequestState: 'finished',\n    result: 'result object',\n    error: 'error object'\n}\n```\n\n  - `log` middleware(work in progress, still alpha): will watch for `{type: 'UT_LOG', text: '<text to log>'}` and dispatched message will not reach redux storage\n\n## Permission check\n  - add permission array with `permissionsSet` imported from ut-front/react\n  - wrap the current element within `PermissionCheck` imported from ut-front/react like this:\n\n```javascript\n<PermissionCheck utAction='abc'><button>Button</button></PermissionCheck>\n```\n\n## Using Redux DevTools\nRedux DevTools component was removed and replaced by browser extension.\nMore info here: https://github.com/zalmoxisus/redux-devtools-extension\n"
+}

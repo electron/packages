@@ -1,0 +1,84 @@
+{
+  "name": "implicit-mesh",
+  "version": "1.1.1",
+  "description": "create simplicial complex meshes from an implicit function",
+  "main": "index.js",
+  "scripts": {
+    "test": "tape test/*.js"
+  },
+  "keywords": [
+    "geometry",
+    "mesh",
+    "3d",
+    "signed distance",
+    "implicit function",
+    "webgl",
+    "regl",
+    "stackgl"
+  ],
+  "author": {
+    "name": "substack"
+  },
+  "license": "BSD",
+  "dependencies": {
+    "ndarray": "^1.0.18",
+    "ndarray-fill": "^1.0.1",
+    "regl": "^1.2.1",
+    "surface-nets": "^1.0.2"
+  },
+  "devDependencies": {
+    "angle-normals": "^1.0.0",
+    "gl-mat4": "^1.1.4",
+    "regl-camera": "^1.1.0",
+    "tape": "^4.6.0"
+  },
+  "repository": {
+    "user": "substack",
+    "repo": "implicit-mesh",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/substack/implicit-mesh/tarball/master",
+    "clone_url": "https://github.com/substack/implicit-mesh",
+    "https_url": "https://github.com/substack/implicit-mesh",
+    "travis_url": "https://travis-ci.org/substack/implicit-mesh",
+    "zip_url": "https://github.com/substack/implicit-mesh/archive/master.zip",
+    "api_url": "https://api.github.com/repos/substack/implicit-mesh"
+  },
+  "homepage": "https://github.com/substack/implicit-mesh#readme",
+  "gitHead": "056e3943b16e22da424cac734279b017aecf3b92",
+  "_npmVersion": "3.10.5",
+  "_nodeVersion": "6.3.1",
+  "dist": {
+    "shasum": "cafeea1d41752cfc0c215c6bfb96c8528196b57a",
+    "tarball": "http://registry.npmjs.org/implicit-mesh/-/implicit-mesh-1.1.1.tgz"
+  },
+  "stars": 1,
+  "versions": [
+    {
+      "number": "1.0.0",
+      "date": "2016-09-14T17:37:44.423Z"
+    },
+    {
+      "number": "1.1.0",
+      "date": "2016-09-20T04:44:02.799Z"
+    },
+    {
+      "number": "1.1.1",
+      "date": "2016-09-21T13:57:21.908Z"
+    }
+  ],
+  "created": "2016-09-14T17:37:44.423Z",
+  "modified": "2016-09-21T13:57:21.908Z",
+  "lastPublisher": {
+    "name": "substack",
+    "email": "substack@gmail.com"
+  },
+  "owners": [
+    {
+      "name": "substack",
+      "email": "substack@gmail.com"
+    }
+  ],
+  "readme": "# implicit-mesh\n\ncreate simplicial complex meshes from an [implicit function][1]\n\n[1]: http://iquilezles.org/www/articles/distfunctions/distfunctions.htm\n\n# example\n\n``` js\nvar build = require('implicit-mesh')\nvar mesh = build(64, function (x,y,z) {\n  return x*x + y*y + z*z - 0.2\n})\nconsole.log(JSON.stringify(mesh))\n```\n\nor using a shader:\n\n``` js\nvar build = require('implicit-mesh/shader')\nvar mesh = build(64, `\n  float surface (vec3 p) {\n    return length(p) - 0.5;\n  }\n`)\nconsole.log(JSON.stringify(mesh))\n```\n\neither way, you can use [meshview][3]:\n\n```\n$ electron-spawn shader.js | meshview\n$ node js.js | meshview\n```\n\n![sphere](images/sphere.jpg)\n\n[3]: https://npmjs.com/package/meshview\n\n# api\n\n``` js\nvar js = require('implicit-mesh')\nvar shader = require('implicit-mesh/shader')\n```\n\n## var mesh = js(opts, fn)\n\nBuild a 3d `mesh` with resolution `opts.size` from an implicit function\n`fn(x,y,z)`.\n\nIf `opts` is a number of array, it is interpreted as the `opts.size`.\n\n`opts.size` can be a number or an array of numbers, one for each coordinate.\n\nThe `f(x,y,z)` coordinates are in the domain `[-1,1]` and the resulting mesh\ncoordinates are in the range `[-1,1]` in each dimension.\n\nsimplicial complex meshes have:\n\n* `mesh.positions` - an array of position arrays\n* `mesh.cells` - an array of arrays of position indicies comprising a face\n\nTo get the surface normals you can use the [angle-normals][2] package:\n\n``` js\nvar angleNormals = require('angle-normals')\nvar normals = angleNormals(mesh.cells, mesh.positions)\n```\n\n## var mesh = shader(opts, src)\n\nBuild a mesh from a glsl function defined in the string `src` and:\n\n* `opts.size` - resolution to sample the implicit\n* `opts.precision` - default: 'medium'\n\nYou should define a function `float surface(vec3 pos)`.\n\n# install\n\n```\nnpm install implicit-mesh\n```\n\n# license\n\nBSD\n"
+}

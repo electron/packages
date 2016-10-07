@@ -1,6 +1,6 @@
 {
   "name": "electron-default-menu",
-  "version": "0.2.0",
+  "version": "1.0.0",
   "description": "Default application menu for Electron apps",
   "main": "index.js",
   "keywords": [
@@ -25,15 +25,15 @@
     "api_url": "https://api.github.com/repos/carter-thaxton/electron-default-menu"
   },
   "homepage": "http://github.com/carter-thaxton/electron-default-menu",
-  "gitHead": "198cc4502f960ae06b02769c87f6e8168932761e",
+  "gitHead": "d0be3239be2c2819bea2a9cf8f87d93da9bd9cc0",
   "scripts": {},
   "_npmVersion": "2.15.5",
   "_nodeVersion": "4.4.5",
   "dist": {
-    "shasum": "54fe70fd0163c76c709bd7ef7353f27c53900131",
-    "tarball": "http://registry.npmjs.org/electron-default-menu/-/electron-default-menu-0.2.0.tgz"
+    "shasum": "085d529c29ffbb44f9e584198d8822b19a9c9806",
+    "tarball": "http://registry.npmjs.org/electron-default-menu/-/electron-default-menu-1.0.0.tgz"
   },
-  "stars": 2,
+  "stars": 4,
   "versions": [
     {
       "number": "0.1.0",
@@ -46,10 +46,14 @@
     {
       "number": "0.2.0",
       "date": "2016-06-07T17:54:21.151Z"
+    },
+    {
+      "number": "1.0.0",
+      "date": "2016-08-03T19:47:34.149Z"
     }
   ],
   "created": "2015-12-09T23:33:11.848Z",
-  "modified": "2016-06-07T17:54:21.151Z",
+  "modified": "2016-08-03T19:47:34.149Z",
   "lastPublisher": {
     "name": "nonrectangular",
     "email": "carter.thaxton@gmail.com"
@@ -60,5 +64,5 @@
       "email": "carter.thaxton@gmail.com"
     }
   ],
-  "readme": "# electron-default-menu\n\nA simple module that returns a default Electron menu template, similar to the one you'll get if you don't use `Menu.setApplicationMenu()` at all.  You can modify the returned template before creating the application menu.\n\nBased on the sample code supplied in the [Electron menu documentation](https://github.com/atom/electron/blob/master/docs/api/menu.md)\n\nLike the sample code, it checks the environment, and returns appropriate additional menus for Mac OS X, and sets the `role` for each menu accordingly.\n\nMust be used from the Electron environment.\n\nExample usage:\n\n```javascript\n\nvar defaultMenu = require('electron-default-menu')\nvar Menu = require('menu')\nvar app = require('app')\nvar dialog = require('dialog')\n\napp.on('ready', function() {\n\n  // Get template for default menu\n  var menu = defaultMenu()\n\n  // Add custom menu\n  menu.splice(4, 0, {\n    label: 'Custom',\n    submenu: [\n      {\n        label: 'Do something',\n        click: function(item, focusedWindow) {\n          dialog.showMessageBox({message: 'Do something', buttons: ['OK'] })\n        }\n      }\n    ]\n  })\n\n  // Set top-level application menu, using modified template\n  Menu.setApplicationMenu(Menu.buildFromTemplate(menu));\n})\n\n```\n"
+  "readme": "# electron-default-menu\n\nA simple module that returns a default Electron menu template, similar to the one you'll get if you don't use `Menu.setApplicationMenu()` at all.  You can modify the returned template before creating the application menu.\n\nBased on the sample code supplied in the [Electron menu documentation](https://github.com/atom/electron/blob/master/docs/api/menu.md)\n\nLike the sample code, it checks the environment, and returns appropriate additional menus for Mac OS X, and sets the `role` for each menu accordingly.\n\nMust be used from the Electron environment.\n\nExample usage:\n\n```javascript\nimport electron from 'electron';\nconst defaultMenu = require('electron-default-menu');\nconst { Menu, app, shell } = electron;\nconst dialog = require('dialog');\n\napp.on('ready', () => {\n\n  // Get template for default menu\n  const menu = defaultMenu(app, shell);\n\n  // Add custom menu\n  menu.splice(4, 0, {\n    label: 'Custom',\n    submenu: [\n      {\n        label: 'Do something',\n        click: (item, focusedWindow) => {\n          dialog.showMessageBox({message: 'Do something', buttons: ['OK'] })\n        }\n      }\n    ]\n  })\n\n  // Set top-level application menu, using modified template\n  Menu.setApplicationMenu(Menu.buildFromTemplate(menu));\n})\n\n```\n"
 }

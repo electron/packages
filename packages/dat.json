@@ -1,0 +1,761 @@
+{
+  "name": "dat",
+  "version": "11.4.0",
+  "description": "Share datasets on the Internet",
+  "keywords": [
+    "data package",
+    "dataset",
+    "replication",
+    "synchronization"
+  ],
+  "bin": {
+    "dat": "bin/cli.js"
+  },
+  "scripts": {
+    "install-precommit": "echo ./node_modules/.bin/standard > .git/hooks/pre-commit && chmod +x .git/hooks/pre-commit",
+    "standard": "standard",
+    "test": "standard && tape tests/*.js | tap-spec"
+  },
+  "repository": {
+    "user": "datproject",
+    "repo": "dat",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/datproject/dat/tarball/master",
+    "clone_url": "https://github.com/datproject/dat",
+    "https_url": "https://github.com/datproject/dat",
+    "travis_url": "https://travis-ci.org/datproject/dat",
+    "zip_url": "https://github.com/datproject/dat/archive/master.zip",
+    "api_url": "https://api.github.com/repos/datproject/dat"
+  },
+  "author": {
+    "name": "max ogden"
+  },
+  "license": "BSD-3-Clause",
+  "dependencies": {
+    "chalk": "^1.1.1",
+    "dat-js": "^3.6.0",
+    "datland-swarm-defaults": "^1.0.2",
+    "discovery-swarm": "^4.0.2",
+    "dns-discovery": "^5.3.4",
+    "memdb": "^1.3.1",
+    "minimist": "^1.2.0",
+    "mkdirp": "^0.5.1",
+    "pretty-bytes": "^3.0.0",
+    "pump": "^1.0.1",
+    "speedometer": "^1.0.0",
+    "status-logger": "^2.0.1"
+  },
+  "homepage": "https://github.com/datproject/dat",
+  "devDependencies": {
+    "rimraf": "^2.5.3",
+    "standard": "^6.0.7",
+    "tap-spec": "^4.1.1",
+    "tape": "^4.4.0",
+    "tape-spawn": "^1.4.2"
+  },
+  "gitHead": "1c85da6ecfd6a636f1ce3b38fee19e238c3f6981",
+  "_npmVersion": "3.10.6",
+  "_nodeVersion": "6.5.0",
+  "dist": {
+    "shasum": "5df94e4e8d46a07a4b33f50291f5c699fb47c693",
+    "tarball": "http://registry.npmjs.org/dat/-/dat-11.4.0.tgz"
+  },
+  "stars": 18,
+  "versions": [
+    {
+      "number": "0.0.0",
+      "date": "2013-06-04T03:16:15.937Z"
+    },
+    {
+      "number": "0.0.1",
+      "date": "2013-08-22T03:55:26.985Z"
+    },
+    {
+      "number": "0.0.2",
+      "date": "2013-08-22T22:33:29.072Z"
+    },
+    {
+      "number": "0.1.0",
+      "date": "2013-08-24T00:44:16.840Z"
+    },
+    {
+      "number": "0.1.1",
+      "date": "2013-08-28T15:57:07.161Z"
+    },
+    {
+      "number": "0.1.2",
+      "date": "2013-08-28T22:01:50.720Z"
+    },
+    {
+      "number": "0.1.3",
+      "date": "2013-08-28T22:49:48.679Z"
+    },
+    {
+      "number": "0.1.4",
+      "date": "2013-08-30T22:08:18.139Z"
+    },
+    {
+      "number": "0.1.5",
+      "date": "2013-08-30T23:03:57.961Z"
+    },
+    {
+      "number": "0.2.1",
+      "date": "2013-09-03T23:59:09.921Z"
+    },
+    {
+      "number": "0.3.0",
+      "date": "2013-11-07T18:41:17.193Z"
+    },
+    {
+      "number": "1.0.0",
+      "date": "2013-11-10T14:52:25.326Z"
+    },
+    {
+      "number": "1.0.1",
+      "date": "2013-11-10T16:46:53.226Z"
+    },
+    {
+      "number": "1.1.0",
+      "date": "2013-11-12T16:03:23.948Z"
+    },
+    {
+      "number": "1.1.2",
+      "date": "2013-11-16T17:30:41.113Z"
+    },
+    {
+      "number": "1.1.3",
+      "date": "2013-11-17T20:39:53.172Z"
+    },
+    {
+      "number": "1.1.5",
+      "date": "2013-11-18T18:14:44.622Z"
+    },
+    {
+      "number": "1.1.6",
+      "date": "2013-11-18T18:30:10.208Z"
+    },
+    {
+      "number": "1.1.7",
+      "date": "2013-11-21T00:43:45.157Z"
+    },
+    {
+      "number": "1.1.9",
+      "date": "2013-11-21T23:09:38.682Z"
+    },
+    {
+      "number": "1.2.0",
+      "date": "2013-11-22T23:32:42.672Z"
+    },
+    {
+      "number": "1.2.1",
+      "date": "2013-11-24T23:58:01.869Z"
+    },
+    {
+      "number": "2.0.0",
+      "date": "2013-11-25T21:53:35.131Z"
+    },
+    {
+      "number": "2.1.1",
+      "date": "2013-11-27T17:21:32.745Z"
+    },
+    {
+      "number": "2.1.2",
+      "date": "2013-12-08T21:35:33.742Z"
+    },
+    {
+      "number": "2.2.0",
+      "date": "2013-12-08T22:48:37.531Z"
+    },
+    {
+      "number": "2.2.1",
+      "date": "2013-12-11T19:56:13.875Z"
+    },
+    {
+      "number": "2.3.0",
+      "date": "2013-12-17T22:23:18.933Z"
+    },
+    {
+      "number": "2.4.0",
+      "date": "2013-12-18T04:54:03.679Z"
+    },
+    {
+      "number": "2.4.1",
+      "date": "2013-12-19T02:51:46.769Z"
+    },
+    {
+      "number": "2.4.2",
+      "date": "2013-12-31T01:30:15.574Z"
+    },
+    {
+      "number": "2.4.3",
+      "date": "2014-01-18T21:02:49.446Z"
+    },
+    {
+      "number": "2.5.0",
+      "date": "2014-01-19T20:21:52.237Z"
+    },
+    {
+      "number": "2.6.0",
+      "date": "2014-01-27T04:20:28.294Z"
+    },
+    {
+      "number": "2.7.0",
+      "date": "2014-01-30T01:13:12.231Z"
+    },
+    {
+      "number": "2.7.1",
+      "date": "2014-01-30T01:28:16.548Z"
+    },
+    {
+      "number": "2.7.2",
+      "date": "2014-02-07T05:35:05.104Z"
+    },
+    {
+      "number": "2.7.3",
+      "date": "2014-02-11T19:42:17.148Z"
+    },
+    {
+      "number": "2.7.4",
+      "date": "2014-02-11T22:21:51.810Z"
+    },
+    {
+      "number": "2.8.0",
+      "date": "2014-02-12T00:01:58.062Z"
+    },
+    {
+      "number": "2.8.1",
+      "date": "2014-02-12T00:36:17.033Z"
+    },
+    {
+      "number": "2.9.0",
+      "date": "2014-03-28T22:15:45.243Z"
+    },
+    {
+      "number": "2.10.0",
+      "date": "2014-04-04T05:25:23.704Z"
+    },
+    {
+      "number": "2.10.1",
+      "date": "2014-04-05T00:24:14.869Z"
+    },
+    {
+      "number": "3.0.0",
+      "date": "2014-04-07T00:26:38.206Z"
+    },
+    {
+      "number": "3.0.1",
+      "date": "2014-04-09T22:42:42.892Z"
+    },
+    {
+      "number": "3.0.2",
+      "date": "2014-04-11T01:50:50.447Z"
+    },
+    {
+      "number": "4.0.0",
+      "date": "2014-04-11T19:27:59.114Z"
+    },
+    {
+      "number": "4.0.1",
+      "date": "2014-04-11T21:53:40.570Z"
+    },
+    {
+      "number": "4.1.0",
+      "date": "2014-04-13T19:45:14.371Z"
+    },
+    {
+      "number": "4.1.1",
+      "date": "2014-04-17T00:04:05.434Z"
+    },
+    {
+      "number": "4.1.2",
+      "date": "2014-04-18T19:34:37.163Z"
+    },
+    {
+      "number": "4.1.3",
+      "date": "2014-04-19T02:57:45.275Z"
+    },
+    {
+      "number": "4.1.4",
+      "date": "2014-04-19T03:53:07.516Z"
+    },
+    {
+      "number": "4.2.0",
+      "date": "2014-04-19T23:11:16.649Z"
+    },
+    {
+      "number": "4.3.0",
+      "date": "2014-04-20T02:20:51.418Z"
+    },
+    {
+      "number": "4.3.1",
+      "date": "2014-04-20T02:26:41.068Z"
+    },
+    {
+      "number": "4.3.2",
+      "date": "2014-04-20T21:02:00.414Z"
+    },
+    {
+      "number": "4.3.3",
+      "date": "2014-04-21T22:52:33.325Z"
+    },
+    {
+      "number": "4.4.0",
+      "date": "2014-04-22T23:33:20.797Z"
+    },
+    {
+      "number": "4.4.1",
+      "date": "2014-04-23T03:03:35.200Z"
+    },
+    {
+      "number": "4.4.2",
+      "date": "2014-04-23T21:46:16.826Z"
+    },
+    {
+      "number": "4.4.3",
+      "date": "2014-04-23T22:57:59.830Z"
+    },
+    {
+      "number": "4.4.4",
+      "date": "2014-04-25T23:44:24.917Z"
+    },
+    {
+      "number": "4.5.0",
+      "date": "2014-04-28T00:21:17.489Z"
+    },
+    {
+      "number": "4.5.1",
+      "date": "2014-04-28T05:18:47.469Z"
+    },
+    {
+      "number": "4.5.2",
+      "date": "2014-05-04T21:56:44.186Z"
+    },
+    {
+      "number": "5.0.0",
+      "date": "2014-06-13T19:49:05.471Z"
+    },
+    {
+      "number": "5.0.1",
+      "date": "2014-06-13T19:59:16.827Z"
+    },
+    {
+      "number": "5.0.2",
+      "date": "2014-06-18T03:20:52.014Z"
+    },
+    {
+      "number": "5.0.3",
+      "date": "2014-07-11T07:02:54.247Z"
+    },
+    {
+      "number": "5.0.4",
+      "date": "2014-07-11T08:47:41.442Z"
+    },
+    {
+      "number": "6.0.0",
+      "date": "2014-08-17T05:34:53.474Z"
+    },
+    {
+      "number": "6.0.1",
+      "date": "2014-08-17T18:39:38.545Z"
+    },
+    {
+      "number": "6.0.2",
+      "date": "2014-08-17T20:28:51.865Z"
+    },
+    {
+      "number": "6.0.3",
+      "date": "2014-08-17T21:08:16.796Z"
+    },
+    {
+      "number": "6.1.0",
+      "date": "2014-08-17T22:03:06.922Z"
+    },
+    {
+      "number": "6.1.1",
+      "date": "2014-08-18T01:56:09.788Z"
+    },
+    {
+      "number": "6.1.2",
+      "date": "2014-08-18T02:10:20.488Z"
+    },
+    {
+      "number": "6.1.3",
+      "date": "2014-08-18T09:51:41.899Z"
+    },
+    {
+      "number": "6.2.0",
+      "date": "2014-08-19T14:01:46.873Z"
+    },
+    {
+      "number": "6.3.0",
+      "date": "2014-08-19T18:42:28.383Z"
+    },
+    {
+      "number": "6.3.1",
+      "date": "2014-08-19T19:27:40.640Z"
+    },
+    {
+      "number": "6.3.2",
+      "date": "2014-08-19T21:43:22.184Z"
+    },
+    {
+      "number": "6.3.3",
+      "date": "2014-08-19T22:09:12.354Z"
+    },
+    {
+      "number": "6.3.4",
+      "date": "2014-08-20T00:28:21.540Z"
+    },
+    {
+      "number": "6.4.0",
+      "date": "2014-08-22T19:49:33.149Z"
+    },
+    {
+      "number": "6.5.0",
+      "date": "2014-09-07T00:21:59.918Z"
+    },
+    {
+      "number": "6.5.1",
+      "date": "2014-09-08T20:38:12.167Z"
+    },
+    {
+      "number": "6.5.2",
+      "date": "2014-09-10T06:59:32.014Z"
+    },
+    {
+      "number": "6.6.0",
+      "date": "2014-09-18T08:27:48.954Z"
+    },
+    {
+      "number": "6.6.1",
+      "date": "2014-09-18T08:28:51.011Z"
+    },
+    {
+      "number": "6.6.2",
+      "date": "2014-09-23T05:48:15.874Z"
+    },
+    {
+      "number": "6.6.3",
+      "date": "2014-09-24T15:26:15.654Z"
+    },
+    {
+      "number": "6.6.4",
+      "date": "2014-10-01T22:43:29.318Z"
+    },
+    {
+      "number": "6.6.5",
+      "date": "2014-10-01T22:59:44.753Z"
+    },
+    {
+      "number": "6.7.0",
+      "date": "2014-10-03T04:07:55.687Z"
+    },
+    {
+      "number": "6.7.1",
+      "date": "2014-10-03T20:30:17.570Z"
+    },
+    {
+      "number": "6.8.0",
+      "date": "2014-10-08T02:03:09.271Z"
+    },
+    {
+      "number": "6.8.1",
+      "date": "2014-10-08T06:03:54.429Z"
+    },
+    {
+      "number": "6.8.2",
+      "date": "2014-10-21T01:18:48.776Z"
+    },
+    {
+      "number": "6.8.3",
+      "date": "2014-10-26T10:51:20.995Z"
+    },
+    {
+      "number": "6.8.4",
+      "date": "2014-10-27T11:45:25.033Z"
+    },
+    {
+      "number": "6.8.5",
+      "date": "2014-11-15T07:11:55.725Z"
+    },
+    {
+      "number": "6.8.6",
+      "date": "2014-11-29T00:09:17.475Z"
+    },
+    {
+      "number": "6.9.0",
+      "date": "2014-12-04T18:26:53.137Z"
+    },
+    {
+      "number": "6.9.1",
+      "date": "2014-12-05T18:34:40.794Z"
+    },
+    {
+      "number": "6.9.2",
+      "date": "2014-12-06T19:28:39.188Z"
+    },
+    {
+      "number": "6.9.3",
+      "date": "2014-12-06T19:53:54.181Z"
+    },
+    {
+      "number": "6.9.4",
+      "date": "2014-12-08T22:10:05.908Z"
+    },
+    {
+      "number": "6.9.5",
+      "date": "2014-12-23T03:06:40.802Z"
+    },
+    {
+      "number": "6.9.6",
+      "date": "2014-12-30T23:12:58.719Z"
+    },
+    {
+      "number": "6.9.7",
+      "date": "2015-02-25T13:48:58.752Z"
+    },
+    {
+      "number": "7.0.0-pre",
+      "date": "2015-06-02T00:39:31.349Z"
+    },
+    {
+      "number": "7.0.0-pre-2",
+      "date": "2015-06-11T15:10:32.495Z"
+    },
+    {
+      "number": "7.0.0-pre-3",
+      "date": "2015-06-23T23:03:37.890Z"
+    },
+    {
+      "number": "7.0.0-pre-4",
+      "date": "2015-06-25T15:18:11.047Z"
+    },
+    {
+      "number": "7.0.0-pre-5",
+      "date": "2015-07-06T19:56:28.566Z"
+    },
+    {
+      "number": "7.0.0-pre-6",
+      "date": "2015-07-22T16:52:43.974Z"
+    },
+    {
+      "number": "7.0.0-pre-7",
+      "date": "2015-07-22T17:14:12.569Z"
+    },
+    {
+      "number": "7.0.0-pre-8",
+      "date": "2015-07-22T17:23:12.933Z"
+    },
+    {
+      "number": "7.0.0",
+      "date": "2015-07-22T17:25:54.394Z"
+    },
+    {
+      "number": "7.0.1",
+      "date": "2015-07-26T22:27:34.411Z"
+    },
+    {
+      "number": "7.0.2",
+      "date": "2015-07-27T18:40:34.476Z"
+    },
+    {
+      "number": "7.0.3",
+      "date": "2015-08-07T01:39:24.663Z"
+    },
+    {
+      "number": "7.0.4",
+      "date": "2015-08-20T12:26:34.275Z"
+    },
+    {
+      "number": "7.1.0",
+      "date": "2015-09-11T20:23:10.398Z"
+    },
+    {
+      "number": "7.1.1",
+      "date": "2015-09-16T06:42:07.462Z"
+    },
+    {
+      "number": "7.1.2",
+      "date": "2015-09-24T05:19:37.673Z"
+    },
+    {
+      "number": "8.0.0",
+      "date": "2016-01-19T20:27:06.176Z"
+    },
+    {
+      "number": "8.0.1",
+      "date": "2016-01-20T22:10:37.421Z"
+    },
+    {
+      "number": "8.0.2",
+      "date": "2016-01-24T19:55:30.229Z"
+    },
+    {
+      "number": "8.0.3",
+      "date": "2016-01-24T20:34:36.918Z"
+    },
+    {
+      "number": "8.0.4",
+      "date": "2016-01-27T22:05:31.939Z"
+    },
+    {
+      "number": "8.0.5",
+      "date": "2016-01-28T21:41:17.068Z"
+    },
+    {
+      "number": "8.0.6",
+      "date": "2016-01-29T15:19:08.342Z"
+    },
+    {
+      "number": "8.0.7",
+      "date": "2016-02-01T00:24:27.318Z"
+    },
+    {
+      "number": "8.0.8",
+      "date": "2016-02-03T23:57:59.895Z"
+    },
+    {
+      "number": "9.0.0",
+      "date": "2016-02-05T21:23:25.021Z"
+    },
+    {
+      "number": "9.0.1",
+      "date": "2016-02-06T00:10:53.856Z"
+    },
+    {
+      "number": "9.1.0",
+      "date": "2016-02-07T21:15:51.265Z"
+    },
+    {
+      "number": "9.1.1",
+      "date": "2016-02-07T21:25:03.936Z"
+    },
+    {
+      "number": "9.1.2",
+      "date": "2016-02-19T19:39:29.453Z"
+    },
+    {
+      "number": "9.2.0",
+      "date": "2016-02-21T21:00:36.694Z"
+    },
+    {
+      "number": "9.3.0",
+      "date": "2016-02-21T21:59:11.831Z"
+    },
+    {
+      "number": "9.4.0",
+      "date": "2016-02-26T01:41:29.674Z"
+    },
+    {
+      "number": "9.4.1",
+      "date": "2016-02-26T21:12:11.624Z"
+    },
+    {
+      "number": "9.5.0",
+      "date": "2016-02-27T07:14:26.373Z"
+    },
+    {
+      "number": "9.6.0",
+      "date": "2016-02-28T19:15:46.418Z"
+    },
+    {
+      "number": "9.7.0",
+      "date": "2016-02-28T21:54:11.240Z"
+    },
+    {
+      "number": "9.8.0",
+      "date": "2016-03-02T02:31:24.290Z"
+    },
+    {
+      "number": "9.8.1",
+      "date": "2016-03-05T19:38:43.072Z"
+    },
+    {
+      "number": "9.8.2",
+      "date": "2016-03-07T20:21:09.284Z"
+    },
+    {
+      "number": "10.0.0",
+      "date": "2016-06-06T21:07:10.946Z"
+    },
+    {
+      "number": "10.0.1",
+      "date": "2016-06-06T21:37:48.783Z"
+    },
+    {
+      "number": "10.0.2",
+      "date": "2016-06-07T15:35:15.323Z"
+    },
+    {
+      "number": "10.1.0",
+      "date": "2016-06-08T19:23:44.038Z"
+    },
+    {
+      "number": "10.1.1",
+      "date": "2016-06-09T19:12:57.964Z"
+    },
+    {
+      "number": "11.0.1",
+      "date": "2016-06-20T17:27:02.053Z"
+    },
+    {
+      "number": "11.0.2",
+      "date": "2016-06-23T20:52:23.402Z"
+    },
+    {
+      "number": "11.1.0",
+      "date": "2016-07-15T22:27:29.313Z"
+    },
+    {
+      "number": "11.1.1",
+      "date": "2016-07-16T13:11:03.174Z"
+    },
+    {
+      "number": "11.1.2",
+      "date": "2016-07-18T20:57:02.832Z"
+    },
+    {
+      "number": "11.2.0",
+      "date": "2016-09-14T15:19:36.389Z"
+    },
+    {
+      "number": "11.3.0",
+      "date": "2016-09-18T18:17:39.619Z"
+    },
+    {
+      "number": "11.3.1",
+      "date": "2016-09-22T03:52:14.704Z"
+    },
+    {
+      "number": "11.4.0",
+      "date": "2016-10-06T16:59:57.439Z"
+    }
+  ],
+  "created": "2013-06-04T03:16:13.560Z",
+  "modified": "2016-10-06T16:59:57.439Z",
+  "lastPublisher": {
+    "name": "jhand",
+    "email": "joe@hand.email"
+  },
+  "owners": [
+    {
+      "name": "jhand",
+      "email": "joe@joeahand.com"
+    },
+    {
+      "name": "karissa",
+      "email": "krmckelv@gmail.com"
+    },
+    {
+      "name": "mafintosh",
+      "email": "mathiasbuus@gmail.com"
+    },
+    {
+      "name": "maxogden",
+      "email": "max@maxogden.com"
+    }
+  ],
+  "readme": "# Dat\n\nDat is a decentralized data tool for distributing data small and large.\n\n[![#dat IRC channel on freenode](https://img.shields.io/badge/irc%20channel-%23dat%20on%20freenode-blue.svg)](http://webchat.freenode.net/?channels=dat)\n[![datproject/discussions](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/datproject/discussions?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)\n[![docs](https://img.shields.io/badge/Dat%20Project-Docs-green.svg)](http://docs.dat-data.com)\n\n### Key features:\n\n  * **Live sync** folders by sharing files as they are added or changed.\n  * **Distribute large files** without copying data to a central server by connecting directly to peers.\n  * **Intelligently sync** by deduplicating data between versions.\n  * **Verify data integrity** using strong cryptographic hashes.\n  * **Work everywhere**, including on the [command line](https://github.com/datproject/dat), in the [browser](https://github.com/datproject/dat.land), and on the [desktop](https://github.com/juliangruber/dat-desktop).\n\n### [Documentation](http://docs.dat-data.com) | [Video Demo](https://www.youtube.com/watch?v=fxKjSyCoqO4) | [Ecosystem](https://github.com/clkao/awesome-dat)\n\n---\n\n## Dat Command Line Tool\n\nThis guide will help you get started with the Dat command line tool. We are also developing [web](https://github.com/datproject/dat.land) and [desktop](https://github.com/juliangruber/dat-desktop) applications for Dat.\n\n### Table of Contents\n\n<li><a href=\"#getting-started\">Getting Started</a></li>\n<li><a href=\"#using-dat\">Using Dat</a></li>\n<li><a href=\"#troubleshooting\">Troubleshooting</a></li>\n<li><a href=\"#for-developers\">For Developers</a></li>\n\n## Getting Started\n\nThe Dat command line tool can be used to share, download, and sync files across many computers via the command line.\n\nWindows        | Mac/Linux    | Version\n-------------- | ------------ | ------------\n[![Build status](https://ci.appveyor.com/api/projects/status/github/datproject/dat?branch=master&svg=true)](https://ci.appveyor.com/project/datproject/dat) | [![Travis](https://api.travis-ci.org/datproject/dat.svg)](https://travis-ci.org/datproject/dat) | [![NPM version](https://img.shields.io/npm/v/dat.svg?style=flat-square)](https://npmjs.org/package/dat)\n\n### Installation\n\n```\nnpm install -g dat\n```\n\nYou should be able to run the `dat` command now. If not, see the [installation troubleshooting](#troubleshooting) for tips.\n\n### Demo\n\nWe have Dat installed, now let's use it! In this quick demo we will download our documentation files using Dat.\n\nYou tell Dat what files to download by giving it a Dat link. Dat links are 64 character strings, for example `395e3467bb5b2fa083ee8a4a17a706c5574b740b5e1be6efd65754d4ab7328c2`.\n\nAlong with the link, you tell Dat where to download the files. All together, you can download files by typing `dat <dat-link> <download-directory>`.\n\nWe have our Dat documentation folders being shared by Dat (at the key above). For this example, we can download those files to your computer. In your console, run:\n\n```\ndat 395e3467bb5b2fa083ee8a4a17a706c5574b740b5e1be6efd65754d4ab7328c2 dat_docs\n```\n\nYou should see the output below. Once the download is finished, the files will be available on your computer in the `dat_docs` folder!\n\n![Download gif](https://raw.githubusercontent.com/datproject/docs/master/assets/cli_download.gif)\n\n### CLI Development Status\n\nThis is the Dat CLI 1.0 release candidate (RC2). We are actively seeking feedback & developing this release candidate. Follow [this issue](https://github.com/datproject/projects/issues/5) for the Dat CLI road map discussion and see [known RC2 issues](https://github.com/datproject/dat/issues/486).\n\n**Please note** that previous versions of Dat (alpha, beta) are incompatible with the 1.0 release candidate.\n\n## Using Dat\n\nThere are two commands in Dat:\n\n1. Share data: `dat <directory>` will share a directory on your computer.\n2. Download data: `dat <dat-link> <download-directory>` will download files from the Dat link to a directory on your computer. \n\nRunning `dat` in the console, with no arguments, will show you the usage guide. You can always use this as a reference for all the commands:\n\n```\ndat <directory>\n\n  share directory and create a dat-link\n\n  --snapshot            create a snapshot of directory\n  --port, -p            set a specific inbound tcp port\n\ndat <dat-link> <directory>\n\n  download a dat-link into directory\n\n  --exit                exit process after download finishes\n  --port, -p            set a specific inbound tcp port\n\ngeneral options\n\n  --version, -v         get installed dat version\n  --temp                use in-memory database instead of .dat folder\n  --webrtc              connect to webrtc peers via electron-webrtc\n  --doctor              run dat doctor\n  --quiet, -q           output only dat-link, no progress information\n  --debug               show debugging output\n  --ignore-hidden       ignore hidden files (true by default)\n```\n\n### Sharing Files\n\nShare a directory by typing `dat <directory>`:\n\n```\n$ dat my_data/\nSharing /Users/joe/my_data/\n\nShare Link: d6e1875598fae25165eff440ffd01513197ad0db9dbb9898f2a141288b9322c6\nThe Share Link is secret and only those you share it with will be able to get the files\n\n[==============>] Added 2 files (1.44 kB/1.44 kB)\n\nConnected to 1 peers. Uploading 288.2 B/s. Watching for updates...\n```\n\nYou are now publishing that data from your computer. It will be publicly accessible as long as your terminal is open and the process is still running. The hash is a **secret hash**, your data is visible to anyone you send the hash to.\n\n#### Updating Shared Files\n\nDat makes it easy to share a folder and send files as they are added to the folder. By default, when you share using `dat my_data/` you will be in live sync mode. Anyone connected to you will receive new files.\n\n#### Creating a snapshot\n\nA snapshot reads the files and creates a unique link that will always be the same for that set of files (if they remain unchanged). To create a snapshot use the snapshot option: `dat my_data/ --snapshot`. Snapshots are automatically created for you in live mode as files update.\n\n#### Sharing Options\n\n`dat <directory> --snapshot`\n\nShare a snapshot of the current files. \n\n`dat <directory> --port=1234`\n\nSet your inbound TCP port. This is useful for debugging or on restrictive networks. \n\n### Downloading Files\n\nDownload files from a Dat link by typing: `dat <dat-link> <download-directory>`:\n\n```\n$ dat d6e1875598fae25165eff440ffd01513197ad0db9dbb9898f2a141288b9322c6 download_dir\nDownloading in /Users/joe/download_dir\n\nShare Link: d6e1875598fae25165eff440ffd01513197ad0db9dbb9898f2a141288b9322c6\nThe Share Link is secret and only those you share it with will be able to get the files\n\n[==============>] Downloaded 3 files (1.44 kB/1.44 kB)\n\nConnected to 1 peers. Downloading 1.44 kB/s. Watching for updates...\n```\n\nDat will start downloading the data into the `download_dir` folder. Once the download is finished (a message will print and the bar will turn green), you can safely exit the process with `Ctrl-C` (`Cmd-C` on Mac). \n\nWhile downloading, you may be connected to more than 1 peer. Anyone who has the Dat link will be able to download and re-host a copy of the data. So you may be downloading from (and sharing to) other people that are also downloading that data! You only need one block of data to start helping as a host. It's distributed mad science!\n\n#### Updating the Downloaded Files\n\nWhat happens if the files get updated? Dat auto-syncs new files if it is still running. If you exited the process, you can run the same command you ran before (with the same link and directory) and the files will update!\n\n#### Download Options\n\n`dat <dat-link> <directory> --exit` \n\nAfter files are done downloading, exit the process. If you are connected to a live Dat you will not get new files unless you run the command again.\n\n`dat <dat-link> <directory> --port=1234`\n\nSet your inbound TCP port. This is useful for debugging or on restrictive networks. \n\n### Live Sync & Snapshots\n\nDat makes it easy to share a folder and send files as they are changed or added. By default, when you share using Dat you will be in *live sync* mode. Anyone connected to you will receive file changes as you make them.\n\nWhen downloading a Dat, you do not have to worry about live mode. It will automatically start in the right mode based on the link. \n\nTo create a snapshot when sharing files use the snapshot option: `dat my_data/ --snapshot`. A snapshot reads the files and creates a specific link that will never change (as long as the files don't change).\n\n### Dat Metadata Storage\n\nWhen you run a command, Dat creates a hidden folder, `.dat`, in the directory specified. Similar to git, this folder stores information about your Dat. File metadata and the Dat link are stored to make it easy to continue sharing or downloading the same directory.\n\n#### Temporary Database\n\nUse the `--temp` option to keep the metadata in memory instead of the `.dat` folder.\n\n### Sharing or Download files with [dat.land](http://dat.land)\n\nYou can use the `--webrtc` option to share files to dat.land. You'll need to install `electron-webrtc` in order for this to work.\n\n## Troubleshooting\n\nWe've provided some troubleshooting tips based on issues users have seen. Please [open an issue](https://github.com/datproject/dat/issues/new) or ask us in our [chat room](https://gitter.im/datproject/discussions) if you need help troubleshooting and it is not covered here.\n\nIf you have trouble sharing/downloading in a directory with a `.dat` folder, try deleting it and running the command again.\n\n#### Check Your Dat Version\n\nKnowing the version is really helpful if you run into any bugs, and will help us troubleshoot your issue.\n\nCheck your Dat version:\n\n```\ndat -v\n```\n\nYou should see the Dat semantic version printed, e.g. 11.1.2.\n\n### Installation Issues\n\n#### Node & npm\n\nTo use the Dat command line tool you will need to have [node and npm installed](https://docs.npmjs.com/getting-started/installing-node). Make sure those are installed correctly before installing Dat. You can check the version of each:\n\n```\nnode -v\nnpm -v\n```\n\n#### Global Install\n\nThe `-g` option installs Dat globally allowing you to run it as a command. Make sure you installed with that option.\n\n* If you receive an `EACCES` error, read [this guide](https://docs.npmjs.com/getting-started/fixing-npm-permissions) on fixing npm permissions.\n* If you receive an `EACCES` error, you may also install dat with sudo: `sudo npm install -g dat`.\n* Have other installation issues? Let us know, you can [open an issue](https://github.com/datproject/dat/issues/new) or ask us in our [chat room](https://gitter.im/datproject/discussions).\n\n### Networking Issues\n\nNetworking capabilities vary widely with each computer, network, and configuration. Whenever you run a Dat there are several steps to share or download files with peers:\n\n1. Discovering Peers\n2. Connecting to Peers\n3. Sending & Receiving Data\n\nWith successful use, Dat will show `Connected to 1 peer` after connection. If you never see a peer connected your network may be restricting discovery or connection. Please try using the `dat --doctor` command (see below) between the two computers not connecting. This will help troubleshoot the networks.\n\n* Dat may [have issues](https://github.com/datproject/dat/issues/503) connecting if you are using iptables.\n\n#### Dat Doctor\n\nWe've included a tool to identify network issues with Dat, the Dat doctor. You will need to run the command on both the computers you are trying to share data between. On the first computer, run:\n\n```\ndat --doctor\n```\n\nThe doctor will print out a command to run on the other computer, `dat --doctor=<64-character-string>`. The doctor will run through the key steps in the process of sharing data between computers to help identify the issue.\n\n---\n\n## For Developers\n\nPlease see [guidelines on contributing](https://github.com/datproject/dat/blob/master/CONTRIBUTING.md) before submitting an issue or PR.\n\n### Installing from source\n\nClone this repository and in a terminal inside of the folder you cloned run this command:\n\n```\nnpm link\n```\n\nThis should add a `dat` command line command to your PATH. Now you can run the `dat` command to try it out.\n\nThe contribution guide also has more tips on our [development workflow](https://github.com/datproject/dat/blob/master/CONTRIBUTING.md#development-workflow).\n\n\n### Internal API\n\n**Note: we are in the process of moving the js library to a separate module, [joehand/dat-js](https://github.com/joehand/dat-js).**\n\n#### dat.download(cb)\n\ndownload `dat.key` to `dat.dir`\n\n#### dat.share(cb) \n\nshare directory specified in `opts.dir`\n\nSwarm is automatically joined for key when it is available for share & download (`dat.joinSwarm()`).\n\n#### Events\n\n##### Initialization\n\n* `dat.on('ready')`: db created/read & hyperdrive archive created.\n* `dat.on('error')`: init/database error\n\n##### Swarm\n\nSwarm events and stats are available from `dat.swarm`.\n\n* `dat.on('connecting')`: looking for peers\n* `dat.on('swarm-update')`: peer number changed\n\n##### Share\n\n* `dat.on('key')`: key is available (this is at archive-finalized for snapshots)\n* `dat.on('append-ready')`: file count available (`dat.appendStats`), about to start appending to hyperdrive\n* `dat.on('file-added')`: file added to archive\n* `dat.on('upload', data)`: piece of data uploaded\n* `dat.on('archive-finalized')`: archive finalized, all files appended\n* `dat.on('archive-updated')`: live archive changed\n\n##### Download\n\n* `dat.on('key')`: key is available\n* `dat.on('file-downloaded', file)`: file downloaded\n* `dat.on('download', data)`: piece of data downloaded\n* `dat.on('upload', data)`: piece of data uploaded\n* `dat.on('download-finished')`: archive download finished\n\n#### Other API\n\n* `dat.key`: key\n* `dat.dir`: directory\n* `dat.datPath`: path to .dat folder\n* `dat.db`: database instance\n* `dat.swarm`: hyperdrive-archive-swarm instance\n* `dat.archive`: hyperdrive archive\n* `dat.snapshot` (boolean): sharing snapshot archive\n\n#### Internal Stats\n```javascript\n\ndat.stats = {\n    filesTotal: 0, // Latest archive size\n    bytesTotal: 0,\n    bytesUp: 0,\n    bytesDown: 0,\n    rateUp: speedometer(),\n    rateDown: speedometer()\n}\n\n// Calculated on share before append starts. Used for append progress.\n// Not updated for live.\ndat.appendStats = {\n    files: 0,\n    bytes: 0,\n    dirs: 0\n}\n```\n\n## License\n\nBSD-3-Clause\n"
+}

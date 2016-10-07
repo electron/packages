@@ -1,0 +1,105 @@
+{
+  "name": "atla-data",
+  "version": "0.0.1",
+  "description": "Atla Data",
+  "main": "app.js",
+  "scripts": {
+    "start": "gulp serve",
+    "test": "karma start",
+    "clean": "rm -rf dist spec-compiled spec/coverage && rm ./spec/coverage.json",
+    "postinstall": "build/config && gulp styles:less && gulp styles && gulp templates && gulp scripts",
+    "remap-coverage": "remap-istanbul -i spec/coverage.json -o spec/coverage -t html",
+    "watch:cov": "browser-sync start --server spec/coverage/ --port 3030 --files 'spec/coverage/**/*.html'",
+    "test:cov": "karma start karma.conf.js --single-run|| true && npm run -s remap-coverage"
+  },
+  "repository": null,
+  "authors": [
+    "Luke Simkins <luke@oseberg.io>",
+    "Steven Chambers <steven@oseberg.io>"
+  ],
+  "license": "ISC",
+  "dependencies": {
+    "@angular/common": "2.0.0-rc.4",
+    "@angular/compiler": "2.0.0-rc.4",
+    "@angular/core": "2.0.0-rc.4",
+    "@angular/http": "2.0.0-rc.4",
+    "@angular/platform-browser": "2.0.0-rc.4",
+    "@angular/platform-browser-dynamic": "2.0.0-rc.4",
+    "@angular/upgrade": "2.0.0-rc.4",
+    "atla-lib": "git+ssh://git@bitbucket.oseberg.io:7999/atla/atla-lib.git#master",
+    "angular2-jwt": "0.1.14",
+    "atla-login": "git+ssh://git@bitbucket.oseberg.io:7999/atla/atla-login.git#develop",
+    "ng2-logger": "git+ssh://git@bitbucket.oseberg.io:7999/atla/ng2-logger.git#v1.1.0",
+    "lodash": "^3.10.1",
+    "node-uuid": "^1.4.7",
+    "pouchdb": "^5.3.1",
+    "reflect-metadata": "0.1.3",
+    "rxjs": "5.0.0-beta.6",
+    "systemjs": "^0.19.27",
+    "turf": "^2.0.2",
+    "zone.js": "0.6.12"
+  },
+  "devDependencies": {
+    "browser-sync": "^2.9.12",
+    "electron-prebuilt": "1.2.7",
+    "gulp": "^3.9.0",
+    "gulp-flatten": "^0.2.0",
+    "gulp-less": "^3.0.5",
+    "gulp-rename": "^1.2.2",
+    "gulp-replace": "^0.5.4",
+    "gulp-shell": "^0.5.1",
+    "gulp-sourcemaps": "^1.6.0",
+    "gulp-tslint": "^4.3.3",
+    "gulp-typescript": "^2.13.6",
+    "gulp-uglify": "^1.4.2",
+    "gulp-util": "^3.0.7",
+    "gulp-wrap": "^0.11.0",
+    "istanbul": "^0.4.1",
+    "jasmine": "^2.4.1",
+    "jasmine-spec-reporter": "^2.4.0",
+    "karma": "^1.1.2",
+    "karma-chrome-launcher": "^0.2.2",
+    "karma-coverage": "^0.5.3",
+    "karma-electron-launcher": "^0.1.0",
+    "karma-jasmine": "^0.3.8",
+    "karma-jasmine-diff-reporter": "^0.4.0",
+    "karma-jasmine-html-reporter": "^0.2.0",
+    "karma-spec-reporter": "0.0.23",
+    "less": "^2.6.1",
+    "merge2": "^0.3.6",
+    "remap-istanbul": "^0.5.1",
+    "rimraf": "^2.5.2",
+    "run-sequence": "^1.2.2",
+    "tslint": "3.3.0",
+    "tslint-eslint-rules": "^1.3.0",
+    "typescript": "^1.8.9",
+    "vinyl-buffer": "^1.0.0",
+    "vinyl-source-stream": "^1.1.0"
+  },
+  "gitHead": "d39b9c94bb69d0a04f9836d4441d81f3dc3bb4e1",
+  "_npmVersion": "3.8.8",
+  "_nodeVersion": "5.7.0",
+  "dist": {
+    "shasum": "bae38aa4bfa19d93941450cc060843d4ee3aaff6",
+    "tarball": "http://registry.npmjs.org/atla-data/-/atla-data-0.0.1.tgz"
+  },
+  "versions": [
+    {
+      "number": "0.0.1",
+      "date": "2016-09-01T22:26:38.926Z"
+    }
+  ],
+  "created": "2016-09-01T22:26:38.926Z",
+  "modified": "2016-09-01T22:26:38.926Z",
+  "lastPublisher": {
+    "name": "lsimkins",
+    "email": "luke@oseberg.io"
+  },
+  "owners": [
+    {
+      "name": "lsimkins",
+      "email": "luke@oseberg.io"
+    }
+  ],
+  "readme": "# Atla Data\n\nThis repository contains angular 2 services and configuration for interacting with Oseberg data services.\nAuthentication is handled automatically if the proper jwt exists in local storage.\n\n## Using the search services.\nConfiguration files for particular environments exist within the `config/` folder. See this project's\n`boot.ts` file for a usage example of how to provide the proper configuration file. Your project should\nprovide your chosen configuration file in a similar manner.\n\n## Using data cache.\nThis project also contains services for caching data. Look in the `cache/` folder for support services. Any\nclass you want to make cachable must implement the `ISerializable` interface.\n\n## Running\n```bash\nnpm install\ngulp serve\n```\n\nTo run in browser, hit the url shown in the console after running `gulp serve`. (Usually http://localhost:3000)\n\nTo run in electron, first use `gulp serve` followed by `npm start`\n\n## Development\n\n### 1 TypeScript Compiler\nYou will need the typescript compiler installed to compile the project.\n\n```bash\nnpm install typescript -g\n```\n\nRun `tsc` in the project root to compile the project. Currently no\nauto-watch is implemented and compiles have to be run manually or set up\nseparately.\n\nSee [https://github.com/Microsoft/TypeScript#readme](https://github.com/Microsoft/TypeScript#readme)\n\n### 2 Typings Manager\nInstall Typescript Definition Manager to add type definition files for\n3rd party modules.\n\n```bash\nnpm install typings -g\n```\n\nSee [https://github.com/typings/typings#readme](https://github.com/typings/typings#readme)\n\n## Testing\n\nInstall Jasmine for unit testing.\n\n```bash\nnpm install -g jasmine\n```\n\nSee [https://github.com/jasmine/jasmine-npm#readme](https://github.com/jasmine/jasmine-npm#readme)\n\nRun tests continuously using the npm script. This command will cause tests to be rerun on any file change, automatically outputting a code coverage report.\n\n```bash\nnpm tdd\n```\n\nTest coverage is always running in the background with the ``gulp watch`` command. To see coverage reports updated in real time \nuse ``gulp coverage`` and a browser window will launch with said report. \n\n"
+}

@@ -1,26 +1,29 @@
 {
   "name": "taglib2",
-  "version": "2.5.6",
+  "version": "2.6.0",
   "description": "taglib version2 bindings",
-  "dependencies": {
-    "cmake-js": "2",
-    "nan": "2"
-  },
   "scripts": {
     "test": "tape ./tests",
-    "install": "bash ./install.sh"
+    "compile:electron": "cmake-js rebuild -r electron -v 1.4.1 --abi=50 -a ia64 -C -s=c++11",
+    "compile": "cmake-js rebuild",
+    "install": "node compile.js"
+  },
+  "dependencies": {
+    "shelljs": "^0.7.4",
+    "cmake-js": "2",
+    "nan": "^2.4.0"
   },
   "devDependencies": {
     "mkdirp": "^0.5.1",
     "rimraf": "^2.5.2",
     "tape": "*"
   },
-  "gitHead": "501138c6f0d1e17c9137952570e87f900aeba597",
-  "_npmVersion": "3.9.5",
-  "_nodeVersion": "6.2.2",
+  "gitHead": "99ae6eabd9827537c549a8f13c19842926ce283c",
+  "_npmVersion": "3.10.3",
+  "_nodeVersion": "6.4.0",
   "dist": {
-    "shasum": "f22e2755c94cbfc997f1b08c118d4c473d7208a6",
-    "tarball": "http://registry.npmjs.org/taglib2/-/taglib2-2.5.6.tgz"
+    "shasum": "ad1adb12d2dc8e34e07ef4d8e669cdc4e659e71d",
+    "tarball": "http://registry.npmjs.org/taglib2/-/taglib2-2.6.0.tgz"
   },
   "versions": [
     {
@@ -70,10 +73,46 @@
     {
       "number": "2.5.6",
       "date": "2016-07-13T20:39:32.444Z"
+    },
+    {
+      "number": "2.5.7",
+      "date": "2016-07-15T12:59:01.721Z"
+    },
+    {
+      "number": "2.5.8",
+      "date": "2016-07-16T23:28:01.215Z"
+    },
+    {
+      "number": "2.5.9",
+      "date": "2016-07-19T20:30:13.618Z"
+    },
+    {
+      "number": "2.5.10",
+      "date": "2016-07-27T23:28:49.135Z"
+    },
+    {
+      "number": "2.5.12",
+      "date": "2016-07-27T23:54:05.997Z"
+    },
+    {
+      "number": "2.5.13",
+      "date": "2016-07-28T00:06:20.748Z"
+    },
+    {
+      "number": "2.5.14",
+      "date": "2016-09-16T17:15:25.231Z"
+    },
+    {
+      "number": "2.5.15",
+      "date": "2016-09-16T17:37:36.191Z"
+    },
+    {
+      "number": "2.6.0",
+      "date": "2016-09-30T10:28:10.084Z"
     }
   ],
   "created": "2016-04-10T03:25:11.995Z",
-  "modified": "2016-07-13T20:39:32.444Z",
+  "modified": "2016-09-30T10:28:10.084Z",
   "lastPublisher": {
     "name": "hij1nx",
     "email": "paolo@async.ly"
@@ -84,5 +123,5 @@
       "email": "paolo@async.ly"
     }
   ],
-  "readme": "# SYNOPSIS\ntaglib version 2 bindings\n\n# USAGE\nFor example, with electron...\n\n```\nELECTRON=1 npm install\n```\n\n### WRITING TAGS\nNote that `track` will overwrite `tracknumber` if specified in the same write.\n\n```js\nconst taglib = require('taglib2')\nconst mime = require('node-mime')\nconst fs = require('fs')\n\nconst props = {\n  artist: 'Howlin\\' Wolf',\n  title: 'Evil is goin\\' on',\n  album: 'Smokestack Lightnin\\'',\n  comment: 'Chess Master Series',\n  genre: 'blues',\n  year: 1951,\n  track: 3,\n  tracknumber: '1/1',\n  discnumber: '1/1',\n  pictures: [\n    {\n      \"mimetype\": mime('./cover.jpg'),\n      \"picture\": fs.readFileSync('./cover.jpg')\n    } \n  ],\n}\n\ntaglib.writeTagsSync('./file.mp3', props)\n```\n\n### READING TAGS\n\n```js\nconst taglib = require('taglib2')\nconst tags = taglib.readTagsSync('./file.mp3')\n```\n\n#### OUTPUT\n`tags.pictures` will be an array of buffers that contain image data.\n\n```json\n{\n  \"artist\": \"Howlin' Wolf\",\n  \"albumartist\": \"Howlin' Wolf\",\n  \"title\": \"Evil is goin' on\",\n  \"album\": \"Smokestack Lightnin'\",\n  \"comment\": \"Chess Master Series\",\n  \"composer\": \"Chester Burnett\",\n  \"genre\": \"blues\",\n  \"year\": 1951,\n  \"track\": 3,\n  \"tracknumber\": \"3/3\",\n  \"discnumber\": \"1/1\",\n  \"pictures\": [\n    {\n      \"mimetype\": \"image/jpeg\",\n      \"picture\": <Buffer ff d8 ff e0 00 10 4a 46 49 46 00 01 ... >\n    } \n  ],\n  \"bitrate\": 192,\n  \"bpm\": 120,\n  \"samplerate\": 44100,\n  \"channels\": 2,\n  \"compilation\": false,\n  \"time\": \"1:30\",\n  \"length\": 90\n}\n```\n\n"
+  "readme": "# SYNOPSIS\ntaglib version 2 bindings\n\n# BUILD STATUS\n[![Build status](https://ci.appveyor.com/api/projects/status/fkt7jiqubahuja5o?svg=true)](https://ci.appveyor.com/project/0x00A/node-taglib2)\n\n# INSTALLATION\n\n### OSX/Linux\n\nYou need to have installed a proper C/C++ compiler toolchain, like GCC (For OSX please download [Xcode and Command Line Tools](https://developer.apple.com/xcode/))\n\n### Windows\n\nYou need to have Visual C++ Build Environment setup, which you can download as a standalone [Visual C++ Build Tools](http://landinghub.visualstudio.com/visual-cpp-build-tools) package or get it as part of [Visual Studio 2015](https://www.visualstudio.com/products/visual-studio-community-vs).\n\n# USAGE\nFor example, with electron...\n\n```\nELECTRON=1 npm install\n```\n\n### WRITING TAGS\nNote that `track` will overwrite `tracknumber` if specified in the same write.\n\n```js\nconst taglib = require('taglib2')\nconst mime = require('node-mime')\nconst fs = require('fs')\n\nconst props = {\n  artist: 'Howlin\\' Wolf',\n  title: 'Evil is goin\\' on',\n  album: 'Smokestack Lightnin\\'',\n  comment: 'Chess Master Series',\n  genre: 'blues',\n  year: 1951,\n  track: 3,\n  tracknumber: '1/1',\n  discnumber: '1/1',\n  pictures: [\n    {\n      \"mimetype\": mime('./cover.jpg'),\n      \"picture\": fs.readFileSync('./cover.jpg')\n    } \n  ],\n}\n\ntaglib.writeTagsSync('./file.mp3', props)\n```\n\n### READING TAGS\n\n```js\nconst taglib = require('taglib2')\nconst tags = taglib.readTagsSync('./file.mp3')\n```\n\n#### OUTPUT\n`tags.pictures` will be an array of buffers that contain image data.\n\n```json\n{\n  \"artist\": \"Howlin' Wolf\",\n  \"albumartist\": \"Howlin' Wolf\",\n  \"title\": \"Evil is goin' on\",\n  \"album\": \"Smokestack Lightnin'\",\n  \"comment\": \"Chess Master Series\",\n  \"composer\": \"Chester Burnett\",\n  \"genre\": \"blues\",\n  \"year\": 1951,\n  \"track\": 3,\n  \"tracknumber\": \"3/3\",\n  \"discnumber\": \"1/1\",\n  \"pictures\": [\n    {\n      \"mimetype\": \"image/jpeg\",\n      \"picture\": <Buffer ff d8 ff e0 00 10 4a 46 49 46 00 01 ... >\n    } \n  ],\n  \"bitrate\": 192,\n  \"bpm\": 120,\n  \"samplerate\": 44100,\n  \"channels\": 2,\n  \"compilation\": false,\n  \"time\": \"1:30\",\n  \"length\": 90\n}\n```\n"
 }

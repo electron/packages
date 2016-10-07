@@ -1,0 +1,84 @@
+{
+  "name": "electron-test-utils",
+  "version": "0.2.2",
+  "description": "Test Utilities to help with Electron App Testing",
+  "main": "build/index.js",
+  "scripts": {
+    "build": "babel src --out-dir build",
+    "lint": "eslint src test",
+    "pretest": "npm run build",
+    "prepublish": "npm run build",
+    "test": "npm run test-main && npm run test-renderer",
+    "test-main": "electron-mocha test --compilers js:babel-core/register",
+    "test-renderer": "npm run test-main -- --renderer"
+  },
+  "keywords": [
+    "electron",
+    "test",
+    "utils"
+  ],
+  "author": {
+    "name": "Samuel Attard",
+    "email": "samuel.r.attard@gmail.com"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "babel": "^6.5.2",
+    "babel-cli": "^6.14.0",
+    "babel-preset-es2015": "^6.14.0",
+    "chai": "^3.5.0",
+    "electron": "^1.3.5",
+    "electron-mocha": "^3.0.5",
+    "eslint": "^3.4.0",
+    "eslint-config-airbnb-base": "^5.0.3",
+    "eslint-plugin-import": "^1.14.0",
+    "sinon": "^1.17.5"
+  },
+  "babel": {
+    "presets": [
+      "es2015"
+    ]
+  },
+  "gitHead": "035a97117193cd2b2686f0269304cd3e60729629",
+  "_npmVersion": "3.10.5",
+  "_nodeVersion": "6.3.1",
+  "dist": {
+    "shasum": "5c0e0d3957a312437be6da1b8b739a5a847672e5",
+    "tarball": "http://registry.npmjs.org/electron-test-utils/-/electron-test-utils-0.2.2.tgz"
+  },
+  "versions": [
+    {
+      "number": "0.0.1",
+      "date": "2016-09-06T08:04:53.572Z"
+    },
+    {
+      "number": "0.1.0",
+      "date": "2016-09-06T09:50:06.632Z"
+    },
+    {
+      "number": "0.2.0",
+      "date": "2016-09-06T10:04:23.565Z"
+    },
+    {
+      "number": "0.2.1",
+      "date": "2016-09-06T10:05:08.124Z"
+    },
+    {
+      "number": "0.2.2",
+      "date": "2016-09-06T17:55:48.399Z"
+    }
+  ],
+  "created": "2016-09-06T08:04:53.572Z",
+  "modified": "2016-09-06T17:55:48.399Z",
+  "lastPublisher": {
+    "name": "marshallofsound",
+    "email": "samuel.r.attard@gmail.com"
+  },
+  "owners": [
+    {
+      "name": "marshallofsound",
+      "email": "samuel.r.attard@gmail.com"
+    }
+  ],
+  "readme": "# Electron Test Utils\n\n[![Build Status](https://travis-ci.org/MarshallOfSound/electron-test-utils.svg?branch=master)](https://travis-ci.org/MarshallOfSound/electron-test-utils)\n[![npm version](https://badge.fury.io/js/electron-test-utils.svg)](https://www.npmjs.com/package/electron-test-utils)\n[![npm](https://img.shields.io/npm/dt/electron-test-utils.svg?maxAge=2592000)](https://www.npmjs.com/package/electron-test-utils)\n[![license](https://img.shields.io/github/license/MarshallOfSound/electron-test-utils.svg?maxAge=2592000)](https://github.com/MarshallOfSound/electron-test-utils/blob/master/LICENSE)\n![status](https://img.shields.io/badge/Status-%20Ready%20for%20Awesome-red.svg)\n\n\n## What is it?\n\nElectron test utils is a small utility to help test Electron apps that depend\non currently untestable native desktop interactions.  For instance the \"dialog\"\nmodule currently makes your code untestable if you use it.\n\n## How do I use it?\n\n```bash\nnpm i --save-dev electron-test-utils\n```\n\nIt's really easy to use and integrates nicely into most test suites.\n\nYour tests need access to the Electron API's, the easiest way to\nachieve this is to use [`electron-mocha`](https://github.com/jprichardson/electron-mocha)\n\n```js\nimport { initialize, reset, utils } from 'electron-test-utils';\n\ndescribe('my wonderful test suite', () => {\n  before(() => {\n    initialize();\n  });\n\n  it('should open a file after prompting the user', () => {\n    utils.dialog.nextOpenDialogCall(['path/to/file']);\n    // If this function requires openDialog it will be given ['path/to/file']\n    const file = myOpenFileFn();\n    file.should.be.equal('file_content');\n  });\n\n  afterEach(() => {\n    reset();\n  });\n});\n```\n\nNote the two magic functions we call:\n\n* `initialize()` hooks into Electron to make\nour API's work.  \n* `reset()` resets all return values and call values so\nthat you get a clean slate during each test.  \n\n## So what can it do?\n\nCurrently we only support the following API's.  Check out our module docs below.\n\n* [`dialog`](docs/dialog.md)\n* [`globalShortcut`](docs/globalShortcut.md)\n* [`powerMonitor`](docs/powerMonitor.md)\n"
+}

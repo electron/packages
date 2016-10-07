@@ -1,0 +1,53 @@
+{
+  "name": "manoj-simulator",
+  "version": "0.0.3-SNAPSHOT",
+  "description": "A simulator for Manoj Nathwani's big LED display",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "electron ."
+  },
+  "bin": {
+    "manoj-simulator": "./bin/manoj-simulator"
+  },
+  "author": {
+    "name": "Hugh Rawlinson"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "electron-prebuilt": "^1.2.8",
+    "gaussian": "^1.1.0",
+    "hapi": "^13.5.0",
+    "ramda": "^0.21.0"
+  },
+  "gitHead": "81c3b2e222c64767c51fe784ba4ee85f855687e3",
+  "_npmVersion": "3.9.5",
+  "_nodeVersion": "6.2.2",
+  "dist": {
+    "shasum": "b5ca65bf8f9b689c875eaceee0e4b7f2a3df40b5",
+    "tarball": "http://registry.npmjs.org/manoj-simulator/-/manoj-simulator-0.0.3-SNAPSHOT.tgz"
+  },
+  "versions": [
+    {
+      "number": "0.0.2-SNAPSHOT",
+      "date": "2016-07-23T22:12:33.829Z"
+    },
+    {
+      "number": "0.0.3-SNAPSHOT",
+      "date": "2016-07-23T22:23:15.776Z"
+    }
+  ],
+  "created": "2016-07-23T22:12:33.829Z",
+  "modified": "2016-07-23T22:23:15.776Z",
+  "lastPublisher": {
+    "name": "hughrawlinson",
+    "email": "hugh@codeoclock.net"
+  },
+  "owners": [
+    {
+      "name": "hughrawlinson",
+      "email": "hugh@codeoclock.net"
+    }
+  ],
+  "readme": "# Manoj Simulator\n\nA simulator for Manoj Nathwani's big LED display he intends to bring to EMF.\n\n## Usage\n\nInstall the package using npm.\n\n```\nnpm install manoj-simulator\n```\n\nRun the application in your shell.\n\n```\nmanoj-simulator\n```\n\nYou can then use the API described below to print to the screen.\n\n## API\n\nThe idea is that once the actual display is built, you'll be able to interact with it using the same API, so if you build things against this simulator now, you should just be able to swap out hostname and port and control the actual display with your same programs.\n\n* `GET '/'`\n  * Provides the configuration of the display (x and y length) in JSON format\n* `POST '/'`\n  * Takes a body of ascii triplets, converts each character to 8 bit integers, and streams it to the display the image. The length of the body should be a multiple of three, and length/3 of the body should be equal to the area of the display in pixels.\n\n"
+}

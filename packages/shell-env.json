@@ -1,6 +1,6 @@
 {
   "name": "shell-env",
-  "version": "0.1.2",
+  "version": "0.2.0",
   "description": "Get environment variables from the shell",
   "license": "MIT",
   "repository": {
@@ -56,13 +56,13 @@
   "xo": {
     "esnext": true
   },
-  "gitHead": "07743f314ed0098c2651075fc3213eddebec2a96",
+  "gitHead": "d618c1e05d06d755e357e7a91ea9d2ab2a8ca14c",
   "homepage": "https://github.com/sindresorhus/shell-env#readme",
-  "_npmVersion": "3.10.3",
-  "_nodeVersion": "6.2.1",
+  "_npmVersion": "2.15.5",
+  "_nodeVersion": "4.4.5",
   "dist": {
-    "shasum": "d960cfabe3b4aa8ce8030c11856ebddad08729b3",
-    "tarball": "http://registry.npmjs.org/shell-env/-/shell-env-0.1.2.tgz"
+    "shasum": "a84f6ea132e95587df85ed76a4dbfb8d07ac464f",
+    "tarball": "http://registry.npmjs.org/shell-env/-/shell-env-0.2.0.tgz"
   },
   "versions": [
     {
@@ -76,13 +76,17 @@
     {
       "number": "0.1.2",
       "date": "2016-07-05T19:15:51.006Z"
+    },
+    {
+      "number": "0.2.0",
+      "date": "2016-07-30T13:34:46.513Z"
     }
   ],
   "created": "2016-01-29T02:34:40.702Z",
-  "modified": "2016-07-05T19:15:51.006Z",
+  "modified": "2016-07-30T13:34:46.513Z",
   "lastPublisher": {
-    "name": "silverwind",
-    "email": "me@silverwind.io"
+    "name": "sindresorhus",
+    "email": "sindresorhus@gmail.com"
   },
   "owners": [
     {
@@ -94,5 +98,5 @@
       "email": "sindresorhus@gmail.com"
     }
   ],
-  "readme": "# shell-env [![Build Status](https://travis-ci.org/sindresorhus/shell-env.svg?branch=master)](https://travis-ci.org/sindresorhus/shell-env)\n\n> Get [environment variables](https://en.wikipedia.org/wiki/Environment_variable) from the [shell](https://en.wikipedia.org/wiki/Shell_(computing))\n\nEspecially useful for Electron/NW.js apps as GUI apps on macOS doesn't inherit the environment variables defined in your dotfiles *(.bashrc/.bash_profile/.zshrc/etc)*.\n\n\n## Install\n\n```\n$ npm install --save shell-env\n```\n\n\n## Usage\n\n```js\nconst shellEnv = require('shell-env');\n\nconsole.log(shellEnv.sync());\n//=> {TERM_PROGRAM: 'Apple_Terminal', SHELL: '/bin/zsh', ...}\n```\n\n\n## API\n\n### shellEnv()\n\nReturn a promise for the environment variables.\n\n### shellEnv.sync()\n\nReturns the environment variables.\n\n\n## Related\n\n- [shell-path](https://github.com/sindresorhus/shell-path) - Get the $PATH from the shell\n- [fix-path](https://github.com/sindresorhus/fix-path) - Fix the $PATH on macOS when run from a GUI app\n- [shell-history](https://github.com/sindresorhus/shell-history) - Get the command history of the user's shell\n\n\n## License\n\nMIT © [Sindre Sorhus](https://sindresorhus.com)\n"
+  "readme": "# shell-env [![Build Status](https://travis-ci.org/sindresorhus/shell-env.svg?branch=master)](https://travis-ci.org/sindresorhus/shell-env)\n\n> Get [environment variables](https://en.wikipedia.org/wiki/Environment_variable) from the [shell](https://en.wikipedia.org/wiki/Shell_(computing))\n\nEspecially useful for Electron/NW.js apps as GUI apps on macOS doesn't inherit the environment variables defined in your dotfiles *(.bashrc/.bash_profile/.zshrc/etc)*.\n\n\n## Install\n\n```\n$ npm install --save shell-env\n```\n\n\n## Usage\n\n```js\nconst shellEnv = require('shell-env');\n\nconsole.log(shellEnv.sync());\n//=> {TERM_PROGRAM: 'Apple_Terminal', SHELL: '/bin/zsh', ...}\n\nconsole.log(shellEnv.sync('/bin/bash'));\n//=> {TERM_PROGRAM: 'iTerm.app', SHELL: '/bin/zsh', ...}\n```\n\n\n## API\n\n### shellEnv([shell])\n\nReturn a promise for the environment variables.\n\n### shellEnv.sync([shell])\n\nReturns the environment variables.\n\n#### shell\n\nType: `string`<br>\nDefault: [User default shell](https://github.com/sindresorhus/default-shell)\n\nShell to read the environment variables from.\n\n\n## Related\n\n- [shell-path](https://github.com/sindresorhus/shell-path) - Get the $PATH from the shell\n- [fix-path](https://github.com/sindresorhus/fix-path) - Fix the $PATH on macOS when run from a GUI app\n- [shell-history](https://github.com/sindresorhus/shell-history) - Get the command history of the user's shell\n\n\n## License\n\nMIT © [Sindre Sorhus](https://sindresorhus.com)\n"
 }

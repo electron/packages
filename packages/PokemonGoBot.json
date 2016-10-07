@@ -1,0 +1,92 @@
+{
+  "name": "PokemonGoBot",
+  "description": "Your GoF Bot On Desktop",
+  "author": {
+    "name": "PokemonGo-Desktop-Team"
+  },
+  "repository": {
+    "user": "PokemonGoF",
+    "repo": "PokemonGo-Bot-Desktop",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/PokemonGoF/PokemonGo-Bot-Desktop/tarball/master",
+    "clone_url": "https://github.com/PokemonGoF/PokemonGo-Bot-Desktop",
+    "https_url": "https://github.com/PokemonGoF/PokemonGo-Bot-Desktop",
+    "travis_url": "https://travis-ci.org/PokemonGoF/PokemonGo-Bot-Desktop",
+    "zip_url": "https://github.com/PokemonGoF/PokemonGo-Bot-Desktop/archive/master.zip",
+    "api_url": "https://api.github.com/repos/PokemonGoF/PokemonGo-Bot-Desktop"
+  },
+  "license": "MIT",
+  "version": "0.0.1-alpha",
+  "main": "app.js",
+  "engine": {
+    "node": "0.6.x"
+  },
+  "scripts": {
+    "start": "gulp develop",
+    "publish": "gulp release"
+  },
+  "dependencies": {
+    "async": "^0.9.0",
+    "cross-spawn": "*",
+    "fs-extra": "^0.30.0",
+    "hammerjs": "^2.0.8",
+    "jquery": "^3.1.0",
+    "lock": "^0.1.2",
+    "materialize-css": "^0.97.7",
+    "node-uuid": "^1.4.3",
+    "portfinder": "*",
+    "remote": "^0.2.6",
+    "request": "*",
+    "request-promise": "*",
+    "xtend": "^4.0.1"
+  },
+  "devDependencies": {
+    "async": "^0.9.2",
+    "bower": "^1.7.9",
+    "electron-compile": "^3.3.5",
+    "electron-prebuilt": "*",
+    "gulp": "^3.9.1",
+    "gulp-atom-electron": "^1.9.0",
+    "gulp-debug": "^2.1.2",
+    "gulp-git": "^1.11.0",
+    "gulp-imagemin": "^3.0.2",
+    "gulp-rimraf": "^0.2.0",
+    "gulp-run-electron": "^2.0.0",
+    "gulp-sass": "^2.3.2",
+    "gulp-symdest": "latest",
+    "gulp-util": "^3.0.7",
+    "gulp-zip": "^3.2.0",
+    "merge2": "^1.0.2",
+    "rimraf": "^2.5.4",
+    "vinyl-fs": "^2.4.3"
+  },
+  "gitHead": "f19fd4c155d720e3f51a2be6a82d0a0fa2f7a8c0",
+  "homepage": "https://github.com/PokemonGoF/PokemonGo-Bot-Desktop#readme",
+  "_npmVersion": "3.10.6",
+  "_nodeVersion": "6.3.1",
+  "dist": {
+    "shasum": "62bda10361b9ff229319abce8585a107a164fda5",
+    "tarball": "http://registry.npmjs.org/PokemonGoBot/-/PokemonGoBot-0.0.1-alpha.tgz"
+  },
+  "versions": [
+    {
+      "number": "0.0.1-alpha",
+      "date": "2016-08-11T21:20:25.667Z"
+    }
+  ],
+  "created": "2016-08-11T21:20:25.667Z",
+  "modified": "2016-08-11T21:20:25.667Z",
+  "lastPublisher": {
+    "name": "farrrr",
+    "email": "farrrr@gmail.com"
+  },
+  "owners": [
+    {
+      "name": "farrrr",
+      "email": "farrrr@gmail.com"
+    }
+  ],
+  "readme": "![screenshot](http://i.imgur.com/tzMaWv4.png)\n# Pokemon GO Bot Desktop\n**THE BOT IS CURRENTLY UNDERGOING A MAJOR BUILD SYSTEM REVAMP PLEASE BE PATIENT**\n\n**Bot is working:** [Download](https://github.com/PokemonGoF/PokemonGo-Bot-Desktop/releases/tag/v0.0.2-alpha)\n\nDesktop Pokemon GO Bot based on [PokemonGo-Bot](https://github.com/PokemonGoF/PokemonGo-Bot)  \n\nJoin us at #desktop-porting channel at [our slack chat](https://pokemongo-bot.herokuapp.com/)\n\n\n## Warning\n - Just getting started, many things are not stable. Help is much appreciated\n - Currently no linux build. If someone with linux wants to work to try to package the application, that would be great\n - To Linux users: Many are having issues getting the bot running. As of right now, it does not seem to be supported, but it eventually will\n\n## Getting Started\n\n###Install\n\n####macOS\n```\ngit clone --recursive https://github.com/PokemonGoF/PokemonGo-Bot-Desktop\nbrew install python node wget\npip install virtualenv\ncd PokemonGo-Bot-Desktop\nnpm install\n```\n\n####Linux\nInstall [Node.js](https://nodejs.org/en/)\n```\ngit clone --recursive https://github.com/PokemonGoF/PokemonGo-Bot-Desktop\nsudo apt-get install python wget\npip install virtualenv\ncd PokemonGo-Bot-Desktop\nnpm install\n```\n\n####Windows\nInstall [git bash](https://git-scm.com/downloads)  \nInstall [Python 2.7](https://www.python.org/downloads/)  \nInstall [Node.js](https://nodejs.org/en/)  \nSet your $PATH\n```\ngit clone --recursive https://github.com/PokemonGoF/PokemonGo-Bot-Desktop\npip install virtualenv\ncd PokemonGo-Bot-Desktop\nnpm install\n```\n\n###Run\n```\nnpm start\n```\n\n###Update\n```\ngit pull\ngit submodule update\nnpm install\n```\n\n###Get encrypt.so\nCreate a new separate folder somwhere  \nRun  \n```\nwget http://pgoapi.com/pgoencrypt.tar.gz && tar -xf pgoencrypt.tar.gz && cd pgoencrypt/src/ && make\n```\nThen copy libencrypt.so to the gofbot folder and rename to encrypt.so\n\n## Waffle Channel\nWe sync the status in [Waffle](https://waffle.io/PokemonGoF/PokemonGo-Bot-Desktop)\n\n## Contributors\nJVenberg  \nsolderzzc  \nProjectBarks  \nJacerOmri  \nariestiyansyah  \nGodLesZ  \nsniok  \nmmnsgo  \nOutpox\n\n*Don't forget to add yourself when doing PR*\n\n##Credits\n[PokemonGo-DesktopMap](https://github.com/mchristopher/PokemonGo-DesktopMap) Amazing job done by  Mike Christopher\n\n## Licensing\n\nThe source icons belong to © Nintendo/Creatures Inc./GAME FREAK Inc.\n\nThis project is licensed under the MIT License.\n\n[![Analytics](https://ga-beacon.appspot.com/UA-81468120-1/desktop-welcome-page)](https://github.com/igrigorik/ga-beacon)"
+}

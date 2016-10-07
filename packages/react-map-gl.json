@@ -1,7 +1,7 @@
 {
   "name": "react-map-gl",
   "description": "A React wrapper for MapboxGL-js and overlay API.",
-  "version": "1.0.0",
+  "version": "1.5.0",
   "main": "index.js",
   "keywords": [
     "mapbox",
@@ -25,17 +25,19 @@
   },
   "license": "MIT",
   "dependencies": {
-    "alphaify": "^1.0.0",
     "autobind-decorator": "^1.3.3",
     "bowser": "^1.0.0",
     "canvas-composite-types": "^1.0.4",
-    "d3": "^3.5.16",
+    "d3-array": "^1.0.1",
+    "d3-color": "^1.0.1",
+    "d3-format": "^1.0.2",
+    "d3-geo": "^1.2.4",
+    "d3-scale": "^1.0.3",
+    "d3-selection": "^1.0.2",
     "global": "^4.3.0",
-    "keymirror": "^0.1.1",
-    "mapbox-gl": "0.20.0",
+    "mapbox-gl": "0.21.0",
     "pure-render-decorator": "^1.1.0",
     "svg-transform": "0.0.3",
-    "tap-browser-color": "^0.1.2",
     "viewport-mercator-project": "^2.0.1"
   },
   "devDependencies": {
@@ -49,6 +51,8 @@
     "babelify": "^7.2.0",
     "browserify": "^13.0.0",
     "budo": "^8.2.2",
+    "d3-random": "^1.0.1",
+    "disc": "^1.3.2",
     "electron-prebuilt": "^0.37.3",
     "envify": "^3.4.0",
     "eslint": "^1.10.3",
@@ -58,6 +62,7 @@
     "react-dom": "15.x",
     "tape": "^4.5.1",
     "tape-catch": "^1.0.4",
+    "tap-browser-color": "^0.1.2",
     "testron": "^1.2.0",
     "uber-standard": "^5.1.0"
   },
@@ -68,7 +73,8 @@
     "test": "npm run lint && browserify -t babelify -t envify test/index.js | testron",
     "precommit": "npm run lint -s",
     "prepush": "npm run lint -s",
-    "prepublish": "npm run build"
+    "prepublish": "npm run build",
+    "profile-disc": "browserify src/index.js --full-paths -t babelify | discify --open"
   },
   "files": [
     "src",
@@ -82,13 +88,13 @@
     "node": "0.10.x",
     "npm": "3.x"
   },
-  "gitHead": "6de3a668e31e3f1a6c08a8023bc8bf6072e06943",
+  "gitHead": "1c6ef04e9f8cf6565e7e8b35a010b764238e694e",
   "homepage": "https://github.com/uber/react-map-gl#readme",
-  "_npmVersion": "3.8.8",
+  "_npmVersion": "3.10.6",
   "_nodeVersion": "0.10.32",
   "dist": {
-    "shasum": "d655df7311285cb5848f619a7e648cececc6cb9f",
-    "tarball": "http://registry.npmjs.org/react-map-gl/-/react-map-gl-1.0.0.tgz"
+    "shasum": "e332f33f0c6be5136405f8ebaf9d94550152f10f",
+    "tarball": "http://registry.npmjs.org/react-map-gl/-/react-map-gl-1.5.0.tgz"
   },
   "stars": 2,
   "versions": [
@@ -211,15 +217,51 @@
     {
       "number": "1.0.0",
       "date": "2016-07-05T16:45:35.123Z"
+    },
+    {
+      "number": "1.1.0",
+      "date": "2016-07-20T21:45:08.846Z"
+    },
+    {
+      "number": "1.1.2",
+      "date": "2016-07-20T21:57:59.653Z"
+    },
+    {
+      "number": "1.2.0",
+      "date": "2016-07-28T22:45:10.304Z"
+    },
+    {
+      "number": "1.3.0",
+      "date": "2016-08-15T19:14:30.802Z"
+    },
+    {
+      "number": "1.4.0",
+      "date": "2016-08-22T22:43:51.167Z"
+    },
+    {
+      "number": "1.4.1",
+      "date": "2016-08-23T17:14:55.716Z"
+    },
+    {
+      "number": "1.4.2",
+      "date": "2016-08-23T21:38:49.417Z"
+    },
+    {
+      "number": "1.5.0",
+      "date": "2016-09-09T22:24:59.109Z"
     }
   ],
   "created": "2015-10-08T18:42:19.477Z",
-  "modified": "2016-07-05T16:45:35.123Z",
+  "modified": "2016-09-09T22:24:59.109Z",
   "lastPublisher": {
     "name": "ibgreen",
     "email": "ib.green.home@gmail.com"
   },
   "owners": [
+    {
+      "name": "abmai",
+      "email": "abmai91@gmail.com"
+    },
     {
       "name": "ibgreen",
       "email": "ib.green.home@gmail.com"
@@ -229,5 +271,5 @@
       "email": "vicapow@gmail.com"
     }
   ],
-  "readme": "# react-map-gl\n\nreact-map-gl provides a [React](http://facebook.github.io/react/) friendly\nAPI wrapper around [Mapbox GL JS](https://www.mapbox.com/mapbox-gl-js/). A webGL\nbased vector tile mapping library.\n\nWARNING: This project is new and the API may change. There also may be Mapbox\nAPIs that haven't yet been exposed.\n\n![react-map-gl-screenshots](https://cloud.githubusercontent.com/assets/499192/11028165/49f41da2-86bc-11e5-85eb-9279621ef971.png)\n\nSee the interactive docs at: https://uber.github.io/react-map-gl\n\n## Overview\n\n### Installation\n\n```\nnpm install react-map-gl --save\n```\n\n### Usage\n\n````js\nimport MapGL from 'react-map-gl';\n\n<MapGL width={400} height={400} latitude={37.7577} longitude={-122.4376}\n  zoom={8} onChangeViewport={(viewport) => {\n    const {latitude, longitude, zoom} = viewport;\n    // Optionally call `setState` and use the state to update the map.\n  }}\n/>\n````\n\n### Using overlays\n\nreact-map-gl provides an overlay API so you can use the built-in visualization\noverlays, or create your own. Here's an example of using the build in\nScatterplotOverlay.\n\n````js\nimport ScatterplotOverlay from 'react-map-gl/src/overlays/scatterplot.react';\n// ...\n<MapGL {...viewport}>\n  <ScatterplotOverlay\n    {...viewport}\n    locations={locations}\n    dotRadius={4}\n    globalOpacity={1}\n    compositeOperation=\"screen\" />\n  // Add additional overlays here...\n])\n````\n\n#### Built-in Overlays\n\n1. ChoroplethOverlay\n2. ScatterplotOverlay\n3. DraggablePointsOverlay\n4. SVGOverlay\n5. CanvasOverlay\n\n**Note:** These overlays are currently not compatible with perspective mode.\n\n\n### deck.gl overlays\n\n[deck.gl](https://github.com/uber/deck.gl) is a companion module to\n`react-map-gl` that provide a number of classic data visualization overlays\n(scatterplots, choropleths etc) implemented in WebGL. These overlays are\nsuitable for large or dynamic data sets, or for use in perspective mode\napplications\n\n#### Third party overlays\n\nThird party overlays can also be created. For example, the\n[heatmap-overlay](https://github.com/vicapow/react-map-gl-heatmap-overlay) uses\n[webgl-heatmap](https://github.com/vicapow/webgl-heatmap) to create geographic\nheatmaps.\n![heatmap-example](https://cloud.githubusercontent.com/assets/499192/11028150/33f34640-86bc-11e5-9678-3fa1798394d5.gif)\n\nExample usage:\n\n````js\nimport HeatmapOverlay from 'react-map-gl-heatmap-overlay';\nimport cities from 'example-cities';\n// ...\n    render() {\n      return <MapGL {...viewport}>\n        return <HeatmapOverlay locations={cities} {...viewport}/>\n      </MapGL>;\n    }\n````\n\nWant to create and share your own overlay? Fork the\n[react-map-gl-example-overlay](https://github.com/vicapow/react-map-gl-example-overlay)\nproject to get started.\n\n### Perspective Mode\n\nPerspective mode is exposed using the `pitch` and `bearing` props\n(both default to `0`), which will show the map \"tilted\" `pitch` degrees\n(overhead being 0 degrees), looking towards `bearing` (0 degrees is north).\n\nIn addition, the `perspectiveEnabled` prop (default: `false`)\nwill activate mouse handlers that allow the user to change `pitch` and\n`bearing` using the mouse while holding down the \"command\" key.\n\nIf `perspectiveEnabled` is not set to `true` then the user will not be able to\nchange the pitch and bearing, which means that the default props will show\nan overhead map and only enable standard pan and zoom mouse actions on that map.\n\n**Note:** Mapbox-gl-js limits the pitch to 60 degrees.\n\n**Note:** When using pitch, several additional fields are passed in the\nonViewportChange callback, make sure to pass all received props back to\nthe component.\n\n**Note:** not all overlays are compatible with perspective mode.\nFor a set of overlays that do work with perspective mode, look at\n[deck.gl](https://github.com/uber/deck.gl).\n\n### Transitions\n\n`react-map-gl` does not expose the transition API for `mapbox-gl-js`\nsince it is designed to be a stateless component.\n\nInstead it is recommended to use a separate module like\n[react-motion](https://github.com/chenglou/react-motion)\nto animate properties. An example:\n\n```js\n<Motion style={{\n  latitude: spring(viewport.latitude, { stiffness: 170, damping: 26, precision: 0.000001 }),\n  longitude: spring(viewport.longitude, { stiffness: 170, damping: 26, precision: 0.000001 })\n}}>\n  {({ latitude, longitude }) => <MapGL\n    {...viewport}\n    latitude={latitude}\n    longitude={longitude}\n    mapStyle={mapboxStyle}\n  />}\n</Motion>\n```\n\n### ImmutableJS all the things\n\nThe `mapStyle` property of the `MapGL` as well as several of the built in\noverlay properties must be provided as\n[ImmutableJS](https://facebook.github.io/immutable-js/) objects. This allows\nthe library to be fast since computing changes to props only involves checking\nif the immutable objects are the same instance.\n\n### Use with Redux\n\nIf you're using redux, it is relatively simple to hook this component up to\nstore state in the redux state tree. The simplest way is to take all\nproperties passed to the `onChangeViewport` function property and add them\ndirectly into the store. This state can then be passed back to `react-map-gl`\nwithout any transformation. You can use the package\n[redux-map-gl](https://github.com/Willyham/redux-map-gl) to save writing this\ncode yourself.\n\n## Development\n\nTo develop on this component, install the dependencies and then build and watch\nthe static files.\n\n```bash\n$ npm install\n```\n\nTo serve example app:\n\n```bash\n$ npm start &\n$ open \"http://localhost:9966/?access_token=\"`echo $MapboxAccessToken`\n```\n\nWhere `echo $MapboxAccessToken` returns your Mapbox access token.\n\nOnce complete, you can view the component in your browser at\n[localhost:9966](http://localhost:9966). Any changes you make will\nautomatically run the compiler to build the files again.\n\n### Testing\n\nIts difficult to write tests for this component beacuse it uses WebGL.\nThere are some tests in `test/` but for the most part, as new features\nare added, we typically test drive them by running `npm run start` and\nplay with the demos.\n\n# CHANGE LOG\n\nSee [change log](https://github.com/uber/react-map-gl/blob/master/CHANGELOG.md)\n"
+  "readme": "# react-map-gl\n\nreact-map-gl provides a [React](http://facebook.github.io/react/) friendly\nAPI wrapper around [Mapbox GL JS](https://www.mapbox.com/mapbox-gl-js/). A webGL\nbased vector tile mapping library.\n\nWARNING: This project is new and the API may change. There also may be Mapbox\nAPIs that haven't yet been exposed.\n\n![react-map-gl-screenshots](https://cloud.githubusercontent.com/assets/499192/11028165/49f41da2-86bc-11e5-85eb-9279621ef971.png)\n\nSee the interactive docs at: https://uber.github.io/react-map-gl\n\n## Overview\n\n### Installation\n\n```\nnpm install react-map-gl --save\n```\n\n**Note on Bundling:** react-map-gl is extensively tested with `browserify`,\nhowever several users have reported issues when bundling their apps using\n`webpack`. As a first step, please consult the\n[official mapbox webpack config](https://github.com/mapbox/mapbox-gl-js/blob/master/webpack.config.example.js).\nThere is also some helpful information from  in the issues and a\n[request for help](https://github.com/uber/react-map-gl/issues/112).\n\n### Usage\n\n````js\nimport MapGL from 'react-map-gl';\n\n<MapGL width={400} height={400} latitude={37.7577} longitude={-122.4376}\n  zoom={8} onChangeViewport={(viewport) => {\n    const {latitude, longitude, zoom} = viewport;\n    // Optionally call `setState` and use the state to update the map.\n  }}\n/>\n````\n\n### Using overlays\n\nreact-map-gl provides an overlay API so you can use the built-in visualization\noverlays, or create your own. Here's an example of using the build in\nScatterplotOverlay.\n\n````js\nimport {ScatterplotOverlay} from 'react-map-gl';\n// ...\n<MapGL {...viewport}>\n  <ScatterplotOverlay\n    {...viewport}\n    locations={locations}\n    dotRadius={4}\n    globalOpacity={1}\n    compositeOperation=\"screen\" />\n  // Add additional overlays here...\n])\n````\n\n#### Built-in Overlays\n\n1. ChoroplethOverlay\n2. ScatterplotOverlay\n3. DraggablePointsOverlay\n4. SVGOverlay\n5. CanvasOverlay\n\n**Note:** These overlays are currently not compatible with perspective mode.\n\n\n### deck.gl overlays\n\n[deck.gl](https://github.com/uber/deck.gl) is a companion module to\n`react-map-gl` that provide a number of classic data visualization overlays\n(scatterplots, choropleths etc) implemented in WebGL. These overlays are\nsuitable for large or dynamic data sets, or for use in perspective mode\napplications\n\n#### Third party overlays\n\nThird party overlays can also be created. For example, the\n[heatmap-overlay](https://github.com/vicapow/react-map-gl-heatmap-overlay) uses\n[webgl-heatmap](https://github.com/vicapow/webgl-heatmap) to create geographic\nheatmaps.\n![heatmap-example](https://cloud.githubusercontent.com/assets/499192/11028150/33f34640-86bc-11e5-9678-3fa1798394d5.gif)\n\nExample usage:\n\n````js\nimport HeatmapOverlay from 'react-map-gl-heatmap-overlay';\nimport cities from 'example-cities';\n// ...\n    render() {\n      return <MapGL {...viewport}>\n        return <HeatmapOverlay locations={cities} {...viewport}/>\n      </MapGL>;\n    }\n````\n\nWant to create and share your own overlay? Fork the\n[react-map-gl-example-overlay](https://github.com/vicapow/react-map-gl-example-overlay)\nproject to get started.\n\n### Perspective Mode\n\nPerspective mode is exposed using the `pitch` and `bearing` props\n(both default to `0`), which will show the map \"tilted\" `pitch` degrees\n(overhead being 0 degrees), looking towards `bearing` (0 degrees is north).\n\nIn addition, the `perspectiveEnabled` prop (default: `false`)\nwill activate mouse handlers that allow the user to change `pitch` and\n`bearing` using the mouse while holding down the \"command\" key.\n\nIf `perspectiveEnabled` is not set to `true` then the user will not be able to\nchange the pitch and bearing, which means that the default props will show\nan overhead map and only enable standard pan and zoom mouse actions on that map.\n\n**Note:** Mapbox-gl-js limits the pitch to 60 degrees.\n\n**Note:** When using pitch, several additional fields are passed in the\nonViewportChange callback, make sure to pass all received props back to\nthe component.\n\n**Note:** not all overlays are compatible with perspective mode.\nFor a set of overlays that do work with perspective mode, look at\n[deck.gl](https://github.com/uber/deck.gl).\n\n### Transitions\n\n`react-map-gl` does not expose the transition API for `mapbox-gl-js`\nsince it is designed to be a stateless component.\n\nInstead it is recommended to use a separate module like\n[react-motion](https://github.com/chenglou/react-motion)\nto animate properties. An example:\n\n```js\n<Motion style={{\n  latitude: spring(viewport.latitude, { stiffness: 170, damping: 26, precision: 0.000001 }),\n  longitude: spring(viewport.longitude, { stiffness: 170, damping: 26, precision: 0.000001 })\n}}>\n  {({ latitude, longitude }) => <MapGL\n    {...viewport}\n    latitude={latitude}\n    longitude={longitude}\n    mapStyle={mapboxStyle}\n  />}\n</Motion>\n```\n\n### ImmutableJS all the things\n\nThe `mapStyle` property of the `MapGL` as well as several of the built in\noverlay properties must be provided as\n[ImmutableJS](https://facebook.github.io/immutable-js/) objects. This allows\nthe library to be fast since computing changes to props only involves checking\nif the immutable objects are the same instance.\n\n### Use with Redux\n\nIf you're using redux, it is relatively simple to hook this component up to\nstore state in the redux state tree. The simplest way is to take all\nproperties passed to the `onChangeViewport` function property and add them\ndirectly into the store. This state can then be passed back to `react-map-gl`\nwithout any transformation. You can use the package\n[redux-map-gl](https://github.com/Willyham/redux-map-gl) to save writing this\ncode yourself.\n\n## Development\n\nTo develop on this component, install the dependencies and then build and watch\nthe static files.\n\n```bash\n$ npm install\n```\n\nTo serve example app:\n\n```bash\n$ npm start &\n$ open \"http://localhost:9966/?access_token=\"`echo $MapboxAccessToken`\n```\n\nWhere `echo $MapboxAccessToken` returns your Mapbox access token.\n\nOnce complete, you can view the component in your browser at\n[localhost:9966](http://localhost:9966). Any changes you make will\nautomatically run the compiler to build the files again.\n\n### Testing\n\nIts difficult to write tests for this component beacuse it uses WebGL.\nThere are some tests in `test/` but for the most part, as new features\nare added, we typically test drive them by running `npm run start` and\nplay with the demos.\n\n### Contributing\n\nContruibutions are welcome. While not necessary, it can be helpful to check with\nmaintainers before opening your PR. Also, you will need to complete a short open\nsource contribution form before your pull request can be accepted.\n\n# CHANGE LOG\n\nSee [change log](https://github.com/uber/react-map-gl/blob/master/CHANGELOG.md)\n"
 }

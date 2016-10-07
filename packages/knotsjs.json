@@ -1,0 +1,76 @@
+{
+  "name": "knotsjs",
+  "version": "1.0.0",
+  "description": "Untie the knots in your source code",
+  "license": "GPL-3.0",
+  "homepage": "https://github.com/Hyzual/knotsjs#readme",
+  "keywords": [
+    "dependencies",
+    "graph"
+  ],
+  "author": {
+    "name": "Joris MASSON",
+    "email": "hyzual@gmail.com"
+  },
+  "repository": {
+    "user": "Hyzual",
+    "repo": "knotsjs",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/Hyzual/knotsjs/tarball/master",
+    "clone_url": "https://github.com/Hyzual/knotsjs",
+    "https_url": "https://github.com/Hyzual/knotsjs",
+    "travis_url": "https://travis-ci.org/Hyzual/knotsjs",
+    "zip_url": "https://github.com/Hyzual/knotsjs/archive/master.zip",
+    "api_url": "https://api.github.com/repos/Hyzual/knotsjs"
+  },
+  "engines": {
+    "node": ">=0.10"
+  },
+  "main": "lib/index.js",
+  "dependencies": {
+    "acorn": "^3.0.4",
+    "bluebird": "^3.3.5",
+    "escope": "^3.6.0",
+    "jsgraph": "^0.6.1",
+    "lodash": "^4.6.1",
+    "mz": "^2.4.0",
+    "recursive-readdir": "^2.0.0",
+    "yargs": "^4.3.2"
+  },
+  "devDependencies": {
+    "istanbul": "^0.4.3",
+    "jasmine": "^2.4.1"
+  },
+  "scripts": {
+    "test": "jasmine test/**/*-test.js",
+    "coverage": "istanbul cover test/**/*-test.js && istanbul report"
+  },
+  "gitHead": "c7fe55c588477ba6a3740e5c1c6473a430f01550",
+  "_npmVersion": "3.10.6",
+  "_nodeVersion": "6.4.0",
+  "dist": {
+    "shasum": "2f4098395bd0c859b6c47e9e8e2dd5b0db90814b",
+    "tarball": "http://registry.npmjs.org/knotsjs/-/knotsjs-1.0.0.tgz"
+  },
+  "versions": [
+    {
+      "number": "1.0.0",
+      "date": "2016-08-26T22:09:24.851Z"
+    }
+  ],
+  "created": "2016-08-26T22:09:24.851Z",
+  "modified": "2016-08-26T22:09:24.851Z",
+  "lastPublisher": {
+    "name": "hyzual",
+    "email": "hyzual@gmail.com"
+  },
+  "owners": [
+    {
+      "name": "hyzual",
+      "email": "hyzual@gmail.com"
+    }
+  ],
+  "readme": "# knotsjs\r\n> Untie the knots in your source code ⛓\r\n\r\n[![NPM version][npm-image]][npm-url] [![Dependency Status](https://www.versioneye.com/user/projects/57c0af6e939fc6004abe4504/badge.svg?style=flat-square)](https://www.versioneye.com/user/projects/57c0af6e939fc6004abe4504)\r\n\r\nHave you ever found yourself staring at a file someone else had written, wondering where it all starts ? You pick a place at random and look for a function that's calling it, and slowly you painstakingly retrace the path the code takes. What if you had a map 🗺 to follow that path ?\r\n\r\n## What knotsjs does\r\n\r\nknotsjs will parse through the javascript code for you and identify all the functions and the links between them. Which function calls which others ? How many dependencies does this function have ? What about the _transitive_ dependencies, how many functions do my dependencies call ? knotsjs can help you see them.\r\n\r\nWhy only functions ? Because the function is the atom of code. Ultimately, it's all functions calling other functions.\r\n\r\nknotsjs is meant to be used with other programs to display the graph of function calls. For the moment, there is only one program: [knots-electron][knots-electron] which uses electron to run on any platform and display the graph as an interactive [D3.js][d3js] graph.\r\n\r\n[![Screenshot from knots-electron][knots-electron-screenshot]][knots-electron]\r\n\r\nOf course feel free to use it in your own program ! See the [Usage section](#usage) below.\r\n\r\n## Installation\r\n\r\n```sh\r\n$ npm install --save knotsjs\r\n```\r\n\r\n## Usage\r\n\r\n```js\r\nvar knots = require('knotsjs');\r\n\r\n// Parse a file\r\nknots.parse(file_path).then(function (dependencies) {\r\n  console.log(dependencies);\r\n});\r\n\r\n// Parse multiple files\r\nknots.parseFiles(file_paths).then(function (dependencies) {\r\n  console.log(dependencies);\r\n});\r\n\r\n// Parse all .js files in a directory and all its subdirectories\r\nknots.parseDirectory(directory_path).then(function (dependencies) {\r\n  console.log(dependencies);\r\n});\r\n\r\n```\r\n\r\n`dependencies` will be a javascript object with the following format:\r\n\r\n```js\r\n{\r\n  /**\r\n   * A DirectedGraph created by jsgraph.\r\n   * Allows you to make queries and walk the graph\r\n   */\r\n  directed_graph: DirectedGraph\r\n  edges: Array, // An array of jsgraph edges\r\n  /**\r\n   * An object representing vertices (functions) ordered from functions least\r\n   * depended upon (functions not called by anything) at level 0 to functions\r\n   * most depended upon (functions called by many other functions) at the\r\n   * highest level. It is used by knots-electron to dislay the visual representation.\r\n   */\r\n  ordered_vertices: {\r\n    0: Array,\r\n    1: Array,\r\n    ...\r\n  },\r\n  /**\r\n   * A map of all the jsgraph vertices (functions) found in the parsed source\r\n   * code. The key is the function's name.\r\n   */\r\n  vertices: Object\r\n}\r\n```\r\n\r\n## Example of result\r\n\r\nFor example, say you have the following code:\r\n\r\n```js\r\nfunction baz() {\r\n  // nothing\r\n}\r\n\r\nfunction bar() {\r\n  baz();\r\n}\r\n\r\nfunction foo() {\r\n  bar();\r\n}\r\n```\r\n\r\nAfter running knotsjs, you will have:\r\n\r\n- two edges (there are only two calls):\r\n\r\n```js\r\n{\r\n  edges: [\r\n    {\r\n      e: {\r\n        source: \"bar\",\r\n        target: \"baz\", // bar calls baz()\r\n        u: \"bar\",\r\n        v: \"baz\"\r\n      },\r\n      p: {\r\n        type: null\r\n      }\r\n    },\r\n    {\r\n      e: {\r\n        source: \"foo\",\r\n        target: \"bar\", // source and target are added by knotsjs to make it easier to use\r\n        u: \"foo\",\r\n        v: \"bar\" // u and v are built-in jsgraph\r\n      },\r\n      p: {\r\n        type: null // This becomes \"reverse\" for reverse edges present in circular dependencies.\r\n      }\r\n    }\r\n  ]\r\n}\r\n```\r\n\r\n- three vertices (there are three functions):\r\n\r\n```js\r\n{\r\n  vertices: {\r\n    \"bar\": {\r\n      name: \"bar\",\r\n      p: {\r\n        max_dependency_depth: 1, // bar calls one function, which does not call another\r\n        max_dependent_depth: 1, // bar is called by one function, which is itself never called\r\n        sum_transitive_dependencies: 1,\r\n        sum_transitive_dependents: 1\r\n      },\r\n      u: \"bar\"\r\n    },\r\n    \"baz\": {\r\n      name: \"baz\", // name is added by knotsjs to make it easier to use\r\n      p: {\r\n        max_dependency_depth: 0, // baz calls nothing\r\n        max_dependent_depth: 2, // bar is called by baz which is itself called by foo\r\n        sum_transitive_dependencies: 0,\r\n        sum_transitive_dependents: 2\r\n      },\r\n      u: \"baz\" // u is built-in jsgraph\r\n    },\r\n    \"foo\": {\r\n      name: \"foo\",\r\n      p: {\r\n        max_dependency_depth: 2, // foo calls bar which calls baz\r\n        max_dependent_depth: 0, // This property is used to build ordered_vertices (see below)\r\n        sum_transitive_dependencies: 2,\r\n        sum_transitive_dependents: 0\r\n      },\r\n      u: \"foo\"\r\n    }\r\n  }\r\n}\r\n```\r\n\r\n- and three levels in `ordered_vertices`:\r\n\r\n```js\r\n{\r\n  0: [\r\n    {\r\n      name: \"foo\", // foo is first because it's not called by anyone, it will go on top on the rendered graph\r\n      p: {...},\r\n      u: \"foo\"\r\n    }\r\n  ],\r\n  1: [\r\n    {\r\n      name: \"bar\", // bar is second, it's called by one function and calls another one\r\n      ...\r\n    }\r\n  ],\r\n  2: [\r\n    {\r\n      name: \"baz\", // bar goes at the bottom, it has the highest max_dependent_depth\r\n      ...\r\n    }\r\n  ]\r\n}\r\n```\r\n\r\nThis is what the rendered graph looks like:\r\n\r\n![Rendered graph][example-three-func]\r\n\r\n## Limitations\r\n\r\n- As knotsjs is still a work in progress, it currently only supports Javascript ES5. I plan to support other versions of javascript (ES 2015, Typescript) but it's just a plan right now. I also want to provide a plugin system for other languages that I use, typically PHP. For those interested in Java, the inspiration for knotsjs has been [Spoiklin Soice][spoiklin], written in Java.\r\n- The v1.0 of this program works best on single files. For example, when using it to parse its own source code, It did not link together the functions `get` and `dependencies.get` which is how it is used in other files.\r\n- It auto-ignores files with the extension `*_test.js`. I'll work on a way to provide options as parameter, including a glob to ignore, which will prove useful for projects that mix production and test files.\r\n\r\n## License\r\n\r\nGPL v3 © Joris \"Hyzual\" MASSON\r\n\r\n[example-three-func]: ./media/example-three-func.png\r\n[knots-electron-screenshot]: ./media/knots-electron.png\r\n\r\n[d3js]: https://d3js.org\r\n[jsgraph-doc]: https://github.com/Encapsule/jsgraph/blob/master/docs/object-DirectedGraph.md\r\n[jsgraph]: https://www.npmjs.com/package/jsgraph\r\n[knots-electron]: https://github.com/Hyzual/knots-electron\r\n[npm-image]: https://badge.fury.io/js/knotsjs.svg\r\n[npm-url]: https://npmjs.org/package/knotsjs\r\n[spoiklin]: http://edmundkirwan.com/general/spoiklin.html\r\n"
+}

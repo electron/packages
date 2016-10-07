@@ -1,15 +1,15 @@
 {
   "name": "hearthstone-tracker",
-  "version": "0.2.0",
+  "version": "0.3.1",
   "description": "An electron based Hearthstone tracker",
   "main": "bootstrap-babel.js",
   "scripts": {
-    "build:release": "electron-packager . HearthstoneTracker --icon=assets/hearthstone --platform=all --arch=all --version=0.37.2 --out=builds/",
-    "build:release:mac": "electron-packager . HearthstoneTracker --icon=assets/hearthstone.icns --platform=darwin --arch=x64 --version=0.37.2 --out=builds/",
-    "build:release:win": "electron-packager . HearthstoneTracker --icon=assets/hearthstone.ico --platform=win32 --arch=x64 --version=0.37.2 --out=builds/",
+    "build:release": "electron-packager . HearthstoneTracker --icon=assets/hearthstone --platform=all --arch=all --version=1.3.1 --out=builds/",
+    "build:release:mac": "electron-packager . HearthstoneTracker --icon=assets/hearthstone.icns --platform=darwin --arch=x64 --version=1.3.1 --out=builds/",
+    "build:release:win": "electron-packager . HearthstoneTracker --icon=assets/hearthstone.ico --platform=win32 --arch=x64 --version=1.3.1 --out=builds/",
     "coverage": "babel-node ./node_modules/.bin/isparta cover --verbose --include '**/*.jsx' --include '**/*.js' --exclude './builds/**' ./node_modules/.bin/_mocha test",
-    "lint": "eslint -c .eslintrc ./**/*.js  ./**/*.jsx",
-    "rebuild:leveldb": "cd node_modules/pouchdb/node_modules/leveldown && HOME=~/.electron-gyp node-gyp rebuild --target=0.37.2 --arch=x64 --dist-url=https://atom.io/download/atom-shell",
+    "lint": "eslint -c .eslintrc ./**/*.js ./**/*.jsx",
+    "rebuild:leveldb": "cd node_modules/leveldown && HOME=~/.electron-gyp node-gyp rebuild --target=1.3.1 --arch=x64 --dist-url=https://atom.io/download/atom-shell",
     "security:check": "nsp check",
     "start": "electron .",
     "test": "NODE_ENV=test mocha"
@@ -41,52 +41,54 @@
   "license": "MIT",
   "homepage": "https://github.com/gregstewart/hearthstone-tracker#readme",
   "devDependencies": {
-    "babel-cli": "6.4.5",
-    "babel-eslint": "4.1.8",
+    "babel-cli": "6.11.4",
+    "babel-eslint": "6.1.2",
     "chai": "3.5.0",
-    "codeclimate-test-reporter": "0.3.1",
-    "electron-packager": "5.2.1",
-    "electron-prebuilt": "0.37.2",
-    "electron-rebuild": "^1.1.3",
-    "eslint": "1.10.3",
-    "eslint-plugin-react": "3.16.1",
+    "codeclimate-test-reporter": "0.3.3",
+    "devtron": "1.2.1",
+    "electron-packager": "7.4.0",
+    "electron-prebuilt": "1.3.1",
+    "electron-rebuild": "1.1.3",
+    "eslint": "3.2.2",
+    "eslint-plugin-react": "6.0.0",
     "isparta": "4.0.0",
-    "memdown": "1.1.2",
-    "mocha": "2.4.5",
-    "mocha-junit-reporter": "1.9.1",
-    "nsp": "2.2.0",
+    "memdown": "1.2.0",
+    "mocha": "2.5.3",
+    "mocha-junit-reporter": "1.11.1",
+    "nsp": "2.6.1",
     "pre-push": "0.1.1",
-    "react-addons-test-utils": "0.14.7",
-    "sinon": "1.17.3",
-    "sinon-as-promised": "4.0.0",
+    "react-addons-test-utils": "15.3.0",
+    "sinon": "1.17.5",
+    "sinon-as-promised": "4.0.2",
     "sinon-chai": "2.8.0",
-    "winston-loggly": "^1.3.1"
+    "winston-loggly": "1.3.1"
   },
   "dependencies": {
-    "babel-preset-es2015": "6.3.13",
-    "babel-preset-react": "6.3.13",
-    "babel-register": "6.4.3",
-    "bluebird": "^3.2.1",
+    "babel-preset-es2015": "6.9.0",
+    "babel-preset-react": "6.11.1",
+    "babel-register": "6.11.6",
+    "bluebird": "3.4.1",
     "create-file": "1.0.1",
+    "datascript-mori": "0.16.0",
     "debug": "2.2.0",
-    "hearthstone-log-watcher": "3.0.1",
-    "mori": "0.3.2",
-    "pouchdb": "5.2.1",
-    "react": "0.14.7",
-    "react-dom": "0.14.7",
-    "react-redux": "4.2.1",
-    "redux": "3.2.1",
-    "winston": "^2.2.0"
+    "farseer": "^4.0.0",
+    "flipit": "2.0.3",
+    "pouchdb": "5.4.5",
+    "react": "15.3.0",
+    "react-dom": "15.3.0",
+    "react-redux": "4.4.5",
+    "redux": "3.5.2",
+    "winston": "2.2.0"
   },
   "engines": {
     "node": "5.1.1"
   },
-  "gitHead": "3a73b914f1bfd12207c33cf52f48807940e22e55",
-  "_npmVersion": "2.14.4",
-  "_nodeVersion": "4.1.2",
+  "gitHead": "89c52246037bbd18304245b7031c039e9fcced8b",
+  "_npmVersion": "3.3.12",
+  "_nodeVersion": "5.1.1",
   "dist": {
-    "shasum": "c517c9483a3f16414c39e3a5d60e387c4448529f",
-    "tarball": "http://registry.npmjs.org/hearthstone-tracker/-/hearthstone-tracker-0.2.0.tgz"
+    "shasum": "e891cba23bfbe032dfd3736b0bf105fe5163d1de",
+    "tarball": "http://registry.npmjs.org/hearthstone-tracker/-/hearthstone-tracker-0.3.1.tgz"
   },
   "versions": [
     {
@@ -108,10 +110,18 @@
     {
       "number": "0.2.0",
       "date": "2016-05-12T21:35:04.222Z"
+    },
+    {
+      "number": "0.3.0",
+      "date": "2016-08-02T21:44:01.498Z"
+    },
+    {
+      "number": "0.3.1",
+      "date": "2016-08-02T22:42:33.908Z"
     }
   ],
   "created": "2016-02-03T16:47:01.800Z",
-  "modified": "2016-05-12T21:35:04.222Z",
+  "modified": "2016-08-02T22:42:33.908Z",
   "lastPublisher": {
     "name": "gregstewart",
     "email": "gregs@tcias.co.uk"
@@ -122,5 +132,5 @@
       "email": "gregs@tcias.co.uk"
     }
   ],
-  "readme": "[![Circle CI](https://circleci.com/gh/gregstewart/hearthstone-tracker.svg?style=svg)](https://circleci.com/gh/gregstewart/hearthstone-tracker)\n[![Code Climate](https://codeclimate.com/github/gregstewart/hearthstone-tracker/badges/gpa.svg)](https://codeclimate.com/github/gregstewart/hearthstone-tracker)\n[![Test Coverage](https://codeclimate.com/github/gregstewart/hearthstone-tracker/badges/coverage.svg)](https://codeclimate.com/github/gregstewart/hearthstone-tracker/coverage)\n[![Issue Count](https://codeclimate.com/github/gregstewart/hearthstone-tracker/badges/issue_count.svg)](https://codeclimate.com/github/gregstewart/hearthstone-tracker)\n[![An electron based Hearthstone tracker](https://img.shields.io/npm/v/hearthstone-tracker.svg)](https://www.npmjs.com/package/hearthstone-tracker)\n\n# hearthstone-tracker\nAn electron based Hearthstone tracker\n\nTo get started:\n\n`git clone git@github.com:gregstewart/hearthstone-tracker.git && cd hearthstone-tracker`\n\nThen run:\n\n`npm i && npm start`\n\nAfter a shortish time you should see something like the below the firs time you start the app:\n\n![First screenshot](https://raw.githubusercontent.com/gregstewart/hearthstone-tracker/master/assets/screenshot.png)\n\nLaunch `Hearthstone` and play a few games, the UI *should* update after each completed game.\n\nTo run the tests:\n\n`npm test`\n\n## Some reources:\n* [Simple Hearthstone logging - see your complete play history without TCP, screen capture, or violating the TOS](https://www.reddit.com/r/hearthstone/comments/268fkk/simple_hearthstone_logging_see_your_complete_play)\n* [hearthstone-log-watcher](https://www.npmjs.com/package/hearthstone-log-watcher)\n* [hearthstone-log-adapter](https://www.npmjs.com/package/hearthstone-log-adapter)\n\n\n## For packaging\n* [electron-packager](https://github.com/maxogden/electron-packager)\n"
+  "readme": "[![Circle CI](https://circleci.com/gh/gregstewart/hearthstone-tracker.svg?style=shield)](https://circleci.com/gh/gregstewart/hearthstone-tracker)\n[![Code Climate](https://codeclimate.com/github/gregstewart/hearthstone-tracker/badges/gpa.svg)](https://codeclimate.com/github/gregstewart/hearthstone-tracker)\n[![Test Coverage](https://codeclimate.com/github/gregstewart/hearthstone-tracker/badges/coverage.svg)](https://codeclimate.com/github/gregstewart/hearthstone-tracker/coverage)\n[![Issue Count](https://codeclimate.com/github/gregstewart/hearthstone-tracker/badges/issue_count.svg)](https://codeclimate.com/github/gregstewart/hearthstone-tracker)\n[![An electron based Hearthstone tracker](https://img.shields.io/npm/v/hearthstone-tracker.svg)](https://www.npmjs.com/package/hearthstone-tracker)\n\n# hearthstone-tracker\nAn electron based Hearthstone tracker\n\nTo get started:\n\n`git clone git@github.com:gregstewart/hearthstone-tracker.git && cd hearthstone-tracker`\n\nThen run:\n\n`npm i && npm start`\n\nAfter a shortish time you should see something like the below the firs time you start the app:\n\n![First screenshot](https://raw.githubusercontent.com/gregstewart/hearthstone-tracker/master/assets/screenshot.png)\n\nLaunch `Hearthstone` and play a few games, the UI *should* update after each completed game.\n\nTo run the tests:\n\n`npm test`\n\n## Some reources:\n* [Simple Hearthstone logging - see your complete play history without TCP, screen capture, or violating the TOS](https://www.reddit.com/r/hearthstone/comments/268fkk/simple_hearthstone_logging_see_your_complete_play)\n* [hearthstone-log-watcher](https://www.npmjs.com/package/hearthstone-log-watcher)\n* [hearthstone-log-adapter](https://www.npmjs.com/package/hearthstone-log-adapter)\n\n\n## For packaging\n* [electron-packager](https://github.com/maxogden/electron-packager)\n"
 }

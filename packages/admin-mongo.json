@@ -1,6 +1,6 @@
 {
   "name": "admin-mongo",
-  "version": "0.0.14",
+  "version": "0.0.20",
   "description": "A Web user interface to administer MongoDB databases built using Express",
   "author": {
     "name": "Mark Moffat",
@@ -23,6 +23,7 @@
   "main": "electron.js",
   "scripts": {
     "start": "node app.js",
+    "postinstall": "node ./lib/npm_postinstall.js",
     "test": "find ./tests -name '*.js' | xargs mocha -R spec -t 5000",
     "packageOsx": "electron-packager ./ adminMongo --out=releases/ --platform=darwin --arch=x64 --prune --overwrite --ignore=releases/* --icon=public/logo.icns",
     "packageWin32": "electron-packager ./ adminMongo --out=releases/ --platform=win32 --arch=ia32 --prune --overwrite --ignore=releases/* --icon=public/logo.ico",
@@ -46,47 +47,62 @@
     "interface",
     "document",
     "collection",
-    "express"
+    "express",
+    "electron",
+    "cross platform",
+    "open source",
+    "admin-mongo",
+    "adminmongo"
   ],
   "dependencies": {
-    "async": "^1.5.2",
-    "body-parser": "~1.13.2",
-    "bootstrap": "^3.3.6",
-    "config": "^1.17.1",
-    "cookie-parser": "~1.3.5",
-    "express": "~4.13.1",
-    "express-handlebars": "^2.0.1",
-    "express-session": "^1.13.0",
-    "font-awesome": "^4.5.0",
-    "hbs": "~3.1.0",
+    "async": "^2.0.0",
+    "body-parser": "^1.15.2",
+    "bootstrap": "^3.3.7",
+    "config": "^1.21.0",
+    "cookie-parser": "^1.4.3",
+    "express": "^4.14.0",
+    "express-handlebars": "^3.0.0",
+    "express-session": "^1.14.0",
+    "font-awesome": "^4.6.3",
+    "hbs": "^4.0.0",
     "i18n-2": "^0.6.3",
-    "jquery": "^2.2.0",
+    "jquery": "^3.1.0",
+    "junk": "^2.0.0",
     "lodash": "^4.13.1",
+    "moment": "^2.14.1",
     "mongo-uri": "^0.1.2",
-    "mongodb": "^2.1.4",
-    "mongodb-extended-json": "^1.6.2",
-    "morgan": "~1.6.1",
-    "nconf": "^0.8.2",
+    "mongodb": "^2.2.4",
+    "mongodb-backup": "^1.6.4",
+    "mongodb-extended-json": "^1.7.0",
+    "mongodb-restore": "^1.5.4",
+    "morgan": "~1.7.0",
+    "nconf": "^0.8.4",
+    "ncp": "^2.0.0",
     "nedb": "^1.8.0",
+    "node-delete": "^0.1.2",
     "serve-favicon": "~2.3.0"
   },
   "license": "MIT",
   "devDependencies": {
     "chai": "^3.5.0",
     "colors": "^1.1.2",
-    "jsdom": "^9.2.1",
+    "electron-prebuilt": "^1.2.8",
+    "eslint": "^3.2.0",
+    "eslint-config-standard": "^5.3.5",
+    "eslint-plugin-promise": "^2.0.0",
+    "eslint-plugin-standard": "^2.0.0",
+    "jsdom": "^9.4.1",
     "mocha": "^2.5.3",
     "mocha-jsdom": "^1.1.0",
-    "supertest": "^1.2.0",
-    "electron-prebuilt": "^1.2.6"
+    "supertest": "^1.2.0"
   },
-  "gitHead": "cfb186e8158143a8ccdcb8ed2385a3249fc243e8",
+  "gitHead": "3abc57cfd028147e5141896b2826b7ffca106119",
   "homepage": "https://github.com/mrvautin/adminmongo#readme",
   "_npmVersion": "2.15.1",
   "_nodeVersion": "4.4.4",
   "dist": {
-    "shasum": "eada9f758ca00c5b97985efb7bcff022aa1793b1",
-    "tarball": "http://registry.npmjs.org/admin-mongo/-/admin-mongo-0.0.14.tgz"
+    "shasum": "9b1052d2140f0cec79c541e1800b6bc4a049d6f1",
+    "tarball": "http://registry.npmjs.org/admin-mongo/-/admin-mongo-0.0.20.tgz"
   },
   "stars": 1,
   "versions": [
@@ -145,13 +161,37 @@
     {
       "number": "0.0.14",
       "date": "2016-07-08T07:16:38.415Z"
+    },
+    {
+      "number": "0.0.15",
+      "date": "2016-07-22T11:29:38.684Z"
+    },
+    {
+      "number": "0.0.16",
+      "date": "2016-07-31T01:02:59.904Z"
+    },
+    {
+      "number": "0.0.17",
+      "date": "2016-07-31T11:47:02.090Z"
+    },
+    {
+      "number": "0.0.18",
+      "date": "2016-08-06T01:18:19.533Z"
+    },
+    {
+      "number": "0.0.19",
+      "date": "2016-08-25T04:53:01.149Z"
+    },
+    {
+      "number": "0.0.20",
+      "date": "2016-09-02T09:13:37.497Z"
     }
   ],
   "created": "2016-01-16T10:14:28.486Z",
-  "modified": "2016-07-08T07:16:38.415Z",
+  "modified": "2016-09-02T09:13:37.497Z",
   "lastPublisher": {
     "name": "mrvautin",
-    "email": "mrvautin@gmail.com"
+    "email": "mark_moffat@outlook.com"
   },
   "owners": [
     {
@@ -159,5 +199,5 @@
       "email": "mrvautin@gmail.com"
     }
   ],
-  "readme": "# adminMongo\n\n![npm downloads badge](https://img.shields.io/npm/dm/admin-mongo.svg \"npm download badge\")\n![npm version badge](https://img.shields.io/npm/v/admin-mongo.svg \"npm version badge\")\n[![Build Status](https://travis-ci.org/mrvautin/adminMongo.svg?branch=master)](https://travis-ci.org/mrvautin/adminMongo)\n[![Github stars](https://img.shields.io/github/stars/mrvautin/adminMongo.svg?style=social&label=Star)](https://github.com/mrvautin/adminMongo)\n\n\nadminMongo is a cross platform user interface (GUI) to handle all your MongoDB connections/databases needs. adminMongo is fully responsive and should work on a range of devices.\n\n> adminMongo connection information (including username/password) is stored unencrypted in a config file, it is not recommended to run this application on a production or public facing server without proper security considerations.\n\n## Installation\n\n1. Clone Repository: `git clone https://github.com/mrvautin/adminMongo.git && cd adminMongo`\n2. Install dependencies: `npm install`\n3. Start application: `npm start`\n4. Visit [http://127.0.0.1:1234](http://127.0.0.1:1234) in your browser\n\n## Electron App\n\nadminMongo can also be used as a cross platform Electon application. Due to the size of Electron it will need to be built manully.\n\nTo build for Mac:\n\n`$ npm run-script packageOsx`\n\nTo build for Windows:\n\n`$ npm run-script packageWin32`\n\nTo build for Linux:\n\n`$ npm run-script packageLinux`\n\nOnce built, the executable will be in the `/releases` folder.\n\n> It's been tested on Mac and Windows 10. Linux has not been tested. Please report any issues.\n\n## Deploy on Heroku\n[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)\n\n## Demo (read only)\n\nA read only demo can be seen [here](http://demo.adminmongo.com) \n\n## Features\n\n* Manage from a connection level for easy access to multiple databases\n* Create/Delete databases\n* Create/Delete/Edit collection\n* Create/Delete/Edit documents\n* Create/Delete indexes\n* Query documents\n* Collection statistics\n* Export collections in JSON format\n\n### Current limitations\n\n* Documents need to have an \"_id\" value which is a string, integer, or MongoDB ObjectId. Documents using Composite ID indexing is currently not supported.\n* Connection strings with multiple hosts for replica sets are currently not supported.\n\n## Configuration\n\nadminMongo will listen on host: `localhost` and  port: `1234` by default. This can be overwritten by adding a config file in `/config/app.json`. For example:\n\n```\n{\n    \"app\": {\n        \"host\": \"10.0.0.1\",\n        \"port\": 4321,\n        \"docs_per_page\": 15,\n        \"password\": \"secureadminpassword\",\n        \"locale\": \"de\",\n        \"context\": \"dbApp\",\n        \"monitoring\": false\n    }\n}\n```\n\n> Note: Any changes to the config file requires a restart of the application\n\nThe config file (optional) options are:\n\n|Option|Definition|\n|--- |--- |\n|`host`|The IP address  `adminMongo`  will listen on|\n|`port`|The Port `adminMongo` will listen on|\n|`docs_per_page`|When viewing docs you can specify how many are shown per page|\n|`password`|An application level password to add simply authentication|\n|`locale`|The locale is automatically set to the detected locale of Nodejs. If there is not a translation, `adminMongo` will default to English. This setting overrides the default/detected value|\n|`context`|Setting a `context` of \"dbApp\" is like changing the base URL of the app and will mean the app will listen on `http://10.0.0.1:4321/dbApp`. Ommiting a context will mean the application will listen on root. Eg: `http://10.0.0.1:4321`. This setting can be useful when running `adminMongo` behind Nginx etc.|\n|`monitoring`|Whether to run monitoring at regular intervals. Defaults to true or on|\n\n### Setting a context path\n\nSetting a `context` of \"dbApp\" is like changing the base URL of the app and will mean the app will listen on `http://10.0.0.1:4321/dbApp`. Ommiting a context will mean the application will listen on \nroot. Eg: `http://10.0.0.1:4321`. This setting can be useful when running `adminMongo` behind Nginx etc.\n\nAn example Nginx server block. Note the `location /dbApp {` and `proxy_pass http://10.0.0.1:4321/dbApp;` lines match \nthe `context` set in the `/config/app.json` file.\n\n```\nserver {\n    listen 80;\n\n    server_name mydomain.com www.mydomain.com;\n\n    location /dbApp {\n        proxy_pass http://10.0.0.1:4321/dbApp;\n        proxy_http_version 1.1;\n        proxy_set_header Upgrade $http_upgrade;\n        proxy_set_header Connection 'upgrade';\n        proxy_set_header Host $host;\n        proxy_cache_bypass $http_upgrade;\n    }\n}\n```\n\n### Language locale\n\n> Looking for people to translate into other languages. If you can help, grab the `/locale/en.js` file, translate to your language and submit a pull request.\n\nThe locale is automatically set to the detected locale of Nodejs. If there is not a translation, `adminMongo` will default to English. To override the detected locale\na setting can be added to the `app.json` file. See Configuration section for a \"German\" example.\n\n### Authentication\n\nBy default `adminMongo` is not password protected. You can add password authentication by adding a `password` value to the `/config/app.json` file \n(See the Configuration section). Once added you will need to restart `adminMongo` and all routes will be protected until the correct password is added. You\nwill then be authenticated for the life of the session (60 mins by default) or if the \"Logout\" link is clicked.\n\n## Usage\n\n### Create a connection\n\nAfter visiting [http://127.0.0.1:1234](http://127.0.0.1:1234) you will be presented with a connection screen. You need to give your connection a unique name as a reference when using adminMongo and a MongoDB formatted connection string. The format of a MongoDB connection string can form: `mongodb://<user>:<password>@127.0.0.1:<port>/<db>` where specifying to the `<db>` level is optional. For more information on MongoDB connection strings, see the [official MongoDB documentation](http://docs.mongodb.org/manual/reference/connection-string/).\n\nYou can supply a connection options object (see [docs](http://mongodb.github.io/node-mongodb-native/2.1/reference/connecting/connection-settings/)) with each connection. \n\nFor example:\n\n```\n{\n    \"poolSize\": 10,\n    \"autoReconnect\": false,\n    \"ssl\": false\n}\n```\n\nNote: The connection can be either local or remote hosted on VPS or MongoDB service such as mLab.\n\n*The Connection setup screen*\n![adminMongo connections screen](https://raw.githubusercontent.com/mrvautin/mrvautin.github.io/master/images/adminMongo/adminMongo_connections.png \"adminMongo connections screen\")\n\n### Connection/Database admin\n\nAfter opening your newly created connection, you are able to see all database objects associated with your connection. Here you can create/delete collections, create/delete users and see various stats for your database.\n\n*The connections/database screen*\n![adminMongo database screen](https://raw.githubusercontent.com/mrvautin/mrvautin.github.io/master/images/adminMongo/adminMongo_dbview.png \"adminMongo database screen\")\n\n### Collections\n\nAfter selecting your collection from the \"Database Objects\" menu, you will be presented with the collections screen. Here you can see documents in pagination form, create new documents, search documents, delete, edit documents and view/add indexes to your collection.\n\n*The collections screen*\n![adminMongo collections screen](https://raw.githubusercontent.com/mrvautin/mrvautin.github.io/master/images/adminMongo/adminMongo_collectionview.png \"adminMongo collections screen\")\n\n### Searching/Querying documents\n\nYou can perform searches of documents using the `Search documents` button on the collections screen. You will need to enter the key (field name) and value. Eg: key = \"_id\" and value = \"569ff81e0077663d78a114ce\" (Only works on string \"_id\" fields - Use \"Query Documents\" for ObjectID's).\n\n> You can clear your search by clicking the `Reset` button on the collections screen.\n\n*Simple search documents*\n![adminMongo search documents](https://raw.githubusercontent.com/mrvautin/mrvautin.github.io/master/images/adminMongo/adminMongo_searchdocuments.png \"adminMongo search documents\")\n\nComplex querying of documents is done through the \"Query documents\" button. This allows a query Object to be passed to MongoDB to return results.\nQueries can be written in full BSON format or EJSON format. For example these queries should return the same results: \n\n```\n{ \n    ObjectId(\"56a97ed3f718fe9a4f599489\")\n}\n``` \n\nis equivalent to: \n\n```\n{\n    \"$oid\": \"56a97ed3f718fe9a4f599489\"\n}\n```\n\n*Query documents*\n![adminMongo search documents](https://raw.githubusercontent.com/mrvautin/mrvautin.github.io/master/images/adminMongo/adminMongo_querydocuments.png \"adminMongo search documents\")\n\n\n### Documents\n\nAdding and editing documents is done using a JSON syntax highlighting control.\n\n*Editing a document*\n![adminMongo documents](https://raw.githubusercontent.com/mrvautin/mrvautin.github.io/master/images/adminMongo/adminMongo_docedit.png \"adminMongo documents\")\n\nDocuments with Media embedded show previews\n\n*Documents with media*\n![adminMongo media](https://raw.githubusercontent.com/mrvautin/mrvautin.github.io/master/images/adminMongo/adminMongo_media.png \"adminMongo media documents\")\n\n### Server Monitoring\n\n*Functionality currently in Beta*\n\nSelected server monitoring is done at regular intervals and stored in local database store for 24hrs. \n\n*New connections require an app restart for monitoring to commence*\n\n*Server monitoring*\n![adminMongo server monitoring](https://raw.githubusercontent.com/mrvautin/mrvautin.github.io/master/images/adminMongo/adminMongo_servermonitoring.png \"adminMongo server monitoring\")\n\n### Indexes\n\nIndexes can be added from the collection screen. Please see the [official MongoDB documentation](https://docs.mongodb.org/manual/indexes/) on adding indexes.\n\n*Viewing/Adding indexes*\n![adminMongo documents](https://raw.githubusercontent.com/mrvautin/mrvautin.github.io/master/images/adminMongo/adminMongo_manageindexes.png \"adminMongo indexes\")\n\n## Tests\n\nThe `adminMongo` API tests include:\n\n- Add and remove a connection\n- Add and remove a database\n- Add, remove and rename a collection\n- Create and delete a user\n- Add, query and delete a document\n\nTo run tests, simply run:\n\n```\nnpm test\n```\n\n*You may need to edit the variables and connection string in `/tests/tests.js` for your MongoDB instance.*\n\nIf you see any missing tests, please submit a PR.\n\n## Contributing\n\n1. Fork it!\n2. Create your feature branch: `git checkout -b my-new-feature`\n3. Commit your changes: `git commit -am 'Add some feature'`\n4. Push to the branch: `git push origin my-new-feature`\n5. Submit a pull request :D\n\n## Future plans\n\n- MongoDB monitoring/reporting\n\nPlease make any suggestions.\n\n## License\n\n[The MIT License](https://github.com/mrvautin/adminMongo/tree/master/LICENSE)\n"
+  "readme": "# adminMongo\n\n![npm downloads badge](https://img.shields.io/npm/dm/admin-mongo.svg \"npm download badge\")\n![npm version badge](https://img.shields.io/npm/v/admin-mongo.svg \"npm version badge\")\n[![Build Status](https://travis-ci.org/mrvautin/adminMongo.svg?branch=master)](https://travis-ci.org/mrvautin/adminMongo)\n[![Github stars](https://img.shields.io/github/stars/mrvautin/adminMongo.svg?style=social&label=Star)](https://github.com/mrvautin/adminMongo)\n\nadminMongo is a cross platform user interface (GUI) to handle all your MongoDB connections/databases needs. adminMongo is fully responsive and should work on a range of devices.\n\n> adminMongo connection information (including username/password) is stored unencrypted in a config file, it is not recommended to run this application on a production or public facing server without proper security considerations.\n\n## Installation\n\n1. Create folder for adminMongo: `mkdir adminMongo`\n2. Navigate to folder & install adminMongo: `cd adminMongo && npm i admin-mongo`\n2. Start application: `npm start` or `node app`\n3. Visit [http://127.0.0.1:1234](http://127.0.0.1:1234) in your browser\n\n> Inline install cmd: `mkdir adminMongo && cd adminMongo && npm i admin-mongo && npm start`\n\n## Electron App\n\nadminMongo can also be used as a cross platform Electron application. Due to the size of Electron it will need to be built manually.\n\nTo build for Mac:\n\n`$ npm run-script packageOsx`\n\nTo build for Windows:\n\n`$ npm run-script packageWin32`\n\nTo build for Linux:\n\n`$ npm run-script packageLinux`\n\nOnce built, the executable will be in the `/releases` folder.\n\n### Prebuilt binaries\n\nPrebuilt binaries can be downloaded here:\n\n[Mac 64bit](https://github.com/mrvautin/adminMongo/releases/download/1.0.0/adminMongo_Mac.zip) \n\n[Windows 32bit](https://github.com/mrvautin/adminMongo/releases/download/1.0.0/adminMongo_Win32.zip) \n\n[Windows 64bit](https://github.com/mrvautin/adminMongo/releases/download/1.0.0/adminMongo_Win64.zip) \n\n> The Electron builds have been tested on Mac and Windows 10. Linux has not been tested. Please report any issues.\n\n## Deploy on Heroku\n\n[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)\n\n## Demo (read only)\n\nA read only demo can be seen [here](http://demo.adminmongo.com) \n\n## Features\n\n* Manage from a connection level for easy access to multiple databases\n* Create/Delete databases\n* Backup/Restore databases\n* Create/Delete/Edit collection\n* Create/Delete/Edit documents\n* Create/Delete indexes\n* Query documents\n* Collection statistics\n* Export collections in JSON format\n* Server monitoring\n\n### Current limitations\n\n* Documents need to have an \"_id\" value which is a string, integer, or MongoDB ObjectId. Documents using Composite ID indexing is currently not supported.\n* Connection strings with multiple hosts for replica sets are currently not supported.\n\n## Configuration\n\nadminMongo will listen on host: `localhost` and  port: `1234` by default. This can be overwritten by adding a config file in `/config/app.json`. For example:\n\n```\n{\n    \"app\": {\n        \"host\": \"10.0.0.1\",\n        \"port\": 4321,\n        \"docs_per_page\": 15,\n        \"password\": \"secureadminpassword\",\n        \"locale\": \"de\",\n        \"context\": \"dbApp\",\n        \"monitoring\": false\n    }\n}\n```\n\n> Note: Any changes to the config file requires a restart of the application\n\nAll above parameters are usable through the environment which makes it very handy to when using adminMongo as a docker container!\njust run `docker run -e HOST=yourchoice -e PORT=1234 ...`\n\nThe config file (optional) options are:\n\n|Option|Env-variable|Definition|\n|--- |--- |--- |\n|`host`|`HOST`|The IP address  `adminMongo`  will listen on|\n|`port`|`PORT`|The Port `adminMongo` will listen on|\n|`docs_per_page`|`DOCS_PER_PAGE`|When viewing docs you can specify how many are shown per page|\n|`password`|`PASSWORD`|An application level password to add simply authentication|\n|`locale`|`LOCALE`|The locale is automatically set to the detected locale of Nodejs. If there is not a translation, `adminMongo` will default to English. This setting overrides the default/detected value|\n|`context`|`CONTEXT`|Setting a `context` of \"dbApp\" is like changing the base URL of the app and will mean the app will listen on `http://10.0.0.1:4321/dbApp`. Ommiting a context will mean the application will listen on root. Eg: `http://10.0.0.1:4321`. This setting can be useful when running `adminMongo` behind Nginx etc.|\n|`monitoring`|`MONITORING`|Whether to run monitoring at regular intervals. Defaults to true or on|\n\n### Setting a context path\n\nSetting a `context` of \"dbApp\" is like changing the base URL of the app and will mean the app will listen on `http://10.0.0.1:4321/dbApp`. Ommiting a context will mean the application will listen on \nroot. Eg: `http://10.0.0.1:4321`. This setting can be useful when running `adminMongo` behind Nginx etc.\n\nAn example Nginx server block. Note the `location /dbApp {` and `proxy_pass http://10.0.0.1:4321/dbApp;` lines match \nthe `context` set in the `/config/app.json` file.\n\n```\nserver {\n    listen 80;\n\n    server_name mydomain.com www.mydomain.com;\n\n    location /dbApp {\n        proxy_pass http://10.0.0.1:4321/dbApp;\n        proxy_http_version 1.1;\n        proxy_set_header Upgrade $http_upgrade;\n        proxy_set_header Connection 'upgrade';\n        proxy_set_header Host $host;\n        proxy_cache_bypass $http_upgrade;\n    }\n}\n```\n\n### Language locale\n\n> Looking for people to translate into other languages. If you can help, grab the `/locale/en.js` file, translate to your language and submit a pull request.\n\nThe locale is automatically set to the detected locale of Nodejs. If there is not a translation, `adminMongo` will default to English. To override the detected locale\na setting can be added to the `app.json` file. See Configuration section for a \"German\" example.\n\n### Authentication\n\nBy default `adminMongo` is not password protected. You can add password authentication by adding a `password` value to the `/config/app.json` file \n(See the Configuration section). Once added you will need to restart `adminMongo` and all routes will be protected until the correct password is added. You\nwill then be authenticated for the life of the session (60 mins by default) or if the \"Logout\" link is clicked.\n\n## Usage\n\n### Create a connection\n\nAfter visiting [http://127.0.0.1:1234](http://127.0.0.1:1234) you will be presented with a connection screen. You need to give your connection a unique name as a reference when using adminMongo and a MongoDB formatted connection string. The format of a MongoDB connection string can form: `mongodb://<user>:<password>@127.0.0.1:<port>/<db>` where specifying to the `<db>` level is optional. For more information on MongoDB connection strings, see the [official MongoDB documentation](http://docs.mongodb.org/manual/reference/connection-string/).\n\nYou can supply a connection options object (see [docs](http://mongodb.github.io/node-mongodb-native/2.1/reference/connecting/connection-settings/)) with each connection. \n\nFor example:\n\n```\n{\n    \"poolSize\": 10,\n    \"autoReconnect\": false,\n    \"ssl\": false\n}\n```\n\nNote: The connection can be either local or remote hosted on VPS or MongoDB service such as mLab.\n\nThe connection can also be automatically initiated through the environment (or with the docker -e parameters)\n\n|Env-variable|Description|\n|--- |--- |\n|`CONN_NAME`|The name of the connection to create on boot|\n|`DB_USERNAME`|The username for the database connection|\n|`DB_PASSWORD`|The password fot the database user|\n|`DB_HOST`|The host IP address or DNS name without the port!|\n|`DB_PORT`|The port of the mongoDB database, if not provided the default 27017 will be used|\n\n*The Connection setup screen*\n![adminMongo connections screen](https://raw.githubusercontent.com/mrvautin/mrvautin.github.io/master/images/adminMongo/adminMongo_connections.png \"adminMongo connections screen\")\n\n### Connection/Database admin\n\nAfter opening your newly created connection, you are able to see all database objects associated with your connection. Here you can create/delete collections, create/delete users and see various stats for your database.\n\n*The connections/database screen*\n![adminMongo database screen](https://raw.githubusercontent.com/mrvautin/mrvautin.github.io/master/images/adminMongo/adminMongo_dbview.png \"adminMongo database screen\")\n\n### Collections\n\nAfter selecting your collection from the \"Database Objects\" menu, you will be presented with the collections screen. Here you can see documents in pagination form, create new documents, search documents, delete, edit documents and view/add indexes to your collection.\n\n*The collections screen*\n![adminMongo collections screen](https://raw.githubusercontent.com/mrvautin/mrvautin.github.io/master/images/adminMongo/adminMongo_collectionview.png \"adminMongo collections screen\")\n\n### Searching/Querying documents\n\nYou can perform searches of documents using the `Search documents` button on the collections screen. You will need to enter the key (field name) and value. Eg: key = \"_id\" and value = \"569ff81e0077663d78a114ce\" (Only works on string \"_id\" fields - Use \"Query Documents\" for ObjectID's).\n\n> You can clear your search by clicking the `Reset` button on the collections screen.\n\n*Simple search documents*\n![adminMongo search documents](https://raw.githubusercontent.com/mrvautin/mrvautin.github.io/master/images/adminMongo/adminMongo_searchdocuments.png \"adminMongo search documents\")\n\nComplex querying of documents is done through the \"Query documents\" button. This allows a query Object to be passed to MongoDB to return results.\nQueries can be written in full BSON format or EJSON format. For example these queries should return the same results: \n\n```\n{ \n    ObjectId(\"56a97ed3f718fe9a4f599489\")\n}\n``` \n\nis equivalent to: \n\n```\n{\n    \"$oid\": \"56a97ed3f718fe9a4f599489\"\n}\n```\n\n*Query documents*\n![adminMongo search documents](https://raw.githubusercontent.com/mrvautin/mrvautin.github.io/master/images/adminMongo/adminMongo_querydocuments.png \"adminMongo search documents\")\n\n\n### Documents\n\nAdding and editing documents is done using a JSON syntax highlighting control.\n\n*Editing a document*\n![adminMongo documents](https://raw.githubusercontent.com/mrvautin/mrvautin.github.io/master/images/adminMongo/adminMongo_docedit.png \"adminMongo documents\")\n\nDocuments with Media embedded show previews\n\n*Documents with media*\n![adminMongo media](https://raw.githubusercontent.com/mrvautin/mrvautin.github.io/master/images/adminMongo/adminMongo_media.png \"adminMongo media documents\")\n\n### Server Monitoring\n\n*Functionality currently in Beta*\n\nSelected server monitoring is done at regular intervals and stored in local database store for 24hrs. \n\n*New connections require an app restart for monitoring to commence*\n\n*Server monitoring*\n![adminMongo server monitoring](https://raw.githubusercontent.com/mrvautin/mrvautin.github.io/master/images/adminMongo/adminMongo_servermonitoring.png \"adminMongo server monitoring\")\n\n### Indexes\n\nIndexes can be added from the collection screen. Please see the [official MongoDB documentation](https://docs.mongodb.org/manual/indexes/) on adding indexes.\n\n*Viewing/Adding indexes*\n![adminMongo documents](https://raw.githubusercontent.com/mrvautin/mrvautin.github.io/master/images/adminMongo/adminMongo_manageindexes.png \"adminMongo indexes\")\n\n## Tests\n\nThe `adminMongo` API tests include:\n\n- Add and remove a connection\n- Add and remove a database\n- Add, remove and rename a collection\n- Create and delete a user\n- Add, query and delete a document\n\nTo run tests, simply run:\n\n```\nnpm test\n```\n\n**Note: You will need to ensure there is no password protection setup in the `/config/app.json`.**\n\n*You may need to edit the variables and connection string in `/tests/tests.js` for your MongoDB instance.*\n\nIf you see any missing tests, please submit a PR.\n\n## Contributing\n\n1. Fork it!\n2. Create your feature branch: `git checkout -b my-new-feature`\n3. Commit your changes: `git commit -am 'Add some feature'`\n4. Push to the branch: `git push origin my-new-feature`\n5. Submit a pull request :D\n\n## Future plans\n\nPlease make any suggestions.\n\n## License\n\n[The MIT License](https://github.com/mrvautin/adminMongo/tree/master/LICENSE)\n"
 }

@@ -1,6 +1,6 @@
 {
   "name": "electron-render-service",
-  "version": "0.7.0",
+  "version": "0.8.0",
   "description": "Microservice for rendering PDF/PNG/JPEG from HTML with Electron",
   "bin": {
     "electron-render-service": "./bin/electron-render-service.js"
@@ -39,28 +39,28 @@
     "api_url": "https://api.github.com/repos/msokk/electron-render-service"
   },
   "dependencies": {
-    "async": "^1.5.2",
-    "electron-prebuilt": "^1.2.5",
+    "async": "^2.0.1",
+    "electron": "^1.3.4",
     "express": "^4.14.0",
     "express-validator": "^2.20.8",
     "morgan": "^1.7.0",
     "response-time": "^2.3.1",
-    "retry": "^0.9.0"
+    "retry": "^0.10.0"
   },
   "devDependencies": {
-    "eslint": "^2.13.1",
-    "eslint-config-airbnb-base": "^3.0.1",
-    "eslint-plugin-import": "^1.9.2",
-    "mocha": "^2.5.3",
-    "supertest": "^1.2.0"
+    "eslint": "^3.4.0",
+    "eslint-config-airbnb-base": "^5.0.3",
+    "eslint-plugin-import": "^1.14.0",
+    "mocha": "^3.0.2",
+    "supertest": "^2.0.0"
   },
-  "gitHead": "e366bc17c703ff48625d2c8566336055410385c1",
+  "gitHead": "1f27ee5fbb63bf67fd8243e0c230dfc6f0ac30d2",
   "homepage": "https://github.com/msokk/electron-render-service#readme",
-  "_npmVersion": "3.9.5",
-  "_nodeVersion": "6.2.2",
+  "_npmVersion": "3.10.3",
+  "_nodeVersion": "6.5.0",
   "dist": {
-    "shasum": "44655fcf401aab5d14b06f4d29afe047a49d58e3",
-    "tarball": "http://registry.npmjs.org/electron-render-service/-/electron-render-service-0.7.0.tgz"
+    "shasum": "19a71387c154e532253269dfe06fd37bd607a54e",
+    "tarball": "http://registry.npmjs.org/electron-render-service/-/electron-render-service-0.8.0.tgz"
   },
   "stars": 1,
   "versions": [
@@ -87,10 +87,14 @@
     {
       "number": "0.7.0",
       "date": "2016-06-24T19:47:00.713Z"
+    },
+    {
+      "number": "0.8.0",
+      "date": "2016-09-01T16:01:43.132Z"
     }
   ],
   "created": "2016-01-20T21:33:58.157Z",
-  "modified": "2016-06-24T19:47:00.713Z",
+  "modified": "2016-09-01T16:01:43.132Z",
   "lastPublisher": {
     "name": "msokk",
     "email": "mihkelsokk@gmail.com"
@@ -101,5 +105,5 @@
       "email": "mihkelsokk@gmail.com"
     }
   ],
-  "readme": "# electron-render-service\n[![Build Status](https://travis-ci.org/msokk/electron-render-service.svg?branch=master)](https://travis-ci.org/msokk/electron-render-service)\n[![Docker Hub](https://img.shields.io/badge/docker-ready-blue.svg)](https://hub.docker.com/r/msokk/electron-render-service/)\n[![npm](https://img.shields.io/npm/v/electron-render-service.svg)](https://www.npmjs.com/package/electron-render-service)\n[![Dependency Status](https://david-dm.org/msokk/electron-render-service.svg)](https://david-dm.org/msokk/electron-render-service)\n\nSimple PDF/PNG/JPEG render service, accepts webpage URL and returns the resource.\n\nAlternatively an HTML payload can be POST-ed.\n\n## Docker usage\n\nBased on official [Debian Jessie](https://hub.docker.com/_/debian/) image, uses latest [electron](https://github.com/atom/electron).\n\n\n1. `docker run -t -e RENDERER_ACCESS_KEY=secret -p 3000:3000 msokk/electron-render-service`\n2. `wget -o out.pdf http://<node_address>:3000/pdf?url=https://github.com/msokk/electron-render-service&accessKey=secret`\n\n> NB: Set bigger shared memory size `--shm-size=Xm` (default: `64m`) if dealing with very heavy pages.\n\n> Note: Add `--security-opt seccomp:unconfined` to supress `libudev: udev_has_devtmpfs: name_to_handle_at on /dev: Operation not permitted` warning.\n\n\n\n## Installation on Debian with Node.js\n\n```sh\n# Enable contrib packages\nsed -i 's/main/main contrib/g' /etc/apt/sources.list\n\n# Install packages needed for runtime\napt-get update && apt-get install -y xvfb libgtk2.0-0 ttf-mscorefonts-installer libnotify4 libgconf2-4 libxss1 libnss3 dbus-x11\n\n# Install from NPM\nnpm install -g electron-render-service\n\n# Run in virtual framebuffer\nRENDERER_ACCESS_KEY=secret xvfb-run --server-args=\"-screen 0 1024x768x24\" electron-render-service\n\nwget -o out.pdf http://localhost:3000/pdf?url=https://github.com/msokk/electron-render-service&accessKey=secret\n```\n\n\n## Endpoints\n\n#### `GET /pdf` - Render PDF\n\n*Query params ([About PDF params](https://github.com/atom/electron/blob/master/docs/api/web-contents.md#webcontentsprinttopdfoptions-callback)):*\n\n  * `accessKey` - Authentication key.\n  * `url` - Full URL to fetch.\n  * `pageSize` - Specify page size of the generated PDF. Can be `A3`, `A4`, `A5`, `Legal`, `Letter`, `Tabloid` or `<width>x<height>` in microns (e.g. `210000x297000` for A4)(default: `A4`)\n  * `marginsType` - Specify the type of margins to use (default: `0`)\n  * `printBackground` - Whether to print CSS backgrounds. (default: `true`)\n  * `landscape` -  `true` for landscape, `false` for portrait. (default: `false`)\n  * `removePrintMedia` - Removes any `<link media=\"print\">` stylesheets on page before render. (default: `false`)\n  * `delay` - Specify how long to wait before generating the PDF (default: `0`)\n  * `waitForText` - Specify a specific string of text to find before generating the PDF (default: `false`)\n\n### `POST /pdf`\n\nIdentical as above, omit `url` and provide HTML in request body.\n\n#### `GET /png|jpeg` - Render PNG/JPEG\n\n*Query params:*\n\n  * `accessKey` - Authentication key.\n  * `url` - Full URL to fetch.\n  * `quality` - JPEG quality. (default: `80`)\n  * `delay` - Specify how long to wait before generating the image (default: `0`)\n  * `waitForText` - Specify a specific string of text to find before generating the image (default: `false`)\n  * `browserWidth` - Browser window width (default: `rect.width || env.WINDOW_WIDTH`, max: `3000`)\n  * `browserHeight` - Browser window height (default: `rect.height || env.WINDOW_HEIGHT`, max: `3000`)\n  * Clipping rectangle (optional, but all 4 integers need to be set)\n    * `clippingRect[x]`\n    * `clippingRect[y]`\n    * `clippingRect[width]`\n    * `clippingRect[height]`\n\n### `POST /png|jpeg`\n\nIdentical as above, omit `url` and provide HTML in request body.\n\n#### `GET /stats` - Display render pool stats\n\n*Query params:*\n\n* `accessKey` - Generic authentication key is required.\n\n\n## Environment variables\n\n##### *Required*\n* `RENDERER_ACCESS_KEY` or `RENDERER_ACCESS_KEY_<suffix>` - Secret key for limiting access. Suffixed keys are used as labels in access log for debugging usage.\n\n##### *Optional*\n* `CONCURRENCY` - Number of browser windows to run in parallel (default: `1`)\n* `TIMEOUT` - Number of seconds before request timeouts (default: `30`)\n* `WINDOW_WIDTH` - Default window width (default: `1024`)\n* `WINDOW_HEIGHT` - Default window height (default: `768`)\n* `HOSTNAME` - Hostname to accept Express connections on (default: `0.0.0.0`)\n* `PORT` - (default: `3000`)\n\n\n## Delayed Rendering\n\nNot all content is loaded once the DOM is loaded, some data can take time because calls are being made via websockets and other methods. You can delay the rendering by either providing a `delay` value in the query string or you can provide `waitForText` in the query string.\n\nIf you specify `waitForText` the service will continually scan the loaded URL until the overall timeout is reached. If the text passed to the variable `waitForText` is found before the timeout, the PDF/image will generate and return.\n"
+  "readme": "# electron-render-service\n[![Build Status](https://travis-ci.org/msokk/electron-render-service.svg?branch=master)](https://travis-ci.org/msokk/electron-render-service)\n[![](https://images.microbadger.com/badges/image/msokk/electron-render-service.svg)](http://microbadger.com/images/msokk/electron-render-service \"Get your own image badge on microbadger.com\")\n[![Docker Hub](https://img.shields.io/badge/docker-ready-blue.svg)](https://hub.docker.com/r/msokk/electron-render-service/)\n[![npm](https://img.shields.io/npm/v/electron-render-service.svg)](https://www.npmjs.com/package/electron-render-service)\n[![Dependency Status](https://david-dm.org/msokk/electron-render-service.svg)](https://david-dm.org/msokk/electron-render-service)\n\nSimple PDF/PNG/JPEG render service, accepts webpage URL and returns the resource.\n\nAlternatively an HTML payload can be POST-ed.\n\n## Docker usage\n\nBased on official [Debian Jessie](https://hub.docker.com/_/debian/) image, uses latest [electron](https://github.com/atom/electron).\n\n\n1. `docker run -t -e RENDERER_ACCESS_KEY=secret -p 3000:3000 msokk/electron-render-service`\n2. `wget -O out.pdf 'http://<node_address>:3000/pdf?accessKey=secret&url=https%3A%2F%2Fgithub.com%2Fmsokk%2Felectron-render-service'`\n\n> NB: Set bigger shared memory size `--shm-size=Xm` (default: `64m`) if dealing with very heavy pages.\n\n> Note: Add `--security-opt seccomp:unconfined` to supress `libudev: udev_has_devtmpfs: name_to_handle_at on /dev: Operation not permitted` warning.\n\n\n\n## Installation on Debian with Node.js\n\n```sh\n# Enable contrib packages\nsed -i 's/main/main contrib/g' /etc/apt/sources.list\n\n# Install packages needed for runtime\napt-get update && apt-get install -y xvfb libgtk2.0-0 ttf-mscorefonts-installer libnotify4 libgconf2-4 libxss1 libnss3 dbus-x11\n\n# Install from NPM\nnpm install -g electron-render-service\n\n# Run in virtual framebuffer\nRENDERER_ACCESS_KEY=secret xvfb-run --server-args=\"-screen 0 1024x768x24\" electron-render-service\n\nwget -O out.pdf 'http://localhost:3000/pdf?accessKey=secret&url=https%3A%2F%2Fgithub.com%2Fmsokk%2Felectron-render-service'\n```\n\n\n## Endpoints\n\n#### `GET /pdf` - Render PDF\n\n*Query params ([About PDF params](https://github.com/atom/electron/blob/master/docs/api/web-contents.md#webcontentsprinttopdfoptions-callback)):*\n\n  * `accessKey` - Authentication key.\n  * `url` - Full URL to fetch.\n  * `pageSize` - Specify page size of the generated PDF. Can be `A3`, `A4`, `A5`, `Legal`, `Letter`, `Tabloid` or `<width>x<height>` in microns (e.g. `210000x297000` for A4)(default: `A4`)\n  * `marginsType` - Specify the type of margins to use (default: `0`)\n  * `printBackground` - Whether to print CSS backgrounds. (default: `true`)\n  * `landscape` -  `true` for landscape, `false` for portrait. (default: `false`)\n  * `removePrintMedia` - Removes any `<link media=\"print\">` stylesheets on page before render. (default: `false`)\n  * `delay` - Specify how long to wait before generating the PDF (default: `0`)\n  * `waitForText` - Specify a specific string of text to find before generating the PDF (default: `false`)\n\n### `POST /pdf`\n\nIdentical as above, omit `url` and provide HTML in request body.\n\n#### `GET /png|jpeg` - Render PNG/JPEG\n\n*Query params:*\n\n  * `accessKey` - Authentication key.\n  * `url` - Full URL to fetch.\n  * `quality` - JPEG quality. (default: `80`)\n  * `delay` - Specify how long to wait before generating the image (default: `0`)\n  * `waitForText` - Specify a specific string of text to find before generating the image (default: `false`)\n  * `browserWidth` - Browser window width (default: `rect.width || env.WINDOW_WIDTH`, max: `3000`)\n  * `browserHeight` - Browser window height (default: `rect.height || env.WINDOW_HEIGHT`, max: `3000`)\n  * Clipping rectangle (optional, but all 4 integers need to be set)\n    * `clippingRect[x]`\n    * `clippingRect[y]`\n    * `clippingRect[width]`\n    * `clippingRect[height]`\n\n### `POST /png|jpeg`\n\nIdentical as above, omit `url` and provide HTML in request body.\n\n#### `GET /stats` - Display render pool stats\n\n*Query params:*\n\n* `accessKey` - Generic authentication key is required.\n\n\n## Environment variables\n\n##### *Required*\n* `RENDERER_ACCESS_KEY` or `RENDERER_ACCESS_KEY_<suffix>` - Secret key for limiting access. Suffixed keys are used as labels in access log for debugging usage.\n\n##### *Optional*\n* `CONCURRENCY` - Number of browser windows to run in parallel (default: `1`)\n* `TIMEOUT` - Number of seconds before request timeouts (default: `30`)\n* `WINDOW_WIDTH` - Default window width (default: `1024`)\n* `WINDOW_HEIGHT` - Default window height (default: `768`)\n* `HOSTNAME` - Hostname to accept Express connections on (default: `0.0.0.0`)\n* `PORT` - (default: `3000`)\n\n\n## Delayed Rendering\n\nNot all content is loaded once the DOM is loaded, some data can take time because calls are being made via websockets and other methods. You can delay the rendering by either providing a `delay` value in the query string or you can provide `waitForText` in the query string.\n\nIf you specify `waitForText` the service will continually scan the loaded URL until the overall timeout is reached. If the text passed to the variable `waitForText` is found before the timeout, the PDF/image will generate and return.\n"
 }

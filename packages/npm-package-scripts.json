@@ -1,0 +1,149 @@
+{
+  "name": "npm-package-scripts",
+  "version": "1.0.0",
+  "description": "All the benefits of npm scripts without the cost of a bloated package.json and limits of json",
+  "main": "dist/index",
+  "scripts": {
+    "start": "npm run localstart",
+    "test": "npm run localstart test",
+    "build": "rimraf dist && babel --copy-files --out-dir dist --ignore *.test.js,fixtures src",
+    "localstart": "npm run build && ./dist/bin/nps.js"
+  },
+  "bin": {
+    "nps": "./dist/bin/nps.js",
+    "npm-package-scripts": "./dist/bin/nps.js"
+  },
+  "files": [
+    "dist"
+  ],
+  "keywords": [],
+  "author": {
+    "name": "Kent C. Dodds",
+    "email": "kent@doddsfamily.us",
+    "url": "http://kentcdodds.com/"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "arrify": "1.0.1",
+    "bluebird": "3.4.6",
+    "colors": "1.1.2",
+    "commander": "2.9.0",
+    "find-up": "1.1.2",
+    "lodash": "4.14.0",
+    "manage-path": "2.0.0",
+    "omelette": "0.3.1",
+    "prefix-matches": "0.0.9",
+    "shell-escape": "0.2.0",
+    "spawn-command-with-kill": "1.0.0"
+  },
+  "devDependencies": {
+    "all-contributors-cli": "3.0.6",
+    "ava": "0.15.2",
+    "babel-cli": "6.11.4",
+    "babel-eslint": "6.1.2",
+    "babel-plugin-istanbul": "1.0.3",
+    "babel-preset-es2015": "6.9.0",
+    "babel-preset-stage-2": "6.11.0",
+    "babel-register": "6.11.5",
+    "cli-tester": "1.0.0",
+    "codecov": "1.0.1",
+    "commitizen": "2.8.2",
+    "condition-node-version": "1.3.0",
+    "cross-env": "2.0.0",
+    "cz-conventional-changelog": "1.1.6",
+    "eslint": "3.1.1",
+    "eslint-config-kentcdodds": "8.1.3",
+    "ghooks": "1.3.2",
+    "nyc": "7.1.0",
+    "opt-cli": "1.5.1",
+    "proxyquire": "1.7.10",
+    "rimraf": "2.5.4",
+    "semantic-release": "4.3.5",
+    "sinon": "1.17.4",
+    "validate-commit-msg": "2.6.1"
+  },
+  "eslintConfig": {
+    "extends": [
+      "kentcdodds",
+      "kentcdodds/ava"
+    ]
+  },
+  "ava": {
+    "require": [
+      "babel-register"
+    ]
+  },
+  "nyc": {
+    "all": true,
+    "sourceMap": false,
+    "instrument": false,
+    "check-coverage": true,
+    "branches": 100,
+    "functions": 100,
+    "lines": 100,
+    "statements": 100,
+    "reporter": [
+      "lcov",
+      "text",
+      "html"
+    ],
+    "include": [
+      "src/**/*.js"
+    ]
+  },
+  "release": {
+    "verifyConditions": {
+      "path": "condition-node-version",
+      "node": "^6"
+    }
+  },
+  "config": {
+    "ghooks": {
+      "commit-msg": "opt --in commit-msg --exec \"validate-commit-msg\"",
+      "pre-commit": "opt --in pre-commit --exec \"npm start validate\""
+    },
+    "commitizen": {
+      "path": "node_modules/cz-conventional-changelog"
+    }
+  },
+  "repository": {
+    "user": "kentcdodds",
+    "repo": "nps",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/kentcdodds/nps/tarball/master",
+    "clone_url": "https://github.com/kentcdodds/nps",
+    "https_url": "https://github.com/kentcdodds/nps",
+    "travis_url": "https://travis-ci.org/kentcdodds/nps",
+    "zip_url": "https://github.com/kentcdodds/nps/archive/master.zip",
+    "api_url": "https://api.github.com/repos/kentcdodds/nps"
+  },
+  "homepage": "https://github.com/kentcdodds/nps#readme",
+  "gitHead": "090ca1a075ecd2a90b2e27216b56bdacd9bb0c64",
+  "_npmVersion": "3.10.6",
+  "_nodeVersion": "6.5.0",
+  "dist": {
+    "shasum": "a9a77e784103d4fdc5a80d15474eba385c9df68f",
+    "tarball": "http://registry.npmjs.org/npm-package-scripts/-/npm-package-scripts-1.0.0.tgz"
+  },
+  "versions": [
+    {
+      "number": "1.0.0",
+      "date": "2016-09-05T20:09:02.535Z"
+    }
+  ],
+  "created": "2016-09-05T20:09:02.535Z",
+  "modified": "2016-09-05T20:09:02.535Z",
+  "lastPublisher": {
+    "name": "kentcdodds",
+    "email": "kent@doddsfamily.us"
+  },
+  "owners": [
+    {
+      "name": "kentcdodds",
+      "email": "kent@doddsfamily.us"
+    }
+  ],
+  "readme": "# nps (aka npm-package-scripts)\n\nAll the benefits of npm scripts without the cost of a bloated package.json and limits of json\n\n[![Build Status][build-badge]][build]\n[![Code Coverage][coverage-badge]][coverage]\n[![Dependencies][dependencyci-badge]][dependencyci]\n[![version][version-badge]][package]\n[![downloads][downloads-badge]][npm-stat]\n[![MIT License][license-badge]][LICENSE]\n\n[![All Contributors](https://img.shields.io/badge/all_contributors-14-orange.svg?style=flat-square)](#contributors)\n[![PRs Welcome][prs-badge]][prs]\n[![Donate][donate-badge]][donate]\n[![Code of Conduct][coc-badge]][coc]\n[![Roadmap][roadmap-badge]][roadmap]\n[![Examples][examples-badge]][examples]\n\n## Quick Video Intro :tv:\n\n<a href=\"http://kcd.im/p-s-video\" title=\"Simplify and empower npm scripts with nps\">\n  <img src=\"other/video-screenshot.png\" alt=\"Video Screenshot\" title=\"Video Screenshot\" width=\"700\" />\n</a>\n\n[Simplify and empower npm scripts with `nps`][video] 11:19\n\n## The problem\n\nEven though npm scripts have a ton of advantages ([learn more][scripts-advantages]), it can grow into an\n[unmaintainable mess][mess] in your `package.json` file. Part of the problem is we're configuring scripts in `json`\nwhich has fundamental issues (like no comments).\n\n## This solution\n\nPut all of your scripts in a file called `npsfile.js` and use `nps` in a single `package.json` script:\n\n**package.json**\n\n```json\n{\n  \"scripts\": {\n    \"start\": \"npm-package-scripts\"\n  }\n}\n```\n\n**npsfile.js**\n\n```javascript\nmodule.exports = {\n  scripts: {\n    default: 'node index.js',\n    lint: 'eslint .',\n    test: {\n      default: 'ava',\n      watch: {\n        script: 'ava -w',\n        description: 'run in the amazingly intelligent AVA watch mode'\n      }\n    },\n    build: {\n      default: 'webpack',\n      prod: 'webpack -p',\n    },\n    validate: 'nps --parallel lint,test,build',\n  },\n}\n```\n\nThen you can run:\n\n```console\nnpm start # runs `node index.js`\nnpm start lint # runs `eslint .`\nnpm start test.watch # runs `ava -w`\nnpm start validate # runs the lint, test, and build scripts in parallel\n```\n\nBut the fun doesn't end there! You can use a prefix:\n\n```console\nnpm start b # will run the build script\n```\n\nAnd these prefixes can go as deep as you like!\n\n```console\nnpm start b.p # will run the production build script\n```\n\nAnd if you want to speed things up even more, you can install [`npm-quick-run`][quick-run] and then:\n\n```console\nnr s build.prod\n```\n\nCool stuff right? And there's more on [the roadmap][roadmap].\n\n**Also** check out the [examples][examples]. You'll find some good stuff in there (including how to deal with windows\nand other cross-platform issues).\n\n**Note:** You don't have to use the `start` script if you don't want. If you're writing a node application, you're\nlikely using this for starting your server. In that case, you can create a `default` script which will be run when\n`nps` is run without arguments (so effectively it'll work just the same). But if you'd prefer, you can use whatever you\nwish. For example you could easily create a `nps` script and do: `npm run nps b`.\n\n## Installation\n\nThis module is distributed via [npm][npm] which is bundled with [node][node] and should\nbe installed as one of your project's `devDependencies`:\n\n```\nnpm install --save-dev nps\n```\n\n### global installation\n\nYou can install this module globally also:\n\n```\nnpm install --global nps\n```\n\nFrom here you can use `nps` on the command line via `nps` or `npm-package-scripts`.\nIf you do this, you may also be interested in installing the shell autocompletion script. Do so by running:\n\n```\nnps completion <optionally-your-bash-profile-file>\n```\n\nThe bash profile file defaults to `~/.bash_profile` for bash and `~/.zshrc` for zsh. Special thanks to the\n[`omelette`][omelette] package for making this so easy.\n\n## Getting started\n\nIf you're already using npm scripts, you can get up and going really quickly with the `init` command:\n\n```\n./node_modules/.bin/nps init\n```\n\nThis will use your `package.json` `scripts` to generate a `npsfile.js` file and update your `scripts` to\nutilize the `npm-package-scripts` binary.\n\n## API\n\n### CLI\n\nThe CLI is fairly simple. It allows for a few options. The `nps` binary is available in your `node_modules/.bin`\ndirectory when you install it locally in a project so you can use it in your `npm` scripts. We also expose a\n`npm-package-scripts` alias binary so you can use that as well if you'd like the script to be [more clear][clarity].\n\n```console\n$ nps --help\n\n  Usage: nps [options]\n\n  Options:\n\n    -h, --help                                  output usage information\n    -V, --version                               output the version number\n    -s, --silent                                Silent nps output\n    -p, --parallel <script-name1,script-name2>  Scripts to run in parallel (comma seprated)\n    -c, --config <filepath>                     Config file to use (defaults to nearest npsfile.js)\n    -l, --log-level <level>                     The log level to use (error, warn, info [default])\n    -r, --require <module>                      Module to preload\n\nAvailable scripts (camel or kebab case accepted)\n\nlint - Lint all files with eslint. Configuration is in package.json - eslint .\ntest - Run tests with AVA. See package.json for config - ava\ntest.watch - Run in the amazingly intelligent AVA watch mode - ava -w\nbuild - The normal webpack UMD build for development - webpack\nbuild.prod - The production webpack build - webpack -p\n```\n\n#### Commands\n\n##### help\n\nIf you have a `help` script, then your `help` script will be run. Otherwise, this will output the help.\n\n> Note: you can do this with `nps --help`, but if you're using the `start` script in your `package.json` this allows you\n> to run `npm start help` rather than `npm start -- --help`\n\n##### init\n\nAs indicated above, this will migrate your npm scripts to npm-package-scripts.\n\n##### completion\n\nInstalls autocompletion functionality into your default bash or zsh configuration. You can override the default by\nproviding a specific file:\n\n```console\nnps completion ~/.bashrc\n```\n\nNote: you should probably only do this if you have the package installed globally. In that case you should probably also\nnormally use the `nps` alias rather than `nps` because it's easier to type.\n\n#### CLI options\n\n##### -h, --help\n\nWill print out the help you see above (the available scripts are colored 🌈 and come from the config specified/default\nconfig).\n\n##### -s, --silent\n\nBy default, `nps` will log out to the console before running the command. You can add `-s` to your command to silence\nthis.\n\n##### -p, --parallel\n\nRun the given scripts in parallel. This enables handy workflows like this:\n\n```console\nnpm start -p lint,build,cover && npm start check-coverage && npm start report-coverage\n```\n\n##### -c, --config\n\nUse a different config\n\n```\nnpm start -c ./other/npsfile.js lint\n```\n\nNormally, `nps` will look for a `npsfile.js` file and load that to get the scripts. Generally you'll want to\nhave this at the root of your project (next to the `package.json`). But by specifying `-c` or `--config`, `nps` will\nuse that file instead.\n\n\n##### -l, --log-level\n\nSpecify the log level to use\n\n##### -r, --require\n\nYou can specify a module which will be loaded before the config file is loaded. This allows you to preload for example babel-register so you can use all babel presets you like.\n\n##### args\n\nYou can pass additional arguments to the script(s) that are being spawned:\n\n```console\nnpm start lint --fix # --fix will be passed on to the lint script\n```\n\n##### scripts\n\nIf you don't use `-p` (because you don't need parallelism) then you can simply provide the name of the script like so:\n\n```console\nnpm start cover\n```\n\nAnd you can run multiple scripts in series by providing a comma-separated list:\n\n```console\nnpm start cover,check-coverage\n```\n\nThat's all for the CLI.\n\n### npsfile.js\n\n`nps` expects to your `npsfile.js` file to `module.exports` an object with the following properties:\n\n#### scripts\n\nThis can be an object or a function that returns an object. See the annotated example below for what this object can\nlook like (and different ways to run them):\n\n```javascript\nmodule.exports = {\n  scripts: {\n    default: 'echo \"This runs on `npm start`\"', // npm start\n    // you can assign a script property to a string\n    simple: 'echo \"this is easy\"', // npm start simple\n    test: {\n      default: {\n        script: 'ava', // npm start test\n        description: 'Run tests with ava',\n        // your scripts will be run with node_modules/.bin in the PATH, so you can use locally installed packages.\n        // this is done in a cross-platform way, so your scripts will work on Mac and Windows :)\n        // NOTE: if you need to set environment variables, I recommend you check out the cross-env package, which works\n        // great with nps\n      },\n      otherStuff: {\n        // this one can be executed two different ways:\n        // 1. npm start test.otherStuff\n        // 2. npm start test.other-stuff\n        script: 'echo \"testing other things\"',\n        description: 'this is a handy description',\n      },\n    },\n    // this one can be executed a few different ways:\n    // 1. npm start k\n    // 2. npm start kebab-case\n    // 3. npm start kebabCase\n    'kebab-case': 'echo \"kebab-case\"',\n    series: 'nps simple,test,kebabCase', // runs these other scripts in series\n  },\n}\n```\n\nRemember, I find it considerably nicer to just use [`npm-quick-run`][quick-run] and then I can do:\n\n```console\nnr s k # runs npm start kebab-case\n```\n\n#### options\n\nThis object is used to configure `nps` with the following options:\n\n##### silent\n\nSetting this to `true` will prevent `nps` from outputting anything for your script (normally you'll get simple output\nindicating the command that's being executed). This effectively sets the `logLevel` to `disable`.\n\n##### logLevel\n\nThis sets the logLevel of `nps`.\n\n## ENV variables\n\n### LOG_LEVEL\n\nBy setting `LOG_LEVEL` environment variable you can control the log level for `nps`\n\n## Log level\n\nLog levels available:\n\n- `error` - errors only\n- `warn` - errors and warnings only\n- `info` - info, errors, and warnings (default)\n\n## FAQ\n\n### Why `npm start`?\n\n_Just to be clear:_ You do **not** have to use the `start` script. You can use whatever you like. But I recommend using\nthe `start`. [npm scripts][npm scripts] are generally run with `npm run <script-name>`. There are some exceptions to\nthis. For example:\n\n1. `npm run test` === `npm test` === `npm t`\n2. `npm run start` === `npm start`\n\nSo, while you could use a script called `script` and run `npm run script build`, I just think it reads more clearly to\njust use the `start` script and run `npm start build`. It's also nice that it's fewer things to type. You could also use\nthe `test` script and then type even less: `npm t build`, but thats just... odd.\n\nNote, often servers are configured to run `npm start` by default to start the server.\nTo allow for this case, you can provide a `default` script at the root of your scripts\nwhich will be run when `nps` is run without any arguments. Effectively this will\nallow you to have a script run when `npm start` is executed.\n\n## Inspiration\n\nThis was inspired by [a tweet][tweet] by [@sindresorhus][sindre].\n\n## Other Solutions\n\n- [scripty][scripty] has a solution for this problem as well. The reason I didn't go with that though is you still need\na line for every script (one of the pains I'm trying to solve) and a each script requires its own file (one of the\nbenefits of npm scripts I wanted to keep).\n\n## In the wild\n\n- [react-component-template](https://github.com/nkbt/react-component-template) uses `nps` to implement shareable npm scripts. See then how dependent [react-swap](https://github.com/nkbt/react-swap) can reuse them.\n\n  GOTCHAS:\n    - use `process.cwd()` as the base for all paths\n\n- [Hypercubed/EventsSpeedTests](https://github.com/Hypercubed/EventsSpeedTests) uses `nps` to automate benchmark running and reporting in node and the browser.  `npsfile.js` enables us to keep our scripts DRY.  Combined with [grunion](https://github.com/Hypercubed/grunion) allows benchmarks to be run, serially or concurrently, on glob patterns.\n\n- [SmithersAssistant/Smithers](https://github.com/SmithersAssistant/smithers) is an [electron](https://electron.atom.io) based personal assistant. Smithers works on multiple platforms. Smithers uses `nps` to dynamically find the current platform and execute the dev environment. Now we don't have to manually update the `package.json` scripts when you are on a different platform!\n\n## Contributors\n\nThanks goes to these people ([emoji key][emojis]):\n\n<!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->\n| [<img src=\"https://avatars.githubusercontent.com/u/1500684?v=3\" width=\"100px;\"/><br /><sub>Kent C. Dodds</sub>](http://kent.doddsfamily.us)<br />[💻](https://github.com/kentcdodds/nps/commits?author=kentcdodds) [📖](https://github.com/kentcdodds/nps/commits?author=kentcdodds) 🚇 💡 📹 👀 | [<img src=\"https://avatars.githubusercontent.com/u/532272?v=3\" width=\"100px;\"/><br /><sub>David Wells</sub>](http://davidwells.io)<br />[💻](https://github.com/kentcdodds/nps/commits?author=DavidWells) | [<img src=\"https://avatars.githubusercontent.com/u/802242?v=3\" width=\"100px;\"/><br /><sub>Abhishek Shende</sub>](https://twitter.com/abhishekisnot)<br />[💻](https://github.com/kentcdodds/nps/commits?author=abhishekisnot) [⚠️](https://github.com/kentcdodds/nps/commits?author=abhishekisnot) | [<img src=\"https://avatars.githubusercontent.com/u/185649?v=3\" width=\"100px;\"/><br /><sub>Rowan Oulton</sub>](http://travelog.io)<br />[💻](https://github.com/kentcdodds/nps/commits?author=rowanoulton) [📖](https://github.com/kentcdodds/nps/commits?author=rowanoulton) [⚠️](https://github.com/kentcdodds/nps/commits?author=rowanoulton) | [<img src=\"https://avatars.githubusercontent.com/u/1915716?v=3\" width=\"100px;\"/><br /><sub>Gilad Goldberg</sub>](https://github.com/giladgo)<br />[💻](https://github.com/kentcdodds/nps/commits?author=giladgo) | [<img src=\"https://avatars.githubusercontent.com/u/14267457?v=3\" width=\"100px;\"/><br /><sub>Tim McGee</sub>](https://github.com/tim-mcgee)<br />[💻](https://github.com/kentcdodds/nps/commits?author=tim-mcgee) [📖](https://github.com/kentcdodds/nps/commits?author=tim-mcgee) | [<img src=\"https://avatars.githubusercontent.com/u/175264?v=3\" width=\"100px;\"/><br /><sub>Nik Butenko</sub>](http://butenko.me)<br />💡 [💻](https://github.com/kentcdodds/nps/commits?author=nkbt) |\n| :---: | :---: | :---: | :---: | :---: | :---: | :---: |\n| [<img src=\"https://avatars.githubusercontent.com/u/1972567?v=3\" width=\"100px;\"/><br /><sub>Tommy</sub>](http://www.tommyleunen.com)<br />[🐛](https://github.com/kentcdodds/nps/issues?q=author%3Atleunen) [💻](https://github.com/kentcdodds/nps/commits?author=tleunen) [⚠️](https://github.com/kentcdodds/nps/commits?author=tleunen) 👀 | [<img src=\"https://avatars.githubusercontent.com/u/509946?v=3\" width=\"100px;\"/><br /><sub>Jayson Harshbarger</sub>](http://www.hypercubed.com)<br />💡 👀 | [<img src=\"https://avatars.githubusercontent.com/u/1355481?v=3\" width=\"100px;\"/><br /><sub>JD Isaacks</sub>](http://www.jisaacks.com)<br />[💻](https://github.com/kentcdodds/nps/commits?author=jisaacks) [⚠️](https://github.com/kentcdodds/nps/commits?author=jisaacks) | [<img src=\"https://avatars.githubusercontent.com/u/924465?v=3\" width=\"100px;\"/><br /><sub>Christopher Hiller</sub>](https://boneskull.com)<br />👀 | [<img src=\"https://avatars.githubusercontent.com/u/1834413?v=3\" width=\"100px;\"/><br /><sub>Robin Malfait</sub>](robinmalfait.com)<br />💡 | [<img src=\"https://avatars.githubusercontent.com/u/622118?v=3\" width=\"100px;\"/><br /><sub>Eric McCormick</sub>](https://ericmccormick.io)<br />👀 | [<img src=\"https://avatars.githubusercontent.com/u/1913805?v=3\" width=\"100px;\"/><br /><sub>Sam Verschueren</sub>](https://twitter.com/SamVerschueren)<br />👀 |\n<!-- ALL-CONTRIBUTORS-LIST:END -->\n\nThis project follows the [all-contributors][all-contributors] specification.\nContributions of any kind welcome!\n\n## LICENSE\n\nMIT\n\n[scripts-advantages]: https://medium.freecodecamp.com/why-i-left-gulp-and-grunt-for-npm-scripts-3d6853dd22b8#.9qghcfdr9\n[mess]: https://github.com/ReactiveX/rxjs/blob/a3ec89605a24a6f54e577d21773dad11f22fdb14/package.json#L14-L96\n[roadmap]: https://github.com/kentcdodds/nps/blob/master/other/ROADMAP.md\n[examples]: https://github.com/kentcdodds/nps/blob/master/other/EXAMPLES.md\n[quick-run]: https://npmjs.com/package/npm-quick-run\n[npm]: https://www.npmjs.com/\n[node]: https://nodejs.org\n[build-badge]: https://img.shields.io/travis/kentcdodds/nps/master.svg?style=flat-square\n[build]: https://travis-ci.org/kentcdodds/nps\n[coverage-badge]: https://img.shields.io/codecov/c/github/kentcdodds/nps.svg?style=flat-square\n[coverage]: https://codecov.io/github/kentcdodds/nps\n[dependencyci-badge]: https://dependencyci.com/github/kentcdodds/nps/badge?style=flat-square\n[dependencyci]: https://dependencyci.com/github/kentcdodds/nps\n[version-badge]: https://img.shields.io/npm/v/nps.svg?style=flat-square\n[package]: https://www.npmjs.com/package/nps\n[downloads-badge]: https://img.shields.io/npm/dm/nps.svg?style=flat-square\n[npm-stat]: http://npm-stat.com/charts.html?package=nps&from=2016-04-01\n[license-badge]: https://img.shields.io/npm/l/nps.svg?style=flat-square\n[license]: https://github.com/kentcdodds/nps/blob/master/LICENSE\n[prs-badge]: https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square\n[prs]: http://makeapullrequest.com\n[donate-badge]: https://img.shields.io/badge/%EF%BC%84-support-green.svg?style=flat-square\n[donate]: http://kcd.im/donate\n[coc-badge]: https://img.shields.io/badge/code%20of-conduct-ff69b4.svg?style=flat-square\n[coc]: https://github.com/kentcdodds/nps/blob/master/other/CODE_OF_CONDUCT.md\n[roadmap-badge]: https://img.shields.io/badge/%F0%9F%93%94-roadmap-CD9523.svg?style=flat-square\n[examples-badge]: https://img.shields.io/badge/%F0%9F%92%A1-examples-8C8E93.svg?style=flat-square\n[tweet]: https://twitter.com/sindresorhus/status/724259780676575232\n[sindre]: https://github.com/sindresorhus\n[emojis]: https://github.com/kentcdodds/all-contributors#emoji-key\n[all-contributors]: https://github.com/kentcdodds/all-contributors\n[clarity]: https://github.com/kentcdodds/nps/issues/1\n[scripty]: https://npmjs.com/package/scripty\n[npm scripts]: https://docs.npmjs.com/misc/scripts\n[video]: http://kcd.im/nps-video\n[omelette]: https://npmjs.com/package/omelette\n"
+}

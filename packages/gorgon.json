@@ -1,0 +1,138 @@
+{
+  "name": "gorgon",
+  "version": "0.0.3",
+  "description": "An ES6 highly scriptable, configurable, and network capable service container server for Node JS.",
+  "main": "lib/gorgon.js",
+  "scripts": {
+    "preinstall": "cp -n src/config/config.example.js src/config/config.js && cp -n src/config/env.example.js src/config/env.js",
+    "postinstall": "echo Install complete - Run: npm run install-global - to install build tools for and electron",
+    "run-debug": "node-debug lib/gorgon.js",
+    "babel": "babel-node src/gorgon.js --presets es2015,stage-2",
+    "babel-debug": "babel-node-debug src/gorgon.js --presets es2015,stage-2",
+    "build": "webpack --mode=build --progress --colors && echo BUILD COMPLETED",
+    "gorgon": "node lib/gorgon.min.js",
+    "gorgon-build": "webpack --mode=build --progress --colors && node lib/gorgon.min.js",
+    "gorgon-build-dev": "webpack --mode=dev --debug --progress --colors && node lib/gorgon.js",
+    "gorgon-build-debug": "webpack --mode=dev --progress --colors && node-debug lib/gorgon.js",
+    "compile": "webpack --mode=build",
+    "dev": "webpack --progress --colors --watch --mode=dev",
+    "test": "mocha --compilers js:babel-core/register --colors -w ./test/*.spec.js",
+    "clean": "rm -rf ./dist",
+    "clean:osx": "rm -rf ./build/osx",
+    "clean:win": "rm -rf ./build/win",
+    "pack": "npm run clean && npm run pack:osx && npm run pack:win",
+    "pack:osx": "npm run clean:osx && electron-packager . \"gorgon\" --asar=true --out=build/osx --platform=darwin --arch=x64 --version=1.2.8 --icon=image/trophy.icns",
+    "pack:win": "npm run clean:win && electron-packager . \"gorgon\" --asar=true --out=build/win --platform=win32 --arch=ia32 --version=1.2.8",
+    "build-app": "npm run build:osx && npm run build:win",
+    "build:osx": "npm run pack:osx && electron-builder \"build/osx/gorgon.app\" --platform=osx --out=\"dist/osx\" --config=builder.json",
+    "build:win": "npm run pack:win && electron-builder \"build/win/gorgon\" --platform=win --out=\"dist/win\" --config=builder.json",
+    "install-global": "npm install node-gyp -g && npm install asar -g && npm install electron-packager -g && npm install electron-builder -g"
+  },
+  "repository": {
+    "user": "manufacturing-industry",
+    "repo": "gorgon",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/manufacturing-industry/gorgon/tarball/master",
+    "clone_url": "https://github.com/manufacturing-industry/gorgon",
+    "https_url": "https://github.com/manufacturing-industry/gorgon",
+    "travis_url": "https://travis-ci.org/manufacturing-industry/gorgon",
+    "zip_url": "https://github.com/manufacturing-industry/gorgon/archive/master.zip",
+    "api_url": "https://api.github.com/repos/manufacturing-industry/gorgon"
+  },
+  "keywords": [
+    "nodejs",
+    "node",
+    "js",
+    "server",
+    "websocket",
+    "socket",
+    "http"
+  ],
+  "author": {
+    "name": "Ryan Rentfro"
+  },
+  "license": "MIT",
+  "homepage": "https://github.com/manufacturing-industry/gorgon#readme",
+  "dependencies": {
+    "body-parser": "^1.15.2",
+    "colog": "^1.0.4",
+    "compression": "^1.6.2",
+    "cookie-parser": "^1.4.3",
+    "electron-prebuilt": "^1.3.1",
+    "express": "^4.14.0",
+    "express-session": "^1.14.1",
+    "http-server": "^0.9.0",
+    "json-loader": "^0.5.4",
+    "lodash": "^4.14.1",
+    "moment": "^2.14.1",
+    "morgan": "^1.7.0",
+    "pug": "^2.0.0-beta6",
+    "sanitize-filename": "^1.6.0",
+    "serve-favicon": "^2.3.0",
+    "socket.io": "^1.4.8",
+    "socket.io-client": "^1.4.8",
+    "util": "^0.10.3",
+    "websocket": "^1.0.23"
+  },
+  "devDependencies": {
+    "babel": "^6.5.2",
+    "babel-cli": "^6.11.4",
+    "babel-core": "^6.11.4",
+    "babel-eslint": "^6.1.2",
+    "babel-loader": "^6.2.4",
+    "babel-plugin-add-module-exports": "^0.2.1",
+    "babel-plugin-transform-es2015-modules-commonjs-simple": "^6.7.4",
+    "babel-preset-es2015": "^6.14.0",
+    "babel-preset-es2015-webpack": "^6.4.3",
+    "babel-preset-stage-2": "^6.13.0",
+    "chai": "^3.5.0",
+    "electron": "^1.3.1",
+    "electron-builder": "^5.20.0",
+    "electron-packager": "^7.4.0",
+    "electron-prebuilt": "^1.3.1",
+    "eslint": "^3.2.0",
+    "eslint-loader": "^1.5.0",
+    "mocha": "^3.0.0",
+    "node-debug": "^0.1.0",
+    "pug": "^2.0.0-beta4",
+    "webpack": "^1.13.1",
+    "yargs": "^4.8.1"
+  },
+  "gitHead": "0ce8082e40ab2e12f05de602326abb8abb5e7c98",
+  "_npmVersion": "3.10.6",
+  "_nodeVersion": "6.2.1",
+  "dist": {
+    "shasum": "1bb4259a70aebb9a17f8c535d4236eab6c17e9a1",
+    "tarball": "http://registry.npmjs.org/gorgon/-/gorgon-0.0.3.tgz"
+  },
+  "stars": 1,
+  "versions": [
+    {
+      "number": "0.0.1",
+      "date": "2016-09-11T07:18:00.228Z"
+    },
+    {
+      "number": "0.0.2",
+      "date": "2016-09-11T07:21:33.372Z"
+    },
+    {
+      "number": "0.0.3",
+      "date": "2016-09-11T08:17:03.013Z"
+    }
+  ],
+  "created": "2016-09-11T07:18:00.228Z",
+  "modified": "2016-09-11T08:17:03.013Z",
+  "lastPublisher": {
+    "name": "rrentfro",
+    "email": "rrentfro@gmail.com"
+  },
+  "owners": [
+    {
+      "name": "rrentfro",
+      "email": "rrentfro@gmail.com"
+    }
+  ],
+  "readme": "#Gorgon\r\nAn ES6 highly scriptable, configurable, and network capable service container server for Node JS.\r\n\r\n##What is the purpose of Gorgon?\r\nGorgon provides a server daemon, command line interface (CLI), and API that can be used to create robust network based services. You can create scripted services that can be used to develop software defined networks of instanced micro services.  Services run in service containers that can easily mount network and storage services.  In the future we will also include a cross node communication network layer to easily scale your services to any size needed.\r\n\r\n##Latest News\r\n* RELEASE: Gorgon v0.0.3 is out - you can bow build services, grab it in [releases](https://github.com/manufacturing-industry/gorgon/releases)!\r\n\r\n##System Requirements\r\n* Node JS\r\n* Extra: System Build Tools (For Electron Apps - Run: npm run install-global)\r\n\r\n##Installation\r\n- Clone this repository\r\n- Enter the directory.\r\n- In your console: npm install\r\n- Run the server: npm run babel\r\n\r\n##Dev Mode\r\n- Run the server: npm run babel-debug\r\n\r\n##Applications\r\nGorgon is a collection of applications that allow for a robust network service infrastructure.\r\n\r\nApplication  | Status\r\n------------- | -------------\r\nServer  | Alpha\r\nWeb CLI | Development\r\nWebSocket Client | Development\r\n\r\n##Current Features\r\n- NOTE: This is currently pre-alpha, we will update the documentation as the server becomes more stable and capable.\r\n\r\nFeature  | Status\r\n------------- | -------------\r\nConfig  | Beta\r\nLogger  | Beta\r\nAccess Logs | Alpha\r\nMiddleware  | Alpha\r\nRouting  | Alpha\r\nService Containers | Beta\r\nNetwork Components  | Beta\r\nStorage  | Beta\r\nStatus Service | Alpha\r\nSessions | Development\r\n\r\n###Networking Support\r\nFeature  | Status\r\n------------- | -------------\r\nWeb Sockets | Beta\r\nREST HTTP/1.1 | Beta\r\nHTTP/1.1 | Beta\r\nTCP/IP Sockets | Beta\r\nHTTP/2.0 | Development\r\nStreams | Development\r\n\r\n##Planned API Integrations\r\nFeature  | Status\r\n------------- | -------------\r\nMongo | Development\r\nMySQL | Development\r\nAWS | Development\r\n\r\n##Have a contribution?\r\nPlease feel free to fork this repository and submit pull requests.\r\n\r\n##Found a Bug or Have a Suggestion?\r\nPlease report your bug or suggestion to the [issues](https://github.com/manufacturing-industry/gorgon/issues) section.\r\n \r\n##Author\r\n- Ryan Rentfro - rrentfro at gmail dot com\r\n\r\n##License\r\n\r\n#####License Information\r\n- MIT - https://opensource.org/licenses/MIT"
+}

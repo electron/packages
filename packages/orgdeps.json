@@ -1,0 +1,77 @@
+{
+  "bin": {
+    "orgdeps": "./bin/cmd.js"
+  },
+  "dependencies": {
+    "colors": "^1.1.2",
+    "glob": "^7.0.5",
+    "minimist": "^1.2.0",
+    "mkdirp": "^0.5.1",
+    "request": "^2.74.0",
+    "rimraf": "^2.5.4",
+    "simple-git": "^1.47.0"
+  },
+  "name": "orgdeps",
+  "description": "Returns all of a GitHub Organization's Node.js dependencies in a Unix friendly way",
+  "version": "2.0.0",
+  "main": "index.js",
+  "devDependencies": {},
+  "repository": {
+    "user": "retrohacker",
+    "repo": "orgdeps",
+    "branch": "master",
+    "host": "github.com",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/retrohacker/orgdeps/tarball/master",
+    "clone_url": "https://github.com/retrohacker/orgdeps",
+    "https_url": "https://github.com/retrohacker/orgdeps",
+    "travis_url": "https://travis-ci.org/retrohacker/orgdeps",
+    "zip_url": "https://github.com/retrohacker/orgdeps/archive/master.zip",
+    "api_url": "https://api.github.com/repos/retrohacker/orgdeps"
+  },
+  "keywords": [
+    "GitHub",
+    "git",
+    "package.json",
+    "dependencies",
+    "organization",
+    "npm"
+  ],
+  "author": {
+    "name": "William Blankenship",
+    "email": "william.jblankenship@gmail.com"
+  },
+  "license": "MIT",
+  "homepage": "https://github.com/retrohacker/orgdeps",
+  "gitHead": "5e021cf8ba6a70e573208ec4b5c59e231e7194b1",
+  "scripts": {},
+  "_npmVersion": "3.10.3",
+  "_nodeVersion": "6.3.1",
+  "dist": {
+    "shasum": "305914facb8220e42aaaa034d535ed62b7fccdf1",
+    "tarball": "http://registry.npmjs.org/orgdeps/-/orgdeps-2.0.0.tgz"
+  },
+  "versions": [
+    {
+      "number": "1.0.0",
+      "date": "2016-08-21T21:25:23.512Z"
+    },
+    {
+      "number": "2.0.0",
+      "date": "2016-08-21T21:42:04.142Z"
+    }
+  ],
+  "created": "2016-08-21T21:25:23.512Z",
+  "modified": "2016-08-21T21:42:04.142Z",
+  "lastPublisher": {
+    "name": "retrohacker",
+    "email": "william.jblankenship@gmail.com"
+  },
+  "owners": [
+    {
+      "name": "retrohacker",
+      "email": "william.jblankenship@gmail.com"
+    }
+  ],
+  "readme": "# orgdpes\n\nReturn all of the npm dependencies of a GitHub organization's public repositories\n\n# Installation\n\n`npm install -g orgdeps`\n\n# Usage\n\n\n`orgdeps`\n\n```\n\norgdeps - List all of the direct deps of Node.js projects in a GitHub org\n\n  USAGE: orgdeps --org ORG\n\n    org ORG - Required. Name of the GitHub organization to query\n\n```\n\nAll log messages are printed to `stderr` so you can still follow the status of the tool while piping the results to unix tools\n\nOutput is in the form:\n\n`COUNT MODULE` i.e. `15 bole`\n\n`orgdeps --org storj | sort -n`\n\n```\n[ LOG ] Fetching org repo list from https://api.github.com/orgs/storj/repos\n[ LOG ] Cloning pushy-cat\n[ LOG ] Cloning storjshare-gui\n[ LOG ] Cloning bitcointalkbot\n[ LOG ] Cloning bridge-gui\n[ LOG ] Cloning autobin\n[ LOG ] Cloning bridge\n[ LOG ] Cloning core\n[ LOG ] Cloning storj.io\n[ LOG ] Cloning pullypusher\n[ LOG ] Cloning statusify\n[ LOG ] Cloning storjshare-cli\n[ LOG ] Cloning data-api\n[ LOG ] Cloning stat-generator\n[ LOG ] Cloning abacus\n[ LOG ] Cloning storj-automation\n[ LOG ] Cloning telemetry-reporter\n[ LOG ] Cloning chef-storj\n[ LOG ] Cloning beach-size\n[ LOG ] Cloning azure-quickstart-templates\n[ LOG ] Cloning sips\n[ LOG ] Cloning reckoner\n[ LOG ] Cloning storj-python-sdk\n[ LOG ] Cloned pushy-cat, 21 remaining...\n[ LOG ] Cloned storjshare-gui, 20 remaining...\n[ LOG ] Cloned bitcointalkbot, 19 remaining...\n[ LOG ] Cloned bridge-gui, 18 remaining...\n[ LOG ] Cloned autobin, 17 remaining...\n[ LOG ] Cloned bridge, 16 remaining...\n[ LOG ] Cloned core, 15 remaining...\n[ LOG ] Cloned storj.io, 14 remaining...\n[ LOG ] Cloned pullypusher, 13 remaining...\n[ LOG ] Cloned statusify, 12 remaining...\n[ LOG ] Cloned storjshare-cli, 11 remaining...\n[ LOG ] Cloned data-api, 10 remaining...\n[ LOG ] Cloned stat-generator, 9 remaining...\n[ LOG ] Cloned abacus, 8 remaining...\n[ LOG ] Cloned storj-automation, 7 remaining...\n[ LOG ] Cloned telemetry-reporter, 6 remaining...\n[ LOG ] Cloned chef-storj, 5 remaining...\n[ LOG ] Cloned beach-size, 4 remaining...\n[ LOG ] Cloned azure-quickstart-templates, 3 remaining...\n[ LOG ] Cloned sips, 2 remaining...\n[ LOG ] Cloned reckoner, 1 remaining...\n[ LOG ] Cloned storj-python-sdk, 0 remaining...\n1 adm-zip\n1 amqplib\n1 apollo-client\n1 apollo-server\n1 appdmg\n1 applescript\n1 asar\n1 assets-webpack-plugin\n1 autoprefixer-loader\n1 babel\n1 babel-cli\n1 babel-plugin-typecheck\n1 babel-polyfill\n1 babel-preset-react\n1 basic-auth\n1 better-npm-run\n1 bootstrap\n1 bootstrap-sass\n1 bootstrap-sass-loader\n1 browserify\n1 bs58\n1 camelcase\n1 clean-webpack-plugin\n1 compression\n1 concat-stream\n1 connect-mongo\n1 cron\n1 css-loader\n1 csv-write-stream\n1 debug\n1 del\n1 du\n1 electron-mocha\n1 electron-prebuilt\n1 elliptic\n1 escape-string-regexp\n1 eslint-loader\n1 eslint-plugin-jsx-a11y\n1 express-graphql\n1 extract-text-webpack-plugin\n1 fd-diskspace\n1 file-loader\n1 flatten-packages\n1 flushwritable\n1 fs\n1 fs-extra\n1 fs-jetpack\n1 gaze\n1 gh-pages\n1 glob\n1 graphql-tag\n1 grunt\n1 grunt-contrib-jshint\n1 grunt-jsbeautifier\n1 grunt-jscs\n1 grunt-mocha-cli\n1 gulp-babel\n1 gulp-less\n1 gulp-sourcemaps\n1 handlebars\n1 hat\n1 http\n1 ip\n1 jquery\n1 kad\n1 kad-quasar\n1 karma\n1 karma-cli\n1 karma-mocha\n1 karma-mocha-reporter\n1 karma-phantomjs-launcher\n1 karma-sourcemap-loader\n1 karma-webpack\n1 levelup\n1 load-grunt-tasks\n1 lodash.merge\n1 mime\n1 mime-db\n1 mocha.parallel\n1 mongodb\n1 mongoose-types\n1 mtree\n1 multireducer\n1 nat-upnp\n1 ncp\n1 nightwatch\n1 nodemailer\n1 node-sass\n1 node-tar.gz\n1 ntp-client\n1 path\n1 pem\n1 phantomjs\n1 phantomjs-polyfill\n1 portfinder\n1 pretty-error\n1 q\n1 rcedit\n1 react\n1 react-apollo\n1 react-bootstrap\n1 react-dom\n1 react-helmet\n1 react-hot-loader\n1 react-loader\n1 react-redux\n1 react-router\n1 react-transform-catch-errors\n1 redbox-react\n1 redux\n1 redux-devtools\n1 redux-devtools-dock-monitor\n1 redux-devtools-log-monitor\n1 redux-form\n1 replace\n1 restler\n1 rsvp\n1 sass-loader\n1 serve-favicon\n1 shebang-loader\n1 skeemas\n1 source-map-support\n1 strip-loader\n1 style-loader\n1 superagent\n1 tmp\n1 tree-kill\n1 unirest\n1 untildify\n1 url-loader\n1 vue\n1 webpack-dev-middleware\n1 webpack-dev-server\n1 webpack-hot-middleware\n1 winreg\n1 ws\n1 yamljs\n1 yargs\n2 babel-core\n2 babel-eslint\n2 babel-loader\n2 babel-plugin-transform-decorators-legacy\n2 babel-preset-es2015\n2 babel-preset-stage-0\n2 elasticsearch\n2 eslint-config-airbnb\n2 eslint-plugin-import\n2 eslint-plugin-react\n2 graphql\n2 gulp\n2 gulp-util\n2 ink-docstrap\n2 jsdoc\n2 json-loader\n2 knuth-shuffle\n2 lodash-keyarrange\n2 memdown\n2 mkdirp\n2 ms\n2 myspeed\n2 noisegen\n2 prompt\n2 readable-stream\n2 rimraf\n2 semver\n2 storj-telemetry-reporter\n2 through\n2 webpack\n2 winston\n3 bitcore-ecies\n3 bitcore-lib\n3 bitcore-message\n3 body-parser\n3 colors\n3 commander\n3 cors\n3 eslint-config-defaults\n3 eslint-plugin-filenames\n3 jsen\n3 jshint\n3 leveldown\n3 lodash\n3 merge\n3 mongoose\n3 node-uuid\n3 supertest\n4 config\n4 json-stable-stringify\n4 kad-logger-json\n4 proxyquire\n4 sinon\n5 coveralls\n5 eslint\n5 express\n5 istanbul\n5 request\n5 storj\n7 chai\n8 async\n9 mocha\n```\n"
+}

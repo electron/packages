@@ -1,6 +1,6 @@
 {
   "name": "macaca-wd",
-  "version": "1.0.3",
+  "version": "1.0.10",
   "description": "macaca wd client",
   "keywords": [
     "macaca",
@@ -28,14 +28,14 @@
     "q": "~1.4.1",
     "request": "~2.55.0",
     "underscore.string": "~3.0.3",
-    "vargs": "~0.1.0"
+    "vargs": "~0.1.0",
+    "webdriver-keycode": "^1.0.0"
   },
   "devDependencies": {
     "co-mocha": "*",
     "istanbul": "*",
     "jsdoc": "3.4.0",
     "jshint": "*",
-    "macaca-minami": "^1.0.0",
     "mocha": "*",
     "pre-commit": "1.1.1",
     "should": "*",
@@ -50,12 +50,12 @@
   ],
   "homepage": "https://github.com/macacajs/macaca-wd",
   "license": "MIT",
-  "gitHead": "5fc53fcb50a86fdaf9a25fc8b93951657a42670f",
-  "_npmVersion": "2.14.7",
-  "_nodeVersion": "4.2.1",
+  "gitHead": "30f2ee8cce46b466fa99a996bb75b21959d89fa4",
+  "_npmVersion": "3.8.6",
+  "_nodeVersion": "6.0.0",
   "dist": {
-    "shasum": "1999facdfc95b32f0def2cb272e2ed2d9ffcd8b8",
-    "tarball": "http://registry.npmjs.org/macaca-wd/-/macaca-wd-1.0.3.tgz"
+    "shasum": "faeabc421a08300f035d8b12a763ef95d51407c5",
+    "tarball": "http://registry.npmjs.org/macaca-wd/-/macaca-wd-1.0.10.tgz"
   },
   "versions": [
     {
@@ -77,19 +77,51 @@
     {
       "number": "1.0.3",
       "date": "2016-04-29T08:53:53.427Z"
+    },
+    {
+      "number": "1.0.4",
+      "date": "2016-07-14T08:44:29.973Z"
+    },
+    {
+      "number": "1.0.5",
+      "date": "2016-07-19T10:45:43.433Z"
+    },
+    {
+      "number": "1.0.6",
+      "date": "2016-07-20T02:57:37.908Z"
+    },
+    {
+      "number": "1.0.7",
+      "date": "2016-08-21T03:43:28.173Z"
+    },
+    {
+      "number": "1.0.8",
+      "date": "2016-09-07T05:59:42.498Z"
+    },
+    {
+      "number": "1.0.9",
+      "date": "2016-09-20T05:59:11.790Z"
+    },
+    {
+      "number": "1.0.10",
+      "date": "2016-09-20T08:18:09.328Z"
     }
   ],
   "created": "2016-04-18T04:34:37.463Z",
-  "modified": "2016-04-29T08:53:53.427Z",
+  "modified": "2016-09-20T08:18:09.328Z",
   "lastPublisher": {
-    "name": "xudafeng",
-    "email": "xudafeng@126.com"
+    "name": "ziczhu",
+    "email": "zic.zhu@gmail.com"
   },
   "owners": [
     {
       "name": "xudafeng",
       "email": "xudafeng@126.com"
+    },
+    {
+      "name": "ziczhu",
+      "email": "zic.zhu@gmail.com"
     }
   ],
-  "readme": "# macaca-wd\n\n[![Gitter Chat][gitter-image]][gitter-url]\n[![NPM version][npm-image]][npm-url]\n[![build status][travis-image]][travis-url]\n[![node version][node-image]][node-url]\n\n[npm-image]: https://img.shields.io/npm/v/macaca-wd.svg?style=flat-square\n[npm-url]: https://npmjs.org/package/macaca-wd\n[travis-image]: https://img.shields.io/travis/macacajs/macaca-wd.svg?style=flat-square\n[travis-url]: https://travis-ci.org/macacajs/macaca-wd\n[node-image]: https://img.shields.io/badge/node.js-%3E=_4-green.svg?style=flat-square\n[node-url]: http://nodejs.org/download/\n[gitter-image]: https://img.shields.io/badge/GITTER-join%20chat-green.svg?style=flat-square\n[gitter-url]: https://gitter.im/alibaba/macaca\n\nMacaca wd client inspired by [admc/wd](//github.com/admc/wd), according to W3 [Webdriver](https://w3c.github.io/webdriver/webdriver-spec.html).\n\n## Installment\n\n```shell\n$ npm i macaca-wd --save-dev\n```\n\n## Documentation\n\n### Initial\n\n```javascript\nvar wd = require('macaca-wd');\n\nvar remoteConfig = {\n  host: 'localhost',\n  port: 3456\n};\n\nvar driver = wd.promiseChainRemote(remoteConfig);\n\nbefore(function() {\n  return driver.init({\n    platformName: 'desktop', // iOS, Android, Desktop\n    browserName: 'chrome'    // Chrome, Electron\n    app: path/to/app         // Only for mobile\n  });\n});\n\nafter(function() {\n  return driver\n    .sleep(1000)\n    .quit();\n});\n\nit('#1 should', function() {\n\n  ...\n\n});\n\n...\n\n```\n\n### Extend\n\n```javascript\nwd.addPromiseChainMethod(name, method);\n```\n[API](//macacajs.github.io/macaca-wd/docs)\n\n## Demo\n\n[macaca guide](//macacajs.github.io/macaca/guide.html)\n"
+  "readme": "# Macaca WD Client\n\n[![Gitter Chat][gitter-image]][gitter-url]\n[![NPM version][npm-image]][npm-url]\n[![build status][travis-image]][travis-url]\n[![node version][node-image]][node-url]\n\n[npm-image]: https://img.shields.io/npm/v/macaca-wd.svg?style=flat-square\n[npm-url]: https://npmjs.org/package/macaca-wd\n[travis-image]: https://img.shields.io/travis/macacajs/macaca-wd.svg?style=flat-square\n[travis-url]: https://travis-ci.org/macacajs/macaca-wd\n[node-image]: https://img.shields.io/badge/node.js-%3E=_4-green.svg?style=flat-square\n[node-url]: http://nodejs.org/download/\n[gitter-image]: https://img.shields.io/badge/GITTER-join%20chat-green.svg?style=flat-square\n[gitter-url]: https://gitter.im/alibaba/macaca\n\nMacaca WD Client is inspired by [admc/wd](https://github.com/admc/wd), according to [W3C WebDriver Spec](https://w3c.github.io/webdriver/webdriver-spec.html).\n\n## Installation\n\n```shell\n$ npm i macaca-wd --save-dev\n```\n\n## Documentation\n\n### Usage\n\n```js\nvar wd = require('macaca-wd');\n\nvar remoteConfig = {\n  host: 'localhost',\n  port: 3456\n};\n\nvar driver = wd.promiseChainRemote(remoteConfig);\n\nbefore(function() {\n  return driver.init({\n    platformName: 'desktop', // iOS, Android, Desktop\n    browserName: 'chrome'    // Chrome, Electron\n    app: path/to/app         // Only for mobile\n  });\n});\n\nafter(function() {\n  return driver\n    .sleep(1000)\n    .quit();\n});\n\nit('#1 should', function() {\n\n  ...\n\n});\n\n...\n\n```\n\n### Extend\n\n```js\nwd.addPromiseChainMethod(name, method);\n```\n\n[API](//macacajs.github.io/macaca-wd/)\n\n## Demo\n\n[Macaca Getting Started](//macacajs.github.io/macaca/getting-started.html)\n"
 }

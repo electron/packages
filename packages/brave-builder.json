@@ -1,0 +1,216 @@
+{
+  "name": "brave-builder",
+  "description": "Complete solution to build ready for distribution and 'auto update' Electron App installers",
+  "version": "0.0.0-semantic-release",
+  "main": "out/index.js",
+  "files": [
+    "out",
+    "templates",
+    "certs/root_certs.keychain"
+  ],
+  "bin": {
+    "build": "./out/build-cli.js",
+    "cleanup": "./out/cleanup.js",
+    "install-app-deps": "./out/install-app-deps.js"
+  },
+  "scripts": {
+    "compile": "npm run compile-production && npm run compile-test",
+    "compile-production": "ts-babel",
+    "compile-test": "ts-babel test",
+    "lint": "tslint src/**/*.ts test/src/**/*.ts",
+    "pretest": "npm run compile && npm run lint",
+    "test": "node ./test/out/helpers/runTests.js",
+    "semantic-release": "semantic-release pre && npm publish && semantic-release post",
+    "//": "Update wiki if docs changed. Update only if functionalily are generally available (latest release, not next)",
+    "update-wiki": "git subtree split -b wiki --prefix docs/ && git push -f wiki wiki:master",
+    "whitespace": "whitespace src/**/*.ts",
+    "docker-images": "docker/build.sh"
+  },
+  "repository": {
+    "user": "electron-userland",
+    "repo": "electron-builder",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/electron-userland/electron-builder/tarball/master",
+    "clone_url": "https://github.com/electron-userland/electron-builder",
+    "https_url": "https://github.com/electron-userland/electron-builder",
+    "travis_url": "https://travis-ci.org/electron-userland/electron-builder",
+    "zip_url": "https://github.com/electron-userland/electron-builder/archive/master.zip",
+    "api_url": "https://api.github.com/repos/electron-userland/electron-builder"
+  },
+  "engines": {
+    "node": ">=0.4.0"
+  },
+  "keywords": [
+    "electron",
+    "builder",
+    "build",
+    "installer",
+    "install",
+    "packager",
+    "pack",
+    "nsis",
+    "appdmg",
+    "app",
+    "dmg",
+    "msi",
+    "exe",
+    "setup",
+    "Windows",
+    "OS X",
+    "MacOS",
+    "Mac"
+  ],
+  "author": {
+    "name": "Stefan Judis"
+  },
+  "license": "MIT",
+  "homepage": "https://github.com/electron-userland/electron-builder",
+  "dependencies": {
+    "7zip-bin": "^1.0.5",
+    "ansi-escapes": "^1.4.0",
+    "asar-electron-builder": "^0.13.2",
+    "bluebird": "^3.4.1",
+    "chalk": "^1.1.3",
+    "chromium-pickle-js": "^0.1.0",
+    "cli-cursor": "^1.0.2",
+    "debug": "^2.2.0",
+    "electron-download": "^2.1.2",
+    "electron-osx-sign": "^0.4.0-beta4",
+    "electron-winstaller-fixed": "~3.1.0",
+    "extract-zip": "^1.5.0",
+    "fs-extra-p": "^1.0.6",
+    "hosted-git-info": "^2.1.5",
+    "image-size": "^0.5.0",
+    "isbinaryfile": "^3.0.0",
+    "lodash.template": "^4.3.0",
+    "mime": "^1.3.4",
+    "minimatch": "^3.0.2",
+    "normalize-package-data": "^2.3.5",
+    "path-sort": "^0.1.0",
+    "plist": "^1.2.0",
+    "pretty-ms": "^2.1.0",
+    "progress": "^1.1.8",
+    "progress-stream": "^1.2.0",
+    "rcedit": "^0.5.1",
+    "sanitize-filename": "^1.6.0",
+    "semver": "^5.3.0",
+    "signcode-tf": "~0.7.5",
+    "source-map-support": "^0.4.2",
+    "typescript": "2.0.0-dev.20160705",
+    "update-notifier": "^1.0.2",
+    "uuid-1345": "^0.99.6",
+    "yargs": "^4.8.1",
+    "appdmg": "^0.4.5"
+  },
+  "optionalDependencies": {
+    "appdmg": "^0.4.5"
+  },
+  "config": {
+    "pre-git": {
+      "commit-msg": "conventional"
+    },
+    "pre-commit": [
+      "npm run whitespace"
+    ]
+  },
+  "devDependencies": {
+    "@develar/semantic-release": "^6.3.1",
+    "@types/debug": "0.0.28",
+    "@types/mime": "0.0.28",
+    "@types/progress": "^1.1.27",
+    "@types/semver": "^4.3.26",
+    "@types/source-map-support": "^0.2.27",
+    "ava-tf": "^0.15.3",
+    "babel-plugin-array-includes": "^2.0.3",
+    "babel-plugin-transform-es2015-destructuring": "^6.9.0",
+    "babel-plugin-transform-es2015-parameters": "^6.11.4",
+    "babel-plugin-transform-es2015-spread": "^6.8.0",
+    "decompress-zip": "^0.3.0",
+    "diff": "^2.2.3",
+    "json8": "^0.9.2",
+    "pre-git": "^3.10.0",
+    "should": "^10.0.0",
+    "ts-babel": "^1.0.3",
+    "tslint": "3.14.0",
+    "typescript": "^2.1.0-dev.20160726",
+    "whitespace": "^2.0.0"
+  },
+  "babel": {
+    "plugins": [
+      "transform-es2015-parameters",
+      "transform-es2015-spread",
+      "transform-es2015-destructuring",
+      "array-includes"
+    ]
+  },
+  "ava": {
+    "verbose": true,
+    "cache": false,
+    "files": [
+      "test/out/*.js"
+    ]
+  },
+  "release": {
+    "verifyConditions": []
+  },
+  "typings": "./out/electron-builder.d.ts",
+  "publishConfig": {
+    "tag": "next"
+  },
+  "gitHead": "fa999d10aabee1aad1992fa5ee6ca6a4370117ed",
+  "_npmVersion": "3.8.6",
+  "_nodeVersion": "6.1.0",
+  "dist": {
+    "shasum": "f9d68c02b8baa062623ee2a5c629ae3be00b45e6",
+    "tarball": "http://registry.npmjs.org/brave-builder/-/brave-builder-0.0.0-semantic-release.tgz"
+  },
+  "versions": [
+    {
+      "number": "0.0.0-semantic-release",
+      "date": "2016-07-28T23:24:43.115Z"
+    },
+    {
+      "number": "5.19.1",
+      "date": "2016-07-28T23:44:37.998Z"
+    },
+    {
+      "number": "5.19.3",
+      "date": "2016-07-29T00:01:01.430Z"
+    },
+    {
+      "number": "5.19.5",
+      "date": "2016-07-29T00:06:28.416Z"
+    },
+    {
+      "number": "5.19.7",
+      "date": "2016-07-29T00:14:42.129Z"
+    },
+    {
+      "number": "5.19.8",
+      "date": "2016-07-29T00:21:26.718Z"
+    },
+    {
+      "number": "5.19.9",
+      "date": "2016-07-29T00:26:29.507Z"
+    },
+    {
+      "number": "5.19.11",
+      "date": "2016-07-29T00:39:35.371Z"
+    }
+  ],
+  "created": "2016-07-28T23:24:43.115Z",
+  "modified": "2016-07-29T00:39:35.371Z",
+  "lastPublisher": {
+    "name": "brianbondy",
+    "email": "netzen@gmail.com"
+  },
+  "owners": [
+    {
+      "name": "brianbondy",
+      "email": "netzen@gmail.com"
+    }
+  ],
+  "readme": "# electron-builder [![npm version](https://img.shields.io/npm/v/electron-builder.svg)](https://npmjs.org/package/electron-builder) [![donate](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=W6V79R2RGCCHL)\nComplete solution to package and build ready for distribution and \"auto update\" Electron app for MacOS, Windows and Linux.\n\n* NPM packages management:\n  * [Native application dependencies](http://electron.atom.io/docs/latest/tutorial/using-native-node-modules/) compilation (only if [two-package.json project structure](#two-packagejson-structure) used).\n  * Development dependencies are never included. You don't need to ignore it explicitly.\n* [Code Signing](https://github.com/electron-userland/electron-builder/wiki/Code-Signing) on a CI server or development machine.\n* [Auto Update](#auto-update) ready application packaging.\n* [Build version management](https://github.com/electron-userland/electron-builder/wiki/Options#build-version-management).\n* Numerous target formats:\n  * All platforms: `7z`, `zip`, `tar.xz`, `tar.lz`, `tar.gz`, `tar.bz2`.\n  * [MacOS](https://github.com/electron-userland/electron-builder/wiki/Options#MacOptions-target): `dmg`, `mas`.\n  * [Linux](https://github.com/electron-userland/electron-builder/wiki/Options#LinuxBuildOptions-target): `AppImage`, `deb`, `rpm`, `freebsd`, `pacman`, `p5p`, `apk`.\n  * [Windows](https://github.com/electron-userland/electron-builder/wiki/Options#WinBuildOptions-target): NSIS, Squirrel.Windows.\n* [Publishing artifacts to GitHub Releases](https://github.com/electron-userland/electron-builder/wiki/Publishing-Artifacts).\n\n[appdmg](https://github.com/LinusU/node-appdmg) are used under the hood.\n\n_Note: `appdmg` (and the platform specific `7zip-bin-*` packages) are `optionalDependencies`, which may require manual install if you have npm configured to [not install optional deps by default](https://docs.npmjs.com/misc/config#optional)._\n\nReal project example — [onshape-desktop-shell](https://github.com/develar/onshape-desktop-shell).\n\n# Two package.json structure\n\nWe recommend to use two package.json files (it is not required, you can build project with any structure).\n\n1. For development\n\n   In the root of the project. Here you declare dependencies for your development environment and build scripts.\n\n2. For your application\n\n   In the `app` directory. *Only this directory is distributed with real application.*\n\nWhy?\n\n1. Native npm modules (those written in C, not JavaScript) need to be compiled, and here we have two different compilation targets for them. Those used in application need to be compiled against electron runtime, and all `devDependencies` need to be compiled against your locally installed node.js. Thanks to having two files this is trivial (see [#39](https://github.com/electron-userland/electron-builder/issues/39)).\n2. No need to specify which [files](https://github.com/electron-userland/electron-builder/wiki/Options#BuildMetadata-files) to include in the app (because development files reside outside the `app` directory).\n\nPlease see [Loading App Dependencies Manually](https://github.com/electron-userland/electron-builder/wiki/Loading-App-Dependencies-Manually) and [#379](https://github.com/electron-userland/electron-builder/issues/379#issuecomment-218503881).\n\n# Configuration\n\nSee [options](https://github.com/electron-userland/electron-builder/wiki/Options), but consider to follow simple guide outlined below at first.\n\nFor a production app you need to sign your application, see [Where to buy code signing certificate](https://github.com/electron-userland/electron-builder/wiki/Code-Signing#where-to-buy-code-signing-certificate).\n\n## In short\n1. Specify standard fields in the application `package.json` — [name](https://github.com/electron-userland/electron-builder/wiki/Options#AppMetadata-name), `description`, `version` and [author](https://docs.npmjs.com/files/package.json#people-fields-author-contributors) (for Linux [homepage](https://github.com/electron-userland/electron-builder/wiki/Options#AppMetadata-homepage) and [license](https://github.com/electron-userland/electron-builder/wiki/Options#AppMetadata-license) are also required).\n\n2. Specify [build](https://github.com/electron-userland/electron-builder/wiki/Options#build) field in the development `package.json`:\n    ```json\n    \"build\": {\n      \"appId\": \"your.id\",\n      \"app-category-type\": \"your.app.category.type\",\n      \"win\": {\n        \"iconUrl\": \"(windows-only) https link to icon\"\n      }\n    }\n    ```\n   See [options](https://github.com/electron-userland/electron-builder/wiki/Options). This object will be used as a source of [electron-packager](https://www.npmjs.com/package/electron-packager#packageropts-callback) options. You can specify any other options here.\n\n3. Create directory `build` in the root of the project and put your `background.png` (MacOS DMG background), `icon.icns` (MacOS app icon) and `icon.ico` (Windows app icon).\n\n   <a id=\"user-content-linuxIcon\" class=\"anchor\" href=\"#linuxIcon\" aria-hidden=\"true\"></a>Linux icon set will be generated automatically on the fly from the MacOS `icns` file (or you can put them into the `build/icons` directory — filename must contains size (e.g. `32x32.png`)).\n\n4. Add [scripts](https://docs.npmjs.com/cli/run-script) to the development `package.json`:\n    ```json\n    \"scripts\": {\n      \"postinstall\": \"install-app-deps\",\n      \"pack\": \"build --dir\",\n      \"dist\": \"build\"\n    }\n    ```\n    And then you can run `npm run dist` (to package in a distributable format (e.g. dmg, windows installer, deb package)) or `npm run pack` (useful to test).\n\n5. Install [required system packages](https://github.com/electron-userland/electron-builder/wiki/Multi-Platform-Build).\n\nPlease note — packaged into an asar archive [by default](https://github.com/electron-userland/electron-builder/wiki/Options#BuildMetadata-asar).\n\n# Auto Update\n`electron-builder` produces all required artifacts:\n\n* `.dmg`: MacOS installer, required for MacOS user to initial install.\n* `-mac.zip`: required for Squirrel.Mac.\n* `.exe` and `-ia32.exe`: Windows installer, required for Windows user to initial install. Please note — [your app must handle Squirrel.Windows events](https://github.com/electronjs/windows-installer#handling-squirrel-events). See [real example](https://github.com/develar/onshape-desktop-shell/blob/master/src/WinSquirrelStartupEventHandler.ts).\n* `.full-nupkg`: required for Squirrel.Windows.\n\nFor auto updating to work, you must implement and configure Electron's [`autoUpdater`](http://electron.atom.io/docs/latest/api/auto-updater/) module ([example](https://github.com/develar/onshape-desktop-shell/blob/master/src/AppUpdater.ts)).\nYou also need to deploy your releases to a server.\nConsider using [Nuts](https://github.com/GitbookIO/nuts) (GitHub as a backend to store assets), [Electron Release Server](https://github.com/ArekSredzki/electron-release-server) or [Squirrel Updates Server](https://github.com/Aluxian/squirrel-updates-server).\nSee the [Publishing Artifacts](https://github.com/electron-userland/electron-builder/wiki/Publishing-Artifacts) section of the [Wiki](https://github.com/electron-userland/electron-builder/wiki) for information on configuring your CI environment for automatic deployment.\n\nFor windows consider only [distributing 64-bit versions](https://github.com/electron-userland/electron-builder/issues/359#issuecomment-214851130).\n\n# CLI Usage\nExecute `node_modules/.bin/build --help` to get actual CLI usage guide.\n```\nBuilding:\n  --mac, -m, -o, --osx  Build for MacOS, accepts target list (see\n                        https://goo.gl/HAnnq8).                          [array]\n  --linux, -l           Build for Linux, accepts target list (see\n                        https://goo.gl/O80IL2)                           [array]\n  --win, -w, --windows  Build for Windows, accepts target list (see\n                        https://goo.gl/dL4i8i)                           [array]\n  --x64                 Build for x64                                  [boolean]\n  --ia32                Build for ia32                                 [boolean]\n  --dir                 Build unpacked dir. Useful to test.            [boolean]\n\nPublishing:\n  --publish, -p  Publish artifacts (to GitHub Releases), see\n                 https://goo.gl/WMlr4n\n                           [choices: \"onTag\", \"onTagOrDraft\", \"always\", \"never\"]\n  --draft        Create a draft (unpublished) release                  [boolean]\n  --prerelease   Identify the release as a prerelease                  [boolean]\n\nDeprecated:\n  --platform  The target platform (preferred to use --mac, --win or --linux)\n               [choices: \"mac\", \"osx\", \"win\", \"linux\", \"darwin\", \"win32\", \"all\"]\n  --arch      The target arch (preferred to use --x64 or --ia32)\n                                                 [choices: \"ia32\", \"x64\", \"all\"]\n\nOther:\n  --help     Show help                                                 [boolean]\n  --version  Show version number                                       [boolean]\n\nExamples:\n  build -mwl                build for MacOS, Windows and Linux\n  build --linux deb tar.xz  build deb and tar.xz for Linux\n  build --win --ia32        build for Windows ia32\n```\n\n# Programmatic Usage\nSee `node_modules/electron-builder/out/electron-builder.d.ts`. [Typings](https://github.com/Microsoft/TypeScript/wiki/Typings-for-npm-packages) is supported.\n\n```js\n\"use strict\"\n\nconst builder = require(\"electron-builder\")\nconst Platform = builder.Platform\n\n// Promise is returned\nbuilder.build({\n  targets: Platform.MAC.createTarget(),\n  devMetadata: {\n    \"//\": \"build and other properties, see https://goo.gl/5jVxoO\"\n  }\n})\n  .then(() => {\n    // handle result\n  })\n  .catch((error) => {\n    // handle error\n  })\n```\n\n# Donations\n\n[Donate with PayPal.](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=W6V79R2RGCCHL)\n\n# Further Reading\nSee the [Wiki](https://github.com/electron-userland/electron-builder/wiki) for more documentation.\n\n\n"
+}

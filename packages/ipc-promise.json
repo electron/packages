@@ -1,10 +1,15 @@
 {
   "name": "ipc-promise",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "author": {
     "name": "sasa+1",
     "email": "sasaplus1@gmail.com"
   },
+  "contributors": [
+    {
+      "name": "itsjimbo"
+    }
+  ],
   "description": "ipc use as Promises",
   "main": "./ipc-promise.js",
   "license": "MIT",
@@ -24,20 +29,22 @@
   "scripts": {
     "lint": "eslint .",
     "minify": "uglifyjs ipc-promise.js --comments '@license' -cm -r ipcPromise -o ./ipc-promise.min.js",
-    "test": "electron ./test/main.js 2>&1 | grep -v 'exit: 0' && true || false"
+    "test": "mocha"
   },
   "devDependencies": {
-    "electron-prebuilt": "^0.27.2",
-    "eslint": "^0.22.1",
-    "uglify-js": "^2.4.23"
+    "electron": "^1.4.2",
+    "eslint": "^3.7.1",
+    "glob": "^7.1.0",
+    "mocha": "^3.1.0",
+    "uglify-js": "^2.7.3"
   },
-  "gitHead": "be8a389ee3fd41e7445973bc6ebcd63a9b382f7d",
-  "homepage": "https://github.com/sasaplus1/ipc-promise",
-  "_npmVersion": "2.7.5",
-  "_nodeVersion": "1.6.4",
+  "gitHead": "2c68b58de72d2766be8837b05dfacc3551bd1a10",
+  "homepage": "https://github.com/sasaplus1/ipc-promise#readme",
+  "_npmVersion": "3.8.6",
+  "_nodeVersion": "5.11.1",
   "dist": {
-    "shasum": "6e02021b4a6385629db02524aa0684c3f2d4210a",
-    "tarball": "http://registry.npmjs.org/ipc-promise/-/ipc-promise-0.1.1.tgz"
+    "shasum": "68764e6016b0e3596c381953997e34e756a48bbb",
+    "tarball": "http://registry.npmjs.org/ipc-promise/-/ipc-promise-0.1.2.tgz"
   },
   "versions": [
     {
@@ -47,10 +54,14 @@
     {
       "number": "0.1.1",
       "date": "2015-06-07T04:24:18.298Z"
+    },
+    {
+      "number": "0.1.2",
+      "date": "2016-10-07T02:23:29.999Z"
     }
   ],
   "created": "2015-06-06T02:10:10.144Z",
-  "modified": "2015-06-07T04:24:18.298Z",
+  "modified": "2016-10-07T02:23:29.999Z",
   "lastPublisher": {
     "name": "sasaplus1",
     "email": "sasaplus1@gmail.com"
@@ -61,5 +72,5 @@
       "email": "sasaplus1@gmail.com"
     }
   ],
-  "readme": "# ipc-promise\n\n[![Build Status](https://travis-ci.org/sasaplus1/ipc-promise.svg)](https://travis-ci.org/sasaplus1/ipc-promise)\n[![Dependency Status](https://gemnasium.com/sasaplus1/ipc-promise.svg)](https://gemnasium.com/sasaplus1/ipc-promise)\n[![NPM version](https://badge.fury.io/js/ipc-promise.svg)](http://badge.fury.io/js/ipc-promise)\n[![Bower version](https://badge.fury.io/bo/ipc-promise.svg)](http://badge.fury.io/bo/ipc-promise)\n\nipc use as Promises\n\n## Installation\n\n### npm\n\n```sh\n$ npm install ipc-promise\n```\n\n### bower\n\n```sh\n$ bower install ipc-promise\n```\n\n## Usage\n\n### main process\n\n```js\nvar ipcPromise = require('ipc-promise');\n\nipcPromise.on('twice', function(params) {\n  return Promise.resolve(params.value * 2);\n});\n\nvar app = require('app'),\n    BrowserWindow = require('browser-window'),\n    mainWindow;\n\napp.on('ready', function() {\n  mainWindow = new BrowserWindow({});\n  mainWindow.loadUrl('file://' + __dirname + '/index.html');\n});\n```\n\n### renderer process\n\n```html\n<!DOCTYPE html>\n<script src=\"ipc-promise.min.js\"></script>\n<script>\n  ipcPromise\n    .send('twice', {\n      value: 1\n    })\n    .then(function(result) {\n      console.log(result);  // => \"2\"\n    });\n</script>\n```\n\n## Functions\n\n### on(event, listener)\n\n- `event`\n  - `String` - event name\n- `listener`\n  - `Function(*): Promise` - listener function\n\nlisten event.\n\n### send(event, data)\n\n- `event`\n  - `String` - event name\n- `data`\n  - `*` - data for send\n- `return`\n  - `Promise` - Promises\n\ntrigger event.\n\n## Test\n\n```sh\n$ npm install\n$ npm test\n```\n\n## License\n\nThe MIT license. Please see LICENSE file.\n"
+  "readme": "# ipc-promise\n\n[![Build Status](https://travis-ci.org/sasaplus1/ipc-promise.svg)](https://travis-ci.org/sasaplus1/ipc-promise)\n[![Dependency Status](https://gemnasium.com/sasaplus1/ipc-promise.svg)](https://gemnasium.com/sasaplus1/ipc-promise)\n[![NPM version](https://badge.fury.io/js/ipc-promise.svg)](http://badge.fury.io/js/ipc-promise)\n\nipc use as Promises\n\n## Installation\n\n### npm\n\n```sh\n$ npm install ipc-promise\n```\n\n## Usage\n\n### main process\n\n```js\nvar ipcPromise = require('ipc-promise');\n\nipcPromise.on('twice', function(params) {\n  return Promise.resolve(params.value * 2);\n});\n\nvar electron = require('electron'),\n    app = electron.app,\n    BrowserWindow = electron.BrowserWindow,\n    mainWindow;\n\napp.on('ready', function() {\n  mainWindow = new BrowserWindow({});\n  mainWindow.loadURL('file://' + __dirname + '/index.html');\n});\n```\n\n### renderer process\n\n```html\n<!DOCTYPE html>\n<script src=\"ipc-promise.min.js\"></script>\n<script>\n  ipcPromise\n    .send('twice', {\n      value: 1\n    })\n    .then(function(result) {\n      console.log(result);  // => \"2\"\n    });\n</script>\n```\n\n## Functions\n\n### on(event, listener)\n\n- `event`\n  - `String` - event name\n- `listener`\n  - `Function(*): Promise` - listener function\n\nlisten event.\n\n### send(event, data)\n\n- `event`\n  - `String` - event name\n- `data`\n  - `*` - data for send\n- `return`\n  - `Promise` - Promises\n\ntrigger event.\n\n## Test\n\n```sh\n$ npm install\n$ npm test\n```\n\n## License\n\nThe MIT license. Please see LICENSE file.\n"
 }

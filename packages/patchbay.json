@@ -1,7 +1,7 @@
 {
   "name": "patchbay",
   "description": "a pluggable patchwork",
-  "version": "1.7.3",
+  "version": "3.1.0",
   "homepage": "https://github.com/dominictarr/patchbay",
   "repository": {
     "user": "dominictarr",
@@ -18,36 +18,52 @@
   },
   "dependencies": {
     "cont": "^1.0.3",
-    "depject": "^0.1.0",
-    "hyperlightbox": "^0.1.0",
+    "dataurl-": "^0.1.0",
+    "depject": "^1.0.1",
+    "hjson": "^2.0.3",
+    "human-time": "0.0.1",
+    "hypercombo": "0.1.0",
+    "hypercrop": "^1.0.1",
+    "hyperfile": "^1.1.0",
+    "hyperlightbox": "^0.1.3",
+    "hyperprogress": "0.1.0",
     "hyperscript": "^1.4.7",
-    "hypertabs": "^1.2.0",
+    "hypertabs": "^2.2.0",
+    "is-visible": "^2.0.4",
+    "map-filter-reduce": "^3.0.1",
     "mime-types": "^2.1.11",
     "moment": "^2.13.0",
-    "multiserver": "^1.1.3",
+    "open-external": "^0.1.1",
+    "peaks.js": "^0.4.7",
     "pull-cat": "^1.1.9",
+    "pull-many": "^1.0.6",
     "pull-next": "0.0.0",
     "pull-paramap": "^1.1.6",
-    "pull-reconnect": "0.0.1",
+    "pull-reconnect": "^0.0.3",
     "pull-scroll": "^0.2.0",
     "pull-stream": "^3.3.2",
+    "simple-mime": "^0.1.0",
     "split-buffer": "^1.0.0",
-    "ssb-avatar": "0.0.2",
-    "ssb-client": "^4.0.0",
-    "ssb-feed": "^2.1.3",
-    "ssb-keys": "^5.1.0",
+    "ssb-avatar": "^0.1.0",
+    "ssb-client": "^4.0.3",
+    "ssb-config": "^2.1.1",
+    "ssb-feed": "^2.2.1",
+    "ssb-keys": "^6.1.0",
     "ssb-markdown": "^3.0.0",
     "ssb-mentions": "^0.1.0",
-    "ssb-sort": "0.0.0",
-    "suggest-box": "^2.0.0",
+    "ssb-sort": "^1.0.0",
+    "suggest-box": "^2.2.1",
     "text-node-searcher": "^1.1.0"
   },
   "devDependencies": {
-    "brfs": "^1.4.3",
-    "indexhtmlify": "^1.2.1"
+    "browselectrify": "^1.0.1"
+  },
+  "browser": {
+    "./modules/index.js": "./modules/_index.js"
   },
   "scripts": {
-    "build": "node build.js > modules/index.js; browserify -t brfs index.js | indexhtmlify > test.html",
+    "build": "node build.js > modules/_index.js && mkdir -p build && browselectrify index.js > build/bundle.js",
+    "graph": "node index.js | dot -Tsvg > graph.svg",
     "test": "set -e; for t in test/*.js; do node $t; done"
   },
   "author": {
@@ -56,12 +72,12 @@
     "url": "http://dominictarr.com"
   },
   "license": "MIT",
-  "gitHead": "26c51d9bb5bfa9290085f0bc5f03055e6a881167",
-  "_npmVersion": "3.8.9",
-  "_nodeVersion": "6.2.0",
+  "gitHead": "18587bcb2aa7e5dd708e8a2dfef6e56ef56ca83e",
+  "_npmVersion": "3.10.3",
+  "_nodeVersion": "6.4.0",
   "dist": {
-    "shasum": "c642b260cbc361a58346204a092a7ed9998986eb",
-    "tarball": "http://registry.npmjs.org/patchbay/-/patchbay-1.7.3.tgz"
+    "shasum": "3b53994ff10aabed382541e03b4956fba6afd07e",
+    "tarball": "http://registry.npmjs.org/patchbay/-/patchbay-3.1.0.tgz"
   },
   "versions": [
     {
@@ -167,10 +183,134 @@
     {
       "number": "1.7.3",
       "date": "2016-07-13T03:33:29.818Z"
+    },
+    {
+      "number": "1.7.4",
+      "date": "2016-07-15T01:17:21.466Z"
+    },
+    {
+      "number": "1.7.5",
+      "date": "2016-07-16T01:08:14.547Z"
+    },
+    {
+      "number": "1.7.6",
+      "date": "2016-07-20T02:07:28.783Z"
+    },
+    {
+      "number": "1.7.7",
+      "date": "2016-07-20T05:50:11.661Z"
+    },
+    {
+      "number": "1.7.8",
+      "date": "2016-07-20T07:45:29.700Z"
+    },
+    {
+      "number": "1.7.9",
+      "date": "2016-07-20T08:22:55.325Z"
+    },
+    {
+      "number": "1.8.0",
+      "date": "2016-07-21T05:00:57.418Z"
+    },
+    {
+      "number": "1.8.1",
+      "date": "2016-07-21T05:03:00.468Z"
+    },
+    {
+      "number": "1.8.2",
+      "date": "2016-07-21T05:05:36.303Z"
+    },
+    {
+      "number": "1.8.3",
+      "date": "2016-07-21T05:17:05.091Z"
+    },
+    {
+      "number": "1.8.4",
+      "date": "2016-07-23T04:18:12.037Z"
+    },
+    {
+      "number": "1.8.5",
+      "date": "2016-07-23T04:18:47.727Z"
+    },
+    {
+      "number": "1.9.0",
+      "date": "2016-07-24T02:56:45.992Z"
+    },
+    {
+      "number": "1.9.1",
+      "date": "2016-07-24T05:13:59.847Z"
+    },
+    {
+      "number": "1.10.0",
+      "date": "2016-07-25T00:48:13.105Z"
+    },
+    {
+      "number": "1.12.0",
+      "date": "2016-07-25T05:48:43.327Z"
+    },
+    {
+      "number": "1.13.1",
+      "date": "2016-07-25T19:54:41.870Z"
+    },
+    {
+      "number": "1.13.3",
+      "date": "2016-07-25T20:48:21.512Z"
+    },
+    {
+      "number": "1.13.4",
+      "date": "2016-07-30T13:14:27.033Z"
+    },
+    {
+      "number": "2.0.0",
+      "date": "2016-07-31T00:35:55.688Z"
+    },
+    {
+      "number": "2.1.2",
+      "date": "2016-08-02T00:14:27.525Z"
+    },
+    {
+      "number": "2.2.0",
+      "date": "2016-08-04T05:45:39.262Z"
+    },
+    {
+      "number": "2.4.0",
+      "date": "2016-08-08T03:05:37.528Z"
+    },
+    {
+      "number": "2.5.0",
+      "date": "2016-08-14T02:24:12.542Z"
+    },
+    {
+      "number": "2.5.1",
+      "date": "2016-08-21T02:41:06.216Z"
+    },
+    {
+      "number": "2.5.2",
+      "date": "2016-08-22T22:26:58.731Z"
+    },
+    {
+      "number": "2.6.0",
+      "date": "2016-08-28T11:21:06.336Z"
+    },
+    {
+      "number": "2.7.0",
+      "date": "2016-09-04T23:39:33.498Z"
+    },
+    {
+      "number": "2.8.0",
+      "date": "2016-09-08T07:27:54.099Z"
+    },
+    {
+      "number": "3.0.0",
+      "date": "2016-09-08T07:31:18.400Z"
+    },
+    {
+      "number": "3.1.0",
+      "date": "2016-09-12T04:11:47.103Z"
     }
   ],
   "created": "2014-09-15T06:18:32.976Z",
-  "modified": "2016-07-13T03:33:29.818Z",
+  "modified": "2016-09-12T04:11:47.103Z",
   "lastPublisher": {
     "name": "dominictarr",
     "email": "dominic.tarr@gmail.com"
@@ -181,5 +321,5 @@
       "email": "dominic.tarr@gmail.com"
     }
   ],
-  "readme": "# patchbay\n\nPrototype of a pluggable patchwork.\n\nPatchbay uses [depject](https://npm.im/depject) to provide\na highly composable api. all scripts in the `./modules` directory\nare loaded and combined using [depject](https://npm.im/depject)\n\nThis makes in very easy to create say, a renderer for a new message type,\nor switch to a different method for choosing user names.\n\nCurrently, this is a proof of concept, there is a basic way to switch\nbetween tabs, and you can view the main log, user feeds, or threads.\nThis should obviously be improved with a module that can\nscroll properly scoll through a feed.\n\nNo \"write\" methods have been implemented yet.\n\n## overview\n\nCurrently, the main module is `tabs.js` which plugs into\nthe `app` socket, and provides the `screen_view` socket.\nwhen you click a link, `screen_view` socket with the link path,\nwhich returns a html element which becomes a new tab.\n\ncurrently, `main.js` `feed.js` and `thread.js` plug into `screen_view`\nand then in turn, call the `message_render` socket, which calls\n`message_content` `avatar` `message_meta` `message_action` and `message_link`.\n\n`avatar.js` plugs into `avatar`, and provides the `avatar_name` socket.\nit just returns a link to the public key, labled with what it gets back\nfrom `avatar_name` socket. this is in turn provided by the `names.js` module.\n\nTwo modules plug into `message_content`, `post.js` and `like.js`\n\nNo plugs into the `message_action` socket have been implemented yet,\nbut whatever is returned from this will inserted into the dom at the bottom\nof the message (by the `message` module) so this would be the plug to\nuse for implementing a like/+1/fav/dig/yup button, or a reply button.\n\n## other ideas\n\nEditable messages would probably need to plug into several sockets.\nfirstly they would render content differently, so probably use the `message_content` socket.\nsecondly they would need to show edit state, which would probably use `message_meta`\nand finially they'd need to provide the ability to edit the message!\nthat would use `message_action`\n\nImplementing a \"events\" message type would be easy, just implement another\nplug for `message_content`, that renders events.\n\nInstead of reading all the modules in a directory, it would be better\nto load these from configuration. Then, modules could be distributed\nas browserify bundles, and distributed over ssb. Configuration\ncould just be a list of hashes - but you could also disable specific\nsockets or plugs if necessary (leaving them unconnected).\n\nThen, that configuration could be shared over ssb!\n\n## Running\n\n```\nnpm install scuttlebot@latest -g\n# make sure you have secure-scuttlebutt@15.2.0\nnpm ls secure-scuttlebutt -g\nsbot server\n# OR, install and run patchwork. (must have at least >= 2.8)\n\n# then in another tab (these must be two separate commands)\nsbot plugins.install ssb-links\nsbot plugins.install ssb-query\n# restart sbot server (go back to previous tab and kill it)\n```\nnow clone and run patchboard.\n```\ngit clone https://github.com/dominictarr/patchbay.git\ncd patchbay\nnpm install electro electron-prebuilt -g\n# for node@6, you'll currently need to use js crypto.\nCHLORIDE_JS=1 electro index.js\n\n# otherwise\nelectro index.js\n```\n\n\n## License\n\nMIT\n\n\n\n"
+  "readme": "# patchbay\n\nPrototype of a pluggable patchwork.\n\n`patchbay` is an secure-scuttlebutt client interface\nthat is fully compatible with [patchwork](https://github.com/ssbc/patchwork)\n\nI started `patchbay` to experiment with a different internal architecture\nbased on [depject](https://github.com/dominictarr/depject). The goal was\nto make it easier to develop new features, and enable or disable features.\nThis has so far been quite successful!\n\nThis makes in very easy to create say, a renderer for a new message type,\nor switch to a different method for choosing user names.\n\n## Running\n\n```\nnpm install scuttlebot@latest -g\n# make sure you have secure-scuttlebutt@15.2.0\nnpm ls secure-scuttlebutt -g\nsbot server\n# if you are already running patchwork, that also works.\n# (must have at least >= 2.8)\n\n# then in another tab (these must be 3 separate commands)\nsbot plugins.install ssb-links\nsbot plugins.install ssb-query\nsbot plugins.install ssb-ws\n# restart sbot server (go back to previous tab and kill it)\n```\nnow clone and run patchbay.\n```\ngit clone https://github.com/dominictarr/patchbay.git\ncd patchbay\nnpm install\nnpm install electro electron-prebuilt -g\nnpm run build\nelectro index.js\n```\n\n## how to add a feature\n\nTo add a new message type, add add a js to `./modules/` that\nexports a function named `message_content` (it should return an html element)\nTo add a new tab, export a function named `screen_view` (returns an html element)\n\nTo add a new detail, that appears above a message,\nexport a function named `message_meta`.\n\nsee the code for more examples.\n\n## module graph\n\npatchbay uses [depject](http://github.com/dominictarr/depject) to manage it's modules.\nhere is a graph of the current connections between them. (round shows module,\nsquare shows api, arrow direction points from user to provider)\n\n[module graph](./graph.svg)\n\n## License\n\nMIT\n\n\n\n\n\n"
 }

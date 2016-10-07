@@ -1,0 +1,69 @@
+{
+  "name": "enterify",
+  "version": "0.0.6",
+  "main": "lib/index.js",
+  "bin": {
+    "enterify": "bin/cli.js"
+  },
+  "description": "Package your Meteor apps with Electron, and butter.",
+  "license": "MIT",
+  "dependencies": {
+    "commander": "^2.9.0",
+    "electron-packager": "^7.4.0",
+    "electron-prebuilt": "^1.3.1",
+    "lodash": "^4.14.1",
+    "server-destroy": "^1.0.1",
+    "shelljs": "^0.7.3",
+    "sockjs": "^0.3.17"
+  },
+  "devDependencies": {},
+  "repository": null,
+  "gitHead": "0579ec1fdcd9ae20d9fb694aa843a343d887a938",
+  "homepage": "https://bitbucket.org/enteryazilim/enterify#readme",
+  "scripts": {},
+  "_npmVersion": "3.10.3",
+  "_nodeVersion": "6.3.1",
+  "dist": {
+    "shasum": "81a4f770f7fdd0fd285f8736062ba579dbdca36f",
+    "tarball": "http://registry.npmjs.org/enterify/-/enterify-0.0.6.tgz"
+  },
+  "versions": [
+    {
+      "number": "0.0.1",
+      "date": "2016-08-02T18:20:59.477Z"
+    },
+    {
+      "number": "0.0.2",
+      "date": "2016-08-02T18:26:36.274Z"
+    },
+    {
+      "number": "0.0.3",
+      "date": "2016-08-02T18:39:52.702Z"
+    },
+    {
+      "number": "0.0.4",
+      "date": "2016-08-03T07:51:12.061Z"
+    },
+    {
+      "number": "0.0.5",
+      "date": "2016-08-03T08:56:29.157Z"
+    },
+    {
+      "number": "0.0.6",
+      "date": "2016-08-03T09:07:54.280Z"
+    }
+  ],
+  "created": "2016-08-02T18:20:59.477Z",
+  "modified": "2016-08-03T09:07:54.280Z",
+  "lastPublisher": {
+    "name": "enteryazilim",
+    "email": "enteryazilim@outlook.com"
+  },
+  "owners": [
+    {
+      "name": "enteryazilim",
+      "email": "enteryazilim@outlook.com"
+    }
+  ],
+  "readme": "# Enterify \n\nEasily package your Meteor apps with Electron, and *butter*.\n\n## TL;DR\n\n````shell\nnpm install -g enterify\ncd /your/meteor/app\nenterify\n````\n## Compatibility\n\nWorks on all Meteor's supported [platforms](https://github.com/meteor/meteor/wiki/Supported-Platforms).\n\n## Help\n\n````bash\n$ enterify -h\n\n  Usage: enterify [command] [options]\n\n  Commands:\n\n    run       (default) start meteor app within enterify context\n    bundle    bundle meteor app at `.enterify` dir\n    package   bundle and package app to `--output` dir\n\n  Options:\n\n    -h, --help             output usage information\n    -V, --version          output the version number\n    -i, --input    <path>  meteor app dir       | default = .\n    -o, --output   <path>  output dir           | default = .enterify/.dist\n    -s, --settings <path>  meteor settings file | default = null (optional)\n\n  Examples:\n\n    # cd into meteor dir first\n    cd /your/meteor/app\n\n    enterify\n    enterify run\n    enterify package\n    enterify package -o /dist/dir\n    enterify package -o /dist/dir -s file.json\n    enterify package -i /app/dir -o /dist/dir -s dev.json\n    enterify package -- <electron-packager-options>\n\n    # more info about electron packager options:\n    # ~> https://www.npmjs.com/package/electron-packager\n````\n\n## Installation\n\n````shell\nnpm install -g enterify\n````\n\n> For invoking Electron methods from Meteor, you'll also need to install the\n> `enteryazilim:enterify` meteor package.\n> For more info check [Meteor x Electron integration](#meteor-x-electron-integration).\n\n## Running app\n\n````shell\ncd /your/meteor/app\nenterify\n````\n\n## Packaging\n\n````shell\ncd /your/meteor/app\nenterify package\n````\n\nThe packaging process is done under the hood using `electron-packager`\nnpm package. The following variables are automatically set:\n\n  * `--out` -- *comes from cli option [-o, --out]*\n  * `--arch` -- *comes from system [current arch]*\n  * `--platform` -- *comes from system [current platform]*\n  * `--version` -- *comes from .enterify/package.json [current app version]*\n\nYou can overwrite these default values and also set others by passing custom\narguments directly to `electron-packager` after `--`, i.e:\n\n````shell\ncd /your/meteor/app\nenterify package -- --icon=/folder/x/img/icon.png --version=x.y.z\n````\n\nAll the available options for `electron-packager` can be found here:\nhttps://www.npmjs.com/package/electron-packager\n\n### Notes\n\nThe output app will match your current operational system and arch type.\n\n  * To get an **OSX** app, run it from a **Osx** machine.\n  * To get an **Linux 32bit** app, run it from a **32bit Linux** machine.\n  * To get an **Linux 64bit** app, run it from a **64bit Linux** machine.\n  * To get an **Windows 32bit** app, run it from a **32bit Windows** machine.\n  * To get an **Windows 64bit** app, run it from a **64bit Windows** machine.\n\nDue to NodeJS native bindings of such libraries such as Fibers -- *which are\nmandatory for Meteor*, you'll need to have your Meteor app fully working on the\ndesired platform before installing this plugin and packaging your app.\n\nSo, at this time, you cannot package your app in a cross-platform fashion from\none single OS.\n\nPerhaps you can live with it? :)\n\n> **DO NOT** use options to output for multiple arch/platforms at once, such as\n`--arch=all`. It won't work, Enterify can bundle Meteor apps only for the\nplatform you're running on.\n\n\n## Options\n\n1. `-i, --input` - Meteor app folder, default is current directory (`process.cwd()`).\n1. `-o, --output` - Sets output folder for your packaged app, default is\n`/your/meteor/app/.dist`\n1. `-s, --settings` Sets path for Meteor\n[settings](http://docs.meteor.com/#/full/meteor_settings) file, this will be\navailable inside your Meteor code both in development and after being packaged.\n\n## Structure\n\nYou'll notice a new folder called `.enterify` in your meteor app dir, its\nstructure will be like this:\n\n````\n/your/meteor/app\n├── .enterify\n│   ├── .gitignore\n│   ├── enterify.json\n│   ├── index.js\n│   └── package.json\n├── .meteor\n└── ...\n````\n\nThis is a pure Electron project, so you can use the whole Electron API from JS\nfiles in this folder. Also, you can install electron dependencies and store them\nin the `package.json` file. Note that the `enterify` package is itself a\ndependency.\n\nSee this folder as the `desktop layer` for your Meteor app. Remember to check\nout the `index.js` file, it constains the enterify start/stop usage.\n\nThe `enterify.json` file will hold specific preferences for Enterify, such as\nplugins and so on. It's still a WIP, but you can get around it.\n\n### Config (`enterify.json`)\n\nFor now there's only one option here: `preserve_db`.\n\nSet it to true to preserve database between installs. It works by saving the\nmongo data dir inside user's data folder, instead of being self contained within\nthe app folder (which gets deleted when new version is installed).\n\n# Customizing\n\nLet's see how one would be able to do a simple SplashScreen:\n\n````javascript\nvar app       = require('app');\nvar browser   = require('browser-window');\nvar enterify = require('enterify')(__dirname);\n\nvar window = null;\nvar splash = null; // splash variable\n\napp.on('ready', function() {\n  splash = new browser({ // starts splash window\n    // >>> your configs here\n  });\n  splash.loadUrl('./splash.html'); // create the \".enterify/splash.html\" file\n  \n  // then move along and start enterify\n  enterify.start(function(meteor_root_url) {\n\n    // before opening a new window with your app, destroy the splash window\n    splash.close(); // >>> or .destroy(), check what works for you\n\n\n    // from here on, well, nothing changes..\n\n\n    window = new browser({\n      width: 1200, height: 900,\n      'node-integration': false // node integration must to be off\n    });\n    window.loadUrl(meteor_root_url);\n  });\n});\n\n\n// ....\n\n````\n\n## Meteor x Electron integration\n\nYou can seamlessly call Electron methods from your Meteor's client/server code.\n\nDefine your Electron methods inside the `.enterify` folder:\n\n````javascript\n// `.enterify/index.js` file\nenterify.methods({\n  'hello.world': function(firstname, lastname, done) {\n    // do things with electron api, and then call the `done` callback\n    // as ~> done(err, res);\n    done(null, 'Hello '+ firstname +' '+ lastname +'!');\n   }\n});\n````\n\nThen, in your Meteor code (client and server), you can call this method like:\n\n````javascript\n// Enterify.call(method_name, args, done_callback);\nEnterify.call('hello.world', ['anderson', 'arboleya'], function(err, msg) {\n  console.log(msg); // Hello anderson arboleya!\n});\n````\n\n> **IMPORTANT**\n> \n> You can only call methods after the connection is made between Meteor and\n> Electron, to make sure it's ready you can wrap your code in a startup block:\n> \n> ````javascript\n> Enterify.startup(function(){\n>   Enterify.call(...);\n> });\n> ````\n\n## Upgrading\n\nWhen upgrading to newer versions, it's **important** to know that:\n\n### ~> templates\n\nOnce these files exists on disk, they *will not* be overwritten.\n * `.enterify/index.js`\n * `.enterify/package.json`\n * `.enterify/enterify.json`\n * `.enterify/.gitignore.json`\n\n### ~> api\n\nAs these files above is never overwritten, in case of any API change that needs\nadjustments, these will have to be made manually.\n\n### ~> version matching\n\nAlways keep the same enterify version in your Meteor, and inside the\n`.enterify` folder, *as per specified in `.enterify/package.json` file*."
+}

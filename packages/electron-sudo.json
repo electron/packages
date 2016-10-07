@@ -1,8 +1,12 @@
 {
   "name": "electron-sudo",
-  "version": "3.0.9",
+  "version": "4.0.5",
   "description": "Electron subprocess with administrative privileges, prompting the user with an OS dialog if necessary.",
-  "main": "index.js",
+  "main": "./dist/index.js",
+  "author": {
+    "name": "Aleksandr Komlev"
+  },
+  "license": "MIT",
   "repository": {
     "user": "automation-stack",
     "repo": "electron-sudo",
@@ -31,21 +35,59 @@
     "UAC",
     "subprocess"
   ],
-  "author": {
-    "name": "Aleksandr Komlev"
-  },
-  "contributor": [
-    "Joran Dirk Gree"
-  ],
-  "license": "MIT",
   "homepage": "https://github.com/automation-stack/electron-sudo#readme",
-  "scripts": {},
-  "gitHead": "e14a6227c22f4a65933404ef7771c80188760292",
-  "_npmVersion": "3.3.12",
-  "_nodeVersion": "5.1.1",
+  "scripts": {
+    "build": "node_modules/webpack/bin/webpack.js --config ./webpack/config.babel.js",
+    "build-win32": "node node_modules\\webpack\\bin\\webpack.js --config webpack\\config.babel.js",
+    "prepublish": "npm run test",
+    "lint": "node_modules/eslint/bin/eslint.js -c .eslintrc ./src",
+    "test-win32": "npm run build-win32 && node node_modules\\mocha\\bin\\mocha --compilers js:babel-core/register tests",
+    "test": "npm run build && node_modules/mocha/bin/mocha --compilers js:babel-core/register ./tests"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.10.1",
+    "babel-core": "^6.10.4",
+    "babel-eslint": "^6.0.0",
+    "babel-loader": "^6.2.4",
+    "babel-plugin-array-includes": "^2.0.3",
+    "babel-plugin-lodash": "^2.2.1",
+    "babel-plugin-module-alias": "^1.2.0",
+    "babel-plugin-syntax-async-functions": "^6.5.0",
+    "babel-plugin-syntax-decorators": "^6.5.0",
+    "babel-plugin-syntax-flow": "^6.8.0",
+    "babel-plugin-syntax-object-rest-spread": "^6.5.0",
+    "babel-plugin-transform-async-to-module-method": "^6.7.0",
+    "babel-plugin-transform-class-properties": "^6.6.0",
+    "babel-plugin-transform-decorators-legacy": "^1.3.4",
+    "babel-plugin-transform-flow-strip-types": "^6.8.0",
+    "babel-plugin-transform-regenerator": "^6.6.5",
+    "babel-plugin-transform-runtime": "^6.6.0",
+    "babel-polyfill": "^6.7.2",
+    "babel-preset-es2015": "^6.9.0",
+    "babel-preset-stage-0": "^6.5.0",
+    "babel-runtime": "^6.9.2",
+    "chai": "^3.5.0",
+    "copy-webpack-plugin": "^3.0.1",
+    "dirty-chai": "^1.2.2",
+    "eslint": "^2.6.0",
+    "eslint-loader": "^1.3.0",
+    "eslint-plugin-babel": "^3.2.0",
+    "estraverse-fb": "^1.3.1",
+    "json-loader": "^0.5.4",
+    "mocha": "^2.4.5",
+    "raw-loader": "^0.5.1",
+    "source-map-support": "^0.4.0",
+    "webpack": "^1.12.14",
+    "webpack-dev-server": "^1.14.1",
+    "webpack-module-hot-accept": "^1.0.4",
+    "webpack-shell-plugin": "^0.4.2"
+  },
+  "gitHead": "a06b8bd77aa8f27655323ea5590eab35792bbc90",
+  "_npmVersion": "3.10.3",
+  "_nodeVersion": "6.3.1",
   "dist": {
-    "shasum": "6ecf43a6d3431f14271e66f7ece4040bc7294612",
-    "tarball": "http://registry.npmjs.org/electron-sudo/-/electron-sudo-3.0.9.tgz"
+    "shasum": "7caccc05afb66cac720e926fb64f1b48631a47b4",
+    "tarball": "http://registry.npmjs.org/electron-sudo/-/electron-sudo-4.0.5.tgz"
   },
   "stars": 4,
   "versions": [
@@ -88,10 +130,46 @@
     {
       "number": "3.0.9",
       "date": "2016-07-01T15:29:08.835Z"
+    },
+    {
+      "number": "3.0.10",
+      "date": "2016-07-15T10:38:24.638Z"
+    },
+    {
+      "number": "3.0.11",
+      "date": "2016-07-18T21:54:28.179Z"
+    },
+    {
+      "number": "3.0.12",
+      "date": "2016-07-18T21:57:17.051Z"
+    },
+    {
+      "number": "3.0.13",
+      "date": "2016-07-20T11:01:49.895Z"
+    },
+    {
+      "number": "4.0.0",
+      "date": "2016-07-28T12:05:06.768Z"
+    },
+    {
+      "number": "4.0.2",
+      "date": "2016-08-15T10:59:20.410Z"
+    },
+    {
+      "number": "4.0.3",
+      "date": "2016-08-15T15:24:07.828Z"
+    },
+    {
+      "number": "4.0.4",
+      "date": "2016-08-15T22:47:51.103Z"
+    },
+    {
+      "number": "4.0.5",
+      "date": "2016-08-15T22:49:46.035Z"
     }
   ],
   "created": "2015-11-25T09:52:25.591Z",
-  "modified": "2016-07-01T15:29:08.835Z",
+  "modified": "2016-08-15T22:49:46.035Z",
   "lastPublisher": {
     "name": "automation-stack",
     "email": "aleksandr.komlev@gmail.com"
@@ -102,5 +180,5 @@
       "email": "aleksandr.komlev@gmail.com"
     }
   ],
-  "readme": "## Electron subprocess with administrative privileges\n\n[![Join the chat at https://gitter.im/automation-stack/electron-sudo](https://badges.gitter.im/automation-stack/electron-sudo.svg)](https://gitter.im/automation-stack/electron-sudo?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)\n\nRun a subprocess with administrative privileges, prompting the user with a graphical OS dialog if necessary. Useful for background subprocesse which run native Electron apps that need sudo.\n\n`electron-sudo` provides a native OS dialog prompt on **Windows** (UAC), on **OS X** and **Linux** with custom name and optional icon, `has no external dependencies and does not require any native bindings`.\n\n`electron-sudo` is based on [sudo-prompt](https://github.com/jorangreef/sudo-prompt), but fully cross-platform more configurable and adaptive for native Electron applications.\n\n- `Windows`, use native \"User Account Control\" (UAC)\n\n    <img width=\"330px\" src=\"./win32/sample.png\">\n\n- `OS X`, use bundled applet\n\n    <img width=\"330px\" src=\"./darwin/sample.png\">\n\n- `Linux`, we try to use system pkexec, gksudo or kdesudo, if it not found then use bundled gksu.\n\n    <img src=\"./linux/sample1.png\" width=\"330px\">\n\n    <img src=\"./linux/sample2.png\" width=\"330px\">\n\n## Platform-specific sources\n\n- [Applet [OSx]](https://github.com/automation-stack/electron-sudo/tree/master/darwin/applet.app/Contents)\n- [Elevate.exe sources [Win32/64]](https://github.com/automation-stack/electron-sudo/tree/master/win32/src)\n- [GKsu sources [Linux]](https://github.com/automation-stack/electron-sudo/tree/master/linux)\n\nIf you don't trust binaries bundled in NPM package you can manually build tools and use them instead.\n\n## Installation\n```\nnpm install electron-sudo\n```\n\n## Usage\nNote: Your command should not start with the `sudo` prefix.\n```js\nvar sudo = require('electron-sudo');\nvar options = {\n  name: 'Your application name',\n  icns: '/path/to/icns/file' // (optional, only for MacOS),\n  process: {\n    options: {\n      // Can use custom environment variables for your privileged subprocess\n      env: {'VAR': 'VALUE'}\n      // ... and all other subprocess options described here\n      // https://nodejs.org/api/child_process.html#child_process_child_process_exec_command_options_callback\n    },\n    on: function(ps) {\n      ps.stdout.on('data', function(data) {});\n      setTimeout(function() {\n        ps.kill()\n      }.bind(ps), 50000);\n    }\n  }\n};\nsudo.exec('echo hello', options, function(error) {});\n```\n\n`electron-sudo` will use `process.title` as `options.name` if `options.name` is not provided. `options.name` must be alphanumeric only (spaces are supported) and at most 70 characters.\n\n\n## Behavior\n- ```OS X```, `electron-sudo` should behave just like the `sudo` command in the shell. If your command does not work with the `sudo` command in the shell (perhaps because it uses `>` redirection to a restricted file), then it will not work with `electron-sudo`. However, it is still possible to use electron-sudo to get a privileged shell.\n\n*Please note that Linux support is currently in beta and requires more testing across Linux distributions.*\n\n- ```Linux```, `electron-sudo` will use embedded `gksu` to show the password prompt and run your command. Where possible, `electron-sudo` will try and get these to mimic `sudo` as much as possible (for example by preserving environment), but your command should not rely on any environment variables or relative paths, in order to work correctly. Depending on which binary is used, and due to the limitations of some binaries, the name of your program or the command itself may be displayed to your user.\n\nJust as you should never use `sudo` to launch any graphical applications, you should never use `electron-sudo` to launch any graphical applications. Doing so could cause files in your home directory to become owned by root. `electron-sudo` is explicitly designed to launch non-graphical terminal commands. For more information, [read this post](http://www.psychocats.net/ubuntu/graphicalsudo).\n\n## Concurrency\n- ```OS X```, you can issue multiple calls to `sudo.exec` concurrently, and `electron-sudo` will batch up multiple permission requests into a single password prompt. These calls will be batched to the extent that they share the same `options.name` and `options.icns` arguments (including the actual content of `options.icns` if provided).\n\n- ```Linux```, `sudo` usually has `tty-tickets` enabled. This prevents `electron-sudo` from batching up multiple permission requests, and will result in a separate password prompt for each call.\n\n- ```Windows```, `sudo` usually use VBS for elevating needed right with UAC. This prevents `electron-sudo` from batching up multiple permission requests, and will result in a separate password prompt for each call.\n\nWhile `electron-sudo` may batch up calls, you should never rely on `electron-sudo` to execute your calls in order. For example, several calls may be waiting on a password prompt, and the next call after the password prompt may execute before any of these calls. If you need to enforce ordering of calls, then you should explicitly order your calls in your application.\n"
+  "readme": "## Electron subprocess with administrative privileges\n\nRun a subprocess with administrative privileges, prompting the user with a graphical OS dialog if necessary. Useful for background subprocesse which run native Electron apps that need sudo.\n\n- `Windows`, uses [elevate utility](https://github.com/automation-stack/electron-sudo/tree/master/src/vendor/win32) with native `User Account Control (UAC)` prompt (no `PowerShell` required)\n- `OS X`, uses bundled [applet](https://github.com/automation-stack/electron-sudo/tree/master/src/bin/applet.app) (inspired by  [Joran Dirk Greef](https://github.com/jorangreef))\n- `Linux`, uses system `pkexec` or [gksudo](http://www.nongnu.org/gksu) (system or bundled).\n\nIf you don't trust binaries bundled in `npm` package you can manually build tools and use them instead.\n\n<img height=\"150px\" src=\"./assets/win32.png\">\n<img height=\"150px\" src=\"./assets/osx.png\">\n<img height=\"150px\" src=\"./assets/linux.png\">\n\n## Features\n  - Supports ```spawn``` and ```exec``` subprocess behavior\n  - Supports applications packaged as ```asar``` archive\n  - Separate password prompt for each call (use ```sh``` or ```bat``` script for single prompt)\n  - No external dependencies, does not depend on OS versions\n\n## Installation\n```\nnpm install electron-sudo\n```\n\n## Usage\n**Note: Your command should not start with the ```sudo``` prefix.**\n\n### Version 4.0.*\n\n```js\nimport Sudoer from 'electron-sudo';\n\nlet options = {name: 'electron sudo application'},\n    sudoer = new Sudoer(options);\n\n/* Spawn subprocess behavior */\nlet cp = await sudoer.spawn(\n  'echo', ['$PARAM'], {env: {PARAM: 'VALUE'}}\n);\ncp.on('close', () => {\n  /*\n    cp.output.stdout (Buffer)\n    cp.output.stderr (Buffer)\n  */\n});\n\n/* Exec subprocess behavior */\nlet result = await sudoer.exec(\n  'echo $PARAM', {env: {PARAM: 'VALUE'}}\n);\n/* result is Buffer with mixed (both stdout and stderr) output */\n\n```\n\n### Version 3.0.* (deprecated)\n\n```js\nvar sudo = require('electron-sudo');\nvar options = {\n  name: 'Your application name',\n  icns: '/path/to/icns/file' // (optional, only for MacOS),\n  process: {\n    options: {\n      // Can use custom environment variables for your privileged subprocess\n      env: {'VAR': 'VALUE'}\n      // ... and all other subprocess options described here\n      // https://nodejs.org/api/child_process.html#child_process_child_process_exec_command_options_callback\n    },\n    on: function(ps) {\n      ps.stdout.on('data', function(data) {});\n      setTimeout(function() {\n        ps.kill()\n      }.bind(ps), 50000);\n    }\n  }\n};\nsudo.exec('echo hello', options, function(error) {});\n```\n\n## Tests\n```\nnpm i && npm test\n```\n\n## Usage with Webpack\n\nWebpack config should contain ```__dirname``` equals ```true``` for work properly\n\n```js\n\nlet nodeModules = fs.readdirSync('./node_modules')\n    .filter((module) => {\n        return module !== '.bin';\n    })\n    .reduce((prev, module) => {\n        return Object.assign(prev, {[module]: 'commonjs ' + module});\n    }, {});\n\nexport default {\n    ...\n    target: 'electron',\n    node: {\n        /* http://webpack.github.io/docs/configuration.html#node */\n        __dirname: true\n    },\n    externals: nodeModules\n};\n```\n"
 }

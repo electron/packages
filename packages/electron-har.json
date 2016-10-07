@@ -1,7 +1,7 @@
 {
   "name": "electron-har",
   "description": "A command-line tool for generating HTTP Archive (HAR) (based on Electron)",
-  "version": "0.1.9",
+  "version": "0.2.0",
   "author": {
     "name": "Stanley Shyiko",
     "email": "stanley.shyiko@gmail.com"
@@ -25,6 +25,7 @@
   },
   "main": "./src/index.js",
   "dependencies": {
+    "cookie": "^0.3.1",
     "cross-exec-file": "^1.0.0",
     "electron-prebuilt": "^0.35.4",
     "json-stable-stringify": "^1.0.0",
@@ -53,7 +54,7 @@
     "build:linux": "electron-packager build/app electron-har --platform=linux --arch=x64,ia32 --version=0.35.4 --out=build --overwrite",
     "build": "npm run clean && npm run build:app && npm run build:macosx && npm run build:linux",
     "tar:macosx": "cd build/electron-har-darwin-x64 && tar -cvzf ../electron-har-$npm_package_version-darwin-x64.tar.gz *",
-    "tar:linux": "echo x64 ia32 | xargs -n1 -I{} sh -c \"cd build/electron-har-linux-{} && tar -cvzf ../electron-har-$npm_package_version-linux-{}.tar.gz *\"",
+    "tar:linux": "echo x64 ia32 | xargs -n1 sh -c 'cd build/electron-har-linux-$0 && tar -cvzf ../electron-har-$npm_package_version-linux-$0.tar.gz *'",
     "tar": "npm run tar:macosx && npm run tar:linux",
     "release": "npm run build && npm run tar",
     "test": "semistandard src/**/*.js test/**/*.js && ./node_modules/mocha/bin/mocha -R spec"
@@ -62,14 +63,15 @@
     "electron",
     "har"
   ],
-  "gitHead": "b1377cbd4f79e98fe5f8894cefdea43ae4e32785",
+  "gitHead": "82076dfdd23836486601736652c9580f5df37c6a",
   "homepage": "https://github.com/shyiko/electron-har#readme",
-  "_npmVersion": "2.10.1",
-  "_nodeVersion": "0.12.4",
+  "_npmVersion": "2.15.8",
+  "_nodeVersion": "4.4.7",
   "dist": {
-    "shasum": "81b98dcd9ca252c822b935438c924b58de20965b",
-    "tarball": "http://registry.npmjs.org/electron-har/-/electron-har-0.1.9.tgz"
+    "shasum": "3bb50a4d944105ad9f319ab525a98e06c93c5ac9",
+    "tarball": "http://registry.npmjs.org/electron-har/-/electron-har-0.2.0.tgz"
   },
+  "stars": 1,
   "versions": [
     {
       "number": "0.1.0",
@@ -110,10 +112,14 @@
     {
       "number": "0.1.9",
       "date": "2016-03-30T05:31:36.070Z"
+    },
+    {
+      "number": "0.2.0",
+      "date": "2016-07-21T20:36:13.403Z"
     }
   ],
   "created": "2015-12-10T00:04:22.276Z",
-  "modified": "2016-03-30T05:31:36.070Z",
+  "modified": "2016-07-21T20:36:13.403Z",
   "lastPublisher": {
     "name": "shyiko",
     "email": "stanley.shyiko@gmail.com"

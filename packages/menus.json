@@ -1,0 +1,78 @@
+{
+  "name": "menus",
+  "version": "0.1.0",
+  "description": "Menus app using Electron",
+  "license": "MIT",
+  "repository": {
+    "user": "egoist",
+    "repo": "menus",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/egoist/menus/tarball/master",
+    "clone_url": "https://github.com/egoist/menus",
+    "https_url": "https://github.com/egoist/menus",
+    "travis_url": "https://travis-ci.org/egoist/menus",
+    "zip_url": "https://github.com/egoist/menus/archive/master.zip",
+    "api_url": "https://api.github.com/repos/egoist/menus"
+  },
+  "author": {
+    "name": "EGOIST",
+    "email": "0x142857@gmail.com",
+    "url": "github.com/egoist"
+  },
+  "engines": {
+    "node": ">=4"
+  },
+  "scripts": {
+    "test": "eslint *.js",
+    "dev": "electron ./example/index.js"
+  },
+  "files": [
+    "index.js",
+    "example"
+  ],
+  "keywords": [
+    "electron",
+    "menubar"
+  ],
+  "devDependencies": {
+    "electron-prebuilt": "^1.4.1",
+    "eslint": "latest",
+    "eslint-config-egoist": "latest"
+  },
+  "eslintConfig": {
+    "extends": "egoist/esnext"
+  },
+  "gitHead": "77583d46f5baad41f942babb2183967b2464947f",
+  "homepage": "https://github.com/egoist/menus#readme",
+  "_npmVersion": "3.10.3",
+  "_nodeVersion": "6.4.0",
+  "dist": {
+    "shasum": "aec16a645db5cc45dbdadc3f7f25a8c40c133060",
+    "tarball": "http://registry.npmjs.org/menus/-/menus-0.1.0.tgz"
+  },
+  "versions": [
+    {
+      "number": "0.0.0",
+      "date": "2016-09-29T03:17:58.800Z"
+    },
+    {
+      "number": "0.1.0",
+      "date": "2016-09-29T03:36:51.314Z"
+    }
+  ],
+  "created": "2016-09-29T03:17:58.800Z",
+  "modified": "2016-09-29T03:36:51.314Z",
+  "lastPublisher": {
+    "name": "rem",
+    "email": "0x142857@gmail.com"
+  },
+  "owners": [
+    {
+      "name": "rem",
+      "email": "0x142857@gmail.com"
+    }
+  ],
+  "readme": "# menus [![NPM version](https://img.shields.io/npm/v/menus.svg?style=flat-square)](https://npmjs.com/package/menus) [![NPM downloads](https://img.shields.io/npm/dm/menus.svg?style=flat-square)](https://npmjs.com/package/menus)\n\nA short-hand for you to build something like:\n\n<img src=\"./media/preview.png\" width=\"400\" alt=\"preview\">\n\n## Install\n\n```bash\n$ npm install --save menus\n```\n\n## Usage\n\n```js\nconst Menus = require('menus')\n\nconst menus = new Menus()\n\nmenus.setMenu([\n  {\n    label: 'My First Menu Item',\n    click() {\n      console.log('clicked!')\n    }\n  }\n])\n\nmenus.start()\n\nmenus.on('ready', () => {\n  console.log('Menus app is ready!')\n})\n```\n\nFor a more complete example, please check out [example]('./example/index.js').\n\n## API\n\n### new Menus([options])\n\n```js\nconst menus = new Menus()\n```\n\n#### options.icon\n\nPath to tray icon.\n\n#### options.showDockIcon\n\nDefault: `false`\n\nWhether to show dock icon.\n\n#### options.tooltip\n\nDefault: `''`\n\nThe tooltip to show when tray icon is hovered.\n\n### menus.on('ready')\n\nEmitted when a tray is created on the menubar.\n\n### menus.setMenu(menu)\n\nSet context menu for the tray icon. The doc of menu is [here](https://github.com/electron/electron/blob/master/docs/api/menu.md).\n\n### menus.start()\n\nBootstrap the menus app.\n\n### menus.app\n\nThe electron.app instance.\n\n### menus.tray\n\nThe created tray instance. \n\n## Contributing\n\n1. Fork it!\n2. Create your feature branch: `git checkout -b my-new-feature`\n3. Commit your changes: `git commit -am 'Add some feature'`\n4. Push to the branch: `git push origin my-new-feature`\n5. Submit a pull request :D\n\n## License\n\n[MIT](https://egoist.mit-license.org/) © [EGOIST](https://github.com/egoist)\n"
+}

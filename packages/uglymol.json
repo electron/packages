@@ -1,6 +1,6 @@
 {
   "name": "uglymol",
-  "version": "0.1.0",
+  "version": "0.3.1",
   "description": "Macromolecular viewer for crystallographers used to coot",
   "homepage": "https://uglymol.github.io",
   "main": "uglymol.js",
@@ -10,28 +10,31 @@
     "src"
   ],
   "dependencies": {
-    "three": "~0.78.0"
+    "three": "~0.79.0"
   },
   "devDependencies": {
     "benchmark": "^2.1.0",
     "chai": "^3.5.0",
-    "eslint": "^3.0.1",
-    "eslint-config-xo": "^0.15.2",
+    "eslint": "^3.2.2",
+    "eslint-config-xo": "^0.15.3",
+    "http-server": "^0.9.0",
     "istanbul": "^0.4.4",
-    "mocha": "^2.5.3",
+    "mocha": "^3.0.2",
     "uglify-js": "^2.7.0"
   },
   "scripts": {
     "test": "mocha",
     "coverage": "istanbul cover -x '**/perf/**' _mocha -- --timeout 100000",
-    "lint": "eslint src test perf ||:",
+    "lint": "eslint src test perf || exit 0",
     "download-data": "node perf/util.js download-data",
     "build:concat": "tools/concat.sh",
     "build:uglify": "uglifyjs uglymol.js -o uglymol.min.js",
     "build": "npm run build:concat && npm run build:uglify",
+    "version": "npm run build && git add -A uglymol.js",
     "prepublish": "npm run build",
     "prebuild": "npm test",
-    "pretest": "npm run lint"
+    "pretest": "npm run lint",
+    "start": "http-server -a localhost -p 7890 -c-1"
   },
   "repository": {
     "user": "uglymol",
@@ -55,12 +58,12 @@
     "structure"
   ],
   "license": "MIT",
-  "gitHead": "a11784cfccf74cbbd640cbdd9be80a2615c69b85",
+  "gitHead": "fcbfebace03d2f3e4203ef0b5ee937abbbeb6457",
   "_npmVersion": "3.5.2",
   "_nodeVersion": "4.2.6",
   "dist": {
-    "shasum": "4a02e7ea686b0e07baf6c27109ac20a0a6eb1595",
-    "tarball": "http://registry.npmjs.org/uglymol/-/uglymol-0.1.0.tgz"
+    "shasum": "5be1e1efb63cf94bc3352f0250d9e5479c48fd72",
+    "tarball": "http://registry.npmjs.org/uglymol/-/uglymol-0.3.1.tgz"
   },
   "versions": [
     {
@@ -70,10 +73,22 @@
     {
       "number": "0.1.0",
       "date": "2016-07-11T18:50:09.073Z"
+    },
+    {
+      "number": "0.2.0",
+      "date": "2016-07-21T14:40:28.560Z"
+    },
+    {
+      "number": "0.2.1",
+      "date": "2016-07-22T12:25:23.319Z"
+    },
+    {
+      "number": "0.3.1",
+      "date": "2016-08-12T16:46:47.752Z"
     }
   ],
   "created": "2016-06-28T00:12:30.691Z",
-  "modified": "2016-07-11T18:50:09.073Z",
+  "modified": "2016-08-12T16:46:47.752Z",
   "lastPublisher": {
     "name": "wojdyr",
     "email": "wojdyr@gmail.com"
@@ -84,5 +99,5 @@
       "email": "wojdyr@gmail.com"
     }
   ],
-  "readme": "[![Build Status](https://travis-ci.org/uglymol/uglymol.svg?branch=master)](https://travis-ci.org/uglymol/uglymol)\n[![Coverage Status](https://coveralls.io/repos/github/uglymol/uglymol/badge.svg?branch=master)](https://coveralls.io/github/uglymol/uglymol?branch=master)\n[![chat at https://gitter.im/ccp4/dimple](https://badges.gitter.im/ccp4/dimple.svg)](https://gitter.im/ccp4/dimple)\n[![npm](https://img.shields.io/npm/v/uglymol.svg?maxAge=2592000)]()\n\nUglyMol is a web-based macromolecular viewer focused on electron density.\n\nIt makes models and e.den. maps easy to recognize, navigate and interpret --\nfor [Coot](http://www2.mrc-lmb.cam.ac.uk/personal/pemsley/coot/) users.\nIt looks like coot and walks (mouse controls) like coot.\nExcept when it doesn't -- see the\n[FAQ](https://github.com/uglymol/uglymol/wiki).\n\nIt's only a viewer. For situations when you want\na quick look without downloading the data and starting Coot.\nFor instance, when screening\n[Dimple](http://ccp4.github.io/dimple/) results in a synchrotron.\nOf course, for this to work, it needs to be integrated into a website\nthat provides the data access.\n\nTry it (if all lines are thin -- it's a known problem, see the first\npoint [here](https://github.com/uglymol/uglymol/blob/master/TODO.md)):\n\n- [1MRU](https://uglymol.github.io/1mru.html) (60kDa, 3Å),\n- [4UN4](https://uglymol.github.io/4un4.html) (200kDa, 2.4Å),\n- [a blob](https://uglymol.github.io/dimple_thaum.html)\n  (Dimple result, thaumatin, 1.4Å).\n\nTechnically, UglyMol is a small\n[project](https://github.com/uglymol/uglymol) (~2 KLOC)\nforked from Nat Echols' [xtal.js](https://github.com/natechols/xtal.js/).\nSee the [FAQ](https://github.com/uglymol/uglymol/wiki)\non how to add it to your website.\n\nThe [plan](https://github.com/uglymol/uglymol/blob/master/TODO.md)\nis to keep UglyMol small and ugly rather than to add many features.\nAnd to make it as [fast](https://uglymol.github.io/perf.html) as possible.\nActually this project is an experiment and further development, if any,\nwill depend on received feedback. So, what should be added or changed?\nUse [Issues ](https://github.com/uglymol/uglymol/issues)\nor [chat](https://gitter.im/ccp4/dimple)\nor email wojdyr@gmail.com.\n\nFinally, if you need pretty visualization,\nor if you trust the model and don't need to see the electron density,\nuse one of many\n[other viewers](https://github.com/uglymol/uglymol/wiki/MolecularViewers).\n"
+  "readme": "[![Build Status](https://travis-ci.org/uglymol/uglymol.svg?branch=master)](https://travis-ci.org/uglymol/uglymol)\n[![Coverage Status](https://coveralls.io/repos/github/uglymol/uglymol/badge.svg?branch=master)](https://coveralls.io/github/uglymol/uglymol?branch=master)\n[![chat at https://gitter.im/ccp4/dimple](https://badges.gitter.im/ccp4/dimple.svg)](https://gitter.im/ccp4/dimple)\n[![npm](https://img.shields.io/npm/v/uglymol.svg?maxAge=2592000)](https://www.npmjs.com/package/uglymol)\n\nUglyMol is a web-based macromolecular viewer focused on electron density.\n\nIt makes models and e.den. maps easy to recognize, navigate and interpret --\nfor [Coot](http://www2.mrc-lmb.cam.ac.uk/personal/pemsley/coot/) users.\nIt looks like coot and walks (mouse controls) like coot.\nExcept when it doesn't -- see the\n[FAQ](https://github.com/uglymol/uglymol/wiki).\n\nIt's only a viewer. For situations when you want\na quick look without downloading the data and starting Coot.\nFor instance, when screening\n[Dimple](http://ccp4.github.io/dimple/) results in a synchrotron.\nOf course, for this to work, it needs to be integrated into a website\nthat provides the data access.\n\nTry it:\n\n- [1MRU](https://uglymol.github.io/1mru.html) (60kDa, 3Å),\n- [4UN4](https://uglymol.github.io/4un4.html) (200kDa, 2.4Å),\n- [a blob](https://uglymol.github.io/dimple_thaum.html#xyz=14,18,12&eye=80,71,-41&zoom=70)\n  (Dimple result, thaumatin, 1.4Å).\n\nTechnically, UglyMol is a small\n[project](https://github.com/uglymol/uglymol) (below 3 KLOC)\nforked from Nat Echols' [xtal.js](https://github.com/natechols/xtal.js/).\nSee the [FAQ](https://github.com/uglymol/uglymol/wiki)\non how to add it to your website.\n\nThe [plan](https://github.com/uglymol/uglymol/blob/master/TODO.md)\nis to keep UglyMol small and ugly rather than to add many features.\nActually this project is an experiment and further development, if any,\nwill depend on received feedback. So, what should be added or changed?\nUse [Issues ](https://github.com/uglymol/uglymol/issues)\nor [chat](https://gitter.im/ccp4/dimple)\nor email wojdyr@gmail.com.\n\nFinally, if you need pretty visualization,\nor if you trust the model and don't need to see the electron density,\nuse one of many\n[other viewers](https://github.com/uglymol/uglymol/wiki/MolecularViewers).\n"
 }

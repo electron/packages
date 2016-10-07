@@ -1,15 +1,16 @@
 {
   "name": "meteor-desktop-splash-screen",
-  "version": "0.0.20",
+  "version": "0.0.22",
   "engines": {
     "node": ">=6.0.0"
   },
   "description": "Meteor Desktop splash screen plugin.",
   "main": "dist/index.js",
   "scripts": {
-    "test": "npm run build && ava test/functional/**/*.js --source dist/**/* --verbose -s",
-    "test-watch": "npm run build && ava test/functional/**/*.js --source dist/**/* --watch --verbose -s",
+    "test": "npm run build && ava tests/functional/**/*.js --source dist/**/* --verbose -s",
+    "test-watch": "npm run build && ava tests/functional/**/*.js --source dist/**/* --watch --verbose -s",
     "prepublish": "npm run build",
+    "lint": "eslint src tests",
     "build": "babel src --out-dir dist --source-maps inline --copy-files",
     "build-watch": "babel src --watch --out-dir dist --source-maps inline --copy-files"
   },
@@ -19,19 +20,16 @@
   },
   "license": "MIT",
   "devDependencies": {
-    "ava": "^0.15.2",
-    "babel-cli": "^6.10.1",
-    "babel-core": "^6.10.4",
-    "babel-eslint": "^6.1.0",
+    "ava": "^0.16.0",
+    "babel-cli": "^6.16.0",
     "babel-preset-node6": "^11.0.0",
-    "eslint": "^2.13.1",
-    "eslint-config-airbnb-base": "^3.0.1",
-    "eslint-plugin-import": "^1.9.2",
-    "spectron": "^3.2.3",
-    "shelljs": "^0.7.0",
-    "electron-packager": "^7.1.0",
-    "electron-prebuilt": "^1.2.5",
-    "node-resemble-js": "^0.0.5",
+    "eslint": "^3.7.1",
+    "eslint-config-airbnb-base": "^8.0.0",
+    "eslint-plugin-import": "^2.0.0",
+    "spectron": "^3.4.0",
+    "shelljs": "^0.7.4",
+    "electron-prebuilt": "^1.4.2",
+    "node-resemble-js": "^0.1.1",
     "meteor-desktop-plugin-test-suite": "0.0.7"
   },
   "dependencies": {},
@@ -57,12 +55,12 @@
     "splashscreen"
   ],
   "homepage": "https://github.com/wojtkowiak/meteor-electron-desktop-client",
-  "gitHead": "3aa44c0925618bc5b9d448657dfd2c5b053a34c1",
-  "_npmVersion": "3.8.3",
-  "_nodeVersion": "4.4.0",
+  "gitHead": "0f0d227e6af58974744b563ae6790e9b0a0ef490",
+  "_npmVersion": "3.10.8",
+  "_nodeVersion": "6.5.0",
   "dist": {
-    "shasum": "0804ac25fc6ab3592879548d029bddf7e986165b",
-    "tarball": "http://registry.npmjs.org/meteor-desktop-splash-screen/-/meteor-desktop-splash-screen-0.0.20.tgz"
+    "shasum": "33ed297b51d5fef347712ad80c5ea023b2ea86b6",
+    "tarball": "http://registry.npmjs.org/meteor-desktop-splash-screen/-/meteor-desktop-splash-screen-0.0.22.tgz"
   },
   "versions": [
     {
@@ -140,10 +138,14 @@
     {
       "number": "0.0.20",
       "date": "2016-06-27T13:33:28.748Z"
+    },
+    {
+      "number": "0.0.22",
+      "date": "2016-10-05T10:46:41.640Z"
     }
   ],
   "created": "2016-06-02T20:09:32.504Z",
-  "modified": "2016-06-27T13:33:28.748Z",
+  "modified": "2016-10-05T10:46:41.640Z",
   "lastPublisher": {
     "name": "wojtkowiak",
     "email": "bartosz@wojtkowiak.it"
@@ -154,5 +156,5 @@
       "email": "bartosz@wojtkowiak.it"
     }
   ],
-  "readme": "## Meteor Desktop Splash Screen\n\nA nice splash screen for you Meteor app on desktop!\n\n### Usage\n\nIn your `.desktop/settings.json` add this package to your plugins list:\n```json\n{\n    \"plugins\": {\n       \"meteor-desktop-splash-screen\": {\n            \"version\": \"0.0.20\"\n        }\n    }\n}\n```\nNow place your logo in `.desktop/assets/splashScreen.png`. It should be a png with transparency.\n__On Linux this does not look so nice because transparency is not supported in Electron [out of the box](https://github.com/electron/electron/blob/master/docs/api/frameless-window.md#limitations).__\n \n### Settings\n\nYou can pass custom settings to the plugin, for example:\n```json\n{\n    \"plugins\": {\n       \"meteor-desktop-splash-screen\": {\n            \"version\": \"0.0.20\",\n            \"style\": { \n                \"box-sizing\": \"border-box\",\n                \"border\": \"5px solid black\",\n                \"border-radius\": \"5px\"\n            },\n            \"imagePath\": \"mySplashLogo.png\",\n            \"windowSettings\": { \"width\": 640, \"height\": 480 }\n        }\n    }\n}\n```\nNote that `imagePath` should be relative to `assets` directory in your `.desktop`.\n\nHere is a definition of what can be set:\n```javascript\n/**\n * Settings object.\n * @typedef {Object} PluginSettings\n * @property {boolean} enabled       - Is splash screen enabled.\n * @property {string} windowTitle    - Title of the window that shows splash screen. It defaults to the `name` from settings.json.\n * @property {string} imagePath      - Path to the image relative to the .desktop/assets dir.\n * @property {Object} style          - Style of the html body that displays the image.\n * @property {Object} windowSettings - Settings passed to BrowserWindow.\n */\n```\n\nIf you have an icon set for the window in your settings.json it will be automatically used for splash screen's window - no need to set it here.\n\n### Contribution\n\nPRs are always welcome. Be sure to update the tests.\n\nTo run the tests you need to open two terminals.\nIn the first one type `npm run build-watch` and in the second `npm run test-watch`. \n\nTests are run by [AVA](https://github.com/avajs).\n\n### Roadmap\n\n- [ ] support different settings for different platforms\n \n"
+  "readme": "## Meteor Desktop Splash Screen\n\nA nice splash screen for you Meteor app on desktop!\n\n### Usage\n\nIn your `.desktop/settings.json` add this package to your plugins list:\n```json\n{\n    \"plugins\": {\n       \"meteor-desktop-splash-screen\": {\n            \"version\": \"0.0.20\"\n        }\n    }\n}\n```\nNow place your logo in `.desktop/assets/splashScreen.png`. It should be a png with transparency.\n__On Linux this does not look so nice because transparency is not supported in Electron [out of the box](https://github.com/electron/electron/blob/master/docs/api/frameless-window.md#limitations).__\n \n### Settings\n\nYou can pass custom settings to the plugin, for example:\n```json\n{\n    \"plugins\": {\n       \"meteor-desktop-splash-screen\": {\n            \"version\": \"0.0.20\",\n            \"style\": { \n                \"box-sizing\": \"border-box\",\n                \"border\": \"5px solid black\",\n                \"border-radius\": \"5px\"\n            },\n            \"imagePath\": \"mySplashLogo.png\",\n            \"windowSettings\": { \"width\": 640, \"height\": 480 }\n        }\n    }\n}\n```\nNote that `imagePath` should be relative to `assets` directory in your `.desktop`.\n\nHere is a definition of what can be set:\n```javascript\n/**\n * Settings object.\n * @typedef {Object} PluginSettings\n * @property {boolean} enabled       - Is splash screen enabled.\n * @property {string} windowTitle    - Title of the window that shows splash screen. It defaults to the `name` from settings.json.\n * @property {string} imagePath      - Path to the image relative to the .desktop/assets dir.\n * @property {Object} style          - Style of the html body that displays the image.\n * @property {Object} windowSettings - Settings passed to BrowserWindow.\n */\n```\n\nIf you have an icon set for the window in your settings.json it will be automatically used for splash screen's window - no need to set it here.\n\n### Contribution\n\nPRs are always welcome. Be sure to update the tests.\n\nFor smooth developing process you need to open two terminals. In the first one type `npm run build-watch` and in the second `npm run test-watch`. \n\nTests are run by [AVA](https://github.com/avajs).\n\n### Roadmap\n\n- [ ] support different settings for different platforms\n \n"
 }

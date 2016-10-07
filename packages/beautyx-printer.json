@@ -1,0 +1,98 @@
+{
+  "name": "beautyx-printer",
+  "description": "Node.js printer bindings -  electron builds",
+  "version": "0.1.1",
+  "homepage": "https://github.com/beauty-x/electron-printer",
+  "author": {
+    "name": "Seven",
+    "email": "bin@51gezhu.com"
+  },
+  "contributors": [
+    {
+      "name": "bin",
+      "email": "bin@51gezhu.com"
+    }
+  ],
+  "repository": {
+    "user": "beauty-x",
+    "repo": "electron-printer",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/beauty-x/electron-printer/tarball/master",
+    "clone_url": "https://github.com/beauty-x/electron-printer",
+    "https_url": "https://github.com/beauty-x/electron-printer",
+    "travis_url": "https://travis-ci.org/beauty-x/electron-printer",
+    "zip_url": "https://github.com/beauty-x/electron-printer/archive/master.zip",
+    "api_url": "https://api.github.com/repos/beauty-x/electron-printer"
+  },
+  "engines": {
+    "electron": ">=1.3.4"
+  },
+  "scripts": {
+    "install": "node-pre-gyp rebuild --target=1.3.4 --dist-url=https://atom.io/download/atom-shell",
+    "release": "node-pre-gyp rebuild --runtime=electron --target=1.3.4 && node-pre-gyp package --runtime=electron --target=1.3.4 && node-pre-gyp-github publish --release",
+    "release-darwin": "HOME=~/.electron-gyp node-pre-gyp rebuild --target_platform=darwin --runtime=electron --target=1.3.4 --arch=x64 --dist-url=https://atom.io/download/atom-shell && node-pre-gyp package --target_platform=darwin --runtime=electron --target=1.3.4 && node-pre-gyp-github publish —release",
+    "release-linux": "node-pre-gyp rebuild --target_arch=x64 --runtime=electron --target=1.3.4 --target_platform=linux && node-pre-gyp package --target_arch=x64 --target_platform=linux --runtime=electron --target=1.3.4 && node-pre-gyp-github publish --release",
+    "release-linux-ia32": "node-pre-gyp rebuild --target_arch=ia32 --target_platform=linux --runtime=electron --target=1.3.4 && node-pre-gyp --target_arch=ia32 --target_platform=linux --runtime=electron --target=1.3.4 package && node-pre-gyp-github publish --release",
+    "release-win": "node-pre-gyp rebuild --target_arch=x64 --target_platform=win32 --runtime=electron --target=1.3.4 && node-pre-gyp package --target_arch=x64 --target_platform=win32 --runtime=electron --target=1.3.4 && node-pre-gyp-github publish --release",
+    "release-win-ia32": "node-pre-gyp rebuild --target_arch=ia32 --target_platform=win32 --runtime=electron --target=1.3.4 && node-pre-gyp package --target_arch=ia32 --target_platform=win32 --runtime=electron --target=1.3.4 && node-pre-gyp-github publish --release"
+  },
+  "binary": {
+    "module_name": "node_printer",
+    "module_path": "./build/{configuration}/electron-v1.3.4-{platform}-{arch}/",
+    "package_name": "electron-v1.3.4-{platform}-{arch}.tar.gz",
+    "host": "https://github.com/beauty-x/electron-printer/releases/download/0.1.1"
+  },
+  "dependencies": {
+    "nan": "^2.1.0",
+    "node-pre-gyp": "^0.6.13",
+    "node-pre-gyp-github": "^1.1.2"
+  },
+  "devDependencies": {
+    "nodeunit": "*"
+  },
+  "licenses": [
+    {
+      "type": "MIT"
+    }
+  ],
+  "main": "./index",
+  "gitHead": "3919120720341590c5fbf90c3587a980f7ca4a78",
+  "bundleDependencies": [
+    "node-pre-gyp"
+  ],
+  "_npmVersion": "3.10.5",
+  "_nodeVersion": "6.2.2",
+  "dist": {
+    "shasum": "6f7954bf50ad775e593ff6f50e83a4385cf033cf",
+    "tarball": "http://registry.npmjs.org/beautyx-printer/-/beautyx-printer-0.1.1.tgz"
+  },
+  "versions": [
+    {
+      "number": "0.0.6",
+      "date": "2016-08-24T01:48:43.290Z"
+    },
+    {
+      "number": "0.1.0",
+      "date": "2016-08-24T01:55:31.857Z"
+    },
+    {
+      "number": "0.1.1",
+      "date": "2016-08-24T13:31:57.080Z"
+    }
+  ],
+  "created": "2016-08-24T01:48:43.290Z",
+  "modified": "2016-08-24T13:31:57.080Z",
+  "lastPublisher": {
+    "name": "beautyx",
+    "email": "bin@51gezhu.com"
+  },
+  "owners": [
+    {
+      "name": "beautyx",
+      "email": "bin@51gezhu.com"
+    }
+  ],
+  "readme": "# beautyx-printer\nnode-printer fork to be used with electron. It's a fork from node-printer which binary are released on github.\nIt's a temporary solution until binary package will be available for node 5.1.x and\nwindows / linux platforms for node-printer on electron runtime. Please refer to https://github.com/tojocky/node-printer on\nhow to use these APIs.\n\n# Prerequisite\nInstall the node version used by electron (currently is 5.1.1 for electron 0.36.7).\nA github valid `NODE_PRE_GYP_GITHUB_TOKEN` must be set as env variable.\n\n# Release & Build\nRemember to change the binary host with the correct version (see https://github.com/bchr02/node-pre-gyp-github).\nAfter the release, build the binaries for each OS.\n\n# Linux build\nOn Ubuntu 15.10, install:\n```\nsudo apt-get install libudev-dev libusb-1.0-0-dev g++-multilib libudev-dev:i386 libcups2-dev\n```\nAnd then run `npm run release-linux` (x64) or `npm run release-linux-ia32` (ia32) to publish\nthe binary build\n\n# Windows build\nUse a  Windows 7 on x64. Install Visual Studio (2013 is OK on Windows 7) and Python 2.7.x\nAlways specify the VisualStudio version using `--msvs_version=xxxx`, foor instance\n`npm i --msvs_version=2013`\n\nRelease using  `npm run release-win --msvs_version=2013` (x64) or `npm run release-win-ia32 --msvs_version=2013` (ia32)\n\n# OSx build\nAfter `npm i`, just use `npm run release-darwin` (`npm run release` should work)\n"
+}

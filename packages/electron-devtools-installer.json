@@ -1,6 +1,6 @@
 {
   "name": "electron-devtools-installer",
-  "version": "1.1.5",
+  "version": "2.0.1",
   "description": "An easy way to install Dev Tools extensions into Electron applications",
   "main": "dist/index.js",
   "scripts": {
@@ -42,10 +42,10 @@
     "chai": "^3.5.0",
     "chai-as-promised": "^5.3.0",
     "chai-fs": "github:chaijs/chai-fs",
-    "electron-mocha": "^2.2.0",
-    "electron-prebuilt": "^1.2.1",
-    "eslint": "^2.11.1",
-    "eslint-config-airbnb-base": "^3.0.1",
+    "electron-mocha": "^3.0.0",
+    "electron-prebuilt": "^1.2.6",
+    "eslint": "^3.1.1",
+    "eslint-config-airbnb-base": "^5.0.1",
     "eslint-plugin-import": "^1.8.1",
     "mocha-testdata": "^1.2.0",
     "spec-xunit-file": "0.0.1-3"
@@ -54,23 +54,21 @@
     "7zip": "0.0.6",
     "cross-unzip": "0.0.2",
     "request": "^2.72.0",
-    "rimraf": "^2.5.2"
-  },
-  "peerDependencies": {
-    "electron-prebuilt": "^1.2.1"
+    "rimraf": "^2.5.2",
+    "semver": "^5.3.0"
   },
   "babel": {
     "presets": [
       "es2015"
     ]
   },
-  "gitHead": "12a9d0eb47e79fb2673db0fe65e4026dfcd96a18",
+  "gitHead": "9ae08a0af465523ce70cf85cc60355cd5ae9cf55",
   "homepage": "https://github.com/GPMDP/electron-devtools-installer#readme",
-  "_npmVersion": "3.9.5",
-  "_nodeVersion": "6.2.2",
+  "_npmVersion": "3.10.5",
+  "_nodeVersion": "6.3.1",
   "dist": {
-    "shasum": "12282327a4ab825d2267fc42bc5d3241b26b3559",
-    "tarball": "http://registry.npmjs.org/electron-devtools-installer/-/electron-devtools-installer-1.1.5.tgz"
+    "shasum": "d52dcb3a430a95b771dc01d8deb13fcbdaa8d13c",
+    "tarball": "http://registry.npmjs.org/electron-devtools-installer/-/electron-devtools-installer-2.0.1.tgz"
   },
   "versions": [
     {
@@ -120,13 +118,21 @@
     {
       "number": "1.1.5",
       "date": "2016-07-02T10:55:42.794Z"
+    },
+    {
+      "number": "2.0.0",
+      "date": "2016-07-21T01:41:01.926Z"
+    },
+    {
+      "number": "2.0.1",
+      "date": "2016-08-08T06:34:13.017Z"
     }
   ],
   "created": "2016-06-08T11:17:07.819Z",
-  "modified": "2016-07-02T10:55:42.794Z",
+  "modified": "2016-08-08T06:34:13.017Z",
   "lastPublisher": {
     "name": "marshallofsound",
-    "email": "samuel@marshallofsound.me"
+    "email": "samuel.r.attard@gmail.com"
   },
   "owners": [
     {
@@ -134,5 +140,5 @@
       "email": "samuel.r.attard@gmail.com"
     }
   ],
-  "readme": "Electron DevTools Installer\r\n---------------------------\r\n\r\n[![Build Status](https://travis-ci.org/GPMDP/electron-devtools-installer.svg?branch=master)](https://travis-ci.org/GPMDP/electron-devtools-installer)\r\n[![npm version](https://badge.fury.io/js/electron-devtools-installer.svg)](https://www.npmjs.com/package/electron-devtools-installer)\r\n[![npm](https://img.shields.io/npm/dt/electron-devtools-installer.svg?maxAge=2592000)](https://www.npmjs.com/package/electron-devtools-installer)\r\n[![license](https://img.shields.io/github/license/GPMDP/electron-devtools-installer.svg?maxAge=2592000)](https://github.com/GPMDP/electron-devtools-installer/blob/master/LICENSE)\r\n![status](https://img.shields.io/badge/Status-%20Ready%20for%20Awesome-red.svg)\r\n\r\nThis is an easy way to install DevTool extensions into Electron.  You shouldn't\r\nhave to mess around with downloading the extension, finding the right folder and\r\nthen configuring the path for everyone's machines.\r\n\r\nAll you have to do now is\r\n\r\n```js\r\nimport installExtension, { REACT_DEVELOPER_TOOLS } from 'electron-devtools-installer';\r\n\r\ninstallExtension(REACT_DEVELOPER_TOOLS)\r\n    .then((name) => console.log(`Added Extension:  ${name}`))\r\n    .catch((err) => console.log('An error occurred: ', err));\r\n```\r\n\r\n## What extensions can I use?\r\n\r\nTechnically you can use whatever extension you want.  Simply find the ChromeStore ID\r\nof the extension you want to install, and call `installExtension('YOUR_ID_HERE')`.  We\r\noffer a few extension ID's inside the package so you can easily import them to install without\r\nhaving to find them yourselves.\r\n\r\n```js\r\nimport installExtension, {\r\n  EMBER_INSPECTOR, REACT_DEVELOPER_TOOLS,\r\n  BACKBONE_DEBUGGER, JQUERY_DEBUGGER,\r\n  ANGULARJS_BATARANG, VUEJS_DEVTOOLS,\r\n  REDUX_DEVTOOLS,\r\n} from 'electron-devtools-installer';\r\n```\r\n\r\n## How does it work?\r\n\r\nWell, you know those steps over in the [Electron Docs](https://github.com/electron/electron/blob/master/docs/tutorial/devtools-extension.md)\r\nthat involve downloading, copying, checking paths, Etc.\r\n\r\nThis does all of that for you, it downloads the chrome extension directly from\r\nthe Chrome WebStore.  Then it extracts it to your applications `userData` directory\r\nbefore loading it into Electron.\r\n\r\n\r\nLicense\r\n-------\r\n\r\nThe MIT License (MIT)\r\n\r\nCopyright (c) 2016 Samuel Attard\r\n\r\nPermission is hereby granted, free of charge, to any person obtaining a copy of\r\nthis software and associated documentation files (the \"Software\"), to deal in\r\nthe Software without restriction, including without limitation the rights to\r\nuse, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of\r\nthe Software, and to permit persons to whom the Software is furnished to do so,\r\nsubject to the following conditions:\r\n\r\nThe above copyright notice and this permission notice shall be included in all\r\ncopies or substantial portions of the Software.\r\n\r\nTHE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR\r\nIMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS\r\nFOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR\r\nCOPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER\r\nIN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN\r\nCONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.\r\n"
+  "readme": "Electron DevTools Installer\r\n---------------------------\r\n\r\n[![Build Status](https://travis-ci.org/GPMDP/electron-devtools-installer.svg?branch=master)](https://travis-ci.org/GPMDP/electron-devtools-installer)\r\n[![npm version](https://badge.fury.io/js/electron-devtools-installer.svg)](https://www.npmjs.com/package/electron-devtools-installer)\r\n[![npm](https://img.shields.io/npm/dt/electron-devtools-installer.svg?maxAge=2592000)](https://www.npmjs.com/package/electron-devtools-installer)\r\n[![license](https://img.shields.io/github/license/GPMDP/electron-devtools-installer.svg?maxAge=2592000)](https://github.com/GPMDP/electron-devtools-installer/blob/master/LICENSE)\r\n![status](https://img.shields.io/badge/Status-%20Ready%20for%20Awesome-red.svg)\r\n\r\nThis is an easy way to install DevTool extensions into Electron.  You shouldn't\r\nhave to mess around with downloading the extension, finding the right folder and\r\nthen configuring the path for everyone's machines.\r\n\r\nAll you have to do now is\r\n\r\n```js\r\nimport installExtension, { REACT_DEVELOPER_TOOLS } from 'electron-devtools-installer';\r\n\r\ninstallExtension(REACT_DEVELOPER_TOOLS)\r\n    .then((name) => console.log(`Added Extension:  ${name}`))\r\n    .catch((err) => console.log('An error occurred: ', err));\r\n```\r\n\r\n## What extensions can I use?\r\n\r\nTechnically you can use whatever extension you want.  Simply find the ChromeStore ID\r\nof the extension you want to install, and call `installExtension('YOUR_ID_HERE')`.  We\r\noffer a few extension ID's inside the package so you can easily import them to install without\r\nhaving to find them yourselves.\r\n\r\n```js\r\nimport installExtension, {\r\n  EMBER_INSPECTOR, REACT_DEVELOPER_TOOLS,\r\n  BACKBONE_DEBUGGER, JQUERY_DEBUGGER,\r\n  ANGULARJS_BATARANG, VUEJS_DEVTOOLS,\r\n  REDUX_DEVTOOLS, REACT_PERF,\r\n} from 'electron-devtools-installer';\r\n```\r\n\r\n## How does it work?\r\n\r\nWell, you know those steps over in the [Electron Docs](https://github.com/electron/electron/blob/master/docs/tutorial/devtools-extension.md)\r\nthat involve downloading, copying, checking paths, Etc.\r\n\r\nThis does all of that for you, it downloads the chrome extension directly from\r\nthe Chrome WebStore.  Then it extracts it to your applications `userData` directory\r\nbefore loading it into Electron.\r\n\r\n\r\nLicense\r\n-------\r\n\r\nThe MIT License (MIT)\r\n\r\nCopyright (c) 2016 Samuel Attard\r\n\r\nPermission is hereby granted, free of charge, to any person obtaining a copy of\r\nthis software and associated documentation files (the \"Software\"), to deal in\r\nthe Software without restriction, including without limitation the rights to\r\nuse, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of\r\nthe Software, and to permit persons to whom the Software is furnished to do so,\r\nsubject to the following conditions:\r\n\r\nThe above copyright notice and this permission notice shall be included in all\r\ncopies or substantial portions of the Software.\r\n\r\nTHE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR\r\nIMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS\r\nFOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR\r\nCOPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER\r\nIN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN\r\nCONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.\r\n"
 }

@@ -1,0 +1,134 @@
+{
+  "name": "electron-windows-notifications",
+  "version": "0.4.1",
+  "description": "Native Windows notifications for Electron using NodeRT",
+  "main": "./src/index.js",
+  "scripts": {
+    "lint": "standard \"./src/*.js\" && standard \"./test/*.js\"",
+    "test": "npm run lint && mocha"
+  },
+  "repository": {
+    "user": "CatalystCode",
+    "repo": "electron-windows-notifications",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/CatalystCode/electron-windows-notifications/tarball/master",
+    "clone_url": "https://github.com/CatalystCode/electron-windows-notifications",
+    "https_url": "https://github.com/CatalystCode/electron-windows-notifications",
+    "travis_url": "https://travis-ci.org/CatalystCode/electron-windows-notifications",
+    "zip_url": "https://github.com/CatalystCode/electron-windows-notifications/archive/master.zip",
+    "api_url": "https://api.github.com/repos/CatalystCode/electron-windows-notifications"
+  },
+  "keywords": [
+    "Windows",
+    "notifications",
+    "nodert",
+    "winrt"
+  ],
+  "author": "",
+  "license": "MIT",
+  "homepage": "https://github.com/CatalystCode/electron-windows-notifications#readme",
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "mocha": "^3.0.2",
+    "standard": "^8.1.0"
+  },
+  "dependencies": {
+    "debug-electron": "0.0.1",
+    "is-electron-renderer": "^2.0.1",
+    "xml-escape": "^1.1.0",
+    "@nodert-win10/windows.data.xml.dom": "^0.2.9",
+    "@nodert-win10/windows.ui.notifications": "^0.2.9"
+  },
+  "optionalDependencies": {
+    "@nodert-win10/windows.data.xml.dom": "^0.2.9",
+    "@nodert-win10/windows.ui.notifications": "^0.2.9"
+  },
+  "gitHead": "a04fffba728495325922eca34747a8423805a4a5",
+  "_npmVersion": "3.10.3",
+  "_nodeVersion": "6.3.1",
+  "dist": {
+    "shasum": "9ee016fc8ca2b2e4e674b73b8a3914d7ea9f1f2b",
+    "tarball": "http://registry.npmjs.org/electron-windows-notifications/-/electron-windows-notifications-0.4.1.tgz"
+  },
+  "versions": [
+    {
+      "number": "0.1.0",
+      "date": "2016-09-26T21:44:13.424Z"
+    },
+    {
+      "number": "0.1.1",
+      "date": "2016-09-26T21:56:04.086Z"
+    },
+    {
+      "number": "0.1.2",
+      "date": "2016-09-26T22:00:59.977Z"
+    },
+    {
+      "number": "0.1.3",
+      "date": "2016-09-26T23:16:51.783Z"
+    },
+    {
+      "number": "0.2.0",
+      "date": "2016-09-27T19:10:36.773Z"
+    },
+    {
+      "number": "0.2.1",
+      "date": "2016-09-27T20:37:17.575Z"
+    },
+    {
+      "number": "0.2.2",
+      "date": "2016-09-27T21:33:00.921Z"
+    },
+    {
+      "number": "0.3.0",
+      "date": "2016-09-27T22:11:53.365Z"
+    },
+    {
+      "number": "0.3.1",
+      "date": "2016-09-27T22:33:13.965Z"
+    },
+    {
+      "number": "0.3.2",
+      "date": "2016-09-27T22:36:22.020Z"
+    },
+    {
+      "number": "0.3.3",
+      "date": "2016-09-28T18:42:50.641Z"
+    },
+    {
+      "number": "0.3.4",
+      "date": "2016-09-29T15:58:10.229Z"
+    },
+    {
+      "number": "0.4.0",
+      "date": "2016-09-29T18:30:19.731Z"
+    },
+    {
+      "number": "0.4.1",
+      "date": "2016-09-29T18:37:47.875Z"
+    }
+  ],
+  "created": "2016-09-26T21:44:13.424Z",
+  "modified": "2016-09-29T18:37:47.875Z",
+  "lastPublisher": {
+    "name": "felixrieseberg",
+    "email": "felix@felixrieseberg.com"
+  },
+  "owners": [
+    {
+      "name": "felixrieseberg",
+      "email": "felix@felixrieseberg.com"
+    },
+    {
+      "name": "nadavbar",
+      "email": "nadavbar@gmail.com"
+    },
+    {
+      "name": "ritazh",
+      "email": "ritazhcode@gmail.com"
+    }
+  ],
+  "readme": "# electron-windows-notifications\nCreate native Windows toast notifications for Windows 8, 8.1, and 10 using native bindings to WinRT (using NodeRT).\n\n```\nnpm install --save electron-windows-notifications\n```\n\n#### Usage\n\nThe constructor for the `Notification` class accepts an options `object` with the following properties:\n\n * `string` template - The XML template for the notification. You can also call `new Template()` with few properties to customize your own XML template based on the default. See example: [template.js](samples/template.js)\n * `string[]` strings - An array of strings to be used in your template. XML escaping is applied to all strings.\n * `Date` expirationTime - Time after which a toast notification should not be displayed.\n * `string` group - Group identifier for the notification.\n * `string` tag - Unique identifier of this notification within the notification group.\n * `string` appId - `appUserModelId` of the application for which the notification is sent. If not passed, it will be assumed to be a global property in Electron's main thread.\n\n```JS\nconst appId = 'electron-windows-notifications'\nconst {Notification} = require('electron-windows-notifications')\n\nlet notification = new Notification({\n    appId: appId,\n    template: `<toast><visual><binding template=\"ToastText01\"><text id=\"1\">%s</text></binding></visual></toast>`,\n    strings: ['Hi!']\n})\n\nnotification.on('activated', () => console.log('Activated!'))\nnotification.show()\n```\n\nFor more samples, check out the `samples` folder.\n\n### Hints\n\n##### appUserModelId\nThe appUserModelId identifies application in Windows. In Electron, you can set it at runtime using the `app.setAppUserModelId()` method. If you don't pass it, this module will assume that it's a property on Electron's main thread. Usually, you probably want to pass it.\n\n##### Mysterious Failures & XML Escaping\nMicrosoft follows the XML spec to the letter - and XML has escaping rules you might not be familiar with. If you're adding strings and properties to your template, consider just using the `strings` property in the constructor - it will automatically properly escape all input.\n\n##### String replacement\nInside the module, `util.format` is used. It'll format the template in a `printf`-like format. The template is expected to hold zero or more placeholders. Each placeholder is replaced with the converted value from its corresponding argument. If the placeholder does not have a corresponding argument, the placeholder is not replaced. Supported placeholders are:\n\n* %s - String.\n* %d - Number (both integer and float).\n* %j - JSON.\n* %% - single percent sign ('%'). This does not consume an argument.\n\n### License\nMIT. Please see LICENSE for details."
+}

@@ -1,6 +1,6 @@
 {
   "name": "reactors",
-  "version": "0.1.17",
+  "version": "0.1.21",
   "description": "Framework based on React to build hybrid apps that run web, mobile and desktop.",
   "main": "dist/index.js",
   "keywords": [
@@ -38,8 +38,7 @@
   "scripts": {
     "test": "redtea dist/tests/",
     "babel": "babel --out-dir dist/ app/",
-    "babel-watch": "babel --watch --out-dir dist/ app/",
-    "postinstall": "reactors upgrade"
+    "babel-watch": "babel --watch --out-dir dist/ app/"
   },
   "bin": {
     "reactors": "dist/bin/index.js"
@@ -51,6 +50,10 @@
   "devDependencies": {
     "babel-cli": "^6.9.0",
     "babel-eslint": "^6.0.4",
+    "babel-plugin-syntax-async-functions": "^6.8.0",
+    "babel-plugin-transform-regenerator": "^6.9.0",
+    "babel-plugin-transform-runtime": "^6.9.0",
+    "babel-polyfill": "^6.9.1",
     "babel-preset-es2015": "^6.9.0",
     "babel-preset-react": "^6.5.0",
     "babel-preset-stage-0": "^6.5.0",
@@ -58,20 +61,19 @@
     "eslint": "^2.11.1",
     "eslint-plugin-react": "^5.1.1",
     "eslint-plugin-react-native": "^1.1.0-beta",
-    "redtea": "^5.0.1"
+    "redtea": "^5.0.3"
   },
   "dependencies": {
-    "colors": "^1.1.2",
     "promise-sequencer": "^3.0.0",
     "semver": "^5.1.0"
   },
-  "gitHead": "775083844f6e1409445c70b082d7edc9d8d0e3f7",
+  "gitHead": "007182bc7491f8173b44976d6b6931e359231354",
   "homepage": "https://github.com/co2-git/reactors#readme",
   "_npmVersion": "3.8.6",
   "_nodeVersion": "5.0.0",
   "dist": {
-    "shasum": "1a4575aee638f6b27c48bb733346b9fe08093d20",
-    "tarball": "http://registry.npmjs.org/reactors/-/reactors-0.1.17.tgz"
+    "shasum": "2077af1043970b2702cbd3993d13431039523985",
+    "tarball": "http://registry.npmjs.org/reactors/-/reactors-0.1.21.tgz"
   },
   "versions": [
     {
@@ -169,10 +171,26 @@
     {
       "number": "0.1.17",
       "date": "2016-07-12T03:14:28.865Z"
+    },
+    {
+      "number": "0.1.18",
+      "date": "2016-07-15T04:42:17.134Z"
+    },
+    {
+      "number": "0.1.19",
+      "date": "2016-07-15T10:16:53.350Z"
+    },
+    {
+      "number": "0.1.20",
+      "date": "2016-07-17T22:36:09.851Z"
+    },
+    {
+      "number": "0.1.21",
+      "date": "2016-07-18T00:41:49.232Z"
     }
   ],
   "created": "2016-06-07T04:47:08.470Z",
-  "modified": "2016-07-12T03:14:28.865Z",
+  "modified": "2016-07-18T00:41:49.232Z",
   "lastPublisher": {
     "name": "francoisv",
     "email": "francoisrvespa@gmail.com"
@@ -183,5 +201,5 @@
       "email": "francoisrvespa@gmail.com"
     }
   ],
-  "readme": "reactors\n===\n\nFramework based on [React](https://facebook.github.io/react/) to build hybrid apps that run web, mobile and desktop.\nWe use [React Native](https://facebook.github.io/react-native/) for mobile, and [Electron](http://electron.atom.io/) for desktop.\n\n# Install\n\n```bash\nsudo npm install --global react-native-cli electron-prebuilt reactors\n```\n\n# Create a new Reactors app\n\n```bash\nreactors init MyAwesomeApp\n```\n\n# Run\n\n```bash\nreactors run ios\nreactors run android\nreactors run web\nreactors run desktop\n```\n\n# Usage\n\n```javascript\nimport React, {Component} from 'react';\nimport {\n  View,\n  Text,\n  ListView,\n} from 'reactors';\n\nexport default class MyAwesomeComponent extends Component {\n  render() {\n    return (\n      <View>\n        <Text style={{fontWeight: 'bold'}}>One code to rule them all:</Text>\n        <ListView\n          dataSource={[\n            'Web browser',\n            'Android',\n            'iPhone and iPad',\n            'Mac OSX',\n            'Ubuntu and Linux',\n            'Windows 10',\n          ]}\n          renderRow={(platform) => <Text>{platform}</Text>}\n          />\n      </View>\n    );\n  }\n}\n```\n\nView a detailed example [here](templates/app/App.js).\n\n# Core Components\n\n- [Core](doc/Components/Core.md)\n- [Image](doc/Components/Image.md)\n- [ListView](doc/Components/ListView.md)\n- [Link](doc/Components/Link.md)\n- [ScrollView](doc/Components/ScrollView.md)\n- [Text](doc/Components/Text.md)\n- [View](doc/Components/View.md)\n\n# Core APIs\n\n- [Gesture](doc/API/Gesture.md)\n- [StyleSheet](doc/API/StyleSheet.md)\n\n# Platform dependent code\n\nYou can code for a specific platform:\n\n```javascript\nswitch (Reactors.platform) {\ncase 'mobile':\n  // ...\n  break;\ncase 'web':\n  // ...\n  break;\ncase 'desktop':\n  // ...\n  break;\n}\n```\n\nYou can access `react-native` and `electron` via `import`.\n\n# Plugins\n\nCheck out Reactors plugin in the `npm` registry. Look for packages starting by `reactors-`.\n\nSome plugins:\n\n- [reactors-form](https://www.npmjs.com/package/reactors-form)\n- [reactors-http-request](https://www.npmjs.com/package/reactors-http-request)\n- [reactors-router](https://www.npmjs.com/package/reactors-router)\n"
+  "readme": "reactors\n===\n\n<img src=\"https://circleci.com/gh/co2-git/reactors.svg?style=shield&circle-token=4165dcefbcf62c4553fe9ce863fcd5ac93fa9a95\" />\n[![npm version](https://badge.fury.io/js/reactors.svg)](https://badge.fury.io/js/reactors)\n[![GitHub version](https://badge.fury.io/gh/co2-git%2Freactors.png)](https://badge.fury.io/gh/co2-git%2Freactors)\n\n===\n\nFramework based on [React](https://facebook.github.io/react/) to build hybrid apps that run web, mobile and desktop.\nWe use [React Native](https://facebook.github.io/react-native/) for mobile, and [Electron](http://electron.atom.io/) for desktop.\n\n# Install\n\n```bash\nsudo npm install --global react-native-cli electron-prebuilt reactors\n```\n\n# Create a new Reactors app\n\n```bash\nreactors init MyAwesomeApp\n```\n\n# Run\n\n```bash\nreactors run ios\nreactors run android\nreactors run web\nreactors run desktop\n```\n\n# Upgrade\n\n```bash\nreactors upgrade\n```\n\nThis is calling behind the scene:\n\n- `npm install`\n- `react-native upgrade`\n- apply migrations for new version of `reactor`\n\n# Usage\n\n```javascript\nimport React, {Component} from 'react';\nimport {\n  View,\n  Text,\n  ListView,\n} from 'reactors';\n\nexport default class MyAwesomeComponent extends Component {\n  render() {\n    return (\n      <View>\n        <Text style={{fontWeight: 'bold'}}>One code to rule them all:</Text>\n        <ListView\n          dataSource={[\n            'Web browser',\n            'Android',\n            'iPhone and iPad',\n            'Mac OSX',\n            'Ubuntu and Linux',\n            'Windows 10',\n          ]}\n          renderRow={(platform) => <Text>{platform}</Text>}\n          />\n      </View>\n    );\n  }\n}\n```\n\nView a detailed example [here](templates/app/App.js).\n\n# Core Components\n\n- [Image](doc/Components/Image.md)\n- [ListView](doc/Components/ListView.md)\n- [Link](doc/Components/Link.md)\n- [ScrollView](doc/Components/ScrollView.md)\n- [Text](doc/Components/Text.md)\n- [View](doc/Components/View.md)\n\n# Core APIs\n\n- [Core](doc/API/Core.md)\n- [Dimensions](doc/API/Dimensions.md)\n- [Gesture](doc/API/Gesture.md)\n- [StyleSheet](doc/API/StyleSheet.md)\n\n# Platform dependent code\n\nYou can code for a specific platform:\n\n```javascript\nswitch (Reactors.platform) {\ncase 'mobile':\n  // ...\n  break;\ncase 'web':\n  // ...\n  break;\ncase 'desktop':\n  // ...\n  break;\n}\n```\n\nYou can access `react-native` and `electron` via `import`.\n\n# Plugins\n\nCheck out Reactors plugin in the `npm` registry. Look for packages starting by `reactors-`.\n\nSome plugins:\n\n- [reactors-form](https://www.npmjs.com/package/reactors-form)\n- [reactors-http-request](https://www.npmjs.com/package/reactors-http-request)\n- [reactors-router](https://www.npmjs.com/package/reactors-router)\n"
 }

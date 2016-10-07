@@ -1,6 +1,6 @@
 {
   "name": "uupaa.mpeg2ts.js",
-  "version": "0.0.17",
+  "version": "0.0.19",
   "description": "MPEG-2 TS Demuxer.",
   "url": "https://github.com/uupaa/MPEG2TS.js",
   "keywords": [
@@ -49,7 +49,8 @@
     "start": "cd ../; Python -m SimpleHTTPServer 8000 &",
     "stop": "killall -- Python -m SimpleHTTPServer 8000; exit 0",
     "make_assets": "cd test/assets; ./make_video; cd -",
-    "clean_assets": "cd test/assets; rm -rf ./ff; rm -rf ./js; cd -"
+    "clean_assets": "cd test/assets; rm -rf ./ff; rm -rf ./js; cd -",
+    "class": "node ../WebModule/run/class.js"
   },
   "webmodule": {
     "develop": false,
@@ -59,35 +60,40 @@
     "browser": {
       "output": "release/MPEG2TS.b.min.js",
       "source": [
-        "lib/MPEG2TSParser.js",
+        "lib/MPEG2TSNALUnit.js",
+        "lib/MPEG2TSDemuxer.js",
         "lib/MPEG2TS.js"
       ]
     },
     "worker": {
       "output": "release/MPEG2TS.w.min.js",
       "source": [
-        "lib/MPEG2TSParser.js",
+        "lib/MPEG2TSNALUnit.js",
+        "lib/MPEG2TSDemuxer.js",
         "lib/MPEG2TS.js"
       ]
     },
     "node": {
       "output": "release/MPEG2TS.n.min.js",
       "source": [
-        "lib/MPEG2TSParser.js",
+        "lib/MPEG2TSNALUnit.js",
+        "lib/MPEG2TSDemuxer.js",
         "lib/MPEG2TS.js"
       ]
     },
     "nw": {
       "output": "release/MPEG2TS.nw.min.js",
       "source": [
-        "lib/MPEG2TSParser.js",
+        "lib/MPEG2TSNALUnit.js",
+        "lib/MPEG2TSDemuxer.js",
         "lib/MPEG2TS.js"
       ]
     },
     "el": {
       "output": "release/MPEG2TS.el.min.js",
       "source": [
-        "lib/MPEG2TSParser.js",
+        "lib/MPEG2TSNALUnit.js",
+        "lib/MPEG2TSDemuxer.js",
         "lib/MPEG2TS.js"
       ]
     }
@@ -96,13 +102,13 @@
     "uupaa.bit.js": "",
     "uupaa.hash.js": "",
     "uupaa.hexdump.js": "",
-    "uupaa.fileloader.js": "",
-    "uupaa.mpeg4bytestream.js": ""
+    "uupaa.fileloader.js": ""
   },
   "devDependencies": {
     "uupaa.typedarray.js": "",
     "uupaa.aac.js": "",
-    "uupaa.base64.js": ""
+    "uupaa.base64.js": "",
+    "uupaa.mpeg4bytestream.js": ""
   },
   "lib": "./lib/",
   "main": "./index.js",
@@ -111,12 +117,12 @@
   },
   "license": "Apache-2.0",
   "contributors": [],
-  "gitHead": "b55ea33bd7abff29bef2b8c41bdf3fae0ffe3e94",
+  "gitHead": "5efdb80bc0770613fce8347a05dc1ece8463e4e7",
   "homepage": "https://github.com/uupaa/MPEG2TS.js",
   "_npmVersion": "2.0.0",
   "dist": {
-    "shasum": "4f16cb685626a40df46589e72b75082fd8ad2cd2",
-    "tarball": "http://registry.npmjs.org/uupaa.mpeg2ts.js/-/uupaa.mpeg2ts.js-0.0.17.tgz"
+    "shasum": "021a3404a31670994f9eb7fd4d30c2dd5220d040",
+    "tarball": "http://registry.npmjs.org/uupaa.mpeg2ts.js/-/uupaa.mpeg2ts.js-0.0.19.tgz"
   },
   "versions": [
     {
@@ -174,10 +180,18 @@
     {
       "number": "0.0.17",
       "date": "2016-04-21T10:33:33.117Z"
+    },
+    {
+      "number": "0.0.18",
+      "date": "2016-08-24T07:00:31.923Z"
+    },
+    {
+      "number": "0.0.19",
+      "date": "2016-08-24T07:15:37.246Z"
     }
   ],
   "created": "2015-10-19T08:25:29.938Z",
-  "modified": "2016-04-21T10:33:33.117Z",
+  "modified": "2016-08-24T07:15:37.246Z",
   "lastPublisher": {
     "name": "uupaa",
     "email": "uupaa.js@gmail.com"

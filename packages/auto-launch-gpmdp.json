@@ -1,0 +1,85 @@
+{
+  "name": "auto-launch-gpmdp",
+  "version": "2.1.0",
+  "description": "Launch node applications or executables at login (Mac, Windows, and Linux)",
+  "main": "dist/index.js",
+  "scripts": {
+    "test": "gulp test"
+  },
+  "repository": {
+    "user": "4ver",
+    "repo": "node-auto-launch",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/4ver/node-auto-launch/tarball/master",
+    "clone_url": "https://github.com/4ver/node-auto-launch",
+    "https_url": "https://github.com/4ver/node-auto-launch",
+    "travis_url": "https://travis-ci.org/4ver/node-auto-launch",
+    "zip_url": "https://github.com/4ver/node-auto-launch/archive/master.zip",
+    "api_url": "https://api.github.com/repos/4ver/node-auto-launch"
+  },
+  "keywords": [
+    "login",
+    "launch",
+    "node-webkit",
+    "boot",
+    "login-items"
+  ],
+  "author": {
+    "name": "Donal Linehan"
+  },
+  "contributors": [
+    {
+      "name": "Adam Lynch",
+      "email": "adam@teamwork.com"
+    }
+  ],
+  "license": "MIT",
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "coffee-script": "^1.10.0",
+    "gulp": "^3.9.1",
+    "gulp-coffee": "^2.3.2",
+    "gulp-coffeelint": "^0.6.0",
+    "gulp-coffeelint-threshold": "^1.0.0",
+    "gulp-load-plugins": "^1.2.0",
+    "gulp-mocha": "^2.2.0",
+    "gulp-util": "^3.0.7",
+    "teamwork-coffeelint-rules": "0.0.1"
+  },
+  "homepage": "https://github.com/4ver/node-auto-launch",
+  "dependencies": {
+    "applescript": "^1.0.0",
+    "es6-promise": "^3.1.2",
+    "mkdirp": "^0.5.1",
+    "untildify": "^2.1.0",
+    "winreg": "1.0.1"
+  },
+  "gitHead": "fe1f76de78ca16e4f2fb4a4fb393acf2adcc6b47",
+  "_npmVersion": "3.10.5",
+  "_nodeVersion": "6.3.1",
+  "dist": {
+    "shasum": "a627c19d092cbbbcc247e9ff7611f061d5f7c2e2",
+    "tarball": "http://registry.npmjs.org/auto-launch-gpmdp/-/auto-launch-gpmdp-2.1.0.tgz"
+  },
+  "versions": [
+    {
+      "number": "2.1.0",
+      "date": "2016-08-09T16:48:21.142Z"
+    }
+  ],
+  "created": "2016-08-09T16:48:21.142Z",
+  "modified": "2016-08-09T16:48:21.142Z",
+  "lastPublisher": {
+    "name": "marshallofsound",
+    "email": "samuel.r.attard@gmail.com"
+  },
+  "owners": [
+    {
+      "name": "marshallofsound",
+      "email": "samuel.r.attard@gmail.com"
+    }
+  ],
+  "readme": "node-auto-launch\r\n==============\r\n\r\n[![NPM version][npm-image]][npm-url] [![Build Status][travis-image]][travis-url] [![Windows Build Status][appveyor-image]][appveyor-url] [![Dependency Status][depstat-image]][depstat-url]\r\n\r\n---\r\n\r\nLaunch applications or executables at login (Mac, Windows and Linux). Perfect for [NW.js](https://github.com/nwjs/nw.js) and [Electron](http://electron.atom.io/) apps.\r\n\r\n## Installation\r\n\r\n`npm install auto-launch`\r\n\r\n## Usage\r\n\r\nThe API consists only of `enable`, `disable`, and `isEnabled`.\r\n\r\n```javascript\r\nvar AutoLaunch = require('auto-launch');\r\n\r\nvar minecraftAutoLauncher = new AutoLaunch({\r\n\tname: 'Minecraft',\r\n\tpath: '/Applications/Minecraft.app',\r\n\tisHidden: true\r\n});\r\n\r\nminecraftAutoLauncher.enable();\r\n//minecraftAutoLauncher.disable();\r\n```\r\n\r\nFor NW.js or Electron apps you don't have to specify the path. It gets read from `process.execPath` :)\r\n\r\n```javascript\r\nvar AutoLaunch = require('auto-launch');\r\n\r\nvar appLauncher = new AutoLaunch({\r\n\tname: 'My NW.js or Electron app'\r\n});\r\n\r\nappLauncher.isEnabled().then(function(enabled){\r\n\tif(enabled) return;\r\n\treturn appLauncher.enable()\r\n}).then(function(err){\r\n\t\r\n});\r\n```\r\n\r\nNote: I added a method (`removeNwjsLoginItem`) to remove 'nwjs helper' app login item that might have been added to peoples accounts since the name change from node-webkit to NW.js.\r\n\r\n\r\n## TODO:\r\n\r\n- Add `getCurrentPath` - So you can check if the app has moved around.\r\n\r\n\r\n[npm-url]: https://npmjs.org/package/auto-launch\r\n[npm-image]: http://img.shields.io/npm/v/auto-launch.svg?style=flat\r\n\r\n[appveyor-url]: https://ci.appveyor.com/project/adam-lynch/node-auto-launch/branch/master\r\n[appveyor-image]: https://ci.appveyor.com/api/projects/status/0sraxp65vrj2axc3/branch/master?svg=true\r\n\r\n[travis-url]: http://travis-ci.org/Teamwork/node-auto-launch\r\n[travis-image]: http://img.shields.io/travis/Teamwork/node-auto-launch.svg?style=flat\r\n\r\n[depstat-url]: https://david-dm.org/teamwork/node-auto-launch\r\n[depstat-image]: https://david-dm.org/teamwork/node-auto-launch.svg?style=flat\r\n"
+}

@@ -1,6 +1,6 @@
 {
   "name": "node-apple-remote",
-  "version": "0.3.0",
+  "version": "1.0.0",
   "description": "Simple event-driven interface to Aluminum Apple Remote",
   "main": "index.js",
   "repository": {
@@ -30,15 +30,15 @@
   "dependencies": {
     "node-hid": "^0.5.1"
   },
-  "gitHead": "a4a00d0e18d29dec9adbf977b16dd039be11b337",
+  "gitHead": "402fb26ccfafc58f567b64819151060e6d9c2442",
   "scripts": {},
   "_npmVersion": "3.5.0",
   "_nodeVersion": "5.10.1",
   "dist": {
-    "shasum": "9471289de7b975cb1dd8197d656f841eaaae16a7",
-    "tarball": "http://registry.npmjs.org/node-apple-remote/-/node-apple-remote-0.3.0.tgz"
+    "shasum": "176de2f9e9ba0609dc3864f47c2e7e9d42af3793",
+    "tarball": "http://registry.npmjs.org/node-apple-remote/-/node-apple-remote-1.0.0.tgz"
   },
-  "stars": 3,
+  "stars": 4,
   "versions": [
     {
       "number": "0.1.0",
@@ -63,10 +63,14 @@
     {
       "number": "0.3.0",
       "date": "2016-07-08T10:50:31.833Z"
+    },
+    {
+      "number": "1.0.0",
+      "date": "2016-07-24T13:27:11.434Z"
     }
   ],
   "created": "2014-07-08T13:04:36.426Z",
-  "modified": "2016-07-08T10:50:31.833Z",
+  "modified": "2016-07-24T13:27:11.434Z",
   "lastPublisher": {
     "name": "dhleong",
     "email": "me@dhleong.net"
@@ -77,5 +81,5 @@
       "email": "me@dhleong.net"
     }
   ],
-  "readme": "node-apple-remote\n=================\n\nSimple node.js library for receiving events from an aluminum Apple Remote\n\n### Usage\n\n[![NPM](https://nodei.co/npm/node-apple-remote.png?mini=true)][1]\n\n```javascript\ntry {\n    require('node-apple-remote')\n        .on('left', /* ... */)\n        .on('left.long', /* ... */)\n        .on('left.long.released', /* ... */)\n        .on('center', /* ... */)\n        .on('center.long', /* ... */)\n} catch (e) {\n    // an exception is thrown if the apple remote\n    //  device was not found on the system\n}\n```\n\n### All events\n\n```javascript\n'raw'                  // Every single event; the Button pressed is passed.\n                       // it is unlikely you will need this\n'button'               // Each parsed button event; for example, 'left'\n                       //  will never have a 'left.released' follow it,\n                       //  though a 'raw' Released event may fire. In\n                       //  most cases, it may be easiest to register\n                       //  specific listeners (below)\n\n'left'                 // single-press\n'left.long'            // long-press (as in rewind); release to follow\n'left.long.released'   // release of long-press \n'right' \n'right.long' \n'right.long.released' \n\n'up'                   // pressed; release ALWAYS follows\n'up.released'          // note that there is no up.long\n'down'\n'down.released'\n\n'center'               // single-press only\n'center.long'          // long-press only (not \"holdable\")\n'playpause'\n'playpause.long'\n'menu'\n'menu.long'\n\n'error'                // emits with the an error Object from node-hid\n```\n\n### node-apple-remote and Electron/NW.js\n\nIf using this library with [Electron][2] or [NW.js][3], see the \n[notes from node-hid][4].\n\n[1]: https://nodei.co/npm/node-apple-remote/\n[2]: http://electron.atom.io/\n[3]: http://nwjs.io\n[4]: https://github.com/node-hid/node-hid#using-node-hid-in-electron-projects\n"
+  "readme": "node-apple-remote\n=================\n\nSimple node.js library for receiving events from an aluminum Apple Remote\n\n### Usage\n\n[![NPM](https://nodei.co/npm/node-apple-remote.png?mini=true)][1]\n\n```javascript\nvar AppleRemote = require('node-apple-remote');\nvar remote = new AppleRemote();\ntry {\n    remote.open()\n          .on('left', /* ... */)\n          .on('left.long', /* ... */)\n          .on('left.long.released', /* ... */)\n          .on('center', /* ... */)\n          .on('center.long', /* ... */)\n} catch (e) {\n    // an exception is thrown if the apple remote\n    //  device was not found on the system\n}\n```\n\n### All events\n\n```javascript\n'raw'                  // Every single event; the Button pressed is passed.\n                       // it is unlikely you will need this\n'button'               // Each parsed button event; for example, 'left'\n                       //  will never have a 'left.released' follow it,\n                       //  though a 'raw' Released event may fire. In\n                       //  most cases, it may be easiest to register\n                       //  specific listeners (below)\n\n'left'                 // single-press\n'left.long'            // long-press (as in rewind); release to follow\n'left.long.released'   // release of long-press \n'right' \n'right.long' \n'right.long.released' \n\n'up'                   // pressed; release ALWAYS follows\n'up.released'          // note that there is no up.long\n'down'\n'down.released'\n\n'center'               // single-press only\n'center.long'          // long-press only (not \"holdable\")\n'playpause'\n'playpause.long'\n'menu'\n'menu.long'\n\n'error'                // emits with the an error Object from node-hid\n```\n\n### node-apple-remote and Electron/NW.js\n\nIf using this library with [Electron][2] or [NW.js][3], see the \n[notes from node-hid][4].\n\n[1]: https://nodei.co/npm/node-apple-remote/\n[2]: http://electron.atom.io/\n[3]: http://nwjs.io\n[4]: https://github.com/node-hid/node-hid#using-node-hid-in-electron-projects\n"
 }

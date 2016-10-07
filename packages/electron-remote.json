@@ -1,12 +1,14 @@
 {
   "name": "electron-remote",
-  "version": "0.5.6",
+  "version": "1.0.3",
   "description": "Execute JavaScript in remote Electron processes, but more betterer",
   "scripts": {
     "doc": "esdoc -c ./esdoc.json",
     "compile": "git clean -xdf ./lib && babel -d lib/ src/ && cp ./src/*.html ./lib/",
     "prepublish": "npm run compile",
-    "test": "electron-mocha --renderer --require ./test/support.js ./test",
+    "test-renderer": "electron-mocha --renderer --require ./test/support.js ./test",
+    "test-browser": "electron-mocha --require ./test/support.js ./test/renderer-require",
+    "test": "npm run test-renderer && npm run test-browser",
     "node": "cross-env ELECTRON_RUN_AS_NODE=1 ./node_modules/electron-prebuilt-compile/node_modules/.bin/electron"
   },
   "repository": {
@@ -35,38 +37,38 @@
   "main": "lib/index.js",
   "homepage": "https://github.com/paulcbetts/electron-remote",
   "dependencies": {
-    "babel-polyfill": "^6.3.14",
     "debug": "^2.2.0",
+    "debug-electron": "0.0.1",
     "node-uuid": "^1.4.7",
     "pify": "^2.3.0",
-    "rx": "^4.0.7",
-    "rx-dom": "^7.0.3",
+    "rxjs": "^5.0.0-beta.12",
     "xmlhttprequest": "^1.8.0"
   },
   "devDependencies": {
-    "babel-cli": "^6.4.5",
-    "babel-eslint": "^5.0.0-beta6",
-    "babel-plugin-transform-async-to-generator": "^6.7.4",
-    "babel-plugin-transform-runtime": "^6.7.5",
+    "babel-cli": "^6.16.0",
+    "babel-eslint": "^7.0.0",
+    "babel-plugin-transform-async-to-generator": "^6.16.0",
+    "babel-plugin-transform-runtime": "^6.15.0",
     "babel-preset-es2016-node5": "^1.1.2",
-    "babel-register": "^6.4.3",
-    "chai": "^3.4.1",
-    "chai-as-promised": "^5.2.0",
-    "cross-env": "^1.0.7",
-    "electron-mocha": "^1.2.2",
-    "electron-prebuilt-compile": "^1.1.2",
-    "esdoc": "^0.4.3",
+    "babel-register": "^6.16.3",
+    "chai": "^3.5.0",
+    "chai-as-promised": "^6.0.0",
+    "cross-env": "^3.0.0",
+    "electron-mocha": "^3.1.1",
+    "electron-prebuilt-compile": "1.4.1",
+    "esdoc": "^0.4.8",
     "esdoc-es7-plugin": "0.0.3",
     "esdoc-plugin-async-to-sync": "^0.5.0",
-    "eslint": "^1.10.3"
+    "eslint": "^3.7.1"
   },
-  "gitHead": "be1dc2e3a801b6ae9330965f1583e33fd25fcefd",
-  "_npmVersion": "3.9.2",
-  "_nodeVersion": "6.2.0",
+  "gitHead": "3c9eea06a9fa9e593a339b74f10a635ef0841b1f",
+  "_npmVersion": "3.10.8",
+  "_nodeVersion": "6.6.0",
   "dist": {
-    "shasum": "ee5b78a1fa9118ec8e75d0e92383759e9548f1f7",
-    "tarball": "http://registry.npmjs.org/electron-remote/-/electron-remote-0.5.6.tgz"
+    "shasum": "e54c3cf9cd5ed9977046a406fbb0f55e571a143f",
+    "tarball": "http://registry.npmjs.org/electron-remote/-/electron-remote-1.0.3.tgz"
   },
+  "stars": 1,
   "versions": [
     {
       "number": "0.5.0",
@@ -95,10 +97,54 @@
     {
       "number": "0.5.6",
       "date": "2016-06-04T00:06:01.762Z"
+    },
+    {
+      "number": "0.5.7",
+      "date": "2016-07-28T22:13:31.602Z"
+    },
+    {
+      "number": "0.5.8",
+      "date": "2016-07-28T22:29:02.910Z"
+    },
+    {
+      "number": "0.5.9",
+      "date": "2016-07-28T23:57:07.022Z"
+    },
+    {
+      "number": "0.5.10",
+      "date": "2016-07-29T22:40:32.633Z"
+    },
+    {
+      "number": "0.6.0",
+      "date": "2016-08-10T00:46:41.873Z"
+    },
+    {
+      "number": "0.6.1",
+      "date": "2016-08-10T01:03:08.227Z"
+    },
+    {
+      "number": "0.6.2",
+      "date": "2016-08-15T23:14:32.005Z"
+    },
+    {
+      "number": "1.0.0",
+      "date": "2016-10-04T00:04:19.503Z"
+    },
+    {
+      "number": "1.0.1",
+      "date": "2016-10-04T00:14:48.808Z"
+    },
+    {
+      "number": "1.0.2",
+      "date": "2016-10-04T19:36:20.942Z"
+    },
+    {
+      "number": "1.0.3",
+      "date": "2016-10-04T20:00:16.456Z"
     }
   ],
   "created": "2016-04-28T18:01:06.498Z",
-  "modified": "2016-06-04T00:06:01.762Z",
+  "modified": "2016-10-04T20:00:16.456Z",
   "lastPublisher": {
     "name": "paulcbetts",
     "email": "paul@paulbetts.org"

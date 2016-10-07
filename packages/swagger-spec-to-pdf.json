@@ -1,6 +1,6 @@
 {
   "name": "swagger-spec-to-pdf",
-  "version": "1.0.1",
+  "version": "1.0.3",
   "description": "Dump swagger json spec into pdf document.",
   "main": "index.js",
   "scripts": {
@@ -27,13 +27,14 @@
     "http-server": "^0.9.0",
     "yaml-js": "^0.1.3"
   },
-  "gitHead": "14114119bffb71c50c9f1620c7f21e9377424b52",
-  "_npmVersion": "2.14.12",
-  "_nodeVersion": "4.3.2",
+  "gitHead": "53e187f6a600d41ce24af82e3c7b8c25e381ec0f",
+  "_npmVersion": "3.8.6",
+  "_nodeVersion": "6.0.0",
   "dist": {
-    "shasum": "c30abd55825b3edf5d29cefe938ad6b13a0fc9ec",
-    "tarball": "http://registry.npmjs.org/swagger-spec-to-pdf/-/swagger-spec-to-pdf-1.0.1.tgz"
+    "shasum": "966ca935dab425d2af7b36fdec695171986bbaca",
+    "tarball": "http://registry.npmjs.org/swagger-spec-to-pdf/-/swagger-spec-to-pdf-1.0.3.tgz"
   },
+  "stars": 1,
   "versions": [
     {
       "number": "1.0.0",
@@ -42,10 +43,18 @@
     {
       "number": "1.0.1",
       "date": "2016-04-29T08:13:00.899Z"
+    },
+    {
+      "number": "1.0.2",
+      "date": "2016-09-13T12:33:17.844Z"
+    },
+    {
+      "number": "1.0.3",
+      "date": "2016-09-14T02:58:08.685Z"
     }
   ],
   "created": "2016-04-29T07:56:58.000Z",
-  "modified": "2016-04-29T08:13:00.899Z",
+  "modified": "2016-09-14T02:58:08.685Z",
   "lastPublisher": {
     "name": "agreatfool",
     "email": "nightghost5078@gmail.com"
@@ -56,5 +65,5 @@
       "email": "nightghost5078@gmail.com"
     }
   ],
-  "readme": "# swagger-spec-to-pdf\n\n### Usage:\n    usage: swagger2pdf [-h] [-v] [-s SRC] [-o OUTPUT]\n\n    Optional arguments:\n      -h, --help            Show this help message and exit.\n      -v, --version         Show program's version number and exit.\n      -s SRC, --src SRC     Swagger spec JSON file.\n      -o OUTPUT, --output OUTPUT\n                            Output path of the pdf file.\n\n### Exec:\n./bin/swagger2pdf -s ./swagger-spec-sample.json -o ./dump/\n\n### Sample:\nSee: ./dump/swagger-spec-sample.pdf\n\n### Appendix:\n#### Working Theory\n1. Read source swagger json spec\n2. Convert it into yaml format\n3. Dump yaml into the spec dir of swagger editor\n4. Use electron to render swagger editor page (nicely formatted api page)\n5. Dump the page into pdf\n\n#### Swagger Editor\nVersion of swagger editor embedded is: 2.9.9   \nYou can get it from: [here](https://github.com/swagger-api/swagger-editor)   \nIf you want to use some other version:\n\n* clone the repo\n* replace the editor in ./swagger-editor\n* npm install .\n\nDone, just use it."
+  "readme": "# swagger-spec-to-pdf\n\n[![NPM version](https://img.shields.io/npm/v/swagger-spec-to-pdf.svg?style=flat)](https://npmjs.org/package/swagger-spec-to-pdf) [![NPM downloads](https://img.shields.io/npm/dm/localeval.svg?maxAge=2592000)](https://npmjs.org/package/swagger-spec-to-pdf) [![License](https://img.shields.io/npm/l/express.svg?maxAge=2592000)](https://npmjs.org/package/swagger-spec-to-pdf)\n\n### Usage:\n    usage: swagger2pdf [-h] [-v] [-s SRC] [-o OUTPUT]\n\n    Optional arguments:\n      -h, --help            Show this help message and exit.\n      -v, --version         Show program's version number and exit.\n      -s SRC, --src SRC     Swagger spec JSON file.\n      -o OUTPUT, --output OUTPUT\n                            Output path of the pdf file.\n\n### Exec:\n./bin/swagger2pdf -s ./swagger-spec-sample.json -o ./dump/    \n&    \nWait several seconds    \n\n### Sample:\nSee: ./dump/swagger-spec-sample.pdf\n\n### Appendix:\n#### Working Theory\n1. Read source swagger json spec\n2. Convert it into yaml format\n3. Dump yaml into the spec dir of swagger editor\n4. Use electron to render swagger editor page (nicely formatted api page)\n5. Dump the page into pdf\n\n#### Swagger Editor\nVersion of swagger editor embedded is: 2.9.9   \nYou can get it from: [here](https://github.com/swagger-api/swagger-editor)   \nIf you want to use some other version:\n\n* clone the repo\n* replace the editor in ./swagger-editor\n* Add codes below into the bottom of file ***swagger-editor/index.html***\n* npm install .\n\n```javascript\n<script type=\"text/javascript\">\n    $(\"document\").ready(function() {\n        setTimeout(function() {\n            var fileMenuTimer = setInterval(function() {\n                // open file menu\n                var fileMenu = $(\"#fileMenu\");\n                if (fileMenu.length) {\n                    clearInterval(fileMenuTimer);\n                    fileMenu.click();\n\n                    // open example selector\n                    var exampleButton = $(\"#open-example\");\n                    var exampleButtonTimer = setInterval(function() {\n                        if (exampleButton.length) {\n                            clearInterval(exampleButtonTimer);\n                            exampleButton.click();\n\n                            // click open button\n                            setTimeout(function() {\n                                $(\".modal-large .btn-primary\").click();\n                            }, 1000);\n                        }\n                    }, 300);\n                }\n            }, 300);\n        }, 1000);\n    });\n</script>\n```\n\nDone, just use it."
 }

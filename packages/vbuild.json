@@ -1,6 +1,6 @@
 {
   "name": "vbuild",
-  "version": "0.2.8",
+  "version": "2.2.0",
   "description": "Preset build tool for Vue.js apps.",
   "license": "MIT",
   "repository": {
@@ -26,9 +26,7 @@
     "node": ">=4"
   },
   "scripts": {
-    "test": "xo lib/*.js && nyc npm run ava",
-    "ava": "ava -s",
-    "example": "vbuild -c example/vbuild.js"
+    "test": "xo lib/*.js"
   },
   "bin": {
     "vbuild": "cli.js"
@@ -45,10 +43,12 @@
     "tool"
   ],
   "devDependencies": {
-    "ava": "latest",
-    "coveralls": "^2.11.9",
-    "nyc": "^6.4.0",
-    "xo": "^0.15.0"
+    "ava": "^0.16.0",
+    "coveralls": "^2.11.12",
+    "nyc": "^8.1.0",
+    "path-exists": "^3.0.0",
+    "vue": "^2.0.0-beta.2",
+    "xo": "^0.16.0"
   },
   "xo": {
     "semicolon": false,
@@ -57,71 +57,67 @@
       "operator-linebreak": [
         2,
         "before"
-      ]
+      ],
+      "xo/no-abusive-eslint-disable": 0
     }
   },
   "dependencies": {
     "assets-webpack-plugin": "^3.4.0",
-    "babel-core": "^6.7.7",
-    "babel-eslint": "^6.0.3",
-    "babel-loader": "^6.2.4",
-    "babel-plugin-transform-runtime": "^6.7.5",
-    "babel-polyfill": "^6.7.4",
-    "babel-preset-es2015": "^6.6.0",
-    "babel-preset-stage-0": "^6.5.0",
-    "babel-runtime": "^6.6.1",
-    "boxen": "^0.5.1",
-    "browser-sync": "^2.12.3",
-    "browser-sync-webpack-plugin": "^1.0.1",
+    "autoprefixer": "^6.5.0",
+    "babel-core": "^6.17.0",
+    "babel-helper-vue-jsx-merge-props": "^2.0.1",
+    "babel-loader": "^6.2.5",
+    "babel-plugin-syntax-jsx": "^6.13.0",
+    "babel-plugin-transform-runtime": "^6.15.0",
+    "babel-plugin-transform-vue-jsx": "^3.1.0",
+    "babel-polyfill": "^6.16.0",
+    "babel-preset-es2015": "^6.16.0",
+    "babel-preset-stage-2": "^6.17.0",
+    "babel-runtime": "^6.11.6",
+    "browser-sync": "^2.14.0",
+    "browser-sync-webpack-plugin": "^1.1.2",
+    "cac": "^2.3.2",
     "chalk": "^1.1.3",
     "co": "^4.6.0",
-    "css-loader": "^0.23.1",
-    "deep-assign": "^2.0.0",
-    "eslint": "^2.8.0",
-    "eslint-config-xo-space": "^0.13.0",
-    "eslint-loader": "^1.3.0",
-    "eslint-plugin-babel": "^3.2.0",
-    "eslint-plugin-html": "^1.4.0",
-    "express": "^4.13.4",
-    "extract-text-webpack-plugin": "^1.0.1",
+    "compression-webpack-plugin": "^0.3.1",
+    "css-loader": "^0.25.0",
+    "eslint": "^3.6.1",
+    "eslint-config-egoist-vue": "^2.0.2",
+    "eslint-loader": "^1.5.0",
+    "express": "^4.14.0",
+    "extract-text-webpack-plugin": "^2.0.0-beta.3",
     "fancy-log": "^1.2.0",
-    "file-loader": "^0.8.5",
+    "file-loader": "^0.9.0",
     "fs-promise": "^0.5.0",
     "handlebars": "^4.0.5",
-    "handlebars-loader": "^1.2.0",
-    "html-webpack-plugin": "^2.16.0",
+    "handlebars-loader": "^1.3.0",
+    "html-webpack-plugin": "^2.22.0",
     "json-loader": "^0.5.4",
-    "meow": "^3.7.0",
-    "opn": "^4.0.1",
-    "path-exists": "^3.0.0",
+    "lodash.merge": "^4.6.0",
+    "opn": "^4.0.2",
     "pify": "^2.3.0",
-    "postcss-cssnext": "^2.5.2",
-    "postcss-loader": "^0.9.1",
-    "require-from-string": "^1.1.0",
+    "postcss-loader": "^0.13.0",
+    "postcss-nested": "^1.0.0",
     "style-loader": "^0.13.1",
     "text-table": "^0.2.0",
     "tildify": "^1.2.0",
-    "trash": "^3.4.1",
-    "update-notifier": "^0.7.0",
-    "url-loader": "^0.5.7",
-    "vue": "^1.0.21",
-    "vue-hot-reload-api": "^1.3.2",
-    "vue-html-loader": "^1.2.2",
-    "vue-loader": "^8.2.3",
+    "trash": "^4.0.0",
+    "update-notifier": "^1.0.2",
+    "vue-loader": "^9.2.0",
     "vue-style-loader": "^1.0.0",
-    "webpack": "^1.13.0",
-    "webpack-hot-server": "^0.4.3",
-    "webpack-livereload-plugin": "^0.8.1",
-    "webpack-notifier": "^1.3.0",
-    "webpack-target-electron-renderer": "^0.4.0"
+    "webpack": "2.1.0-beta.22",
+    "webpack-hot-middleware": "^2.12.2",
+    "webpack-hot-server": "^0.6.0",
+    "webpack-livereload-plugin": "^0.8.2",
+    "webpack-notifier": "^1.3.2"
   },
-  "gitHead": "c65500f25bb64be56a16b095004b0c0335f68924",
+  "gitHead": "5788aa2058d31feb0f6bfdc945752b0d137bac25",
   "homepage": "https://github.com/egoist/vbuild#readme",
-  "_npmVersion": "3.7.3",
-  "_nodeVersion": "4.2.4",
+  "_npmVersion": "3.10.3",
+  "_nodeVersion": "6.4.0",
   "dist": {
-    "shasum": "ba84fda47abab673a18f3f5f97e4a7de1d1ae4c9",
-    "tarball": "http://registry.npmjs.org/vbuild/-/vbuild-0.2.8.tgz"
+    "shasum": "daab4e2905ca438dfad870958f840f6ba26593cc",
+    "tarball": "http://registry.npmjs.org/vbuild/-/vbuild-2.2.0.tgz"
   },
   "versions": [
     {
@@ -191,19 +187,111 @@
     {
       "number": "0.2.8",
       "date": "2016-05-20T01:49:20.184Z"
+    },
+    {
+      "number": "1.0.0-beta.1",
+      "date": "2016-07-18T11:08:46.955Z"
+    },
+    {
+      "number": "1.0.0",
+      "date": "2016-07-29T10:40:48.384Z"
+    },
+    {
+      "number": "1.0.1",
+      "date": "2016-07-29T10:57:04.655Z"
+    },
+    {
+      "number": "1.0.2",
+      "date": "2016-07-29T11:13:35.716Z"
+    },
+    {
+      "number": "0.2.9",
+      "date": "2016-08-05T02:17:17.247Z"
+    },
+    {
+      "number": "1.1.0",
+      "date": "2016-08-20T16:17:26.611Z"
+    },
+    {
+      "number": "1.1.1",
+      "date": "2016-08-20T16:29:24.578Z"
+    },
+    {
+      "number": "1.1.2",
+      "date": "2016-08-20T16:48:04.623Z"
+    },
+    {
+      "number": "1.2.0",
+      "date": "2016-09-16T14:40:17.539Z"
+    },
+    {
+      "number": "1.2.1",
+      "date": "2016-09-20T13:45:54.865Z"
+    },
+    {
+      "number": "1.2.2",
+      "date": "2016-09-29T04:18:40.290Z"
+    },
+    {
+      "number": "1.3.0",
+      "date": "2016-09-29T04:35:56.021Z"
+    },
+    {
+      "number": "1.4.0",
+      "date": "2016-09-29T04:57:23.509Z"
+    },
+    {
+      "number": "2.0.0",
+      "date": "2016-10-03T10:23:59.504Z"
+    },
+    {
+      "number": "2.0.1",
+      "date": "2016-10-03T18:13:52.589Z"
+    },
+    {
+      "number": "2.0.2",
+      "date": "2016-10-03T19:54:56.095Z"
+    },
+    {
+      "number": "2.1.0",
+      "date": "2016-10-04T07:49:03.430Z"
+    },
+    {
+      "number": "2.1.1",
+      "date": "2016-10-04T08:10:56.609Z"
+    },
+    {
+      "number": "2.1.2",
+      "date": "2016-10-04T08:29:24.914Z"
+    },
+    {
+      "number": "2.1.3",
+      "date": "2016-10-04T12:55:00.343Z"
+    },
+    {
+      "number": "2.1.4",
+      "date": "2016-10-05T07:41:56.287Z"
+    },
+    {
+      "number": "2.2.0",
+      "date": "2016-10-06T15:28:01.479Z"
     }
   ],
   "created": "2016-04-21T16:27:15.078Z",
-  "modified": "2016-05-20T01:49:20.184Z",
+  "modified": "2016-10-06T15:28:01.479Z",
   "lastPublisher": {
-    "name": "kchan",
-    "email": "kchanzen@gmail.com"
+    "name": "rem",
+    "email": "0x142857@gmail.com"
   },
   "owners": [
     {
       "name": "kchan",
       "email": "kchanzen@gmail.com"
+    },
+    {
+      "name": "rem",
+      "email": "0x142857@gmail.com"
     }
   ],
-  "readme": "# vbuild [![NPM version](https://img.shields.io/npm/v/vbuild.svg)](https://npmjs.com/package/vbuild) [![NPM downloads](https://img.shields.io/npm/dm/vbuild.svg)](https://npmjs.com/package/vbuild) [![Build Status](https://img.shields.io/circleci/project/egoist/vbuild/master.svg)](https://circleci.com/gh/egoist/vbuild) [![Coveralls branch](https://img.shields.io/coveralls/egoist/vbuild/master.svg)](https://github.com/egoist/vbuild)\n\nPreset build tool for Vue.js apps.\n\n![preview](http://ww4.sinaimg.cn/large/a15b4afegw1f3ra85h0flg20j10agjsb)\n\n## What can be done perfectly?\n\n- [Web apps made with Vue.js](https://github.com/egoist/vbuild/wiki/Regular-web-applications-using-Vue.js)\n- [Desktop apps made with Electron and Vue.js](https://github.com/egoist/vbuild/wiki/Electron-apps)\n- Vue related stuffs, like Vue components, directives, etc.\n- Extendable to build any web app.\n\n**Dive into the [WIKI](https://github.com/egoist/vbuild/wiki) or [API](#api) to see more.** 😋\n\nOr see the alive example made with `vbuild`: https://github.com/vist-service/vist\n\n## Install\n\n**Install via NPM**, work with Node >= 4 and NPM >=3:\n\n```bash\n# it takes me 7 minutes to complete the installation\n$ npm install -g vbuild\n```\n\n**Install via GIT**:\n\nRecommended way for power users to install `vbuild`, since you can edit the core code directly to suit your needs!\n\n```bash\n$ git clone https://github.com/egoist/vbuild.git\n$ cd vbuild\n$ npm install\n$ npm link\n```\n\n## Usage\n\nYou can use full-featured ES2015+ and PostCSS with CSSNext in your Vue apps.\n\n```bash\n# build ./src/index.js\n# production ready\n$ vbuild\n# yeppppp! so simple!\n\n# build something elsewhere\n# -e/--entry\n$ vbuild --entry ./lib/foo.js\n\n# development? sure! with hot reloading!\n# -d/--dev\n$ vbuild --dev\n\n# your app deserves a name, ie. <title> in html\n# -t/--title\n$ vbuild --title FaceBook\n```\n\n### Not a scaffolding tool\n\nScaffolding tools like Yeoman and Vue-cli save us a lot of time, while `vbuild` does not add additional files into your projects but those do. You can skip the step of generating boilerplates and start writing code of your app immediately.\n\n### Fun for prototyping\n\nImagine using scaffolding tool for prototyping every small demos of you? Dear lord! I refuse to do that. You can use `vbuild` for your experiments or demos with nearly no setup.\n\n### Production ready\n\n`vbuild` can build production ready apps by default. 😅\n\n### Legacy project\n\nIf you are stilling using Vue in a non-SPA website, you can use `--watch` mode when developing. Unlike `--dev` mode this way only rebuilds assets when files change, no dev server was established.\n\n```bash\n# for example you are using Vue with Laravel\n# and using assets-webpack-plugin to get the paths of bundled files in Laravel\n$ vbuild --watch --output-assets-path\n```\n\n### Universal apps\n\nReally? sure, I will add this feature once Vue supports Virtual Dom or Server-side rendering. And it will come soon!\n\n## Advanced configuration\n\nDrop a `vbuild.js` in the root of your project directory:\n\n```js\nexport default {\n  // the options here (except `webpack()` function) can be override by cli arguments\n  entry: {\n    js: './src/app.js',\n    css: './src/app.css'\n  },\n  browsers: ['ie > 10', 'last 1 version'],\n  production: {\n    devtool: false\n  },\n  webpack(config, options) {\n    // config:  webpack config\n    // options: cli arguments merged with options above\n    \n    // update config before building\n    // this can override changes made by cli arguments and options above\n    config.entry = './goaway.js'\n  }\n}\n```\n\n## Help\n\nFor more usages:\n\n```bash\n$ vbuild --help\n\n  Preset build tool for Vue.js apps.\n\n  Usage:\n    vbuild [options]\n\n  Example:\n    vbuild --entry index.js --port 4000 --dev --browser-sync\n\n  Options:\n    -e/--entry:                            Specific entries\n    -d/--dev:                              Development mode\n    -w/--watch:                            Watch mode\n    -p/--port [port]:                      Server port, port is optional\n    -t/--title [title]:                    App title, title is optional\n    -b/--browsers:                         Set autoprefixer browser list\n    --lint:                                Lint your code\n    --umd <moduleName>:                    UMD mode and prvide a module name\n    --live:                                Live reloading when files change\n    --cjs:                                 CommonJS mode\n    --electron:                            Electron mode\n    --silent:                              Do not open browser\n    --browser-sync [port]:                 Browser Sync, port is optional\n    --disable-html:                        Do not generate html file\n    --output-assets-path [filename]:       Output assets path using assets-webpack-plugin\n    --template:                            Html-webpack-plugin template\n    -c/--config [path]:                    Specific a config file path\n    --no-config:                           Do not use config file\n    -v/--version:                          Print version\n    -h/--help:                             Print help (You are here!)\n```\n\n## API\n\n```js\nimport vbuild from 'vbuild'\n\n(async function () {\n  await vbuild(options)\n})()\n```\n\n### options\n\n#### entry\n\nType: `string` `array` `object`<br>\nDefault: `./src/index.js`\n\nWebpack config entry.\n\n#### dev\n\nType: `boolean`<br>\nDefault: `false`\n\nRun in development mode, ie. hot reloading and a lot more.\n\n#### watch\n\nType: `boolean`<br>\nDefault: `false`\n\nRun in watch mode, works like `webpack --watch`\n\n#### port\n\nType: `number`<br>\nDefault: `4000`\n\nDev server port.\n\n#### title\n\nType: `string`<br>\nDefault: `vbuild`\n\nHTML title.\n\n#### dist\n\nType: `string`<br>\nDefault: `dist`\n\nDist directory.\n\n#### browsers\n\nType: `array`<br>\nDefault: `['> 5%', 'last 2 version', 'ie > 8']`\n\nAutoprefixer browser list.\n\n#### umd\n\nType: `string`\n\nBuild in UMD format, and specific a moduleName.\n\n#### cjs\n\nType: `boolean`<br>\nDefault: `false`\n\nBuild in CommonJS format.\n\n#### electron\n\nType: `boolean`<br>\nDefault: `false`\n\nUse Electron mode to build, support hot reloading.\n\n#### silent\n\nType: `boolean`<br>\nDefault: `false`\n\nDon't open browser when bundle valid in dev mode.\n\n#### browserSync\n\nType: `boolean` `number`<br>\nDefault: `false` `23789`\n\nUse browser-sync-webpack-plugin and specific a port to run at.\n\n#### live\n\nType: `boolean`<br>\nDefault: `false`\n\nLive reloading when files change.\n\n#### lint\n\nType: `boolean`<br>\nDefault: `false`\n\nLint your code. (ESlint for now)\n\n#### eslint\n\nType: `object`<br>\nDefault: `{}`\n\nESlint-compatiable config.\n\n#### postcss\n\nType: `array` `function`\n\nAn array of PostCSS plugins or a function that return an array of plugins.\n\n#### disableHtml\n\nType: `boolean`<br>\nDefault: `false`\n\nPrevent from generating html files, it's set to `true` in `--umd` and `--cjs` mode. But you can override it.\n\n#### outputAssetsPath\n\nType: `boolean` `string`<br>\nDefault: `false` `vbuild-assets.json`\n\nUse `assets-webpack-plugin` to output assets path in `./vbuild-assets.json`, if it's a `string` we use it as filename.\n\n#### template\n\nType: `string`\n\nHtml-webpack-plugin template.\n\n#### development\n\nType: `object`<br>\nDefault: `undefined`\n\nDevelopment options, will be deeply assigned into `options` in `--dev` mode.\n\n#### production\n\nType: `object`<br>\nDefault: `undefined`\n\nProduction options, will be deeply assigned into `options` in build mode.\n\n#### webpack\n\nType: `function`<br>\nDefault: `undefined`<br>\nParams: `config` `options`\n\nSpecfic a function to update webpack `config` before building. `options` is the API options.\n\n#### config\n\nType: `string`<br>\nDefault: `./vbuild.js`\n\nSpecific a custom config file path. Set to `false` to disable config file.\n\n\n## License\n\nMIT © [EGOIST](https://github.com/egoist)\n"
+  "readme": "# vbuild [![NPM version](https://img.shields.io/npm/v/vbuild.svg?style=flat-square)](https://npmjs.com/package/vbuild) [![NPM downloads](https://img.shields.io/npm/dm/vbuild.svg?style=flat-square)](https://npmjs.com/package/vbuild) [![Build Status](https://img.shields.io/circleci/project/egoist/vbuild/master.svg?style=flat-square)](https://circleci.com/gh/egoist/vbuild) \n\nPreset build tool for Vue.js apps.\n\n## What can be done perfectly?\n\n- Web apps made with Vue.js\n- Desktop apps made with Electron and Vue.js\n- Vue related stuffs, like Vue components, directives, etc.\n- Customizable configuration file.\n\n**Dive into the [website](http://vbuild.js.org/#/guide/home) to see more.** 😋\n\n## Install\n\n**Install via NPM**, work with Node >= 4 and NPM >=3:\n\n```bash\n# it takes me 7 minutes to complete the installation\n$ npm install -g vbuild\n```\n\nNote: only Vue 2 is supported.\n\n## Usage\n\nYou can use full-featured ES2015+ and PostCSS in your Vue apps.\n\n```bash\n# build ./src/index.js\n# production ready\n$ vbuild\n# yeppppp! so simple!\n\n# build something elsewhere\n$ vbuild ./lib/foo.js\n\n# development? sure! with hot reloading!\n# -d/--dev\n$ vbuild --dev\n\n# your app deserves a name, ie. <title> in html\n# -t/--title\n$ vbuild --title FaceBook\n```\n\n### Not a scaffolding tool\n\nScaffolding tools like Yeoman and Vue-cli save us a lot of time, while `vbuild` does not add additional files into your projects but those do. You can skip the step of generating boilerplates and start writing code of your app immediately.\n\n### Fun for prototyping\n\nImagine using scaffolding tool for prototyping every small demos of you? Dear lord! I refuse to do that. You can use `vbuild` for your experiments or demos with nearly no setup.\n\n### Production ready\n\n`vbuild` can build production ready apps by default. 😅\n\n## Help\n\nFor more usages:\n\n```bash\n$ vbuild --help\n```\n\n## License\n\nMIT © [EGOIST](https://github.com/egoist)\n"
 }

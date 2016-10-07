@@ -1,7 +1,7 @@
 {
   "name": "karma-electron",
   "description": "Karma launcher and preprocessor for Electron",
-  "version": "4.0.0",
+  "version": "5.1.1",
   "homepage": "https://github.com/twolfson/karma-electron",
   "author": {
     "name": "Todd Wolfson",
@@ -29,13 +29,18 @@
   "scripts": {
     "precheck": "twolfson-style precheck lib/ test/",
     "lint": "twolfson-style lint lib/ test/",
+    "start-reference": "electron test/reference",
     "test": "npm run test-karma-all && npm run lint",
-    "test-karma-all": "npm run test-karma-single-run && npm run test-karma-failure && npm run test-karma-uncaught-exception && npm run test-karma-karma && npm run test-karma-phantomjs && npm run test-karma-eof-comment && npm run test-karma-source-map",
+    "test-karma-all": "npm run test-karma-single-run && npm run test-karma-failure && npm run test-karma-uncaught-exception && npm run test-karma-karma && npm run test-karma-phantomjs && npm run test-karma-eof-comment && npm run test-karma-source-map && npm run test-karma-node-require && npm run test-karma-custom-context-file && npm run test-karma-filename-override",
     "test-karma-continuous": "karma start test/integration-test/karma.conf.js --no-single-run",
+    "test-karma-custom-context-file-comment": "# DEV: We need to manually test custom debug file support since it's designed for debugging, not testing",
+    "test-karma-custom-context-file": "cross-env TEST_TYPE=CUSTOM_CONTEXT_FILE karma start test/integration-test/karma.conf.js --single-run",
     "test-karma-eof-comment": "cross-env TEST_TYPE=EOF_COMMENT karma start test/integration-test/karma.conf.js --single-run",
+    "test-karma-filename-override": "cross-env TEST_TYPE=FILENAME_OVERRIDE karma start test/integration-test/karma.conf.js --single-run",
+    "test-karma-failure": "node bin/verify-failure.js TEST_TYPE=FAILURE karma start test/integration-test/karma.conf.js --single-run",
     "test-karma-karma-comment": "# DEV: We run `test-karma-karma` twice to verify no user-data-dir is leaking",
     "test-karma-karma": "cross-env TEST_TYPE=KARMA karma start test/integration-test/karma.conf.js --single-run && cross-env TEST_TYPE=KARMA karma start test/integration-test/karma.conf.js --single-run",
-    "test-karma-failure": "node bin/verify-failure.js TEST_TYPE=FAILURE karma start test/integration-test/karma.conf.js --single-run",
+    "test-karma-node-require": "cross-env TEST_TYPE=NODE_REQUIRE karma start test/integration-test/karma.conf.js --single-run",
     "test-karma-phantomjs": "cross-env TEST_TYPE=PHANTOMJS karma start test/integration-test/karma.conf.js --single-run --browsers PhantomJS",
     "test-karma-single-run": "karma start test/integration-test/karma.conf.js --single-run",
     "test-karma-source-map": "cross-env TEST_TYPE=SOURCE_MAP karma start test/integration-test/karma.conf.js --single-run",
@@ -52,12 +57,12 @@
   "devDependencies": {
     "collections": "~3.0.0",
     "cross-env": "~1.0.7",
-    "electron-prebuilt": "~0.37.4",
+    "electron": "~1.3.3",
     "foundry": "~4.0.3",
     "foundry-release-git": "~2.0.2",
     "foundry-release-npm": "~2.0.2",
-    "jscs": "~1.7.3",
-    "jshint": "~2.5.10",
+    "jscs": "~3.0.7",
+    "jshint": "~2.9.3",
     "karma": "~1.1.0",
     "karma-mocha": "~0.2.2",
     "karma-phantomjs-launcher": "~1.0.0",
@@ -78,12 +83,12 @@
       "foundry-release-npm"
     ]
   },
-  "gitHead": "68db2e81d078a88134c0faad87a1b5fea6223823",
-  "_npmVersion": "2.15.3",
-  "_nodeVersion": "4.4.3",
+  "gitHead": "830ccbc0d32ba2c04048e0d5f1c6c3d8e215f30f",
+  "_npmVersion": "2.15.11",
+  "_nodeVersion": "4.5.0",
   "dist": {
-    "shasum": "67780b1d1daed012b9bc9704fc89d84a4430269a",
-    "tarball": "http://registry.npmjs.org/karma-electron/-/karma-electron-4.0.0.tgz"
+    "shasum": "be050e934602df04bbf6e9d6c1c3e75605e86c86",
+    "tarball": "http://registry.npmjs.org/karma-electron/-/karma-electron-5.1.1.tgz"
   },
   "versions": [
     {
@@ -133,10 +138,38 @@
     {
       "number": "4.0.0",
       "date": "2016-06-26T20:26:22.864Z"
+    },
+    {
+      "number": "4.1.0",
+      "date": "2016-08-22T12:27:56.323Z"
+    },
+    {
+      "number": "4.1.1",
+      "date": "2016-09-15T08:44:25.041Z"
+    },
+    {
+      "number": "4.1.2",
+      "date": "2016-09-22T05:38:49.007Z"
+    },
+    {
+      "number": "4.1.3",
+      "date": "2016-09-22T06:14:13.522Z"
+    },
+    {
+      "number": "5.0.0",
+      "date": "2016-09-22T08:55:11.753Z"
+    },
+    {
+      "number": "5.1.0",
+      "date": "2016-09-22T09:29:31.045Z"
+    },
+    {
+      "number": "5.1.1",
+      "date": "2016-10-04T21:51:40.976Z"
     }
   ],
   "created": "2016-03-05T03:59:14.601Z",
-  "modified": "2016-06-26T20:26:22.864Z",
+  "modified": "2016-10-04T21:51:40.976Z",
   "lastPublisher": {
     "name": "twolfson",
     "email": "todd@twolfson.com"
@@ -147,5 +180,5 @@
       "email": "todd@twolfson.com"
     }
   ],
-  "readme": "# karma-electron [![Build status](https://travis-ci.org/twolfson/karma-electron.svg?branch=master)](https://travis-ci.org/twolfson/karma-electron) [![Build status](https://ci.appveyor.com/api/projects/status/urgpvcip7kl9q2ih/branch/master?svg=true)](https://ci.appveyor.com/project/twolfson/karma-electron-launcher/branch/master)\n\n[Karma][] launcher and preprocessor for [Electron][]\n\nThis was written to allow for directly testing in [Electron][] where we might want `require` to work automatically\n\n[Karma]: https://github.com/karma-runner/karma\n[Electron]: https://github.com/atom/electron\n\n**Features:**\n\n- Tested via CI on Linux and Windows\n- Support for Node.js integration in the renderer process (e.g. `process`, `require`, `__filename`)\n- Support for hidden browser windows\n- Support for isolated test runs to prevent cookie/localStorage pollution\n\n## Getting Started\nOn a project that has been set up with `karma init` already, install the module via:\n\n```bash\n# Install our module and `electron-prebuilt`\nnpm install karma-electron electron-prebuilt\n```\n\nThen, configure the module:\n\n```js\n// Inside `karma.conf.js`\nbrowsers: ['Electron']\n\n// If you would like Node integration support (e.g. `require`)\n//   then, you must include this in `preprocessors` and `client`\n// DEV: preprocessors is for backfilling `__filename` and local `require` paths\npreprocessors: {\n  '**/*.js': ['electron']\n},\n// DEV: `useIframe: false` is for launching a new window instead of using an iframe\n//   In Electron, iframes don't get `nodeIntegration` priveleges yet windows do\nclient: {\n  useIframe: false\n}\n```\n\nThen, we can run Karma:\n\n```bash\nkarma start\n```\n\n## Documentation\n### Environment variables\n- ELECTRON_BIN - Override path to use for `electron`\n    - By default, we will use path given by `electron-prebuilt`\n\n**Example:**\n\n```bash\nELECTRON_BIN=/usr/bin/electron karma start\n```\n\n### Configuration\nWe support configuration via Karma's custom launcher inheritance:\n\n- flags `Array` - List of Chromium flags to alter Electron's behavior\n    - https://github.com/atom/electron/blob/v0.36.9/docs/api/chrome-command-line-switches.md\n    - We added support for a `--show` to allow making the Karma window visible\n- userDataDir `String` - Directory to store cookies/localStorage information\n    - By default, this is a random directory generated by Karma (e.g. `/tmp/karma-5355024`)\n\n**Example:**\n\n```js\nmodule.exports = function (config) {\n  config.set({\n    // Specify usage of our custom launcher\n    browsers: ['CustomElectron'],\n\n    // Define a custom launcher which inherits from `Electron`\n    customLaunchers: {\n      CustomElectron: {\n        base: 'Electron',\n        userDataDir: __dirname + '/.electron',\n        flags: ['--show']\n      }\n    }\n};\n```\n\n## Contributing\nIn lieu of a formal styleguide, take care to maintain the existing coding style. Add unit tests for any new or changed functionality. Lint via `npm run lint` and test via `npm test`.\n\n## Donating\nSupport this project and [others by twolfson][gratipay] via [gratipay][].\n\n[![Support via Gratipay][gratipay-badge]][gratipay]\n\n[gratipay-badge]: https://cdn.rawgit.com/gratipay/gratipay-badge/2.x.x/dist/gratipay.svg\n[gratipay]: https://www.gratipay.com/twolfson/\n\n## Unlicense\nAs of Mar 03 2016, Todd Wolfson has released this repository and its contents to the public domain.\n\nIt has been released under the [UNLICENSE][].\n\n[UNLICENSE]: UNLICENSE\n"
+  "readme": "# karma-electron [![Build status](https://travis-ci.org/twolfson/karma-electron.svg?branch=master)](https://travis-ci.org/twolfson/karma-electron) [![Build status](https://ci.appveyor.com/api/projects/status/urgpvcip7kl9q2ih/branch/master?svg=true)](https://ci.appveyor.com/project/twolfson/karma-electron-launcher/branch/master)\n\n[Karma][] launcher and preprocessor for [Electron][]\n\nThis was written to allow for directly testing in [Electron][] where we might want `require` to work automatically\n\n[Karma]: https://github.com/karma-runner/karma\n[Electron]: https://github.com/atom/electron\n\n**Features:**\n\n- Tested via CI on Linux and Windows\n- Support for Node.js integration in the renderer process (e.g. `node_modules`, `__filename`, relative paths for `require`)\n- Support for hidden browser windows\n- Support for isolated test runs to prevent cookie/localStorage pollution\n\n**Requirements:**\n\n- `karma>=1.1.0` to work within `electron's` security policy for shared context between parent/child windows\n    - See https://github.com/karma-runner/karma/pull/1984 for more information\n\n**Notices:**\n\n- This plugin has been tested against `electron@0.37.4` and `electron@1.3.3` but should support the latest version\n- This plugin is best suited for testing the renderer portion of an `electron` application\n    - For testing a full application, see `electron's` documentation on Selenium and WebDriver\n    - https://github.com/electron/electron/blob/v1.3.6/docs/tutorial/using-selenium-and-webdriver.md\n\n## Breaking changes in 5.0.0\nWe have corrected inaccuracies with `file://` behavior from Electron. For example:\n\n- `__filename` is now Karma's `context.html`\n- Relative paths for `require` resolve from Karma's `context.html` directory\n\nWe have transferred support for this to the option `client.loadScriptsViaRequire` which loads scripts via `require` and has the original expected Node.js behavior\n\nFor more information, see https://github.com/twolfson/karma-electron/issues/11\n\n## Getting Started\nOn a project that has been set up with `karma init` already, install the module via:\n\n```bash\n# Install our module and `electron`\nnpm install karma-electron electron\n```\n\nThen, configure the module:\n\n```js\n// Inside `karma.conf.js`\nbrowsers: ['Electron']\n\n// If you would like Node.js integration support (e.g. `require`)\n//   then, you must include this in `preprocessors` and `client`\n// DEV: preprocessors is for backfilling `__filename` and local `require` paths\npreprocessors: {\n  '**/*.js': ['electron']\n},\n// DEV: `useIframe: false` is for launching a new window instead of using an iframe\n//   In Electron, iframes don't get `nodeIntegration` priveleges yet windows do\nclient: {\n  useIframe: false\n}\n```\n\nThen, we can run Karma:\n\n```bash\nkarma start\n```\n\n## Documentation\n### Environment variables\n- ELECTRON_BIN - Override path to use for `electron`\n    - By default, we will use path given by `electron`\n\n**Example:**\n\n```bash\nELECTRON_BIN=/usr/bin/electron karma start\n```\n\n### Script configuration\nWe support the following configurations:\n\n- client `Object` - Container for configuring child windows loaded from Karma\n    - __filenameOverride `String` - Override `__filename` to be another path (e.g. `/path/to/my-index.html`)\n        - This will also affect `__dirname` and `module.filename` as those are derived from `__filename`\n        - By default, `__filename` will point to Karma's `context.html`\n    - loadScriptsViaRequire `Boolean` - Load scripts via `require` instead of `<script src=`\n        - This sets `__filename`, `__dirname`, and `module` to match the script instead of Karma's `context.html`\n        - By default, this is `false` and we directly load the original scripts content\n\n**Example:**\n\n```js\nmodule.exports = function (config) {\n  config.set({\n    client: {\n      // DEV: These 2 options aren't typically used together\n      //   This is for demonstration purposes\n\n      // Override top level `__filename` to be `/home/.../my-electron-app/index.html`\n      //   where `__dirname` is `/home/.../my-electron-app`\n      __filenameOverride: __dirname + '/index.html',\n\n      // Use `require` instead of `<script src=` to load scripts\n      loadScriptsViaRequire: true\n    }\n  });\n};\n```\n\n### Launcher configuration\nWe support configuration via Karma's custom launcher inheritance:\n\n- flags `Array` - List of Chromium flags to alter Electron's behavior\n    - https://github.com/atom/electron/blob/v0.36.9/docs/api/chrome-command-line-switches.md\n    - We added support for a `--show` to allow making the Karma window visible\n- userDataDir `String` - Directory to store cookies/localStorage information\n    - By default, this is a random directory generated by Karma (e.g. `/tmp/karma-5355024`)\n\n**Example:**\n\n```js\nmodule.exports = function (config) {\n  config.set({\n    // Specify usage of our custom launcher\n    browsers: ['CustomElectron'],\n\n    // Define a custom launcher which inherits from `Electron`\n    customLaunchers: {\n      CustomElectron: {\n        base: 'Electron',\n        userDataDir: __dirname + '/.electron',\n        flags: ['--show']\n      }\n    }\n  });\n};\n```\n\n## Contributing\nIn lieu of a formal styleguide, take care to maintain the existing coding style. Add unit tests for any new or changed functionality. Lint via `npm run lint` and test via `npm test`.\n\n## Donating\nSupport this project and [others by twolfson][gratipay] via [gratipay][].\n\n[![Support via Gratipay][gratipay-badge]][gratipay]\n\n[gratipay-badge]: https://cdn.rawgit.com/gratipay/gratipay-badge/2.x.x/dist/gratipay.svg\n[gratipay]: https://www.gratipay.com/twolfson/\n\n## Unlicense\nAs of Mar 03 2016, Todd Wolfson has released this repository and its contents to the public domain.\n\nIt has been released under the [UNLICENSE][].\n\n[UNLICENSE]: UNLICENSE\n"
 }
