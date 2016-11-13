@@ -14,7 +14,7 @@ function getDownloadCount (pkg, callback) {
 }
 
 packageNames
-  .filter(name => !exists(path.join(__dirname, `../downloads/${name}.json`)))
+  // .filter(name => !exists(path.join(__dirname, `../downloads/${name}.json`)))
   .forEach(name => {
     limiter.removeTokens(1, function () {
       getDownloadCount(name, function (err, count) {
