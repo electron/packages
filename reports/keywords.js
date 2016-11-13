@@ -1,4 +1,4 @@
-var packages = require('.')
+var packages = require('..')
 const find = require('lodash.find')
 const sortby = require('lodash.sortby')
 var counts = []
