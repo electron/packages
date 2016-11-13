@@ -5,9 +5,11 @@
   "main": "index.js",
   "scripts": {
     "build": "mkdir -p packages && touch packages/___.json && rm packages/* && node build.js && npm run docs",
-    "docs": "npm run docs:keywords && npm run docs:packages",
-    "docs:keywords": "node keywords.js > keywords.md",
-    "docs:packages": "node packages.js > packages.md"
+    "build:downloads": "node bin/downloads.js",
+    "reports": "npm-run-all reports*",
+    "reports:keywords": "node reports/keywords.js > reports/keywords.md",
+    "reports:packages": "node reports/packages.js > reports/packages.md",
+    "test": "node test.js | tap-spec && standard"
   },
   "repository": "https://github.com/zeke/electron-npm-packages",
   "keywords": [
@@ -27,13 +29,19 @@
   },
   "homepage": "https://github.com/zeke/electron-npm-packages#readme",
   "devDependencies": {
+    "dependent-packages": "^1.0.0",
     "got": "^6.3.0",
     "limiter": "^1.1.0",
     "lodash.find": "^4.4.0",
     "lodash.sortby": "^4.5.0",
-    "path-exists": "^3.0.0"
+    "npm-run-all": "^3.1.1",
+    "path-exists": "^3.0.0",
+    "standard": "^8.5.0",
+    "tap-spec": "^4.1.1",
+    "tape": "^4.6.2"
   },
   "dependencies": {
+    "clean-deep": "^2.0.1",
     "limiter": "^1.1.0",
     "nice-package": "^1.0.5",
     "object-values": "^1.0.0",

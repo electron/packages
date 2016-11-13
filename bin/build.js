@@ -8,7 +8,7 @@ registry
     if (pkg.valid && pkg.mentions('electron') && !pkg.mentions('electronic')) {
       console.log(pkg.name)
       fs.writeFileSync(
-        path.join(__dirname, 'packages', `${pkg.name}.json`),
+        path.join(__dirname, '../packages', `${pkg.name}.json`),
         JSON.stringify(pkg, null, 2)
       )
     }

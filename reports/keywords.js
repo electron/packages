@@ -11,16 +11,16 @@ packages.forEach(p => {
     if (count) {
       count.count += 1
     } else {
-      counts.push({keyword: keyword, count:1})
+      counts.push({keyword: keyword, count: 1})
     }
   })
 })
 
 counts = sortby(counts, 'count').reverse()
 
-counts.forEach(count => {
-  var keyword = count.keyword
-  var count = count.count
+counts.forEach(c => {
+  var keyword = c.keyword
+  var count = c.count
   if (keyword.toLowerCase() === 'electron') return
 
   console.log(`\n\n### ${keyword} (${count})\n\n`)
@@ -32,5 +32,4 @@ counts.forEach(count => {
     .forEach(p => {
       console.log(`- [${p.name}](http://npm.im/${p.name}) - ${p.description}`)
     })
-
 })
