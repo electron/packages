@@ -1,11 +1,11 @@
 # electron-npm-packages
 
-A collection of all npm packages that mention `electron` in their package.json
+A collection of all npm packages that mention `electron` in their `package.json`
 
-## Pages
+## Reports
 
-- [All Packages](packages.md)
-- [Packages by Keyword](keywords.md)
+- [All Packages](reports/packages.md)
+- [Packages by Keyword](reports/keywords.md)
 
 ## Usage
 
