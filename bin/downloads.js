@@ -1,7 +1,7 @@
 const got = require('got')
 const fs = require('fs')
 const path = require('path')
-const exists = require('path-exists').sync
+// const pathExists = require('path-exists').sync
 const packageNames = require('..').map(p => p.name)
 const RateLimiter = require('limiter').RateLimiter
 const limiter = new RateLimiter(1, 1000)
@@ -14,7 +14,7 @@ function getDownloadCount (pkg, callback) {
 }
 
 packageNames
-  // .filter(name => !exists(path.join(__dirname, `../downloads/${name}.json`)))
+  // .filter(name => !pathExists(path.join(__dirname, `../downloads/${name}.json`)))
   .forEach(name => {
     limiter.removeTokens(1, function () {
       getDownloadCount(name, function (err, count) {

@@ -17,6 +17,7 @@ var packages = objectValues(requireDir('./packages')).map(pkgData => {
 
   return pkg
 })
+.filter(pkg => pkg.mentions('electron'))
 .sort((a, b) => b.dependents.length - a.dependents.length)
 
-module.exports = packages
+module.exports = cleanDeep(packages)
