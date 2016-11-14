@@ -1,0 +1,75 @@
+{
+  "name": "electron-local-crash-reporter",
+  "version": "1.0.1",
+  "description": "Simplifies running mini-breakpad-server in local development, alongside your electron app.",
+  "main": "index.js",
+  "scripts": {
+    "test": "electron test/index.js",
+    "clear": "rm -rf mini-breakpad-server/pool"
+  },
+  "author": {
+    "name": "Cameron Nokes"
+  },
+  "repository": {
+    "user": "ccnokes",
+    "repo": "electron-local-crash-reporter",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/ccnokes/electron-local-crash-reporter/tarball/master",
+    "clone_url": "https://github.com/ccnokes/electron-local-crash-reporter",
+    "https_url": "https://github.com/ccnokes/electron-local-crash-reporter",
+    "travis_url": "https://travis-ci.org/ccnokes/electron-local-crash-reporter",
+    "zip_url": "https://github.com/ccnokes/electron-local-crash-reporter/archive/master.zip",
+    "api_url": "https://api.github.com/repos/ccnokes/electron-local-crash-reporter"
+  },
+  "keywords": [
+    "electron",
+    "crash",
+    "report",
+    "breakpad"
+  ],
+  "license": "MIT",
+  "dependencies": {
+    "adm-zip": "^0.4.7",
+    "bluebird": "^3.4.1",
+    "debug": "^2.2.0",
+    "request": "^2.74.0",
+    "rimraf": "^2.5.4",
+    "semver": "^5.3.0"
+  },
+  "devDependencies": {
+    "electron-prebuilt": "^1.4.2"
+  },
+  "gitHead": "e1b84d516060d16d4f380f232cf841b8f0ba8dea",
+  "homepage": "https://github.com/ccnokes/electron-local-crash-reporter#readme",
+  "_npmVersion": "3.8.6",
+  "_nodeVersion": "6.1.0",
+  "dist": {
+    "shasum": "cfd7c14ce8c6510b9e68c2553a8d7c5a37ebd219",
+    "tarball": "http://registry.npmjs.org/electron-local-crash-reporter/-/electron-local-crash-reporter-1.0.1.tgz"
+  },
+  "versions": [
+    {
+      "number": "1.0.0",
+      "date": "2016-10-09T03:34:48.420Z"
+    },
+    {
+      "number": "1.0.1",
+      "date": "2016-10-11T23:04:34.031Z"
+    }
+  ],
+  "created": "2016-10-09T03:34:48.420Z",
+  "modified": "2016-10-11T23:04:34.031Z",
+  "lastPublisher": {
+    "name": "ccnokes",
+    "email": "ccnokes@gmail.com"
+  },
+  "owners": [
+    {
+      "name": "ccnokes",
+      "email": "ccnokes@gmail.com"
+    }
+  ],
+  "readme": "# electron-local-crash-reporter\n\nThe goal of this module is to simplify running `mini-breakpad-server` in local development. Basically, it makes Electron's `crashReporter` API work easily out of the box for you, so you don't have to bother running mini-breakpad-server in a separate terminal window, download the symbols and move them to the right folder, etc.\n\nAdd this module as a dev dependency and only run it in local development, and it will:\n\n- Manage starting/stopping the breakpad server automatically\n- Download the correct Electron symbols (and seamlessly update them when you change Electron versions)\n- Minimal impact on app start time\n\nThis module is helpful if you do not have a remote crash report server running yet, or do not want to send crash reports created in local development to it.\n\n##Install\n```\nnpm install --save-dev electron-local-crash-reporter\n```\n\n## Example\nAll you really do is `require('electron-local-crash-reporter').start();`, but here's a fuller example:\n\n```javascript\n// this is your main process\nconst { app, BrowserWindow } = require('electron');\nlet mainWindow = null;\n\n// only run it in local development (check for this however you like)\nif(process.execPath.indexOf('electron-prebuilt') > -1) {\n  // it handles shutting itself down automatically\n  require('electron-local-crash-reporter').start();\n}\n\napp.on('ready', function() {\n  mainWindow = new BrowserWindow({ /* ... */ });\n});\n\n```\n"
+}

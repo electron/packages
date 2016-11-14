@@ -1,0 +1,146 @@
+{
+  "name": "electron-simple-publisher",
+  "version": "0.1.2",
+  "description": "Simple way to publish releases for electron-simple-updater",
+  "main": "index.js",
+  "scripts": {
+    "test": "npm run lint && npm run mocha",
+    "mocha": "mocha ./spec/*.js ./lib/**/*.spec.js",
+    "lint": "eslint ./index.js ./lib/**/*.js ./spec/**/*.js"
+  },
+  "repository": {
+    "user": "megahertz",
+    "repo": "electron-simple-publisher",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/megahertz/electron-simple-publisher/tarball/master",
+    "clone_url": "https://github.com/megahertz/electron-simple-publisher",
+    "https_url": "https://github.com/megahertz/electron-simple-publisher",
+    "travis_url": "https://travis-ci.org/megahertz/electron-simple-publisher",
+    "zip_url": "https://github.com/megahertz/electron-simple-publisher/archive/master.zip",
+    "api_url": "https://api.github.com/repos/megahertz/electron-simple-publisher"
+  },
+  "files": [
+    "index.js",
+    "lib/**/*.js",
+    "!lib/**/*.spec.js"
+  ],
+  "keywords": [
+    "electron",
+    "atom",
+    "updater",
+    "update",
+    "publish",
+    "release",
+    "windows",
+    "mac",
+    "osx",
+    "linux",
+    "desktop"
+  ],
+  "author": {
+    "name": "Alexey Prokhorov"
+  },
+  "license": "MIT",
+  "homepage": "https://github.com/megahertz/electron-simple-publisher#readme",
+  "bin": {
+    "publish": "./index.js"
+  },
+  "engines": {
+    "node": ">=6.0"
+  },
+  "devDependencies": {
+    "chai": "*",
+    "chai-shallow-deep-equal": "^1.4.4",
+    "eslint": "^3.8.0",
+    "eslint-config-standard": "^6.2.0",
+    "eslint-plugin-promise": "^3.0.0",
+    "eslint-plugin-standard": "^2.0.1",
+    "mocha": "*",
+    "mock-require": "^1.3.0",
+    "rewire": "*",
+    "sinon": "^1.17.6",
+    "sinon-chai": "^2.8.0"
+  },
+  "dependencies": {
+    "httpreq": "^0.4.22",
+    "minimist": "^1.2.0",
+    "node-ssh": "^3.0.1",
+    "publish-release": "^1.3.2"
+  },
+  "gitHead": "f714d0e9aa769fc489bfcb1152f0291eedac47ad",
+  "_npmVersion": "3.10.9",
+  "_nodeVersion": "6.9.1",
+  "dist": {
+    "shasum": "3ff9dd751deefc14fa1c7e1004e8ef6c0ed22ca7",
+    "tarball": "http://registry.npmjs.org/electron-simple-publisher/-/electron-simple-publisher-0.1.2.tgz"
+  },
+  "versions": [
+    {
+      "number": "0.0.1",
+      "date": "2016-10-20T11:24:21.045Z"
+    },
+    {
+      "number": "0.0.2",
+      "date": "2016-10-20T13:10:58.792Z"
+    },
+    {
+      "number": "0.0.3",
+      "date": "2016-10-20T15:27:05.683Z"
+    },
+    {
+      "number": "0.0.4",
+      "date": "2016-10-20T15:43:47.081Z"
+    },
+    {
+      "number": "0.0.5",
+      "date": "2016-10-20T16:03:36.879Z"
+    },
+    {
+      "number": "0.0.6",
+      "date": "2016-10-20T16:06:52.517Z"
+    },
+    {
+      "number": "0.0.7",
+      "date": "2016-10-20T16:08:24.785Z"
+    },
+    {
+      "number": "0.0.8",
+      "date": "2016-10-20T16:10:22.407Z"
+    },
+    {
+      "number": "0.0.9",
+      "date": "2016-10-20T16:13:04.304Z"
+    },
+    {
+      "number": "0.0.10",
+      "date": "2016-10-28T11:22:19.008Z"
+    },
+    {
+      "number": "0.1.0",
+      "date": "2016-11-04T07:22:37.558Z"
+    },
+    {
+      "number": "0.1.1",
+      "date": "2016-11-06T17:52:50.260Z"
+    },
+    {
+      "number": "0.1.2",
+      "date": "2016-11-07T03:18:44.913Z"
+    }
+  ],
+  "created": "2016-10-20T11:24:21.045Z",
+  "modified": "2016-11-07T03:18:44.913Z",
+  "lastPublisher": {
+    "name": "megahertz",
+    "email": "alexey.p@l96.ru"
+  },
+  "owners": [
+    {
+      "name": "megahertz",
+      "email": "alexey.p@l96.ru"
+    }
+  ],
+  "readme": "![logo](https://raw.githubusercontent.com/megahertz/electron-simple-updater/master/logo.png)\n# electron-simple-publisher\n[![Build Status](https://travis-ci.org/megahertz/electron-simple-publisher.svg?branch=master)](https://travis-ci.org/megahertz/electron-simple-publisher)\n[![npm version](https://badge.fury.io/js/electron-simple-publisher.svg)](https://badge.fury.io/js/electron-simple-publisher)\n\n# This module is in active development. The final version will be ready in a few days.\n\n## Description\n\nThis module allows to easily publish updates created by\n[electron-builder](https://github.com/electron-userland/electron-builder).\nNow SSH and github releases transports are supported.\nYou can add updates support to your application using\n[electron-simple-updater](https://github.com/megahertz/electron-simple-updater)\n\n## Installation\n\nInstall with [npm](https://npmjs.org/package/electron-simple-publisher):\n\n    npm install --save-dev electron-simple-publisher\n    \n## Usage\n1. Make a distributive package using electron-builder\n\n2. Set options:\n  You can specify all option through command line arguments, but it's\n  easier to store the config in publisher.json in the project root. Here is\n  an example for publishing through SSH:\n  ```js\n  {\n    \"transport\": {\n      \"module\": \"ssh\",\n      \"host\": \"example.com\",\n      \"username\": \"user\",\n      \"password\": \"user's password\",\n      \"remotePath\": \"/www/example.com/updates\",\n      \"remoteUrl\": \"http://example.com/updates\",\n      // If you've already set package.json:updater.url you can skip this option:\n      \"updatesJsonUrl\": \"http://example.com/updates/update.json\"\n    },\n    \"fields\": { // Additional fields which will be added to updates.json\n      \"readme\": \"The first version\"\n    }\n  }\n  ```\n\n3. Run a publish command:\n\n  `$ node_modules/.bin/publish` - will publish the latest build for the current platfrom\n\n### Command line arguments\n\n```sh\nUsage: publish [command] [options] [arguments]\n\nCommands (default is publish):\n  publish [configFile] [buildId...] Publish a new build(s).\n  replace [configFile] [buildId]    Remove and then publish again the build.\n  remove  [configFile] [buildId...] Remove one or more builds.\n  list    [configFile]              Show builds which are already on a hosting.\n\nBuildId has a following format: [platform]-[arch]-[channel]-v[version]\n  You can specify only a part of buildId, like linux-x64, defaults:\n    platform: process.platform\n    arch:     process.arch\n    channel:  package.json:updater.channel\n    version:  package.json:version\n\nOptions:\n  configFile        File with json ext, defaults to ./publisher.json\n  -t or --transport Name of node module which implements Transport interface.\n  -p or --path      Path to the directory with distributive files.\n  -d or --debug     Show debug information\n  --field-{name}    Set {name} field of updates.json\n  -h or --help      Show this message\n```\n\n### SSH Options\nName                | Default                   | Description\n--------------------|---------------------------|------------\nremotePath*         |                           | Path to a folder with updates.json on a hosting\nremoteUrl*          |                           | Url for remotePath\nusername            | current user              | A username on a hosting\npassword            | null                      | If not then key authentication will be used\nusePrivateKey       | true if no password       | Key authentication\nprivateKeyPath      | ~/.ssh/id_rsa             | Read a privateKey from this file\nprivateKey          |                           | You can specify it directly instead of read by default\nafterUploadCommand  | false                     | If set, this SSH command will be run when upload process has been finished \nafterRemoveCommand  | false                     | If set, this SSH command will be run when remove process has been finished\nOther SSH options you can find in [ssh2 docs](https://github.com/mscdex/ssh2#client-methods)\n\n### Github options\nName                | Default                     | Description\n--------------------|-----------------------------|------------\ntoken*              |                             | Github API token, [you can create it here](https://github.com/settings/tokens/new)\nrepository          | package.json:repository.url | Path to a folder with updates.json on a hosting\nupdatesJsonPath     | '' (repository root)        | Path to updates.json from the repository root\n\n## Related\n - [electron-builder](https://github.com/electron-userland/electron-builder) -\n A complete solution to package and build an Electron app\n - [electron-simple-updater](https://github.com/megahertz/electron-simple-updater) -\n Simple way to enable update for the electron application\n    \n## License\n\nLicensed under MIT.\n"
+}

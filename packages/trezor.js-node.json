@@ -1,6 +1,6 @@
 {
   "name": "trezor.js-node",
-  "version": "5.0.18",
+  "version": "5.4.1",
   "author": {
     "name": "BitcoinTrezor.com",
     "email": "info@bitcointrezor.com"
@@ -48,21 +48,21 @@
     "bump-version": "^0.5.0"
   },
   "dependencies": {
-    "bitcoinjs-lib": "^2.2.0",
+    "bitcoinjs-lib-zcash": "^2.3.0",
     "ecurve": "^1.0.2",
     "node-fetch": "^1.6.0",
     "randombytes": "^2.0.1",
     "semver-compare": "1.0.0",
-    "trezor-link-node": "^0.2.43",
+    "trezor-link-node": "^0.2.54",
     "unorm": "^1.3.3"
   },
-  "gitHead": "ce0c79994519a7e868ec4d38df1aec9e99a80fbb",
+  "gitHead": "f928187f82a41b472bab5968b008daec9a25db79",
   "scripts": {},
   "_npmVersion": "3.8.2",
   "_nodeVersion": "5.2.0",
   "dist": {
-    "shasum": "82b29007d57b74303f52e0efdf87f6f9b7480cb9",
-    "tarball": "http://registry.npmjs.org/trezor.js-node/-/trezor.js-node-5.0.18.tgz"
+    "shasum": "0762a90c10522eb9c6ac6b271892f8edb42c2ad6",
+    "tarball": "http://registry.npmjs.org/trezor.js-node/-/trezor.js-node-5.4.1.tgz"
   },
   "versions": [
     {
@@ -100,10 +100,46 @@
     {
       "number": "5.0.18",
       "date": "2016-10-07T17:51:32.155Z"
+    },
+    {
+      "number": "5.0.19",
+      "date": "2016-10-13T17:13:08.747Z"
+    },
+    {
+      "number": "5.0.20",
+      "date": "2016-10-17T16:12:59.812Z"
+    },
+    {
+      "number": "5.1.0",
+      "date": "2016-10-20T15:14:45.609Z"
+    },
+    {
+      "number": "5.2.0",
+      "date": "2016-10-25T09:59:24.278Z"
+    },
+    {
+      "number": "5.2.1",
+      "date": "2016-10-26T11:21:19.122Z"
+    },
+    {
+      "number": "5.3.0",
+      "date": "2016-10-27T11:44:32.096Z"
+    },
+    {
+      "number": "5.3.1",
+      "date": "2016-11-08T10:57:05.075Z"
+    },
+    {
+      "number": "5.4.0",
+      "date": "2016-11-11T14:22:22.978Z"
+    },
+    {
+      "number": "5.4.1",
+      "date": "2016-11-11T14:30:34.861Z"
     }
   ],
   "created": "2016-10-03T23:29:07.571Z",
-  "modified": "2016-10-07T17:51:32.155Z",
+  "modified": "2016-11-11T14:30:34.861Z",
   "lastPublisher": {
     "name": "karelbilek",
     "email": "kb@karelbilek.com"
@@ -114,5 +150,5 @@
       "email": "kb@karelbilek.com"
     }
   ],
-  "readme": "trezor.js\n=========\n\n[![Build Status](https://travis-ci.org/trezor/trezor.js.svg?branch=master)](https://travis-ci.org/trezor/trezor.js)\n\nJavascript API for Bitcoin TREZOR.\n\nUse this library if you want deeper integration of TREZOR into your node app, including electron.\n\nIf you are including the library in web app, try `trezor.js` package.\n\nInstall with npm\n-----\n\n`npm install --save trezor.js-node`\n\nWe are dependent (through trezor-link) on `node-hid`, which is compiled C++ package. If there is some problems, just write us an issue.\n\n#### Examples\n\nExample of usage is on `example-browser/` on github.\n\n#### Flow\ntrezor.js is annotated with [Flow](https://github.com/facebook/flow) types; if you want to use Flow and use the previous setup, it will use the right types. Note that you might have to set up `.flowconfig` to include all the modules and interface files in [our flowconfig](https://github.com/trezor/trezor.js/blob/master/lib/.flowconfig)\n\nUsing trezor.js in a node app\n-----\nIn a node app, trezor.js will first try to contact trezord (see above). If the trezord daemon isn't installed or is not accessible for some reason, trezor.js will use node-hid layer and the app will communicate with TREZOR directly.\n\n\ntrezor.js API\n---\nAPI is explained in [API.md](https://github.com/trezor/trezor.js/blob/master/API.md)\n"
+  "readme": "trezor.js\n=========\n\n[![Build Status](https://travis-ci.org/trezor/trezor.js.svg?branch=master)](https://travis-ci.org/trezor/trezor.js)\n\nJavascript API for Bitcoin TREZOR.\n\nUse this library if you want deeper integration of TREZOR into your node app, including electron.\n\nIf you are including the library in web app, try `trezor.js` package.\n\nInstall with npm\n-----\n\n`npm install --save trezor.js-node`\n\nWe are dependent (through trezor-link) on `node-hid`, which is compiled C++ package. If there is some problems, just write us an issue.\n\n#### Examples\n\nExample of usage is on `example-browser/`, `example-node/` and `example-electron-webpack/` on github.\n\n#### Flow\ntrezor.js is annotated with [Flow](https://github.com/facebook/flow) types; if you want to use Flow and use the previous setup, it will use the right types. Note that you might have to set up `.flowconfig` to include all the modules and interface files in [our flowconfig](https://github.com/trezor/trezor.js/blob/master/lib/.flowconfig)\n\nUsing trezor.js in a node app\n-----\nIn a node app, trezor.js will first try to contact trezord (see above). If the trezord daemon isn't installed or is not accessible for some reason, trezor.js will use node-hid layer and the app will communicate with TREZOR directly.\n\nUsing `trezor.js` in Electron projects\n----\nIn your electron project, add `electron-rebuild` and `electron` to your `devDependencies`.\nThen in your package.json `scripts` add:\n\n```\n  \"postinstall\": \"electron-rebuild --pre-gyp-fix --force\"\n```\n\nThis will be run on `npm install` and will rebuild electron to support `node-hid` (the library we use). You can also run the postinstall script yourself (`npm run postinstall`).\n\nIf you are using `yarn` (as we do), make sure you have 0.16.1 or newer. If you have an older version, you will have to run the postinstall script yourself.\n\nIf you use webpack inside electron (in the renderer window), you will have to add `'trezor.js-node': 'require(\"trezor.js-node\")'` to externals; see the example.\n\nUsing `trezor.js` in NW.js projects\n----\n\n```\n    npm install node-pre-gyp\n    ./node_modules/.bin/node-pre-gyp rebuild --runtime=node-webkit --target=0.12.3\n```   \n\nYou can change 0.12.3 to version nwjs that you want to deploy.\n\ntrezor.js API\n---\nAPI is explained in [API.md](https://github.com/trezor/trezor.js/blob/master/API.md)\n"
 }

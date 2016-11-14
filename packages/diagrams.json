@@ -1,6 +1,6 @@
 {
   "name": "diagrams",
-  "version": "0.6.8",
+  "version": "0.8.0",
   "description": "Generate Flowcharts, Network Sequence, Dot, and Railroad Diagrams",
   "main": "src/diagrams.js",
   "bin": {
@@ -13,7 +13,8 @@
     "commander": "2.8.1",
     "electron-prebuilt": "^0.36.2",
     "railroad-diagrams": "1.0.0",
-    "viz.js": "^1.3.0"
+    "viz.js": "^1.3.0",
+    "watch": "^1.0.1"
   },
   "repository": {
     "user": "francoislaberge",
@@ -45,13 +46,13 @@
     "system",
     "design"
   ],
-  "gitHead": "a60a45a625ba76a5b78ae045272ebf5ccc29c441",
+  "gitHead": "3e2a1bbc31e7cba3ccca8df9248ff86ba706633a",
   "homepage": "https://github.com/francoislaberge/diagrams#readme",
-  "_npmVersion": "2.14.7",
-  "_nodeVersion": "4.2.1",
+  "_npmVersion": "3.10.8",
+  "_nodeVersion": "4.1.1",
   "dist": {
-    "shasum": "fadabf769167c17f49bbbbbd50b563fca38a988b",
-    "tarball": "http://registry.npmjs.org/diagrams/-/diagrams-0.6.8.tgz"
+    "shasum": "e7ec3c5b3aa86c882c9310c924c9d24a605350fb",
+    "tarball": "http://registry.npmjs.org/diagrams/-/diagrams-0.8.0.tgz"
   },
   "versions": [
     {
@@ -149,10 +150,22 @@
     {
       "number": "0.6.8",
       "date": "2016-01-03T15:27:53.780Z"
+    },
+    {
+      "number": "0.7.0",
+      "date": "2016-10-23T12:34:29.854Z"
+    },
+    {
+      "number": "0.7.1",
+      "date": "2016-10-23T14:50:56.278Z"
+    },
+    {
+      "number": "0.8.0",
+      "date": "2016-10-23T14:57:58.255Z"
     }
   ],
   "created": "2015-10-09T04:00:07.419Z",
-  "modified": "2016-01-03T15:27:53.780Z",
+  "modified": "2016-10-23T14:57:58.255Z",
   "lastPublisher": {
     "name": "francoislaberge",
     "email": "francoislaberge@gmail.com"
@@ -163,5 +176,5 @@
       "email": "francoislaberge@gmail.com"
     }
   ],
-  "readme": "# Overview\nCommand line tool for generating a suite of various types of diagrams, each based on intuitive text DSLs.\n\nSee below for documentation/examples of the syntax/output for each of the currently supported diagrams type:\n  - [flowchart](#flowchart)\n  - [network sequence](#sequence)\n  - [graphviz's dot](#dot)\n  - [railroad diagrams](#railroad)\n\n<img src=\"http://francoislaberge.github.io/diagrams/docs/flowchart.png\" width=\"25%\"/><img src=\"http://francoislaberge.github.io/diagrams/docs/sequence.png\" width=\"25%\"/><img src=\"http://francoislaberge.github.io/diagrams/docs/dot.png\" width=\"25%\"/><img src=\"http://francoislaberge.github.io/diagrams/docs/railroad.png\" width=\"25%\"/>\n\n# Installation\n\n```bash\nnpm install -g diagrams\n```\n\n# Usage\n\n## flowchart\nDocumentation: [Flowchart.js ](http://flowchart.js.org/).\n\nTo generate flowcharts, run:\n\n    diagrams flowchart input.flowchart flowchart.svg\n\n<table>\n<tr>\n<td><strong>input.flowchart</strong></td>\n<td><strong>flowchart.svg</strong></td>\n</tr>\n<tr>\n  <td>\n  <pre>\n<code>\nst=>start: Start\ne=>end\nop1=>operation: My Operation\nsub1=>subroutine: My Subroutine\ncond=>condition: Yes\nor No?:>http://www.google.com\nio=>inputoutput: catch something\n\nst->op1->cond\ncond(yes)->io->e\ncond(no)->sub1(right)->op1\n</code>\n  </pre>\n  </td>\n  <td>\n    <img src=\"http://francoislaberge.github.io/diagrams/docs/flowchart.png\" width=\"600px\" />\n  </td>\n</tr>\n</table>\n\n\n## sequence\nDocumentation: [Network Sequence Diagram Syntax ](https://bramp.github.io/js-sequence-diagrams/).\n\nTo generate Network Sequence Diagrams, run:\n\n    diagrams sequence input.sequence sequence.svg\n\n<table>\n<tr>\n<td><strong>input.sequence</strong></td>\n<td><strong>sequence.svg</strong></td>\n</tr>\n<tr>\n  <td>\n  <pre>\n<code>\nAlice->Bob: Hello Bob, how are you?\nNote right of Bob: Bob thinks\nBob-->Alice: I am good thanks!\n</code>\n  </pre>\n  </td>\n  <td>\n    <img src=\"http://francoislaberge.github.io/diagrams/docs/sequence.png\" width=\"350px\" />\n  </td>\n</tr>\n</table>\n\n## dot\nDocumentation on the dot file format:\n  - Read [dotguide.pdf](http://www.graphviz.org/pdf/dotguide.pdf).\n  - See the [online generator](http://mdaines.github.io/viz.js/).\n\nTo generate diagrams from Graphviz's .dot file format, run:\n\n    diagrams dot input.dot dot.svg\n\n<table>\n<tr>\n<td><strong>input.dot</strong></td>\n<td><strong>dot.svg</strong></td>\n</tr>\n<tr>\n  <td>\n  <pre>\n<code>\ndigraph G {\n    main -> parse -> execute;\n    main -> init;\n    main -> cleanup;\n    execute -> make_string;\n    execute -> printf\n    init -> make_string;\n    main -> printf;\n    execute -> compare;\n}\n</code>\n  </pre>\n  </td>\n  <td>\n    <img src=\"http://francoislaberge.github.io/diagrams/docs/dot.png\" width=\"300px\" />\n  </td>\n</tr>\n</table>\n\n## railroad\nDocumentation see [railroad-diagrams](http://npmjs.org/railroad-diagrams)'s documentation':\n  - **NOTE:** There is no real documentation for the input file syntax (PRs welcome), but the examples\n      should help you figure it out a bit\n  - [Examples](http://www.xanthir.com/etc/railroad-diagrams/example.html)\n  - [Online Generator](http://www.xanthir.com/etc/railroad-diagrams/generator.html)\n\nTo generate Railroad Diagrams, run:\n\n    diagrams railroad input.railroad railroad.svg\n\n<table>\n<tr>\n<td><strong>input.railroad</strong></td>\n<td><strong>railroad.svg</strong></td>\n</tr>\n<tr>\n  <td>\n  <pre>\n<code>\nDiagram(\n  Optional('+', 'skip'),\n    Choice(0,\n      NonTerminal('name-start char'),\n      NonTerminal('escape')),\n      ZeroOrMore(\n        Choice(0,\n          NonTerminal('name char'),\n          NonTerminal('escape'))))\n</code>\n  </pre>\n  </td>\n  <td>\n    <img src=\"http://francoislaberge.github.io/diagrams/docs/railroad.png\"  width=\"500px\" />\n  </td>\n</tr>\n</table>\n\n## Credits\n\n  - [flowchart.js](http://flowchart.js.org/) for the flowchart diagrams\n  - [js-sequence-diagrams](https://bramp.github.io/js-sequence-diagrams/) for the sequence diagrams\n  - [viz.js](https://github.com/mdaines/viz.js) for getting Graphviz compiled to js\n  - [railroad-diagrams](https://npmjs.org/railroad-diagrams) for the railroad diagrams\n  - [electron](http://electron.atom.io/) for headless browsing to wrap above libraries that don't work without a browser environment\n\n## TODOs\nIt's a work in progress. See [TODO.md](https://github.com/francoislaberge/diagrams/blob/master/TODO.md).\n"
+  "readme": "# Overview\nCommand line tool for generating a suite of various types of diagrams, each based on intuitive text DSLs.\n\nSee below for documentation/examples of the syntax/output for each of the currently supported diagrams type:\n  - [flowchart](#flowchart)\n  - [network sequence](#sequence)\n  - [graphviz's dot](#dot)\n  - [railroad diagrams](#railroad)\n\n<img src=\"http://francoislaberge.com/diagrams/docs/flowchart.png\" width=\"25%\"/><img src=\"http://francoislaberge.github.io/diagrams/docs/sequence.png\" width=\"25%\"/><img src=\"http://francoislaberge.github.io/diagrams/docs/dot.png\" width=\"25%\"/><img src=\"http://francoislaberge.github.io/diagrams/docs/railroad.png\" width=\"25%\"/>\n\n# Installation\n\n```bash\nnpm install -g diagrams\n```\n\n# Usage\n\n## watch\nThe diagrams CLI provides the `watch` command that will automatically generate the .svg visualization of each diagram file format it supports. Run the following:\n\nWatches the current directory and generates an .svg file in the same directory as any found file.\n```\ndiagrams watch\n```\n\nSame as above but also first generates all .svg files before starting watch process\n```\ndiagrams watch --build\n```\n\nTo provide the target directory to watch just pass it as an argument right after the `watch` command.\n```\ndiagrams watch somedirectory --build\n```\n\n## flowchart\nDocumentation: [Flowchart.js ](http://flowchart.js.org/).\n\nTo generate flowcharts, run:\n\n    diagrams flowchart input.flowchart flowchart.svg\n\n<table>\n<tr>\n<td><strong>input.flowchart</strong></td>\n<td><strong>flowchart.svg</strong></td>\n</tr>\n<tr>\n  <td>\n  <pre>\n<code>\nst=>start: Start\ne=>end\nop1=>operation: My Operation\nsub1=>subroutine: My Subroutine\ncond=>condition: Yes\nor No?:>http://www.google.com\nio=>inputoutput: catch something\n\nst->op1->cond\ncond(yes)->io->e\ncond(no)->sub1(right)->op1\n</code>\n  </pre>\n  </td>\n  <td>\n    <img src=\"http://francoislaberge.github.io/diagrams/docs/flowchart.png\" width=\"600px\" />\n  </td>\n</tr>\n</table>\n\n\n## sequence\nDocumentation: [Network Sequence Diagram Syntax ](https://bramp.github.io/js-sequence-diagrams/).\n\nTo generate Network Sequence Diagrams, run:\n\n    diagrams sequence input.sequence sequence.svg\n\n<table>\n<tr>\n<td><strong>input.sequence</strong></td>\n<td><strong>sequence.svg</strong></td>\n</tr>\n<tr>\n  <td>\n  <pre>\n<code>\nAlice->Bob: Hello Bob, how are you?\nNote right of Bob: Bob thinks\nBob-->Alice: I am good thanks!\n</code>\n  </pre>\n  </td>\n  <td>\n    <img src=\"http://francoislaberge.github.io/diagrams/docs/sequence.png\" width=\"350px\" />\n  </td>\n</tr>\n</table>\n\n## dot\nDocumentation on the dot file format:\n  - Read [dotguide.pdf](http://www.graphviz.org/pdf/dotguide.pdf).\n  - See the [online generator](http://mdaines.github.io/viz.js/).\n\nTo generate diagrams from Graphviz's .dot file format, run:\n\n    diagrams dot input.dot dot.svg\n\n<table>\n<tr>\n<td><strong>input.dot</strong></td>\n<td><strong>dot.svg</strong></td>\n</tr>\n<tr>\n  <td>\n  <pre>\n<code>\ndigraph G {\n    main -> parse -> execute;\n    main -> init;\n    main -> cleanup;\n    execute -> make_string;\n    execute -> printf\n    init -> make_string;\n    main -> printf;\n    execute -> compare;\n}\n</code>\n  </pre>\n  </td>\n  <td>\n    <img src=\"http://francoislaberge.github.io/diagrams/docs/dot.png\" width=\"300px\" />\n  </td>\n</tr>\n</table>\n\n## railroad\nDocumentation see [railroad-diagrams](http://npmjs.org/railroad-diagrams)'s documentation':\n  - **NOTE:** There is no real documentation for the input file syntax (PRs welcome), but the examples\n      should help you figure it out a bit\n  - [Examples](http://www.xanthir.com/etc/railroad-diagrams/example.html)\n  - [Online Generator](http://www.xanthir.com/etc/railroad-diagrams/generator.html)\n\nTo generate Railroad Diagrams, run:\n\n    diagrams railroad input.railroad railroad.svg\n\n<table>\n<tr>\n<td><strong>input.railroad</strong></td>\n<td><strong>railroad.svg</strong></td>\n</tr>\n<tr>\n  <td>\n  <pre>\n<code>\nDiagram(\n  Optional('+', 'skip'),\n    Choice(0,\n      NonTerminal('name-start char'),\n      NonTerminal('escape')),\n      ZeroOrMore(\n        Choice(0,\n          NonTerminal('name char'),\n          NonTerminal('escape'))))\n</code>\n  </pre>\n  </td>\n  <td>\n    <img src=\"http://francoislaberge.github.io/diagrams/docs/railroad.png\"  width=\"500px\" />\n  </td>\n</tr>\n</table>\n\n## Credits\n\n  - [flowchart.js](http://flowchart.js.org/) for the flowchart diagrams\n  - [js-sequence-diagrams](https://bramp.github.io/js-sequence-diagrams/) for the sequence diagrams\n  - [viz.js](https://github.com/mdaines/viz.js) for getting Graphviz compiled to js\n  - [railroad-diagrams](https://npmjs.org/railroad-diagrams) for the railroad diagrams\n  - [electron](http://electron.atom.io/) for headless browsing to wrap above libraries that don't work without a browser environment\n\n## TODOs\nIt's a work in progress. See [TODO.md](https://github.com/francoislaberge/diagrams/blob/master/TODO.md).\n"
 }

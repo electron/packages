@@ -1,0 +1,88 @@
+{
+  "name": "ethereum-classic-client-binaries",
+  "version": "1.5.0",
+  "description": "Download Ethereum Classic client binaries for your OS",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "mocha --timeout 180000 --ui exports --reporter spec test/*.test.js",
+    "test-coverage": "istanbul cover _mocha -- --timeout 180000 --ui exports --reporter spec test/*.test.js"
+  },
+  "repository": {
+    "user": "ethereumproject",
+    "repo": "ethereum-classic-client-binaries",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/ethereumproject/ethereum-classic-client-binaries/tarball/master",
+    "clone_url": "https://github.com/ethereumproject/ethereum-classic-client-binaries",
+    "https_url": "https://github.com/ethereumproject/ethereum-classic-client-binaries",
+    "travis_url": "https://travis-ci.org/ethereumproject/ethereum-classic-client-binaries",
+    "zip_url": "https://github.com/ethereumproject/ethereum-classic-client-binaries/archive/master.zip",
+    "api_url": "https://api.github.com/repos/ethereumproject/ethereum-classic-client-binaries"
+  },
+  "keywords": [
+    "ethereum",
+    "blockchain",
+    "client",
+    "geth",
+    "parity",
+    "ethereumj",
+    "ethereumjs",
+    "pyethereum"
+  ],
+  "author": {
+    "name": "Ramesh Nair",
+    "email": "ram@hiddentao.com"
+  },
+  "license": "MIT",
+  "homepage": "https://github.com/ethereumproject/ethereum-client-binaries#readme",
+  "dependencies": {
+    "buffered-spawn": "^3.3.2",
+    "got": "^6.5.0",
+    "lodash.get": "^4.4.2",
+    "lodash.isempty": "^4.4.0",
+    "lodash.values": "^4.3.0",
+    "mkdirp": "^0.5.1",
+    "tmp": "0.0.29",
+    "unzip": "^0.1.11"
+  },
+  "devDependencies": {
+    "bluebird": "^3.4.6",
+    "chai": "^3.5.0",
+    "co-mocha": "^1.1.3",
+    "genomatic": "^1.0.0",
+    "istanbul": "^0.4.5",
+    "live-server": "^1.1.0",
+    "lodash.frompairs": "^4.0.1",
+    "md5-file": "^3.1.1",
+    "mocha": "^3.0.2",
+    "sinon": "^1.17.6",
+    "sinon-chai": "^2.8.0"
+  },
+  "gitHead": "2a0ed94c4edaec83609d1f046eae681c6d3e5b26",
+  "_npmVersion": "3.5.2",
+  "_nodeVersion": "4.2.6",
+  "dist": {
+    "shasum": "81d9c0f5a9544ca05424cd8193bc152844f47654",
+    "tarball": "http://registry.npmjs.org/ethereum-classic-client-binaries/-/ethereum-classic-client-binaries-1.5.0.tgz"
+  },
+  "versions": [
+    {
+      "number": "1.5.0",
+      "date": "2016-10-27T10:04:09.989Z"
+    }
+  ],
+  "created": "2016-10-27T10:04:09.989Z",
+  "modified": "2016-10-27T10:04:09.989Z",
+  "lastPublisher": {
+    "name": "etherninja",
+    "email": "yates@myself.com"
+  },
+  "owners": [
+    {
+      "name": "etherninja",
+      "email": "yates@myself.com"
+    }
+  ],
+  "readme": "# ethereum-classic-binaries\n\n[![Build Status](https://secure.travis-ci.org/hiddentao/ethereum-client-binaries.png?branch=master)](http://travis-ci.org/hiddentao/ethereum-client-binaries) [![NPM module](https://badge.fury.io/js/ethereum-client-binaries.png)](https://badge.fury.io/js/ethereum-client-binaries) [![Twitter URL](https://img.shields.io/twitter/url/http/shields.io.svg?style=social&label=Follow&maxAge=2592000)](https://twitter.com/hiddentao)\n\nDownload Ethereum Classic client binaries for your OS.\n\nWhen you wish to run a local Ethereum Classic client node it would be beneficial to first \nscan for existing node client binaries on the machine and then download \nappropriate client binaries if none found. **This package does both.**\n\nIt is structured so that it can be optionally be used in conjunction with a UI, \ne.g. if one wishes to allow a user to select the client software they wish to \ndownload.\n\nFeatures:\n* Configurable client types (Geth, Eth, Parity, etc)\n* Configurable *sanity* checks and SHA256 hash check\n* Can scan and download to specific folders\n* Logging can be toggled on/off at runtime\n* Can be integrated into Electron.js apps\n\n## Installation\n\n```shell\nnpm install --save ethereum-classic-client-binaries\n```\n\n## Usage\n\n### Config object\n\nFirst a config object needs to be defined. This specifies the possible clients \nand the platforms they support. \n\nFor example, a config object which specifies the [Geth client](https://github.com/ethereumproject/go-ethereum) for only 64-bit Linux platforms and the [Parity client](https://github.com/ethcore/parity) for only 32-bit Windows platforms might be:\n\n```js\nconst config = {\n  \"clients\": {\n    \"Geth\": {\n      \"platforms\": {\n        \"linux\": {\n          \"x64\": {\n            \"download\": {\n              \"url\": \"https://geth.com/latest.tgz\",\n              \"type\": \"tar\",\n              \"bin\": \"geth-linux-x64\",\n              \"sha256\": \"8359e8e647b168dbd053ec56438ab4cea8d76bd5153d681d001c5ce1a390401c\",\n            },\n            \"bin\": \"geth\",\n            \"commands\": {\n              \"sanity\": {\n                \"args\": [\"version\"],\n                \"output\": [ \"Geth\", \"1.4.12\" ]\n              }                \n            }\n          },\n        }\n      }\n    },\n    \"Parity\": {\n      \"platforms\": {\n        \"win\": {\n          \"ia32\": {\n            \"download\": {\n              \"url\": \"https://parity.com/latest.zip\",\n              \"type\": \"zip\"\n            },\n            \"bin\": \"parity\",\n            \"commands\": {\n              \"sanity\": {\n                \"args\": [\"version\"],\n                \"output\": [ \"Parity\", \"11.0\" ]\n              }                \n            }\n          },\n        }\n      }      \n    }\n  }\n}\n```\n\nEvery client must specify one or more platforms, each of which must specify \none or more architectures. Supported platforms are as documented for Node's [process.platform](https://nodejs.org/dist/latest-v6.x/docs/api/process.html#process_process_platform) except that `mac` is used instead of `darwin` and `win` is used instead of `win32`. Supported architectures are as documented for Node's [process.arch](https://nodejs.org/dist/latest-v6.x/docs/api/process.html#process_process_arch).\n\nEach *platform-arch* entry needs to specify a `bin` key which holds the name of the executable on the system, a `download` key which holds info on where the binary can be downloaded from if needed, and a `commands` key which holds information on different kinds of commands that can be run against the binary. \n\nThe `download` key holds the download `url`, the `type` of archive being downloaded, and - optionally - the filename of the binary (`bin`) inside the archive in case it differs from the expected filename of the binary. As a security measure, a `sha256` key equalling the SHA256 hash calculation of the downloadable file may be provided, in which the downloaded file's hash is tested \nfor equality with this value.\n\nThe `sanity` command is mandatory and is a way to check a found binary to ensure that is is actually a valid client binary and not something else. In the above config the `sanity` command denotes that running `geth version` should return output containing *both* `Geth` and `1.4.12`.\n\nNow we can construct a `Manager` with this config:\n\n```js\nconst Manager = require('ethereum-classic-client-binaries').Manager;\n\n// construct\nconst mgr =  new Manager(config);\n```\n\n**Note:** If no config is provided then the default config ([src/config.json](https://github.com/hiddentao/ethereum-client-binaries/blob/master/src/config.json)) gets used.\n\n### Scanning for binaries\n\nInitialising a *manager* tells it to scan the system for available binaries:\n\n```js\n// initialise (scan for existing binaries on system)\nmgr.init()\n.then(() => {\n  console.log( 'Client config: ', mgr.clients );\n})\n.catch(process.exit);\n```\n\nLet's say the current platform is `linux` with an `x64` architecture, and that `geth` has been resolved successfully to `/usr/local/bin/geth`, the `mgr.clients` property will look like:\n\n```js\n/*\n[\n  {\n    id: 'Geth',\n    state: {\n      available: true,\n    },\n    platforms: { .... same as original ... }\n    activeCli: {\n      \"download\": {\n        \"url\": \"https://geth.com/latest.tgz\",\n        \"type\": \"tar\"\n      },\n      \"bin\": \"geth\",\n      \"commands\": {\n        \"sanity\": {\n          \"args\": [\"version\"],\n          \"output\": [ \"Geth\", \"1.4.12\" ]\n        }                \n      },\n      fullPath: '/usr/local/bin/geth'\n    }\n  }\n]\n*/\n```\n\nThe `state.available` property is the key property to check. If `false` then `state.failReason` will also be set. There are currently two possible values for `state.failReason`:\n\n1. `notFound` - a binary with matching name (`geth` in above example) could not be found.\n2. `sanityCheckFail` - a binary with matching name was found, but it failed the sanity check when executed.\n\nThe `activeCli.fullPath` property denotes the full path to the resolved client binary - this is only valid if `state.available` is `true`.\n\n**NOTE:** The Parity client isn't present in `mgr.clients` shown above because there is no linux-x64 entry specified in the Parity config shown earlier. Thus, only *possible* clients (as per the original config) will be present in `mgr.clients`.\n\n### Scan additional folders\n\nBy default the manager only scan the system `PATH` for available binaries, i.e. it doesn't do a full-disk scan. You can specify additional folders to scan using the `folders` option:\n\n```js\nmgr.init({\n  folders: [\n    '/path/to/my/folder/1',\n    '/path/to/my/folder/2'\n  ]\n})\n.then(...)\n.catch(...)\n```\n\nThis features is useful if you have previously downloaded the client binaries elsewhere or you already know that client binaries will be located within specific folders.\n\n### Download client binaries\n\nClient binaries can be downloaded whether already available on the system or not. The downloading mechanism supports downloading and unpacking ZIP and TAR files. \n\nThe initial config object specifies where a package can be downloaded from, e.g:\n\n```js\n\"download\": {\n  \"url\": \"https://geth.com/latest.tgz\",\n  \"type\": \"tar\"\n},\n```\n\nTo perform the download, specify the client id:\n\n```js\nmgr.download(\"Geth\")\n.then(console.log)\n.catch(console.error);\n```\n\nThe returned result will be an object which looks like:\n\n```js\n{\n  downloadFolder: /* where archive got downloaded */,\n  downloadFile: /* the downloaded archive file */,\n  unpackFolder: /* folder archive was unpacked to */,\n  client: {\n    id: 'Geth',\n    state: {...},\n    platforms: {...},\n    activeCli: {...},\n  }\n}\n```\n\nThe `client` entry in the returned info will be the same as is present for the given client within the `mgr.clients` property (see above).\n\nAfter downloading and unpacking the client binary the sanity check is run against it to check that it is indeed the required binary, which means that the client's `state.available` and `state.failReason` keys will be updated with the results.\n\n### Download to specific folder\n\nBy default the client binary archive will be downloaded to a temporarily created folder. But you can override this using the `downloadFolder` option:\n\n```js\nmgr.download(\"Geth\", {\n  downloadFolder: '/path/to/my/folder'\n})\n.then(...)\n.catch(...)\n```\n\nIf download and unpacking is successful the returned object will look something like:\n\n```js\n{\n  downloadFolder: '/path/to/my/folder',\n  downloadFile: '/path/to/my/folder/archive.tgz',\n  unpackFolder: '/path/to/my/folder/unpacked',  \n}\n```\n\nThe next time you initialise the manager you can pass in `/path/to/my/folder/unpacked` as an additional folder to scan for binaries in:\n\n```js\nmgr.init({ \n  folders: [\n    `/path/to/my/folder/unpacked`\n  ]\n});\n```\n\n### Logging\n\nBy default internal logging is silent. But you can turn on logging at any time by setting the logger property:\n\n```js\nmgr.logger = console;    /* log everything to console */\n```\n\nThe supplied logger object must have 3 methods: info, warn and error. If any one of these methods isn't provided then the built-in method (i.e. silent method) get used. For example:\n\n```js\n// let's output only the error messages\nmgr.logger = {\n  error: console.error.bind(console)\n}\n```\n\n\n## Development\n\nTo build and run the tests:\n\n```shell\n$ npm install\n$ npm test\n```\n\n## Contributions\n\nContributions welcome - see [CONTRIBUTING.md](CONTRIBUTING.md)\n\n## License\n\nMIT - see [LICENSE.md](LICENSE.md)\n\n"
+}

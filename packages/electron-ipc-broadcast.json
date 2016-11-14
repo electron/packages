@@ -1,0 +1,90 @@
+{
+  "name": "electron-ipc-broadcast",
+  "description": "Broadcast IPC messages to all Electron processes.",
+  "version": "0.0.1",
+  "author": {
+    "name": "JP Richardson",
+    "email": "jprichardson@gmail.com",
+    "url": "https://www.exodus.io"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.16.0",
+    "babel-eslint": "^7.0.0",
+    "babel-plugin-syntax-flow": "^6.8.0",
+    "babel-plugin-transform-flow-strip-types": "^6.8.0",
+    "babel-plugin-typecheck": "^3.9.0",
+    "babel-preset-node6": "^11.0.0",
+    "babel-preset-stage-3": "^6.17.0",
+    "babel-register": "^6.16.3",
+    "standard": "^8.4.0",
+    "tap-spec": "^4.1.1",
+    "tape": "^4.6.2"
+  },
+  "engines": {
+    "electron": ">= 1.0.0"
+  },
+  "files": [
+    "lib/",
+    "src/"
+  ],
+  "homepage": "https://github.com/jprichardson/electron-ipc-broadcastr#readme",
+  "jsnext:main": "./src/index.js",
+  "keywords": [
+    "electron",
+    "ipc",
+    "broadcast",
+    "process"
+  ],
+  "license": "MIT",
+  "main": "./lib/index.js",
+  "repository": {
+    "user": "jprichardson",
+    "repo": "electron-ipc-broadcast",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/jprichardson/electron-ipc-broadcast/tarball/master",
+    "clone_url": "https://github.com/jprichardson/electron-ipc-broadcast",
+    "https_url": "https://github.com/jprichardson/electron-ipc-broadcast",
+    "travis_url": "https://travis-ci.org/jprichardson/electron-ipc-broadcast",
+    "zip_url": "https://github.com/jprichardson/electron-ipc-broadcast/archive/master.zip",
+    "api_url": "https://api.github.com/repos/jprichardson/electron-ipc-broadcast"
+  },
+  "scripts": {
+    "build": "babel --ignore=__tests__ src --out-dir lib",
+    "lint": "standard",
+    "posttest": "NODE_ENV=production npm run build",
+    "test": "npm run build && npm run lint",
+    "unit": "npm run lint"
+  },
+  "standard": {
+    "ignore": "lib/",
+    "parser": "babel-eslint"
+  },
+  "gitHead": "ca1359fed94cf0c27ec92ba0f58d6bd745a07ea5",
+  "_npmVersion": "3.10.8",
+  "_nodeVersion": "6.1.0",
+  "dist": {
+    "shasum": "b3a21ef4a7beed3210708d55ebf95e6e6aabba23",
+    "tarball": "http://registry.npmjs.org/electron-ipc-broadcast/-/electron-ipc-broadcast-0.0.1.tgz"
+  },
+  "versions": [
+    {
+      "number": "0.0.1",
+      "date": "2016-10-26T04:40:34.894Z"
+    }
+  ],
+  "created": "2016-10-26T04:40:34.894Z",
+  "modified": "2016-10-26T04:40:34.894Z",
+  "lastPublisher": {
+    "name": "jprichardson",
+    "email": "jprichardson@gmail.com"
+  },
+  "owners": [
+    {
+      "name": "jprichardson",
+      "email": "jprichardson@gmail.com"
+    }
+  ],
+  "readme": "electron-ipc-broadcast\n=====================\n\n[![npm](https://img.shields.io/npm/v/electron-ipc-broadcast.svg?style=flat-square)](https://www.npmjs.com/package/electron-ipc-broadcast)\n[![Build Status](https://travis-ci.org/jprichardson/electron-ipc-broadcast.svg?branch=master)](https://travis-ci.org/jprichardson/electron-ipc-broadcast)\n[![JavaScript standard style](https://img.shields.io/badge/code%20style-standard-brightgreen.svg?style=flat-square)](http://standardjs.com)\n\nBroadcast IPC messages to all Electron processes.\n\n\nInstall\n-------\n\n    npm i --save electron-ipc-broadcast\n\n\nExample\n-------\n\nIn your main process, you need to first call this:\n\n```js\nimport { mainBroadcastListener } from 'electron-ipc-broadcast'\nmainBroadcastListener()\n```\n\nThen you can use `electron-ipc-broadcast` anywhere within your app and listen to messages anywhere.\n\nIn any BrowserWindow process (renderer):\n\n```js\nimport broadcast from 'electron-ipc-broadcast'\nbroadcast('somemodule:somechannel', { message: 'hello' })\n```\n\nIn any process (main or renderer) to listen to messages:\n\n```js\nimport { ipcRenderer } from '#electron'\nipcRenderer.on('somemodule:somechannel', (event, { payload }) => {\n  const { message } = payload\n  console.log(message) // => hello\n})\n```\n\n\nLicense\n-------\n\nMIT (c) JP Richardson 2016\n"
+}

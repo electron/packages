@@ -1,0 +1,75 @@
+{
+  "name": "imagemagick2",
+  "keywords": [
+    "ImageMagick",
+    "imagemagick",
+    "image processing",
+    "resize",
+    "histogram",
+    "grayscale",
+    "MagickWand"
+  ],
+  "homepage": "https://github.com/TesserisPro/imagmagick2",
+  "version": "0.1.5",
+  "description": "ImageMagick module for NodeJS that is built with MagickWand API.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "install": "node-gyp rebuild"
+  },
+  "author": {
+    "name": "Dmitry Peleshenko"
+  },
+  "email": "peleshenko@tesseris.com",
+  "license": "ISC",
+  "gypfile": true,
+  "devDependencies": {
+    "nan": "^2.4.0"
+  },
+  "gitHead": "822f94356a8eefa1d24b26a824c3da45502e1c1c",
+  "_npmVersion": "3.10.9",
+  "_nodeVersion": "6.7.0",
+  "dist": {
+    "shasum": "0cc09fde268a7f3510b56018d20e02c9246ac1ca",
+    "tarball": "http://registry.npmjs.org/imagemagick2/-/imagemagick2-0.1.5.tgz"
+  },
+  "versions": [
+    {
+      "number": "0.1.0",
+      "date": "2016-11-09T00:38:34.473Z"
+    },
+    {
+      "number": "0.1.1",
+      "date": "2016-11-09T01:21:19.343Z"
+    },
+    {
+      "number": "0.1.2",
+      "date": "2016-11-09T02:29:47.249Z"
+    },
+    {
+      "number": "0.1.3",
+      "date": "2016-11-09T02:36:12.685Z"
+    },
+    {
+      "number": "0.1.4",
+      "date": "2016-11-10T00:52:52.980Z"
+    },
+    {
+      "number": "0.1.5",
+      "date": "2016-11-10T22:10:55.412Z"
+    }
+  ],
+  "created": "2016-11-09T00:38:34.473Z",
+  "modified": "2016-11-10T22:10:55.412Z",
+  "lastPublisher": {
+    "name": "peleshenko",
+    "email": "peleshenko@tesseris.com"
+  },
+  "owners": [
+    {
+      "name": "peleshenko",
+      "email": "peleshenko@tesseris.com"
+    }
+  ],
+  "readme": "# ImageMagic module for NodeJS\n\n## Tested with\n - Linux x64\n - Windows x86 / Visual Studio 2015\n - ImageMagic 6.9.6 \n - NodeJS 6.7.0\n\n## Installation\n1. Install ImageMagic 6.9.6\n1. **Windows only** configure IMAGEMAGICK_HOME environment variable to root of ImageMagic installation (e.g. C:\\Program Files (x86)\\ImageMagick-6.9.6-Q16-HDRI )  \n1. **Windows only** If you have problems with ssize_t during build comment line #246 in %IMAGEMAGICK_HOME%\\include\\magick\\magick-baseconfig.h (typedef int ssize_t)\n    TODO: Solve this issue in better way\n1. npm install imagemagic2\n1. **electorn only** You may need to rebuild library for specific node version user in electron\n\n## Usage\n\n### Basic Example\n\nTo use imagemagick first you need to create and image, currently only reading from file is supported.\n\n```js\nconst image = require('imagemagick2');\n\nvar img = image(filePath);\n```\n\nThan you can apply transformations and/or calculations on image with fluent style. Note than transformations/calculations and even reading image from file will be performed only after apply() method is called.\n\n```js\n    const image = require('imagemagick2');\n    image(filePath) // Do nothing just save action\n        .resize(640, 480) // Do nothing just save action\n        .write(destinationPath) // Do nothing just save action\n        .apply(); //Apply all actions\n```\n\nApply returns promise.\n\n```js\n    const image = require('imagemagick2');\n\n    image(filePath)\n        .resize(640)\n        .write(destination)\n        .apply()\n        .than(() => console.log(\"OK\"))\n        .catch(err => console.log(\"Error: \" + err)); \n```\n\nTo handle results of every action you can use action callback. In case of any error action callback will not be called and global promise will fail;\n\n```js\n    const image = require('imagemagick2');\n\n    image(filePath)\n        .resize(640, 480, function(img){ console.log(\"Resize finished\") })\n        .write(destination)\n        .apply();\n```\n\nAdditionally you can perform any custom action after any operation with method do.\n\n```js\n    const image = require('imagemagick2');\n\n    image(filePath)\n        .resize(640, 480)\n        .do(function(img) { console.log(\"Resize finished\") })\n        .write(destination)\n        .apply();\n```\n\n### Apply time actions\n\nIn some cases you may need to decide to continue some transformations or not based on results of previous transformations/calculations. In that case you can use apply time actions.\n\n```js\n    const image = require('imagemagick2');\n\n    image(filePath)\n        .size(function(img, size) { \n                if(size.width > 640) \n                    img.resize(640)\n                       .write(destination); \n              })\n        .apply();\n```\n\n## Methods\n\n### Resize\n\n```js\n    const image = require('imagemagick2');\n    image(filePath).resize(640, 480, function(img){});\n```\n\n### Rotate\n\n```js\n    const image = require('imagemagick2');\n    image(filePath).rotate(90 /* angle in degrees */, function(img){}); \n```\n\n### Write\n\n```js\n    const image = require('imagemagick2');\n    image(filePath).write(destinationFilePath, function(img){}); \n```\n\n### Grayscale\n\n```js\n    const image = require('imagemagick2');\n    image(filePath).grayscale(function(img){}); \n```\n\n### Strip (remove all additional data like EXIF or thumbnails)\n\n```js\n    const image = require('imagemagick2');\n    image(filePath).strip(function(img){}); \n```\n\n### Size (retrieves image size)\n\n```js\n    const image = require('imagemagick2');\n    image(filePath).size(function(img, size) { console.log(size.width, size.height) }); \n```\n\n### Brightness histogram\n\n```js\n    const image = require('imagemagick2');\n    image(filePath).brightnessHistogram(40 /* histogram components number*/, \n            function(img, hist /* array of values, each between 0 and 1 */) { }); \n```"
+}

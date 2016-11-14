@@ -1,6 +1,6 @@
 {
   "name": "meteor-desktop",
-  "version": "0.0.52",
+  "version": "0.1.2",
   "bin": {
     "meteor-desktop": "dist/bin/cli.js"
   },
@@ -10,17 +10,24 @@
   "description": "Build a Meteor's desktop client with hot code push.",
   "main": "dist/index.js",
   "scripts": {
-    "test": "mocha --compilers js:babel-core/register \"tests/+(functional|unit)/**/*.test.js\"",
-    "test-watch": "watch \"npm run test\" --wait 10 dist tests/unit tests/functional scaffold skeleton",
-    "lint": "eslint -c .eslintrc **/*.js",
-    "coverage": "istanbul cover node_modules/mocha/bin/_mocha -- --compilers js:babel-core/register \"tests/+(functional|unit)/**/*.test.js\"",
-    "version-propagate": "node dist/scripts/propagateVersion.js",
-    "publish-plugins": "cd plugins/bundler && (meteor publish || echo) && cd ../watcher && (meteor publish || echo)",
-    "prepublish": "npm run build",
-    "publish-all": "npm run version-propagate && npm run publish-plugins && npm publish",
+    "test": "cross-env NODE_ENV=test nyc mocha -t 10000 -r ./tests/helpers/clear.js \"tests/+(unit|functional)/**/*.test.js\"",
+    "test-integration": "mocha -t 10000 --compilers js:babel-core/register \"tests/+(integration)/**/*.test.js\"",
+    "test-watch": "mocha -r ./tests/helpers/clear.js --compilers js:babel-core/register \"tests/+(unit|functional)/**/*.test.js\" --watch",
+    "lint": "eslint lib plugins scaffold skeleton tests",
+    "prepare-integration-tests": "node tests/integration/prepare.js",
+    "coverage-html": "nyc report --reporter=lcov",
+    "coverage": "nyc report --reporter=text-lcov | coveralls",
+    "report-coverage": "nyc report --reporter=lcov > coverage.lcov && codecov",
+    "version": "node dist/scripts/propagateVersion.js && git add plugins",
+    "postversion": "npm run publish-all",
+    "postinstall": "node dist/scripts/addToScripts || echo",
+    "publish-plugins": "(cls || reset) && cd plugins/bundler && (meteor publish || echo) && cd ../watcher && (meteor publish || echo)",
+    "prepublish": "npm run build || echo",
+    "publish-all": "npm run publish-plugins && npm publish",
     "build": "babel lib --out-dir dist --source-maps inline --copy-files",
     "build-watch": "babel lib --watch --out-dir dist --source-maps inline --copy-files",
-    "develop": "npm-run-all --parallel build-watch test-watch"
+    "develop": "npm-run-all --parallel build-watch test-watch",
+    "generate-docs": "jsdoc2md skeleton/preload.js > docs/api/desktop.md && jsdoc2md skeleton/modules/module.js > docs/api/module.md"
   },
   "author": {
     "name": "Bartosz Wojtkowiak",
@@ -28,61 +35,65 @@
   },
   "license": "MIT",
   "devDependencies": {
-    "babel-cli": "^6.14.0",
+    "babel-cli": "^6.18.0",
+    "babel-plugin-istanbul": "^2.0.3",
     "chai": "^3.5.0",
+    "codecov": "^1.0.1",
     "connect": "3.5.0",
     "connect-modrewrite": "0.9.0",
-    "del": "^2.2.2",
+    "coveralls": "^2.11.14",
+    "cross-env": "^3.1.3",
     "dirty-chai": "^1.2.2",
-    "eslint": "^3.6.0",
-    "eslint-config-airbnb-base": "^8.0.0",
-    "eslint-plugin-import": "^2.0.0",
+    "eslint": "^3.9.0",
+    "eslint-config-airbnb-base": "^9.0.0",
+    "eslint-plugin-import": "^2.0.1",
     "find-port": "2.0.1",
-    "fs-plus": "^2.9.2",
-    "mocha": "^2.5.3",
-    "istanbul": "^0.4.5",
+    "fs-plus": "^2.9.3",
+    "jsdoc-to-markdown": "^2.0.1",
     "merge-stream": "^1.0.0",
-    "mockery": "^1.7.0",
-    "node-fetch": "^1.6.1",
-    "npm-run-all": "^3.1.0",
-    "proxyquire": "^1.7.9",
+    "mocha": "^2.5.3",
+    "mockery": "^2.0.0",
+    "npm-run-all": "^3.1.1",
+    "nyc": "8.4.0-candidate",
+    "proxyquire": "^1.7.10",
     "queue": "4.0.0",
-    "request": "^2.75.0",
-    "rewire": "^2.5.1",
-    "run-sequence": "^1.2.1",
+    "reify": "^0.3.8",
+    "request": "^2.76.0",
+    "rewire": "^2.5.2",
+    "rimraf": "^2.5.4",
+    "run-sequence": "^1.2.2",
     "serve-static": "1.11.1",
     "server-destroy": "1.0.1",
     "sha1-file": "^1.0.0",
     "sinon": "^1.17.6",
     "sinon-chai": "^2.8.0",
-    "watch": "^1.0.0"
+    "spectron": "^3.4.0",
+    "watch": "^1.0.1"
   },
   "dependencies": {
     "asar": "0.12.3",
-    "babel-core": "6.17.0",
+    "babel-core": "6.18.0",
     "babel-plugin-transform-runtime": "6.15.0",
-    "babel-preset-es2015": "6.16.0",
+    "babel-preset-es2015": "6.18.0",
     "babel-preset-node6": "11.0.0",
     "babel-preset-stage-1": "6.16.0",
-    "babel-runtime": "6.11.6",
+    "babel-runtime": "6.18.0",
     "commander": "2.9.0",
-    "cross-spawn": "4.0.2",
-    "del": "2.2.1",
-    "electron": "1.4.3",
-    "electron-builder": "7.11.2",
-    "electron-packager": "8.1.0",
-    "electron-rebuild": "1.2.1",
-    "extfs": "0.0.7",
-    "glob": "7.1.0",
+    "cross-spawn": "5.0.0",
+    "del": "2.2.2",
+    "electron": "1.4.4",
+    "electron-builder": "7.15.2",
+    "electron-packager": "8.2.0",
+    "glob": "7.1.1",
     "hash-files": "1.1.1",
-    "lodash": "4.16.0",
-    "node-fetch": "^1.6.3",
-    "npm": "3.10.8",
+    "lodash": "4.16.4",
+    "node-fetch": "1.6.3",
+    "npm": "3.10.9",
     "semver": "5.3.0",
     "semver-regex": "1.0.0",
-    "shelljs": "0.7.4",
+    "shelljs": "0.7.5",
     "single-line-log": "1.1.2",
-    "uglify-js": "2.7.3"
+    "uglify-js": "2.7.4"
   },
   "repository": {
     "user": "wojtkowiak",
@@ -103,14 +114,31 @@
     "packager",
     "desktop"
   ],
-  "homepage": "https://github.com/wojtkowiak/meteor-desktop",
-  "gitHead": "a87172a881d2e18fe97235152448a5f9b9eafdac",
-  "_npmVersion": "3.10.8",
-  "_nodeVersion": "6.5.0",
-  "dist": {
-    "shasum": "6d6f6c617224183b9f0186896b9e5f2ca482a855",
-    "tarball": "http://registry.npmjs.org/meteor-desktop/-/meteor-desktop-0.0.52.tgz"
+  "nyc": {
+    "exclude": [
+      "dist",
+      "node_modules",
+      "plugins",
+      "tests",
+      "scaffold",
+      "lib"
+    ],
+    "require": [
+      "babel-core/register"
+    ],
+    "sourceMap": false,
+    "instrument": false,
+    "all": true
   },
+  "homepage": "https://github.com/wojtkowiak/meteor-desktop",
+  "gitHead": "ba17803894f0ec8fcd78f0f6d48d4e8afc9aee4c",
+  "_npmVersion": "3.10.9",
+  "_nodeVersion": "6.9.1",
+  "dist": {
+    "shasum": "ba31cc627ebc6849363124ae36fe9fe26153e64e",
+    "tarball": "http://registry.npmjs.org/meteor-desktop/-/meteor-desktop-0.1.2.tgz"
+  },
+  "stars": 1,
   "versions": [
     {
       "number": "0.0.25",
@@ -211,10 +239,138 @@
     {
       "number": "0.0.52",
       "date": "2016-10-07T09:49:34.876Z"
+    },
+    {
+      "number": "0.0.53",
+      "date": "2016-10-10T10:34:52.229Z"
+    },
+    {
+      "number": "0.0.55",
+      "date": "2016-10-10T21:07:45.123Z"
+    },
+    {
+      "number": "0.0.56",
+      "date": "2016-10-10T21:50:44.316Z"
+    },
+    {
+      "number": "0.0.57",
+      "date": "2016-10-11T08:28:25.188Z"
+    },
+    {
+      "number": "0.0.59",
+      "date": "2016-10-11T08:58:29.266Z"
+    },
+    {
+      "number": "0.0.60",
+      "date": "2016-10-11T09:28:45.650Z"
+    },
+    {
+      "number": "0.0.61",
+      "date": "2016-10-11T10:20:26.394Z"
+    },
+    {
+      "number": "0.0.62",
+      "date": "2016-10-11T11:40:43.939Z"
+    },
+    {
+      "number": "0.0.63",
+      "date": "2016-10-11T11:43:51.236Z"
+    },
+    {
+      "number": "0.0.64",
+      "date": "2016-10-11T11:45:41.685Z"
+    },
+    {
+      "number": "0.0.65",
+      "date": "2016-10-11T11:56:32.343Z"
+    },
+    {
+      "number": "0.0.66",
+      "date": "2016-10-12T06:57:35.566Z"
+    },
+    {
+      "number": "0.0.67",
+      "date": "2016-10-12T10:59:21.872Z"
+    },
+    {
+      "number": "0.0.68",
+      "date": "2016-10-17T10:07:22.899Z"
+    },
+    {
+      "number": "0.0.69",
+      "date": "2016-10-17T14:38:46.027Z"
+    },
+    {
+      "number": "0.0.70",
+      "date": "2016-10-18T21:43:04.581Z"
+    },
+    {
+      "number": "0.0.71",
+      "date": "2016-10-19T12:19:44.314Z"
+    },
+    {
+      "number": "0.0.72",
+      "date": "2016-10-20T14:17:09.727Z"
+    },
+    {
+      "number": "0.0.73",
+      "date": "2016-10-21T10:44:07.538Z"
+    },
+    {
+      "number": "0.0.74",
+      "date": "2016-10-21T11:22:24.360Z"
+    },
+    {
+      "number": "0.0.75",
+      "date": "2016-10-28T12:53:12.590Z"
+    },
+    {
+      "number": "0.0.76",
+      "date": "2016-11-01T21:24:34.006Z"
+    },
+    {
+      "number": "0.0.77",
+      "date": "2016-11-02T11:10:27.022Z"
+    },
+    {
+      "number": "0.0.78",
+      "date": "2016-11-03T00:01:07.183Z"
+    },
+    {
+      "number": "0.0.79",
+      "date": "2016-11-04T14:46:48.196Z"
+    },
+    {
+      "number": "0.0.80",
+      "date": "2016-11-04T14:52:31.463Z"
+    },
+    {
+      "number": "0.0.81",
+      "date": "2016-11-04T15:00:18.945Z"
+    },
+    {
+      "number": "0.0.82",
+      "date": "2016-11-05T00:15:10.394Z"
+    },
+    {
+      "number": "0.0.83",
+      "date": "2016-11-06T22:13:28.790Z"
+    },
+    {
+      "number": "0.1.0",
+      "date": "2016-11-07T01:22:31.646Z"
+    },
+    {
+      "number": "0.1.1",
+      "date": "2016-11-10T10:24:40.280Z"
+    },
+    {
+      "number": "0.1.2",
+      "date": "2016-11-13T20:22:18.380Z"
     }
   ],
   "created": "2016-06-22T13:58:41.607Z",
-  "modified": "2016-10-07T09:49:34.876Z",
+  "modified": "2016-11-13T20:22:18.380Z",
   "lastPublisher": {
     "name": "wojtkowiak",
     "email": "bartosz@wojtkowiak.it"
@@ -225,5 +381,5 @@
       "email": "bartosz@wojtkowiak.it"
     }
   ],
-  "readme": "![Logo](meteor-desktop.png)\n\n# WORK IN PROGRESS\n\n# Meteor Desktop\n###### aka Meteor Electron Desktop Client\n> Build desktop apps with Meteor & Electron. Full integration with hot code push implementation.\n\n```bash\n cd /your/meteor/app\n npm install --save-dev meteor-desktop\n meteor-desktop\n```\n\n## What is this?\n\nThis is a complete implementation of integration between `Meteor` and `Electron`. To make it clear from the start, this is a **desktop client** - it is just like your mobile clients - but for desktops. It also features a full hot code push implementation - which means you can release updates the same way you are used to.\n\n## Prerequisites\n\n - Meteor >= `1.3.3`\n - \n"
+  "readme": "![Logo](meteor-desktop.png)\n\n# Meteor Desktop <sup>beta version<sup>\n###### aka Meteor Electron Desktop Client\n> Build desktop apps with Meteor & Electron. Full integration with hot code push implementation.\n\n[![npm version](https://img.shields.io/npm/v/meteor-desktop.svg)](https://npmjs.org/package/meteor-desktop)\n<sup>Travis</sup> [![Travis Build Status](https://travis-ci.org/wojtkowiak/meteor-desktop.svg?branch=master)](https://travis-ci.org/wojtkowiak/meteor-desktop)\n<sup>AppVeyor</sup> [![Build status](https://ci.appveyor.com/api/projects/status/mga230i3avit8ljv/branch/master?svg=true)](https://ci.appveyor.com/project/wojtkowiak/meteor-desktop)\n<sup>CircleCI</sup> [![CircleCI](https://circleci.com/gh/wojtkowiak/meteor-desktop/tree/master.svg?style=svg)](https://circleci.com/gh/wojtkowiak/meteor-desktop/tree/master)\n\n![Demo](demo.gif)\n\n## What is this?\n\nThis is a complete implementation of integration between `Meteor` and `Electron` aiming to achieve the same level of developer experience like `Meteor` gives. \nTo make it clear from the start, this is a **desktop client** - it is just like your mobile \nclients with `Cordova` - but this is for desktops with `Electron`. It also features a full hot code \npush implementation - which means you can release updates the same way you are used to.  \n\n## Prerequisites\n\n - Meteor >= `1.3.4`<sup>__*1__</sup>\n - at least basic [Electron](http://electron.atom.io/) framework knowledge\n - mobile platform added to project<sup>__*2__</sup>  \n\n<sup>__*1__ `1.3.3` is supported if you will install `meteor-desktop` with `npm >= 3`</sup>\n\n<sup>__*2__ you can always build with `--server-only` if you do not want to have mobile clients,  you do not actually have to have android sdk or xcode to go on with your project</sup>\n\n### Quick start\n```bash\n cd /your/meteor/app\n meteor npm install --save-dev meteor-desktop\n # you need to have any mobile platform added (ios/android)\n meteor --mobile-server=127.0.0.1:3000\n \n # open new terminal\n\n npm run desktop -- init\n npm run desktop\n\n # or in one command `npm run desktop -- --scaffold` \n```\n\n## Usage `--help`\n\n```\nUsage: meteor-desktop [command] [options]\n  Commands:\n\n    init                       scaffolds .desktop dir in the meteor app\n    run [ddp_url]              (default) builds and runs desktop app\n    build [ddp_url]            builds your desktop app\n    build-installer [ddp_url]  creates the installer\n    just-run                   alias for running `electron .` in `.meteor/desktop-build`\n    package [ddp_url]          runs electron packager\n    init-tests-support         prepares project for running functional tests of desktop app\n\n  Options:\n\n    -h, --help                            output usage information\n    -b, --build-meteor                    runs meteor to obtain the mobile build, kills it after\n    -t, --build-timeout <timeout_in_sec>  timeout value when waiting for meteor to build, default 600sec\n    -p, --port <port>                     port on which meteor is running, when with -b this will be passed to meteor when obtaining the build\n    --production                          builds meteor app with the production switch, uglifies contents of .desktop, packs app to app.asar\n    -a, --android                         force add android as a mobile platform instead of ios\n    -s, --scaffold                        will scaffold .desktop if not present\n    --ia32                                generate 32bit installer\n    --win                                 generate also a Windows installer on Mac\n    -V, --version                         output the version number\n\n  [ddp_url] - pass a ddp url if you want to use different one than used in meteor's --mobile-server\n              this will also work with -b\n```\n#### `--build-meteor`\nIf you just want to build the desktop app, package it or build installer without running the \n`Meteor` project separately you can just use `-b` and all will be done automatically - this is useful when \nfor example building on a CI etc.\n  \n#### `--android`\nWhen there is no mobile platform in the project and `-b` is used, mobile platform is added \nautomatically and removed at the end of the build process. Normally an `ios` platform is added \nbut you can change this to `android` through this option.\n   \nDocumentation\n=================\n  * [Architecture](#architecture)\n     * [How does this work with Meteor?](#how-does-this-work-with-meteor)\n     * [How the Electron app is structured?](#how-the-electron-app-is-structured)\n  * [Scaffolding your desktop app](#scaffolding-your-desktop-app)\n     * [settings.json](#settingsjson)\n        * [Applying different window options for different OS](#applying-different-window-options-for-different-os)\n     * [desktop.js](#desktopjs)\n        * [skeletonApp](#skeletonapp)\n        * [eventsBus](#eventsbus)\n        * [modules](#modules)\n        * [Module](#module)\n  * [Writing modules](#writing-modules)\n     * [extract](#extract)\n  * [Hot code push support](#hot-code-push-support)\n  * [Meteor.isDesktop](#meteorisdesktop)\n  * [<code>Desktop</code> and <code>Module</code>](#desktop-and-module)\n     * [Module - desktop side](#module---desktop-side)\n     * [Desktop - Meteor side](#desktop---meteor-side)\n  * [desktopHCP - .desktop hot code push](#desktophcp---desktop-hot-code-push)\n     * [How this works](#how-this-works)\n     * [Caveats](#caveats)\n  * [How to write plugins](#how-to-write-plugins)\n     * [meteorDependencies in <code>package.json</code>](#meteordependencies-in-packagejson)\n        * [List of known plugins:](#list-of-known-plugins)\n  * [Squirrel autoupdate support](#squirrel-autoupdate-support)\n  * [Native modules support](#native-modules-support)\n  * [Devtron](#devtron)\n  * [Testing desktop app and modules](#testing-desktop-app-and-modules)\n  * [MD_LOG_LEVEL](#md_log_level)\n  * [Packaging](#packaging)\n  * [Building installer](#building-installer)\n  * [Roadmap](#roadmap)\n  * [Contribution](#contribution)\n  * [FAQ](#faq)\n  * [Changelog](#changelog)\n\n## Architecture\n\nIf you have ever been using any `Cordova` plugins before you will find this approach alike. In `Cordova` every plugin exposes its native code through a JS api available in some global namespace like `cordova.plugins`. The approach used here is similar.\n\nIn `Electron` app, there are two processes running along in your app. The so-called `main \nprocess` and `renderer process`. Main process is just a JS code executed in `node`, and the \nrenderer is a `Chromium` process. In this integration your `Meteor` app is being run in the \n`renderer` process and your desktop specific code runs in the `main` process. They are \ncommunicating through IPC events. Basically, the desktop side publishes its API as an IPC event \nlisteners. In your `Meteor` code, calling it is as simple as `Desktop.send('module', 'event');`.  \n\nCode on the desktop side is preferred to be modular - that is just for simplifying testing and \nencapsulating functionalities into independent modules. However, you do not have to follow this style, there is an `import` dir in which you can structure your code however you want. The basics of an `Electron` app are already in place (reffered as `Skeleton App`) and your code is loaded like a plugin to it.\n\nBelow is a high level architecture diagram of this integration.\n\n![High level architecture](high-level-arch.png)\n\n#### How does this work with Meteor?\n> <sup>or how hacky is this?</sup>\n\nThe main goal was to provide a non hacky integration without actually submitting any desktop \noriented pull request to `Meteor`.\nThe whole concept is based on taking the `web.cordova` build, modifying it as little as possible \nand running it in the `Electron`'s renderer process. The current `cordova` integration \narchitecture is more or less conceptually replicated. \n\nCurrently the only modification that the mobile build is subjected to is injecting the `Meteor.isDesktop` variable. \n \nTo obtain the mobile build, this integration takes the build from either\n`.meteor/local/cordova-build` (version `< 1.3.4.1`) or from `.meteor/local/build/programs/web.cordova`.\nBecause `index.html` is not present in the `web.cordova` directory and `program.json` lacks \n`version` field, they are just downloaded from the running project.\n\n#### How the `Electron` app is structured?\n\nThe produced `Electron` app consists barely of 4 files:\n\n- `app.asar` - bundled `Skeleton App` and `node_modules` (including all your dependencies from \n`settings.json` and modules)\n- `meteor.asar` - your `Meteor` app bundled to an `.asar`\n- `desktop.asar` - processed contents for `.destkop`\n- `package.json` - `Electron` requires a `package.json` to be present\n\n## Scaffolding your desktop app\n\nIf you have not run the example from the Quick start paragraph, first you need to scaffold a `.desktop` dir in which your `Electron`'s main process code lives.\nTo do that run: (assuming `npm install --save-dev meteor-desktop` did add successfully a `desktop` \nentry in the `package.json scripts` section)\n```bash\nnpm run desktop -- init\n```\n\nThis will generate an exemplary `.desktop` dir. Lets take a look what we can find there:\n```\n.desktop\n├── assets                     # place all your assets here\n├── import                     # all code you do not want to structure into modules  \n├── modules                    # your desktop modules (check modules section for explanation)\n│    └── example               # module example\n│         ├── index.js         # entrypoint of the example module\n│         ├── example.test.js  # functional test for the example module\n│         └── module.json      # module configuration  \n├── desktop.js                 # your Electron main process entry point - treated like a module\n├── desktop.test.js            # functional test for you desktop app\n├── settings.json              # your app settings\n└── squirrelEvents.js          # handling of squirrel.windows events\n```\n\nTak a look into the files. Most of them have meaningful comments inside.\n\nSome files are described more in detail below..\n### settings.json\n\nThis is the main configuration file for your desktop app.\nBelow you can find brief descriptions of the fields. \n\nfield|description\n-----|-----------\n`name`|just a name for your project\n`version`|version of the desktop app\n`projectName`|this will be used as a `name` in the generated app's package.json\n`devTools`|whether to install and open `devTools`, set automatically to false when building with `--production`\n`devtron`|check whether to install [`devtron`](http://electron.atom.io/devtron/), set automatically to false when building with `--production`, [more](#devtron)\n`desktopHCP`|whether to use `.desktop` hot code push module - [more](#desktophcp---desktop-hot-code-push)\n<sup>`desktopHCPIgnoreCompatibilityVersion`</sup>|ignore the `.desktop` compatibility version and install new versions even if they can be incompatible\n`autoUpdateFeedUrl`|url passed to [`autoUpdater.setFeedUrl`](https://github.com/electron/electron/blob/master/docs/api/auto-updater.md#autoupdatersetfeedurlurl-requestheaders), [more](#squirrel-autoupdate-support)\n`autoUpdateFeedHeaders`|http headers passed to [`autoUpdater.setFeedUrl`](https://github.com/electron/electron/blob/master/docs/api/auto-updater.md#autoupdatersetfeedurlurl-requestheaders)\n`autoUpdateCheckOnStart`|whether to check for updates on app start\n`rebuildNativeNodeModules`|turn on or off recompiling native modules, [more](#native-modules-support)\n`webAppStartupTimeout`|amount of time after which the downloaded version is considered faulty if Meteor app did not start - [more](#hot-code-push-support)\n`window`|production options for the main window - see [here](https://github.com/electron/electron/blob/master/docs/api/browser-window.md#new-browserwindowoptions)\n`windowDev`|development options for the main window, applied on top of production options\n`uglify`|whether to process the production build with uglify\n`plugins`|meteor-desktop plugins list\n`dependencies`|npm dependencies of your desktop app, the same like in `package.json`\n`packageJsonFields`|fields to add to the generated `package.json` in your desktop app\n`builderOptions`|[`electron-builder`](https://github.com/electron-userland/electron-builder) [options](https://github.com/electron-userland/electron-builder/wiki/Options)\n`packagerOptions`|[`electron-packager`](https://github.com/electron-userland/electron-packager) [options](https://github.com/electron-userland/electron-packager/blob/master/docs/api.md)\n\n##### Applying different window options for different OS\n\nYou can use `_windows`, `_osx`, `_linux` properties to set additional settings for different OS. \nThe default `settings.json` is already using that for setting a different icon for OSX.\n\n### desktop.js\n\nThe `desktop.js` is the entrypoint of your desktop app. Let's take a look what references we \nreceive in the constructor.\n```javascript\n    /**\n     * @param {Object} log         - Winston logger instance\n     * @param {Object} skeletonApp - reference to the skeleton app instance\n     * @param {Object} appSettings - settings.json contents\n     * @param {Object} eventsBus   - event emitter for listening or emitting events\n     *                               shared across skeleton app and every module/plugin\n     * @param {Object} modules     - references to all loaded modules\n     * @param {Object} Module      - reference to the Module class\n     * @constructor\n     */\n    constructor({ log, skeletonApp, appSettings, eventsBus, modules, Module })\n```\nSome of the references are describe in detail below:\n\n#### `skeletonApp`\n\nThis is a reference to the Skeleton App. Currently there are only two methods you can call.  \n`isProduction` - whether this is a production build  \n`removeUncaughtExceptionListener` - removes the default handler so you can put your own in place\n\n#### `eventsBus`\n\nThis is just an `EventEmitter` that is an event bus meant to be used across all entities running \nin the `Electron`'s main process (`.desktop`). Currently there are several events emitted on the \nbus by the `Skeleton App` that you may find useful:\n\nevent name|payload|description\n----------|-------|------------\n`unhandledException`| |emitted on any unhandled exceptions, by hooking to it you can run code before any other handler will be executed   \n`beforePluginsLoad`| |emitted before plugins are loaded\n`beforeModulesLoad`| |emitted before internal modules and modules from `.desktop` are loaded\n`beforeDesktopJsLoad`| |emitted before `desktop.js` is loaded\n`desktopLoaded`|`(desktop)`|emitted after loading `desktop.js`, carries the reference to class instance exported from it \n`afterInitialization`| |emitted after initialization of internal modules like HCP and local HTTP server\n`startupFailed`| |emitted when the `Skeleton App` could not start you `Meteor` app  \n`beforeLoadFinish`| |emitted when the `Meteor` app finished loading, but just before the window is shown  \n`loadingFinished`| |emitted when the `Meteor` app finished loading (also after HCP reload)  \n`windowCreated`|`(window)`|emitted when the [`BrowserWindow`](https://github.com/electron/electron/blob/master/docs/api/browser-window.md) (`Chrome` window with `Meteor` app) is  created, passes a reference to this window \n`newVersionReady`|`(version, desktopVersion)`|emitted when a new `Meteor` bundle was downloaded and is ready to be applied  \n`revertVersionReady`|`(version)`|emitted just before the `Meteor` app version will be reverted (due to faulty version fallback mechanism) be applied  \n\nYour can also emit events on this bus as well. A good practice is to namespace them using dots,\nlike for instance `myModule.initalized`.\n\n#### `modules`\n\nObject with references to other modules and plugins. Plugins can be found under their names i.e., \n`modules['meteor-desktop-splash-screen]`.  \nAny module can be found under the name from `module.json`. \nInternal modules such as `autoupdate` and `localServer` are also there. You can also get reference to the `desktop.js` from `modules['desktop']` (note that the reference is also passed in \nthe `desktopLoaded` event).\n\n#### `Module`\n\nClass that provides a way of defining API reachable by `Meteor` app - [more](#module---desktop-side).\n\n## Writing modules\n\nModule is just an encapsulated piece of code. Usually you would just provide certain type of \ngrouped functionality in it. You can treat it like a plugin to your desktop app.  \nOne important rule is that you should not import files from the outside of your module directory \nas this will cause you problems when writing tests.  \nYou can always reach to other modules through `modules` and you can as well add a module with \n some common code or utils.\nEvery module lives in its own directory and has to have a `module.json` file. Currently there are\n only four fields there supported:\n- `name` - name of your module, will be used as a key in `modules` object\n- `dependencies` - list of npm deps\n- `extract` - list of files that should be excluded from packing into `.asar` (e.g. executables, \nfiles meant to be changed etc)\n- `settings` - this object is passed as `settings` field in the object passed to module constructor \n\n#### `extract`\nA little bit more about this. Files should be listed in a form of relative path to the module \ndirectory without any leading slashes, for example `extract: [ \"dir/something.exe\" ]` will be \nmatched to `.desktop/modules/myModule/dir/something.exe`.\n\nTo path to your extracted files is added to your module `settings` as `extractedFilesPath`\n. So your module constructor can look like this:\n```javascript\nimport path from 'path';\nconstructor({ log, skeletonApp, appSettings, eventsBus, modules, settings, Module }) {\n    this.pathToExe = path.join(settings.extractedFilesPath, 'dir/something.exe');\n}\n```\n\n## Hot code push support\n\nApplications produced by this integration are fully compatible with `Meteor`'s hot code push \nmechanism.  \nThe faulty version recovery is also in place - [more about it here](https://guide.meteor\n.com/mobile.html#recovering-from-faulty-versions). You can configure the timeout via \n`webAppStartupTimeout` field in `settings.json`.  \n\nVersions are downloaded and served from [`userData`](https://github.com/electron/electron/blob/master/docs/api/app.md#appgetpathname) directory.\nThere you can find `autoupdate.json` and `versions` dir. If you want to return to first \nbundled version just delete them.\n\nYou can also analyze `autoupdate.log` if you are experiencing any issues.\n\n## `Meteor.isDesktop`\n\nIn your `Meteor` app to run a part of the code only in the desktop context you can use `Meteor\n.isDesktop`. Use it the same way you would use `Meteor.isClient` or `Meteor.isCordova`.\n \n## `Desktop` and `Module`\n\n### `Module` - desktop side\nUse it to declare your API on the desktop side.\n```javascript\n    this.module = new Module('myModuleName');\n```\n[Documentation of the Module API](docs/api/module.md) - basically, it reflects [`ipcMain`]\n(https://github.com/electron/electron/blob/master/docs/api/ipc-main.md).  \n\nThe only addition is the `respond` method which is a convenient method of sending response to \n`Desktop.fetch`. The `fetchId` is always the second argument received in `on`.  \nHere is an [usage example](https://github.com/wojtkowiak/meteor-desktop-localstorage/blob/master/src/index.js#L31).\n \n\n### `Desktop` - Meteor side\n[Documentation of the Desktop API](docs/api/desktop.md) - reflects partially [`ipcRenderer`](https://github.com/electron/electron/blob/master/docs/api/ipc-renderer.md)<sup>*</sup>.    \n\n<sup>* `sendSync` and `sendToHost` are not available</sup>\n\nUse it to call and listen for events from the desktop side.\n\nThe only difference is that you always need to precede arguments with module name.\nThere are two extra methods:  \n- **fetch** - like send but returns a `Promise` that resolves to a response\n- **sendGlobal** - alias for `ipcRenderer.send` - if you need to send an IPC that is not namespaced\n\nExample of `send` and `fetch` usage - [here](https://github.com/wojtkowiak/meteor-desktop-localstorage/blob/master/plugins/localstorage/localstorage.js#L9).  \n\n## desktopHCP - `.desktop` hot code push\n> #### experimental! \n\nThere is an experimental support for hot code push of the `.desktop` directory.  \nIt works similarly to the `Meteor`'s builtin one. It also produces a `version` and \n`compatibilityVersion` to detect whether the update can be made.  \nIn `Meteor` whenever you change any of your `Cordova` dependencies (add/remove/change version) \nyou will make an incompatible change meaning that a new version will not be hot code pushed.  \nThe same applies here. In this case your desktop dependencies are npm packages.   \nTo make it clear, **npm packages are not hot code pushed** - only contents of `.desktop` are.\n\nThe `compatibilityVersion` is calculated from combined list of:\n - dependencies from `settings.json`\n - plugins from `settings.json`\n - dependencies from all modules in `.desktop/modules`\n - major and minor version of `meteor-desktop` (X.X.Y - only X.X is taken)\n - major version from `settings.json` (X.Y.Y - only X is taken).\n \nUntil 1.0 major and minor version of `meteor-desktop` will be used. From 1.0, semver will be \nfollowed and only major version change will mean that a version is backwards incompatible. \n\n#### How this works\nTwo Meteor plugins are added to your project - bundler and watcher. Bundler prepares the `desktop.asar` which is then added to you project as an asset.   \nWatcher just watches for file changes and triggers project rebuilds.   \n\n#### Caveats \n- desktop app needs to be restarted when a new bundle is applied\n- the bundled desktop app goes over normal HCP mechanism meaning that a `desktop.asar` file will \nalso be \ndistributed to your mobile clients and cause unnecessary updates in case you only made changes in\n `.desktop`\n- if errors in your app prevented startup during development, change in `.desktop` will not \ntrigger project rebuild\n- if errors in `.desktop` prevented startup, watcher will not work and you need to make any \nchange in `version` field in the `desktop.version` to trigger rebuild (this file is in the root of \nyour project)\n- if your run a production build of your desktop app it will not receive updates from project run\n from `meteor` command unless you run it with `--production` - that is because development build \n has `devtron` added and therefore the `compatibilityVersion` is different  \n- after reload logs will no longer be shown in the console\n\n## How to write plugins\n\nPlugin is basically a module exported to a npm package. `module.json` is not needed and not taken\n into account because `name` and `dependencies` are already in `package.json`. Also you can not use \n the `extract` functionality as that only works in modules. Plugin `settings` are set and taken \n from the `plugins` section of `settings.json`. [Here](scaffold/settings.json#L26) is an example of passing settings to splash \n screen plugin.  \n#### `meteorDependencies` in `package.json` \nOne extra feature is that you can also depend on Meteor packages through `meteorDependencies` \nfield in `package.json`. Check out [`meteor-desktop-localstorage`](https://github.com/wojtkowiak/meteor-desktop-localstorage/blob/master/package.json#L52) for example.  \nA good practice when your plugin contains a meteor plugin is to publish both at the same version. \nYou can then use `@version` in the `meteorDependecies` to indicate that the Meteor plugin's \nversion should be equal to npm package version.\n\nIf you made a plugin, please let us know so that it can be listed here.\n##### List of known plugins:\n[`meteor-desktop-splashscreen`](https://github.com/wojtkowiak/meteor-desktop-splash-screen)  \n[`meteor-desktop-localstorage`](https://github.com/wojtkowiak/meteor-desktop-localstorage)\n\n## Squirrel autoupdate support\n\nSquirrel Window and OSX autoupdates are supported. So far the only tested server is \n[`electron-release-server`](https://github.com/ArekSredzki/electron-release-server) and the \ndefault url `http://127.0.0.1/update/:platform/:version` provided in `settings.json` assumes you \nwill be using it.  \nThe `:platform` and `:version` tags are automatically replaced by correct values.   \nYou can hook into Squirrel Windows events in `squirrelEvents.js` in `.desktop`.\n\nMore:  \nhttps://github.com/electron/electron/blob/master/docs/api/auto-updater.md  \nhttps://github.com/ArekSredzki/electron-release-server\n\n## Native modules support\n\nThis integration fully supports rebuilding native modules (npm packages with native node modules)\n against `Electron`'s `node` version. However, to speed up build time, it is **switched off by default**. \n\nIf you have any of those in your dependencies, or you know that one of the packages or plugins is using it, you should turn it on by setting `rebuildNativeNodeModules` to true in your `settings.json`. Currently there is no mechanism present that detects whether the rebuild should be run so it is fired on every build. A cleverer approach is planned before `1.0`. \n\n## Devtron\n\n[`Devtron`](http://electron.atom.io/devtron/) is installed and activated by default. It is \nautomatically removed when building with `--production`. As the communication between your Meteor\n app and the desktop side goes through IPC, this tool can be very handy because it can sniff on \n IPC messages.\n<kbd>![devtron IPC sniff](devtron_ipc.gif)</kbd>\n\n## Testing desktop app and modules\n\nFor unit tests you should not have problems with using [electron-mocha](https://github.com/jprichardson/electron-mocha).  \nFor functional testing [Spectron](http://electron.atom.io/spectron) should be used.\n\nThere are two exemplary tests present in the default scaffold. Check them out as they have some \ncomments in them.  \nTo run them you need to init functional test support by invoking:\n```\nnpm run desktop -- init-tests-support\n```\nTwo tasks should be added to your `scripts` section: `test-desktop` and `test-desktop-watch`.\nFeel free to run the tests with: `npm run test-desktop`.\n\nFor testing modules there is a [test suite](https://github.com/wojtkowiak/meteor-desktop-test-suite) available.\nIt is used extensively in the plugins (splash screen & localstorage) tests so you can check there \nfor more examples. \n\n## `MD_LOG_LEVEL`\n`MD_LOG_LEVEL` env var is used to set the logger verbosity. Currently before `1.0` it is set to \n`ALL` but you can change it to any of `INFO, WARN, ERROR, DEBUG, VERBOSE, TRACE`. You can also \nselect multiple levels joining them with a comma, for example: `INFO,WARN`.\n\n## Packaging\n\n`npm run desktop -- package <ddp-url>`\n\nThis produces a package using [`electron-packager`](https://github.com/electron-userland/electron-packager).  \nPackage is produced and saved in `.desktop-package` directory. You can pass options via `packagerOptions` in \n`settings.json`.\n\n## Building installer\n\n`npm run desktop -- build-installer <ddp-url>`\n\nThis packages and builds installer using [`electron-builder`](https://github.com/electron-userland/electron-builder).  \nInstaller is produced and saved in `.desktop-installer` directory. You can pass options via \n`builderOptions` in `settings.json`.\n\nPlease note that `electron-builder` does not use `electron-packager` to create a package. So the \noptions from `packagerOptions` are not taken into account.\n\n\n## Roadmap \n> <sup>aka road to 1.0</sup>\n\nThis version should be considered as beta version.  \nAny feedback/feature requests/PR is highly welcomed and highly anticipated.  \nThere is rough plan to publish a release candidate around January 2017. Until that expect things to \nchange rapidly and many frequent 0.X.X releases.\nYou can find the roadmap filtering by milestone and `accepted` tag on the github issues list [here](https://github.com/wojtkowiak/meteor-desktop/issues?q=is%3Aissue+is%3Aopen+label%3Aaccepted).  \n\n## Contribution\n\nPRs are always welcome and encouraged. If you need help at any stage of preparing a PR, just \nfile an issue. It is also good, to file a feature request issue before you start working to \ndiscuss the need and implementation approach.\n\nCurrently this package does not work when linked with `npm link`. To set up your dev environment \nit is best to create a clean `Meteor` project, add `meteor-desktop` to dependencies with a relative\n path to the place where you have cloned this repo and in scripts add `desktop` with `node\n ./path/to/meteor-desktop/dist/bin/cli.js`.  \n Also to make changes in the desktop HCP plugins run `Meteor` project with `METEOR_PACKAGE_DIRS` \n set to `/absolute/path/to/meteor-desktop/plugins` so that they will be taken from the cloned repo. \n  \n\n## FAQ\n\n## Changelog\n\n- **0.1.2** - fixed [#10](https://github.com/wojtkowiak/meteor-desktop/issues/10)\n- **0.1.1** - `meteor-desktop-splash-screen` version in the default scaffold updated to [`0.0.31`](https://github.com/wojtkowiak/meteor-desktop-splash-screen#changelog) \n- **0.1.0** - first public release\n"
 }

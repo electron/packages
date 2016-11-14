@@ -1,14 +1,14 @@
 {
   "name": "ferment",
-  "version": "0.2.7",
-  "description": "Peer-to-peer audio sharing and streaming application. Like SoundCloud but decentralized. A mashup of ssb, webtorrent and electron.",
+  "version": "0.6.19",
+  "description": "Peer-to-peer audio publishing and streaming application. Like SoundCloud but decentralized. A mashup of ssb, webtorrent and electron.",
   "main": "index.js",
   "scripts": {
     "test": "standard",
     "start": "electron index.js",
-    "server": "electron scripts/server.js",
-    "postinstall": "npm rebuild --runtime=electron --target=1.4.2 --disturl=https://atom.io/download/atom-shell --build-from-source",
-    "rebuild": "npm rebuild --runtime=electron --target=1.4.2 --disturl=https://atom.io/download/atom-shell --build-from-source"
+    "server": "electron server/index.js",
+    "postinstall": "npm run rebuild",
+    "rebuild": "npm rebuild --runtime=electron --target=1.4.3 --abi=50 --disturl=https://atom.io/download/atom-shell"
   },
   "bin": {
     "ferment": "scripts/start.js"
@@ -44,30 +44,45 @@
   "license": "GPL-3.0",
   "homepage": "https://github.com/mmckegg/ferment#readme",
   "dependencies": {
-    "@mmckegg/mutant": "~3.5.1",
+    "@mmckegg/mutant": "~3.7.2",
+    "atomic-file": "^0.1.0",
     "bittorrent-tracker": "^8.0.12",
+    "broadcast-stream": "^0.1.1",
+    "color-hash": "^1.0.3",
+    "compare-version": "^0.1.2",
     "create-torrent": "~3.25.1",
+    "data-uri-to-buffer": "0.0.4",
+    "electron": "~1.4.2",
     "electron-default-menu": "^1.0.0",
-    "electron-prebuilt": "~1.4.2",
     "graphmitter": "^1.6.3",
+    "has-network": "0.0.0",
+    "human-time": "0.0.1",
     "insert-css": "^1.0.0",
+    "level-memview": "0.0.0",
     "mdmanifest": "^1.0.8",
     "micro-css": "^0.6.1",
     "mime-types": "^2.1.12",
+    "on-change-network": "0.0.2",
+    "on-wakeup": "^1.0.1",
     "prettier-bytes": "^1.0.3",
     "pull-file": "^1.0.0",
     "pull-identify-filetype": "^1.1.0",
+    "pull-notify": "^0.1.1",
+    "pull-ping": "^2.0.2",
     "pull-pushable": "^2.0.1",
     "pull-stream": "^3.4.5",
+    "rimraf": "^2.5.4",
     "sanitize-filename": "^1.6.1",
-    "scuttlebot": "~8.7.2",
-    "ssb-blobs": "~0.1.6",
-    "ssb-client": "~4.1.0",
+    "scuttlebot": "~9.1.1",
+    "sodium-prebuilt": "~1.0.22",
+    "ssb-blobs": "~0.1.7",
+    "ssb-client": "~4.3.0",
     "ssb-config": "~2.1.1",
     "ssb-markdown": "^3.0.0",
     "ssb-msg-schemas": "^6.2.1",
     "ssb-msgs": "^5.2.0",
     "ssb-ref": "^2.6.1",
+    "statistics": "^3.3.0",
     "stream-to-pull-stream": "^1.7.2",
     "webtorrent": "~0.97.2",
     "xtend": "^4.0.1"
@@ -76,12 +91,12 @@
     "node-gyp": ">=1.0.2",
     "standard": "^8.3.0"
   },
-  "gitHead": "e1848e14887456d49c7da6d9ddc45711f874f035",
+  "gitHead": "b278981b1587adf9f96f939cfe44b683d62028d1",
   "_npmVersion": "3.10.3",
   "_nodeVersion": "6.4.0",
   "dist": {
-    "shasum": "09a29b398d3dcd9496fb333789a61ae7fef77a2b",
-    "tarball": "http://registry.npmjs.org/ferment/-/ferment-0.2.7.tgz"
+    "shasum": "af676cdf121e51d74c83d2311c523b6051aeac7e",
+    "tarball": "http://registry.npmjs.org/ferment/-/ferment-0.6.19.tgz"
   },
   "versions": [
     {
@@ -147,10 +162,146 @@
     {
       "number": "0.2.7",
       "date": "2016-10-07T06:52:18.390Z"
+    },
+    {
+      "number": "0.2.8",
+      "date": "2016-10-08T04:20:14.118Z"
+    },
+    {
+      "number": "0.3.0",
+      "date": "2016-10-09T02:39:59.318Z"
+    },
+    {
+      "number": "0.4.0",
+      "date": "2016-10-09T08:23:31.359Z"
+    },
+    {
+      "number": "0.4.1",
+      "date": "2016-10-09T12:19:02.163Z"
+    },
+    {
+      "number": "0.4.2",
+      "date": "2016-10-09T19:20:19.997Z"
+    },
+    {
+      "number": "0.4.3",
+      "date": "2016-10-09T19:31:58.403Z"
+    },
+    {
+      "number": "0.4.4",
+      "date": "2016-10-10T00:15:44.065Z"
+    },
+    {
+      "number": "0.4.5",
+      "date": "2016-10-10T02:57:54.036Z"
+    },
+    {
+      "number": "0.4.6",
+      "date": "2016-10-10T04:57:27.689Z"
+    },
+    {
+      "number": "0.5.0",
+      "date": "2016-10-10T13:10:41.469Z"
+    },
+    {
+      "number": "0.5.1",
+      "date": "2016-10-10T13:23:15.532Z"
+    },
+    {
+      "number": "0.5.2",
+      "date": "2016-10-11T00:45:06.119Z"
+    },
+    {
+      "number": "0.5.3",
+      "date": "2016-10-11T01:26:11.073Z"
+    },
+    {
+      "number": "0.5.4",
+      "date": "2016-10-11T01:55:43.840Z"
+    },
+    {
+      "number": "0.6.0",
+      "date": "2016-10-11T07:53:57.326Z"
+    },
+    {
+      "number": "0.6.1",
+      "date": "2016-10-11T08:10:19.730Z"
+    },
+    {
+      "number": "0.6.2",
+      "date": "2016-10-11T11:00:03.374Z"
+    },
+    {
+      "number": "0.6.3",
+      "date": "2016-10-11T11:58:09.353Z"
+    },
+    {
+      "number": "0.6.4",
+      "date": "2016-10-11T14:47:15.605Z"
+    },
+    {
+      "number": "0.6.5",
+      "date": "2016-10-11T20:50:32.624Z"
+    },
+    {
+      "number": "0.6.6",
+      "date": "2016-10-11T22:16:53.918Z"
+    },
+    {
+      "number": "0.6.7",
+      "date": "2016-10-12T13:48:00.834Z"
+    },
+    {
+      "number": "0.6.8",
+      "date": "2016-10-12T15:07:55.001Z"
+    },
+    {
+      "number": "0.6.9",
+      "date": "2016-10-12T16:40:16.051Z"
+    },
+    {
+      "number": "0.6.10",
+      "date": "2016-10-12T16:50:41.203Z"
+    },
+    {
+      "number": "0.6.11",
+      "date": "2016-10-12T23:38:26.624Z"
+    },
+    {
+      "number": "0.6.12",
+      "date": "2016-10-16T10:40:19.008Z"
+    },
+    {
+      "number": "0.6.13",
+      "date": "2016-10-17T07:24:44.470Z"
+    },
+    {
+      "number": "0.6.14",
+      "date": "2016-10-17T22:26:01.624Z"
+    },
+    {
+      "number": "0.6.15",
+      "date": "2016-10-28T01:29:09.944Z"
+    },
+    {
+      "number": "0.6.16",
+      "date": "2016-11-04T12:29:01.572Z"
+    },
+    {
+      "number": "0.6.17",
+      "date": "2016-11-06T01:09:28.125Z"
+    },
+    {
+      "number": "0.6.18",
+      "date": "2016-11-06T03:55:19.320Z"
+    },
+    {
+      "number": "0.6.19",
+      "date": "2016-11-11T00:42:34.780Z"
     }
   ],
   "created": "2016-10-04T14:53:56.927Z",
-  "modified": "2016-10-07T06:52:18.390Z",
+  "modified": "2016-11-11T00:42:34.780Z",
   "lastPublisher": {
     "name": "mmckegg",
     "email": "matt@wetsand.co.nz"
@@ -161,5 +312,5 @@
       "email": "matt@wetsand.co.nz"
     }
   ],
-  "readme": "<h1 align=\"center\">\n  <br>\n  <a href=\"http://ferment.audio\"><img src=\"/ferment-logo.png\" alt=\"WebTorrent\" width=\"200\"></a>\n  <br>\n  Ferment\n  <br>\n  <br>\n</h1>\n\n[Ferment](http://ferment.audio) is a peer-to-peer audio sharing and streaming application. It is an attempted re-creation of classic SoundCloud, but runs entirely decentralized instead of one corporation and its investors holding all the power.\n\nIt is made possible by combining these **amazing** projects: [ssb](https://scuttlebot.io/), [webtorrent](https://webtorrent.io/) and [electron](http://electron.atom.io/).\n\n![](/assets/ferment-screenshot-0.0.0.jpg)\n\n## Experimental // EVERYTHING IS SUBJECT TO CHANGE AND BREAKING!\n\nI'm just fiddling with ideas right now. My goal is to replace my need for SoundCloud as a [backyard musician that uploads WAY to much stuff](https://soundcloud.com/destroy-with-science). I no longer want to pay them $200 a year to host it all (also sick of being told to pay more money to get SoundCloud Go and having my feed ransomed out from underneath me).\n\n### The long-term vision ✨\n\nI want to see a thriving audio sharing community (actually would be COMMUNITIES! it's decentralized), a lot like SoundCloud used to encourage before it had to MONETIZE and start trying to make a profit (AND OH NOEZ, WE'RE GOING BANKRUPT 😞). Pretty sure that SoundCloud was doomed from the start (so glad we had all these great years off the pocket of those investors), but a _peer-to-peer decentralized not-for-profit open source_ might just work!\n\n**It will also soon be possible to host your own server that allows people without the app to stream music from your profile (or others that you want to seed).** This will still be peer-to-peer but your server will act as a mirror and tracker.\n\n## Requirements\n\n- **You need `ffmpeg` installed to add audio files!** Otherwise you'll just receive an error when you choose the file.\n- If there is no [packaged app](https://github.com/mmckegg/ferment/releases) for your platform, you'll need a modern version of [`node` and `npm`](https://nodejs.org)\n- To build from source or npm you currently need to have `automake` and `libtool`\n\n## Install\n\n### on macOS\n\nDownload the latest release [here](https://github.com/mmckegg/ferment/releases)!\n\n**Make sure you read the section of this readme titled [\"Joining Pub Server\"](#joining-pub-server)!**\n\n### from npm\n\n```bash\n$ npm install -g ferment\n```\n\nAnd then run using:\n\n```bash\n$ ferment\n```\n\nIf you get an error appear saying something like [`Module version mismatch. Expected 50, got 48.`](https://github.com/mmckegg/ferment/issues/5), try running the following:\n\n```bash\n# requires automake on your system\n$ ferment --rebuild\n```\n\nInstall latest updates:\n\n```bash\n$ npm install -g ferment@latest\n```\n\n### from source\n\n**Warning:** Development is done on the master branch, so this could be broken right now!\n\n```bash\n$ git clone https://github.com/mmckegg/ferment.git\n$ cd ferment\n$ npm install\n```\n\nAnd then run using:\n\n```bash\n$ npm start\n```\n\nInstall latest updates:\n\n```bash\n$ npm update\n$ npm run rebuild # make sure native add-ons are compatible with electron version\n```\n\n## Joining Pub Server\n\nBy default, **Ferment** will only see other users that are on the same local area network as you. In order to share with users on the internet, you need to be invited to a pub server.\n\nSince I'm a nice person 💖 you can hang out in my pub, and you don't even have to buy any drinks! 🍻\n\n**Click 'Join Pub' on the sidebar then paste the code below:**\n\n```\npub.ferment.audio:43761:@uIL3USK7QJg5AHohnZC329+RXS09nwjc24ulFBH2Ngg=.ed25519~FCE0J/lvL71UfApjcsyb1HO4KIljbaY5XAxK+MENq0E=\n```\n\n> **NOTE:** To avoid destroying my server, this code can only be used a limited amount of times. Please post an issue if it doesn't work for you, and I'll generate a new one.\n\nIf all goes to well, you'll start to see audio appear before your eyes! Give that play button a spin.\n\nHowever, if you don't see anything appear after about 30 seconds, try restarting ferment. It may take a minute or two before it appears. You should be all good as long as `+connected pub.ferment.audio:43761:....` appears in your terminal.\n\n**If you receive an error message, it probably means my pub server has locked up. This seems to be happening a bit at the moment, [trying to get to the bottom of it](https://github.com/mmckegg/ferment/issues/7).** Let me know and I'll restart it. In the mean time, you could start creating a shiny profile and adding some tunes!\n\n## Hosting Your Own Pub Server\n\nSee [this guide](http://ssbc.github.io/docs/scuttlebot/howto-setup-a-pub.html) for full info setting up [scuttlebot](http://ssbc.github.io/scuttlebot/).\n\n### Ferment flavoured pub server\n\nFerment includes it's own bundled server app that you can run which also functions as a tracker and torrent seeder. It also scopes the network, only replicating ferment feeds with you (rather than the normal 3-hop friend replicate, which gives you a bunch of other ssb data, which you won't be able to see but takes up hard-drive space and makes things slow for no reason).\n\nThis is all super undocumented now. Eventually there will be a one-click style install. Or at least some step by step instructions for different platforms.\n\nHere's a hint to get started:\n\n```\nxvfb-run npm run server -- --host={yourhostname} --seed {YOUR_ID}\n```\n\n## TODO\n\n- [x] Scuttlebot database\n- [x] Webtorrent streaming\n- [x] Layout main application interface, base styles\n- [x] Audio player interface\n- [x] Sequencial feed playback\n- [x] API for adding file (transcode, analyse waveform)\n- [x] Upload interface [still needs more fields, and artwork]\n- [x] Connect to local peers and merge streams\n- [x] Store artwork in blobstore, and retrieve again\n- [x] User setup (choose display name, bio, picture)\n- [x] Specific Artist Feed\n- [x] Proper play/pause/loading buttons (nice try emoji)\n- [x] Follow other users (\"friends\")\n- [x] Display following stats\n- [x] Likes\n- [x] Backgrounding (keep seeding / syncing when main window is closed)\n- [x] Invite to pub\n- [x] Make torrents more reliable via pub server trackers [still need to make this work for other pubs though, hard coded to pub.ferment.audio right now]\n- [ ] Automatically download/seed from profiles you follow\n- [ ] Make Save / Download buttons work\n- [ ] Allow \"delete\" of audio posts (some kind of tombstoning)\n- [ ] Reposting\n- [ ] Playlists\n- [ ] Show seed stats\n- [ ] Allow revisions (some kind of special reply that replaces the content with new content)\n- [ ] Figure out a way to track listens? [Would be difficult given the decentralized nature of this. Might be better to show swarm strength or some other clever metric]\n- [ ] Commenting? This is a pretty major part of soundcloud, but I'm personally not really a fan\n\n### Server\n\n- [x] Pub server (invites, etc)\n- [x] Seed torrents from specified feeds\n- [ ] Web interface for viewing specified feeds\n"
+  "readme": "<h1 align=\"center\">\n  <br>\n  <a href=\"http://ferment.audio\"><img src=\"/ferment-logo.png\" alt=\"Ferment\" width=\"200\"></a>\n  <br>\n  Ferment\n  <br>\n  <br>\n</h1>\n\n[Ferment](http://ferment.audio) is a peer-to-peer audio publishing and streaming application. It is an attempted re-creation of classic SoundCloud, but runs entirely decentralized. 💞 🍻\n\nIt is made possible by combining these **amazing** projects: [ssb](https://scuttlebot.io/), [webtorrent](https://webtorrent.io/) and [electron](http://electron.atom.io/).\n\n[📺 Watch a quick video demo](https://www.youtube.com/watch?v=xgvxXbWYmrI)\n\n[🔽 Download for macOS](https://github.com/mmckegg/ferment/releases)\n\n[🛠 Build from source](#install)\n\n[💖 Donate and support me on Patreon](https://www.patreon.com/MattMcKegg)\n\n<img src=\"/assets/ferment-screenshot-0.0.0.jpg\" alt=\"WebTorrent\" width=\"888\" height=\"688\" />\n\n## Requirements\n\nRight now things are [super easy](https://github.com/mmckegg/ferment/releases) if you are running macOS, but for other platforms you need to do some [hard open-sourcey compilation stuff](#install). Also it just doesn't work at all on Windows right now (will be [addressed soon](https://github.com/mmckegg/ferment/issues/30)).\n\nIf there is no [packaged app](https://github.com/mmckegg/ferment/releases) for your platform, you'll need to build from source using modern version of [`node` and `npm`](https://nodejs.org).\n\n## Inspiration\n\nI'm trying to replace my need for SoundCloud as a [backyard musician that uploads WAY to much stuff](https://soundcloud.com/destroy-with-science).\n\nI'd been ranting to my friends for a few months about how much SoundCloud has changed since \"the good old days\". But then I gave it some thought and realised the changes **did make a lot sense from their perspective**. There is no money in hosting other people's content for free, and the company does need to **stay in business and keep those investors happy**.\n\nIt's just a real shame how much forced tie-in there is with these sorts of online services. APIs disappear one-by-one, data formats close up. You become dependent on them, and then they change all your favourite features or simply just shut down. **This is a rather unfortunate vision of a tech future that I don't want to live in.**\n\nThe incentives are all in the wrong places. **We need small scale systems that work on a personal level.** Sure there are trade-offs, but I'm sick of this completely disconnected feeling you get in the globally connected world.\n\n## How it works\n\nFerment uses a peer-to-peer gossip protocol called [Secure Scuttlebutt](https://scuttlebot.io/more/protocols/secure-scuttlebutt.html). The best part about this is there is **no central server** and **no single point of failure**. In fact everyone on the network is a server, with a copy of all of their friends and their friend's friends data. You gossip with other peers to find out if any of your shared contacts have any new posts and share them. But by gossip, we mean cryptographically prove everything they've said since the last time you heard from them. It is impossible to skip a message.\n\n[Finding peers across the complex topography of the internet is pretty difficult though](https://scuttlebot.io/more/articles/design-challenge-avoid-centralization-and-singletons.html). This is where pub servers come in. They act as gossip hubs where information can be shared across networks. A pub is just an ordinary Ferment peer that has a publicly accessible IP address and can be remotely connected to on demand.\n\nThe actual audio files are just torrents (a special variant called [webtorrent](https://github.com/feross/webtorrent) that works over WebRTC). The SSB message contains a reference to its magnet url, and you seed the file to other ferment peers.\n\n**Whenever you listen to something in Ferment, you start seeding that file with other peers.** It will be cached on your machine until you remove it (right-click > Stop Sharing Post). In the future this may be handled automatically (you'll only cache material you have \"liked\" and selected content from followed users that are weak on the network).\n\n## Ferment and Copyright\n\nFerment is an audio publishing platform for **copyright-owning creators**, **creative commons licensed material**, **remix artists** and **DJs**. As this is a decentralized, peer-to-peer community, what you culture in your network is up to you. **You get to choose what level of sharing legality you are comfortable with.**\n\nFor example, if someone in your network adds copyrighted material, and you listen to it, your Ferment will start sharing the file. If you don't want to share the legal responsibility for this, right-click and select 'Stop Sharing Post.'\n\nYou could also consider unfollowing them and reporting the infringement to the owner of the pub to prevent the spread of the material.\n\n**A pub owner should unfollow anyone who adds material which infringes copyright.**\n\n## Joining Pub Server\n\nBy default, **Ferment** will only see other users that are on the same local area network as you. In order to share with users on the internet, you need to be invited to a pub server.\n\nSince I'm a nice person 💖 you can hang out in my pub, and you don't even have to buy any drinks! 🍻 But please be mindful about uploading content that you do not own the rights to. My pub will [unfollow anyone who uploads content that I don't think is _fair_ to the original creators](#ferment-and-copyright).\n\n**Click 'Join Pub' on the sidebar then paste the code below:**\n\n```\npub.ferment.audio:43761:@uIL3USK7QJg5AHohnZC329+RXS09nwjc24ulFBH2Ngg=.ed25519~MqAyQji/+ZHHtq9JM8Dl/w6hOujxXAxlOpYiFUfLgRM=\n```\n\n> **NOTE:** To avoid destroying my server, this code can only be used a limited amount of times. Please post an issue if it doesn't work for you, and I'll generate a new one.\n\nIf all goes to well, you'll start to see audio appear before your eyes! Give that play button a spin.\n\nHowever, if you don't see anything appear after about 30 seconds, try restarting ferment. It may take a minute or two before it appears. You should be all good as long as `+connected pub.ferment.audio:43761:....` appears in your terminal.\n\n**If you receive an error message, it probably means my pub server has locked up. This seems to be happening a bit at the moment, [trying to get to the bottom of it](https://github.com/mmckegg/ferment/issues/7).** Let me know and I'll restart it. In the mean time, you could start creating a shiny profile and adding some tunes!\n\n## Publishing Audio\n\nYou can share audio with your followers by clicking the \"+ Add Audio\" button in the top right corner of the screen. [Make sure you read the section about copyright before publishing anything!](#ferment-and-copyright)\n\nAfter choosing a file and pressing **Publish**, Ferment will convert your audio into a format that compresses and streams well. At this point, you will start to seed the file.\n\n**To make sure other people can play your file, you'll need to wait until the status changes from \"Waiting to share 💖\" to the beer 🍻 icon.** Other users and pubs that follow you should start seeding your post soon after you add it, but if this doesn't happen for a few minutes, restarting Ferment can help.\n\nOn start-up, Ferment checks the files you have cached (or added) against the tracker and prioritize seeding the rarest files on the network. However, any files you play will start seeding immediately.\n\n## Install\n\n### on macOS\n\nDownload the latest release [here](https://github.com/mmckegg/ferment/releases)!\n\n**Make sure you read the section of this readme titled [\"Joining Pub Server\"](#joining-pub-server)!**\n\n### from npm\n\n```bash\n$ npm install -g ferment\n```\n\nAnd then run using:\n\n```bash\n$ ferment\n```\n\nIf you get an error appear saying something like [`Module version mismatch. Expected 50, got 48.`](https://github.com/mmckegg/ferment/issues/5), try running the following:\n\n```bash\n# requires automake on your system\n$ ferment --rebuild\n```\n\nInstall latest updates:\n\n```bash\n$ npm install -g ferment@latest && ferment --rebuild\n```\n\nIf you get weird issues, trash it and reinstall:\n\n```bash\n$ npm rm -g ferment\n```\n\n\n### from source\n\n**Warning:** Development is done on the master branch, so this could be broken right now!\n\n```bash\n$ git clone https://github.com/mmckegg/ferment.git\n$ cd ferment\n$ npm install\n```\n\nAnd then run using:\n\n```bash\n$ npm start\n```\n\nInstall latest updates:\n\n```bash\n$ npm update\n$ npm run rebuild # make sure native add-ons are compatible with electron version\n```\n\nIf you get weird issues, trash your `ferment/node_modules` directory:\n\n```bash\n$ rm -rf node_modules\n$ npm install\n```\n\n## Hosting Your Own Pub Server\n\nSee [this guide](http://ssbc.github.io/docs/scuttlebot/howto-setup-a-pub.html) for full info setting up [scuttlebot](http://ssbc.github.io/scuttlebot/).\n\n### Ferment flavoured pub server\n\nFerment includes it's own bundled server app that you can run which also functions as a tracker and torrent seeder. It also scopes the network, only replicating ferment feeds with you (rather than the normal 3-hop friend replicate, which gives you a bunch of other ssb data, which you won't be able to see but takes up hard-drive space and makes things slow for no reason).\n\nThis is all super undocumented now. Eventually there will be a one-click style install. Or at least some step by step instructions for different platforms.\n\nHere's a hint to get started:\n\n```\nxvfb-run npm run server -- --host={yourhostname} --seed {YOUR_ID}\n```\n\n## TODO\n\n- [x] Scuttlebot database\n- [x] Webtorrent streaming\n- [x] Layout main application interface, base styles\n- [x] Audio player interface\n- [x] Sequencial feed playback\n- [x] API for adding file (transcode, analyse waveform)\n- [x] Upload interface [still needs more fields, and artwork]\n- [x] Connect to local peers and merge streams\n- [x] Store artwork in blobstore, and retrieve again\n- [x] User setup (choose display name, bio, picture)\n- [x] Specific Artist Feed\n- [x] Proper play/pause/loading buttons (nice try emoji)\n- [x] Follow other users (\"friends\")\n- [x] Display following stats\n- [x] Likes\n- [x] Backgrounding (keep seeding / syncing when main window is closed)\n- [x] Invite to pub\n- [x] Make torrents more reliable via pub server trackers [still need to make this work for other pubs though, hard coded to pub.ferment.audio right now]\n- [x] Allow revisions (some kind of special reply that replaces the content with new content)\n- [x] Show seed stats\n- [x] Reposting\n- [x] Make Save / Download buttons work\n- [x] Automatically download/seed items from people you follow\n- [ ] Allow \"delete\" of audio posts (some kind of tombstoning)\n- [ ] Playlists\n- [ ] Commenting (time based)\n\n### Server\n\n- [x] Pub server (invites, etc)\n- [x] Seed torrents from specified feeds\n- [ ] Web interface for viewing specified feeds (started in [branch](https://github.com/mmckegg/ferment/tree/web-lite-client))\n\n## License\n\nGPL-3.0\n"
 }

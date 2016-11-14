@@ -1,8 +1,8 @@
 {
   "name": "pb-for-desktop",
   "productName": "PB for Desktop",
-  "version": "2.4.3",
-  "description": "A Desktop PushBullet client for macOS, Windows and Linux",
+  "version": "2.9.0",
+  "description": "PushBullet desktop application for macOS, Windows and Linux",
   "license": "MIT",
   "homepage": "https://sidneys.github.io/pb-for-desktop",
   "author": {
@@ -50,46 +50,53 @@
   },
   "preferGlobal": true,
   "scripts": {
+    "build": "node ./lib/build.js -- ",
+    "debug": "electron ./app/es6-init.js",
+    "deploy:github": "node ./lib/deploy-github.js -- ",
     "livereload": "gulp livereload",
     "start": "electron ./app/es6-init.js",
-    "debug": "electron ./app/es6-init.js",
-    "build": "node ./lib/build.js -- ",
-    "deploy-github": "node ./lib/deploy-github.js -- ",
-    "darwin-install-start": "sh ./shell/darwin-install-start.sh"
+    "dev:install:build": "babel-node ./lib/dev-install.js -- ",
+    "dev:install": "babel-node ./lib/dev-install.js -- "
   },
   "main": "./app/es6-init.js",
   "bin": {
-    "pb-for-desktop": "./bin/cli.js"
+    "pb-for-desktop": "./bin/cli.js",
+    "pushbullet": "./bin/cli.js"
   },
   "dependencies": {
     "appdirectory": "^0.1.0",
     "auto-launch": "^5.0.1",
+    "babel-cli": "^6.16.0",
     "babel-preset-electron": "^0.37.8",
     "chalk": "^1.1.3",
+    "electron": "^1.4.4",
     "electron-compile": "^4.0.0",
-    "electron-compilers": "^4.0.0",
+    "electron-compilers": "^4.0.2",
     "electron-connect": "^0.6.0",
     "electron-editor-context-menu": "^1.1.1",
     "electron-packager": "^8.1.0",
-    "electron-prebuilt": "^1.4.3",
-    "electron-settings": "^2.2.1",
+    "electron-settings": "^2.2.2",
     "electron-squirrel-startup": "^1.0.0",
-    "file-type": "^3.8.0",
+    "file-type": "^3.9.0",
     "file-url": "^1.1.0",
+    "fkill": "^4.1.0",
     "fs-extra": "^0.30.0",
-    "glob": "^7.1.0",
+    "glob": "^7.1.1",
     "gulp": "^3.9.1",
+    "gulp-load-plugins": "^1.3.0",
     "keypath": "^0.0.1",
     "lodash": "^4.16.4",
     "minimist": "^1.2.0",
     "node-archs": "^1.0.0",
     "node-platforms": "^1.0.0",
+    "open": "0.0.5",
     "progress": "^1.1.8",
     "publish-release": "^1.3.2",
     "read-chunk": "^2.0.0",
     "rimraf": "^2.5.4",
     "string-format-obj": "^1.1.0",
     "try-require": "^1.2.1",
+    "which": "^1.2.11",
     "appdmg": "^0.4.5",
     "electron-installer-debian": "^0.4.0",
     "electron-winstaller": "^2.3.4"
@@ -100,9 +107,8 @@
     "electron-winstaller": "^2.3.4"
   },
   "build": {
-    "electronVersion": "1.4.2",
+    "electronVersion": "1.4.3",
     "productName": "PB for Desktop",
-    "productDescription": "A Desktop PushBullet client for macOS, Windows and Linux",
     "id": "de.sidneys.pb-for-desktop",
     "company": "sidneys.github.io",
     "category": "public.app-category.utilities",
@@ -110,12 +116,12 @@
     "directoryIcons": "icons",
     "iconUrl": "https://raw.githubusercontent.com/sidneys/pb-for-desktop/release/icons/win32/icon-app.ico"
   },
-  "gitHead": "3922f6e1bc819a5abf763201a5bc84b3d0aabda7",
+  "gitHead": "e72bda9b2c6d656d6e659beebbbd93c4c7cafe21",
   "_npmVersion": "3.10.8",
-  "_nodeVersion": "6.7.0",
+  "_nodeVersion": "6.9.1",
   "dist": {
-    "shasum": "77d38be53d52cca06b9e53f5bf676995438e0c71",
-    "tarball": "http://registry.npmjs.org/pb-for-desktop/-/pb-for-desktop-2.4.3.tgz"
+    "shasum": "9841414fb1fa5adefe09106f295de927b2cb55ec",
+    "tarball": "http://registry.npmjs.org/pb-for-desktop/-/pb-for-desktop-2.9.0.tgz"
   },
   "versions": [
     {
@@ -149,10 +155,18 @@
     {
       "number": "2.4.3",
       "date": "2016-10-07T18:01:36.391Z"
+    },
+    {
+      "number": "2.8.0",
+      "date": "2016-10-16T02:30:40.978Z"
+    },
+    {
+      "number": "2.9.0",
+      "date": "2016-10-20T08:06:20.066Z"
     }
   ],
   "created": "2016-08-31T02:49:39.067Z",
-  "modified": "2016-10-07T18:01:36.391Z",
+  "modified": "2016-10-20T08:06:20.066Z",
   "lastPublisher": {
     "name": "sidneys",
     "email": "sidneys.github.io@outlook.com"
@@ -163,5 +177,5 @@
       "email": "sidney.bofah@googlemail.com"
     }
   ],
-  "readme": "# PB for Desktop [![Node Package Version](https://img.shields.io/npm/v/pb-for-desktop.svg?style=flat)](https://npmjs.com/package/pb-for-desktop) [![Contributions Welcome](https://img.shields.io/badge/contributions-wanted-red.svg?style=flat)](https://github.com/sidneys/pb-for-desktop/issues) [![Chat](https://badges.gitter.im/sidneys/pb-for-desktop.svg)](https://gitter.im/sidneys/pb-for-desktop) [![macOS + Linux Build Status](http://img.shields.io/travis/sidneys/pb-for-desktop.svg?style=flat)](http://travis-ci.org/sidneys/pb-for-desktop) [![Windows Build Status](https://ci.appveyor.com/api/projects/status/d69sb6iav7tnrldq?svg=true)](https://ci.appveyor.com/project/sidneys/pb-for-desktop)   \n\n**PB for Desktop** is a lightweight cross-platform desktop client for [PushBullet](https://pushbullet.com/).\nReceive native push notifications on macOS, Windows and Linux.\n\n*Not affiliated with PushBullet Inc..*\n\n------\n![Screenshot: Pushbullet for Desktop (macOS)](https://raw.githubusercontent.com/sidneys/pb-for-desktop/release/screenshot-macos.png)\n\n![Screenshot: Pushbullet for Desktop (Windows)](https://raw.githubusercontent.com/sidneys/pb-for-desktop/release/screenshot-windows.png)\n\n![Screenshot: Pushbullet for Desktop (Linux)](https://raw.githubusercontent.com/sidneys/pb-for-desktop/release/screenshot-linux.png)\n\n------\n\n## Features\n\n\n>\n> **Native Notifications**\n>\n\nUses the macOS [Notification Center](https://en.wikipedia.org/wiki/Notification_Center), the Windows 10 [Action Center](https://en.wikipedia.org/wiki/Action_Center) and [libnotify](https://launchpad.net/ubuntu/+source/libnotify) for Linux.\n\n>\n> **Cross-Platform**\n>\n\nTested on macOS (10.11, 10.12), Windows 10 (Anniversary Update) and Debian Linux (Ubuntu 16.04, elementary OS 0.4)\n\n>\n> **Unobstrusive**\n>\n\nSmall resource footprint - runs as a macOS Menu Bar app or a Windows System Tray app.\n\n>\n> **Simple Setup**\n>\n\nNo wrestling with API-Keys or other technical knowledge required.\nLogin to Pushbullet using Google or Facebook.\n\n>\n> **Channel Images**\n>\n\nChannel-specific  (e.g. [IFTTT](https://ifttt.com/), [Zapier](https://zapier.com/), [Chat](http://lifehacker.com/huge-pushbullet-update-adds-instant-messaging-chat-hea-1714870644)) icon images for most notifications.\n\n>\n> **Image Thumbnails**\n>\n\nPreview thumbnails for pushes containing images.\n\n>\n> **Custom Sound Effects**\n>\n\nUse the default Pushbullet sound or one of your choice.\n\n>\n> **Notification Emoji** [![Feature Status: Beta](https://img.shields.io/badge/status-beta-blue.svg?style=flat)]()\n>\n\nUse tags to add emoji to notifications, e.g.: add  `{video}` to show a 📺 with every notification.\n\n>\n> **Notification Mirroring** [![Feature Status: Beta](https://img.shields.io/badge/status-beta-blue.svg?style=flat)]()\n>\n\nMirror Android notifications via [Pushbullet for Android](https://play.google.com/store/apps/details?id=com.pushbullet.android).\n\n------\n\n## Contents\n\n- [Installation](#installation)\n  - [Standard Installation](#standard-installation)\n  - [Commandline](#commandline)\n- [Developers](#developers)\n  + [Sourcecode](#sourcecode)\n  + [Dependencies](#dependencies)\n  + [Run](#run)\n  + [Run (Live Reload)](#run-live-reload)\n- [How to Build](#how-to-build)\n  + [Build Prerequisites](#build-prerequisites)\n  + [Running a Build](#running-a-build)\n- [Continuous Integration](#continuous-integration)\n- [Roadmap](#roadmap)\n- [Discussion](#discussion)\n- [Author](#author)\n- [License](#license)\n\n## <a name=\"installation\"/></a>Installation\n\n### <a name=\"standard-installation\"/></a>Standard Installation\n\nDownload the latest version on the [Releases page](https://github.com/sidneys/pb-for-desktop/releases).\n\n### <a name=\"commandline\"/></a>Commandline Package\n\nTo use PB for Desktop from the commandline, install it globally:\n\n```bash\nnpm install --global pb-for-desktop\n```\n\nTo run it, launch `pb-for-desktop`:\n\n```bash\npb-for-desktop\n```\n\n\n\n## <a name=\"developers\"/></a>Developers\n\n### <a name=\"sourcecode\"/></a>Sourcecode\n\n[Clone](github-mac://openRepo/https://github.com/sidneys/pb-for-desktop) or [download](https://github.com/sidneys/pb-for-desktop/archive/master.zip) the sourcecode repository:\n\n```bash\ngit clone https://github.com/sidneys/pb-for-desktop.git\n```\n\n### <a name=\"dependencies\"/></a>Dependencies\n\nTo install the required dependencies:\n\n```bash\nnpm install\n```\n\n### <a name=\"run\"/></a>Run\n\nTo invoke `electron-prebuilt` on top of the source files:\n\n```bash\nnpm run start\n```\n\n### <a name=\"run-live-reload\"/></a>Run (Live Reload)\n\nTo invoke `electron-prebuilt` on top of the source files with live reload support:\n\n```bash\nnpm run serve\n```\n\n\n\n## <a name=\"how-to-build\"/></a>How to Build\n\n### <a name=\"build-prerequisites\"/></a>Build Prerequisites\n\nBuilding for Windows (on macOS & Linux) requires  [`wine`](https://winehq.org) and [`mono`](https://nsis.sourceforge.net/Docs/Chapter3.htm), whereas building for Linux (on macOS & Windows) requires  [`fakeroot`](https://wiki.debian.org/FakeRoot) and [`dpkg`](https://wiki.ubuntuusers.de/dpkg/). All 3 platforms can only be built on macOS. \n\nTo install these requirements on macOS (via [Homebrew](https://brew.sh)):\n\n```bash\nbrew install wine mono\nbrew install fakeroot dpkg\n```\n\nTo install these requirements on Linux (via [APT](https://en.wikipedia.org/wiki/Advanced_Packaging_Tool)):\n\n```bash\nsudo apt-get install wine mono\nsudo apt-get install fakeroot dpkg\n```\n\nThe build system automatically creates binaries for all available cpu architectures.\n\n### <a name=\"running-a-build\"/></a>Running a Build\n\nTo build all available platforms:\n\n```bash\nnpm run build\t\t\n```\n\nTo build platforms selectively, specify their name (`darwin` for macOS,  `win32` for Windows, `linux` for Linux):\n\n```bash\nnpm run build darwin\t\t# builds macOS\n```\n\n```bash\nnpm run build linux win32\t# builds Linux, Windows\n```\n\n## <a name=\"continuous-integration\"/></a>Continuous Integration\n\nThe build process is fully automated, featuring [continuous integration](https://en.wikipedia.org/wiki/Continuous_integration) support provided by target-platform-specific backends:\n- [Travis CI](http://travis-ci.org/sidneys/pb-for-desktop) for macOS and Linux builds\n- [AppVeyor](https://ci.appveyor.com/project/sidneys/pushbullet-desktop) for Windows builds\n\nA build and deployment cycle is comprised of several steps:\n\n1. a new tag on the [release](https://github.com/sidneys/pb-for-desktop/commits/release) branch initiates the cycle (e.g. [v.1.0.0](https://github.com/sidneys/pb-for-desktop/releases/tag/v2.0.0))\n2. after a successful build, resulting artifacts are deployed back to GitHub (using the existing tag)\n3. the resulting tag (combined with all artifacts) constitutes a new [Github Release](https://github.com/sidneys/pb-for-desktop/releases)\n4. the GitHub Release can then be manually published by project contributors\n\n## <a name=\"roadmap\"/></a>Roadmap\n\n- [ ] In-App-Updates (via Squirrel / Heroku /  GitHub)\n- [ ] SMS for Android\n- [ ] Signed binaries for macOS and Windows 10\n- [ ] E2E tests via [Spectron](https://github.com/electron/spectron)\n\n\n## <a name=\"discussion\"/></a>Discussion\n\n- [sidneys/pb-for-desktop](https://gitter.im/sidneys/pb-for-desktop) on Gitter\n\n\n- [/r/PushBullet](https://www.reddit.com/r/PushBullet/comments/50ewjd/i_just_released_pb_for_desktop_an_opensource/) on Reddit\n\n\n## <a name=\"author\"/></a>Author\n\n[sidneys](http://sidneys.github.io)\n\n## <a name=\"license\"/></a>License\n\nMIT\n"
+  "readme": "# PB for Desktop [![Node Package Version](https://img.shields.io/npm/v/pb-for-desktop.svg?style=flat)](https://npmjs.com/package/pb-for-desktop) [![Contributions Welcome](https://img.shields.io/badge/contributions-wanted-red.svg?style=flat)](https://github.com/sidneys/pb-for-desktop/issues) [![Chat](https://badges.gitter.im/sidneys/pb-for-desktop.svg)](https://gitter.im/sidneys/pb-for-desktop) [![macOS + Linux Build Status](http://img.shields.io/travis/sidneys/pb-for-desktop.svg?style=flat)](http://travis-ci.org/sidneys/pb-for-desktop) [![Windows Build Status](https://ci.appveyor.com/api/projects/status/d69sb6iav7tnrldq?svg=true)](https://ci.appveyor.com/project/sidneys/pb-for-desktop)   \n\n**PB for Desktop** is a lightweight cross-platform desktop client for [PushBullet](https://pushbullet.com/).\nReceive native push notifications on macOS, Windows and Linux.\n\n*Not affiliated with PushBullet Inc..*\n\n------\n![Screenshot: Pushbullet for Desktop (macOS)](https://raw.githubusercontent.com/sidneys/pb-for-desktop/release/screenshots/screenshot-macos.png)\n\n![Screenshot: Pushbullet for Desktop (Windows)](https://raw.githubusercontent.com/sidneys/pb-for-desktop/release/screenshots/screenshot-windows.png)\n\n![Screenshot: Pushbullet for Desktop (Linux)](https://raw.githubusercontent.com/sidneys/pb-for-desktop/release/screenshots/screenshot-linux.png)\n\n------\n\n## Features\n\n\n>\n> **Native Notifications**\n>\n\nUses the macOS [Notification Center](https://en.wikipedia.org/wiki/Notification_Center), the Windows 10 [Action Center](https://en.wikipedia.org/wiki/Action_Center) and [libnotify](https://launchpad.net/ubuntu/+source/libnotify) for Linux.\n\n>\n> **Cross-Platform**\n>\n\nTested on macOS (10.11, 10.12), Windows 10 (Anniversary Update) and Debian Linux (Ubuntu 16.04, elementary OS 0.4)\n\n>\n> **Unobstrusive**\n>\n\nSmall resource footprint - runs as a macOS Menu Bar app or a Windows System Tray app.\n\n>\n> **Simple Setup**\n>\n\nNo wrestling with API-Keys or other technical knowledge required.\nLogin to Pushbullet using Google or Facebook.\n\n>\n> **Channel Images**\n>\n\nChannel-specific  (e.g. [IFTTT](https://ifttt.com/), [Zapier](https://zapier.com/), [Chat](http://lifehacker.com/huge-pushbullet-update-adds-instant-messaging-chat-hea-1714870644)) icon images for most notifications.\n\n>\n> **Image Thumbnails**\n>\n\nPreview thumbnails for pushes containing images.\n\n>\n> **Custom Sound Effects**\n>\n\nUse the default Pushbullet sound or one of your choice.\n\n>\n> **Notification Emoji** [![Feature Status: Beta](https://img.shields.io/badge/status-beta-blue.svg?style=flat)]()\n>\n\nUse tags to add emoji to notifications, e.g.: add  `{video}` to show a 📺 with every notification.\n\n>\n> **Notification Mirroring** [![Feature Status: Beta](https://img.shields.io/badge/status-beta-blue.svg?style=flat)]()\n>\n\nMirror Android notifications via [Pushbullet for Android](https://play.google.com/store/apps/details?id=com.pushbullet.android).\n\n------\n\n## Contents\n\n- [Installation](#installation)\n  - [Standard Installation](#standard-installation)\n  - [Commandline](#commandline)\n- [Developers](#developers)\n  + [Sourcecode](#sourcecode)\n  + [Dependencies](#dependencies)\n  + [Run](#run)\n  + [Run (Live Reload)](#run-live-reload)\n- [How to Build](#how-to-build)\n  + [Build Prerequisites](#build-prerequisites)\n  + [Running a Build](#running-a-build)\n- [Continuous Integration](#continuous-integration)\n- [Roadmap](#roadmap)\n- [Discussion](#discussion)\n- [Author](#author)\n- [License](#license)\n\n## <a name=\"installation\"/></a>Installation\n\n### <a name=\"standard-installation\"/></a>Standard Installation\n\nDownload the latest version on the [Releases page](https://github.com/sidneys/pb-for-desktop/releases).\n\n### <a name=\"commandline\"/></a>Commandline Package\n\nTo use PB for Desktop from the commandline, install it globally:\n\n```bash\nnpm install --global pb-for-desktop\n```\n\nTo run it, launch `pb-for-desktop`:\n\n```bash\npb-for-desktop\n```\n\n\n\n## <a name=\"developers\"/></a>Developers\n\n### <a name=\"sourcecode\"/></a>Sourcecode\n\n[Clone](github-mac://openRepo/https://github.com/sidneys/pb-for-desktop) or [download](https://github.com/sidneys/pb-for-desktop/archive/master.zip) the sourcecode repository:\n\n```bash\ngit clone https://github.com/sidneys/pb-for-desktop.git\n```\n\n### <a name=\"dependencies\"/></a>Dependencies\n\nTo install the required dependencies:\n\n```bash\nnpm install\n```\n\n### <a name=\"run\"/></a>Run\n\nTo invoke `electron-prebuilt` on top of the source files:\n\n```bash\nnpm run start\n```\n\n### <a name=\"run-live-reload\"/></a>Run (Live Reload)\n\nTo invoke `electron-prebuilt` on top of the source files with live reload support:\n\n```bash\nnpm run serve\n```\n\n\n\n## <a name=\"how-to-build\"/></a>How to Build\n\n### <a name=\"build-prerequisites\"/></a>Build Prerequisites\n\nBuilding for Windows (on macOS & Linux) requires  [`wine`](https://winehq.org) and [`mono`](https://nsis.sourceforge.net/Docs/Chapter3.htm), whereas building for Linux (on macOS & Windows) requires  [`fakeroot`](https://wiki.debian.org/FakeRoot) and [`dpkg`](https://wiki.ubuntuusers.de/dpkg/). All 3 platforms can only be built on macOS. \n\nTo install these requirements on macOS (via [Homebrew](https://brew.sh)):\n\n```bash\nbrew install wine mono\nbrew install fakeroot dpkg\n```\n\nTo install these requirements on Linux (via [APT](https://en.wikipedia.org/wiki/Advanced_Packaging_Tool)):\n\n```bash\nsudo apt-get install wine mono\nsudo apt-get install fakeroot dpkg\n```\n\nThe build system automatically creates binaries for all available cpu architectures.\n\n### <a name=\"running-a-build\"/></a>Running a Build\n\nTo build all available platforms:\n\n```bash\nnpm run build\t\t\n```\n\nTo build platforms selectively, specify their name (`darwin` for macOS,  `win32` for Windows, `linux` for Linux):\n\n```bash\nnpm run build darwin\t\t# builds macOS\n```\n\n```bash\nnpm run build linux win32\t# builds Linux, Windows\n```\n\n## <a name=\"continuous-integration\"/></a>Continuous Integration\n\nThe build process is fully automated, featuring [continuous integration](https://en.wikipedia.org/wiki/Continuous_integration) support provided by target-platform-specific backends:\n- [Travis CI](http://travis-ci.org/sidneys/pb-for-desktop) for macOS and Linux builds\n- [AppVeyor](https://ci.appveyor.com/project/sidneys/pushbullet-desktop) for Windows builds\n\nA build and deployment cycle is comprised of several steps:\n\n1. a new tag on the [release](https://github.com/sidneys/pb-for-desktop/commits/release) branch initiates the cycle (e.g. [v.1.0.0](https://github.com/sidneys/pb-for-desktop/releases/tag/v2.0.0))\n2. after a successful build, resulting artifacts are deployed back to GitHub (using the existing tag)\n3. the resulting tag (combined with all artifacts) constitutes a new [Github Release](https://github.com/sidneys/pb-for-desktop/releases)\n4. the GitHub Release can then be manually published by project contributors\n\n## <a name=\"roadmap\"/></a>Roadmap\n\n- [ ] In-App-Updates (via Squirrel / Heroku /  GitHub)\n- [ ] SMS for Android\n- [ ] Signed binaries for macOS and Windows 10\n- [ ] E2E tests via [Spectron](https://github.com/electron/spectron)\n\n\n## <a name=\"discussion\"/></a>Discussion\n\n- [sidneys/pb-for-desktop](https://gitter.im/sidneys/pb-for-desktop) on Gitter\n\n\n- [/r/PushBullet](https://www.reddit.com/r/PushBullet/comments/50ewjd/i_just_released_pb_for_desktop_an_opensource/) on Reddit\n\n\n## <a name=\"author\"/></a>Author\n\n[sidneys](http://sidneys.github.io)\n\n## <a name=\"license\"/></a>License\n\nMIT\n"
 }

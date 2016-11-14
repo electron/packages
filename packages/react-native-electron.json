@@ -1,0 +1,104 @@
+{
+  "name": "react-native-electron",
+  "version": "0.0.3",
+  "description": "Electron extensions to React Native for Web",
+  "main": "lib/index.js",
+  "scripts": {
+    "clean:lib": "rm -Rf ./lib",
+    "compile:lib": "babel src --out-dir lib",
+    "build:lib": "npm run clean:lib && npm run compile:lib",
+    "example:server": "webpack-dev-server --config ./example/webpack.config.babel.js",
+    "example:electron": "electron ./example/app/main.js",
+    "flow": "flow",
+    "prepublish": "npm ls && npm start",
+    "start": "npm run test && npm run build:lib",
+    "test": "eslint ./src"
+  },
+  "repository": {
+    "user": "PaulLeCam",
+    "repo": "react-native-electron",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/PaulLeCam/react-native-electron/tarball/master",
+    "clone_url": "https://github.com/PaulLeCam/react-native-electron",
+    "https_url": "https://github.com/PaulLeCam/react-native-electron",
+    "travis_url": "https://travis-ci.org/PaulLeCam/react-native-electron",
+    "zip_url": "https://github.com/PaulLeCam/react-native-electron/archive/master.zip",
+    "api_url": "https://api.github.com/repos/PaulLeCam/react-native-electron"
+  },
+  "author": {
+    "name": "Paul Le Cam"
+  },
+  "license": "MIT",
+  "homepage": "https://github.com/PaulLeCam/react-native-electron#readme",
+  "dependencies": {
+    "warning": "^3.0.0"
+  },
+  "peerDependencies": {
+    "electron": "^1.4.6",
+    "react": "^15.3.1",
+    "react-native-web": "^0.0.49"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.18.0",
+    "babel-core": "^6.18.2",
+    "babel-eslint": "^7.1.0",
+    "babel-loader": "^6.2.7",
+    "babel-plugin-react-transform": "^2.0.2",
+    "babel-preset-es2015": "^6.18.0",
+    "babel-preset-react": "^6.16.0",
+    "babel-preset-stage-0": "^6.16.0",
+    "electron": "^1.4.6",
+    "eslint": "^3.10.0",
+    "eslint-config-standard": "^6.2.1",
+    "eslint-config-standard-jsx": "^3.2.0",
+    "eslint-config-standard-react": "^4.2.0",
+    "eslint-plugin-promise": "^3.3.2",
+    "eslint-plugin-react": "^6.6.0",
+    "eslint-plugin-standard": "^2.0.1",
+    "file-loader": "^0.9.0",
+    "flow-bin": "^0.35.0",
+    "react": "^15.3.1",
+    "react-dom": "^15.3.1",
+    "react-native-web": "^0.0.49",
+    "react-transform-hmr": "^1.0.4",
+    "url-loader": "^0.5.7",
+    "webpack": "^1.13.3",
+    "webpack-dev-server": "^1.16.2"
+  },
+  "gitHead": "8db901563485d02e380fd51fdf99dd1a6d553031",
+  "_npmVersion": "4.0.1",
+  "_nodeVersion": "7.0.0",
+  "dist": {
+    "shasum": "8201deb476505cc7fce4dfd7eb26c7c1b868e1bb",
+    "tarball": "http://registry.npmjs.org/react-native-electron/-/react-native-electron-0.0.3.tgz"
+  },
+  "versions": [
+    {
+      "number": "0.0.1",
+      "date": "2016-10-29T23:29:10.954Z"
+    },
+    {
+      "number": "0.0.2",
+      "date": "2016-11-13T11:14:33.355Z"
+    },
+    {
+      "number": "0.0.3",
+      "date": "2016-11-13T15:56:57.854Z"
+    }
+  ],
+  "created": "2016-10-29T23:29:10.954Z",
+  "modified": "2016-11-13T15:56:57.854Z",
+  "lastPublisher": {
+    "name": "paul_lecam",
+    "email": "paul@ulem.net"
+  },
+  "owners": [
+    {
+      "name": "paul_lecam",
+      "email": "paul@ulem.net"
+    }
+  ],
+  "readme": "# React Native Electron\n\n[Electron](http://electron.atom.io/) extensions to [React Native for Web](https://github.com/necolas/react-native-web)\n\n## Introduction\n\nThis project aims to provide extensions to [React Native for Web](https://github.com/necolas/react-native-web) targeted to the [Electron](http://electron.atom.io/) environment to support additional modules exposed by React Native (ex Clipboard, WebView) using Electron APIs.\n\nThis is very early stage, not fully tested, and APIs will likely change between releases, so don't use this library if you need something stable.\n\n## Installation\n\n```sh\nnpm install react-native-electron\n```\n\n`electron`, `react` and `react-native-web` are required peer dependencies, make sure to install them as well:\n\n```sh\nnpm install electron react react-native-web\n```\n\n## Example\n\nSee the `example` directory for the source code and Webpack config.\n\nTo run the demo app, fork this repository and run:\n\n- `npm install`\n- `npm run example:server`\n- In another terminal instance, `npm run example:electron`\n\n## APIs\n\n### Alert\n\n[React Native's Alert](https://facebook.github.io/react-native/docs/alert.html) implementation using [Electron's dialog](http://electron.atom.io/docs/api/dialog/)\n\n```\nAlert.alert(\n  title: string,\n  message: ?string,\n  buttons: ?Array<{text: string, onPress?: () => void}> = [],\n  type: ?('none' | 'info' | 'error' | 'question' | 'warning') = 'none'\n): void\n```\n\n### Clipboard\n\n[React Native's Clipboard](https://facebook.github.io/react-native/docs/clipboard.html) implementation using [Electron's clipboard](http://electron.atom.io/docs/api/clipboard/)\n\n`Clipboard.getString(type: ?string): Promise<?string>`\n\n`Clipboard.setString(text: string, type: ?string): void`\n\n### Linking\n\n[React Native's Linking](https://facebook.github.io/react-native/docs/linking.html) implementation using [Electron's shell](http://electron.atom.io/docs/api/shell/)\n\n`Linking.openURL(url: string): Promise<void>`\n\n## Components\n\n### WebView\n\n[React Native's WebView](https://facebook.github.io/react-native/docs/webview.html) implementation using [Electron's webview tag](http://electron.atom.io/docs/api/web-view-tag/)\n\nCommunication between the WebView and its container is possible by providing an `onMessage()` handler, that will receive events having messages injected in `event.nativeEvent.data`, and calling the `postMessage()` method to send messages to the WebView contents. Messages must be strings.  \nThis bridge is implemented using the [`preload` attribute](http://electron.atom.io/docs/api/web-view-tag/#preload) of Electron's WebView. If you override this attribute, make sure to provide a [similar implementation](https://github.com/PaulLeCam/react-native-electron/blob/master/src/components/WebView.preload.js) so the bridge can work.  \nLoading this preload script uses node's `__dirname`, make sure your application injects it as expected, see this [Webpack config for example](https://github.com/PaulLeCam/react-native-electron/blob/master/example/webpack.config.babel.js#L12).\n\n**Props**\n\n- `injectedJavaScript?: string`: JS code executed after the `dom-ready` event is fired.\n- `onMessage?: (event: Event) => void`\n- `source: {uri: string} | {html: string}`\n\n**Methods**\n\n- `postMessage (message: string): void`. This method can only be called if the `onMessage()` prop is provided.\n\n## License\n\nMIT  \nSee [LICENSE](LICENSE) file.\n"
+}

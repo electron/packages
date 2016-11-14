@@ -1,6 +1,6 @@
 {
   "name": "dext",
-  "version": "0.5.0",
+  "version": "0.7.1",
   "description": "A smart launcher for Mac. Powered by JavaScript.",
   "keywords": [
     "dext",
@@ -12,15 +12,15 @@
   ],
   "main": "app/main/index.js",
   "scripts": {
-    "lint": "eslint app",
-    "build": "webpack",
+    "lint": "eslint app scripts utils __mocks__ __tests__",
+    "build": "webpack --config webpack.config.dev.js",
     "build:prod": "cross-env NODE_ENV=production webpack --config webpack.config.prod.js",
     "package": "cross-env NODE_ENV=production node scripts/package.js",
     "archive": "node scripts/archive.js",
     "release": "npm run build:prod && npm run package && npm run archive",
     "dev": "cross-env NODE_ENV=development electron . --debug",
     "start": "npm run build && npm run dev",
-    "test": "jest --coverage"
+    "test": "jest --coverage --verbose"
   },
   "author": {
     "name": "Vu Tran",
@@ -41,56 +41,57 @@
   },
   "license": "MIT",
   "devDependencies": {
-    "babel-core": "^6.13.2",
-    "babel-eslint": "^6.1.2",
-    "babel-jest": "^15.0.0",
-    "babel-loader": "^6.2.5",
+    "babel-core": "^6.18.0",
+    "babel-eslint": "^7.1.0",
+    "babel-jest": "^16.0.0",
+    "babel-loader": "^6.2.7",
     "babel-polyfill": "^6.13.0",
-    "babel-preset-es2015": "^6.13.2",
+    "babel-preset-es2015": "^6.18.0",
     "babel-preset-react": "^6.11.1",
     "babel-preset-stage-0": "^6.5.0",
     "chalk": "^1.1.3",
     "coveralls": "^2.11.12",
-    "cross-env": "^2.0.0",
-    "electron": "^1.3.5",
-    "electron-packager": "^8.0.0",
-    "eslint": "^3.3.1",
-    "eslint-config-airbnb": "^11.0.0",
-    "eslint-plugin-import": "^1.13.0",
+    "cross-env": "^3.1.3",
+    "electron": "^1.4.3",
+    "electron-packager": "^8.2.0",
+    "eslint": "^3.9.0",
+    "eslint-config-airbnb": "^12.0.0",
+    "eslint-plugin-import": "1.16.0",
     "eslint-plugin-jsx-a11y": "^2.1.0",
     "eslint-plugin-react": "^6.1.2",
-    "jest": "^15.1.1",
+    "jest": "^16.0.2",
     "json-loader": "^0.5.4",
     "react-test-renderer": "^15.3.1",
     "redux-devtools": "^3.3.1",
     "redux-devtools-dock-monitor": "^1.1.1",
-    "redux-devtools-log-monitor": "^1.0.11",
-    "webpack": "^1.13.2"
+    "redux-devtools-log-monitor": "^1.1.1",
+    "webpack": "v2.1.0-beta.25"
   },
   "dependencies": {
     "browser-bookmarks": "^0.1.0",
     "conf": "^0.11.2",
     "deep-assign": "^2.0.0",
-    "glamor": "^2.14.1",
+    "dext-core-utils": "v0.4.1",
+    "glamor": "^2.17.14",
     "is_js": "^0.9.0",
-    "markdown-it": "^8.0.0",
-    "mathjs": "^3.5.0",
+    "markdown-it": "^8.0.1",
+    "mathjs": "^3.6.0",
     "plist": "^2.0.1",
     "react": "^15.3.1",
     "react-dom": "^15.3.1",
     "react-redux": "^4.4.5",
     "redux": "^3.5.2",
-    "redux-saga": "^0.11.0",
-    "screen-saver": "^0.1.0",
+    "redux-saga": "^0.12.1",
+    "screen-saver": "^0.2.1",
     "string_score": "^0.1.22"
   },
-  "gitHead": "9b94a56a41219c8a473214b1864dbde59c1e5454",
+  "gitHead": "a2c8645be0057e769e092d7dd22e2ffe2473897b",
   "homepage": "https://github.com/vutran/dext#readme",
-  "_npmVersion": "3.10.3",
-  "_nodeVersion": "6.5.0",
+  "_npmVersion": "3.10.8",
+  "_nodeVersion": "6.9.1",
   "dist": {
-    "shasum": "91ad41e8d2f83eac82729483c40ad3e9174ae886",
-    "tarball": "http://registry.npmjs.org/dext/-/dext-0.5.0.tgz"
+    "shasum": "70124426aada95f5a3b5ba561957d9318c2b2eed",
+    "tarball": "http://registry.npmjs.org/dext/-/dext-0.7.1.tgz"
   },
   "versions": [
     {
@@ -120,10 +121,18 @@
     {
       "number": "0.5.0",
       "date": "2016-09-27T01:16:27.229Z"
+    },
+    {
+      "number": "0.6.1",
+      "date": "2016-10-12T07:42:22.418Z"
+    },
+    {
+      "number": "0.7.1",
+      "date": "2016-11-08T06:19:29.677Z"
     }
   ],
   "created": "2016-08-21T19:08:32.352Z",
-  "modified": "2016-09-27T01:16:27.229Z",
+  "modified": "2016-11-08T06:19:29.677Z",
   "lastPublisher": {
     "name": "vutran",
     "email": "support@vu-tran.com"
@@ -134,5 +143,5 @@
       "email": "support@vu-tran.com"
     }
   ],
-  "readme": "# Dext\n\n[![Build Status](https://travis-ci.org/vutran/dext.svg?branch=master)](https://travis-ci.org/vutran/dext) [![Coverage Status](https://coveralls.io/repos/github/vutran/dext/badge.svg?branch=master)](https://coveralls.io/github/vutran/dext?branch=master) [![Join the chat at https://gitter.im/dext-app/Lobby](https://badges.gitter.im/dext-app/Lobby.svg)](https://gitter.im/dext-app/Lobby?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)\n\n> A smart launcher for Mac. Powered by JavaScript.\n\n![](screenshot.gif?raw=true)\n\nScreenshot is using the [dext-github-plugin](https://github.com/vutran/dext-github-plugin) workflow.\n\n## Overview\n\n**Dext** is a JavaScript powered smart launcher. Built with JavaScript behind the influences of *Alfred*.\n\nMade compatible with *Alfred* workflows that is powered by node (see: [alfy](https://github.com/sindresorhus/alfy)).\n\n***Note: Currently available only for Mac OS X platform. Please help contribute for Windows and Linux users.***\n\n## Install\n\nDownload the latest zip file [here](https://github.com/vutran/dext/releases/) and unzip the archive. Open `Dext.app` and follow the instructions below for usage.\n\n**NOTE: Release version may not be stable as Dext is still in it's early stage of development. Please help [contribute](CONTRIBUTING.md) towards a stable build.**\n\n## Usage\n\n### Toggle Dext Bar\n\nSimply toggle and start typing with:\n\n<kbd>alt</kbd> + <kbd>space</kbd>\n\n### Actions\n\nEach item may have it's own action. You can execute an item by double-clicking on the item or selecting it and pressing:\n\n<kbd>enter</kbd>\n\n### Help/About\n\nType `?`\n\n## Dext Package Manager\n\n[Dext Package Manager (`dpm`)](https://github.com/vutran/dext-cli) is available to download separately. `dpm` can be used to easily install and configure your ***Dext*** instance. Please refer to the docs over at the [`dpm`](https://github.com/vutran/dext-cli) repository for more information.\n\n```bash\n$ npm install -g dext-cli\n```\n\n## Configuring\n\nThe ***Dext*** configuration file is located in the `.dext` folder in your home directory (`~/.dext/`). This directory should contain a `config.json` file as well as a `plugins` folder. In here, you can drop any plugins.\n\n*Hint: Use [`dpm`](https://github.com/vutran/dext-cli) to easily manage plugins.*\n\n```\n.dext/\n| --- config.json\n| --- plugins/\n| --- | --- dext-github-plugin/\n| --- | --- dext-hackernews-plugin/\n```\n\n### Core Plugins\n\n- **Bookmarks** - Search your Chrome bookmarks.\n- **Calculator** - Quickly calculate something.\n- **Screen Saver** - Starts the screen saver.\n\n### Community Plugins\n\n- [dext-docker-registry-plugin](https://github.com/vutran/dext-docker-registry-plugin) - Search the Docker Registry for images.\n- [dext-giphy-plugin](https://github.com/adnasa/dext-giphy-plugin) - Search for giphy images.\n- [dext-github-plugin](https://github.com/vutran/dext-github-plugin) - Search for repositories by name on GitHub.\n- [dext-hackernews-plugin](https://github.com/vutran/dext-hackernews-plugin) - Search for best, top, or newest stories on Hacker News.\n- [dext-npms-plugin](https://github.com/hypebeast/dext-npms-plugin) - Search for npm packages on npms.io.\n- [dext-omdb-plugin](https://github.com/adnasa/dext-omdb-plugin) - Search for imdb movies through the omdb-api.\n\n### Community Themes\n- [dext-predawn-theme](https://github.com/adnasa/dext-predawn-theme) - A predawn theme for dext\n\n## Developers Documentation\n\n- [Plugins](docs/PLUGINS.md)\n- [Themes](docs/THEMES.md)\n\n## Goals\n\n- To provide a free/open-source alternative to *Spotlight*, and *Alfred*.\n- Preserve compatibility with existing *Alfred* workflows.\n- Allow customization and extending via plugins and themes.\n\n## Contributing\n\n♥ ***Dext*** and want to contribute? I am seeking contributors of any levels to help grow the application. You can help contribute to the growth of this application in many ways.\n\n- [Bug Reports](CONTRIBUTING.md#bug-reports)\n- [Feature Requests](CONTRIBUTING.md#feature-requests)\n- [Pull Requests](CONTRIBUTING.md#pull-requests)\n- [Feedback and Suggestions](CONTRIBUTING.md#feedback-and-suggestions)\n\n\n## LICENSE\n\nMIT © [Vu Tran](https://github.com/vutran/)\n"
+  "readme": "![](./resources/banner.png?raw=true)\n\n[![Travis](https://img.shields.io/travis/vutran/dext/develop.svg?maxAge=2592000&style=flat-square)](https://travis-ci.org/vutran/dext) [![Coveralls branch](https://img.shields.io/coveralls/vutran/dext/develop.svg?maxAge=2592000&style=flat-square)](https://coveralls.io/github/vutran/dext) [![license](https://img.shields.io/github/license/vutran/dext.svg?maxAge=2592000&style=flat-square)](LICENSE) [![Gitter](https://img.shields.io/gitter/room/nwjs/nw.js.svg?style=flat-square)](https://gitter.im/dext-app/Lobby)\n\n## Overview\n\n**Dext** is a JavaScript powered smart launcher. Built with JavaScript behind the influences of *Alfred*.\n\nMade compatible with *Alfred* workflows that is powered by node (see: [alfy](https://github.com/sindresorhus/alfy)).\n\n![](screenshot.gif?raw=true)\n\n***Note: Currently available only for Mac OS X platform. Please help contribute for Windows and Linux users.***\n\n## Install\n\nDownload the latest zip file [here](https://github.com/vutran/dext/releases/) and unzip the archive. Open `Dext.app` and follow the instructions below for usage.\n\n**NOTE: Release version may not be stable as Dext is still in it's early stage of development. Please help [contribute](CONTRIBUTING.md) towards a stable build.**\n\n## Usage\n\n### Toggle Dext Bar\n\nSimply toggle and start typing with:\n\n<kbd>alt</kbd> + <kbd>space</kbd>\n\n### Actions\n\nEach item may have it's own action. You can execute an item by double-clicking on the item or selecting it and pressing:\n\n<kbd>enter</kbd>\n\n### Help/About\n\nType `?`\n\n## Dext Package Manager\n\n[Dext Package Manager (`dpm`)](https://github.com/vutran/dext-cli) is available to download separately. `dpm` can be used to easily install and configure your ***Dext*** instance. Please refer to the docs over at the [`dpm`](https://github.com/vutran/dext-cli) repository for more information.\n\n```bash\n$ npm install -g dext-cli\n```\n\n## Configuring\n\nThe ***Dext*** configuration file is located in the `.dext` folder in your home directory (`~/.dext/`). This directory should contain a `config.json` file as well as a `plugins` folder. In here, you can drop any plugins.\n\n*Hint: Use [`dpm`](https://github.com/vutran/dext-cli) to easily manage plugins.*\n\n```\n.dext/\n| --- config.json\n| --- plugins/\n| --- | --- dext-github-plugin/\n| --- | --- dext-hackernews-plugin/\n```\n\n### Core Plugins\n\n- **Bookmarks** - Search your Chrome bookmarks.\n- **Calculator** - Quickly calculate something.\n- **Screen Saver** - Starts the screen saver.\n\n### Community Plugins\n\n- [dext-docker-registry-plugin](https://github.com/vutran/dext-docker-registry-plugin) - Search the Docker Registry for images.\n- [dext-emoji-plugin](https://github.com/vutran/dext-emoji-plugin) - Search for emojis.\n- [dext-giphy-plugin](https://github.com/adnasa/dext-giphy-plugin) - Search for giphy images.\n- [dext-github-plugin](https://github.com/vutran/dext-github-plugin) - Search for repositories by name on GitHub.\n- [dext-hackernews-plugin](https://github.com/vutran/dext-hackernews-plugin) - Search for best, top, or newest stories on Hacker News.\n- [dext-npms-plugin](https://github.com/hypebeast/dext-npms-plugin) - Search for npm packages on npms.io.\n- [dext-omdb-plugin](https://github.com/adnasa/dext-omdb-plugin) - Search for imdb movies through the omdb-api.\n\n### Community Themes\n- [dext-predawn-theme](https://github.com/adnasa/dext-predawn-theme) - Predawn theme for Dext\n- [dext-nova-theme](https://github.com/vutran/dext-nova-theme) - Nova theme for Dext\n\n## Developers Documentation\n\n- [Plugins](docs/PLUGINS.md)\n- [Themes](docs/THEMES.md)\n\n## Goals\n\n- To provide a free/open-source alternative to *Spotlight*, and *Alfred*.\n- Preserve compatibility with existing *Alfred* workflows.\n- Allow customization and extending via plugins and themes.\n\n## Contributing\n\n♥ ***Dext*** and want to contribute? I am seeking contributors of any levels to help grow the application. You can help contribute to the growth of this application in many ways.\n\n- [Bug Reports](CONTRIBUTING.md#bug-reports)\n- [Feature Requests](CONTRIBUTING.md#feature-requests)\n- [Pull Requests](CONTRIBUTING.md#pull-requests)\n- [Feedback and Suggestions](CONTRIBUTING.md#feedback-and-suggestions)\n\n## LICENSE\n\nMIT © [Vu Tran](https://github.com/vutran/)\n"
 }

@@ -1,0 +1,56 @@
+{
+  "name": "electron-bundle",
+  "description": "Electron and its special node modules (ZeroMQ)",
+  "version": "1.4.6",
+  "license": "Apache-2.0",
+  "keywords": [
+    "electron",
+    "zeromq"
+  ],
+  "homepage": "https://bitbucket.org/mmjd/electron-bundle",
+  "author": {
+    "name": "Qian Xu",
+    "url": "https://github.com/stanleyxu2005"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://bitbucket.org/mmjd/electron-bundle.git"
+  },
+  "files": [
+    "LICENSE",
+    "README.md",
+    "dist/node_modules.zip",
+    "dist/win.zip"
+  ],
+  "gitHead": "52ffb9bac6b83a2b6a5abb20fdbde61d69b765b8",
+  "scripts": {},
+  "_npmVersion": "2.15.9",
+  "_nodeVersion": "4.6.0",
+  "dist": {
+    "shasum": "39436124be77d9b569329f16c473a0a3e87928e8",
+    "tarball": "http://registry.npmjs.org/electron-bundle/-/electron-bundle-1.4.6.tgz"
+  },
+  "versions": [
+    {
+      "number": "1.4.3",
+      "date": "2016-10-08T05:14:12.345Z"
+    },
+    {
+      "number": "1.4.6",
+      "date": "2016-11-12T17:00:15.937Z"
+    }
+  ],
+  "created": "2016-10-08T05:14:12.345Z",
+  "modified": "2016-11-12T17:00:15.937Z",
+  "lastPublisher": {
+    "name": "stanleyxu2005",
+    "email": "sx.away@googlemail.com"
+  },
+  "owners": [
+    {
+      "name": "stanleyxu2005",
+      "email": "sx.away@googlemail.com"
+    }
+  ],
+  "readme": "# Electron Prebuilt\n\nThis is a mirror repo of Electron distributions and node modules that \nrequire rebuild against corresponding header files. \n\n## How to build zeromq.js\n\n * Be sure you have [Visual C++ Build Tools](http://go.microsoft.com/fwlink/?LinkId=691126) using the *Default Install* option installed.\n * Add an environment variable `GYP_MSVS_VERSION` is set to `2015`.\n * `export ELECTRON=1.4.5`\n * `npm install zeromq`\n * `npm install electron-prebuilt@${ELECTRON}`\n * `node-gyp.js rebuild --runtime=electron --target=${ELECTRON} --disturl=https://atom.io/download/atom-shell --build-from-source`\n * `cp -r build/Release node_modules/zeromq/build`\n "
+}

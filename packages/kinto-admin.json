@@ -1,29 +1,27 @@
 {
   "name": "kinto-admin",
-  "version": "1.3.0",
+  "version": "1.4.3",
   "description": "Kinto Web Administration Console in React.js",
   "scripts": {
+    "build": "rimraf build && NODE_ENV=production node_modules/.bin/webpack --progress --config webpack.prod.js && cp html/prod.html build/index.html",
+    "build:lib": "rimraf lib && NODE_ENV=production babel -d lib/ src/",
     "build:readme": "toctoc README.md -w",
-    "dist": "NODE_ENV=production node_modules/.bin/webpack --progress --config webpack.prod.js && cp index.prod.html dist/index.html",
     "flow-check": "flow check",
-    "lint": "eslint scripts test test-browser",
-    "prepare-gh-pages": "rimraf build && KINTO_ADMIN_PUBLIC_PATH='/kinto-admin/' npm run dist",
-    "publish-to-gh-pages": "npm run prepare-gh-pages && bin/kinto-admin build -d build && gh-pages --add --dist build/",
-    "publish-to-gh-pages-tag": "npm run prepare-gh-pages && bin/kinto-admin build -d build/$npm_package_version && gh-pages --add --dist build/",
-    "publish-to-npm": "KINTO_ADMIN_PUBLIC_PATH='/' npm run dist && npm publish",
-    "start": "NODE_ENV=development node devServer.js",
-    "tdd": "NODE_ENV=test node_modules/.bin/babel-node node_modules/.bin/_mocha --require ./test/setup-jsdom.js 'test/**/*_test.js' --watch",
+    "lint": "eslint src test test-browser",
+    "publish-to-gh-pages": "npm run build && gh-pages --add --dist build/",
+    "publish-to-npm": "npm run build:lib && npm publish",
+    "start": "NODE_ENV=development node server/dev.js",
+    "tdd": "NODE_ENV=test node_modules/.bin/babel-node node_modules/.bin/_mocha --require ignore-styles --require ./test/setup-jsdom.js 'test/**/*_test.js' --watch",
     "tdd-browser": "NODE_ENV=test node_modules/.bin/babel-node node_modules/.bin/_mocha 'test-browser/**/*_test.js' --watch",
-    "test": "NODE_ENV=test node_modules/.bin/babel-node node_modules/.bin/_mocha --require ./test/setup-jsdom.js 'test/**/*_test.js'",
+    "test": "NODE_ENV=test node_modules/.bin/babel-node node_modules/.bin/_mocha --require ignore-styles --require ./test/setup-jsdom.js 'test/**/*_test.js'",
     "test-browser": "NODE_ENV=test node_modules/.bin/babel-node node_modules/.bin/_mocha 'test-browser/**/*_test.js'",
     "test-all": "npm run lint && npm run flow-check && npm run test"
   },
-  "bin": {
-    "kinto-admin": "bin/kinto-admin"
-  },
+  "main": "lib/index.js",
   "files": [
-    "bin",
-    "dist"
+    "css",
+    "images",
+    "lib"
   ],
   "engineStrict": false,
   "engines": {
@@ -32,24 +30,25 @@
   },
   "dependencies": {
     "atob": "^2.0.3",
+    "babel-runtime": "^6.11.6",
     "bootstrap": "^3.3.6",
     "btoa": "^1.1.2",
     "codemirror": "^5.13.2",
     "express": "^4.14.0",
     "filesize": "^3.3.0",
-    "kinto-http": "^2.3.0",
-    "node-fs-extra": "^0.8.1",
+    "kinto-http": "^2.5.2",
     "react": "^15.2.0",
+    "react-breadcrumbs": "^1.3.16",
     "react-codemirror": "^0.2.3",
     "react-dom": "^15.2.0",
     "react-jsonschema-form": "^0.39.0",
     "react-redux": "^4.0.0",
-    "react-router": "^2.4.1",
+    "react-router": "^2.7.0",
     "react-router-redux": "4.0.5",
     "redux": "^3.0.4",
     "redux-saga": "^0.10.5",
     "rimraf": "^2.4.4",
-    "yargs": "^4.4.0"
+    "timeago.js": "^2.0.2"
   },
   "devDependencies": {
     "babel-cli": "^6.10.1",
@@ -70,15 +69,17 @@
     "eslint-plugin-react": "^5.2.1",
     "extract-text-webpack-plugin": "^1.0.1",
     "file-loader": "^0.8.5",
-    "flow-bin": "^0.27.0",
-    "flow-interfaces": "^0.6.1",
+    "flow-bin": "^0.33.0",
     "gh-pages": "^0.11.0",
     "html": "0.0.10",
+    "iflow-react-router": "^1.1.17",
+    "iflow-react-router-redux": "^1.0.15",
+    "ignore-styles": "^5.0.1",
     "jsdom": "^9.2.1",
     "kinto-node-test-server": "0.0.1",
-    "mocha": "^2.5.3",
+    "mocha": "^3.0.2",
     "mocha-generators": "^1.2.0",
-    "nightmare": "^2.5.1",
+    "nightmare": "^2.7.0",
     "react-addons-test-utils": "^15.2.0",
     "react-transform-catch-errors": "^1.0.0",
     "react-transform-hmr": "^1.0.1",
@@ -116,12 +117,12 @@
   },
   "license": "Apache-2.0",
   "homepage": "https://github.com/kinto/kinto-admin#readme",
-  "gitHead": "d6ebbcac4898c45a4012e9518b6cb812081cf379",
-  "_npmVersion": "3.8.6",
-  "_nodeVersion": "6.0.0",
+  "gitHead": "3aac2b5fdd986901f0081ed253257464c924cb4d",
+  "_npmVersion": "3.10.3",
+  "_nodeVersion": "6.3.0",
   "dist": {
-    "shasum": "d3afdcb678decd2f39e6d93cb8c9be3a5240cb8c",
-    "tarball": "http://registry.npmjs.org/kinto-admin/-/kinto-admin-1.3.0.tgz"
+    "shasum": "e61c1834388992b5b172d0dd106286552c7ea640",
+    "tarball": "http://registry.npmjs.org/kinto-admin/-/kinto-admin-1.4.3.tgz"
   },
   "versions": [
     {
@@ -267,13 +268,29 @@
     {
       "number": "1.3.0",
       "date": "2016-08-24T15:39:10.625Z"
+    },
+    {
+      "number": "1.4.0",
+      "date": "2016-10-26T10:30:25.776Z"
+    },
+    {
+      "number": "1.4.1",
+      "date": "2016-10-26T18:38:00.690Z"
+    },
+    {
+      "number": "1.4.2",
+      "date": "2016-11-08T20:30:45.894Z"
+    },
+    {
+      "number": "1.4.3",
+      "date": "2016-11-10T14:34:57.416Z"
     }
   ],
   "created": "2015-12-09T19:30:11.150Z",
-  "modified": "2016-08-24T15:39:10.625Z",
+  "modified": "2016-11-10T14:34:57.416Z",
   "lastPublisher": {
-    "name": "n1k0",
-    "email": "nicolas@perriault.net"
+    "name": "leplatrem",
+    "email": "leplatrem@gmail.com"
   },
   "owners": [
     {
@@ -301,5 +318,5 @@
       "email": "natim@mozilla.com"
     }
   ],
-  "readme": "# Kinto Web Administration Console\n\n[![Build Status](https://travis-ci.org/Kinto/kinto-admin.svg?branch=master)](https://travis-ci.org/Kinto/kinto-admin)\n\nA Web admin UI to manage data from a [Kinto](https://kinto.readthedocs.io/) server.\n[Give it a go](http://kinto.github.io/kinto-admin/)!\n\n`kinto-admin` wants to be the [pgAdmin](http://pgadmin.org/) for\nKinto. You can also use it to build administration interfaces for\nKinto-based systems.\n\n## Table of Contents\n\n  - [Installation](#installation)\n  - [Standalone local server](#standalone-local-server)\n  - [Building static assets for production hosting](#building-static-assets-for-production-hosting)\n  - [Build kinto-admin locally](#build-kinto-admin-locally)\n  - [Development server](#development-server)\n  - [FAQ](#faq)\n     - [Browser support](#browser-support)\n     - [I get an ENOENT when I go to localhost:3000](#i-get-an-enoent-when-i-go-to-localhost-3000)\n     - [How to display a nested field value using the collection displayFields property?](#how-to-display-a-nested-field-value-using-the-collection-displayfields-property)\n  - [License](#license)\n\n---\n\n## Installation\n\nNodeJS v4+ and npm 2.14+ should be installed and available on your machine.\n\n```bash\n$ npm install -g kinto-admin\n```\n\nOr if you want it to be installed as a project dependency:\n\n```bash\n$ npm install kinto-admin --save\n```\n\n## Standalone local server\n\nThe Web admin UI can be served locally using the `kinto-admin` executable:\n\n```bash\n$ kinto-admin serve\nListening at http://0.0.0.0:3000\n```\n\nYou can specify the port to listen to using the `--port` or `-p` options:\n\n```bash\n$ kinto-admin serve -p 4000\nListening at http://0.0.0.0:4000\n```\n\n## Building static assets for production hosting\n\n```\n$ kinto-admin build -d static-build\n```\n\nHere, production-ready assets are generated into the `static-build/` directory,\nand can be published to any static webserver like\n[github-pages](https://pages.github.com/).\n\n## Build kinto-admin locally\n\nClone repository:\n\n```\n$ git clone https://github.com/Kinto/kinto-admin.git\n```\n\nInstall packages:\n\n```\n$ cd kinto-admin && npm install\n```\n\nAfter installation of packages, run the development server.\n\n## Development server\n\nThe development server should only be used when working on the\nkinto-admin codebase itself. If you're evaluating kinto-admin, or\nbuilding a system that relies on kinto-admin to administer, you should\ninstall kinto-admin using npm and use it as above.\n\nTo run in development mode:\n\n```\n$ npm start\n```\n\nThe application is served at [localhost:3000](http://localhost:3000/), and any\nReact component update will trigger a hot reload.\n\n## Tests\n\nTo run tests:\n\n```\n$ npm run test-all\n```\n\n> Note: The browser test suite is not included in this command as it takes a\nlong time and may result in intermittent failures on Travis\n(see [#146](https://github.com/Kinto/kinto-admin/pull/146)).\n\n## Browser tests\n\nThe browser test suite uses [NightmareJS](http://www.nightmarejs.org/) and\n[Electron](http://electron.atom.io/). To run browser tests:\n\n```\n$ npm run dist\n$ npm run test-browser\n```\n\nTo show the browser interactions while running them, set the `NIGHTMARE_SHOW` env var:\n\n```\n$ NIGHTMARE_SHOW=1 npm run test-browser\n```\n\nThere's also a TDD mode:\n\n```\n$ npm run tdd-browser\n```\n\n## FAQ\n\n### Browser support\n\nLet's be honest, we're mainly testing kinto-admin on recent versions of Firefox\nand Chrome, so we can't really guarantee proper compatibility with IE, Safari,\nOpera and others. We're accepting\n[pull requests](https://github.com/Kinto/kinto-admin/pulls) though.\n\n### I get an ENOENT when I go to localhost:3000\n\nDid you run `bin/kinto-admin` from this repository?\n\nYou can only run `kinto-admin` if you get `kinto-admin` with npm. The\nversion of `kinto-admin` uploaded to npm contains an\nautomatically-built `dist` directory with the artifacts that the\nbrowser needs.\n\nInstead, run the development server, as above.\n\n### How to display a nested field value using the collection displayFields property?\n\nUse the *dot* notation.\n\nFor example, if you have the following record:\n\n```\n{\n  \"data\": {\n    \"attachement\": {\n      \"filename\": \"font.ttf\"\n    }\n  }\n}\n```\n\nYou can use `attachment.filename`.\n\nWe tried our best to make it work with properties having dots in their name.\n\nFor instance:\n\n```\n{\n  \"data\": {\n    \"target\": {\n      \"proof.hash\": \"abcd\",\n      \"merkle.tree\": {\n         \"file.name\": \"foobar\"\n      }\n    }\n  }\n}\n\n```\n\nIf you use `target.merkle.tree.file.name` it will render the string\n`foobar` and `target.proof.hash` will render `abcd`.\n\n### Assets path url\n\nBy default this package assumes the static admin will be hosted at the root of a given domain; if you plan on hosting it under a given sub path, you need to build the admin setting the `KINTO_ADMIN_PUBLIC_PATH` env var, specifying the absolute root URL path where the static asset files are obtainable.\n\nFor example, if you plan on hosting the admin at `https://mydomain.tld/kinto-admin/`, you need to build it like this:\n\n```\n$ KINTO_ADMIN_PUBLIC_PATH=/kinto-admin/ npm run dist\n```\n\nNote: Unfortunately, the `kinto-admin build` CLI command doesn't support this feature.\n\n## License\n\nApache Licence Version 2.0\n"
+  "readme": "# Kinto Web Administration Console\n\n[![Build Status](https://travis-ci.org/Kinto/kinto-admin.svg?branch=master)](https://travis-ci.org/Kinto/kinto-admin)\n\nA Web admin UI to manage data from a [Kinto](https://kinto.readthedocs.io/) server. [Demo](http://kinto.github.io/kinto-admin/).\n\n`kinto-admin` wants to be the [pgAdmin](http://pgadmin.org/) for\nKinto. You can also use it to build administration interfaces for\nKinto-based systems.\n\n## Table of Contents\n\n  - [Prerequisites](#prerequisites)\n  - [Installation](#installation)\n     - [Admin settings](#admin-settings)\n     - [Plugins](#plugins)\n     - [Build customization](#build-customization)\n        - [Building for relative paths](#building-for-relative-paths)\n  - [Hacking on kinto-admin](#hacking-on-kinto-admin)\n  - [Development server](#development-server)\n  - [Tests](#tests)\n  - [Browser tests](#browser-tests)\n  - [FAQ](#faq)\n     - [Browser support](#browser-support)\n     - [How to display a nested field value using the collection displayFields property?](#how-to-display-a-nested-field-value-using-the-collection-displayfields-property)\n  - [License](#license)\n\n---\n\n## Prerequisites\n\nNodeJS v4+ and npm 2.14+ should be installed and available on your machine.\n\n## Installation\n\nThe easiest way to get started is to install [create-react-app](https://github.com/facebookincubator/create-react-app) first:\n\n```\n$ npm install -g create-react-app\n$ create-react-app test-kinto-admin && cd test-kinto-admin\n$ npm install kinto-admin --save-dev\n```\n\nThen, import and render the main `KintoAdmin` component in the generated `src/index.js` file:\n\n```jsx\nimport React from \"react\";\nimport ReactDOM from \"react-dom\";\n\nimport KintoAdmin from \"kinto-admin\";\n\nReactDOM.render(\n  <KintoAdmin />,\n  document.getElementById(\"root\")\n);\n\n```\n\nTo run a local development server:\n\n```\n$ npm start\n```\n\nTo build the admin as a collection of static assets, ready to be hosted on a static webserver:\n\n```\n$ npm run build\n```\n\nThis will generate production-ready assets in the `build` folder.\n\n### Admin settings\n\nThe `KintoAdmin` component accepts a `settings` prop, where you can define the following options:\n\n- `maxPerPage`: The max number of results per page in lists (default: `200`).\n- `singleServer`: The server URL to be used (default: `null`). This removes the ability to connect to multiple servers.\n\nExample:\n\n```jsx\nimport KintoAdmin from \"kinto-admin\";\n\nReactDOM.render(\n  <KintoAdmin settings={{maxPerPage: 42}}/>,\n  document.getElementById(\"root\")\n);\n```\n\n### Plugins\n\n**Note:** The plugin API is under heavy development and will remain undocumented until it stabilizes.\n\nTo enable admin plugins, import and pass them as a `plugins` prop to the `KintoAdmin` component:\n\n```jsx\nimport KintoAdmin from \"kinto-admin\";\nimport * as signoffPlugin from \"kinto-admin/lib/plugins/signoff\";\n\nReactDOM.render(\n  <KintoAdmin plugins={[signoffPlugin]}/>,\n  document.getElementById(\"root\")\n);\n```\n\n### Build customization\n\n#### Building for relative paths\n\nQuoting the ([create-react-app documentation](https://github.com/facebookincubator/create-react-app/blob/v0.4.1/template/README.md#building-for-relative-paths)):\n\n> By default, Create React App produces a build assuming your app is hosted at the server root.\n>\n> To override this, specify the homepage in your `package.json`, for example:\n>\n> ```\n>   \"homepage\": \"http://mywebsite.com/relativepath\",\n> ```\n>\n> This will let Create React App correctly infer the root path to use in the generated HTML file.\n\n## Hacking on kinto-admin\n\nClone repository:\n\n```\n$ git clone https://github.com/Kinto/kinto-admin.git\n```\n\nInstall packages:\n\n```\n$ cd kinto-admin && npm install\n```\n\nAfter installation of packages, run the development server.\n\n## Development server\n\nThe development server should only be used when working on the\nkinto-admin codebase itself. If you're evaluating kinto-admin, or\nbuilding a system that relies on kinto-admin to administer, you should\ninstall kinto-admin using npm and use it as above.\n\nTo run in development mode:\n\n```\n$ npm start\n```\n\nThe application is served at [localhost:3000](http://localhost:3000/), and any\nReact component update will trigger a hot reload.\n\n## Tests\n\nTo run tests:\n\n```\n$ npm run test-all\n```\n\n> Note: The browser test suite is not included in this command as it takes a\nlong time and may result in intermittent failures on Travis\n(see [#146](https://github.com/Kinto/kinto-admin/pull/146)).\n\n## Browser tests\n\nThe browser test suite uses [NightmareJS](http://www.nightmarejs.org/) and\n[Electron](http://electron.atom.io/). To run browser tests:\n\n```\n$ npm run dist\n$ npm run test-browser\n```\n\nTo show the browser interactions while running them, set the `NIGHTMARE_SHOW` env var:\n\n```\n$ NIGHTMARE_SHOW=1 npm run test-browser\n```\n\nThere's also a TDD mode:\n\n```\n$ npm run tdd-browser\n```\n\n## FAQ\n\n### Browser support\n\nLet's be honest, we're mainly testing kinto-admin on recent versions of Firefox\nand Chrome, so we can't really guarantee proper compatibility with IE, Safari,\nOpera and others. We're accepting\n[pull requests](https://github.com/Kinto/kinto-admin/pulls) though.\n\n### How to display a nested field value using the collection displayFields property?\n\nUse the *dot* notation.\n\nFor example, if you have the following record:\n\n```\n{\n  \"data\": {\n    \"attachment\": {\n      \"filename\": \"font.ttf\"\n    }\n  }\n}\n```\n\nYou can use `attachment.filename`.\n\nWe tried our best to make it work with properties having dots in their name.\n\nFor instance:\n\n```\n{\n  \"data\": {\n    \"target\": {\n      \"proof.hash\": \"abcd\",\n      \"merkle.tree\": {\n         \"file.name\": \"foobar\"\n      }\n    }\n  }\n}\n\n```\n\nIf you use `target.merkle.tree.file.name` it will render the string\n`foobar` and `target.proof.hash` will render `abcd`.\n\n## License\n\nApache Licence Version 2.0\n"
 }

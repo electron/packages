@@ -1,0 +1,74 @@
+{
+  "name": "electron-open-url",
+  "version": "1.4.0",
+  "description": "open something with Electron window",
+  "main": "index.js",
+  "bin": {
+    "electron-open": "bin/cli.js"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "user": "rhysd",
+    "repo": "electron-open",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/rhysd/electron-open/tarball/master",
+    "clone_url": "https://github.com/rhysd/electron-open",
+    "https_url": "https://github.com/rhysd/electron-open",
+    "travis_url": "https://travis-ci.org/rhysd/electron-open",
+    "zip_url": "https://github.com/rhysd/electron-open/archive/master.zip",
+    "api_url": "https://api.github.com/repos/rhysd/electron-open"
+  },
+  "keywords": [
+    "electron",
+    "open",
+    "url",
+    "gui",
+    "window"
+  ],
+  "author": {
+    "name": "rhysd",
+    "email": "lin90162@yahoo.co.jp"
+  },
+  "license": "MIT",
+  "homepage": "https://github.com/rhysd/electron-open#readme",
+  "dependencies": {
+    "open": "0.0.5"
+  },
+  "peerDependencies": {
+    "electron": "^1.4.6"
+  },
+  "gitHead": "7dc40cfa91025b713fbebecd4bea682e4f78b659",
+  "_npmVersion": "3.10.8",
+  "_nodeVersion": "7.0.0",
+  "dist": {
+    "shasum": "932de4a9da7bf0c69d9a448f3a47097c314b466e",
+    "tarball": "http://registry.npmjs.org/electron-open-url/-/electron-open-url-1.4.0.tgz"
+  },
+  "versions": [
+    {
+      "number": "1.0.0",
+      "date": "2016-11-12T11:00:36.121Z"
+    },
+    {
+      "number": "1.4.0",
+      "date": "2016-11-12T15:01:00.887Z"
+    }
+  ],
+  "created": "2016-11-12T11:00:36.121Z",
+  "modified": "2016-11-12T15:01:00.887Z",
+  "lastPublisher": {
+    "name": "rhysd",
+    "email": "lin90162@yahoo.co.jp"
+  },
+  "owners": [
+    {
+      "name": "rhysd",
+      "email": "lin90162@yahoo.co.jp"
+    }
+  ],
+  "readme": "electron-open-url\n=================\n\nThis is a package to open something with Electron window. You can use this from both command line and Node.js program.\n\nThis program continues to use the same window. So it does not open multiple tabs when you use this package repeatedly. This package is assumed to be used from other command line tools, editors or Node.js programs which opens some web page or file repeatedly.\n\n## Install\n\n```\n$ npm install -g electron-open-url electron\n```\n\nNote that this package registers 'electron' package as peer dependency. So you need to install it additinally. This is because make users to determine where the 'electron' package should be installed.\n\n## Usage\n\n### From command line\n\n![screen shot](https://github.com/rhysd/ss/blob/master/electron-open-url/main.gif?raw=true)\n\n`electron-open` command is available.\n\nFor example, below opens Twitter page with Electron window.\n\n```\n$ electron-open https://twitter.com/\n```\n\nYou want to open Twitter's Notification page. Then simply execute below.\n\n```\n$ electron-open https://twitter.com/i/notifications\n```\n\nThe notification page will be opened in the same window.\n\nFor more usage, please check `electron-open --help`.\n\n### From Node.js program\n\n```javascript\nconst open = require('electron-open');\n\nopen({\n    target: 'https://twitter.com',\n    fallback: true\n});\n```\n\nThe `target` property is a thing you want to open in Electron window. If `fallback` property is set to `true`, it opens with OS's open method (like `open` command in macOS or `xdg-open` in X11) when 'electron' package was not found.\n\n"
+}

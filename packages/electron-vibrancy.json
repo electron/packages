@@ -1,0 +1,100 @@
+{
+  "name": "electron-vibrancy",
+  "version": "0.1.3",
+  "description": "Enable blurring the back of your transparent BrowserWindow using this simple module.",
+  "main": "index.js",
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "chai-as-promised": "^6.0.0",
+    "coffee-script": "^1.11.1",
+    "coffeelint": "^1.16.0",
+    "electron-prebuilt": "^1.4.2",
+    "mocha": "^3.1.2",
+    "node-gyp": "^1.0.3",
+    "node-pre-gyp": "^0.6.19",
+    "spectron": "^3.4.0"
+  },
+  "dependencies": {
+    "bindings": "^1.2.1",
+    "nan": "^2.0.5"
+  },
+  "scripts": {
+    "test-spectron": "mocha --compilers coffee:coffee-script/register ./spec/vibrancy-spec.coffee",
+    "test-module": "mocha --compilers coffee:coffee-script/register ./spec/module-spec.coffee",
+    "run-test-app": "electron ./spec/app",
+    "lint-cpp": "python scripts/lint.py",
+    "lint-coffee": "coffeelint spec",
+    "rebuild": "node-gyp rebuild --target=1.4.2 --arch=x64 --debug --dist-url=https://atom.io/download/atom-shell",
+    "build": "node-gyp build --target=1.4.2 --arch=x64 --debug --dist-url=https://atom.io/download/atom-shell",
+    "nrebuild": "node-gyp rebuild --debug --arch=x64 --verbose",
+    "nbuild": "node-gyp build --debug",
+    "conf": "node-gyp configure --arch=x64",
+    "postinstall": "npm run rebuild",
+    "install": "node-gyp rebuild"
+  },
+  "repository": {
+    "user": "arkenthera",
+    "repo": "electron-vibrancy",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/arkenthera/electron-vibrancy/tarball/master",
+    "clone_url": "https://github.com/arkenthera/electron-vibrancy",
+    "https_url": "https://github.com/arkenthera/electron-vibrancy",
+    "travis_url": "https://travis-ci.org/arkenthera/electron-vibrancy",
+    "zip_url": "https://github.com/arkenthera/electron-vibrancy/archive/master.zip",
+    "api_url": "https://api.github.com/repos/arkenthera/electron-vibrancy"
+  },
+  "keywords": [
+    "electron",
+    "vibrant",
+    "vibrancy",
+    "blur",
+    "transparent",
+    "transparency"
+  ],
+  "author": {
+    "name": "arkenthera"
+  },
+  "license": "MIT",
+  "gypfile": true,
+  "homepage": "https://github.com/arkenthera/electron-vibrancy#readme",
+  "gitHead": "0fdf572de8604ceb10572d0a1e11e603dcb12edc",
+  "_npmVersion": "3.10.8",
+  "_nodeVersion": "7.0.0",
+  "dist": {
+    "shasum": "04382dd6e030e5ca5e60f8e024033738cb8479e3",
+    "tarball": "http://registry.npmjs.org/electron-vibrancy/-/electron-vibrancy-0.1.3.tgz"
+  },
+  "versions": [
+    {
+      "number": "0.1.0",
+      "date": "2016-10-29T14:51:40.903Z"
+    },
+    {
+      "number": "0.1.1",
+      "date": "2016-10-29T23:43:48.691Z"
+    },
+    {
+      "number": "0.1.2",
+      "date": "2016-10-30T09:27:52.120Z"
+    },
+    {
+      "number": "0.1.3",
+      "date": "2016-11-05T14:56:59.163Z"
+    }
+  ],
+  "created": "2016-10-29T14:51:40.903Z",
+  "modified": "2016-11-05T14:56:59.163Z",
+  "lastPublisher": {
+    "name": "arkenthera",
+    "email": "arkenthera@gmail.com"
+  },
+  "owners": [
+    {
+      "name": "arkenthera",
+      "email": "arkenthera@gmail.com"
+    }
+  ],
+  "readme": "#electron-vibrancy\r\n\r\n[![Build Status](https://travis-ci.org/arkenthera/electron-vibrancy.svg?branch=master)](https://travis-ci.org/arkenthera/electron-vibrancy)\r\n[![Build status](https://ci.appveyor.com/api/projects/status/41na3l88kgs8wir1?svg=true)](https://ci.appveyor.com/project/arkenthera/electron-vibrancy)\r\n[![npm version](https://badge.fury.io/js/electron-vibrancy.svg)](https://badge.fury.io/js/electron-vibrancy)\r\n![](https://img.shields.io/npm/dm/electron-vibrancy.svg)\r\n![](https://david-dm.org/arkenthera/electron-vibrancy/status.svg)\r\n\r\nThis module is intended to give an [Electron](https://github.com/electron/electron) BrowserWindow blur on its behind. Electron does not support 'blur behind' from a transparent window and this module uses native API calls to achieve the effect.\r\n\r\n![](http://i.imgur.com/0sRPzpn.png)\r\n\r\n![](http://i.imgur.com/42jOnRV.png)\r\n\r\n# Running\r\n\r\nSince this is a native addon, you will need your platforms build tools. Visual Studio,XCode etc.Also Python for `node-gyp`.\r\n\r\n```\r\ngit clone https://github.com/arkenthera/electron-vibrancy\r\ncd electron-vibrancy\r\nnpm install\r\ncd spec/app # Go to sample app\r\nelectron . # electron --version should be 1.4.2\r\n```\r\n\r\nTo rebuild again:\r\n\r\n```\r\nnpm run conf\r\nnpm run rebuild\r\n```\r\n\r\nAlso available through NPM.\r\n\r\n```\r\nnpm install electron-vibrancy\r\n```\r\n\r\nTo run tests see [scripts/ci](https://github.com/arkenthera/electron-vibrancy/blob/master/scripts/ci.sh)\r\n\r\n# Current Supported Platforms\r\n- macOS 10.10+\r\n- Windows 10 (stable) It just works ™\r\n- Windows 8.x (unstable + requires modifications)\r\n- Windows 7 (unstable + requires modifications)\r\n\r\n# Things to note\r\n- `BrowserWindow` must be transparent. (`transparent:true`)\r\n- Requires Yosemite on macOS.\r\n- On Windows 8.x, this wont work because Microsoft completely removed Aero Glass feature. It is still possible though but it is not something that an end user should do.\r\nSee Platforms section for more info.\r\n- On Windows 7, an Aero theme must be activated.\r\n- If you get `A dynamic link library (DLL) initialization routine failed.` error, it means that the module isn't compiled against Electron or compiled against the wrong version. \r\n\r\nAlthough it works, I dont recommend using this module on a machine below Windows 10. See platforms section below for more information for macOS.\r\n\r\n# API\r\nThere are several methods depending on what you want to do and what platform you are on.\r\n\r\n### `SetVibrancy(window, material)` _win_ , _macOS_\r\n\r\nReturns `Integer`.View id of `NSVisualEffectView`. You need this for `UpdateView` or `RemoveView`. `material` has no effect on Windows.\r\n\r\n* `window` `BrowserWindow` instance\r\n* `Material` - Integer. The Material for `NSVisualEffectMaterial`.\r\n  * `0` - `NSVisualEffectMaterialAppearanceBased` *10.10+*\r\n  * `1` - `NSVisualEffectMaterialLight` *10.10+*\r\n  * `2` - `NSVisualEffectMaterialDark` *10.10+*\r\n  * `3` - `NSVisualEffectMaterialTitlebar` *10.10+*\r\n  * `4` - `NSVisualEffectMaterialSelection` *10.11+*\r\n  * `5` - `NSVisualEffectMaterialMenu` *10.11+*\r\n  * `6` - `NSVisualEffectMaterialPopover` *10.11+*\r\n  * `7` - `NSVisualEffectMaterialSidebar` *10.11+*\r\n  * `8` - `NSVisualEffectMaterialMediumLight` *10.11+*\r\n  * `9` - `NSVisualEffectMaterialUltraDark` *10.11+*\r\n\r\nEnables or disables vibrancy for the **WHOLE** window. It will resize automatically. If you want something custom, see `AddView`.\r\nSee [here](https://developer.apple.com/reference/appkit/nsvisualeffectmaterial?language=objc) for more info about `NSVisualEffectMaterial`.\r\n\r\n\r\n### `DisableVibrancy(window)` _win_, _macOS_\r\n\r\nDisables Vibrancy completely.\r\n\r\n* `window` `BrowserWindow` instance\r\n\r\n\r\n### `AddView(window,options)` _macOS_\r\n\r\nReturns `Integer`.View id of `NSVisualEffectView`. You need this for `UpdateView` or `RemoveView`.\r\n\r\n* `window` `BrowserWindow` instance\r\n* `options` Object\r\n  * `Material` - Integer. The Material for `NSVisualEffectMaterial`.See `SetVibrancy` method for material properties.\r\n  * `X` X Position of the `NSVisualEffectView` relative to the main `BrowserWindow`.\r\n  * `Y` X Position of the `NSVisualEffectView` relative to the main `BrowserWindow`.\r\n  * `Width` - Integer Width of the `NSVisualEffectView`. Should not be larger than the window's.\r\n  * `Height` - Integer Height of the `NSVisualEffectView`. Should not be larger than the window's.\r\n  * `ResizeMask`- Integer.Resize mask for the `NSVisualEffectView`.\r\n    * `0` - Auto width resize\r\n    * `1` - Auto height resize\r\n    * `2` - Auto width-height resize\r\n    * `3` - No resize\r\n\r\nAdds a `NSVisualEffectView` to the window with the specified properties.If you dont specify a `ResizeMask`,default value for it is `2`.\r\n\r\n\r\n### `UpdateView(window,options)` _macOS_\r\n\r\nReturns `Boolean`.\r\n\r\n* `window` `BrowserWindow` instance\r\n* `options` Object\r\n  * `ViewId` - Integer. Return value from `AddView`.\r\n  * `Material` - Integer. The Material for `NSVisualEffectMaterial`.See `SetVibrancy` method for material properties.\r\n  * `X` X Position of the `NSVisualEffectView` relative to the main `BrowserWindow`.\r\n  * `Y` X Position of the `NSVisualEffectView` relative to the main `BrowserWindow`.\r\n  * `Width` - Integer Width of the `NSVisualEffectView`. Should not be larger than the window's.\r\n  * `Height` - Integer Height of the `NSVisualEffectView`. Should not be larger than the window's.\r\n\r\nUpdates the `NSVisualEffectView` with the specified properties.\r\n\r\n\r\n### `RemoveView(window,viewId)` _macOS_\r\n\r\nReturns `Boolean`.\r\n\r\n* `window` `BrowserWindow` instance\r\n* `ViewId`- Integer.Identifier of `NSVisualEffectView`.\r\n\r\nRemoves the `NSVisualEffectView`.\r\n\r\n\r\n\r\n## How to use\r\n\r\n```\r\n// Require the module\r\nvar electronVibrancy = require('..');\r\nelectronVibrancy.SetVibrancy(true,browserWindowInstance.getNativeWindowHandle());\r\n\r\n\r\n// Preferred Usage\r\n\r\n// mainWindow with show: false\r\nmainWindow.on('ready-to-show',function() {\r\n  var electronVibrancy = require('..');\r\n  \r\n  // Whole window vibrancy with Material 0 and auto resize\r\n  electronVibrancy.SetVibrancy(mainWindow, 0);\r\n\r\n  // auto resizing vibrant view at {0,0} with size {300,300} with Material 0\r\n  electronVibrancy.AddView(mainWindow, { Width: 300,Height:300,X:0,Y:0,ResizeMask:2,Material:0 })\r\n\r\n  // non-resizing vibrant view at {0,0} with size {300,300} with Material 0\r\n  electronVibrancy.AddView(mainWindow, { Width: 300,Height:300,X:0,Y:0,ResizeMask:3,Material:0 })\r\n\r\n  //Remove a view\r\n  var viewId = electronVibrancy.SetVibrancy(mainWindow, 0);\r\n  electronVibrancy.RemoveView(mainWindow,viewId);\r\n\r\n  // Add a view then update it\r\n  var viewId = electronVibrancy.SetVibrancy(mainWindow, 0);\r\n  electronVibrancy.UpdateView(mainWindow,{ ViewId: viewId,Width: 600, Height: 600 });\r\n\r\n  // Multipe views with different materials\r\n  var viewId1 = electronVibrancy.AddView(mainWindow, { Width: 300,Height:300,X:0,Y:0,ResizeMask:3,Material:0 })\r\n  var viewId2 = electronVibrancy.AddView(mainWindow, { Width: 300,Height:300,X:300,Y:0,ResizeMask:3,Material:2 })\r\n\r\n  console.log(viewId1);\r\n  console.log(viewId2);\r\n\r\n  // electronVibrancy.RemoveView(mainWindow,0);\r\n  // electronVibrancy.RemoveView(mainWindow,1);\r\n\r\n  // or\r\n\r\n  electronVibrancy.DisableVibrancy(mainWindow);\r\n})\r\n\r\n```\r\n\r\n\r\n## Screenshots\r\n\r\n![](https://cloud.githubusercontent.com/assets/174864/19833319/bc7214f8-9e0b-11e6-8331-be49ca3eeab9.png)\r\n\r\n![](https://cloud.githubusercontent.com/assets/174864/19833322/bc7f168a-9e0b-11e6-9c84-c2a746538edc.png)\r\n\r\n![](https://cloud.githubusercontent.com/assets/174864/19833327/bc8b2c2c-9e0b-11e6-9272-8d84ad3b7116.png)\r\n\r\n\r\n## Platform notices\r\n\r\n### Windows\r\nOn **Windows 10** the addon uses ```SetWindowCompositionAttribute```, which is an undocumented API, which means it can be changed by Microsoft any time and break the functionality.\r\n\r\n### MacOS\r\nRequires Yosemite and above.Some materials require 10.11+. Since this is the case, if you use a material that's not available on that macOS version, it will\r\nfallback to the default material value which is `0`, which might not be what you want.\r\n\r\n\r\n## License\r\n\r\nThis project is under MIT.\r\nSee [LICENSE](https://github.com/arkenthera/electron-vibrancy/blob/master/LICENSE)\r\n"
+}

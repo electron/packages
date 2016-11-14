@@ -1,7 +1,7 @@
 {
   "name": "system-designer",
-  "version": "1.8.0",
-  "description": "System Designer, an IDE for building applications driven by the model",
+  "version": "1.8.4",
+  "description": "System Designer, an IDE for designing applications driven by the model",
   "homepage": "https://system-designer.github.io",
   "keywords": [
     "uml",
@@ -56,17 +56,16 @@
     "grunt-contrib-uglify": "^2.0.0",
     "grunt-contrib-watch": "^1.0.0",
     "grunt-jsbeautifier": "^0.2.7",
-    "grunt-merge-json": "^0.9.5"
+    "grunt-merge-json": "^0.9.5",
+    "github-api": "^2.3.0",
+    "codemirror": "^5.20.2"
   },
-  "dependencies": {
-    "github-api": "^2.3.0"
-  },
-  "gitHead": "a6c8e2ddf193d4b4e0c478055ecced8075a07e03",
+  "gitHead": "80e72d4adff5090acd94bdbf07ca1b3ff0a2dfe2",
   "_npmVersion": "3.10.3",
   "_nodeVersion": "6.4.0",
   "dist": {
-    "shasum": "c5bafc3566ef26e257fc04eae2b8614d3dbc2afd",
-    "tarball": "http://registry.npmjs.org/system-designer/-/system-designer-1.8.0.tgz"
+    "shasum": "402701aa9084c23103b05e9608389a6d0eb72bf2",
+    "tarball": "http://registry.npmjs.org/system-designer/-/system-designer-1.8.4.tgz"
   },
   "versions": [
     {
@@ -312,10 +311,26 @@
     {
       "number": "1.8.0",
       "date": "2016-08-25T16:10:49.948Z"
+    },
+    {
+      "number": "1.8.1",
+      "date": "2016-10-15T17:47:16.206Z"
+    },
+    {
+      "number": "1.8.2",
+      "date": "2016-10-23T18:49:02.673Z"
+    },
+    {
+      "number": "1.8.3",
+      "date": "2016-10-31T22:37:51.625Z"
+    },
+    {
+      "number": "1.8.4",
+      "date": "2016-11-13T13:17:47.519Z"
     }
   ],
   "created": "2016-01-11T22:14:00.964Z",
-  "modified": "2016-08-25T16:10:49.948Z",
+  "modified": "2016-11-13T13:17:47.519Z",
   "lastPublisher": {
     "name": "ecarriou",
     "email": "erwan.carriou@mac.com"
@@ -326,5 +341,5 @@
       "email": "erwan.carriou@mac.com"
     }
   ],
-  "readme": "# System Designer\n\n[![Build Status](https://travis-ci.org/system-sdk/system-designer.svg?branch=master)](https://travis-ci.org/system-sdk/system-designer)\n[![devDependency Status](https://david-dm.org/system-sdk/system-designer/dev-status.svg)](https://david-dm.org/system-sdk/system-designer#info=devDependencies)\n\n![Image Alt](https://system-designer.github.io/img/v2/system-designer.png)\n\n## What is System Designer ?\n\nNo matter the frameworks you use and the code you write, the most important is the model that you define to create your application. System Designer helps you to design this model and to generate the classes and components to build your application.\n\n#### Design your application with UML\n\nIf you look at the different JavaScript frameworks on the market, you will notice that they all have their own way to define a model, generally only with code.\n\nSystem Designer uses [UML](http://www.uml.org), a standard, to define your model. So you probably already know how to create a model in System Designer even if you have never run it.\n\nThe definition of the model is stored on a JSON format called [MSON](https://system-runtime.readme.io/docs/design-your-model#section-mson). With [MSON](https://system-runtime.readme.io/docs/design-your-model#section-mson) you can define types, classes, one to one / one to many relationships and multi inheritance between classes.\n\n#### Code the behavior of your model\n\nOnce you have created your model, System Designer generates the skeletons of all your methods. You only have then to add your code to implement them.\n\nSystem Designer provides you helpers to manage your components. You can easily navigate threw components to create your application.\n\n#### Create components graphically\n\nThere is no need to code to instantiate a component. Create a component in System Designer is like creating a document in a NoSQL Database.\n\nIn fact, System Designer acts as an ODM (Object-Document Mapper) to manage your components as NoSQL Documents.\n\n#### Run your application\n\nYou can run your application directly from System Designer and then export it to HTML, JSON or a Node.js module. You can also push your application on your Github repository with System Designer.\n\nBecause you have defined a model for your application, a [Dynamic Type Check](https://en.wikipedia.org/wiki/Type_system#DYNAMIC) is done on every action of your application. All warnings are send and shown in System Designer.\n\n## Build\n\n#### Installation\n\nOnce you have cloned the repository:\n\n```sh\n# needed by grunt (maybe you have this installed already)\n$ npm install -g grunt-cli\n$ npm install\n$ bower install\n```\t \t\n\n#### Build for web\n\nHere are the different tasks you can use to build and start System Designer:\n\n```sh\n# build\n$ npm run build\n# start web server\n$ npm run start\n```\n\nOnce server started, go to [http://localhost:9001/](http://localhost:9001/).\n\n\n#### Build for Electron and Cordova\n\nTo build for [Electron](http://electron.atom.io):\n\n```sh\n$ npm run build-electron\n```\n\nTo build for [Cordova](http://cordova.apache.org):\n\n```sh\n$ npm run build-cordova\n```\n\n## Documentation\n\n* [Quick Overview](https://system-designer.readme.io/docs/quick-overview)\n* [Quick Start](https://system-designer.readme.io/docs/quick-start)\n* [Documentation](https://system-designer.readme.io/)\n\n## Licence\n\nCopyright © 2016 Erwan Carriou\n\nLicensed under the Apache License, Version 2.0 (the \"License\");\nyou may not use this file except in compliance with the License.\nYou may obtain a copy of the License at\n\n    http://www.apache.org/licenses/LICENSE-2.0\n\nUnless required by applicable law or agreed to in writing, software\ndistributed under the License is distributed on an \"AS IS\" BASIS,\nWITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.\nSee the License for the specific language governing permissions and\nlimitations under the License. "
+  "readme": "# System Designer\n\n[![Build Status](https://travis-ci.org/system-sdk/system-designer.svg?branch=master)](https://travis-ci.org/system-sdk/system-designer)\n[![devDependency Status](https://david-dm.org/system-sdk/system-designer/dev-status.svg)](https://david-dm.org/system-sdk/system-designer#info=devDependencies)\n[![Join the chat at https://gitter.im/system-sdk/system-designer](https://badges.gitter.im/system-sdk/system-designer.svg)](https://gitter.im/system-sdk/system-designer?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)\n\n![Image Alt](https://system-designer.github.io/img/v2/system-designer.png)\n\n## What is System Designer ?\n\nNo matter the frameworks you use and the code you write, the most important is the model that you define to create your application. System Designer helps you to design this model and to generate the classes and components to build your application.\n\n#### Design your application with UML\n\nIf you look at the different JavaScript frameworks on the market, you will notice that they all have their own way to define a model, generally only with code.\n\nSystem Designer uses [UML](http://www.uml.org), a standard, to define your model. So you probably already know how to create a model in System Designer even if you have never run it.\n\nThe definition of the model is stored on a JSON format called [MSON](https://system-runtime.readme.io/docs/design-your-model#section-mson). With [MSON](https://system-runtime.readme.io/docs/design-your-model#section-mson) you can define types, classes, one to one / one to many relationships and multi inheritance between classes.\n\n#### Code the behavior of your model\n\nOnce you have created your model, System Designer generates the skeletons of all your methods. You only have then to add your code to implement them.\n\nSystem Designer provides you helpers to manage your components. You can easily navigate threw components to create your application.\n\n#### Create components graphically\n\nThere is no need to code to instantiate a component. Create a component in System Designer is like creating a document in a NoSQL Database.\n\nIn fact, System Designer acts as an ODM (Object-Document Mapper) to manage your components as NoSQL Documents.\n\n#### Run your application\n\nYou can run your application directly from System Designer and then export it to HTML, JSON or a Node.js module (* macOS and Chrome Web App version only).\n\nBecause you have defined a model for your application, a [Dynamic Type Check](https://en.wikipedia.org/wiki/Type_system#DYNAMIC) is done on every action of your application. All warnings are send and shown in System Designer.\n\n#### Debug your application\n\nSystem Designer can load the model of any application that runs on the browser or on Node.js. You can see the schemas, models, components and methods of the running application and you can edit them.\n\nAll modifications to the model done inside System Designer will be send to the running application. There is no need to reload to see your modifications.\n\n#### Design on the go\n\nSystem Designer can be used on macOS, iPad, Android or any browsers. You can also install it in your project: System Designer requires no backend to work, it is a full web application.\n\nSystem Designer has a GitHub module to synchronize your work between all these apps. You can begin your design on your Mac and then continue it on your iPad.\n\n## Build\n\n#### Installation\n\nOnce you have cloned the repository:\n\n```sh\n# needed by grunt (maybe you have this installed already)\n$ npm install -g grunt-cli\n$ npm install\n$ bower install\n```\t \t\n\n#### Build for web\n\nHere are the different tasks you can use to build and start System Designer:\n\n```sh\n# clean\n$ npm run clean\n# build\n$ npm run build\n# start web server\n$ npm run start\n```\n\nOnce server started, go to [http://localhost:9001/](http://localhost:9001/).\n\n\n#### Build for Electron and Cordova\n\nTo build for [Electron](http://electron.atom.io):\n\n```sh\n$ npm run clean\n$ npm run build-electron\n```\n\nTo build for [Cordova](http://cordova.apache.org):\n\n```sh\n$ npm run clean\n$ npm run build-cordova\n```\n\n## Documentation\n\n* [Quick Overview](https://system-designer.readme.io/docs/quick-overview)\n* [Quick Start](https://system-designer.readme.io/docs/quick-start)\n* [Documentation](https://system-designer.readme.io/)\n\n## Licence\n\nCopyright © 2016 Erwan Carriou\n\nLicensed under the Apache License, Version 2.0 (the \"License\");\nyou may not use this file except in compliance with the License.\nYou may obtain a copy of the License at\n\n    http://www.apache.org/licenses/LICENSE-2.0\n\nUnless required by applicable law or agreed to in writing, software\ndistributed under the License is distributed on an \"AS IS\" BASIS,\nWITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.\nSee the License for the specific language governing permissions and\nlimitations under the License. \n"
 }

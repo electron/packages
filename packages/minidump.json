@@ -1,0 +1,130 @@
+{
+  "main": "./lib/minidump.js",
+  "name": "minidump",
+  "description": "Read and process minidump file",
+  "version": "0.11.0",
+  "bin": {
+    "minidump_stackwalk": "bin/minidump_stackwalk"
+  },
+  "license": "MIT",
+  "repository": {
+    "user": "electron",
+    "repo": "node-minidump",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/electron/node-minidump/tarball/master",
+    "clone_url": "https://github.com/electron/node-minidump",
+    "https_url": "https://github.com/electron/node-minidump",
+    "travis_url": "https://travis-ci.org/electron/node-minidump",
+    "zip_url": "https://github.com/electron/node-minidump/archive/master.zip",
+    "api_url": "https://api.github.com/repos/electron/node-minidump"
+  },
+  "scripts": {
+    "test": "mocha test && standard",
+    "install": "node-gyp rebuild"
+  },
+  "devDependencies": {
+    "electron-download": "^3.0.1",
+    "extract-zip": "^1.5.0",
+    "mocha": "^3.1.2",
+    "standard": "^8.4.0",
+    "temp": "^0.8.3"
+  },
+  "gypfile": true,
+  "gitHead": "49a0dfb5bfd85eb67587630b7e5d8d50a27b3495",
+  "homepage": "https://github.com/electron/node-minidump#readme",
+  "_npmVersion": "3.10.8",
+  "_nodeVersion": "6.9.1",
+  "dist": {
+    "shasum": "f997b956cdb9979a3de4f74ffac2d679c7204d4e",
+    "tarball": "http://registry.npmjs.org/minidump/-/minidump-0.11.0.tgz"
+  },
+  "versions": [
+    {
+      "number": "0.1.0",
+      "date": "2013-11-15T09:15:01.316Z"
+    },
+    {
+      "number": "0.1.1",
+      "date": "2013-11-19T04:03:51.587Z"
+    },
+    {
+      "number": "0.2.0",
+      "date": "2013-11-25T02:08:04.163Z"
+    },
+    {
+      "number": "0.3.0",
+      "date": "2013-11-26T06:07:49.909Z"
+    },
+    {
+      "number": "0.4.0",
+      "date": "2014-02-27T08:42:24.243Z"
+    },
+    {
+      "number": "0.5.0",
+      "date": "2014-03-20T01:11:26.302Z"
+    },
+    {
+      "number": "0.6.0",
+      "date": "2014-05-29T01:01:19.483Z"
+    },
+    {
+      "number": "0.7.0",
+      "date": "2014-06-11T17:30:02.525Z"
+    },
+    {
+      "number": "0.8.0",
+      "date": "2014-09-08T19:02:12.909Z"
+    },
+    {
+      "number": "0.9.0",
+      "date": "2014-12-22T20:24:26.816Z"
+    },
+    {
+      "number": "0.10.0",
+      "date": "2016-10-20T21:44:22.100Z"
+    },
+    {
+      "number": "0.11.0",
+      "date": "2016-11-09T16:11:04.970Z"
+    }
+  ],
+  "created": "2013-11-15T09:12:18.523Z",
+  "modified": "2016-11-09T16:11:04.970Z",
+  "lastPublisher": {
+    "name": "kevinsawicki",
+    "email": "kevinsawicki@gmail.com"
+  },
+  "owners": [
+    {
+      "name": "atom",
+      "email": "nathan@github.com"
+    },
+    {
+      "name": "electron",
+      "email": "electron@github.com"
+    },
+    {
+      "name": "kevinsawicki",
+      "email": "kevinsawicki@gmail.com"
+    },
+    {
+      "name": "nathansobo",
+      "email": "nathan@github.com"
+    },
+    {
+      "name": "probablycorey",
+      "email": "probablycorey@gmail.com"
+    },
+    {
+      "name": "zcbenz",
+      "email": "zcbenz@gmail.com"
+    },
+    {
+      "name": "zeke",
+      "email": "zeke@sikelianos.com"
+    }
+  ],
+  "readme": "# minidump - Process minidump files [![Build Status](https://travis-ci.org/electron/node-minidump.svg?branch=master)](https://travis-ci.org/electron/node-minidump)\n\n## Installing\n\n```sh\nnpm install minidump\n```\n\n## Building\n\n* `git clone --recurse-submodules https://github.com/electron/node-minidump`\n* `npm install`\n\n## Docs\n\n```javascript\nvar minidump = require('minidump');\n```\n\n### minidump.addSymbolPath(path1, ..., pathN)\n\nAdd search paths for looking up symbol files.\n\n### minidump.walkStack(minidumpFilePath, [symbolPaths, ]callback)\n\nGet the stack trace from `minidumpFilePath`, the `callback` would be called\nwith `callback(error, report)` upon completion.\n\n### minidump.dumpSymbol(binaryPath, callback)\n\nDump debug symbols in minidump format from `binaryPath`, the `callback` would\nbe called with `callback(error, minidump)` upon completion.\n"
+}

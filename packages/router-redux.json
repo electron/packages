@@ -1,45 +1,37 @@
 {
   "jspm": {
     "name": "router-redux",
-    "dependencies": {
-      "babel": "babel-core@^6.11.4"
-    },
+    "dependencies": {},
     "devDependencies": {
+      "assert": "jspm-nodelibs-assert@^0.2.0",
+      "babel-plugin-transform-react-jsx": "^6.8.0",
+      "buffer": "jspm-nodelibs-buffer@^0.2.0",
+      "child_process": "jspm-nodelibs-child_process@^0.2.0",
+      "constants": "jspm-nodelibs-constants@^0.2.0",
+      "crypto": "jspm-nodelibs-crypto@^0.2.0",
+      "domain": "jspm-nodelibs-domain@^0.2.0",
+      "events": "jspm-nodelibs-events@^0.2.0",
+      "fs": "jspm-nodelibs-fs@^0.2.0",
+      "http": "jspm-nodelibs-http@^0.2.0",
+      "https": "jspm-nodelibs-https@^0.2.0",
+      "os": "jspm-nodelibs-os@^0.2.0",
+      "path": "jspm-nodelibs-path@^0.2.0",
+      "process": "jspm-nodelibs-process@^0.2.0",
+      "react": "^15.3.2",
+      "react-dom": "^15.3.2",
       "plugin-babel": "systemjs-plugin-babel@^0.0.12",
       "redux": "^3.5.2",
       "redux-virtual-dom": "^0.9.1",
-      "snabbdom": "^0.5.1"
-    },
-    "peerDependencies": {
-      "assert": "github:jspm/nodelibs-assert@^0.2.0-alpha",
-      "buffer": "github:jspm/nodelibs-buffer@^0.2.0-alpha",
-      "child_process": "github:jspm/nodelibs-child_process@^0.2.0-alpha",
-      "constants": "github:jspm/nodelibs-constants@^0.2.0-alpha",
-      "crypto": "github:jspm/nodelibs-crypto@^0.2.0-alpha",
-      "events": "github:jspm/nodelibs-events@^0.2.0-alpha",
-      "fs": "github:jspm/nodelibs-fs@^0.2.0-alpha",
-      "http": "github:jspm/nodelibs-http@^0.2.0-alpha",
-      "https": "github:jspm/nodelibs-https@^0.2.0-alpha",
-      "module": "github:jspm/nodelibs-module@^0.2.0-alpha",
-      "os": "github:jspm/nodelibs-os@^0.2.0-alpha",
-      "path": "github:jspm/nodelibs-path@^0.2.0-alpha",
-      "process": "github:jspm/nodelibs-process@^0.2.0-alpha",
-      "stream": "github:jspm/nodelibs-stream@^0.2.0-alpha",
-      "string_decoder": "github:jspm/nodelibs-string_decoder@^0.2.0-alpha",
-      "timers": "github:jspm/nodelibs-timers@^0.2.0-alpha",
-      "url": "github:jspm/nodelibs-url@^0.2.0-alpha",
-      "util": "github:jspm/nodelibs-util@^0.2.0-alpha",
-      "vm": "github:jspm/nodelibs-vm@^0.2.0-alpha",
-      "zlib": "github:jspm/nodelibs-zlib@^0.2.0-alpha"
+      "snabbdom": "^0.5.1",
+      "stream": "jspm-nodelibs-stream@^0.2.0",
+      "string_decoder": "jspm-nodelibs-string_decoder@^0.2.0",
+      "url": "jspm-nodelibs-url@^0.2.0",
+      "util": "jspm-nodelibs-util@^0.2.0",
+      "vidom": "^0.5.2",
+      "vm": "jspm-nodelibs-vm@^0.2.0",
+      "zlib": "jspm-nodelibs-zlib@^0.2.0"
     },
     "overrides": {
-      "npm:babel-runtime@5.8.38": {
-        "main": false,
-        "dependencies": {},
-        "optionalDependencies": {
-          "core-js": "^1.2.0"
-        }
-      },
       "npm:browserify-zlib@0.1.4": {
         "dependencies": {
           "readable-stream": "^2.0.2",
@@ -49,43 +41,22 @@
           "_stream_transform": "readable-stream/transform"
         }
       },
-      "npm:debug@2.2.0": {
-        "main": "browser.js",
-        "jspmNodeConversion": false,
-        "format": "cjs",
-        "map": {
-          "./browser.js": {
-            "node": "./node.js"
-          },
-          "fs": "@node/fs",
-          "net": "@node/net",
-          "tty": "@node/tty",
-          "util": "@node/util"
-        }
-      },
-      "npm:inherits@2.0.1": {
+      "npm:inherits@2.0.3": {
         "ignore": [
-          "test.js",
-          "node_modules",
-          "node_modules",
-          "node_modules"
+          "test.js"
         ]
       },
-      "npm:lodash@4.15.0": {
+      "npm:lodash@4.16.6": {
         "map": {
           "buffer": "@empty",
           "process": "@empty"
         }
-      },
-      "npm:ms@0.7.1": {
-        "jspmNodeConversion": false,
-        "format": "cjs"
       }
     }
   },
   "name": "router-redux",
   "description": "transform route change as redux action.",
-  "version": "0.9.3",
+  "version": "0.9.5",
   "dependencies": {},
   "devDependencies": {
     "babel-core": "^6.10.4",
@@ -95,7 +66,7 @@
     "chai-as-promised": "^5.3.0",
     "coveralls": "^2.11.12",
     "electron-prebuilt": "^1.2.2",
-    "jspm": "^0.17.0-beta.24",
+    "jspm": "^0.17.0-beta.31",
     "karma": "^1.1.2",
     "karma-babel-preprocessor": "^6.0.1",
     "karma-chai": "^0.1.0",
@@ -126,8 +97,10 @@
     "bundle": "jspm bundle example/app.js -wid",
     "unbundle": "jspm unbundle example/app.js",
     "serve": "caddy & npm run bundle",
+    "servep": "caddy --conf Caddyfilep",
     "build-dev": "jspm build lib/index.js dist/router-redux.js --format umd",
     "build": "jspm build lib/index.js dist/router-redux.js --format umd --skip-source-maps --minify",
+    "build-example": "jspm build example/app.js docs/bundled.js --format umd --skip-source-maps --minify",
     "prepublish": "npm run build"
   },
   "repository": {
@@ -157,12 +130,12 @@
   "license": "MIT",
   "registry": "npm",
   "homepage": "https://github.com/subuta/router-redux#readme",
-  "gitHead": "9e9adbe8849038276b0699760d04bb3970b24205",
+  "gitHead": "2d7e1add335b3af6258a943aaf157bac68b5c64d",
   "_npmVersion": "3.8.1",
   "_nodeVersion": "5.5.0",
   "dist": {
-    "shasum": "7ba5e6abd75a654c42ee5e89f82c0f5b06cb944b",
-    "tarball": "http://registry.npmjs.org/router-redux/-/router-redux-0.9.3.tgz"
+    "shasum": "13a2a338aec9fae1868d3fcc336ad5f45134ce9c",
+    "tarball": "http://registry.npmjs.org/router-redux/-/router-redux-0.9.5.tgz"
   },
   "versions": [
     {
@@ -180,10 +153,18 @@
     {
       "number": "0.9.3",
       "date": "2016-08-28T10:36:20.077Z"
+    },
+    {
+      "number": "0.9.4",
+      "date": "2016-11-07T23:30:33.383Z"
+    },
+    {
+      "number": "0.9.5",
+      "date": "2016-11-09T01:13:40.372Z"
     }
   ],
   "created": "2016-08-02T15:07:51.193Z",
-  "modified": "2016-08-28T10:36:20.077Z",
+  "modified": "2016-11-09T01:13:40.372Z",
   "lastPublisher": {
     "name": "subuta",
     "email": "shunta.3110@gmail.com"
@@ -194,5 +175,5 @@
       "email": "shunta.3110@gmail.com"
     }
   ],
-  "readme": "# router-redux [![Build Status](https://travis-ci.org/subuta/router-redux.svg?branch=master)](https://travis-ci.org/subuta/router-redux) [![Coverage Status](https://coveralls.io/repos/github/subuta/router-redux/badge.svg?branch=master)](https://coveralls.io/github/subuta/router-redux?branch=master)\nView framework agnostic router for redux :)\nThis is [react-router-redux](https://github.com/reactjs/react-router-redux) for your vdom-based project.\n\n- Make your vdom-based development flow easy.\n  - With [virtual-dom](https://github.com/Matt-Esch/virtual-dom)\n  - Or [snabbdom](https://github.com/paldepind/snabbdom)\n- Adds pushState/popState based client-side routing to your project.\n- Light weight(around 5K) but yet powerful router for Redux.\n\n[README - 日本語版](README-ja.md)\n\n## Installation\n```\nnpm install router-redux --save\n```\n\n## Example\nFirst you need to pass `routerReducer` to your own `reducer` with `routing` key.\n\n```javascript\n// In reducers/index.js\nimport {combineReducers} from 'redux';\nimport {routerReducer} from 'router-redux';\n\nconst rootReducer = combineReducers({\n  routing: routerReducer // HERE\n});\n\nexport default rootReducer;\n```\n\nNext you need to pass `routerMiddleware` to your `createStore` function. \nThen create and export `router` using `routerCreator`.\n \n```javascript\n// In example/store.js\nimport routerCreator, {routerMiddleware} from 'router-redux';\n\nimport reducer from './reducers/index.js';\nconst middlewares = [routerMiddleware];\nconst store = createStore(reducer, compose(\n  applyMiddleware(...middlewares)\n));\n\nexport const router = routerCreator(store);\n```\n\nThen `router` enables you to pushState/popState based routing with redux.\n\n```javascript\n// Get your exported router\nimport {router} from 'example/store.js';\n\n// Get router action/selector from router-redux\nimport {\n  push,\n  getCurrent\n} from 'router-redux';\n\n// Register onError first (if you need to catch initialRouting error)\nrouter.onError(({state, dispatch}) => {\n  const currentPath = getCurrent(state).path; // Will extract currentPath from state\n  // You can navigate user to error page or call any other redux action.\n  dispatch(push('/error'));\n});\n\n// Called when user entered to path(/) \nrouter.onEnter('/', ({state}, cb) => {\n  console.log('[top]loading ...', state);\n  setTimeout(() => {\n    // User's navigation action will blocked untill `cb` called.\n    console.log('[top]timer fired');\n    cb();\n    // If you call `cb` with falsy value or Error object,\n    // Router-redux will emit router's onError. and stop routing to path(/).\n    // cb(new Error('some error in top'));\n  }, 1000);\n});\n\n// Called when user leave from path(/)\nrouter.onLeave('/', (state) => {\n  console.log('[top]leave');\n});\n```\n\n## Documentation\n\n- API idea came from [react-router-redux](https://github.com/reactjs/react-router-redux) thanks!\n- Includes modified version of [object-assign](https://github.com/sindresorhus/object-assign) to reduce library size. thanks!\n\n### `routerMiddleware`\nrouter-redux's middleware function for redux.\nYou need to register it in your `createStore` function.\n\n```javascript\n// In store.js\nimport routerCreator, {routerMiddleware} from 'router-redux';\n\nimport reducer from './reducers/index.js';\nconst middlewares = [routerMiddleware];\nconst store = createStore(reducer, compose(\n  applyMiddleware(...middlewares)\n));\n\nexport const router = routerCreator(store);\n```\n\n### `routerReducer()`\nrouter-redux's reducer function for redux.\nYou need to register it in your `combineReducers` function.\n\n```javascript\n// In reducers/index.js\nimport {combineReducers} from 'redux';\nimport {routerReducer} from 'router-redux';\n\nconst rootReducer = combineReducers({\n  routing: routerReducer // here\n});\n\nexport default rootReducer;\n```\n\n### `routerCreator(store)`\nWhen you import `router-redux`, it gives you `routerCreator`,\nYou need to pass `store` to `routerCreator`, and it returns `router` for later use. \n\n- `export const router = routerCreator(store)`\n\n### `router`\nWill created by `routerCreator` above. You can register your own handler function to router.\n\n#### `router.onEnter(path, handler)`\n- `path` can includes `path parameter` like (/foo/:id)\n- If you specify `path parameter` to path, `router-redux` will set `route` and `params` properties in `route` object(please refer `selectors` section).\n- `handler({state, dispatch}, [callback])`\n- Called when user navigated to `path` by pushState/popState or directly(by browser's url bar)\n- Handler will block routing until `callback` function is called.\n(This is useful for Authentication or Load page related data via ajax)\n- If you call `callback` function with falsy value(or Error object). `router-redux` will call `router.onError`\nand cancel navigation. (this is useful for handling un-authorized response or Server error)\n- If you omit `callback` function then your onEnter result will not affect to further navigation(become asynchronous).\n- If you navigate to `/foo/1` from `/`, your state.routing in `onEnter` function will looks like below.\n  \n| Key                    | Value                 |\n|:-----------------------|:----------------------|\n| current                | current route (`/`)   |\n| next                   | next route (`/foo/1`) |\n| last                   | previous route        |\n\n#### `router.onLeave(path, handler)`\n- `handler({state, dispatch})`\n- Called when user navigated from `path` by pushState/popState\n- If you navigate to `/foo/1` from `/`, Your `state.routing` in `onLeave` function will looks like below.\n  \n| Key                    | Value                 |\n|:-----------------------|:----------------------|\n| current                | current route (`/`)   |\n| next                   | `null`                |\n| last                   | previous route        |\n\n#### `router.onError(handler)`\n- `handler({state, dispatch})`\n- Called when routeError occurred in `router.onEnter`\n- You can get actual routeError using `getRouteError` selector.\n\n### `match`\n- `math({path, anotherPath})`\n- You can use this function to check currentPath(location) is matched to path.\n- If your path contains `path parameter` then match will return matched params as object.\n\n```javascript\nimport {\n  getCurrent,\n  match\n} from 'router-redux';\n\nconst currentPath = getCurrent(state) && getCurrent(state).path;\n\n// If currentPath = `/`\nmatch('/', currentPath) // will return `{}`\n\n// If currentPath = `/foo/1`\nmatch('/foo/:id', currentPath) // will return `{id: 1}`\n```\n\n### actions\n- Will creates redux action. You need to call store.dispatch with this action.\n\n#### `push(path)/replace(path)`\n- Create push/replace action with `path`.\n- When you dispatch push/replace action. router'redux will call pushState/replaceState of [history API](https://developer.mozilla.org/en-US/docs/Web/API/History_API)\n\n#### `go(page)/back()/forward()`\n- Create go/back/forward action.\n- When you dispatch go/back/forward action. router'redux will call go/back/forward of [history API](https://developer.mozilla.org/en-US/docs/Web/API/History_API)\n\n### selectors\n- Will extracts value from your state. You can use selectors with [reselect](https://github.com/reactjs/reselect) if you like.\n- `route` has these properties\n  - path(`String`): `/foo/1 // Path`\n  - query(`String`): `sample=true // Query param. you can use third-party library(https://github.com/ljharb/qs) to parse query.`\n  - params(`Object`): `{id: 1} // Matched params(declared in onEnter)`\n  - route(`String`):  `/foo/:id // Matched route(declared in onEnter)`\n\n#### `getCurrent(state)`\n- Extracts `current route` from `state`\n\n#### `getLast(state)`\n- Extracts `last route` from `state`\n\n#### `getNext(state)`\n- Extracts `next route` from `state`\n\n#### `getRouteError(state)`\n- Extracts `routeError` from `state`\n- `routeError` become `true` or `Error`(truthy value) when you call onEnter handler's `callback` with falsy value or Error object.\n\n#### `getIsInitalRouteResolved(state)`\n- Extracts `isInitialRouteResolved` from `state`\n- `isInitialRouteResolved` become `true` after you call initial onEnter handler's `callback`.\n- This is useful for initial page rendering(via browser's url bar navigation).\n\n## Development\n### 1. Clone this repo\n\n```\ngit clone https://github.com/subuta/redux-virtual-dom\ncd ./redux-virtual-dom\n```\n\n### 2. Install dependencies\n\n- Caddy (Web server for Development)\n- jspm@beta (For package management/build)\n\n```\nbrew install caddy\nnpm install jspm@beta -g\nnpm i\njspm i\n```\n\n### 3. Run example app\n\n```\ncaddy\n\n# Open link.\nopen http://localhost:3000\n```\n\n## LICENSE\n[MIT](https://opensource.org/licenses/MIT)\n"
+  "readme": "# router-redux [![Build Status](https://travis-ci.org/subuta/router-redux.svg?branch=master)](https://travis-ci.org/subuta/router-redux) [![Coverage Status](https://coveralls.io/repos/github/subuta/router-redux/badge.svg?branch=master)](https://coveralls.io/github/subuta/router-redux?branch=master)\nView framework agnostic [react-router-redux](https://github.com/reactjs/react-router-redux) :)\n\n- Make your [Stateless component](https://medium.com/@housecor/react-stateless-functional-components-nine-wins-you-might-have-overlooked-997b0d933dbc#.4ure2ot2k) based development flow easy. work with these libraries.\n  - ✅[React](https://github.com/facebook/react)\n  - ✅[vidom](https://github.com/dfilatov/vidom)\n  - ✅[snabbdom](https://github.com/paldepind/snabbdom)\n  - Should also work with other vdom libraries(https://github.com/Matt-Esch/virtual-dom)\n- Adds pushState/popState based client-side routing to your project.\n- Light weight(around 5K) but yet powerful router for Redux.\n\nDemo: http://subuta.github.io/router-redux/\n\n[README - 日本語版](README-ja.md)\n\n## Installation\n```\nnpm install router-redux --save\n```\n\n## Example\nFirst you need to pass `routerReducer` to your own `reducer` with `routing` key.\n\n```javascript\n// In reducers/index.js\nimport {combineReducers} from 'redux';\nimport {routerReducer} from 'router-redux';\n\nconst rootReducer = combineReducers({\n  routing: routerReducer // HERE\n});\n\nexport default rootReducer;\n```\n\nNext you need to pass `routerMiddleware` to your `createStore` function. \nThen create and export `router` using `routerCreator`.\n \n```javascript\n// In example/store.js\nimport routerCreator, {routerMiddleware} from 'router-redux';\n\nimport reducer from './reducers/index.js';\nconst middlewares = [routerMiddleware];\nconst store = createStore(reducer, compose(\n  applyMiddleware(...middlewares)\n));\n\nexport const router = routerCreator(store);\n```\n\nThen `router` enables you to pushState/popState based routing with redux.\n\n```javascript\n// Get your exported router\nimport {router} from 'example/store.js';\n\n// Get router action/selector from router-redux\nimport {\n  push,\n  getCurrent\n} from 'router-redux';\n\n// Register onError first (if you need to catch initialRouting error)\nrouter.onError(({state, dispatch}) => {\n  const currentPath = getCurrent(state).path; // Will extract currentPath from state\n  // You can navigate user to error page or call any other redux action.\n  dispatch(push('/error'));\n});\n\n// Called when user entered to path(/) \nrouter.onEnter('/', ({state}, cb) => {\n  console.log('[top]loading ...', state);\n  setTimeout(() => {\n    // User's navigation action will blocked untill `cb` called.\n    console.log('[top]timer fired');\n    cb();\n    // If you call `cb` with falsy value or Error object,\n    // Router-redux will emit router's onError. and stop routing to path(/).\n    // cb(new Error('some error in top'));\n  }, 1000);\n});\n\n// Called when user leave from path(/)\nrouter.onLeave('/', (state) => {\n  console.log('[top]leave');\n});\n```\n\nsee `example/components` for full example.\n- `/react` -> example of [React](https://github.com/facebook/react) with [JSX](https://github.com/babel/babel/tree/master/packages/babel-plugin-transform-react-jsx) plugin.\n- `/vidom` -> example of [vidom](https://github.com/dfilatov/vidom) plugin.\n- `/snabbdom` -> example of [snabbdom](https://github.com/paldepind/snabbdom)\n- other files are common redux files(`actions/reducers/store`)\n\n## Documentation\n\n- API idea came from [react-router-redux](https://github.com/reactjs/react-router-redux) thanks!\n- Includes modified version of [object-assign](https://github.com/sindresorhus/object-assign) to reduce library size. thanks!\n\n### `routerMiddleware`\nrouter-redux's middleware function for redux.\nYou need to register it in your `createStore` function.\n\n```javascript\n// In store.js\nimport routerCreator, {routerMiddleware} from 'router-redux';\n\nimport reducer from './reducers/index.js';\nconst middlewares = [routerMiddleware];\nconst store = createStore(reducer, compose(\n  applyMiddleware(...middlewares)\n));\n\nexport const router = routerCreator(store);\n```\n\n### `routerReducer()`\nrouter-redux's reducer function for redux.\nYou need to register it in your `combineReducers` function.\n\n```javascript\n// In reducers/index.js\nimport {combineReducers} from 'redux';\nimport {routerReducer} from 'router-redux';\n\nconst rootReducer = combineReducers({\n  routing: routerReducer // here\n});\n\nexport default rootReducer;\n```\n\n### `routerCreator(store)`\nWhen you import `router-redux`, it gives you `routerCreator`,\nYou need to pass `store` to `routerCreator`, and it returns `router` for later use. \n\n- `export const router = routerCreator(store)`\n\n### `router`\nWill created by `routerCreator` above. You can register your own handler function to router.\n\n#### `router.onEnter(path, handler)`\n- `path` can includes `path parameter` like (/foo/:id)\n- If you specify `path parameter` to path, `router-redux` will set `route` and `params` properties in `route` object(please refer `selectors` section).\n- `handler({state, dispatch}, [callback])`\n- Called when user navigated to `path` by pushState/popState or directly(by browser's url bar)\n- Handler will block routing until `callback` function is called.\n(This is useful for Authentication or Load page related data via ajax)\n- If you call `callback` function with falsy value(or Error object). `router-redux` will call `router.onError`\nand cancel navigation. (this is useful for handling un-authorized response or Server error)\n- If you omit `callback` function then your onEnter result will not affect to further navigation(become asynchronous).\n- If you navigate to `/foo/1` from `/`, your state.routing in `onEnter` function will looks like below.\n  \n| Key                    | Value                 |\n|:-----------------------|:----------------------|\n| current                | current route (`/`)   |\n| next                   | next route (`/foo/1`) |\n| last                   | previous route        |\n\n#### `router.onLeave(path, handler)`\n- `handler({state, dispatch})`\n- Called when user navigated from `path` by pushState/popState\n- onLeave is called only user navigated from `path` after `initialRouteResolved`, it means you need to bind `onEnter` callback to use onLeave.\n- If you navigate to `/foo/1` from `/`, Your `state.routing` in `onLeave` function will looks like below.\n  \n| Key                    | Value                 |\n|:-----------------------|:----------------------|\n| current                | current route (`/`)   |\n| next                   | `null`                |\n| last                   | previous route        |\n\n#### `router.onError(handler)`\n- `handler({state, dispatch})`\n- Called when routeError occurred in `router.onEnter`\n- You can get actual routeError using `getRouteError` selector.\n\n### `match`\n- `math({path, anotherPath})`\n- You can use this function to check currentPath(location) is matched to path.\n- If your path contains `path parameter` then match will return matched params as object.\n\n```javascript\nimport {\n  getCurrent,\n  match\n} from 'router-redux';\n\nconst currentPath = getCurrent(state) && getCurrent(state).path;\n\n// If currentPath = `/`\nmatch('/', currentPath) // will return `{}`\n\n// If currentPath = `/foo/1`\nmatch('/foo/:id', currentPath) // will return `{id: 1}`\n```\n\n### actions\n- Will creates redux action. You need to call store.dispatch with this action.\n\n#### `push(path)/replace(path)`\n- Create push/replace action with `path`.\n- When you dispatch push/replace action. router'redux will call pushState/replaceState of [history API](https://developer.mozilla.org/en-US/docs/Web/API/History_API)\n\n#### `go(page)/back()/forward()`\n- Create go/back/forward action.\n- When you dispatch go/back/forward action. router'redux will call go/back/forward of [history API](https://developer.mozilla.org/en-US/docs/Web/API/History_API)\n\n### selectors\n- Will extracts value from your state. You can use selectors with [reselect](https://github.com/reactjs/reselect) if you like.\n- `route` has these properties\n  - path(`String`): `/foo/1 // Path`\n  - query(`String`): `sample=true // Query param. you can use third-party library(https://github.com/ljharb/qs) to parse query.`\n  - params(`Object`): `{id: 1} // Matched params(declared in onEnter)`\n  - route(`String`):  `/foo/:id // Matched route(declared in onEnter)`\n\n#### `getCurrent(state)`\n- Extracts `current route` from `state`\n\n#### `getLast(state)`\n- Extracts `last route` from `state`\n\n#### `getNext(state)`\n- Extracts `next route` from `state`\n\n#### `getRouteError(state)`\n- Extracts `routeError` from `state`\n- `routeError` become `true` or `Error`(truthy value) when you call onEnter handler's `callback` with falsy value or Error object.\n\n#### `getIsInitalRouteResolved(state)`\n- Extracts `isInitialRouteResolved` from `state`\n- `isInitialRouteResolved` become `true` after you call initial onEnter handler's `callback`.\n- This is useful for initial page rendering(via browser's url bar navigation).\n\n## Development\n### 1. Clone this repo\n\n```\ngit clone https://github.com/subuta/redux-virtual-dom\ncd ./redux-virtual-dom\n```\n\n### 2. Install dependencies\n\n- Caddy (Web server for Development)\n- jspm@beta (For package management/build)\n\n```\nbrew install caddy\nnpm install jspm@beta -g\nnpm i\njspm i\n```\n\n### 3. Run example app\n\n```\ncaddy\n\n# Open link.\nopen http://localhost:3000\n```\n\n## LICENSE\n[MIT](https://opensource.org/licenses/MIT)\n"
 }

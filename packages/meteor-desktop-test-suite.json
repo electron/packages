@@ -1,0 +1,82 @@
+{
+  "name": "meteor-desktop-test-suite",
+  "version": "0.0.16",
+  "engines": {
+    "node": ">=4.0.0"
+  },
+  "description": "Few utils to ease out functional testing of Meteor Desktop modules/plugins.",
+  "main": "dist/suite.js",
+  "scripts": {
+    "prepublish": "npm run build",
+    "build": "babel src --out-dir dist --source-maps inline --copy-files",
+    "build-watch": "babel src --watch --out-dir dist --source-maps inline --copy-files",
+    "lint": "eslint src app"
+  },
+  "author": {
+    "name": "Bartosz Wojtkowiak",
+    "email": "bartosz@wojtkowiak.it"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "babel-cli": "^6.18.0",
+    "babel-core": "^6.18.0",
+    "babel-preset-es2015-node4": "^2.1.0",
+    "eslint": "^3.8.1",
+    "eslint-config-airbnb-base": "^9.0.0",
+    "eslint-plugin-import": "^2.0.1"
+  },
+  "dependencies": {
+    "semver": "^5.3.0",
+    "cross-spawn": "^4.0.2",
+    "shelljs": "^0.7.4",
+    "tmp": "^0.0.29"
+  },
+  "repository": {
+    "user": "wojtkowiak",
+    "repo": "meteor-desktop-test-suite",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/wojtkowiak/meteor-desktop-test-suite/tarball/master",
+    "clone_url": "https://github.com/wojtkowiak/meteor-desktop-test-suite",
+    "https_url": "https://github.com/wojtkowiak/meteor-desktop-test-suite",
+    "travis_url": "https://travis-ci.org/wojtkowiak/meteor-desktop-test-suite",
+    "zip_url": "https://github.com/wojtkowiak/meteor-desktop-test-suite/archive/master.zip",
+    "api_url": "https://api.github.com/repos/wojtkowiak/meteor-desktop-test-suite"
+  },
+  "keywords": [
+    "electron",
+    "meteor",
+    "packager",
+    "desktop",
+    "test",
+    "suite"
+  ],
+  "homepage": "https://github.com/wojtkowiak/meteor-desktop-test-suite",
+  "gitHead": "b63f9e00708e38ee33408b0e0243ecec4b6a1cea",
+  "_npmVersion": "4.0.1",
+  "_nodeVersion": "6.5.0",
+  "dist": {
+    "shasum": "12f8caf610aed8cd2ca38fc9554623f787033115",
+    "tarball": "http://registry.npmjs.org/meteor-desktop-test-suite/-/meteor-desktop-test-suite-0.0.16.tgz"
+  },
+  "versions": [
+    {
+      "number": "0.0.16",
+      "date": "2016-10-28T11:46:40.342Z"
+    }
+  ],
+  "created": "2016-10-28T11:46:40.342Z",
+  "modified": "2016-10-28T11:46:40.342Z",
+  "lastPublisher": {
+    "name": "wojtkowiak",
+    "email": "bartosz@wojtkowiak.it"
+  },
+  "owners": [
+    {
+      "name": "wojtkowiak",
+      "email": "bartosz@wojtkowiak.it"
+    }
+  ],
+  "readme": "## Meteor Desktop test suite\n\nFew utils to ease out functional testing of Meteor Desktop modules/plugins.\nTake a look at the examples at the bottom of this readme to actually see how you can use this.\n\n### `createTestApp(installPath, pluginName)`\nCreates a test app with plugin you are testing included. Plugin is installed by `npm`.\n```javascript\n/**\n * @param {string} installPath - path at which to install the app\n * @param {string} pluginName  - name of the npm package (plugin) you are testing\n * @returns {Promise}\n */\n```\n\n### `constructPlugin(app, log, app, appSettings, eventsBus, modules, settings, Module)`\nIt is instantiating your plugin. You can supply mocks for any params your plugin would normally receive from the skeleton app.\nPass `undefined` if your plugin does not use certain param or if you want to use some defaults provided by this test suite. Check [here](https://github.com/wojtkowiak/meteor-desktop-plugin-test-suite/blob/master/app/index.js#L89) to see what is passed by default.\n\n### `fireEventsBusEvent(app, eventToFire, ...eventArgs)`\nFires an event on the events bus, so you can simulate for example a system event on which you plugin is listening.   \n```javascript\n/**\n * @param {Object} app         - app ref from Spectron\n * @param {string} eventToFire - name of the event to fire\n * @param {...*}   eventArgs   - arguments to pass with the event\n * @returns {Promise}\n */\n```\n\n### `send(app, module, event, ...args)`\nSends an IPC event to your module. Equivalent of `Desktop.send`.\n```javascript\n/**\n * @param {Object} app    - app ref from Spectron\n * @param {string} module - module name your plugin is registering\n * @param {string} event  - event from your module\n * @param {...*}   args   - array of arguments to pass to ipc.send\n * @returns {Promise}\n */\n```\n\n### `fetch(app, module, event, ...args)`\nFetches some data from main process by sending an IPC event and waiting for the response.\nEquivalent of `Desktop.fetch`. Promise will resolve to an array with payload that came with the response. \n```javascript\n/**\n * @param {Object} app    - app ref from Spectron\n * @param {string} module - module name your plugin is registering\n * @param {string} event  - event from your module\n * @param {...*}   args   - array of arguments to pass to ipc.send\n * @return {Promise}\n */\n ```\n\n### `fireEventsBusEventAndWaitForAnother(app, eventToFire, eventToListenFor, ...eventArgs)`\nFires an event on the events bus and then waits for an another event to be emitted. Useful for example when your plugin is doing some stuff on `afterLoading` event and signalizes readiness via another event.  \n```javascript\n/**\n * @param {Object} app              - app ref from Spectron\n * @param {string} eventToFire      - name of the event to fire\n * @param {string} eventToListenFor - event to listen for on the events bus\n * @param {...*}   eventArgs        - arguments to pass with the event\n * @return {Promise}\n */\n ```\n\n### `sendIpc(app, ...args)`\nSends an IPC message to the main process.\n```javascript\n/**\n * @param {Object} app - the app ref from Spectron\n * @param {...*}  args - array of arguments to pass to ipc.send\n * @returns {Promise}\n */\n```\n### `sendIpcSync(app, ...args)`\nSame as above but sync. However also returns a `Promise` as it is transferred through chromedriver.\n\n### `sendIpcAndWaitForResponse(app, eventToSend, eventToListenFor, ...eventArgs)`\nSends an IPC event and waits for an another IPC event to come.\n```javascript\n/**\n * @param {Object} app              - app ref from Spectron\n * @param {string} eventToSend      - name of the ipc event to send\n * @param {string} eventToListenFor - ipc event to listen for\n * @param {...*}   eventArgs        - arguments to pass with the event\n * @returns {Promise}\n */\n```\n\n### `class Logger(show, showErrors)`\nFake logger that eventually can write the logs to the console. You can set `show` to `false` and `showErrors` to `true` to only see errors passed to it. \n\n## Examples\n\nAn example of usage in tests is here [meteor-desktop-splash-screen](https://github.com/wojtkowiak/meteor-desktop-splash-screen/blob/master/tests/functional/test.js) and here [meteor-desktop-localstorage](https://github.com/wojtkowiak/meteor-desktop-localstorage/blob/master/tests/functional/test.js).\n"
+}

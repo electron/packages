@@ -1,0 +1,80 @@
+{
+  "name": "ffprobe-electron",
+  "version": "1.1.2",
+  "description": "Use ffprobe to get info from media files and return as JSON",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "repository": {
+    "user": "eugeneware",
+    "repo": "ffprobe",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/eugeneware/ffprobe/tarball/master",
+    "clone_url": "https://github.com/eugeneware/ffprobe",
+    "https_url": "https://github.com/eugeneware/ffprobe",
+    "travis_url": "https://travis-ci.org/eugeneware/ffprobe",
+    "zip_url": "https://github.com/eugeneware/ffprobe/archive/master.zip",
+    "api_url": "https://api.github.com/repos/eugeneware/ffprobe"
+  },
+  "keywords": [
+    "json",
+    "ffmpeg",
+    "ffprobe",
+    "media",
+    "video",
+    "audio",
+    "image",
+    "images"
+  ],
+  "author": {
+    "name": "Eugene Ware",
+    "email": "eugene@noblesamurai.com"
+  },
+  "license": "BSD-3-Clause",
+  "dependencies": {
+    "promise": "*"
+  },
+  "devDependencies": {
+    "expect.js": "~0.3.0",
+    "ffprobe-static": "^1.1.0",
+    "mocha": "~2.1.0"
+  },
+  "gitHead": "2fd396253995f2646521d6a0695d3282cff9d8e6",
+  "homepage": "https://github.com/eugeneware/ffprobe#readme",
+  "_npmVersion": "3.10.8",
+  "_nodeVersion": "6.9.1",
+  "dist": {
+    "shasum": "00d5024a401f227320819b39ec1303754000ddd2",
+    "tarball": "http://registry.npmjs.org/ffprobe-electron/-/ffprobe-electron-1.1.2.tgz"
+  },
+  "versions": [
+    {
+      "number": "1.1.0",
+      "date": "2016-10-27T14:05:47.176Z"
+    },
+    {
+      "number": "1.1.1",
+      "date": "2016-10-28T10:01:33.794Z"
+    },
+    {
+      "number": "1.1.2",
+      "date": "2016-10-28T14:25:49.313Z"
+    }
+  ],
+  "created": "2016-10-27T14:05:47.176Z",
+  "modified": "2016-10-28T14:25:49.313Z",
+  "lastPublisher": {
+    "name": "john-berlin",
+    "email": "johnberlin337@gmail.com"
+  },
+  "owners": [
+    {
+      "name": "john-berlin",
+      "email": "johnberlin337@gmail.com"
+    }
+  ],
+  "readme": "# ffprobe\r\n\r\nUse ffprobe to get info from media files and return as JSON\r\n\r\n[![build status](https://secure.travis-ci.org/eugeneware/ffprobe.png)](http://travis-ci.org/eugeneware/ffprobe)\r\n\r\n## Installation\r\n\r\nThis module is installed via npm:\r\n\r\n``` bash\r\n$ npm install ffprobe\r\n```\r\n\r\n## Example Usage\r\n\r\n`ffprobe` is a *dual* API, supporting both node.js callbacks *AND* `Promise`s.\r\n\r\n### Callback API\r\nList the output of ffprobe for a media file in a convenient JSON format:\r\n\r\n``` js\r\nvar ffprobe = require('ffprobe'),\r\n    ffprobeStatic = require('ffprobe-static');\r\n\r\nffprobe('./file.mp4', { path: ffprobeStatic.path }, function (err, info) {\r\n  if (err) return done(err);\r\n  console.log(info);\r\n/***\r\n{\r\n    \"streams\": [\r\n        {\r\n            \"index\": 0,\r\n            \"codec_name\": \"h264\",\r\n            \"codec_long_name\": \"H.264 / AVC / MPEG-4 AVC / MPEG-4 part 10\",\r\n            \"profile\": \"High\",\r\n            \"codec_type\": \"video\",\r\n            \"codec_time_base\": \"1/50\",\r\n            \"codec_tag_string\": \"avc1\",\r\n            \"codec_tag\": \"0x31637661\",\r\n            \"width\": 1280,\r\n            \"height\": 720,\r\n            \"coded_width\": 1280,\r\n            \"coded_height\": 720,\r\n            \"has_b_frames\": 0,\r\n            \"sample_aspect_ratio\": \"1:1\",\r\n            \"display_aspect_ratio\": \"16:9\",\r\n            \"pix_fmt\": \"yuv420p\",\r\n            \"level\": 31,\r\n            \"chroma_location\": \"left\",\r\n            \"refs\": 1,\r\n            \"is_avc\": \"1\",\r\n            \"nal_length_size\": \"4\",\r\n            \"r_frame_rate\": \"25/1\",\r\n            \"avg_frame_rate\": \"25/1\",\r\n            \"time_base\": \"1/25\",\r\n            \"start_pts\": 0,\r\n            \"start_time\": \"0.000000\",\r\n            \"duration_ts\": 299,\r\n            \"duration\": \"11.960000\",\r\n            \"bit_rate\": \"1031739\",\r\n            \"bits_per_raw_sample\": \"8\",\r\n            \"nb_frames\": \"299\",\r\n            \"disposition\": {\r\n                \"default\": 1,\r\n                \"dub\": 0,\r\n                \"original\": 0,\r\n                \"comment\": 0,\r\n                \"lyrics\": 0,\r\n                \"karaoke\": 0,\r\n                \"forced\": 0,\r\n                \"hearing_impaired\": 0,\r\n                \"visual_impaired\": 0,\r\n                \"clean_effects\": 0,\r\n                \"attached_pic\": 0\r\n            },\r\n            \"tags\": {\r\n                \"language\": \"und\",\r\n                \"handler_name\": \"VideoHandler\"\r\n            }\r\n        },\r\n        {\r\n            \"index\": 1,\r\n            \"codec_name\": \"aac\",\r\n            \"codec_long_name\": \"AAC (Advanced Audio Coding)\",\r\n            \"profile\": \"LC\",\r\n            \"codec_type\": \"audio\",\r\n            \"codec_time_base\": \"1/44100\",\r\n            \"codec_tag_string\": \"mp4a\",\r\n            \"codec_tag\": \"0x6134706d\",\r\n            \"sample_fmt\": \"fltp\",\r\n            \"sample_rate\": \"44100\",\r\n            \"channels\": 2,\r\n            \"channel_layout\": \"stereo\",\r\n            \"bits_per_sample\": 0,\r\n            \"r_frame_rate\": \"0/0\",\r\n            \"avg_frame_rate\": \"0/0\",\r\n            \"time_base\": \"1/44100\",\r\n            \"start_pts\": 0,\r\n            \"start_time\": \"0.000000\",\r\n            \"duration_ts\": 528384,\r\n            \"duration\": \"11.981497\",\r\n            \"bit_rate\": \"192287\",\r\n            \"max_bit_rate\": \"203120\",\r\n            \"nb_frames\": \"516\",\r\n            \"disposition\": {\r\n                \"default\": 1,\r\n                \"dub\": 0,\r\n                \"original\": 0,\r\n                \"comment\": 0,\r\n                \"lyrics\": 0,\r\n                \"karaoke\": 0,\r\n                \"forced\": 0,\r\n                \"hearing_impaired\": 0,\r\n                \"visual_impaired\": 0,\r\n                \"clean_effects\": 0,\r\n                \"attached_pic\": 0\r\n            },\r\n            \"tags\": {\r\n                \"creation_time\": \"2015-11-16 00:48:42\",\r\n                \"language\": \"eng\",\r\n                \"handler_name\": \"IsoMedia File Produced by Google, 5-11-2011\"\r\n            }\r\n        }\r\n    ]\r\n}\r\n **/\r\n});\r\n```\r\n\r\n### Promise API\r\nList the output of ffprobe for a media file in a convenient JSON format:\r\n\r\n``` js\r\nvar ffprobe = require('ffprobe'),\r\n    ffprobeStatic = require('ffprobe-static');\r\n\r\nffprobe('./file.mp4', { path: ffprobeStatic.path })\r\n  .then(function (info) {\r\n    console.log(info);\r\n    /***\r\n    {\r\n        \"streams\": [\r\n            {\r\n                \"index\": 0,\r\n                \"codec_name\": \"h264\",\r\n                \"codec_long_name\": \"H.264 / AVC / MPEG-4 AVC / MPEG-4 part 10\",\r\n                \"profile\": \"High\",\r\n\r\n                ...\r\n                }\r\n            }\r\n        ]\r\n    }\r\n     **/\r\n  })\r\n  .catch(function (err) {\r\n    console.error(err);\r\n  })\r\n});\r\n```\r\n\r\n## API\r\n\r\n### `ffprobe(mediaFilePath, opts, [cb])`\r\n\r\n* `mediaFilePath` - path to your audio / video / image that you want to get media\r\n  info for.\r\n* `opts` - options object with the following options:\r\n  * `path` - path to ffprobe binary (You can use\r\n    [`ffprobe-static`](https://github.com/joshwnj/ffprobe-static) to easily get\r\n    a static binary that you can install with npm.\r\n* `cb(err, info)` - standard callback, with the info returned as a javascript\r\n  object. NB: If the `cb` parameter is not provided, a `Promise` will be returned\r\n  allowing chained `then()`, `catch()` methods.\r\n\r\n"
+}

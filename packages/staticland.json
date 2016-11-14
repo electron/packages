@@ -1,6 +1,6 @@
 {
   "name": "staticland",
-  "version": "2.0.0",
+  "version": "2.0.2",
   "description": "Publish static sites",
   "main": "index.js",
   "bin": {
@@ -47,16 +47,17 @@
     "is-number": "^2.1.0",
     "is-string": "^1.0.4",
     "os-homedir": "^1.0.1",
+    "prompt": "^1.0.0",
     "request": "^2.72.0",
     "subcommand": "^2.0.3",
     "tar-fs": "^1.12.0"
   },
-  "gitHead": "ddeaaed3c539d5e83e0329c4f2c9933819ae2106",
+  "gitHead": "79d4c006d6d538c96089f0568ea57ce31cde9912",
   "_npmVersion": "3.10.2",
   "_nodeVersion": "6.2.0",
   "dist": {
-    "shasum": "bd68d05aea0506e83942b3fa5dafcf47b5b874aa",
-    "tarball": "http://registry.npmjs.org/staticland/-/staticland-2.0.0.tgz"
+    "shasum": "71be415cf3dffa2ffd17d634998e15833958e225",
+    "tarball": "http://registry.npmjs.org/staticland/-/staticland-2.0.2.tgz"
   },
   "versions": [
     {
@@ -66,10 +67,18 @@
     {
       "number": "2.0.0",
       "date": "2016-07-25T21:57:39.393Z"
+    },
+    {
+      "number": "2.0.1",
+      "date": "2016-10-16T19:47:32.332Z"
+    },
+    {
+      "number": "2.0.2",
+      "date": "2016-10-16T21:10:45.678Z"
     }
   ],
   "created": "2016-05-25T00:47:47.755Z",
-  "modified": "2016-07-25T21:57:39.393Z",
+  "modified": "2016-10-16T21:10:45.678Z",
   "lastPublisher": {
     "name": "sethvincent",
     "email": "sethvincent@gmail.com"
@@ -80,5 +89,5 @@
       "email": "sethvincent@gmail.com"
     }
   ],
-  "readme": "# staticland\n\nPublish static sites with this command-line tool & API client for [static.land](http://static.land)\n\n## Features\n- One command to deploy a site.\n- Automatic SSL using Let's Encrypt.\n- Use any static site generator.\n- Host it yourself. Use it how you want.\n\n## Limitations\n- DNS records must be set up and propogated before deploying a site for the first time.\n- Setting aliases or redirects is not currently supported.\n- By default the server admin must explicitly give access to users. This will be optional in future releases.\n- The staticland server at api.static.land is not yet publicly usable, so you'll need to set up a staticland instance.\n\n## Deploying sites\nSet up a [staticland API server](https://github.com/staticland/staticland-api):\n\nCreate an account on a staticland server:\n\n```\n  staticland register \\\n    --email wat@static.land \\\n    --password thisisnotapassword \\\n    --server your.staticlandserver.com\n```\n\nOne command to deploy a site with SSL:\n\n```\n  staticland deploy \\\n    --source /path/to/site \\\n    --domain example.com\n```\n\n## Install\n\n```\nnpm i -g staticland\n```\n\n## Usage\n\n```\nUSAGE:\n  staticland {command} [options]\n\nCOMMANDS:\n  register,  create an account on a staticland server\n  login,     log in to a staticland server\n  logout,    log out of a staticland server\n  deploy,    deploy a static site to a staticland server\n  password,  change your password on a staticland server\n  server,    switch between staticland servers you've logged in to\n  whoami,    show which user you're using on which staticland server\n  domain,    check if domain dns is correctly set up with a staticland server\n  help,      show this help message\n\nDEPLOY\n  staticland deploy --path site/ --domain example.com --server api.static.land\n\nHELP\n  staticland help\n\nLOGIN\n  staticland login --email hi@example.com --password sosecret --server api.static.land\n\nSERVER\n  staticland server api.static.land\n\nWHOAMI\n  staticland whoami\n```\n\n## License\n[MIT](LICENSE.md)\n"
+  "readme": "# staticland\n\nPublish static sites with this command-line tool & API client for [static.land](http://static.land)\n\n## Features\n- One command to deploy a site.\n- Automatic SSL using Let's Encrypt.\n- Use any static site generator.\n- Host it yourself. Use it how you want.\n\n## Limitations\n- DNS records must be set up and propogated before deploying a site for the first time.\n- Setting aliases or redirects is not currently supported.\n- By default the server admin must explicitly give access to users. This will be optional in future releases.\n- The staticland server at api.static.land is not yet publicly usable, so you'll need to set up a staticland instance.\n\n## Deploying sites\nSet up a [staticland API server](https://github.com/staticland/staticland-api) or use https://static.land.\n\nCreate an account on static.land:\n\n```sh\nstaticland register\n```\n\nUse `--server yourstaticlandserver.com` to use a custom server.\n\nEnsure that your domain's DNS settings are pointing at `52.39.104.182` (or the IP address of your custom server) before deploying:\n\n```sh\nhost static.land\nstatic.land has address 52.39.104.182\n```\n\nSetting the DNS before deploying is required for Let's Encrypt to successfully provision a certificate.\n\nDeploy a site with auto-SSL:\n\n```sh\nstaticland path/to/site/ example.com\n```\n\n## Install\n\n```\nnpm i -g staticland\n```\n\n## Usage\n\n```\nUSAGE:\n  staticland {command} [options]\n\nCOMMANDS:\n  register,  create an account on a staticland server\n  login,     log in to a staticland server\n  logout,    log out of a staticland server\n  deploy,    deploy a static site to a staticland server\n  password,  change your password on a staticland server\n  server,    switch between staticland servers you've logged in to\n  whoami,    show which user you're using on which staticland server\n  domain,    check if domain dns is correctly set up with a staticland server\n  help,      show this help message\n\nDEPLOY\n  staticland site/ example.com\nOR:\n  staticland deploy --path site/ --domain example.com --server api.static.land\n\nHELP\n  staticland help\n\nREGISTER\n  staticland register\n\nLOGIN\n  staticland login\n\nSERVER\n  staticland server api.static.land\n\nWHOAMI\n  staticland whoami\n```\n\n## License\n[MIT](LICENSE.md)\n"
 }

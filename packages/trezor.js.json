@@ -1,6 +1,6 @@
 {
   "name": "trezor.js",
-  "version": "5.0.18",
+  "version": "5.4.1",
   "author": {
     "name": "BitcoinTrezor.com",
     "email": "info@bitcointrezor.com"
@@ -50,21 +50,21 @@
     "bump-version": "^0.5.0"
   },
   "dependencies": {
-    "bitcoinjs-lib": "^2.2.0",
+    "bitcoinjs-lib-zcash": "^2.3.0",
     "ecurve": "^1.0.2",
     "randombytes": "^2.0.1",
     "semver-compare": "1.0.0",
-    "trezor-link": "^0.2.43",
+    "trezor-link": "^0.2.54",
     "unorm": "^1.3.3",
     "whatwg-fetch": "0.11.0"
   },
-  "gitHead": "ce0c79994519a7e868ec4d38df1aec9e99a80fbb",
+  "gitHead": "f928187f82a41b472bab5968b008daec9a25db79",
   "scripts": {},
   "_npmVersion": "3.8.2",
   "_nodeVersion": "5.2.0",
   "dist": {
-    "shasum": "99af1d6b3ec7a4abd921457cc8195c544f9f723b",
-    "tarball": "http://registry.npmjs.org/trezor.js/-/trezor.js-5.0.18.tgz"
+    "shasum": "722fa3dd3462f44b80445215ea90931d5b041613",
+    "tarball": "http://registry.npmjs.org/trezor.js/-/trezor.js-5.4.1.tgz"
   },
   "versions": [
     {
@@ -174,10 +174,46 @@
     {
       "number": "5.0.18",
       "date": "2016-10-07T17:52:51.280Z"
+    },
+    {
+      "number": "5.0.19",
+      "date": "2016-10-13T17:14:29.636Z"
+    },
+    {
+      "number": "5.0.20",
+      "date": "2016-10-17T16:14:20.509Z"
+    },
+    {
+      "number": "5.1.0",
+      "date": "2016-10-20T15:16:09.794Z"
+    },
+    {
+      "number": "5.2.0",
+      "date": "2016-10-25T10:00:47.272Z"
+    },
+    {
+      "number": "5.2.1",
+      "date": "2016-10-26T11:22:44.711Z"
+    },
+    {
+      "number": "5.3.0",
+      "date": "2016-10-27T11:45:56.448Z"
+    },
+    {
+      "number": "5.3.1",
+      "date": "2016-11-08T10:58:30.520Z"
+    },
+    {
+      "number": "5.4.0",
+      "date": "2016-11-11T14:23:55.804Z"
+    },
+    {
+      "number": "5.4.1",
+      "date": "2016-11-11T14:32:10.061Z"
     }
   ],
   "created": "2016-08-23T23:40:44.400Z",
-  "modified": "2016-10-07T17:52:51.280Z",
+  "modified": "2016-11-11T14:32:10.061Z",
   "lastPublisher": {
     "name": "karelbilek",
     "email": "kb@karelbilek.com"
@@ -188,5 +224,5 @@
       "email": "kb@karelbilek.com"
     }
   ],
-  "readme": "trezor.js\n=========\n\n[![Build Status](https://travis-ci.org/trezor/trezor.js.svg?branch=master)](https://travis-ci.org/trezor/trezor.js)\n\nJavascript API for Bitcoin TREZOR.\n\nUse this library if you want deeper integration of TREZOR into your node app, including electron.\n\nIf you are including the library in web app, try `trezor.js` package.\n\nInstall with npm\n-----\n\n`npm install --save trezor.js`\n\nWe use some ES6 methods (Array.find etc), that aren't in all browsers as of now, so if you are targetting older browsers/mobile browsers, you have to add babel polyfill. See https://www.npmjs.com/package/babel-polyfill and https://babeljs.io/docs/usage/polyfill/\n\n#### Examples\n\nExample of usage is on `example-browser/` on github.\n\n#### Flow\ntrezor.js is annotated with [Flow](https://github.com/facebook/flow) types; if you want to use Flow and use the previous setup, it will use the right types. Note that you might have to set up `.flowconfig` to include all the modules and interface files in [our flowconfig](https://github.com/trezor/trezor.js/blob/master/lib/.flowconfig)\n\nInstall by copying\n-----\nJust download and copy `dist/trezor.js` or `dist/trezor.min.js` from the repo. \n\nYou might have to add polyfill, see above.\n\nUsing trezor.js in a web app\n----\nIf you are using trezor.js in a web app, the *end user* has to install one of our transport layers. Also, the web app's URL has to be whitelisted specifically by SatoshiLabs.\n\n#### Transport layers\nWe have two transport layers. The user needs to install one of them.\n\nOne is [TREZOR Chrome extension](https://github.com/trezor/trezor-chrome-extension) for the users that have Chrome and want an easier, one-click installation.\n\nOther is [TREZOR bridge](https://github.com/trezor/trezord) (or `trezord`) that works cross-browser.\n\n#### Whitelisting\n\nYou cannot connect to transport layers from anywhere on the internet. Your URL needs to be specifically whitelisted by SatoshiLabs.\n\n`localhost` is specifically whitelisted, so you can experiment on `http://localhost/*`. If you want to add your url in order to make a TREZOR web application, [make a pull request to this file](https://github.com/trezor/trezor-common/blob/master/signer/config.json).\n\ntrezor.js API\n-----\n\nAPI is explained in [API.md](https://github.com/trezor/trezor.js/blob/master/API.md)\n"
+  "readme": "trezor.js\n=========\n\n[![Build Status](https://travis-ci.org/trezor/trezor.js.svg?branch=master)](https://travis-ci.org/trezor/trezor.js)\n\nJavascript API for Bitcoin TREZOR.\n\nUse this library if you want deeper integration of TREZOR into your node app, including electron.\n\nIf you are including the library in web app, try `trezor.js` package.\n\nInstall with npm\n-----\n\n`npm install --save trezor.js`\n\nWe use some ES6 methods (Array.find etc), that aren't in all browsers as of now, so if you are targetting older browsers/mobile browsers, you have to add babel polyfill. See https://www.npmjs.com/package/babel-polyfill and https://babeljs.io/docs/usage/polyfill/\n\n#### Examples\n\nExample of usage is on `example-browser/`, `example-node/` and `example-electron-webpack/` on github.\n\n#### Flow\ntrezor.js is annotated with [Flow](https://github.com/facebook/flow) types; if you want to use Flow and use the previous setup, it will use the right types. Note that you might have to set up `.flowconfig` to include all the modules and interface files in [our flowconfig](https://github.com/trezor/trezor.js/blob/master/lib/.flowconfig)\n\nInstall by copying\n-----\nJust download and copy `dist/trezor.js` or `dist/trezor.min.js` from the repo. \n\nYou might have to add polyfill, see above.\n\nUsing trezor.js in a web app\n----\nIf you are using trezor.js in a web app, the *end user* has to install one of our transport layers. Also, the web app's URL has to be whitelisted specifically by SatoshiLabs.\n\n#### Transport layers\nWe have two transport layers. The user needs to install one of them.\n\nOne is [TREZOR Chrome extension](https://github.com/trezor/trezor-chrome-extension) for the users that have Chrome and want an easier, one-click installation.\n\nOther is [TREZOR bridge](https://github.com/trezor/trezord) (or `trezord`) that works cross-browser.\n\n#### Whitelisting\n\nYou cannot connect to transport layers from anywhere on the internet. Your URL needs to be specifically whitelisted by SatoshiLabs.\n\n`localhost` is specifically whitelisted, so you can experiment on `http://localhost/*`. If you want to add your url in order to make a TREZOR web application, [make a pull request to this file](https://github.com/trezor/trezor-common/blob/master/signer/config.json).\n\ntrezor.js API\n-----\n\nAPI is explained in [API.md](https://github.com/trezor/trezor.js/blob/master/API.md)\n"
 }

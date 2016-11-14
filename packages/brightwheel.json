@@ -1,6 +1,6 @@
 {
   "name": "brightwheel",
-  "version": "0.1.4",
+  "version": "0.1.8",
   "description": "Build beautiful Electron user interfaces with Photon and Etch",
   "repository": {
     "user": "loranallensmith",
@@ -31,15 +31,15 @@
   "dependencies": {
     "babel-runtime": "^6.6.1",
     "classnames": "^2.2.5",
-    "etch": "^0.7.1"
+    "etch": "^0.8.0"
   },
   "homepage": "https://github.com/loranallensmith/brightwheel#readme",
   "scripts": {},
   "_npmVersion": "3.5.3",
   "_nodeVersion": "5.5.0",
   "dist": {
-    "shasum": "8de3e7c93649f0924b78a88c210c517b0eca5192",
-    "tarball": "http://registry.npmjs.org/brightwheel/-/brightwheel-0.1.4.tgz"
+    "shasum": "9e686dd75323afb135678daa554cb4414111d2d1",
+    "tarball": "http://registry.npmjs.org/brightwheel/-/brightwheel-0.1.8.tgz"
   },
   "versions": [
     {
@@ -61,10 +61,26 @@
     {
       "number": "0.1.4",
       "date": "2016-09-29T05:18:22.239Z"
+    },
+    {
+      "number": "0.1.5",
+      "date": "2016-11-04T19:00:32.505Z"
+    },
+    {
+      "number": "0.1.6",
+      "date": "2016-11-04T19:03:58.307Z"
+    },
+    {
+      "number": "0.1.7",
+      "date": "2016-11-04T19:08:24.270Z"
+    },
+    {
+      "number": "0.1.8",
+      "date": "2016-11-05T17:46:11.911Z"
     }
   ],
   "created": "2016-09-23T02:15:34.162Z",
-  "modified": "2016-09-29T05:18:22.239Z",
+  "modified": "2016-11-05T17:46:11.911Z",
   "lastPublisher": {
     "name": "loranallensmith",
     "email": "loranallensmith@github.com"
@@ -75,5 +91,5 @@
       "email": "loranallensmith@github.com"
     }
   ],
-  "readme": "# [brightwheel](https://github.com/loranallensmith/brightwheel)\n\n[![NPM version](http://img.shields.io/npm/v/brightwheel.svg?style=flat-square)](https://www.npmjs.com/package/brightwheel)\n[![NPM downloads](http://img.shields.io/npm/dm/brightwheel.svg?style=flat-square)](https://www.npmjs.com/package/brightwheel)\n[![Build Status](http://img.shields.io/travis/loranallensmith/brightwheel/master.svg?style=flat-square)](https://travis-ci.org/loranallensmith/brightwheel)\n[![Coverage Status](https://img.shields.io/coveralls/loranallensmith/brightwheel.svg?style=flat-square)](https://coveralls.io/loranallensmith/brightwheel)\n[![Dependency Status](http://img.shields.io/david/loranallensmith/brightwheel.svg?style=flat-square)](https://david-dm.org/loranallensmith/brightwheel)\n\n> Build beautiful Electron user interfaces with Photon and Etch\n\n### About\n\nBrightwheel is a JavaScript library that lets you use [Etch](https://github.com/atom/etch) and [Photon](http://photonkit.com/) to construct and manage the state of user interfaces for [Electron](https://electron.atom.io) applications.\n\n![Electron app using Brightwheel](https://cloud.githubusercontent.com/assets/3477155/18810114/c9912f0a-825b-11e6-822f-39e4d238571e.png)\n\n\n\n### Getting Started\n\n#### Installation\n\nAdd Brightwheel to your project's dependencies.\n```sh\n$ npm install --save brightwheel\n```\n\n#### Usage\n\nInclude Photon styles in your HTML file's `<head>`.\n```html\n<script src=\"path/to/photon.css\" charset=\"utf-8\"></script>\n```\n\nImport Brightwheel components into your project.\n```javascript\n// Import and namespace all components\nimport * as UI from 'brightwheel'\n\n// Import individual components\nimport { Button } from 'brightwheel'\n\n```\n\nGenerate components and add them to your document.\n```javascript\nlet mySubmitButton = new Button({\n  type: 'positive',\n  size: 'mini',\n  text: 'Submit'\n  // specify other properties as needed\n}, []);\n\nlet myCancelButton = new Button({\n  type: 'default',\n  size: 'mini',\n  text: 'Cancel'\n  // specify other properties as needed\n}, []);\n\n\n// Nest components within parent components\nlet myActions = new FormActions({\n  // specify properties as needed\n}, [\n  mySubmitButton,\n  myCancelButton\n]);\n\n// Nest the elements within the DOM\ndocument.querySelector('#form-1').appendChild(myActions.element);\n\n```\n\n## Contributing\n\nPull Request are welcome!\n\nFor an outline of the overall development priorities, have a look at the current [`ROADMAP.md`](https://github.com/loranallensmith/brightwheel/blob/master/ROADMAP.md) file.\n\nPlease follow the steps below to contribute to this project:\n- Look for an open issue (or open one if it doesn't already exist)\n- Fork this repository\n- Be sure to write tests for the changes you're proposing\n- Open a Pull Request and mention @loranallensmith\n- To help with discoverability down the road, it helps to reference the original Issue your changes address in the body of your Pull Request\n\n\n### How to Test\n\nRun one, or a combination of the following commands to lint and test your code:\n\n```sh\n$ npm run lint          # Lint the source code with ESLint\n$ npm test              # Run unit tests with Mocha\n$ npm run test:watch    # Run unit tests with Mocha, and watch files for changes\n$ npm run test:cover    # Run unit tests with code coverage by Istanbul\n```\n\n\n### License\n\nMIT © 2016 Allen Smith &lt;loranallensmith@github.com&gt;\n"
+  "readme": "# [brightwheel](https://github.com/loranallensmith/brightwheel)\n\n[![NPM version](http://img.shields.io/npm/v/brightwheel.svg?style=flat-square)](https://www.npmjs.com/package/brightwheel)\n[![NPM downloads](http://img.shields.io/npm/dm/brightwheel.svg?style=flat-square)](https://www.npmjs.com/package/brightwheel)\n[![Build Status](http://img.shields.io/travis/loranallensmith/brightwheel/master.svg?style=flat-square)](https://travis-ci.org/loranallensmith/brightwheel)\n[![Coverage Status](https://img.shields.io/coveralls/loranallensmith/brightwheel.svg?style=flat-square)](https://coveralls.io/loranallensmith/brightwheel)\n[![Dependency Status](http://img.shields.io/david/loranallensmith/brightwheel.svg?style=flat-square)](https://david-dm.org/loranallensmith/brightwheel)\n\n> Build beautiful Electron user interfaces with Photon and Etch\n\n### About\n\nBrightwheel is a JavaScript library that lets you use [Etch](https://github.com/atom/etch) and [Photon](http://photonkit.com/) to construct and manage the state of user interfaces for [Electron](https://electron.atom.io) applications.\n\n![Electron app using Brightwheel](https://cloud.githubusercontent.com/assets/3477155/18810114/c9912f0a-825b-11e6-822f-39e4d238571e.png)\n\n\n\n### Getting Started\n\n#### Installation\n\nAdd Brightwheel to your project's dependencies.\n```sh\n$ npm install --save brightwheel\n```\n\n#### Usage\n\nInclude Photon styles in your HTML file's `<head>`.\n```html\n<link rel=\"stylesheet\" href=\"path/to/photon.css\" media=\"screen\" title=\"no title\">\n```\n\nImport Brightwheel components into your project.\n```javascript\n// Import and namespace all components\nimport * as UI from 'brightwheel'\n\n// Import individual components\nimport { Button } from 'brightwheel'\n\n```\n\nGenerate components and add them to your document.\n```javascript\nlet mySubmitButton = new Button({\n  type: 'positive',\n  size: 'mini',\n  text: 'Submit'\n  // specify other properties as needed\n}, []);\n\nlet myCancelButton = new Button({\n  type: 'default',\n  size: 'mini',\n  text: 'Cancel'\n  // specify other properties as needed\n}, []);\n\n\n// Nest components within parent components\nlet myActions = new FormActions({\n  // specify properties as needed\n}, [\n  mySubmitButton,\n  myCancelButton\n]);\n\n// Nest the elements within the DOM\ndocument.querySelector('#form-1').appendChild(myActions.element);\n\n```\n\n## Contributing\n\nPull Request are welcome!\n\nFor an outline of the overall development priorities, have a look at the current [`ROADMAP.md`](https://github.com/loranallensmith/brightwheel/blob/master/ROADMAP.md) file.\n\nPlease follow the steps below to contribute to this project:\n- Look for an open issue (or open one if it doesn't already exist)\n- Fork this repository\n- Be sure to write tests for the changes you're proposing\n- Open a Pull Request and mention @loranallensmith\n- To help with discoverability down the road, it helps to reference the original Issue your changes address in the body of your Pull Request\n\n\n### How to Test\n\nRun one, or a combination of the following commands to lint and test your code:\n\n```sh\n$ npm run lint          # Lint the source code with ESLint\n$ npm test              # Run unit tests with Mocha\n$ npm run test:watch    # Run unit tests with Mocha, and watch files for changes\n$ npm run test:cover    # Run unit tests with code coverage by Istanbul\n```\n\n\n### License\n\nMIT © 2016 Allen Smith &lt;loranallensmith@github.com&gt;\n"
 }

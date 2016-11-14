@@ -1,0 +1,106 @@
+{
+  "name": "gpmdp-electron-winstaller",
+  "version": "1.0.0",
+  "description": "Module to generate Windows installers for Electron apps",
+  "main": "./lib/index.js",
+  "license": "MIT",
+  "repository": {
+    "user": "electronjs",
+    "repo": "windows-installer",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/electronjs/windows-installer/tarball/master",
+    "clone_url": "https://github.com/electronjs/windows-installer",
+    "https_url": "https://github.com/electronjs/windows-installer",
+    "travis_url": "https://travis-ci.org/electronjs/windows-installer",
+    "zip_url": "https://github.com/electronjs/windows-installer/archive/master.zip",
+    "api_url": "https://api.github.com/repos/electronjs/windows-installer"
+  },
+  "scripts": {
+    "compile": "babel -d lib/ src/",
+    "prepublish": "npm run test && npm run compile",
+    "postinstall": "node lib/fetch-vendor.js",
+    "lint": "eslint src & eslint spec",
+    "pretest": "npm run compile && node lib/fetch-vendor.js",
+    "test": "npm run lint && ava",
+    "tdd": "ava --watch"
+  },
+  "dependencies": {
+    "asar": "^0.11.0",
+    "bluebird": "^3.3.4",
+    "debug": "^2.2.0",
+    "follow-redirects": "^0.2.0",
+    "fs-extra": "^0.26.7",
+    "lodash.template": "^4.2.2",
+    "node-fetch": "^1.6.0",
+    "temp": "^0.8.3",
+    "unzip": "^0.1.11"
+  },
+  "devDependencies": {
+    "ava": "^0.13.0",
+    "babel-cli": "^6.6.5",
+    "babel-eslint": "^6.0.2",
+    "babel-plugin-transform-async-to-module-method": "^6.7.0",
+    "babel-plugin-transform-runtime": "^6.6.0",
+    "babel-preset-es2015-node4": "^2.0.3",
+    "babel-preset-stage-0": "^6.5.0",
+    "babel-register": "^6.7.2",
+    "eslint": "^2.4.0"
+  },
+  "engines": {
+    "node": ">=0.4.0"
+  },
+  "babel": {
+    "presets": [
+      "stage-0",
+      "es2015-node4"
+    ],
+    "plugins": [
+      [
+        "transform-async-to-module-method",
+        {
+          "module": "bluebird",
+          "method": "coroutine"
+        }
+      ]
+    ]
+  },
+  "ava": {
+    "files": [
+      "spec/*.js"
+    ],
+    "failFast": true,
+    "require": [
+      "babel-register"
+    ],
+    "babel": "inherit"
+  },
+  "gitHead": "5bb418562847ac07c761f05a9b7d801023815138",
+  "homepage": "https://github.com/electronjs/windows-installer#readme",
+  "_npmVersion": "3.10.5",
+  "_nodeVersion": "6.3.1",
+  "dist": {
+    "shasum": "55bc1c28f9f328804acd0391e7592601de7854db",
+    "tarball": "http://registry.npmjs.org/gpmdp-electron-winstaller/-/gpmdp-electron-winstaller-1.0.0.tgz"
+  },
+  "versions": [
+    {
+      "number": "1.0.0",
+      "date": "2016-10-16T01:34:19.029Z"
+    }
+  ],
+  "created": "2016-10-16T01:34:19.029Z",
+  "modified": "2016-10-16T01:34:19.029Z",
+  "lastPublisher": {
+    "name": "marshallofsound",
+    "email": "samuel.r.attard@gmail.com"
+  },
+  "owners": [
+    {
+      "name": "marshallofsound",
+      "email": "samuel.r.attard@gmail.com"
+    }
+  ],
+  "readme": "# Electron Installer\n\n[![AppVeyor Build status](https://ci.appveyor.com/api/projects/status/nxhep80va4d7afjb/branch/master?svg=true)](https://ci.appveyor.com/project/kevinsawicki/windows-installer/branch/master)\n[![Travis CI Build Status](https://travis-ci.org/electron/windows-installer.svg?branch=master)](https://travis-ci.org/electronjs/windows-installer)\n\nNPM module that builds Windows installers for\n[Electron](https://github.com/atom/electron) apps using\n[Squirrel](https://github.com/Squirrel/Squirrel.Windows).\n\n## Installing\n\n```sh\nnpm install --save-dev electron-winstaller\n```\n\n## Usage\n\nRequire the package:\n\n```js\nvar electronInstaller = require('electron-winstaller');\n```\n\nThen do a build like so..\n\n```js\nresultPromise = electronInstaller.createWindowsInstaller({\n    appDirectory: '/tmp/build/my-app-64',\n    outputDirectory: '/tmp/build/installer64',\n    authors: 'My App Inc.',\n    exe: 'myapp.exe'\n  });\n\nresultPromise.then(() => console.log(\"It worked!\"), (e) => console.log(`No dice: ${e.message}`));\n```\n\nAfter running you will have an `.nupkg`, a\n`RELEASES` file, and a `.exe` installer file in the `outputDirectory` folder\nfor each multi task target given under the config entry.\n\nThere are several configuration settings supported:\n\n| Config Name           | Required | Description |\n| --------------------- | -------- | ----------- |\n| `appDirectory`        | Yes      | The folder path of your Electron app |\n| `outputDirectory`     | No       | The folder path to create the `.exe` installer in. Defaults to the `installer` folder at the project root. |\n| `loadingGif`          | No       | The local path to a `.gif` file to display during install. |\n| `authors`             | Yes      | The authors value for the nuget package metadata. Defaults to the `author` field from your app's package.json file when unspecified. |\n| `owners`              | No       | The owners value for the nuget package metadata. Defaults to the `authors` field when unspecified. |\n| `exe`                 | No       | The name of your app's main `.exe` file. This uses the `name` field in your app's package.json file with an added `.exe` extension when unspecified. |\n| `description`         | No       | The description value for the nuget package metadata. Defaults to the `description` field from your app's package.json file when unspecified. |\n| `version`             | No       | The version value for the nuget package metadata. Defaults to the `version` field from your app's package.json file when unspecified. |\n| `title`               | No       | The title value for the nuget package metadata. Defaults to the `productName` field and then the `name` field from your app's package.json file when unspecified. |\n| `certificateFile`     | No       | The path to an Authenticode Code Signing Certificate |\n| `certificatePassword` | No       | The password to decrypt the certificate given in `certificateFile` |\n| `signWithParams`      | No       | Params to pass to signtool.  Overrides `certificateFile` and `certificatePassword`. |\n| `iconUrl`             | No       | A URL to an ICO file to use as the application icon (displayed in Control Panel > Programs and Features). Defaults to the Atom icon. |\n| `setupIcon`           | No       | The ICO file to use as the icon for the generated Setup.exe |\n| `setupExe`            | No       | The name to use for the generated Setup.exe file |\n| `noMsi`               | No       | Should Squirrel.Windows create an MSI installer? |\n| `remoteReleases`      | No       | A URL to your existing updates. If given, these will be downloaded to create delta updates |\n| `remoteToken`      | No       | Authentication token for remote updates |\n\n## Sign your installer or else bad things will happen\n\nFor development / internal use, creating installers without a signature is okay, but for a production app you need to sign your application. Internet Explorer's SmartScreen filter will block your app from being downloaded, and many anti-virus vendors will consider your app as malware unless you obtain a valid cert.\n\nAny certificate valid for \"Authenticode Code Signing\" will work here, but if you get the right kind of code certificate, you can also opt-in to [Windows Error Reporting](http://en.wikipedia.org/wiki/Windows_Error_Reporting). [This MSDN page](http://msdn.microsoft.com/en-us/library/windows/hardware/hh801887.aspx) has the latest links on where to get a WER-compatible certificate. The \"Standard Code Signing\" certificate is sufficient for this purpose.\n\n## Handling Squirrel Events\n\nSquirrel will spawn your app with command line flags on first run, updates,\nand uninstalls. it is **very** important that your app handle these events as _early_\nas possible, and quit **immediately** after handling them. Squirrel will give your\napp a short amount of time (~15sec) to apply these operations and quit.\n\nThe [electron-squirrel-startup](https://github.com/mongodb-js/electron-squirrel-startup) module will handle\nthe most common events for you, such as managing desktop shortcuts.  Just\nadd the following to the top of your `main.js` and you're good to go:\n\n```js\nif (require('electron-squirrel-startup')) return;\n```\n\nYou should handle these events in your app's `main` entry point with something\nsuch as:\n\n```js\nconst app = require('app');\n\n// this should be placed at top of main.js to handle setup events quickly\nif (handleSquirrelEvent()) {\n  // squirrel event handled and app will exit in 1000ms, so don't do anything else\n  return;\n}\n\nfunction handleSquirrelEvent() {\n  if (process.argv.length === 1) {\n    return false;\n  }\n\n  const ChildProcess = require('child_process');\n  const path = require('path');\n\n  const appFolder = path.resolve(process.execPath, '..');\n  const rootAtomFolder = path.resolve(appFolder, '..');\n  const updateDotExe = path.resolve(path.join(rootAtomFolder, 'Update.exe'));\n  const exeName = path.basename(process.execPath);\n\n  const spawn = function(command, args) {\n    let spawnedProcess, error;\n\n    try {\n      spawnedProcess = ChildProcess.spawn(command, args, {detached: true});\n    } catch (error) {}\n\n    return spawnedProcess;\n  };\n\n  const spawnUpdate = function(args) {\n    return spawn(updateDotExe, args);\n  };\n\n  const squirrelEvent = process.argv[1];\n  switch (squirrelEvent) {\n    case '--squirrel-install':\n    case '--squirrel-updated':\n      // Optionally do things such as:\n      // - Add your .exe to the PATH\n      // - Write to the registry for things like file associations and\n      //   explorer context menus\n\n      // Install desktop and start menu shortcuts\n      spawnUpdate(['--createShortcut', exeName]);\n\n      setTimeout(app.quit, 1000);\n      return true;\n\n    case '--squirrel-uninstall':\n      // Undo anything you did in the --squirrel-install and\n      // --squirrel-updated handlers\n\n      // Remove desktop and start menu shortcuts\n      spawnUpdate(['--removeShortcut', exeName]);\n\n      setTimeout(app.quit, 1000);\n      return true;\n\n    case '--squirrel-obsolete':\n      // This is called on the outgoing version of your app before\n      // we update to the new version - it's the opposite of\n      // --squirrel-updated\n\n      app.quit();\n      return true;\n  }\n};\n```\n\nNotice that the first time the installer launches your app, your app will see a ```--squirrel-firstrun``` flag. This allows you to do things like showing up a splash screen or presenting a settings UI. Another thing to be aware of is that, since the app is spawned by squirrel and squirrel acquires a file lock during installation, you won't be able to successfully check for app updates till a few seconds later when squirrel releases the lock.\n\n## Debugging this package\n\nYou can get debug messages from this package by running with the environment variable `DEBUG=electron-windows-installer:main` e.g.\n\n```\nDEBUG=electron-windows-installer:main node tasks/electron-winstaller.js\n```\n"
+}

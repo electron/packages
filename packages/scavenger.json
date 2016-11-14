@@ -1,0 +1,71 @@
+{
+  "name": "scavenger",
+  "version": "0.0.1",
+  "description": "Web scraping and screenshots",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "engines": {
+    "node": ">= 4.6.1"
+  },
+  "keywords": [
+    "scraping"
+  ],
+  "author": {
+    "name": "Pietro Vismara"
+  },
+  "license": "ISC",
+  "bin": {
+    "scavenger": "bin/index.js"
+  },
+  "main": "bin/index.js",
+  "dependencies": {
+    "babel-runtime": "^6.18.0",
+    "bluebird": "^3.4.6",
+    "debug": "^2.3.0",
+    "html-minifier": "^3.1.1",
+    "jimp": "^0.2.27",
+    "lodash": "^4.16.6",
+    "nightmare": "^2.8.1",
+    "request": "^2.78.0",
+    "request-promise": "^4.1.1",
+    "yargs": "^6.3.0"
+  },
+  "devDependencies": {
+    "babel-core": "^6.18.2",
+    "babel-plugin-transform-async-to-generator": "^6.16.0",
+    "babel-plugin-transform-runtime": "^6.15.0",
+    "babel-preset-es2015": "^6.18.0",
+    "gulp": "^3.9.1",
+    "gulp-babel": "^6.1.2",
+    "gulp-clean": "^0.3.2",
+    "gulp-concat": "^2.6.0",
+    "gulp-inject-string": "^1.1.0"
+  },
+  "gitHead": "1885fd2370226fe596e893450cedbe5a5f4e8c55",
+  "_npmVersion": "3.10.8",
+  "_nodeVersion": "7.0.0",
+  "dist": {
+    "shasum": "c458a63492ca58bca9c20b5883a7e2772827935b",
+    "tarball": "http://registry.npmjs.org/scavenger/-/scavenger-0.0.1.tgz"
+  },
+  "versions": [
+    {
+      "number": "0.0.1",
+      "date": "2016-11-13T20:40:34.028Z"
+    }
+  ],
+  "created": "2016-11-13T20:40:34.028Z",
+  "modified": "2016-11-13T20:40:34.028Z",
+  "lastPublisher": {
+    "name": "pietrovismara",
+    "email": "elcuzzer@gmail.com"
+  },
+  "owners": [
+    {
+      "name": "pietrovismara",
+      "email": "elcuzzer@gmail.com"
+    }
+  ],
+  "readme": "# Scavenger\n\nCommand line tool / Node.js package using [Nightmare](http://www.nightmarejs.org/) to scrape/take screenshots of dynamic and static webpages.\n\n# Features\n\n0. Supports dynamic (Angularjs, etc) and static web pages.\n0. Can be piped to other programs.\n0. Can be used from command line or programmatically\n0. Runs on any linux based os.\n\n# Install\n\nAs a global package:\n```shell\n$ npm install -g scavenger\n```\nAs a local package:\n```shell\n$ npm install scavenger\n```\n\n# Command line usage\n\n### Help\n```shell\n$ scavenger -h\n```\n\n### Screenshot\nSave image to a png file:\n```shell\n$ scavenger screenshot -u https://reddit.com\n$ // Creates a file called https_reddit_com.png\n```\nPipe image to ImageMagick display and show it:\n```shell\n$ scavenger screenshot -u https://reddit.com | display\n```\n\n### Scrape\nPipe html to less:\n```shell\n$ scavenger scrape -u https://reddit.com | less\n```\nSave html to a file:\n```shell\n$ scavenger screenshot -u https://reddit.com > reddit.html\n```\nOr\n```shell\n$ scavenger screenshot -u https://reddit.com\n$ // Creates a file called https_reddit_com.html\n```\n\n### Scrape + Screenshot\n```shell\n$ scavenger ss -u https://reddit.com\n```\n\n\n# Programmatic usage\n```javascript\nconst scavenger = require('scavenger');\n\nscavenger.scrape(\"https://reddit.com\")\n.then((html) => {    \n    return scavenger.screenshot()\n})\n.then((buffers) => {    \n    return scavenger.end();\n    // Don't forget to call end! Otherwise you'll have memory leaks\n})\n```\n\n## API\n** .scrape() **\n\nReturns a string containing the scraped page html\n\n```javascript\nscavenger.scrape(url)\n.then((html) => {});\n\n// Or\n\nscavenger.scrape({\n    url: String, // Url to scrape\n    [selector]: String, // ID of a DOMElement to wait before scraping\n    [minify]: Boolean, // If true, minify the html\n})\n.then((html) => {});\n```\n---------------------\n** .screenshot() **\n\nReturns an object of buffers of the screenshot.\n\n\n```javascript\nscavenger.screenshot(url)\n.then((buffers) => {\n    console.log(buffers);\n    // {\n    //     \"full\": <Buffer>\n    // }\n});\n\n// Or\n\nscavenger.screenshot({\n    url: String, // Url to scrape\n    [selector]: String, // ID of a DOMElement to wait before scraping\n    [format]: String, // Default: png. Available: jpeg, png.\n    [crop]: Array [{\n        width: 1280,\n        height: 680\n    }]\n})\n.then((buffers) => {\n    console.log(buffers);\n    // {\n    //     \"full\": <Buffer>,\n    //     \"1280X680\": <Buffer>\n    // }\n});\n```\n--------------------------\n** .end() **\n\nThis method should always be called before scraping other pages.\nCalls `nightmare.end()`.\nComplete any queue operations, disconnect and close the electron process.\n\n```javascript\nscavenger.scrape(\"https://reddit.com\")\n.then(() => {\n    return scavenger.end();\n});\n```\n\n\n\n# License\n\nMIT\n"
+}

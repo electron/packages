@@ -1,0 +1,1001 @@
+{
+  "name": "text-buffer",
+  "version": "9.4.3",
+  "description": "A container for large mutable strings with annotated regions",
+  "main": "./lib/text-buffer",
+  "scripts": {
+    "prepublish": "npm run clean && npm run compile && npm run lint && npm run atomdoc",
+    "atomdoc": "grunt shell:update-atomdoc atomdoc",
+    "clean": "grunt clean",
+    "compile": "coffee --no-header --output lib --compile src",
+    "lint": "coffeelint -r src spec && eslint src spec",
+    "test": "node script/test",
+    "ci": "npm run compile && npm run lint && npm run test && npm run bench",
+    "bench": "node benchmarks/index"
+  },
+  "repository": {
+    "user": "atom",
+    "repo": "text-buffer",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/atom/text-buffer/tarball/master",
+    "clone_url": "https://github.com/atom/text-buffer",
+    "https_url": "https://github.com/atom/text-buffer",
+    "travis_url": "https://travis-ci.org/atom/text-buffer",
+    "zip_url": "https://github.com/atom/text-buffer/archive/master.zip",
+    "api_url": "https://api.github.com/repos/atom/text-buffer"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "coffee-cache": "^0.2.0",
+    "coffee-script": "^1.10.0",
+    "coffeelint": "^1.14.2",
+    "dedent": "^0.6.0",
+    "electron": "^1.4.0",
+    "eslint": "2.2.0",
+    "eslint-config-standard": "5.1.0",
+    "eslint-plugin-promise": "^1.0.8",
+    "eslint-plugin-standard": "1.3.1",
+    "grunt": "^0.4.5",
+    "grunt-atomdoc": "^1.0.1",
+    "grunt-cli": "^0.1.13",
+    "grunt-coffeelint": "^0.0.15",
+    "grunt-contrib-coffee": "^0.13.0",
+    "grunt-shell": "^1.1.2",
+    "jasmine": "^2.4.1",
+    "jasmine-core": "^2.4.1",
+    "json-diff": "^0.3.1",
+    "random-seed": "^0.2.0",
+    "rimraf": "~2.2.2",
+    "temp": "^0.8.3",
+    "yargs": "^6.3.0"
+  },
+  "dependencies": {
+    "atom-patch": "0.3.0",
+    "buffer-offset-index": "0.0.1",
+    "delegato": "^1.0.0",
+    "diff": "^2.2.1",
+    "display-index": "^0.1.0",
+    "emissary": "^1.0.0",
+    "event-kit": "^2.1.0",
+    "fs-plus": "^2.0.0",
+    "grim": "1.5.0",
+    "marker-index": "4.0.1",
+    "pathwatcher": "6.7.1",
+    "regression": "^1.2.1",
+    "serializable": "^1.0.3",
+    "underscore-plus": "^1.0.0"
+  },
+  "coffeelintConfig": {
+    "no_empty_param_list": {
+      "level": "error"
+    },
+    "max_line_length": {
+      "level": "ignore"
+    },
+    "indentation": {
+      "level": "ignore"
+    }
+  },
+  "gitHead": "56be7d79ffc659bab44f7841d2f8f368273f783f",
+  "homepage": "https://github.com/atom/text-buffer#readme",
+  "_npmVersion": "3.10.3",
+  "_nodeVersion": "6.4.0",
+  "dist": {
+    "shasum": "1cb81f228daf49a980099345c3cb496f81335e73",
+    "tarball": "http://registry.npmjs.org/text-buffer/-/text-buffer-9.4.3.tgz"
+  },
+  "stars": 1,
+  "versions": [
+    {
+      "number": "0.1.0",
+      "date": "2013-12-31T19:04:04.739Z"
+    },
+    {
+      "number": "0.2.0",
+      "date": "2013-12-31T19:11:24.808Z"
+    },
+    {
+      "number": "0.3.0",
+      "date": "2013-12-31T19:43:31.379Z"
+    },
+    {
+      "number": "0.4.0",
+      "date": "2014-01-04T18:10:50.104Z"
+    },
+    {
+      "number": "0.5.0",
+      "date": "2014-01-04T22:42:12.234Z"
+    },
+    {
+      "number": "0.6.0",
+      "date": "2014-01-06T23:31:04.051Z"
+    },
+    {
+      "number": "0.7.0",
+      "date": "2014-01-07T00:16:10.878Z"
+    },
+    {
+      "number": "0.8.0",
+      "date": "2014-01-07T00:33:41.430Z"
+    },
+    {
+      "number": "0.9.0",
+      "date": "2014-01-07T01:30:11.259Z"
+    },
+    {
+      "number": "0.10.0",
+      "date": "2014-01-07T02:57:48.031Z"
+    },
+    {
+      "number": "0.11.0",
+      "date": "2014-01-07T17:17:58.925Z"
+    },
+    {
+      "number": "0.12.0",
+      "date": "2014-01-08T17:52:07.280Z"
+    },
+    {
+      "number": "0.13.0",
+      "date": "2014-01-15T01:52:57.740Z"
+    },
+    {
+      "number": "0.14.0",
+      "date": "2014-01-17T01:16:28.224Z"
+    },
+    {
+      "number": "0.15.0",
+      "date": "2014-01-17T01:41:05.423Z"
+    },
+    {
+      "number": "0.16.0",
+      "date": "2014-01-20T19:51:29.092Z"
+    },
+    {
+      "number": "1.0.0",
+      "date": "2014-02-04T18:52:35.355Z"
+    },
+    {
+      "number": "1.1.0",
+      "date": "2014-02-19T01:57:24.078Z"
+    },
+    {
+      "number": "1.1.1",
+      "date": "2014-02-19T03:25:43.273Z"
+    },
+    {
+      "number": "1.1.2",
+      "date": "2014-02-19T17:59:53.882Z"
+    },
+    {
+      "number": "1.2.0",
+      "date": "2014-03-01T21:16:46.148Z"
+    },
+    {
+      "number": "1.3.0",
+      "date": "2014-03-06T19:35:45.500Z"
+    },
+    {
+      "number": "1.4.0",
+      "date": "2014-03-06T22:08:50.729Z"
+    },
+    {
+      "number": "1.4.1",
+      "date": "2014-03-07T01:09:00.264Z"
+    },
+    {
+      "number": "1.4.2",
+      "date": "2014-03-07T19:14:53.211Z"
+    },
+    {
+      "number": "1.4.3",
+      "date": "2014-03-12T01:10:39.702Z"
+    },
+    {
+      "number": "1.4.4",
+      "date": "2014-03-12T02:45:01.683Z"
+    },
+    {
+      "number": "1.4.5",
+      "date": "2014-03-25T16:51:15.677Z"
+    },
+    {
+      "number": "1.4.6",
+      "date": "2014-03-25T22:49:27.390Z"
+    },
+    {
+      "number": "2.0.0",
+      "date": "2014-04-10T17:58:53.342Z"
+    },
+    {
+      "number": "2.0.1",
+      "date": "2014-04-10T20:09:29.360Z"
+    },
+    {
+      "number": "2.0.2",
+      "date": "2014-04-17T19:32:19.977Z"
+    },
+    {
+      "number": "2.0.3",
+      "date": "2014-04-17T22:35:18.026Z"
+    },
+    {
+      "number": "2.1.0",
+      "date": "2014-04-18T21:03:36.386Z"
+    },
+    {
+      "number": "2.2.0",
+      "date": "2014-04-23T18:56:34.441Z"
+    },
+    {
+      "number": "2.0.4",
+      "date": "2014-05-07T19:24:21.166Z"
+    },
+    {
+      "number": "2.2.1",
+      "date": "2014-05-07T19:33:15.075Z"
+    },
+    {
+      "number": "2.2.2",
+      "date": "2014-05-08T20:56:09.426Z"
+    },
+    {
+      "number": "2.3.0",
+      "date": "2014-06-11T23:45:27.808Z"
+    },
+    {
+      "number": "2.4.0",
+      "date": "2014-06-13T01:23:25.182Z"
+    },
+    {
+      "number": "2.4.1",
+      "date": "2014-06-18T15:18:16.501Z"
+    },
+    {
+      "number": "2.4.2",
+      "date": "2014-06-19T19:42:12.475Z"
+    },
+    {
+      "number": "3.0.0",
+      "date": "2014-07-21T01:38:41.191Z"
+    },
+    {
+      "number": "3.0.1",
+      "date": "2014-08-13T21:36:15.426Z"
+    },
+    {
+      "number": "3.0.2",
+      "date": "2014-08-19T23:39:45.863Z"
+    },
+    {
+      "number": "3.0.3",
+      "date": "2014-08-26T02:03:27.672Z"
+    },
+    {
+      "number": "3.0.4",
+      "date": "2014-08-27T00:18:40.748Z"
+    },
+    {
+      "number": "3.1.0",
+      "date": "2014-09-02T18:24:51.490Z"
+    },
+    {
+      "number": "3.2.0",
+      "date": "2014-09-04T19:27:57.142Z"
+    },
+    {
+      "number": "3.2.1",
+      "date": "2014-09-08T22:58:19.093Z"
+    },
+    {
+      "number": "3.2.2",
+      "date": "2014-09-10T15:40:02.207Z"
+    },
+    {
+      "number": "3.2.3",
+      "date": "2014-09-10T20:55:02.255Z"
+    },
+    {
+      "number": "3.2.4",
+      "date": "2014-09-10T22:15:01.077Z"
+    },
+    {
+      "number": "3.2.5",
+      "date": "2014-09-18T01:15:55.250Z"
+    },
+    {
+      "number": "3.2.6",
+      "date": "2014-09-18T23:56:32.031Z"
+    },
+    {
+      "number": "3.2.7",
+      "date": "2014-09-19T17:57:39.505Z"
+    },
+    {
+      "number": "3.2.8",
+      "date": "2014-10-02T23:50:52.132Z"
+    },
+    {
+      "number": "3.2.9",
+      "date": "2014-10-09T22:53:48.008Z"
+    },
+    {
+      "number": "3.2.10",
+      "date": "2014-10-24T16:55:05.485Z"
+    },
+    {
+      "number": "3.3.0",
+      "date": "2014-10-27T18:33:33.556Z"
+    },
+    {
+      "number": "3.4.0",
+      "date": "2014-10-28T23:04:21.459Z"
+    },
+    {
+      "number": "3.5.0",
+      "date": "2014-10-31T18:31:57.987Z"
+    },
+    {
+      "number": "3.5.1",
+      "date": "2014-11-05T17:24:36.394Z"
+    },
+    {
+      "number": "3.6.0",
+      "date": "2014-11-06T17:53:40.259Z"
+    },
+    {
+      "number": "3.6.1",
+      "date": "2014-11-14T00:11:38.603Z"
+    },
+    {
+      "number": "3.7.0",
+      "date": "2014-11-21T19:04:05.492Z"
+    },
+    {
+      "number": "3.7.1",
+      "date": "2014-11-22T01:07:11.185Z"
+    },
+    {
+      "number": "3.7.2",
+      "date": "2014-11-24T21:30:32.219Z"
+    },
+    {
+      "number": "3.8.0",
+      "date": "2014-11-27T18:56:42.708Z"
+    },
+    {
+      "number": "3.8.1",
+      "date": "2014-12-02T00:53:21.518Z"
+    },
+    {
+      "number": "3.8.2",
+      "date": "2014-12-02T22:28:52.464Z"
+    },
+    {
+      "number": "3.8.3",
+      "date": "2014-12-08T22:12:20.322Z"
+    },
+    {
+      "number": "3.8.4",
+      "date": "2015-01-02T21:48:17.440Z"
+    },
+    {
+      "number": "3.9.0",
+      "date": "2015-01-09T20:07:58.252Z"
+    },
+    {
+      "number": "3.10.0",
+      "date": "2015-01-14T20:53:03.878Z"
+    },
+    {
+      "number": "3.10.1",
+      "date": "2015-01-21T15:22:25.634Z"
+    },
+    {
+      "number": "3.11.0",
+      "date": "2015-01-28T01:11:28.835Z"
+    },
+    {
+      "number": "4.0.0",
+      "date": "2015-01-28T21:42:50.469Z"
+    },
+    {
+      "number": "4.1.0",
+      "date": "2015-02-05T17:32:43.262Z"
+    },
+    {
+      "number": "4.1.1",
+      "date": "2015-02-11T00:03:45.862Z"
+    },
+    {
+      "number": "4.1.2",
+      "date": "2015-02-11T00:49:14.321Z"
+    },
+    {
+      "number": "4.1.3",
+      "date": "2015-02-11T01:00:42.586Z"
+    },
+    {
+      "number": "4.1.4",
+      "date": "2015-02-13T01:42:45.973Z"
+    },
+    {
+      "number": "4.1.5",
+      "date": "2015-02-14T00:08:43.966Z"
+    },
+    {
+      "number": "5.0.0",
+      "date": "2015-03-17T21:44:48.005Z"
+    },
+    {
+      "number": "5.0.1",
+      "date": "2015-03-19T22:34:35.082Z"
+    },
+    {
+      "number": "5.0.2",
+      "date": "2015-03-20T16:45:58.415Z"
+    },
+    {
+      "number": "5.1.0",
+      "date": "2015-03-26T00:55:39.806Z"
+    },
+    {
+      "number": "5.1.1",
+      "date": "2015-04-02T19:56:18.854Z"
+    },
+    {
+      "number": "5.2.0",
+      "date": "2015-04-03T00:04:06.588Z"
+    },
+    {
+      "number": "6.0.0-beta.1",
+      "date": "2015-05-12T23:55:56.920Z"
+    },
+    {
+      "number": "6.0.0-beta.2",
+      "date": "2015-05-13T01:03:17.218Z"
+    },
+    {
+      "number": "6.0.0",
+      "date": "2015-05-14T21:28:08.248Z"
+    },
+    {
+      "number": "6.0.1",
+      "date": "2015-05-19T20:11:36.333Z"
+    },
+    {
+      "number": "6.0.2",
+      "date": "2015-05-20T00:55:01.473Z"
+    },
+    {
+      "number": "6.1.0",
+      "date": "2015-05-22T00:56:26.698Z"
+    },
+    {
+      "number": "6.1.1",
+      "date": "2015-05-22T19:08:23.474Z"
+    },
+    {
+      "number": "6.1.2",
+      "date": "2015-05-22T20:55:43.631Z"
+    },
+    {
+      "number": "6.1.3",
+      "date": "2015-05-26T23:50:28.062Z"
+    },
+    {
+      "number": "6.2.0",
+      "date": "2015-06-04T17:38:34.810Z"
+    },
+    {
+      "number": "6.2.1",
+      "date": "2015-06-05T18:28:43.446Z"
+    },
+    {
+      "number": "6.3.0",
+      "date": "2015-06-05T23:26:12.462Z"
+    },
+    {
+      "number": "6.3.1",
+      "date": "2015-06-08T16:33:29.418Z"
+    },
+    {
+      "number": "6.3.2",
+      "date": "2015-06-08T21:57:38.166Z"
+    },
+    {
+      "number": "6.3.3",
+      "date": "2015-06-09T21:15:49.982Z"
+    },
+    {
+      "number": "6.3.4",
+      "date": "2015-06-09T23:53:25.226Z"
+    },
+    {
+      "number": "6.3.5",
+      "date": "2015-06-10T20:49:56.741Z"
+    },
+    {
+      "number": "6.3.6",
+      "date": "2015-06-10T22:25:20.071Z"
+    },
+    {
+      "number": "6.3.7",
+      "date": "2015-06-15T20:46:12.453Z"
+    },
+    {
+      "number": "6.3.8",
+      "date": "2015-07-01T01:41:59.013Z"
+    },
+    {
+      "number": "6.3.9",
+      "date": "2015-07-09T06:35:04.787Z"
+    },
+    {
+      "number": "6.3.10",
+      "date": "2015-07-09T16:32:43.425Z"
+    },
+    {
+      "number": "6.3.11",
+      "date": "2015-07-10T21:16:53.170Z"
+    },
+    {
+      "number": "6.4.0-0",
+      "date": "2015-07-21T20:24:59.647Z"
+    },
+    {
+      "number": "6.4.0",
+      "date": "2015-07-27T16:52:39.011Z"
+    },
+    {
+      "number": "6.5.0",
+      "date": "2015-07-29T17:02:56.347Z"
+    },
+    {
+      "number": "7.0.0",
+      "date": "2015-08-06T18:47:58.691Z"
+    },
+    {
+      "number": "7.0.1",
+      "date": "2015-08-06T18:51:10.914Z"
+    },
+    {
+      "number": "6.5.1",
+      "date": "2015-08-11T01:21:37.985Z"
+    },
+    {
+      "number": "6.5.2",
+      "date": "2015-08-11T16:58:20.410Z"
+    },
+    {
+      "number": "6.6.0",
+      "date": "2015-08-13T21:59:15.133Z"
+    },
+    {
+      "number": "6.6.1",
+      "date": "2015-08-13T22:13:06.933Z"
+    },
+    {
+      "number": "6.7.0-0",
+      "date": "2015-08-25T17:48:37.403Z"
+    },
+    {
+      "number": "6.7.0",
+      "date": "2015-08-25T18:12:51.880Z"
+    },
+    {
+      "number": "6.7.1-0",
+      "date": "2015-09-03T21:20:29.429Z"
+    },
+    {
+      "number": "6.7.1-1",
+      "date": "2015-09-03T21:55:39.603Z"
+    },
+    {
+      "number": "6.7.1",
+      "date": "2015-09-03T22:15:01.791Z"
+    },
+    {
+      "number": "6.7.2-0",
+      "date": "2015-09-04T21:43:20.208Z"
+    },
+    {
+      "number": "6.7.2-1",
+      "date": "2015-09-04T23:38:06.310Z"
+    },
+    {
+      "number": "6.7.2-2",
+      "date": "2015-09-04T23:40:23.472Z"
+    },
+    {
+      "number": "6.7.2-3",
+      "date": "2015-09-05T00:40:16.805Z"
+    },
+    {
+      "number": "6.7.2-4",
+      "date": "2015-09-08T18:13:28.529Z"
+    },
+    {
+      "number": "7.0.2",
+      "date": "2015-09-13T03:20:16.310Z"
+    },
+    {
+      "number": "6.7.2",
+      "date": "2015-09-15T21:31:27.080Z"
+    },
+    {
+      "number": "7.0.3",
+      "date": "2015-09-19T02:47:03.545Z"
+    },
+    {
+      "number": "7.1.0",
+      "date": "2015-09-22T03:28:55.116Z"
+    },
+    {
+      "number": "6.7.3",
+      "date": "2015-09-24T20:44:46.858Z"
+    },
+    {
+      "number": "7.1.1",
+      "date": "2015-09-24T21:10:08.945Z"
+    },
+    {
+      "number": "6.7.4",
+      "date": "2015-09-25T18:19:30.974Z"
+    },
+    {
+      "number": "7.1.2",
+      "date": "2015-09-25T20:22:05.969Z"
+    },
+    {
+      "number": "7.1.3",
+      "date": "2015-10-14T13:21:22.859Z"
+    },
+    {
+      "number": "7.2.0-pre-marker-layers.1",
+      "date": "2015-10-20T00:17:48.124Z"
+    },
+    {
+      "number": "7.2.0-pre-marker-layers.2",
+      "date": "2015-10-28T21:59:56.615Z"
+    },
+    {
+      "number": "7.2.0",
+      "date": "2015-10-29T13:45:13.635Z"
+    },
+    {
+      "number": "8.0.0",
+      "date": "2015-11-04T02:32:18.744Z"
+    },
+    {
+      "number": "8.0.1",
+      "date": "2015-11-04T17:52:13.921Z"
+    },
+    {
+      "number": "8.0.2",
+      "date": "2015-11-04T18:51:44.422Z"
+    },
+    {
+      "number": "8.0.3",
+      "date": "2015-11-06T22:39:52.748Z"
+    },
+    {
+      "number": "8.0.4",
+      "date": "2015-11-16T07:35:27.597Z"
+    },
+    {
+      "number": "8.0.5",
+      "date": "2015-11-21T00:46:10.736Z"
+    },
+    {
+      "number": "8.0.6",
+      "date": "2015-11-21T01:20:37.497Z"
+    },
+    {
+      "number": "8.0.7",
+      "date": "2015-11-23T18:45:39.246Z"
+    },
+    {
+      "number": "8.0.8",
+      "date": "2015-11-23T20:49:17.510Z"
+    },
+    {
+      "number": "8.0.9",
+      "date": "2015-11-24T13:40:56.661Z"
+    },
+    {
+      "number": "8.1.0",
+      "date": "2015-12-07T18:24:20.794Z"
+    },
+    {
+      "number": "8.1.1",
+      "date": "2015-12-09T07:21:49.334Z"
+    },
+    {
+      "number": "8.1.2",
+      "date": "2015-12-15T20:41:24.896Z"
+    },
+    {
+      "number": "8.1.3-0",
+      "date": "2015-12-16T23:54:45.376Z"
+    },
+    {
+      "number": "8.1.3",
+      "date": "2015-12-17T03:54:23.133Z"
+    },
+    {
+      "number": "8.0.4-hotfix.1",
+      "date": "2016-01-04T17:54:57.942Z"
+    },
+    {
+      "number": "8.1.4",
+      "date": "2016-01-06T00:02:21.135Z"
+    },
+    {
+      "number": "8.2.0",
+      "date": "2016-01-26T23:11:17.235Z"
+    },
+    {
+      "number": "8.2.1",
+      "date": "2016-01-26T23:58:56.107Z"
+    },
+    {
+      "number": "8.2.2-0",
+      "date": "2016-02-06T01:19:26.352Z"
+    },
+    {
+      "number": "8.2.2-1",
+      "date": "2016-02-08T22:40:21.337Z"
+    },
+    {
+      "number": "8.2.2-2",
+      "date": "2016-02-10T20:39:11.128Z"
+    },
+    {
+      "number": "8.3.0",
+      "date": "2016-02-12T08:21:52.704Z"
+    },
+    {
+      "number": "8.3.1-0",
+      "date": "2016-02-16T05:40:16.341Z"
+    },
+    {
+      "number": "8.3.1",
+      "date": "2016-02-16T19:56:11.848Z"
+    },
+    {
+      "number": "8.3.2",
+      "date": "2016-02-24T13:41:09.058Z"
+    },
+    {
+      "number": "8.4.0",
+      "date": "2016-03-07T09:31:50.862Z"
+    },
+    {
+      "number": "8.4.1",
+      "date": "2016-03-07T10:46:06.674Z"
+    },
+    {
+      "number": "8.4.2",
+      "date": "2016-03-22T20:36:18.388Z"
+    },
+    {
+      "number": "8.4.3",
+      "date": "2016-03-25T18:54:00.250Z"
+    },
+    {
+      "number": "8.4.4",
+      "date": "2016-03-29T19:54:53.481Z"
+    },
+    {
+      "number": "8.4.5",
+      "date": "2016-03-30T09:00:59.563Z"
+    },
+    {
+      "number": "8.4.6",
+      "date": "2016-03-30T17:45:31.495Z"
+    },
+    {
+      "number": "9.0.0-beta1",
+      "date": "2016-04-08T21:33:31.816Z"
+    },
+    {
+      "number": "9.0.0-beta2",
+      "date": "2016-04-08T21:55:18.946Z"
+    },
+    {
+      "number": "9.0.0-beta3",
+      "date": "2016-04-13T11:51:17.429Z"
+    },
+    {
+      "number": "9.0.0-beta4",
+      "date": "2016-04-13T16:43:04.024Z"
+    },
+    {
+      "number": "8.5.0",
+      "date": "2016-04-22T09:04:08.813Z"
+    },
+    {
+      "number": "9.0.0-beta5",
+      "date": "2016-04-22T09:13:56.082Z"
+    },
+    {
+      "number": "9.0.0-beta6",
+      "date": "2016-04-28T10:04:15.726Z"
+    },
+    {
+      "number": "9.0.0-beta7",
+      "date": "2016-04-28T15:30:13.901Z"
+    },
+    {
+      "number": "9.0.0-beta8",
+      "date": "2016-04-29T12:06:08.595Z"
+    },
+    {
+      "number": "9.0.0-beta9",
+      "date": "2016-05-03T11:06:39.765Z"
+    },
+    {
+      "number": "9.0.0",
+      "date": "2016-05-04T16:55:03.689Z"
+    },
+    {
+      "number": "9.1.0",
+      "date": "2016-05-16T11:36:20.214Z"
+    },
+    {
+      "number": "9.2.0",
+      "date": "2016-05-30T16:15:21.917Z"
+    },
+    {
+      "number": "9.2.1",
+      "date": "2016-05-30T16:51:12.298Z"
+    },
+    {
+      "number": "9.2.2",
+      "date": "2016-05-30T17:13:51.949Z"
+    },
+    {
+      "number": "9.2.3",
+      "date": "2016-07-29T21:06:00.309Z"
+    },
+    {
+      "number": "9.2.4",
+      "date": "2016-08-04T17:18:12.410Z"
+    },
+    {
+      "number": "9.2.5",
+      "date": "2016-08-04T19:37:24.305Z"
+    },
+    {
+      "number": "9.2.6",
+      "date": "2016-08-04T19:55:13.145Z"
+    },
+    {
+      "number": "9.2.7",
+      "date": "2016-08-08T18:10:34.028Z"
+    },
+    {
+      "number": "9.2.8",
+      "date": "2016-08-08T21:26:46.537Z"
+    },
+    {
+      "number": "9.2.9",
+      "date": "2016-08-10T15:59:02.686Z"
+    },
+    {
+      "number": "9.2.10",
+      "date": "2016-08-11T07:01:42.374Z"
+    },
+    {
+      "number": "9.2.11",
+      "date": "2016-08-24T22:25:22.878Z"
+    },
+    {
+      "number": "9.2.12",
+      "date": "2016-08-29T15:33:16.993Z"
+    },
+    {
+      "number": "9.3.0",
+      "date": "2016-09-21T16:28:27.113Z"
+    },
+    {
+      "number": "9.3.1-0",
+      "date": "2016-10-07T22:42:15.865Z"
+    },
+    {
+      "number": "9.3.1-1",
+      "date": "2016-10-08T18:17:03.937Z"
+    },
+    {
+      "number": "9.3.1-2",
+      "date": "2016-10-11T00:24:25.484Z"
+    },
+    {
+      "number": "9.3.1-3",
+      "date": "2016-10-12T05:14:44.050Z"
+    },
+    {
+      "number": "9.3.1-4",
+      "date": "2016-10-12T20:28:43.848Z"
+    },
+    {
+      "number": "9.4.0",
+      "date": "2016-10-14T16:53:28.642Z"
+    },
+    {
+      "number": "9.4.1-0",
+      "date": "2016-10-27T17:57:39.933Z"
+    },
+    {
+      "number": "9.4.1-1",
+      "date": "2016-10-28T13:12:21.387Z"
+    },
+    {
+      "number": "9.4.1-2",
+      "date": "2016-10-28T13:23:19.920Z"
+    },
+    {
+      "number": "9.4.1",
+      "date": "2016-11-03T15:03:37.351Z"
+    },
+    {
+      "number": "9.4.2",
+      "date": "2016-11-03T16:37:11.346Z"
+    },
+    {
+      "number": "9.4.3",
+      "date": "2016-11-11T19:18:25.776Z"
+    }
+  ],
+  "created": "2013-12-31T19:04:03.826Z",
+  "modified": "2016-11-11T19:18:25.776Z",
+  "lastPublisher": {
+    "name": "maxbrunsfeld",
+    "email": "maxbrunsfeld@gmail.com"
+  },
+  "owners": [
+    {
+      "name": "as-cii",
+      "email": "as-cii@github.com"
+    },
+    {
+      "name": "atom",
+      "email": "nathan@github.com"
+    },
+    {
+      "name": "benogle",
+      "email": "ogle.ben@gmail.com"
+    },
+    {
+      "name": "iolsen",
+      "email": "ian.olsen@gmail.com"
+    },
+    {
+      "name": "kevinsawicki",
+      "email": "kevinsawicki@gmail.com"
+    },
+    {
+      "name": "kuychaco",
+      "email": "kuychaco@gmail.com"
+    },
+    {
+      "name": "maxbrunsfeld",
+      "email": "maxbrunsfeld@gmail.com"
+    },
+    {
+      "name": "nathansobo",
+      "email": "nathan@github.com"
+    },
+    {
+      "name": "probablycorey",
+      "email": "probablycorey@gmail.com"
+    },
+    {
+      "name": "zcbenz",
+      "email": "zcbenz@gmail.com"
+    }
+  ],
+  "readme": "# Atom TextBuffer Core\n[![OS X Build Status](https://travis-ci.org/atom/text-buffer.svg?branch=master)](https://travis-ci.org/atom/text-buffer)\n[![Windows Build Status](https://ci.appveyor.com/api/projects/status/48xl8do1sm2thf5p/branch/master?svg=true)](https://ci.appveyor.com/project/Atom/text-buffer/branch/master)\n[![Dependency Status](https://david-dm.org/atom/text-buffer.svg)](https://david-dm.org/atom/text-buffer)\n\nThis is the core of the Atom text buffer, separated into its own module so its tests can be run headless. It handles the storage and manipulation of text and associated regions (markers).\n"
+}

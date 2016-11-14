@@ -1,0 +1,92 @@
+{
+  "name": "postcard",
+  "version": "1.0.3",
+  "description": "A database driven application platform using PostgreSQL",
+  "main": "index.js",
+  "repository": {
+    "user": "workflowproducts",
+    "repo": "postcard",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/workflowproducts/postcard/tarball/master",
+    "clone_url": "https://github.com/workflowproducts/postcard",
+    "https_url": "https://github.com/workflowproducts/postcard",
+    "travis_url": "https://travis-ci.org/workflowproducts/postcard",
+    "zip_url": "https://github.com/workflowproducts/postcard/archive/master.zip",
+    "api_url": "https://api.github.com/repos/workflowproducts/postcard"
+  },
+  "scripts": {
+    "start": "electron ."
+  },
+  "keywords": [
+    "envelope",
+    "electron",
+    "postgres",
+    "application"
+  ],
+  "author": {
+    "name": "Nunzio Tocci",
+    "email": "nunzio@workflowproducts.com",
+    "url": "http://www.workflowproducts.com/"
+  },
+  "license": "Apache-2.0",
+  "homepage": "https://github.com/workflowproducts/postcard#readme",
+  "dependencies": {
+    "electron-context-menu": "^0.6.0",
+    "electron-window-state": "^3.1.0",
+    "fs-extra": "^1.0.0",
+    "hidefile": "^2.0.0",
+    "postgresql-portable-darwin64": "9.6.0-build2",
+    "postgresql-portable-linux32": "9.6.0-build2",
+    "postgresql-portable-linux64": "9.6.0-build2",
+    "postgresql-portable-windows": "9.6.0-build2"
+  },
+  "devDependencies": {
+    "electron": "^1.4.5"
+  },
+  "optionalDependencies": {
+    "postgresql-portable-darwin64": "9.6.0-build2",
+    "postgresql-portable-linux32": "9.6.0-build2",
+    "postgresql-portable-linux64": "9.6.0-build2",
+    "postgresql-portable-windows": "9.6.0-build2"
+  },
+  "gitHead": "0634d5f75f843aa89aeef6d89b6b0f36945a9778",
+  "_npmVersion": "2.15.9",
+  "_nodeVersion": "4.6.0",
+  "dist": {
+    "shasum": "293c2d3ec14be898c09d3d04717d513ac78d17a7",
+    "tarball": "http://registry.npmjs.org/postcard/-/postcard-1.0.3.tgz"
+  },
+  "versions": [
+    {
+      "number": "1.0.0",
+      "date": "2016-11-08T21:21:54.215Z"
+    },
+    {
+      "number": "1.0.1",
+      "date": "2016-11-08T21:33:52.226Z"
+    },
+    {
+      "number": "1.0.2",
+      "date": "2016-11-08T22:21:08.462Z"
+    },
+    {
+      "number": "1.0.3",
+      "date": "2016-11-08T22:33:22.330Z"
+    }
+  ],
+  "created": "2016-11-08T21:21:54.215Z",
+  "modified": "2016-11-08T22:33:22.330Z",
+  "lastPublisher": {
+    "name": "nunziotocci",
+    "email": "nunzio@tocci.xyz"
+  },
+  "owners": [
+    {
+      "name": "nunziotocci",
+      "email": "nunzio@tocci.xyz"
+    }
+  ],
+  "readme": "# Postcard\r\nA database driven application platform leveraging Electron and PostgreSQL.\r\n\r\n### What is Postcard\r\nPostcard is a tool for developers that makes writing and distributing database driven applications easy!\r\n\r\nPostcard makes it easy to build database apps. Programs for business, like accounting or inventory. Once you've written your application, Postcard helps you package your app for Linux, Mac and Windows computers. When users go to open your app, Postcard will manage starting PostgeSQL.\r\n\r\nIn order to accomplish all this magic, Postcard makes several interesting choices to bring together an application stack. But although a lot of work went into Postcard, it would not have been possible without the following projects:\r\n\r\n#### Electron \r\nElectron (by Github) is an application shell that provides you with several important components. The first is the web engine from Chromium, which renders your HTML and Javascript just like a browser. In order to display your HTML and Javascript files you need a webserver, so Electron provides and embeds a Node server. Finally, Electron helps you package your application so that you can easily distribute it to Linux, Mac and Windows computers. Electron is a powerful combination of technologies and effort.\r\n\r\n#### PostgreSQL\r\nPostgreSQL is an enterprise class, open source object-relational database. Postcard brings statically compiled binaries of PostgreSQL for Linux, Mac and Windows into Node modules.\r\n\r\nPostcard is still pre-release. Please ignore it for now.\r\n\r\n# Getting Started\r\n\r\nThere are two functions in Postcard:\r\n\r\n`postcard.init(appName, callback)`\r\n- **appName**\r\n - Postcard uses this to create a folder to hold the PostgreSQL cluster\r\n- **callback(postgresPort)**\r\n - This function will be called after envelope has started up, the `postgresPort` argument will allow you to tell connect to postgres\r\n\r\n`postcard.quit()`\r\n- You need to call this function when the process is going to exit. If you don't then PostgreSQL will keep running and you won't be able to start it the next time.\r\n\r\n## Example\r\n\r\n#### index.js\r\n\r\n\tconst postcard = require('postcard');\r\n\tconst electron = require('electron');\r\n\tconst path = require('path');\r\n\tconst app = electron.app;\r\n\tconst BrowserWindow = electron.BrowserWindow;\r\n\r\n\tlet mainWindows = [];\r\n\r\n\tapp.on('ready', function () {\r\n\t\tpostcard.init('postcard-example', function (postgresPort) {\r\n\t\t\tvar curWindow = new BrowserWindow({\r\n\t\t\t\t'width': 1024,\r\n\t\t\t\t'height': 768\r\n\t\t\t});\r\n\t\t\tmainWindows.push(curWindow);\r\n\r\n\t\t\tcurWindow.loadURL('file://' + path.normalize(app.getAppPath() + '/web_root/index.html'), {\r\n\t\t\t\t'extraHeaders': 'pragma: no-cache\\n'\r\n\t\t\t});\r\n\r\n\t\t\t// Emitted when the window is closed.\r\n\t\t\tcurWindow.on('closed', function() {\r\n\t\t\t\tmainWindows.splice(mainWindows.indexOf(curWindow), 1);\r\n\t\t\t});\r\n\t\t});\r\n\t});\r\n\r\n\tapp.on('quit', function() {\r\n\t\tpostcard.quit();\r\n\t});\r\n\r\n\r\nThen in web_root/index.html, to connect to PostgreSQL, you would do something like:\r\n\r\n\tconst pg = require('pg');\r\n\tvar client = new pg.Client({\r\n\t\tuser: 'main_user',\r\n\t\tdatabase: 'postgres',\r\n\t\tpassword: 'password',\r\n\t\thost: (process.platform == 'win32' ? '127.0.0.1' : '/tmp'),\r\n\t\tport: fs.readFileSync(path.normalize(os.homedir() + '/.postcard-example/postgres_port')).toString(),\r\n\t\tssl: false\r\n\t});\r\n\r\n\r\n\r\n"
+}

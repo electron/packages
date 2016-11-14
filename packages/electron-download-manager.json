@@ -1,0 +1,71 @@
+{
+  "name": "electron-download-manager",
+  "version": "1.1.0",
+  "description": "Manage downloadItems from Electron's BrowserWindows without user interaction, allowing single file download and bulk downloading",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "user": "danielnieto",
+    "repo": "electron-download-manager",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/danielnieto/electron-download-manager/tarball/master",
+    "clone_url": "https://github.com/danielnieto/electron-download-manager",
+    "https_url": "https://github.com/danielnieto/electron-download-manager",
+    "travis_url": "https://travis-ci.org/danielnieto/electron-download-manager",
+    "zip_url": "https://github.com/danielnieto/electron-download-manager/archive/master.zip",
+    "api_url": "https://api.github.com/repos/danielnieto/electron-download-manager"
+  },
+  "keywords": [
+    "electron",
+    "download",
+    "downloaditem",
+    "manager",
+    "bulk",
+    "multi"
+  ],
+  "author": {
+    "name": "Daniel Nieto",
+    "email": "danielnieto89@gmail.com"
+  },
+  "license": "ISC",
+  "homepage": "https://github.com/danielnieto/electron-download-manager#readme",
+  "dependencies": {
+    "electron": "^1.4.3",
+    "unused-filename": "^0.1.0"
+  },
+  "gitHead": "67074ebbb933bc82da1723339c490a2b0a30e7f5",
+  "_npmVersion": "3.7.5",
+  "_nodeVersion": "4.2.6",
+  "dist": {
+    "shasum": "9ea24400aec873e89a61a5f2c4a4f4efd73c8a3e",
+    "tarball": "http://registry.npmjs.org/electron-download-manager/-/electron-download-manager-1.1.0.tgz"
+  },
+  "stars": 1,
+  "versions": [
+    {
+      "number": "1.0.0",
+      "date": "2016-10-12T00:48:44.670Z"
+    },
+    {
+      "number": "1.1.0",
+      "date": "2016-10-12T19:40:24.172Z"
+    }
+  ],
+  "created": "2016-10-12T00:48:44.670Z",
+  "modified": "2016-10-15T22:25:04.414Z",
+  "lastPublisher": {
+    "name": "danielnieto",
+    "email": "danielnieto89@gmail.com"
+  },
+  "owners": [
+    {
+      "name": "danielnieto",
+      "email": "danielnieto89@gmail.com"
+    }
+  ],
+  "readme": "# electron-download-manager\n\n> Manage downloadItems from [Electron](http://electron.atom.io)'s BrowserWindows without user interaction, allowing single file download and bulk downloading asynchronously\n\n\n## Why?\n\n- Register global listener that attaches to all newly created BrowserWindow instances\n- Automatically download the file to a given folder, without user prompt\n- Callback when download has completed (or failed)\n- Bulk download: pass a bunch of links and all will get downloaded, with a callback once they're all done.\n\n\n## Install\n\n```\n$ npm install --save electron-download-manager\n```\n\n\n## Usage\n\n### Register it for all windows\n\nRegister the listener (that will catch all DownloadItems)\n\n```js\nconst electron = require(\"electron\");\nconst {app, BrowserWindow} = electron;\n\nconst DownloadManager = require(\"electron-download-manager\");\n\nDownloadManager.register();\n\napp.on(\"ready\", () => {\n    let mainWindow = new BrowserWindow();\n});\n\n```\n\n### Examples\n\nAfter registering you must wait until at least 1 window is created to call DownloadManager.download function\n\n####Single file download from the Main Process\n\n```js\n\nconst electron = require(\"electron\");\nconst {app, BrowserWindow} = electron;\n\nconst DownloadManager = require(\"electron-download-manager\");\n\nDownloadManager.register({downloadFolder: app.getPath(\"downloads\") + \"/my-app\"});;\n\napp.on(\"ready\", ()=>{\n    let mainWindow = new BrowserWindow();\n\n    mainWindow.loadURL(`file://${__dirname}/app/index.html`);\n\n\t//Single file download\n\tDownloadManager.download({\n        url: \"http://i.imgur.com/CuVQGg3.jpg\"\n    }, function(error, url){\n        if(error){\n            console.log(\"ERROR: \" + url);\n            return;\n        }\n\n        console.log(\"DONE: \" + url);\n    });\n\n});\n\n\n```\n\nThis example downloads *http://i.imgur.com/CuVQGg3.jpg* file to *user-downloads-folder/my-app/CuVQGg3.jpg*\n\n####Bulk file download from the Main Process\n\n```js\n\nconst electron = require(\"electron\");\nconst {app, BrowserWindow} = electron;\n\nconst DownloadManager = require(\"electron-download-manager\");\n\nDownloadManager.register({downloadFolder: app.getPath(\"downloads\") + \"/my-app\"});;\n\napp.on(\"ready\", ()=>{\n    let mainWindow = new BrowserWindow();\n\n    mainWindow.loadURL(`file://${__dirname}/app/index.html`);\n\n\t    var links= [\n                \"http://i.imgur.com/CuVQGg3.jpg\",\n                \"http://i.imgur.com/ba0urZs.jpg\",\n                \"http://i.imgur.com/69huDpg.png\",\n                \"http://i.imgur.com/ruDR7E6.png\"\n            ];\n\n        //Bulk file download    \n        DownloadManager.bulkDownload({\n                urls: links,\n                path: \"bulk-download\"\n            }, function(error, finished, errors){\n                if(error){\n                    console.log(\"finished: \" + finished);\n                    console.log(\"errors: \" + errors);\n                    return;\n                }\n\n                console.log(\"all finished\");\n            });\n\n});\n\n\n```\nThis example downloads 4 files to *user-downloads-folder/my-app/bulk-downloads*\n\n#### Use from Renderer Process\n\nOnce you've registered the listener on the Main process at any time you can call the download function `remote`\n\n```js\nrequire(\"electron\").remote.require(\"electron-download-manager\").download({\n                url: \"http://i.imgur.com/CuVQGg3.jpg\"\n            }, function(error, url){\n                if(error){\n                    alert(\"ERROR: \" + url);\n                    return;\n                }\n\n                alert(\"DONE: \" + url);\n\n            });\n```\n\n## API\n\n### DownloadManager.register([options])\n\n### options\n\n#### downloadFolder\n\nType: `string`<br>\nDefault: `app.getPath(\"downloads\")]`\n\nSet a folder where all downloadItems will be downloaded to. It will also be the parent folder for individual folders of each download. Explained below in Download function.\n\nBy default, this \"root\" folder will be user's OS downloads folder\n([read about this](http://electron.atom.io/docs/api/app/#appgetpathname))\n\n### DownloadManager.download(options, callback(error, url))\n\n###options\n\n####url\nType: `string`\n\nThe url of the file to be downloaded\n\n####path\nType: `string`<br>\nDefault: `\"\"`\n\nSet a folder where this downloadItems will be downloaded to. This folder is relative to downloadFolder location set in the register function. By default it will be downloaded to root of downloadFolder which would be user download's folder.\n\n###callback(error, url)\n\nCallback to be called when the download has reached a \"done\" state, which could mean two things or it was successful, or it failed.\n\nif the download was successful the callback's error will be `null`\n\n`url` returns the url of the downloaded file\n\n### DownloadManager.bulkDownload(options, callback(error, finished, failed))\n\n###options\n\n####urls\nType: `array`\n\nArray of `url` strings of the files to be downloaded\n\n####path\nType: `string`<br>\nDefault: `\"\"`\n\nSet a path to save all the bulk downloaded files. This folder is relative to downloadFolder location set in the register function. By default it will be downloaded to root of downloadFolder which would be user download's folder.\n\n###callback(error, finished, failed)\nCallback to be called when all downloadItems in this bulk have been completed\n\n`error` will be `null` if everything was successful <br>\n`finished` is an array containing the `url` of successfully downloaded items <br>\n`failed` is an array containing the `url` of failed downloaded items (if any)\n\n## Questions\nFeel free to open Issues to ask questions about using this module, PRs are very welcome and encouraged.\n\n## License\n\nMIT © Daniel Nieto, loosely based on code from [Sindre Sorhus](https://sindresorhus.com)\n"
+}

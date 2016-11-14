@@ -1,0 +1,83 @@
+{
+  "name": "outlinejs-babel-jsxgettext",
+  "version": "0.4.0",
+  "description": "A tool like jsxgettext, but works for es6 + jsx that babel support.",
+  "main": "index.js",
+  "scripts": {
+    "test": "standard"
+  },
+  "repository": {
+    "user": "outlinejs",
+    "repo": "outlinejs-babel-jsxgettext",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/outlinejs/outlinejs-babel-jsxgettext/tarball/master",
+    "clone_url": "https://github.com/outlinejs/outlinejs-babel-jsxgettext",
+    "https_url": "https://github.com/outlinejs/outlinejs-babel-jsxgettext",
+    "travis_url": "https://travis-ci.org/outlinejs/outlinejs-babel-jsxgettext",
+    "zip_url": "https://github.com/outlinejs/outlinejs-babel-jsxgettext/archive/master.zip",
+    "api_url": "https://api.github.com/repos/outlinejs/outlinejs-babel-jsxgettext"
+  },
+  "keywords": [
+    "i18n",
+    "internationalization",
+    "gettext",
+    "jsxgettext",
+    "babel",
+    "jsx",
+    "es6",
+    "es7"
+  ],
+  "bin": {
+    "babel-jsxgettext": "./bin/cli.js"
+  },
+  "standard": {
+    "parser": "babel-eslint"
+  },
+  "author": {
+    "name": "Fraser Xu"
+  },
+  "license": "MIT",
+  "homepage": "https://github.com/outlinejs/outlinejs-babel-jsxgettext#readme",
+  "dependencies": {
+    "acorn": "^2.4.0",
+    "babylon": "^5.8.23",
+    "gettext-parser": "^1.1.1",
+    "meow": "^3.3.0"
+  },
+  "devDependencies": {
+    "babel-eslint": "^4.1.3",
+    "standard": "^5.3.1"
+  },
+  "gitHead": "6610f4b9919fffcf21f3b513ebc005bd17cc92e3",
+  "_npmVersion": "3.8.6",
+  "_nodeVersion": "5.12.0",
+  "dist": {
+    "shasum": "8cac0479b6465e8739579a8de469b4cdbdb3142f",
+    "tarball": "http://registry.npmjs.org/outlinejs-babel-jsxgettext/-/outlinejs-babel-jsxgettext-0.4.0.tgz"
+  },
+  "versions": [
+    {
+      "number": "0.3.0",
+      "date": "2016-10-13T11:56:46.292Z"
+    },
+    {
+      "number": "0.4.0",
+      "date": "2016-10-13T15:23:00.714Z"
+    }
+  ],
+  "created": "2016-10-13T11:56:46.292Z",
+  "modified": "2016-10-13T15:23:00.714Z",
+  "lastPublisher": {
+    "name": "xpicio",
+    "email": "xpicio@gmail.com"
+  },
+  "owners": [
+    {
+      "name": "xpicio",
+      "email": "xpicio@gmail.com"
+    }
+  ],
+  "readme": "outlinejs-babel-jsxgettext\n================\n\n[![NPM version][npm-image]][npm-url]\n[![build status][travis-image]][travis-url]\n[![Downloads][downloads-image]][downloads-url]\n\nA tool like [jsxgettext](https://www.npmjs.com/package/jsxgettext), but works for `es6` + `jsx` that babel support.\n\nI have a blog post explain my translation workflow in an [Electron app with React + Babel](https://fraserxu.me/2015/09/18/translation-workflow-in-Electron-application/).\n\n### Usage\n\n```\n$ npm install outlinejs-babel-jsxgettext --save-dev\n```\n\n### API\n\n```JavaScript\nvar parser = require('outlinejs-babel-jsxgettext')\n\n/**\n * The parser function\n * @param  {String}   input  The path to source JavaScript file\n * @param  {String}   output The path of the output PO file\n * @param  {Function} cb     The callback function\n */\nparser(inputs, output, function (err) {\n  if (err) throw err\n  console.log('Job completed!')\n})\n```\n\n### Command line usage\n\nInstall globally with npm `npm install outlinejs-babel-jsxgettext -g`\n\n```\n  A tool like jsxgettext, but works for es6 + jsx that babel support\n\n  Options\n    --help                     Show this help\n    --version                  Current version of package\n    -i | --input               String - The path to soure JavaScript file\n    -o | --output              String - The path of the output PO file\n\n  Usage\n    $ outlinejs-babel-jsxgettext --help\n    $ outlinejs-babel-jsxgettext <input> <output>\n\n  Examples\n    $ outlinejs-babel-jsxgettext ./test/*.js ./test.po\n```\n\n\n### Why\n\nI'm Using Babel with React + JSX for most of my project, but there's no perfect and direct way to generate `.po` file from ES6 + JSX code(or from a directory).\n\n`acron-jsx` support `jsx` but not all the feature I use in Babel(ES7 etc.,). So I grab the `babylon` parser from Babel and use it to generate `.po` file.\n\n### License\nMIT\n\n[npm-image]: https://img.shields.io/npm/v/outlinejs-babel-jsxgettext.svg?style=flat-square\n[npm-url]: https://npmjs.org/package/outlinejs-babel-jsxgettext\n[travis-image]: https://img.shields.io/travis/outlinejs/outlinejs-babel-jsxgettext/master.svg?style=flat-square\n[travis-url]: https://travis-ci.org/outlinejs/outlinejs-babel-jsxgettext\n[downloads-image]: http://img.shields.io/npm/dm/outlinejs-babel-jsxgettext.svg?style=flat-square\n[downloads-url]: https://npmjs.org/package/outlinejs-babel-jsxgettext\n"
+}

@@ -1,7 +1,7 @@
 {
   "name": "particle-cli",
   "description": "Simple Node commandline application for working with your Particle devices and using the Particle Cloud",
-  "version": "1.17.0",
+  "version": "1.17.1",
   "author": {
     "name": "David Middlecamp"
   },
@@ -53,7 +53,9 @@
     "coverage": "istanbul cover ./node_modules/mocha/bin/_mocha -- -R spec test/",
     "coveralls": "istanbul cover ./node_modules/mocha/bin/_mocha --report lcovonly -- -R spec test/ && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js && rm -rf ./coverage",
     "doctoc": "doctoc --title '## Table of Contents' README.md",
-    "update-firmware-binaries": "node scripts/update-firmware-binaries.js"
+    "update-firmware-binaries": "node scripts/update-firmware-binaries.js",
+    "version": "npm run update-changelog",
+    "update-changelog": "VERSION=`node -p -e \"require('./package.json').version\"` bash -c 'read -p \"Update CHANGELOG.md for version $VERSION and press ENTER when done.\"' && git add CHANGELOG.md"
   },
   "contributors": [
     {
@@ -110,13 +112,13 @@
     "should": "^7.0.2",
     "sinon": "^1.15.4"
   },
-  "gitHead": "025e3c9835ca6b9907d1f14583f7ff1293758c62",
+  "gitHead": "5e5f5f0fa4811c42e9fd9fd96cad97ae34ceb1be",
   "homepage": "https://github.com/spark/particle-cli#readme",
   "_npmVersion": "3.8.6",
   "_nodeVersion": "5.12.0",
   "dist": {
-    "shasum": "e7ba29dfc20591d2fb3feb4e438fd140156db094",
-    "tarball": "http://registry.npmjs.org/particle-cli/-/particle-cli-1.17.0.tgz"
+    "shasum": "96dcaab9f3648160168dd00b6bc0634e3172396f",
+    "tarball": "http://registry.npmjs.org/particle-cli/-/particle-cli-1.17.1.tgz"
   },
   "stars": 1,
   "versions": [
@@ -395,10 +397,14 @@
     {
       "number": "1.17.0",
       "date": "2016-09-30T18:48:02.442Z"
+    },
+    {
+      "number": "1.17.1",
+      "date": "2016-11-11T19:54:26.453Z"
     }
   ],
   "created": "2015-05-15T04:30:10.272Z",
-  "modified": "2016-09-30T18:48:02.442Z",
+  "modified": "2016-11-11T19:54:26.453Z",
   "lastPublisher": {
     "name": "monkbroc",
     "email": "jvanier@gmail.com"

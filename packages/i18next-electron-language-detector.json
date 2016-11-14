@@ -1,6 +1,6 @@
 {
   "name": "i18next-electron-language-detector",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "Electron language detector for i18next.",
   "keywords": [
     "electron",
@@ -27,18 +27,26 @@
     "zip_url": "https://github.com/neruchev/i18next-electron-language-detector/archive/master.zip",
     "api_url": "https://api.github.com/repos/neruchev/i18next-electron-language-detector"
   },
-  "main": "index.js",
+  "main": "build/index.js",
+  "scripts": {
+    "build": "babel src -d build"
+  },
   "peerDependencies": {
     "i18next": "3.*",
-    "electron-prebuilt": "*"
+    "electron": "*"
   },
-  "gitHead": "120206fa1a2a3ba5d9365ee2d057a826ec39432f",
-  "scripts": {},
-  "_npmVersion": "3.10.3",
-  "_nodeVersion": "6.3.1",
+  "devDependencies": {
+    "babel-cli": "*",
+    "babel-plugin-add-module-exports": "*",
+    "babel-preset-es2015": "*",
+    "babel-register": "*"
+  },
+  "gitHead": "d9fec3f3e7c6b98e03b281cae96bebfaa6f2d351",
+  "_npmVersion": "3.10.8",
+  "_nodeVersion": "6.8.1",
   "dist": {
-    "shasum": "550fc01797646dfff1516b265bd4a5fdfae3d466",
-    "tarball": "http://registry.npmjs.org/i18next-electron-language-detector/-/i18next-electron-language-detector-0.0.3.tgz"
+    "shasum": "037f3a167dab34a956577f33551eb6f0eb067df8",
+    "tarball": "http://registry.npmjs.org/i18next-electron-language-detector/-/i18next-electron-language-detector-0.0.4.tgz"
   },
   "versions": [
     {
@@ -52,10 +60,14 @@
     {
       "number": "0.0.3",
       "date": "2016-10-02T16:19:01.513Z"
+    },
+    {
+      "number": "0.0.4",
+      "date": "2016-10-22T21:52:15.731Z"
     }
   ],
   "created": "2016-10-02T14:26:07.410Z",
-  "modified": "2016-10-02T16:19:01.513Z",
+  "modified": "2016-10-22T21:52:15.731Z",
   "lastPublisher": {
     "name": "neruchev",
     "email": "k.neruchev@gmail.com"
@@ -66,5 +78,5 @@
       "email": "k.neruchev@gmail.com"
     }
   ],
-  "readme": "# Introduction\n\n[![npm version](https://img.shields.io/npm/v/i18next-electron-language-detector.svg?style=flat-square)](https://www.npmjs.com/package/i18next-electron-language-detector)\n[![David](https://img.shields.io/david/neruchev/i18next-electron-language-detector.svg?style=flat-square)](https://david-dm.org/neruchev/i18next-electron-language-detector)\n\n\nThis is an [i18next](http://i18next.com/) language detection plugin which used to determine user language in the [Electron.js](http://electron.atom.io/) application by applying an [app.getLocale()](http://electron.atom.io/docs/all/#appgetlocale) method.\n\n\n## Installation\n\nSource can be loaded via [npm](https://www.npmjs.com/package/i18next-electron-language-detector).\n\n```\n# npm package\n$ npm install i18next-electron-language-detector\n```\n\n\n## Usage\n\n```javascript\nimport i18next from 'i18next'\nimport LanguageDetector from 'i18next-electron-language-detector';\n\ni18next\n  .use(LanguageDetector)\n  .init()\n```\n\n**Note**: On Windows you have to call it after the ready events gets emitted."
+  "readme": "# Introduction\n\n[![npm version](https://img.shields.io/npm/v/i18next-electron-language-detector.svg?style=flat-square)](https://www.npmjs.com/package/i18next-electron-language-detector)\n[![dependencies](https://img.shields.io/david/neruchev/i18next-electron-language-detector.svg?style=flat-square)](https://david-dm.org/neruchev/i18next-electron-language-detector)\n[![peerDependencies](https://img.shields.io/david/peer/neruchev/i18next-electron-language-detector.svg?style=flat-square)](https://david-dm.org/neruchev/i18next-electron-language-detector?type=peer)\n[![downloads](https://img.shields.io/npm/dm/i18next-electron-language-detector.svg?style=flat-square)](http://npm-stat.com/charts.html?package=i18next-electron-language-detector)\n[![MIT License](https://img.shields.io/npm/l/i18next-electron-language-detector.svg?style=flat-square)](http://opensource.org/licenses/MIT)\n\n\nThis is an [i18next](http://i18next.com/) language detection plugin which is used to determine user language in the [Electron.js](http://electron.atom.io/) application by applying an [app.getLocale()](http://electron.atom.io/docs/all/#appgetlocale) method.\n\n\n## Installation\n\nSource can be loaded via [npm](https://www.npmjs.com/package/i18next-electron-language-detector).\n\n```\n# npm package\n$ npm install i18next-electron-language-detector\n```\n\n\n## Usage\n\n```javascript\nimport i18next from 'i18next'\nimport LanguageDetector from 'i18next-electron-language-detector';\n\ni18next\n  .use(LanguageDetector)\n  .init()\n```\n\n**Note**: On Windows you have to call it after the ready events gets emitted."
 }

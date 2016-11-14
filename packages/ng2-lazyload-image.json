@@ -1,6 +1,6 @@
 {
   "name": "ng2-lazyload-image",
-  "version": "2.2.1",
+  "version": "2.2.2",
   "description": "Lazy image loader for Angular 2",
   "main": "index.js",
   "scripts": {
@@ -8,7 +8,7 @@
     "test": "karma start karma.local.js",
     "test:ci": "karma start karma.ci.js",
     "start": "webpack-dev-server --inline --progress --profile --colors --watch --display-error-details --display-cached --hot",
-    "build": "tsc",
+    "build": "tsc && ngc src",
     "build:example": "webpack --config webpack.prod.config.js --profile --display-error-details --display-cache",
     "e2e": "protractor",
     "e2e:ci": "protractor protractor.ci.conf.js",
@@ -41,22 +41,25 @@
   "license": "MIT",
   "homepage": "https://github.com/tjoskar/ng2-lazyload-image#readme",
   "peerDependencies": {
-    "@angular/core": "^2.0.0-rc.6",
+    "@angular/core": "^2.0.0",
     "rxjs": "^5.0.0-beta.11"
   },
   "dependencies": {},
   "devDependencies": {
-    "@angular/common": "2.0.0-rc.6",
-    "@angular/compiler": "2.0.0-rc.6",
-    "@angular/core": "2.0.0-rc.6",
-    "@angular/platform-browser": "2.0.0-rc.6",
-    "@angular/platform-browser-dynamic": "2.0.0-rc.6",
+    "@angular/common": "^2.0.1",
+    "@angular/compiler": "^2.0.1",
+    "@angular/compiler-cli": "^0.6.3",
+    "@angular/core": "^2.0.1",
+    "@angular/platform-browser": "^2.0.1",
+    "@angular/platform-browser-dynamic": "^2.0.1",
+    "@angular/platform-server": "^2.0.1",
+    "@angular/router": "^3.0.2",
     "@types/core-js": "^0.9.32",
     "@types/mocha": "^2.2.31",
     "@types/node": "^6.0.38",
     "awesome-typescript-loader": "^2.2.4",
     "core-js": "^2.4.1",
-    "electron-prebuilt": "^1.3.5",
+    "electron-prebuilt": "^1.4.3",
     "karma": "^1.2.0",
     "karma-electron-launcher": "^0.1.0",
     "karma-mocha": "^1.1.1",
@@ -64,17 +67,17 @@
     "karma-sourcemap-loader": "^0.3.7",
     "karma-webpack": "^1.8.0",
     "lodash.isequal": "^4.4.0",
-    "mocha": "^3.0.2",
+    "mocha": "^3.1.2",
     "null-loader": "^0.1.1",
     "protractor": "^4.0.0",
-    "rxjs": "5.0.0-beta.11",
+    "rxjs": "^5.0.0-rc.1",
     "simple-spy": "^2.0.3",
     "source-map-loader": "^0.1.5",
     "typescript": "^2.0.0",
-    "wallaby-webpack": "0.0.24",
+    "wallaby-webpack": "0.0.25",
     "webpack": "^1.13.2",
-    "webpack-dev-server": "^1.15.1",
-    "zone.js": "0.6.17"
+    "webpack-dev-server": "^1.16.2",
+    "zone.js": "^0.6.22"
   },
   "greenkeeper": {
     "ignore": [
@@ -82,12 +85,12 @@
       "zone.js"
     ]
   },
-  "gitHead": "0f998ba0a549c303d60814f1f0013e8061824520",
+  "gitHead": "3fd63624f5177b170b18342314d923173f733be6",
   "_npmVersion": "3.10.7",
   "_nodeVersion": "6.6.0",
   "dist": {
-    "shasum": "3146ab1e01356825b5216c58d9ab96501603c597",
-    "tarball": "http://registry.npmjs.org/ng2-lazyload-image/-/ng2-lazyload-image-2.2.1.tgz"
+    "shasum": "a06638ed3a96ac571006950a18615106f3ba1623",
+    "tarball": "http://registry.npmjs.org/ng2-lazyload-image/-/ng2-lazyload-image-2.2.2.tgz"
   },
   "stars": 1,
   "versions": [
@@ -130,10 +133,30 @@
     {
       "number": "2.2.1",
       "date": "2016-09-24T13:57:14.765Z"
+    },
+    {
+      "number": "2.2.2-beta.1",
+      "date": "2016-10-12T17:23:29.049Z"
+    },
+    {
+      "number": "2.2.2-beta.2",
+      "date": "2016-10-12T17:43:43.725Z"
+    },
+    {
+      "number": "2.2.2-beta.3",
+      "date": "2016-10-12T17:49:50.735Z"
+    },
+    {
+      "number": "2.2.2-beta.4",
+      "date": "2016-10-12T17:57:06.342Z"
+    },
+    {
+      "number": "2.2.2",
+      "date": "2016-10-12T19:51:48.604Z"
     }
   ],
   "created": "2016-02-21T12:25:48.617Z",
-  "modified": "2016-09-24T13:57:14.765Z",
+  "modified": "2016-10-12T19:51:48.604Z",
   "lastPublisher": {
     "name": "tjoskar",
     "email": "mr.karlsson.oskar@gmail.com"

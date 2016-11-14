@@ -1,0 +1,76 @@
+{
+  "version": "1.0.1",
+  "scripts": {
+    "start": "electron app.js --disable-http-cache"
+  },
+  "name": "odk-sync",
+  "dependencies": {
+    "collect-stream": "^1.1.1",
+    "concat-stream": "^1.5.1",
+    "drag-and-drop-files": "0.0.1",
+    "drag-drop": "^2.3.1",
+    "end-of-stream": "^1.1.0",
+    "filereader-stream": "^1.0.0",
+    "hyperkv": "^1.7.0",
+    "JSONStream": "^1.2.1",
+    "pump": "^1.0.1",
+    "read-only-stream": "^2.0.0",
+    "strftime": "^0.9.2",
+    "through2": "^2.0.1",
+    "yo-yo": "^1.1.1"
+  },
+  "description": "**Experimental - use with caution, may not be supported in the future**",
+  "main": "index.js",
+  "repository": {
+    "user": "digidem",
+    "repo": "odk-sync",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/digidem/odk-sync/tarball/master",
+    "clone_url": "https://github.com/digidem/odk-sync",
+    "https_url": "https://github.com/digidem/odk-sync",
+    "travis_url": "https://travis-ci.org/digidem/odk-sync",
+    "zip_url": "https://github.com/digidem/odk-sync/archive/master.zip",
+    "api_url": "https://api.github.com/repos/digidem/odk-sync"
+  },
+  "keywords": [
+    "odk"
+  ],
+  "author": {
+    "name": "James Halliday",
+    "url": "Digital Democracy"
+  },
+  "license": "MIT",
+  "homepage": "https://github.com/digidem/odk-sync#readme",
+  "gitHead": "2409c94e693261af1dafdf68b0c011198c65ec3b",
+  "_npmVersion": "3.10.3",
+  "_nodeVersion": "6.7.0",
+  "dist": {
+    "shasum": "6a4308d6f768428932fd59876a16c9b1735270e0",
+    "tarball": "http://registry.npmjs.org/odk-sync/-/odk-sync-1.0.1.tgz"
+  },
+  "versions": [
+    {
+      "number": "1.0.0",
+      "date": "2016-11-11T23:15:43.334Z"
+    },
+    {
+      "number": "1.0.1",
+      "date": "2016-11-11T23:23:18.149Z"
+    }
+  ],
+  "created": "2016-11-11T23:15:43.334Z",
+  "modified": "2016-11-11T23:23:18.149Z",
+  "lastPublisher": {
+    "name": "gmaclennan",
+    "email": "gmaclennan@digital-democracy.org"
+  },
+  "owners": [
+    {
+      "name": "gmaclennan",
+      "email": "gmaclennan@digital-democracy.org"
+    }
+  ],
+  "readme": "# odk-sync\n\n**Experimental - use with caution, may not be supported in the future**\n\nsynchronize odk data\n\n# api\n\n```\nvar Sync = require('odk-sync')\n```\n\n## var sync = Sync(opts)\n\nCreate a new odk sync instance.\n\n* `opts.db` - required leveldb instance\n* `opts.log` - required hyperlog instance\n\n## var stream = sync.replicate(opts, cb)\n\nCreate a duplex `stream` for replication.\n\nWhen replication is finished `cb(err)` fires.\n\nOptionally:\n\n* `opts.live` - when `true`, keep replication open\n\n## sync.importDevice(dir, cb)\n\nImport a directory of odk data from the file system at `dir`.\n\n## sync.importFiles(files, cb)\n\nImport an array of browser `File` objects `file`. You can use this method with\n[drag-drop][] to drop an odk directory into a web page.\n\n`cb(err, docs)` fires with an array of `docs`. Each `doc` in `docs`:\n\n* `doc.files` - an array of string keys for attached files\n* `doc.info` - odk form data\n\n## var stream = sync.list(opts, cb)\n\nList odk records as a readable `stream` or collect the records as\n`cb(null, docs)`. Each `doc` in `docs` has:\n\n* `doc.files` - an array of string keys for attached files\n* `doc.info` - odk form data\n\n## var geostream = sync.geojson(opts, cb)\n\nList odk records as a `stream` of geojson data or collect a string of geojson as\n`cb(err, str)`.\n\n## sync.read(key, cb)\n\nRead all the documents under `key` as `cb(err, streams)`.\n\n[drag-drop]: https://npmjs.com/package/drag-drop\n"
+}

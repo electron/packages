@@ -1,0 +1,125 @@
+{
+  "name": "electron-redux",
+  "version": "1.2.2",
+  "description": "Use redux in the main and browser process in electron",
+  "main": "dist/index.js",
+  "scripts": {
+    "test": "jest -c .jestrc --coverage",
+    "lint": "eslint 'src/**/*'",
+    "build": "babel src --out-dir dist"
+  },
+  "keywords": [
+    "electron",
+    "redux",
+    "react",
+    "desktop"
+  ],
+  "author": {
+    "name": "Burkhard Reffeling",
+    "email": "burkhard.reffeling@gmail.com",
+    "url": "http://www.burgiblog.com"
+  },
+  "repository": {
+    "user": "hardchor",
+    "repo": "electron-redux",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/hardchor/electron-redux/tarball/master",
+    "clone_url": "https://github.com/hardchor/electron-redux",
+    "https_url": "https://github.com/hardchor/electron-redux",
+    "travis_url": "https://travis-ci.org/hardchor/electron-redux",
+    "zip_url": "https://github.com/hardchor/electron-redux/archive/master.zip",
+    "api_url": "https://api.github.com/repos/hardchor/electron-redux"
+  },
+  "homepage": "https://github.com/hardchor/electron-redux",
+  "license": "MIT",
+  "dependencies": {
+    "debug": "^2.2.0",
+    "electron": "^1.4.3",
+    "flux-standard-action": "^1.0.0",
+    "redux": "^3.4.0"
+  },
+  "peerDependencies": {
+    "electron": "^1.4.3",
+    "redux": "^3.4.0"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.16.0",
+    "babel-eslint": "^7.0.0",
+    "babel-jest": "^16.0.0",
+    "babel-plugin-transform-object-rest-spread": "^6.16.0",
+    "babel-polyfill": "^6.16.0",
+    "babel-preset-es2015": "^6.16.0",
+    "babel-preset-es2016": "^6.16.0",
+    "babel-preset-es2017": "^6.16.0",
+    "eslint": "^3.7.1",
+    "eslint-config-airbnb-base": "^8.0.0",
+    "eslint-plugin-import": "^1.16.0",
+    "jest": "^16.0.1",
+    "jest-cli": "^16.0.1"
+  },
+  "gitHead": "a946a0ff55f24204c342c80eef2e98b7d2cb53bb",
+  "_npmVersion": "3.10.8",
+  "_nodeVersion": "6.9.1",
+  "dist": {
+    "shasum": "e189c4216360b9102a9a427806da5e88190aa337",
+    "tarball": "http://registry.npmjs.org/electron-redux/-/electron-redux-1.2.2.tgz"
+  },
+  "stars": 1,
+  "versions": [
+    {
+      "number": "0.0.1",
+      "date": "2016-10-11T18:41:44.843Z"
+    },
+    {
+      "number": "0.0.2",
+      "date": "2016-10-11T18:42:37.390Z"
+    },
+    {
+      "number": "1.0.0",
+      "date": "2016-10-11T21:59:19.765Z"
+    },
+    {
+      "number": "1.1.0",
+      "date": "2016-10-12T17:35:04.481Z"
+    },
+    {
+      "number": "1.1.1",
+      "date": "2016-10-12T18:13:29.567Z"
+    },
+    {
+      "number": "1.1.2",
+      "date": "2016-10-12T21:20:46.619Z"
+    },
+    {
+      "number": "1.1.3",
+      "date": "2016-10-14T06:14:35.397Z"
+    },
+    {
+      "number": "1.2.0",
+      "date": "2016-10-16T13:28:49.854Z"
+    },
+    {
+      "number": "1.2.1",
+      "date": "2016-10-31T19:45:00.379Z"
+    },
+    {
+      "number": "1.2.2",
+      "date": "2016-11-12T13:11:47.972Z"
+    }
+  ],
+  "created": "2016-10-11T18:41:44.843Z",
+  "modified": "2016-11-12T13:11:47.972Z",
+  "lastPublisher": {
+    "name": "hardchor",
+    "email": "burkhard.reffeling@gmail.com"
+  },
+  "owners": [
+    {
+      "name": "hardchor",
+      "email": "burkhard.reffeling@gmail.com"
+    }
+  ],
+  "readme": "# electron-redux\n\n[![CircleCI](https://circleci.com/gh/hardchor/electron-redux/tree/master.svg?style=svg)](https://circleci.com/gh/hardchor/electron-redux/tree/master)\n[![Stories in Ready](https://badge.waffle.io/hardchor/electron-redux.png?label=ready&title=Ready)](https://waffle.io/hardchor/electron-redux)\n\n- [Motivation](#motivation)\n- [Install](#install)\n- [Actions](#actions)\n\t- [Local actions (renderer process)](#local-actions-renderer-process)\n\t- [Aliased actions (main process)](#aliased-actions-main-process)\n- [Under the hood](#under-the-hood)\n\n## Motivation\n\nUsing redux with electron poses a couple of problems. Processes ([main](https://github.com/electron/electron/blob/master/docs/tutorial/quick-start.md#main-process) and [renderer](https://github.com/electron/electron/blob/master/docs/tutorial/quick-start.md#renderer-process)) are completely isolated, and the only mode of communication is [IPC](https://github.com/electron/electron/blob/master/docs/api/ipc-main.md).\n\n* Where do you keep the state?\n* How do you keep the state in sync across processes?\n\n\n### The solution\n\n`electron-redux` offers an easy to use solution. The redux store on the main process becomes the single source of truth, and stores in the renderer processes become mere proxies. See [under the hood](#under-the-hood).\n\n\n## Install\n\n```\nnpm install --save electron-redux\n```\n\n`electron-redux` comes as redux middleware that is really easy to apply:\n\n```javascript\n// in the main store\nimport {\n  forwardToRenderer,\n  triggerAlias,\n  replayActionMain,\n} from 'electron-redux';\n\nconst todoApp = combineReducers(reducers);\n\nconst store = createStore(\n  todoApp,\n  initialState, // optional\n  applyMiddleware(\n    triggerAlias, // optional, see below\n    ...otherMiddleware,\n    forwardToRenderer, // IMPORTANT! This goes last\n  )\n);\n\nreplayActionMain(store);\n```\n\n```javascript\n// in the renderer store\nimport {\n  forwardToMain,\n  replayActionRenderer,\n  getInitialStateRenderer,\n} from 'electron-redux';\n\nconst todoApp = combineReducers(reducers);\nconst initialState = getInitialStateRenderer();\n\nconst store = createStore(\n  todoApp,\n  initialState,\n  applyMiddleware(\n    forwardToMain, // IMPORTANT! This goes first\n    ...otherMiddleware,\n  )\n);\n\nreplayActionRenderer(store);\n```\n\nCheck out [timesheets](https://github.com/hardchor/timesheets/blob/4991fd472dbb12b0c6e6806c6a01ea3385ab5979/app/shared/store/configureStore.js) for a more advanced example.\n\nAnd that's it! You are now ready to fire actions without having to worry about synchronising your state between processes.\n\n\n## Actions\n\nActions fired **HAVE TO** be [FSA](https://github.com/acdlite/flux-standard-action#example)-compliant, i.e. have a `type` and `payload` property. Any actions not passing this test will be ignored and simply passed through to the next middleware.\n\n> NB: `redux-thunk` is not FSA-compliant out of the box, but can still produce compatible actions once the async action fires.\n\n### Local actions (renderer process)\n\nBy default, all actions are being broadcast from the main store to the renderer processes. However, some state should only live in the renderer (e.g. `isPanelOpen`). `electron-redux` introduces the concept of action scopes.\n\nTo stop an action from propagating from renderer to main store, simply set the scope to `local`:\n\n```javascript\nfunction myLocalActionCreator() {\n  return {\n    type: 'MY_ACTION',\n    payload: 123,\n    meta: {\n      scope: 'local',\n    },\n  };\n}\n```\n\n\n### Aliased actions (main process)\n\nMost actions will originate from the renderer side, but not all should be executed there as well. A great example is fetching of data from an external source, e.g. using [promise middleware](https://github.com/acdlite/redux-promise), which should only ever be executed once (i.e. in the main process). This can be achieved using the `triggerAlias` middleware mentioned [above](#install).\n\nUsing the `createAliasedAction` helper, you can quite easily create actions that are are only being executed in the main process, and the result of which is being broadcast to the renderer processes.\n\n```javascript\nimport { createAliasedAction } from 'electron-redux';\n\nexport const importGithubProjects = createAliasedAction(\n  'IMPORT_GITHUB_PROJECTS', // unique identifier\n  (accessToken, repoFullName) => ({\n    type: 'IMPORT_GITHUB_PROJECTS',\n    payload: importProjects(accessToken, repoFullName),\n  })\n);\n```\n\nCheck out [timesheets](https://github.com/hardchor/timesheets/blob/4ccaf08dee4e1a02850b5bf36e37c537fef7d710/app/shared/actions/github.js) for more examples.\n\n\n\n## Under the hood\n\nTODO\n\n- forwardToMain\n- forwardToRenderer\n- triggerAlias\n"
+}

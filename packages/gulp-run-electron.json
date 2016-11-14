@@ -1,6 +1,6 @@
 {
   "name": "gulp-run-electron",
-  "version": "2.0.0",
+  "version": "3.0.1",
   "description": "Gulp plugin for starting Electron.",
   "main": "src/index.js",
   "scripts": {
@@ -38,17 +38,17 @@
     "through2": "^2.0.1"
   },
   "peerDependencies": {
-    "electron-prebuilt": "*"
+    "electron": "*"
   },
   "devDependencies": {
     "gulp": "^3.9.1"
   },
-  "gitHead": "12e4d37cb019e1f2eaf08cebb3a68e874bdaa171",
-  "_npmVersion": "3.8.1",
-  "_nodeVersion": "5.9.0",
+  "gitHead": "a8330608e602f667e460cb463cbac53fdaa87976",
+  "_npmVersion": "3.10.3",
+  "_nodeVersion": "6.7.0",
   "dist": {
-    "shasum": "96dfd39d8d5aa40f3a7c223ff1c076c204856760",
-    "tarball": "http://registry.npmjs.org/gulp-run-electron/-/gulp-run-electron-2.0.0.tgz"
+    "shasum": "4e775d9b2f9fd667b3e96459a916c68525c3d919",
+    "tarball": "http://registry.npmjs.org/gulp-run-electron/-/gulp-run-electron-3.0.1.tgz"
   },
   "stars": 1,
   "versions": [
@@ -79,10 +79,22 @@
     {
       "number": "2.0.0",
       "date": "2016-05-21T19:44:42.659Z"
+    },
+    {
+      "number": "2.0.1",
+      "date": "2016-09-21T22:26:12.191Z"
+    },
+    {
+      "number": "3.0.0",
+      "date": "2016-10-14T00:14:32.259Z"
+    },
+    {
+      "number": "3.0.1",
+      "date": "2016-10-14T00:26:15.248Z"
     }
   ],
   "created": "2015-04-27T06:33:54.459Z",
-  "modified": "2016-05-21T19:44:42.659Z",
+  "modified": "2016-10-14T00:26:15.248Z",
   "lastPublisher": {
     "name": "thesbros",
     "email": "ops991923@gmail.com"
@@ -93,5 +105,5 @@
       "email": "ops991923@gmail.com"
     }
   ],
-  "readme": "# gulp-run-electron\nGulp plugin for starting Electron.\nRequires a peer dependency of `electron-prebuilt`.\n\n## Usage\n```js\nvar runElectron = require(\"gulp-run-electron\");\ngulp.src(\"app\")\n\t.pipe(runElectron([\"--cli-argument\", \"--another\"], {cwd: \"path\"}));\n```\n\n### runElectron(args: array, opts: object)\nRuns the electron executable on the src folder with the specified arguments, and\npasses the opts object to child_process.spawn.\n\nBoth arguments are optional. If you only want to use the opts object, pass an\nempty array for args.\n\n### runElectron.rerun\nFor gulp.watch, exits Electron and opens it again; use like so:\n```js\ngulp.watch(\"files/*\", [\"files\", runElectron.rerun]);\n```\n"
+  "readme": "# gulp-run-electron\nGulp plugin for starting Electron.\nRequires a peer dependency of `electron`.\n\n## Usage\n```js\nvar runElectron = require(\"gulp-run-electron\");\ngulp.src(\"app\")\n\t.pipe(runElectron([\"--cli-argument\", \"--another\"], {cwd: \"path\"}));\n```\n\n### runElectron(args: array, opts: object)\nRuns the electron executable on the src folder with the specified arguments, and\npasses the opts object to child_process.spawn.\n\nBoth arguments are optional. If you only want to use the opts object, pass an\nempty array for args.\n\n### runElectron.rerun\nFor gulp.watch, exits Electron and opens it again; use like so:\n```js\ngulp.watch(\"files/*\", [\"files\", runElectron.rerun]);\n```\n"
 }

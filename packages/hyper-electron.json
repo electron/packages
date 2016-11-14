@@ -1,0 +1,71 @@
+{
+  "name": "hyper-electron",
+  "version": "0.0.1",
+  "description": "Access Hyper electron instance from a cli process",
+  "repository": {
+    "user": "parro-it",
+    "repo": "hyper-electron",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/parro-it/hyper-electron/tarball/master",
+    "clone_url": "https://github.com/parro-it/hyper-electron",
+    "https_url": "https://github.com/parro-it/hyper-electron",
+    "travis_url": "https://travis-ci.org/parro-it/hyper-electron",
+    "zip_url": "https://github.com/parro-it/hyper-electron/archive/master.zip",
+    "api_url": "https://api.github.com/repos/parro-it/hyper-electron"
+  },
+  "author": {
+    "name": "Andrea",
+    "email": "andrea@parro.it"
+  },
+  "license": "MIT",
+  "files": [
+    "index.js",
+    "example.js"
+  ],
+  "scripts": {
+    "xo": "xo --ignore example.js --ignore index.js",
+    "test": "npm run setup --silent && ava && xo --ignore example.js --ignore index.js",
+    "setup": "rollup -f cjs main.js --output index.js",
+    "cover-test": "npm run setup --silent && nyc ava && npm run xo --ignore example.js --ignore index.js",
+    "cover-publish": "nyc report --reporter=text-lcov | coveralls"
+  },
+  "keywords": [],
+  "tonicExampleFilename": "example.js",
+  "jsnext:main": "main.js",
+  "devDependencies": {
+    "ava": "^0.16.0",
+    "coveralls": "^2.11.14",
+    "nyc": "^8.4.0",
+    "rollup": "^0.36.3",
+    "xo": "^0.17.0"
+  },
+  "gitHead": "cfbae6de209b10db93fcabcf136c6384bd2d7423",
+  "homepage": "https://github.com/parro-it/hyper-electron#readme",
+  "_npmVersion": "3.10.8",
+  "_nodeVersion": "7.0.0",
+  "dist": {
+    "shasum": "fac202f86b5f52e452df1189ae20a4f8ed3eb7ae",
+    "tarball": "http://registry.npmjs.org/hyper-electron/-/hyper-electron-0.0.1.tgz"
+  },
+  "versions": [
+    {
+      "number": "0.0.1",
+      "date": "2016-11-08T20:11:30.191Z"
+    }
+  ],
+  "created": "2016-11-08T20:11:30.191Z",
+  "modified": "2016-11-08T20:11:30.191Z",
+  "lastPublisher": {
+    "name": "parroit",
+    "email": "andrea@parro.it"
+  },
+  "owners": [
+    {
+      "name": "parroit",
+      "email": "andrea@parro.it"
+    }
+  ],
+  "readme": "# hyper-electron\n\n> Access Hyper electron instance from a cli process\n\nbackground details relevant to understanding what this module does\n\n## Usage\n\ndescription of the example\n\n```js\nconst hyperElectron = require('hyper-electron');\n\nconsole.log({hyperElectron});\n```\n\nThis will output\n\n```\n```\n\n[![Travis Build Status](https://img.shields.io/travis/parro-it/hyper-electron/master.svg)](http://travis-ci.org/parro-it/hyper-electron)\n[![Code Climate](https://img.shields.io/codeclimate/github/parro-it/hyper-electron.svg)](https://codeclimate.com/github/parro-it/hyper-electron)\n[![Coverage Status](https://coveralls.io/repos/github/parro-it/hyper-electron/badge.svg?branch=master)](https://coveralls.io/github/parro-it/hyper-electron?branch=master)\n[![NPM downloads](https://img.shields.io/npm/dt/hyper-electron.svg)](https://npmjs.org/package/hyper-electron)\n\n\n## API\n\n```js\nconst hyperElectron = (): object\n```\n\ndescription of the function signature\n\n## Install\n\nWith [npm](https://npmjs.org/) installed, run\n\n```\n$ npm install hyper-electron\n```\n\n## See Also\n\n- [`noffle/common-readme`](https://github.com/noffle/common-readme)\n\n## License\n\nMIT\n\n"
+}

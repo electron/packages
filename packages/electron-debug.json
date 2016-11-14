@@ -1,6 +1,6 @@
 {
   "name": "electron-debug",
-  "version": "1.0.1",
+  "version": "1.1.0",
   "description": "Adds useful debug features to your Electron app",
   "license": "MIT",
   "repository": {
@@ -43,7 +43,7 @@
   },
   "devDependencies": {
     "devtron": "^1.1.0",
-    "electron-prebuilt": "0.37.7",
+    "electron": "^1.3.3",
     "xo": "*"
   },
   "xo": {
@@ -56,13 +56,13 @@
       "import/no-extraneous-dependencies": "off"
     }
   },
-  "gitHead": "9f2ffcfdd447ccc65d7654945162e22263828fef",
+  "gitHead": "74e90e8899457f473ac08588a8310f2839b6f1aa",
   "homepage": "https://github.com/sindresorhus/electron-debug#readme",
-  "_npmVersion": "2.15.0",
-  "_nodeVersion": "4.4.2",
+  "_npmVersion": "3.10.8",
+  "_nodeVersion": "6.9.1",
   "dist": {
-    "shasum": "1f3050d619fc552218f0773657240544479f2008",
-    "tarball": "http://registry.npmjs.org/electron-debug/-/electron-debug-1.0.1.tgz"
+    "shasum": "050a9c3f906fffc2492510cf8ac31d0f32a579e1",
+    "tarball": "http://registry.npmjs.org/electron-debug/-/electron-debug-1.1.0.tgz"
   },
   "stars": 3,
   "versions": [
@@ -129,10 +129,14 @@
     {
       "number": "1.0.1",
       "date": "2016-06-18T22:10:34.737Z"
+    },
+    {
+      "number": "1.1.0",
+      "date": "2016-11-05T10:01:34.562Z"
     }
   ],
   "created": "2015-06-01T11:10:41.709Z",
-  "modified": "2016-06-18T22:10:34.737Z",
+  "modified": "2016-11-05T10:01:34.562Z",
   "lastPublisher": {
     "name": "sindresorhus",
     "email": "sindresorhus@gmail.com"
@@ -143,5 +147,5 @@
       "email": "sindresorhus@gmail.com"
     }
   ],
-  "readme": "# electron-debug\n\n> Adds useful debug features to your [Electron](http://electron.atom.io) app\n\nIdeas for more debug features [welcome!](https://github.com/sindresorhus/electron-debug/issues/new)\n\n\n## Features\n\n### DevTools\n\nToggle DevTools.\n\n- macOS: <kbd>Cmd</kbd> <kbd>Alt</kbd> <kbd>I</kbd> or <kbd>F12</kbd>\n- Linux: <kbd>Ctrl</kbd> <kbd>Shift</kbd> <kbd>I</kbd> or <kbd>F12</kbd>\n- Windows: <kbd>Ctrl</kbd> <kbd>Shift</kbd> <kbd>I</kbd> or <kbd>F12</kbd>\n\n### Reload\n\nForce reload the window.\n\n- macOS: <kbd>Cmd</kbd> <kbd>R</kbd> or <kbd>F5</kbd>\n- Linux: <kbd>Ctrl</kbd> <kbd>R</kbd> or <kbd>F5</kbd>\n- Windows: <kbd>Ctrl</kbd> <kbd>R</kbd> or <kbd>F5</kbd>\n\n### Activates Devtron\n\n[Devtron](http://electron.atom.io/devtron/) is the official Electron DevTools extension.\n\nJust install it in your app and we'll activate it for you.\n\n```\n$ npm install --save-dev devtron\n```\n\n\n## Install\n\n```\n$ npm install --save electron-debug\n```\n\n\n## Usage\n\n```js\nconst {app, BrowserWindow} = require('electron');\n\nrequire('electron-debug')({showDevTools: true});\n\nlet win;\n\napp.on('ready', () => {\n\twin = new BrowserWindow();\n});\n```\n\n\n## API\n\nOnly runs when in [development](https://github.com/sindresorhus/electron-is-dev), unless overridden by the `enabled` option. So no need to guard it for production.\n\n### electronDebug([options])\n\nInstall keyboard shortcuts and optionally activate DevTools on each created `BrowserWindow`.\n\n#### options\n\n##### enabled\n\nType: `boolean`<br>\n\n##### showDevTools\n\nType: `boolean` `string`<br>\nDefault: `false`<br>\nValues: `'right'` `'bottom'` `'undocked'` `false` `true` *(last dock state)*\n\nShow DevTools on each created `BrowserWindow`.\n\n### devTools([window])\n\nToggle DevTools for the specified `BrowserWindow` instance or the focused one.\n\n#### window\n\nType: `BrowserWindow`<br>\nDefault: the focused `BrowserWindow`\n\n### refresh([window])\n\nReload the specified `BrowserWindow` instance or the focused one.\n\n#### window\n\nType: `BrowserWindow`<br>\nDefault: the focused `BrowserWindow`\n\n### openDevTools([window], [showDevTools])\n\nOpen DevTools for the specified `BrowserWindow` instance or the focused one.\n\n#### window\n\nType: `BrowserWindow`<br>\nDefault: the focused `BrowserWindow`\n\n#### showDevTools\n\nType: `boolean` `string`<br>\nDefault: `false`<br>\nValues: `'right'` `'bottom'` `'undocked'` `false` `true` *(last dock state)*\n\nShow DevTools on each created `BrowserWindow`.\n\n\n## Related\n\n- [electron-config](https://github.com/sindresorhus/electron-config) - Simple config handling for your Electron app or module\n- [electron-context-menu](https://github.com/sindresorhus/electron-context-menu) - Context menu for your Electron app\n- [electron-dl](https://github.com/sindresorhus/electron-dl) - Simplified file downloads for your Electron app\n- [electron-is-dev](https://github.com/sindresorhus/electron-is-dev) - Check if Electron is running in development\n- [debug-menu](https://github.com/parro-it/debug-menu) - Chrome-like debug context-menu for Electron\n\n\n## License\n\nMIT © [Sindre Sorhus](https://sindresorhus.com)\n"
+  "readme": "# electron-debug\n\n> Adds useful debug features to your [Electron](http://electron.atom.io) app\n\nIdeas for more debug features [welcome!](https://github.com/sindresorhus/electron-debug/issues/new)\n\n\n## Features\n\n### DevTools\n\nToggle DevTools.\n\n- macOS: <kbd>Cmd</kbd> <kbd>Alt</kbd> <kbd>I</kbd> or <kbd>F12</kbd>\n- Linux: <kbd>Ctrl</kbd> <kbd>Shift</kbd> <kbd>I</kbd> or <kbd>F12</kbd>\n- Windows: <kbd>Ctrl</kbd> <kbd>Shift</kbd> <kbd>I</kbd> or <kbd>F12</kbd>\n\n### Reload\n\nForce reload the window.\n\n- macOS: <kbd>Cmd</kbd> <kbd>R</kbd> or <kbd>F5</kbd>\n- Linux: <kbd>Ctrl</kbd> <kbd>R</kbd> or <kbd>F5</kbd>\n- Windows: <kbd>Ctrl</kbd> <kbd>R</kbd> or <kbd>F5</kbd>\n\n### Element Inspector\n\nOpen DevTools and focus the Element Inspector tool.\n\n- macOS: <kbd>Cmd</kbd> <kbd>Shift</kbd> <kbd>C</kbd>\n- Linux: <kbd>Ctrl</kbd> <kbd>Shift</kbd> <kbd>C</kbd>\n- Windows: <kbd>Ctrl</kbd> <kbd>Shift</kbd> <kbd>C</kbd>\n\n### Activates Devtron\n\n[Devtron](http://electron.atom.io/devtron/) is the official Electron DevTools extension.\n\nJust install it in your app and we'll activate it for you.\n\n```\n$ npm install --save-dev devtron\n```\n\n\n## Install\n\n```\n$ npm install --save electron-debug\n```\n\n\n## Usage\n\n```js\nconst {app, BrowserWindow} = require('electron');\n\nrequire('electron-debug')({showDevTools: true});\n\nlet win;\n\napp.on('ready', () => {\n\twin = new BrowserWindow();\n});\n```\n\n\n## API\n\nOnly runs when in [development](https://github.com/sindresorhus/electron-is-dev), unless overridden by the `enabled` option. So no need to guard it for production.\n\n### electronDebug([options])\n\nInstall keyboard shortcuts and optionally activate DevTools on each created `BrowserWindow`.\n\n#### options\n\n##### enabled\n\nType: `boolean`<br>\n\n##### showDevTools\n\nType: `boolean` `string`<br>\nDefault: `false`<br>\nValues: `'right'` `'bottom'` `'undocked'` `false` `true` *(last dock state)*\n\nShow DevTools on each created `BrowserWindow`.\n\n### devTools([window])\n\nToggle DevTools for the specified `BrowserWindow` instance or the focused one.\n\n#### window\n\nType: `BrowserWindow`<br>\nDefault: the focused `BrowserWindow`\n\n### refresh([window])\n\nReload the specified `BrowserWindow` instance or the focused one.\n\n#### window\n\nType: `BrowserWindow`<br>\nDefault: the focused `BrowserWindow`\n\n### openDevTools([window], [showDevTools])\n\nOpen DevTools for the specified `BrowserWindow` instance or the focused one.\n\n#### window\n\nType: `BrowserWindow`<br>\nDefault: the focused `BrowserWindow`\n\n#### showDevTools\n\nType: `boolean` `string`<br>\nDefault: `false`<br>\nValues: `'right'` `'bottom'` `'undocked'` `false` `true` *(last dock state)*\n\nShow DevTools on each created `BrowserWindow`.\n\n\n## Related\n\n- [electron-config](https://github.com/sindresorhus/electron-config) - Simple config handling for your Electron app or module\n- [electron-context-menu](https://github.com/sindresorhus/electron-context-menu) - Context menu for your Electron app\n- [electron-dl](https://github.com/sindresorhus/electron-dl) - Simplified file downloads for your Electron app\n- [electron-is-dev](https://github.com/sindresorhus/electron-is-dev) - Check if Electron is running in development\n- [debug-menu](https://github.com/parro-it/debug-menu) - Chrome-like debug context-menu for Electron\n\n\n## License\n\nMIT © [Sindre Sorhus](https://sindresorhus.com)\n"
 }

@@ -1,6 +1,6 @@
 {
   "name": "electron-screenshot-app",
-  "version": "4.0.2",
+  "version": "4.0.3",
   "description": "electron module to create screenshots",
   "main": "index.js",
   "scripts": {
@@ -29,12 +29,12 @@
   },
   "license": "MIT",
   "devDependencies": {
-    "electron-mocha": "^2.3.1",
-    "electron": "1.4.2",
-    "xo": "^0.16.0",
+    "electron": "1.4.5",
+    "electron-mocha": "^3.1.1",
+    "is-jpg": "^1.0.0",
     "is-png": "^1.0.0",
-    "is-jpg": "^v1.0.0",
-    "pngparse": "^2.0.1"
+    "pngparse": "^2.0.1",
+    "xo": "^0.17.0"
   },
   "xo": {
     "esnext": true,
@@ -45,13 +45,13 @@
   "dependencies": {
     "deep-assign": "^2.0.0"
   },
-  "gitHead": "57a8efb7ea45dc3dc5860dd475ca13335f3d8606",
+  "gitHead": "2d8a34699ee2707eff1317ccc60ed53cfd42028a",
   "homepage": "https://github.com/FWeinb/electron-screenshot-app#readme",
-  "_npmVersion": "3.9.3",
-  "_nodeVersion": "6.2.1",
+  "_npmVersion": "3.10.8",
+  "_nodeVersion": "7.0.0",
   "dist": {
-    "shasum": "01c2e65bfb8f6dbb2f175686f67ef1a0e40a1aea",
-    "tarball": "http://registry.npmjs.org/electron-screenshot-app/-/electron-screenshot-app-4.0.2.tgz"
+    "shasum": "086f221fbd25bcc2a1e94e3094def91538054f4f",
+    "tarball": "http://registry.npmjs.org/electron-screenshot-app/-/electron-screenshot-app-4.0.3.tgz"
   },
   "stars": 0,
   "versions": [
@@ -114,10 +114,14 @@
     {
       "number": "4.0.2",
       "date": "2016-10-03T09:59:08.430Z"
+    },
+    {
+      "number": "4.0.3",
+      "date": "2016-11-06T23:40:21.528Z"
     }
   ],
   "created": "2015-07-25T09:38:58.533Z",
-  "modified": "2016-10-03T09:59:08.430Z",
+  "modified": "2016-11-06T23:40:21.528Z",
   "lastPublisher": {
     "name": "fweinb",
     "email": "Fabrice@weinberg.me"
@@ -128,5 +132,5 @@
       "email": "Fabrice@weinberg.me"
     }
   ],
-  "readme": "# electron-screenshot-app [![Build Status](https://travis-ci.org/FWeinb/electron-screenshot-app.svg?branch=master)](https://travis-ci.org/FWeinb/electron-screenshot-app)\n\n> Make screenshots\n\n\n## Install\n\n```sh\n$ npm install electron-screenshot-app --save\n```\n\n\n## Usage\n\n```js\nvar app = require('electron').app;\nvar screenshot = require('electron-screenshot-app');\n\n  app.on('ready', function(){\n    screenshot({\n      url: 'http://sassdoc.com',\n      width: 1920,\n      height: 1080\n    },\n    function(err, image){\n      // image.data is a Node Buffer\n      // image.size contains width and height\n      // image.devicePixelRatio will contain window.devicePixelRatio\n    })\n  });\n```\n\n\n## API\n\n### screenshot(options, callback(err, img))\n\nTakes a screenshots with `options`. The callback is called with an img object like\n\n```js\n{\n  data: <Buffer >\n  size: {\n    width: X\n    height: N\n  }\n}\n```\n\nThe screenshot is always saved as an png file.\n\n#### options\n\n#### url\n*Required*\nType: `String`\n\n##### delay\n\nType: `number` *(milliseconds)*  \nDefault: `0`\n\nUseful when the site does things after load that you want to capture.\n\n##### width\n\nType: `number`\nDefault: `0`\n\nSpecify the with of the browser window\n\n##### height\n\nType: `number`\nDefault: `0`\n\nSpecify the height of the browser window\n\n##### crop\n\nType: `Object`  \nDefault: `undefined`\n\nA crop object may look like this:\n```js\n{\n  x : 10,\n  y : 10,\n  width : 100,\n  height : 100\n}\n```\n\n##### css\n\nType: `String`  \nDefault: `undefined`\n\nThis css will be injected into the page before the screenshot is taken.\n\n##### js\n\nType: `String` || `Function`  \nDefault: `undefined`\n\nThis is either a `String` or a `Function`. If it is a `String` it must contain a\nfunction definition that takes on parameter e.g.\n```js\njs: 'function(takeScreenshot){ /*Do some stuff*/ takeScreenshot();}'\n```\nor\n```js\njs: 'takeScreenshot => { /*Do some stuff*/ takeScreenshot();}'\n```\n\nIf it is a function you can just add it like:\n```js\njs: function(takeScreenshot){ /*Do some stuff*/ takeScreenshot();}\n```\nor\n```js\njs: (takeScreenshot) => { /*Do some stuff*/ takeScreenshot();}\n```\n\n##### transparent\n\nType: `Boolean`  \nDefault: `false`\n\nThis will enable transparency. Keep in mind that most site do set a background color on the html/body tag.\nYou can overwrite this by using the `css` option using something like `html,body{ background-color: transparent !important;}`.\n\n##### page\n\nType: `Boolean`  \nDefault: `false`\n\nThis will try to capture the whole page. `width` and `height` are considered the minimum size.\n\n##### loadEvent\n\nType: `String`\nDefault: `undefined`\n\nThe name of a custom page side event which can be used to trigger the page capture. This can be useful for client heavy javascript sites which take much longer to initialise than the time take to load the DOM. Such sites can send an event in the following manner.\n\n```js\n    var evt = document.createEvent(\"Event\");\n    evt.initEvent(\"cust-loaded\",true,true);\n    document.dispatchEvent(evt);\n```\n\n##### format\n\nType: `String`\nDefault: `png`\n\nformat to encode the image. only `'jpeg'` or `'png'` are supported\n\n##### quality\n\nType: `number`\nDefault: `80`\n\nIf format is `'jpeg'`, defines the quality of the image '0-100'\n\n\n\n# Changelog\n\n##### `4.0.2`\n\n* Fixed a bug where the wrong function was passed to the javascript function. ([#8](https://github.com/FWeinb/electron-screenshot-app/pull/8))\n\n##### `4.0.1`\n\n* Update to `electron@1.3.1`\n\n\n##### `4.0.0`\n\n* <s>Use [`view-painted`](https://github.com/electron/electron/pull/6524) Event instead of `requestAnimationFrame` hack.</s>\n* Update to `electron@1.3.1`\n\n##### `3.1.1`\n\n* Fix screenshot bug on windows. See [here](https://github.com/FWeinb/electron-screenshot-service/issues/24).\n\n##### `3.1.0`\n\n* Add support for specifying `options.js` to contain a JS function that will be executed.\n\n##### `3.0.2`\n\n* Fix a bug in correctly merging `nodeIntegration: false`.\n\n##### `3.0.1`\n\n* Improve `page` size detection.\n\n##### `3.0.0`\n\n* Upgrade to `electron@1.1.0`\n* Change option name of `loadevent` to `loadEvent`\n* Removed `nodeIntegration`. Use `webPreferences.nodeIntegration` instead.\n* Removed `secure`. Use `webPreferences.webSecurity` instead\n\n##### `2.2.0`\n\n* Update to `electron@0.36.7`\n* Add support for `jpeg` using the `format` option.\n* Add a custom [`loadevent`](#loadEvent) that can be send by the page.\n* Make it possible to disable webSecurity via `secure` option.\n\nThanks to [nealshail](https://github.com/nealshail) for these features.\n\n##### `2.1.0`\n\n* Update to `electron@0.36.6`\n* Allow all [options](http://electron.atom.io/docs/v0.36.5/api/browser-window/#new-browserwindow-options) to be passed to electron\n\n##### `2.0.0`\n\n* Update to `electron@0.36.5`\n\n##### `1.1.2`\n\n* Improve workaround introduced in `1.1.1`\n\n##### `1.1.1`\n\n* Add workaround for electron issue [#2510](https://github.com/atom/electron/issues/2610) in electron >= 0.30.6 on a Mac\n\n##### `1.1.0`\n\n* Use new `dom-ready` event (>electron@0.31.1) to inject custom css into page before screenshot is taken.\n* Expose `cleanup` to callback to ensure that the window is closed after data was processed.\n\n##### `1.0.0`\n\n* Inital release\n"
+  "readme": "# electron-screenshot-app [![Build Status](https://travis-ci.org/FWeinb/electron-screenshot-app.svg?branch=master)](https://travis-ci.org/FWeinb/electron-screenshot-app)\n\n> Make screenshots\n\n\n## Install\n\n```sh\n$ npm install electron-screenshot-app --save\n```\n\n\n## Usage\n\n```js\nvar app = require('electron').app;\nvar screenshot = require('electron-screenshot-app');\n\n  app.on('ready', function(){\n    screenshot({\n      url: 'http://sassdoc.com',\n      width: 1920,\n      height: 1080\n    },\n    function(err, image){\n      // image.data is a Node Buffer\n      // image.size contains width and height\n      // image.devicePixelRatio will contain window.devicePixelRatio\n    })\n  });\n```\n\n\n## API\n\n### screenshot(options, callback(err, img))\n\nTakes a screenshots with `options`. The callback is called with an img object like\n\n```js\n{\n  data: <Buffer >\n  size: {\n    width: X\n    height: N\n  }\n}\n```\n\nThe screenshot is always saved as an png file.\n\n#### options\n\n#### url\n*Required*\nType: `String`\n\n##### delay\n\nType: `number` *(milliseconds)*  \nDefault: `0`\n\nUseful when the site does things after load that you want to capture.\n\n##### width\n\nType: `number`\nDefault: `0`\n\nSpecify the with of the browser window\n\n##### height\n\nType: `number`\nDefault: `0`\n\nSpecify the height of the browser window\n\n##### crop\n\nType: `Object`  \nDefault: `undefined`\n\nA crop object may look like this:\n```js\n{\n  x : 10,\n  y : 10,\n  width : 100,\n  height : 100\n}\n```\n\n##### css\n\nType: `String`  \nDefault: `undefined`\n\nThis css will be injected into the page before the screenshot is taken.\n\n##### js\n\nType: `String` || `Function`  \nDefault: `undefined`\n\nThis is either a `String` or a `Function`. If it is a `String` it must contain a\nfunction definition that takes on parameter e.g.\n```js\njs: 'function(takeScreenshot){ /*Do some stuff*/ takeScreenshot();}'\n```\nor\n```js\njs: 'takeScreenshot => { /*Do some stuff*/ takeScreenshot();}'\n```\n\nIf it is a function you can just add it like:\n```js\njs: function(takeScreenshot){ /*Do some stuff*/ takeScreenshot();}\n```\nor\n```js\njs: (takeScreenshot) => { /*Do some stuff*/ takeScreenshot();}\n```\n\n##### transparent\n\nType: `Boolean`  \nDefault: `false`\n\nThis will enable transparency. Keep in mind that most site do set a background color on the html/body tag.\nYou can overwrite this by using the `css` option using something like `html,body{ background-color: transparent !important;}`.\n\n##### page\n\nType: `Boolean`  \nDefault: `false`\n\nThis will try to capture the whole page. `width` and `height` are considered the minimum size.\n\n##### loadEvent\n\nType: `String`\nDefault: `undefined`\n\nThe name of a custom page side event which can be used to trigger the page capture. This can be useful for client heavy javascript sites which take much longer to initialise than the time take to load the DOM. Such sites can send an event in the following manner.\n\n```js\n    var evt = document.createEvent(\"Event\");\n    evt.initEvent(\"cust-loaded\",true,true);\n    document.dispatchEvent(evt);\n```\n\n##### format\n\nType: `String`\nDefault: `png`\n\nformat to encode the image. only `'jpeg'` or `'png'` are supported\n\n##### quality\n\nType: `number`\nDefault: `80`\n\nIf format is `'jpeg'`, defines the quality of the image '0-100'\n\n\n\n# Changelog\n\n##### `4.0.3`\n\n* Add missing `loadevent` back. Thanks [nealshail](https://github.com/nealshail)\n\n##### `4.0.2`\n\n* Fixed a bug where the wrong function was passed to the javascript function. ([#8](https://github.com/FWeinb/electron-screenshot-app/pull/8))\n\n##### `4.0.1`\n\n* Update to `electron@1.3.1`\n\n\n##### `4.0.0`\n\n* <s>Use [`view-painted`](https://github.com/electron/electron/pull/6524) Event instead of `requestAnimationFrame` hack.</s>\n* Update to `electron@1.3.1`\n\n##### `3.1.1`\n\n* Fix screenshot bug on windows. See [here](https://github.com/FWeinb/electron-screenshot-service/issues/24).\n\n##### `3.1.0`\n\n* Add support for specifying `options.js` to contain a JS function that will be executed.\n\n##### `3.0.2`\n\n* Fix a bug in correctly merging `nodeIntegration: false`.\n\n##### `3.0.1`\n\n* Improve `page` size detection.\n\n##### `3.0.0`\n\n* Upgrade to `electron@1.1.0`\n* Change option name of `loadevent` to `loadEvent`\n* Removed `nodeIntegration`. Use `webPreferences.nodeIntegration` instead.\n* Removed `secure`. Use `webPreferences.webSecurity` instead\n\n##### `2.2.0`\n\n* Update to `electron@0.36.7`\n* Add support for `jpeg` using the `format` option.\n* Add a custom [`loadevent`](#loadEvent) that can be send by the page.\n* Make it possible to disable webSecurity via `secure` option.\n\nThanks to [nealshail](https://github.com/nealshail) for these features.\n\n##### `2.1.0`\n\n* Update to `electron@0.36.6`\n* Allow all [options](http://electron.atom.io/docs/v0.36.5/api/browser-window/#new-browserwindow-options) to be passed to electron\n\n##### `2.0.0`\n\n* Update to `electron@0.36.5`\n\n##### `1.1.2`\n\n* Improve workaround introduced in `1.1.1`\n\n##### `1.1.1`\n\n* Add workaround for electron issue [#2510](https://github.com/atom/electron/issues/2610) in electron >= 0.30.6 on a Mac\n\n##### `1.1.0`\n\n* Use new `dom-ready` event (>electron@0.31.1) to inject custom css into page before screenshot is taken.\n* Expose `cleanup` to callback to ensure that the window is closed after data was processed.\n\n##### `1.0.0`\n\n* Inital release\n"
 }

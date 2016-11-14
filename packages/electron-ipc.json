@@ -1,0 +1,87 @@
+{
+  "name": "electron-ipc",
+  "version": "0.3.0",
+  "description": "IPC for Electron using promises",
+  "main": "index.js",
+  "scripts": {
+    "test": "npm run lint",
+    "lint": "node ./node_modules/standard/bin/cmd | node ./node_modules/snazzy/bin/cmd"
+  },
+  "author": {
+    "name": "Taka Kojima",
+    "email": "taka@gigafied.com"
+  },
+  "license": "MIT",
+  "repository": {
+    "user": "gigafied",
+    "repo": "electron-ipc",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/gigafied/electron-ipc/tarball/master",
+    "clone_url": "https://github.com/gigafied/electron-ipc",
+    "https_url": "https://github.com/gigafied/electron-ipc",
+    "travis_url": "https://travis-ci.org/gigafied/electron-ipc",
+    "zip_url": "https://github.com/gigafied/electron-ipc/archive/master.zip",
+    "api_url": "https://api.github.com/repos/gigafied/electron-ipc"
+  },
+  "keywords": [
+    "publish",
+    "subscribe",
+    "ipc",
+    "electron",
+    "promises"
+  ],
+  "dependencies": {
+    "handoff": "^1.1.2",
+    "hat": "0.0.3"
+  },
+  "devDependencies": {
+    "electron": "*",
+    "snazzy": "^5.0.0",
+    "standard": "^8.4.0"
+  },
+  "gitHead": "fa74c18885cb0cc117520b6224aa8bc19618d884",
+  "homepage": "https://github.com/gigafied/electron-ipc#readme",
+  "_npmVersion": "3.10.3",
+  "_nodeVersion": "6.6.0",
+  "dist": {
+    "shasum": "d315e2661c1e088133108e760824f3f06ecd0817",
+    "tarball": "http://registry.npmjs.org/electron-ipc/-/electron-ipc-0.3.0.tgz"
+  },
+  "versions": [
+    {
+      "number": "0.0.1",
+      "date": "2016-10-15T00:52:37.536Z"
+    },
+    {
+      "number": "0.0.2",
+      "date": "2016-10-15T01:40:31.861Z"
+    },
+    {
+      "number": "0.1.0",
+      "date": "2016-10-15T01:50:16.773Z"
+    },
+    {
+      "number": "0.2.0",
+      "date": "2016-10-15T08:03:23.088Z"
+    },
+    {
+      "number": "0.3.0",
+      "date": "2016-10-16T00:06:56.092Z"
+    }
+  ],
+  "created": "2016-10-15T00:52:37.536Z",
+  "modified": "2016-10-16T00:06:56.092Z",
+  "lastPublisher": {
+    "name": "gigafied",
+    "email": "taka@gigafied.com"
+  },
+  "owners": [
+    {
+      "name": "gigafied",
+      "email": "taka@gigafied.com"
+    }
+  ],
+  "readme": "# electron-ipc\n\n##### Promise backed IPC For Electron\n\n`electron-ipc` lets you do request/response with PubSub, using Promises.\n\n`main.js`:\n```javascript\nconst ipc = require('electron-ipc')\n\nipc.on('ping', msg => {\n  console.log('ping received', msg) // 'ping received hello!!\n  // You can also just do `return 'pong'`;\n  return Promise.resolve('pong')\n})\n```\n\n`renderer`:\n```javascript\nconst ipc = require('electron-ipc')\n\nipc.publish('ping', 'hello!').then(res => {\n  console.log(res) // 'pong'\n})\n```\n\nThat's all she wrote folks. Of course since it is IPC, you can only send JSON-serializable data back and forth.\n\nUnder the hood, `electron-ipc` uses [handoff.js](https://github.com/gigafied/handoff.js)\n\n#### License\n\n    This software is released under the terms of the MIT License.\n\n    (c) 2016 Taka Kojima (the \"Author\").\n    All Rights Reserved.\n\n    Permission is hereby granted, free of charge, to any person\n    obtaining a copy of this software and associated documentation\n    files (the \"Software\"), to deal in the Software without\n    restriction, including without limitation the rights to use,\n    copy, modify, merge, publish, distribute, sublicense, and/or sell\n    copies of the Software, and to permit persons to whom the\n    Software is furnished to do so, subject to the following\n    conditions:\n\n    The above copyright notice and this permission notice shall be\n    included in all copies or substantial portions of the Software.\n\n    Distributions of all or part of the Software intended to be used\n    by the recipients as they would use the unmodified Software,\n    containing modifications that substantially alter, remove, or\n    disable functionality of the Software, outside of the documented\n    configuration mechanisms provided by the Software, shall be\n    modified such that the Author's bug reporting email addresses and\n    urls are either replaced with the contact information of the\n    parties responsible for the changes, or removed entirely.\n\n    THE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND,\n    EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES\n    OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND\n    NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT\n    HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,\n    WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING\n    FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR\n    OTHER DEALINGS IN THE SOFTWARE.\n\n    Except where noted, this license applies to any and all software\n    programs and associated documentation files created by the\n    Author, when distributed with the Software.\n"
+}

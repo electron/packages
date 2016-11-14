@@ -1,0 +1,156 @@
+{
+  "name": "vtk.js",
+  "version": "1.2.5",
+  "description": "Visualization Toolkit for the Web",
+  "repository": {
+    "user": "kitware",
+    "repo": "vtk-js",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/kitware/vtk-js/tarball/master",
+    "clone_url": "https://github.com/kitware/vtk-js",
+    "https_url": "https://github.com/kitware/vtk-js",
+    "travis_url": "https://travis-ci.org/kitware/vtk-js",
+    "zip_url": "https://github.com/kitware/vtk-js/archive/master.zip",
+    "api_url": "https://api.github.com/repos/kitware/vtk-js"
+  },
+  "license": "BSD-3-Clause",
+  "homepage": "https://github.com/kitware/vtk-js#readme",
+  "main": "./Sources/index.js",
+  "dependencies": {
+    "commander": "2.9.0",
+    "shelljs": "0.7.4",
+    "gh-pages": "0.10.0",
+    "pako": "1.0.1",
+    "jszip": "3.1.3",
+    "blueimp-md5": "2.3.0",
+    "gl-matrix": "2.3.1"
+  },
+  "devDependencies": {
+    "kw-web-suite": "2.2.1",
+    "kw-doc": "1.0.18",
+    "babel-plugin-istanbul": "2.0.0",
+    "babel-polyfill": "6.13.0",
+    "normalize.css": "5.0.0",
+    "karma": "1.2.0",
+    "karma-chrome-launcher": "2.0.0",
+    "karma-coverage": "1.1.1",
+    "karma-electron": "4.1.0",
+    "karma-tap": "2.1.4",
+    "karma-tap-pretty-reporter": "1.1.0",
+    "karma-webpack": "1.8.0",
+    "electron": "1.3.4",
+    "resemblejs": "2.2.1",
+    "tap-spec": "4.1.1",
+    "tap-markdown": "1.2.1",
+    "tape": "4.6.0",
+    "tape-catch": "1.0.6"
+  },
+  "scripts": {
+    "install:global": "npm install -g commitizen@2.5.0",
+    "doc": "kw-doc -c ./Documentation/config.js",
+    "doc:www": "npm t -- --single-run && kw-doc -c ./Documentation/config.js -s",
+    "doc:publish": "kw-doc -c ./Documentation/config.js -mp",
+    "example:EmptyRenderer": "webpack-dev-server --progress --open --config ./Examples/WebGL/EmptyRenderer/webpack.config.js",
+    "example:Cone": "webpack-dev-server --progress --open --config ./Examples/WebGL/Cone/webpack.config.js",
+    "example:Texture": "webpack-dev-server --progress --open --config ./Examples/WebGL/Texture/webpack.config.js",
+    "build": "webpack --progress --colors",
+    "build:debug": "webpack --progress --colors --display-modules",
+    "build:release": "export NODE_ENV=production && npm run build -- -p",
+    "test": "karma start ./karma.conf.js",
+    "test:travis": "karma start ./karma.conf.js --browsers Electron --single-run",
+    "commit": "git cz",
+    "semantic-release": "semantic-release pre && npm publish && semantic-release post"
+  },
+  "config": {
+    "commitizen": {
+      "path": "node_modules/cz-conventional-changelog"
+    }
+  },
+  "bin": {
+    "vtkDataConverter": "./Utilities/DataGenerator/convert-cli.js"
+  },
+  "nyc": {
+    "include": [
+      "Sources/**/*.js"
+    ],
+    "exclude": [
+      "Sources/**/test/*.js"
+    ]
+  },
+  "gitHead": "801e8aeb234a5812a7a7a8cec43403308adeba15",
+  "_npmVersion": "3.10.8",
+  "_nodeVersion": "6.9.1",
+  "dist": {
+    "shasum": "600879063e01c30a9565aadf1f5952a42e04c089",
+    "tarball": "http://registry.npmjs.org/vtk.js/-/vtk.js-1.2.5.tgz"
+  },
+  "versions": [
+    {
+      "number": "1.0.0",
+      "date": "2016-10-12T19:11:38.269Z"
+    },
+    {
+      "number": "1.0.1",
+      "date": "2016-10-13T17:49:39.953Z"
+    },
+    {
+      "number": "1.0.2",
+      "date": "2016-10-13T21:20:02.005Z"
+    },
+    {
+      "number": "1.0.3",
+      "date": "2016-10-14T22:03:11.241Z"
+    },
+    {
+      "number": "1.0.4",
+      "date": "2016-10-14T23:23:44.883Z"
+    },
+    {
+      "number": "1.1.0",
+      "date": "2016-10-18T14:06:25.683Z"
+    },
+    {
+      "number": "1.1.1",
+      "date": "2016-10-19T15:14:08.665Z"
+    },
+    {
+      "number": "1.2.0",
+      "date": "2016-10-25T21:38:37.677Z"
+    },
+    {
+      "number": "1.2.1",
+      "date": "2016-11-07T16:17:18.596Z"
+    },
+    {
+      "number": "1.2.2",
+      "date": "2016-11-07T19:40:04.951Z"
+    },
+    {
+      "number": "1.2.3",
+      "date": "2016-11-07T20:35:12.008Z"
+    },
+    {
+      "number": "1.2.4",
+      "date": "2016-11-07T20:39:43.986Z"
+    },
+    {
+      "number": "1.2.5",
+      "date": "2016-11-07T21:25:15.517Z"
+    }
+  ],
+  "created": "2016-10-12T19:11:38.269Z",
+  "modified": "2016-11-07T21:25:15.517Z",
+  "lastPublisher": {
+    "name": "sebastien.jourdain",
+    "email": "sebastien.jourdain@kitware.com"
+  },
+  "owners": [
+    {
+      "name": "sebastien.jourdain",
+      "email": "sebastien.jourdain@kitware.com"
+    }
+  ],
+  "readme": "## [VTK-JS - The Visualization Toolkit for JavaScript](http://kitware.github.io/vtk-js/)\n\n[![Build Status](https://travis-ci.org/Kitware/vtk-js.svg)](https://travis-ci.org/Kitware/vtk.js)\n[![Dependency Status](https://david-dm.org/kitware/vtk-js.svg)](https://david-dm.org/kitware/vtk-js)\n[![semantic-release](https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg)](https://github.com/semantic-release/semantic-release)\n![npm-download](https://img.shields.io/npm/dm/vtk.js.svg)\n![npm-version-requirement](https://img.shields.io/badge/npm->=3.0.0-brightgreen.svg)\n![node-version-requirement](https://img.shields.io/badge/node->=5.0.0-brightgreen.svg)\n\nIntroduction\n============\n\nVTK is an open-source software system for image processing, 3D\ngraphics, volume rendering and visualization. VTK includes many\nadvanced algorithms (e.g., surface reconstruction, implicit modelling,\ndecimation) and rendering techniques (e.g., hardware-accelerated\nvolume rendering, LOD control).\n\nVTK is used by academicians for teaching and research; by government\nresearch institutions such as Los Alamos National Lab in the US or\nCINECA in Italy; and by many commercial firms who use VTK to build or\nextend products.\n\nThe origin of VTK is with the textbook \"The Visualization Toolkit, an\nObject-Oriented Approach to 3D Graphics\" originally published by\nPrentice Hall and now published by Kitware, Inc. (Third Edition ISBN\n1-930934-07-6). VTK has grown (since its initial release in 1994) to a\nworld-wide user base in the commercial, academic, and research\ncommunities.\n\nVTK-JS aims to be a subset of VTK and provide 3D rendering using WebGL.\n\nReporting Bugs\n==============\n\nIf you have found a bug:\n\n1. If you have a patch, please read the [CONTRIBUTING.md][] document.\n\n2. Otherwise, please join the one of the [VTK Mailing Lists][] and ask\n   about the expected and observed behaviors to determine if it is\n   really a bug.\n\n3. Finally, if the issue is not resolved by the above steps, open\n   an entry in the [VTK Issue Tracker][].\n\n[CONTRIBUTING.md]: CONTRIBUTING.md\n[VTK Mailing Lists]: http://www.vtk.org/mailing-lists/\n[VTK Issue Tracker]: https://github.com/Kitware/vtk-js/issues\n\nRequirements\n============\n\nIn general VTK tries to be as portable as possible; the specific configurations below are known to work and tested.\n\nVTK-JS supports the following development environments:\n\n1. Node 5+\n2. NPM 3+\n\nVTK supports the following browsers:\n\n1. Firefox 45+\n2. Chrome 50+\n3. Safari 9.1+\n\nDocumentation\n=============\n\nSee the [documentation](https://kitware.github.io/vtk-js) for a\ngetting started guide, advanced documentation, and API descriptions.\n\nContributing\n============\n\nSee [CONTRIBUTING.md][] for instructions to contribute.\n\n[CONTRIBUTING.md]: CONTRIBUTING.md\n\nLicense\n=======\n\nVTK is distributed under the OSI-approved BSD 3-clause License.\nSee [Copyright.txt][] for details.\n\n[Copyright.txt]: Copyright.txt\n"
+}

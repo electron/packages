@@ -1,6 +1,6 @@
 {
   "name": "shell-path",
-  "version": "2.0.0",
+  "version": "2.1.0",
   "description": "Get the $PATH from the shell",
   "license": "MIT",
   "repository": {
@@ -32,6 +32,7 @@
   ],
   "keywords": [
     "path",
+    "macos",
     "osx",
     "env",
     "var",
@@ -41,11 +42,10 @@
     "sh",
     "zsh",
     "electron",
-    "atom-shell",
     "nwjs"
   ],
   "dependencies": {
-    "shell-env": "^0.1.0"
+    "shell-env": "^0.3.0"
   },
   "devDependencies": {
     "ava": "*",
@@ -54,13 +54,13 @@
   "xo": {
     "esnext": true
   },
-  "gitHead": "fe0bb69653ac3e748c30cf915de8227e36f6b268",
+  "gitHead": "712866ff8ca196ebe7250db730a050a100d21428",
   "homepage": "https://github.com/sindresorhus/shell-path#readme",
-  "_npmVersion": "2.14.12",
-  "_nodeVersion": "4.3.0",
+  "_npmVersion": "2.15.9",
+  "_nodeVersion": "4.6.1",
   "dist": {
-    "shasum": "31a2c5d2af28a7f40bc80f6a705bc05a1befeb1e",
-    "tarball": "http://registry.npmjs.org/shell-path/-/shell-path-2.0.0.tgz"
+    "shasum": "ea7d06ae1070874a1bac5c65bb9bdd62e4f67a38",
+    "tarball": "http://registry.npmjs.org/shell-path/-/shell-path-2.1.0.tgz"
   },
   "versions": [
     {
@@ -102,10 +102,14 @@
     {
       "number": "2.0.0",
       "date": "2016-02-19T11:40:21.007Z"
+    },
+    {
+      "number": "2.1.0",
+      "date": "2016-11-09T10:56:26.925Z"
     }
   ],
   "created": "2015-04-27T17:47:48.607Z",
-  "modified": "2016-02-19T11:40:21.007Z",
+  "modified": "2016-11-09T10:56:26.925Z",
   "lastPublisher": {
     "name": "sindresorhus",
     "email": "sindresorhus@gmail.com"
@@ -120,5 +124,5 @@
       "email": "sindresorhus@gmail.com"
     }
   ],
-  "readme": "# shell-path [![Build Status](https://travis-ci.org/sindresorhus/shell-path.svg?branch=master)](https://travis-ci.org/sindresorhus/shell-path)\n\n> Get the [`$PATH`](https://en.wikipedia.org/wiki/PATH_(variable)) from the shell\n\nUseful for Electron/NW.js apps as GUI apps on OS X doesn't inherit the `$PATH` defined in your dotfiles *(.bashrc/.bash_profile/.zshrc/etc)*.\n\n\n## Install\n\n```\n$ npm install --save shell-path\n```\n\n\n## Usage\n\nWhen executed from a GUI app on OS X:\n\n```js\nconst shellPath = require('shell-path');\n\nconsole.log(process.env.PATH);\n//=> '/usr/bin'\n\nconsole.log(shellPath.sync());\n//=> '/usr/local/bin:/usr/bin:...'\n```\n\n\n## API\n\n### shellPath()\n\nReturn a promise for the `$PATH`.\n\n### shellPath.sync()\n\nReturns the `$PATH`.\n\n\n## Related\n\n- [fix-path](https://github.com/sindresorhus/fix-path) - Fix the $PATH on OS X when run from a GUI app\n- [shell-env](https://github.com/sindresorhus/shell-env) - Get environment variables from the shell\n- [shell-history](https://github.com/sindresorhus/shell-history) - Get the command history of the user's shell\n\n\n## License\n\nMIT © [Sindre Sorhus](http://sindresorhus.com)\n"
+  "readme": "# shell-path [![Build Status](https://travis-ci.org/sindresorhus/shell-path.svg?branch=master)](https://travis-ci.org/sindresorhus/shell-path)\n\n> Get the [`$PATH`](https://en.wikipedia.org/wiki/PATH_(variable)) from the shell\n\nUseful for Electron/NW.js apps as GUI apps on macOS doesn't inherit the `$PATH` defined in your dotfiles *(.bashrc/.bash_profile/.zshrc/etc)*.\n\n\n## Install\n\n```\n$ npm install --save shell-path\n```\n\n\n## Usage\n\nWhen executed from a GUI app on macOS:\n\n```js\nconst shellPath = require('shell-path');\n\nconsole.log(process.env.PATH);\n//=> '/usr/bin'\n\nconsole.log(shellPath.sync());\n//=> '/usr/local/bin:/usr/bin:...'\n```\n\n\n## API\n\n### shellPath()\n\nReturn a promise for the `$PATH`.\n\n### shellPath.sync()\n\nReturns the `$PATH`.\n\n\n## Related\n\n- [fix-path](https://github.com/sindresorhus/fix-path) - Fix the $PATH on macOS when run from a GUI app\n- [shell-env](https://github.com/sindresorhus/shell-env) - Get environment variables from the shell\n- [shell-history](https://github.com/sindresorhus/shell-history) - Get the command history of the user's shell\n\n\n## License\n\nMIT © [Sindre Sorhus](https://sindresorhus.com)\n"
 }

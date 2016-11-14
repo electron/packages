@@ -1,6 +1,6 @@
 {
   "name": "bozon",
-  "version": "0.5.5",
+  "version": "0.6.1",
   "description": "Framework for building Electron applications",
   "repository": {
     "user": "railsware",
@@ -131,19 +131,31 @@
     {
       "number": "0.5.5",
       "date": "2016-09-23T11:42:04.484Z"
+    },
+    {
+      "number": "0.5.6",
+      "date": "2016-10-14T16:06:00.310Z"
+    },
+    {
+      "number": "0.6.0",
+      "date": "2016-10-15T06:42:59.719Z"
+    },
+    {
+      "number": "0.6.1",
+      "date": "2016-10-17T08:23:21.161Z"
     }
   ],
-  "gitHead": "1f2d118ff818c1d2121d71c68d992c782d709e43",
+  "gitHead": "17e0c8a5a123ca8324b368b9577439365eb39dc2",
   "homepage": "https://github.com/railsware/bozon#readme",
-  "_npmVersion": "3.8.9",
-  "_nodeVersion": "6.2.0",
+  "_npmVersion": "3.10.7",
+  "_nodeVersion": "6.7.0",
   "dist": {
-    "shasum": "20482b464dd89bf67a390cd1853fbb107da08091",
-    "tarball": "http://registry.npmjs.org/bozon/-/bozon-0.5.5.tgz"
+    "shasum": "725cfe6be81e044738d4c40e3d9cdecd7fc8d0eb",
+    "tarball": "http://registry.npmjs.org/bozon/-/bozon-0.6.1.tgz"
   },
   "stars": 2,
   "created": "2016-04-29T16:27:10.231Z",
-  "modified": "2016-09-23T11:42:04.484Z",
+  "modified": "2016-10-17T08:23:21.161Z",
   "lastPublisher": {
     "name": "alchapone",
     "email": "alchaplinsky@gmail.com"
@@ -154,5 +166,5 @@
       "email": "alchapone@yandex.ru"
     }
   ],
-  "readme": "# bozon \n> Scaffold, Run, Test and Package [Electron](http://electron.atom.io/) application with ease\n\n[![npm version](https://badge.fury.io/js/bozon.svg)](https://badge.fury.io/js/bozon) \n![img](https://circleci.com/gh/railsware/bozon.svg?style=shield&circle-token=73a7ce20fc55a51d77657e11c3f5c9d4bf5fdcd9)\n\n## What is Bozon?\nBozon is a single tool for handling different tasks being performed by multiple packages, which is used for building desktop applications with Electron. Simplify building, compiling, running, testing, and packaging your application.\n\n* **Electron** - build cross platform desktop apps with web technologies\n* **Gulp** - task runner that helps making all important processes with a single command\n* **Webpack** - building and packaging source code for renderer process done with webpack\n* **spectron** - Easily test your Electron apps using ChromeDriver and WebdriverIO\n* **electron-builder** - package and distribute your Electron app\n\n![img](https://api.monosnap.com/rpc/file/download?id=KB5BGmknhLmuE38DGEXCFu4rbpBUzr)\n\n## Installation\n\n\n```bash\nnpm install -g bozon\n```\n\nThen generate your new project:\n\n```bash\nbozon new [name]\n```\nThis will create a new directory `[name]` produce the following file structure:\n\n```\n  |--app/\n  |  |--images/\n  |  |--javascripts/\n  |  |  |--renderer/\n  |  |  |--main/\n  |  |--stylesheets/\n  |  |--index.html\n  |  |--package.json\n  |--config/\n  |--spec/\n  |--gulpfile.js\n  |--package.json\n```\n\n## Starting an application\n\n```bash\nbozon start\n```\n\nThis will compile Application source code to `./builds/development` directory and run your application from it.\n\n### Configuration\nBozon provides a way to define environment specific and platform specific configuration options. These multiple config files are being merged into one single `settings` object during build. This `settings` object is being written into `package.json` file of your application, so that you can use it in your code.\n```\n  |--config/\n  |  |--settings.json\n  |  |--environments/\n  |  |  |--development.json\n  |  |  |--production.json\n  |  |  |--test.json\n  |  |--platforms/\n  |  |  |--osx.json\n  |  |  |--linux.json\n  |  |  |--windows.json\n```\n\n## Testing\nBozon is using [spectron](https://github.com/electron/spectron) and [mocha](https://mochajs.org/) spec runner for testing Electron applications. Both unit and integration tests should go to `./specs` directory. Simply execute for running tests:\n\n```bash\nbozon test\n```\n\n## Packaging application\nPackaging Electron application is done by [electron-builder](https://www.npmjs.com/package/electron-builder) using settings in defined in `package.json` under `build` section.\nApplication source code is being compiled to `./builds/production/` directory, and packaged versions for different platforms go to `./packages` directory.\n\n```bash\nbozon package [osx|windows|linux]\n```\n\n## License\n\nMIT © Alex Chaplinsky\n"
+  "readme": "# bozon\n> Scaffold, Run, Test and Package [Electron](http://electron.atom.io/) application with ease\n\n[![npm version](https://badge.fury.io/js/bozon.svg)](https://badge.fury.io/js/bozon)\n![img](https://circleci.com/gh/railsware/bozon.svg?style=shield&circle-token=73a7ce20fc55a51d77657e11c3f5c9d4bf5fdcd9)\n\n## What is Bozon?\nBozon is a single tool for handling different tasks being performed by multiple packages, which is used for building desktop applications with Electron. Simplify building, compiling, running, testing, and packaging your application.\n\n* **Electron** - build cross platform desktop apps with web technologies\n* **Gulp** - task runner that helps making all important processes with a single command\n* **Webpack** - building and packaging source code for renderer process done with webpack\n* **spectron** - Easily test your Electron apps using ChromeDriver and WebdriverIO\n* **electron-builder** - package and distribute your Electron app\n\n![img](https://api.monosnap.com/rpc/file/download?id=KB5BGmknhLmuE38DGEXCFu4rbpBUzr)\n\n## Installation\n\n\n```bash\nnpm install -g bozon\n```\n\nThen generate your new project:\n\n```bash\nbozon new [name]\n```\nThis will create a new directory `[name]` produce the following file structure:\n\n```\n  |--app/\n  |  |--images/\n  |  |--javascripts/\n  |  |  |--renderer/\n  |  |  |--main/\n  |  |--stylesheets/\n  |  |--index.html\n  |  |--package.json\n  |--config/\n  |--spec/\n  |--gulpfile.js\n  |--package.json\n```\n\n## Starting an application\n\n```bash\nbozon start\n```\n\nThis will compile Application source code to `./builds/development` directory and run your application from it.\n\n### Configuration\nBozon provides a way to define environment specific and platform specific configuration options. These multiple config files are being merged into one single `settings` object during build. This `settings` object is being written into `package.json` file of your application, so that you can use it in your code.\n```\n  |--config/\n  |  |--settings.json\n  |  |--environments/\n  |  |  |--development.json\n  |  |  |--production.json\n  |  |  |--test.json\n  |  |--platforms/\n  |  |  |--mac.json\n  |  |  |--linux.json\n  |  |  |--windows.json\n```\n\n## Testing\nBozon is using [spectron](https://github.com/electron/spectron) and [mocha](https://mochajs.org/) spec runner for testing Electron applications. Both unit and integration tests should go to `./specs` directory. Simply execute for running tests:\n\n```bash\nbozon test\n```\n\n## Packaging application\nPackaging Electron application is done by [electron-builder](https://www.npmjs.com/package/electron-builder) using settings in defined in `package.json` under `build` section.\nApplication source code is being compiled to `./builds/production/` directory, and packaged versions for different platforms go to `./packages` directory.\n\n```bash\nbozon package [mac|windows|linux]\n```\n\n## License\n\nMIT © Alex Chaplinsky\n"
 }

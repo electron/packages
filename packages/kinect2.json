@@ -1,12 +1,13 @@
 {
   "name": "kinect2",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "description": "Nodejs library to access the kinect 2 data from the official MS SDK",
   "main": "./lib/kinect2.js",
   "scripts": {
     "install": "node-pre-gyp install --fallback-to-build",
     "buildall": "node tools/buildall.js",
-    "buildall:publish": "node tools/buildall.js --publish"
+    "buildall:publish": "node tools/buildall.js --publish",
+    "build:electron": "node tools/electronbuild.js"
   },
   "repository": {
     "user": "wouterverweirder",
@@ -21,6 +22,9 @@
     "zip_url": "https://github.com/wouterverweirder/kinect2/archive/master.zip",
     "api_url": "https://api.github.com/repos/wouterverweirder/kinect2"
   },
+  "os": [
+    "win32"
+  ],
   "binary": {
     "module_name": "kinect2",
     "module_path": "./build/{module_name}/v{version}/{configuration}/{node_abi}-{platform}-{arch}/",
@@ -44,17 +48,18 @@
   "devDependencies": {
     "async": "^1.4.2",
     "jsdom": "^6.5.1",
-    "minimist": "^1.2.0"
+    "minimist": "^1.2.0",
+    "node-pre-gyp-github": "^1.3.1"
   },
-  "gitHead": "8a850220e8c16798f6f90aef7c0c75d31b9fe669",
+  "gitHead": "a1089f96f4b575f5e7025d1b0130d806e06cf0eb",
   "bundleDependencies": [
     "node-pre-gyp"
   ],
-  "_npmVersion": "3.5.2",
-  "_nodeVersion": "4.2.2",
+  "_npmVersion": "4.0.1",
+  "_nodeVersion": "7.0.0",
   "dist": {
-    "shasum": "351834e5497b986ad570e69ecc14b47e29b49cea",
-    "tarball": "http://registry.npmjs.org/kinect2/-/kinect2-0.1.4.tgz"
+    "shasum": "bead8c7a76b1cf121ff6aeb3774d7dba31d8a832",
+    "tarball": "http://registry.npmjs.org/kinect2/-/kinect2-0.1.5.tgz"
   },
   "stars": 2,
   "versions": [
@@ -181,10 +186,14 @@
     {
       "number": "0.1.4",
       "date": "2016-09-25T15:47:06.154Z"
+    },
+    {
+      "number": "0.1.5",
+      "date": "2016-10-30T10:43:51.112Z"
     }
   ],
   "created": "2014-12-11T19:31:47.055Z",
-  "modified": "2016-09-25T15:47:06.154Z",
+  "modified": "2016-10-30T10:43:51.112Z",
   "lastPublisher": {
     "name": "wouterverweirder",
     "email": "wouter.verweirder@gmail.com"
@@ -195,5 +204,5 @@
       "email": "wouter.verweirder@gmail.com"
     }
   ],
-  "readme": "# Node-Kinect2\r\n\r\nNodejs library to access the kinect 2 data from the official MS SDK on Windows.\r\n\r\n![Screenshot](https://raw.githubusercontent.com/wouterverweirder/node-kinect2/master/node-kinect2-skeleton.png)\r\n\r\n## Installation\r\n\r\nYou will need to install [the official Kinect 2 SDK](https://www.microsoft.com/en-us/download/details.aspx?id=44561) before you can use this module.\r\n\r\n### node.js\r\n\r\nYou need at least node version 0.12 to use this module. Older versions do not work. Just use npm install:\r\n\r\n``` bash\r\n$ npm install kinect2\r\n```\r\n\r\n### electron\r\n\r\nIf you want to use this module inside an electron application, you will need to [build this module for electron usage](https://github.com/atom/electron/blob/master/docs/tutorial/using-native-node-modules.md). I've provided a build script which does just that.\r\n\r\nYou will need to have node-gyp & it's dependencies installed globally before you can continue.\r\n\r\n``` bash\r\n$ node tools\\electronbuild.js --target=0.30.2 --arch=x64\r\n```\r\n\r\n## Usage\r\n\r\n```\r\nvar Kinect2 = require('kinect2');\r\n\r\nvar kinect = new Kinect2();\r\n\r\nif(kinect.open()) {\r\n\tconsole.log(\"Kinect Opened\");\r\n\t//listen for body frames\r\n\tkinect.on('bodyFrame', function(bodyFrame){\r\n\t\tfor(var i = 0;  i < bodyFrame.bodies.length; i++) {\r\n\t\t\tif(bodyFrame.bodies[i].tracked) {\r\n\t\t\t\tconsole.log(bodyFrame.bodies[i]);\r\n\t\t\t}\r\n\t\t}\r\n\t});\r\n\r\n\t//request body frames\r\n\tkinect.openBodyReader();\r\n\r\n\t//close the kinect after 5 seconds\r\n\tsetTimeout(function(){\r\n\t\tkinect.close();\r\n\t\tconsole.log(\"Kinect Closed\");\r\n\t}, 5000);\r\n}\r\n```\r\n"
+  "readme": "# Node-Kinect2\r\n\r\nNodejs library to access the kinect 2 data from the official MS SDK on Windows.\r\n\r\n![Screenshot](https://raw.githubusercontent.com/wouterverweirder/node-kinect2/master/node-kinect2-skeleton.png)\r\n\r\n## Installation\r\n\r\nYou will need to install [the official Kinect 2 SDK](https://www.microsoft.com/en-us/download/details.aspx?id=44561) before you can use this module.\r\n\r\n### node.js\r\n\r\nYou need at least node version 0.12 to use this module. Older versions do not work. Just use npm install:\r\n\r\n``` bash\r\nnpm install kinect2\r\n```\r\n\r\n### electron\r\n\r\nIf you want to use this module inside an electron application, you will need to [build this module for electron usage](https://github.com/atom/electron/blob/master/docs/tutorial/using-native-node-modules.md). I've provided a build script which does just that.\r\n\r\nYou will need to have node-gyp & it's dependencies installed (https://github.com/nodejs/node-gyp) before you can continue.\r\n\r\n``` bash\r\n# cd into the directory of kinect2\r\ncd node_modules\\kinect2\r\n# run my build script to create a native binary for electron\r\nnpm run build:electron\r\n```\r\n\r\n## Usage\r\n\r\n```\r\nvar Kinect2 = require('kinect2');\r\n\r\nvar kinect = new Kinect2();\r\n\r\nif(kinect.open()) {\r\n\tconsole.log(\"Kinect Opened\");\r\n\t//listen for body frames\r\n\tkinect.on('bodyFrame', function(bodyFrame){\r\n\t\tfor(var i = 0;  i < bodyFrame.bodies.length; i++) {\r\n\t\t\tif(bodyFrame.bodies[i].tracked) {\r\n\t\t\t\tconsole.log(bodyFrame.bodies[i]);\r\n\t\t\t}\r\n\t\t}\r\n\t});\r\n\r\n\t//request body frames\r\n\tkinect.openBodyReader();\r\n\r\n\t//close the kinect after 5 seconds\r\n\tsetTimeout(function(){\r\n\t\tkinect.close();\r\n\t\tconsole.log(\"Kinect Closed\");\r\n\t}, 5000);\r\n}\r\n```\r\n"
 }

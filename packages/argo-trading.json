@@ -1,7 +1,7 @@
 {
   "name": "argo-trading",
   "description": "HTML5 interface for the OANDA platform",
-  "version": "3.10.0",
+  "version": "4.1.0",
   "main": "./main.js",
   "bin": {
     "argo-trading": "./bin/argo-trading",
@@ -32,29 +32,33 @@
   },
   "license": "MIT",
   "engines": {
-    "node": ">=4"
+    "node": ">=6"
   },
   "dependencies": {
-    "async": "~2.0.1",
+    "async": "~2.1.2",
     "body-parser": "~1.15.2",
-    "electron-prebuilt": "~1.4.2",
     "express": "~4.14.0",
     "faye-websocket": "~0.11.0",
     "flic": "~1.3.4",
     "limiter": "~1.1.0",
-    "request": "~2.75.0",
+    "request": "~2.78.0",
     "angular": "~1.5.8",
     "angular-animate": "~1.5.8",
     "angular-aria": "~1.5.8",
     "angular-messages": "~1.5.8",
     "angular-mocks": "~1.5.8",
     "angular-material": "~1.1.1",
-    "d3": "~4.2.6",
-    "techan": "~0.8.0"
+    "d3": "~4.3.0",
+    "techan": "~0.8.0",
+    "electron": "~1.4.5"
+  },
+  "optionalDependencies": {
+    "electron": "~1.4.5"
   },
   "scripts": {
     "test": "npm run lint && npm run karma && npm run snyk",
     "start": "node src/server/app.js",
+    "debug": "node --inspect src/server/app.js",
     "electron": "electron .",
     "lint": "eslint main.js karma.conf.js src/**/*.js",
     "karma": "karma start --single-run",
@@ -63,25 +67,25 @@
   },
   "devDependencies": {
     "conventional-changelog-cli": "~1.2.0",
-    "eslint": "^3.7.0",
+    "eslint": "^3.9.1",
     "eslint-config-eslint": "~3.0.0",
     "eslint-plugin-angular": "~1.4.1",
-    "mocha": "~3.1.0",
+    "mocha": "~3.1.2",
     "chai": "~3.5.0",
     "karma": "~1.3.0",
     "karma-mocha": "~1.2.0",
     "karma-chai": "~0.1.0",
     "karma-phantomjs-launcher": "~1.0.2",
-    "phantomjs-prebuilt": "~2.1.12",
+    "phantomjs-prebuilt": "~2.1.13",
     "snyk": "~1.19.1"
   },
-  "gitHead": "0cdc06344ba0879b92067d68e5e4883e40cf40ff",
+  "gitHead": "b66b2f2367c4189e663facd8d22a86c950b707ce",
   "homepage": "https://github.com/albertosantini/argo#readme",
-  "_npmVersion": "3.10.3",
-  "_nodeVersion": "6.7.0",
+  "_npmVersion": "3.10.8",
+  "_nodeVersion": "7.0.0",
   "dist": {
-    "shasum": "321b6cf09934f6504f990819a611d26654f413e9",
-    "tarball": "http://registry.npmjs.org/argo-trading/-/argo-trading-3.10.0.tgz"
+    "shasum": "f851c9e4a4f87fef189f0ed6a9c1c50420084ac1",
+    "tarball": "http://registry.npmjs.org/argo-trading/-/argo-trading-4.1.0.tgz"
   },
   "versions": [
     {
@@ -239,10 +243,18 @@
     {
       "number": "3.10.0",
       "date": "2016-10-03T17:49:46.350Z"
+    },
+    {
+      "number": "4.0.0",
+      "date": "2016-11-03T16:35:23.588Z"
+    },
+    {
+      "number": "4.1.0",
+      "date": "2016-11-08T20:46:04.069Z"
     }
   ],
   "created": "2015-03-11T16:45:43.899Z",
-  "modified": "2016-10-03T17:49:46.350Z",
+  "modified": "2016-11-08T20:46:04.069Z",
   "lastPublisher": {
     "name": "icebox",
     "email": "albertosantini@gmail.com"
@@ -253,5 +265,5 @@
       "email": "albertosantini@gmail.com"
     }
   ],
-  "readme": "# ARGO\r\n\r\n[![NPM version](https://badge.fury.io/js/argo-trading.png)](http://badge.fury.io/js/argo-trading)\r\n[![NGN Dependencies](https://david-dm.org/albertosantini/argo.png)](https://david-dm.org/albertosantini/argo)\r\n[![Build Status](https://travis-ci.org/albertosantini/argo.png)](https://travis-ci.org/albertosantini/argo)\r\n[![Known Vulnerabilities](https://snyk.io/test/npm/argo-trading/badge.svg)](https://snyk.io/test/npm/argo-trading)\r\n\r\n**Argo** is an open source trading platform, connecting directly with [OANDA][]\r\nthrough the powerful [API][] to develop trading strategies.\r\n\r\n## Installation\r\n\r\nAfter installing [Node.js](https://nodejs.org/) (required), you can install **Argo**.\r\n\r\n```\r\n$ npm install -g argo-trading\r\n```\r\n\r\n## Starting Web App\r\n\r\n```\r\n$ argo-trading\r\n```\r\nEventually point your web brower to `http://localhost:8000`.\r\n\r\n## Starting Standalone App\r\n\r\n```\r\n$ argo-trading-standalone\r\n```\r\n\r\nTested locally with Node.js 6.x, AngularJS 1.5.x and Material 1.x.\r\n\r\n## [Basic features](docs/views)\r\n\r\n- Account summary updated for each event.\r\n- Quotes and spreads list updated tick-by-tick.\r\n- Charts with different time frames updated tick-by-tick.\r\n- Market and limit orders with stop loss, take profit and trailing stop.\r\n- Trades list with current and profit updated tick-by-tick.\r\n- Orders list with distance updated tick-by-tick.\r\n- Positions summary.\r\n- Expositions summary.\r\n- Transactions history.\r\n- Economic calendar.\r\n\r\n## [Advanced features](https://github.com/albertosantini/argo-trading-plugin-seed)\r\n\r\n- Executing trading strategies.\r\n\r\n## [Documentation](docs/)\r\n\r\n## [Contributing](CONTRIBUTING.md)\r\n\r\n## Disclaimer\r\n\r\nNOT INVESTMENT ADVICE AND WILL LOSE LOTS OF MONEY SO PROCEED WITH CAUTION.\r\n\r\n\r\n[OANDA]: http://fxtrade.oanda.co.uk/\r\n[API]: http://developer.oanda.com/\r\n"
+  "readme": "# ARGO\r\n\r\n[![NPM version](https://badge.fury.io/js/argo-trading.png)](http://badge.fury.io/js/argo-trading)\r\n[![NGN Dependencies](https://david-dm.org/albertosantini/argo.png)](https://david-dm.org/albertosantini/argo)\r\n[![Build Status](https://travis-ci.org/albertosantini/argo.png)](https://travis-ci.org/albertosantini/argo)\r\n[![Known Vulnerabilities](https://snyk.io/test/npm/argo-trading/badge.svg)](https://snyk.io/test/npm/argo-trading)\r\n\r\n**Argo** is an open source trading platform, connecting directly with [OANDA][]\r\nthrough the powerful [API][] to develop trading strategies.\r\n\r\n## Installation\r\n\r\nAfter installing [Node.js](https://nodejs.org/) (required), you can install **Argo**.\r\n\r\n```\r\n$ npm install -g argo-trading\r\n```\r\n\r\n## Starting Web App\r\n\r\n```\r\n$ argo-trading\r\n```\r\nEventually point your web brower to `http://localhost:8000`.\r\n\r\n## Starting Standalone App\r\n\r\n```\r\n$ argo-trading-standalone\r\n```\r\n\r\nTested locally with Node.js 6.x, AngularJS 1.5.x and Material 1.x.\r\n\r\n## [Basic features](docs/views)\r\n\r\n- Account summary updated for each event.\r\n- Quotes and spreads list updated tick-by-tick.\r\n- Charts with different time frames updated tick-by-tick.\r\n- Market and limit orders with stop loss, take profit and trailing stop.\r\n- Trades list with current and profit updated tick-by-tick.\r\n- Orders list with distance updated tick-by-tick.\r\n- Positions summary.\r\n- Expositions summary.\r\n- Transactions history.\r\n- Economic calendar.\r\n\r\n## [Advanced features](https://github.com/albertosantini/argo-trading-plugin-seed)\r\n\r\n- Executing trading strategies.\r\n\r\n## [Documentation](http://argo.rtfd.io/)\r\n\r\n## [Contributing](CONTRIBUTING.md)\r\n\r\n## Disclaimer\r\n\r\nNOT INVESTMENT ADVICE AND WILL LOSE LOTS OF MONEY SO PROCEED WITH CAUTION.\r\n\r\n\r\n[OANDA]: http://fxtrade.oanda.co.uk/\r\n[API]: http://developer.oanda.com/\r\n"
 }

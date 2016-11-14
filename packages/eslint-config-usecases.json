@@ -1,0 +1,85 @@
+{
+  "name": "eslint-config-usecases",
+  "description": "ESLint configs by usecase",
+  "version": "1.0.4",
+  "author": {
+    "name": "Marc-Aurèle DARCHE"
+  },
+  "license": "MIT",
+  "repository": {
+    "user": "madarche",
+    "repo": "eslint-config-usecases",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/madarche/eslint-config-usecases/tarball/master",
+    "clone_url": "https://github.com/madarche/eslint-config-usecases",
+    "https_url": "https://github.com/madarche/eslint-config-usecases",
+    "travis_url": "https://travis-ci.org/madarche/eslint-config-usecases",
+    "zip_url": "https://github.com/madarche/eslint-config-usecases/archive/master.zip",
+    "api_url": "https://api.github.com/repos/madarche/eslint-config-usecases"
+  },
+  "keywords": [
+    "eslint",
+    "eslintconfig"
+  ],
+  "scripts": {
+    "posttest": "npm run lint",
+    "test:ci": "npm test",
+    "lint": "eslint .",
+    "lint:fix": "eslint --fix ."
+  },
+  "engines": {
+    "node": ">=4"
+  },
+  "main": "usecase/index.js",
+  "peerDependencies": {
+    "eslint": ">=3"
+  },
+  "devDependencies": {
+    "eslint": "3.8.0"
+  },
+  "gitHead": "7ae85a0c660562853016b37639f63cd4c3872058",
+  "homepage": "https://github.com/madarche/eslint-config-usecases#readme",
+  "_npmVersion": "2.15.9",
+  "_nodeVersion": "4.5.0",
+  "dist": {
+    "shasum": "e446f733e7c086516131d6e26f0bb73916c66ce9",
+    "tarball": "http://registry.npmjs.org/eslint-config-usecases/-/eslint-config-usecases-1.0.4.tgz"
+  },
+  "versions": [
+    {
+      "number": "1.0.0",
+      "date": "2016-10-15T10:46:04.778Z"
+    },
+    {
+      "number": "1.0.1",
+      "date": "2016-10-15T15:31:53.125Z"
+    },
+    {
+      "number": "1.0.2",
+      "date": "2016-10-15T15:45:43.165Z"
+    },
+    {
+      "number": "1.0.3",
+      "date": "2016-10-18T19:17:35.745Z"
+    },
+    {
+      "number": "1.0.4",
+      "date": "2016-10-22T06:59:35.355Z"
+    }
+  ],
+  "created": "2016-10-15T10:46:04.778Z",
+  "modified": "2016-10-22T06:59:35.355Z",
+  "lastPublisher": {
+    "name": "madarche",
+    "email": "ma.darche@cynode.org"
+  },
+  "owners": [
+    {
+      "name": "madarche",
+      "email": "ma.darche@cynode.org"
+    }
+  ],
+  "readme": "eslint-config-usecases\n======================\n\n[![NPM version](http://img.shields.io/npm/v/eslint-config-usecases.svg)](https://www.npmjs.org/package/eslint-config-usecases)\n[![Dependency Status](https://david-dm.org/madarche/eslint-config-usecases.svg)](https://david-dm.org/madarche/eslint-config-usecases)\n[![devDependency Status](https://david-dm.org/madarche/eslint-config-usecases/dev-status.svg)](https://david-dm.org/madarche/eslint-config-usecases#info=devDependencies)\n[![Build Status](https://travis-ci.org/madarche/eslint-config-usecases.svg?branch=master)](https://travis-ci.org/madarche/eslint-config-usecases)\n\nESLint configs by usecase with a strong bias towards quality, strictness and the\ndecision to ban useless semicolons (`;`) for legibility and efficiency\n(cf. [the \"semi\" never rule](http://eslint.org/docs/rules/semi)).\n\nThose ESLint configs are presented around 3 use cases of JavaScript:\n\n* JavaScript in Node.js applications (use this for Electron applications too)\n  ([`usecases/usecase/nodejs`](./usecase/nodejs.js))\n* JavaScript in the browsers\n  ([`usecases/usecase/browser`](./usecase/browser.js))\n* JavaScript in development code (including automated tests)\n  ([`usecases/usecase/dev`](./usecase/dev.js))\n\nAll those usecases have their special `env` and `rules` set, while inheriting\n[some common properties](./usecase/lib/common.js).\n\n\nUsage\n-----\n\nIf not already present, install the `eslint` package locally in your project:\n\n    $ npm install eslint --save-dev\n\nThen, still in your project, locally install the `eslint-config-usecases`\npackage:\n\n    $ npm install eslint-config-usecases --save-dev\n\nAnd finally, you have to add an `.eslintrc.js` file at the root of your project\nwith the following content:\n\n```javascript\nmodule.exports = {\n    extends: 'usecases/usecase/nodejs'\n}\n```\n\nAnd you can change `usecases/usecase/nodejs` to the value of the corresponding\nusecase.\n\n\nNote that you can add many different `.eslintrc.js` files in the tree structure\nof your project depending on  what is inside each directory.\n\nFor more information read [ESLint Shareable Configs](http://eslint.org/docs/developer-guide/shareable-configs)\n\n\nNote\n----\n\nBecause JavaScript is more powerful, flexible and expressive, I prefer to use\nJavaScript ESLint configuration files over JSON or YML. That's why there isn't\nany `.eslintrc`, `.eslintrc.json` or `.eslintrc.yml` files.\n\n\nContributions\n-------------\n\nThose linting and style rules are the ones I use for the projects I work on, but\nfill free to contribute if you have similar tastes.\n\nSo pull Requests and contributions in general are welcome\n"
+}

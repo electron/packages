@@ -1,0 +1,81 @@
+{
+  "name": "element-visible",
+  "version": "1.0.2",
+  "description": "Determine if an element is visible",
+  "main": "index.js",
+  "scripts": {
+    "test:local": "zuul --local --open --ui mocha-bdd test.js",
+    "test:headless": "zuul --electron --ui mocha-bdd test.js",
+    "test": "zuul -- --ui mocha-bdd test.js"
+  },
+  "repository": {
+    "user": "kyungw00k",
+    "repo": "element-visible",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/kyungw00k/element-visible/tarball/master",
+    "clone_url": "https://github.com/kyungw00k/element-visible",
+    "https_url": "https://github.com/kyungw00k/element-visible",
+    "travis_url": "https://travis-ci.org/kyungw00k/element-visible",
+    "zip_url": "https://github.com/kyungw00k/element-visible/archive/master.zip",
+    "api_url": "https://api.github.com/repos/kyungw00k/element-visible"
+  },
+  "keywords": [
+    "visible element",
+    "viewability change",
+    "viewable element"
+  ],
+  "author": {
+    "name": "Kyungwook Park"
+  },
+  "license": "MIT",
+  "homepage": "https://github.com/kyungw00k/element-visible#readme",
+  "dependencies": {
+    "document-offset": "^1.0.4",
+    "element-client-rect": "^1.0.3",
+    "element-in-document": "^1.0.2",
+    "element-style": "^0.1.1",
+    "intersect-client-rects": "^1.0.1",
+    "viewport-position": "^0.1.1",
+    "within-element": "^0.1.0"
+  },
+  "devDependencies": {
+    "zuul": "^3.11.1",
+    "zuul-ngrok": "^4.0.0"
+  },
+  "gitHead": "6eccc0228c39e99e1ed37060f4a469a1d22c04ac",
+  "_npmVersion": "3.10.8",
+  "_nodeVersion": "6.3.1",
+  "dist": {
+    "shasum": "95142e95a69e6a41f0a178a500fd4e885f7aad54",
+    "tarball": "http://registry.npmjs.org/element-visible/-/element-visible-1.0.2.tgz"
+  },
+  "versions": [
+    {
+      "number": "1.0.0",
+      "date": "2016-10-08T17:12:18.495Z"
+    },
+    {
+      "number": "1.0.1",
+      "date": "2016-10-10T00:44:44.705Z"
+    },
+    {
+      "number": "1.0.2",
+      "date": "2016-10-25T09:01:08.163Z"
+    }
+  ],
+  "created": "2016-10-08T17:12:18.495Z",
+  "modified": "2016-10-25T09:01:08.163Z",
+  "lastPublisher": {
+    "name": "kyungw00k",
+    "email": "parksama@gmail.com"
+  },
+  "owners": [
+    {
+      "name": "kyungw00k",
+      "email": "parksama@gmail.com"
+    }
+  ],
+  "readme": "# element-visible\n\n[![Build Status][travis-image]][travis-url]\n[![JavaScript Style Guide][js-standard-image]][js-standard-url]\n[![NPM version][npm-image]][npm-url]\n[![NPM download][npm-download]][npm-url]\n[![Dependency Status][depstat-image]][depstat-url]\n[![DevDependency Status][depstat-dev-image]][depstat-dev-url]\n\n[js-standard-url]: http://standardjs.com/\n[js-standard-image]: https://img.shields.io/badge/code%20style-standard-brightgreen.svg\n\n[npm-url]: https://npmjs.org/package/element-visible\n[npm-image]: https://img.shields.io/npm/v/element-visible.svg?style=flat-square\n[npm-download]: https://img.shields.io/npm/dm/element-visible.svg?style=flat-square\n\n[travis-url]: https://travis-ci.org/kyungw00k/element-visible\n[travis-image]: https://img.shields.io/travis/kyungw00k/element-visible/master.svg?style=flat-square\n\n[depstat-url]: https://david-dm.org/kyungw00k/element-visible\n[depstat-image]: https://david-dm.org/kyungw00k/element-visible.svg?style=flat-square\n\n[depstat-dev-url]: https://david-dm.org/kyungw00k/element-visible#info=devDependencies\n[depstat-dev-image]: https://david-dm.org/kyungw00k/element-visible/dev-status.svg?style=flat-square\n    \n> Determine if an element is visible\n\n## Install\n\nInstall with [npm](https://www.npmjs.com/)\n\n```sh\n$ npm i element-visible --save-dev\n```\n\n## Usage\n\nThis basic check will return true if the entire element is visible to the user (within the visual viewport).\n\n```js\nvar elementVisible = require('element-visible')\nvar element = document.getElementById('targetElementId')\n\nif (elementVisible(element)) {\n    console.log('I\\'m visible')\n}\n\n```\n\nIf you'd like to check the certain percent of the element, you can use the following:\n\n```js\nvar elementVisible = require('element-visible')\nvar element = document.getElementById('targetElementId')\n\nif (elementVisible(element, 0.5)) { /* at least 50% of its area is in the users viewport */\n    console.log('I\\'m visible')\n}\n```\n\n## API\n\n### elementVisible(element [, threshold])\n`true` if element is visible and the visible percentage of element is equal or above the `threshold`\n- `threshold` (_default: 1_) -  if percentage is equal or above this limit the element is considered fully visible\n\n## Running tests\n\nInstall dev dependencies:\n\n```sh\n$ npm i -d && npm run test:local\n```\n\n### Tested\n* IE 6+\n* Chrome latest\n* Safari latest\n* Firefox latest\n* iOS 8.1+\n* Android 4.0+\n\n## Contributing\n\nPull requests and stars are always welcome. For bugs and feature requests, [please create an issue](https://github.com/kyungw00k/element-visible/issues)\n\n## License\n[MIT](https://kyungw00k.mit-license.org/)\n"
+}

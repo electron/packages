@@ -1,6 +1,6 @@
 {
   "name": "electron-log",
-  "version": "1.1.1",
+  "version": "1.2.2",
   "description": "Just a very simple logging module for your Electron application",
   "main": "index.js",
   "scripts": {
@@ -51,14 +51,14 @@
     "mocha": "*",
     "rewire": "*"
   },
-  "gitHead": "27cc0304ef4d43d021664462ff31f25064438231",
-  "_npmVersion": "3.10.6",
-  "_nodeVersion": "6.4.0",
+  "gitHead": "022f3ceae97ff97155942ff5a3c5186eb5affb3d",
+  "_npmVersion": "3.10.9",
+  "_nodeVersion": "6.9.1",
   "dist": {
-    "shasum": "0dba025ed33d0e45bf8f40c6e9be3cee2f986c28",
-    "tarball": "http://registry.npmjs.org/electron-log/-/electron-log-1.1.1.tgz"
+    "shasum": "55d6a907013311340fe629050e1a88ec889f6ad8",
+    "tarball": "http://registry.npmjs.org/electron-log/-/electron-log-1.2.2.tgz"
   },
-  "stars": 3,
+  "stars": 4,
   "versions": [
     {
       "number": "1.0.0",
@@ -143,10 +143,22 @@
     {
       "number": "1.1.1",
       "date": "2016-09-12T03:13:10.983Z"
+    },
+    {
+      "number": "1.2.0",
+      "date": "2016-10-24T02:54:57.620Z"
+    },
+    {
+      "number": "1.2.1",
+      "date": "2016-10-24T09:25:19.583Z"
+    },
+    {
+      "number": "1.2.2",
+      "date": "2016-10-24T09:30:01.848Z"
     }
   ],
   "created": "2016-05-02T08:55:36.487Z",
-  "modified": "2016-09-12T03:13:10.983Z",
+  "modified": "2016-10-24T09:30:01.848Z",
   "lastPublisher": {
     "name": "megahertz",
     "email": "alexey.p@l96.ru"
@@ -157,5 +169,5 @@
       "email": "alexey.p@l96.ru"
     }
   ],
-  "readme": "# electron-log\n[![Build Status](https://travis-ci.org/megahertz/electron-log.svg?branch=master)](https://travis-ci.org/megahertz/electron-log)\n[![npm version](https://badge.fury.io/js/electron-log.svg)](https://badge.fury.io/js/electron-log)\n\n## Description\n\nJust a very simple logging module for your Electron application.\nNo dependencies. No complicated configuration. Just require and use.\nAlso it can be used without Electron.\n\nBy default it writes logs to the following locations:\n\n * **on Linux:** `~/.config/<app name>/log.log`\n * **on OS X:** `~/Library/Logs/<app name>/log.log`\n * **on Windows:** `%USERPROFILE%/AppData/Roaming/<app name>/log.log`\n\n## Installation\n\nInstall with [npm](https://npmjs.org/package/electron-log):\n\n    npm install electron-log\n\n## Usage\n\n```js\nvar log = require('electron-log');\n\nlog.info('Hello, log');\n```\n    \n\n### Transport\nTransport is a simple function which requires an object which describes a message.\nBy default, two transports are active: console and file. The file path is \ndependent on current platform.\n\n#### Disable default transport:\n\n```js\nlog.transports.file = false;\nlog.transports.console = false;\n```\n    \n#### Override transport:\n\n```js\nlog.transports.console = function(msg) {\n  console.log(`[${msg.date.toLocaleTimeString()} ${msg.level}] ${msg.text}`);\n};\n```\n    \n#### Console Transport\n\n```js\n// Log level\nlog.transports.console.level = 'warning';\n\n/** \n * Set output format template. Available variables:\n * Main: {level}, {text}\n * Date: {y},{m},{d},{h},{i},{s},{ms}\n */\nlog.transports.console.format = '{h}:{i}:{s}:{ms} {text}';\n\n// Set a function which formats output\nlog.transports.console.format = (msg) => msg.text;\n```\n    \n#### File transport\n\n```js\n// Same as for console transport\nlog.transports.file.level = 'warning';\nlog.transports.file.format = '{h}:{i}:{s}:{ms} {text}';\n\n// Set maximum log size in bytes. When it exceeds, old log will be saved\n// as log.old.log file\nlog.transports.file.maxSize = 5 * 1024 * 1024;\n\n// Write to this file, must be set before first logging\nlog.transports.file.file = __dirname + '/log.txt';\n\n// fs.createWriteStream options, must be set before first logging\nlog.transports.file.streamConfig = { flags: 'w' };\n\n// set existed file stream\nlog.transports.file.stream = fs.createWriteStream('log.txt');\n```\n\nBy default, file transport reads a productName or name property from package.json to\ndetermine a log path like `~/.config/<app name>/log.log`.\nIf you have no package.json or you want to specify another <app name>,\njust set the appName property:\n\n```js\nlog.appName = 'test';\n```\n\n## Change Log\n**1.0.16**\n\n - Prefer to use package.json:productName instead of package.json:name to\n determine a log path.\n\n## License\n\nLicensed under MIT.\n"
+  "readme": "# electron-log\n[![Build Status](https://travis-ci.org/megahertz/electron-log.svg?branch=master)](https://travis-ci.org/megahertz/electron-log)\n[![npm version](https://badge.fury.io/js/electron-log.svg)](https://badge.fury.io/js/electron-log)\n\n## Description\n\nJust a very simple logging module for your Electron application.\nNo dependencies. No complicated configuration. Just require and use.\nAlso it can be used without Electron.\n\nBy default it writes logs to the following locations:\n\n * **on Linux:** `~/.config/<app name>/log.log`\n * **on OS X:** `~/Library/Logs/<app name>/log.log`\n * **on Windows:** `%USERPROFILE%/AppData/Roaming/<app name>/log.log`\n\n## Installation\n\nInstall with [npm](https://npmjs.org/package/electron-log):\n\n    npm install electron-log\n\n## Usage\n\n```js\nvar log = require('electron-log');\n\nlog.info('Hello, log');\n```\n    \n\n### Transport\nTransport is a simple function which requires an object which describes a message.\nBy default, two transports are active: console and file. The file path is \ndependent on current platform.\n\n#### Disable default transport:\n\n```js\nlog.transports.file = false;\nlog.transports.console = false;\n```\n    \n#### Override transport:\n\n```js\nlog.transports.console = function(msg) {\n  console.log(`[${msg.date.toLocaleTimeString()} ${msg.level}] ${msg.text}`);\n};\n```\n    \n#### Console Transport\n\n```js\n// Log level\nlog.transports.console.level = 'warning';\n\n/** \n * Set output format template. Available variables:\n * Main: {level}, {text}\n * Date: {y},{m},{d},{h},{i},{s},{ms}\n */\nlog.transports.console.format = '{h}:{i}:{s}:{ms} {text}';\n\n// Set a function which formats output\nlog.transports.console.format = (msg) => msg.text;\n```\n    \n#### File transport\n\n```js\n// Same as for console transport\nlog.transports.file.level = 'warning';\nlog.transports.file.format = '{h}:{i}:{s}:{ms} {text}';\n\n// Set maximum log size in bytes. When it exceeds, old log will be saved\n// as log.old.log file\nlog.transports.file.maxSize = 5 * 1024 * 1024;\n\n// Write to this file, must be set before first logging\nlog.transports.file.file = __dirname + '/log.txt';\n\n// fs.createWriteStream options, must be set before first logging\nlog.transports.file.streamConfig = { flags: 'w' };\n\n// set existed file stream\nlog.transports.file.stream = fs.createWriteStream('log.txt');\n```\n\nBy default, file transport reads a productName or name property from package.json to\ndetermine a log path like `~/.config/<app name>/log.log`.\nIf you have no package.json or you want to specify another <app name>,\njust set the appName property:\n\n```js\nlog.appName = 'test';\n```\n\n## Change Log\n**1.0.16**\n\n - Prefer to use package.json:productName instead of package.json:name to\n determine a log path.\n\n**1.2.0**\n\n - #14 Use native console levels instead of console.log\n\n## License\n\nLicensed under MIT.\n"
 }

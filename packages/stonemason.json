@@ -1,17 +1,19 @@
 {
   "name": "stonemason",
-  "version": "2.0.0",
+  "version": "2.2.4",
   "description": "Electron app for creating microservice stubs",
   "main": "main.js",
   "bin": {
-    "stonemason": "./bin/stonemason"
+    "stonemason": "./bin/stonemason",
+    "stonemason-cli": "./bin/stonemason-cli"
   },
   "scripts": {
     "test": "mocha",
     "start": "electron main.js",
     "dev-start": "electron main.js -D",
     "build": "webpack -p",
-    "watch": "webpack -d --watch"
+    "watch": "webpack -d --watch",
+    "preversion": "webpack -p"
   },
   "keywords": [
     "electron",
@@ -27,18 +29,20 @@
     "babel-polyfill": "^6.13.0",
     "babel-preset-es2015": "^6.14.0",
     "babel-preset-react": "^6.11.1",
+    "chalk": "^1.1.3",
     "electron-prebuilt": "^1.4.0",
     "handlebars": "^4.0.5",
+    "inquirer": "^1.2.2",
     "react": "^15.3.1",
     "react-dom": "^15.3.1",
     "react-router": "^2.8.1",
-    "webpack": "^1.13.2"
+    "webpack": "^1.13.2",
+    "yargs": "^5.0.0"
   },
   "devDependencies": {
     "chai": "^3.5.0",
     "electron-reload": "^1.0.2",
-    "mocha": "^3.0.2",
-    "yargs": "^5.0.0"
+    "mocha": "^3.0.2"
   },
   "repository": {
     "user": "cakenggt",
@@ -54,12 +58,12 @@
     "api_url": "https://api.github.com/repos/cakenggt/mason"
   },
   "homepage": "https://github.com/cakenggt/mason#readme",
-  "gitHead": "7a90b8e6b21a8f561bfacc918d6154f811032f18",
+  "gitHead": "6cf81d39acf0510e5f62b3770e409b8506184ba5",
   "_npmVersion": "3.5.3",
   "_nodeVersion": "6.0.0",
   "dist": {
-    "shasum": "7cb14ffbf3f98f8293d9404892d15c3073563f6b",
-    "tarball": "http://registry.npmjs.org/stonemason/-/stonemason-2.0.0.tgz"
+    "shasum": "5d0271a3ec6dfd10c1e374b263d65234d6ffc150",
+    "tarball": "http://registry.npmjs.org/stonemason/-/stonemason-2.2.4.tgz"
   },
   "versions": [
     {
@@ -77,10 +81,38 @@
     {
       "number": "2.0.0",
       "date": "2016-09-28T15:53:26.494Z"
+    },
+    {
+      "number": "2.1.0",
+      "date": "2016-10-11T19:55:02.201Z"
+    },
+    {
+      "number": "2.1.1",
+      "date": "2016-10-12T17:13:40.160Z"
+    },
+    {
+      "number": "2.2.0",
+      "date": "2016-10-12T20:26:00.841Z"
+    },
+    {
+      "number": "2.2.1",
+      "date": "2016-10-13T19:07:24.740Z"
+    },
+    {
+      "number": "2.2.2",
+      "date": "2016-10-13T19:15:14.591Z"
+    },
+    {
+      "number": "2.2.3",
+      "date": "2016-10-14T14:20:41.635Z"
+    },
+    {
+      "number": "2.2.4",
+      "date": "2016-10-14T14:28:37.051Z"
     }
   ],
   "created": "2016-09-22T17:57:51.450Z",
-  "modified": "2016-09-28T15:53:26.494Z",
+  "modified": "2016-10-14T14:28:37.051Z",
   "lastPublisher": {
     "name": "cakenggt",
     "email": "alec.lownes@gmail.com"
@@ -91,5 +123,5 @@
       "email": "alec.lownes@gmail.com"
     }
   ],
-  "readme": "# Stonemason\r\n\r\nStonemason is an app for creating microservice stubs. Enabling all of the options will allow a webservice to be generated with db support through sequelize, a working api, and a React.js front-end complete with webpack settings and build/watch scripts. Additionally, stubs will be created for the models and api routes.\r\n\r\nThe purpose of Stonemason is to enable developers to get up and running as quickly as possible if they are using this very specific stack for a webservice. There are better tools out there for building a wider range of services, but the specificity of Stonemason allows much of the additional boilerplate code to be generated automatically.\r\n\r\n## Usage\r\n\r\nInstall Stonemason globally using npm\r\n\r\n`npm install -g stonemason`\r\n\r\nCalling it from the command line will start the electron app\r\n\r\n`stonemason`\r\n\r\nThe idea of the app is that at the end of the generation process, you should be able to just perform `npm install` and then be able to run `npm start` to have a working server running, complete with the files necessary to build out your api, react, and db model stubs.\r\n"
+  "readme": "# Stonemason\r\n\r\nStonemason is an app for creating microservice stubs. Enabling all of the options will allow a webservice to be generated with db support through sequelize, a working api, and a React.js front-end complete with webpack settings and build/watch scripts. Additionally, stubs will be created for the models and api routes.\r\n\r\nThe purpose of Stonemason is to enable developers to get up and running as quickly as possible if they are using this very specific stack for a webservice. There are better tools out there for building a wider range of services, but the specificity of Stonemason allows much of the additional boilerplate code to be generated automatically.\r\n\r\n## Usage\r\n\r\nInstall Stonemason globally using npm\r\n\r\n`npm install -g stonemason`\r\n\r\nCalling it from the command line will start the electron app\r\n\r\n`stonemason`\r\n\r\nThe idea of the app is that at the end of the generation process, you should be able to just perform `npm install` and then be able to run `npm start` to have a working server running, complete with the files necessary to build out your api, react, and db model stubs.\r\n\r\nAdditionally, a cli is provided. Navigate to the folder where you want your app to reside (or choose it's location during the question process), and run\r\n\r\n`stonemason-cli`\r\n\r\nand answer a few questions about your app to generate the server.\r\n"
 }

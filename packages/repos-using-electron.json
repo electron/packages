@@ -1,6 +1,6 @@
 {
   "name": "repos-using-electron",
-  "version": "1.4.0",
+  "version": "1.5.2",
   "description": "A collection of all public repositories on GitHub that depend on `electron-prebuilt`",
   "repository": {
     "user": "zeke",
@@ -25,9 +25,10 @@
     "collectors:package-json": "node lib/collectors/package-json.js",
     "collectors:contributors": "node lib/collectors/contributors.js",
     "reports": "npm-run-all reports:*",
-    "reports:contributors": "node reports/contributors.js > reports/contributors.md && vmd reports/contributors.md",
-    "reports:deps": "node reports/dependencies.js > reports/dependencies.md && vmd reports/dependencies.md",
-    "reports:forks": "node reports/forks.js > reports/forks.md && vmd reports/forks.md"
+    "reports:contributors": "node reports/contributors.js > reports/contributors.md",
+    "reports:deps": "node reports/dependencies.js > reports/dependencies.md",
+    "reports:forks": "node reports/forks.js > reports/forks.md",
+    "reports:electron-builder-configurations": "node reports/electron-builder-configurations.js > reports/electron-builder-configurations.md"
   },
   "keywords": [
     "electron",
@@ -41,7 +42,6 @@
   },
   "license": "MIT",
   "devDependencies": {
-    "all-the-packages": "^1.0.2",
     "chai": "^3.5.0",
     "count-array-values": "^1.1.0",
     "dedent": "^0.6.0",
@@ -51,9 +51,8 @@
     "keyed-array": "^2.1.0",
     "limiter": "^1.1.0",
     "lodash.flatten": "^4.4.0",
-    "lodash.pick": "^4.4.0",
-    "lodash.sortby": "^4.6.1",
     "mocha": "^3.0.2",
+    "npm-run-all": "^3.1.0",
     "octokat": "^0.4.18",
     "path-exists": "^3.0.0",
     "pify": "^2.3.0",
@@ -62,7 +61,6 @@
     "standard-markdown": "^1.2.1"
   },
   "dependencies": {
-    "lodash.pick": "^4.4.0",
     "nice-package": "^1.2.0",
     "object-values": "^1.0.0",
     "require-dir": "^0.3.0"
@@ -72,13 +70,13 @@
       "mocha": true
     }
   },
-  "gitHead": "51001f51ecda5ac4f07b4662f12073db63cdb20f",
+  "gitHead": "ab6a57dd51df040c96ba119e79ae08ab8cf8bff1",
   "homepage": "https://github.com/zeke/repos-using-electron#readme",
-  "_npmVersion": "3.10.3",
-  "_nodeVersion": "6.4.0",
+  "_npmVersion": "3.10.8",
+  "_nodeVersion": "7.0.0",
   "dist": {
-    "shasum": "13bbb49b44387ec94f4fc43dd4ca4406808a20da",
-    "tarball": "http://registry.npmjs.org/repos-using-electron/-/repos-using-electron-1.4.0.tgz"
+    "shasum": "8e9b5b7e5955221e85925f18af4da5a279b12ee7",
+    "tarball": "http://registry.npmjs.org/repos-using-electron/-/repos-using-electron-1.5.2.tgz"
   },
   "versions": [
     {
@@ -108,10 +106,22 @@
     {
       "number": "1.4.0",
       "date": "2016-09-24T19:34:50.369Z"
+    },
+    {
+      "number": "1.5.0",
+      "date": "2016-11-06T01:13:22.499Z"
+    },
+    {
+      "number": "1.5.1",
+      "date": "2016-11-10T17:06:08.529Z"
+    },
+    {
+      "number": "1.5.2",
+      "date": "2016-11-10T18:20:53.881Z"
     }
   ],
   "created": "2016-09-01T19:22:19.782Z",
-  "modified": "2016-09-24T19:34:50.369Z",
+  "modified": "2016-11-10T18:20:53.881Z",
   "lastPublisher": {
     "name": "zeke",
     "email": "zeke@sikelianos.com"
@@ -122,5 +132,5 @@
       "email": "zeke@sikelianos.com"
     }
   ],
-  "readme": "# repos-using-electron [![Build Status](https://travis-ci.org/zeke/repos-using-electron.svg?branch=master)](https://travis-ci.org/zeke/repos-using-electron)\n\nA collection of all public repositories on GitHub that depend on `electron-prebuilt`\n\nUses the [libraries.io](https://libraries.io/api) to find dependent repos,\nand the [GitHub](https://developer.github.com/v3/) API to fetch latest\n`package.json` for each repo.\n\n## The Data\n\nSome of the collected data has been rendered into markdown reports.\n\n- [Apps by Fork Count](/reports/forks.md)\n- [Apps by Contributor Count](/reports/contributors.md)\n- [Top Contributors](/reports/contributors.md#top-contributors)\n- [Common Dependencies](/reports/dependencies.md)\n\n## Installation\n\n```sh\nnpm install repos-using-electron --save\n```\n\n## Usage\n\nWhen you require this module, you get a big array full of repository objects.\n\n```js\nconst repos = require('repos-using-electron')\n```\n\nTo find a specific repo:\n\n```js\nconst hyperterm = repos.find(repo => repo.fullName === 'zeit/hyperterm')\n```\n\nEach repo has a `pkg` property that is a [nice package](http://ghub.io/nice-package).\nThis gives you some convenience functions:\n\n```js\nhyperterm.dependsOn('object-values') // true\nhyperterm.devDependsOn('webpack') // true\nhyperterm.somehowDependsOn('hoarders') // false\n```\n\n## Development\n\nTo hack on this thing you'll need a\n[Libraries.io API key](https://libraries.io/account) and a\n[GitHub Personal Access Token](https://github.com/settings/tokens) with `repo`\naccess. Put your keys in a `.env` file; they'll be loaded into the environment\nat runtime:\n\n```sh\ntouch .env\necho LIBRARIES_IO_API_KEY=foo >> .env\necho GITHUB_ACCESS_TOKEN=bar >> .env\n```\n\nThen list the scripts you can run:\n\n```sh\nnpm run\n```\n\n## Tests\n\n```sh\nnpm install\nnpm test\n```\n\n## Dependencies\n\n- [nice-package](https://github.com/zeke/nice-package): Clean up messy package metadata from the npm registry\n- [require-dir](https://github.com/aseemk/requireDir): Helper to require() directories.\n\n## Dev Dependencies\n\n- [chai](https://github.com/chaijs/chai): BDD/TDD assertion library for node.js and the browser. Test framework agnostic.\n- [dotenv](https://github.com/motdotla/dotenv): Loads environment variables from .env file\n- [get-repo-package-json](https://github.com/zeke/get-repo-package-json): Fetch a GitHub repository&#39;s package.json file using the GitHub API\n- [limiter](https://github.com/jhurliman/node-rate-limiter): A generic rate limiter for node.js. Useful for API clients, web crawling, or other tasks that need to be throttled\n- [lodash.sortby](https://github.com/lodash/lodash): The lodash method `_.sortBy` exported as a module.\n- [mocha](https://github.com/mochajs/mocha): simple, flexible, fun test framework\n- [object-values](https://github.com/sindresorhus/object-values): Get the values of an object\n- [octokat](https://github.com/philschatz/octokat.js): Javascript GitHub client for NodeJS or a browser using promises or callbacks\n- [path-exists](https://github.com/sindresorhus/path-exists): Check if a path exists\n- [pify](https://github.com/sindresorhus/pify): Promisify a callback-style function\n- [request](https://github.com/request/request): Simplified HTTP request client.\n- [standard](https://github.com/feross/standard): JavaScript Standard Style\n- [standard-markdown](https://github.com/zeke/standard-markdown): Test your Markdown files for Standard JavaScript Style™\n\n## License\n\nMIT\n"
+  "readme": "# repos-using-electron [![Build Status](https://travis-ci.org/zeke/repos-using-electron.svg?branch=master)](https://travis-ci.org/zeke/repos-using-electron)\n\nA collection of all public GitHub repositories that depend on `electron`\nor `electron-prebuilt`.\n\nUses the [libraries.io](https://libraries.io/api) to find dependent repos,\nand the [GitHub](https://developer.github.com/v3/) API to fetch latest\n`package.json` for each repo.\n\n## The Data\n\nSome of the collected data has been rendered into markdown reports.\n\n- [Apps by Fork Count](/reports/forks.md)\n- [Apps by Contributor Count](/reports/contributors.md)\n- [Top Contributors](/reports/contributors.md#top-contributors)\n- [Common Dependencies](/reports/dependencies.md)\n- [`electron-builder` configurations](/reports/electron-builder-configurations.md)\n\n## Installation\n\n```sh\nnpm install repos-using-electron --save\n```\n\n## Usage\n\nWhen you require this module, you get an array of repository objects.\n\n```js\nconst repos = require('repos-using-electron')\n```\n\nTo find a specific repo:\n\n```js\nconst hyperterm = repos.find(repo => repo.fullName === 'zeit/hyperterm')\n```\n\nEach repo has a `pkg` property that is a [nice package](http://ghub.io/nice-package).\nThis gives you some convenience functions:\n\n```js\nhyperterm.pkg.dependsOn('object-values') // true\nhyperterm.pkg.devDependsOn('webpack') // true\nhyperterm.pkg.somehowDependsOn('hoarders') // false\n```\n\nFind the top 30 repos that depend on `electron-builder` (repos are sorted by\n`forksCount` by default):\n\n```js\nrepos\n  .filter(repo => repo.pkg.somehowDependsOn('electron-builder'))\n  .slice(0, 30)\n  .map(repo => repo.fullName)\n```\n\nOpen those top 30 repos in your browser:\n\n```js\nconst open = require('open')\n\nrepos\n  .filter(repo => repo.pkg.somehowDependsOn('electron-builder'))\n  .slice(0, 30)\n  .map(repo => open(repo.htmlUrl))\n```\n\n## Development\n\nTo hack on this thing you'll need a\n[Libraries.io API key](https://libraries.io/account) and a\n[GitHub Personal Access Token](https://github.com/settings/tokens) with `repo`\naccess. Put your keys in a `.env` file; they'll be loaded into the environment\nat runtime:\n\n```sh\ntouch .env\necho LIBRARIES_IO_API_KEY=foo >> .env\necho GITHUB_ACCESS_TOKEN=bar >> .env\n```\n\nThen list the scripts you can run:\n\n```sh\nnpm run\n```\n\n## Tests\n\n```sh\nnpm install\nnpm test\n```\n\n## Dependencies\n\n- [nice-package](https://github.com/zeke/nice-package): Clean up messy package metadata from the npm registry\n- [object-values](https://github.com/sindresorhus/object-values): Get the values of an object\n- [require-dir](https://github.com/aseemk/requireDir): Helper to require() directories.\n\n## Dev Dependencies\n\n- [chai](https://github.com/chaijs/chai): BDD/TDD assertion library for node.js and the browser. Test framework agnostic.\n- [count-array-values](https://github.com/zeke/count-array-values): Count the instances of each value in an array\n- [dedent](https://github.com/dmnd/dedent): An ES6 string tag that strips indentation from multi-line strings\n- [dotenv](https://github.com/motdotla/dotenv): Loads environment variables from .env file\n- [fetch-nice-package](https://github.com/hemanth/fetch-nice-package): fetch cleaned package metadata from the npm registry.\n- [get-repo-package-json](https://github.com/zeke/get-repo-package-json): Fetch a GitHub repository&#39;s package.json file using the GitHub API\n- [keyed-array](https://github.com/zeke/keyed-array): Recursively add named keys to arrays of objects\n- [limiter](https://github.com/jhurliman/node-rate-limiter): A generic rate limiter for node.js. Useful for API clients, web crawling, or other tasks that need to be throttled\n- [lodash.flatten](https://github.com/lodash/lodash): The lodash method `_.flatten` exported as a module.\n- [mocha](https://github.com/mochajs/mocha): simple, flexible, fun test framework\n- [npm-run-all](https://github.com/mysticatea/npm-run-all): A CLI tool to run multiple npm-scripts in parallel or sequential.\n- [octokat](https://github.com/philschatz/octokat.js): Javascript GitHub client for NodeJS or a browser using promises or callbacks\n- [path-exists](https://github.com/sindresorhus/path-exists): Check if a path exists\n- [pify](https://github.com/sindresorhus/pify): Promisify a callback-style function\n- [request](https://github.com/request/request): Simplified HTTP request client.\n- [standard](https://github.com/feross/standard): JavaScript Standard Style\n- [standard-markdown](https://github.com/zeke/standard-markdown): Test your Markdown files for Standard JavaScript Style™\n\n## License\n\nMIT\n"
 }

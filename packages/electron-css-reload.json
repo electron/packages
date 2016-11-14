@@ -1,6 +1,6 @@
 {
   "name": "electron-css-reload",
-  "version": "1.0.3",
+  "version": "1.0.6",
   "description": "reload css on change in your electron app",
   "main": "reload.js",
   "scripts": {
@@ -28,12 +28,12 @@
   },
   "license": "MIT",
   "homepage": "https://github.com/dperrymorrow/electron-css-reload#readme",
-  "gitHead": "6ad916171d64df7e472aafd342d83d49fd56a2eb",
+  "gitHead": "82f12816fe3a8cb2faad48dd8fdbf0d9e617040d",
   "_npmVersion": "3.10.7",
   "_nodeVersion": "4.3.2",
   "dist": {
-    "shasum": "1693d0f0437435a863f9cdc0cb380c1e8830220e",
-    "tarball": "http://registry.npmjs.org/electron-css-reload/-/electron-css-reload-1.0.3.tgz"
+    "shasum": "75822568a0959797cafe470a9d8bfb512fc6cbe1",
+    "tarball": "http://registry.npmjs.org/electron-css-reload/-/electron-css-reload-1.0.6.tgz"
   },
   "versions": [
     {
@@ -51,10 +51,22 @@
     {
       "number": "1.0.3",
       "date": "2016-09-26T23:02:06.378Z"
+    },
+    {
+      "number": "1.0.4",
+      "date": "2016-11-04T21:37:00.404Z"
+    },
+    {
+      "number": "1.0.5",
+      "date": "2016-11-04T21:54:29.810Z"
+    },
+    {
+      "number": "1.0.6",
+      "date": "2016-11-04T22:03:39.060Z"
     }
   ],
   "created": "2016-09-10T00:18:06.111Z",
-  "modified": "2016-09-26T23:02:06.378Z",
+  "modified": "2016-11-04T22:03:39.060Z",
   "lastPublisher": {
     "name": "dperrymorrow",
     "email": "dperrymorrow@gmail.com"
@@ -65,5 +77,5 @@
       "email": "dperrymorrow@gmail.com"
     }
   ],
-  "readme": "# electron-css-reload\nforce reload CSS on change in your electron App\n\nReload style sheets on your page on change in your electron App.\n\n## Usage\n\n```javascript\nconst reload = require('electron-css-reload');\n```\n\nThen, open your devtools window and invoke the method to begin watching for CSS changes in your Electron app.\n\n```javascript\n// from your console\nreload()\n```\n\nOr, when in dev mode, invoke the method from the start.\n\n```javascript\nrequire('electron-css-reload')();\n```\n\nThat't it, enjoy not restarting your Electron app every time you wanna see a CSS change.\n\n## How does it work?\n\nSince Electron has access to the file system, it uses ```fs.watchFile``` to watch for changes to the files loaded via ```<link>``` tags on the page. \n\nWhen a change event fires, a ```?nocache={timestamp}``` is added to the href on the stylesheet link on the page.\nThis forces the browser to reload the sheet as it sees it as a new url.\n"
+  "readme": "# electron-css-reload\nforce reload CSS on change in your electron App\n\nReload style sheets on your page on change in your electron App.\n\n## Usage\n\n```javascript\nconst reload = require('electron-css-reload');\n```\n\nThen, open your devtools window and invoke the method to begin watching for CSS changes in your Electron app.\n\n```javascript\n// from your console\nreload()\n```\n\nOr, when in dev mode, invoke the method from the start.\n\n```javascript\nrequire('electron-css-reload')();\n```\n\nThat't it, enjoy not restarting your Electron app every time you wanna see a CSS change.\n\n## Also watching dependencies of the css file\n\nYou can also watch dependencies of the CSS file you have loaded. This is helpful for situations like including other CSS files into your main file.\n\n\n```html\n<link rel=\"stylesheet\" type=\"text/css\" href=\"../../frontend/styles/index.css\" data-source=\"fonts.css,animations.css\"/>\n```\n\n> the paths in data-sources should be relative to the file path of the href\n\n## Watching inline-styles\n\nYou can also watch inline styles for changes by giving an id, and a ```data-source```.\n\n\n> data-source path should be top down from your electron application.\n\n```html\n<style type=\"text/css\" id=\"test-id\" data-source=\"/app/pages/main/index.html\">\n  body {\n    background-color: red;\n  }\n</style>\n```\n\n## How does it work?\n\nSince Electron has access to the file system, it uses ```fs.watchFile``` to watch for changes to the files loaded via ```<link>``` tags on the page.\n\nWhen a change event fires, a ```?nocache={timestamp}``` is added to the href on the stylesheet link on the page.\nThis forces the browser to reload the sheet as it sees it as a new URL.\n"
 }

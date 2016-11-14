@@ -1,0 +1,117 @@
+{
+  "name": "hyper-keymap",
+  "version": "0.1.0",
+  "description": "Hotkeys management for Hyper",
+  "main": "src",
+  "files": [
+    "src"
+  ],
+  "scripts": {
+    "test": "ava",
+    "lint": "eslint .",
+    "coverage": "nyc ava"
+  },
+  "engines": {
+    "node": ">=6.5.0"
+  },
+  "eslintConfig": {
+    "extends": [
+      "pedant"
+    ],
+    "plugins": [
+      "require-path-exists"
+    ],
+    "env": {
+      "node": true,
+      "es6": true
+    },
+    "parserOptions": {
+      "ecmaVersion": 2016,
+      "sourceType": "module",
+      "ecmaFeatures": {
+        "impliedStrict": true,
+        "jsx": true
+      }
+    }
+  },
+  "nyc": {
+    "include": [
+      "src/index.js"
+    ],
+    "reporter": [
+      "text",
+      "lcov"
+    ]
+  },
+  "repository": {
+    "user": "iamstarkov",
+    "repo": "hyper-keymap",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/iamstarkov/hyper-keymap/tarball/master",
+    "clone_url": "https://github.com/iamstarkov/hyper-keymap",
+    "https_url": "https://github.com/iamstarkov/hyper-keymap",
+    "travis_url": "https://travis-ci.org/iamstarkov/hyper-keymap",
+    "zip_url": "https://github.com/iamstarkov/hyper-keymap/archive/master.zip",
+    "api_url": "https://api.github.com/repos/iamstarkov/hyper-keymap"
+  },
+  "keywords": [
+    "hyper",
+    "hyperterm",
+    "hyper-plugin",
+    "hyperterm-plugin",
+    "keymap",
+    "hotkey",
+    "hotkeys",
+    "shortcut",
+    "shortcuts",
+    "keybinding",
+    "kebindings",
+    "keymap",
+    "keymaps"
+  ],
+  "author": {
+    "name": "Vladimir Starkov",
+    "email": "iamstarkov@gmail.com",
+    "url": "https://iamstarkov.com"
+  },
+  "license": "MIT",
+  "homepage": "https://github.com/iamstarkov/hyper-keymap#readme",
+  "dependencies": {
+    "ramda": "^0.22.1"
+  },
+  "devDependencies": {
+    "ava": "^0.16.0",
+    "eslint": "^3.8.1",
+    "eslint-config-pedant": "^0.8.0",
+    "eslint-plugin-require-path-exists": "^1.1.5",
+    "nyc": "^8.3.2"
+  },
+  "gitHead": "7bb13bc1411218c1e376ba610cfbe1afcbd40485",
+  "_npmVersion": "3.10.9",
+  "_nodeVersion": "6.9.1",
+  "dist": {
+    "shasum": "597b17fbc1b01833346ba72e6a206a744d3ff135",
+    "tarball": "http://registry.npmjs.org/hyper-keymap/-/hyper-keymap-0.1.0.tgz"
+  },
+  "versions": [
+    {
+      "number": "0.1.0",
+      "date": "2016-10-23T11:30:26.527Z"
+    }
+  ],
+  "created": "2016-10-23T11:30:26.527Z",
+  "modified": "2016-10-23T11:30:26.527Z",
+  "lastPublisher": {
+    "name": "iamstarkov",
+    "email": "iamstarkov@gmail.com"
+  },
+  "owners": [
+    {
+      "name": "iamstarkov",
+      "email": "iamstarkov@gmail.com"
+    }
+  ],
+  "readme": "# hyper-keymap\n\n[![NPM version][npm-image]][npm-url]\n[![Build Status][travis-image]][travis-url]\n[![Coveralls Status][coveralls-image]][coveralls-url]\n[![Dependency Status][depstat-image]][depstat-url]\n\n> Hotkeys management for Hyper\n\n## Install\n\nOpen your Hyper preferences and add `hyper-keymap` to plugin list:\n\n```js\nplugins: [\n  'hyper-keymap'\n],\n```\n\nOr use [hpm][hpm]\n\n    npm install -g hpm\n    hpm i hyper-keymap\n\n\n[hpm]: https://npm.im/hpm-cli\n\n## 🤔 Caveats\n\nSome hotkeys can still not be working, like `CmdOrCtrl+Alt+Left`,\nbecause right now Hyper (`v0.8.3`) is binding this and several others keys.\nThose keys are semi-working.  \n\nThough, 🎉 good news, i submitted [pull-request][pr] to Hyper to fix that.\nCheck it out, and if you want comment there what do you think about it 🗯. Any feedback is welcomed.\n\n[pr]: https://github.com/zeit/hyper/pull/925\n\n## Usage\n\nThere is a [default keymap](./src/default-keymap.js), which is used by Hyper.\n\nIn order to change hotkeys you are unhappy with, add `keymap` object to your config:\n\n```js\nmodule.exports = {\n  config: {\n\n    // other configuration\n\n    keymap: {\n      // just examples, see below for detailed explanation\n      'CmdOrCtrl+Alt+Left':  'prev-pane',\n      'CmdOrCtrl+Alt+Right': 'next-pane',\n    },\n  },\n\n  plugins: [\n    'hyper-keymap'\n    // you can have another plugins as well\n  ],\n};\n```\n\nKeymap is an object of Electron's accelerator and Hyper's command.\n\n```js\nkeymap: {\n  // 'accelerator'    :  'Hyper command'\n  'CmdOrCtrl+Alt+Left':  'prev-pane',\n}\n```\n\nYour keymap has prio over default one.\n\n## Electron's accelerators\n\nIt is a way to define keyboard shortcuts.\n\nAccelerators can contain multiple modifiers and key codes, combined by the `+` character.\n\nExamples:\n\n* `CommandOrControl+A`\n* `CommandOrControl+Shift+Z`\n\nCheck out Electron's [accelerators][elacc] documentation.\n\n[elacc]: http://electron.atom.io/docs/api/accelerator/\n\n## List of supported Hyper commands\n\n* `show-settings`\n* `new-window`\n* `new-tab`\n* `split-vertical`\n* `split-horizontal`\n* `close`\n* `close-window`\n* `clear`\n* `show-settings`\n* `reload`\n* `reload-full`\n* `toggle-devtools`\n* `zoom-reset`\n* `zoom-in`\n* `zoom-out`\n* `update-plugins`\n* `prev-tab`\n* `next-tab`\n* `prev-pane`\n* `next-pane`\n\n## License\n\nMIT © [Vladimir Starkov](https://iamstarkov.com)\n\n[npm-url]: https://npmjs.org/package/hyper-keymap\n[npm-image]: https://img.shields.io/npm/v/hyper-keymap.svg?style=flat-square\n\n[travis-url]: https://travis-ci.org/iamstarkov/hyper-keymap\n[travis-image]: https://img.shields.io/travis/iamstarkov/hyper-keymap.svg?style=flat-square\n\n[coveralls-url]: https://coveralls.io/r/iamstarkov/hyper-keymap\n[coveralls-image]: https://img.shields.io/coveralls/iamstarkov/hyper-keymap.svg?style=flat-square\n\n[depstat-url]: https://david-dm.org/iamstarkov/hyper-keymap\n[depstat-image]: https://david-dm.org/iamstarkov/hyper-keymap.svg?style=flat-square\n"
+}

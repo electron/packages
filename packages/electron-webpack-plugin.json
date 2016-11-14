@@ -1,0 +1,98 @@
+{
+  "name": "electron-webpack-plugin",
+  "version": "1.2.2",
+  "description": "Webpack plugin to launch Electron.",
+  "main": "lib/index.js",
+  "scripts": {
+    "prepublish": "npm test && babel src --out-dir lib",
+    "test": "echo"
+  },
+  "repository": {
+    "user": "thesbros",
+    "repo": "electron-webpack-plugin",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/thesbros/electron-webpack-plugin/tarball/master",
+    "clone_url": "https://github.com/thesbros/electron-webpack-plugin",
+    "https_url": "https://github.com/thesbros/electron-webpack-plugin",
+    "travis_url": "https://travis-ci.org/thesbros/electron-webpack-plugin",
+    "zip_url": "https://github.com/thesbros/electron-webpack-plugin/archive/master.zip",
+    "api_url": "https://api.github.com/repos/thesbros/electron-webpack-plugin"
+  },
+  "author": {
+    "name": "thesbros"
+  },
+  "license": "X11",
+  "keywords": [
+    "electron",
+    "webpack",
+    "plugin",
+    "relaunch",
+    "run",
+    "webpack-plugin"
+  ],
+  "homepage": "https://github.com/thesbros/electron-webpack-plugin#readme",
+  "peerDependencies": {
+    "electron": "*"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.16.0",
+    "babel-plugin-add-module-exports": "^0.2.1",
+    "babel-preset-es2015": "^6.16.0"
+  },
+  "gitHead": "cb54986effae74411363131b2e9172240d96bcab",
+  "_npmVersion": "3.10.8",
+  "_nodeVersion": "7.0.0",
+  "dist": {
+    "shasum": "60c258c183b4d4f7dba5a7c6a02087f67adedb03",
+    "tarball": "http://registry.npmjs.org/electron-webpack-plugin/-/electron-webpack-plugin-1.2.2.tgz"
+  },
+  "versions": [
+    {
+      "number": "1.0.0",
+      "date": "2016-10-15T01:36:57.484Z"
+    },
+    {
+      "number": "1.1.0",
+      "date": "2016-10-15T02:27:45.914Z"
+    },
+    {
+      "number": "1.1.1",
+      "date": "2016-10-15T02:44:42.358Z"
+    },
+    {
+      "number": "1.1.2",
+      "date": "2016-10-15T02:50:18.476Z"
+    },
+    {
+      "number": "1.1.3",
+      "date": "2016-10-15T02:52:29.471Z"
+    },
+    {
+      "number": "1.2.0",
+      "date": "2016-10-21T00:15:23.158Z"
+    },
+    {
+      "number": "1.2.1",
+      "date": "2016-10-21T00:25:35.881Z"
+    },
+    {
+      "number": "1.2.2",
+      "date": "2016-11-11T02:52:46.810Z"
+    }
+  ],
+  "created": "2016-10-15T01:36:57.484Z",
+  "modified": "2016-11-11T02:52:46.810Z",
+  "lastPublisher": {
+    "name": "thesbros",
+    "email": "ops991923@gmail.com"
+  },
+  "owners": [
+    {
+      "name": "thesbros",
+      "email": "ops991923@gmail.com"
+    }
+  ],
+  "readme": "# electron-webpack-plugin\n\n![NPM Badge](https://img.shields.io/npm/v/electron-webpack-plugin.png)\n\nWebpack plugin to restart Electron.\n\nRequires a peer dependency of `electron`.\n\n## API\n\n### new ElectronPlugin(options: object)\n\n#### options\n```js\nnew ElectronPlugin({\n    // if a file in this path is modified/emitted, electron will be restarted\n    // *required*\n    relaunchPathMatch: \"./src/scripts/main\",\n    // the path to launch electron with\n    // *required*\n    path: \"./output\",\n    // the command line arguments to launch electron with\n    // optional\n    args: [\"--enable-logging\"],\n    // the options to pass to child_process.spawn\n    // see: https://nodejs.org/api/child_process.html#child_process_child_process_spawnsync_command_args_options\n    // optional\n    options: {\n        env: {NODE_ENV: \"development\"}\n    }\n})\n```\n\n## Example\n```js\nconst ElectronPlugin = require(\"electron-webpack-plugin\");\n\nmodule.exports = {\n    entry: {\n        \"main/index\": \"./src/scripts/main/index.js\",\n        \"renderer/index\": \"./src/scripts/renderer/index.js\",\n    },\n    output: {\n        path: \"./output\",\n        filename: \"scripts/[name].js\"\n    },\n    plugins: [\n        new ElectronPlugin({\n            relaunchPathMatch: \"./src/scripts/main\",\n            path: \"output\"\n        })\n    ],\n    target: \"electron\"\n};\n```\n\n## With webpack-dev-server\nYou will need to use [write-file-webpack-plugin](https://npm.im/write-file-webpack-plugin),\nto allow Electron to access the output path.\n\nYou will also need to add the following options:\n```js\ndevServer: {\n    // electron will break if client is inlined in main process\n    inline: false,\n    // required for write-file\n    outputPath: \"./output\"\n}\n```\n\nYou will also need to add the dev server client to your renderer entry point,\nif it is not already:\n```js\n\"renderer/index\": [\n    \"webpack-dev-server/client?http://localhost:3000\",\n    \"./src/scripts/renderer/index.js\"\n]\n```\n\nThis will allow HMR/reloading with `inline: false`.\n\n(replace `http://localhost:3000` with whatever your dev server URL is)\n"
+}

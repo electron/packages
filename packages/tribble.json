@@ -1,0 +1,97 @@
+{
+  "name": "tribble",
+  "version": "0.1.1",
+  "description": "Boilerplate for static & microservices-based web applications",
+  "homepage": "https://github.com/slvnfchr/tribble",
+  "bin": {
+    "tribble": "bin/tribble.js"
+  },
+  "scripts": {
+    "postinstall": "node ./lib/postinstall",
+    "test": "mocha --reporter spec test/*.js",
+    "lint:bin": "$(npm bin)/eslint ./bin; exit 0",
+    "lint:lib": "$(npm bin)/eslint ./lib; exit 0",
+    "lint:test": "$(npm bin)/eslint ./test; exit 0",
+    "lint": "npm run lint:bin && npm run lint:lib && npm run lint:test"
+  },
+  "repository": {
+    "user": "slvnfchr",
+    "repo": "tribble",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/slvnfchr/tribble/tarball/master",
+    "clone_url": "https://github.com/slvnfchr/tribble",
+    "https_url": "https://github.com/slvnfchr/tribble",
+    "travis_url": "https://travis-ci.org/slvnfchr/tribble",
+    "zip_url": "https://github.com/slvnfchr/tribble/archive/master.zip",
+    "api_url": "https://api.github.com/repos/slvnfchr/tribble"
+  },
+  "keywords": [
+    "requirejs",
+    "modules",
+    "amd",
+    "bundle"
+  ],
+  "author": {
+    "name": "Sylvain Foucher"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "browser-sync": "^2.16.0",
+    "eslint": "^3.4.0",
+    "eslint-config-airbnb-base": "^7.0.0",
+    "eslint-plugin-import": "^1.14.0",
+    "tribble-core": "latest"
+  },
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "mocha": "^3.0.2"
+  },
+  "gitHead": "d606eac0b49ba99d16391012497dd816ca8be095",
+  "_npmVersion": "2.15.9",
+  "_nodeVersion": "4.5.0",
+  "dist": {
+    "shasum": "4beee9732eaf1fa5f4fd7f6eaf4ca0f1e719dbef",
+    "tarball": "http://registry.npmjs.org/tribble/-/tribble-0.1.1.tgz"
+  },
+  "versions": [
+    {
+      "number": "0.0.1",
+      "date": "2016-09-11T13:07:45.245Z"
+    },
+    {
+      "number": "0.0.2",
+      "date": "2016-09-20T12:59:56.430Z"
+    },
+    {
+      "number": "0.0.3",
+      "date": "2016-09-22T09:52:36.883Z"
+    },
+    {
+      "number": "0.0.4",
+      "date": "2016-09-22T13:31:18.241Z"
+    },
+    {
+      "number": "0.1.0",
+      "date": "2016-11-02T13:52:55.461Z"
+    },
+    {
+      "number": "0.1.1",
+      "date": "2016-11-10T17:24:17.407Z"
+    }
+  ],
+  "created": "2016-09-11T13:07:45.245Z",
+  "modified": "2016-11-10T17:24:17.407Z",
+  "lastPublisher": {
+    "name": "slvnfchr",
+    "email": "slvnfchr@gmail.com"
+  },
+  "owners": [
+    {
+      "name": "slvnfchr",
+      "email": "slvnfchr@gmail.com"
+    }
+  ],
+  "readme": "# Tribble\n\nBoilerplate for static & microservices-based web applications.  \nIt aims to provide some sort of [Asset Pipeline](http://guides.rubyonrails.org/asset_pipeline.html) for static and Node.js based projects. \n\n## Install\n\n```bash\n$ npm install tribble --save-dev\n```\n\n## Usage\n\n### Configuration\n\nRuntime configuration can be set through a _.tribblerc_ file with the following keys :\n- source : source files distribution relative to project root\n- target : production-ready files distribution relative to project root\n\n### Code linting\n\nTribble is packaged with [ESLint](https://github.com/eslint/eslint), the most complete (code and style checking) and configurable/pluggable javascript linter tool, and [Airbnb's ESLint base configuration](https://github.com/airbnb/javascript), including ECMAScript 6+ rules. \nThe _source_ parameter can be used to override the default _source_ parameter specified in the _.tribblerc_ runtime configuration file.\n\n```bash\n$ ./node_modules/.bin/tribble lint [--source <folder>]\n```\n\n### Web app preview\n\nTribble is packaged with [Browsersync](https://www.browsersync.io).\nThe _serve_ command launch a browsersync server with the built-in static server pointing to `folder` on port `number`.\nThis command is intend to live preview web app's source file distribution.\nThe _source_ and _port_ parameters can be used to override the corresponding parameters specified in the _.tribblerc_ runtime configuration file.\n\n```bash\n$ ./node_modules/.bin/tribble serve [--source <folder>] [--port <number>]\n```\n\n### Plugins\n\nEach plugin is designed to perform live processing (for the source files distribution through Browsersync middlewares) and/or build (for the production-ready files distribution).\n\n#### Public plugins\n\nPublic plugins are provided for the most common processing tasks.\n\nCurrent available public plugins are :\n- _[sass](https://github.com/slvnfchr/tribble-sass)_ for [Syntactically Awesome Style Sheets (SASS)](http://sass-lang.com/) files (*.sass or *.scss) through [node-sass](https://github.com/sass/node-sass) module\n\nTo install a public plugin : \n\n```bash\n$ ./node_modules/.bin/tribble install <plugin>\n```\nTo uninstall a public plugin : \n\n```bash\n$ ./node_modules/.bin/tribble uninstall <plugin>\n```\n\nPublic plugins are installed under the current project devDependencies flag.\n\n#### Private plugins\n\nYou can also define private/local plugins like the public ones.  \nTo do so, create a _tribble.json_ file for each plugin or for your whole project with the following structure (inspired by [Swagger specification](http://swagger.io/specification/#operationObject)) :\n\n```javascript\n{\n\t\"path/to/module1\": {\n\t\t\"tags\": [\"preprocessor\"], // plugin main caracteristics\n\t\t\"consumes\": [\"mediatype1\", \"mediatype2\", ...],\n\t\t\"produces\": [\"mediatype1\", ...]\n\t},\n\t\"path/to/module2\": {\n\t\t...\n\t}\n}\n```\n\nPlugin characteristics (defined as tags) are used to order plugins and build tasks pipelines.  \nThey can have the following values :\n- _preprocessor_ (ex: [SASS](http://sass-lang.com/), [Coffeescript](http://coffeescript.org/))\n- _transform_ (ex: any transformation plugin)\n- _postprocessor_ (ex: [postCSS](http://postcss.org/))\n- _aggregator_ (ex: templating engine)\n- _bundler_ (ex: [r.js](http://requirejs.org/docs/optimization.html))\n- _minifier_ (ex: [Closure](https://github.com/google/closure-compiler-js))\n- _packager_ (ex: zip compression, [Electron](http://electron.atom.io/))\n\nEach plugin module is defined as follow :\n\n```javascript\nmodule.exports = (input, ouput) => {\n\tconst data = input.read();\n\t... // any synchronous/asynchronous transformation to data object\n\touput.send(data);\n};\n\n```\nPlease check the [sass](https://github.com/slvnfchr/tribble-sass) plugin for implementation example.\n\n"
+}

@@ -1,0 +1,91 @@
+{
+  "name": "app-log-dir",
+  "version": "1.0.2",
+  "description": "Node.js: get system-specific application logging directories. Supports Windows, Linux, Mac.",
+  "main": "lib/index.js",
+  "scripts": {
+    "build": "babel src -d lib",
+    "test": "echo TODO"
+  },
+  "bin": {
+    "find-and-prepare-log-path": "./bin/find-and-prepare-log-path.js",
+    "find-log-path": "./bin/find-log-path.js",
+    "find-system-app-prefix": "./bin/find-system-app-prefix.js"
+  },
+  "repository": {
+    "user": "JoshuaGross",
+    "repo": "app-log-dir",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/JoshuaGross/app-log-dir/tarball/master",
+    "clone_url": "https://github.com/JoshuaGross/app-log-dir",
+    "https_url": "https://github.com/JoshuaGross/app-log-dir",
+    "travis_url": "https://travis-ci.org/JoshuaGross/app-log-dir",
+    "zip_url": "https://github.com/JoshuaGross/app-log-dir/archive/master.zip",
+    "api_url": "https://api.github.com/repos/JoshuaGross/app-log-dir"
+  },
+  "keywords": [
+    "application",
+    "log",
+    "directory",
+    "node",
+    "javascript"
+  ],
+  "author": {
+    "name": "Joshua Gross",
+    "email": "joshua.gross@gmail.com"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "babel-cli": "^6.14.0",
+    "babel-plugin-add-module-exports": "^0.2.1",
+    "babel-plugin-transform-runtime": "^6.15.0",
+    "babel-preset-es2015": "^6.16.0",
+    "babel-preset-es2016": "^6.16.0",
+    "babel-preset-es2017": "^6.16.0",
+    "benchmark": "^2.1.1",
+    "istanbul": "^0.4.5",
+    "mocha": "^3.1.0"
+  },
+  "homepage": "https://github.com/JoshuaGross/app-log-dir#readme",
+  "dependencies": {
+    "commander": "^2.9.0",
+    "mkdirp": "^0.5.1",
+    "touch": "^1.0.0"
+  },
+  "gitHead": "fc2145b6d0072ceffc077626b1e9422d10db061b",
+  "_npmVersion": "3.10.8",
+  "_nodeVersion": "6.9.1",
+  "dist": {
+    "shasum": "3eea08ec594218dad0581f074ad5629bf8b71f87",
+    "tarball": "http://registry.npmjs.org/app-log-dir/-/app-log-dir-1.0.2.tgz"
+  },
+  "versions": [
+    {
+      "number": "1.0.0",
+      "date": "2016-10-19T21:11:03.276Z"
+    },
+    {
+      "number": "1.0.1",
+      "date": "2016-10-19T21:27:12.750Z"
+    },
+    {
+      "number": "1.0.2",
+      "date": "2016-10-31T18:42:12.077Z"
+    }
+  ],
+  "created": "2016-10-19T21:11:03.276Z",
+  "modified": "2016-10-31T18:42:12.077Z",
+  "lastPublisher": {
+    "name": "joshuagross",
+    "email": "joshua.gross@gmail.com"
+  },
+  "owners": [
+    {
+      "name": "joshuagross",
+      "email": "joshua.gross@gmail.com"
+    }
+  ],
+  "readme": "# app-log-dir\nNode.js: get system-specific application logging directories. Supports Windows, Linux, Mac.\n\nIn Node.js applications (CLI utilities, electron applications, ...) it is useful\nto get references to consistent, system-specific application logging paths.\n\nInspired by [`electron-log`](https://github.com/megahertz/electron-log).\n\n# example\n## Create a logger\n```javascript\nvar findAndPrepareLogPath = require('app-log-dir').findAndPrepareLogPath;\n\nfindAndPrepareLogPath('myAppName', ['prefixed', 'log', 'directory', 'log1.txt'], function (err, logpath) {\n  if (err) {\n    console.log('Could not get log path - critical error!');\n    process.exit(-1);\n  }\n\n  var logger = fs.createWriteStream(logpath);\n  logger.write('Application started\\n');\n\n  // continue ...\n});\n```\n\n# methods\n```javascript\n\nvar lib = require('app-log-dir');\n\n// Find and prepare log path - recursively create directories\nvar findAndPrepareLogPath = lib.findAndPrepareLogPath\n\nfindAndPrepareLogPath('AppName', ['my-app-logs', Date.now(), 'log.txt'], function (err, path) {\n  // ...\n});\n\n// Find log path - return path to log without doing anything to the filesystem\nvar findLogPath = lib.findLogPath;\n\nfindLogPath('AppName', ['my-app-logs', Date.now(), 'log.txt'], function (err, path) {\n  // ...\n});\n\n// Find system app prefix, without constructing full path to a particular logfile\nvar findSystemAppPrefix = lib.findSystemAppPrefix;\n\nfindSystemAppPrefix('AppName', function (err, path) {\n  // ...\n});\n```\n\n# usage\n\nThis package also ships with three commands:\n\n```\n  Usage: find-system-app-prefix [options] [command]\n\n\n  Commands:\n\n    find-system-app-prefix <appName>  find directories for a log path, prefixed under `appName`\n    help [cmd]                        display help for [cmd]\n\n  Options:\n\n    -h, --help     output usage information\n    -V, --version  output the version number\n```\n\nexample: \n\n```\n$ find-system-app-prefix MyAppName\n< /Users/joshuagross/Library/Logs/MyAppName\n```\n\n```\n  Usage: find-log-path [options] [command]\n\n\n  Commands:\n\n    find-log-path <appName> [...logParts]  find directories for a log path, prefixed under `appName`, and using `logParts` as parts of the log filename\n    help [cmd]                             display help for [cmd]\n\n  Options:\n\n    -h, --help     output usage information\n    -V, --version  output the version number\n```\n\nexample:\n\n```\n$ find-log-path MyAppName path to prefixed log file log.txt\n/Users/joshuagross/Library/Logs/MyAppName/path/to/prefixed/log/file/log.txt\n```\n\n```\n  Usage: find-and-prepare-log-path [options] [command]\n\n\n  Commands:\n\n    find-and-prepare-log-path <appName> [...logParts]  find and create directories for a log path, prefixed under `appName`, and using `logParts` as parts of the log filename\n    help [cmd]                                         display help for [cmd]\n\n  Options:\n\n    -h, --help     output usage information\n    -V, --version  output the version number\n```\n\nexample:\n\n```\n$ find-and-prepare-log-path MyAppName path to prefixed log file log.txt\n/Users/joshuagross/Library/Logs/MyAppName/path/to/prefixed/log/file/log.txt\n```\n\n# License\n\nReleased under MIT license. See LICENSE file.\n"
+}

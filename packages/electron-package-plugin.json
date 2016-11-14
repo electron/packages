@@ -1,0 +1,70 @@
+{
+  "name": "electron-package-plugin",
+  "version": "0.1.1",
+  "description": "A Webpack plugin to generate the Electron package.json with the values in the project package.json",
+  "main": "src/electron-package-plugin.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "user": "michaeljota",
+    "repo": "electron-package-plugin",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/michaeljota/electron-package-plugin/tarball/master",
+    "clone_url": "https://github.com/michaeljota/electron-package-plugin",
+    "https_url": "https://github.com/michaeljota/electron-package-plugin",
+    "travis_url": "https://travis-ci.org/michaeljota/electron-package-plugin",
+    "zip_url": "https://github.com/michaeljota/electron-package-plugin/archive/master.zip",
+    "api_url": "https://api.github.com/repos/michaeljota/electron-package-plugin"
+  },
+  "keywords": [
+    "electron",
+    "package",
+    "webpack",
+    "plugin",
+    "generator",
+    "json"
+  ],
+  "author": {
+    "name": "Michael De Abreu",
+    "email": "michaeljota@outlook.com",
+    "url": "http://michaeljota.github.io/"
+  },
+  "license": "MIT",
+  "homepage": "https://github.com/michaeljota/electron-package-plugin#readme",
+  "dependencies": {
+    "app-root-path": "^2.0.1"
+  },
+  "gitHead": "10a99cd1564ec19bc1ad8a364b2073d83b643612",
+  "_npmVersion": "3.10.7",
+  "_nodeVersion": "6.5.0",
+  "dist": {
+    "shasum": "4e014f4592cdd0bc806220ff7fd89066151d030d",
+    "tarball": "http://registry.npmjs.org/electron-package-plugin/-/electron-package-plugin-0.1.1.tgz"
+  },
+  "versions": [
+    {
+      "number": "0.1.0",
+      "date": "2016-10-26T14:13:12.485Z"
+    },
+    {
+      "number": "0.1.1",
+      "date": "2016-10-31T02:21:48.549Z"
+    }
+  ],
+  "created": "2016-10-26T14:13:12.485Z",
+  "modified": "2016-10-31T02:21:48.549Z",
+  "lastPublisher": {
+    "name": "michaeljota",
+    "email": "michaeljota@outlook.com"
+  },
+  "owners": [
+    {
+      "name": "michaeljota",
+      "email": "michaeljota@outlook.com"
+    }
+  ],
+  "readme": "# Electron Package Plugin\r\n\r\nA Webpack plugin to generate the Electron package.json with the values in the project package.json\r\n\r\n## Installation\r\n\r\n```bash\r\nnpm install --save electron-package-plugin\r\n```\r\n\r\n## Usage\r\n\r\nGiving the package.json in your project, ex:\r\n\r\n```json\r\n{\r\n  \"name\": \"example-package\",\r\n  \"version\": \"0.0.0-example\",\r\n  \"description\": \"This is an example package\"\r\n}\r\n```\r\n\r\nYou can just set the plugin in the Electron main `webpack.config.js`\r\n\r\n```js\r\n// webpack.config.js\r\nconst ElectronPackagePlugin = require('electron-package-plugin');\r\n\r\nmodule.exports = {\r\n  // ...\r\n  plugins: [\r\n    // ...\r\n    new ElectronPackagePlugin(),\r\n  ]\r\n  // ...\r\n};\r\n```\r\n\r\nThis will generate a `package.json` file in the target folder as the follow:\r\n\r\n```json\r\n{\r\n  \"name\": \"example-package\",\r\n  \"version\": \"0.0.0-example\",\r\n  \"description\": \"This is an example package\",\r\n  \"main\": \"main.js\"\r\n}\r\n```\r\n\r\nThe plugin will read and use the follow properties:\r\n```js\r\n{\r\n  name,\r\n  version,\r\n  description,\r\n  keywords,\r\n  author,\r\n  homepage,\r\n  license,\r\n  repository,\r\n  bugs,\r\n  engines,\r\n}\r\n```\r\n\r\n### Options\r\n\r\n- `main`: (default: `main.js`) You can set the name of the main file of you Electron aplication.\r\n\r\n## Acknowledgment\r\n\r\nThis plugin it's just a specific use-case using the awesome [`generate-json-webpack-plugin`](https://github.com/elliottsj/generate-json-webpack-plugin).\r\nReally thanks to the author @elliottsj.\r\n\r\n## Todo\r\n\r\n- Tests\r\n- Set an option to define the structure to be used\r\n\r\n## Changelog\r\n\r\n- v0.1.1 - Fixed Node v4 compatibility (2016-10-30)\r\n- v0.1.0 - Initial release (2016-10-26)"
+}

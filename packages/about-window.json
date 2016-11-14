@@ -1,15 +1,17 @@
 {
   "name": "about-window",
-  "version": "1.4.0",
+  "version": "1.6.0",
   "description": "'About App' window for Electron application",
+  "main": "src/index.js",
   "scripts": {
     "dep": "npm install && typings install",
-    "build-main": "tsc --sourceMap --module commonjs $(npm prefix)/src/index.ts --outDir .",
-    "build-renderer": "tsc --sourceMap --module commonjs $(npm prefix)/src/renderer.ts --outDir .",
-    "build": "npm run build-main && npm run build-renderer",
-    "example": "electron $(npm prefix)/example",
+    "build": "tsc -p src/",
+    "tslint": "tslint $(git ls-files | grep -E \"\\.ts$\")",
+    "stylelint": "stylelint styles/*.css",
+    "lint": "npm run tslint && npm run stylelint",
+    "example": "(cd example/ && npm install) && electron $(npm prefix)/example",
     "start": "npm run dep && npm run build && npm run example",
-    "prepublish": "npm run build && rm -rf example/node_modules"
+    "prepublish": "npm run lint && npm run build && rm -rf example/node_modules"
   },
   "repository": {
     "user": "rhysd",
@@ -27,7 +29,8 @@
   "keywords": [
     "Electron",
     "electron-component",
-    "about this app"
+    "about",
+    "window"
   ],
   "author": {
     "name": "rhysd",
@@ -36,20 +39,20 @@
   "license": "MIT",
   "homepage": "https://github.com/rhysd/electron-about-window#readme",
   "devDependencies": {
-    "@types/electron": "^1.3.22",
-    "@types/node": "^6.0.41",
-    "@types/object-assign": "^4.0.29",
-    "typescript": "^2.0.3"
+    "@types/electron": "^1.4.25",
+    "@types/node": "^6.0.46",
+    "stylelint": "^7.5.0",
+    "stylelint-config-standard": "^14.0.0",
+    "tslint": "^3.15.1",
+    "typescript": "^2.0.7"
   },
-  "dependencies": {
-    "object-assign": "^4.0.1"
-  },
-  "gitHead": "fb0432395fade92c7bbea4d85bd0ec870fca1f01",
-  "_npmVersion": "3.9.3",
-  "_nodeVersion": "6.2.1",
+  "dependencies": {},
+  "gitHead": "9e9f7d8a9b8cced6fd760437aea94b1ac8ef0435",
+  "_npmVersion": "3.10.8",
+  "_nodeVersion": "7.0.0",
   "dist": {
-    "shasum": "b5b77cedd6edb44921cb4ae0ddfb90d8a456d9b6",
-    "tarball": "http://registry.npmjs.org/about-window/-/about-window-1.4.0.tgz"
+    "shasum": "e552fe2b5dc9c56ee776f9ec8d0d4682043a57fe",
+    "tarball": "http://registry.npmjs.org/about-window/-/about-window-1.6.0.tgz"
   },
   "versions": [
     {
@@ -87,10 +90,18 @@
     {
       "number": "1.4.0",
       "date": "2016-09-27T16:26:39.402Z"
+    },
+    {
+      "number": "1.5.0",
+      "date": "2016-11-06T17:39:36.491Z"
+    },
+    {
+      "number": "1.6.0",
+      "date": "2016-11-07T00:13:08.195Z"
     }
   ],
   "created": "2015-12-25T03:02:45.492Z",
-  "modified": "2016-09-27T16:26:39.402Z",
+  "modified": "2016-11-07T00:13:08.195Z",
   "lastPublisher": {
     "name": "rhysd",
     "email": "lin90162@yahoo.co.jp"
@@ -101,5 +112,5 @@
       "email": "lin90162@yahoo.co.jp"
     }
   ],
-  "readme": "'About This App' window for [Electron](https://github.com/atom/electron) apps\n=============================================================================\n\n[This package](https://www.npmjs.com/package/about-window) provides 'About This App' window for [Electron](https://github.com/atom/electron) applications.\n\n- [x] Create 'About This App' window from given parameters\n  - [x] Icon path\n  - [x] Copy right\n  - [x] App name and Versions\n  - [x] Description\n- [x] Gather package information from package.json\n- [x] Automatically detect package.json\n- [x] Adjust window size to its contents automatically\n- [x] CSS customizability\n\nYou can install this module via [npm](https://www.npmjs.com/).\n\n```sh\n$ npm install about-window\n```\n\nOnly one function is exported as default.  Please see [TypeScript type definition](index.d.ts).\n\n```typescript\nexport default function openAboutWindow(info: {\n    icon_path: string;\n    package_json_dir?: string;\n    bug_report_url?: string;\n    copyright?: string;\n    homepage?: string;\n    description?: string;\n    license?: string;\n    css_path?: string;\n    adjust_window_size?: boolean;\n    win_options?: BrowserWindowOptions;\n}): BrowserWindow\n```\n\nOnly `icon_path` property is required, others are optional.  I recommend to specify as below to extract information from package.json as much as possible.  Path to package.json is also automatically detected if possible.\n\n```typescript\nopenAboutWindow({\n    icon_path: 'path/to/icon.png'\n});\n```\n\nYou can check [example app](example) to know how to use this package.\n\n```sh\n$ git clone https://github.com/rhysd/about-window.git\n$ cd about-window/example\n$ npm install\n$ npm start\n```\n\n### Parameter's properties of `openAboutWindow()`\n\n| Name | Description | Type |\n|------|-------------|------|\n| `icon_path` | Path to icon file of the application. **Required** | string |\n| `package_json_dir` | Path to directory which contains package.json.  If not specified, it will try to detect a path to package.json.  If also failed, it gives up and show less information in 'About This App' window. **Optional** | string |\n| `bug_report_url` | URL to bug report page.  If not specified, 'bugs' entry in package.json is used. **Optional** | string |\n| `copyright` | Copyright notice shown in window.  If not specified, it is replaced with license description generated by 'license' entry of package.json. **Optional** | string |\n| `homepage` | URL of application's web page.  If not specified, 'homepage' entry of package.json is used instead. **Optional** | string |\n| `description` | Description of the application.  If not specified, 'description' entry of package.json is used instead. **Optional** | string |\n| `license` | License of the application.  If not specified, 'license' entry of package.json is used instead. This property is used when `copyright` is not specified. **Optional** | string |\n| `win_options` | Options of 'About This App' window.  It is merged into default options. **Optional** | [BrowserWindow options object](https://github.com/atom/electron/blob/master/docs/api/browser-window.md#new-browserwindowoptions) |\n| `css_path` | Path to user-defined CSS file.  It will be inserted to DOM of the window. **Optional** | string |\n| `adjust_window_size` | Adjust the window size to its content not to show scroll bar. **Optional** | boolean |\n| `open_devtools` | For debug purpose, Chrome DevTools will start when the window is opened **Optional** | boolean |\n\n## Screen Shots\n\n### Linux\n\n![Linux screenshot](https://raw.githubusercontent.com/rhysd/ss/master/about-window/about-window-linux.png)\n\n### OS X\n\n![OS X screenshot](https://raw.githubusercontent.com/rhysd/ss/master/about-window/about-window-os-x.png)\n\n### Windows\n\n![Windows screenshot](https://raw.githubusercontent.com/rhysd/ss/master/about-window/about-window-windows.jpg)\n\n## License\n\n[MIT License](/LICENSE.txt).\n\n"
+  "readme": "'About This App' Window for [Electron](https://github.com/atom/electron) Apps\n=============================================================================\n[![npm version](https://badge.fury.io/js/about-window.svg)](https://www.npmjs.com/package/about-window)\n\n[This package](https://www.npmjs.com/package/about-window) provides 'About This App' window for [Electron](https://github.com/atom/electron) applications.\n\n- [x] Create 'About This App' window from given parameters\n  - [x] Icon path\n  - [x] Copy right\n  - [x] App name and Versions\n  - [x] Description\n- [x] Gather package information from package.json\n- [x] Automatically detect package.json\n- [x] Adjust window size to its contents automatically\n- [x] CSS customizability\n\nYou can install this module via [npm](https://www.npmjs.com/).\n\n```sh\n$ npm install about-window\n```\n\nOnly one function is exported as default.  Please see [TypeScript type definition](index.d.ts).\n\n```typescript\nexport default function openAboutWindow(info: {\n    icon_path: string;\n    package_json_dir?: string;\n    bug_report_url?: string;\n    copyright?: string;\n    homepage?: string;\n    description?: string;\n    license?: string;\n    css_path?: string;\n    adjust_window_size?: boolean;\n    win_options?: BrowserWindowOptions;\n}): BrowserWindow\n```\n\nOnly `icon_path` property is required, others are optional.  I recommend to specify as below to extract information from package.json as much as possible.  Path to package.json is also automatically detected if possible.\n\n```typescript\nopenAboutWindow({\n    icon_path: 'path/to/icon.png'\n});\n```\n\nYou can check [example app](example) to know how to use this package.\n\n```sh\n$ git clone https://github.com/rhysd/about-window.git\n$ cd about-window/example\n$ npm install\n$ npm start\n```\n\n### Parameter's properties of `openAboutWindow()`\n\n| Name | Description | Type |\n|------|-------------|------|\n| `icon_path` | Path to icon file of the application. **Required** | string |\n| `package_json_dir` | Path to directory which contains package.json.  If not specified, it will try to detect a path to package.json.  If also failed, it gives up and show less information in 'About This App' window. **Optional** | string |\n| `bug_report_url` | URL to bug report page.  If not specified, 'bugs' entry in package.json is used. **Optional** | string |\n| `copyright` | Copyright notice shown in window.  If not specified, it is replaced with license description generated by 'license' entry of package.json. **Optional** | string |\n| `homepage` | URL of application's web page.  If not specified, 'homepage' entry of package.json is used instead. **Optional** | string |\n| `description` | Description of the application.  If not specified, 'description' entry of package.json is used instead. **Optional** | string |\n| `license` | License of the application.  If not specified, 'license' entry of package.json is used instead. This property is used when `copyright` is not specified. **Optional** | string |\n| `win_options` | Options of 'About This App' window.  It is merged into default options. **Optional** | [BrowserWindow options object](https://github.com/atom/electron/blob/master/docs/api/browser-window.md#new-browserwindowoptions) |\n| `css_path` | Path to user-defined CSS file.  It will be inserted to DOM of the window. **Optional** | string |\n| `adjust_window_size` | Adjust the window size to its content not to show scroll bar. **Optional** | boolean |\n| `open_devtools` | For debug purpose, Chrome DevTools will start when the window is opened **Optional** | boolean |\n| `use_inner_html` | If `true`, set the value with `.innerHTML` on copyright, license and description Default is `false` **Optional** | boolean |\n\n**Note:** If you set `use_inner_html` to `true`, please ensure that they don't contain any untrusted external input in order to avoid XSS. Be careful.\n\n## Screen Shots\n\n### Linux\n\n![Linux screenshot](https://raw.githubusercontent.com/rhysd/ss/master/about-window/about-window-linux.png)\n\n### OS X\n\n![OS X screenshot](https://raw.githubusercontent.com/rhysd/ss/master/about-window/about-window-os-x.png)\n\n### Windows\n\n![Windows screenshot](https://raw.githubusercontent.com/rhysd/ss/master/about-window/about-window-windows.jpg)\n\n## License\n\n[MIT License](/LICENSE.txt).\n\n"
 }

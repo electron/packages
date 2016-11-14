@@ -1,10 +1,15 @@
 {
   "name": "electron-pdf",
-  "version": "0.11.0",
+  "version": "1.0.0",
   "description": "A command line tool to generate PDF from URL, HTML or Markdown files",
-  "main": "index.js",
+  "main": "lib/index.js",
   "scripts": {
-    "test": "standard"
+    "fix": "standard --fix",
+    "lint": "standard",
+    "unit-test": "ava | tap-diff",
+    "test": "npm run lint && ava | tap-diff",
+    "\\": "This effectively runs jasmine tests as an electron application (but it doesn't work for Ava)",
+    "integration-test": "electron node_modules/.bin/jasmine"
   },
   "bin": {
     "electron-pdf": "cli.js"
@@ -25,33 +30,53 @@
   "keywords": [
     "electron",
     "electron-tool",
-    "pdf"
+    "pdf",
+    "png",
+    "export",
+    "render",
+    "html",
+    "markdown"
   ],
   "author": {
-    "name": "Fraser Xu"
+    "name": "Fraser Xu, Nate Good"
   },
   "license": "MIT",
   "homepage": "https://github.com/fraserxu/electron-pdf",
   "devDependencies": {
-    "standard": "^6.0.6"
+    "ava": "^0.16.0",
+    "jasmine": "^2.5.2",
+    "standard": "^8.4.0",
+    "tap-diff": "^0.1.1",
+    "tap-spec": "^4.1.1"
   },
   "dependencies": {
-    "electron-prebuilt": "^1.2.2",
+    "async": "^2.0.1",
+    "bluebird": "^3.4.6",
+    "debug": "^2.3.2",
+    "electron": "^1.4.6",
+    "eventemitter2": "^2.1.3",
     "github-markdown-css": "^2.0.9",
     "highlight.js": "^9.0.0",
+    "lodash": "^4.16.2",
     "marked": "^0.3.5",
     "minimist": "^1.2.0",
     "object-assign": "^4.0.1",
     "uuid": "^2.0.1"
   },
-  "gitHead": "3ddafdb62e943181bd4ab2295b7f2f5ca0d5682e",
-  "_npmVersion": "3.5.3",
-  "_nodeVersion": "4.4.4",
-  "dist": {
-    "shasum": "062cfb7cf83f4993d12dc252ee1473ad1c8a01dd",
-    "tarball": "http://registry.npmjs.org/electron-pdf/-/electron-pdf-0.11.0.tgz"
+  "ava": {
+    "concurrency": 5,
+    "failFast": true,
+    "tap": true,
+    "powerAssert": false
   },
-  "stars": 5,
+  "gitHead": "75bf7ebf16c9f1143120f01ddb6fcda8ed73e7aa",
+  "_npmVersion": "3.10.3",
+  "_nodeVersion": "6.7.0",
+  "dist": {
+    "shasum": "49fd5ebcf8d08e0ec7d22b652d54ae0f8c764935",
+    "tarball": "http://registry.npmjs.org/electron-pdf/-/electron-pdf-1.0.0.tgz"
+  },
+  "stars": 6,
   "versions": [
     {
       "number": "0.0.1",
@@ -140,19 +165,39 @@
     {
       "number": "0.11.0",
       "date": "2016-09-14T11:23:42.115Z"
+    },
+    {
+      "number": "0.12.0",
+      "date": "2016-10-11T10:37:00.367Z"
+    },
+    {
+      "number": "0.13.0",
+      "date": "2016-11-02T01:36:09.776Z"
+    },
+    {
+      "number": "0.13.1",
+      "date": "2016-11-08T03:26:19.936Z"
+    },
+    {
+      "number": "1.0.0",
+      "date": "2016-11-11T01:42:35.421Z"
     }
   ],
   "created": "2015-08-19T17:15:56.660Z",
-  "modified": "2016-09-14T11:23:42.115Z",
+  "modified": "2016-11-11T01:42:35.421Z",
   "lastPublisher": {
-    "name": "fraserxu",
-    "email": "xvfeng123@gmail.com"
+    "name": "codecounselor",
+    "email": "codecounselor@gmail.com"
   },
   "owners": [
+    {
+      "name": "codecounselor",
+      "email": "codecounselor@gmail.com"
+    },
     {
       "name": "fraserxu",
       "email": "xvfeng123@gmail.com"
     }
   ],
-  "readme": "electron-pdf\n============\n\n[![NPM version][npm-image]][npm-url]\n[![build status][travis-image]][travis-url]\n[![Downloads][downloads-image]][downloads-url]\n[![js-standard-style][standard-image]][standard-url]\n\nA command line tool to generate PDF from URL, HTML or Markdown files with [electron](http://electron.atom.io/).\n\nI have a blog post explain why [PDF Generation On The Web](https://fraserxu.me/2015/08/20/pdf-generation-on-the-web/)\n\nProduction ready? See it in action for the [Myanmar Election](https://wiredcraft.com/blog/high-security-electron-js-application/)!\n\nInstall\n-------\n\n```\nnpm install electron-pdf -g\n```\n\nFor gnu/linux installations without a graphical environment:\n\n```bash\n$ sudo apt-get install xvfb # or equivalent\n$ export DISPLAY=':99.0'\n$ Xvfb :99 -screen 0 1024x768x24 > /dev/null 2>&1 &\n$ electron-pdf ...\n```\n\nThere is also an example docker machine [here](https://github.com/fraserxu/docker-tape-run).\n\nUsage\n-----\n\n### To generate a PDF from a HTML file\n\n```\n$ electron-pdf index.html ~/Desktop/index.pdf\n```\n\n### To generate a PDF from a Markdown file\n\n```\n$ electron-pdf index.md ~/Desktop/index.pdf\n```\n\n### To generate a PDF from a Markdown file with custom CSS(defaut to Github markdown style)\n\n```\n$ electron-pdf index.html ~/Desktop/index.pdf -c my-awesome-css.css\n```\n\n### To generate a PDF from a URL\n\n```\n$ electron-pdf https://fraserxu.me ~/Desktop/fraserxu.pdf\n```\n\n### More\n\n```\n\n  A command line tool to generate PDF from URL, HTML or Markdown files\n\n  Options\n    --help                     Show this help\n    --version                  Current version of package\n    -i | --input               String - The path to the HTML file or url\n    -o | --output              String - The path of the output PDF\n    -c | --css                 String - The path to custom CSS\n    -b | --printBackground     Boolean - Whether to print CSS backgrounds.\n                                 false - true\n    -s | --printSelectionOnly  Boolean - Whether to print selection only\n                                 false - default\n    -p | --pageSize            String - Can be A3, A4, A5, Legal, Letter, Tabloid or an Object containing height and width in microns\n                                \"A4\" - default\n    -l | --landscape           Boolean - true for landscape, false for portrait.\n                                 false - default\n    -m | --marginsType          Integer - Specify the type of margins to use\n                                 0 - default\n                                 1 - none\n                                 2 - minimum\n    -d | --disableCache        Disable HTTP caching\n    -w | --outputWait          Integer – Time to wait (in MS) between page load and PDF creation\n\n  Usage\n    $ electron-pdf <input> <output>\n    $ electron-pdf <input> <output> -l\n\n  Examples\n    $ electron-pdf http://fraserxu.me ~/Desktop/fraserxu.pdf\n    $ electron-pdf ./index.html ~/Desktop/index.pdf\n    $ electron-pdf ./README.md ~/Desktop/README.pdf -l\n    $ electron-pdf ./README.md ~/Desktop/README.pdf -l -c my-awesome-css.css\n\n```\n\nInspired by [electron-mocha](https://github.com/jprichardson/electron-mocha)\n\n### License\n\nMIT\n\n[npm-image]: https://img.shields.io/npm/v/electron-pdf.svg?style=flat-square\n[npm-url]: https://npmjs.org/package/electron-pdf\n[travis-image]: https://img.shields.io/travis/fraserxu/electron-pdf/master.svg?style=flat-square\n[travis-url]: https://travis-ci.org/fraserxu/electron-pdf\n[downloads-image]: http://img.shields.io/npm/dm/electron-pdf.svg?style=flat-square\n[downloads-url]: https://npmjs.org/package/electron-pdf\n[standard-image]: https://img.shields.io/badge/code%20style-standard-brightgreen.svg?style=flat-square\n[standard-url]: https://github.com/feross/standard\n"
+  "readme": "electron-pdf\n============\n\n[![NPM version][npm-image]][npm-url]\n[![build status][travis-image]][travis-url]\n[![Downloads][downloads-image]][downloads-url]\n[![js-standard-style][standard-image]][standard-url]\n\nA command line tool to generate PDF from URL, HTML or Markdown files with [electron](http://electron.atom.io/).\n\nI have a blog post explain why [PDF Generation On The Web](https://fraserxu.me/2015/08/20/pdf-generation-on-the-web/)\n\nProduction ready? See it in action for the [Myanmar Election](https://wiredcraft.com/blog/high-security-electron-js-application/)!\n\nInstall\n-------\n\n```\nnpm install electron-pdf -g\n```\n\nFor gnu/linux installations without a graphical environment:\n\n```bash\n$ sudo apt-get install xvfb # or equivalent\n$ export DISPLAY=':99.0'\n$ Xvfb :99 -screen 0 1024x768x24 > /dev/null 2>&1 &\n$ electron-pdf ...\n```\n\nThere is also an example docker machine [here](https://github.com/fraserxu/docker-tape-run).\n\nNode Usage\n-----\nElectron PDF can be used inside of an application, or more commonly as the engine for a pdf \nrendering service.  For instance, to handle http requests using Express.  The following snipppets \nshow you how you can get started.\n\n### The application must run in an Electron process\n\nIn `package.json`\n```json\n\"start\": \"DEBUG=electronpdf:* electron index.js\",\n\"watch\": \"DEBUG=electronpdf:* nodemon --exec electron index.js\"\n```\n\n### You can use the same instance\n\n```javascript\nvar ElectronPDF = require('electron-pdf')\nvar express = require('express')\nvar bodyParser = require('body-parser')\nvar app = express()\napp.use(bodyParser.json())\n\nvar exporter = new ElectronPDF()\nexporter.on('charged', () => {\n\t//Only start the express server once the exporter is ready\n\tapp.listen(port, hostname, function() {\n\t\tconsole.log(`Export Server running at http://${hostname}:${port}`);\n\t})\n})\nexporter.start()\n```\n\n### And handle multiple export job instances\n\n```javascript\napp.post('/pdfexport', function(req,res){\n\t// derive job arguments from request here\n\texporter.createJob(source, target, options).then( job => {\n\tjob.on('job-complete', (r) => {\n    \t\tconsole.log('pdf files:', r.results)\n    \t\t// Process the PDF file(s) here\n    \t})\n    \tjob.render()\n\t})\t\n})\n```\n\nThe API is designed to emit noteworthy events rather than use callbacks.\nFull documentation of all events is a work in progress.\n\nCommand Line Usage\n-----\n\nFor Ad-hoc conversions, Electron PDF comes with support for a CLI.\n\n### To generate a PDF from a HTML file\n\n```\n$ electron-pdf index.html ~/Desktop/index.pdf\n```\n\n### To generate a PDF from a Markdown file\n\n```\n$ electron-pdf index.md ~/Desktop/index.pdf\n```\n\n### To generate a PDF from a Markdown file with custom CSS(defaut to Github markdown style)\n\n```\n$ electron-pdf index.html ~/Desktop/index.pdf -c my-awesome-css.css\n```\n\n### To generate a PDF from a URL\n\n```\n$ electron-pdf https://fraserxu.me ~/Desktop/fraserxu.pdf\n```\n\nRendering Options\n-----\nElectron PDF gives you complete control of how the BrowserWindow should be configured, and when \nthe window contents should be captured.\n\n### To specify browser options\n\nThe [BrowserWindow supports many options](https://github.com/electron/electron/blob/master/docs/api/browser-window.md#new-browserwindowoptions) which you\n may define by passing a JSON Object to the `--browserConfig` option.\n \nSome common use cases may include:\n\n* `height` and `width` - electron-pdf calculates the browser height and width based off of the \ndimensions of PDF page size multiplied by the HTML standard of 96 pixels/inch.  So only set these\n values if you need to override this behavior\n* `show` - to display the browser window during generation\n\n```\n$ electron-pdf https://fraserxu.me ~/Desktop/fraserxu.pdf --browserConfig '{\"show\":true}'\n```\n\n### To generate a PDF after the an async task in the HTML\n\n```\nelectron-pdf ./index.html ~/Desktop/README.pdf -e\n```\n\nIn your application, at the point which the view is ready for rendering\n\n```javascript\ndocument.body.dispatchEvent(new Event('view-ready'))\n```\n\nAll Available Options\n-----\n\nElectron PDF exposes the printToPDF settings (i.e. pageSize, orientation, margins, etc.) \navailable from the Electron API.  See the following options for usage.\n\n```\n\n  A command line tool to generate PDF from URL, HTML or Markdown files\n\n  Options\n    --help                     Show this help\n    --version                  Current version of package\n    -i | --input               String - The path to the HTML file or url\n    -o | --output              String - The path of the output PDF\n    \n    --browserConfig            String - A valid JSON String that will be parsed into the options passed to electron.BrowserWindow\n    -c | --css                 String - The path to custom CSS\n    -b | --printBackground     Boolean - Whether to print CSS backgrounds.\n                                 false - default\n    -s | --printSelectionOnly  Boolean - Whether to print selection only\n                                 false - default\n    -p | --pageSize            String - Can be A3, A4, A5, Legal, Letter, Tabloid or an Object containing height and width in microns\n                                \"A4\" - default\n    -l | --landscape           Boolean - true for landscape, false for portrait.\n                                 false - default\n    -m | --marginsType          Integer - Specify the type of margins to use\n                                 0 - default\n                                 1 - none\n                                 2 - minimum\n    -d | --disableCache        Disable HTTP caching\n    -w | --outputWait          Integer – Time to wait (in MS) between page load and PDF creation.  If used in conjunction with -e this will override the default timeout of 10 seconds\n    -e | --waitForJSEvent      String - The name of the event to wait before PDF creation\n                               'view-ready' - default\n    \n\n  Usage\n    $ electron-pdf <input> <output>\n    $ electron-pdf <input> <output> -l\n\n  Examples\n    $ electron-pdf http://fraserxu.me ~/Desktop/fraserxu.pdf\n    $ electron-pdf ./index.html ~/Desktop/index.pdf\n    $ electron-pdf ./README.md ~/Desktop/README.pdf -l\n    $ electron-pdf ./README.md ~/Desktop/README.pdf -l -c my-awesome-css.css\n\n```\n\nInspired by [electron-mocha](https://github.com/jprichardson/electron-mocha)\n\n### Extensions\n\nIf you need powerpoint support, [pdf-powerpoint](https://www.npmjs.com/package/pdf-powerpoint) \npicks up where Electron PDF leaves off by converting each page in the PDF to a PNG and placing \nthem on individual slides.\n\n\n### License\n\nMIT\n\n[npm-image]: https://img.shields.io/npm/v/electron-pdf.svg?style=flat-square\n[npm-url]: https://npmjs.org/package/electron-pdf\n[travis-image]: https://img.shields.io/travis/fraserxu/electron-pdf/master.svg?style=flat-square\n[travis-url]: https://travis-ci.org/fraserxu/electron-pdf\n[downloads-image]: http://img.shields.io/npm/dm/electron-pdf.svg?style=flat-square\n[downloads-url]: https://npmjs.org/package/electron-pdf\n[standard-image]: https://img.shields.io/badge/code%20style-standard-brightgreen.svg?style=flat-square\n[standard-url]: https://github.com/feross/standard\n"
 }

@@ -1,0 +1,78 @@
+{
+  "name": "electron-definitelytyped",
+  "version": "0.0.6",
+  "description": "Automatically generated definitely typed files for the Electron API",
+  "bin": {
+    "electron-definitelytyped": "cli.js"
+  },
+  "main": "index.js",
+  "scripts": {
+    "build": "node cli.js",
+    "demo": "npm run build -- -o=electron.d.ts",
+    "fetch-latest": "git submodule update",
+    "lint": "snazzy",
+    "prepublish": "npm run fetch-latest && npm run demo",
+    "predemo": "npm run fetch-latest",
+    "test": "npm run lint && mocha test/*_spec.js"
+  },
+  "author": {
+    "name": "Samuel Attard"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "mocha": "^3.1.2",
+    "snazzy": "^5.0.0",
+    "standard": "^8.5.0"
+  },
+  "dependencies": {
+    "colors": "^1.1.2",
+    "lodash": "^4.16.1"
+  },
+  "gitHead": "4d0c990272fc2b0396c3edd0aa03ff29612d300a",
+  "_npmVersion": "3.10.8",
+  "_nodeVersion": "7.0.0",
+  "dist": {
+    "shasum": "a04fd1b3e3be1c628690c0b9f191d480a6d8db7e",
+    "tarball": "http://registry.npmjs.org/electron-definitelytyped/-/electron-definitelytyped-0.0.6.tgz"
+  },
+  "versions": [
+    {
+      "number": "0.0.1",
+      "date": "2016-11-03T04:06:33.484Z"
+    },
+    {
+      "number": "0.0.2",
+      "date": "2016-11-03T07:15:43.550Z"
+    },
+    {
+      "number": "0.0.3",
+      "date": "2016-11-03T07:18:07.340Z"
+    },
+    {
+      "number": "0.0.4",
+      "date": "2016-11-03T07:19:46.673Z"
+    },
+    {
+      "number": "0.0.5",
+      "date": "2016-11-03T07:21:09.544Z"
+    },
+    {
+      "number": "0.0.6",
+      "date": "2016-11-07T14:20:02.914Z"
+    }
+  ],
+  "created": "2016-11-03T04:06:33.484Z",
+  "modified": "2016-11-07T14:20:02.914Z",
+  "lastPublisher": {
+    "name": "marshallofsound",
+    "email": "samuel.r.attard@gmail.com"
+  },
+  "owners": [
+    {
+      "name": "marshallofsound",
+      "email": "samuel.r.attard@gmail.com"
+    }
+  ],
+  "readme": "# electron-DefinitelyTyped [![Build Status](https://travis-ci.org/MarshallOfSound/electron-DefinitelyTyped.svg?branch=master)](https://travis-ci.org/MarshallOfSound/electron-DefinitelyTyped)\n\nParse Electron's JSON API documentation and spit out a typescript definition file\n\n## Installation\n\n```sh\nnpm install electron-DefinitelyTyped --save\n```\n\n## CLI Usage\n\nTo generate the definitions\n\n```sh\nelectron-DefinitelyTyped --in=path/to/electron/api.json --out=path/to/electron.d.ts\n```\n\nAny warnings during the generation can normally be ignored unless it actually throws\nan error\n\n## Programmatic Usage\n\nThe module exports a function that parses a given API JSON object and returns\nan array of lines to create the definition file\n\n```js\nconst generateDefinitions = require('electron-DefinitelyTyped')\nconst apiPath = './vendor/electron/docs/api.json'\n\nconst definitionLines = generateDefinitions(require(apiPath))\n// definitionLines will be an array of file lines\n```\n\n## License\n\nMIT\n"
+}

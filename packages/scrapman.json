@@ -1,0 +1,103 @@
+{
+  "name": "scrapman",
+  "version": "2.2.3",
+  "description": "Retrieve real (with Javascript executed) HTML code from an URL, ultra fast and supports multiple parallel loading of webs",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "electron": "electron ./lib/scrapman.js",
+    "start": "node index.js"
+  },
+  "repository": {
+    "user": "danielnieto",
+    "repo": "scrapman",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/danielnieto/scrapman/tarball/master",
+    "clone_url": "https://github.com/danielnieto/scrapman",
+    "https_url": "https://github.com/danielnieto/scrapman",
+    "travis_url": "https://travis-ci.org/danielnieto/scrapman",
+    "zip_url": "https://github.com/danielnieto/scrapman/archive/master.zip",
+    "api_url": "https://api.github.com/repos/danielnieto/scrapman"
+  },
+  "keywords": [
+    "scrapping",
+    "scrap",
+    "scrapper",
+    "electron",
+    "load",
+    "html",
+    "javascript",
+    "real",
+    "web",
+    "scrape",
+    "scraping"
+  ],
+  "author": {
+    "name": "Daniel Nieto",
+    "email": "danielnieto89@gmail.com"
+  },
+  "license": "MIT",
+  "homepage": "https://github.com/danielnieto/scrapman#readme",
+  "dependencies": {
+    "electron": "^1.4.3",
+    "ipc-messages-manager": "^1.0.2",
+    "unique-id-generator": "^1.0.1"
+  },
+  "gitHead": "f8f182a716a0cfda5be1768d858fc518950b4713",
+  "_npmVersion": "3.7.5",
+  "_nodeVersion": "4.2.6",
+  "dist": {
+    "shasum": "5318818ae8770e732915d99662fa05961244d6cd",
+    "tarball": "http://registry.npmjs.org/scrapman/-/scrapman-2.2.3.tgz"
+  },
+  "stars": 1,
+  "versions": [
+    {
+      "number": "2.0.0",
+      "date": "2016-10-20T22:45:15.526Z"
+    },
+    {
+      "number": "2.0.1",
+      "date": "2016-10-21T16:14:16.001Z"
+    },
+    {
+      "number": "2.1.0",
+      "date": "2016-10-21T20:08:59.492Z"
+    },
+    {
+      "number": "2.1.1",
+      "date": "2016-10-22T06:15:06.288Z"
+    },
+    {
+      "number": "2.2.0",
+      "date": "2016-10-23T22:29:17.095Z"
+    },
+    {
+      "number": "2.2.1",
+      "date": "2016-10-24T17:50:02.881Z"
+    },
+    {
+      "number": "2.2.2",
+      "date": "2016-10-26T05:38:15.712Z"
+    },
+    {
+      "number": "2.2.3",
+      "date": "2016-10-26T05:59:25.280Z"
+    }
+  ],
+  "created": "2016-10-20T22:45:15.526Z",
+  "modified": "2016-10-26T05:59:25.280Z",
+  "lastPublisher": {
+    "name": "danielnieto",
+    "email": "danielnieto89@gmail.com"
+  },
+  "owners": [
+    {
+      "name": "danielnieto",
+      "email": "danielnieto89@gmail.com"
+    }
+  ],
+  "readme": "# Scrapman\n\n>*Ski-bi dibby dib yo da dub dub*<br>\n*Yo da dub dub*<br>\n*Ski-bi dibby dib yo da dub dub*<br>\n*Yo da dub dub*<br><br>\n***I'm the Scrapman!***\n\n###THE FASTEST SCRAPPER EVER\\*... AND IT SUPPORTS PARALLEL REQUESTS <small>(\\*arguably)</small>\n\nScrapman is a blazingly fast **real (with Javascript executed)** HTML scrapper, built from the ground up to support parallel fetches, with this you can get the HTML code for 50+ URLs in seconds (~30 seconds).\n\nOn NodeJS you can easily use `request` to fetch the HTML from a page, but what if the page you are trying to load is *NOT* a static HTML page, but it has dynamic content added with Javascript? What do you do then? Well, you use ***The Scrapman***.\n\nIt uses [Electron](http://electron.atom.io) to dynamically load web pages into several `<webview>` within a single Chromium instance. This is why it fetches the HTML exactly as you would see it if you inspect the page with DevTools.\n\nThis is **NOT** an browser automation tool (yet), it's a node module that gives you the processed HTML from an URL, it focuses on multiple parallel operations and speed.\n\n##USAGE\n\n1.- Install it\n\n`npm install scrapman -S`\n\n2.- Require it\n\n`var scrapman = require(\"scrapman\");`\n\n3.- Use it (as many times as you need)\n\nSingle URL request\n\n```javascript\nscrapman.load(\"http://google.com\", function(results){\n\t//results contains the HTML obtained from the url\n\tconsole.log(results);\n});\n```\nParallel URL requests\n\n```javascript\n//yes, you can use it within a loop.\nfor(var i=1; i<=50; i++){\n    scrapman.load(\"https://www.website.com/page/\" + i, function(results){\n        console.log(results);\n    });\n}\n```\n\n##API\n\n###- scrapman.load(url, callback)\n\n####url\nType: `String`<br>\n\nThe URL from which the HTML code is going to be obtained.\n\n####callback(results)\nType: `Function`<br>\n\nThe callback function to be executed when the loading is done. The loaded HTML will be in the `results` parameter.\n\n###- scrapman.configure(config)\n\n####config\nThe configuration object can set the following values\n\n* `maxConcurrentOperations`: Integer - The intensity of processing, how many URLs can be loaded at the same time, default: 50\n\n\n## Questions\nFeel free to open Issues to ask questions about using this package, PRs are very welcomed and encouraged.\n\n**SE HABLA ESPAÑOL**\n\n## License\n\nMIT © Daniel Nieto\n"
+}

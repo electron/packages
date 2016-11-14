@@ -1,12 +1,15 @@
 {
   "name": "electron-windows-inno-installer",
-  "version": "0.3.0",
+  "version": "0.3.22",
+  "electronVersion": "v1.4.3",
   "description": "build installer by inno-setup",
-  "main": "./electron-inno-auto-update/inno-updater.js",
+  "main": "./inno-updater.js",
   "bin": {
     "electron-windows-inno-installer": "./cli.js"
   },
-  "scripts": {},
+  "scripts": {
+    "test": "cd test && ../node_modules/.bin/mocha ./tes-npmfiles.js"
+  },
   "repository": {
     "user": "Qquanwei",
     "repo": "electron-windows-inno-installer",
@@ -34,20 +37,26 @@
   "homepage": "https://github.com/Qquanwei/electron-windows-inno-installer#readme",
   "dependencies": {
     "follow-redirects": "^0.2.0",
+    "fs-extra": "^1.0.0",
     "gulp": "^3.9.1",
+    "gulp-clean": "^0.3.2",
     "gulp-electron": "^0.1.3",
     "gulp-inno": "0.0.7",
     "http-signature": "^1.1.1",
-    "js-downloader": "0.0.3",
-    "semver": "^5.3.0",
-    "underscore": "^1.8.3"
+    "js-downloader": "^0.1.3",
+    "ramda": "^0.22.1",
+    "semver": "^5.3.0"
   },
-  "gitHead": "cefc07206b50f8bff49139e548aa5083557e024e",
-  "_npmVersion": "3.7.3",
-  "_nodeVersion": "5.9.1",
+  "devDependencies": {
+    "mocha": "^3.1.2",
+    "ramda": "^0.22.1"
+  },
+  "gitHead": "704f11aa56f7e10111449fb8a32ff4e30479e01d",
+  "_npmVersion": "3.8.6",
+  "_nodeVersion": "5.12.0",
   "dist": {
-    "shasum": "2cac06b986fe855fc1611bbc469425e0f67d7c52",
-    "tarball": "http://registry.npmjs.org/electron-windows-inno-installer/-/electron-windows-inno-installer-0.3.0.tgz"
+    "shasum": "ba95a6c720c5c2aeab5891afb80d1ef2d4593f5f",
+    "tarball": "http://registry.npmjs.org/electron-windows-inno-installer/-/electron-windows-inno-installer-0.3.22.tgz"
   },
   "versions": [
     {
@@ -133,10 +142,62 @@
     {
       "number": "0.3.0",
       "date": "2016-09-29T04:11:47.745Z"
+    },
+    {
+      "number": "0.3.1",
+      "date": "2016-10-10T06:59:10.552Z"
+    },
+    {
+      "number": "0.3.2",
+      "date": "2016-10-10T08:47:29.419Z"
+    },
+    {
+      "number": "0.3.3",
+      "date": "2016-10-10T09:23:28.324Z"
+    },
+    {
+      "number": "0.3.4",
+      "date": "2016-10-10T10:00:50.915Z"
+    },
+    {
+      "number": "0.3.5",
+      "date": "2016-10-10T10:40:27.492Z"
+    },
+    {
+      "number": "0.3.6",
+      "date": "2016-10-17T06:29:05.524Z"
+    },
+    {
+      "number": "0.3.7",
+      "date": "2016-10-17T06:33:45.013Z"
+    },
+    {
+      "number": "0.3.9",
+      "date": "2016-10-24T10:02:36.475Z"
+    },
+    {
+      "number": "0.3.10",
+      "date": "2016-10-24T15:19:31.641Z"
+    },
+    {
+      "number": "0.3.11",
+      "date": "2016-10-25T02:55:26.198Z"
+    },
+    {
+      "number": "0.3.12",
+      "date": "2016-10-31T09:58:08.720Z"
+    },
+    {
+      "number": "0.3.20",
+      "date": "2016-11-03T04:21:27.772Z"
+    },
+    {
+      "number": "0.3.22",
+      "date": "2016-11-03T08:33:49.038Z"
     }
   ],
   "created": "2016-08-03T06:29:26.112Z",
-  "modified": "2016-09-29T04:11:47.745Z",
+  "modified": "2016-11-03T08:33:49.038Z",
   "lastPublisher": {
     "name": "quanwei",
     "email": "quanwei9958@126.com"
@@ -147,5 +208,5 @@
       "email": "quanwei9958@126.com"
     }
   ],
-  "readme": "# Build Your Installer Easy to RELEASE & UPDATE\n\n## Installation\n\n* `npm install electron-windows-inno-installer -g`\n\n\n## Required\n\n* wine `brew install wine --devel`\n\n## Build Your Project\n\nneed your `*.iss` file in your work directory\n\nyou can using `electron-windows-inno-installer --make-iss` and then `vim example.iss` to make your setup.iss file\n\n```\nrm -rf release/\nelectron-windows-inno-installer ./setup.iss --platform win32-x64 --icon ./favicon.ico\n```\n\nelectron-windows-inno-installer will pack all you local file without directory , if you want customs pack files ,you can use 'sourceFiles' field in you `package.json`\nlike this \n```\n    ...\n\n    \"dependencies\": {\n          \"electron-windows-inno-installer\": \"^0.1.3\"\n    },\n    \"sourceFiles\":[ \"./index.js\",\"./favicon.ico\",\"./www/**/**\"],\n\n    ...\n```\n\n\n## AutoUpdater\n\n\n* npm install electron-windows-inno-installer --save\n\n```javascript\n(electron app.js)\n\nconst autoupdater = require('electron-windows-inno-installer');\n\n//support http/https \nautoupdater.setFeedURL('http://demo/releases.json'); \n\n//release.json:\n//{\n  //\"name\": \"demo1.1.2\",\n  //\"version\": \"1.1.2\",\n  //\"date\": \"2016-08-09\",\n  //\"changelog\": \"upgrade \\n\\n\\n\\n\\n?\",\n  //\"updateURL\": \"http://10.8.3.31:8000/setup.exe\"\n//}\n\nautoupdater.on('update-downloaded',function(releasefileJSON,fullpath){\n  console.log('release notes: ',releasefileJSON.changelog)\n  console.log('write to :',fullpath);\n  autoupdater.quitAndInstall(); // Upgrade\n});\n\nautoupdater.on('update-not-available',function(){\n  console.log('INFO: Update not available');\n});\n\nautoupdater.on('update-available',function(releasefileJSON,next){\n  console.log('INFO: Update available',releasefileJSON);\n  next(); //will be download\n});\n\nautoupdater.on('progress',function(progress){\n  console.log(progress);  // download progress\n});\n\n```\n\n\n## workflow:\n\n`(some html/js/css)` -> `electron-prebuild`  -> `gulp-inno` -> `installer.exe`\n\n\n## event\n\n### Event:`checking-for-update`\n\nEmmitted when updater starts checking update, after 'checkForupdates'\n\n### Event: `update-not-available`\n\nEmmitted when update unavailable,usually the version lowwer current version\nor server response is '204'\n\n### Event: `update-available`\n\nReturns:\n* releasejson : `object`\n* next : `function`\n\nEmmitted when update available, you will be invoke `next` tell updater to download this installer\n\n### Event: `update-downloaded`\n\nReturns:\n* releasejson: `object`\n* fullpath: `string`\n\nEmmitted when the installer package is downloaded. from then on , you can execute `updater.quitAndinstall()`\nto quit current process and install installer.\n\n### Event `error`\n\nReturns:\n* err : `object`\n\nEmmitted when throw a error\n\n### Event `done`\n\nEmmitted when updater stopped work\n\n### Event `progress`\n\nReturns: progress\n\nthe downloaded progress\n\n\n## Methods\n\n### `setFeedURL`\n\nParams:\n* url : `string`\n\nset feed url\n\n### `checkForUpdates`\n\nParams:\n* isForce : `bool`\n\nif `isForce` is `true` , updater will do not check version \n\nstart updater , updater will feed a update object from feedurl,\nupdater will checking this object that has field `version`\n\n### `quitAndinstall`\n\nwhen the event of `update-downloade` emmitted, thie method will quit-and-install\nthe new installer\n\n## FAQ\n\n  There are some case in your building.\n\n* Download electron-v{version}-win32-x64.zip is slowly or failure\n\ndownload the file from `https://github.com/electron/electron/releases` or `https://npm.taobao.org/mirrors/electron/` to directory `.cache/{version}/{platform}`.\n\nexample `wget https://npm.taobao.org/mirrors/electron/1.3.1/electron-v1.3.1-win32-ia32.zip -P /you/project/.cache/v1.3.1/`\n\n## Contribution\n\nI'm very pleased with anyone contribute code, if you want to change `cli program` please fork the project . if you want to modify `module` you can fork `https://github.com/Qquanwei/electron-inno-auto-update/` this project and modify on `develop branch`.\n"
+  "readme": "# Build Your Installer Easy to RELEASE & UPDATE\n[![Build Status](https://travis-ci.org/Qquanwei/electron-windows-inno-installer.svg?branch=master)](https://travis-ci.org/Qquanwei/electron-windows-inno-installer)\n## Installation\n\n* `npm install electron-windows-inno-installer -g`\n\n\n## Required\n\n* wine `brew install wine --devel`\n* gulp `npm install gulp -g`\n\n## Build Your Project\n\nneed your `*.iss` file in your work directory\n\nyou can using `electron-windows-inno-installer --make-iss` and then `vim example.iss` to make your setup.iss file\n\n```\nrm -rf release/\nelectron-windows-inno-installer ./setup.iss --platform win32-x64 --icon ./favicon.ico\n```\n\nelectron-windows-inno-installer will pack all you local file without directory , if you want customs pack files ,you can use 'sourceFiles' field in you `package.json`\nlike this \n```\n    ...\n\n    \"dependencies\": {\n          \"electron-windows-inno-installer\": \"^0.1.3\"\n    },\n    \"sourceFiles\":[ \"./index.js\",\"./favicon.ico\",\"./www/**/**\"],\n\n    ...\n```\n\n\n## AutoUpdater\n\n\n* npm install electron-windows-inno-installer --save\n\n```javascript\n(electron app.js)\n\nconst autoupdater = require('electron-windows-inno-installer');\n\n//support http/https \nautoupdater.setFeedURL('http://demo/releases.json'); \n\n//release.json:\n//{\n  //\"name\": \"demo1.1.2\",\n  //\"version\": \"1.1.2\",\n  //\"date\": \"2016-08-09\",\n  //\"changelog\": \"upgrade \\n\\n\\n\\n\\n?\",\n  //\"updateURL\": \"http://10.8.3.31:8000/setup.exe\"\n//}\n\nautoupdater.on('update-downloaded',function(releasefileJSON,fullpath){\n  console.log('release notes: ',releasefileJSON.changelog)\n  console.log('write to :',fullpath);\n  autoupdater.quitAndInstall(); // Upgrade\n});\n\nautoupdater.on('update-not-available',function(){\n  console.log('INFO: Update not available');\n});\n\nautoupdater.on('update-available',function(releasefileJSON,next){\n  console.log('INFO: Update available',releasefileJSON);\n  next(); //will be download\n});\n\nautoupdater.on('progress',function(progress){\n  console.log(progress);  // download progress\n});\n\n```\n\n\n## workflow:\n\n`(some html/js/css)` -> `electron-prebuild`  -> `gulp-inno` -> `installer.exe`\n\n\n## event\n\n### Event:`checking-for-update`\n\nEmmitted when updater starts checking update, after 'checkForupdates'\n\n### Event: `update-not-available`\n\nEmmitted when update unavailable,usually the version lowwer current version\nor server response is '204'\n\n### Event: `update-available`\n\nReturns:\n* releasejson : `object`\n* next : `function`\n\nEmmitted when update available, you will be invoke `next` tell updater to download this installer\n\n### Event: `update-downloaded`\n\nReturns:\n* releasejson: `object`\n* fullpath: `string`\n\nEmmitted when the installer package is downloaded. from then on , you can execute `updater.quitAndinstall()`\nto quit current process and install installer.\n\n### Event `error`\n\nReturns:\n* err : `object`\n\nEmmitted when throw a error\n\n### Event `done`\n\nEmmitted when updater stopped work\n\n### Event `progress`\n\nReturns: progress\n\nthe downloaded progress\n\n\n## Methods\n\n### `setFeedURL`\n\nParams:\n* url : `string`\n\nset feed url\n\n### `checkForUpdates`\n\nParams:\n* isForce : `bool`\n\nif `isForce` is `true` , updater will do not check version \n\nstart updater , updater will feed a update object from feedurl,\nupdater will checking this object that has field `version`\n\n### `quitAndinstall`\n\nwhen the event of `update-downloade` emmitted, thie method will quit-and-install\nthe new installer\n\n## FAQ\n\n  There are some case in your building.\n\n* Download electron-v{version}-win32-x64.zip is slowly or failure\n\ndownload the file from `https://github.com/electron/electron/releases` or `https://npm.taobao.org/mirrors/electron/` to directory `.cache/{version}/{platform}`.\n\nexample `wget https://npm.taobao.org/mirrors/electron/1.3.1/electron-v1.3.1-win32-ia32.zip -P /you/project/.cache/v1.3.1/`\n\n## Contribution\n\nVery pleasure with anyone contribute code\n"
 }

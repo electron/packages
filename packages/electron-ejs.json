@@ -1,7 +1,7 @@
 {
   "name": "electron-ejs",
-  "version": "1.1.0",
-  "description": "Simple Electron plugin for render EJS templates.",
+  "version": "1.1.1",
+  "description": "Simple Electron plugin for rendering EJS templates.",
   "keywords": [
     "electron",
     "ejs"
@@ -31,13 +31,13 @@
     "pstat": "1.0.2"
   },
   "license": "MIT",
-  "gitHead": "515fd00198d3ee821da26372c3cc0a1b097c117f",
+  "gitHead": "4d3f1b4adabaedff434e892b948ca82ef46d0aa7",
   "homepage": "https://github.com/jmjuanes/electron-ejs#readme",
   "_npmVersion": "3.8.6",
   "_nodeVersion": "4.2.2",
   "dist": {
-    "shasum": "12309ad9c91e7416dcc5608a979cdd477dd5ff00",
-    "tarball": "http://registry.npmjs.org/electron-ejs/-/electron-ejs-1.1.0.tgz"
+    "shasum": "99f72e15d532c45f4dee405663b71d2d88223051",
+    "tarball": "http://registry.npmjs.org/electron-ejs/-/electron-ejs-1.1.1.tgz"
   },
   "versions": [
     {
@@ -59,10 +59,14 @@
     {
       "number": "1.1.0",
       "date": "2016-09-13T08:33:43.865Z"
+    },
+    {
+      "number": "1.1.1",
+      "date": "2016-10-13T06:56:01.825Z"
     }
   ],
   "created": "2015-11-25T13:43:27.985Z",
-  "modified": "2016-09-13T08:33:43.865Z",
+  "modified": "2016-10-13T06:56:01.825Z",
   "lastPublisher": {
     "name": "jmjuanes",
     "email": "josemijuanes@gmail.com"
@@ -73,5 +77,5 @@
       "email": "josemijuanes@gmail.com"
     }
   ],
-  "readme": "# electron-ejs\n\n[![npm](https://img.shields.io/npm/v/electron-ejs.svg?style=flat-square)](https://www.npmjs.com/package/electron-ejs)\n[![npm](https://img.shields.io/npm/dt/electron-ejs.svg?style=flat-square)](https://www.npmjs.com/package/electron-ejs)\n\nSimple Electron plugin for render EJS templates. It allows you to use `ejs` files in your electron projects.\n\n\n## Install\n\nInstall **electron-ejs** using NPM:\n\n```\nnpm install electron-ejs\n```\n\n## Usage\n\n```javascript\n//Import dependencies \nvar electron = require('electron');\nvar electronEjs = require('electron-ejs')(); \n\n//Initialize the app \nvar app = electron.app;\n\n//Initialize the ejs parser \nvar ejs = new electronEjs({ key: 'my value' }, {}); \n\n//Now you can read EJS files\napp.on('ready', function()\n{\n  //Create the new window\n  mainWindow = new BrowserWindow({ width: 800, height: 600 });\n  \n  //More app configuration\n  // ....\n  \n  //Load the ejs file\n  mainWindow.loadUrl('file://' + __dirname + '/index.ejs');\n});\n``` \n\n## API\n\n### electronEjs(data, options)\n\nInitializes the `electron-ejs` parser. This can take the following arguments: \n\n#### data \n\nAn object with the data that will be used as a variable in your `ejs` file. \n\n#### options \n\nAn object with the `ejs` options. The list with all the options are available here: [https://github.com/mde/ejs#options](https://github.com/mde/ejs#options). \n\nThe `filename` options is not necessary and will be ignored.\n\n\n## Want to contribute?\n\nPull requests and issues are always welcome :)\n\n## Contributors\n\n[![Josemi Juanes](https://avatars3.githubusercontent.com/u/5751201?v=3&s=100)](https://github.com/jmjuanes) | [![Marek Kraus](https://avatars3.githubusercontent.com/u/1665373?v=3&s=100)](https://github.com/gamelaster)\n---|---\n[Josemi Juanes](https://github.com/jmjuanes) | [Marek Kraus](https://github.com/gamelaster)\n\n\n## License\n\n[MIT](LICENSE) &copy; Josemi Juanes.\n"
+  "readme": "# electron-ejs\n\n[![npm](https://img.shields.io/npm/v/electron-ejs.svg?style=flat-square)](https://www.npmjs.com/package/electron-ejs)\n[![npm](https://img.shields.io/npm/dt/electron-ejs.svg?style=flat-square)](https://www.npmjs.com/package/electron-ejs)\n\nSimple Electron plugin for rendering EJS templates. It allows you to use `ejs` files in your electron projects.\n\n\n## Install\n\nInstall **electron-ejs** using NPM:\n\n```\nnpm install electron-ejs\n```\n\n## Usage\n\n```javascript\n//Import dependencies\nvar electron = require('electron');\nvar electronEjs = require('electron-ejs')();\n\n//Initialize the app\nvar app = electron.app;\n\n//Initialize the ejs parser\nvar ejs = new electronEjs({ key: 'my value' }, {});\n\n//Now you can read EJS files\napp.on('ready', function()\n{\n  //Create the new window\n  mainWindow = new BrowserWindow({ width: 800, height: 600 });\n\n  //More app configuration\n  // ....\n\n  //Load the ejs file\n  mainWindow.loadUrl('file://' + __dirname + '/index.ejs');\n});\n```\n\n## API\n\n### electronEjs(data, options)\n\nInitializes the `electron-ejs` parser. This can take the following arguments:\n\n#### data\n\nAn object with the data that will be used as a variable in your `ejs` file.\n\n#### options\n\nAn object with the `ejs` options. The list with all the options are available here: [https://github.com/mde/ejs#options](https://github.com/mde/ejs#options).\n\nThe `filename` options is not necessary and will be ignored.\n\n\n## Want to contribute?\n\nPull requests and issues are always welcome :)\n\n## Contributors\n\nSee the [full list](https://github.com/jmjuanes/electron-ejs/graphs/contributors) of contributors.\n\n\n## License\n\n[MIT](LICENSE) &copy; Josemi Juanes.\n"
 }

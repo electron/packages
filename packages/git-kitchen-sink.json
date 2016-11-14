@@ -1,6 +1,6 @@
 {
   "name": "git-kitchen-sink",
-  "version": "1.11.0",
+  "version": "1.12.0",
   "description": "Incorporate Git into your Electron application",
   "main": "./build/lib/index.js",
   "typings": "./build/lib/index.d.ts",
@@ -8,7 +8,7 @@
     "clean": "rimraf build",
     "lint": "tslint lib/**/*.ts",
     "build": "npm run clean && npm run lint && tsc -p ./tsconfig.json",
-    "prepublish": "npm run build",
+    "prepublish": "npm run build && npm run test",
     "test": "cross-env TEST=1 mocha --require ts-node/register test/*.ts",
     "postinstall": "node ./script/download-git.js"
   },
@@ -60,12 +60,12 @@
     "tslint": "^3.15.1",
     "typescript": "^2.0.2"
   },
-  "gitHead": "559beeb3914da038cd3c3f88b3383218af95b68a",
-  "_npmVersion": "3.8.9",
+  "gitHead": "7792eabc1c6e9dfc42dc127a3407327e7132963a",
+  "_npmVersion": "3.9.2",
   "_nodeVersion": "6.2.0",
   "dist": {
-    "shasum": "c3a8639b06f4e9cc9d5886a0e64b3742f139c8c4",
-    "tarball": "http://registry.npmjs.org/git-kitchen-sink/-/git-kitchen-sink-1.11.0.tgz"
+    "shasum": "e4abf74c84d9063c1970e5dcfd36deb9f7123ccd",
+    "tarball": "http://registry.npmjs.org/git-kitchen-sink/-/git-kitchen-sink-1.12.0.tgz"
   },
   "stars": 1,
   "versions": [
@@ -128,13 +128,17 @@
     {
       "number": "1.11.0",
       "date": "2016-10-05T22:25:49.606Z"
+    },
+    {
+      "number": "1.12.0",
+      "date": "2016-10-28T18:58:22.560Z"
     }
   ],
   "created": "2016-09-07T05:02:21.077Z",
-  "modified": "2016-10-06T04:19:19.950Z",
+  "modified": "2016-10-28T18:58:22.560Z",
   "lastPublisher": {
-    "name": "niik",
-    "email": "j.markus.olsson@gmail.com"
+    "name": "joshaber",
+    "email": "joshaber@gmail.com"
   },
   "owners": [
     {
@@ -150,5 +154,5 @@
       "email": "brendan.forster@github.com"
     }
   ],
-  "readme": "# git-kitchen-sink\r\n## Incorporate Git into your Electron application\r\n\r\nThis is a skunkworks project to make using Git in your Electron application.\r\n\r\nTo get started: `npm install git-kitchen-sink --save`\r\n\r\nAnd then reference it in your application:\r\n\r\n```js\r\nimport { GitProcess, GitError, GitErrorCode } from 'git-kitchen-sink'\r\n\r\nconst pathToRepository = 'C:/path/to/git/repository/'\r\n\r\nGitProcess.execWithOutput([ '--version' ], pathToRepository)\r\n  .then(output => {\r\n    // TODO: read version\r\n  })\r\n  .catch(error => {\r\n    // TODO: better error handling\r\n  })\r\n```\r\n\r\nCurrent features:\r\n\r\n - package Git within your application\r\n - make it easy to execute Git commands\r\n - macOS and Window support\r\n\r\nPotential Roadmap:\r\n\r\n - an API for common Git operations\r\n - Linux support\r\n - handle authentication and environment setup\r\n - ???\r\n\r\n\r\n### Contributing\r\n\r\nAfter cloning down this repository, run:\r\n\r\n```sh\r\nnpm install\r\n```\r\n\r\nAnd then you can create the package yourself:\r\n\r\n```sh\r\nnpm pack\r\n```\r\n"
+  "readme": "# git-kitchen-sink\n## Incorporate Git into your Electron application\n\nThis is a skunkworks project to make using Git in your Electron application.\n\nTo get started: `npm install git-kitchen-sink --save`\n\nAnd then reference it in your application:\n\n```js\nimport { GitProcess, GitError, IGitResult } from 'git-kitchen-sink'\n\nconst pathToRepository = 'C:/path/to/git/repository/'\n\nconst result = await GitProcess.exec([ 'status' ], pathToRepository)\nif (result.exitCode === 0) {\n  const version = result.stdout\n  // TODO: do some things with version\n} else {\n  const error = result.stderr\n  // TODO: error handling\n}\n```\n\nCurrent features:\n\n - package Git within your application\n - make it easy to execute Git commands\n - macOS and Window support\n\nPotential Roadmap:\n\n - an API for common Git operations\n - Linux support\n - handle authentication and environment setup\n - ???\n\n\n### Contributing\n\nAfter cloning down this repository, run:\n\n```sh\nnpm install\n```\n\nAnd then you can create the package yourself:\n\n```sh\nnpm pack\n```\n"
 }

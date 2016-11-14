@@ -1,7 +1,7 @@
 {
   "name": "eslint-config-prev",
-  "version": "1.9.0",
-  "description": "ESLint sharable config for the best feeling",
+  "version": "2.4.0",
+  "description": "ESLint sharable config focused on use of ES2015+",
   "author": {
     "name": "Plusb Preco",
     "email": "plusb21@gmail.com"
@@ -45,25 +45,23 @@
   ],
   "devDependencies": {
     "ava": "^0.16.0",
-    "babel-eslint": "^7.0.0",
-    "eslint": "^3.7.1",
-    "eslint-plugin-babel": "^3.3.0",
-    "eslint-plugin-import": "^2.0.0",
-    "eslint-plugin-react": "^6.3.0",
+    "babel-eslint": "^7.1.0",
+    "eslint": "^3.10.0",
+    "eslint-plugin-import": "^2.2.0",
+    "eslint-plugin-react": "^6.6.0",
     "is-plain-obj": "^1.1.0"
   },
   "peerDependencies": {
-    "babel-eslint": "^7.0.0",
-    "eslint": "^3.7.1",
-    "eslint-plugin-babel": "^3.3.0",
-    "eslint-plugin-import": "^2.0.0"
+    "babel-eslint": "^7.1.0",
+    "eslint": "^3.10.0",
+    "eslint-plugin-import": "^2.2.0"
   },
-  "gitHead": "084b5b293603dd8a70353af2875c28d5cbc338e6",
-  "_npmVersion": "3.10.8",
-  "_nodeVersion": "6.7.0",
+  "gitHead": "6326fb9b19c228002cc33ca07ced057ffa26bd59",
+  "_npmVersion": "3.10.9",
+  "_nodeVersion": "7.0.0",
   "dist": {
-    "shasum": "e04fefb6289c85aeed42406a05a1ad8e79e640b8",
-    "tarball": "http://registry.npmjs.org/eslint-config-prev/-/eslint-config-prev-1.9.0.tgz"
+    "shasum": "e38a7f77bd784b9bfa29d308dd0e68b17879741a",
+    "tarball": "http://registry.npmjs.org/eslint-config-prev/-/eslint-config-prev-2.4.0.tgz"
   },
   "stars": 1,
   "versions": [
@@ -182,10 +180,50 @@
     {
       "number": "1.9.0",
       "date": "2016-10-04T09:04:25.398Z"
+    },
+    {
+      "number": "1.10.0",
+      "date": "2016-10-12T05:16:53.482Z"
+    },
+    {
+      "number": "2.0.0",
+      "date": "2016-10-17T05:14:18.191Z"
+    },
+    {
+      "number": "2.0.1",
+      "date": "2016-10-17T06:34:32.579Z"
+    },
+    {
+      "number": "2.0.2",
+      "date": "2016-10-17T08:06:23.236Z"
+    },
+    {
+      "number": "2.1.0",
+      "date": "2016-10-31T02:09:42.265Z"
+    },
+    {
+      "number": "2.2.0",
+      "date": "2016-11-03T14:50:31.148Z"
+    },
+    {
+      "number": "2.3.0",
+      "date": "2016-11-05T12:16:37.554Z"
+    },
+    {
+      "number": "2.3.1",
+      "date": "2016-11-07T03:00:40.327Z"
+    },
+    {
+      "number": "2.3.2",
+      "date": "2016-11-08T01:58:07.016Z"
+    },
+    {
+      "number": "2.4.0",
+      "date": "2016-11-12T15:26:05.246Z"
     }
   ],
   "created": "2016-06-25T20:49:02.974Z",
-  "modified": "2016-10-04T09:04:25.398Z",
+  "modified": "2016-11-12T15:26:05.246Z",
   "lastPublisher": {
     "name": "preco21",
     "email": "plusb21@gmail.com"
@@ -196,5 +234,5 @@
       "email": "plusb21@gmail.com"
     }
   ],
-  "readme": "# [![prev](https://cdn.rawgit.com/preco21/eslint-config-prev/master/media/logo.svg)](https://github.com/preco21/eslint-config-prev)\n\n[![Code Style Prev](https://img.shields.io/badge/code%20style-prev-32c8fc.svg?style=flat-square)](https://github.com/preco21/eslint-config-prev)\n[![NPM Version](https://img.shields.io/npm/v/eslint-config-prev.svg?style=flat-square)](https://www.npmjs.com/package/eslint-config-prev)\n[![Build Status](https://img.shields.io/travis/preco21/eslint-config-prev/master.svg?style=flat-square)](https://travis-ci.org/preco21/eslint-config-prev)\n[![Dependency Status](https://dependencyci.com/github/preco21/eslint-config-prev/badge?style=flat-square)](https://dependencyci.com/github/preco21/eslint-config-prev)\n\n> ESLint sharable config for the best feeling\n\n**Translations:** [Korean](./README-ko.md)\n\n## Installation\n\n### 1. Base\n\n```bash\n$ npm install --save-dev eslint-config-prev\n```\n\n### 2. Dependencies\n\nTo use the `base` config, you need to install ESLint dependencies:\n\n```bash\n$ npm install --save-dev babel-eslint eslint-plugin-babel eslint-plugin-import\n```\n\nFor the `react` config, you **also** need to install `react` ESLint plugin:\n\n```bash\n$ npm install --save-dev eslint-plugin-react\n```\n\n## Usage\n\nAdd `extends` field to your ESLint config:\n\n`.eslintrc.yml`:\n\n```yaml\nextends: prev\n```\n\nIf you want to use `react` rules:\n\n```yaml\nextends: prev/react\n```\n\n**Note:** If you are using `react-native`, you could use `prev/react-native`\ninstead of `prev/react`.\n\nIf you are on browser environment, you may need to add `env` field:\n\n```yaml\nextends: prev\nenv:\n  browser: true\n```\n\nIf you are on [Electron](electron.atom.io) environment, you may need to add\n`electron` to `core-modules`:\n\n```yaml\nextends: prev\nsettings:\n  import/core-modules: electron\n```\n\nYou can find details about ESLint configuration [here](http://eslint.org/docs/user-guide/configuring).\n\n## Badge\n\n> [![Code Style Prev](https://img.shields.io/badge/code%20style-prev-32c8fc.svg?style=flat-square)](https://github.com/preco21/eslint-config-prev)\n\n```markdown\n[![Code Style Prev](https://img.shields.io/badge/code%20style-prev-32c8fc.svg?style=flat-square)](https://github.com/preco21/eslint-config-prev)\n```\n\n## License\n\n[MIT](http://preco.mit-license.org/)\n"
+  "readme": "# [![prev](https://cdn.rawgit.com/preco21/eslint-config-prev/master/media/logo.svg)](https://github.com/preco21/eslint-config-prev)\n\n[![Code Style Prev](https://img.shields.io/badge/code%20style-prev-32c8fc.svg?style=flat-square)](https://github.com/preco21/eslint-config-prev)\n[![NPM Version](https://img.shields.io/npm/v/eslint-config-prev.svg?style=flat-square)](https://www.npmjs.com/package/eslint-config-prev)\n[![Build Status](https://img.shields.io/travis/preco21/eslint-config-prev/master.svg?style=flat-square)](https://travis-ci.org/preco21/eslint-config-prev)\n[![Dependency Status](https://dependencyci.com/github/preco21/eslint-config-prev/badge?style=flat-square)](https://dependencyci.com/github/preco21/eslint-config-prev)\n\n> ESLint sharable config focused on use of ES2015+\n\n**Translations:** [Korean](./README-ko.md)\n\n## Install\n\n```bash\n$ npm install --save-dev eslint-config-prev babel-eslint eslint-plugin-import\n```\n\nFor the `react` config, you **also** need to install `react` ESLint plugin:\n\n```bash\n$ npm install --save-dev eslint-plugin-react\n```\n\n## Usage\n\nAdd `extends` field to your ESLint config:\n\n`.eslintrc.yml`:\n\n```yaml\nextends: prev\n```\n\nIf you want to use `react` rules:\n\n```yaml\nextends: prev/react\n```\n\n**Note:** If you are using `react-native`, you could use `prev/react-native` instead of `prev/react`.\n\nIf you are on browser environment, you may need to add `env` field:\n\n```yaml\nextends: prev\nenv:\n  browser: true\n```\n\nIf you are on [Electron](electron.atom.io) environment, you may need to add `electron` to `core-modules`:\n\n```yaml\nextends: prev\nsettings:\n  import/core-modules: electron\n```\n\nYou can find details about ESLint configuration [here](http://eslint.org/docs/user-guide/configuring).\n\n## Badge\n\n> [![Code Style Prev](https://img.shields.io/badge/code%20style-prev-32c8fc.svg?style=flat-square)](https://github.com/preco21/eslint-config-prev)\n\n```markdown\n[![Code Style Prev](https://img.shields.io/badge/code%20style-prev-32c8fc.svg?style=flat-square)](https://github.com/preco21/eslint-config-prev)\n```\n\n## License\n\n[MIT](http://preco.mit-license.org/)\n"
 }

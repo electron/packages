@@ -1,14 +1,28 @@
 {
   "name": "espruino-web-ide",
-  "version": "0.62.0-v",
+  "version": "0.64.3",
   "description": "A Terminal and Graphical code Editor for Espruino JavaScript Microcontrollers",
-  "main": "index.js",
+  "//1": "-------------------------------------------------------- nw.js",
+  "main": "main.html",
+  "window": {
+    "title": "Espruino Web IDE",
+    "toolbar": false,
+    "frame": false,
+    "show": true,
+    "fullscreen": false,
+    "width": 1024,
+    "height": 600,
+    "position": "center"
+  },
+  "chromium-args": "--enable-web-bluetooth",
+  "//chromium-args": "--enable-logging=stderr --enable-web-bluetooth",
+  "//2": "-------------------------------------------------------- NPM",
   "bin": {
-    "espruino-web-ide": "./electron-loader.js",
+    "espruino-web-ide": "./nw-loader.js",
     "espruino-server": "./server.js"
   },
   "scripts": {
-    "start": "electron ./electron-app.js"
+    "start": "nw ."
   },
   "repository": {
     "user": "Espruino",
@@ -35,22 +49,26 @@
   "homepage": "https://github.com/espruino/EspruinoWebIDE#readme",
   "dependencies": {
     "acorn": ">=0.6.0",
-    "bleat": "",
-    "electron-prebuilt": "^0.36.9",
     "es6-shim": "",
     "escodegen": "",
     "esmangle": "",
     "esprima": "",
-    "serialport": ">=1.2.5",
-    "websocket": "^1.0.23"
+    "nw": "^0.18.3",
+    "websocket": "^1.0.23",
+    "noble": "^1.7.0",
+    "serialport": ">=1.2.5"
+  },
+  "optionalDependencies": {
+    "noble": "^1.7.0",
+    "serialport": ">=1.2.5"
   },
   "devDependencies": {},
-  "gitHead": "6babb5009554484d05d144a42161917e09ec7817",
-  "_npmVersion": "3.8.6",
-  "_nodeVersion": "5.12.0",
+  "gitHead": "0508b596705821d0eb3a5e362cd6a73881c1a22f",
+  "_npmVersion": "3.10.8",
+  "_nodeVersion": "7.0.0",
   "dist": {
-    "shasum": "a7304c6cae04eae43a5d59d056e38caa42b228c7",
-    "tarball": "http://registry.npmjs.org/espruino-web-ide/-/espruino-web-ide-0.62.0-v.tgz"
+    "shasum": "5d72153491284894eea74f6f9b890c41def94187",
+    "tarball": "http://registry.npmjs.org/espruino-web-ide/-/espruino-web-ide-0.64.3.tgz"
   },
   "versions": [
     {
@@ -92,10 +110,30 @@
     {
       "number": "0.62.0-v",
       "date": "2016-09-08T10:44:29.901Z"
+    },
+    {
+      "number": "0.63.0",
+      "date": "2016-10-11T15:27:14.639Z"
+    },
+    {
+      "number": "0.64.0",
+      "date": "2016-10-27T16:37:31.298Z"
+    },
+    {
+      "number": "0.64.1",
+      "date": "2016-10-27T16:48:51.317Z"
+    },
+    {
+      "number": "0.64.2",
+      "date": "2016-10-27T16:53:50.599Z"
+    },
+    {
+      "number": "0.64.3",
+      "date": "2016-11-03T08:49:53.706Z"
     }
   ],
   "created": "2016-03-14T12:13:54.721Z",
-  "modified": "2016-09-08T10:44:29.901Z",
+  "modified": "2016-11-03T08:49:53.706Z",
   "lastPublisher": {
     "name": "gfwilliams",
     "email": "gw@pur3.co.uk"

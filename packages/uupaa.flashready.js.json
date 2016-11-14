@@ -1,0 +1,125 @@
+{
+  "name": "uupaa.flashready.js",
+  "version": "0.0.2",
+  "description": "Flash will detect whether the available.",
+  "url": "https://github.com/uupaa/FlashReady.js",
+  "keywords": [
+    "flash",
+    "detect",
+    "uupaa",
+    "WebModule",
+    "Unstable"
+  ],
+  "repository": {
+    "user": "uupaa",
+    "repo": "FlashReady.js",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/uupaa/FlashReady.js/tarball/master",
+    "clone_url": "https://github.com/uupaa/FlashReady.js",
+    "https_url": "https://github.com/uupaa/FlashReady.js",
+    "travis_url": "https://travis-ci.org/uupaa/FlashReady.js",
+    "zip_url": "https://github.com/uupaa/FlashReady.js/archive/master.zip",
+    "api_url": "https://api.github.com/repos/uupaa/FlashReady.js"
+  },
+  "scripts": {
+    "sync": "node ../WebModule/run/sync.js; npm update; node ../WebModule/run/page.js",
+    "wiki": "node ../WebModule/run/wiki.js",
+    "min": "node ../WebModule/run/minify.js --verbose --strict --keep --pretty",
+    "build": "node ../WebModule/run/minify.js --verbose --strict --keep --release",
+    "watch": "node ../WebModule/run/watch.js --verbose --run lint",
+    "page": "node ../WebModule/run/page.js --verbose",
+    "test": "npm run min; npm run node; npm run browser",
+    "node": "NODE_ENV=production NODE_PATH=lib node test/node/index.js",
+    "noded": "NODE_ENV=production NODE_PATH=lib node --debug-brk test/node/index.js",
+    "browser": "open http://localhost:8000/FlashReady.js/test/browser/index.html",
+    "el": "electron test/el",
+    "nw": "nw test/nw",
+    "add-src": "node ../WebModule/run/add-src.js",
+    "add-subclass": "node ../WebModule/run/add-subclass.js",
+    "sim": "node ../WebModule/run/sim.js http://localhost:8000/FlashReady.js/test/browser/index.html",
+    "simx": "node ../WebModule/run/sim.js stop",
+    "lint": "eslint lib/*.js",
+    "score": "node ../WebModule/run/score.js; open lint/plato/index.html",
+    "patch": "node ../WebModule/run/patch.js",
+    "setup": "node ../WebModule/run/setup.js",
+    "start": "cd ../; Python -m SimpleHTTPServer 8000 &",
+    "stop": "killall -- Python -m SimpleHTTPServer 8000; exit 0"
+  },
+  "webmodule": {
+    "develop": false,
+    "label": [
+      "@dev"
+    ],
+    "browser": {
+      "output": "release/FlashReady.b.min.js",
+      "source": [
+        "lib/FlashReady.js"
+      ]
+    },
+    "worker": {
+      "output": "release/FlashReady.w.min.js",
+      "source": [
+        "lib/FlashReady.js"
+      ]
+    },
+    "node": {
+      "output": "release/FlashReady.n.min.js",
+      "source": [
+        "lib/FlashReady.js"
+      ]
+    },
+    "nw": {
+      "output": "release/FlashReady.nw.min.js",
+      "source": [
+        "lib/FlashReady.js"
+      ]
+    },
+    "el": {
+      "output": "release/FlashReady.el.min.js",
+      "source": [
+        "lib/FlashReady.js"
+      ]
+    }
+  },
+  "dependencies": {},
+  "devDependencies": {},
+  "lib": "./lib/",
+  "main": "./index.js",
+  "author": {
+    "name": "uupaa"
+  },
+  "license": "MIT",
+  "contributors": [],
+  "gitHead": "27ad6544a1fe5366e18dedf97e1639492717afd1",
+  "homepage": "https://github.com/uupaa/FlashReady.js",
+  "_npmVersion": "2.0.0",
+  "dist": {
+    "shasum": "e9d21fc6f565a74128b4d014639c8724a681ca08",
+    "tarball": "http://registry.npmjs.org/uupaa.flashready.js/-/uupaa.flashready.js-0.0.2.tgz"
+  },
+  "versions": [
+    {
+      "number": "0.0.1",
+      "date": "2016-10-25T07:51:14.225Z"
+    },
+    {
+      "number": "0.0.2",
+      "date": "2016-10-25T07:53:06.384Z"
+    }
+  ],
+  "created": "2016-10-25T07:51:14.225Z",
+  "modified": "2016-10-25T07:53:06.384Z",
+  "lastPublisher": {
+    "name": "uupaa",
+    "email": "uupaa.js@gmail.com"
+  },
+  "owners": [
+    {
+      "name": "uupaa",
+      "email": "uupaa.js@gmail.com"
+    }
+  ],
+  "readme": "# FlashReady.js [![Build Status](https://travis-ci.org/uupaa/FlashReady.js.svg)](https://travis-ci.org/uupaa/FlashReady.js)\n\n[![npm](https://nodei.co/npm/uupaa.flashready.js.svg?downloads=true&stars=true)](https://nodei.co/npm/uupaa.flashready.js/)\n\nFlash will detect whether the available.\n\nThis module made of [WebModule](https://github.com/uupaa/WebModule).\n\n## Documentation\n- [Spec](https://github.com/uupaa/FlashReady.js/wiki/)\n- [API Spec](https://github.com/uupaa/FlashReady.js/wiki/FlashReady)\n\n## Browser, NW.js and Electron\n\n```js\n<script src=\"lib/WebModule.js\"></script>\n<script src=\"lib/FlashReady.js\"></script>\n\nwindow.onload = function() {\n  var flash = new FlashReady({\n    swf: \"as3/FlashReady/bin/FlashReady.swf\",\n    callback: function(ready) {\n      console.log(\"flash.ready\", flash.ready);\n      alert(ready);\n\n    }\n  });\n}\n```\n\n"
+}

@@ -1,6 +1,6 @@
 {
   "name": "electron-rebuild",
-  "version": "1.2.1",
+  "version": "1.3.0",
   "description": "Electron supporting package to rebuild native node modules against the currently installed electron",
   "main": "lib/main.js",
   "scripts": {
@@ -35,7 +35,6 @@
   "homepage": "https://github.com/electron/electron-rebuild",
   "dependencies": {
     "babel-runtime": "^5.8.20",
-    "electron-prebuilt": "^0.36.12",
     "glob": "^6.0.3",
     "lodash": "^3.10.1",
     "ncp": "^2.0.0",
@@ -52,12 +51,12 @@
     "electron-prebuilt": "^0.36.3",
     "mocha": "^2.3.4"
   },
-  "gitHead": "9b9cd61e9b86a9a9d949051b944fb65974c7fe0e",
-  "_npmVersion": "3.10.3",
-  "_nodeVersion": "6.4.0",
+  "gitHead": "4718ea520b3faac4b4cd137a8cf04d1e4fe20d6d",
+  "_npmVersion": "3.10.6",
+  "_nodeVersion": "6.2.0",
   "dist": {
-    "shasum": "43662f48adfbc531256f62ded4714b4e286a941f",
-    "tarball": "http://registry.npmjs.org/electron-rebuild/-/electron-rebuild-1.2.1.tgz"
+    "shasum": "46fe6eda2fd9c05a74a9f207ad03adc97136de43",
+    "tarball": "http://registry.npmjs.org/electron-rebuild/-/electron-rebuild-1.3.0.tgz"
   },
   "stars": 3,
   "versions": [
@@ -148,13 +147,17 @@
     {
       "number": "1.2.1",
       "date": "2016-09-02T19:21:05.498Z"
+    },
+    {
+      "number": "1.3.0",
+      "date": "2016-10-20T19:47:06.151Z"
     }
   ],
   "created": "2015-05-04T08:45:39.559Z",
-  "modified": "2016-09-02T19:21:05.498Z",
+  "modified": "2016-10-20T19:47:06.151Z",
   "lastPublisher": {
-    "name": "zeke",
-    "email": "zeke@sikelianos.com"
+    "name": "paulcbetts",
+    "email": "paul@paulbetts.org"
   },
   "owners": [
     {
@@ -182,5 +185,5 @@
       "email": "zeke@sikelianos.com"
     }
   ],
-  "readme": "## Electron-Rebuild\n\nThis executable rebuilds native Node.js modules against the version of Node.js\nthat your Electron project is using. This allows you to use native Node.js\nmodules in Electron apps without your system version of Node.js matching exactly\n(which is often not the case, and sometimes not even possible).\n\n### How does it work?\n\nInstall the package with `--save-dev`:\n\n```sh\nnpm install --save-dev electron-rebuild\n```\n\nThen, whenever you install a new npm package, rerun electron-rebuild:\n\n```sh\n./node_modules/.bin/electron-rebuild\n```\n\nOr if you're on Windows:\n\n```sh\n.\\node_modules\\.bin\\electron-rebuild.cmd\n```\nIf you have a good node-gyp config but you see an error about a missing element on Windows like \"Could not load the Visual C++ component \"VCBuild.exe\" , try to launch electron-rebuild in an npm script:\n\n```json\n\"scripts\": {\n  \"rebuild\" : \"electron-rebuild -f -w yourmodule\"\n}\n```\n\nand then\n\n```sh\nnpm run rebuild\n```\n\n### How can I integrate this into Grunt / Gulp / Whatever?\n\nelectron-rebuild is also a library that you can just require into your app or\nbuild process. It has two main methods:\n\n```js\nimport { installNodeHeaders, rebuildNativeModules, shouldRebuildNativeModules } from 'electron-rebuild';\n\n// Public: Determines whether we need to rebuild native modules (i.e. if they're\n// already compiled for the right version of Electron, no need to rebuild them!)\n//\n// pathToElectronExecutable - Path to the electron executable that we'll use\n//                            to determine NODE_MODULE_VERSION\n// explicitNodeVersion (optional) - If given, use this instead of probing Electron\n//\n// Returns a Promise that if true, indicates you should build native modules\nlet shouldBuild = shouldRebuildNativeModules('/path/to/Electron');\n\n// Public: Downloads and installs the header / lib files required to build\n// native modules.\n//\n// nodeVersion - the version of Electron to download headers for\n// nodeDistUrl (optional) - the URL to download the distribution from\n// headersDir (optional) - where to put the headers\n// arch (optional) - The architecture to build against (for building 32-bit apps\n//                   on 64-bit Windows for example)\n//\n// Returns a Promise indicating whether the operation succeeded or not\nlet headerResult = installNodeHeaders('1.3.1');\n\n// Public: Rebuilds a node_modules directory with the given Electron version.\n//\n// nodeVersion - the version of Electron to download headers for\n// nodeModulesPath - the path to a node_modules directory\n// headersDir (optional) - where to find the headers\n// Returns a Promise indicating whether the operation succeeded or not\nheaderResult.then(() => rebuildNativeModules('1.3.1', './node_modules'));\n```\n\nA full build process might look something like:\n\n```js\nlet childProcess = require('child_process');\nlet pathToElectron = require('electron-prebuilt');\n\nshouldRebuildNativeModules(pathToElectron)\n  .then((shouldBuild) => {\n    if (!shouldBuild) return true;\n\n    let electronVersion = childProcess.execSync(`${pathToElectron} --version`, {\n      encoding: 'utf8',\n    });\n    electronVersion = electronVersion.match(/v(\\d+\\.\\d+\\.\\d+)/)[1];\n\n    return installNodeHeaders(electronVersion)\n      .then(() => rebuildNativeModules(electronVersion, './node_modules'));\n  })\n  .catch((e) => {\n    console.error(\"Building modules didn't work!\");\n    console.error(e);\n  });\n```\n\n### `node-pre-gyp` workaround\n\nNote that there is a known [issue](https://github.com/mapbox/node-pre-gyp/pull/187) with\n`node-pre-gyp` that prevents it from correctly locating the native modules built by\n`electron-rebuild`. `node-pre-gyp` is used by some popular NPM packages like `sqlite3`,\nand `node-inspector`, so even if your app or package does not have a direct dependency on\n`node-pre-gyp` you're bound to run into this issue sooner or later. To work around it call\n`preGypFixRun` after the build is complete in order to copy the native modules to a location\nwhere `node-pre-gyp` can find them:\n\n```js\nimport { preGypFixRun } from 'electron-rebuild';\n\nreturn installNodeHeaders('1.3.1')\n  .then(() => rebuildNativeModules('1.3.1', './node_modules'))\n  .then(() => preGypFixRun('./node_modules', true, pathToElectron));\n```\n\nIf you're using the CLI to perform the build then use the `-p` or `--pre-gyp-fix` option.\n\n### Alternatives\n\n- [require-rebuild](https://github.com/juliangruber/require-rebuild) patches `require()` to rebuild native node modules on the fly\n"
+  "readme": "## Electron-Rebuild\r\n\r\nThis executable rebuilds native Node.js modules against the version of Node.js\r\nthat your Electron project is using. This allows you to use native Node.js\r\nmodules in Electron apps without your system version of Node.js matching exactly\r\n(which is often not the case, and sometimes not even possible).\r\n\r\n### How does it work?\r\n\r\nInstall the package with `--save-dev`:\r\n\r\n```sh\r\nnpm install --save-dev electron-rebuild\r\n```\r\n\r\nThen, whenever you install a new npm package, rerun electron-rebuild:\r\n\r\n```sh\r\n./node_modules/.bin/electron-rebuild\r\n```\r\n\r\nOr if you're on Windows:\r\n\r\n```sh\r\n.\\node_modules\\.bin\\electron-rebuild.cmd\r\n```\r\nIf you have a good node-gyp config but you see an error about a missing element on Windows like \"Could not load the Visual C++ component \"VCBuild.exe\" , try to launch electron-rebuild in an npm script:\r\n\r\n```json\r\n\"scripts\": {\r\n  \"rebuild\" : \"electron-rebuild -f -w yourmodule\"\r\n}\r\n```\r\n\r\nand then\r\n\r\n```sh\r\nnpm run rebuild\r\n```\r\n\r\n### How can I integrate this into Grunt / Gulp / Whatever?\r\n\r\nelectron-rebuild is also a library that you can just require into your app or\r\nbuild process. It has two main methods:\r\n\r\n```js\r\nimport { installNodeHeaders, rebuildNativeModules, shouldRebuildNativeModules } from 'electron-rebuild';\r\n\r\n// Public: Determines whether we need to rebuild native modules (i.e. if they're\r\n// already compiled for the right version of Electron, no need to rebuild them!)\r\n//\r\n// pathToElectronExecutable - Path to the electron executable that we'll use\r\n//                            to determine NODE_MODULE_VERSION\r\n// explicitNodeVersion (optional) - If given, use this instead of probing Electron\r\n//\r\n// Returns a Promise that if true, indicates you should build native modules\r\nlet shouldBuild = shouldRebuildNativeModules('/path/to/Electron');\r\n\r\n// Public: Downloads and installs the header / lib files required to build\r\n// native modules.\r\n//\r\n// nodeVersion - the version of Electron to download headers for\r\n// nodeDistUrl (optional) - the URL to download the distribution from\r\n// headersDir (optional) - where to put the headers\r\n// arch (optional) - The architecture to build against (for building 32-bit apps\r\n//                   on 64-bit Windows for example)\r\n//\r\n// Returns a Promise indicating whether the operation succeeded or not\r\nlet headerResult = installNodeHeaders('1.3.1');\r\n\r\n// Public: Rebuilds a node_modules directory with the given Electron version.\r\n//\r\n// nodeVersion - the version of Electron to download headers for\r\n// nodeModulesPath - the path to a node_modules directory\r\n// headersDir (optional) - where to find the headers\r\n// Returns a Promise indicating whether the operation succeeded or not\r\nheaderResult.then(() => rebuildNativeModules('1.3.1', './node_modules'));\r\n```\r\n\r\nA full build process might look something like:\r\n\r\n```js\r\nlet childProcess = require('child_process');\r\nlet pathToElectron = require('electron-prebuilt');\r\n\r\nshouldRebuildNativeModules(pathToElectron)\r\n  .then((shouldBuild) => {\r\n    if (!shouldBuild) return true;\r\n\r\n    let electronVersion = childProcess.execSync(`${pathToElectron} --version`, {\r\n      encoding: 'utf8',\r\n    });\r\n    electronVersion = electronVersion.match(/v(\\d+\\.\\d+\\.\\d+)/)[1];\r\n\r\n    return installNodeHeaders(electronVersion)\r\n      .then(() => rebuildNativeModules(electronVersion, './node_modules'));\r\n  })\r\n  .catch((e) => {\r\n    console.error(\"Building modules didn't work!\");\r\n    console.error(e);\r\n  });\r\n```\r\n\r\n### `node-pre-gyp` workaround\r\n\r\nNote that there is a known [issue](https://github.com/mapbox/node-pre-gyp/pull/187) with\r\n`node-pre-gyp` that prevents it from correctly locating the native modules built by\r\n`electron-rebuild`. `node-pre-gyp` is used by some popular NPM packages like `sqlite3`,\r\nand `node-inspector`, so even if your app or package does not have a direct dependency on\r\n`node-pre-gyp` you're bound to run into this issue sooner or later. To work around it call\r\n`preGypFixRun` after the build is complete in order to copy the native modules to a location\r\nwhere `node-pre-gyp` can find them:\r\n\r\n```js\r\nimport { preGypFixRun } from 'electron-rebuild';\r\n\r\nreturn installNodeHeaders('1.3.1')\r\n  .then(() => rebuildNativeModules('1.3.1', './node_modules'))\r\n  .then(() => preGypFixRun('./node_modules', true, pathToElectron));\r\n```\r\n\r\nIf you're using the CLI to perform the build then use the `-p` or `--pre-gyp-fix` option.\r\n\r\n### Alternatives\r\n\r\n- [require-rebuild](https://github.com/juliangruber/require-rebuild) patches `require()` to rebuild native node modules on the fly\r\n"
 }

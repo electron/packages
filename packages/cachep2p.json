@@ -1,0 +1,123 @@
+{
+  "name": "cachep2p",
+  "description": "The Peer to Peer Cache for the Masses",
+  "version": "0.1.5",
+  "author": {
+    "name": "Carlos Guerrero",
+    "email": "carlos@carlosguerrero.com",
+    "url": "https://cachep2p.com"
+  },
+  "browser": {},
+  "browserify": {
+    "transform": [
+      "package-json-versionify"
+    ]
+  },
+  "dependencies": {
+    "safe-buffer": "^5.0.1",
+    "simple-sha1": "^2.0.8",
+    "webtorrent": "git+https://github.com/guerrerocarlos/webtorrent.git"
+  },
+  "devDependencies": {
+    "browserify": "^13.0.1",
+    "debug": "^2.2.0",
+    "uglifyjs": "^2.4.10"
+  },
+  "engines": {
+    "node": ">=4"
+  },
+  "homepage": "https://cachep2p.com",
+  "keywords": [
+    "cache",
+    "p2p",
+    "web2web",
+    "cachep2p",
+    "p2pcache",
+    "web2webcache",
+    "cacheweb2web",
+    "bittorrent",
+    "bittorrent client",
+    "download",
+    "mad science",
+    "p2p",
+    "peer-to-peer",
+    "peers",
+    "streaming",
+    "swarm",
+    "torrent",
+    "web torrent",
+    "webrtc",
+    "webrtc data",
+    "webtorrent"
+  ],
+  "license": "MIT",
+  "main": "index.js",
+  "repository": {
+    "user": "guerrerocarlos",
+    "repo": "cachep2p",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/guerrerocarlos/cachep2p/tarball/master",
+    "clone_url": "https://github.com/guerrerocarlos/cachep2p",
+    "https_url": "https://github.com/guerrerocarlos/cachep2p",
+    "travis_url": "https://travis-ci.org/guerrerocarlos/cachep2p",
+    "zip_url": "https://github.com/guerrerocarlos/cachep2p/archive/master.zip",
+    "api_url": "https://api.github.com/repos/guerrerocarlos/cachep2p"
+  },
+  "scripts": {
+    "build": "browserify -s CacheP2P -e ./ | uglifyjs -c warnings=false -m > cachep2p.min.js",
+    "build-debug": "browserify -s CacheP2P -e ./ > webtorrent.debug.js",
+    "size": "npm run build && cat cachep2p.min.js | gzip | wc -c",
+    "test": "standard && node ./bin/test.js",
+    "test-browser": "zuul -- test/*.js test/browser/*.js",
+    "test-browser-headless": "zuul --electron -- test/*.js test/browser/*.js",
+    "test-browser-local": "zuul --local -- test/*.js test/browser/*.js"
+  },
+  "gitHead": "73c22c1dea0045e570eb80c3be27bce17d02a80e",
+  "_npmVersion": "3.3.12",
+  "_nodeVersion": "5.5.0",
+  "dist": {
+    "shasum": "beaafcd55fae775baf7fb582c9268940a3107a4a",
+    "tarball": "http://registry.npmjs.org/cachep2p/-/cachep2p-0.1.5.tgz"
+  },
+  "versions": [
+    {
+      "number": "0.1.0",
+      "date": "2016-10-17T22:00:53.760Z"
+    },
+    {
+      "number": "0.1.1",
+      "date": "2016-10-17T22:12:31.124Z"
+    },
+    {
+      "number": "0.1.2",
+      "date": "2016-10-21T12:21:59.951Z"
+    },
+    {
+      "number": "0.1.3",
+      "date": "2016-10-21T12:24:43.851Z"
+    },
+    {
+      "number": "0.1.4",
+      "date": "2016-10-22T16:42:29.436Z"
+    },
+    {
+      "number": "0.1.5",
+      "date": "2016-10-22T17:57:56.493Z"
+    }
+  ],
+  "created": "2016-10-17T22:00:53.760Z",
+  "modified": "2016-10-22T17:57:56.493Z",
+  "lastPublisher": {
+    "name": "guerrerocarlos",
+    "email": "guerrerocarlos@gmail.com"
+  },
+  "owners": [
+    {
+      "name": "guerrerocarlos",
+      "email": "guerrerocarlos@gmail.com"
+    }
+  ],
+  "readme": "<h1 align=\"center\">\n  <br>\n  <br>\n  CacheP2P\n  <br>\n  <br>\n</h1>\n\n<br>\n\n**CacheP2P** is a highly distributed [cache](https://en.wikipedia.org/wiki/Cache_(computing)) platform based on [WebTorrent](https://webtorrent.io/) and runs only in the **browser**.\n\nIt is a javascript library that once included in a website, makes every new user a mirror of the specific URL he has opened and allows it to serve it to all the other users that also are accessing the same website, so the website's server doesn't have to. \n\nThis way users can share the content between themselves, reducing the number of requests for estatic content to the server.\n\nIf the website crashes or has problems (the script can be included in the server's error page), all the content that users were accessing in that moment can be retrieved from one another and as long as there are users accessing it no problem will be seen.\n\nFor more information, please read the [documentation](http://www.cachep2p.com/documentation.html) or [how it works](http://www.cachep2p.com/api.html) page.\n\n### License\n\nMIT. Copyright (c) [CacheP2P](https://www.CacheP2P.com)\n"
+}

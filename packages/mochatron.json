@@ -1,6 +1,6 @@
 {
   "name": "mochatron",
-  "version": "1.0.7",
+  "version": "2.0.0",
   "description": "mocha testing in electron",
   "main": "bin/mochatron.js",
   "bin": {
@@ -41,13 +41,13 @@
     "sprintf-js": "^1.0.3",
     "xtend": "^4.0.1"
   },
-  "gitHead": "a10597afcfb5e37423ace4ed67b7524cf2fdcbbe",
+  "gitHead": "b6b7cc916ac17f319d9778efe50614738a83ec43",
   "homepage": "https://github.com/tscanlin/mochatron#readme",
-  "_npmVersion": "3.4.0",
-  "_nodeVersion": "0.10.29",
+  "_npmVersion": "3.3.10",
+  "_nodeVersion": "5.3.0",
   "dist": {
-    "shasum": "e74505290dc2041851f0eaa4939ebff9422386e2",
-    "tarball": "http://registry.npmjs.org/mochatron/-/mochatron-1.0.7.tgz"
+    "shasum": "cba7ac90a325c318ac271b98e75c1ec3e2e9828b",
+    "tarball": "http://registry.npmjs.org/mochatron/-/mochatron-2.0.0.tgz"
   },
   "versions": [
     {
@@ -57,10 +57,14 @@
     {
       "number": "1.0.7",
       "date": "2016-01-12T22:58:37.761Z"
+    },
+    {
+      "number": "2.0.0",
+      "date": "2016-10-23T01:56:04.820Z"
     }
   ],
   "created": "2016-01-12T22:55:55.773Z",
-  "modified": "2016-01-12T22:58:37.761Z",
+  "modified": "2016-10-23T01:56:04.820Z",
   "lastPublisher": {
     "name": "tscanlin",
     "email": "me@timscanlin.net"
@@ -71,5 +75,5 @@
       "email": "me@timscanlin.net"
     }
   ],
-  "readme": "# mochatron\n\n## Introduction\n\nmochatron makes integration testing with [mocha](https://mochajs.org/) and [electron](http://electron.atom.io/) easy.\n\nFeatures:\n- Run tests in [electron](http://electron.atom.io/) (fast & modern!) rather than [phantomJS](http://phantomjs.org/) (old & buggy).\n- Ability to see test output in node AND the electron window console.\n- Option to silently fail on errors so that tests can be run in development with file watching and not stop on an error.\n- Option to show the electron window for easier debugging or hide it and run mocha tests headlessly.\n\n## Install\n\nInstall it with npm and make sure you've installed electron-prebuilt globally as well.\n\n```sh\nnpm install -g electron-prebuilt\nnpm install --save-dev mochatron\n```\n\n\n## Usage\n\nUse the script from the command line or node.\n\n> Note: by default the electron window isn't shown so that the test runs 'headless', but for debugging it can be helpful to see the window so in the config set 'window' to true or pass the '-w' argument.\n\n```sh\nnode .\\node_modules\\mochatron -w http://localhost/\n```\n\n```javascript\nvar mochatron = require('mochatron');\n\nmochatron({\n  url: 'http://localhost/',\n  silent: false,\n  window: false\n});\n```\n\nI haven't gotten around to making plugins for gulp or grunt yet (Contributions is this area would be welcome) but in the meantime here is an example of how the script can be used from a gulp task.\n\n```javascript\nvar gulp = require('gulp');\nvar mochatron = require('mochatron');\n\ngulp.task('test', function() {\n  mochatron({\n    url: 'http://localhost/',\n    silent: false,\n    window: false\n  });\n});\n```\n\nYou also need to make sure you are including the mocha scripts on the page. If you have already been using mocha for browser testing then this step might already be done for you, but if you haven't, an example of the HTML code required to include mocha might look like this.\n\n```html\n<div id=\"mocha\"></div>\n<link rel=\"stylesheet\" href=\"/node_modules/mocha/mocha.css\">\n<script src=\"/node_modules/mocha/mocha.js\"></script>\n<script src=\"/node_modules/chai/chai.js\"></script>\n\n<script src=\"/test/test.js\"></script>\n\n<script>\n  if (window.mochatron) {\n    mochatron.run();\n  } else {\n    mocha.run();\n  }\n</script>\n```\n\nNote the call to `mochatron` AFTER mocha / chai and your test.js file.\n\n## API\n\nHere's an example of how to call mochatron with all of its default options and comments about them.\n\n```javascript\nmochatron({\n  // Url to test.\n  url: 'http://localhost/',\n  // Silently swallow errors.\n  silent: false,\n  // Show window.\n  window: false,\n});\n```\n\nFor command line usage this should give you an idea of what arguments can be passed.\n\n```javascript\nvar program = require('commander');\n\n// Handle command line usage.\nprogram\n  .version('1.0.2')\n  .usage('[options] <url>')\n  .option('-w, --window', 'Show window', false)\n  .option('-s, --silent', 'Silently swallow errors', false)\n  .parse(process.argv);\n```\n\n```sh\nnode .\\node_modules\\mochatron -w -s http://localhost/\n```\n\n## Roadmap\n\n- Tests\n\n\n## Changelog\n\n### v1.0\n- Publicly launched\n\n\n## Contributing\n\nContributions and suggestions are welcome! Please feel free to open an issue if you run into a problem or have a feature request. I'll do my best to respond in a timely fashion.\n\nIf you want to open a pull request just fork the repo but please make sure all tests and lint pass first.\n\n\n## License\n\n[MIT]('http://opensource.org/licenses/MIT')\n"
+  "readme": "# mochatron\r\n\r\n## Introduction\r\n\r\nmochatron makes integration testing with [mocha](https://mochajs.org/) and [electron](http://electron.atom.io/) easy.\r\n\r\nFeatures:\r\n- Run tests in [electron](http://electron.atom.io/) (fast & modern!) rather than [phantomJS](http://phantomjs.org/).\r\n- Ability to see test output in node AND the electron window console.\r\n- Option to silently fail on errors so that tests can be run in development with file watching and not stop on an error.\r\n- Option to show the electron window for easier debugging or hide it and run mocha tests headlessly.\r\n\r\n## Install\r\n\r\nInstall it with npm and make sure you've installed electron-prebuilt globally as well.\r\n\r\n```sh\r\nnpm install -g electron-prebuilt\r\nnpm install --save-dev mochatron\r\n```\r\n\r\n\r\n## Usage\r\n\r\nUse the script from the command line or node.\r\n\r\n> Note: by default the electron window isn't shown so that the test runs 'headless', but for debugging it can be helpful to see the window so in the config set 'window' to true or pass the '-w' argument.\r\n\r\n```sh\r\nnode .\\node_modules\\mochatron -w http://localhost/\r\n```\r\n\r\n```javascript\r\nvar mochatron = require('mochatron');\r\n\r\nmochatron({\r\n  url: 'http://localhost/',\r\n  silent: false,\r\n  window: false\r\n});\r\n```\r\n\r\nI haven't gotten around to making plugins for gulp or grunt yet (Contributions is this area would be welcome) but in the meantime here is an example of how the script can be used from a gulp task.\r\n\r\n```javascript\r\nvar gulp = require('gulp');\r\nvar mochatron = require('mochatron');\r\n\r\ngulp.task('test', function() {\r\n  mochatron({\r\n    url: 'http://localhost/',\r\n    silent: false,\r\n    window: false\r\n  });\r\n});\r\n```\r\n\r\nYou also need to make sure you are including the mocha scripts on the page. If you have already been using mocha for browser testing then this step might already be done for you, but if you haven't, an example of the HTML code required to include mocha might look like this.\r\n\r\n```html\r\n<div id=\"mocha\"></div>\r\n<link rel=\"stylesheet\" href=\"/node_modules/mocha/mocha.css\">\r\n<script src=\"/node_modules/mocha/mocha.js\"></script>\r\n<script src=\"/node_modules/chai/chai.js\"></script>\r\n\r\n<script src=\"/test/test.js\"></script>\r\n\r\n<script>\r\n  if (window.mochatron) {\r\n    mochatron.run();\r\n  } else {\r\n    mocha.run();\r\n  }\r\n</script>\r\n```\r\n\r\nNote the call to `mochatron` AFTER mocha / chai and your test.js file.\r\n\r\n## API\r\n\r\nHere's an example of how to call mochatron with all of its default options and comments about them.\r\n\r\n```javascript\r\nmochatron({\r\n  // Url to test.\r\n  url: 'http://localhost/',\r\n  // Silently swallow errors.\r\n  silent: false,\r\n  // Show window.\r\n  window: false,\r\n});\r\n```\r\n\r\nFor command line usage this should give you an idea of what arguments can be passed.\r\n\r\n```javascript\r\nvar program = require('commander');\r\n\r\n// Handle command line usage.\r\nprogram\r\n  .version('1.0.2')\r\n  .usage('[options] <url>')\r\n  .option('-w, --window', 'Show window', false)\r\n  .option('-s, --silent', 'Silently swallow errors', false)\r\n  .parse(process.argv);\r\n```\r\n\r\n```sh\r\nnode .\\node_modules\\mochatron -w -s http://localhost/\r\n```\r\n\r\n## Roadmap\r\n\r\n- Tests\r\n\r\n\r\n## Changelog\r\n\r\n### v1.0\r\n- Publicly launched\r\n\r\n\r\n## Contributing\r\n\r\nContributions and suggestions are welcome! Please feel free to open an issue if you run into a problem or have a feature request. I'll do my best to respond in a timely fashion.\r\n\r\nIf you want to open a pull request just fork the repo but please make sure all tests and lint pass first.\r\n\r\n\r\n## License\r\n\r\n[MIT]('http://opensource.org/licenses/MIT')\r\n"
 }

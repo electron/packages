@@ -1,6 +1,6 @@
 {
   "name": "atom-keymap",
-  "version": "7.0.2",
+  "version": "7.1.3",
   "description": "Atom's DOM-aware keymap module",
   "main": "./lib/keymap-manager",
   "scripts": {
@@ -33,7 +33,7 @@
     "event-kit": "^1.0.0",
     "fs-plus": "^2.0.4",
     "grim": "^1.2.1",
-    "keyboard-layout": "^1.2.2",
+    "keyboard-layout": "2.0.2",
     "pathwatcher": "^6.2",
     "property-accessors": "^1",
     "season": "^5.4.1"
@@ -46,7 +46,7 @@
     "babel-register": "6.5.2",
     "chai": "3.5.0",
     "coffee-script": "1.7.0",
-    "coffeelint": "1.14.2",
+    "coffeelint": "1.16.0",
     "debounce": "1.0.0",
     "devtool": "2.2.0",
     "electron-rebuild": "1.2.1",
@@ -57,7 +57,6 @@
     "grunt": "0.4.1",
     "grunt-atomdoc": "1.0.0",
     "grunt-cli": "0.1.8",
-    "grunt-coffeelint": "0.0.6",
     "grunt-contrib-coffee": "0.9.0",
     "grunt-shell": "0.2.2",
     "lolex": "1.4.0",
@@ -67,24 +66,13 @@
     "space-pencil": "0.3.0",
     "temp": "0.8.3"
   },
-  "coffeelintConfig": {
-    "no_empty_param_list": {
-      "level": "error"
-    },
-    "max_line_length": {
-      "level": "ignore"
-    },
-    "indentation": {
-      "level": "ignore"
-    }
-  },
-  "gitHead": "71b527ae27c0623fc509090098f6898d17967dd3",
+  "gitHead": "6a9c0fc93d458f3915034e2a99fa971b82eb06b1",
   "homepage": "https://github.com/atom/atom-keymap#readme",
-  "_npmVersion": "3.10.5",
-  "_nodeVersion": "4.3.1",
+  "_npmVersion": "3.10.8",
+  "_nodeVersion": "6.9.1",
   "dist": {
-    "shasum": "6b27f08891c97673f787d9acb55b02afaf465d15",
-    "tarball": "http://registry.npmjs.org/atom-keymap/-/atom-keymap-7.0.2.tgz"
+    "shasum": "cbcb0934d072293cfe740bc9bcfe3cd6ec53df96",
+    "tarball": "http://registry.npmjs.org/atom-keymap/-/atom-keymap-7.1.3.tgz"
   },
   "stars": 1,
   "versions": [
@@ -471,10 +459,58 @@
     {
       "number": "7.0.2",
       "date": "2016-10-06T16:50:04.468Z"
+    },
+    {
+      "number": "7.0.3",
+      "date": "2016-10-12T17:45:30.350Z"
+    },
+    {
+      "number": "7.0.4-beta0",
+      "date": "2016-10-14T13:30:40.814Z"
+    },
+    {
+      "number": "7.0.4",
+      "date": "2016-10-14T20:28:44.644Z"
+    },
+    {
+      "number": "7.0.5",
+      "date": "2016-10-15T03:45:25.006Z"
+    },
+    {
+      "number": "7.0.6-beta0",
+      "date": "2016-10-17T18:57:52.283Z"
+    },
+    {
+      "number": "7.0.6",
+      "date": "2016-10-18T17:39:41.760Z"
+    },
+    {
+      "number": "7.0.7",
+      "date": "2016-10-24T19:54:42.963Z"
+    },
+    {
+      "number": "7.0.8",
+      "date": "2016-10-27T18:01:16.249Z"
+    },
+    {
+      "number": "7.1.0",
+      "date": "2016-10-28T16:03:15.776Z"
+    },
+    {
+      "number": "7.1.1",
+      "date": "2016-11-03T04:11:48.146Z"
+    },
+    {
+      "number": "7.1.2",
+      "date": "2016-11-10T21:06:57.142Z"
+    },
+    {
+      "number": "7.1.3",
+      "date": "2016-11-10T22:06:45.220Z"
     }
   ],
   "created": "2014-03-14T19:42:19.087Z",
-  "modified": "2016-10-06T16:50:04.468Z",
+  "modified": "2016-11-10T22:06:45.220Z",
   "lastPublisher": {
     "name": "nathansobo",
     "email": "nathan@github.com"
@@ -517,5 +553,5 @@
       "email": "zcbenz@gmail.com"
     }
   ],
-  "readme": "# atom-keymap [![Build Status](https://travis-ci.org/atom/atom-keymap.svg?branch=master)](https://travis-ci.org/atom/atom-keymap)\n\nAtom's DOM-aware keymap module\n\n```js\nvar KeymapManager, keymaps;\nKeymapManager = require('atom-keymap')\n\nkeymaps = new KeymapManager\nkeymaps.defaultTarget = document.body\n\n// Pass all the window's keydown events to the KeymapManager\ndocument.addEventListener('keydown', function(event) {\n  keymaps.handleKeyboardEvent(event)\n})\n\n// Add some keymaps\nkeymaps.loadKeymap('/path/to/keymap-file.json') // can also be a directory of json / cson files\n// OR\nkeymaps.add('/key/for/these/keymaps', {\n  \"body\": {\n    \"up\": \"core:move-up\",\n    \"down\": \"core:move-down\"\n  }\n})\n\n// When a keybinding is triggered, it will dispatch it on the node that was focused\nwindow.addEventListener('core:move-up', (event) => console.log('up', event))\nwindow.addEventListener('core:move-down', (event) => console.log('down', event))\n```\n\n## Development\n\nThe tests for this module *must* be run in Electron because they depend on browser APIs.\n\n* [`devtool`](https://github.com/Jam3/devtool) is bundled as a development dependency to run the tests.\n* Native modules need to be compiled against the version of Electron included with `devtool`. **Be sure to run `electron-rebuild` be sure recompile native dependencies before running tests.**\n* Tests can be run in batch mode with `npm test`\n* If you want to use the debugger, profiler, etc or just speed up your flow by being able to refresh the `devtool` window to re-run tests, use the `npm run test-drive` script. This will keep `devtool` open instead of exiting after the test run.\n"
+  "readme": "# Atom keymap\n[![Build Status](https://travis-ci.org/atom/atom-keymap.svg?branch=master)](https://travis-ci.org/atom/atom-keymap)\n[![Dependency Status](https://david-dm.org/atom/atom-keymap.svg)](https://david-dm.org/atom/atom-keymap)\n\nAtom's DOM-aware keymap module\n\n```js\nvar KeymapManager, keymaps;\nKeymapManager = require('atom-keymap')\n\nkeymaps = new KeymapManager\nkeymaps.defaultTarget = document.body\n\n// Pass all the window's keydown events to the KeymapManager\ndocument.addEventListener('keydown', function(event) {\n  keymaps.handleKeyboardEvent(event)\n})\n\n// Add some keymaps\nkeymaps.loadKeymap('/path/to/keymap-file.json') // can also be a directory of json / cson files\n// OR\nkeymaps.add('/key/for/these/keymaps', {\n  \"body\": {\n    \"up\": \"core:move-up\",\n    \"down\": \"core:move-down\"\n  }\n})\n\n// When a keybinding is triggered, it will dispatch it on the node that was focused\nwindow.addEventListener('core:move-up', (event) => console.log('up', event))\nwindow.addEventListener('core:move-down', (event) => console.log('down', event))\n```\n\n## Development\n\nThe tests for this module *must* be run in Electron because they depend on browser APIs.\n\n* [`devtool`](https://github.com/Jam3/devtool) is bundled as a development dependency to run the tests.\n* Native modules need to be compiled against the version of Electron included with `devtool`. **Be sure to run `electron-rebuild` be sure recompile native dependencies before running tests.**\n* Tests can be run in batch mode with `npm test`\n* If you want to use the debugger, profiler, etc or just speed up your flow by being able to refresh the `devtool` window to re-run tests, use the `npm run test-drive` script. This will keep `devtool` open instead of exiting after the test run.\n"
 }

@@ -1,0 +1,68 @@
+{
+  "name": "electron-clipboardmanager",
+  "version": "1.0.3",
+  "description": "ES2015 clipboard utility for electron apps",
+  "main": "src/index.js",
+  "author": {
+    "name": "Michael Klein",
+    "email": "michael@michaelinthe.cloud",
+    "url": "https://michaelinthe.cloud/"
+  },
+  "repository": {
+    "user": "Skaryon",
+    "repo": "electron-clipboardmanager",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/Skaryon/electron-clipboardmanager/tarball/master",
+    "clone_url": "https://github.com/Skaryon/electron-clipboardmanager",
+    "https_url": "https://github.com/Skaryon/electron-clipboardmanager",
+    "travis_url": "https://travis-ci.org/Skaryon/electron-clipboardmanager",
+    "zip_url": "https://github.com/Skaryon/electron-clipboardmanager/archive/master.zip",
+    "api_url": "https://api.github.com/repos/Skaryon/electron-clipboardmanager"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "object-hash": "^1.1.5"
+  },
+  "gitHead": "e89f85896b1f0fcafb02ca9afc2deee6ecb33e3c",
+  "homepage": "https://github.com/Skaryon/electron-clipboardmanager#readme",
+  "scripts": {},
+  "_npmVersion": "3.3.12",
+  "_nodeVersion": "5.1.0",
+  "dist": {
+    "shasum": "f2b8aa1f0bdc03c2cca934b30dfd489518249ae8",
+    "tarball": "http://registry.npmjs.org/electron-clipboardmanager/-/electron-clipboardmanager-1.0.3.tgz"
+  },
+  "versions": [
+    {
+      "number": "1.0.0",
+      "date": "2016-11-11T11:22:39.153Z"
+    },
+    {
+      "number": "1.0.1",
+      "date": "2016-11-11T11:26:08.749Z"
+    },
+    {
+      "number": "1.0.2",
+      "date": "2016-11-11T11:38:16.145Z"
+    },
+    {
+      "number": "1.0.3",
+      "date": "2016-11-11T11:42:14.631Z"
+    }
+  ],
+  "created": "2016-11-11T11:22:39.153Z",
+  "modified": "2016-11-11T11:42:14.631Z",
+  "lastPublisher": {
+    "name": "skaryon",
+    "email": "michael@michaelinthe.cloud"
+  },
+  "owners": [
+    {
+      "name": "skaryon",
+      "email": "michael@michaelinthe.cloud"
+    }
+  ],
+  "readme": "# electron-clipboardmanager\n\nThis is a simply utility for electron apps to monitor the clipboard and handle clipboard data.\n\n## example\n```javascript\nimport ClipboardManager from 'electron-clipboardmanager'\nconst clipboardManager = new ClipboardManager({\n  interval: 100 //will check the clipboard for changes every 100 milliseconds\n})\n\nclipboardManager\n  .subscribe((data) => console.log(data)) //whenever the clipboard changes, listener will be called\nclipboardManager\n  .start() //start monitoring the clipboard\n```\n\n## API\n\n### clipboardManager.subscribe(callback)\nSubscribe to changes to the clipboard. Callback will receive a **ClipBoardData** Object:\n```javascript\n//defaults:\n{\n  formats: [] //array of formats the data fits (['text/html','text/plain','text/rtf','image/png'])\n  \n  //data:\n  HTML: null,\n  text: null,\n  RTF: null,\n  image: null,\n\n  time: new Date().getTime()\n}\n```\n\n### clipboardManager.pause()\nStops notifying subscribers\n\n### clipboardManager.resume()\nResumes notifying subscribers\n\n### clipboardManager.write(data, [type])\nWrites provided **ClipBoardData** to the clipboard.\nIf a type is provided, it will write it as that type, else it will analyse the formats property of the data and chose an appropriate type.\n\n### clipboardManager.start()\nstart monitoring the clipboard\n"
+}

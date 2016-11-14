@@ -1,0 +1,58 @@
+{
+  "name": "open-stage-control-builder",
+  "description": "A libre desktop OSC bi-directionnal control surface application - builder package",
+  "dependencies": {
+    "electron": "1.4.3",
+    "browserify": "13.1.0",
+    "node-sass": "^3.7.0",
+    "nodemon": "^1.9.2",
+    "socket.io-client": "1.5.0",
+    "electron-installer-debian": "0.4.0",
+    "electron-packager": "8.1.0"
+  },
+  "scripts": {
+    "postinstall": "cp resources/images/logo.ico app/browser/favicon.ico && cd app && npm install && cd .. && npm run build-js && npm run build-css",
+    "start": "cd app && npm start --",
+    "build": "npm run build-js && npm run build-css && electron-packager ./app open-stage-control --platform=$PLATFORM --arch=$ARCH --out dist/ --icon=resources/images/logo --overwrite --ignore \"(app/node_modules/electron.*)\"",
+    "deb32": "electron-installer-debian --src dist/open-stage-control-linux-ia32/ --arch i386 --dest dist/open-stage-control-linux-ia32/ --icon resources/images/logo.png",
+    "deb64": "electron-installer-debian --src dist/open-stage-control-linux-x64/ --arch amd64 --dest dist/open-stage-control-linux-x64/ --icon resources/images/logo.png",
+    "debarm": "electron-installer-debian --src dist/open-stage-control-linux-armv7l/ --arch armv7l --dest dist/open-stage-control-linux-armv7l/ --icon resources/images/logo.png",
+    "watch-css": "nodemon --watch src/browser/scss -e scss -x \"npm run build-css\"",
+    "watch-js": "nodemon --watch src/browser/js -e js -x \"npm run build-js\"",
+    "build-css": "node-sass --include-path src/browser/scss src/browser/scss/style.scss app/browser/styles.css --output-style compressed",
+    "build-js": "browserify src/browser/js/browser.js -o app/browser/scripts.js",
+    "deploy-docs": "cd resources && mkdocs gh-deploy --clean && rm -rf site",
+    "test": "npm run build"
+  },
+  "version": "0.8.3-1",
+  "gitHead": "cb4cd90e776bd128c58a52e0ea2f914d0acec86a",
+  "_npmVersion": "3.10.3",
+  "_nodeVersion": "6.6.0",
+  "dist": {
+    "shasum": "69f242ae2df39b5d2a777b3b0bcb474d1a538661",
+    "tarball": "http://registry.npmjs.org/open-stage-control-builder/-/open-stage-control-builder-0.8.3-1.tgz"
+  },
+  "versions": [
+    {
+      "number": "0.8.3",
+      "date": "2016-10-17T14:37:44.362Z"
+    },
+    {
+      "number": "0.8.3-1",
+      "date": "2016-10-17T15:22:03.690Z"
+    }
+  ],
+  "created": "2016-10-17T14:37:44.362Z",
+  "modified": "2016-10-17T15:22:03.690Z",
+  "lastPublisher": {
+    "name": "jean-emmanuel",
+    "email": "jeannot@ammd.net"
+  },
+  "owners": [
+    {
+      "name": "jean-emmanuel",
+      "email": "jeannot@ammd.net"
+    }
+  ],
+  "readme": "# <img src=\"https://github.com/jean-emmanuel/open-stage-control/blob/master/resources/images/logo.png\" height=\"80px\"/> Open Stage Control\n\nOpen Stage Control is a libre desktop OSC bi-directionnal control surface application. It's built with HTML, JavaScript & CSS and run as a Node / [Electron](http://electron.atom.io/) web server that accepts any number of Chrome / Chromium / Electron clients.\n\n## Documentation\n\n[Read the documentation](http://jean-emmanuel.github.io/open-stage-control/)\n\n*The docs' sources are located in [resources/](https://github.com/jean-emmanuel/open-stage-control/blob/master/resources)*\n\n## Download\n\nPrebuilt binaries for Linux, Windows and OS X can be found on the [release](https://github.com/jean-emmanuel/open-stage-control/releases) page.\n\n## Demo\n\nYou can try the app here [http://openstagecontrol.herokuapp.com/](http://openstagecontrol.herokuapp.com/)\n\nPlease note that :\n\n- Chrome/Chromium **49** at least is required\n- Since there is only one instance running, all connected guests are synchronized (widgets using the same osc paths update each other's states) : you might experience some unwanted synchronization with other users unless you specify custom parameters for your widgets.\n- You might want to download the examples sessions files under *examples/* and load them in the app to get started.\n\n\n## Features\n\n- mouse & multi-touch sensitive widgets\n- modular & responsive layout\n- built-in live editor\n- bi-directionnal osc bindings\n- headless server mode with any number of clients using chromium\n- app state store / recall & import / export\n- themes !\n\n## Supported platforms\n\nSame as [Electron's supported platforms](https://github.com/electron/electron/blob/master/docs/tutorial/supported-platforms.md)\n\n\n## License & credits\n\nCopyleft © Jean-Emmanuel @ [AMMD](http://ammd.net). This program is released under the GNU/GPL3 license.\n\nIt relies on the use of several libraries :\n\n- [Node.js](https://nodejs.org/)\n- [Electron](http://electron.atom.io/)\n- [osc.js](https://github.com/colinbdclark/osc.js)\n- [socket.io](http://socket.io)\n- [browserify](http://browserify.org)\n- [express](http://expressjs.com)\n- [node-sass](https://github.com/sass/node-sass)\n- [jQuery](http://jquery.com/)\n- [jQuery-UI](http://jqueryui.com/) (draggable, resizable & sortable)\n- [Font Awesome](http://fontawesome.io/)\n"
+}

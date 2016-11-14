@@ -1,38 +1,18 @@
 {
   "name": "elemon",
-  "version": "3.0.3",
+  "version": "4.0.3",
   "description": "live-reload tool for developing electron application",
   "main": "elemon.js",
-  "bin": {
-    "elemon": "./elemon.js"
-  },
-  "scripts": {
-    "test": "mocha --reporter spec"
-  },
   "keywords": [
     "electron",
     "elemon",
-    "live-reload",
+    "electron live-reload",
     "electron-monitor"
   ],
   "author": {
     "name": "Mawni Maghsoudlou"
   },
   "license": "MIT",
-  "devDependencies": {
-    "chai": "^3.5.0",
-    "mocha": "^2.4.5"
-  },
-  "dependencies": {
-    "chokidar": "^1.5.0",
-    "is-running": "^2.0.0",
-    "node-static": "^0.7.7",
-    "socket.io": "^1.4.6",
-    "socket.io-client": "^1.4.6"
-  },
-  "engines": {
-    "node": ">=4.0.0"
-  },
   "repository": {
     "user": "mawni",
     "repo": "elemon",
@@ -47,13 +27,18 @@
     "api_url": "https://api.github.com/repos/mawni/elemon"
   },
   "homepage": "https://github.com/mawni/elemon#readme",
-  "gitHead": "b6091ea175fa0da844cd850a33e3e674adc957d8",
-  "_npmVersion": "3.9.0",
-  "_nodeVersion": "6.2.0",
-  "dist": {
-    "shasum": "81e4a96c4d8bea50bbd1a4441cfd8b37b635f1cd",
-    "tarball": "http://registry.npmjs.org/elemon/-/elemon-3.0.3.tgz"
+  "dependencies": {
+    "chokidar": "^1.6.1"
   },
+  "gitHead": "9bfd58f7db6705b75f242bd8d2828c2443abc3fb",
+  "scripts": {},
+  "_npmVersion": "3.10.9",
+  "_nodeVersion": "7.0.0",
+  "dist": {
+    "shasum": "bc7754fa2d1b4a8599f3508245c2f1ab6c7519e6",
+    "tarball": "http://registry.npmjs.org/elemon/-/elemon-4.0.3.tgz"
+  },
+  "stars": 1,
   "versions": [
     {
       "number": "1.0.0",
@@ -98,10 +83,26 @@
     {
       "number": "3.0.3",
       "date": "2016-05-28T00:30:58.093Z"
+    },
+    {
+      "number": "4.0.0",
+      "date": "2016-10-29T10:09:11.686Z"
+    },
+    {
+      "number": "4.0.1",
+      "date": "2016-10-29T10:24:25.440Z"
+    },
+    {
+      "number": "4.0.2",
+      "date": "2016-10-29T10:32:06.106Z"
+    },
+    {
+      "number": "4.0.3",
+      "date": "2016-10-29T10:36:44.620Z"
     }
   ],
   "created": "2016-05-18T14:49:26.323Z",
-  "modified": "2016-05-28T00:30:58.093Z",
+  "modified": "2016-10-29T10:36:44.620Z",
   "lastPublisher": {
     "name": "mawni",
     "email": "maawni@gmail.com"
@@ -112,5 +113,5 @@
       "email": "maawni@gmail.com"
     }
   ],
-  "readme": "#elemon\n\n[![travis build][travis-image]][travis-url] [![npm version][npm-image]][npm-url] \n\n`elemon` is a [node.js](https://nodejs.org) module that tries to cleanly monitor an [electron](https://github.com/electron/electron) application and automatically reloads the app upon any changes. It sets up an static server using [node-static](https://github.com/cloudhead/node-static) and [socket.io](https://github.com/socketio/socket.io) in order to run the electron main process and cleanly terminate it upon changes in the main script file and reloads the app. Notice it only reloads the entire app (main process) if the main script file is the one that you changed. For all files other than the main app file, it only reloads the corresponding browser window(s) that is associated with the changed file (just notice the example down below). So, it can easily be used as a practical live-reload tool for developing [electron](https://github.com/electron/electron) application.\n\n####Install\nPlease use `npm install --save-dev elemon`.\n\n####How to use\n\nIt is naturally presumed that [electron-prebuilt](https://github.com/electron-userland/electron-prebuilt) is installed either locally or globally in your system and `electron` binaries are available.\n\nSo, while you are in your project's directory, simply run:\n\n`./node_modules/.bin/elemon ./node_modules/.bin/electron .` \n\nThe argument `.` is any valid `electron` argument.\n\nOr if you want, you can use npm `scripts` in your `package.json`,\n\n```javascript\n\"scripts\": {\n  \"start\": \"./node_modules/.bin/elemon ./node_modules/.bin/electron .\"\n}\n```\nand then, just run `npm start`.\n\nIf [electron-prebuilt](https://github.com/electron-userland/electron-prebuilt) is installed globally, simply run:\n\n`./node_modules/.bin/elemon electron .`\n\n\n*Important Notice: For any reasons, if you want to quit your running `electron` application immediately, please don't close the app by just clicking on the close button. Instead, terminate (Ctrl-C) the running `elemon` process and your running application will be terminated accordingly and cleanly.*\n\nIf you want to use `elemon`, you just need to pass a few reasonable data to the local server. It needs the following data:\n\n**1. The main script (main app) file name** (exp: `app.js`)\n\n**2. The id of every browser window in your application**\n\n**3. The name (only filename is enough, no need the file's path) of all resources (js, css, and other files) that are associated with the browser window**\n\n####Example\n\nSuppose it is the app file structure,\n```\nyourproj\n  |__view\n  |     |__windows\n  |     |   |__main-win\n  |     |   |\t |__mainwin.html\n  |     |   |\n  |     |   |__second-win\n  |     |      |__secwin.html\n  |     |      |__secwin-controller.js\n  |     |\n  |     |__stylesheets\n  |         |__style.css\n  |\n  |__app.js\n```\n\nthen, in the main process file where usually app and browser windows are created,\n\n*app.js*\n```javascript\n'use strict';\n\nconst electron = require('electron');\nconst app = electron.app;\nconst BrowserWindow = electron.BrowserWindow;\nconst elemon_client = require('elemon/elemon-client');\n\nvar g_wins = []; // keep the reference to all browser windows\n\nfunction create_wins() {\n  main_win = new BrowserWindow({\n    width: 800,\n    height: 600\n  });\n  main_win.loadURL('file://' + __dirname + '/view/windows/main-win/mainwin.html');\n  \n  second_win = new BrowserWindow({\n    width: 500,\n    height: 300\n  });\n  second_win.loadURL('file://' + __dirname + '/view/windows/second-win/secwin.html');\n  \n  // ... and all other usual stuff\n  \n  // keep the reference to the all browser windows for live-reload\n  g_wins.push(main_win);\n  g_wins.push(second_win);\n}\n\napp.on('ready', function() {\n  create_wins();\n \n  // emit 'appdata' event with the required data for live-reload\n  elemon_client.socket.emit('appdata', {\n    main_script: 'app.js',\n    browserWindows: [{\n      id: main_win.id,\n      resources: ['mainwin.html', 'style.css']\n    }, {\n      id: second_win.id,\n      resources: ['secwin.html', 'secwin-controller.js', 'style.css']\n    }]\n  });\n});\n\n// listen to 'reload' event and reload the app\nelemon_client.socket.on('reload', function(data) {\n  elemon_client.reload(g_wins, data);\n});\n```\n\n###elemon-client api\n\n`elemon-client` is a [socket.io-client](https://github.com/socketio/socket.io-client) and is exposed as you install `elemon`. By default, it listens to the port `process.env.PORT || 19024`. It supports the following events:\n\n**client socket event**: 'appdata'\n\nemit the `appdata` event with the required data for live-reload to the server.\n\n*example*\n```javascript\nconst elemon_client = require('elemon/elemon-client');\nelemon_client.socket.emit('appdata', {\n  main_script: 'app.js',\n  browserWindows: [{\n    id: main_win.id,\n    resources: ['mainwin.html', 'style.css']\n  }, {\n    id: second_win.id,\n    resources: ['secwin.html', 'secwin-controller.js', 'style.css']\n  }]\n});\n```\n**client socket event**: 'reload'\n\non `reload` event, reload the app.\n\n*example*\n```javascript\nelemon_client.socket.on('reload', function(data) {\n  elemon_client.reload(g_wins, data);\n});\n```\n\nThat's it. Have fun writing your [electron](https://github.com/electron/electron) applications.\n\n[travis-image]: https://img.shields.io/travis/mawni/elemon/master.svg\n[travis-url]: https://travis-ci.org/mawni/elemon\n[npm-image]: https://img.shields.io/npm/v/elemon.svg?maxAge=2592000\n[npm-url]: https://npmjs.org/package/elemon\n[downloads-image]: https://img.shields.io/npm/dm/elemon.svg?maxAge=2592000\n[downloads-url]: https://npmjs.org/package/elemon\n"
+  "readme": "#elemon\n\n[![NPM](https://nodei.co/npm/elemon.png)](https://nodei.co/npm/elemon/)\n\n`elemon` is a tiny module that tries to provide a simple and yet efficient live-reload tool for developing [Electron](https://github.com/electron/electron) applications. You just need to pass the `app` and `BrowserWindows` and the name of the files that are associated with them as a parameter to the `elemon` function **after** your app is `ready`. Please check out the example below to see how you can easily use it to watch your app and cleanly reload it upon any changes. If the changed\nfile is the main app file, then it `relaunch` the app and `exit` the current instance. If the changed file is a file that is associated with a browser window, then that window will only be reloaded.\n\nIn fact, setting up a clean live-reload tool for developing an elenctron application is super simple by using the [Electron-api](https://github.com/electron/electron/tree/master/docs). The api already comes with whatever you need; just add a watcher (like [chokidar](https://github.com/paulmillr/chokidar) or whatever watcher you like) and you are all set.\n\n####Install\n\nPlease use `npm install --save-dev elemon`.\n\n####API\n\n**elemon(appOpts, windowsOpts)**\n\n`appOpts`: Object\n\nthe app option object has:\n\n * `app` ([app](https://github.com/electron/electron/blob/master/docs/api/app.md) object) _the main app object_\n * `res` (String) _the main app file name_\n\n`windowsOpts`: Array of objects\n\neach option object has:\n\n * `bw` ([BrowserWindow](https://github.com/electron/electron/blob/master/docs/api/browser-window.md) object) _a browser window object_\n * `res` (Array of Strings) _array of any file name that is somehow associated with this browser window_\n\n####Example\n\nSuppose it is ,a very simplified, app file structure:\n\n```\nexample_proj\n  |\n  |__view\n  |     |__reg.html\n  |     |__login.html\n  |     |__reg_handler.js\n  |     |__login_handler.js\n  |\n  |__stylesheets\n  |     |__style.css\n  |\n  |__app.js\n\n```\nthen, in the main process file where usually app and browser windows are created:\n\n*app.js*\n\n```javascript\n\nconst electron = require('electron');\nconst {app, BrowserWindow} = electron;\nconst elemon = require('elemon');\n\nconst reg_index = `file://${__dirname}/view/reg.html`;\nconst login_index = `file://${__dirname}/view/login.html`;\nvar reg_win = null;\nvar login_win = null;\n\nfunction create_wins() {\n\n  reg_win = new BrowserWindow({\n    width: 600,\n    height: 400,\n    ...\n  });\n\n  login_win = new BrowserWindow({\n    width: 600,\n    height: 400,\n    ...\n  });\n}\n\n// ... and other usual stuff ... //\n\napp.on('ready', () => {\n  create_wins();\n\n  // this is all that you have to add to your main app script\n  var app_opts = {app: app, res: 'app.js'};\n  var win_opts = [{bw: reg_win, res: ['reg.html', 'reg_handler.js', 'style.css']}\n                , {bw: login_win, res: ['login.html', 'login_handler.js', 'style.css']}];\n  elemon(app_opts, win_opts);\n});\n\n```\n\nThat's it. Have fun writing your [Electron](https://github.com/electron/electron) applications.\n\n"
 }

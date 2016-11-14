@@ -1,0 +1,117 @@
+{
+  "name": "derby-entities-lib",
+  "description": "Base library for derby-entity CRUD component and derby-entities-visualizations",
+  "version": "1.2.4",
+  "main": "api.ls",
+  "author": {
+    "name": "Michael Brade",
+    "email": "brade@kde.org"
+  },
+  "keywords": [
+    "derby",
+    "component",
+    "entity",
+    "crud"
+  ],
+  "repository": {
+    "user": "michael-brade",
+    "repo": "derby-entities-lib",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/michael-brade/derby-entities-lib/tarball/master",
+    "clone_url": "https://github.com/michael-brade/derby-entities-lib",
+    "https_url": "https://github.com/michael-brade/derby-entities-lib",
+    "travis_url": "https://travis-ci.org/michael-brade/derby-entities-lib",
+    "zip_url": "https://github.com/michael-brade/derby-entities-lib/archive/master.zip",
+    "api_url": "https://api.github.com/repos/michael-brade/derby-entities-lib"
+  },
+  "dependencies": {
+    "lodash": "4.x",
+    "derby-select2": "0.2.x"
+  },
+  "devDependencies": {
+    "livescript": "1.5.x",
+    "uglify-js": "2.7.x",
+    "html-minifier": "3.x",
+    "browserify": "13.x",
+    "browserify-livescript": "0.2.x",
+    "derby": "github:michael-brade/derby",
+    "mocha": "3.x",
+    "mocha-generators": "1.x",
+    "nightmare": "2.x",
+    "chai": "3.x",
+    "chai-as-promised": "5.x"
+  },
+  "scripts": {
+    "prebuild": "npm run clean;touch .create_stash && git stash save --include-untracked \"npm build stash\";npm test || { npm run postbuild; exit 1; };",
+    "build": "set -e;export DEST=dist;export SOURCES='*.ls';export VIEWS='*.html';export ASSETS='.*.css|./README.md|./package.json';export IGNORE=\"./$DEST|./test|./node_modules\";echo \"\u001b[01;32mCompiling and minifying...\u001b[00m\";find -regextype posix-egrep -regex $IGNORE -prune -o -name \"$SOURCES\" -print0| xargs -n1 -P8 -0 bash -c 'set -e; set -o pipefail;echo $0...;mkdir -p \"$DEST/`dirname $0`\";lsc -cp \"$0\" | uglifyjs - -cm -o \"$DEST/${0%.*}.js\" || exit 255;';echo \"\u001b[01;32mMinifying views...\u001b[00m\";find -regextype posix-egrep -regex $IGNORE -prune -o -name \"$VIEWS\" -print0| xargs -n1 -P8 -0 sh -c 'echo \"$0 -> $DEST/$0\";mkdir -p \"$DEST/`dirname $0`\";html-minifier --config-file .html-minifierrc -o \"$DEST/$0\" \"$0\" || exit 255'| column -t -c 3;echo \"\u001b[01;32mCopying assets...\u001b[00m\";find -regextype posix-egrep -regex $IGNORE -prune -o -regex $ASSETS -print0| xargs -n1 -0 sh -c 'echo \"$0 -> $DEST/$0\";mkdir -p \"$DEST/`dirname \"$0\"`\";cp -a \"$0\" \"$DEST/$0\" || exit 255'| column -t -c 3;echo \"\u001b[01;32mDone!\u001b[00m\";",
+    "postbuild": "git stash pop --index && rm .create_stash;",
+    "clean": "rm -rf dist;",
+    "test": "mocha test/_*.ls test/api.ls;",
+    "disttest": "cd dist; npm run test;",
+    "release": "npm run build && cd dist && npm publish;"
+  },
+  "engines": {
+    "node": "4.x || 5.x"
+  },
+  "license": "MIT",
+  "homepage": "https://github.com/michael-brade/derby-entities-lib#readme",
+  "_npmVersion": "3.10.3",
+  "_nodeVersion": "6.7.0",
+  "dist": {
+    "shasum": "239633ff4113c75c700fefcf40b57d47bfdbd795",
+    "tarball": "http://registry.npmjs.org/derby-entities-lib/-/derby-entities-lib-1.2.4.tgz"
+  },
+  "versions": [
+    {
+      "number": "1.0.0",
+      "date": "2015-10-05T06:05:26.093Z"
+    },
+    {
+      "number": "1.1.0",
+      "date": "2015-10-09T21:59:07.135Z"
+    },
+    {
+      "number": "1.1.1",
+      "date": "2015-10-15T04:54:55.558Z"
+    },
+    {
+      "number": "1.1.2",
+      "date": "2015-10-15T07:48:01.561Z"
+    },
+    {
+      "number": "1.1.3",
+      "date": "2015-10-15T07:58:06.130Z"
+    },
+    {
+      "number": "1.2.0",
+      "date": "2016-10-09T23:10:14.718Z"
+    },
+    {
+      "number": "1.2.2",
+      "date": "2016-10-12T20:47:40.746Z"
+    },
+    {
+      "number": "1.2.3",
+      "date": "2016-10-16T09:48:15.589Z"
+    },
+    {
+      "number": "1.2.4",
+      "date": "2016-10-16T16:35:15.463Z"
+    }
+  ],
+  "created": "2015-10-05T06:05:26.093Z",
+  "modified": "2016-10-16T16:35:15.463Z",
+  "lastPublisher": {
+    "name": "michael-brade",
+    "email": "brade@kde.org"
+  },
+  "owners": [
+    {
+      "name": "michael-brade",
+      "email": "brade@kde.org"
+    }
+  ],
+  "readme": "# Derby Entities Library\n\nThis library reads the entity schema definition and provides the API to access entities and their items.\nIt is the base library for [derby-entity](https://github.com/michael-brade/derby-entity).\n\n\n## Installation\n\nAs usual, the library is installed via\n\n```\nnpm install derby-entities-lib\n```\n\nHowever, I don't like to contribute to huge `node_modules` directories, so the npm package is compiled and minified, and\nneither carries the original sources, nor the tests. If you want a readable and debuggable version, install it directly\nfrom GitHub using\n\n```\nnpm install michael-brade/derby-entities-lib\n```\n\nor clone the repository.\n\n```\nnpm install\nnpm test\n```\n\nwill then run the tests.\n\n\n## Usage\n\n```\nEntitiesApi = require('derby-entities-lib/api');\n\n// in the app init() function\nEntitiesApi.init(model, entities);  // see below for what an entities definition is\n\n// then get the API instance anywhere in the app:\nvar instance = EntitiesApi.instance(model);\n```\n\n## Terminology\n\n* entity: in case of Derby: a MongoDB collection\n* item: the actual instances of an entity, a MongoDB document, has at least an id attribute\n* attribute: an attribute of an entity\n\nAn analogy would be from the OO world: an entity is a class of which an item is an object.\n\n\n## Schema Definition\n\nDerby uses MongoDB in the background and that is currently the only option available. The structure of how\nthe data is store in the DB can be chosen quite freely with `derby-entity`. Basically, the components under\n`types/` define how to read and write an attribute of an item, i.e., a document in a collection. Even though\nMongoDB allows for arbitrary strutures, each item of one entity has to have the same structure. That means\nall MongoDB documents have the same structure under a certain collection.\n\n\n\n### Entities\n\nAn entity definition has the following structure:\n\n```ls\nentities =\n    * id: \"people\"\n\n      display:\n          attribute: \"name\"\n          decorate: [\"photo\", \"employer\"]\n\n      attributes:\n        * id:   \"name\"\n        * id:   \"email\"  \n\n        * id:   \"photo\"\n          type: \"image\"\n\n        * id:   \"employer\"\n          type: \"entity\"\n          multi: false\n          reference: true\n```\n\n### Display\n\nThis property defines how to display an item of that entity if displayed as an attribute\nof another item or in a select2 dropdown. It is the summary of that item, so to speak.\n\n##### `attribute`, type: `string`, default: `name`\n\nThis sets the main display attribute of that item.\n\n##### `decorate`, type: `array of strings`, default: none\n\n`decorate` adds further information, like an image, a color, or just some additional text.\nThis works recursively, so the display attribute is rendered, that output is then input to\nthe attribute renderer for the `photo` attribute (to stay with the example above), which\nthen is passed to the `employer` renderer. (Actually, `entity` doesn't support decorations\nyet, but whatever, you get the idea.)\n\n\n### Attributes\n\nCurrently available attribute types:\n\nType      | Description\n----------|--------------------------------------\ntext      | default type; a simple string, edited using `<input type=\"text\">`\ntextarea  | also a simple string, but probably longer, thus edited with an automatically expanding textarea\nnumber    | an integer, edited using `<input type=\"number\">`\ncolor     | a color, edited using `<input type=\"color\">`\nimage     | an image, which will be converted to base64 and stored like a string\nentity    | a nested structure, copy/reference the item of another entity type\n\nPlanned for the future are:\n\nType     | Description\n---------|--------------------------------------\nboolean  | enter a true/false value using a checkbox\npassword | enter and encrypt a password securely\nobject   | to allow for arbitrary data structures to be created and edited, essentially creating recursive forms\nmarkdown | a markdown text field, edited using CodeMirror and a visual editor\nsvg      | instead of an image, use svg\nimage-upload | maybe; this would upload the image to the server and create a link to it so that it doesn't have to be stored in the MongoDB\nfile-upload | same, see above\n\n\nAll attributes must define at least one property: `id`. The following properties are available for all\nattribute types:\n\n\n##### `id`, type: `string`, default: none, mandatory\n\nThe id of the attribute to be defined. This will be the key used in the json structure for the value this attribute\nholds.\n\n##### `type`, type: `string`, default: `text`\n\nThe type of the attribute, as available under `types/`. See the [next](#attribute-types) section for details.\n\n\n##### `i18n`, type: `boolean`, default: `false`\n\nIf `i18n` is `false`, the value for the key is stored directly, like\n\n```\n{\n    <id>: value\n}\n```\n\nIf `i18n` is `true`, then the value for the key will be an object with each supported locale as keys:\n\n```\n{\n    <id>: {\n        en: <value-in-en>\n        de: <value-in-de>\n        fr: <value-in-fr>\n        ...\n    }\n}\n```\n\n\n\n### Attribute Types\n\nEach attribute type allows for certain properties to be set.\n\n#### Color, number, text, textarea\n\nThese types don't take any special properties. Except for number, they all support decorations.\n\n#### Image\n\nA base64 image storage in the model. Supports decorations.\n\n##### `max-size`, type: `number`, unit: `kB`, default: unlimited\n\n(not implemented yet)\n\nSince this is a base64 representation of the image, it should be possible to restrict the maximum size. The\ngiven number is interpreted as kilobytes.\n\n\n#### Entity\n\n##### `entity`, type: `string`, default: none, mandatory\n\nThe entity type of which this attribute can select its item(s) from.\n\n##### `reference`, type: `boolean`, default: `false`\n\nShould the whole item be copied into this item's attribute (`reference==false`), or should this attribute just be a\nreference to the other item (`reference==true`). Copying the item makes only sense if you want to keep the information just as it was\nwhen this item was edited; then it is irrelevant if the copied item is changed or deleted later on.\n\nIf it is a reference on the other hand then all changes will be visible in this item and the referenced item may not\nbe deleted as long as this item exists in the database.\n\n\n##### `multi`, type: `boolean`, default: `false`\n\nIf this attribute holds just one value, set `multi` to `false`, if it holds an array of items, set\n`multi` to `true`.\n\n##### `uniq`, type: `boolean`, default: `true`\n\nIn case of `multi==true`, this determines if the same item can appear more than once (`uniq==false`), or\nif each item has to be unique.\n\n\n### Validation\n\nI haven't yet spent much time thinking about validation. Just a very basic `uniqValidator` is implemented.\nMaybe I will add a `validation` property to an attribute...\n\n\n## Development\n\n### Adding new Attribute Type Definitions\n\nRight now, each attribute type consists of a controller (written in JavaScript/LiveScript/ES6) and a Derby view.\nIt is, in effect, a Derby component.\n\n\n#### Controller\n\nEach type class has to provide the following methods:\n\n- `attribute: (item, attr, locale) ->`\n\n    This returns the `item`'s attribute `attr` as plain text in the given `locale`.\n\n- `renderAttribute: (item, attr, locale, parent) ->`\n\n    This returns the `item`'s attribute `attr` as html in the given `locale`.\n\nIf the type extends the class `Type`, then `renderAttributeData`, and optionally `attributeData`, have to be implemented.\nInstead of the whole `item` as first argument, only its attribute is provided as `data`. This is just so that some common\nboilerplate can be avoided.\n\n\n#### View\n\nThe component view takes a parameter `mode`, which can be either `text`, `html`, or `edit`, and that determines\nif the view should output plain text or html, or if the editor for that attribute should be rendered.\n\nConsequently, each component should define three subviews: `<-text:>`, `<-html:>`, and `<-edit:>`. There is a leading\ndash to make sure that views don't get confused with components, like `entity:text` vs `text`.\n\nA type finally has to be registered in `EntitiesApi` (`api.ls`) by adding it to `types.ls`.\n\n\n\n#### Testing\n\nTesting is done with `mocha`. There are two types of tests that are used in this project:\n\n* API tests running directly in Node; the standard, they are executed by the `mocha` command\n\n* Derby tests requiring the DOM; they are run in a browser (electron).\n  Written as `mocha` tests, run in electron, which is started by `nightmare`. There is not really a server needed,\n  `browserify` bundles `DerbyStandalone` in `before()` and the `test.html` file includes Derby as well as the\n  components to test, which is then read locally using `file://` by electron (through `nightmare`).\n\n\n**Note to self: this is a list all possible scenarios**\n\n* mocha tests written in standard js files\n\n    - execute in NodeJS: `mocha`\n    - execute in electron:\n        * without DOM: `electron-mocha`\n        * with DOM: `electron-mocha --renderer`, `iron-node _mocha`\n\n\n* DOM mocha tests loaded into a html file (using mocha.js)\n    - execute in phantomjs (with DOM): `mocha-phantomjs index.html`\n    - execute in electron: no need to, use the above `electron-mocha` instead\n    - execute manually by using any browser and opening the `.html` file\n\n\n* DOM tests on a webpage without mocha interface:\n    - in electron: `nightmare` (could still be executed using `mocha`)\n    - in phantomjs or slimerjs: `casperjs`\n    - in any browser: `webdriverio` (requires selenium server)\n\n\n## License\n\nMIT\n\nCopyright (c) 2015-2016 Michael Brade\n"
+}
