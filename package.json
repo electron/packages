@@ -2,10 +2,11 @@
   "name": "electron-npm-packages",
   "version": "2.0.1",
   "description": "A collection of all npm packages that mention `electron` in their package.json",
-  "main": "index.js",
+  "main": "index.json",
   "scripts": {
     "build": "mkdir -p packages && touch packages/___.json && rm packages/* && node bin/build.js && npm run reports",
     "build:downloads": "node bin/downloads.js",
+    "build:compile": "node bin/compile.js > index.json",
     "reports": "npm-run-all reports:*",
     "reports:keywords": "node reports/keywords.js > reports/keywords.md",
     "reports:packages": "node reports/packages.js > reports/packages.md",
@@ -29,24 +30,21 @@
   },
   "homepage": "https://github.com/zeke/electron-npm-packages#readme",
   "devDependencies": {
-    "dependent-packages": "^1.0.0",
+    "clean-deep": "^2.0.1",
+    "dependent-packages": "^2.0.0",
     "got": "^6.3.0",
     "limiter": "^1.1.0",
     "lodash.find": "^4.4.0",
     "lodash.sortby": "^4.5.0",
+    "nice-package": "^1.0.5",
     "npm-run-all": "^3.1.1",
+    "object-values": "^1.0.0",
+    "package-stream": "^1.0.0",
     "path-exists": "^3.0.0",
+    "request": "^2.74.0",
+    "require-dir": "^0.3.0",
     "standard": "^8.5.0",
     "tap-spec": "^4.1.1",
     "tape": "^4.6.2"
-  },
-  "dependencies": {
-    "clean-deep": "^2.0.1",
-    "limiter": "^1.1.0",
-    "nice-package": "^1.0.5",
-    "object-values": "^1.0.0",
-    "package-stream": "^1.0.0",
-    "request": "^2.74.0",
-    "require-dir": "^0.3.0"
   }
 }
