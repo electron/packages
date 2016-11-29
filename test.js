@@ -7,5 +7,8 @@ test('packages', function (t) {
 
   const electronIsDev = packages.find(p => p.name === 'electron-is-dev')
   t.ok(electronIsDev.dependents.length > 3, 'packages have arrays of dependents')
+
+  const electronPackager = packages.find(p => p.name === 'electron-packager')
+  t.ok(electronPackager.devDependents.length > 100, 'packages have arrays of devDependents')
   t.end()
 })
