@@ -2,11 +2,6 @@
 
 A collection of all npm packages that mention `electron` in their `package.json`
 
-## Reports
-
-- [All Packages](reports/packages.md)
-- [Packages by Keyword](reports/keywords.md)
-
 ## Usage
 
 To use this as a node module:
