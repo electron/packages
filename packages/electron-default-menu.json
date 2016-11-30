@@ -63,6 +63,5 @@
       "name": "nonrectangular",
       "email": "carter.thaxton@gmail.com"
     }
-  ],
-  "readme": "# electron-default-menu\n\nA simple module that returns a default Electron menu template, similar to the one you'll get if you don't use `Menu.setApplicationMenu()` at all.  You can modify the returned template before creating the application menu.\n\nBased on the sample code supplied in the [Electron menu documentation](https://github.com/atom/electron/blob/master/docs/api/menu.md)\n\nLike the sample code, it checks the environment, and returns appropriate additional menus for Mac OS X, and sets the `role` for each menu accordingly.\n\nMust be used from the Electron environment.\n\nExample usage:\n\n```javascript\nimport electron from 'electron';\nconst defaultMenu = require('electron-default-menu');\nconst { Menu, app, shell } = electron;\nconst dialog = require('dialog');\n\napp.on('ready', () => {\n\n  // Get template for default menu\n  const menu = defaultMenu(app, shell);\n\n  // Add custom menu\n  menu.splice(4, 0, {\n    label: 'Custom',\n    submenu: [\n      {\n        label: 'Do something',\n        click: (item, focusedWindow) => {\n          dialog.showMessageBox({message: 'Do something', buttons: ['OK'] })\n        }\n      }\n    ]\n  })\n\n  // Set top-level application menu, using modified template\n  Menu.setApplicationMenu(Menu.buildFromTemplate(menu));\n})\n\n```\n"
+  ]
 }

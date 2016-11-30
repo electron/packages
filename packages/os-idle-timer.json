@@ -93,6 +93,5 @@
       "name": "goldworm",
       "email": "goldworm@nomadconnection.com"
     }
-  ],
-  "readme": "# os-idle-timer\nDetect user's system inactivity.  \nWindows and Mac only\n\n# Requisites\n* windows: msvs\n* mac: xcode\n\n# Installation\n```\nnpm install os-idle-timer\n```\n\n# Example\n``` js\nconst idleTimer = require('os-idle-timer');\n\n/**\n * Once an idleTimer callback is called,\n * it is automatically cleared from idleTimer.\n */\nfunction callback(idleTime_ms) {\n    console.log('idleTimer is called. ' + idleTime_ms);\n}\n\n// Set a new idle timer in milliseconds.\nvar handle = idleTimer.setIdleTimer(callback, 5000);\n\n// Remove the idle timer indicated by handle.\nidleTimer.clearIdleTimer(handle);\n\n// Remove all idleTimers.\nidleTimer.clearIdleTimers();\n\n// Get the current idle time in milliseconds.\nvar idleTime_ms = idleTimer.getIdleTime_ms();\nconsole.log(idleTime_ms);\n\nsetInterval(() => {\n    console.log(idleTimer.getIdleTime_ms());\n}, 2000);\n\nidleTimer.setIdleTimer(callback, 5000);\n```\n"
+  ]
 }

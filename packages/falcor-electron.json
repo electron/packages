@@ -98,6 +98,5 @@
       "name": "lukewestby",
       "email": "lwestby@alumni.nd.edu"
     }
-  ],
-  "readme": "# falcor-electron\n[![Build Status](https://travis-ci.org/lukewestby/falcor-electron.svg)](https://travis-ci.org/lukewestby/falcor-electron)\n\n[Falcor](https://github.com/Netflix/falcor) integration for\n[electron](https://github.com/atom/electron) using the `ipc` module.\n\n## Usage\n\nInstall from npm.\n\n```\nnpm install --save falcor-electron\n```\n\nInstall your `Router` as a data source in the main process.\n\n```javascript\nimport ipc from 'ipc';\nimport Router from 'falcor-router';\nimport { installIpcHandler } from 'falcor-electron';\n\ninstallIpcHandler(ipc, () => {\n  return new Router([\n    // ... routes\n  ]);\n});\n```\n\nConfigure your `Model` with an `IpcDataSource` in the renderer process.\n\n```javascript\nimport ipc from 'ipc';\nimport { Model } from 'falcor';\nimport { createIpcDataSource } from 'falcor-electron';\n\nconst model = new Model({\n  source: createIpcDataSource(ipc)\n});\n```\n\n## Contributing\n\nFeature requests and bugs/bug fixes are happily accepted and can be submitted\neither as issues or pull requests.\n\n- Source is compiled with `babel`\n  - Presets:\n    - `es2015`\n    - `stage-1`\n- Source is linted with `eslint`\n- Tests are run with `tape`\n\nFor code contributions, please fork `develop` and submit a PR.\n"
+  ]
 }

@@ -109,6 +109,5 @@
       "name": "mvila",
       "email": "mvila@3base.com"
     }
-  ],
-  "readme": "# JSON Web Storage [![Build Status](https://travis-ci.org/mvila/json-web-storage.svg?branch=master)](https://travis-ci.org/mvila/json-web-storage)\n\nSimple localStorage/sessionStorage wrapper providing the exact same API with automatic JSON serialization.\n\n## Installation\n\nWith npm (for Browserify/Webpack):\n\n```\nnpm install --save json-web-storage\n```\n\n## Usage\n\nThe API is identical to the standard [Web Storage API](https://developer.mozilla.org/en-US/docs/Web/API/Storage). The only difference is that the items we put/get are automatically serialized/unserialized with JSON.stringify() and JSON.parse().\n\n## Example\n\n```javascript\nimport { jsonLocalStorage } from 'json-web-storage';\n\njsonLocalStorage.setItem('num', 123.45);\nlet num = jsonLocalStorage.getItem('num');\nconsole.log(typeof num) // => number\nconsole.log(num) // => 123.45\n\njsonLocalStorage.setItem('obj', { name: 'John' });\nlet obj = jsonLocalStorage.getItem('obj');\nconsole.log(typeof obj) // => object\nconsole.log(obj.name) // => John\n```\n\n## License\n\nMIT\n"
+  ]
 }

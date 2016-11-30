@@ -62,6 +62,5 @@
       "name": "rokt33r",
       "email": "fluke8259@gmail.com"
     }
-  ],
-  "readme": "# Electron Stylus\n\nA dead simple Stylus loader for Electron app\n\n> This module is on working... take care if you want to use in *Production*.\n\n## How to\n\nInstall it with NPM.\n``` sh\nnpm install -S electron-stylus\n```\n\nUse it in your HTML file.\n\n``` html\n<script>\nrequire('electron-stylus')(__dirname + '/path/to/stylus.styl')\n</script>\n```\n\nIt will return a **Promise** with *css string*.\n\n``` js\nrequire('electron-stylus')(__dirname + '/path/to/stylus.styl')\n  .then(function (css) {\n    console.log(css)\n    console.log('successfully loaded')\n  })\n```\n\nExample code also included. I hope you to enjoy.\n\n## Go scratch\n\nInstall `stylus`\n``` sh\nnpm install -S stylus\n```\n\nWrite this code in your HTML file.\n``` html\n<script>\nvar stylus = require('stylus')\nvar str = require('fs').readFileSync(__dirname + '/../styles/main/index.styl', 'utf8')\n\nstylus(str)\n  .set('filename', __dirname + '/../styles/main/index.styl', 'utf8')\n  .render(function(err, css){\n    if (err) throw err\n      var style = document.createElement('style')\n      style.innerText = css\n      style.type = 'text/css'\n      document.head.appendChild(style)\n  })\n</script>\n```\n\n## License\n\nISC License (ISC)\n\nCopyright (c) 2015, Dick Choi\n"
+  ]
 }

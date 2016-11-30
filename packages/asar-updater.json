@@ -51,6 +51,7 @@
     "shasum": "ad2406e3207fd87535670759ce850d9501cba4a8",
     "tarball": "http://registry.npmjs.org/asar-updater/-/asar-updater-0.3.1.tgz"
   },
+  "stars": 1,
   "versions": [
     {
       "number": "0.0.1",
@@ -102,7 +103,7 @@
     }
   ],
   "created": "2016-07-12T03:53:13.638Z",
-  "modified": "2016-09-07T10:09:38.564Z",
+  "modified": "2016-11-15T14:03:40.314Z",
   "lastPublisher": {
     "name": "icestone",
     "email": "ice@wedn.net"
@@ -112,6 +113,5 @@
       "name": "icestone",
       "email": "ice@wedn.net"
     }
-  ],
-  "readme": "# asar-updater\n\n[![Build Status](https://travis-ci.org/zce/asar-updater.svg?branch=master)](https://travis-ci.org/zce/asar-updater)\n[![Dependency Status](https://david-dm.org/zce/asar-updater.svg)](https://david-dm.org/zce/asar-updater)\n[![devDependency Status](https://david-dm.org/zce/asar-updater/dev-status.svg)](https://david-dm.org/zce/asar-updater#info=devDependencies)\n[![js-standard-style](https://img.shields.io/badge/code%20style-standard-brightgreen.svg)](http://standardjs.com/)\n\nAn auto updater for electron asar\n\n[![NPM](https://nodei.co/npm/asar-updater.png)](https://nodei.co/npm/asar-updater/)\n[![js-standard-style](https://cdn.rawgit.com/feross/standard/master/badge.svg)](https://github.com/feross/standard)\n\n\n\n## Usage\n\n```javascript\nconst path = require('path')\nconst { app } = require('electron')\nconst updater = require('../')\n\napp.on('ready', () => {\n  updater.init()\n  updater.on('available', (task) => {\n    console.log('available', task)\n  })\n  updater.on('not-available', (task) => {\n    console.log('not-available', task)\n  })\n  updater.on('progress', (task, p) => {\n    console.log(task.name, p)\n  })\n  updater.on('downloaded', (task) => {\n    console.log('downloaded', task)\n  })\n  updater.on('completed', (manifest, tasks) => {\n    console.log('completed', manifest, tasks)\n    app.quit()\n  })\n  updater.on('error', (err) => {\n    console.error(err)\n    app.quit()\n  })\n  updater.setFeedURL(path.join(__dirname, 'core.asar'), 'http://git.oschina.net/wedn/ebp/raw/vue/latest/core.json')\n  updater.setFeedURL(path.join(__dirname, 'data.asar'), 'http://git.oschina.net/wedn/ebp/raw/vue/latest/data.json')\n  updater.checkForUpdates()\n})\n\n```\n\n[Example](https://github.com/zce/electron-boilerplate)\n"
+  ]
 }

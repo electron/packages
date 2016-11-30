@@ -86,6 +86,5 @@
       "name": "bigtimebuddy",
       "email": "matt@mattkarl.com"
     }
-  ],
-  "readme": "# Pixi Tests Tool\n\nRenderer for generating integration tests for Pixi.js.\n\n[![Build Status](https://travis-ci.org/pixijs/pixi-tests-tool.svg?branch=master)](https://travis-ci.org/pixijs/pixi-tests-tool)\n\n## Setup\n\nTo install dependencies, use [NPM](https://www.npmjs.com/):\n\n```bash\nnpm install\n```\n\nTo create solutions for tests, launch the application by navigating to the module in Terminal or on a commandline. Then run:\n\n```bash\nnpm start\n```\n\n### Creating Tests\n\nThe context of running the tests contains a handful of useful properties:\n\n* **this.stage** (PIXI.Container) The container rendered with both Canvas and WebGL renderers.\n* **this.webgl** (PIXI.WebGLRenderer) Instance of WebGL renderer.\n* **this.canvas** (PIXI.CanvasRenderer) Instance of Canvas renderer.\n* **this.hasWebGL** (Boolean) If the current context supports WebGL.\n\n#### Synchronous Example\n\n```js\nmodule.exports = function() {\n    this.stage.addChild(new PIXI.Graphics()\n        .beginFill(0xFFCC00, 1)\n        .drawRect(8, 8, 16, 16)\n    );  \n};\n```\n\n#### Asynchronous Example\n\n```js\nmodule.exports.async = function(done) {\n    PIXI.loader\n    \t.add('image1', 'image1.png')\n    \t.once('complete', (loader, resources) => {\n    \t\tthis.stage.addChild(PIXI.Sprite.fromFrame('image1'));\n    \t\tdone();\n    \t})\n    \t.load();\n};\n```\n"
+  ]
 }

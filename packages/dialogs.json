@@ -1,6 +1,6 @@
 {
   "name": "dialogs",
-  "version": "1.1.16",
+  "version": "1.1.17",
   "description": "non blocking alert confirm and prompt dialogs",
   "keywords": [
     "alert",
@@ -40,20 +40,20 @@
   "dependencies": {
     "brfs": "1.4.3",
     "hyperglue": "2.0.1",
-    "insert-css": "1.1.0",
+    "insert-css": "2.0.0",
     "xtend": "4.0.1"
   },
   "devDependencies": {
     "standard": "8.4.0"
   },
   "license": "MIT",
-  "gitHead": "919bb736ab8f9f1912c2e26fd06afc865bb2ad1a",
+  "gitHead": "65d139981862e357174b5364cff08977f5624cc2",
   "homepage": "https://github.com/jameskyburz/dialogs#readme",
   "_npmVersion": "3.10.8",
   "_nodeVersion": "6.9.1",
   "dist": {
-    "shasum": "eb6e6b478b3d3a35792fc642156a308c3b533622",
-    "tarball": "http://registry.npmjs.org/dialogs/-/dialogs-1.1.16.tgz"
+    "shasum": "a2af6dac17293444b9a10121fe1fc6545df4e5b5",
+    "tarball": "http://registry.npmjs.org/dialogs/-/dialogs-1.1.17.tgz"
   },
   "stars": 1,
   "versions": [
@@ -152,10 +152,14 @@
     {
       "number": "1.1.16",
       "date": "2016-11-11T08:53:46.145Z"
+    },
+    {
+      "number": "1.1.17",
+      "date": "2016-11-14T15:31:16.268Z"
     }
   ],
   "created": "2015-06-12T14:57:59.365Z",
-  "modified": "2016-11-11T08:53:46.145Z",
+  "modified": "2016-11-14T15:31:16.268Z",
   "lastPublisher": {
     "name": "jameskyburz",
     "email": "james.kyburz@gmail.com"
@@ -165,6 +169,5 @@
       "name": "jameskyburz",
       "email": "james.kyburz@gmail.com"
     }
-  ],
-  "readme": "# dialogs\n\nnon blocking `confirm`, `alert` and `prompt` dialogs.\n\nTheses native counterparts block the UI thread, are are not allowed in electron and some chrome extention contexts.\n\n[![js-standard-style](https://cdn.rawgit.com/feross/standard/master/badge.svg)](https://github.com/feross/standard)\n\nTry it out! [![view on requirebin](http://requirebin.com/badge.png)](http://requirebin.com/embed?gist=5b6d6b63f8709deb3b5a)\n\nuse with [browserify](http://browserify.org):\n\n# methods\n\n``` js\nvar Dialogs = require('dialogs')\n```\n\n## var dialogs = Dialogs(opts={})\n\nopts.ok default OK\n\nopts.cancel default Cancel\n\nopts.hostname default location.hostname\n\nopts.icon optional url for icon\n\n## dialogs.alert([text], cb)\n## dialogs.prompt([text], [default], cb)\n## dialogs.confirm([text], cb)\n## dialogs.cancel()\n\nShortcut to cancel the open dialog if exists.\n\n# example\n\n``` js\ndialogs.alert('okidoki', function(ok) {\n  console.log('alert', ok)\n  dialogs.confirm('ok?', function(ok) {\n    console.log('confirm', ok)\n    dialogs.prompt('username', 'joe.smith@gmail.com', function(ok) {\n      console.log('prompt with default', ok)\n      dialogs.prompt('username', function(ok) {\n        console.log('prompt', ok)\n      })\n    })\n  })\n})\n```\n\n# install\n\nWith [npm](https://npmjs.org) do:\n\n```\nnpm install dialogs\n```\n\n# license\n\nMIT\n"
+  ]
 }

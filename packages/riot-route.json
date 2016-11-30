@@ -1,13 +1,23 @@
 {
   "name": "riot-route",
-  "version": "2.5.0",
+  "version": "3.0.1",
   "description": "Simple isomorphic router",
-  "main": "lib/index.js",
-  "jsnext:main": "dist/es6.route.js",
+  "main": "dist/cjs.route.js",
+  "jsnext:main": "lib/index.js",
   "scripts": {
-    "pretest": "make build",
-    "test": "make test",
-    "prepublish": "make build"
+    "pretest": "npm run build",
+    "test": "npm run eslint && npm run karma && npm run mocha",
+    "prepublish": "npm run build",
+    "build": "npm run rollup && npm run uglify && npm run uglify-amd",
+    "rollup": "node rollup.js",
+    "uglify": "uglifyjs dist/route.js --comments --mangle -o dist/route.min.js",
+    "uglify-amd": "uglifyjs dist/amd.route.js --comments --mangle -o dist/amd.route.min.js",
+    "watch": "chokidar lib/* lib/**/* -c 'npm run build'",
+    "eslint": "eslint lib test/specs",
+    "karma": "karma start test/karma.conf.js",
+    "karma-bs": "BROWSERSTACK=1 karma start test/karma.conf.js",
+    "mocha": "mocha test/specs/server.specs.js",
+    "coveralls": "RIOT_COV=1 cat ./coverage/lcov.info ./coverage/report-lcov/lcov.info | coveralls"
   },
   "repository": {
     "user": "riot",
@@ -27,34 +37,37 @@
     "router"
   ],
   "dependencies": {
-    "riot-observable": "^2.5.0"
+    "riot-observable": "^3.0.0"
   },
   "devDependencies": {
     "chokidar-cli": "^1.2.0",
-    "coveralls": "^2.11.11",
-    "electron-prebuilt": "^1.3.1",
-    "eslint": "^3.1.1",
+    "coveralls": "^2.11.15",
+    "electron-prebuilt": "^1.3.9",
+    "eslint": "^3.10.2",
     "expect.js": "^0.3.1",
-    "karma": "^1.1.1",
-    "karma-browserstack-launcher": "^1.0.1",
+    "karma": "^1.3.0",
+    "karma-browserstack-launcher": "^1.1.1",
     "karma-coverage": "^1.1.1",
-    "karma-electron": "^4.0.0",
-    "karma-mocha": "^1.1.1",
-    "karma-mocha-reporter": "^2.0.4",
-    "mocha": "^2.5.3",
-    "uglify-js": "^2.7.0"
+    "karma-electron": "^5.1.1",
+    "karma-mocha": "^1.3.0",
+    "karma-mocha-reporter": "^2.2.1",
+    "mocha": "^3.1.2",
+    "rollup": "^0.36.3",
+    "rollup-plugin-buble": "^0.14.0",
+    "rollup-plugin-node-resolve": "^2.0.0",
+    "uglify-js": "^2.7.4"
   },
   "author": {
     "name": "Muut, Inc. and other contributors"
   },
   "license": "MIT",
   "homepage": "https://github.com/riot/route#readme",
-  "gitHead": "afd185846cd46623aefd390339ab79c6b8d11bcc",
-  "_npmVersion": "3.9.5",
-  "_nodeVersion": "6.2.2",
+  "gitHead": "331f56c709b04c7b7295bb3432e003423dc22d62",
+  "_npmVersion": "4.0.2",
+  "_nodeVersion": "7.2.0",
   "dist": {
-    "shasum": "aafcd0ee2df470db89a587770cd557760b2ac2b5",
-    "tarball": "http://registry.npmjs.org/riot-route/-/riot-route-2.5.0.tgz"
+    "shasum": "55df22ab78a595acd9d5c748666af2b9f0b95f6e",
+    "tarball": "http://registry.npmjs.org/riot-route/-/riot-route-3.0.1.tgz"
   },
   "versions": [
     {
@@ -128,10 +141,18 @@
     {
       "number": "2.5.0",
       "date": "2016-08-08T08:29:52.506Z"
+    },
+    {
+      "number": "3.0.0",
+      "date": "2016-11-23T11:35:32.640Z"
+    },
+    {
+      "number": "3.0.1",
+      "date": "2016-11-29T16:35:17.070Z"
     }
   ],
   "created": "2015-08-19T13:31:40.765Z",
-  "modified": "2016-08-08T08:29:52.506Z",
+  "modified": "2016-11-29T16:35:17.070Z",
   "lastPublisher": {
     "name": "cognitom",
     "email": "kawamura@cognitom.com"
@@ -149,6 +170,5 @@
       "name": "gianlucaguarini",
       "email": "gianluca.guarini@gmail.com"
     }
-  ],
-  "readme": "[![Build Status][travis-image]][travis-url]\n[![Code Quality][codeclimate-image]][codeclimate-url]\n[![NPM version][npm-version-image]][npm-url]\n[![NPM downloads][npm-downloads-image]][npm-url]\n[![MIT License][license-image]][license-url]\n[![Coverage Status][coverage-image]][coverage-url]\n\n# Riot Router\n\nThe Riot Router is the minimal router implementation with such technologies:\n\n- pushState and history API\n- multiple routing groups\n- replacable parser\n- compatible with IE9 and higher\n\nA part of Riot.js, but it also works without Riot.js.\n\n## Documentation\n\n- [API (latest)](doc/)\n\nSee also riotjs.com:\n\n- [API (English)](http://riotjs.com/api/route/)\n- [API (Japanese)](http://riotjs.com/ja/api/route/)\n\n## Downloads\n\nWe have 3 editions:\n\n- **Standalone**:\n  - [route.js](https://raw.githubusercontent.com/riot/route/master/dist/route.js)\n  - [route.min.js](https://raw.githubusercontent.com/riot/route/master/dist/route.min.js)\n- **AMD**:\n  - *for RequireJS*\n  - [amd.route.js](https://raw.githubusercontent.com/riot/route/master/dist/amd.route.js)\n  - [amd.route.min.js](https://raw.githubusercontent.com/riot/route/master/dist/amd.route.min.js)\n- **CommonJS**\n  - *for Browserify, Webpack, ...etc*\n  - download via npm\n\n## Installation\n\n### npm\n\n```bash\n$ npm install --save riot-route\n```\n\n### Bower\n\n```bash\n$ bower install --save riot-route\n```\n\n## Demos\n\n- [Page switching](http://riotjs.com/examples/plunker/?app=router-page-switcher)\n- [Complex routings](http://riotjs.com/examples/plunker/?app=router-complex)\n\n## Development\n\n- `$ npm install` to setup\n- `$ make build` to build it once\n- `$ make watch` to watch and build it continuously\n- `$ npm test` to test\n\n[travis-image]:https://img.shields.io/travis/riot/observable.svg?style=flat-square\n[travis-url]:https://travis-ci.org/riot/route\n\n[license-image]:http://img.shields.io/badge/license-MIT-000000.svg?style=flat-square\n[license-url]:LICENSE.txt\n\n[npm-version-image]:http://img.shields.io/npm/v/riot-route.svg?style=flat-square\n[npm-downloads-image]:http://img.shields.io/npm/dm/riot-route.svg?style=flat-square\n[npm-url]:https://npmjs.org/package/riot-route\n\n[coverage-image]:https://img.shields.io/coveralls/riot/route/master.svg?style=flat-square\n[coverage-url]:https://coveralls.io/github/riot/route/?branch=master\n\n[codeclimate-image]:https://img.shields.io/codeclimate/github/riot/route.svg?style=flat-square\n[codeclimate-url]:https://codeclimate.com/github/riot/route\n"
+  ]
 }

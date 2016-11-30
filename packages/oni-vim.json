@@ -1,0 +1,127 @@
+{
+  "name": "oni-vim",
+  "version": "0.1.0",
+  "description": "NeoVim front-end with IDE-style extensibility",
+  "keywords": [
+    "vim",
+    "neovim",
+    "text",
+    "editor",
+    "ide",
+    "vim"
+  ],
+  "main": "index.js",
+  "bin": {
+    "oni": "./cli/oni",
+    "oni-vim": "./cli/oni"
+  },
+  "scripts": {
+    "postinstall": "npm run install:oni-plugin-typescript",
+    "build": "npm run build:browser && npm run build:plugin_api && npm run build:plugins",
+    "build:browser": "webpack --config browser/webpack.production.config.js",
+    "build:plugin_api": "cd plugin_api && tsc -p tsconfig.src.json",
+    "build:plugins": "cd vim/vimfiles/bundle/oni-plugin-typescript && tsc",
+    "install:oni-plugin-typescript": "cd vim/vimfiles/bundle/oni-plugin-typescript && npm install",
+    "test": "npm run test:browser && npm run test:plugin_api",
+    "test:browser": "cd browser && tsc -p tsconfig.json && mocha --recursive ../lib_test/browser/test",
+    "test:plugin_api": "cd plugin_api && tsc -p tsconfig.json && mocha --recursive ../lib_test/plugin_api/test",
+    "start": "concurrently --kill-others \"npm run start-hot\" \"npm run watch:browser\" \"npm run watch:plugins\" \"npm run watch:plugin_api\"",
+    "start-hot": "cross-env NODE_ENV=development electron main.js",
+    "start-not-dev": "cross-env electron main.js",
+    "watch:browser": "webpack-dev-server --config browser/webpack.config.js --hot --host 0.0.0.0 --port 8191",
+    "watch:plugin_api": "cd plugin_api && tsc --watch",
+    "watch:plugins": "cd vim/vimfiles/bundle/oni-plugin-typescript && tsc --watch"
+  },
+  "repository": {
+    "user": "extr0py",
+    "repo": "oni",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/extr0py/oni/tarball/master",
+    "clone_url": "https://github.com/extr0py/oni",
+    "https_url": "https://github.com/extr0py/oni",
+    "travis_url": "https://travis-ci.org/extr0py/oni",
+    "zip_url": "https://github.com/extr0py/oni/archive/master.zip",
+    "api_url": "https://api.github.com/repos/extr0py/oni"
+  },
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "electron": "^1.4.5",
+    "hex-rgb": "^1.0.0",
+    "lodash": "^4.16.6",
+    "minimist": "^1.2.0",
+    "mkdirp": "^0.5.1",
+    "neovim-client": "^1.1.0",
+    "q": "^1.4.1",
+    "react": "^15.3.1",
+    "react-dom": "^15.3.1",
+    "react-redux": "^4.4.5",
+    "redux": "^3.5.2"
+  },
+  "devDependencies": {
+    "@types/electron": "^1.4.27",
+    "@types/lodash": "^4.14.38",
+    "@types/minimist": "^1.1.29",
+    "@types/mkdirp": "^0.3.29",
+    "@types/mocha": "^2.2.33",
+    "@types/node": "^6.0.48",
+    "@types/q": "0.0.32",
+    "@types/react": "^0.14.48",
+    "@types/react-dom": "^0.14.18",
+    "@types/react-redux": "^4.4.32",
+    "autoprefixer": "^6.4.0",
+    "concurrently": "^2.2.0",
+    "cross-env": "^2.0.0",
+    "css-loader": "^0.24.0",
+    "less": "^2.7.1",
+    "less-loader": "^2.2.3",
+    "less-plugin-autoprefix": "^1.5.1",
+    "mocha": "^3.1.2",
+    "react-hot-loader": "^1.3.0",
+    "style-loader": "^0.13.1",
+    "ts-loader": "^0.8.2",
+    "typescript": "^2.0.3",
+    "webpack": "^1.13.2",
+    "webpack-dev-server": "^1.16.1"
+  },
+  "gitHead": "b0aeff99d87865db2e14decacf224f12f39cde08",
+  "homepage": "https://github.com/extr0py/oni#readme",
+  "_npmVersion": "3.10.9",
+  "_nodeVersion": "7.1.0",
+  "dist": {
+    "shasum": "fb088e929ba5a4b07ff9c6ce0739d48ea3ba3cdf",
+    "tarball": "http://registry.npmjs.org/oni-vim/-/oni-vim-0.1.0.tgz"
+  },
+  "versions": [
+    {
+      "number": "0.0.1",
+      "date": "2016-11-21T16:12:28.586Z"
+    },
+    {
+      "number": "0.0.2",
+      "date": "2016-11-21T16:15:55.810Z"
+    },
+    {
+      "number": "0.0.3",
+      "date": "2016-11-23T16:55:28.597Z"
+    },
+    {
+      "number": "0.1.0",
+      "date": "2016-11-28T00:58:58.622Z"
+    }
+  ],
+  "created": "2016-11-21T16:12:28.586Z",
+  "modified": "2016-11-28T00:58:58.622Z",
+  "lastPublisher": {
+    "name": "extr0py",
+    "email": "admin@extropygames.com"
+  },
+  "owners": [
+    {
+      "name": "extr0py",
+      "email": "admin@extropygames.com"
+    }
+  ]
+}

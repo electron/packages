@@ -1,6 +1,6 @@
 {
   "name": "cmd2app",
-  "version": "1.19.0",
+  "version": "1.22.0",
   "description": "cmd2app - Convert you command line client to electron app.   =================",
   "main": "./bin/cmd2app.babel.js",
   "bin": {
@@ -59,12 +59,12 @@
     "webpack": "^1.13.2"
   },
   "devDependencies": {},
-  "gitHead": "9e412ed6ea2fcb7120c42de824c4b636be34dbfa",
-  "_npmVersion": "3.10.9",
-  "_nodeVersion": "6.9.1",
+  "gitHead": "fa74889561d39c7264cb416e738f962958cead2e",
+  "_npmVersion": "3.10.8",
+  "_nodeVersion": "7.1.0",
   "dist": {
-    "shasum": "73da83ea9b20046e6be590ead5848106e32e210d",
-    "tarball": "http://registry.npmjs.org/cmd2app/-/cmd2app-1.19.0.tgz"
+    "shasum": "1c367f888e018572799c367ba47cf47d3bf613cb",
+    "tarball": "http://registry.npmjs.org/cmd2app/-/cmd2app-1.22.0.tgz"
   },
   "versions": [
     {
@@ -150,10 +150,22 @@
     {
       "number": "1.19.0",
       "date": "2016-10-31T10:16:21.089Z"
+    },
+    {
+      "number": "1.20.0",
+      "date": "2016-11-18T04:52:27.391Z"
+    },
+    {
+      "number": "1.21.0",
+      "date": "2016-11-18T07:09:46.604Z"
+    },
+    {
+      "number": "1.22.0",
+      "date": "2016-11-22T02:20:42.512Z"
     }
   ],
   "created": "2016-10-08T07:49:10.607Z",
-  "modified": "2016-10-31T10:16:21.089Z",
+  "modified": "2016-11-22T02:20:42.512Z",
   "lastPublisher": {
     "name": "l842891024",
     "email": "842891024@qq.com"
@@ -163,6 +175,5 @@
       "name": "l842891024",
       "email": "842891024@qq.com"
     }
-  ],
-  "readme": "cmd2app - Convert you command line client to electron app.  \n=================\n\n## Install\n\n```bash\n(sudo) npm install cmd2app -g\n```\n\n## How to convert?\n\n* Complete your command line client.\n\n* Add some field to `package.json` to describe your command line client.\n\n    All options as follow example. \n\n    ```js\n    /* package.json */\n    {\n        \"name\": \"cmd2app example\",\n        // ...\n        \"cmd2app\" : {\n            \"repository\": \"https://github.com/gomeplusFED/meixin-h5-proxy\",  // your repo address\n            \"title\": \"美信H5 CDN代理模块\", // title your want to show\n            \"bin\": [\"proxy\", \"test\"], // bin entrance\n            \"globalOptions\": { // global options\n                \"dir\": { // option detail\n                    \"desc\": \"the catalog to be proxyed\" // option desc\n                },\n                \"port\": {\n                    \"desc\": \"http portal, default 80\"\n                },\n                \"ports\": {\n                    \"desc\": \"https portal, default 443\"\n                },\n                \"foreign\": {\n                    \"desc\": \"public dependencies path\"\n                },\n                \"path\": {\n                    \"desc\": \"middle path,default /m/app/src\"\n                },\n                \"raw\": {\n                    \"desc\": \"raw path\"\n                }\n            },\n            \"command\": { // command\n                \"new\": { // key\n                    \"params\": [{ //parmas\n                        \"desc\": \"repo address\" // params desc\n                    }, {\n                        \"desc\": \"local path\"\n                    }],\n                    \"options\": { // command options\n                        \"con\": {\n                            \"desc\": \"con desc\"\n                        },\n                        \"abc\": {\n                            \"desc\": \"abc desc\"\n                        }\n                    },\n                    \"desc\": \"this is test cmd\" // command desc\n                },\n                \"test\": {\n                    \"params\": [{\n                        \"desc\": \"test params\"\n                    }],\n                    \"options\": {\n                        \"dir\": \"the catalog to be proxyed\"\n                    },\n                    \"desc\": \"# create a new app with an official repo\"\n                }\n            }\n        }\n    }\n    ```\n    For example.  \n\n    #### bin + global options\n\n    `proxy --dir=\"/c\" --path=\"/b\" --foreign=\"/a\" --port=8011 `\n\n    `proxy -> bin`  \n    `dir/path/foreign/port -> global options`  \n\n    #### bin + global options + command + command options  \n\n    `proxy --port=8001 new a b --con=123`  \n\n    `proxy -> bin`  \n    `port -> global option`  \n    `new -> command`  \n    `a -> command params 1`  \n    `b -> command params 2`  \n    `con -> command option`  \n\n* Use `cmd2app` to build your app.\n\n    ```shell\n    (sudo) npm install cmd2app -g\n\n    cmd2app new [author/repo] [path]\n\n    cd [path] && npm install\n\n    electron [path]/src/main/app.babel.js # you should global install electron\n    ```\n\n    ##### Note: \n\n    * Final file not a full app, it's just source code what can run by `electron`.\n\n    * If you want run your app, you should install [electron](https://github.com/electron) environment, and use some package tools to package your app, like [electron-builder](https://github.com/electron-userland/electron-builder) / [electron-packager](https://github.com/electron-userland/electron-packager) and so on.\n\n    * Also, you can wrap your app further to a plugin for [FET](https://github.com/gomeplusFED/FET). FET is a plugin plataform, you can easily wrap your app to a plugin. [More in here](./doc/fet.md)\n\n## Some images .\n\n* #### Main  \n\n    ![main1](./doc/static/1.png)\n\n* #### With all options\n\n    ![main2](./doc/static/2.png)\n\n* #### Run\n\n    ![main3](./doc/static/3.png)\n\n* #### Run result\n\n    ![main4](./doc/static/4.png)\n\n"
+  ]
 }

@@ -64,6 +64,5 @@
       "name": "andrewpmckenzie",
       "email": "andrew.mckenzie@electronifie.com"
     }
-  ],
-  "readme": "# chainbuilder-retry [![Build Status](https://travis-ci.org/andrewpmckenzie/chainbuilder-retry.svg)](https://travis-ci.org/andrewpmckenzie/chainbuilder-retry)\n\nA [retry](https://github.com/tim-kos/node-retry) mixin for [chainbuilder](https://www.npmjs.com/package/chainbuilder). \n\n**Installation** `npm install chainbuilder chainbuilder-retry --save`\n\n**Usage**  \n```javascript\nvar chainBuilder = require('chainbuilder');\n\nvar myChain = chainBuilder({\n  methods: {/* ... your methods ... */},\n  mixins: [\n    /* ... other mixins ... */\n    require('chainbuilder-retry')({ attempts: 5, maxTimeout: 100 })\n  ]\n});\n```\n\n**Example**  \nWill retry the `myMethodTwo().myMethodThree()` chain up to two times until no error is received. `myMethodTwo()` will have\naccess to the result of `myMethodOne()` (via `previousResult()`), and `myMethodFour()` will have access to the result of \n`myMethodThree()`.  \n\n```javascript\nmyChain()\n  .myMethodOne()\n  .$beginRetry({ attempts: 2 }}\n    .myMethodTwo()\n    .myMethodThree()\n  .$endRetry()\n  .myMethodFour()\n```\n\n## Methods\n\n#### require('chainbuilder-retry')(options)\nInit the mixin with default options.\n\n**`@param {Object} options`** (optional) default [retry](https://github.com/tim-kos/node-retry) options.\n\n#### $beginRetry(options)\nBegin a retry block.\n\n**`@param {Object} options`** (optional) retry options for this block.\n\n#### $endRetry()\nEnd a retry block.\n"
+  ]
 }

@@ -162,6 +162,5 @@
       "name": "justinmchase",
       "email": "justin.m.chase@outlook.com"
     }
-  ],
-  "readme": "# electron-updater-tools\nTools for building native addons compatible with electron-updater\n\n# Usage\n```\n$ npm install electron-updater-tools -g\n$ npm install electron-prebuilt -g\n$ npm install bindings --save\n$ elb configure\n```\n\nTo build binaries compatible with node/iojs and electron on windows add the following to your `binding.gyp` file:\n```\n'include_dirs': [\n  \"<!(node -e \\\"require('electron-updater-tools')\\\")\"        \n],\n```\nAnd\n```\n'conditions' : [\n  ['OS == \"win\"', {\n    'libraries': [\n      '-lShlwapi.lib'\n    ],\n    'msvs_settings': {\n      'VCLinkerTool': {\n          'DelayLoadDLLs': [ 'node.dll', 'iojs.exe', 'node.exe' ],\n          # Don't print a linker warning when no imports from either .exe\n          # are used.\n          'AdditionalOptions': [ '/ignore:4199' ],\n      }\n    }\n  }]\n]\n```\nIn your source somewhere add this line:\n```\n#include <delay_load_hook.h>\n```\n\nNow you can load your binaries into node/iojs or electron:\n```\n$ elb configure\n$ iojs -p \"require('bindings')('your-module-name')\"\n```\n"
+  ]
 }

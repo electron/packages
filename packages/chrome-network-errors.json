@@ -39,6 +39,5 @@
       "name": "ccnokes",
       "email": "ccnokes@gmail.com"
     }
-  ],
-  "readme": "# Chrome Network Error List\n\nTaken straight from [https://cs.chromium.org/chromium/src/net/base/net_error_list.h](https://cs.chromium.org/chromium/src/net/base/net_error_list.h) and put into JSON.\n\nThis can be useful in Electron apps that load remote URLs.\n\n`npm install chrome-network-errors`\n\nFor example:\n\n```javascript\nchromeErrors = require('chrome-network-errors');\nwebview.addEventListener('did-fail-load', (event, code, desc, url, isMainFrame) => {\n  displayMessageInUI(`Oops, something failed. Error: ${code}, ${chromeErrors[code]}`);\n  writeToLog({ level: 'error', message: `Webview failed to load: ${url}, ${code}, ${chromeErrors[code]}. Bummer.` });\n});\n```\n"
+  ]
 }

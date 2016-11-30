@@ -1,7 +1,7 @@
 {
   "name": "hadron-build",
   "description": "Tooling for Hadron apps.",
-  "version": "1.0.0-beta.2",
+  "version": "2.0.4",
   "scripts": {
     "fmt": "mongodb-js-fmt",
     "check": "mongodb-js-precommit",
@@ -39,21 +39,21 @@
     "electron-installer-run": "^0.1.2",
     "electron-installer-zip": "^0.1.2",
     "electron-license": "^0.2.0",
-    "electron-mocha": "^2.3.1",
-    "electron-osx-sign": "^0.3.2",
+    "electron-mocha": "^3.1.1",
+    "electron-osx-sign": "^0.4.1",
     "electron-packager": "^8.0.0",
-    "electron-prebuilt": "1.2.8",
+    "electron-prebuilt": "^1.2.8",
     "electron-winstaller": "^2.3.3",
     "flatnest": "^1.0.0",
-    "fs-extra": "^0.26.5",
-    "github": "^0.2.4",
-    "glob": "^5.0.15",
+    "fs-extra": "^1.0.0",
+    "github": "^6.0.4",
+    "glob": "^7.1.1",
     "got": "^6.3.0",
     "hadron-compile-cache": "^0.3.0",
-    "hadron-module-cache": "^0.0.3",
+    "hadron-module-cache": "^0.0.4",
     "in-publish": "^2.0.0",
     "js-yaml": "^3.5.4",
-    "less-cache": "^0.23.0",
+    "less-cache": "^0.24.0",
     "lodash": "^4.8.2",
     "mocha-evergreen-reporter": "^0.0.7",
     "mongodb-js-cli": "^0.0.3",
@@ -67,19 +67,19 @@
   "devDependencies": {
     "chai": "^3.5.0",
     "eslint-config-mongodb-js": "^2.2.0",
-    "mocha": "^2.3.4",
+    "mocha": "^3.1.2",
     "mongodb-js-fmt": "^0.0.3",
     "mongodb-js-precommit": "^0.2.9",
     "sinon": "^1.17.3",
     "sinon-chai": "^2.8.0"
   },
   "license": "Apache-2.0",
-  "gitHead": "1e6ddd07ac8986a5b2df097b7a306f30ebff1d5e",
-  "_npmVersion": "3.10.3",
-  "_nodeVersion": "6.5.0",
+  "gitHead": "8108ba4586acd5273b15b0c0d1fbf71843f2840c",
+  "_npmVersion": "3.10.7",
+  "_nodeVersion": "6.3.1",
   "dist": {
-    "shasum": "35ff970be51fac3705461ea33d14246c9db19145",
-    "tarball": "http://registry.npmjs.org/hadron-build/-/hadron-build-1.0.0-beta.2.tgz"
+    "shasum": "d2f3b3283e808ab3499e83ce6774d6fbeed51381",
+    "tarball": "http://registry.npmjs.org/hadron-build/-/hadron-build-2.0.4.tgz"
   },
   "versions": [
     {
@@ -401,15 +401,39 @@
     {
       "number": "1.0.0-beta.2",
       "date": "2016-10-11T21:27:38.051Z"
+    },
+    {
+      "number": "2.0.0",
+      "date": "2016-11-18T07:30:42.865Z"
+    },
+    {
+      "number": "2.0.1",
+      "date": "2016-11-18T09:45:12.036Z"
+    },
+    {
+      "number": "2.0.2",
+      "date": "2016-11-22T19:26:03.541Z"
+    },
+    {
+      "number": "2.0.3",
+      "date": "2016-11-23T03:59:31.970Z"
+    },
+    {
+      "number": "2.0.4",
+      "date": "2016-11-29T13:19:04.806Z"
     }
   ],
   "created": "2016-04-08T21:05:16.099Z",
-  "modified": "2016-10-11T21:27:38.051Z",
+  "modified": "2016-11-29T13:19:04.806Z",
   "lastPublisher": {
     "name": "durran",
     "email": "durran@gmail.com"
   },
   "owners": [
+    {
+      "name": "aherlihy",
+      "email": "anna@mongodb.com"
+    },
     {
       "name": "brahmgardner",
       "email": "brahm.gardner@gmail.com"
@@ -439,12 +463,20 @@
       "email": "hrabovsky.lucas@gmail.com"
     },
     {
-      "name": "kangas",
-      "email": "kangas@gmail.com"
+      "name": "jsmulrow",
+      "email": "jack.mulrow@gmail.com"
+    },
+    {
+      "name": "justinjmoses",
+      "email": "justinjmoses@gmail.com"
     },
     {
       "name": "kay-kim",
       "email": "kay@mongodb.com"
+    },
+    {
+      "name": "keyboardtsundoku",
+      "email": "satyendra.n.sinha@gmail.com"
     },
     {
       "name": "machyne",
@@ -456,7 +488,11 @@
     },
     {
       "name": "mongodb-js-user",
-      "email": "lucas.hrabovsky+mongodb-js@10gen.com"
+      "email": "dana.groff+mongodb-js@mongodb.com"
+    },
+    {
+      "name": "pzrq",
+      "email": "peter@peterjs.com"
     },
     {
       "name": "redondos",
@@ -474,6 +510,5 @@
       "name": "shum",
       "email": "chris.shum@mongodb.com"
     }
-  ],
-  "readme": "# hadron-build\n\n> Complete tooling for large-scale [Electron](http://electron.atom.io/) apps.\n\n[![travis][travis_img]][travis_url] [![npm][npm_img]][npm_url]\n\n\n## Configuration\n\n```json\n{\n  \"config\": {\n    \"hadron\": {\n      \"build\": {\n        \"win32\": {\n          \"icon\": \"resources/win32/<your-project-id>.ico\",\n          \"favicon_url\": \"https://raw.githubusercontent.com/mongodb-js/favicon/master/favicon.ico\",\n          \"loading_gif\": \"resources/win32/loading.gif\"\n        },\n        \"darwin\": {\n          \"icon\": \"resources/darwin/<your-project-id>.icns\",\n          \"dmg_background\": \"resources/darwin/background.png\",\n          \"codesign_identity\": \"Developer ID Application: <your-name> (<your-apple-developer-id>)\",\n          \"codesign_sha1\": \"<your-certs-sha1>\",\n          \"app_bundle_id\": \"com.<your-company>.<your-project-id>\",\n          \"app_category_type\": \"public.app-category.productivity\"\n        }\n      },\n      \"endpoint\": \"<hadron-endpoint-server-url>\"\n    }\n  },\n  \"scripts\": {\n    \"check\": \"hadron-build check\",\n    \"ci\": \"npm run test\",\n    \"clean\": \"hadron-build clean\",\n    \"compile-ui\": \"hadron-build ui\",\n    \"fmt\": \"hadron-build fmt\",\n    \"postuninstall\": \"hadron-build clean\",\n    \"release\": \"hadron-build release\",\n    \"start\": \"hadron-build develop\",\n    \"test\": \"hadron-build test\",\n    \"test-functional\": \"npm test -- --functional\",\n    \"test-unit\": \"npm test -- --unit\",\n    \"test-release\": \"npm test -- --release\"\n  }\n}\n```\n\n## CLI Usage\n\n```bash\nhadron-build <command> [options]\n\nCommands:\n  release            :shipit:\n  clean              Remove generated directories.\n  config             Configuration.\n  develop [options]  Run the app in development mode.\n  test [options]     Run app tests.\n  upload [options]   Upload assets from `release`.\n  ui [options]       Compile the app UI.\n  verify [options]   Verify the current environment meets the app\\'s requirements.\n\nOptions:\n  --help  Show help                                                    [boolean]\n```\n\n## Important Paths\n\n```javascript\nvar version = '1.1.0'; // channel = stable\nvar productName = 'Hadron Build';\nvar appBundleId = 'com.mongodb.hadron';\n```\n\n### macOS\n\n- `~/Library/Application\\ Support/${productName}`: The `[userData][electron-app-getPath]` directory\n- `~/Library/Application\\ Support/${appBundleId}.ShipIt/ShipItState.plist`: Auto update state persistence\n- `~/Library/Application\\ Support/${appBundleId}.ShipIt/ShipIt_stderr.log`: Auto update log\n\n### Windows\n\n- `C:\\Users\\${username}\\AppData\\Local\\${_.titlecase(productName)}`: App installation path.  Why in a temp dir? Allows installation and auto update without requiring Administrator.\n- `C:\\Users\\${username}\\AppData\\Roaming\\${productName}`: The `[userData][electron-app-getPath]` directory\n- `C:\\Users\\${username}\\AppData\\Local\\SquirrelTemp\\SquirrelSetup.log`: Squirrel.Windows installation log. Global for any app installation that's using Squirrel.Windows.\n- `C:\\Users\\${username}\\AppData\\Local\\${_.titlecase(productName)}\\SquirrelSetup.log`: Application level Squirrel.Windows log\n\n#### The Squirrel.Windows Installation Log Explained\n\n> `C:\\Users\\${username}\\AppData\\Local\\SquirrelTemp\\SquirrelSetup.log`\n\nWhat you can expect from a successful installation:\n\n```\n2016-06-24 09:46:12> Program: Starting Squirrel Updater: --install .\n2016-06-24 09:46:12> Program: Starting install, writing to C:\\Users\\${username}\\AppData\\Local\\SquirrelTemp\n2016-06-24 09:46:12> Program: About to install to: C:\\Users\\${username}\\AppData\\Local\\${_.titlecase(productName)}\n```\n\nThe following exception might be scary, but it's purely informational and ok to ignore.\n```\n2016-06-24 09:46:12> CheckForUpdateImpl: Couldn't write out staging user ID, this user probably shouldn't get beta anything: System.IO.DirectoryNotFoundException: Could not find a part of the path 'C:\\Users\\${username}\\AppData\\Local\\${_.titlecase(productName)}\\packages\\.betaId'.\n   at System.IO.__Error.WinIOError(Int32 errorCode, String maybeFullPath)\n   at System.IO.FileStream.Init(String path, FileMode mode, FileAccess access, Int32 rights, Boolean useRights, FileShare share, Int32 bufferSize, FileOptions options, SECURITY_ATTRIBUTES secAttrs, String msgPath, Boolean bFromProxy, Boolean useLongPath, Boolean checkHost)\n   at System.IO.FileStream..ctor(String path, FileMode mode, FileAccess access, FileShare share, Int32 bufferSize, FileOptions options, String msgPath, Boolean bFromProxy, Boolean useLongPath, Boolean checkHost)\n   at System.IO.StreamWriter.CreateFile(String path, Boolean append, Boolean checkHost)\n   at System.IO.StreamWriter..ctor(String path, Boolean append, Encoding encoding, Int32 bufferSize, Boolean checkHost)\n   at System.IO.File.InternalWriteAllText(String path, String contents, Encoding encoding, Boolean checkHost)\n   at System.IO.File.WriteAllText(String path, String contents, Encoding encoding)\n   at Squirrel.UpdateManager.CheckForUpdateImpl.getOrCreateStagedUserId()\n2016-06-24 09:46:12> CheckForUpdateImpl: Failed to load local releases, starting from scratch: System.IO.DirectoryNotFoundException: Could not find a part of the path 'C:\\Users\\${username}\\AppData\\Local\\${_.titlecase(productName)}\\packages\\RELEASES'.\n   at System.IO.__Error.WinIOError(Int32 errorCode, String maybeFullPath)\n   at System.IO.FileStream.Init(String path, FileMode mode, FileAccess access, Int32 rights, Boolean useRights, FileShare share, Int32 bufferSize, FileOptions options, SECURITY_ATTRIBUTES secAttrs, String msgPath, Boolean bFromProxy, Boolean useLongPath, Boolean checkHost)\n   at System.IO.FileStream..ctor(String path, FileMode mode, FileAccess access, FileShare share)\n   at Squirrel.Utility.LoadLocalReleases(String localReleaseFile)\n   at Squirrel.UpdateManager.CheckForUpdateImpl.<CheckForUpdate>d__3f.MoveNext()\n```\n\nThe actual installation:\n\n```\n2016-06-24 09:46:12> CheckForUpdateImpl: Reading RELEASES file from C:\\Users\\${username}\\AppData\\Local\\SquirrelTemp\n2016-06-24 09:46:12> CheckForUpdateImpl: First run or local directory is corrupt, starting from scratch\n2016-06-24 09:46:12> ApplyReleasesImpl: Writing files to app directory: C:\\Users\\${username}\\AppData\\Local\\${_.titlecase(productName)}\\app-${version}\n2016-06-24 09:46:16> ApplyReleasesImpl: Moving file C:\\Users\\${username}\\AppData\\Local\\${_.titlecase(productName)}\\app-${version}\\lib\\net45\\content_resources_200_percent.pak to C:\\Users\\${username}\\AppData\\Local\\${_.titlecase(productName)}\\app-${version}\\content_resources_200_percent.pak\n2016-06-24 09:46:16> ApplyReleasesImpl: Moving file C:\\Users\\${username}\\AppData\\Local\\${_.titlecase(productName)}\\app-${version}\\lib\\net45\\d3dcompiler_47.dll to C:\\Users\\${username}\\AppData\\Local\\${_.titlecase(productName)}\\app-${version}\\d3dcompiler_47.dll\n2016-06-24 09:46:16> ApplyReleasesImpl: Moving file C:\\Users\\${username}\\AppData\\Local\\${_.titlecase(productName)}\\app-${version}\\lib\\net45\\content_shell.pak to C:\\Users\\${username}\\AppData\\Local\\${_.titlecase(productName)}\\app-${version}\\content_shell.pak\n2016-06-24 09:46:16> ApplyReleasesImpl: Moving file C:\\Users\\${username}\\AppData\\Local\\${_.titlecase(productName)}\\app-${version}\\lib\\net45\\ffmpeg.dll to C:\\Users\\${username}\\AppData\\Local\\${_.titlecase(productName)}\\app-${version}\\ffmpeg.dll\n2016-06-24 09:46:16> ApplyReleasesImpl: Moving file C:\\Users\\${username}\\AppData\\Local\\${_.titlecase(productName)}\\app-${version}\\lib\\net45\\icudtl.dat to C:\\Users\\${username}\\AppData\\Local\\${_.titlecase(productName)}\\app-${version}\\icudtl.dat\n2016-06-24 09:46:16> ApplyReleasesImpl: Moving file C:\\Users\\${username}\\AppData\\Local\\${_.titlecase(productName)}\\app-${version}\\lib\\net45\\libEGL.dll to C:\\Users\\${username}\\AppData\\Local\\${_.titlecase(productName)}\\app-${version}\\libEGL.dll\n2016-06-24 09:46:16> ApplyReleasesImpl: Moving file C:\\Users\\${username}\\AppData\\Local\\${_.titlecase(productName)}\\app-${version}\\lib\\net45\\LICENSE to C:\\Users\\${username}\\AppData\\Local\\${_.titlecase(productName)}\\app-${version}\\LICENSE\n2016-06-24 09:46:16> ApplyReleasesImpl: Moving file C:\\Users\\${username}\\AppData\\Local\\${_.titlecase(productName)}\\app-${version}\\lib\\net45\\libGLESv2.dll to C:\\Users\\${username}\\AppData\\Local\\${_.titlecase(productName)}\\app-${version}\\libGLESv2.dll\n2016-06-24 09:46:16> ApplyReleasesImpl: Moving file C:\\Users\\${username}\\AppData\\Local\\${_.titlecase(productName)}\\app-${version}\\lib\\net45\\${_.titlecase(productName)}.exe to C:\\Users\\${username}\\AppData\\Local\\${_.titlecase(productName)}\\app-${version}\\${_.titlecase(productName)}.exe\n2016-06-24 09:46:16> ApplyReleasesImpl: Moving file C:\\Users\\${username}\\AppData\\Local\\${_.titlecase(productName)}\\app-${version}\\lib\\net45\\msvcp120.dll to C:\\Users\\${username}\\AppData\\Local\\${_.titlecase(productName)}\\app-${version}\\msvcp120.dll\n2016-06-24 09:46:16> ApplyReleasesImpl: Moving file C:\\Users\\${username}\\AppData\\Local\\${_.titlecase(productName)}\\app-${version}\\lib\\net45\\msvcr120.dll to C:\\Users\\${username}\\AppData\\Local\\${_.titlecase(productName)}\\app-${version}\\msvcr120.dll\n2016-06-24 09:46:16> ApplyReleasesImpl: Moving file C:\\Users\\${username}\\AppData\\Local\\${_.titlecase(productName)}\\app-${version}\\lib\\net45\\natives_blob.bin to C:\\Users\\${username}\\AppData\\Local\\${_.titlecase(productName)}\\app-${version}\\natives_blob.bin\n2016-06-24 09:46:16> ApplyReleasesImpl: Moving file C:\\Users\\${username}\\AppData\\Local\\${_.titlecase(productName)}\\app-${version}\\lib\\net45\\pdf.dll to C:\\Users\\${username}\\AppData\\Local\\${_.titlecase(productName)}\\app-${version}\\pdf.dll\n2016-06-24 09:46:16> ApplyReleasesImpl: Moving file C:\\Users\\${username}\\AppData\\Local\\${_.titlecase(productName)}\\app-${version}\\lib\\net45\\squirrel.exe to C:\\Users\\${username}\\AppData\\Local\\${_.titlecase(productName)}\\app-${version}\\squirrel.exe\n2016-06-24 09:46:16> ApplyReleasesImpl: Moving file C:\\Users\\${username}\\AppData\\Local\\${_.titlecase(productName)}\\app-${version}\\lib\\net45\\ui_resources_200_percent.pak to C:\\Users\\${username}\\AppData\\Local\\${_.titlecase(productName)}\\app-${version}\\ui_resources_200_percent.pak\n2016-06-24 09:46:16> ApplyReleasesImpl: Moving file C:\\Users\\${username}\\AppData\\Local\\${_.titlecase(productName)}\\app-${version}\\lib\\net45\\snapshot_blob.bin to C:\\Users\\${username}\\AppData\\Local\\${_.titlecase(productName)}\\app-${version}\\snapshot_blob.bin\n2016-06-24 09:46:16> ApplyReleasesImpl: Moving file C:\\Users\\${username}\\AppData\\Local\\${_.titlecase(productName)}\\app-${version}\\lib\\net45\\node.dll to C:\\Users\\${username}\\AppData\\Local\\${_.titlecase(productName)}\\app-${version}\\node.dll\n2016-06-24 09:46:16> ApplyReleasesImpl: Moving file C:\\Users\\${username}\\AppData\\Local\\${_.titlecase(productName)}\\app-${version}\\lib\\net45\\vccorlib120.dll to C:\\Users\\${username}\\AppData\\Local\\${_.titlecase(productName)}\\app-${version}\\vccorlib120.dll\n2016-06-24 09:46:16> ApplyReleasesImpl: Moving file C:\\Users\\${username}\\AppData\\Local\\${_.titlecase(productName)}\\app-${version}\\lib\\net45\\xinput1_3.dll to C:\\Users\\${username}\\AppData\\Local\\${_.titlecase(productName)}\\app-${version}\\xinput1_3.dll\n2016-06-24 09:46:17> ApplyReleasesImpl: Squirrel Enabled Apps: [C:\\Users\\${username}\\AppData\\Local\\${_.titlecase(productName)}\\app-${version}\\${_.titlecase(productName)}.exe]\n2016-06-24 09:46:18> ApplyReleasesImpl: Starting fixPinnedExecutables\n2016-06-24 09:46:18> ApplyReleasesImpl: Examining Pin: Command Prompt.lnk\n2016-06-24 09:46:18> ApplyReleasesImpl: Examining Pin: File Explorer.lnk\n2016-06-24 09:46:18> ApplyReleasesImpl: Examining Pin: Google Chrome.lnk\n2016-06-24 09:46:18> ApplyReleasesImpl: Examining Pin: Internet Explorer.lnk\n2016-06-24 09:46:18> ApplyReleasesImpl: Examining Pin: sublime_text - Shortcut.lnk\n2016-06-24 09:46:18> ApplyReleasesImpl: Examining Pin: Task Manager.lnk\n2016-06-24 09:46:18> ApplyReleasesImpl: Examining Pin: Windows PowerShell.lnk\n2016-06-24 09:46:18> ApplyReleasesImpl: Fixing up tray icons\n```\n\nAnother exception that might be scary, but it's purely informational and ok to ignore.\n```\n2016-06-24 09:46:18> ApplyReleasesImpl: Couldn't rewrite shim RegKey, most likely no apps are shimmed: System.NullReferenceException: Object reference not set to an instance of an object.\n   at Squirrel.UpdateManager.ApplyReleasesImpl.<unshimOurselves>b__ee(RegistryView view)\n2016-06-24 09:46:18> ApplyReleasesImpl: Couldn't rewrite shim RegKey, most likely no apps are shimmed: System.NullReferenceException: Object reference not set to an instance of an object.\n   at Squirrel.UpdateManager.ApplyReleasesImpl.<unshimOurselves>b__ee(RegistryView view)\n```\n\nAnd then finally\n```\n2016-06-24 09:46:18> ApplyReleasesImpl: cleanDeadVersions: for version ${version}\n2016-06-24 09:46:18> ApplyReleasesImpl: cleanDeadVersions: exclude folder app-${version}\n```\n\n#### The Windows Application Log Explained\n\n> `C:\\Users\\${username}\\AppData\\Local\\${_.titlecase(productName)}\\SquirrelSetup.log`\n\n##### Windows Startup Log\n\n- User's launch application via a desktop shortcut `${productName}`\n- Installing into `C:\\\\Program Files\\` would require Administrator\n- Desktop shortcut managed for you automatically if you use https://github.com/mongodb-js/electron-squirrel-startup\n- Shortcut Target: `C:\\Users\\${username}\\AppData\\Local\\${_.titlecase(productName)}\\Update.exe --processStart ${_.titlecase(productName)}.exe`\n- Shortcut Start In: `C:\\Users\\${username}\\AppData\\Local\\${_.titlecase(productName)}\\app-${version}`\n\n```\n2016-06-24 12:32:51> Program: Starting Squirrel Updater: --processStart ${_.titlecase(productName)}.exe\n2016-06-24 12:32:51> Program: Want to launch 'C:\\Users\\${username}\\AppData\\Local\\${_.titlecase(productName)}\\app-${version}\\${_.titlecase(productName)}.exe'\n2016-06-24 12:32:51> Program: About to launch: 'C:\\Users\\${username}\\AppData\\Local\\${_.titlecase(productName)}\\app-${version}\\${_.titlecase(productName)}.exe':\n```\n\n##### Windows Auto Update Log\n\n```javascript\nconst server = 'hadron.mongodb.com';\nconst dialog = require('electron').dialog;\nconst AutoUpdateManager = require('hadron-auto-update-manager');\n\nconst autoUpdater = new AutoUpdateManager({\n  endpoint: `https://${server}`\n});\n\nautoUpdater.on('update-available', (event, releaseNotes, releaseVersion) => {\n  dialog.showMessageBox({\n    type: 'question',\n    buttons: ['Not Right Now', 'Restart and Install Update'],\n    title: 'New Version Available',\n    message: `Would you like to install ${productName} v${releaseVersion}?`,\n    detail: releaseNotes,\n    callback: (res) => {\n      if (res === 1) {\n        autoUpdater.install();\n      }\n    }\n  });\n});\n\nautoUpdater.check();\n```\n\nWhen `hadron-auto-update-manager#check()` called:\n\n```\n2016-06-24 12:33:00> Program: Starting Squirrel Updater: --download https://${server}/update?version=${version}&platform=win32&arch=x64\n2016-06-24 12:33:00> Program: Fetching update information, downloading from https://${server}/update?version=${version}&platform=win32&arch=x64\n2016-06-24 12:33:00> CheckForUpdateImpl: Using existing staging user ID: 4b7f7d53-806c-5724-9079-695fe1657b09\n2016-06-24 12:33:00> CheckForUpdateImpl: Downloading RELEASES file from https://${server}/update?version=${version}&platform=win32&arch=x64\n2016-06-24 12:33:00> FileDownloader: Downloading url: https://${server}/update/RELEASES?version=${version}&platform=win32&arch=amd64&id=${_.titlecase(productName)}&localVersion=${version}\n```\n\nSee Squirrel.Windows docs https://github.com/Squirrel/Squirrel.Windows/blob/master/docs/getting-started/5-updating.md\n\n## Assets\n\nWhen `hadron-build release` is run, there are several assets which are created in the `./dist` directory.\nWhich assets are generated depends on the target platform.  \n\n### macOS\n\n- `.dmg`: Installer\n- `-darwin-${arch}.zip`: Auto update payload\n\n### Windows\n\n- `.exe`: Installer\n- `.full-nupkg`: Auto update payload\n- `.delta-nupkg`: Auto update payload w/ delta compression against previous release\n- `RELEASES`: Manifest for auto update checksumming and local delta calculation\n- `.msi`: Global Windows installer (requires Administrator)\n- `-win32-${arch}.zip`: Convenience for techops team's that can't use `.msi` or use a package manager such as Chocolatey.\n\n## Auto Update\n\n- `hadron-auto-update-manager`: https://github.com/hadron-auto-update-manager\n\n### Windows\n\n- `electron-squirrel-startup`: https://github.com/mongodb-js/electron-squirrel-startup\n- [Update process explained step by step](https://github.com/Squirrel/Squirrel.Windows/blob/master/docs/using/update-process.md#update-process)\n\n\n## Todo\n\n- Functional tests for `release` command\n- `railcars` command\n- `check` command ->  `mongodb-js-precommit`\n- `fmt` command ->  `mongodb-js-fmt`\n- Make `test` use `xvfb-maybe` by default\n- Support for [staged rollouts via auto update](https://github.com/Squirrel/Squirrel.Windows/blob/master/docs/using/staged-rollouts.md)\n\n\n## License\n\nApache 2.0\n\n[travis_img]: https://img.shields.io/travis/mongodb-js/hadron-build.svg\n[travis_url]: https://travis-ci.org/mongodb-js/hadron-build\n[npm_img]: https://img.shields.io/npm/v/hadron-build.svg\n[npm_url]: https://npmjs.org/package/hadron-build\n[npm-scripts]: https://docs.npmjs.com/misc/scripts\n[spectron]: https://github.com/kevinsawicki/spectron\n[electron-mocha]: https://github.com/jprichardson/electron-mocha\n[electron-app-getPath]: https://github.com/electron/electron/blob/78193a0608b5fa55161e95b7b3845b6bd85af377/docs/api/app.md#appgetpathname\n"
+  ]
 }

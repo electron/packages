@@ -57,6 +57,5 @@
       "name": "bolamn",
       "email": "nathan@bolamn.com"
     }
-  ],
-  "readme": "# electron-livereload\n\n## electron main.js  \n```\napp     = require 'app'\nwindow  = require 'browser-window'\n\nlivereload = require 'electron-livereload'\n\napp.on 'ready', ->\n  win = new window\n    title: 'My App'\n    'min-width': 520\n    'min-height': 520\n    frame: false\n    resizable: true\n    icon: 'assets/images/icon.png'\n    transparent: true\n    center: true\n\n  win.loadUrl 'file://' + path.join __dirname, 'index.html'\n  \n  livereload.client win\n```\n## grunt example\n```\nlivereload = require 'electron-livereload'\n\nelectron = livereload.server()\n\nmodule.exports = (grunt) ->\n\n  grunt.initConfig\n\n    watch: \n      options: \n        nospawn: true # !IMPORTANT!\n      client: \n        files: ['src/client/**/*.coffee'], tasks: ['coffee', 'reload-electron']\n      server: \n        files: ['src/server/**/*.coffee'], tasks: ['coffee', 'restart-electron']\n    \n    grunt.registerTask 'start', (env) ->\n      electron.start()\n      grunt.task.run 'watch'\n      \n    grunt.registerTask 'restart-electron', ->\n      electron.restart()\n    \n    grunt.registerTask 'reload-electron', ->\n      electron.reload()\n  ```\n"
+  ]
 }

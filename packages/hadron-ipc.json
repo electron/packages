@@ -94,6 +94,5 @@
       "name": "imlucas",
       "email": "hrabovsky.lucas@gmail.com"
     }
-  ],
-  "readme": "# hadron-ipc [![travis][travis_img]][travis_url] [![npm][npm_img]][npm_url]\n\n> Simplified IPC for electron apps.\n\n## Example\n\nFrom the main process, use `.respondTo(methodName, handler)`:\n\n```javascript\nprocess.env.DEBUG = 'hadron-*';\n\nconst app = require('electron').app;\nconst ipc = require('hadron-ipc');\n\nipc.respondTo('application:ping', (sender) => {\n  console.log('processing application:quit from BrowserWindow', sender);\n  return 'pong';\n});\n```\n\nFrom a renderer process, use `.call(methodName, handler)`:\n\n```javascript\nprocess.env.DEBUG = 'hadron-*';\n\nconst ipc = require('hadron-ipc');\n\nipc.call('application:ping', (res) => {\n  console.log('main process says', res);\n});\n```\n\n## License\n\nApache 2.0\n\n[travis_img]: https://img.shields.io/travis/mongodb-js/hadron-ipc.svg\n[travis_url]: https://travis-ci.org/mongodb-js/hadron-ipc\n[npm_img]: https://img.shields.io/npm/v/hadron-ipc.svg\n[npm_url]: https://npmjs.org/package/hadron-ipc\n"
+  ]
 }

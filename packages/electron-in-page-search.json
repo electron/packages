@@ -1,15 +1,16 @@
 {
   "name": "electron-in-page-search",
-  "version": "0.0.2",
+  "version": "1.2.3",
   "description": "Electron module to provide in-page search feature",
   "main": "src/index.js",
   "scripts": {
-    "build": "tsc -p src/",
+    "build": "tsc -p .",
     "lint": "tslint $(git ls-files | grep -E \"\\.ts$\")",
-    "example": "npm install && cd example/browser-window && npm start",
-    "watch": "guard --watchdir src",
+    "example": "npm install && npm run build && cd example/browser-window && npm start",
+    "watch": "guard --watchdir src test",
     "preversion": "npm run lint && npm run build",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "electron-mocha --timeout 10000 --renderer test/*.js",
+    "gen-dts": "tsc -d src/index.ts && mv src/index.d.ts ."
   },
   "repository": {
     "user": "rhysd",
@@ -37,17 +38,21 @@
   "license": "MIT",
   "devDependencies": {
     "@types/electron": "^1.4.26",
+    "@types/mocha": "^2.2.32",
+    "@types/sinon": "^1.16.31",
     "electron": "^1.4.6",
+    "electron-mocha": "^3.1.1",
+    "sinon": "^1.17.6",
     "tslint": "^3.15.1",
     "typescript": "^2.0.8"
   },
-  "gitHead": "5f2c25a3fd33b2c5fb2649b612acd7df7e7711b9",
+  "gitHead": "f62b845144eb93b7ec034949f3bfc33916cab347",
   "homepage": "https://github.com/rhysd/electron-in-page-search#readme",
   "_npmVersion": "3.10.7",
   "_nodeVersion": "6.6.0",
   "dist": {
-    "shasum": "f41f7fde0e2a53d3d8a7edff7ec429f573c94833",
-    "tarball": "http://registry.npmjs.org/electron-in-page-search/-/electron-in-page-search-0.0.2.tgz"
+    "shasum": "c1663b15ba3e646f371d9ad278a1cce9a7a79c80",
+    "tarball": "http://registry.npmjs.org/electron-in-page-search/-/electron-in-page-search-1.2.3.tgz"
   },
   "versions": [
     {
@@ -57,10 +62,46 @@
     {
       "number": "0.0.2",
       "date": "2016-11-11T10:52:05.351Z"
+    },
+    {
+      "number": "1.0.0",
+      "date": "2016-11-14T22:07:10.197Z"
+    },
+    {
+      "number": "1.0.1",
+      "date": "2016-11-14T23:32:44.039Z"
+    },
+    {
+      "number": "1.0.2",
+      "date": "2016-11-15T01:52:40.398Z"
+    },
+    {
+      "number": "1.1.0",
+      "date": "2016-11-15T02:22:59.738Z"
+    },
+    {
+      "number": "1.1.1",
+      "date": "2016-11-16T06:05:23.976Z"
+    },
+    {
+      "number": "1.1.2",
+      "date": "2016-11-17T08:40:58.692Z"
+    },
+    {
+      "number": "1.2.1",
+      "date": "2016-11-25T06:58:31.897Z"
+    },
+    {
+      "number": "1.2.2",
+      "date": "2016-11-25T08:00:23.693Z"
+    },
+    {
+      "number": "1.2.3",
+      "date": "2016-11-25T09:18:27.652Z"
     }
   ],
   "created": "2016-11-10T00:10:28.305Z",
-  "modified": "2016-11-11T10:52:05.351Z",
+  "modified": "2016-11-25T09:18:27.652Z",
   "lastPublisher": {
     "name": "rhysd",
     "email": "lin90162@yahoo.co.jp"
@@ -70,6 +111,5 @@
       "name": "rhysd",
       "email": "lin90162@yahoo.co.jp"
     }
-  ],
-  "readme": "Under construction\n"
+  ]
 }

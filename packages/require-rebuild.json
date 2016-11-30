@@ -105,6 +105,5 @@
       "name": "juliangruber",
       "email": "julian@juliangruber.com"
     }
-  ],
-  "readme": "\n# require-rebuild\n\n  Patch `require()` to rebuild a node module if it has been built for a different node version.\n\n  Works with _electron_ as well and has been tested on OSX and Windows.\n\n## Usage\n\n  Once, as the first line of your program, include this line:\n\n```js\nrequire('require-rebuild')();\n```\n\n  That's it! Now all further `require()` calls, no matter how deep in your dependency tree,  will make sure a native module has been compiled for the right node version.\n\n  To see it in action, install a native module, then switch to a different node version with a different abi, and see how it rebuilds on the fly:\n\n```bash\n$ node example.js\nRecompiling node_modules/bignum\nCXX(target) Release/obj.target/bignum/bignum.o\nSOLINK_MODULE(target) Release/bignum.node\nDone!\n```\n\n## General warning\n\nThis belongs into application code, not into a lib. Better leave it to a lib's consumer how to build their dependencies.\n\n## Build systems\n\nAt this moment, those build systems are supported\n\n- `node-gyp`\n- `prebuild`\n\n## License\n\n  MIT\n\n"
+  ]
 }

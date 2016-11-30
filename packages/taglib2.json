@@ -121,10 +121,18 @@
     {
       "number": "2.7.1",
       "date": "2016-11-05T11:19:29.487Z"
+    },
+    {
+      "number": "2.7.2",
+      "date": "2016-11-14T12:04:42.408Z"
+    },
+    {
+      "number": "2.7.3",
+      "date": "2016-11-15T12:43:49.992Z"
     }
   ],
   "created": "2016-04-10T03:25:11.995Z",
-  "modified": "2016-11-05T11:19:29.487Z",
+  "modified": "2016-11-15T12:43:49.992Z",
   "lastPublisher": {
     "name": "hij1nx",
     "email": "paolo@async.ly"
@@ -134,6 +142,5 @@
       "name": "hij1nx",
       "email": "paolo@async.ly"
     }
-  ],
-  "readme": "# SYNOPSIS\ntaglib version 2 bindings\n\n# BUILD STATUS\n[![Build status](https://ci.appveyor.com/api/projects/status/fkt7jiqubahuja5o?svg=true)](https://ci.appveyor.com/project/0x00A/node-taglib2)\n\n# INSTALLATION\n\n### OSX/Linux\n\nYou need to have installed a proper C/C++ compiler toolchain, like GCC (For OSX please download [Xcode and Command Line Tools](https://developer.apple.com/xcode/))\n\n### Windows\n\nYou need to have Visual C++ Build Environment setup, which you can download as a standalone [Visual C++ Build Tools](http://landinghub.visualstudio.com/visual-cpp-build-tools) package or get it as part of [Visual Studio 2015](https://www.visualstudio.com/products/visual-studio-community-vs).\n\n# USAGE\nFor example, with electron...\n\n```\nELECTRON=1 npm install\n```\n\n### WRITING TAGS\nNote that `track` will overwrite `tracknumber` if specified in the same write.\n\n```js\nconst taglib = require('taglib2')\nconst mime = require('node-mime')\nconst fs = require('fs')\n\nconst props = {\n  artist: 'Howlin\\' Wolf',\n  title: 'Evil is goin\\' on',\n  album: 'Smokestack Lightnin\\'',\n  comment: 'Chess Master Series',\n  genre: 'blues',\n  year: 1951,\n  track: 3,\n  tracknumber: '1/1',\n  discnumber: '1/1',\n  pictures: [\n    {\n      \"mimetype\": mime('./cover.jpg'),\n      \"picture\": fs.readFileSync('./cover.jpg')\n    } \n  ],\n}\n\ntaglib.writeTagsSync('./file.mp3', props)\n```\n\n### READING TAGS\n\n```js\nconst taglib = require('taglib2')\nconst tags = taglib.readTagsSync('./file.mp3')\n```\n\n#### OUTPUT\n`tags.pictures` will be an array of buffers that contain image data.\n\n```json\n{\n  \"artist\": \"Howlin' Wolf\",\n  \"albumartist\": \"Howlin' Wolf\",\n  \"title\": \"Evil is goin' on\",\n  \"album\": \"Smokestack Lightnin'\",\n  \"comment\": \"Chess Master Series\",\n  \"composer\": \"Chester Burnett\",\n  \"genre\": \"blues\",\n  \"year\": 1951,\n  \"track\": 3,\n  \"tracknumber\": \"3/3\",\n  \"discnumber\": \"1/1\",\n  \"pictures\": [\n    {\n      \"mimetype\": \"image/jpeg\",\n      \"picture\": <Buffer ff d8 ff e0 00 10 4a 46 49 46 00 01 ... >\n    } \n  ],\n  \"bitrate\": 192,\n  \"bpm\": 120,\n  \"samplerate\": 44100,\n  \"channels\": 2,\n  \"compilation\": false,\n  \"time\": \"1:30\",\n  \"length\": 90\n}\n```\n"
+  ]
 }

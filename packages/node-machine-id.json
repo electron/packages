@@ -1,6 +1,6 @@
 {
   "name": "node-machine-id",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "main": "./dist/index.js",
   "description": "Unique machine (desktop) id (no admin privileges required).",
   "author": {
@@ -79,12 +79,12 @@
     "webpack-dev-server": "^1.14.1",
     "webpack-module-hot-accept": "^1.0.4"
   },
-  "gitHead": "e95eae59d401895106899a2105288bdb42144723",
+  "gitHead": "9a89b826b7c6775bc0bafb15185c9ebc3b7fa2eb",
   "_npmVersion": "3.10.3",
-  "_nodeVersion": "6.5.0",
+  "_nodeVersion": "6.7.0",
   "dist": {
-    "shasum": "57f339391506f504df508a2128a594e4b4958902",
-    "tarball": "http://registry.npmjs.org/node-machine-id/-/node-machine-id-1.1.1.tgz"
+    "shasum": "30c8bb4b16b4c4ba6fea56e8e3d1fa7ab61d2944",
+    "tarball": "http://registry.npmjs.org/node-machine-id/-/node-machine-id-1.1.2.tgz"
   },
   "versions": [
     {
@@ -94,10 +94,14 @@
     {
       "number": "1.1.1",
       "date": "2016-09-23T12:32:23.460Z"
+    },
+    {
+      "number": "1.1.2",
+      "date": "2016-11-23T09:49:54.856Z"
     }
   ],
   "created": "2016-09-04T19:24:57.937Z",
-  "modified": "2016-09-23T12:32:23.460Z",
+  "modified": "2016-11-23T09:49:54.856Z",
   "lastPublisher": {
     "name": "automation-stack",
     "email": "aleksandr.komlev@gmail.com"
@@ -107,6 +111,5 @@
       "name": "automation-stack",
       "email": "aleksandr.komlev@gmail.com"
     }
-  ],
-  "readme": "## Unique machine (desktop) id\n\n## Use cases\n- Software restrictions\n- Installation tracking\n\n## Features\n- Hardware independent\n- Unique within the OS installation\n- No elevated rights required\n- No external dependencies and does not require any native bindings\n- Cross-platform (OSx, Win, Linux)\n\n## How it works\n\nModule based on OS native UUID/GUID which used for internal needs.\n\n**All others approaches requires elevated rights or much depends on hardware components, but this approach summarize the methods of selecting the most reliable unique identifier**\n\n- **Win32/64** uses key ```MachineGuid``` in registry\n```HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Cryptography``` **(can be changed by administrator but with unpredictable consequences)**\n>   It is generated during OS installation and won't change unless you make another OS\n>   updates or reinstall. Depending on the OS version it may contain the network adapter\n>   MAC address embedded (plus some other numbers, including random), or a pseudorandom number.\n\n- **OSx** uses ```IOPlatformUUID``` (the same Hardware UUID)\n``` ioreg -rd1 -c IOPlatformExpertDevice ```\n>   Value from I/O Kit registry in IOPlatformExpertDevice class\n\n- **Linux** uses ```/var/lib/dbus/machine-id``` **(can be changed by ```root``` but with unpredictable consequences)**\nhttp://man7.org/linux/man-pages/man5/machine-id.5.html\n>   The /var/lib/dbus/machine-id file contains the unique machine ID of the local\n>   system that is set during installation. The machine ID is a single\n>   newline-terminated, hexadecimal, 32-character, lowercase machine ID\n>   string. When decoded from hexadecimal, this corresponds with a\n>   16-byte/128-bit string.\n>\n>   The machine ID is usually generated from a random source during\n>   system installation and stays constant for all subsequent boots.\n>   Optionally, for stateless systems, it is generated during runtime at\n>   early boot if it is found to be empty.\n>\n>   The machine ID does not change based on user configuration or when\n>   hardware is replaced.\n\n\n## Installation\n```\nnpm install node-machine-id\n```\n\n## Usage\n### Function: machineId(original)\n- **original** ```<Boolean>```, If ```true``` return original value of machine id, otherwise return hashed value (sha-256), default: ```false```\n\n### Function: machineIdSync(original);\n- syncronous version of ```machineId```\n\n```js\nimport {machineId, machineIdSync} from 'node-machine-id';\n\n// Asyncronous call with async/await or Promise\n\nasync function getMachineId() {\n    let id = await machineId();\n    ...\n}\n\nmachineId().then((id) => {\n    ...\n})\n\n// Syncronous call\n\nlet id = machineIdSync()\n// id = c24b0fe51856497eebb6a2bfcd120247aac0d6334d670bb92e09a00ce8169365\nlet id = machineIdSync({original: true})\n// id = 98912984-c4e9-5ceb-8000-03882a0485e4\n```\n"
+  ]
 }

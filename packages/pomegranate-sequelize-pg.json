@@ -108,6 +108,5 @@
       "name": "paperelectron",
       "email": "jim.bulkowski@paperelectron.com"
     }
-  ],
-  "readme": "## Pomegranate-sequelize-pg\n\nAdds models to the `SQL` injectable object provided by [pomegranate-sequelize-core](https://github.com/Pomegranate/pomegranate-sequelize-core)\n\n## Install\n\n```shell\nnpm install --save pomegranate-sequelize-pg\n```\n\n## Usage\n\nRun `pomegranate build` to generate a config file for connection details. Place you model files in the configured work directory (defaults to `./models`).\n\nYour loaded models will be available on the `SQL` injectable `SQL.<modelName>`\n\n## Model File\n\nThis format is expected by the plugin for your model files. The `classMethods.associate` method will be called by the plugin when all of the models are loaded.\n\n```javascript\n// file ./models/User.js\n// Available as SQL.User\n\nmodule.exports = function(sequelize, DataTypes) {\n  var User = sequelize.define('user', {\n      name: {type: DataTypes.STRING},\n      email: {type: DataTypes.STRING},\n  }, \n  {\n    classMethods: {\n      associate: function(models) {\n        //define associations if any.\n        User.belongsTo(models.Location)\n      }\n  }\n  });\n\n  // must return your model.\n  return Feed\n};\n```\n"
+  ]
 }

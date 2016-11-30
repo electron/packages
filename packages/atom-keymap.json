@@ -1,6 +1,6 @@
 {
   "name": "atom-keymap",
-  "version": "7.1.3",
+  "version": "7.1.3-8",
   "description": "Atom's DOM-aware keymap module",
   "main": "./lib/keymap-manager",
   "scripts": {
@@ -33,7 +33,7 @@
     "event-kit": "^1.0.0",
     "fs-plus": "^2.0.4",
     "grim": "^1.2.1",
-    "keyboard-layout": "2.0.2",
+    "keyboard-layout": "2.0.7",
     "pathwatcher": "^6.2",
     "property-accessors": "^1",
     "season": "^5.4.1"
@@ -66,13 +66,13 @@
     "space-pencil": "0.3.0",
     "temp": "0.8.3"
   },
-  "gitHead": "6a9c0fc93d458f3915034e2a99fa971b82eb06b1",
+  "gitHead": "e4ce3c52d9c317e76bbc529e39594f1c864d4f54",
   "homepage": "https://github.com/atom/atom-keymap#readme",
   "_npmVersion": "3.10.8",
   "_nodeVersion": "6.9.1",
   "dist": {
-    "shasum": "cbcb0934d072293cfe740bc9bcfe3cd6ec53df96",
-    "tarball": "http://registry.npmjs.org/atom-keymap/-/atom-keymap-7.1.3.tgz"
+    "shasum": "a8ac2812d76ee651ab245964f19081149987ca6b",
+    "tarball": "http://registry.npmjs.org/atom-keymap/-/atom-keymap-7.1.3-8.tgz"
   },
   "stars": 1,
   "versions": [
@@ -507,18 +507,94 @@
     {
       "number": "7.1.3",
       "date": "2016-11-10T22:06:45.220Z"
+    },
+    {
+      "number": "7.1.4",
+      "date": "2016-11-15T17:39:58.621Z"
+    },
+    {
+      "number": "7.1.5",
+      "date": "2016-11-15T20:07:36.014Z"
+    },
+    {
+      "number": "7.2.0",
+      "date": "2016-11-15T20:13:32.483Z"
+    },
+    {
+      "number": "7.1.6",
+      "date": "2016-11-16T17:48:06.597Z"
+    },
+    {
+      "number": "7.1.3-1",
+      "date": "2016-11-16T17:48:56.700Z"
+    },
+    {
+      "number": "7.1.3-2",
+      "date": "2016-11-17T18:07:07.058Z"
+    },
+    {
+      "number": "7.1.7",
+      "date": "2016-11-17T18:07:32.209Z"
+    },
+    {
+      "number": "7.1.8",
+      "date": "2016-11-17T21:30:52.791Z"
+    },
+    {
+      "number": "7.1.3-3",
+      "date": "2016-11-17T21:32:06.641Z"
+    },
+    {
+      "number": "7.1.9",
+      "date": "2016-11-18T16:31:39.423Z"
+    },
+    {
+      "number": "7.1.3-4",
+      "date": "2016-11-18T16:36:12.378Z"
+    },
+    {
+      "number": "7.1.10",
+      "date": "2016-11-21T00:38:23.354Z"
+    },
+    {
+      "number": "7.1.3-5",
+      "date": "2016-11-21T00:39:30.801Z"
+    },
+    {
+      "number": "7.1.11",
+      "date": "2016-11-21T00:41:52.075Z"
+    },
+    {
+      "number": "7.1.3-6",
+      "date": "2016-11-21T00:43:10.920Z"
+    },
+    {
+      "number": "7.1.3-7",
+      "date": "2016-11-21T16:54:57.245Z"
+    },
+    {
+      "number": "7.1.12",
+      "date": "2016-11-21T16:55:41.093Z"
+    },
+    {
+      "number": "7.1.13",
+      "date": "2016-11-23T15:46:13.278Z"
+    },
+    {
+      "number": "7.1.3-8",
+      "date": "2016-11-23T15:47:49.120Z"
     }
   ],
   "created": "2014-03-14T19:42:19.087Z",
-  "modified": "2016-11-10T22:06:45.220Z",
+  "modified": "2016-11-23T15:47:49.120Z",
   "lastPublisher": {
-    "name": "nathansobo",
-    "email": "nathan@github.com"
+    "name": "as-cii",
+    "email": "as-cii@github.com"
   },
   "owners": [
     {
       "name": "as-cii",
-      "email": "me@as-cii.com"
+      "email": "as-cii@github.com"
     },
     {
       "name": "atom",
@@ -527,6 +603,10 @@
     {
       "name": "benogle",
       "email": "ogle.ben@gmail.com"
+    },
+    {
+      "name": "iolsen",
+      "email": "ian.olsen@gmail.com"
     },
     {
       "name": "izuzak",
@@ -552,6 +632,5 @@
       "name": "zcbenz",
       "email": "zcbenz@gmail.com"
     }
-  ],
-  "readme": "# Atom keymap\n[![Build Status](https://travis-ci.org/atom/atom-keymap.svg?branch=master)](https://travis-ci.org/atom/atom-keymap)\n[![Dependency Status](https://david-dm.org/atom/atom-keymap.svg)](https://david-dm.org/atom/atom-keymap)\n\nAtom's DOM-aware keymap module\n\n```js\nvar KeymapManager, keymaps;\nKeymapManager = require('atom-keymap')\n\nkeymaps = new KeymapManager\nkeymaps.defaultTarget = document.body\n\n// Pass all the window's keydown events to the KeymapManager\ndocument.addEventListener('keydown', function(event) {\n  keymaps.handleKeyboardEvent(event)\n})\n\n// Add some keymaps\nkeymaps.loadKeymap('/path/to/keymap-file.json') // can also be a directory of json / cson files\n// OR\nkeymaps.add('/key/for/these/keymaps', {\n  \"body\": {\n    \"up\": \"core:move-up\",\n    \"down\": \"core:move-down\"\n  }\n})\n\n// When a keybinding is triggered, it will dispatch it on the node that was focused\nwindow.addEventListener('core:move-up', (event) => console.log('up', event))\nwindow.addEventListener('core:move-down', (event) => console.log('down', event))\n```\n\n## Development\n\nThe tests for this module *must* be run in Electron because they depend on browser APIs.\n\n* [`devtool`](https://github.com/Jam3/devtool) is bundled as a development dependency to run the tests.\n* Native modules need to be compiled against the version of Electron included with `devtool`. **Be sure to run `electron-rebuild` be sure recompile native dependencies before running tests.**\n* Tests can be run in batch mode with `npm test`\n* If you want to use the debugger, profiler, etc or just speed up your flow by being able to refresh the `devtool` window to re-run tests, use the `npm run test-drive` script. This will keep `devtool` open instead of exiting after the test run.\n"
+  ]
 }

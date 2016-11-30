@@ -80,6 +80,5 @@
       "name": "shishamou",
       "email": "shisha225@gmail.com"
     }
-  ],
-  "readme": "# redux-electron\n\n## Installation\n```bash\nnpm install redux-electron\n```\n## Usage\n#### Main Process\n```javascript\nimport { applyMiddleware, compose } from 'redux';\nimport { createMainStore } from 'redux-electron';\n\nlet enhancer = compose(\n  applyMiddleware(...middlewares)\n);\n\nconst store = createMainStore(rootReducer, enhancer);\n```\n#### Window / Renderer\n```javascript\nimport { applyMiddleware, compose } from 'redux';\nimport createLogger from 'redux-logger';\nimport { createRendererStore } from 'redux-electron';\n\nlet middlewares = [\n  createLogger(),\n  ...\n];\n\nlet enhancer = compose(\n  applyMiddleware(...middlewares)\n);\n\nconst store = createRendererStore(enhancer);\n\nReactDOM.render((\n  <Provider store={store}>\n    <App />\n  </Provider>\n), document.getElementById('app'));\n```\n"
+  ]
 }

@@ -48,7 +48,8 @@
     "shasum": "e198af32a4b2229cbd59db5d553b2bb1ea040bb1",
     "tarball": "http://registry.npmjs.org/hyperterm-sync-settings/-/hyperterm-sync-settings-1.5.1.tgz"
   },
-  "stars": 6,
+  "deprecated": "hyperterm-sync-settings renamed to hyper-sync-settings",
+  "stars": 7,
   "versions": [
     {
       "number": "1.0.0",
@@ -68,7 +69,7 @@
     }
   ],
   "created": "2016-07-19T06:01:49.359Z",
-  "modified": "2016-11-07T23:17:15.184Z",
+  "modified": "2016-11-26T21:56:22.166Z",
   "lastPublisher": {
     "name": "dfrankland",
     "email": "dylan@frankland.io"
@@ -78,6 +79,5 @@
       "name": "dfrankland",
       "email": "dylan@frankland.io"
     }
-  ],
-  "readme": "# HyperTerm Sync Settings\n\n> Sync HyperTerm settings with Github.\n\n## Setup\n\n1.  Create a [new personal access token](https://github.com/settings/tokens/new)\n    which has the `gist` scope. Save your token to `personalAccessToken` inside\n    `~/.hyperterm_plugins/.hyperterm-sync-settings.json`. Alternatively, set the\n    `HYPERTERM_SYNC_SETTINGS_PERSONAL_ACCESS_TOKEN` environmental variable using\n    this token.\n\n2.  Create a [new gist](https://gist.github.com/) and save it. Save your gist id\n    (last part of the url after the username) to `gistId` inside\n    `~/.hyperterm_plugins/.hyperterm-sync-settings.json`. Alternatively, set the\n    `HYPERTERM_SYNC_SETTINGS_GIST_ID` environmental variable using this id.\n\n3.  Restart HyperTerm.\n\n**Disclaimer:** Github Gists are by default **public**. If you don't want other\npeople to easily find your gist (i.e. if you use certain packages, storing\nauth-tokens, a malicious party could abuse them), you should make sure to\n**create a secret gist**.\n\n## How to use\n\n![alt demo](http://i.giphy.com/9CNA0ceu5iuoU.gif)\n\nUse the commands below in the menu:\n\n1.  `Plugins > Sync Settings > Check for Updates`\n\n    Checks Github to see if there are any updates available for your settings.\n\n2.  `Plugins > Sync Settings > Backup Settings`\n\n    Copies your `~/.hyperterm.js` file to your local repository and pushes it to\n    Github.\n\n3.  `Plugins > Sync Settings > Restore Settings`\n\n    Fast forwards local repo with all new commits from Github and copies the new\n    settings to your `~/.hyperterm.js` file.\n\n4.  `Plugins > Sync Settings > Open >`\n\n    *   `Gist`: Opens the link to the configured Gist.\n\n    *   `Repo`: Opens the local repo that is cloned from the Gist.\n\n    *   `Configuration`: Opens the\n        `~/.hyperterm_plugins/.hyperterm-sync-settings.json` config file.\n\n## Configuration\nAdd `syncSettings` in your `.hyperterm.js` config. The configuration below shows all existing configuration values in their default states.\n\n```javascript\nmodule.exports = {\n  config: {\n    // other configs...\n    syncSettings: {\n      quiet: false\n    },\n  },\n  // ...\n}\n```\n\n#### `config.syncSettings.quiet`\n* Type: boolean\n* Default: false\n\n Mute the notification saying \"Your settings are up to date\". This will not hide any other notifications.\n\n## Contribution\n\nPlease help improve this package! There's lots of room for stability and new\nfeatures to be made, so I would love if you could help improve it :)\n\n## Credit\n\nCredit where credit's due; the idea of this comes directly from\n[`atom-sync-settings`](https://github.com/atom-community/sync-settings).\n"
+  ]
 }

@@ -53,6 +53,5 @@
       "name": "bma",
       "email": "bjoern@electronauts.net"
     }
-  ],
-  "readme": "hexdump-js\r\n=============\r\nHexdump an ArrayBuffer to a String (NodeJS)\r\n\r\n----------\r\n\r\n### Install\r\n\r\n```\r\nnpm install hexdump-nodejs\r\n```\r\n\r\n----------\r\n\r\n###Usage\r\n```js\r\nvar hexdump = require('hexdump-nodejs');\r\nvar buffer = new Buffer(0x60);\r\n\r\nbuffer.writeUInt16BE(0xaaaa, 0);\r\nbuffer.writeUInt32BE(0x12345678, 0x40);\r\nbuffer.writeUInt32BE(0xffffbbbb, 0x50);\r\nbuffer.write('The quick brown fox jumps over the lazy dog!', 0x10);\r\n\r\nconsole.log(hexdump(buffer));\r\n```\r\nThis outputs the following to the console:\r\n```sh\r\n  Offset  00 01 02 03 04 05 06 07 08 09 0A 0B 0C 0D 0E 0F\r\n00000000  AA AA 00 00 00 00 00 00 00 00 00 00 00 00 00 00  ªª..............\r\n00000010  54 68 65 20 71 75 69 63 6B 20 62 72 6F 77 6E 20  The quick brown\r\n00000020  66 6F 78 20 6A 75 6D 70 73 20 6F 76 65 72 20 74  fox jumps over t\r\n00000030  68 65 20 6C 61 7A 79 20 64 6F 67 21 00 00 00 00  he lazy dog!....\r\n00000040  12 34 56 78 00 00 00 00 00 00 00 00 00 00 00 00  .4Vx............\r\n00000050  FF FF BB BB 00 00 00 00 00 00 00 00 00 00 00 00  ÿÿ»»............\r\n```\r\n"
+  ]
 }

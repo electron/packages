@@ -1,0 +1,103 @@
+{
+  "name": "futamata",
+  "productName": "Futamata",
+  "version": "0.0.3",
+  "description": "Unofficial desktop client for sankakuchannel",
+  "main": "main/main.js",
+  "bin": {
+    "futamata": "./bin/cli.js"
+  },
+  "scripts": {
+    "build": "tsc --pretty -p .",
+    "tslint": "tslint $(git ls-files | grep -E \"\\.tsx?$\")",
+    "stylelint": "stylelint renderer/style.css webview/style.css",
+    "lint": "npm-run-all --parallel tslint stylelint",
+    "watch": "guard --watchdir main renderer webview",
+    "debug": "NODE_ENV=development electron .",
+    "start": "NODE_ENV=production electron .",
+    "preversion": "npm run lint",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "user": "Futamata",
+    "repo": "Futamata",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/Futamata/Futamata/tarball/master",
+    "clone_url": "https://github.com/Futamata/Futamata",
+    "https_url": "https://github.com/Futamata/Futamata",
+    "travis_url": "https://travis-ci.org/Futamata/Futamata",
+    "zip_url": "https://github.com/Futamata/Futamata/archive/master.zip",
+    "api_url": "https://api.github.com/repos/Futamata/Futamata"
+  },
+  "author": {
+    "name": "Futamata dev team"
+  },
+  "license": "MIT",
+  "homepage": "https://github.com/Futamata/Futamata#readme",
+  "devDependencies": {
+    "@types/cheerio": "^0.17.31",
+    "@types/electron": "^1.4.27",
+    "@types/loglevel": "^1.4.29",
+    "@types/react": "^0.14.50",
+    "@types/react-dom": "^0.14.19",
+    "@types/react-redux": "^4.4.33",
+    "@types/redux": "^3.6.31",
+    "@types/request": "0.0.34",
+    "npm-run-all": "^3.1.1",
+    "stylelint": "^7.6.0",
+    "stylelint-config-standard": "^15.0.0",
+    "tslint": "^4.0.2",
+    "tslint-react": "^2.0.0",
+    "typescript": "^2.1.0"
+  },
+  "dependencies": {
+    "cheerio": "^0.22.0",
+    "electron": "^1.4.8",
+    "loglevel": "^1.4.1",
+    "react": "^15.4.1",
+    "react-component-bytesize-icons": "^2.0.0",
+    "react-dom": "^15.4.1",
+    "react-redux": "^4.4.6",
+    "redux": "^3.6.0",
+    "request": "^2.79.0"
+  },
+  "gitHead": "6904340bf87651ef8bb35fd89d6cb89aa46b056f",
+  "_npmVersion": "3.10.8",
+  "_nodeVersion": "7.0.0",
+  "dist": {
+    "shasum": "aa74f6d380f6fe217fddcca363c877c537207abd",
+    "tarball": "http://registry.npmjs.org/futamata/-/futamata-0.0.3.tgz"
+  },
+  "versions": [
+    {
+      "number": "0.0.0",
+      "date": "2016-11-21T08:23:00.223Z"
+    },
+    {
+      "number": "0.0.1",
+      "date": "2016-11-27T17:23:30.968Z"
+    },
+    {
+      "number": "0.0.2",
+      "date": "2016-11-27T17:56:35.669Z"
+    },
+    {
+      "number": "0.0.3",
+      "date": "2016-11-28T23:45:49.556Z"
+    }
+  ],
+  "created": "2016-11-21T08:23:00.223Z",
+  "modified": "2016-11-28T23:45:49.556Z",
+  "lastPublisher": {
+    "name": "rhysd",
+    "email": "lin90162@yahoo.co.jp"
+  },
+  "owners": [
+    {
+      "name": "rhysd",
+      "email": "lin90162@yahoo.co.jp"
+    }
+  ]
+}

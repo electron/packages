@@ -149,6 +149,5 @@
       "name": "steelbrain",
       "email": "de.steelbrain@gmail.com"
     }
-  ],
-  "readme": "DeNode\n======\n\nDeNode is short for Debug Node, it's a tiny wrapper around [Electron][1] that lets you debug your [Node][2] apps using Chrome Dev Tools :tada:\n\n## Installation\n```sh\nnpm install -g denode\n```\n\n## Usage\n\n```sh\ndenode\ndenode .\ndenode ./index.js\ndenode `which browserify` -r chalk main.js\n```\n\nTo reload the app, simply press CTRL + R on Linux/Windows and CMD + R on Mac OSX.\n\n## Advanced Usage\n\nDeNode tries to load options from the local `package.json` file, you can suppress this behavior by doing `--ignore-local`. Here are the magic fields it understands\n\n```js\n{\n  \"name\": \"my-cool-app\",\n  \"electronMain\": \"./electron.js\",\n  \"electronOptions\": {\n    // All of BrowserWindow options are accepted here\n  },\n  \"denodeOptions\": [\n    \"DENODE_INSECURE\" // Ignore certificate errors\n  ]\n}\n```\nThe `electronOptions` field accepts all of [`BrowserWindow`][3] options, if `electronMain` is present, it is used instead of `main`.\n\n## Screenshot\n\n<img alt=\"DeNode\" src=\"https://cloud.githubusercontent.com/assets/4278113/14579761/20e2a9a2-036b-11e6-8bc7-fba7cda9a026.png\">\n\n## License\n\nDeNode is licensed under the terms of MIT License, see the LICENSE file for more info.\n\n[1]:http://electron.atom.io/\n[2]:http://nodejs.org/\n[3]:http://electron.atom.io/docs/latest/api/browser-window\n"
+  ]
 }

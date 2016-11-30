@@ -127,6 +127,5 @@
       "name": "uupaa",
       "email": "uupaa.js@gmail.com"
     }
-  ],
-  "readme": "# H264Profile.js [![Build Status](https://travis-ci.org/uupaa/H264Profile.js.svg)](https://travis-ci.org/uupaa/H264Profile.js)\n\n[![npm](https://nodei.co/npm/uupaa.h264profile.js.svg?downloads=true&stars=true)](https://nodei.co/npm/uupaa.h264profile.js/)\n\nH264(AVC) Profile and Level detection.\n\nThis module made of [WebModule](https://github.com/uupaa/WebModule).\n\n## Documentation\n- [Spec](https://github.com/uupaa/H264Profile.js/wiki/)\n- [API Spec](https://github.com/uupaa/H264Profile.js/wiki/H264Profile)\n\n## Browser, NW.js and Electron\n\n```js\n<script src=\"<module-dir>/lib/WebModule.js\"></script>\n<script src=\"<module-dir>/lib/H264Profile.js\"></script>\n<script>\n\nvar codecs     = \"mp4a.40.2, avc1.4d4015\";\nvar codecArray = codecs.split(\",\"); // -> [\"mp4a.40.2\", \" avc1.42c01e\"]\n\nfor (var i = 0, iz = codecArray.length; i < iz; ++i) {\n    var codec = codecArray[i].trim();\n\n    if (/avc1/.test(codec)) {\n        console.info( H264Profile.getProfile(codec) ); // -> \"Base\";\n        console.info( H264Profile.getLevel(codec)   ); // -> \"3.0\";\n    }\n}\n\n</script>\n```\n\n## WebWorkers\n\n```js\nimportScripts(\"<module-dir>/lib/WebModule.js\");\nimportScripts(\"<module-dir>/lib/H264Profile.js\");\n\n```\n\n## Node.js\n\n```js\nrequire(\"<module-dir>/lib/WebModule.js\");\nrequire(\"<module-dir>/lib/H264Profile.js\");\n\n```\n\n"
+  ]
 }

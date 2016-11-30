@@ -89,6 +89,5 @@
       "name": "mnichols",
       "email": "nichols.mike.s@gmail.com"
     }
-  ],
-  "readme": "# Taped Electron\n\nRun tape tests inside electron\n\nThis uses [blue-tape](https://github.com/spion/blue-tape) but is\njust using tto run tests.\n\n## Prerequisites\n\nHave electron installed;\n\n`npm install electron-prebuilt`\n\n## Usage\n\n`taped-electron --renderer {glob} --main {glob}`\n\nWhen no process type is specified, the process is assumed to be the main process.\n\n*Run Tests In Main Process*\n\n`taped-electron /path/to/main/tests/**/*-test.js`\n\nor\n\n`taped-electron -m /path/to/main/tests/**/*-test.js`\n\nor\n\n`taped-electron --main /path/to/main/tests/**/*-test.js`\n\n*Run Tests In Renderer Process*\n\n`taped-electron --renderer /path/to/renderer/tests/**/*-test.js`\n\nor\n\n`taped-electron -r /path/to/renderer/tests/**/*-test.js`\n\n\n*Run Tests In Both Processes*\n\n`taped-electron -r /path/to/renderer/tests/**/*-test.js -m /path/to/main/tests/**/*.js`\n\n*Use with a pretty reporter*\n\n`npm install tap-spec`\n`taped-electron --main ./test/main/**/*.* --renderer ./test/renderer/**/*.* | tap-spec`\n\n## Testing \n\nIf you want to confirm `taped-electron` you can clone the repo and `npm test`. You should see **2 failing tests** as well as **2 passing tests**.\nThis tests both the main and renderer processes.\n"
+  ]
 }

@@ -78,6 +78,5 @@
       "name": "elsehow",
       "email": "ffff@berkeley.edu"
     }
-  ],
-  "readme": "# empty-package\n\nrun your own distributed key-value store! \n\nlike bittorrent sync, but for a kvstore\n\n## installation\n\n    npm install -g electron-prebuilt\n    npm install -g swarmkvd\n\nnow generate some keys\n\n    node -pe \"JSON.stringify(require('ssb-keys').generate())\" > keys.json\n\n## usage\n\n    swarmkvd start keys.json \n    \n      Host a kv. If keys.json has a public and private key,\n        you can put items. If it has only a public key, you\n        can get and list items.\n    \n        optional: -d [database]\n    \n    swarmkvd get KEY\n    \n      Print a json object for the values at KEY,\n        mapping hashes to values\n    \n    swarmkvd list\n    \n      Print a list of keys and values as json, one per line.\n    \n    swarmkvd put KEY VALUE\n    \n      Assoc VALUE with KEY in the kv\n\n## developing\n\n        npm install\n        npm run watch\n\nnow you can edit `test/index.js` or `src/index.js`\n\n`npm test` will re-run on changes\n"
+  ]
 }

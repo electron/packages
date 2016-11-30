@@ -74,6 +74,5 @@
       "name": "halflegend",
       "email": "HalfLegend@live.com"
     }
-  ],
-  "readme": "# Elegular elecgron-angular\r\n\r\nAn angular based electron app framework.\r\n\r\n### Usage\r\n\r\n```\r\nnpm install --save elegular\r\n```\r\n\r\nEach window should be an angular module.\r\nThere are two steps you need to do, before the window is shown.  \r\n\r\nConfigurate the path for the modules\r\nExample:\r\nCreate a file named window-config.ts:\r\n``` typescript\r\nimport {ElegularWindowConfig} from \"elegular\";\r\nlet windowConfig: ElegularWindowConfig[] = [{\r\n    windowId: \"main\",\r\n    angularModulePath: __dirname + \"/main-window/main-window.module.js\",\r\n    isMainWindow: true,\r\n    isOpenDevTool: true,\r\n    windowOptions: {\r\n        width: 800,\r\n        height: 800,\r\n        frame: true,\r\n        alwaysOnTop: false\r\n    }\r\n}];\r\nexport {windowConfig};\r\n```\r\nRegister the windows\r\nIn main.ts:\r\n``` typescript\r\nimport {ElegularApplication} from \"elegular\";\r\nimport {windowConfig} from \"./app/window-config\";\r\nElegularApplication.registerAngularWindowModuleConfig(...windowConfig);\r\nElegularApplication.runApplication();\r\n\r\n```\r\n\r\nThen the main window will show according to your configuration.\r\n\r\n\r\n"
+  ]
 }

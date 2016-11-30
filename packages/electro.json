@@ -99,6 +99,5 @@
       "name": "dominictarr",
       "email": "dominic.tarr@gmail.com"
     }
-  ],
-  "readme": "# electro\n\nelectron and unix make friends\n\n# synopsis\n\nThis is a simple wrapper around electron that kills boilerplate and allows stdio to work correct.\nMaking electron a better unix citizen!\n\n## Example: cat\n\nwrite stdin or the first file to the dom...\n\n``` js\nvar path = require('path')\nvar pre = document.createElement('pre')\ndocument.body.appendChild(pre)\n\n;( process.stdin.isTTY\n  ? require('fs').createReadStream(path.resolve(process.argv[2]))\n  : process.stdin\n)\n.on('data', function (data) {\n  pre.innerText += data.toString()\n})\n.resume()\n```\n\nyou'll find this file in `./examples/cat.js`\n\nthen run it with `electro`\n\n```\n# read the first file\nelectro ./examples/cat.js README.md\n\n# OR, use pipes!\n\nelectro ./examples/cat.js < README.md\n\n```\n\n## Usage\n\nmake sure electron is installed first!\n\n`npm install electron-prebuilt -g`\n\n```\nelectro [electro options] filename {options}\n```\noptions work the same as in node.js.\nany options passed before `filename` are options for\n[chrome](http://electron.atom.io/docs/v0.31.0/api/chrome-command-line-switches/) or electron.\nany [BrowserWindow](http://electron.atom.io/docs/v0.31.0/api/browser-window/#new-browserwindow-options) option can be set this way.\n\nIf no arguments are provided, electro will open a repl (aka, a browser window with devtools)\n\n\n## License\n\nMIT\n"
+  ]
 }

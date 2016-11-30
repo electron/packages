@@ -1,6 +1,6 @@
 {
   "name": "electron-redux",
-  "version": "1.2.2",
+  "version": "1.2.3",
   "description": "Use redux in the main and browser process in electron",
   "main": "dist/index.js",
   "scripts": {
@@ -59,14 +59,14 @@
     "jest": "^16.0.1",
     "jest-cli": "^16.0.1"
   },
-  "gitHead": "a946a0ff55f24204c342c80eef2e98b7d2cb53bb",
+  "gitHead": "607a64afad647e183800fda1fd7c3e9353618743",
   "_npmVersion": "3.10.8",
   "_nodeVersion": "6.9.1",
   "dist": {
-    "shasum": "e189c4216360b9102a9a427806da5e88190aa337",
-    "tarball": "http://registry.npmjs.org/electron-redux/-/electron-redux-1.2.2.tgz"
+    "shasum": "002d1d46f5ee456846f5da4aa93ccc7e1007363a",
+    "tarball": "http://registry.npmjs.org/electron-redux/-/electron-redux-1.2.3.tgz"
   },
-  "stars": 1,
+  "stars": 2,
   "versions": [
     {
       "number": "0.0.1",
@@ -107,10 +107,14 @@
     {
       "number": "1.2.2",
       "date": "2016-11-12T13:11:47.972Z"
+    },
+    {
+      "number": "1.2.3",
+      "date": "2016-11-28T17:14:19.410Z"
     }
   ],
   "created": "2016-10-11T18:41:44.843Z",
-  "modified": "2016-11-12T13:11:47.972Z",
+  "modified": "2016-11-28T17:14:19.410Z",
   "lastPublisher": {
     "name": "hardchor",
     "email": "burkhard.reffeling@gmail.com"
@@ -120,6 +124,5 @@
       "name": "hardchor",
       "email": "burkhard.reffeling@gmail.com"
     }
-  ],
-  "readme": "# electron-redux\n\n[![CircleCI](https://circleci.com/gh/hardchor/electron-redux/tree/master.svg?style=svg)](https://circleci.com/gh/hardchor/electron-redux/tree/master)\n[![Stories in Ready](https://badge.waffle.io/hardchor/electron-redux.png?label=ready&title=Ready)](https://waffle.io/hardchor/electron-redux)\n\n- [Motivation](#motivation)\n- [Install](#install)\n- [Actions](#actions)\n\t- [Local actions (renderer process)](#local-actions-renderer-process)\n\t- [Aliased actions (main process)](#aliased-actions-main-process)\n- [Under the hood](#under-the-hood)\n\n## Motivation\n\nUsing redux with electron poses a couple of problems. Processes ([main](https://github.com/electron/electron/blob/master/docs/tutorial/quick-start.md#main-process) and [renderer](https://github.com/electron/electron/blob/master/docs/tutorial/quick-start.md#renderer-process)) are completely isolated, and the only mode of communication is [IPC](https://github.com/electron/electron/blob/master/docs/api/ipc-main.md).\n\n* Where do you keep the state?\n* How do you keep the state in sync across processes?\n\n\n### The solution\n\n`electron-redux` offers an easy to use solution. The redux store on the main process becomes the single source of truth, and stores in the renderer processes become mere proxies. See [under the hood](#under-the-hood).\n\n\n## Install\n\n```\nnpm install --save electron-redux\n```\n\n`electron-redux` comes as redux middleware that is really easy to apply:\n\n```javascript\n// in the main store\nimport {\n  forwardToRenderer,\n  triggerAlias,\n  replayActionMain,\n} from 'electron-redux';\n\nconst todoApp = combineReducers(reducers);\n\nconst store = createStore(\n  todoApp,\n  initialState, // optional\n  applyMiddleware(\n    triggerAlias, // optional, see below\n    ...otherMiddleware,\n    forwardToRenderer, // IMPORTANT! This goes last\n  )\n);\n\nreplayActionMain(store);\n```\n\n```javascript\n// in the renderer store\nimport {\n  forwardToMain,\n  replayActionRenderer,\n  getInitialStateRenderer,\n} from 'electron-redux';\n\nconst todoApp = combineReducers(reducers);\nconst initialState = getInitialStateRenderer();\n\nconst store = createStore(\n  todoApp,\n  initialState,\n  applyMiddleware(\n    forwardToMain, // IMPORTANT! This goes first\n    ...otherMiddleware,\n  )\n);\n\nreplayActionRenderer(store);\n```\n\nCheck out [timesheets](https://github.com/hardchor/timesheets/blob/4991fd472dbb12b0c6e6806c6a01ea3385ab5979/app/shared/store/configureStore.js) for a more advanced example.\n\nAnd that's it! You are now ready to fire actions without having to worry about synchronising your state between processes.\n\n\n## Actions\n\nActions fired **HAVE TO** be [FSA](https://github.com/acdlite/flux-standard-action#example)-compliant, i.e. have a `type` and `payload` property. Any actions not passing this test will be ignored and simply passed through to the next middleware.\n\n> NB: `redux-thunk` is not FSA-compliant out of the box, but can still produce compatible actions once the async action fires.\n\n### Local actions (renderer process)\n\nBy default, all actions are being broadcast from the main store to the renderer processes. However, some state should only live in the renderer (e.g. `isPanelOpen`). `electron-redux` introduces the concept of action scopes.\n\nTo stop an action from propagating from renderer to main store, simply set the scope to `local`:\n\n```javascript\nfunction myLocalActionCreator() {\n  return {\n    type: 'MY_ACTION',\n    payload: 123,\n    meta: {\n      scope: 'local',\n    },\n  };\n}\n```\n\n\n### Aliased actions (main process)\n\nMost actions will originate from the renderer side, but not all should be executed there as well. A great example is fetching of data from an external source, e.g. using [promise middleware](https://github.com/acdlite/redux-promise), which should only ever be executed once (i.e. in the main process). This can be achieved using the `triggerAlias` middleware mentioned [above](#install).\n\nUsing the `createAliasedAction` helper, you can quite easily create actions that are are only being executed in the main process, and the result of which is being broadcast to the renderer processes.\n\n```javascript\nimport { createAliasedAction } from 'electron-redux';\n\nexport const importGithubProjects = createAliasedAction(\n  'IMPORT_GITHUB_PROJECTS', // unique identifier\n  (accessToken, repoFullName) => ({\n    type: 'IMPORT_GITHUB_PROJECTS',\n    payload: importProjects(accessToken, repoFullName),\n  })\n);\n```\n\nCheck out [timesheets](https://github.com/hardchor/timesheets/blob/4ccaf08dee4e1a02850b5bf36e37c537fef7d710/app/shared/actions/github.js) for more examples.\n\n\n\n## Under the hood\n\nTODO\n\n- forwardToMain\n- forwardToRenderer\n- triggerAlias\n"
+  ]
 }

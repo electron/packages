@@ -67,6 +67,5 @@
       "name": "jsantell",
       "email": "jsantell@gmail.com"
     }
-  ],
-  "readme": "electron-ipc-mock\n=======\n\n[![Build Status](http://img.shields.io/travis/jsantell/electron-ipc-mock.svg?style=flat-square)](https://travis-ci.org/jsantell/electron-ipc-mock)\n[![Build Status](http://img.shields.io/npm/v/electron-ipc-mock.svg?style=flat-square)](https://www.npmjs.org/package/electron-ipc-mock)\n\nMock Communication for Electron's IPC\n\nAn API mimicking [Electron's](http://electron.atom.io/docs/latest/api/ipc-renderer/) [ipcMain](http://electron.atom.io/docs/latest/api/ipc-main/) and [ipcRenderer](http://electron.atom.io/docs/latest/api/ipc-renderer/). Swap out electron calls in your code in tests to access both mock renderer and main process IPC communication calls.\n\n## Install\n\n```\nnpm install electron-ipc-mock\n```\n\n## Usage\n\n```js\nconst { ipcRenderer, ipcMain } = require('electron-ipc-mock')();\n\nipcMain.on('request', function (e, ...args) {\n  console.log(args[0]); // 'hello'\n  e.sender.send('response', 'world');\n});\n\nipcRenderer.on('response', function (e, ...args) {\n  console.log(args[0]); // 'world'\n});\n\nipcRenderer.send('request', 'hello')\n```\n\n## Testing\n\n```\nnpm test\n```\n\n## License\n\nMIT License, Copyright (c) 2016 Jordan Santell\n"
+  ]
 }

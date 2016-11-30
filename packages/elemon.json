@@ -1,6 +1,6 @@
 {
   "name": "elemon",
-  "version": "4.0.3",
+  "version": "4.0.4",
   "description": "live-reload tool for developing electron application",
   "main": "elemon.js",
   "keywords": [
@@ -30,13 +30,13 @@
   "dependencies": {
     "chokidar": "^1.6.1"
   },
-  "gitHead": "9bfd58f7db6705b75f242bd8d2828c2443abc3fb",
+  "gitHead": "85ab8e0bd02d8381de795379fa44947c13d3ecad",
   "scripts": {},
   "_npmVersion": "3.10.9",
-  "_nodeVersion": "7.0.0",
+  "_nodeVersion": "7.1.0",
   "dist": {
-    "shasum": "bc7754fa2d1b4a8599f3508245c2f1ab6c7519e6",
-    "tarball": "http://registry.npmjs.org/elemon/-/elemon-4.0.3.tgz"
+    "shasum": "7dd1bad403e8197de374b301869bd5a78b680c03",
+    "tarball": "http://registry.npmjs.org/elemon/-/elemon-4.0.4.tgz"
   },
   "stars": 1,
   "versions": [
@@ -99,10 +99,14 @@
     {
       "number": "4.0.3",
       "date": "2016-10-29T10:36:44.620Z"
+    },
+    {
+      "number": "4.0.4",
+      "date": "2016-11-15T19:58:33.205Z"
     }
   ],
   "created": "2016-05-18T14:49:26.323Z",
-  "modified": "2016-10-29T10:36:44.620Z",
+  "modified": "2016-11-15T19:58:33.205Z",
   "lastPublisher": {
     "name": "mawni",
     "email": "maawni@gmail.com"
@@ -112,6 +116,5 @@
       "name": "mawni",
       "email": "maawni@gmail.com"
     }
-  ],
-  "readme": "#elemon\n\n[![NPM](https://nodei.co/npm/elemon.png)](https://nodei.co/npm/elemon/)\n\n`elemon` is a tiny module that tries to provide a simple and yet efficient live-reload tool for developing [Electron](https://github.com/electron/electron) applications. You just need to pass the `app` and `BrowserWindows` and the name of the files that are associated with them as a parameter to the `elemon` function **after** your app is `ready`. Please check out the example below to see how you can easily use it to watch your app and cleanly reload it upon any changes. If the changed\nfile is the main app file, then it `relaunch` the app and `exit` the current instance. If the changed file is a file that is associated with a browser window, then that window will only be reloaded.\n\nIn fact, setting up a clean live-reload tool for developing an elenctron application is super simple by using the [Electron-api](https://github.com/electron/electron/tree/master/docs). The api already comes with whatever you need; just add a watcher (like [chokidar](https://github.com/paulmillr/chokidar) or whatever watcher you like) and you are all set.\n\n####Install\n\nPlease use `npm install --save-dev elemon`.\n\n####API\n\n**elemon(appOpts, windowsOpts)**\n\n`appOpts`: Object\n\nthe app option object has:\n\n * `app` ([app](https://github.com/electron/electron/blob/master/docs/api/app.md) object) _the main app object_\n * `res` (String) _the main app file name_\n\n`windowsOpts`: Array of objects\n\neach option object has:\n\n * `bw` ([BrowserWindow](https://github.com/electron/electron/blob/master/docs/api/browser-window.md) object) _a browser window object_\n * `res` (Array of Strings) _array of any file name that is somehow associated with this browser window_\n\n####Example\n\nSuppose it is ,a very simplified, app file structure:\n\n```\nexample_proj\n  |\n  |__view\n  |     |__reg.html\n  |     |__login.html\n  |     |__reg_handler.js\n  |     |__login_handler.js\n  |\n  |__stylesheets\n  |     |__style.css\n  |\n  |__app.js\n\n```\nthen, in the main process file where usually app and browser windows are created:\n\n*app.js*\n\n```javascript\n\nconst electron = require('electron');\nconst {app, BrowserWindow} = electron;\nconst elemon = require('elemon');\n\nconst reg_index = `file://${__dirname}/view/reg.html`;\nconst login_index = `file://${__dirname}/view/login.html`;\nvar reg_win = null;\nvar login_win = null;\n\nfunction create_wins() {\n\n  reg_win = new BrowserWindow({\n    width: 600,\n    height: 400,\n    ...\n  });\n\n  login_win = new BrowserWindow({\n    width: 600,\n    height: 400,\n    ...\n  });\n}\n\n// ... and other usual stuff ... //\n\napp.on('ready', () => {\n  create_wins();\n\n  // this is all that you have to add to your main app script\n  var app_opts = {app: app, res: 'app.js'};\n  var win_opts = [{bw: reg_win, res: ['reg.html', 'reg_handler.js', 'style.css']}\n                , {bw: login_win, res: ['login.html', 'login_handler.js', 'style.css']}];\n  elemon(app_opts, win_opts);\n});\n\n```\n\nThat's it. Have fun writing your [Electron](https://github.com/electron/electron) applications.\n\n"
+  ]
 }

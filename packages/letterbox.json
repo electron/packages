@@ -1,6 +1,6 @@
 {
   "name": "letterbox",
-  "version": "2.0.5",
+  "version": "2.0.8",
   "description": "A database driven application platform using Envelope",
   "main": "index.js",
   "repository": {
@@ -48,13 +48,13 @@
     "envelope-portable-linux64": "2.1.0-build1",
     "envelope-portable-windows": "2.1.0-build2"
   },
-  "gitHead": "5f73d2d8d9f5ec39a39c5677bc36eceff606c5d9",
+  "gitHead": "48d7f31397cea727b28b815203a23f2fa520c4a8",
   "scripts": {},
   "_npmVersion": "2.15.9",
   "_nodeVersion": "4.6.0",
   "dist": {
-    "shasum": "7f2f171393935a9353952664d94041486ba2431d",
-    "tarball": "http://registry.npmjs.org/letterbox/-/letterbox-2.0.5.tgz"
+    "shasum": "5d35cc5e8c54175389f4170b2d72a753082e0410",
+    "tarball": "http://registry.npmjs.org/letterbox/-/letterbox-2.0.8.tgz"
   },
   "versions": [
     {
@@ -124,10 +124,22 @@
     {
       "number": "2.0.5",
       "date": "2016-11-08T22:32:46.730Z"
+    },
+    {
+      "number": "2.0.6",
+      "date": "2016-11-17T19:54:38.894Z"
+    },
+    {
+      "number": "2.0.7",
+      "date": "2016-11-17T19:57:17.386Z"
+    },
+    {
+      "number": "2.0.8",
+      "date": "2016-11-17T20:09:31.450Z"
     }
   ],
   "created": "2016-11-04T19:47:10.452Z",
-  "modified": "2016-11-08T22:32:46.730Z",
+  "modified": "2016-11-17T20:09:31.450Z",
   "lastPublisher": {
     "name": "nunziotocci",
     "email": "nunzio@tocci.xyz"
@@ -137,6 +149,5 @@
       "name": "nunziotocci",
       "email": "nunzio@tocci.xyz"
     }
-  ],
-  "readme": "# Letterbox\r\nA database driven application platform leveraging Electron, Envelope and PostgreSQL.\r\n\r\n### What is Letterbox\r\nLetterbox is a tool for developers that makes writing and distributing database driven applications easy!\r\n\r\nLetterbox makes it easy to build database apps. Programs for business, like accounting or inventory. Once you've written your application, Letterbox helps you package your app for Linux, Mac and Windows computers. When users go to open your app, Letterbox will manage starting Envelope.\r\n\r\nIn order to accomplish all this magic, Letterbox makes several interesting choices to bring together an application stack. But although a lot of work went into Letterbox, it would not have been possible without the following projects:\r\n\r\n#### Electron \r\nElectron (by Github) is an application shell that provides you with several important components. The first is the web engine from Chromium, which renders your HTML and Javascript just like a browser. In order to display your HTML and Javascript files you need a webserver, so Electron provides and embeds a Node server. Finally, Electron helps you package your application so that you can easily distribute it to Linux, Mac and Windows computers. Electron is a powerful combination of technologies and effort.\r\n\r\n#### PostgreSQL\r\nPostgreSQL is an enterprise class, open source object-relational database. Letterbox brings statically compiled binaries of PostgreSQL for Linux, Mac and Windows into Node modules.\r\n\r\n#### Envelope\r\nEnvelope helps you publish web apps based on your PostgreSQL database. It includes a powerful set of custom HTML tags called \"Web Components\" that can be configured to talk directly to your database. This saves your from writing code in middleware. By simplifying your web app's architecture, you can write your app with less context switch. This reduces cognitive load making it easier to think clearly about what your app is trying to do.\r\n\r\nLetterbox is still pre-release. Please ignore it for now.\r\n\r\n# Getting Started\r\n\r\nThere are two functions in Letterbox:\r\n\r\n`letterbox.init(appName, postgresHost, postgresPort, callback)`\r\n- **appName**\r\n - Letterbox uses this to create a folder to hold the configuration file for envelope\r\n- **postgresHost**\r\n - Letterbox uses this to tell envelope how to connect to postgres\r\n- **postgresPort**\r\n - Letterbox uses this to tell envelope how to connect to postgres\r\n- **callback(envelopePort)**\r\n - This function will be called after envelope has started up, the `envelopePort` argument will allow you to tell Electron where to go\r\n\r\n\r\n`letterbox.quit()`\r\n- You need to call this function when the process is going to exit. If you don't then envelope will keep running and you won't be able to start it the next time.\r\n\r\n## Example\r\n\r\n\tconst letterbox = require('letterbox');\r\n\tconst electron = require('electron');\r\n\tconst app = electron.app;\r\n\tconst BrowserWindow = electron.BrowserWindow;\r\n\r\n\tlet mainWindows = [];\r\n\r\n\tapp.on('ready', function () {\r\n\t\tvar curWindow = new BrowserWindow({\r\n\t\t\t'width': 1024,\r\n\t\t\t'height': 768\r\n\t\t});\r\n\t\tmainWindows.push(curWindow);\r\n\t\tletterbox.init('letterbox-example', 'yourdomain.com', '5432',\r\n\t\t\t\tfunction (envelopePort) {\r\n\r\n\t\t\tcurWindow.loadURL('http://127.0.0.1:' + envelopePort, {\r\n\t\t\t\t'extraHeaders': 'pragma: no-cache\\n'\r\n\t\t\t});\r\n\t\t});\r\n\r\n\t\t// Emitted when the window is closed.\r\n\t\tcurWindow.on('closed', function() {\r\n\t\t\tmainWindows.splice(mainWindows.indexOf(curWindow), 1);\r\n\t\t});\r\n\t});\r\n\r\n\tapp.on('quit', function() {\r\n\t\tletterbox.quit();\r\n\t});\r\n  \r\n"
+  ]
 }

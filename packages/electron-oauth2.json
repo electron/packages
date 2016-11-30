@@ -1,6 +1,6 @@
 {
   "name": "electron-oauth2",
-  "version": "2.3.1",
+  "version": "2.4.0",
   "description": "An OAuth2 module for your Electron app.",
   "license": "MIT",
   "repository": {
@@ -35,7 +35,7 @@
   ],
   "devDependencies": {
     "ava": "^0.8.0",
-    "electron": "^0.4.1",
+    "electron": "^1.4.1",
     "mocha": "^2.5.3",
     "xo": "^0.12.1"
   },
@@ -64,13 +64,13 @@
       "camelcase": 0
     }
   },
-  "gitHead": "6bf641fb4657870fe6077944e372a148689c9f7c",
+  "gitHead": "3b3d9ae647fc80e0b29d26e99c3113e593aa1935",
   "homepage": "https://github.com/mawie81/electron-oauth2#readme",
-  "_npmVersion": "3.6.0",
-  "_nodeVersion": "5.7.0",
+  "_npmVersion": "3.10.8",
+  "_nodeVersion": "6.8.0",
   "dist": {
-    "shasum": "92984260572c6895f852dd48bf3c6bdcb77b2294",
-    "tarball": "http://registry.npmjs.org/electron-oauth2/-/electron-oauth2-2.3.1.tgz"
+    "shasum": "d8bc7d711c8692accfd5ef7d2afaf8ed1984e6d8",
+    "tarball": "http://registry.npmjs.org/electron-oauth2/-/electron-oauth2-2.4.0.tgz"
   },
   "stars": 1,
   "versions": [
@@ -101,10 +101,14 @@
     {
       "number": "2.3.1",
       "date": "2016-08-11T05:50:26.896Z"
+    },
+    {
+      "number": "2.4.0",
+      "date": "2016-11-27T09:16:32.083Z"
     }
   ],
   "created": "2015-12-28T13:49:08.353Z",
-  "modified": "2016-08-11T05:50:26.896Z",
+  "modified": "2016-11-27T09:16:32.083Z",
   "lastPublisher": {
     "name": "mawie81",
     "email": "mawieh@googlemail.com"
@@ -114,6 +118,5 @@
       "name": "mawie81",
       "email": "mawieh@googlemail.com"
     }
-  ],
-  "readme": "# electron-oauth2 [![Build Status](https://travis-ci.org/mawie81/electron-oauth2.svg?branch=master)](https://travis-ci.org/mawie81/electron-oauth2)\n\n> A library to handle OAuth2 authentication for your [Electron](http://electron.atom.io) app.\n\n\n## Install\n\n```\n$ npm install --save electron-oauth2\n```\n\n\n## Usage\n\n```js\nconst electronOauth2 = require('electron-oauth2');\n\nvar config = {\n    clientId: 'CLIENT_ID',\n    clientSecret: 'CLIENT_SECRET',\n    authorizationUrl: 'AUTHORIZATION_URL',\n    tokenUrl: 'TOKEN_URL',\n    useBasicAuthorizationHeader: false,\n    redirectUri: 'http://localhost'\n};\n\napp.on('ready', () => {\n  const windowParams = {\n    alwaysOnTop: true,\n    autoHideMenuBar: true,\n    webPreferences: {\n        nodeIntegration: false\n    }\n  }\n\n  const options = {\n    scope: 'SCOPE',\n    accessType: 'ACCESS_TYPE'\n  };\n\n  const myApiOauth = electronOauth2(config, windowParams);\n\n  myApiOauth.getAccessToken(options)\n    .then(token => {\n      // use your token.access_token\n\n      myApiOauth.refreshToken(token.refresh_token)\n        .then(newToken => {\n          //use your new token\n        });\n    });\n});\n```\n\n\n## API\n\n### electronOauth2(config, windowParams)\n\n#### config\n\nType: `Object`\n\n##### Fields\n\n###### authorizationUrl\nType: `String`\nThe URL for the authorization request.\n\n###### tokenUrl\nType: `String`\nThe URL for the access token request.\n\n###### clientId\nType: `String`\nThe OAuth2 client id.\n\n###### clientSecret\nType: `String`\nThe OAuth2 client secret.\n\n###### useBasicAuthorizationHeader\nType: `bool`\nIf set to true, token requests will be made using a Basic authentication header instead of passing the client id and secret in the body.\n\n###### redirectUri (optional)\nType: `String`\nSets a custom redirect_uri that can be required by some OAuth2 clients. \nDefault: ```urn:ietf:wg:oauth:2.0:oob```\n\n#### windowParams\n\nType: `Object`\n\nAn object that will be used to create the BrowserWindow. Details: [Electron BrowserWindow documention](https://github.com/atom/electron/blob/master/docs/api/browser-window.md)\n\n### Methods\n\n#### getAccessToken(options)\n\nReturns a ```Promise``` that gets resolved with the retrieved access token object if the authentication succeeds.\n\n##### options: *optional*\n\n###### scopes\nType: `String`\nThe optional OAuth2 scopes.\n\n###### accessType\nType: `String`\nThe optional OAuth2 access type.\n\n#### getAuthorizationCode(options)\n\nReturns a ```Promise``` that gets resolved with the authorization code of the OAuth2 authorization request.\n\n##### options\n\n###### scope\nType: `String`\nThe optional OAuth2 scope.\n\n###### accessType\nType: `String`\nThe optional OAuth2 access type.\n\n#### refreshToken(token)\n\nReturns a ```Promise``` that gets resolved with the refreshed token object.\n\n##### token\nType: `String`\nAn OAuth2 refresh token.\n\n## License\n\nMIT © [Marcel Wiehle](http://marcel.wiehle.me)\n"
+  ]
 }

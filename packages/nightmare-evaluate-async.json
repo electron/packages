@@ -85,6 +85,5 @@
       "name": "zeekay",
       "email": "zk@monoid.io"
     }
-  ],
-  "readme": "# nightmare-evaluate-async [![Build Status](https://travis-ci.org/zeekay/nightmare-evaluate-async.svg?branch=master)](https://travis-ci.org/zeekay/nightmare-evaluate-async)\nAdds `evaluateAsync` method to\n[Nightmare](https://github.com/segmentio/nightmare). You can use\n`evaluateAsync` to evaluate asynchronous code in Nightmare's browser context.\n\nSupports Node.js style callbacks and Promises plus you can use generators for control-flow.\n\n## Install\n```bash\n$ npm install nightmare-evaluate-async\n```\n\n## Usage\n```javascript\nvar Nightmare = require('nightmare');\nvar vo = require('vo');\n\n// Adds evaluateAsync method\nrequire('nightmare-evaluate-async')(Nightmare)\n\nvo(run)(function(err, result) {\n  if (err) throw err;\n});\n\nfunction *run() {\n  var nightmare = Nightmare();\n\n  // Return promises\n  var res = yield nightmare.evaluateAsync(function() {\n    return Promise.resolve('promises')\n  });\n  console.log(res);\n\n  // Generators for control-flow\n  var res = yield nightmare.evaluateAsync(function *() {\n    yield Promise.resolve('generators+promises=<3')\n  });\n  console.log(res);\n\n  // Callbacks are okay too!\n  var res = yield nightmare.evaluateAsync(function (cb) {\n    cb(null, \"callback\")\n  });\n  console.log(res);\n\n  yield nightmare.end();\n}\n```\n"
+  ]
 }

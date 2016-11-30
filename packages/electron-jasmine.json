@@ -103,6 +103,5 @@
       "name": "benogle",
       "email": "ogle.ben@gmail.com"
     }
-  ],
-  "readme": "# Electron Jasmine\n\nRun your jasmine (2.3) specs in electron. You can:\n\n* Run your electron app's specs\n* Run specs for your node modules that need to use the DOM, or need electron-isms.\n\n### Running Standalone\n\n```bash\nnpm install --save-dev electron-jasmine\nelectron-jasmine ./spec-directory\n```\n\n![.](https://cloud.githubusercontent.com/assets/69169/8792820/7ff18c8e-2f21-11e5-9245-252ba4b380b1.png)\n\n### Running Your Electron App's specs\n\nYou can integrate it into your app with the `TestApplication` export.\n\n```js\nvar TestApplication = require('electron-jasmine').TestApplication\nnew TestApplication({specDirectory: 'spec'})\n```\n\nA practical example that makes your app accept a `--test` command line parameter:\n\n```js\nvar path = require('path')\nvar argv = require('yargs')\n  .default('test', false)\n  .argv\n\nif (argv.test) {\n  require('electron-compile').init()\n  var TestApplication = require('electron-jasmine').TestApplication\n  new TestApplication({specDirectory: 'spec'})\n}\nelse {\n  require('electron-compile').init()\n  var Application = require('./src/browser/application')\n  new Application\n}\n```\n"
+  ]
 }

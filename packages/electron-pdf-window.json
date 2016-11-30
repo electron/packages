@@ -1,6 +1,6 @@
 {
   "name": "electron-pdf-window",
-  "version": "1.0.5",
+  "version": "1.0.8",
   "description": "view PDF files in electron browser windows",
   "main": "index.js",
   "scripts": {
@@ -39,13 +39,13 @@
     "name": "@gellerthegyi"
   },
   "license": "MIT",
-  "gitHead": "8996eaf5840219bf7054bef708e16faf640fe22a",
+  "gitHead": "dfd32354fe44655dae8e5ef22682f02bc47a2fe4",
   "homepage": "https://github.com/gerhardberger/electron-pdf-window#readme",
   "_npmVersion": "3.10.8",
-  "_nodeVersion": "6.9.0",
+  "_nodeVersion": "6.9.1",
   "dist": {
-    "shasum": "5025bcc228d6353b2056ebc273db7d5c5e5cb7ba",
-    "tarball": "http://registry.npmjs.org/electron-pdf-window/-/electron-pdf-window-1.0.5.tgz"
+    "shasum": "be6630884b7537a5f84515068c22277752dcbd4d",
+    "tarball": "http://registry.npmjs.org/electron-pdf-window/-/electron-pdf-window-1.0.8.tgz"
   },
   "versions": [
     {
@@ -71,10 +71,22 @@
     {
       "number": "1.0.5",
       "date": "2016-11-12T00:01:46.453Z"
+    },
+    {
+      "number": "1.0.6",
+      "date": "2016-11-22T00:05:07.635Z"
+    },
+    {
+      "number": "1.0.7",
+      "date": "2016-11-27T22:03:27.265Z"
+    },
+    {
+      "number": "1.0.8",
+      "date": "2016-11-28T18:40:34.366Z"
     }
   ],
   "created": "2016-10-25T22:24:21.080Z",
-  "modified": "2016-11-12T00:01:46.453Z",
+  "modified": "2016-11-28T18:40:34.366Z",
   "lastPublisher": {
     "name": "gerhardberger",
     "email": "93.morph@gmail.com"
@@ -84,6 +96,5 @@
       "name": "gerhardberger",
       "email": "93.morph@gmail.com"
     }
-  ],
-  "readme": "# electron-pdf-window\n\nview PDF files in electron browser windows. this module adds support for viewing\nPDF files in electron [`BrowserWindow`s](http://electron.atom.io/docs/api/browser-window/).\nit works even if you navigate to a PDF file from a site, or opening a PDF file in\na new window. a `PDFWindow` instance is just a subclass of `BrowserWindow` so it\ncan be used just like it.\n\n<p align=\"center\">\n  <img align=\"center\" src=\"./screenshot.png\" height=400 />\n</p>\n\n\n``` javascript\nconst { app } = require('electron')\nconst PDFWindow = require('electron-pdf-window')\n\napp.on('ready', () => {\n  const win = new PDFWindow({\n    width: 800,\n    height: 600\n  })\n\n  win.loadURL('http://mozilla.github.io/pdf.js/web/compressed.tracemonkey-pldi-09.pdf')\n})\n```\n\n## install\n\n```\n$ npm i electron-pdf-window\n```\n\n## usage\n\n#### `win = new PDFWindow([opts])`\n`win` is an electron [`BrowserWindow`](http://electron.atom.io/docs/api/browser-window/)\nthat has support for viewing PDF files.\n\n#### `PDFWindow.addSupport(win)`\nadds PDF viewing support for `win`, which is a `BrowserWindow` instance.\n\n## test\n\n```\n$ npm test\n```\n"
+  ]
 }

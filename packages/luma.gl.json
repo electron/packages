@@ -1,6 +1,6 @@
 {
   "name": "luma.gl",
-  "version": "2.10.0",
+  "version": "2.10.2",
   "description": "A WebGL JavaScript visualization library.",
   "license": "MIT",
   "contributors": [
@@ -61,10 +61,12 @@
     "babel-polyfill": "^6.5.0",
     "canvas-to-blob": "0.0.0",
     "filesaver.js": "^0.2.0",
+    "get-pixels": "^3.3.0",
     "gl-constants": "^1.0.0",
     "gl-matrix": "^2.3.2",
-    "glsl-shader-name": "^1.0.0",
-    "glslify": "^5.0.2",
+    "global": "^4.3.1",
+    "ndarray": "^1.0.18",
+    "save-pixels": "^2.3.2",
     "through": "^2.3.8",
     "webgl-debug": "^1.0.2"
   },
@@ -72,7 +74,7 @@
     "babel-cli": "^6.3.15",
     "babel-core": "^6.7.7",
     "babel-eslint": "^6.0.0",
-    "babel-plugin-glslify": "^1.0.0",
+    "babel-plugin-static-fs": "^1.1.0",
     "babel-plugin-transform-builtin-extend": "^1.1.0",
     "babel-plugin-transform-decorators-legacy": "^1.3.4",
     "babel-preset-es2015": "^6.3.13",
@@ -80,6 +82,7 @@
     "babelify": "^7.2.0",
     "bl": "^1.1.2",
     "blue-tape": "^0.2.0",
+    "brfs-babel": "^1.0.0",
     "browserify": "^13.0.0",
     "budo": "^8.0.3",
     "cookie-cutter": "^0.1.1",
@@ -89,12 +92,9 @@
     "eslint": "^2.0",
     "eslint-config-uber-es2015": "^2.0.0",
     "faucet": "0.0.1",
-    "get-pixels": "^3.3.0",
     "gl": "^4.0.2",
     "husky": "^0.10.2",
     "mkdirp": "^0.5.1",
-    "ndarray": "^1.0.18",
-    "save-pixels": "^2.3.2",
     "source-map-support": "^0.4.2",
     "tap-browser-color": "^0.1.2",
     "tape-catch": "^1.0.4",
@@ -107,7 +107,7 @@
     "build-clean": "rm -fr dist/*",
     "build-compile": "babel src -d dist --source-maps inline --copy-files",
     "build-watch": "babel src -d dist --source-maps inline --copy-files --watch & babel examples -d dist --source-maps inline --copy-files --watch &",
-    "build-script": "browserify src/bundle.js --debug -o dist/lumagl.js -t babelify -t glslify && cat dist/lumagl.js | uglifyjs > dist/lumagl.min.js",
+    "build-script": "browserify src/bundle.js --debug -o dist/lumagl.js -t babelify -t brfs-babel && cat dist/lumagl.js | uglifyjs > dist/lumagl.min.js",
     "docs": "npm run docs-build && open ./_docs/docs/index.html",
     "docs-build": "rm -fr _docs/* && jekyll build --config=docs/_config.yml --layouts docs/_layouts",
     "docs-gh-pages": "git subtree push --prefix _docs origin gh-pages",
@@ -119,18 +119,18 @@
     "test": "npm run lint && npm run test-headless && npm run test-headless-nowebgl",
     "test-headless": "babel-node --include='' test/headless.js | faucet",
     "test-headless-nowebgl": "babel-node --include='' test/headless-nowebgl.js | faucet",
-    "test-browser": "budo test/browser.js:build/test-bundle.js --dir test --live --open --port 3001 --watch-glob '**/*.{html,css,js,glsl}' -- -t babelify -t glslify",
+    "test-browser": "budo test/browser.js:build/test-bundle.js --dir test --live --open --port 3001 --watch-glob '**/*.{html,css,js,glsl}' -- -t babelify",
     "test-electron": "browserify test/electron.js | testron | faucet",
-    "profile-disc": "browserify src/bundle.js --full-paths -t babelify -t glslify | discify --open",
-    "start": "npm run build-watch && budo dist/bundle.js:dist/lumagl.js --live --open --port 3000 --watch-glob '**/*.{html,css,js,glsl}' -- -t glslify"
+    "profile-disc": "browserify src/bundle.js --full-paths -t babelify -t brfs-babel | discify --open",
+    "start": "npm run build-watch && budo dist/bundle.js:dist/lumagl.js --live --open --port 3000 --watch-glob '**/*.{html,css,js,glsl}' -- -t brfs-babel"
   },
-  "gitHead": "e152d2b8df98b9de37fa5934b1d50125b6599bd7",
+  "gitHead": "13484552d287d0d0f322651c354bf92569dfae05",
   "homepage": "https://github.com/uber/luma.gl#readme",
-  "_npmVersion": "3.10.5",
-  "_nodeVersion": "0.12.13",
+  "_npmVersion": "3.10.9",
+  "_nodeVersion": "0.12.15",
   "dist": {
-    "shasum": "7c18a68170adabebd930762dfe9122b9004c465e",
-    "tarball": "http://registry.npmjs.org/luma.gl/-/luma.gl-2.10.0.tgz"
+    "shasum": "d46063643d70f7ec14ad80170d9a331f22e2e3ed",
+    "tarball": "http://registry.npmjs.org/luma.gl/-/luma.gl-2.10.2.tgz"
   },
   "versions": [
     {
@@ -268,13 +268,21 @@
     {
       "number": "2.10.0",
       "date": "2016-11-04T02:22:47.513Z"
+    },
+    {
+      "number": "2.10.1",
+      "date": "2016-11-30T01:20:58.932Z"
+    },
+    {
+      "number": "2.10.2",
+      "date": "2016-11-30T06:49:53.494Z"
     }
   ],
   "created": "2016-04-12T22:44:54.944Z",
-  "modified": "2016-11-04T02:22:47.513Z",
+  "modified": "2016-11-30T06:49:53.494Z",
   "lastPublisher": {
-    "name": "ibgreen",
-    "email": "ib.green.home@gmail.com"
+    "name": "gnavvy",
+    "email": "gnavvy@gmail.com"
   },
   "owners": [
     {
@@ -293,6 +301,5 @@
       "name": "pessimistress",
       "email": "cxiaoji@gmail.com"
     }
-  ],
-  "readme": "<p align=\"right\">\n  <a href=\"https://npmjs.org/package/luma.gl\">\n    <img src=\"https://img.shields.io/npm/v/luma.gl.svg?style=flat-square\" alt=\"version\" />\n  </a>\n  <a href=\"https://travis-ci.org/uber/luma.gl\">\n    <img src=\"https://img.shields.io/travis/uber/luma.gl/master.svg?style=flat-square\" alt=\"build\" />\n  </a>\n  <a href=\"https://npmjs.org/package/luma.gl\">\n    <img src=\"https://img.shields.io/npm/dm/luma.gl.svg?style=flat-square\" alt=\"downloads\" />\n  </a>\n  <a href=\"http://starveller.sigsev.io/uber/luma.gl\">\n    <img src=\"http://starveller.sigsev.io/api/repos/uber/luma.gl/badge\" alt=\"stars\" />\n  </a>\n</p>\n\n<h1 align=\"center\">luma.gl</h1>\n\n<h5 align=\"center\">luma.gl: A JavaScript WebGL Framework for Data Visualization</h5>\n\n## Overview\n\nluma.gl's primary focus is to provide a set of efficient and easy-to-use\nWebGL building blocks enabling high-performance browser-based data\nvisualizations.\n\nSee\n[**Examples**](http://uber.github.io/luma.gl/) and\n[**Documentation**](http://uber.github.io/luma.gl/docs/).\n[**Change Log**](https://github.com/uber/luma.gl/blob/master/CHANGELOG.md).\n\n\n## luma.gl Design Goals\n\nHigh Level Design Goals\n- Focus on data visualization. While generic in nature, luma.gl\n  will prioritize features that enable efficient rendering of\n  large sets of data or that support improved visualization techniques.\n- Provide a modern, easy-to-use API built from small independent classes,\n  that simplifies WebGL usage without hiding WebGL from the programmer.\n\nTechnical Design Goals:\n- Ensure smooth integration in modern applications by leveraging the\n  latest JavaScript language standards (ES6+) and build technologies\n  (browserify/babel/npm etc).\n- Facilitate Shader Programming - Adapts techniques (such as\n  [glslify](https://www.npmjs.com/package/glslify) that\n  help developers efficiently create, organize and debug shader code.\n- No \"magic\" global state that gets in the way of interoperability. All\n  components work with a standard `WebGLRenderingContext` and can used\n  together with components from other frameworks (e.g. stackgl).\n- Built in support for WebGL and Shader debugging and profiling.\n\n\n### Running luma.gl in Node.js\n\nIf `headless-gl` is installed and properly configured on your system\n(it can often autodetect your configuration),\nyou should be able to run luma.gl in Node.js from the console,\neven machines that do not have GPUs.\n\nTo do this, your application should import 'luma.gl/headless':\n```js\nimport {createGLContext, Model, ...} from 'luma.gl/headless';\n\nconst gl = createGLContext({width, height, ...});\n```\n\nAll luma.gl unit tests are run under Node.js in this configuration so it\nshould work out of the box. For more information, see\n[headless-gl](https://www.npmjs.com/package/gl) and\n[luma.gl documentation](http://uber.github.io/luma.gl/context.html#createGLContext).\n\n\n## Compatibility\n\n### [ndarray](https://www.npmjs.com/package/ndarray)\n\"Strided\" `ndarrays` are returned by a number of good image-loading\nnpm modules and are also quite useful on their own.\n- `Buffer`s and `Texture`s can accept `ndarray`s as long as they are backed by\n  a typed javascript array. Note that if your `ndarray` is not \"packed\" you\n  may need to transform it to a \"packed\" format `ndarray` first.\n- Note: luma.gl has no direct dependencies on any of the ndarray npm modules.\n  luma.gl uses \"soft\" detection techniques to decide if a data object is an\n  `ndarray`.\n\n\n## Usage\n\n* [deck.gl](https://github.com/uber/deck.gl) builds 3D map visualization\n  overlays on luma.gl.\n\n\n## History\n\nluma.gl started out as a fork of\n[PhiloGL](https://github.com/philogb/philogl) however no effort has been\nmade to maintain compatibility with PhiloGL-based applications.\n\n\n# Installation\n\n```sh\nnpm install luma.gl --save\n```\n\n# Documentation, Lessons and Examples\n\nLuma.gl comes with 16 lessons, a number of examples, and a full set of\nreference documenation.\n\nTo run examples:\n```sh\ngit clone git@github.com:uber/luma.gl.git\ncd luma.gl\nnpm install\nnpm start\n```\nThis builds the luma.gl bundle, starts a small local server, and opens a browser window on a welcome page, allowing you to run to all lessons and examples.\n\n## Quickstart\n\nThe following code sample illustrates the \"flavor\" of the luma.gl API.\n```javascript\nimport {createGLContext, Program, Buffer, PerspectiveCamera} from 'luma.gl';\n\n// Initialize WebGL context\nconst canvas = document.getElementById('lesson01-canvas');\n\nconst gl = createGLContext({canvas});\nconst camera = new PerspectiveCamera({aspect: canvas.width/canvas.height});\n\nconst program = new Program(gl);\ncamera.view.$translate(new Vec3(-1.5, 0, -7));\nprogram\n  .setBuffers({\n    aVertexPosition: new Buffer(gl).setData({\n      data: new Float32Array([0, 1, 0, -1, -1, 0, 1, -1, 0]),\n      size: 3\n    })\n  })\n  .setUniforms({\n    uMVMatrix: camera.view.\n    uPMatrix: camera.projection\n  })\n  .use();\n\n// Draw Triangle\ngl.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT);\ngl.drawArrays(gl.TRIANGLES, 0, 3);\n```\n\n# Developing\n\nUse `npm start` to run the test server, it will open a web page from which\nyou can access the examples and lessons, and automatically update when you\nsave modified source files.\n\n\n## Testing\n\n**Master**\n[![Build Status](https://travis-ci.org/uber/luma.gl.svg?branch=master)](https://travis-ci.org/uber/luma.gl)\n**Dev**\n[![Build Status](https://travis-ci.org/uber/luma.gl.svg?branch=dev)](https://travis-ci.org/uber/luma.gl)\n\nTesting is performed on Travis CI and using a precommit hook. Local testing is\nsupported on three environments\n* `npm test` - runs `npm run test-headless`\n* `npm run test-headless` - Tests using headless-gl (Node.js, without jsdom).\n* `npm run test-electron` - Tests using electron (a browser run-time).\n* `npm run test-browser` - Tests in your browser, may be helpful\n  to quickly debug test case failures since it autoreloads on changes and\n  gives you full access to your browser's debugger.\n\nWhen adding new features, or modifying existing ones, carefully consider if\nunit testing can be provided.\n\n## Publishing\n\nBefore publishing run\n```\nnpm run prepublish\n```\nto generate the static bundles, the optional pretranspiled ES5 distribution,\nand the documention.\n\n## Building Documentation\n\nTo run the static site generation, you need to install the\n`jekyll` and `pygments` ruby gems which can be done with the following command:\n```sh\ngem install jekyll pygments.rb\n```\nOnce that's done, you can rebuild the static site using\nthe following npm script:\n```\nnpm run build-docs\n```\nThis will create a folder called `_docs` in the root directory\nwhich contains all the static content for the site.  To view\nthe docs locally, run this command:\n```\nnpm run docs\n```\n\nTo publish the documentation to the `gh-pages` branch, run the following command\non a clean brach:\n```\nnpm run docs-publish\n```\n\n"
+  ]
 }

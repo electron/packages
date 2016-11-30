@@ -58,6 +58,5 @@
       "name": "joshwnj",
       "email": "josh@x-team.com"
     }
-  ],
-  "readme": "# electron-clipboard-watcher\n\nPoll the system clipboard for changing text or image data.\n\n## Install\n\n`npm install --save electron-clipboard-watcher`\n\n## Usage\n\nStart polling the clipboard for changes.\n\nUsage:\n\n```\nconst clipboardWatcher = require('electron-clipboard-watcher')\nclipboardWatcher({\n  // (optional) delay in ms between polls\n  watchDelay: 1000,\n\n  // handler for when image data is copied into the clipboard\n  onImageChange: function (nativeImage) { ... },\n\n  // handler for when text data is copied into the clipboard\n  onTextChange: function (text) { ... }\n})\n```\n\nThe `clipboardWatcher` function returns an object with a `stop()`\nfunction which you can use to deactivate the polling:\n\n```\nconst watcher = clipboardWatcher({ ... })\nwatcher.stop()\n```\n\n## License\n\nMIT\n"
+  ]
 }

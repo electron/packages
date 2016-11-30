@@ -4,7 +4,8 @@
   "description": "A collection of all npm packages that mention `electron` in their package.json",
   "main": "index.json",
   "scripts": {
-    "build": "mkdir -p packages && touch packages/___.json && rm packages/* && node bin/build.js && npm run reports",
+    "build": "npm-run-all build:*",
+    "build:collect": "mkdir -p packages && touch packages/___.json && rm packages/* && node bin/collect.js",
     "build:downloads": "node bin/downloads.js",
     "build:compile": "node bin/compile.js > index.json",
     "test": "node test.js | tap-spec && standard"

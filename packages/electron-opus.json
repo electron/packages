@@ -104,6 +104,5 @@
       "name": "justinmchase",
       "email": "justin.m.chase@outlook.com"
     }
-  ],
-  "readme": "node-opus\n=========\n### NodeJS native bindings to libopus\n\nThis module implements bindings for Opus v1.1 for Node.js.\n\n    var opus = require('node-opus');\n\n    // Create the encoder.\n    // Specify 48kHz sampling rate and 10ms frame size.\n    // NOTE: The decoder must use the same values when decoding the packets.\n    var rate = 48000;\n    var encoder = new opus.OpusEncoder( rate );\n\n    // Encode and decode.\n    var frame_size = rate/100;\n    var encoded = encoder.encode( buffer, frame_size );\n    var decoded = encoder.decode( encoded, frame_size );\n\nPlatform support\n----------------\n\nSupported platforms:\n- Linux x64\n- Linux ARM (Raspberry Pi 1)\n- Mac OS X x64\n- Windows x64\n\n\nAdd new supported platforms by running ./autogen.sh and ./configure in\ndeps/opus and copying the resulting config.h to deps/config/opus/[os]/[arch].\n\nUse the following flags with configure:\n\n    ./configure --enable-static --disable-shared --with-pic\n\nOn a clean debian-based system, the full flow looks approximately like:\n\n\tsudo apt-get update\n\tsudo apt-get install autoconf\n\tsudo apt-get install libtool\n\tcd deps/opus\n\t./autogen.sh\n\t./configure --enable-static --disable-shared --with-pic\n\tmkdir -p ../config/opus/[os]/[arch]\n\tcp config.h ../config/opus/[os]/[arch]\n\nAnd, then, the last step is to add the OS/Arch to `package.json`.\n"
+  ]
 }

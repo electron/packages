@@ -1,11 +1,12 @@
 {
   "name": "electron-single-window",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "",
   "typings": "index.ts",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "tsc && tslint --project=tsconfig.json && jest --coverage",
+    "watch:test": "jest --watch"
   },
   "repository": {
     "user": "arvitaly",
@@ -25,25 +26,81 @@
   "license": "ISC",
   "homepage": "https://github.com/arvitaly/electron-single-window#readme",
   "dependencies": {
-    "@types/react": "^0.14.44",
-    "electron": "^1.4.5",
-    "react": "^15.3.2"
+    "@types/commander": "^2.3.31",
+    "@types/electron": "^1.4.28",
+    "@types/jsdom": "^2.0.29",
+    "@types/node": "0.0.0",
+    "@types/react": "^0.14.51",
+    "@types/react-dom": "^0.14.19",
+    "@types/whatwg-fetch": "0.0.32",
+    "commander": "^2.9.0",
+    "electron": "^1.4.8",
+    "node-ipc": "^8.9.2",
+    "react": "^15.4.1",
+    "react-dom": "^15.4.1"
   },
-  "gitHead": "d1acdd30c493b1f7d3ae301f07dc4338e2ff9f37",
+  "devDependencies": {
+    "@types/jest": "^16.0.0",
+    "@types/react-test-renderer": "^15.4.0",
+    "coveralls": "^2.11.15",
+    "jest": "^17.0.3",
+    "jsdom": "^9.8.3",
+    "pagebot": "^0.1.5",
+    "react-stdout": "^0.1.2",
+    "react-test-renderer": "^15.4.1",
+    "tslint": "^4.0.2",
+    "typescript": "^2.0.10"
+  },
+  "jest": {
+    "automock": true,
+    "testRegex": "/__tests__/.*test\\.js$",
+    "unmockedModulePathPatterns": [
+      "react"
+    ]
+  },
+  "gitHead": "4e0c5b704a9a2744172bda971f2b7da0a9df61cf",
   "_npmVersion": "3.10.8",
   "_nodeVersion": "7.0.0",
   "dist": {
-    "shasum": "a9619cd329b4543d8ae6c512f897cd2548300e7e",
-    "tarball": "http://registry.npmjs.org/electron-single-window/-/electron-single-window-0.0.1.tgz"
+    "shasum": "8835d14437933c4f22657327b686f3a0ae89b4ba",
+    "tarball": "http://registry.npmjs.org/electron-single-window/-/electron-single-window-0.1.0.tgz"
   },
   "versions": [
     {
       "number": "0.0.1",
       "date": "2016-11-07T14:12:22.759Z"
+    },
+    {
+      "number": "0.0.3",
+      "date": "2016-11-28T05:36:24.607Z"
+    },
+    {
+      "number": "0.0.4",
+      "date": "2016-11-29T23:33:44.768Z"
+    },
+    {
+      "number": "0.0.5",
+      "date": "2016-11-29T23:51:09.167Z"
+    },
+    {
+      "number": "0.0.6",
+      "date": "2016-11-30T00:08:19.664Z"
+    },
+    {
+      "number": "0.0.7",
+      "date": "2016-11-30T00:29:08.305Z"
+    },
+    {
+      "number": "0.0.8",
+      "date": "2016-11-30T00:44:52.586Z"
+    },
+    {
+      "number": "0.1.0",
+      "date": "2016-11-30T04:39:38.991Z"
     }
   ],
   "created": "2016-11-07T14:12:22.759Z",
-  "modified": "2016-11-07T14:12:22.759Z",
+  "modified": "2016-11-30T04:39:38.991Z",
   "lastPublisher": {
     "name": "arvitaly",
     "email": "arvitaly@list.ru"
@@ -53,6 +110,5 @@
       "name": "arvitaly",
       "email": "arvitaly@list.ru"
     }
-  ],
-  "readme": "# electron-single-window"
+  ]
 }

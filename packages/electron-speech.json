@@ -43,7 +43,7 @@
     "shasum": "7f9ff344acce72a08e4ec4f300e875ee78d5fe2c",
     "tarball": "http://registry.npmjs.org/electron-speech/-/electron-speech-1.0.6.tgz"
   },
-  "stars": 2,
+  "stars": 3,
   "versions": [
     {
       "number": "0.0.1",
@@ -91,7 +91,7 @@
     }
   ],
   "created": "2016-02-26T07:56:43.058Z",
-  "modified": "2016-11-12T14:31:38.022Z",
+  "modified": "2016-11-22T06:15:11.323Z",
   "lastPublisher": {
     "name": "noffle",
     "email": "stephen.whitmore@gmail.com"
@@ -105,6 +105,5 @@
       "name": "sww",
       "email": "stephen.whitmore@gmail.com"
     }
-  ],
-  "readme": "# electron-speech\n\n> Speech recognition in node and the browser using Electron.\n\n## Prerequisites\n\nIf you want to use the API from a script using Node, you will need to launch\nyour script using the\n[`electron-spawn`](https://www.npmjs.com/package/electron-spawn) command instead\nof the `node` command:\n\n```sh\n$ npm install -g electron-spawn\n\n$ electron-spawn example.js\n```\n\n## Usage\n\n### CLI\n\nThis module installs the `electron-speech` command:\n\n```\n$ electron-speech\nlistening..\n(whatever is said is written here, to stdout)\n```\n\n`-q|--quiet` to omit the `listening..` message. (it's on stderr anyways though)\n\n`-c|--continuous` to keep on listening after each result.\n\n### API\n\n```javascript\nvar Speech = require('electron-speech')\n\nvar recog = Speech({\n  lang: 'en-US'\n  continuous: true\n})\n\nrecog.on('text', function (text) {\n  console.log(text)\n});\n\nrecog.listen()\n```\n\n### Methods\n\n#### var speech = Speech(opts)\n\nReturns `speech`, an EventEmitter and Readable stream.\n\n`opts` accepts multiple keys:\n\n- `opts.lang` - recognize speech in the language `lang`. Defaults to `'en-US'`.\n- `opts.continuous` - if true, `text` events will keep on being emitted as recognition\noccurs.\n\n#### speech.listen()\n\nStarts listening to speech via the microphone. `'ready`'` will be emitted once speech\nrecognition has begun.\n\n#### speech.pipe(stream)\n\nUses `speech` as a readable stream for text rather than an event emitter.\nResults have newlines appended to them for parsing convenience.\n\n#### speech.on('ready')\n\nEmitted when the microphone has begun to listen for speech.\n\n#### speech.on('text', function (text) {})\n\nEmitted when speech has been recognized.\n\n#### speech.on('error', function (err) {})\n\nEmitted when an error has occurred in recognition.\n\n#### speech.on('close')\n\nEmitted when recognition has ended. Does not fire if `continuous` was set to\ntrue.\n\n## License\n\nISC\n"
+  ]
 }

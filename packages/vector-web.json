@@ -1,9 +1,11 @@
 {
   "name": "vector-web",
-  "version": "0.8.4",
-  "description": "Vector webapp",
+  "productName": "Riot",
+  "main": "electron/src/electron-main.js",
+  "version": "0.9.0",
+  "description": "A feature-rich client for Matrix.org",
   "author": {
-    "name": "matrix.org"
+    "name": "Vector Creations Ltd."
   },
   "repository": {
     "user": "vector-im",
@@ -36,23 +38,27 @@
   "matrix-react-parent": "matrix-react-sdk",
   "scripts": {
     "reskindex": "reskindex -h src/header",
-    "build:emojione": "cpx \"node_modules/emojione/assets/svg/*\" vector/emojione/svg/",
+    "build:res": "cpx \"{src/skins/vector/fonts,src/skins/vector/img}/**\" webapp/ && cpx \"{res/media,res/vector-icons}/**\" webapp/",
+    "build:config": "cpx config.json webapp/",
+    "build:emojione": "cpx \"node_modules/emojione/assets/svg/*\" webapp/emojione/svg/",
     "build:modernizr": "modernizr -c .modernizr.json -d src/vector/modernizr.js",
     "build:css": "mkdirp build && catw \"src/skins/vector/css/**/*.css\" -o build/components.css --no-watch",
     "build:compile": "babel --source-maps -d lib src",
     "build:bundle": "NODE_ENV=production webpack -p --progress",
     "build:bundle:dev": "webpack --optimize-occurence-order --progress",
-    "build": "node scripts/babelcheck.js && npm run build:emojione && npm run build:css && npm run build:bundle",
-    "build:dev": "npm run build:emojione && npm run build:css && npm run build:bundle:dev",
+    "build:electron": "build -lwm",
+    "build": "node scripts/babelcheck.js && npm run build:res && npm run build:config && npm run build:emojione && npm run build:css && npm run build:bundle",
+    "build:dev": "node scripts/babelcheck.js && npm run build:res && npm run build:config && npm run build:emojione && npm run build:css && npm run build:bundle:dev",
     "dist": "scripts/package.sh",
-    "start:emojione": "cpx \"node_modules/emojione/assets/svg/*\" vector/emojione/svg/ -w",
-    "start:js": "webpack -w --progress --no-cache-buster",
-    "start:js:prod": "NODE_ENV=production webpack -w --progress --no-cache-buster",
+    "start:res": "parallelshell \"cpx -w \\\"{src/skins/vector/fonts,src/skins/vector/img}/**\\\" webapp/\" \"cpx -w \\\"{res/media,res/vector-icons}/**\\\" webapp/\"",
+    "start:config": "cpx -w config.json webapp/",
+    "start:emojione": "cpx \"node_modules/emojione/assets/svg/*\" webapp/emojione/svg/ -w",
+    "start:js": "webpack-dev-server -w --progress",
+    "start:js:prod": "NODE_ENV=production webpack-dev-server -w --progress",
     "start:skins:css": "mkdirp build && catw \"src/skins/vector/css/**/*.css\" -o build/components.css",
-    "//cache": "Note the -c 1 below due to https://code.google.com/p/chromium/issues/detail?id=508270",
-    "start": "node scripts/babelcheck.js && parallelshell \"npm run start:emojione\" \"npm run start:js\" \"npm run start:skins:css\" \"http-server -c 1 vector\"",
-    "start:prod": "parallelshell \"npm run start:emojione\" \"npm run start:js:prod\" \"npm run start:skins:css\" \"http-server -c 1 vector\"",
-    "clean": "rimraf build lib vector/olm.* vector/bundle.* vector/emojione vector/index.html",
+    "start": "node scripts/babelcheck.js && parallelshell \"npm run start:emojione\" \"npm run start:res\" \"npm run start:config\" \"npm run start:js\" \"npm run start:skins:css\"",
+    "start:prod": "parallelshell \"npm run start:emojione\" \"npm run start:js:prod\" \"npm run start:skins:css\"",
+    "clean": "rimraf build lib webapp",
     "prepublish": "npm run build:compile",
     "test": "karma start --single-run=true --autoWatch=false --browsers PhantomJS --colors=false",
     "test:multi": "karma start"
@@ -64,20 +70,21 @@
     "classnames": "^2.1.2",
     "draft-js": "^0.8.1",
     "extract-text-webpack-plugin": "^0.9.1",
+    "favico.js": "^0.3.10",
     "filesize": "^3.1.2",
     "flux": "~2.0.3",
     "gemini-scrollbar": "github:matrix-org/gemini-scrollbar#b302279",
     "gfm.css": "^1.1.1",
     "highlight.js": "^9.0.0",
     "linkifyjs": "^2.1.3",
-    "matrix-js-sdk": "0.6.4",
-    "matrix-react-sdk": "0.7.5",
+    "matrix-js-sdk": "0.7.0",
+    "matrix-react-sdk": "0.8.0",
     "modernizr": "^3.1.0",
     "q": "^1.4.1",
-    "react": "^15.2.1",
+    "react": "^15.4.0",
     "react-dnd": "^2.1.4",
     "react-dnd-html5-backend": "^2.1.2",
-    "react-dom": "^15.2.1",
+    "react-dom": "^15.4.0",
     "react-gemini-scrollbar": "github:matrix-org/react-gemini-scrollbar#5e97aef",
     "sanitize-html": "^1.11.1",
     "ua-parser-js": "^0.7.10",
@@ -102,11 +109,11 @@
     "catw": "^1.0.1",
     "cpx": "^1.3.2",
     "css-raw-loader": "^0.1.1",
+    "electron-builder": "^7.23.2",
     "emojione": "^2.2.3",
     "expect": "^1.16.0",
     "fs-extra": "^0.30.0",
     "html-webpack-plugin": "^2.24.0",
-    "http-server": "^0.8.4",
     "json-loader": "^0.5.3",
     "karma": "^0.13.22",
     "karma-chrome-launcher": "^0.2.3",
@@ -120,22 +127,42 @@
     "mocha": "^2.4.5",
     "parallelshell": "^1.2.0",
     "phantomjs-prebuilt": "^2.1.7",
-    "react-addons-perf": "^15.0",
-    "react-addons-test-utils": "^15.0.1",
+    "react-addons-perf": "^15.4.0",
+    "react-addons-test-utils": "^15.4.0",
     "rimraf": "^2.4.3",
     "source-map-loader": "^0.1.5",
-    "webpack": "^1.12.14"
+    "webpack": "^1.12.14",
+    "webpack-dev-server": "^1.16.2"
   },
   "optionalDependencies": {
     "olm": "https://matrix.org/packages/npm/olm/olm-2.0.0.tgz"
   },
-  "gitHead": "1c9a78a2f1f81b15d27ba993610e534328c6aa03",
+  "build": {
+    "appId": "im.riot.app",
+    "category": "Network",
+    "electronVersion": "1.4.2",
+    "//asar=false": "https://github.com/electron-userland/electron-builder/issues/675",
+    "asar": false,
+    "dereference": true,
+    "//files": "We bundle everything, so we only need to include webapp/",
+    "files": [
+      "!**/*",
+      "electron/src/**",
+      "electron/img/**",
+      "webapp/**",
+      "package.json"
+    ],
+    "squirrelWindows": {
+      "iconUrl": "https://riot.im/favicon.ico"
+    }
+  },
+  "gitHead": "5cd4f88b8c6dd5348a8414c0c9cb04d7e4ab8509",
   "homepage": "https://github.com/vector-im/vector-web#readme",
-  "_npmVersion": "2.14.4",
-  "_nodeVersion": "4.1.1",
+  "_npmVersion": "3.10.3",
+  "_nodeVersion": "6.4.0",
   "dist": {
-    "shasum": "bfc4e8ad80ed639b50523dc0f8624e1a1b2b39b2",
-    "tarball": "http://registry.npmjs.org/vector-web/-/vector-web-0.8.4.tgz"
+    "shasum": "c8896597790c46f1e4ab32b4df5ff54d9d13a174",
+    "tarball": "http://registry.npmjs.org/vector-web/-/vector-web-0.9.0.tgz"
   },
   "versions": [
     {
@@ -229,10 +256,14 @@
     {
       "number": "0.8.4",
       "date": "2016-11-04T10:17:56.805Z"
+    },
+    {
+      "number": "0.9.0",
+      "date": "2016-11-19T00:07:52.405Z"
     }
   ],
   "created": "2016-03-11T13:03:36.374Z",
-  "modified": "2016-11-04T10:17:56.805Z",
+  "modified": "2016-11-19T00:07:52.405Z",
   "lastPublisher": {
     "name": "matrixdotorg",
     "email": "matrix@matrix.org"
@@ -242,6 +273,5 @@
       "name": "matrixdotorg",
       "email": "matrix@matrix.org"
     }
-  ],
-  "readme": "Riot\n====\n\nRiot (formerly known as Vector) is a Matrix web client built using the Matrix\nReact SDK (https://github.com/matrix-org/matrix-react-sdk).\n\nGetting Started\n===============\n\nThe easiest way to test Riot is to just use the hosted copy at\nhttps://riot.im/app.  The develop branch is continuously deployed by Jenkins at\nhttps://riot.im/develop for those who like living dangerously.\n\nTo host your own copy of Riot, the quickest bet is to use a pre-built\nreleased version of Riot:\n\n1. Download the latest version from https://github.com/vector-im/vector-web/releases\n1. Untar the tarball on your web server\n1. Move (or symlink) the vector-x.x.x directory to an appropriate name\n1. If desired, copy `config.sample.json` to `config.json` and edit it\n   as desired. See below for details.\n1. Enter the URL into your browser and log into Riot!\n\nNote that Chrome does not allow microphone or webcam access for sites served\nover http (except localhost), so for working VoIP you will need to serve Riot\nover https.\n\nImportant Security Note\n=======================\n\nWe do not recommend running Riot from the same domain name as your Matrix\nhomeserver.  The reason is the risk of XSS (cross-site-scripting)\nvulnerabilities that could occur if someone caused Riot to load and render\nmalicious user generated content from a Matrix API which then had trusted\naccess to Riot (or other apps) due to sharing the same domain.\n\nWe have put some coarse mitigations into place to try to protect against this\nsituation, but it's still not good practice to do it in the first place.  See\nhttps://github.com/vector-im/vector-web/issues/1977 for more details.\n\nBuilding From Source\n====================\n\nRiot is a modular webapp built with modern ES6 and requires a npm build system\nto build.\n\n1. Install or update `node.js` so that your `npm` is at least at version `2.0.0`\n1. Clone the repo: `git clone https://github.com/vector-im/vector-web.git`\n1. Switch to the vector-web directory: `cd vector-web`\n1. Install the prerequisites: `npm install`\n1. If you are using the `develop` branch of vector-web, you will probably need\n   to rebuild one of the dependencies, due to\n   https://github.com/npm/npm/issues/3055: `(cd node_modules/matrix-react-sdk\n   && npm install)`\n1. Configure the app by copying `config.sample.json` to `config.json` and\n   modifying it (see below for details)\n1. `npm run dist` to build a tarball to deploy. Untaring this file will give\n   a version-specific directory containing all the files that need to go on your\n   web server.\n\nNote that `npm run dist` is not supported on Windows, so Windows users can run `npm\nrun build`, which will build all the necessary files into the `vector`\ndirectory. The version of Vector will not appear in Settings without\nusing the dist script. You can then mount the vector directory on your\nwebserver to actually serve up the app, which is entirely static content.\n\nconfig.json\n===========\n\nYou can configure the app by copying `vector/config.sample.json` to\n`vector/config.json` and customising it:\n\n1. `default_hs_url` is the default home server url.\n1. `default_is_url` is the default identity server url (this is the server used\n   for verifying third party identifiers like email addresses). If this is blank,\n   registering with an email address, adding an email address to your account,\n   or inviting users via email address will not work.  Matrix identity servers are\n   very simple web services which map third party identifiers (currently only email\n   addresses) to matrix IDs: see http://matrix.org/docs/spec/identity_service/unstable.html\n   for more details.  Currently the only public matrix identity servers are https://matrix.org\n   and https://vector.im.  In future identity servers will be decentralised.\n1. `integrations_ui_url`: URL to the web interface for the integrations server.\n1. `integrations_rest_url`: URL to the REST interface for the integrations server.\n1. `roomDirectory`: config for the public room directory. This section encodes behaviour\n   on the room directory screen for filtering the list by server / network type and joining\n   third party networks. This config section will disappear once APIs are available to\n   get this information for home servers. This section is optional.\n1. `roomDirectory.servers`: List of other Home Servers' directories to include in the drop\n   down list. Optional.\n1. `roomDirectory.serverConfig`: Config for each server in `roomDirectory.servers`. Optional.\n1. `roomDirectory.serverConfig.<server_name>.networks`: List of networks (named\n   in `roomDirectory.networks`) to include for this server. Optional.\n1. `roomDirectory.networks`: config for each network type. Optional.\n1. `roomDirectory.<network_type>.name`: Human-readable name for the network. Required.\n1. `roomDirectory.<network_type>.protocol`: Protocol as given by the server in\n   `/_matrix/client/unstable/thirdparty/protocols` response. Required to be able to join\n   this type of third party network.\n1. `roomDirectory.<network_type>.domain`: Domain as given by the server in\n   `/_matrix/client/unstable/thirdparty/protocols` response, if present. Required to be\n   able to join this type of third party network, if present in `thirdparty/protocols`.\n1. `roomDirectory.<network_type>.portalRoomPattern`: Regular expression matching aliases\n   for portal rooms to locations on this network. Required.\n1. `roomDirectory.<network_type>.icon`: URL to an icon to be displayed for this network. Required.\n1. `roomDirectory.<network_type>.example`: Textual example of a location on this network,\n   eg. '#channel' for an IRC network. Optional.\n1. `roomDirectory.<network_type>.nativePattern`: Regular expression that matches a\n   valid location on this network. This is used as a hint to the user to indicate\n   when a valid location has been entered so it's not necessary for this to be\n   exactly correct. Optional.\n\nRunning as a Desktop app\n========================\n\nIn future we'll do an official distribution of Riot as an desktop app.  Meanwhile,\nthere are a few options:\n\n@asdf:matrix.org points out that you can use nativefier and it just works(tm):\n\n```\nsudo npm install nativefier -g\nnativefier https://riot.im/app/\n```\n\nkrisa has a dedicated electron project at\nhttps://github.com/krisak/vector-electron-desktop (although you should swap out\nthe 'vector' folder for the latest vector tarball you want to run.  Get a\ntarball from https://github.com/vector-im/vector-web/releases or build your own\n- see Building From Source above).\n\nThere's also a (much) older electron distribution at https://github.com/stevenhammerton/vector-desktop\n\n\nDevelopment\n===========\n\nBefore attempting to develop on Riot you **must** read the developer guide\nfor `matrix-react-sdk` at https://github.com/matrix-org/matrix-react-sdk, which\nalso defines the design, architecture and style for Riot too.\n\nThe idea of Riot is to be a relatively lightweight \"skin\" of customisations on\ntop of the underlying `matrix-react-sdk`. `matrix-react-sdk` provides both the\nhigher and lower level React components useful for building Matrix communication\napps using React.\n\nAfter creating a new component you must run `npm run reskindex` to regenerate\nthe `component-index.js` for the app (used in future for skinning)\n\n**However, as of July 2016 this layering abstraction is broken due to rapid\ndevelopment on Riot forcing `matrix-react-sdk` to move fast at the expense of\nmaintaining a clear abstraction between the two.**  Hacking on Riot inevitably\nmeans hacking equally on `matrix-react-sdk`, and there are bits of\n`matrix-react-sdk` behaviour incorrectly residing in the `vector-web` project\n(e.g. matrix-react-sdk specific CSS), and a bunch of Riot specific behaviour\nin the `matrix-react-sdk` (grep for `vector` / `riot`).  This separation problem will be\nsolved asap once development on Riot (and thus matrix-react-sdk) has\nstabilised.  Until then, the two projects should basically be considered as a\nsingle unit.  In particular, `matrix-react-sdk` issues are currently filed\nagainst `vector-web` in github.\n\nPlease note that Riot is intended to run correctly without access to the public\ninternet.  So please don't depend on resources (JS libs, CSS, images, fonts)\nhosted by external CDNs or servers but instead please package all dependencies\ninto Riot itself.\n\nSetting up a dev environment\n============================\n\nMuch of the functionality in Riot is actually in the `matrix-react-sdk` and\n`matrix-js-sdk` modules. It is possible to set these up in a way that makes it\neasy to track the `develop` branches in git and to make local changes without\nhaving to manually rebuild each time.\n\nFirst clone and build `matrix-js-sdk`:\n\n1. `git clone git@github.com:matrix-org/matrix-js-sdk.git`\n1. `pushd matrix-js-sdk`\n1. `git checkout develop`\n1. `npm install`\n1. `npm install source-map-loader` # because webpack is made of fail (https://github.com/webpack/webpack/issues/1472)\n1. `popd`\n\nThen similarly with `matrix-react-sdk`:\n\n1. `git clone git@github.com:matrix-org/matrix-react-sdk.git`\n1. `pushd matrix-react-sdk`\n1. `git checkout develop`\n1. `npm install`\n1. `rm -r node_modules/matrix-js-sdk; ln -s ../../matrix-js-sdk node_modules/`\n1. `popd`\n\nFinally, build and start Riot itself:\n\n1. `git clone git@github.com:vector-im/vector-web.git`\n1. `cd vector-web`\n1. `git checkout develop`\n1. `npm install`\n1. `rm -r node_modules/matrix-js-sdk; ln -s ../../matrix-js-sdk node_modules/`\n1. `rm -r node_modules/matrix-react-sdk; ln -s ../../matrix-react-sdk node_modules/`\n1. `npm start`\n1. Wait a few seconds for the initial build to finish; you should see something like:\n\n    ```\n    Hash: b0af76309dd56d7275c8\n    Version: webpack 1.12.14\n    Time: 14533ms\n             Asset     Size  Chunks             Chunk Names\n         bundle.js   4.2 MB       0  [emitted]  main\n        bundle.css  91.5 kB       0  [emitted]  main\n     bundle.js.map  5.29 MB       0  [emitted]  main\n    bundle.css.map   116 kB       0  [emitted]  main\n        + 1013 hidden modules\n    ```\n   Remember, the command will not terminate since it runs the web server\n   and rebuilds source files when they change. This development server also\n   disables caching, so do NOT use it in production.\n1. Open http://127.0.0.1:8080/ in your browser to see your newly built Riot.\n\nWhen you make changes to `matrix-react-sdk`, you will need to run `npm run\nbuild` in the relevant directory. You can do this automatically by instead\nrunning `npm start` in the directory, to start a development builder which\nwill watch for changes to the files and rebuild automatically.\n\nIf you add or remove any components from the Riot skin, you will need to rebuild\nthe skin's index by running, `npm run reskindex`.\n\nIf any of these steps error with, `file table overflow`, you are probably on a mac\nwhich has a very low limit on max open files. Run `ulimit -Sn 1024` and try again.\nYou'll need to do this in each new terminal you open before building Riot.\n\nTriaging issues\n===============\n\nIssues will be triaged by the core team using the following primary set of tags:\n\npriority:\n    P1: top priority; typically blocks releases.\n    P2: one below that\n    P3: non-urgent\n    P4/P5: bluesky some day, who knows.\n\nbug or feature:\n  bug severity:\n     * cosmetic - feature works functionally but UI/UX is broken.\n     * critical - whole app doesn't work\n     * major - entire feature doesn't work\n     * minor - partially broken feature (but still usable)\n\n     * release blocker\n\n     * ui/ux (think of this as cosmetic)\n\n     * network (specific to network conditions)\n     * platform (platform specific)\n"
+  ]
 }

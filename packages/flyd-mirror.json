@@ -71,6 +71,5 @@
       "name": "finnsson",
       "email": "oscar.finnsson@gmail.com"
     }
-  ],
-  "readme": "# flyd-mirror\n\nA small (0.8 kB min+gzip) module for [flyd](https://github.com/paldepind/flyd)\nthat can generate `mirror`s and `image`s, useful when you want to combine\nreactive programming with plain old JavaScript objects.\n\n## Install\n\n```bash\nnpm install flyd-mirror\n```\n\n## Examples\n\n`image` is mirroring streams...\n\n```javascript\nvar data = {\n  name: flyd.stream(\"Fry\"),\n  age: flyd.stream(1023)\n};\nvar image = fm.image(data);\nassert.equal(image.name(), \"Fry\");\nassert.equal(image.age(), 1023);\n```\n\n...while `mirror` is listening to these images...\n\n```javascript\nvar sq = fm.mirror(function() {\n  return image.age()*image.age();\n});\nassert.equal(sq(), 1046529);\ndata.age(1024); // happy birthday!\nassert.equal(sq(), 1048576);\n```\n\nmaking it possible for the mirror to automatically update when the underlying streams are updated.\n"
+  ]
 }

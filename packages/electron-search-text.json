@@ -76,6 +76,5 @@
       "name": "nakajmg",
       "email": "nakajmg@pxgrid.com"
     }
-  ],
-  "readme": "# electron-search-text\nelectron findInPage wrapper module\n\nsee and try [example](./example)\n\n![./example/example.gif](./example/example.gif)\n\n## usage\n\n```html\n<!DOCTYPE html>\n<html lang=\"ja\">\n<head>\n  <meta charset=\"UTF-8\">\n  <title>electron-search-text</title>\n  <style>\n    .electronSearchText-box {\n      display: none;\n    }\n    .electronSearchText-visible {\n      display: block;\n    }\n  </style>\n</head>\n<body>\n<div class=\"electronSearchText-box\">\n  <input type=\"text\" class=\"electronSearchText-input\">\n  <span class=\"electronSearchText-count\"></span>\n</div>\n<webview id=\"preview\" src=\"./webview.html\" preload=\"./webview.js\"></webview>\n<script>\n  const {ipcRenderer} = require('electron');\n\n  const ElectronSearchText = require('./electron-search-text');\n  const searcher = new ElectronSearchText({\n    target: '#preview'\n  });\n\n  ipcRenderer.on('toggleSearch', function() {\n    searcher.emit('toggle');\n  });\n</script>\n</body>\n</html>\n```\n\n## options\n\n```js\nconst searcher = new ElectronSearchText({\n  target: 'webview', // selector for search target\n  delay: 150, // delay call search function\n  visibleClass: '.electronSearchText-visible', // for toggle search box\n  input: '.electronSearchText-input', // selector for search input\n  count: '.electronSearchText-count', // selector for search results count\n  box: '.electronSearchText-box', // selector for search box\n});\n```\n"
+  ]
 }

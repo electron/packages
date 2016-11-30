@@ -1,6 +1,6 @@
 {
   "name": "page-grabber",
-  "version": "0.3.5",
+  "version": "0.3.6",
   "description": "Util for grab data from web-page",
   "main": "index.js",
   "typings": "typings.d.ts",
@@ -30,12 +30,12 @@
   "author": "",
   "license": "ISC",
   "homepage": "https://github.com/arvitaly/page-grabber#readme",
-  "gitHead": "3fe3c1560636b8a8107d74702f937be72dcc12a5",
+  "gitHead": "e6646ac4add9bf9109bcd03d6f11bdaaadb633d0",
   "_npmVersion": "3.10.8",
   "_nodeVersion": "7.0.0",
   "dist": {
-    "shasum": "499654fe67004f68774f8f03303b6f8725fd9c7f",
-    "tarball": "http://registry.npmjs.org/page-grabber/-/page-grabber-0.3.5.tgz"
+    "shasum": "e8a864d59ecd1964d88719a10fc2e8eab7244e67",
+    "tarball": "http://registry.npmjs.org/page-grabber/-/page-grabber-0.3.6.tgz"
   },
   "versions": [
     {
@@ -105,10 +105,14 @@
     {
       "number": "0.3.5",
       "date": "2016-11-10T17:50:44.897Z"
+    },
+    {
+      "number": "0.3.6",
+      "date": "2016-11-28T04:43:59.287Z"
     }
   ],
   "created": "2016-08-29T17:19:40.841Z",
-  "modified": "2016-11-10T17:50:44.897Z",
+  "modified": "2016-11-28T04:43:59.287Z",
   "lastPublisher": {
     "name": "arvitaly",
     "email": "arvitaly@list.ru"
@@ -118,6 +122,5 @@
       "name": "arvitaly",
       "email": "arvitaly@list.ru"
     }
-  ],
-  "readme": "# page-grabber [![Build Status](https://travis-ci.org/arvitaly/page-grabber.svg?branch=master)](https://travis-ci.org/arvitaly/page-grabber)\r\nUtil for grab data from web-page. Grabber take schema for data and look Window-tree by it. \r\n\r\n# Example observe\r\n\r\n    var grabber = require('page-grabber')(window);\r\n\r\n    //Helpers for create data schema\r\n    var sel = grabber.sel; //Set context for selector\r\n    var val = grabber.val; //Get value of input element //el.value\r\n    var attr = grabber.attr; //Get attribute value\r\n    var css = grabber.attr; //Get computed style\r\n    var hasClass = grabber.hasClass //check if class exists in class=\"...class1...\"//boolean\r\n    var text = grabber.text; //Get textContent value\r\n    var obj = grabber.obj; //Set context for JS-object\r\n    var child = grabber.child; //Set context for childNodes by index\r\n    ////////////////////////////////\r\n    var model = grabber.model({\r\n        posts: sel(\"#ul > li > a\", [{\r\n            text: child(0, text()),\r\n            display: css(\"display\"),\r\n            active: hasClass(\"active\"),\r\n            link: attr(\"href\"),\r\n            smallText: sel(\"span\", text())\r\n        }]),\r\n        data1: obj(\"test1\", {\r\n            data: obj(\"data\", [{\r\n                val: obj(\"test5\")\r\n            }])\r\n        })\r\n    })\r\n    model.on(\"posts\", (data)=>{\r\n        console.log(\"posts\", data);\r\n    })\r\n    model.on(\"data1\", (data)=>{\r\n        console.log(\"data1\", data);\r\n    })    "
+  ]
 }

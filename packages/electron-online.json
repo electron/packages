@@ -59,6 +59,5 @@
       "name": "gerhardberger",
       "email": "93.morph@gmail.com"
     }
-  ],
-  "readme": "# electron-online\n\ndetermine, when your electron app is online or went offline.\n\n``` js\nconst ElectronOnline = require('electron-online')\nconst connection = new ElectronOnline()\n\nconnection.on('online', () => {\n  console.log('App is online!')\n})\n\nconnection.on('offline', () => {\n  console.log('App is offline!')\n})\n\nconsole.log(connection.status) // 'PENDING'\n```\n\n## install\n\n```\n$ npm i electron-online\n```\n\n## use\n#### `connection = new require('electron-online')()`\n`connection` is an `EventEmitter` instance.\n\n### properties\n#### `connection.status`\na string that represents the status of the app's connection. can be `PENDING`\n(when still determining the initial status), `ONLINE`, or `OFFLINE`.\n\n### events\n#### `connection.on('online')`\nfires, when the app comes online.\n\n#### `connection.on('offline')`\nfires, when the app becomes offline.\n\n## test\n\n```\n$ npm test\n```\n"
+  ]
 }

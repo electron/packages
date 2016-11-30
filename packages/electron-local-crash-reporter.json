@@ -70,6 +70,5 @@
       "name": "ccnokes",
       "email": "ccnokes@gmail.com"
     }
-  ],
-  "readme": "# electron-local-crash-reporter\n\nThe goal of this module is to simplify running `mini-breakpad-server` in local development. Basically, it makes Electron's `crashReporter` API work easily out of the box for you, so you don't have to bother running mini-breakpad-server in a separate terminal window, download the symbols and move them to the right folder, etc.\n\nAdd this module as a dev dependency and only run it in local development, and it will:\n\n- Manage starting/stopping the breakpad server automatically\n- Download the correct Electron symbols (and seamlessly update them when you change Electron versions)\n- Minimal impact on app start time\n\nThis module is helpful if you do not have a remote crash report server running yet, or do not want to send crash reports created in local development to it.\n\n##Install\n```\nnpm install --save-dev electron-local-crash-reporter\n```\n\n## Example\nAll you really do is `require('electron-local-crash-reporter').start();`, but here's a fuller example:\n\n```javascript\n// this is your main process\nconst { app, BrowserWindow } = require('electron');\nlet mainWindow = null;\n\n// only run it in local development (check for this however you like)\nif(process.execPath.indexOf('electron-prebuilt') > -1) {\n  // it handles shutting itself down automatically\n  require('electron-local-crash-reporter').start();\n}\n\napp.on('ready', function() {\n  mainWindow = new BrowserWindow({ /* ... */ });\n});\n\n```\n"
+  ]
 }

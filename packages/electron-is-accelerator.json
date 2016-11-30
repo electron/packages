@@ -1,10 +1,10 @@
 {
   "name": "electron-is-accelerator",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Check if a string is a valid Electron accelerator",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jshint *.js && ava"
   },
   "repository": {
     "user": "brrd",
@@ -28,21 +28,29 @@
   },
   "license": "MIT",
   "homepage": "https://github.com/brrd/electron-is-accelerator",
-  "gitHead": "ed35ce2d3eb020192954138e2c9f40191e937fc9",
+  "devDependencies": {
+    "ava": "^0.17.0",
+    "jshint": "^2.9.4"
+  },
+  "gitHead": "8f864c2fd2fd899bd9f6e3727df80fdd0c1088ea",
   "_npmVersion": "4.0.0",
   "_nodeVersion": "4.4.7",
   "dist": {
-    "shasum": "ae14a8c81fc3d392514d95f4998cfd32e64796f1",
-    "tarball": "http://registry.npmjs.org/electron-is-accelerator/-/electron-is-accelerator-0.1.0.tgz"
+    "shasum": "736af9f96c48948925c0b1b96f821f1e8a589d79",
+    "tarball": "http://registry.npmjs.org/electron-is-accelerator/-/electron-is-accelerator-0.1.1.tgz"
   },
   "versions": [
     {
       "number": "0.1.0",
       "date": "2016-10-26T13:33:45.647Z"
+    },
+    {
+      "number": "0.1.1",
+      "date": "2016-11-18T14:31:04.732Z"
     }
   ],
   "created": "2016-10-26T13:33:45.647Z",
-  "modified": "2016-10-26T13:33:45.647Z",
+  "modified": "2016-11-18T14:31:04.732Z",
   "lastPublisher": {
     "name": "brrd",
     "email": "contact@brrd.fr"
@@ -52,6 +60,5 @@
       "name": "brrd",
       "email": "contact@brrd.fr"
     }
-  ],
-  "readme": "# electron-is-accelerator\r\n\r\nCheck if a string is a valid [Electron accelerator](https://github.com/electron/electron/blob/master/docs/api/accelerator.md)\r\n\r\n## Installation\r\n\r\n```\r\n$ npm install --save electron-is-accelerator\r\n```\r\n\r\n## Usage\r\n\r\n```javascript\r\nvar isAccelerator = require(\"electron-is-accelerator\");\r\n\r\nisAccelerator(\"CommandOrControl+Shift+Z\"); // true\r\nisAccelerator(\"CommandOrControl+F9\"); // true\r\nisAccelerator(\"CommandOrContrl+F9\"); // false\r\nisAccelerator(\"A+Z\"); // false\r\n```\r\n\r\n## License\r\n\r\nThe MIT License (MIT)\r\nCopyright (c) 2016 Thomas Brouard\r\n"
+  ]
 }

@@ -67,6 +67,5 @@
       "name": "pfraze",
       "email": "pfrazee@gmail.com"
     }
-  ],
-  "readme": "# pull-ipc\n\nA pull-stream wrapper around electron's ipc channel.\n\n## Usage\n\n```js\npullIpc(channelName, ipc, [window], doneCb)\n```\n\nMain thread:\n\n```js\nvar ipc = require('ipc')\nvar pullIpc = require('pull-ipc')\n\n// `window` is the BrowserWindow instance you want to communicate with\nvar ipcStream = pullIpc('pull-channel', ipc, window, function (err) {\n  console.log('ipc-stream ended', err)\n})\npull(ipcStream, someOtherStream, ipcStream)\n```\n\nUI thread:\n\n```js\nvar ipc = require('ipc')\nvar pullIpc = require('pull-ipc')\n\nvar ipcStream = pullIpc('pull-channel', ipc, function (err) {\n  console.log('ipc-stream ended', err)\n})\npull(ipcStream, someOtherStream, ipcStream)\n```"
+  ]
 }

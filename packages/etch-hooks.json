@@ -79,6 +79,5 @@
       "name": "binarymuse",
       "email": "michelle@michelletilley.net"
     }
-  ],
-  "readme": "# etch-hooks\n\netch-hooks is a library to facilitate hooking into the [Etch](https://github.com/nathansobo/etch) component lifecycle.\n\n### Overview\n\nIt can be useful to hook into the Etch component lifecycle. etch-hooks allows you to hook into either (or both) of the `etch.initialize` and `etch.update` methods:\n\n```javascript\nimport hooks from 'etch-hooks'\n\nclass MyComponent {\n  constructor () {\n    hooks.onInitialize(this, this.onUpdate)\n    hooks.onUpdate(this, this.onUpdate)\n\n    etch.initialize(this)\n    // the `onInitialize` hook runs here\n  }\n\n  async update (props, children) {\n    // ...\n    await etch.update(this)\n    // the `onUpdate` hook runs here;\n    // remember that `etch.update` is asynchronous and returns a promise\n  }\n\n  onUpdate () {\n    console.log(\"I've been rendered!\")\n  }\n\n  render () {\n    // ...\n  }\n}\n```\n"
+  ]
 }

@@ -91,6 +91,5 @@
       "name": "montaldo",
       "email": "marc@offthegrid.software"
     }
-  ],
-  "readme": "Pps's DOM-aware keymap module\r\n\r\n```js\r\nvar KeymapManager, keymaps;\r\nKeymapManager = require('pps-keymap')\r\n\r\nkeymaps = new KeymapManager\r\nkeymaps.defaultTarget = document.body\r\n\r\n// Pass all the window's keydown events to the KeymapManager\r\ndocument.addEventListener('keydown', function(event) {\r\n  keymaps.handleKeyboardEvent(event)\r\n})\r\n\r\n// Add some keymaps\r\nkeymaps.loadKeymap('/path/to/keymap-file.json') // can also be a directory of json / cson files\r\n// OR\r\nkeymaps.add('/key/for/these/keymaps', {\r\n  \"body\": {\r\n    \"up\": \"core:move-up\",\r\n    \"down\": \"core:move-down\"\r\n  }\r\n})\r\n\r\n// When a keybinding is triggered, it will dispatch it on the node that was focused\r\nwindow.addEventListener('core:move-up', (event) => console.log('up', event))\r\nwindow.addEventListener('core:move-down', (event) => console.log('down', event))\r\n"
+  ]
 }

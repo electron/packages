@@ -53,7 +53,7 @@
     }
   ],
   "created": "2016-01-05T05:40:57.976Z",
-  "modified": "2016-11-13T03:43:26.622Z",
+  "modified": "2016-11-17T23:12:00.369Z",
   "lastPublisher": {
     "name": "wearhere",
     "email": "jeffreywear@gmail.com"
@@ -63,6 +63,5 @@
       "name": "wearhere",
       "email": "jeffreywear@gmail.com"
     }
-  ],
-  "readme": "# electron-promote-windows-tray-items\n\nWhen you first create an Electron [tray item][tray item] on Windows, it will show up in the toolbar\ncustomization area:\n\n<img src=\"docs/customization_area.png\" height=\"300\" alt=\"customization area\">\n\nrather than in the toolbar itself:\n\n<img src=\"docs/toolbar.png\" alt=\"toolbar\">\n\nBy default, the user must explicitly choose to show icons in the toolbar. But not only does this\ncreate extra, potentially non-intuitive work for the user, it forces the design of icons that\nwill look good in both the toolbar and the customization area since you\n[can't choose different icons for each location][different icons].\n\nThis package helps you skip this process. For any item in its default state, i.e. the user has not\nexplicitly _hid_ the item from the toolbar, this package will \"promote\" that item from the customization\narea to the toolbar.\n\n## Requirements\n\nThis package may be safely required on non-Windows platforms, though the package will return an error\nif it is attempted to be used on non-Windows platforms.\n\nThis project is currently compatible with Electron 0.36.2 due to its dependence on\n[electron-edge][electron-edge].\n\n## Installation\n\nFor Electron:\n\n```js\nnpm install electron-promote-windows-tray-items --save\n```\n\n## Usage\n\n```js\nvar promoteWindowsTrayItems = require('electron-promote-windows-tray-items');\n\n// Create a tray item.\nvar icon = new Tray(/* ... */);\n\n// Icon will now be in the toolbar customization area without the user explicitly toggling it to show in the toolbar.\n\nif (process.platform === 'win32') {\n  promoteWindowsTrayItems(function(err) {\n    // Icon will now be in the toolbar itself unless the user explicitly hid it from the toolbar.\n  });\n}\n```\n\n## Contributing\n\nWe welcome pull requests! Please lint your code.\n\n## Credits\n\nCreated by [Jeff Wear][Jeff Wear], with the core C# logic used by this module\n[originally developed][original PR] by [Paul Betts][Paul Betts].\n\n## Copyright and License\n\nCopyright 2016 Mixmax, Inc., licensed under the MIT License.\n\nSome portions derived from [Squirrel.Windows][Squirrel.Windows], copyright 2012-2016 GitHub, Inc.,\nlicensed under the MIT License.\n\n[tray item]: https://github.com/atom/electron/blob/master/docs/api/tray.md\n[different icons]: https://github.com/atom/electron/issues/3970\n[electron-edge]: https://github.com/kexplo/electron-edge#electron-edge\n[Jeff Wear]: https://github.com/wearhere\n[original PR]: https://github.com/Squirrel/Squirrel.Windows/pull/447\n[Paul Betts]: https://github.com/paulcbetts\n[Squirrel.Windows]: https://github.com/Squirrel/Squirrel.Windows\n\n## Release History\n\n* 1.0.1 README fixes\n* 1.0.0 Initial release.\n"
+  ]
 }

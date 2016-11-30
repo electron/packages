@@ -1,6 +1,6 @@
 {
   "name": "electron-context-menu",
-  "version": "0.7.0",
+  "version": "0.8.0",
   "description": "Context menu for your Electron app",
   "license": "MIT",
   "repository": {
@@ -53,13 +53,13 @@
       "browser"
     ]
   },
-  "gitHead": "4b9b4c89b0974b83cf22fe5642856f020fa88187",
+  "gitHead": "6705425a1669f9290b2873de8b8e1963c9e50d54",
   "homepage": "https://github.com/sindresorhus/electron-context-menu#readme",
   "_npmVersion": "3.10.8",
   "_nodeVersion": "6.9.1",
   "dist": {
-    "shasum": "c6066aac73108a128759c1971eb67a3281074495",
-    "tarball": "http://registry.npmjs.org/electron-context-menu/-/electron-context-menu-0.7.0.tgz"
+    "shasum": "60c4b5e29d5514007be8728a6ebdf3cb694c4e3e",
+    "tarball": "http://registry.npmjs.org/electron-context-menu/-/electron-context-menu-0.8.0.tgz"
   },
   "stars": 2,
   "versions": [
@@ -110,10 +110,14 @@
     {
       "number": "0.7.0",
       "date": "2016-11-07T05:09:35.788Z"
+    },
+    {
+      "number": "0.8.0",
+      "date": "2016-11-23T13:27:41.236Z"
     }
   ],
   "created": "2016-06-04T10:40:41.326Z",
-  "modified": "2016-11-07T05:09:35.788Z",
+  "modified": "2016-11-23T13:27:41.236Z",
   "lastPublisher": {
     "name": "sindresorhus",
     "email": "sindresorhus@gmail.com"
@@ -123,6 +127,5 @@
       "name": "sindresorhus",
       "email": "sindresorhus@gmail.com"
     }
-  ],
-  "readme": "# electron-context-menu [![Build Status](https://travis-ci.org/sindresorhus/electron-context-menu.svg?branch=master)](https://travis-ci.org/sindresorhus/electron-context-menu)\n\n> Context menu for your [Electron](http://electron.atom.io) app\n\n<img src=\"screenshot.png\" width=\"125\" align=\"right\">\n\nElectron doesn't have a built-in context menu. You're supposed to handle that yourself. But it's both tedious and hard to get right. This module gives you a nice extensible context menu with items like `Cut`/`Copy`/`Paste` for text, `Save Image` for images, and `Copy Link` for links. It also adds an `Inspect Element` menu item when in development to quickly view items in the inspector like in Chrome.\n\nYou can use this module directly in both the main and renderer process.\n\n\n## Install\n\n```\n$ npm install --save electron-context-menu\n```\n\n\n## Usage\n\n```js\nconst {app, BrowserWindow} = require('electron');\n\nrequire('electron-context-menu')({\n\tprepend: params => [{\n\t\tlabel: 'Rainbow',\n\t\t// only show it when right-clicking images\n\t\tvisible: params.mediaType === 'image'\n\t}]\n});\n\nlet win;\n\napp.on('ready', () => {\n\twin = new BrowserWindow();\n});\n```\n\n\n## API\n\n### contextMenu([options])\n\n### options\n\n#### window\n\nType: `BrowserWindow` `WebView`<br>\n\nWindow or WebView to add the context menu to.\n\nWhen not specified, the context menu will be added to all existing and new windows.\n\n#### prepend\n\nType: `Function`\n\nShould return an array of [MenuItem](http://electron.atom.io/docs/api/menu-item/)'s to be prepended to the context menu. The first argument is [this `params` object](http://electron.atom.io/docs/api/web-contents/#event-context-menu).\n\n#### append\n\nType: `Function`\n\nShould return an array of [MenuItem](http://electron.atom.io/docs/api/menu-item/)'s to be appended to the context menu. The first argument is [this `params` object](http://electron.atom.io/docs/api/web-contents/#event-context-menu).\n\n#### showInspectElement\n\nType: `boolean`<br>\nDefault: [Only in development](https://github.com/sindresorhus/electron-is-dev)\n\nForce enable or disable the `Inspect Element` menu item.\n\n#### labels\n\nType: `Object`<br>\nDefault: `{}`\n\nOverwrite labels for the default menu items. Useful for i18n.\n\nFormat:\n\n```js\nlabels: {\n\tcut: 'Configured Cut',\n\tcopy: 'Configured Copy',\n\tpaste: 'Configured Paste',\n\tsave: 'Configured Save Image',\n\tcopyLink: 'Configured Copy Link',\n\tinspect: 'Configured Inspect'\n}\n```\n\n## Related\n\n- [electron-debug](https://github.com/sindresorhus/electron-debug) - Adds useful debug features to your Electron app\n- [electron-config](https://github.com/sindresorhus/electron-config) - Simple config handling for your Electron app or module\n\n\n## License\n\nMIT © [Sindre Sorhus](https://sindresorhus.com)\n"
+  ]
 }

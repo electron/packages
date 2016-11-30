@@ -37,6 +37,5 @@
       "name": "joshwnj",
       "email": "josh@x-team.com"
     }
-  ],
-  "readme": "# electron-run-in-browser\n\nRun some js in a `BrowserWindow` and get the result.\n\n## Usage\n\n`runInBrowser(win, func, cb)`\n\n- `win`: `BrowserWindow` instance.\n- `func`: function. Serialized with `toString` so it needs to be self-contained.\n- `cb`: callback function, called with (err, result)\n\n### Example\n\n```js\nconst BrowserWindow = require('electron').BrowserWindow\nconst runInBrowser = require('electron-run-in-browser')\n\nconst win = new BrowserWindow()\n\nwin.webContents.on('dom-ready', function (e) {\n  runInBrowser(win, getDocumentTitle, function (err, title) {\n    console.log('title:', title)\n  })\n})\n\nfunction getDocumentTitle () {\n  return document.title\n}\n```\n\n## License\n\nMIT\n\n"
+  ]
 }

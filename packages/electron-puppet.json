@@ -1,40 +1,42 @@
 {
   "name": "electron-puppet",
-  "version": "1.0.10",
+  "version": "1.2.2",
   "description": "### dependence",
   "main": "index.js",
   "scripts": {
-    "build": "./node_modules/babel-cli/bin/babel.js -w lib --out-dir src",
+    "build": "rm -rf lib && ./node_modules/babel-cli/bin/babel.js src --out-dir lib",
     "watch": "webpack --watch",
-    "start": "electron dist/main.bundle.js"
+    "start": "electron main.js"
   },
   "author": {
     "name": "jinhai.wang"
   },
   "license": "",
   "devDependencies": {
+    "babel-core": "^6.8.0",
+    "babel-polyfill": "^6.13.0",
+    "babel-register": "^6.18.0",
     "babel-plugin-transform-regenerator": "^6.14.0",
-    "babel-cli": "^6.18.0",
-    "babel-loader": "^6.2.5",
     "babel-plugin-transform-flow-strip-types": "^6.14.0",
+    "babel-cli": "^6.18.0",
     "babel-preset-es2015": "^6.14.0",
     "babel-preset-stage-0": "^6.5.0",
+    "babel-loader": "^6.2.5",
     "electron": "^1.3.1",
     "webpack-node-externals": "^1.4.3"
   },
   "dependencies": {
-    "babel-core": "^6.17.0",
-    "babel-polyfill": "^6.13.0",
+    "babel-runtime": "^6.18.0",
     "debug": "^2.2.0",
     "jquery": "^3.1.1",
     "lodash": "^4.16.4"
   },
-  "gitHead": "856b4755e0bb7bbd52768f9ddf461503410820e3",
+  "gitHead": "441194c17daf8e4a6d400d8d42c7af6ad784ebca",
   "_npmVersion": "3.10.3",
   "_nodeVersion": "6.3.1",
   "dist": {
-    "shasum": "220adb2f20e8aaa9bb0e0462dfb320170d94f4a0",
-    "tarball": "http://registry.npmjs.org/electron-puppet/-/electron-puppet-1.0.10.tgz"
+    "shasum": "5f7a10c3cede6a44299298163f5af88ecc22ffda",
+    "tarball": "http://registry.npmjs.org/electron-puppet/-/electron-puppet-1.2.2.tgz"
   },
   "versions": [
     {
@@ -84,10 +86,54 @@
     {
       "number": "1.0.10",
       "date": "2016-11-05T04:26:31.498Z"
+    },
+    {
+      "number": "1.0.11",
+      "date": "2016-11-20T05:02:27.891Z"
+    },
+    {
+      "number": "1.0.12",
+      "date": "2016-11-20T05:05:27.653Z"
+    },
+    {
+      "number": "1.0.13",
+      "date": "2016-11-20T05:06:50.016Z"
+    },
+    {
+      "number": "1.0.14",
+      "date": "2016-11-20T05:13:08.021Z"
+    },
+    {
+      "number": "1.1.14",
+      "date": "2016-11-20T05:14:17.253Z"
+    },
+    {
+      "number": "1.1.15",
+      "date": "2016-11-20T07:35:25.414Z"
+    },
+    {
+      "number": "1.1.16",
+      "date": "2016-11-20T07:42:32.995Z"
+    },
+    {
+      "number": "1.1.17",
+      "date": "2016-11-20T07:48:34.512Z"
+    },
+    {
+      "number": "1.1.18",
+      "date": "2016-11-20T08:02:42.361Z"
+    },
+    {
+      "number": "1.2.1",
+      "date": "2016-11-23T08:10:32.461Z"
+    },
+    {
+      "number": "1.2.2",
+      "date": "2016-11-23T08:23:25.699Z"
     }
   ],
   "created": "2016-10-10T07:53:48.799Z",
-  "modified": "2016-11-05T04:26:31.498Z",
+  "modified": "2016-11-23T08:23:25.699Z",
   "lastPublisher": {
     "name": "wangdashuai",
     "email": "938356815@qq.com"
@@ -97,6 +143,5 @@
       "name": "wangdashuai",
       "email": "938356815@qq.com"
     }
-  ],
-  "readme": "# README\n\n### dependence\n\n```bash\nnode -v\n\nv5.4.1\n\nnpm install\n\n\n### start\n\n```bash\nnpm run watch\nnpm run start\n```\n"
+  ]
 }

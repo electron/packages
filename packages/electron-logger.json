@@ -70,6 +70,5 @@
       "name": "loki951753",
       "email": "loki951753@gmail.com"
     }
-  ],
-  "readme": "# electron-logger\na simple tool to help my electron develop work and keep user client running log.\n\nelectron-logger is a simple tool, while still can satisfy my electron develop work. Any PR(format, writstream, etc..) will be appreciated.\n\n#usage\n```javascript\nvar logger = require('electron-logger');\n\n//output format:\n//{{timestamp}} [{{filename}}:{{lineNumber}}]>> {{log_content}}\n//16:46:55:111 [test.js:4]>>a info message\nlogger.info(\"a info message\");\n\n\nlogger.setLevel(\"info\");\nlogger.setLevel(1);\n\nlogger.getLevel();//\"info\"\n\nlogger.close();\nlogger.pause();\nlogger.open();\n\nlogger.setOutput({file:\"./tmp.log\"});\n```\n\n#practice\nI set the output to be `{terminal:false;file:%APPDATA%}` by default in production. Add a hot-key in the render process, when user encounts some bug, fire the hot-key and open the `%APPDATA%` directory then send the log to customer service(you can also add a backend port to send the message to the server).\n"
+  ]
 }

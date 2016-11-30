@@ -108,6 +108,5 @@
       "name": "justinmchase",
       "email": "justin.m.chase@outlook.com"
     }
-  ],
-  "readme": "node-celt\n=========\n### NodeJS native bindings to libcelt\n\nThis module implements bindings for Celt v0.7.0 for Node.js.\n\n    celt = require('node-celt');\n\n    // Create the encoder.\n    // Specify 48kHz sampling rate and 10ms frame size.\n    // NOTE: The decoder must use the same values when decoding the packets.\n    var rate = 48000;\n    var frame_size = rate/100;\n    var encoder = new celt.CeltEncoder( rate );\n\n    // Encode and decode.\n    var encoded = encoder.encode( buffer );\n    var decoded = encoder.decode( encoded );\n\nPlatform support\n----------------\n\nSupported platforms:\n- Linux x64\n- Linux arm\n- Darwin x64 (mac osx)\n- FreeBSD x64\n- Windows x64\n\nAdd new supported platforms by running ./configure in deps/celt-0.7.1 and\ncopying the resulting config.h to deps/config/celt-0.7.1/<os>/<arch>.\n\nUse the following flags: --enable-static --disable-shared --with-pic\n\nFork Notes\n----------\nThis fork adds electron build support, compatible with [electron-updater](https://github.com/evolvelabs/electron-updater).\n\nSee the `package.json` for how the url is composed."
+  ]
 }

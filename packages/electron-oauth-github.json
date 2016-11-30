@@ -92,6 +92,5 @@
       "name": "uraway",
       "email": "masato.u0107@gmail.com"
     }
-  ],
-  "readme": "# electron-oauth-github\nThis is Electron module that OAuth authenticates your Electron app with Github.\n\n### Install\n```\nnpm install electron-oauth-github\n```\n\n### Diving into OAuth\n1. [Register your app](https://github.com/settings/developers)\n\n2. Get **Client ID** and **Client Secret**\n\n3. Set **Client ID**, **Client Secret** and [scopes](https://developer.github.com/v3/oauth/#scopes). See [example](https://github.com/uraway/electron-oauth-github/tree/master/example).\n\n```javascript\nvar dialog = require('electron').dialog;\n\nvar OauthGithub = require('electron-oauth-github');\n\nvar github = new OauthGithub({\n  id: '****',\n  secret: '****',\n  scopes: ['user:email', 'notifications'],\n});\n\ngithub.startRequest(function(access_token, err) {\n  if (err) {\n    console.error(err);\n  }\n\n  dialog.showErrorBox('Satus', 'access_token: ' + access_token);\n});\n```\n\nNow you have got access token. Dive into OAuth!\n"
+  ]
 }

@@ -1,6 +1,6 @@
 {
   "name": "electron-packager",
-  "version": "8.2.0",
+  "version": "8.3.0",
   "description": "Package and distribute your Electron app with OS-specific bundles (.app, .exe etc) via JS or CLI",
   "main": "index.js",
   "bin": {
@@ -28,9 +28,9 @@
     "asar": "^0.12.3",
     "debug": "^2.2.0",
     "electron-download": "^3.0.0",
-    "electron-osx-sign": "^0.3.0",
+    "electron-osx-sign": "^0.4.1",
     "extract-zip": "^1.0.3",
-    "fs-extra": "^0.30.0",
+    "fs-extra": "^1.0.0",
     "get-package-info": "^1.0.0",
     "minimist": "^1.1.1",
     "plist": "^2.0.0",
@@ -48,7 +48,7 @@
     "eslint-plugin-promise": "^3.0.0",
     "eslint-plugin-standard": "^2.0.0",
     "is-admin": "^2.0.0",
-    "nyc": "^8.0.0",
+    "nyc": "^9.0.0",
     "pkg-up": "^1.0.0",
     "rcinfo": "^0.1.3",
     "rimraf": "^2.3.2",
@@ -75,14 +75,14 @@
       ]
     }
   },
-  "gitHead": "0e8c8064f158d6df50ee056a7fa564b941d2dfb1",
+  "gitHead": "8e0c3a31a28ab1f4a121b4453e9325eb951b3157",
   "_npmVersion": "3.8.6",
   "_nodeVersion": "5.12.0",
   "dist": {
-    "shasum": "b5392816ecf927d6a41b7fb29f063e7dbd8d9818",
-    "tarball": "http://registry.npmjs.org/electron-packager/-/electron-packager-8.2.0.tgz"
+    "shasum": "687e5d300ca0d2c5bfe311a8fed0e8172e83572d",
+    "tarball": "http://registry.npmjs.org/electron-packager/-/electron-packager-8.3.0.tgz"
   },
-  "stars": 65,
+  "stars": 68,
   "versions": [
     {
       "number": "3.0.0",
@@ -243,10 +243,14 @@
     {
       "number": "8.2.0",
       "date": "2016-10-30T00:22:08.529Z"
+    },
+    {
+      "number": "8.3.0",
+      "date": "2016-11-17T08:00:04.676Z"
     }
   ],
   "created": "2015-04-27T19:10:10.368Z",
-  "modified": "2016-11-10T12:47:43.769Z",
+  "modified": "2016-11-27T02:55:21.721Z",
   "lastPublisher": {
     "name": "malept",
     "email": "nodejs.npm.nospam@lazymalevolence.com"
@@ -288,6 +292,5 @@
       "name": "zeke",
       "email": "zeke@sikelianos.com"
     }
-  ],
-  "readme": "# electron-packager\n\nPackage your [Electron](http://electron.atom.io) app into OS-specific bundles (`.app`, `.exe`, etc.) via JavaScript or the command line.\n\n[![Travis CI Build Status](https://travis-ci.org/electron-userland/electron-packager.svg?branch=master)](https://travis-ci.org/electron-userland/electron-packager)\n[![AppVeyor Build status](https://ci.appveyor.com/api/projects/status/m51mlf6ntd138555?svg=true)](https://ci.appveyor.com/project/electron-userland/electron-packager)\n[![Coverage Status](https://coveralls.io/repos/github/electron-userland/electron-packager/badge.svg?branch=master)](https://coveralls.io/github/electron-userland/electron-packager?branch=master)\n\n## About\n\nElectron Packager is a command line tool and Node.js library that bundles Electron-based application\nsource code with a renamed Electron executable and supporting files into folders ready for distribution.\n\nNote that packaged Electron applications can be relatively large. A zipped barebones OS X Electron application is around 40MB.\n\n### Electron Packager is an [OPEN Open Source Project](http://openopensource.org/)\n\nIndividuals making significant and valuable contributions are given commit-access to the project to contribute as they see fit. This project is more like an open wiki than a standard guarded open source project.\n\nSee [CONTRIBUTING.md](https://github.com/electron-userland/electron-packager/blob/master/CONTRIBUTING.md) and [openopensource.org](http://openopensource.org/) for more details.\n\n### [Release Notes](https://github.com/electron-userland/electron-packager/blob/master/NEWS.md)\n\n## Supported Platforms\n\nElectron Packager is known to run on the following **host** platforms:\n\n* Windows (32/64 bit)\n* OS X\n* Linux (x86/x86_64)\n\nIt generates executables/bundles for the following **target** platforms:\n\n* Windows (also known as `win32`, for both 32/64 bit)\n* OS X (also known as `darwin`) / [Mac App Store](http://electron.atom.io/docs/v0.36.0/tutorial/mac-app-store-submission-guide/) (also known as `mas`)<sup>*</sup>\n* Linux (for x86, x86_64, and armv7l architectures)\n\n<sup>*</sup> *Note for OS X / MAS target bundles: the `.app` bundle can only be signed when building on a host OS X platform.*\n\n## Installation\n\nThis module requires Node.js 4.0 or higher to run.\n\n```sh\n# for use in npm scripts\nnpm install electron-packager --save-dev\n\n# for use from cli\nnpm install electron-packager -g\n```\n\n### Building Windows apps from non-Windows platforms\n\nBuilding an Electron app for the Windows target platform requires editing the `Electron.exe` file.\nCurrently, Electron Packager uses [node-rcedit](https://github.com/atom/node-rcedit) to accomplish\nthis. A Windows executable is bundled in that Node package and needs to be run in order for this\nfunctionality to work, so on non-Windows host platforms, [Wine](https://www.winehq.org/) 1.6 or\nlater needs to be installed. On OS X, it is installable via [Homebrew](http://brew.sh/).\n\n## Usage\n\n### From the Command Line\n\nRunning electron-packager from the command line has this basic form:\n\n```\nelectron-packager <sourcedir> <appname> --platform=<platform> --arch=<arch> [optional flags...]\n```\n\nThis will:\n\n- Find or download the correct release of Electron\n- Use that version of Electron to create a app in `<out>/<appname>-<platform>-<arch>` *(this can be customized via an optional flag)*\n\n`--platform` and `--arch` can be omitted, in two cases:\n\n* If you specify `--all` instead, bundles for all valid combinations of target\n  platforms/architectures will be created.\n* Otherwise, a single bundle for the host platform/architecture will be created.\n\nFor an overview of the other optional flags, run `electron-packager --help` or see\n[usage.txt](https://github.com/electron-userland/electron-packager/blob/master/usage.txt). For\ndetailed descriptions, see the [API documentation](https://github.com/electron-userland/electron-packager/blob/master/docs/api.md).\n\nIf `appname` is omitted, this will use the name specified by \"productName\" or \"name\" in the nearest package.json.\n\n**Characters in the Electron app name which are not allowed in all target platforms' filenames\n(e.g., `/`), will be replaced by hyphens (`-`).**\n\nYou should be able to launch the app on the platform you built for. If not, check your settings and try again.\n\n**Be careful** not to include `node_modules` you don't want into your final app. If you put them in\nthe `devDependencies` section of `package.json`, by default none of the modules related to those\ndependencies will be copied in the app bundles. (This behavior can be turned off with the\n`--no-prune` flag.) In addition, folders like `.git` and `node_modules/.bin` will be ignored by\ndefault. You can use `--ignore` to ignore files and folders via a regular expression (*not* a\n[glob pattern](https://en.wikipedia.org/wiki/Glob_%28programming%29)). Examples include\n`--ignore=\\.gitignore` or `--ignore=\"\\.git(ignore|modules)\"`.\n\n#### Example\n\nLet's assume that you have made an app based on the [electron-quick-start](https://github.com/electron/electron-quick-start) repository on a OS X or Linux host platform with the following file structure:\n\n```\nfoobar\n├── package.json\n├── index.html\n├── […other files, like LICENSE…]\n└── script.js\n```\n\n…and that the following is true:\n\n* `electron-packager` is installed globally\n* `productName` in `package.json` has been set to `Foo Bar`\n* `npm install` for the `Foo Bar` app has been run at least once\n\nWhen one runs the following command for the first time in the `foobar` directory:\n\n```\nelectron-packager . --all\n```\n\n`electron-packager` will do the following:\n\n* Use the current directory for the `sourcedir`\n* Infer the `appname` from the `productName` in `package.json`\n* Infer the `app-version` from the `version` in `package.json`\n* Download [all supported target platforms and arches](#supported-platforms) of Electron\nusing the installed `electron` or `electron-prebuilt` version (and cache the downloads in `~/.electron`)\n* For the `darwin` build, as an example:\n  * build the OS X `Foo Bar.app`\n  * place `Foo Bar.app` in `foobar/Foo Bar-darwin-x64/` (since an `out` directory was not specified, it used the current working directory)\n\nThe file structure now looks like:\n\n```\nfoobar\n├── Foo Bar-darwin-x64\n│   ├── Foo Bar.app\n│   │   └── […Mac app contents…]\n│   ├── LICENSE\n│   └── version\n├── […other application bundles, like \"Foo Bar-win32-x64\" (sans quotes)…]\n├── package.json\n├── index.html\n├── […other files, like LICENSE…]\n└── script.js\n```\n\nThe `Foo Bar.app` folder generated can be executed by a system running OS X, which will start the packaged Electron app. This is also true of the Windows x64 build on a system running a new enough version of Windows for a 64-bit system (via `Foo Bar-win32-x64/Foo Bar.exe`), and so on.\n\n### [Programmatic API](https://github.com/electron-userland/electron-packager/blob/master/docs/api.md)\n\n## Related\n\n- [electron-builder](https://www.npmjs.com/package/electron-builder) - for creating installer wizards\n- [grunt-electron](https://github.com/sindresorhus/grunt-electron) - grunt plugin for electron-packager\n- [electron-packager-interactive](https://github.com/Urucas/electron-packager-interactive) - an interactive CLI for electron-packager\n- [electron-packager-plugin-non-proprietary-codecs-ffmpeg](https://www.npmjs.com/package/electron-packager-plugin-non-proprietary-codecs-ffmpeg) - replaces the normal version of FFmpeg in Electron with a version without proprietary codecs\n"
+  ]
 }

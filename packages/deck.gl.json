@@ -2,7 +2,7 @@
   "name": "deck.gl",
   "description": "A suite of 3D-enabled data visualization overlays, suitable for react-map-gl",
   "license": "MIT",
-  "version": "3.0.2",
+  "version": "3.0.10",
   "keywords": [
     "webgl",
     "visualization",
@@ -40,17 +40,17 @@
     "geojson-normalize": "0.0.1",
     "get-pixels": "^3.3.0",
     "gl-matrix": "^2.3.2",
-    "glslify": "^5.0.0",
-    "lodash.flattendeep": "^3.0.2",
+    "glslify": "^6.0.0",
+    "lodash.flattendeep": "^4.4.0",
     "save-pixels": "^2.3.0",
-    "viewport-mercator-project": "3.0.0-beta2",
+    "viewport-mercator-project": "3.0.0-beta3",
     "webgl-obj-loader": "^0.1.1"
   },
   "devDependencies": {
     "babel-cli": "^6.3.15",
     "babel-core": "^6.7.7",
     "babel-eslint": "^6.0.0",
-    "babel-plugin-glslify": "1.0.2",
+    "babel-plugin-glslify": "^2.0.0",
     "babel-plugin-static-fs": "^1.1.0",
     "babel-plugin-transform-class-properties": "^6.18.0",
     "babel-plugin-transform-decorators-legacy": "^1.3.4",
@@ -60,18 +60,18 @@
     "babel-runtime": "^6.11.6",
     "babelify": "^7.2.0",
     "brfs-babel": "^1.0.0",
-    "browserify": "13.0.0",
-    "budo": "^8.0.3",
+    "browserify": "^13.0.0",
+    "budo": "^9.0.0",
     "d3-color": "^1.0.1",
     "d3-request": "^1.0.2",
     "d3-scale": "^1.0.3",
     "discify": "^1.2.0",
-    "electron-prebuilt": "^0.37.2",
+    "electron": "^1.4.7",
     "envify": "^3.4.0",
     "eslint": "^2.0.0",
     "eslint-config-uber-es2015": "^2.0.0",
     "eslint-config-uber-jsx": "^2.0.0",
-    "eslint-plugin-react": "^5.0.0",
+    "eslint-plugin-react": "^6.0.0",
     "faucet": "0.0.1",
     "gl": "^4.0.1",
     "highlight.js": "^9.7.0",
@@ -133,13 +133,13 @@
     "profile-disc": "browserify src/bundle.js --full-paths -t babelify -t glslify | uglifyjs | discify --open",
     "start": "npm run build-watch && budo example/main.js:example/bundle.js --live --open --port 3000 --css example/main.css --title 'deck.gl' --watch-glob '**/*.{html,css,js,glsl}' -- -t brfs-babel -t babelify -t envify"
   },
-  "gitHead": "b397f031bde7a9e5807a441365c1dfebd310ddd0",
+  "gitHead": "fd946ee26d304d788ba02dd732fbff9ce49d5b74",
   "homepage": "https://github.com/uber/deck.gl#readme",
-  "_npmVersion": "2.15.1",
-  "_nodeVersion": "0.12.17",
+  "_npmVersion": "3.10.9",
+  "_nodeVersion": "0.12.15",
   "dist": {
-    "shasum": "bbcc2611315a7df224cf4d79c4071e3d81f41df8",
-    "tarball": "http://registry.npmjs.org/deck.gl/-/deck.gl-3.0.2.tgz"
+    "shasum": "1bd7b174d353e4616d9e124d2a09dcefb91b5a8a",
+    "tarball": "http://registry.npmjs.org/deck.gl/-/deck.gl-3.0.10.tgz"
   },
   "stars": 1,
   "versions": [
@@ -422,13 +422,41 @@
     {
       "number": "3.0.2",
       "date": "2016-11-12T19:56:38.993Z"
+    },
+    {
+      "number": "3.0.3",
+      "date": "2016-11-14T19:49:44.228Z"
+    },
+    {
+      "number": "3.0.4",
+      "date": "2016-11-14T22:51:32.802Z"
+    },
+    {
+      "number": "3.0.5",
+      "date": "2016-11-15T05:20:30.120Z"
+    },
+    {
+      "number": "3.0.6",
+      "date": "2016-11-15T05:30:28.030Z"
+    },
+    {
+      "number": "3.0.7",
+      "date": "2016-11-16T22:52:57.804Z"
+    },
+    {
+      "number": "3.0.8",
+      "date": "2016-11-19T01:44:54.431Z"
+    },
+    {
+      "number": "3.0.10",
+      "date": "2016-11-23T01:06:31.276Z"
     }
   ],
   "created": "2015-12-23T18:18:42.390Z",
-  "modified": "2016-11-12T19:57:50.852Z",
+  "modified": "2016-11-23T01:06:31.276Z",
   "lastPublisher": {
-    "name": "apercu",
-    "email": "bgronon@gmail.com"
+    "name": "gnavvy",
+    "email": "gnavvy@gmail.com"
   },
   "owners": [
     {
@@ -451,6 +479,5 @@
       "name": "pessimistress",
       "email": "cxiaoji@gmail.com"
     }
-  ],
-  "readme": "<p align=\"right\">\n  <a href=\"https://npmjs.org/package/deck.gl\">\n    <img src=\"https://img.shields.io/npm/v/deck.gl.svg?style=flat-square\" alt=\"version\" />\n  </a>\n  <a href=\"https://travis-ci.org/uber/deck.gl\">\n    <img src=\"https://img.shields.io/travis/uber/deck.gl/master.svg?style=flat-square\" alt=\"build\" />\n  </a>\n  <a href=\"https://npmjs.org/package/deck.gl\">\n    <img src=\"https://img.shields.io/npm/dm/deck.gl.svg?style=flat-square\" alt=\"downloads\" />\n  </a>\n  <a href=\"http://starveller.sigsev.io/uber/deck.gl\">\n    <img src=\"http://starveller.sigsev.io/api/repos/uber/deck.gl/badge\" alt=\"stars\" />\n  </a>\n</p>\n\n<h1 align=\"center\">deck.gl | <a href=\"https://uber.github.io/deck.gl\">Docs</a></h1>\n\n<h5 align=\"center\">A WebGL overlay suite for React providing a set of highly performant data visualization overlays</h5>\n\n[![docs](http://i.imgur.com/mvfvgf0.jpg)](https://uber.github.io/deck.gl)\n\nProvides tested, highly performant layers for data visualization\nuse cases, such as scatterplots, choropleths etc in 2 and 3 dimensions.\n\n\n## Installation\n\n```\nnpm install --save deck.gl\n```\nNote: deck.gl has a dependency on node version 0.12 or higher. If you use an older version, you can install a node version manager like nvm and use a separate shell to install and build deck.gl\n```\nnpm install -g nvm && nvm install 0.12 && nvm use 0.12\n```\n\n## Example\n\n```javascript\nimport DeckGL from 'deck.gl/react';\nimport {ArcLayer} from 'deck.gl';\n\nconst flights = new ArcLayer({\n  id: 'flights',\n  data: [] // Some flight points\n});\n\n<DeckGL width={1920} height={1080} layers={[flights]} />\n```\n\nTake a look at the [docs website](https://uber.github.io/deck.gl)\nor browse the [docs folder](./docs).\n\n## Developing\n\n    npm install\n    npm test\n    npm start\n\n\n#### Node Version Requirement\n\nBuilding deck.gl from source has a dependency on node\nversion 0.12 or higher. If you use an older version, you can install\na node version manager like nvm and use a separate shell to install\nand build deck.gl.\n\n    npm install -g nvm && nvm install 0.12 && nvm use 0.122\n\nThis is not an issue when installing deck.gl, only\nwhen building it from source.\n\n## Contributing\n\nPRs and bug reports are welcome. Note that you once your PR is\nabout to be merged, your will be asked to register as a contributor\nby filling in a short form.\n\n## Data sources\n\n[SF OpenData](https://data.sfgov.org)\n[TLC Trip Record Data](http://www.nyc.gov/html/tlc/html/about/trip_record_data.shtml)\n[Mapzen](https://mapzen.com/)\n"
+  ]
 }

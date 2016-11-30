@@ -65,6 +65,5 @@
       "name": "sinjhin",
       "email": "john@ardea.io"
     }
-  ],
-  "readme": "[![npm version](https://badge.fury.io/js/steal-electron.svg)](http://badge.fury.io/js/steal-electron)\n\n# steal-electron\n\nCreate [Electron](http://electron.atom.io/) applications from StealJS projects.\n\n## Install\n\n```shell\nnpm install steal-electron --save-dev\n```\n\n## Example\n\nPass [electronOptions](#electronoptions) and [StealTools.BuildResult](http://stealjs.com/docs/steal-tools.BuildResult.html) to steal-electron:\n\n```js\nvar stealTools = require(\"steal-tools\");\nvar stealElectron = require(\"steal-electron\");\n\nvar electronOptions = {\n  buildDir: \"./build\",\n  platforms: [\"osx\"],\n  files: [\"./**/*\"]\n};\n\nvar buildPromise = stealTools({\n  config: __dirname + \"/package.json!npm\"\n});\n\nbuildPromise.then(function(buildResult){\n\tstealElectron(electronOptions, buildResult);\n});\n```\n\n## API\n\n`stealElectron(electronOptions, buildResult) -> Promise`\n\n### ElectronOptions\n\nElectron options are passed as the first argument are the same as documented on [node-webkit-builder](https://github.com/mllrsohn/node-webkit-builder).\n\n### BuildResult\n\nThe [result](http://stealjs.com/docs/steal-tools.build.html) of running StealTools multi-build.\n\n## License\n\nMIT\n"
+  ]
 }

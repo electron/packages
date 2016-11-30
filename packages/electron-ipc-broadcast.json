@@ -85,6 +85,5 @@
       "name": "jprichardson",
       "email": "jprichardson@gmail.com"
     }
-  ],
-  "readme": "electron-ipc-broadcast\n=====================\n\n[![npm](https://img.shields.io/npm/v/electron-ipc-broadcast.svg?style=flat-square)](https://www.npmjs.com/package/electron-ipc-broadcast)\n[![Build Status](https://travis-ci.org/jprichardson/electron-ipc-broadcast.svg?branch=master)](https://travis-ci.org/jprichardson/electron-ipc-broadcast)\n[![JavaScript standard style](https://img.shields.io/badge/code%20style-standard-brightgreen.svg?style=flat-square)](http://standardjs.com)\n\nBroadcast IPC messages to all Electron processes.\n\n\nInstall\n-------\n\n    npm i --save electron-ipc-broadcast\n\n\nExample\n-------\n\nIn your main process, you need to first call this:\n\n```js\nimport { mainBroadcastListener } from 'electron-ipc-broadcast'\nmainBroadcastListener()\n```\n\nThen you can use `electron-ipc-broadcast` anywhere within your app and listen to messages anywhere.\n\nIn any BrowserWindow process (renderer):\n\n```js\nimport broadcast from 'electron-ipc-broadcast'\nbroadcast('somemodule:somechannel', { message: 'hello' })\n```\n\nIn any process (main or renderer) to listen to messages:\n\n```js\nimport { ipcRenderer } from '#electron'\nipcRenderer.on('somemodule:somechannel', (event, { payload }) => {\n  const { message } = payload\n  console.log(message) // => hello\n})\n```\n\n\nLicense\n-------\n\nMIT (c) JP Richardson 2016\n"
+  ]
 }

@@ -1,6 +1,6 @@
 {
   "name": "electron-mocha",
-  "version": "3.1.1",
+  "version": "3.2.1",
   "description": "Mocha tests in Electron.",
   "main": "index.js",
   "scripts": {
@@ -51,12 +51,12 @@
     "electron": "^1.3.0",
     "standard": "^8.0.0"
   },
-  "gitHead": "de689c2833d160ac52cfa2aa5b698d96685cb339",
-  "_npmVersion": "3.10.3",
+  "gitHead": "248a2d67e1a890529a33143b03d7cb80a1ade70b",
+  "_npmVersion": "3.10.8",
   "_nodeVersion": "6.5.0",
   "dist": {
-    "shasum": "3685203b5537fe7186528bfb5750b36958619881",
-    "tarball": "http://registry.npmjs.org/electron-mocha/-/electron-mocha-3.1.1.tgz"
+    "shasum": "ee4ada97da921e52bc1e3c9235ca87670963c7a0",
+    "tarball": "http://registry.npmjs.org/electron-mocha/-/electron-mocha-3.2.1.tgz"
   },
   "stars": 4,
   "versions": [
@@ -219,10 +219,18 @@
     {
       "number": "3.1.1",
       "date": "2016-09-27T09:13:07.576Z"
+    },
+    {
+      "number": "3.2.0",
+      "date": "2016-11-17T20:10:04.327Z"
+    },
+    {
+      "number": "3.2.1",
+      "date": "2016-11-23T11:06:27.825Z"
     }
   ],
   "created": "2015-07-10T22:01:35.931Z",
-  "modified": "2016-09-27T09:13:07.576Z",
+  "modified": "2016-11-23T11:06:27.825Z",
   "lastPublisher": {
     "name": "inukshuk",
     "email": "sylvester@keil.or.at"
@@ -236,6 +244,5 @@
       "name": "jprichardson",
       "email": "jprichardson@gmail.com"
     }
-  ],
-  "readme": "electron-mocha\n==============\n[![Build Status](https://travis-ci.org/jprichardson/electron-mocha.svg?branch=master)](https://travis-ci.org/jprichardson/electron-mocha)\n[![Windows Build Status](https://ci.appveyor.com/api/projects/status/github/jprichardson/electron-mocha?branch=master&svg=true)](https://ci.appveyor.com/project/jprichardson/electron-mocha)\n[![npm](https://img.shields.io/npm/v/electron-mocha.svg?maxAge=2592000)]()\n\nMocha testing in [Electron](http://electron.atom.io/). This project has\ntwo main value propositions:\n\n1. You can now easily test any JavaScript app in a real browser (Chromium)\nwithout hassling with PhantomJS or Webdriver.\n2. You can now easily test your Electron apps!\n\n\nInstall\n-------\n\n    npm i -g electron-mocha\n\n\nUsage\n-----\n\n### Install Electron\n\nFirst, you need to install Electron. You can either run:\n\n    npm i -g electron-prebuilt\n\nand then `electron` will be added to your path. Or, you\ncan download a version from https://github.com/atom/electron/releases and\nthen set an environment variable `ELECTRON_PATH` pointing to the binary.\nNote if you're using Mac OS X, the path would be to the actual executable\nand not the app directory e.g. `/Applications/Electron.app/Contents/MacOS/Electron`.\n\nYou should probably just install `electron-prebuilt` as it simplifies things.\n\n\n### Run Tests\n\n`electron-mocha` is almost a drop-in replacement for the regular `mocha` command.\nHere's the help output:\n\n```\n\nUsage: electron-mocha [options] [files]\n\n  Options:\n\n    -h, --help             output usage information\n    -V, --version          output the version number\n    -C, --no-colors        force disabling of colors\n    -R, --reporter <name>  specify the reporter to use\n    -S, --sort             sort test files\n    -b, --bail             bail after first test failure\n    -g, --grep <pattern>   only run tests matching <pattern>\n    -f, --fgrep <string>   only run tests containing <string>\n    -i, --invert           inverts --grep and --fgrep matches\n    -r, --require <name>   require the given module\n    -s, --slow <ms>        \"slow\" test threshold in milliseconds [75]\n    -t, --timeout <ms>     set test-case timeout in milliseconds [2000]\n    -u, --ui <name>        specify user-interface (bdd|tdd|exports)\n    --check-leaks          check for global variable leaks\n    --compilers            use the given module(s) to compile files\n    --debug                enable Electron debugger on port [5858]; for --renderer tests show window and dev-tools\n    --debug-brk            like --debug but pauses the script on the first line\n    --globals <names>      allow the given comma-delimited global [names]\n    --inline-diffs         display actual/expected differences inline within each string\n    --interfaces           display available interfaces\n    --no-timeouts          disables timeouts\n    --opts <path>          specify opts path [test/mocha.opts]\n    --recursive            include sub directories\n    --renderer             run tests in renderer process\n    --preload <name>       preload the given script in renderer process\n    --require-main <name>  load the given script in main process before executing tests\n\n```\n\nSo if you run:\n\n    electron-mocha ./tests\n\nThis runs the tests in the [`main`](https://github.com/atom/electron/blob/master/docs/tutorial/quick-start.md#main-process)\nprocess. The output that you could expect would be pretty similar to that of io.js with one exception,\nit supports all of Electron libraries since it's running\nin Electron! So you don't need to mock those libraries out anymore and can actually write tests to integrate with them.\n\nIf you run:\n\n    electron-mocha --renderer ./tests\n\nThis runs the tests in the [`renderer`](https://github.com/atom/electron/blob/master/docs/tutorial/quick-start.md#main-process).\nYes, this means that you have access to the entirety of the DOM, web storage, etc. This is because it's actually\nrunning in a [Chromium](https://en.wikipedia.org/wiki/Chromium_(web_browser)) process.\n\n### Using on Travis\n\nYour `.travis.yml` will need two extra lines of configuration to run this headless on Travis:\n\n```yaml\nbefore_script:\n  - export DISPLAY=:99.0; sh -e /etc/init.d/xvfb start\n```\n\n###  Debugger Support\n\nUse the `--debug` or `--debug-brk` options to enable Electron's debugger. When using `--renderer` this will open the test window and open the dev-tools: use that option in combination with a `debugger` statement anywhere in your tests or code to start debugging.\n\nRoadmap\n-------\n- Implement a way to allow tests to run in either `main`/`renderer` from within\nthe same test file for the purposes of integration testing.\n\n\nLicense\n-------\n\nMIT\n"
+  ]
 }

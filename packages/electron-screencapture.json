@@ -102,6 +102,5 @@
       "name": "kasprownik",
       "email": "kasper@wargu.la"
     }
-  ],
-  "readme": "#electron-screencapture\n\nLibrary that allows to take a picture or a video from any fragment of the display.\n\n## API\n\n### `takeScreenshot({x, y, width, height, sourceId})`\nTakes static screenshot and returns promise with the result.\n\n* `x, y, width, height` - these params define the rectangle of the frame\n* `sourceId` - id of the display, primary display by default\n\n####Example\n\n```js\nimport {takeScreenshot} from \"electron-screencapture\";\n\ntakeScreenshot({x: 0, y: 0, width: 800, height: 600}).then(result => {\n    console.log(result);\n});\n```\n\n### `captureVideo({x, y, width, height, sourceId})`\nStarts recording and returns promise with the object with the control api.\n\n* `x, y, width, height` - these params define the rectangle of the frame\n* `sourceId` - id of the display, primary display by default\n\n####Control API object\n\n* `stop()` - stops recording and returns promise with the video\n* `pause()` - pauses recording\n* `resume()` - resumes recording if paused\n\n####Example\n\n```js\nimport {captureVideo} from \"electron-screencapture\";\n\ncaptureVideo({x: 0, y: 0, width: 800, height: 600}).then(recorder => {\n    setTimeout(() => recorder.stop().then(result => {\n        console.log(result);\n    }), 1000);\n});\n```"
+  ]
 }

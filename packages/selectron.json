@@ -41,7 +41,6 @@
     }
   ],
   "scripts": {},
-  "readme": "# selectron\n\nKeep track of the currently selected thing\n\n## Example\n\n``` js\nvar selectron = require(\"selectron\")\n\nvar sel = selectron()\n    , ul = document.getElementById(\"list\")\n\nul.addEventListener(\"click\", function (evt) {\n    if (evt.target.tagName === \"LI\") {\n        sel.select(evt.target)\n    }\n})\n\nsel.on(\"select\", function (li) {\n    li.classList.add(\"selected\")\n})\n\nsel.on(\"unselect\", function (li) {\n    li.classList.remove(\"selected\")\n})\n```\n\n## Installation\n\n`npm install selectron`\n\n## Contributors\n\n - Raynos\n\n## MIT Licenced",
   "dist": {
     "shasum": "33efb869c12261199bfa494c48253d3a1312f58d",
     "tarball": "http://registry.npmjs.org/selectron/-/selectron-0.0.1.tgz"

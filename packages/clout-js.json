@@ -135,6 +135,5 @@
       "name": "muhammaddadu",
       "email": "muhammad@dadu.co"
     }
-  ],
-  "readme": "Clout Javascript Framework\n===========\n\n## Install\n```\n$ npm install clout-js\n```\n\n## Project Structure\n```\n/conf \t\t\t- contains configuration w/ support for NODE_ENV\n/apis \t\t\t- contains apis for the application\n/hooks\t\t\t- hooks which can be invoked before an api\n/models \t\t- contains models (native support for sequalize)\n/public \t\t- public folder\n/controllers \t- contains controllers for application\n```\n\n## Usage\n### app.js example\n```\nvar clout = require('clout-js');\n\nclout.on('started', function () {\n\tif (clout.server.https) {\n\t\tconsole.info('http server started on port %s', clout.server.https.address().port);\n\t}\n\tif (clout.server.http) {\n\t\tconsole.info('http server started on port %s', clout.server.http.address().port);\n\t}\n});\n\nclout.app.use(function (req, res, next) {\n\tnext();\n});\n\nclout.start();\n```\n### /api/ping.js example\n```\nvar clout = require('clout-js');\n\nmodule.exports = {\n\tlist: {\n\t\tpath: '/ping',\n\t\tdescription: 'ping service',\n\t\tmethod: 'get',\n\t\tfn: function get(req, res) {\n\t\t\tres.ok('GET REQUEST');\n\t\t}\n\t},\n\tpublish: {\n\t\tpath: '/ping',\n\t\tdescription: 'ping service',\n\t\tmethod: 'post',\n\t\t// hooks: [ auth.isLoggedIn() ],\n\t\tfn: function post(req, res) {\n\t\t\tres.ok('POST REQUEST');\n\t\t}\n\t}\n}\n```\n"
+  ]
 }

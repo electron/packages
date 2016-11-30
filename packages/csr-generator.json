@@ -1,0 +1,97 @@
+{
+  "name": "csr-generator",
+  "productName": "Schlüssel- und CSR Generator",
+  "version": "0.0.3",
+  "description": "Oberfläche für das Erzeugen von Schlüsselpaaren und Zertifikatsanforderungen",
+  "main": "app/index.js",
+  "build": {
+    "appId": "csr-generator",
+    "mac": {
+      "category": "public.app-category.productivity"
+    },
+    "linux": {
+      "category": "Office"
+    }
+  },
+  "scripts": {
+    "start": "electron ./app/",
+    "watch": "node webpack.watch.js",
+    "inline": "html-inline -i ./app/dist/index.html -o ./app/dist/index_merged.html && rm ./app/dist/index_bundle.js && rm ./app/dist/index.html && mv ./app/dist/index_merged.html ./app/dist/index.html",
+    "build": "node webpack.build.js && npm run inline",
+    "pack": "npm run build && build -wl --x64 --ia32",
+    "publish": "npm run build && build -wl --x64 --ia32 --publish always"
+  },
+  "repository": {
+    "user": "ml1nk",
+    "repo": "csr-generator",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/ml1nk/csr-generator/tarball/master",
+    "clone_url": "https://github.com/ml1nk/csr-generator",
+    "https_url": "https://github.com/ml1nk/csr-generator",
+    "travis_url": "https://travis-ci.org/ml1nk/csr-generator",
+    "zip_url": "https://github.com/ml1nk/csr-generator/archive/master.zip",
+    "api_url": "https://api.github.com/repos/ml1nk/csr-generator"
+  },
+  "author": {
+    "name": "Marcel Link"
+  },
+  "license": "MIT",
+  "homepage": "https://github.com/ml1nk/csr-generator#readme",
+  "devDependencies": {
+    "bootstrap": "^3.3.7",
+    "bootstrap-fileinput": "^4.3.4",
+    "bootstrap-validator": "^0.11.5",
+    "csr-helper": "^0.1.10",
+    "css-loader": "^0.25.0",
+    "electron": "^1.4.8",
+    "electron-builder": "^8.2.0",
+    "file-loader": "^0.9.0",
+    "gutil": "^1.6.4",
+    "html-loader": "^0.4.4",
+    "html-webpack-plugin": "^2.24.1",
+    "html-inline": "^1.2.0",
+    "jquery": "^3.1.1",
+    "jquery-confirm": "github:craftpip/jquery-confirm#9e5845190e2316b5ef0b89b12579b8810981141f",
+    "jquery-toast-plugin": "^1.3.1",
+    "pwstrength-bootstrap": "^2.0.3",
+    "script-loader": "^0.7.0",
+    "style-loader": "^0.13.1",
+    "url-loader": "^0.5.7",
+    "webpack": "^1.13.3"
+  },
+  "gitHead": "26174f5382197de9dafb354150cc9d0cfaf826d0",
+  "_npmVersion": "4.0.3",
+  "_nodeVersion": "7.2.0",
+  "dist": {
+    "shasum": "6ed2af4bc66a04580bdc8f545a8545e8c14f13cd",
+    "tarball": "http://registry.npmjs.org/csr-generator/-/csr-generator-0.0.3.tgz"
+  },
+  "versions": [
+    {
+      "number": "0.0.1",
+      "date": "2016-11-21T21:28:54.251Z"
+    },
+    {
+      "number": "0.0.2",
+      "date": "2016-11-28T09:38:45.551Z"
+    },
+    {
+      "number": "0.0.3",
+      "date": "2016-11-28T15:44:18.440Z"
+    }
+  ],
+  "created": "2016-11-21T21:28:54.251Z",
+  "modified": "2016-11-28T15:44:18.440Z",
+  "lastPublisher": {
+    "name": "mlink",
+    "email": "marcel.link@t-online.de"
+  },
+  "owners": [
+    {
+      "name": "mlink",
+      "email": "marcel.link@t-online.de"
+    }
+  ]
+}

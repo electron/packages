@@ -66,6 +66,5 @@
       "name": "jcblw",
       "email": "jacoblowe2.0@gmail.com"
     }
-  ],
-  "readme": "# IPC Electron Dispatcher\n\nThis is just the [flux](https://facebook.github.io/flux/docs/dispatcher.html) wrapped with a small amount of code to allow it to speak to both the renderer process as well as the main process.\n\n[![Build Status](https://travis-ci.org/jcblw/ipc-electron-dispatcher.svg?branch=master)](https://travis-ci.org/jcblw/ipc-electron-dispatcher)\n\n## Install\n\n  npm i ipc-electron-dispatcher -S\n\n## Usage\n\nYou still need to make your own instance of the dispatcher\n\n```javascript\n// dispatcher.js\nconst IPCDispatcher = require('ipc-electron-dispatcher')\nconst dispatcher = new IPCDispatcher()\n\nmodule.exports = dispatcher\n```\n\nNow you may require/register/dispatch from either the main process or the renderer process and the action should propagate to both processes\n\n> Currently this only supports on window applications and will only speak to window after they have attempted to speak to the dispatcher first\n\n> Since the dispatchers are in different processes they will have different data sets for registered callbacks\n\nPatches welcome ^^ :smile:\n\n## Contributing\n\nRight now the only two things are `src` files are the main source file and get compiled into the `lib` dir using `npm run build`. And we use [standardjs](http://standardjs.com/), so by running `npm test` you can test if you code is compliant.\n"
+  ]
 }

@@ -1,7 +1,7 @@
 {
   "name": "shiba",
   "productName": "Shiba",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Live markdown previewer with linter",
   "main": "./build/src/browser/mainu.js",
   "bin": {
@@ -33,32 +33,32 @@
     "electron"
   ],
   "dependencies": {
-    "about-window": "^1.4.0",
+    "about-window": "^1.6.1",
     "animate.css": "^3.5.2",
     "chokidar": "^1.6.1",
-    "electron": "1.4.3",
-    "electron-window-state": "^3.1.0",
-    "encoding-japanese": "^1.0.24",
+    "electron": "^1.4.10",
+    "electron-window-state": "^4.0.0",
+    "encoding-japanese": "^1.0.25",
     "he": "^1.1.0",
-    "highlight.js": "^9.7.0",
-    "js-yaml": "^3.6.1",
+    "highlight.js": "^9.8.0",
+    "js-yaml": "^3.7.0",
     "katex": "^0.6.0",
-    "markdownlint": "^0.2.0",
-    "marked": "^0.3.6",
+    "markdownlint": "^0.3.1",
+    "marked": "github:rhysd/marked#emoji",
     "mousetrap": "^1.6.0",
     "remark": "^4.2.0",
     "remark-lint": "^3.2.0"
   },
   "devDependencies": {
     "asar": "^0.12.3",
-    "electron-packager": "^8.1.0",
-    "electron-rebuild": "^1.2.1",
+    "electron-packager": "^8.3.0",
+    "electron-rebuild": "^1.4.0",
     "intelli-espower-loader": "^1.0.1",
-    "mocha": "^3.1.2",
-    "power-assert": "^1.4.1",
+    "mocha": "^3.2.0",
+    "power-assert": "^1.4.2",
     "touch": "^1.0.0",
-    "typescript": "^2.0.3",
-    "typings": "^1.4.0"
+    "typescript": "^2.0.10",
+    "typings": "^2.0.0"
   },
   "scripts": {
     "dep": "npm install && bower install && typings install",
@@ -68,12 +68,12 @@
     "test": "rake test",
     "start": "npm run dep && npm run build && npm run app"
   },
-  "gitHead": "f0f51d32cf16c637397f772221c621e9c691e3b4",
-  "_npmVersion": "3.9.3",
-  "_nodeVersion": "6.2.1",
+  "gitHead": "9ca7f70196f809bd120e37e6ede5fbec7688ea39",
+  "_npmVersion": "3.10.7",
+  "_nodeVersion": "6.6.0",
   "dist": {
-    "shasum": "9620bf68a6fa7f687fa38e625d6380c11de8053e",
-    "tarball": "http://registry.npmjs.org/shiba/-/shiba-1.0.3.tgz"
+    "shasum": "f9f31095281863fbd1d5b89b880503d083c3f85b",
+    "tarball": "http://registry.npmjs.org/shiba/-/shiba-1.0.4.tgz"
   },
   "stars": 1,
   "versions": [
@@ -264,10 +264,14 @@
     {
       "number": "1.0.3",
       "date": "2016-10-16T03:36:36.449Z"
+    },
+    {
+      "number": "1.0.4",
+      "date": "2016-11-29T06:45:39.948Z"
     }
   ],
   "created": "2015-07-06T03:29:12.828Z",
-  "modified": "2016-10-16T03:36:36.449Z",
+  "modified": "2016-11-29T06:45:39.948Z",
   "lastPublisher": {
     "name": "rhysd",
     "email": "lin90162@yahoo.co.jp"
@@ -277,6 +281,5 @@
       "name": "rhysd",
       "email": "lin90162@yahoo.co.jp"
     }
-  ],
-  "readme": "![shibainu](https://raw.githubusercontent.com/rhysd/ss/master/Shiba/title-bar.jpg)\n=====================\n\n[![npm version](https://img.shields.io/npm/v/shiba.svg?style=flat-square)](https://www.npmjs.com/package/shiba)\n[![Build Status](https://travis-ci.org/rhysd/Shiba.svg?branch=master)](https://travis-ci.org/rhysd/Shiba)\n\nShiba is a rich live markdown preview app with linter.  It watches markdown files in specific directory and automatically shows the preview and result of lint.\nShiba is built on [Electron](https://github.com/atom/electron) and [Polymer](https://www.polymer-project.org/1.0/).\n\n- [x] Isolated app.  You need not prepare Chrome and can use favorite editor\n- [x] Rich GitHub Flavored Markdown\n  - code highlight\n  - emoji\n  - task list\n  - links with tooltip\n  - tree diagram and flowchart using [mermaid](https://github.com/knsv/mermaid)\n  - math rendering using [katex](https://github.com/Khan/KaTeX)\n- [x] Live reload\n- [x] Automatic lint (remark-lint, markdownlint)\n- [x] [Keyboard shortcuts](docs/shortcuts.md); All operations are ready for mouse and keyboard.\n- [x] Both GUI and CLI friendly\n- [x] Cross platform (OS X, Linux, Windows)\n- [x] [Easy to install](docs/installation.md)\n- [x] [Customizable with YAML config file](docs/customization.md)\n  - keyboard shortcuts\n  - linter\n  - user CSS\n  - code theme\n  - etc...\n- [x] [Search text in preview](docs/usage.md#search-text)\n- [x] [Outline window](docs/usage.md#outline-window)\n- [x] Print preview (to a paper / to a PDF file)\n- [x] Support multi japanese encodings (utf8, utf16, sjis, euc-jp, unicode)\n- [x] HTML preview\n- [x] Dog-respected :dog2:\n\n\n## Documents\n\nAll documents are in [docs](docs/) directory.  And I wrote [a Japanese blog post](http://rhysd.hatenablog.com/entry/2015/08/03/090646).\n\n- [Installation](docs/installation.md)\n- [Basic Usage](docs/usage.md)\n- [Keyboard Shortcuts](docs/shortcuts.md)\n- [Customization](docs/customization.md)\n- [Tips](docs/tips.md)\n\n\n## Overview\n\n![main screenshot](https://raw.githubusercontent.com/rhysd/ss/master/Shiba/shiba-screenshot.gif)\n\n1. At start up, Shiba is watching the current working directory (the path is in title of window).\n2. When you edit the markdown file in current working directory, Shiba finds the update, renders the file in window and sets the result of lint.\n3. You can see the result of lint by clicking the '!' button in menu.  When the button is red, it means that linter reported some errors.\n4. You can change the watching directory/file using 'directory' button in menu or dropping file to window.\n5. You can quit app by closing the window.\n\nThis is the simplest use case.  Please see [usage document](docs/usage.md) for more detail.\n\n\n## Special Thanks\n\n- The logo of this app came from [いらすとや](http://www.irasutoya.com/).\n- This app was inspired by [@mattn](https://github.com/mattn)'s [mkup](https://github.com/mattn/mkup).\n- This app referred [vmd](https://github.com/yoshuawuyts/vmd) a lot at first, which was a very simple markdown preview app built on Electron.\n- Emoji pictures were from [arvida/emoji-cheat-sheet.com](https://github.com/arvida/emoji-cheat-sheet.com).\n- The voice resource came from [効果音ラボ](http://soundeffect-lab.info/).\n\n\n## License\n\nMIT License.\n\n    Copyright (c) 2015 rhysd\n\n    Permission is hereby granted, free of charge, to any person obtaining a copy\n    of this software and associated documentation files (the \"Software\"), to deal\n    in the Software without restriction, including without limitation the rights\n    to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies\n    of the Software, and to permit persons to whom the Software is furnished to do so,\n    subject to the following conditions:\n\n    The above copyright notice and this permission notice shall be included in all\n    copies or substantial portions of the Software.\n\n    THE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED,\n    INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR\n    PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE\n    LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,\n    TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR\n    THE USE OR OTHER DEALINGS IN THE SOFTWARE.\n\n\nIn packaged app, Electron part is licensed with below notice:\n\n    Copyright (c) 2014 GitHub Inc.\n\n"
+  ]
 }

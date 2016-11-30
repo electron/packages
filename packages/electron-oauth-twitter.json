@@ -109,6 +109,5 @@
       "name": "uraway",
       "email": "masato.u0107@gmail.com"
     }
-  ],
-  "readme": "# electron-oauth-twitter\nThis is [Electron](http://electron.atom.io/) module that easily OAuth authenticates your Electron app with twitter.\n\n### Install\n```\nnpm install electron-oauth-twitter\n```\n\n### Diving into OAuth\n1. [Register your app](https://apps.twitter.com/).\n\n2. You need **Consumer Key (API Key)** and **Consumer Secret (API Secret)**.\n\n3. Set **Callback URL** at settings of you app. If you do not set Callback URL, it will evoke [PIN Based OAuth](https://dev.twitter.com/oauth/pin-based).\n\n  ![](http://i.imgur.com/MKLABt3.png)\n\n4. Edit your Electron main file. See [example](https://github.com/uraway/electron-oauth-twitter/tree/master/example). Dive into OAuth!\n\n\n```javascript\nvar dialog = require('electron').dialog;\n\nvar OauthTwitter = require('electron-oauth-twitter');\n\nvar twitter = new OauthTwitter({\n  key: '****',\n  secret: '****',\n});\n\ntwitter.startRequest().then(function(result) {\n  var accessToken = result.oauth_access_token;\n  var accessTokenSecret = result.oauth_access_token_secret;\n  dialog.showErrorBox('Status', 'Token: ' + accessToken + '\\nSecret: ' + accessTokenSecret);\n}).catch(function(error) {\n  console.error(error, error.stack);\n});\n```\n\n---\nMIT licensed\n"
+  ]
 }

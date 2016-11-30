@@ -1,8 +1,8 @@
 {
   "name": "nteract",
-  "version": "0.0.14",
+  "version": "0.0.15",
   "description": "Interactive literate coding notebook!",
-  "main": "./build/main/index.js",
+  "main": "./lib/main/index.js",
   "repository": {
     "user": "nteract",
     "repo": "nteract",
@@ -28,30 +28,99 @@
   },
   "license": "BSD-3-Clause",
   "homepage": "https://github.com/nteract/nteract",
+  "scripts": {
+    "postinstall": "node scripts/check-deps.js && install-app-deps",
+    "reinstall": "npm run clean && rimraf node_modules && npm install",
+    "prestart": "npm run build",
+    "start": "npm run spawn",
+    "spawn": "cross-env NODE_ENV=development electron .",
+    "clean": "rimraf lib dist",
+    "lint": "eslint src",
+    "lint:fix": "eslint src --fix",
+    "prebuild": "rimraf lib",
+    "build": "npm run build:renderer && npm run build:main",
+    "build:renderer": "webpack --progress --colors",
+    "build:renderer:watch": "npm run build:renderer -- --watch",
+    "build:main": "babel src/main --out-dir ./lib/main && babel src/utils --out-dir ./lib/utils",
+    "build:icon": "./scripts/make_icons.sh && cd static/icons && iconutil -c icns nteract.iconset && mv nteract.icns ../icon.icns",
+    "build:docs": "esdoc -c esdoc.json",
+    "test": "npm run test:unit && npm run test:lint",
+    "pretest:functional": "npm run build",
+    "sublaunch": "electron-mocha --compilers js:babel-core/register",
+    "test:conformance": "node scripts/conformance.js",
+    "test:functional:launch": "npm run sublaunch -- test/main/launch.js",
+    "test:functional:launchNewNotebook": "npm run sublaunch -- test/main/launchNewNotebook.js",
+    "test:functional": "npm run test:functional:launch && npm run test:functional:launchNewNotebook",
+    "test:coverage": "npm run coverage",
+    "test:unit": "mocha -r test/setup.js --compilers js:babel-core/register \"test/renderer/**/*.js\" \"test/utils/**/*.js\"",
+    "test:debug": "mocha --debug-brk --inspect -r test/setup.js --compilers js:babel-core/register \"test/renderer/**/*.js\" \"test/utils/**/*.js\"",
+    "test:unit:individual": "mocha -r test/setup.js --compilers js:babel-core/register ",
+    "test:watch": "watch 'npm run test' test/",
+    "test:lint": "npm run lint",
+    "test:flow": "npm run flow",
+    "precoverage": "mkdirp coverage && nyc npm run test:unit",
+    "coverage": "nyc report --reporter=text-lcov > coverage/lcov.info",
+    "pack": "npm install && npm run clean && npm run build && build --dir",
+    "dist": "npm install && npm run clean && npm run build && build",
+    "flow": "flow",
+    "diagnostics": "scripts/kernelspecs-diagnostics.js"
+  },
+  "build": {
+    "electronVersion": "1.4.8",
+    "appId": "io.nteract.nteract",
+    "fileAssociations": {
+      "ext": "ipynb",
+      "name": "ipynb"
+    },
+    "mac": {
+      "category": "public.app-category.developer-tools"
+    },
+    "win": {
+      "target": "nsis"
+    },
+    "files": [
+      "lib",
+      "node_modules",
+      "static"
+    ],
+    "extraResources": [
+      "bin",
+      "example-notebooks"
+    ]
+  },
+  "greenkeeper": {
+    "ignore": [
+      "eslint-plugin-jsx-a11y",
+      "eslint-plugin-import",
+      "eslint-plugin-jsx-a11y",
+      "eslint-plugin-react"
+    ]
+  },
   "dependencies": {
-    "ansi-to-react": "0.0.4",
-    "codemirror": "^5.19.0",
-    "commonmark": "^0.26.0",
+    "ansi-to-react": "0.0.5",
+    "codemirror": "^5.20.2",
+    "commonmark": "^0.27.0",
     "commonmark-react-renderer": "^4.3.1",
     "commutable": "^1.1.3",
-    "electron-json-storage": "^2.0.0",
-    "electron-log": "^1.1.0",
+    "electron-context-menu": "^0.8.0",
+    "electron-log": "^1.2.2",
+    "electron-react-devtools": "^0.4.0",
     "enchannel": "^1.1.3",
-    "enchannel-zmq-backend": "^2.5.0",
-    "github": "^5.0.0",
+    "enchannel-zmq-backend": "^2.6.0",
+    "github": "^6.0.1",
     "immutable": "^3.7.6",
     "jupyter-paths": "^1.0.2",
     "kernelspecs": "^1.0.3",
     "leaflet": "^1.0.1",
-    "mathjax-electron": "^1.1.1",
+    "mathjax-electron": "^1.2.0",
     "mkdirp": "^0.5.1",
-    "moment": "^2.15.0",
+    "moment": "^2.15.2",
     "normalize.css": "^5.0.0",
     "nteract-assets": "^2.1.0",
-    "plotly.js": "^1.17.3",
+    "plotly.js": "^1.19.2",
     "react": "^15.3.2",
     "react-addons-pure-render-mixin": "^15.3.2",
-    "react-codemirror": "^0.2.6",
+    "react-codemirror": "^0.3.0",
     "react-dnd": "^2.1.4",
     "react-dnd-html5-backend": "^2.1.2",
     "react-dom": "^15.3.2",
@@ -60,23 +129,69 @@
     "react-redux": "^4.4.5",
     "react-simple-dropdown": "^1.1.4",
     "redux": "^3.5.2",
-    "redux-actions": "^0.12.0",
-    "redux-logger": "^2.6.1",
+    "redux-actions": "^1.0.1",
+    "redux-logger": "^2.7.4",
     "redux-observable": "^0.12.0",
     "rxjs": "^5.0.0-rc.1",
-    "shell-env": "^0.2.0",
+    "shell-env": "^0.3.0",
     "source-map-support": "^0.4.5",
     "spawn-rx": "^2.0.3",
     "spawnteract": "^2.2.0",
-    "uuid": "^2.0.3",
-    "yargs": "^6.3.0"
+    "uuid": "^3.0.0",
+    "vega": "^2.6.3",
+    "vega-embed": "^2.2.0",
+    "vega-lite": "^1.3.1",
+    "yargs": "^6.4.0"
   },
-  "scripts": {},
+  "devDependencies": {
+    "babel-cli": "^6.18.0",
+    "babel-core": "^6.18.2",
+    "babel-eslint": "^7.1.1",
+    "babel-loader": "^6.2.8",
+    "babel-plugin-transform-class-properties": "^6.19.0",
+    "babel-plugin-transform-flow-strip-types": "^6.18.0",
+    "babel-preset-es2015-node6": "^0.4.0",
+    "babel-preset-react": "^6.11.1",
+    "chai": "^3.4.1",
+    "chai-immutable": "^1.6.0",
+    "colors": "^1.1.2",
+    "command-exists": "^1.0.2",
+    "cross-env": "^3.1.3",
+    "electron": "1.4.8",
+    "electron-builder": "^8.5.2",
+    "electron-mocha": "^3.2.0",
+    "enzyme": "^2.6.0",
+    "esdoc": "^0.4.8",
+    "eslint": "3.11.1",
+    "eslint-config-airbnb": "13.0.0",
+    "eslint-plugin-import": "2.2.0",
+    "eslint-plugin-jsx-a11y": "2.2.3",
+    "eslint-plugin-react": "6.7.1",
+    "flow-bin": "^0.36.0",
+    "jsdom": "^9.8.3",
+    "json-loader": "^0.5.4",
+    "jsonschema": "^1.1.0",
+    "jsx-chai": "^4.0.0",
+    "mkdirp": "^0.5.1",
+    "mocha": "^3.2.0",
+    "mock-require": "^2.0.0",
+    "nbschema": "0.0.2",
+    "nyc": "^10.0.0",
+    "react-addons-test-utils": "^15.4.0",
+    "react-dnd-test-backend": "^1.0.2",
+    "rimraf": "^2.5.2",
+    "sinon": "^1.17.6",
+    "sinon-chai": "^2.8.0",
+    "source-map-support": "^0.4.6",
+    "watch": "^1.0.0",
+    "webpack": "^1.13.3"
+  },
+  "gitHead": "a83dd8b69d4f16a1d40bbf736c4168c820b885ea",
   "_npmVersion": "3.8.9",
   "_nodeVersion": "6.2.0",
   "dist": {
-    "shasum": "6593f82a71e115e377cf0764a0700d8796b47cd1",
-    "tarball": "http://registry.npmjs.org/nteract/-/nteract-0.0.14.tgz"
+    "shasum": "65d55e841a95846b49735d51a8501fc517a28a7d",
+    "tarball": "http://registry.npmjs.org/nteract/-/nteract-0.0.15.tgz"
   },
   "versions": [
     {
@@ -130,10 +245,14 @@
     {
       "number": "0.0.14",
       "date": "2016-10-21T14:55:10.822Z"
+    },
+    {
+      "number": "0.0.15",
+      "date": "2016-11-28T19:04:29.953Z"
     }
   ],
   "created": "2015-08-06T21:28:48.017Z",
-  "modified": "2016-10-21T14:55:10.822Z",
+  "modified": "2016-11-28T19:04:29.953Z",
   "lastPublisher": {
     "name": "rgbkrk",
     "email": "rgbkrk@gmail.com"
@@ -155,6 +274,5 @@
       "name": "rgbkrk",
       "email": "rgbkrk@gmail.com"
     }
-  ],
-  "readme": "ERROR: No README data found!"
+  ]
 }

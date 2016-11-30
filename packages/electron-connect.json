@@ -1,6 +1,6 @@
 {
   "name": "electron-connect",
-  "version": "0.6.0",
+  "version": "0.6.1",
   "description": "Livereload tools for Electron development",
   "main": "index.js",
   "scripts": {
@@ -41,23 +41,23 @@
   ],
   "license": "MIT",
   "dependencies": {
-    "cross-spawn": "^4.0.0",
-    "lodash": "^4.15.0",
+    "cross-spawn": "^5.0.1",
+    "lodash": "^4.17.2",
     "tree-kill": "^1.1.0",
     "ws": "^1.1.1"
   },
   "devDependencies": {
-    "electron": "^1.4.0",
+    "electron": "^1.4.7",
     "gulp": "^3.9.1",
     "gulp-mocha": "^3.0.1",
-    "spectron": "^3.3.0"
+    "spectron": "^3.4.0"
   },
-  "gitHead": "d4a64fa4beecd10040fe8775f37032ee926b342e",
-  "_npmVersion": "2.14.7",
-  "_nodeVersion": "4.2.3",
+  "gitHead": "2dbef3cd01f261662e6642705c32b71f8f2baf55",
+  "_npmVersion": "2.15.11",
+  "_nodeVersion": "4.6.2",
   "dist": {
-    "shasum": "b17f5c37678fe6c9aa730e5469b4d5e710665ae9",
-    "tarball": "http://registry.npmjs.org/electron-connect/-/electron-connect-0.6.0.tgz"
+    "shasum": "6dce9093cdfe7b06941dfcc487efa4a1b6df0b4e",
+    "tarball": "http://registry.npmjs.org/electron-connect/-/electron-connect-0.6.1.tgz"
   },
   "stars": 8,
   "versions": [
@@ -196,10 +196,14 @@
     {
       "number": "0.6.0",
       "date": "2016-09-16T03:02:32.883Z"
+    },
+    {
+      "number": "0.6.1",
+      "date": "2016-11-21T22:25:19.497Z"
     }
   ],
   "created": "2015-06-15T17:59:27.535Z",
-  "modified": "2016-11-07T20:42:35.557Z",
+  "modified": "2016-11-21T22:25:19.497Z",
   "lastPublisher": {
     "name": "quramy",
     "email": "yosuke.kurami@gmail.com"
@@ -209,6 +213,5 @@
       "name": "quramy",
       "email": "yosuke.kurami@gmail.com"
     }
-  ],
-  "readme": "# electron-connect [![Build Status](https://travis-ci.org/Quramy/electron-connect.svg?branch=master)](https://travis-ci.org/Quramy/electron-connect) [![npm version](https://badge.fury.io/js/electron-connect.svg)](http://badge.fury.io/js/electron-connect) ![dependency](https://david-dm.org/quramy/electron-connect.svg)\nUtility tool to develop applications with [Electron](http://electron.atom.io/).\n\nUsing this in your Node.js scripts (e.g. `gulpfile.js`), you can livereload your Electron app.\n\nIt provides the following features:\n\n* start (and restart) Electron application.\n* reload renderer processes.\n* stop Electron application.\n\n## Install\nUse npm:\n\n```bash\nnpm install -g electron-prebuilt\nnpm install electron-connect\n```\n\n## Usage\n`electron-connect` has server and client components. They communicate with each other using WebSocket.\nThe server component manages Electron process and broadcasts reload event to client, and client components reload renderer's resources.\n\n### Server\nHere is an example creating a server in [gulpfile](http://gulpjs.com/).\n\n```js\n'use strict';\n\nvar gulp = require('gulp');\nvar electron = require('electron-connect').server.create();\n\ngulp.task('serve', function () {\n\n  // Start browser process\n  electron.start();\n\n  // Restart browser process\n  gulp.watch('app.js', electron.restart);\n\n  // Reload renderer process\n  gulp.watch(['index.js', 'index.html'], electron.reload);\n});\n```\n\n### Client\nA client can be created in either browser process or renderer process.\n`Note:` Please make sure it is not done in both.\n\n* RendererProcess\n```html\n<html>\n<body>\n<!-- build:remove -->\n<!-- Connect to server process -->\n<script>require('electron-connect').client.create()</script>\n<!-- end:build -->\n</body>\n</html>\n```\n\nDo you want to use this tool for only develop environment ?\nYou can remove the `<script>` block in your gulpfile using [gulp-useref](https://www.npmjs.com/package/gulp-useref#usage).\n\n* BrowserProcess \n\n```js\n'use strict';\n\nvar app = require('app');\nvar BrowserWindow = require('browser-window');\nvar client = require('electron-connect').client;\n\napp.on('ready', function () {\n  var mainWindow = new BrowserWindow({\n    width: 400,\n    height: 300\n  });\n  mainWindow.loadUrl('file://' + __dirname + '/index.html');\n\n  // Connect to server process\n  client.create(mainWindow);\n});\n```\n\nIf you want details, see [example/simple](example/simple).\n\n## API References\n\n## server.create([options])\n\n* `options` Object\n * `electron` Object. An `electron-prebuilt` module. Set it If you want to use your forked Electron.\n * `useGlobalElectron` Boolean. If set, electron-connect use `electron-prebuilt` installed globally (default: `false`).\n * `path` String. A path to your `package.json` file (default: `process.cwd()`).\n * `port` Number. WebSocket server port (default: `30080`).\n * `spawnOpt` Object. Options for [spawn](https://nodejs.org/api/child_process.html#child_process_child_process_spawn_command_args_options).\n * `logLevel` Number. The granularity of the electron-connect logging in your prompt. `0` - warning only, `1` - warning and info only, `2` - all logs (default: `1`).\n * `stopOnClose` Boolean. If set, closing last remaining window stops the electron application.\n\nReturns a new `ProcessManager` object.\n\nIf neither `electron` nor `useGlobalElectron` are set, electron-connect searches `electron-prebuilt` modules automatically.\n\n1. First, electron-connect searches `electron-prebuilt` installed locally.\n1. If not hit, electron-connect uses `electron-prebuilt` installed globally.\n\n**New in version 0.5.x and onwards :**\nNow, ProcessManager's `start()`, `restart()` and `stop()` methods invoke ``callback`` with an argument that indicates the `state` of the electron process, which could be one of the following string values -\n* `started`\n* `restarting`\n* `restarted`\n* `stopped`\n\nSee [example/stop-on-close](example/stop-on-close), where you can find sample code that uses `stopOnClose` option and `stopped` state to shutdown gulp process gracefully.\n\n## Class: ProcessManager\n\n### start([args], [callback])\n\n* `args` String or Array. Additional arguments used when create a process.\n* `callback` Function\n\nStarts a server and Electron application process.\n\n### restart([args], [callback])\n\n* `args` String or Array. Additional arguments used when create a process.\n* `callback` Function\n\nKills Electron process if it exsists, and starts new one.\n\nThis method is useful for callback of your browserProcess sourcecodes' change event.\n\n### reload([ids])\n\n* `ids` String or Array. A list of id of target client.\n\nEmit reload event to target clients. Broadcasts reload event to all connected `Client` object if `ids` not set.\nThis method does not kill any Electron processes.\n\nThis method is useful for callback of your rendererProcess sourcecodes' change event.\n\n### stop([callback])\n\n* `callback` Function\n\nKills Electron process and stops server.\n\n### on(eventName, callback)\n\n* `eventName` String\n* `callback` Function\n\nRegisters an eventhandler that gets invoked when an event is emitted by `Client.sendMessage`.\n\n### broadcast(eventName, [data])\n\n* `eventName` String. A message type.\n* `data` Object. A message data.\n\nBroadcasts an event to all clients.\n\n## client.create([browserWindow], [options], [callback])\n\n* `browserWindow` Object. Optional, in rendererProcess only. Required, when client is created in browserProcess.\n* `options` Object\n * `port` Number. WebSocket server port (default: `30080`) that client should connect to.\n * `sendBounds` Boolean\n * `logLevel` Number. See [server.create([options]).logLevel](#servercreateoptions).\n* `callback` Function\n\nCreates a new `Client` object associated with `browserWindow` and connects to `ProcessManager`.\n\nThe `browserWindow` should be an Electron [browser-window](https://github.com/atom/electron/blob/master/docs/api/browser-window.md) instance.\nOnce a client is created and connected to the server, client can receive events (e.g. reload).\n\nIf `sendBounds` is set (default `true`), client sends a bounds object when `browserWindow` moves or resizes.\nAnd when `ProcessManager.restart()` is called, client recovers the bounds stored at server.\n\n## Class: Client\n\n### id\n\nAn identifier of this client. It is a same value `browserWindow.id`.\n\n### on(eventName, callback)\n\n* `eventName` String\n* `callback` Function\n\nRegisters an eventhandler that gets invoked, when an event is emitted by `ProcessManager.broadcast`.\n\n### sendMessage(eventName, [data])\n\n* `eventName` String. A message type.\n* `data` Object. A message data.\n\nEmits an event to `ProcessManager`.\n\n## License\nMIT\n"
+  ]
 }

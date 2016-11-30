@@ -1,6 +1,6 @@
 {
   "name": "jsreport-electron-pdf",
-  "version": "2.0.1",
+  "version": "2.1.0",
   "description": "jsreport recipe which renders pdf from html using electron",
   "main": "lib/index.js",
   "scripts": {
@@ -39,7 +39,7 @@
   },
   "dependencies": {
     "bluebird": "3.4.0",
-    "electron-html-to": "2.1.1",
+    "electron-html-to": "2.2.0",
     "in-publish": "2.0.0",
     "lodash.pickby": "4.4.0",
     "stream-to-array": "2.3.0"
@@ -61,12 +61,12 @@
     "rimraf": "2.5.2",
     "should": "9.0.0"
   },
-  "gitHead": "cade458456dfbe5c1ade5775b2ead09703eaeb1d",
-  "_npmVersion": "2.15.6",
-  "_nodeVersion": "4.4.5",
+  "gitHead": "77d9129e5e0a014dba743fabbc2fb19498887d93",
+  "_npmVersion": "2.15.11",
+  "_nodeVersion": "0.10.47",
   "dist": {
-    "shasum": "8a12cad4a2599e07173df66a1fbc0fdf182871d3",
-    "tarball": "http://registry.npmjs.org/jsreport-electron-pdf/-/jsreport-electron-pdf-2.0.1.tgz"
+    "shasum": "7f2f49d178cd2a770ecf5d7817d12c04bcb3a18b",
+    "tarball": "http://registry.npmjs.org/jsreport-electron-pdf/-/jsreport-electron-pdf-2.1.0.tgz"
   },
   "versions": [
     {
@@ -112,10 +112,14 @@
     {
       "number": "2.0.1",
       "date": "2016-07-22T05:15:00.478Z"
+    },
+    {
+      "number": "2.1.0",
+      "date": "2016-11-20T02:24:59.093Z"
     }
   ],
   "created": "2015-12-08T22:09:08.574Z",
-  "modified": "2016-07-22T05:15:00.478Z",
+  "modified": "2016-11-20T02:24:59.093Z",
   "lastPublisher": {
     "name": "bjrmatos",
     "email": "bjrmatos@gmail.com"
@@ -125,6 +129,5 @@
       "name": "bjrmatos",
       "email": "bjrmatos@gmail.com"
     }
-  ],
-  "readme": "jsreport-electron-pdf\n=====================\n\n[![NPM Version](http://img.shields.io/npm/v/jsreport-electron-pdf.svg?style=flat-square)](https://npmjs.com/package/jsreport-electron-pdf)[![License](http://img.shields.io/npm/l/jsreport-electron-pdf.svg?style=flat-square)](http://opensource.org/licenses/MIT)[![Build Status](https://travis-ci.org/bjrmatos/jsreport-electron-pdf.png?branch=master)](https://travis-ci.org/bjrmatos/jsreport-electron-pdf)\n\n> **jsreport recipe which renders pdf from html using electron**\n\n![demo](demo.gif)\n\nAdds recipe `electron-pdf` to jsreport, which render pdf from html using electron.\n\n`electron-pdf` recipe is capable of rendering any html and javascript you provide. This means you can also use external javascript libraries or canvas to print visual charts.\n\nRequeriments\n------------\n\n-\tInstall [electron](http://electron.atom.io/) >= 0.35.x including electron@1, the easy way to install electron in your app is `npm install electron-prebuilt --save`\n\njsreport-core\n-------------\n\nIf you use `jsreport-core`, you can apply this extension manually and [pass configuration](#configuration) to it directly:\n\n```js\nvar jsreport = require('jsreport-core')();\njsreport.use(require('jsreport-electron-pdf')({ strategy: 'electron-ipc' }));\n```\n\nConfiguration\n-------------\n\nUse `electron` key in the standard [jsreport config](https://github.com/jsreport/jsreport/blob/master/config.md) file.\n\nAvailable options:\n\n```js\nelectron: {\n  /* use rather dedicated process for every generation,\n    dedicated-process strategy is quite slower but can solve some bugs\n    with corporate proxy, set to 'electron-server' for maximum performance.\n\n    possible values: 'dedicated-process', 'electron-ipc' or 'electron-server', defaults to 'dedicated-process' */\n  strategy: 'electron-ipc',\n  /* number of allocated electron processes (when using electron-server strategy) */\n  numberOfWorkers: 2,\n  /* timeout in ms for pdf generation, when the timeout is reached, the conversion is cancelled */\n  timeout: 5000,\n  /* set to true to allow requests using the file protocol (file:///). defaults to false */\n  allowLocalFilesAccess: false\n}\n```\n\nSettings\n--------\n\n`electron-pdf` recipe uses [electron's printToPDF feature](http://electron.atom.io/docs/v0.35.0/api/web-contents/#webcontents-printtopdf-options-callback) to generate PDF from a web page, so basically most options are the same as electron's `printoToPDF` options.\n\nAvailable settings for pdf generation:\n\n-\t`marginsType` Number - specify the type of margins to use in PDF.\n\t-\t`0` - default\n\t-\t`1` - none\n\t-\t`2` - minimum\n-\t`landscape` Boolean - `true` for landscape, `false` for portrait.\n-\t`format` String - predefined page sizes.\n\t-\t`A4`\n\t-\t`A3`\n\t-\t`Legal`\n\t-\t`Letter`\n\t-\t`Tabloid`\n-\t`printBackground` Boolean - whether to print CSS backgrounds or not.\n-\t`width` Number - width (`px`) of the web page (`BrowserWindow`) that would be used to generate the PDF.\n-\t`height` Number - height (`px`) of the web page (`BrowserWindow`) that would be used to generate the PDF.\n-\t`printDelay` Number - delay between rendering a page and printing into pdf, this is useful when printing animated content like charts, or you can use `waitForJS` option.\n-\t`blockJavaScript` Boolean - whether to disable javascript execution in page or not.\n-\t`waitForJS` Boolean - if it is set to `true` the PDF generation will wait until you set `window.JSREPORT_READY_TO_START` to true in your page.\n\nPage breaks\n-----------\n\nCss contains styles like `page-break-before` you can use to specify html page breaks. This can be used as well with `electron-pdf` to specify page breaks inside pdf files.\n\n```html\n<h1>Hello from Page 1</h1>\n\n<div style='page-break-before: always;'></div>\n\n<h1>Hello from Page 2</h1>\n\n<div style=\"page-break-before: always;\"></div>\n\n<h1>Hello from Page 3</h1>\n```\n\nHeaders and footers\n-------------------\n\nAttach a header and footer to PDF is not currently supported :(, unlike `phantomjs`, `electron` does not provide a way to attach a header/footer to the final PDF.\n\nPrinting triggers\n-----------------\n\nYou may need to postpone pdf printing until some javascript async tasks are processed. If this is your case set the `waitForJS: true` option in the API or `Wait for printing trigger` in the studio menu. Then the printing won't start until you set `window.JSREPORT_READY_TO_START=true` inside your template's javascript.\n\n```html\n...\n<script>\n    // do some calculations or something async\n    setTimeout(function() {\n        window.JSREPORT_READY_TO_START = true; // this will start the pdf printing\n    }, 500);\n    ...\n</script>\n```\n\nTwitter Bootstrap\n-----------------\n\nUsing a responsive css framework for printing pdf may not be the best idea. However it still works. Only thing you need to keep in mind is that output pdf typically won't look the same as html because bootstrap includes different printing styles under `@media print`.\n\nTroubleshooting\n---------------\n\nSee [`electron-html-to`](https://github.com/bjrmatos/electron-html-to#troubleshooting)\n\nLicense\n-------\n\nSee [license](https://github.com/bjrmatos/jsreport-electron-pdf/blob/master/LICENSE)\n"
+  ]
 }

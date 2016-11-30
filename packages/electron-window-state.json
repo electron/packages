@@ -1,6 +1,6 @@
 {
   "name": "electron-window-state",
-  "version": "3.1.0",
+  "version": "4.0.0",
   "description": "Simple module that helps to save and restore size and position of Electron windows.",
   "license": "MIT",
   "repository": {
@@ -21,7 +21,7 @@
     "name": "Marcel Wiehle"
   },
   "engines": {
-    "node": ">=0.12.0"
+    "node": ">=4.0.0"
   },
   "scripts": {
     "test": "xo && ava"
@@ -35,14 +35,13 @@
   "dependencies": {
     "deep-equal": "^1.0.1",
     "jsonfile": "^2.2.3",
-    "mkdirp": "^0.5.1",
-    "object-assign": "^4.0.1"
+    "mkdirp": "^0.5.1"
   },
   "devDependencies": {
-    "ava": "^0.7.0",
+    "ava": "^0.17.0",
     "mockery": "^1.4.0",
     "sinon": "^1.17.2",
-    "xo": "^0.11.2"
+    "xo": "^0.17.1"
   },
   "xo": {
     "space": true,
@@ -56,13 +55,13 @@
       ]
     }
   },
-  "gitHead": "2f3bd241d568bdf6c5f443808571fb4f9d3de9f8",
+  "gitHead": "2c302e5e2da1a128d6566eaab759f32bdbf490ca",
   "homepage": "https://github.com/mawie81/electron-window-state#readme",
-  "_npmVersion": "3.6.0",
-  "_nodeVersion": "5.7.0",
+  "_npmVersion": "3.10.8",
+  "_nodeVersion": "6.8.0",
   "dist": {
-    "shasum": "b2175467dce610e0f2dfb7201ed47b190636c3fe",
-    "tarball": "http://registry.npmjs.org/electron-window-state/-/electron-window-state-3.1.0.tgz"
+    "shasum": "ac24438162d4640506b4a36dd8363a1c3abd278f",
+    "tarball": "http://registry.npmjs.org/electron-window-state/-/electron-window-state-4.0.0.tgz"
   },
   "stars": 2,
   "versions": [
@@ -117,10 +116,14 @@
     {
       "number": "3.1.0",
       "date": "2016-10-08T07:47:08.782Z"
+    },
+    {
+      "number": "4.0.0",
+      "date": "2016-11-23T18:42:04.576Z"
     }
   ],
   "created": "2015-10-31T16:02:05.643Z",
-  "modified": "2016-10-08T07:47:08.782Z",
+  "modified": "2016-11-23T18:42:04.576Z",
   "lastPublisher": {
     "name": "mawie81",
     "email": "mawieh@googlemail.com"
@@ -130,6 +133,5 @@
       "name": "mawie81",
       "email": "mawieh@googlemail.com"
     }
-  ],
-  "readme": "# electron-window-state [![Build Status](https://travis-ci.org/mawie81/electron-window-state.svg)](https://travis-ci.org/mawie81/electron-window-state)\n\n> A library to store and restore window sizes and positions for your\n[Electron](http://electron.atom.io) app\n\n*Heavily influenced by the implementation in [electron-boilerplate](https://github.com/szwacz/electron-boilerplate).*\n\n## Install\n\n```\n$ npm install --save electron-window-state\n```\n\n## Usage\n\n```js\nconst windowStateKeeper = require('electron-window-state');\nlet win;\n\napp.on('ready', function () {\n  // Load the previous state with fallback to defaults\n  let mainWindowState = windowStateKeeper({\n    defaultWidth: 1000,\n    defaultHeight: 800\n  });\n\n  // Create the window using the state information\n  win = new BrowserWindow({\n    'x': mainWindowState.x,\n    'y': mainWindowState.y,\n    'width': mainWindowState.width,\n    'height': mainWindowState.height\n  });\n\n  // Let us register listeners on the window, so we can update the state\n  // automatically (the listeners will be removed when the window is closed)\n  // and restore the maximized or full screen state\n  mainWindowState.manage(win);\n});\n```\n\n## API\n\n#### windowStateKeeper(opts)\n\nNote: Don't call this function before the `ready` event is fired.\n\n##### opts\n\n`defaultWidth` - *Number*\n\n  The width that should be returned if no file exists yet. Defaults to `800`.\n\n`defaultHeight` - *Number*\n\n  The height that should be returned if no file exists yet. Defaults to `600`.\n\n`path` - *String*\n\n  The path where the state file should be written to. Defaults to\n  `app.getPath('userData')`\n\n`file` - *String*\n\n  The name of file. Defaults to `window-state.json`\n\n`maximize` - *Boolean*\n\n  Should we automatically maximize the window, if it was last closed\n  maximized. Defaults to `true`\n\n`fullScreen` - *Boolean*\n\n  Should we automatically restore the window to full screen, if it was last\n  closed full screen. Defaults to `true`\n\n### state object\n\n```js\nconst windowState = windowStateKeeper({\n  defaultWidth: 1000,\n  defaultHeight: 800\n});\n```\n\n`x` - *Number*\n\n  The saved `x` coordinate of the loaded state. `undefined` if the state has not\n  been saved yet.\n\n`y` - *Number*\n\n  The saved `y` coordinate of the loaded state. `undefined` if the state has not\n  been saved yet.\n\n`width` - *Number*\n\n  The saved `width` of loaded state. `defaultWidth` if the state has not been\n  saved yet.\n\n`height` - *Number*\n\n  The saved `heigth` of loaded state. `defaultHeight` if the state has not been\n  saved yet.\n\n`isMaximized` - *Boolean*\n\n  `true` if the window state was saved while the the window was maximized.\n  `undefined` if the state has not been saved yet.\n\n`isFullScreen` - *Boolean*\n\n  `true` if the window state was saved while the the window was in full screen\n  mode. `undefined` if the state has not been saved yet.\n\n`manage(window)` - *Function*\n\n  Register listeners on the given `BrowserWindow` for events that are\n  related to size or position changes (`resize`, `move`). It will also restore\n  the window's maximized or full screen state.\n  When the window is closed we automatically remove the listeners and save the\n  state.\n\n`unmanage` - *Function*\n\n  Removes all listeners of the managed `BrowserWindow` in case it does not\n  need to be managed anymore.\n\n`saveState(window)` - *Function*\n\n  Saves the current state of the given `BrowserWindow`. This exists mostly for\n  legacy purposes, and in most cases it's better to just use `manage`.\n\n## License\n\nMIT © [Marcel Wiehle](http://marcel.wiehle.me)\n"
+  ]
 }

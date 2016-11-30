@@ -1,0 +1,122 @@
+{
+  "name": "neoclide-client",
+  "version": "1.0.5",
+  "description": "Neovim-client UI component for neoclide",
+  "main": "example/main.js",
+  "repository": {
+    "user": "neoclide",
+    "repo": "neoclide-client",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/neoclide/neoclide-client/tarball/master",
+    "clone_url": "https://github.com/neoclide/neoclide-client",
+    "https_url": "https://github.com/neoclide/neoclide-client",
+    "travis_url": "https://travis-ci.org/neoclide/neoclide-client",
+    "zip_url": "https://github.com/neoclide/neoclide-client/archive/master.zip",
+    "api_url": "https://api.github.com/repos/neoclide/neoclide-client"
+  },
+  "scripts": {
+    "rebuild": "electron-rebuild",
+    "start": "npm run dep && npm run build && npm run example",
+    "prepublish": "NODE_ENV=production webpack",
+    "debug": "ELECTRON_ENABLE_STACK_DUMPING=true NODE_ENV=debug electron .",
+    "dep": "npm install && bower install && mkdir -p build",
+    "example": "node example/cli.js",
+    "watch": "webpack -w",
+    "test": "mocha test/unit/"
+  },
+  "keywords": [
+    "neovim",
+    "polymer",
+    "WebComponent",
+    "Electron",
+    "NW.js",
+    "editor"
+  ],
+  "author": {
+    "name": "chemzqm",
+    "email": "chemzqm@gamil.com"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "component-emitter": "^1.2.1",
+    "component-raf": "^1.2.0",
+    "debounce": "^1.0.0",
+    "keyboard-layout": "^2.0.7",
+    "imselect": "^1.0.1",
+    "loglevel": "^1.4.1",
+    "promised-neovim-client": "^2.0.2",
+    "redux": "^3.6.0",
+    "throttleit": "^1.0.0"
+  },
+  "devDependencies": {
+    "babel-core": "^6.18.2",
+    "babel-loader": "^6.2.7",
+    "babel-plugin-transform-es2015-modules-commonjs": "^6.18.0",
+    "babel-preset-stage-0": "^6.16.0",
+    "bower": "^1.8.0",
+    "browserify": "^13.1.1",
+    "canvas": "^1.6.2",
+    "chai": "^3.5.0",
+    "electron": "^1.4.7",
+    "electron-prebuilt": "~1.4.3",
+    "electron-rebuild": "^1.4.0",
+    "jsdom": "^9.8.3",
+    "mocha": "^3.1.2",
+    "mocha-generators": "^1.2.0",
+    "nightmare": "git+https://github.com/rhysd/nightmare.git#custom-electron-path",
+    "uglify-js": "git://github.com/mishoo/UglifyJS2.git#harmony",
+    "webpack": "^1.13.3"
+  },
+  "browser": {
+    "emitter": "component-emitter",
+    "raf": "component-raf"
+  },
+  "gitHead": "3b5874cef4f3269a97d6890a1b72495f85d4b43e",
+  "homepage": "https://github.com/neoclide/neoclide-client#readme",
+  "_npmVersion": "3.10.9",
+  "_nodeVersion": "6.9.0",
+  "dist": {
+    "shasum": "b5b32c360734b2e373e988eeff4c9967d4b8155c",
+    "tarball": "http://registry.npmjs.org/neoclide-client/-/neoclide-client-1.0.5.tgz"
+  },
+  "versions": [
+    {
+      "number": "1.0.0",
+      "date": "2016-11-25T08:12:52.666Z"
+    },
+    {
+      "number": "1.0.1",
+      "date": "2016-11-25T08:40:24.868Z"
+    },
+    {
+      "number": "1.0.2",
+      "date": "2016-11-26T00:43:51.675Z"
+    },
+    {
+      "number": "1.0.3",
+      "date": "2016-11-26T00:59:23.804Z"
+    },
+    {
+      "number": "1.0.4",
+      "date": "2016-11-26T03:32:28.165Z"
+    },
+    {
+      "number": "1.0.5",
+      "date": "2016-11-26T06:08:58.668Z"
+    }
+  ],
+  "created": "2016-11-25T08:12:52.666Z",
+  "modified": "2016-11-26T06:08:58.668Z",
+  "lastPublisher": {
+    "name": "chemzqm",
+    "email": "chemzqm@gmail.com"
+  },
+  "owners": [
+    {
+      "name": "chemzqm",
+      "email": "chemzqm@gmail.com"
+    }
+  ]
+}

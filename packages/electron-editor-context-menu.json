@@ -66,7 +66,7 @@
     }
   ],
   "created": "2016-02-06T01:24:37.825Z",
-  "modified": "2016-11-13T03:43:26.563Z",
+  "modified": "2016-11-17T23:12:00.304Z",
   "lastPublisher": {
     "name": "wearhere",
     "email": "jeffreywear@gmail.com"
@@ -76,6 +76,5 @@
       "name": "wearhere",
       "email": "jeffreywear@gmail.com"
     }
-  ],
-  "readme": "# electron-editor-context-menu\n\nIn Electron, right-clicking in text editors does… nothing.\n\nThis module enables the menu you'd expect, with optional\n[spell-checker integration][spell-checker integration].\n\n<img src=\"docs/menu.png\" height=\"300\" alt=\"menu\">\n\n## Installation\n\n```js\nnpm install electron-editor-context-menu --save\n```\n\n## Usage\n\n```js\n// In the renderer process:\nvar remote = require('electron').remote;\n// `remote.require` since `Menu` is a main-process module.\nvar buildEditorContextMenu = remote.require('electron-editor-context-menu');\n\nwindow.addEventListener('contextmenu', function(e) {\n  // Only show the context menu in text editors.\n  if (!e.target.closest('textarea, input, [contenteditable=\"true\"]')) return;\n\n  var menu = buildEditorContextMenu();\n\n  // The 'contextmenu' event is emitted after 'selectionchange' has fired but possibly before the\n  // visible selection has changed. Try to wait to show the menu until after that, otherwise the\n  // visible selection will update after the menu dismisses and look weird.\n  setTimeout(function() {\n    menu.popup(remote.getCurrentWindow());\n  }, 30);\n});\n```\n\n### Spell-checker integration\n\nShow spelling suggestions by passing a _selection_ object when building the menu:\n\n```js\nvar selection = {\n  isMisspelled: true,\n  spellingSuggestions: [\n    'men',\n    'mean',\n    'menu'\n  ]\n};\n\nvar menu = buildEditorContextMenu(selection);\n```\n\nGet these suggestions when your [spell-check provider][setSpellCheckProvider] runs\n&mdash;Electron will poll it immediately before the `'contextmenu'` event fires.\n\nFor a complete example using `electron-spell-check-provider`, see\n[here][spell-checker integration example].\n\n## Credits\n\nCreated by [Jeff Wear][Jeff Wear].\n\nThanks to https://github.com/atom/electron/pull/942#issuecomment-171445954 for\nthe initial sketch of this.\n\n## Copyright and License\n\nCopyright 2016 Mixmax, Inc., licensed under the MIT License.\n\n[spell-checker integration]: #spell-checker-integration\n[setSpellCheckProvider]: https://github.com/atom/electron/blob/master/docs/api/web-frame.md#webframesetspellcheckproviderlanguage-autocorrectword-provider\n[spell-checker integration example]: https://github.com/mixmaxhq/electron-spell-check-provider#but-how-do-i-show-spelling-suggestions-in-the-context-menu\n[Jeff Wear]: https://github.com/wearhere\n\n## Release History\n\n* 1.1.1 Fix compatibility with electron-builder\n* 1.1.0 Add the ability to customize the main template and the suggestions template.\n* 1.0.0 Initial release.\n\n"
+  ]
 }

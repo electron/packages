@@ -1,17 +1,14 @@
 {
   "name": "chromenu",
   "productName": "Chromenu",
-  "version": "0.4.0",
+  "version": "1.1.0",
   "description": "Mobile Chromium in your menu bar",
   "main": "main/index.js",
   "bin": {
     "chromenu": "./bin/cli.js"
   },
   "scripts": {
-    "build:bin": "tsc --pretty -p bin/",
-    "build:main": "tsc --pretty -p main/",
-    "build:renderer": "tsc --pretty -p renderer/",
-    "build": "npm-run-all --parallel build:bin build:main build:renderer",
+    "build": "tsc --pretty -p .",
     "test": "echo \"Error: no test specified\" && exit 1",
     "tslint": "tslint $(git ls-files | grep -E \"\\.tsx?$\")",
     "stylelint": "stylelint renderer/style.css",
@@ -20,7 +17,8 @@
     "debug": "NODE_ENV=development electron .",
     "start": "NODE_ENV=production electron .",
     "preversion": "npm run lint",
-    "preuninstall": "node ./bin/cli.js --unsetup-launchctl"
+    "preuninstall": "node ./bin/cli.js --unsetup-launchctl",
+    "release": "npm run lint && ./scripts/make-release.sh"
   },
   "repository": {
     "user": "rhysd",
@@ -48,45 +46,49 @@
   "homepage": "https://github.com/rhysd/Chromenu#readme",
   "devDependencies": {
     "@types/cheerio": "^0.17.31",
-    "@types/electron": "^1.4.26",
+    "@types/electron": "^1.4.27",
     "@types/loglevel": "^1.4.29",
     "@types/mousetrap": "^1.5.32",
-    "@types/node": "^6.0.46",
-    "@types/react": "^0.14.47",
-    "@types/react-dom": "^0.14.18",
-    "@types/react-redux": "^4.4.32",
+    "@types/node": "^6.0.51",
+    "@types/react": "^0.14.50",
+    "@types/react-addons-shallow-compare": "^0.14.17",
+    "@types/react-dom": "^0.14.19",
+    "@types/react-redux": "^4.4.33",
     "@types/redux": "^3.6.31",
-    "@types/request": "0.0.33",
+    "@types/request": "0.0.34",
+    "electron-packager": "^8.3.0",
     "npm-run-all": "^3.1.1",
-    "stylelint": "^7.5.0",
-    "stylelint-config-standard": "^14.0.0",
-    "tslint": "^3.15.1",
-    "tslint-react": "^1.1.0",
-    "typescript": "^2.0.8"
+    "stylelint": "^7.6.0",
+    "stylelint-config-standard": "^15.0.0",
+    "tslint": "^4.0.2",
+    "tslint-react": "^2.0.0",
+    "typescript": "~2.1.0"
   },
   "dependencies": {
     "bulma": "^0.2.3",
     "cheerio": "^0.22.0",
-    "electron": "^1.4.6",
+    "electron": "^1.4.8",
+    "electron-in-page-search": "^1.2.2",
     "font-awesome": "^4.7.0",
     "immutable": "^3.8.1",
     "loglevel": "^1.4.1",
     "menubar": "github:rhysd/menubar#ensure-to-launch-app",
     "mousetrap": "^1.6.0",
     "page-icon": "^0.3.0",
-    "react": "^15.3.2",
-    "react-bytesize-icons": "^0.7.0",
-    "react-dom": "^15.3.2",
-    "react-redux": "^4.4.5",
+    "react": "^15.4.1",
+    "react-addons-shallow-compare": "^15.4.1",
+    "react-component-bytesize-icons": "^2.0.0",
+    "react-dom": "^15.4.1",
+    "react-redux": "^4.4.6",
     "redux": "^3.6.0",
-    "request": "^2.78.0"
+    "request": "^2.79.0"
   },
-  "gitHead": "5062becdc795a9d3af4ee247a01aee6e74c42923",
+  "gitHead": "013874f9beee858bde831ad8e6e7d467e27df077",
   "_npmVersion": "3.10.7",
   "_nodeVersion": "6.6.0",
   "dist": {
-    "shasum": "75ed641b0ee111239bcc7196289e670a63214a6c",
-    "tarball": "http://registry.npmjs.org/chromenu/-/chromenu-0.4.0.tgz"
+    "shasum": "21a65816143cd809f38ca8cab5f3d1dac9c6f318",
+    "tarball": "http://registry.npmjs.org/chromenu/-/chromenu-1.1.0.tgz"
   },
   "versions": [
     {
@@ -100,10 +102,34 @@
     {
       "number": "0.4.0",
       "date": "2016-11-11T10:52:22.796Z"
+    },
+    {
+      "number": "0.5.0",
+      "date": "2016-11-14T23:50:01.993Z"
+    },
+    {
+      "number": "0.6.0",
+      "date": "2016-11-15T02:40:42.816Z"
+    },
+    {
+      "number": "0.8.0",
+      "date": "2016-11-17T03:28:12.232Z"
+    },
+    {
+      "number": "1.0.0",
+      "date": "2016-11-18T07:28:05.939Z"
+    },
+    {
+      "number": "1.0.1",
+      "date": "2016-11-25T08:22:44.241Z"
+    },
+    {
+      "number": "1.1.0",
+      "date": "2016-11-25T08:50:04.543Z"
     }
   ],
   "created": "2016-11-05T15:27:49.278Z",
-  "modified": "2016-11-11T10:52:22.796Z",
+  "modified": "2016-11-25T08:50:04.543Z",
   "lastPublisher": {
     "name": "rhysd",
     "email": "lin90162@yahoo.co.jp"
@@ -113,6 +139,5 @@
       "name": "rhysd",
       "email": "lin90162@yahoo.co.jp"
     }
-  ],
-  "readme": "Chromenu\n=======\n\nUnder construction!\n"
+  ]
 }

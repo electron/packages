@@ -64,6 +64,5 @@
       "name": "mmckegg",
       "email": "matt@wetsand.co.nz"
     }
-  ],
-  "readme": "observ-fs-audio-buffer\n===\n\nObservable AudioBuffer for use with [fs](https://nodejs.org/api/fs.html).\n\n[![NPM](https://nodei.co/npm/observ-fs-audio-buffer.png)](https://nodei.co/npm/observ-fs-audio-buffer/)\n\n## Example\n\n```js\nvar ObservAudioBuffer = require('observ-fs-audio-buffer')\nvar audioContext = new window.AudioContext()\n\nvar context = {\n  fs: require('fs'),\n  cwd: __dirname + '/audio-samples',\n  audio: audioContext\n}\n\nvar buffer = ObservAudioBuffer(context)\nbuffer.resolved(function(data) {\n  if (data) {\n    // wait for buffer to load before triggering\n    trigger(audioContext.currentTime)\n  }\n})\n\nbuffer.set({\n  src: './snare.ogg'\n})\n\nfunction trigger(at) {\n  var player = audioContext.createBufferSource()\n  player.buffer = buffer.resolved()\n  player.connect(audioContext.destination)\n  player.start(at)\n}\n```"
+  ]
 }

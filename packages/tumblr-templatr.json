@@ -82,6 +82,5 @@
       "name": "positlabs",
       "email": "josh.beckwith@gmail.com"
     }
-  ],
-  "readme": "# tumblr-templatr\nSync local tumblr theme templates to tumblr.com. \n\n![](https://positlabs.github.io/tumblr-templatr/assets/imgs/templatr-infographic.jpg)\n\n\n## Install\n`npm install --save-dev tumblr-templatr`\n\n\n## Usage\n\n### Configuration.\n\n```\nvar config = {\n\n\t// tumblr credentials\n\t// I RECOMMEND YOU STORE THESE IN A NON-COMMITTED FILE!!\n\temail: 'your_email@gmail.com',\n\tusername: 'tumblr_user_name',\n\tpassword: 'tumblr_password',\n\n\t// absolute path to template file\n\ttemplate: path.join(__dirname, 'index.html'),\n\n\t// should it automatically publish, or just update preview?\n\t// useful for collaborative dev where you don't want to nuke other's changes\n\tautoPublish: false\n}\n```\n\n\n### Start templatr.\n\n\n```\nvar Templatr = require('tumblr-templatr');\n\n// this will boot up electron client, log in, and open the template editing page\nvar templatr = new Templatr( config );\n\n// wait for template to become editable\ntemplatr.on('editable', ()=>{\n\ttemplatr.preview('<h1>hello tumblr!</h1>');\n\t// or\n\ttemplatr.publish('<h1>hello tumblr!</h1>');\n});\n```\n\n\n## Notes\n\nThis hack makes it much faster to preview changes to templates, without having to use the custom editor on tumblr.com. However, it won't work well if multiple devs are working on the same tumblr blog. \n"
+  ]
 }

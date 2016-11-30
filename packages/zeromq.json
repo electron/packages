@@ -1,6 +1,6 @@
 {
   "name": "zeromq",
-  "version": "3.2.1",
+  "version": "3.2.3",
   "description": "Prebuilt bindings for node.js to ZeroMQ",
   "main": "index",
   "gypfile": true,
@@ -19,13 +19,13 @@
   },
   "dependencies": {
     "nan": "^2.4.0",
-    "prebuild": "^4.4.0"
+    "prebuild": "^4.5.0"
   },
   "devDependencies": {
-    "electron-mocha": "^3.1.1",
+    "electron-mocha": "^3.2.1",
     "jsdoc": "^3.4.2",
-    "mocha": "^3.1.0",
-    "nyc": "^8.3.1",
+    "mocha": "^3.2.0",
+    "nyc": "^10.0.0",
     "semver": "^5.3.0",
     "should": "^11.1.0"
   },
@@ -58,15 +58,15 @@
     "email": "justin.tulloss@gmail.com",
     "url": "http://justin.harmonize.fm"
   },
-  "gitHead": "7d63934f8f9d3310066102e557fc93219c3ed74f",
+  "gitHead": "6f325752e6a7d669cd0910fb6b8ebf2fe8f8a0a0",
   "homepage": "https://github.com/zeromq/zeromq.js#readme",
-  "_npmVersion": "3.10.9",
-  "_nodeVersion": "7.1.0",
+  "_npmVersion": "4.0.3",
+  "_nodeVersion": "7.2.0",
   "dist": {
-    "shasum": "219426bced6180403201ad21c6fa0d3b6d710ee8",
-    "tarball": "http://registry.npmjs.org/zeromq/-/zeromq-3.2.1.tgz"
+    "shasum": "fbd012c1dfe15a88d3fbc656262bae2b947af0e1",
+    "tarball": "http://registry.npmjs.org/zeromq/-/zeromq-3.2.3.tgz"
   },
-  "stars": 2,
+  "stars": 3,
   "versions": [
     {
       "number": "0.0.1",
@@ -91,10 +91,18 @@
     {
       "number": "3.2.1",
       "date": "2016-11-11T10:06:34.938Z"
+    },
+    {
+      "number": "3.2.2",
+      "date": "2016-11-28T15:57:50.107Z"
+    },
+    {
+      "number": "3.2.3",
+      "date": "2016-11-30T17:21:00.613Z"
     }
   ],
   "created": "2011-11-29T19:54:27.861Z",
-  "modified": "2016-11-11T10:06:34.938Z",
+  "modified": "2016-11-30T17:21:00.613Z",
   "lastPublisher": {
     "name": "lgeiger",
     "email": "lukas.geiger94@gmail.com"
@@ -120,6 +128,5 @@
       "name": "tjholowaychuk",
       "email": "tj@vision-media.ca"
     }
-  ],
-  "readme": "# zeromq\n\n[![codecov](https://codecov.io/gh/zeromq/zeromq.js/branch/master/graph/badge.svg)](https://codecov.io/gh/zeromq/zeromq.js)\n[![](https://img.shields.io/badge/version-latest-blue.svg)](https://github.com/zeromq/zeromq.js)\n[![Build Status](https://travis-ci.org/zeromq/zeromq.js.svg?branch=master)](https://travis-ci.org/zeromq/zeromq.js)\n[![Build status](https://ci.appveyor.com/api/projects/status/6u7saauir2msxpou?svg=true)](https://ci.appveyor.com/project/zeromq/zeromq.js)\n[![](https://img.shields.io/badge/version-stable-blue.svg)](https://github.com/zeromq/zeromq.js/releases)\n[![Build Status](https://travis-ci.org/nteract/zmq-prebuilt-testing.svg?branch=master)](https://travis-ci.org/nteract/zmq-prebuilt-testing)\n[![Build status](https://ci.appveyor.com/api/projects/status/ox85p208tsxw6vt1?svg=true)](https://ci.appveyor.com/project/nteract/zmq-prebuilt-testing)\n\n[**Users**](#installation---users) | [**From Source**](#installation---from-source) | [**Contributors and Development**](#installation---contributors-and-development) | [**Maintainers**](#for-maintainers-creating-a-release)\n\n**zeromq**: Your ready to use, prebuilt [ØMQ](http://www.zeromq.org/)\nbindings for [Node.js](https://nodejs.org/en/).\n\nØMQ provides handy functionality when working with sockets. Yet,\ninstalling dependencies on your operating system or building ØMQ from\nsource can lead to developer frustration.\n\n**zeromq** simplifies creating communications for a Node.js\napplication by providing well-tested, ready to use ØMQ bindings.\nzeromq supports all major operating systems, including:\n\n* OS X/Darwin 64-bit\n* Linux 64-bit\n* Windows (64-bit and 32-bit)\n\nUse **zeromq** and take advantage of the *elegant simplicity of binaries*.\n\n\n## Installation - Users\n\nWe rely on [`prebuild`](https://github.com/mafintosh/prebuild).\n\nInstall `zeromq` with the following:\n\n```bash\nnpm install zeromq\n```\n\nNow, prepare to be amazed by the wonders of binaries.\n\n## Installation - From Source\n\nIf you want to use `zeromq` inside your [Electron](http://electron.atom.io/) application\nor if you are working on a Linux 32-bit system, you have to build `zeromq` from source.\n\n### Prerequisites\n\n**Linux**\n- `python` (`v2.7` recommended, `v3.x.x` is not supported)\n- `make`\n- A proper C/C++ compiler toolchain, like [GCC](https://gcc.gnu.org/)\n\nUse your distribution's package manager to install.\n\n**macOS**\n\n- `python` (`v2.7` recommended, `v3.x.x` is not supported): already installed on Mac OS X\n- `Xcode Command Line Tools`: Can be installed with `xcode-select --install`\n\n**Windows**\n\n- **Option 1:** Install all the required tools and configurations using Microsoft's [windows-build-tools](https://github.com/felixrieseberg/windows-build-tools) by running `npm install -g windows-build-tools` from an elevated PowerShell (run as Administrator).\n- **Option 2:** Install dependencies and configuration manually\n   1. Visual C++ Build Environment:\n     * **Option 1:** Install [Visual C++ Build Tools](http://go.microsoft.com/fwlink/?LinkId=691126) using the *Default Install* option.\n     * **Option 2:** Install [Visual Studio 2015](https://www.visualstudio.com/products/visual-studio-community-vs) (or modify an existing installation) and select *Common Tools for Visual C++* during setup.  \n\n  > :bulb: [Windows Vista / 7 only] requires [.NET Framework 4.5.1](http://www.microsoft.com/en-us/download/details.aspx?id=40773)\n\n  2. Install [Python 2.7](https://www.python.org/downloads/) or [Miniconda 2.7](http://conda.pydata.org/miniconda.html) (`v3.x.x` is not supported), and run `npm config set python python2.7`\n  3. Launch cmd, `npm config set msvs_version 2015`\n\n\n### Installation\n\nNow you can install `zeromq` with the following:\n\n```bash\nnpm install zeromq\n```\n\n\n### Rebuilding for Electron\n\nIf you want to use `zeromq` inside your [Electron](http://electron.atom.io/) application\nit needs to be rebuild against Electron headers.\n\nWe highly recommend [`electron-builder`](https://github.com/electron-userland/electron-builder)\nwhich handles this automatically.\n\nIf you don't want to use `electron-builder` you can rebuild `zeromq` manually by running:\n```\nnpm rebuild zeromq --runtime=electron --target=1.4.5 --disturl=https://atom.io/download/atom-shell --build-from-source\n```\nWhere `target` is your desired Electron version.\n\nYou can find more information on the [Electron website](http://electron.atom.io/docs/tutorial/using-native-node-modules/).\n\n\n## Installation - Contributors and Development\n\nTo set up `zeromq` for development, fork this repository and\nclone your fork to your system.\n\nMake sure you have the required [dependencies for building `zeromq` from source](#installation---from-source) installed.\n\nInstall a development version of `zeromq` with the following:\n\n```bash\nnpm install\n```\n\n## Testing\n\nRun the test suite using:\n\n```bash\nnpm test\n```\n\n## Running an example application\n\nSeveral example applications are found in the `examples` directory. Use\n`node` to run an example. To run the 'subber' application, enter the\nfollowing:\n\n```bash\nnode examples/subber.js\n```\n\n\n## Examples using zeromq\n\n### Push/Pull\n\nThis example demonstrates how a producer pushes information onto a\nsocket and how a worker pulls information from the socket.\n\n**producer.js**\n\n```js\n// producer.js\nvar zmq = require('zeromq')\n  , sock = zmq.socket('push');\n\nsock.bindSync('tcp://127.0.0.1:3000');\nconsole.log('Producer bound to port 3000');\n\nsetInterval(function(){\n  console.log('sending work');\n  sock.send('some work');\n}, 500);\n```\n\n**worker.js**\n\n```js\n// worker.js\nvar zmq = require('zeromq')\n  , sock = zmq.socket('pull');\n\nsock.connect('tcp://127.0.0.1:3000');\nconsole.log('Worker connected to port 3000');\n\nsock.on('message', function(msg){\n  console.log('work: %s', msg.toString());\n});\n```\n\n### Pub/Sub\n\nThis example demonstrates using `zeromq` in a classic Pub/Sub,\nPublisher/Subscriber, application.\n\n**Publisher: pubber.js**\n\n```js\n// pubber.js\nvar zmq = require('zeromq')\n  , sock = zmq.socket('pub');\n\nsock.bindSync('tcp://127.0.0.1:3000');\nconsole.log('Publisher bound to port 3000');\n\nsetInterval(function(){\n  console.log('sending a multipart message envelope');\n  sock.send(['kitty cats', 'meow!']);\n}, 500);\n```\n\n**Subscriber: subber.js**\n\n```js\n// subber.js\nvar zmq = require('zeromq')\n  , sock = zmq.socket('sub');\n\nsock.connect('tcp://127.0.0.1:3000');\nsock.subscribe('kitty cats');\nconsole.log('Subscriber connected to port 3000');\n\nsock.on('message', function(topic, message) {\n  console.log('received a message related to:', topic, 'containing message:', message);\n});\n```\n\n\n## For maintainers: Creating a release\n\nWhen making a release, do the following:\n\n```bash\nnpm version minor && git push && git push --tags\n```\n\nThen, wait for the prebuilds to get uploaded for each OS. After the\nprebuilds are uploaded, run the following to publish the release:\n\n```bash\nnpm publish\n```\n\nTo check if the binaries are packaged correctly, you can push a commit to\n[`nteract/zmq-prebuilt-testing`](https://github.com/nteract/zmq-prebuilt-testing).\n"
+  ]
 }

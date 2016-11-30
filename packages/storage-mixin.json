@@ -3,7 +3,7 @@
   "description": "Ampersand model mixin to persist data via various storage backends",
   "main": "index.js",
   "homepage": "https://github.com/mongodb-js/storage-mixin",
-  "version": "0.8.0",
+  "version": "0.8.1",
   "repository": {
     "user": "mongodb-js",
     "repo": "storage-mixin",
@@ -57,7 +57,7 @@
     "ampersand-rest-collection": "^5.0.0",
     "ampersand-sync": "^4.0.3",
     "async": "^1.5.0",
-    "debug": "^2.2.0",
+    "debug": "github:mongodb-js/debug#v2.2.3",
     "localforage": "^1.3.0",
     "lodash": "^4.13.1",
     "rimraf": "^2.4.4",
@@ -66,7 +66,7 @@
   "devDependencies": {
     "electron-mocha": "^2.3.1",
     "electron-prebuilt": "^1.2.8",
-    "eslint-config-mongodb-js": "^1.0.5",
+    "eslint-config-mongodb-js": "^2.2.0",
     "mocha": "^2.3.3",
     "mongodb-js-fmt": "^0.0.3",
     "mongodb-js-precommit": "^0.2.5",
@@ -75,12 +75,12 @@
   "peerDepdendencies": {
     "keytar": "^3.0.0"
   },
-  "gitHead": "7ae83723f7a53bf0f5f16b8c70ce22e4cf7b39c4",
-  "_npmVersion": "3.8.6",
-  "_nodeVersion": "5.12.0",
+  "gitHead": "888d42d76b1680c54a3921be571e415390ed132c",
+  "_npmVersion": "3.10.3",
+  "_nodeVersion": "6.3.1",
   "dist": {
-    "shasum": "100922b4e46e7bca248792342f3cbbb1a3c0f746",
-    "tarball": "http://registry.npmjs.org/storage-mixin/-/storage-mixin-0.8.0.tgz"
+    "shasum": "3605a2c7ac115683279a8395cacca9fc5e99dbc2",
+    "tarball": "http://registry.npmjs.org/storage-mixin/-/storage-mixin-0.8.1.tgz"
   },
   "versions": [
     {
@@ -150,13 +150,17 @@
     {
       "number": "0.8.0",
       "date": "2016-07-26T09:49:49.484Z"
+    },
+    {
+      "number": "0.8.1",
+      "date": "2016-11-23T04:42:40.111Z"
     }
   ],
   "created": "2015-11-29T00:43:09.529Z",
-  "modified": "2016-07-26T09:49:49.484Z",
+  "modified": "2016-11-23T04:42:40.111Z",
   "lastPublisher": {
-    "name": "durran",
-    "email": "durran@gmail.com"
+    "name": "rueckstiess",
+    "email": "thomas@rueckstiess.net"
   },
   "owners": [
     {
@@ -175,6 +179,5 @@
       "name": "rueckstiess",
       "email": "thomas@rueckstiess.net"
     }
-  ],
-  "readme": "# storage-mixin [![][travis_img]][travis_url] [![][npm_img]][npm_url] [![][inch_img]][inch_url]\n\nPersist [Ampersand.js](https://ampersandjs.com/) models and collections to various storage backends.\n\n\n## Installation\n\n```\nnpm install --save storage-mixin\n```\n\n## Usage\n\nUse this mixin with any existing model and collection to easily persist\nthem to a number of different storage backends. The model needs\n- the mixin\n- `idAttribute` value (Ampersand's default is `id`)\n- `namespace` value\n- `storage` key to pass options to the mixin (see [Options](#usage-options))\n\n```js\nvar Model = require('ampersand-model');\nvar storageMixin = require('storage-mixin');\n\nvar Spaceship = Model.extend(storageMixin, {\n  idAttribute: 'name',\n  namespace: 'StorableModels',\n  storage: {\n    backend: 'disk',\n    basepath: '/tmp'\n  },\n  props: {\n    // your property definitions, will be persisted to storage\n    name: ['string', false, ''],\n    warpDrive: ['boolean', false, false]\n  },\n  session: {\n    // your session properties, will _not_ be persisted to storage\n  }\n  // ... other model methods\n});\n```\n\nNow you can call call the [`.save()`][ampersand-save] method on instantiated models.\n\n```js\nvar model = new StorableModel();\nmodel.save({name: 'Apollo 13', warpDrive: false});\n```\n\n### Options\n\nOptions are passed to the storage mixin via the `storage` key. If you only\nwant to choose which backend to use and don't need to pass any further options\nalong, the `storage` key can be a string with the backend name.\n\n```js\nvar StorableModel = Model.extend(storageMixin, {\n  storage: 'disk',   // use disk storage with default basepath `.`\n  props: {\n    // ...\n  }\n});\n```\n\nIf you want to further customize the storage mixin, use an object and provide\nadditional options. The `backend` value is required, all other values are\noptional and backend-dependent.\n\n```js\nvar StorableModel = Model.extend(storageMixin, {\n  storage: {    // use disk storage with a custom basepath\n    backend: 'disk',   \n    basepath: '/tmp/myapp/storage'    \n  props: {\n    // ...\n  }\n});\n```\n\n### Backends\n\nThe following backends are currently supported: `local`, `disk`, `remote`, `null`,\n`secure`, `splice`.\n\nThe default is `local`.\n\n#### `local` Backend\n\nStores objects in local storage of the browser. Only works in a browser context.\nThe backend uses the [`localforage`][localforage] npm module under the hood and\nsupports IndexedDB, WebSQL and localStorage drivers. A separate instance of\nthe store is created for each `namespace`.\n\n###### Additional Options\n\n`driver`\n: The driver to be passed on to `localforage`. One of `INDEXEDDB`, `LOCALSTORAGE`\nor `WEBSQL`. The default is `INDEXEDDB`.\n\n`appName`\n: The name of the IndexedDB database (not the data store inside the database,\n  which is the model's `namespace`). Most users will never see this, but it's\n  best practice to use your application name here. Default is `storage-mixin`.\n\n\n#### `disk` Backend\n\nStores objects as `.json` files on disk. Only works in a node.js / server\ncontext, or in Electron renderer process where `remote` module is available\nto get access to the `fs` module.\n\nThe file location is `<basepath>/<namespace>/<id>.json`. `<basepath>` is\nprovided as option. The `<namespace>` is set on the model directly, and the\n`<id>` is the property of the model specified by `idAttribute`. The first\nexample on this page would be stored as:\n\n```\n/tmp/StorableModels/Apollo 13.json\n```\n\n###### Additional Options\n\n`basepath`\n: The base path for file storage. The default is `.`.\n\n#### `remote` Backend\n\nThis is a wrapper for [ampersand-sync][ampersand-sync], that stores and\nretrieves models to/from a remote server via asynchronous ajax / xhr requests.\nPass in the [`url`][ampersand-model-url] value as an option or set it\ndirectly on the model.\n\n###### Additional Options\n\n`url`\n: The url to fetch the model/collection, see [ampersand-model#url][ampersand-model-url].\n\n#### `null` Backend\n\nThis backend exists mostly for debugging and testing purposes. It does not\nstore anything but will return with successful callbacks on all method calls.\nFor reads, it will return an empty object `{}` for models, or an empty array\n`[]` for collections.\n\n#### `secure` Backend\n\nThe `secure` backend wraps the [`keytar`][keytar] module to persist data into\na secure keychain, keyring or password manager (works for OS X, Linux, Windows).\nThere are some limitations though as the interface does not allow to list all\nkeys in a given namespace. Therefore, to fetch a collection, it has to be\npre-populated with models containing the ids.\n\n```js\n// this won't work !\nvar collection = new StorableCollection();\ncollection.fetch();\n\n// do this instead\nvar collection = new StorableCollection([\n  {id: 'some id'}, {id: 'some other id'}, {id: 'third id'}\n], {parse: true});\ncollection.fetch();\n```\n\nThe static `.clear()` method that other storage backends possess is also\na no-op in the `secure` backend for the same reason. Keys have to be deleted\nmanually.\n\n\n###### Additional Options\n\n`appName`\n: Entries in the keychain have a key of `<appName>/<namespace>`. As this is\n  visible to the user, you should use your application name here. Default\n  is `storage-mixin`.\n\n#### `splice` Backend\n\nThis is a hybrid backend that consists of a `local` and `secure` backend\nunder the hood. It also receives a `secureCondition` function as an optional\nargument that takes a `value` and `key` and returns whether or not this key\nshould be stored in the `secure` or `local` backend. On retrieval, it merges\nthe two results from both backends together to form a complete object again.\n\nThis is particularly useful to store user-related data where some fields contain\nsensitive information and should not be stored as clear text, e.g. passwords.\n\n\n###### Additional Options\n\n`appName`\n: Passed to both the `local` and `secure` backends, that acts as a global\nscope (e.g. database name in IndexedDB, prefix in keychain keys). Use your\napplication name here. Default is `storage-mixin`.\n\n`secureCondition`\n: Function that decides which keys/values of a model should be stored in the\n`secure` backend vs. the `local` backend. The function takes a value and key\nand must return `true` for the keys that need to be stored securely. Default\nis:\n```js\nfunction(val, key) {\n  return key.match(/password/i);\n}\n```\n\n###### Example\n\n```js\nvar Model = require('ampersand-model');\nvar storageMixin = require('storage-mixin');\n\nvar User = Model.extend(storageMixin, {\n  idAttribute: 'id',\n  namespace: 'Users',\n  storage: {\n    backend: 'splice',\n    appName: 'My Cool App',\n    secureCondition: function(val, key) {\n      return key.match(/password/i);\n    }\n  },\n  props: {\n    id: 'string',            // stored in `local`\n    name: 'string',          // stored in `local`\n    email: 'string',         // stored in `local`\n    lastLogin: 'date',       // stored in `local`\n    password: 'string',      // stored in `secure`\n    oldPassword: 'string'    // stored in `secure`\n  }\n});\n\n```\n\n## License\n\nApache 2.0\n\n[travis_img]: https://img.shields.io/travis/mongodb-js/storage-mixin.svg?style=flat-square\n[travis_url]: https://travis-ci.org/mongodb-js/storage-mixin\n[npm_img]: https://img.shields.io/npm/v/storage-mixin.svg?style=flat-square\n[npm_url]: https://www.npmjs.org/package/storage-mixin\n[inch_img]: http://inch-ci.org/github/mongodb-js/storage-mixin.svg?branch=master\n[inch_url]: http://inch-ci.org/github/mongodb-js/storage-mixin\n[ampersand-sync]: https://github.com/AmpersandJS/ampersand-sync\n[ampersand-save]: https://ampersandjs.com/docs/#ampersand-model-save\n[ampersand-model-url]: https://github.com/AmpersandJS/ampersand-model#url-modelurl-or-modelurl\n[localforage]: http://mozilla.github.io/localForage/\n[keytar]: https://www.npmjs.com/package/keytar\n"
+  ]
 }

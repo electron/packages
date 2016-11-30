@@ -1,6 +1,6 @@
 {
   "name": "floss",
-  "version": "1.2.2",
+  "version": "1.2.3",
   "description": "Unit-testing for those hard to reach places",
   "bin": {
     "floss": "./bin/floss.js"
@@ -102,12 +102,12 @@
       "expect": true
     }
   },
-  "gitHead": "30c6ddd30ccd0ae8bc34099594db96f0663331a8",
+  "gitHead": "8a0b0cebe92202cd7bf7cf553e62137060d9f9b8",
   "_npmVersion": "2.14.20",
   "_nodeVersion": "4.4.0",
   "dist": {
-    "shasum": "d382cc5a6661dbccbdda8dac2041d99e57ded8e9",
-    "tarball": "http://registry.npmjs.org/floss/-/floss-1.2.2.tgz"
+    "shasum": "bb3789df24e498b1b63d969c9033dd5bb97e0c9e",
+    "tarball": "http://registry.npmjs.org/floss/-/floss-1.2.3.tgz"
   },
   "versions": [
     {
@@ -201,10 +201,14 @@
     {
       "number": "1.2.2",
       "date": "2016-10-27T13:08:55.791Z"
+    },
+    {
+      "number": "1.2.3",
+      "date": "2016-11-18T21:02:02.520Z"
     }
   ],
   "created": "2016-05-03T14:01:04.245Z",
-  "modified": "2016-10-27T13:08:55.791Z",
+  "modified": "2016-11-18T21:02:02.520Z",
   "lastPublisher": {
     "name": "bigtimebuddy",
     "email": "matt@mattkarl.com"
@@ -222,6 +226,5 @@
       "name": "mbittarelli",
       "email": "bittam@gmail.com"
     }
-  ],
-  "readme": "# Floss\n\nUnit-testing for those hard to reach places.\n\n[![Build Status](https://travis-ci.org/jiborobot/floss.svg?branch=master)](https://travis-ci.org/jiborobot/floss) [![npm version](https://badge.fury.io/js/floss.svg)](https://badge.fury.io/js/floss)\n\nUses Electron to provide a Mocha unit-testing environment which can be run headlessly or to debugged with DevTools. This was largely inspired by the [electron-mocha](https://github.com/jprichardson/electron-mocha) and [mocha-electron](https://github.com/tscanlin/mochatron) projects but didn't quite have the debugging features needed to develop tests.\n\n## Installation\n\nInstall globally:\n\n```bash\nnpm install -g floss electron-prebuilt\n```\n\nInstall locally within a project:\n\n```bash\nnpm install floss electron-prebuilt --save-dev\n```\n\n## Gulp Usage\n\n```js\nconst floss = require('floss');\ngulp.task('test', function(done) {\n    floss('test/index.js', done);\n});\n```\n\n### Debug Mode\n\nOpen tests in an Electron window where test can can be debugged with `debugger` and dev tools.\n\n```js\nfloss({\n    path: 'test/index.js',\n    debug: true\n}, done);\n```\n\n### Mocha Reporter\n\nThe `reporter` and `reporterOptions` are pass-through options for Mocha to specify a different reporter when running Floss in non-debug mode.\n\n```js\nfloss({\n    path: 'test/index.js',\n    reporter: 'xunit',\n    reporterOptions: {\n    \tfilename: 'report.xml'\n    }\n}, done);\n```\n\n### Custom Options\n\nAdditional properties can be passed to the test code by adding more values to the run options.\n\n```js\nfloss({\n    path: 'test/index.js',\n    customUrl: 'http://localhost:8080' // <- custom\n}, done);\n```\n\nThe test code and use the global `options` property to have access to the run options.\n\n```js\nconsole.log(options.customUrl); // logs: http://localhost:8080\n```\n\n## Command Line Usage\n\n### Arguments\n\n* **--path** or **-p** (String) Path to the file to test\n* **--debug** or **-d**  (Boolean) Enable to run in headful mode, default `false`.\n* **--electron** or **-e**  (String) Path to the electron to use.\n* **--reporter** or **-r**  (String) Mocha reporter type, default `spec`.\n* **--reporterOptions** or **-o**  (String) Mocha reporter options.\n* **--coveragePattern** or **-c**  (String) Glob pattern of file source to messure for coverage.\n* **--coverageHtmlReporter** or **-h**  (Boolean) Generatel HTML report for coverage, default `false`.\n* **--coverageSourceMaps** or **-s**  (Boolean) Use sourcemaps to determine coverage, default `false`.\n\n### Usage\n\nCommand Line usage when installed globally:\n\n```bash\nfloss --path test/index.js\n```\n\nOr installed locally:\n\n```bash\nnode node_modules/.bin/floss --path test/index.js\n```\n\nAlernatively, within the **package.json**'s' scripts:\n\n```json\n{\n    \"scripts\": {\n        \"test\": \"floss --path test/index.js\"\n    }\n}\n```\n\n### Debug Mode\n\nOpen tests in an Electron window where test can can be debugged with `debugger` and dev tools.\n\n```bash\nfloss --path test/index.js --debug\n```\n\n### Istanbul Code Coverage\n\nFloss comes with istanbul integration. This will generate a json report.\n\n```bash\nfloss --path test/index.js --coveragePattern lib/**/*/*.js\n```\n\nTo remap the json report using sourcemaps\n\n```bash\nfloss --path test/index.js --coveragePattern lib/**/*/*.js --coverageSourceMaps\n```\n\nTo generate an additional html report\n\n```bash\nfloss --path test/index.js \\\n    --coveragePattern lib/**/*/*.js \\\n    --coverageHtmlReporter\n```\n\nTo generate an additional html report with source maps\n\n```bash\nfloss --path test/index.js \\\n    --coveragePattern lib/**/*/*.js \\\n    --coverageSourceMaps \\\n    --coverageHtmlReporter\n```\n\nFor lists of globs put the coverage files in quotes comma or space separated\n\n```bash\nfloss --path test/index.js \\\n    --coveragePattern \"lib/**/*/*.js, node_modules/thing/lib/thing.js\"\n```\n\n### Mocha Reporter\n\nCan use the same reporter options as the API mentioned above. The `reporterOptions` are expressed as a querystring, for instance `varname=foo&another=bar`.\n\n```bash\nfloss --path test/index.js \\\n    --reporter=xunit \\\n    --reporterOptions output=report.xml\n```\n\n## Custom Electron Version\n\nSome application may require a specific version of Electron. Floss uses Electron 1.0.0+, but you can specific the path to your own version. The custom version can be used either through the commandline argument `--electron`, by setting the Node environmental variable `ELECTRON_PATH` or by setting the run option `electron`.\n\n```js\ngulp.task('test', function(done) {\n    floss({\n        path: 'test/index.js',\n        electron: require('electron-prebuilt')\n    }, done);\n});\n```\n```bash\nfloss --path test/index.js \\\n\t--electron /usr/local/bin/electron\n```\n\n```bash\nELECTRON_PATH=/usr/local/bin/electron floss --path test/index.js\n```\n\n## Travis Integration\n\nFloss can be used with [Travis CI](https://travis-ci.org/) to run Electron headlessly by utilizing Xvfb. Here's a sample of how to setup this project.\n\n### package.json\n\nNote that scripts `test` must be setup in your **package.json**;\n\n```json\n{\n    \"scripts\": {\n        \"test\": \"gulp test\"\n    }\n}\n```\n\n### .travis.yml\n\n```yml\nlanguage: node_js\nnode_js:\n    - \"4\"\n\ninstall:\n    - npm install xvfb-maybe\n    - npm install\n\nbefore_script:\n  - export DISPLAY=':99.0'\n  - Xvfb :99 -screen 0 1024x768x24 -extension RANDR &\n\nscript:\n    - xvfb-maybe npm test\n```\n"
+  ]
 }

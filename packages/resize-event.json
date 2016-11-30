@@ -75,6 +75,5 @@
       "name": "shama",
       "email": "kyle@dontkry.com"
     }
-  ],
-  "readme": "# resize-event\nDetect resize on an element without polling or iframes\n\n[![build status](https://secure.travis-ci.org/shama/resize-event.svg)](https://travis-ci.org/shama/resize-event)\n[![NPM version](https://badge.fury.io/js/resize-event.svg)](https://badge.fury.io/js/resize-event)\n\nThis uses a [MutationObserver](https://developer.mozilla.org/en-US/docs/Web/API/MutationObserver)\nto detect changes to the `style` attribute of an element and then compares the\nwidth/height to check if it has changed.\n\nA polyfill is provided which will use polling on older browsers.\n\n## usage\n\n```js\nvar onResize = require('resize-event')\n\n// Create or select an element, must be in the DOM\nvar element = document.createElement('div')\ndocument.body.appendChild(element)\n\n// Bind the event\nonResize(element, function () {\n  console.log('element was resized')\n})\n\n// Trigger the event\nelement.style.width = '500px'\n```\n\n## install\n\n```shell\nnpm install resize-event --save\n```\n\nThen use a CommonJS compatible module bundler to `require('resize-event')`.\n\n# license\n(c) 2015 Kyle Robinson Young. MIT License\n"
+  ]
 }

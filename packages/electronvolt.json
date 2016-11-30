@@ -67,6 +67,5 @@
       "name": "susisu",
       "email": "susisu2413@yahoo.co.jp"
     }
-  ],
-  "readme": "# eV\nThe eV (electronvolt) provides a simple DOM-like event system.\n\n## Installation\n``` shell\n$ npm install electronvolt\n```\n\n## Example\n``` javascript\nvar ev = require(\"electronvolt\");\n\n// create event nodes\nvar node = new ev.EventNode();\nvar parent = new ev.EventNode();\n\n// compose event flow\nnode.parentNode = parent;\n\nvar listener = function (event) {\n    switch (event.eventPhase) {\n        case ev.EventPhase.AT_TARGET:\n            console.log(\"at target\");\n            break;\n        case ev.EventPhase.BUBBLING_PHASE:\n            console.log(\"bubbling phase\");\n            break;\n        case ev.EventPhase.CAPTURING_PHASE:\n            console.log(\"capturing phase\");\n            break;\n    }\n};\n\n// add event listeners\nnode.addEventListener(\"example\", listener);\nparent.addEventListener(\"example\", listener);\nparent.addEventListener(\"example\", listener, true);\n\n// dispatch event into the event flow\nnode.dispatchEvent(new ev.Event(\"example\", true));\n// -> capturing phase\n// -> at target\n// -> bubbling phase\n```\n\n## License\n[MIT License](http://opensource.org/licenses/mit-license.php)\n\n## Author\nSusisu ([GitHub](https://github.com/susisu), [Twitter](https://twitter.com/susisu2413))\n"
+  ]
 }

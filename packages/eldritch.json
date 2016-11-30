@@ -68,6 +68,5 @@
       "name": "debrisapron",
       "email": "debrisapron@gmail.com"
     }
-  ],
-  "readme": "# 👁 ELDRITCH 👁\n\nWatch js files and run them in a hidden Electron browser window when they change. Useful for prototyping, debugging, live-coding, that sort of thing.\n\n## Installation\n\n```\nnpm install -g electron-prebuilt\nnpm install -g eldritch\n```\n\n## Example\n\nIn one console:\n```\n$ eldritch foo.js\n```\nIn another:\n```\n$ echo \"console.log('CTHULHU FHTAGN!')\" > foo.js\n$ echo \"let c = new AudioContext; let o = c.createOscillator(); o.connect(c.destination); o.start()\" > foo.js\n```\nThe result should be an unearthly greeting accompanied by the thin monotonous whine of accursed flutes. Pretty cool.\n\n## Usage\n\n```\neldritch <pattern> [<pattern>...] [options]\n```\n\nPatterns and options are passed to `chokidar.watch` https://github.com/paulmillr/chokidar#api\n\nYour watched files are running in a hidden Electron window so you can use all the usual browser APIs. Every time you make a change the watched files are re-required in the same context. In other words, global & window state are persisted between changes.\n\nAlso, every time a watched file is changed, *all* watched files are re-required. However, unwatched dependencies of those files will not be re-required.\n\nInside the browser, `console` is patched to output to the node console instead of writing to the browser's own console.\n\n## Disclaimer\n\nPlease do not use ELDRITCH to open doors man was not meant to open or meddle with forces you cannot possibly control.\n"
+  ]
 }

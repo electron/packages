@@ -85,6 +85,5 @@
       "name": "mattdesl",
       "email": "dave.des@gmail.com"
     }
-  ],
-  "readme": "# strip-chromium-logs\n\n[![stable](http://badges.github.io/stability-badges/dist/stable.svg)](http://github.com/badges/stability-badges)\n\nStrips Chromium logs from a stream, mainly useful for cleaning up Electron's `process.stderr` stream.\n\n## Install\n\n```sh\nnpm install strip-chromium-logs --save\n```\n\n## Example\n\n```js\nvar proc = require('child_process')\nvar electron = require('electron-prebuilt')\nvar logger = require('strip-chromium-logs')\nvar path = require('path')\n\nvar args = process.argv.slice(2)\nvar server = path.resolve(__dirname, 'server.js')\n\n// spawn electron and print debugging to console\nvar p = proc.spawn(electron, [ server ].concat(args))\np.stdout.pipe(process.stdout)\np.stderr.pipe(logger()).pipe(process.stderr)\n```\n\nBefore `strip-chromium-logs`:\n\n![before](http://i.imgur.com/p1ZWzX6.png)\n\nAfter `strip-chromium-logs`:\n\n![after](http://i.imgur.com/7rFrX8l.png)\n\n## Usage\n\n[![NPM](https://nodei.co/npm/strip-chromium-logs.png)](https://www.npmjs.com/package/strip-chromium-logs)\n\n#### `stripChromiumLogs()`\n\nReturns a duplexer stream which ignores Chromium-looking logs (which can span several lines) but allows other lines to pass through.\n\n## License\n\nMIT, see [LICENSE.md](http://github.com/mattdesl/strip-chromium-logs/blob/master/LICENSE.md) for details.\n"
+  ]
 }

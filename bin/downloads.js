@@ -4,7 +4,7 @@ const path = require('path')
 // const pathExists = require('path-exists').sync
 const packageNames = require('..').map(p => p.name)
 const RateLimiter = require('limiter').RateLimiter
-const limiter = new RateLimiter(1, 1000)
+const limiter = new RateLimiter(1, 'second')
 
 function getDownloadCount (pkg, callback) {
   const url = `https://api.npmjs.org/downloads/point/last-month/${pkg}`

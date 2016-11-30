@@ -1,6 +1,6 @@
 {
   "name": "electron-windows-notifications",
-  "version": "1.1.4",
+  "version": "1.1.5",
   "description": "Native Windows notifications for Electron using NodeRT",
   "main": "./src/index.js",
   "scripts": {
@@ -37,7 +37,7 @@
   "dependencies": {
     "debug-electron": "0.0.1",
     "is-electron-renderer": "^2.0.1",
-    "node-uuid": "^1.4.7",
+    "uuid": "^3.0.0",
     "xml-escape": "^1.1.0",
     "@nodert-win10/windows.applicationmodel": "^0.2.95",
     "@nodert-win10/windows.data.xml.dom": "^0.2.95",
@@ -52,12 +52,12 @@
     "@nodert-win10/windows.ui.notifications": "^0.2.95",
     "@nodert-win10/windows.ui.startscreen": "^0.2.95"
   },
-  "gitHead": "01b09ae1952af7791390fbff5f5c3c4b9f1b4bff",
-  "_npmVersion": "3.10.8",
+  "gitHead": "a9f42531865e9689540c4ec7c33af917728bca54",
+  "_npmVersion": "4.0.3",
   "_nodeVersion": "6.9.1",
   "dist": {
-    "shasum": "c774895c14049b25efddd988f4f8f3e99564fd2d",
-    "tarball": "http://registry.npmjs.org/electron-windows-notifications/-/electron-windows-notifications-1.1.4.tgz"
+    "shasum": "b3b286735d5430f3c768aca6da5dbb80cbde51c7",
+    "tarball": "http://registry.npmjs.org/electron-windows-notifications/-/electron-windows-notifications-1.1.5.tgz"
   },
   "versions": [
     {
@@ -235,10 +235,14 @@
     {
       "number": "1.1.4",
       "date": "2016-11-07T23:23:37.048Z"
+    },
+    {
+      "number": "1.1.5",
+      "date": "2016-11-24T18:32:47.532Z"
     }
   ],
   "created": "2016-09-26T21:44:13.424Z",
-  "modified": "2016-11-07T23:23:37.048Z",
+  "modified": "2016-11-24T18:32:47.532Z",
   "lastPublisher": {
     "name": "felixrieseberg",
     "email": "felix@felixrieseberg.com"
@@ -256,6 +260,5 @@
       "name": "ritazh",
       "email": "ritazhcode@gmail.com"
     }
-  ],
-  "readme": "# electron-windows-notifications\nCreate native Windows toast and tile notifications for Windows 8, 8.1, and 10 using native bindings to WinRT (using NodeRT).\n\n```\nnpm install --save electron-windows-notifications\n```\n\n### Usage\nFor more samples, check out the `samples` folder.\n\n#### ToastNotification\nThe constructor for the `ToastNotification` class accepts an options `object` with the following properties:\n\n * `string` template - The XML template for the notification. You can also call `new Template()` with few properties to customize your own XML template based on the default. See example: [template.js](samples/template.js)\n * `string[]` strings - An array of strings to be used in your template. XML escaping is applied to all strings.\n * `Date` expirationTime - Time after which a toast notification should not be displayed.\n * `string` group - Group identifier for the notification.\n * `string` tag - Unique identifier of this notification within the notification group.\n * `string` appId - `appUserModelId` of the application for which the notification is sent. If not passed, it will be assumed to be a global property in Electron's main thread.\n\n```JS\nconst appId = 'electron-windows-notifications'\nconst {ToastNotification} = require('electron-windows-notifications')\n\nlet notification = new ToastNotification({\n    appId: appId,\n    template: `<toast><visual><binding template=\"ToastText01\"><text id=\"1\">%s</text></binding></visual></toast>`,\n    strings: ['Hi!']\n})\n\nnotification.on('activated', () => console.log('Activated!'))\nnotification.show()\n```\n\n#### TileNotification\nTile notifications update the app's primary or secondary tiles. They require that the app is running inside the UWP model, which is possible on Windows 10 Anniversary Update and later. For more information, check out [`electron-windows-store`](https://github.com/felixrieseberg/electron-windows-store). The constructor for the `TileNotification` class accepts an options `object` with the following properties:\n\n * `string` template - The XML template for the notification. You can also call `new Template()` with few properties to customize your own XML template based on the default. See example: [template.js](samples/template.js)\n * `string[]` strings - An array of strings to be used in your template. XML escaping is applied to all strings.\n * `string` tag - Unique identifier of this notification within the notification group.\n * `string` tileId - If set, the given tile will be updated. Otherwise, the app's primary tile will be used.\n\n```JS\nconst appId = 'electron-windows-notifications'\nconst {ToastNotification} = require('electron-windows-notifications')\n\nlet notification = new ToastNotification({\n    appId: appId,\n    template: `<toast><visual><binding template=\"ToastText01\"><text id=\"1\">%s</text></binding></visual></toast>`,\n    strings: ['Hi!']\n})\n\nnotification.on('activated', () => console.log('Activated!'))\nnotification.show()\n```\n\n### Hints\n\n##### appUserModelId\nThe appUserModelId identifies application in Windows. In Electron, you can set it at runtime using the `app.setAppUserModelId()` method. If you don't pass it, this module will assume that it's a property on Electron's main thread. Unless running inside a UWP container, you probably want to pass it.\n\n##### Mysterious Failures & XML Escaping\nMicrosoft follows the XML spec to the letter - and XML has escaping rules you might not be familiar with. If you're adding strings and properties to your template, consider just using the `strings` property in the constructor - it will automatically properly escape all input.\n\n##### String replacement\nInside the module, `util.format` is used. It'll format the template in a `printf`-like format. The template is expected to hold zero or more placeholders. Each placeholder is replaced with the converted value from its corresponding argument. If the placeholder does not have a corresponding argument, the placeholder is not replaced. Supported placeholders are:\n\n* %s - String.\n* %d - Number (both integer and float).\n* %j - JSON.\n* %% - single percent sign ('%'). This does not consume an argument.\n\n### License\nMIT. Please see LICENSE for details."
+  ]
 }

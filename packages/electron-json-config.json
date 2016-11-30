@@ -91,6 +91,5 @@
       "name": "de-luca",
       "email": "dev@de-luca.io"
     }
-  ],
-  "readme": "# electron-json-config\n\n> Simply set and get configuration from a json file for your Electron app\n\nThe config file (`config.json`) is located in the path returned by `app.getPath('userData')`.  \nThis package can be used from **browser and renderer** process.\n\n## Usage\n\n```js\nconst config = require('electron-json-config');\n\nconfig.set('foo', 'bar');\nconsole.log(config.get('foo')); // shows 'bar'\n```\n\n\n## API\n\n*All `key` can be a classic key (eg: `foo`) or a multiple level key with levels separated by `.` (eg: `foo.bar`)*\n\n### `config.file()`\nReturns the name of the file the config is stored in.\n\n### `config.has(key)`\nReturns `true` if the key exists, `false` otherwise.\n\n### `config.set(key, value)`\nSet a key with the specified value. If the key is already in use its value will be overwritten.\n\n### `config.get(key[, defaultValue])`\nReturns the value associated with the key. If the key is not defined `undefined` is returned.  \nYou can specify a default value returned in case the key does not exists.\n\n### `config.keys([key])`\nIf `key` is provided, returns an array containing all keys if the `key` object.  \nIf `key` is omitted, returns an array containing all keys in the config file.\n\n### `config.all()`\nReturns an object with all the data currently saved.\n\n### `config.delete(key)`\nRemove the key and its value from the config file.\n\n### `config.purge()`\nRemove all data from the config file.\n"
+  ]
 }

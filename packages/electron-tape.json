@@ -57,6 +57,5 @@
       "name": "pfraze",
       "email": "pfrazee@gmail.com"
     }
-  ],
-  "readme": "# Electron Tape\n\nA [tape](npm.im/tape) testing harness for electron apps.\n\n## Usage\n\nTo use electron-tape, you create two test files: one for the main thread, and one for the ui thread.\n\nBoth files will be loaded and run simultaneously. The test results will be output in the logs of their respective threads. Both threads will remain open so you can check the results.\n\nTo run the tests, call `electron --v=-1 <main-thread-testfile>`.\n\n**main-test.js:**\n\n```js\nvar etape    = require('electron-tape')\nvar ipc      = require('ipc')\n\netape(__dirname+'/ui-test.js', function (tape, window) {\n\n  tape('send/receive data', function (t) {\n    // send 1, 2, 3\n    window.webContents.send('test-channel', 1)\n    window.webContents.send('test-channel', 2)\n    window.webContents.send('test-channel', 3)\n\n    // receive 1, 2, 3\n    var n = 0\n    ipc.on('test-channel', function (e, v) {\n      t.equal(v, ++n)\n      if (n === 3)\n        t.end()\n    })\n  })\n\n})\n```\n\n**ui-test.js:**\n\n```js\nvar etape    = require('electron-tape')\nvar ipc      = require('ipc')\n\netape(function (tape, window) {\n\n  tape('send/receive data', function (t) {\n    // send 1, 2, 3\n    ipc.send('test-channel', 1)\n    ipc.send('test-channel', 2)\n    ipc.send('test-channel', 3)\n\n    // receive 1, 2, 3\n    var n = 0\n    ipc.on('test-channel', function (e, v) {\n      t.equal(v, ++n)\n      if (n === 3)\n        t.end()\n    })\n  })\n\n})\n```"
+  ]
 }

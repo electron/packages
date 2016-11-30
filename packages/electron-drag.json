@@ -49,7 +49,7 @@
     "shasum": "b7d53e5922937a6d47f4b3d951dbc24b1168087e",
     "tarball": "http://registry.npmjs.org/electron-drag/-/electron-drag-1.2.0.tgz"
   },
-  "stars": 5,
+  "stars": 6,
   "versions": [
     {
       "number": "1.0.0",
@@ -77,7 +77,7 @@
     }
   ],
   "created": "2015-05-23T16:52:03.073Z",
-  "modified": "2016-10-02T17:47:57.659Z",
+  "modified": "2016-11-23T10:52:02.254Z",
   "lastPublisher": {
     "name": "kapetan",
     "email": "mirza.kapetanovic@gmail.com"
@@ -87,6 +87,5 @@
       "name": "kapetan",
       "email": "mirza.kapetanovic@gmail.com"
     }
-  ],
-  "readme": "# electron-drag\n\nImproved window dragging for `Electron` applications.\n\nFrameless windows can be dragged using the [-webkit-app-region][region] css property, but this disables all regular dom events and user interactions with the affected element, which makes it hard to emulate a native-like title bar in the application, as it's not possible to capture double clicks for maximizing the window.\n\nA workaround is to use a pure javascript solution, but dragging only works well when moving the mouse in less than normal speed, else the mouse pointer will move outside the window area and no events will be received by the dom.\n\nThis module uses [osx-mouse][osx] or [win-mouse][win] modules for tracking the mouse position on the entire screen, and thereby enabling consistent window dragging, while the affected element is still able to receive dom events.\n\n# Usage\n\n\tnpm install electron-drag\n\nRequire the module in an `Electron` web page.\n\n```javascript\nvar drag = require('electron-drag');\n\n// Pass a query selector or a dom element to the function.\n// Dragging the element will drag the whole window.\nvar clear = drag('#element');\n\n// Call the returned function to make the element undraggable again.\nclear();\n```\n\nThe module only works on OS X and Windows, but doesn't fail when installed on a non-supported platform.\n\n```javascript\n// Fallback to using -webkit-app-region property.\nif(!drag.supported) {\n\tdocument.querySelector('#element').style['-webkit-app-region'] = 'drag';\n}\n```\n\nThe module needs to be built with the correct `Electron` headers. See the [guide for using native Node modules with Electron][native] for more information.\n\n[region]: https://github.com/atom/electron/blob/master/docs/api/frameless-window.md#draggable-region\n[osx]: https://github.com/kapetan/osx-mouse\n[win]: https://github.com/kapetan/win-mouse\n[native]: https://github.com/atom/electron/blob/master/docs/tutorial/using-native-node-modules.md\n"
+  ]
 }

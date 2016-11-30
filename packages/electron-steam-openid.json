@@ -98,6 +98,5 @@
       "name": "vincent__",
       "email": "vincent.lark@gmail.com"
     }
-  ],
-  "readme": "# electron-steam-openid [![Build Status](https://travis-ci.org/vincent/electron-steam-openid.svg?branch=master)](https://travis-ci.org/vincent/electron-steam-openid)\n\n> A library to handle Steam authentication with OpenID, for your [Electron](http://electron.atom.io) app.\n\n\n## Install\n\n```\n$ npm install --save electron-steam-openid\n```\n\n\n## Usage\n\n```js\nconst electronSteamAuth = require('electron-steam-openid');\n\nvar config = {\n  redirectUri: 'http://localhost'\n};\n\napp.on('ready', () => {\n  const windowParams = {\n    alwaysOnTop: true,\n    autoHideMenuBar: true,\n    webPreferences: {\n      nodeIntegration: false\n    }\n  }\n\n  const auth = electronSteamAuth(config, windowParams);\n\n  auth.authenticate(options)\n    .then(token => {\n      // use your token.steam_id\n    });\n});\n```\n\n\n## API\n\n### electronSteamAuth(config, windowParams)\n\n#### config\n\nType: `Object`\nSets custom openid.RelyingParty() params\n\n#### windowParams\n\nType: `Object`\n\nAn object that will be used to create the BrowserWindow. Details: [Electron BrowserWindow documention](https://github.com/atom/electron/blob/master/docs/api/browser-window.md)\n\n### Methods\n\n#### getAuthorizationCode(options)\n\nReturns a ```Promise``` that gets resolved with the authorization details of the OpenID authorization request.\n\n## Adapted from\n\n[electron-oauth2](https://github.com/mawie81/electron-oauth2)\n\n## License\n\nMIT\n"
+  ]
 }

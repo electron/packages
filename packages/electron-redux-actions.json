@@ -62,6 +62,5 @@
       "name": "jodusnodus",
       "email": "thomas.billiet@yahoo.com"
     }
-  ],
-  "readme": "## Why\nIn my electron app I wanted to control the Tray from the main process so that the app could operate without an open window. So i used redux in the main process and then made all async calls from the main process. But if a browser window was open it should receive the same information at the same time without having to make duplicate calls.\n\n## What\nThe middleware sends all the actions to all other processes using the middleware including the browser windows and the main process. This way all processes receive the same actions. You can use this functionality to react to other processes' actions or dispatch actions to communicate between processes.\n\n## Install\n`npm install --save electron-redux-actions`\n\n## Use\n```\nimport { createStore, applyMiddleware } from 'redux'\nimport electronMiddleware from \"electron-redux-actions\"\nimport rootReducer from '../reducers'\n\nconst enhancer = applyMiddleware(electronMiddleware)\n\nexport default function configureStore(initialState) {\n  return createStore(rootReducer, initialState, enhancer)\n}\n```\n\nEach action, foreign to the process has 2 extra key's:\n- **fromMain**, *bool*, wheter or not the action was dispatched from the main process.\n- **fromWindow**, *number*, the window ID of the process where the action was dispatched.\n\nTo exclude an action from being dispatched to other processes just set `private` to `true` in the action.\n"
+  ]
 }

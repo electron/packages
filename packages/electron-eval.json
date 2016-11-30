@@ -1,6 +1,6 @@
 {
   "name": "electron-eval",
-  "version": "0.9.7",
+  "version": "0.9.9",
   "description": "Run code inside a hidden Electron window",
   "main": "index.js",
   "scripts": {
@@ -25,7 +25,7 @@
   "license": "MIT",
   "dependencies": {
     "cross-spawn": "^4.0.0",
-    "electron-prebuilt": "^1.2.2",
+    "electron": "^1.4.3",
     "ndjson": "^1.4.3",
     "headless": "https://github.com/paulkernfeld/node-headless/tarball/master"
   },
@@ -52,12 +52,12 @@
     "api_url": "https://api.github.com/repos/mappum/electron-eval"
   },
   "homepage": "https://github.com/mappum/electron-eval#readme",
-  "gitHead": "9cc05117c47d5f38ae5098dfac25d4932906da73",
-  "_npmVersion": "3.10.3",
-  "_nodeVersion": "6.6.0",
+  "gitHead": "9e5a9c714d615a13bc4addcadf0e4f9abe7f4a84",
+  "_npmVersion": "3.10.9",
+  "_nodeVersion": "7.1.0",
   "dist": {
-    "shasum": "a0fdcb966097947df3ab33ef591693de7c84422f",
-    "tarball": "http://registry.npmjs.org/electron-eval/-/electron-eval-0.9.7.tgz"
+    "shasum": "4fe343bdb5e8c927edfcb8a5a2ac76cc7eba7283",
+    "tarball": "http://registry.npmjs.org/electron-eval/-/electron-eval-0.9.9.tgz"
   },
   "stars": 2,
   "versions": [
@@ -196,10 +196,18 @@
     {
       "number": "0.9.7",
       "date": "2016-09-28T21:56:55.952Z"
+    },
+    {
+      "number": "0.9.8",
+      "date": "2016-11-21T23:29:35.338Z"
+    },
+    {
+      "number": "0.9.9",
+      "date": "2016-11-23T23:31:58.350Z"
     }
   ],
   "created": "2016-01-07T11:10:23.848Z",
-  "modified": "2016-09-28T21:56:55.952Z",
+  "modified": "2016-11-23T23:31:58.350Z",
   "lastPublisher": {
     "name": "mappum",
     "email": "mappum@gmail.com"
@@ -209,6 +217,5 @@
       "name": "mappum",
       "email": "mappum@gmail.com"
     }
-  ],
-  "readme": "# electron-eval\n\n[![npm version](https://img.shields.io/npm/v/electron-eval.svg)](https://www.npmjs.com/package/electron-eval)\n[![Build Status](https://travis-ci.org/mappum/electron-eval.svg?branch=master)](https://travis-ci.org/mappum/electron-eval)\n[![Dependency Status](https://david-dm.org/mappum/electron-eval.svg)](https://david-dm.org/mappum/electron-eval)\n\nRun code inside a hidden Electron window\n\n`electron-eval` gives you a way to access a headless browser (Chromium) from Node.js. This can be useful for testing browser-specific code, or using web APIs that are in browsers but not yet in Node (such as [WebRTC](https://github.com/mappum/electron-webrtc)).\n\n## Running on Headless Machines\n\nThis module runs without any prior setup on non-headless machines.\n\nTo run on a headless Linux server, you'll need the `xvfb` package:\n\n\t$ sudo apt-get install xvfb\n\nTo run in Travis CI, see the [.travis.yml](https://github.com/mappum/electron-eval/blob/master/.travis.yml) file for this repo as an example of how to install the necessary packages.\n\n## Usage\n\n`npm install electron-eval`\n\n```js\nvar electronEval = require('electron-eval')\n\n// create new electron instance\nvar daemon = electronEval()\n\ndaemon.eval('JSON.stringify(window.location.href)', function (err, res) {\n  console.log(err, res)\n  // prints 'null file:///Users/mappum/Projects/electron-eval/index.html'\n})\n\n// use es6 multiline strings for longer pieces of code\ndaemon.eval(`\n  var i = 0\n  i += 10\n  i -= 2\n  i\n`, (err, res) => console.log(err, res))\n// prints 'null 8'\n\n// close the window when you are done with it\n// note that this happens automatically after the node process ends\ndaemon.close()\n```\n\n### Methods\n\n#### `var daemon = electronEval([opts])`\n\nCreates a new hidden Electron instance. This may be called many times to create many windows, but beware that Electron uses a lot of resources.\n\n`opts` may be an object containing the following keys:\n```js\n{\n  headless: Boolean // default: false\n  // whether or not we should run in headless mode (using Xvfb)\n  xvfb: Object // default: {}\n  // configures specific xvfb options (see: https://github.com/Rob--W/node-xvfb#usage)\n  timeout: Number // default: 10000\n  // how often to check if the parent node process is still\n  // alive (in milliseconds). If the node process is killed,\n  // Electron will close\n}\n```\n\n#### `daemon.eval(code, [opts], [callback])`\n\nEvaluates the `code` string in the Electron window, and calls   `callback(error, result)`. If `callback` is not provided and the eval causes an error, the daemon will emit an `error` event.\n\nThe `opts` object may contain:\n```js\n{\n  mainProcess: Boolean // default: false\n  // if true, the code will be evaluated in the Electron main process, rather than the Electron window\n}\n```\n\nNote that you may need to stringify the result value with `JSON.stringify()` so it will be sent properly across processes.\n\nIf `daemon.eval()` is called before the daemon has emitted its `ready` event, the code will be put in a queue and evaluated once the daemon is ready.\n\n#### `daemon.close()`\n\nCloses the Electron process and releases its resources.\n\nNote that the Electron process will automatically terminate when the node process exits, so this may not be necessary.\n\n#### `window.send(event, message)`\n\nThis method is implemented inside the Electron window, so it may be called from code evaluated by the daemon. It sends a message to the node process, which causes an event named `event` to be emitted on the `daemon` object.\n\nThis is useful when you need the browser window to send async messages to the node process.\n\n**Example:**\n```js\ndaemon.on('test', function (arg) {\n  console.log('got message: ' + arg)\n})\ndaemon.eval('window.send(\"test\", 123)')\n\n// the node process will print \"got message: 123\"\n```\n### Properties\n\n#### `daemon.child`\n\nA handle to the Electron daemon's process (of type [child_process.ChildProcess](https://nodejs.org/api/child_process.html#child_process_class_childprocess)).\n\n### Events\n\n#### - `ready`\nEmitted by `daemon` when the Electron window has been set up and is ready to eval code.\n#### - `error`\nEmitted by `daemon` when `daemon.eval()` evaluates code that throws an error, but no callback is provided.\n\n### Environment Variables\n\n#### `HEADLESS`\nSetting this variable to true also allows the module to go into headless mode.\n\n## Related\n\n[electron-spawn](https://github.com/maxogden/electron-spawn)\n"
+  ]
 }

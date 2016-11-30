@@ -153,6 +153,5 @@
       "name": "shiftkey",
       "email": "brendan.forster@github.com"
     }
-  ],
-  "readme": "# git-kitchen-sink\n## Incorporate Git into your Electron application\n\nThis is a skunkworks project to make using Git in your Electron application.\n\nTo get started: `npm install git-kitchen-sink --save`\n\nAnd then reference it in your application:\n\n```js\nimport { GitProcess, GitError, IGitResult } from 'git-kitchen-sink'\n\nconst pathToRepository = 'C:/path/to/git/repository/'\n\nconst result = await GitProcess.exec([ 'status' ], pathToRepository)\nif (result.exitCode === 0) {\n  const version = result.stdout\n  // TODO: do some things with version\n} else {\n  const error = result.stderr\n  // TODO: error handling\n}\n```\n\nCurrent features:\n\n - package Git within your application\n - make it easy to execute Git commands\n - macOS and Window support\n\nPotential Roadmap:\n\n - an API for common Git operations\n - Linux support\n - handle authentication and environment setup\n - ???\n\n\n### Contributing\n\nAfter cloning down this repository, run:\n\n```sh\nnpm install\n```\n\nAnd then you can create the package yourself:\n\n```sh\nnpm pack\n```\n"
+  ]
 }

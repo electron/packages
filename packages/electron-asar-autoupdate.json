@@ -80,6 +80,5 @@
       "name": "chengma",
       "email": "mada502@126.com"
     }
-  ],
-  "readme": "electron asar autoupdate\r\n\r\n\r\nset code in index.html\r\n\r\n```\r\n    updater = require('electron-asar-autoupdate')\r\n    updater.init({\r\n        api: 'http://localhost:3400/update',\r\n        appPath: __dirname + '/'\r\n    })\r\n    window.checkForUpdates = function () {\r\n        EAU.check(function (error) {\r\n            if (error) {\r\n                if (error === 'no_update_available') {\r\n                    return false;\r\n                }\r\n                alert(error);\r\n                return false;\r\n            }\r\n\r\n            var apply = confirm(\"New Update Available.\\nWould you like to update?\");\r\n            if (apply == true) {\r\n\r\n                EAU.download(function (error) {\r\n                    if (error) {\r\n                        alert(error);\r\n                        return false;\r\n                    }\r\n                    alert('App updated successfully! Restart it please.');\r\n                });\r\n\r\n            } else {\r\n                return false;\r\n            }\r\n\r\n        });\r\n    }\r\n\r\n```"
+  ]
 }

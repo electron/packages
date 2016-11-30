@@ -69,6 +69,5 @@
       "name": "sethvincent",
       "email": "sethvincent@gmail.com"
     }
-  ],
-  "readme": "# wzrd-api-client\n\nMake requests to browserify CDN [wzrd.in](https://wzrd.in).\n\n## Usage\n\nbundle a module: \n\n```js\nvar bundle = require('wzrd-api-client/bundle')\n\nbundle('bunny', function (err, res, body) {\n  console.log(body)\n})\n```\n\nbundle specific version:\n\n```js\nvar bundle = require('wzrd-api-client/bundle')\n\nbundle('bunny', { version: '1.0.0' }, function (err, res, body) {\n  console.log(body)\n})\n```\n\nbundle multiple dependencies:\n\n```js\nvar multi = require('wzrd-api-client/multi')\n\nvar body = {\n  options: { debug: true },\n  dependencies: {\n    bunny: 'latest',\n    regl: 'latest',\n    resl: 'latest'\n  }\n}\n\nmulti(body, function (err, res, body) {\n  console.log(body.regl)\n  console.log(body.resl)\n  console.log(body.bunny)\n})\n```\n\ncreate a standalone bundle:\n\n```js\nvar standalone = require('wzrd-api-client/standalone')\n\nstandalone('bunny', function (err, res, body) {\n  console.log(body)\n})\n```\n\ncheck the status of a module\n\n```js\nvar status = require('wzrd-api-client/status')\n\nstatus('bunny', function (err, res, body) {\n  console.log(body)\n})\n```\n\n## License\n[MIT](LICENSE.md)\n"
+  ]
 }

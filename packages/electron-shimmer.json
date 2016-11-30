@@ -73,6 +73,5 @@
       "name": "jwynveen",
       "email": "jonwynveen@gmail.com"
     }
-  ],
-  "readme": "# shimmer\r\nNodejs library to access the Shimmer data from the official C# API\r\n\r\nStill very early / experimental.\r\n\r\n```\r\nvar Shimmer = require('electron-shimmer');\r\n\r\nvar shimmer = new Shimmer({measurementTypes: [\"ACCELEROMETER\", \"GYROSCOPE\", \"QUATERNION\"]});\r\n\r\n//listen for device found event and connect\r\nshimmer.on('found', (devices) => {\r\n  devices.forEach((device) => {\r\n    shimmer.connect(device.id, device.name, device.port);\r\n  });\r\n});\r\n\r\n//listen for connection and start streaming\r\nshimmer.on('connect', (device) => {\r\n  console.log(\"Shimmer connected\");\r\n  shimmer.startStream();\r\n});\r\n\r\n//listen for data\r\nshimmer.on('data', (data) => {\r\n  console.log(data);\r\n});\r\n\r\n//look for devices to connect to\r\nshimmer.detect();\r\n\r\n//close the connection after 5 seconds\r\nsetTimeout(function(){\r\n    shimmer.disconnect();\r\n    console.log(\"Shimmer disconnected\");\r\n}, 5000);\r\n```"
+  ]
 }

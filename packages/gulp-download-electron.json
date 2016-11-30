@@ -57,6 +57,5 @@
       "name": "jmorgan",
       "email": "jmorganca@gmail.com"
     }
-  ],
-  "readme": "# [gulp](http://gulpjs.com)-download-electron\n> Download [electron](http://github.com/atom/electron) binary distribution\n\n**Port from [grunt-download-electron](http://github.com/atom/grunt-download-electron)**\n\n## Installation\n\nInstall gulp plugin package:\n```sh\nnpm install --save-dev gulp-download-electron\n```\n\n## Usage\n\n### Options\n* `version` - **Required** The version of electron you want to download.\n* `outputDir` - **Required** Where to put the downloaded electron.\n* `downloadDir` - Where to find and save cached downloaded electron.\n* `symbols` - Download debugging symbols instead of binaries, default to `false`.\n* `rebuild` - Whether to rebuild native modules after electron is downloaded.\n* `apm` - The path to apm.\n\n### Example\n\ngulpfile.js\n\n```javascript\nvar gulp = require('gulp');\nvar downloadelectron = require('gulp-download-electron');\n\ngulp.task('downloadelectron', function(cb){\n\tdownloadelectron({\n      version: '0.24',\n      outputDir: 'binaries'\n    }, cb);\n});\n\ngulp.task('default', ['downloadelectron']);\n```\n"
+  ]
 }

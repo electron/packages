@@ -186,6 +186,5 @@
       "name": "pierr",
       "email": "pierre.besson7+npm@gmail.com"
     }
-  ],
-  "readme": "# Focus demo application\n\n## Purpose\n\nThis application sets to music FOCUS libraries and components.\n\n![image](https://cloud.githubusercontent.com/assets/5349745/11564024/2604cbca-99d7-11e5-9c9c-406d9cabdbbd.png)\n\n![image](https://cloud.githubusercontent.com/assets/5349745/11563963/ea3a509c-99d6-11e5-8810-acc4b4b67493.png)\n\n## How to install it ?\n\nClone or download project code sources.\n\nInstall package dependencies :\n\n```shell\nnpm i\n```\n\n## How to launch it ?\n\nYou don't have your own server API, you can use our mock API by launching this command:\n```shell\nnode api\n```\n\nThe mock API serve fake datas at this URL : `http://localhost:9999/`.\n\nThe section below explain how to plug your own API.\n\nTo launch webapp server :\n```shell\nnpm start\n```\n\nOpen you browser and access to this URL : `http://localhost:3000/`\n\n## How to plug my own backend API ?\n\nEdit `config.webpack.js` file and replace `API_ROOT` var by root your root API URL in this section :\n\n```javascript\nplugins: [\n    new webpack.HotModuleReplacementPlugin(),\n    new webpack.DefinePlugin({\n        API_ROOT: '\"http://localhost:9999\"'\n    })\n],\n```\n\n## API format\n\nAPI must respect those rules : https://gist.github.com/pierr/86159b709242ea96c71c\n"
+  ]
 }

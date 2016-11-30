@@ -100,6 +100,5 @@
       "name": "imsnif",
       "email": "grimsniffer@gmail.com"
     }
-  ],
-  "readme": "# electron-renderer-view\n[![Build Status](https://travis-ci.org/imsnif/electron-renderer-value.svg?branch=master)](https://travis-ci.org/imsnif/electron-renderer-value)\n[![Coverage Status](https://coveralls.io/repos/github/imsnif/electron-renderer-value/badge.svg?branch=master)](https://coveralls.io/github/imsnif/electron-renderer-value?branch=master)\n[![JavaScript Style Guide](https://img.shields.io/badge/code%20style-standard-brightgreen.svg)](http://standardjs.com/)\n\n\nEasily get a value from an electron renderer instance   \n(eg. some attribute on the window object)\n\n### Usage\n```javascript\nconst { BrowserWindow } = require('electron')\nconst rendererVal = require('electron-renderer-value')\n\n// ...\n\napp.on('ready', () => {\n  const ipcMain = electron.ipcMain\n  const win = new BrowserWindow()  \n  win.loadURL(`file://${__dirname}/someFile.html`)\n  rendererVal(win.webContents, 'window.foo')\n  .then(param => {\n    console.log(param) // value of foo from window object of renderer\n  })\n}\n```\n## Contributions / Issues\nPlease feel free to open an issue or a PR if something's broken, or if you'd like some specific features added.\n\n## License\nMIT\n\n"
+  ]
 }

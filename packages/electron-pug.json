@@ -73,6 +73,5 @@
       "name": "yan-foto",
       "email": "yan.foto@quaintous.com"
     }
-  ],
-  "readme": "# electron pug\nThis module is a simple `file` protocol interceptor for [electron](https://github.com/atom/electron) which compiles all (local) URLs to files with `.pug` extension (e.g `/home/electron-pug/index.pug`) on the fly.\n\n<a href=\"https://github.com/yan-foto/neutron\"><img alt=\"Neutron Compatible\" src=\"https://img.shields.io/badge/neutron-compatible-004455.svg\"></a>\n<a href=\"https://www.npmjs.com/package/electron-pug\"><img alt=\"NPM Version\" src=\"https://img.shields.io/npm/v/electron-pug.svg\"></a>\n![license](https://img.shields.io/npm/l/electron-pug.svg)\n# Installation\n\n```\nnpm install electron-pug\n```\n\n# Usage\nJust initialize this module with desired options for [Pug](https://www.npmjs.com/package/pug) package and your locals:\n\n```js\n'use strict';\n\nconst {app, BrowserWindow} = require('electron');\nconst locals = {/* ...*/};\nconst pug = require('electron-pug')({pretty: true}, locals);\n\n// Standard stuff\n\napp.on('ready', () => {\n  let mainWindow = new BrowserWindow({ width: 800, height: 600 });\n\n  mainWindow.loadUrl(`file://${__dirname}/index.pug`);\n  // the rest...\n});\n```\n\n# Even more!\nIf you want to have least effort when developing electron packages, take a look at [neutron](https://github.com/yan-foto/neutron)!\n"
+  ]
 }

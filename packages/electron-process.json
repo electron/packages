@@ -91,6 +91,5 @@
       "name": "smith-kyle",
       "email": "kyle.r.smiff@gmail.com"
     }
-  ],
-  "readme": "# electron-process\n\nSend blocking operations to a background process. Example application available [here](https://github.com/smith-kyle/electron-background-process-app).\n\n## Installation\n\n```\nnpm install --save electron-process\n```\n\n## Usage\n`electron-process` uses a hidden `BrowserWindow` to do all the blocking operations that your heart desires. Create the background process in the main electron process, register modules you wish to run in the background, then call those functions within the `BrowserWindow`s that you consider the foreground.\n\n### Main\n```javascript\nconst main = require('electron-process').main;\n\napp.on('ready', function() {\n  const backgroundURL = 'file://' + __dirname + '/background.html';\n  const backgroundProcessHandler = main.createBackgroundProcess(backgroundURL, true);\n  mainWindow = new BrowserWindow({width: 1280, height: 600});\n  backgroundProcessHandler.addWindow(mainWindow);\n  mainWindow.loadURL('file://' + __dirname + '/foreground.html');\n});\n```\n### Foreground\n```javascript\nconst foreground = require('electron-process').foreground;\nconst someModule = foreground.getModule(require('./someModule'));\nsomeModule.doStuff()\n  .then((result) => console.log(result));\n```\n\n### Background\n```javascript\nconst background = require('electron-process').background;\nbackground.registerModule(require('./someModule'));\n```\n"
+  ]
 }

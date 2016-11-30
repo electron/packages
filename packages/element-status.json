@@ -56,6 +56,7 @@
     "shasum": "58287dcbf1e063e602adc9bd30e45902d2b03b3d",
     "tarball": "http://registry.npmjs.org/element-status/-/element-status-0.0.8.tgz"
   },
+  "stars": 1,
   "versions": [
     {
       "number": "0.0.1",
@@ -91,7 +92,7 @@
     }
   ],
   "created": "2016-01-31T04:05:42.344Z",
-  "modified": "2016-03-18T04:48:43.143Z",
+  "modified": "2016-11-14T03:28:29.236Z",
   "lastPublisher": {
     "name": "callahanrts",
     "email": "callahanrts@gmail.com"
@@ -101,6 +102,5 @@
       "name": "callahanrts",
       "email": "callahanrts@gmail.com"
     }
-  ],
-  "readme": "# Element\n\nThis is a cross platform status bar built on electron.\n\n## Installation\n\n```bash\n# Install element-status\n[sudo] npm i -g element-status\n\n# Start the status bar\nelement\n```\n\n## Screenshot\n\n<a href=\"https://raw.githubusercontent.com/callahanrts/element/master/screenshot/screenshot.jpg\" target=\"_blank\"><img src=\"./screenshot/screenshot-thumb.jpg\" width=\"100%\"/></a>\n\n## Configuration\n\n```bash\n~/.config/element/\n├── config.yml   # Window and widget configuration\n├── stylesheets/ # Custom styles using .less\n└── widgets/     # Custom widgets for displaying various information\n```\nExample [`config.yaml`](https://github.com/callahanrts/element/tree/master/examples)\n\n`config.yml` should be placed into your element configuration folder.\n\n### Stylesheets\n```\n~/.config/element/stylesheets/\n├── main.less\n└── widget.less\n```\nAll `.less` stylesheets in this directory will be loaded in the status bar alphabetically.\nWidgets are added to the `.bar` div element. To get a view of the markup you can run\n`element dev` to start element with the devTools (chrome console) open.\n\n### Widgets\n```\n~/.config/element/widgets/\n└── date.coffee\n```\n\nAll widgets added to the widgets directory will be available to element. Widget files\nwill not be executed until they are added to the elements array in `config.yml`\n\nTo learn how to create widgets, we'll walk through an example:\n\n```coffeescript\n# date.coffee\n# The Widget parent class is included in all widgets.\nWidget = requireCoffee(\"#{widgets}/widget.coffee\")\n\n# require whatever modules your widget might need.\n#   modules from your home directory can be required with:\n#     module = require(\"#{@homePath}/node_modules/module\")\n#   modules from your `~/.config/element/` directory can be required with:\n#     module = require(\"#{@configPath}/node_modules/module\")\n$ = require(\"jquery\")\nstrftime = require('strftime')\n\nmodule.exports =\nclass BarDate extends Widget\n\n  # required\n  constructor: ->\n    # The string passed to super must match the name of your widget in the\n    # config.yml. This will make your widget's config available in @config.\n    # The window configuration from config.yml will be available in @window\n    super(\"date\")\n\n  # This method will be called once immediately, and once after every\n  # @config.refresh milliseconds\n  update: =>\n    super(\"date\")\n    $(\".date\").html @date()\n\n  # required\n  # This is the markup for your widget. The constructor will ensure that this\n  # element gets appended to the .bar element\n  element: =>\n    \"\"\"\n    <div class=\"date\" style=\"#{@style()}\"></div>\n    \"\"\"\n\n  # In this example, style is a css string that will be loaded as an inline\n  # style for the .date element.\n  style: =>\n    \"\"\"\n    height: #{@window.size.height}px !important;\n    line-height: #{@window.size.height}px !important;\n    \"\"\"\n\n  # Method for retrieving/formatting the date.\n  date: ->\n    strftime(@config.format, new Date())\n```\n"
+  ]
 }

@@ -87,6 +87,5 @@
       "name": "airtoxin",
       "email": "airtoxin@icloud.com"
     }
-  ],
-  "readme": "# elekiter [![Build Status](https://travis-ci.org/airtoxin/elekiter.svg)](https://travis-ci.org/airtoxin/elekiter) [![npm version](https://badge.fury.io/js/elekiter.svg)](http://badge.fury.io/js/elekiter)\nexpress like electron ipc wrapper library\n\n## Install\n\n`$ npm install elekiter`\n\n## Usage\n\nIn __browser process__ (Main Process)\n\n```js\nvar Elekiter = require('elekiter');\nvar elekiter = new Elekiter();\n\n// regist middleware\nelekiter.use(function (req, res, next) {\n    req.param = req.params[0];\n    next();\n});\n// routing\nelekiter.get('/', function (req, res) {\n    var message = 'Hi! ' + req.param; // req.param was set by middleware\n    var life = req.params[1];\n\n    if (life === 'human') return res.ok(message);\n    if (life === 'alien') return res.ng('can not communicate');\n    res.ng('unknown life');\n});\n```\n\nIn __renderer process__\n\n```js\nvar Elekiter = require('elekiter');\nvar elekiter = new Elekiter();\n\nelekiter.request('/', 'John', 'human').then(function (message) {\n    console.log('@message:', message);\n}).catch(function (error) {\n    console.log('@error:', error);\n});\n```\n"
+  ]
 }
