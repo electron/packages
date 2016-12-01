@@ -3,9 +3,10 @@ const path = require('path')
 const {compact, flatten} = require('lodash')
 const packages = require('..')
 const tally = require('count-array-values')
+const gravatarUrl = require('gravatar-url')
 const npmUser = require('npm-user')
 const RateLimiter = require('limiter').RateLimiter
-const limiter = new RateLimiter(1, 'second')
+const limiter = new RateLimiter(2, 'second')
 
 var handles = packages
   .filter(pkg => Array.isArray(pkg.owners))
@@ -22,6 +23,7 @@ prolificUsers.forEach(handle => {
     console.log(handle)
     npmUser(handle)
       .then(profile => {
+        profile.gravatar = gravatarUrl(profile.email, {size: 200})
         fs.writeFileSync(
           path.join(__dirname, `../authors/${handle}.json`),
           JSON.stringify(profile, null, 2)
