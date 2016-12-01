@@ -23,7 +23,10 @@ prolificUsers.forEach(handle => {
     console.log(handle)
     npmUser(handle)
       .then(profile => {
-        profile.gravatar = gravatarUrl(profile.email, {size: 200})
+        profile.gravatar = gravatarUrl(profile.email, {
+          size: 200,
+          default: 'https://cldup.com/FIjisumbxl.png'
+        })
         fs.writeFileSync(
           path.join(__dirname, `../authors/${handle}.json`),
           JSON.stringify(profile, null, 2)
