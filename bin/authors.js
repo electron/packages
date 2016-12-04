@@ -15,7 +15,7 @@ var handles = packages
 handles = compact(flatten(handles))
 
 const prolificUsers = tally(handles, 'handle', 'packages')
-  .filter(user => user.packages > 2)
+  .filter(user => user.packages > 1)
   .map(user => user.handle)
 
 prolificUsers.forEach(handle => {
