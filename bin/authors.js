@@ -1,3 +1,5 @@
+require('make-promises-safe')
+
 const fs = require('fs')
 const path = require('path')
 const {compact, flatten} = require('lodash')
@@ -33,7 +35,11 @@ prolificUsers.forEach(handle => {
         )
       })
       .catch(err => {
-        throw err
+        if (err.statusCode === 404) {
+          console.error(handle, 'not found')
+        } else {
+          console.error(err) 
+        }
       })
   })
 })
