@@ -1,0 +1,110 @@
+{
+  "main": "index.js",
+  "scripts": {
+    "start": "electron index.js",
+    "build": "cross-env NODE_ENV=production webpack -p",
+    "watch": "cross-env NODE_ENV=development webpack -d --watch",
+    "ipfs": "cross-env NODE_ENV=production npm run build && cross-env NODE_ENV=production node scripts/publish-to-ipfs.js",
+    "ipfs-dev": "cross-env NODE_ENV=development webpack -d && cross-env NODE_ENV=development node scripts/publish-to-ipfs.js",
+    "pack": "build --dir",
+    "dist": "build"
+  },
+  "bin": {
+    "the-index": "./bin/the-index"
+  },
+  "dependencies": {
+    "babel-core": "^6.17.0",
+    "babel-loader": "^6.2.5",
+    "babel-polyfill": "^6.13.0",
+    "babel-preset-es2015": "^6.13.2",
+    "babel-preset-react": "^6.11.1",
+    "browserify-zlib-next": "^1.0.1",
+    "cross-env": "^3.1.4",
+    "electron": "^1.6.5",
+    "inquirer": "^3.0.1",
+    "ipfs-api": "^14.0.0",
+    "is-ipfs": "^0.2.1",
+    "json-loader": "^0.5.4",
+    "orbit-db": "^0.17.3",
+    "orbit-db-docstore": "^0.2.0",
+    "react": "^15.3.1",
+    "react-dom": "^15.3.1",
+    "react-redux": "^4.4.5",
+    "react-router": "^2.7.0",
+    "redux": "^3.6.0",
+    "redux-thunk": "^2.1.0",
+    "webpack": "^2.4.1",
+    "yargs": "^7.1.0"
+  },
+  "xo": {
+    "rules": {
+      "linebreak-style": [
+        "off"
+      ]
+    },
+    "extends": "xo-react",
+    "envs": [
+      "browser",
+      "node"
+    ]
+  },
+  "devDependencies": {
+    "electron-builder": "^17.0.1",
+    "eslint-config-xo-react": "^0.10.0",
+    "eslint-plugin-react": "^6.9.0",
+    "xo": "^0.17.1"
+  },
+  "name": "the-index",
+  "description": "The Index acts as a directory for files added to IPFS.",
+  "version": "0.5.1",
+  "keywords": [
+    "ipfs"
+  ],
+  "author": {
+    "name": "Alec Lownes"
+  },
+  "license": "ISC",
+  "repository": {
+    "user": "cakenggt",
+    "repo": "the-index",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/cakenggt/the-index/tarball/master",
+    "clone_url": "https://github.com/cakenggt/the-index",
+    "https_url": "https://github.com/cakenggt/the-index",
+    "travis_url": "https://travis-ci.org/cakenggt/the-index",
+    "zip_url": "https://github.com/cakenggt/the-index/archive/master.zip",
+    "api_url": "https://api.github.com/repos/cakenggt/the-index"
+  },
+  "homepage": "https://github.com/cakenggt/the-index#readme",
+  "gitHead": "2f3de38279881ca1dca82a8a8dc2f703c25bbf8d",
+  "_npmVersion": "3.10.10",
+  "_nodeVersion": "6.10.0",
+  "dist": {
+    "shasum": "9dad0a83d3ebe493c1388cfae069f7f8d83e2587",
+    "tarball": "https://registry.npmjs.org/the-index/-/the-index-0.5.1.tgz"
+  },
+  "versions": [
+    {
+      "number": "0.5.0",
+      "date": "2017-04-19T19:58:38.519Z"
+    },
+    {
+      "number": "0.5.1",
+      "date": "2017-04-19T22:15:49.583Z"
+    }
+  ],
+  "created": "2017-04-19T19:58:38.519Z",
+  "modified": "2017-04-19T22:15:49.583Z",
+  "lastPublisher": {
+    "name": "cakenggt",
+    "email": "alec.lownes@gmail.com"
+  },
+  "owners": [
+    {
+      "name": "cakenggt",
+      "email": "alec.lownes@gmail.com"
+    }
+  ]
+}

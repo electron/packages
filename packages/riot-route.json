@@ -1,19 +1,23 @@
 {
   "name": "riot-route",
-  "version": "3.0.1",
+  "version": "3.1.2",
   "description": "Simple isomorphic router",
-  "main": "dist/cjs.route.js",
+  "main": "index.js",
   "jsnext:main": "lib/index.js",
+  "module": "lib/index.js",
+  "modules.root": "lib",
   "scripts": {
     "pretest": "npm run build",
     "test": "npm run eslint && npm run karma && npm run mocha",
     "prepublish": "npm run build",
-    "build": "npm run rollup && npm run uglify && npm run uglify-amd",
+    "build": "npm run rollup && npm run uglify && npm run uglify-amd && npm run uglify-tag && npm run uglify-tag-amd",
     "rollup": "node rollup.js",
     "uglify": "uglifyjs dist/route.js --comments --mangle -o dist/route.min.js",
     "uglify-amd": "uglifyjs dist/amd.route.js --comments --mangle -o dist/amd.route.min.js",
+    "uglify-tag": "uglifyjs dist/route+tag.js --comments --mangle -o dist/route+tag.min.js",
+    "uglify-tag-amd": "uglifyjs dist/amd.route+tag.js --comments --mangle -o dist/amd.route+tag.min.js",
     "watch": "chokidar lib/* lib/**/* -c 'npm run build'",
-    "eslint": "eslint lib test/specs",
+    "eslint": "eslint src test/specs",
     "karma": "karma start test/karma.conf.js",
     "karma-bs": "BROWSERSTACK=1 karma start test/karma.conf.js",
     "mocha": "mocha test/specs/server.specs.js",
@@ -41,34 +45,40 @@
   },
   "devDependencies": {
     "chokidar-cli": "^1.2.0",
-    "coveralls": "^2.11.15",
-    "electron-prebuilt": "^1.3.9",
-    "eslint": "^3.10.2",
+    "coveralls": "^2.13.1",
+    "electron": "^1.6.11",
+    "eslint": "^4.1.1",
+    "eslint-config-riot": "^1.0.0",
     "expect.js": "^0.3.1",
-    "karma": "^1.3.0",
-    "karma-browserstack-launcher": "^1.1.1",
+    "karma": "^1.7.0",
+    "karma-browserstack-launcher": "^1.3.0",
     "karma-coverage": "^1.1.1",
-    "karma-electron": "^5.1.1",
+    "karma-electron": "^5.2.1",
     "karma-mocha": "^1.3.0",
-    "karma-mocha-reporter": "^2.2.1",
-    "mocha": "^3.1.2",
-    "rollup": "^0.36.3",
-    "rollup-plugin-buble": "^0.14.0",
-    "rollup-plugin-node-resolve": "^2.0.0",
-    "uglify-js": "^2.7.4"
+    "karma-mocha-reporter": "^2.2.3",
+    "karma-riot": "^2.0.0",
+    "mocha": "^3.4.2",
+    "riot": "^3.6.1",
+    "rollup": "^0.43.0",
+    "rollup-plugin-alias": "^1.3.1",
+    "rollup-plugin-buble": "^0.15.0",
+    "rollup-plugin-riot": "^1.1.0",
+    "uglify-js": "^3.0.23"
   },
   "author": {
     "name": "Muut, Inc. and other contributors"
   },
   "license": "MIT",
   "homepage": "https://github.com/riot/route#readme",
-  "gitHead": "331f56c709b04c7b7295bb3432e003423dc22d62",
-  "_npmVersion": "4.0.2",
-  "_nodeVersion": "7.2.0",
+  "gitHead": "61486d86e255d40b5c8668d5099de543034b6d32",
+  "_npmVersion": "5.0.4",
+  "_nodeVersion": "7.4.0",
   "dist": {
-    "shasum": "55df22ab78a595acd9d5c748666af2b9f0b95f6e",
-    "tarball": "http://registry.npmjs.org/riot-route/-/riot-route-3.0.1.tgz"
+    "integrity": "sha512-xwxfRnwuyTVbCFnkalKI3I9dzne6lBDaUtsUIxY2gW5IMy0za4ZgShFJW4WQyAyJP/gumF1jE/snjwBFvFR/yQ==",
+    "shasum": "07ceeb3ba13e94c10c64ddcc327c385f0ef8f544",
+    "tarball": "https://registry.npmjs.org/riot-route/-/riot-route-3.1.2.tgz"
   },
+  "stars": 2,
   "versions": [
     {
       "number": "2.0.0-beta",
@@ -149,26 +159,38 @@
     {
       "number": "3.0.1",
       "date": "2016-11-29T16:35:17.070Z"
+    },
+    {
+      "number": "3.0.2",
+      "date": "2016-12-03T08:07:28.395Z"
+    },
+    {
+      "number": "3.1.0",
+      "date": "2017-01-29T14:10:19.673Z"
+    },
+    {
+      "number": "3.1.1",
+      "date": "2017-03-15T09:31:07.484Z"
+    },
+    {
+      "number": "3.1.2",
+      "date": "2017-07-12T18:56:44.626Z"
     }
   ],
   "created": "2015-08-19T13:31:40.765Z",
-  "modified": "2016-11-29T16:35:17.070Z",
+  "modified": "2017-07-12T18:56:44.626Z",
   "lastPublisher": {
-    "name": "cognitom",
-    "email": "kawamura@cognitom.com"
+    "name": "gianlucaguarini",
+    "email": "gianluca.guarini@gmail.com"
   },
   "owners": [
     {
-      "name": "cognitom",
-      "email": "kawamura@cognitom.com"
+      "email": "gianluca.guarini@gmail.com",
+      "name": "gianlucaguarini"
     },
     {
-      "name": "tipiirai",
-      "email": "tero@muut.com"
-    },
-    {
-      "name": "gianlucaguarini",
-      "email": "gianluca.guarini@gmail.com"
+      "email": "kawamura@cognitom.com",
+      "name": "cognitom"
     }
   ]
 }

@@ -1,26 +1,28 @@
 {
   "name": "electron-npm-packages",
-  "version": "2.0.3",
+  "version": "2.5.1",
   "description": "A collection of all npm packages that mention `electron` in their package.json",
   "main": "index.json",
   "scripts": {
-    "build": "mkdir -p packages && touch packages/___.json && rm packages/* && node bin/build.js && npm run reports",
+    "build": "npm-run-all build:*",
+    "build:collect": "mkdir -p packages && touch packages/___.json && rm packages/* && node bin/collect.js",
     "build:downloads": "node bin/downloads.js",
+    "build:authors": "node bin/authors.js",
     "build:compile": "node bin/compile.js > index.json",
     "test": "node test.js | tap-spec && standard"
   },
   "repository": {
-    "user": "zeke",
+    "user": "electron",
     "repo": "electron-npm-packages",
     "host": "github.com",
     "branch": "master",
     "apiHost": "api.github.com",
-    "tarball_url": "https://api.github.com/repos/zeke/electron-npm-packages/tarball/master",
-    "clone_url": "https://github.com/zeke/electron-npm-packages",
-    "https_url": "https://github.com/zeke/electron-npm-packages",
-    "travis_url": "https://travis-ci.org/zeke/electron-npm-packages",
-    "zip_url": "https://github.com/zeke/electron-npm-packages/archive/master.zip",
-    "api_url": "https://api.github.com/repos/zeke/electron-npm-packages"
+    "tarball_url": "https://api.github.com/repos/electron/electron-npm-packages/tarball/master",
+    "clone_url": "https://github.com/electron/electron-npm-packages",
+    "https_url": "https://github.com/electron/electron-npm-packages",
+    "travis_url": "https://travis-ci.org/electron/electron-npm-packages",
+    "zip_url": "https://github.com/electron/electron-npm-packages/archive/master.zip",
+    "api_url": "https://api.github.com/repos/electron/electron-npm-packages"
   },
   "keywords": [
     "electron",
@@ -38,16 +40,17 @@
     "url": "http://zeke.sikelianos.com"
   },
   "license": "MIT",
-  "homepage": "https://github.com/zeke/electron-npm-packages#readme",
   "devDependencies": {
     "clean-deep": "^2.0.1",
+    "count-array-values": "^1.2.1",
     "dependent-packages": "^2.0.0",
     "got": "^6.3.0",
+    "gravatar-url": "^1.1.0",
     "limiter": "^1.1.0",
-    "lodash.find": "^4.4.0",
-    "lodash.sortby": "^4.5.0",
+    "lodash": "^4.17.2",
     "nice-package": "^1.0.5",
     "npm-run-all": "^3.1.1",
+    "npm-user": "^2.1.0",
     "object-values": "^1.0.0",
     "package-stream": "^1.0.0",
     "path-exists": "^3.0.0",
@@ -57,12 +60,13 @@
     "tap-spec": "^4.1.1",
     "tape": "^4.6.2"
   },
-  "gitHead": "427d3da0ec6c202c5ff65364e670c0908c31f0a0",
+  "gitHead": "6d58bbac6afb06d5f097485eb59c678e91fad8e0",
+  "homepage": "https://github.com/electron/electron-npm-packages#readme",
   "_npmVersion": "3.10.8",
   "_nodeVersion": "7.0.0",
   "dist": {
-    "shasum": "364fc000c8ccb12033c99ca4e7a6b2dc16c3a71d",
-    "tarball": "http://registry.npmjs.org/electron-npm-packages/-/electron-npm-packages-2.0.3.tgz"
+    "shasum": "e4ab55ed533e3cd66d5a9d535fe6c4e3a8ca510a",
+    "tarball": "http://registry.npmjs.org/electron-npm-packages/-/electron-npm-packages-2.5.1.tgz"
   },
   "versions": [
     {
@@ -104,10 +108,34 @@
     {
       "number": "2.0.3",
       "date": "2016-11-29T21:09:59.762Z"
+    },
+    {
+      "number": "2.1.0",
+      "date": "2016-11-30T20:30:57.905Z"
+    },
+    {
+      "number": "2.2.0",
+      "date": "2016-12-01T05:56:10.664Z"
+    },
+    {
+      "number": "2.3.0",
+      "date": "2016-12-01T06:46:28.142Z"
+    },
+    {
+      "number": "2.4.0",
+      "date": "2016-12-01T21:43:29.228Z"
+    },
+    {
+      "number": "2.5.0",
+      "date": "2016-12-04T12:57:13.632Z"
+    },
+    {
+      "number": "2.5.1",
+      "date": "2016-12-04T21:48:10.125Z"
     }
   ],
   "created": "2016-06-24T04:41:09.163Z",
-  "modified": "2016-11-29T21:09:59.762Z",
+  "modified": "2016-12-04T21:48:10.125Z",
   "lastPublisher": {
     "name": "zeke",
     "email": "zeke@sikelianos.com"

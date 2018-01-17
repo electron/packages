@@ -1,15 +1,14 @@
 {
   "name": "electron-download-tf",
-  "version": "3.1.0",
+  "version": "4.3.4",
   "description": "download electron prebuilt binary zips from github releases",
-  "main": "build/index.js",
+  "main": "lib/index.js",
   "bin": {
-    "electron-download": "build/cli.js"
+    "electron-download": "lib/cli.js"
   },
   "scripts": {
-    "prepublish": "babel --out-dir build lib",
     "lint": "eslint lib test",
-    "unit-tests": "tape -r babel-register test/*.js",
+    "unit-tests": "tape test/*.js",
     "test": "npm run unit-tests && npm run lint"
   },
   "repository": {
@@ -31,24 +30,25 @@
   "license": "BSD-3-Clause",
   "homepage": "https://github.com/electron-userland/electron-download#readme",
   "dependencies": {
-    "debug": "^2.3.2",
-    "fs-extra": "^1.0.0",
+    "debug": "^3.0.0",
+    "env-paths": "^1.0.0",
+    "fs-extra": "^4.0.1",
     "minimist": "^1.2.0",
     "nugget": "^2.0.1",
     "path-exists": "^3.0.0",
-    "rc": "^1.1.6",
-    "semver": "^5.3.0",
-    "sumchecker": "^1.2.0"
+    "rc": "^1.2.1",
+    "semver": "^5.4.1",
+    "sumchecker": "^2.0.2"
   },
   "devDependencies": {
-    "babel-cli": "^6.18.0",
-    "babel-preset-es2015-node4": "^2.1.0",
-    "babel-register": "^6.18.0",
-    "eslint": "^3.10.2",
-    "eslint-config-standard": "^6.2.1",
-    "eslint-plugin-promise": "^3.4.0",
-    "eslint-plugin-standard": "^2.0.1",
-    "tape": "^4.6.2"
+    "eslint": "^4.5.0",
+    "eslint-config-standard": "^10.2.1",
+    "eslint-plugin-import": "^2.7.0",
+    "eslint-plugin-node": "^5.1.1",
+    "eslint-plugin-promise": "^3.5.0",
+    "eslint-plugin-standard": "^3.0.1",
+    "tape": "^4.8.0",
+    "temp": "^0.8.3"
   },
   "eslintConfig": {
     "extends": "standard",
@@ -61,30 +61,62 @@
       ]
     }
   },
-  "babel": {
-    "presets": [
-      "es2015-node4"
-    ]
-  },
   "keywords": [],
   "engines": {
     "node": ">= 4.0"
   },
-  "gitHead": "54ee3385643c86c79fa1920961a3303e3e33cb71",
-  "_npmVersion": "4.0.2",
-  "_nodeVersion": "7.1.0",
+  "gitHead": "b30bce6e5141250770b9b64bd3cf8212a1d5db6d",
+  "_npmVersion": "5.3.0",
+  "_nodeVersion": "8.4.0",
   "dist": {
-    "shasum": "c6d62c0e0a4c63b67295f57b6b66514c13b8ed8d",
-    "tarball": "http://registry.npmjs.org/electron-download-tf/-/electron-download-tf-3.1.0.tgz"
+    "integrity": "sha512-SQYDGMLpTgty1bx3NycuDb7dNPzktVSdK2sqPZjyRocauq/uN/V4S2lcpFVLupaHhKlD8zozm9fTpm5UdohvTg==",
+    "shasum": "b03740b2885aa2ad3f8784fae74df427f66d5165",
+    "tarball": "https://registry.npmjs.org/electron-download-tf/-/electron-download-tf-4.3.4.tgz"
   },
   "versions": [
     {
       "number": "3.1.0",
       "date": "2016-11-18T08:11:48.718Z"
+    },
+    {
+      "number": "3.2.0",
+      "date": "2017-02-02T09:55:04.163Z"
+    },
+    {
+      "number": "4.0.0",
+      "date": "2017-02-24T16:15:02.600Z"
+    },
+    {
+      "number": "4.1.0",
+      "date": "2017-03-22T08:47:40.869Z"
+    },
+    {
+      "number": "4.1.1",
+      "date": "2017-03-22T08:52:16.653Z"
+    },
+    {
+      "number": "4.2.1",
+      "date": "2017-04-12T06:34:38.388Z"
+    },
+    {
+      "number": "4.3.0",
+      "date": "2017-05-07T08:58:01.805Z"
+    },
+    {
+      "number": "4.3.1",
+      "date": "2017-05-07T09:13:14.679Z"
+    },
+    {
+      "number": "4.3.2",
+      "date": "2017-08-24T09:39:16.005Z"
+    },
+    {
+      "number": "4.3.4",
+      "date": "2017-08-24T09:56:11.791Z"
     }
   ],
   "created": "2016-11-18T08:11:48.718Z",
-  "modified": "2016-11-18T08:11:48.718Z",
+  "modified": "2017-08-24T09:56:11.791Z",
   "lastPublisher": {
     "name": "develar",
     "email": "develar@gmail.com"

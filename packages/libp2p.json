@@ -1,0 +1,342 @@
+{
+  "name": "libp2p",
+  "version": "0.15.1",
+  "description": "JavaScript base class for libp2p bundles",
+  "main": "src/index.js",
+  "scripts": {
+    "lint": "aegir lint",
+    "build": "aegir build",
+    "test": "aegir test -t node -t browser",
+    "test:node": "aegir test -t node",
+    "test:browser": "aegir test -t browser",
+    "release": "aegir release -t node -t browser",
+    "release-minor": "aegir release --type minor -t node -t browser",
+    "release-major": "aegir release --type major -t node -t browser",
+    "coverage": "aegir coverage",
+    "coverage-publish": "aegir coverage --provider coveralls"
+  },
+  "repository": {
+    "user": "libp2p",
+    "repo": "js-libp2p",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/libp2p/js-libp2p/tarball/master",
+    "clone_url": "https://github.com/libp2p/js-libp2p",
+    "https_url": "https://github.com/libp2p/js-libp2p",
+    "travis_url": "https://travis-ci.org/libp2p/js-libp2p",
+    "zip_url": "https://github.com/libp2p/js-libp2p/archive/master.zip",
+    "api_url": "https://api.github.com/repos/libp2p/js-libp2p"
+  },
+  "keywords": [
+    "IPFS"
+  ],
+  "engines": {
+    "node": ">=6.0.0",
+    "npm": ">=3.0.0"
+  },
+  "pre-commit": [
+    "lint",
+    "test"
+  ],
+  "author": {
+    "name": "David Dias",
+    "email": "daviddias@ipfs.io"
+  },
+  "license": "MIT",
+  "homepage": "https://github.com/libp2p/js-libp2p",
+  "dependencies": {
+    "async": "^2.6.0",
+    "libp2p-ping": "~0.6.0",
+    "libp2p-swarm": "~0.35.0",
+    "mafmt": "^3.0.2",
+    "multiaddr": "^3.0.2",
+    "peer-book": "~0.5.2",
+    "peer-id": "~0.10.4",
+    "peer-info": "~0.11.4"
+  },
+  "devDependencies": {
+    "aegir": "^12.3.0",
+    "chai": "^4.1.2",
+    "cids": "~0.5.2",
+    "dirty-chai": "^2.0.1",
+    "electron-webrtc": "~0.3.0",
+    "libp2p-circuit": "~0.1.4",
+    "libp2p-kad-dht": "~0.6.0",
+    "libp2p-mdns": "~0.9.1",
+    "libp2p-multiplex": "~0.5.1",
+    "libp2p-railing": "~0.7.1",
+    "libp2p-secio": "~0.9.0",
+    "libp2p-spdy": "~0.11.0",
+    "libp2p-tcp": "~0.11.2",
+    "libp2p-webrtc-star": "~0.13.3",
+    "libp2p-websockets": "~0.10.4",
+    "libp2p-websocket-star": "~0.7.2",
+    "libp2p-websocket-star-rendezvous": "~0.2.2",
+    "lodash.times": "^4.3.2",
+    "pre-commit": "^1.2.2",
+    "pull-goodbye": "0.0.2",
+    "pull-serializer": "~0.3.2",
+    "pull-stream": "^3.6.1",
+    "safe-buffer": "^5.1.1",
+    "sinon": "^4.1.5",
+    "wrtc": "0.0.65"
+  },
+  "contributors": [
+    {
+      "name": "Chris Bratlien",
+      "email": "chrisbratlien@gmail.com"
+    },
+    {
+      "name": "Daijiro Wachi",
+      "email": "daijiro.wachi@gmail.com"
+    },
+    {
+      "name": "David Dias",
+      "email": "daviddias.p@gmail.com"
+    },
+    {
+      "name": "Dmitriy Ryajov",
+      "email": "dryajov@gmail.com"
+    },
+    {
+      "name": "Elven",
+      "email": "mon.samuel@qq.com"
+    },
+    {
+      "name": "Friedel Ziegelmayer",
+      "email": "dignifiedquire@gmail.com"
+    },
+    {
+      "name": "Giovanni T. Parra",
+      "email": "fiatjaf@gmail.com"
+    },
+    {
+      "name": "Irakli Gozalishvili",
+      "email": "rfobic@gmail.com"
+    },
+    {
+      "name": "Joel Gustafson",
+      "email": "joelg@mit.edu"
+    },
+    {
+      "name": "John Rees",
+      "email": "johnrees@users.noreply.github.com"
+    },
+    {
+      "name": "Kevin Kwok",
+      "email": "antimatter15@gmail.com"
+    },
+    {
+      "name": "Lars Gierth",
+      "email": "lgierth@users.noreply.github.com"
+    },
+    {
+      "name": "Maciej Krüger",
+      "email": "mkg20001@gmail.com"
+    },
+    {
+      "name": "Nuno Nogueira",
+      "email": "nunofmn@gmail.com"
+    },
+    {
+      "name": "Pedro Teixeira",
+      "email": "i@pgte.me"
+    },
+    {
+      "name": "RasmusErik Voel Jensen",
+      "email": "github@solsort.com"
+    },
+    {
+      "name": "Richard Littauer",
+      "email": "richard.littauer@gmail.com"
+    },
+    {
+      "name": "Ryan Bell",
+      "email": "ryan@piing.net"
+    },
+    {
+      "name": "Tiago Alves",
+      "email": "alvesjtiago@gmail.com"
+    },
+    {
+      "name": "greenkeeperio-bot",
+      "email": "support@greenkeeper.io"
+    },
+    {
+      "name": "mayerwin",
+      "email": "mayerwin@users.noreply.github.com"
+    },
+    {
+      "name": "ᴠɪᴄᴛᴏʀ ʙᴊᴇʟᴋʜᴏʟᴍ",
+      "email": "victorbjelkholm@gmail.com"
+    }
+  ],
+  "gitHead": "4c81f39ebe75946feeadf6920101b61e329fb179",
+  "_npmVersion": "5.6.0",
+  "_nodeVersion": "8.8.0",
+  "dist": {
+    "integrity": "sha512-bsv3KWHIUowX8Sx+Eyxxva8Xp0Pd8MEJF9l7xcDRyYfNDzqjTGOVBSo09t7AbeIL3701wCCWaO/ESfZf/LDQnQ==",
+    "shasum": "e3da0fda5fe6f6b5c5c32fcc6be178dcdbc6d2fc",
+    "tarball": "https://registry.npmjs.org/libp2p/-/libp2p-0.15.1.tgz"
+  },
+  "stars": 2,
+  "versions": [
+    {
+      "number": "0.0.1",
+      "date": "2015-09-20T15:19:25.685Z"
+    },
+    {
+      "number": "0.1.0",
+      "date": "2015-09-26T23:15:16.707Z"
+    },
+    {
+      "number": "0.1.1",
+      "date": "2015-10-28T22:00:40.313Z"
+    },
+    {
+      "number": "0.2.0",
+      "date": "2016-11-27T18:41:27.054Z"
+    },
+    {
+      "number": "0.2.1",
+      "date": "2016-11-27T18:56:45.463Z"
+    },
+    {
+      "number": "0.3.0",
+      "date": "2016-11-28T10:40:46.731Z"
+    },
+    {
+      "number": "0.3.1",
+      "date": "2016-12-01T12:17:42.853Z"
+    },
+    {
+      "number": "0.5.0",
+      "date": "2017-01-28T21:14:37.102Z"
+    },
+    {
+      "number": "0.5.1",
+      "date": "2017-01-28T21:20:32.886Z"
+    },
+    {
+      "number": "0.5.2",
+      "date": "2017-02-09T18:18:45.753Z"
+    },
+    {
+      "number": "0.5.3",
+      "date": "2017-02-11T03:28:51.409Z"
+    },
+    {
+      "number": "0.5.4",
+      "date": "2017-02-11T07:19:39.388Z"
+    },
+    {
+      "number": "0.5.5",
+      "date": "2017-03-21T16:07:04.146Z"
+    },
+    {
+      "number": "0.6.0",
+      "date": "2017-03-27T14:48:57.582Z"
+    },
+    {
+      "number": "0.6.1",
+      "date": "2017-03-27T15:49:04.322Z"
+    },
+    {
+      "number": "0.6.2",
+      "date": "2017-03-28T11:45:06.161Z"
+    },
+    {
+      "number": "0.7.0",
+      "date": "2017-03-29T07:04:12.888Z"
+    },
+    {
+      "number": "0.8.0",
+      "date": "2017-03-31T15:19:38.784Z"
+    },
+    {
+      "number": "0.9.0",
+      "date": "2017-04-06T19:51:36.345Z"
+    },
+    {
+      "number": "0.9.1",
+      "date": "2017-04-16T15:55:05.058Z"
+    },
+    {
+      "number": "0.10.0",
+      "date": "2017-07-07T12:28:12.207Z"
+    },
+    {
+      "number": "0.10.1",
+      "date": "2017-07-10T09:52:57.501Z"
+    },
+    {
+      "number": "0.10.2",
+      "date": "2017-07-21T17:26:29.744Z"
+    },
+    {
+      "number": "0.11.0",
+      "date": "2017-07-22T22:21:25.236Z"
+    },
+    {
+      "number": "0.12.0",
+      "date": "2017-09-03T13:43:54.618Z"
+    },
+    {
+      "number": "0.12.2",
+      "date": "2017-09-07T09:55:14.578Z"
+    },
+    {
+      "number": "0.12.3",
+      "date": "2017-09-07T10:19:25.581Z"
+    },
+    {
+      "number": "0.12.4",
+      "date": "2017-09-07T16:17:57.937Z"
+    },
+    {
+      "number": "0.13.0",
+      "date": "2017-10-26T12:03:16.598Z"
+    },
+    {
+      "number": "0.13.1",
+      "date": "2017-11-12T10:54:02.359Z"
+    },
+    {
+      "number": "0.13.2",
+      "date": "2017-11-27T09:14:07.708Z"
+    },
+    {
+      "number": "0.13.3",
+      "date": "2017-12-01T09:33:14.492Z"
+    },
+    {
+      "number": "0.14.0",
+      "date": "2017-12-14T07:39:55.833Z"
+    },
+    {
+      "number": "0.14.3",
+      "date": "2017-12-15T08:25:27.269Z"
+    },
+    {
+      "number": "0.15.0",
+      "date": "2018-01-07T17:10:28.033Z"
+    },
+    {
+      "number": "0.15.1",
+      "date": "2018-01-16T14:16:43.286Z"
+    }
+  ],
+  "created": "2015-09-20T15:19:25.685Z",
+  "modified": "2018-01-16T14:16:43.286Z",
+  "lastPublisher": {
+    "name": "daviddias",
+    "email": "daviddias.p@gmail.com"
+  },
+  "owners": [
+    {
+      "name": "daviddias",
+      "email": "daviddias.p@gmail.com"
+    }
+  ]
+}

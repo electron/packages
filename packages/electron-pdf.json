@@ -1,15 +1,13 @@
 {
   "name": "electron-pdf",
-  "version": "1.0.0",
+  "version": "1.2.2",
   "description": "A command line tool to generate PDF from URL, HTML or Markdown files",
   "main": "lib/index.js",
   "scripts": {
     "fix": "standard --fix",
     "lint": "standard",
     "unit-test": "ava | tap-diff",
-    "test": "npm run lint && ava | tap-diff",
-    "\\": "This effectively runs jasmine tests as an electron application (but it doesn't work for Ava)",
-    "integration-test": "electron node_modules/.bin/jasmine"
+    "test": "npm run fix && ava **/*-test.js | tap-diff && electron-ava --tap **/*-test-it.js | tap-diff"
   },
   "bin": {
     "electron-pdf": "cli.js"
@@ -43,24 +41,26 @@
   "license": "MIT",
   "homepage": "https://github.com/fraserxu/electron-pdf",
   "devDependencies": {
-    "ava": "^0.16.0",
+    "ava": "^0.18.0",
+    "electron-ava": "^0.3.0",
     "jasmine": "^2.5.2",
     "standard": "^8.4.0",
     "tap-diff": "^0.1.1",
-    "tap-spec": "^4.1.1"
+    "tap-spec": "^4.1.1",
+    "then-fs": "^2.0.0",
+    "validator": "^6.2.0"
   },
   "dependencies": {
     "async": "^2.0.1",
-    "bluebird": "^3.4.6",
     "debug": "^2.3.2",
-    "electron": "^1.4.6",
+    "electron": "1.4.15",
     "eventemitter2": "^2.1.3",
     "github-markdown-css": "^2.0.9",
     "highlight.js": "^9.0.0",
     "lodash": "^4.16.2",
     "marked": "^0.3.5",
     "minimist": "^1.2.0",
-    "object-assign": "^4.0.1",
+    "object-assign": "^4.1.1",
     "uuid": "^2.0.1"
   },
   "ava": {
@@ -69,14 +69,14 @@
     "tap": true,
     "powerAssert": false
   },
-  "gitHead": "75bf7ebf16c9f1143120f01ddb6fcda8ed73e7aa",
-  "_npmVersion": "3.10.3",
+  "gitHead": "f96d3d2e97532f940c1b2a37e5fd84010a0ecdc9",
+  "_npmVersion": "4.5.0",
   "_nodeVersion": "6.7.0",
   "dist": {
-    "shasum": "49fd5ebcf8d08e0ec7d22b652d54ae0f8c764935",
-    "tarball": "http://registry.npmjs.org/electron-pdf/-/electron-pdf-1.0.0.tgz"
+    "shasum": "90201981134d4c530b628f694fda76183f2a8941",
+    "tarball": "https://registry.npmjs.org/electron-pdf/-/electron-pdf-1.2.2.tgz"
   },
-  "stars": 8,
+  "stars": 11,
   "versions": [
     {
       "number": "0.0.1",
@@ -181,10 +181,66 @@
     {
       "number": "1.0.0",
       "date": "2016-11-11T01:42:35.421Z"
+    },
+    {
+      "number": "1.1.0",
+      "date": "2016-12-02T17:13:33.559Z"
+    },
+    {
+      "number": "1.1.1",
+      "date": "2016-12-14T17:25:52.634Z"
+    },
+    {
+      "number": "1.1.2",
+      "date": "2017-01-17T19:13:33.272Z"
+    },
+    {
+      "number": "1.1.3",
+      "date": "2017-01-18T19:57:14.112Z"
+    },
+    {
+      "number": "1.1.4",
+      "date": "2017-01-20T18:08:40.112Z"
+    },
+    {
+      "number": "1.1.5",
+      "date": "2017-02-09T14:10:47.384Z"
+    },
+    {
+      "number": "1.1.6",
+      "date": "2017-02-09T17:42:10.704Z"
+    },
+    {
+      "number": "1.1.7",
+      "date": "2017-02-10T14:31:57.906Z"
+    },
+    {
+      "number": "1.1.8",
+      "date": "2017-02-14T21:26:52.509Z"
+    },
+    {
+      "number": "1.1.9",
+      "date": "2017-02-15T15:51:01.644Z"
+    },
+    {
+      "number": "1.2.0",
+      "date": "2017-02-17T18:51:57.500Z"
+    },
+    {
+      "number": "1.2.1",
+      "date": "2017-04-10T17:28:57.016Z"
+    },
+    {
+      "number": "1.3.0",
+      "date": "2017-04-10T17:33:36.331Z"
+    },
+    {
+      "number": "1.2.2",
+      "date": "2017-09-29T20:40:40.031Z"
     }
   ],
   "created": "2015-08-19T17:15:56.660Z",
-  "modified": "2016-11-30T15:18:48.145Z",
+  "modified": "2017-09-29T20:40:40.031Z",
   "lastPublisher": {
     "name": "codecounselor",
     "email": "codecounselor@gmail.com"

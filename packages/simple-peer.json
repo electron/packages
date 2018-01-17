@@ -1,0 +1,487 @@
+{
+  "name": "simple-peer",
+  "description": "Simple one-to-one WebRTC video/voice and data channels",
+  "version": "8.2.0",
+  "author": {
+    "name": "Feross Aboukhadijeh",
+    "email": "feross@feross.org",
+    "url": "http://feross.org/"
+  },
+  "dependencies": {
+    "debug": "^2.1.0",
+    "get-browser-rtc": "^1.0.0",
+    "inherits": "^2.0.1",
+    "randombytes": "^2.0.3",
+    "readable-stream": "^2.0.5"
+  },
+  "devDependencies": {
+    "browserify": "^14.0.0",
+    "concat-stream": "^1.4.6",
+    "electron-webrtc": "^0.3.0",
+    "prettier-bytes": "^1.0.3",
+    "simple-get": "^2.0.0",
+    "speedometer": "^1.0.0",
+    "standard": "*",
+    "string-to-stream": "^1.0.0",
+    "tape": "^4.0.0",
+    "thunky": "^1.0.1",
+    "uglify-js": "^2.4.15",
+    "wrtc": "0.0.63",
+    "ws": "^2.0.2",
+    "zuul": "^3.8.0"
+  },
+  "keywords": [
+    "data",
+    "data channel",
+    "data channel stream",
+    "data channels",
+    "p2p",
+    "peer",
+    "peer",
+    "peer-to-peer",
+    "stream",
+    "video",
+    "voice",
+    "webrtc",
+    "webrtc stream"
+  ],
+  "license": "MIT",
+  "main": "index.js",
+  "repository": {
+    "user": "feross",
+    "repo": "simple-peer",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/feross/simple-peer/tarball/master",
+    "clone_url": "https://github.com/feross/simple-peer",
+    "https_url": "https://github.com/feross/simple-peer",
+    "travis_url": "https://travis-ci.org/feross/simple-peer",
+    "zip_url": "https://github.com/feross/simple-peer/archive/master.zip",
+    "api_url": "https://api.github.com/repos/feross/simple-peer"
+  },
+  "scripts": {
+    "build": "browserify -s SimplePeer -r ./ | uglifyjs -m > simplepeer.min.js",
+    "test": "standard && npm run test-node && npm run test-browser",
+    "test-browser": "zuul -- test/*.js",
+    "test-browser-local": "zuul --local -- test/*.js",
+    "test-node": "npm run test-node-electron-webrtc && npm run test-node-wrtc",
+    "test-node-electron-webrtc": "WRTC=electron-webrtc tape test/*.js",
+    "test-node-wrtc": "WRTC=wrtc tape test/*.js"
+  },
+  "testling": {
+    "files": "test/*.js"
+  },
+  "gitHead": "d68778c797f3a1d460964620b94cb12c4ffc3012",
+  "homepage": "https://github.com/feross/simple-peer#readme",
+  "_npmVersion": "5.5.1",
+  "_nodeVersion": "8.9.0",
+  "dist": {
+    "integrity": "sha512-m3K7TJC7SjdzVB3KvvrcFkWfQknHYNF9d88aracdea/Jn/lreYQ6kGdD6+Rcjpq8w1Ai7dssd3XIYYWZ+Nt0qg==",
+    "shasum": "9cd002b33204e2791ea84e11bc75687d846cf604",
+    "tarball": "https://registry.npmjs.org/simple-peer/-/simple-peer-8.2.0.tgz"
+  },
+  "stars": 28,
+  "versions": [
+    {
+      "number": "1.0.0",
+      "date": "2014-06-26T18:46:28.178Z"
+    },
+    {
+      "number": "1.1.0",
+      "date": "2014-07-02T02:49:18.734Z"
+    },
+    {
+      "number": "1.2.0",
+      "date": "2014-07-10T05:40:21.303Z"
+    },
+    {
+      "number": "2.0.0",
+      "date": "2014-08-03T00:32:12.743Z"
+    },
+    {
+      "number": "3.0.0",
+      "date": "2014-08-03T02:58:22.916Z"
+    },
+    {
+      "number": "3.1.0",
+      "date": "2014-08-03T04:43:30.975Z"
+    },
+    {
+      "number": "3.2.0",
+      "date": "2014-08-03T05:14:37.709Z"
+    },
+    {
+      "number": "3.2.1",
+      "date": "2014-08-06T07:19:42.430Z"
+    },
+    {
+      "number": "3.3.0",
+      "date": "2014-08-07T04:16:25.556Z"
+    },
+    {
+      "number": "3.3.1",
+      "date": "2014-08-07T05:14:52.923Z"
+    },
+    {
+      "number": "3.4.0",
+      "date": "2014-08-07T05:40:11.205Z"
+    },
+    {
+      "number": "3.4.1",
+      "date": "2014-08-07T10:05:41.601Z"
+    },
+    {
+      "number": "3.4.2",
+      "date": "2014-08-10T01:31:46.599Z"
+    },
+    {
+      "number": "3.5.0",
+      "date": "2014-08-10T07:46:57.985Z"
+    },
+    {
+      "number": "3.5.1",
+      "date": "2014-08-10T12:17:00.474Z"
+    },
+    {
+      "number": "3.6.0",
+      "date": "2014-08-11T05:53:38.971Z"
+    },
+    {
+      "number": "3.6.1",
+      "date": "2014-09-15T15:23:16.621Z"
+    },
+    {
+      "number": "3.6.2",
+      "date": "2014-09-17T02:44:07.731Z"
+    },
+    {
+      "number": "3.6.3",
+      "date": "2014-10-06T09:32:38.632Z"
+    },
+    {
+      "number": "3.6.4",
+      "date": "2014-10-25T23:33:00.601Z"
+    },
+    {
+      "number": "3.6.5",
+      "date": "2014-11-21T08:07:44.140Z"
+    },
+    {
+      "number": "3.6.6",
+      "date": "2014-11-27T15:30:11.334Z"
+    },
+    {
+      "number": "3.6.7",
+      "date": "2014-12-22T10:29:59.809Z"
+    },
+    {
+      "number": "3.6.8",
+      "date": "2015-01-04T01:15:27.728Z"
+    },
+    {
+      "number": "3.6.9",
+      "date": "2015-01-04T09:03:30.547Z"
+    },
+    {
+      "number": "4.0.0",
+      "date": "2015-01-15T09:08:07.572Z"
+    },
+    {
+      "number": "4.0.1",
+      "date": "2015-01-31T23:44:03.991Z"
+    },
+    {
+      "number": "4.0.2",
+      "date": "2015-03-06T22:21:49.894Z"
+    },
+    {
+      "number": "4.0.3",
+      "date": "2015-03-18T23:12:42.824Z"
+    },
+    {
+      "number": "4.0.4",
+      "date": "2015-03-19T01:11:36.413Z"
+    },
+    {
+      "number": "4.1.0",
+      "date": "2015-04-01T23:03:01.055Z"
+    },
+    {
+      "number": "4.2.0",
+      "date": "2015-04-06T00:20:39.661Z"
+    },
+    {
+      "number": "4.2.1",
+      "date": "2015-04-10T22:50:50.015Z"
+    },
+    {
+      "number": "4.2.2",
+      "date": "2015-04-10T23:41:09.135Z"
+    },
+    {
+      "number": "4.2.3",
+      "date": "2015-04-17T17:57:47.313Z"
+    },
+    {
+      "number": "5.0.0",
+      "date": "2015-04-20T02:00:44.159Z"
+    },
+    {
+      "number": "5.1.0",
+      "date": "2015-04-24T04:16:04.018Z"
+    },
+    {
+      "number": "5.1.1",
+      "date": "2015-05-03T20:36:20.717Z"
+    },
+    {
+      "number": "5.2.0",
+      "date": "2015-05-04T21:33:25.499Z"
+    },
+    {
+      "number": "5.3.0",
+      "date": "2015-05-05T03:46:46.510Z"
+    },
+    {
+      "number": "5.3.1",
+      "date": "2015-05-05T04:00:47.945Z"
+    },
+    {
+      "number": "5.4.0",
+      "date": "2015-05-06T05:31:13.262Z"
+    },
+    {
+      "number": "5.4.1",
+      "date": "2015-05-06T05:44:46.884Z"
+    },
+    {
+      "number": "5.4.3",
+      "date": "2015-05-06T06:31:02.248Z"
+    },
+    {
+      "number": "5.5.0",
+      "date": "2015-05-13T02:20:35.145Z"
+    },
+    {
+      "number": "5.6.0",
+      "date": "2015-05-15T21:46:09.312Z"
+    },
+    {
+      "number": "5.7.0",
+      "date": "2015-05-18T02:28:54.197Z"
+    },
+    {
+      "number": "5.8.0",
+      "date": "2015-05-18T23:30:11.200Z"
+    },
+    {
+      "number": "5.8.1",
+      "date": "2015-05-19T11:46:23.105Z"
+    },
+    {
+      "number": "5.9.0",
+      "date": "2015-05-20T20:47:30.750Z"
+    },
+    {
+      "number": "5.9.1",
+      "date": "2015-05-28T01:08:20.290Z"
+    },
+    {
+      "number": "5.10.0",
+      "date": "2015-06-01T17:17:27.405Z"
+    },
+    {
+      "number": "5.11.0",
+      "date": "2015-06-01T17:21:30.441Z"
+    },
+    {
+      "number": "5.11.1",
+      "date": "2015-06-12T20:46:56.274Z"
+    },
+    {
+      "number": "5.11.2",
+      "date": "2015-06-16T07:22:59.436Z"
+    },
+    {
+      "number": "5.11.3",
+      "date": "2015-07-01T22:52:27.131Z"
+    },
+    {
+      "number": "5.11.4",
+      "date": "2015-07-10T20:16:20.711Z"
+    },
+    {
+      "number": "5.11.5",
+      "date": "2015-08-06T13:33:28.970Z"
+    },
+    {
+      "number": "5.11.6",
+      "date": "2015-12-03T02:02:29.889Z"
+    },
+    {
+      "number": "5.11.7",
+      "date": "2016-01-10T00:18:55.272Z"
+    },
+    {
+      "number": "5.11.8",
+      "date": "2016-01-11T15:07:30.026Z"
+    },
+    {
+      "number": "5.11.9",
+      "date": "2016-01-28T16:40:39.853Z"
+    },
+    {
+      "number": "5.12.0",
+      "date": "2016-02-12T23:19:22.656Z"
+    },
+    {
+      "number": "5.12.1",
+      "date": "2016-02-15T21:42:11.591Z"
+    },
+    {
+      "number": "6.0.0",
+      "date": "2016-02-15T23:38:04.125Z"
+    },
+    {
+      "number": "6.0.1",
+      "date": "2016-02-17T01:42:42.775Z"
+    },
+    {
+      "number": "6.0.2",
+      "date": "2016-02-28T06:55:00.730Z"
+    },
+    {
+      "number": "6.0.3",
+      "date": "2016-03-29T09:25:17.271Z"
+    },
+    {
+      "number": "6.0.4",
+      "date": "2016-05-14T00:09:47.269Z"
+    },
+    {
+      "number": "6.0.5",
+      "date": "2016-08-06T21:17:57.907Z"
+    },
+    {
+      "number": "6.0.6",
+      "date": "2016-08-21T02:18:17.852Z"
+    },
+    {
+      "number": "6.0.7",
+      "date": "2016-08-21T02:36:55.720Z"
+    },
+    {
+      "number": "6.1.0",
+      "date": "2016-12-03T01:07:34.079Z"
+    },
+    {
+      "number": "6.1.1",
+      "date": "2017-01-11T05:36:21.067Z"
+    },
+    {
+      "number": "6.1.2",
+      "date": "2017-01-11T10:22:31.426Z"
+    },
+    {
+      "number": "6.1.3",
+      "date": "2017-01-11T10:32:08.325Z"
+    },
+    {
+      "number": "6.1.4",
+      "date": "2017-01-16T11:51:09.705Z"
+    },
+    {
+      "number": "6.1.5",
+      "date": "2017-01-16T12:26:37.268Z"
+    },
+    {
+      "number": "6.2.0",
+      "date": "2017-01-18T06:26:10.189Z"
+    },
+    {
+      "number": "6.2.1",
+      "date": "2017-01-18T12:05:56.136Z"
+    },
+    {
+      "number": "6.2.2",
+      "date": "2017-02-08T04:56:17.859Z"
+    },
+    {
+      "number": "6.3.0",
+      "date": "2017-02-16T07:53:42.516Z"
+    },
+    {
+      "number": "6.4.0",
+      "date": "2017-02-20T12:11:26.893Z"
+    },
+    {
+      "number": "6.4.1",
+      "date": "2017-02-20T12:31:32.222Z"
+    },
+    {
+      "number": "6.4.2",
+      "date": "2017-02-21T07:42:48.348Z"
+    },
+    {
+      "number": "6.4.3",
+      "date": "2017-02-21T10:51:48.150Z"
+    },
+    {
+      "number": "6.4.4",
+      "date": "2017-02-28T21:46:41.626Z"
+    },
+    {
+      "number": "7.0.0",
+      "date": "2017-03-02T06:32:54.195Z"
+    },
+    {
+      "number": "7.0.1",
+      "date": "2017-04-07T20:02:56.683Z"
+    },
+    {
+      "number": "8.0.0",
+      "date": "2017-04-08T00:08:52.687Z"
+    },
+    {
+      "number": "8.1.0",
+      "date": "2017-04-13T21:55:17.182Z"
+    },
+    {
+      "number": "8.1.1",
+      "date": "2017-06-21T22:05:00.732Z"
+    },
+    {
+      "number": "8.2.0",
+      "date": "2017-12-03T08:25:21.358Z"
+    }
+  ],
+  "created": "2014-06-26T18:46:28.178Z",
+  "modified": "2017-12-03T08:25:21.358Z",
+  "lastPublisher": {
+    "name": "feross",
+    "email": "feross@feross.org"
+  },
+  "owners": [
+    {
+      "name": "contra",
+      "email": "contra@wearefractal.com"
+    },
+    {
+      "name": "feross",
+      "email": "feross@feross.org"
+    },
+    {
+      "name": "mafintosh",
+      "email": "mathiasbuus@gmail.com"
+    },
+    {
+      "name": "maxogden",
+      "email": "max@maxogden.com"
+    },
+    {
+      "name": "substack",
+      "email": "substack@gmail.com"
+    }
+  ]
+}

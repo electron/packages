@@ -1,0 +1,130 @@
+{
+  "name": "monitor.js",
+  "version": "1.0.11",
+  "description": "performance monitor for browser runtime",
+  "keywords": [
+    "monitor"
+  ],
+  "main": "./build/monitor.js",
+  "repository": {
+    "user": "pillowjs",
+    "repo": "monitor.js",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/pillowjs/monitor.js/tarball/master",
+    "clone_url": "https://github.com/pillowjs/monitor.js",
+    "https_url": "https://github.com/pillowjs/monitor.js",
+    "travis_url": "https://travis-ci.org/pillowjs/monitor.js",
+    "zip_url": "https://github.com/pillowjs/monitor.js/archive/master.zip",
+    "api_url": "https://api.github.com/repos/pillowjs/monitor.js"
+  },
+  "devDependencies": {
+    "babel-core": "^6.17.0",
+    "babel-loader": "^7.1.0",
+    "babel-plugin-istanbul": "^4.1.5",
+    "babel-preset-env": "^1.6.1",
+    "babel-preset-latest": "^6.24.1",
+    "babel-preset-stage-2": "^6.22.0",
+    "cross-env": "^5.1.3",
+    "eslint": "^4.12.1",
+    "eslint-plugin-mocha": "^4.11.0",
+    "macaca-cli": "^2.0.12",
+    "macaca-coverage": "^1.0.0",
+    "macaca-electron": "^1.1.17",
+    "macaca-reporter": "^1.0.36",
+    "macaca-wd": "^1.0.18",
+    "pre-commit": "*",
+    "webpack": "^3.10.0",
+    "webpack-dev-server": "^2.9.7"
+  },
+  "pre-commit": [
+    "lint"
+  ],
+  "scripts": {
+    "dev": "webpack-dev-server",
+    "dev:test": "cross-env NODE_ENV=test webpack-dev-server",
+    "lint": "eslint --fix . test",
+    "serve": "npm run dev:test &",
+    "prepublish": "npm run build",
+    "build": "cross-env NODE_ENV=production webpack -p",
+    "test": "macaca run -d ./test --reporter macaca-reporter",
+    "ci": "npm run lint && npm run serve && npm run test"
+  },
+  "license": "MIT",
+  "gitHead": "82fe787236f3eaa939ea7a6cd0812eefb57fca04",
+  "homepage": "https://github.com/pillowjs/monitor.js#readme",
+  "_npmVersion": "5.6.0",
+  "_nodeVersion": "8.9.0",
+  "dist": {
+    "integrity": "sha512-s8G1XKbjHT+t8yQSWV3IW+V+fc0aDY73ScoiTOoGCa4E6ao84oX1E1kdm67Y57mlA9sELl5owwneOcrn64ihPw==",
+    "shasum": "fc71771aa11a582b5da1015451807abef0a22752",
+    "tarball": "https://registry.npmjs.org/monitor.js/-/monitor.js-1.0.11.tgz"
+  },
+  "versions": [
+    {
+      "number": "0.1.0",
+      "date": "2016-10-24T06:08:44.928Z"
+    },
+    {
+      "number": "1.0.0",
+      "date": "2016-12-12T08:25:03.086Z"
+    },
+    {
+      "number": "1.0.1",
+      "date": "2016-12-12T11:37:33.908Z"
+    },
+    {
+      "number": "1.0.2",
+      "date": "2016-12-15T03:28:39.312Z"
+    },
+    {
+      "number": "1.0.3",
+      "date": "2016-12-15T03:43:25.059Z"
+    },
+    {
+      "number": "1.0.4",
+      "date": "2017-06-07T03:15:17.285Z"
+    },
+    {
+      "number": "1.0.5",
+      "date": "2017-06-07T03:15:46.467Z"
+    },
+    {
+      "number": "1.0.6",
+      "date": "2017-06-14T15:27:37.606Z"
+    },
+    {
+      "number": "1.0.7",
+      "date": "2017-06-15T09:59:20.176Z"
+    },
+    {
+      "number": "1.0.8",
+      "date": "2017-06-19T05:35:07.547Z"
+    },
+    {
+      "number": "1.0.9",
+      "date": "2017-06-25T15:04:48.656Z"
+    },
+    {
+      "number": "1.0.10",
+      "date": "2017-12-30T14:20:31.023Z"
+    },
+    {
+      "number": "1.0.11",
+      "date": "2018-01-06T09:21:00.409Z"
+    }
+  ],
+  "created": "2016-10-24T06:08:44.928Z",
+  "modified": "2018-01-06T09:21:00.409Z",
+  "lastPublisher": {
+    "name": "xudafeng",
+    "email": "xudafeng@126.com"
+  },
+  "owners": [
+    {
+      "name": "xudafeng",
+      "email": "xudafeng@126.com"
+    }
+  ]
+}

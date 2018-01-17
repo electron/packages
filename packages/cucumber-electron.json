@@ -1,13 +1,14 @@
 {
   "name": "cucumber-electron",
-  "version": "1.2.0",
-  "description": "Run cucumber.js in electron",
+  "version": "2.3.1",
+  "description": "Runs cucumber.js in electron",
   "main": "index.js",
   "bin": {
     "cucumber-electron": "./bin/cucumber-electron.js"
   },
   "scripts": {
-    "test": "./bin/cucumber-electron.js ./example/features"
+    "test": "cucumber-js && node ./bin/cucumber-electron.js && npm run eslint",
+    "eslint": "eslint '**/*.js' --ignore 'node_modules/**/*.js'"
   },
   "author": {
     "name": "Josh Chisholm",
@@ -15,10 +16,8 @@
   },
   "license": "MIT",
   "dependencies": {
-    "ansi-to-html": "^0.4.2",
-    "commander": "^2.9.0",
-    "cucumber": "^1.3.1",
-    "electron": "^1.4.7"
+    "ansi-to-html": "0.6.2",
+    "electron-window": "0.8.1"
   },
   "repository": {
     "user": "featurist",
@@ -33,13 +32,22 @@
     "zip_url": "https://github.com/featurist/cucumber-electron/archive/master.zip",
     "api_url": "https://api.github.com/repos/featurist/cucumber-electron"
   },
-  "gitHead": "7ccdd1c9365bca53763dc3d07ac67a358215d52a",
+  "devDependencies": {
+    "colors": "1.1.2",
+    "cucumber": "2.0.0-rc.9",
+    "electron": "1.7.0",
+    "eslint": "3.19.0",
+    "fs-promise": "2.0.3",
+    "mkdirp-promise": "5.0.1",
+    "rmfr": "1.0.2"
+  },
+  "gitHead": "910b5b0d512295e73da6978fb3e7a1ed19331b1a",
   "homepage": "https://github.com/featurist/cucumber-electron#readme",
   "_npmVersion": "3.10.9",
   "_nodeVersion": "7.1.0",
   "dist": {
-    "shasum": "6df9eb84518bd3d924897e42dd7e8a9ec3e8475c",
-    "tarball": "http://registry.npmjs.org/cucumber-electron/-/cucumber-electron-1.2.0.tgz"
+    "shasum": "5f19b314269758c9f4c2f8dd1f489ccffeff363b",
+    "tarball": "https://registry.npmjs.org/cucumber-electron/-/cucumber-electron-2.3.1.tgz"
   },
   "versions": [
     {
@@ -57,10 +65,74 @@
     {
       "number": "1.2.0",
       "date": "2016-11-29T08:49:53.630Z"
+    },
+    {
+      "number": "1.2.1",
+      "date": "2017-01-10T14:55:09.322Z"
+    },
+    {
+      "number": "1.2.2",
+      "date": "2017-01-10T15:03:00.105Z"
+    },
+    {
+      "number": "1.2.3",
+      "date": "2017-01-10T15:20:01.821Z"
+    },
+    {
+      "number": "1.2.4",
+      "date": "2017-01-12T11:51:32.045Z"
+    },
+    {
+      "number": "1.2.5",
+      "date": "2017-01-12T12:14:51.202Z"
+    },
+    {
+      "number": "2.0.0",
+      "date": "2017-01-14T13:16:58.975Z"
+    },
+    {
+      "number": "2.0.1",
+      "date": "2017-01-15T14:31:08.918Z"
+    },
+    {
+      "number": "2.0.2",
+      "date": "2017-01-16T10:05:30.768Z"
+    },
+    {
+      "number": "2.0.3",
+      "date": "2017-01-16T11:12:38.035Z"
+    },
+    {
+      "number": "2.1.0",
+      "date": "2017-01-24T23:12:08.053Z"
+    },
+    {
+      "number": "2.1.1",
+      "date": "2017-01-27T16:14:18.019Z"
+    },
+    {
+      "number": "2.1.2",
+      "date": "2017-02-01T11:11:23.557Z"
+    },
+    {
+      "number": "2.1.3",
+      "date": "2017-02-19T14:05:21.348Z"
+    },
+    {
+      "number": "2.1.4",
+      "date": "2017-03-24T11:47:34.955Z"
+    },
+    {
+      "number": "2.2.0",
+      "date": "2017-05-05T09:46:47.377Z"
+    },
+    {
+      "number": "2.3.1",
+      "date": "2017-05-12T14:22:10.704Z"
     }
   ],
   "created": "2016-11-20T13:35:58.020Z",
-  "modified": "2016-11-29T08:49:53.630Z",
+  "modified": "2017-05-12T14:22:10.704Z",
   "lastPublisher": {
     "name": "joshski",
     "email": "josh@featurist.co.uk"

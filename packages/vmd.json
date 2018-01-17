@@ -1,17 +1,19 @@
 {
   "name": "vmd",
-  "version": "1.28.0",
-  "description": "vmd",
+  "version": "1.33.0",
+  "description": "Preview markdown files",
   "main": "main/main.js",
   "scripts": {
     "start": "electron main/main.js --not-packaged=true",
     "dev": "electron main/main.js --not-packaged=true --debug=true",
-    "test": "standard",
-    "pack-linux-ia32": "electron-packager . --asar --overwrite --platform=linux --arch=ia32 --icon=assets/app-icon/png/64.png --prune=true --out=build",
-    "pack-linux-x64": "electron-packager . --asar --overwrite --platform=linux --arch=x64 --icon=assets/app-icon/png/64.png --prune=true --out=build",
-    "pack-win32-ia32": "electron-packager . --asar  --overwrite --platform=win32 --arch=ia32 --icon=assets/app-icon/win/app.ico --prune=true --out=build --version-string.ProductName='vmd'",
-    "pack-win32-x64": "electron-packager . --asar  --overwrite --platform=win32 --arch=x64 --icon=assets/app-icon/win/app.ico --prune=true --out=build --version-string.ProductName='vmd'",
-    "pack-mac": "electron-packager . --asar --overwrite --platform=darwin --arch=x64 --icon=assets/app-icon/mac/app.icns --prune=true --out=build",
+    "lint": "eslint **/*.js",
+    "lint:fix": "eslint --fix **/*.js",
+    "test": "npm run lint",
+    "pack-linux-ia32": "electron-packager . --package-manager=yarn --asar --overwrite --platform=linux --arch=ia32 --icon=assets/app-icon/png/64.png --prune=true --out=build",
+    "pack-linux-x64": "electron-packager . --package-manager=yarn --asar --overwrite --platform=linux --arch=x64 --icon=assets/app-icon/png/64.png --prune=true --out=build",
+    "pack-win32-ia32": "electron-packager . --package-manager=yarn --asar  --overwrite --platform=win32 --arch=ia32 --icon=assets/app-icon/win/app.ico --prune=true --out=build --version-string.ProductName='vmd'",
+    "pack-win32-x64": "electron-packager . --package-manager=yarn --asar  --overwrite --platform=win32 --arch=x64 --icon=assets/app-icon/win/app.ico --prune=true --out=build --version-string.ProductName='vmd'",
+    "pack-mac": "electron-packager . --package-manager=yarn --asar --overwrite --platform=darwin --arch=x64 --icon=assets/app-icon/mac/app.icns --prune=true --out=build",
     "package": "npm run pack-linux-ia32 && npm run pack-linux-x64 && npm run pack-win32-ia32 && npm run pack-win32-x64 && npm run pack-mac",
     "release": "node ./script/release.js"
   },
@@ -42,43 +44,48 @@
   ],
   "license": "MIT",
   "dependencies": {
-    "chokidar": "1.6.0",
-    "deep-equal": "1.0.1",
-    "electron": "1.4.1",
-    "electron-window-state": "3.0.4",
-    "emojify.js": "1.1.0",
-    "get-stdin": "5.0.1",
-    "github-markdown-css": "2.4.1",
-    "lodash.template": "4.4.0",
-    "mdast-util-to-string": "^1.0.2",
-    "minimist": "1.2.0",
-    "object-assign": "4.1.0",
-    "postcss": "5.2.0",
-    "postcss-safe-important": "1.0.4",
-    "redux": "3.6.0",
-    "remark": "^6.0.1",
-    "remark-emoji-to-gemoji": "^1.0.0",
-    "remark-highlight.js": "^4.0.1",
-    "remark-html": "^5.0.1",
-    "remark-slug": "^4.2.2",
-    "rucola": "1.1.3",
-    "unist-util-visit": "^1.1.0"
+    "chokidar": "^1.7.0",
+    "deep-equal": "^1.0.1",
+    "electron": "^1.7.5",
+    "electron-in-page-search": "1.2.4",
+    "electron-window-state": "^4.1.1",
+    "emojify.js": "^1.1.0",
+    "get-stdin": "^5.0.1",
+    "github-markdown-css": "^2.8.0",
+    "js-yaml": "^3.10.0",
+    "lodash.template": "^4.4.0",
+    "minimist": "^1.2.0",
+    "postcss": "6.0.8",
+    "postcss-safe-important": "^1.0.4",
+    "redux": "^3.7.2",
+    "remark": "8.0.0",
+    "remark-emoji-to-gemoji": "^1.1.0",
+    "remark-frontmatter": "1.2.0",
+    "remark-highlight.js": "5.0.0",
+    "remark-html": "6.0.1",
+    "remark-slug": "^4.2.3",
+    "rucola": "^1.1.3",
+    "toml": "^2.3.3",
+    "unist-util-visit": "^1.1.3"
   },
   "devDependencies": {
-    "electron-packager": "8.0.0",
-    "promise-retryer": "0.0.1",
-    "request": "2.75.0",
-    "standard": "8.1.0"
+    "electron-packager": "^8.7.2",
+    "eslint": "^4.4.1",
+    "eslint-config-airbnb-base": "^11.3.1",
+    "eslint-plugin-import": "^2.7.0",
+    "promise-retryer": "^0.0.1",
+    "request": "^2.81.0"
   },
-  "gitHead": "c094686744688513cad1a6488e52d1586951bc5e",
+  "gitHead": "21fa8424903f2ed6c134437ecd6578b481ecf660",
   "homepage": "https://github.com/yoshuawuyts/vmd#readme",
-  "_npmVersion": "3.10.7",
-  "_nodeVersion": "6.6.0",
+  "_npmVersion": "5.5.1",
+  "_nodeVersion": "9.2.0",
   "dist": {
-    "shasum": "7b23dbd30319d09ce3b3f68c361b4a1fb373fac1",
-    "tarball": "http://registry.npmjs.org/vmd/-/vmd-1.28.0.tgz"
+    "integrity": "sha512-iSqftEm00QvCRyW9pbRB0ahUdrqZiAf3qe4lthuHRPE6rkdZq/HTdLdI/UNL6qanoYr0bZ7zrkr06oNjlFDfTg==",
+    "shasum": "4efc10f136a202405720e9eb54fa5409107ba96e",
+    "tarball": "https://registry.npmjs.org/vmd/-/vmd-1.33.0.tgz"
   },
-  "stars": 8,
+  "stars": 7,
   "versions": [
     {
       "number": "1.0.0",
@@ -311,26 +318,62 @@
     {
       "number": "1.28.0",
       "date": "2016-10-02T13:45:07.192Z"
+    },
+    {
+      "number": "1.29.0",
+      "date": "2017-02-18T21:04:01.187Z"
+    },
+    {
+      "number": "1.29.1",
+      "date": "2017-05-03T07:01:31.954Z"
+    },
+    {
+      "number": "1.29.2",
+      "date": "2017-08-10T14:19:43.828Z"
+    },
+    {
+      "number": "1.30.0",
+      "date": "2017-08-11T23:43:25.717Z"
+    },
+    {
+      "number": "1.31.0",
+      "date": "2017-08-12T13:10:24.674Z"
+    },
+    {
+      "number": "1.31.1",
+      "date": "2017-10-18T07:56:37.319Z"
+    },
+    {
+      "number": "1.31.2",
+      "date": "2017-10-23T22:33:42.318Z"
+    },
+    {
+      "number": "1.32.0",
+      "date": "2017-11-27T01:25:31.111Z"
+    },
+    {
+      "number": "1.33.0",
+      "date": "2017-12-04T23:08:52.874Z"
     }
   ],
   "created": "2015-02-08T01:33:00.511Z",
-  "modified": "2016-10-02T13:45:07.192Z",
+  "modified": "2017-12-04T23:08:52.874Z",
   "lastPublisher": {
     "name": "maxkueng",
     "email": "me@maxkueng.com"
   },
   "owners": [
     {
-      "name": "yoshuawuyts",
-      "email": "i@yoshuawuyts.com"
+      "email": "dave.des@gmail.com",
+      "name": "mattdesl"
     },
     {
-      "name": "maxkueng",
-      "email": "me@maxkueng.com"
+      "email": "i@yoshuawuyts.com",
+      "name": "yoshuawuyts"
     },
     {
-      "name": "mattdesl",
-      "email": "dave.des@gmail.com"
+      "email": "me@maxkueng.com",
+      "name": "maxkueng"
     }
   ]
 }

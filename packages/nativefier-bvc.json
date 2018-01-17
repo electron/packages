@@ -1,0 +1,138 @@
+{
+  "name": "nativefier-bvc",
+  "version": "7.4.3",
+  "description": "Wrap web apps natively",
+  "keywords": [
+    "desktop",
+    "electron",
+    "app",
+    "native",
+    "wrapper"
+  ],
+  "main": "lib/index.js",
+  "scripts": {
+    "dev-up": "npm install && (cd app && npm install) && npm run build",
+    "test": "jest && gulp test",
+    "jest": "jest",
+    "tdd": "gulp tdd",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "ci": "gulp build test && npm run lint",
+    "clean": "gulp clean",
+    "build": "gulp build",
+    "watch": "while true ; do gulp watch ; done",
+    "package-placeholder": "npm run build && node lib/cli.js http://www.bennish.net/web-notifications.html ~/Desktop --overwrite --name notification-test --icon ./test-resources/iconSampleGrey.png --inject ./test-resources/test-injection.js --inject ./test-resources/test-injection.css && open ~/Desktop/notification-test-darwin-x64/notification-test.app",
+    "start-placeholder": "npm run build && electron app",
+    "changelog": "./scripts/changelog"
+  },
+  "bin": {
+    "nativefier": "lib/cli.js"
+  },
+  "repository": {
+    "user": "beeverycreative",
+    "repo": "nativefier",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/beeverycreative/nativefier/tarball/master",
+    "clone_url": "https://github.com/beeverycreative/nativefier",
+    "https_url": "https://github.com/beeverycreative/nativefier",
+    "travis_url": "https://travis-ci.org/beeverycreative/nativefier",
+    "zip_url": "https://github.com/beeverycreative/nativefier/archive/master.zip",
+    "api_url": "https://api.github.com/repos/beeverycreative/nativefier"
+  },
+  "author": {
+    "name": "David Pacheco"
+  },
+  "license": "MIT",
+  "homepage": "https://github.com/beeverycreative/nativefier#readme",
+  "dependencies": {
+    "async": "^2.3.0",
+    "axios": "^0.16.1",
+    "babel-polyfill": "^6.7.2",
+    "cheerio": "^0.22.0",
+    "commander": "^2.9.0",
+    "electron-packager": "^8.6.0",
+    "gitcloud": "^0.1.0",
+    "hasbin": "^1.2.0",
+    "lodash": "^4.0.0",
+    "loglevel": "^1.4.0",
+    "ncp": "^2.0.0",
+    "page-icon": "^0.3.0",
+    "progress": "^2.0.0",
+    "sanitize-filename": "^1.5.3",
+    "shelljs": "^0.7.0",
+    "source-map-support": "^0.4.0",
+    "tmp": "0.0.31",
+    "validator": "^7.0.0"
+  },
+  "devDependencies": {
+    "babel-core": "^6.4.5",
+    "babel-jest": "^19.0.0",
+    "babel-loader": "^6.2.1",
+    "babel-preset-es2015": "^6.6.0",
+    "babel-register": "^6.6.0",
+    "chai": "^3.4.1",
+    "del": "^2.2.0",
+    "eslint": "^3.19.0",
+    "eslint-config-airbnb-base": "^11.1.3",
+    "eslint-plugin-import": "^2.2.0",
+    "gulp": "^3.9.0",
+    "gulp-babel": "^6.1.1",
+    "gulp-istanbul": "^1.1.1",
+    "gulp-mocha": "^4.3.0",
+    "gulp-sourcemaps": "^2.6.0",
+    "isparta": "^4.0.0",
+    "jest": "^20.0.3",
+    "regenerator-runtime": "^0.10.5",
+    "require-dir": "^0.3.2",
+    "run-sequence": "^1.1.5",
+    "webpack-stream": "^3.1.0"
+  },
+  "engines": {
+    "node": ">= 4.0"
+  },
+  "babel": {
+    "presets": [
+      "es2015"
+    ]
+  },
+  "jest": {
+    "testMatch": [
+      "**/src/**/?(*.)(spec|test).js?(x)"
+    ]
+  },
+  "gitHead": "283919321ea86367959fa125e7b51d25b9834e10",
+  "_npmVersion": "3.10.10",
+  "_nodeVersion": "7.2.1",
+  "dist": {
+    "shasum": "bbf72c76eb6267517daf64b473089ca3d8f11eac",
+    "tarball": "https://registry.npmjs.org/nativefier-bvc/-/nativefier-bvc-7.4.3.tgz"
+  },
+  "versions": [
+    {
+      "number": "7.4.1",
+      "date": "2017-07-27T10:10:06.549Z"
+    },
+    {
+      "number": "7.4.2",
+      "date": "2017-07-27T10:18:49.323Z"
+    },
+    {
+      "number": "7.4.3",
+      "date": "2017-07-27T10:30:19.674Z"
+    }
+  ],
+  "created": "2017-07-27T10:10:06.549Z",
+  "modified": "2017-07-27T10:30:19.674Z",
+  "lastPublisher": {
+    "name": "davidpch",
+    "email": "david.pacheco@beubi.com"
+  },
+  "owners": [
+    {
+      "name": "davidpch",
+      "email": "david.pacheco@beubi.com"
+    }
+  ]
+}

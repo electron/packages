@@ -1,0 +1,106 @@
+{
+  "name": "electron-common-ipc",
+  "version": "1.1.2",
+  "description": "A safe IPC bus for applications built on Electron.",
+  "repository": {
+    "user": "emmkimme",
+    "repo": "electron-common-ipc",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/emmkimme/electron-common-ipc/tarball/master",
+    "clone_url": "https://github.com/emmkimme/electron-common-ipc",
+    "https_url": "https://github.com/emmkimme/electron-common-ipc",
+    "travis_url": "https://travis-ci.org/emmkimme/electron-common-ipc",
+    "zip_url": "https://github.com/emmkimme/electron-common-ipc/archive/master.zip",
+    "api_url": "https://api.github.com/repos/emmkimme/electron-common-ipc"
+  },
+  "keywords": [
+    "electron",
+    "ipc",
+    "renderer",
+    "sandbox",
+    "node",
+    "communication",
+    "process",
+    "rpc"
+  ],
+  "author": {
+    "name": "Emmanuel Kimmerlin, Michael Vasseur"
+  },
+  "license": "MIT",
+  "homepage": "https://github.com/emmkimme/electron-common-ipc#readme",
+  "main": "./lib/electron-common-ipc.js",
+  "types": "./lib/electron-common-ipc.d.ts",
+  "browser": "./lib/electron-common-ipc-browser.js",
+  "dependencies": {
+    "uuid": "3.0.1",
+    "socket-serializer": "^0.9.0"
+  },
+  "devDependencies": {
+    "@types/node": "^0.0.3",
+    "@types/uuid": "3.0.0",
+    "del": "^2.2.2",
+    "del-cli": "^0.2.1",
+    "dts-bundle": "^0.6.1",
+    "tslint": "^4.1.1",
+    "tslint-microsoft-contrib": "^4.0.1",
+    "typescript": "^2.5.2"
+  },
+  "scripts": {
+    "clean": "del-cli ./lib ./build ./dist",
+    "build": "npm run build-js && npm run build-declaration",
+    "build-js": "tsc -p ./tsconfig/tsconfig-js.json",
+    "build-declaration": "npm run build-declaration-ts && npm run build-declaration-dts-bundle && npm run build-declaration-dts-bundle-browser && npm run clean-declaration-dts",
+    "build-declaration-ts": "tsc -p ./tsconfig/tsconfig-declaration.json",
+    "build-declaration-dts-generator": "dts-generator --name electron-common-ipc --project . --out ./lib/index.d.ts",
+    "build-declaration-dts-bundle": "dts-bundle --outputAsModuleFolder --name electron-common-ipc --main ./lib/electron-common-ipc.d.ts",
+    "build-declaration-dts-bundle-browser": "dts-bundle --outputAsModuleFolder --name electron-common-ipc-browser --main ./lib/electron-common-ipc-browser.d.ts",
+    "clean-declaration-dts": "del-cli ./lib/IpcBus/*.d.ts",
+    "tsc": "tsc",
+    "tslint": "tslint",
+    "publication": "npm publish ./ --registry https://registry.npmjs.org/"
+  },
+  "gitHead": "da53749b06e31ca503f2f1125faee403b33aa971",
+  "_npmVersion": "3.10.10",
+  "_nodeVersion": "7.10.0",
+  "dist": {
+    "shasum": "2993092a7c946f24633f068a2335d511aa7597b8",
+    "tarball": "https://registry.npmjs.org/electron-common-ipc/-/electron-common-ipc-1.1.2.tgz"
+  },
+  "stars": 1,
+  "versions": [
+    {
+      "number": "1.0.0",
+      "date": "2017-11-15T15:53:43.707Z"
+    },
+    {
+      "number": "1.1.0",
+      "date": "2017-11-22T08:51:14.254Z"
+    },
+    {
+      "number": "1.1.2",
+      "date": "2017-11-30T15:28:27.250Z"
+    }
+  ],
+  "created": "2017-11-15T15:53:43.707Z",
+  "modified": "2017-11-30T15:28:27.250Z",
+  "lastPublisher": {
+    "name": "emmkimme",
+    "email": "emmanuel.kimmerlin@thomsonreuters.com"
+  },
+  "owners": [
+    {
+      "email": "thomas.lechaptois@gmail.com",
+      "name": "tholecha"
+    },
+    {
+      "email": "tm-npm.nospam@souskai.net",
+      "name": "thomoute"
+    },
+    {
+      "email": "emmanuel.kimmerlin@thomsonreuters.com",
+      "name": "emmkimme"
+    }
+  ]
+}

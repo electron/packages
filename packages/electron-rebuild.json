@@ -1,15 +1,18 @@
 {
   "name": "electron-rebuild",
-  "version": "1.4.0",
+  "version": "1.7.3",
   "description": "Electron supporting package to rebuild native node modules against the currently installed electron",
-  "main": "lib/index.js",
+  "main": "lib/src/main.js",
+  "typings": "lib/src/main.d.ts",
   "scripts": {
-    "compile": "babel --stage 1 --optional runtime -d lib/ src/ && babel --stage 1 --optional runtime -d test-dist/ test/",
+    "compile": "tsc",
+    "watch": "tsc -w",
     "prepublish": "npm run compile",
-    "test": "npm run compile && mocha test-dist/* --timeout 120000"
+    "test": "mocha --compilers ts:ts-node/register ./test/*.ts",
+    "lint": "tslint \"src/**/*.ts\" \"test/**/*.ts\""
   },
   "bin": {
-    "electron-rebuild": "lib/cli.js"
+    "electron-rebuild": "lib/src/cli.js"
   },
   "repository": {
     "user": "electron",
@@ -33,32 +36,48 @@
   },
   "license": "MIT",
   "homepage": "https://github.com/electron/electron-rebuild",
+  "engines": {
+    "node": ">=6.0.0"
+  },
   "dependencies": {
-    "babel-runtime": "^5.8.20",
-    "glob": "^6.0.3",
-    "lodash": "^3.10.1",
-    "ncp": "^2.0.0",
-    "npm": "^3.5.3",
-    "nslog": "^3.0.0",
-    "promise": "^7.1.1",
-    "rimraf": "^2.5.0",
-    "yargs": "^3.31.0"
+    "colors": "^1.1.2",
+    "debug": "^2.6.3",
+    "detect-libc": "^1.0.3",
+    "fs-extra": "^3.0.1",
+    "node-abi": "^2.0.0",
+    "node-gyp": "^3.6.0",
+    "ora": "^1.2.0",
+    "rimraf": "^2.6.1",
+    "spawn-rx": "^2.0.10",
+    "yargs": "^7.0.2"
   },
   "devDependencies": {
-    "babel": "^5.8.23",
-    "chai": "^3.4.1",
-    "chai-as-promised": "^5.2.0",
-    "electron-prebuilt": "^0.36.3",
-    "mocha": "^2.3.4"
+    "@types/chai": "^3.4.35",
+    "@types/chai-as-promised": "0.0.30",
+    "@types/colors": "^1.1.1",
+    "@types/debug": "0.0.29",
+    "@types/fs-extra": "^3.0.3",
+    "@types/mocha": "^2.2.40",
+    "@types/node": "^7.0.12",
+    "@types/ora": "^0.3.31",
+    "@types/rimraf": "0.0.28",
+    "@types/yargs": "^6.6.0",
+    "chai": "^3.5.0",
+    "chai-as-promised": "^6.0.0",
+    "electron": "^1.4.13",
+    "mocha": "^3.2.0",
+    "ts-node": "^3.0.2",
+    "tslint": "^4.5.1",
+    "typescript": "^2.2.2"
   },
-  "gitHead": "27fd3114b68bf5f9c438255b412cea763e768826",
-  "_npmVersion": "3.10.9",
-  "_nodeVersion": "6.8.0",
+  "gitHead": "46cacc1dbfb227cd5a1fb9117ab2cbf323834cf0",
+  "_npmVersion": "3.10.10",
+  "_nodeVersion": "6.11.1",
   "dist": {
-    "shasum": "48a407f987f985c42349c03b4d2694abc3a72dc6",
-    "tarball": "http://registry.npmjs.org/electron-rebuild/-/electron-rebuild-1.4.0.tgz"
+    "shasum": "24ae06ad9dd61cb7e4d688961f49118c40a110eb",
+    "tarball": "https://registry.npmjs.org/electron-rebuild/-/electron-rebuild-1.7.3.tgz"
   },
-  "stars": 3,
+  "stars": 6,
   "versions": [
     {
       "number": "0.1.0",
@@ -155,38 +174,114 @@
     {
       "number": "1.4.0",
       "date": "2016-11-14T21:46:23.961Z"
+    },
+    {
+      "number": "1.5.0",
+      "date": "2017-01-02T21:06:28.976Z"
+    },
+    {
+      "number": "1.5.1",
+      "date": "2017-01-02T21:51:09.324Z"
+    },
+    {
+      "number": "1.5.2",
+      "date": "2017-01-02T22:28:56.354Z"
+    },
+    {
+      "number": "1.5.3",
+      "date": "2017-01-02T22:51:52.771Z"
+    },
+    {
+      "number": "1.5.4",
+      "date": "2017-01-03T08:48:53.394Z"
+    },
+    {
+      "number": "1.5.5",
+      "date": "2017-01-03T21:09:14.168Z"
+    },
+    {
+      "number": "1.5.6",
+      "date": "2017-01-09T07:10:53.408Z"
+    },
+    {
+      "number": "1.5.7",
+      "date": "2017-01-18T23:25:46.369Z"
+    },
+    {
+      "number": "1.5.8",
+      "date": "2017-05-09T00:18:49.821Z"
+    },
+    {
+      "number": "1.5.9",
+      "date": "2017-05-09T06:52:44.682Z"
+    },
+    {
+      "number": "1.5.10",
+      "date": "2017-05-09T08:42:40.195Z"
+    },
+    {
+      "number": "1.5.11",
+      "date": "2017-05-11T02:27:33.101Z"
+    },
+    {
+      "number": "1.6.0",
+      "date": "2017-07-30T02:53:33.512Z"
+    },
+    {
+      "number": "1.6.1",
+      "date": "2018-01-11T06:56:12.390Z"
+    },
+    {
+      "number": "1.7.0",
+      "date": "2018-01-12T03:14:55.602Z"
+    },
+    {
+      "number": "1.7.1",
+      "date": "2018-01-12T04:06:57.444Z"
+    },
+    {
+      "number": "1.7.2",
+      "date": "2018-01-12T04:26:36.294Z"
+    },
+    {
+      "number": "1.7.3",
+      "date": "2018-01-12T04:49:35.791Z"
     }
   ],
   "created": "2015-05-04T08:45:39.559Z",
-  "modified": "2016-11-14T21:46:23.961Z",
+  "modified": "2018-01-12T04:49:35.791Z",
   "lastPublisher": {
-    "name": "paulcbetts",
-    "email": "paul@paulbetts.org"
+    "name": "marshallofsound",
+    "email": "samuel.r.attard@gmail.com"
   },
   "owners": [
     {
-      "name": "electron",
-      "email": "electron@github.com"
+      "email": "samuel.r.attard@gmail.com",
+      "name": "marshallofsound"
     },
     {
-      "name": "jlord",
-      "email": "to.jlord@gmail.com"
+      "email": "zcbenz@gmail.com",
+      "name": "zcbenz"
     },
     {
-      "name": "kevinsawicki",
-      "email": "kevinsawicki@gmail.com"
+      "email": "to.jlord@gmail.com",
+      "name": "jlord"
     },
     {
-      "name": "paulcbetts",
-      "email": "paul@paulbetts.org"
+      "email": "kevinsawicki@gmail.com",
+      "name": "kevinsawicki"
     },
     {
-      "name": "zcbenz",
-      "email": "zcbenz@gmail.com"
+      "email": "electron@github.com",
+      "name": "electron"
     },
     {
-      "name": "zeke",
-      "email": "zeke@sikelianos.com"
+      "email": "zeke@sikelianos.com",
+      "name": "zeke"
+    },
+    {
+      "email": "paul@paulbetts.org",
+      "name": "paulcbetts"
     }
   ]
 }

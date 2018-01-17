@@ -1,14 +1,14 @@
 {
   "name": "text-buffer",
-  "version": "9.4.3",
+  "version": "13.11.4",
   "description": "A container for large mutable strings with annotated regions",
   "main": "./lib/text-buffer",
   "scripts": {
     "prepublish": "npm run clean && npm run compile && npm run lint && npm run atomdoc",
     "atomdoc": "grunt shell:update-atomdoc atomdoc",
     "clean": "grunt clean",
-    "compile": "coffee --no-header --output lib --compile src",
-    "lint": "coffeelint -r src spec && eslint src spec",
+    "compile": "coffee --no-header --output lib --compile src && cp src/*.js lib/",
+    "lint": "coffeelint -r src spec && standard src/*.js spec/*.js",
     "test": "node script/test",
     "ci": "npm run compile && npm run lint && npm run test && npm run bench",
     "bench": "node benchmarks/index"
@@ -26,65 +26,63 @@
     "zip_url": "https://github.com/atom/text-buffer/archive/master.zip",
     "api_url": "https://api.github.com/repos/atom/text-buffer"
   },
+  "atomTestRunner": "atom-jasmine2-test-runner",
   "license": "MIT",
   "devDependencies": {
+    "atom-jasmine2-test-runner": "^1.0.0",
     "coffee-cache": "^0.2.0",
     "coffee-script": "^1.10.0",
-    "coffeelint": "^1.14.2",
+    "coffeelint": "1.16.0",
     "dedent": "^0.6.0",
-    "electron": "^1.4.0",
-    "eslint": "2.2.0",
-    "eslint-config-standard": "5.1.0",
-    "eslint-plugin-promise": "^1.0.8",
-    "eslint-plugin-standard": "1.3.1",
+    "electron": "1.7",
     "grunt": "^0.4.5",
     "grunt-atomdoc": "^1.0.1",
     "grunt-cli": "^0.1.13",
-    "grunt-coffeelint": "^0.0.15",
-    "grunt-contrib-coffee": "^0.13.0",
     "grunt-shell": "^1.1.2",
     "jasmine": "^2.4.1",
     "jasmine-core": "^2.4.1",
     "json-diff": "^0.3.1",
     "random-seed": "^0.2.0",
+    "regression": "^1.2.1",
     "rimraf": "~2.2.2",
+    "standard": "^10.0.3",
     "temp": "^0.8.3",
-    "yargs": "^6.3.0"
+    "yargs": "^6.5.0"
   },
   "dependencies": {
-    "atom-patch": "0.3.0",
-    "buffer-offset-index": "0.0.1",
     "delegato": "^1.0.0",
     "diff": "^2.2.1",
-    "display-index": "^0.1.0",
     "emissary": "^1.0.0",
-    "event-kit": "^2.1.0",
-    "fs-plus": "^2.0.0",
-    "grim": "1.5.0",
-    "marker-index": "4.0.1",
-    "pathwatcher": "6.7.1",
-    "regression": "^1.2.1",
+    "event-kit": "^2.4.0",
+    "fs-admin": "^0.1.4",
+    "fs-plus": "^3.0.0",
+    "grim": "^2.0.2",
+    "mkdirp": "^0.5.1",
+    "pathwatcher": "8.0.1",
     "serializable": "^1.0.3",
+    "superstring": "^2.2.15",
     "underscore-plus": "^1.0.0"
   },
-  "coffeelintConfig": {
-    "no_empty_param_list": {
-      "level": "error"
+  "standard": {
+    "env": {
+      "atomtest": true,
+      "browser": true,
+      "jasmine": true,
+      "node": true
     },
-    "max_line_length": {
-      "level": "ignore"
-    },
-    "indentation": {
-      "level": "ignore"
-    }
+    "globals": [
+      "atom",
+      "snapshotResult"
+    ]
   },
-  "gitHead": "56be7d79ffc659bab44f7841d2f8f368273f783f",
+  "gitHead": "eabf196eac7bc458e4f2186124b3bc3ae4554dcb",
   "homepage": "https://github.com/atom/text-buffer#readme",
-  "_npmVersion": "3.10.3",
-  "_nodeVersion": "6.4.0",
+  "_npmVersion": "5.6.0",
+  "_nodeVersion": "8.4.0",
   "dist": {
-    "shasum": "1cb81f228daf49a980099345c3cb496f81335e73",
-    "tarball": "http://registry.npmjs.org/text-buffer/-/text-buffer-9.4.3.tgz"
+    "integrity": "sha512-LQ9YMy0kCbvzxOPylBOcj7tZes8S+/9vd3h46kXX+LSnhjnPbK5cqgOdL1XqXOlYvRFRwrFxsWyurQZFS7IClQ==",
+    "shasum": "23650e18fd3df26a6312106caa9672e31e9e099b",
+    "tarball": "https://registry.npmjs.org/text-buffer/-/text-buffer-13.11.4.tgz"
   },
   "stars": 1,
   "versions": [
@@ -947,54 +945,862 @@
     {
       "number": "9.4.3",
       "date": "2016-11-11T19:18:25.776Z"
+    },
+    {
+      "number": "9.4.4-0",
+      "date": "2016-12-14T20:16:11.377Z"
+    },
+    {
+      "number": "10.0.0-0",
+      "date": "2016-12-14T20:47:47.835Z"
+    },
+    {
+      "number": "10.0.0-1",
+      "date": "2016-12-14T22:22:31.868Z"
+    },
+    {
+      "number": "10.0.0-3",
+      "date": "2016-12-15T04:12:42.078Z"
+    },
+    {
+      "number": "10.0.0-4",
+      "date": "2016-12-15T05:16:07.081Z"
+    },
+    {
+      "number": "10.0.0-5",
+      "date": "2016-12-15T18:46:06.900Z"
+    },
+    {
+      "number": "10.0.0",
+      "date": "2016-12-15T19:17:33.774Z"
+    },
+    {
+      "number": "10.0.1",
+      "date": "2016-12-15T21:40:04.872Z"
+    },
+    {
+      "number": "10.0.2",
+      "date": "2016-12-21T23:03:48.033Z"
+    },
+    {
+      "number": "10.0.3",
+      "date": "2016-12-22T05:53:40.407Z"
+    },
+    {
+      "number": "10.0.4",
+      "date": "2016-12-28T18:57:43.620Z"
+    },
+    {
+      "number": "10.1.0",
+      "date": "2016-12-28T22:39:09.138Z"
+    },
+    {
+      "number": "10.2.0-0",
+      "date": "2016-12-29T18:48:51.774Z"
+    },
+    {
+      "number": "10.2.0",
+      "date": "2016-12-29T19:31:02.296Z"
+    },
+    {
+      "number": "10.2.1",
+      "date": "2016-12-30T20:51:51.535Z"
+    },
+    {
+      "number": "10.2.2-0",
+      "date": "2016-12-31T00:44:47.600Z"
+    },
+    {
+      "number": "10.2.2-1",
+      "date": "2017-01-02T19:31:21.869Z"
+    },
+    {
+      "number": "10.2.2-2",
+      "date": "2017-01-03T21:51:48.759Z"
+    },
+    {
+      "number": "10.2.2",
+      "date": "2017-01-04T00:07:38.403Z"
+    },
+    {
+      "number": "10.2.3",
+      "date": "2017-01-13T21:11:41.720Z"
+    },
+    {
+      "number": "10.2.4",
+      "date": "2017-01-17T22:53:21.130Z"
+    },
+    {
+      "number": "10.2.5",
+      "date": "2017-01-18T00:39:25.948Z"
+    },
+    {
+      "number": "10.3.0",
+      "date": "2017-01-25T22:59:33.262Z"
+    },
+    {
+      "number": "10.3.1",
+      "date": "2017-01-31T17:21:24.788Z"
+    },
+    {
+      "number": "10.2.7",
+      "date": "2017-01-31T17:33:07.194Z"
+    },
+    {
+      "number": "10.2.8",
+      "date": "2017-01-31T17:42:01.701Z"
+    },
+    {
+      "number": "10.3.2",
+      "date": "2017-02-01T16:46:56.043Z"
+    },
+    {
+      "number": "10.3.3",
+      "date": "2017-02-03T01:41:38.384Z"
+    },
+    {
+      "number": "10.2.9",
+      "date": "2017-02-09T19:33:39.934Z"
+    },
+    {
+      "number": "10.3.4",
+      "date": "2017-02-09T19:34:21.350Z"
+    },
+    {
+      "number": "10.2.10",
+      "date": "2017-02-09T21:13:56.391Z"
+    },
+    {
+      "number": "10.3.5",
+      "date": "2017-02-09T21:14:45.154Z"
+    },
+    {
+      "number": "10.2.11",
+      "date": "2017-02-10T21:37:46.649Z"
+    },
+    {
+      "number": "10.3.6",
+      "date": "2017-02-10T21:39:22.550Z"
+    },
+    {
+      "number": "10.3.7-0",
+      "date": "2017-02-10T22:57:31.801Z"
+    },
+    {
+      "number": "10.3.7-1",
+      "date": "2017-02-10T23:43:13.217Z"
+    },
+    {
+      "number": "10.3.7",
+      "date": "2017-02-11T00:23:54.667Z"
+    },
+    {
+      "number": "10.2.12",
+      "date": "2017-02-11T00:25:07.594Z"
+    },
+    {
+      "number": "10.3.8",
+      "date": "2017-02-13T21:08:05.763Z"
+    },
+    {
+      "number": "10.2.13",
+      "date": "2017-02-13T21:10:09.846Z"
+    },
+    {
+      "number": "10.2.14",
+      "date": "2017-02-14T00:42:14.132Z"
+    },
+    {
+      "number": "10.3.9",
+      "date": "2017-02-14T00:43:33.268Z"
+    },
+    {
+      "number": "10.2.15",
+      "date": "2017-02-16T01:09:19.432Z"
+    },
+    {
+      "number": "10.3.10",
+      "date": "2017-02-16T01:10:17.176Z"
+    },
+    {
+      "number": "10.3.11",
+      "date": "2017-02-17T16:33:48.920Z"
+    },
+    {
+      "number": "10.2.16",
+      "date": "2017-02-17T16:48:21.712Z"
+    },
+    {
+      "number": "10.2.17",
+      "date": "2017-02-24T03:30:35.392Z"
+    },
+    {
+      "number": "10.3.12",
+      "date": "2017-02-24T03:31:01.856Z"
+    },
+    {
+      "number": "10.4.0",
+      "date": "2017-03-02T17:12:33.058Z"
+    },
+    {
+      "number": "10.4.1",
+      "date": "2017-03-03T11:16:45.448Z"
+    },
+    {
+      "number": "10.4.2",
+      "date": "2017-03-03T16:06:47.585Z"
+    },
+    {
+      "number": "11.0.0",
+      "date": "2017-03-06T11:41:42.524Z"
+    },
+    {
+      "number": "11.1.0",
+      "date": "2017-03-07T00:03:40.888Z"
+    },
+    {
+      "number": "11.2.0",
+      "date": "2017-03-08T20:09:13.309Z"
+    },
+    {
+      "number": "11.3.0",
+      "date": "2017-03-10T03:27:21.178Z"
+    },
+    {
+      "number": "10.5.0",
+      "date": "2017-03-10T03:35:39.654Z"
+    },
+    {
+      "number": "11.4.0-0",
+      "date": "2017-03-16T02:21:26.189Z"
+    },
+    {
+      "number": "11.4.0",
+      "date": "2017-03-16T19:20:06.096Z"
+    },
+    {
+      "number": "11.4.1",
+      "date": "2017-05-01T09:22:10.918Z"
+    },
+    {
+      "number": "12.0.0",
+      "date": "2017-05-03T10:59:23.382Z"
+    },
+    {
+      "number": "12.1.0",
+      "date": "2017-05-04T17:35:50.166Z"
+    },
+    {
+      "number": "12.1.1",
+      "date": "2017-05-08T22:03:08.925Z"
+    },
+    {
+      "number": "12.1.2",
+      "date": "2017-05-10T15:55:12.541Z"
+    },
+    {
+      "number": "12.1.3",
+      "date": "2017-05-11T16:33:58.881Z"
+    },
+    {
+      "number": "12.1.4",
+      "date": "2017-05-16T12:46:19.796Z"
+    },
+    {
+      "number": "13.0.0-0",
+      "date": "2017-05-17T04:50:33.903Z"
+    },
+    {
+      "number": "13.0.0-1",
+      "date": "2017-05-19T18:34:17.980Z"
+    },
+    {
+      "number": "13.0.0-2",
+      "date": "2017-05-20T06:28:46.900Z"
+    },
+    {
+      "number": "13.0.0-3",
+      "date": "2017-05-23T00:07:35.421Z"
+    },
+    {
+      "number": "13.0.0-4",
+      "date": "2017-05-23T14:50:45.524Z"
+    },
+    {
+      "number": "13.0.0-5",
+      "date": "2017-05-23T14:58:39.920Z"
+    },
+    {
+      "number": "13.0.0-6",
+      "date": "2017-05-23T16:29:28.958Z"
+    },
+    {
+      "number": "13.0.0-7",
+      "date": "2017-05-30T23:12:10.200Z"
+    },
+    {
+      "number": "13.0.0-8",
+      "date": "2017-05-31T16:41:28.309Z"
+    },
+    {
+      "number": "13.0.0-9",
+      "date": "2017-06-01T00:40:15.178Z"
+    },
+    {
+      "number": "13.0.0-10",
+      "date": "2017-06-01T19:50:19.682Z"
+    },
+    {
+      "number": "13.0.0-11",
+      "date": "2017-06-01T23:11:32.289Z"
+    },
+    {
+      "number": "13.0.0-12",
+      "date": "2017-06-02T17:26:09.484Z"
+    },
+    {
+      "number": "13.0.0-13",
+      "date": "2017-06-06T00:38:43.210Z"
+    },
+    {
+      "number": "13.0.0-14",
+      "date": "2017-06-06T00:44:26.800Z"
+    },
+    {
+      "number": "13.0.0-15",
+      "date": "2017-06-06T23:02:41.041Z"
+    },
+    {
+      "number": "13.0.0-16",
+      "date": "2017-06-07T18:04:07.392Z"
+    },
+    {
+      "number": "13.0.0-17",
+      "date": "2017-06-07T22:41:08.617Z"
+    },
+    {
+      "number": "13.0.0-18",
+      "date": "2017-06-08T20:06:36.021Z"
+    },
+    {
+      "number": "13.0.0-19",
+      "date": "2017-06-08T22:27:44.250Z"
+    },
+    {
+      "number": "13.0.0",
+      "date": "2017-06-09T00:08:09.239Z"
+    },
+    {
+      "number": "13.0.1",
+      "date": "2017-06-13T18:36:48.857Z"
+    },
+    {
+      "number": "13.0.2",
+      "date": "2017-06-16T17:26:23.537Z"
+    },
+    {
+      "number": "13.0.3",
+      "date": "2017-06-16T18:33:37.407Z"
+    },
+    {
+      "number": "13.0.4",
+      "date": "2017-06-19T21:48:20.187Z"
+    },
+    {
+      "number": "13.0.5",
+      "date": "2017-06-30T22:42:36.015Z"
+    },
+    {
+      "number": "13.0.6-0",
+      "date": "2017-07-06T17:19:45.480Z"
+    },
+    {
+      "number": "13.0.6",
+      "date": "2017-07-07T08:08:30.238Z"
+    },
+    {
+      "number": "13.0.7",
+      "date": "2017-07-27T15:46:39.488Z"
+    },
+    {
+      "number": "13.0.8-0",
+      "date": "2017-07-28T21:33:02.935Z"
+    },
+    {
+      "number": "13.0.8-1",
+      "date": "2017-07-28T23:13:22.783Z"
+    },
+    {
+      "number": "13.0.8-2",
+      "date": "2017-07-28T23:26:34.086Z"
+    },
+    {
+      "number": "13.0.8-3",
+      "date": "2017-07-31T22:24:02.399Z"
+    },
+    {
+      "number": "13.0.8-4",
+      "date": "2017-07-31T23:28:20.206Z"
+    },
+    {
+      "number": "13.0.8",
+      "date": "2017-08-01T16:52:12.008Z"
+    },
+    {
+      "number": "13.0.9-0",
+      "date": "2017-08-10T07:06:23.613Z"
+    },
+    {
+      "number": "13.0.9",
+      "date": "2017-08-14T21:33:55.833Z"
+    },
+    {
+      "number": "13.0.10",
+      "date": "2017-08-16T21:17:59.577Z"
+    },
+    {
+      "number": "13.0.11",
+      "date": "2017-08-17T17:11:45.853Z"
+    },
+    {
+      "number": "13.1.0",
+      "date": "2017-08-18T19:56:15.853Z"
+    },
+    {
+      "number": "13.1.1",
+      "date": "2017-08-18T21:15:35.760Z"
+    },
+    {
+      "number": "13.2.0-0",
+      "date": "2017-08-21T21:25:56.811Z"
+    },
+    {
+      "number": "13.1.2",
+      "date": "2017-08-21T21:29:27.436Z"
+    },
+    {
+      "number": "13.1.3",
+      "date": "2017-08-21T21:50:25.456Z"
+    },
+    {
+      "number": "13.2.0-1",
+      "date": "2017-08-21T21:55:35.577Z"
+    },
+    {
+      "number": "13.1.4",
+      "date": "2017-08-21T22:59:01.802Z"
+    },
+    {
+      "number": "13.2.0-2",
+      "date": "2017-08-21T23:02:26.858Z"
+    },
+    {
+      "number": "13.1.5",
+      "date": "2017-08-22T05:27:09.835Z"
+    },
+    {
+      "number": "13.2.0-3",
+      "date": "2017-08-22T05:29:39.774Z"
+    },
+    {
+      "number": "13.1.6",
+      "date": "2017-08-22T05:47:09.487Z"
+    },
+    {
+      "number": "13.2.0-4",
+      "date": "2017-08-22T05:54:32.866Z"
+    },
+    {
+      "number": "13.1.7-0",
+      "date": "2017-08-22T23:14:55.872Z"
+    },
+    {
+      "number": "13.1.7",
+      "date": "2017-08-22T23:57:00.679Z"
+    },
+    {
+      "number": "13.2.0-5",
+      "date": "2017-08-23T00:46:58.374Z"
+    },
+    {
+      "number": "13.2.0-6",
+      "date": "2017-08-23T19:58:51.436Z"
+    },
+    {
+      "number": "13.1.8",
+      "date": "2017-08-23T20:02:28.016Z"
+    },
+    {
+      "number": "13.1.9",
+      "date": "2017-08-23T21:25:42.963Z"
+    },
+    {
+      "number": "13.2.0-7",
+      "date": "2017-08-23T21:26:43.428Z"
+    },
+    {
+      "number": "13.2.0-8",
+      "date": "2017-08-24T16:34:45.686Z"
+    },
+    {
+      "number": "13.1.10",
+      "date": "2017-08-24T16:37:27.759Z"
+    },
+    {
+      "number": "13.1.11",
+      "date": "2017-08-24T20:11:31.384Z"
+    },
+    {
+      "number": "13.2.0-9",
+      "date": "2017-08-24T20:12:53.252Z"
+    },
+    {
+      "number": "13.1.12",
+      "date": "2017-08-25T19:03:03.694Z"
+    },
+    {
+      "number": "13.2.0-10",
+      "date": "2017-08-25T19:05:41.153Z"
+    },
+    {
+      "number": "13.1.13",
+      "date": "2017-08-30T09:19:16.258Z"
+    },
+    {
+      "number": "13.2.0-11",
+      "date": "2017-08-30T09:21:46.271Z"
+    },
+    {
+      "number": "13.1.14",
+      "date": "2017-08-31T16:54:09.545Z"
+    },
+    {
+      "number": "13.2.0-12",
+      "date": "2017-08-31T18:38:26.116Z"
+    },
+    {
+      "number": "13.1.15-0",
+      "date": "2017-09-12T18:42:47.580Z"
+    },
+    {
+      "number": "13.1.15",
+      "date": "2017-09-12T19:26:01.595Z"
+    },
+    {
+      "number": "13.2.0",
+      "date": "2017-09-12T22:09:13.430Z"
+    },
+    {
+      "number": "13.2.1",
+      "date": "2017-09-12T22:13:56.331Z"
+    },
+    {
+      "number": "13.3.0",
+      "date": "2017-09-15T22:19:19.452Z"
+    },
+    {
+      "number": "13.3.1",
+      "date": "2017-09-18T08:04:20.134Z"
+    },
+    {
+      "number": "13.3.2",
+      "date": "2017-09-19T17:10:13.540Z"
+    },
+    {
+      "number": "13.3.3",
+      "date": "2017-09-20T14:49:10.756Z"
+    },
+    {
+      "number": "13.3.4",
+      "date": "2017-09-20T15:57:26.004Z"
+    },
+    {
+      "number": "13.4.0-0",
+      "date": "2017-09-20T18:33:35.960Z"
+    },
+    {
+      "number": "13.4.0-1",
+      "date": "2017-09-20T18:44:44.266Z"
+    },
+    {
+      "number": "13.3.5-0",
+      "date": "2017-09-27T21:51:37.117Z"
+    },
+    {
+      "number": "13.3.5",
+      "date": "2017-09-27T22:37:02.298Z"
+    },
+    {
+      "number": "13.4.0",
+      "date": "2017-09-28T20:55:53.373Z"
+    },
+    {
+      "number": "13.4.1",
+      "date": "2017-09-29T21:16:35.535Z"
+    },
+    {
+      "number": "13.4.2",
+      "date": "2017-09-29T23:50:06.115Z"
+    },
+    {
+      "number": "13.5.0",
+      "date": "2017-10-01T06:37:34.776Z"
+    },
+    {
+      "number": "13.5.1",
+      "date": "2017-10-01T06:50:47.364Z"
+    },
+    {
+      "number": "13.5.2",
+      "date": "2017-10-01T16:38:28.500Z"
+    },
+    {
+      "number": "13.5.3",
+      "date": "2017-10-05T16:03:56.278Z"
+    },
+    {
+      "number": "13.5.4",
+      "date": "2017-10-05T20:15:06.139Z"
+    },
+    {
+      "number": "13.5.5",
+      "date": "2017-10-05T20:52:07.468Z"
+    },
+    {
+      "number": "13.5.6",
+      "date": "2017-10-06T16:07:57.195Z"
+    },
+    {
+      "number": "13.5.7",
+      "date": "2017-10-12T17:47:44.116Z"
+    },
+    {
+      "number": "13.5.8",
+      "date": "2017-10-23T19:23:02.704Z"
+    },
+    {
+      "number": "13.6.0-0",
+      "date": "2017-10-25T18:14:42.286Z"
+    },
+    {
+      "number": "13.6.0-1",
+      "date": "2017-10-25T18:30:12.326Z"
+    },
+    {
+      "number": "13.6.0-2",
+      "date": "2017-10-25T18:47:24.289Z"
+    },
+    {
+      "number": "13.6.0-will-change-event-1",
+      "date": "2017-10-25T19:57:27.738Z"
+    },
+    {
+      "number": "13.6.0-will-change-event-2",
+      "date": "2017-10-25T21:47:26.958Z"
+    },
+    {
+      "number": "13.6.0",
+      "date": "2017-10-25T22:32:40.507Z"
+    },
+    {
+      "number": "13.6.1",
+      "date": "2017-10-25T22:53:54.529Z"
+    },
+    {
+      "number": "13.7.0-did-change-event-1",
+      "date": "2017-10-26T16:58:56.293Z"
+    },
+    {
+      "number": "13.7.0",
+      "date": "2017-10-26T21:55:29.491Z"
+    },
+    {
+      "number": "13.7.1",
+      "date": "2017-10-26T23:53:26.628Z"
+    },
+    {
+      "number": "13.8.0-display-layer-change-event-1",
+      "date": "2017-10-30T20:33:41.205Z"
+    },
+    {
+      "number": "13.7.2",
+      "date": "2017-10-30T23:03:25.468Z"
+    },
+    {
+      "number": "13.5.9",
+      "date": "2017-10-30T23:24:23.812Z"
+    },
+    {
+      "number": "13.8.0-display-layer-change-event-2",
+      "date": "2017-10-31T00:06:47.468Z"
+    },
+    {
+      "number": "13.8.0",
+      "date": "2017-10-31T17:09:46.555Z"
+    },
+    {
+      "number": "13.8.1",
+      "date": "2017-11-01T23:59:55.794Z"
+    },
+    {
+      "number": "13.9.0-language-modes-1",
+      "date": "2017-11-02T18:48:30.560Z"
+    },
+    {
+      "number": "13.9.0-language-modes-2",
+      "date": "2017-11-06T17:35:02.544Z"
+    },
+    {
+      "number": "13.8.2",
+      "date": "2017-11-07T23:22:00.982Z"
+    },
+    {
+      "number": "13.8.3",
+      "date": "2017-11-08T21:53:29.632Z"
+    },
+    {
+      "number": "13.8.4",
+      "date": "2017-11-14T18:41:20.914Z"
+    },
+    {
+      "number": "13.8.5",
+      "date": "2017-11-14T22:52:59.840Z"
+    },
+    {
+      "number": "13.5.10",
+      "date": "2017-11-14T23:28:44.332Z"
+    },
+    {
+      "number": "13.9.0-language-modes-3",
+      "date": "2017-11-15T19:51:36.921Z"
+    },
+    {
+      "number": "13.8.6",
+      "date": "2017-11-17T01:13:54.750Z"
+    },
+    {
+      "number": "13.5.11",
+      "date": "2017-11-17T01:21:01.143Z"
+    },
+    {
+      "number": "13.9.0-language-modes-4",
+      "date": "2017-11-17T22:03:36.550Z"
+    },
+    {
+      "number": "13.9.0-language-modes-5",
+      "date": "2017-11-20T17:41:04.078Z"
+    },
+    {
+      "number": "13.9.0-language-modes-6",
+      "date": "2017-11-22T18:34:04.920Z"
+    },
+    {
+      "number": "13.9.0",
+      "date": "2017-11-27T19:26:51.248Z"
+    },
+    {
+      "number": "13.9.1",
+      "date": "2017-11-28T19:02:32.277Z"
+    },
+    {
+      "number": "13.9.2",
+      "date": "2017-11-29T00:37:59.624Z"
+    },
+    {
+      "number": "13.8.7",
+      "date": "2017-11-29T00:38:20.339Z"
+    },
+    {
+      "number": "13.10.0",
+      "date": "2018-01-03T20:20:23.033Z"
+    },
+    {
+      "number": "13.10.1",
+      "date": "2018-01-05T00:33:01.932Z"
+    },
+    {
+      "number": "13.11.0-0",
+      "date": "2018-01-08T20:34:36.205Z"
+    },
+    {
+      "number": "13.11.0-1",
+      "date": "2018-01-08T21:54:42.455Z"
+    },
+    {
+      "number": "13.11.0",
+      "date": "2018-01-09T00:53:06.499Z"
+    },
+    {
+      "number": "13.11.1",
+      "date": "2018-01-11T23:07:23.694Z"
+    },
+    {
+      "number": "13.11.3",
+      "date": "2018-01-12T08:16:54.883Z"
+    },
+    {
+      "number": "13.11.4",
+      "date": "2018-01-17T01:42:05.596Z"
     }
   ],
   "created": "2013-12-31T19:04:03.826Z",
-  "modified": "2016-11-11T19:18:25.776Z",
+  "modified": "2018-01-17T01:42:05.596Z",
   "lastPublisher": {
     "name": "maxbrunsfeld",
     "email": "maxbrunsfeld@gmail.com"
   },
   "owners": [
     {
-      "name": "as-cii",
-      "email": "as-cii@github.com"
+      "email": "daviwil@github.com",
+      "name": "daviwil"
     },
     {
-      "name": "atom",
-      "email": "nathan@github.com"
+      "email": "justin@rafflecopter.com",
+      "name": "leroix"
     },
     {
-      "name": "benogle",
-      "email": "ogle.ben@gmail.com"
+      "email": "smashwilson@gmail.com",
+      "name": "smashwilson"
     },
     {
-      "name": "iolsen",
-      "email": "ian.olsen@gmail.com"
+      "email": "atom@github.com",
+      "name": "atom-team"
     },
     {
-      "name": "kevinsawicki",
-      "email": "kevinsawicki@gmail.com"
+      "email": "ian.olsen@gmail.com",
+      "name": "iolsen"
     },
     {
-      "name": "kuychaco",
-      "email": "kuychaco@gmail.com"
+      "email": "kuychaco@gmail.com",
+      "name": "kuychaco"
     },
     {
-      "name": "maxbrunsfeld",
-      "email": "maxbrunsfeld@gmail.com"
+      "email": "as-cii@github.com",
+      "name": "as-cii"
     },
     {
-      "name": "nathansobo",
-      "email": "nathan@github.com"
+      "email": "nathan@github.com",
+      "name": "nathansobo"
     },
     {
-      "name": "probablycorey",
-      "email": "probablycorey@gmail.com"
+      "email": "kevinsawicki@gmail.com",
+      "name": "kevinsawicki"
     },
     {
-      "name": "zcbenz",
-      "email": "zcbenz@gmail.com"
+      "email": "probablycorey@gmail.com",
+      "name": "probablycorey"
+    },
+    {
+      "email": "zcbenz@gmail.com",
+      "name": "zcbenz"
+    },
+    {
+      "email": "ogle.ben@gmail.com",
+      "name": "benogle"
+    },
+    {
+      "email": "maxbrunsfeld@gmail.com",
+      "name": "maxbrunsfeld"
     }
   ]
 }

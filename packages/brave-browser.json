@@ -1,6 +1,6 @@
 {
   "name": "brave-browser",
-  "version": "0.12.9-2",
+  "version": "0.13.0",
   "description": "Brave laptop and desktop browser",
   "main": "./app/index.js",
   "config": {
@@ -8,6 +8,7 @@
   },
   "scripts": {
     "add-simulated-payment-history": "node ./tools/addSimulatedPaymentHistory.js",
+    "add-simulated-synopsis-visits": "node ./tools/addSimulatedSynopsisVisits.js",
     "build-installer": "node ./tools/buildInstaller.js",
     "build-package": "node ./tools/buildPackage.js",
     "check-security": "nsp check",
@@ -23,10 +24,10 @@
     "electron-rebuild": "electron-rebuild",
     "flow": "flow; test $? -eq 0 -o $? -eq 2",
     "lint": "standard",
-    "prepublish": "npm run webpack",
     "postinstall": "webpack",
     "preload-httpse": "node ./preload-httpse.js",
-    "start": "node ./tools/start.js --debug=5858 --enable-logging --v=0 --enable-extension-activity-logging --enable-sandbox-logging --enable-dcheck",
+    "start-log": "node ./tools/start.js --user-data-dir=brave-development --debug=5858 --enable-logging=stderr --v=1 --enable-extension-activity-logging --enable-sandbox-logging --enable-dcheck",
+    "start": "node ./tools/start.js --user-data-dir=brave-development --debug=5858 --enable-logging --v=0 --enable-extension-activity-logging --enable-sandbox-logging --enable-dcheck",
     "start-brk": "node ./tools/start.js --debug-brk=5858 -enable-logging --v=0 --enable-dcheck",
     "test": "NODE_ENV=test mocha --require babel-register --require babel-polyfill 'test/**/*Test.js'",
     "unittest": "NODE_ENV=test mocha --require babel-register --require babel-polyfill 'test/unit/**/*Test.js'",
@@ -88,10 +89,11 @@
   "license": "MPL-2.0",
   "homepage": "https://www.brave.com/",
   "dependencies": {
-    "abp-filter-parser-cpp": "1.2.x",
     "acorn": "3.2.0",
+    "ad-block": "^2.0.0",
     "aphrodite": "^1.0.0",
     "async": "^2.0.1",
+    "currency-symbol-map": "^3.1.0",
     "electron-localshortcut": "^0.6.0",
     "electron-prebuilt": "github:brave/electron-prebuilt",
     "electron-squirrel-startup": "github:brave/electron-squirrel-startup",
@@ -103,15 +105,17 @@
     "immutablepatch": "github:brave/immutable-js-patch",
     "keytar": "^3.0.0",
     "l20n": "^3.5.1",
-    "ledger-balance": "^0.8.61",
-    "ledger-client": "^0.8.93",
-    "ledger-geoip": "^0.8.72",
-    "ledger-publisher": "^0.8.90",
+    "ledger-balance": "^0.8.63",
+    "ledger-client": "^0.8.97",
+    "ledger-geoip": "^0.8.73",
+    "ledger-publisher": "^0.8.97",
     "lru_cache": "^1.0.0",
     "moment": "^2.15.1",
     "normalize-url": "^1.7.0",
+    "parse-torrent": "^5.8.1",
+    "prettier-bytes": "^1.0.3",
     "punycode": "^2.0.0",
-    "qr-image": "^3.1.0",
+    "qr-image": "3.2.0",
     "random-lib": "2.1.0",
     "react": "^15.0.1",
     "react-dnd": "^2.1.4",
@@ -125,6 +129,7 @@
     "tracking-protection": "1.1.x",
     "underscore": "1.8.3",
     "url-loader": "^0.5.7",
+    "webtorrent-remote": "0.0.9",
     "electron-installer-debian": "^0.3.0",
     "electron-installer-redhat": "^0.3.0"
   },
@@ -146,19 +151,21 @@
     "css-loader": "^0.23.0",
     "electron-builder": "^2.3.1",
     "electron-packager": "github:brave/electron-packager",
-    "electron-rebuild": "^1.1.1",
-    "electron-winstaller": "^2.3.0",
+    "electron-winstaller": "^2.5.1",
     "empty-port": "0.0.2",
+    "enzyme": "^2.6.0",
     "flow-bin": "^0.22.1",
+    "git-rev-sync": "^1.8.0",
     "gulp": "^3.9.0",
     "jsdom": "9.4.1",
     "jsdom-global": "2.0.0",
     "jsdox": "^0.4.9",
+    "json-loader": "^0.5.4",
     "jsonfile": "^2.2.3",
     "less": "^2.5.3",
     "less-loader": "^2.2.1",
-    "level": "^1.4.0",
-    "leveldown": "^1.4.6",
+    "level": "1.5.0",
+    "leveldown": "1.5.0",
     "mkdirp": "^0.5.1",
     "mocha": "^2.3.4",
     "mockery": "^1.7.0",
@@ -170,7 +177,9 @@
     "nsp": "^2.2.0",
     "pre-commit": "github:brave/pre-commit",
     "react-addons-perf": "^15.2.1",
-    "spectron": "github:brave/spectron",
+    "react-addons-test-utils": "^15.4.1",
+    "sinon": "^1.17.6",
+    "spectron": "github:brave/spectron#chromium54",
     "sqlite3": "^3.1.1",
     "standard": "8.1.0",
     "style-loader": "^0.13.0",
@@ -213,12 +222,12 @@
   "engines": {
     "node": ">= 6.1.0"
   },
-  "gitHead": "1f06f0a8fedce02b7c5c488680930c3c36e37135",
-  "_npmVersion": "3.10.9",
-  "_nodeVersion": "7.1.0",
+  "gitHead": "f215a7a241333928623e58d3a67b3199b227a16e",
+  "_npmVersion": "4.0.5",
+  "_nodeVersion": "7.4.0",
   "dist": {
-    "shasum": "b51b20dfe322d94b97267cee4993e113da21722e",
-    "tarball": "http://registry.npmjs.org/brave-browser/-/brave-browser-0.12.9-2.tgz"
+    "shasum": "cc3c62f0f6ca8880675277271e4e6a026758a3a2",
+    "tarball": "http://registry.npmjs.org/brave-browser/-/brave-browser-0.13.0.tgz"
   },
   "versions": [
     {
@@ -228,10 +237,14 @@
     {
       "number": "0.12.9-2",
       "date": "2016-11-11T01:29:54.793Z"
+    },
+    {
+      "number": "0.13.0",
+      "date": "2017-01-06T00:31:56.115Z"
     }
   ],
   "created": "2016-11-10T22:06:54.178Z",
-  "modified": "2016-11-11T01:29:54.793Z",
+  "modified": "2017-01-06T00:31:56.115Z",
   "lastPublisher": {
     "name": "posix4e",
     "email": "posix4e@gmail.com"

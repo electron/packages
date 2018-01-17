@@ -1,11 +1,14 @@
 {
   "name": "live-wallpaper-ecorp",
-  "version": "1.2.2",
-  "description": "Electron-based live wallpaper showing a glitched E Corp / Evil Corp logo.",
+  "productName": "E-Corp Live Wallpaper",
+  "version": "2.0.1",
+  "description": "Electron-based live wallpaper showing a glitched E Corp / Evil Corp logo",
   "license": "MIT",
+  "homepage": "https://sidneys.github.io/live-wallpaper-ecorp",
   "author": {
     "name": "sidneys",
-    "url": "http://sidneys.github.io"
+    "email": "sidneys.github.io@outlook.com",
+    "url": "https://github.com/sidneys"
   },
   "repository": {
     "user": "sidneys",
@@ -20,76 +23,143 @@
     "zip_url": "https://github.com/sidneys/live-wallpaper-ecorp/archive/master.zip",
     "api_url": "https://api.github.com/repos/sidneys/live-wallpaper-ecorp"
   },
-  "homepage": "http://sidneys.github.io/live-wallpaper-ecorp",
+  "engines": {
+    "node": ">=7.0.0"
+  },
   "os": [
     "darwin",
     "linux"
   ],
   "keywords": [
-    "mr robot",
-    "fsociety",
-    "e corp",
-    "evil corp"
+    "pushbullet",
+    "pushes",
+    "notification",
+    "chrome",
+    "safari",
+    "desktop",
+    "electron",
+    "mac",
+    "macos",
+    "osx",
+    "windows",
+    "linux",
+    "ubuntu",
+    "native",
+    "pushover"
   ],
-  "engines": {
-    "node": ">=6.0.0"
+  "preferGlobal": true,
+  "dependencies": {
+    "app-root-path": "^2.0.1",
+    "appdirectory": "^0.1.0",
+    "auto-launch": "git://github.com/sidneys/node-auto-launch.git#master",
+    "babel-cli": "^6.24.1",
+    "babel-preset-electron": "^1.4.15",
+    "chalk": "^1.1.3",
+    "chalkline": "0.0.5",
+    "electron-editor-context-menu": "^1.1.1",
+    "electron-settings": "^3.0.14",
+    "electron-updater": "^1.15.0",
+    "file-type": "^4.3.0",
+    "file-url": "^2.0.2",
+    "fs-extra": "^3.0.1",
+    "html2canvas": "^0.5.0-beta4",
+    "keypath": "^0.0.1",
+    "lodash": "^4.17.4",
+    "minimist": "^1.2.0",
+    "moment": "^2.18.1",
+    "parse-semver": "^1.1.1",
+    "present": "^1.0.0",
+    "read-chunk": "^2.0.0",
+    "semver-compare": "^1.0.0",
+    "simple-reload": "0.0.4",
+    "try-require": "latest"
   },
-  "scripts": {
-    "build": "node ./lib/build.js -- ",
-    "cache-get": "source ./scripts/deploy-bintray.sh && ecd_cache_get && ecd_cache_install",
-    "cache-put": "source ./scripts/deploy-bintray.sh && ecd_cache_pack && ecd_cache_put",
-    "deploy-bintray": "source ./scripts/deploy-bintray.sh && ecd_app_deploy ./build/release/*.zip",
-    "deploy-github": "node ./lib/deploy-github.js -- "
+  "devDependencies": {
+    "electron": "^1.7.1",
+    "electron-builder": "^17.8.0",
+    "electron-connect": "^0.6.1",
+    "electron-prebuilt-compile": "^1.7.1",
+    "fkill": "^4.1.0",
+    "git-branch": "^0.3.0",
+    "glob": "^7.1.1",
+    "gulp": "^3.9.1",
+    "gulp-load-plugins": "^1.5.0",
+    "hash-files": "^1.1.1",
+    "is-ci": "^1.0.10",
+    "json2md": "^1.5.8",
+    "progress": "^2.0.0",
+    "publish-release": "^1.3.3",
+    "yamljs": "^0.2.10"
   },
-  "main": "./app/main.js",
+  "main": "./app/scripts/main/components/application.js",
   "bin": {
     "live-wallpaper-ecorp": "./bin/cli.js"
   },
-  "dependencies": {
-    "chalk": "^1.1.3",
-    "electron-prebuilt": "^1.3.0",
-    "lodash": "^4.14.0",
-    "appdmg": "^0.4.5",
-    "electron-installer-debian": "^0.3.0",
-    "electron-winstaller": "^2.3.3"
-  },
-  "devDependencies": {
-    "electron-packager": "^7.3.0",
-    "filesize": "^3.3.0",
-    "glob": "^7.0.5",
-    "mkdirp": "^0.5.1",
-    "progress": "^1.1.8",
-    "publish-release": "^1.3.1",
-    "rimraf": "^2.5.4",
-    "zip-paths": "^0.3.1"
-  },
-  "optionalDependencies": {
-    "appdmg": "^0.4.5",
-    "electron-installer-debian": "^0.3.0",
-    "electron-winstaller": "^2.3.3"
+  "scripts": {
+    "build": "node ./lib/build.js",
+    "deploy": "node ./lib/deploy.js",
+    "livereload": "gulp",
+    "localsetup": "babel-node ./lib/localsetup.js",
+    "releasenotes": "node ./lib/releasenotes.js",
+    "dev": "electron ./app/scripts/main/components/application.js"
   },
   "build": {
-    "platforms": [
-      "darwin",
-      "linux"
+    "appId": "de.sidneys.live-wallpaper-ecorp",
+    "directories": {
+      "buildResources": "./build/staging",
+      "output": "./build/output"
+    },
+    "files": [
+      "!build",
+      "!gh-pages",
+      "!resources",
+      "!website"
     ],
-    "electronVersion": "1.3.0",
-    "productName": "live-wallpaper-ecorp",
-    "productDescription": "Live Wallpaper",
-    "id": "de.sidneys.live-wallpaper-ecorp",
-    "company": "sidneys.github.io",
-    "category": "public.app-category.utilities",
-    "directoryCache": "build/cache",
-    "directoryStaging": "build/staging",
-    "directoryRelease": "build/release",
-    "iconUrl": "https://github.com/sidneys/live-wallpaper-ecorp/raw/master/icons/win32/icon-app.ico"
+    "mac": {
+      "category": "public.app-category.utilities",
+      "icon": "./icons/darwin/icon.icns",
+      "target": [
+        "dmg",
+        "zip"
+      ]
+    },
+    "win": {
+      "icon": "./icons/win32/icon.ico",
+      "target": [
+        "nsis"
+      ]
+    },
+    "linux": {
+      "category": "Utility",
+      "icon": "./icons/linux",
+      "target": [
+        "AppImage",
+        "deb",
+        "pacman",
+        "rpm"
+      ]
+    },
+    "dmg": {
+      "background": "./icons/darwin/background-setup.png",
+      "icon": "./icons/darwin/icon-setup.icns"
+    },
+    "nsis": {
+      "artifactName": "${name}-${version}-setup.${ext}",
+      "deleteAppDataOnUninstall": true,
+      "installerHeader": "./icons/win32/header-setup.bmp",
+      "installerHeaderIcon": "./icons/win32/icon.ico",
+      "installerIcon": "./icons/win32/icon-setup.ico",
+      "installerSidebar": "./icons/win32/background-setup.bmp",
+      "oneClick": false,
+      "runAfterFinish": false
+    }
   },
-  "gitHead": "310eee82e07e56f25552aba73d627504ac84dcad",
-  "_npmVersion": "3.10.6",
-  "_nodeVersion": "6.3.1",
+  "gitHead": "ec76797acaff8b5cc899637dae21b0f906c5604e",
+  "_npmVersion": "4.6.1",
+  "_nodeVersion": "7.10.0",
   "dist": {
-    "shasum": "cf823bb64cee3f14f02a99c54c38e1298037051a",
-    "tarball": "http://registry.npmjs.org/live-wallpaper-ecorp/-/live-wallpaper-ecorp-1.2.2.tgz"
+    "shasum": "01b1bc83b4e5c2d444377cac637a2da788a2fe10",
+    "tarball": "https://registry.npmjs.org/live-wallpaper-ecorp/-/live-wallpaper-ecorp-2.0.1.tgz"
   },
   "versions": [
     {
@@ -139,13 +209,25 @@
     {
       "number": "1.2.2",
       "date": "2016-07-26T16:07:11.432Z"
+    },
+    {
+      "number": "1.5.5",
+      "date": "2016-12-23T20:26:33.487Z"
+    },
+    {
+      "number": "1.6.0",
+      "date": "2016-12-27T11:01:21.261Z"
+    },
+    {
+      "number": "2.0.1",
+      "date": "2017-05-18T16:02:30.622Z"
     }
   ],
   "created": "2016-07-05T18:52:09.698Z",
-  "modified": "2016-07-26T16:07:11.432Z",
+  "modified": "2017-05-18T16:02:30.622Z",
   "lastPublisher": {
     "name": "sidneys",
-    "email": "sidney.bofah@googlemail.com"
+    "email": "sidneys.github.io@outlook.com"
   },
   "owners": [
     {

@@ -1,6 +1,6 @@
 {
   "name": "electron-localshortcut",
-  "version": "1.0.0",
+  "version": "3.1.0",
   "description": "register/unregister a keyboard shortcut locally to a BrowserWindow instance, without using a Menu",
   "repository": {
     "user": "parro-it",
@@ -20,8 +20,11 @@
     "name": "andrea@parro.it"
   },
   "scripts": {
-    "start": "electron test.js",
-    "test": "xo"
+    "doc": "documentation readme index.js --section=API",
+    "start": "electron example.js",
+    "test": "electron test.js | faucet && xo",
+    "setup-dev": "npm rebuild --runtime=electron --target=1.6.7 --disturl=https://atom.io/download/atom-shell --abi=51",
+    "tape": "DEBUG=electron-localshortcut electron test.js"
   },
   "keywords": [
     "electron",
@@ -32,18 +35,33 @@
     "index.js"
   ],
   "devDependencies": {
-    "electron": "^1.4.4",
-    "xo": "^0.17.0"
+    "delay": "^2.0.0",
+    "documentation": "^4.0.0-rc.1",
+    "electron": "~1.6.7",
+    "faucet": "^0.0.1",
+    "p-electron": "^0.8.0",
+    "p-event": "^1.1.0",
+    "p-timeout": "^1.0.0",
+    "robotjs": "^0.4.7",
+    "tape-async": "^2.3.0",
+    "xo": "^0.19.0"
   },
-  "gitHead": "05499612fdcb9132b960cbc71ac1f65dedc09c1c",
+  "dependencies": {
+    "debug": "^2.6.8",
+    "electron-is-accelerator": "^0.1.0",
+    "keyboardevent-from-electron-accelerator": "^1.1.0",
+    "keyboardevents-areequal": "^0.2.1"
+  },
+  "gitHead": "900e5909b7e24ba8e39850dc9a3f422500ac5f5d",
   "homepage": "https://github.com/parro-it/electron-localshortcut#readme",
-  "_npmVersion": "3.10.8",
-  "_nodeVersion": "7.0.0",
+  "_npmVersion": "5.5.1",
+  "_nodeVersion": "9.3.0",
   "dist": {
-    "shasum": "e9c1ba267c75376e1b254af206b9ff856360a67a",
-    "tarball": "http://registry.npmjs.org/electron-localshortcut/-/electron-localshortcut-1.0.0.tgz"
+    "integrity": "sha512-MgL/j5jdjW7iA0R6cI7S045B0GlKXWM1FjjujVPjlrmyXRa6yH0bGSaIAfxXAF9tpJm3pLEiQzerYHkRh9JG/A==",
+    "shasum": "10c1ffd537b8d39170aaf6e1551341f7780dd2ce",
+    "tarball": "https://registry.npmjs.org/electron-localshortcut/-/electron-localshortcut-3.1.0.tgz"
   },
-  "stars": 2,
+  "stars": 6,
   "versions": [
     {
       "number": "0.0.1",
@@ -92,10 +110,46 @@
     {
       "number": "1.0.0",
       "date": "2016-10-27T17:56:09.788Z"
+    },
+    {
+      "number": "1.1.0",
+      "date": "2017-03-07T19:21:07.688Z"
+    },
+    {
+      "number": "1.1.1",
+      "date": "2017-03-22T19:42:50.448Z"
+    },
+    {
+      "number": "2.0.0",
+      "date": "2017-05-30T18:30:13.500Z"
+    },
+    {
+      "number": "2.0.2",
+      "date": "2017-06-23T13:38:59.211Z"
+    },
+    {
+      "number": "3.0.0",
+      "date": "2017-07-27T22:30:18.525Z"
+    },
+    {
+      "number": "3.0.1",
+      "date": "2017-07-27T22:54:44.713Z"
+    },
+    {
+      "number": "3.0.2",
+      "date": "2017-08-07T06:04:33.213Z"
+    },
+    {
+      "number": "3.0.4",
+      "date": "2018-01-03T08:36:42.127Z"
+    },
+    {
+      "number": "3.1.0",
+      "date": "2018-01-04T18:52:52.344Z"
     }
   ],
   "created": "2015-11-02T17:43:08.709Z",
-  "modified": "2016-11-27T02:55:54.447Z",
+  "modified": "2018-01-04T18:52:52.344Z",
   "lastPublisher": {
     "name": "parroit",
     "email": "andrea@parro.it"

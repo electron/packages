@@ -1,6 +1,6 @@
 {
   "name": "electron-load-devtool",
-  "version": "0.4.0",
+  "version": "1.0.0",
   "description": "Easily load dev-tool for electron",
   "license": "MIT",
   "repository": {
@@ -21,9 +21,30 @@
     "email": "akameco.t@gmail.com",
     "url": "akameco.github.io"
   },
+  "engines": {
+    "node": ">=6"
+  },
   "scripts": {
+    "add-contributor": "all-contributors add",
+    "precommit": "lint-staged",
+    "fmt": "prettier --write '**/*.{js,json,md}'",
     "start": "electron fixture.js",
-    "test": "xo"
+    "test": "eslint . --fix"
+  },
+  "lint-staged": {
+    "*.js": [
+      "fmt",
+      "test",
+      "git add"
+    ],
+    "*.json": [
+      "fmt",
+      "git add"
+    ],
+    "*.md": [
+      "fmt",
+      "git add"
+    ]
   },
   "files": [
     "index.js"
@@ -34,26 +55,25 @@
     "extention"
   ],
   "dependencies": {
-    "electron-is-dev": "^0.1.2"
+    "electron-is-dev": "^0.3.0"
   },
   "devDependencies": {
-    "electron": "^1.4.5",
-    "xo": "^0.17.0"
+    "all-contributors-cli": "^4.10.0",
+    "electron": "^1.7.8",
+    "eslint": "^4.13.1",
+    "eslint-config-precure": "^0.11.3",
+    "husky": "^0.14.3",
+    "lint-staged": "^6.0.0",
+    "prettier": "^1.9.2"
   },
-  "xo": {
-    "esnext": true,
-    "envs": [
-      "node",
-      "browser"
-    ]
-  },
-  "gitHead": "70a532f360921d2c0992feadac7e30fe7476f1c3",
+  "gitHead": "5ef961eae23ca3df526d53eef6db46d1dbdd9f4f",
   "homepage": "https://github.com/akameco/electron-load-devtool#readme",
-  "_npmVersion": "3.10.8",
-  "_nodeVersion": "7.0.0",
+  "_npmVersion": "5.5.1",
+  "_nodeVersion": "9.2.0",
   "dist": {
-    "shasum": "938d13440afa293d65713ec8e4416198e8f34ca7",
-    "tarball": "http://registry.npmjs.org/electron-load-devtool/-/electron-load-devtool-0.4.0.tgz"
+    "integrity": "sha512-yX1cdVvtBI9YbHFFUvH5/cuVObJkT9ExD+FcBjmbUfsswKdfyQ/cZIA2+YQBENIy9iqAsjeoWIeHMXFzVZFutQ==",
+    "shasum": "a6e8f532ce2a8d4de49f21f47e0fc87f1e288a00",
+    "tarball": "https://registry.npmjs.org/electron-load-devtool/-/electron-load-devtool-1.0.0.tgz"
   },
   "versions": [
     {
@@ -71,10 +91,22 @@
     {
       "number": "0.4.0",
       "date": "2016-11-03T17:15:21.231Z"
+    },
+    {
+      "number": "0.5.0",
+      "date": "2017-02-24T03:20:48.930Z"
+    },
+    {
+      "number": "0.5.1",
+      "date": "2017-03-07T04:45:37.745Z"
+    },
+    {
+      "number": "1.0.0",
+      "date": "2017-12-12T21:27:14.918Z"
     }
   ],
   "created": "2016-08-15T18:22:16.587Z",
-  "modified": "2016-11-03T17:15:21.231Z",
+  "modified": "2017-12-12T21:27:14.918Z",
   "lastPublisher": {
     "name": "akameco",
     "email": "akameco.t@gmail.com"

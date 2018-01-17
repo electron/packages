@@ -1,15 +1,15 @@
 {
   "name": "ko-editor",
   "productName": "ko",
-  "version": "0.9.17",
+  "version": "0.30.0",
   "description": "an editor for macOS",
-  "main": "js/main.js",
+  "main": "js/main/main.js",
   "preferGlobal": true,
   "bin": {
     "ko": "./bin/ko"
   },
   "scripts": {
-    "dist": "./bin/build.sh && build"
+    "test": "mocha -R dot --compilers coffee:coffee-script/register coffee/test"
   },
   "repository": {
     "user": "monsterkodi",
@@ -26,80 +26,84 @@
   },
   "keywords": [
     "mac",
-    "osx",
-    "macOS",
     "editor",
-    "coffee",
-    "script",
     "coffee-script",
-    "coffeescript"
+    "electron"
   ],
   "license": "Unlicense",
   "author": {
     "name": "monsterkodi"
   },
-  "build": {
-    "appId": "net.monsterkodi.ko",
-    "app-category-type": "public.app-category.utilities",
-    "asar": false,
-    "productName": "ko",
-    "mac": {
-      "background": "build/background.png",
-      "target": [
-        "dmg"
-      ],
-      "contents": [
-        {
-          "x": 100,
-          "y": 180,
-          "type": "link",
-          "path": "/Applications"
-        },
-        {
-          "x": 100,
-          "y": 70,
-          "type": "file"
-        }
-      ]
-    }
-  },
-  "devDependencies": {
-    "electron-builder": "^5.10.1",
-    "electron-prebuilt": "^1.2.1"
-  },
   "dependencies": {
-    "ansi-keycode": "0.0.0",
-    "chokidar": "^1.5.2",
-    "coffee-script": "^1.10.0",
+    "assert": "^1.4.1",
+    "chai": "^3.5.0",
+    "chalk": "^1.1.3",
+    "chokidar": "^1.6.1",
+    "chrome-remote-interface": "^0.20.0",
+    "coffee-script": "^1.12.5",
     "colors": "^1.1.2",
     "dmg": "^0.1.0",
-    "download": "^5.0.2",
+    "download": "^5.0.3",
     "entities": "^1.1.1",
-    "eve": "^0.5.0",
-    "fs-extra": "^0.30.0",
-    "fuzzy": "^0.1.1",
-    "html-entities": "^1.2.0",
-    "karg": ">=1.0.9",
-    "keycode": "^2.1.2",
-    "lodash": "^4.13.1",
+    "eve": "^0.5.4",
+    "font-awesome": "^4.7.0",
+    "fs-extra": "^2.1.2",
+    "fuzzaldrin": "^2.1.0",
+    "fuzzy": "^0.1.3",
+    "html-entities": "^1.2.1",
+    "js-beautify": "^1.6.12",
+    "karg": ">=1.0.10",
+    "keycode": "^2.1.8",
+    "kxk": "^0.16.3",
+    "lodash": "^4.17.4",
+    "mocha": "^3.3.0",
     "nconf": "^0.8.4",
-    "noon": ">=1.0.12",
-    "opener": "^1.4.1",
-    "performance-now": "^0.2.0",
-    "pty.js": "^0.3.1",
+    "node-pty": "^0.6.4",
+    "noon": ">=1.1.0",
+    "opener": "^1.4.3",
+    "performance-now": "^2.1.0",
+    "pug": "^2.0.0-beta.12",
+    "seamless-immutable": "^7.1.2",
+    "sorcery": "^0.10.0",
+    "source-map": "^0.5.6",
     "sprintf-js": "^1.0.3",
-    "three": "^0.79.0",
+    "textextensions": "^2.1.0",
+    "three": "^0.85.2",
+    "traceback": "^0.3.1",
     "underscore.string": "^3.3.4",
     "walkdir": "0.0.11",
-    "write-file-atomic": "^1.1.4"
+    "write-file-atomic": "^1.3.3"
   },
-  "gitHead": "99728122654f49157c5c2f149b9166b74551cac3",
+  "devDependencies": {
+    "appdmg": "^0.4.5",
+    "devtron": "^1.4.0",
+    "electron": "^1.6.6",
+    "electron-packager": "^8.6.0",
+    "electron-rebuild": "^1.5.7"
+  },
+  "coffeelintConfig": {
+    "no_trailing_whitespace": {
+      "level": "ignore",
+      "allowed_in_comments": true,
+      "allowed_in_empty_lines": true
+    },
+    "max_line_length": {
+      "value": 150,
+      "level": "warn",
+      "limitComments": false
+    },
+    "indentation": {
+      "value": 4,
+      "level": "warn"
+    }
+  },
+  "gitHead": "96eea0ca13b1fff7dc12579d666ad5981539a994",
   "homepage": "https://github.com/monsterkodi/ko#readme",
-  "_npmVersion": "3.10.5",
-  "_nodeVersion": "6.3.0",
+  "_npmVersion": "4.5.0",
+  "_nodeVersion": "7.7.2",
   "dist": {
-    "shasum": "d8c76b63320b2a6cf6c88909df40d4486ed6add7",
-    "tarball": "http://registry.npmjs.org/ko-editor/-/ko-editor-0.9.17.tgz"
+    "shasum": "eae93208d498622c3b9b482a819f952111abc10e",
+    "tarball": "https://registry.npmjs.org/ko-editor/-/ko-editor-0.30.0.tgz"
   },
   "versions": [
     {
@@ -149,10 +153,34 @@
     {
       "number": "0.9.17",
       "date": "2016-08-10T22:44:08.557Z"
+    },
+    {
+      "number": "0.9.19",
+      "date": "2017-03-05T15:12:56.783Z"
+    },
+    {
+      "number": "0.9.20",
+      "date": "2017-03-10T00:02:25.319Z"
+    },
+    {
+      "number": "0.9.32",
+      "date": "2017-03-28T19:53:14.451Z"
+    },
+    {
+      "number": "0.9.33",
+      "date": "2017-04-01T15:46:13.159Z"
+    },
+    {
+      "number": "0.25.0",
+      "date": "2017-05-04T23:11:34.039Z"
+    },
+    {
+      "number": "0.30.0",
+      "date": "2017-05-22T20:00:15.720Z"
     }
   ],
   "created": "2016-07-25T00:02:42.469Z",
-  "modified": "2016-08-10T22:44:08.557Z",
+  "modified": "2017-05-22T20:00:15.720Z",
   "lastPublisher": {
     "name": "monsterkodi",
     "email": "monsterkodi@gmx.net"

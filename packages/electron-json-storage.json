@@ -1,24 +1,24 @@
 {
   "name": "electron-json-storage",
-  "version": "2.1.0",
+  "version": "4.0.2",
   "description": "Easily write and read user settings in Electron apps",
   "main": "lib/storage.js",
-  "homepage": "https://github.com/jviotti/electron-json-storage",
+  "homepage": "https://github.com/electron-userland/electron-json-storage",
   "repository": {
-    "user": "jviotti",
+    "user": "electron-userland",
     "repo": "electron-json-storage",
     "host": "github.com",
     "branch": "master",
     "apiHost": "api.github.com",
-    "tarball_url": "https://api.github.com/repos/jviotti/electron-json-storage/tarball/master",
-    "clone_url": "https://github.com/jviotti/electron-json-storage",
-    "https_url": "https://github.com/jviotti/electron-json-storage",
-    "travis_url": "https://travis-ci.org/jviotti/electron-json-storage",
-    "zip_url": "https://github.com/jviotti/electron-json-storage/archive/master.zip",
-    "api_url": "https://api.github.com/repos/jviotti/electron-json-storage"
+    "tarball_url": "https://api.github.com/repos/electron-userland/electron-json-storage/tarball/master",
+    "clone_url": "https://github.com/electron-userland/electron-json-storage",
+    "https_url": "https://github.com/electron-userland/electron-json-storage",
+    "travis_url": "https://travis-ci.org/electron-userland/electron-json-storage",
+    "zip_url": "https://github.com/electron-userland/electron-json-storage/archive/master.zip",
+    "api_url": "https://api.github.com/repos/electron-userland/electron-json-storage"
   },
   "scripts": {
-    "test": "electron-mocha --recursive tests -R spec && electron-mocha --renderer --recursive tests -R spec",
+    "test": "npm run lint && electron-mocha --recursive tests -R spec && electron-mocha --renderer --recursive tests -R spec",
     "lint": "jshint --config .jshintrc --reporter unix lib tests",
     "readme": "jsdoc2md --template doc/README.hbs lib/storage.js > README.md"
   },
@@ -32,30 +32,32 @@
   ],
   "author": {
     "name": "Juan Cruz Viotti",
-    "email": "jviottidc@gmail.com"
+    "email": "jv@jviotti.com"
   },
   "license": "MIT",
   "devDependencies": {
-    "electron-mocha": "^2.3.1",
+    "electron-mocha": "^3.3.0",
     "electron-prebuilt": "^1.2.7",
-    "jsdoc-to-markdown": "^1.1.1",
+    "jsdoc-to-markdown": "^2.0.1",
     "jshint": "^2.9.1",
-    "mochainon": "^1.0.0"
+    "mochainon": "^1.0.0",
+    "tmp": "0.0.31"
   },
   "dependencies": {
     "async": "^2.0.0",
-    "exists-file": "^2.1.0",
     "lodash": "^4.0.1",
-    "rimraf": "^2.5.1"
+    "mkdirp": "^0.5.1",
+    "rimraf": "^2.5.1",
+    "rwlock": "^5.0.0"
   },
-  "gitHead": "404dc90b17dd4f69aae4e6aca72a60182ba271a0",
-  "_npmVersion": "3.9.6",
+  "gitHead": "a07f96e9fbe095694a5f19c0156275a1aa7131bc",
+  "_npmVersion": "3.10.10",
   "_nodeVersion": "6.1.0",
   "dist": {
-    "shasum": "e48f9241f32282338fd8072c02e99065eec7679f",
-    "tarball": "http://registry.npmjs.org/electron-json-storage/-/electron-json-storage-2.1.0.tgz"
+    "shasum": "c0d662ccd01bc6567d6078f17a6842ac74328ce4",
+    "tarball": "https://registry.npmjs.org/electron-json-storage/-/electron-json-storage-4.0.2.tgz"
   },
-  "stars": 5,
+  "stars": 16,
   "versions": [
     {
       "number": "1.0.0",
@@ -84,10 +86,70 @@
     {
       "number": "2.1.0",
       "date": "2016-11-13T11:05:42.798Z"
+    },
+    {
+      "number": "2.1.1",
+      "date": "2017-01-08T19:30:13.885Z"
+    },
+    {
+      "number": "3.0.0",
+      "date": "2017-01-08T19:54:35.545Z"
+    },
+    {
+      "number": "3.0.1",
+      "date": "2017-01-30T15:53:58.184Z"
+    },
+    {
+      "number": "3.0.2",
+      "date": "2017-03-24T23:17:31.110Z"
+    },
+    {
+      "number": "3.0.3",
+      "date": "2017-03-30T16:51:03.519Z"
+    },
+    {
+      "number": "3.0.4",
+      "date": "2017-03-30T17:15:53.351Z"
+    },
+    {
+      "number": "3.0.5",
+      "date": "2017-04-14T16:35:56.106Z"
+    },
+    {
+      "number": "3.0.6",
+      "date": "2017-06-29T21:20:51.948Z"
+    },
+    {
+      "number": "3.0.7",
+      "date": "2017-07-27T17:34:58.714Z"
+    },
+    {
+      "number": "3.1.0",
+      "date": "2017-08-29T21:57:47.850Z"
+    },
+    {
+      "number": "3.1.1",
+      "date": "2017-09-27T18:01:18.239Z"
+    },
+    {
+      "number": "3.2.0",
+      "date": "2017-10-12T09:51:05.908Z"
+    },
+    {
+      "number": "4.0.0",
+      "date": "2017-10-18T22:19:01.980Z"
+    },
+    {
+      "number": "4.0.1",
+      "date": "2017-10-19T18:14:33.632Z"
+    },
+    {
+      "number": "4.0.2",
+      "date": "2017-10-20T22:29:24.461Z"
     }
   ],
   "created": "2016-01-26T00:37:49.647Z",
-  "modified": "2016-11-27T02:56:54.374Z",
+  "modified": "2017-11-24T05:13:47.919Z",
   "lastPublisher": {
     "name": "jviotti",
     "email": "jviotti@openmailbox.org"

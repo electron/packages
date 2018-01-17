@@ -1,0 +1,87 @@
+{
+  "name": "electron-ipc-bus2",
+  "version": "2.0.0",
+  "description": "A safe IPC bus for applications built on Electron.",
+  "repository": {
+    "user": "MichaelVasseur",
+    "repo": "electron-ipc-bus",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/MichaelVasseur/electron-ipc-bus/tarball/master",
+    "clone_url": "https://github.com/MichaelVasseur/electron-ipc-bus",
+    "https_url": "https://github.com/MichaelVasseur/electron-ipc-bus",
+    "travis_url": "https://travis-ci.org/MichaelVasseur/electron-ipc-bus",
+    "zip_url": "https://github.com/MichaelVasseur/electron-ipc-bus/archive/master.zip",
+    "api_url": "https://api.github.com/repos/MichaelVasseur/electron-ipc-bus"
+  },
+  "keywords": [],
+  "author": {
+    "name": "Michael Vasseur"
+  },
+  "license": "MIT",
+  "homepage": "https://github.com/MichaelVasseur/electron-ipc-bus#readme",
+  "main": "./lib/electron-ipc-bus.js",
+  "types": "./lib/electron-ipc-bus.d.ts",
+  "dependencies": {
+    "@types/electron": "^1.4.31",
+    "@types/node": "^0.0.3",
+    "@types/uuid": "^2.0.29",
+    "easy-ipc": "^0.2.2",
+    "eventemitter2": "^4.1.2"
+  },
+  "devDependencies": {
+    "del": "^2.2.2",
+    "del-cli": "^0.2.1",
+    "dts-bundle": "^0.6.1",
+    "tslint": "^4.1.1",
+    "tslint-microsoft-contrib": "^4.0.1",
+    "typescript": "^2.1.4",
+    "typings": "^2.0.0"
+  },
+  "scripts": {
+    "clean": "del-cli ./lib ./build ./dist",
+    "build": "npm run build-js && npm run build-declaration",
+    "build-js": "tsc -p ./tsconfig/tsconfig-js.json",
+    "build-declaration": "npm run build-declaration-ts && npm run build-declaration-dts-bundle",
+    "build-declaration-ts": "tsc -p ./tsconfig/tsconfig-declaration.json",
+    "build-declaration-dts-generator": "dts-generator --name electron-ipc-bus --project . --out ./lib/index.d.ts",
+    "build-declaration-dts-bundle": "dts-bundle --outputAsModuleFolder --name electron-ipc-bus --main ./lib/electron-ipc-bus.d.ts --removeSource",
+    "tsc": "tsc",
+    "tslint": "tslint"
+  },
+  "gitHead": "72e4b2a8e42bc9e865cac32a6040f7db69b6d4ac",
+  "_npmVersion": "5.3.0",
+  "_nodeVersion": "6.10.2",
+  "dist": {
+    "integrity": "sha512-DNVZf3Arc8lLyVSzopVSix+oh6I6f98USvcMT2jVfAzAK6XCbMR/rNDy/Oo9l8mO6zgyHDmB71oZ/NyEKf7cTw==",
+    "shasum": "847c13d102d4204363766e72d0ef7574ecbf2d2f",
+    "tarball": "https://registry.npmjs.org/electron-ipc-bus2/-/electron-ipc-bus2-2.0.0.tgz"
+  },
+  "versions": [
+    {
+      "number": "2.0.0",
+      "date": "2017-08-09T21:41:09.700Z"
+    }
+  ],
+  "created": "2017-08-09T21:41:09.700Z",
+  "modified": "2017-08-09T21:41:09.700Z",
+  "lastPublisher": {
+    "name": "connorcetgi",
+    "email": "connorc@etgi.us"
+  },
+  "owners": [
+    {
+      "name": "Michael Vasseur",
+      "email": "michael.vasseur@thomsonreuters.com"
+    },
+    {
+      "name": "Emmanuel Kimmerlin",
+      "email": "emmanuel.kimmerlin@thomsonreuters.com"
+    },
+    {
+      "name": "Connor Christie",
+      "email": "connorc@etgi.us"
+    }
+  ]
+}

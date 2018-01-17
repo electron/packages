@@ -1,0 +1,68 @@
+{
+  "name": "makestack-installer",
+  "version": "0.2.1",
+  "license": "(CC0-1.0 OR MIT)",
+  "main": "./main/index.js",
+  "description": "MakeStack Installer ====================",
+  "scripts": {
+    "build:macos": "NODE_ENV=production webpack && electron-packager dist --platform darwin --asar --overwrite --out app --arch x64",
+    "build:linux": "NODE_ENV=production webpack && electron-packager dist --platform linux  --asar --overwrite --out app --arch x64",
+    "dev": "USE_LOCAL_MOCK_GITHUB_SERVER=1 concurrently --kill-others 'yarn run renderer' 'yarn run main'",
+    "main": "NODE_ENV=development ./scripts/run-gui-app npx electron .",
+    "renderer": "NODE_ENV=development webpack-dev-server --hot --inline --port 9080"
+  },
+  "dependencies": {
+    "makestack": "^0.2.1",
+    "node-fetch": "^1.7.3",
+    "vue": "^2.5.13",
+    "vue-router": "^3.0.1",
+    "whatwg-fetch": "^2.0.3"
+  },
+  "devDependencies": {
+    "babel-core": "^6.26.0",
+    "babel-loader": "^7.1.2",
+    "concurrently": "^3.5.0",
+    "copy-webpack-plugin": "^4.1.1",
+    "css-loader": "^0.28.7",
+    "electron": "^1.7.8",
+    "electron-packager": "^10.1.0",
+    "html-loader": "^0.5.1",
+    "html-webpack-plugin": "^2.30.1",
+    "node-sass": "^4.5.3",
+    "postcss-loader": "^2.0.6",
+    "sass-loader": "^6.0.6",
+    "vue-loader": "^13.0.5",
+    "vue-template-compiler": "^2.5.13",
+    "webpack": "^3.6.0",
+    "webpack-dev-server": "^2.9.1"
+  },
+  "_npmVersion": "5.6.0",
+  "_nodeVersion": "9.2.1",
+  "dist": {
+    "integrity": "sha512-25c07u1brRjXVVBcZSbLE11zhZStvpHI+JLEWdWvlYr3cSST61v38SQy4BP7GrA7mqWmp3neBwRMqbzCUH1xwQ==",
+    "shasum": "1188dd3ee6887bfb23d205ab7f1f996979df3c37",
+    "tarball": "https://registry.npmjs.org/makestack-installer/-/makestack-installer-0.2.1.tgz"
+  },
+  "versions": [
+    {
+      "number": "0.2.0",
+      "date": "2017-12-19T14:26:03.671Z"
+    },
+    {
+      "number": "0.2.1",
+      "date": "2017-12-21T02:02:21.763Z"
+    }
+  ],
+  "created": "2017-12-19T14:26:03.671Z",
+  "modified": "2017-12-21T02:02:21.763Z",
+  "lastPublisher": {
+    "name": "seiyanuta",
+    "email": "nuta@seiya.me"
+  },
+  "owners": [
+    {
+      "name": "seiyanuta",
+      "email": "nuta@seiya.me"
+    }
+  ]
+}

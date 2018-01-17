@@ -1,7 +1,7 @@
 {
   "name": "djia",
   "description": "The most recent Dow Jones opening for a date.",
-  "version": "1.3.0",
+  "version": "1.3.1",
   "author": {
     "name": "Luke Karrys"
   },
@@ -12,29 +12,31 @@
     ]
   },
   "dependencies": {
-    "async": "^2.0.1",
-    "debug": "^2.2.0",
-    "flat-cache": "^1.2.1",
-    "localforage": "^1.4.2",
-    "moment": "^2.14.1",
-    "moment-timezone": "^0.5.5",
-    "request": "^2.74.0",
-    "xhr": "^2.2.2"
+    "async": "^2.5.0",
+    "debug": "^3.0.0",
+    "flat-cache": "^1.2.2",
+    "localforage": "^1.5.0",
+    "moment": "^2.18.1",
+    "moment-timezone": "^0.5.13",
+    "request": "^2.81.0",
+    "xhr": "^2.4.0"
   },
   "devDependencies": {
-    "babel-cli": "^6.5.2",
-    "babel-preset-es2015": "^6.13.2",
+    "babel-cli": "^6.26.0",
+    "babel-preset-es2015": "^6.24.1",
     "babel-tape-runner": "^2.0.1",
     "babelify": "^7.3.0",
-    "browserify": "^13.1.0",
-    "electron-prebuilt": "^1.3.2",
-    "git-validate": "^2.1.4",
-    "rimraf": "^2.5.4",
+    "browserify": "^14.4.0",
+    "electron": "^1.7.5",
+    "git-validate": "^2.2.2",
+    "nock": "^9.0.14",
+    "rimraf": "^2.6.1",
     "run-browser": "^2.0.2",
-    "standard": "^8.0.0-beta.3",
+    "standard": "^10.0.3",
     "tap-spec": "^4.1.1",
-    "tape": "^4.6.0",
-    "tape-run": "^2.1.4"
+    "tape": "^4.8.0",
+    "tape-run": "^3.0.0",
+    "xhr-mock": "^1.9.0"
   },
   "files": [
     "lib/*"
@@ -74,7 +76,7 @@
     "compile": "babel src --out-dir lib",
     "lint": "standard",
     "node-test": "babel-tape-runner test/{index,dowHasData}.js | tap-spec",
-    "prepublish": "npm run compile",
+    "prepare": "npm run compile",
     "start": "run-browser test/browser.js",
     "test": "npm run node-test && npm run browser-test",
     "validate": "npm ls"
@@ -84,12 +86,13 @@
       "**/lib/**"
     ]
   },
-  "gitHead": "4fd8b32312cc7caa5112a5366b87b69c37c22a75",
-  "_npmVersion": "3.10.5",
-  "_nodeVersion": "5.12.0",
+  "gitHead": "cc1c02eebc8f4aff4f9e8e06ef5e1cc82f9dffe8",
+  "_npmVersion": "5.3.0",
+  "_nodeVersion": "8.4.0",
   "dist": {
-    "shasum": "e2d0efad9fd857662bdcc5df96a02a2be11ebcfa",
-    "tarball": "http://registry.npmjs.org/djia/-/djia-1.3.0.tgz"
+    "integrity": "sha512-+IIRGgrWAyZjMA8JoQSItVYTCmOsb+lNiQDxEHKICKHFyg0B+zxFO0uhrPBTKdj3lXkktD1ZTolzYsmHspl49A==",
+    "shasum": "ff1935dee5baef2a95444659f2b826bd918a3205",
+    "tarball": "https://registry.npmjs.org/djia/-/djia-1.3.1.tgz"
   },
   "versions": [
     {
@@ -155,10 +158,14 @@
     {
       "number": "1.3.0",
       "date": "2016-08-27T18:23:37.776Z"
+    },
+    {
+      "number": "1.3.1",
+      "date": "2017-08-21T18:24:58.558Z"
     }
   ],
   "created": "2015-05-01T18:49:54.427Z",
-  "modified": "2016-08-27T18:23:37.776Z",
+  "modified": "2017-08-21T18:24:58.558Z",
   "lastPublisher": {
     "name": "lukekarrys",
     "email": "luke@lukekarrys.com"

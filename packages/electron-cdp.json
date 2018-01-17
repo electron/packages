@@ -1,0 +1,110 @@
+{
+  "name": "electron-cdp",
+  "description": "Automatically generated electron debugger wrapper (Chrome Debugging Protocol)",
+  "version": "3.0.1",
+  "main": "build/index.js",
+  "typings": "typings",
+  "author": {
+    "name": "Sebastian Fekete"
+  },
+  "license": "UNLICENSED",
+  "scripts": {
+    "__ublish": "yarn prepare && yarn build",
+    "prepare": "yarn download-protocols",
+    "build": "yarn generate && yarn build:generated",
+    "download-protocols": "scripts/download-protocols",
+    "generate": "rimraf generated-ts && rimraf typings && ts-node scripts/generate.ts",
+    "build:generated": "rimraf build && tsc -p tsconfig.generation.json",
+    "test": "node ./test/test.js",
+    "semantic-release": "semantic-release pre && npm publish && semantic-release post"
+  },
+  "dependencies": {
+    "electron-typescript-definitions": "^1.2.5"
+  },
+  "devDependencies": {
+    "@types/chalk": "^0.4.31",
+    "@types/js-beautify": "^0.0.29",
+    "@types/mkdirp": "^0.3.29",
+    "@types/node": "^7.0.12",
+    "@types/rimraf": "^0.0.28",
+    "chalk": "^1.1.3",
+    "condition-circle": "^1.5.0",
+    "cz-conventional-changelog": "^2.0.0",
+    "js-beautify": "^1.6.12",
+    "rimraf": "^2.6.1",
+    "semantic-release": "^6.3.6",
+    "ts-node": "^3.0.4",
+    "typescript": "^2.4.0-dev.20170517"
+  },
+  "repository": {
+    "user": "aight8",
+    "repo": "electron-cdp",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/aight8/electron-cdp/tarball/master",
+    "clone_url": "https://github.com/aight8/electron-cdp",
+    "https_url": "https://github.com/aight8/electron-cdp",
+    "travis_url": "https://travis-ci.org/aight8/electron-cdp",
+    "zip_url": "https://github.com/aight8/electron-cdp/archive/master.zip",
+    "api_url": "https://api.github.com/repos/aight8/electron-cdp"
+  },
+  "release": {
+    "verifyConditions": "condition-circle"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  },
+  "gitHead": "a2ebbbbd3746b72d86ca1645ebe497bec628e8c1",
+  "homepage": "https://github.com/aight8/electron-cdp#readme",
+  "_npmVersion": "4.2.0",
+  "_nodeVersion": "7.10.0",
+  "dist": {
+    "shasum": "55d50cbcfb4bc7b70e8fcfe96040af0b7421e816",
+    "tarball": "https://registry.npmjs.org/electron-cdp/-/electron-cdp-3.0.1.tgz"
+  },
+  "versions": [
+    {
+      "number": "1.0.0",
+      "date": "2017-05-17T07:10:40.829Z"
+    },
+    {
+      "number": "1.1.0",
+      "date": "2017-05-17T07:23:16.639Z"
+    },
+    {
+      "number": "2.0.0",
+      "date": "2017-05-17T07:54:58.221Z"
+    },
+    {
+      "number": "2.0.1",
+      "date": "2017-05-17T08:06:05.553Z"
+    },
+    {
+      "number": "2.0.2",
+      "date": "2017-05-17T08:28:35.559Z"
+    },
+    {
+      "number": "3.0.0",
+      "date": "2017-05-17T08:46:41.162Z"
+    },
+    {
+      "number": "3.0.1",
+      "date": "2017-05-17T09:35:08.812Z"
+    }
+  ],
+  "created": "2017-05-17T07:10:40.829Z",
+  "modified": "2017-05-17T09:35:08.812Z",
+  "lastPublisher": {
+    "name": "aight8",
+    "email": "aight8@gmail.com"
+  },
+  "owners": [
+    {
+      "name": "aight8",
+      "email": "aight8@gmail.com"
+    }
+  ]
+}

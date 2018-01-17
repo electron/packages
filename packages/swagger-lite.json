@@ -1,40 +1,29 @@
 {
-  "package.json": true,
   "author": {
     "name": "kai zhu",
     "email": "kaizhu256@gmail.com"
   },
-  "description": "this zero-dependency package will run a virtual swagger-ui server with persistent-storage in the browser, that your webapp can use (in-place of a real backend)",
+  "description": "this zero-dependency package will run a virtual swagger-ui server with persistent-storage in the browser, that your webapp can use (in-place of a real backend), with a working web-demo",
   "devDependencies": {
-    "electron-lite": "github:kaizhu256/node-electron-lite#alpha"
+    "electron-lite": "github:kaizhu256/node-electron-lite#alpha",
+    "utility2": "github:kaizhu256/node-utility2#alpha"
   },
   "engines": {
     "node": ">=4.0"
   },
+  "githubRepoAlias": "swgg-io/node-swgg",
   "homepage": "https://github.com/kaizhu256/node-swgg",
   "keywords": [
-    "api",
-    "admin",
-    "admin-ui",
-    "browser",
-    "cms",
-    "crud",
-    "db",
-    "light",
-    "lightweight",
-    "lite",
-    "mongo",
-    "mongodb",
-    "nedb",
-    "standalone",
-    "swagger",
-    "swagger-ui",
-    "web"
+    "openapi",
+    "swagger-client",
+    "swagger-server"
   ],
   "license": "MIT",
-  "main": "lib.swgg",
+  "main": "lib.swgg.js",
   "name": "swagger-lite",
-  "nameAlias": "swgg",
+  "nameAliasPublish": "petstore swagger-lite swaggerdoc",
+  "nameLib": "swgg",
+  "nameOriginal": "swgg",
   "os": [
     "darwin",
     "linux"
@@ -53,18 +42,20 @@
     "api_url": "https://api.github.com/repos/kaizhu256/node-swgg"
   },
   "scripts": {
-    "build-ci": "./lib.utility2.sh shRun shReadmeBuild",
-    "start": "export PORT=${PORT:-8080} && export npm_config_mode_auto_restart=1 && ./lib.utility2.sh shRun shIstanbulCover test.js",
-    "test": "export PORT=$(./lib.utility2.sh shServerPortRandom) && ./lib.utility2.sh test test.js"
+    "build-ci": "utility2 shReadmeTest build_ci.sh",
+    "env": "env",
+    "heroku-postbuild": "npm uninstall utility2 2>/dev/null; npm install kaizhu256/node-utility2#alpha && utility2 shDeployHeroku",
+    "postinstall": "[ ! -f npm_scripts.sh ] || ./npm_scripts.sh postinstall",
+    "start": "PORT=${PORT:-8080} utility2 start test.js",
+    "test": "PORT=$(utility2 shServerPortRandom) utility2 test test.js"
   },
-  "version": "2016.11.3",
-  "_npmVersion": "3.10.8",
-  "_nodeVersion": "6.9.1",
+  "version": "2018.1.12",
+  "_npmVersion": "3.10.10",
+  "_nodeVersion": "6.12.3",
   "dist": {
-    "shasum": "267073fe89b108f43ac9230d2da11df45330254d",
-    "tarball": "http://registry.npmjs.org/swagger-lite/-/swagger-lite-2016.11.3.tgz"
+    "shasum": "4953201c0171fe88b33eafe0d701b993c8e5b9f2",
+    "tarball": "https://registry.npmjs.org/swagger-lite/-/swagger-lite-2018.1.12.tgz"
   },
-  "deprecated": "this package has been moved / renamed to \"swgg\"",
   "versions": [
     {
       "number": "2015.11.1",
@@ -229,10 +220,82 @@
     {
       "number": "2016.11.3",
       "date": "2016-11-30T16:15:57.641Z"
+    },
+    {
+      "number": "2016.12.1",
+      "date": "2016-12-11T02:39:36.704Z"
+    },
+    {
+      "number": "2016.12.25",
+      "date": "2016-12-28T07:00:36.173Z"
+    },
+    {
+      "number": "2017.1.12",
+      "date": "2017-01-13T03:23:31.318Z"
+    },
+    {
+      "number": "2017.2.20",
+      "date": "2017-02-20T18:53:01.823Z"
+    },
+    {
+      "number": "2017.3.29",
+      "date": "2017-03-30T13:27:46.832Z"
+    },
+    {
+      "number": "2017.5.1",
+      "date": "2017-05-02T05:36:32.433Z"
+    },
+    {
+      "number": "2017.5.20",
+      "date": "2017-05-22T09:18:10.064Z"
+    },
+    {
+      "number": "2017.7.1",
+      "date": "2017-07-15T19:40:05.188Z"
+    },
+    {
+      "number": "2017.7.24",
+      "date": "2017-07-25T23:53:29.588Z"
+    },
+    {
+      "number": "2017.10.5",
+      "date": "2017-10-06T12:16:30.927Z"
+    },
+    {
+      "number": "2017.10.11",
+      "date": "2017-10-12T23:57:16.190Z"
+    },
+    {
+      "number": "2017.10.17",
+      "date": "2017-10-18T17:28:16.032Z"
+    },
+    {
+      "number": "2017.10.24",
+      "date": "2017-10-24T17:36:18.484Z"
+    },
+    {
+      "number": "2017.10.28",
+      "date": "2017-10-28T20:19:23.463Z"
+    },
+    {
+      "number": "2017.11.7",
+      "date": "2017-11-07T18:46:33.322Z"
+    },
+    {
+      "number": "2017.11.15",
+      "date": "2017-11-16T13:52:23.130Z"
+    },
+    {
+      "number": "2017.11.20",
+      "date": "2017-11-21T05:11:18.413Z"
+    },
+    {
+      "number": "2018.1.12",
+      "date": "2018-01-13T12:33:25.159Z"
     }
   ],
   "created": "2015-11-22T15:47:49.249Z",
-  "modified": "2016-11-30T16:19:19.825Z",
+  "modified": "2018-01-13T12:33:25.159Z",
   "lastPublisher": {
     "name": "kaizhu",
     "email": "kaizhu256@gmail.com"

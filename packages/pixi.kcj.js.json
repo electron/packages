@@ -1,0 +1,153 @@
+{
+  "name": "pixi.kcj.js",
+  "version": "4.6.4",
+  "description": "The HTML5 Creation Engine: Create beautiful digital content with the fastest, most flexible 2D WebGL renderer. With KCJ word-wrapping.",
+  "author": {
+    "name": "Mat Groves"
+  },
+  "contributors": [
+    {
+      "name": "Ivan Popelyshev",
+      "email": "ivan.popelyshev@gmail.com"
+    },
+    {
+      "name": "Matt Karl",
+      "email": "matt@mattkarl.com"
+    },
+    {
+      "name": "Chad Engler",
+      "email": "chad@pantherdev.com"
+    },
+    {
+      "name": "Richard Davey",
+      "email": "rdavey@gmail.com"
+    }
+  ],
+  "main": "./lib/index.js",
+  "homepage": "http://goodboydigital.com/",
+  "license": "MIT",
+  "repository": {
+    "user": "branch-henderson",
+    "repo": "pixi.js",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/branch-henderson/pixi.js/tarball/master",
+    "clone_url": "https://github.com/branch-henderson/pixi.js",
+    "https_url": "https://github.com/branch-henderson/pixi.js",
+    "travis_url": "https://travis-ci.org/branch-henderson/pixi.js",
+    "zip_url": "https://github.com/branch-henderson/pixi.js/archive/master.zip",
+    "api_url": "https://api.github.com/repos/branch-henderson/pixi.js"
+  },
+  "scripts": {
+    "clean": "rimraf dist lib && mkdirp dist && mkdir lib",
+    "prestart": "npm run clean",
+    "start": "parallelshell \"npm run watch\" \"npm run watch:lint\" \"npm run watch:lib\"",
+    "watch": "npm run dist -- --watch",
+    "watch:lib": "npm run lib -- --watch",
+    "watch:lint": "watch \"eslint scripts src test || exit 0\" src",
+    "test": "npm run lint && npm run dist && npm run coverage",
+    "unit-test": "floss --path test/index.js",
+    "unit-test:debug": "npm run unit-test -- --debug",
+    "prerenders": "npm --prefix scripts/renders i scripts/renders",
+    "renders": "electron scripts/renders",
+    "precoverage": "rimraf coverage",
+    "coverage": "npm run unit-test -- -c dist/pixi.js -s -h",
+    "lint": "eslint scripts src test --max-warnings 0",
+    "lintfix": "npm run lint --fix",
+    "prebuild": "npm run lint",
+    "build": "npm run dist",
+    "predist": "rimraf dist/**",
+    "dist": "pixify -d dist -n PIXI -o pixi -t babelify",
+    "prelib": "rimraf lib/**",
+    "lib": "babel src --out-dir lib -s",
+    "predocs": "rimraf docs/**",
+    "docs": "jsdoc -c scripts/jsdoc.conf.json -R README.md",
+    "publish:patch": "npm version patch && npm publish",
+    "publish:minor": "npm version minor && npm publish",
+    "publish:major": "npm version major && npm publish",
+    "postversion": "npm run clean && npm run build && npm run lib && npm run unit-test",
+    "postpublish": "git push && git push --tags"
+  },
+  "files": [
+    "dist/",
+    "lib/",
+    "CONTRIBUTING.md",
+    "LICENSE",
+    "package.json",
+    "README.md"
+  ],
+  "dependencies": {
+    "bit-twiddle": "^1.0.2",
+    "earcut": "^2.0.7",
+    "eventemitter3": "^2.0.0",
+    "ismobilejs": "^0.4.0",
+    "object-assign": "^4.0.1",
+    "pixi-gl-core": "^1.0.3",
+    "remove-array-items": "^1.0.0",
+    "resource-loader": "^2.0.9"
+  },
+  "devDependencies": {
+    "@pixi/jsdoc-template": "^2.0.0",
+    "babel-cli": "^6.18.0",
+    "babel-plugin-static-fs": "^1.1.0",
+    "babel-plugin-version-inline": "^1.0.0",
+    "babel-preset-es2015": "^6.14.0",
+    "babelify": "^7.3.0",
+    "del": "^2.2.0",
+    "electron": "^1.4.15",
+    "eslint": "^3.5.0",
+    "floss": "^2.0.1",
+    "js-md5": "^0.4.1",
+    "jsdoc": "3.4.3",
+    "minimist": "^1.2.0",
+    "mkdirp": "^0.5.1",
+    "parallelshell": "^2.0.0",
+    "pixify": "^1.7.0",
+    "rimraf": "^2.5.3",
+    "watch": "^0.19.1"
+  },
+  "gitHead": "e53965f08eaacfc4362fbee2eb362aa1b1cce7bb",
+  "_npmVersion": "5.5.1",
+  "_nodeVersion": "6.11.4",
+  "dist": {
+    "integrity": "sha512-D6bn9MVD8/qdeW3oihsvdsrzGjCM136MvE7F5dHh4BYdMeFqeUlffvYYMVkpmdZ83d1UCHS4t1pIAonmMGf/og==",
+    "shasum": "7cea22dcc932c0e1fb6b77b45ca23880bca32e46",
+    "tarball": "https://registry.npmjs.org/pixi.kcj.js/-/pixi.kcj.js-4.6.4.tgz"
+  },
+  "deprecated": "this package has been deprecated",
+  "versions": [
+    {
+      "number": "4.6.0",
+      "date": "2017-11-15T14:49:46.998Z"
+    },
+    {
+      "number": "4.6.1",
+      "date": "2017-11-15T15:00:59.698Z"
+    },
+    {
+      "number": "4.6.2",
+      "date": "2017-11-15T18:43:26.855Z"
+    },
+    {
+      "number": "4.6.3",
+      "date": "2017-11-17T00:12:48.567Z"
+    },
+    {
+      "number": "4.6.4",
+      "date": "2017-11-17T01:53:56.501Z"
+    }
+  ],
+  "created": "2017-11-15T14:49:46.998Z",
+  "modified": "2017-11-17T18:24:56.074Z",
+  "lastPublisher": {
+    "name": "branch-henderson",
+    "email": "william.henderson128@gmail.com"
+  },
+  "owners": [
+    {
+      "name": "branch-henderson",
+      "email": "william.henderson128@gmail.com"
+    }
+  ]
+}

@@ -1,6 +1,6 @@
 {
   "name": "nativefier",
-  "version": "7.0.1",
+  "version": "7.5.4",
   "description": "Wrap web apps natively",
   "keywords": [
     "desktop",
@@ -11,16 +11,21 @@
   ],
   "main": "lib/index.js",
   "scripts": {
-    "dev-up": "npm install && (cd app && npm install) && npm run build",
-    "test": "gulp test",
+    "dev-up": "npm install && (cd ./app && npm install) && npm run build",
+    "dev-up-win": "npm install & cd app & npm install & cd .. & npm run build",
+    "test": "jest && gulp test",
+    "jest": "jest",
+    "e2e": "gulp test",
+    "tdd": "gulp tdd",
     "lint": "eslint .",
-    "ci": "gulp test && npm run lint",
+    "lint:fix": "eslint . --fix",
+    "ci": "gulp build test && npm run lint",
     "clean": "gulp clean",
     "build": "gulp build",
     "watch": "while true ; do gulp watch ; done",
     "package-placeholder": "npm run build && node lib/cli.js http://www.bennish.net/web-notifications.html ~/Desktop --overwrite --name notification-test --icon ./test-resources/iconSampleGrey.png --inject ./test-resources/test-injection.js --inject ./test-resources/test-injection.css && open ~/Desktop/notification-test-darwin-x64/notification-test.app",
     "start-placeholder": "npm run build && electron app",
-    "release": "gulp release"
+    "changelog": "./scripts/changelog"
   },
   "bin": {
     "nativefier": "lib/cli.js"
@@ -38,65 +43,82 @@
     "zip_url": "https://github.com/jiahaog/nativefier/archive/master.zip",
     "api_url": "https://api.github.com/repos/jiahaog/nativefier"
   },
-  "author": "",
+  "author": {
+    "name": "Goh Jia Hao"
+  },
   "license": "MIT",
   "homepage": "https://github.com/jiahaog/nativefier#readme",
   "dependencies": {
-    "async": "^1.5.2",
-    "axios": "^0.11.1",
-    "babel-polyfill": "^6.7.2",
-    "cheerio": "^0.20.0",
-    "commander": "^2.9.0",
-    "electron-packager": "^7.0.1",
+    "async": "^2.6.0",
+    "axios": "^0.17.1",
+    "babel-polyfill": "^6.26.0",
+    "cheerio": "^1.0.0-rc.2",
+    "commander": "^2.11.0",
+    "electron-packager": "^9.1.0",
     "gitcloud": "^0.1.0",
-    "hasbin": "^1.2.0",
-    "lodash": "^4.0.0",
-    "loglevel": "^1.4.0",
+    "hasbin": "^1.2.3",
+    "lodash": "^4.17.4",
+    "loglevel": "^1.5.1",
     "ncp": "^2.0.0",
     "page-icon": "^0.3.0",
-    "progress": "^1.1.8",
-    "request": "^2.67.0",
-    "sanitize-filename": "^1.5.3",
-    "shelljs": "^0.7.0",
-    "source-map-support": "^0.4.0",
-    "tmp": "0.0.28",
-    "validator": "^5.2.0"
+    "progress": "^2.0.0",
+    "sanitize-filename": "^1.6.1",
+    "shelljs": "^0.7.8",
+    "source-map-support": "^0.5.0",
+    "tmp": "0.0.33",
+    "validator": "^9.1.1"
+  },
+  "devDependencies": {
+    "babel-core": "^6.26.0",
+    "babel-jest": "^21.2.0",
+    "babel-loader": "^7.1.2",
+    "babel-preset-env": "^1.6.1",
+    "babel-register": "^6.26.0",
+    "chai": "^4.1.2",
+    "del": "^3.0.0",
+    "eslint": "^4.11.0",
+    "eslint-config-airbnb-base": "^12.1.0",
+    "eslint-plugin-import": "^2.8.0",
+    "gulp": "^3.9.1",
+    "gulp-babel": "^7.0.0",
+    "gulp-istanbul": "^1.1.2",
+    "gulp-mocha": "^4.3.1",
+    "gulp-sourcemaps": "^2.6.1",
+    "isparta": "^4.0.0",
+    "jest": "^21.2.1",
+    "regenerator-runtime": "^0.11.0",
+    "require-dir": "^0.3.2",
+    "run-sequence": "^2.2.0",
+    "webpack-stream": "^4.0.0"
+  },
+  "engines": {
+    "node": ">= 4.0"
   },
   "babel": {
     "presets": [
-      "es2015"
+      [
+        "env",
+        {
+          "targets": {
+            "node": "4.0.0"
+          }
+        }
+      ]
     ]
   },
-  "devDependencies": {
-    "async": "^1.5.2",
-    "babel-core": "^6.4.5",
-    "babel-loader": "^6.2.1",
-    "babel-preset-es2015": "^6.6.0",
-    "babel-register": "^6.6.0",
-    "chai": "^3.4.1",
-    "del": "^2.2.0",
-    "eslint": "^2.10.2",
-    "eslint-config-google": "^0.5.0",
-    "gulp": "^3.9.0",
-    "gulp-babel": "^6.1.1",
-    "gulp-istanbul": "^0.10.3",
-    "gulp-mocha": "^2.2.0",
-    "gulp-sourcemaps": "^1.6.0",
-    "lodash": "^4.0.0",
-    "require-dir": "^0.3.0",
-    "run-sequence": "^1.1.5",
-    "shelljs": "^0.7.0",
-    "tmp": "0.0.28",
-    "webpack-stream": "^3.1.0"
+  "jest": {
+    "testMatch": [
+      "**/src/**/?(*.)(spec|test).js?(x)"
+    ]
   },
-  "gitHead": "707cc8b730d0fd7d7ce6dde4aae3de3f731ae04a",
-  "_npmVersion": "2.15.5",
-  "_nodeVersion": "4.4.5",
+  "gitHead": "db74db89113b71fe954c611659e1b473cec1ab27",
+  "_npmVersion": "4.2.0",
+  "_nodeVersion": "7.10.0",
   "dist": {
-    "shasum": "cd54006becc1839bf8de3f359ee61d2fa79969df",
-    "tarball": "http://registry.npmjs.org/nativefier/-/nativefier-7.0.1.tgz"
+    "shasum": "a3264a96b75d52c4ad84efc9aaf0cb7b4756c024",
+    "tarball": "https://registry.npmjs.org/nativefier/-/nativefier-7.5.4.tgz"
   },
-  "stars": 52,
+  "stars": 76,
   "versions": [
     {
       "number": "1.0.0",
@@ -277,10 +299,50 @@
     {
       "number": "7.0.1",
       "date": "2016-06-16T08:30:53.974Z"
+    },
+    {
+      "number": "7.1.0",
+      "date": "2017-04-06T17:14:42.417Z"
+    },
+    {
+      "number": "7.2.0",
+      "date": "2017-04-19T17:33:26.116Z"
+    },
+    {
+      "number": "7.3.1",
+      "date": "2017-04-29T18:55:30.876Z"
+    },
+    {
+      "number": "7.4.0",
+      "date": "2017-05-21T12:52:40.067Z"
+    },
+    {
+      "number": "7.4.1",
+      "date": "2017-08-12T02:30:11.384Z"
+    },
+    {
+      "number": "7.5.0",
+      "date": "2017-11-11T17:21:09.295Z"
+    },
+    {
+      "number": "7.5.1",
+      "date": "2017-11-12T16:22:46.919Z"
+    },
+    {
+      "number": "7.5.2",
+      "date": "2017-11-24T03:21:56.119Z"
+    },
+    {
+      "number": "7.5.3",
+      "date": "2017-11-24T03:32:10.233Z"
+    },
+    {
+      "number": "7.5.4",
+      "date": "2017-11-24T03:36:55.414Z"
     }
   ],
   "created": "2015-07-05T06:48:08.195Z",
-  "modified": "2016-11-14T03:43:12.880Z",
+  "modified": "2017-12-23T08:23:44.110Z",
   "lastPublisher": {
     "name": "jiahaog",
     "email": "jiahaog@gmail.com"
@@ -288,10 +350,6 @@
   "owners": [
     {
       "name": "jiahaog",
-      "email": "jiahaog@gmail.com"
-    },
-    {
-      "name": "skewedlines",
       "email": "jiahaog@gmail.com"
     }
   ]

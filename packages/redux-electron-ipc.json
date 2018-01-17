@@ -1,14 +1,19 @@
 {
   "name": "redux-electron-ipc",
-  "version": "1.1.3",
+  "version": "1.1.12",
   "description": "Redux Electron IPC Middleware",
   "main": "index.js",
   "scripts": {
-    "test": "mocha --compilers js:babel-core/register",
+    "test": "mocha",
+    "test-cov": "istanbul cover node_modules/mocha/bin/_mocha -x 'example/**/*.js' -- test/*.js",
+    "test-coveralls": "istanbul cover node_modules/mocha/bin/_mocha -x 'example/**/*.js' --report lcovonly -- test/*.js && cat ./coverage/lcov.info | coveralls --verbose && rm -rf ./coverage",
     "lint": "eslint .",
-    "build": "webpack && cross-env WEBPACK_ENV=production ./node_modules/.bin/webpack",
+    "build": "webpack && cross-env WEBPACK_ENV=production webpack",
     "dev": "webpack --watch"
   },
+  "files": [
+    "dist"
+  ],
   "keywords": [
     "redux",
     "electron",
@@ -35,29 +40,33 @@
   "license": "MIT",
   "devDependencies": {
     "babel-core": "^6.9.1",
-    "babel-eslint": "^6.0.4",
+    "babel-eslint": "^7.1.1",
     "babel-loader": "^6.2.4",
     "babel-plugin-add-module-exports": "^0.2.1",
     "babel-preset-es2015": "^6.9.0",
     "babel-register": "^6.9.0",
     "chai": "^3.5.0",
-    "cross-env": "^2.0.1",
-    "eslint": "^2.11.1",
-    "mocha": "^2.5.3",
+    "coveralls": "^2.11.15",
+    "cross-env": "^3.1.3",
+    "eslint": "^3.12.2",
+    "istanbul": "^1.1.0-alpha.1",
+    "mocha": "^3.2.0",
+    "mocha-lcov-reporter": "^1.2.0",
     "proxyquire": "^1.7.9",
     "redux": "^3.5.2",
     "redux-thunk": "^2.1.0",
     "webpack": "^1.13.1"
   },
-  "gitHead": "2528390adb85e6fd28d4c1f622cd63ee42d0c333",
+  "gitHead": "3b1f1927184adc68908994c39235bb0feeee4298",
   "homepage": "https://github.com/mariotacke/redux-electron-ipc#readme",
-  "_npmVersion": "3.10.3",
-  "_nodeVersion": "6.7.0",
+  "_npmVersion": "5.5.1",
+  "_nodeVersion": "8.9.3",
   "dist": {
-    "shasum": "024174e9a2b7c9e310db34bfcc48f56c28c2ab20",
-    "tarball": "http://registry.npmjs.org/redux-electron-ipc/-/redux-electron-ipc-1.1.3.tgz"
+    "integrity": "sha512-3Fbp9bvCe+TAIhZNfgZ0WvdiyiF1Jxueij+TyG4oGsUGkd5gKNG6AAX6FmvCwdKPGPb9tOHEE6YSxqvHOCoAKw==",
+    "shasum": "1d88f8bbca9196bafb8c30b56bd6c90afd3d7dba",
+    "tarball": "https://registry.npmjs.org/redux-electron-ipc/-/redux-electron-ipc-1.1.12.tgz"
   },
-  "stars": 2,
+  "stars": 3,
   "versions": [
     {
       "number": "1.0.0",
@@ -82,10 +91,46 @@
     {
       "number": "1.1.3",
       "date": "2016-09-29T20:15:23.691Z"
+    },
+    {
+      "number": "1.1.4",
+      "date": "2016-12-20T18:15:17.586Z"
+    },
+    {
+      "number": "1.1.5",
+      "date": "2016-12-21T03:45:21.348Z"
+    },
+    {
+      "number": "1.1.6",
+      "date": "2016-12-21T04:26:25.331Z"
+    },
+    {
+      "number": "1.1.7",
+      "date": "2017-02-08T03:12:20.207Z"
+    },
+    {
+      "number": "1.1.8",
+      "date": "2017-02-08T03:21:22.009Z"
+    },
+    {
+      "number": "1.1.9",
+      "date": "2017-04-09T03:35:47.776Z"
+    },
+    {
+      "number": "1.1.10",
+      "date": "2017-05-23T20:42:44.648Z"
+    },
+    {
+      "number": "1.1.11",
+      "date": "2017-11-20T02:42:01.743Z"
+    },
+    {
+      "number": "1.1.12",
+      "date": "2017-12-09T16:51:29.427Z"
     }
   ],
   "created": "2016-06-01T00:05:02.979Z",
-  "modified": "2016-11-24T01:19:00.205Z",
+  "modified": "2017-12-09T16:51:29.427Z",
   "lastPublisher": {
     "name": "mariotacke",
     "email": "tacke.mario@gmail.com"

@@ -1,0 +1,127 @@
+{
+  "name": "inax-base",
+  "description": "Sample HMI for INAX",
+  "version": "0.0.2",
+  "author": {
+    "name": "insite gmbh"
+  },
+  "scripts": {
+    "start": "tsc && concurrently \"npm run tsc:w\" \"npm run lite\" ",
+    "lite": "lite-server",
+    "tsc": "tsc",
+    "tsc:w": "tsc -w",
+    "test": "mocha --compilers ts:ts-node/register --reporter list ./@inax/plc/test/*.ts",
+    "build": "webpack --progress --profile --colors --display-error-details --display-cached",
+    "electron": "electron electronmain",
+    "benchmark": "mocha --compilers ts:ts-node/register --reporter mocha-perf-reporter ./@inax/**/test/perf/benchmark.ts",
+    "inaxinstall": "npm install --save-dev @inax/alarm @inax/alarmui @inax/common @inax/excel @inax/frontend @inax/logger @inax/motion @inax/plc @inax/script @inax/sql @inax/translate"
+  },
+  "license": "ISC",
+  "dependencies": {
+    "@angular/common": "2.0.0",
+    "@angular/compiler": "2.0.0",
+    "@angular/core": "2.0.0",
+    "@angular/forms": "2.0.0",
+    "@angular/http": "2.0.0",
+    "@angular/platform-browser": "2.0.0",
+    "@angular/platform-browser-dynamic": "2.0.0",
+    "@angular/router": "3.0.0",
+    "@angular/upgrade": "2.0.0",
+    "@types/assert": "0.0.31",
+    "@types/clipboard": "^1.5.31",
+    "@types/jquery": "^2.0.39",
+    "@types/mocha": "^2.2.36",
+    "@types/node": "^6.0.58",
+    "@types/signalr": "^2.2.33",
+    "@types/underscore": "^1.7.36",
+    "angular2-in-memory-web-api": "0.0.20",
+    "bootstrap": "^3.3.7",
+    "buffer": "^4.9.0",
+    "clipboard": "^1.5.16",
+    "core-js": "^2.4.1",
+    "jquery": "^2.2.4",
+    "ms-signalr-client": "^2.2.2",
+    "ng2-toastr": "^1.1.0",
+    "reflect-metadata": "^0.1.8",
+    "rxjs": "5.0.0-beta.12",
+    "systemjs": "0.19.27",
+    "underscore": "^1.8.3",
+    "zone.js": "^0.6.23"
+  },
+  "devDependencies": {
+    "@types/mocha": "^2.2.38",
+    "assert": "^1.4.1",
+    "babel-cli": "^6.22.2",
+    "babel-preset-es2015": "^6.22.0",
+    "browserify": "^13.1.0",
+    "buffer": "^4.9.0",
+    "chai": "^3.5.0",
+    "concurrently": "^2.2.0",
+    "del": "^2.2.2",
+    "electron": "^1.3.5",
+    "electron-prebuilt": "^1.2.0",
+    "es6-shim": "^0.35.1",
+    "gulp": "^3.9.1",
+    "gulp-babel": "^6.1.2",
+    "gulp-cli": "^1.2.2",
+    "gulp-filter": "^4.0.0",
+    "gulp-ignore": "^2.0.1",
+    "gulp-minify": "0.0.14",
+    "gulp-mocha": "^3.0.1",
+    "gulp-rename": "^1.2.2",
+    "gulp-sourcemaps": "^1.6.0",
+    "gulp-spawn-mocha": "^3.1.0",
+    "gulp-typedoc": "^2.0.0",
+    "gulp-typescript": "^3.1.4",
+    "gulp-util": "^3.0.7",
+    "istanbul": "^0.4.5",
+    "jasmine": "^2.5.2",
+    "jsdom": "^9.5.0",
+    "jsdom-global": "^2.1.0",
+    "lite-server": "^2.2.2",
+    "mocha": "^3.0.2",
+    "mocha-perf-reporter": "^0.2.1",
+    "mock-browser": "^0.92.12",
+    "mock-http-server": "0.0.4",
+    "mock-local-storage": "^1.0.2",
+    "plugin-typescript": "^5.1.2",
+    "pump": "^1.0.1",
+    "ts-loader": "^0.8.2",
+    "ts-node": "^1.2.1",
+    "typedoc": "^0.4.4",
+    "typemoq": "^0.3.3",
+    "typescript": "^2.0.2",
+    "vinyl-source-stream": "^1.1.0",
+    "webpack": "^1.13.1",
+    "zone.js": "^0.6.23"
+  },
+  "_npmVersion": "3.10.6",
+  "_nodeVersion": "6.9.4",
+  "dist": {
+    "shasum": "0461637d2694879033662a11126c3e626d6d64e3",
+    "tarball": "https://registry.npmjs.org/inax-base/-/inax-base-0.0.2.tgz"
+  },
+  "deprecated": "This package is for testing and only experimental",
+  "versions": [
+    {
+      "number": "0.0.1",
+      "date": "2016-09-13T11:59:49.043Z"
+    },
+    {
+      "number": "0.0.2",
+      "date": "2017-01-23T15:40:57.658Z"
+    }
+  ],
+  "created": "2016-09-13T11:59:49.043Z",
+  "modified": "2017-01-30T16:07:08.092Z",
+  "lastPublisher": {
+    "name": "insite-jan",
+    "email": "jan.haug@insite-gmbh.de"
+  },
+  "owners": [
+    {
+      "name": "insite-jan",
+      "email": "jan.haug@insite-gmbh.de"
+    }
+  ]
+}

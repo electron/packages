@@ -1,0 +1,495 @@
+{
+  "name": "robe-react-ui",
+  "version": "1.1.37",
+  "description": "Robe React UI Components",
+  "main": "lib/index.js",
+  "engines": {
+    "npm": ">=3.0.0",
+    "node": ">=6.0.0"
+  },
+  "scripts": {
+    "test": "node tools/commands/test.js --coverage -p 3001",
+    "testd": "node tools/commands/test.js -i -p 3001",
+    "testdc": "node tools/commands/test.js --coverage -i -p 3001",
+    "docs": "NODE_ENV=docs ./node_modules/.bin/esdoc -c esdoc.json",
+    "codecov": "NODE_ENV=codecov cat coverage/lcov.info | codecov",
+    "build": "node ./config/prebuild.js ./lib & babel ./src --out-dir ./lib  --copy-files",
+    "site": "node ./config/prebuild.js ./docs & webpack --config config/webpack.config.site.js  --progress --profile --colors",
+    "start": "webpack-dev-server --config config/webpack.site.dev.js --colors",
+    "prod": "node ./config/server/start.js 3000 & http-server ./docs"
+  },
+  "docs": "./nreact-highlightode_modules/.bin/esdoc -c esdoc.json",
+  "repository": {
+    "user": "robeio",
+    "repo": "robe-react-ui",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/robeio/robe-react-ui/tarball/master",
+    "clone_url": "https://github.com/robeio/robe-react-ui",
+    "https_url": "https://github.com/robeio/robe-react-ui",
+    "travis_url": "https://travis-ci.org/robeio/robe-react-ui",
+    "zip_url": "https://github.com/robeio/robe-react-ui/archive/master.zip",
+    "api_url": "https://api.github.com/repos/robeio/robe-react-ui"
+  },
+  "keywords": [
+    "react",
+    "es6",
+    "eslint",
+    "flowcheck",
+    "karma",
+    "dev",
+    "test",
+    "prod"
+  ],
+  "license": "MIT",
+  "devDependencies": {
+    "app-root-path": "2.0.1",
+    "babel-cli": "6.24.0",
+    "babel-core": "^6.24.0",
+    "babel-eslint": "7.2.1",
+    "babel-loader": "6.4.1",
+    "babel-plugin-__coverage__": "11.0.0",
+    "babel-plugin-add-module-exports": "0.2.1",
+    "babel-plugin-doc-gen": "0.0.21",
+    "babel-preset-es2015": "6.24.0",
+    "babel-preset-react": "6.23.0",
+    "babel-preset-stage-0": "6.22.0",
+    "babel-register": "6.24.0",
+    "bluebird": "3.5.0",
+    "body-parser": "1.17.1",
+    "chai": "3.5.0",
+    "codecov.io": "0.1.6",
+    "colors": "1.1.2",
+    "copy-webpack-plugin": "4.0.1",
+    "css-loader": "0.28.0",
+    "electron": "1.6.2",
+    "electron-mocha": "^3.4.0",
+    "enzyme": "2.8.0",
+    "escape-string-regexp": "1.0.5",
+    "eslint": "3.19.0",
+    "eslint-config-airbnb": "14.1.0",
+    "eslint-import-resolver-webpack": "0.8.1",
+    "eslint-loader": "1.7.1",
+    "eslint-plugin-flowtype": "2.30.4",
+    "eslint-plugin-import": "2.2.0",
+    "eslint-plugin-jsx-a11y": "4.0.0",
+    "eslint-plugin-react": "6.10.3",
+    "file-loader": "0.11.1",
+    "http-server": "0.9.0",
+    "istanbul": "^0.4.5",
+    "json-loader": "0.5.4",
+    "lodash": "4.17.4",
+    "mime": "1.3.4",
+    "mocha": "3.2.0",
+    "multer": "1.3.0",
+    "optimist": "0.6.1",
+    "portscanner": "2.1.1",
+    "raw-loader": "0.5.1",
+    "react-addons-test-utils": "15.4.2",
+    "react-hot-loader": "1.3.1",
+    "robe-json-server": "0.8.19",
+    "sinon": "^2.1.0",
+    "style-loader": "0.16.1",
+    "url-loader": "0.5.8",
+    "webpack": "2.3.3",
+    "webpack-dev-server": "2.4.2",
+    "webpack-file-changer": "2.0.1"
+  },
+  "dependencies": {
+    "es6-template-strings": "2.0.1",
+    "font-awesome": "4.7.0",
+    "google-map-react": "0.23.0",
+    "is-js": "0.1.1",
+    "js-criteria": "1.0.6",
+    "moment": "2.18.1",
+    "nprogress": "0.2.0",
+    "react": "15.5.3",
+    "react-addons-css-transition-group": "15.4.2",
+    "react-addons-shallow-compare": "15.4.2",
+    "react-bootstrap": "0.30.8",
+    "react-cookie": "1.0.5",
+    "react-dom": "15.5.3",
+    "react-highlight": "0.9.0",
+    "react-quill": "0.4.1",
+    "react-recaptcha": "2.2.6",
+    "react-router": "3.0.0",
+    "robe-ajax": "1.0.1",
+    "robe-react-commons": "1.0.89",
+    "zxcvbn": "4.4.2"
+  },
+  "gitHead": "719bcb049fdf2f218f0920347e0d28dd13455aaf",
+  "homepage": "https://github.com/robeio/robe-react-ui#readme",
+  "_npmVersion": "4.1.2",
+  "_nodeVersion": "7.5.0",
+  "dist": {
+    "shasum": "40dbf7011ec93108c7b55e6052825d2c6217e512",
+    "tarball": "https://registry.npmjs.org/robe-react-ui/-/robe-react-ui-1.1.37.tgz"
+  },
+  "versions": [
+    {
+      "number": "1.0.10",
+      "date": "2016-07-15T10:03:22.609Z"
+    },
+    {
+      "number": "1.0.11",
+      "date": "2016-08-03T10:22:16.437Z"
+    },
+    {
+      "number": "1.0.12",
+      "date": "2016-08-04T07:46:54.783Z"
+    },
+    {
+      "number": "1.0.13",
+      "date": "2016-08-04T11:52:18.319Z"
+    },
+    {
+      "number": "1.0.14",
+      "date": "2016-08-04T12:11:56.145Z"
+    },
+    {
+      "number": "1.0.15",
+      "date": "2016-08-04T12:35:23.418Z"
+    },
+    {
+      "number": "1.0.16",
+      "date": "2016-08-04T13:01:59.235Z"
+    },
+    {
+      "number": "1.0.17",
+      "date": "2016-08-05T11:52:06.157Z"
+    },
+    {
+      "number": "1.0.19",
+      "date": "2016-08-08T11:05:49.799Z"
+    },
+    {
+      "number": "1.0.20",
+      "date": "2016-08-09T12:41:26.002Z"
+    },
+    {
+      "number": "1.0.21",
+      "date": "2016-08-09T13:27:32.591Z"
+    },
+    {
+      "number": "1.0.22",
+      "date": "2016-08-11T08:33:42.181Z"
+    },
+    {
+      "number": "1.0.23",
+      "date": "2016-08-12T05:18:19.649Z"
+    },
+    {
+      "number": "1.0.24",
+      "date": "2016-08-13T20:09:56.210Z"
+    },
+    {
+      "number": "1.0.25",
+      "date": "2016-08-16T12:13:24.228Z"
+    },
+    {
+      "number": "1.0.26",
+      "date": "2016-08-17T07:48:46.199Z"
+    },
+    {
+      "number": "1.0.28",
+      "date": "2016-09-05T14:40:45.265Z"
+    },
+    {
+      "number": "1.0.29",
+      "date": "2016-10-24T14:06:46.219Z"
+    },
+    {
+      "number": "1.0.30",
+      "date": "2016-11-04T07:20:31.576Z"
+    },
+    {
+      "number": "1.0.31",
+      "date": "2016-11-08T09:16:46.300Z"
+    },
+    {
+      "number": "1.0.32",
+      "date": "2016-11-08T10:25:34.606Z"
+    },
+    {
+      "number": "1.0.33",
+      "date": "2016-11-08T12:41:44.365Z"
+    },
+    {
+      "number": "1.0.34",
+      "date": "2016-11-08T14:19:42.681Z"
+    },
+    {
+      "number": "1.0.35",
+      "date": "2016-11-09T07:04:21.378Z"
+    },
+    {
+      "number": "1.0.36",
+      "date": "2016-11-09T07:33:30.832Z"
+    },
+    {
+      "number": "1.0.38",
+      "date": "2016-11-09T08:15:39.621Z"
+    },
+    {
+      "number": "1.0.39",
+      "date": "2016-11-09T11:23:30.146Z"
+    },
+    {
+      "number": "1.0.40",
+      "date": "2016-11-09T13:33:32.357Z"
+    },
+    {
+      "number": "1.0.41",
+      "date": "2016-11-10T14:26:23.592Z"
+    },
+    {
+      "number": "1.0.42",
+      "date": "2016-11-10T14:27:27.330Z"
+    },
+    {
+      "number": "1.0.43",
+      "date": "2016-11-11T09:32:15.577Z"
+    },
+    {
+      "number": "1.0.44",
+      "date": "2016-11-11T12:11:42.739Z"
+    },
+    {
+      "number": "1.0.45",
+      "date": "2016-11-11T12:34:00.785Z"
+    },
+    {
+      "number": "1.0.46",
+      "date": "2016-11-11T13:43:17.532Z"
+    },
+    {
+      "number": "1.0.47",
+      "date": "2016-11-11T14:31:55.164Z"
+    },
+    {
+      "number": "1.0.48",
+      "date": "2016-11-17T12:13:14.566Z"
+    },
+    {
+      "number": "1.0.49",
+      "date": "2016-11-18T08:06:21.325Z"
+    },
+    {
+      "number": "1.0.50",
+      "date": "2016-11-18T08:12:40.147Z"
+    },
+    {
+      "number": "1.0.51",
+      "date": "2016-11-18T11:35:06.515Z"
+    },
+    {
+      "number": "1.0.52",
+      "date": "2016-11-23T12:08:47.443Z"
+    },
+    {
+      "number": "1.0.53",
+      "date": "2016-11-30T14:56:40.446Z"
+    },
+    {
+      "number": "1.0.54",
+      "date": "2016-12-01T13:24:59.444Z"
+    },
+    {
+      "number": "1.0.55",
+      "date": "2016-12-01T13:36:19.417Z"
+    },
+    {
+      "number": "1.0.56",
+      "date": "2016-12-01T14:41:37.268Z"
+    },
+    {
+      "number": "1.0.57",
+      "date": "2016-12-06T07:20:22.697Z"
+    },
+    {
+      "number": "1.0.58",
+      "date": "2016-12-06T08:36:29.875Z"
+    },
+    {
+      "number": "1.1.0",
+      "date": "2016-12-09T07:07:44.514Z"
+    },
+    {
+      "number": "1.1.1",
+      "date": "2016-12-10T18:59:59.746Z"
+    },
+    {
+      "number": "1.1.2",
+      "date": "2016-12-13T10:45:29.222Z"
+    },
+    {
+      "number": "1.1.3-rc1",
+      "date": "2016-12-14T11:35:25.190Z"
+    },
+    {
+      "number": "1.1.3",
+      "date": "2016-12-15T07:44:29.418Z"
+    },
+    {
+      "number": "1.1.5-rc1",
+      "date": "2016-12-18T09:17:50.245Z"
+    },
+    {
+      "number": "1.1.4",
+      "date": "2016-12-18T09:25:58.616Z"
+    },
+    {
+      "number": "1.1.5",
+      "date": "2016-12-20T11:20:22.669Z"
+    },
+    {
+      "number": "1.1.6",
+      "date": "2016-12-21T11:17:32.841Z"
+    },
+    {
+      "number": "1.1.7",
+      "date": "2016-12-28T08:28:18.650Z"
+    },
+    {
+      "number": "1.1.8",
+      "date": "2017-01-02T12:05:43.916Z"
+    },
+    {
+      "number": "1.1.9",
+      "date": "2017-01-04T14:02:14.372Z"
+    },
+    {
+      "number": "1.1.10",
+      "date": "2017-01-06T12:57:28.237Z"
+    },
+    {
+      "number": "1.1.11",
+      "date": "2017-01-09T09:29:29.077Z"
+    },
+    {
+      "number": "1.1.12",
+      "date": "2017-01-09T09:40:54.945Z"
+    },
+    {
+      "number": "1.1.13",
+      "date": "2017-01-10T11:53:51.265Z"
+    },
+    {
+      "number": "1.1.14",
+      "date": "2017-01-10T14:44:21.537Z"
+    },
+    {
+      "number": "1.1.15",
+      "date": "2017-01-12T19:20:20.824Z"
+    },
+    {
+      "number": "1.1.16",
+      "date": "2017-01-14T00:24:25.303Z"
+    },
+    {
+      "number": "1.1.17",
+      "date": "2017-01-18T09:02:16.577Z"
+    },
+    {
+      "number": "1.1.18",
+      "date": "2017-01-19T14:28:09.854Z"
+    },
+    {
+      "number": "1.1.19",
+      "date": "2017-02-02T08:42:31.070Z"
+    },
+    {
+      "number": "1.1.20",
+      "date": "2017-02-06T06:34:25.144Z"
+    },
+    {
+      "number": "1.1.21",
+      "date": "2017-02-13T08:09:42.698Z"
+    },
+    {
+      "number": "1.1.22",
+      "date": "2017-02-13T11:40:53.328Z"
+    },
+    {
+      "number": "1.1.24",
+      "date": "2017-02-21T12:14:49.690Z"
+    },
+    {
+      "number": "1.1.25",
+      "date": "2017-02-27T10:22:36.184Z"
+    },
+    {
+      "number": "1.1.26",
+      "date": "2017-03-07T11:55:01.019Z"
+    },
+    {
+      "number": "1.1.27",
+      "date": "2017-03-10T09:22:42.756Z"
+    },
+    {
+      "number": "1.1.28",
+      "date": "2017-03-10T10:23:38.691Z"
+    },
+    {
+      "number": "1.1.29",
+      "date": "2017-03-16T09:46:42.502Z"
+    },
+    {
+      "number": "1.1.30",
+      "date": "2017-03-16T11:29:58.104Z"
+    },
+    {
+      "number": "1.1.31",
+      "date": "2017-03-16T12:40:02.974Z"
+    },
+    {
+      "number": "1.1.32",
+      "date": "2017-03-24T08:21:41.205Z"
+    },
+    {
+      "number": "1.1.33",
+      "date": "2017-04-06T09:25:35.643Z"
+    },
+    {
+      "number": "1.1.34",
+      "date": "2017-04-08T20:08:22.962Z"
+    },
+    {
+      "number": "1.1.35",
+      "date": "2017-04-08T22:10:13.982Z"
+    },
+    {
+      "number": "1.1.36",
+      "date": "2017-04-10T13:54:56.101Z"
+    },
+    {
+      "number": "1.1.37",
+      "date": "2017-05-06T20:12:21.350Z"
+    }
+  ],
+  "created": "2016-07-15T10:03:22.609Z",
+  "modified": "2017-07-22T19:29:48.968Z",
+  "lastPublisher": {
+    "name": "recepkoseoglu",
+    "email": "recepkoseoglu@hotmail.com"
+  },
+  "owners": [
+    {
+      "name": "hasanmumin",
+      "email": "hasanmuminn@gmail.com"
+    },
+    {
+      "name": "kbukum",
+      "email": "kamilbukum@gmail.com"
+    },
+    {
+      "name": "recepkoseoglu",
+      "email": "recepkoseoglu@hotmail.com"
+    },
+    {
+      "name": "serayuzgur",
+      "email": "serayuzgur@gmail.com"
+    }
+  ]
+}

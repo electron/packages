@@ -1,6 +1,6 @@
 {
   "name": "binary-mirror-config",
-  "version": "1.4.0",
+  "version": "1.7.3",
   "description": "Binary mirror config for prebuild and node-pre-gyp",
   "main": "index.js",
   "files": [
@@ -59,7 +59,11 @@
         "OPERADRIVER_CDNURL": "https://npm.taobao.org/mirrors/operadriver",
         "ELECTRON_MIRROR": "https://npm.taobao.org/mirrors/electron/",
         "SASS_BINARY_SITE": "https://npm.taobao.org/mirrors/node-sass",
-        "FLOW_BINARY_MIRROR": "https://github.com/facebook/flow/releases/download/v"
+        "FLOW_BINARY_MIRROR": "https://github.com/facebook/flow/releases/download/v",
+        "PUPPETEER_DOWNLOAD_HOST": "https://cdn.npm.taobao.org/dist"
+      },
+      "utf-8-validate": {
+        "host": "https://npm.taobao.org/mirrors/utf-8-validate/v{version}"
       },
       "leveldown": {
         "host": "https://npm.taobao.org/mirrors/leveldown/v{version}"
@@ -167,7 +171,12 @@
           "https://raw.githubusercontent.com",
           "https://raw.github.com"
         ],
-        "host": "https://raw.github.cnpmjs.org"
+        "host": "https://raw.github.cnpmjs.org",
+        "replaceHostMap": {
+          "https://raw.githubusercontent.com": "https://raw.github.cnpmjs.org",
+          "https://raw.github.com": "https://raw.github.cnpmjs.org",
+          "https://github.com": "https://github.com.cnpmjs.org"
+        }
       },
       "pngcrush-bin": {
         "replaceHost": [
@@ -213,12 +222,13 @@
       "url": "https://fengmk2.com"
     }
   ],
-  "gitHead": "5c5fb3829ae69f53339dec66fa6e3e23cccfbc60",
-  "_npmVersion": "3.10.8",
-  "_nodeVersion": "6.9.1",
+  "gitHead": "1070c483688b7b9bfbc33816e3c927a2089f986e",
+  "_npmVersion": "5.5.1",
+  "_nodeVersion": "8.4.0",
   "dist": {
-    "shasum": "24909e7092a803e7f8f23dfb693da566ee6da9f4",
-    "tarball": "http://registry.npmjs.org/binary-mirror-config/-/binary-mirror-config-1.4.0.tgz"
+    "integrity": "sha512-AoVDjY/CtJEPC2Zw3U/oaUIVNKbW3H5gAjTIX9vAudIzImGGvzcDMdfaDBt0zSoK0rFSxOwOXfF4kGv5KH2oyw==",
+    "shasum": "c0ef400b8287e404fd3d1e3f5c5c57d1619d423d",
+    "tarball": "https://registry.npmjs.org/binary-mirror-config/-/binary-mirror-config-1.7.3.tgz"
   },
   "versions": [
     {
@@ -256,10 +266,34 @@
     {
       "number": "1.4.0",
       "date": "2016-11-29T18:59:03.513Z"
+    },
+    {
+      "number": "1.5.0",
+      "date": "2017-03-29T04:18:21.338Z"
+    },
+    {
+      "number": "1.6.0",
+      "date": "2017-10-24T16:28:29.180Z"
+    },
+    {
+      "number": "1.7.0",
+      "date": "2017-11-03T07:13:37.517Z"
+    },
+    {
+      "number": "1.7.1",
+      "date": "2017-11-17T18:20:09.563Z"
+    },
+    {
+      "number": "1.7.2",
+      "date": "2017-12-25T14:42:47.542Z"
+    },
+    {
+      "number": "1.7.3",
+      "date": "2017-12-25T14:43:23.690Z"
     }
   ],
   "created": "2016-03-09T03:25:39.774Z",
-  "modified": "2016-11-29T18:59:03.513Z",
+  "modified": "2017-12-25T14:43:23.690Z",
   "lastPublisher": {
     "name": "fengmk2",
     "email": "fengmk2@gmail.com"

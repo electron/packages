@@ -1,0 +1,128 @@
+{
+  "name": "electron-fetch",
+  "version": "1.1.0",
+  "description": "A light-weight module that brings window.fetch to electron's background process",
+  "main": "lib/index.js",
+  "module": "lib/index.es.js",
+  "files": [
+    "lib/index.js",
+    "lib/index.es.js"
+  ],
+  "engines": {
+    "node": ">=4"
+  },
+  "scripts": {
+    "build": "cross-env BABEL_ENV=rollup rollup -c",
+    "prepublish": "npm run build",
+    "test": "npm run test:electron && npm run test:node && standard",
+    "test:electron": "xvfb-maybe cross-env BABEL_ENV=test electron-mocha --compilers js:babel-register test/test.js",
+    "test:node": "cross-env BABEL_ENV=test mocha --compilers js:babel-register test/test.js",
+    "coverage": "xvfb-maybe cross-env BABEL_ENV=coverage electron-mocha --compilers js:babel-register test/test.js -R test/coverage-reporter.js",
+    "report": "standard && npm run coverage && codecov -f coverage/coverage-final.json"
+  },
+  "repository": {
+    "user": "arantes555",
+    "repo": "electron-fetch",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/arantes555/electron-fetch/tarball/master",
+    "clone_url": "https://github.com/arantes555/electron-fetch",
+    "https_url": "https://github.com/arantes555/electron-fetch",
+    "travis_url": "https://travis-ci.org/arantes555/electron-fetch",
+    "zip_url": "https://github.com/arantes555/electron-fetch/archive/master.zip",
+    "api_url": "https://api.github.com/repos/arantes555/electron-fetch"
+  },
+  "keywords": [
+    "fetch",
+    "http",
+    "promise",
+    "electron"
+  ],
+  "author": {
+    "name": "Mehdi Kouhen"
+  },
+  "license": "MIT",
+  "homepage": "https://github.com/arantes555/electron-fetch",
+  "devDependencies": {
+    "babel-eslint": "^8.0.0",
+    "babel-plugin-istanbul": "^4.1.4",
+    "babel-preset-env": "^1.6.0",
+    "babel-register": "^6.26.0",
+    "basic-auth-parser": "0.0.2",
+    "chai": "^3.5.0",
+    "chai-as-promised": "^6.0.0",
+    "chai-iterator": "^1.1.1",
+    "chai-string": "^1.3.0",
+    "codecov": "^2.3.0",
+    "cross-env": "^5.0.5",
+    "dirty-chai": "^1.2.2",
+    "electron": "^1.6.13",
+    "electron-mocha": "^4.0.2",
+    "form-data": ">=2.3.1",
+    "is-builtin-module": "^1.0.0",
+    "istanbul-api": "^1.1.14",
+    "istanbul-lib-coverage": "^1.1.1",
+    "mocha": "^3.5.3",
+    "nyc": "^11.2.1",
+    "parted": "^0.1.1",
+    "promise": "^8.0.1",
+    "proxy": "^0.2.4",
+    "resumer": "0.0.0",
+    "rollup": "^0.49.3",
+    "rollup-plugin-babel": "^3.0.2",
+    "standard": "^10.0.3",
+    "whatwg-url": "^6.2.1",
+    "xvfb-maybe": "^0.2.1"
+  },
+  "dependencies": {
+    "encoding": "^0.1.12"
+  },
+  "gitHead": "448ff1e7443a9389b249b2b01bc00e28a1726eda",
+  "_npmVersion": "5.4.1",
+  "_nodeVersion": "8.1.4",
+  "dist": {
+    "integrity": "sha512-eBtqbB522c/RJwC5v1yF/Y0SMVLiwel98BWGx050GucWbKlejHtPkfpq/vfMxCjg0SGpHGUISYUaMfu65QH+xg==",
+    "shasum": "74b0ea547fe149620d38596a84fb104d34218e31",
+    "tarball": "https://registry.npmjs.org/electron-fetch/-/electron-fetch-1.1.0.tgz"
+  },
+  "stars": 1,
+  "versions": [
+    {
+      "number": "1.0.0-aplha1",
+      "date": "2017-03-12T01:22:47.390Z"
+    },
+    {
+      "number": "1.0.0-aplha2",
+      "date": "2017-03-14T16:42:04.063Z"
+    },
+    {
+      "number": "1.0.0-aplha3",
+      "date": "2017-03-14T22:21:11.223Z"
+    },
+    {
+      "number": "1.0.0-aplha4",
+      "date": "2017-03-16T16:56:18.803Z"
+    },
+    {
+      "number": "1.0.0",
+      "date": "2017-03-20T17:03:32.242Z"
+    },
+    {
+      "number": "1.1.0",
+      "date": "2017-09-13T22:43:44.767Z"
+    }
+  ],
+  "created": "2017-03-12T01:22:47.390Z",
+  "modified": "2017-11-09T18:22:25.793Z",
+  "lastPublisher": {
+    "name": "arantes",
+    "email": "arantes555@gmail.com"
+  },
+  "owners": [
+    {
+      "name": "arantes",
+      "email": "arantes555@gmail.com"
+    }
+  ]
+}

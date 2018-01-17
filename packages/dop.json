@@ -1,8 +1,9 @@
 {
   "name": "dop",
-  "version": "0.3.2",
-  "main": "./dist/nodejs.js",
-  "browser": "./dist/browser.js",
+  "version": "0.26.0",
+  "main": "./dist/dop.nodejs.js",
+  "browser": "./dist/dop.js",
+  "unpkg": "./dist/dop.min.js",
   "license": "MIT",
   "url": "http://www.distributedobjectprotocol.org",
   "repository": {
@@ -22,11 +23,12 @@
     "name": "Josema Gonzalez",
     "url": "http://josema.es/"
   },
-  "description": "A state management for your whole architecture. Based on Distributed Object Protocol.",
+  "description": "Distributed Object Protocol.",
   "keywords": [
-    "state management",
     "realtime",
-    "data flow",
+    "pubsub",
+    "state management",
+    "data-flow",
     "distributed",
     "objects",
     "protocol",
@@ -34,55 +36,62 @@
     "sync",
     "synchronization",
     "rpc",
-    "pubsub",
     "remote",
     "connect",
-    "realtime",
     "websocket",
     "events",
     "sockets",
-    "io",
     "xhr",
-    "flux",
     "server",
-    "client",
-    "ria",
-    "model",
-    "meteor"
+    "client"
   ],
   "dependencies": {
-    "dop-transports": "^1.0.0"
+    "dop-transports": "^2.0.7"
   },
   "devDependencies": {
+    "coveralls": "^2.11.4",
+    "electron": "^1.4.12",
     "express": "^4.13.4",
-    "faucet": "0.0.1",
-    "grunt": "~0.4.5",
+    "faucet": "^0.0.1",
+    "grunt": "^0.4.5",
     "grunt-cli": "^1.2.0",
-    "grunt-contrib-concat": "~0.5.0",
+    "grunt-contrib-concat": "^0.5.0",
     "grunt-contrib-copy": "^0.8.2",
-    "grunt-contrib-uglify": "~0.6.0",
-    "grunt-contrib-watch": "~0.6.1",
+    "grunt-contrib-uglify": "^0.6.0",
+    "grunt-contrib-watch": "^0.6.1",
+    "grunt-optimize-js": "^0.6.0",
+    "grunt-replace": "^1.0.1",
+    "grunt-string-replace": "^1.3.1",
     "js-combinatorics": "^0.5.2",
+    "lodash.merge": "^4.6.0",
     "tap": "^7.1.2",
+    "tape": "^4.6.3",
     "tape-run": "^2.1.4"
   },
   "scripts": {
     "grunt": "grunt",
     "build": "grunt --build",
-    "test": "tap test/**.js",
-    "test-electron": "browserify test/*.js | tape-run --render=\"faucet\"",
-    "test-chrome": "browserify test/*.js | tape-run --render=\"faucet\" --browser chrome",
-    "test-safari": "browserify test/*.js | tape-run --render=\"faucet\" --browser safari",
-    "test-firefox": "browserify test/*.js | tape-run --render=\"faucet\" --browser firefox"
+    "test": "tap test/**.js test/protocol/**.js",
+    "test-proxy": "tap test/**.js test/protocol/**.js --test-arg=proxy",
+    "test-electron": "browserify test/protocol/*.js test/*.js | tape-run --render=\"faucet\"",
+    "test-chrome": "browserify test/protocol/*.js test/*.js | tape-run --render=\"faucet\" --browser chrome",
+    "test-safari": "browserify test/protocol/*.js test/*.js | tape-run --render=\"faucet\" --browser safari",
+    "test-firefox": "browserify test/protocol/*.js test/*.js | tape-run --render=\"faucet\" --browser firefox",
+    "test-websockets": "tap test/protocol/**.js --test-arg=websockets",
+    "test-socketio": "tap test/protocol/**.js --test-arg=socketio",
+    "test-sockjs": "tap test/protocol/**.js --test-arg=sockjs",
+    "test-local": "tap test/protocol/**.js --test-arg=local"
   },
-  "gitHead": "251e4c86fb662f772da4d241accced1c4320feb9",
+  "gitHead": "a5ea7d9514a57afbb9b4a953574473292a6a3097",
   "homepage": "https://github.com/DistributedObjectProtocol/dop#readme",
-  "_npmVersion": "3.10.9",
-  "_nodeVersion": "7.1.0",
+  "_npmVersion": "5.4.1",
+  "_nodeVersion": "7.10.0",
   "dist": {
-    "shasum": "a7737a103e58118bed1e6334e690a0e8bf6f09ca",
-    "tarball": "http://registry.npmjs.org/dop/-/dop-0.3.2.tgz"
+    "integrity": "sha512-IIxOHdQQJGF3p5b0DKVZC2suk0YwCQC7I2Vrdk8yvlQsvoLLj4n4+O6mFvtZEHvN7BkCNC42uYGfAJVKzYjCag==",
+    "shasum": "2102ef960a6cf3b7756e1c30357cce55e067ebf5",
+    "tarball": "https://registry.npmjs.org/dop/-/dop-0.26.0.tgz"
   },
+  "stars": 1,
   "versions": [
     {
       "number": "0.0.1",
@@ -107,10 +116,186 @@
     {
       "number": "0.3.2",
       "date": "2016-11-25T10:32:33.582Z"
+    },
+    {
+      "number": "0.4.0",
+      "date": "2016-12-16T04:43:16.770Z"
+    },
+    {
+      "number": "0.5.0",
+      "date": "2016-12-17T17:18:27.953Z"
+    },
+    {
+      "number": "0.6.0",
+      "date": "2016-12-19T04:51:07.281Z"
+    },
+    {
+      "number": "0.7.0",
+      "date": "2016-12-28T09:33:13.418Z"
+    },
+    {
+      "number": "0.8.0",
+      "date": "2017-01-03T11:03:23.727Z"
+    },
+    {
+      "number": "0.9.0",
+      "date": "2017-01-04T05:45:09.903Z"
+    },
+    {
+      "number": "0.10.0",
+      "date": "2017-01-09T10:58:42.985Z"
+    },
+    {
+      "number": "0.10.1",
+      "date": "2017-01-11T10:35:35.942Z"
+    },
+    {
+      "number": "0.10.2",
+      "date": "2017-01-12T08:39:24.049Z"
+    },
+    {
+      "number": "0.11.0",
+      "date": "2017-01-15T10:06:10.166Z"
+    },
+    {
+      "number": "0.11.1",
+      "date": "2017-01-15T12:56:35.485Z"
+    },
+    {
+      "number": "0.11.2",
+      "date": "2017-01-16T05:05:20.361Z"
+    },
+    {
+      "number": "0.11.3",
+      "date": "2017-01-27T08:01:22.742Z"
+    },
+    {
+      "number": "0.11.4",
+      "date": "2017-01-27T10:28:44.985Z"
+    },
+    {
+      "number": "0.11.5",
+      "date": "2017-01-29T04:21:16.005Z"
+    },
+    {
+      "number": "0.11.6",
+      "date": "2017-01-29T04:24:54.752Z"
+    },
+    {
+      "number": "0.11.7",
+      "date": "2017-01-30T02:59:33.038Z"
+    },
+    {
+      "number": "0.11.8",
+      "date": "2017-01-30T06:17:04.932Z"
+    },
+    {
+      "number": "0.11.9",
+      "date": "2017-01-31T02:59:33.708Z"
+    },
+    {
+      "number": "0.11.10",
+      "date": "2017-01-31T04:45:23.061Z"
+    },
+    {
+      "number": "0.11.11",
+      "date": "2017-01-31T16:00:30.100Z"
+    },
+    {
+      "number": "0.20.0",
+      "date": "2017-05-20T12:59:23.210Z"
+    },
+    {
+      "number": "0.21.1",
+      "date": "2017-06-18T19:05:56.352Z"
+    },
+    {
+      "number": "0.21.2",
+      "date": "2017-06-18T19:24:24.892Z"
+    },
+    {
+      "number": "0.22.0",
+      "date": "2017-06-22T20:07:04.687Z"
+    },
+    {
+      "number": "0.22.1",
+      "date": "2017-06-24T16:26:38.984Z"
+    },
+    {
+      "number": "0.22.2",
+      "date": "2017-06-30T18:06:14.359Z"
+    },
+    {
+      "number": "0.22.3",
+      "date": "2017-07-11T08:35:29.424Z"
+    },
+    {
+      "number": "0.22.4",
+      "date": "2017-07-11T13:36:04.277Z"
+    },
+    {
+      "number": "0.22.5",
+      "date": "2017-07-11T13:39:48.476Z"
+    },
+    {
+      "number": "0.22.6",
+      "date": "2017-07-20T15:34:02.198Z"
+    },
+    {
+      "number": "0.22.7",
+      "date": "2017-07-23T09:14:58.341Z"
+    },
+    {
+      "number": "0.22.8",
+      "date": "2017-07-23T09:58:58.448Z"
+    },
+    {
+      "number": "0.22.9",
+      "date": "2017-07-23T10:28:41.957Z"
+    },
+    {
+      "number": "0.22.10",
+      "date": "2017-08-03T17:55:08.516Z"
+    },
+    {
+      "number": "0.23.0",
+      "date": "2017-08-07T17:52:55.859Z"
+    },
+    {
+      "number": "0.24.0",
+      "date": "2017-08-09T14:54:49.982Z"
+    },
+    {
+      "number": "0.24.1",
+      "date": "2017-08-10T09:07:20.547Z"
+    },
+    {
+      "number": "0.24.2",
+      "date": "2017-08-10T10:41:13.390Z"
+    },
+    {
+      "number": "0.24.3",
+      "date": "2017-08-11T11:12:47.423Z"
+    },
+    {
+      "number": "0.25.0",
+      "date": "2017-08-28T09:36:31.425Z"
+    },
+    {
+      "number": "0.25.1",
+      "date": "2017-08-30T09:10:30.552Z"
+    },
+    {
+      "number": "0.25.2",
+      "date": "2017-09-19T14:39:36.090Z"
+    },
+    {
+      "number": "0.26.0",
+      "date": "2017-09-20T10:38:31.633Z"
     }
   ],
   "created": "2016-02-24T11:42:25.483Z",
-  "modified": "2016-11-25T10:32:33.582Z",
+  "modified": "2017-09-20T10:38:31.633Z",
   "lastPublisher": {
     "name": "enzo",
     "email": "enzo@josema.es"

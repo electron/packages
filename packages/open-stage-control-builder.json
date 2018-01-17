@@ -1,36 +1,85 @@
 {
   "name": "open-stage-control-builder",
-  "description": "A libre desktop OSC bi-directionnal control surface application - builder package",
+  "description": "[Builder package] A libre desktop OSC bi-directionnal control surface application",
+  "version": "0.21.3",
+  "author": {
+    "name": "Jean-Emmanuel Doucet / AMMD",
+    "email": "jeannot@ammd.net"
+  },
+  "keywords": [
+    "osc",
+    "midi",
+    "interface",
+    "multi-touch"
+  ],
+  "repository": {
+    "user": "jean-emmanuel",
+    "repo": "open-stage-control",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/jean-emmanuel/open-stage-control/tarball/master",
+    "clone_url": "https://github.com/jean-emmanuel/open-stage-control",
+    "https_url": "https://github.com/jean-emmanuel/open-stage-control",
+    "travis_url": "https://travis-ci.org/jean-emmanuel/open-stage-control",
+    "zip_url": "https://github.com/jean-emmanuel/open-stage-control/archive/master.zip",
+    "api_url": "https://api.github.com/repos/jean-emmanuel/open-stage-control"
+  },
+  "homepage": "http://osc.ammd.net/",
+  "license": "GPL-3.0",
   "dependencies": {
-    "electron": "1.4.3",
-    "browserify": "13.1.0",
-    "node-sass": "^3.7.0",
-    "nodemon": "^1.9.2",
-    "socket.io-client": "1.5.0",
-    "electron-installer-debian": "0.4.0",
-    "electron-packager": "8.1.0"
+    "autolayout": "0.7.0",
+    "babel-core": "^6.26.0",
+    "babel-plugin-transform-object-rest-spread": "6.26.0",
+    "babel-preset-env": "*",
+    "babelify": "8.0.0",
+    "browserify": "14.5.0",
+    "cardinal-spline-js": "2.3.6",
+    "electron": "~1.8.1",
+    "electron-packager": "10.1.0",
+    "exorcist": "1.0.0",
+    "file-saver": "1.3.3",
+    "jquery": "3.2.1",
+    "json5": "0.5.1",
+    "kiwi.js": "1.0.1",
+    "licensify": "3.1.3",
+    "mathjs": "3.17.0",
+    "node-sass": "4.7.2",
+    "nodemon": "1.12.5",
+    "nosleep.js": "0.7.0",
+    "screenfull": "3.3.2",
+    "shortid": "2.2.8",
+    "socket.io-client": "2.0.4",
+    "uglifyify": "4.0.5",
+    "electron-installer-debian": "0.7.1"
+  },
+  "optionalDependencies": {
+    "electron-installer-debian": "0.7.1"
   },
   "scripts": {
     "postinstall": "cp resources/images/logo.ico app/browser/favicon.ico && cd app && npm install && cd .. && npm run build-js && npm run build-css",
     "start": "cd app && npm start --",
-    "build": "npm run build-js && npm run build-css && electron-packager ./app open-stage-control --platform=$PLATFORM --arch=$ARCH --out dist/ --icon=resources/images/logo --overwrite --ignore \"(app/node_modules/electron.*)\"",
+    "build": "npm run build-js -- --prod && npm run build-css && electron-packager ./app open-stage-control --platform=$PLATFORM --arch=$ARCH --out dist/ --icon=resources/images/logo --overwrite --ignore \"(node_modules/serialport)\"",
     "deb32": "electron-installer-debian --src dist/open-stage-control-linux-ia32/ --arch i386 --dest dist/open-stage-control-linux-ia32/ --icon resources/images/logo.png",
     "deb64": "electron-installer-debian --src dist/open-stage-control-linux-x64/ --arch amd64 --dest dist/open-stage-control-linux-x64/ --icon resources/images/logo.png",
     "debarm": "electron-installer-debian --src dist/open-stage-control-linux-armv7l/ --arch armv7l --dest dist/open-stage-control-linux-armv7l/ --icon resources/images/logo.png",
-    "watch-css": "nodemon --watch src/browser/scss -e scss -x \"npm run build-css\"",
+    "watch-css": "nodemon --watch src/browser/scss -e scss -x \"npm run build-css && node scripts/reload-css.js\"",
     "watch-js": "nodemon --watch src/browser/js -e js -x \"npm run build-js\"",
+    "watch-themes": "nodemon --watch app/main/themes -e css -x \"node scripts/reload-css.js\"",
     "build-css": "node-sass --include-path src/browser/scss src/browser/scss/style.scss app/browser/styles.css --output-style compressed",
-    "build-js": "browserify src/browser/js/browser.js -o app/browser/scripts.js",
+    "build-js": "node scripts/build-js.js > app/browser/scripts.js",
     "deploy-docs": "cd resources && mkdocs gh-deploy --clean && rm -rf site",
-    "test": "npm run build"
+    "test": "npm run build-js && npm run build-css"
   },
-  "version": "0.8.3-1",
-  "gitHead": "cb4cd90e776bd128c58a52e0ea2f914d0acec86a",
-  "_npmVersion": "3.10.3",
-  "_nodeVersion": "6.6.0",
+  "engines": {
+    "node": ">=6"
+  },
+  "gitHead": "95ae2f50e8b2ccc9b08abc56add39490c83d8c0a",
+  "_npmVersion": "3.10.8",
+  "_nodeVersion": "6.9.1",
   "dist": {
-    "shasum": "69f242ae2df39b5d2a777b3b0bcb474d1a538661",
-    "tarball": "http://registry.npmjs.org/open-stage-control-builder/-/open-stage-control-builder-0.8.3-1.tgz"
+    "shasum": "8e1979ab29fadcae39efbe7d4ad1192f3954a976",
+    "tarball": "https://registry.npmjs.org/open-stage-control-builder/-/open-stage-control-builder-0.21.3.tgz"
   },
   "versions": [
     {
@@ -40,10 +89,62 @@
     {
       "number": "0.8.3-1",
       "date": "2016-10-17T15:22:03.690Z"
+    },
+    {
+      "number": "0.13.1",
+      "date": "2017-01-07T15:02:51.985Z"
+    },
+    {
+      "number": "0.14.0",
+      "date": "2017-01-07T15:15:05.970Z"
+    },
+    {
+      "number": "0.15.1",
+      "date": "2017-01-21T06:08:47.722Z"
+    },
+    {
+      "number": "0.17.0",
+      "date": "2017-02-28T18:28:35.116Z"
+    },
+    {
+      "number": "0.17.1",
+      "date": "2017-03-13T18:14:56.200Z"
+    },
+    {
+      "number": "0.17.2",
+      "date": "2017-03-21T11:53:17.435Z"
+    },
+    {
+      "number": "0.17.3",
+      "date": "2017-03-22T12:38:05.184Z"
+    },
+    {
+      "number": "0.17.4",
+      "date": "2017-03-22T23:39:24.773Z"
+    },
+    {
+      "number": "0.17.7",
+      "date": "2017-05-17T17:27:10.380Z"
+    },
+    {
+      "number": "0.18.0",
+      "date": "2017-06-14T22:54:58.186Z"
+    },
+    {
+      "number": "0.21.1",
+      "date": "2017-10-17T07:37:46.708Z"
+    },
+    {
+      "number": "0.21.2",
+      "date": "2017-12-07T20:49:34.699Z"
+    },
+    {
+      "number": "0.21.3",
+      "date": "2017-12-09T14:57:19.194Z"
     }
   ],
   "created": "2016-10-17T14:37:44.362Z",
-  "modified": "2016-10-17T15:22:03.690Z",
+  "modified": "2017-12-09T14:57:19.194Z",
   "lastPublisher": {
     "name": "jean-emmanuel",
     "email": "jeannot@ammd.net"

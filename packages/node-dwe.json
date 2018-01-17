@@ -2,7 +2,7 @@
   "name": "node-dwe",
   "title": "Node.js - Debug With Electron",
   "description": "Node.js debugger, powered by Electron",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "license": "MIT",
   "author": {
     "name": "Niklas Gollenstede"
@@ -27,21 +27,31 @@
   "dependencies": {
     "command-line-args": "3.0.1",
     "command-line-usage": "3.0.5",
-    "electron-devtools-installer": "2.0.1",
+    "electron-ipc-stream": "0.2.0",
     "global-modules": "0.2.3",
     "which": "1.2.11"
   },
-  "devDependencies": {},
-  "scripts": {
-    "postinstall": "echo \"make sure to install electron globally\""
+  "devDependencies": {
+    "babel-eslint": "7.1.1",
+    "eslint": "3.14.1",
+    "eslintrc": "github:NiklasGollenstede/eslintrc"
   },
-  "gitHead": "0803ea728101af5157e13375ce1c9fc6b5ff5c3d",
+  "scripts": {
+    "prepublishOnly": "node -e \"if((/\\r\\n/).test(require('fs').readFileSync('./bin/node-dwe','utf-8'))){throw 'The bin file must not contain any RCLF!';}\"",
+    "postinstall": "echo \"make sure to install electron globally\"",
+    "lint": "eslint --ignore-path .gitignore ."
+  },
+  "eslintConfig": {
+    "extends": "./node_modules/eslintrc/node.js"
+  },
+  "gitHead": "1126956146db1f2beeb6715b7cebe0ddc80ebe5b",
   "homepage": "https://github.com/NiklasGollenstede/node-dwe#readme",
-  "_npmVersion": "3.10.8",
-  "_nodeVersion": "7.0.0",
+  "_npmVersion": "5.3.0",
+  "_nodeVersion": "8.2.1",
   "dist": {
-    "shasum": "529751352181a6a623c0be57b3e275157d38cc95",
-    "tarball": "http://registry.npmjs.org/node-dwe/-/node-dwe-0.2.0.tgz"
+    "integrity": "sha512-fTt1CqpLg0RuKfHA8V8329Tn+fAVaIIY2NeGEfVJj87DjGlPQxGBGl1Fix2icIR/ssQq4aGkRrIfY9oH9oAVCg==",
+    "shasum": "8b1a7c09ba53661865c677b3e0509b7a8359a06a",
+    "tarball": "https://registry.npmjs.org/node-dwe/-/node-dwe-0.3.0.tgz"
   },
   "versions": [
     {
@@ -55,10 +65,18 @@
     {
       "number": "0.2.0",
       "date": "2016-10-27T19:49:31.253Z"
+    },
+    {
+      "number": "0.2.1",
+      "date": "2017-02-03T20:58:44.017Z"
+    },
+    {
+      "number": "0.3.0",
+      "date": "2017-08-13T05:12:30.275Z"
     }
   ],
   "created": "2016-10-03T20:39:52.846Z",
-  "modified": "2016-10-27T19:49:31.253Z",
+  "modified": "2017-08-13T05:12:30.275Z",
   "lastPublisher": {
     "name": "niklasg",
     "email": "ngollenstede@web.de"

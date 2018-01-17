@@ -1,14 +1,18 @@
 {
   "name": "spacebro-client",
-  "version": "0.2.1",
-  "description": "Allow to automagically 🌟 connect to a Spacebro server",
+  "version": "0.4.5",
+  "description": "🌟 Connect easily to a Spacebro server",
   "main": "dist/spacebro-client.js",
   "scripts": {
-    "test": "gulp",
-    "lint": "gulp lint",
+    "test": "npm run lint && npm run unittest && npm run test-standard-settings && npm run test-karma",
+    "lint": "eslint --ext .js test src",
+    "unittest": "NO_STANDARD_SETTINGS=1 ava --verbose --timeout=16s",
+    "test-karma": "karma start test/karma.conf.js",
+    "test-standard-settings": "SETTINGS=test/settings.json ava --verbose --timeout=16s test/standard-settings-tests.js",
     "rebuild": "electron-rebuild",
     "build": "gulp build",
-    "coverage": "gulp coverage"
+    "coverage": "gulp coverage",
+    "prepublish": "npm run build"
   },
   "repository": {
     "user": "spacebro",
@@ -30,58 +34,86 @@
   "license": "MIT",
   "homepage": "https://github.com/spacebro/spacebro-client",
   "dependencies": {
-    "babel-runtime": "^6.11.6",
-    "chalk": "^1.1.3",
-    "mdns": "2.3.3",
-    "signals": "^1.0.0",
-    "socket.io-client": "1.4.5",
-    "socketio-wildcard": "^0.3.0"
+    "assignment": "^2.2.1",
+    "babel-runtime": "6.23.0",
+    "chalk": "1.1.3",
+    "eslint": "^4.1.1",
+    "signals": "1.0.0",
+    "socket.io-client": "2.0.1",
+    "socketio-wildcard": "2.0.0"
   },
   "devDependencies": {
+    "ava": "^0.19.1",
     "babel-cli": "^6.14.0",
-    "babel-core": "6.14.0",
-    "babel-loader": "6.2.5",
+    "babel-core": "^6.24.1",
+    "babel-eslint": "^7.2.3",
+    "babel-loader": "^7.1.1",
     "babel-plugin-add-module-exports": "^0.2.1",
     "babel-plugin-transform-runtime": "^6.15.0",
-    "babel-polyfill": "6.13.0",
-    "babel-preset-latest": "6.14.0",
-    "babel-register": "6.14.0",
+    "babel-polyfill": "^6.23.0",
+    "babel-preset-latest": "^6.24.1",
+    "babel-register": "^6.24.1",
     "chai": "3.5.0",
-    "electron": "^1.4.8",
-    "electron-rebuild": "^1.4.0",
     "del": "2.2.2",
-    "glob": "7.0.6",
+    "electron": "^1.6.6",
+    "electron-rebuild": "^1.4.0",
+    "eslint": "^4.1.1",
+    "eslint-config-standard": "^10.2.1",
+    "eslint-plugin-html": "^3.0.0",
+    "eslint-plugin-import": "^2.6.0",
+    "eslint-plugin-node": "^5.0.0",
+    "eslint-plugin-promise": "^3.5.0",
+    "eslint-plugin-standard": "^3.0.1",
+    "glob": "^7.1.2",
     "gulp": "3.9.1",
     "gulp-eslint": "3.0.1",
-    "gulp-filter": "4.0.0",
+    "gulp-filter": "^5.0.0",
     "gulp-istanbul": "1.1.1",
     "gulp-livereload": "3.8.1",
-    "gulp-load-plugins": "1.2.4",
-    "gulp-mocha": "3.0.1",
+    "gulp-load-plugins": "^1.5.0",
+    "gulp-mocha": "^4.3.1",
     "gulp-plumber": "1.1.0",
     "gulp-rename": "1.2.2",
-    "gulp-sourcemaps": "1.6.0",
-    "gulp-uglify": "2.0.0",
+    "gulp-sourcemaps": "^2.6.0",
+    "gulp-uglify": "^3.0.0",
     "isparta": "4.0.0",
     "json-loader": "0.5.4",
-    "mocha": "3.0.2",
+    "karma": "^1.7.0",
+    "karma-babel-preprocessor": "^6.0.1",
+    "karma-chrome-launcher": "^2.2.0",
+    "karma-electron": "^5.2.1",
+    "karma-mocha": "^1.3.0",
+    "karma-webpack": "^2.0.3",
+    "mocha": "^3.4.2",
     "moment": "^2.15.0",
-    "sinon": "1.17.5",
-    "sinon-chai": "2.8.0",
-    "webpack": "1.13.2",
+    "nconf": "^0.8.4",
+    "sinon": "^2.3.1",
+    "sinon-chai": "^2.10.0",
+    "sleep-promise": "^2.0.0",
+    "spectron": "^3.7.2",
+    "standard-settings": "^1.1.9",
+    "webpack": "^2.6.1",
     "webpack-stream": "3.2.0"
   },
   "babelBoilerplateOptions": {
     "entryFileName": "spacebro-client.js",
     "mainVarName": "spacebroClient"
   },
-  "gitHead": "63b24c752d54acdde0e2a51a43424215016fcf59",
-  "_npmVersion": "3.10.10",
-  "_nodeVersion": "6.9.1",
-  "dist": {
-    "shasum": "f47e00247a3cba901919e13185e8c97054194eb1",
-    "tarball": "http://registry.npmjs.org/spacebro-client/-/spacebro-client-0.2.1.tgz"
+  "ava": {
+    "files": [
+      "test/tests-*.js"
+    ],
+    "require": "babel-register",
+    "babel": "inherit"
   },
+  "gitHead": "f09a42d3204d090d1cf1f79281c1ef26461ed419",
+  "_npmVersion": "3.10.10",
+  "_nodeVersion": "6.10.3",
+  "dist": {
+    "shasum": "f3c8144027240475a124cafd404c7cf3c62d8279",
+    "tarball": "https://registry.npmjs.org/spacebro-client/-/spacebro-client-0.4.5.tgz"
+  },
+  "stars": 1,
   "versions": [
     {
       "number": "0.0.1",
@@ -190,34 +222,98 @@
     {
       "number": "0.2.1",
       "date": "2016-11-24T21:28:37.565Z"
+    },
+    {
+      "number": "0.2.2",
+      "date": "2017-02-24T18:27:43.706Z"
+    },
+    {
+      "number": "0.2.3",
+      "date": "2017-03-17T21:06:50.495Z"
+    },
+    {
+      "number": "0.3.0",
+      "date": "2017-04-18T14:51:30.974Z"
+    },
+    {
+      "number": "0.3.1",
+      "date": "2017-05-06T18:32:33.289Z"
+    },
+    {
+      "number": "0.3.2",
+      "date": "2017-05-06T18:35:13.782Z"
+    },
+    {
+      "number": "0.3.3",
+      "date": "2017-05-07T14:25:13.748Z"
+    },
+    {
+      "number": "0.4.0",
+      "date": "2017-05-22T14:24:59.402Z"
+    },
+    {
+      "number": "0.3.4",
+      "date": "2017-05-25T14:52:34.811Z"
+    },
+    {
+      "number": "0.3.5",
+      "date": "2017-06-23T16:50:28.488Z"
+    },
+    {
+      "number": "0.3.6",
+      "date": "2017-06-23T17:36:14.708Z"
+    },
+    {
+      "number": "0.4.0-beta.1",
+      "date": "2017-06-27T18:12:51.714Z"
+    },
+    {
+      "number": "0.4.0-beta.2",
+      "date": "2017-06-28T10:24:38.264Z"
+    },
+    {
+      "number": "0.4.0-beta.3",
+      "date": "2017-06-28T16:13:33.446Z"
+    },
+    {
+      "number": "0.4.0-beta.4",
+      "date": "2017-06-29T09:12:34.543Z"
+    },
+    {
+      "number": "0.4.0-beta.5",
+      "date": "2017-06-29T09:14:59.549Z"
+    },
+    {
+      "number": "0.4.1",
+      "date": "2017-07-07T09:09:34.097Z"
+    },
+    {
+      "number": "0.4.2",
+      "date": "2017-07-12T17:08:36.977Z"
+    },
+    {
+      "number": "0.4.3",
+      "date": "2017-12-27T18:11:48.448Z"
+    },
+    {
+      "number": "0.4.4",
+      "date": "2017-12-28T14:36:22.435Z"
+    },
+    {
+      "number": "0.4.5",
+      "date": "2017-12-28T14:45:24.140Z"
     }
   ],
   "created": "2016-01-04T17:04:19.726Z",
-  "modified": "2016-11-24T21:28:37.565Z",
+  "modified": "2017-12-28T14:45:24.140Z",
   "lastPublisher": {
-    "name": "hugohil",
-    "email": "hugo@soixantecircuits.fr"
+    "name": "emmanuelgeoffray",
+    "email": "emmanuel@soixantecircuits.fr"
   },
   "owners": [
     {
-      "name": "brendaoud",
-      "email": "brendan@soixantecircuits.fr"
-    },
-    {
-      "name": "emmanuelgeoffray",
-      "email": "emmanuel@soixantecircuits.fr"
-    },
-    {
-      "name": "gabrielstuff",
-      "email": "gabriel@soixantecircuits.fr"
-    },
-    {
-      "name": "hugohil",
-      "email": "hugo@soixantecircuits.fr"
-    },
-    {
-      "name": "massambadiouf",
-      "email": "massambadiouf@gmail.com"
+      "name": "poignard-azur",
+      "email": "couteaubleu@gmail.com"
     }
   ]
 }

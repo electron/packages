@@ -1,0 +1,163 @@
+{
+  "name": "yt-playlist-pro",
+  "productName": "YT Playlist Pro",
+  "version": "0.3.1",
+  "description": "Watch & edit your YouTube playlist on the desktop",
+  "license": "MIT",
+  "author": {
+    "name": "sidneys",
+    "url": "http://sidneys.github.io"
+  },
+  "repository": {
+    "user": "sidneys",
+    "repo": "yt-playlist-pro",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/sidneys/yt-playlist-pro/tarball/master",
+    "clone_url": "https://github.com/sidneys/yt-playlist-pro",
+    "https_url": "https://github.com/sidneys/yt-playlist-pro",
+    "travis_url": "https://travis-ci.org/sidneys/yt-playlist-pro",
+    "zip_url": "https://github.com/sidneys/yt-playlist-pro/archive/master.zip",
+    "api_url": "https://api.github.com/repos/sidneys/yt-playlist-pro"
+  },
+  "homepage": "https://sidneys.github.io/yt-playlist-pro",
+  "os": [
+    "darwin",
+    "win32",
+    "linux"
+  ],
+  "keywords": [
+    "youtube",
+    "always on top"
+  ],
+  "engines": {
+    "node": ">=7.0.0"
+  },
+  "preferGlobal": true,
+  "dependencies": {
+    "app-root-path": "^2.0.1",
+    "appdirectory": "^0.1.0",
+    "babel-cli": "^6.18.0",
+    "babel-preset-electron": "^0.37.8",
+    "chalk": "^1.1.3",
+    "electron-auto-updater": "^0.10.1",
+    "electron-compile": "^5.1.2",
+    "electron-compilers": "^5.3.2",
+    "electron-connect": "^0.6.1",
+    "electron-editor-context-menu": "^1.1.1",
+    "electron-settings": "^2.2.2",
+    "electron-squirrel-startup": "^1.0.0",
+    "fs-extra": "^1.0.0",
+    "keypath": "0.0.1",
+    "lodash": "^4.17.4",
+    "normalize-url": "^1.9.0",
+    "semver-compare": "^1.0.0",
+    "semver-regex": "^1.0.0"
+  },
+  "devDependencies": {
+    "electron": "^1.4.13",
+    "electron-builder": "^11.2.3",
+    "electron-builder-squirrel-windows": "^11.2.1",
+    "fkill": "^4.1.0",
+    "glob": "^7.1.1",
+    "gulp": "^3.9.1",
+    "gulp-load-plugins": "^1.4.0",
+    "minimist": "^1.2.0",
+    "progress": "^1.1.8",
+    "publish-release": "^1.3.3"
+  },
+  "main": "./app/es6-init.js",
+  "bin": {
+    "yt-playlist-pro": "./bin/cli.js"
+  },
+  "scripts": {
+    "deploy:github": "node ./lib/deploy-github.js -- ",
+    "start": "electron ./app/es6-init.js",
+    "start:dev": "electron ./app/es6-init.js",
+    "start:livereload": "gulp livereload",
+    "build": "node ./lib/build.js -- ",
+    "localsetup": "babel-node ./lib/localsetup.js -- ",
+    "localsetup:dev": "babel-node ./lib/localsetup.js -- ",
+    "localsetup:rebuild": "babel-node ./lib/localsetup.js -- ",
+    "localsetup:rebuild:dev": "babel-node ./lib/localsetup.js -- "
+  },
+  "build": {
+    "appId": "de.sidneys.yt-playlist-pro",
+    "directories": {
+      "buildResources": "./build/staging",
+      "output": "./build/output"
+    },
+    "files": [
+      "!build",
+      "!gh-pages",
+      "!resources",
+      "!website"
+    ],
+    "mac": {
+      "icon": "./icons/darwin/icon.icns",
+      "target": [
+        "dmg",
+        "zip"
+      ],
+      "category": "public.app-category.utilities"
+    },
+    "win": {
+      "icon": "./icons/win32/icon.ico",
+      "target": [
+        "squirrel"
+      ]
+    },
+    "linux": {
+      "target": [
+        "deb"
+      ],
+      "category": "Utility"
+    },
+    "dmg": {
+      "background": "./icons/darwin/background-setup.png",
+      "icon": "./icons/darwin/icon-setup.icns"
+    },
+    "squirrelWindows": {
+      "iconUrl": "https://raw.githubusercontent.com/sidneys/yt-playlist-pro/release/icons/win32/icon.ico",
+      "loadingGif": "./icons/win32/background-setup.gif"
+    }
+  },
+  "gitHead": "584ee2da6d05a64696e881b0207b992328cff85d",
+  "_npmVersion": "4.0.5",
+  "_nodeVersion": "7.4.0",
+  "dist": {
+    "shasum": "4813a6077a9044518fb7af4700738f559ba5041f",
+    "tarball": "https://registry.npmjs.org/yt-playlist-pro/-/yt-playlist-pro-0.3.1.tgz"
+  },
+  "versions": [
+    {
+      "number": "0.2.1",
+      "date": "2016-12-22T19:55:44.083Z"
+    },
+    {
+      "number": "0.2.5",
+      "date": "2016-12-23T20:24:10.083Z"
+    },
+    {
+      "number": "0.2.6",
+      "date": "2016-12-27T10:55:23.595Z"
+    },
+    {
+      "number": "0.3.1",
+      "date": "2017-01-10T03:21:37.534Z"
+    }
+  ],
+  "created": "2016-12-22T19:55:44.083Z",
+  "modified": "2017-01-10T03:21:37.534Z",
+  "lastPublisher": {
+    "name": "sidneys",
+    "email": "sidneys.github.io@outlook.com"
+  },
+  "owners": [
+    {
+      "name": "sidneys",
+      "email": "sidneys.github.io@outlook.com"
+    }
+  ]
+}

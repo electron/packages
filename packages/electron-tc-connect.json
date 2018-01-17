@@ -1,0 +1,77 @@
+{
+  "name": "electron-tc-connect",
+  "version": "0.3.0",
+  "description": "Standalone NPM-Module for Teamcenter communication",
+  "main": "src/main.js",
+  "author": {
+    "name": "PITERION GmbH"
+  },
+  "license": "ISC",
+  "keywords": [
+    "plugin",
+    "electron"
+  ],
+  "babel": {
+    "presets": [
+      "es2015"
+    ]
+  },
+  "scripts": {
+    "publish": "babel ./src --out-dir ./lib --presets es2015",
+    "start": "electron ./demo/Electron --presets es2015",
+    "build:mac": "electron-packager . --overwrite --platform=darwin --arch=x64 --prune=true --out=release-builds",
+    "build:win": "electron-packager . --overwrite --asar=true --platform=win32 --arch=ia32 --prune=true --out=release-builds --version-string.CompanyName=CE --version-string.FileDescription=CE --version-string.ProductName='ATAL'"
+  },
+  "dependencies": {
+    "electron": "*",
+    "event-emitter": "*",
+    "ws": "*"
+  },
+  "devDependencies": {
+    "babel-cli": "*",
+    "babel-core": "*",
+    "babel-loader": "*",
+    "babel-plugin-add-module-exports": "*",
+    "babel-plugin-transform-class-properties": "*",
+    "babel-plugin-transform-decorators-legacy": "*",
+    "babel-preset-es2015": "*",
+    "babel-preset-stage-0": "*",
+    "electron-packager": "*",
+    "jquery": "*"
+  },
+  "gitHead": "ee0d071653c8de511d2508dce4a9a83aaac091df",
+  "_npmVersion": "5.3.0",
+  "_nodeVersion": "6.11.2",
+  "dist": {
+    "integrity": "sha512-snJ7OpjwozRCdCNOXh8ng0rD+IsyrJmo8NvM3y79d5F/BuvO6kL54BA6prwcBiZDkoCyK56CTgyhwCFOgm4YBg==",
+    "shasum": "86eb80b1ead106d385955051540bf0a002043579",
+    "tarball": "https://registry.npmjs.org/electron-tc-connect/-/electron-tc-connect-0.3.0.tgz"
+  },
+  "deprecated": "this package has been deprecated",
+  "versions": [
+    {
+      "number": "0.1.0",
+      "date": "2017-09-05T11:23:26.758Z"
+    },
+    {
+      "number": "0.2.0",
+      "date": "2017-09-05T11:28:35.024Z"
+    },
+    {
+      "number": "0.3.0",
+      "date": "2017-09-05T11:31:49.380Z"
+    }
+  ],
+  "created": "2017-09-05T11:23:26.758Z",
+  "modified": "2017-09-07T10:50:13.032Z",
+  "lastPublisher": {
+    "name": "terrasoft",
+    "email": "info@florian-burger.de"
+  },
+  "owners": [
+    {
+      "name": "terrasoft",
+      "email": "info@florian-burger.de"
+    }
+  ]
+}

@@ -1,8 +1,8 @@
 {
   "name": "nteract",
-  "version": "0.0.15",
+  "version": "0.5.5",
   "description": "Interactive literate coding notebook!",
-  "main": "./lib/main/index.js",
+  "main": "./lib/webpacked-main.js",
   "repository": {
     "user": "nteract",
     "repo": "nteract",
@@ -27,171 +27,148 @@
     "name": "nteract contributors"
   },
   "license": "BSD-3-Clause",
-  "homepage": "https://github.com/nteract/nteract",
+  "publishConfig": {
+    "access": "public"
+  },
+  "homepage": "https://nteract.io",
   "scripts": {
-    "postinstall": "node scripts/check-deps.js && install-app-deps",
-    "reinstall": "npm run clean && rimraf node_modules && npm install",
-    "prestart": "npm run build",
+    "clean": "rimraf lib dist",
+    "install:app-deps": "electron-builder install-app-deps",
+    "prestart": "npm run install:app-deps && npm run build",
     "start": "npm run spawn",
     "spawn": "cross-env NODE_ENV=development electron .",
-    "clean": "rimraf lib dist",
-    "lint": "eslint src",
-    "lint:fix": "eslint src --fix",
+    "spawn:debug": "cross-env DEBUG=true NODE_ENV=development electron .",
     "prebuild": "rimraf lib",
-    "build": "npm run build:renderer && npm run build:main",
-    "build:renderer": "webpack --progress --colors",
-    "build:renderer:watch": "npm run build:renderer -- --watch",
-    "build:main": "babel src/main --out-dir ./lib/main && babel src/utils --out-dir ./lib/utils",
-    "build:icon": "./scripts/make_icons.sh && cd static/icons && iconutil -c icns nteract.iconset && mv nteract.icns ../icon.icns",
-    "build:docs": "esdoc -c esdoc.json",
-    "test": "npm run test:unit && npm run test:lint",
-    "pretest:functional": "npm run build",
-    "sublaunch": "electron-mocha --compilers js:babel-core/register",
-    "test:conformance": "node scripts/conformance.js",
-    "test:functional:launch": "npm run sublaunch -- test/main/launch.js",
-    "test:functional:launchNewNotebook": "npm run sublaunch -- test/main/launchNewNotebook.js",
-    "test:functional": "npm run test:functional:launch && npm run test:functional:launchNewNotebook",
-    "test:coverage": "npm run coverage",
-    "test:unit": "mocha -r test/setup.js --compilers js:babel-core/register \"test/renderer/**/*.js\" \"test/utils/**/*.js\"",
-    "test:debug": "mocha --debug-brk --inspect -r test/setup.js --compilers js:babel-core/register \"test/renderer/**/*.js\" \"test/utils/**/*.js\"",
-    "test:unit:individual": "mocha -r test/setup.js --compilers js:babel-core/register ",
-    "test:watch": "watch 'npm run test' test/",
-    "test:lint": "npm run lint",
-    "test:flow": "npm run flow",
-    "precoverage": "mkdirp coverage && nyc npm run test:unit",
-    "coverage": "nyc report --reporter=text-lcov > coverage/lcov.info",
-    "pack": "npm install && npm run clean && npm run build && build --dir",
-    "dist": "npm install && npm run clean && npm run build && build",
-    "flow": "flow",
-    "diagnostics": "scripts/kernelspecs-diagnostics.js"
+    "build": "webpack --config webpack.dev.js --progress --colors",
+    "build:watch": "npm run build -- --watch",
+    "pack": "npm run clean && webpack --config webpack.prod.js && electron-builder --dir",
+    "dist": "npm run clean && webpack --config webpack.prod.js && electron-builder",
+    "publish": "npm run clean && webpack --config webpack.prod.js && electron-builder -p always",
+    "dist:all": "npm run dist -- -mlw",
+    "publish:all": "npm run publish -- -mlw"
   },
   "build": {
-    "electronVersion": "1.4.8",
     "appId": "io.nteract.nteract",
+    "productName": "nteract",
+    "publish": [
+      {
+        "provider": "github"
+      }
+    ],
     "fileAssociations": {
       "ext": "ipynb",
       "name": "ipynb"
     },
     "mac": {
-      "category": "public.app-category.developer-tools"
+      "category": "public.app-category.developer-tools",
+      "target": [
+        "dmg",
+        "zip"
+      ]
+    },
+    "nsis": {
+      "perMachine": true,
+      "oneClick": false
     },
     "win": {
-      "target": "nsis"
+      "target": [
+        "nsis",
+        "zip"
+      ]
+    },
+    "linux": {
+      "maintainer": "nteract contributors <jupyter@googlegroups.com>",
+      "target": [
+        "deb",
+        "AppImage",
+        "tar.gz"
+      ],
+      "desktop": {
+        "Comment": "Interactive literate coding notebook",
+        "Exec": "/opt/nteract/nteract %U",
+        "Icon": "nteract",
+        "MimeType": "application/x-ipynb+json",
+        "Name": "nteract",
+        "Path": "/opt/nteract/",
+        "StartupNotify": "true",
+        "Terminal": "false",
+        "Type": "Application",
+        "Categories": "Science;Development;"
+      },
+      "category": "Science",
+      "packageCategory": "editors"
     },
     "files": [
-      "lib",
-      "node_modules",
+      "lib/*.js",
+      "lib/*.css",
+      "lib/*.woff",
+      "lib/*.woff2",
       "static"
     ],
     "extraResources": [
       "bin",
       "example-notebooks"
-    ]
+    ],
+    "npmSkipBuildFromSource": true
   },
-  "greenkeeper": {
-    "ignore": [
-      "eslint-plugin-jsx-a11y",
-      "eslint-plugin-import",
-      "eslint-plugin-jsx-a11y",
-      "eslint-plugin-react"
+  "jest": {
+    "setupFiles": [
+      "./scripts/mockument"
     ]
   },
   "dependencies": {
-    "ansi-to-react": "0.0.5",
-    "codemirror": "^5.20.2",
-    "commonmark": "^0.27.0",
-    "commonmark-react-renderer": "^4.3.1",
-    "commutable": "^1.1.3",
-    "electron-context-menu": "^0.8.0",
-    "electron-log": "^1.2.2",
-    "electron-react-devtools": "^0.4.0",
-    "enchannel": "^1.1.3",
-    "enchannel-zmq-backend": "^2.6.0",
-    "github": "^6.0.1",
-    "immutable": "^3.7.6",
-    "jupyter-paths": "^1.0.2",
-    "kernelspecs": "^1.0.3",
-    "leaflet": "^1.0.1",
-    "mathjax-electron": "^1.2.0",
-    "mkdirp": "^0.5.1",
-    "moment": "^2.15.2",
-    "normalize.css": "^5.0.0",
-    "nteract-assets": "^2.1.0",
-    "plotly.js": "^1.19.2",
-    "react": "^15.3.2",
-    "react-addons-pure-render-mixin": "^15.3.2",
-    "react-codemirror": "^0.3.0",
-    "react-dnd": "^2.1.4",
-    "react-dnd-html5-backend": "^2.1.2",
-    "react-dom": "^15.3.2",
-    "react-json-tree": "0.10.0",
-    "react-notification-system": "^0.2.9",
-    "react-redux": "^4.4.5",
-    "react-simple-dropdown": "^1.1.4",
-    "redux": "^3.5.2",
-    "redux-actions": "^1.0.1",
-    "redux-logger": "^2.7.4",
-    "redux-observable": "^0.12.0",
-    "rxjs": "^5.0.0-rc.1",
-    "shell-env": "^0.3.0",
-    "source-map-support": "^0.4.5",
-    "spawn-rx": "^2.0.3",
-    "spawnteract": "^2.2.0",
-    "uuid": "^3.0.0",
-    "vega": "^2.6.3",
-    "vega-embed": "^2.2.0",
-    "vega-lite": "^1.3.1",
-    "yargs": "^6.4.0"
+    "ijavascript": "^5.0.17",
+    "jmp": "^1.0.0",
+    "mathjax-electron": "^2.0.1"
   },
   "devDependencies": {
-    "babel-cli": "^6.18.0",
-    "babel-core": "^6.18.2",
-    "babel-eslint": "^7.1.1",
-    "babel-loader": "^6.2.8",
-    "babel-plugin-transform-class-properties": "^6.19.0",
-    "babel-plugin-transform-flow-strip-types": "^6.18.0",
-    "babel-preset-es2015-node6": "^0.4.0",
-    "babel-preset-react": "^6.11.1",
-    "chai": "^3.4.1",
-    "chai-immutable": "^1.6.0",
-    "colors": "^1.1.2",
-    "command-exists": "^1.0.2",
-    "cross-env": "^3.1.3",
-    "electron": "1.4.8",
-    "electron-builder": "^8.5.2",
-    "electron-mocha": "^3.2.0",
-    "enzyme": "^2.6.0",
-    "esdoc": "^0.4.8",
-    "eslint": "3.11.1",
-    "eslint-config-airbnb": "13.0.0",
-    "eslint-plugin-import": "2.2.0",
-    "eslint-plugin-jsx-a11y": "2.2.3",
-    "eslint-plugin-react": "6.7.1",
-    "flow-bin": "^0.36.0",
-    "jsdom": "^9.8.3",
-    "json-loader": "^0.5.4",
-    "jsonschema": "^1.1.0",
-    "jsx-chai": "^4.0.0",
-    "mkdirp": "^0.5.1",
-    "mocha": "^3.2.0",
-    "mock-require": "^2.0.0",
-    "nbschema": "0.0.2",
-    "nyc": "^10.0.0",
-    "react-addons-test-utils": "^15.4.0",
-    "react-dnd-test-backend": "^1.0.2",
-    "rimraf": "^2.5.2",
-    "sinon": "^1.17.6",
-    "sinon-chai": "^2.8.0",
-    "source-map-support": "^0.4.6",
-    "watch": "^1.0.0",
-    "webpack": "^1.13.3"
+    "@nteract/commutable": "^3.0.4",
+    "@nteract/core": "^1.0.7",
+    "@nteract/display-area": "^3.1.8",
+    "@nteract/editor": "^5.0.7",
+    "@nteract/messaging": "^3.0.5",
+    "@nteract/transforms-full": "^4.0.7",
+    "@nteract/types": "^1.0.4",
+    "commonmark": "^0.28.0",
+    "commonmark-react-renderer": "^4.3.3",
+    "cross-env": "^5.1.3",
+    "date-fns": "^1.29.0",
+    "electron": "^1.7.10",
+    "electron-builder": "^19.50.0",
+    "electron-context-menu": "^0.9.1",
+    "electron-log": "^2.2.13",
+    "electron-updater": "^2.18.0",
+    "enchannel-zmq-backend": "^6.0.5",
+    "escape-carriage": "^1.2.0",
+    "fs-observable": "^2.0.7",
+    "github": "^13.0.0",
+    "jupyter-paths": "^2.0.0",
+    "kernelspecs": "^2.0.0",
+    "lodash": "^4.17.4",
+    "nteract-assets": "^4.0.0",
+    "react-dnd": "^2.5.4",
+    "react-dnd-html5-backend": "^2.5.4",
+    "react-notification-system": "^0.2.16",
+    "react-redux": "^5.0.6",
+    "redux": "^3.7.2",
+    "redux-electron-store": "^0.4.1",
+    "redux-logger": "^3.0.6",
+    "redux-observable": "^0.17.0",
+    "rimraf": "^2.6.2",
+    "rxjs": "^5.5.6",
+    "shell-env": "^1.0.0",
+    "spawn-rx": "^2.0.12",
+    "spawnteract": "^4.0.0",
+    "styled-jsx": "^2.2.1",
+    "uuid": "^3.1.0",
+    "yargs": "^10.0.3"
   },
-  "gitHead": "a83dd8b69d4f16a1d40bbf736c4168c820b885ea",
-  "_npmVersion": "3.8.9",
-  "_nodeVersion": "6.2.0",
+  "_npmVersion": "5.5.1",
+  "_nodeVersion": "8.9.3",
   "dist": {
-    "shasum": "65d55e841a95846b49735d51a8501fc517a28a7d",
-    "tarball": "http://registry.npmjs.org/nteract/-/nteract-0.0.15.tgz"
+    "integrity": "sha512-DbkOW7kT83sP2VIooN3EIndxADCjFuJWMcKgtMYy4qVOwHTea/bE1W9Dx0J6wN881DF0gPOMu1DXHZ8Ye8odKw==",
+    "shasum": "ffd96a64d801bdef8f076281c219df194d23f07f",
+    "tarball": "https://registry.npmjs.org/nteract/-/nteract-0.5.5.tgz"
   },
   "versions": [
     {
@@ -249,30 +226,98 @@
     {
       "number": "0.0.15",
       "date": "2016-11-28T19:04:29.953Z"
+    },
+    {
+      "number": "0.1.0",
+      "date": "2017-02-09T16:53:08.998Z"
+    },
+    {
+      "number": "0.2.1",
+      "date": "2017-10-03T01:10:37.140Z"
+    },
+    {
+      "number": "0.3.2",
+      "date": "2017-10-08T23:26:49.803Z"
+    },
+    {
+      "number": "0.3.3",
+      "date": "2017-10-10T03:17:31.820Z"
+    },
+    {
+      "number": "0.3.4",
+      "date": "2017-10-13T17:29:14.304Z"
+    },
+    {
+      "number": "0.4.0",
+      "date": "2017-11-22T00:07:42.341Z"
+    },
+    {
+      "number": "0.4.1",
+      "date": "2017-11-27T00:10:55.986Z"
+    },
+    {
+      "number": "0.4.2",
+      "date": "2017-11-27T15:25:02.233Z"
+    },
+    {
+      "number": "0.4.3",
+      "date": "2017-11-29T04:07:34.778Z"
+    },
+    {
+      "number": "0.4.4",
+      "date": "2017-12-02T08:23:23.251Z"
+    },
+    {
+      "number": "0.4.5",
+      "date": "2017-12-02T08:48:16.321Z"
+    },
+    {
+      "number": "0.4.6-0",
+      "date": "2017-12-03T22:05:32.097Z"
+    },
+    {
+      "number": "0.5.4",
+      "date": "2017-12-31T22:40:45.693Z"
+    },
+    {
+      "number": "0.5.5",
+      "date": "2018-01-03T20:00:54.523Z"
     }
   ],
   "created": "2015-08-06T21:28:48.017Z",
-  "modified": "2016-11-28T19:04:29.953Z",
+  "modified": "2018-01-03T20:00:54.523Z",
   "lastPublisher": {
     "name": "rgbkrk",
     "email": "rgbkrk@gmail.com"
   },
   "owners": [
     {
-      "name": "betatim",
-      "email": "betatim@gmail.com"
+      "email": "pi@berkeley.edu",
+      "name": "ivanov"
     },
     {
-      "name": "captainsafia",
-      "email": "safia@safia.rocks"
+      "email": "ken_wheeler@me.com",
+      "name": "thekenwheeler"
     },
     {
-      "name": "jdfreder",
-      "email": "jon.freder@gmail.com"
+      "email": "lukas.geiger94@gmail.com",
+      "name": "lgeiger"
     },
     {
-      "name": "rgbkrk",
-      "email": "rgbkrk@gmail.com"
+      "email": "safia@safia.rocks",
+      "name": "captainsafia"
+    },
+    {
+      "email": "jon.freder@gmail.com",
+      "name": "jdfreder"
+    },
+    {
+      "email": "betatim@gmail.com",
+      "name": "betatim"
+    },
+    {
+      "email": "rgbkrk@gmail.com",
+      "name": "rgbkrk"
     }
   ]
 }

@@ -1,8 +1,8 @@
 {
   "name": "pb-for-desktop",
   "productName": "PB for Desktop",
-  "version": "2.9.0",
-  "description": "PushBullet desktop application for macOS, Windows and Linux",
+  "version": "6.5.0",
+  "description": "PB for Desktop is a Pushbullet desktop application for macOS, Windows and Linux",
   "license": "MIT",
   "homepage": "https://sidneys.github.io/pb-for-desktop",
   "author": {
@@ -22,6 +22,9 @@
     "travis_url": "https://travis-ci.org/sidneys/pb-for-desktop",
     "zip_url": "https://github.com/sidneys/pb-for-desktop/archive/master.zip",
     "api_url": "https://api.github.com/repos/sidneys/pb-for-desktop"
+  },
+  "engines": {
+    "node": ">=8.0.0"
   },
   "os": [
     "darwin",
@@ -45,84 +48,152 @@
     "native",
     "pushover"
   ],
-  "engines": {
-    "node": ">=6.0.0"
-  },
   "preferGlobal": true,
-  "scripts": {
-    "build": "node ./lib/build.js -- ",
-    "debug": "electron ./app/es6-init.js",
-    "deploy:github": "node ./lib/deploy-github.js -- ",
-    "livereload": "gulp livereload",
-    "start": "electron ./app/es6-init.js",
-    "dev:install:build": "babel-node ./lib/dev-install.js -- ",
-    "dev:install": "babel-node ./lib/dev-install.js -- "
-  },
-  "main": "./app/es6-init.js",
-  "bin": {
-    "pb-for-desktop": "./bin/cli.js",
-    "pushbullet": "./bin/cli.js"
-  },
   "dependencies": {
+    "@sidneys/dom-tools": "^1.0.5",
+    "@sidneys/electron-build": "^1.1.5",
+    "@sidneys/electron-deploy-github": "^1.0.5",
+    "@sidneys/electron-localsetup": "^1.0.6",
+    "@sidneys/h264ify": "^1.0.3",
+    "@sidneys/is-env": "^1.0.4",
+    "@sidneys/logger": "^1.0.9",
+    "@sidneys/platform-tools": "^1.0.1",
+    "@sidneys/releasenotes": "^1.0.10",
+    "@sidneys/required-count": "^1.0.1",
+    "@sidneys/text-ellipsis": "^1.0.1",
+    "app-root-path": "^2.0.1",
     "appdirectory": "^0.1.0",
-    "auto-launch": "^5.0.1",
-    "babel-cli": "^6.16.0",
-    "babel-preset-electron": "^0.37.8",
-    "chalk": "^1.1.3",
-    "electron": "^1.4.4",
-    "electron-compile": "^4.0.0",
-    "electron-compilers": "^4.0.2",
-    "electron-connect": "^0.6.0",
+    "auto-launch": "git://github.com/sidneys/node-auto-launch.git#master",
+    "babel-cli": "^6.26.0",
+    "babel-preset-electron": "^1.4.15",
+    "chalk": "^2.3.0",
+    "chalkline": "0.0.5",
+    "clean-css": "^4.1.9",
     "electron-editor-context-menu": "^1.1.1",
-    "electron-packager": "^8.1.0",
-    "electron-settings": "^2.2.2",
-    "electron-squirrel-startup": "^1.0.0",
-    "file-type": "^3.9.0",
-    "file-url": "^1.1.0",
-    "fkill": "^4.1.0",
-    "fs-extra": "^0.30.0",
-    "glob": "^7.1.1",
-    "gulp": "^3.9.1",
-    "gulp-load-plugins": "^1.3.0",
+    "electron-settings": "^3.1.4",
+    "electron-updater": "^2.16.1",
+    "file-type": "^7.2.0",
+    "file-url": "^2.0.2",
+    "filesize": "^3.5.11",
+    "fs-extra": "^4.0.2",
+    "get-youtube-id": "^1.0.0",
+    "icojs": "^0.8.1",
+    "image-downloader": "^3.3.0",
+    "is-reachable": "^2.3.3",
+    "jimp": "^0.2.28",
     "keypath": "^0.0.1",
-    "lodash": "^4.16.4",
+    "lodash": "^4.17.4",
     "minimist": "^1.2.0",
-    "node-archs": "^1.0.0",
-    "node-platforms": "^1.0.0",
-    "open": "0.0.5",
-    "progress": "^1.1.8",
-    "publish-release": "^1.3.2",
-    "read-chunk": "^2.0.0",
-    "rimraf": "^2.5.4",
-    "string-format-obj": "^1.1.0",
-    "try-require": "^1.2.1",
-    "which": "^1.2.11",
-    "appdmg": "^0.4.5",
-    "electron-installer-debian": "^0.4.0",
-    "electron-winstaller": "^2.3.4"
+    "moment": "^2.19.2",
+    "opn": "^5.1.0",
+    "parse-domain": "^1.1.0",
+    "parse-semver": "^1.1.1",
+    "present": "^1.0.0",
+    "remove-markdown": "^0.2.2",
+    "semver-compare": "^1.0.0",
+    "simple-reload": "0.0.4",
+    "try-require": "^1.2.1"
   },
-  "optionalDependencies": {
-    "appdmg": "^0.4.5",
-    "electron-installer-debian": "^0.4.0",
-    "electron-winstaller": "^2.3.4"
+  "devDependencies": {
+    "docdash": "^0.4.0",
+    "electron": "1.7.9",
+    "electron-builder": "19.45.4",
+    "electron-connect": "^0.6.2",
+    "electron-prebuilt-compile": "1.7.9",
+    "eslint": "^4.11.0",
+    "gulp": "^3.9.1",
+    "gulp-load-plugins": "^1.5.0",
+    "jsdoc": "^3.5.5",
+    "minami": "^1.2.3"
+  },
+  "main": "./app/scripts/main/components/application.js",
+  "bin": {
+    "pb-for-desktop": "./bin/cli.js"
+  },
+  "scripts": {
+    "build": "node ./node_modules/@sidneys/electron-build/index.js",
+    "deploy": "node ./node_modules/@sidneys/electron-deploy-github/index.js",
+    "docs": "jsdoc --verbose --configure .jsdoc.json",
+    "livereload": "gulp",
+    "localsetup": "node ./node_modules/@sidneys/electron-localsetup/index.js",
+    "releasenotes": "node ./node_modules/@sidneys/releasenotes/index.js",
+    "start": "electron ./app/scripts/main/components/application.js"
   },
   "build": {
-    "electronVersion": "1.4.3",
-    "productName": "PB for Desktop",
-    "id": "de.sidneys.pb-for-desktop",
-    "company": "sidneys.github.io",
-    "category": "public.app-category.utilities",
-    "directoryBuild": "build",
-    "directoryIcons": "icons",
-    "iconUrl": "https://raw.githubusercontent.com/sidneys/pb-for-desktop/release/icons/win32/icon-app.ico"
+    "appId": "de.sidneys.pb-for-desktop",
+    "asar": true,
+    "asarUnpack": [
+      "sounds"
+    ],
+    "compression": "maximum",
+    "directories": {
+      "buildResources": "./build/staging",
+      "output": "./build/output"
+    },
+    "files": [
+      "!.appveyor.yml",
+      "!.babelrc",
+      "!.editorconfig",
+      "!.eslintignore",
+      "!.eslintrc",
+      "!.github/**",
+      "!.gitignore",
+      "!.npmignore",
+      "!.travis.yml",
+      "!build/**",
+      "!gh-pages/**",
+      "!resources/**",
+      "!website/**"
+    ],
+    "mac": {
+      "category": "public.app-category.utilities",
+      "icon": "./icons/darwin/icon.icns",
+      "target": [
+        "dir",
+        "dmg",
+        "zip"
+      ]
+    },
+    "win": {
+      "icon": "./icons/win32/icon.ico",
+      "target": [
+        "nsis"
+      ]
+    },
+    "linux": {
+      "category": "Utility",
+      "icon": "./icons/linux",
+      "target": [
+        "AppImage",
+        "deb",
+        "pacman",
+        "rpm"
+      ]
+    },
+    "dmg": {
+      "background": "./icons/darwin/background-setup.png",
+      "icon": "./icons/darwin/icon-setup.icns"
+    },
+    "nsis": {
+      "artifactName": "${name}-${version}-setup.${ext}",
+      "deleteAppDataOnUninstall": true,
+      "installerHeader": "./icons/win32/header-setup.bmp",
+      "installerHeaderIcon": "./icons/win32/icon.ico",
+      "installerIcon": "./icons/win32/icon-setup.ico",
+      "installerSidebar": "./icons/win32/background-setup.bmp",
+      "oneClick": false,
+      "runAfterFinish": false
+    }
   },
-  "gitHead": "e72bda9b2c6d656d6e659beebbbd93c4c7cafe21",
-  "_npmVersion": "3.10.8",
-  "_nodeVersion": "6.9.1",
+  "gitHead": "cbf51a332e4fcc1cb1a0cfd94f9febaa4ce7384d",
+  "_npmVersion": "5.5.1",
+  "_nodeVersion": "9.1.0",
   "dist": {
-    "shasum": "9841414fb1fa5adefe09106f295de927b2cb55ec",
-    "tarball": "http://registry.npmjs.org/pb-for-desktop/-/pb-for-desktop-2.9.0.tgz"
+    "integrity": "sha512-eF3NKk4hHLaMxdnvcZhxFIhOb1cQxJh8/pLR5NI6uL1IWLHSpT4H1NJ68RkxrB0IjW22kEuaRciOgcOmKbbrgA==",
+    "shasum": "69e45b495f365d7fbc3237bbd85b369760eae401",
+    "tarball": "https://registry.npmjs.org/pb-for-desktop/-/pb-for-desktop-6.5.0.tgz"
   },
+  "stars": 1,
   "versions": [
     {
       "number": "1.9.98",
@@ -163,10 +234,162 @@
     {
       "number": "2.9.0",
       "date": "2016-10-20T08:06:20.066Z"
+    },
+    {
+      "number": "2.9.2",
+      "date": "2016-12-02T15:44:22.429Z"
+    },
+    {
+      "number": "2.9.61",
+      "date": "2016-12-04T00:00:20.407Z"
+    },
+    {
+      "number": "2.9.81",
+      "date": "2016-12-20T17:38:09.798Z"
+    },
+    {
+      "number": "2.9.82",
+      "date": "2016-12-21T22:28:46.941Z"
+    },
+    {
+      "number": "2.9.87",
+      "date": "2016-12-23T20:26:34.403Z"
+    },
+    {
+      "number": "2.9.9",
+      "date": "2016-12-27T10:08:45.268Z"
+    },
+    {
+      "number": "2.9.953",
+      "date": "2017-01-05T08:02:33.467Z"
+    },
+    {
+      "number": "2.9.973",
+      "date": "2017-01-09T23:29:07.105Z"
+    },
+    {
+      "number": "2.9.974",
+      "date": "2017-01-10T01:34:00.562Z"
+    },
+    {
+      "number": "2.9.975",
+      "date": "2017-01-10T05:00:51.456Z"
+    },
+    {
+      "number": "2.9.976",
+      "date": "2017-01-10T06:21:58.514Z"
+    },
+    {
+      "number": "3.0.1",
+      "date": "2017-01-15T15:08:04.511Z"
+    },
+    {
+      "number": "3.0.2",
+      "date": "2017-01-16T01:24:26.929Z"
+    },
+    {
+      "number": "3.1.0",
+      "date": "2017-01-17T04:21:54.661Z"
+    },
+    {
+      "number": "3.2.0",
+      "date": "2017-01-19T05:57:14.700Z"
+    },
+    {
+      "number": "3.2.1",
+      "date": "2017-01-19T09:22:28.348Z"
+    },
+    {
+      "number": "3.3.1",
+      "date": "2017-01-23T12:35:22.910Z"
+    },
+    {
+      "number": "3.4.0",
+      "date": "2017-01-25T09:22:09.539Z"
+    },
+    {
+      "number": "3.5.0",
+      "date": "2017-01-25T14:44:00.050Z"
+    },
+    {
+      "number": "3.5.1",
+      "date": "2017-01-28T18:46:14.884Z"
+    },
+    {
+      "number": "3.5.3",
+      "date": "2017-01-28T21:39:37.393Z"
+    },
+    {
+      "number": "3.9.0",
+      "date": "2017-02-26T02:28:25.094Z"
+    },
+    {
+      "number": "3.9.92",
+      "date": "2017-03-14T21:38:37.363Z"
+    },
+    {
+      "number": "3.9.96",
+      "date": "2017-03-15T03:26:30.643Z"
+    },
+    {
+      "number": "3.9.97",
+      "date": "2017-03-15T20:59:33.697Z"
+    },
+    {
+      "number": "3.9.98",
+      "date": "2017-03-15T21:30:23.395Z"
+    },
+    {
+      "number": "4.1.0",
+      "date": "2017-03-20T03:02:39.686Z"
+    },
+    {
+      "number": "4.5.1",
+      "date": "2017-03-24T14:11:32.758Z"
+    },
+    {
+      "number": "4.5.2",
+      "date": "2017-03-24T15:00:09.255Z"
+    },
+    {
+      "number": "4.8.0",
+      "date": "2017-03-31T18:55:20.414Z"
+    },
+    {
+      "number": "4.9.1",
+      "date": "2017-04-01T18:21:58.150Z"
+    },
+    {
+      "number": "5.0.3",
+      "date": "2017-04-05T14:20:56.348Z"
+    },
+    {
+      "number": "5.1.1",
+      "date": "2017-04-06T05:43:04.890Z"
+    },
+    {
+      "number": "5.5.1",
+      "date": "2017-04-14T18:49:24.171Z"
+    },
+    {
+      "number": "5.9.0",
+      "date": "2017-04-19T15:56:16.074Z"
+    },
+    {
+      "number": "5.9.2",
+      "date": "2017-04-20T19:41:33.343Z"
+    },
+    {
+      "number": "6.3.0",
+      "date": "2017-10-29T13:39:10.709Z"
+    },
+    {
+      "number": "6.5.0",
+      "date": "2017-11-14T14:05:48.562Z"
     }
   ],
   "created": "2016-08-31T02:49:39.067Z",
-  "modified": "2016-10-20T08:06:20.066Z",
+  "modified": "2017-11-14T14:05:48.562Z",
   "lastPublisher": {
     "name": "sidneys",
     "email": "sidneys.github.io@outlook.com"

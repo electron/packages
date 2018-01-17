@@ -1,0 +1,77 @@
+{
+  "name": "actionbuffer",
+  "version": "1.0.0",
+  "description": "Push elements into a queue and invoke a callback with the queued elements after a timeout",
+  "main": "index.js",
+  "mocha_opts": "-u tdd --compilers coffee:coffee-script/register --slow 1000 --timeout 5000",
+  "scripts": {
+    "prepublishOnly": "npm run test && npm run build",
+    "build": "cat lib/index.coffee | coffee -cbs --no-header > browser.js",
+    "coverage": "npm run coverage:run && npm run coverage:badge",
+    "coverage:run": "mocha $npm_package_mocha_opts --require coffee-coverage/register-istanbul; istanbul report",
+    "coverage:badge": "badge-gen -d .config/badges/coverage",
+    "test": "npm run test:node && npm run test:browser",
+    "test:node": "mocha $npm_package_mocha_opts",
+    "test:browser": "electron-mocha $npm_package_mocha_opts --renderer test/test.coffee"
+  },
+  "author": {
+    "name": "danielkalen"
+  },
+  "repository": {
+    "user": "danielkalen",
+    "repo": "actionbuffer",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/danielkalen/actionbuffer/tarball/master",
+    "clone_url": "https://github.com/danielkalen/actionbuffer",
+    "https_url": "https://github.com/danielkalen/actionbuffer",
+    "travis_url": "https://travis-ci.org/danielkalen/actionbuffer",
+    "zip_url": "https://github.com/danielkalen/actionbuffer/archive/master.zip",
+    "api_url": "https://api.github.com/repos/danielkalen/actionbuffer"
+  },
+  "license": "ISC",
+  "devDependencies": {
+    "badge-gen": "^1.0.2",
+    "chai": "^3.5.0",
+    "coffee-coverage": "^2.0.1",
+    "coffee-script": "^1.12.5",
+    "electron": "^1.6.6",
+    "electron-mocha": "^3.4.0",
+    "istanbul": "^0.4.5",
+    "mocha": "^3.3.0"
+  },
+  "dependencies": {
+    "coffee-register": "0.0.1"
+  },
+  "gitHead": "c101534214e80ea65a36074514dd18f2c6867c2c",
+  "homepage": "https://github.com/danielkalen/actionbuffer#readme",
+  "_npmVersion": "4.2.0",
+  "_nodeVersion": "7.10.0",
+  "dist": {
+    "shasum": "f1216cd5bd93c46e5f96fbbf8b7aa14d8a465311",
+    "tarball": "https://registry.npmjs.org/actionbuffer/-/actionbuffer-1.0.0.tgz"
+  },
+  "versions": [
+    {
+      "number": "0.0.1",
+      "date": "2017-05-08T02:13:24.606Z"
+    },
+    {
+      "number": "1.0.0",
+      "date": "2017-05-08T17:34:04.547Z"
+    }
+  ],
+  "created": "2017-05-08T02:13:24.606Z",
+  "modified": "2017-05-08T17:34:04.547Z",
+  "lastPublisher": {
+    "name": "danielkalen",
+    "email": "d@danielkalen.com"
+  },
+  "owners": [
+    {
+      "name": "danielkalen",
+      "email": "d@danielkalen.com"
+    }
+  ]
+}

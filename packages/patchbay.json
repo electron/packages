@@ -1,0 +1,552 @@
+{
+  "name": "patchbay",
+  "version": "7.13.0",
+  "description": "patchbay 2, built on patchcore",
+  "main": "main.js",
+  "scripts": {
+    "lint": "standard",
+    "rebuild": "cross-script npm rebuild --runtime=electron \"--target=$(electron -v)\" \"--abi=$(electron --abi)\" --disturl=https://atom.io/download/atom-shell",
+    "start": "electron index.js -- --title patchbay",
+    "dev": "echo 'run your own sbot!' && electro main.js -- --title patchbay"
+  },
+  "browserify": {
+    "transform": [
+      "bulkify",
+      "read-directory/transform",
+      "require-style/transform",
+      "es2040"
+    ]
+  },
+  "repository": {
+    "user": "ssbc",
+    "repo": "patchbay",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/ssbc/patchbay/tarball/master",
+    "clone_url": "https://github.com/ssbc/patchbay",
+    "https_url": "https://github.com/ssbc/patchbay",
+    "travis_url": "https://travis-ci.org/ssbc/patchbay",
+    "zip_url": "https://github.com/ssbc/patchbay/archive/master.zip",
+    "api_url": "https://api.github.com/repos/ssbc/patchbay"
+  },
+  "author": {
+    "name": "mixmix"
+  },
+  "license": "GPL-3.0",
+  "homepage": "https://github.com/ssbc/patchbay#readme",
+  "dependencies": {
+    "bulk-require": "^1.0.0",
+    "bulkify": "^1.4.2",
+    "cross-script": "^1.0.5",
+    "dataurl-": "^0.1.0",
+    "depject": "^3.2.0",
+    "depnest": "^1.0.2",
+    "electron-default-menu": "^1.0.1",
+    "electron-window-state": "^4.1.1",
+    "es2040": "^1.2.5",
+    "font-awesome": "^4.7.0",
+    "hypercrop": "^1.1.0",
+    "hyperfile": "^2.0.0",
+    "hyperlightbox": "^1.0.0",
+    "hypertabs": "^5.0.0",
+    "insert-css": "^2.0.0",
+    "libnested": "^1.2.1",
+    "lodash": "^4.17.4",
+    "micro-css": "^2.0.1",
+    "mutant": "^3.18.0",
+    "mutant-pull-reduce": "^1.0.1",
+    "open-external": "^0.1.1",
+    "patch-context": "^2.0.0",
+    "patch-history": "^1.0.0",
+    "patch-hub": "^1.1.0",
+    "patch-inbox": "^1.0.2",
+    "patch-settings": "^1.0.0",
+    "patch-suggest": "^1.0.1",
+    "patchbay-book": "^1.0.0",
+    "patchbay-gatherings": "^2.0.0",
+    "patchcore": "^1.12.1",
+    "pull-abortable": "^4.1.1",
+    "pull-cat": "^1.1.11",
+    "pull-next": "1.0.0",
+    "pull-scroll": "^1.0.9",
+    "pull-stream": "^3.5.0",
+    "read-directory": "^2.0.0",
+    "require-style": "^1.0.0",
+    "scuttlebot": "^10.4.4",
+    "setimmediate": "^1.0.5",
+    "ssb-chess": "^1.7.1",
+    "ssb-chess-db": "1.0.0",
+    "ssb-horcrux": "^0.1.3",
+    "ssb-mentions": "~0.4.0",
+    "ssb-mutual": "^0.1.0",
+    "ssb-ws": "^1.0.3",
+    "style-resolve": "^1.0.1",
+    "suggest-box": "^2.2.3",
+    "text-node-searcher": "^1.1.1",
+    "xtend": "^4.0.1"
+  },
+  "devDependencies": {
+    "electro": "^2.0.3",
+    "electron": "~1.8.1",
+    "ssb-about": "^0.1.0",
+    "ssb-backlinks": "^0.4.0",
+    "ssb-blobs": "^1.1.3",
+    "ssb-friends": "^2.2.3",
+    "ssb-fulltext": "^1.0.1",
+    "ssb-keys": "^7.0.10",
+    "ssb-private": "^0.1.2",
+    "ssb-query": "^0.1.2",
+    "standard": "^8.6.0"
+  },
+  "gitHead": "61db5f50ca3fff960bc1cf4f97b8066c664fd306",
+  "_npmVersion": "5.5.1",
+  "_nodeVersion": "8.6.0",
+  "dist": {
+    "integrity": "sha512-jESl3vwVzbR1KL90LuOvi433bLqL99k2ajUrJbLi/qnhfuktVi0yss0tCjHIa2E+rL3t1XQkvLusUkQc5u84VQ==",
+    "shasum": "261da33198195823c91589e9f78eef15e36d41de",
+    "tarball": "https://registry.npmjs.org/patchbay/-/patchbay-7.13.0.tgz"
+  },
+  "versions": [
+    {
+      "number": "0.1.0",
+      "date": "2014-09-15T06:18:32.976Z"
+    },
+    {
+      "number": "0.3.0",
+      "date": "2016-05-29T03:25:17.331Z"
+    },
+    {
+      "number": "1.0.0",
+      "date": "2016-05-29T12:53:23.508Z"
+    },
+    {
+      "number": "1.0.1",
+      "date": "2016-06-11T00:37:28.877Z"
+    },
+    {
+      "number": "1.0.2",
+      "date": "2016-06-11T00:53:15.311Z"
+    },
+    {
+      "number": "1.0.4",
+      "date": "2016-06-20T23:52:46.547Z"
+    },
+    {
+      "number": "1.0.5",
+      "date": "2016-06-21T04:21:25.487Z"
+    },
+    {
+      "number": "1.0.6",
+      "date": "2016-06-23T03:11:00.828Z"
+    },
+    {
+      "number": "1.0.7",
+      "date": "2016-06-23T11:39:34.361Z"
+    },
+    {
+      "number": "1.1.0",
+      "date": "2016-06-23T12:34:55.631Z"
+    },
+    {
+      "number": "1.1.1",
+      "date": "2016-06-26T02:21:14.908Z"
+    },
+    {
+      "number": "1.1.2",
+      "date": "2016-06-28T00:23:22.076Z"
+    },
+    {
+      "number": "1.2.0",
+      "date": "2016-06-30T01:18:34.361Z"
+    },
+    {
+      "number": "1.3.0",
+      "date": "2016-06-30T08:29:44.761Z"
+    },
+    {
+      "number": "1.3.1",
+      "date": "2016-06-30T08:39:50.261Z"
+    },
+    {
+      "number": "1.4.0",
+      "date": "2016-06-30T21:52:21.165Z"
+    },
+    {
+      "number": "1.4.1",
+      "date": "2016-07-01T00:44:01.496Z"
+    },
+    {
+      "number": "1.5.0",
+      "date": "2016-07-01T03:01:38.974Z"
+    },
+    {
+      "number": "1.5.1",
+      "date": "2016-07-02T01:32:20.345Z"
+    },
+    {
+      "number": "1.5.2",
+      "date": "2016-07-02T03:33:03.933Z"
+    },
+    {
+      "number": "1.5.3",
+      "date": "2016-07-04T22:58:00.289Z"
+    },
+    {
+      "number": "1.6.0",
+      "date": "2016-07-07T02:51:22.893Z"
+    },
+    {
+      "number": "1.7.0",
+      "date": "2016-07-10T23:51:52.158Z"
+    },
+    {
+      "number": "1.7.1",
+      "date": "2016-07-11T23:33:47.270Z"
+    },
+    {
+      "number": "1.7.2",
+      "date": "2016-07-12T07:15:13.286Z"
+    },
+    {
+      "number": "1.7.3",
+      "date": "2016-07-13T03:33:29.818Z"
+    },
+    {
+      "number": "1.7.4",
+      "date": "2016-07-15T01:17:21.466Z"
+    },
+    {
+      "number": "1.7.5",
+      "date": "2016-07-16T01:08:14.547Z"
+    },
+    {
+      "number": "1.7.6",
+      "date": "2016-07-20T02:07:28.783Z"
+    },
+    {
+      "number": "1.7.7",
+      "date": "2016-07-20T05:50:11.661Z"
+    },
+    {
+      "number": "1.7.8",
+      "date": "2016-07-20T07:45:29.700Z"
+    },
+    {
+      "number": "1.7.9",
+      "date": "2016-07-20T08:22:55.325Z"
+    },
+    {
+      "number": "1.8.0",
+      "date": "2016-07-21T05:00:57.418Z"
+    },
+    {
+      "number": "1.8.1",
+      "date": "2016-07-21T05:03:00.468Z"
+    },
+    {
+      "number": "1.8.2",
+      "date": "2016-07-21T05:05:36.303Z"
+    },
+    {
+      "number": "1.8.3",
+      "date": "2016-07-21T05:17:05.091Z"
+    },
+    {
+      "number": "1.8.4",
+      "date": "2016-07-23T04:18:12.037Z"
+    },
+    {
+      "number": "1.8.5",
+      "date": "2016-07-23T04:18:47.727Z"
+    },
+    {
+      "number": "1.9.0",
+      "date": "2016-07-24T02:56:45.992Z"
+    },
+    {
+      "number": "1.9.1",
+      "date": "2016-07-24T05:13:59.847Z"
+    },
+    {
+      "number": "1.10.0",
+      "date": "2016-07-25T00:48:13.105Z"
+    },
+    {
+      "number": "1.12.0",
+      "date": "2016-07-25T05:48:43.327Z"
+    },
+    {
+      "number": "1.13.1",
+      "date": "2016-07-25T19:54:41.870Z"
+    },
+    {
+      "number": "1.13.3",
+      "date": "2016-07-25T20:48:21.512Z"
+    },
+    {
+      "number": "1.13.4",
+      "date": "2016-07-30T13:14:27.033Z"
+    },
+    {
+      "number": "2.0.0",
+      "date": "2016-07-31T00:35:55.688Z"
+    },
+    {
+      "number": "2.1.2",
+      "date": "2016-08-02T00:14:27.525Z"
+    },
+    {
+      "number": "2.2.0",
+      "date": "2016-08-04T05:45:39.262Z"
+    },
+    {
+      "number": "2.4.0",
+      "date": "2016-08-08T03:05:37.528Z"
+    },
+    {
+      "number": "2.5.0",
+      "date": "2016-08-14T02:24:12.542Z"
+    },
+    {
+      "number": "2.5.1",
+      "date": "2016-08-21T02:41:06.216Z"
+    },
+    {
+      "number": "2.5.2",
+      "date": "2016-08-22T22:26:58.731Z"
+    },
+    {
+      "number": "2.6.0",
+      "date": "2016-08-28T11:21:06.336Z"
+    },
+    {
+      "number": "2.7.0",
+      "date": "2016-09-04T23:39:33.498Z"
+    },
+    {
+      "number": "2.8.0",
+      "date": "2016-09-08T07:27:54.099Z"
+    },
+    {
+      "number": "3.0.0",
+      "date": "2016-09-08T07:31:18.400Z"
+    },
+    {
+      "number": "3.1.0",
+      "date": "2016-09-12T04:11:47.103Z"
+    },
+    {
+      "number": "3.2.1",
+      "date": "2016-10-15T19:26:07.404Z"
+    },
+    {
+      "number": "3.5.0",
+      "date": "2016-10-24T21:48:48.249Z"
+    },
+    {
+      "number": "3.6.0",
+      "date": "2016-10-31T14:28:07.363Z"
+    },
+    {
+      "number": "3.6.1",
+      "date": "2016-10-31T18:17:02.021Z"
+    },
+    {
+      "number": "4.0.0",
+      "date": "2016-11-02T16:02:38.611Z"
+    },
+    {
+      "number": "4.0.1",
+      "date": "2016-11-03T20:38:00.401Z"
+    },
+    {
+      "number": "4.1.0",
+      "date": "2016-11-07T12:10:19.081Z"
+    },
+    {
+      "number": "5.0.0",
+      "date": "2016-11-12T09:25:35.915Z"
+    },
+    {
+      "number": "5.1.0",
+      "date": "2016-11-15T14:18:28.605Z"
+    },
+    {
+      "number": "5.3.0",
+      "date": "2016-11-28T21:46:48.582Z"
+    },
+    {
+      "number": "5.3.1",
+      "date": "2016-11-28T23:15:44.404Z"
+    },
+    {
+      "number": "5.4.0",
+      "date": "2016-11-28T23:44:40.428Z"
+    },
+    {
+      "number": "6.0.1",
+      "date": "2016-12-09T22:15:22.558Z"
+    },
+    {
+      "number": "6.1.1",
+      "date": "2016-12-13T16:47:28.887Z"
+    },
+    {
+      "number": "6.1.2",
+      "date": "2016-12-14T15:15:25.622Z"
+    },
+    {
+      "number": "6.1.5",
+      "date": "2016-12-28T14:38:02.055Z"
+    },
+    {
+      "number": "6.1.6",
+      "date": "2016-12-30T18:26:15.990Z"
+    },
+    {
+      "number": "6.4.0",
+      "date": "2017-01-26T17:15:27.946Z"
+    },
+    {
+      "number": "6.10.6",
+      "date": "2017-03-17T12:38:02.202Z"
+    },
+    {
+      "number": "7.3.0",
+      "date": "2017-04-13T23:29:52.787Z"
+    },
+    {
+      "number": "7.3.1",
+      "date": "2017-04-14T00:17:15.417Z"
+    },
+    {
+      "number": "7.4.1",
+      "date": "2017-04-18T10:20:40.191Z"
+    },
+    {
+      "number": "7.4.2",
+      "date": "2017-04-18T11:24:26.956Z"
+    },
+    {
+      "number": "7.4.3",
+      "date": "2017-04-24T11:46:28.078Z"
+    },
+    {
+      "number": "7.4.4",
+      "date": "2017-04-24T12:08:32.298Z"
+    },
+    {
+      "number": "7.4.5",
+      "date": "2017-04-26T07:17:53.813Z"
+    },
+    {
+      "number": "7.4.6",
+      "date": "2017-04-29T11:30:03.322Z"
+    },
+    {
+      "number": "7.5.0",
+      "date": "2017-04-30T11:10:00.580Z"
+    },
+    {
+      "number": "7.5.1",
+      "date": "2017-04-30T11:39:03.933Z"
+    },
+    {
+      "number": "7.5.2",
+      "date": "2017-04-30T18:12:46.336Z"
+    },
+    {
+      "number": "7.5.3",
+      "date": "2017-05-04T10:16:54.356Z"
+    },
+    {
+      "number": "7.5.4",
+      "date": "2017-05-07T21:39:49.543Z"
+    },
+    {
+      "number": "7.6.0",
+      "date": "2017-05-16T05:43:23.211Z"
+    },
+    {
+      "number": "7.6.1",
+      "date": "2017-06-01T12:54:30.881Z"
+    },
+    {
+      "number": "7.7.0",
+      "date": "2017-06-15T11:06:49.784Z"
+    },
+    {
+      "number": "7.7.1",
+      "date": "2017-07-06T09:00:47.080Z"
+    },
+    {
+      "number": "7.8.0",
+      "date": "2017-07-24T10:51:39.829Z"
+    },
+    {
+      "number": "7.8.1",
+      "date": "2017-07-24T22:23:17.188Z"
+    },
+    {
+      "number": "7.9.0",
+      "date": "2017-08-31T04:56:56.009Z"
+    },
+    {
+      "number": "7.9.1",
+      "date": "2017-09-04T21:41:03.999Z"
+    },
+    {
+      "number": "7.9.2",
+      "date": "2017-09-05T21:19:11.123Z"
+    },
+    {
+      "number": "7.10.0",
+      "date": "2017-09-11T05:58:21.068Z"
+    },
+    {
+      "number": "7.11.0",
+      "date": "2017-09-11T06:35:14.469Z"
+    },
+    {
+      "number": "7.11.1",
+      "date": "2017-09-12T08:25:51.450Z"
+    },
+    {
+      "number": "7.12.0",
+      "date": "2017-09-17T23:10:07.747Z"
+    },
+    {
+      "number": "7.12.2",
+      "date": "2017-09-20T07:11:42.970Z"
+    },
+    {
+      "number": "7.13.0",
+      "date": "2017-11-10T07:29:30.285Z"
+    }
+  ],
+  "created": "2014-09-15T06:18:32.976Z",
+  "modified": "2017-11-10T07:29:30.285Z",
+  "lastPublisher": {
+    "name": "mixmix",
+    "email": "whimful@gmail.com"
+  },
+  "owners": [
+    {
+      "name": "ahdinosaur",
+      "email": "michael.williams@enspiral.com"
+    },
+    {
+      "name": "cel",
+      "email": "npm.cel@celehner.com"
+    },
+    {
+      "name": "dominictarr",
+      "email": "dominic.tarr@gmail.com"
+    },
+    {
+      "name": "mixmix",
+      "email": "whimful@gmail.com"
+    }
+  ]
+}

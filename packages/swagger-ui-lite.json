@@ -3,23 +3,29 @@
     "name": "kai zhu",
     "email": "kaizhu256@gmail.com"
   },
-  "description": "minimal npm installer for swagger-ui asset files with zero npm-dependencies",
+  "description": "this zero-dependency package will provide a rollup, single-script version of the swagger-ui client (v2.1.5), with a working web-demo",
   "devDependencies": {
-    "electron-lite": "2015.11.2",
-    "utility2": "2015.11.16"
+    "electron-lite": "github:kaizhu256/node-electron-lite#alpha",
+    "utility2": "github:kaizhu256/node-utility2#alpha"
   },
+  "engines": {
+    "node": ">=4.0"
+  },
+  "homepage": "https://github.com/kaizhu256/node-swagger-ui-lite",
   "keywords": [
-    "api",
-    "browser",
-    "rollup",
-    "schema",
+    "openapi",
     "swagger",
-    "swagger-tools",
-    "swagger-ui",
-    "web"
+    "swagger-ui"
   ],
-  "license": "Apache-2.0",
+  "license": "MIT",
+  "main": "lib.swagger_ui.js",
   "name": "swagger-ui-lite",
+  "nameLib": "swagger_ui",
+  "nameOriginal": "swagger-ui-lite",
+  "os": [
+    "darwin",
+    "linux"
+  ],
   "repository": {
     "user": "kaizhu256",
     "repo": "node-swagger-ui-lite",
@@ -34,17 +40,19 @@
     "api_url": "https://api.github.com/repos/kaizhu256/node-swagger-ui-lite"
   },
   "scripts": {
-    "build-ci": "utility2 shRun shReadmeBuild",
-    "test": "MODE_LINENO=0 node_modules/.bin/utility2 shRun shReadmeExportFile package.json package.json && node_modules/.bin/utility2 test node test.js"
+    "build-ci": "utility2 shReadmeTest build_ci.sh",
+    "env": "env",
+    "heroku-postbuild": "npm uninstall utility2 2>/dev/null; npm install kaizhu256/node-utility2#alpha && utility2 shDeployHeroku",
+    "postinstall": "[ ! -f npm_scripts.sh ] || ./npm_scripts.sh postinstall",
+    "start": "PORT=${PORT:-8080} utility2 start test.js",
+    "test": "PORT=$(utility2 shServerPortRandom) utility2 test test.js"
   },
-  "version": "2015.11.7",
-  "gitHead": "275900d96ea7e7a789753db3dce8e8bbf096f102",
-  "homepage": "https://github.com/kaizhu256/node-swagger-ui-lite#readme",
-  "_npmVersion": "3.3.12",
-  "_nodeVersion": "5.1.0",
+  "version": "2018.1.14",
+  "_npmVersion": "3.10.10",
+  "_nodeVersion": "6.12.3",
   "dist": {
-    "shasum": "9738de867870b8de6746aa2e68596165ba833a5e",
-    "tarball": "http://registry.npmjs.org/swagger-ui-lite/-/swagger-ui-lite-2015.11.7.tgz"
+    "shasum": "bf570decd0deb70fef93827d4dfac97114239003",
+    "tarball": "https://registry.npmjs.org/swagger-ui-lite/-/swagger-ui-lite-2018.1.14.tgz"
   },
   "stars": 1,
   "versions": [
@@ -151,10 +159,46 @@
     {
       "number": "2015.11.7",
       "date": "2015-12-14T14:43:39.826Z"
+    },
+    {
+      "number": "2017.2.1",
+      "date": "2017-02-16T18:33:08.117Z"
+    },
+    {
+      "number": "2017.2.2",
+      "date": "2017-02-16T20:11:38.072Z"
+    },
+    {
+      "number": "2017.3.19",
+      "date": "2017-03-19T18:35:47.916Z"
+    },
+    {
+      "number": "2017.5.1",
+      "date": "2017-05-02T03:36:48.151Z"
+    },
+    {
+      "number": "2017.5.30",
+      "date": "2017-05-31T12:02:38.550Z"
+    },
+    {
+      "number": "2017.9.13",
+      "date": "2017-09-13T22:39:39.470Z"
+    },
+    {
+      "number": "2017.9.14",
+      "date": "2017-09-13T23:29:51.300Z"
+    },
+    {
+      "number": "2017.10.28",
+      "date": "2017-10-28T20:50:14.601Z"
+    },
+    {
+      "number": "2018.1.14",
+      "date": "2018-01-15T05:05:56.605Z"
     }
   ],
   "created": "2014-11-22T07:16:53.467Z",
-  "modified": "2015-12-14T14:43:39.826Z",
+  "modified": "2018-01-15T05:05:56.605Z",
   "lastPublisher": {
     "name": "kaizhu",
     "email": "kaizhu256@gmail.com"

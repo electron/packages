@@ -1,7 +1,7 @@
 {
   "name": "karma-electron",
   "description": "Karma launcher and preprocessor for Electron",
-  "version": "5.1.1",
+  "version": "5.2.2",
   "homepage": "https://github.com/twolfson/karma-electron",
   "author": {
     "name": "Todd Wolfson",
@@ -23,7 +23,7 @@
   },
   "main": "lib/index",
   "engines": {
-    "node": ">= 0.10.0"
+    "node": ">= 4.0.0"
   },
   "license": "Unlicense",
   "scripts": {
@@ -31,7 +31,7 @@
     "lint": "twolfson-style lint lib/ test/",
     "start-reference": "electron test/reference",
     "test": "npm run test-karma-all && npm run lint",
-    "test-karma-all": "npm run test-karma-single-run && npm run test-karma-failure && npm run test-karma-uncaught-exception && npm run test-karma-karma && npm run test-karma-phantomjs && npm run test-karma-eof-comment && npm run test-karma-source-map && npm run test-karma-node-require && npm run test-karma-custom-context-file && npm run test-karma-filename-override",
+    "test-karma-all": "npm run test-karma-single-run && npm run test-karma-failure && npm run test-karma-uncaught-exception && npm run test-karma-karma && npm run test-karma-phantomjs && npm run test-karma-eof-comment && npm run test-karma-source-map && npm run test-karma-node-require && npm run test-karma-custom-context-file && npm run test-karma-filename-override && npm run test-karma-main-require",
     "test-karma-continuous": "karma start test/integration-test/karma.conf.js --no-single-run",
     "test-karma-custom-context-file-comment": "# DEV: We need to manually test custom debug file support since it's designed for debugging, not testing",
     "test-karma-custom-context-file": "cross-env TEST_TYPE=CUSTOM_CONTEXT_FILE karma start test/integration-test/karma.conf.js --single-run",
@@ -40,6 +40,7 @@
     "test-karma-failure": "node bin/verify-failure.js TEST_TYPE=FAILURE karma start test/integration-test/karma.conf.js --single-run",
     "test-karma-karma-comment": "# DEV: We run `test-karma-karma` twice to verify no user-data-dir is leaking",
     "test-karma-karma": "cross-env TEST_TYPE=KARMA karma start test/integration-test/karma.conf.js --single-run && cross-env TEST_TYPE=KARMA karma start test/integration-test/karma.conf.js --single-run",
+    "test-karma-main-require": "cross-env TEST_TYPE=MAIN_REQUIRE karma start test/integration-test/karma.conf.js --single-run --browsers ElectronMainRequire",
     "test-karma-node-require": "cross-env TEST_TYPE=NODE_REQUIRE karma start test/integration-test/karma.conf.js --single-run",
     "test-karma-phantomjs": "cross-env TEST_TYPE=PHANTOMJS karma start test/integration-test/karma.conf.js --single-run --browsers PhantomJS",
     "test-karma-single-run": "karma start test/integration-test/karma.conf.js --single-run",
@@ -63,7 +64,7 @@
     "foundry-release-npm": "~2.0.2",
     "jscs": "~3.0.7",
     "jshint": "~2.9.3",
-    "karma": "~1.1.0",
+    "karma": "~1.7.0",
     "karma-mocha": "~0.2.2",
     "karma-phantomjs-launcher": "~1.0.0",
     "mocha": "~1.11.0",
@@ -83,12 +84,12 @@
       "foundry-release-npm"
     ]
   },
-  "gitHead": "830ccbc0d32ba2c04048e0d5f1c6c3d8e215f30f",
-  "_npmVersion": "2.15.11",
-  "_nodeVersion": "4.5.0",
+  "gitHead": "fe5d8822983b4fab80eca4c080b2c86add6693c3",
+  "_npmVersion": "2.15.12",
+  "_nodeVersion": "7.10.0",
   "dist": {
-    "shasum": "be050e934602df04bbf6e9d6c1c3e75605e86c86",
-    "tarball": "http://registry.npmjs.org/karma-electron/-/karma-electron-5.1.1.tgz"
+    "shasum": "bdab1b2ce142fba7d12156d0add6061816b38258",
+    "tarball": "https://registry.npmjs.org/karma-electron/-/karma-electron-5.2.2.tgz"
   },
   "versions": [
     {
@@ -166,10 +167,22 @@
     {
       "number": "5.1.1",
       "date": "2016-10-04T21:51:40.976Z"
+    },
+    {
+      "number": "5.2.0",
+      "date": "2017-05-07T20:57:36.035Z"
+    },
+    {
+      "number": "5.2.1",
+      "date": "2017-05-07T21:18:14.489Z"
+    },
+    {
+      "number": "5.2.2",
+      "date": "2017-11-14T08:15:11.316Z"
     }
   ],
   "created": "2016-03-05T03:59:14.601Z",
-  "modified": "2016-10-04T21:51:40.976Z",
+  "modified": "2017-11-14T08:15:11.316Z",
   "lastPublisher": {
     "name": "twolfson",
     "email": "todd@twolfson.com"

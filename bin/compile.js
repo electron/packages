@@ -15,10 +15,11 @@ var packages = objectValues(requireDir('../packages')).map(pkgData => {
   pkg.dependents = dependents.dependentsOf(pkg.name) || []
   pkg.devDependents = dependents.devDependentsOf(pkg.name) || []
   pkg.totalDeps = pkg.dependents.length + pkg.devDependents.length
+  pkg.sourcerank = sourceranks[pkg.name]
 
   return pkg
 })
 .filter(pkg => pkg.mentions('electron'))
-.sort((a, b) => b.totalDeps - a.totalDeps)
+.sort((a, b) => b.sourcerank - a.sourcerank)
 
 process.stdout.write(JSON.stringify(cleanDeep(packages), null, 2))

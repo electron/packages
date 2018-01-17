@@ -2,9 +2,12 @@
   "main": "./lib/asar.js",
   "name": "asar",
   "description": "Creating Electron app packages",
-  "version": "0.12.3",
+  "version": "0.14.0",
   "bin": {
-    "asar": "bin/asar"
+    "asar": "./bin/asar.js"
+  },
+  "engines": {
+    "node": ">=4.6"
   },
   "license": "MIT",
   "homepage": "https://github.com/electron/asar",
@@ -22,10 +25,13 @@
     "api_url": "https://api.github.com/repos/electron/asar"
   },
   "scripts": {
-    "prepublish": "grunt coffee",
-    "pretest": "grunt clean coffeelint coffee",
-    "test": "mocha --reporter spec --compilers coffee:coffee-script/register",
-    "clean": "grunt clean"
+    "test": "xvfb-maybe electron-mocha --reporter spec && mocha --reporter spec && npm run lint",
+    "lint": "standard"
+  },
+  "standard": {
+    "env": {
+      "mocha": true
+    }
   },
   "dependencies": {
     "chromium-pickle-js": "^0.2.0",
@@ -38,23 +44,23 @@
     "tmp": "0.0.28"
   },
   "devDependencies": {
-    "coffee-script": "^1.10.0",
-    "grunt": "^0.4.1",
-    "grunt-cli": "^0.1.13",
-    "grunt-coffeelint": "git+https://github.com/atom/grunt-coffeelint.git#cfb99aa99811d52687969532bd5a98011ed95bfe",
-    "grunt-contrib-coffee": "^0.13.0",
+    "electron": "^1.6.2",
+    "electron-mocha": "^3.4.0",
     "lodash": "^4.2.1",
     "mocha": "^2.0.1",
-    "rimraf": "^2.5.1"
+    "rimraf": "^2.5.1",
+    "standard": "^8.6.0",
+    "xvfb-maybe": "^0.1.3"
   },
-  "gitHead": "ec60ec8c495413a51ff41a6a2d1a3c9847727f39",
-  "_npmVersion": "2.15.9",
-  "_nodeVersion": "4.5.0",
+  "gitHead": "b8b90392f2364cf8f323b12ff383196bbb324639",
+  "_npmVersion": "5.3.0",
+  "_nodeVersion": "8.2.1",
   "dist": {
-    "shasum": "11aa004349c87ae5d69d76c7ab7d5fb77cc2a95d",
-    "tarball": "http://registry.npmjs.org/asar/-/asar-0.12.3.tgz"
+    "integrity": "sha512-l21mf5pG65qbtD5WhymthfbE7ash0goQ+5ayo3lIncxtFNYH1PVArqsGXoAUXOd877mJplWSD9nGumByzQqVSA==",
+    "shasum": "998b36a26abd0e590e55d9f92cfd3fd7a6051652",
+    "tarball": "https://registry.npmjs.org/asar/-/asar-0.14.0.tgz"
   },
-  "stars": 7,
+  "stars": 13,
   "versions": [
     {
       "number": "0.1.0",
@@ -171,46 +177,62 @@
     {
       "number": "0.12.3",
       "date": "2016-08-29T18:33:40.187Z"
+    },
+    {
+      "number": "0.12.4",
+      "date": "2016-12-28T19:56:19.753Z"
+    },
+    {
+      "number": "0.13.0",
+      "date": "2017-01-09T22:08:54.709Z"
+    },
+    {
+      "number": "0.13.1",
+      "date": "2017-11-02T10:51:12.284Z"
+    },
+    {
+      "number": "0.14.0",
+      "date": "2017-11-02T11:10:56.937Z"
     }
   ],
   "created": "2014-09-22T15:15:33.325Z",
-  "modified": "2016-11-15T14:03:34.735Z",
+  "modified": "2017-12-09T19:17:42.664Z",
   "lastPublisher": {
-    "name": "kevinsawicki",
-    "email": "kevinsawicki@gmail.com"
+    "name": "zcbenz",
+    "email": "zcbenz@gmail.com"
   },
   "owners": [
     {
-      "name": "atom",
-      "email": "nathan@github.com"
+      "email": "michelle@michelletilley.net",
+      "name": "binarymuse"
     },
     {
-      "name": "electron",
-      "email": "electron@github.com"
+      "email": "atom@github.com",
+      "name": "atom-team"
     },
     {
-      "name": "jlord",
-      "email": "to.jlord@gmail.com"
+      "email": "electron@github.com",
+      "name": "electron"
     },
     {
-      "name": "kevinsawicki",
-      "email": "kevinsawicki@gmail.com"
+      "email": "zeke@sikelianos.com",
+      "name": "zeke"
     },
     {
-      "name": "maxbrunsfeld",
-      "email": "maxbrunsfeld@gmail.com"
+      "email": "zcbenz@gmail.com",
+      "name": "zcbenz"
     },
     {
-      "name": "nathansobo",
-      "email": "nathan@github.com"
+      "email": "nathan@github.com",
+      "name": "nathansobo"
     },
     {
-      "name": "zcbenz",
-      "email": "zcbenz@gmail.com"
+      "email": "kevinsawicki@gmail.com",
+      "name": "kevinsawicki"
     },
     {
-      "name": "zeke",
-      "email": "zeke@sikelianos.com"
+      "email": "maxbrunsfeld@gmail.com",
+      "name": "maxbrunsfeld"
     }
   ]
 }

@@ -1,0 +1,136 @@
+{
+  "name": "stringe",
+  "version": "0.6.0",
+  "description": "Safe toString alternative.",
+  "main": "stringe.js",
+  "support": "stringe.support.js",
+  "deploy": "stringe.deploy.js",
+  "browser": "stringe.deploy.js",
+  "scripts": {
+    "pristine": "rsetmod clean && flxc execute ./.install.sh",
+    "reset": "rsetmod clean",
+    "clear": "rsetmod clean --clear",
+    "formal": "jesy apply '*.json'",
+    "build:support": "gulp --module stringe --all",
+    "build:deploy": "webpack --config webpack.compact.js --progress --display-modules",
+    "rebuild": "npm run build:support && npm run build:deploy",
+    "build": "npm run pristine && npm run rebuild",
+    "build:test:support": "gulp --module test --all",
+    "build:test:deploy": "webpack --config webpack.test.js --progress --display-modules",
+    "build:test:bridge": "gulp --module test --bridge",
+    "build:test": "npm run build:test:support && npm run build:test:deploy && npm run build:test:bridge",
+    "test:server": "mocha test.js && mocha test.js --reporter=json > test.server.json",
+    "test:client": "wdio wdio.client.js",
+    "pretest": "npm run clear && npm run rebuild && npm run build:test",
+    "test": "npm run test:server && npm run test:client",
+    "posttest": "npm run formal",
+    "deploy": "npm run build && npm run build:test && npm run test:server && npm run test:client && npm run formal"
+  },
+  "repository": {
+    "user": "volkovasystems",
+    "repo": "stringe",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/volkovasystems/stringe/tarball/master",
+    "clone_url": "https://github.com/volkovasystems/stringe",
+    "https_url": "https://github.com/volkovasystems/stringe",
+    "travis_url": "https://travis-ci.org/volkovasystems/stringe",
+    "zip_url": "https://github.com/volkovasystems/stringe/archive/master.zip",
+    "api_url": "https://api.github.com/repos/volkovasystems/stringe"
+  },
+  "keywords": [
+    "safe",
+    "toString",
+    "alternative",
+    "stringe"
+  ],
+  "author": {
+    "name": "Richeve S. Bebedor",
+    "email": "richeve.bebedor@gmail.com"
+  },
+  "contributors": [
+    {
+      "name": "John Lenon Maghanoy",
+      "email": "johnlenonmaghanoy@gmail.com"
+    }
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/volkovasystems/stringe#readme",
+  "dependencies": {
+    "babel-runtime": "^6.26.0"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-core": "^6.26.0",
+    "babel-plugin-transform-runtime": "^6.23.0",
+    "babel-preset-env": "^1.6.0",
+    "electron": "^1.7.5",
+    "gulp": "^3.9.1",
+    "gulp-babel": "^7.0.0",
+    "gulp-changed": "^3.1.0",
+    "gulp-debug": "^3.1.0",
+    "gulp-plumber": "^1.1.0",
+    "gulp-rename": "^1.2.2",
+    "gulp-replace": "^0.6.1",
+    "gulp-sourcemaps": "^2.6.1",
+    "mocha": "^3.5.0",
+    "should": "^12.0.0",
+    "source-map-loader": "^0.2.1",
+    "wdio-json-reporter": "^0.2.1",
+    "wdio-mocha-framework": "^0.5.11",
+    "wdio-selenium-standalone-service": "^0.0.9",
+    "webdriverio": "^4.8.0",
+    "webpack": "^3.5.5",
+    "yargs": "^8.0.2"
+  },
+  "gitHead": "120a95aab5e61c96169e56f39ff63b947ff711c3",
+  "_npmVersion": "3.10.10",
+  "_nodeVersion": "6.11.2",
+  "dist": {
+    "shasum": "1b6d11dbaaa7999613669453b5ea4cdd5745c7c4",
+    "tarball": "https://registry.npmjs.org/stringe/-/stringe-0.6.0.tgz"
+  },
+  "versions": [
+    {
+      "number": "0.0.0",
+      "date": "2017-03-02T13:43:48.836Z"
+    },
+    {
+      "number": "0.1.0",
+      "date": "2017-03-09T17:59:41.692Z"
+    },
+    {
+      "number": "0.2.0",
+      "date": "2017-03-29T04:36:53.470Z"
+    },
+    {
+      "number": "0.3.0",
+      "date": "2017-04-28T13:57:24.184Z"
+    },
+    {
+      "number": "0.4.0",
+      "date": "2017-06-06T04:01:28.679Z"
+    },
+    {
+      "number": "0.5.0",
+      "date": "2017-07-19T07:16:44.000Z"
+    },
+    {
+      "number": "0.6.0",
+      "date": "2017-08-30T08:19:13.247Z"
+    }
+  ],
+  "created": "2017-03-02T13:43:48.836Z",
+  "modified": "2017-08-30T08:19:13.247Z",
+  "lastPublisher": {
+    "name": "volkova",
+    "email": "richeve.bebedor@gmail.com"
+  },
+  "owners": [
+    {
+      "name": "volkova",
+      "email": "richeve.bebedor@gmail.com"
+    }
+  ]
+}

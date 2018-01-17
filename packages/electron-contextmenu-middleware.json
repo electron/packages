@@ -1,6 +1,6 @@
 {
   "name": "electron-contextmenu-middleware",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Build `electron` context menus composing multiple middlewares functions.",
   "repository": {
     "user": "parro-it",
@@ -20,27 +20,30 @@
     "name": "parro-it"
   },
   "scripts": {
-    "test": "eslint . && node test | faucet || echo failed",
-    "watch": "nodemon --exec 'npm run test || echo failed'",
+    "test": "ava && xo",
     "start": "electron example.js"
   },
-  "keywords": [],
+  "keywords": [
+    "electron",
+    "context",
+    "context menu",
+    "menu",
+    "contextmenu",
+    "middleware"
+  ],
   "engines": {
     "node": ">=4"
   },
-  "eslintConfig": {
-    "extends": [
-      "js",
-      "features"
-    ]
-  },
   "devDependencies": {
-    "electron-prebuilt": "^0.36.10",
-    "eslint": "^1.10.3",
-    "eslint-config-features": "^1.1.5",
-    "eslint-config-js": "^4.0.0",
-    "faucet": "0.0.1",
-    "tape": "^4.2.2"
+    "ava": "^0.18.2",
+    "electron": "^1.6.2",
+    "xo": "^0.18.1"
+  },
+  "xo": {
+    "envs": [
+      "browser",
+      "node"
+    ]
   },
   "files": [
     "index.js"
@@ -48,13 +51,13 @@
   "dependencies": {
     "comws": "^2.0.2"
   },
-  "gitHead": "ea35c152b2f78b5acc3930a40f2efa5039b05bf4",
+  "gitHead": "b350458754d2fb0e28da666c33cf3f13684ba0c2",
   "homepage": "https://github.com/parro-it/electron-contextmenu-middleware#readme",
-  "_npmVersion": "3.8.6",
-  "_nodeVersion": "6.0.0",
+  "_npmVersion": "4.2.0",
+  "_nodeVersion": "7.8.0",
   "dist": {
-    "shasum": "9c363911940ae5c7162f48f7f82304b8cb2ce08e",
-    "tarball": "http://registry.npmjs.org/electron-contextmenu-middleware/-/electron-contextmenu-middleware-1.0.2.tgz"
+    "shasum": "ea233d153832a56c50059ee3a83e7cd04ecd9fe8",
+    "tarball": "https://registry.npmjs.org/electron-contextmenu-middleware/-/electron-contextmenu-middleware-1.0.3.tgz"
   },
   "versions": [
     {
@@ -72,10 +75,14 @@
     {
       "number": "1.0.2",
       "date": "2016-05-11T20:25:03.799Z"
+    },
+    {
+      "number": "1.0.3",
+      "date": "2017-03-30T10:21:35.418Z"
     }
   ],
   "created": "2016-03-08T19:46:18.309Z",
-  "modified": "2016-05-11T20:25:03.799Z",
+  "modified": "2017-03-30T10:21:35.418Z",
   "lastPublisher": {
     "name": "parroit",
     "email": "andrea@parro.it"

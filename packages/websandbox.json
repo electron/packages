@@ -1,12 +1,15 @@
 {
   "name": "websandbox",
-  "version": "0.0.4",
+  "version": "0.5.0",
   "description": "A sandbox library for runnung javascript inside HTML5 sandboxed iframe",
   "main": "dist/websandbox.js",
   "scripts": {
-    "build": "rm -rf dist && webpack -p --devtool sourcemap",
+    "build": "rm -rf dist && webpack --bail --devtool sourcemap",
+    "prepublish": "npm run build",
     "lint": "eslint lib test",
     "test": "karma start",
+    "build-examples": "webpack --bail --config webpack-examples.config.js  --devtool source-map",
+    "deploy-examples": "surge --project ./dist-examples --domain https://websandbox.surge.sh",
     "start": "webpack-dev-server --config webpack-examples.config.js --devtool inline-source-map --port 9544 --colors --progress"
   },
   "keywords": [
@@ -17,49 +20,52 @@
     "security",
     "restricted"
   ],
+  "files": [
+    "dist",
+    "lib",
+    ".babelrc",
+    "webpack.config.js"
+  ],
   "author": {
     "name": "Andrey Skladchikov"
   },
   "license": "MIT",
   "devDependencies": {
-    "babel-core": "6.4.0",
-    "babel-eslint": "4.1.6",
-    "babel-loader": "6.2.1",
-    "babel-plugin-transform-object-assign": "6.3.13",
-    "babel-preset-es2015": "6.3.13",
-    "chai": "3.4.1",
-    "electron-prebuilt": "0.36.3",
-    "es6-promise-polyfill": "1.2.0",
-    "eslint": "1.10.3",
-    "eslint-config-defaults": "8.0.2",
-    "html-webpack-plugin": "1.7.0",
-    "karma": "0.13.19",
+    "babel-core": "6.24.1",
+    "babel-eslint": "7.2.3",
+    "babel-loader": "7.0.0",
+    "babel-plugin-transform-object-assign": "6.22.0",
+    "babel-preset-es2015": "6.24.0",
+    "chai": "3.5.0",
+    "compile-code-loader": "^0.2.0",
+    "electron": "1.6.8",
+    "eslint": "3.19.0",
+    "eslint-config-defaults": "9.0.0",
+    "html-webpack-plugin": "2.28.0",
+    "karma": "1.6.0",
     "karma-chai": "0.1.0",
-    "karma-chrome-launcher": "0.2.2",
-    "karma-electron-launcher": "0.1.0",
-    "karma-mocha": "0.2.1",
-    "karma-sinon": "1.0.4",
-    "karma-sinon-chai": "1.1.0",
-    "karma-sourcemap-loader": "0.3.6",
-    "karma-webpack": "1.7.0",
-    "mocha": "2.3.4",
-    "sinon": "1.17.2",
-    "webpack": "1.12.11",
-    "webpack-config-merger": "0.0.5",
-    "webpack-dev-server": "1.14.1"
+    "karma-chrome-launcher": "2.0.0",
+    "karma-electron-launcher": "0.2.0",
+    "karma-mocha": "1.3.0",
+    "karma-sinon": "1.0.5",
+    "karma-sinon-chai": "1.2.4",
+    "karma-sourcemap-loader": "0.3.7",
+    "karma-webpack": "2.0.3",
+    "mocha": "3.2.0",
+    "sinon": "1.17.7",
+    "sinon-chai": "^2.8.0",
+    "surge": "^0.19.0",
+    "webpack": "2.4.1",
+    "webpack-dev-server": "2.4.5"
   },
-  "dependencies": {
-    "an-uuid": "1.0.0",
-    "file-loader": "0.8.5",
-    "html-loader": "0.4.0",
-    "compile-code-loader": "0.0.2"
-  },
-  "gitHead": "5c8682b1a8d1645679cf6faace1e2b804d9e2249",
-  "_npmVersion": "2.14.9",
-  "_nodeVersion": "0.12.9",
+  "dependencies": {},
+  "gitHead": "c3732dd8cc2a5879f76c66b6cda755d50ef2e9c1",
+  "_npmVersion": "5.5.1",
+  "_nodeVersion": "8.4.0",
   "dist": {
-    "shasum": "e401661a16ff7fe3793560cc0f24bd9a10c86dbe",
-    "tarball": "http://registry.npmjs.org/websandbox/-/websandbox-0.0.4.tgz"
+    "integrity": "sha512-cETmuyGF/h0UI8EDHLl+Qxpvb+BqVtmYgGzzMr6vorYMz/728JhSqHXDvoZg08lmhs2IBVu7bo36akzmgzjn6g==",
+    "shasum": "fb316f504b59bcc64ee943927b98a9722f6d97ce",
+    "tarball": "https://registry.npmjs.org/websandbox/-/websandbox-0.5.0.tgz"
   },
   "versions": [
     {
@@ -77,10 +83,82 @@
     {
       "number": "0.0.4",
       "date": "2016-01-20T10:55:56.909Z"
+    },
+    {
+      "number": "0.1.0",
+      "date": "2017-01-13T15:01:03.816Z"
+    },
+    {
+      "number": "0.1.1",
+      "date": "2017-01-13T16:53:50.822Z"
+    },
+    {
+      "number": "0.1.2",
+      "date": "2017-03-23T13:46:18.733Z"
+    },
+    {
+      "number": "0.2.0",
+      "date": "2017-05-02T08:27:18.375Z"
+    },
+    {
+      "number": "0.2.5",
+      "date": "2017-05-02T11:10:33.245Z"
+    },
+    {
+      "number": "0.3.0",
+      "date": "2017-05-02T11:45:56.606Z"
+    },
+    {
+      "number": "0.3.1",
+      "date": "2017-05-04T15:55:41.109Z"
+    },
+    {
+      "number": "0.3.2",
+      "date": "2017-05-04T18:32:55.820Z"
+    },
+    {
+      "number": "0.3.4",
+      "date": "2017-05-10T16:18:12.263Z"
+    },
+    {
+      "number": "0.3.5",
+      "date": "2017-05-10T16:31:01.132Z"
+    },
+    {
+      "number": "0.3.6",
+      "date": "2017-05-17T09:17:19.197Z"
+    },
+    {
+      "number": "0.3.7",
+      "date": "2017-05-17T09:25:07.850Z"
+    },
+    {
+      "number": "0.4.0",
+      "date": "2017-05-25T16:18:03.434Z"
+    },
+    {
+      "number": "0.4.1",
+      "date": "2017-05-25T16:18:47.587Z"
+    },
+    {
+      "number": "0.4.2",
+      "date": "2017-06-08T07:30:24.715Z"
+    },
+    {
+      "number": "0.4.3",
+      "date": "2017-06-22T16:44:08.477Z"
+    },
+    {
+      "number": "0.4.4",
+      "date": "2017-10-23T14:11:47.136Z"
+    },
+    {
+      "number": "0.5.0",
+      "date": "2018-01-10T09:43:21.967Z"
     }
   ],
   "created": "2016-01-18T14:24:39.404Z",
-  "modified": "2016-01-20T10:55:56.909Z",
+  "modified": "2018-01-10T09:43:21.967Z",
   "lastPublisher": {
     "name": "huston007",
     "email": "andrey.skladchikov@gmail.com"

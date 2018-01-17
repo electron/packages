@@ -1,6 +1,6 @@
 {
   "name": "macaca-electron",
-  "version": "1.1.4",
+  "version": "1.1.19",
   "description": "macaca electron driver",
   "keywords": [
     "electron",
@@ -23,38 +23,42 @@
   "dependencies": {
     "co": "^4.6.0",
     "driver-base": "^0.1.0",
-    "electron-prebuilt": "^0.37.6",
-    "macaca-utils": "~0.1.8",
+    "electron": "^1.7.10",
+    "macaca-utils": "~1.0.0",
     "selenium-atoms": "~1.0.1",
     "webdriver-dfn-error-code": "^1.0.3",
     "xlogger": "^1.0.0"
   },
   "devDependencies": {
     "co-mocha": "^1.1.2",
-    "istanbul": "*",
+    "istanbul": "^0.4.5",
     "jsdoc": "^3.4.0",
     "jshint": "*",
     "minami": "^1.1.1",
-    "mocha": "*",
-    "pre-commit": "1.1.1",
+    "mocha": "^4.0.1",
+    "pre-commit": "*",
     "should": "*",
     "startserver": "^1.2.3"
   },
   "scripts": {
-    "test": "make test",
-    "jshint": "make jshint"
+    "test": "istanbul cover `npm bin`/_mocha",
+    "lint": "jshint .",
+    "doc": "npm run clean && jsdoc -c ./jsdoc.json",
+    "clean": "rm -rf ./docs",
+    "ci": "npm run lint && npm run test"
   },
   "pre-commit": [
-    "jshint"
+    "lint"
   ],
   "homepage": "https://github.com/macacajs/macaca-electron",
   "license": "MIT",
-  "gitHead": "ed86ac77a9e01a4a892ec985c71cf2b3237ea7cd",
-  "_npmVersion": "2.15.8",
-  "_nodeVersion": "4.4.7",
+  "gitHead": "8acf150ed76f219f7bd60d312b22afe9713823b4",
+  "_npmVersion": "5.6.0",
+  "_nodeVersion": "8.9.0",
   "dist": {
-    "shasum": "c6293002b151c81f12625b586f1552e267c25e6a",
-    "tarball": "http://registry.npmjs.org/macaca-electron/-/macaca-electron-1.1.4.tgz"
+    "integrity": "sha512-KKftYATRa2yBCvmzN+TR703ooRgF44QJFGj4koXUVvyoZV4WEgSptjmvQakheGAG7pVNzGqFHcJ4gE9QO9mJ+w==",
+    "shasum": "6db70bb5c5e0e13230f7e85798c43003feb7151d",
+    "tarball": "https://registry.npmjs.org/macaca-electron/-/macaca-electron-1.1.19.tgz"
   },
   "versions": [
     {
@@ -124,26 +128,86 @@
     {
       "number": "1.1.4",
       "date": "2016-09-21T07:52:51.065Z"
+    },
+    {
+      "number": "1.1.5",
+      "date": "2017-02-12T05:02:18.480Z"
+    },
+    {
+      "number": "1.1.6",
+      "date": "2017-03-26T13:07:33.834Z"
+    },
+    {
+      "number": "1.1.7",
+      "date": "2017-07-22T03:22:03.619Z"
+    },
+    {
+      "number": "1.1.8",
+      "date": "2017-08-04T02:26:46.656Z"
+    },
+    {
+      "number": "1.1.9",
+      "date": "2017-08-12T06:29:27.107Z"
+    },
+    {
+      "number": "1.1.10",
+      "date": "2017-08-12T07:29:57.539Z"
+    },
+    {
+      "number": "1.1.11",
+      "date": "2017-08-14T03:27:39.453Z"
+    },
+    {
+      "number": "1.1.13",
+      "date": "2017-10-25T06:03:59.872Z"
+    },
+    {
+      "number": "1.1.14",
+      "date": "2017-10-25T06:11:44.473Z"
+    },
+    {
+      "number": "1.1.15",
+      "date": "2017-10-29T02:25:31.186Z"
+    },
+    {
+      "number": "1.1.16",
+      "date": "2017-10-29T02:35:43.437Z"
+    },
+    {
+      "number": "1.1.17",
+      "date": "2017-10-29T02:51:45.084Z"
+    },
+    {
+      "number": "1.1.18",
+      "date": "2017-12-19T11:41:38.291Z"
+    },
+    {
+      "number": "1.1.19",
+      "date": "2017-12-29T08:30:41.186Z"
     }
   ],
   "created": "2016-03-29T06:49:45.566Z",
-  "modified": "2016-09-21T07:52:51.065Z",
+  "modified": "2017-12-29T08:30:41.186Z",
   "lastPublisher": {
-    "name": "meowtec",
-    "email": "bertonzh@gmail.com"
+    "name": "xudafeng",
+    "email": "xudafeng@126.com"
   },
   "owners": [
     {
-      "name": "meowtec",
-      "email": "bertonzh@gmail.com"
+      "email": "362732414@qq.com",
+      "name": "chun_chan"
     },
     {
-      "name": "xudafeng",
-      "email": "xudafeng@126.com"
+      "email": "bertonzh@gmail.com",
+      "name": "meowtec"
     },
     {
-      "name": "ziczhu",
-      "email": "zic.zhu@gmail.com"
+      "email": "zic.zhu@gmail.com",
+      "name": "ziczhu"
+    },
+    {
+      "email": "xudafeng@126.com",
+      "name": "xudafeng"
     }
   ]
 }

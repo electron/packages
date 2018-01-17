@@ -1,7 +1,7 @@
 {
   "name": "argo-trading",
   "description": "HTML5 interface for the OANDA platform",
-  "version": "4.1.1",
+  "version": "6.0.1",
   "main": "./main.js",
   "bin": {
     "argo-trading": "./bin/argo-trading",
@@ -32,60 +32,60 @@
   },
   "license": "MIT",
   "engines": {
-    "node": ">=6"
+    "node": ">=8.9.1"
   },
   "dependencies": {
-    "async": "~2.1.2",
-    "body-parser": "~1.15.2",
-    "express": "~4.14.0",
-    "faye-websocket": "~0.11.0",
-    "flic": "~1.3.4",
-    "limiter": "~1.1.0",
-    "request": "~2.78.0",
-    "angular": "~1.5.8",
-    "angular-animate": "~1.5.8",
-    "angular-aria": "~1.5.8",
-    "angular-messages": "~1.5.8",
-    "angular-mocks": "~1.5.8",
-    "angular-material": "~1.1.1",
-    "d3": "~4.3.0",
-    "techan": "~0.8.0",
-    "electron": "~1.4.7"
+    "async": "^2.6.0",
+    "body-parser": "^1.18.2",
+    "d3": "^4.12.2",
+    "document-register-element": "^1.7.0",
+    "express": "^4.16.2",
+    "faye-websocket": "^0.11.1",
+    "flic": "^1.3.7",
+    "hyperhtml": "^2.4.3",
+    "introspected": "^0.2.5",
+    "limiter": "^1.1.2",
+    "request": "^2.83.0",
+    "tachyons": "^4.9.1",
+    "techan": "^0.8.0",
+    "electron": "^1.7.10"
   },
   "optionalDependencies": {
-    "electron": "~1.4.7"
+    "electron": "^1.7.10"
   },
   "scripts": {
-    "test": "npm run lint && npm run karma && npm run snyk",
+    "test": "npm run lint && npm run karma",
     "start": "node src/server/app.js",
     "debug": "node --inspect src/server/app.js",
     "electron": "electron .",
     "lint": "eslint main.js karma.conf.js src/**/*.js",
     "karma": "karma start --single-run",
     "changelog": "conventional-changelog -p angular -i CHANGELOG.md -s",
-    "snyk": "snyk test"
+    "rollup": "rollup -c",
+    "rollup-spec": "rollup -c rollup.config.spec.js",
+    "rollup-d3": "rollup -c rollup.config.d3-techan.js && uglifyjs build/d3-techan.js -c -m -o build/d3-techan.min.js"
   },
   "devDependencies": {
-    "conventional-changelog-cli": "~1.2.0",
-    "eslint": "^3.10.2",
-    "eslint-config-eslint": "~3.0.0",
-    "eslint-plugin-angular": "~1.4.1",
-    "mocha": "~3.1.2",
-    "chai": "~3.5.0",
-    "karma": "~1.3.0",
-    "karma-mocha": "~1.3.0",
-    "karma-chai": "~0.1.0",
-    "karma-phantomjs-launcher": "~1.0.2",
-    "phantomjs-prebuilt": "~2.1.13",
-    "snyk": "~1.19.1"
+    "chai": "^4.1.2",
+    "conventional-changelog-cli": "^1.3.5",
+    "eslint": "^4.15.0",
+    "karma": "^2.0.0",
+    "karma-chai": "^0.1.0",
+    "karma-chrome-launcher": "^2.2.0",
+    "karma-mocha": "^1.3.0",
+    "mocha": "^4.1.0",
+    "rollup": "^0.53.3",
+    "rollup-plugin-node-resolve": "^3.0.0",
+    "uglify-es": "^3.3.5"
   },
-  "gitHead": "8972b3f9540d58c5ff28f617e7570d178a149ba3",
+  "gitHead": "9800717fe0ae1f96d88f7eb1f4e675b8eef6d140",
   "homepage": "https://github.com/albertosantini/argo#readme",
-  "_npmVersion": "3.10.9",
-  "_nodeVersion": "7.1.0",
+  "_npmVersion": "5.6.0",
+  "_nodeVersion": "9.3.0",
   "dist": {
-    "shasum": "e146c7068770cdeed90a8cb419c72d58a4f6f50c",
-    "tarball": "http://registry.npmjs.org/argo-trading/-/argo-trading-4.1.1.tgz"
+    "integrity": "sha512-z1cdJJP0JMF0Y18CbDNQZeO2zeZ+NNbfzkNHig40LmWQDT6ifNCclLtOqqzueFoMJDBrv6ddA5/CDuUFwQDZPA==",
+    "shasum": "4fe88a4db36b0f0825d0c9ace80200562a57b8ef",
+    "tarball": "https://registry.npmjs.org/argo-trading/-/argo-trading-6.0.1.tgz"
   },
   "versions": [
     {
@@ -255,10 +255,42 @@
     {
       "number": "4.1.1",
       "date": "2016-11-17T16:33:12.149Z"
+    },
+    {
+      "number": "4.2.0",
+      "date": "2016-12-07T16:51:15.006Z"
+    },
+    {
+      "number": "4.3.0",
+      "date": "2016-12-15T19:25:47.825Z"
+    },
+    {
+      "number": "4.4.0",
+      "date": "2017-02-22T18:12:54.651Z"
+    },
+    {
+      "number": "5.0.0",
+      "date": "2017-03-22T17:25:52.961Z"
+    },
+    {
+      "number": "5.0.1",
+      "date": "2017-04-03T15:44:40.735Z"
+    },
+    {
+      "number": "5.0.2",
+      "date": "2017-04-21T15:09:58.760Z"
+    },
+    {
+      "number": "6.0.0",
+      "date": "2017-12-06T18:30:30.612Z"
+    },
+    {
+      "number": "6.0.1",
+      "date": "2018-01-08T16:48:55.149Z"
     }
   ],
   "created": "2015-03-11T16:45:43.899Z",
-  "modified": "2016-11-17T16:33:12.149Z",
+  "modified": "2018-01-08T16:48:55.149Z",
   "lastPublisher": {
     "name": "icebox",
     "email": "albertosantini@gmail.com"

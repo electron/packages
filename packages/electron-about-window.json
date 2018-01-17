@@ -1,15 +1,16 @@
 {
   "name": "electron-about-window",
-  "version": "1.6.1",
+  "version": "1.8.0",
   "description": "'About App' window for Electron application",
   "main": "src/index.js",
   "scripts": {
     "dep": "npm install",
     "build": "tsc -p src/",
-    "tslint": "tslint $(git ls-files | grep -E \"\\.ts$\")",
+    "tslint": "tslint -p ./src --type-check",
     "stylelint": "stylelint styles/*.css",
     "lint": "npm run tslint && npm run stylelint",
-    "example": "cd example/ && npm install && npm start",
+    "example": "NODE_ENV=production electron ./example",
+    "debug": "electron ./example",
     "start": "npm run dep && npm run build && npm run example",
     "preversion": "npm run lint && npm run build"
   },
@@ -39,21 +40,22 @@
   "license": "MIT",
   "homepage": "https://github.com/rhysd/electron-about-window#readme",
   "devDependencies": {
-    "@types/electron": "^1.4.27",
-    "@types/node": "^6.0.50",
-    "stylelint": "^7.6.0",
-    "stylelint-config-standard": "^15.0.0",
-    "tslint": "^3.15.1",
-    "typescript": "^2.0.10"
+    "@types/node": "^8.0.24",
+    "electron": "^1.7.5",
+    "stylelint": "^8.0.0",
+    "stylelint-config-standard": "^17.0.0",
+    "tslint": "^5.6.0",
+    "typescript": "^2.4.2"
   },
   "dependencies": {},
-  "gitHead": "443df2dddcc49df5bc5d148e73dc29feddb95366",
-  "_npmVersion": "3.10.8",
-  "_nodeVersion": "7.0.0",
+  "gitHead": "c2dac96372fcde38f2f842c00a34f024d0bdf4c1",
+  "_npmVersion": "3.10.10",
+  "_nodeVersion": "6.10.3",
   "dist": {
-    "shasum": "7548ed912cc5be4463d2a6df79d220ac89c23437",
-    "tarball": "http://registry.npmjs.org/electron-about-window/-/electron-about-window-1.6.1.tgz"
+    "shasum": "c6828491861bfbfad0947ca368de7bbeab14e32b",
+    "tarball": "https://registry.npmjs.org/electron-about-window/-/electron-about-window-1.8.0.tgz"
   },
+  "stars": 1,
   "versions": [
     {
       "number": "1.4.0",
@@ -70,10 +72,18 @@
     {
       "number": "1.6.1",
       "date": "2016-11-23T01:05:19.970Z"
+    },
+    {
+      "number": "1.7.1",
+      "date": "2017-08-20T02:47:32.057Z"
+    },
+    {
+      "number": "1.8.0",
+      "date": "2017-09-27T06:39:55.115Z"
     }
   ],
   "created": "2016-09-27T16:34:16.610Z",
-  "modified": "2016-11-23T01:05:19.970Z",
+  "modified": "2017-09-27T06:39:55.115Z",
   "lastPublisher": {
     "name": "rhysd",
     "email": "lin90162@yahoo.co.jp"

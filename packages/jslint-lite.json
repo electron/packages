@@ -1,13 +1,12 @@
 {
-  "package.json": true,
   "author": {
     "name": "kai zhu",
     "email": "kaizhu256@gmail.com"
   },
   "bin": {
-    "jslint-lite": "index.js"
+    "jslint-lite": "lib.jslint.js"
   },
-  "description": "this zero-dependency package will provide browser-compatible versions of jslint and csslint",
+  "description": "this zero-dependency package will provide browser-compatible versions of jslint (v2014.7.8 and v2016.10.24) and csslint (v1.0.5), with a working web-demo",
   "devDependencies": {
     "electron-lite": "github:kaizhu256/node-electron-lite#alpha",
     "utility2": "github:kaizhu256/node-utility2#alpha"
@@ -19,15 +18,14 @@
   "keywords": [
     "browser",
     "csslint",
-    "eshint",
-    "eslint",
-    "jshint",
-    "jslint",
-    "lint",
-    "web"
+    "jslint"
   ],
   "license": "MIT",
+  "main": "lib.jslint.js",
   "name": "jslint-lite",
+  "nameAliasPublish": "es5lint jslint-classic",
+  "nameLib": "jslint",
+  "nameOriginal": "jslint-lite",
   "os": [
     "darwin",
     "linux"
@@ -46,16 +44,19 @@
     "api_url": "https://api.github.com/repos/kaizhu256/node-jslint-lite"
   },
   "scripts": {
-    "build-ci": "utility2 shRun shReadmeBuild",
-    "start": "export PORT=${PORT:-8080} && export npm_config_mode_auto_restart=1 && utility2 shRun shIstanbulCover test.js",
-    "test": "export PORT=$(utility2 shServerPortRandom) && utility2 test test.js"
+    "build-ci": "utility2 shReadmeTest build_ci.sh",
+    "env": "env",
+    "heroku-postbuild": "npm uninstall utility2 2>/dev/null; npm install kaizhu256/node-utility2#alpha && utility2 shDeployHeroku",
+    "postinstall": "[ ! -f npm_scripts.sh ] || ./npm_scripts.sh postinstall",
+    "start": "PORT=${PORT:-8080} utility2 start test.js",
+    "test": "PORT=$(utility2 shServerPortRandom) utility2 test test.js"
   },
-  "version": "2016.10.1",
-  "_npmVersion": "3.10.8",
-  "_nodeVersion": "6.8.0",
+  "version": "2018.1.12",
+  "_npmVersion": "3.10.10",
+  "_nodeVersion": "6.12.3",
   "dist": {
-    "shasum": "e9f7673a794cf7c4fba26e5d1e48d8fa07a79d6f",
-    "tarball": "http://registry.npmjs.org/jslint-lite/-/jslint-lite-2016.10.1.tgz"
+    "shasum": "004976a133258c91dcef4aed1c7f6c8a869acae5",
+    "tarball": "https://registry.npmjs.org/jslint-lite/-/jslint-lite-2018.1.12.tgz"
   },
   "stars": 1,
   "versions": [
@@ -398,10 +399,50 @@
     {
       "number": "2016.10.1",
       "date": "2016-11-07T18:47:50.629Z"
+    },
+    {
+      "number": "2016.11.1",
+      "date": "2016-12-02T03:57:44.424Z"
+    },
+    {
+      "number": "2016.12.1",
+      "date": "2016-12-22T17:25:35.809Z"
+    },
+    {
+      "number": "2017.2.1",
+      "date": "2017-02-08T19:44:45.719Z"
+    },
+    {
+      "number": "2017.2.2",
+      "date": "2017-02-16T20:52:09.027Z"
+    },
+    {
+      "number": "2017.2.27",
+      "date": "2017-02-28T05:32:47.042Z"
+    },
+    {
+      "number": "2017.4.6",
+      "date": "2017-04-07T07:52:36.630Z"
+    },
+    {
+      "number": "2017.5.27",
+      "date": "2017-05-28T06:26:51.842Z"
+    },
+    {
+      "number": "2017.9.6",
+      "date": "2017-09-05T19:27:20.398Z"
+    },
+    {
+      "number": "2017.10.8",
+      "date": "2017-10-09T06:43:33.350Z"
+    },
+    {
+      "number": "2018.1.12",
+      "date": "2018-01-13T13:23:58.555Z"
     }
   ],
   "created": "2014-06-23T04:06:54.611Z",
-  "modified": "2016-11-07T18:47:50.629Z",
+  "modified": "2018-01-13T13:23:58.555Z",
   "lastPublisher": {
     "name": "kaizhu",
     "email": "kaizhu256@gmail.com"

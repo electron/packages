@@ -1,9 +1,11 @@
 {
   "name": "spectron",
-  "version": "3.4.0",
+  "version": "3.7.2",
   "description": "Easily test your Electron apps using ChromeDriver and WebdriverIO.",
   "main": "index.js",
+  "types": "./lib/spectron.d.ts",
   "scripts": {
+    "pretest": "tslint lib/spectron.d.ts && tsc lib/spectron.d.ts",
     "test": "mocha && standard"
   },
   "engines": {
@@ -32,29 +34,33 @@
     "name": "Kevin Sawicki"
   },
   "license": "MIT",
-  "homepage": "https://github.com/electron/spectron#readme",
   "dependencies": {
     "dev-null": "^0.1.1",
-    "electron-chromedriver": "~1.4.0",
-    "request": "^2.65.0",
+    "electron-chromedriver": "~1.7.1",
+    "request": "^2.81.0",
     "split": "^1.0.0",
-    "webdriverio": "^4.0.4"
+    "webdriverio": "^4.8.0"
   },
   "devDependencies": {
-    "chai": "^3.3.0",
-    "chai-as-promised": "^5.1.0",
-    "electron": "~1.4.0",
-    "mocha": "^2.3.3",
+    "chai": "^3.5.0",
+    "chai-as-promised": "^6.0.0",
+    "chai-roughly": "^1.0.0",
+    "electron": "~1.7.4",
+    "mocha": "^3.4.1",
     "standard": "^5.3.1",
-    "temp": "^0.8.3"
+    "temp": "^0.8.3",
+    "tslint": "^5.4.3",
+    "typescript": "^2.3.4"
   },
-  "gitHead": "aaf7b6964ed32f43c0955b0cb1af5eeb99938db0",
-  "_npmVersion": "2.15.8",
-  "_nodeVersion": "4.4.7",
+  "gitHead": "e2624fc82931cdbc7cb56610cf2dfee374787932",
+  "homepage": "https://github.com/electron/spectron#readme",
+  "_npmVersion": "3.10.10",
+  "_nodeVersion": "6.11.0",
   "dist": {
-    "shasum": "ff9e54dc34428ec4f99ab1c5efa050b9ad200b31",
-    "tarball": "http://registry.npmjs.org/spectron/-/spectron-3.4.0.tgz"
+    "shasum": "86f41306a9b70ed6ee1500f7f7d3adc389afb446",
+    "tarball": "https://registry.npmjs.org/spectron/-/spectron-3.7.2.tgz"
   },
+  "stars": 5,
   "versions": [
     {
       "number": "0.33.0",
@@ -195,30 +201,78 @@
     {
       "number": "3.4.0",
       "date": "2016-09-19T17:25:21.240Z"
+    },
+    {
+      "number": "3.4.1",
+      "date": "2016-12-20T16:57:59.826Z"
+    },
+    {
+      "number": "3.5.0",
+      "date": "2017-01-26T18:15:36.612Z"
+    },
+    {
+      "number": "3.6.0",
+      "date": "2017-02-07T16:40:28.789Z"
+    },
+    {
+      "number": "3.6.1",
+      "date": "2017-03-31T04:54:33.714Z"
+    },
+    {
+      "number": "3.6.2",
+      "date": "2017-04-20T17:35:16.179Z"
+    },
+    {
+      "number": "3.6.3",
+      "date": "2017-05-10T23:23:50.959Z"
+    },
+    {
+      "number": "3.7.0",
+      "date": "2017-05-11T03:05:00.874Z"
+    },
+    {
+      "number": "3.7.1",
+      "date": "2017-05-17T21:26:40.140Z"
+    },
+    {
+      "number": "3.6.4",
+      "date": "2017-05-18T15:55:21.618Z"
+    },
+    {
+      "number": "3.7.2",
+      "date": "2017-06-29T22:10:27.428Z"
     }
   ],
   "created": "2015-10-13T01:05:15.329Z",
-  "modified": "2016-09-19T17:25:21.240Z",
+  "modified": "2017-11-25T20:54:32.032Z",
   "lastPublisher": {
-    "name": "kevinsawicki",
-    "email": "kevinsawicki@gmail.com"
+    "name": "vanessayuenn",
+    "email": "vanessayuenn@github.com"
   },
   "owners": [
     {
-      "name": "jlord",
-      "email": "to.jlord@gmail.com"
+      "email": "vanessayuenn@github.com",
+      "name": "vanessayuenn"
     },
     {
-      "name": "kevinsawicki",
-      "email": "kevinsawicki@gmail.com"
+      "email": "electron@github.com",
+      "name": "electron"
     },
     {
-      "name": "zcbenz",
-      "email": "zcbenz@gmail.com"
+      "email": "to.jlord@gmail.com",
+      "name": "jlord"
     },
     {
-      "name": "zeke",
-      "email": "zeke@sikelianos.com"
+      "email": "zeke@sikelianos.com",
+      "name": "zeke"
+    },
+    {
+      "email": "zcbenz@gmail.com",
+      "name": "zcbenz"
+    },
+    {
+      "email": "kevinsawicki@gmail.com",
+      "name": "kevinsawicki"
     }
   ]
 }

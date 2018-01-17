@@ -1,0 +1,68 @@
+{
+  "name": "peer-tree-client",
+  "version": "2.0.1",
+  "description": "A k-tree one-to-many network for WebRTC.",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "npm run test-setup && npm run test-server && npm run test-standard && npm run test-node && npm run test-browser-local && npm run test-cleanup",
+    "build": "browserify src/index.js -s PeerTreeClient -o ./../dist/peer-tree-client.js",
+    "test-setup": "npm install && cd ../server && npm install && cd ../client",
+    "test-server": "cd ../server && node test/test-server.js& SERVER_PID=$! && cd ../client",
+    "test-standard": "standard --fix \"src/*.js\" \"test/*.js\" \"../server/src/*.js\"",
+    "test-browser": "zuul -- test/*.js",
+    "test-browser-local": "zuul --local -- test/*.js",
+    "test-node": "npm run test-node-electron-webrtc && npm run test-node-wrtc",
+    "test-node-electron-webrtc": "WRTC=electron-webrtc tape test/*.js",
+    "test-node-wrtc": "WRTC=wrtc tape test/*.js",
+    "test-cleanup": "kill $SERVER_PID"
+  },
+  "author": {
+    "name": "Thomas Mullen"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "socket.io-client": "^2.0.3",
+    "electron-webrtc": "^0.3.0",
+    "standard": "^8.6.0",
+    "tape": "^4.6.3",
+    "wrtc": "0.0.61",
+    "zuul": "^3.11.1"
+  },
+  "dependencies": {
+    "events": "^1.1.1",
+    "inherits": "^2.0.3",
+    "simple-signal-client": "^1.2.6"
+  },
+  "_npmVersion": "3.10.3",
+  "_nodeVersion": "6.6.0",
+  "dist": {
+    "shasum": "959804da676a0316ee14f719cc76964ee9fc5770",
+    "tarball": "https://registry.npmjs.org/peer-tree-client/-/peer-tree-client-2.0.1.tgz"
+  },
+  "versions": [
+    {
+      "number": "1.1.0",
+      "date": "2017-07-13T17:35:39.794Z"
+    },
+    {
+      "number": "2.0.0",
+      "date": "2017-07-15T21:23:07.251Z"
+    },
+    {
+      "number": "2.0.1",
+      "date": "2017-07-15T22:13:45.717Z"
+    }
+  ],
+  "created": "2017-07-13T17:35:39.794Z",
+  "modified": "2017-07-15T22:13:45.717Z",
+  "lastPublisher": {
+    "name": "rationalcoding",
+    "email": "thomasmullendesign@gmail.com"
+  },
+  "owners": [
+    {
+      "name": "rationalcoding",
+      "email": "thomasmullendesign@gmail.com"
+    }
+  ]
+}

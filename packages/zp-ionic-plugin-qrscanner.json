@@ -1,0 +1,116 @@
+{
+  "name": "zp-ionic-plugin-qrscanner",
+  "version": "2.5.4",
+  "description": "Fast, energy-efficient, highly-configurable QR code scanner.",
+  "cordova": {
+    "id": "zp-ionic-plugin-qrscanner",
+    "platforms": [
+      "ios"
+    ]
+  },
+  "scripts": {
+    "build": "gulp && npm run clean-build",
+    "clean-build": "trash dist/plugin.min.js && trash dist/www.min.js && trash src/browser/worker.min.js",
+    "test": "npm run jshint",
+    "jshint": "jshint src/browser/src && jshint src/common/src && jshint tests",
+    "gen-tests": "npm run build && npm run clean-platform-tests && npm run mkdirp-platform-tests && npm run copy-platform-tests && npm run install-platform-tests",
+    "clean-platform-tests": "trash ../cordova-plugin-test-projects/cordova-plugin-qrscanner-tests",
+    "mkdirp-platform-tests": "mkdirp ../cordova-plugin-test-projects/cordova-plugin-qrscanner-tests",
+    "copy-platform-tests": "ncp tests/project ../cordova-plugin-test-projects/cordova-plugin-qrscanner-tests",
+    "install-platform-tests": "cd ../cordova-plugin-test-projects/cordova-plugin-qrscanner-tests && npm install",
+    "test:ios": "cd ../cordova-plugin-test-projects/cordova-plugin-qrscanner-tests && npm run test:ios",
+    "test:android": "cd ../cordova-plugin-test-projects/cordova-plugin-qrscanner-tests && npm run test:android",
+    "test:browser": "cd ../cordova-plugin-test-projects/cordova-plugin-qrscanner-tests && npm run test:browser",
+    "test:windows": "cd ../cordova-plugin-test-projects/cordova-plugin-qrscanner-tests && npm run test:windows",
+    "test:library": "npm run build && node tests/library/test.js",
+    "changelog": "conventional-changelog -p angular -i CHANGELOG.md -s",
+    "commitmsg": "validate-commit-msg",
+    "prep-release": "git clean -dfx && npm install && npm run build && npm run changelog"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://git.zweipro.de/forks/ionic-plugin-qrscanner.git"
+  },
+  "keywords": [
+    "cordova",
+    "qr",
+    "qr code",
+    "scanner",
+    "reader",
+    "ecosystem:cordova",
+    "cordova-ios",
+    "cordova-android",
+    "cordova-browser",
+    "UMD",
+    "library",
+    "electron",
+    "NW.js"
+  ],
+  "author": {
+    "name": "Jason Dreyzehner"
+  },
+  "license": "MIT",
+  "homepage": "",
+  "main": "dist/cordova-plugin-qrscanner-lib.min.js",
+  "dependencies": {
+    "qrcode-reader": "^0.2.2",
+    "webrtc-adapter": "^3.1.4"
+  },
+  "devDependencies": {
+    "conventional-changelog-cli": "^1.2.0",
+    "cz-conventional-changelog": "^2.0.0",
+    "express": "^4.14.0",
+    "gulp": "^3.9.1",
+    "gulp-insert": "^0.5.0",
+    "husky": "^0.13.1",
+    "jshint": "^2.9.2",
+    "mkdirp": "^0.5.1",
+    "ncp": "^2.0.0",
+    "raw-loader": "^0.5.1",
+    "trash-cli": "^1.3.0",
+    "validate-commit-msg": "^2.6.1",
+    "webpack": "^2.4.1"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    },
+    "validate-commit-msg": {
+      "helpMessage": "\nThis project uses commitizen to document changes. Please try:\nnpm install commitizen -g && git cz\n"
+    }
+  },
+  "gitHead": "8f7a3025b687383ce92b4d0fb01a6a7fbe964963",
+  "_npmVersion": "4.5.0",
+  "_nodeVersion": "6.10.2",
+  "dist": {
+    "shasum": "5970a440aaae7102b59dc530baef851dec11bdc3",
+    "tarball": "https://registry.npmjs.org/zp-ionic-plugin-qrscanner/-/zp-ionic-plugin-qrscanner-2.5.4.tgz"
+  },
+  "deprecated": "this package has been deprecated",
+  "versions": [
+    {
+      "number": "2.5.2",
+      "date": "2017-05-16T15:25:45.060Z"
+    },
+    {
+      "number": "2.5.3",
+      "date": "2017-05-16T15:55:50.489Z"
+    },
+    {
+      "number": "2.5.4",
+      "date": "2017-05-16T16:05:08.255Z"
+    }
+  ],
+  "created": "2017-05-16T15:25:45.060Z",
+  "modified": "2017-12-01T15:35:54.647Z",
+  "lastPublisher": {
+    "name": "zweipro",
+    "email": "kleff@zweipro.de"
+  },
+  "owners": [
+    {
+      "name": "zweipro",
+      "email": "kleff@zweipro.de"
+    }
+  ]
+}

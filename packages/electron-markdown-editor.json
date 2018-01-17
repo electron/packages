@@ -1,8 +1,8 @@
 {
   "name": "electron-markdown-editor",
   "productName": "ElectronMarkdownEditor",
-  "version": "2.0.10",
-  "electronVersion": "1.4.3",
+  "version": "2.1.6",
+  "electronVersion": "1.7.8",
   "description": "A markdown editor built with electron, uikit, and markdown-it",
   "keywords": [
     "markdown",
@@ -18,15 +18,9 @@
   },
   "scripts": {
     "clean:dist": "rm -rf ./dist",
-    "build": "npm run build:osx && npm run build:win && npm run build:linux",
-    "build:osx": "electron-packager . $npm_package_productName --out=dist --ignore='^/dist$' --overwrite --prune --asar --arch=all --platform=darwin --icon=./resources/icon.icns --version=$npm_package_electronVersion --app-version=$npm_package_version && node scripts/post-build-mac.js",
+    "build:osx": "electron-packager . $npm_package_productName --out=dist --ignore='^/dist$' --overwrite --prune --asar --arch=all --platform=darwin --icon=./resources/icon.icns --version=$npm_package_electronVersion --app-version=$npm_package_version",
     "build:win": "electron-packager . $npm_package_productName --out=dist --arch=all --platform=win32 --ignore='^/dist$' --prune --asar --overwrite --icon=./resources/icon.ico --version=$npm_package_electronVersion --app-version=$npm_package_version",
-    "build:linux": "electron-packager . $npm_package_productName --out=dist --arch=all --platform=linux --ignore='^/dist$' --prune --asar --overwrite --icon=./resources/icon.png --version=$npm_package_electronVersion --app-version=$npm_package_version",
-    "package": "npm run package:win32 && npm run package:win64 && npm run package:osx && npm run package:linux",
-    "package:win64": "electron-builder dist/ElectronMarkdownEditor-win32-x64/ --platform=win --out=dist --config=config.json && mv 'dist/ElectronMarkdownEditor Setup.exe' dist/ElectronMarkdownEditor_Windows64.exe",
-    "package:win32": "electron-builder dist/ElectronMarkdownEditor-win32-ia32/ --platform=win --out=dist --config=config.json && mv 'dist/ElectronMarkdownEditor Setup.exe' dist/ElectronMarkdownEditor_Windows32.exe",
-    "package:osx": "hdiutil create -format UDZO -srcfolder dist/ElectronMarkdownEditor-darwin-x64/ElectronMarkdownEditor.app dist/ElectronMarkdownEditor_Mac.dmg",
-    "package:linux": "cd dist/ && zip -r ElectronMarkdownEditor_Linux_x64.zip ElectronMarkdownEditor-linux-x64 && zip -r ElectronMarkdownEditor_Linux_ia32.zip ElectronMarkdownEditor-linux-ia32 && cd ../"
+    "build:linux": "electron-packager . $npm_package_productName --out=dist --arch=x64 --platform=linux --ignore='^/dist$' --prune --asar --overwrite --icon=./resources/icon.png --version=$npm_package_electronVersion --app-version=$npm_package_version"
   },
   "repository": {
     "user": "diversen",
@@ -46,30 +40,37 @@
   },
   "license": "MIT",
   "dependencies": {
-    "codemirror": "^5.18.0",
-    "electron-debug": "^1.0.1",
-    "electron": "^1.4.3",
-    "electron-window": "0.8.1",
+    "codemirror": "^5.30.0",
+    "detect-process": "^1.0.4",
+    "electron": "^1.7.8",
+    "electron-debug": "^1.4.0",
+    "electron-packager": "^8.7.2",
+    "electron-window": "^0.8.1",
     "highlightjs": "^8.7.0",
-    "isbinaryfile": "^3.0.0",
-    "jquery": "^2.1.4",
-    "markdown-it-embed-mathjax-highlight": "^1.0.1",
+    "is-defined-eval": "^1.0.3",
+    "is-electron": "^2.1.0",
+    "isbinaryfile": "^3.0.2",
+    "jquery": "^2.2.4",
+    "markdown-it-embed-mathjax-highlight": "^1.0.5",
     "markdown-table-template": "^1.0.1",
-    "mathjax": "^2.6.1",
+    "mathjax": "^2.7.2",
     "open": "0.0.5",
     "plist": "^1.2.0",
     "relative": "^3.0.2",
-    "uikit": "^2.26.3"
+    "uikit": "^2.27.4"
   },
-  "gitHead": "a7b013698292684168c589c143aad5960d5f9f78",
+  "devDependencies": {
+    "electron": "^1.7.8"
+  },
+  "gitHead": "db6441adbb4f8617cd355ec3bbc9f7f77ce69b12",
   "homepage": "https://github.com/diversen/electron-markdown-editor#readme",
-  "_npmVersion": "3.10.3",
-  "_nodeVersion": "6.7.0",
+  "_npmVersion": "3.10.10",
+  "_nodeVersion": "6.11.3",
   "dist": {
-    "shasum": "a7dfe3ac2214736c341d72784e3e1a6d1dc755bc",
-    "tarball": "http://registry.npmjs.org/electron-markdown-editor/-/electron-markdown-editor-2.0.10.tgz"
+    "shasum": "db4f82247cebc6e99e9a98214c61db9e952ab048",
+    "tarball": "https://registry.npmjs.org/electron-markdown-editor/-/electron-markdown-editor-2.1.6.tgz"
   },
-  "stars": 2,
+  "stars": 3,
   "versions": [
     {
       "number": "1.0.0",
@@ -174,10 +175,114 @@
     {
       "number": "2.0.10",
       "date": "2016-10-19T18:02:15.495Z"
+    },
+    {
+      "number": "2.0.11",
+      "date": "2017-01-08T13:28:59.899Z"
+    },
+    {
+      "number": "2.0.12",
+      "date": "2017-01-12T19:11:42.941Z"
+    },
+    {
+      "number": "2.0.14",
+      "date": "2017-01-15T13:44:27.835Z"
+    },
+    {
+      "number": "2.0.15",
+      "date": "2017-01-16T07:44:00.938Z"
+    },
+    {
+      "number": "2.0.16",
+      "date": "2017-01-19T21:08:37.516Z"
+    },
+    {
+      "number": "2.0.17",
+      "date": "2017-01-19T21:12:48.438Z"
+    },
+    {
+      "number": "2.0.18",
+      "date": "2017-02-05T00:53:01.670Z"
+    },
+    {
+      "number": "2.0.19",
+      "date": "2017-02-05T01:02:21.599Z"
+    },
+    {
+      "number": "2.0.22",
+      "date": "2017-02-05T01:09:13.062Z"
+    },
+    {
+      "number": "2.0.23",
+      "date": "2017-02-05T01:13:32.230Z"
+    },
+    {
+      "number": "2.0.24",
+      "date": "2017-02-05T01:19:43.631Z"
+    },
+    {
+      "number": "2.0.25",
+      "date": "2017-02-05T01:34:03.497Z"
+    },
+    {
+      "number": "2.0.26",
+      "date": "2017-02-05T01:40:13.369Z"
+    },
+    {
+      "number": "2.0.27",
+      "date": "2017-02-05T09:20:39.380Z"
+    },
+    {
+      "number": "2.0.28",
+      "date": "2017-03-26T19:00:55.878Z"
+    },
+    {
+      "number": "2.0.29",
+      "date": "2017-03-27T20:09:40.769Z"
+    },
+    {
+      "number": "2.0.31",
+      "date": "2017-03-30T16:44:50.075Z"
+    },
+    {
+      "number": "2.0.32",
+      "date": "2017-04-01T08:39:43.943Z"
+    },
+    {
+      "number": "2.0.33",
+      "date": "2017-04-01T08:42:27.921Z"
+    },
+    {
+      "number": "2.1.0",
+      "date": "2017-09-23T07:39:43.174Z"
+    },
+    {
+      "number": "2.1.1",
+      "date": "2017-09-23T07:53:25.428Z"
+    },
+    {
+      "number": "2.1.2",
+      "date": "2017-09-23T08:17:23.327Z"
+    },
+    {
+      "number": "2.1.3",
+      "date": "2017-09-25T19:51:11.954Z"
+    },
+    {
+      "number": "2.1.4",
+      "date": "2017-09-25T20:35:24.033Z"
+    },
+    {
+      "number": "2.1.5",
+      "date": "2017-09-25T20:51:44.555Z"
+    },
+    {
+      "number": "2.1.6",
+      "date": "2017-09-25T21:07:27.888Z"
     }
   ],
   "created": "2016-01-01T19:38:13.405Z",
-  "modified": "2016-10-19T18:02:15.495Z",
+  "modified": "2017-09-25T21:07:27.888Z",
   "lastPublisher": {
     "name": "diversen",
     "email": "dennis.iversen@gmail.com"

@@ -1,6 +1,6 @@
 {
   "name": "electron-prebuilt-compile",
-  "version": "1.4.10",
+  "version": "1.8.2-beta.3",
   "description": "electron-prebuilt that automatically understands Babel + React + LESS",
   "bin": {
     "electron": "lib/cli.js"
@@ -8,7 +8,7 @@
   "main": "lib/main.js",
   "scripts": {
     "compile": "babel -d lib/ src/",
-    "prepublish": "npm run compile"
+    "prepublish": "npm run compile && cp ./node_modules/electron/electron.d.ts ."
   },
   "repository": {
     "user": "paulcbetts",
@@ -24,7 +24,15 @@
     "api_url": "https://api.github.com/repos/paulcbetts/electron-prebuilt-compile"
   },
   "keywords": [
-    "esdoc"
+    "electron",
+    "electron-compile",
+    "sass",
+    "less",
+    "babel",
+    "typescript",
+    "coffeescript",
+    "jade",
+    "pug"
   ],
   "author": {
     "name": "Paul Betts",
@@ -33,25 +41,27 @@
   "license": "MIT",
   "homepage": "https://github.com/paulcbetts/electron-prebuilt-compile",
   "dependencies": {
-    "electron": "1.4.10",
-    "electron-compile": "*",
-    "electron-compilers": "*",
     "babel-plugin-array-includes": "^2.0.3",
     "babel-plugin-transform-async-to-generator": "^6.8.0",
     "babel-preset-es2016-node5": "^1.1.2",
-    "babel-preset-react": "^6.11.1"
+    "babel-preset-react": "^6.11.1",
+    "electron": "1.8.2-beta.3",
+    "electron-compile": "*",
+    "electron-compilers": "*",
+    "yargs": "^6.6.0"
   },
   "devDependencies": {
     "babel-cli": "^6.10.1"
   },
-  "gitHead": "c683d45718bee9364f4011dbc0fcc8bae29e176b",
-  "_npmVersion": "3.10.8",
-  "_nodeVersion": "6.8.0",
+  "gitHead": "98724f4f3daa9d6fa3d495dd6585e8930c1ab047",
+  "_npmVersion": "5.3.0",
+  "_nodeVersion": "8.6.0",
   "dist": {
-    "shasum": "e3d63b09a4cbe8de4193af3a645ec466db3837c5",
-    "tarball": "http://registry.npmjs.org/electron-prebuilt-compile/-/electron-prebuilt-compile-1.4.10.tgz"
+    "integrity": "sha512-SHca2lwcBJB1l2bKjX3uNmZKUJZYg4fTi1zmbjegbThQfA49U+cJSHBA/P3A0LbBQislHtB8p003b26trld2iA==",
+    "shasum": "ff910d3d3567e4fe106bfe2285bd30b06c63add5",
+    "tarball": "https://registry.npmjs.org/electron-prebuilt-compile/-/electron-prebuilt-compile-1.8.2-beta.3.tgz"
   },
-  "stars": 1,
+  "stars": 2,
   "versions": [
     {
       "number": "0.0.1",
@@ -292,15 +302,187 @@
     {
       "number": "1.4.10",
       "date": "2016-11-29T20:51:53.871Z"
+    },
+    {
+      "number": "1.3.13",
+      "date": "2016-12-07T20:29:38.110Z"
+    },
+    {
+      "number": "1.4.11",
+      "date": "2016-12-07T20:31:31.562Z"
+    },
+    {
+      "number": "1.4.12",
+      "date": "2016-12-12T04:48:47.898Z"
+    },
+    {
+      "number": "1.4.13",
+      "date": "2017-01-05T01:13:34.682Z"
+    },
+    {
+      "number": "1.4.14",
+      "date": "2017-01-10T23:08:01.871Z"
+    },
+    {
+      "number": "1.4.15",
+      "date": "2017-01-19T21:13:30.835Z"
+    },
+    {
+      "number": "1.5.0",
+      "date": "2017-01-24T20:14:37.781Z"
+    },
+    {
+      "number": "1.5.0-beta.1",
+      "date": "2017-01-30T01:04:59.015Z"
+    },
+    {
+      "number": "1.5.1",
+      "date": "2017-02-07T03:25:43.707Z"
+    },
+    {
+      "number": "1.6.0",
+      "date": "2017-02-07T03:27:28.003Z"
+    },
+    {
+      "number": "1.6.1",
+      "date": "2017-02-21T20:48:23.478Z"
+    },
+    {
+      "number": "1.6.2",
+      "date": "2017-03-08T18:32:07.189Z"
+    },
+    {
+      "number": "1.6.3",
+      "date": "2017-03-08T18:34:00.571Z"
+    },
+    {
+      "number": "1.6.4",
+      "date": "2017-03-27T20:54:50.374Z"
+    },
+    {
+      "number": "1.6.5",
+      "date": "2017-04-03T19:54:07.885Z"
+    },
+    {
+      "number": "1.6.6",
+      "date": "2017-04-19T08:15:02.221Z"
+    },
+    {
+      "number": "1.6.7",
+      "date": "2017-04-19T08:16:58.715Z"
+    },
+    {
+      "number": "1.6.7-oops.1",
+      "date": "2017-04-23T06:36:00.667Z"
+    },
+    {
+      "number": "1.6.8",
+      "date": "2017-05-03T18:29:53.550Z"
+    },
+    {
+      "number": "1.7.0",
+      "date": "2017-05-11T19:23:02.634Z"
+    },
+    {
+      "number": "1.6.9",
+      "date": "2017-05-17T00:49:21.524Z"
+    },
+    {
+      "number": "1.6.10",
+      "date": "2017-05-17T00:50:05.439Z"
+    },
+    {
+      "number": "1.7.1",
+      "date": "2017-05-17T00:50:44.144Z"
+    },
+    {
+      "number": "1.6.11",
+      "date": "2017-05-25T21:16:56.611Z"
+    },
+    {
+      "number": "1.7.2",
+      "date": "2017-06-19T23:52:48.393Z"
+    },
+    {
+      "number": "1.7.3",
+      "date": "2017-06-19T23:53:28.648Z"
+    },
+    {
+      "number": "1.7.4",
+      "date": "2017-07-11T22:47:28.951Z"
+    },
+    {
+      "number": "1.7.5",
+      "date": "2017-08-08T18:05:04.126Z"
+    },
+    {
+      "number": "1.6.12",
+      "date": "2017-08-08T18:06:12.682Z"
+    },
+    {
+      "number": "1.7.6",
+      "date": "2017-08-09T20:29:53.956Z"
+    },
+    {
+      "number": "1.7.7",
+      "date": "2017-08-31T17:25:41.524Z"
+    },
+    {
+      "number": "1.6.13",
+      "date": "2017-09-12T19:22:22.858Z"
+    },
+    {
+      "number": "1.8.0",
+      "date": "2017-09-12T19:23:42.072Z"
+    },
+    {
+      "number": "1.7.8",
+      "date": "2017-09-25T22:15:32.283Z"
+    },
+    {
+      "number": "1.6.14",
+      "date": "2017-09-28T18:14:47.477Z"
+    },
+    {
+      "number": "1.8.1",
+      "date": "2017-09-29T17:57:05.966Z"
+    },
+    {
+      "number": "1.7.9",
+      "date": "2017-10-12T23:44:43.340Z"
+    },
+    {
+      "number": "1.6.15",
+      "date": "2017-10-12T23:49:46.613Z"
+    },
+    {
+      "number": "1.8.2-beta.1",
+      "date": "2017-10-19T17:51:18.478Z"
+    },
+    {
+      "number": "1.8.2-beta.2",
+      "date": "2017-11-06T21:50:38.053Z"
+    },
+    {
+      "number": "1.8.2-beta.3",
+      "date": "2017-12-07T19:33:27.503Z"
     }
   ],
   "created": "2016-01-04T01:02:14.465Z",
-  "modified": "2016-11-29T20:51:53.871Z",
+  "modified": "2017-12-07T19:33:27.503Z",
   "lastPublisher": {
     "name": "paulcbetts",
     "email": "paul@paulbetts.org"
   },
   "owners": [
+    {
+      "name": "charliehess",
+      "email": "ifightnoman@gmail.com"
+    },
+    {
+      "name": "mnquintana",
+      "email": "machiste.quintana@yale.edu"
+    },
     {
       "name": "paulcbetts",
       "email": "paul@paulbetts.org"

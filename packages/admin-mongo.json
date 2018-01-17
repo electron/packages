@@ -1,6 +1,6 @@
 {
   "name": "admin-mongo",
-  "version": "0.0.20",
+  "version": "0.0.23",
   "description": "A Web user interface to administer MongoDB databases built using Express",
   "author": {
     "name": "Mark Moffat",
@@ -23,10 +23,10 @@
   "main": "electron.js",
   "scripts": {
     "start": "node app.js",
-    "postinstall": "node ./lib/npm_postinstall.js",
     "test": "find ./tests -name '*.js' | xargs mocha -R spec -t 5000",
     "packageOsx": "electron-packager ./ adminMongo --out=releases/ --platform=darwin --arch=x64 --prune --overwrite --ignore=releases/* --icon=public/logo.icns",
     "packageWin32": "electron-packager ./ adminMongo --out=releases/ --platform=win32 --arch=ia32 --prune --overwrite --ignore=releases/* --icon=public/logo.ico",
+    "packageWin64": "electron-packager ./ adminMongo --out=releases/ --platform=win32 --arch=x64 --prune --overwrite --ignore=releases/* --icon=public/logo.ico",
     "packageLinux": "electron-packager ./ adminMongo --out=releases/ --platform=linux --arch=ia32 --prune --overwrite --ignore=releases/* --icon=public/logo.ico"
   },
   "keywords": [
@@ -96,13 +96,13 @@
     "mocha-jsdom": "^1.1.0",
     "supertest": "^1.2.0"
   },
-  "gitHead": "3abc57cfd028147e5141896b2826b7ffca106119",
+  "gitHead": "9f1eacd95c55c846d2f36c29e080c1663b5511bf",
   "homepage": "https://github.com/mrvautin/adminmongo#readme",
-  "_npmVersion": "2.15.1",
-  "_nodeVersion": "4.4.4",
+  "_npmVersion": "3.10.8",
+  "_nodeVersion": "6.9.0",
   "dist": {
-    "shasum": "9b1052d2140f0cec79c541e1800b6bc4a049d6f1",
-    "tarball": "http://registry.npmjs.org/admin-mongo/-/admin-mongo-0.0.20.tgz"
+    "shasum": "f5d2fc916ff4c0732737f58e75308f101a7ed25a",
+    "tarball": "https://registry.npmjs.org/admin-mongo/-/admin-mongo-0.0.23.tgz"
   },
   "stars": 2,
   "versions": [
@@ -185,10 +185,22 @@
     {
       "number": "0.0.20",
       "date": "2016-09-02T09:13:37.497Z"
+    },
+    {
+      "number": "0.0.21",
+      "date": "2017-01-09T03:26:15.416Z"
+    },
+    {
+      "number": "0.0.22",
+      "date": "2017-01-27T04:42:53.612Z"
+    },
+    {
+      "number": "0.0.23",
+      "date": "2017-05-02T05:08:31.075Z"
     }
   ],
   "created": "2016-01-16T10:14:28.486Z",
-  "modified": "2016-11-24T22:24:18.884Z",
+  "modified": "2017-05-02T05:08:31.075Z",
   "lastPublisher": {
     "name": "mrvautin",
     "email": "mark_moffat@outlook.com"

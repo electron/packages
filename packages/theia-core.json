@@ -1,0 +1,155 @@
+{
+  "name": "theia-core",
+  "version": "0.0.1-alpha.2",
+  "description": "Theia is a cloud & desktop IDE framework implemented in TypeScript.",
+  "repository": {
+    "user": "theia-ide",
+    "repo": "theia",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/theia-ide/theia/tarball/master",
+    "clone_url": "https://github.com/theia-ide/theia",
+    "https_url": "https://github.com/theia-ide/theia",
+    "travis_url": "https://travis-ci.org/theia-ide/theia",
+    "zip_url": "https://github.com/theia-ide/theia/archive/master.zip",
+    "api_url": "https://api.github.com/repos/theia-ide/theia"
+  },
+  "license": "Apache-2.0",
+  "files": [
+    "lib",
+    "src"
+  ],
+  "dependencies": {
+    "@phosphor/algorithm": "^0.1.1",
+    "@phosphor/application": "^0.1.5",
+    "@phosphor/domutils": "^0.1.2",
+    "@phosphor/messaging": "^0.1.2",
+    "@phosphor/signaling": "^0.1.2",
+    "@phosphor/virtualdom": "^0.1.1",
+    "@phosphor/widgets": "^0.1.7",
+    "@types/electron": "^1.4.33",
+    "@types/express": "^4.0.35",
+    "@types/fs-extra": "^2.1.0",
+    "@types/glob": "^5.0.30",
+    "@types/touch": "0.0.1",
+    "@types/ws": "0.0.38",
+    "@types/xterm": "^2.0.2",
+    "chokidar": "^1.6.1",
+    "electron": "1.6.8",
+    "express": "^4.15.2",
+    "fs-extra": "^2.1.2",
+    "glob": "^7.1.1",
+    "inversify": "^3.1.0",
+    "monaco-editor": "^0.8.3",
+    "monaco-editor-core": "^0.8.2",
+    "monaco-languageclient": "^0.0.1-alpha.6",
+    "mv": "^2.1.1",
+    "node-pty": "^0.6.4",
+    "reconnecting-websocket": "^3.0.3",
+    "reflect-metadata": "^0.1.10",
+    "touch": "^1.0.0",
+    "trash": "^4.0.1",
+    "vscode-languageserver": "^3.2.0",
+    "vscode-uri": "^1.0.0",
+    "vscode-ws-jsonrpc": "^0.0.1-alpha.4",
+    "ws": "^2.2.0",
+    "xterm": "^2.6.0"
+  },
+  "devDependencies": {
+    "@types/chai": "^3.4.35",
+    "@types/chai-as-promised": "0.0.29",
+    "@types/chokidar": "^1.6.0",
+    "@types/karma": "^0.13.33",
+    "@types/mocha": "^2.2.39",
+    "chai": "^3.5.0",
+    "chai-as-promised": "^6.0.0",
+    "circular-dependency-plugin": "^2.0.0",
+    "copy-webpack-plugin": "^4.0.1",
+    "css-loader": "^0.26.2",
+    "file-loader": "^0.11.1",
+    "find-package-json": "^1.0.0",
+    "gulp": "^3.9.1",
+    "gulp-decompress": "^2.0.1",
+    "gulp-download": "0.0.1",
+    "minimist": "^1.2.0",
+    "mocha": "^3.2.0",
+    "rimraf": "^2.6.1",
+    "source-map-loader": "^0.1.6",
+    "style-loader": "^0.13.2",
+    "ts-loader": "^2.0.1",
+    "ts-node": "^2.1.0",
+    "tsc-watch": "^1.0.5",
+    "tslint": "^4.5.1",
+    "typescript": "^2.3.2",
+    "url-loader": "^0.5.8",
+    "uuid": "^3.0.1",
+    "webpack": "^2.2.1",
+    "webpack-dev-server": "^2.4.1",
+    "webpack-merge": "^3.0.0"
+  },
+  "nyc": {
+    "include": [
+      "src/**/*.ts"
+    ],
+    "exclude": [
+      "typings",
+      "src/**/*.spec.ts"
+    ],
+    "reporter": [
+      "html"
+    ],
+    "extension": [
+      ".ts"
+    ]
+  },
+  "scripts": {
+    "prepare": "npm run clean && npm run build && npm run java:download",
+    "prepublishOnly": "npm run test",
+    "lint": "tslint -c ./config/tslint/tslint.json --project ./tsconfig.json",
+    "build": "tsc && npm run lint",
+    "watch": "tsc-watch --onSuccess \"npm run lint\"",
+    "clean": "rimraf lib",
+    "test": "mocha --opts ./config/mocha/mocha.opts src/**/*.spec.ts",
+    "coverage": "nyc mocha --require reflect-metadata/Reflect --compilers ts:ts-node/register src/**/*.spec.ts",
+    "test:watch": "mocha --watch --opts ./config/mocha/mocha.opts src/**/*.spec.ts",
+    "java:download": "gulp --gulpfile ./config/gulp/java-ls-tasks.js download_java_server",
+    "java:build": "gulp --gulpfile ./config/gulp/java-ls-tasks.js build_java_server",
+    "java:watch": "gulp --gulpfile ./config/gulp/java-ls-tasks.js watch_java_server"
+  },
+  "homepage": "https://github.com/theia-ide/theia",
+  "gitHead": "b594aa6e1a44724be3040bc0b125151b5e2882e4",
+  "_npmVersion": "4.6.1",
+  "_nodeVersion": "6.10.3",
+  "dist": {
+    "shasum": "09c0fbe9516fe0e6d5b4297510dfa2085140de52",
+    "tarball": "https://registry.npmjs.org/theia-core/-/theia-core-0.0.1-alpha.2.tgz"
+  },
+  "stars": 1,
+  "versions": [
+    {
+      "number": "0.0.1-alpha.1",
+      "date": "2017-05-23T13:46:19.656Z"
+    },
+    {
+      "number": "0.0.1-alpha.2",
+      "date": "2017-06-09T04:37:23.150Z"
+    }
+  ],
+  "created": "2017-05-23T13:46:19.656Z",
+  "modified": "2017-06-09T12:19:18.188Z",
+  "lastPublisher": {
+    "name": "theia",
+    "email": "theia@typefox.io"
+  },
+  "owners": [
+    {
+      "name": "theia",
+      "email": "theia@typefox.io"
+    },
+    {
+      "name": "typefox",
+      "email": "npm@typefox.io"
+    }
+  ]
+}

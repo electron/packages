@@ -1,13 +1,12 @@
 {
-  "package.json": true,
   "author": {
     "name": "kai zhu",
     "email": "kaizhu256@gmail.com"
   },
   "bin": {
-    "istanbul-lite": "index.js"
+    "istanbul-lite": "lib.istanbul.js"
   },
-  "description": "this zero-dependency package will provide a browser-compatible version of the istanbul coverage-tool",
+  "description": "this zero-dependency package will provide a browser-compatible version of the istanbul (v0.4.5) coverage-tool, with a working web-demo",
   "devDependencies": {
     "electron-lite": "github:kaizhu256/node-electron-lite#alpha",
     "utility2": "github:kaizhu256/node-utility2#alpha"
@@ -18,17 +17,15 @@
   "homepage": "https://github.com/kaizhu256/node-istanbul-lite",
   "keywords": [
     "browser",
-    "code",
-    "cover",
     "coverage",
-    "instrument",
-    "istanbul",
-    "jscover",
-    "jscoverage",
-    "web"
+    "istanbul"
   ],
   "license": "MIT",
+  "main": "lib.istanbul.js",
   "name": "istanbul-lite",
+  "nameAliasPublish": "istanbul-classic",
+  "nameLib": "istanbul",
+  "nameOriginal": "istanbul-lite",
   "os": [
     "darwin",
     "linux"
@@ -47,16 +44,19 @@
     "api_url": "https://api.github.com/repos/kaizhu256/node-istanbul-lite"
   },
   "scripts": {
-    "build-ci": "utility2 shRun shReadmeBuild",
-    "start": "export PORT=${PORT:-8080} && export npm_config_mode_auto_restart=1 && utility2 shRun shIstanbulCover test.js",
-    "test": "export PORT=$(utility2 shServerPortRandom) && utility2 test test.js"
+    "build-ci": "utility2 shReadmeTest build_ci.sh",
+    "env": "env",
+    "heroku-postbuild": "npm uninstall utility2 2>/dev/null; npm install kaizhu256/node-utility2#alpha && utility2 shDeployHeroku",
+    "postinstall": "[ ! -f npm_scripts.sh ] || ./npm_scripts.sh postinstall",
+    "start": "PORT=${PORT:-8080} utility2 start test.js",
+    "test": "PORT=$(utility2 shServerPortRandom) utility2 test test.js"
   },
-  "version": "2016.10.3",
-  "_npmVersion": "3.10.8",
-  "_nodeVersion": "7.0.0",
+  "version": "2017.11.21",
+  "_npmVersion": "3.10.10",
+  "_nodeVersion": "6.12.0",
   "dist": {
-    "shasum": "3e90a88e6db46bae173bfb1672fd2550708d7630",
-    "tarball": "http://registry.npmjs.org/istanbul-lite/-/istanbul-lite-2016.10.3.tgz"
+    "shasum": "5aa12ddefec51541ec8bd7675fef66a83547f419",
+    "tarball": "https://registry.npmjs.org/istanbul-lite/-/istanbul-lite-2017.11.21.tgz"
   },
   "stars": 1,
   "versions": [
@@ -323,10 +323,46 @@
     {
       "number": "2016.10.3",
       "date": "2016-11-12T11:24:58.562Z"
+    },
+    {
+      "number": "2016.12.1",
+      "date": "2016-12-13T04:57:43.845Z"
+    },
+    {
+      "number": "2016.12.2",
+      "date": "2016-12-15T14:04:53.041Z"
+    },
+    {
+      "number": "2017.2.18",
+      "date": "2017-02-18T17:56:41.599Z"
+    },
+    {
+      "number": "2017.2.28",
+      "date": "2017-03-01T09:42:59.445Z"
+    },
+    {
+      "number": "2017.4.14",
+      "date": "2017-04-14T06:22:21.146Z"
+    },
+    {
+      "number": "2017.5.27",
+      "date": "2017-05-28T10:01:56.732Z"
+    },
+    {
+      "number": "2017.9.1",
+      "date": "2017-09-04T10:06:56.211Z"
+    },
+    {
+      "number": "2017.10.4",
+      "date": "2017-10-05T08:14:15.508Z"
+    },
+    {
+      "number": "2017.11.21",
+      "date": "2017-11-22T09:05:22.683Z"
     }
   ],
   "created": "2014-07-28T09:52:03.078Z",
-  "modified": "2016-11-12T11:24:58.562Z",
+  "modified": "2017-11-22T09:05:22.683Z",
   "lastPublisher": {
     "name": "kaizhu",
     "email": "kaizhu256@gmail.com"

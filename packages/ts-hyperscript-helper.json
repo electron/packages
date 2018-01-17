@@ -1,0 +1,106 @@
+{
+  "name": "ts-hyperscript-helper",
+  "version": "1.0.1",
+  "description": "A typescript port of HyperScript-helpers",
+  "main": "dist/cjs/index.js",
+  "module": "dist/es/index.js",
+  "jsnext:main": "dist/es/index.js",
+  "files": [
+    "dist",
+    "src"
+  ],
+  "repository": {
+    "user": "bleushan",
+    "repo": "ts-hyperscript-helpers",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/bleushan/ts-hyperscript-helpers/tarball/master",
+    "clone_url": "https://github.com/bleushan/ts-hyperscript-helpers",
+    "https_url": "https://github.com/bleushan/ts-hyperscript-helpers",
+    "travis_url": "https://travis-ci.org/bleushan/ts-hyperscript-helpers",
+    "zip_url": "https://github.com/bleushan/ts-hyperscript-helpers/archive/master.zip",
+    "api_url": "https://api.github.com/repos/bleushan/ts-hyperscript-helpers"
+  },
+  "keywords": [
+    "HyperScript"
+  ],
+  "homepage": "http://github.com/bleushan/ts-hyperscript-helpers",
+  "author": {
+    "name": "Philippe Lafontaine",
+    "email": "lafontaine.philippe@gmail.com"
+  },
+  "contributors": [
+    {
+      "name": "Bleushan"
+    }
+  ],
+  "scripts": {
+    "clean": "rimraf dist",
+    "build:cjs": "tsc --outDir dist/cjs",
+    "build:es": "tsc --target es6 --outDir dist/es",
+    "build": "yarn run clean && yarn run build:cjs && yarn run build:es",
+    "test": "yarn run build && mocha --ui bdd --recursive dist/cjs/test",
+    "semantic-release": "semantic-release pre && yarn publish && semantic-release post"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "@types/mocha": "2.2.41",
+    "@types/ramda": "github:types/npm-ramda",
+    "chai": "4.0.0",
+    "chai-as-promised": "6.0.0",
+    "cz-conventional-changelog-emoji": "0.1.0",
+    "electron": "1.6.10",
+    "jsverify": "0.8.2",
+    "mocha": "3.4.2",
+    "rimraf": "2.6.1",
+    "semantic-release": "^6.3.6",
+    "tslint": "5.3.2",
+    "tslint-eslint-rules": "4.1.0",
+    "typescript": "2.3.3"
+  },
+  "dependencies": {
+    "ramda": "0.23.0",
+    "tslib": "1.7.1"
+  },
+  "engines": {
+    "node": "^7.8.0"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog-emoji"
+    }
+  },
+  "licenseText": "MIT License\n\nCopyright (c) 2017 Philippe Lafontaine\n\nPermission is hereby granted, free of charge, to any person obtaining a copy\nof this software and associated documentation files (the \"Software\"), to deal\nin the Software without restriction, including without limitation the rights\nto use, copy, modify, merge, publish, distribute, sublicense, and/or sell\ncopies of the Software, and to permit persons to whom the Software is\nfurnished to do so, subject to the following conditions:\n\nThe above copyright notice and this permission notice shall be included in all\ncopies or substantial portions of the Software.\n\nTHE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR\nIMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,\nFITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE\nAUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER\nLIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,\nOUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE\nSOFTWARE.\n",
+  "dist": {
+    "shasum": "e99196140d182b01bfbe6759d6191f8e6cdcb177",
+    "tarball": "https://registry.npmjs.org/ts-hyperscript-helper/-/ts-hyperscript-helper-1.0.1.tgz"
+  },
+  "deprecated": "please use ts-hyperscript-helpers",
+  "versions": [
+    {
+      "number": "1.0.0",
+      "date": "2017-05-26T00:53:42.309Z"
+    },
+    {
+      "number": "1.0.1",
+      "date": "2017-05-27T19:19:48.232Z"
+    },
+    {
+      "number": "1.0.2",
+      "date": "2017-05-27T19:35:21.193Z"
+    }
+  ],
+  "created": "2017-05-26T00:53:42.309Z",
+  "modified": "2017-05-27T20:23:06.003Z",
+  "lastPublisher": {
+    "name": "bleushan",
+    "email": "lafontaine.philippe@gmail.com"
+  },
+  "owners": [
+    {
+      "name": "bleushan",
+      "email": "lafontaine.philippe@gmail.com"
+    }
+  ]
+}

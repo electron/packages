@@ -1,7 +1,7 @@
 {
   "name": "particle-commands",
   "description": "Library of UX-neutral commands that provide key functionality for developer tools",
-  "version": "0.2.1",
+  "version": "0.2.12",
   "author": {
     "name": "Matthew McGowan"
   },
@@ -12,14 +12,19 @@
     }
   ],
   "dependencies": {
+    "analytics-node": "^2.4.0",
     "babel-runtime": "^6.9.2",
     "es6-promisify": "^4.1.0",
-    "particle-api-js": "^6.1.0",
-    "particle-library-manager": "^0.1.0",
+    "glob": "^7.1.1",
+    "mkdirp": "^0.5.1",
+    "particle-api-js": "^6.5.0",
+    "particle-library-manager": "^0.1.11",
     "semver": "^5.1.0",
+    "underscore": "^1.8.3",
     "when": "^3.7.2",
-    "yeoman-environment": "^1.6.3",
-    "yeoman-generator": "^0.24.1"
+    "winreg": "^1.2.2",
+    "yeoman-environment": "^1.6.6",
+    "yeoman-generator": "^1.1.1"
   },
   "devDependencies": {
     "babel-cli": "^6.10.1",
@@ -38,7 +43,7 @@
     "fs-extra": "^0.30.0",
     "istanbul": "^0.3.22",
     "mocha": "^3.0.2",
-    "mock-fs": "^3.11.0",
+    "mock-fs": "^3.12.1",
     "proxyquire": "^1.6.0",
     "rimraf-promise": "^2.0.0",
     "sinon": "^1.15.4",
@@ -79,24 +84,26 @@
   },
   "scripts": {
     "all": "npm run lint && npm run test && npm run accept",
-    "babel-watch": "babel src -d dist --watch --source-maps",
+    "babel-watch": "babel src -d dist --watch --source-maps --copy-files",
     "coverage": "istanbul cover ./node_modules/mocha/bin/_mocha -- -R spec test/ --compilers js:babel-register",
     "coveralls": "istanbul cover ./node_modules/mocha/bin/_mocha --report lcovonly -- -R spec --compilers js:babel-register test/ && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js && rm -rf ./coverage",
     "doctoc": "doctoc --title '## Table of Contents' README.md",
+    "list-folders": "node --require babel-register bin/list_folders.js",
     "lint": "eslint -f unix src/**/*.js",
+    "lint:fix": "eslint --fix -f unix src/ test/",
     "test": "mocha test test/cmd test/integration --compilers js:babel-register",
-    "compile": "babel src -d dist",
+    "compile": "babel src -d dist --copy-files",
     "prepublish": "npm run compile",
     "preversion": "npm run lint && npm run test && npm run prepublish",
     "version": "npm run update-changelog",
     "update-changelog": "VERSION=`node -p -e \"require('./package.json').version\"` bash -c 'read -p \"Update CHANGELOG.md for version $VERSION and press ENTER when done.\"' && git add CHANGELOG.md"
   },
-  "gitHead": "f142985a580d476d0df8182d56ce207e33d5fc55",
-  "_npmVersion": "2.15.8",
-  "_nodeVersion": "4.4.7",
+  "gitHead": "d50e6e22b79296b9f091be621b7c5a40ff03807a",
+  "_npmVersion": "4.1.2",
+  "_nodeVersion": "6.9.4",
   "dist": {
-    "shasum": "bb1ae0ec3dee469a4b8d7b5d2b838b70bfbbfb68",
-    "tarball": "http://registry.npmjs.org/particle-commands/-/particle-commands-0.2.1.tgz"
+    "shasum": "fc8899eb6d55cfbee5fbf931a13c6ac9b3158c05",
+    "tarball": "https://registry.npmjs.org/particle-commands/-/particle-commands-0.2.12.tgz"
   },
   "versions": [
     {
@@ -134,26 +141,66 @@
     {
       "number": "0.2.1",
       "date": "2016-10-19T15:37:08.196Z"
+    },
+    {
+      "number": "0.2.2",
+      "date": "2016-12-13T15:35:40.754Z"
+    },
+    {
+      "number": "0.2.3-rc.1",
+      "date": "2016-12-20T02:04:43.708Z"
+    },
+    {
+      "number": "0.2.3",
+      "date": "2016-12-20T16:08:08.158Z"
+    },
+    {
+      "number": "0.2.4",
+      "date": "2016-12-20T17:29:42.432Z"
+    },
+    {
+      "number": "0.2.5",
+      "date": "2016-12-22T04:08:20.300Z"
+    },
+    {
+      "number": "0.2.6",
+      "date": "2016-12-22T14:11:46.510Z"
+    },
+    {
+      "number": "0.2.7",
+      "date": "2017-01-10T23:01:26.303Z"
+    },
+    {
+      "number": "0.2.8",
+      "date": "2017-01-18T18:45:03.782Z"
+    },
+    {
+      "number": "0.2.9",
+      "date": "2017-01-23T15:53:09.909Z"
+    },
+    {
+      "number": "0.2.10",
+      "date": "2017-03-21T04:33:11.626Z"
+    },
+    {
+      "number": "0.2.11",
+      "date": "2017-03-21T04:55:12.706Z"
+    },
+    {
+      "number": "0.2.12",
+      "date": "2017-07-10T15:21:54.623Z"
     }
   ],
   "created": "2016-09-22T15:14:27.230Z",
-  "modified": "2016-11-09T14:18:52.997Z",
+  "modified": "2017-07-10T15:21:54.623Z",
   "lastPublisher": {
-    "name": "mdma",
-    "email": "mat.mcgowan+npm@gmail.com"
+    "name": "suda",
+    "email": "admin@suda.pl"
   },
   "owners": [
     {
       "name": "mdma",
       "email": "mat.mcgowan+npm@gmail.com"
-    },
-    {
-      "name": "monkbroc",
-      "email": "jvanier@gmail.com"
-    },
-    {
-      "name": "suda",
-      "email": "admin@suda.pl"
     }
   ]
 }

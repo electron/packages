@@ -1,0 +1,168 @@
+{
+  "name": "uupaa.m3u8spooler.js",
+  "version": "0.2.1",
+  "description": "M3U8 Spooler",
+  "url": "https://github.com/uupaa/M3U8Spooler.js",
+  "keywords": [
+    "M3U8",
+    "HLS",
+    "uupaa",
+    "WebModule",
+    "Unstable"
+  ],
+  "repository": {
+    "user": "uupaa",
+    "repo": "M3U8Spooler.js",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/uupaa/M3U8Spooler.js/tarball/master",
+    "clone_url": "https://github.com/uupaa/M3U8Spooler.js",
+    "https_url": "https://github.com/uupaa/M3U8Spooler.js",
+    "travis_url": "https://travis-ci.org/uupaa/M3U8Spooler.js",
+    "zip_url": "https://github.com/uupaa/M3U8Spooler.js/archive/master.zip",
+    "api_url": "https://api.github.com/repos/uupaa/M3U8Spooler.js"
+  },
+  "scripts": {
+    "sync": "node ../WebModule/run/sync.js; npm update; node ../WebModule/run/page.js",
+    "wiki": "node ../WebModule/run/wiki.js",
+    "min": "node ../WebModule/run/minify.js --verbose --strict --keep --pretty",
+    "build": "node ../WebModule/run/minify.js --verbose --strict --keep --release",
+    "watch": "node ../WebModule/run/watch.js --verbose --run lint",
+    "page": "node ../WebModule/run/page.js --verbose",
+    "test": "npm run min; npm run node; npm run browser",
+    "node": "NODE_ENV=production NODE_PATH=lib node test/node/index.js",
+    "noded": "NODE_ENV=production NODE_PATH=lib node --debug-brk test/node/index.js",
+    "browser": "open http://localhost:8000/M3U8Spooler.js/test/browser/index.html",
+    "el": "electron test/el",
+    "nw": "nw test/nw",
+    "add-src": "node ../WebModule/run/add-src.js",
+    "add-subclass": "node ../WebModule/run/add-subclass.js",
+    "sim": "node ../WebModule/run/sim.js http://localhost:8000/M3U8Spooler.js/test/browser/index.html",
+    "simx": "node ../WebModule/run/sim.js stop",
+    "lint": "eslint lib/*.js",
+    "score": "node ../WebModule/run/score.js; open lint/plato/index.html",
+    "patch": "node ../WebModule/run/patch.js",
+    "setup": "node ../WebModule/run/setup.js",
+    "start": "cd ../; Python -m SimpleHTTPServer 8000 &",
+    "stop": "killall -- Python -m SimpleHTTPServer 8000; exit 0"
+  },
+  "webmodule": {
+    "develop": false,
+    "label": [
+      "@dev"
+    ],
+    "browser": {
+      "output": "release/M3U8Spooler.b.min.js",
+      "source": [
+        "lib/M3U8Segment.js",
+        "lib/M3U8Spooler.js"
+      ]
+    },
+    "worker": {
+      "output": "release/M3U8Spooler.w.min.js",
+      "source": [
+        "lib/M3U8Segment.js",
+        "lib/M3U8Spooler.js"
+      ]
+    },
+    "node": {
+      "output": "release/M3U8Spooler.n.min.js",
+      "source": [
+        "lib/M3U8Segment.js",
+        "lib/M3U8Spooler.js"
+      ]
+    },
+    "nw": {
+      "output": "release/M3U8Spooler.nw.min.js",
+      "source": [
+        "lib/M3U8Segment.js",
+        "lib/M3U8Spooler.js"
+      ]
+    },
+    "el": {
+      "output": "release/M3U8Spooler.el.min.js",
+      "source": [
+        "lib/M3U8Segment.js",
+        "lib/M3U8Spooler.js"
+      ]
+    }
+  },
+  "dependencies": {
+    "uupaa.m3u8.js": "",
+    "uupaa.fileloader.js": ""
+  },
+  "devDependencies": {},
+  "lib": "./lib/",
+  "main": "./index.js",
+  "author": {
+    "name": "uupaa"
+  },
+  "license": "MIT",
+  "contributors": [],
+  "gitHead": "effd61a09742fe612a0960325ec4650df6319330",
+  "homepage": "https://github.com/uupaa/M3U8Spooler.js",
+  "_npmVersion": "2.0.0",
+  "dist": {
+    "shasum": "a4b11a976372e4e635763d2e9f70c2a1efd4c041",
+    "tarball": "https://registry.npmjs.org/uupaa.m3u8spooler.js/-/uupaa.m3u8spooler.js-0.2.1.tgz"
+  },
+  "versions": [
+    {
+      "number": "0.0.1",
+      "date": "2016-12-30T03:16:26.076Z"
+    },
+    {
+      "number": "0.0.2",
+      "date": "2016-12-30T11:39:30.140Z"
+    },
+    {
+      "number": "0.0.3",
+      "date": "2017-01-02T06:09:46.923Z"
+    },
+    {
+      "number": "0.0.4",
+      "date": "2017-01-04T00:56:34.106Z"
+    },
+    {
+      "number": "0.0.5",
+      "date": "2017-01-04T03:51:41.830Z"
+    },
+    {
+      "number": "0.0.6",
+      "date": "2017-01-04T06:25:48.042Z"
+    },
+    {
+      "number": "0.1.0",
+      "date": "2017-01-09T11:15:09.407Z"
+    },
+    {
+      "number": "0.1.1",
+      "date": "2017-01-15T09:31:21.011Z"
+    },
+    {
+      "number": "0.1.2",
+      "date": "2017-01-15T09:35:47.194Z"
+    },
+    {
+      "number": "0.2.0",
+      "date": "2017-01-16T08:24:00.500Z"
+    },
+    {
+      "number": "0.2.1",
+      "date": "2017-01-17T05:53:36.121Z"
+    }
+  ],
+  "created": "2016-12-30T03:16:26.076Z",
+  "modified": "2017-01-17T05:53:36.121Z",
+  "lastPublisher": {
+    "name": "uupaa",
+    "email": "uupaa.js@gmail.com"
+  },
+  "owners": [
+    {
+      "name": "uupaa",
+      "email": "uupaa.js@gmail.com"
+    }
+  ]
+}

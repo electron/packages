@@ -1,0 +1,81 @@
+{
+  "name": "v8-compiler",
+  "version": "0.1.0",
+  "description": "Compile your Node.js project and distribute it without source code",
+  "main": "v8-compiler.js",
+  "author": {
+    "name": "José Expósito"
+  },
+  "license": "LGPL-3.0",
+  "gypfile": true,
+  "repository": {
+    "user": "JoseExposito",
+    "repo": "v8-compiler",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/JoseExposito/v8-compiler/tarball/master",
+    "clone_url": "https://github.com/JoseExposito/v8-compiler",
+    "https_url": "https://github.com/JoseExposito/v8-compiler",
+    "travis_url": "https://travis-ci.org/JoseExposito/v8-compiler",
+    "zip_url": "https://github.com/JoseExposito/v8-compiler/archive/master.zip",
+    "api_url": "https://api.github.com/repos/JoseExposito/v8-compiler"
+  },
+  "config": {
+    "target": "v7.8.0",
+    "arch": "x64"
+  },
+  "scripts": {
+    "clean": "node-gyp clean && rimraf ./node_source",
+    "download-node-source": "echo Downloading Node.js $npm_package_config_target source code && download --extract --strip 1 --out node_source https://nodejs.org/dist/$npm_package_config_target/node-$npm_package_config_target.tar.gz",
+    "configure": "echo Configuring v8-compiler for Node.js $npm_package_config_target && node-gyp --target=$npm_package_config_target --arch=$npm_package_config_arch configure",
+    "build": "echo Building v8-compiler for Node.js $npm_package_config_target && node-gyp --tarball=./node_source --target=$npm_package_config_target --arch=$npm_package_config_arch build",
+    "electron:configure": "echo NOT SUPPORTED YET && HOME=~/.electron-gyp node-gyp --target=$npm_package_config_target --arch=$npm_package_config_arch --dist-url=https://atom.io/download/electron configure",
+    "electron:build": "echo NOT SUPPORTED YET && HOME=~/.electron-gyp node-gyp --target=$npm_package_config_target --arch=$npm_package_config_arch --dist-url=https://atom.io/download/electron build",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "install": "node-gyp rebuild"
+  },
+  "dependencies": {
+    "commander": "^2.9.0",
+    "nan": "^2.6.1"
+  },
+  "devDependencies": {
+    "download-cli": "^1.0.1",
+    "eslint": "^3.19.0",
+    "eslint-plugin-import": "^2.2.0",
+    "rimraf": "^2.6.1"
+  },
+  "keywords": [
+    "compiler",
+    "code",
+    "protection",
+    "nexe",
+    "enclose"
+  ],
+  "gitHead": "e562a422a94bcb0324bc9ad75512b76240415170",
+  "homepage": "https://github.com/JoseExposito/v8-compiler#readme",
+  "_npmVersion": "4.2.0",
+  "_nodeVersion": "7.8.0",
+  "dist": {
+    "shasum": "989f4daea66834d540cf1473cb84f7981d223248",
+    "tarball": "https://registry.npmjs.org/v8-compiler/-/v8-compiler-0.1.0.tgz"
+  },
+  "versions": [
+    {
+      "number": "0.1.0",
+      "date": "2017-04-25T16:34:59.000Z"
+    }
+  ],
+  "created": "2017-04-25T16:34:59.000Z",
+  "modified": "2017-04-25T16:48:01.407Z",
+  "lastPublisher": {
+    "name": "jose.exposito",
+    "email": "jose.exposito89@gmail.com"
+  },
+  "owners": [
+    {
+      "name": "jose.exposito",
+      "email": "jose.exposito89@gmail.com"
+    }
+  ]
+}

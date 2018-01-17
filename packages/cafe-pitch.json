@@ -1,6 +1,6 @@
 {
   "name": "cafe-pitch",
-  "version": "0.0.7",
+  "version": "0.1.2",
   "description": "Markdown-driven presentation tool built on Electron.",
   "main": "dist/browser/main.js",
   "repository": {
@@ -20,70 +20,82 @@
     "cafepitch": "./bin/cli.js"
   },
   "scripts": {
-    "prepublish": "npm run build",
-    "prebuild": "gulp build:prepare && tsconfig -u tsconfig.json",
-    "setup": "npm i && typings install",
+    "prepublish": "in-publish && npm run build || not-in-publish",
+    "prebuild": "gulp build:prepare",
+    "setup": "typings install",
     "build": "webpack",
-    "watch": "npm run prebuild && concurrently --kill-others \"webpack -w\" \"gulp watch\" \"npm run test-watch\"",
+    "watch": "npm run prebuild && concurrently --kill-others \"webpack -w\" \"gulp watch\"",
     "start": "electron .",
-    "package": "npm run build && gulp package",
-    "test-watch": "concurrently --kill-others \"webpack --config ./webpack_for_spec.config.coffee -w\" \"karma start spec/karma.conf.coffee\"",
-    "test": "webpack --config ./webpack_for_spec.config.coffee && karma start spec/karma.conf.coffee"
+    "clean": "rm -rf dist && rm -rf release",
+    "package": "npm run clean && npm run build && cp ./prod_resources/* ./dist/ && electron-packager dist \"CafePitch\" --all --out=release --icon=\"resource/cafepitch\" && gulp zip",
+    "test": "concurrently \"npm run test:e2e\" \"npm run test:unit\"",
+    "test:unit": "mocha --compilers ts:espower-typescript/guess spec/unit/**/*.spec.ts",
+    "test:e2e": "mocha --compilers ts:espower-typescript/guess spec/e2e/**/*.story.ts"
   },
   "keywords": [],
   "author": "",
   "license": "MIT",
   "dependencies": {
-    "@angular/common": "2.0.0-rc.4",
-    "@angular/compiler": "2.0.0-rc.4",
-    "@angular/core": "2.0.0-rc.4",
-    "@angular/http": "2.0.0-rc.4",
-    "@angular/platform-browser": "2.0.0-rc.4",
-    "@angular/platform-browser-dynamic": "2.0.0-rc.4",
-    "@angular/router": "3.0.0-beta.1",
+    "@angular/common": "^2.4.0",
+    "@angular/compiler": "^2.4.0",
+    "@angular/core": "^2.4.0",
+    "@angular/forms": "^2.4.0",
+    "@angular/http": "^2.4.0",
+    "@angular/platform-browser": "^2.4.0",
+    "@angular/platform-browser-dynamic": "^2.4.0",
+    "@angular/router": "^3.4.0",
     "ace-min-noconflict": "^1.1.9",
-    "electron-prebuilt": "^1.2.0",
+    "electron": "^1.6.1",
     "emoji-images": "^0.1.1",
     "es6-shim": "^0.35.0",
     "font-awesome": "^4.5.0",
     "highlight.js": "^9.3.0",
+    "in-publish": "^2.0.0",
     "lodash": "^4.3.0",
     "marked": "^0.3.5",
+    "photon": "github:connors/photon",
     "reflect-metadata": "0.1.2",
-    "rxjs": "5.0.0-beta.6",
-    "zone.js": "^0.6.12"
+    "rxjs": "^5.1.0",
+    "zone.js": "^0.7.6"
   },
   "devDependencies": {
     "coffee-script": "^1.10.0",
     "concurrently": "^2.0.0",
     "del": "^2.2.0",
-    "electron-packager": "^6.0.2",
+    "electron-packager": "^8.6.0",
+    "espower-typescript": "^8.0.0",
     "glob": "^7.0.3",
     "gulp": "^3.9.1",
     "gulp-sass": "^2.2.0",
     "jasmine-core": "^2.4.1",
     "jquery": "^2.2.3",
-    "karma": "^0.13.22",
-    "karma-chrome-launcher": "^0.2.3",
-    "karma-commonjs": "0.0.13",
-    "karma-firefox-launcher": "^0.1.7",
-    "karma-jasmine": "^0.3.8",
-    "karma-mocha-reporter": "^2.0.2",
+    "jsdom": "^9.4.0",
+    "karma": "~1.4.1",
+    "karma-chrome-launcher": "~2.0.0",
+    "karma-cli": "~1.0.1",
+    "karma-coverage-istanbul-reporter": "^0.2.0",
+    "karma-jasmine": "~1.1.0",
+    "karma-jasmine-html-reporter": "^0.2.2",
+    "mocha": "^2.5.3",
+    "power-assert": "^1.4.1",
+    "protractor": "~5.1.0",
     "run-sequence": "^1.1.5",
-    "ts-loader": "^0.8.2",
+    "spectron": "^3.6.0",
+    "ts-loader": "^2.0.1",
     "tsconfig-cli": "^1.0.2",
-    "typescript": "^1.8.10",
-    "typings": "^1.0.3",
-    "webpack": "^1.13.0",
+    "typescript": "^2.2.1",
+    "typescript-simple": "^8.0.0",
+    "typings": "^2.1.0",
+    "webpack": "^2.2.1",
     "zip-dir": "^1.0.2"
   },
-  "gitHead": "91d8b88b72516fd1123c08805848af16b8a0dcbc",
+  "gitHead": "b84ffdc7b156fbbf06795e260f29338df41489e5",
   "homepage": "https://github.com/joe-re/cafe-pitch#readme",
-  "_npmVersion": "3.9.5",
-  "_nodeVersion": "6.2.2",
+  "_npmVersion": "3.10.10",
+  "_nodeVersion": "6.10.0",
   "dist": {
-    "shasum": "8300ca13a6d6942b0871418b88de709d7a2f721f",
-    "tarball": "http://registry.npmjs.org/cafe-pitch/-/cafe-pitch-0.0.7.tgz"
+    "shasum": "fc480c53a894767ad5d9dcfe9f8ba90c134cb3c3",
+    "tarball": "https://registry.npmjs.org/cafe-pitch/-/cafe-pitch-0.1.2.tgz"
   },
   "versions": [
     {
@@ -113,10 +125,22 @@
     {
       "number": "0.0.7",
       "date": "2016-07-02T21:26:36.031Z"
+    },
+    {
+      "number": "0.1.0",
+      "date": "2017-03-20T11:43:01.065Z"
+    },
+    {
+      "number": "0.1.1",
+      "date": "2017-03-20T11:55:22.996Z"
+    },
+    {
+      "number": "0.1.2",
+      "date": "2017-03-20T14:31:51.127Z"
     }
   ],
   "created": "2016-04-11T23:45:11.966Z",
-  "modified": "2016-07-02T21:26:36.031Z",
+  "modified": "2017-03-20T14:31:51.127Z",
   "lastPublisher": {
     "name": "joe-re",
     "email": "joe.tialtngo@gmail.com"

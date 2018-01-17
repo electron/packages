@@ -1,0 +1,213 @@
+{
+  "name": "trilogy",
+  "version": "1.4.4",
+  "description": "No-hassle SQLite with a document store style API.",
+  "license": "MIT",
+  "author": {
+    "name": "Bo Lingen",
+    "email": "lingenbw@gmail.com",
+    "url": "https://github.com/citycide"
+  },
+  "repository": {
+    "user": "citycide",
+    "repo": "trilogy",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/citycide/trilogy/tarball/master",
+    "clone_url": "https://github.com/citycide/trilogy",
+    "https_url": "https://github.com/citycide/trilogy",
+    "travis_url": "https://travis-ci.org/citycide/trilogy",
+    "zip_url": "https://github.com/citycide/trilogy/archive/master.zip",
+    "api_url": "https://api.github.com/repos/citycide/trilogy"
+  },
+  "homepage": "https://citycide.github.io/trilogy",
+  "keywords": [
+    "knex",
+    "model",
+    "schema",
+    "sqlite",
+    "sql.js",
+    "storage",
+    "database",
+    "electron",
+    "mongoose",
+    "document"
+  ],
+  "engines": {
+    "node": ">=4.7.0"
+  },
+  "files": [
+    "dist"
+  ],
+  "main": "dist/trilogy.js",
+  "module": "dist/trilogy.mjs",
+  "types": "dist/trilogy.d.ts",
+  "scripts": {
+    "prebuild": "npm run lint && rimraf \"dist/**\"",
+    "build": "rollup -c && npm run types",
+    "watch": "npm run types && rimraf \"dist/**\" && rollup -c -w",
+    "types": "cpy \"types/**/*\" dist",
+    "pretest": "npm run build",
+    "test": "ava",
+    "lint": "standard \"src/**/*.js\" \"tests/**/*.js\" | snazzy",
+    "docs": "docsify serve docs",
+    "changelog": "changelog",
+    "prepublishOnly": "npm test"
+  },
+  "dependencies": {
+    "component-type": "^1.2.1",
+    "generic-pool": "^3.1.7",
+    "knex": "^0.13.0",
+    "osom": "^2.2.2"
+  },
+  "devDependencies": {
+    "@citycide/changelog": "^1.0.0",
+    "ava": "^0.23.0",
+    "babel-core": "^6.25.0",
+    "babel-plugin-add-module-exports": "^0.2.1",
+    "babel-plugin-external-helpers": "^6.22.0",
+    "babel-preset-env": "^1.5.2",
+    "babel-preset-stage-0": "^6.24.1",
+    "babel-register": "^6.24.1",
+    "babel-runtime": "^6.23.0",
+    "cpy-cli": "^1.0.1",
+    "docsify-cli": "^4.1.8",
+    "rimraf": "^2.6.1",
+    "rollup": "^0.51.6",
+    "rollup-plugin-babel": "^3.0.2",
+    "rollup-watch": "^4.0.0",
+    "snazzy": "^7.0.0",
+    "sql.js": "^0.4.0",
+    "sqlite3": "^3.1.8",
+    "standard": "^10.0.2"
+  },
+  "ava": {
+    "files": [
+      "tests/**/*.js"
+    ]
+  },
+  "gitHead": "2e96af367ddc971c0ab66cc84c3282951a0c96c5",
+  "_npmVersion": "5.5.1",
+  "_nodeVersion": "8.9.3",
+  "dist": {
+    "integrity": "sha512-xVPnOETt1b+rDEOH3Zx1N16N4cG1FuqY2KNIjukE9LzF4vccKIcb6DNN+WE/sHPonBYKZT6kIyVXhjnSVy5+Sg==",
+    "shasum": "8eecc208366057436a0f5e0ad1acc99f1a4315a7",
+    "tarball": "https://registry.npmjs.org/trilogy/-/trilogy-1.4.4.tgz"
+  },
+  "stars": 1,
+  "versions": [
+    {
+      "number": "0.5.0",
+      "date": "2016-07-27T08:27:23.471Z"
+    },
+    {
+      "number": "0.7.0",
+      "date": "2016-08-15T01:23:40.481Z"
+    },
+    {
+      "number": "0.7.1",
+      "date": "2016-08-15T02:53:20.734Z"
+    },
+    {
+      "number": "0.8.2",
+      "date": "2016-08-23T06:29:41.961Z"
+    },
+    {
+      "number": "0.9.1",
+      "date": "2016-09-13T04:21:27.960Z"
+    },
+    {
+      "number": "0.9.2",
+      "date": "2016-09-14T05:25:17.501Z"
+    },
+    {
+      "number": "0.10.0",
+      "date": "2016-12-17T21:57:32.867Z"
+    },
+    {
+      "number": "0.11.0",
+      "date": "2017-01-08T08:39:16.323Z"
+    },
+    {
+      "number": "0.11.1",
+      "date": "2017-01-10T08:54:07.579Z"
+    },
+    {
+      "number": "1.0.0-rc.1",
+      "date": "2017-01-13T06:41:04.018Z"
+    },
+    {
+      "number": "1.0.0-rc.2",
+      "date": "2017-01-17T08:36:10.666Z"
+    },
+    {
+      "number": "1.0.0-rc.3",
+      "date": "2017-02-04T20:59:50.040Z"
+    },
+    {
+      "number": "1.0.0-rc.4",
+      "date": "2017-02-24T08:39:50.170Z"
+    },
+    {
+      "number": "1.0.0-rc.5",
+      "date": "2017-02-26T01:29:51.761Z"
+    },
+    {
+      "number": "1.0.0",
+      "date": "2017-03-16T07:04:57.519Z"
+    },
+    {
+      "number": "1.1.0",
+      "date": "2017-03-23T07:07:45.273Z"
+    },
+    {
+      "number": "1.2.0",
+      "date": "2017-06-09T22:31:26.348Z"
+    },
+    {
+      "number": "1.2.1",
+      "date": "2017-07-25T20:32:25.747Z"
+    },
+    {
+      "number": "1.3.0-beta.1",
+      "date": "2017-08-10T04:21:28.222Z"
+    },
+    {
+      "number": "1.3.0",
+      "date": "2017-08-25T04:44:32.301Z"
+    },
+    {
+      "number": "1.4.0",
+      "date": "2017-11-04T00:22:28.930Z"
+    },
+    {
+      "number": "1.4.1",
+      "date": "2017-11-16T23:34:27.738Z"
+    },
+    {
+      "number": "1.4.2",
+      "date": "2017-12-08T08:33:10.215Z"
+    },
+    {
+      "number": "1.4.3",
+      "date": "2018-01-09T00:17:59.485Z"
+    },
+    {
+      "number": "1.4.4",
+      "date": "2018-01-09T00:39:31.676Z"
+    }
+  ],
+  "created": "2016-07-27T08:27:23.471Z",
+  "modified": "2018-01-09T00:39:31.676Z",
+  "lastPublisher": {
+    "name": "citycide",
+    "email": "lingenbw@gmail.com"
+  },
+  "owners": [
+    {
+      "name": "citycide",
+      "email": "thecitycide@gmail.com"
+    }
+  ]
+}

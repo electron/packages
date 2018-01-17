@@ -1,13 +1,14 @@
 {
   "name": "electron-compile",
-  "version": "4.0.2",
+  "version": "6.4.2",
   "description": "Electron supporting package to compile JS and CSS in Electron applications",
   "scripts": {
     "doc": "esdoc -c ./esdoc.json",
-    "compile": "git clean -xdf lib && babel -d lib/ src",
+    "compile": "cross-env NODE_ENV='production' git clean -xdf lib && babel -d lib/ src",
     "prepublish": "npm run compile",
     "start": "npm run compile && electron ./test-dist/electron-smoke-test.js",
-    "test": "mocha --compilers js:babel-register test/*.js"
+    "test": "mocha --compilers js:babel-register test/*.js",
+    "test-cov": "cross-env NODE_ENV='test' istanbul cover ./node_modules/mocha/bin/_mocha -- --compilers js:babel-register test/*.js"
   },
   "bin": {
     "electron-compile": "lib/cli.js",
@@ -36,17 +37,20 @@
   "license": "MIT",
   "homepage": "https://github.com/paulcbetts/electron-compile",
   "main": "lib/index.js",
+  "types": "types/index.d.ts",
   "engines": {
     "node": ">= 5.0"
   },
   "dependencies": {
     "@paulcbetts/mime-types": "^2.1.10",
+    "@types/node": "^7.0.12",
     "btoa": "^1.1.2",
-    "debug-electron": "^0.0.2",
+    "debug": "^2.5.1",
     "lru-cache": "^4.0.1",
     "mkdirp": "^0.5.1",
     "pify": "^2.3.0",
     "rimraf": "^2.5.4",
+    "rxjs": "^5.1.1",
     "spawn-rx": "^2.0.3",
     "yargs": "^4.8.1"
   },
@@ -55,6 +59,7 @@
     "babel-cli": "^6.11.4",
     "babel-eslint": "^6.1.2",
     "babel-plugin-array-includes": "^2.0.3",
+    "babel-plugin-istanbul": "^4.0.0",
     "babel-plugin-transform-async-to-generator": "^6.8.0",
     "babel-preset-es2016-node5": "^1.1.2",
     "babel-preset-react": "^6.11.1",
@@ -62,23 +67,25 @@
     "chai": "^3.5.0",
     "chai-as-promised": "^5.3.0",
     "cheerio": "^0.20.0",
-    "electron-compilers": "^4.0.1",
+    "cross-env": "^3.2.4",
+    "electron-compilers": "^5.8.0",
     "electron-packager": "^7.5.1",
     "electron-prebuilt": "^1.3.3",
     "esdoc": "^0.4.8",
     "esdoc-es7-plugin": "0.0.3",
     "esdoc-plugin-async-to-sync": "^0.5.0",
     "eslint": "^3.3.0",
+    "istanbul": "^0.4.5",
     "mocha": "^3.0.2"
   },
-  "gitHead": "c08b8a75ae84f74a442a2cd4da8b54e5401eaadd",
-  "_npmVersion": "3.10.8",
-  "_nodeVersion": "6.8.0",
+  "gitHead": "936524356a1868500d3afcf220fe1ad356728fc5",
+  "_npmVersion": "4.0.5",
+  "_nodeVersion": "7.2.1",
   "dist": {
-    "shasum": "314a249d787ed2138d879733fe62ef24f85d7a7e",
-    "tarball": "http://registry.npmjs.org/electron-compile/-/electron-compile-4.0.2.tgz"
+    "shasum": "eb989eeac727646cbf8619217f53eeae8ee708c1",
+    "tarball": "https://registry.npmjs.org/electron-compile/-/electron-compile-6.4.2.tgz"
   },
-  "stars": 8,
+  "stars": 11,
   "versions": [
     {
       "number": "0.1.0",
@@ -371,15 +378,99 @@
     {
       "number": "4.0.2",
       "date": "2016-11-09T21:55:11.658Z"
+    },
+    {
+      "number": "4.0.3",
+      "date": "2016-12-14T05:39:33.720Z"
+    },
+    {
+      "number": "4.0.4",
+      "date": "2016-12-22T19:02:51.234Z"
+    },
+    {
+      "number": "5.0.0",
+      "date": "2016-12-22T23:58:17.583Z"
+    },
+    {
+      "number": "5.1.0",
+      "date": "2016-12-27T06:55:08.038Z"
+    },
+    {
+      "number": "5.1.1",
+      "date": "2016-12-28T22:04:14.111Z"
+    },
+    {
+      "number": "5.1.2",
+      "date": "2017-01-02T21:24:07.918Z"
+    },
+    {
+      "number": "5.1.3",
+      "date": "2017-01-19T20:27:59.010Z"
+    },
+    {
+      "number": "6.0.0-beta.1",
+      "date": "2017-02-14T22:56:07.393Z"
+    },
+    {
+      "number": "6.0.0",
+      "date": "2017-02-15T20:25:07.558Z"
+    },
+    {
+      "number": "6.1.0",
+      "date": "2017-02-21T04:18:13.774Z"
+    },
+    {
+      "number": "6.1.1",
+      "date": "2017-02-21T06:14:50.809Z"
+    },
+    {
+      "number": "6.1.2",
+      "date": "2017-02-21T21:41:38.824Z"
+    },
+    {
+      "number": "6.1.3",
+      "date": "2017-03-06T21:48:36.478Z"
+    },
+    {
+      "number": "6.2.0-beta.1",
+      "date": "2017-04-03T22:20:04.457Z"
+    },
+    {
+      "number": "6.2.0",
+      "date": "2017-04-03T23:30:26.000Z"
+    },
+    {
+      "number": "6.3.0",
+      "date": "2017-04-09T04:04:10.972Z"
+    },
+    {
+      "number": "6.3.1",
+      "date": "2017-04-15T07:32:48.864Z"
+    },
+    {
+      "number": "6.4.0",
+      "date": "2017-04-16T18:52:13.997Z"
+    },
+    {
+      "number": "6.4.1",
+      "date": "2017-04-27T19:18:31.994Z"
+    },
+    {
+      "number": "6.4.2",
+      "date": "2017-09-17T01:46:12.765Z"
     }
   ],
   "created": "2015-05-19T06:14:49.451Z",
-  "modified": "2016-11-09T21:55:11.658Z",
+  "modified": "2018-01-15T21:20:24.647Z",
   "lastPublisher": {
     "name": "paulcbetts",
     "email": "paul@paulbetts.org"
   },
   "owners": [
+    {
+      "name": "charliehess",
+      "email": "ifightnoman@gmail.com"
+    },
     {
       "name": "paulcbetts",
       "email": "paul@paulbetts.org"

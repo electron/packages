@@ -1,0 +1,257 @@
+{
+  "name": "electron-reporter",
+  "version": "0.1.13",
+  "description": "A project for report log in electron or nw",
+  "repository": {
+    "user": "4f2e",
+    "repo": "electron-reporter",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/4f2e/electron-reporter/tarball/master",
+    "clone_url": "https://github.com/4f2e/electron-reporter",
+    "https_url": "https://github.com/4f2e/electron-reporter",
+    "travis_url": "https://travis-ci.org/4f2e/electron-reporter",
+    "zip_url": "https://github.com/4f2e/electron-reporter/archive/master.zip",
+    "api_url": "https://api.github.com/repos/4f2e/electron-reporter"
+  },
+  "author": {
+    "name": "xingyuzhe",
+    "email": "yuzhe.xing@qq.com"
+  },
+  "contributors": [
+    {
+      "name": "xingyuzhe",
+      "email": "yuzhe.xing@qq.com"
+    }
+  ],
+  "license": "MIT",
+  "keywords": [
+    "electron",
+    "log4js",
+    "report",
+    "log",
+    "nw"
+  ],
+  "main": "dist/index.js",
+  "jsnext:main": "dist/index.es.js",
+  "eslintConfig": {
+    "parser": "babel-eslint",
+    "extends": "airbnb/base",
+    "rules": {
+      "import/no-mutable-exports": 0,
+      "import/no-extraneous-dependencies": 0,
+      "semi": 0,
+      "arrow-parens": 0,
+      "prefer-template": 0,
+      "no-underscore-dangle": 0,
+      "prefer-const": 0,
+      "no-param-reassign": 0,
+      "prefer-rest-params": 0,
+      "no-restricted-syntax": [
+        "error",
+        "LabeledStatement",
+        "WithStatement"
+      ]
+    }
+  },
+  "devDependencies": {
+    "babel-cli": "*",
+    "babel-core": "^6.14.0",
+    "babel-eslint": "*",
+    "babel-loader": "^6.2.5",
+    "babel-plugin-external-helpers": "*",
+    "babel-plugin-transform-runtime": "*",
+    "babel-preset-es2015": "^6.14.0",
+    "babel-preset-es2015-node": "^6.1.1",
+    "babel-preset-es2015-rollup": "^3.0.0",
+    "babel-preset-stage-0": "*",
+    "babel-register": "*",
+    "babelrc-rollup": "*",
+    "bs-html-injector": "*",
+    "chai": "*",
+    "colors": "*",
+    "coveralls": "*",
+    "css-loader": "^0.25.0",
+    "del": "*",
+    "easystatic": "^0.1.12",
+    "eslint": "*",
+    "eslint-config-airbnb": "*",
+    "eslint-formatter-pretty": "^1.1.0",
+    "eslint-loader": "^1.7.1",
+    "eslint-plugin-import": "*",
+    "eslint-plugin-jsx-a11y": "*",
+    "eslint-plugin-react": "*",
+    "extract-text-webpack-plugin": "^1.0.1",
+    "file-loader": "^0.9.0",
+    "gzip-size": "*",
+    "istanbul": "*",
+    "mocha": "*",
+    "postcss-loader": "^0.13.0",
+    "rollup": "*",
+    "rollup-plugin-babel": "*",
+    "rollup-plugin-commonjs": "^5.0.0",
+    "rollup-plugin-json": "*",
+    "rollup-plugin-node-resolve": "^2.0.0",
+    "rollup-plugin-uglify": "*",
+    "shelljs": "^0.7.8",
+    "sinon": "*",
+    "url-loader": "^0.5.7",
+    "webpack": "^1.13.2",
+    "webpack-dev-server": "^1.16.1",
+    "yargs": "^7.0.2"
+  },
+  "scripts": {
+    "lint": "eslint src test tools",
+    "test": "mocha --compilers js:babel-register",
+    "test:watch": "mocha --compilers js:babel-register --reporter min --watch",
+    "test:cover": "babel-node ./node_modules/istanbul/lib/cli.js cover ./node_modules/mocha/bin/_mocha",
+    "coveralls": "cat ./coverage/lcov.info | coveralls",
+    "build": "babel-node tools/build",
+    "prepublish": "npm run build",
+    "publish:docs": "easystatic deploy docs --repo 4f2e/npm-lib-seed",
+    "start": "easystatic start docs",
+    "server": "babel-node dev/server.js"
+  },
+  "dependencies": {
+    "asynckit": "^0.4.0",
+    "combined-stream": "^1.0.5",
+    "cross-unzip": "^0.2.1",
+    "d3-queue": "^3.0.4",
+    "form-data": "^2.1.2",
+    "fs-extra-promise": "^0.4.1",
+    "ip": "^1.1.5",
+    "json-stringify-safe": "^5.0.1",
+    "lodash": "^4.17.4",
+    "log4js": "^1.1.1",
+    "md5-file": "^3.1.1",
+    "mime-types": "^2.1.12",
+    "moment": "^2.17.1",
+    "network": "^0.3.2",
+    "ping": "^0.2.2",
+    "request": "^2.80.0",
+    "win-7zip": "^0.1.0"
+  },
+  "gitHead": "395435596e77024d6ec7b46c4aa747e0dd729cc9",
+  "homepage": "https://github.com/4f2e/electron-reporter#readme",
+  "_npmVersion": "4.2.0",
+  "_nodeVersion": "7.9.0",
+  "dist": {
+    "shasum": "e4383d117af69103b1ac0475164e7b35c5a57074",
+    "tarball": "https://registry.npmjs.org/electron-reporter/-/electron-reporter-0.1.13.tgz"
+  },
+  "versions": [
+    {
+      "number": "0.0.1",
+      "date": "2017-03-13T08:07:57.546Z"
+    },
+    {
+      "number": "0.0.2",
+      "date": "2017-03-13T08:18:50.457Z"
+    },
+    {
+      "number": "0.0.3",
+      "date": "2017-03-13T08:23:19.219Z"
+    },
+    {
+      "number": "0.0.4",
+      "date": "2017-03-13T08:30:46.660Z"
+    },
+    {
+      "number": "0.0.5",
+      "date": "2017-03-13T08:56:43.836Z"
+    },
+    {
+      "number": "0.0.6",
+      "date": "2017-03-13T09:10:02.873Z"
+    },
+    {
+      "number": "0.0.7",
+      "date": "2017-03-14T02:28:47.357Z"
+    },
+    {
+      "number": "0.0.8",
+      "date": "2017-03-15T13:56:56.986Z"
+    },
+    {
+      "number": "0.0.9",
+      "date": "2017-03-16T04:10:30.926Z"
+    },
+    {
+      "number": "0.0.10",
+      "date": "2017-03-16T09:41:25.618Z"
+    },
+    {
+      "number": "0.0.11",
+      "date": "2017-03-17T10:50:47.946Z"
+    },
+    {
+      "number": "0.1.0",
+      "date": "2017-03-20T04:32:47.547Z"
+    },
+    {
+      "number": "0.1.1",
+      "date": "2017-03-21T09:07:03.998Z"
+    },
+    {
+      "number": "0.1.2",
+      "date": "2017-03-23T04:32:36.351Z"
+    },
+    {
+      "number": "0.1.3",
+      "date": "2017-03-23T07:25:36.241Z"
+    },
+    {
+      "number": "0.1.4",
+      "date": "2017-03-23T11:19:22.750Z"
+    },
+    {
+      "number": "0.1.5",
+      "date": "2017-03-23T12:32:58.731Z"
+    },
+    {
+      "number": "0.1.6",
+      "date": "2017-04-12T10:04:38.664Z"
+    },
+    {
+      "number": "0.1.7",
+      "date": "2017-04-21T03:03:35.901Z"
+    },
+    {
+      "number": "0.1.8",
+      "date": "2017-04-25T08:10:38.153Z"
+    },
+    {
+      "number": "0.1.9",
+      "date": "2017-05-03T10:07:21.148Z"
+    },
+    {
+      "number": "0.1.10",
+      "date": "2017-05-04T03:18:52.083Z"
+    },
+    {
+      "number": "0.1.11",
+      "date": "2017-05-04T03:24:42.613Z"
+    },
+    {
+      "number": "0.1.12",
+      "date": "2017-05-10T11:45:45.162Z"
+    },
+    {
+      "number": "0.1.13",
+      "date": "2017-06-22T13:06:40.976Z"
+    }
+  ],
+  "created": "2017-03-13T08:07:57.546Z",
+  "modified": "2017-06-22T13:06:40.976Z",
+  "lastPublisher": {
+    "name": "yuzhe",
+    "email": "yuzhe.xing@qq.com"
+  },
+  "owners": [
+    {
+      "name": "yuzhe",
+      "email": "yuzhe.xing@qq.com"
+    }
+  ]
+}

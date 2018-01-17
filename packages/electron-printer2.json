@@ -1,0 +1,98 @@
+{
+  "name": "electron-printer2",
+  "description": "Node.js printer bindings -  electron builds",
+  "version": "1.1.1",
+  "homepage": "https://github.com/yahyaKacem/electron-printer",
+  "author": {
+    "name": "Marco Piraccini",
+    "email": "marco.piraccini@gmail.com"
+  },
+  "contributors": [
+    {
+      "name": "Yahya Kacem",
+      "email": "fuj.tyoli@gmail.com"
+    }
+  ],
+  "repository": {
+    "user": "yahyaKacem",
+    "repo": "electron-printer",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/yahyaKacem/electron-printer/tarball/master",
+    "clone_url": "https://github.com/yahyaKacem/electron-printer",
+    "https_url": "https://github.com/yahyaKacem/electron-printer",
+    "travis_url": "https://travis-ci.org/yahyaKacem/electron-printer",
+    "zip_url": "https://github.com/yahyaKacem/electron-printer/archive/master.zip",
+    "api_url": "https://api.github.com/repos/yahyaKacem/electron-printer"
+  },
+  "engines": {
+    "electron": ">=1.6.6"
+  },
+  "scripts": {
+    "release-win-ia32": "set HOME=~/.electron-gyp node-pre-gyp clean configure build --target_arch=ia32 --target_platform=win32 --runtime=electron --target=1.6.6 --build-from-source && node-pre-gyp package --target_arch=ia32 --target_platform=win32 --runtime=electron --target=1.6.6 --dist-url=https://atom.io/download/atom-shell",
+    "release-win": "set HOME=~/.electron-gyp node-pre-gyp clean configure build --target_arch=x64 --target_platform=win32 --runtime=electron --target=1.6.6 --build-from-source && node-pre-gyp package --target_arch=x64 --target_platform=win32 --runtime=electron --target=1.6.6 --dist-url=https://atom.io/download/atom-shell",
+    "install": "node-pre-gyp install --fallback-to-build",
+    "release-linux-ia32": "node-pre-gyp rebuild --target_arch=ia32 --dist-url=https://atom.io/download/atom-shell --target_platform=linux --runtime=electron --target=1.6.6 && node-pre-gyp --target_arch=ia32 --target_platform=linux --runtime=electron --target=1.6.6 package && node-pre-gyp-github publish --release",
+    "release-linux": "node-pre-gyp rebuild --target_arch=x64 --dist-url=https://atom.io/download/atom-shell --runtime=electron --target=1.6.6 --target_platform=linux && node-pre-gyp package --target_arch=x64 --target_platform=linux --runtime=electron --target=1.6.6 && node-pre-gyp-github publish --release",
+    "release": "node-pre-gyp rebuild --runtime=electron --target=1.6.6 && node-pre-gyp package --runtime=electron --target=1.6.6 && node-pre-gyp-github publish --release",
+    "release-darwin": "HOME=~/.electron-gyp node-pre-gyp rebuild --target_platform=darwin --runtime=electron --target=1.6.6 --arch=x64 --dist-url=https://atom.io/download/atom-shell && node-pre-gyp package --target_platform=darwin --runtime=electron --target=1.6.6 && node-pre-gyp-github publish —release"
+  },
+  "binary": {
+    "remote_path": "{version}",
+    "module_name": "node_printer",
+    "package_name": "electron-v1.6.6-{platform}-{arch}.tar.gz",
+    "module_path": "./build/{configuration}/electron-v1.6.6-{platform}-{arch}/",
+    "host": "https://github.com/yahyaKacem/electron-printer/releases/download/"
+  },
+  "dependencies": {
+    "nan": "^2.6.2",
+    "node-pre-gyp": "^0.6.34",
+    "node-pre-gyp-github": "^1.3.1"
+  },
+  "devDependencies": {
+    "nodeunit": "*"
+  },
+  "licenses": [
+    {
+      "type": "MIT"
+    }
+  ],
+  "main": "./index",
+  "gitHead": "70ff882fa8e8e216384ad2c291e8b590f15f77e8",
+  "bundleDependencies": [
+    "node-pre-gyp"
+  ],
+  "_npmVersion": "4.0.5",
+  "_nodeVersion": "7.10.0",
+  "dist": {
+    "shasum": "b58c02c3b6744a26051ef55d38342a8efe8b3eef",
+    "tarball": "https://registry.npmjs.org/electron-printer2/-/electron-printer2-1.1.1.tgz"
+  },
+  "versions": [
+    {
+      "number": "1.0.0",
+      "date": "2017-05-09T16:12:55.433Z"
+    },
+    {
+      "number": "1.1.0",
+      "date": "2017-05-09T19:15:08.527Z"
+    },
+    {
+      "number": "1.1.1",
+      "date": "2017-05-09T21:01:37.273Z"
+    }
+  ],
+  "created": "2017-05-09T16:12:55.433Z",
+  "modified": "2017-05-09T21:01:37.273Z",
+  "lastPublisher": {
+    "name": "yahyakacem",
+    "email": "fuj.tyoli@gmail.com"
+  },
+  "owners": [
+    {
+      "name": "yahyakacem",
+      "email": "fuj.tyoli@gmail.com"
+    }
+  ]
+}

@@ -1,10 +1,12 @@
 {
-  "package.json": true,
   "author": {
     "name": "kai zhu",
     "email": "kaizhu256@gmail.com"
   },
-  "description": "this zero-dependency package will provide a persistent, in-browser database",
+  "bin": {
+    "db-lite": "lib.db.js"
+  },
+  "description": "this zero-dependency package will provide a persistent, in-browser database, with a working web-demo",
   "devDependencies": {
     "electron-lite": "github:kaizhu256/node-electron-lite#alpha",
     "utility2": "github:kaizhu256/node-utility2#alpha"
@@ -14,23 +16,17 @@
   },
   "homepage": "https://github.com/kaizhu256/node-db-lite",
   "keywords": [
-    "browser",
-    "db",
+    "database",
+    "embedded",
     "indexeddb",
-    "localstorage",
-    "mongo",
-    "mongodb",
-    "nedb",
-    "no-sql",
-    "nosql",
-    "persistence",
-    "persistent",
-    "web",
-    "web-sql",
-    "websql"
+    "nedb"
   ],
   "license": "MIT",
+  "main": "lib.db.js",
   "name": "db-lite",
+  "nameAliasPublish": "elasticdb-lite esdb nanodb nedb2",
+  "nameLib": "db",
+  "nameOriginal": "db-lite",
   "os": [
     "darwin",
     "linux"
@@ -49,18 +45,19 @@
     "api_url": "https://api.github.com/repos/kaizhu256/node-db-lite"
   },
   "scripts": {
-    "build-ci": "utility2 shRun shReadmeBuild",
-    "start": "export PORT=${PORT:-8080} && export npm_config_mode_auto_restart=1 && utility2 shRun shIstanbulCover test.js",
-    "start2": "utility2 start index2.js",
-    "test": "export PORT=$(utility2 shServerPortRandom) && utility2 test test.js",
-    "test2": "utility2-istanbul cover index2.js"
+    "build-ci": "utility2 shReadmeTest build_ci.sh",
+    "env": "env",
+    "heroku-postbuild": "npm uninstall utility2 2>/dev/null; npm install kaizhu256/node-utility2#alpha && utility2 shDeployHeroku",
+    "postinstall": "[ ! -f npm_scripts.sh ] || ./npm_scripts.sh postinstall",
+    "start": "PORT=${PORT:-8080} utility2 start test.js",
+    "test": "PORT=$(utility2 shServerPortRandom) utility2 test test.js"
   },
-  "version": "2016.10.3",
-  "_npmVersion": "3.10.8",
-  "_nodeVersion": "6.9.1",
+  "version": "2017.12.4",
+  "_npmVersion": "3.10.10",
+  "_nodeVersion": "6.12.0",
   "dist": {
-    "shasum": "65567e783cbcd1f176248d08564a552547f38abb",
-    "tarball": "http://registry.npmjs.org/db-lite/-/db-lite-2016.10.3.tgz"
+    "shasum": "3e258106d4cebaa578b4c356dab081087f2a6463",
+    "tarball": "https://registry.npmjs.org/db-lite/-/db-lite-2017.12.4.tgz"
   },
   "stars": 1,
   "versions": [
@@ -79,10 +76,50 @@
     {
       "number": "2016.10.3",
       "date": "2016-11-21T02:05:06.704Z"
+    },
+    {
+      "number": "2016.12.1",
+      "date": "2016-12-13T13:58:29.852Z"
+    },
+    {
+      "number": "2017.2.1",
+      "date": "2017-02-18T08:54:45.662Z"
+    },
+    {
+      "number": "2017.2.2",
+      "date": "2017-02-24T04:16:13.761Z"
+    },
+    {
+      "number": "2017.3.16",
+      "date": "2017-03-16T20:48:01.256Z"
+    },
+    {
+      "number": "2017.3.29",
+      "date": "2017-03-30T14:12:10.306Z"
+    },
+    {
+      "number": "2017.5.25",
+      "date": "2017-05-26T04:09:27.887Z"
+    },
+    {
+      "number": "2017.7.24",
+      "date": "2017-07-25T06:56:31.855Z"
+    },
+    {
+      "number": "2017.9.16",
+      "date": "2017-09-17T16:10:35.395Z"
+    },
+    {
+      "number": "2017.11.7",
+      "date": "2017-11-07T16:54:25.091Z"
+    },
+    {
+      "number": "2017.12.4",
+      "date": "2017-12-04T17:51:41.324Z"
     }
   ],
   "created": "2016-10-13T14:59:46.397Z",
-  "modified": "2016-11-21T02:05:06.704Z",
+  "modified": "2017-12-04T17:51:41.324Z",
   "lastPublisher": {
     "name": "kaizhu",
     "email": "kaizhu256@gmail.com"

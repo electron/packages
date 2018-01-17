@@ -1,7 +1,7 @@
 {
   "name": "electron-docs-linter",
   "description": "A JSON object describing Electron's APIs",
-  "version": "1.16.1",
+  "version": "2.3.4",
   "author": {
     "name": "Zeke Sikelianos",
     "email": "zeke@sikelianos.com",
@@ -30,6 +30,8 @@
   },
   "devDependencies": {
     "chai": "^3.5.0",
+    "check-for-leaks": "^1.2.0",
+    "husky": "^0.14.3",
     "mkdirp": "^0.5.1",
     "mocha": "^3.0.2",
     "rimraf": "^2.5.4",
@@ -63,7 +65,9 @@
   "scripts": {
     "fetch-docs": "node bin/fetch-docs.js master",
     "generate": "node cli.js test/fixtures/electron --version=1.4.1 --outfile=electron.json && open electron.json",
-    "test": "mocha test/*.js && standard"
+    "test": "mocha test/*.js && standard",
+    "prepack": "check-for-leaks",
+    "prepush": "check-for-leaks"
   },
   "standard": {
     "env": {
@@ -73,12 +77,13 @@
   "engines": {
     "node": ">=4"
   },
-  "gitHead": "4a17f476d2e46b10466431359cfb84218c2fe39e",
-  "_npmVersion": "3.10.8",
-  "_nodeVersion": "7.0.0",
+  "gitHead": "d9a374fc25854215085da3f2e0362af66840a5d4",
+  "_npmVersion": "5.5.1",
+  "_nodeVersion": "8.4.0",
   "dist": {
-    "shasum": "845e2f7787528a11010e44eade2d9a566d1c8eee",
-    "tarball": "http://registry.npmjs.org/electron-docs-linter/-/electron-docs-linter-1.16.1.tgz"
+    "integrity": "sha512-omAdcSUPTzeIUzyMwA3W54mcw09AEy2THUQCDgDV0dAQA2urV5VpEaB3ts66aVQmw8j6AxK/CBAfBcYy5ZW0bw==",
+    "shasum": "d2870602e8cb3cc525a003b7333fe58cdb23c3d7",
+    "tarball": "https://registry.npmjs.org/electron-docs-linter/-/electron-docs-linter-2.3.4.tgz"
   },
   "versions": [
     {
@@ -216,26 +221,66 @@
     {
       "number": "1.16.1",
       "date": "2016-11-23T03:24:08.754Z"
+    },
+    {
+      "number": "2.0.0",
+      "date": "2016-12-22T18:38:16.156Z"
+    },
+    {
+      "number": "2.1.0",
+      "date": "2017-03-03T18:51:41.093Z"
+    },
+    {
+      "number": "2.1.1",
+      "date": "2017-03-03T19:26:12.916Z"
+    },
+    {
+      "number": "2.2.0",
+      "date": "2017-03-25T07:10:40.092Z"
+    },
+    {
+      "number": "2.2.1",
+      "date": "2017-03-26T04:09:02.858Z"
+    },
+    {
+      "number": "2.3.0",
+      "date": "2017-04-01T01:30:57.172Z"
+    },
+    {
+      "number": "2.3.1",
+      "date": "2017-05-02T16:21:06.788Z"
+    },
+    {
+      "number": "2.3.2",
+      "date": "2017-05-15T01:27:21.537Z"
+    },
+    {
+      "number": "2.3.3",
+      "date": "2017-05-15T03:30:42.678Z"
+    },
+    {
+      "number": "2.3.4",
+      "date": "2017-11-19T16:21:52.044Z"
     }
   ],
   "created": "2016-07-06T23:59:06.821Z",
-  "modified": "2016-11-23T03:24:08.754Z",
+  "modified": "2017-11-19T16:21:52.044Z",
   "lastPublisher": {
     "name": "zeke",
     "email": "zeke@sikelianos.com"
   },
   "owners": [
     {
-      "name": "electron",
-      "email": "electron@github.com"
+      "email": "kevinsawicki@gmail.com",
+      "name": "kevinsawicki"
     },
     {
-      "name": "kevinsawicki",
-      "email": "kevinsawicki@gmail.com"
+      "email": "electron@github.com",
+      "name": "electron"
     },
     {
-      "name": "zeke",
-      "email": "zeke@sikelianos.com"
+      "email": "zeke@sikelianos.com",
+      "name": "zeke"
     }
   ]
 }

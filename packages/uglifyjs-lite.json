@@ -1,5 +1,4 @@
 {
-  "package.json": true,
   "author": {
     "name": "kai zhu",
     "email": "kaizhu256@gmail.com"
@@ -7,7 +6,7 @@
   "bin": {
     "uglifyjs-lite": "lib.uglifyjs.js"
   },
-  "description": "this zero-dependency package will provide a browser-compatible version of the uglifyjs javascript-minifier",
+  "description": "this zero-dependency package will provide a browser-compatible version of the uglifyjs (v1.3.5) javascript-minifier, with a working web-demo",
   "devDependencies": {
     "electron-lite": "github:kaizhu256/node-electron-lite#alpha",
     "utility2": "github:kaizhu256/node-utility2#alpha"
@@ -17,16 +16,16 @@
   },
   "homepage": "https://github.com/kaizhu256/node-uglifyjs-lite",
   "keywords": [
-    "browser",
     "minify",
-    "obfuscate",
     "uglify",
-    "uglifyjs",
-    "web"
+    "uglifyjs"
   ],
   "license": "MIT",
-  "main": "lib.uglifyjs",
+  "main": "lib.uglifyjs.js",
   "name": "uglifyjs-lite",
+  "nameAliasPublish": "uglifyjs-classic",
+  "nameLib": "uglifyjs",
+  "nameOriginal": "uglifyjs-lite",
   "os": [
     "darwin",
     "linux"
@@ -45,16 +44,19 @@
     "api_url": "https://api.github.com/repos/kaizhu256/node-uglifyjs-lite"
   },
   "scripts": {
-    "build-ci": "utility2 shRun shReadmeBuild",
-    "start": "export PORT=${PORT:-8080} && export npm_config_mode_auto_restart=1 && utility2 shRun shIstanbulCover test.js",
-    "test": "export PORT=$(utility2 shServerPortRandom) && utility2 test test.js"
+    "build-ci": "utility2 shReadmeTest build_ci.sh",
+    "env": "env",
+    "heroku-postbuild": "npm uninstall utility2 2>/dev/null; npm install kaizhu256/node-utility2#alpha && utility2 shDeployHeroku",
+    "postinstall": "[ ! -f npm_scripts.sh ] || ./npm_scripts.sh postinstall",
+    "start": "PORT=${PORT:-8080} utility2 start test.js",
+    "test": "PORT=$(utility2 shServerPortRandom) utility2 test test.js"
   },
-  "version": "2016.11.1",
-  "_npmVersion": "3.10.8",
-  "_nodeVersion": "6.9.1",
+  "version": "2018.1.15",
+  "_npmVersion": "3.10.10",
+  "_nodeVersion": "6.12.3",
   "dist": {
-    "shasum": "1b65ee2ab5450093c3087f5e2b874bc25a35f172",
-    "tarball": "http://registry.npmjs.org/uglifyjs-lite/-/uglifyjs-lite-2016.11.1.tgz"
+    "shasum": "a678dd75ef68adc0a1fd33401a4d53be95e63bbb",
+    "tarball": "https://registry.npmjs.org/uglifyjs-lite/-/uglifyjs-lite-2018.1.15.tgz"
   },
   "stars": 1,
   "versions": [
@@ -73,10 +75,50 @@
     {
       "number": "2016.11.1",
       "date": "2016-11-29T07:54:55.920Z"
+    },
+    {
+      "number": "2016.12.1",
+      "date": "2016-12-13T13:41:35.961Z"
+    },
+    {
+      "number": "2017.2.18",
+      "date": "2017-02-18T17:41:44.118Z"
+    },
+    {
+      "number": "2017.2.19",
+      "date": "2017-02-20T18:08:55.871Z"
+    },
+    {
+      "number": "2017.3.27",
+      "date": "2017-03-28T15:21:20.700Z"
+    },
+    {
+      "number": "2017.3.28",
+      "date": "2017-03-28T16:20:10.660Z"
+    },
+    {
+      "number": "2017.5.20",
+      "date": "2017-05-21T20:19:56.234Z"
+    },
+    {
+      "number": "2017.7.15",
+      "date": "2017-07-15T19:39:45.720Z"
+    },
+    {
+      "number": "2017.9.15",
+      "date": "2017-09-16T10:10:17.631Z"
+    },
+    {
+      "number": "2017.10.28",
+      "date": "2017-10-29T16:11:40.200Z"
+    },
+    {
+      "number": "2018.1.15",
+      "date": "2018-01-16T03:30:28.086Z"
     }
   ],
   "created": "2016-06-12T13:18:07.888Z",
-  "modified": "2016-11-29T07:54:55.920Z",
+  "modified": "2018-01-16T03:30:28.086Z",
   "lastPublisher": {
     "name": "kaizhu",
     "email": "kaizhu256@gmail.com"

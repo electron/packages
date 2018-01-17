@@ -1,6 +1,6 @@
 {
   "name": "navit",
-  "version": "3.0.2",
+  "version": "3.1.0",
   "description": "Wrapper for PhantomJS and SlimerJS to simplify browser tests scripting",
   "keywords": [
     "phantomjs",
@@ -24,7 +24,7 @@
   "license": "MIT",
   "dependencies": {
     "async": "^2.0.1",
-    "chai": "^3.0.0",
+    "chai": "^4.0.0",
     "debug": "^2.2.0",
     "lodash": "^4.0.0",
     "node-phantom-simple": "^2.0.0",
@@ -32,23 +32,30 @@
   },
   "devDependencies": {
     "basic-auth": "^1.0.4",
-    "electron": "^1.4.3",
+    "electron": "^1.7.2",
     "eslint": "^3.6.1",
     "express": "^4.14.0",
     "mocha": "^3.1.0",
     "phantomjs-prebuilt": "^2.1.5"
   },
   "scripts": {
-    "test": "make test"
+    "lint": "eslint .",
+    "test": "npm run lint && npm run test-phantomjs && npm run test-slimerjs && npm run test-electron",
+    "test-ci": "npm run lint && npm run test-phantomjs && npm run test-electron",
+    "test-phantomjs": "mocha",
+    "test-slimerjs": "ENGINE=slimerjs mocha",
+    "test-electron": "ENGINE=electron mocha"
   },
-  "gitHead": "4122e021314cd1a36f2c2df17a1712249d278f79",
+  "gitHead": "5de5cbe247496eccaa0f95960208a04f591f9d07",
   "homepage": "https://github.com/nodeca/navit#readme",
-  "_npmVersion": "3.10.8",
-  "_nodeVersion": "6.8.1",
+  "_npmVersion": "5.3.0",
+  "_nodeVersion": "8.5.0",
   "dist": {
-    "shasum": "f4cab93db556b54a63f62e46ec43f49765c6bfb6",
-    "tarball": "http://registry.npmjs.org/navit/-/navit-3.0.2.tgz"
+    "integrity": "sha512-D/IxcUXNLNt5NYBL5bRuWt4WXXJI8O8jSXpqvxJKUEEwDLGxe4D32NATHCPaVQbUHHtO//Dx+kpiL0BgJNc7Jw==",
+    "shasum": "20cd82644301eed06242d4ee4a04e8b100d080c3",
+    "tarball": "https://registry.npmjs.org/navit/-/navit-3.1.0.tgz"
   },
+  "stars": 1,
   "versions": [
     {
       "number": "1.0.0",
@@ -101,10 +108,22 @@
     {
       "number": "3.0.2",
       "date": "2016-10-16T10:29:25.360Z"
+    },
+    {
+      "number": "3.0.3",
+      "date": "2016-12-19T20:37:28.422Z"
+    },
+    {
+      "number": "3.0.4",
+      "date": "2017-06-08T11:44:40.636Z"
+    },
+    {
+      "number": "3.1.0",
+      "date": "2017-09-22T03:36:05.130Z"
     }
   ],
   "created": "2015-04-19T03:34:57.648Z",
-  "modified": "2016-10-16T10:29:25.360Z",
+  "modified": "2017-09-22T03:36:05.130Z",
   "lastPublisher": {
     "name": "vitaly",
     "email": "vitaly@rcdesign.ru"

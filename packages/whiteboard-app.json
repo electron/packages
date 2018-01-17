@@ -1,0 +1,297 @@
+{
+  "name": "whiteboard-app",
+  "productName": "Whiteboard",
+  "version": "0.0.40",
+  "description": "Whiteboard - a slide-based activity presentation system",
+  "bin": {
+    "whiteboard": "./bin/whiteboard"
+  },
+  "main": "lib/main.js",
+  "scripts": {
+    "rebuild": "electron-rebuild",
+    "dist": "npm run rebuild && build --publish onTagOrDraft",
+    "start": "electron lib/main.js",
+    "test-v-headless": "xvfb-run node ./runtests.js --verbose",
+    "test-v": "node ./runtests.js --verbose --skip-e2e",
+    "test-headless": "xvfb-run node ./runtests.js",
+    "test-e2e": "xvfb-run node ./runtests.js",
+    "test": "node ./runtests.js --skip-e2e"
+  },
+  "repository": {
+    "user": "michaelpb",
+    "repo": "whiteboard",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/michaelpb/whiteboard/tarball/master",
+    "clone_url": "https://github.com/michaelpb/whiteboard",
+    "https_url": "https://github.com/michaelpb/whiteboard",
+    "travis_url": "https://travis-ci.org/michaelpb/whiteboard",
+    "zip_url": "https://github.com/michaelpb/whiteboard/archive/master.zip",
+    "api_url": "https://api.github.com/repos/michaelpb/whiteboard"
+  },
+  "keywords": [
+    "slideshow",
+    "tutorial",
+    "editor",
+    "document",
+    "ide",
+    "webinar",
+    "code",
+    "demonstration",
+    "presentation",
+    "teaching",
+    "learning",
+    "education",
+    "electron",
+    "desktop",
+    "live",
+    "browser",
+    "terminal",
+    "text"
+  ],
+  "engines": {
+    "node": ">=8.0"
+  },
+  "author": {
+    "name": "Michael Bethencourt",
+    "email": "michaelpb@gmail.com",
+    "url": "http://michaelb.org/"
+  },
+  "license": "GPL-3.0",
+  "homepage": "http://whiteboard.michaelb.org",
+  "build": {
+    "appId": "org.michaelb.Whiteboard",
+    "files": [
+      "build/",
+      "node_modules/",
+      "static/",
+      "lib/",
+      "LICENSE",
+      "package.json"
+    ],
+    "mac": {
+      "category": "public.app-category.education",
+      "target": [
+        "dmg",
+        "zip"
+      ]
+    },
+    "win": {
+      "target": [
+        "nsis",
+        "zip"
+      ]
+    },
+    "linux": {
+      "synopsis": "Create activity-based presentations that combine coding and demonstrations.",
+      "category": "Office",
+      "target": [
+        "AppImage",
+        "rpm",
+        "deb",
+        "pacman",
+        "tar.gz"
+      ]
+    }
+  },
+  "dependencies": {
+    "ace-builds": "1.2.6",
+    "electron-ipc-stream": "0.2.0",
+    "electron-store": "1.2.0",
+    "elmoed": "0.0.36",
+    "glob": "7.0.3",
+    "javascript-detect-element-resize": "0.5.3",
+    "lodash": "4.17.4",
+    "marked": "0.3.6",
+    "medium-editor": "5.23.2",
+    "mime-types": "2.1.15",
+    "mousetrap": "1.6.1",
+    "node-pty": "0.7.0",
+    "node-uuid": "1.4.7",
+    "riot": "3.4.3",
+    "schemaconf": "0.1.1",
+    "sortablejs": "1.5.1",
+    "taglex": "0.1.10",
+    "tmp": "0.0.31",
+    "to-markdown": "3.1.1",
+    "walk-sync": "0.3.2",
+    "xel": "0.0.54",
+    "xterm": "2.4.0",
+    "7zip-bin-win": "2.1.0",
+    "7zip-bin-mac": "1.0.1"
+  },
+  "devDependencies": {
+    "electron": "1.7.5",
+    "electron-builder": "19.27.3",
+    "electron-icon-maker": "0.0.3",
+    "electron-rebuild": "1.6.0",
+    "eslint": "4.5.0",
+    "eslint-config-airbnb-base": "11.3.2",
+    "eslint-plugin-import": "2.7.0",
+    "jasmine": "2.4.1",
+    "jasmine-spec-reporter": "4.0.0",
+    "magicmock": "1.4.0",
+    "mockery": "2.0.0",
+    "nyc": "11.2.1",
+    "spectron": "3.7.2"
+  },
+  "optionalDependencies": {
+    "7zip-bin-win": "2.1.0",
+    "7zip-bin-mac": "1.0.1"
+  },
+  "gitHead": "95a219a17f6e92e3b1c61aa29ed7aba9c578017d",
+  "_npmVersion": "5.3.0",
+  "_nodeVersion": "8.4.0",
+  "dist": {
+    "integrity": "sha512-Ohnqel6jQdqZgPV4F99LDHKP0AbMmk7IfnefPnDsGUt3X0/V67vgh3EW3MOc8uIXmVTR7HjZ329YWpMn18i6mA==",
+    "shasum": "ba3e4f89b5b8f41c669ea56e295ab0582c68a188",
+    "tarball": "https://registry.npmjs.org/whiteboard-app/-/whiteboard-app-0.0.40.tgz"
+  },
+  "versions": [
+    {
+      "number": "0.0.3",
+      "date": "2017-08-31T21:13:04.672Z"
+    },
+    {
+      "number": "0.0.4",
+      "date": "2017-08-31T22:53:24.280Z"
+    },
+    {
+      "number": "0.0.7",
+      "date": "2017-09-01T22:40:13.588Z"
+    },
+    {
+      "number": "0.0.8",
+      "date": "2017-09-01T23:53:02.926Z"
+    },
+    {
+      "number": "0.0.9",
+      "date": "2017-09-02T00:59:12.094Z"
+    },
+    {
+      "number": "0.0.10",
+      "date": "2017-09-02T01:23:44.083Z"
+    },
+    {
+      "number": "0.0.11",
+      "date": "2017-09-02T03:44:28.687Z"
+    },
+    {
+      "number": "0.0.12",
+      "date": "2017-09-02T05:44:08.970Z"
+    },
+    {
+      "number": "0.0.13",
+      "date": "2017-09-02T05:50:14.973Z"
+    },
+    {
+      "number": "0.0.14",
+      "date": "2017-09-03T02:14:19.810Z"
+    },
+    {
+      "number": "0.0.15",
+      "date": "2017-09-03T03:58:38.195Z"
+    },
+    {
+      "number": "0.0.16",
+      "date": "2017-09-03T18:42:10.925Z"
+    },
+    {
+      "number": "0.0.17",
+      "date": "2017-09-03T19:47:24.558Z"
+    },
+    {
+      "number": "0.0.18",
+      "date": "2017-09-05T02:29:43.989Z"
+    },
+    {
+      "number": "0.0.19",
+      "date": "2017-09-06T22:55:23.800Z"
+    },
+    {
+      "number": "0.0.20",
+      "date": "2017-09-14T01:11:01.504Z"
+    },
+    {
+      "number": "0.0.21",
+      "date": "2017-09-15T23:52:51.206Z"
+    },
+    {
+      "number": "0.0.22",
+      "date": "2017-09-16T00:25:38.905Z"
+    },
+    {
+      "number": "0.0.24",
+      "date": "2017-09-16T01:54:47.790Z"
+    },
+    {
+      "number": "0.0.26",
+      "date": "2017-09-16T16:56:04.897Z"
+    },
+    {
+      "number": "0.0.27",
+      "date": "2017-09-18T05:02:39.914Z"
+    },
+    {
+      "number": "0.0.28",
+      "date": "2017-09-27T22:59:58.204Z"
+    },
+    {
+      "number": "0.0.29",
+      "date": "2017-10-02T18:50:45.798Z"
+    },
+    {
+      "number": "0.0.30",
+      "date": "2017-10-02T19:26:30.915Z"
+    },
+    {
+      "number": "0.0.31",
+      "date": "2017-10-03T19:00:19.731Z"
+    },
+    {
+      "number": "0.0.32",
+      "date": "2017-10-11T03:46:13.416Z"
+    },
+    {
+      "number": "0.0.33",
+      "date": "2017-10-11T06:35:14.172Z"
+    },
+    {
+      "number": "0.0.34",
+      "date": "2017-10-17T20:36:57.223Z"
+    },
+    {
+      "number": "0.0.35",
+      "date": "2017-10-18T00:01:29.847Z"
+    },
+    {
+      "number": "0.0.37",
+      "date": "2017-10-18T04:12:58.676Z"
+    },
+    {
+      "number": "0.0.38",
+      "date": "2017-10-18T04:59:00.015Z"
+    },
+    {
+      "number": "0.0.39",
+      "date": "2017-10-18T18:19:03.086Z"
+    },
+    {
+      "number": "0.0.40",
+      "date": "2018-01-16T21:42:36.511Z"
+    }
+  ],
+  "created": "2017-08-31T21:13:04.672Z",
+  "modified": "2018-01-16T21:42:36.511Z",
+  "lastPublisher": {
+    "name": "michaelb",
+    "email": "michaelpb@gmail.com"
+  },
+  "owners": [
+    {
+      "name": "michaelb",
+      "email": "michaelpb@gmail.com"
+    }
+  ]
+}

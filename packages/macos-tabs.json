@@ -1,0 +1,230 @@
+{
+  "name": "macos-tabs",
+  "version": "1.8.0",
+  "description": "macOS-like Tabs for React (designed specifically for Electron)",
+  "main": "dist/macos_tabs.lib.js",
+  "author": {
+    "name": "Eric Yang",
+    "email": "eeyang92@gmail.com"
+  },
+  "repository": {
+    "user": "eeyang92",
+    "repo": "macos-tabs",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/eeyang92/macos-tabs/tarball/master",
+    "clone_url": "https://github.com/eeyang92/macos-tabs",
+    "https_url": "https://github.com/eeyang92/macos-tabs",
+    "travis_url": "https://travis-ci.org/eeyang92/macos-tabs",
+    "zip_url": "https://github.com/eeyang92/macos-tabs/archive/master.zip",
+    "api_url": "https://api.github.com/repos/eeyang92/macos-tabs"
+  },
+  "scripts": {
+    "pre-pub:patch": "npm run _pre-pub -- patch",
+    "pre-pub:minor": "npm run _pre-pub -- minor",
+    "pre-pub:major": "npm run _pre-pub -- major",
+    "_pre-pub": "npm test && npm run build && npm version -f",
+    "pub": "git push --tags origin master && npm publish",
+    "test": "NODE_ENV=test BABEL_DISABLE_CACHE=1 mocha --compilers js:babel-register --recursive --require ./test/init.js test/**/*.spec.js",
+    "test-watch": "npm test -- --watch",
+    "flow-typed": "flow-typed install",
+    "size": "webpack --json | ./node_modules/.bin/webpack-bundle-size-analyzer",
+    "build": "NODE_ENV=production ./node_modules/.bin/webpack --config ./webpack.prod.config.js -p --progress --profile --colors",
+    "dev": "NODE_ENV=development ./node_modules/.bin/webpack --config ./webpack.config.js --progress --profile --colors"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "babel-core": "^6.21.0",
+    "babel-eslint": "^7.1.1",
+    "babel-loader": "^6.2.10",
+    "babel-plugin-add-module-exports": "^0.2.1",
+    "babel-plugin-dev-expression": "^0.2.1",
+    "babel-plugin-tcomb": "^0.3.24",
+    "babel-plugin-webpack-loaders": "^0.8.0",
+    "babel-polyfill": "^6.20.0",
+    "babel-preset-env": "^1.1.4",
+    "babel-preset-es2015": "^6.18.0",
+    "babel-preset-react": "^6.16.0",
+    "babel-preset-react-hmre": "^1.1.1",
+    "babel-preset-react-optimize": "^1.0.1",
+    "babel-preset-stage-0": "^6.16.0",
+    "babel-register": "^6.18.0",
+    "chai": "^3.5.0",
+    "chai-enzyme": "^0.6.1",
+    "css-loader": "^0.26.1",
+    "css-modules-require-hook": "^4.0.5",
+    "enzyme": "^2.6.0",
+    "eslint": "^3.12.2",
+    "eslint-config-airbnb": "^13.0.0",
+    "eslint-formatter-pretty": "^1.1.0",
+    "eslint-import-resolver-webpack": "^0.8.0",
+    "eslint-loader": "^1.6.1",
+    "eslint-plugin-flowtype": "^2.29.1",
+    "eslint-plugin-flowtype-errors": "^2.0.1",
+    "eslint-plugin-import": "^2.2.0",
+    "eslint-plugin-jsx-a11y": "^2.0.2",
+    "eslint-plugin-mocha": "^4.7.0",
+    "eslint-plugin-promise": "^3.4.0",
+    "eslint-plugin-react": "^6.8.0",
+    "extract-text-webpack-plugin": "^1.0.1",
+    "file-loader": "^0.9.0",
+    "flow-bin": "^0.37.1",
+    "flow-typed": "^2.0.0",
+    "html-webpack-plugin": "^2.24.1",
+    "ignore-styles": "^5.0.1",
+    "jsdom": "^9.9.1",
+    "json-loader": "^0.5.4",
+    "mocha": "^3.2.0",
+    "pkgfiles": "^2.3.2",
+    "react-addons-test-utils": "^15.4.1",
+    "sinon": "^1.17.7",
+    "spectron": "^3.4.0",
+    "style-loader": "^0.13.1",
+    "tcomb": "^3.2.15",
+    "url-loader": "^0.5.7",
+    "webpack": "^1.14.0",
+    "webpack-bundle-size-analyzer": "^2.4.2",
+    "webpack-dev-middleware": "^1.9.0",
+    "webpack-hot-middleware": "^2.13.2",
+    "webpack-merge": "^2.0.0",
+    "webpack-node-externals": "^1.5.4",
+    "webpack-validator": "^2.3.0"
+  },
+  "dependencies": {
+    "classnames": "^2.2.5",
+    "jquery": "^3.1.1",
+    "lodash.isequal": "^4.5.0",
+    "lodash.throttle": "^4.1.1",
+    "react": "^15.4.1",
+    "react-dom": "^15.4.1",
+    "react-draggable": "^2.2.3"
+  },
+  "gitHead": "9840860b9dffba136c00dd5917014173a7dcb8b3",
+  "homepage": "https://github.com/eeyang92/macos-tabs#readme",
+  "_npmVersion": "3.10.9",
+  "_nodeVersion": "6.9.2",
+  "dist": {
+    "shasum": "444bf2c4758025e410e69d31bdc0c03741efea60",
+    "tarball": "https://registry.npmjs.org/macos-tabs/-/macos-tabs-1.8.0.tgz"
+  },
+  "stars": 1,
+  "versions": [
+    {
+      "number": "1.0.0",
+      "date": "2017-01-11T07:49:04.874Z"
+    },
+    {
+      "number": "1.0.1",
+      "date": "2017-01-11T07:53:22.770Z"
+    },
+    {
+      "number": "1.0.2",
+      "date": "2017-01-11T09:20:17.493Z"
+    },
+    {
+      "number": "1.0.3",
+      "date": "2017-01-11T09:30:01.129Z"
+    },
+    {
+      "number": "1.1.0",
+      "date": "2017-01-11T10:12:16.113Z"
+    },
+    {
+      "number": "1.1.1",
+      "date": "2017-01-11T10:34:39.987Z"
+    },
+    {
+      "number": "1.1.2",
+      "date": "2017-01-12T06:11:48.622Z"
+    },
+    {
+      "number": "1.1.3",
+      "date": "2017-01-12T08:39:22.773Z"
+    },
+    {
+      "number": "1.1.4",
+      "date": "2017-01-12T10:01:57.595Z"
+    },
+    {
+      "number": "1.1.5",
+      "date": "2017-01-13T04:13:39.472Z"
+    },
+    {
+      "number": "1.1.6",
+      "date": "2017-01-13T23:37:19.014Z"
+    },
+    {
+      "number": "1.1.7",
+      "date": "2017-01-13T23:43:43.618Z"
+    },
+    {
+      "number": "1.1.8",
+      "date": "2017-01-14T05:49:33.463Z"
+    },
+    {
+      "number": "1.1.9",
+      "date": "2017-01-14T06:48:56.525Z"
+    },
+    {
+      "number": "1.1.10",
+      "date": "2017-01-15T02:09:12.702Z"
+    },
+    {
+      "number": "1.2.0",
+      "date": "2017-01-15T04:42:32.112Z"
+    },
+    {
+      "number": "1.2.1",
+      "date": "2017-01-15T22:49:21.500Z"
+    },
+    {
+      "number": "1.2.2",
+      "date": "2017-01-16T05:49:00.977Z"
+    },
+    {
+      "number": "1.3.0",
+      "date": "2017-01-17T01:27:08.609Z"
+    },
+    {
+      "number": "1.4.0",
+      "date": "2017-01-18T02:52:43.538Z"
+    },
+    {
+      "number": "1.5.0",
+      "date": "2017-01-18T04:22:10.703Z"
+    },
+    {
+      "number": "1.5.1",
+      "date": "2017-01-18T04:50:10.886Z"
+    },
+    {
+      "number": "1.5.2",
+      "date": "2017-01-18T08:43:19.017Z"
+    },
+    {
+      "number": "1.6.0",
+      "date": "2017-01-20T05:09:04.444Z"
+    },
+    {
+      "number": "1.7.0",
+      "date": "2017-01-21T08:32:13.600Z"
+    },
+    {
+      "number": "1.8.0",
+      "date": "2017-01-25T03:36:24.941Z"
+    }
+  ],
+  "created": "2017-01-11T07:49:04.874Z",
+  "modified": "2017-06-08T04:04:51.973Z",
+  "lastPublisher": {
+    "name": "eeyang92",
+    "email": "eeyang92@gmail.com"
+  },
+  "owners": [
+    {
+      "name": "eeyang92",
+      "email": "eeyang92@gmail.com"
+    }
+  ]
+}

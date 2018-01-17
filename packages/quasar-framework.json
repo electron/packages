@@ -1,19 +1,19 @@
 {
   "name": "quasar-framework",
-  "version": "0.9.1",
+  "version": "0.14.7",
   "description": "Simultaneously build desktop/mobile SPA websites & phone/tablet apps with VueJS",
-  "main": "dist/quasar.common.js",
-  "jsnext:main": "dist/quasar.es6.js",
+  "main": "dist/quasar.esm.js",
+  "module": "dist/quasar.esm.js",
+  "jsnext:main": "dist/quasar.esm.js",
   "files": [
-    "dist",
-    "src"
+    "dist"
   ],
   "scripts": {
-    "deploy": "bash build/shell.deploy.sh",
     "clean": "node build/script.clean.js",
     "dev": "node build/script.dev.js",
     "build": "node build/script.build.js",
-    "lint": "eslint --ext .js,.vue src dev"
+    "lint": "eslint --ext .js,.vue src dev",
+    "deploy": "npm run build && rm -rf deploy && mkdir deploy && cp -R dist LICENSE package.json deploy && cp build/README-edge.md deploy/README.md && node_modules/git-directory-deploy/bin/git-directory-deploy.sh -ddeploy -bmaster -rgit@github.com:quasarframework/quasar-edge.git && rm -rf deploy"
   },
   "repository": {
     "user": "rstoenescu",
@@ -51,68 +51,73 @@
     "autoprefixer": "^6.5.0",
     "babel-core": "^6.17.0",
     "babel-eslint": "^7.0.0",
-    "babel-loader": "^6.2.5",
+    "babel-loader": "^7.1.2",
     "babel-plugin-transform-runtime": "^6.15.0",
     "babel-preset-es2015": "^6.16.0",
-    "babel-preset-es2015-rollup": "^1.2.0",
+    "babel-preset-es2015-rollup": "^3.0.0",
     "babel-preset-stage-2": "^6.17.0",
     "colors": "^1.1.2",
     "connect-history-api-fallback": "^1.3.0",
-    "css-loader": "^0.26.0",
-    "eslint": "^3.7.0",
-    "eslint-config-standard": "^6.2.0",
-    "eslint-friendly-formatter": "^2.0.6",
-    "eslint-loader": "^1.5.0",
-    "eslint-plugin-html": "^1.5.3",
-    "eslint-plugin-promise": "^3.3.0",
-    "eslint-plugin-standard": "^2.0.1",
+    "css-loader": "^0.28.7",
+    "es6-promise": "^4.1.0",
+    "eslint": "^4.8.0",
+    "eslint-config-standard": "^10.2.1",
+    "eslint-friendly-formatter": "^3.0.0",
+    "eslint-loader": "^1.9.0",
+    "eslint-plugin-html": "^3.2.2",
+    "eslint-plugin-import": "^2.7.0",
+    "eslint-plugin-node": "^5.2.0",
+    "eslint-plugin-promise": "^3.5.0",
+    "eslint-plugin-standard": "^3.0.1",
     "eventsource-polyfill": "^0.9.6",
-    "express": "^4.14.0",
-    "extract-text-webpack-plugin": "^2.0.0-beta.4",
-    "fastclick": "^1.0.6",
-    "file-loader": "^0.9.0",
-    "html-webpack-plugin": "^2.22.0",
-    "json-loader": "^0.5.4",
-    "material-design-icons": "^3.0.1",
-    "moment": "^2.15.1",
-    "opn": "^4.0.2",
+    "express": "^4.16.1",
+    "extract-text-webpack-plugin": "^3.0.1",
+    "file-loader": "^0.11.1",
+    "friendly-errors-webpack-plugin": "^1.3.1",
+    "git-directory-deploy": "^1.5.1",
+    "html-webpack-plugin": "^2.30.1",
+    "json-loader": "^0.5.7",
+    "opn": "^5.1.0",
+    "parse5": "^2.1.0",
     "postcss-loader": "^1.0.0",
+    "progress-bar-webpack-plugin": "^1.9.0",
+    "quasar-extras": "0.0.8",
     "raw-loader": "^0.5.1",
-    "roboto-fontface": "^0.6.0",
-    "rollup": "^0.36.1",
-    "rollup-plugin-babel": "^2.6.1",
-    "rollup-plugin-string": "^2.0.2",
-    "rollup-plugin-vue": "^2.2.5",
+    "rollup": "^0.50.0",
+    "rollup-plugin-babel": "^3.0.2",
+    "rollup-plugin-buble": "^0.16.0",
+    "rollup-plugin-json": "^2.1.0",
+    "rollup-plugin-local-resolve": "^1.0.7",
+    "rollup-plugin-vue": "^2.5.1",
+    "rtlcss": "^2.2.0",
     "shelljs": "^0.7.0",
     "stylint": "^1.5.6",
     "stylus": "^0.54.5",
-    "stylus-loader": "^2.1.1",
+    "stylus-loader": "^3.0.1",
     "url-loader": "^0.5.7",
-    "velocity-animate": "^1.2.3",
-    "vue": "2.0.8",
-    "vue-loader": "^10.0.0",
-    "vue-router": "^2.0.0",
-    "vue-style-loader": "^1.0.0",
-    "vue-template-compiler": "2.0.8",
-    "webpack": "^2.1.0-beta.27",
-    "webpack-dev-middleware": "^1.8.4",
-    "webpack-hot-middleware": "^2.13.2",
-    "webpack-merge": "^0.17.0"
+    "vue": "^2.5.0",
+    "vue-loader": "^13.0.5",
+    "vue-router": "^2.7.0",
+    "vue-style-loader": "^3.0.3",
+    "vue-template-compiler": "^2.5.0",
+    "webpack": "^3.6.0",
+    "webpack-dev-middleware": "^1.12.0",
+    "webpack-hot-middleware": "^2.19.1",
+    "webpack-merge": "^4.1.0"
   },
   "peerDependencies": {
-    "fastclick": "1.x",
-    "moment": "2.x",
-    "velocity-animate": "1.x",
-    "vue": "^2.0.0"
+    "vue": "^2.5.0",
+    "quasar-extras": "0.x"
   },
-  "gitHead": "83f76429b37e68976da0d163f4650f25a45196bc",
-  "_npmVersion": "3.10.3",
-  "_nodeVersion": "4.2.0",
+  "gitHead": "601a9c05b3f109172ce1e54eaacdd7d3d93a0eb9",
+  "_npmVersion": "5.5.1",
+  "_nodeVersion": "6.11.4",
   "dist": {
-    "shasum": "1cd2f5e436f35eb9b951695498075e76d5beef63",
-    "tarball": "http://registry.npmjs.org/quasar-framework/-/quasar-framework-0.9.1.tgz"
+    "integrity": "sha512-c4sDAxceefSek7dl+p5VlAWXbDKDm4LAtyKQx/X5ZpzoRA2l6g6v8wfer/H9MGdqJJWgmQRKyRXJlXV/LzBSTA==",
+    "shasum": "aee96d2468284eba4172522a6ca010623038dcd3",
+    "tarball": "https://registry.npmjs.org/quasar-framework/-/quasar-framework-0.14.7.tgz"
   },
-  "stars": 0,
+  "stars": 3,
   "versions": [
     {
       "number": "0.0.1",
@@ -333,10 +338,162 @@
     {
       "number": "0.9.1",
       "date": "2016-11-26T22:09:28.801Z"
+    },
+    {
+      "number": "0.10.0",
+      "date": "2016-12-11T11:44:26.524Z"
+    },
+    {
+      "number": "0.10.1",
+      "date": "2016-12-13T17:30:48.903Z"
+    },
+    {
+      "number": "0.10.2",
+      "date": "2016-12-13T17:36:14.964Z"
+    },
+    {
+      "number": "0.10.3",
+      "date": "2016-12-14T09:49:17.585Z"
+    },
+    {
+      "number": "0.11.0",
+      "date": "2016-12-28T00:52:00.516Z"
+    },
+    {
+      "number": "0.12.0",
+      "date": "2016-12-30T20:23:30.020Z"
+    },
+    {
+      "number": "0.13.0",
+      "date": "2017-01-29T15:14:34.935Z"
+    },
+    {
+      "number": "0.13.1",
+      "date": "2017-02-04T22:32:59.166Z"
+    },
+    {
+      "number": "0.13.2",
+      "date": "2017-03-09T12:34:41.980Z"
+    },
+    {
+      "number": "0.13.3",
+      "date": "2017-03-10T08:52:46.537Z"
+    },
+    {
+      "number": "0.13.4",
+      "date": "2017-03-10T11:49:41.013Z"
+    },
+    {
+      "number": "0.13.5",
+      "date": "2017-03-12T12:29:48.918Z"
+    },
+    {
+      "number": "0.13.6",
+      "date": "2017-03-12T17:50:01.653Z"
+    },
+    {
+      "number": "0.13.7",
+      "date": "2017-05-11T07:49:27.429Z"
+    },
+    {
+      "number": "0.13.8",
+      "date": "2017-05-12T13:47:22.547Z"
+    },
+    {
+      "number": "0.13.9",
+      "date": "2017-05-13T09:12:40.957Z"
+    },
+    {
+      "number": "0.13.10",
+      "date": "2017-06-03T09:42:04.462Z"
+    },
+    {
+      "number": "0.14.0",
+      "date": "2017-08-18T11:58:09.883Z"
+    },
+    {
+      "number": "0.14.1",
+      "date": "2017-08-18T11:59:21.444Z"
+    },
+    {
+      "number": "0.14.2",
+      "date": "2017-08-25T22:12:31.028Z"
+    },
+    {
+      "number": "0.14.3",
+      "date": "2017-09-12T12:56:18.659Z"
+    },
+    {
+      "number": "0.14.4",
+      "date": "2017-10-02T14:50:44.125Z"
+    },
+    {
+      "number": "0.14.5",
+      "date": "2017-10-14T12:26:22.711Z"
+    },
+    {
+      "number": "0.14.6",
+      "date": "2017-10-17T08:44:01.096Z"
+    },
+    {
+      "number": "0.14.7",
+      "date": "2017-11-04T10:12:14.390Z"
+    },
+    {
+      "number": "0.15.0-alpha1",
+      "date": "2018-01-03T12:55:26.338Z"
+    },
+    {
+      "number": "0.15.0-alpha.2",
+      "date": "2018-01-06T13:29:29.565Z"
+    },
+    {
+      "number": "0.15.0-alpha.3",
+      "date": "2018-01-06T13:38:21.852Z"
+    },
+    {
+      "number": "0.15.0-alpha.4",
+      "date": "2018-01-09T09:24:40.542Z"
+    },
+    {
+      "number": "0.15.0-alpha.5",
+      "date": "2018-01-09T15:43:51.067Z"
+    },
+    {
+      "number": "0.15.0-alpha.6",
+      "date": "2018-01-09T18:29:49.497Z"
+    },
+    {
+      "number": "0.15.0-alpha.7",
+      "date": "2018-01-10T16:51:51.553Z"
+    },
+    {
+      "number": "0.15.0-beta.1",
+      "date": "2018-01-11T11:37:32.927Z"
+    },
+    {
+      "number": "0.15.0-beta.2",
+      "date": "2018-01-12T15:17:43.819Z"
+    },
+    {
+      "number": "0.15.0-beta.3",
+      "date": "2018-01-14T10:22:29.343Z"
+    },
+    {
+      "number": "0.15.0-beta.4",
+      "date": "2018-01-14T16:55:03.264Z"
+    },
+    {
+      "number": "0.15.0-beta.5",
+      "date": "2018-01-16T15:43:27.415Z"
+    },
+    {
+      "number": "0.15.0-beta.6",
+      "date": "2018-01-16T17:26:33.977Z"
     }
   ],
   "created": "2015-10-05T18:39:00.102Z",
-  "modified": "2016-11-26T22:09:28.801Z",
+  "modified": "2018-01-16T17:26:33.977Z",
   "lastPublisher": {
     "name": "rstoenescu",
     "email": "razvan.stoenescu@gmail.com"

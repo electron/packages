@@ -1,0 +1,283 @@
+{
+  "name": "riko-cli",
+  "version": "3.1.0",
+  "description": "Webpack Build System for React JS Projects (web & electron)",
+  "main": "./index.js",
+  "preferGlobal": true,
+  "bin": {
+    "riko": "./index.js"
+  },
+  "engines": {
+    "node": ">=6.0.0"
+  },
+  "scripts": {
+    "start": "NODE_ENV=production npm run prod && npm run prod-server",
+    "version": "node ./utils/publishScript.js && git add .",
+    "snyk-protect": "snyk protect",
+    "prepublish": "npm run snyk-protect",
+    "publish-release": "npm publish && git push --follow-tags",
+    "lint": "gulp lint",
+    "test-build": "npm run lint && istanbul cover ./node_modules/mocha/bin/_mocha tests/riko-test-suite.spec.js --report html --report lcov -- -R spec",
+    "test-coverage": "istanbul cover ./node_modules/mocha/bin/_mocha tests/riko-test-suite.spec.js --report lcovonly -- -R spec && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js && rm -rf ./coverage",
+    "test": "sh test-complete.sh"
+  },
+  "repository": {
+    "user": "Donmclean",
+    "repo": "riko",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/Donmclean/riko/tarball/master",
+    "clone_url": "https://github.com/Donmclean/riko",
+    "https_url": "https://github.com/Donmclean/riko",
+    "travis_url": "https://travis-ci.org/Donmclean/riko",
+    "zip_url": "https://github.com/Donmclean/riko/archive/master.zip",
+    "api_url": "https://api.github.com/repos/Donmclean/riko"
+  },
+  "homepage": "https://github.com/Donmclean/riko",
+  "keywords": [
+    "javascript",
+    "react",
+    "reactjs",
+    "react-native",
+    "webpack",
+    "webpack2",
+    "webpack-config",
+    "electron",
+    "test",
+    "coverage"
+  ],
+  "author": {
+    "name": "Don Mclean",
+    "email": "donmcleanx@gmail.com",
+    "url": "http://donsmclean.com"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "autoprefixer": "^6.4.0",
+    "babel-cli": "^6.11.4",
+    "babel-core": "^6.24.0",
+    "babel-eslint": "^7.0.0",
+    "babel-jest": "^19.0.0",
+    "babel-loader": "^6.4.1",
+    "babel-plugin-istanbul": "^4.0.0",
+    "babel-plugin-react-transform": "^2.0.2",
+    "babel-plugin-transform-runtime": "^6.12.0",
+    "babel-polyfill": "^6.13.0",
+    "babel-preset-es2015": "^6.14.0",
+    "babel-preset-react": "^6.11.1",
+    "babel-register": "^6.11.6",
+    "babel-runtime": "^6.11.6",
+    "browser-sync": "^2.14.0",
+    "browser-sync-webpack-plugin": "^1.1.2",
+    "chai": "^3.5.0",
+    "chalk": "^1.1.3",
+    "chokidar": "^1.6.1",
+    "clean-webpack-plugin": "^0.1.10",
+    "commander": "^2.9.0",
+    "copy-webpack-plugin": "^4.0.0",
+    "cross-spawn": "^5.1.0",
+    "css-loader": "^0.26.0",
+    "electron": "^1.6.2",
+    "electron-packager": "^8.2.0",
+    "eslint": "^3.3.0",
+    "eslint-plugin-react": "^7.0.1",
+    "expose-loader": "^0.7.1",
+    "express": "^4.14.0",
+    "express-history-api-fallback": "^2.0.0",
+    "extract-text-webpack-plugin": "^2.1.0",
+    "file-loader": "^0.10.0",
+    "flow-bin": "^0.42.0",
+    "gulp": "^3.9.1",
+    "gulp-debug": "^3.0.0",
+    "gulp-eslint": "^3.0.1",
+    "gulp-load-plugins": "^1.2.4",
+    "gulp-util": "^3.0.7",
+    "handlebars-loader": "^1.4.0",
+    "html-webpack-plugin": "^2.22.0",
+    "immutable": "^3.8.1",
+    "inquirer": "^3.0.6",
+    "ip": "^1.1.3",
+    "istanbul": "^0.4.5",
+    "json-loader": "^0.5.4",
+    "less": "^2.7.1",
+    "less-loader": "^2.2.3",
+    "lodash": "^4.15.0",
+    "mocha": "^3.0.2",
+    "mocha-lcov-reporter": "^1.2.0",
+    "morgan": "^1.7.0",
+    "node-sass": "^4.0.0",
+    "nodemon": "^1.11.0",
+    "postcss-loader": "^1.0.0",
+    "pug": "^2.0.0-beta5",
+    "pug-loader": "^2.2.1",
+    "q": "^1.4.1",
+    "q-io": "^1.13.2",
+    "react-hot-loader": "3.0.0-beta.7",
+    "react-native": "^0.43.4",
+    "sass-loader": "^5.0.1",
+    "shelljs": "^0.7.8",
+    "snyk": "^1.31.0",
+    "style-loader": "^0.13.1",
+    "stylus": "^0.54.5",
+    "stylus-loader": "^2.4.0",
+    "url-loader": "^0.5.7",
+    "webpack": "2.3.1",
+    "webpack-dev-server": "^2.3.0",
+    "webpack-merge": "^4.1.0",
+    "webpack-notifier": "^1.4.1",
+    "webpack-shell-plugin": "^0.5.0",
+    "worker-loader": "^0.7.1"
+  },
+  "snyk": true,
+  "gitHead": "d0efbf92a8374cac008f98e8ed3d4d940b22d89b",
+  "_npmVersion": "5.3.0",
+  "_nodeVersion": "8.1.0",
+  "dist": {
+    "integrity": "sha512-3I3/880QPOQlrZtTKWNdlfoX0zMtghMNbh4M8m5OBntI/VxyBVvvC9ucFaYMlFH65wge7+FBKSRDPC6wxpCEkQ==",
+    "shasum": "8ed0d549094c18265ff5ccb484c45d3442e0e2aa",
+    "tarball": "https://registry.npmjs.org/riko-cli/-/riko-cli-3.1.0.tgz"
+  },
+  "versions": [
+    {
+      "number": "1.0.0",
+      "date": "2017-02-07T22:35:48.708Z"
+    },
+    {
+      "number": "1.0.1",
+      "date": "2017-02-07T22:51:56.214Z"
+    },
+    {
+      "number": "1.0.2",
+      "date": "2017-02-07T22:59:42.289Z"
+    },
+    {
+      "number": "1.0.3",
+      "date": "2017-02-07T23:09:34.075Z"
+    },
+    {
+      "number": "1.0.4",
+      "date": "2017-02-07T23:12:36.828Z"
+    },
+    {
+      "number": "1.0.5",
+      "date": "2017-02-07T23:41:49.854Z"
+    },
+    {
+      "number": "1.0.6",
+      "date": "2017-02-07T23:50:10.731Z"
+    },
+    {
+      "number": "1.0.7",
+      "date": "2017-02-08T00:15:59.377Z"
+    },
+    {
+      "number": "1.0.8",
+      "date": "2017-02-08T00:53:02.490Z"
+    },
+    {
+      "number": "1.0.9",
+      "date": "2017-02-12T22:00:27.444Z"
+    },
+    {
+      "number": "1.0.10",
+      "date": "2017-02-12T22:18:57.648Z"
+    },
+    {
+      "number": "1.0.11",
+      "date": "2017-02-12T23:09:21.606Z"
+    },
+    {
+      "number": "1.0.12",
+      "date": "2017-02-12T23:32:59.236Z"
+    },
+    {
+      "number": "1.0.13",
+      "date": "2017-02-12T23:39:12.991Z"
+    },
+    {
+      "number": "1.0.14",
+      "date": "2017-02-12T23:41:34.108Z"
+    },
+    {
+      "number": "1.0.15",
+      "date": "2017-02-12T23:45:02.986Z"
+    },
+    {
+      "number": "1.0.16",
+      "date": "2017-02-13T03:55:31.954Z"
+    },
+    {
+      "number": "1.0.17",
+      "date": "2017-02-13T04:03:24.090Z"
+    },
+    {
+      "number": "1.0.18",
+      "date": "2017-02-13T04:50:45.358Z"
+    },
+    {
+      "number": "1.0.19",
+      "date": "2017-02-14T01:44:21.258Z"
+    },
+    {
+      "number": "1.0.20",
+      "date": "2017-02-14T02:02:45.344Z"
+    },
+    {
+      "number": "1.0.21",
+      "date": "2017-02-14T02:17:35.309Z"
+    },
+    {
+      "number": "1.0.22",
+      "date": "2017-04-28T14:59:52.754Z"
+    },
+    {
+      "number": "1.0.23",
+      "date": "2017-04-29T22:17:01.775Z"
+    },
+    {
+      "number": "1.0.24",
+      "date": "2017-04-30T03:18:21.563Z"
+    },
+    {
+      "number": "1.0.25",
+      "date": "2017-04-30T07:16:42.812Z"
+    },
+    {
+      "number": "1.0.26",
+      "date": "2017-04-30T18:47:17.230Z"
+    },
+    {
+      "number": "1.0.27",
+      "date": "2017-05-03T23:47:11.126Z"
+    },
+    {
+      "number": "3.0.1",
+      "date": "2017-05-27T17:43:49.132Z"
+    },
+    {
+      "number": "3.0.5",
+      "date": "2017-05-27T18:02:41.051Z"
+    },
+    {
+      "number": "3.0.9",
+      "date": "2017-05-29T21:57:50.779Z"
+    },
+    {
+      "number": "3.1.0",
+      "date": "2017-07-24T17:09:27.711Z"
+    }
+  ],
+  "created": "2017-02-07T22:35:48.708Z",
+  "modified": "2017-07-24T17:09:27.711Z",
+  "lastPublisher": {
+    "name": "donmclean",
+    "email": "donmcleanx@gmail.com"
+  },
+  "owners": [
+    {
+      "name": "donmclean",
+      "email": "donmcleanx@gmail.com"
+    }
+  ]
+}

@@ -1,0 +1,89 @@
+{
+  "name": "cnx-designer",
+  "version": "0.1.0",
+  "description": "WYSIWYG editor for the OpenStax CNX platform",
+  "author": "",
+  "license": "MIT",
+  "main": "dist/main.js",
+  "scripts": {
+    "build": "gulp",
+    "build:pkg": "gulp package",
+    "dist:pkg:linux": "build -l",
+    "dist:pkg:win": "build -w",
+    "dist:pkg:osx": "build -o",
+    "dist:pkg:cross": "build -lw",
+    "dist:linux": "npm run build:pkg && npm run dist:pkg:linux",
+    "dist:win": "npm run build:pkg && npm run dist:pkg:win",
+    "dist:osx": "npm run build:pkg && npm run dist:pkg:osx",
+    "dist:cross": "npm run build:pkg && npm run dist:pkg:cross",
+    "start": "electron ."
+  },
+  "build": {
+    "productName": "CNX Designer",
+    "appId": "org.katalysteducation.cnx-designer",
+    "directories": {
+      "output": "dist/electron"
+    },
+    "files": [
+      "dist/*"
+    ],
+    "linux": {
+      "category": "Office",
+      "packageCategory": "Editors",
+      "target": [
+        "AppImage"
+      ]
+    },
+    "win": {
+      "target": [
+        "portable"
+      ]
+    }
+  },
+  "dependencies": {
+    "substance": "git+https://github.com/substance/substance.git#develop",
+    "material-substance": "0.1.0",
+    "cnx-designer-model": "0.1.0",
+    "cnx-designer-convert-cnxml": "0.1.0",
+    "cnx-designer-util": "0.1.0"
+  },
+  "devDependencies": {
+    "electron": "^1.4.15",
+    "electron-builder": "^16.0.0",
+    "gulp": "^3.9.1",
+    "gulp-nunjucks-render": "^2.0.0",
+    "gulp-rename": "^1.2.2",
+    "gulp-sourcemaps": "^2.3.1",
+    "gulp-stylus": "^2.6.0",
+    "gulp-watch": "^4.3.11",
+    "material-design-icons": "^3.0.1",
+    "rollup-plugin-node-resolve": "^3.0.0",
+    "rollup-stream": "^1.14.0",
+    "stylus": "^0.54.5",
+    "vinyl-source-stream": "^1.1.0"
+  },
+  "_npmVersion": "4.2.0",
+  "_nodeVersion": "7.9.0",
+  "dist": {
+    "shasum": "79ec45ecd24219cb36b13a28eecae7c8a6cdf502",
+    "tarball": "https://registry.npmjs.org/cnx-designer/-/cnx-designer-0.1.0.tgz"
+  },
+  "versions": [
+    {
+      "number": "0.1.0",
+      "date": "2017-04-26T16:47:54.808Z"
+    }
+  ],
+  "created": "2017-04-26T16:47:54.808Z",
+  "modified": "2017-04-26T16:47:54.808Z",
+  "lastPublisher": {
+    "name": "ludek",
+    "email": "l@l.com"
+  },
+  "owners": [
+    {
+      "name": "ludek",
+      "email": "l@l.com"
+    }
+  ]
+}

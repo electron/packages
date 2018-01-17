@@ -1,0 +1,126 @@
+{
+  "name": "k8w-pixi-tween",
+  "version": "0.7.5",
+  "description": "pixi-tween is a tween plugin for Pixi.js v4.1.0 or higher",
+  "author": {
+    "name": "Dave Moore",
+    "email": "themoonrat@gmail.com"
+  },
+  "contributors": [
+    {
+      "name": "Nazariglez",
+      "email": "nazari.nz@gmail.com",
+      "url": "http://www.nazariglez.com"
+    }
+  ],
+  "main": "bin/pixi-tween.min.js",
+  "module": "bin/pixi-tween.es.min.js",
+  "homepage": "https://github.com/themoonrat/pixi-tween",
+  "license": "MIT",
+  "repository": {
+    "user": "themoonrat",
+    "repo": "pixi-tween",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/themoonrat/pixi-tween/tarball/master",
+    "clone_url": "https://github.com/themoonrat/pixi-tween",
+    "https_url": "https://github.com/themoonrat/pixi-tween",
+    "travis_url": "https://travis-ci.org/themoonrat/pixi-tween",
+    "zip_url": "https://github.com/themoonrat/pixi-tween/archive/master.zip",
+    "api_url": "https://api.github.com/repos/themoonrat/pixi-tween"
+  },
+  "keywords": [
+    "pixi",
+    "tween",
+    "tweenmanager",
+    "animation"
+  ],
+  "scripts": {
+    "predeploy": "npm run docs",
+    "test": "npm run build",
+    "docs": "jsdoc -c scripts/jsdoc.conf.json -R README.md",
+    "clean": "rimraf bin && mkdirp bin",
+    "lint": "eslint src scripts --fix",
+    "watch:lint": "watch \"npm run lint\" src scripts",
+    "examples": "electron examples/index.html",
+    "prestart": "npm run clean",
+    "start": "parallelshell \"npm run watch:all\" \"npm run watch:lint\"",
+    "prebuild": "npm run clean && npm run lint",
+    "build": "npm run build:all && npm run build:all:es",
+    "watch:all": "rollup -c -w",
+    "build:all": "rollup -c && rollup -c --environment BUILD:prod",
+    "build:all:es": "rollup -c --environment FORMAT:es && rollup -c --environment BUILD:prod,FORMAT:es"
+  },
+  "devDependencies": {
+    "babel-core": "^6.26.0",
+    "babel-plugin-external-helpers": "^6.22.0",
+    "babel-preset-env": "^1.6.0",
+    "electron": "^1.7.6",
+    "eslint": "^4.6.1",
+    "gh-pages": "^1.0.0",
+    "jaguarjs-jsdoc": "^1.1.0",
+    "jsdoc": "^3.5.4",
+    "mkdirp": "^0.5.1",
+    "parallelshell": "^3.0.1",
+    "rimraf": "^2.6.2",
+    "rollup": "^0.49.3",
+    "rollup-plugin-babel": "^3.0.2",
+    "rollup-plugin-node-resolve": "^3.0.0",
+    "rollup-plugin-uglify": "^2.0.1",
+    "rollup-watch": "^4.3.1",
+    "uglify-es": "^3.1.0",
+    "watch": "^1.0.2"
+  },
+  "files": [
+    "bin",
+    "pixi-tween.d.ts"
+  ],
+  "typings": "pixi-tween.d.ts",
+  "gitHead": "40fba89902335e897b8b4f0f76884cbe14587be6",
+  "_npmVersion": "5.6.0",
+  "_nodeVersion": "8.9.1",
+  "dist": {
+    "integrity": "sha512-fQzDqH2RmszzRL/ccC4t1Py8jT/IZH3Q6ajQNmvM5K8eZ4nJJ/8lumMEOj2sbDJmyl4bDQ8CKgK5pNbnvuh14Q==",
+    "shasum": "8c49d9a0c4f1680d44599aeed5d16ee2cc502145",
+    "tarball": "https://registry.npmjs.org/k8w-pixi-tween/-/k8w-pixi-tween-0.7.5.tgz"
+  },
+  "versions": [
+    {
+      "number": "0.7.0",
+      "date": "2018-01-16T10:09:31.610Z"
+    },
+    {
+      "number": "0.7.1",
+      "date": "2018-01-16T10:12:17.553Z"
+    },
+    {
+      "number": "0.7.2",
+      "date": "2018-01-16T10:18:08.239Z"
+    },
+    {
+      "number": "0.7.3",
+      "date": "2018-01-16T10:22:53.401Z"
+    },
+    {
+      "number": "0.7.4",
+      "date": "2018-01-16T11:32:11.301Z"
+    },
+    {
+      "number": "0.7.5",
+      "date": "2018-01-16T12:05:11.961Z"
+    }
+  ],
+  "created": "2018-01-16T10:09:31.610Z",
+  "modified": "2018-01-16T12:05:11.961Z",
+  "lastPublisher": {
+    "name": "k8w",
+    "email": "twoeo@qq.com"
+  },
+  "owners": [
+    {
+      "name": "k8w",
+      "email": "twoeo@qq.com"
+    }
+  ]
+}

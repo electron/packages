@@ -1,19 +1,19 @@
 {
   "name": "meteor-desktop-splash-screen",
-  "version": "0.0.31",
+  "version": "0.4.0",
   "engines": {
     "node": ">=6.0.0"
   },
   "description": "Meteor Desktop splash screen plugin.",
   "main": "dist/index.js",
   "scripts": {
-    "test": "ava tests/functional/**/*.js --source dist/**/* -s",
-    "test-watch": "ava tests/functional/**/*.js --source src --watch --verbose -s",
+    "test": "ava --source dist/**/* -s",
+    "test-watch": "ava --source src --watch --verbose -s",
     "prepublish": "npm run build",
     "lint": "eslint src tests",
     "build": "babel src --out-dir dist --source-maps inline --copy-files",
     "build-watch": "babel src --watch --out-dir dist --source-maps inline --copy-files",
-    "postversion": "npm publish",
+    "postversion": "npm run build && npm run lint && npm test && npm publish",
     "version": "node dist/scripts/propagateVersion.js && git add README.md"
   },
   "author": {
@@ -22,17 +22,17 @@
   },
   "license": "MIT",
   "devDependencies": {
-    "ava": "^0.16.0",
-    "babel-cli": "^6.16.0",
-    "babel-preset-node6": "^11.0.0",
-    "eslint": "^3.8.1",
-    "eslint-config-airbnb-base": "^9.0.0",
-    "eslint-plugin-import": "^2.0.1",
-    "spectron": "^3.4.0",
-    "shelljs": "^0.7.5",
-    "electron": "^1.4.4",
-    "node-resemble-js": "^0.1.1",
-    "meteor-desktop-test-suite": "0.0.16"
+    "ava": "0.19.1",
+    "babel-cli": "6.24.1",
+    "babel-preset-node6": "11.0.0",
+    "electron": "1.4.12",
+    "eslint": "3.19.0",
+    "eslint-config-airbnb-base": "11.1.3",
+    "eslint-plugin-import": "2.2.0",
+    "meteor-desktop-test-suite": "0.1.0",
+    "node-resemble-js": "0.2.0",
+    "shelljs": "0.7.7",
+    "spectron": "3.6.2"
   },
   "dependencies": {},
   "repository": {
@@ -57,12 +57,12 @@
     "splashscreen"
   ],
   "homepage": "https://github.com/wojtkowiak/meteor-desktop-splash-screen",
-  "gitHead": "8c94e8d7cdc3b7842e0478c90b3c0f04a64fc207",
-  "_npmVersion": "4.0.1",
-  "_nodeVersion": "6.5.0",
+  "gitHead": "e5a5401df29d78143136d968377b63937ef4189d",
+  "_npmVersion": "4.2.0",
+  "_nodeVersion": "6.9.3",
   "dist": {
-    "shasum": "a8db349ad1e1c4f230ed21862856cbd593476a0d",
-    "tarball": "http://registry.npmjs.org/meteor-desktop-splash-screen/-/meteor-desktop-splash-screen-0.0.31.tgz"
+    "shasum": "38c91816712f8d287aaafb733b8b5a1ea03ca763",
+    "tarball": "https://registry.npmjs.org/meteor-desktop-splash-screen/-/meteor-desktop-splash-screen-0.4.0.tgz"
   },
   "versions": [
     {
@@ -180,10 +180,34 @@
     {
       "number": "0.0.31",
       "date": "2016-11-10T09:35:00.732Z"
+    },
+    {
+      "number": "0.1.0",
+      "date": "2016-12-20T22:04:02.456Z"
+    },
+    {
+      "number": "0.2.0",
+      "date": "2017-02-21T09:06:21.399Z"
+    },
+    {
+      "number": "0.2.1",
+      "date": "2017-02-28T14:26:56.205Z"
+    },
+    {
+      "number": "0.3.0-0",
+      "date": "2017-03-01T09:56:30.751Z"
+    },
+    {
+      "number": "0.3.0",
+      "date": "2017-03-02T14:35:00.648Z"
+    },
+    {
+      "number": "0.4.0",
+      "date": "2017-05-09T09:38:07.988Z"
     }
   ],
   "created": "2016-06-02T20:09:32.504Z",
-  "modified": "2016-11-10T09:35:00.732Z",
+  "modified": "2017-05-09T09:38:07.988Z",
   "lastPublisher": {
     "name": "wojtkowiak",
     "email": "bartosz@wojtkowiak.it"

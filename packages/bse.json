@@ -1,0 +1,107 @@
+{
+  "name": "bse",
+  "version": "0.0.0",
+  "description": "Base conversion class.",
+  "main": "bse.js",
+  "support": "bse.support.js",
+  "deploy": "bse.deploy.js",
+  "browser": "bse.deploy.js",
+  "scripts": {
+    "pristine": "rsetmod clean && flxc execute ./.install.sh",
+    "clear": "rsetmod clean --clear",
+    "formal": "jesy apply '*.json'",
+    "build:support": "gulp --module bse,base --all",
+    "build:deploy": "webpack --config webpack.compact.js --progress --display-modules",
+    "rebuild": "npm run build:support && npm run build:deploy",
+    "build": "npm run pristine && npm run rebuild",
+    "build:test:support": "gulp --module test --all",
+    "build:test:deploy": "webpack --config webpack.test.js --progress --display-modules",
+    "build:test:bridge": "gulp --module test --bridge",
+    "build:test": "npm run build:test:support && npm run build:test:deploy && npm run build:test:bridge",
+    "test:server": "mocha test.js && mocha test.js --reporter=json > test.server.json",
+    "test:client": "wdio wdio.client.js",
+    "pretest": "npm run clear && npm run rebuild && npm run build:test",
+    "test": "npm run test:server && npm run test:client",
+    "posttest": "npm run formal",
+    "deploy": "npm run build && npm run build:test && npm run test:server && npm run test:client && npm run formal"
+  },
+  "repository": {
+    "user": "volkovasystems",
+    "repo": "bse",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/volkovasystems/bse/tarball/master",
+    "clone_url": "https://github.com/volkovasystems/bse",
+    "https_url": "https://github.com/volkovasystems/bse",
+    "travis_url": "https://travis-ci.org/volkovasystems/bse",
+    "zip_url": "https://github.com/volkovasystems/bse/archive/master.zip",
+    "api_url": "https://api.github.com/repos/volkovasystems/bse"
+  },
+  "keywords": [
+    "base",
+    "conversion",
+    "class",
+    "bse"
+  ],
+  "author": {
+    "name": "Richeve S. Bebedor",
+    "email": "richeve.bebedor@gmail.com"
+  },
+  "license": "MIT",
+  "homepage": "https://github.com/volkovasystems/bse#readme",
+  "dependencies": {
+    "babel-runtime": "^6.25.0",
+    "falzy": "^0.23.0"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.24.1",
+    "babel-core": "^6.25.0",
+    "babel-plugin-transform-runtime": "^6.23.0",
+    "babel-preset-latest": "^6.24.1",
+    "electron": "^1.6.11",
+    "gulp": "^3.9.1",
+    "gulp-babel": "^6.1.2",
+    "gulp-changed": "^3.1.0",
+    "gulp-debug": "^3.1.0",
+    "gulp-plumber": "^1.1.0",
+    "gulp-rename": "^1.2.2",
+    "gulp-replace": "^0.6.1",
+    "gulp-sourcemaps": "^2.6.0",
+    "mocha": "^3.4.2",
+    "should": "^11.2.1",
+    "source-map-loader": "^0.2.1",
+    "wdio-json-reporter": "^0.2.1",
+    "wdio-mocha-framework": "^0.5.10",
+    "wdio-selenium-standalone-service": "^0.0.9",
+    "webdriverio": "^4.8.0",
+    "webpack": "^3.4.1",
+    "yargs": "^8.0.2"
+  },
+  "gitHead": "6a771d4e7d6ad6f3db6423fa8491ced10f8ef307",
+  "_npmVersion": "5.3.0",
+  "_nodeVersion": "6.11.0",
+  "dist": {
+    "integrity": "sha512-FKGKCPkuhzv/27+gdmoD2ybbqwSWe8Up4uBNdL/Ia7BsBOctI+x1/ZNI6quy+x8zhfNZChu7ycGh5OUtraD+Og==",
+    "shasum": "46ade22706da25a2c0afd2de8fe8d5797642a035",
+    "tarball": "https://registry.npmjs.org/bse/-/bse-0.0.0.tgz"
+  },
+  "versions": [
+    {
+      "number": "0.0.0",
+      "date": "2017-07-29T00:38:29.818Z"
+    }
+  ],
+  "created": "2017-07-29T00:38:29.818Z",
+  "modified": "2017-07-29T00:38:29.818Z",
+  "lastPublisher": {
+    "name": "volkova",
+    "email": "richeve.bebedor@gmail.com"
+  },
+  "owners": [
+    {
+      "name": "volkova",
+      "email": "richeve.bebedor@gmail.com"
+    }
+  ]
+}

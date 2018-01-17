@@ -1,0 +1,95 @@
+{
+  "name": "require-style",
+  "version": "1.0.1",
+  "description": "require modules that target css in electron or the browser",
+  "main": "index.js",
+  "scripts": {
+    "start": "node example",
+    "transform": "browserify -t ./transform example",
+    "test:deps": "dependency-check . transform && dependency-check . transform --extra --no-dev",
+    "test:lint": "standard",
+    "test:node": "NODE_ENV=test run-default tape test/*.js --",
+    "test:coverage": "NODE_ENV=test nyc npm run test:node",
+    "test:coverage:report": "nyc report --reporter=lcov npm run test:node",
+    "test": "npm-run-all -s test:node test:lint test:deps"
+  },
+  "repository": {
+    "user": "ahdinosaur",
+    "repo": "require-style",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/ahdinosaur/require-style/tarball/master",
+    "clone_url": "https://github.com/ahdinosaur/require-style",
+    "https_url": "https://github.com/ahdinosaur/require-style",
+    "travis_url": "https://travis-ci.org/ahdinosaur/require-style",
+    "zip_url": "https://github.com/ahdinosaur/require-style/archive/master.zip",
+    "api_url": "https://api.github.com/repos/ahdinosaur/require-style"
+  },
+  "keywords": [],
+  "author": {
+    "name": "Mikey",
+    "email": "michael.williams@enspiral.com",
+    "url": "http://dinosaur.is"
+  },
+  "license": "Apache-2.0",
+  "homepage": "https://github.com/ahdinosaur/require-style#readme",
+  "devDependencies": {
+    "browserify": "^14.4.0",
+    "dependency-check": "^2.7.0",
+    "font-awesome": "^4.7.0",
+    "npm-run-all": "^4.0.1",
+    "nyc": "^10.1.2",
+    "run-default": "^1.0.0",
+    "standard": "^8.6.0",
+    "tape": "^4.6.3"
+  },
+  "dependencies": {
+    "css-url-regex": "^1.1.0",
+    "from2-string": "^1.1.0",
+    "is-windows": "^1.0.1",
+    "pump": "^1.0.2",
+    "quote-stream": "^1.0.2",
+    "readable-stream": "^2.2.10",
+    "replacestream": "^4.0.2",
+    "resolve": "^1.3.3",
+    "slash": "^1.0.0",
+    "static-module": "^1.3.2",
+    "style-resolve": "^1.0.1",
+    "urify": "^2.1.0"
+  },
+  "gitHead": "0b5d69f8edde7bdb005d0a5042758433f865bd76",
+  "_npmVersion": "5.3.0",
+  "_nodeVersion": "7.10.0",
+  "dist": {
+    "integrity": "sha512-N4thpS0QXydyIptiuQ611Q2jeboFeJtGFhQWaMzfCDYAMbqlz8eGKxkpwmcH2tuRA3m6tMuqpk3XnrFzrTwSPA==",
+    "shasum": "723bed76df983a3813e9bfbe74a942ed8aeaf4f0",
+    "tarball": "https://registry.npmjs.org/require-style/-/require-style-1.0.1.tgz"
+  },
+  "versions": [
+    {
+      "number": "1.0.0",
+      "date": "2017-06-06T14:20:18.062Z"
+    },
+    {
+      "number": "1.0.1",
+      "date": "2017-08-27T22:31:42.228Z"
+    }
+  ],
+  "created": "2017-06-06T14:20:18.062Z",
+  "modified": "2017-08-27T22:31:42.228Z",
+  "lastPublisher": {
+    "name": "mixmix",
+    "email": "whimful@gmail.com"
+  },
+  "owners": [
+    {
+      "email": "whimful@gmail.com",
+      "name": "mixmix"
+    },
+    {
+      "email": "michael.williams@enspiral.com",
+      "name": "ahdinosaur"
+    }
+  ]
+}

@@ -1,10 +1,35 @@
 {
   "name": "ember-electron",
-  "version": "1.10.8",
+  "version": "2.7.2",
   "description": "An addon for building Desktop apps with Ember and Electron.",
-  "scripts": {
-    "test": "node tests/runner.js"
+  "keywords": [
+    "ember-addon",
+    "electron",
+    "atom",
+    "chromium"
+  ],
+  "license": "MIT",
+  "author": {
+    "name": "Felix Rieseberg",
+    "email": "felix@felixrieseberg.com",
+    "url": "http://www.felixrieseberg.com"
   },
+  "contributors": [
+    {
+      "name": "Aidan Nulman",
+      "email": "aidan@isleofcode.com",
+      "url": "https://isleofcode.com"
+    },
+    {
+      "name": "Florian Pichler",
+      "url": "http://ylk.gd/"
+    },
+    {
+      "name": "Ben Demboski",
+      "email": "ben@turbopatent.com",
+      "url": "https://github.com/bendemboski"
+    }
+  ],
   "repository": {
     "user": "felixrieseberg",
     "repo": "ember-electron",
@@ -18,86 +43,107 @@
     "zip_url": "https://github.com/felixrieseberg/ember-electron/archive/master.zip",
     "api_url": "https://api.github.com/repos/felixrieseberg/ember-electron"
   },
-  "engines": {
-    "node": ">= 4.0.0"
+  "scripts": {
+    "test": "yarn-or-npm run test-node-all && yarn-or-npm run lint",
+    "test-fast": "yarn-or-npm run test-node && yarn-or-npm run lint",
+    "test-node": "mocha node-tests/unit/**/*.js ./node-tests/integration/**/*.js",
+    "test-node-slow": "mocha ./node-tests/acceptance/**/*.js",
+    "test-node-all": "yarn-or-npm run test-node && yarn-or-npm run test-node-slow",
+    "lint": "eslint ./*.js app lib node-tests"
   },
-  "author": {
-    "name": "Felix Rieseberg",
-    "email": "felix@felixrieseberg.com",
-    "url": "http://www.felixrieseberg.com"
+  "dependencies": {
+    "broccoli-file-creator": "^1.1.1",
+    "broccoli-funnel": "^1.0.1",
+    "broccoli-merge-trees": "^2.0.0",
+    "broccoli-source": "^1.1.0",
+    "broccoli-string-replace": "^0.1.1",
+    "capture-exit": "^1.2.0",
+    "chalk": "^1.1.0",
+    "core-object": "^3.1.0",
+    "electron-forge": "~4.1.1",
+    "electron-protocol-serve": "^1.3.0",
+    "ember-cli-babel": "^6.0.0",
+    "ember-cli-version-checker": "^1.1.6",
+    "ember-inspector": "2.0.4",
+    "execa": "^0.6.3",
+    "file-url": "^2.0.2",
+    "fs-extra": "^2.0.0",
+    "globby": "^6.0.0",
+    "loader.js": "^4.2.3",
+    "lodash": "^4.15.0",
+    "quick-temp": "^0.1.5",
+    "rimraf": "^2.6.1",
+    "rsvp": "^4.0.1",
+    "silent-error": "^1.0.1",
+    "socket.io": "^1.4.8",
+    "symlink-or-copy": "^1.1.8",
+    "testem": "^1.15.0",
+    "tmp": "0.0.31",
+    "tree-kill": "^1.1.0",
+    "tree-sync": "^1.2.2",
+    "yarn-or-npm": "^2.0.4"
   },
-  "license": "MIT",
   "devDependencies": {
-    "broccoli-asset-rev": "^2.4.2",
+    "babel-plugin-transform-async-to-generator": "^6.22.0",
+    "babel-preset-env": "^1.2.2",
+    "babel-preset-react": "^6.23.0",
+    "broccoli-asset-rev": "^2.4.5",
     "chai": "^3.5.0",
     "chai-as-promised": "^5.2.0",
-    "ember-ajax": "^2.0.1",
-    "ember-cli": "2.6.0",
-    "ember-cli-app-version": "^1.0.0",
-    "ember-cli-dependency-checker": "^1.2.0",
-    "ember-cli-htmlbars": "^1.0.3",
-    "ember-cli-htmlbars-inline-precompile": "^0.3.1",
-    "ember-cli-inject-live-reload": "^1.4.0",
-    "ember-cli-jshint": "^1.0.0",
-    "ember-cli-qunit": "^1.4.0",
-    "ember-cli-release": "0.2.8",
+    "console-ui": "^1.0.3",
+    "electron-compile": "^6.1.3",
+    "electron-prebuilt-compile": "1.4.15",
+    "ember-ajax": "^3.0.0",
+    "ember-cli": "2.13.1",
+    "ember-cli-dependency-checker": "^1.3.0",
+    "ember-cli-eslint": "^3.0.0",
+    "ember-cli-htmlbars": "^1.1.1",
+    "ember-cli-htmlbars-inline-precompile": "^0.4.0",
+    "ember-cli-inject-live-reload": "^1.4.1",
+    "ember-cli-qunit": "^4.0.0",
+    "ember-cli-shims": "^1.1.0",
     "ember-cli-sri": "^2.1.0",
     "ember-cli-uglify": "^1.2.0",
-    "ember-data": "^2.6.0",
     "ember-disable-prototype-extensions": "^1.1.0",
-    "ember-export-application-global": "^1.0.5",
-    "ember-load-initializers": "^0.5.1",
-    "ember-resolver": "^2.0.3",
-    "ember-welcome-page": "^1.0.1",
-    "loader.js": "^4.0.1",
-    "mocha": "^2.3.4",
-    "mocha-standard": "^1.0.0",
+    "ember-export-application-global": "^2.0.0",
+    "ember-load-initializers": "^1.0.0",
+    "ember-resolver": "^4.0.0",
+    "ember-source": "~2.13.0",
+    "eslint": "^3.16.1",
+    "eslint-config-ember": "^0.3.0",
+    "eslint-plugin-ember-suave": "^1.0.0",
+    "mocha": "^3.5.3",
     "mock-spawn": "^0.2.6",
     "mockery": "^1.4.0",
+    "ncp": "^2.0.0",
     "sinon": "^1.17.2",
-    "standard": "^8.3.0"
+    "testdouble": "^2.1.2",
+    "walk-sync": "^0.3.1"
   },
-  "keywords": [
-    "ember-addon",
-    "electron",
-    "atom",
-    "chromium"
-  ],
-  "dependencies": {
-    "broccoli-funnel": "^1.0.1",
-    "broccoli-merge-trees": "^1.1.0",
-    "broccoli-string-replace": "^0.1.1",
-    "chalk": "^1.1.0",
-    "electron-packager": "^8.0.0",
-    "ember-cli-babel": "^5.1.6",
-    "ember-cli-version-checker": "^1.1.6",
-    "ember-inspector": "2.0.3",
-    "express": "^4.14.0",
-    "fs-extra": "^0.30.0",
-    "globby": "^6.0.0",
-    "lodash": "^4.15.0",
-    "npmi": "^2.0.1",
-    "optimist": "0.6.1",
-    "quick-temp": "^0.1.5",
-    "rsvp": "^3.2.1",
-    "socket.io": "^1.4.8",
-    "testem": "^1.4.0"
+  "engines": {
+    "node": ">= 6.0.0"
   },
   "ember-addon": {
-    "defaultBlueprint": "ember-electron"
-  },
-  "standard": {
-    "env": [
-      "mocha"
+    "defaultBlueprint": "ember-electron",
+    "versionCompatibility": {
+      "ember": ">=2.3.0"
+    },
+    "after": [
+      "ember-cli-sri",
+      "ember-engines"
     ]
   },
-  "gitHead": "f2ad8e390358ef918efb4290e0548e1a7b46ef62",
+  "config": {
+    "forge": "./ember-electron/electron-forge-config.js"
+  },
+  "gitHead": "c7fe48b498bcf76b399bdf61b51884da8691e9fb",
   "homepage": "https://github.com/felixrieseberg/ember-electron#readme",
-  "_npmVersion": "3.10.3",
-  "_nodeVersion": "6.3.1",
+  "_npmVersion": "5.5.1",
+  "_nodeVersion": "8.7.0",
   "dist": {
-    "shasum": "8b7196e500692da04337f8144f8d23c558460fe1",
-    "tarball": "http://registry.npmjs.org/ember-electron/-/ember-electron-1.10.8.tgz"
+    "integrity": "sha512-iMLq4OeQTVQoxmR2yW/qqeLlIK+qs2LHqNemUPbwg6d03pghsb07GSZcqUu6Qf5XnaN4Jwt8gEannriP5umPlw==",
+    "shasum": "6f49877863119f8fb7004a4e72810ea0f4541dcf",
+    "tarball": "https://registry.npmjs.org/ember-electron/-/ember-electron-2.7.2.tgz"
   },
   "stars": 1,
   "versions": [
@@ -384,18 +430,170 @@
     {
       "number": "1.10.8",
       "date": "2016-10-13T00:22:20.752Z"
+    },
+    {
+      "number": "1.11.0",
+      "date": "2016-12-04T02:57:00.983Z"
+    },
+    {
+      "number": "1.11.1",
+      "date": "2016-12-04T09:47:39.404Z"
+    },
+    {
+      "number": "1.11.2",
+      "date": "2016-12-04T10:53:03.975Z"
+    },
+    {
+      "number": "1.11.3",
+      "date": "2016-12-04T11:16:51.048Z"
+    },
+    {
+      "number": "1.11.4",
+      "date": "2016-12-04T11:23:38.825Z"
+    },
+    {
+      "number": "1.11.5",
+      "date": "2016-12-04T12:26:15.300Z"
+    },
+    {
+      "number": "1.11.6",
+      "date": "2016-12-31T17:52:01.773Z"
+    },
+    {
+      "number": "1.12.0",
+      "date": "2017-01-07T21:39:31.826Z"
+    },
+    {
+      "number": "1.12.1",
+      "date": "2017-01-12T18:28:42.606Z"
+    },
+    {
+      "number": "1.12.2",
+      "date": "2017-01-30T22:19:13.739Z"
+    },
+    {
+      "number": "1.12.3",
+      "date": "2017-01-30T22:23:52.537Z"
+    },
+    {
+      "number": "1.12.4",
+      "date": "2017-01-30T22:26:18.105Z"
+    },
+    {
+      "number": "1.12.5",
+      "date": "2017-01-30T22:45:33.700Z"
+    },
+    {
+      "number": "1.12.6",
+      "date": "2017-02-14T16:51:11.404Z"
+    },
+    {
+      "number": "1.12.7",
+      "date": "2017-02-22T20:05:57.866Z"
+    },
+    {
+      "number": "2.0.0-beta",
+      "date": "2017-03-04T23:26:34.033Z"
+    },
+    {
+      "number": "2.0.0-beta.2",
+      "date": "2017-03-14T20:45:43.570Z"
+    },
+    {
+      "number": "2.0.0-beta.3",
+      "date": "2017-04-03T04:20:18.252Z"
+    },
+    {
+      "number": "2.0.0-beta.4",
+      "date": "2017-04-04T02:46:07.151Z"
+    },
+    {
+      "number": "2.0.0-beta.5",
+      "date": "2017-04-06T15:30:14.378Z"
+    },
+    {
+      "number": "2.0.0-beta.6",
+      "date": "2017-04-10T21:42:41.868Z"
+    },
+    {
+      "number": "2.0.0",
+      "date": "2017-04-10T23:04:49.380Z"
+    },
+    {
+      "number": "2.0.1",
+      "date": "2017-04-11T17:14:07.663Z"
+    },
+    {
+      "number": "2.1.0",
+      "date": "2017-04-18T22:32:53.994Z"
+    },
+    {
+      "number": "2.1.1",
+      "date": "2017-04-19T16:04:08.743Z"
+    },
+    {
+      "number": "2.2.0",
+      "date": "2017-05-08T02:04:38.875Z"
+    },
+    {
+      "number": "2.2.1",
+      "date": "2017-05-08T18:19:55.781Z"
+    },
+    {
+      "number": "2.2.2",
+      "date": "2017-05-23T19:31:40.589Z"
+    },
+    {
+      "number": "2.3.0",
+      "date": "2017-08-02T08:19:25.760Z"
+    },
+    {
+      "number": "2.3.1",
+      "date": "2017-08-11T21:49:48.118Z"
+    },
+    {
+      "number": "2.4.0",
+      "date": "2017-09-11T22:27:00.502Z"
+    },
+    {
+      "number": "2.5.0",
+      "date": "2017-09-26T12:46:58.997Z"
+    },
+    {
+      "number": "2.6.0",
+      "date": "2017-09-27T21:54:28.588Z"
+    },
+    {
+      "number": "2.6.1",
+      "date": "2017-10-10T17:11:32.284Z"
+    },
+    {
+      "number": "2.7.0",
+      "date": "2017-10-10T17:15:52.316Z"
+    },
+    {
+      "number": "2.7.1",
+      "date": "2017-10-24T01:02:29.871Z"
+    },
+    {
+      "number": "2.7.2",
+      "date": "2017-11-10T02:41:57.433Z"
     }
   ],
   "created": "2015-09-09T17:01:00.134Z",
-  "modified": "2016-10-13T00:22:20.752Z",
+  "modified": "2017-11-10T02:41:57.433Z",
   "lastPublisher": {
     "name": "felixrieseberg",
     "email": "felix@felixrieseberg.com"
   },
   "owners": [
     {
-      "name": "felixrieseberg",
-      "email": "felix@felixrieseberg.com"
+      "email": "demboskb@gmail.com",
+      "name": "bendemboski"
+    },
+    {
+      "email": "felix@felixrieseberg.com",
+      "name": "felixrieseberg"
     }
   ]
 }

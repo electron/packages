@@ -1,7 +1,7 @@
 {
   "name": "electron-ipc-broadcast",
   "description": "Broadcast IPC messages to all Electron processes.",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "author": {
     "name": "JP Richardson",
     "email": "jprichardson@gmail.com",
@@ -29,6 +29,7 @@
   ],
   "homepage": "https://github.com/jprichardson/electron-ipc-broadcastr#readme",
   "jsnext:main": "./src/index.js",
+  "module": "./src/index.js",
   "keywords": [
     "electron",
     "ipc",
@@ -53,6 +54,7 @@
   "scripts": {
     "build": "babel --ignore=__tests__ src --out-dir lib",
     "lint": "standard",
+    "prepublish": "npm test",
     "posttest": "NODE_ENV=production npm run build",
     "test": "npm run build && npm run lint",
     "unit": "npm run lint"
@@ -61,21 +63,26 @@
     "ignore": "lib/",
     "parser": "babel-eslint"
   },
-  "gitHead": "ca1359fed94cf0c27ec92ba0f58d6bd745a07ea5",
-  "_npmVersion": "3.10.8",
-  "_nodeVersion": "6.1.0",
+  "gitHead": "34d7687b8d8333f55f099de9178ccaf52d436b93",
+  "_npmVersion": "3.10.10",
+  "_nodeVersion": "6.5.0",
   "dist": {
-    "shasum": "b3a21ef4a7beed3210708d55ebf95e6e6aabba23",
-    "tarball": "http://registry.npmjs.org/electron-ipc-broadcast/-/electron-ipc-broadcast-0.0.1.tgz"
+    "shasum": "c686f0fee5c9f79b15231b99b4de95c447b4bc4a",
+    "tarball": "http://registry.npmjs.org/electron-ipc-broadcast/-/electron-ipc-broadcast-0.1.0.tgz"
   },
+  "stars": 1,
   "versions": [
     {
       "number": "0.0.1",
       "date": "2016-10-26T04:40:34.894Z"
+    },
+    {
+      "number": "0.1.0",
+      "date": "2016-12-23T20:19:35.366Z"
     }
   ],
   "created": "2016-10-26T04:40:34.894Z",
-  "modified": "2016-10-26T04:40:34.894Z",
+  "modified": "2017-09-25T23:17:24.866Z",
   "lastPublisher": {
     "name": "jprichardson",
     "email": "jprichardson@gmail.com"

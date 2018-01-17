@@ -1,6 +1,6 @@
 {
   "name": "nbind",
-  "version": "0.3.5",
+  "version": "0.3.14",
   "description": "Magical headers that make your C++ library accessible from JavaScript",
   "main": "dist/nbind.js",
   "typings": "dist/nbind.d.ts",
@@ -18,12 +18,12 @@
     "tslint": "tslint",
     "cbuild": "cbuild",
     "dump-lib": "dump-em-lib dist/em-api.js",
-    "lint": "tslint -c src/tslint.json src/*.ts src/em/*.ts",
-    "prepublish": "npm run lint && tsc -p src/em && tsc -p src && cbuild -x -v -s dist/bundle/em/em-api.js -o dist/em-api.js",
+    "lint": "node src/checkver.js lt 4.1.2 || (tslint --type-check -c src/tslint.json -p src/tsconfig.json && tslint --type-check -c src/tslint.json -p src/em/tsconfig.json)",
+    "prepublish": "npm run lint && tsc -p src/em && tsc -p src && (node src/checkver.js lt 0.12.0 || cbuild -x -v -s dist/bundle/em/em-api.js -o dist/em-api.js)",
     "clean-asm": "cd test/em && node-gyp clean",
     "config-test": "autogypi -c test/autogypi.json",
-    "test-asm": "npm run config-test && cd test/em && node-gyp configure build --asmjs=1 && node ../../bin/ndts . > ../testlib.d.ts && tsc -p .. && tap ../test.js",
-    "test": "npm run config-test && cd test/v8 && node-gyp configure build           && node ../../bin/ndts . > ../testlib.d.ts && tsc -p .. && tap ../test.js --gc && tap ../test-v8.js"
+    "test-asm": "npm run config-test && cd test/em && node-gyp configure build --asmjs=1 && node ../../bin/ndts --no-shim . > ../testlib.d.ts && tsc -p .. && tap ../test.js",
+    "test": "npm run config-test && cd test/v8 && node-gyp configure build           && node ../../bin/ndts --no-shim . > ../testlib.d.ts && tsc -p .. && tap ../test.js --gc && tap ../test-v8.js"
   },
   "author": {
     "name": "Juha Järvi"
@@ -60,24 +60,26 @@
     "win32"
   ],
   "dependencies": {
-    "emscripten-library-decorator": "~0.1.8",
+    "emscripten-library-decorator": "~0.2.2",
     "mkdirp": "~0.5.1",
-    "nan": "^2.4.0"
+    "nan": "^2.7.0"
   },
   "devDependencies": {
+    "@types/node": "^8.0.51",
     "autogypi": "~0.2.2",
-    "cbuild": "~0.1.1",
-    "node-gyp": "^3.4.0",
-    "tap": "^7.1.2",
-    "tslint": "^3.15.1",
-    "typescript": "^2.0.3"
+    "cbuild": "~0.1.5",
+    "node-gyp": "^3.6.2",
+    "tap": "^10.7.3",
+    "tslint": "^5.5.0",
+    "typescript": "~2.3.4"
   },
-  "gitHead": "a3eb5137da768577a8e38cbf6526379788d5daa7",
-  "_npmVersion": "2.14.4",
-  "_nodeVersion": "4.1.1",
+  "gitHead": "901a7d5129f9146b3a376d5feded5bb7ccbf0133",
+  "_npmVersion": "5.3.0",
+  "_nodeVersion": "8.2.1",
   "dist": {
-    "shasum": "849b58afc54855dbca81e67ca21cfaa5a6456347",
-    "tarball": "http://registry.npmjs.org/nbind/-/nbind-0.3.5.tgz"
+    "integrity": "sha512-iFjEbXPMxktoWINKqChWaoYluRi3AhiNV7vPrqpDewCk+qPINjMB0u67nHM1DQZIAoIs42BVdH8+/bUmSHCn/A==",
+    "shasum": "ea85b685ae86801012509062f6ce4d639a19b864",
+    "tarball": "https://registry.npmjs.org/nbind/-/nbind-0.3.14.tgz"
   },
   "versions": [
     {
@@ -143,10 +145,46 @@
     {
       "number": "0.3.5",
       "date": "2016-10-26T11:15:24.108Z"
+    },
+    {
+      "number": "0.3.6",
+      "date": "2016-12-06T06:40:19.290Z"
+    },
+    {
+      "number": "0.3.7",
+      "date": "2016-12-20T19:46:40.853Z"
+    },
+    {
+      "number": "0.3.8",
+      "date": "2016-12-27T18:41:39.928Z"
+    },
+    {
+      "number": "0.3.9",
+      "date": "2017-01-19T12:58:51.962Z"
+    },
+    {
+      "number": "0.3.10",
+      "date": "2017-04-23T05:21:18.462Z"
+    },
+    {
+      "number": "0.3.11",
+      "date": "2017-05-03T15:26:43.370Z"
+    },
+    {
+      "number": "0.3.12",
+      "date": "2017-05-29T17:10:52.692Z"
+    },
+    {
+      "number": "0.3.13",
+      "date": "2017-07-21T05:48:09.725Z"
+    },
+    {
+      "number": "0.3.14",
+      "date": "2017-11-14T08:04:24.612Z"
     }
   ],
   "created": "2015-04-04T16:01:31.843Z",
-  "modified": "2016-10-26T11:15:24.108Z",
+  "modified": "2017-11-14T08:04:24.612Z",
   "lastPublisher": {
     "name": "jjrv",
     "email": "befunge@gmail.com"

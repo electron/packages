@@ -1,12 +1,12 @@
 {
   "name": "adventuretron",
-  "version": "0.0.19",
+  "version": "1.0.0",
   "description": "Create self-guided workshops using electron",
   "main": "main.js",
   "browser": "renderer/index.js",
-  "style": "renderer/css/bundle.css",
+  "style": "renderer/style.css",
   "scripts": {
-    "bundle": "node bin/bundle.js",
+    "bundle": "csskit bundle renderer/style.css -o renderer/css/bundle.css",
     "test": "tape tests/*.js"
   },
   "bin": {
@@ -45,35 +45,34 @@
     "watchify": "^3.7.0"
   },
   "dependencies": {
+    "bel": "^5.1.3",
     "beldown": "^1.1.0",
     "bulk-require": "^1.0.0",
     "choo": "^3.3.0",
     "choo-log": "^2.0.1",
     "create-html": "^1.1.0",
-    "dom-css": "^2.1.0",
-    "domify": "^1.4.0",
+    "csskit": "^2.0.0",
     "each-async": "^1.1.1",
-    "electron": "1.4.6",
+    "electron": "^1.7.8",
     "execspawn": "^1.0.1",
     "glob": "^7.1.1",
     "highlight.js": "^9.8.0",
     "insert-css": "^1.1.0",
-    "interactive-sandbox": "^1.1.0",
-    "level": "^1.5.0",
+    "interactive-sandbox": "^1.1.1",
     "marked": "^0.3.6",
     "maxstache-stream": "^1.0.4",
-    "sheetify": "^5.2.0",
     "subcommand": "^2.0.4",
     "tachyons": "^4.5.5",
     "tar-fs": "^1.14.0",
     "xtend": "^4.0.1"
   },
-  "gitHead": "68ac65a16d810ffc8a619e9de3fe4c6ae1dc88f3",
-  "_npmVersion": "3.10.8",
-  "_nodeVersion": "6.9.1",
+  "gitHead": "76d63cb5bbcc91821816441ee0358473cc19b3e7",
+  "_npmVersion": "5.4.2",
+  "_nodeVersion": "7.9.0",
   "dist": {
-    "shasum": "39c90a0dfedb85b469d46b9fa4652d39802d4c2f",
-    "tarball": "http://registry.npmjs.org/adventuretron/-/adventuretron-0.0.19.tgz"
+    "integrity": "sha512-gbawsAjThceKWo9WgKB0BsEHL5O7zm+PqFMjM7IM6qim44g2BFkYWvP+UxW6fyRqR3g4PsjkV4QaDrdxk7VCaA==",
+    "shasum": "7ec794c2666070b86b4fd54e3185c1b190aa3264",
+    "tarball": "https://registry.npmjs.org/adventuretron/-/adventuretron-1.0.0.tgz"
   },
   "versions": [
     {
@@ -151,10 +150,14 @@
     {
       "number": "0.0.19",
       "date": "2016-11-11T03:21:13.942Z"
+    },
+    {
+      "number": "1.0.0",
+      "date": "2017-10-04T23:53:01.990Z"
     }
   ],
   "created": "2016-09-01T22:11:23.610Z",
-  "modified": "2016-11-11T03:21:13.942Z",
+  "modified": "2017-10-04T23:53:01.990Z",
   "lastPublisher": {
     "name": "sethvincent",
     "email": "sethvincent@gmail.com"

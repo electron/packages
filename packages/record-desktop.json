@@ -1,27 +1,35 @@
 {
   "name": "record-desktop",
-  "version": "0.5.0",
+  "version": "0.5.9",
   "description": "Record gifs and take screenshots on linux, built with electron.",
-  "main": "dist/main.js",
+  "main": "src/dist/main.js",
   "scripts": {
-    "start": "NODE_ENV=development electron ./dist/main.js",
-    "test": "ava",
+    "start": "NODE_ENV=development electron ./src/dist/main.js",
+    "test": "ava 'src/**/*.spec.js'",
     "test:watch": "nodemon --exec ava",
-    "prebuild": "rm -rf dist && mkdir dist",
+    "prebuild": "rm -rf src/dist && mkdir src/dist",
     "build": "npm-run-all --parallel build:electron build:frontend",
     "build:watch": "npm-run-all --parallel build:electron:watch build:frontend:watch",
-    "build:electron": "babel -d dist/ src/",
-    "build:electron:watch": "babel --watch -d dist/ src/",
+    "build:electron": "babel -d src/dist src/main",
+    "build:electron:watch": "babel --watch -d src/dist src/main",
     "build:frontend": "NODE_ENV=production webpack",
     "build:frontend:watch": "webpack-dev-server",
+    "precommit": "npm run lint",
     "prepublish": "npm run build",
     "electron": "NODE_ENV=development electron ./dist/main.js",
-    "lint": "eslint src/* frontend/**/*.js",
-    "build:electron-pkg": "rm -rf dist-pkg && electron-packager . record-desktop --platform linux --arch x64 --out dist-pkg/ --ignore \"node_modules/electron.*\"",
+    "lint": "eslint 'src/main/**/*.js' 'src/frontend/**/*.js'",
+    "build:electron-pkg": "npm run build && rm -rf dist-pkg && electron-packager . record-desktop --platform linux --arch x64 --out dist-pkg/",
     "build:electron-deb": "npm run build:electron-pkg && electron-installer-debian --src dist-pkg/record-desktop-linux-x64/ --dest dist-pkg/installers/ --arch amd64"
   },
   "bin": {
     "record-desktop": "app.js"
+  },
+  "ava": {
+    "require": [
+      "babel-register",
+      "babel-polyfill"
+    ],
+    "babel": "inherit"
   },
   "preferGlobal": "true",
   "repository": {
@@ -43,13 +51,9 @@
     "linux"
   ],
   "files": [
-    "dist",
-    "shared",
-    "public",
+    "src",
     "app.js",
-    "cat.sh",
-    "icon.png",
-    "icon-recording.png"
+    "cat.sh"
   ],
   "author": {
     "name": "ewnd9",
@@ -58,11 +62,15 @@
   "license": "MIT",
   "dependencies": {
     "configstore": "^1.4.0",
-    "electron-prebuilt": "^0.36.9",
+    "electron": "^1.6.11",
+    "electron-contextmenu-middleware": "^1.0.1",
+    "electron-image-menu": "^2.0.0",
+    "electron-input-menu": "^2.1.0",
+    "electron-localshortcut": "^1.1.1",
     "electron-save-file": "^1.0.2",
     "globby": "^4.0.0",
     "imgur": "^0.1.7",
-    "lodash": "^3.10.1",
+    "lodash": "^4.5.0",
     "mkdirp": "^0.5.1",
     "node-notifier": "^4.5.0",
     "pify": "^2.3.0",
@@ -71,7 +79,7 @@
     "winston": "^2.1.1"
   },
   "devDependencies": {
-    "ava": "^0.13.0",
+    "ava": "^0.20.0",
     "babel-cli": "^6.4.0",
     "babel-core": "^6.4.0",
     "babel-eslint": "^5.0.0",
@@ -82,18 +90,16 @@
     "babel-preset-stage-0": "^6.3.13",
     "bootstrap": "^3.3.6",
     "css-loader": "^0.23.1",
-    "electron-contextmenu-middleware": "^1.0.1",
-    "electron-image-menu": "^1.0.0",
-    "electron-input-menu": "^1.0.2",
-    "electron-installer-debian": "^0.2.0",
-    "electron-packager": "^5.2.1",
+    "electron-installer-debian": "0.4.0",
+    "electron-packager": "8.5.1",
     "eslint": "^1.10.3",
     "eslint-plugin-react": "^3.16.1",
     "file-loader": "^0.8.5",
+    "husky": "^0.13.1",
     "json-loader": "^0.5.4",
-    "lodash": "^4.5.0",
     "nodemon": "^1.8.1",
     "npm-run-all": "^1.4.0",
+    "proxyquire": "^1.7.11",
     "react": "^0.14.6",
     "react-component-gallery": "^1.2.1",
     "react-dom": "^0.14.6",
@@ -105,13 +111,13 @@
     "webpack-target-electron-renderer": "^0.4.0",
     "x11": "^2.0.5"
   },
-  "gitHead": "257219ba107bc4a2046321bdfabd067a618109bd",
+  "gitHead": "6420329468f8b016cf51bdd81c722d798306f38b",
   "homepage": "https://github.com/ewnd9/record-desktop#readme",
-  "_npmVersion": "3.8.0",
-  "_nodeVersion": "5.6.0",
+  "_npmVersion": "3.10.10",
+  "_nodeVersion": "6.10.3",
   "dist": {
-    "shasum": "dde317959e6dfbac5faeec4264ed13e5008e7874",
-    "tarball": "http://registry.npmjs.org/record-desktop/-/record-desktop-0.5.0.tgz"
+    "shasum": "9b60aa1cf9d0c5bd368903d3f60308917da6dedb",
+    "tarball": "https://registry.npmjs.org/record-desktop/-/record-desktop-0.5.9.tgz"
   },
   "stars": 1,
   "versions": [
@@ -202,10 +208,50 @@
     {
       "number": "0.5.0",
       "date": "2016-04-07T14:55:15.595Z"
+    },
+    {
+      "number": "0.5.1",
+      "date": "2017-02-05T07:52:45.150Z"
+    },
+    {
+      "number": "0.5.2",
+      "date": "2017-04-22T09:19:35.107Z"
+    },
+    {
+      "number": "0.5.3",
+      "date": "2017-06-27T13:11:11.158Z"
+    },
+    {
+      "number": "0.5.4",
+      "date": "2017-06-27T13:29:50.360Z"
+    },
+    {
+      "number": "0.5.5",
+      "date": "2017-06-27T13:48:38.659Z"
+    },
+    {
+      "number": "0.5.6",
+      "date": "2017-07-02T08:05:12.305Z"
+    },
+    {
+      "number": "0.5.6-1",
+      "date": "2017-07-10T01:18:29.401Z"
+    },
+    {
+      "number": "0.5.7",
+      "date": "2017-07-10T01:21:26.496Z"
+    },
+    {
+      "number": "0.5.8",
+      "date": "2017-07-24T11:58:50.282Z"
+    },
+    {
+      "number": "0.5.9",
+      "date": "2017-07-24T14:26:48.359Z"
     }
   ],
   "created": "2016-03-01T00:51:08.639Z",
-  "modified": "2016-04-07T14:55:15.595Z",
+  "modified": "2017-07-24T14:26:48.359Z",
   "lastPublisher": {
     "name": "ewnd9",
     "email": "ewndnine@gmail.com"
