@@ -38,7 +38,7 @@ prolificUsers.forEach(handle => {
         if (err.statusCode === 404) {
           console.error(handle, 'not found')
         } else {
-          console.error(err) 
+          console.error(err)
         }
       })
   })

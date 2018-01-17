@@ -11,7 +11,8 @@ test('packages', function (t) {
   const devtron = packages.find(p => p.name === 'devtron')
   t.ok(devtron.devDependents.length > 10, 'packages have arrays of devDependents')
 
-  t.ok(packages.express.sourcerank >= 28, 'has sourceranks')
+  const electronStore = packages.find(p => p.name === 'electron-store')
+  t.ok(electronStore.sourcerank >= 10, 'has sourceranks')
 
   t.end()
 })
