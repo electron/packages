@@ -1,0 +1,210 @@
+{
+  "name": "nbind",
+  "version": "0.3.15",
+  "description": "Magical headers that make your C++ library accessible from JavaScript",
+  "main": "dist/nbind.js",
+  "typings": "dist/nbind.d.ts",
+  "bin": {
+    "copyasm": "bin/copyasm.js",
+    "emcc-path": "bin/emcc-path.js",
+    "ndts": "bin/ndts.js"
+  },
+  "scripts": {
+    "autogypi": "autogypi",
+    "node-gyp": "node-gyp",
+    "emcc-path": "node bin/emcc-path.js",
+    "copyasm": "copyasm",
+    "tsc": "tsc",
+    "tslint": "tslint",
+    "cbuild": "cbuild",
+    "dump-lib": "dump-em-lib dist/em-api.js",
+    "lint": "node src/checkver.js lt 4.1.2 || (tslint --type-check -c src/tslint.json -p src/tsconfig.json && tslint --type-check -c src/tslint.json -p src/em/tsconfig.json)",
+    "prepublish": "npm run lint && tsc -p src/em && tsc -p src && (node src/checkver.js lt 0.12.0 || cbuild -x -v -s dist/bundle/em/em-api.js -o dist/em-api.js)",
+    "clean-asm": "cd test/em && node-gyp clean",
+    "config-test": "autogypi -c test/autogypi.json",
+    "test-asm": "npm run config-test && cd test/em && node-gyp configure build --asmjs=1 && node ../../bin/ndts --no-shim . > ../testlib.d.ts && tsc -p .. && tap ../test.js",
+    "test": "npm run config-test && cd test/v8 && node-gyp configure build           && node ../../bin/ndts --no-shim . > ../testlib.d.ts && tsc -p .. && tap ../test.js --gc && tap ../test-v8.js"
+  },
+  "author": {
+    "name": "Juha Järvi"
+  },
+  "license": "MIT",
+  "repository": {
+    "user": "charto",
+    "repo": "nbind",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/charto/nbind/tarball/master",
+    "clone_url": "https://github.com/charto/nbind",
+    "https_url": "https://github.com/charto/nbind",
+    "travis_url": "https://travis-ci.org/charto/nbind",
+    "zip_url": "https://github.com/charto/nbind/archive/master.zip",
+    "api_url": "https://api.github.com/repos/charto/nbind"
+  },
+  "homepage": "https://github.com/charto/nbind#readme",
+  "keywords": [
+    "asm.js",
+    "bindings",
+    "build",
+    "c++",
+    "electron",
+    "emscripten",
+    "nan",
+    "native",
+    "node-gyp"
+  ],
+  "os": [
+    "android",
+    "darwin",
+    "linux",
+    "win32"
+  ],
+  "dependencies": {
+    "emscripten-library-decorator": "~0.2.2",
+    "mkdirp": "~0.5.1",
+    "nan": "^2.9.2"
+  },
+  "devDependencies": {
+    "@types/node": "^8.0.51",
+    "autogypi": "~0.2.2",
+    "cbuild": "~0.1.8",
+    "node-gyp": "^3.6.2",
+    "tap": "^10.7.3",
+    "tslint": "^5.9.1",
+    "typescript": "~2.3.4"
+  },
+  "gitHead": "f3075546f64881855eb750f15009ab46d9d19d96",
+  "_npmVersion": "5.3.0",
+  "_nodeVersion": "8.2.1",
+  "dist": {
+    "integrity": "sha512-TrKLNRj5D8wZRJb7XmUNbA1W3iTigAEpm3qaGig5bEWY/iCT2IQBgBc2EUGO59FbRIGhx5hB/McVwqxlSGScVw==",
+    "shasum": "20c74d77d54e28627ab8268c2767f7e40aef8c53",
+    "tarball": "http://registry.npmjs.org/nbind/-/nbind-0.3.15.tgz",
+    "fileCount": 93,
+    "unpackedSize": 388122
+  },
+  "_hasShrinkwrap": false,
+  "versions": [
+    {
+      "number": "0.0.3",
+      "date": "2015-04-04T16:01:31.843Z"
+    },
+    {
+      "number": "0.0.4",
+      "date": "2015-04-11T09:32:31.980Z"
+    },
+    {
+      "number": "0.0.5",
+      "date": "2015-04-12T18:48:06.496Z"
+    },
+    {
+      "number": "0.0.6",
+      "date": "2015-04-18T16:41:07.279Z"
+    },
+    {
+      "number": "0.0.7",
+      "date": "2015-07-02T09:00:14.344Z"
+    },
+    {
+      "number": "0.1.0",
+      "date": "2015-08-31T00:46:23.152Z"
+    },
+    {
+      "number": "0.1.1",
+      "date": "2015-09-29T12:07:37.525Z"
+    },
+    {
+      "number": "0.1.2",
+      "date": "2016-05-02T08:10:15.099Z"
+    },
+    {
+      "number": "0.2.0",
+      "date": "2016-05-27T14:45:06.465Z"
+    },
+    {
+      "number": "0.2.1",
+      "date": "2016-06-07T11:04:26.348Z"
+    },
+    {
+      "number": "0.3.0",
+      "date": "2016-07-29T14:18:21.153Z"
+    },
+    {
+      "number": "0.3.1",
+      "date": "2016-08-23T12:29:53.106Z"
+    },
+    {
+      "number": "0.3.2",
+      "date": "2016-09-01T13:43:05.909Z"
+    },
+    {
+      "number": "0.3.3",
+      "date": "2016-09-26T16:08:30.463Z"
+    },
+    {
+      "number": "0.3.4",
+      "date": "2016-09-29T14:17:36.591Z"
+    },
+    {
+      "number": "0.3.5",
+      "date": "2016-10-26T11:15:24.108Z"
+    },
+    {
+      "number": "0.3.6",
+      "date": "2016-12-06T06:40:19.290Z"
+    },
+    {
+      "number": "0.3.7",
+      "date": "2016-12-20T19:46:40.853Z"
+    },
+    {
+      "number": "0.3.8",
+      "date": "2016-12-27T18:41:39.928Z"
+    },
+    {
+      "number": "0.3.9",
+      "date": "2017-01-19T12:58:51.962Z"
+    },
+    {
+      "number": "0.3.10",
+      "date": "2017-04-23T05:21:18.462Z"
+    },
+    {
+      "number": "0.3.11",
+      "date": "2017-05-03T15:26:43.370Z"
+    },
+    {
+      "number": "0.3.12",
+      "date": "2017-05-29T17:10:52.692Z"
+    },
+    {
+      "number": "0.3.13",
+      "date": "2017-07-21T05:48:09.725Z"
+    },
+    {
+      "number": "0.3.14",
+      "date": "2017-11-14T08:04:24.612Z"
+    },
+    {
+      "number": "0.3.15",
+      "date": "2018-03-02T13:05:52.533Z"
+    }
+  ],
+  "created": "2015-04-04T16:01:31.843Z",
+  "modified": "2018-03-02T13:05:54.228Z",
+  "lastPublisher": {
+    "name": "jjrv",
+    "email": "befunge@gmail.com"
+  },
+  "owners": [
+    {
+      "name": "charto",
+      "email": "befunge@gmail.com"
+    },
+    {
+      "name": "jjrv",
+      "email": "befunge@gmail.com"
+    }
+  ]
+}

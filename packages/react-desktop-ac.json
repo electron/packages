@@ -1,0 +1,108 @@
+{
+  "name": "react-desktop-ac",
+  "author": {
+    "name": "Gabriel Bull"
+  },
+  "version": "0.3.5",
+  "description": "React UI Components for macOS High Sierra and Windows 10",
+  "main": "./index.js",
+  "keywords": [
+    "react",
+    "react-component",
+    "electron",
+    "node-webkit",
+    "native",
+    "desktop",
+    "ui",
+    "user",
+    "interface",
+    "component",
+    "os x",
+    "macOS",
+    "mac",
+    "windows"
+  ],
+  "license": "MIT",
+  "repository": {
+    "user": "gabrielbull",
+    "repo": "react-desktop",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/gabrielbull/react-desktop/tarball/master",
+    "clone_url": "https://github.com/gabrielbull/react-desktop",
+    "https_url": "https://github.com/gabrielbull/react-desktop",
+    "travis_url": "https://travis-ci.org/gabrielbull/react-desktop",
+    "zip_url": "https://github.com/gabrielbull/react-desktop/archive/master.zip",
+    "api_url": "https://api.github.com/repos/gabrielbull/react-desktop"
+  },
+  "scripts": {
+    "test": "./node_modules/.bin/mocha test",
+    "eslint": "./node_modules/.bin/eslint ./src ./test",
+    "prebuild": "rsync -av -delete . build --exclude build --exclude .git --exclude .idea && npm run eslint && npm run test",
+    "build": "./node_modules/.bin/babel ./build/src --out-dir ./build/src && ./node_modules/.bin/babel ./build/index.js --out-file ./build/index.js && ./node_modules/.bin/babel ./build/macOs.js --out-file ./build/osx.js && ./node_modules/.bin/babel ./build/macOs.js --out-file ./build/macOs.js && ./node_modules/.bin/babel ./build/windows.js --out-file ./build/windows.js",
+    "playground": "./node_modules/.bin/webpack-dev-server --config ./playground/webpack.config.js --colors --inline --port 3001",
+    "build-publish": "npm run build && npm publish ./build"
+  },
+  "dependencies": {
+    "radium": "=0.19.6"
+  },
+  "peerDependencies": {
+    "prop-types": "^15.0 || ^16.0",
+    "react": "^15.0 || ^16.0",
+    "react-dom": "^15.0 || ^16.0"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-core": "^6.26.0",
+    "babel-eslint": "^8.2.2",
+    "babel-loader": "^7.1.4",
+    "babel-plugin-transform-decorators-legacy": "^1.3.4",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-react": "^6.24.1",
+    "babel-preset-stage-0": "^6.24.1",
+    "chai": "^4.1.2",
+    "eslint": "^4.19.1",
+    "eslint-plugin-import": "^2.10.0",
+    "eslint-plugin-react": "^7.7.0",
+    "html-webpack-plugin": "^3.1.0",
+    "jsdom": "^11.7.0",
+    "mocha": "^5.0.5",
+    "prop-types": "^15.6.1",
+    "react": "^16.3.0",
+    "react-addons-test-utils": "^15.6.2",
+    "react-color": "^2.14.0",
+    "react-dom": "^16.3.0",
+    "react-hot-loader": "^4.0.1",
+    "webpack": "^4.4.1",
+    "webpack-cli": "^2.0.13",
+    "webpack-dev-server": "^3.1.1"
+  },
+  "licenseText": "The MIT License (MIT)\n\nCopyright © 2017 Gabriel Bull\n\nPermission is hereby granted, free of charge, to any person obtaining a copy\nof this software and associated documentation files (the \"Software\"), to deal\nin the Software without restriction, including without limitation the rights\nto use, copy, modify, merge, publish, distribute, sublicense, and/or sell\ncopies of the Software, and to permit persons to whom the Software is\nfurnished to do so, subject to the following conditions:\n\nThe above copyright notice and this permission notice shall be included in\nall copies or substantial portions of the Software.\n\nTHE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR\nIMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,\nFITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE\nAUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER\nLIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,\nOUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN\nTHE SOFTWARE.\n",
+  "dist": {
+    "shasum": "d9ebb05f699ac78c8e321604bcb89e113cbccae1",
+    "tarball": "https://registry.npmjs.org/react-desktop-ac/-/react-desktop-ac-0.3.5.tgz",
+    "fileCount": 248,
+    "unpackedSize": 231236,
+    "npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJa4N2yCRA9TVsSAnZWagAAIhMP/2TlYQVvQuZWFaPuAvTu\ng+NE0nl3iwgBVdPyu76m7E7Q/RDMfciahFl5c2F+PaRZ8+vjXqd6Fq9LjUDQ\nMBZWBH6rgAYQOp9QwBBQfDtHSETsKJ15Ow8b7IEUhrMN/oxmV/6hcwgHtmgN\nb9ugoAiOG+DryKrjRvQSGW50zcucaD/KW8JkEjJCIe/3quQL/JWmC8N9rMU4\nuO7Vk3W5puLtnC//kvZe+nccsZJWEplCvY2ntS4KXkJIgkber9EdFb9yTE57\nnGnLyH8eE8lgCynNuxOC9v7Iha8vJ84m0MXip44DZBw7JbnIlQlhTHYk0g+V\n97Yqow9nTLvpy/GlZpGI+lniDe8qTGmkoRvTJVl3NsFn9xaG6W3qdzl0sb0I\n2HAi+oK3GIVjYIhYHaiCFWV1S1XJbrH23erHgkpRfmtekBbn4F0rF4lAw21z\nPaPFgd0GifGtoBAZD1UYRFP0OQ4esiNCYGElAj5vFgrPxSFrI26si8FTHm/J\nsH0xTt4PTQMalyEuChl7v+/oJTaHHXSKJQu/VPVtJfW50xg91tmx/razRurx\nT369mCXhkJ6B9uDmkNK1yu1Hjov1NWWIQCOrjOYnd2EEjjoGOwnunkdwr6jH\nih9yGvSm9zxxpcrTT5Lqk+3oLlelQYKUkQqwBJZKsb2J/NHSpbGhvzUN4wwU\nbflk\r\n=QPGy\r\n-----END PGP SIGNATURE-----\r\n"
+  },
+  "_hasShrinkwrap": false,
+  "versions": [
+    {
+      "number": "0.3.5",
+      "date": "2018-04-25T19:57:37.528Z"
+    }
+  ],
+  "created": "2018-04-25T19:57:37.454Z",
+  "modified": "2018-04-25T19:57:44.982Z",
+  "lastPublisher": {
+    "name": "andrewchae",
+    "email": "asjchae@gmail.com"
+  },
+  "owners": [
+    {
+      "name": "andrewchae",
+      "email": "asjchae@gmail.com"
+    }
+  ]
+}

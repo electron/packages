@@ -1,0 +1,176 @@
+{
+  "name": "electron-common-ipc",
+  "version": "2.0.0",
+  "description": "A safe IPC bus for applications built on Electron.",
+  "repository": {
+    "user": "emmkimme",
+    "repo": "electron-common-ipc",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/emmkimme/electron-common-ipc/tarball/master",
+    "clone_url": "https://github.com/emmkimme/electron-common-ipc",
+    "https_url": "https://github.com/emmkimme/electron-common-ipc",
+    "travis_url": "https://travis-ci.org/emmkimme/electron-common-ipc",
+    "zip_url": "https://github.com/emmkimme/electron-common-ipc/archive/master.zip",
+    "api_url": "https://api.github.com/repos/emmkimme/electron-common-ipc"
+  },
+  "keywords": [
+    "electron",
+    "ipc",
+    "renderer",
+    "sandbox",
+    "node",
+    "communication",
+    "process",
+    "rpc"
+  ],
+  "author": {
+    "name": "Emmanuel Kimmerlin, Michael Vasseur"
+  },
+  "license": "MIT",
+  "homepage": "https://github.com/emmkimme/electron-common-ipc#readme",
+  "main": "./lib/electron-common-ipc.js",
+  "types": "./lib/electron-common-ipc.d.ts",
+  "browser": "./lib/electron-common-ipc-browser.js",
+  "dependencies": {
+    "socket-serializer": "^0.28.0",
+    "uuid": "3.0.1",
+    "winston": "^2.4.1"
+  },
+  "devDependencies": {
+    "@types/node": "^0.0.3",
+    "@types/uuid": "3.0.0",
+    "@types/winston": "^2.3.9",
+    "del": "^2.2.2",
+    "del-cli": "^0.2.1",
+    "dts-bundle": "^0.6.1",
+    "tslint": "^4.1.1",
+    "tslint-microsoft-contrib": "^4.0.1",
+    "typescript": "~2.6.2"
+  },
+  "scripts": {
+    "clean": "del-cli ./lib ./build ./dist",
+    "build": "npm run build-js && npm run build-declaration",
+    "build-js": "tsc -p ./tsconfig/tsconfig-js.json",
+    "build-declaration": "npm run build-declaration-ts && npm run build-declaration-dts-bundle && npm run build-declaration-dts-bundle-browser && npm run clean-declaration-dts",
+    "build-declaration-ts": "tsc -p ./tsconfig/tsconfig-declaration.json",
+    "build-declaration-dts-generator": "dts-generator --name electron-common-ipc --project . --out ./lib/index.d.ts",
+    "build-declaration-dts-bundle": "dts-bundle --outputAsModuleFolder --name electron-common-ipc --main ./lib/electron-common-ipc.d.ts",
+    "build-declaration-dts-bundle-browser": "dts-bundle --outputAsModuleFolder --name electron-common-ipc-browser --main ./lib/electron-common-ipc-browser.d.ts",
+    "clean-declaration-dts": "del-cli ./lib/IpcBus/*.d.ts",
+    "tsc": "tsc",
+    "tslint": "tslint",
+    "publication": "npm publish ./ --registry https://registry.npmjs.org/"
+  },
+  "gitHead": "dfb6b6fdf776e172dd892c19af89fbb1df21f1df",
+  "_npmVersion": "3.10.10",
+  "_nodeVersion": "8.9.3",
+  "dist": {
+    "shasum": "d563d73cc16726d97e901aeb17d4902b3f76db20",
+    "tarball": "https://registry.npmjs.org/electron-common-ipc/-/electron-common-ipc-2.0.0.tgz",
+    "fileCount": 73,
+    "unpackedSize": 674974,
+    "npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJa7HFRCRA9TVsSAnZWagAAI+MP/0MjwRUpSWKG51xtma6l\nF7b0HSAvu0kTrQZwnr/BezmCgLQHym77ziIbBfSxVknA/uhG2aUVzAGmSuq0\n9ncYITUQnrHFzgiieVdoijNxthm7dEiPdm82SBXHAcEkeCCdbffS78iZpOH3\nBM8xM2/hHoFKVk79E1K71M0pc92feJcWwt+cCEiAGMlA+hvV3ok4nCMpkOo2\n3thRexWQtePmV1K/ehDKVW93Anjj8huzAHCg1E3dsy12jan4OagKt71TyyAE\nZ50fNCVk9nF7FsbSvjJQc/6Y6FQfkJ72kXOwtGNGOpwnP5J9XyoTRsA+RyK3\nY24ItmOlzSgqwzkYlBlllh/13U2QV5osf5xl8QvfTkJKDInVVXisfkeIjEbN\nckYBQ2+dUM+I4bGi4Z9VRJnhYtINapnGG1Vftp7eEVwFRiIflc91xrNADH3y\noeu9D2tRPxcYH37sdy5ugGrm0xX8/LyMeGYrdqG/rhNqM27mhpH3HvIaRvWz\nOSZoujr5rN9qm3O6UtNA2snUMNoB/rhRY6tcD9GHgxTRWFWN6Ytey8WeNxpx\nywuAfEuQt/AXflWrfctUWlkY6F7uJ0AH7MajA0ckXmdGNFER2Kt/XkLLM5NG\nNNCk3BwFKE56aodfYykZtOSbiR26Z6NMbhMg9flZqwH0ZOgIBWYOUnlcW0OE\n4g9T\r\n=U5X2\r\n-----END PGP SIGNATURE-----\r\n"
+  },
+  "_hasShrinkwrap": false,
+  "stars": 1,
+  "versions": [
+    {
+      "number": "1.0.0",
+      "date": "2017-11-15T15:53:43.707Z"
+    },
+    {
+      "number": "1.1.0",
+      "date": "2017-11-22T08:51:14.254Z"
+    },
+    {
+      "number": "1.1.2",
+      "date": "2017-11-30T15:28:27.250Z"
+    },
+    {
+      "number": "1.1.5",
+      "date": "2018-01-30T08:26:10.132Z"
+    },
+    {
+      "number": "1.1.6",
+      "date": "2018-03-07T14:16:57.313Z"
+    },
+    {
+      "number": "1.1.7",
+      "date": "2018-04-03T12:03:27.007Z"
+    },
+    {
+      "number": "1.1.8",
+      "date": "2018-04-03T15:43:09.233Z"
+    },
+    {
+      "number": "1.1.9",
+      "date": "2018-04-04T12:43:58.745Z"
+    },
+    {
+      "number": "1.1.10",
+      "date": "2018-04-05T07:06:19.425Z"
+    },
+    {
+      "number": "1.1.12",
+      "date": "2018-04-05T14:19:50.386Z"
+    },
+    {
+      "number": "1.1.13",
+      "date": "2018-04-05T16:24:37.786Z"
+    },
+    {
+      "number": "1.1.14",
+      "date": "2018-04-06T06:52:00.881Z"
+    },
+    {
+      "number": "1.1.15",
+      "date": "2018-04-09T08:05:14.851Z"
+    },
+    {
+      "number": "1.1.16",
+      "date": "2018-04-16T08:15:41.358Z"
+    },
+    {
+      "number": "1.1.17",
+      "date": "2018-04-16T15:55:43.557Z"
+    },
+    {
+      "number": "1.1.18",
+      "date": "2018-04-17T15:14:25.243Z"
+    },
+    {
+      "number": "1.1.19",
+      "date": "2018-04-18T05:17:39.867Z"
+    },
+    {
+      "number": "1.1.20",
+      "date": "2018-04-25T11:19:53.456Z"
+    },
+    {
+      "number": "2.0.0",
+      "date": "2018-05-04T14:42:23.521Z"
+    }
+  ],
+  "created": "2017-11-15T15:53:43.707Z",
+  "modified": "2018-05-04T14:42:33.158Z",
+  "lastPublisher": {
+    "name": "emmkimme",
+    "email": "emmanuel.kimmerlin@thomsonreuters.com"
+  },
+  "owners": [
+    {
+      "email": "emmanuel.kimmerlin@thomsonreuters.com",
+      "name": "emmkimme"
+    },
+    {
+      "email": "thomas.lechaptois@gmail.com",
+      "name": "tholecha"
+    },
+    {
+      "email": "tm-npm.nospam@souskai.net",
+      "name": "thomoute"
+    }
+  ]
+}

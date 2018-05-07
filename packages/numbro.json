@@ -1,0 +1,451 @@
+{
+  "name": "numbro",
+  "version": "2.0.6",
+  "description": "Format and manipulate numbers.",
+  "homepage": "http://numbrojs.com",
+  "author": {
+    "name": "Benjamin Van Ryseghem",
+    "email": "benjamin@vanryseghem.com",
+    "url": "https://benjamin.vanryseghem.com"
+  },
+  "keywords": [
+    "numeral",
+    "numbro",
+    "number",
+    "format",
+    "time",
+    "money",
+    "percentage"
+  ],
+  "main": "./dist/numbro.min.js",
+  "typings": "./numbro.d.ts",
+  "engines": {
+    "node": "*"
+  },
+  "repository": {
+    "user": "BenjaminVanRyseghem",
+    "repo": "numbro",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/BenjaminVanRyseghem/numbro/tarball/master",
+    "clone_url": "https://github.com/BenjaminVanRyseghem/numbro",
+    "https_url": "https://github.com/BenjaminVanRyseghem/numbro",
+    "travis_url": "https://travis-ci.org/BenjaminVanRyseghem/numbro",
+    "zip_url": "https://github.com/BenjaminVanRyseghem/numbro/archive/master.zip",
+    "api_url": "https://api.github.com/repos/BenjaminVanRyseghem/numbro"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "auto-load": "^3.0.0",
+    "babel-core": "^6.26.0",
+    "babel-preset-env": "^1.6.0",
+    "babel-preset-es2015": "^6.24.1",
+    "babelify": "^7.3.0",
+    "browserify": "^14.4.0",
+    "del": "^3.0.0",
+    "electron": "^1.7.6",
+    "eslint": "^4.7.0",
+    "eslint-plugin-jasmine": "^2.8.4",
+    "gulp": "^3.9.1",
+    "gulp-babel": "^7.0.0",
+    "gulp-bump": "^2.7.0",
+    "gulp-concat": "^2.6.0",
+    "gulp-confirm": "^1.0.6",
+    "gulp-eslint": "^4.0.0",
+    "gulp-foreach": "^0.1.0",
+    "gulp-git": "^2.4.2",
+    "gulp-istanbul": "^1.1.2",
+    "gulp-jasmine": "^2.4.2",
+    "gulp-load-plugins": "^1.5.0",
+    "gulp-sourcemaps": "^2.6.1",
+    "gulp-uglify": "^3.0.0",
+    "gulp-util": "^3.0.8",
+    "jasmine-core": "^2.8.0",
+    "jasmine-reporters": "^2.2.1",
+    "karma": "^1.7.1",
+    "karma-electron": "^5.2.1",
+    "karma-jasmine": "^1.1.0",
+    "karma-requirejs": "^1.1.0",
+    "minimatch": "^3.0.4",
+    "requirejs": "^2.1.0",
+    "rewire": "^2.5.2",
+    "uglify-js": "^2.8.29",
+    "vinyl-buffer": "^1.0.0",
+    "vinyl-source-stream": "^1.1.0"
+  },
+  "scripts": {
+    "prepare": "gulp build",
+    "prepublishOnly": "echo \"Are you sure you want to publish a new release with version ${npm_package_version}? (y/n)?\" && read choice && case \"$choice\" in y|Y ) exit 0;; * ) echo \"Abort!\" && exit 1;; esac",
+    "postpublish": "git tag -as ${npm_package_version} -m \"Release version ${npm_package_version}\" && git push && git push --tags",
+    "preversion": "echo \"Use `gulp bump` instead\" && exit 1",
+    "test": "gulp test",
+    "coverage": "istanbul cover ./node_modules/.bin/jasmine --captureExceptions"
+  },
+  "files": [
+    "LICENSE",
+    "LICENSE-Numeraljs",
+    "CHANGELOG",
+    "CHANGELOG-Numeraljs.md",
+    "numbro.d.ts",
+    "languages",
+    "dist"
+  ],
+  "dependencies": {
+    "bignumber.js": "^4.0.4"
+  },
+  "contributors": [
+    {
+      "name": "Adam Draper",
+      "url": "https://github.com/adamwdraper"
+    },
+    {
+      "name": "Ahmed Al Hafoudh",
+      "url": "http://www.freevision.sk"
+    },
+    {
+      "name": "Anatoli Papirovski",
+      "url": "https://github.com/apapirovski"
+    },
+    {
+      "name": "Andrei Alecu https://github.com/andreialecu"
+    },
+    {
+      "name": "badplum",
+      "url": "https://github.com/badplum"
+    },
+    {
+      "name": "Benedikt Huss",
+      "url": "https://github.com/ben305"
+    },
+    {
+      "name": "Benjamin Van Ryseghem",
+      "email": "benjamin@vanryseghem.com",
+      "url": "https://benjamin.vanryseghem.com"
+    },
+    {
+      "name": "Dan Ristic",
+      "url": "https://github.com/dristic"
+    },
+    {
+      "name": "Dave Clayton",
+      "url": "https://github.com/davedx"
+    },
+    {
+      "name": "Dieter Luypaert",
+      "url": "https://github.com/moeriki"
+    },
+    {
+      "name": "Diogo Resende",
+      "url": "https://github.com/dresende"
+    },
+    {
+      "name": "Dominik Bulaj",
+      "url": "https://github.com/dominikbulaj"
+    },
+    {
+      "name": "Ecmel Ercan",
+      "url": "https://github.com/ecmel,"
+    },
+    {
+      "name": "Eli Zehavi",
+      "url": "https://github.com/eli-zehavi"
+    },
+    {
+      "name": "Giacomo Trombi",
+      "url": "http://cinquepunti.it"
+    },
+    {
+      "name": "Gwyn Judd",
+      "url": "https://github.com/gwynjudd"
+    },
+    {
+      "name": "Hernan Garcia",
+      "url": "https://github.com/hgarcia"
+    },
+    {
+      "name": "Illimar Tambek",
+      "url": "https://github.com/ragulka"
+    },
+    {
+      "name": "Jan Pesa",
+      "url": "https://github.com/smajl"
+    },
+    {
+      "name": "Joe Bordes",
+      "url": "https://github.com/joebordes"
+    },
+    {
+      "name": "Lauris Bukšis-Haberkorns",
+      "url": "https://github.com/Lafriks"
+    },
+    {
+      "name": "Léo Renaud-Allaire",
+      "url": "https://github.com/renaudleo"
+    },
+    {
+      "name": "Marco Krage",
+      "url": "https://github.com/sinky"
+    },
+    {
+      "name": "Michael Abadilla",
+      "url": "https://github.com/mjmaix"
+    },
+    {
+      "name": "Michael Piefel",
+      "url": "https://github.com/piefel"
+    },
+    {
+      "name": "Michael Storgaard",
+      "url": "https://github.com/mstorgaard"
+    },
+    {
+      "name": "neo13",
+      "url": "https://github.com/neo13"
+    },
+    {
+      "name": "Nicolas Henry",
+      "url": "https://github.com/nicolashenry"
+    },
+    {
+      "name": "Peter Bakondy",
+      "url": "https://github.com/pbakondy"
+    },
+    {
+      "name": "Ramiro letandas Jr",
+      "url": "https://github.com/ramirovjr"
+    },
+    {
+      "name": "Randy Wilander",
+      "url": "https://github.com/rocketedaway"
+    },
+    {
+      "name": "Rich Daley",
+      "url": "https://github.com/pedantic-git"
+    },
+    {
+      "name": "Sami Saada",
+      "url": "https://github.com/samitheberber"
+    },
+    {
+      "name": "Sathit Jittanupat",
+      "url": "https://github.com/jojosati"
+    },
+    {
+      "name": "Soumik Sarkar",
+      "url": "https://github.com/sousarka"
+    },
+    {
+      "name": "Stewart Scott",
+      "url": "https://github.com/stewart42"
+    },
+    {
+      "name": "teppeis",
+      "url": "https://github.com/teppeis"
+    },
+    {
+      "name": "Tamas Nepusz",
+      "url": "https://github.com/ntamas"
+    },
+    {
+      "name": "Tetyana Kuzmenko"
+    },
+    {
+      "name": "Thomas Obermüller",
+      "url": "https://github.com/thomas88"
+    },
+    {
+      "name": "Tim McIntosh"
+    }
+  ],
+  "gitHead": "bb611ccb59f443f704a7e1949c1c8e1c88108918",
+  "_npmVersion": "5.6.0",
+  "_nodeVersion": "9.5.0",
+  "dist": {
+    "integrity": "sha512-wTgLyuj1wduuHb6O/ItU/2SVR5Sf8uFVhFqbtqQU1/DqA34Wq9QqRlt0ySq1QEuju9Taq9+jPU4ExTQInYhsmA==",
+    "shasum": "d46acaa11aa879d522e93651de3926646d6db100",
+    "tarball": "http://registry.npmjs.org/numbro/-/numbro-2.0.6.tgz",
+    "fileCount": 195,
+    "unpackedSize": 1445288
+  },
+  "_hasShrinkwrap": false,
+  "stars": 3,
+  "versions": [
+    {
+      "number": "1.0.0",
+      "date": "2015-04-06T22:41:33.420Z"
+    },
+    {
+      "number": "1.0.1",
+      "date": "2015-04-08T09:09:42.098Z"
+    },
+    {
+      "number": "1.0.3",
+      "date": "2015-04-08T10:06:08.877Z"
+    },
+    {
+      "number": "1.0.4",
+      "date": "2015-04-08T10:11:17.579Z"
+    },
+    {
+      "number": "1.0.5",
+      "date": "2015-04-21T18:18:53.566Z"
+    },
+    {
+      "number": "1.1.0",
+      "date": "2015-04-21T18:46:41.021Z"
+    },
+    {
+      "number": "1.1.1",
+      "date": "2015-04-22T08:44:50.554Z"
+    },
+    {
+      "number": "1.2.0",
+      "date": "2015-06-10T18:03:27.491Z"
+    },
+    {
+      "number": "1.2.1",
+      "date": "2015-06-10T18:25:55.584Z"
+    },
+    {
+      "number": "1.2.2",
+      "date": "2015-06-10T18:51:07.374Z"
+    },
+    {
+      "number": "1.3.0",
+      "date": "2015-06-14T12:29:22.061Z"
+    },
+    {
+      "number": "1.3.1",
+      "date": "2015-06-18T09:45:22.880Z"
+    },
+    {
+      "number": "1.3.2",
+      "date": "2015-06-24T08:59:22.749Z"
+    },
+    {
+      "number": "1.3.3",
+      "date": "2015-07-02T15:18:27.588Z"
+    },
+    {
+      "number": "1.4.0",
+      "date": "2015-07-02T15:24:32.468Z"
+    },
+    {
+      "number": "1.5.0",
+      "date": "2015-07-02T15:42:59.052Z"
+    },
+    {
+      "number": "1.5.1",
+      "date": "2015-08-10T16:11:50.703Z"
+    },
+    {
+      "number": "1.5.2",
+      "date": "2015-10-14T16:49:07.766Z"
+    },
+    {
+      "number": "1.6.0",
+      "date": "2015-10-16T13:24:48.422Z"
+    },
+    {
+      "number": "1.6.1",
+      "date": "2015-10-16T15:47:31.913Z"
+    },
+    {
+      "number": "1.6.2",
+      "date": "2015-10-16T16:10:47.931Z"
+    },
+    {
+      "number": "1.7.0",
+      "date": "2016-03-22T18:32:44.584Z"
+    },
+    {
+      "number": "1.7.1",
+      "date": "2016-04-11T08:50:12.067Z"
+    },
+    {
+      "number": "1.8.0",
+      "date": "2016-06-16T08:54:00.366Z"
+    },
+    {
+      "number": "1.8.1",
+      "date": "2016-06-24T09:20:17.502Z"
+    },
+    {
+      "number": "1.9.0",
+      "date": "2016-07-22T14:55:26.814Z"
+    },
+    {
+      "number": "1.9.1",
+      "date": "2016-07-22T15:00:39.842Z"
+    },
+    {
+      "number": "1.9.2",
+      "date": "2016-07-24T09:44:18.503Z"
+    },
+    {
+      "number": "1.9.3",
+      "date": "2016-08-19T16:13:42.897Z"
+    },
+    {
+      "number": "1.10.0",
+      "date": "2017-03-27T11:59:58.881Z"
+    },
+    {
+      "number": "1.10.1",
+      "date": "2017-03-28T16:06:57.785Z"
+    },
+    {
+      "number": "1.11.0",
+      "date": "2017-05-02T08:20:52.191Z"
+    },
+    {
+      "number": "1.11.1",
+      "date": "2017-11-21T15:47:25.711Z"
+    },
+    {
+      "number": "2.0.0",
+      "date": "2018-01-15T10:09:56.773Z"
+    },
+    {
+      "number": "2.0.1",
+      "date": "2018-01-16T09:10:25.896Z"
+    },
+    {
+      "number": "2.0.2",
+      "date": "2018-01-16T09:15:56.777Z"
+    },
+    {
+      "number": "2.0.3",
+      "date": "2018-01-18T09:24:53.031Z"
+    },
+    {
+      "number": "2.0.4",
+      "date": "2018-01-19T16:59:11.625Z"
+    },
+    {
+      "number": "2.0.5",
+      "date": "2018-01-27T21:13:40.755Z"
+    },
+    {
+      "number": "2.0.6",
+      "date": "2018-03-21T01:13:01.757Z"
+    }
+  ],
+  "created": "2015-04-06T22:41:33.420Z",
+  "modified": "2018-03-21T01:13:02.855Z",
+  "lastPublisher": {
+    "name": "benjamin-vanryseghem",
+    "email": "benjamin.vanryseghem@gmail.com"
+  },
+  "owners": [
+    {
+      "name": "benjamin-vanryseghem",
+      "email": "benjamin.vanryseghem@gmail.com"
+    },
+    {
+      "name": "nicolaspetton",
+      "email": "petton.nicolas@gmail.com"
+    }
+  ]
+}

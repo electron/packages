@@ -1,0 +1,140 @@
+{
+  "name": "downstream-electron",
+  "version": "0.2.7",
+  "description": "DOWNstream For Electron - an open-source plugin to use with Electron allowing encrypted MPEG-DASH and Smooth Streaming streams to be safely downloaded and stored locally on a user’s Windows or Mac computer.",
+  "keywords": [
+    "electron",
+    "download",
+    "offline",
+    "video",
+    "streaming",
+    "dash",
+    "dash+xml",
+    "smoothstreaming",
+    "smooth streaming",
+    "vnd.ms-sstr+xml",
+    "mpeg",
+    "drm",
+    "storage",
+    "files"
+  ],
+  "main": "dist/index.js",
+  "files": [
+    "dist"
+  ],
+  "homepage": "https://castlabs.com/open-source/downstream/",
+  "scripts": {
+    "build": "webpack",
+    "eslint": "eslint api",
+    "jsdoc": "jsdoc api -r --readme api/README.md --configure jsdoc.conf.json -d jsdoc",
+    "jsdoc_prv": "jsdoc api -r -p --readme api/README.md --configure jsdoc.conf.json -d jsdoc",
+    "jasmine": "(npm run jasmine_test || true) && npm run jasmine_report",
+    "jasmine_test": "./node_modules/jasmine-node/bin/jasmine-node units/ --junitreport --output tmp/units",
+    "jasmine_report": "./node_modules/junit-viewer/bin/junit-viewer --results=tmp/units --save=tmp/units_result.html",
+    "start": "electron .",
+    "travis-build": "npm run eslint && npm run jasmine_test && npm run build && npm run jsdoc && true"
+  },
+  "author": {
+    "name": "castlabs GmbH"
+  },
+  "license": "Apache-2.0",
+  "devDependencies": {
+    "babel-core": "6.26.3",
+    "babel-loader": "7.1.4",
+    "babel-preset-env": "1.6.1",
+    "clean-webpack-plugin": "0.1.19",
+    "electron": "git+https://github.com/castlabs/electron-releases.git#v1.8.4-vmp1010",
+    "eslint": "4.19.1",
+    "jasmine-node": "^1.14.5",
+    "jquery": "3.3.1",
+    "jsdoc": "3.5.5",
+    "jsdoc-webpack-plugin": "0.0.2",
+    "junit-viewer": "4.11.1",
+    "shaka-player": "2.3.7",
+    "webpack": "3.10.0"
+  },
+  "dependencies": {
+    "base64-js": "1.3.0",
+    "biguint-format": "1.0.0",
+    "cors": "2.8.4",
+    "express": "4.16.3",
+    "flake-idgen": "1.1.0",
+    "fs-extra": "5.0.0",
+    "jsonfile": "4.0.0",
+    "mkdirp": "0.5.1",
+    "moment": "2.22.1",
+    "underscore": "1.9.0",
+    "url-parse": "1.4.0",
+    "xmldom": "0.1.27"
+  },
+  "gitHead": "887525f7fc1d6f1a644d8bbf4574eaf441106815",
+  "_npmVersion": "5.7.1",
+  "_nodeVersion": "8.9.2",
+  "dist": {
+    "integrity": "sha512-PIhNnlOD+OjMfIj1JUrQt5NtDjtea7mKOibk0/XCN0rvVex4ll1U6x1SHI7FG2I++6NeurLZ1BkKSch/h4wGyQ==",
+    "shasum": "7d7f40c9d99c2f9cab2622073b0b609a667eadd7",
+    "tarball": "https://registry.npmjs.org/downstream-electron/-/downstream-electron-0.2.7.tgz",
+    "fileCount": 7,
+    "unpackedSize": 119538,
+    "npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJa6uI2CRA9TVsSAnZWagAAERgP/1cQ8SXjnaVHphQyPy2v\nakntjO7EQ425Chza7iYXGqpQ0O1djVUjxk0ePeiuLsy1rHSA1IPo7wnQdoyt\n6aOieL7NIhwNbFFHfeG9oI6m8u5yP8Lh3GPIjPgh/HHCK5iyd036jfwr1vve\ntOQkeAdCXWHPqmt44Qb+BxZGcqYNbhVexs+oqOjbskg15FlQSRHTFhkxff1X\nDfj45i7qMP73rjpfhtevB3axFaDazNO5oI5xYyVklTZuCCN3/5WuHxLXfu1f\nB4JFB0I5A5Csk07ZEpisFmzyC9gTAkpjJF7Rs2kV8mZb4rzCmZ/OAIJrm0dX\nM2pBE9MSX4+KYoENXOsTHXM2gNyU4ndJ8Mp3OCq2lOwKCURMvXD7RybV/3/a\ndgW53aHsnMUtZUS/T6LTStrN0NTDSoguKQIcpn+NWSVbuQmaNOuKigbtL69D\npL2/w8w7f2iZzFOVMt8behWyS9kEwixqPnW4Eq5S1R+lk9fPpaJCOQF0tW1p\nTi3NDLl0GNqUfdkrGKcfeibXJ98qa4yof9GG1LBIm0E08b8YMCklOymkCJmA\nTENt3lpSj/KZu3yuXIyOMP8Tq1zt3zEPn7u9vP66jL+WagiI8wT0lEAI9p2a\nQAKOz3QRCf9PUYyCivbbY2Vax2CJ5IZf2HKQWcVa3bFeMmURLRSIE4372fqj\nrOIk\r\n=XQFw\r\n-----END PGP SIGNATURE-----\r\n"
+  },
+  "_hasShrinkwrap": false,
+  "versions": [
+    {
+      "number": "0.1.1",
+      "date": "2017-12-07T15:15:32.110Z"
+    },
+    {
+      "number": "0.1.2",
+      "date": "2017-12-07T15:43:13.282Z"
+    },
+    {
+      "number": "0.1.3",
+      "date": "2017-12-07T20:03:24.099Z"
+    },
+    {
+      "number": "0.2.0",
+      "date": "2018-03-06T10:39:04.307Z"
+    },
+    {
+      "number": "0.2.1",
+      "date": "2018-04-16T09:16:53.678Z"
+    },
+    {
+      "number": "0.2.2",
+      "date": "2018-04-16T12:25:11.596Z"
+    },
+    {
+      "number": "0.2.3",
+      "date": "2018-04-16T15:11:54.773Z"
+    },
+    {
+      "number": "0.2.4",
+      "date": "2018-04-24T13:30:18.975Z"
+    },
+    {
+      "number": "0.2.5",
+      "date": "2018-04-30T11:08:21.388Z"
+    },
+    {
+      "number": "0.2.6",
+      "date": "2018-04-30T14:27:59.118Z"
+    },
+    {
+      "number": "0.2.7",
+      "date": "2018-05-03T10:19:33.544Z"
+    }
+  ],
+  "created": "2017-12-07T15:15:32.110Z",
+  "modified": "2018-05-03T10:19:37.262Z",
+  "lastPublisher": {
+    "name": "castlabs",
+    "email": "noc@castlabs.com"
+  },
+  "owners": [
+    {
+      "name": "castlabs",
+      "email": "noc@castlabs.com"
+    }
+  ]
+}

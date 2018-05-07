@@ -1,0 +1,67 @@
+{
+  "name": "electron-home-cloud",
+  "version": "0.0.2",
+  "description": "Private home cloud package using Electron and node.js",
+  "main": "app.js",
+  "scripts": {
+    "test": "NODE_ENV=development electron .",
+    "start": "NODE_ENV=production electron .",
+    "package-mac": "electron-packager . --version=1.4.13 --overwrite --platform=darwin --arch=x64 --icon=./app/images/appicon/ic_launcher.icns --prune=true --out=release-builds --ignore=\"node_modules/(electron-packager|electron-prebuilt)\"",
+    "package-win": "electron-packager . --version=1.4.13 --overwrite --asar=true --platform=win32 --arch=ia32 --icon=./app/images/appicon/ic_launcher.ico --prune=true --out=release-builds --version-string.CompanyName=Basagee --version-string.FileDescription=Basagee --version-string.ProductName=\"Electron HOME Cloud\"  --ignore=\"node_modules/(electron-packager|electron-prebuilt)\"",
+    "package-linux": "electron-packager . --version=1.4.13 --overwrite --platform=linux --arch=x64 --icon=./app/images/appicon/ic_launcher/64x64.png --prune=true --out=release-builds  --ignore=\"node_modules/(electron-packager|electron-prebuilt)\"",
+    "package-armv7l": "electron-packager . --version=1.4.13 --overwrite --platform=linux --arch=armv7l --icon=./app/images/appicon/ic_launcher/64x64.png --prune=true --out=release-builds  --ignore=\"node_modules/(electron-packager|electron-prebuilt)\""
+  },
+  "keywords": [
+    "home",
+    "cloud",
+    "private cloud",
+    "home cloud"
+  ],
+  "author": {
+    "name": "basagee",
+    "email": "basagee@gmail.com"
+  },
+  "license": "Apache-2.0",
+  "dependencies": {
+    "colors": "^1.1.2",
+    "debug": "~2.3.1",
+    "log-timestamp": "^0.1.2",
+    "mdns-js": "^0.5.0"
+  },
+  "devDependencies": {
+    "electron-packager": "^8.5.1",
+    "electron-rebuild": "~1.4.3"
+  },
+  "bin": {
+    "http-server": "./bin/iot-gw-server",
+    "hs": "./bin/iot-gw-server"
+  },
+  "_npmVersion": "3.10.10",
+  "_nodeVersion": "6.9.5",
+  "dist": {
+    "shasum": "9a5082227fff35b645ba124b4033f34f86123dca",
+    "tarball": "https://registry.npmjs.org/electron-home-cloud/-/electron-home-cloud-0.0.2.tgz"
+  },
+  "versions": [
+    {
+      "number": "0.0.1",
+      "date": "2017-02-02T09:04:01.107Z"
+    },
+    {
+      "number": "0.0.2",
+      "date": "2017-02-02T09:05:40.869Z"
+    }
+  ],
+  "created": "2017-02-02T09:04:01.107Z",
+  "modified": "2017-02-02T09:05:40.869Z",
+  "lastPublisher": {
+    "name": "basagee",
+    "email": "basagee@gmail.com"
+  },
+  "owners": [
+    {
+      "name": "basagee",
+      "email": "basagee@gmail.com"
+    }
+  ]
+}

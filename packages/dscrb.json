@@ -1,0 +1,157 @@
+{
+  "name": "dscrb",
+  "version": "0.9.0",
+  "description": "Get property descriptor.",
+  "main": "dscrb.js",
+  "support": "dscrb.support.js",
+  "deploy": "dscrb.deploy.js",
+  "build": "dscrb.deploy.js",
+  "scripts": {
+    "pristine": "rsetmod clean && flxc execute ./.install.sh",
+    "reset": "rsetmod clean",
+    "clear": "rsetmod clean --clear",
+    "formal": "jesy apply '*.json'",
+    "build:support": "gulp --module dscrb,descriptor --all",
+    "build:deploy": "webpack --config webpack.compact.js --progress --display-modules",
+    "rebuild": "npm run build:support && npm run build:deploy",
+    "build": "npm run pristine && npm run rebuild",
+    "build:test:support": "gulp --module test --all",
+    "build:test:deploy": "webpack --config webpack.test.js --progress --display-modules",
+    "build:test:bridge": "gulp --module test --bridge",
+    "build:test": "npm run build:test:support && npm run build:test:deploy && npm run build:test:bridge",
+    "test:server": "mocha --slow=0 test.js && mocha --slow=0 test.js --reporter=json > test.server.json",
+    "test:client": "wdio wdio.client.js",
+    "pretest": "npm run clear && npm run rebuild && npm run build:test",
+    "test": "npm run test:server && npm run test:client",
+    "posttest": "npm run formal",
+    "deploy": "npm run build && npm run build:test && npm run test:server && npm run test:client && npm run formal"
+  },
+  "repository": {
+    "user": "volkovasystems",
+    "repo": "dscrb",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/volkovasystems/dscrb/tarball/master",
+    "clone_url": "https://github.com/volkovasystems/dscrb",
+    "https_url": "https://github.com/volkovasystems/dscrb",
+    "travis_url": "https://travis-ci.org/volkovasystems/dscrb",
+    "zip_url": "https://github.com/volkovasystems/dscrb/archive/master.zip",
+    "api_url": "https://api.github.com/repos/volkovasystems/dscrb"
+  },
+  "keywords": [
+    "get",
+    "property",
+    "descriptor",
+    "dscrb"
+  ],
+  "author": {
+    "name": "Richeve S. Bebedor",
+    "email": "richeve.bebedor@gmail.com"
+  },
+  "contributors": [
+    {
+      "name": "John Lenon Maghanoy",
+      "email": "johnlenonmaghanoy@gmail.com"
+    },
+    {
+      "name": "Vinse Vinalon",
+      "email": "vinsevinalon@gmail.com"
+    }
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/volkovasystems/dscrb#readme",
+  "dependencies": {
+    "babel-runtime": "^6.26.0",
+    "falzy": "^0.23.0",
+    "harden": "^0.23.0",
+    "kein": "^0.30.0",
+    "stringe": "^0.6.0",
+    "zelf": "^0.14.0"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-core": "^6.26.0",
+    "babel-plugin-transform-runtime": "^6.23.0",
+    "babel-preset-env": "^1.6.0",
+    "electron": "^1.7.5",
+    "gulp": "^3.9.1",
+    "gulp-babel": "^7.0.0",
+    "gulp-changed": "^3.1.0",
+    "gulp-debug": "^3.1.0",
+    "gulp-plumber": "^1.1.0",
+    "gulp-rename": "^1.2.2",
+    "gulp-replace": "^0.6.1",
+    "gulp-sourcemaps": "^2.6.1",
+    "mocha": "^3.5.0",
+    "should": "^12.0.0",
+    "source-map-loader": "^0.2.1",
+    "wdio-json-reporter": "^0.2.1",
+    "wdio-mocha-framework": "^0.5.11",
+    "wdio-selenium-standalone-service": "^0.0.9",
+    "webdriverio": "^4.8.0",
+    "webpack": "^3.5.5",
+    "yargs": "^8.0.2"
+  },
+  "gitHead": "464d47b45310fe7306a5f250ba79864c9e5a7c38",
+  "_npmVersion": "3.10.10",
+  "_nodeVersion": "6.11.2",
+  "dist": {
+    "shasum": "02827f09047c5712b6e010bb89c75dc8b66c9393",
+    "tarball": "https://registry.npmjs.org/dscrb/-/dscrb-0.9.0.tgz"
+  },
+  "versions": [
+    {
+      "number": "0.0.0",
+      "date": "2017-04-30T15:31:18.276Z"
+    },
+    {
+      "number": "0.1.0",
+      "date": "2017-04-30T17:06:54.421Z"
+    },
+    {
+      "number": "0.2.0",
+      "date": "2017-05-04T05:01:17.127Z"
+    },
+    {
+      "number": "0.3.0",
+      "date": "2017-05-08T08:06:23.790Z"
+    },
+    {
+      "number": "0.4.0",
+      "date": "2017-05-12T06:22:32.800Z"
+    },
+    {
+      "number": "0.5.0",
+      "date": "2017-06-13T07:03:48.382Z"
+    },
+    {
+      "number": "0.6.0",
+      "date": "2017-07-13T08:52:55.726Z"
+    },
+    {
+      "number": "0.7.0",
+      "date": "2017-08-10T05:43:55.686Z"
+    },
+    {
+      "number": "0.8.0",
+      "date": "2017-08-28T11:52:19.756Z"
+    },
+    {
+      "number": "0.9.0",
+      "date": "2017-09-04T09:47:19.363Z"
+    }
+  ],
+  "created": "2017-04-30T15:31:18.276Z",
+  "modified": "2017-09-04T09:47:19.363Z",
+  "lastPublisher": {
+    "name": "volkova",
+    "email": "richeve.bebedor@gmail.com"
+  },
+  "owners": [
+    {
+      "name": "volkova",
+      "email": "richeve.bebedor@gmail.com"
+    }
+  ]
+}

@@ -1,0 +1,1245 @@
+{
+  "name": "webtorrent",
+  "description": "Streaming torrent client",
+  "version": "0.99.4",
+  "author": {
+    "name": "WebTorrent, LLC",
+    "email": "feross@webtorrent.io",
+    "url": "https://webtorrent.io"
+  },
+  "browser": {
+    "./lib/server.js": false,
+    "./lib/tcp-pool.js": false,
+    "bittorrent-dht/client": false,
+    "fs-chunk-store": "memory-chunk-store",
+    "load-ip-set": false,
+    "net": false,
+    "os": false,
+    "ut_pex": false
+  },
+  "browserify": {
+    "transform": [
+      "package-json-versionify"
+    ]
+  },
+  "dependencies": {
+    "addr-to-ip-port": "^1.4.2",
+    "bitfield": "^2.0.0",
+    "bittorrent-dht": "^8.0.0",
+    "bittorrent-protocol": "^2.1.5",
+    "chunk-store-stream": "^2.0.2",
+    "create-torrent": "^3.24.5",
+    "debug": "^3.1.0",
+    "end-of-stream": "^1.1.0",
+    "fs-chunk-store": "^1.6.2",
+    "immediate-chunk-store": "^1.0.8",
+    "inherits": "^2.0.1",
+    "load-ip-set": "^1.2.7",
+    "memory-chunk-store": "^1.2.0",
+    "mime": "^2.2.0",
+    "multistream": "^2.0.5",
+    "package-json-versionify": "^1.0.2",
+    "parse-torrent": "^6.0.0",
+    "pump": "^3.0.0",
+    "random-iterate": "^1.0.1",
+    "randombytes": "^2.0.3",
+    "range-parser": "^1.2.0",
+    "readable-stream": "^2.1.4",
+    "render-media": "^3.0.0",
+    "run-parallel": "^1.1.6",
+    "run-parallel-limit": "^1.0.3",
+    "safe-buffer": "^5.0.1",
+    "simple-concat": "^1.0.0",
+    "simple-get": "^3.0.1",
+    "simple-peer": "^9.0.0",
+    "simple-sha1": "^2.0.8",
+    "speedometer": "^1.0.0",
+    "stream-to-blob": "^1.0.0",
+    "stream-to-blob-url": "^2.1.0",
+    "stream-with-known-length-to-buffer": "^1.0.0",
+    "torrent-discovery": "^8.3.1",
+    "torrent-piece": "^1.1.0",
+    "uniq": "^1.0.1",
+    "unordered-array-remove": "^1.0.2",
+    "ut_metadata": "^3.0.8",
+    "ut_pex": "^1.1.1",
+    "xtend": "^4.0.1",
+    "zero-fill": "^2.2.3"
+  },
+  "devDependencies": {
+    "airtap": "0.0.4",
+    "babel-minify": "^0.3.0",
+    "bittorrent-tracker": "^9.4.0",
+    "brfs": "^1.4.3",
+    "browserify": "^16.0.0",
+    "cross-spawn": "^6.0.3",
+    "electron": "^2.0.0",
+    "finalhandler": "^1.0.0",
+    "network-address": "^1.1.0",
+    "run-series": "^1.1.4",
+    "serve-static": "^1.11.1",
+    "standard": "*",
+    "tape": "^4.6.0",
+    "webtorrent-fixtures": "^1.5.0"
+  },
+  "engines": {
+    "node": ">=4"
+  },
+  "homepage": "https://webtorrent.io",
+  "keywords": [
+    "bittorrent",
+    "bittorrent client",
+    "download",
+    "mad science",
+    "p2p",
+    "peer-to-peer",
+    "peers",
+    "streaming",
+    "swarm",
+    "torrent",
+    "web torrent",
+    "webrtc",
+    "webrtc data",
+    "webtorrent"
+  ],
+  "license": "MIT",
+  "main": "index.js",
+  "repository": {
+    "user": "webtorrent",
+    "repo": "webtorrent",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/webtorrent/webtorrent/tarball/master",
+    "clone_url": "https://github.com/webtorrent/webtorrent",
+    "https_url": "https://github.com/webtorrent/webtorrent",
+    "travis_url": "https://travis-ci.org/webtorrent/webtorrent",
+    "zip_url": "https://github.com/webtorrent/webtorrent/archive/master.zip",
+    "api_url": "https://api.github.com/repos/webtorrent/webtorrent"
+  },
+  "scripts": {
+    "build": "browserify -s WebTorrent -e ./ | minify > webtorrent.min.js",
+    "build-debug": "browserify -s WebTorrent -e ./ > webtorrent.debug.js",
+    "size": "npm run build && cat webtorrent.min.js | gzip | wc -c",
+    "test": "standard && npm run test-node && npm run test-browser",
+    "test-browser": "airtap -- test/*.js test/browser/*.js",
+    "test-browser-local": "airtap --local -- test/*.js test/browser/*.js",
+    "test-node": "tape test/*.js test/node/*.js",
+    "update-authors": "./scripts/update-authors.sh"
+  },
+  "gitHead": "af8d52e7a1dc66b27e9310b7c8f904bc7b3cc74f",
+  "_npmVersion": "6.0.0",
+  "_nodeVersion": "8.11.1",
+  "dist": {
+    "integrity": "sha512-coJ61iJOFDrSzyCwmhlLaU8tvcchI5ZA0fH9Toj4wwUq/OTUNdjXtNXwpCb6ldbBnJ04lQzxyDeuSR3KtN0MWg==",
+    "shasum": "b5d4652c72f20f6ad3322b6ecbc7215cf83c6a89",
+    "tarball": "https://registry.npmjs.org/webtorrent/-/webtorrent-0.99.4.tgz",
+    "fileCount": 20,
+    "unpackedSize": 487212,
+    "npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJa66l2CRA9TVsSAnZWagAAVjcQAJIzaMHxHG/GcnjY9ZRp\nVBpEFycZQZNT9WW0v6J9FfH4PPTdKPAMPPoi2PI2RC16ew7hEzty8f4EZCu0\ny3RJxLDKUck5Xh7It2Tp/uPl1C6E4l/ViipF8k3dOtwlxQKfPdOn82UT4HXe\nYMhOctzJ9MQKLa54n0rVV7IsBJ1jCI72k53qBI8jcoaY/kUxLy+qc1elKRW0\njjluYqaGwjess+mNnzKNyyi+qRq3NQrw5s+UPaHJIUGgDeGUivNlHS12nFQi\n4KRrDGrEIKJlOTEli9FJoSCx1gI6p92VsI5Hp8YxF/TtcX5UxssQThxVZp++\nVDawbzxtt/32ObfhAM29FNrKSK+jlPdz94bSwyKZKss1nzFrdAgevaYfbF7j\nBvsW8ycNcctrWRsWniIWbj6eG0OudFAprVv7HyxRy0RY9nDm+R7y8E3Af05k\nBmKJMinN5ClZiaAm0JHdHyWXnC00fNTm0X3O4QI3oy0yW7Jstqkq1ZsvvAlk\no+VZYzOV5gMgHrDpeQt4dernvSLp8gOUJUCZVmFjYiOhZvwdDnCiZnbGffv9\n6qefdyu3bIpqRHY7ZrYrhct8zlhnO4oM7RZiD+D2dt0u77emT1MuX8WDWyqs\nYynSwAPV3/qjUYM9S0BYPhj1dhi5KqHf1WsaOBt+5ATIqqO+Wpk5h2VUKef5\nQQPH\r\n=uHoU\r\n-----END PGP SIGNATURE-----\r\n"
+  },
+  "_hasShrinkwrap": false,
+  "stars": 60,
+  "versions": [
+    {
+      "number": "0.0.1",
+      "date": "2013-10-22T22:02:15.214Z"
+    },
+    {
+      "number": "0.1.1",
+      "date": "2013-12-05T00:56:11.921Z"
+    },
+    {
+      "number": "0.1.2",
+      "date": "2014-02-01T03:55:29.463Z"
+    },
+    {
+      "number": "0.2.0",
+      "date": "2014-02-02T07:54:34.261Z"
+    },
+    {
+      "number": "0.2.1",
+      "date": "2014-02-05T06:29:11.754Z"
+    },
+    {
+      "number": "0.2.2",
+      "date": "2014-02-23T00:25:08.259Z"
+    },
+    {
+      "number": "0.2.3",
+      "date": "2014-02-23T23:37:50.227Z"
+    },
+    {
+      "number": "0.2.4",
+      "date": "2014-03-04T06:15:57.925Z"
+    },
+    {
+      "number": "0.2.5",
+      "date": "2014-04-23T22:43:26.142Z"
+    },
+    {
+      "number": "0.2.6",
+      "date": "2014-04-26T07:51:08.086Z"
+    },
+    {
+      "number": "0.2.7",
+      "date": "2014-05-18T10:45:17.064Z"
+    },
+    {
+      "number": "0.2.8",
+      "date": "2014-05-18T10:55:40.206Z"
+    },
+    {
+      "number": "0.2.9",
+      "date": "2014-05-18T11:28:14.334Z"
+    },
+    {
+      "number": "0.2.10",
+      "date": "2014-05-19T03:38:10.650Z"
+    },
+    {
+      "number": "0.2.11",
+      "date": "2014-05-19T04:30:20.781Z"
+    },
+    {
+      "number": "0.2.12",
+      "date": "2014-06-04T07:28:25.540Z"
+    },
+    {
+      "number": "0.2.13",
+      "date": "2014-06-05T01:05:05.851Z"
+    },
+    {
+      "number": "0.2.14",
+      "date": "2014-06-05T01:59:41.594Z"
+    },
+    {
+      "number": "0.2.15",
+      "date": "2014-06-05T02:02:48.973Z"
+    },
+    {
+      "number": "0.2.16",
+      "date": "2014-06-05T03:57:10.996Z"
+    },
+    {
+      "number": "0.2.17",
+      "date": "2014-06-06T07:02:29.304Z"
+    },
+    {
+      "number": "0.2.18",
+      "date": "2014-07-02T22:10:13.222Z"
+    },
+    {
+      "number": "0.3.0",
+      "date": "2014-07-29T08:09:17.814Z"
+    },
+    {
+      "number": "0.3.1",
+      "date": "2014-08-15T06:13:54.189Z"
+    },
+    {
+      "number": "0.3.2",
+      "date": "2014-08-15T07:13:12.697Z"
+    },
+    {
+      "number": "0.3.3",
+      "date": "2014-08-15T07:29:14.510Z"
+    },
+    {
+      "number": "0.4.0",
+      "date": "2014-08-17T09:42:38.738Z"
+    },
+    {
+      "number": "0.5.0",
+      "date": "2014-08-17T10:24:06.309Z"
+    },
+    {
+      "number": "0.5.1",
+      "date": "2014-08-18T02:45:54.523Z"
+    },
+    {
+      "number": "0.5.2",
+      "date": "2014-09-04T05:41:01.353Z"
+    },
+    {
+      "number": "0.5.3",
+      "date": "2014-09-12T13:57:38.247Z"
+    },
+    {
+      "number": "0.5.4",
+      "date": "2014-09-12T14:17:59.607Z"
+    },
+    {
+      "number": "0.6.0",
+      "date": "2014-09-13T17:02:52.595Z"
+    },
+    {
+      "number": "0.7.0",
+      "date": "2014-09-15T16:25:44.867Z"
+    },
+    {
+      "number": "0.7.1",
+      "date": "2014-09-17T03:03:07.966Z"
+    },
+    {
+      "number": "0.7.2",
+      "date": "2014-09-17T03:46:31.290Z"
+    },
+    {
+      "number": "0.7.3",
+      "date": "2014-09-17T04:49:46.278Z"
+    },
+    {
+      "number": "0.8.0",
+      "date": "2014-09-21T04:04:34.023Z"
+    },
+    {
+      "number": "0.8.1",
+      "date": "2014-10-10T05:36:34.885Z"
+    },
+    {
+      "number": "0.8.2",
+      "date": "2014-10-14T05:10:55.635Z"
+    },
+    {
+      "number": "0.9.0",
+      "date": "2014-10-14T07:23:45.083Z"
+    },
+    {
+      "number": "0.10.0",
+      "date": "2014-10-20T03:40:06.465Z"
+    },
+    {
+      "number": "0.10.1",
+      "date": "2014-10-20T08:51:50.695Z"
+    },
+    {
+      "number": "0.10.2",
+      "date": "2014-10-22T01:37:16.893Z"
+    },
+    {
+      "number": "0.10.3",
+      "date": "2014-10-22T04:03:58.245Z"
+    },
+    {
+      "number": "0.11.0",
+      "date": "2014-10-22T06:30:10.394Z"
+    },
+    {
+      "number": "0.11.1",
+      "date": "2014-10-22T07:19:54.753Z"
+    },
+    {
+      "number": "0.11.2",
+      "date": "2014-10-25T05:42:28.518Z"
+    },
+    {
+      "number": "0.11.3",
+      "date": "2014-10-29T08:41:24.859Z"
+    },
+    {
+      "number": "0.12.0",
+      "date": "2014-11-03T00:18:56.304Z"
+    },
+    {
+      "number": "0.12.1",
+      "date": "2014-11-03T05:30:41.350Z"
+    },
+    {
+      "number": "0.13.0",
+      "date": "2014-11-06T05:19:09.283Z"
+    },
+    {
+      "number": "0.13.1",
+      "date": "2014-11-19T07:37:07.989Z"
+    },
+    {
+      "number": "0.14.0",
+      "date": "2014-11-20T16:05:32.288Z"
+    },
+    {
+      "number": "0.15.0",
+      "date": "2014-11-27T13:01:47.261Z"
+    },
+    {
+      "number": "0.16.0",
+      "date": "2014-11-29T08:00:10.206Z"
+    },
+    {
+      "number": "0.17.0",
+      "date": "2014-12-26T01:10:50.716Z"
+    },
+    {
+      "number": "0.17.1",
+      "date": "2014-12-27T07:04:40.943Z"
+    },
+    {
+      "number": "0.18.0",
+      "date": "2014-12-29T00:34:55.676Z"
+    },
+    {
+      "number": "0.19.0",
+      "date": "2014-12-30T05:37:27.079Z"
+    },
+    {
+      "number": "0.19.1",
+      "date": "2014-12-30T07:32:17.411Z"
+    },
+    {
+      "number": "0.20.0",
+      "date": "2014-12-31T09:12:53.380Z"
+    },
+    {
+      "number": "0.21.0",
+      "date": "2015-01-04T09:20:00.986Z"
+    },
+    {
+      "number": "0.22.0",
+      "date": "2015-01-05T06:17:37.840Z"
+    },
+    {
+      "number": "0.22.1",
+      "date": "2015-01-09T05:34:25.610Z"
+    },
+    {
+      "number": "0.23.0",
+      "date": "2015-01-10T06:21:15.669Z"
+    },
+    {
+      "number": "0.24.0",
+      "date": "2015-01-11T04:20:38.227Z"
+    },
+    {
+      "number": "0.25.0",
+      "date": "2015-01-12T01:14:55.883Z"
+    },
+    {
+      "number": "0.26.0",
+      "date": "2015-01-16T06:43:55.084Z"
+    },
+    {
+      "number": "0.27.0",
+      "date": "2015-01-26T19:37:46.784Z"
+    },
+    {
+      "number": "0.27.1",
+      "date": "2015-02-02T23:10:44.127Z"
+    },
+    {
+      "number": "0.27.2",
+      "date": "2015-02-19T02:34:44.535Z"
+    },
+    {
+      "number": "0.27.3",
+      "date": "2015-03-02T08:48:03.610Z"
+    },
+    {
+      "number": "0.28.0",
+      "date": "2015-03-04T20:43:33.886Z"
+    },
+    {
+      "number": "0.29.0",
+      "date": "2015-03-05T00:41:27.165Z"
+    },
+    {
+      "number": "0.29.1",
+      "date": "2015-03-17T19:49:01.986Z"
+    },
+    {
+      "number": "0.29.2",
+      "date": "2015-03-18T08:34:49.784Z"
+    },
+    {
+      "number": "0.29.3",
+      "date": "2015-03-19T00:22:36.089Z"
+    },
+    {
+      "number": "0.29.4",
+      "date": "2015-03-19T22:08:04.075Z"
+    },
+    {
+      "number": "0.30.0",
+      "date": "2015-03-20T02:53:07.066Z"
+    },
+    {
+      "number": "0.31.0",
+      "date": "2015-04-11T09:53:41.186Z"
+    },
+    {
+      "number": "0.32.0",
+      "date": "2015-04-11T17:35:43.305Z"
+    },
+    {
+      "number": "0.33.0",
+      "date": "2015-04-24T05:09:36.285Z"
+    },
+    {
+      "number": "0.34.0",
+      "date": "2015-05-03T20:41:09.223Z"
+    },
+    {
+      "number": "0.35.0",
+      "date": "2015-05-04T01:59:35.415Z"
+    },
+    {
+      "number": "0.36.0",
+      "date": "2015-05-05T00:18:06.430Z"
+    },
+    {
+      "number": "0.37.0",
+      "date": "2015-05-05T02:05:33.494Z"
+    },
+    {
+      "number": "0.37.1",
+      "date": "2015-05-05T04:25:51.182Z"
+    },
+    {
+      "number": "0.37.2",
+      "date": "2015-05-05T21:03:28.863Z"
+    },
+    {
+      "number": "0.38.0",
+      "date": "2015-05-12T09:44:23.097Z"
+    },
+    {
+      "number": "0.39.0",
+      "date": "2015-05-13T06:43:53.727Z"
+    },
+    {
+      "number": "0.40.0",
+      "date": "2015-05-16T03:25:34.139Z"
+    },
+    {
+      "number": "0.40.1",
+      "date": "2015-05-17T10:01:45.265Z"
+    },
+    {
+      "number": "0.40.2",
+      "date": "2015-05-18T05:38:21.347Z"
+    },
+    {
+      "number": "0.41.0",
+      "date": "2015-05-18T06:23:03.333Z"
+    },
+    {
+      "number": "0.42.0",
+      "date": "2015-05-20T21:14:11.809Z"
+    },
+    {
+      "number": "0.43.0",
+      "date": "2015-05-22T11:59:07.688Z"
+    },
+    {
+      "number": "0.43.1",
+      "date": "2015-05-23T04:54:14.801Z"
+    },
+    {
+      "number": "0.44.0",
+      "date": "2015-05-23T06:53:42.035Z"
+    },
+    {
+      "number": "0.45.0",
+      "date": "2015-05-24T15:21:20.406Z"
+    },
+    {
+      "number": "0.46.0",
+      "date": "2015-05-24T16:11:16.541Z"
+    },
+    {
+      "number": "0.47.0",
+      "date": "2015-05-24T17:22:12.402Z"
+    },
+    {
+      "number": "0.47.1",
+      "date": "2015-05-28T00:59:07.430Z"
+    },
+    {
+      "number": "0.48.0",
+      "date": "2015-05-29T21:30:29.876Z"
+    },
+    {
+      "number": "0.48.1",
+      "date": "2015-05-30T03:24:29.882Z"
+    },
+    {
+      "number": "0.48.2",
+      "date": "2015-05-30T21:56:01.935Z"
+    },
+    {
+      "number": "0.48.3",
+      "date": "2015-06-01T16:29:18.628Z"
+    },
+    {
+      "number": "0.48.4",
+      "date": "2015-06-01T16:32:35.059Z"
+    },
+    {
+      "number": "0.48.5",
+      "date": "2015-06-01T17:08:33.888Z"
+    },
+    {
+      "number": "0.48.6",
+      "date": "2015-06-11T02:39:04.957Z"
+    },
+    {
+      "number": "0.49.0",
+      "date": "2015-06-11T04:21:22.536Z"
+    },
+    {
+      "number": "0.49.1",
+      "date": "2015-06-12T01:24:07.890Z"
+    },
+    {
+      "number": "0.49.2",
+      "date": "2015-06-17T00:12:56.235Z"
+    },
+    {
+      "number": "0.50.0",
+      "date": "2015-06-28T11:02:35.064Z"
+    },
+    {
+      "number": "0.50.1",
+      "date": "2015-06-28T11:38:15.777Z"
+    },
+    {
+      "number": "0.50.2",
+      "date": "2015-06-29T09:50:10.754Z"
+    },
+    {
+      "number": "0.50.3",
+      "date": "2015-07-03T00:58:05.328Z"
+    },
+    {
+      "number": "0.51.0",
+      "date": "2015-07-03T04:53:15.125Z"
+    },
+    {
+      "number": "0.51.1",
+      "date": "2015-07-05T00:26:22.902Z"
+    },
+    {
+      "number": "0.52.0",
+      "date": "2015-07-08T02:03:40.745Z"
+    },
+    {
+      "number": "0.52.1",
+      "date": "2015-07-15T20:58:21.937Z"
+    },
+    {
+      "number": "0.53.0",
+      "date": "2015-07-16T04:47:17.014Z"
+    },
+    {
+      "number": "0.53.1",
+      "date": "2015-07-17T03:25:48.678Z"
+    },
+    {
+      "number": "0.53.2",
+      "date": "2015-07-17T04:50:36.688Z"
+    },
+    {
+      "number": "0.53.3",
+      "date": "2015-07-17T06:25:30.935Z"
+    },
+    {
+      "number": "0.53.4",
+      "date": "2015-07-27T00:18:45.232Z"
+    },
+    {
+      "number": "0.54.0",
+      "date": "2015-07-27T01:40:36.085Z"
+    },
+    {
+      "number": "0.54.1",
+      "date": "2015-07-28T05:39:45.856Z"
+    },
+    {
+      "number": "0.54.3",
+      "date": "2015-07-29T09:32:23.776Z"
+    },
+    {
+      "number": "0.55.0",
+      "date": "2015-07-30T09:37:35.366Z"
+    },
+    {
+      "number": "0.55.1",
+      "date": "2015-08-10T12:45:23.454Z"
+    },
+    {
+      "number": "0.56.0",
+      "date": "2015-08-10T15:15:32.051Z"
+    },
+    {
+      "number": "0.57.0",
+      "date": "2015-08-12T11:44:05.043Z"
+    },
+    {
+      "number": "0.58.0",
+      "date": "2015-08-23T01:52:28.791Z"
+    },
+    {
+      "number": "0.59.0",
+      "date": "2015-08-23T19:35:31.929Z"
+    },
+    {
+      "number": "0.60.0",
+      "date": "2015-08-23T22:29:41.253Z"
+    },
+    {
+      "number": "0.60.1",
+      "date": "2015-08-28T18:58:21.284Z"
+    },
+    {
+      "number": "0.61.0",
+      "date": "2015-09-02T21:22:50.488Z"
+    },
+    {
+      "number": "0.62.0",
+      "date": "2015-09-02T21:25:52.743Z"
+    },
+    {
+      "number": "0.62.1",
+      "date": "2015-09-22T19:54:01.498Z"
+    },
+    {
+      "number": "0.62.2",
+      "date": "2015-10-05T20:06:49.792Z"
+    },
+    {
+      "number": "0.62.3",
+      "date": "2015-10-24T00:44:24.224Z"
+    },
+    {
+      "number": "0.63.0",
+      "date": "2015-12-02T10:10:28.194Z"
+    },
+    {
+      "number": "0.63.1",
+      "date": "2015-12-02T21:01:33.417Z"
+    },
+    {
+      "number": "0.63.2",
+      "date": "2015-12-04T04:21:28.926Z"
+    },
+    {
+      "number": "0.63.3",
+      "date": "2015-12-07T12:40:42.886Z"
+    },
+    {
+      "number": "0.63.4",
+      "date": "2015-12-17T11:37:16.453Z"
+    },
+    {
+      "number": "0.64.0",
+      "date": "2015-12-27T14:15:00.106Z"
+    },
+    {
+      "number": "0.65.0",
+      "date": "2015-12-28T13:33:27.993Z"
+    },
+    {
+      "number": "0.65.1",
+      "date": "2015-12-28T16:57:26.034Z"
+    },
+    {
+      "number": "0.66.0",
+      "date": "2015-12-29T18:47:23.255Z"
+    },
+    {
+      "number": "0.67.0",
+      "date": "2015-12-30T02:17:23.355Z"
+    },
+    {
+      "number": "0.67.1",
+      "date": "2016-01-01T20:08:46.417Z"
+    },
+    {
+      "number": "0.68.0",
+      "date": "2016-01-02T13:31:31.443Z"
+    },
+    {
+      "number": "0.69.0",
+      "date": "2016-01-04T00:18:10.460Z"
+    },
+    {
+      "number": "0.70.0",
+      "date": "2016-01-04T00:58:06.453Z"
+    },
+    {
+      "number": "0.71.0",
+      "date": "2016-01-06T04:34:00.676Z"
+    },
+    {
+      "number": "0.71.1",
+      "date": "2016-01-06T12:16:43.574Z"
+    },
+    {
+      "number": "0.71.3",
+      "date": "2016-01-08T03:00:24.074Z"
+    },
+    {
+      "number": "0.71.4",
+      "date": "2016-01-09T21:04:16.919Z"
+    },
+    {
+      "number": "0.72.0",
+      "date": "2016-01-10T03:44:31.063Z"
+    },
+    {
+      "number": "0.72.1",
+      "date": "2016-01-11T01:12:13.200Z"
+    },
+    {
+      "number": "0.72.2",
+      "date": "2016-01-19T02:52:42.969Z"
+    },
+    {
+      "number": "0.73.0",
+      "date": "2016-02-03T06:23:24.067Z"
+    },
+    {
+      "number": "0.73.1",
+      "date": "2016-02-07T21:11:02.030Z"
+    },
+    {
+      "number": "0.73.2",
+      "date": "2016-02-07T22:07:22.237Z"
+    },
+    {
+      "number": "0.74.0",
+      "date": "2016-02-10T07:18:01.354Z"
+    },
+    {
+      "number": "0.74.1",
+      "date": "2016-02-11T00:04:36.485Z"
+    },
+    {
+      "number": "0.74.2",
+      "date": "2016-02-12T20:16:50.118Z"
+    },
+    {
+      "number": "0.75.0",
+      "date": "2016-02-14T08:47:55.701Z"
+    },
+    {
+      "number": "0.76.0",
+      "date": "2016-02-16T07:56:47.852Z"
+    },
+    {
+      "number": "0.77.0",
+      "date": "2016-02-19T02:22:06.986Z"
+    },
+    {
+      "number": "0.78.0",
+      "date": "2016-02-19T04:17:07.673Z"
+    },
+    {
+      "number": "0.78.1",
+      "date": "2016-02-21T04:41:05.263Z"
+    },
+    {
+      "number": "0.79.0",
+      "date": "2016-02-27T22:19:34.068Z"
+    },
+    {
+      "number": "0.79.1",
+      "date": "2016-02-28T03:13:48.945Z"
+    },
+    {
+      "number": "0.80.0",
+      "date": "2016-03-01T04:44:30.656Z"
+    },
+    {
+      "number": "0.81.0",
+      "date": "2016-03-01T05:58:55.082Z"
+    },
+    {
+      "number": "0.81.1",
+      "date": "2016-03-02T04:48:42.492Z"
+    },
+    {
+      "number": "0.81.2",
+      "date": "2016-03-02T09:15:09.171Z"
+    },
+    {
+      "number": "0.82.0",
+      "date": "2016-03-03T22:02:25.869Z"
+    },
+    {
+      "number": "0.82.1",
+      "date": "2016-03-04T09:23:57.328Z"
+    },
+    {
+      "number": "0.83.0",
+      "date": "2016-03-09T03:41:28.483Z"
+    },
+    {
+      "number": "0.84.0",
+      "date": "2016-03-11T02:03:18.504Z"
+    },
+    {
+      "number": "0.84.1",
+      "date": "2016-03-11T02:55:25.543Z"
+    },
+    {
+      "number": "0.85.0",
+      "date": "2016-03-11T07:48:20.925Z"
+    },
+    {
+      "number": "0.85.1",
+      "date": "2016-03-11T08:02:51.982Z"
+    },
+    {
+      "number": "0.85.2",
+      "date": "2016-03-16T20:54:27.979Z"
+    },
+    {
+      "number": "0.85.3",
+      "date": "2016-03-16T21:01:12.988Z"
+    },
+    {
+      "number": "0.85.4",
+      "date": "2016-03-16T21:30:39.992Z"
+    },
+    {
+      "number": "0.86.0",
+      "date": "2016-03-18T22:53:20.117Z"
+    },
+    {
+      "number": "0.86.1",
+      "date": "2016-03-19T23:08:00.915Z"
+    },
+    {
+      "number": "0.86.2",
+      "date": "2016-03-24T05:43:46.113Z"
+    },
+    {
+      "number": "0.87.0",
+      "date": "2016-03-25T02:19:33.149Z"
+    },
+    {
+      "number": "0.87.1",
+      "date": "2016-03-25T02:54:03.136Z"
+    },
+    {
+      "number": "0.88.0",
+      "date": "2016-03-29T05:19:47.549Z"
+    },
+    {
+      "number": "0.88.1",
+      "date": "2016-03-29T09:54:30.050Z"
+    },
+    {
+      "number": "0.88.2",
+      "date": "2016-03-30T07:26:27.800Z"
+    },
+    {
+      "number": "0.88.3",
+      "date": "2016-03-30T09:21:21.356Z"
+    },
+    {
+      "number": "0.89.0",
+      "date": "2016-04-01T07:55:55.748Z"
+    },
+    {
+      "number": "0.90.0",
+      "date": "2016-04-02T08:18:45.106Z"
+    },
+    {
+      "number": "0.90.1",
+      "date": "2016-04-06T04:48:18.485Z"
+    },
+    {
+      "number": "0.90.2",
+      "date": "2016-04-06T08:32:51.697Z"
+    },
+    {
+      "number": "0.90.3",
+      "date": "2016-04-07T01:20:36.893Z"
+    },
+    {
+      "number": "0.91.0",
+      "date": "2016-04-22T01:34:54.337Z"
+    },
+    {
+      "number": "0.91.1",
+      "date": "2016-04-24T01:03:57.864Z"
+    },
+    {
+      "number": "0.91.2",
+      "date": "2016-04-28T09:52:42.300Z"
+    },
+    {
+      "number": "0.91.3",
+      "date": "2016-05-04T12:28:48.944Z"
+    },
+    {
+      "number": "0.91.4",
+      "date": "2016-05-04T22:47:09.218Z"
+    },
+    {
+      "number": "0.92.0",
+      "date": "2016-05-05T13:21:34.504Z"
+    },
+    {
+      "number": "0.93.0",
+      "date": "2016-05-08T18:56:53.207Z"
+    },
+    {
+      "number": "0.93.1",
+      "date": "2016-05-08T20:46:55.769Z"
+    },
+    {
+      "number": "0.93.2",
+      "date": "2016-05-13T02:14:26.512Z"
+    },
+    {
+      "number": "0.93.3",
+      "date": "2016-05-14T04:55:59.224Z"
+    },
+    {
+      "number": "0.93.4",
+      "date": "2016-05-18T01:03:49.903Z"
+    },
+    {
+      "number": "0.94.0",
+      "date": "2016-05-20T02:15:44.846Z"
+    },
+    {
+      "number": "0.94.1",
+      "date": "2016-05-26T22:02:19.148Z"
+    },
+    {
+      "number": "0.94.2",
+      "date": "2016-05-29T00:44:20.565Z"
+    },
+    {
+      "number": "0.94.3",
+      "date": "2016-05-30T08:51:05.099Z"
+    },
+    {
+      "number": "0.94.4",
+      "date": "2016-06-11T06:46:27.348Z"
+    },
+    {
+      "number": "0.95.0",
+      "date": "2016-06-15T16:03:27.849Z"
+    },
+    {
+      "number": "0.95.1",
+      "date": "2016-06-15T22:41:17.130Z"
+    },
+    {
+      "number": "0.95.2",
+      "date": "2016-06-22T09:03:22.207Z"
+    },
+    {
+      "number": "0.95.3",
+      "date": "2016-07-26T23:26:16.759Z"
+    },
+    {
+      "number": "0.95.4",
+      "date": "2016-07-27T04:05:42.767Z"
+    },
+    {
+      "number": "0.95.5",
+      "date": "2016-07-27T05:47:08.708Z"
+    },
+    {
+      "number": "0.95.6",
+      "date": "2016-07-28T20:58:26.640Z"
+    },
+    {
+      "number": "0.96.0",
+      "date": "2016-08-04T02:37:41.081Z"
+    },
+    {
+      "number": "0.96.1",
+      "date": "2016-08-18T23:33:40.871Z"
+    },
+    {
+      "number": "0.96.2",
+      "date": "2016-08-21T05:32:31.874Z"
+    },
+    {
+      "number": "0.96.3",
+      "date": "2016-08-22T23:26:14.651Z"
+    },
+    {
+      "number": "0.96.4",
+      "date": "2016-08-23T09:43:28.844Z"
+    },
+    {
+      "number": "0.96.5",
+      "date": "2016-09-13T16:50:48.079Z"
+    },
+    {
+      "number": "0.97.0",
+      "date": "2016-09-17T18:07:52.150Z"
+    },
+    {
+      "number": "0.97.1",
+      "date": "2016-09-18T04:39:41.471Z"
+    },
+    {
+      "number": "0.97.2",
+      "date": "2016-09-27T03:32:57.914Z"
+    },
+    {
+      "number": "0.98.0",
+      "date": "2016-11-23T20:43:40.857Z"
+    },
+    {
+      "number": "0.98.1",
+      "date": "2017-01-13T22:49:18.473Z"
+    },
+    {
+      "number": "0.98.2",
+      "date": "2017-01-18T09:05:12.676Z"
+    },
+    {
+      "number": "0.98.3",
+      "date": "2017-01-19T23:42:38.787Z"
+    },
+    {
+      "number": "0.98.4",
+      "date": "2017-02-03T00:27:17.199Z"
+    },
+    {
+      "number": "0.98.5",
+      "date": "2017-02-03T00:42:33.481Z"
+    },
+    {
+      "number": "0.98.6",
+      "date": "2017-02-10T05:21:16.802Z"
+    },
+    {
+      "number": "0.98.7",
+      "date": "2017-02-12T03:24:19.561Z"
+    },
+    {
+      "number": "0.98.8",
+      "date": "2017-02-14T02:14:10.562Z"
+    },
+    {
+      "number": "0.98.9",
+      "date": "2017-03-02T06:41:41.043Z"
+    },
+    {
+      "number": "0.98.10",
+      "date": "2017-03-06T22:02:30.634Z"
+    },
+    {
+      "number": "0.98.11",
+      "date": "2017-03-13T20:11:44.993Z"
+    },
+    {
+      "number": "0.98.12",
+      "date": "2017-03-13T21:13:53.271Z"
+    },
+    {
+      "number": "0.98.13",
+      "date": "2017-03-16T23:24:09.914Z"
+    },
+    {
+      "number": "0.98.14",
+      "date": "2017-03-17T21:32:34.092Z"
+    },
+    {
+      "number": "0.98.15",
+      "date": "2017-03-31T00:15:48.482Z"
+    },
+    {
+      "number": "0.98.16",
+      "date": "2017-04-08T00:42:50.166Z"
+    },
+    {
+      "number": "0.98.17",
+      "date": "2017-04-13T22:35:09.854Z"
+    },
+    {
+      "number": "0.98.18",
+      "date": "2017-04-14T21:42:42.874Z"
+    },
+    {
+      "number": "0.98.19",
+      "date": "2017-06-26T18:50:11.243Z"
+    },
+    {
+      "number": "0.98.20",
+      "date": "2017-10-18T00:43:53.501Z"
+    },
+    {
+      "number": "0.98.21",
+      "date": "2018-01-26T08:52:07.630Z"
+    },
+    {
+      "number": "0.98.23",
+      "date": "2018-02-20T23:41:51.975Z"
+    },
+    {
+      "number": "0.98.24",
+      "date": "2018-03-02T22:40:40.284Z"
+    },
+    {
+      "number": "0.99.0",
+      "date": "2018-04-20T00:19:03.390Z"
+    },
+    {
+      "number": "0.99.1",
+      "date": "2018-04-25T00:55:59.016Z"
+    },
+    {
+      "number": "0.99.2",
+      "date": "2018-04-25T01:14:43.490Z"
+    },
+    {
+      "number": "0.99.3",
+      "date": "2018-04-27T00:05:46.771Z"
+    },
+    {
+      "number": "0.99.4",
+      "date": "2018-05-04T00:29:40.066Z"
+    }
+  ],
+  "created": "2013-10-22T22:02:13.886Z",
+  "modified": "2018-05-04T00:29:44.471Z",
+  "lastPublisher": {
+    "name": "feross",
+    "email": "feross@feross.org"
+  },
+  "owners": [
+    {
+      "email": "dcposch@dcpos.ch",
+      "name": "dcposch"
+    },
+    {
+      "email": "diegorbaquero@gmail.com",
+      "name": "diegorbaquero"
+    },
+    {
+      "email": "feross@feross.org",
+      "name": "feross"
+    },
+    {
+      "email": "fisch0920@gmail.com",
+      "name": "fisch0920"
+    },
+    {
+      "email": "flettre@gmail.com",
+      "name": "flet"
+    },
+    {
+      "email": "mathiasbuus@gmail.com",
+      "name": "mafintosh"
+    },
+    {
+      "email": "ungoldman@gmail.com",
+      "name": "ungoldman"
+    },
+    {
+      "email": "w@tson.dk",
+      "name": "watson"
+    }
+  ]
+}

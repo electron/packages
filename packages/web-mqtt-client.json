@@ -1,0 +1,113 @@
+{
+  "name": "web-mqtt-client",
+  "version": "1.3.1",
+  "description": "A better MQTT API for the browser",
+  "main": "mqtt-client.js",
+  "files": [
+    "mqtt-client.js",
+    "mqtt-client.min.js"
+  ],
+  "scripts": {
+    "test": "electron-mocha --renderer --R spec --preload paho/mqttws31.js --preload mqtt-client.js ./test/",
+    "develop": "onchange 'mqtt-client.js' 'test/*' -- npm t",
+    "minify": "uglifyjs mqtt-client.js -o mqtt-client.min.js -c --m --screw-ie8",
+    "lint": "eslint --fix -c config/eslint.conf mqtt-client.js; exit 0",
+    "precoverage:test": "mkdir -p coverage && istanbul instrument mqtt-client.js -o coverage/mqtt-client.instrumented.js",
+    "coverage:test": "istanbul cover electron-mocha -- --renderer --R spec --preload paho/mqttws31.js --preload coverage/mqtt-client.instrumented.js ./test/ ./test/coverage/coverageReport.js",
+    "coverage:details": "istanbul report lcov && opn coverage/lcov-report/index.html",
+    "ghp-deploy": "git subtree push --prefix demo origin gh-pages"
+  },
+  "repository": {
+    "user": "orbitbot",
+    "repo": "web-mqtt-client",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/orbitbot/web-mqtt-client/tarball/master",
+    "clone_url": "https://github.com/orbitbot/web-mqtt-client",
+    "https_url": "https://github.com/orbitbot/web-mqtt-client",
+    "travis_url": "https://travis-ci.org/orbitbot/web-mqtt-client",
+    "zip_url": "https://github.com/orbitbot/web-mqtt-client/archive/master.zip",
+    "api_url": "https://api.github.com/repos/orbitbot/web-mqtt-client"
+  },
+  "keywords": [
+    "mqtt",
+    "mqtt-client",
+    "paho"
+  ],
+  "author": {
+    "name": "Patrik Johnson",
+    "email": "patrik@zebros.fi"
+  },
+  "license": "ISC",
+  "homepage": "https://github.com/orbitbot/web-mqtt-client#readme",
+  "devDependencies": {
+    "chai": "3.5.0",
+    "electron-mocha": "2.1.0",
+    "eslint": "2.10.2",
+    "eslint-config-airbnb": "9.0.1",
+    "eslint-plugin-react": "5.1.1",
+    "istanbul": "0.4.3",
+    "istanbul-text-full-reporter": "0.1.2",
+    "mosca": "1.3.0",
+    "onchange": "2.4.0",
+    "opn-cli": "3.1.0",
+    "sinon": "1.17.4",
+    "uglify-js": "2.6.2"
+  },
+  "dependencies": {},
+  "gitHead": "ef5ac26a14f8df11486807daafe9b029e7220061",
+  "_npmVersion": "5.0.3",
+  "_nodeVersion": "8.1.2",
+  "dist": {
+    "integrity": "sha512-xgiYHhezU262KFi7Ky/2bVmiq3QPmaS84HpHu1C6Hhb5N1THdhANEsHv5ws8N1jTAv6r0qyG0xB60UuD9JkUuQ==",
+    "shasum": "b61a2ce65ea8654eac899f98e94a0e1c6eb3d6bf",
+    "tarball": "https://registry.npmjs.org/web-mqtt-client/-/web-mqtt-client-1.3.1.tgz"
+  },
+  "versions": [
+    {
+      "number": "0.9.0",
+      "date": "2016-03-03T19:18:26.740Z"
+    },
+    {
+      "number": "1.0.0",
+      "date": "2016-03-28T14:12:57.043Z"
+    },
+    {
+      "number": "1.0.1",
+      "date": "2016-05-22T14:36:16.727Z"
+    },
+    {
+      "number": "1.1.0",
+      "date": "2016-05-26T15:07:33.207Z"
+    },
+    {
+      "number": "1.2.0",
+      "date": "2016-06-06T15:25:26.052Z"
+    },
+    {
+      "number": "1.2.1",
+      "date": "2016-07-08T15:06:42.912Z"
+    },
+    {
+      "number": "1.3.0",
+      "date": "2017-01-07T13:34:07.821Z"
+    },
+    {
+      "number": "1.3.1",
+      "date": "2017-06-17T09:18:16.313Z"
+    }
+  ],
+  "created": "2016-03-03T19:18:26.740Z",
+  "modified": "2017-06-17T09:18:16.313Z",
+  "lastPublisher": {
+    "name": "orbitbot",
+    "email": "patrik@zebros.fi"
+  },
+  "owners": [
+    {
+      "name": "orbitbot",
+      "email": "patrik@zebros.fi"
+    }
+  ]
+}

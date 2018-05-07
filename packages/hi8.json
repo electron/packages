@@ -1,0 +1,97 @@
+{
+  "name": "hi8",
+  "description": "See Earth from Himawari-8 on your desktop every 10 minutes.",
+  "version": "0.1.2",
+  "author": {
+    "name": "Nate Goldman",
+    "email": "ungoldman@gmail.com"
+  },
+  "bin": {
+    "hi8": "./bin.js"
+  },
+  "dependencies": {
+    "daemon": "^1.1.0",
+    "electron": "^1.4.2",
+    "himawari-bg": "^1.0.0"
+  },
+  "devDependencies": {
+    "gh-pages": "^0.11.0",
+    "live-server": "^1.1.0",
+    "npm-run-all": "^3.1.0",
+    "sitedown": "^3.0.1",
+    "standard": "^8.3.0"
+  },
+  "homepage": "https://github.com/ungoldman/hi8",
+  "keywords": [
+    "app",
+    "application",
+    "background",
+    "desktop",
+    "earth",
+    "himawari",
+    "himawari-8",
+    "image",
+    "satellite",
+    "wallpaper"
+  ],
+  "license": "ISC",
+  "main": "index.js",
+  "repository": {
+    "user": "ungoldman",
+    "repo": "hi8",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/ungoldman/hi8/tarball/master",
+    "clone_url": "https://github.com/ungoldman/hi8",
+    "https_url": "https://github.com/ungoldman/hi8",
+    "travis_url": "https://travis-ci.org/ungoldman/hi8",
+    "zip_url": "https://github.com/ungoldman/hi8/archive/master.zip",
+    "api_url": "https://api.github.com/repos/ungoldman/hi8"
+  },
+  "scripts": {
+    "gh-pages": "npm run site && gh-pages -d site",
+    "preview": "npm-run-all site --parallel serve:*",
+    "serve:site": "live-server site",
+    "serve:watch": "npm run site:html -- -w",
+    "site": "run-s site:*",
+    "site:clean": "rm -rf site",
+    "site:html": "sitedown -b site -l assets/layout.html",
+    "site:img": "cp -R assets/ site/assets/",
+    "start": "electron .",
+    "test": "standard"
+  },
+  "gitHead": "7c77b973ab682811641e44931c64c10353a9bff2",
+  "_npmVersion": "3.10.3",
+  "_nodeVersion": "6.3.1",
+  "dist": {
+    "shasum": "6329136a762ff42c5c69973b939c660b2d0a2974",
+    "tarball": "http://registry.npmjs.org/hi8/-/hi8-0.1.2.tgz"
+  },
+  "versions": [
+    {
+      "number": "0.1.0",
+      "date": "2016-10-04T01:16:49.745Z"
+    },
+    {
+      "number": "0.1.1",
+      "date": "2016-10-04T01:29:30.916Z"
+    },
+    {
+      "number": "0.1.2",
+      "date": "2016-10-04T17:21:23.494Z"
+    }
+  ],
+  "created": "2016-10-04T01:16:49.745Z",
+  "modified": "2016-10-04T17:21:23.494Z",
+  "lastPublisher": {
+    "name": "ungoldman",
+    "email": "ungoldman@gmail.com"
+  },
+  "owners": [
+    {
+      "name": "ungoldman",
+      "email": "ungoldman@gmail.com"
+    }
+  ]
+}

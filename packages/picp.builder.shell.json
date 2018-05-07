@@ -1,0 +1,66 @@
+{
+  "name": "picp.builder.shell",
+  "version": "1.2.8",
+  "description": "Pictorial Preflight Builder Electron Shell",
+  "main": "app/main.js",
+  "productName": "picp.builder",
+  "author": {
+    "name": "FlightSafety International"
+  },
+  "scripts": {
+    "start": "electron .",
+    "install": "node install.js",
+    "test": "mocha --reporter spec",
+    "buildosx": "electron-packager app picp.builder --app-version=$npm_package_version --platform=darwin --arch=all --version=1.4.1 --overwrite --out=dist --icon=app/icon.icns",
+    "buildwin": "electron-packager app picp.builder --app-version=1.1.0 --platform=win32 --arch=x64 --version=1.4.1 --overwrite --out=dist --icon=app/icon.ico",
+    "pack": "build --dir",
+    "dist": "build --win --x64",
+    "publish": "node publish && build --win --x64"
+  },
+  "build": {
+    "appId": "fsi.picp.builder",
+    "win": {
+      "iconUrl": "http://www.iconj.com/ico/j/o/jovcvkvivw.ico"
+    }
+  },
+  "keywords": [
+    "Walkaround",
+    "builder"
+  ],
+  "license": "CC0-1.0",
+  "devDependencies": {
+    "electron-builder": "^5.26.0",
+    "electron-packager": "^7.5.1",
+    "electron-prebuilt": "^1.2.0",
+    "ncp": "^2.0.0"
+  },
+  "gitHead": "efbbfdd4653dfc52a646dd8485b1201b6931ccfa",
+  "_npmVersion": "3.10.10",
+  "_nodeVersion": "6.9.4",
+  "dist": {
+    "shasum": "6f12ea206c4e48866d1cbbe7fd40c99919cbebf8",
+    "tarball": "https://registry.npmjs.org/picp.builder.shell/-/picp.builder.shell-1.2.8.tgz"
+  },
+  "versions": [
+    {
+      "number": "1.2.4",
+      "date": "2017-03-14T13:51:14.666Z"
+    },
+    {
+      "number": "1.2.8",
+      "date": "2017-03-29T18:13:37.302Z"
+    }
+  ],
+  "created": "2017-03-14T13:51:14.666Z",
+  "modified": "2017-03-29T18:13:37.302Z",
+  "lastPublisher": {
+    "name": "p00011345",
+    "email": "dawn.starlin@flightsafety.com"
+  },
+  "owners": [
+    {
+      "name": "p00011345",
+      "email": "dawn.starlin@flightsafety.com"
+    }
+  ]
+}

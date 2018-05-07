@@ -1,0 +1,113 @@
+{
+  "name": "gpmdp-electron-winstaller",
+  "version": "1.1.1",
+  "description": "Module to generate Windows installers for Electron apps",
+  "main": "./lib/index.js",
+  "license": "MIT",
+  "repository": {
+    "user": "electronjs",
+    "repo": "windows-installer",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/electronjs/windows-installer/tarball/master",
+    "clone_url": "https://github.com/electronjs/windows-installer",
+    "https_url": "https://github.com/electronjs/windows-installer",
+    "travis_url": "https://travis-ci.org/electronjs/windows-installer",
+    "zip_url": "https://github.com/electronjs/windows-installer/archive/master.zip",
+    "api_url": "https://api.github.com/repos/electronjs/windows-installer"
+  },
+  "scripts": {
+    "compile": "babel -d lib/ src/",
+    "prepublish": "npm run test && npm run compile",
+    "postinstall": "node lib/fetch-vendor.js",
+    "lint": "eslint src & eslint spec",
+    "pretest": "npm run compile && node lib/fetch-vendor.js",
+    "test": "npm run lint && ava",
+    "tdd": "ava --watch"
+  },
+  "dependencies": {
+    "asar": "^0.11.0",
+    "bluebird": "^3.3.4",
+    "debug": "^2.2.0",
+    "follow-redirects": "^0.2.0",
+    "fs-extra": "^0.26.7",
+    "lodash.template": "^4.2.2",
+    "node-fetch": "^1.6.0",
+    "temp": "^0.8.3",
+    "unzip": "^0.1.11"
+  },
+  "devDependencies": {
+    "ava": "^0.13.0",
+    "babel-cli": "^6.6.5",
+    "babel-eslint": "^6.0.2",
+    "babel-plugin-transform-async-to-module-method": "^6.7.0",
+    "babel-plugin-transform-runtime": "^6.6.0",
+    "babel-preset-es2015-node4": "^2.0.3",
+    "babel-preset-stage-0": "^6.5.0",
+    "babel-register": "^6.7.2",
+    "eslint": "^2.4.0"
+  },
+  "engines": {
+    "node": ">=0.4.0"
+  },
+  "babel": {
+    "presets": [
+      "stage-0",
+      "es2015-node4"
+    ],
+    "plugins": [
+      [
+        "transform-async-to-module-method",
+        {
+          "module": "bluebird",
+          "method": "coroutine"
+        }
+      ]
+    ]
+  },
+  "ava": {
+    "files": [
+      "spec/*.js"
+    ],
+    "failFast": true,
+    "require": [
+      "babel-register"
+    ],
+    "babel": "inherit"
+  },
+  "gitHead": "37ce16db8cb11548375450ef669f530a68bfd394",
+  "homepage": "https://github.com/electronjs/windows-installer#readme",
+  "_npmVersion": "3.10.8",
+  "_nodeVersion": "7.0.0",
+  "dist": {
+    "shasum": "60712d8a1aac474c17aed750cf8f582cee8e2095",
+    "tarball": "http://registry.npmjs.org/gpmdp-electron-winstaller/-/gpmdp-electron-winstaller-1.1.1.tgz"
+  },
+  "versions": [
+    {
+      "number": "1.0.0",
+      "date": "2016-10-16T01:34:19.029Z"
+    },
+    {
+      "number": "1.1.0",
+      "date": "2016-12-04T01:46:12.796Z"
+    },
+    {
+      "number": "1.1.1",
+      "date": "2016-12-04T01:59:27.969Z"
+    }
+  ],
+  "created": "2016-10-16T01:34:19.029Z",
+  "modified": "2016-12-04T01:59:27.969Z",
+  "lastPublisher": {
+    "name": "marshallofsound",
+    "email": "samuel.r.attard@gmail.com"
+  },
+  "owners": [
+    {
+      "name": "marshallofsound",
+      "email": "samuel.r.attard@gmail.com"
+    }
+  ]
+}

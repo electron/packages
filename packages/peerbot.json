@@ -1,0 +1,119 @@
+{
+  "name": "peerbot",
+  "description": "Message seeding utility for friends p2p chat.",
+  "version": "0.1.1",
+  "author": {
+    "name": "MOOSE Team"
+  },
+  "bin": {
+    "peerbot": "./bin/cli.js"
+  },
+  "dependencies": {
+    "end-of-stream": "^1.1.0",
+    "ghsign": "^1.2.2",
+    "hyperlog": "^3.3.1",
+    "leveldown": "github:maxogden/leveldown#newnan",
+    "levelup": "^0.19.0",
+    "minimist": "^1.1.1",
+    "node-gyp": "^1.0.3",
+    "protocol-buffers": "^3.0.0",
+    "request": "^2.55.0",
+    "shelljs": "^0.4.0",
+    "signalhub": "^3.3.0",
+    "silence-chromium": "^1.1.0",
+    "single-line-log": "^0.4.1",
+    "subleveldown": "^2.0.0",
+    "through2": "^0.6.5",
+    "webrtc-swarm": "^1.2.0"
+  },
+  "devDependencies": {
+    "standard": "^3.2.1"
+  },
+  "homepage": "https://github.com/moose-team/peerbot",
+  "keywords": [
+    "bot",
+    "chat",
+    "communication",
+    "crypto",
+    "discussion",
+    "friends",
+    "irc",
+    "mad science",
+    "p2p",
+    "peer-to-peer",
+    "replication",
+    "slack",
+    "team chat",
+    "webrtc"
+  ],
+  "license": "ISC",
+  "main": "index.js",
+  "repository": {
+    "user": "moose-team",
+    "repo": "peerbot",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/moose-team/peerbot/tarball/master",
+    "clone_url": "https://github.com/moose-team/peerbot",
+    "https_url": "https://github.com/moose-team/peerbot",
+    "travis_url": "https://travis-ci.org/moose-team/peerbot",
+    "zip_url": "https://github.com/moose-team/peerbot/archive/master.zip",
+    "api_url": "https://api.github.com/repos/moose-team/peerbot"
+  },
+  "scripts": {
+    "postinstall": "npm run rebuild-leveldb",
+    "rebuild-leveldb": "cd node_modules/leveldown && set HOME=~/.electron-gyp && node-gyp rebuild --target=0.25.1 --arch=x64 --dist-url=https://atom.io/download/atom-shell",
+    "start": "electron-spawn .",
+    "test": "standard"
+  },
+  "gitHead": "5055cb2974f1f1fca27e4c8ce0ca68cbcd02231a",
+  "_npmVersion": "2.8.3",
+  "_nodeVersion": "1.8.1",
+  "dist": {
+    "shasum": "0161bb8b03de2a6db824e953bf449a57b63f5092",
+    "tarball": "http://registry.npmjs.org/peerbot/-/peerbot-0.1.1.tgz"
+  },
+  "versions": [
+    {
+      "number": "0.0.0",
+      "date": "2015-04-30T22:19:11.909Z"
+    },
+    {
+      "number": "0.1.0",
+      "date": "2015-04-30T22:36:44.704Z"
+    },
+    {
+      "number": "0.1.1",
+      "date": "2015-04-30T22:48:03.877Z"
+    }
+  ],
+  "created": "2015-04-30T22:19:11.909Z",
+  "modified": "2017-07-22T18:27:16.578Z",
+  "lastPublisher": {
+    "name": "ngoldman",
+    "email": "nate@ngoldman.me"
+  },
+  "owners": [
+    {
+      "name": "ngoldman",
+      "email": "nate@ngoldman.me"
+    },
+    {
+      "name": "mafintosh",
+      "email": "mathiasbuus@gmail.com"
+    },
+    {
+      "name": "maxogden",
+      "email": "max@maxogden.com"
+    },
+    {
+      "name": "feross",
+      "email": "feross@feross.org"
+    },
+    {
+      "name": "flet",
+      "email": "flettre@gmail.com"
+    }
+  ]
+}

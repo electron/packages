@@ -1,0 +1,585 @@
+{
+  "name": "meteor-desktop",
+  "version": "0.17.2",
+  "bin": {
+    "meteor-desktop": "dist/bin/cli.js"
+  },
+  "engines": {
+    "node": ">=4.0.0"
+  },
+  "description": "Build a Meteor's desktop client with hot code push.",
+  "main": "dist/index.js",
+  "scripts": {
+    "test": "cross-env NODE_ENV=test nyc mocha -t 10000 -r ./tests/helpers/clear.js \"tests/+(unit|functional)/**/*.test.js\"",
+    "test-integration": "mocha -t 10000 --compilers js:@babel/register \"tests/+(integration)/**/*.test.js\"",
+    "test-watch": "mocha -r ./tests/helpers/clear.js --compilers js:@babel/register \"tests/+(unit|functional)/**/*.test.js\" --watch",
+    "lint": "eslint lib plugins scaffold skeleton tests",
+    "prepare-integration-tests": "node tests/integration/prepare.js",
+    "coverage-html": "nyc report --reporter=lcov",
+    "coverage": "nyc report --reporter=text-lcov | coveralls",
+    "report-coverage": "nyc report --reporter=lcov > coverage.lcov && codecov",
+    "version": "node dist/scripts/propagateVersion.js && git add plugins",
+    "postversion": "npm run publish-all",
+    "postinstall": "node dist/scripts/addToScripts || echo",
+    "publish-plugins": "(cls || reset) && cd plugins/bundler && (meteor publish --release=METEOR@1.5.2.2) && cd ../watcher && (meteor publish --release=METEOR@1.5.2.2)",
+    "prepublish": "npm run build || echo",
+    "publish-all": "npm run publish-plugins && npm publish",
+    "build": "babel lib --out-dir dist --source-maps inline --copy-files",
+    "build-watch": "babel lib --watch --out-dir dist --source-maps inline --copy-files",
+    "develop": "npm-run-all --parallel build-watch test-watch",
+    "generate-docs": "jsdoc2md skeleton/preload.js > docs/api/desktop.md && jsdoc2md skeleton/modules/module.js > docs/api/module.md"
+  },
+  "author": {
+    "name": "Bartosz Wojtkowiak",
+    "email": "bartosz@wojtkowiak.it"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "@babel/cli": "7.0.0-beta.40",
+    "@babel/register": "7.0.0-beta.40",
+    "babel-plugin-istanbul": "4.1.5",
+    "chai": "3.5.0",
+    "codecov": "1.0.1",
+    "connect": "3.5.0",
+    "connect-modrewrite": "0.9.0",
+    "coveralls": "2.11.16",
+    "cross-env": "3.1.4",
+    "dirty-chai": "1.2.2",
+    "eslint": "4.18.2",
+    "eslint-config-airbnb-base": "12.1.0",
+    "eslint-plugin-import": "2.9.0",
+    "find-port": "2.0.1",
+    "fs-plus": "2.9.3",
+    "import-fresh": "^2.0.0",
+    "jsdoc-to-markdown": "4.0.1",
+    "mocha": "2.5.3",
+    "mockery": "2.1.0",
+    "npm-run-all": "4.0.1",
+    "nyc": "11.4.1",
+    "proxyquire": "1.7.11",
+    "queue": "4.0.1",
+    "reify": "0.15.1",
+    "request": "2.79.0",
+    "rewire": "3.0.2",
+    "run-sequence": "1.2.2",
+    "send": "0.15.3",
+    "serve-static": "1.11.1",
+    "server-destroy": "1.0.1",
+    "sha1-file": "1.0.0",
+    "sinon": "1.17.7",
+    "sinon-chai": "2.8.0",
+    "spectron": "3.6.0",
+    "watch": "1.0.1"
+  },
+  "dependencies": {
+    "asar": "0.14.3",
+    "@babel/core": "7.0.0-beta.40",
+    "@babel/preset-env": "7.0.0-beta.40",
+    "@babel/runtime": "7.0.0-beta.40",
+    "commander": "2.9.0",
+    "cross-spawn": "5.0.1",
+    "del": "2.2.2",
+    "electron": "1.8.4",
+    "electron-builder": "20.10.0",
+    "electron-builder-lib": "20.10.0",
+    "electron-builder-squirrel-windows": "20.10.0",
+    "electron-packager": "12.0.1",
+    "glob": "7.1.1",
+    "isbinaryfile": "3.0.2",
+    "hash-files": "1.1.1",
+    "lodash": "4.17.4",
+    "node-fetch": "1.6.3",
+    "regenerator-runtime": "0.11.1",
+    "semver": "5.3.0",
+    "install-local": "0.5.0",
+    "rimraf": "2.5.4",
+    "semver-regex": "1.0.0",
+    "shelljs": "0.8.1",
+    "single-line-log": "1.1.2",
+    "uglify-es": "3.3.9"
+  },
+  "repository": {
+    "user": "wojtkowiak",
+    "repo": "meteor-desktop",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/wojtkowiak/meteor-desktop/tarball/master",
+    "clone_url": "https://github.com/wojtkowiak/meteor-desktop",
+    "https_url": "https://github.com/wojtkowiak/meteor-desktop",
+    "travis_url": "https://travis-ci.org/wojtkowiak/meteor-desktop",
+    "zip_url": "https://github.com/wojtkowiak/meteor-desktop/archive/master.zip",
+    "api_url": "https://api.github.com/repos/wojtkowiak/meteor-desktop"
+  },
+  "keywords": [
+    "electron",
+    "meteor",
+    "packager",
+    "desktop"
+  ],
+  "nyc": {
+    "exclude": [
+      "dist",
+      "node_modules",
+      "plugins",
+      "tests",
+      "scaffold",
+      "lib",
+      "devEnvSetup.js"
+    ],
+    "require": [
+      "@babel/register"
+    ],
+    "sourceMap": false,
+    "instrument": false,
+    "all": true
+  },
+  "homepage": "https://github.com/wojtkowiak/meteor-desktop",
+  "gitHead": "190b5beab195a95b71b34840214b9c0a63bcfbb4",
+  "_npmVersion": "5.6.0",
+  "_nodeVersion": "8.10.0",
+  "dist": {
+    "integrity": "sha512-6KPaH+86S/DRmsOuV1YEet4n8jYMLB8ZnBLumzQYnyz0giOHOJXKseJE8s33TpivAYk0ou8UGTV+R8xZvnVUWA==",
+    "shasum": "84f16c901cecb820aea1281851880fbbb202726e",
+    "tarball": "https://registry.npmjs.org/meteor-desktop/-/meteor-desktop-0.17.2.tgz",
+    "fileCount": 57,
+    "unpackedSize": 999455,
+    "npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJa5uFsCRA9TVsSAnZWagAAJqYP/2DEwrWLgdmhE+SqSq96\nLy4Mc3ffUGekxW2WnGHN0H4vV36NqwzbHGh3taof6nUGiseiIHn4Z9Vuxl3s\nglpYP2jqnPZ90J9AJu5r0PEh8ozFuG57Q2yA5SpL7AvAxY9L88ABmCMpv+rY\nxfukhhTlPdLSIiqDtkshkOQ3cYxKuA9eSIRv9cJi6zE9AEfozXSeFojaMDbC\n+6/pdA305+He6eveuLVpQl3ZmzmvQ7RN5cqri8LDJ9xyVxxuK5LuKjmhyDOc\nfbAW8Y/js8Wywb6S6jKyvXfc/mQt8yZK8hbIoZmaQUymxJteYDdB2/Ij9EvZ\nwba8vQABes24bQku18ykqy4vPw4aFUegM66ILZKFkPwdopHl+tWMyVM1OaJ/\nb1oRbRfEuEP4oMgZdyTRbEMN5iU8oQ2icVpJfo3lPyxQ5uW/YuBJ0HYpXMjh\nsn6eetoo2NeN0wEy09oJsysgLeVujN6caauCovQx4osbuz5wH9KstNVEUu2e\nR7/wnwCjKncqI54ajfQ9jWZTGjMeXBv0qFX73THeRZE/fW+TnTLB9jdH5AYe\nRXheBWA/jMDBrbZseEO82KwZ9GcTEb27wI10KpGGZQKuxJKvUWQBkjqx+9ma\nUHSgh+6IyTNOWCiThNiMihWQsgVMls0adCJ/eVnXHL/EE6AQac19gO4B8LV1\nR+US\r\n=Yaow\r\n-----END PGP SIGNATURE-----\r\n"
+  },
+  "_hasShrinkwrap": false,
+  "stars": 4,
+  "versions": [
+    {
+      "number": "0.0.25",
+      "date": "2016-06-22T13:58:41.607Z"
+    },
+    {
+      "number": "0.0.26",
+      "date": "2016-06-23T06:32:43.039Z"
+    },
+    {
+      "number": "0.0.27",
+      "date": "2016-06-23T07:41:44.949Z"
+    },
+    {
+      "number": "0.0.28",
+      "date": "2016-06-23T07:42:21.703Z"
+    },
+    {
+      "number": "0.0.29",
+      "date": "2016-06-23T08:11:49.591Z"
+    },
+    {
+      "number": "0.0.30",
+      "date": "2016-06-28T08:09:20.895Z"
+    },
+    {
+      "number": "0.0.31",
+      "date": "2016-06-28T09:08:36.856Z"
+    },
+    {
+      "number": "0.0.32",
+      "date": "2016-07-07T12:00:17.536Z"
+    },
+    {
+      "number": "0.0.33",
+      "date": "2016-07-07T13:53:47.393Z"
+    },
+    {
+      "number": "0.0.34",
+      "date": "2016-07-08T06:40:09.302Z"
+    },
+    {
+      "number": "0.0.35",
+      "date": "2016-07-08T06:58:13.941Z"
+    },
+    {
+      "number": "0.0.36",
+      "date": "2016-07-21T14:21:49.025Z"
+    },
+    {
+      "number": "0.0.37",
+      "date": "2016-07-22T06:04:55.509Z"
+    },
+    {
+      "number": "0.0.38",
+      "date": "2016-07-22T08:06:33.926Z"
+    },
+    {
+      "number": "0.0.39",
+      "date": "2016-07-22T09:49:49.168Z"
+    },
+    {
+      "number": "0.0.40",
+      "date": "2016-08-12T08:25:20.138Z"
+    },
+    {
+      "number": "0.0.41",
+      "date": "2016-08-16T08:38:55.320Z"
+    },
+    {
+      "number": "0.0.42",
+      "date": "2016-09-28T21:18:56.964Z"
+    },
+    {
+      "number": "0.0.43",
+      "date": "2016-09-29T10:34:31.168Z"
+    },
+    {
+      "number": "0.0.44",
+      "date": "2016-10-04T12:25:44.424Z"
+    },
+    {
+      "number": "0.0.47",
+      "date": "2016-10-05T12:36:48.021Z"
+    },
+    {
+      "number": "0.0.49",
+      "date": "2016-10-06T11:01:00.814Z"
+    },
+    {
+      "number": "0.0.50",
+      "date": "2016-10-06T23:39:07.137Z"
+    },
+    {
+      "number": "0.0.51",
+      "date": "2016-10-07T09:12:25.104Z"
+    },
+    {
+      "number": "0.0.52",
+      "date": "2016-10-07T09:49:34.876Z"
+    },
+    {
+      "number": "0.0.53",
+      "date": "2016-10-10T10:34:52.229Z"
+    },
+    {
+      "number": "0.0.55",
+      "date": "2016-10-10T21:07:45.123Z"
+    },
+    {
+      "number": "0.0.56",
+      "date": "2016-10-10T21:50:44.316Z"
+    },
+    {
+      "number": "0.0.57",
+      "date": "2016-10-11T08:28:25.188Z"
+    },
+    {
+      "number": "0.0.59",
+      "date": "2016-10-11T08:58:29.266Z"
+    },
+    {
+      "number": "0.0.60",
+      "date": "2016-10-11T09:28:45.650Z"
+    },
+    {
+      "number": "0.0.61",
+      "date": "2016-10-11T10:20:26.394Z"
+    },
+    {
+      "number": "0.0.62",
+      "date": "2016-10-11T11:40:43.939Z"
+    },
+    {
+      "number": "0.0.63",
+      "date": "2016-10-11T11:43:51.236Z"
+    },
+    {
+      "number": "0.0.64",
+      "date": "2016-10-11T11:45:41.685Z"
+    },
+    {
+      "number": "0.0.65",
+      "date": "2016-10-11T11:56:32.343Z"
+    },
+    {
+      "number": "0.0.66",
+      "date": "2016-10-12T06:57:35.566Z"
+    },
+    {
+      "number": "0.0.67",
+      "date": "2016-10-12T10:59:21.872Z"
+    },
+    {
+      "number": "0.0.68",
+      "date": "2016-10-17T10:07:22.899Z"
+    },
+    {
+      "number": "0.0.69",
+      "date": "2016-10-17T14:38:46.027Z"
+    },
+    {
+      "number": "0.0.70",
+      "date": "2016-10-18T21:43:04.581Z"
+    },
+    {
+      "number": "0.0.71",
+      "date": "2016-10-19T12:19:44.314Z"
+    },
+    {
+      "number": "0.0.72",
+      "date": "2016-10-20T14:17:09.727Z"
+    },
+    {
+      "number": "0.0.73",
+      "date": "2016-10-21T10:44:07.538Z"
+    },
+    {
+      "number": "0.0.74",
+      "date": "2016-10-21T11:22:24.360Z"
+    },
+    {
+      "number": "0.0.75",
+      "date": "2016-10-28T12:53:12.590Z"
+    },
+    {
+      "number": "0.0.76",
+      "date": "2016-11-01T21:24:34.006Z"
+    },
+    {
+      "number": "0.0.77",
+      "date": "2016-11-02T11:10:27.022Z"
+    },
+    {
+      "number": "0.0.78",
+      "date": "2016-11-03T00:01:07.183Z"
+    },
+    {
+      "number": "0.0.79",
+      "date": "2016-11-04T14:46:48.196Z"
+    },
+    {
+      "number": "0.0.80",
+      "date": "2016-11-04T14:52:31.463Z"
+    },
+    {
+      "number": "0.0.81",
+      "date": "2016-11-04T15:00:18.945Z"
+    },
+    {
+      "number": "0.0.82",
+      "date": "2016-11-05T00:15:10.394Z"
+    },
+    {
+      "number": "0.0.83",
+      "date": "2016-11-06T22:13:28.790Z"
+    },
+    {
+      "number": "0.1.0",
+      "date": "2016-11-07T01:22:31.646Z"
+    },
+    {
+      "number": "0.1.1",
+      "date": "2016-11-10T10:24:40.280Z"
+    },
+    {
+      "number": "0.1.2",
+      "date": "2016-11-13T20:22:18.380Z"
+    },
+    {
+      "number": "0.1.3",
+      "date": "2016-11-15T10:53:19.301Z"
+    },
+    {
+      "number": "0.1.4",
+      "date": "2016-11-16T08:43:20.161Z"
+    },
+    {
+      "number": "0.2.0",
+      "date": "2016-11-17T08:31:52.194Z"
+    },
+    {
+      "number": "0.2.1",
+      "date": "2016-11-23T21:06:30.014Z"
+    },
+    {
+      "number": "0.2.2",
+      "date": "2016-11-29T20:15:51.983Z"
+    },
+    {
+      "number": "0.2.3",
+      "date": "2016-12-06T22:47:47.941Z"
+    },
+    {
+      "number": "0.2.4",
+      "date": "2016-12-09T22:26:24.461Z"
+    },
+    {
+      "number": "0.2.5",
+      "date": "2016-12-10T00:44:52.704Z"
+    },
+    {
+      "number": "0.2.6",
+      "date": "2016-12-17T13:39:16.359Z"
+    },
+    {
+      "number": "0.3.0",
+      "date": "2017-01-10T14:19:51.401Z"
+    },
+    {
+      "number": "0.4.0",
+      "date": "2017-01-11T22:36:51.108Z"
+    },
+    {
+      "number": "0.5.0",
+      "date": "2017-02-11T19:36:57.542Z"
+    },
+    {
+      "number": "0.5.1",
+      "date": "2017-02-15T09:54:15.843Z"
+    },
+    {
+      "number": "0.5.2-0",
+      "date": "2017-02-17T08:47:57.913Z"
+    },
+    {
+      "number": "0.5.2",
+      "date": "2017-02-17T09:15:49.394Z"
+    },
+    {
+      "number": "0.5.3",
+      "date": "2017-02-17T11:57:27.569Z"
+    },
+    {
+      "number": "0.6.0",
+      "date": "2017-02-28T08:28:05.445Z"
+    },
+    {
+      "number": "0.6.1",
+      "date": "2017-03-02T15:16:29.117Z"
+    },
+    {
+      "number": "0.6.2",
+      "date": "2017-04-13T11:12:23.581Z"
+    },
+    {
+      "number": "0.7.0",
+      "date": "2017-05-04T12:10:52.644Z"
+    },
+    {
+      "number": "0.7.1",
+      "date": "2017-05-09T09:46:44.251Z"
+    },
+    {
+      "number": "0.7.2",
+      "date": "2017-06-13T06:38:11.360Z"
+    },
+    {
+      "number": "0.8.0",
+      "date": "2017-07-06T11:43:13.088Z"
+    },
+    {
+      "number": "0.8.1",
+      "date": "2017-08-10T12:16:29.205Z"
+    },
+    {
+      "number": "0.10.0",
+      "date": "2017-09-12T11:14:43.180Z"
+    },
+    {
+      "number": "0.11.0",
+      "date": "2017-11-06T09:54:08.107Z"
+    },
+    {
+      "number": "0.11.1",
+      "date": "2017-11-06T12:35:39.045Z"
+    },
+    {
+      "number": "0.11.2",
+      "date": "2017-12-07T15:09:29.979Z"
+    },
+    {
+      "number": "0.11.3",
+      "date": "2018-01-18T11:59:04.443Z"
+    },
+    {
+      "number": "0.10.1",
+      "date": "2018-01-18T13:02:40.315Z"
+    },
+    {
+      "number": "0.12.0",
+      "date": "2018-02-23T13:43:58.612Z"
+    },
+    {
+      "number": "0.13.0",
+      "date": "2018-03-13T07:51:40.466Z"
+    },
+    {
+      "number": "0.13.1",
+      "date": "2018-03-15T11:42:44.793Z"
+    },
+    {
+      "number": "0.14.0",
+      "date": "2018-03-16T10:44:28.590Z"
+    },
+    {
+      "number": "0.14.1",
+      "date": "2018-03-16T11:26:01.375Z"
+    },
+    {
+      "number": "0.14.2",
+      "date": "2018-03-19T13:58:35.970Z"
+    },
+    {
+      "number": "0.14.3",
+      "date": "2018-03-19T14:22:28.773Z"
+    },
+    {
+      "number": "0.14.4",
+      "date": "2018-03-20T10:40:15.711Z"
+    },
+    {
+      "number": "0.15.0",
+      "date": "2018-04-08T22:08:47.343Z"
+    },
+    {
+      "number": "0.14.5",
+      "date": "2018-04-10T19:29:11.966Z"
+    },
+    {
+      "number": "0.15.1",
+      "date": "2018-04-10T22:23:15.466Z"
+    },
+    {
+      "number": "0.15.2",
+      "date": "2018-04-11T08:11:05.612Z"
+    },
+    {
+      "number": "0.14.6",
+      "date": "2018-04-11T08:26:03.371Z"
+    },
+    {
+      "number": "0.15.3",
+      "date": "2018-04-16T18:59:30.926Z"
+    },
+    {
+      "number": "0.16.0",
+      "date": "2018-04-25T20:23:28.474Z"
+    },
+    {
+      "number": "0.17.0",
+      "date": "2018-04-26T10:34:45.336Z"
+    },
+    {
+      "number": "0.17.1",
+      "date": "2018-04-26T11:10:06.381Z"
+    },
+    {
+      "number": "0.17.2",
+      "date": "2018-04-30T09:27:06.012Z"
+    }
+  ],
+  "created": "2016-06-22T13:58:41.607Z",
+  "modified": "2018-04-30T09:27:11.149Z",
+  "lastPublisher": {
+    "name": "wojtkowiak",
+    "email": "bartosz@wojtkowiak.it"
+  },
+  "owners": [
+    {
+      "name": "wojtkowiak",
+      "email": "bartosz@wojtkowiak.it"
+    }
+  ]
+}

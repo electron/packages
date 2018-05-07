@@ -1,0 +1,177 @@
+{
+  "name": "common-xml-features",
+  "version": "2.1.9",
+  "description": "Common XML API for renderer, node and master process",
+  "repository": {
+    "user": "emmkimme",
+    "repo": "common-xml-features",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/emmkimme/common-xml-features/tarball/master",
+    "clone_url": "https://github.com/emmkimme/common-xml-features",
+    "https_url": "https://github.com/emmkimme/common-xml-features",
+    "travis_url": "https://travis-ci.org/emmkimme/common-xml-features",
+    "zip_url": "https://github.com/emmkimme/common-xml-features/archive/master.zip",
+    "api_url": "https://api.github.com/repos/emmkimme/common-xml-features"
+  },
+  "keywords": [
+    "electron",
+    "xml",
+    "xmldom",
+    "xmlpath",
+    "xpath",
+    "XMLSerializer",
+    "DOMParser",
+    "DOMImplementation",
+    "XMLSerializer",
+    "renderer",
+    "node"
+  ],
+  "author": {
+    "name": "Emmanuel Kimmerlin"
+  },
+  "license": "MIT",
+  "homepage": "https://github.com/emmkimme/common-xml-features#readme",
+  "main": "./lib/common-xml-features.js",
+  "types": "./lib/common-xml-features.d.ts",
+  "devDependencies": {
+    "@types/node": "^0.0.3",
+    "chai": "^4.1.2",
+    "cpx": "^1.5.0",
+    "del": "^2.2.2",
+    "del-cli": "^0.2.1",
+    "mocha": "^4.0.1",
+    "sinon": "^4.0.1",
+    "typescript": "^2.6.2"
+  },
+  "scripts": {
+    "clean": "del-cli ./lib ./build ./dist",
+    "build": "npm run build-ts && npm run build-declaration && npm run build-js",
+    "build-ts": "tsc -p ./tsconfig/tsconfig-js.json",
+    "build-js": "cpx ./src/xmldom/{dom-parser.js,dom.js,sax.js,entities.js} ./lib/xmldom && cpx ./src/xpath/xpath.js ./lib/xpath",
+    "build-declaration": "npm run build-declaration-ts",
+    "build-declaration-ts": "tsc -p ./tsconfig/tsconfig-declaration.json",
+    "clean-declaration-dts": "del-cli ./lib/xml/*.d.ts",
+    "tsc": "tsc",
+    "test": "mocha test --recursive",
+    "publication": "npm publish ./ --registry https://registry.npmjs.org/"
+  },
+  "browser": {
+    "./lib/common-xml-features.js": "./lib/common-xml-features-browser.js"
+  },
+  "gitHead": "a3b39e5de65aa74b913ea30b2261fc9f81644a65",
+  "_npmVersion": "3.10.10",
+  "_nodeVersion": "8.9.3",
+  "dist": {
+    "shasum": "6e442e76afbf4c72f5bacca81ec65705bf47528b",
+    "tarball": "https://registry.npmjs.org/common-xml-features/-/common-xml-features-2.1.9.tgz",
+    "fileCount": 21,
+    "unpackedSize": 221377,
+    "npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJa1yzpCRA9TVsSAnZWagAABq0P/RYZaPdwb3jxgSagmTGz\nTJnJTMFRAHXz2cGOhWy/ooKre6iKseG51e5EFlzIyzb3277v9dM7xFKUhDbs\n4k8nRSq3g+gB6oWO9Hu3zWLdbuQAQzoPlNVbky6hu322vhYnZGhEDAJWgXu6\nccX1lRnPNxwKadCHfHprDfS4K/9Fgf4te2nvqiImO0wySIbYIBqu6Smm3QNX\nyiE62+Sx6HIBRSIU7pqaCNMSIkGlFnjyTodBpfWj5VfmVbx7D5BzHgRvIPut\nOj5TV5VYX10S4DHaJTXQXiAdGqS1m5Nx89uBzBdUh06QZhkPwVFhUfrilPEZ\n7cObs0cnZz1jqMQMgQB+0YvFPzHReOlqx1EaAjyeXianaJwaBiFYiFiWHwb+\n14vcpAsAeH2ewFEaqcFJV4w8TqkrZClNxURHEQVPyQy7+r+ZZ1TxMcg+ClsD\ndN8lEsyo8BrRcPlHtjldZBEIlQHXWKObuSf5qxgJ29hms9VlX+qbEWDnwGU/\nzmosAThB/TwlaEwtIV9Y3LfBSRajEyeAouL6618npH0j0knAoorIiWKpKVmJ\nXWAHvBEzsob49FKqBm30m1L96p7Iwuo+6/TXslu5znVeoi8t5lMaCT352abI\nrG6PfVVGgC8gfxphi6d0HvotjZ+oP0Xp6aGPGPKks6SdE8fX/uDvTSC2RVnw\nXBSr\r\n=rhAY\r\n-----END PGP SIGNATURE-----\r\n"
+  },
+  "_hasShrinkwrap": false,
+  "stars": 1,
+  "versions": [
+    {
+      "number": "1.2.0",
+      "date": "2017-11-15T21:30:34.039Z"
+    },
+    {
+      "number": "1.2.1",
+      "date": "2017-11-15T21:40:24.328Z"
+    },
+    {
+      "number": "1.2.2",
+      "date": "2017-11-15T22:18:34.905Z"
+    },
+    {
+      "number": "1.2.3",
+      "date": "2017-11-16T08:28:07.638Z"
+    },
+    {
+      "number": "1.2.4",
+      "date": "2018-01-04T13:39:08.879Z"
+    },
+    {
+      "number": "1.2.5",
+      "date": "2018-01-04T13:54:18.769Z"
+    },
+    {
+      "number": "2.0.0",
+      "date": "2018-01-05T20:23:02.325Z"
+    },
+    {
+      "number": "2.0.1",
+      "date": "2018-01-07T20:39:37.631Z"
+    },
+    {
+      "number": "2.0.2",
+      "date": "2018-01-08T16:15:32.524Z"
+    },
+    {
+      "number": "2.1.0",
+      "date": "2018-01-08T20:55:25.286Z"
+    },
+    {
+      "number": "2.1.1",
+      "date": "2018-01-10T14:12:56.861Z"
+    },
+    {
+      "number": "2.1.2",
+      "date": "2018-01-10T14:33:42.886Z"
+    },
+    {
+      "number": "2.1.3",
+      "date": "2018-01-10T14:49:02.849Z"
+    },
+    {
+      "number": "2.1.4",
+      "date": "2018-01-10T15:06:22.730Z"
+    },
+    {
+      "number": "2.1.5",
+      "date": "2018-01-10T15:55:43.968Z"
+    },
+    {
+      "number": "2.1.6",
+      "date": "2018-04-11T09:18:13.493Z"
+    },
+    {
+      "number": "2.1.7",
+      "date": "2018-04-11T09:26:56.413Z"
+    },
+    {
+      "number": "2.1.8",
+      "date": "2018-04-18T11:05:32.492Z"
+    },
+    {
+      "number": "2.1.9",
+      "date": "2018-04-18T11:32:57.171Z"
+    }
+  ],
+  "created": "2017-11-15T21:30:34.039Z",
+  "modified": "2018-04-18T11:33:01.606Z",
+  "lastPublisher": {
+    "name": "emmkimme",
+    "email": "emmanuel.kimmerlin@thomsonreuters.com"
+  },
+  "owners": [
+    {
+      "email": "emmanuel.kimmerlin@thomsonreuters.com",
+      "name": "emmkimme"
+    },
+    {
+      "email": "laurent.lepinay@thomsonreuters.com",
+      "name": "laurent.lepinay"
+    },
+    {
+      "email": "thomas.lechaptois@gmail.com",
+      "name": "tholecha"
+    },
+    {
+      "email": "tm-npm.nospam@souskai.net",
+      "name": "thomoute"
+    }
+  ]
+}

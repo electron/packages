@@ -1,0 +1,90 @@
+{
+  "name": "pixi-tests-tool",
+  "version": "1.0.0",
+  "description": "Renderer for generating integration tests for Pixi.js",
+  "main": "lib/index.js",
+  "license": "MIT",
+  "repository": {
+    "user": "pixijs",
+    "repo": "pixi-tests-tool",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/pixijs/pixi-tests-tool/tarball/master",
+    "clone_url": "https://github.com/pixijs/pixi-tests-tool",
+    "https_url": "https://github.com/pixijs/pixi-tests-tool",
+    "travis_url": "https://travis-ci.org/pixijs/pixi-tests-tool",
+    "zip_url": "https://github.com/pixijs/pixi-tests-tool/archive/master.zip",
+    "api_url": "https://api.github.com/repos/pixijs/pixi-tests-tool"
+  },
+  "dependencies": {
+    "js-md5": "^0.4.0"
+  },
+  "devDependencies": {
+    "electron-prebuilt": "^1.4.3",
+    "eslint": "^3.8.0",
+    "floss": "^1.2.1",
+    "pixi.js": "^4.0.3"
+  },
+  "scripts": {
+    "pretest": "npm run lint",
+    "test": "npm run unit-tests",
+    "test:debug": "npm run unit-tests -- --debug",
+    "lint": "eslint app example lib tests",
+    "unit-tests": "floss --path=tests/index.js",
+    "prestart": "npm run lint",
+    "start": "electron app"
+  },
+  "files": [
+    "lib/",
+    "package.json",
+    "README.md"
+  ],
+  "eslintConfig": {
+    "extends": [
+      "eslint:recommended"
+    ],
+    "rules": {
+      "no-console": 0,
+      "no-debugger": 1
+    },
+    "parserOptions": {
+      "ecmaVersion": 6,
+      "sourceType": "module"
+    },
+    "env": {
+      "node": true,
+      "browser": true,
+      "es6": true
+    },
+    "globals": {
+      "PIXI": true
+    }
+  },
+  "gitHead": "6bf57409c7e6d4558dd39adf1320aa18f6b14140",
+  "homepage": "https://github.com/pixijs/pixi-tests-tool#readme",
+  "_npmVersion": "2.14.12",
+  "_nodeVersion": "4.2.4",
+  "dist": {
+    "shasum": "c79947b1f27a3f5de450b4abde57a8b9695dff7a",
+    "tarball": "http://registry.npmjs.org/pixi-tests-tool/-/pixi-tests-tool-1.0.0.tgz"
+  },
+  "versions": [
+    {
+      "number": "1.0.0",
+      "date": "2016-10-18T00:52:34.226Z"
+    }
+  ],
+  "created": "2016-10-18T00:52:34.226Z",
+  "modified": "2016-10-18T00:52:34.226Z",
+  "lastPublisher": {
+    "name": "bigtimebuddy",
+    "email": "matt@mattkarl.com"
+  },
+  "owners": [
+    {
+      "name": "bigtimebuddy",
+      "email": "matt@mattkarl.com"
+    }
+  ]
+}

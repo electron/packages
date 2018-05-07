@@ -1,0 +1,74 @@
+{
+  "name": "feller",
+  "version": "0.0.6",
+  "description": "Electron wrap for Twitter Mobile",
+  "author": {
+    "name": "Andrea Giammarchi"
+  },
+  "bin": {
+    "feller": "./app"
+  },
+  "license": "ISC",
+  "dependencies": {
+    "electron": "^1.6.2",
+    "electron-prebuilt": "^1.4.13"
+  },
+  "devDependencies": {
+    "electron-packager": "^8.6.0"
+  },
+  "scripts": {
+    "start": "electron app.js",
+    "package": "npm package-linux && npm run package-mac && npm run package-win",
+    "package-linux": "electron-packager . --overwrite --platform=linux --arch=x64 --icon=icon/icon.png --prune=true --out=release-builds",
+    "package-mac": "electron-packager . --overwrite --platform=darwin --arch=x64 --icon=icon/icon.icns --prune=true --out=release-builds",
+    "package-win": "electron-packager . --overwrite --asar=true --platform=win32 --arch=ia32 --icon=icon/icon.ico --prune=true --out=release-builds --version-string.CompanyName=CE --version-string.FileDescription=CE --version-string.ProductName=\"feller\""
+  },
+  "_npmVersion": "4.2.0",
+  "_nodeVersion": "7.2.1",
+  "dist": {
+    "shasum": "d3cfc48c392578c6e5a83ffe7a0cb80804a47109",
+    "tarball": "https://registry.npmjs.org/feller/-/feller-0.0.6.tgz"
+  },
+  "versions": [
+    {
+      "number": "0.0.0",
+      "date": "2017-04-07T12:08:54.069Z"
+    },
+    {
+      "number": "0.0.1",
+      "date": "2017-04-10T08:56:29.701Z"
+    },
+    {
+      "number": "0.0.2",
+      "date": "2017-04-10T09:14:37.287Z"
+    },
+    {
+      "number": "0.0.3",
+      "date": "2017-04-10T09:18:29.389Z"
+    },
+    {
+      "number": "0.0.4",
+      "date": "2017-04-10T09:38:35.900Z"
+    },
+    {
+      "number": "0.0.5",
+      "date": "2017-04-10T09:47:03.112Z"
+    },
+    {
+      "number": "0.0.6",
+      "date": "2017-04-10T15:18:59.954Z"
+    }
+  ],
+  "created": "2017-04-07T12:08:54.069Z",
+  "modified": "2017-04-10T15:18:59.954Z",
+  "lastPublisher": {
+    "name": "webreflection",
+    "email": "andrea.giammarchi@gmail.com"
+  },
+  "owners": [
+    {
+      "name": "webreflection",
+      "email": "andrea.giammarchi@gmail.com"
+    }
+  ]
+}

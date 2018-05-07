@@ -1,0 +1,86 @@
+{
+  "package.json": true,
+  "author": {
+    "name": "kai zhu",
+    "email": "kaizhu256@gmail.com"
+  },
+  "description": "this zero-dependency package will download and install the grpc-v1.0.1 prebuilt-binary from https://storage.googleapis.com/grpc-precompiled-binaries/node/grpc",
+  "devDependencies": {
+    "electron-lite": "github:kaizhu256/node-electron-lite#alpha",
+    "utility2": "github:kaizhu256/node-utility2#alpha"
+  },
+  "engines": {
+    "node": ">=4 <7"
+  },
+  "keywords": [
+    "api",
+    "grpc",
+    "light",
+    "lightweight",
+    "lite",
+    "protobuf"
+  ],
+  "license": "MIT",
+  "main": "lib.grpc",
+  "name": "grpc-lite",
+  "os": [
+    "darwin",
+    "linux"
+  ],
+  "repository": {
+    "user": "kaizhu256",
+    "repo": "node-grpc-lite",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/kaizhu256/node-grpc-lite/tarball/master",
+    "clone_url": "https://github.com/kaizhu256/node-grpc-lite",
+    "https_url": "https://github.com/kaizhu256/node-grpc-lite",
+    "travis_url": "https://travis-ci.org/kaizhu256/node-grpc-lite",
+    "zip_url": "https://github.com/kaizhu256/node-grpc-lite/archive/master.zip",
+    "api_url": "https://api.github.com/repos/kaizhu256/node-grpc-lite"
+  },
+  "scripts": {
+    "build-ci": "utility2 shRun shReadmeBuild",
+    "postinstall": "./lib.grpc.sh shNpmPostinstall",
+    "test": "rm -fr external /tmp/grpc_node-* && npm run postinstall && export PORT=$(utility2 shServerPortRandom) && utility2 test test.js"
+  },
+  "version": "2016.12.3",
+  "homepage": "https://github.com/kaizhu256/node-grpc-lite#readme",
+  "_npmVersion": "3.10.8",
+  "_nodeVersion": "6.9.1",
+  "dist": {
+    "shasum": "4aef1077a0dfa6b9c38c1af658371a7335e665a1",
+    "tarball": "http://registry.npmjs.org/grpc-lite/-/grpc-lite-2016.12.3.tgz"
+  },
+  "versions": [
+    {
+      "number": "0.0.1",
+      "date": "2016-12-01T10:47:50.692Z"
+    },
+    {
+      "number": "2016.12.1",
+      "date": "2016-12-28T13:13:25.901Z"
+    },
+    {
+      "number": "2016.12.2",
+      "date": "2016-12-28T19:42:37.769Z"
+    },
+    {
+      "number": "2016.12.3",
+      "date": "2016-12-29T02:32:19.714Z"
+    }
+  ],
+  "created": "2016-12-01T10:47:50.692Z",
+  "modified": "2016-12-29T02:32:19.714Z",
+  "lastPublisher": {
+    "name": "kaizhu",
+    "email": "kaizhu256@gmail.com"
+  },
+  "owners": [
+    {
+      "name": "kaizhu",
+      "email": "kaizhu256@gmail.com"
+    }
+  ]
+}

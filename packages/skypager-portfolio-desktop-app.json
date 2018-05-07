@@ -1,0 +1,168 @@
+{
+  "name": "skypager-portfolio-desktop-app",
+  "productName": "Skypager",
+  "version": "16.2.2",
+  "description": "",
+  "main": "./app/main/index.js",
+  "scripts": {
+    "start:prod": "NODE_ENV=production electron ./app/main/index.js --app-path=app",
+    "start": "NODE_ENV=development electron ./app/main/index.js --repl --app-path=app",
+    "start:hot": "NODE_ENV=development electron ./app/main/index.js --repl --hot --app-path=app",
+    "predev": "cd ../skypager-project-types-electron-app && npm run build",
+    "dev": "npm run build:main && npm run start:hot",
+    "prestart:dev": "npm run build:helpers && npm run build:renderer:dll",
+    "start:dev": "parallelshell 'npm run build:main:watch' 'npm run build:renderer:watch' 'npm run start:hot'",
+    "clean": "rm -rf npm-debug.* app/main app/renderer",
+    "build": "npm run clean && npm run build:helpers && npm run build:main && npm run build:renderer",
+    "build:helpers": "skypager build electron-app-main --disable-copy-plugin --out app/main/helpers ./src/helpers/index.js",
+    "build:main": "skypager build electron-app-main --out app/main ./src/main/index.js",
+    "build:main:watch": "skypager build electron-app-main --watch --production --out app/main ./src/main/index.js",
+    "build:renderer": "skypager build electron-app-renderer --production --out app/renderer --in ./src/renderer/index.js",
+    "build:renderer:dll": "skypager build electron-app-renderer --production --disable-copy-plugin --disable-dll-plugin --generate-dll --out app/renderer --in ./src/renderer/index.js",
+    "build:renderer:watch": "skypager build electron-app-renderer --watch --production --out app/renderer --in ./src/renderer/index.js",
+    "test": "exit 0",
+    "test:watch": "exit 0",
+    "build:watch": "npm run start:dev"
+  },
+  "keywords": [],
+  "author": {
+    "name": "Jon Soeder",
+    "email": "jon@chicago.com",
+    "url": "https://twitter.com/soederpop"
+  },
+  "license": "SEE LICENSE IN License.md",
+  "skypager": {
+    "paths": {
+      "output": "app/main",
+      "source": "src",
+      "cache": "node_modules/.cache/skypager-project",
+      "public": "app/renderer",
+      "library": "lib",
+      "bundles": "app/renderer",
+      "ast": "dist/ast",
+      "docs": "docs",
+      "data": "data",
+      "logs": "log",
+      "temp": "tmp",
+      "main": "skypager.js",
+      "manifest": "package.json"
+    }
+  },
+  "dependencies": {
+    "brace": "^0.9.1",
+    "font-awesome": "^4.7.0",
+    "history": "^4.5.1",
+    "mdast-util-heading-range": "^2.0.1",
+    "react": "^15.4.2",
+    "react-ace": "^4.1.1",
+    "react-dom": "^15.4.2",
+    "remark": "^6.2.0",
+    "remark-react": "^3.1.0",
+    "skypager": "^15.0.0",
+    "skypager-project-types-electron-app": "^15.0.0",
+    "skypager-project-types-react": "^15.0.0",
+    "skypager-repl": "^14.0.0",
+    "unist-util-find-after": "^2.0.0",
+    "unist-util-find-all-after": "^1.0.0",
+    "unist-util-select": "^1.5.0",
+    "unist-util-source": "^1.0.1"
+  },
+  "devDependencies": {
+    "babel-preset-skypager": "^15.0.0",
+    "babel-runtime": "^6.22.0",
+    "devtron": "^1.4.0",
+    "electron": "^1.4.15",
+    "electron-ipc-responder": "^1.0.4",
+    "electron-json-storage": "^2.0.3",
+    "electron-positioner": "^3.0.0",
+    "electron-react-devtools": "^0.4.0",
+    "history": "^4.5.1",
+    "lodash": "^4.17.4",
+    "mobx": "^3.0.0",
+    "mobx-react": "^4.1.0",
+    "path-to-regexp": "^1.7.0",
+    "react": "^15.4.2",
+    "react-dom": "^15.4.2",
+    "semantic-ui-css": "^2.2.4",
+    "semantic-ui-react": "^0.64.0",
+    "skypager-helper": "^15.0.0",
+    "skypager-registry": "^15.0.0",
+    "skypager-util": "^15.0.0"
+  },
+  "build": {
+    "app-bundle-id": "org.io.architects",
+    "app-category-type": "public.app-category.music",
+    "iconUrl": "https://build-artifacts.skypager.io/assets/app-icons/phone-application-05/app.ico",
+    "osx": {
+      "contents": [
+        {
+          "x": 410,
+          "y": 150,
+          "type": "link",
+          "path": "/Applications"
+        },
+        {
+          "x": 130,
+          "y": 150,
+          "type": "file"
+        }
+      ]
+    }
+  },
+  "_npmVersion": "4.1.2",
+  "_nodeVersion": "7.5.0",
+  "dist": {
+    "shasum": "fe996b64b80ed2398a5a640510e791af8eca1511",
+    "tarball": "https://registry.npmjs.org/skypager-portfolio-desktop-app/-/skypager-portfolio-desktop-app-16.2.2.tgz"
+  },
+  "versions": [
+    {
+      "number": "11.8.0",
+      "date": "2017-01-17T20:29:08.816Z"
+    },
+    {
+      "number": "11.8.1",
+      "date": "2017-01-17T20:39:30.156Z"
+    },
+    {
+      "number": "12.2.0",
+      "date": "2017-01-19T02:36:06.152Z"
+    },
+    {
+      "number": "12.3.0",
+      "date": "2017-01-19T11:06:37.822Z"
+    },
+    {
+      "number": "13.0.0",
+      "date": "2017-01-21T14:47:47.867Z"
+    },
+    {
+      "number": "13.1.0",
+      "date": "2017-01-23T09:56:06.305Z"
+    },
+    {
+      "number": "13.3.1",
+      "date": "2017-01-23T15:22:58.241Z"
+    },
+    {
+      "number": "15.0.0",
+      "date": "2017-02-01T06:37:52.718Z"
+    },
+    {
+      "number": "16.2.2",
+      "date": "2017-02-21T08:54:48.413Z"
+    }
+  ],
+  "created": "2017-01-17T20:29:08.816Z",
+  "modified": "2017-02-21T08:56:52.217Z",
+  "lastPublisher": {
+    "name": "soederpop",
+    "email": "jon@chicago.com"
+  },
+  "owners": [
+    {
+      "name": "soederpop",
+      "email": "jon@chicago.com"
+    }
+  ]
+}

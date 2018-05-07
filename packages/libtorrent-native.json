@@ -1,0 +1,94 @@
+{
+  "name": "libtorrent-native",
+  "version": "0.14.2",
+  "description": "Rasterbar-libtorrent bindings for Node.js",
+  "repository": {
+    "user": "tortank-team",
+    "repo": "tortank-libtorrent",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/tortank-team/tortank-libtorrent/tarball/master",
+    "clone_url": "https://github.com/tortank-team/tortank-libtorrent",
+    "https_url": "https://github.com/tortank-team/tortank-libtorrent",
+    "travis_url": "https://travis-ci.org/tortank-team/tortank-libtorrent",
+    "zip_url": "https://github.com/tortank-team/tortank-libtorrent/archive/master.zip",
+    "api_url": "https://api.github.com/repos/tortank-team/tortank-libtorrent"
+  },
+  "license": "GPL-3.0",
+  "binary": {
+    "module_name": "libtorrent-native",
+    "host": "https://github.com/tortank-team/tortank-libtorrent",
+    "remote_path": "./{name}/v{version}/{toolset}",
+    "package_name": "{node_abi}-{platform}-{arch}.tar.gz"
+  },
+  "scripts": {
+    "install": "node-gyp-build",
+    "prepare-linux": "./scripts/prepare-linux.sh",
+    "prebuild": "prebuildify --target=electron@1.4.14 --strip",
+    "test": "mocha --timeout 60000"
+  },
+  "devDependencies": {
+    "aws-sdk": "^2.7.9",
+    "mocha": "^2.2.5",
+    "prebuild": "^6.1.0",
+    "prebuildify": "^2.2.2",
+    "segfault-handler": "^1.0.0"
+  },
+  "dependencies": {
+    "nan": "^2.4.0",
+    "node-gyp-build": "^3.1.0",
+    "node-pre-gyp": "^0.6.32"
+  },
+  "main": "./index.js",
+  "gitHead": "3e42f5feb4ca691760fc44a0699b2e9541db9ac7",
+  "homepage": "https://github.com/tortank-team/tortank-libtorrent#readme",
+  "_npmVersion": "3.10.10",
+  "_nodeVersion": "6.9.5",
+  "dist": {
+    "shasum": "c623b06e2a7148b124b29e82f40dc56eacf53f82",
+    "tarball": "https://registry.npmjs.org/libtorrent-native/-/libtorrent-native-0.14.2.tgz"
+  },
+  "versions": [
+    {
+      "number": "0.14.0",
+      "date": "2017-03-08T21:29:17.627Z"
+    },
+    {
+      "number": "0.14.1",
+      "date": "2017-03-08T21:59:22.232Z"
+    },
+    {
+      "number": "0.14.2",
+      "date": "2017-03-08T22:01:09.634Z"
+    },
+    {
+      "number": "0.14.3",
+      "date": "2017-03-08T22:09:09.294Z"
+    },
+    {
+      "number": "0.14.4",
+      "date": "2017-03-08T22:21:28.758Z"
+    },
+    {
+      "number": "0.14.5",
+      "date": "2017-03-19T15:51:50.098Z"
+    },
+    {
+      "number": "0.15.0",
+      "date": "2017-05-01T21:45:20.943Z"
+    }
+  ],
+  "created": "2017-03-08T21:29:17.627Z",
+  "modified": "2017-08-15T20:44:02.764Z",
+  "lastPublisher": {
+    "name": "g-ray",
+    "email": "geoffrey.bonneville@gmail.com"
+  },
+  "owners": [
+    {
+      "name": "g-ray",
+      "email": "geoffrey.bonneville@gmail.com"
+    }
+  ]
+}

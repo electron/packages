@@ -1,0 +1,602 @@
+{
+  "name": "matrix-react-sdk",
+  "version": "0.12.3",
+  "description": "SDK for matrix.org using React",
+  "author": {
+    "name": "matrix.org"
+  },
+  "repository": {
+    "user": "matrix-org",
+    "repo": "matrix-react-sdk",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/matrix-org/matrix-react-sdk/tarball/master",
+    "clone_url": "https://github.com/matrix-org/matrix-react-sdk",
+    "https_url": "https://github.com/matrix-org/matrix-react-sdk",
+    "travis_url": "https://travis-ci.org/matrix-org/matrix-react-sdk",
+    "zip_url": "https://github.com/matrix-org/matrix-react-sdk/archive/master.zip",
+    "api_url": "https://api.github.com/repos/matrix-org/matrix-react-sdk"
+  },
+  "license": "Apache-2.0",
+  "main": "lib/index.js",
+  "files": [
+    ".eslintrc.js",
+    "CHANGELOG.md",
+    "CONTRIBUTING.rst",
+    "LICENSE",
+    "README.md",
+    "code_style.md",
+    "git-revision.txt",
+    "header",
+    "jenkins.sh",
+    "karma.conf.js",
+    "lib",
+    "package.json",
+    "release.sh",
+    "scripts",
+    "src",
+    "test",
+    "res"
+  ],
+  "bin": {
+    "reskindex": "scripts/reskindex.js",
+    "matrix-gen-i18n": "scripts/gen-i18n.js",
+    "matrix-prune-i18n": "scripts/prune-i18n.js"
+  },
+  "scripts": {
+    "reskindex": "node scripts/reskindex.js -h header",
+    "reskindex:watch": "node scripts/reskindex.js -h header -w",
+    "i18n": "matrix-gen-i18n",
+    "prunei18n": "matrix-prune-i18n",
+    "build": "npm run reskindex && babel src -d lib --source-maps --copy-files",
+    "build:watch": "babel src -w -d lib --source-maps --copy-files",
+    "emoji-data-strip": "node scripts/emoji-data-strip.js",
+    "start": "parallelshell \"npm run build:watch\" \"npm run reskindex:watch\"",
+    "lint": "eslint src/",
+    "lintall": "eslint src/ test/",
+    "lintwithexclusions": "eslint --max-warnings 0 --ignore-path .eslintignore.errorfiles src test",
+    "clean": "rimraf lib",
+    "prepublish": "npm run clean && npm run build && git rev-parse HEAD > git-revision.txt",
+    "test": "karma start --single-run=true --browsers ChromeHeadless",
+    "test-multi": "karma start"
+  },
+  "dependencies": {
+    "babel-runtime": "^6.11.6",
+    "bluebird": "^3.5.0",
+    "blueimp-canvas-to-blob": "^3.5.0",
+    "browser-encrypt-attachment": "^0.3.0",
+    "browser-request": "^0.3.3",
+    "classnames": "^2.1.2",
+    "commonmark": "^0.28.1",
+    "counterpart": "^0.18.0",
+    "draft-js": "^0.11.0-alpha",
+    "draft-js-export-html": "^0.6.0",
+    "draft-js-export-markdown": "^0.3.0",
+    "emojione": "2.2.7",
+    "file-saver": "^1.3.3",
+    "filesize": "3.5.6",
+    "flux": "2.1.1",
+    "focus-trap-react": "^3.0.5",
+    "fuse.js": "^2.2.0",
+    "gemini-scrollbar": "github:matrix-org/gemini-scrollbar#b302279",
+    "gfm.css": "^1.1.1",
+    "glob": "^5.0.14",
+    "highlight.js": "^9.0.0",
+    "isomorphic-fetch": "^2.2.1",
+    "linkifyjs": "^2.1.3",
+    "lodash": "^4.13.1",
+    "matrix-js-sdk": "0.10.2",
+    "optimist": "^0.6.1",
+    "pako": "^1.0.5",
+    "prop-types": "^15.5.8",
+    "querystring": "^0.2.0",
+    "react": "^15.6.0",
+    "react-addons-css-transition-group": "15.3.2",
+    "react-beautiful-dnd": "^4.0.1",
+    "react-dom": "^15.6.0",
+    "react-gemini-scrollbar": "github:matrix-org/react-gemini-scrollbar#5e97aef",
+    "sanitize-html": "^1.14.1",
+    "text-encoding-utf-8": "^1.0.1",
+    "url": "^0.11.0",
+    "velocity-vector": "github:vector-im/velocity#059e3b2",
+    "whatwg-fetch": "^1.0.0"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.5.2",
+    "babel-core": "^6.14.0",
+    "babel-eslint": "^6.1.2",
+    "babel-loader": "^6.2.5",
+    "babel-plugin-add-module-exports": "^0.2.1",
+    "babel-plugin-transform-async-to-bluebird": "^1.1.1",
+    "babel-plugin-transform-class-properties": "^6.16.0",
+    "babel-plugin-transform-object-rest-spread": "^6.16.0",
+    "babel-plugin-transform-runtime": "^6.15.0",
+    "babel-polyfill": "^6.5.0",
+    "babel-preset-es2015": "^6.14.0",
+    "babel-preset-es2016": "^6.11.3",
+    "babel-preset-es2017": "^6.14.0",
+    "babel-preset-react": "^6.11.1",
+    "chokidar": "^1.6.1",
+    "eslint": "^3.13.1",
+    "eslint-config-google": "^0.7.1",
+    "eslint-plugin-babel": "^4.0.1",
+    "eslint-plugin-flowtype": "^2.30.0",
+    "eslint-plugin-react": "^7.4.0",
+    "estree-walker": "^0.5.0",
+    "expect": "^1.16.0",
+    "flow-parser": "^0.57.3",
+    "json-loader": "^0.5.3",
+    "karma": "^1.7.0",
+    "karma-chrome-launcher": "^0.2.3",
+    "karma-cli": "^0.1.2",
+    "karma-junit-reporter": "^0.4.1",
+    "karma-logcapture-reporter": "0.0.1",
+    "karma-mocha": "^0.2.2",
+    "karma-sourcemap-loader": "^0.3.7",
+    "karma-spec-reporter": "^0.0.31",
+    "karma-summary-reporter": "^1.3.3",
+    "karma-webpack": "^1.7.0",
+    "matrix-react-test-utils": "^0.1.1",
+    "mocha": "^2.4.5",
+    "parallelshell": "^3.0.2",
+    "react-addons-test-utils": "^15.4.0",
+    "require-json": "0.0.1",
+    "rimraf": "^2.4.3",
+    "sinon": "^1.17.3",
+    "source-map-loader": "^0.2.3",
+    "walk": "^2.3.9",
+    "webpack": "^1.12.14"
+  },
+  "gitHead": "dded89383a531cb27960edaa3a694b5517ea79bf",
+  "homepage": "https://github.com/matrix-org/matrix-react-sdk#readme",
+  "_npmVersion": "5.5.1",
+  "_nodeVersion": "8.9.2",
+  "dist": {
+    "integrity": "sha512-wPFMHMgVXNHHYIbqfpNFhCa0tx7PCa/OdI5dvXbU+gtMP8sNzq6irFO37FIloWdbb5anjH3nNcZabyCGtt9BIg==",
+    "shasum": "444aaa1dbcf3c31b6810f3a195f3214816ab3cb1",
+    "tarball": "https://registry.npmjs.org/matrix-react-sdk/-/matrix-react-sdk-0.12.3.tgz",
+    "fileCount": 1725,
+    "unpackedSize": 18947569,
+    "npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJa5w5JCRA9TVsSAnZWagAARX8P/imduzj7UQg3leJVIsa2\nUzPvPUEIjpwmSvoUAaMiyZQrYyJt5r2y7jZLjiolmJzRwxFErhAJeqpQt+gf\nE+u6bDq6JE6TrIqrCVqm6XE5JpIugiafk5HSs/++wyLKn1aTApzVqFINGl+1\nlDoPz6ic1ipzBwHmZfC4LcTxaY0SJmPRQa3AM1ko9iUE55I18zIoSBiUkTKM\nDstf1Wqwx0rAhdn3tHKXkstZdKtsTPm178yPZ5M3N+IMBiQCkq7c3H+y5PEZ\nIPQP75gAQbhzgnN2i+QafaafFBg+FfQMqvCzaltZVIk9Oq16TCcrXNEwhG47\nCl3TGXuzpsDoBp98n1NOwKCeHKk0k9AbvyVHnHPTtFxvXifBNSiRAvXjlImO\nB0xRq3Hi8wdNkDzxm9xLtc+b6SaSQ05TMTqW+WP+cR/9eFwhkw48+PRstHa5\n1rZd9oqaQv7KhaYxsH5Xi1Th6Q0Vi2LkOnZ9P8S5hepqI+A/YeSJv8z9JWFx\nPPCpZ9IToGqrui9MzN2VPzRA+d52WQeukOQKUf7kUsDADpwqpHyxEkhH1Yct\n7beZrddTA10eKUWZgfPGVu1msNZJyfbZvo2sLHDoC2L5MZypDQZL+QeYSXyJ\n/IY6+SNVOyIsP2MS6I2sNivAQDBnIzoiM/OwpCNWU2gyR+QMm08ox08llj+1\nmtAX\r\n=5zs9\r\n-----END PGP SIGNATURE-----\r\n"
+  },
+  "_hasShrinkwrap": false,
+  "versions": [
+    {
+      "number": "0.0.1",
+      "date": "2015-10-02T17:54:41.708Z"
+    },
+    {
+      "number": "0.0.2",
+      "date": "2015-10-28T18:16:48.340Z"
+    },
+    {
+      "number": "0.1.0",
+      "date": "2016-02-24T14:17:50.120Z"
+    },
+    {
+      "number": "0.1.1",
+      "date": "2016-03-11T12:25:46.256Z"
+    },
+    {
+      "number": "0.2.0",
+      "date": "2016-03-11T14:51:23.411Z"
+    },
+    {
+      "number": "0.3.0",
+      "date": "2016-03-23T14:01:14.286Z"
+    },
+    {
+      "number": "0.3.1",
+      "date": "2016-03-23T14:56:11.924Z"
+    },
+    {
+      "number": "0.4.0",
+      "date": "2016-03-30T12:25:53.110Z"
+    },
+    {
+      "number": "0.5.0",
+      "date": "2016-04-19T12:20:51.764Z"
+    },
+    {
+      "number": "0.5.1",
+      "date": "2016-04-19T12:35:21.211Z"
+    },
+    {
+      "number": "0.5.2",
+      "date": "2016-04-22T10:21:55.796Z"
+    },
+    {
+      "number": "0.6.0",
+      "date": "2016-06-02T12:38:33.005Z"
+    },
+    {
+      "number": "0.6.1",
+      "date": "2016-06-02T17:33:08.908Z"
+    },
+    {
+      "number": "0.6.2",
+      "date": "2016-06-02T17:55:50.955Z"
+    },
+    {
+      "number": "0.6.3",
+      "date": "2016-06-03T11:18:00.774Z"
+    },
+    {
+      "number": "0.6.4",
+      "date": "2016-08-11T16:37:27.722Z"
+    },
+    {
+      "number": "0.6.4-r1",
+      "date": "2016-08-12T09:08:36.558Z"
+    },
+    {
+      "number": "0.6.5",
+      "date": "2016-08-28T15:55:23.111Z"
+    },
+    {
+      "number": "0.6.5-r1",
+      "date": "2016-09-01T21:18:30.215Z"
+    },
+    {
+      "number": "0.6.5-r2",
+      "date": "2016-09-02T16:14:23.844Z"
+    },
+    {
+      "number": "0.6.5-r3",
+      "date": "2016-09-02T16:17:23.456Z"
+    },
+    {
+      "number": "0.7.0",
+      "date": "2016-09-21T10:44:32.611Z"
+    },
+    {
+      "number": "0.7.1",
+      "date": "2016-09-21T10:59:02.222Z"
+    },
+    {
+      "number": "0.7.2",
+      "date": "2016-09-21T16:28:30.459Z"
+    },
+    {
+      "number": "0.7.3",
+      "date": "2016-10-05T15:51:42.210Z"
+    },
+    {
+      "number": "0.7.4",
+      "date": "2016-10-12T10:47:49.753Z"
+    },
+    {
+      "number": "0.7.5-rc.1",
+      "date": "2016-11-02T11:08:32.579Z"
+    },
+    {
+      "number": "0.7.5",
+      "date": "2016-11-04T10:09:38.742Z"
+    },
+    {
+      "number": "0.8.0",
+      "date": "2016-11-19T00:02:13.252Z"
+    },
+    {
+      "number": "0.8.1-rc.1",
+      "date": "2016-12-05T17:51:35.507Z"
+    },
+    {
+      "number": "0.8.1-rc.2",
+      "date": "2016-12-06T16:04:30.433Z"
+    },
+    {
+      "number": "0.8.1",
+      "date": "2016-12-09T19:53:55.385Z"
+    },
+    {
+      "number": "0.8.2",
+      "date": "2016-12-16T17:26:55.854Z"
+    },
+    {
+      "number": "0.8.3",
+      "date": "2016-12-22T14:10:15.916Z"
+    },
+    {
+      "number": "0.8.3-electron",
+      "date": "2016-12-24T18:53:58.656Z"
+    },
+    {
+      "number": "0.8.4",
+      "date": "2016-12-24T19:03:40.440Z"
+    },
+    {
+      "number": "0.8.5-rc.1",
+      "date": "2017-01-13T11:14:55.537Z"
+    },
+    {
+      "number": "0.8.5",
+      "date": "2017-01-16T13:22:09.180Z"
+    },
+    {
+      "number": "0.8.6-rc.1",
+      "date": "2017-02-03T12:14:07.885Z"
+    },
+    {
+      "number": "0.8.6-rc.2",
+      "date": "2017-02-03T13:07:52.261Z"
+    },
+    {
+      "number": "0.8.6-rc.3",
+      "date": "2017-02-03T15:33:05.110Z"
+    },
+    {
+      "number": "0.8.6",
+      "date": "2017-02-04T10:30:52.311Z"
+    },
+    {
+      "number": "0.8.7-rc.1",
+      "date": "2017-04-07T16:11:34.564Z"
+    },
+    {
+      "number": "0.8.7-rc.2",
+      "date": "2017-04-10T15:46:37.983Z"
+    },
+    {
+      "number": "0.8.7-rc.3",
+      "date": "2017-04-10T15:54:36.774Z"
+    },
+    {
+      "number": "0.8.7-rc.4",
+      "date": "2017-04-11T17:48:13.949Z"
+    },
+    {
+      "number": "0.8.7",
+      "date": "2017-04-12T09:02:44.110Z"
+    },
+    {
+      "number": "0.8.8-rc.1",
+      "date": "2017-04-21T17:23:09.836Z"
+    },
+    {
+      "number": "0.8.8-rc.2",
+      "date": "2017-04-24T17:24:51.405Z"
+    },
+    {
+      "number": "0.8.8",
+      "date": "2017-04-25T09:54:48.804Z"
+    },
+    {
+      "number": "0.8.9-rc.1",
+      "date": "2017-05-19T09:39:39.588Z"
+    },
+    {
+      "number": "0.8.9",
+      "date": "2017-05-22T10:37:21.534Z"
+    },
+    {
+      "number": "0.9.0-rc.1",
+      "date": "2017-06-01T01:16:15.439Z"
+    },
+    {
+      "number": "0.9.0-rc.2",
+      "date": "2017-06-02T00:14:41.443Z"
+    },
+    {
+      "number": "0.9.0",
+      "date": "2017-06-02T13:23:55.245Z"
+    },
+    {
+      "number": "0.9.1",
+      "date": "2017-06-02T21:39:57.341Z"
+    },
+    {
+      "number": "0.9.2",
+      "date": "2017-06-06T16:40:56.115Z"
+    },
+    {
+      "number": "0.9.3-rc.1",
+      "date": "2017-06-09T19:28:38.746Z"
+    },
+    {
+      "number": "0.9.3-rc.2",
+      "date": "2017-06-09T21:14:21.818Z"
+    },
+    {
+      "number": "0.9.3",
+      "date": "2017-06-12T14:51:07.011Z"
+    },
+    {
+      "number": "0.9.4",
+      "date": "2017-06-14T10:17:28.085Z"
+    },
+    {
+      "number": "0.9.5-rc.1",
+      "date": "2017-06-15T16:17:43.199Z"
+    },
+    {
+      "number": "0.9.5-rc.2",
+      "date": "2017-06-16T12:29:15.227Z"
+    },
+    {
+      "number": "0.9.5",
+      "date": "2017-06-19T12:10:11.980Z"
+    },
+    {
+      "number": "0.9.6",
+      "date": "2017-06-20T12:08:37.510Z"
+    },
+    {
+      "number": "0.9.7",
+      "date": "2017-06-22T10:57:55.521Z"
+    },
+    {
+      "number": "0.10.0-rc.1",
+      "date": "2017-08-16T08:58:25.857Z"
+    },
+    {
+      "number": "0.10.0-rc.2",
+      "date": "2017-08-22T13:11:47.598Z"
+    },
+    {
+      "number": "0.10.1-rc.1",
+      "date": "2017-08-22T17:53:44.789Z"
+    },
+    {
+      "number": "0.10.1",
+      "date": "2017-08-23T14:56:40.895Z"
+    },
+    {
+      "number": "0.10.2",
+      "date": "2017-08-24T13:50:08.739Z"
+    },
+    {
+      "number": "0.10.3-rc.1",
+      "date": "2017-09-01T15:17:52.889Z"
+    },
+    {
+      "number": "0.10.3-rc.2",
+      "date": "2017-09-05T12:13:38.217Z"
+    },
+    {
+      "number": "0.10.3",
+      "date": "2017-09-06T12:26:27.310Z"
+    },
+    {
+      "number": "0.10.4-rc.1",
+      "date": "2017-09-19T09:51:03.424Z"
+    },
+    {
+      "number": "0.10.4",
+      "date": "2017-09-20T14:13:58.752Z"
+    },
+    {
+      "number": "0.10.5",
+      "date": "2017-09-21T17:02:07.668Z"
+    },
+    {
+      "number": "0.10.6",
+      "date": "2017-09-21T20:47:57.979Z"
+    },
+    {
+      "number": "0.10.7-rc.1",
+      "date": "2017-10-13T10:11:04.520Z"
+    },
+    {
+      "number": "0.10.7-rc.2",
+      "date": "2017-10-13T14:03:11.924Z"
+    },
+    {
+      "number": "0.10.7-rc.3",
+      "date": "2017-10-13T15:32:16.600Z"
+    },
+    {
+      "number": "0.10.7",
+      "date": "2017-10-16T13:45:59.258Z"
+    },
+    {
+      "number": "0.11.0-rc.1",
+      "date": "2017-11-10T13:40:42.312Z"
+    },
+    {
+      "number": "0.11.0-rc.2",
+      "date": "2017-11-10T16:45:55.139Z"
+    },
+    {
+      "number": "0.11.0-rc.3",
+      "date": "2017-11-14T14:17:46.551Z"
+    },
+    {
+      "number": "0.11.0",
+      "date": "2017-11-15T11:01:53.159Z"
+    },
+    {
+      "number": "0.11.1",
+      "date": "2017-11-17T16:04:20.445Z"
+    },
+    {
+      "number": "0.11.2",
+      "date": "2017-11-28T10:25:41.364Z"
+    },
+    {
+      "number": "0.11.3",
+      "date": "2017-12-04T12:24:48.995Z"
+    },
+    {
+      "number": "0.11.4",
+      "date": "2018-02-09T12:34:35.267Z"
+    },
+    {
+      "number": "0.12.0-rc.1",
+      "date": "2018-03-19T12:16:57.374Z"
+    },
+    {
+      "number": "0.12.0-rc.2",
+      "date": "2018-03-19T14:59:30.027Z"
+    },
+    {
+      "number": "0.12.0-rc.3",
+      "date": "2018-03-20T17:38:43.111Z"
+    },
+    {
+      "number": "0.12.0-rc.4",
+      "date": "2018-03-22T13:18:23.279Z"
+    },
+    {
+      "number": "0.11.4-cryptowarning.1",
+      "date": "2018-03-26T13:21:47.368Z"
+    },
+    {
+      "number": "0.11.4-cryptowarning.2",
+      "date": "2018-03-26T14:40:58.647Z"
+    },
+    {
+      "number": "0.12.0-rc.5",
+      "date": "2018-04-09T14:41:50.788Z"
+    },
+    {
+      "number": "0.12.0-rc.6",
+      "date": "2018-04-09T16:10:54.549Z"
+    },
+    {
+      "number": "0.12.0-rc.7",
+      "date": "2018-04-10T13:28:01.404Z"
+    },
+    {
+      "number": "0.12.0",
+      "date": "2018-04-11T10:31:53.990Z"
+    },
+    {
+      "number": "0.12.1",
+      "date": "2018-04-11T10:55:16.242Z"
+    },
+    {
+      "number": "0.12.2",
+      "date": "2018-04-12T11:51:24.682Z"
+    },
+    {
+      "number": "0.12.3-rc.1",
+      "date": "2018-04-25T14:33:41.643Z"
+    },
+    {
+      "number": "0.12.3-rc.2",
+      "date": "2018-04-25T15:33:43.697Z"
+    },
+    {
+      "number": "0.12.3-rc.3",
+      "date": "2018-04-26T10:20:31.397Z"
+    },
+    {
+      "number": "0.12.3",
+      "date": "2018-04-30T12:38:31.700Z"
+    }
+  ],
+  "created": "2015-10-02T17:54:41.708Z",
+  "modified": "2018-04-30T12:38:39.391Z",
+  "lastPublisher": {
+    "name": "matrixdotorg",
+    "email": "matrix@matrix.org"
+  },
+  "owners": [
+    {
+      "name": "matrixdotorg",
+      "email": "matrix@matrix.org"
+    }
+  ]
+}

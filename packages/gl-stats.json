@@ -1,0 +1,88 @@
+{
+  "name": "gl-stats",
+  "version": "1.0.1",
+  "description": "Visualizing and monitor your performance.",
+  "main": "dist/gl-stats",
+  "module": "index.js",
+  "jsnext:main": "index.js",
+  "scripts": {
+    "prepare": "npm run build",
+    "pretest": "npm run build:dev",
+    "build": "npm run build:dev && npm run build:min",
+    "build:dev": "rollup -c ./script/rollup.config.js",
+    "build:min": "uglifyjs ./dist/gl-stats.dev.js --mangle --source-map url=gl-stats.min.js.map -o ./dist/gl-stats.min.js",
+    "start": "electron ./examples",
+    "server": "preview -p 8002 -e examples",
+    "dev": "rollup -w -c ./script/rollup.config.js",
+    "test": "tap test/*.spec.js"
+  },
+  "repository": {
+    "user": "gamedev-js",
+    "repo": "gl-stats",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/gamedev-js/gl-stats/tarball/master",
+    "clone_url": "https://github.com/gamedev-js/gl-stats",
+    "https_url": "https://github.com/gamedev-js/gl-stats",
+    "travis_url": "https://travis-ci.org/gamedev-js/gl-stats",
+    "zip_url": "https://github.com/gamedev-js/gl-stats/archive/master.zip",
+    "api_url": "https://api.github.com/repos/gamedev-js/gl-stats"
+  },
+  "keywords": [
+    "stats"
+  ],
+  "author": {
+    "name": "jwu"
+  },
+  "license": "MIT",
+  "homepage": "https://github.com/gamedev-js/gl-stats/issues",
+  "dependencies": {},
+  "devDependencies": {
+    "debug-draw": "^1.1.0",
+    "electron": "^1.7.3",
+    "fs-jetpack": "^0.13.0",
+    "preview-server": "^1.0.7",
+    "regl": "^1.3.0",
+    "rollup": "^0.41.4",
+    "rollup-watch": "^3.2.2",
+    "scene-graph": "^1.0.4",
+    "uglify-es": "^3.0.15",
+    "vmath": "^1.3.1"
+  },
+  "files": [
+    "dist",
+    "lib",
+    "index.js"
+  ],
+  "gitHead": "0eaa74a2757908966bcaa89e2c8431fea42eedd7",
+  "_npmVersion": "5.0.3",
+  "_nodeVersion": "8.1.2",
+  "dist": {
+    "integrity": "sha512-ZDCLBbT9EpW/64QOUvjn9DIus3GwT3O1jCWBL+GjkaeXv0uZtLdufYCZHtMC3+9dvsNFJEXOMcYUc7EGL7D1Og==",
+    "shasum": "41a1729bc645bfc765a0519ad1594eba7e762ff3",
+    "tarball": "https://registry.npmjs.org/gl-stats/-/gl-stats-1.0.1.tgz"
+  },
+  "versions": [
+    {
+      "number": "1.0.0",
+      "date": "2017-06-09T02:26:02.304Z"
+    },
+    {
+      "number": "1.0.1",
+      "date": "2017-07-12T06:52:00.438Z"
+    }
+  ],
+  "created": "2017-06-09T02:26:02.304Z",
+  "modified": "2017-07-12T06:52:00.438Z",
+  "lastPublisher": {
+    "name": "johnnywu",
+    "email": "KarasAya@gmail.com"
+  },
+  "owners": [
+    {
+      "name": "johnnywu",
+      "email": "KarasAya@gmail.com"
+    }
+  ]
+}

@@ -1,0 +1,76 @@
+{
+  "name": "shell-studio",
+  "version": "0.0.1",
+  "description": "electron editor for shell scripts",
+  "repository": {
+    "user": "parro-it",
+    "repo": "shell-studio",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/parro-it/shell-studio/tarball/master",
+    "clone_url": "https://github.com/parro-it/shell-studio",
+    "https_url": "https://github.com/parro-it/shell-studio",
+    "travis_url": "https://travis-ci.org/parro-it/shell-studio",
+    "zip_url": "https://github.com/parro-it/shell-studio/archive/master.zip",
+    "api_url": "https://api.github.com/repos/parro-it/shell-studio"
+  },
+  "author": {
+    "name": "Andrea",
+    "email": "andrea@parro.it"
+  },
+  "license": "MIT",
+  "files": [
+    "index.js",
+    "example.js"
+  ],
+  "scripts": {
+    "test": "ava --require babel-register && xo --ignore example.js --ignore index.js",
+    "setup": "rollup -f cjs main.js --output index.js",
+    "cover-test": "nyc ava --require babel-register && xo --ignore example.js --ignore index.js",
+    "cover-publish": "nyc report --reporter=text-lcov | coveralls"
+  },
+  "keywords": [],
+  "tonicExampleFilename": "example.js",
+  "babel": {
+    "plugins": [
+      "transform-es2015-modules-commonjs"
+    ]
+  },
+  "jsnext:main": "main.js",
+  "devDependencies": {
+    "ava": "^0.16.0",
+    "babel-plugin-transform-es2015-modules-commonjs": "^6.16.0",
+    "babel-register": "^6.16.3",
+    "coveralls": "^2.11.14",
+    "nyc": "^8.3.1",
+    "rollup": "^0.36.3",
+    "xo": "^0.17.0"
+  },
+  "gitHead": "0bd373eb8bbefb1d5aff790ec97a580283df7d7e",
+  "homepage": "https://github.com/parro-it/shell-studio#readme",
+  "_npmVersion": "3.10.8",
+  "_nodeVersion": "6.8.0",
+  "dist": {
+    "shasum": "1cdf448f713afb10877b5c351004de12e8a222f8",
+    "tarball": "http://registry.npmjs.org/shell-studio/-/shell-studio-0.0.1.tgz"
+  },
+  "versions": [
+    {
+      "number": "0.0.1",
+      "date": "2016-10-13T23:15:02.234Z"
+    }
+  ],
+  "created": "2016-10-13T23:15:02.234Z",
+  "modified": "2016-10-13T23:15:02.234Z",
+  "lastPublisher": {
+    "name": "parroit",
+    "email": "andrea@parro.it"
+  },
+  "owners": [
+    {
+      "name": "parroit",
+      "email": "andrea@parro.it"
+    }
+  ]
+}

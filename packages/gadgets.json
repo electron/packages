@@ -1,0 +1,451 @@
+{
+  "name": "gadgets",
+  "version": "0.0.57",
+  "author": {
+    "name": "jmquigley",
+    "email": "jmquigley@outlook.com"
+  },
+  "description": "Reusable React UI widgets - This is my widget library. There are many like it, but this one is mine...",
+  "main": "./dist/bundle.js",
+  "types": "./index.d.ts",
+  "private": false,
+  "license": "LGPL-3.0",
+  "repository": {
+    "user": "jmquigley",
+    "repo": "gadgets",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/jmquigley/gadgets/tarball/master",
+    "clone_url": "https://github.com/jmquigley/gadgets",
+    "https_url": "https://github.com/jmquigley/gadgets",
+    "travis_url": "https://travis-ci.org/jmquigley/gadgets",
+    "zip_url": "https://github.com/jmquigley/gadgets/archive/master.zip",
+    "api_url": "https://api.github.com/repos/jmquigley/gadgets"
+  },
+  "engines": {
+    "node": ">=7.x"
+  },
+  "devDependencies": {
+    "@types/debug": "^0.0.30",
+    "@types/enzyme": "^3.1.10",
+    "@types/fs-extra": "^5.0.2",
+    "@types/highlight.js": "^9.12.2",
+    "@types/jest": "^22.2.3",
+    "@types/lodash": "^4.14.107",
+    "@types/lorem-ipsum": "^1.0.2",
+    "@types/node": "^9.6.6",
+    "@types/quill": "^1.3.6",
+    "@types/react": "^16.3.12",
+    "@types/react-dom": "^16.0.5",
+    "@types/react-select": "^1.2.6",
+    "@types/react-sortable-tree": "^0.1.5",
+    "@types/sprintf-js": "^1.1.0",
+    "autobind-decorator": "^2.1.0",
+    "awesome-typescript-loader": "^5.0.0",
+    "babel-cli": "^6.26.0",
+    "babel-core": "^6.26.0",
+    "babel-loader": "^7.1.4",
+    "babel-minify-webpack-plugin": "^0.3.1",
+    "babel-plugin-css-modules-transform": "^1.5.0",
+    "babel-plugin-styled-components": "^1.5.1",
+    "babel-plugin-transform-runtime": "^6.23.0",
+    "babel-preset-env": "^1.6.1",
+    "babel-preset-minify": "^0.4.0",
+    "babel-preset-power-assert": "^2.0.0",
+    "babel-preset-react": "^6.24.1",
+    "caniuse-lite": "^1.0.30000830",
+    "circular-dependency-plugin": "^5.0.2",
+    "copy-webpack-plugin": "^4.5.1",
+    "coveralls": "^3.0.0",
+    "css-loader": "^0.28.11",
+    "css-ripple-effect": "^1.0.5",
+    "debug": "^3.1.0",
+    "electron": "1.8.4",
+    "enum-values": "^1.2.0",
+    "enzyme": "^3.3.0",
+    "enzyme-adapter-react-16": "^1.1.1",
+    "enzyme-to-json": "^3.3.3",
+    "file-loader": "^1.1.11",
+    "font-awesome": "^4.7.0",
+    "highlight.js": "^9.12.0",
+    "identity-obj-proxy": "^3.0.0",
+    "immutable": "^4.0.0-rc.9",
+    "jest": "^22.4.3",
+    "jest-styled-components": "^5.0.1",
+    "js-output-loader": ">=0.0.5",
+    "json-loader": "^0.5.7",
+    "jsonfile": "^4.0.0",
+    "lodash": "^4.17.5",
+    "lorem-ipsum": "^1.0.4",
+    "mini-css-extract-plugin": "^0.4.0",
+    "postcss-cssnext": "^3.1.0",
+    "postcss-import": "^11.1.0",
+    "postcss-loader": "^2.1.4",
+    "postcss-modules": "^1.1.0",
+    "power-assert": "^1.5.0",
+    "precss": "^3.1.2",
+    "process-nextick-args": "^2.0.0",
+    "quill": "^1.3.6",
+    "quill-markup": "^0.0.24",
+    "react": "^16.3.2",
+    "react-dom": "^16.3.2",
+    "react-modal": "^3.4.2",
+    "react-select": "1.2.1",
+    "react-sortable-tree": "^2.1.0",
+    "react-test-renderer": "^16.3.2",
+    "sprintf-js": "^1.1.1",
+    "style-loader": "^0.21.0",
+    "styled-components": "^3.2.6",
+    "tslint": "^5.9.1",
+    "tslint-react": "^3.5.1",
+    "typescript": "^2.8.3",
+    "typescript-babel-jest": "^1.0.5",
+    "url-loader": "^1.0.1",
+    "util.calc": "~0.0.9",
+    "util.classnames": "~0.0.16",
+    "util.constants": "~0.0.9",
+    "util.ds": "~0.0.37",
+    "util.join": "~0.0.18",
+    "util.keys": "~0.0.13",
+    "util.leader": "~0.0.37",
+    "util.matches": "~0.0.7",
+    "util.pkgwrap": "~0.0.91",
+    "util.promise": "~0.0.21",
+    "util.string": "~0.0.8",
+    "util.toolbox": "~0.0.58",
+    "util.wait": "~0.0.31",
+    "webpack": "^4.6.0",
+    "webpack-bundle-analyzer": "^2.11.1",
+    "webpack-cli": "^2.0.14",
+    "webpack-null-plugin": "^0.0.2"
+  },
+  "pkgwrap": {
+    "bail": true,
+    "cleanup": [
+      "docs",
+      "bin/**/*.d.ts",
+      "bin/**/*.js",
+      "demo/src/**/*.js",
+      "demo/src/**/*.jsx",
+      "demo/src/**/*.d.ts",
+      "demo/main.js",
+      "demo/main.d.ts",
+      "demo/app.js",
+      "demo/app.jsx",
+      "demo/app.d.ts",
+      "index.d.ts",
+      "index.js",
+      "lib/**/*.d.ts",
+      "lib/**/*.js",
+      "lib/**/*.jsx"
+    ],
+    "include": [
+      "demo/src/**/*.{ts,tsx}"
+    ]
+  },
+  "jest": {
+    "collectCoverage": true,
+    "coveragePathIgnorePatterns": [
+      "<rootDir>/bin/",
+      "<rootDir>/node_modules/",
+      "<rootDir>/test"
+    ],
+    "moduleFileExtensions": [
+      "js",
+      "jsx",
+      "ts",
+      "tsx",
+      "json"
+    ],
+    "moduleNameMapper": {
+      "\\.(css|style)$": "identity-obj-proxy"
+    },
+    "notify": false,
+    "setupFiles": [
+      "<rootDir>/bin/workaround.js",
+      "<rootDir>/bin/setupEnzyme.js",
+      "<rootDir>/bin/setupDOM.js"
+    ],
+    "setupTestFrameworkScriptFile": "<rootDir>/bin/setupJest.js",
+    "snapshotSerializers": [
+      "enzyme-to-json/serializer"
+    ],
+    "testEnvironment": "jsdom",
+    "testPathIgnorePatterns": [
+      "<rootDir>/bin/",
+      "<rootDir>/node_modules/"
+    ],
+    "testRegex": "__test__/.*\\.test\\.(ts|tsx)$",
+    "transform": {
+      "^.+\\.(ts|tsx)$": "typescript-babel-jest"
+    },
+    "verbose": false
+  },
+  "scripts": {
+    "all": "yarn install && cross-env NODE_ENV=production yarn run build && yarn run docs && yarn test",
+    "build": "yarn clean && yarn run lint && pkgwrap --build --webpack && yarn run build:demo",
+    "build:demo": "cd demo && yarn run build",
+    "clean": "pkgwrap --clean",
+    "coverage": "pkgwrap --coverage --jest",
+    "demo": "yarn run all && yarn start",
+    "docs": "pkgwrap --docs",
+    "lint": "pkgwrap --lint",
+    "prepublishOnly": "yarn run all",
+    "start": "cross-env NODE_ENV=production electron demo/.",
+    "test": "cross-env NODE_ENV=test pkgwrap --testing --jest",
+    "watch": "webpack --watch --progress",
+    "webpack": "webpack"
+  },
+  "gitHead": "406c57e7127ad0b3e60b82f8bb2762d2f4938792",
+  "homepage": "https://github.com/jmquigley/gadgets#readme",
+  "_npmVersion": "5.8.0",
+  "_nodeVersion": "9.11.1",
+  "dist": {
+    "integrity": "sha512-/hDGs9YjS18lbmfjASrGJ+RgxJF0ZAbmlRoWMke0B5EoOSVaQ1BcgOMJuSp8eCYQCcO6R1YfqnKn+JARVGblNg==",
+    "shasum": "e4f21839fdcd3c327279fe6e8f385c0aaa361bdf",
+    "tarball": "https://registry.npmjs.org/gadgets/-/gadgets-0.0.57.tgz",
+    "fileCount": 184,
+    "unpackedSize": 3889342,
+    "npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJa4OGjCRA9TVsSAnZWagAAuJYQAInHs6WfUxYFNJPuZFgU\nujkoTGSsIjJ+Z51nwT4SI3Hm0oSrBIBhgyjas2InptAPMq6lFPDKWkxoBm4I\n2VkdE8se8D8XaduCr/bL6HGtknAJMBSdfcFE8ypDLHFphHek7PUS/KRTcx3g\nUcxLNmN9c/Bn/zZK1tHFQQsKKbT7KHyp8NGzhkYHuOtmxO3wkaT3a709RKv/\nD5bpjYSUCZIA42mUL+6v6jHCmY/azv1NVon5jThsj4jCjpfatMU3SRKfRhTT\nQJz2GSygLT1mO+gW+oEQgyrpcmxQ4mz2btcstHW7Mpx34yMiasl5rx+LM+mr\nIRBP0Eq4RgIvlj3I+u/7IF2k5OG4LZlDL/56rndwDjdzlWSfPSpR6/QkU7Xd\n/im89sbd1Z/aP/a25umWxd+G14MDpvJu5zMzThd3Y3bkKRo8WUCcZE2d1tiE\n81//yISYQcp/5k34l+ZJ1dSk3McLwB0WQJYaUdv6D9Kv84a+Efh5i07x8lx2\nLtAySgHpoLe+YYwsp7TCc1dtEKCShPO5HMmLqyTpo+/Q/KxqS4MZ6UWadaie\nMdhY12g7pRZtIEGRIU1WpRLFt7y4Ilu58TGj7Cazb1sfe57ofrO1vxrZxRMY\np8t5uotRaQ3WNJ2E4ZT3CHy3sxtRb+SWy9ubNH1PdXdNS33N3iCrPtRr5QCL\nTjwc\r\n=QNFU\r\n-----END PGP SIGNATURE-----\r\n"
+  },
+  "_hasShrinkwrap": false,
+  "versions": [
+    {
+      "number": "0.0.1",
+      "date": "2017-05-17T15:49:37.235Z"
+    },
+    {
+      "number": "0.0.2",
+      "date": "2017-05-17T17:09:01.151Z"
+    },
+    {
+      "number": "0.0.3",
+      "date": "2017-05-17T17:51:36.294Z"
+    },
+    {
+      "number": "0.0.5",
+      "date": "2017-05-17T22:38:44.459Z"
+    },
+    {
+      "number": "0.0.6",
+      "date": "2017-05-17T22:42:54.680Z"
+    },
+    {
+      "number": "0.0.7",
+      "date": "2017-05-19T01:58:58.043Z"
+    },
+    {
+      "number": "0.0.8",
+      "date": "2017-05-24T12:24:24.715Z"
+    },
+    {
+      "number": "0.0.9",
+      "date": "2017-09-10T16:39:51.922Z"
+    },
+    {
+      "number": "0.0.10",
+      "date": "2017-10-06T02:00:18.685Z"
+    },
+    {
+      "number": "0.0.11",
+      "date": "2017-10-06T04:43:41.175Z"
+    },
+    {
+      "number": "0.0.12",
+      "date": "2017-10-08T23:06:56.227Z"
+    },
+    {
+      "number": "0.0.13",
+      "date": "2017-10-09T00:00:51.587Z"
+    },
+    {
+      "number": "0.0.14",
+      "date": "2017-10-09T01:30:51.398Z"
+    },
+    {
+      "number": "0.0.15",
+      "date": "2017-10-09T15:32:23.794Z"
+    },
+    {
+      "number": "0.0.16",
+      "date": "2017-10-12T21:04:03.429Z"
+    },
+    {
+      "number": "0.0.17",
+      "date": "2017-10-14T15:20:54.642Z"
+    },
+    {
+      "number": "0.0.18",
+      "date": "2017-10-17T14:20:40.418Z"
+    },
+    {
+      "number": "0.0.19",
+      "date": "2017-10-17T23:06:34.000Z"
+    },
+    {
+      "number": "0.0.20",
+      "date": "2017-10-17T23:44:22.855Z"
+    },
+    {
+      "number": "0.0.21",
+      "date": "2017-10-18T14:49:36.855Z"
+    },
+    {
+      "number": "0.0.22",
+      "date": "2017-10-18T17:55:32.671Z"
+    },
+    {
+      "number": "0.0.23",
+      "date": "2017-11-14T05:30:53.293Z"
+    },
+    {
+      "number": "0.0.24",
+      "date": "2017-11-18T03:12:33.759Z"
+    },
+    {
+      "number": "0.0.25",
+      "date": "2017-11-18T04:34:37.176Z"
+    },
+    {
+      "number": "0.0.26",
+      "date": "2017-11-18T18:55:36.128Z"
+    },
+    {
+      "number": "0.0.27",
+      "date": "2017-11-18T21:31:50.129Z"
+    },
+    {
+      "number": "0.0.28",
+      "date": "2017-11-19T16:00:48.839Z"
+    },
+    {
+      "number": "0.0.29",
+      "date": "2017-11-19T18:42:14.803Z"
+    },
+    {
+      "number": "0.0.30",
+      "date": "2017-11-20T14:09:31.246Z"
+    },
+    {
+      "number": "0.0.31",
+      "date": "2017-11-23T02:13:08.060Z"
+    },
+    {
+      "number": "0.0.32",
+      "date": "2017-11-23T04:30:21.931Z"
+    },
+    {
+      "number": "0.0.33",
+      "date": "2017-11-23T04:33:35.622Z"
+    },
+    {
+      "number": "0.0.34",
+      "date": "2017-11-24T03:35:22.823Z"
+    },
+    {
+      "number": "0.0.35",
+      "date": "2017-11-24T04:21:21.643Z"
+    },
+    {
+      "number": "0.0.36",
+      "date": "2017-11-25T05:14:07.159Z"
+    },
+    {
+      "number": "0.0.37",
+      "date": "2017-11-28T03:03:45.450Z"
+    },
+    {
+      "number": "0.0.38",
+      "date": "2017-11-28T04:58:07.115Z"
+    },
+    {
+      "number": "0.0.39",
+      "date": "2017-11-28T15:49:44.552Z"
+    },
+    {
+      "number": "0.0.40",
+      "date": "2017-11-29T18:59:51.437Z"
+    },
+    {
+      "number": "0.0.41",
+      "date": "2017-12-03T21:30:54.370Z"
+    },
+    {
+      "number": "0.0.42",
+      "date": "2017-12-04T01:47:23.074Z"
+    },
+    {
+      "number": "0.0.43",
+      "date": "2017-12-04T02:31:48.356Z"
+    },
+    {
+      "number": "0.0.44",
+      "date": "2017-12-04T18:22:53.531Z"
+    },
+    {
+      "number": "0.0.45",
+      "date": "2017-12-05T16:40:35.318Z"
+    },
+    {
+      "number": "0.0.46",
+      "date": "2017-12-08T04:21:00.120Z"
+    },
+    {
+      "number": "0.0.47",
+      "date": "2017-12-14T22:28:13.903Z"
+    },
+    {
+      "number": "0.0.48",
+      "date": "2018-01-03T04:15:43.719Z"
+    },
+    {
+      "number": "0.0.49",
+      "date": "2018-01-15T21:23:41.576Z"
+    },
+    {
+      "number": "0.0.50",
+      "date": "2018-01-18T22:39:56.395Z"
+    },
+    {
+      "number": "0.0.51",
+      "date": "2018-01-20T04:35:55.685Z"
+    },
+    {
+      "number": "0.0.52",
+      "date": "2018-01-30T00:21:45.363Z"
+    },
+    {
+      "number": "0.0.53",
+      "date": "2018-02-01T02:13:51.697Z"
+    },
+    {
+      "number": "0.0.54",
+      "date": "2018-02-01T02:47:00.290Z"
+    },
+    {
+      "number": "0.0.55",
+      "date": "2018-02-17T19:25:19.496Z"
+    },
+    {
+      "number": "0.0.56",
+      "date": "2018-04-20T05:01:17.043Z"
+    },
+    {
+      "number": "0.0.57",
+      "date": "2018-04-25T20:14:25.217Z"
+    }
+  ],
+  "created": "2017-05-17T15:49:37.235Z",
+  "modified": "2018-04-25T20:14:29.359Z",
+  "lastPublisher": {
+    "name": "jmquigley",
+    "email": "james.m.quigley@gmail.com"
+  },
+  "owners": [
+    {
+      "name": "jmquigley",
+      "email": "james.m.quigley@gmail.com"
+    }
+  ]
+}

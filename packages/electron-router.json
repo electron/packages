@@ -1,0 +1,99 @@
+{
+  "name": "electron-router",
+  "version": "0.4.1",
+  "license": "MIT",
+  "description": "Router for Electron shell, useful for MVC",
+  "author": {
+    "name": "Guillermo Blanco"
+  },
+  "repository": {
+    "user": "m0n0l0c0",
+    "repo": "electron-router",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/m0n0l0c0/electron-router/tarball/master",
+    "clone_url": "https://github.com/m0n0l0c0/electron-router",
+    "https_url": "https://github.com/m0n0l0c0/electron-router",
+    "travis_url": "https://travis-ci.org/m0n0l0c0/electron-router",
+    "zip_url": "https://github.com/m0n0l0c0/electron-router/archive/master.zip",
+    "api_url": "https://api.github.com/repos/m0n0l0c0/electron-router"
+  },
+  "main": "router.js",
+  "dependencies": {
+    "eventemitter3": "git+https://github.com/m0n0l0c0/eventemitter3.git",
+    "lodash": "^4.13.1",
+    "uuid": "^3.0.0"
+  },
+  "devDependencies": {
+    "electron-mocha": "git+https://github.com/m0n0l0c0/electron-mocha.git#v2.4.0",
+    "istanbul": "^0.4.5",
+    "mocha": "^3.0.2",
+    "require-no-cache": "^0.2.1",
+    "should": "^9.0.2",
+    "standard": "^8.0.0"
+  },
+  "keywords": [
+    "electron",
+    "router",
+    "mvc",
+    "callback"
+  ],
+  "scripts": {
+    "prepublish": "npm test",
+    "test-env": "./node_modules/mocha/bin/mocha --require tests/coverage.js tests/env/main.js && mv coverage/coverage-final.json coverage/coverage-env.json",
+    "test-config": "./node_modules/electron-mocha/bin/electron-mocha --require tests/coverage.js tests/config/main.js && mv coverage/coverage-final.json coverage/coverage-conf.json",
+    "test-errors": "./node_modules/electron-mocha/bin/electron-mocha --require tests/coverage.js tests/errors/params.js && mv coverage/coverage-final.json coverage/coverage-errors.json",
+    "test-process": "./node_modules/electron-mocha/bin/electron-mocha --require tests/coverage.js tests/mainProcess/main.js && mv coverage/coverage-final.json coverage/coverage-process.json",
+    "test-renderer-alone": "./node_modules/electron-mocha/bin/electron-mocha --require tests/coverage.js --renderer tests/renderer/alone.js && mv coverage/coverage-final.json coverage/coverage-alone.json",
+    "test-renderer-complex": "./node_modules/electron-mocha/bin/electron-mocha --require tests/coverage.js --preload tests/renderer/process.js --renderer tests/renderer/renderer.js && mv coverage/coverage-final.json coverage/coverage-complex.json",
+    "test": "standard && npm run test-env && npm run test-config && npm run test-errors && npm run test-process && npm run test-renderer-alone && npm run test-renderer-complex && istanbul report"
+  },
+  "gitHead": "dfe236875d1df24d1e62511335459b15e6d58835",
+  "homepage": "https://github.com/m0n0l0c0/electron-router#readme",
+  "_npmVersion": "4.0.2",
+  "_nodeVersion": "7.2.0",
+  "dist": {
+    "shasum": "b5f36b0fa45a31f1e9a28507a014c13fde9ed9f5",
+    "tarball": "http://registry.npmjs.org/electron-router/-/electron-router-0.4.1.tgz"
+  },
+  "stars": 1,
+  "versions": [
+    {
+      "number": "0.1.1",
+      "date": "2016-07-30T16:49:44.872Z"
+    },
+    {
+      "number": "0.2.0",
+      "date": "2016-08-29T19:07:10.426Z"
+    },
+    {
+      "number": "0.3.0",
+      "date": "2016-09-04T15:18:46.877Z"
+    },
+    {
+      "number": "0.3.1",
+      "date": "2016-09-09T14:40:13.160Z"
+    },
+    {
+      "number": "0.4.0",
+      "date": "2016-09-18T19:26:05.096Z"
+    },
+    {
+      "number": "0.4.1",
+      "date": "2016-12-03T19:52:46.973Z"
+    }
+  ],
+  "created": "2016-07-30T16:49:44.872Z",
+  "modified": "2016-12-03T19:52:46.973Z",
+  "lastPublisher": {
+    "name": "m0n0l0c0",
+    "email": "guillermoechegoyenblanco@gmail.com"
+  },
+  "owners": [
+    {
+      "name": "m0n0l0c0",
+      "email": "guillermoechegoyenblanco@gmail.com"
+    }
+  ]
+}

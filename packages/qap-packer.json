@@ -1,0 +1,213 @@
+{
+  "name": "qap-packer",
+  "version": "0.2.0",
+  "author": {
+    "name": "fnatic",
+    "email": "siliang.csl@alibaba-inc.com"
+  },
+  "description": "Qianniu offline package tool can generate cache zip packages for online addresses, which can be directly docked to QNCONSOLE(http://qnconsole.taobao.com), and currently supports cli and electron",
+  "license": "Apache-2.0",
+  "main": "./dist/electron/main.js",
+  "bin": {
+    "packer": "./src/index.js"
+  },
+  "scripts": {
+    "build": "node .electron-vue/build.js && electron-builder",
+    "build:dir": "node .electron-vue/build.js && electron-builder --dir",
+    "build:clean": "cross-env BUILD_TARGET=clean node .electron-vue/build.js",
+    "build:web": "cross-env BUILD_TARGET=web node .electron-vue/build.js",
+    "dev": "node .electron-vue/dev-runner.js",
+    "pack": "npm run pack:main && npm run pack:renderer",
+    "pack:main": "cross-env NODE_ENV=production webpack --progress --colors --config .electron-vue/webpack.main.config.js",
+    "pack:renderer": "cross-env NODE_ENV=production webpack --progress --colors --config .electron-vue/webpack.renderer.config.js",
+    "postinstall": ""
+  },
+  "build": {
+    "productName": "qap-packer",
+    "appId": "org.simulatedgreg.electron-vue",
+    "directories": {
+      "output": "build"
+    },
+    "files": [
+      "dist/electron/**/*"
+    ],
+    "dmg": {
+      "contents": [
+        {
+          "x": 410,
+          "y": 150,
+          "type": "link",
+          "path": "/Applications"
+        },
+        {
+          "x": 130,
+          "y": 150,
+          "type": "file"
+        }
+      ]
+    },
+    "mac": {
+      "icon": "build/icons/icon.icns"
+    },
+    "win": {
+      "icon": "build/icons/icon.ico"
+    },
+    "linux": {
+      "icon": "build/icons"
+    }
+  },
+  "dependencies": {
+    "archiver": "^2.1.0",
+    "axios": "^0.16.1",
+    "chalk": "^2.3.0",
+    "cheerio": "^1.0.0-rc.2",
+    "crypto": "^1.0.1",
+    "element-ui": "^2.0.8",
+    "fs-extra": "^5.0.0",
+    "inquirer": "^4.0.1",
+    "mkdirp": "^0.5.1",
+    "pipeline": "^0.1.3",
+    "vue": "^2.3.3",
+    "vue-electron": "^1.0.6",
+    "vue-router": "^2.5.3",
+    "vuex": "^2.3.1"
+  },
+  "devDependencies": {
+    "babel-core": "^6.25.0",
+    "babel-loader": "^7.1.1",
+    "babel-plugin-component": "^1.0.0",
+    "babel-plugin-transform-es2015-modules-commonjs": "^6.26.0",
+    "babel-plugin-transform-runtime": "^6.23.0",
+    "babel-preset-env": "^1.6.0",
+    "babel-preset-stage-0": "^6.24.1",
+    "babel-register": "^6.24.1",
+    "babili-webpack-plugin": "^0.1.2",
+    "cfonts": "^1.1.3",
+    "copy-webpack-plugin": "^4.0.1",
+    "cross-env": "^5.0.5",
+    "css-loader": "^0.28.4",
+    "del": "^3.0.0",
+    "devtron": "^1.4.0",
+    "electron": "^1.7.5",
+    "electron-builder": "^19.52.1",
+    "electron-debug": "^1.4.0",
+    "electron-devtools-installer": "^2.2.0",
+    "element-theme-chalk": "^2.0.8",
+    "extract-text-webpack-plugin": "^3.0.0",
+    "file-loader": "^0.11.2",
+    "html-webpack-plugin": "^2.30.1",
+    "multispinner": "^0.2.1",
+    "node-loader": "^0.6.0",
+    "style-loader": "^0.18.2",
+    "url-loader": "^0.5.9",
+    "vue-html-loader": "^1.2.4",
+    "vue-loader": "^13.7.0",
+    "vue-style-loader": "^3.0.1",
+    "vue-template-compiler": "^2.5.13",
+    "webpack": "^3.5.2",
+    "webpack-dev-server": "^2.7.1",
+    "webpack-hot-middleware": "^2.18.2"
+  },
+  "gitHead": "fd152006150a46de42fa34c0d7bab07517785cfc",
+  "_npmVersion": "5.6.0",
+  "_nodeVersion": "8.4.0",
+  "dist": {
+    "integrity": "sha512-Gs8jwxNBnSt8BbAoJw52Ly+vUqOn1vDBajiKygDSYJnICaWOrDDQ4aKRpY6pyzT48Jhc41801e9Yv34e/e+TBw==",
+    "shasum": "022f333443152e12f16f6ab28452abb56d9f39ab",
+    "tarball": "https://registry.npmjs.org/qap-packer/-/qap-packer-0.2.0.tgz",
+    "fileCount": 48,
+    "unpackedSize": 1641158,
+    "npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJa6TPrCRA9TVsSAnZWagAAAj0P/1m2ujI4ASDuGBzuinh/\nYSTU4M8KW5l0euCd+BuSrIbD8VYXIz27hRdyDANIe3rTCom3t546e5vrwuKj\nfziiMuy7ioxTqBO1rfXOqGYB2BhqrWCMnzYHrhhXImBX+SX+AW24L5M1VQEn\nq4ocNx2Hh6zTEsJC4RC3WXSZVfDbvKOteRgQxiTB8I7DzOewrWGWLvpieo+/\nx+Ex2pxp5yIq/ji5R1GtlLi5PsRB+FrD3oAWLMR0p2LRZhbG25KL5WHA5eTE\nL/dBqZFtX7SHQHTb1m8+3Y2H27K7P7IjdpJR59e3NjmgynA5njiQEmUFThW+\nsCqKdBuS8PCQBN7zp8HxpEEKFDi9HNSTMq8O06k6rj9qKkoxf7SdL5KFfE55\nJoahcDA2Ktp4yqDiodd2/10QXmvtIv+Kjy1p03j5IdHdQBS/N3wYtMDkmdJN\nx3z0einL9uczvmc6iw5fKzELTPU49JhRWHFs7tsCAALVPpetUdH2rGmmQ2wh\nTKM7YA9wl/EDQfqyiKmG6pX5vCcrPde6Rfasczd4hSZlNWG/6Ae23iGB1Su1\nJ5Gkpa75zu7oKo3yJxlhPp06ea5nUhiAvlInCadr15PO7GsznaacnviH/bs5\njQqNrXI7AemCigKhONvIPpXCVpnu3d8Ift4DhW/SUVFYBEUsUPmz+lrynUzf\ngceK\r\n=8JZu\r\n-----END PGP SIGNATURE-----\r\n"
+  },
+  "_hasShrinkwrap": false,
+  "versions": [
+    {
+      "number": "0.1.0",
+      "date": "2018-01-02T09:49:22.639Z"
+    },
+    {
+      "number": "0.1.1",
+      "date": "2018-01-02T09:53:19.019Z"
+    },
+    {
+      "number": "0.1.2",
+      "date": "2018-01-02T10:56:24.368Z"
+    },
+    {
+      "number": "0.1.3",
+      "date": "2018-01-02T10:59:02.824Z"
+    },
+    {
+      "number": "0.1.4",
+      "date": "2018-01-03T02:02:43.788Z"
+    },
+    {
+      "number": "0.1.5",
+      "date": "2018-01-03T06:44:10.742Z"
+    },
+    {
+      "number": "0.1.6",
+      "date": "2018-01-03T06:46:33.478Z"
+    },
+    {
+      "number": "0.1.7",
+      "date": "2018-01-08T12:02:19.100Z"
+    },
+    {
+      "number": "0.1.8",
+      "date": "2018-01-09T04:34:06.608Z"
+    },
+    {
+      "number": "0.1.10",
+      "date": "2018-01-10T06:56:50.866Z"
+    },
+    {
+      "number": "0.1.11",
+      "date": "2018-01-15T11:03:17.669Z"
+    },
+    {
+      "number": "0.1.13",
+      "date": "2018-02-07T13:00:18.179Z"
+    },
+    {
+      "number": "0.1.14",
+      "date": "2018-02-08T08:39:51.682Z"
+    },
+    {
+      "number": "0.1.15",
+      "date": "2018-03-09T07:21:21.246Z"
+    },
+    {
+      "number": "0.1.16-beta",
+      "date": "2018-04-19T07:15:57.831Z"
+    },
+    {
+      "number": "0.1.17-beta",
+      "date": "2018-04-19T11:27:18.871Z"
+    },
+    {
+      "number": "0.1.18-beta",
+      "date": "2018-05-02T03:08:14.749Z"
+    },
+    {
+      "number": "0.1.19-beta",
+      "date": "2018-05-02T03:23:10.971Z"
+    },
+    {
+      "number": "0.2.0",
+      "date": "2018-05-02T03:43:38.369Z"
+    }
+  ],
+  "created": "2018-01-02T09:49:22.639Z",
+  "modified": "2018-05-02T03:43:41.293Z",
+  "lastPublisher": {
+    "name": "fnatic",
+    "email": "csl39@live.com"
+  },
+  "owners": [
+    {
+      "name": "fnatic",
+      "email": "csl39@live.com"
+    }
+  ]
+}

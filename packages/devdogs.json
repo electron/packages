@@ -1,0 +1,148 @@
+{
+  "name": "devdogs",
+  "productName": "Devdogs",
+  "version": "0.2.1",
+  "description": "DevdoGs, Unofficial Devdocs app for Mac",
+  "license": "MIT",
+  "main": "index.js",
+  "repository": {
+    "user": "ragingwind",
+    "repo": "devdogs",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/ragingwind/devdogs/tarball/master",
+    "clone_url": "https://github.com/ragingwind/devdogs",
+    "https_url": "https://github.com/ragingwind/devdogs",
+    "travis_url": "https://travis-ci.org/ragingwind/devdogs",
+    "zip_url": "https://github.com/ragingwind/devdogs/archive/master.zip",
+    "api_url": "https://api.github.com/repos/ragingwind/devdogs"
+  },
+  "author": {
+    "name": "ragingwind",
+    "email": "ragingwind@gmail.com",
+    "url": "ragingwind.me"
+  },
+  "engines": {
+    "node": ">=4"
+  },
+  "config": {
+    "ignore": "--ignore='^/res$' --ignore='^/dist$' --ignore='^/node_modules$'",
+    "platform": "--platform=darwin --arch=x64 --prune --asar --icon=res/icon-128.icns",
+    "version": "--app-bundle-id=me.ragingwind.devdocs"
+  },
+  "scripts": {
+    "start": "electron ./",
+    "test": "xo",
+    "clean": "rm -rf build package",
+    "build": "electron-packager . $npm_package_productName --out=./dist --overwrite --app-version=$npm_package_version $npm_package_config_platform $npm_package_config_version $npm_package_config_ignore",
+    "package": "cd dist/${npm_package_productName}-darwin-x64 && zip -ryXq9 ../${npm_package_productName}-${npm_package_version}.zip ${npm_package_productName}.app"
+  },
+  "files": [
+    "index.js",
+    "menu.js",
+    "browser.js",
+    "browser.css"
+  ],
+  "keywords": [
+    "devdogs",
+    "devdocs",
+    "devdocs.io",
+    "electron",
+    "electron-app"
+  ],
+  "devDependencies": {
+    "electron": "^1.4.8",
+    "electron-packager": "8.3.0",
+    "xo": "^0.17.1"
+  },
+  "dependencies": {
+    "configstore": "^2.1.0",
+    "electron-debug": "^1.1.0",
+    "electron-menu-loader": "1.0.0",
+    "electron-shortcut": "^0.5.0",
+    "electron-togglify-window": "^0.1.0",
+    "electron-window-state": "^4.0.0"
+  },
+  "xo": {
+    "esnext": true,
+    "envs": [
+      "node",
+      "browser"
+    ]
+  },
+  "gitHead": "fd15310bb279fdbfa2dc66bd4be8225bf9a6273c",
+  "homepage": "https://github.com/ragingwind/devdogs#readme",
+  "_npmVersion": "3.10.8",
+  "_nodeVersion": "6.9.1",
+  "dist": {
+    "shasum": "6e0f2e4b2b55360802fb783ac54cca9420ebeece",
+    "tarball": "http://registry.npmjs.org/devdogs/-/devdogs-0.2.1.tgz"
+  },
+  "versions": [
+    {
+      "number": "0.1.1",
+      "date": "2015-09-24T22:57:04.141Z"
+    },
+    {
+      "number": "0.1.2",
+      "date": "2015-09-30T16:36:10.337Z"
+    },
+    {
+      "number": "0.1.3",
+      "date": "2015-10-02T06:21:57.761Z"
+    },
+    {
+      "number": "0.1.4",
+      "date": "2015-10-11T23:52:44.181Z"
+    },
+    {
+      "number": "0.1.5",
+      "date": "2015-10-30T15:29:27.329Z"
+    },
+    {
+      "number": "0.1.6",
+      "date": "2015-12-08T09:13:11.921Z"
+    },
+    {
+      "number": "0.1.7",
+      "date": "2016-01-12T23:42:33.213Z"
+    },
+    {
+      "number": "0.1.8",
+      "date": "2016-01-13T00:31:23.509Z"
+    },
+    {
+      "number": "0.1.9",
+      "date": "2016-01-13T00:44:23.465Z"
+    },
+    {
+      "number": "0.1.10",
+      "date": "2016-01-14T22:49:39.190Z"
+    },
+    {
+      "number": "0.1.11",
+      "date": "2016-01-23T03:35:34.079Z"
+    },
+    {
+      "number": "0.2.0",
+      "date": "2016-12-28T04:13:26.372Z"
+    },
+    {
+      "number": "0.2.1",
+      "date": "2016-12-28T04:15:21.093Z"
+    }
+  ],
+  "created": "2015-09-24T22:57:04.141Z",
+  "modified": "2016-12-28T04:15:21.093Z",
+  "lastPublisher": {
+    "name": "ragingwind",
+    "email": "ragingwind@gmail.com"
+  },
+  "owners": [
+    {
+      "name": "ragingwind",
+      "email": "ragingwind@gmail.com"
+    }
+  ]
+}

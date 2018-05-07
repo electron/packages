@@ -1,0 +1,76 @@
+{
+  "name": "x-ray-electron",
+  "version": "0.0.2",
+  "description": "electron driver for x-ray",
+  "author": {
+    "name": "Mirco Bartels",
+    "email": "mirco.bartels@gmail.com"
+  },
+  "main": "./dist/app.js",
+  "types": "./dist/app.d.ts",
+  "dependencies": {
+    "nightmare": "^2.10.0"
+  },
+  "peerDependencies": {
+    "nightmare": "^2.10.0"
+  },
+  "devDependencies": {
+    "@types/nightmare": "^1.6.35",
+    "chalk": "^2.1.0",
+    "concat-glob-cli": "^0.1.0",
+    "npm-run-all": "^4.1.1",
+    "rimraf": "^2.6.1",
+    "rollup": "^0.49.3",
+    "rollup-plugin-commonjs": "^8.2.1",
+    "rollup-plugin-node-resolve": "^3.0.0",
+    "supervisor": "^0.12.0",
+    "typescript": "^2.2.2"
+  },
+  "scripts": {
+    "start": "supervisor --quiet --no-restart-on exit --watch ./src --extensions ts --exec npm -- run --silent build",
+    "build": "npm-run-all --silent buildstart clean --parallel compile:* --sequential buildfinish",
+    "clean": "rimraf ./dist ./build",
+    "compile:ts": "tsc",
+    "postcompile:ts": "npm-run-all bundle:js bundle:tsd",
+    "bundle:js": "rollup --config",
+    "bundle:tsd": "echo $null > dist/app.d.ts && concat-glob-cli -f ./build/*.d.ts -o ./dist/app.d.ts",
+    "buildstart": "node -p \"require('chalk').white('Build started...')\" && echo $null",
+    "postclean": "node -p \"require('chalk').white('Cleared directories: ./dist ./build')\" && echo $null",
+    "precompile:ts": "node -p \"require('chalk').white('Compiling Typescript:')\" && echo $null",
+    "prebundle:js": "echo $null && node -p \"require('chalk').white('Bundling ./dist/*.js files:')\"",
+    "prebundle:tsd": "echo $null && node -p \"require('chalk').white('Bundling ./dist/*.d.ts files:')\" && echo $null",
+    "postbundle:tsd": "node -p \"require('chalk').green('created ./dist/app.d.ts')\"",
+    "buildfinish": "echo $null && node -p \"require('chalk').bold.green('Build completed')\""
+  },
+  "keywords": [],
+  "gitHead": "678f8455db4a58294d2b76415cdbcc0e097fb173",
+  "_npmVersion": "5.3.0",
+  "_nodeVersion": "8.2.1",
+  "dist": {
+    "integrity": "sha512-8SXMlCQJhG8i7cCsN9l1BsX+rGXKwu/P0+uw5y/EBNr7qcrvntqKyQ1CmWg68WuGHPDF77F+uT6s+9TtoIuyjw==",
+    "shasum": "792c983e7c06d7ffb9d4f104e4ecc8a7fdcbe437",
+    "tarball": "https://registry.npmjs.org/x-ray-electron/-/x-ray-electron-0.0.2.tgz"
+  },
+  "versions": [
+    {
+      "number": "0.0.1",
+      "date": "2017-09-09T19:33:35.176Z"
+    },
+    {
+      "number": "0.0.2",
+      "date": "2017-09-09T20:10:09.646Z"
+    }
+  ],
+  "created": "2017-09-09T19:33:35.176Z",
+  "modified": "2017-09-09T20:10:09.646Z",
+  "lastPublisher": {
+    "name": "mirco312312",
+    "email": "mirco.bartels@gmail.com"
+  },
+  "owners": [
+    {
+      "name": "mirco312312",
+      "email": "mirco.bartels@gmail.com"
+    }
+  ]
+}

@@ -1,0 +1,148 @@
+{
+  "name": "mongodb-scope-client",
+  "description": "A client for mongodb-scope-server that works in the browser or a server.",
+  "version": "0.11.0",
+  "author": {
+    "name": "Lucas Hrabovsky",
+    "email": "lucas@mongodb.com",
+    "url": "http://imlucas.com"
+  },
+  "homepage": "http://github.com/mongodb-js/scope-client",
+  "repository": {
+    "user": "mongodb-js",
+    "repo": "scope-client",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/mongodb-js/scope-client/tarball/master",
+    "clone_url": "https://github.com/mongodb-js/scope-client",
+    "https_url": "https://github.com/mongodb-js/scope-client",
+    "travis_url": "https://travis-ci.org/mongodb-js/scope-client",
+    "zip_url": "https://github.com/mongodb-js/scope-client/archive/master.zip",
+    "api_url": "https://api.github.com/repos/mongodb-js/scope-client"
+  },
+  "dependency-check": {
+    "ignore": [
+      "mongodb-datasets"
+    ]
+  },
+  "license": "Apache-2.0",
+  "scripts": {
+    "check": "mongodb-js-precommit",
+    "fmt": "mongodb-js-fmt",
+    "docs": "gulp docs",
+    "ci": "npm test",
+    "ci-evergreen": "npm run start-server && mocha --reporter mocha-evergreen-reporter || npm run stop-server",
+    "test": "npm run start-server && mocha || npm run stop-server",
+    "test-electron": "npm run start-server && electron-mocha || npm run stop-server",
+    "start-server": "node bin/start-server.js",
+    "stop-server": "node bin/stop-server.js",
+    "prestart": "npm run start-server",
+    "start": "zuul --local 3001 --open -- test/*.test.js",
+    "poststart": "npm run start-server"
+  },
+  "precommit": [
+    "check"
+  ],
+  "dependencies": {
+    "ampersand-model": "^6.0.2",
+    "ampersand-state": "4.8.2",
+    "async": "^1.5.2",
+    "debug": "^2.2.0",
+    "event-stream": "^3.3.2",
+    "lodash.omit": "^3.1.0",
+    "lodash.trimright": "^3.0.2",
+    "mississippi": "^1.2.0",
+    "mongodb-connection-model": "^4.0.0",
+    "mongodb-extended-json": "^1.6.3",
+    "mongodb-ns": "^1.0.3",
+    "raf": "^3.2.0",
+    "socket.io-client": "^1.4.5",
+    "socket.io-stream": "0.9.0",
+    "superagent": "^1.7.2"
+  },
+  "devDependencies": {
+    "backbone": "^1.2.3",
+    "bson": "^0.4.21",
+    "del": "^2.2.0",
+    "dox": "^0.8.0",
+    "electron-mocha": "^0.8.0",
+    "electron-prebuilt": "^0.36.9",
+    "eslint-config-mongodb-js": "^1.0.6",
+    "gulp": "^3.9.1",
+    "gulp-util": "^3.0.7",
+    "handlebars": "^4.0.5",
+    "lodash.range": "^3.0.1",
+    "mocha": "^2.4.4",
+    "mocha-evergreen-reporter": "^0.0.7",
+    "mongodb-datasets": "^0.1.5",
+    "mongodb-js-fmt": "^0.0.3",
+    "mongodb-js-precommit": "^0.2.8",
+    "mongodb-runner": "^3.1.15",
+    "mongodb-scope-server": "^0.14.1",
+    "pre-commit": "^1.1.2",
+    "through2": "^2.0.0",
+    "zuul": "^3.9.0"
+  },
+  "gitHead": "ce215b478c2eb76e4a70b6562806eb6b1d16ab42",
+  "_npmVersion": "3.3.12",
+  "_nodeVersion": "5.4.1",
+  "dist": {
+    "shasum": "b74be7d5e54421b58286438607b7926553ccd050",
+    "tarball": "http://registry.npmjs.org/mongodb-scope-client/-/mongodb-scope-client-0.11.0.tgz"
+  },
+  "versions": [
+    {
+      "number": "0.8.0",
+      "date": "2016-01-07T18:49:32.009Z"
+    },
+    {
+      "number": "0.10.0",
+      "date": "2016-03-03T20:54:32.092Z"
+    },
+    {
+      "number": "0.10.1",
+      "date": "2016-03-03T21:48:19.209Z"
+    },
+    {
+      "number": "0.10.2",
+      "date": "2016-03-05T03:00:46.730Z"
+    },
+    {
+      "number": "0.11.0",
+      "date": "2016-03-06T23:07:48.091Z"
+    }
+  ],
+  "created": "2016-01-07T18:49:32.009Z",
+  "modified": "2018-05-02T13:33:36.928Z",
+  "lastPublisher": {
+    "name": "imlucas",
+    "email": "hrabovsky.lucas@gmail.com"
+  },
+  "owners": [
+    {
+      "name": "durran",
+      "email": "durran@gmail.com"
+    },
+    {
+      "name": "imlucas",
+      "email": "hrabovsky.lucas@gmail.com"
+    },
+    {
+      "name": "kangas",
+      "email": "kangas@gmail.com"
+    },
+    {
+      "name": "machyne",
+      "email": "mcotter222@gmail.com"
+    },
+    {
+      "name": "mongodb-js-user",
+      "email": "lucas.hrabovsky+mongodb-js@10gen.com"
+    },
+    {
+      "name": "rueckstiess",
+      "email": "thomas@rueckstiess.net"
+    }
+  ]
+}

@@ -1,0 +1,142 @@
+{
+  "name": "electron-compile-ftl",
+  "version": "6.4.9",
+  "description": "Electron supporting package to compile JS and CSS in Electron applications",
+  "scripts": {
+    "doc": "esdoc -c ./esdoc.json",
+    "compile": "cross-env NODE_ENV='production' git clean -xdf lib && babel -d lib/ src",
+    "prepublish": "npm run compile",
+    "start": "npm run compile && electron ./test-dist/electron-smoke-test.js",
+    "test": "mocha --compilers js:babel-register test/*.js",
+    "test-cov": "cross-env NODE_ENV='test' nyc --require babel-register mocha -- test/*.js"
+  },
+  "bin": {
+    "electron-compile": "lib/cli.js",
+    "electron-packager-compile": "lib/packager-cli.js"
+  },
+  "repository": {
+    "user": "paulcbetts",
+    "repo": "electron-compile",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/paulcbetts/electron-compile/tarball/master",
+    "clone_url": "https://github.com/paulcbetts/electron-compile",
+    "https_url": "https://github.com/paulcbetts/electron-compile",
+    "travis_url": "https://travis-ci.org/paulcbetts/electron-compile",
+    "zip_url": "https://github.com/paulcbetts/electron-compile/archive/master.zip",
+    "api_url": "https://api.github.com/repos/paulcbetts/electron-compile"
+  },
+  "keywords": [
+    "electron"
+  ],
+  "author": {
+    "name": "Paul Betts",
+    "email": "paul@paulbetts.org"
+  },
+  "license": "MIT",
+  "homepage": "https://github.com/paulcbetts/electron-compile",
+  "main": "lib/index.js",
+  "types": "types/index.d.ts",
+  "engines": {
+    "node": ">= 5.0"
+  },
+  "dependencies": {
+    "@paulcbetts/mime-types": "^2.1.10",
+    "@types/node": "^7.0.12",
+    "btoa": "^1.1.2",
+    "debug": "^2.5.1",
+    "lru-cache": "^4.0.1",
+    "mkdirp": "^0.5.1",
+    "pify": "^2.3.0",
+    "rimraf": "^2.5.4",
+    "rxjs": "^5.1.1",
+    "spawn-rx": "^2.0.3",
+    "yargs": "^4.8.1"
+  },
+  "devDependencies": {
+    "asar": "^0.12.1",
+    "babel-cli": "^6.11.4",
+    "babel-eslint": "^6.1.2",
+    "babel-plugin-array-includes": "^2.0.3",
+    "babel-plugin-transform-async-to-generator": "^6.8.0",
+    "babel-preset-es2016-node5": "^1.1.2",
+    "babel-preset-react": "^6.11.1",
+    "babel-register": "^6.11.6",
+    "chai": "^3.5.0",
+    "chai-as-promised": "^5.3.0",
+    "cheerio": "^0.20.0",
+    "cross-env": "^3.2.4",
+    "electron-compilers-ftl": "^5.9.4",
+    "electron-packager": "^7.5.1",
+    "electron-prebuilt": "^1.3.3",
+    "esdoc": "^0.4.8",
+    "esdoc-es7-plugin": "0.0.3",
+    "esdoc-plugin-async-to-sync": "^0.5.0",
+    "eslint": "^3.3.0",
+    "mocha": "^3.0.2",
+    "nyc": "^11.0.2"
+  },
+  "gitHead": "b7d1a55be4eb3e478d69cdb92043c2b7f819ed4d",
+  "_npmVersion": "5.4.0",
+  "_nodeVersion": "8.1.2",
+  "dist": {
+    "integrity": "sha512-GRzHW4Nn4XviYxvI+OM5H73gp3MKm67Xim7hqclxnxeZ95DhQypQSyrSLdt2v6+dxL6mOu1Org08BoBDeejb2Q==",
+    "shasum": "d0550bb93446e92ae370881fda2c2d5c83cc6673",
+    "tarball": "https://registry.npmjs.org/electron-compile-ftl/-/electron-compile-ftl-6.4.9.tgz"
+  },
+  "versions": [
+    {
+      "number": "6.4.0",
+      "date": "2017-04-20T09:35:39.072Z"
+    },
+    {
+      "number": "6.4.1",
+      "date": "2017-04-20T09:48:35.415Z"
+    },
+    {
+      "number": "6.4.2",
+      "date": "2017-05-01T13:16:30.631Z"
+    },
+    {
+      "number": "6.4.3",
+      "date": "2017-06-22T08:33:09.463Z"
+    },
+    {
+      "number": "6.4.4",
+      "date": "2017-06-22T09:08:41.175Z"
+    },
+    {
+      "number": "6.4.5",
+      "date": "2017-06-22T13:15:57.043Z"
+    },
+    {
+      "number": "6.4.6",
+      "date": "2017-06-26T12:12:46.047Z"
+    },
+    {
+      "number": "6.4.7",
+      "date": "2017-08-18T02:52:45.357Z"
+    },
+    {
+      "number": "6.4.8",
+      "date": "2017-08-24T18:05:30.532Z"
+    },
+    {
+      "number": "6.4.9",
+      "date": "2017-08-24T18:15:06.279Z"
+    }
+  ],
+  "created": "2017-04-20T09:35:39.072Z",
+  "modified": "2017-08-24T18:15:06.279Z",
+  "lastPublisher": {
+    "name": "fasterthanlime",
+    "email": "amoswenger@gmail.com"
+  },
+  "owners": [
+    {
+      "name": "fasterthanlime",
+      "email": "amoswenger@gmail.com"
+    }
+  ]
+}

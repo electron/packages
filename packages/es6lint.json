@@ -1,0 +1,98 @@
+{
+  "author": {
+    "name": "kai zhu",
+    "email": "kaizhu256@gmail.com"
+  },
+  "bin": {
+    "jslint-lite": "lib.jslint.js"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "electron-lite": "github:kaizhu256/node-electron-lite#alpha",
+    "utility2": "github:kaizhu256/node-utility2#alpha"
+  },
+  "dist": {
+    "shasum": "b5c5a198d4c3707aa03d77885824ba8eba74a3b1",
+    "tarball": "https://registry.npmjs.org/es6lint/-/es6lint-2017.2.29.tgz"
+  },
+  "engines": {
+    "node": ">=4.0"
+  },
+  "homepage": "https://github.com/kaizhu256/node-jslint-lite",
+  "keywords": [
+    "browser",
+    "csslint",
+    "eshint",
+    "eslint",
+    "jshint",
+    "jslint",
+    "lint"
+  ],
+  "license": "MIT",
+  "main": "lib.jslint.js",
+  "name": "es6lint",
+  "nameAlias": "jslint",
+  "nameOriginal": "jslint-lite",
+  "optionalDependencies": {},
+  "os": [
+    "darwin",
+    "linux"
+  ],
+  "repository": {
+    "user": "kaizhu256",
+    "repo": "node-jslint-lite",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/kaizhu256/node-jslint-lite/tarball/master",
+    "clone_url": "https://github.com/kaizhu256/node-jslint-lite",
+    "https_url": "https://github.com/kaizhu256/node-jslint-lite",
+    "travis_url": "https://travis-ci.org/kaizhu256/node-jslint-lite",
+    "zip_url": "https://github.com/kaizhu256/node-jslint-lite/archive/master.zip",
+    "api_url": "https://api.github.com/repos/kaizhu256/node-jslint-lite"
+  },
+  "scripts": {
+    "build-ci": "utility2 shRun shReadmeBuild",
+    "env": "env",
+    "heroku-postbuild": "npm install 'kaizhu256/node-utility2#alpha' && utility2 shRun shDeployHeroku",
+    "postinstall": "if [ -f lib.jslint.npm-scripts.sh ]; then ./lib.jslint.npm-scripts.sh postinstall; fi",
+    "publish-alias": "VERSION=$(npm info $npm_package_name version); for ALIAS in es5lint es6lint jslint_lite; do utility2 shRun shNpmPublishAs . $ALIAS $VERSION; utility2 shRun shNpmTestPublished $ALIAS || exit $?; done",
+    "start": "export PORT=${PORT:-8080} && export npm_config_mode_auto_restart=1 && utility2 shRun shIstanbulCover test.js",
+    "test": "export PORT=$(utility2 shServerPortRandom) && utility2 test test.js"
+  },
+  "version": "2017.2.29",
+  "description": "this package is deprecated and superseded by [jslint-lite](https://www.npmjs.com/package/jslint-lite)",
+  "_npmVersion": "3.10.10",
+  "_nodeVersion": "6.9.4",
+  "deprecated": "this package is deprecated and superseded by [jslint-lite](https://www.npmjs.com/package/jslint-lite)",
+  "versions": [
+    {
+      "number": "0.0.1",
+      "date": "2017-02-26T06:22:37.718Z"
+    },
+    {
+      "number": "2017.2.27",
+      "date": "2017-02-28T05:44:40.319Z"
+    },
+    {
+      "number": "2017.2.28",
+      "date": "2017-03-21T17:00:22.971Z"
+    },
+    {
+      "number": "2017.2.29",
+      "date": "2017-03-21T17:13:05.135Z"
+    }
+  ],
+  "created": "2017-02-26T06:22:37.718Z",
+  "modified": "2017-04-17T22:47:56.550Z",
+  "lastPublisher": {
+    "name": "kaizhu",
+    "email": "kaizhu256@gmail.com"
+  },
+  "owners": [
+    {
+      "name": "kaizhu",
+      "email": "kaizhu256@gmail.com"
+    }
+  ]
+}

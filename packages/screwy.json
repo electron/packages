@@ -1,0 +1,112 @@
+{
+  "name": "screwy",
+  "productName": "screwy",
+  "version": "1.0.5",
+  "description": "GUI for npm scripts",
+  "main": "bin/cli.js",
+  "bin": {
+    "npm-scripts-gui": "bin/cli.js",
+    "nsg": "bin/cli.js",
+    "screwy": "bin/cli.js"
+  },
+  "scripts": {
+    "stylus": "stylus -w -c src/styles/base.styl -u autoprefixer-stylus -o styles",
+    "stylus-themes": "stylus -c src/styles/themes -u autoprefixer-stylus -o styles/themes",
+    "transpile-scripts": "babel src/scripts --out-dir scripts",
+    "transpile-cli": "babel src/cli.js > bin/cli.js",
+    "transpile-index": "babel src/index.js > index.js",
+    "transpile-postinstall": "babel src/postInstall.js --out-file postInstall.js",
+    "test": "echo 'no tests'",
+    "postinstall": "node postInstall.js",
+    "update-version": "./bin/update_version.rb",
+    "prepublish": "./bin/prepublish.rb",
+    "fail": "echo 'i will fail!' ; exit 1",
+    "start": "env NODE_ENV=development ./bin/cli.js"
+  },
+  "author": {
+    "name": "Sam Eaton"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "autoprefixer-stylus": "^0.8.1",
+    "babel-cli": "^6.3.13",
+    "babel-preset-es2015": "^6.3.13",
+    "babel-preset-react": "^6.5.0",
+    "stylus": "^0.52.4"
+  },
+  "dependencies": {
+    "chalk": "^1.1.1",
+    "chokidar": "^1.4.2",
+    "cubbie": "0.0.18",
+    "electron-prebuilt": "^1.2.0",
+    "fangs": "0.0.11",
+    "lodash": "^4.5.1",
+    "ps-tree": "^1.0.1",
+    "react": "^15.1.0",
+    "react-dom": "^15.1.0"
+  },
+  "repository": {
+    "user": "samueleaton",
+    "repo": "screwy",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/samueleaton/screwy/tarball/master",
+    "clone_url": "https://github.com/samueleaton/screwy",
+    "https_url": "https://github.com/samueleaton/screwy",
+    "travis_url": "https://travis-ci.org/samueleaton/screwy",
+    "zip_url": "https://github.com/samueleaton/screwy/archive/master.zip",
+    "api_url": "https://api.github.com/repos/samueleaton/screwy"
+  },
+  "gitHead": "5987f97657b2d5dd47a4e6e4d345aa3ea3fb26c9",
+  "homepage": "https://github.com/samueleaton/screwy#readme",
+  "_npmVersion": "3.10.3",
+  "_nodeVersion": "6.3.1",
+  "dist": {
+    "shasum": "84180a6045abbd78b8b688ea52a113d60dffcfeb",
+    "tarball": "http://registry.npmjs.org/screwy/-/screwy-1.0.5.tgz"
+  },
+  "stars": 2,
+  "versions": [
+    {
+      "number": "0.0.24",
+      "date": "2016-02-29T23:21:29.724Z"
+    },
+    {
+      "number": "0.0.25",
+      "date": "2016-05-14T21:14:03.209Z"
+    },
+    {
+      "number": "1.0.1",
+      "date": "2016-05-28T02:07:56.672Z"
+    },
+    {
+      "number": "1.0.2",
+      "date": "2016-05-28T02:30:42.367Z"
+    },
+    {
+      "number": "1.0.3",
+      "date": "2016-06-03T19:25:50.693Z"
+    },
+    {
+      "number": "1.0.4",
+      "date": "2016-10-19T02:58:11.409Z"
+    },
+    {
+      "number": "1.0.5",
+      "date": "2016-10-20T14:45:01.101Z"
+    }
+  ],
+  "created": "2016-02-29T23:21:29.724Z",
+  "modified": "2016-10-20T14:45:01.101Z",
+  "lastPublisher": {
+    "name": "same",
+    "email": "sameaton11@gmail.com"
+  },
+  "owners": [
+    {
+      "name": "same",
+      "email": "sameaton11@gmail.com"
+    }
+  ]
+}

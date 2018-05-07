@@ -1,0 +1,144 @@
+{
+  "name": "react-native-log-monitor",
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org/"
+  },
+  "version": "0.0.1",
+  "description": "React Native Log monitor web, electron and chrome app.",
+  "scripts": {
+    "start": "gulp",
+    "start:electron": "rm -rf ./build/electron/ && gulp build:electron && electron ./build/electron/",
+    "build:electron": "rm -rf ./build/electron/ && rm -rf ./build/executables/ && gulp build:electron && gulp pack:electron",
+    "build:web": "gulp build:web",
+    "build:app": "gulp build:app",
+    "build:umd": "gulp build:umd",
+    "build:umd:min": "NODE_ENV=production gulp build:umd",
+    "compress:electron": "npm run build:electron && gulp compress:electron",
+    "compress:app": "npm run build:app && gulp compress:app",
+    "clean": "rm -rf build/ && rm -rf dev/",
+    "build": "rm -rf ./lib && babel ./src/app --out-dir lib",
+    "lint": "eslint ."
+  },
+  "main": "lib/index.js",
+  "files": [
+    "lib",
+    "dist",
+    "build/web"
+  ],
+  "repository": {
+    "user": "wix",
+    "repo": "react-native-log-monitor",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/wix/react-native-log-monitor/tarball/master",
+    "clone_url": "https://github.com/wix/react-native-log-monitor",
+    "https_url": "https://github.com/wix/react-native-log-monitor",
+    "travis_url": "https://travis-ci.org/wix/react-native-log-monitor",
+    "zip_url": "https://github.com/wix/react-native-log-monitor/archive/master.zip",
+    "api_url": "https://api.github.com/repos/wix/react-native-log-monitor"
+  },
+  "homepage": "https://github.com/wix/react-native-log-monitor",
+  "keywords": [
+    "react",
+    "native",
+    "logger",
+    "log"
+  ],
+  "author": {
+    "name": "Tal Kol",
+    "email": "talkol@gmail.com"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "babel-cli": "^6.3.15",
+    "babel-core": "^6.3.26",
+    "babel-eslint": "^5.0.0-beta6",
+    "babel-loader": "^6.2.0",
+    "babel-plugin-add-module-exports": "^0.1.2",
+    "babel-plugin-react-transform": "^2.0.0",
+    "babel-plugin-transform-decorators-legacy": "^1.3.4",
+    "babel-polyfill": "^6.3.14",
+    "babel-preset-es2015": "^6.3.13",
+    "babel-preset-react": "^6.3.13",
+    "babel-preset-stage-0": "^6.3.13",
+    "chromedriver": "^2.20.0",
+    "co-mocha": "^1.1.2",
+    "del": "^2.2.0",
+    "electron-builder": "^2.5.0",
+    "electron-debug": "^0.5.1",
+    "electron-packager": "^5.2.0",
+    "electron-prebuilt": "^0.36.2",
+    "enzyme": "^1.2.0",
+    "eslint": "^1.10.3",
+    "eslint-config-airbnb": "^2.1.1",
+    "eslint-plugin-react": "^3.11.3",
+    "expect": "^1.13.3",
+    "gulp": "^3.9.0",
+    "gulp-jade": "1.1.0",
+    "gulp-mocha": "^2.2.0",
+    "gulp-rename": "^1.2.2",
+    "gulp-util": "^3.0.7",
+    "gulp-zip": "^3.0.2",
+    "mocha": "^2.3.4",
+    "raw-loader": "^0.5.1",
+    "react-addons-test-utils": "^0.14.3",
+    "react-transform-catch-errors": "^1.0.0",
+    "react-transform-hmr": "^1.0.1",
+    "redbox-react": "^1.2.0",
+    "redux-immutable-state-invariant": "^1.2.0",
+    "redux-logger": "^2.2.1",
+    "require-dir": "^0.3.0",
+    "selenium-webdriver": "^2.48.2",
+    "style-loader": "^0.13.0",
+    "webpack": "^1.12.9",
+    "webpack-dev-server": "^1.14.0"
+  },
+  "dependencies": {
+    "chrome-storage-local": "^0.1.5",
+    "jsan": "^2.0.4",
+    "react": "^0.14.5",
+    "react-addons-shallow-compare": "^15.0.1",
+    "react-desktop": "0.1.48",
+    "react-dom": "^0.14.5",
+    "react-icons": "^1.0.3",
+    "react-modal": "^0.6.1",
+    "react-redux": "^4.0.6",
+    "react-switcher": "^1.0.0",
+    "react-virtualized": "^6.1.2",
+    "redux": "^3.0.5",
+    "redux-devtools": "^3.0.1",
+    "redux-devtools-inspector": "^0.3.3",
+    "redux-devtools-log-monitor": "^1.0.1",
+    "redux-devtools-themes": "^1.0.0",
+    "redux-slider-monitor": "^1.0.2",
+    "redux-thunk": "^1.0.3",
+    "seamless-immutable": "^5.1.1",
+    "socketcluster-client": "^4.3.3"
+  },
+  "gitHead": "3c694f0109cc5798d818c80a3391fa8f7725c3e4",
+  "_npmVersion": "3.5.3",
+  "_nodeVersion": "4.2.1",
+  "dist": {
+    "shasum": "e0dc0d06bdf863aaac1c9b9cbff1a994d56f976c",
+    "tarball": "http://registry.npmjs.org/react-native-log-monitor/-/react-native-log-monitor-0.0.1.tgz"
+  },
+  "versions": [
+    {
+      "number": "0.0.1",
+      "date": "2016-04-14T17:35:06.761Z"
+    }
+  ],
+  "created": "2016-04-14T17:35:06.761Z",
+  "modified": "2017-05-25T09:09:32.225Z",
+  "lastPublisher": {
+    "name": "talkol",
+    "email": "talkol@gmail.com"
+  },
+  "owners": [
+    {
+      "name": "talkol",
+      "email": "talkol@gmail.com"
+    }
+  ]
+}

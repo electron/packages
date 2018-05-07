@@ -1,0 +1,338 @@
+{
+  "name": "mrbuilder-plugin-webpack",
+  "version": "3.0.3",
+  "description": "Tools for developing with mrbuilder and webpack",
+  "scripts": {
+    "clean": "mrbuilder-clean"
+  },
+  "bin": {
+    "mrbuilder-webpack-cli": "./bin/cli.js"
+  },
+  "main": "src",
+  "source": "src",
+  "dependencies": {
+    "json-loader": "^0.5.7",
+    "mrbuilder-optionsmanager": "^3.0.1",
+    "mrbuilder-plugin-browserslist": "^3.0.1",
+    "mrbuilder-utils": "^3.0.1",
+    "raw-loader": "^0.5.1",
+    "val-loader": "^1.1.0",
+    "webpack": "^4.5.0",
+    "webpack-cli": "^2.0.14"
+  },
+  "peerDependencies": {
+    "mrbuilder": "3.x"
+  },
+  "mrbuilder": {
+    "alias": {
+      "app": "compile as a top level app ",
+      "demo": "compile as a demo <outputdir>",
+      "useNameHash": "Use hash in the name of output files",
+      "useScopeHoist": "Use ModuleConcatenationPlugin",
+      "library": "Library name for output",
+      "libraryTarget": "Output type of library",
+      "public": "public path resource",
+      "entry": "Entry point",
+      "useExternals": "An array or boolean of dependencies to externalize [default:true]",
+      "useTarget": "Type of build, web, node, electron,etc.",
+      "useMainFields": "What main fields to use usually [browser, main]",
+      "useExtension": "What extensions to use",
+      "externalizePeers": "Externalize peer dependencies [default:true]"
+    }
+  },
+  "license": "0BSD",
+  "dist": {
+    "shasum": "adaba771b6ecece6bb00dcdbd0a4053fae4abe67",
+    "tarball": "https://registry.npmjs.org/mrbuilder-plugin-webpack/-/mrbuilder-plugin-webpack-3.0.3.tgz",
+    "fileCount": 8,
+    "unpackedSize": 14705,
+    "npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJa6NI2CRA9TVsSAnZWagAACxUP/AuaSrl5zuZvWMFNaybQ\nLaZQEUu4HREFYrIn6V+pMuDAgsxLu2hCZ6+LTBPOafBTPRZmi3uBzDtPMStU\nmtcJAf5WB/JBOJ9h+3P7SsoaRmyMoMiZNmXookrv1vCLYqESzfJVcerRmLCd\neABL3x+zJJiKKyqkSbLv+OMzjlF5Eri/xvItFcbGNDtz23J3PvoA5MfayFAE\nAzYHAC8ECvenGj3eeMjJWnemPbsA10q7U1uPU91GvH/mih5DAMZdzxarp0gQ\nVTdLrZ+ji8pFxCWuJMbR/iy37OFLwym2bylhb/BOc+VT8MhijLi207pMcig2\nvY7a1rlKO+3hNMedsmm6pyV5DO41qTDpJJIeKDfseyhQp8LrMefRzIfaWo3J\nLbUYH5kVnvcy7gHCHqbwx9FyMcxEANnZ8nl3QtYM9EQfEUX+yTSUYZjtWERY\nXofJMPASxmP6cHmzGSf/2NRd6y47TdxsKJX/TL0/7u8Onv88YgYBRIor132j\n3XICqDOID5bzkGwfUAiFP6jt/UXYJwFHVNDds0ckeHslgiDvyy5mZQEcLQMX\nxhA//HX6IQ/SbIIvou1fVGnaaWgyJCUqimL4pt2grbBJjxKwmNr6qXP54yl/\n8HsbetNdh1ach3VHW7N+J8mNtZtUdUnwb0crHgXmC6iW2uvJx9Z652rmagFH\n20Kg\r\n=H4v+\r\n-----END PGP SIGNATURE-----\r\n"
+  },
+  "_hasShrinkwrap": false,
+  "versions": [
+    {
+      "number": "0.0.2",
+      "date": "2017-12-04T19:47:04.897Z"
+    },
+    {
+      "number": "0.0.3",
+      "date": "2017-12-05T07:33:34.652Z"
+    },
+    {
+      "number": "0.0.4",
+      "date": "2017-12-11T00:43:34.764Z"
+    },
+    {
+      "number": "0.0.5",
+      "date": "2017-12-12T07:34:48.717Z"
+    },
+    {
+      "number": "0.0.11",
+      "date": "2017-12-17T03:11:25.096Z"
+    },
+    {
+      "number": "0.1.0",
+      "date": "2017-12-17T03:27:57.615Z"
+    },
+    {
+      "number": "0.1.1",
+      "date": "2017-12-17T03:33:38.627Z"
+    },
+    {
+      "number": "0.1.5",
+      "date": "2017-12-18T20:45:06.260Z"
+    },
+    {
+      "number": "0.1.6",
+      "date": "2017-12-19T17:05:33.066Z"
+    },
+    {
+      "number": "0.1.7",
+      "date": "2017-12-19T21:10:20.992Z"
+    },
+    {
+      "number": "0.2.0",
+      "date": "2017-12-20T04:29:45.243Z"
+    },
+    {
+      "number": "0.2.1",
+      "date": "2017-12-20T18:19:28.343Z"
+    },
+    {
+      "number": "0.3.0",
+      "date": "2017-12-20T19:27:35.151Z"
+    },
+    {
+      "number": "0.3.1",
+      "date": "2017-12-20T20:53:11.150Z"
+    },
+    {
+      "number": "0.3.2",
+      "date": "2017-12-20T23:56:05.423Z"
+    },
+    {
+      "number": "0.3.3",
+      "date": "2017-12-21T04:24:18.578Z"
+    },
+    {
+      "number": "0.3.4",
+      "date": "2017-12-21T04:36:28.302Z"
+    },
+    {
+      "number": "0.3.6",
+      "date": "2017-12-21T04:42:50.691Z"
+    },
+    {
+      "number": "0.3.7",
+      "date": "2017-12-21T06:08:56.775Z"
+    },
+    {
+      "number": "0.3.8",
+      "date": "2017-12-21T17:22:01.187Z"
+    },
+    {
+      "number": "0.4.0",
+      "date": "2018-01-08T17:26:12.464Z"
+    },
+    {
+      "number": "0.7.0",
+      "date": "2018-01-26T23:32:08.947Z"
+    },
+    {
+      "number": "0.7.1",
+      "date": "2018-01-27T00:22:42.686Z"
+    },
+    {
+      "number": "0.7.2",
+      "date": "2018-01-27T00:51:57.216Z"
+    },
+    {
+      "number": "0.7.3",
+      "date": "2018-01-29T18:02:22.897Z"
+    },
+    {
+      "number": "0.8.0",
+      "date": "2018-02-06T23:24:51.431Z"
+    },
+    {
+      "number": "0.8.1",
+      "date": "2018-02-06T23:53:20.520Z"
+    },
+    {
+      "number": "0.8.2",
+      "date": "2018-02-07T00:48:50.355Z"
+    },
+    {
+      "number": "0.8.4",
+      "date": "2018-02-08T00:17:23.478Z"
+    },
+    {
+      "number": "0.8.5",
+      "date": "2018-02-09T00:58:17.819Z"
+    },
+    {
+      "number": "0.9.1",
+      "date": "2018-02-13T03:36:37.968Z"
+    },
+    {
+      "number": "0.9.2",
+      "date": "2018-02-13T04:55:31.518Z"
+    },
+    {
+      "number": "0.9.5",
+      "date": "2018-02-14T18:05:37.653Z"
+    },
+    {
+      "number": "0.9.6",
+      "date": "2018-02-23T23:31:56.276Z"
+    },
+    {
+      "number": "0.9.7",
+      "date": "2018-03-06T00:41:08.313Z"
+    },
+    {
+      "number": "0.9.9",
+      "date": "2018-03-06T00:59:17.355Z"
+    },
+    {
+      "number": "0.9.10",
+      "date": "2018-03-06T01:03:31.255Z"
+    },
+    {
+      "number": "0.9.11",
+      "date": "2018-03-08T20:17:22.561Z"
+    },
+    {
+      "number": "1.0.0",
+      "date": "2018-03-29T18:46:24.943Z"
+    },
+    {
+      "number": "1.0.3-1.1.0-0.0",
+      "date": "2018-03-30T15:05:51.279Z"
+    },
+    {
+      "number": "1.0.3-1.0",
+      "date": "2018-03-30T17:38:04.563Z"
+    },
+    {
+      "number": "1.1.0-0",
+      "date": "2018-03-30T20:19:08.368Z"
+    },
+    {
+      "number": "1.2.0",
+      "date": "2018-04-03T20:30:07.895Z"
+    },
+    {
+      "number": "1.2.3",
+      "date": "2018-04-04T23:13:43.147Z"
+    },
+    {
+      "number": "1.2.4",
+      "date": "2018-04-04T23:28:19.369Z"
+    },
+    {
+      "number": "1.2.5",
+      "date": "2018-04-05T15:43:11.527Z"
+    },
+    {
+      "number": "1.2.6",
+      "date": "2018-04-05T16:15:10.285Z"
+    },
+    {
+      "number": "2.0.0-beta.1",
+      "date": "2018-04-05T20:51:56.621Z"
+    },
+    {
+      "number": "2.0.0-beta.2",
+      "date": "2018-04-06T17:46:40.829Z"
+    },
+    {
+      "number": "2.0.0-beta.3",
+      "date": "2018-04-06T19:17:30.639Z"
+    },
+    {
+      "number": "2.0.0-beta.4",
+      "date": "2018-04-06T20:13:50.367Z"
+    },
+    {
+      "number": "2.0.0-beta.5",
+      "date": "2018-04-06T20:20:45.597Z"
+    },
+    {
+      "number": "2.0.0-beta.6",
+      "date": "2018-04-13T16:53:06.607Z"
+    },
+    {
+      "number": "2.0.0",
+      "date": "2018-04-13T19:02:37.629Z"
+    },
+    {
+      "number": "2.0.2",
+      "date": "2018-04-15T00:30:34.769Z"
+    },
+    {
+      "number": "2.0.3",
+      "date": "2018-04-16T17:12:44.239Z"
+    },
+    {
+      "number": "2.0.4-0",
+      "date": "2018-04-19T17:51:56.113Z"
+    },
+    {
+      "number": "2.0.4-1",
+      "date": "2018-04-19T19:44:26.466Z"
+    },
+    {
+      "number": "2.0.4-3",
+      "date": "2018-04-19T20:12:22.121Z"
+    },
+    {
+      "number": "2.0.4-5",
+      "date": "2018-04-19T23:35:50.685Z"
+    },
+    {
+      "number": "2.0.4",
+      "date": "2018-04-20T00:06:36.588Z"
+    },
+    {
+      "number": "2.1.0-0",
+      "date": "2018-04-20T18:39:01.673Z"
+    },
+    {
+      "number": "2.1.0",
+      "date": "2018-04-23T18:00:28.065Z"
+    },
+    {
+      "number": "2.1.1",
+      "date": "2018-04-26T15:26:00.684Z"
+    },
+    {
+      "number": "3.0.0-0",
+      "date": "2018-04-30T18:18:34.941Z"
+    },
+    {
+      "number": "3.0.0",
+      "date": "2018-05-01T04:22:32.851Z"
+    },
+    {
+      "number": "3.0.1",
+      "date": "2018-05-01T05:49:33.841Z"
+    },
+    {
+      "number": "3.0.3",
+      "date": "2018-05-01T20:46:46.391Z"
+    }
+  ],
+  "created": "2017-12-04T19:47:04.897Z",
+  "modified": "2018-05-01T20:46:49.328Z",
+  "lastPublisher": {
+    "name": "speajus",
+    "email": "speajus@gmail.com"
+  },
+  "owners": [
+    {
+      "name": "speajus",
+      "email": "speajus@gmail.com"
+    }
+  ]
+}

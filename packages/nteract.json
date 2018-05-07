@@ -1,0 +1,351 @@
+{
+  "name": "nteract",
+  "version": "0.8.0",
+  "description": "Interactive literate coding notebook!",
+  "main": "./lib/webpacked-main.js",
+  "repository": {
+    "user": "nteract",
+    "repo": "nteract",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/nteract/nteract/tarball/master",
+    "clone_url": "https://github.com/nteract/nteract",
+    "https_url": "https://github.com/nteract/nteract",
+    "travis_url": "https://travis-ci.org/nteract/nteract",
+    "zip_url": "https://github.com/nteract/nteract/archive/master.zip",
+    "api_url": "https://api.github.com/repos/nteract/nteract"
+  },
+  "keywords": [
+    "jupyter",
+    "electron",
+    "notebook",
+    "nteract",
+    "data"
+  ],
+  "author": {
+    "name": "nteract contributors"
+  },
+  "license": "BSD-3-Clause",
+  "publishConfig": {
+    "access": "public"
+  },
+  "homepage": "https://nteract.io",
+  "scripts": {
+    "clean": "rimraf lib dist",
+    "install:app-deps": "electron-builder install-app-deps",
+    "prestart": "npm run build",
+    "start": "npm run spawn",
+    "prespawn": "npm run install:app-deps",
+    "spawn": "cross-env NODE_ENV=development electron .",
+    "spawn:debug": "cross-env DEBUG=true NODE_ENV=development electron .",
+    "prebuild": "rimraf lib",
+    "build": "webpack --config webpack.dev.js --progress --colors",
+    "build:watch": "npm run build -- --watch",
+    "pack": "npm run clean && webpack --config webpack.prod.js && electron-builder --dir",
+    "dist": "npm run clean && webpack --config webpack.prod.js && electron-builder",
+    "// publish:one will only build for the current platform": "echo its for triaging broken releases",
+    "publish:one": "npm run clean && webpack --config webpack.prod.js && electron-builder -p always",
+    "publish": "npm run publish:one -- -mlw",
+    "dist:all": "npm run dist -- -mlw",
+    "// publish:all is basically deprecated": "echo yeah",
+    "publish:all": "npm run publish"
+  },
+  "build": {
+    "appId": "io.nteract.nteract",
+    "productName": "nteract",
+    "publish": [
+      {
+        "provider": "github"
+      }
+    ],
+    "fileAssociations": {
+      "ext": "ipynb",
+      "name": "ipynb"
+    },
+    "mac": {
+      "category": "public.app-category.developer-tools",
+      "target": [
+        "dmg",
+        "zip"
+      ]
+    },
+    "nsis": {
+      "perMachine": true,
+      "oneClick": false
+    },
+    "win": {
+      "target": [
+        "nsis",
+        "zip"
+      ]
+    },
+    "linux": {
+      "maintainer": "nteract contributors <jupyter@googlegroups.com>",
+      "target": [
+        "deb",
+        "AppImage",
+        "tar.gz"
+      ],
+      "desktop": {
+        "Comment": "Interactive literate coding notebook",
+        "Exec": "/opt/nteract/nteract %U",
+        "Icon": "nteract",
+        "MimeType": "application/x-ipynb+json",
+        "Name": "nteract",
+        "Path": "/opt/nteract/",
+        "StartupNotify": "true",
+        "Terminal": "false",
+        "Type": "Application",
+        "Categories": "Science;Development;"
+      },
+      "category": "Science",
+      "packageCategory": "editors"
+    },
+    "files": [
+      "lib/*.js",
+      "lib/*.css",
+      "lib/*.woff",
+      "lib/*.woff2",
+      "static"
+    ],
+    "extraResources": [
+      "bin",
+      "example-notebooks"
+    ],
+    "npmSkipBuildFromSource": true
+  },
+  "jest": {
+    "setupFiles": [
+      "./scripts/mockument"
+    ]
+  },
+  "dependencies": {
+    "ijavascript": "^5.0.17",
+    "jmp": "^1.0.0",
+    "mathjax-electron": "^2.0.1",
+    "nteract-assets": "^4.0.0"
+  },
+  "devDependencies": {
+    "@nteract/commutable": "^4.0.0",
+    "@nteract/core": "^4.0.0",
+    "@nteract/display-area": "^4.0.1",
+    "@nteract/editor": "^7.0.2",
+    "@nteract/markdown": "^1.0.0",
+    "@nteract/mathjax": "^1.0.0",
+    "@nteract/messaging": "^4.0.0",
+    "@nteract/transforms-full": "^5.0.1",
+    "@nteract/types": "^2.0.0",
+    "@nteract/webpack-configurator": "^1.0.0",
+    "cross-env": "^5.1.3",
+    "date-fns": "^1.29.0",
+    "electron": "1.8.3",
+    "electron-builder": "^20.0.0",
+    "electron-context-menu": "^0.9.1",
+    "electron-log": "^2.2.13",
+    "electron-updater": "^2.18.0",
+    "enchannel-zmq-backend": "^6.0.10",
+    "escape-carriage": "^1.2.0",
+    "fs-observable": "^2.1.0",
+    "github": "^13.0.0",
+    "jupyter-paths": "^2.0.0",
+    "kernelspecs": "^2.0.0",
+    "lodash": "^4.17.4",
+    "react-dnd": "^2.5.4",
+    "react-dnd-html5-backend": "^2.5.4",
+    "react-notification-system": "^0.2.16",
+    "react-redux": "^5.0.7",
+    "redux": "^3.7.2",
+    "redux-electron-store": "^0.6.1",
+    "redux-logger": "^3.0.6",
+    "redux-observable": "^0.18.0",
+    "rimraf": "^2.6.2",
+    "rxjs": "^5.5.6",
+    "shell-env": "^1.0.0",
+    "spawn-rx": "^2.0.12",
+    "spawnteract": "^4.0.0",
+    "styled-jsx": "^2.2.5",
+    "uuid": "^3.1.0",
+    "yargs": "^11.0.0"
+  },
+  "_npmVersion": "5.5.1",
+  "_nodeVersion": "8.9.3",
+  "dist": {
+    "integrity": "sha512-pToM8VmKe4VqAvATggWMKe31h/zAq4gP9C7V60mXDaEzlaD5IeTQaIcKEo9nPzYQkay+C0GSSgXcU7NyTbRdqQ==",
+    "shasum": "b14a0bcd166bb5578f5a575c213e0fcaef4c624c",
+    "tarball": "http://registry.npmjs.org/nteract/-/nteract-0.8.0.tgz",
+    "fileCount": 78,
+    "unpackedSize": 2548233
+  },
+  "_hasShrinkwrap": false,
+  "versions": [
+    {
+      "number": "0.0.0",
+      "date": "2015-08-06T21:28:48.017Z"
+    },
+    {
+      "number": "0.0.2",
+      "date": "2016-05-01T04:02:48.469Z"
+    },
+    {
+      "number": "0.0.3",
+      "date": "2016-05-16T02:58:28.384Z"
+    },
+    {
+      "number": "0.0.4",
+      "date": "2016-07-23T17:38:17.003Z"
+    },
+    {
+      "number": "0.0.5",
+      "date": "2016-08-10T19:53:27.238Z"
+    },
+    {
+      "number": "0.0.6",
+      "date": "2016-08-24T19:55:13.010Z"
+    },
+    {
+      "number": "0.0.7",
+      "date": "2016-08-26T03:28:39.652Z"
+    },
+    {
+      "number": "0.0.8",
+      "date": "2016-09-09T17:46:24.473Z"
+    },
+    {
+      "number": "0.0.9",
+      "date": "2016-09-12T19:48:07.876Z"
+    },
+    {
+      "number": "0.0.10",
+      "date": "2016-09-14T22:39:23.484Z"
+    },
+    {
+      "number": "0.0.11",
+      "date": "2016-09-20T01:16:16.079Z"
+    },
+    {
+      "number": "0.0.13",
+      "date": "2016-10-04T03:36:05.025Z"
+    },
+    {
+      "number": "0.0.14",
+      "date": "2016-10-21T14:55:10.822Z"
+    },
+    {
+      "number": "0.0.15",
+      "date": "2016-11-28T19:04:29.953Z"
+    },
+    {
+      "number": "0.1.0",
+      "date": "2017-02-09T16:53:08.998Z"
+    },
+    {
+      "number": "0.2.1",
+      "date": "2017-10-03T01:10:37.140Z"
+    },
+    {
+      "number": "0.3.2",
+      "date": "2017-10-08T23:26:49.803Z"
+    },
+    {
+      "number": "0.3.3",
+      "date": "2017-10-10T03:17:31.820Z"
+    },
+    {
+      "number": "0.3.4",
+      "date": "2017-10-13T17:29:14.304Z"
+    },
+    {
+      "number": "0.4.0",
+      "date": "2017-11-22T00:07:42.341Z"
+    },
+    {
+      "number": "0.4.1",
+      "date": "2017-11-27T00:10:55.986Z"
+    },
+    {
+      "number": "0.4.2",
+      "date": "2017-11-27T15:25:02.233Z"
+    },
+    {
+      "number": "0.4.3",
+      "date": "2017-11-29T04:07:34.778Z"
+    },
+    {
+      "number": "0.4.4",
+      "date": "2017-12-02T08:23:23.251Z"
+    },
+    {
+      "number": "0.4.5",
+      "date": "2017-12-02T08:48:16.321Z"
+    },
+    {
+      "number": "0.4.6-0",
+      "date": "2017-12-03T22:05:32.097Z"
+    },
+    {
+      "number": "0.5.4",
+      "date": "2017-12-31T22:40:45.693Z"
+    },
+    {
+      "number": "0.5.5",
+      "date": "2018-01-03T20:00:54.523Z"
+    },
+    {
+      "number": "0.6.0",
+      "date": "2018-01-24T18:27:06.385Z"
+    },
+    {
+      "number": "0.6.1",
+      "date": "2018-01-25T03:00:18.270Z"
+    },
+    {
+      "number": "0.6.2",
+      "date": "2018-01-25T03:33:19.843Z"
+    },
+    {
+      "number": "0.7.0",
+      "date": "2018-02-06T01:52:23.513Z"
+    },
+    {
+      "number": "0.8.0",
+      "date": "2018-03-07T20:01:41.238Z"
+    }
+  ],
+  "created": "2015-08-06T21:28:48.017Z",
+  "modified": "2018-03-15T00:55:53.953Z",
+  "lastPublisher": {
+    "name": "rgbkrk",
+    "email": "rgbkrk@gmail.com"
+  },
+  "owners": [
+    {
+      "email": "betatim@gmail.com",
+      "name": "betatim"
+    },
+    {
+      "email": "safia@safia.rocks",
+      "name": "captainsafia"
+    },
+    {
+      "email": "pi@berkeley.edu",
+      "name": "ivanov"
+    },
+    {
+      "email": "jon.freder@gmail.com",
+      "name": "jdfreder"
+    },
+    {
+      "email": "lukas.geiger94@gmail.com",
+      "name": "lgeiger"
+    },
+    {
+      "email": "rgbkrk@gmail.com",
+      "name": "rgbkrk"
+    },
+    {
+      "email": "ken_wheeler@me.com",
+      "name": "thekenwheeler"
+    }
+  ]
+}

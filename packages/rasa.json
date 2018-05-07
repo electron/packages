@@ -1,0 +1,74 @@
+{
+  "name": "rasa",
+  "version": "0.1.0",
+  "description": "Electron's asar archive format",
+  "license": "MIT",
+  "author": {
+    "name": "Jonas Hermsmeier",
+    "email": "jhermsmeier@gmail.com",
+    "url": "https://jhermsmeier.de"
+  },
+  "keywords": [
+    "asar",
+    "electron",
+    "archive"
+  ],
+  "main": "lib/rasa",
+  "scripts": {
+    "test": "npm run pack && mocha",
+    "pack": "rm test/data/pack.asar && asar pack --exclude-hidden ./lib test/data/pack.asar",
+    "benchmark": "nanobench benchmark/compare/rasa.js",
+    "benchmark-compare": "nanobench benchmark/compare/asar.js > benchmark/asar.log && nanobench benchmark/compare/rasa.js > benchmark/rasa.log && nanobench-compare benchmark/rasa.log benchmark/asar.log"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "asar": "^0.14.2",
+    "mocha": "^5.0.1",
+    "nanobench": "^2.1.0"
+  },
+  "peerDependencies": {},
+  "optionalDependencies": {},
+  "homepage": "https://github.com/jhermsmeier/node-rasa",
+  "repository": {
+    "user": "jhermsmeier",
+    "repo": "node-rasa",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/jhermsmeier/node-rasa/tarball/master",
+    "clone_url": "https://github.com/jhermsmeier/node-rasa",
+    "https_url": "https://github.com/jhermsmeier/node-rasa",
+    "travis_url": "https://travis-ci.org/jhermsmeier/node-rasa",
+    "zip_url": "https://github.com/jhermsmeier/node-rasa/archive/master.zip",
+    "api_url": "https://api.github.com/repos/jhermsmeier/node-rasa"
+  },
+  "gitHead": "4573f2b6aa839b17661fab214df4b96baaa3cad6",
+  "_npmVersion": "5.6.0",
+  "_nodeVersion": "9.6.1",
+  "dist": {
+    "integrity": "sha512-bfAL0fqR7ShoLNCozuqygMJu7y4lNihMlQVnwQR7BTsvcWEKx7Mvcs5f4eRxJYCX/WsF/5Dbqpp3Yz3RKXY0Nw==",
+    "shasum": "79d5a751f9f2aef406d75cd87f7cfe5a7def8487",
+    "tarball": "http://registry.npmjs.org/rasa/-/rasa-0.1.0.tgz",
+    "fileCount": 6,
+    "unpackedSize": 10691
+  },
+  "_hasShrinkwrap": false,
+  "versions": [
+    {
+      "number": "0.1.0",
+      "date": "2018-02-24T15:49:35.023Z"
+    }
+  ],
+  "created": "2018-02-24T15:49:34.970Z",
+  "modified": "2018-02-24T15:49:35.643Z",
+  "lastPublisher": {
+    "name": "jhermsmeier",
+    "email": "jhermsmeier@gmail.com"
+  },
+  "owners": [
+    {
+      "name": "jhermsmeier",
+      "email": "jhermsmeier@gmail.com"
+    }
+  ]
+}

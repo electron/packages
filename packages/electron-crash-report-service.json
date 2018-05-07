@@ -1,0 +1,74 @@
+{
+  "name": "electron-crash-report-service",
+  "description": "Aggregate crash reports for Electron apps",
+  "version": "1.1.1",
+  "repository": {
+    "user": "yoshuawuyts",
+    "repo": "electron-crash-report-service",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/yoshuawuyts/electron-crash-report-service/tarball/master",
+    "clone_url": "https://github.com/yoshuawuyts/electron-crash-report-service",
+    "https_url": "https://github.com/yoshuawuyts/electron-crash-report-service",
+    "travis_url": "https://travis-ci.org/yoshuawuyts/electron-crash-report-service",
+    "zip_url": "https://github.com/yoshuawuyts/electron-crash-report-service/archive/master.zip",
+    "api_url": "https://api.github.com/repos/yoshuawuyts/electron-crash-report-service"
+  },
+  "license": "MIT",
+  "scripts": {
+    "deps": "dependency-check . && dependency-check . --extra --no-dev",
+    "start": "STORAGE_PATH=/tmp/crash-reports NODE_ENV=development PORT=8080 nodemon . | pino-colada",
+    "test": "standard && npm run deps",
+    "coverage": "nyc report --reporter=text-lcov > coverage.lcov"
+  },
+  "bin": {
+    "electron-crash-report-service": "bin.js"
+  },
+  "dependencies": {
+    "envobj": "^1.0.3",
+    "log-http": "^1.0.0",
+    "mkdirp": "^0.5.1",
+    "multer": "^1.3.0",
+    "pino": "^4.2.4",
+    "server-router": "^5.0.0"
+  },
+  "devDependencies": {
+    "dependency-check": "^2.7.0",
+    "nodemon": "^1.11.0",
+    "pino-colada": "^1.3.0",
+    "standard": "^8.6.0",
+    "tape": "^4.6.3"
+  },
+  "gitHead": "52d4e0fe65ec90f54f0a675601b85ca46a23d686",
+  "homepage": "https://github.com/yoshuawuyts/electron-crash-report-service#readme",
+  "_npmVersion": "4.1.2",
+  "_nodeVersion": "6.4.0",
+  "dist": {
+    "shasum": "7e59702396f1da638d62b17236f14b75dff7e69b",
+    "tarball": "https://registry.npmjs.org/electron-crash-report-service/-/electron-crash-report-service-1.1.1.tgz"
+  },
+  "stars": 1,
+  "versions": [
+    {
+      "number": "1.1.0",
+      "date": "2017-04-26T20:45:29.096Z"
+    },
+    {
+      "number": "1.1.1",
+      "date": "2017-04-26T20:47:52.240Z"
+    }
+  ],
+  "created": "2017-04-26T20:45:29.096Z",
+  "modified": "2017-05-24T09:25:50.088Z",
+  "lastPublisher": {
+    "name": "yoshuawuyts",
+    "email": "i@yoshuawuyts.com"
+  },
+  "owners": [
+    {
+      "name": "yoshuawuyts",
+      "email": "i@yoshuawuyts.com"
+    }
+  ]
+}

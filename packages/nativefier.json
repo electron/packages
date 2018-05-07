@@ -1,0 +1,373 @@
+{
+  "name": "nativefier",
+  "version": "7.6.2",
+  "description": "Wrap web apps natively",
+  "keywords": [
+    "desktop",
+    "electron",
+    "app",
+    "native",
+    "wrapper"
+  ],
+  "main": "lib/index.js",
+  "scripts": {
+    "dev-up": "npm install && (cd ./app && npm install) && npm run build",
+    "dev-up-win": "npm install & cd app & npm install & cd .. & npm run build",
+    "test": "jest && gulp test",
+    "jest": "jest",
+    "e2e": "gulp test",
+    "tdd": "gulp tdd",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "ci": "gulp build test && npm run lint",
+    "clean": "gulp clean",
+    "build": "gulp build",
+    "watch": "while true ; do gulp watch ; done",
+    "package-placeholder": "npm run build && node lib/cli.js http://www.bennish.net/web-notifications.html ~/Desktop --overwrite --name notification-test --icon ./test-resources/iconSampleGrey.png --inject ./test-resources/test-injection.js --inject ./test-resources/test-injection.css && open ~/Desktop/notification-test-darwin-x64/notification-test.app",
+    "start-placeholder": "npm run build && electron app",
+    "changelog": "./scripts/changelog"
+  },
+  "bin": {
+    "nativefier": "lib/cli.js"
+  },
+  "repository": {
+    "user": "jiahaog",
+    "repo": "nativefier",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/jiahaog/nativefier/tarball/master",
+    "clone_url": "https://github.com/jiahaog/nativefier",
+    "https_url": "https://github.com/jiahaog/nativefier",
+    "travis_url": "https://travis-ci.org/jiahaog/nativefier",
+    "zip_url": "https://github.com/jiahaog/nativefier/archive/master.zip",
+    "api_url": "https://api.github.com/repos/jiahaog/nativefier"
+  },
+  "author": {
+    "name": "Goh Jia Hao"
+  },
+  "license": "MIT",
+  "homepage": "https://github.com/jiahaog/nativefier#readme",
+  "dependencies": {
+    "async": "^2.6.0",
+    "axios": "^0.18.0",
+    "babel-polyfill": "^6.26.0",
+    "cheerio": "^1.0.0-rc.2",
+    "commander": "^2.14.0",
+    "electron-packager": "^12.0.1",
+    "gitcloud": "^0.1.0",
+    "hasbin": "^1.2.3",
+    "lodash": "^4.17.5",
+    "loglevel": "^1.6.1",
+    "ncp": "^2.0.0",
+    "page-icon": "^0.3.0",
+    "progress": "^2.0.0",
+    "sanitize-filename": "^1.6.1",
+    "shelljs": "^0.8.1",
+    "source-map-support": "^0.5.3",
+    "tmp": "0.0.33",
+    "validator": "^9.4.0"
+  },
+  "devDependencies": {
+    "babel-core": "^6.26.0",
+    "babel-jest": "^22.1.0",
+    "babel-loader": "^7.1.2",
+    "babel-preset-env": "^1.6.1",
+    "babel-register": "^6.26.0",
+    "chai": "^4.1.2",
+    "del": "^3.0.0",
+    "eslint": "^4.17.0",
+    "eslint-config-airbnb-base": "^12.1.0",
+    "eslint-plugin-import": "^2.8.0",
+    "gulp": "^3.9.1",
+    "gulp-babel": "^7.0.1",
+    "gulp-istanbul": "^1.1.3",
+    "gulp-mocha": "^5.0.0",
+    "gulp-sourcemaps": "^2.6.4",
+    "isparta": "^4.0.0",
+    "jest": "^22.1.4",
+    "regenerator-runtime": "^0.11.1",
+    "require-dir": "^1.0.0",
+    "run-sequence": "^2.2.1",
+    "webpack-stream": "^4.0.0"
+  },
+  "engines": {
+    "node": ">= 4.0"
+  },
+  "babel": {
+    "presets": [
+      [
+        "env",
+        {
+          "targets": {
+            "node": "4.0.0"
+          }
+        }
+      ]
+    ]
+  },
+  "jest": {
+    "testMatch": [
+      "**/src/**/?(*.)(spec|test).js?(x)"
+    ]
+  },
+  "gitHead": "025936e9c5d71d2b7d0f090cef6d34c524b9c1b5",
+  "_npmVersion": "5.8.0",
+  "_nodeVersion": "4.9.1",
+  "dist": {
+    "integrity": "sha512-yK2P/SY++2/km6/wm/E+bGqaEkjZvmTUH+SECRVQ+N6yADAKEJ581wdUEylvOGA+oXuqcHA76crunMD2JzRGTw==",
+    "shasum": "b9d2898dc66a95b663a489fcb2e558d03fa4866f",
+    "tarball": "https://registry.npmjs.org/nativefier/-/nativefier-7.6.2.tgz",
+    "fileCount": 266,
+    "unpackedSize": 2345856,
+    "npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJa6PSfCRA9TVsSAnZWagAAPpgP/2NQ1GtALTXD5Vaz+wrQ\n9yvuiy7iN0ze9JwBT+pjIo8Q7czcs+7NzqAEaI51S+qmZzFkwISm+cdSalFx\n19bX4U0n6cUDxTxjIvnqhRq/ZZXT5E+jOyjMAkHJa2A0DrO74DnIZgKDjvxH\nrUopoIW8ggq1zFfXBm3HjTNS7tErjjCkvSIb/yLrxRuOwZM6XJQiTaVpav+e\nbbXvDsg0v9tVv1qqoJBrq6EHaIZ8kwxC6iKkHWJLtDIpzVDuRV3E8FTipkAP\nCgLT8YcL/qm2qUDAI1FaRupg1rcRECOBqpMGdLLd9RzW2e5PMQCciUhfuiyC\n8LrhDfphlYAC51TgRITyw9MBRIRab0yKCc7G19ii25nFi/bEyspbP6MDakXE\nieJPXrk9UvZbXE0e/HjPjo2ARwAwbzn+BqLBHw/bP0sPPNFBc9xv9w+zV+PA\n93PLDmCloc07F8luGoK66Wkhwo1NPxzgf7c9xskM0DccLCD3mT4Ewp75cf3U\n5l3bNROWEPk/H9iGNqnIgdPZhugPxWFk5kfQQx7NjrZc/u/qp+VHr/Xa1pKj\nKv3npetMq9P5f4pwkgJpgMW9usncGXlmrX/pkbvHyfIujkp8+gBB6HIA1oVw\n/wslTFrMIoVjo0AsqbsTSKaMaI5UZfpgwpU56MNnb3Ua4yU6G4ToaDUkYTXn\nawdj\r\n=6s8M\r\n-----END PGP SIGNATURE-----\r\n"
+  },
+  "_hasShrinkwrap": false,
+  "stars": 79,
+  "versions": [
+    {
+      "number": "1.0.0",
+      "date": "2015-07-05T06:48:08.195Z"
+    },
+    {
+      "number": "1.0.1",
+      "date": "2015-07-05T07:12:18.767Z"
+    },
+    {
+      "number": "1.0.2",
+      "date": "2015-07-05T07:18:36.775Z"
+    },
+    {
+      "number": "1.0.3",
+      "date": "2015-07-05T07:21:36.643Z"
+    },
+    {
+      "number": "1.0.4",
+      "date": "2015-07-05T07:25:04.559Z"
+    },
+    {
+      "number": "1.0.5",
+      "date": "2015-07-05T07:50:01.440Z"
+    },
+    {
+      "number": "1.0.6",
+      "date": "2015-07-05T08:04:44.612Z"
+    },
+    {
+      "number": "1.0.7",
+      "date": "2015-07-05T08:43:55.552Z"
+    },
+    {
+      "number": "1.0.8",
+      "date": "2015-07-05T09:03:27.452Z"
+    },
+    {
+      "number": "1.0.9",
+      "date": "2015-07-05T12:48:52.401Z"
+    },
+    {
+      "number": "5.1.0",
+      "date": "2015-07-06T03:48:19.787Z"
+    },
+    {
+      "number": "5.1.1",
+      "date": "2015-07-06T05:48:46.676Z"
+    },
+    {
+      "number": "5.1.2",
+      "date": "2015-08-07T06:29:54.149Z"
+    },
+    {
+      "number": "6.0.0",
+      "date": "2016-01-18T16:11:48.541Z"
+    },
+    {
+      "number": "6.1.0",
+      "date": "2016-01-18T17:18:29.966Z"
+    },
+    {
+      "number": "6.2.0",
+      "date": "2016-01-19T03:50:02.951Z"
+    },
+    {
+      "number": "6.2.1",
+      "date": "2016-01-19T10:34:13.518Z"
+    },
+    {
+      "number": "6.3.0",
+      "date": "2016-01-19T12:35:23.963Z"
+    },
+    {
+      "number": "6.3.1",
+      "date": "2016-01-19T12:52:02.020Z"
+    },
+    {
+      "number": "6.3.2",
+      "date": "2016-01-19T13:07:19.018Z"
+    },
+    {
+      "number": "6.3.3",
+      "date": "2016-01-19T13:33:22.828Z"
+    },
+    {
+      "number": "6.4.0",
+      "date": "2016-01-21T05:46:17.024Z"
+    },
+    {
+      "number": "6.5.0",
+      "date": "2016-01-22T00:47:45.488Z"
+    },
+    {
+      "number": "6.5.1",
+      "date": "2016-01-22T01:45:59.730Z"
+    },
+    {
+      "number": "6.5.2-0",
+      "date": "2016-01-22T02:13:28.805Z"
+    },
+    {
+      "number": "6.5.3",
+      "date": "2016-01-22T02:18:24.539Z"
+    },
+    {
+      "number": "6.5.4",
+      "date": "2016-01-22T11:08:26.447Z"
+    },
+    {
+      "number": "6.5.5",
+      "date": "2016-01-22T13:11:07.750Z"
+    },
+    {
+      "number": "6.5.6",
+      "date": "2016-01-22T15:28:47.591Z"
+    },
+    {
+      "number": "6.6.0",
+      "date": "2016-01-25T01:12:39.535Z"
+    },
+    {
+      "number": "6.6.1",
+      "date": "2016-01-25T02:36:03.035Z"
+    },
+    {
+      "number": "6.6.2",
+      "date": "2016-01-26T02:04:28.331Z"
+    },
+    {
+      "number": "6.7.0",
+      "date": "2016-01-28T03:53:29.586Z"
+    },
+    {
+      "number": "6.8.0",
+      "date": "2016-01-29T16:40:50.445Z"
+    },
+    {
+      "number": "6.9.0",
+      "date": "2016-02-25T04:22:58.055Z"
+    },
+    {
+      "number": "6.9.1",
+      "date": "2016-02-25T04:28:06.216Z"
+    },
+    {
+      "number": "6.10.0",
+      "date": "2016-02-25T11:05:03.049Z"
+    },
+    {
+      "number": "6.10.1",
+      "date": "2016-02-25T19:14:45.749Z"
+    },
+    {
+      "number": "6.11.0",
+      "date": "2016-03-10T19:49:52.355Z"
+    },
+    {
+      "number": "6.12.0",
+      "date": "2016-03-13T16:44:41.889Z"
+    },
+    {
+      "number": "6.12.1",
+      "date": "2016-03-14T04:42:00.652Z"
+    },
+    {
+      "number": "6.13.0",
+      "date": "2016-03-25T13:15:16.480Z"
+    },
+    {
+      "number": "6.14.0",
+      "date": "2016-05-08T07:33:28.285Z"
+    },
+    {
+      "number": "7.0.0",
+      "date": "2016-05-26T16:23:19.071Z"
+    },
+    {
+      "number": "7.0.1",
+      "date": "2016-06-16T08:30:53.974Z"
+    },
+    {
+      "number": "7.1.0",
+      "date": "2017-04-06T17:14:42.417Z"
+    },
+    {
+      "number": "7.2.0",
+      "date": "2017-04-19T17:33:26.116Z"
+    },
+    {
+      "number": "7.3.1",
+      "date": "2017-04-29T18:55:30.876Z"
+    },
+    {
+      "number": "7.4.0",
+      "date": "2017-05-21T12:52:40.067Z"
+    },
+    {
+      "number": "7.4.1",
+      "date": "2017-08-12T02:30:11.384Z"
+    },
+    {
+      "number": "7.5.0",
+      "date": "2017-11-11T17:21:09.295Z"
+    },
+    {
+      "number": "7.5.1",
+      "date": "2017-11-12T16:22:46.919Z"
+    },
+    {
+      "number": "7.5.2",
+      "date": "2017-11-24T03:21:56.119Z"
+    },
+    {
+      "number": "7.5.3",
+      "date": "2017-11-24T03:32:10.233Z"
+    },
+    {
+      "number": "7.5.4",
+      "date": "2017-11-24T03:36:55.414Z"
+    },
+    {
+      "number": "7.6.0",
+      "date": "2018-03-30T05:00:03.403Z"
+    },
+    {
+      "number": "7.6.1",
+      "date": "2018-03-30T05:34:14.549Z"
+    },
+    {
+      "number": "7.6.2",
+      "date": "2018-05-01T23:13:34.168Z"
+    }
+  ],
+  "created": "2015-07-05T06:48:08.195Z",
+  "modified": "2018-05-01T23:13:37.836Z",
+  "lastPublisher": {
+    "name": "jiahaog",
+    "email": "jiahaog@gmail.com"
+  },
+  "owners": [
+    {
+      "name": "jiahaog",
+      "email": "jiahaog@gmail.com"
+    }
+  ]
+}

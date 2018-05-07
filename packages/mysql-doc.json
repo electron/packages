@@ -1,0 +1,100 @@
+{
+  "author": {
+    "name": "kai zhu",
+    "email": "kaizhu256@gmail.com"
+  },
+  "buildNpmdoc": "mysql",
+  "dependencies": {},
+  "devDependencies": {
+    "electron-lite": "github:kaizhu256/node-electron-lite#alpha",
+    "mysql": "*",
+    "utility2": "github:kaizhu256/node-utility2#alpha"
+  },
+  "dist": {
+    "shasum": "b4967c25b25f9d4126caaf2227bf285d1ffdb11a",
+    "tarball": "https://registry.npmjs.org/mysql-doc/-/mysql-doc-0.0.5.tgz"
+  },
+  "engines": {
+    "node": ">=4.0"
+  },
+  "homepage": "https://github.com/npmdoc/node-npmdoc-mysql/blob/alpha/README.md",
+  "keywords": [
+    "documentation",
+    "mysql"
+  ],
+  "license": "MIT",
+  "main": "lib.npmdoc_mysql.js",
+  "name": "mysql-doc",
+  "nameAlias": "npmdoc_mysql",
+  "nameOriginal": "npmdoc-mysql",
+  "optionalDependencies": {},
+  "os": [
+    "darwin",
+    "linux"
+  ],
+  "repository": {
+    "user": "npmdoc",
+    "repo": "node-npmdoc-mysql",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/npmdoc/node-npmdoc-mysql/tarball/master",
+    "clone_url": "https://github.com/npmdoc/node-npmdoc-mysql",
+    "https_url": "https://github.com/npmdoc/node-npmdoc-mysql",
+    "travis_url": "https://travis-ci.org/npmdoc/node-npmdoc-mysql",
+    "zip_url": "https://github.com/npmdoc/node-npmdoc-mysql/archive/master.zip",
+    "api_url": "https://api.github.com/repos/npmdoc/node-npmdoc-mysql"
+  },
+  "scripts": {
+    "build-ci": "utility2 shBuildCi",
+    "env": "env",
+    "heroku-postbuild": "(set -e; npm install 'kaizhu256/node-utility2#alpha'; utility2 shDeployHeroku)",
+    "postinstall": "if [ -f lib.npmdoc_mysql.npm_scripts.sh ]; then ./lib.npmdoc_mysql.npm_scripts.sh postinstall; fi",
+    "publish-alias": "VERSION=$(npm info $npm_package_name version); for ALIAS in mysql-doc; do utility2 shNpmPublishAs . $ALIAS $VERSION; eval utility2 shNpmTestPublished $ALIAS || exit $?; done",
+    "start": "(set -e; export PORT=${PORT:-8080}; utility2 start test.js)",
+    "test": "(set -e; export PORT=$(utility2 shServerPortRandom); utility2 test test.js)"
+  },
+  "version": "0.0.5",
+  "description": "this package is deprecated and superseded by npmdoc-mysql",
+  "_npmVersion": "3.10.10",
+  "_nodeVersion": "6.9.4",
+  "deprecated": "this package is deprecated and superseded by npmdoc-mysql",
+  "versions": [
+    {
+      "number": "0.0.1",
+      "date": "2017-02-26T06:30:10.785Z"
+    },
+    {
+      "number": "0.0.2",
+      "date": "2017-03-16T10:38:03.076Z"
+    },
+    {
+      "number": "0.0.3",
+      "date": "2017-03-16T18:23:59.975Z"
+    },
+    {
+      "number": "0.0.4",
+      "date": "2017-03-18T10:53:39.424Z"
+    },
+    {
+      "number": "0.0.5",
+      "date": "2017-03-18T10:54:27.005Z"
+    }
+  ],
+  "created": "2017-02-26T06:30:10.785Z",
+  "modified": "2017-04-17T22:48:01.648Z",
+  "lastPublisher": {
+    "name": "kaizhu",
+    "email": "kaizhu256@gmail.com"
+  },
+  "owners": [
+    {
+      "name": "kaizhu",
+      "email": "kaizhu256@gmail.com"
+    },
+    {
+      "name": "npmdoc",
+      "email": "npmdoc@kaizhu.org"
+    }
+  ]
+}

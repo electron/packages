@@ -1,0 +1,132 @@
+{
+  "name": "muon-winstaller",
+  "version": "2.6.1",
+  "description": "Module to generate Windows installers for Electron apps",
+  "main": "./lib/index.js",
+  "license": "MIT",
+  "repository": {
+    "user": "electronjs",
+    "repo": "windows-installer",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/electronjs/windows-installer/tarball/master",
+    "clone_url": "https://github.com/electronjs/windows-installer",
+    "https_url": "https://github.com/electronjs/windows-installer",
+    "travis_url": "https://travis-ci.org/electronjs/windows-installer",
+    "zip_url": "https://github.com/electronjs/windows-installer/archive/master.zip",
+    "api_url": "https://api.github.com/repos/electronjs/windows-installer"
+  },
+  "scripts": {
+    "compile": "babel -d lib/ src/",
+    "prepublish": "npm run compile",
+    "lint": "eslint src & eslint spec",
+    "test": "npm run lint && ava",
+    "tdd": "ava --watch"
+  },
+  "dependencies": {
+    "asar": "^0.11.0",
+    "bluebird": "^3.3.4",
+    "debug": "^2.2.0",
+    "fs-extra": "^0.26.7",
+    "lodash.template": "^4.2.2",
+    "temp": "^0.8.3"
+  },
+  "devDependencies": {
+    "ava": "^0.13.0",
+    "babel-cli": "^6.6.5",
+    "babel-eslint": "^6.0.2",
+    "babel-plugin-transform-async-to-module-method": "^6.7.0",
+    "babel-plugin-transform-runtime": "^6.6.0",
+    "babel-preset-es2015-node4": "^2.0.3",
+    "babel-preset-stage-0": "^6.5.0",
+    "babel-register": "^6.7.2",
+    "eslint": "^2.4.0"
+  },
+  "engines": {
+    "node": ">=0.4.0"
+  },
+  "babel": {
+    "presets": [
+      "stage-0",
+      "es2015-node4"
+    ],
+    "plugins": [
+      [
+        "transform-async-to-module-method",
+        {
+          "module": "bluebird",
+          "method": "coroutine"
+        }
+      ]
+    ]
+  },
+  "ava": {
+    "files": [
+      "spec/*.js"
+    ],
+    "failFast": true,
+    "require": [
+      "babel-register"
+    ],
+    "babel": "inherit"
+  },
+  "gitHead": "b4605350808cc91dd97504ca8b4d24f658c47ad6",
+  "homepage": "https://github.com/electronjs/windows-installer#readme",
+  "_npmVersion": "5.3.0",
+  "_nodeVersion": "7.9.0",
+  "dist": {
+    "integrity": "sha512-Sehkir6G+TCAfQVUR1EQTzwcH5AW2lzWcnpo+fX5B4G6RvXibUGyUhsjhrrlmkulc48/8k7DX3H1yO2376v1Ow==",
+    "shasum": "e37fad3f6a44962dfa8ae268424611ca66ca0921",
+    "tarball": "http://registry.npmjs.org/muon-winstaller/-/muon-winstaller-2.6.1.tgz",
+    "fileCount": 39,
+    "unpackedSize": 26601599
+  },
+  "_hasShrinkwrap": false,
+  "versions": [
+    {
+      "number": "2.4.0",
+      "date": "2016-11-29T18:08:36.716Z"
+    },
+    {
+      "number": "2.4.2",
+      "date": "2016-12-19T14:01:12.275Z"
+    },
+    {
+      "number": "2.5.3",
+      "date": "2017-01-31T17:27:33.517Z"
+    },
+    {
+      "number": "2.5.4",
+      "date": "2017-01-31T19:08:45.481Z"
+    },
+    {
+      "number": "2.5.5",
+      "date": "2017-09-01T14:55:27.273Z"
+    },
+    {
+      "number": "2.6.0",
+      "date": "2018-02-05T02:42:43.840Z"
+    },
+    {
+      "number": "2.6.1",
+      "date": "2018-02-09T20:07:42.438Z"
+    }
+  ],
+  "created": "2016-11-29T18:08:36.716Z",
+  "modified": "2018-02-09T20:07:42.438Z",
+  "lastPublisher": {
+    "name": "bsclifton",
+    "email": "brian@clifton.me"
+  },
+  "owners": [
+    {
+      "name": "brianbondy",
+      "email": "netzen@gmail.com"
+    },
+    {
+      "name": "bsclifton",
+      "email": "brian@clifton.me"
+    }
+  ]
+}

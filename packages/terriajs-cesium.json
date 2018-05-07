@@ -1,0 +1,408 @@
+{
+  "name": "terriajs-cesium",
+  "version": "1.41.1",
+  "description": "Cesium for TerriaJS.",
+  "homepage": "http://cesiumjs.org",
+  "license": "Apache-2.0",
+  "author": {
+    "name": "Analytical Graphics, Inc.",
+    "url": "http://www.agi.com"
+  },
+  "contributors": [
+    {
+      "name": "Cesium community",
+      "url": "https://github.com/AnalyticalGraphicsInc/cesium/blob/master/CONTRIBUTORS.md"
+    }
+  ],
+  "keywords": [
+    "3D",
+    "webgl",
+    "geospatial",
+    "map",
+    "globe"
+  ],
+  "repository": {
+    "user": "TerriaJS",
+    "repo": "cesium",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/TerriaJS/cesium/tarball/master",
+    "clone_url": "https://github.com/TerriaJS/cesium",
+    "https_url": "https://github.com/TerriaJS/cesium",
+    "travis_url": "https://travis-ci.org/TerriaJS/cesium",
+    "zip_url": "https://github.com/TerriaJS/cesium/archive/master.zip",
+    "api_url": "https://api.github.com/repos/TerriaJS/cesium"
+  },
+  "dependencies": {
+    "deamdify": "^0.1.1",
+    "requirejs": "^2.3.2"
+  },
+  "devDependencies": {
+    "almond": "^0.3.3",
+    "aws-sdk": "^2.18.0",
+    "bluebird": "^3.4.6",
+    "browserify": "^9.0.8",
+    "compressible": "^2.0.9",
+    "compression": "^1.6.2",
+    "electron": "^1.6.1",
+    "eslint": "^4.0.0",
+    "eslint-plugin-html": "^3.0.0",
+    "event-stream": "^3.3.4",
+    "exorcist": "^0.3.0",
+    "express": "^4.15.0",
+    "glob-all": "^3.0.1",
+    "globby": "^6.1.0",
+    "glsl-strip-comments": "^1.0.0",
+    "gulp": "^3.9.1",
+    "gulp-insert": "^0.5.0",
+    "gulp-rename": "^1.2.2",
+    "gulp-replace": "^0.6.1",
+    "gulp-sourcemaps": "^1.5.2",
+    "gulp-uglify": "^1.2.0",
+    "gulp-tap": "^1.0.1",
+    "gulp-zip": "^4.0.0",
+    "jasmine-core": "^2.5.2",
+    "jsdoc": "^3.4.3",
+    "karma": "^1.3.0",
+    "karma-chrome-launcher": "^2.0.0",
+    "karma-detect-browsers": "^2.2.3",
+    "karma-edge-launcher": "^0.4.2",
+    "karma-electron": "^5.1.1",
+    "karma-firefox-launcher": "^1.0.0",
+    "karma-ie-launcher": "^1.0.0",
+    "karma-jasmine": "^1.1.0",
+    "karma-requirejs": "^1.1.0",
+    "karma-safari-launcher": "^1.0.0",
+    "karma-spec-reporter": "^0.0.31",
+    "mime": "^2.0.3",
+    "mkdirp": "^0.5.1",
+    "request": "^2.79.0",
+    "rimraf": "^2.6.1",
+    "vinyl-buffer": "^1.0.0",
+    "vinyl-source-stream": "^1.1.0",
+    "vinyl-transform": "^1.0.0",
+    "yargs": "^9.0.1"
+  },
+  "scripts": {
+    "start": "node server.js",
+    "startPublic": "node server.js --public",
+    "build": "gulp build",
+    "build-watch": "gulp build-watch",
+    "buildApps": "gulp buildApps",
+    "clean": "gulp clean",
+    "cloc": "gulp cloc",
+    "combine": "gulp combine",
+    "combineRelease": "gulp combineRelease",
+    "requirejs": "gulp requirejs",
+    "generateDocumentation": "gulp generateDocumentation",
+    "instrumentForCoverage": "gulp instrumentForCoverage",
+    "eslint": "eslint \"./**/*.js\" \"./**/*.html\" --cache --quiet",
+    "makeZipFile": "gulp makeZipFile",
+    "minify": "gulp minify",
+    "minifyRelease": "gulp minifyRelease",
+    "release": "gulp release",
+    "test": "gulp test",
+    "test-all": "gulp test --all",
+    "test-webgl": "gulp test --include WebGL",
+    "test-non-webgl": "gulp test --exclude WebGL",
+    "test-webgl-validation": "gulp test --webglValidation",
+    "test-webgl-stub": "gulp test --webglStub",
+    "test-release": "gulp test --release",
+    "generateStubs": "gulp generateStubs",
+    "sortRequires": "gulp sortRequires",
+    "prepublish": "bash -c \"if [ ! -d \"./wwwroot/build\" ]; then gulp terria-prepare-cesium; fi\"",
+    "postpublish": "bash -c \"git tag -a terriajs-${npm_package_version} -m \"terriajs-${npm_package_version}\" && git push origin terriajs-${npm_package_version}\"",
+    "postinstall": "bash -c \"if [ ! -d \"./wwwroot/build\" ]; then gulp terria-prepare-cesium; fi\"",
+    "deploy-s3": "gulp deploy-s3",
+    "deploy-status": "gulp deploy-status",
+    "deploy-set-version": "gulp deploy-set-version"
+  },
+  "browserify": {
+    "transform": [
+      "deamdify"
+    ]
+  },
+  "gitHead": "f9d3f1dcdfa16431e90df976403f0e0ffe36d03f",
+  "_npmVersion": "3.10.10",
+  "_nodeVersion": "6.12.0",
+  "dist": {
+    "shasum": "765d30bbabdffc4fe532dc4e4aae5494fbb68f85",
+    "tarball": "https://registry.npmjs.org/terriajs-cesium/-/terriajs-cesium-1.41.1.tgz"
+  },
+  "stars": 1,
+  "versions": [
+    {
+      "number": "0.0.1",
+      "date": "2015-04-24T01:35:19.245Z"
+    },
+    {
+      "number": "0.0.2",
+      "date": "2015-04-24T01:54:39.210Z"
+    },
+    {
+      "number": "0.0.3",
+      "date": "2015-04-24T02:02:13.328Z"
+    },
+    {
+      "number": "0.0.4",
+      "date": "2015-04-24T02:39:23.599Z"
+    },
+    {
+      "number": "0.0.5",
+      "date": "2015-04-24T05:34:46.555Z"
+    },
+    {
+      "number": "1.8.0",
+      "date": "2015-04-28T02:09:19.484Z"
+    },
+    {
+      "number": "1.8.1",
+      "date": "2015-04-29T06:13:26.274Z"
+    },
+    {
+      "number": "1.8.2",
+      "date": "2015-04-29T06:35:33.967Z"
+    },
+    {
+      "number": "1.8.3",
+      "date": "2015-04-29T23:47:34.236Z"
+    },
+    {
+      "number": "1.8.4",
+      "date": "2015-05-11T06:44:48.308Z"
+    },
+    {
+      "number": "1.8.5",
+      "date": "2015-05-11T07:02:49.091Z"
+    },
+    {
+      "number": "1.8.6",
+      "date": "2015-05-12T02:11:54.544Z"
+    },
+    {
+      "number": "1.8.7",
+      "date": "2015-05-15T01:37:47.976Z"
+    },
+    {
+      "number": "1.8.8",
+      "date": "2015-05-28T02:24:31.720Z"
+    },
+    {
+      "number": "1.8.9",
+      "date": "2015-05-28T03:56:00.105Z"
+    },
+    {
+      "number": "1.10.0",
+      "date": "2015-06-02T00:56:13.639Z"
+    },
+    {
+      "number": "1.10.1",
+      "date": "2015-06-03T06:44:05.442Z"
+    },
+    {
+      "number": "1.10.2",
+      "date": "2015-06-04T05:37:27.339Z"
+    },
+    {
+      "number": "1.10.3",
+      "date": "2015-06-09T01:42:06.311Z"
+    },
+    {
+      "number": "1.10.4",
+      "date": "2015-06-10T01:55:03.869Z"
+    },
+    {
+      "number": "1.10.5",
+      "date": "2015-06-10T06:10:25.296Z"
+    },
+    {
+      "number": "1.10.6",
+      "date": "2015-06-23T01:54:34.193Z"
+    },
+    {
+      "number": "1.10.7",
+      "date": "2015-06-23T02:10:29.395Z"
+    },
+    {
+      "number": "1.11.0",
+      "date": "2015-07-08T02:52:31.635Z"
+    },
+    {
+      "number": "1.11.1",
+      "date": "2015-07-15T00:20:51.744Z"
+    },
+    {
+      "number": "1.13.0",
+      "date": "2015-09-21T07:16:46.982Z"
+    },
+    {
+      "number": "1.14.0",
+      "date": "2015-10-13T23:55:39.622Z"
+    },
+    {
+      "number": "1.14.1",
+      "date": "2015-10-14T04:21:43.499Z"
+    },
+    {
+      "number": "1.15.0",
+      "date": "2015-11-02T23:59:12.411Z"
+    },
+    {
+      "number": "1.15.1",
+      "date": "2015-11-05T02:47:59.817Z"
+    },
+    {
+      "number": "1.15.2",
+      "date": "2015-11-13T02:51:12.422Z"
+    },
+    {
+      "number": "1.15.3",
+      "date": "2015-12-18T03:55:17.227Z"
+    },
+    {
+      "number": "1.15.4",
+      "date": "2015-12-21T00:16:46.919Z"
+    },
+    {
+      "number": "1.15.5",
+      "date": "2016-01-07T00:06:02.674Z"
+    },
+    {
+      "number": "1.15.6",
+      "date": "2016-01-14T01:06:38.817Z"
+    },
+    {
+      "number": "1.18.0",
+      "date": "2016-02-26T05:24:57.971Z"
+    },
+    {
+      "number": "1.18.1",
+      "date": "2016-03-11T03:17:37.557Z"
+    },
+    {
+      "number": "1.19.0",
+      "date": "2016-03-15T06:38:36.625Z"
+    },
+    {
+      "number": "1.19.1",
+      "date": "2016-03-17T03:10:26.903Z"
+    },
+    {
+      "number": "1.19.2",
+      "date": "2016-04-01T01:08:57.961Z"
+    },
+    {
+      "number": "1.19.3",
+      "date": "2016-04-20T07:25:27.473Z"
+    },
+    {
+      "number": "1.20.0",
+      "date": "2016-04-27T00:24:22.333Z"
+    },
+    {
+      "number": "1.20.1",
+      "date": "2016-07-06T07:34:13.302Z"
+    },
+    {
+      "number": "1.23.0",
+      "date": "2016-07-19T08:07:18.209Z"
+    },
+    {
+      "number": "1.23.1",
+      "date": "2016-07-22T06:29:43.249Z"
+    },
+    {
+      "number": "1.23.2",
+      "date": "2016-07-25T04:04:28.045Z"
+    },
+    {
+      "number": "1.25.0",
+      "date": "2016-09-22T05:19:10.514Z"
+    },
+    {
+      "number": "1.25.1",
+      "date": "2016-09-30T06:10:03.189Z"
+    },
+    {
+      "number": "1.29.0",
+      "date": "2017-01-05T07:10:36.375Z"
+    },
+    {
+      "number": "1.29.1",
+      "date": "2017-01-06T03:44:39.630Z"
+    },
+    {
+      "number": "1.29.2",
+      "date": "2017-01-07T10:50:54.827Z"
+    },
+    {
+      "number": "1.31.0",
+      "date": "2017-03-08T05:23:19.525Z"
+    },
+    {
+      "number": "1.31.1",
+      "date": "2017-03-09T05:50:19.518Z"
+    },
+    {
+      "number": "1.33.0",
+      "date": "2017-05-03T03:48:41.373Z"
+    },
+    {
+      "number": "1.33.1",
+      "date": "2017-08-14T07:34:18.685Z"
+    },
+    {
+      "number": "1.33.2",
+      "date": "2017-08-15T00:26:28.413Z"
+    },
+    {
+      "number": "1.33.3",
+      "date": "2017-10-13T04:08:30.021Z"
+    },
+    {
+      "number": "1.33.4",
+      "date": "2018-01-15T00:24:05.798Z"
+    },
+    {
+      "number": "1.33.5",
+      "date": "2018-01-15T06:21:04.710Z"
+    },
+    {
+      "number": "1.41.0",
+      "date": "2018-01-29T01:05:44.820Z"
+    },
+    {
+      "number": "1.41.1",
+      "date": "2018-01-30T04:40:32.362Z"
+    }
+  ],
+  "created": "2015-04-24T01:35:19.245Z",
+  "modified": "2018-01-30T04:40:32.362Z",
+  "lastPublisher": {
+    "name": "kring",
+    "email": "kevin-npm@kotachrome.com"
+  },
+  "owners": [
+    {
+      "name": "artstr",
+      "email": "arthur@racingtadpole.com"
+    },
+    {
+      "name": "kring",
+      "email": "kevin-npm@kotachrome.com"
+    },
+    {
+      "name": "rdengate",
+      "email": "Rebecca.Dengate@data61.csiro.au"
+    },
+    {
+      "name": "stevage",
+      "email": "stevage@gmail.com"
+    },
+    {
+      "name": "terria",
+      "email": "terriajs@lists.nicta.com.au"
+    }
+  ]
+}

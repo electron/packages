@@ -1,0 +1,111 @@
+{
+  "name": "flap-app-launcher",
+  "version": "1.1.2",
+  "description": "Compact applications launcher for Ubuntu",
+  "main": "index.js",
+  "bin": {
+    "flap-app-launcher": "./run-production.js"
+  },
+  "scripts": {
+    "dev": "export NODE_ENV=development && electron .",
+    "start": "electron .",
+    "test": "export NODE_ENV=test && mocha --recursive ./tests",
+    "cover": "export NODE_ENV=test && istanbul cover _mocha -- --recursive ./tests",
+    "coveralls": "npm run cover -- --report lcovonly && cat ./coverage/lcov.info | coveralls",
+    "test:install-dev-to-global": "sudo npm -g remove flap-app-launcher && sudo npm install -g ./ && npm list -g --depth 0",
+    "test:install-npm-to-global": "sudo npm -g remove flap-app-launcher && sudo npm install -g flap-app-launcher && npm list -g --depth 0",
+    "lint": "eslint --ignore-path .gitignore --ignore-pattern node_modules -- .",
+    "build:linux:make": "electron-packager --platform=linux --arch=all --overwrite --out=build --ignore='^(.*tests.*|.*\\.(log|stats|config\\.json|gitignore|idea|travis|eslint).*)$' ./",
+    "build:linux:ai32:deb": "electron-installer-debian --arch ai32 --src build/flap-app-launcher-linux-ia32/ --dest build/installers/",
+    "build:linux:x64:deb": "electron-installer-debian --arch x64 --src build/flap-app-launcher-linux-x64/ --dest build/installers/",
+    "build:linux:amd64:deb": "electron-installer-debian --arch amd64 --src build/flap-app-launcher-linux-x64/ --dest build/installers/",
+    "build:linux:armv7l:deb": "electron-installer-debian --arch armv7l --src build/flap-app-launcher-linux-armv7l/ --dest build/installers/",
+    "build:linux": "npm run build:linux:make && npm run build:linux:ai32:deb && npm run build:linux:x64:deb && npm run build:linux:amd64:deb && npm run build:linux:armv7l:deb",
+    "build": "npm run lint && npm run test && npm run build:linux",
+    "release:patch": "standard-version -r patch",
+    "release:minor": "standard-version -r minor",
+    "release:major": "standard-version -r major"
+  },
+  "keywords": [
+    "electronjs",
+    "launcher",
+    "ubuntu"
+  ],
+  "author": {
+    "name": "Anton Fisher",
+    "email": "a.fschr@gmail.com",
+    "url": "http://antonfisher.com"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "electron": "1.7.11",
+    "winston": "2.4.0"
+  },
+  "devDependencies": {
+    "coveralls": "3.0.0",
+    "electron-installer-debian": "0.8.0",
+    "electron-packager": "10.1.1",
+    "eslint": "4.16.0",
+    "eslint-config-airbnb-base": "12.1.0",
+    "eslint-plugin-import": "2.8.0",
+    "istanbul": "0.4.5",
+    "mocha": "5.0.0",
+    "mocha-lcov-reporter": "1.3.0",
+    "proxyquire": "1.8.0",
+    "simple-mock": "0.8.0",
+    "standard-version": "4.3.0"
+  },
+  "gitHead": "803fd5b04da13387c4e041e50e3ef20f80dbe926",
+  "_npmVersion": "4.2.0",
+  "_nodeVersion": "7.9.0",
+  "dist": {
+    "shasum": "2103ecc23a61b223bbe8056f8428e4a7d03e351e",
+    "tarball": "https://registry.npmjs.org/flap-app-launcher/-/flap-app-launcher-1.1.2.tgz"
+  },
+  "versions": [
+    {
+      "number": "1.0.0",
+      "date": "2017-04-16T23:50:45.356Z"
+    },
+    {
+      "number": "1.0.1",
+      "date": "2017-04-17T00:05:29.809Z"
+    },
+    {
+      "number": "1.0.2",
+      "date": "2017-04-17T05:40:25.764Z"
+    },
+    {
+      "number": "1.0.3",
+      "date": "2017-04-22T05:12:15.979Z"
+    },
+    {
+      "number": "1.0.4",
+      "date": "2017-04-22T05:12:42.581Z"
+    },
+    {
+      "number": "1.0.5",
+      "date": "2017-04-27T06:39:37.609Z"
+    },
+    {
+      "number": "1.1.0",
+      "date": "2017-05-12T06:59:28.735Z"
+    },
+    {
+      "number": "1.1.2",
+      "date": "2018-01-26T07:20:56.231Z"
+    }
+  ],
+  "created": "2017-04-16T23:50:45.356Z",
+  "modified": "2018-01-26T07:20:56.231Z",
+  "lastPublisher": {
+    "name": "afschr",
+    "email": "a.fschr@gmail.com"
+  },
+  "owners": [
+    {
+      "name": "afschr",
+      "email": "a.fschr@gmail.com"
+    }
+  ]
+}

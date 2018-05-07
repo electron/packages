@@ -1,0 +1,145 @@
+{
+  "name": "chromium-net-errors",
+  "version": "3.0.0",
+  "description": "Chromium network errors for Electron and Chromium-based JavaScript environments",
+  "keywords": [
+    "chromium",
+    "atom-shell",
+    "electron",
+    "error",
+    "errors"
+  ],
+  "main": "build/index.js",
+  "module": "build/index.es.js",
+  "jsnext:main": "build/index.es.js",
+  "files": [
+    "./build"
+  ],
+  "repository": {
+    "user": "maxkueng",
+    "repo": "chromium-net-errors",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/maxkueng/chromium-net-errors/tarball/master",
+    "clone_url": "https://github.com/maxkueng/chromium-net-errors",
+    "https_url": "https://github.com/maxkueng/chromium-net-errors",
+    "travis_url": "https://travis-ci.org/maxkueng/chromium-net-errors",
+    "zip_url": "https://github.com/maxkueng/chromium-net-errors/archive/master.zip",
+    "api_url": "https://api.github.com/repos/maxkueng/chromium-net-errors"
+  },
+  "scripts": {
+    "update-errors": "node scripts/update-errors",
+    "check-update-errors": "node scripts/update-errors --check",
+    "process-errors": "node scripts/process-errors",
+    "generate-errors": "node scripts/generate-errors",
+    "prepublish": "npm-run-all -s build run-tests",
+    "test:js": "nyc ava",
+    "run-tests": "npm-run-all lint test:js",
+    "test": "npm-run-all -s check-update-errors clean build:js run-tests",
+    "clean": "rimraf build",
+    "build:js": "rollup -c rollup.config.js",
+    "build": "npm-run-all -s process-errors generate-errors clean build:js",
+    "lint": "eslint src/*.js",
+    "lint:fix": "eslint --fix src/*.js",
+    "publish-coverage": "nyc report --reporter=text-lcov | coveralls"
+  },
+  "author": {
+    "name": "Max Kueng",
+    "email": "me@maxkueng.com",
+    "url": "http://maxkueng.com/"
+  },
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "https://github.com/maxkueng/chromium-net-errors/raw/master/LICENSE"
+    }
+  ],
+  "devDependencies": {
+    "ava": "^0.25.0",
+    "babel-cli": "^6.26.0",
+    "babel-eslint": "^8.2.2",
+    "babel-plugin-transform-es2015-modules-commonjs": "^6.26.0",
+    "babel-plugin-transform-object-rest-spread": "^6.26.0",
+    "change-case": "^3.0.2",
+    "coveralls": "^3.0.0",
+    "eslint": "^4.19.1",
+    "eslint-config-airbnb-base": "^12.1.0",
+    "eslint-plugin-import": "^2.10.0",
+    "got": "^8.3.0",
+    "mkdirp": "^0.5.1",
+    "npm-run-all": "^4.1.2",
+    "nyc": "^11.6.0",
+    "rimraf": "^2.6.2",
+    "rollup": "^0.57.1",
+    "rollup-plugin-babel": "^3.0.3",
+    "rollup-plugin-replace": "^2.0.0",
+    "split": "^1.0.1",
+    "through2": "^2.0.3"
+  },
+  "ava": {
+    "require": "babel-register"
+  },
+  "gitHead": "52f9d30c815b02c013b4a451e017e33be39e8eb8",
+  "homepage": "https://github.com/maxkueng/chromium-net-errors#readme",
+  "_npmVersion": "5.7.1",
+  "_nodeVersion": "9.9.0",
+  "dist": {
+    "integrity": "sha512-VBIz7tu5as+3791z118a8nlm1yOK846CSAiKI2tIV/UB56UN2U+O1MRx2FyFXAanUDuRL3TAxojDqWYBPCXeAA==",
+    "shasum": "98e32481e5ec0951ad8d66b924eb9e824f5e0d4b",
+    "tarball": "http://registry.npmjs.org/chromium-net-errors/-/chromium-net-errors-3.0.0.tgz",
+    "fileCount": 5,
+    "unpackedSize": 297451
+  },
+  "_hasShrinkwrap": false,
+  "versions": [
+    {
+      "number": "1.0.0",
+      "date": "2015-04-26T04:53:46.980Z"
+    },
+    {
+      "number": "1.0.1",
+      "date": "2015-04-26T05:03:18.524Z"
+    },
+    {
+      "number": "1.0.2",
+      "date": "2015-04-26T05:30:49.652Z"
+    },
+    {
+      "number": "1.0.3",
+      "date": "2016-01-07T11:10:07.485Z"
+    },
+    {
+      "number": "2.0.0",
+      "date": "2018-03-18T15:47:00.139Z"
+    },
+    {
+      "number": "2.0.1",
+      "date": "2018-03-18T16:06:07.314Z"
+    },
+    {
+      "number": "2.1.0",
+      "date": "2018-03-30T16:53:23.658Z"
+    },
+    {
+      "number": "2.2.0",
+      "date": "2018-03-31T15:31:08.265Z"
+    },
+    {
+      "number": "3.0.0",
+      "date": "2018-04-10T23:02:19.835Z"
+    }
+  ],
+  "created": "2015-04-26T04:53:46.980Z",
+  "modified": "2018-04-10T23:02:22.481Z",
+  "lastPublisher": {
+    "name": "maxkueng",
+    "email": "me@maxkueng.com"
+  },
+  "owners": [
+    {
+      "name": "maxkueng",
+      "email": "me@maxkueng.com"
+    }
+  ]
+}

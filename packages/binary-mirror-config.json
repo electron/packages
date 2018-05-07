@@ -1,0 +1,320 @@
+{
+  "name": "binary-mirror-config",
+  "version": "1.9.0",
+  "description": "Binary mirror config for prebuild and node-pre-gyp",
+  "main": "index.js",
+  "files": [
+    "index.js"
+  ],
+  "scripts": {
+    "test": "npm run lint && mocha -t 5000 test/*.test.js",
+    "test-cov": "istanbul cover _mocha -- -t 5000 test/*.test.js",
+    "lint": "eslint index.js",
+    "ci": "npm run lint && npm run test-cov"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "egg-ci": "1",
+    "eslint": "3",
+    "eslint-config-egg": "3",
+    "istanbul": "*",
+    "mocha": "*"
+  },
+  "homepage": "https://github.com/cnpm/binary-mirror-config",
+  "repository": {
+    "user": "cnpm",
+    "repo": "binary-mirror-config",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/cnpm/binary-mirror-config/tarball/master",
+    "clone_url": "https://github.com/cnpm/binary-mirror-config",
+    "https_url": "https://github.com/cnpm/binary-mirror-config",
+    "travis_url": "https://travis-ci.org/cnpm/binary-mirror-config",
+    "zip_url": "https://github.com/cnpm/binary-mirror-config/archive/master.zip",
+    "api_url": "https://api.github.com/repos/cnpm/binary-mirror-config"
+  },
+  "keywords": [
+    "binary-mirror-config",
+    "prebuild",
+    "node-pre-gyp"
+  ],
+  "author": {
+    "name": "fengmk2",
+    "email": "m@fengmk2.com",
+    "url": "http://fengmk2.com"
+  },
+  "license": "MIT",
+  "ci": {
+    "version": "4, 6, 8, 10"
+  },
+  "mirrors": {
+    "china": {
+      "ENVS": {
+        "NODEJS_ORG_MIRROR": "https://cdn.npm.taobao.org/dist/node",
+        "NVM_NODEJS_ORG_MIRROR": "https://cdn.npm.taobao.org/dist/node",
+        "NVM_IOJS_ORG_MIRROR": "https://cdn.npm.taobao.org/dist/iojs",
+        "PHANTOMJS_CDNURL": "https://cdn.npm.taobao.org/dist/phantomjs",
+        "CHROMEDRIVER_CDNURL": "https://cdn.npm.taobao.org/dist/chromedriver",
+        "OPERADRIVER_CDNURL": "https://cdn.npm.taobao.org/dist/operadriver",
+        "ELECTRON_MIRROR": "https://cdn.npm.taobao.org/dist/electron/",
+        "SASS_BINARY_SITE": "https://cdn.npm.taobao.org/dist/node-sass",
+        "FLOW_BINARY_MIRROR": "https://github.com/facebook/flow/releases/download/v",
+        "NWJS_URLBASE": "https://cdn.npm.taobao.org/dist/nwjs/v",
+        "PUPPETEER_DOWNLOAD_HOST": "https://cdn.npm.taobao.org/dist"
+      },
+      "utf-8-validate": {
+        "host": "https://cdn.npm.taobao.org/dist/utf-8-validate/v{version}"
+      },
+      "leveldown": {
+        "host": "https://cdn.npm.taobao.org/dist/leveldown/v{version}"
+      },
+      "leveldown-hyper": {
+        "host": "https://cdn.npm.taobao.org/dist/leveldown-hyper/v{version}"
+      },
+      "mknod": {
+        "host": "https://cdn.npm.taobao.org/dist/mknod/v{version}"
+      },
+      "couchbase": {
+        "host": "https://cdn.npm.taobao.org/dist/couchbase/v{version}"
+      },
+      "sodium-prebuilt": {
+        "host": "https://cdn.npm.taobao.org/dist/sodium-prebuilt/v{version}"
+      },
+      "utp-native": {
+        "host": "https://cdn.npm.taobao.org/dist/utp-native/v{version}"
+      },
+      "node-tk5": {
+        "host": "https://cdn.npm.taobao.org/dist/node-tk5/v{version}"
+      },
+      "fuse-bindings": {
+        "host": "https://cdn.npm.taobao.org/dist/fuse-bindings/v{version}"
+      },
+      "zmq-prebuilt": {
+        "host": "https://cdn.npm.taobao.org/dist/zmq-prebuilt/v{version}"
+      },
+      "gl": {
+        "host": "https://cdn.npm.taobao.org/dist/gl/v{version}"
+      },
+      "hackrf": {
+        "host": "https://cdn.npm.taobao.org/dist/hackrf/v{version}"
+      },
+      "rabin": {
+        "host": "https://cdn.npm.taobao.org/dist/rabin/v{version}"
+      },
+      "v8-debug": {
+        "host": "https://cdn.npm.taobao.org/dist/node-inspector"
+      },
+      "v8-profiler": {
+        "host": "https://cdn.npm.taobao.org/dist/node-inspector"
+      },
+      "sqlite3": {
+        "host": "https://cdn.npm.taobao.org/dist"
+      },
+      "grpc": {
+        "host": "https://cdn.npm.taobao.org/dist",
+        "remote_path": "{name}/v{version}"
+      },
+      "fsevents": {
+        "host": "https://cdn.npm.taobao.org/dist/fsevents"
+      },
+      "nodegit": {
+        "host": "https://cdn.npm.taobao.org/dist/nodegit/v{version}"
+      },
+      "flow-bin": {
+        "replaceHost": "https://github.com/facebook/flow/releases/download/v",
+        "host": "https://cdn.npm.taobao.org/dist/flow/v"
+      },
+      "jpegtran-bin": {
+        "replaceHost": [
+          "https://raw.githubusercontent.com",
+          "https://raw.github.com"
+        ],
+        "host": "https://raw.github.cnpmjs.org"
+      },
+      "cwebp-bin": {
+        "replaceHost": [
+          "https://raw.githubusercontent.com",
+          "https://raw.github.com"
+        ],
+        "host": "https://raw.github.cnpmjs.org"
+      },
+      "zopflipng-bin": {
+        "replaceHost": [
+          "https://raw.githubusercontent.com",
+          "https://raw.github.com"
+        ],
+        "host": "https://raw.github.cnpmjs.org"
+      },
+      "optipng-bin": {
+        "replaceHost": [
+          "https://raw.githubusercontent.com",
+          "https://raw.github.com"
+        ],
+        "host": "https://raw.github.cnpmjs.org"
+      },
+      "mozjpeg": {
+        "replaceHost": [
+          "https://raw.githubusercontent.com",
+          "https://raw.github.com"
+        ],
+        "host": "https://raw.github.cnpmjs.org"
+      },
+      "gifsicle": {
+        "replaceHost": [
+          "https://raw.githubusercontent.com",
+          "https://raw.github.com"
+        ],
+        "host": "https://raw.github.cnpmjs.org"
+      },
+      "pngquant-bin": {
+        "replaceHost": [
+          "https://raw.githubusercontent.com",
+          "https://raw.github.com"
+        ],
+        "host": "https://raw.github.cnpmjs.org",
+        "replaceHostMap": {
+          "https://raw.githubusercontent.com": "https://raw.github.cnpmjs.org",
+          "https://raw.github.com": "https://raw.github.cnpmjs.org",
+          "https://github.com": "https://github.com.cnpmjs.org"
+        }
+      },
+      "pngcrush-bin": {
+        "replaceHost": [
+          "https://raw.githubusercontent.com",
+          "https://raw.github.com"
+        ],
+        "host": "https://raw.github.cnpmjs.org"
+      },
+      "jpeg-recompress-bin": {
+        "replaceHost": [
+          "https://raw.githubusercontent.com",
+          "https://raw.github.com"
+        ],
+        "host": "https://raw.github.cnpmjs.org"
+      },
+      "advpng-bin": {
+        "replaceHost": [
+          "https://raw.githubusercontent.com",
+          "https://raw.github.com"
+        ],
+        "host": "https://raw.github.cnpmjs.org"
+      },
+      "pngout-bin": {
+        "replaceHost": [
+          "https://raw.githubusercontent.com",
+          "https://raw.github.com"
+        ],
+        "host": "https://raw.github.cnpmjs.org"
+      },
+      "jpegoptim-bin": {
+        "replaceHost": [
+          "https://raw.githubusercontent.com",
+          "https://raw.github.com"
+        ],
+        "host": "https://raw.github.cnpmjs.org"
+      }
+    }
+  },
+  "contributors": [
+    {
+      "name": "fengmk2",
+      "email": "m@fengmk2.com",
+      "url": "https://fengmk2.com"
+    }
+  ],
+  "gitHead": "bba1ad97e726a26027278bab42a000a65732d507",
+  "_npmVersion": "5.5.1",
+  "_nodeVersion": "8.4.0",
+  "dist": {
+    "integrity": "sha512-aZf3inIYvj4sN+mjYJO5JIWvkLBWf9p+726+Bk64rXC+JYqFlTbY4chk4JkuPw4sG2jykmHp81GcZ2oSWjMcow==",
+    "shasum": "3e1ce067be1354d7464e77d4ac9212796b3403e7",
+    "tarball": "https://registry.npmjs.org/binary-mirror-config/-/binary-mirror-config-1.9.0.tgz",
+    "fileCount": 5,
+    "unpackedSize": 11410,
+    "npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJa60MhCRA9TVsSAnZWagAAipAQAJFWY6JenKDDT0qUlHyb\nfNNoUMrH3Qk6bptsmcYTSKi8Pj0Btm5XpmGKS7Gpf7cxxkcI0yCVqhRjUWa6\nf2UrNd5etP9+tbVKRvZEhfomsKu+dZrUz5WKgnJIDpLRn7fS8i0AhnRANlWW\n/katx7WHfwTGDFg4ceZmCsvLkfjQj0I2U0R98t8PWRks6fnxxeseIoV8dgp5\n7eecxa9wWP6KlIugKhwiAfNz39+lsBbGvVpQgSJeeH4G6Yj2Hcik65jH+3wJ\nrkaVH1uF5lBmbl9ptSjLvL78YUBTQWiToXMd4Rf2tPQIb1IDk5nMc0G37waK\nbeqd5mytOrVMC/mkOIi78qpyLWh1DI5LHTAw3Y1uSaPhGHYQIIT+pk3FxsNk\nVO2lXv7Ajzk9yjGGXPcpttcIWbAULTbHANRIMwzbXOxRlT87BRNKk7JzTmuw\nNFu/4KKYXoOdD2xCUUMSymf7FKtRtRyaCxFS3N/tVFNItK+XOK/m+OjgYBjJ\nQtoUoXb934nu8pX/+ZtHF7sRbSetc384JsyoXdGQynW+xGG343J2iPSWTO/I\n04+wMHirdgLiW8foL6Dip8Ue/qy7mI0201doTXgHA0gXg6afB6sDyOEFt9w2\nvUgbcVNGCGn6UrYoz8g81g/j3IgIE3Luureb+5Xeoc6hNIsjX4+4EtKBVxT0\nIqX5\r\n=cMW0\r\n-----END PGP SIGNATURE-----\r\n"
+  },
+  "_hasShrinkwrap": false,
+  "versions": [
+    {
+      "number": "1.0.0",
+      "date": "2016-03-09T03:25:39.774Z"
+    },
+    {
+      "number": "1.0.1",
+      "date": "2016-03-09T14:03:19.116Z"
+    },
+    {
+      "number": "1.0.2",
+      "date": "2016-03-09T14:55:06.381Z"
+    },
+    {
+      "number": "1.0.3",
+      "date": "2016-04-14T09:22:39.870Z"
+    },
+    {
+      "number": "1.0.4",
+      "date": "2016-04-14T09:37:33.496Z"
+    },
+    {
+      "number": "1.1.0",
+      "date": "2016-05-29T12:46:56.016Z"
+    },
+    {
+      "number": "1.2.0",
+      "date": "2016-10-27T13:55:01.969Z"
+    },
+    {
+      "number": "1.3.0",
+      "date": "2016-11-02T09:06:28.897Z"
+    },
+    {
+      "number": "1.4.0",
+      "date": "2016-11-29T18:59:03.513Z"
+    },
+    {
+      "number": "1.5.0",
+      "date": "2017-03-29T04:18:21.338Z"
+    },
+    {
+      "number": "1.6.0",
+      "date": "2017-10-24T16:28:29.180Z"
+    },
+    {
+      "number": "1.7.0",
+      "date": "2017-11-03T07:13:37.517Z"
+    },
+    {
+      "number": "1.7.1",
+      "date": "2017-11-17T18:20:09.563Z"
+    },
+    {
+      "number": "1.7.2",
+      "date": "2017-12-25T14:42:47.542Z"
+    },
+    {
+      "number": "1.7.3",
+      "date": "2017-12-25T14:43:23.690Z"
+    },
+    {
+      "number": "1.8.0",
+      "date": "2018-04-08T09:15:59.908Z"
+    },
+    {
+      "number": "1.9.0",
+      "date": "2018-05-03T17:13:03.900Z"
+    }
+  ],
+  "created": "2016-03-09T03:25:39.774Z",
+  "modified": "2018-05-03T17:13:07.498Z",
+  "lastPublisher": {
+    "name": "fengmk2",
+    "email": "fengmk2@gmail.com"
+  },
+  "owners": [
+    {
+      "name": "fengmk2",
+      "email": "fengmk2@gmail.com"
+    }
+  ]
+}

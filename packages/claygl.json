@@ -1,0 +1,132 @@
+{
+  "name": "claygl",
+  "version": "1.2.1",
+  "description": "WebGL graphic library",
+  "keywords": [
+    "graphic",
+    "webgl"
+  ],
+  "author": {
+    "name": "Yi Shen",
+    "url": "https://github.com/pissang"
+  },
+  "jsnext:main": "dist/claygl.es.js",
+  "module": "src/claygl.js",
+  "main": "dist/claygl.js",
+  "types": "index.d.ts",
+  "sideEffects": false,
+  "scripts": {
+    "build": "npm run glsl2js && npm run gen:entry && rollup -c && uglifyjs dist/claygl.js -c -m > dist/claygl.min.js",
+    "build:sourcemap": "npm run gen:entry && rollup --sourcemap inline -c",
+    "dev": "rollup --sourcemap inline -c -w",
+    "glsl2js": "node build/glsl2js.js",
+    "gen:entry": "node build/genentry.js",
+    "gen:fixture": "npm run pretest && electron-mocha --require-main \"./test/genfixture-env.js\" --renderer \"./test/integration/**/*.spec.js\"",
+    "prepublish": "npm run build",
+    "debug": "npm run pretest && electron-mocha --debug-brk --renderer \"./test/**/*.spec.js\"",
+    "instrument": "istanbul instrument ./dist/claygl.src.js --output ./dist/claygl.js --no-compact --complete-copy --es-modules",
+    "pretest": "npm run build:sourcemap",
+    "tdd": "npm run pretest && electron-mocha --interactive --renderer \"./test/**/*.spec.js\"",
+    "test:cov": "npm run pretest -- test/rollup.config.js && npm run instrument && npm run test:main -- -R test/reporter/istanbul-reporter && remap-istanbul -i coverage/coverage-final.json -o coverage/html-report -t html && node -e \"require('fs').unlinkSync('./dist/claygl.src.js')\"",
+    "test:fixture": "npm run pretest && electron-mocha --require-main ./test/ci-env.js --renderer \"./test/integration/**/*.spec.js\" -R test/reporter/fixture-reporter",
+    "test:main": "electron-mocha --require-main ./test/ci-env.js --renderer \"./test/**/*.spec.js\"",
+    "test": "npm run test:main"
+  },
+  "repository": {
+    "user": "pissang",
+    "repo": "claygl",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/pissang/claygl/tarball/master",
+    "clone_url": "https://github.com/pissang/claygl",
+    "https_url": "https://github.com/pissang/claygl",
+    "travis_url": "https://travis-ci.org/pissang/claygl",
+    "zip_url": "https://github.com/pissang/claygl/archive/master.zip",
+    "api_url": "https://api.github.com/repos/pissang/claygl"
+  },
+  "devDependencies": {
+    "electron": "1.7.9",
+    "electron-mocha": "^4.0.3",
+    "glob": "^7.0.0",
+    "istanbul": "^1.1.0-alpha.1",
+    "minami": "^1.2.3",
+    "mocha": "^4.0.1",
+    "remap-istanbul": "^0.9.5",
+    "rollup": "^0.49.3",
+    "rollup-plugin-commonjs": "^8.2.6",
+    "rollup-watch": "^4.3.1"
+  },
+  "dependencies": {},
+  "gitHead": "b0239d39fc7bb2024d43d5ddc84f8e0231ae78e1",
+  "homepage": "https://github.com/pissang/claygl#readme",
+  "_npmVersion": "5.4.2",
+  "_nodeVersion": "8.5.0",
+  "dist": {
+    "integrity": "sha512-rjISL/0wgNxIIooprQiBucJbPS1fUrDOvpq+sEqd/qGmRlxo62x/GBtz6P3ZF3eAOeZyyWOvwSlCSBRLNHa/og==",
+    "shasum": "692641935c45ca825cd3e6ceb8eeadd3bad019df",
+    "tarball": "https://registry.npmjs.org/claygl/-/claygl-1.2.1.tgz",
+    "fileCount": 536,
+    "unpackedSize": 10788835,
+    "npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJa6ZjACRA9TVsSAnZWagAAdbIP/0EdKgtVYka+4UcOJP/5\nzQ+t8Y1wN7rXD7nNsCkVZ5eWC6OWP4mgs/2KP4CgFkH57RyxtRSRrGic7oSX\nYhNWQ+kwpH916uTjeOM2yM1s0k4eUngwKijevSItfk38jYLRDwKJPkNFrWVX\ndtoBTpQgYStm5CDwGosIA6QQboiYoPKeA96aJayAV+/PRcqtxQrYfkqrt29n\nqQqTaw2ns9OwkyHqLcHJpiETu9HiLZGKAoCMktLxbzRvCeNtpeQkXBqyM1jq\nhddvlbSjIxWKEXINR/p6PnQKPU5O+x4p73oCVqWEJaAbG1xqK5+AWiD0nNp+\noNdNjWZRwxIDlcyYIjJEpCoGVTcXRAnL3X+Ig4Wm9EAMmIA2jdmYhIMWeKC9\nwZ3v64zJrE7kvQC4gTENk3TQfvwPQdEjaXrO/Gj1jhQVHTEXDSxe0AYobCFm\ngseReECa+vutvFVUDyGf4OmXVGjfXx/6Aso4KpwPQAeNZFtXhRC7P/0GAgpG\nStrBdRnjo+l9YkOilvsHznoYrVAP3pUGNtViZvV6kHUIGQO679ovp1Zt16Vk\ndQhepXQm/e73g36DeLzm6+dzJrH7pdPk22xtHQ+K06o6vbGJ9Y7btUd6EJvU\nV6olCgviLxbLf9/djAQEoAgPd4a+rkIBTixQ+6ScWBXzCwavElgAa7naJOHg\nBnft\r\n=o06z\r\n-----END PGP SIGNATURE-----\r\n"
+  },
+  "_hasShrinkwrap": false,
+  "versions": [
+    {
+      "number": "1.0.0",
+      "date": "2018-01-16T03:07:15.316Z"
+    },
+    {
+      "number": "1.0.1",
+      "date": "2018-01-23T07:31:50.869Z"
+    },
+    {
+      "number": "1.0.2",
+      "date": "2018-01-24T04:39:31.017Z"
+    },
+    {
+      "number": "1.0.3",
+      "date": "2018-01-30T09:25:18.342Z"
+    },
+    {
+      "number": "1.1.0",
+      "date": "2018-02-28T06:53:30.907Z"
+    },
+    {
+      "number": "1.1.1",
+      "date": "2018-03-12T10:00:00.942Z"
+    },
+    {
+      "number": "1.1.2",
+      "date": "2018-03-26T12:17:47.953Z"
+    },
+    {
+      "number": "1.1.3",
+      "date": "2018-03-28T14:50:08.292Z"
+    },
+    {
+      "number": "1.1.4",
+      "date": "2018-03-29T03:23:19.293Z"
+    },
+    {
+      "number": "1.2.0",
+      "date": "2018-03-30T14:05:16.909Z"
+    },
+    {
+      "number": "1.2.1",
+      "date": "2018-05-02T10:53:51.039Z"
+    }
+  ],
+  "created": "2018-01-16T03:07:15.316Z",
+  "modified": "2018-05-02T10:53:55.556Z",
+  "lastPublisher": {
+    "name": "lang",
+    "email": "shenyi.914@gmail.com"
+  },
+  "owners": [
+    {
+      "name": "lang",
+      "email": "shenyi.914@gmail.com"
+    }
+  ]
+}

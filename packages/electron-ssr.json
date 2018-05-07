@@ -1,0 +1,130 @@
+{
+  "name": "electron-ssr",
+  "version": "0.2.0-beta-1",
+  "author": {
+    "name": "erguotou",
+    "email": "erguotou525@gmail.com"
+  },
+  "description": "Cross platform ShadowsocksR GUI client built with electron",
+  "homepage": "https://github.com/erguotou520/electron-ssr/",
+  "license": "MIT",
+  "repository": {
+    "user": "erguotou520",
+    "repo": "electron-ssr",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/erguotou520/electron-ssr/tarball/master",
+    "clone_url": "https://github.com/erguotou520/electron-ssr",
+    "https_url": "https://github.com/erguotou520/electron-ssr",
+    "travis_url": "https://travis-ci.org/erguotou520/electron-ssr",
+    "zip_url": "https://github.com/erguotou520/electron-ssr/archive/master.zip",
+    "api_url": "https://api.github.com/repos/erguotou520/electron-ssr"
+  },
+  "main": "./dist/electron/main.js",
+  "scripts": {
+    "build": "node .electron-vue/build.js",
+    "build:dir": "cross-env DIR=true node .electron-vue/build.js",
+    "build:clean": "cross-env BUILD_TARGET=clean node .electron-vue/build.js",
+    "build:web": "cross-env BUILD_TARGET=web node .electron-vue/build.js",
+    "dev": "node .electron-vue/dev-runner.js –debug-brk=5858",
+    "lint": "eslint --ext .js,.vue -f ./node_modules/eslint-friendly-formatter src test",
+    "lint:fix": "eslint --ext .js,.vue -f ./node_modules/eslint-friendly-formatter --fix src test",
+    "pack": "npm run pack:main && npm run pack:renderer",
+    "pack:main": "cross-env NODE_ENV=production webpack --progress --colors --config .electron-vue/webpack.main.config.js",
+    "pack:renderer": "cross-env NODE_ENV=production webpack --progress --colors --config .electron-vue/webpack.renderer.config.js",
+    "test": "npm run unit",
+    "unit": "karma start test/unit/karma.conf.js"
+  },
+  "dependencies": {
+    "auto-launch": "^5.0.5",
+    "download-git-repo": "^1.0.1",
+    "electron-updater": "^2.20.1",
+    "erguotou-iview": "^2.8.1-alpha-2",
+    "fs-extra": "^5.0.0",
+    "http-shutdown": "^1.2.0",
+    "lodash.debounce": "^4.0.8",
+    "qr-image": "^3.2.0",
+    "raven": "^2.3.0",
+    "raven-js": "^3.22.1",
+    "rxjs": "^5.5.5",
+    "simple-web-proxy": "^0.1.0",
+    "sudo-prompt": "^8.1.0",
+    "tree-kill": "^1.2.0",
+    "urlsafe-base64": "^1.0.0",
+    "vue": "^2.3.3",
+    "vuex": "^3.0.1"
+  },
+  "devDependencies": {
+    "babel-core": "^6.25.0",
+    "babel-eslint": "^7.2.3",
+    "babel-loader": "^7.1.1",
+    "babel-plugin-import": "^1.6.3",
+    "babel-plugin-transform-runtime": "^6.23.0",
+    "babel-preset-env": "^1.6.0",
+    "babel-preset-stage-0": "^6.24.1",
+    "babel-register": "^6.24.1",
+    "babili-webpack-plugin": "^0.1.2",
+    "cfonts": "^1.1.3",
+    "chai": "^4.0.0",
+    "chalk": "^2.1.0",
+    "copy-webpack-plugin": "^4.0.1",
+    "cross-env": "^5.0.5",
+    "css-loader": "^0.28.4",
+    "del": "^3.0.0",
+    "devtron": "^1.4.0",
+    "electron": "^1.7.10",
+    "electron-builder": "^19.19.1",
+    "electron-debug": "^1.4.0",
+    "electron-devtools-installer": "^2.2.0",
+    "eslint": "^4.4.1",
+    "eslint-friendly-formatter": "^3.0.0",
+    "eslint-loader": "^1.9.0",
+    "eslint-plugin-html": "^3.1.1",
+    "eslint-plugin-vue-libs": "^2.0.1",
+    "extract-text-webpack-plugin": "^3.0.0",
+    "file-loader": "^0.11.2",
+    "html-webpack-plugin": "^2.30.1",
+    "mocha": "^3.0.2",
+    "multispinner": "^0.2.1",
+    "node-loader": "^0.6.0",
+    "style-loader": "^0.18.2",
+    "stylus": "^0.54.5",
+    "stylus-loader": "^3.0.1",
+    "tracer": "^0.8.11",
+    "url-loader": "^0.5.9",
+    "vue-html-loader": "^1.2.4",
+    "vue-loader": "^13.0.5",
+    "vue-style-loader": "^3.0.1",
+    "vue-template-compiler": "^2.4.2",
+    "webpack": "^3.5.2",
+    "webpack-dev-server": "^2.7.1",
+    "webpack-hot-middleware": "^2.18.2",
+    "webpack-merge": "^4.1.0"
+  },
+  "gitHead": "525de8013f5e21dcdb4a43889fc8658143546425",
+  "_npmVersion": "3.10.10",
+  "_nodeVersion": "8.9.4",
+  "dist": {
+    "shasum": "ad87de38b0e974c447f3f08bb279aac65875e455",
+    "tarball": "https://registry.npmjs.org/electron-ssr/-/electron-ssr-0.2.0-beta-1.tgz"
+  },
+  "versions": [
+    {
+      "number": "0.2.0-beta-1",
+      "date": "2018-01-30T09:07:42.690Z"
+    }
+  ],
+  "created": "2018-01-30T09:07:42.690Z",
+  "modified": "2018-01-30T09:07:42.690Z",
+  "lastPublisher": {
+    "name": "erguotou525",
+    "email": "erguotou525@gmail.com"
+  },
+  "owners": [
+    {
+      "name": "erguotou525",
+      "email": "erguotou525@gmail.com"
+    }
+  ]
+}

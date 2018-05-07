@@ -1,0 +1,115 @@
+{
+  "name": "cnchess",
+  "version": "1.0.1",
+  "description": "Chinese Chess Program",
+  "repository": {
+    "type": "git",
+    "url": "git@gitee.com:thor.qin/chess-js.git"
+  },
+  "main": "src/main.js",
+  "scripts": {
+    "start": "electron-forge start",
+    "package": "electron-forge package",
+    "make": "electron-forge make"
+  },
+  "keywords": [
+    "Electron",
+    "chess",
+    "chinese"
+  ],
+  "author": {
+    "name": "Thor Qin"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "ccengine": "^1.0.3",
+    "electron-compile": "^6.4.2",
+    "electron-squirrel-startup": "^1.0.0"
+  },
+  "cmake-js": {
+    "runtime": "electron",
+    "runtimeVersion": "1.8.2",
+    "arch": "x64"
+  },
+  "devDependencies": {
+    "babel-plugin-transform-async-to-generator": "^6.24.1",
+    "babel-preset-env": "^1.6.1",
+    "babel-preset-react": "^6.24.1",
+    "electron-forge": "^5.1.1",
+    "electron-prebuilt-compile": "1.8.2"
+  },
+  "config": {
+    "forge": {
+      "make_targets": {
+        "win32": [
+          "zip"
+        ],
+        "darwin": [
+          "zip"
+        ],
+        "linux": [
+          "deb",
+          "rpm"
+        ]
+      },
+      "electronPackagerConfig": {
+        "packageManager": "npm",
+        "asar": true,
+        "icon": "icon/chess",
+        "prune": true,
+        "ignore": "\\.vscode"
+      },
+      "electronWinstallerConfig": {
+        "name": "cnchess"
+      },
+      "electronWixMSIConfig": {
+        "name": "cnchess",
+        "version": "1.0.0",
+        "description": "A simple Chinese chess game.",
+        "exe": "cnchess-setup"
+      },
+      "electronInstallerDebian": {},
+      "electronInstallerRedhat": {},
+      "github_repository": {
+        "owner": "",
+        "name": ""
+      },
+      "windowsStoreConfig": {
+        "packageName": "",
+        "name": "cnchess"
+      }
+    }
+  },
+  "_npmVersion": "5.8.0",
+  "_nodeVersion": "8.6.0",
+  "dist": {
+    "integrity": "sha512-2JYwV4SS3IdCGwFT1sZ1uXI94Q2vOuLkB18mxhMphbVMMW3ttHKuOqKh2aqMGPtoZWzyqNUxDDL/vDAWb+kCQA==",
+    "shasum": "84efec49e60446747dd172201848765c2d2b271c",
+    "tarball": "http://registry.npmjs.org/cnchess/-/cnchess-1.0.1.tgz",
+    "fileCount": 18,
+    "unpackedSize": 1301805
+  },
+  "_hasShrinkwrap": false,
+  "versions": [
+    {
+      "number": "1.0.0",
+      "date": "2018-03-31T16:42:32.737Z"
+    },
+    {
+      "number": "1.0.1",
+      "date": "2018-04-02T08:11:10.423Z"
+    }
+  ],
+  "created": "2018-03-31T16:42:32.550Z",
+  "modified": "2018-04-02T08:11:10.852Z",
+  "lastPublisher": {
+    "name": "thor.qin",
+    "email": "thor.qin@outlook.com"
+  },
+  "owners": [
+    {
+      "name": "thor.qin",
+      "email": "thor.qin@outlook.com"
+    }
+  ]
+}

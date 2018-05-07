@@ -1,0 +1,495 @@
+{
+  "name": "remotedev-app",
+  "version": "0.10.8",
+  "description": "Remote Redux DevTools web, electron and chrome app.",
+  "scripts": {
+    "start": "gulp",
+    "start:electron": "rm -rf ./build/electron/ && gulp build:electron && electron ./build/electron/",
+    "build:electron": "rm -rf ./build/electron/ && rm -rf ./build/executables/ && gulp build:electron && gulp pack:electron",
+    "build:web": "gulp build:web",
+    "build:app": "gulp build:app",
+    "build:umd": "gulp build:umd",
+    "build:umd:min": "NODE_ENV=production gulp build:umd",
+    "compress:electron": "npm run build:electron && gulp compress:electron",
+    "compress:app": "npm run build:app && gulp compress:app",
+    "clean": "rm -rf build/ && rm -rf dev/",
+    "build": "rm -rf ./lib && babel ./src/app --out-dir lib",
+    "prepublish": "eslint ./src/app && npm run test && npm run build && npm run build:umd && npm run build:umd:min",
+    "lint": "eslint .",
+    "test": "NODE_ENV=test jest --no-cache"
+  },
+  "main": "lib/index.js",
+  "files": [
+    "lib",
+    "dist"
+  ],
+  "jest": {
+    "moduleNameMapper": {
+      "\\.(css|scss)$": "<rootDir>/test/__mocks__/styleMock.js"
+    }
+  },
+  "repository": {
+    "user": "zalmoxisus",
+    "repo": "remotedev-app",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/zalmoxisus/remotedev-app/tarball/master",
+    "clone_url": "https://github.com/zalmoxisus/remotedev-app",
+    "https_url": "https://github.com/zalmoxisus/remotedev-app",
+    "travis_url": "https://travis-ci.org/zalmoxisus/remotedev-app",
+    "zip_url": "https://github.com/zalmoxisus/remotedev-app/archive/master.zip",
+    "api_url": "https://api.github.com/repos/zalmoxisus/remotedev-app"
+  },
+  "homepage": "https://github.com/zalmoxisus/remotedev-app",
+  "keywords": [
+    "react",
+    "redux",
+    "devtools"
+  ],
+  "author": {
+    "name": "Mihail Diordiev",
+    "email": "zalmoxisus@gmail.com",
+    "url": "https://github.com/zalmoxisus"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "babel-cli": "^6.3.15",
+    "babel-core": "^6.3.26",
+    "babel-eslint": "^5.0.0-beta6",
+    "babel-loader": "^6.2.0",
+    "babel-plugin-add-module-exports": "^0.2.1",
+    "babel-plugin-react-transform": "^2.0.0",
+    "babel-plugin-transform-decorators-legacy": "^1.3.4",
+    "babel-polyfill": "^6.3.14",
+    "babel-preset-es2015": "^6.3.13",
+    "babel-preset-react": "^6.3.13",
+    "babel-preset-stage-0": "^6.3.13",
+    "chromedriver": "^2.20.0",
+    "del": "^2.2.0",
+    "electron": "^1.4.5",
+    "electron-builder": "^2.5.0",
+    "electron-debug": "^1.1.0",
+    "electron-packager": "^8.2.0",
+    "enzyme": "^2.6.0",
+    "enzyme-to-json": "^1.3.0",
+    "eslint": "^1.10.3",
+    "eslint-config-airbnb": "^2.1.1",
+    "eslint-plugin-react": "^3.11.3",
+    "gulp": "^3.9.1",
+    "gulp-pug": "^3.1.0",
+    "gulp-rename": "^1.2.2",
+    "gulp-util": "^3.0.7",
+    "gulp-zip": "^3.0.2",
+    "jest": "^17.0.3",
+    "mock-local-storage": "^1.0.2",
+    "raw-loader": "^0.5.1",
+    "react": "^15.4.0",
+    "react-addons-test-utils": "^15.4.0",
+    "react-dom": "^15.4.0",
+    "react-transform-catch-errors": "^1.0.0",
+    "react-transform-hmr": "^1.0.1",
+    "redbox-react": "^1.2.0",
+    "redux-immutable-state-invariant": "^1.2.0",
+    "redux-logger": "^2.2.1",
+    "require-dir": "^0.3.0",
+    "selenium-webdriver": "^2.48.2",
+    "style-loader": "^0.13.0",
+    "webpack": "^1.13.0",
+    "webpack-dev-server": "^1.14.1",
+    "webpack-hot-middleware": "^2.10.0"
+  },
+  "dependencies": {
+    "chrome-storage-local": "^0.1.6",
+    "d3-state-visualizer": "^1.3.1",
+    "javascript-stringify": "^1.5.0",
+    "jsan": "^3.1.2",
+    "jsondiffpatch": "^0.2.4",
+    "lodash": "^4.0.0",
+    "material-ui": "0.16.4",
+    "react-icons": "^2.2.1",
+    "react-redux": "^4.0.6",
+    "react-switcher": "^1.0.2",
+    "react-tap-event-plugin": "^2.0.1",
+    "redux": "^3.0.5",
+    "redux-devtools": "^3.0.0",
+    "redux-devtools-chart-monitor": "^1.6.1",
+    "redux-devtools-log-monitor": "^1.2.0",
+    "redux-devtools-test-generator": "^0.4.0",
+    "redux-devtools-themes": "^1.0.0",
+    "remotedev-inspector-monitor": "^0.10.2",
+    "remotedev-monitor-components": "^0.0.5",
+    "remotedev-slider": "1.1.3",
+    "socketcluster-client": "^5.5.0",
+    "styled-components": "^1.1.1"
+  },
+  "peerDependencies": {
+    "react": "^15.4.0",
+    "react-dom": "^15.4.0"
+  },
+  "gitHead": "b70c8ac681081aba2120ed94495d41706abc0f05",
+  "_npmVersion": "4.1.2",
+  "_nodeVersion": "7.7.3",
+  "dist": {
+    "shasum": "7cca9be39674993b81dd400fc094ff85c361c64e",
+    "tarball": "https://registry.npmjs.org/remotedev-app/-/remotedev-app-0.10.8.tgz"
+  },
+  "versions": [
+    {
+      "number": "0.0.1",
+      "date": "2016-01-10T09:59:15.003Z"
+    },
+    {
+      "number": "0.0.2",
+      "date": "2016-01-10T10:38:01.256Z"
+    },
+    {
+      "number": "0.0.3",
+      "date": "2016-01-10T11:01:44.892Z"
+    },
+    {
+      "number": "0.1.0-beta-1",
+      "date": "2016-01-13T17:51:07.079Z"
+    },
+    {
+      "number": "0.1.0",
+      "date": "2016-01-13T18:01:38.573Z"
+    },
+    {
+      "number": "0.1.1",
+      "date": "2016-01-14T15:14:59.376Z"
+    },
+    {
+      "number": "0.1.2",
+      "date": "2016-01-16T16:52:58.068Z"
+    },
+    {
+      "number": "0.2.0",
+      "date": "2016-01-20T11:27:51.204Z"
+    },
+    {
+      "number": "0.2.1",
+      "date": "2016-01-24T09:09:42.198Z"
+    },
+    {
+      "number": "0.2.2",
+      "date": "2016-01-27T11:56:42.152Z"
+    },
+    {
+      "number": "0.2.3",
+      "date": "2016-01-28T09:00:54.931Z"
+    },
+    {
+      "number": "0.2.4",
+      "date": "2016-01-31T17:08:37.006Z"
+    },
+    {
+      "number": "0.2.5",
+      "date": "2016-02-01T13:38:21.945Z"
+    },
+    {
+      "number": "0.2.6",
+      "date": "2016-02-03T18:31:24.561Z"
+    },
+    {
+      "number": "0.2.7",
+      "date": "2016-02-07T20:22:17.948Z"
+    },
+    {
+      "number": "0.2.8",
+      "date": "2016-02-09T18:10:16.497Z"
+    },
+    {
+      "number": "0.2.9",
+      "date": "2016-03-31T18:35:07.911Z"
+    },
+    {
+      "number": "0.3.0",
+      "date": "2016-04-07T10:18:14.177Z"
+    },
+    {
+      "number": "0.3.1",
+      "date": "2016-04-12T09:40:41.534Z"
+    },
+    {
+      "number": "0.3.2",
+      "date": "2016-04-12T19:07:12.070Z"
+    },
+    {
+      "number": "0.3.3",
+      "date": "2016-04-19T09:35:50.036Z"
+    },
+    {
+      "number": "0.3.4",
+      "date": "2016-04-20T18:52:44.677Z"
+    },
+    {
+      "number": "0.3.5",
+      "date": "2016-04-22T08:22:59.640Z"
+    },
+    {
+      "number": "0.3.6",
+      "date": "2016-04-23T14:37:24.091Z"
+    },
+    {
+      "number": "0.3.7",
+      "date": "2016-05-02T15:17:08.992Z"
+    },
+    {
+      "number": "0.3.8",
+      "date": "2016-05-03T19:05:45.937Z"
+    },
+    {
+      "number": "0.4.0-alpha-1",
+      "date": "2016-05-14T14:40:31.562Z"
+    },
+    {
+      "number": "0.4.0-alpha-2",
+      "date": "2016-05-14T15:43:37.297Z"
+    },
+    {
+      "number": "0.4.0",
+      "date": "2016-05-15T15:12:04.772Z"
+    },
+    {
+      "number": "0.4.1",
+      "date": "2016-05-22T10:28:13.132Z"
+    },
+    {
+      "number": "0.4.2",
+      "date": "2016-06-20T08:20:47.805Z"
+    },
+    {
+      "number": "0.5.0-alpha-1",
+      "date": "2016-06-30T09:05:21.805Z"
+    },
+    {
+      "number": "0.5.0-alpha-2",
+      "date": "2016-06-30T09:35:37.330Z"
+    },
+    {
+      "number": "0.5.0-beta-1",
+      "date": "2016-07-17T16:51:42.955Z"
+    },
+    {
+      "number": "0.5.0-beta-2",
+      "date": "2016-07-17T16:54:22.982Z"
+    },
+    {
+      "number": "0.5.0-beta-3",
+      "date": "2016-07-18T09:30:42.569Z"
+    },
+    {
+      "number": "0.5.0-beta-4",
+      "date": "2016-07-21T16:17:19.998Z"
+    },
+    {
+      "number": "0.5.0",
+      "date": "2016-07-21T16:40:48.924Z"
+    },
+    {
+      "number": "0.6.0-alpha-1",
+      "date": "2016-07-30T06:42:38.018Z"
+    },
+    {
+      "number": "0.6.0-alpha-2",
+      "date": "2016-07-31T16:48:30.122Z"
+    },
+    {
+      "number": "0.6.0-beta-1",
+      "date": "2016-08-01T08:13:53.567Z"
+    },
+    {
+      "number": "0.6.0",
+      "date": "2016-08-01T09:36:43.439Z"
+    },
+    {
+      "number": "0.6.1",
+      "date": "2016-08-05T11:05:17.483Z"
+    },
+    {
+      "number": "0.6.2-beta-1",
+      "date": "2016-08-13T12:58:29.793Z"
+    },
+    {
+      "number": "0.6.2",
+      "date": "2016-08-13T14:30:29.317Z"
+    },
+    {
+      "number": "0.6.3",
+      "date": "2016-08-13T16:18:18.480Z"
+    },
+    {
+      "number": "0.7.0",
+      "date": "2016-08-25T09:09:25.525Z"
+    },
+    {
+      "number": "0.8.0-beta",
+      "date": "2016-09-14T19:18:11.729Z"
+    },
+    {
+      "number": "0.8.0-beta-2",
+      "date": "2016-09-15T09:44:26.581Z"
+    },
+    {
+      "number": "0.8.0-alpha-1",
+      "date": "2016-09-22T13:14:23.675Z"
+    },
+    {
+      "number": "0.8.0-alpha-2",
+      "date": "2016-09-22T13:17:03.917Z"
+    },
+    {
+      "number": "0.8.0-beta-3",
+      "date": "2016-09-22T13:30:57.312Z"
+    },
+    {
+      "number": "0.8.0-beta-4",
+      "date": "2016-09-30T09:32:10.081Z"
+    },
+    {
+      "number": "0.8.0-beta-5",
+      "date": "2016-10-03T19:54:23.579Z"
+    },
+    {
+      "number": "0.8.0-beta-6",
+      "date": "2016-10-10T11:29:24.065Z"
+    },
+    {
+      "number": "0.8.0-beta-7",
+      "date": "2016-10-12T10:02:53.901Z"
+    },
+    {
+      "number": "0.8.0-beta-8",
+      "date": "2016-10-13T11:28:37.627Z"
+    },
+    {
+      "number": "0.8.0-beta-9",
+      "date": "2016-10-14T11:54:11.394Z"
+    },
+    {
+      "number": "0.8.0-beta-10",
+      "date": "2016-10-14T17:03:54.073Z"
+    },
+    {
+      "number": "0.8.0-beta-11",
+      "date": "2016-10-15T09:46:27.668Z"
+    },
+    {
+      "number": "0.8.0-beta-12",
+      "date": "2016-10-15T15:38:57.113Z"
+    },
+    {
+      "number": "0.8.0",
+      "date": "2016-10-19T10:33:16.152Z"
+    },
+    {
+      "number": "0.8.1",
+      "date": "2016-10-21T09:13:45.863Z"
+    },
+    {
+      "number": "0.8.2",
+      "date": "2016-10-21T09:28:34.901Z"
+    },
+    {
+      "number": "0.8.3",
+      "date": "2016-10-25T12:47:48.485Z"
+    },
+    {
+      "number": "0.9.0-beta",
+      "date": "2016-11-01T09:42:25.266Z"
+    },
+    {
+      "number": "0.8.4",
+      "date": "2016-11-03T18:38:38.736Z"
+    },
+    {
+      "number": "0.9.0",
+      "date": "2016-11-10T11:55:53.060Z"
+    },
+    {
+      "number": "0.10.0-beta",
+      "date": "2016-11-15T15:36:36.327Z"
+    },
+    {
+      "number": "0.10.0-beta-2",
+      "date": "2016-11-16T11:18:22.546Z"
+    },
+    {
+      "number": "0.10.0-beta-3",
+      "date": "2016-11-19T19:44:25.778Z"
+    },
+    {
+      "number": "0.10.0-beta-4",
+      "date": "2016-11-19T20:12:30.083Z"
+    },
+    {
+      "number": "0.10.0-beta-5",
+      "date": "2016-11-25T14:47:33.902Z"
+    },
+    {
+      "number": "0.10.0",
+      "date": "2016-11-25T15:17:59.614Z"
+    },
+    {
+      "number": "0.10.1",
+      "date": "2016-11-25T17:59:05.509Z"
+    },
+    {
+      "number": "0.10.2",
+      "date": "2016-12-02T14:16:04.649Z"
+    },
+    {
+      "number": "0.10.3",
+      "date": "2017-01-04T17:16:11.033Z"
+    },
+    {
+      "number": "0.10.4",
+      "date": "2017-01-10T13:50:55.209Z"
+    },
+    {
+      "number": "0.10.5",
+      "date": "2017-01-31T18:09:44.783Z"
+    },
+    {
+      "number": "0.10.6",
+      "date": "2017-02-02T18:58:20.064Z"
+    },
+    {
+      "number": "0.10.7",
+      "date": "2017-02-06T13:19:58.342Z"
+    },
+    {
+      "number": "0.11.0-0",
+      "date": "2017-03-29T08:22:39.357Z"
+    },
+    {
+      "number": "0.11.0-1",
+      "date": "2017-03-29T15:16:50.451Z"
+    },
+    {
+      "number": "0.11.0-2",
+      "date": "2017-03-29T15:28:30.148Z"
+    },
+    {
+      "number": "0.11.0-3",
+      "date": "2017-05-07T18:15:17.173Z"
+    },
+    {
+      "number": "0.10.8",
+      "date": "2017-05-27T13:27:32.198Z"
+    }
+  ],
+  "created": "2016-01-10T09:59:15.003Z",
+  "modified": "2017-05-27T13:27:32.198Z",
+  "lastPublisher": {
+    "name": "zalmoxisus",
+    "email": "zalmoxisus@gmail.com"
+  },
+  "owners": [
+    {
+      "name": "zalmoxisus",
+      "email": "zalmoxisus@gmail.com"
+    }
+  ]
+}

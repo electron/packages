@@ -1,0 +1,127 @@
+{
+  "name": "pstats.js",
+  "version": "1.3.2",
+  "description": "Visualizing and monitor your performance.",
+  "main": "dist/pstats.js",
+  "module": "index.js",
+  "jsnext:main": "index.js",
+  "scripts": {
+    "prepare": "npm run build",
+    "pretest": "npm run build:dev",
+    "build": "npm run build:dev && npm run build:min",
+    "build:dev": "rollup -c ./script/rollup.config.js",
+    "build:min": "uglifyjs ./dist/pstats.dev.js --mangle --source-map url=pstats.min.js.map -o ./dist/pstats.min.js",
+    "dev": "rollup -w -c ./script/rollup.config.js",
+    "start": "electron ./examples",
+    "server": "preview -p 8002 -e examples",
+    "test": "tap test/*.spec.js"
+  },
+  "repository": {
+    "user": "gamedev-js",
+    "repo": "pstats",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/gamedev-js/pstats/tarball/master",
+    "clone_url": "https://github.com/gamedev-js/pstats",
+    "https_url": "https://github.com/gamedev-js/pstats",
+    "travis_url": "https://travis-ci.org/gamedev-js/pstats",
+    "zip_url": "https://github.com/gamedev-js/pstats/archive/master.zip",
+    "api_url": "https://api.github.com/repos/gamedev-js/pstats"
+  },
+  "keywords": [
+    "stats"
+  ],
+  "author": {
+    "name": "jwu"
+  },
+  "license": "MIT",
+  "homepage": "https://github.com/gamedev-js/pstats/issues",
+  "dependencies": {
+    "lstats.js": "^1.2.4"
+  },
+  "devDependencies": {
+    "electron": "^1.7.3",
+    "fs-jetpack": "^0.13.0",
+    "preview-server": "^1.0.7",
+    "rollup": "^0.41.4",
+    "rollup-plugin-buble": "^0.15.0",
+    "rollup-watch": "^3.2.2",
+    "uglify-es": "^3.0.15"
+  },
+  "files": [
+    "dist",
+    "lib",
+    "index.js"
+  ],
+  "gitHead": "36c47325f322826afda6c037b9a8326789e586a0",
+  "_npmVersion": "5.0.3",
+  "_nodeVersion": "8.1.2",
+  "dist": {
+    "integrity": "sha512-1HTOD28xyUZkM2cVTGVX5TLlKEcqjTpi16BWZe2YT11Ry4D96t7eP8X2kYAzkfMhDf9j31vCp5IMAHiQNnNWLg==",
+    "shasum": "8282af664f3d8f2f4b4b4f3dedcada4091661f29",
+    "tarball": "https://registry.npmjs.org/pstats.js/-/pstats.js-1.3.2.tgz"
+  },
+  "versions": [
+    {
+      "number": "1.0.0",
+      "date": "2017-03-30T16:05:30.289Z"
+    },
+    {
+      "number": "1.1.0",
+      "date": "2017-03-31T10:28:08.208Z"
+    },
+    {
+      "number": "1.1.1",
+      "date": "2017-03-31T10:49:42.774Z"
+    },
+    {
+      "number": "1.2.0",
+      "date": "2017-04-01T08:11:29.464Z"
+    },
+    {
+      "number": "1.2.1",
+      "date": "2017-04-03T18:22:03.777Z"
+    },
+    {
+      "number": "1.2.2",
+      "date": "2017-04-06T07:45:08.581Z"
+    },
+    {
+      "number": "1.2.3",
+      "date": "2017-04-06T07:49:13.812Z"
+    },
+    {
+      "number": "1.2.5",
+      "date": "2017-04-06T11:28:22.516Z"
+    },
+    {
+      "number": "1.2.6",
+      "date": "2017-05-05T06:13:59.278Z"
+    },
+    {
+      "number": "1.3.0",
+      "date": "2017-06-05T08:17:48.558Z"
+    },
+    {
+      "number": "1.3.1",
+      "date": "2017-06-30T10:44:51.361Z"
+    },
+    {
+      "number": "1.3.2",
+      "date": "2017-07-12T07:15:47.537Z"
+    }
+  ],
+  "created": "2017-03-30T16:05:30.289Z",
+  "modified": "2017-07-12T07:15:47.537Z",
+  "lastPublisher": {
+    "name": "johnnywu",
+    "email": "KarasAya@gmail.com"
+  },
+  "owners": [
+    {
+      "name": "johnnywu",
+      "email": "KarasAya@gmail.com"
+    }
+  ]
+}

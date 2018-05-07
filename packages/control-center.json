@@ -1,0 +1,99 @@
+{
+  "name": "control-center",
+  "productName": "control-center",
+  "version": "0.0.2",
+  "description": "",
+  "license": "MIT",
+  "repository": {
+    "user": "parro-it",
+    "repo": "control-center",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/parro-it/control-center/tarball/master",
+    "clone_url": "https://github.com/parro-it/control-center",
+    "https_url": "https://github.com/parro-it/control-center",
+    "travis_url": "https://travis-ci.org/parro-it/control-center",
+    "zip_url": "https://github.com/parro-it/control-center/archive/master.zip",
+    "api_url": "https://api.github.com/repos/parro-it/control-center"
+  },
+  "author": {
+    "name": "parro-it"
+  },
+  "electronVersion": "0.36.4",
+  "bin": {
+    "c-c": "cli.js"
+  },
+  "scripts": {
+    "test": "eslint . || electron test | faucet",
+    "start": "electron main.js",
+    "package": "rm -f setup/${npm_package_productName}-${platform}-${arch}-${npm_package_version}.zip && electron-packager .  ${npm_package_productName} --platform=${platform} --arch=${arch} --version=${npm_package_electronVersion} --ignore='(setup|media|test|private|node_modules/electron-packager|node_modules/electron-prebuilt)' --overwrite --out=setup && cd setup/${npm_package_productName}-${platform}-${arch} && zip -ryXq9 ../${npm_package_productName}-${platform}-${arch}-${npm_package_version}.zip . && cd .. && rm -rf ${npm_package_productName}-${platform}-${arch}",
+    "package:darwin": "platform=darwin arch=x64 npm run package",
+    "package:linux:x64": "platform=linux arch=x64 npm run package",
+    "package:linux:ia32": "platform=linux arch=ia32 npm run package",
+    "package:win32:x64": "platform=win32 arch=x64 npm run package",
+    "package:win32:ia32": "platform=win32 arch=ia32 npm run package",
+    "package:all": "npm run package:darwin && npm run package:linux:x64 && npm run package:linux:ia32 && npm run package:win32:x64 && npm run package:win32:ia32"
+  },
+  "eslintConfig": {
+    "extends": "js",
+    "env": {
+      "node": true,
+      "browser": true,
+      "es6": true
+    }
+  },
+  "files": [
+    "index.js",
+    "index.html",
+    "index.css"
+  ],
+  "keywords": [
+    "electron-app",
+    "electron"
+  ],
+  "dependencies": {
+    "electron-localshortcut": "^0.6.0",
+    "electron-window": "^0.6.2",
+    "electron-window-state": "^2.0.0"
+  },
+  "devDependencies": {
+    "electron-debug": "^0.5.1",
+    "electron-packager": "^5.2.1",
+    "electron-rebuild": "^1.1.1",
+    "eslint": "^1.10.3",
+    "eslint-config-js": "^3.0.0",
+    "faucet": "0.0.1",
+    "tape": "^4.4.0"
+  },
+  "gitHead": "eaecdef0fb3c00375ccf89090633928926dbfa3e",
+  "homepage": "https://github.com/parro-it/control-center#readme",
+  "_npmVersion": "3.3.6",
+  "_nodeVersion": "5.0.0",
+  "dist": {
+    "shasum": "634e490cf10c0450e99c76932eae660496e0c227",
+    "tarball": "http://registry.npmjs.org/control-center/-/control-center-0.0.2.tgz"
+  },
+  "versions": [
+    {
+      "number": "0.0.1",
+      "date": "2016-01-22T15:42:33.036Z"
+    },
+    {
+      "number": "0.0.2",
+      "date": "2016-01-22T16:55:12.530Z"
+    }
+  ],
+  "created": "2016-01-22T15:42:33.036Z",
+  "modified": "2016-01-22T16:55:12.530Z",
+  "lastPublisher": {
+    "name": "parroit",
+    "email": "andrea.parodi@ebansoftware.net"
+  },
+  "owners": [
+    {
+      "name": "parroit",
+      "email": "andrea.parodi@ebansoftware.net"
+    }
+  ]
+}

@@ -1,0 +1,605 @@
+{
+  "name": "vscode-zap",
+  "displayName": "zap",
+  "description": "Real-time code synchronization",
+  "version": "1.0.11",
+  "publisher": "sourcegraph",
+  "preview": true,
+  "engines": {
+    "vscode": "^1.9.1",
+    "node": ">=4.0.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [
+    "*"
+  ],
+  "files": [
+    "out",
+    "src"
+  ],
+  "main": "./out/src/extension.vscode",
+  "scripts": {
+    "lint": "tslint --format verbose \"src/**/*.ts\"",
+    "vscode:prepublish": "tsc -p ./",
+    "compile": "tsc -p ./",
+    "watch": "tsc -w -p ./",
+    "postinstall": "bash -c '[[ $mystr != *\"sourcegraph.com/sourcegraph/sourcegraph\"* ]] && node ./node_modules/vscode/bin/install || echo skipping vscode extension installation because we are not running in vscode'",
+    "test": "node ./node_modules/vscode/bin/test",
+    "vscode-isolated": "yarn run compile && USER=dummy-dont-share-vscode-instance code --user-data-dir=$PWD/.vscode-dev/user-data --extensionHomePath=$PWD/.vscode-dev/extensions --extensionDevelopmentPath=$PWD $*",
+    "test-isolated": "TMPDIR=$PWD/.vscode-test; rm -rf \"$TMPDIR\"; mkdir -p $TMPDIR; ([ -n \"$SKIPCOMPILE\" ] || yarn run compile) && (USER=dummy-dont-share-vscode-instance NO_AT_BRIDGE=1 ELECTRON_ENABLE_LOGGING=0 xvfb-run -- code --disable-gpu --wait --verbose --user-data-dir=$TMPDIR/user-data --extensionHomePath=$TMPDIR/extensions --extensionDevelopmentPath=$PWD --extensionTestsPath=$PWD/out/test $PWD/test/testdata 2>&1) | tee $TMPDIR/output.log | grep -v /usr/share/code | grep -v original-fs.js && if grep -qi 'IPC#vscode:exit 1' $TMPDIR/output.log || grep -qi 'Command failed with exit code' $TMPDIR/output.log; then echo;echo FAIL;exit 1; else echo; echo PASS; fi"
+  },
+  "devDependencies": {
+    "@types/lodash": "^4.14.60",
+    "@types/mocha": "^2.2.33",
+    "@types/node": "^6.0.40",
+    "tslint": "^4.1.0",
+    "typescript": "^2.2.2",
+    "vscode": "^1.1.0"
+  },
+  "dependencies": {
+    "libzap": "^1.0.11",
+    "lodash": "^4.17.4",
+    "vscode-jsonrpc": "3.0.1-alpha.7"
+  },
+  "enableProposedApi": false,
+  "contributes": {
+    "configuration": {
+      "type": "object",
+      "title": "Zap configuration",
+      "properties": {
+        "zap.share.selections": {
+          "type": "boolean",
+          "default": true,
+          "description": "Share your current editor selections"
+        },
+        "zap.localServer.socketPath": {
+          "type": "string",
+          "default": "/tmp/zap-local-server",
+          "description": "Path to the Zap client's socket for editors to connect to"
+        },
+        "zap.executable": {
+          "type": "string",
+          "default": "zap",
+          "description": "Path to the `zap` executable (searches in $PATH)"
+        },
+        "zap._test": {
+          "type": "boolean",
+          "default": false,
+          "description": "(internal) used when running Zap's own tests"
+        }
+      }
+    },
+    "commands": [
+      {
+        "command": "zap.workspace.on",
+        "title": "Zap: Turn On in Workspace",
+        "description": "Start using Zap in this workspace."
+      },
+      {
+        "command": "zap.workspace.off",
+        "title": "Zap: Turn Off in Workspace",
+        "description": "Stop using Zap in this workspace."
+      },
+      {
+        "command": "zap.browser.openFile",
+        "title": "⚡ Open in Web Browser",
+        "description": "Opens the current file in your Web browser."
+      },
+      {
+        "command": "zap.browser.openCursor",
+        "title": "⚡ Open in Web Browser",
+        "description": "Opens the current file in your Web browser (at the cursor position)."
+      },
+      {
+        "command": "zap.browser.openWorkspace",
+        "title": "⚡ Open Workspace in Web Browser",
+        "description": "Opens the current workspace in your Web browser."
+      }
+    ],
+    "keybindings": [
+      {
+        "command": "zap.browser.openCursor",
+        "key": "alt+s",
+        "mac": "alt+s",
+        "when": "editorFocus"
+      }
+    ],
+    "menus": {
+      "explorer/context": [
+        {
+          "command": "zap.browser.openFile"
+        }
+      ],
+      "editor/context": [
+        {
+          "command": "zap.browser.openCursor",
+          "group": "navigation@2",
+          "when": "editorTextFocus"
+        }
+      ],
+      "editor/title": [
+        {
+          "command": "zap.browser.openFile"
+        }
+      ]
+    }
+  },
+  "_npmVersion": "4.5.0",
+  "_nodeVersion": "6.6.0",
+  "dist": {
+    "shasum": "5bd82c21ec3124b7dc9bc1c1180686324f1235a5",
+    "tarball": "https://registry.npmjs.org/vscode-zap/-/vscode-zap-1.0.11.tgz"
+  },
+  "versions": [
+    {
+      "number": "0.0.8",
+      "date": "2017-01-17T22:57:40.605Z"
+    },
+    {
+      "number": "0.0.1",
+      "date": "2017-01-17T23:13:45.537Z"
+    },
+    {
+      "number": "0.0.2",
+      "date": "2017-01-17T23:14:36.645Z"
+    },
+    {
+      "number": "0.0.3",
+      "date": "2017-01-17T23:14:51.175Z"
+    },
+    {
+      "number": "0.0.4",
+      "date": "2017-01-18T05:15:37.709Z"
+    },
+    {
+      "number": "0.0.5",
+      "date": "2017-01-18T05:17:06.983Z"
+    },
+    {
+      "number": "0.0.6",
+      "date": "2017-01-18T05:37:25.302Z"
+    },
+    {
+      "number": "0.0.7",
+      "date": "2017-01-18T05:45:23.705Z"
+    },
+    {
+      "number": "0.0.9",
+      "date": "2017-01-18T05:57:17.113Z"
+    },
+    {
+      "number": "0.0.10",
+      "date": "2017-01-18T06:08:35.766Z"
+    },
+    {
+      "number": "0.0.11",
+      "date": "2017-01-18T06:26:10.752Z"
+    },
+    {
+      "number": "0.0.12",
+      "date": "2017-01-18T06:29:01.904Z"
+    },
+    {
+      "number": "0.0.13",
+      "date": "2017-01-19T14:33:18.750Z"
+    },
+    {
+      "number": "0.0.14",
+      "date": "2017-01-29T20:49:55.535Z"
+    },
+    {
+      "number": "0.0.15",
+      "date": "2017-01-30T02:26:24.439Z"
+    },
+    {
+      "number": "0.0.16",
+      "date": "2017-02-01T22:23:49.787Z"
+    },
+    {
+      "number": "0.0.17",
+      "date": "2017-02-01T22:25:22.836Z"
+    },
+    {
+      "number": "0.0.18",
+      "date": "2017-02-01T22:26:02.492Z"
+    },
+    {
+      "number": "0.0.19",
+      "date": "2017-02-02T06:39:57.884Z"
+    },
+    {
+      "number": "0.0.21",
+      "date": "2017-02-02T06:54:45.449Z"
+    },
+    {
+      "number": "0.0.22",
+      "date": "2017-02-02T06:55:52.433Z"
+    },
+    {
+      "number": "0.0.23",
+      "date": "2017-02-02T06:56:59.882Z"
+    },
+    {
+      "number": "0.0.24",
+      "date": "2017-02-02T08:18:08.072Z"
+    },
+    {
+      "number": "0.0.25",
+      "date": "2017-02-02T09:19:17.496Z"
+    },
+    {
+      "number": "0.0.26",
+      "date": "2017-02-02T09:49:30.571Z"
+    },
+    {
+      "number": "0.0.27",
+      "date": "2017-02-02T10:32:49.008Z"
+    },
+    {
+      "number": "0.0.28",
+      "date": "2017-02-03T17:47:28.620Z"
+    },
+    {
+      "number": "0.0.29",
+      "date": "2017-02-06T07:41:41.732Z"
+    },
+    {
+      "number": "0.0.30",
+      "date": "2017-02-06T08:59:44.912Z"
+    },
+    {
+      "number": "0.0.31",
+      "date": "2017-02-07T09:51:33.934Z"
+    },
+    {
+      "number": "0.0.32",
+      "date": "2017-02-07T18:12:45.585Z"
+    },
+    {
+      "number": "0.0.33",
+      "date": "2017-02-08T01:17:29.116Z"
+    },
+    {
+      "number": "0.0.34",
+      "date": "2017-02-09T15:03:09.678Z"
+    },
+    {
+      "number": "0.0.35",
+      "date": "2017-02-10T09:02:12.300Z"
+    },
+    {
+      "number": "0.0.36",
+      "date": "2017-02-10T09:04:18.907Z"
+    },
+    {
+      "number": "0.0.37",
+      "date": "2017-02-13T14:16:53.449Z"
+    },
+    {
+      "number": "0.0.38",
+      "date": "2017-02-13T14:43:03.623Z"
+    },
+    {
+      "number": "0.0.39",
+      "date": "2017-02-14T03:59:19.570Z"
+    },
+    {
+      "number": "0.0.40",
+      "date": "2017-02-14T12:47:12.107Z"
+    },
+    {
+      "number": "0.0.41",
+      "date": "2017-02-14T13:18:19.583Z"
+    },
+    {
+      "number": "0.0.42",
+      "date": "2017-02-14T20:04:09.671Z"
+    },
+    {
+      "number": "0.0.43",
+      "date": "2017-02-15T08:31:33.371Z"
+    },
+    {
+      "number": "0.0.44",
+      "date": "2017-02-15T11:20:54.441Z"
+    },
+    {
+      "number": "0.0.45",
+      "date": "2017-02-17T10:46:46.016Z"
+    },
+    {
+      "number": "0.0.46",
+      "date": "2017-02-17T20:28:19.875Z"
+    },
+    {
+      "number": "0.0.47",
+      "date": "2017-02-18T06:24:52.391Z"
+    },
+    {
+      "number": "0.0.48",
+      "date": "2017-02-19T22:35:50.190Z"
+    },
+    {
+      "number": "0.0.49",
+      "date": "2017-02-20T11:07:24.802Z"
+    },
+    {
+      "number": "0.0.50",
+      "date": "2017-02-20T11:11:05.754Z"
+    },
+    {
+      "number": "0.0.51",
+      "date": "2017-02-20T12:18:24.169Z"
+    },
+    {
+      "number": "0.0.52",
+      "date": "2017-02-22T13:27:07.288Z"
+    },
+    {
+      "number": "0.0.53",
+      "date": "2017-02-23T05:11:27.405Z"
+    },
+    {
+      "number": "0.0.56",
+      "date": "2017-02-24T19:58:40.615Z"
+    },
+    {
+      "number": "0.0.57",
+      "date": "2017-02-25T00:32:08.552Z"
+    },
+    {
+      "number": "0.0.58",
+      "date": "2017-02-25T00:47:56.793Z"
+    },
+    {
+      "number": "0.0.59",
+      "date": "2017-02-27T06:19:44.626Z"
+    },
+    {
+      "number": "0.0.60",
+      "date": "2017-03-02T19:05:13.171Z"
+    },
+    {
+      "number": "0.0.61",
+      "date": "2017-03-02T19:18:20.782Z"
+    },
+    {
+      "number": "0.0.62",
+      "date": "2017-03-02T19:20:15.516Z"
+    },
+    {
+      "number": "0.0.63",
+      "date": "2017-03-02T20:38:55.655Z"
+    },
+    {
+      "number": "0.0.64",
+      "date": "2017-03-02T20:42:34.973Z"
+    },
+    {
+      "number": "0.0.65",
+      "date": "2017-03-02T20:43:56.318Z"
+    },
+    {
+      "number": "0.0.66",
+      "date": "2017-03-02T20:44:49.335Z"
+    },
+    {
+      "number": "0.0.67",
+      "date": "2017-03-03T04:10:34.552Z"
+    },
+    {
+      "number": "0.0.68",
+      "date": "2017-03-04T20:39:56.234Z"
+    },
+    {
+      "number": "0.0.70",
+      "date": "2017-03-06T19:56:46.283Z"
+    },
+    {
+      "number": "0.0.71",
+      "date": "2017-03-07T18:24:42.429Z"
+    },
+    {
+      "number": "0.0.72",
+      "date": "2017-03-07T18:44:55.843Z"
+    },
+    {
+      "number": "0.0.73",
+      "date": "2017-03-07T21:36:29.687Z"
+    },
+    {
+      "number": "0.0.74",
+      "date": "2017-03-08T04:58:09.503Z"
+    },
+    {
+      "number": "0.0.75",
+      "date": "2017-03-08T06:59:23.927Z"
+    },
+    {
+      "number": "0.0.76",
+      "date": "2017-03-08T20:05:43.266Z"
+    },
+    {
+      "number": "0.0.77",
+      "date": "2017-03-10T03:45:42.957Z"
+    },
+    {
+      "number": "0.0.78",
+      "date": "2017-03-10T06:04:57.162Z"
+    },
+    {
+      "number": "0.0.79",
+      "date": "2017-03-10T06:05:39.134Z"
+    },
+    {
+      "number": "0.0.80",
+      "date": "2017-03-15T00:52:33.988Z"
+    },
+    {
+      "number": "0.0.81",
+      "date": "2017-03-15T00:53:58.030Z"
+    },
+    {
+      "number": "0.0.83",
+      "date": "2017-03-16T00:39:02.638Z"
+    },
+    {
+      "number": "0.0.82",
+      "date": "2017-03-16T00:41:56.543Z"
+    },
+    {
+      "number": "0.0.84",
+      "date": "2017-03-17T00:16:21.461Z"
+    },
+    {
+      "number": "0.0.85",
+      "date": "2017-03-17T00:29:43.126Z"
+    },
+    {
+      "number": "0.0.86",
+      "date": "2017-03-17T05:47:30.751Z"
+    },
+    {
+      "number": "0.0.87",
+      "date": "2017-03-17T05:57:10.640Z"
+    },
+    {
+      "number": "0.0.88",
+      "date": "2017-03-21T14:55:07.032Z"
+    },
+    {
+      "number": "0.0.89",
+      "date": "2017-03-21T15:15:09.678Z"
+    },
+    {
+      "number": "0.0.90",
+      "date": "2017-03-21T17:23:07.837Z"
+    },
+    {
+      "number": "0.0.91",
+      "date": "2017-03-21T23:05:27.521Z"
+    },
+    {
+      "number": "0.0.92",
+      "date": "2017-03-22T02:31:30.327Z"
+    },
+    {
+      "number": "0.0.93",
+      "date": "2017-03-22T16:18:16.152Z"
+    },
+    {
+      "number": "0.0.94",
+      "date": "2017-03-22T17:03:09.101Z"
+    },
+    {
+      "number": "0.0.95",
+      "date": "2017-03-24T22:15:43.717Z"
+    },
+    {
+      "number": "0.0.96",
+      "date": "2017-03-24T22:23:25.560Z"
+    },
+    {
+      "number": "0.0.97",
+      "date": "2017-03-24T22:40:11.511Z"
+    },
+    {
+      "number": "0.0.98",
+      "date": "2017-03-29T22:15:09.099Z"
+    },
+    {
+      "number": "0.0.99",
+      "date": "2017-03-30T12:18:53.846Z"
+    },
+    {
+      "number": "0.0.100",
+      "date": "2017-03-30T18:08:43.615Z"
+    },
+    {
+      "number": "1.0.1",
+      "date": "2017-04-04T10:52:25.435Z"
+    },
+    {
+      "number": "1.0.2",
+      "date": "2017-04-09T00:56:04.833Z"
+    },
+    {
+      "number": "1.0.3",
+      "date": "2017-04-09T01:23:40.591Z"
+    },
+    {
+      "number": "1.0.4",
+      "date": "2017-04-14T02:12:43.041Z"
+    },
+    {
+      "number": "1.0.5",
+      "date": "2017-04-14T08:20:10.668Z"
+    },
+    {
+      "number": "1.0.6",
+      "date": "2017-04-18T04:04:25.749Z"
+    },
+    {
+      "number": "1.0.7",
+      "date": "2017-04-18T23:22:02.557Z"
+    },
+    {
+      "number": "1.0.8",
+      "date": "2017-04-18T23:36:36.134Z"
+    },
+    {
+      "number": "1.0.9",
+      "date": "2017-04-19T00:22:33.152Z"
+    },
+    {
+      "number": "1.0.10",
+      "date": "2017-04-24T21:25:44.801Z"
+    },
+    {
+      "number": "1.0.11",
+      "date": "2017-04-25T19:09:21.166Z"
+    }
+  ],
+  "created": "2017-01-17T22:57:40.605Z",
+  "modified": "2017-09-22T22:18:25.603Z",
+  "lastPublisher": {
+    "name": "renfredxh",
+    "email": "renfredxh@gmail.com"
+  },
+  "owners": [
+    {
+      "name": "keegancsmith",
+      "email": "keegan.csmith@gmail.com"
+    },
+    {
+      "name": "kingthematt",
+      "email": "king@sourcergaph.com"
+    },
+    {
+      "name": "lindax",
+      "email": "lindaxie93@gmail.com"
+    },
+    {
+      "name": "nicksnyder",
+      "email": "nickdsnyder@gmail.com"
+    },
+    {
+      "name": "renfredxh",
+      "email": "renfredxh@gmail.com"
+    },
+    {
+      "name": "rothfels",
+      "email": "john.rothfels@gmail.com"
+    },
+    {
+      "name": "slimsag",
+      "email": "stephen.gutekanst@gmail.com"
+    },
+    {
+      "name": "sqs",
+      "email": "sqs@sourcegraph.com"
+    }
+  ]
+}

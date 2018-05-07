@@ -1,0 +1,57 @@
+{
+  "name": "anghami",
+  "productName": "Anghami",
+  "version": "0.7.10",
+  "description": "Anghami Desktop Player",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron ./main.js",
+    "release-macos": "electron-packager ./ Anghami --platform=darwin --out=./release/macOS --arch=x64 --icon=./assets/icons/IconAnghami.icns --version=1.2.7 --app-version=0.7.7 --ignore=release --ignore=.vscode --overwrite",
+    "release-linux": "electron-packager ./ Anghami --platform=linux --arch=x64 --icon=./assets/icons/IconAnghami.icns --version=1.2.7 --app-version=0.7.7 --ignore=./release/windows-x64 --ignore=release --ignore=.vscode --overwrite",
+    "release-win64": "electron-packager ./ Anghami --platform=win32 --out=./release/windows-x64 --arch=x64 --icon=./assets/icons/IconAnghami.icns --version=1.2.7 --app-version=0.7.7 --version-string.CompanyName=Anghami --version-string.FileDescription='Anghami Desktop App' --version-string.OriginalFilename='Anghami Desktop App' --version-string.ProductName='Anghami Desktop App' --version-string.InternalName='Anghami Destkop App' --ignore=release --ignore=.vscode --overwrite",
+    "installer-macos": "appdmg appdmg.json ./release/installers/Anghami-Installer.dmg",
+    "deploy": "rsync -rvzhP --delete-after /Users/user/Sites/AnghamiWebPlayer/build/ pierre@52.19.168.163:/var/www/html/webdev9"
+  },
+  "keywords": [
+    "Anghami",
+    "Anghami Desktop Client"
+  ],
+  "devDependencies": {
+    "appdmg": "^0.4.5",
+    "electron-installer-dmg": "^0.1.1",
+    "electron-prebuilt": "^1.2.7"
+  },
+  "dependencies": {
+    "electron-plugins": "^0.1.0",
+    "electron-updater": "^0.3.1"
+  },
+  "gitHead": "29b0bbec7b9ea821634dd2d57deaa421c170c41b",
+  "_npmVersion": "3.5.3",
+  "_nodeVersion": "5.5.0",
+  "dist": {
+    "shasum": "cdb59a22eae134361b18e6c97c3f33c84a5275c2",
+    "tarball": "http://registry.npmjs.org/anghami/-/anghami-0.7.10.tgz"
+  },
+  "versions": [
+    {
+      "number": "0.7.7",
+      "date": "2016-07-27T07:13:59.847Z"
+    },
+    {
+      "number": "0.7.10",
+      "date": "2016-07-27T09:14:53.476Z"
+    }
+  ],
+  "created": "2016-07-27T07:13:59.847Z",
+  "modified": "2016-07-27T09:14:53.476Z",
+  "lastPublisher": {
+    "name": "pk2122",
+    "email": "pierresraii@gmail.com"
+  },
+  "owners": [
+    {
+      "name": "pk2122",
+      "email": "pierresraii@gmail.com"
+    }
+  ]
+}

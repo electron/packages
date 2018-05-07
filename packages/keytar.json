@@ -1,0 +1,267 @@
+{
+  "main": "./lib/keytar.js",
+  "typings": "keytar.d.ts",
+  "name": "keytar",
+  "description": "Bindings to native Mac/Linux/Windows password APIs",
+  "version": "4.2.1",
+  "license": "MIT",
+  "repository": {
+    "user": "atom",
+    "repo": "node-keytar",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/atom/node-keytar/tarball/master",
+    "clone_url": "https://github.com/atom/node-keytar",
+    "https_url": "https://github.com/atom/node-keytar",
+    "travis_url": "https://travis-ci.org/atom/node-keytar",
+    "zip_url": "https://github.com/atom/node-keytar/archive/master.zip",
+    "api_url": "https://api.github.com/repos/atom/node-keytar"
+  },
+  "homepage": "http://atom.github.io/node-keytar",
+  "keywords": [
+    "keychain",
+    "password",
+    "passwords",
+    "credential",
+    "credentials",
+    "vault",
+    "credential vault"
+  ],
+  "files": [
+    "lib",
+    "src",
+    "binding.gyp",
+    "keytar.d.ts"
+  ],
+  "types": "./keytar.d.ts",
+  "scripts": {
+    "install": "prebuild-install || node-gyp rebuild",
+    "lint": "npm run cpplint",
+    "cpplint": "node-cpplint --filters legal-copyright,build-include,build-namespaces src/*.cc",
+    "test": "npm run lint && npm build . && mocha --compilers js:babel-core/register spec/",
+    "prebuild-node": "prebuild -t 6.11.0 -t 7.9.0 -t 8.9.0 -t 9.4.0 --strip",
+    "prebuild-node-ia32": "prebuild -t 6.11.0 -t 7.9.0 -t 8.9.0 -t 9.4.0 -a ia32 --strip",
+    "prebuild-electron": "prebuild -t 1.6.11 -t 1.7.10 -t 1.8.0 -t 2.0.0 -r electron --strip",
+    "prebuild-electron-ia32": "prebuild -t 1.6.11 -t 1.7.10 -t 1.8.0 -t 2.0.0 -r electron -a ia32 --strip",
+    "upload": "node ./script/upload.js"
+  },
+  "devDependencies": {
+    "babel-core": "^6.26.0",
+    "babel-plugin-transform-async-to-generator": "^6.24.1",
+    "chai": "^4.1.2",
+    "mocha": "^3.5.0",
+    "node-cpplint": "~0.4.0",
+    "node-gyp": "^3.6.2",
+    "prebuild": "^7.4.0"
+  },
+  "dependencies": {
+    "nan": "2.8.0",
+    "prebuild-install": "^2.4.1"
+  },
+  "gitHead": "82e092122f73d21a97a66c3fb17ab4b9cd8f0b2f",
+  "_npmVersion": "3.10.8",
+  "_nodeVersion": "6.9.1",
+  "dist": {
+    "shasum": "8a06a6577fdf6373e0aa6b112277e63dec77fd12",
+    "tarball": "http://registry.npmjs.org/keytar/-/keytar-4.2.1.tgz",
+    "fileCount": 14,
+    "unpackedSize": 42679
+  },
+  "_hasShrinkwrap": false,
+  "stars": 15,
+  "versions": [
+    {
+      "number": "0.1.0",
+      "date": "2013-04-25T22:36:14.589Z"
+    },
+    {
+      "number": "0.2.0",
+      "date": "2013-04-25T23:07:37.601Z"
+    },
+    {
+      "number": "0.3.0",
+      "date": "2013-04-26T01:59:42.895Z"
+    },
+    {
+      "number": "0.4.0",
+      "date": "2013-05-01T00:50:09.593Z"
+    },
+    {
+      "number": "0.5.0",
+      "date": "2013-05-17T00:03:21.916Z"
+    },
+    {
+      "number": "0.6.0",
+      "date": "2013-05-29T00:40:05.350Z"
+    },
+    {
+      "number": "0.7.0",
+      "date": "2013-06-11T03:28:01.880Z"
+    },
+    {
+      "number": "0.8.0",
+      "date": "2013-06-11T03:36:32.330Z"
+    },
+    {
+      "number": "0.9.0",
+      "date": "2013-06-11T04:21:54.857Z"
+    },
+    {
+      "number": "0.10.0",
+      "date": "2013-06-27T15:05:36.486Z"
+    },
+    {
+      "number": "0.11.0",
+      "date": "2013-10-23T15:48:31.276Z"
+    },
+    {
+      "number": "0.12.0",
+      "date": "2013-10-28T01:55:02.074Z"
+    },
+    {
+      "number": "0.13.0",
+      "date": "2013-11-25T19:44:31.004Z"
+    },
+    {
+      "number": "0.14.0",
+      "date": "2013-12-26T22:06:23.655Z"
+    },
+    {
+      "number": "0.15.0",
+      "date": "2013-12-31T16:49:58.961Z"
+    },
+    {
+      "number": "0.15.1",
+      "date": "2014-01-16T16:27:02.623Z"
+    },
+    {
+      "number": "1.0.0",
+      "date": "2014-03-18T04:15:42.264Z"
+    },
+    {
+      "number": "1.1.0",
+      "date": "2014-06-30T09:42:58.757Z"
+    },
+    {
+      "number": "2.0.0",
+      "date": "2014-07-01T02:21:27.493Z"
+    },
+    {
+      "number": "1.0.1",
+      "date": "2014-07-10T15:50:43.600Z"
+    },
+    {
+      "number": "2.0.1",
+      "date": "2014-07-18T01:57:03.356Z"
+    },
+    {
+      "number": "2.0.2",
+      "date": "2014-07-24T17:51:30.287Z"
+    },
+    {
+      "number": "2.0.3",
+      "date": "2014-07-30T00:02:28.149Z"
+    },
+    {
+      "number": "2.1.0",
+      "date": "2015-01-27T23:52:09.451Z"
+    },
+    {
+      "number": "3.0.0",
+      "date": "2015-09-11T01:27:56.495Z"
+    },
+    {
+      "number": "3.0.1",
+      "date": "2016-04-27T19:13:55.387Z"
+    },
+    {
+      "number": "3.0.2",
+      "date": "2016-04-29T15:55:26.881Z"
+    },
+    {
+      "number": "4.0.2",
+      "date": "2017-04-13T00:42:30.062Z"
+    },
+    {
+      "number": "4.0.3",
+      "date": "2017-05-16T13:24:08.627Z"
+    },
+    {
+      "number": "4.0.4",
+      "date": "2017-07-26T23:37:33.659Z"
+    },
+    {
+      "number": "4.0.5",
+      "date": "2017-10-24T19:20:30.057Z"
+    },
+    {
+      "number": "4.1.0",
+      "date": "2017-12-13T23:37:28.642Z"
+    },
+    {
+      "number": "4.2.0",
+      "date": "2018-03-01T03:10:58.288Z"
+    },
+    {
+      "number": "4.2.1",
+      "date": "2018-03-22T23:53:04.811Z"
+    }
+  ],
+  "created": "2013-04-25T22:35:44.834Z",
+  "modified": "2018-03-22T23:53:05.562Z",
+  "lastPublisher": {
+    "name": "daviwil",
+    "email": "daviwil@github.com"
+  },
+  "owners": [
+    {
+      "name": "as-cii",
+      "email": "as-cii@github.com"
+    },
+    {
+      "name": "atom-team",
+      "email": "atom@github.com"
+    },
+    {
+      "name": "benogle",
+      "email": "ogle.ben@gmail.com"
+    },
+    {
+      "name": "binarymuse",
+      "email": "michelle@michelletilley.net"
+    },
+    {
+      "name": "damieng",
+      "email": "damieng@gmail.com"
+    },
+    {
+      "name": "daviwil",
+      "email": "daviwil@github.com"
+    },
+    {
+      "name": "kevinsawicki",
+      "email": "kevinsawicki@gmail.com"
+    },
+    {
+      "name": "kuychaco",
+      "email": "kuychaco@gmail.com"
+    },
+    {
+      "name": "lee-dohm",
+      "email": "lee@lee-dohm.com"
+    },
+    {
+      "name": "nathansobo",
+      "email": "nathan@github.com"
+    },
+    {
+      "name": "smashwilson",
+      "email": "smashwilson@gmail.com"
+    },
+    {
+      "name": "zcbenz",
+      "email": "zcbenz@gmail.com"
+    }
+  ]
+}

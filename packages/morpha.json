@@ -1,0 +1,284 @@
+{
+  "name": "morpha",
+  "version": "0.3.0-alpha8",
+  "description": "A Web-IDE or Desktop-IDE creator.",
+  "main": "lib/app/clientLoader.js",
+  "bin": {
+    "morpha": "./scripts/morpha",
+    "morpha-bootstrap": "./scripts/morpha-bootstrap"
+  },
+  "scripts": {
+    "start": "./scripts/morpha --dev-mode",
+    "build": "make build",
+    "start:watch": "nodemon --exec \"./scripts/morpha --dev-mode \"",
+    "browser": "webpack-dev-server --progress --colors --port 8989",
+    "test": "./scripts/morpha --dev-mode --test --config morpha.config.js",
+    "lint": "make lint",
+    "start-example": "nodemon --exec \"./scripts/morpha --dev-mode -p ./example \"",
+    "bootstrap-example": "./scripts/morpha-bootstrap --dev-mode --cwd ./example",
+    "prepublish": "make build"
+  },
+  "repository": {
+    "user": "morpha-ide",
+    "repo": "morpha",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/morpha-ide/morpha/tarball/master",
+    "clone_url": "https://github.com/morpha-ide/morpha",
+    "https_url": "https://github.com/morpha-ide/morpha",
+    "travis_url": "https://travis-ci.org/morpha-ide/morpha",
+    "zip_url": "https://github.com/morpha-ide/morpha/archive/master.zip",
+    "api_url": "https://api.github.com/repos/morpha-ide/morpha"
+  },
+  "keywords": [
+    "morpha",
+    "morpha-ide",
+    "electron"
+  ],
+  "author": {
+    "name": "xiamidaxia",
+    "email": "xiamidaxia@icloud.com"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "babel-core": "^6.7.7",
+    "babel-plugin-transform-decorators-legacy": "^1.3.4",
+    "babel-plugin-transform-runtime": "^6.9.0",
+    "babel-preset-es2015": "^6.6.0",
+    "babel-preset-react": "^6.5.0",
+    "babel-preset-stage-0": "^6.5.0",
+    "chai": "^3.5.0",
+    "dedent": "^0.6.0",
+    "electron-packager": "^8.2.0",
+    "electron": "1.4.8",
+    "events": "^1.1.1",
+    "fs-plus": "^2.9.1",
+    "less-cache": "^0.24.0",
+    "lodash": "^4.15.0",
+    "mocha": "^3.1.2",
+    "rmrf": "^1.0.2",
+    "source-map-support": "^0.4.2",
+    "yargs": "^5.0.0"
+  },
+  "devDependencies": {
+    "react": "^15.0.2",
+    "react-dom": "^15.0.2",
+    "autoprefixer": "^6.4.0",
+    "babel-cli": "^6.7.7",
+    "babel-eslint": "^6.0.4",
+    "babel-istanbul": "^0.8.0",
+    "babel-loader": "^6.2.4",
+    "babel-register": "^6.7.2",
+    "css-loader": "^0.23.1",
+    "eslint": "~1.10.3",
+    "eslint-config-airbnb": "~2.1.0",
+    "eslint-plugin-react": "~3.12.0",
+    "extract-text-webpack-plugin": "^1.0.1",
+    "json-loader": "^0.5.4",
+    "less": "^2.6.1",
+    "less-loader": "^2.2.3",
+    "log-symbols": "^1.0.2",
+    "log-update": "^1.0.2",
+    "nodemon": "^1.10.2",
+    "pre-commit": "^1.1.2",
+    "react-hot-loader": "^1.3.0",
+    "rucksack-css": "^0.8.6",
+    "style-loader": "^0.13.1",
+    "webpack": "^1.13.0",
+    "webpack-dev-server": "^1.14.1"
+  },
+  "engines": {
+    "node": "7.x",
+    "install-node": "7.x"
+  },
+  "babel": {
+    "presets": [
+      "react",
+      "es2015",
+      "stage-0"
+    ],
+    "plugins": [
+      "transform-runtime",
+      "transform-decorators-legacy"
+    ]
+  },
+  "pre-commit": [
+    "lint"
+  ],
+  "gitHead": "c1c3d4064f4d1470db269d761b48554ec8c4c59d",
+  "homepage": "https://github.com/morpha-ide/morpha#readme",
+  "_npmVersion": "5.6.0",
+  "_nodeVersion": "9.11.1",
+  "dist": {
+    "integrity": "sha512-b92BbcSOIAf9DzvzkxPEWfOQKgYfckS8L0uDxIFszFCMxdVXEddDuG7Cg2Mf6rv2ShyecUPPQK64s/a/03c2AA==",
+    "shasum": "78420b794453abbe449b93dcc169cad36db771e9",
+    "tarball": "https://registry.npmjs.org/morpha/-/morpha-0.3.0-alpha8.tgz",
+    "fileCount": 51,
+    "unpackedSize": 78913,
+    "npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJa1Wa5CRA9TVsSAnZWagAAc3oP/1GEql8fhNLAkEii3rX0\nq3QU0kbNVzRrTbUB0K7B1DPW+0yeXCtecbmuyCEcAunn2WHK2CnvJ+Xt8lDR\nYmhJSTpZ+/qzbiUV7OvS+dq5oqCeQ/E46Xh9UXa8XRgEZQyeUTty9scGD5O2\nTwjAkQvk43JRBHZODBt9WZpSmxrESmx904MwoIMJTCwz658Sav9Uv2LYyrpg\nkOWjJF3RYL+sVABX1Xixkrg9trK3E/Pz5rHAKcAAXJA/m/Ci58w3qNbQjlR7\nI0ErTlbH70Qaoss+DxOmyiIbE4xJrXDIfHBWgWJBkR3qPrXfGAB2paw0q6Pl\nkxnvPCY5WlS0JhGPPtvlvhaD82BuKqRauhni2nahepGrwUTgmpLKuv0JaN2I\nD83tXQ98L44TffpiU+roHOFSQizqHypMu73Gr42r00Vwyzbm+hcQnIi3Hx3f\nDldOKkVjuzmUIGguUNxRPx3rB6lsZcNX62+b3Qq0j5VzLF488ooRIms4AFra\npXPAzyRIw354SduIRRv4tJie99pi9lLD3xveogQLDNCVXpsvWF6BQW0GyF2f\nrj73Qw3IpQ3/Jojcd9uWnGitSjULDI43uHb3HgXI/G2LRkMcbBr8uN8nf0Zv\nNNFZT7z10vTWwx9NFTwo/5GSLy+oNRErGeTfDO9ZFOEpLkaCfresqacYPNjD\n+dkb\r\n=ekye\r\n-----END PGP SIGNATURE-----\r\n"
+  },
+  "_hasShrinkwrap": false,
+  "versions": [
+    {
+      "number": "0.0.1",
+      "date": "2016-08-22T09:09:44.651Z"
+    },
+    {
+      "number": "0.1.0",
+      "date": "2016-09-09T06:18:39.825Z"
+    },
+    {
+      "number": "0.2.0",
+      "date": "2016-09-09T11:35:24.142Z"
+    },
+    {
+      "number": "0.2.1",
+      "date": "2016-09-09T12:01:01.277Z"
+    },
+    {
+      "number": "0.2.2",
+      "date": "2016-09-09T12:08:16.755Z"
+    },
+    {
+      "number": "0.2.3",
+      "date": "2016-09-09T13:22:20.304Z"
+    },
+    {
+      "number": "0.2.4",
+      "date": "2016-09-09T13:28:45.557Z"
+    },
+    {
+      "number": "0.2.5",
+      "date": "2016-09-09T13:48:14.690Z"
+    },
+    {
+      "number": "0.2.6",
+      "date": "2016-09-09T13:54:56.951Z"
+    },
+    {
+      "number": "0.2.7",
+      "date": "2016-09-09T14:23:28.786Z"
+    },
+    {
+      "number": "0.2.8",
+      "date": "2016-09-10T02:06:04.014Z"
+    },
+    {
+      "number": "0.2.9",
+      "date": "2016-09-10T03:14:31.779Z"
+    },
+    {
+      "number": "0.2.10",
+      "date": "2016-09-10T09:00:01.957Z"
+    },
+    {
+      "number": "0.2.11",
+      "date": "2016-09-10T11:16:35.739Z"
+    },
+    {
+      "number": "0.2.12",
+      "date": "2016-09-10T18:16:22.988Z"
+    },
+    {
+      "number": "0.2.13",
+      "date": "2016-09-10T19:32:00.135Z"
+    },
+    {
+      "number": "0.2.15",
+      "date": "2016-09-11T09:35:25.974Z"
+    },
+    {
+      "number": "0.2.16",
+      "date": "2016-09-11T10:31:02.158Z"
+    },
+    {
+      "number": "0.2.17",
+      "date": "2016-09-11T11:17:24.189Z"
+    },
+    {
+      "number": "0.2.18",
+      "date": "2016-09-11T11:34:48.861Z"
+    },
+    {
+      "number": "0.2.19",
+      "date": "2016-09-11T12:44:14.245Z"
+    },
+    {
+      "number": "0.2.20",
+      "date": "2016-09-12T12:27:49.379Z"
+    },
+    {
+      "number": "0.2.21",
+      "date": "2016-09-12T15:23:48.499Z"
+    },
+    {
+      "number": "0.2.22",
+      "date": "2016-09-14T09:25:48.975Z"
+    },
+    {
+      "number": "0.2.23",
+      "date": "2016-10-18T09:32:23.961Z"
+    },
+    {
+      "number": "0.2.24",
+      "date": "2016-10-18T12:46:39.400Z"
+    },
+    {
+      "number": "0.3.0-alpha0",
+      "date": "2016-11-11T09:04:05.023Z"
+    },
+    {
+      "number": "0.3.0-alpha1",
+      "date": "2016-11-21T11:29:00.798Z"
+    },
+    {
+      "number": "0.3.0-alpha2",
+      "date": "2016-11-21T11:43:09.833Z"
+    },
+    {
+      "number": "0.3.0-alpha3",
+      "date": "2016-11-21T12:16:33.115Z"
+    },
+    {
+      "number": "0.3.0-alpha4",
+      "date": "2016-11-21T12:28:45.481Z"
+    },
+    {
+      "number": "0.3.0-alpha5",
+      "date": "2016-11-29T03:13:24.247Z"
+    },
+    {
+      "number": "0.3.0-alpha0-fix",
+      "date": "2016-11-29T03:24:49.442Z"
+    },
+    {
+      "number": "0.3.0-alpha6",
+      "date": "2018-01-22T09:07:27.161Z"
+    },
+    {
+      "number": "0.3.0-alpha7",
+      "date": "2018-04-16T09:44:25.559Z"
+    },
+    {
+      "number": "0.3.0-alpha8",
+      "date": "2018-04-17T03:15:05.366Z"
+    }
+  ],
+  "created": "2016-08-22T09:09:44.651Z",
+  "modified": "2018-04-17T03:15:11.861Z",
+  "lastPublisher": {
+    "name": "xiamidaxia",
+    "email": "xiamidaxia@icloud.com"
+  },
+  "owners": [
+    {
+      "name": "winsky",
+      "email": "wenshiqi0@gmail.com"
+    },
+    {
+      "name": "xiamidaxia",
+      "email": "xiamidaxia@gmail.com"
+    }
+  ]
+}

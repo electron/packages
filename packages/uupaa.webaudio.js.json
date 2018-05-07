@@ -1,0 +1,128 @@
+{
+  "name": "uupaa.webaudio.js",
+  "version": "0.0.9",
+  "description": "Create new WebAudio context.",
+  "url": "https://github.com/uupaa/WebAudio.js",
+  "keywords": [
+    "WebAudio",
+    "Audio",
+    "iOS",
+    "uupaa",
+    "WebModule",
+    "Unstable"
+  ],
+  "repository": {
+    "user": "uupaa",
+    "repo": "WebAudio.js",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/uupaa/WebAudio.js/tarball/master",
+    "clone_url": "https://github.com/uupaa/WebAudio.js",
+    "https_url": "https://github.com/uupaa/WebAudio.js",
+    "travis_url": "https://travis-ci.org/uupaa/WebAudio.js",
+    "zip_url": "https://github.com/uupaa/WebAudio.js/archive/master.zip",
+    "api_url": "https://api.github.com/repos/uupaa/WebAudio.js"
+  },
+  "scripts": {
+    "sync": "node ../WebModule/run/sync.js; npm update; node ../WebModule/run/page.js",
+    "wiki": "node ../WebModule/run/wiki.js",
+    "min": "node ../WebModule/run/minify.js --verbose --strict --keep --pretty",
+    "build": "node ../WebModule/run/minify.js --verbose --strict --keep --release",
+    "watch": "node ../WebModule/run/watch.js --verbose --run lint",
+    "page": "node ../WebModule/run/page.js --verbose",
+    "test": "npm run min; npm run node; npm run browser",
+    "node": "NODE_ENV=production NODE_PATH=lib node test/node/index.js",
+    "noded": "NODE_ENV=production NODE_PATH=lib node --debug-brk test/node/index.js",
+    "browser": "open http://localhost:8000/WebAudio.js/test/browser/index.html",
+    "el": "electron test/el",
+    "nw": "nw test/nw",
+    "add-src": "node ../WebModule/run/add-src.js",
+    "add-subclass": "node ../WebModule/run/add-subclass.js",
+    "sim": "node ../WebModule/run/sim.js http://localhost:8000/WebAudio.js/test/browser/index.html",
+    "simx": "node ../WebModule/run/sim.js stop",
+    "lint": "eslint lib/*.js",
+    "score": "node ../WebModule/run/score.js; open lint/plato/index.html",
+    "patch": "node ../WebModule/run/patch.js",
+    "setup": "node ../WebModule/run/setup.js",
+    "start": "cd ../; Python -m SimpleHTTPServer 8000 &",
+    "stop": "killall -- Python -m SimpleHTTPServer 8000; exit 0"
+  },
+  "webmodule": {
+    "develop": false,
+    "label": [
+      "@dev"
+    ],
+    "browser": {
+      "output": "release/WebAudio.b.min.js",
+      "source": [
+        "lib/WebAudio.js"
+      ]
+    },
+    "nw": {
+      "output": "release/WebAudio.nw.min.js",
+      "source": [
+        "lib/WebAudio.js"
+      ]
+    },
+    "el": {
+      "output": "release/WebAudio.el.min.js",
+      "source": [
+        "lib/WebAudio.js"
+      ]
+    }
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "uupaa.task.js": "",
+    "uupaa.fileloader.js": ""
+  },
+  "lib": "./lib/",
+  "main": "./index.js",
+  "author": {
+    "name": "uupaa"
+  },
+  "license": "MIT",
+  "contributors": [],
+  "gitHead": "c60e076c467a5407357beac612ccef7dd5322c17",
+  "homepage": "https://github.com/uupaa/WebAudio.js",
+  "_npmVersion": "2.0.0",
+  "dist": {
+    "shasum": "2ccc700cd4ad406f5f0b61390971a85242f93d74",
+    "tarball": "http://registry.npmjs.org/uupaa.webaudio.js/-/uupaa.webaudio.js-0.0.9.tgz"
+  },
+  "versions": [
+    {
+      "number": "0.0.5",
+      "date": "2016-01-22T11:18:56.957Z"
+    },
+    {
+      "number": "0.0.6",
+      "date": "2016-03-03T11:27:36.162Z"
+    },
+    {
+      "number": "0.0.7",
+      "date": "2016-04-12T06:35:41.419Z"
+    },
+    {
+      "number": "0.0.8",
+      "date": "2016-04-18T10:36:32.334Z"
+    },
+    {
+      "number": "0.0.9",
+      "date": "2016-04-23T08:05:43.619Z"
+    }
+  ],
+  "created": "2016-01-22T11:18:56.957Z",
+  "modified": "2016-04-23T08:05:43.619Z",
+  "lastPublisher": {
+    "name": "uupaa",
+    "email": "uupaa.js@gmail.com"
+  },
+  "owners": [
+    {
+      "name": "uupaa",
+      "email": "uupaa.js@gmail.com"
+    }
+  ]
+}

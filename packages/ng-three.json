@@ -1,0 +1,122 @@
+{
+  "_inBundle": false,
+  "_integrity": "sha1-Rmo07cRUNFnO2bnX0na2Uhb+K6g=",
+  "_location": "/ng-three",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "tag",
+    "registry": true,
+    "raw": "ng-three",
+    "name": "ng-three",
+    "escapedName": "ng-three",
+    "rawSpec": "",
+    "saveSpec": null,
+    "fetchSpec": "latest"
+  },
+  "_requiredBy": [
+    "#USER",
+    "/"
+  ],
+  "_resolved": "https://registry.npmjs.org/ng-three/-/ng-three-0.87.1.tgz",
+  "_spec": "ng-three",
+  "_where": "/Users/bentbot/identity-vagrant/src/asylum-idenetity",
+  "author": {
+    "name": "bentbot"
+  },
+  "bundleDependencies": false,
+  "deprecated": false,
+  "description": "Angular 4 version of Three: 3D library by mrdoob",
+  "devDependencies": {
+    "electron": "^1.6.1",
+    "eslint": "^4.1.1",
+    "eslint-config-mdcs": "^4.2.2",
+    "google-closure-compiler": "^20170521.0.0",
+    "qunitjs": "^2.1.1",
+    "rollup": "^0.43.0",
+    "rollup-watch": "^4.3.1",
+    "uglify-js": "^3.0.23"
+  },
+  "eslintConfig": {
+    "extends": "mdcs"
+  },
+  "files": [
+    "package.json",
+    "bower.json",
+    "LICENSE",
+    "README.md",
+    "build/three.js",
+    "build/three.min.js",
+    "build/three.module.js",
+    "src",
+    "examples/js",
+    "examples/fonts"
+  ],
+  "homepage": "http://ng-threejs.org/",
+  "jsnext:main": "build/ng-three.module.js",
+  "keywords": [
+    "three",
+    "ng2",
+    "three.js",
+    "ng-three",
+    "ng-three.js",
+    "3d",
+    "webgl"
+  ],
+  "license": "MIT",
+  "main": "build/ng-three.js",
+  "module": "build/ng-three.module.js",
+  "name": "ng-three",
+  "repository": {
+    "user": "mrdoob",
+    "repo": "ng-three.js",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/mrdoob/ng-three.js/tarball/master",
+    "clone_url": "https://github.com/mrdoob/ng-three.js",
+    "https_url": "https://github.com/mrdoob/ng-three.js",
+    "travis_url": "https://travis-ci.org/mrdoob/ng-three.js",
+    "zip_url": "https://github.com/mrdoob/ng-three.js/archive/master.zip",
+    "api_url": "https://api.github.com/repos/mrdoob/ng-three.js"
+  },
+  "scripts": {
+    "build": "rollup -c",
+    "build-closure": "rollup -c && java -jar node_modules/google-closure-compiler/compiler.jar --warning_level=VERBOSE --jscomp_off=globalThis --jscomp_off=checkTypes --externs utils/build/externs.js --language_in=ECMASCRIPT5_STRICT --js build/ng-three.js --js_output_file build/ng-three.min.js",
+    "build-test": "rollup -c test/rollup.unit.config.js",
+    "build-uglify": "rollup -c && uglifyjs build/ng-three.js -cm --preamble \"// ng-threejs.org/license\" > build/ng-three.min.js",
+    "dev": "rollup -c -w -m inline",
+    "editor": "electron ./editor/main.js",
+    "lint": "eslint src",
+    "test": "rollup -c test/rollup.unit.config.js -w"
+  },
+  "version": "0.87.2",
+  "_npmVersion": "5.4.2",
+  "_nodeVersion": "8.6.0",
+  "dist": {
+    "integrity": "sha512-J9tktTSVvVGtFMzYHnlO59De6DP2G1zjuSR5zHBsENmE7WfqHxnKiiu+gqc1tKthHLxWItjq8nWW2SKuYLS38w==",
+    "shasum": "0997a0692dda1d3cdd5b269743a34aa8072a9514",
+    "tarball": "https://registry.npmjs.org/ng-three/-/ng-three-0.87.2.tgz"
+  },
+  "versions": [
+    {
+      "number": "0.87.1",
+      "date": "2017-10-13T18:13:30.692Z"
+    },
+    {
+      "number": "0.87.2",
+      "date": "2017-10-13T18:28:31.719Z"
+    }
+  ],
+  "created": "2017-10-13T18:13:30.692Z",
+  "modified": "2017-10-13T18:28:31.719Z",
+  "lastPublisher": {
+    "name": "bentbot",
+    "email": "liam@hogan.re"
+  },
+  "owners": [
+    {
+      "name": "bentbot",
+      "email": "liam@hogan.re"
+    }
+  ]
+}

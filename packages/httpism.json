@@ -1,0 +1,347 @@
+{
+  "name": "httpism",
+  "version": "3.9.0",
+  "description": "HTTP client with middleware and good defaults",
+  "main": "index.js",
+  "dependencies": {
+    "base-64": "0.1.0",
+    "debug": "3.1.0",
+    "end-of-stream": "1.4.1",
+    "fs-promise": "2.0.3",
+    "global": "4.3.2",
+    "https-proxy-agent": "2.1.1",
+    "mime-types": "2.1.18",
+    "proxy-from-env": "1.0.0",
+    "random-string": "0.2.0",
+    "tough-cookie": "2.3.4",
+    "underscore": "1.8.3"
+  },
+  "devDependencies": {
+    "basic-auth": "2.0.0",
+    "basic-auth-connect": "1.0.0",
+    "body-parser": "1.18.2",
+    "browserify": "16.1.0",
+    "chai": "4.1.2",
+    "chai-as-promised": "7.1.1",
+    "cookie-parser": "1.4.3",
+    "cors": "2.8.4",
+    "electron": "^1.6.8",
+    "es6-promise": "4.2.4",
+    "eslint": "4.18.1",
+    "eslint-config-standard": "11.0.0",
+    "eslint-plugin-es5": "1.2.0",
+    "eslint-plugin-import": "2.9.0",
+    "eslint-plugin-node": "6.0.1",
+    "eslint-plugin-promise": "3.6.0",
+    "eslint-plugin-standard": "3.0.1",
+    "express": "4.16.2",
+    "fake-xml-http-request": "2.0.0",
+    "form-data": "2.3.2",
+    "http-proxy": "1.16.2",
+    "karma": "2.0.0",
+    "karma-browserify": "5.2.0",
+    "karma-browserstack-launcher": "1.3.0",
+    "karma-chrome-launcher": "2.2.0",
+    "karma-electron-launcher": "^0.2.0",
+    "karma-mocha": "1.3.0",
+    "karma-mocha-reporter": "2.2.5",
+    "karma-server-side": "1.7.0",
+    "mocha": "5.0.1",
+    "multiparty": "4.1.3",
+    "qs": "6.5.1",
+    "server-destroy": "1.0.1",
+    "standard": "11.0.0",
+    "uglify-js": "3.3.12",
+    "url-template": "2.0.8",
+    "watchify": "3.10.0",
+    "webpack": "4.0.1"
+  },
+  "scripts": {
+    "test": "npm run test-mocha && npm run test-browser -- --single-run --browsers Electron && eslint .",
+    "test-browser": "karma start",
+    "test-mocha": "mocha",
+    "size": "webpack browser.js _httpism.js && uglifyjs --compress warnings=false --mangle -- _httpism.js > _httpism.min.js && gzip < _httpism.min.js > _httpism.min.js.gz && ls -lh _httpism.*"
+  },
+  "repository": {
+    "user": "featurist",
+    "repo": "httpism",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/featurist/httpism/tarball/master",
+    "clone_url": "https://github.com/featurist/httpism",
+    "https_url": "https://github.com/featurist/httpism",
+    "travis_url": "https://travis-ci.org/featurist/httpism",
+    "zip_url": "https://github.com/featurist/httpism/archive/master.zip",
+    "api_url": "https://api.github.com/repos/featurist/httpism"
+  },
+  "keywords": [
+    "http",
+    "rest"
+  ],
+  "author": {
+    "name": "Tim Macfarlane",
+    "email": "timmacfarlane@gmail.com",
+    "url": "http://blog.refractalize.org/"
+  },
+  "contributors": [
+    {
+      "name": "Josh Chisholm",
+      "email": "joshchisholm@gmail.com",
+      "url": "http://featurist.co.uk/"
+    }
+  ],
+  "license": "BSD",
+  "browser": "browser.js",
+  "gitHead": "65fd50ece7677104007468f71b3c9560ca90b9ed",
+  "homepage": "https://github.com/featurist/httpism#readme",
+  "_npmVersion": "5.8.0",
+  "_nodeVersion": "9.2.0",
+  "dist": {
+    "integrity": "sha512-Y5dacGBu8gbKEk3DTut1Me2VRlAfXBI0qBT2kGKUPDxkJW0Yxh22i5hK0fG4akxeHJsJ16hiqxGPAsOrmgJ0nw==",
+    "shasum": "730164d6df5665ea5dbc04fad52fb71b82a5df17",
+    "tarball": "http://registry.npmjs.org/httpism/-/httpism-3.9.0.tgz",
+    "fileCount": 57,
+    "unpackedSize": 352701
+  },
+  "_hasShrinkwrap": false,
+  "stars": 1,
+  "versions": [
+    {
+      "number": "0.0.1",
+      "date": "2012-10-18T12:02:56.367Z"
+    },
+    {
+      "number": "0.0.2",
+      "date": "2012-10-18T21:18:07.635Z"
+    },
+    {
+      "number": "0.0.3",
+      "date": "2013-02-10T21:10:31.957Z"
+    },
+    {
+      "number": "0.0.4",
+      "date": "2013-04-02T09:56:34.214Z"
+    },
+    {
+      "number": "0.1.0",
+      "date": "2014-07-01T22:43:04.437Z"
+    },
+    {
+      "number": "0.1.1",
+      "date": "2014-07-02T08:50:07.601Z"
+    },
+    {
+      "number": "0.1.2",
+      "date": "2014-07-02T10:18:00.354Z"
+    },
+    {
+      "number": "0.1.3",
+      "date": "2014-07-14T20:15:46.768Z"
+    },
+    {
+      "number": "0.2.0",
+      "date": "2014-07-17T07:59:17.012Z"
+    },
+    {
+      "number": "0.2.1",
+      "date": "2014-07-17T08:11:17.526Z"
+    },
+    {
+      "number": "0.2.2",
+      "date": "2014-07-17T08:14:57.897Z"
+    },
+    {
+      "number": "0.2.4",
+      "date": "2014-08-04T19:22:51.448Z"
+    },
+    {
+      "number": "1.0.0",
+      "date": "2015-05-26T16:31:33.895Z"
+    },
+    {
+      "number": "1.1.0",
+      "date": "2015-08-11T07:35:16.401Z"
+    },
+    {
+      "number": "1.2.0",
+      "date": "2015-08-12T20:42:50.618Z"
+    },
+    {
+      "number": "1.3.0",
+      "date": "2015-08-13T14:23:50.638Z"
+    },
+    {
+      "number": "1.4.0",
+      "date": "2015-08-16T14:31:08.029Z"
+    },
+    {
+      "number": "1.4.1",
+      "date": "2015-08-16T14:33:54.316Z"
+    },
+    {
+      "number": "1.5.0",
+      "date": "2015-08-31T08:20:58.604Z"
+    },
+    {
+      "number": "1.6.0",
+      "date": "2015-09-04T15:05:37.707Z"
+    },
+    {
+      "number": "1.7.0",
+      "date": "2015-09-09T11:54:27.022Z"
+    },
+    {
+      "number": "1.7.1",
+      "date": "2015-09-09T14:13:53.322Z"
+    },
+    {
+      "number": "1.8.0",
+      "date": "2015-10-15T08:52:53.995Z"
+    },
+    {
+      "number": "1.8.1",
+      "date": "2015-10-15T09:01:16.694Z"
+    },
+    {
+      "number": "1.9.0",
+      "date": "2016-02-10T16:28:25.252Z"
+    },
+    {
+      "number": "1.10.0",
+      "date": "2016-03-03T10:00:21.829Z"
+    },
+    {
+      "number": "1.11.0",
+      "date": "2016-03-03T17:00:11.964Z"
+    },
+    {
+      "number": "1.12.0",
+      "date": "2016-03-22T16:35:42.467Z"
+    },
+    {
+      "number": "1.13.0",
+      "date": "2016-03-23T15:54:33.306Z"
+    },
+    {
+      "number": "1.14.0",
+      "date": "2016-04-06T15:33:06.082Z"
+    },
+    {
+      "number": "2.0.0",
+      "date": "2016-05-16T13:49:25.620Z"
+    },
+    {
+      "number": "2.1.0",
+      "date": "2016-08-01T13:17:44.019Z"
+    },
+    {
+      "number": "2.2.0",
+      "date": "2016-08-10T14:45:50.206Z"
+    },
+    {
+      "number": "2.2.1",
+      "date": "2016-08-10T16:09:07.786Z"
+    },
+    {
+      "number": "2.3.0",
+      "date": "2016-08-17T13:14:27.760Z"
+    },
+    {
+      "number": "2.4.0",
+      "date": "2016-08-31T12:41:40.112Z"
+    },
+    {
+      "number": "2.4.1",
+      "date": "2016-08-31T13:00:16.898Z"
+    },
+    {
+      "number": "2.4.2",
+      "date": "2016-09-28T15:22:24.820Z"
+    },
+    {
+      "number": "2.5.0",
+      "date": "2016-11-22T12:59:13.781Z"
+    },
+    {
+      "number": "2.6.0",
+      "date": "2016-11-24T12:41:18.492Z"
+    },
+    {
+      "number": "2.6.1",
+      "date": "2016-11-24T12:58:08.076Z"
+    },
+    {
+      "number": "2.6.2",
+      "date": "2016-12-05T11:14:18.239Z"
+    },
+    {
+      "number": "2.7.0",
+      "date": "2017-01-03T14:52:11.025Z"
+    },
+    {
+      "number": "3.0.0",
+      "date": "2017-05-05T08:28:26.742Z"
+    },
+    {
+      "number": "3.1.0",
+      "date": "2017-05-09T08:22:23.409Z"
+    },
+    {
+      "number": "3.2.0",
+      "date": "2017-05-17T12:32:49.503Z"
+    },
+    {
+      "number": "3.3.0",
+      "date": "2017-05-31T10:34:37.344Z"
+    },
+    {
+      "number": "3.4.0",
+      "date": "2017-06-23T09:57:49.694Z"
+    },
+    {
+      "number": "3.4.1",
+      "date": "2017-06-23T12:12:15.478Z"
+    },
+    {
+      "number": "3.4.2",
+      "date": "2017-06-26T07:41:55.978Z"
+    },
+    {
+      "number": "3.6.0",
+      "date": "2017-07-11T18:21:42.108Z"
+    },
+    {
+      "number": "3.7.0",
+      "date": "2017-08-01T11:04:48.032Z"
+    },
+    {
+      "number": "3.8.0",
+      "date": "2017-10-24T08:23:00.510Z"
+    },
+    {
+      "number": "3.9.0",
+      "date": "2018-04-04T12:50:01.143Z"
+    }
+  ],
+  "created": "2012-10-18T12:02:54.788Z",
+  "modified": "2018-04-04T12:50:02.672Z",
+  "lastPublisher": {
+    "name": "refractalize",
+    "email": "timmacfarlane@gmail.com"
+  },
+  "owners": [
+    {
+      "name": "dereke",
+      "email": "derek@spathi.com"
+    },
+    {
+      "name": "joshski",
+      "email": "josh@featurist.co.uk"
+    },
+    {
+      "name": "refractalize",
+      "email": "timmacfarlane@gmail.com"
+    }
+  ]
+}

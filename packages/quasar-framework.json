@@ -1,0 +1,621 @@
+{
+  "name": "quasar-framework",
+  "version": "0.15.10",
+  "description": "Build responsive websites, PWAs, hybrid mobile apps and Electron apps, all simultaneously using same codebase",
+  "files": [
+    "dist",
+    "i18n",
+    "icons",
+    "src"
+  ],
+  "scripts": {
+    "clean": "node build/script.clean.js",
+    "dev": "node build/script.dev.js",
+    "build": "node build/script.build.js",
+    "test:umd": "node build/script.test-umd.js",
+    "lint": "eslint --ext .js,.vue src dev",
+    "deploy": "bash build/deploy.sh"
+  },
+  "repository": {
+    "user": "quasarframework",
+    "repo": "quasar",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/quasarframework/quasar/tarball/master",
+    "clone_url": "https://github.com/quasarframework/quasar",
+    "https_url": "https://github.com/quasarframework/quasar",
+    "travis_url": "https://travis-ci.org/quasarframework/quasar",
+    "zip_url": "https://github.com/quasarframework/quasar/archive/master.zip",
+    "api_url": "https://api.github.com/repos/quasarframework/quasar"
+  },
+  "keywords": [
+    "vuejs",
+    "vue",
+    "quasar",
+    "js",
+    "phone",
+    "tablet",
+    "desktop",
+    "spa",
+    "pwa",
+    "website",
+    "electron"
+  ],
+  "author": {
+    "name": "Razvan Stoenescu",
+    "email": "razvan.stoenescu@gmail.com",
+    "url": "http://quasar-framework.org"
+  },
+  "license": "MIT",
+  "homepage": "http://quasar-framework.org",
+  "devDependencies": {
+    "ajv": "^6.2.1",
+    "autoprefixer": "^8.1.0",
+    "babel-core": "^6.26.0",
+    "babel-eslint": "^8.2.2",
+    "babel-loader": "^7.1.4",
+    "babel-plugin-transform-runtime": "^6.23.0",
+    "babel-preset-env": "1.6.1",
+    "babel-preset-es2015-rollup": "^3.0.0",
+    "babel-preset-stage-2": "^6.24.1",
+    "babel-register": "6.26.0",
+    "babel-runtime": "6.26.0",
+    "colors": "^1.2.1",
+    "connect-history-api-fallback": "^1.5.0",
+    "css-loader": "^0.28.11",
+    "eslint": "^4.18.2",
+    "eslint-config-standard": "^11.0.0-beta.0",
+    "eslint-friendly-formatter": "^3.0.0",
+    "eslint-loader": "^1.9.0",
+    "eslint-plugin-html": "^4.0.2",
+    "eslint-plugin-import": "^2.9.0",
+    "eslint-plugin-node": "^6.0.1",
+    "eslint-plugin-promise": "^3.7.0",
+    "eslint-plugin-standard": "^3.0.1",
+    "eventsource-polyfill": "^0.9.6",
+    "express": "^4.16.3",
+    "extract-text-webpack-plugin": "^3.0.2",
+    "file-loader": "^1.1.11",
+    "friendly-errors-webpack-plugin": "^1.6.1",
+    "git-directory-deploy": "^1.5.1",
+    "html-webpack-plugin": "^2.30.1",
+    "json-loader": "^0.5.7",
+    "opn": "^5.3.0",
+    "parse5": "^2.2.3",
+    "postcss-loader": "^2.1.1",
+    "postcss-rtl": "^1.2.3",
+    "progress-bar-webpack-plugin": "^1.11.0",
+    "quasar-extras": "^1.0.2",
+    "raw-loader": "^0.5.1",
+    "rollup": "^0.57.0",
+    "rollup-plugin-babel": "^3.0.3",
+    "rollup-plugin-buble": "^0.19.2",
+    "rollup-plugin-json": "^2.3.0",
+    "rollup-plugin-node-resolve": "^3.2.0",
+    "rollup-plugin-replace": "^2.0.0",
+    "rollup-plugin-vue": "^3.0.0",
+    "shelljs": "^0.8.1",
+    "stylint": "^1.5.9",
+    "stylus": "^0.54.5",
+    "stylus-loader": "^3.0.2",
+    "sym": "0.0.4",
+    "uglify-es": "^3.3.9",
+    "url-loader": "^0.6.2",
+    "vue": "^2.5.16",
+    "vue-loader": "^14.2.1",
+    "vue-router": "^3.0.1",
+    "vue-style-loader": "^4.0.2",
+    "vue-template-compiler": "^2.5.16",
+    "webpack": "^3.11.0",
+    "webpack-dev-middleware": "^2.0.6",
+    "webpack-hot-middleware": "^2.21.2",
+    "webpack-merge": "^4.1.2"
+  },
+  "peerDependencies": {
+    "vue": "^2.5.0"
+  },
+  "engines": {
+    "node": ">= 8.9.0",
+    "npm": ">= 5.6.0"
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not ie <= 10"
+  ],
+  "gitHead": "3bdd38bea6df8b0d84368aaeeb9f5e3993f8228b",
+  "_npmVersion": "5.7.1",
+  "_nodeVersion": "8.9.4",
+  "dist": {
+    "integrity": "sha512-+R2O8EE2vQHHm0ioa3s28wyJzpZy4MvIlr+HcHoT6qU7K/YW6qcRMBzTsdx1i5KoEQRfHukl8ZOmKssxpLHSGw==",
+    "shasum": "fe688442d005d4c9370c7aff9c79c4577ddd64e8",
+    "tarball": "http://registry.npmjs.org/quasar-framework/-/quasar-framework-0.15.10.tgz",
+    "fileCount": 487,
+    "unpackedSize": 5764190
+  },
+  "_hasShrinkwrap": false,
+  "stars": 5,
+  "versions": [
+    {
+      "number": "0.0.1",
+      "date": "2015-10-05T18:39:00.102Z"
+    },
+    {
+      "number": "0.0.2",
+      "date": "2015-10-09T12:39:00.499Z"
+    },
+    {
+      "number": "0.0.3",
+      "date": "2015-10-09T12:48:57.206Z"
+    },
+    {
+      "number": "0.0.4",
+      "date": "2015-10-23T14:50:45.347Z"
+    },
+    {
+      "number": "0.0.5",
+      "date": "2015-11-01T14:12:09.893Z"
+    },
+    {
+      "number": "0.0.6",
+      "date": "2015-11-01T14:12:52.824Z"
+    },
+    {
+      "number": "0.0.7",
+      "date": "2015-11-05T20:31:51.271Z"
+    },
+    {
+      "number": "0.0.8",
+      "date": "2015-11-13T14:03:24.915Z"
+    },
+    {
+      "number": "0.0.9",
+      "date": "2015-11-13T14:21:48.608Z"
+    },
+    {
+      "number": "0.0.10",
+      "date": "2015-11-24T22:47:46.977Z"
+    },
+    {
+      "number": "0.0.11",
+      "date": "2015-11-26T05:21:19.942Z"
+    },
+    {
+      "number": "0.0.12",
+      "date": "2015-11-26T22:19:07.440Z"
+    },
+    {
+      "number": "0.0.13",
+      "date": "2015-11-26T23:21:03.193Z"
+    },
+    {
+      "number": "0.0.14",
+      "date": "2015-12-14T14:31:47.459Z"
+    },
+    {
+      "number": "0.0.15",
+      "date": "2015-12-15T14:28:26.628Z"
+    },
+    {
+      "number": "0.0.16",
+      "date": "2015-12-15T14:38:45.750Z"
+    },
+    {
+      "number": "0.0.18",
+      "date": "2015-12-18T15:51:45.688Z"
+    },
+    {
+      "number": "0.0.19",
+      "date": "2015-12-21T15:05:32.414Z"
+    },
+    {
+      "number": "0.0.20",
+      "date": "2016-05-28T14:45:40.791Z"
+    },
+    {
+      "number": "0.0.21",
+      "date": "2016-05-29T22:54:00.361Z"
+    },
+    {
+      "number": "0.0.22",
+      "date": "2016-05-30T18:38:38.566Z"
+    },
+    {
+      "number": "0.0.23",
+      "date": "2016-05-30T21:17:29.588Z"
+    },
+    {
+      "number": "0.0.24",
+      "date": "2016-05-31T13:13:39.584Z"
+    },
+    {
+      "number": "0.0.25",
+      "date": "2016-05-31T13:45:20.731Z"
+    },
+    {
+      "number": "0.0.26",
+      "date": "2016-05-31T16:45:34.388Z"
+    },
+    {
+      "number": "0.0.27",
+      "date": "2016-05-31T16:48:40.454Z"
+    },
+    {
+      "number": "0.0.28",
+      "date": "2016-05-31T18:50:39.824Z"
+    },
+    {
+      "number": "0.0.29",
+      "date": "2016-06-01T11:42:01.214Z"
+    },
+    {
+      "number": "0.0.30",
+      "date": "2016-06-01T11:46:58.059Z"
+    },
+    {
+      "number": "0.0.31",
+      "date": "2016-06-01T21:44:09.344Z"
+    },
+    {
+      "number": "0.0.32",
+      "date": "2016-06-01T21:45:16.358Z"
+    },
+    {
+      "number": "0.0.33",
+      "date": "2016-06-01T23:47:14.729Z"
+    },
+    {
+      "number": "0.0.34",
+      "date": "2016-06-02T18:30:08.925Z"
+    },
+    {
+      "number": "0.0.35",
+      "date": "2016-06-03T00:35:35.226Z"
+    },
+    {
+      "number": "0.0.36",
+      "date": "2016-06-03T01:48:12.365Z"
+    },
+    {
+      "number": "0.0.37",
+      "date": "2016-06-05T15:40:27.146Z"
+    },
+    {
+      "number": "0.0.38",
+      "date": "2016-06-05T15:45:03.593Z"
+    },
+    {
+      "number": "0.0.39",
+      "date": "2016-06-05T16:06:55.216Z"
+    },
+    {
+      "number": "0.1.0",
+      "date": "2016-06-06T20:07:53.265Z"
+    },
+    {
+      "number": "0.1.1",
+      "date": "2016-06-13T17:32:06.409Z"
+    },
+    {
+      "number": "0.1.2",
+      "date": "2016-06-13T19:36:57.710Z"
+    },
+    {
+      "number": "0.2.0",
+      "date": "2016-06-16T14:56:52.843Z"
+    },
+    {
+      "number": "0.3.0",
+      "date": "2016-06-21T11:45:48.931Z"
+    },
+    {
+      "number": "0.4.0",
+      "date": "2016-06-28T19:18:43.941Z"
+    },
+    {
+      "number": "0.4.1",
+      "date": "2016-07-05T17:14:14.889Z"
+    },
+    {
+      "number": "0.5.0",
+      "date": "2016-08-14T03:55:10.542Z"
+    },
+    {
+      "number": "0.6.0",
+      "date": "2016-08-23T13:46:54.040Z"
+    },
+    {
+      "number": "0.7.0",
+      "date": "2016-09-18T11:26:52.915Z"
+    },
+    {
+      "number": "0.8.0",
+      "date": "2016-10-23T18:27:49.832Z"
+    },
+    {
+      "number": "0.8.1",
+      "date": "2016-10-24T15:28:00.314Z"
+    },
+    {
+      "number": "0.8.2",
+      "date": "2016-10-24T16:19:11.343Z"
+    },
+    {
+      "number": "0.7.1",
+      "date": "2016-10-26T19:13:21.530Z"
+    },
+    {
+      "number": "0.8.3",
+      "date": "2016-10-27T07:27:16.525Z"
+    },
+    {
+      "number": "0.9.0",
+      "date": "2016-10-28T13:38:23.880Z"
+    },
+    {
+      "number": "0.9.1",
+      "date": "2016-11-26T22:09:28.801Z"
+    },
+    {
+      "number": "0.10.0",
+      "date": "2016-12-11T11:44:26.524Z"
+    },
+    {
+      "number": "0.10.1",
+      "date": "2016-12-13T17:30:48.903Z"
+    },
+    {
+      "number": "0.10.2",
+      "date": "2016-12-13T17:36:14.964Z"
+    },
+    {
+      "number": "0.10.3",
+      "date": "2016-12-14T09:49:17.585Z"
+    },
+    {
+      "number": "0.11.0",
+      "date": "2016-12-28T00:52:00.516Z"
+    },
+    {
+      "number": "0.12.0",
+      "date": "2016-12-30T20:23:30.020Z"
+    },
+    {
+      "number": "0.13.0",
+      "date": "2017-01-29T15:14:34.935Z"
+    },
+    {
+      "number": "0.13.1",
+      "date": "2017-02-04T22:32:59.166Z"
+    },
+    {
+      "number": "0.13.2",
+      "date": "2017-03-09T12:34:41.980Z"
+    },
+    {
+      "number": "0.13.3",
+      "date": "2017-03-10T08:52:46.537Z"
+    },
+    {
+      "number": "0.13.4",
+      "date": "2017-03-10T11:49:41.013Z"
+    },
+    {
+      "number": "0.13.5",
+      "date": "2017-03-12T12:29:48.918Z"
+    },
+    {
+      "number": "0.13.6",
+      "date": "2017-03-12T17:50:01.653Z"
+    },
+    {
+      "number": "0.13.7",
+      "date": "2017-05-11T07:49:27.429Z"
+    },
+    {
+      "number": "0.13.8",
+      "date": "2017-05-12T13:47:22.547Z"
+    },
+    {
+      "number": "0.13.9",
+      "date": "2017-05-13T09:12:40.957Z"
+    },
+    {
+      "number": "0.13.10",
+      "date": "2017-06-03T09:42:04.462Z"
+    },
+    {
+      "number": "0.14.0",
+      "date": "2017-08-18T11:58:09.883Z"
+    },
+    {
+      "number": "0.14.1",
+      "date": "2017-08-18T11:59:21.444Z"
+    },
+    {
+      "number": "0.14.2",
+      "date": "2017-08-25T22:12:31.028Z"
+    },
+    {
+      "number": "0.14.3",
+      "date": "2017-09-12T12:56:18.659Z"
+    },
+    {
+      "number": "0.14.4",
+      "date": "2017-10-02T14:50:44.125Z"
+    },
+    {
+      "number": "0.14.5",
+      "date": "2017-10-14T12:26:22.711Z"
+    },
+    {
+      "number": "0.14.6",
+      "date": "2017-10-17T08:44:01.096Z"
+    },
+    {
+      "number": "0.14.7",
+      "date": "2017-11-04T10:12:14.390Z"
+    },
+    {
+      "number": "0.15.0-alpha1",
+      "date": "2018-01-03T12:55:26.338Z"
+    },
+    {
+      "number": "0.15.0-alpha.2",
+      "date": "2018-01-06T13:29:29.565Z"
+    },
+    {
+      "number": "0.15.0-alpha.3",
+      "date": "2018-01-06T13:38:21.852Z"
+    },
+    {
+      "number": "0.15.0-alpha.4",
+      "date": "2018-01-09T09:24:40.542Z"
+    },
+    {
+      "number": "0.15.0-alpha.5",
+      "date": "2018-01-09T15:43:51.067Z"
+    },
+    {
+      "number": "0.15.0-alpha.6",
+      "date": "2018-01-09T18:29:49.497Z"
+    },
+    {
+      "number": "0.15.0-alpha.7",
+      "date": "2018-01-10T16:51:51.553Z"
+    },
+    {
+      "number": "0.15.0-beta.1",
+      "date": "2018-01-11T11:37:32.927Z"
+    },
+    {
+      "number": "0.15.0-beta.2",
+      "date": "2018-01-12T15:17:43.819Z"
+    },
+    {
+      "number": "0.15.0-beta.3",
+      "date": "2018-01-14T10:22:29.343Z"
+    },
+    {
+      "number": "0.15.0-beta.4",
+      "date": "2018-01-14T16:55:03.264Z"
+    },
+    {
+      "number": "0.15.0-beta.5",
+      "date": "2018-01-16T15:43:27.415Z"
+    },
+    {
+      "number": "0.15.0-beta.6",
+      "date": "2018-01-16T17:26:33.977Z"
+    },
+    {
+      "number": "0.15.0-beta.7",
+      "date": "2018-01-18T14:36:22.834Z"
+    },
+    {
+      "number": "0.15.0-beta.8",
+      "date": "2018-01-20T13:49:34.011Z"
+    },
+    {
+      "number": "0.15.0-beta.9",
+      "date": "2018-01-21T12:01:58.554Z"
+    },
+    {
+      "number": "0.15.0-beta.10",
+      "date": "2018-01-23T16:46:21.399Z"
+    },
+    {
+      "number": "0.14.8",
+      "date": "2018-01-29T11:46:49.346Z"
+    },
+    {
+      "number": "0.15.0-beta.11",
+      "date": "2018-01-31T13:31:41.976Z"
+    },
+    {
+      "number": "0.15.0-beta.12",
+      "date": "2018-01-31T13:37:43.036Z"
+    },
+    {
+      "number": "0.14.9",
+      "date": "2018-01-31T13:40:10.860Z"
+    },
+    {
+      "number": "0.15.0-beta.13",
+      "date": "2018-02-04T13:22:47.550Z"
+    },
+    {
+      "number": "0.15.0-beta.14",
+      "date": "2018-02-20T13:14:16.976Z"
+    },
+    {
+      "number": "0.15.0",
+      "date": "2018-02-20T20:25:10.341Z"
+    },
+    {
+      "number": "0.15.1",
+      "date": "2018-02-20T20:26:43.698Z"
+    },
+    {
+      "number": "0.15.2",
+      "date": "2018-02-23T21:42:52.743Z"
+    },
+    {
+      "number": "0.15.3",
+      "date": "2018-02-25T14:50:44.110Z"
+    },
+    {
+      "number": "0.15.4",
+      "date": "2018-02-27T20:47:28.606Z"
+    },
+    {
+      "number": "0.15.5",
+      "date": "2018-03-01T18:14:27.282Z"
+    },
+    {
+      "number": "0.15.6",
+      "date": "2018-03-03T15:58:00.778Z"
+    },
+    {
+      "number": "0.15.7",
+      "date": "2018-03-13T19:21:45.664Z"
+    },
+    {
+      "number": "0.15.8",
+      "date": "2018-03-17T17:46:49.483Z"
+    },
+    {
+      "number": "0.14.10",
+      "date": "2018-03-20T16:30:26.628Z"
+    },
+    {
+      "number": "0.15.9",
+      "date": "2018-03-26T18:58:19.590Z"
+    },
+    {
+      "number": "0.15.10-beta.1",
+      "date": "2018-03-26T19:40:01.323Z"
+    },
+    {
+      "number": "0.15.10-beta.2",
+      "date": "2018-03-26T19:43:30.435Z"
+    },
+    {
+      "number": "0.15.10",
+      "date": "2018-03-26T20:08:26.657Z"
+    }
+  ],
+  "created": "2015-10-05T18:39:00.102Z",
+  "modified": "2018-03-26T20:08:28.440Z",
+  "lastPublisher": {
+    "name": "rstoenescu",
+    "email": "razvan.stoenescu@gmail.com"
+  },
+  "owners": [
+    {
+      "name": "rstoenescu",
+      "email": "razvan.stoenescu@gmail.com"
+    }
+  ]
+}

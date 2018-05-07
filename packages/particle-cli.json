@@ -1,0 +1,582 @@
+{
+  "name": "particle-cli",
+  "description": "Simple Node commandline application for working with your Particle devices and using the Particle Cloud",
+  "version": "1.29.0",
+  "author": {
+    "name": "David Middlecamp"
+  },
+  "bin": {
+    "particle": "./bin/particle.js"
+  },
+  "contributors": [
+    {
+      "name": "Kenneth Lim",
+      "url": "https://github.com/kennethlimcp"
+    },
+    {
+      "name": "David Washington",
+      "url": "https://github.com/dwcares"
+    },
+    {
+      "name": "TJ Hunter",
+      "url": "https://github.com/Hypnopompia"
+    },
+    {
+      "name": "Udo Kramer",
+      "url": "https://github.com/optikfluffel"
+    },
+    {
+      "name": "vk2tds",
+      "url": "https://github.com/vk2tds"
+    },
+    {
+      "name": "Emily Rose",
+      "url": "https://github.com/emilyrose"
+    },
+    {
+      "name": "Kyle Marsh",
+      "url": "https://github.com/kylemarsh"
+    },
+    {
+      "name": "Harrison Jones",
+      "url": "https://github.com/harrisonhjones"
+    },
+    {
+      "name": "Bryce Kahle",
+      "url": "https://github.com/brycekahle"
+    },
+    {
+      "name": "Julien Vanier",
+      "url": "https://github.com/monkbroc"
+    }
+  ],
+  "dependencies": {
+    "binary-version-reader": "^0.4.0",
+    "chalk": "^1.0.0",
+    "cli-spinner": "^0.2.1",
+    "cli-table": "^0.3.1",
+    "es6-promisify": "^4.1.0",
+    "form-data": "https://github.com/particle-iot/form-data/releases/download/v1.0.0-relativepath.2/form-data-1.0.0-relativepath.2.tgz",
+    "glob": "^5.0.15",
+    "handlebars": "^4.0.5",
+    "hogan.js": "^2.0.0",
+    "inquirer": "^3.0.6",
+    "latest-version": "^2.0.0",
+    "lodash": "^3.10.1",
+    "moment": "^2.9.0",
+    "node-wifiscanner2": "^1.2.0",
+    "particle-api-js": "^6.4.1",
+    "particle-commands": "0.2.11",
+    "particle-library-manager": "0.1.12",
+    "request": "https://github.com/particle-iot/request/releases/download/v2.75.1-relativepath.1/request-2.75.1-relativepath.1.tgz",
+    "safe-buffer": "^5.1.1",
+    "semver": "^5.1.0",
+    "serialport": "^6.0.4",
+    "softap-setup": "^4.1.0",
+    "temp": "^0.8.3",
+    "when": "^3.7.2",
+    "xtend": "^4.0.0",
+    "yargs": "^5.0.0",
+    "yeoman-environment": "^1.6.6",
+    "yeoman-generator": "^1.1.1"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.10.1",
+    "babel-eslint": "^7.1.1",
+    "babel-istanbul": "^0.12.2",
+    "babel-plugin-add-module-exports": "^0.1.2",
+    "babel-plugin-transform-es2015-destructuring": "^6.23.0",
+    "babel-plugin-transform-es2015-modules-commonjs": "^6.26.0",
+    "babel-plugin-transform-es2015-parameters": "^6.24.1",
+    "babel-plugin-transform-es2015-spread": "^6.22.0",
+    "babel-register": "^6.5.2",
+    "chai": "^3.5.0",
+    "chai-as-promised": "^5.3.0",
+    "coveralls": "^2.11.4",
+    "doctoc": "^0.15.0",
+    "dotenv": "^4.0.0",
+    "eslint": "^3.15.0",
+    "eslint-config-particle": "^1.0.5",
+    "fs-extra": "^0.30.0",
+    "github-api": "^3.0.0",
+    "istanbul": "^0.3.22",
+    "mocha": "^3.0.2",
+    "mock-fs": "^4.2.0",
+    "proxyquire": "^1.6.0",
+    "rimraf-promise": "^2.0.0",
+    "should": "^7.0.2",
+    "sinon": "^4.4.2",
+    "sinon-chai": "^2.14.0",
+    "tmp": "0.0.28"
+  },
+  "engines": {
+    "node": ">=4.4"
+  },
+  "homepage": "https://github.com/particle-iot/particle-cli/",
+  "keywords": [
+    "cli",
+    "core",
+    "electron",
+    "iot",
+    "particle",
+    "photon",
+    "spark"
+  ],
+  "license": "Apache-2.0",
+  "main": "./bin/particle.js",
+  "preferGlobal": true,
+  "repository": {
+    "user": "particle-iot",
+    "repo": "particle-cli",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/particle-iot/particle-cli/tarball/master",
+    "clone_url": "https://github.com/particle-iot/particle-cli",
+    "https_url": "https://github.com/particle-iot/particle-cli",
+    "travis_url": "https://travis-ci.org/particle-iot/particle-cli",
+    "zip_url": "https://github.com/particle-iot/particle-cli/archive/master.zip",
+    "api_url": "https://api.github.com/repos/particle-iot/particle-cli"
+  },
+  "scripts": {
+    "all": "npm run lint && npm run test && npm run accept",
+    "accept": "npm run compile && accept/run",
+    "babel-watch": "babel src -d dist --watch --source-maps",
+    "coverage": "babel-node node_modules/.bin/babel-istanbul cover _mocha test/app test/cli test/cmd test/integration test/dist/lib  --report html -- -R spec",
+    "coveralls": "istanbul cover ./node_modules/mocha/bin/_mocha --report lcovonly -- -R spec --compilers js:babel-register test/ && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js && rm -rf ./coverage",
+    "doctoc": "doctoc --title '## Table of Contents' README.md",
+    "lint": "eslint -f unix src/**",
+    "lint:fix": "eslint --fix -f unix src/**",
+    "test": "mocha test/ test/app test/cli test/cmd test/integration --compilers js:babel-register",
+    "compile": "babel src -d dist",
+    "prepublish": "npm run compile",
+    "update-firmware-binaries": "node scripts/update-firmware-binaries.js",
+    "version": "npm run update-changelog",
+    "update-changelog": "VERSION=`node -p -e \"require('./package.json').version\"` bash -c 'read -p \"Update CHANGELOG.md for version $VERSION and press ENTER when done.\"' && git add CHANGELOG.md"
+  },
+  "yargs": {
+    "camel-case-expansion": false
+  },
+  "gitHead": "28cc3515b4d1827f529eba51b3211285caccd534",
+  "_npmVersion": "5.8.0",
+  "_nodeVersion": "8.10.0",
+  "dist": {
+    "integrity": "sha512-OEFpifMjSHziq2HepUKDhyX3PmOYMf6bDyhjVqDhP5TSI9jiOWSGEPVaE5dYn8R5q5XW+NfyauTtA/oV2dZK+Q==",
+    "shasum": "df8461dfe3ce99acafd948fbffc22e28a48eae5d",
+    "tarball": "http://registry.npmjs.org/particle-cli/-/particle-cli-1.29.0.tgz",
+    "fileCount": 264,
+    "unpackedSize": 2551610
+  },
+  "_hasShrinkwrap": false,
+  "stars": 1,
+  "versions": [
+    {
+      "number": "1.5.0",
+      "date": "2015-05-15T04:30:10.272Z"
+    },
+    {
+      "number": "1.5.1",
+      "date": "2015-05-15T22:24:23.845Z"
+    },
+    {
+      "number": "1.5.2",
+      "date": "2015-05-16T00:42:54.971Z"
+    },
+    {
+      "number": "1.5.3",
+      "date": "2015-05-16T07:31:02.698Z"
+    },
+    {
+      "number": "1.5.4",
+      "date": "2015-05-18T00:32:09.649Z"
+    },
+    {
+      "number": "1.5.5",
+      "date": "2015-05-18T22:14:21.533Z"
+    },
+    {
+      "number": "1.5.6",
+      "date": "2015-05-19T00:59:47.326Z"
+    },
+    {
+      "number": "1.5.7",
+      "date": "2015-05-20T00:14:47.082Z"
+    },
+    {
+      "number": "1.5.8",
+      "date": "2015-05-20T00:23:31.297Z"
+    },
+    {
+      "number": "1.5.9",
+      "date": "2015-05-22T02:19:09.094Z"
+    },
+    {
+      "number": "1.5.10",
+      "date": "2015-05-22T02:25:27.158Z"
+    },
+    {
+      "number": "1.5.11",
+      "date": "2015-05-28T20:22:12.441Z"
+    },
+    {
+      "number": "1.5.12",
+      "date": "2015-06-24T03:16:57.198Z"
+    },
+    {
+      "number": "1.5.13",
+      "date": "2015-06-25T00:30:04.488Z"
+    },
+    {
+      "number": "1.5.14",
+      "date": "2015-06-25T19:33:51.790Z"
+    },
+    {
+      "number": "1.5.15",
+      "date": "2015-06-27T09:58:24.184Z"
+    },
+    {
+      "number": "1.5.16",
+      "date": "2015-07-06T05:35:12.245Z"
+    },
+    {
+      "number": "1.5.17",
+      "date": "2015-07-24T22:38:53.626Z"
+    },
+    {
+      "number": "1.5.18",
+      "date": "2015-07-24T22:42:42.281Z"
+    },
+    {
+      "number": "1.5.19",
+      "date": "2015-07-25T05:41:13.435Z"
+    },
+    {
+      "number": "1.5.20",
+      "date": "2015-08-04T05:32:22.435Z"
+    },
+    {
+      "number": "1.6.0",
+      "date": "2015-08-06T15:22:07.043Z"
+    },
+    {
+      "number": "1.6.1",
+      "date": "2015-08-06T16:09:00.603Z"
+    },
+    {
+      "number": "1.6.2",
+      "date": "2015-08-17T21:08:58.955Z"
+    },
+    {
+      "number": "1.6.3",
+      "date": "2015-08-18T23:21:49.654Z"
+    },
+    {
+      "number": "1.6.4",
+      "date": "2015-08-20T17:16:13.496Z"
+    },
+    {
+      "number": "1.6.5",
+      "date": "2015-08-24T01:57:12.443Z"
+    },
+    {
+      "number": "1.6.6",
+      "date": "2015-08-25T21:18:12.599Z"
+    },
+    {
+      "number": "1.6.7",
+      "date": "2015-08-25T22:26:33.205Z"
+    },
+    {
+      "number": "1.6.8",
+      "date": "2015-08-26T01:37:31.989Z"
+    },
+    {
+      "number": "1.6.9",
+      "date": "2015-08-26T18:44:29.651Z"
+    },
+    {
+      "number": "1.7.0",
+      "date": "2015-09-09T19:01:41.187Z"
+    },
+    {
+      "number": "1.8.0",
+      "date": "2015-09-11T21:15:16.276Z"
+    },
+    {
+      "number": "1.8.1",
+      "date": "2015-09-11T23:41:36.733Z"
+    },
+    {
+      "number": "1.8.2",
+      "date": "2015-09-12T02:47:12.579Z"
+    },
+    {
+      "number": "1.8.3",
+      "date": "2015-09-13T00:58:38.716Z"
+    },
+    {
+      "number": "1.8.4",
+      "date": "2015-09-30T20:16:16.878Z"
+    },
+    {
+      "number": "1.8.5",
+      "date": "2015-10-02T09:49:04.348Z"
+    },
+    {
+      "number": "1.8.6",
+      "date": "2015-10-02T17:50:24.952Z"
+    },
+    {
+      "number": "1.8.7",
+      "date": "2015-10-02T23:18:08.165Z"
+    },
+    {
+      "number": "1.8.8",
+      "date": "2015-10-04T22:41:22.162Z"
+    },
+    {
+      "number": "1.8.9",
+      "date": "2015-10-12T22:17:11.421Z"
+    },
+    {
+      "number": "1.8.10",
+      "date": "2015-10-12T22:33:25.076Z"
+    },
+    {
+      "number": "1.8.11",
+      "date": "2015-10-13T00:20:50.880Z"
+    },
+    {
+      "number": "1.8.12",
+      "date": "2015-10-21T01:32:54.624Z"
+    },
+    {
+      "number": "1.8.13",
+      "date": "2015-10-22T02:49:55.559Z"
+    },
+    {
+      "number": "1.8.14",
+      "date": "2015-10-23T21:32:39.802Z"
+    },
+    {
+      "number": "1.8.15",
+      "date": "2015-10-30T19:15:06.903Z"
+    },
+    {
+      "number": "1.8.16",
+      "date": "2015-11-03T18:25:01.913Z"
+    },
+    {
+      "number": "1.8.17",
+      "date": "2015-12-14T21:05:33.000Z"
+    },
+    {
+      "number": "1.8.18",
+      "date": "2015-12-15T02:36:13.680Z"
+    },
+    {
+      "number": "1.8.19",
+      "date": "2015-12-15T18:40:08.861Z"
+    },
+    {
+      "number": "1.8.20",
+      "date": "2015-12-16T18:08:19.307Z"
+    },
+    {
+      "number": "1.8.21",
+      "date": "2015-12-21T16:50:41.668Z"
+    },
+    {
+      "number": "1.8.22",
+      "date": "2015-12-23T17:13:28.811Z"
+    },
+    {
+      "number": "1.9.0",
+      "date": "2016-01-14T07:58:47.900Z"
+    },
+    {
+      "number": "1.9.1",
+      "date": "2016-01-15T21:52:50.798Z"
+    },
+    {
+      "number": "1.9.2",
+      "date": "2016-01-17T01:47:54.453Z"
+    },
+    {
+      "number": "1.9.3",
+      "date": "2016-01-20T21:54:16.812Z"
+    },
+    {
+      "number": "1.10.0",
+      "date": "2016-01-27T21:16:25.938Z"
+    },
+    {
+      "number": "1.11.0",
+      "date": "2016-02-10T19:03:17.457Z"
+    },
+    {
+      "number": "1.12.0",
+      "date": "2016-04-21T17:29:43.309Z"
+    },
+    {
+      "number": "1.13.0",
+      "date": "2016-05-25T18:47:02.605Z"
+    },
+    {
+      "number": "1.14.0",
+      "date": "2016-05-27T17:23:10.123Z"
+    },
+    {
+      "number": "1.14.1",
+      "date": "2016-05-31T16:34:53.931Z"
+    },
+    {
+      "number": "1.14.2",
+      "date": "2016-06-01T20:43:32.410Z"
+    },
+    {
+      "number": "1.15.0",
+      "date": "2016-07-07T16:53:36.040Z"
+    },
+    {
+      "number": "1.16.0",
+      "date": "2016-08-06T00:54:13.724Z"
+    },
+    {
+      "number": "1.17.0",
+      "date": "2016-09-30T18:48:02.442Z"
+    },
+    {
+      "number": "1.17.1",
+      "date": "2016-11-11T19:54:26.453Z"
+    },
+    {
+      "number": "1.17.2",
+      "date": "2016-11-17T16:44:56.249Z"
+    },
+    {
+      "number": "1.18.0",
+      "date": "2016-11-22T22:15:38.891Z"
+    },
+    {
+      "number": "1.19.0",
+      "date": "2017-01-23T16:40:25.228Z"
+    },
+    {
+      "number": "1.19.1",
+      "date": "2017-01-23T23:17:35.405Z"
+    },
+    {
+      "number": "1.19.2",
+      "date": "2017-01-26T19:49:46.048Z"
+    },
+    {
+      "number": "1.19.3",
+      "date": "2017-02-07T22:06:52.075Z"
+    },
+    {
+      "number": "1.19.4",
+      "date": "2017-02-07T23:26:42.259Z"
+    },
+    {
+      "number": "1.20.0",
+      "date": "2017-03-01T21:18:12.574Z"
+    },
+    {
+      "number": "1.20.1",
+      "date": "2017-03-02T15:18:12.194Z"
+    },
+    {
+      "number": "1.21.0",
+      "date": "2017-03-29T15:10:33.991Z"
+    },
+    {
+      "number": "1.22.0",
+      "date": "2017-05-03T17:49:17.683Z"
+    },
+    {
+      "number": "1.23.0",
+      "date": "2017-06-30T10:21:20.694Z"
+    },
+    {
+      "number": "1.23.1",
+      "date": "2017-07-06T20:35:30.861Z"
+    },
+    {
+      "number": "1.24.0",
+      "date": "2017-08-29T21:49:19.561Z"
+    },
+    {
+      "number": "1.24.1",
+      "date": "2017-09-12T15:58:38.930Z"
+    },
+    {
+      "number": "1.25.0",
+      "date": "2017-11-08T01:16:09.034Z"
+    },
+    {
+      "number": "1.26.0",
+      "date": "2017-11-29T19:09:58.120Z"
+    },
+    {
+      "number": "1.26.1",
+      "date": "2017-11-29T19:12:03.551Z"
+    },
+    {
+      "number": "1.26.2",
+      "date": "2017-11-30T05:29:14.044Z"
+    },
+    {
+      "number": "1.27.0-rc.3",
+      "date": "2017-12-02T14:38:02.273Z"
+    },
+    {
+      "number": "1.27.0",
+      "date": "2017-12-06T03:09:04.311Z"
+    },
+    {
+      "number": "1.27.1",
+      "date": "2018-01-22T16:22:15.952Z"
+    },
+    {
+      "number": "1.28.0",
+      "date": "2018-03-08T15:47:49.616Z"
+    },
+    {
+      "number": "1.28.1",
+      "date": "2018-03-08T22:40:56.603Z"
+    },
+    {
+      "number": "1.28.2",
+      "date": "2018-03-21T18:55:21.176Z"
+    },
+    {
+      "number": "1.29.0",
+      "date": "2018-03-26T19:01:49.744Z"
+    }
+  ],
+  "created": "2015-05-15T04:30:10.272Z",
+  "modified": "2018-03-26T19:01:51.189Z",
+  "lastPublisher": {
+    "name": "particlebot",
+    "email": "engineering+npm@particle.io"
+  },
+  "owners": [
+    {
+      "email": "david@spark.io",
+      "name": "dmiddlecamp"
+    },
+    {
+      "email": "mat.mcgowan+npm@gmail.com",
+      "name": "mdma"
+    },
+    {
+      "email": "jvanier@gmail.com",
+      "name": "monkbroc"
+    },
+    {
+      "email": "engineering+npm@particle.io",
+      "name": "particlebot"
+    }
+  ]
+}

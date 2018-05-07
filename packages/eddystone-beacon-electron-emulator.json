@@ -1,0 +1,89 @@
+{
+  "name": "eddystone-beacon-electron-emulator",
+  "productName": "Eddystone beacon",
+  "version": "0.2.0",
+  "description": "Eddystone beacon peripheral for Mac",
+  "os": [
+    "darwin"
+  ],
+  "license": "MIT",
+  "main": "index.js",
+  "repository": {
+    "user": "ragingwind",
+    "repo": "eddystone-beacon-electron-emulator",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/ragingwind/eddystone-beacon-electron-emulator/tarball/master",
+    "clone_url": "https://github.com/ragingwind/eddystone-beacon-electron-emulator",
+    "https_url": "https://github.com/ragingwind/eddystone-beacon-electron-emulator",
+    "travis_url": "https://travis-ci.org/ragingwind/eddystone-beacon-electron-emulator",
+    "zip_url": "https://github.com/ragingwind/eddystone-beacon-electron-emulator/archive/master.zip",
+    "api_url": "https://api.github.com/repos/ragingwind/eddystone-beacon-electron-emulator"
+  },
+  "author": {
+    "name": "ragingwind",
+    "email": "ragingwind@gmail.com",
+    "url": "ragingwind.me"
+  },
+  "engines": {
+    "node": ">=6"
+  },
+  "scripts": {
+    "start": "electron .",
+    "clean": "rm -rf build; mkdir -p build",
+    "postinstall": "electron-rebuild -f -w xpc-connection",
+    "build": "electron-packager . $npm_package_productName --icon=components/eddystone-logo.png --out=./build --platform=darwin --arch=all --prune --asar --ignore=node_modules/electron-prebuilt --ignore=node_modules/electron-packager --ignore=.git  --version=0.30.4"
+  },
+  "files": [
+    "index.js",
+    "index.html",
+    "index.css"
+  ],
+  "keywords": [
+    "electron-app"
+  ],
+  "devDependencies": {
+    "electron-packager": "^8.0.0",
+    "electron-prebuilt": "^1.4.0",
+    "electron-rebuild": "^1.2.1"
+  },
+  "dependencies": {
+    "eddystone-beacon": "^1.0.6",
+    "electron-debug": "^1.0.1",
+    "node-jsx": "^0.13.3",
+    "react": "^15.3.1",
+    "react-addons-css-transition-group": "^15.3.1",
+    "react-dom": "^15.3.1"
+  },
+  "gitHead": "19e9ab5a81ed3b2bb20773c13b5a7e7a963757d9",
+  "homepage": "https://github.com/ragingwind/eddystone-beacon-electron-emulator#readme",
+  "_npmVersion": "3.9.5",
+  "_nodeVersion": "6.2.2",
+  "dist": {
+    "shasum": "f144113a5b1565d5664ce725eadf7888e772057a",
+    "tarball": "http://registry.npmjs.org/eddystone-beacon-electron-emulator/-/eddystone-beacon-electron-emulator-0.2.0.tgz"
+  },
+  "versions": [
+    {
+      "number": "0.1.2",
+      "date": "2015-10-14T05:03:58.033Z"
+    },
+    {
+      "number": "0.2.0",
+      "date": "2016-09-16T11:45:27.462Z"
+    }
+  ],
+  "created": "2015-10-14T05:03:58.033Z",
+  "modified": "2016-09-16T11:45:27.462Z",
+  "lastPublisher": {
+    "name": "ragingwind",
+    "email": "ragingwind@gmail.com"
+  },
+  "owners": [
+    {
+      "name": "ragingwind",
+      "email": "ragingwind@gmail.com"
+    }
+  ]
+}

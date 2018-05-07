@@ -1,0 +1,108 @@
+{
+  "name": "nec-winstaller",
+  "version": "1.0.2",
+  "description": "Module to generate Windows installers for Electron apps",
+  "main": "./lib/index.js",
+  "license": "MIT",
+  "repository": {
+    "user": "toantk911",
+    "repo": "nec-winstaller",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/toantk911/nec-winstaller/tarball/master",
+    "clone_url": "https://github.com/toantk911/nec-winstaller",
+    "https_url": "https://github.com/toantk911/nec-winstaller",
+    "travis_url": "https://travis-ci.org/toantk911/nec-winstaller",
+    "zip_url": "https://github.com/toantk911/nec-winstaller/archive/master.zip",
+    "api_url": "https://api.github.com/repos/toantk911/nec-winstaller"
+  },
+  "scripts": {
+    "compile": "babel -d lib/ src/",
+    "prepublish": "npm run compile",
+    "lint": "eslint src & eslint spec",
+    "test": "npm run lint && ava",
+    "tdd": "ava --watch"
+  },
+  "dependencies": {
+    "asar": "^0.11.0",
+    "bluebird": "^3.3.4",
+    "debug": "^2.2.0",
+    "fs-extra": "^0.26.7",
+    "lodash.template": "^4.2.2",
+    "temp": "^0.8.3"
+  },
+  "devDependencies": {
+    "ava": "^0.13.0",
+    "babel-cli": "^6.6.5",
+    "babel-eslint": "^6.0.2",
+    "babel-plugin-transform-async-to-module-method": "^6.7.0",
+    "babel-plugin-transform-runtime": "^6.6.0",
+    "babel-preset-es2015-node4": "^2.0.3",
+    "babel-preset-stage-0": "^6.5.0",
+    "babel-register": "^6.7.2",
+    "eslint": "^2.4.0"
+  },
+  "engines": {
+    "node": ">=0.4.0"
+  },
+  "babel": {
+    "presets": [
+      "stage-0",
+      "es2015-node4"
+    ],
+    "plugins": [
+      [
+        "transform-async-to-module-method",
+        {
+          "module": "bluebird",
+          "method": "coroutine"
+        }
+      ]
+    ]
+  },
+  "ava": {
+    "files": [
+      "spec/*.js"
+    ],
+    "failFast": true,
+    "require": [
+      "babel-register"
+    ],
+    "babel": "inherit"
+  },
+  "gitHead": "e449b2f8645b7820171405f8476b1e51f4e091b7",
+  "homepage": "https://github.com/toantk911/nec-winstaller#readme",
+  "_npmVersion": "3.10.10",
+  "_nodeVersion": "6.10.2",
+  "dist": {
+    "shasum": "b50e39b9791f799acf6e82fddfc3a8781a660d7b",
+    "tarball": "https://registry.npmjs.org/nec-winstaller/-/nec-winstaller-1.0.2.tgz"
+  },
+  "versions": [
+    {
+      "number": "1.0.0",
+      "date": "2017-08-21T12:40:26.923Z"
+    },
+    {
+      "number": "1.0.1",
+      "date": "2017-08-21T12:47:15.973Z"
+    },
+    {
+      "number": "1.0.2",
+      "date": "2017-08-24T04:00:39.010Z"
+    }
+  ],
+  "created": "2017-08-21T12:40:26.923Z",
+  "modified": "2017-08-24T04:00:39.010Z",
+  "lastPublisher": {
+    "name": "toantk911",
+    "email": "toantk.89@gmail.com"
+  },
+  "owners": [
+    {
+      "name": "toantk911",
+      "email": "toantk.89@gmail.com"
+    }
+  ]
+}

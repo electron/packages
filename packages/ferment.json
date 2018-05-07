@@ -1,0 +1,315 @@
+{
+  "name": "ferment",
+  "version": "0.6.19",
+  "description": "Peer-to-peer audio publishing and streaming application. Like SoundCloud but decentralized. A mashup of ssb, webtorrent and electron.",
+  "main": "index.js",
+  "scripts": {
+    "test": "standard",
+    "start": "electron index.js",
+    "server": "electron server/index.js",
+    "postinstall": "npm run rebuild",
+    "rebuild": "npm rebuild --runtime=electron --target=1.4.3 --abi=50 --disturl=https://atom.io/download/atom-shell"
+  },
+  "bin": {
+    "ferment": "scripts/start.js"
+  },
+  "repository": {
+    "user": "mmckegg",
+    "repo": "ferment",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/mmckegg/ferment/tarball/master",
+    "clone_url": "https://github.com/mmckegg/ferment",
+    "https_url": "https://github.com/mmckegg/ferment",
+    "travis_url": "https://travis-ci.org/mmckegg/ferment",
+    "zip_url": "https://github.com/mmckegg/ferment/archive/master.zip",
+    "api_url": "https://api.github.com/repos/mmckegg/ferment"
+  },
+  "keywords": [
+    "audio",
+    "share",
+    "feed",
+    "stream",
+    "torrent",
+    "soundcloud",
+    "mixcloud",
+    "webtorrent",
+    "ssb",
+    "electron"
+  ],
+  "author": {
+    "name": "Matt McKegg"
+  },
+  "license": "GPL-3.0",
+  "homepage": "https://github.com/mmckegg/ferment#readme",
+  "dependencies": {
+    "@mmckegg/mutant": "~3.7.2",
+    "atomic-file": "^0.1.0",
+    "bittorrent-tracker": "^8.0.12",
+    "broadcast-stream": "^0.1.1",
+    "color-hash": "^1.0.3",
+    "compare-version": "^0.1.2",
+    "create-torrent": "~3.25.1",
+    "data-uri-to-buffer": "0.0.4",
+    "electron": "~1.4.2",
+    "electron-default-menu": "^1.0.0",
+    "graphmitter": "^1.6.3",
+    "has-network": "0.0.0",
+    "human-time": "0.0.1",
+    "insert-css": "^1.0.0",
+    "level-memview": "0.0.0",
+    "mdmanifest": "^1.0.8",
+    "micro-css": "^0.6.1",
+    "mime-types": "^2.1.12",
+    "on-change-network": "0.0.2",
+    "on-wakeup": "^1.0.1",
+    "prettier-bytes": "^1.0.3",
+    "pull-file": "^1.0.0",
+    "pull-identify-filetype": "^1.1.0",
+    "pull-notify": "^0.1.1",
+    "pull-ping": "^2.0.2",
+    "pull-pushable": "^2.0.1",
+    "pull-stream": "^3.4.5",
+    "rimraf": "^2.5.4",
+    "sanitize-filename": "^1.6.1",
+    "scuttlebot": "~9.1.1",
+    "sodium-prebuilt": "~1.0.22",
+    "ssb-blobs": "~0.1.7",
+    "ssb-client": "~4.3.0",
+    "ssb-config": "~2.1.1",
+    "ssb-markdown": "^3.0.0",
+    "ssb-msg-schemas": "^6.2.1",
+    "ssb-msgs": "^5.2.0",
+    "ssb-ref": "^2.6.1",
+    "statistics": "^3.3.0",
+    "stream-to-pull-stream": "^1.7.2",
+    "webtorrent": "~0.97.2",
+    "xtend": "^4.0.1"
+  },
+  "devDependencies": {
+    "node-gyp": ">=1.0.2",
+    "standard": "^8.3.0"
+  },
+  "gitHead": "b278981b1587adf9f96f939cfe44b683d62028d1",
+  "_npmVersion": "3.10.3",
+  "_nodeVersion": "6.4.0",
+  "dist": {
+    "shasum": "af676cdf121e51d74c83d2311c523b6051aeac7e",
+    "tarball": "http://registry.npmjs.org/ferment/-/ferment-0.6.19.tgz"
+  },
+  "versions": [
+    {
+      "number": "0.0.0",
+      "date": "2016-10-04T14:53:56.927Z"
+    },
+    {
+      "number": "0.0.1",
+      "date": "2016-10-04T15:37:41.340Z"
+    },
+    {
+      "number": "0.0.2",
+      "date": "2016-10-04T16:16:36.889Z"
+    },
+    {
+      "number": "0.0.3",
+      "date": "2016-10-04T17:41:45.250Z"
+    },
+    {
+      "number": "0.0.4",
+      "date": "2016-10-05T00:15:24.560Z"
+    },
+    {
+      "number": "0.0.5",
+      "date": "2016-10-05T00:35:38.346Z"
+    },
+    {
+      "number": "0.1.0",
+      "date": "2016-10-05T04:40:36.221Z"
+    },
+    {
+      "number": "0.1.1",
+      "date": "2016-10-05T05:35:10.200Z"
+    },
+    {
+      "number": "0.2.0",
+      "date": "2016-10-05T12:41:33.529Z"
+    },
+    {
+      "number": "0.2.1",
+      "date": "2016-10-05T12:48:37.093Z"
+    },
+    {
+      "number": "0.2.2",
+      "date": "2016-10-05T13:13:38.294Z"
+    },
+    {
+      "number": "0.2.3",
+      "date": "2016-10-06T03:30:49.424Z"
+    },
+    {
+      "number": "0.2.4",
+      "date": "2016-10-06T03:48:11.063Z"
+    },
+    {
+      "number": "0.2.5",
+      "date": "2016-10-06T04:36:38.293Z"
+    },
+    {
+      "number": "0.2.6",
+      "date": "2016-10-06T05:41:01.193Z"
+    },
+    {
+      "number": "0.2.7",
+      "date": "2016-10-07T06:52:18.390Z"
+    },
+    {
+      "number": "0.2.8",
+      "date": "2016-10-08T04:20:14.118Z"
+    },
+    {
+      "number": "0.3.0",
+      "date": "2016-10-09T02:39:59.318Z"
+    },
+    {
+      "number": "0.4.0",
+      "date": "2016-10-09T08:23:31.359Z"
+    },
+    {
+      "number": "0.4.1",
+      "date": "2016-10-09T12:19:02.163Z"
+    },
+    {
+      "number": "0.4.2",
+      "date": "2016-10-09T19:20:19.997Z"
+    },
+    {
+      "number": "0.4.3",
+      "date": "2016-10-09T19:31:58.403Z"
+    },
+    {
+      "number": "0.4.4",
+      "date": "2016-10-10T00:15:44.065Z"
+    },
+    {
+      "number": "0.4.5",
+      "date": "2016-10-10T02:57:54.036Z"
+    },
+    {
+      "number": "0.4.6",
+      "date": "2016-10-10T04:57:27.689Z"
+    },
+    {
+      "number": "0.5.0",
+      "date": "2016-10-10T13:10:41.469Z"
+    },
+    {
+      "number": "0.5.1",
+      "date": "2016-10-10T13:23:15.532Z"
+    },
+    {
+      "number": "0.5.2",
+      "date": "2016-10-11T00:45:06.119Z"
+    },
+    {
+      "number": "0.5.3",
+      "date": "2016-10-11T01:26:11.073Z"
+    },
+    {
+      "number": "0.5.4",
+      "date": "2016-10-11T01:55:43.840Z"
+    },
+    {
+      "number": "0.6.0",
+      "date": "2016-10-11T07:53:57.326Z"
+    },
+    {
+      "number": "0.6.1",
+      "date": "2016-10-11T08:10:19.730Z"
+    },
+    {
+      "number": "0.6.2",
+      "date": "2016-10-11T11:00:03.374Z"
+    },
+    {
+      "number": "0.6.3",
+      "date": "2016-10-11T11:58:09.353Z"
+    },
+    {
+      "number": "0.6.4",
+      "date": "2016-10-11T14:47:15.605Z"
+    },
+    {
+      "number": "0.6.5",
+      "date": "2016-10-11T20:50:32.624Z"
+    },
+    {
+      "number": "0.6.6",
+      "date": "2016-10-11T22:16:53.918Z"
+    },
+    {
+      "number": "0.6.7",
+      "date": "2016-10-12T13:48:00.834Z"
+    },
+    {
+      "number": "0.6.8",
+      "date": "2016-10-12T15:07:55.001Z"
+    },
+    {
+      "number": "0.6.9",
+      "date": "2016-10-12T16:40:16.051Z"
+    },
+    {
+      "number": "0.6.10",
+      "date": "2016-10-12T16:50:41.203Z"
+    },
+    {
+      "number": "0.6.11",
+      "date": "2016-10-12T23:38:26.624Z"
+    },
+    {
+      "number": "0.6.12",
+      "date": "2016-10-16T10:40:19.008Z"
+    },
+    {
+      "number": "0.6.13",
+      "date": "2016-10-17T07:24:44.470Z"
+    },
+    {
+      "number": "0.6.14",
+      "date": "2016-10-17T22:26:01.624Z"
+    },
+    {
+      "number": "0.6.15",
+      "date": "2016-10-28T01:29:09.944Z"
+    },
+    {
+      "number": "0.6.16",
+      "date": "2016-11-04T12:29:01.572Z"
+    },
+    {
+      "number": "0.6.17",
+      "date": "2016-11-06T01:09:28.125Z"
+    },
+    {
+      "number": "0.6.18",
+      "date": "2016-11-06T03:55:19.320Z"
+    },
+    {
+      "number": "0.6.19",
+      "date": "2016-11-11T00:42:34.780Z"
+    }
+  ],
+  "created": "2016-10-04T14:53:56.927Z",
+  "modified": "2016-11-11T00:42:34.780Z",
+  "lastPublisher": {
+    "name": "mmckegg",
+    "email": "matt@wetsand.co.nz"
+  },
+  "owners": [
+    {
+      "name": "mmckegg",
+      "email": "matt@wetsand.co.nz"
+    }
+  ]
+}

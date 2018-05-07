@@ -1,0 +1,150 @@
+{
+  "name": "ndfo",
+  "version": "0.8.0",
+  "description": "Undefined object class wrapper.",
+  "main": "ndfo.js",
+  "support": "ndfo.support.js",
+  "deploy": "ndfo.deploy.js",
+  "browser": "ndfo.deploy.js",
+  "scripts": {
+    "pristine": "rsetmod clean && flxc execute ./.install.sh",
+    "clear": "rsetmod clean --clear",
+    "formal": "jesy apply '*.json'",
+    "build:support": "gulp --module ndfo,undefined --all",
+    "build:deploy": "webpack --config webpack.compact.js --progress --display-modules",
+    "rebuild": "npm run build:support && npm run build:deploy",
+    "build": "npm run pristine && npm run rebuild",
+    "build:test:support": "gulp --module test --all",
+    "build:test:deploy": "webpack --config webpack.test.js --progress --display-modules",
+    "build:test:bridge": "gulp --module test --bridge",
+    "build:test": "npm run build:test:support && npm run build:test:deploy && npm run build:test:bridge",
+    "test:server": "mocha test.js && mocha test.js --reporter=json > test.server.json",
+    "test:client": "wdio wdio.client.js",
+    "pretest": "npm run clear && npm run rebuild && npm run build:test",
+    "test": "npm run test:server && npm run test:client",
+    "posttest": "npm run formal",
+    "deploy": "npm run build && npm run build:test && npm run test:server && npm run test:client && npm run formal"
+  },
+  "repository": {
+    "user": "volkovasystems",
+    "repo": "ndfo",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/volkovasystems/ndfo/tarball/master",
+    "clone_url": "https://github.com/volkovasystems/ndfo",
+    "https_url": "https://github.com/volkovasystems/ndfo",
+    "travis_url": "https://travis-ci.org/volkovasystems/ndfo",
+    "zip_url": "https://github.com/volkovasystems/ndfo/archive/master.zip",
+    "api_url": "https://api.github.com/repos/volkovasystems/ndfo"
+  },
+  "keywords": [
+    "undefined",
+    "object",
+    "class",
+    "wrapper",
+    "ndfo"
+  ],
+  "author": {
+    "name": "Richeve S. Bebedor",
+    "email": "richeve.bebedor@gmail.com"
+  },
+  "contributors": [
+    {
+      "name": "John Lenon Maghanoy",
+      "email": "johnlenonmaghanoy@gmail.com"
+    },
+    {
+      "name": "Vinse Vinalon",
+      "email": "vinsevinalon@gmail.com"
+    }
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/volkovasystems/ndfo#readme",
+  "dependencies": {
+    "babel-runtime": "^6.25.0",
+    "ehm": "^0.21.0",
+    "harden": "^0.23.0"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.24.1",
+    "babel-core": "^6.25.0",
+    "babel-plugin-transform-runtime": "^6.23.0",
+    "babel-preset-latest": "^6.24.1",
+    "electron": "^1.6.11",
+    "gulp": "^3.9.1",
+    "gulp-babel": "^6.1.2",
+    "gulp-changed": "^3.1.0",
+    "gulp-debug": "^3.1.0",
+    "gulp-plumber": "^1.1.0",
+    "gulp-rename": "^1.2.2",
+    "gulp-replace": "^0.6.1",
+    "gulp-sourcemaps": "^2.6.0",
+    "mocha": "^3.5.0",
+    "should": "^11.2.1",
+    "source-map-loader": "^0.2.1",
+    "wdio-json-reporter": "^0.2.1",
+    "wdio-mocha-framework": "^0.5.10",
+    "wdio-selenium-standalone-service": "^0.0.9",
+    "webdriverio": "^4.8.0",
+    "webpack": "^3.4.1",
+    "yargs": "^8.0.2"
+  },
+  "gitHead": "8f0ac14d253c5b25ccb91d62a0200bb717f71551",
+  "_npmVersion": "4.0.5",
+  "_nodeVersion": "6.11.0",
+  "dist": {
+    "shasum": "d3881610cedc8459ed51b9945e91d8e915bfbc14",
+    "tarball": "https://registry.npmjs.org/ndfo/-/ndfo-0.8.0.tgz"
+  },
+  "versions": [
+    {
+      "number": "0.0.0",
+      "date": "2017-03-20T00:58:11.943Z"
+    },
+    {
+      "number": "0.1.0",
+      "date": "2017-06-06T03:34:15.550Z"
+    },
+    {
+      "number": "0.2.0",
+      "date": "2017-06-23T03:06:10.496Z"
+    },
+    {
+      "number": "0.3.0",
+      "date": "2017-07-27T18:10:38.363Z"
+    },
+    {
+      "number": "0.4.0",
+      "date": "2017-08-01T08:36:16.658Z"
+    },
+    {
+      "number": "0.5.0",
+      "date": "2017-08-01T10:07:56.994Z"
+    },
+    {
+      "number": "0.6.0",
+      "date": "2017-08-01T15:20:05.920Z"
+    },
+    {
+      "number": "0.7.0",
+      "date": "2017-08-02T17:52:34.508Z"
+    },
+    {
+      "number": "0.8.0",
+      "date": "2017-08-07T12:37:32.066Z"
+    }
+  ],
+  "created": "2017-03-20T00:58:11.943Z",
+  "modified": "2017-08-07T12:37:32.066Z",
+  "lastPublisher": {
+    "name": "volkova",
+    "email": "richeve.bebedor@gmail.com"
+  },
+  "owners": [
+    {
+      "name": "volkova",
+      "email": "richeve.bebedor@gmail.com"
+    }
+  ]
+}

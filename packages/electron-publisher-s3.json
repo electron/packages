@@ -1,0 +1,569 @@
+{
+  "name": "electron-publisher-s3",
+  "version": "20.13.1",
+  "main": "out/s3Publisher.js",
+  "author": {
+    "name": "Vladimir Krivosheev"
+  },
+  "license": "MIT",
+  "repository": {
+    "user": "electron-userland",
+    "repo": "electron-builder",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/electron-userland/electron-builder/tarball/master",
+    "clone_url": "https://github.com/electron-userland/electron-builder",
+    "https_url": "https://github.com/electron-userland/electron-builder",
+    "travis_url": "https://travis-ci.org/electron-userland/electron-builder",
+    "zip_url": "https://github.com/electron-userland/electron-builder/archive/master.zip",
+    "api_url": "https://api.github.com/repos/electron-userland/electron-builder"
+  },
+  "homepage": "https://github.com/electron-userland/electron-builder",
+  "files": [
+    "out"
+  ],
+  "dependencies": {
+    "fs-extra-p": "^4.6.0",
+    "aws-sdk": "^2.231.1",
+    "mime": "^2.3.1",
+    "electron-publish": "~20.13.1",
+    "builder-util": "^5.8.0",
+    "bluebird-lst": "^1.0.5"
+  },
+  "typings": "./out/s3Publisher.d.ts",
+  "description": "Part of [electron-builder](https://github.com/electron-userland/electron-builder).",
+  "_npmVersion": "6.0.0",
+  "_nodeVersion": "10.0.0",
+  "dist": {
+    "integrity": "sha512-SeKXDTY/GN7b8jFXy5ezPzO/SQHUtT/scNjacymVST0dXPxZFhKg7GxHMZ3V3GrfGZRDb63LvRIR7eg5q3PUeA==",
+    "shasum": "163ae9981320e2014993d90a59d41d7d08bd742e",
+    "tarball": "https://registry.npmjs.org/electron-publisher-s3/-/electron-publisher-s3-20.13.1.tgz",
+    "fileCount": 15,
+    "unpackedSize": 55775,
+    "npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJa6t7bCRA9TVsSAnZWagAALtYQAIVbXcp/sogTcSHGFQAi\nkzaeyWJMpwE3njb6p0drvLpPnl8VJbSB3OmUNHf3RZlABscDUb3yA/7SMTEJ\ncowUGdbhf2PiQ/6X8sD7Ibjw1cWgjgbgu0Bj+TGD3b5p3ajWr2oiYFEz1FJp\n22KofTGqkPUUWGAubQkFfWlmObqJCIjyzjaxHEUy1sRsvIcG0N5xJ1BkFLx2\nkbJEiE9gn5zCglNfdI4r6qTRoZMAua9J/sRLyRMku41F2qC3XuZe1K5Q8euv\n7VaFZl7ILp999NV3WRe8Fs5XUPvGdgDBaqgiy1/miCdgUlZ2pKrFyY1JdSVW\nDylJt1KtlhzjNgLJecmR7k/xoUQL3UtVr4LUreib/TSTithqXtIUj/h5GZDc\nyDcvYJGNezv02icuQcHmkFPgQh1/rS82eFx9zqTc1N+329GAH+rHxOqvjDgQ\nWu+VtaiP+/thBp2yYA5CWIZcOSsjwHJGvs2ozRTpSYu3qZfw71nTMWy6iFMl\nVPoyACHAGEb2QL5pfIjkBtzVYMRlKYbvy/4AxMxhW03kjsOrmiydPNW7Y1MF\nQ+gBQMZIWnBDHshuI/rNYtNXtYnEkh+HhlDSg7UDAuINAWyKLWVXlYS7d5OS\nFdnAdWPTF1WER0Wg1qktowMC5oCBCKB62wjItu93cXJ3sJWNSgXs1pHadDvo\nVz19\r\n=zBqL\r\n-----END PGP SIGNATURE-----\r\n"
+  },
+  "_hasShrinkwrap": false,
+  "versions": [
+    {
+      "number": "13.1.0",
+      "date": "2017-02-07T08:20:15.519Z"
+    },
+    {
+      "number": "13.2.0",
+      "date": "2017-02-08T08:37:17.589Z"
+    },
+    {
+      "number": "13.3.0",
+      "date": "2017-02-09T08:30:32.032Z"
+    },
+    {
+      "number": "13.3.1",
+      "date": "2017-02-09T08:49:07.595Z"
+    },
+    {
+      "number": "13.4.0",
+      "date": "2017-02-10T08:28:37.273Z"
+    },
+    {
+      "number": "13.6.0",
+      "date": "2017-02-13T07:05:12.659Z"
+    },
+    {
+      "number": "13.10.0",
+      "date": "2017-02-17T20:16:27.235Z"
+    },
+    {
+      "number": "13.10.1",
+      "date": "2017-02-18T07:11:44.132Z"
+    },
+    {
+      "number": "15.0.0",
+      "date": "2017-02-28T21:28:19.334Z"
+    },
+    {
+      "number": "15.0.1",
+      "date": "2017-03-05T20:38:22.771Z"
+    },
+    {
+      "number": "15.2.0",
+      "date": "2017-03-08T12:31:17.945Z"
+    },
+    {
+      "number": "15.3.0",
+      "date": "2017-03-11T08:37:40.943Z"
+    },
+    {
+      "number": "15.4.0",
+      "date": "2017-03-12T20:54:33.593Z"
+    },
+    {
+      "number": "15.5.0",
+      "date": "2017-03-15T09:06:23.903Z"
+    },
+    {
+      "number": "15.5.1",
+      "date": "2017-03-15T09:41:13.327Z"
+    },
+    {
+      "number": "15.6.1",
+      "date": "2017-03-17T07:21:18.304Z"
+    },
+    {
+      "number": "15.6.2",
+      "date": "2017-03-17T17:05:47.531Z"
+    },
+    {
+      "number": "15.6.3",
+      "date": "2017-03-18T12:26:04.277Z"
+    },
+    {
+      "number": "16.0.0",
+      "date": "2017-03-21T10:02:36.358Z"
+    },
+    {
+      "number": "16.1.0",
+      "date": "2017-03-22T09:23:30.790Z"
+    },
+    {
+      "number": "16.3.0",
+      "date": "2017-03-24T08:40:19.452Z"
+    },
+    {
+      "number": "16.4.0",
+      "date": "2017-03-25T16:20:37.481Z"
+    },
+    {
+      "number": "16.6.0",
+      "date": "2017-03-29T20:45:25.313Z"
+    },
+    {
+      "number": "16.6.2",
+      "date": "2017-04-04T18:16:37.282Z"
+    },
+    {
+      "number": "16.7.1",
+      "date": "2017-04-07T06:31:04.645Z"
+    },
+    {
+      "number": "16.8.0",
+      "date": "2017-04-08T08:39:38.743Z"
+    },
+    {
+      "number": "16.8.3",
+      "date": "2017-04-12T08:05:38.583Z"
+    },
+    {
+      "number": "17.0.0",
+      "date": "2017-04-15T10:32:38.073Z"
+    },
+    {
+      "number": "17.0.1",
+      "date": "2017-04-16T13:29:45.769Z"
+    },
+    {
+      "number": "17.0.2",
+      "date": "2017-04-16T19:00:18.650Z"
+    },
+    {
+      "number": "17.0.3",
+      "date": "2017-04-23T07:01:15.896Z"
+    },
+    {
+      "number": "17.2.0",
+      "date": "2017-05-02T19:44:26.705Z"
+    },
+    {
+      "number": "17.4.0",
+      "date": "2017-05-08T07:22:56.629Z"
+    },
+    {
+      "number": "17.6.0",
+      "date": "2017-05-13T09:39:27.200Z"
+    },
+    {
+      "number": "17.9.0",
+      "date": "2017-05-20T10:34:51.991Z"
+    },
+    {
+      "number": "18.0.0",
+      "date": "2017-05-23T19:47:11.008Z"
+    },
+    {
+      "number": "18.0.1",
+      "date": "2017-05-24T12:27:37.901Z"
+    },
+    {
+      "number": "18.3.0",
+      "date": "2017-05-31T09:49:16.941Z"
+    },
+    {
+      "number": "18.3.5",
+      "date": "2017-06-01T19:34:46.621Z"
+    },
+    {
+      "number": "18.4.0",
+      "date": "2017-06-02T19:39:36.770Z"
+    },
+    {
+      "number": "18.4.1",
+      "date": "2017-06-03T08:38:47.962Z"
+    },
+    {
+      "number": "18.5.0",
+      "date": "2017-06-05T10:47:51.522Z"
+    },
+    {
+      "number": "18.6.0",
+      "date": "2017-06-06T17:08:39.344Z"
+    },
+    {
+      "number": "18.7.0",
+      "date": "2017-06-08T18:01:53.872Z"
+    },
+    {
+      "number": "18.8.0",
+      "date": "2017-06-12T07:06:42.040Z"
+    },
+    {
+      "number": "19.0.1",
+      "date": "2017-06-12T09:52:02.047Z"
+    },
+    {
+      "number": "19.2.0",
+      "date": "2017-06-13T05:57:14.296Z"
+    },
+    {
+      "number": "19.2.3",
+      "date": "2017-06-14T09:11:50.880Z"
+    },
+    {
+      "number": "19.3.0",
+      "date": "2017-06-15T07:52:58.648Z"
+    },
+    {
+      "number": "19.4.0",
+      "date": "2017-06-16T08:43:46.177Z"
+    },
+    {
+      "number": "19.4.2",
+      "date": "2017-06-16T16:12:50.860Z"
+    },
+    {
+      "number": "19.5.0",
+      "date": "2017-06-17T19:08:46.578Z"
+    },
+    {
+      "number": "19.5.1",
+      "date": "2017-06-18T21:33:51.764Z"
+    },
+    {
+      "number": "19.6.0",
+      "date": "2017-06-20T16:09:00.814Z"
+    },
+    {
+      "number": "19.7.0",
+      "date": "2017-06-21T18:06:42.124Z"
+    },
+    {
+      "number": "19.7.2",
+      "date": "2017-06-22T16:52:22.485Z"
+    },
+    {
+      "number": "19.8.0",
+      "date": "2017-06-23T18:48:04.579Z"
+    },
+    {
+      "number": "19.11.0",
+      "date": "2017-06-28T15:51:17.297Z"
+    },
+    {
+      "number": "19.12.0",
+      "date": "2017-07-03T07:59:32.741Z"
+    },
+    {
+      "number": "19.14.0",
+      "date": "2017-07-08T11:54:39.697Z"
+    },
+    {
+      "number": "19.15.0",
+      "date": "2017-07-09T18:25:17.957Z"
+    },
+    {
+      "number": "19.15.3",
+      "date": "2017-07-11T13:26:58.021Z"
+    },
+    {
+      "number": "19.15.5",
+      "date": "2017-07-11T18:57:02.306Z"
+    },
+    {
+      "number": "19.16.0",
+      "date": "2017-07-12T12:20:03.056Z"
+    },
+    {
+      "number": "19.16.3",
+      "date": "2017-07-25T07:50:58.717Z"
+    },
+    {
+      "number": "19.17.0",
+      "date": "2017-07-26T17:59:06.009Z"
+    },
+    {
+      "number": "19.18.0",
+      "date": "2017-07-28T17:52:49.679Z"
+    },
+    {
+      "number": "19.18.1",
+      "date": "2017-07-31T14:56:13.995Z"
+    },
+    {
+      "number": "19.19.0",
+      "date": "2017-08-03T06:46:27.619Z"
+    },
+    {
+      "number": "19.20.0",
+      "date": "2017-08-08T17:33:22.953Z"
+    },
+    {
+      "number": "19.21.0",
+      "date": "2017-08-11T19:53:59.091Z"
+    },
+    {
+      "number": "19.23.0",
+      "date": "2017-08-18T20:59:05.457Z"
+    },
+    {
+      "number": "19.24.0",
+      "date": "2017-08-21T07:44:54.460Z"
+    },
+    {
+      "number": "19.25.0",
+      "date": "2017-08-25T07:10:19.730Z"
+    },
+    {
+      "number": "19.27.3",
+      "date": "2017-09-01T12:25:26.432Z"
+    },
+    {
+      "number": "19.28.0",
+      "date": "2017-09-06T17:09:28.870Z"
+    },
+    {
+      "number": "19.28.2",
+      "date": "2017-09-10T05:15:42.940Z"
+    },
+    {
+      "number": "19.28.3",
+      "date": "2017-09-10T05:21:40.423Z"
+    },
+    {
+      "number": "19.29.0",
+      "date": "2017-09-21T16:33:35.932Z"
+    },
+    {
+      "number": "19.30.0",
+      "date": "2017-09-23T07:33:37.326Z"
+    },
+    {
+      "number": "19.32.0",
+      "date": "2017-09-28T09:46:00.732Z"
+    },
+    {
+      "number": "19.33.0",
+      "date": "2017-09-30T07:42:43.066Z"
+    },
+    {
+      "number": "19.34.0",
+      "date": "2017-10-04T09:57:46.482Z"
+    },
+    {
+      "number": "19.35.0",
+      "date": "2017-10-07T15:24:26.934Z"
+    },
+    {
+      "number": "19.35.1",
+      "date": "2017-10-09T10:26:35.369Z"
+    },
+    {
+      "number": "19.36.0",
+      "date": "2017-10-11T08:09:38.917Z"
+    },
+    {
+      "number": "19.37.0",
+      "date": "2017-10-12T17:31:53.928Z"
+    },
+    {
+      "number": "19.39.0",
+      "date": "2017-10-18T08:18:08.168Z"
+    },
+    {
+      "number": "19.40.0",
+      "date": "2017-10-23T16:15:57.176Z"
+    },
+    {
+      "number": "19.42.0",
+      "date": "2017-10-26T16:29:33.541Z"
+    },
+    {
+      "number": "19.43.0",
+      "date": "2017-10-30T08:37:25.453Z"
+    },
+    {
+      "number": "19.44.0",
+      "date": "2017-11-03T17:18:17.394Z"
+    },
+    {
+      "number": "19.45.0",
+      "date": "2017-11-04T09:37:54.308Z"
+    },
+    {
+      "number": "19.46.0",
+      "date": "2017-11-16T08:06:48.325Z"
+    },
+    {
+      "number": "19.46.4",
+      "date": "2017-11-22T16:59:11.947Z"
+    },
+    {
+      "number": "19.46.5",
+      "date": "2017-11-24T07:41:36.458Z"
+    },
+    {
+      "number": "19.47.0",
+      "date": "2017-11-29T17:42:42.546Z"
+    },
+    {
+      "number": "19.49.0",
+      "date": "2017-12-12T08:59:53.423Z"
+    },
+    {
+      "number": "19.50.0",
+      "date": "2017-12-31T17:37:11.417Z"
+    },
+    {
+      "number": "19.51.0",
+      "date": "2018-01-02T16:48:37.560Z"
+    },
+    {
+      "number": "19.52.0",
+      "date": "2018-01-03T17:08:51.941Z"
+    },
+    {
+      "number": "19.53.1",
+      "date": "2018-01-06T10:09:52.248Z"
+    },
+    {
+      "number": "19.53.3",
+      "date": "2018-01-09T08:18:14.995Z"
+    },
+    {
+      "number": "19.53.4",
+      "date": "2018-01-11T09:41:32.511Z"
+    },
+    {
+      "number": "19.53.7",
+      "date": "2018-01-16T08:55:43.183Z"
+    },
+    {
+      "number": "19.54.0",
+      "date": "2018-01-17T10:17:18.230Z"
+    },
+    {
+      "number": "19.55.0",
+      "date": "2018-01-18T08:15:16.379Z"
+    },
+    {
+      "number": "19.55.1",
+      "date": "2018-01-19T08:10:34.301Z"
+    },
+    {
+      "number": "19.55.2",
+      "date": "2018-01-23T09:05:08.318Z"
+    },
+    {
+      "number": "19.56.0",
+      "date": "2018-01-30T13:42:21.859Z"
+    },
+    {
+      "number": "20.0.0",
+      "date": "2018-02-02T18:10:41.071Z"
+    },
+    {
+      "number": "20.0.1",
+      "date": "2018-02-06T08:21:02.099Z"
+    },
+    {
+      "number": "20.0.2",
+      "date": "2018-02-07T16:46:38.406Z"
+    },
+    {
+      "number": "20.0.5",
+      "date": "2018-02-16T17:55:17.439Z"
+    },
+    {
+      "number": "20.1.0",
+      "date": "2018-02-23T15:52:00.317Z"
+    },
+    {
+      "number": "20.2.0",
+      "date": "2018-02-24T08:49:32.181Z"
+    },
+    {
+      "number": "20.5.0",
+      "date": "2018-03-10T15:47:26.100Z"
+    },
+    {
+      "number": "20.6.0",
+      "date": "2018-03-17T21:41:18.661Z"
+    },
+    {
+      "number": "20.6.1",
+      "date": "2018-03-18T18:25:35.373Z"
+    },
+    {
+      "number": "20.6.2",
+      "date": "2018-03-21T19:48:32.029Z"
+    },
+    {
+      "number": "20.7.0",
+      "date": "2018-03-22T07:56:38.683Z"
+    },
+    {
+      "number": "20.8.0",
+      "date": "2018-03-26T18:57:22.229Z"
+    },
+    {
+      "number": "20.8.1",
+      "date": "2018-03-27T07:09:14.001Z"
+    },
+    {
+      "number": "20.9.0",
+      "date": "2018-04-18T07:25:56.334Z"
+    },
+    {
+      "number": "20.11.0",
+      "date": "2018-04-27T10:48:15.217Z"
+    },
+    {
+      "number": "20.12.0",
+      "date": "2018-05-02T07:30:22.231Z"
+    },
+    {
+      "number": "20.13.1",
+      "date": "2018-05-03T10:05:14.699Z"
+    }
+  ],
+  "created": "2017-02-07T08:20:15.519Z",
+  "modified": "2018-05-03T10:05:17.721Z",
+  "lastPublisher": {
+    "name": "develar",
+    "email": "develar@gmail.com"
+  },
+  "owners": [
+    {
+      "name": "develar",
+      "email": "develar@gmail.com"
+    }
+  ]
+}

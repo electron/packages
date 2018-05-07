@@ -1,0 +1,194 @@
+{
+  "name": "ehm",
+  "version": "0.21.0",
+  "description": "Meta object class construct.",
+  "main": "ehm.js",
+  "support": "ehm.support.js",
+  "deploy": "ehm.deploy.js",
+  "browser": "ehm.deploy.js",
+  "scripts": {
+    "pristine": "rsetmod clean && flxc execute ./.install.sh",
+    "clear": "rsetmod clean --clear",
+    "formal": "jesy apply '*.json'",
+    "build:support": "gulp --module ehm,meta --all",
+    "build:deploy": "webpack --config webpack.compact.js --progress --display-modules",
+    "rebuild": "npm run build:support && npm run build:deploy",
+    "build": "npm run pristine && npm run rebuild",
+    "build:test:support": "gulp --module test --all",
+    "build:test:deploy": "webpack --config webpack.test.js --progress --display-modules",
+    "build:test:bridge": "gulp --module test --bridge",
+    "build:test": "npm run build:test:support && npm run build:test:deploy && npm run build:test:bridge",
+    "test:server": "mocha test.js && mocha test.js --reporter=json > test.server.json",
+    "test:client": "wdio wdio.client.js",
+    "pretest": "npm run clear && npm run rebuild && npm run build:test",
+    "test": "npm run test:server && npm run test:client",
+    "posttest": "npm run formal",
+    "deploy": "npm run build && npm run build:test && npm run test:server && npm run test:client && npm run formal"
+  },
+  "repository": {
+    "user": "volkovasystems",
+    "repo": "ehm",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/volkovasystems/ehm/tarball/master",
+    "clone_url": "https://github.com/volkovasystems/ehm",
+    "https_url": "https://github.com/volkovasystems/ehm",
+    "travis_url": "https://travis-ci.org/volkovasystems/ehm",
+    "zip_url": "https://github.com/volkovasystems/ehm/archive/master.zip",
+    "api_url": "https://api.github.com/repos/volkovasystems/ehm"
+  },
+  "keywords": [
+    "meta",
+    "object",
+    "class",
+    "construct",
+    "ehm"
+  ],
+  "author": {
+    "name": "Richeve S. Bebedor",
+    "email": "richeve.bebedor@gmail.com"
+  },
+  "contributors": [
+    {
+      "name": "John Lenon Maghanoy",
+      "email": "johnlenonmaghanoy@gmail.com"
+    }
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/volkovasystems/ehm#readme",
+  "dependencies": {
+    "babel-runtime": "^6.25.0",
+    "harden": "^0.23.0",
+    "sxty4": "^0.11.0"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.24.1",
+    "babel-core": "^6.25.0",
+    "babel-plugin-transform-runtime": "^6.23.0",
+    "babel-preset-latest": "^6.24.1",
+    "electron": "^1.6.11",
+    "gulp": "^3.9.1",
+    "gulp-babel": "^6.1.2",
+    "gulp-changed": "^3.1.0",
+    "gulp-debug": "^3.1.0",
+    "gulp-plumber": "^1.1.0",
+    "gulp-rename": "^1.2.2",
+    "gulp-replace": "^0.6.1",
+    "gulp-sourcemaps": "^2.6.0",
+    "mocha": "^3.5.0",
+    "should": "^11.2.1",
+    "source-map-loader": "^0.2.1",
+    "wdio-json-reporter": "^0.2.1",
+    "wdio-mocha-framework": "^0.5.10",
+    "wdio-selenium-standalone-service": "^0.0.9",
+    "webdriverio": "^4.8.0",
+    "webpack": "^3.4.1",
+    "yargs": "^8.0.2"
+  },
+  "gitHead": "b8a8d1fee6caaf62d18a0d40d79fe4ed9afea783",
+  "_npmVersion": "4.0.5",
+  "_nodeVersion": "6.11.0",
+  "dist": {
+    "shasum": "2c7dd0d55355a48fe9f4a7327915bed00d19e781",
+    "tarball": "https://registry.npmjs.org/ehm/-/ehm-0.21.0.tgz"
+  },
+  "versions": [
+    {
+      "number": "0.0.0",
+      "date": "2017-07-27T05:03:49.455Z"
+    },
+    {
+      "number": "0.1.0",
+      "date": "2017-07-27T06:57:59.681Z"
+    },
+    {
+      "number": "0.2.0",
+      "date": "2017-07-27T07:29:57.722Z"
+    },
+    {
+      "number": "0.3.0",
+      "date": "2017-07-27T09:04:55.149Z"
+    },
+    {
+      "number": "0.4.0",
+      "date": "2017-07-27T09:16:54.972Z"
+    },
+    {
+      "number": "0.5.0",
+      "date": "2017-07-27T10:13:24.897Z"
+    },
+    {
+      "number": "0.6.0",
+      "date": "2017-07-27T16:12:38.986Z"
+    },
+    {
+      "number": "0.7.0",
+      "date": "2017-07-27T16:57:14.162Z"
+    },
+    {
+      "number": "0.8.0",
+      "date": "2017-07-29T02:10:33.768Z"
+    },
+    {
+      "number": "0.9.0",
+      "date": "2017-07-30T12:07:43.738Z"
+    },
+    {
+      "number": "0.10.0",
+      "date": "2017-07-30T17:04:03.840Z"
+    },
+    {
+      "number": "0.11.0",
+      "date": "2017-07-30T18:11:55.876Z"
+    },
+    {
+      "number": "0.12.0",
+      "date": "2017-07-30T19:09:23.530Z"
+    },
+    {
+      "number": "0.13.0",
+      "date": "2017-07-31T10:26:46.202Z"
+    },
+    {
+      "number": "0.14.0",
+      "date": "2017-08-01T04:14:29.425Z"
+    },
+    {
+      "number": "0.16.0",
+      "date": "2017-08-01T06:57:02.020Z"
+    },
+    {
+      "number": "0.17.0",
+      "date": "2017-08-01T07:52:14.524Z"
+    },
+    {
+      "number": "0.18.0",
+      "date": "2017-08-01T09:58:09.357Z"
+    },
+    {
+      "number": "0.19.0",
+      "date": "2017-08-01T14:56:11.625Z"
+    },
+    {
+      "number": "0.20.0",
+      "date": "2017-08-02T17:33:52.426Z"
+    },
+    {
+      "number": "0.21.0",
+      "date": "2017-08-07T12:10:12.911Z"
+    }
+  ],
+  "created": "2017-07-27T05:03:49.455Z",
+  "modified": "2017-08-07T12:10:12.911Z",
+  "lastPublisher": {
+    "name": "volkova",
+    "email": "richeve.bebedor@gmail.com"
+  },
+  "owners": [
+    {
+      "name": "volkova",
+      "email": "richeve.bebedor@gmail.com"
+    }
+  ]
+}

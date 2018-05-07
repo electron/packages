@@ -1,0 +1,278 @@
+{
+  "name": "vector-web",
+  "productName": "Riot",
+  "main": "electron/src/electron-main.js",
+  "version": "0.9.0",
+  "description": "A feature-rich client for Matrix.org",
+  "author": {
+    "name": "Vector Creations Ltd."
+  },
+  "repository": {
+    "user": "vector-im",
+    "repo": "vector-web",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/vector-im/vector-web/tarball/master",
+    "clone_url": "https://github.com/vector-im/vector-web",
+    "https_url": "https://github.com/vector-im/vector-web",
+    "travis_url": "https://travis-ci.org/vector-im/vector-web",
+    "zip_url": "https://github.com/vector-im/vector-web/archive/master.zip",
+    "api_url": "https://api.github.com/repos/vector-im/vector-web"
+  },
+  "license": "Apache-2.0",
+  "files": [
+    "AUTHORS.rst",
+    "CONTRIBUTING.rst",
+    "deploy",
+    "docs",
+    "karma.conf.js",
+    "lib",
+    "release.sh",
+    "scripts",
+    "src",
+    "test",
+    "webpack.config.js"
+  ],
+  "style": "bundle.css",
+  "matrix-react-parent": "matrix-react-sdk",
+  "scripts": {
+    "reskindex": "reskindex -h src/header",
+    "build:res": "cpx \"{src/skins/vector/fonts,src/skins/vector/img}/**\" webapp/ && cpx \"{res/media,res/vector-icons}/**\" webapp/",
+    "build:config": "cpx config.json webapp/",
+    "build:emojione": "cpx \"node_modules/emojione/assets/svg/*\" webapp/emojione/svg/",
+    "build:modernizr": "modernizr -c .modernizr.json -d src/vector/modernizr.js",
+    "build:css": "mkdirp build && catw \"src/skins/vector/css/**/*.css\" -o build/components.css --no-watch",
+    "build:compile": "babel --source-maps -d lib src",
+    "build:bundle": "NODE_ENV=production webpack -p --progress",
+    "build:bundle:dev": "webpack --optimize-occurence-order --progress",
+    "build:electron": "build -lwm",
+    "build": "node scripts/babelcheck.js && npm run build:res && npm run build:config && npm run build:emojione && npm run build:css && npm run build:bundle",
+    "build:dev": "node scripts/babelcheck.js && npm run build:res && npm run build:config && npm run build:emojione && npm run build:css && npm run build:bundle:dev",
+    "dist": "scripts/package.sh",
+    "start:res": "parallelshell \"cpx -w \\\"{src/skins/vector/fonts,src/skins/vector/img}/**\\\" webapp/\" \"cpx -w \\\"{res/media,res/vector-icons}/**\\\" webapp/\"",
+    "start:config": "cpx -w config.json webapp/",
+    "start:emojione": "cpx \"node_modules/emojione/assets/svg/*\" webapp/emojione/svg/ -w",
+    "start:js": "webpack-dev-server -w --progress",
+    "start:js:prod": "NODE_ENV=production webpack-dev-server -w --progress",
+    "start:skins:css": "mkdirp build && catw \"src/skins/vector/css/**/*.css\" -o build/components.css",
+    "start": "node scripts/babelcheck.js && parallelshell \"npm run start:emojione\" \"npm run start:res\" \"npm run start:config\" \"npm run start:js\" \"npm run start:skins:css\"",
+    "start:prod": "parallelshell \"npm run start:emojione\" \"npm run start:js:prod\" \"npm run start:skins:css\"",
+    "clean": "rimraf build lib webapp",
+    "prepublish": "npm run build:compile",
+    "test": "karma start --single-run=true --autoWatch=false --browsers PhantomJS --colors=false",
+    "test:multi": "karma start"
+  },
+  "dependencies": {
+    "babel-polyfill": "^6.5.0",
+    "babel-runtime": "^6.11.6",
+    "browser-request": "^0.3.3",
+    "classnames": "^2.1.2",
+    "draft-js": "^0.8.1",
+    "extract-text-webpack-plugin": "^0.9.1",
+    "favico.js": "^0.3.10",
+    "filesize": "^3.1.2",
+    "flux": "~2.0.3",
+    "gemini-scrollbar": "github:matrix-org/gemini-scrollbar#b302279",
+    "gfm.css": "^1.1.1",
+    "highlight.js": "^9.0.0",
+    "linkifyjs": "^2.1.3",
+    "matrix-js-sdk": "0.7.0",
+    "matrix-react-sdk": "0.8.0",
+    "modernizr": "^3.1.0",
+    "q": "^1.4.1",
+    "react": "^15.4.0",
+    "react-dnd": "^2.1.4",
+    "react-dnd-html5-backend": "^2.1.2",
+    "react-dom": "^15.4.0",
+    "react-gemini-scrollbar": "github:matrix-org/react-gemini-scrollbar#5e97aef",
+    "sanitize-html": "^1.11.1",
+    "ua-parser-js": "^0.7.10",
+    "url": "^0.11.0",
+    "olm": "https://matrix.org/packages/npm/olm/olm-2.0.0.tgz"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.5.2",
+    "babel-core": "^6.14.0",
+    "babel-eslint": "^6.1.0",
+    "babel-loader": "^6.2.5",
+    "babel-plugin-add-module-exports": "^0.2.1",
+    "babel-plugin-transform-async-to-generator": "^6.16.0",
+    "babel-plugin-transform-class-properties": "^6.16.0",
+    "babel-plugin-transform-object-rest-spread": "^6.16.0",
+    "babel-plugin-transform-runtime": "^6.15.0",
+    "babel-preset-es2015": "^6.16.0",
+    "babel-preset-es2016": "^6.16.0",
+    "babel-preset-es2017": "^6.16.0",
+    "babel-preset-react": "^6.16.0",
+    "babel-preset-stage-2": "^6.17.0",
+    "catw": "^1.0.1",
+    "cpx": "^1.3.2",
+    "css-raw-loader": "^0.1.1",
+    "electron-builder": "^7.23.2",
+    "emojione": "^2.2.3",
+    "expect": "^1.16.0",
+    "fs-extra": "^0.30.0",
+    "html-webpack-plugin": "^2.24.0",
+    "json-loader": "^0.5.3",
+    "karma": "^0.13.22",
+    "karma-chrome-launcher": "^0.2.3",
+    "karma-cli": "^0.1.2",
+    "karma-junit-reporter": "^0.4.1",
+    "karma-mocha": "^0.2.2",
+    "karma-phantomjs-launcher": "^1.0.0",
+    "karma-sourcemap-loader": "^0.3.7",
+    "karma-webpack": "^1.7.0",
+    "mkdirp": "^0.5.1",
+    "mocha": "^2.4.5",
+    "parallelshell": "^1.2.0",
+    "phantomjs-prebuilt": "^2.1.7",
+    "react-addons-perf": "^15.4.0",
+    "react-addons-test-utils": "^15.4.0",
+    "rimraf": "^2.4.3",
+    "source-map-loader": "^0.1.5",
+    "webpack": "^1.12.14",
+    "webpack-dev-server": "^1.16.2"
+  },
+  "optionalDependencies": {
+    "olm": "https://matrix.org/packages/npm/olm/olm-2.0.0.tgz"
+  },
+  "build": {
+    "appId": "im.riot.app",
+    "category": "Network",
+    "electronVersion": "1.4.2",
+    "//asar=false": "https://github.com/electron-userland/electron-builder/issues/675",
+    "asar": false,
+    "dereference": true,
+    "//files": "We bundle everything, so we only need to include webapp/",
+    "files": [
+      "!**/*",
+      "electron/src/**",
+      "electron/img/**",
+      "webapp/**",
+      "package.json"
+    ],
+    "squirrelWindows": {
+      "iconUrl": "https://riot.im/favicon.ico"
+    }
+  },
+  "gitHead": "5cd4f88b8c6dd5348a8414c0c9cb04d7e4ab8509",
+  "homepage": "https://github.com/vector-im/vector-web#readme",
+  "_npmVersion": "3.10.3",
+  "_nodeVersion": "6.4.0",
+  "dist": {
+    "shasum": "c8896597790c46f1e4ab32b4df5ff54d9d13a174",
+    "tarball": "http://registry.npmjs.org/vector-web/-/vector-web-0.9.0.tgz"
+  },
+  "deprecated": "vector-web is now riot-web",
+  "versions": [
+    {
+      "number": "0.3.0",
+      "date": "2016-03-11T13:03:36.374Z"
+    },
+    {
+      "number": "0.4.0",
+      "date": "2016-03-23T14:42:12.198Z"
+    },
+    {
+      "number": "0.4.1",
+      "date": "2016-03-23T14:59:59.707Z"
+    },
+    {
+      "number": "0.5.0",
+      "date": "2016-03-30T12:31:47.789Z"
+    },
+    {
+      "number": "0.6.0",
+      "date": "2016-04-19T12:40:28.316Z"
+    },
+    {
+      "number": "0.6.1",
+      "date": "2016-04-22T10:36:25.445Z"
+    },
+    {
+      "number": "0.7.0",
+      "date": "2016-06-02T12:42:40.993Z"
+    },
+    {
+      "number": "0.7.1",
+      "date": "2016-06-02T17:41:36.769Z"
+    },
+    {
+      "number": "0.7.2",
+      "date": "2016-06-02T18:06:06.776Z"
+    },
+    {
+      "number": "0.7.3",
+      "date": "2016-06-03T11:20:22.547Z"
+    },
+    {
+      "number": "0.7.4",
+      "date": "2016-08-11T16:47:41.350Z"
+    },
+    {
+      "number": "0.7.4-r1",
+      "date": "2016-08-12T09:11:57.789Z"
+    },
+    {
+      "number": "0.7.5",
+      "date": "2016-08-28T16:33:39.376Z"
+    },
+    {
+      "number": "0.7.5-r1",
+      "date": "2016-08-28T17:09:42.966Z"
+    },
+    {
+      "number": "0.7.5-r2",
+      "date": "2016-09-01T21:29:59.453Z"
+    },
+    {
+      "number": "0.7.5-r3",
+      "date": "2016-09-02T16:21:48.309Z"
+    },
+    {
+      "number": "0.8.0",
+      "date": "2016-09-21T11:03:10.731Z"
+    },
+    {
+      "number": "0.8.1",
+      "date": "2016-09-21T16:31:07.333Z"
+    },
+    {
+      "number": "0.8.2",
+      "date": "2016-10-05T15:58:44.696Z"
+    },
+    {
+      "number": "0.8.3",
+      "date": "2016-10-12T10:50:29.270Z"
+    },
+    {
+      "number": "0.8.4-rc.1",
+      "date": "2016-11-02T11:22:03.584Z"
+    },
+    {
+      "number": "0.8.4-rc.2",
+      "date": "2016-11-02T11:44:44.669Z"
+    },
+    {
+      "number": "0.8.4",
+      "date": "2016-11-04T10:17:56.805Z"
+    },
+    {
+      "number": "0.9.0",
+      "date": "2016-11-19T00:07:52.405Z"
+    }
+  ],
+  "created": "2016-03-11T13:03:36.374Z",
+  "modified": "2016-12-05T18:08:55.569Z",
+  "lastPublisher": {
+    "name": "matrixdotorg",
+    "email": "matrix@matrix.org"
+  },
+  "owners": [
+    {
+      "name": "matrixdotorg",
+      "email": "matrix@matrix.org"
+    }
+  ]
+}

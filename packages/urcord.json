@@ -1,0 +1,150 @@
+{
+  "name": "urcord",
+  "productName": "UrCord",
+  "version": "0.0.1",
+  "description": "Modular, self-hosted Discord bot with a built-in UI",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "electron-forge start",
+    "lint": "eslint --cache --color --ext .jsx,.js src",
+    "pack": "electron-builder --dir",
+    "dist": "electron-builder",
+    "rebuild": "electron-rebuild -f -w sqlite3"
+  },
+  "keywords": [
+    "discord",
+    "bot",
+    "ui",
+    "self-hosted",
+    "discord-bot",
+    "discord-js",
+    "react",
+    "electron"
+  ],
+  "author": {
+    "name": "bobwinibago",
+    "url": "https://github.com/bobwinibago"
+  },
+  "contributors": [
+    {
+      "name": "TheZerbibi",
+      "url": "https://github.com/TheoZerbibi"
+    }
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/bobwinibago/urcord#readme",
+  "issues": {
+    "url": "https://github.com/bobwinibago/urcord/issues"
+  },
+  "repository": {
+    "user": "bobwinibago",
+    "repo": "urcord",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/bobwinibago/urcord/tarball/master",
+    "clone_url": "https://github.com/bobwinibago/urcord",
+    "https_url": "https://github.com/bobwinibago/urcord",
+    "travis_url": "https://travis-ci.org/bobwinibago/urcord",
+    "zip_url": "https://github.com/bobwinibago/urcord/archive/master.zip",
+    "api_url": "https://api.github.com/repos/bobwinibago/urcord"
+  },
+  "build": {
+    "appId": "com.electron.urcord",
+    "productName": "UrCord",
+    "copyright": "Copyright © 2018-present bobwinibago & TheZerbibi"
+  },
+  "config": {
+    "forge": {
+      "make_targets": {
+        "win32": [
+          "squirrel"
+        ],
+        "darwin": [
+          "zip"
+        ],
+        "linux": [
+          "deb",
+          "rpm"
+        ]
+      },
+      "electronPackagerConfig": {
+        "packageManager": "yarn"
+      },
+      "electronWinstallerConfig": {
+        "name": "urcord"
+      },
+      "electronInstallerDebian": {},
+      "electronInstallerRedhat": {},
+      "github_repository": {
+        "owner": "bobwinibago",
+        "name": "urcord"
+      },
+      "windowsStoreConfig": {
+        "packageName": "",
+        "name": "urcord"
+      }
+    }
+  },
+  "dependencies": {
+    "@material-ui/icons": "^1.0.0-beta.43",
+    "discord.js": "^11.3.2",
+    "discord.js-commando": "^0.10.0",
+    "electron-compile": "^6.4.2",
+    "electron-devtools-installer": "^2.1.0",
+    "electron-squirrel-startup": "^1.0.0",
+    "i18next": "^11.2.3",
+    "material-ui": "^1.0.0-beta.43",
+    "react": "^16.3.2",
+    "react-dom": "^16.3.2",
+    "react-hot-loader": "^4.1.2",
+    "react-i18next": "^7.6.1",
+    "sqlite": "^2.9.1",
+    "sqlite3": "^4.0.0"
+  },
+  "devDependencies": {
+    "babel-plugin-transform-async-to-generator": "^6.24.1",
+    "babel-plugin-transform-es2015-classes": "^6.24.1",
+    "babel-preset-env": "^1.6.1",
+    "babel-preset-react": "^6.24.1",
+    "electron-builder": "^20.10.0",
+    "electron-forge": "^5.2.0",
+    "electron-prebuilt-compile": "1.8.4",
+    "electron-rebuild": "^1.7.3",
+    "eslint": "^4",
+    "eslint-config-airbnb": "^16",
+    "eslint-plugin-import": "^2",
+    "eslint-plugin-jsx-a11y": "^6",
+    "eslint-plugin-react": "^7"
+  },
+  "gitHead": "a9f25a8ba68eaa556ad35f8fa1be1c734e10cd6f",
+  "_npmVersion": "5.6.0",
+  "_nodeVersion": "8.11.1",
+  "dist": {
+    "integrity": "sha512-MceAE3QVB23m9WTmC4VZOyabsVI6VTMgenhATQ8hCJy61V/FzcIB1MKMKY/WQ3oGLlun6wmj1OZkLDj/IZID+g==",
+    "shasum": "21595bdb8f9bb72b745907aa13c838827da34ae4",
+    "tarball": "https://registry.npmjs.org/urcord/-/urcord-0.0.1.tgz",
+    "fileCount": 12,
+    "unpackedSize": 260061,
+    "npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJa5l54CRA9TVsSAnZWagAA6oEP/1beqBEmaX9KE6vHsQ6V\nbvtcvGq3KIIF7rYXzTnr4R2ybgEMW2utJ6cim/rQIwWrD00CPTDBXDmbpfHt\nBHDhK/DKjIJ9sjcdpiMfMjWyLvoZj9RbaRFgR7mzEnjySqN5TN657W/tgA2B\n3MfTWEkWNMtK+ElFNFaAMpiQblzPofCkO40uhgL8Hmc+jpW6vTZA5jv0VS7x\ndLJ5M+5GYxNpZSjr4rN8hff9KZMd0imYODooB4p3jHgp3RC1DLJ0v+Jw21S/\n0Z30lukjDZVUEFYkFiikkCnXmjlAX0erlJG7KEaClAkD+CsTzaSjc0VPd2Xl\noE25PhJ5S4o70cSP0adKAtwGvlB4pnmk8KMo9BR5dSsYF93Fnf7QHhx7Tv4J\n7EvxQLwn68+8XBEVzu7jPP7W4/STyhFpT5bAbJpQFiOnbZPhY3Y9KkJbUGmB\nAHUsL+MhsuFNt0JY4iDSCGG0DBoIasax2QcgPGTwNiLChVxP8SlvLEvt1Kz/\nqCjMI3OAJ5riKMfJzJjXLb2S3cyxsg0Pm85DTWOKzKIFknHzRScGU0hPVZET\nduB9gr6qd3cCicpM2D+J/w9Jb9UzxQJJTagP1/SXtdLTNxVXIFf/eykSlnj3\n0RBTIUUv49MWcRR3Qj/vvtPmn7orKfgD/ye5fce8d0KCWPiG5+OftIS/aXYi\ngPHl\r\n=E3gG\r\n-----END PGP SIGNATURE-----\r\n"
+  },
+  "_hasShrinkwrap": false,
+  "versions": [
+    {
+      "number": "0.0.1",
+      "date": "2018-04-30T00:08:24.234Z"
+    }
+  ],
+  "created": "2018-04-30T00:08:24.107Z",
+  "modified": "2018-04-30T00:08:27.030Z",
+  "lastPublisher": {
+    "name": "bobwinibago",
+    "email": "bobwinibago@outlook.com"
+  },
+  "owners": [
+    {
+      "name": "bobwinibago",
+      "email": "bobwinibago@outlook.com"
+    }
+  ]
+}

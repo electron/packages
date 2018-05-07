@@ -1,0 +1,151 @@
+{
+  "name": "planz-desktop",
+  "version": "1.5.0",
+  "description": "Desktop client for planz app",
+  "main": "src/main/index.ts",
+  "repository": {
+    "user": "josiahruddell",
+    "repo": "planz-apps",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/josiahruddell/planz-apps/tarball/master",
+    "clone_url": "https://github.com/josiahruddell/planz-apps",
+    "https_url": "https://github.com/josiahruddell/planz-apps",
+    "travis_url": "https://travis-ci.org/josiahruddell/planz-apps",
+    "zip_url": "https://github.com/josiahruddell/planz-apps/archive/master.zip",
+    "api_url": "https://api.github.com/repos/josiahruddell/planz-apps"
+  },
+  "author": {
+    "name": "Josiah Ruddell"
+  },
+  "license": "MIT",
+  "scripts": {
+    "start": "electron-forge start",
+    "package": "yarn build && electron-forge package",
+    "make": "yarn build && electron-forge make",
+    "publish": "yarn build && electron-forge publish",
+    "lint": "tslint --project tsconfig.json --type-check --force",
+    "dev": "bash ./scripts/dev.sh",
+    "dev1": "export STORAGE_KEY='dev1' && bash ./scripts/dev.sh",
+    "jest": "jest --no-cache --coverage",
+    "jest:watch": "jest --no-cache --watch",
+    "test": "yarn run clean && yarn run build && yarn run jest",
+    "build-self": "tsc",
+    "build": "bash ./scripts/build.sh",
+    "watch": "tsc --watch",
+    "clean": "rm -rf ./out"
+  },
+  "dependencies": {
+    "@planz/shared": "../shared",
+    "config": "1.29.4",
+    "date-holidays": "1.2.2",
+    "electron-compile": "6.4.2",
+    "electron-squirrel-startup": "1.0.0",
+    "emoji-aware": "3.0.3",
+    "moment": "2.20.1",
+    "react": "16.2.0",
+    "react-dom": "16.2.0",
+    "react-hot-loader": "4.0.0-beta.18",
+    "react-redux": "5.0.7",
+    "redux": "3.7.2",
+    "redux-devtools-extension": "2.13.2",
+    "redux-persist": "5.9.0",
+    "redux-thunk": "2.2.0",
+    "reselect": "3.0.1",
+    "rxjs": "5.5.6",
+    "styled-components": "3.1.6",
+    "tslib": "1.9.0",
+    "ws": "4.0.0"
+  },
+  "devDependencies": {
+    "@types/config": "0.0.34",
+    "@types/electron-devtools-installer": "2.0.2",
+    "@types/fs-extra": "5.0.0",
+    "@types/jest": "22.1.3",
+    "@types/react": "16.0.38",
+    "@types/react-dom": "16.0.4",
+    "@types/react-hot-loader": "3.0.6",
+    "@types/react-redux": "5.0.15",
+    "@types/ws": "4.0.1",
+    "electron-devtools-installer": "2.2.3",
+    "electron-forge": "5.1.1",
+    "electron-prebuilt-compile": "1.8.2",
+    "fs-extra": "5.0.0",
+    "jest": "22.3.0",
+    "ts-jest": "22.0.4",
+    "ts-lint": "4.5.1",
+    "typescript": "2.7.2"
+  },
+  "config": {
+    "forge": {
+      "make_targets": {
+        "win32": [
+          "squirrel"
+        ],
+        "darwin": [
+          "zip"
+        ],
+        "linux": [
+          "deb",
+          "rpm"
+        ]
+      },
+      "electronPackagerConfig": {
+        "name": "Planz",
+        "icon": "./assets/icon",
+        "packageManager": "yarn",
+        "appCategoryType": "public.app-category.productivity",
+        "appBundleId": "com.planz.Planz",
+        "afterCopy": [
+          "./scripts/copy-package-resources.js"
+        ],
+        "arch": "x64",
+        "osxSign": {
+          "type": "development",
+          "identity": "Mac Developer: Josiah Ruddell (JHH77FYKLB)"
+        }
+      },
+      "electronWinstallerConfig": {},
+      "electronInstallerDebian": {},
+      "electronInstallerRedhat": {},
+      "github_repository": {
+        "owner": "josiahruddell",
+        "name": "planz-apps"
+      },
+      "windowsStoreConfig": {
+        "packageName": "",
+        "name": "Planz"
+      }
+    }
+  },
+  "dist": {
+    "shasum": "f49d376eab0bff756d96ec1db6f92a9639428a0d",
+    "tarball": "http://registry.npmjs.org/planz-desktop/-/planz-desktop-1.5.0.tgz",
+    "fileCount": 157,
+    "unpackedSize": 7402271
+  },
+  "_hasShrinkwrap": false,
+  "versions": [
+    {
+      "number": "1.1.6",
+      "date": "2018-01-21T22:35:02.836Z"
+    },
+    {
+      "number": "1.5.0",
+      "date": "2018-02-19T23:16:36.080Z"
+    }
+  ],
+  "created": "2018-01-21T22:35:02.836Z",
+  "modified": "2018-02-19T23:16:37.225Z",
+  "lastPublisher": {
+    "name": "vivlabs",
+    "email": "npm@sixfivelabs.com"
+  },
+  "owners": [
+    {
+      "name": "vivlabs",
+      "email": "npm@sixfivelabs.com"
+    }
+  ]
+}

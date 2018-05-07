@@ -1,0 +1,88 @@
+{
+  "name": "henderson",
+  "version": "2.0.0",
+  "description": "A tiny event emitter-based finite state machine with promises",
+  "main": "henderson.js",
+  "scripts": {
+    "develop": "onchange 'henderson.js' 'test/*' -- npm run test:node",
+    "minify": "uglifyjs henderson.js -o henderson.min.js -c --m",
+    "test:node": "electron-mocha --reporter spec ./test",
+    "test:browser": "electron-mocha --renderer --preload test/browser-shim.js --preload henderson.js --reporter spec ./test",
+    "test:minified": "electron-mocha --renderer --preload test/browser-shim.js --preload henderson.min.js --reporter spec ./test"
+  },
+  "repository": {
+    "user": "orbitbot",
+    "repo": "henderson",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/orbitbot/henderson/tarball/master",
+    "clone_url": "https://github.com/orbitbot/henderson",
+    "https_url": "https://github.com/orbitbot/henderson",
+    "travis_url": "https://travis-ci.org/orbitbot/henderson",
+    "zip_url": "https://github.com/orbitbot/henderson/archive/master.zip",
+    "api_url": "https://api.github.com/repos/orbitbot/henderson"
+  },
+  "files": [
+    "henderson.js",
+    "henderson.min.js"
+  ],
+  "keywords": [
+    "statemachine",
+    "fsm",
+    "state",
+    "event",
+    "promise",
+    "promises"
+  ],
+  "author": {
+    "name": "Patrik Johnson",
+    "email": "patrik@zebros.fi"
+  },
+  "license": "ISC",
+  "homepage": "https://github.com/orbitbot/henderson#readme",
+  "devDependencies": {
+    "chai": "3.5.0",
+    "electron-mocha": "2.0.0",
+    "onchange": "2.4.0",
+    "sinon": "1.17.4",
+    "uglify-js": "2.6.2"
+  },
+  "gitHead": "449856aba72429ca7334eaa2a5b31629171079c0",
+  "_npmVersion": "2.15.1",
+  "_nodeVersion": "4.4.4",
+  "dist": {
+    "shasum": "c3f7da2ff9310bcfe59c22ca34ec925077b24f96",
+    "tarball": "http://registry.npmjs.org/henderson/-/henderson-2.0.0.tgz"
+  },
+  "versions": [
+    {
+      "number": "0.9.0",
+      "date": "2016-05-04T19:34:31.909Z"
+    },
+    {
+      "number": "1.0.0",
+      "date": "2016-05-19T21:42:57.560Z"
+    },
+    {
+      "number": "1.0.1",
+      "date": "2016-07-10T14:16:02.296Z"
+    },
+    {
+      "number": "2.0.0",
+      "date": "2016-07-22T15:03:51.672Z"
+    }
+  ],
+  "created": "2016-05-04T19:34:31.909Z",
+  "modified": "2016-07-22T15:03:51.672Z",
+  "lastPublisher": {
+    "name": "orbitbot",
+    "email": "patrik@zebros.fi"
+  },
+  "owners": [
+    {
+      "name": "orbitbot",
+      "email": "patrik@zebros.fi"
+    }
+  ]
+}

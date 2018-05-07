@@ -1,0 +1,106 @@
+{
+  "name": "shredbeat",
+  "version": "0.0.2",
+  "description": "Music beat reacts to your keyboard shredding speed 🤘",
+  "main": "main.js",
+  "bin": {
+    "shredbeat": "./bin/shredbeat.js"
+  },
+  "scripts": {
+    "start": "electron .",
+    "start:dev": "NODE_ENV=development electron .",
+    "watch": "watchify -t [ babelify --presets [ react ] ] components/index.js -o dist/bundle.js",
+    "build:ui": "browserify -t [ babelify --presets [ react ] ] components/index.js -o dist/bundle.js",
+    "build": "node build.js",
+    "zip": "cd build/Shredbeat-darwin-x64/; zip -r -X shredbeat.zip Shredbeat.app; cd ../..",
+    "relink": "npm unlink global-keypress && npm link global-keypress"
+  },
+  "repository": {
+    "user": "miguelmota",
+    "repo": "shredbeat",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/miguelmota/shredbeat/tarball/master",
+    "clone_url": "https://github.com/miguelmota/shredbeat",
+    "https_url": "https://github.com/miguelmota/shredbeat",
+    "travis_url": "https://travis-ci.org/miguelmota/shredbeat",
+    "zip_url": "https://github.com/miguelmota/shredbeat/archive/master.zip",
+    "api_url": "https://api.github.com/repos/miguelmota/shredbeat"
+  },
+  "keywords": [
+    "shred",
+    "beat",
+    "electron",
+    "bpm",
+    "keyboard",
+    "music",
+    "audio"
+  ],
+  "author": {
+    "name": "Miguel Mota"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "browserify": "^14.4.0",
+    "electron": "^1.6.6",
+    "electron-packager": "^8.7.0",
+    "babel-preset-react": "^6.24.1",
+    "babelify": "^7.3.0",
+    "watchify": "^3.9.0"
+  },
+  "dependencies": {
+    "audio-director": "0.0.7",
+    "d3": "^4.8.0",
+    "electron": "^1.6.6",
+    "electron-context-menu": "^0.9.1",
+    "electron-default-menu": "^1.0.1",
+    "electron-store": "^1.1.0",
+    "fanburst-audio": "0.0.1",
+    "global-keypress": "0.0.8",
+    "history": "^4.6.1",
+    "hypem-audio": "0.0.1",
+    "lodash": "^4.17.4",
+    "menubar": "^5.2.3",
+    "mixcloud-audio": "0.0.2",
+    "node-notifier": "^5.1.2",
+    "random-int": "^1.0.0",
+    "rc-slider": "^8.1.3",
+    "react": "^15.5.4",
+    "react-dom": "^15.5.4",
+    "react-router": "^4.1.1",
+    "react-router-dom": "^4.1.1",
+    "react-slider": "^0.8.0",
+    "rxjs": "^5.3.0"
+  },
+  "gitHead": "d066321d31fe1071c8054f7fa60f16f92aad8719",
+  "homepage": "https://github.com/miguelmota/shredbeat#readme",
+  "_npmVersion": "4.2.0",
+  "_nodeVersion": "7.9.0",
+  "dist": {
+    "shasum": "d433f5496ea4f0472e5c3762e3253439d596c594",
+    "tarball": "https://registry.npmjs.org/shredbeat/-/shredbeat-0.0.2.tgz"
+  },
+  "versions": [
+    {
+      "number": "0.0.1",
+      "date": "2017-07-04T21:59:41.943Z"
+    },
+    {
+      "number": "0.0.2",
+      "date": "2017-07-04T22:04:12.406Z"
+    }
+  ],
+  "created": "2017-07-04T21:59:41.943Z",
+  "modified": "2017-07-04T22:04:12.406Z",
+  "lastPublisher": {
+    "name": "miguelmota",
+    "email": "hello@miguelmota.com"
+  },
+  "owners": [
+    {
+      "name": "miguelmota",
+      "email": "hello@miguelmota.com"
+    }
+  ]
+}

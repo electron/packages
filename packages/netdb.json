@@ -1,0 +1,105 @@
+{
+  "author": {
+    "name": "kai zhu",
+    "email": "kaizhu256@gmail.com"
+  },
+  "dependencies": {},
+  "description": "this package is deprecated and superseded by [db-lite](https://www.npmjs.com/package/db-lite)",
+  "devDependencies": {
+    "electron-lite": "github:kaizhu256/node-electron-lite#alpha",
+    "utility2": "github:kaizhu256/node-utility2#alpha"
+  },
+  "dist": {
+    "shasum": "953039f648ebdfbd00fa290948d6344c3f6ff0e2",
+    "tarball": "https://registry.npmjs.org/netdb/-/netdb-2017.3.17.tgz"
+  },
+  "engines": {
+    "node": ">=4.0"
+  },
+  "homepage": "https://github.com/kaizhu256/node-db-lite",
+  "keywords": [
+    "browser",
+    "db",
+    "indexeddb",
+    "localstorage",
+    "mongo",
+    "mongodb",
+    "nedb",
+    "no-sql",
+    "nosql",
+    "persist",
+    "persistence",
+    "persistent",
+    "ttl",
+    "ttl-cache",
+    "web-sql",
+    "websql"
+  ],
+  "license": "MIT",
+  "main": "lib.db.js",
+  "name": "netdb",
+  "nameAlias": "db",
+  "nameOriginal": "db-lite",
+  "optionalDependencies": {},
+  "os": [
+    "darwin",
+    "linux"
+  ],
+  "readmeParse": "1",
+  "repository": {
+    "user": "kaizhu256",
+    "repo": "node-db-lite",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/kaizhu256/node-db-lite/tarball/master",
+    "clone_url": "https://github.com/kaizhu256/node-db-lite",
+    "https_url": "https://github.com/kaizhu256/node-db-lite",
+    "travis_url": "https://travis-ci.org/kaizhu256/node-db-lite",
+    "zip_url": "https://github.com/kaizhu256/node-db-lite/archive/master.zip",
+    "api_url": "https://api.github.com/repos/kaizhu256/node-db-lite"
+  },
+  "scripts": {
+    "build-ci": "utility2 shReadmeTest build_ci.sh",
+    "env": "env",
+    "heroku-postbuild": "(set -e; npm install 'kaizhu256/node-utility2#alpha'; utility2 shDeployHeroku)",
+    "postinstall": "if [ -f lib.db-lite.npm_scripts.sh ]; then ./lib.db-lite.npm_scripts.sh postinstall; fi",
+    "publish-alias": "VERSION=$(npm info $npm_package_name version); for ALIAS in browser-db browserdb cachedb db_lite microdb nanodb netdb swaggerdb swggdb udb; do utility2 shNpmPublishAs . $ALIAS $VERSION; eval utility2 shNpmTestPublished $ALIAS || exit $?; done",
+    "start": "(set -e; export PORT=${PORT:-8080}; utility2 start test.js)",
+    "test": "(set -e; export PORT=$(utility2 shServerPortRandom); utility2 test test.js)"
+  },
+  "version": "2017.3.17",
+  "_npmVersion": "3.10.10",
+  "_nodeVersion": "6.10.1",
+  "deprecated": "this package is deprecated and superseded by [db-lite](https://www.npmjs.com/package/db-lite)",
+  "versions": [
+    {
+      "number": "0.0.1",
+      "date": "2016-11-27T12:19:44.314Z"
+    },
+    {
+      "number": "2017.2.2",
+      "date": "2017-02-24T04:22:01.892Z"
+    },
+    {
+      "number": "2017.3.16",
+      "date": "2017-03-16T21:10:27.097Z"
+    },
+    {
+      "number": "2017.3.17",
+      "date": "2017-03-30T14:16:41.181Z"
+    }
+  ],
+  "created": "2016-11-27T12:19:44.314Z",
+  "modified": "2017-04-17T22:48:25.667Z",
+  "lastPublisher": {
+    "name": "kaizhu",
+    "email": "kaizhu256@gmail.com"
+  },
+  "owners": [
+    {
+      "name": "kaizhu",
+      "email": "kaizhu256@gmail.com"
+    }
+  ]
+}

@@ -1,0 +1,90 @@
+{
+  "name": "client-lib-js-electron-vg-player",
+  "version": "0.0.1",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "npm run cleanup && npm run compile",
+    "cleanup": "rimraf -rf dist",
+    "compile": "tsc",
+    "test": "nyc --require ts-node/register ./node_modules/.bin/_mocha",
+    "lint": "tslint 'src/**/*.ts' 'test/**/*.ts'"
+  },
+  "dependencies": {
+    "@sky-uk-ott/client-lib-js-electron-player-api": "^2.0.3",
+    "@sky-uk-ott/client-lib-js-player-addons-common-player": "^1.0.1",
+    "@sky-uk-ott/client-lib-js-player-addons-reporting": "^1.0.1",
+    "@sky-uk-ott/client-lib-js-player-addons-reporting-conviva-addon": "^1.0.1",
+    "react": "15.3.1",
+    "react-dom": "15.3.1"
+  },
+  "devDependencies": {
+    "@types/mocha": "2.2.38",
+    "@types/node": "7.0.0",
+    "@types/react": "15.0.0",
+    "@types/react-addons-test-utils": "0.14.16",
+    "@types/react-dom": "0.14.20",
+    "jsdom": "9.9.1",
+    "mocha": "3.2.0",
+    "nyc": "10.1.2",
+    "react-addons-test-utils": "0.14.8",
+    "rimraf": "^2.5.4",
+    "ts-node": "2.0.0",
+    "tslint": "4.3.1",
+    "tslint-config-sky": "git+ssh://git@github.com/sky-uk/tslint-config-sky.git",
+    "typescript": "^2.1.5"
+  },
+  "nyc": {
+    "include": [
+      "src/**/*.ts",
+      "src/**/*.tsx"
+    ],
+    "exclude": [
+      "node_modules/",
+      "lib/"
+    ],
+    "extension": [
+      ".ts",
+      ".tsx"
+    ],
+    "require": [
+      "ts-node/register"
+    ],
+    "reporter": [
+      "text-summary",
+      "html"
+    ],
+    "sourceMap": true,
+    "instrument": true
+  },
+  "gitHead": "3bb0cca6609636b615e2ecd80a0387008bedf4e1",
+  "description": "",
+  "_npmVersion": "3.10.10",
+  "_nodeVersion": "7.3.0",
+  "dist": {
+    "shasum": "922cfb11a90088aab294a20c27770baefa2b6d2c",
+    "tarball": "https://registry.npmjs.org/client-lib-js-electron-vg-player/-/client-lib-js-electron-vg-player-0.0.1.tgz"
+  },
+  "versions": [
+    {
+      "number": "0.0.1",
+      "date": "2017-02-20T11:14:03.956Z"
+    },
+    {
+      "number": "0.0.2",
+      "date": "2017-02-20T11:14:39.804Z"
+    }
+  ],
+  "created": "2017-02-20T11:14:03.956Z",
+  "modified": "2017-02-20T11:19:36.838Z",
+  "lastPublisher": {
+    "name": "david-bohunek",
+    "email": "david.bohunek@sky.uk"
+  },
+  "owners": [
+    {
+      "name": "david-bohunek",
+      "email": "david.bohunek@sky.uk"
+    }
+  ]
+}

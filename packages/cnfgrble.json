@@ -1,0 +1,155 @@
+{
+  "name": "cnfgrble",
+  "version": "0.9.0",
+  "description": "Checks if property is configurable.",
+  "main": "cnfgrble.js",
+  "support": "cnfgrble.support.js",
+  "deploy": "cnfgrble.deploy.js",
+  "browser": "cnfgrble.deploy.js",
+  "scripts": {
+    "pristine": "rsetmod clean && flxc execute ./.install.sh",
+    "reset": "rsetmod clean",
+    "clear": "rsetmod clean --clear",
+    "formal": "jesy apply '*.json'",
+    "build:support": "gulp --module cnfgrble --all",
+    "build:deploy": "webpack --config webpack.compact.js --progress --display-modules",
+    "rebuild": "npm run build:support && npm run build:deploy",
+    "build": "npm run pristine && npm run rebuild",
+    "build:test:support": "gulp --module test --all",
+    "build:test:deploy": "webpack --config webpack.test.js --progress --display-modules",
+    "build:test:bridge": "gulp --module test --bridge",
+    "build:test": "npm run build:test:support && npm run build:test:deploy && npm run build:test:bridge",
+    "test:server": "mocha --slow=0 test.js && mocha --slow=0 test.js --reporter=json > test.server.json",
+    "test:client": "wdio wdio.client.js",
+    "pretest": "npm run clear && npm run rebuild && npm run build:test",
+    "test": "npm run test:server && npm run test:client",
+    "posttest": "npm run formal",
+    "deploy": "npm run build && npm run build:test && npm run test:server && npm run test:client && npm run formal"
+  },
+  "repository": {
+    "user": "volkovasystems",
+    "repo": "cnfgrble",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/volkovasystems/cnfgrble/tarball/master",
+    "clone_url": "https://github.com/volkovasystems/cnfgrble",
+    "https_url": "https://github.com/volkovasystems/cnfgrble",
+    "travis_url": "https://travis-ci.org/volkovasystems/cnfgrble",
+    "zip_url": "https://github.com/volkovasystems/cnfgrble/archive/master.zip",
+    "api_url": "https://api.github.com/repos/volkovasystems/cnfgrble"
+  },
+  "keywords": [
+    "check",
+    "property",
+    "configurable",
+    "cnfgrble"
+  ],
+  "author": {
+    "name": "Richeve S. Bebedor",
+    "email": "richeve.bebedor@gmail.com"
+  },
+  "contributors": [
+    {
+      "name": "John Lenon Maghanoy",
+      "email": "johnlenonmaghanoy@gmail.com"
+    },
+    {
+      "name": "Vinse Vinalon",
+      "email": "vinsevinalon@gmail.com"
+    }
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/volkovasystems/cnfgrble#readme",
+  "dependencies": {
+    "babel-runtime": "^6.26.0",
+    "dscrb": "^0.8.0",
+    "kein": "^0.30.0",
+    "zelf": "^0.14.0"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-core": "^6.26.0",
+    "babel-plugin-transform-runtime": "^6.23.0",
+    "babel-preset-env": "^1.6.0",
+    "electron": "^1.7.5",
+    "gulp": "^3.9.1",
+    "gulp-babel": "^7.0.0",
+    "gulp-changed": "^3.1.0",
+    "gulp-debug": "^3.1.0",
+    "gulp-plumber": "^1.1.0",
+    "gulp-rename": "^1.2.2",
+    "gulp-replace": "^0.6.1",
+    "gulp-sourcemaps": "^2.6.1",
+    "mocha": "^3.5.0",
+    "should": "^12.0.0",
+    "source-map-loader": "^0.2.1",
+    "wdio-json-reporter": "^0.2.1",
+    "wdio-mocha-framework": "^0.5.11",
+    "wdio-selenium-standalone-service": "^0.0.9",
+    "webdriverio": "^4.8.0",
+    "webpack": "^3.5.5",
+    "yargs": "^8.0.2"
+  },
+  "gitHead": "3b869259312d9bb5cd4348a7afe8917c5fc2a2e0",
+  "_npmVersion": "3.10.10",
+  "_nodeVersion": "6.11.2",
+  "dist": {
+    "shasum": "fc31c552096d1418e4a4d5dd16285b62e50d7798",
+    "tarball": "https://registry.npmjs.org/cnfgrble/-/cnfgrble-0.9.0.tgz"
+  },
+  "versions": [
+    {
+      "number": "0.0.0",
+      "date": "2017-04-30T17:15:30.969Z"
+    },
+    {
+      "number": "0.1.0",
+      "date": "2017-04-30T23:14:39.869Z"
+    },
+    {
+      "number": "0.2.0",
+      "date": "2017-05-04T05:17:23.147Z"
+    },
+    {
+      "number": "0.3.0",
+      "date": "2017-05-08T08:12:14.692Z"
+    },
+    {
+      "number": "0.4.0",
+      "date": "2017-05-12T16:50:29.342Z"
+    },
+    {
+      "number": "0.5.0",
+      "date": "2017-06-13T07:55:52.021Z"
+    },
+    {
+      "number": "0.6.0",
+      "date": "2017-06-26T03:13:12.694Z"
+    },
+    {
+      "number": "0.7.0",
+      "date": "2017-07-13T09:18:03.229Z"
+    },
+    {
+      "number": "0.8.0",
+      "date": "2017-08-10T07:56:59.855Z"
+    },
+    {
+      "number": "0.9.0",
+      "date": "2017-08-29T03:01:07.460Z"
+    }
+  ],
+  "created": "2017-04-30T17:15:30.969Z",
+  "modified": "2017-08-29T03:01:07.460Z",
+  "lastPublisher": {
+    "name": "volkova",
+    "email": "richeve.bebedor@gmail.com"
+  },
+  "owners": [
+    {
+      "name": "volkova",
+      "email": "richeve.bebedor@gmail.com"
+    }
+  ]
+}

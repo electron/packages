@@ -1,0 +1,119 @@
+{
+  "name": "btron",
+  "version": "0.3.1",
+  "description": "Bundle Electron projects with live reload",
+  "main": "./build/index.js",
+  "bin": {
+    "btron": "bin/btron"
+  },
+  "scripts": {
+    "prebuild": "mkdir -p build",
+    "build": "babel --ignore=node_modules,_* src --out-dir build",
+    "dev": "npm run build -s -- --watch",
+    "clean": "rm -rf build",
+    "prepublish": "npm run build"
+  },
+  "babel": {
+    "presets": [
+      "env",
+      "stage-0"
+    ],
+    "plugins": [
+      "add-module-exports"
+    ]
+  },
+  "dependencies": {
+    "babel-core": "^6.26.0",
+    "babel-plugin-add-module-exports": "^0.2.1",
+    "babel-plugin-module-resolver": "^3.1.0",
+    "babel-plugin-transform-runtime": "^6.23.0",
+    "babel-preset-env": "^1.6.1",
+    "babel-preset-react": "^6.24.1",
+    "babel-preset-stage-0": "^6.24.1",
+    "babelify": "^8.0.0",
+    "cross-spawn": "^6.0.5",
+    "electron": "^1.8.3",
+    "electron-packager": "^11.1.0",
+    "event-stream": "^3.3.4",
+    "gulp": "github:gulpjs/gulp#4.0",
+    "gulp-babel": "^7.0.1",
+    "gulp-bro": "^1.0.3",
+    "gulp-clean-css": "^3.9.3",
+    "gulp-ejs": "^3.1.2",
+    "gulp-if": "^2.0.2",
+    "gulp-rename": "^1.2.2",
+    "gulp-replace": "^0.6.1",
+    "gulp-sass": "^3.1.0",
+    "gulp-sourcemaps": "^2.6.4",
+    "gulp-uglify": "^3.0.0",
+    "gulp-watch": "^5.0.0",
+    "lodash": "^4.17.5",
+    "node-sass": "^4.7.2",
+    "tree-kill": "^1.2.0",
+    "ws": "^5.0.0"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-eslint": "^8.2.2",
+    "eslint": "^4.18.2"
+  },
+  "author": {
+    "name": "Eliot Akira"
+  },
+  "repository": {
+    "user": "eliot-akira",
+    "repo": "btron",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/eliot-akira/btron/tarball/master",
+    "clone_url": "https://github.com/eliot-akira/btron",
+    "https_url": "https://github.com/eliot-akira/btron",
+    "travis_url": "https://travis-ci.org/eliot-akira/btron",
+    "zip_url": "https://github.com/eliot-akira/btron/archive/master.zip",
+    "api_url": "https://api.github.com/repos/eliot-akira/btron"
+  },
+  "license": "MIT",
+  "gitHead": "924a7b7c951451e934d0466c8ad2337d6b79e9e2",
+  "homepage": "https://github.com/eliot-akira/btron#readme",
+  "_npmVersion": "5.6.0",
+  "_nodeVersion": "9.2.1",
+  "dist": {
+    "integrity": "sha512-j6jt965DPoNY62GQaaUPWW2m4N0s7ddgxuZHK9tyR0Nh39DzEwgaK7iWBrTwpCs3WeZVO9lyrzBBtFT8KnSPAg==",
+    "shasum": "cc3aa1006f1801a1176474fc72e7e7dcbb1ad5ec",
+    "tarball": "http://registry.npmjs.org/btron/-/btron-0.3.1.tgz",
+    "fileCount": 105,
+    "unpackedSize": 1095675
+  },
+  "_hasShrinkwrap": false,
+  "versions": [
+    {
+      "number": "0.0.1",
+      "date": "2017-01-03T16:10:55.959Z"
+    },
+    {
+      "number": "0.2.0",
+      "date": "2017-01-03T18:36:49.002Z"
+    },
+    {
+      "number": "0.3.0",
+      "date": "2018-03-13T19:10:04.479Z"
+    },
+    {
+      "number": "0.3.1",
+      "date": "2018-03-14T07:11:18.106Z"
+    }
+  ],
+  "created": "2017-01-03T16:10:55.959Z",
+  "modified": "2018-03-14T07:11:18.777Z",
+  "lastPublisher": {
+    "name": "eliot",
+    "email": "me@eliotakira.com"
+  },
+  "owners": [
+    {
+      "name": "eliot",
+      "email": "me@eliotakira.com"
+    }
+  ]
+}

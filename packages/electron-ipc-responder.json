@@ -1,0 +1,94 @@
+{
+  "name": "electron-ipc-responder",
+  "description": "A simple request/response based communication protocol for Electrons IPC functionality",
+  "main": "dist/index.js",
+  "scripts": {
+    "test": "standard index.js test/**/*.js && node test/support/runner.js",
+    "docs": "jsdoc -c .jsdoc.json && sed -i '' 's/<title>JSDoc/<title>electron-ipc-responder Documentation/g' docs/*.html",
+    "semantic-release": "npm run build && semantic-release pre && npm publish && semantic-release post",
+    "build": "rm -fr dist && mkdir dist && babel --presets es2015 --out-file dist/index.js index.js"
+  },
+  "repository": {
+    "user": "swissmanu",
+    "repo": "electron-ipc-responder",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/swissmanu/electron-ipc-responder/tarball/master",
+    "clone_url": "https://github.com/swissmanu/electron-ipc-responder",
+    "https_url": "https://github.com/swissmanu/electron-ipc-responder",
+    "travis_url": "https://travis-ci.org/swissmanu/electron-ipc-responder",
+    "zip_url": "https://github.com/swissmanu/electron-ipc-responder/archive/master.zip",
+    "api_url": "https://api.github.com/repos/swissmanu/electron-ipc-responder"
+  },
+  "keywords": [
+    "electron",
+    "ipc",
+    "communication",
+    "request",
+    "response",
+    "inter",
+    "process"
+  ],
+  "author": {
+    "name": "Manuel Alabor",
+    "email": "manuel@alabor.me"
+  },
+  "license": "MIT",
+  "homepage": "https://github.com/swissmanu/electron-ipc-responder#readme",
+  "engines": {
+    "node": ">=4"
+  },
+  "dependencies": {
+    "node-uuid": "^1.4.7"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.4.0",
+    "babel-preset-es2015": "^6.3.13",
+    "cz-conventional-changelog": "^1.1.5",
+    "jasmine": "^2.4.1",
+    "jasmine-spec-reporter": "^2.4.0",
+    "jsdoc": "^3.4.0",
+    "semantic-release": "^4.3.5",
+    "standard": "^5.4.1"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  },
+  "version": "1.0.4",
+  "gitHead": "246cd69c1d5a9b75604ecfe349f0023bf8445265",
+  "_npmVersion": "3.5.3",
+  "_nodeVersion": "4.2.4",
+  "dist": {
+    "shasum": "d8de36e39159abb87c50db1623ac377ea9d4cf66",
+    "tarball": "http://registry.npmjs.org/electron-ipc-responder/-/electron-ipc-responder-1.0.4.tgz"
+  },
+  "versions": [
+    {
+      "number": "1.0.0",
+      "date": "2016-01-19T22:25:03.267Z"
+    },
+    {
+      "number": "1.0.3",
+      "date": "2016-01-20T06:36:52.345Z"
+    },
+    {
+      "number": "1.0.4",
+      "date": "2016-01-20T17:48:51.769Z"
+    }
+  ],
+  "created": "2016-01-19T22:25:03.267Z",
+  "modified": "2016-01-20T17:48:51.769Z",
+  "lastPublisher": {
+    "name": "swissmanu",
+    "email": "manuel@alabor.me"
+  },
+  "owners": [
+    {
+      "name": "swissmanu",
+      "email": "manuel@alabor.me"
+    }
+  ]
+}

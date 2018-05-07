@@ -1,0 +1,118 @@
+{
+  "name": "uupaa.ts2aac.js",
+  "version": "0.0.2",
+  "description": "Convert MPEG2-TS to AAC.",
+  "url": "https://github.com/uupaa/ts2aac.js",
+  "keywords": [
+    "MPEG2-TS",
+    "AAC",
+    "uupaa",
+    "WebModule",
+    "Unstable"
+  ],
+  "repository": {
+    "user": "uupaa",
+    "repo": "ts2aac.js",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/uupaa/ts2aac.js/tarball/master",
+    "clone_url": "https://github.com/uupaa/ts2aac.js",
+    "https_url": "https://github.com/uupaa/ts2aac.js",
+    "travis_url": "https://travis-ci.org/uupaa/ts2aac.js",
+    "zip_url": "https://github.com/uupaa/ts2aac.js/archive/master.zip",
+    "api_url": "https://api.github.com/repos/uupaa/ts2aac.js"
+  },
+  "scripts": {
+    "sync": "node ../WebModule/run/sync.js; npm update; node ../WebModule/run/page.js",
+    "wiki": "node ../WebModule/run/wiki.js",
+    "min": "node ../WebModule/run/minify.js --verbose --strict --keep --pretty",
+    "build": "node ../WebModule/run/minify.js --verbose --strict --keep --release",
+    "watch": "node ../WebModule/run/watch.js --verbose --run lint",
+    "page": "node ../WebModule/run/page.js --verbose",
+    "test": "npm run min; npm run node; npm run browser",
+    "node": "NODE_ENV=production NODE_PATH=lib node test/node/index.js",
+    "noded": "NODE_ENV=production NODE_PATH=lib node --debug-brk test/node/index.js",
+    "browser": "open http://localhost:8000/ts2aac.js/test/browser/index.html",
+    "el": "electron test/el",
+    "nw": "nw test/nw",
+    "add-src": "node ../WebModule/run/add-src.js",
+    "add-subclass": "node ../WebModule/run/add-subclass.js",
+    "sim": "node ../WebModule/run/sim.js http://localhost:8000/ts2aac.js/test/browser/index.html",
+    "simx": "node ../WebModule/run/sim.js stop",
+    "lint": "eslint lib/*.js",
+    "score": "node ../WebModule/run/score.js; open lint/plato/index.html",
+    "patch": "node ../WebModule/run/patch.js",
+    "setup": "node ../WebModule/run/setup.js",
+    "start": "cd ../; Python -m SimpleHTTPServer 8000 &",
+    "stop": "killall -- Python -m SimpleHTTPServer 8000; exit 0"
+  },
+  "webmodule": {
+    "develop": false,
+    "label": [
+      "@dev"
+    ],
+    "node": {
+      "output": "release/ts2aac.n.min.js",
+      "source": [
+        "lib/ts2aac.js"
+      ]
+    },
+    "nw": {
+      "output": "release/ts2aac.nw.min.js",
+      "source": [
+        "lib/ts2aac.js"
+      ]
+    },
+    "el": {
+      "output": "release/ts2aac.el.min.js",
+      "source": [
+        "lib/ts2aac.js"
+      ]
+    }
+  },
+  "dependencies": {
+    "uupaa.hexdump.js": "",
+    "uupaa.filestore.js": "",
+    "uupaa.fileloader.js": "",
+    "uupaa.mpeg2ts.js": "",
+    "uupaa.aac.js": ""
+  },
+  "devDependencies": {},
+  "lib": "./lib/",
+  "main": "./index.js",
+  "author": {
+    "name": "uupaa"
+  },
+  "license": "Apache-2.0",
+  "contributors": [],
+  "gitHead": "5e493eeef75b26116716ee31bd4936b14d2a042d",
+  "homepage": "https://github.com/uupaa/ts2aac.js",
+  "_npmVersion": "2.0.0",
+  "dist": {
+    "shasum": "e2e2a685476bb5e17dba1cba4a6d94c76b0d0ce9",
+    "tarball": "http://registry.npmjs.org/uupaa.ts2aac.js/-/uupaa.ts2aac.js-0.0.2.tgz"
+  },
+  "versions": [
+    {
+      "number": "0.0.1",
+      "date": "2016-06-24T05:50:19.379Z"
+    },
+    {
+      "number": "0.0.2",
+      "date": "2016-06-24T05:53:03.887Z"
+    }
+  ],
+  "created": "2016-06-24T05:50:19.379Z",
+  "modified": "2016-06-24T05:53:03.887Z",
+  "lastPublisher": {
+    "name": "uupaa",
+    "email": "uupaa.js@gmail.com"
+  },
+  "owners": [
+    {
+      "name": "uupaa",
+      "email": "uupaa.js@gmail.com"
+    }
+  ]
+}

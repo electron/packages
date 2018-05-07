@@ -1,0 +1,133 @@
+{
+  "name": "electron-har",
+  "description": "A command-line tool for generating HTTP Archive (HAR) (based on Electron)",
+  "version": "0.2.0",
+  "author": {
+    "name": "Stanley Shyiko",
+    "email": "stanley.shyiko@gmail.com"
+  },
+  "license": "MIT",
+  "repository": {
+    "user": "shyiko",
+    "repo": "electron-har",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/shyiko/electron-har/tarball/master",
+    "clone_url": "https://github.com/shyiko/electron-har",
+    "https_url": "https://github.com/shyiko/electron-har",
+    "travis_url": "https://travis-ci.org/shyiko/electron-har",
+    "zip_url": "https://github.com/shyiko/electron-har/archive/master.zip",
+    "api_url": "https://api.github.com/repos/shyiko/electron-har"
+  },
+  "bin": {
+    "electron-har": "./bin/electron-har"
+  },
+  "main": "./src/index.js",
+  "dependencies": {
+    "cookie": "^0.3.1",
+    "cross-exec-file": "^1.0.0",
+    "electron-prebuilt": "^0.35.4",
+    "json-stable-stringify": "^1.0.0",
+    "object-assign": "^4.0.1",
+    "tmp": "^0.0.28",
+    "yargs": "^3.31.0"
+  },
+  "devDependencies": {
+    "electron-packager": "^5.1.1",
+    "chai": "^3.4.1",
+    "mocha": "^2.3.4",
+    "semistandard": "^7.0.4"
+  },
+  "semistandard": {
+    "globals": [
+      "chrome",
+      "describe",
+      "it",
+      "before"
+    ]
+  },
+  "scripts": {
+    "clean": "rm -rf build",
+    "build:app": "mkdir -p build && cp -r src build/app && cp package.json build/app && cd build/app && npm i --production && npm un electron-prebuilt",
+    "build:macosx": "electron-packager build/app electron-har --platform=darwin --arch=x64 --version=0.35.4 --out=build --overwrite --app-bundle-id=com.github.shyiko.ElectronHAR --app-category-type=public.app-category.developer-tools --app-version=$npm_package_version && mv build/electron-har-darwin-x64/electron-har.app/Contents/MacOS/{Electron,electron-har} && sed -i 's/>Electron</>electron-har</g' build/electron-har-darwin-x64/electron-har.app/Contents/Info.plist",
+    "build:linux": "electron-packager build/app electron-har --platform=linux --arch=x64,ia32 --version=0.35.4 --out=build --overwrite",
+    "build": "npm run clean && npm run build:app && npm run build:macosx && npm run build:linux",
+    "tar:macosx": "cd build/electron-har-darwin-x64 && tar -cvzf ../electron-har-$npm_package_version-darwin-x64.tar.gz *",
+    "tar:linux": "echo x64 ia32 | xargs -n1 sh -c 'cd build/electron-har-linux-$0 && tar -cvzf ../electron-har-$npm_package_version-linux-$0.tar.gz *'",
+    "tar": "npm run tar:macosx && npm run tar:linux",
+    "release": "npm run build && npm run tar",
+    "test": "semistandard src/**/*.js test/**/*.js && ./node_modules/mocha/bin/mocha -R spec"
+  },
+  "keywords": [
+    "electron",
+    "har"
+  ],
+  "gitHead": "82076dfdd23836486601736652c9580f5df37c6a",
+  "homepage": "https://github.com/shyiko/electron-har#readme",
+  "_npmVersion": "2.15.8",
+  "_nodeVersion": "4.4.7",
+  "dist": {
+    "shasum": "3bb50a4d944105ad9f319ab525a98e06c93c5ac9",
+    "tarball": "http://registry.npmjs.org/electron-har/-/electron-har-0.2.0.tgz"
+  },
+  "stars": 1,
+  "versions": [
+    {
+      "number": "0.1.0",
+      "date": "2015-12-10T00:04:22.276Z"
+    },
+    {
+      "number": "0.1.1",
+      "date": "2015-12-10T00:44:31.236Z"
+    },
+    {
+      "number": "0.1.2",
+      "date": "2015-12-10T01:48:36.621Z"
+    },
+    {
+      "number": "0.1.3",
+      "date": "2015-12-11T02:47:30.993Z"
+    },
+    {
+      "number": "0.1.4",
+      "date": "2015-12-13T22:39:05.005Z"
+    },
+    {
+      "number": "0.1.5",
+      "date": "2015-12-14T02:06:04.109Z"
+    },
+    {
+      "number": "0.1.6",
+      "date": "2016-01-13T07:08:38.985Z"
+    },
+    {
+      "number": "0.1.7",
+      "date": "2016-01-13T07:46:52.849Z"
+    },
+    {
+      "number": "0.1.8",
+      "date": "2016-01-13T08:18:57.109Z"
+    },
+    {
+      "number": "0.1.9",
+      "date": "2016-03-30T05:31:36.070Z"
+    },
+    {
+      "number": "0.2.0",
+      "date": "2016-07-21T20:36:13.403Z"
+    }
+  ],
+  "created": "2015-12-10T00:04:22.276Z",
+  "modified": "2016-07-21T20:36:13.403Z",
+  "lastPublisher": {
+    "name": "shyiko",
+    "email": "stanley.shyiko@gmail.com"
+  },
+  "owners": [
+    {
+      "name": "shyiko",
+      "email": "stanley.shyiko@gmail.com"
+    }
+  ]
+}

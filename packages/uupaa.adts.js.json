@@ -1,0 +1,146 @@
+{
+  "name": "uupaa.adts.js",
+  "version": "0.0.8",
+  "description": "ADTS parser.",
+  "url": "https://github.com/uupaa/ADTS.js",
+  "keywords": [
+    "ADTS",
+    "AAC",
+    "uupaa",
+    "WebModule",
+    "Unstable"
+  ],
+  "repository": {
+    "user": "uupaa",
+    "repo": "ADTS.js",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/uupaa/ADTS.js/tarball/master",
+    "clone_url": "https://github.com/uupaa/ADTS.js",
+    "https_url": "https://github.com/uupaa/ADTS.js",
+    "travis_url": "https://travis-ci.org/uupaa/ADTS.js",
+    "zip_url": "https://github.com/uupaa/ADTS.js/archive/master.zip",
+    "api_url": "https://api.github.com/repos/uupaa/ADTS.js"
+  },
+  "scripts": {
+    "sync": "node ../WebModule/run/sync.js; npm update; node ../WebModule/run/page.js",
+    "wiki": "node ../WebModule/run/wiki.js",
+    "min": "node ../WebModule/run/minify.js --verbose --strict --keep --pretty",
+    "build": "node ../WebModule/run/minify.js --verbose --strict --keep --release",
+    "watch": "node ../WebModule/run/watch.js --verbose --run lint",
+    "page": "node ../WebModule/run/page.js --verbose",
+    "test": "npm run min; npm run node; npm run browser",
+    "node": "NODE_ENV=production NODE_PATH=lib node test/node/index.js",
+    "noded": "NODE_ENV=production NODE_PATH=lib node --debug-brk test/node/index.js",
+    "browser": "open http://localhost:8000/ADTS.js/test/browser/index.html",
+    "el": "electron test/el",
+    "nw": "nw test/nw",
+    "add-src": "node ../WebModule/run/add-src.js",
+    "add-subclass": "node ../WebModule/run/add-subclass.js",
+    "sim": "node ../WebModule/run/sim.js http://localhost:8000/ADTS.js/test/browser/index.html",
+    "simx": "node ../WebModule/run/sim.js stop",
+    "lint": "eslint lib/*.js",
+    "score": "node ../WebModule/run/score.js; open lint/plato/index.html",
+    "patch": "node ../WebModule/run/patch.js",
+    "setup": "node ../WebModule/run/setup.js",
+    "start": "cd ../; Python -m SimpleHTTPServer 8000 &",
+    "stop": "killall -- Python -m SimpleHTTPServer 8000; exit 0"
+  },
+  "webmodule": {
+    "develop": false,
+    "label": [
+      "@dev"
+    ],
+    "browser": {
+      "output": "release/ADTS.b.min.js",
+      "source": [
+        "lib/ADTS.js"
+      ]
+    },
+    "worker": {
+      "output": "release/ADTS.w.min.js",
+      "source": [
+        "lib/ADTS.js"
+      ]
+    },
+    "node": {
+      "output": "release/ADTS.n.min.js",
+      "source": [
+        "lib/ADTS.js"
+      ]
+    },
+    "nw": {
+      "output": "release/ADTS.nw.min.js",
+      "source": [
+        "lib/ADTS.js"
+      ]
+    },
+    "el": {
+      "output": "release/ADTS.el.min.js",
+      "source": [
+        "lib/ADTS.js"
+      ]
+    }
+  },
+  "dependencies": {
+    "uupaa.hash.js": ""
+  },
+  "devDependencies": {
+    "uupaa.webaudio.js": "",
+    "uupaa.fileloader.js": ""
+  },
+  "lib": "./lib/",
+  "main": "./index.js",
+  "author": {
+    "name": "uupaa"
+  },
+  "license": "MIT",
+  "contributors": [],
+  "gitHead": "6b9c8e934cf4b4594ca5abd2f787546ea66a4bc5",
+  "homepage": "https://github.com/uupaa/ADTS.js#readme",
+  "_npmVersion": "2.14.12",
+  "_nodeVersion": "4.2.4",
+  "dist": {
+    "shasum": "a2ed0f3ab3bb9ee2de0d61f0bafebda85c86181c",
+    "tarball": "http://registry.npmjs.org/uupaa.adts.js/-/uupaa.adts.js-0.0.8.tgz"
+  },
+  "versions": [
+    {
+      "number": "0.0.1",
+      "date": "2016-03-08T13:45:15.814Z"
+    },
+    {
+      "number": "0.0.2",
+      "date": "2016-03-08T20:31:40.136Z"
+    },
+    {
+      "number": "0.0.4",
+      "date": "2016-03-15T21:32:00.146Z"
+    },
+    {
+      "number": "0.0.6",
+      "date": "2016-03-16T13:56:38.794Z"
+    },
+    {
+      "number": "0.0.7",
+      "date": "2016-04-05T08:05:33.808Z"
+    },
+    {
+      "number": "0.0.8",
+      "date": "2016-04-05T12:34:30.963Z"
+    }
+  ],
+  "created": "2016-03-08T13:45:15.814Z",
+  "modified": "2016-04-05T12:34:30.963Z",
+  "lastPublisher": {
+    "name": "uupaa",
+    "email": "uupaa.js@gmail.com"
+  },
+  "owners": [
+    {
+      "name": "uupaa",
+      "email": "uupaa.js@gmail.com"
+    }
+  ]
+}

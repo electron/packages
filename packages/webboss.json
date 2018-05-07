@@ -1,0 +1,134 @@
+{
+  "name": "webboss",
+  "version": "2.0.0",
+  "description": "Wrap web apps natively",
+  "keywords": [
+    "desktop",
+    "electron",
+    "app",
+    "native",
+    "wrapper"
+  ],
+  "main": "lib/index.js",
+  "scripts": {
+    "dev-up": "npm install && (cd app && npm install) && npm run build",
+    "test": "jest && gulp test",
+    "jest": "jest",
+    "tdd": "gulp tdd",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "ci": "gulp build test && npm run lint",
+    "clean": "gulp clean",
+    "build": "gulp build",
+    "watch": "while true ; do gulp watch ; done",
+    "package-placeholder": "npm run build && node lib/cli.js http://www.bennish.net/web-notifications.html ~/Desktop --overwrite --name notification-test --icon ./test-resources/iconSampleGrey.png --inject ./test-resources/test-injection.js --inject ./test-resources/test-injection.css && open ~/Desktop/notification-test-darwin-x64/notification-test.app",
+    "start-placeholder": "npm run build && electron app",
+    "changelog": "./scripts/changelog"
+  },
+  "bin": {
+    "nativefier": "lib/cli.js"
+  },
+  "repository": {
+    "user": "awesometech10",
+    "repo": "WebBoss",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/awesometech10/WebBoss/tarball/master",
+    "clone_url": "https://github.com/awesometech10/WebBoss",
+    "https_url": "https://github.com/awesometech10/WebBoss",
+    "travis_url": "https://travis-ci.org/awesometech10/WebBoss",
+    "zip_url": "https://github.com/awesometech10/WebBoss/archive/master.zip",
+    "api_url": "https://api.github.com/repos/awesometech10/WebBoss"
+  },
+  "author": {
+    "name": "Trevor Thalacker"
+  },
+  "license": "MIT",
+  "homepage": "https://awesometech10.github.io/WebBoss",
+  "dependencies": {
+    "async": "^2.3.0",
+    "axios": "^0.16.1",
+    "babel-polyfill": "^6.7.2",
+    "cheerio": "^0.22.0",
+    "commander": "^2.9.0",
+    "electron-packager": "^8.6.0",
+    "gitcloud": "^0.1.0",
+    "hasbin": "^1.2.0",
+    "lodash": "^4.0.0",
+    "loglevel": "^1.4.0",
+    "ncp": "^2.0.0",
+    "page-icon": "^0.3.0",
+    "progress": "^2.0.0",
+    "sanitize-filename": "^1.5.3",
+    "shelljs": "^0.7.0",
+    "source-map-support": "^0.4.0",
+    "tmp": "0.0.31",
+    "validator": "^7.0.0"
+  },
+  "devDependencies": {
+    "babel-core": "^6.4.5",
+    "babel-jest": "^19.0.0",
+    "babel-loader": "^6.2.1",
+    "babel-preset-es2015": "^6.6.0",
+    "babel-register": "^6.6.0",
+    "chai": "^3.4.1",
+    "del": "^2.2.0",
+    "eslint": "^3.19.0",
+    "eslint-config-airbnb-base": "^11.1.3",
+    "eslint-plugin-import": "^2.2.0",
+    "gulp": "^3.9.0",
+    "gulp-babel": "^6.1.1",
+    "gulp-istanbul": "^1.1.1",
+    "gulp-mocha": "^4.3.0",
+    "gulp-sourcemaps": "^2.6.0",
+    "isparta": "^4.0.0",
+    "jest": "^20.0.3",
+    "regenerator-runtime": "^0.10.5",
+    "require-dir": "^0.3.0",
+    "run-sequence": "^1.1.5",
+    "webpack-stream": "^3.1.0"
+  },
+  "engines": {
+    "node": ">= 4.0"
+  },
+  "babel": {
+    "presets": [
+      "es2015"
+    ]
+  },
+  "jest": {
+    "testMatch": [
+      "**/src/**/?(*.)(spec|test).js?(x)"
+    ]
+  },
+  "_npmVersion": "5.0.3",
+  "_nodeVersion": "8.1.2",
+  "dist": {
+    "integrity": "sha512-DKOimdkA/I/lITX7MDavZZ+AVZlZ/d/1t0ricf77pIy+D4v5ezsk01zP/5nh9ShGSdnTrt9C1bQFVk+6zE4T5w==",
+    "shasum": "870faf6670a99eb817d3a0ba751f4203ab41e57e",
+    "tarball": "https://registry.npmjs.org/webboss/-/webboss-2.0.0.tgz"
+  },
+  "versions": [
+    {
+      "number": "1.0.0",
+      "date": "2017-06-25T03:48:25.430Z"
+    },
+    {
+      "number": "2.0.0",
+      "date": "2017-06-25T03:57:15.517Z"
+    }
+  ],
+  "created": "2017-06-25T03:48:25.430Z",
+  "modified": "2017-06-25T03:57:15.517Z",
+  "lastPublisher": {
+    "name": "awesometech10",
+    "email": "omminent@gmail.com"
+  },
+  "owners": [
+    {
+      "name": "awesometech10",
+      "email": "omminent@gmail.com"
+    }
+  ]
+}

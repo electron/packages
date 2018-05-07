@@ -1,0 +1,508 @@
+{
+  "name": "prebuild",
+  "version": "7.6.0",
+  "description": "A command line tool for easily making prebuilt binaries for multiple versions of node, electron or node-webkit on a specific platform",
+  "scripts": {
+    "test": "verify-travis-appveyor && tape test && npm run lint",
+    "audit": "nsp check",
+    "lint": "standard"
+  },
+  "keywords": [
+    "prebuilt",
+    "binaries",
+    "native",
+    "addon",
+    "module",
+    "c",
+    "c++",
+    "bindings",
+    "devops",
+    "electron",
+    "node-webkit"
+  ],
+  "dependencies": {
+    "async": "^2.1.4",
+    "cmake-js": "^3.6.2",
+    "detect-libc": "^1.0.3",
+    "execspawn": "^1.0.1",
+    "ghreleases": "^2.0.0",
+    "github-from-package": "0.0.0",
+    "minimist": "^1.1.2",
+    "mkdirp": "^0.5.1",
+    "node-abi": "^2.2.0",
+    "node-gyp": "^3.0.3",
+    "node-ninja": "^1.0.1",
+    "noop-logger": "^0.1.0",
+    "npm-which": "^3.0.1",
+    "npmlog": "^4.0.1",
+    "nw-gyp": "^3.6.3",
+    "osenv": "^0.1.4",
+    "rc": "^1.0.3",
+    "tar-stream": "^1.2.1",
+    "xtend": "^4.0.1"
+  },
+  "devDependencies": {
+    "a-native-module": "^1.0.0",
+    "nsp": "^3.1.0",
+    "rimraf": "^2.4.2",
+    "standard": "^10.0.3",
+    "tape": "^4.0.1",
+    "verify-travis-appveyor": "^2.0.1"
+  },
+  "bin": {
+    "prebuild": "./bin.js"
+  },
+  "repository": {
+    "user": "prebuild",
+    "repo": "prebuild",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/prebuild/prebuild/tarball/master",
+    "clone_url": "https://github.com/prebuild/prebuild",
+    "https_url": "https://github.com/prebuild/prebuild",
+    "travis_url": "https://travis-ci.org/prebuild/prebuild",
+    "zip_url": "https://github.com/prebuild/prebuild/archive/master.zip",
+    "api_url": "https://api.github.com/repos/prebuild/prebuild"
+  },
+  "author": {
+    "name": "Mathias Buus",
+    "url": "@mafintosh"
+  },
+  "contributors": [
+    {
+      "name": "Julian Gruber",
+      "email": "julian@juliangruber.com",
+      "url": "https://github.com/juliangruber"
+    },
+    {
+      "name": "Brett Lawson",
+      "email": "brett19@gmail.com",
+      "url": "https://github.com/brett19"
+    },
+    {
+      "name": "Pieter Hintjens",
+      "email": "ph@imatix.com",
+      "url": "https://github.com/hintjens"
+    },
+    {
+      "name": "Lars-Magnus Skog",
+      "email": "ralphtheninja@riseup.net",
+      "url": "https://github.com/ralphtheninja"
+    },
+    {
+      "name": "Lukas Geiger",
+      "email": "lukas.geiger94@gmail.com",
+      "url": "https://github.com/lgeiger"
+    }
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/prebuild/prebuild",
+  "gitHead": "944126b604605d092f82f0b2655e174c11d653a7",
+  "_npmVersion": "6.0.0",
+  "_nodeVersion": "10.0.0",
+  "dist": {
+    "integrity": "sha512-HbLWdMjllpURj0r5ZSUtzXJI15nFaZXio6/QfyQWQM02rkJ37o4j/ebt3bGmVhCWnPFQxo5sRE4epdNb0YXDOg==",
+    "shasum": "b9c626ea07b955dbeb50afa7a1a33373372572b8",
+    "tarball": "https://registry.npmjs.org/prebuild/-/prebuild-7.6.0.tgz",
+    "fileCount": 21,
+    "unpackedSize": 29556,
+    "npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJa6aOlCRA9TVsSAnZWagAAP8gP/2sRe2XkWXbdhuQGnFpP\nMAEerq+AEgGPmVbvXae6PTJI8b4vDyBd5UyKu0XNk5pVJOjovywO/xw5WSN5\n4JyamQAj5OCKkIWXiGukSdGe/tLIV7sYdxtQh5Ij8wsuXF4p2K6btTEv95Mg\nyFtV3+UsxxyGEk1i19/S9KPLO4+pP18AXNBDrrs3fvZH7SqlfsOpVAiI7V00\nRWOAOgGfmw+33QQVO5TWgMW8McYeDOliH4W0Uvy/9j0kPLQxSA6bz7s07vto\nnH/upyYbas601hUdj5BZqI79mNghJG0OIYuvlOgMry67eIR1YEwiPfH1ugxd\nZ7wwQnlQSxuS2J8IurWR5V0LqpDrIDyBMYg1JpfU1/6Fu3QRqkj5ZFGRdhMn\n6pZHgsYN103n5WxeylLygRlc7f0v8Nhj8zPyTWGSflE4apvPhNm+cj0T9yhX\nHRIKY21qxDFfxDcSDN4O/ER+G6ApAR4+nrLgNtNCeIT9152mRu+AY0CSTEQj\naQiMcsxXmsUXE4MSfny1KzEPV82wqIluCDggOal9iKXlsjEdDXSumIel0Xpv\nx+QgE8TjK+1gm/3ivg/L8wxzMD4jymxEVNsUgLAw4OIKfwACfMwMFisOK/Oe\no66FYZMfsS05qjQ9TknUJBSK162tBfeYY0AQM+KaAys7ltFfzoD52PuDNB7b\nLDI5\r\n=oUOf\r\n-----END PGP SIGNATURE-----\r\n"
+  },
+  "_hasShrinkwrap": false,
+  "stars": 5,
+  "versions": [
+    {
+      "number": "1.0.0",
+      "date": "2015-07-25T17:21:13.929Z"
+    },
+    {
+      "number": "1.0.1",
+      "date": "2015-07-25T17:24:02.193Z"
+    },
+    {
+      "number": "1.0.2",
+      "date": "2015-07-25T17:25:32.976Z"
+    },
+    {
+      "number": "1.0.3",
+      "date": "2015-07-25T17:34:50.121Z"
+    },
+    {
+      "number": "1.0.4",
+      "date": "2015-07-25T17:40:51.109Z"
+    },
+    {
+      "number": "1.1.0",
+      "date": "2015-07-25T19:55:08.123Z"
+    },
+    {
+      "number": "1.1.1",
+      "date": "2015-07-25T20:11:46.445Z"
+    },
+    {
+      "number": "1.2.0",
+      "date": "2015-07-26T06:26:52.718Z"
+    },
+    {
+      "number": "1.3.0",
+      "date": "2015-07-26T10:23:10.658Z"
+    },
+    {
+      "number": "2.0.0",
+      "date": "2015-07-26T12:04:00.862Z"
+    },
+    {
+      "number": "2.0.1",
+      "date": "2015-07-26T12:23:24.582Z"
+    },
+    {
+      "number": "2.0.2",
+      "date": "2015-07-26T12:49:18.896Z"
+    },
+    {
+      "number": "2.0.3",
+      "date": "2015-07-26T12:55:41.934Z"
+    },
+    {
+      "number": "2.1.0",
+      "date": "2015-07-26T15:12:17.740Z"
+    },
+    {
+      "number": "2.1.1",
+      "date": "2015-07-26T17:54:38.870Z"
+    },
+    {
+      "number": "2.1.2",
+      "date": "2015-07-26T18:07:06.250Z"
+    },
+    {
+      "number": "2.1.3",
+      "date": "2015-07-26T19:09:10.775Z"
+    },
+    {
+      "number": "2.1.4",
+      "date": "2015-07-26T20:02:11.787Z"
+    },
+    {
+      "number": "2.1.5",
+      "date": "2015-07-27T23:27:41.377Z"
+    },
+    {
+      "number": "2.2.0",
+      "date": "2015-07-27T23:45:46.797Z"
+    },
+    {
+      "number": "2.2.1",
+      "date": "2015-07-28T00:05:02.742Z"
+    },
+    {
+      "number": "2.2.2",
+      "date": "2015-07-28T00:20:15.924Z"
+    },
+    {
+      "number": "2.2.3",
+      "date": "2015-07-28T08:05:21.311Z"
+    },
+    {
+      "number": "2.2.4",
+      "date": "2015-07-28T22:11:13.972Z"
+    },
+    {
+      "number": "2.2.5",
+      "date": "2015-07-28T22:30:25.274Z"
+    },
+    {
+      "number": "2.2.6",
+      "date": "2015-07-28T23:08:55.780Z"
+    },
+    {
+      "number": "2.2.7",
+      "date": "2015-07-29T10:39:46.940Z"
+    },
+    {
+      "number": "2.2.8",
+      "date": "2015-07-29T16:17:08.592Z"
+    },
+    {
+      "number": "2.2.9",
+      "date": "2015-07-29T16:18:05.056Z"
+    },
+    {
+      "number": "2.2.10",
+      "date": "2015-07-29T21:46:29.852Z"
+    },
+    {
+      "number": "2.3.0",
+      "date": "2015-07-30T13:46:59.945Z"
+    },
+    {
+      "number": "2.3.1",
+      "date": "2015-07-30T17:31:31.393Z"
+    },
+    {
+      "number": "2.3.2",
+      "date": "2015-08-01T14:50:34.135Z"
+    },
+    {
+      "number": "2.3.3",
+      "date": "2015-08-01T15:11:39.565Z"
+    },
+    {
+      "number": "2.3.4",
+      "date": "2015-08-03T14:59:11.117Z"
+    },
+    {
+      "number": "2.4.0",
+      "date": "2015-09-03T12:12:15.529Z"
+    },
+    {
+      "number": "2.5.0",
+      "date": "2015-09-05T13:44:57.881Z"
+    },
+    {
+      "number": "2.5.1",
+      "date": "2015-09-05T14:26:30.375Z"
+    },
+    {
+      "number": "2.5.2",
+      "date": "2015-09-10T20:20:49.625Z"
+    },
+    {
+      "number": "2.5.3",
+      "date": "2015-09-22T14:47:39.677Z"
+    },
+    {
+      "number": "2.5.4",
+      "date": "2015-09-22T15:28:47.459Z"
+    },
+    {
+      "number": "2.5.5",
+      "date": "2015-09-24T21:12:13.460Z"
+    },
+    {
+      "number": "2.6.0",
+      "date": "2015-09-29T10:28:26.971Z"
+    },
+    {
+      "number": "2.6.1",
+      "date": "2015-10-12T23:45:33.882Z"
+    },
+    {
+      "number": "2.6.2",
+      "date": "2015-10-12T23:58:30.874Z"
+    },
+    {
+      "number": "2.7.0",
+      "date": "2015-11-26T16:38:10.821Z"
+    },
+    {
+      "number": "2.7.1",
+      "date": "2015-11-27T10:13:14.205Z"
+    },
+    {
+      "number": "2.7.2",
+      "date": "2015-12-27T15:07:32.075Z"
+    },
+    {
+      "number": "2.8.0",
+      "date": "2016-01-01T15:17:30.838Z"
+    },
+    {
+      "number": "2.8.1",
+      "date": "2016-01-02T13:18:03.686Z"
+    },
+    {
+      "number": "2.9.0",
+      "date": "2016-01-25T17:22:36.079Z"
+    },
+    {
+      "number": "2.9.1",
+      "date": "2016-02-05T17:24:54.717Z"
+    },
+    {
+      "number": "2.9.2",
+      "date": "2016-02-11T01:10:35.812Z"
+    },
+    {
+      "number": "3.0.0",
+      "date": "2016-02-11T19:35:23.401Z"
+    },
+    {
+      "number": "3.0.1",
+      "date": "2016-02-12T00:57:21.984Z"
+    },
+    {
+      "number": "3.0.2",
+      "date": "2016-02-13T12:40:35.948Z"
+    },
+    {
+      "number": "3.0.3",
+      "date": "2016-02-14T16:41:16.985Z"
+    },
+    {
+      "number": "4.0.0",
+      "date": "2016-02-16T17:45:38.101Z"
+    },
+    {
+      "number": "4.0.1",
+      "date": "2016-02-16T18:28:19.963Z"
+    },
+    {
+      "number": "4.0.2",
+      "date": "2016-02-16T21:23:16.179Z"
+    },
+    {
+      "number": "4.1.0",
+      "date": "2016-02-22T17:10:03.893Z"
+    },
+    {
+      "number": "4.1.1",
+      "date": "2016-03-04T19:07:40.948Z"
+    },
+    {
+      "number": "4.1.2",
+      "date": "2016-04-28T16:27:26.924Z"
+    },
+    {
+      "number": "4.2.0",
+      "date": "2016-05-13T22:05:17.094Z"
+    },
+    {
+      "number": "4.2.1",
+      "date": "2016-05-17T12:28:53.851Z"
+    },
+    {
+      "number": "4.2.2",
+      "date": "2016-06-02T10:25:59.887Z"
+    },
+    {
+      "number": "4.3.0",
+      "date": "2016-10-08T20:19:43.129Z"
+    },
+    {
+      "number": "4.3.1",
+      "date": "2016-10-25T20:30:22.974Z"
+    },
+    {
+      "number": "4.4.0",
+      "date": "2016-10-29T14:51:49.243Z"
+    },
+    {
+      "number": "4.5.0",
+      "date": "2016-11-29T14:40:11.849Z"
+    },
+    {
+      "number": "5.0.0",
+      "date": "2016-12-05T10:14:39.756Z"
+    },
+    {
+      "number": "5.0.1",
+      "date": "2016-12-06T01:26:20.099Z"
+    },
+    {
+      "number": "5.0.2",
+      "date": "2016-12-12T12:10:02.017Z"
+    },
+    {
+      "number": "5.0.3",
+      "date": "2016-12-13T23:38:19.285Z"
+    },
+    {
+      "number": "5.1.0",
+      "date": "2016-12-15T13:42:49.241Z"
+    },
+    {
+      "number": "5.1.1",
+      "date": "2016-12-17T11:43:45.349Z"
+    },
+    {
+      "number": "5.1.2",
+      "date": "2016-12-17T13:32:33.115Z"
+    },
+    {
+      "number": "6.0.0",
+      "date": "2017-01-04T12:40:18.414Z"
+    },
+    {
+      "number": "6.0.1",
+      "date": "2017-02-02T12:40:31.683Z"
+    },
+    {
+      "number": "6.0.2",
+      "date": "2017-02-02T13:53:13.444Z"
+    },
+    {
+      "number": "6.1.0",
+      "date": "2017-03-03T07:13:10.056Z"
+    },
+    {
+      "number": "6.2.0",
+      "date": "2017-06-15T14:55:14.483Z"
+    },
+    {
+      "number": "6.2.1",
+      "date": "2017-07-10T18:22:25.385Z"
+    },
+    {
+      "number": "6.2.2",
+      "date": "2017-10-07T09:31:33.238Z"
+    },
+    {
+      "number": "7.0.0",
+      "date": "2017-12-07T20:48:21.604Z"
+    },
+    {
+      "number": "7.1.0",
+      "date": "2018-01-16T17:46:11.106Z"
+    },
+    {
+      "number": "7.2.0",
+      "date": "2018-01-19T17:42:07.557Z"
+    },
+    {
+      "number": "7.2.1",
+      "date": "2018-01-20T00:11:08.010Z"
+    },
+    {
+      "number": "7.2.2",
+      "date": "2018-01-20T01:57:15.121Z"
+    },
+    {
+      "number": "7.3.0",
+      "date": "2018-01-29T13:07:09.498Z"
+    },
+    {
+      "number": "7.4.0",
+      "date": "2018-01-30T16:18:22.212Z"
+    },
+    {
+      "number": "7.5.0",
+      "date": "2018-05-01T09:01:11.472Z"
+    },
+    {
+      "number": "7.6.0",
+      "date": "2018-05-02T11:40:20.052Z"
+    }
+  ],
+  "created": "2015-07-25T17:21:13.929Z",
+  "modified": "2018-05-02T11:40:26.885Z",
+  "lastPublisher": {
+    "name": "ralphtheninja",
+    "email": "ralphtheninja@riseup.net"
+  },
+  "owners": [
+    {
+      "email": "julian@juliangruber.com",
+      "name": "juliangruber"
+    },
+    {
+      "email": "mathiasbuus@gmail.com",
+      "name": "mafintosh"
+    },
+    {
+      "email": "ralphtheninja@riseup.net",
+      "name": "ralphtheninja"
+    }
+  ]
+}

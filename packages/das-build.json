@@ -1,0 +1,146 @@
+{
+  "name": "das-build",
+  "version": "0.0.5",
+  "description": "Project pipeline for building an app for the browser and wrap it into natice apps with Cordova and Electron.",
+  "main": "index.js",
+  "bin": {
+    "das-build": "./bin/das-build"
+  },
+  "dependencies": {
+    "bower": "^1.7.9",
+    "cordova": "^6.3.1",
+    "del": "^2.2.2",
+    "electron": "^1.3.4",
+    "electron-builder": "^6.3.2",
+    "electron-packager": "^7.7.0",
+    "gulp": "^3.9.1",
+    "gulp-autoprefixer": "^3.1.1",
+    "gulp-batch": "^1.0.5",
+    "gulp-beautify": "^2.0.0",
+    "gulp-bower": "0.0.13",
+    "gulp-clean-css": "^2.0.12",
+    "gulp-concat": "^2.6.0",
+    "gulp-css-url-adjuster": "^0.2.3",
+    "gulp-debug": "^2.1.2",
+    "gulp-electron": "^0.1.3",
+    "gulp-filter": "^4.0.0",
+    "gulp-iconutil": "^1.2.0",
+    "gulp-if": "^2.0.1",
+    "gulp-ignore": "^2.0.1",
+    "gulp-inject-string": "1.1.0",
+    "gulp-jade": "^1.1.0",
+    "gulp-js-escape": "^1.0.1",
+    "gulp-less": "^3.1.0",
+    "gulp-load-plugins": "^1.2.4",
+    "gulp-main-bower-files": "^1.5.3",
+    "gulp-manifest": "^0.1.1",
+    "gulp-plumber": "^1.1.0",
+    "gulp-remove-html-comments": "^1.0.1",
+    "gulp-rename": "^1.2.2",
+    "gulp-run": "^1.7.1",
+    "gulp-sass": "^2.3.2",
+    "gulp-strip-comments": "^2.4.3",
+    "gulp-svg-sprite": "^1.3.5",
+    "gulp-svgmin": "^1.2.2",
+    "gulp-swig": "^0.8.0",
+    "gulp-uglify": "^2.0.0",
+    "gulp-util": "^3.0.7",
+    "gulp-watch": "^4.3.9",
+    "gulp-wrap": "^0.13.0",
+    "gulp-wrapper": "^1.0.0",
+    "js-string-escape": "^1.0.1",
+    "lodash": "^4.15.0",
+    "merge": "^1.2.0",
+    "merge-stream": "^1.0.0",
+    "mkdirp": "^0.5.1",
+    "mv": "^2.1.1",
+    "node-cordova": "github:eiskis/node-cordova",
+    "require-dir": "^0.3.0",
+    "rmdir": "^1.2.0",
+    "run-sequence": "^1.2.2",
+    "strip-json-comments": "^2.0.1",
+    "swig-marked": "0.0.1",
+    "yargs": "^5.0.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "clear": "gulp clear",
+    "build": "gulp build",
+    "init": "npm install && gulp init",
+    "devbuild": "gulp build --debug",
+    "watch": "gulp watch --debug",
+    "purge": "gulp uninit && rm -rf node_modules",
+    "update": "bower prune && bower update",
+    "init-cordova": "gulp init-cordova",
+    "build-cordova": "gulp build-cordova",
+    "devbuild-cordova": "gulp build-cordova --debug",
+    "purge-cordova": "gulp uninit-cordova",
+    "watch-cordova": "gulp watch-cordova --debug",
+    "build-android": "gulp build-cordova --cordovaplatform android",
+    "devbuild-android": "gulp build-cordova --cordovaplatform android --debug",
+    "watch-android": "gulp watch-cordova --cordovaplatform android --debug",
+    "build-ios": "gulp build-cordova --cordovaplatform ios",
+    "devbuild-ios": "gulp build-cordova --cordovaplatform ios --debug",
+    "watch-ios": "gulp watch-cordova --cordovaplatform ios --debug",
+    "build-osx": "gulp build-electron --electronplatform osx",
+    "devbuild-osx": "gulp build-electron --electronplatform osx --debug",
+    "android-list": "cd cordova && cordova run android --list",
+    "android": "cd cordova && cordova emulate android --nobuild --emulator",
+    "android-device": "cd cordova && cordova run android --nobuild --device",
+    "ios-list": "cd cordova && cordova run ios --list",
+    "ios-device": "cd cordova && cordova run ios --nobuild --device",
+    "ios": "cd cordova && cordova emulate ios --nobuild --emulator",
+    "ios-5": "cd cordova && cordova emulate ios --nobuild --target=iPhone-5s",
+    "ios-6": "cd cordova && cordova emulate ios --nobuild --target=iPhone-6s",
+    "ios-6p": "cd cordova && cordova emulate ios --nobuild --target=iPhone-6s-Plus",
+    "requirements": "cd cordova && cordova requirements"
+  },
+  "repository": {
+    "type": "git",
+    "url": ""
+  },
+  "author": "",
+  "license": "",
+  "homepage": "",
+  "gitHead": "f0a010790f43468fa52579597b6f21a88fd335b4",
+  "_npmVersion": "2.14.12",
+  "_nodeVersion": "4.3.0",
+  "dist": {
+    "shasum": "f0a661c3ca490156e9d3cdce14766660e757fb77",
+    "tarball": "http://registry.npmjs.org/das-build/-/das-build-0.0.5.tgz"
+  },
+  "versions": [
+    {
+      "number": "0.0.1",
+      "date": "2016-09-03T13:35:05.257Z"
+    },
+    {
+      "number": "0.0.2",
+      "date": "2016-09-03T14:14:15.505Z"
+    },
+    {
+      "number": "0.0.3",
+      "date": "2016-09-06T12:01:23.550Z"
+    },
+    {
+      "number": "0.0.4",
+      "date": "2016-09-06T12:03:52.958Z"
+    },
+    {
+      "number": "0.0.5",
+      "date": "2016-09-06T12:40:36.274Z"
+    }
+  ],
+  "created": "2016-09-03T13:35:05.257Z",
+  "modified": "2016-09-06T12:40:36.274Z",
+  "lastPublisher": {
+    "name": "eiskis",
+    "email": "eiskis@gmail.com"
+  },
+  "owners": [
+    {
+      "name": "eiskis",
+      "email": "eiskis@gmail.com"
+    }
+  ]
+}

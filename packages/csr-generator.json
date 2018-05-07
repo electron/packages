@@ -1,0 +1,157 @@
+{
+  "name": "csr-generator",
+  "productName": "Schlüssel- und CSR Generator",
+  "version": "0.0.13",
+  "description": "Oberfläche für das Erzeugen von Schlüsselpaaren und Zertifikatsanforderungen",
+  "main": "app/index.js",
+  "build": {
+    "productName": "csr-generator",
+    "appId": "csr-generator",
+    "mac": {
+      "category": "public.app-category.productivity"
+    },
+    "linux": {
+      "executableName": "csr-generator",
+      "desktop": {
+        "Name": "Schlüssel- und CSR Generator"
+      },
+      "target": [
+        "deb",
+        "rpm"
+      ],
+      "category": "Office"
+    }
+  },
+  "engines": {
+    "node": ">=7.6"
+  },
+  "scripts": {
+    "start": "electron ./app/",
+    "watch": "node webpack.watch.js",
+    "inline": "html-inline -i ./app/dist/index.min.html -o ./app/dist/index_merged.html && rm ./app/dist/index.min.js && rm ./app/dist/index.min.html && mv ./app/dist/index_merged.html ./app/dist/index.min.html && cp ./app/dist/index.min.html ./android/app/src/main/assets/index.html",
+    "build": "node webpack.build.js && npm run inline",
+    "pack": "npm run build && build -wl --x64 --ia32",
+    "publish": "npm run build && build -wl --x64 --ia32 --publish always"
+  },
+  "repository": {
+    "user": "ml1nk",
+    "repo": "csr-generator",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/ml1nk/csr-generator/tarball/master",
+    "clone_url": "https://github.com/ml1nk/csr-generator",
+    "https_url": "https://github.com/ml1nk/csr-generator",
+    "travis_url": "https://travis-ci.org/ml1nk/csr-generator",
+    "zip_url": "https://github.com/ml1nk/csr-generator/archive/master.zip",
+    "api_url": "https://api.github.com/repos/ml1nk/csr-generator"
+  },
+  "author": {
+    "name": "Marcel Link",
+    "email": "marcel.link@t-online.de"
+  },
+  "license": "MIT",
+  "homepage": "https://github.com/ml1nk/csr-generator#readme",
+  "devDependencies": {
+    "babel-core": "^6.26.0",
+    "babel-loader": "^7.1.2",
+    "babel-polyfill": "^6.26.0",
+    "babel-preset-latest": "^6.24.1",
+    "bootstrap": "^3.3.7",
+    "bootstrap-fileinput": "^4.4.5",
+    "bootstrap-validator": "github:ml1nk/bootstrap-validator#1819c878db95f854b81eb2fcaffbe735edf8a5d7",
+    "compare-versions": "^3.1.0",
+    "csr-helper": "^2.0.1",
+    "css-loader": "^0.28.7",
+    "electron": "^1.8.1",
+    "electron-builder": "^19.38.0",
+    "eslint": "^4.9.0",
+    "eslint-config-google": "^0.8.1",
+    "file-loader": "^0.11.2",
+    "gutil": "^1.6.4",
+    "html-inline": "^1.2.0",
+    "html-loader": "^0.4.5",
+    "html-webpack-plugin": "^2.30.1",
+    "i18next": "^8.4.3",
+    "jquery": "^3.2.1",
+    "jquery-confirm": "^3.3.2",
+    "jquery-i18next": "^1.2.1",
+    "jquery-toast-plugin": "^1.3.1",
+    "moment": "^2.19.1",
+    "pwstrength-bootstrap": "^2.1.1",
+    "raw-loader": "^0.5.1",
+    "style-loader": "^0.18.2",
+    "uglify-js": "^2.8.29",
+    "uglifyjs-webpack-plugin": "^0.4.6",
+    "url-loader": "^0.5.9",
+    "url-search-params": "^0.9.0",
+    "webpack": "^3.8.1",
+    "webpack-sources": "^1.0.1"
+  },
+  "gitHead": "75661fb032fb83726b88fa291b112f4ed73d233b",
+  "_npmVersion": "5.5.1",
+  "_nodeVersion": "8.6.0",
+  "dist": {
+    "integrity": "sha512-P9lC7Uxmtr8yzAt57GxymeZ8kuLYNDYqahul2Obb629Veu/EKq919oomSMa3/EmVYCF39RfZkwWgIry8ZwOsBg==",
+    "shasum": "edef69701dec7be090f02b4bf6678718b1fc5d42",
+    "tarball": "https://registry.npmjs.org/csr-generator/-/csr-generator-0.0.13.tgz"
+  },
+  "versions": [
+    {
+      "number": "0.0.1",
+      "date": "2016-11-21T21:28:54.251Z"
+    },
+    {
+      "number": "0.0.2",
+      "date": "2016-11-28T09:38:45.551Z"
+    },
+    {
+      "number": "0.0.3",
+      "date": "2016-11-28T15:44:18.440Z"
+    },
+    {
+      "number": "0.0.4",
+      "date": "2016-11-30T22:11:19.231Z"
+    },
+    {
+      "number": "0.0.7",
+      "date": "2016-12-15T20:31:52.608Z"
+    },
+    {
+      "number": "0.0.8",
+      "date": "2017-02-09T12:52:49.303Z"
+    },
+    {
+      "number": "0.0.9",
+      "date": "2017-05-18T22:40:57.910Z"
+    },
+    {
+      "number": "0.0.10",
+      "date": "2017-05-30T18:07:22.910Z"
+    },
+    {
+      "number": "0.0.11",
+      "date": "2017-06-29T08:54:31.756Z"
+    },
+    {
+      "number": "0.0.12",
+      "date": "2017-10-09T16:19:26.890Z"
+    },
+    {
+      "number": "0.0.13",
+      "date": "2017-10-17T21:18:24.638Z"
+    }
+  ],
+  "created": "2016-11-21T21:28:54.251Z",
+  "modified": "2017-10-17T21:18:24.638Z",
+  "lastPublisher": {
+    "name": "mlink",
+    "email": "marcel.link@t-online.de"
+  },
+  "owners": [
+    {
+      "name": "mlink",
+      "email": "marcel.link@t-online.de"
+    }
+  ]
+}

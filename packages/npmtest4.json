@@ -1,0 +1,205 @@
+{
+  "author": {
+    "name": "kai zhu",
+    "email": "kaizhu256@gmail.com"
+  },
+  "bin": {
+    "utility2": "lib.utility2.sh",
+    "utility2-apidoc": "lib.apidoc.js",
+    "utility2-db": "lib.db.js",
+    "utility2-github-crud": "lib.github_crud.js",
+    "utility2-istanbul": "lib.istanbul.js",
+    "utility2-jslint": "lib.jslint.js",
+    "utility2-uglifyjs": "lib.uglifyjs.js"
+  },
+  "description": "the zero-dependency, swiss-army-knife utility for building, testing, and deploying webapps",
+  "devDependencies": {
+    "electron-lite": "github:kaizhu256/node-electron-lite#alpha"
+  },
+  "engines": {
+    "node": ">=4.0"
+  },
+  "homepage": "https://github.com/kaizhu256/node-utility2",
+  "keywords": [
+    "continuous-integration",
+    "npmdoc",
+    "npmtest",
+    "test-coverage",
+    "travis-ci"
+  ],
+  "license": "MIT",
+  "main": "lib.utility2.js",
+  "name": "npmtest4",
+  "nameAliasPublish": "npmtest-lite npmclassic npmtest4 test-lite",
+  "nameLib": "utility2",
+  "nameOriginal": "utility2",
+  "os": [
+    "darwin",
+    "linux"
+  ],
+  "repository": {
+    "user": "kaizhu256",
+    "repo": "node-utility2",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/kaizhu256/node-utility2/tarball/master",
+    "clone_url": "https://github.com/kaizhu256/node-utility2",
+    "https_url": "https://github.com/kaizhu256/node-utility2",
+    "travis_url": "https://travis-ci.org/kaizhu256/node-utility2",
+    "zip_url": "https://github.com/kaizhu256/node-utility2/archive/master.zip",
+    "api_url": "https://api.github.com/repos/kaizhu256/node-utility2"
+  },
+  "scripts": {
+    "apidocRawCreate": "[ ! -f npm_scripts.sh ] || ./npm_scripts.sh shNpmScriptApidocRawCreate",
+    "apidocRawFetch": "[ ! -f npm_scripts.sh ] || ./npm_scripts.sh shNpmScriptApidocRawFetch",
+    "build-ci": "./lib.utility2.sh shReadmeTest build_ci.sh",
+    "env": "env",
+    "heroku-postbuild": "./lib.utility2.sh shDeployHeroku",
+    "postinstall": "[ ! -f npm_scripts.sh ] || ./npm_scripts.sh shNpmScriptPostinstall",
+    "start": "set -e; export PORT=${PORT:-8080}; if [ -f assets.app.js ]; then node assets.app.js; else npm_config_mode_auto_restart=1 ./lib.utility2.sh shRun shIstanbulCover test.js; fi",
+    "test": "PORT=$(./lib.utility2.sh shServerPortRandom) PORT_REPL=$(./lib.utility2.sh shServerPortRandom) npm_config_mode_auto_restart=1 npm_config_timeout_default=\"${npm_config_timeout_default:-60000}\" ./lib.utility2.sh test test.js"
+  },
+  "version": "2018.5.2",
+  "_npmVersion": "5.6.0",
+  "_nodeVersion": "10.0.0",
+  "dist": {
+    "integrity": "sha512-hIIb4yPJ9RUkprhTz/1KaPK8zg7xk8ispKTZk5xLXNe5KfhEBw3RW0dfihutcqLas6emu3Zs9BM18T5hapYwKw==",
+    "shasum": "706e8d24dae26893d6b46e72a06b79eaa0b7a967",
+    "tarball": "https://registry.npmjs.org/npmtest4/-/npmtest4-2018.5.2.tgz",
+    "fileCount": 16,
+    "unpackedSize": 1718749,
+    "npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJa6uKLCRA9TVsSAnZWagAAEL8QAILEt11u+dAn7LdKSfvs\nlUv5e4wwTc0DYUxxhwJOy++7zWdEFMGBqSz8Odw4Dzk9of0tlhLoo4W93p2j\nOsTUoNRLzDANJdqvqgtoA5aP+c/1cpRtFl6hwRSC/w1OQfXCh/7kUGsoil8u\n4luXH+MVRZ3bGR/m+QHqzvucUdiaselTLJkuOlbp2HhuajrFicMtTASa5893\nOP9NmR0N8DbPM3p4iQOljhBzx+dqjq6Nz/NHI1YTe4Xg1rUBdL4CyDM1Vedw\nGAQQQehQCjSU3qBFiI4JSWyHoSSlPNv7T8ZpSVWEOlEyjyCRgBKBZ4f/n1AZ\nukIn9f4d/d1cSIAPdmm7d5lYjag/KuryKMzjxtHasLX6toBzHALRzKDhm2KJ\nDSE26z36Ah9QQz8/S7Spg1xZy69sh75VjpFKczqx9piAEEOLSjQMIWW9W/Q+\nDkg3eaNXquGAhpAA/chdg22vvrUjT1lWr2fVirxE9/ah4Ggwn7ROvu5zewG8\n6ULH0pfyDSaUfa9rxpCIpEksLd+egvHP18J6S3pxI98f+34Ne2ToTLpLPF1Z\nciEnQo5o7Ojj0RWGrv468No/yB6Witdez5v5pwEQG8gIkmR1nr6uev3zvJjo\n5zT/xwpIv29R5Qk2rW7WoOP14nttQ6sGPxV//JF8QAhOB6Af4FMkKIrrMHbG\nAVAo\r\n=yQ2t\r\n-----END PGP SIGNATURE-----\r\n"
+  },
+  "_hasShrinkwrap": false,
+  "versions": [
+    {
+      "number": "0.0.1",
+      "date": "2017-03-30T15:03:02.225Z"
+    },
+    {
+      "number": "2017.4.6",
+      "date": "2017-04-07T08:13:07.646Z"
+    },
+    {
+      "number": "2017.4.14",
+      "date": "2017-04-14T08:00:05.583Z"
+    },
+    {
+      "number": "2017.4.16",
+      "date": "2017-04-17T17:16:00.295Z"
+    },
+    {
+      "number": "2017.4.22",
+      "date": "2017-04-23T06:59:48.028Z"
+    },
+    {
+      "number": "2017.5.1",
+      "date": "2017-05-02T06:03:08.423Z"
+    },
+    {
+      "number": "2017.5.5",
+      "date": "2017-05-05T22:59:15.450Z"
+    },
+    {
+      "number": "2017.5.20",
+      "date": "2017-05-22T09:39:26.662Z"
+    },
+    {
+      "number": "2017.5.27",
+      "date": "2017-05-28T10:36:40.675Z"
+    },
+    {
+      "number": "2017.5.30",
+      "date": "2017-05-31T12:12:36.423Z"
+    },
+    {
+      "number": "2017.7.15",
+      "date": "2017-07-15T19:46:37.808Z"
+    },
+    {
+      "number": "2017.7.24",
+      "date": "2017-07-26T03:18:17.913Z"
+    },
+    {
+      "number": "2017.8.29",
+      "date": "2017-08-30T08:32:49.920Z"
+    },
+    {
+      "number": "2017.9.1",
+      "date": "2017-09-02T14:51:53.889Z"
+    },
+    {
+      "number": "2017.9.15",
+      "date": "2017-09-16T10:28:31.901Z"
+    },
+    {
+      "number": "2017.9.29",
+      "date": "2017-10-01T04:54:07.763Z"
+    },
+    {
+      "number": "2017.10.11",
+      "date": "2017-10-12T16:04:31.738Z"
+    },
+    {
+      "number": "2017.10.17",
+      "date": "2017-10-19T06:02:09.411Z"
+    },
+    {
+      "number": "2017.10.24",
+      "date": "2017-10-24T17:42:06.865Z"
+    },
+    {
+      "number": "2017.11.8",
+      "date": "2017-11-09T05:46:17.514Z"
+    },
+    {
+      "number": "2017.11.15",
+      "date": "2017-11-17T03:09:45.907Z"
+    },
+    {
+      "number": "2017.12.4",
+      "date": "2017-12-04T18:39:38.118Z"
+    },
+    {
+      "number": "2018.1.13",
+      "date": "2018-01-14T16:18:39.064Z"
+    },
+    {
+      "number": "2018.2.2",
+      "date": "2018-02-03T03:53:11.458Z"
+    },
+    {
+      "number": "2018.3.6",
+      "date": "2018-03-07T09:27:41.863Z"
+    },
+    {
+      "number": "2018.3.27",
+      "date": "2018-03-28T20:02:03.711Z"
+    },
+    {
+      "number": "2018.4.7",
+      "date": "2018-04-09T01:22:31.765Z"
+    },
+    {
+      "number": "2018.5.2",
+      "date": "2018-05-03T10:20:57.257Z"
+    }
+  ],
+  "created": "2017-03-30T15:03:02.225Z",
+  "modified": "2018-05-03T10:21:03.970Z",
+  "lastPublisher": {
+    "name": "kaizhu",
+    "email": "kaizhu256@gmail.com"
+  },
+  "owners": [
+    {
+      "name": "kaizhu",
+      "email": "kaizhu256@gmail.com"
+    },
+    {
+      "name": "npmtest2",
+      "email": "npmtest@kaizhu.org"
+    }
+  ]
+}

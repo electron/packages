@@ -1,0 +1,109 @@
+{
+  "name": "swagger-editor-offline",
+  "version": "0.0.12",
+  "description": "Cross-platform desktop version of swagger-editor",
+  "main": "./main.js",
+  "scripts": {
+    "postinstall": "postinstall-build editorSrc --script build:postinstall",
+    "start": "cross-env NODE_ENV=development electron --inspect main.js",
+    "clean": "gulp clean",
+    "build:postinstall": "cross-env NODE_ENV=production gulp postinstall",
+    "build": "cross-env NODE_ENV=production gulp",
+    "pack:dir": "electron-builder --projectDir electron --dir",
+    "pack": "electron-builder --projectDir electron",
+    "release:prepare": "npm version patch -m \"Release: %s\"",
+    "release": "npm-run-all clean build \"pack -- {@}\" --"
+  },
+  "bin": {
+    "swagger-editor-offline": "bin/swagger-editor-offline.js"
+  },
+  "repository": {
+    "user": "XuluWarrior",
+    "repo": "swagger-editor-offline",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/XuluWarrior/swagger-editor-offline/tarball/master",
+    "clone_url": "https://github.com/XuluWarrior/swagger-editor-offline",
+    "https_url": "https://github.com/XuluWarrior/swagger-editor-offline",
+    "travis_url": "https://travis-ci.org/XuluWarrior/swagger-editor-offline",
+    "zip_url": "https://github.com/XuluWarrior/swagger-editor-offline/archive/master.zip",
+    "api_url": "https://api.github.com/repos/XuluWarrior/swagger-editor-offline"
+  },
+  "keywords": [
+    "Electron",
+    "swagger"
+  ],
+  "author": {
+    "name": "XuluWarrior"
+  },
+  "license": "MIT",
+  "homepage": "https://github.com/XuluWarrior/swagger-editor-offline",
+  "devDependencies": {
+    "cross-env": "^5.1.1",
+    "del": "^3.0.0",
+    "electron-builder": "^19.55.2",
+    "electron-load-devtool": "^0.5.1",
+    "envify": "^4.1.0",
+    "gulp": "^3.9.1",
+    "gulp-envify": "^1.0.0",
+    "gulp-string-replace": "^0.4.0",
+    "gulp-uglify": "^3.0.0",
+    "npm-run-all": "^4.1.2",
+    "swagger-editor-dist": "^3.1.18"
+  },
+  "dependencies": {
+    "electron": "^1.8.4",
+    "electron-updater": "^2.20.1",
+    "postinstall-build": "^5.0.1"
+  },
+  "electronDependencies": {
+    "electron-updater": "^2.20.1",
+    "postinstall-build": "^5.0.1"
+  },
+  "gitHead": "9b65642f5ed7369f2931b9f78aa562f37a013c19",
+  "_npmVersion": "5.6.0",
+  "_nodeVersion": "8.10.0",
+  "dist": {
+    "integrity": "sha512-9bDkiZlseY6lOFSL8NkpNjXmOjtOM3nbLCX8nPi/WfP+Ep2BMakgW4LtUYdEkzdTemDTriVFfqxtcW95cPBaVw==",
+    "shasum": "280c6c26eb57e3ae813cebbf12815b2ddc296faf",
+    "tarball": "http://registry.npmjs.org/swagger-editor-offline/-/swagger-editor-offline-0.0.12.tgz",
+    "fileCount": 8,
+    "unpackedSize": 12517
+  },
+  "_hasShrinkwrap": false,
+  "versions": [
+    {
+      "number": "0.0.1",
+      "date": "2017-11-23T16:15:09.213Z"
+    },
+    {
+      "number": "0.0.2",
+      "date": "2017-11-23T16:48:56.717Z"
+    },
+    {
+      "number": "0.0.3",
+      "date": "2017-11-24T13:06:28.734Z"
+    },
+    {
+      "number": "0.0.11",
+      "date": "2018-02-28T17:28:53.249Z"
+    },
+    {
+      "number": "0.0.12",
+      "date": "2018-03-26T19:23:16.352Z"
+    }
+  ],
+  "created": "2017-11-23T16:15:09.213Z",
+  "modified": "2018-03-26T19:23:16.678Z",
+  "lastPublisher": {
+    "name": "xuluwarrior",
+    "email": "npm@xuluwarrior.org"
+  },
+  "owners": [
+    {
+      "name": "xuluwarrior",
+      "email": "npm@xuluwarrior.org"
+    }
+  ]
+}

@@ -1,0 +1,97 @@
+{
+  "name": "lookerupper",
+  "version": "0.0.2",
+  "description": "Copy to your clipboard a package's name and use `CmdOrCtrl+Shift+L` to lookup its documentation on GitHub",
+  "main": "build/index.js",
+  "scripts": {
+    "test": "npm run lint",
+    "start": "electron build --enable-logging",
+    "lint": "eslint src",
+    "build": "babel src -d build",
+    "package": "electron-packager . LookerUpper --overwrite name=LookerUpper --platform=darwin --arch=x64 --app-bundle-id=com.niftylettuce.lookerupper app-category-type=public.app-category.developer-tools --version=0.36.7 --icon=images/app-icon --prune --ignore='src'",
+    "codesign": "bash scripts/codesign.bash",
+    "dist": "npm run lint && npm run build && npm run package && npm run codesign",
+    "zip": "electron-builder \"LookerUpper-darwin-x64/LookerUpper.app\" --platform=osx --out=\"dist/osx\" --config=builder.json"
+  },
+  "repository": {
+    "user": "niftylettuce",
+    "repo": "lookerupper",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/niftylettuce/lookerupper/tarball/master",
+    "clone_url": "https://github.com/niftylettuce/lookerupper",
+    "https_url": "https://github.com/niftylettuce/lookerupper",
+    "travis_url": "https://travis-ci.org/niftylettuce/lookerupper",
+    "zip_url": "https://github.com/niftylettuce/lookerupper/archive/master.zip",
+    "api_url": "https://api.github.com/repos/niftylettuce/lookerupper"
+  },
+  "keywords": [
+    "lookup",
+    "highlight",
+    "selection",
+    "package",
+    "npm",
+    "repo",
+    "readme",
+    "github",
+    "docs",
+    "documentation",
+    "hotkey",
+    "vim",
+    "editor",
+    "electron",
+    "atom"
+  ],
+  "author": {
+    "name": "Nick Baugh",
+    "email": "niftylettuce@gmail.com"
+  },
+  "license": "MIT",
+  "homepage": "https://github.com/niftylettuce/lookerupper#readme",
+  "devDependencies": {
+    "babel-cli": "^6.4.5",
+    "babel-plugin-transform-runtime": "^6.5.0",
+    "babel-preset-es2015": "^6.3.13",
+    "babel-preset-stage-0": "^6.3.13",
+    "electron-builder": "^2.7.1",
+    "electron-packager": "^5.2.1",
+    "electron-prebuilt": "^0.36.7"
+  },
+  "dependencies": {
+    "auto-launch": "^1.1.1",
+    "babel-polyfill": "^6.5.0",
+    "babel-regenerator-runtime": "^6.5.0",
+    "electron-gh-releases": "^2.0.2",
+    "npm-registry-client": "^7.0.9"
+  },
+  "gitHead": "f4bccc5a97a3d501375bd9675f31343bc5a71e65",
+  "_npmVersion": "3.8.6",
+  "_nodeVersion": "6.0.0",
+  "dist": {
+    "shasum": "ea507deac1398954c17a7558c943903c53bbb886",
+    "tarball": "http://registry.npmjs.org/lookerupper/-/lookerupper-0.0.2.tgz"
+  },
+  "versions": [
+    {
+      "number": "0.0.1",
+      "date": "2016-02-08T05:48:27.175Z"
+    },
+    {
+      "number": "0.0.2",
+      "date": "2016-05-01T18:48:08.102Z"
+    }
+  ],
+  "created": "2016-02-08T05:48:27.175Z",
+  "modified": "2016-05-01T18:48:08.102Z",
+  "lastPublisher": {
+    "name": "niftylettuce",
+    "email": "niftylettuce@gmail.com"
+  },
+  "owners": [
+    {
+      "name": "niftylettuce",
+      "email": "niftylettuce@gmail.com"
+    }
+  ]
+}

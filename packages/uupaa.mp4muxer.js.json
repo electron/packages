@@ -1,0 +1,188 @@
+{
+  "name": "uupaa.mp4muxer.js",
+  "version": "0.0.15",
+  "description": "MP4 Muxer",
+  "url": "https://github.com/uupaa/MP4Muxer.js",
+  "keywords": [
+    "AVC",
+    "MP4",
+    "H.264",
+    "Muxer",
+    "uupaa",
+    "WebModule",
+    "Unstable"
+  ],
+  "repository": {
+    "user": "uupaa",
+    "repo": "MP4Muxer.js",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/uupaa/MP4Muxer.js/tarball/master",
+    "clone_url": "https://github.com/uupaa/MP4Muxer.js",
+    "https_url": "https://github.com/uupaa/MP4Muxer.js",
+    "travis_url": "https://travis-ci.org/uupaa/MP4Muxer.js",
+    "zip_url": "https://github.com/uupaa/MP4Muxer.js/archive/master.zip",
+    "api_url": "https://api.github.com/repos/uupaa/MP4Muxer.js"
+  },
+  "scripts": {
+    "sync": "node ../WebModule/run/sync.js; npm update; node ../WebModule/run/page.js",
+    "wiki": "node ../WebModule/run/wiki.js",
+    "min": "node ../WebModule/run/minify.js --verbose --strict --keep --pretty",
+    "build": "node ../WebModule/run/minify.js --verbose --strict --keep --release",
+    "watch": "node ../WebModule/run/watch.js --verbose --run lint",
+    "page": "node ../WebModule/run/page.js --verbose",
+    "test": "npm run min; npm run node; npm run browser",
+    "node": "NODE_ENV=production NODE_PATH=lib node test/node/index.js",
+    "noded": "NODE_ENV=production NODE_PATH=lib node --debug-brk test/node/index.js",
+    "browser": "open http://localhost:8000/MP4Muxer.js/test/browser/index.html",
+    "el": "electron test/el",
+    "nw": "nw test/nw",
+    "add-src": "node ../WebModule/run/add-src.js",
+    "add-subclass": "node ../WebModule/run/add-subclass.js",
+    "sim": "node ../WebModule/run/sim.js http://localhost:8000/MP4Muxer.js/test/browser/index.html",
+    "simx": "node ../WebModule/run/sim.js stop",
+    "lint": "eslint lib/*.js",
+    "score": "node ../WebModule/run/score.js; open lint/plato/index.html",
+    "patch": "node ../WebModule/run/patch.js",
+    "setup": "node ../WebModule/run/setup.js",
+    "start": "cd ../; Python -m SimpleHTTPServer 8000 &",
+    "stop": "killall -- Python -m SimpleHTTPServer 8000; exit 0",
+    "make_assets": "cd test/assets; ./make_video; cd -",
+    "clean_assets": "cd test/assets; rm -rf ./ff; rm -rf ./js; cd -"
+  },
+  "webmodule": {
+    "develop": false,
+    "label": [
+      "@dev"
+    ],
+    "browser": {
+      "output": "release/MP4Muxer.b.min.js",
+      "source": [
+        "lib/MP4Muxer.js"
+      ]
+    },
+    "worker": {
+      "output": "release/MP4Muxer.w.min.js",
+      "source": [
+        "lib/MP4Muxer.js"
+      ]
+    },
+    "node": {
+      "output": "release/MP4Muxer.n.min.js",
+      "source": [
+        "lib/MP4Muxer.js"
+      ]
+    },
+    "nw": {
+      "output": "release/MP4Muxer.nw.min.js",
+      "source": [
+        "lib/MP4Muxer.js"
+      ]
+    },
+    "el": {
+      "output": "release/MP4Muxer.el.min.js",
+      "source": [
+        "lib/MP4Muxer.js"
+      ]
+    }
+  },
+  "dependencies": {
+    "uupaa.nalunit.js": "",
+    "uupaa.mp4parser.js": "",
+    "uupaa.h264profile.js": ""
+  },
+  "devDependencies": {
+    "uupaa.aac.js": "",
+    "uupaa.task.js": "",
+    "uupaa.fileloader.js": "",
+    "uupaa.h264.js": "",
+    "uupaa.mpeg2ts.js": "",
+    "uupaa.mp4parser.js": "",
+    "uupaa.mp4builder.js": ""
+  },
+  "lib": "./lib/",
+  "main": "./index.js",
+  "author": {
+    "name": "uupaa"
+  },
+  "license": "Apache License Version 2.0",
+  "contributors": [],
+  "gitHead": "568d75e3779834a93def28836d7d0eb03b86dd58",
+  "homepage": "https://github.com/uupaa/MP4Muxer.js",
+  "_npmVersion": "2.0.0",
+  "dist": {
+    "shasum": "27bd6168843e4645930b860043fda7b443e98fd6",
+    "tarball": "https://registry.npmjs.org/uupaa.mp4muxer.js/-/uupaa.mp4muxer.js-0.0.15.tgz"
+  },
+  "versions": [
+    {
+      "number": "0.0.2",
+      "date": "2016-04-06T08:14:10.156Z"
+    },
+    {
+      "number": "0.0.3",
+      "date": "2016-04-06T13:53:51.299Z"
+    },
+    {
+      "number": "0.0.4",
+      "date": "2016-04-10T17:26:47.903Z"
+    },
+    {
+      "number": "0.0.5",
+      "date": "2016-04-14T14:17:56.295Z"
+    },
+    {
+      "number": "0.0.6",
+      "date": "2016-04-16T14:26:37.487Z"
+    },
+    {
+      "number": "0.0.7",
+      "date": "2016-04-21T10:31:11.927Z"
+    },
+    {
+      "number": "0.0.8",
+      "date": "2016-06-14T12:22:00.049Z"
+    },
+    {
+      "number": "0.0.9",
+      "date": "2016-07-02T23:28:04.688Z"
+    },
+    {
+      "number": "0.0.10",
+      "date": "2016-07-11T07:18:17.260Z"
+    },
+    {
+      "number": "0.0.11",
+      "date": "2016-07-11T08:57:43.520Z"
+    },
+    {
+      "number": "0.0.12",
+      "date": "2016-08-23T14:43:15.358Z"
+    },
+    {
+      "number": "0.0.13",
+      "date": "2016-08-30T11:21:02.094Z"
+    },
+    {
+      "number": "0.0.14",
+      "date": "2017-01-04T04:06:05.299Z"
+    },
+    {
+      "number": "0.0.15",
+      "date": "2017-01-17T12:33:59.986Z"
+    }
+  ],
+  "created": "2016-04-06T08:14:10.156Z",
+  "modified": "2017-01-17T12:33:59.986Z",
+  "lastPublisher": {
+    "name": "uupaa",
+    "email": "uupaa.js@gmail.com"
+  },
+  "owners": [
+    {
+      "name": "uupaa",
+      "email": "uupaa.js@gmail.com"
+    }
+  ]
+}

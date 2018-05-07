@@ -1,0 +1,204 @@
+{
+  "name": "electron-forge-runner",
+  "productName": "electron-forge-runner",
+  "version": "1.1.9",
+  "description": "My Electron application description",
+  "main": "src/app.js",
+  "scripts": {
+    "start": "electron-forge start",
+    "package": "electron-forge package",
+    "make": "electron-forge make",
+    "publish": "electron-forge publish",
+    "lint": "eslint src --color",
+    "window": "electron-forge publish --target=win32"
+  },
+  "keywords": [],
+  "author": {
+    "name": "meepobrother"
+  },
+  "license": "MIT",
+  "config": {
+    "forge": {
+      "make_targets": {
+        "win32": [
+          "squirrel"
+        ],
+        "darwin": [
+          "zip"
+        ],
+        "linux": [
+          "deb",
+          "rpm"
+        ]
+      },
+      "publish_targets": {
+        "win32": [
+          "github"
+        ],
+        "darwin": [
+          "github"
+        ],
+        "linux": [
+          "github"
+        ]
+      },
+      "electronPackagerConfig": {
+        "packageManager": "yarn"
+      },
+      "electronWinstallerConfig": {
+        "name": "electron_forge_runner",
+        "loadingGif": "./images/loading.gif",
+        "certificateFile": "./cert.pfx",
+        "setupIcon": "./images/myicon.ico"
+      },
+      "electronInstallerDebian": {
+        "icon": "resources/Icon.png",
+        "categories": [
+          "Utility"
+        ],
+        "homepage": "https://foo.com"
+      },
+      "electronInstallerRedhat": {
+        "license": "MIT",
+        "requires": [
+          "lsb",
+          "libappindictor"
+        ],
+        "compressionLevel": 9,
+        "categories": [
+          "Utility"
+        ]
+      },
+      "electronInstallerDMG": {
+        "background": "path/to/image.png",
+        "icon": "path/to/icon.icns",
+        "format": "ULFO"
+      },
+      "github_repository": {
+        "owner": "meepobrother",
+        "name": "meepo-desktop",
+        "prerelease": false,
+        "draft": true
+      },
+      "electronReleaseServer": {
+        "baseUrl": "https://meepo.com.cn/download/",
+        "username": "root",
+        "password": "Imeepos1989."
+      },
+      "windowsStoreConfig": {
+        "packageName": "meepo-desktop",
+        "name": "electronforgerunner"
+      }
+    }
+  },
+  "dependencies": {
+    "electron-compile": "^6.4.2",
+    "electron-squirrel-startup": "^1.0.0"
+  },
+  "devDependencies": {
+    "babel-plugin-transform-async-to-generator": "^6.24.1",
+    "babel-preset-env": "^1.6.1",
+    "babel-preset-react": "^6.24.1",
+    "electron-forge": "^4.1.5",
+    "electron-prebuilt-compile": "1.7.9",
+    "eslint": "^3",
+    "eslint-config-airbnb": "^15",
+    "eslint-plugin-import": "^2",
+    "eslint-plugin-jsx-a11y": "^5",
+    "eslint-plugin-react": "^7"
+  },
+  "dist": {
+    "shasum": "229578145f7700504792cf5cb789eb16db1d1369",
+    "tarball": "https://registry.npmjs.org/electron-forge-runner/-/electron-forge-runner-1.1.9.tgz"
+  },
+  "versions": [
+    {
+      "number": "1.0.1",
+      "date": "2017-11-28T05:00:14.176Z"
+    },
+    {
+      "number": "1.0.2",
+      "date": "2017-11-28T05:03:32.977Z"
+    },
+    {
+      "number": "1.0.3",
+      "date": "2017-11-28T05:51:32.731Z"
+    },
+    {
+      "number": "1.0.4",
+      "date": "2017-11-28T05:54:55.248Z"
+    },
+    {
+      "number": "1.0.5",
+      "date": "2017-11-28T06:02:00.567Z"
+    },
+    {
+      "number": "1.0.6",
+      "date": "2017-11-28T06:04:06.991Z"
+    },
+    {
+      "number": "1.0.7",
+      "date": "2017-11-28T06:09:16.817Z"
+    },
+    {
+      "number": "1.0.8",
+      "date": "2017-11-28T06:11:08.883Z"
+    },
+    {
+      "number": "1.0.9",
+      "date": "2017-11-28T06:13:11.133Z"
+    },
+    {
+      "number": "1.1.0",
+      "date": "2017-11-28T06:16:08.632Z"
+    },
+    {
+      "number": "1.1.1",
+      "date": "2017-11-28T06:24:41.998Z"
+    },
+    {
+      "number": "1.1.2",
+      "date": "2017-11-28T06:30:17.098Z"
+    },
+    {
+      "number": "1.1.3",
+      "date": "2017-11-28T06:32:12.249Z"
+    },
+    {
+      "number": "1.1.4",
+      "date": "2017-11-28T06:33:24.576Z"
+    },
+    {
+      "number": "1.1.5",
+      "date": "2017-11-28T06:37:15.250Z"
+    },
+    {
+      "number": "1.1.6",
+      "date": "2017-11-28T06:51:52.543Z"
+    },
+    {
+      "number": "1.1.7",
+      "date": "2017-11-28T06:52:29.601Z"
+    },
+    {
+      "number": "1.1.8",
+      "date": "2017-11-28T07:17:47.152Z"
+    },
+    {
+      "number": "1.1.9",
+      "date": "2017-11-28T07:22:16.384Z"
+    }
+  ],
+  "created": "2017-11-28T05:00:14.176Z",
+  "modified": "2017-12-12T03:38:01.429Z",
+  "lastPublisher": {
+    "name": "imeepos",
+    "email": "1037483576@qq.com"
+  },
+  "owners": [
+    {
+      "name": "imeepos",
+      "email": "1037483576@qq.com"
+    }
+  ]
+}

@@ -1,0 +1,97 @@
+{
+  "name": "bin-pack.js",
+  "version": "1.0.4",
+  "description": "2d rectangular bin packing in javascript",
+  "main": "dist/bin-pack.js",
+  "module": "index.js",
+  "jsnext:main": "index.js",
+  "scripts": {
+    "prepare": "npm run build",
+    "pretest": "npm run build:dev",
+    "build": "npm run build:dev && npm run build:min",
+    "build:dev": "rollup -c ./script/rollup.config.js",
+    "build:min": "uglifyjs ./dist/bin-pack.dev.js --mangle --source-map url=bin-pack.min.js.map -o ./dist/bin-pack.min.js",
+    "dev": "rollup -w -c ./script/rollup.config.js",
+    "start": "electron ./examples/index.html",
+    "server": "preview -p 8002 -e examples",
+    "test": "tap test/*.spec.js"
+  },
+  "repository": {
+    "user": "gamedev-js",
+    "repo": "bin-pack.js",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/gamedev-js/bin-pack.js/tarball/master",
+    "clone_url": "https://github.com/gamedev-js/bin-pack.js",
+    "https_url": "https://github.com/gamedev-js/bin-pack.js",
+    "travis_url": "https://travis-ci.org/gamedev-js/bin-pack.js",
+    "zip_url": "https://github.com/gamedev-js/bin-pack.js/archive/master.zip",
+    "api_url": "https://api.github.com/repos/gamedev-js/bin-pack.js"
+  },
+  "keywords": [
+    "bin-pack",
+    "algorithm",
+    "texture"
+  ],
+  "author": {
+    "name": "jwu"
+  },
+  "license": "MIT",
+  "homepage": "https://github.com/gamedev-js/bin-pack.js/issues",
+  "dependencies": {},
+  "devDependencies": {
+    "fs-jetpack": "^0.13.0",
+    "preview-server": "^1.0.7",
+    "rollup": "^0.41.4",
+    "rollup-watch": "^3.2.2",
+    "uglify-es": "^3.0.15"
+  },
+  "files": [
+    "dist",
+    "lib",
+    "index.js"
+  ],
+  "gitHead": "f40eb5956bd577a293186adc3e001afc56dadf34",
+  "_npmVersion": "5.0.3",
+  "_nodeVersion": "8.1.2",
+  "dist": {
+    "integrity": "sha512-xsTwczLXiji/hKjFvxBJNlfzqsfMeCgHfEBo+wPwqYiMCd5Y4oxk7DnMWhnaIqqSHv5sEpWZ92OsxSIvwssJnw==",
+    "shasum": "fc77cfabe001e681b8e991feed12fdcf42646376",
+    "tarball": "https://registry.npmjs.org/bin-pack.js/-/bin-pack.js-1.0.4.tgz"
+  },
+  "versions": [
+    {
+      "number": "1.0.0",
+      "date": "2017-04-28T05:57:04.852Z"
+    },
+    {
+      "number": "1.0.1",
+      "date": "2017-04-29T13:07:38.720Z"
+    },
+    {
+      "number": "1.0.2",
+      "date": "2017-05-02T02:35:15.785Z"
+    },
+    {
+      "number": "1.0.3",
+      "date": "2017-07-12T06:35:33.708Z"
+    },
+    {
+      "number": "1.0.4",
+      "date": "2017-07-12T06:37:53.818Z"
+    }
+  ],
+  "created": "2017-04-28T05:57:04.852Z",
+  "modified": "2017-07-12T06:37:53.818Z",
+  "lastPublisher": {
+    "name": "johnnywu",
+    "email": "KarasAya@gmail.com"
+  },
+  "owners": [
+    {
+      "name": "johnnywu",
+      "email": "KarasAya@gmail.com"
+    }
+  ]
+}

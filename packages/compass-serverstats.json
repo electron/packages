@@ -1,0 +1,104 @@
+{
+  "name": "compass-serverstats",
+  "productName": "Compass Serverstats package",
+  "version": "1.0.0",
+  "description": "Compass Real Time Server Stats Component.",
+  "main": "index.js",
+  "scripts": {
+    "compile": "npm run jsx && npm run less",
+    "jsx": "babel ./src --out-dir ./lib --presets react",
+    "less": "lessc ./styles/index.less ./styles/index.css",
+    "prepublish": "npm run compile",
+    "prestart": "npm run compile",
+    "postinstall": "npm run compile",
+    "storybook": "start-storybook -p 9001",
+    "start": "electron ./electron",
+    "pretest": "mongodb-runner install && mongodb-runner start --port 27018",
+    "test": "hadron-build test",
+    "posttest": "mongodb-runner stop --port 27018",
+    "check": "mongodb-js-precommit ./src/app/*.js ./src/app/**/**/*.js ./src/{app/**/*.js,main/**/*.js} ./test/**/*.js ./src/internal-packages/**/*.js ./src/internal-packages/**/**/*{.js,.jsx} ./src/internal-packages/**/**/**/*{.js,.jsx} ./src/internal-packages/**/**/**/**/*{.js,.jsx}",
+    "fmt": "mongodb-js-fmt ./*.js src/{**/*.js,*.js} test/{**/*.js,*.js}",
+    "test-enzyme": "npm test -- --enzyme",
+    "test-functional": "npm test -- --functional"
+  },
+  "precommit": [
+    "check"
+  ],
+  "license": "Apache-2.0",
+  "dependencies": {
+    "babel-cli": "^6.10.1",
+    "babel-preset-react": "^6.11.1",
+    "d3": "^3.5.17",
+    "hadron-app": "^0.2.0",
+    "mongodb-js-errors": "^0.3.2"
+  },
+  "devDependencies": {
+    "@kadira/react-storybook-addon-info": "^3.2.1",
+    "@kadira/storybook": "^2.3.0",
+    "ampersand-app": "^1.0.4",
+    "babel-register": "^6.9.0",
+    "chai": "^3.5.0",
+    "chai-as-promised": "^5.1.0",
+    "chai-enzyme": "^0.5.0",
+    "d3-timer": "^1.0.3",
+    "debug": "github:mongodb-js/debug#v2.2.3",
+    "electron": "1.6.1",
+    "electron-prebuilt": "^1.2.6",
+    "electron-mocha": "^3.3.0",
+    "enzyme": "^2.4.1",
+    "eslint-config-mongodb-js": "^2.1.0",
+    "hadron-app-registry": "^5.0.0",
+    "hadron-react-components": "^0.9.0",
+    "hadron-build": "^9.1.0",
+    "jquery": "^3.1.1",
+    "jsdom": "^9.4.2",
+    "less": "^2.7.1",
+    "less-loader": "^2.2.3",
+    "lodash": "^4.16.4",
+    "mocha": "^2.5.3",
+    "mock-require": "^2.0.1",
+    "mongodb-data-service": "^2.13.1",
+    "mongodb-js-fmt": "^0.0.3",
+    "mongodb-js-precommit": "^0.2.8",
+    "mongodb-ns": "^1.0.3",
+    "mongodb-runner": "^3.4.0",
+    "pre-commit": "^1.1.3",
+    "react": "^15.3.0",
+    "react-dom": "^15.3.0",
+    "reflux": "0.4.1",
+    "reflux-state-mixin": "^0.7.0",
+    "sinon": "^1.17.6",
+    "sinon-chai": "^2.8.0",
+    "spectron": "^3.6.0",
+    "watch": "^0.19.2"
+  },
+  "gitHead": "fdb30bb41fdd6c011a8c745e1a6f6cd0cbdbae00",
+  "_npmVersion": "4.0.5",
+  "_nodeVersion": "7.4.0",
+  "dist": {
+    "shasum": "8b1bfcf5fd761c3a42f307467ba9c4118bd2da93",
+    "tarball": "https://registry.npmjs.org/compass-serverstats/-/compass-serverstats-1.0.0.tgz"
+  },
+  "versions": [
+    {
+      "number": "1.0.2",
+      "date": "2017-10-05T07:56:08.810Z"
+    },
+    {
+      "number": "1.0.0",
+      "date": "2017-12-04T22:30:06.112Z"
+    }
+  ],
+  "created": "2017-10-05T07:56:08.810Z",
+  "modified": "2017-12-04T22:30:06.112Z",
+  "lastPublisher": {
+    "name": "durran",
+    "email": "durran@gmail.com"
+  },
+  "owners": [
+    {
+      "name": "durran",
+      "email": "durran@gmail.com"
+    }
+  ]
+}

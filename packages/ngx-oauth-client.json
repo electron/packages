@@ -1,0 +1,167 @@
+{
+  "name": "ngx-oauth-client",
+  "version": "0.3.0",
+  "license": "MIT",
+  "repository": {
+    "user": "0xMatt",
+    "repo": "ngx-oauth-client",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/0xMatt/ngx-oauth-client/tarball/master",
+    "clone_url": "https://github.com/0xMatt/ngx-oauth-client",
+    "https_url": "https://github.com/0xMatt/ngx-oauth-client",
+    "travis_url": "https://travis-ci.org/0xMatt/ngx-oauth-client",
+    "zip_url": "https://github.com/0xMatt/ngx-oauth-client/archive/master.zip",
+    "api_url": "https://api.github.com/repos/0xMatt/ngx-oauth-client"
+  },
+  "scripts": {
+    "total-patch-publish": "run-s test demo.deploy version && npm version patch && npm publish && git push --tags && git push",
+    "demo.serve": "ng serve",
+    "demo.gh-pages": "gh-pages -d demo/dist",
+    "demo.build": "ng build -prod --aot --build-optimizer",
+    "demo.copy-readme": "node scripts/copy-readme-to-demo.js",
+    "demo.deploy": "run-s demo.build demo.copy-readme demo.gh-pages",
+    "release.changelog": "conventional-changelog -i CHANGELOG.md -s -p angular",
+    "release.github-release": "conventional-github-releaser -p angular",
+    "release": "run-s release.changelog release.github-release",
+    "build": "run-s build.clean build.compile",
+    "build.clean": "rm -Rf ./dist",
+    "build.compile": "ngc -p ./tsconfig.build-lib.json",
+    "dev": "ng serve",
+    "start": "run-s dev",
+    "test": "ng test -sr",
+    "test-watch": "ng test",
+    "test-coverage": "ng test -cc -sr",
+    "link-mod": "rm demo/src/app/component-symlink; cd demo/src/app && ln -s ../../../src component-symlink",
+    "coveralls": "YOURPACKAGE_COVERAGE=1 cat ./coverage/lcov.info | ./node_modules/.bin/coveralls",
+    "version": "run-s release.changelog build && git add -A",
+    "lint": "ng lint",
+    "e2e": "ng e2e",
+    "ng": "ng"
+  },
+  "main": "dist/index.js",
+  "module": "dist/index.js",
+  "typings": "dist/index.d.ts",
+  "files": [
+    "dist/**/*",
+    "LICENCE",
+    "*.md"
+  ],
+  "dependencies": {
+    "@angular/core": "^5.2.0",
+    "@angular/http": "^5.2.0"
+  },
+  "devDependencies": {
+    "@angular/cli": "^1.7.2",
+    "@angular/common": "^5.2.0",
+    "@angular/compiler": "^5.2.0",
+    "@angular/compiler-cli": "^5.2.0",
+    "@angular/core": "^5.2.0",
+    "@angular/forms": "5.2.0",
+    "@angular/platform-browser": "^5.2.0",
+    "@angular/platform-browser-dynamic": "^5.2.0",
+    "@angular/router": "^5.2.0",
+    "@types/core-js": "^0.9.41",
+    "@types/jasmine": "2.5.38",
+    "@types/node": "~6.0.60",
+    "angular2-template-loader": "^0.6.2",
+    "bootstrap": "^3.3.7",
+    "bootstrap-material-design": "^0.5.10",
+    "codelyzer": "~2.0.0",
+    "conventional-changelog-cli": "^1.3.1",
+    "conventional-github-releaser": "^1.1.3",
+    "coveralls": "^2.13.1",
+    "electron": "^1.6.6",
+    "gh-pages": "^0.12.0",
+    "intl": "^1.2.5",
+    "jasmine-core": "~2.8.0",
+    "jasmine-spec-reporter": "~4.2.1",
+    "karma": "~2.0.0",
+    "karma-chrome-launcher": "~2.0.0",
+    "karma-cli": "~1.0.1",
+    "karma-coverage-istanbul-reporter": "^1.2.1",
+    "karma-jasmine": "~1.1.0",
+    "karma-jasmine-html-reporter": "^0.2.2",
+    "karma-phantomjs-launcher": "^1.0.4",
+    "marked": "^0.3.6",
+    "npm-run-all": "^4.0.2",
+    "protractor": "~5.1.0",
+    "reflect-metadata": "^0.1.10",
+    "rxjs": "^5.5.6",
+    "ts-node": "~4.1.0",
+    "tslint": "~5.9.1",
+    "typescript": "~2.5.3",
+    "wallaby-webpack": "0.0.38",
+    "web-animations-js": "^2.2.5",
+    "zone.js": "^0.8.19"
+  },
+  "gitHead": "87c7e9b5e2e0f294d8043cd37b967a45a2e74d5c",
+  "description": "[![npm version](https://badge.fury.io/js/ngx-oauth-client.svg)](https://badge.fury.io/js/ngx-oauth-client) [![Build Status](https://travis-ci.org/0xMatt/ngx-oauth-client.svg)](https://travis-ci.org/0xMatt/ngx-oauth-client?branch=master) [![Coverage Status",
+  "homepage": "https://github.com/0xMatt/ngx-oauth-client#readme",
+  "_npmVersion": "5.6.0",
+  "_nodeVersion": "8.9.4",
+  "dist": {
+    "integrity": "sha512-Oa56SYV/XuM5EJ7wUt0y0AWjVcjIl+2fwlS5oQ/fP36hyk5QJI9cO/UVg2EwN0Pf/yGB027IO0F+Qntcqx0DZg==",
+    "shasum": "08af1cc09a8ef0a0e7fa59d7a5639fb139a469cc",
+    "tarball": "http://registry.npmjs.org/ngx-oauth-client/-/ngx-oauth-client-0.3.0.tgz",
+    "fileCount": 40,
+    "unpackedSize": 50366
+  },
+  "_hasShrinkwrap": false,
+  "stars": 2,
+  "versions": [
+    {
+      "number": "0.1.0",
+      "date": "2017-06-27T02:52:04.681Z"
+    },
+    {
+      "number": "0.1.1",
+      "date": "2017-06-27T03:24:58.782Z"
+    },
+    {
+      "number": "0.1.2",
+      "date": "2017-07-21T23:29:13.764Z"
+    },
+    {
+      "number": "0.2.0",
+      "date": "2017-07-29T01:05:45.958Z"
+    },
+    {
+      "number": "0.2.1",
+      "date": "2017-08-04T02:50:24.326Z"
+    },
+    {
+      "number": "0.2.2",
+      "date": "2017-08-05T13:45:56.598Z"
+    },
+    {
+      "number": "0.2.3",
+      "date": "2017-08-11T21:56:59.451Z"
+    },
+    {
+      "number": "0.2.4",
+      "date": "2017-08-15T02:58:12.139Z"
+    },
+    {
+      "number": "0.2.5",
+      "date": "2017-08-21T15:28:03.105Z"
+    },
+    {
+      "number": "0.3.0",
+      "date": "2018-03-10T01:40:46.733Z"
+    }
+  ],
+  "created": "2017-06-27T02:52:04.681Z",
+  "modified": "2018-03-10T01:40:47.367Z",
+  "lastPublisher": {
+    "name": "fyuze",
+    "email": "matthew.javelet@gmail.com"
+  },
+  "owners": [
+    {
+      "name": "fyuze",
+      "email": "matthew.javelet@gmail.com"
+    }
+  ]
+}

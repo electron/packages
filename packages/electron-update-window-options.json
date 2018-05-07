@@ -1,0 +1,129 @@
+{
+  "name": "electron-update-window-options",
+  "version": "1.1.1",
+  "description": "Update an electron window after it's already been created using the constructor options schema",
+  "keywords": [
+    "electron",
+    "browser window",
+    "window",
+    "settings",
+    "options",
+    "update"
+  ],
+  "main": "dist/index.js",
+  "typings": "dist/types/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "author": {
+    "name": "Eamon mikulec",
+    "email": "boogie@mikulec.com"
+  },
+  "repository": {
+    "user": "ocboogie",
+    "repo": "electron-update-window-options",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/ocboogie/electron-update-window-options/tarball/master",
+    "clone_url": "https://github.com/ocboogie/electron-update-window-options",
+    "https_url": "https://github.com/ocboogie/electron-update-window-options",
+    "travis_url": "https://travis-ci.org/ocboogie/electron-update-window-options",
+    "zip_url": "https://github.com/ocboogie/electron-update-window-options/archive/master.zip",
+    "api_url": "https://api.github.com/repos/ocboogie/electron-update-window-options"
+  },
+  "license": "MIT",
+  "engines": {
+    "node": ">=6.0.0"
+  },
+  "scripts": {
+    "prebuild": "rimraf dist",
+    "build": "tsc",
+    "lint": "tslint -t codeFrame ./src/**/*.ts",
+    "format": "prettier --write ./src/**/*.ts & npm run lint -- --fix",
+    "test": "jest",
+    "precommit": "lint-staged",
+    "prepush": "npm test"
+  },
+  "lint-staged": {
+    "*.ts": [
+      "prettier --write",
+      "tslint --fix",
+      "git add"
+    ]
+  },
+  "jest": {
+    "transform": {
+      "^.+\\.tsx?$": "ts-jest"
+    },
+    "testRegex": "(/__tests__/.*|(\\.|/)(test|spec))\\.(jsx?|tsx?)$",
+    "moduleFileExtensions": [
+      "ts",
+      "tsx",
+      "js",
+      "jsx"
+    ]
+  },
+  "devDependencies": {
+    "@types/electron": "^1.6.10",
+    "@types/jest": "^21.1.9",
+    "@types/node": "^8.5.1",
+    "husky": "^0.14.3",
+    "jest": "^22.0.4",
+    "lint-staged": "^6.0.0",
+    "prettier": "^1.9.2",
+    "rimraf": "^2.6.2",
+    "ts-jest": "^22.0.0",
+    "tslint": "^5.8.0",
+    "tslint-config-prettier": "^1.6.0",
+    "tslint-config-standard": "^7.0.0",
+    "typescript": "^2.6.2"
+  },
+  "gitHead": "37485cb0f9064057a35d87fccfe62bb00507bcf9",
+  "homepage": "https://github.com/ocboogie/electron-update-window-options#readme",
+  "_npmVersion": "5.5.1",
+  "_nodeVersion": "8.9.3",
+  "dist": {
+    "integrity": "sha512-eJ9oLY2FpWgzqFYZuh9cCNoygLuRO7zWDb42a59ILoh6eEG5Bq+8XDs4bEA3EX5X1TvsxBUXKFqFtiH7wlJiFA==",
+    "shasum": "1d5d4c0da3eac72961fb1980b74cd93d0039f32a",
+    "tarball": "https://registry.npmjs.org/electron-update-window-options/-/electron-update-window-options-1.1.1.tgz"
+  },
+  "versions": [
+    {
+      "number": "1.0.0",
+      "date": "2017-12-25T01:44:17.314Z"
+    },
+    {
+      "number": "1.0.1",
+      "date": "2017-12-25T06:46:07.172Z"
+    },
+    {
+      "number": "1.0.2",
+      "date": "2017-12-25T06:51:17.486Z"
+    },
+    {
+      "number": "1.0.3",
+      "date": "2017-12-25T06:55:46.066Z"
+    },
+    {
+      "number": "1.1.0",
+      "date": "2017-12-25T07:00:23.522Z"
+    },
+    {
+      "number": "1.1.1",
+      "date": "2017-12-25T08:44:20.179Z"
+    }
+  ],
+  "created": "2017-12-25T01:44:17.314Z",
+  "modified": "2017-12-25T08:44:20.179Z",
+  "lastPublisher": {
+    "name": "ocboogie",
+    "email": "boogie@mikulec.com"
+  },
+  "owners": [
+    {
+      "name": "ocboogie",
+      "email": "boogie@mikulec.com"
+    }
+  ]
+}

@@ -1,0 +1,215 @@
+{
+  "name": "cowlog",
+  "version": "0.2.3",
+  "description": "Development time logging for NodeJs developers",
+  "homepage": "https://github.com/vidaxl-com/cowlog/tree/master/packages/cowlog",
+  "keywords": [
+    "log",
+    "logging",
+    "tool",
+    "tooling",
+    "development"
+  ],
+  "main": "src/index.js",
+  "scripts": {
+    "test-dev": "npm run clean && node_modules/mocha/bin/mocha --recursive tests/tests",
+    "test-dev-unit": "npm run clean && node_modules/mocha/bin/mocha --recursive tests/tests/unit",
+    "test-dev-coverage": "node_modules/mocha/bin/mocha --recursive tests/tests",
+    "test-old": "npm run build && npm run test-compiled && npm run clean",
+    "test": "mkdir tmp;PROD=true node_modules/nyc/bin/nyc.js --reporter=lcov --reporter=clover --reporter=text npm run test-dev-coverage",
+    "test-compiled": "PROD=true node_modules/nyc/bin/nyc.js --reporter=lcov --reporter=clover --reporter=text node_modules/mocha/bin/mocha --recursive dist/tests/",
+    "build-src": "mkdir tmp; rm -rf dist;mkdir dist;mkdir dist/src;node_modules/babel-cli/bin/babel.js src --presets babel-preset-env --out-dir dist/src",
+    "build-test": "rm -rf test-build;mkdir dist/tests; node_modules/babel-cli/bin/babel.js src --presets tests --presets babel-preset-env --out-dir dist/tests",
+    "prepublish": "npm run build-src && npm run build-test",
+    "standard-fix": "node_modules/standard/bin/cmd.js --fix src/index.js src/**/*.js test/**/*.js",
+    "clean": "rm -rf tests/tmp; rm -rf dist;"
+  },
+  "repository": {
+    "user": "vidaxl-com",
+    "repo": "cowlog",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/vidaxl-com/cowlog/tarball/master",
+    "clone_url": "https://github.com/vidaxl-com/cowlog",
+    "https_url": "https://github.com/vidaxl-com/cowlog",
+    "travis_url": "https://travis-ci.org/vidaxl-com/cowlog",
+    "zip_url": "https://github.com/vidaxl-com/cowlog/archive/master.zip",
+    "api_url": "https://api.github.com/repos/vidaxl-com/cowlog"
+  },
+  "license": "SEE LICENSE IN LICENSE.md",
+  "author": {
+    "name": "Imre Toth",
+    "email": "tothmimre@gmail.com"
+  },
+  "contributors": {
+    "name": "Panos Vakalopoulos",
+    "email": "p.vakalopoulos@vidaxl.com"
+  },
+  "dependencies": {
+    "array-unique": "^0.3.2",
+    "bottlejs": "^1.7.0",
+    "colors": "^1.1.2",
+    "cowsay": "^1.1.9",
+    "detect-node": "^2.0.3",
+    "directory-fixture-provider": "^0.2.3",
+    "flat": "^4.0.0",
+    "function-arguments": "^1.0.8",
+    "generic-text-linker": "^0.2.3",
+    "is-function": "^1.0.1",
+    "is-string": "^1.0.4",
+    "isobject": "^3.0.1",
+    "lodash": "^4.17.5",
+    "merge": "^1.2.0",
+    "mime-types": "^2.1.18",
+    "object-hash": "^1.2.0",
+    "pkg-dir": "^2.0.0",
+    "sha256": "^0.2.0",
+    "stacktrace-js": "^2.0.0",
+    "stringify-object": "^3.2.0",
+    "write": "^1.0.3"
+  },
+  "devDependencies": {
+    "array-ify": "^1.0.0",
+    "babel-cli": "^6.26.0",
+    "babel-preset-env": "^1.6.1",
+    "chai": "^4.1.2 ",
+    "codeclimate-test-reporter": "^0.5.0",
+    "eslint-plugin-import": "^2.9.0",
+    "fs-copy-file-sync": "^1.0.1",
+    "glob": "^7.1.2",
+    "kidnap-console": "0.0.2",
+    "mocha": "5.0.0",
+    "nyc": "^11.4.1",
+    "standard": "^11.0.0"
+  },
+  "engines": {
+    "node": "<=4.0.0"
+  },
+  "os": [
+    "darwin",
+    "linux"
+  ],
+  "nyc": {
+    "exclude": [
+      "tests",
+      "build"
+    ]
+  },
+  "standard": {
+    "ignore": [
+      "/dist/",
+      "/coverage/",
+      "/build/",
+      "/tmp/"
+    ],
+    "globals": [
+      "l",
+      "lf"
+    ]
+  },
+  "iohook": {
+    "targets": [
+      "node-51",
+      "electron-53"
+    ],
+    "platforms": [
+      "win32",
+      "darwin",
+      "linux"
+    ],
+    "arches": [
+      "x64",
+      "ia32"
+    ]
+  },
+  "_npmVersion": "5.6.0",
+  "_nodeVersion": "8.10.0",
+  "dist": {
+    "integrity": "sha512-FF63QFGWo6PbE4xTW8TQ2IYpA5sKRMjH7LjyWDDeAsdDrvlNZ/J9hcBbqebO7ljdjYlGqLRdtxLaatxjdEFeBA==",
+    "shasum": "9cd472409027b31e87f708b254223dde2cb9f520",
+    "tarball": "https://registry.npmjs.org/cowlog/-/cowlog-0.2.3.tgz",
+    "fileCount": 65,
+    "unpackedSize": 109884,
+    "npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJa2NDpCRA9TVsSAnZWagAAOr8P/jTtHX/0Ea4B9GblgcID\n0CzxuIxT4xu1oUx5kcAqawdA2HuxUDPLtsj025Ib7sTTmoswt92b4LIYhYxE\n4EibT14sJB/TZPnkPpznq6zxPS+Dd5cr23Nkqcbyi1hcIuWI2Fi3jII7p3ji\nFIDygTw/e+h3d8sbWMcK6GxwRCsnJ46zcT/oA8QF/xakkQSDiuS2RrMdmTOm\nu5xPjH0OTAvyUcoVM29Ifwly5oHPNb2F1ySRrDkc92G0+tWBGxf4NCQ4oyjv\nTW2sRFg0yjSa4DoF2AeTVMfy2cOEA4QNZA7W+MFxqgsf+jaiOGrtBOtX/lk4\n0DuI6nO0W/fmyiRRaqv5LlJifbn5djgWj7hoaCzM6ir5b88aXXumKoKuGewz\nT2aNjDRAM2OLfAX0aCr+m6/Dy1b8w/KdcwFptqngIDc79LSwtXd0vYvGvrk6\ntvKOv0gbJegQiBLnriFz5Q7sGisAqeWdRWOeaZdJ254qUmOIdw6fArBmarNq\n7ch5LI//TZWO1fjNywyLBbVFi3isBMfYAbF6Mjn5xcrGgp1yz6NHBHkS87rB\n/57Hz1U50l8ksHUPlKXsWVybExd3/8hNd2VdbC6ixjU3RSgMF6gUD+as0ZCh\nbL+zxGL9EXIQH6E96BjWA+SuR4WjOdFHJv9UT/uECbu7y56FNvRl/39Rkk4T\nxhdp\r\n=N2VA\r\n-----END PGP SIGNATURE-----\r\n"
+  },
+  "_hasShrinkwrap": false,
+  "versions": [
+    {
+      "number": "0.1.0",
+      "date": "2018-03-13T16:17:28.674Z"
+    },
+    {
+      "number": "0.1.1",
+      "date": "2018-03-13T16:17:28.674Z"
+    },
+    {
+      "number": "0.1.2",
+      "date": "2018-03-14T17:34:51.513Z"
+    },
+    {
+      "number": "0.1.3",
+      "date": "2018-03-15T14:45:33.651Z"
+    },
+    {
+      "number": "0.1.4",
+      "date": "2018-03-15T14:53:34.832Z"
+    },
+    {
+      "number": "0.1.5",
+      "date": "2018-03-15T15:18:42.178Z"
+    },
+    {
+      "number": "0.1.6",
+      "date": "2018-03-16T07:35:19.684Z"
+    },
+    {
+      "number": "0.1.7",
+      "date": "2018-03-17T21:08:35.304Z"
+    },
+    {
+      "number": "0.1.8",
+      "date": "2018-03-17T21:27:23.464Z"
+    },
+    {
+      "number": "0.1.9",
+      "date": "2018-03-19T13:24:26.293Z"
+    },
+    {
+      "number": "0.1.10",
+      "date": "2018-03-28T11:12:26.176Z"
+    },
+    {
+      "number": "0.2.0",
+      "date": "2018-04-13T15:06:06.599Z"
+    },
+    {
+      "number": "0.2.1",
+      "date": "2018-04-13T19:52:47.114Z"
+    },
+    {
+      "number": "0.2.2",
+      "date": "2018-04-17T19:47:28.598Z"
+    },
+    {
+      "number": "0.2.3",
+      "date": "2018-04-19T17:24:57.064Z"
+    }
+  ],
+  "created": "2018-03-14T17:34:51.443Z",
+  "modified": "2018-04-19T17:25:01.936Z",
+  "lastPublisher": {
+    "name": "vidaxl.com",
+    "email": "accounts@vidaxl.com"
+  },
+  "owners": [
+    {
+      "name": "311ecode",
+      "email": "tothimre@gmail.com"
+    },
+    {
+      "name": "vidaxl.com",
+      "email": "accounts@vidaxl.com"
+    }
+  ]
+}

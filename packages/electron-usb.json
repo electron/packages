@@ -1,0 +1,126 @@
+{
+  "name": "electron-usb",
+  "description": "Library to access USB devices",
+  "keywords": [
+    "usb",
+    "hardware"
+  ],
+  "author": {
+    "name": "Marco Piraccini",
+    "url": "https://github.com/marcopiraccini"
+  },
+  "contributors": [
+    {
+      "name": "Marco Piraccini",
+      "email": "marco.piraccini@gmail.com",
+      "url": "https://github.com/marcopiraccini"
+    }
+  ],
+  "version": "0.0.11",
+  "engines": {
+    "electron": ">=0.36"
+  },
+  "main": "./usb",
+  "repository": {
+    "user": "marcopiraccini",
+    "repo": "electron-usb",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/marcopiraccini/electron-usb/tarball/master",
+    "clone_url": "https://github.com/marcopiraccini/electron-usb",
+    "https_url": "https://github.com/marcopiraccini/electron-usb",
+    "travis_url": "https://travis-ci.org/marcopiraccini/electron-usb",
+    "zip_url": "https://github.com/marcopiraccini/electron-usb/archive/master.zip",
+    "api_url": "https://api.github.com/repos/marcopiraccini/electron-usb"
+  },
+  "scripts": {
+    "install": "node-pre-gyp install --fallback-to-build",
+    "test": "mocha --compilers coffee:coffee-script --grep Module",
+    "full-test": "mocha --compilers coffee:coffee-script",
+    "valgrind": "coffee -c test/usb.coffee; valgrind --leak-check=full --show-possibly-lost=no node --expose-gc --trace-gc node_modules/mocha/bin/_mocha -R spec",
+    "release-linux-ia32": "node-pre-gyp rebuild --target_arch=ia32 --target_platform=linux --runtime=electron --target=0.36.7 && node-pre-gyp --target_arch=ia32 --target_platform=linux --runtime=electron --target=0.36.7 package && node-pre-gyp-github publish --release",
+    "release-linux": "node-pre-gyp rebuild --target_arch=x64 --runtime=electron --target=0.36.7 --target_platform=linux && node-pre-gyp package --target_arch=x64 --target_platform=linux --runtime=electron --target=0.36.7 && node-pre-gyp-github publish --release",
+    "release-win-ia32": "node-pre-gyp rebuild --target_arch=ia32 --target_platform=win32 --runtime=electron --target=0.36.7 && node-pre-gyp package --target_arch=ia32 --target_platform=win32 --runtime=electron --target=0.36.7 && node-pre-gyp-github publish --release",
+    "release-win": "node-pre-gyp rebuild --target_arch=x64 --target_platform=win32 --runtime=electron --target=0.36.7 && node-pre-gyp package --target_arch=x64 --target_platform=win32 --runtime=electron --target=0.36.7 && node-pre-gyp-github publish --release",
+    "release": "node-pre-gyp rebuild --runtime=electron --target=0.36.7 && node-pre-gyp package --runtime=electron --target=0.36.7 && node-pre-gyp-github publish --release"
+  },
+  "binary": {
+    "module_name": "usb_bindings",
+    "module_path": "./build/{configuration}/electron-v0.36-{platform}-{arch}/",
+    "package_name": "electron-v0.36-{platform}-{arch}.tar.gz",
+    "host": "https://github.com/marcopiraccini/electron-usb/releases/download/0.0.11"
+  },
+  "dependencies": {
+    "nan": "^2.1.0",
+    "node-pre-gyp": "^0.6.13",
+    "node-pre-gyp-github": "^1.1.2"
+  },
+  "devDependencies": {
+    "coffee-script": "~1.6.2",
+    "mocha": "~1.8.2"
+  },
+  "license": "MIT",
+  "gitHead": "5c88e3d19ca86baa150b6cd911124e0d3a834663",
+  "homepage": "https://github.com/marcopiraccini/electron-usb#readme",
+  "bundleDependencies": [
+    "node-pre-gyp"
+  ],
+  "_npmVersion": "2.14.12",
+  "_nodeVersion": "4.2.4",
+  "dist": {
+    "shasum": "99407479c318d382b2f20d5024493e7f415a7e0a",
+    "tarball": "http://registry.npmjs.org/electron-usb/-/electron-usb-0.0.11.tgz"
+  },
+  "stars": 2,
+  "versions": [
+    {
+      "number": "0.0.3",
+      "date": "2016-02-03T22:31:29.520Z"
+    },
+    {
+      "number": "0.0.4",
+      "date": "2016-02-03T22:45:09.130Z"
+    },
+    {
+      "number": "0.0.5",
+      "date": "2016-02-03T22:49:00.724Z"
+    },
+    {
+      "number": "0.0.6",
+      "date": "2016-02-03T22:52:31.917Z"
+    },
+    {
+      "number": "0.0.7",
+      "date": "2016-02-03T22:56:32.174Z"
+    },
+    {
+      "number": "0.0.8",
+      "date": "2016-02-03T22:58:36.100Z"
+    },
+    {
+      "number": "0.0.9",
+      "date": "2016-02-04T17:48:23.477Z"
+    },
+    {
+      "number": "0.0.10",
+      "date": "2016-02-04T18:20:05.832Z"
+    },
+    {
+      "number": "0.0.11",
+      "date": "2016-02-04T21:18:04.931Z"
+    }
+  ],
+  "created": "2016-02-03T22:31:29.520Z",
+  "modified": "2016-02-04T21:18:04.931Z",
+  "lastPublisher": {
+    "name": "marcopiraccini",
+    "email": "marco.piraccini@gmail.com"
+  },
+  "owners": [
+    {
+      "name": "marcopiraccini",
+      "email": "marco.piraccini@gmail.com"
+    }
+  ]
+}

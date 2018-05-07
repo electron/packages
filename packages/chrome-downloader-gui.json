@@ -1,0 +1,85 @@
+{
+  "name": "chrome-downloader-gui",
+  "version": "1.0.4",
+  "description": "GUI tool for the Chrome Downloader",
+  "main": "./lib/index.js",
+  "scripts": {
+    "build:app:all": "npm run build:app:windows && npm run build:app:linux && npm run build:app:mac",
+    "build:app:linux32": "npm run packager -- . chrome-downloader-gui --platform=linux --arch=ia32 --icon=./app/app.ico --ignore=target/ --ignore=examples/ --prune=true --out=./target",
+    "build:app:linux64": "npm run packager -- . chrome-downloader-gui --platform=linux --arch=x64 --icon=./app/app.ico --ignore=target/ --ignore=examples/ --prune=true --out=./target",
+    "build:app:linux": "npm run build:app:linux32 && npm run build:app:linux64",
+    "build:app:mac": "npm run packager -- . chrome-downloader-gui --platform=darwin --icon=./app/app.ico --ignore=target/ --ignore=examples/ --prune=true --out=./target",
+    "build:app:win32": "npm run packager -- . chrome-downloader-gui --platform=win32 --arch=ia32 --icon=./app/app.ico --ignore=target/ --ignore=examples/ --prune=true --out=./target",
+    "build:app:win64": "npm run packager -- . chrome-downloader-gui --platform=win32 --arch=x64 --icon=./app/app.ico --ignore=target/ --ignore=examples/ --prune=true --out=./target",
+    "build:app:windows": "npm run build:app:win32 && npm run build:app:win64",
+    "build:shrinkwrap": "npm prune && npm shrinkwrap",
+    "bump:release": "npm run bumping -- --unpreid --git-create-branch",
+    "bump:major": "npm run bumping -- --increment major",
+    "bump:minor": "npm run bumping -- --increment minor",
+    "bump:patch": "npm run bumping -- --increment patch",
+    "bump:major:beta": "npm run bumping -- --increment major --preid beta",
+    "bump:minor:beta": "npm run bumping -- --increment minor --preid beta",
+    "bump:patch:beta": "npm run bumping -- --increment patch --preid beta",
+    "bump:prerelease:beta": "npm run bumping -- --increment prerelease --preid beta",
+    "bumping": "node ./node_modules/npmversion/bin/npmversion",
+    "electron": "node ./node_modules/electron/cli.js",
+    "packager": "node ./node_modules/electron-packager/cli.js",
+    "start": "npm run electron .",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "MIT",
+  "engines": {
+    "node": ">=8.0.0",
+    "npm": ">=5.0.0"
+  },
+  "dependencies": {
+    "angular": "1.6.8",
+    "bulma": "0.6.1",
+    "electron-window-state": "4.1.1",
+    "font-awesome": "4.7.0",
+    "load-awesome": "1.1.0",
+    "request": "2.83.0",
+    "rimraf": "2.6.2",
+    "unzip": "0.1.11",
+    "winston": "2.4.0",
+    "winston-daily-rotate-file": "1.7.2"
+  },
+  "devDependencies": {
+    "devtron": "1.4.0",
+    "electron": "1.7.10",
+    "electron-packager": "10.1.1",
+    "eslint": "4.7.1",
+    "npmversion": "1.6.1"
+  },
+  "gitHead": "33709acdb5d97d987d5c05bc45d65f6bb61120b0",
+  "_npmVersion": "5.6.0",
+  "_nodeVersion": "8.9.4",
+  "dist": {
+    "integrity": "sha512-l1MoIwMYlpqDAfjooLdCDYAYF3CsdyWDz9OyzZUHeA+ym3cLTcT03DPNZLHLAz52aU96SOMLtB4hiLfY2S4PGA==",
+    "shasum": "dff0a526dc856d9d299478018c551d2c5b382fe3",
+    "tarball": "http://registry.npmjs.org/chrome-downloader-gui/-/chrome-downloader-gui-1.0.4.tgz",
+    "fileCount": 29,
+    "unpackedSize": 514153
+  },
+  "_hasShrinkwrap": true,
+  "versions": [
+    {
+      "number": "1.0.4",
+      "date": "2018-02-17T12:09:46.292Z"
+    }
+  ],
+  "created": "2018-02-17T12:09:46.138Z",
+  "modified": "2018-02-17T12:09:47.352Z",
+  "lastPublisher": {
+    "name": "rochejul",
+    "email": "roche.jul@gmail.com"
+  },
+  "owners": [
+    {
+      "name": "rochejul",
+      "email": "roche.jul@gmail.com"
+    }
+  ]
+}

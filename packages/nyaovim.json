@@ -1,0 +1,213 @@
+{
+  "name": "nyaovim",
+  "productName": "NyaoVim",
+  "version": "0.2.0",
+  "description": "Web-enhanced Extensible Neovim Frontend",
+  "main": "main/main.js",
+  "bin": {
+    "nyaovim": "./bin/cli.js"
+  },
+  "scripts": {
+    "dep": "npm install && bower install",
+    "build:main": "tsc --pretty -p main",
+    "build:renderer": "tsc --pretty -p renderer",
+    "build": "npm-run-all -p build:main build:renderer",
+    "tslint:renderer": "tslint -p renderer/",
+    "tslint:main": "tslint -p main/",
+    "nsp": "nsp check",
+    "lint": "npm-run-all -p tslint:renderer tslint:main nsp",
+    "app": "electron $(npm prefix)",
+    "debug": "ELECTRON_ENABLE_STACK_DUMPING=true NODE_ENV=debug electron $(npm prefix)",
+    "start": "npm-run-all dep build app",
+    "build:test": "tsc --pretty -p test/",
+    "smoke-test": "npm run build:test && mocha --exit test/smoke",
+    "watch": "guard --watchdir main renderer test",
+    "clean": "rm -rf build bower_components node_modules",
+    "release": "./scripts/make-release.sh"
+  },
+  "repository": {
+    "user": "rhysd",
+    "repo": "NyaoVim",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/rhysd/NyaoVim/tarball/master",
+    "clone_url": "https://github.com/rhysd/NyaoVim",
+    "https_url": "https://github.com/rhysd/NyaoVim",
+    "travis_url": "https://travis-ci.org/rhysd/NyaoVim",
+    "zip_url": "https://github.com/rhysd/NyaoVim/archive/master.zip",
+    "api_url": "https://api.github.com/repos/rhysd/NyaoVim"
+  },
+  "keywords": [
+    "editor",
+    "extensible",
+    "WebComponents",
+    "Neovim",
+    "nvim",
+    "Electron",
+    "Polymer",
+    "cat",
+    "meow"
+  ],
+  "author": {
+    "name": "rhysd",
+    "email": "lin90162@yahoo.co.jp"
+  },
+  "license": "MIT",
+  "homepage": "https://github.com/rhysd/NyaoVim#readme",
+  "dependencies": {
+    "about-window": "^1.8.0",
+    "deep-extend": "^0.5.0",
+    "electron": "^1.7.9",
+    "electron-window-state": "^4.1.1",
+    "mkdirp": "^0.5.1",
+    "neovim-component": "^0.10.1",
+    "promised-neovim-client": "^2.0.2"
+  },
+  "devDependencies": {
+    "@types/bluebird": "^3.5.18",
+    "@types/chai": "^4.0.5",
+    "@types/deep-extend": "^0.4.30",
+    "@types/electron-window-state": "^2.0.31",
+    "@types/fbemitter": "^2.0.32",
+    "@types/flux": "^3.1.4",
+    "@types/mkdirp": "^0.5.1",
+    "@types/mocha": "^2.2.44",
+    "@types/node": "^8.0.53",
+    "@types/q": "^1.0.6",
+    "@types/react": "^16.0.25",
+    "@types/webdriverio": "^4.8.6",
+    "bower": "^1.8.2",
+    "chai": "^4.1.2",
+    "electron-packager": "^10.1.0",
+    "mocha": "^4.0.1",
+    "npm-run-all": "^4.1.2",
+    "nsp": "^3.1.0",
+    "spectron": "^3.7.2",
+    "tslint": "^5.8.0",
+    "typescript": "^2.6.1"
+  },
+  "gitHead": "eba82d2f3af95c205d4859f7dbad0c44cc1e39e8",
+  "_npmVersion": "5.5.1",
+  "_nodeVersion": "8.9.1",
+  "dist": {
+    "integrity": "sha512-NGcoFGiKHt9MUQQesG5+m9WrwGVZjadRQDaqRaotZj/gW6dVQC9WzYf811wrOrZmTB1yATywSRiXhPtk1ZO3jA==",
+    "shasum": "7d84773aa44b0be7824a9449d3d5c73aa43e0870",
+    "tarball": "https://registry.npmjs.org/nyaovim/-/nyaovim-0.2.0.tgz"
+  },
+  "stars": 1,
+  "versions": [
+    {
+      "number": "0.0.0",
+      "date": "2015-09-10T18:28:34.224Z"
+    },
+    {
+      "number": "0.0.1",
+      "date": "2015-12-16T16:01:30.829Z"
+    },
+    {
+      "number": "0.0.2",
+      "date": "2015-12-17T17:29:46.685Z"
+    },
+    {
+      "number": "0.0.3",
+      "date": "2015-12-21T02:24:58.394Z"
+    },
+    {
+      "number": "0.0.4",
+      "date": "2015-12-23T13:42:49.167Z"
+    },
+    {
+      "number": "0.0.6",
+      "date": "2015-12-24T07:31:18.799Z"
+    },
+    {
+      "number": "0.0.7",
+      "date": "2015-12-24T09:40:49.100Z"
+    },
+    {
+      "number": "0.0.8",
+      "date": "2015-12-24T16:53:57.256Z"
+    },
+    {
+      "number": "0.0.9",
+      "date": "2015-12-29T18:48:12.233Z"
+    },
+    {
+      "number": "0.0.10",
+      "date": "2016-01-08T02:38:03.263Z"
+    },
+    {
+      "number": "0.0.11",
+      "date": "2016-01-20T16:30:35.584Z"
+    },
+    {
+      "number": "0.0.12",
+      "date": "2016-01-28T17:29:10.847Z"
+    },
+    {
+      "number": "0.0.13",
+      "date": "2016-01-30T10:46:16.967Z"
+    },
+    {
+      "number": "0.0.14",
+      "date": "2016-01-30T10:49:42.880Z"
+    },
+    {
+      "number": "0.0.15",
+      "date": "2016-02-02T11:08:29.757Z"
+    },
+    {
+      "number": "0.0.16",
+      "date": "2016-02-04T15:08:56.162Z"
+    },
+    {
+      "number": "0.0.17",
+      "date": "2016-02-12T17:51:55.519Z"
+    },
+    {
+      "number": "0.0.18",
+      "date": "2016-02-27T13:19:06.463Z"
+    },
+    {
+      "number": "0.0.19",
+      "date": "2016-03-06T10:49:41.746Z"
+    },
+    {
+      "number": "0.0.20",
+      "date": "2016-07-18T07:37:55.119Z"
+    },
+    {
+      "number": "0.0.21",
+      "date": "2016-09-10T15:33:15.353Z"
+    },
+    {
+      "number": "0.0.22",
+      "date": "2016-09-29T14:06:01.952Z"
+    },
+    {
+      "number": "0.1.0",
+      "date": "2017-11-05T07:36:48.194Z"
+    },
+    {
+      "number": "0.1.1",
+      "date": "2017-11-08T16:38:09.294Z"
+    },
+    {
+      "number": "0.2.0",
+      "date": "2017-11-25T17:17:30.193Z"
+    }
+  ],
+  "created": "2015-09-10T18:28:34.224Z",
+  "modified": "2017-11-25T17:17:30.193Z",
+  "lastPublisher": {
+    "name": "rhysd",
+    "email": "lin90162@yahoo.co.jp"
+  },
+  "owners": [
+    {
+      "name": "rhysd",
+      "email": "lin90162@yahoo.co.jp"
+    }
+  ]
+}

@@ -1,0 +1,167 @@
+{
+  "name": "v-viewer",
+  "version": "1.0.1",
+  "description": "Image viewer component for vue, supports rotation, scale, zoom and so on, based on viewer.js",
+  "main": "dist/v-viewer.js",
+  "scripts": {
+    "dev": "cross-env NODE_ENV=development node build/dev-server.js",
+    "release": "webpack --progress --hide-modules --config  ./build/webpack.release.js && cross-env NODE_ENV=production webpack --progress --hide-modules --config  ./build/webpack.release.min.js",
+    "example": "cross-env NODE_ENV=production node build/build.js",
+    "gh": "node build/deploy",
+    "publish": "npm publish"
+  },
+  "repository": {
+    "user": "mirari",
+    "repo": "v-viewer",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/mirari/v-viewer/tarball/master",
+    "clone_url": "https://github.com/mirari/v-viewer",
+    "https_url": "https://github.com/mirari/v-viewer",
+    "travis_url": "https://travis-ci.org/mirari/v-viewer",
+    "zip_url": "https://github.com/mirari/v-viewer/archive/master.zip",
+    "api_url": "https://api.github.com/repos/mirari/v-viewer"
+  },
+  "keywords": [
+    "vue",
+    "viewer",
+    "gallery",
+    "picture",
+    "img",
+    "image"
+  ],
+  "author": {
+    "name": "mirari"
+  },
+  "license": "MIT",
+  "homepage": "https://github.com/mirari/v-viewer#readme",
+  "engines": {
+    "node": ">=4",
+    "npm": ">=3"
+  },
+  "devDependencies": {
+    "autoprefixer": "^6.7.7",
+    "babel-core": "^6.22.1",
+    "babel-eslint": "^7.1.1",
+    "babel-helper-vue-jsx-merge-props": "^2.0.2",
+    "babel-loader": "^6.2.10",
+    "babel-plugin-component": "^0.9.1",
+    "babel-plugin-syntax-jsx": "^6.18.0",
+    "babel-plugin-transform-export-extensions": "^6.8.0",
+    "babel-plugin-transform-vue-jsx": "^3.4.2",
+    "babel-polyfill": "^6.22.0",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-stage-2": "^6.22.0",
+    "bulma": "^0.5.1",
+    "connect-history-api-fallback": "^1.3.0",
+    "cross-env": "^3.1.3",
+    "css-loader": "^0.27.1",
+    "electron-devtools-installer": "^2.0.1",
+    "eslint": "^3.17.1",
+    "eslint-config-standard": "^7.0.1",
+    "eslint-friendly-formatter": "^2.0.7",
+    "eslint-loader": "^1.6.1",
+    "eslint-plugin-html": "^2.0.1",
+    "eslint-plugin-promise": "^3.5.0",
+    "eslint-plugin-standard": "^2.1.1",
+    "eventsource-polyfill": "^0.9.6",
+    "express": "^4.15.2",
+    "extract-text-webpack-plugin": "^2.0.0-beta.4",
+    "file-loader": "^0.10.1",
+    "gh-pages": "^1.1.0",
+    "github-markdown-css": "^2.8.0",
+    "html-webpack-plugin": "^2.25.0",
+    "http-proxy-middleware": "^0.17.4",
+    "imports-loader": "^0.7.0",
+    "node-sass": "^4.1.1",
+    "opn": "^4.0.2",
+    "ora": "^1.1.0",
+    "postcss-loader": "^1.3.3",
+    "progress-bar-webpack-plugin": "^1.9.1",
+    "sass-loader": "^6.0.3",
+    "serve-favicon": "^2.4.1",
+    "style-loader": "^0.13.1",
+    "stylus": "^0.54.5",
+    "stylus-loader": "^3.0.1",
+    "url-loader": "^0.5.7",
+    "vue": "^2.5.6",
+    "vue-html-loader": "^1.2.3",
+    "vue-loader": "^11.1.4",
+    "vue-markdown-loader": "2.1.0",
+    "vue-template-compiler": "^2.5.6",
+    "webpack": "^2.2.1",
+    "webpack-dev-middleware": "^1.9.0",
+    "webpack-hot-middleware": "^2.14.0",
+    "webpack-merge": "^4.0.0"
+  },
+  "dependencies": {
+    "viewerjs": "^1.0.0"
+  },
+  "gitHead": "d109638d96517ee30d06ce1196f78d727d5b24b2",
+  "_npmVersion": "5.6.0",
+  "_nodeVersion": "8.11.1",
+  "dist": {
+    "integrity": "sha512-S+HOP6SfGV4MLRXCuT1rllyhB+vwrlk9XMum8r9j6hL0Yan47EBTdbEM0ODopK0g6gXSoMUhHnwpOsLR5by3/Q==",
+    "shasum": "64020be8d72df4980723e782f7d43e13f539ac1c",
+    "tarball": "https://registry.npmjs.org/v-viewer/-/v-viewer-1.0.1.tgz",
+    "fileCount": 11,
+    "unpackedSize": 451081,
+    "npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJa2AJACRA9TVsSAnZWagAA4ZcP/RCMm3GObpskR9h2mcdW\nSXFQIjJ32lBpi0yufldIYOFOhngKn9Ju+re0fo9wXKiwCt4FxykMmOGdkr+b\ndnOwWCz28RT7wGJxFB+PAmutrfvdK8Z3rxOCiLY2VUiQ0SHjXiTZv7H0st9G\n0VE8iWx8TeLQK4Vboi+U0voReYlg7//60S7iF6Gb1G7rVmWMrDBMrvWmWanL\nx8W/XyyA0hgXJhB9mbWhZxSKheMorq3RvUp5Eg28TYe7hDmetr125+9VhA68\nw5l5tt6dNq3jFLcqZQWZt37wfKSumLcOEwVeffgSI7FnJP5NR9yXCKK2G9Q4\nxpmBh7rVyxmxufLXDgGCsaclY/9zD+E6vn5Iq/Y9VF63qSz1wfk5omCuCsOQ\nmOVvUPjhSYOR97QXbV8gMml20hQIExuiD/RXtsy04o10MjWPla9clt94lGDD\nPZa+U44ii09v4lWZd48kLggkxA4VA7ksdj9JGyvlNfYvQrXADpuF9vGVWLd5\nnaCiJ8f7SZ8LUtwG3GkygSIcsPFkOnhQyRWLuU8Gv2iVzw1V6CGu0rt93tfA\nHzSde1yoGwijNPrbMQl1NDcTTbN9evqMDiCOKKQHBsMEc+vWozi4San4OlMC\nIKuv5AFy3cp5npBk5Fj0yrOqgZ/uqpHi5mHxUJRDS0cBTKt+ZmZwCyQvxXK9\nvxSE\r\n=DaGK\r\n-----END PGP SIGNATURE-----\r\n"
+  },
+  "_hasShrinkwrap": false,
+  "versions": [
+    {
+      "number": "0.1.0",
+      "date": "2017-08-25T08:49:01.366Z"
+    },
+    {
+      "number": "0.2.0",
+      "date": "2017-08-26T17:51:25.634Z"
+    },
+    {
+      "number": "0.2.1",
+      "date": "2017-11-20T12:08:37.039Z"
+    },
+    {
+      "number": "0.2.2",
+      "date": "2017-12-01T09:33:26.972Z"
+    },
+    {
+      "number": "0.2.3",
+      "date": "2017-12-19T12:36:08.933Z"
+    },
+    {
+      "number": "0.3.0",
+      "date": "2017-12-25T06:35:58.687Z"
+    },
+    {
+      "number": "0.3.1",
+      "date": "2018-01-10T06:34:07.376Z"
+    },
+    {
+      "number": "0.3.2",
+      "date": "2018-03-12T02:13:34.314Z"
+    },
+    {
+      "number": "1.0.0",
+      "date": "2018-04-16T11:56:09.701Z"
+    },
+    {
+      "number": "1.0.1",
+      "date": "2018-04-19T02:43:10.680Z"
+    }
+  ],
+  "created": "2017-08-25T08:49:01.366Z",
+  "modified": "2018-04-19T02:43:14.314Z",
+  "lastPublisher": {
+    "name": "mirari",
+    "email": "clover4@gmail.com"
+  },
+  "owners": [
+    {
+      "name": "mirari",
+      "email": "clover4@gmail.com"
+    }
+  ]
+}

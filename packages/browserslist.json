@@ -1,0 +1,452 @@
+{
+  "name": "browserslist",
+  "version": "3.2.6",
+  "description": "Share target browsers between different front-end tools, like Autoprefixer, Stylelint and babel-env-preset",
+  "keywords": [
+    "caniuse",
+    "browsers",
+    "target"
+  ],
+  "author": {
+    "name": "Andrey Sitnik",
+    "email": "andrey@sitnik.ru"
+  },
+  "license": "MIT",
+  "repository": {
+    "user": "browserslist",
+    "repo": "browserslist",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/browserslist/browserslist/tarball/master",
+    "clone_url": "https://github.com/browserslist/browserslist",
+    "https_url": "https://github.com/browserslist/browserslist",
+    "travis_url": "https://travis-ci.org/browserslist/browserslist",
+    "zip_url": "https://github.com/browserslist/browserslist/archive/master.zip",
+    "api_url": "https://api.github.com/repos/browserslist/browserslist"
+  },
+  "dependencies": {
+    "caniuse-lite": "^1.0.30000830",
+    "electron-to-chromium": "^1.3.42"
+  },
+  "bin": {
+    "browserslist": "./cli.js"
+  },
+  "devDependencies": {
+    "cross-spawn": "^6.0.5",
+    "eslint": "^4.19.1",
+    "eslint-ci": "^0.1.1",
+    "eslint-config-logux": "^21.0.0",
+    "eslint-config-standard": "^11.0.0",
+    "eslint-plugin-es5": "^1.3.1",
+    "eslint-plugin-import": "^2.11.0",
+    "eslint-plugin-jest": "^21.15.1",
+    "eslint-plugin-node": "^6.0.1",
+    "eslint-plugin-promise": "^3.7.0",
+    "eslint-plugin-security": "^1.4.0",
+    "eslint-plugin-standard": "^3.1.0",
+    "fs-extra": "^5.0.0",
+    "jest": "^22.4.3",
+    "lint-staged": "^7.0.4",
+    "pre-commit": "^1.1.3",
+    "size-limit": "^0.17.0",
+    "yaspeller-ci": "^1.0.0"
+  },
+  "eslintConfig": {
+    "extends": "eslint-config-logux/browser",
+    "rules": {
+      "security/detect-unsafe-regex": "off",
+      "global-require": "off"
+    },
+    "overrides": {
+      "files": [
+        "*.test.js"
+      ],
+      "rules": {
+        "es5/no-arrow-functions": "off"
+      }
+    }
+  },
+  "jest": {
+    "testEnvironment": "node",
+    "coverageThreshold": {
+      "global": {
+        "statements": 100
+      }
+    },
+    "modulePathIgnorePatterns": [
+      "<rootDir>/test/fixtures"
+    ]
+  },
+  "size-limit": [
+    {
+      "path": "index.js",
+      "limit": "7.2 KB"
+    }
+  ],
+  "scripts": {
+    "lint-staged": "lint-staged",
+    "spellcheck": "yaspeller-ci README.md CHANGELOG.md",
+    "lint": "eslint-ci *.js test/*.js benchmark/*.js",
+    "test": "jest --coverage && yarn lint && yarn spellcheck && size-limit"
+  },
+  "lint-staged": {
+    "*.md": "yaspeller-ci",
+    "*.js": "eslint"
+  },
+  "browser": {
+    "./node.js": "./browser.js",
+    "path": false
+  },
+  "pre-commit": [
+    "lint-staged"
+  ],
+  "gitHead": "0778987a0b3fc25948d1267d09b2f2322d704fb7",
+  "homepage": "https://github.com/browserslist/browserslist#readme",
+  "_npmVersion": "5.6.0",
+  "_nodeVersion": "9.11.1",
+  "dist": {
+    "integrity": "sha512-XCsMSg9V4S1VRdcp265dJ+8kBRjfuFXcavbisY7G6T9QI0H1Z24PP53vvs0WDYWqm38Mco1ILDtafcS8ZR4xiw==",
+    "shasum": "138a44d04a9af64443679191d041f28ce5b965d5",
+    "tarball": "https://registry.npmjs.org/browserslist/-/browserslist-3.2.6.tgz",
+    "fileCount": 9,
+    "unpackedSize": 57060,
+    "npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJa4S46CRA9TVsSAnZWagAAytUP/2PfpyYCu2TmZcRVhDX+\nk8uKEvkKcuBQyNXOkzb3UJSGJkpTw6QC6QJsL+xBFTuh7/6UqIHfTGBJuGjV\ndNzdWfozehkk5rr3CR3WcE5UiIBis2wSyZ7+/eVmIUGHzEfUZ+Pvhq5oOPlv\neWlTZgJcyYPS3NAE6V1kt7CKkFaKIUXqBO/67VB63Vo+F3SWSFHjDYR5X3pL\nuwiBAnXtK6bzl7LJk0KacOV10znVK8GWFDdw33BsAwpzJh8BJ/UtSzzV9iIG\nbmOzuztJbHAoPgMbr1fUN4z24w8r7pOVd4NZ9tiXUgpbeU3m5j7CNlWGaZPA\n7rdDBLLWLtJ1Tk7345Y7DeKVr6xuBJ7Vom0r+ADXz7cEh5XFaLmPAPp5LQUZ\ndG+oIp0ql/x5yh/SyOdRJP9KcsdazmYeta6cfHFzJLXngZmAp+Cn8aIbI475\nmKzU3lwVVCSBD61ZM5ruOyIEF++SWLnwhZ7MwOdRZNrk3Retthg0RTDp6fm2\nav8KMITQSz541TymzuguXZjMT+vOeudMDKNj+RNIbTgyYb564dZstFD2SMfi\n4PSxC2/A7UaOvAmUrmCsohWlSTQg9jyy3XlQs1+bSFWoXot1iauw/hturUOR\nQt/O2S2C1ETtiOWhXmyCvFK0nvDGZOFRbeliMp8bwyJZDlQKZb1VGN5Hu7ij\nZThx\r\n=W99m\r\n-----END PGP SIGNATURE-----\r\n"
+  },
+  "_hasShrinkwrap": false,
+  "stars": 23,
+  "versions": [
+    {
+      "number": "0.1.0",
+      "date": "2014-12-15T08:26:19.552Z"
+    },
+    {
+      "number": "0.1.1",
+      "date": "2015-01-11T18:25:03.306Z"
+    },
+    {
+      "number": "0.1.2",
+      "date": "2015-01-19T17:46:00.725Z"
+    },
+    {
+      "number": "0.1.3",
+      "date": "2015-01-27T23:34:03.817Z"
+    },
+    {
+      "number": "0.2.0",
+      "date": "2015-01-28T14:49:45.732Z"
+    },
+    {
+      "number": "0.3.0",
+      "date": "2015-02-21T12:27:39.771Z"
+    },
+    {
+      "number": "0.3.1",
+      "date": "2015-02-26T22:56:57.745Z"
+    },
+    {
+      "number": "0.3.2",
+      "date": "2015-04-02T15:11:53.188Z"
+    },
+    {
+      "number": "0.3.3",
+      "date": "2015-04-13T12:20:22.650Z"
+    },
+    {
+      "number": "0.4.0",
+      "date": "2015-05-02T13:38:16.754Z"
+    },
+    {
+      "number": "0.5.0",
+      "date": "2015-06-22T14:41:19.193Z"
+    },
+    {
+      "number": "1.0.0",
+      "date": "2015-08-31T16:05:39.795Z"
+    },
+    {
+      "number": "1.0.1",
+      "date": "2015-10-07T14:07:52.566Z"
+    },
+    {
+      "number": "1.1.0",
+      "date": "2016-01-06T11:28:27.530Z"
+    },
+    {
+      "number": "1.1.1",
+      "date": "2016-01-14T19:26:18.208Z"
+    },
+    {
+      "number": "1.1.2",
+      "date": "2016-02-08T07:57:44.444Z"
+    },
+    {
+      "number": "1.1.3",
+      "date": "2016-02-10T20:35:59.980Z"
+    },
+    {
+      "number": "1.2.0",
+      "date": "2016-03-16T06:32:06.867Z"
+    },
+    {
+      "number": "1.3.0",
+      "date": "2016-03-17T09:38:22.603Z"
+    },
+    {
+      "number": "1.3.1",
+      "date": "2016-04-02T17:40:38.769Z"
+    },
+    {
+      "number": "1.3.2",
+      "date": "2016-05-31T09:53:43.784Z"
+    },
+    {
+      "number": "1.3.3",
+      "date": "2016-06-20T10:59:20.200Z"
+    },
+    {
+      "number": "1.3.4",
+      "date": "2016-06-26T20:30:29.262Z"
+    },
+    {
+      "number": "1.3.5",
+      "date": "2016-07-13T15:59:16.689Z"
+    },
+    {
+      "number": "1.3.6",
+      "date": "2016-08-22T18:58:02.241Z"
+    },
+    {
+      "number": "1.4.0",
+      "date": "2016-09-26T12:56:57.898Z"
+    },
+    {
+      "number": "1.5.0",
+      "date": "2016-12-21T10:00:13.854Z"
+    },
+    {
+      "number": "1.5.1",
+      "date": "2016-12-21T14:55:15.322Z"
+    },
+    {
+      "number": "1.5.2",
+      "date": "2017-01-05T19:34:42.224Z"
+    },
+    {
+      "number": "1.6.0",
+      "date": "2017-01-21T10:40:11.038Z"
+    },
+    {
+      "number": "1.7.0",
+      "date": "2017-01-26T17:22:36.108Z"
+    },
+    {
+      "number": "1.7.1",
+      "date": "2017-01-30T12:37:59.586Z"
+    },
+    {
+      "number": "1.7.2",
+      "date": "2017-02-12T14:59:22.890Z"
+    },
+    {
+      "number": "1.7.3",
+      "date": "2017-02-15T14:47:21.795Z"
+    },
+    {
+      "number": "1.7.4",
+      "date": "2017-02-18T11:41:51.548Z"
+    },
+    {
+      "number": "1.7.5",
+      "date": "2017-02-22T11:48:05.148Z"
+    },
+    {
+      "number": "1.7.6",
+      "date": "2017-03-03T11:22:02.426Z"
+    },
+    {
+      "number": "1.7.7",
+      "date": "2017-03-21T08:13:14.090Z"
+    },
+    {
+      "number": "2.0.0",
+      "date": "2017-04-21T15:36:18.698Z"
+    },
+    {
+      "number": "2.1.0",
+      "date": "2017-04-24T15:09:54.559Z"
+    },
+    {
+      "number": "2.1.1",
+      "date": "2017-04-29T12:10:03.784Z"
+    },
+    {
+      "number": "2.1.2",
+      "date": "2017-05-06T12:44:42.371Z"
+    },
+    {
+      "number": "2.1.3",
+      "date": "2017-05-18T13:28:43.925Z"
+    },
+    {
+      "number": "2.1.4",
+      "date": "2017-05-21T17:35:00.790Z"
+    },
+    {
+      "number": "2.1.5",
+      "date": "2017-06-13T14:41:51.905Z"
+    },
+    {
+      "number": "2.2.0",
+      "date": "2017-07-17T15:50:34.522Z"
+    },
+    {
+      "number": "2.2.1",
+      "date": "2017-07-22T06:35:27.691Z"
+    },
+    {
+      "number": "2.2.2",
+      "date": "2017-07-22T16:55:46.196Z"
+    },
+    {
+      "number": "2.3.0",
+      "date": "2017-08-05T01:12:34.783Z"
+    },
+    {
+      "number": "2.3.1",
+      "date": "2017-08-09T06:13:49.780Z"
+    },
+    {
+      "number": "2.3.2",
+      "date": "2017-08-11T20:44:03.121Z"
+    },
+    {
+      "number": "2.3.3",
+      "date": "2017-08-15T00:59:41.578Z"
+    },
+    {
+      "number": "2.4.0",
+      "date": "2017-08-27T08:54:01.846Z"
+    },
+    {
+      "number": "2.5.0",
+      "date": "2017-10-06T19:39:09.545Z"
+    },
+    {
+      "number": "2.5.1",
+      "date": "2017-10-08T16:22:47.444Z"
+    },
+    {
+      "number": "2.6.0",
+      "date": "2017-10-29T19:28:58.073Z"
+    },
+    {
+      "number": "2.6.1",
+      "date": "2017-10-29T19:49:08.120Z"
+    },
+    {
+      "number": "2.7.0",
+      "date": "2017-11-02T14:12:31.395Z"
+    },
+    {
+      "number": "2.8.0",
+      "date": "2017-11-08T01:04:31.041Z"
+    },
+    {
+      "number": "2.9.0",
+      "date": "2017-11-12T10:16:54.431Z"
+    },
+    {
+      "number": "2.9.1",
+      "date": "2017-11-23T15:56:28.627Z"
+    },
+    {
+      "number": "2.10.0",
+      "date": "2017-12-06T13:53:19.412Z"
+    },
+    {
+      "number": "2.10.1",
+      "date": "2017-12-31T04:29:34.303Z"
+    },
+    {
+      "number": "2.10.2",
+      "date": "2018-01-02T02:24:00.569Z"
+    },
+    {
+      "number": "2.11.0",
+      "date": "2018-01-03T09:01:35.678Z"
+    },
+    {
+      "number": "2.11.1",
+      "date": "2018-01-11T02:27:21.779Z"
+    },
+    {
+      "number": "2.11.2",
+      "date": "2018-01-15T07:30:12.554Z"
+    },
+    {
+      "number": "2.11.3",
+      "date": "2018-01-15T11:51:30.511Z"
+    },
+    {
+      "number": "3.0.0",
+      "date": "2018-02-10T16:54:57.242Z"
+    },
+    {
+      "number": "3.1.0",
+      "date": "2018-02-14T13:17:43.352Z"
+    },
+    {
+      "number": "3.1.1",
+      "date": "2018-02-18T23:31:44.883Z"
+    },
+    {
+      "number": "3.1.2",
+      "date": "2018-03-08T15:08:19.476Z"
+    },
+    {
+      "number": "3.2.0",
+      "date": "2018-03-17T02:26:29.875Z"
+    },
+    {
+      "number": "3.2.1",
+      "date": "2018-03-22T18:29:39.852Z"
+    },
+    {
+      "number": "3.2.2",
+      "date": "2018-03-24T07:05:06.652Z"
+    },
+    {
+      "number": "3.2.3",
+      "date": "2018-03-25T01:15:26.131Z"
+    },
+    {
+      "number": "3.2.4",
+      "date": "2018-03-30T18:00:14.261Z"
+    },
+    {
+      "number": "3.2.5",
+      "date": "2018-04-23T03:15:43.375Z"
+    },
+    {
+      "number": "3.2.6",
+      "date": "2018-04-26T01:41:12.412Z"
+    }
+  ],
+  "created": "2014-12-15T08:26:19.552Z",
+  "modified": "2018-04-26T01:41:16.335Z",
+  "lastPublisher": {
+    "name": "ai",
+    "email": "andrey@sitnik.ru"
+  },
+  "owners": [
+    {
+      "email": "buryak.ivan@yandex.ru",
+      "name": "11bit"
+    },
+    {
+      "email": "andrey@sitnik.ru",
+      "name": "ai"
+    }
+  ]
+}

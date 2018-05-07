@@ -1,0 +1,130 @@
+{
+  "name": "snippeteer",
+  "version": "0.1.0",
+  "description": "It makes you more productive by searching and pasting your stored snippets.",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "pack": "build --dir",
+    "dist:all": "build --mac --linux --win --ia32",
+    "dist:mac": "build --mac",
+    "dist:win": "build --win",
+    "dist:linux": "build --linux",
+    "ship": "build --mac --linux --win --ia32 -p always",
+    "ship:mac": "build --mac -p always",
+    "ship:win": "build --win -p always",
+    "ship:linux": "build --linux -p always"
+  },
+  "repository": {
+    "user": "imRish",
+    "repo": "snippeteer",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/imRish/snippeteer/tarball/master",
+    "clone_url": "https://github.com/imRish/snippeteer",
+    "https_url": "https://github.com/imRish/snippeteer",
+    "travis_url": "https://travis-ci.org/imRish/snippeteer",
+    "zip_url": "https://github.com/imRish/snippeteer/archive/master.zip",
+    "api_url": "https://api.github.com/repos/imRish/snippeteer"
+  },
+  "keywords": [
+    "productivity",
+    "snippets",
+    "text",
+    "electron",
+    "macOS",
+    "windows",
+    "linux"
+  ],
+  "author": {
+    "name": "Rishabh Pandey",
+    "email": "rishpandey@hotmail.com"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "electron": "^1.8.4",
+    "electron-builder": "^20.8.2",
+    "eslint-config-google": "^0.9.1",
+    "eslint-config-standard": "^11.0.0",
+    "eslint-plugin-import": "^2.10.0",
+    "eslint-plugin-node": "^6.0.1",
+    "eslint-plugin-promise": "^3.7.0",
+    "eslint-plugin-standard": "^3.0.1"
+  },
+  "dependencies": {
+    "auto-launch": "^5.0.5",
+    "electron-config": "^1.0.0",
+    "electron-is-dev": "^0.3.0",
+    "electron-updater": "^2.21.8",
+    "fuzzy-search": "^2.0.1",
+    "lru-cache": "^4.1.2",
+    "nedb": "^1.8.0",
+    "npm": "^5.8.0",
+    "robotjs": "latest"
+  },
+  "build": {
+    "appId": "snippeteer",
+    "mac": {
+      "category": "public.app-category.productivity",
+      "extendInfo": {
+        "LSBackgroundOnly": 1,
+        "LSUIElement": 1
+      }
+    },
+    "dmg": {
+      "contents": [
+        {
+          "x": 110,
+          "y": 150
+        },
+        {
+          "x": 240,
+          "y": 150,
+          "type": "link",
+          "path": "/Applications"
+        }
+      ]
+    },
+    "linux": {
+      "target": [
+        "AppImage",
+        "deb"
+      ]
+    },
+    "win": {
+      "target": "NSIS",
+      "icon": "build/icon.ico"
+    }
+  },
+  "gitHead": "665106bed1440ea0b4492166b9850e43b5f86089",
+  "homepage": "https://github.com/imRish/snippeteer#readme",
+  "_npmVersion": "5.6.0",
+  "_nodeVersion": "9.4.0",
+  "dist": {
+    "integrity": "sha512-6iVNRLWxpwib7Iv5SsH1fiatrB18TmLS0BGBDl4qyZnuYK9+lvxc2hjtdMTPHBwSPrLoJLJX0hxeXy2VOLA74w==",
+    "shasum": "dbd563b6832bb9dec59388a90547ecb1f27f432f",
+    "tarball": "http://registry.npmjs.org/snippeteer/-/snippeteer-0.1.0.tgz",
+    "fileCount": 19,
+    "unpackedSize": 938479
+  },
+  "_hasShrinkwrap": false,
+  "versions": [
+    {
+      "number": "0.1.0",
+      "date": "2018-04-07T00:01:53.118Z"
+    }
+  ],
+  "created": "2018-04-07T00:01:52.967Z",
+  "modified": "2018-04-07T00:01:54.698Z",
+  "lastPublisher": {
+    "name": "iamrish",
+    "email": "rishpandey@hotmail.com"
+  },
+  "owners": [
+    {
+      "name": "iamrish",
+      "email": "rishpandey@hotmail.com"
+    }
+  ]
+}

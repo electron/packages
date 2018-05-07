@@ -1,0 +1,188 @@
+{
+  "name": "mobx-input",
+  "version": "0.0.23",
+  "description": "Form library for MobX, with observable state and validations",
+  "main": "lib/mobx-input.js",
+  "typings": "lib/mobx-input.d.ts",
+  "scripts": {
+    "test": "npm run quick-build && npm run tape",
+    "full-test": "npm run small-build && npm run build-tests && npm run use-minified && npm run tape && npm run perf",
+    "tape": "tape test/*.js | faucet",
+    "perf": "npm run small-build && time node --expose-gc test/perf/index.js",
+    "prepublish": "npm run quick-build",
+    "quick-build": "tsc",
+    "small-build": "scripts/single-file-build.sh",
+    "test-browser-electron": "npm run small-build && ( browserify test/*.js | tape-run )",
+    "test-browser-chrome": "npm run small-build && ( browserify test/*.js | tape-run --browser chrome )",
+    "test-browser-safari": "npm run small-build && ( browserify test/*.js -t [ babelify --presets [ es2015 ] ] | tape-run --browser safari )",
+    "test-browser-firefox": "npm run small-build && ( browserify test/*.js  | tape-run --browser firefox )",
+    "test-travis": "npm run small-build && tape test/*.js test/perf/index.js && tsc && istanbul cover tape test/*.js",
+    "coverage": "npm run small-build && npm run build-tests && istanbul cover tape test/*.js test/perf/index.js && cat ./coverage/lcov.info|coveralls",
+    "build-tests": "npm run build-typescript-tests && npm run build-babel-tests",
+    "build-typescript-tests": "tsc -m commonjs -t es5 --experimentalDecorators --noImplicitAny --outDir test test/typescript-tests.ts",
+    "build-babel-tests": "babel test/babel/babel-tests.js -o test/babel-tests.js",
+    "use-minified": "cp lib/mobx.min.js lib/mobx.js",
+    "lint": "tslint -c tslint.json src/*.ts src/types/*.ts src/api/*.ts src/core/*.ts src/utils/*.ts"
+  },
+  "repository": {
+    "user": "tomaash",
+    "repo": "mobx-input",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/tomaash/mobx-input/tarball/master",
+    "clone_url": "https://github.com/tomaash/mobx-input",
+    "https_url": "https://github.com/tomaash/mobx-input",
+    "travis_url": "https://travis-ci.org/tomaash/mobx-input",
+    "zip_url": "https://github.com/tomaash/mobx-input/archive/master.zip",
+    "api_url": "https://api.github.com/repos/tomaash/mobx-input"
+  },
+  "author": {
+    "name": "Tomas Holas"
+  },
+  "license": "MIT",
+  "files": [
+    "lib",
+    "LICENSE",
+    "bower.json"
+  ],
+  "homepage": "https://github.com/tomaash/mobx-input",
+  "devDependencies": {
+    "babel-cli": "^6.4.5",
+    "babel-core": "^6.4.5",
+    "babel-plugin-transform-decorators-legacy": "^1.3.4",
+    "babel-preset-es2015": "^6.3.13",
+    "babel-preset-react": "^6.3.13",
+    "babel-preset-stage-1": "^6.3.13",
+    "babelify": "^7.3.0",
+    "browserify": "^12.0.1",
+    "coveralls": "^2.11.4",
+    "faucet": "0.0.1",
+    "istanbul": "^0.3.21",
+    "lodash.intersection": "^3.2.0",
+    "tape": "^4.2.2",
+    "tape-run": "^2.1.0",
+    "typescript": "^1.8.10",
+    "typings": "^1.3.1",
+    "uglify-js": "^2.6.1"
+  },
+  "dependencies": {
+    "validator": "^5.5.0"
+  },
+  "peerDependencies": {
+    "mobx": "^2.5.1",
+    "mobx-react": "^3.5.5",
+    "react": "^15.3.0"
+  },
+  "keywords": [
+    "mobx",
+    "i18n",
+    "translations",
+    "typescript"
+  ],
+  "gitHead": "faf36cc0e613b1e1d7ee1247c8b2deeecb05c2d9",
+  "_npmVersion": "4.0.5",
+  "_nodeVersion": "7.4.0",
+  "dist": {
+    "shasum": "7791a1a1f3737f22a74ed486bc670b3c0be72195",
+    "tarball": "https://registry.npmjs.org/mobx-input/-/mobx-input-0.0.23.tgz"
+  },
+  "versions": [
+    {
+      "number": "0.0.1",
+      "date": "2016-08-16T12:18:57.423Z"
+    },
+    {
+      "number": "0.0.2",
+      "date": "2016-08-24T08:45:57.101Z"
+    },
+    {
+      "number": "0.0.3",
+      "date": "2016-09-12T11:21:06.899Z"
+    },
+    {
+      "number": "0.0.4",
+      "date": "2016-09-12T11:29:51.743Z"
+    },
+    {
+      "number": "0.0.5",
+      "date": "2016-09-12T11:33:57.537Z"
+    },
+    {
+      "number": "0.0.6",
+      "date": "2016-09-13T07:40:18.030Z"
+    },
+    {
+      "number": "0.0.7",
+      "date": "2016-09-13T11:44:05.475Z"
+    },
+    {
+      "number": "0.0.8",
+      "date": "2016-09-13T13:24:21.630Z"
+    },
+    {
+      "number": "0.0.9",
+      "date": "2016-09-14T10:18:38.731Z"
+    },
+    {
+      "number": "0.0.10",
+      "date": "2016-09-14T12:27:07.792Z"
+    },
+    {
+      "number": "0.0.11",
+      "date": "2016-09-15T13:42:24.022Z"
+    },
+    {
+      "number": "0.0.12",
+      "date": "2016-09-22T13:36:34.972Z"
+    },
+    {
+      "number": "0.0.13",
+      "date": "2016-09-23T08:51:50.738Z"
+    },
+    {
+      "number": "0.0.15",
+      "date": "2016-10-12T12:27:00.246Z"
+    },
+    {
+      "number": "0.0.16",
+      "date": "2016-10-13T08:03:12.889Z"
+    },
+    {
+      "number": "0.0.18",
+      "date": "2016-11-22T12:19:41.725Z"
+    },
+    {
+      "number": "0.0.19",
+      "date": "2016-11-24T10:54:00.158Z"
+    },
+    {
+      "number": "0.0.20",
+      "date": "2016-11-28T12:39:13.387Z"
+    },
+    {
+      "number": "0.0.21",
+      "date": "2017-03-15T10:59:25.569Z"
+    },
+    {
+      "number": "0.0.22",
+      "date": "2017-03-15T11:03:34.162Z"
+    },
+    {
+      "number": "0.0.23",
+      "date": "2017-03-15T11:07:53.544Z"
+    }
+  ],
+  "created": "2016-08-16T12:18:57.423Z",
+  "modified": "2017-03-15T11:07:53.544Z",
+  "lastPublisher": {
+    "name": "tomaash",
+    "email": "tomas.holas@gmail.com"
+  },
+  "owners": [
+    {
+      "name": "tomaash",
+      "email": "tomas.holas@gmail.com"
+    }
+  ]
+}

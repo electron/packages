@@ -1,0 +1,352 @@
+{
+  "name": "macaca-reporter",
+  "version": "1.1.2",
+  "description": "reporter for Macaca",
+  "keywords": [
+    "macaca",
+    "reporter"
+  ],
+  "main": "lib/macaca-reporter.js",
+  "repository": {
+    "user": "macacajs",
+    "repo": "macaca-reporter",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/macacajs/macaca-reporter/tarball/master",
+    "clone_url": "https://github.com/macacajs/macaca-reporter",
+    "https_url": "https://github.com/macacajs/macaca-reporter",
+    "travis_url": "https://travis-ci.org/macacajs/macaca-reporter",
+    "zip_url": "https://github.com/macacajs/macaca-reporter/archive/master.zip",
+    "api_url": "https://api.github.com/repos/macacajs/macaca-reporter"
+  },
+  "dependencies": {
+    "json-stringify-safe": "^5.0.1",
+    "macaca-utils": "^1.0.0",
+    "microtemplate": "^1.0.2",
+    "mocha": "^4.0.1",
+    "xlogger": "^1.0.6"
+  },
+  "devDependencies": {
+    "antd": "^3.0.1",
+    "babel-core": "^6.25.0",
+    "babel-eslint": "^8.0.1",
+    "babel-loader": "^7.0.0",
+    "babel-plugin-import": "^1.2.1",
+    "babel-plugin-istanbul": "^4.1.5",
+    "babel-polyfill": "^6.16.0",
+    "babel-preset-env": "^1.6.1",
+    "babel-preset-latest": "^6.24.1",
+    "babel-preset-react": "^6.24.1",
+    "cross-env": "^5.1.1",
+    "css-loader": "^0.14.5",
+    "d3-tree": "^1.0.20",
+    "eslint": "^4.5.0",
+    "eslint-plugin-mocha": "^4.11.0",
+    "eslint-plugin-react": "^7.2.1",
+    "extract-text-webpack-plugin": "^3.0.0",
+    "git-contributor": "^1.0.3",
+    "json-loader": "^0.5.7",
+    "less": "^2.7.2",
+    "less-loader": "^4.0.5",
+    "lodash": "^4.17.4",
+    "macaca-cli": "^2.0.12",
+    "macaca-electron": "^1.1.17",
+    "macaca-wd": "^1.0.18",
+    "react": "^15.6.1",
+    "react-dom": "^15.6.1",
+    "react-syntax-highlighter": "^5.6.3",
+    "socket.io": "^2.0.3",
+    "style-loader": "^0.18.2",
+    "webpack": "^3.10.0",
+    "webpack-dev-server": "^2.9.7",
+    "xutil": "^1.0.9"
+  },
+  "scripts": {
+    "dev": "webpack-dev-server",
+    "dev:test": "NODE_ENV=test npm run dev",
+    "build": "cross-env NODE_ENV=production webpack -p",
+    "lint": "eslint --ext js,jsx --fix assets test",
+    "prepublish": "npm run build",
+    "serve": "npm run dev:test &",
+    "test": "macaca run -d ./test",
+    "ci": "npm run lint && npm run serve && npm run test",
+    "contributor": "git-contributor"
+  },
+  "homepage": "https://macacajs.github.io",
+  "license": "MIT",
+  "gitHead": "bba5462f2620db3b20af134a0f8c86a84a9afc8c",
+  "_npmVersion": "5.7.1",
+  "_nodeVersion": "8.9.4",
+  "dist": {
+    "integrity": "sha512-EWwMLqJLgjBKuMhizdYKIte/Uu/GupDGBYaDThtPKFmQx83iGTXITSJ2d+znFbTU7qqqSFcdqdjTI5F/YTYhqg==",
+    "shasum": "58627fda97e0818361dba207d28b3c883f9cc7d5",
+    "tarball": "https://registry.npmjs.org/macaca-reporter/-/macaca-reporter-1.1.2.tgz",
+    "fileCount": 31,
+    "unpackedSize": 1940592,
+    "npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJa59JVCRA9TVsSAnZWagAAlGwP/1xpQ8oU63n4ta08VmwA\nBvYBcAu/SxrRwuyH0DeNasFeGcwtvkqHSdHkd0mug/sVRrutBc6zhyP6OBhB\n3S95eb8+2fy/DNNH32nAgNu7omjUO80I+IOsydwyTr1v2Ce6fBmYGzRgRrdE\no+EfRhvZt+PEJRQljed4hbvhUSVyC10j1tlG8raKb44j9T8/DMlkOzfybBD6\n1YDNMucDgYLtVSuYGUAcCZmob7A69hVwtITQUvuBozc4/ID/7Sx4XJbTAjqi\nSCuFSJow7GJxCOdHxBIqTYPJcBbmkWM2XTllU7F60euVOlbfBo32yoDO0TIE\nFU4V3EQQt2qTnzSB1/1a5ncwvNjliTg2CgWxtd1jcwRRcU+FWHWuFe8kAVav\nIsU+9N+YPb74dvyqZvC+uPpDelgBKmPFXV+LT8MJd/e+/xGk9tfRjOq3Mz1n\n7bAuZMvPsMdefBWKm2kiAJHRfuchzlFAxx+5GMRo3F0tSUbng0KInoq5KtMT\nNVNZkxB89cHN8CW7GodKBGJE6iTMHa3DJSZCUHWGFcmrBFmUqOYB53DMaaJc\nS7MJ5/iG+cEO3sye9+utrC/Pr15g4YdWAGnMXBFd+UdBIy8Fs3Idtbo8EeAA\neRxuVhafZZzrQUP1Mt9w6upXLkOXgH7tBhc/JXizpCJmc7cTnR4xjaXeQajJ\nyO3O\r\n=tN8g\r\n-----END PGP SIGNATURE-----\r\n"
+  },
+  "_hasShrinkwrap": false,
+  "versions": [
+    {
+      "number": "1.0.0",
+      "date": "2017-08-23T15:31:58.799Z"
+    },
+    {
+      "number": "1.0.1",
+      "date": "2017-08-23T15:35:26.639Z"
+    },
+    {
+      "number": "1.0.2",
+      "date": "2017-08-23T16:01:30.962Z"
+    },
+    {
+      "number": "1.0.3",
+      "date": "2017-08-24T02:42:36.255Z"
+    },
+    {
+      "number": "1.0.4",
+      "date": "2017-08-24T02:58:16.929Z"
+    },
+    {
+      "number": "1.0.5",
+      "date": "2017-08-24T09:51:49.450Z"
+    },
+    {
+      "number": "1.0.6",
+      "date": "2017-08-24T16:15:34.686Z"
+    },
+    {
+      "number": "1.0.7",
+      "date": "2017-08-24T16:22:30.162Z"
+    },
+    {
+      "number": "1.0.8",
+      "date": "2017-08-25T02:48:47.353Z"
+    },
+    {
+      "number": "1.0.9",
+      "date": "2017-08-25T09:22:28.763Z"
+    },
+    {
+      "number": "1.0.10",
+      "date": "2017-08-26T09:52:17.259Z"
+    },
+    {
+      "number": "1.0.11",
+      "date": "2017-08-27T06:55:37.626Z"
+    },
+    {
+      "number": "1.0.12",
+      "date": "2017-08-27T09:27:01.938Z"
+    },
+    {
+      "number": "1.0.13",
+      "date": "2017-08-28T02:10:03.454Z"
+    },
+    {
+      "number": "1.0.14",
+      "date": "2017-08-28T03:48:35.335Z"
+    },
+    {
+      "number": "1.0.15",
+      "date": "2017-08-28T04:52:56.373Z"
+    },
+    {
+      "number": "1.0.16",
+      "date": "2017-10-31T09:40:21.988Z"
+    },
+    {
+      "number": "1.0.17",
+      "date": "2017-11-01T07:00:21.412Z"
+    },
+    {
+      "number": "1.0.18",
+      "date": "2017-11-05T03:21:57.401Z"
+    },
+    {
+      "number": "1.0.20",
+      "date": "2017-11-14T15:34:25.627Z"
+    },
+    {
+      "number": "1.0.21",
+      "date": "2017-11-26T13:25:00.717Z"
+    },
+    {
+      "number": "1.0.22",
+      "date": "2017-11-27T12:09:42.168Z"
+    },
+    {
+      "number": "1.0.23",
+      "date": "2017-11-27T13:32:38.801Z"
+    },
+    {
+      "number": "1.0.24",
+      "date": "2017-11-27T13:35:12.588Z"
+    },
+    {
+      "number": "1.0.25",
+      "date": "2017-11-27T13:43:23.960Z"
+    },
+    {
+      "number": "1.0.27",
+      "date": "2017-12-08T07:32:33.718Z"
+    },
+    {
+      "number": "1.0.28",
+      "date": "2017-12-08T10:53:52.204Z"
+    },
+    {
+      "number": "1.0.29",
+      "date": "2017-12-08T11:24:10.716Z"
+    },
+    {
+      "number": "1.0.30",
+      "date": "2017-12-08T11:53:09.917Z"
+    },
+    {
+      "number": "1.0.31",
+      "date": "2017-12-08T12:11:24.800Z"
+    },
+    {
+      "number": "1.0.32",
+      "date": "2017-12-08T12:21:39.498Z"
+    },
+    {
+      "number": "1.0.33",
+      "date": "2017-12-10T04:50:24.439Z"
+    },
+    {
+      "number": "1.0.34",
+      "date": "2017-12-10T05:00:35.048Z"
+    },
+    {
+      "number": "1.0.35",
+      "date": "2017-12-10T05:11:05.790Z"
+    },
+    {
+      "number": "1.0.36",
+      "date": "2017-12-11T11:27:08.890Z"
+    },
+    {
+      "number": "1.0.37",
+      "date": "2017-12-17T05:30:43.664Z"
+    },
+    {
+      "number": "1.0.38",
+      "date": "2017-12-18T14:10:56.830Z"
+    },
+    {
+      "number": "1.0.39",
+      "date": "2017-12-19T04:36:35.132Z"
+    },
+    {
+      "number": "1.0.40",
+      "date": "2017-12-20T07:58:43.051Z"
+    },
+    {
+      "number": "1.0.41",
+      "date": "2017-12-20T08:57:44.146Z"
+    },
+    {
+      "number": "1.0.42",
+      "date": "2017-12-20T11:55:36.742Z"
+    },
+    {
+      "number": "1.0.43",
+      "date": "2017-12-20T14:13:40.467Z"
+    },
+    {
+      "number": "1.0.46",
+      "date": "2017-12-20T16:21:53.201Z"
+    },
+    {
+      "number": "1.0.47",
+      "date": "2017-12-21T05:40:24.025Z"
+    },
+    {
+      "number": "1.0.48",
+      "date": "2017-12-26T02:07:47.730Z"
+    },
+    {
+      "number": "1.0.49",
+      "date": "2018-01-06T06:20:50.628Z"
+    },
+    {
+      "number": "1.0.50",
+      "date": "2018-01-06T07:04:10.635Z"
+    },
+    {
+      "number": "1.0.51",
+      "date": "2018-01-06T07:47:50.327Z"
+    },
+    {
+      "number": "1.0.52",
+      "date": "2018-02-06T04:01:57.752Z"
+    },
+    {
+      "number": "1.0.53",
+      "date": "2018-03-11T12:28:20.084Z"
+    },
+    {
+      "number": "1.0.54",
+      "date": "2018-03-11T12:34:48.777Z"
+    },
+    {
+      "number": "1.0.55",
+      "date": "2018-03-13T03:46:52.165Z"
+    },
+    {
+      "number": "1.0.56",
+      "date": "2018-03-13T03:48:12.790Z"
+    },
+    {
+      "number": "1.0.57",
+      "date": "2018-03-13T06:53:00.473Z"
+    },
+    {
+      "number": "1.0.58",
+      "date": "2018-03-13T09:35:47.494Z"
+    },
+    {
+      "number": "1.0.59",
+      "date": "2018-03-15T07:11:05.724Z"
+    },
+    {
+      "number": "1.1.0",
+      "date": "2018-04-08T12:13:29.720Z"
+    },
+    {
+      "number": "1.1.1",
+      "date": "2018-04-30T17:07:33.677Z"
+    },
+    {
+      "number": "1.1.2",
+      "date": "2018-05-01T02:34:59.788Z"
+    }
+  ],
+  "created": "2017-08-23T15:31:58.799Z",
+  "modified": "2018-05-01T02:35:03.365Z",
+  "lastPublisher": {
+    "name": "xudafeng",
+    "email": "xudafeng@126.com"
+  },
+  "owners": [
+    {
+      "email": "362732414@qq.com",
+      "name": "chun_chan"
+    },
+    {
+      "email": "xudafeng@126.com",
+      "name": "xudafeng"
+    },
+    {
+      "email": "495162889@qq.com",
+      "name": "zhuyali"
+    },
+    {
+      "email": "zivyangll@gmail.com",
+      "name": "zivyangll"
+    }
+  ]
+}

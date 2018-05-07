@@ -1,0 +1,83 @@
+{
+  "name": "etch-hooks",
+  "version": "0.1.0",
+  "description": "Hook into the Etch component lifecycle",
+  "main": "dist/index.js",
+  "scripts": {
+    "test": "npm run standard && node_modules/.bin/electron-mocha --renderer --recursive ./test/helpers/register-babel  test",
+    "tdd": "npm run standard && node_modules/.bin/electron-mocha --renderer --interactive --recursive ./test/helpers/register-babel  test",
+    "prepublish": "npm run standard && npm run clean && npm run build",
+    "standard": "standard --recursive src test",
+    "build": "babel src --out-dir dist",
+    "clean": "rm -rf dist"
+  },
+  "repository": {
+    "user": "BinaryMuse",
+    "repo": "etch-hooks",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/BinaryMuse/etch-hooks/tarball/master",
+    "clone_url": "https://github.com/BinaryMuse/etch-hooks",
+    "https_url": "https://github.com/BinaryMuse/etch-hooks",
+    "travis_url": "https://travis-ci.org/BinaryMuse/etch-hooks",
+    "zip_url": "https://github.com/BinaryMuse/etch-hooks/archive/master.zip",
+    "api_url": "https://api.github.com/repos/BinaryMuse/etch-hooks"
+  },
+  "keywords": [
+    "virtual-dom dom view element custom-elements dom-diff atom electron hooks etch"
+  ],
+  "author": {
+    "name": "Michelle Tilley",
+    "email": "michelle@michelletilley.net"
+  },
+  "license": "MIT",
+  "homepage": "https://github.com/BinaryMuse/etch-hooks",
+  "devDependencies": {
+    "babel": "^5.0.0",
+    "babel-eslint": "^4.0.5",
+    "chai": "^2.0.0",
+    "electron-mocha": "git://github.com/nathansobo/electron-mocha.git#interactive-option",
+    "electron-prebuilt": "^0.30.1",
+    "etch": "^0.3.0",
+    "mocha": "^2.1.0",
+    "standard": "^4.5.4"
+  },
+  "peerDependencies": {
+    "etch": "*"
+  },
+  "standard": {
+    "parser": "babel-eslint",
+    "global": [
+      "describe",
+      "it",
+      "expect"
+    ]
+  },
+  "gitHead": "1fd537bdd20af88a9f5dc94e32dae686a78981fc",
+  "_npmVersion": "3.6.0",
+  "_nodeVersion": "5.6.0",
+  "dist": {
+    "shasum": "6e91911f9674c23425c435ebf39b4d72254001e2",
+    "tarball": "http://registry.npmjs.org/etch-hooks/-/etch-hooks-0.1.0.tgz"
+  },
+  "deprecated": "deprecated in favor of built-in Etch hooks starting in Etch 0.6.0",
+  "versions": [
+    {
+      "number": "0.1.0",
+      "date": "2016-04-12T05:13:17.758Z"
+    }
+  ],
+  "created": "2016-04-12T05:13:17.758Z",
+  "modified": "2016-04-25T19:05:01.416Z",
+  "lastPublisher": {
+    "name": "binarymuse",
+    "email": "michelle@michelletilley.net"
+  },
+  "owners": [
+    {
+      "name": "binarymuse",
+      "email": "michelle@michelletilley.net"
+    }
+  ]
+}

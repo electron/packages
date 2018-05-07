@@ -1,0 +1,330 @@
+{
+  "name": "netbeast-cli",
+  "description": "Netbeast OS dashboard, IoT apps manager",
+  "version": "0.5.9",
+  "preferGlobal": "true",
+  "main": "electron.js",
+  "dependencies": {
+    "aedes": "^0.17.1",
+    "bluebird": "^3.2.2",
+    "body-parser": "^1.12.2",
+    "chalk": "^1.1.1",
+    "cli-spinner": "^0.2.1",
+    "commander": "^2.7.1",
+    "cookie-parser": "^1.4.1",
+    "dotenv": "^2.0.0",
+    "express": "^4.12.3",
+    "freeport": "^1.0.5",
+    "fs-extra": "^0.26.0",
+    "fstream": "^1.0.8",
+    "fstream-ignore": "^1.0.3",
+    "getmac": "^1.0.7",
+    "gift": "^0.6.1",
+    "http-proxy": "^1.13.2",
+    "inquirer": "^1.0.2",
+    "lodash": "^4.12.0",
+    "mixpanel": "^0.4.0",
+    "morgan": "^1.5.2",
+    "mqtt": "^1.6.3",
+    "multer": "^1.1.0",
+    "netbeast": "^1.0.5",
+    "serve-favicon": "^2.2.0",
+    "sqlite3": "^3.1.3",
+    "superagent": "^1.7.2",
+    "superagent-bluebird-promise": "^3.0.0",
+    "websocket-stream": "^3.1.0"
+  },
+  "bin": {
+    "beast": "bin/cli.js",
+    "netbeast": "bin/cli.js"
+  },
+  "devDependencies": {
+    "babel-preset-es2015": "^6.3.13",
+    "babel-preset-react": "^6.3.13",
+    "babelify": "^7.2.0",
+    "browserify": "^13.0.1",
+    "chai": "^3.2.0",
+    "chart.js": ">= 1.1.1 & < 2.0",
+    "envify": "^3.4.0",
+    "electron-prebuilt": "^0.37.2",
+    "enzyme": "^2.3.0",
+    "gulp": "^3.9.0",
+    "gulp-autoprefixer": "^3.1.0",
+    "gulp-bg": "^0.0.8",
+    "gulp-cssnano": "^2.1.0",
+    "gulp-istanbul": "^0.10.3",
+    "gulp-livereload": "^3.8.1",
+    "gulp-load-plugins": "^1.1.0",
+    "gulp-mocha": "^2.2.0",
+    "gulp-nodemon": "^2.0.3",
+    "gulp-plumber": "^1.0.1",
+    "gulp-sass": "^2.0.1",
+    "gulp-sourcemaps": "^1.5.2",
+    "gulp-util": "^3.0.4",
+    "gulp-wait": "^0.0.2",
+    "istanbul": "^0.4.0",
+    "jquery": "^2.2.3",
+    "livereload": "^0.4.1",
+    "mocha": "^2.3.3",
+    "pre-commit": "^1.1.3",
+    "react": "^0.14.0",
+    "react-avatar": "^0.7.2",
+    "react-bootstrap": "^0.29.4",
+    "react-chartjs": "^0.7.3",
+    "react-color": "^2.0.0",
+    "react-dom": "^0.14.0",
+    "react-dropzone": "^3.3.2",
+    "react-router": "^2.0.0-rc5",
+    "react-typist": "^0.3.0",
+    "vinyl-buffer": "^1.0.0",
+    "vinyl-source-stream": "^1.1.0",
+    "watchify": "^3.6.1"
+  },
+  "repository": {
+    "user": "netbeast",
+    "repo": "dashboard",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/netbeast/dashboard/tarball/master",
+    "clone_url": "https://github.com/netbeast/dashboard",
+    "https_url": "https://github.com/netbeast/dashboard",
+    "travis_url": "https://travis-ci.org/netbeast/dashboard",
+    "zip_url": "https://github.com/netbeast/dashboard/archive/master.zip",
+    "api_url": "https://api.github.com/repos/netbeast/dashboard"
+  },
+  "keywords": [
+    "netbeast",
+    "beast",
+    "iot",
+    "node",
+    "dashboard",
+    "smart",
+    "router"
+  ],
+  "scripts": {
+    "test": "gulp test",
+    "coverage": "gulp coverage",
+    "build": "gulp build",
+    "dev": "gulp",
+    "start": "node index.js",
+    "electron": "electron electron.js",
+    "clean": "rm -r ./test/coverage; rm .database.sqlite",
+    "prepublish": "npm run build",
+    "release:major": "npm version major && npm publish && git push --follow-tags",
+    "release:minor": "npm version minor && npm publish && git push --follow-tags",
+    "release:patch": "npm version patch && npm publish && git push --follow-tags"
+  },
+  "engines": {
+    "node": ">=0.12"
+  },
+  "author": {
+    "name": "staff@netbeast"
+  },
+  "license": "AGPL-3.0",
+  "contributors": [
+    {
+      "name": "Jesus Rivera",
+      "email": "https://github.com/jsdario"
+    },
+    {
+      "name": "Pablo Pizarro",
+      "email": "https://github.com/pablopi"
+    },
+    {
+      "name": "Luis Pinto",
+      "email": "https://github.com/luisfpinto"
+    },
+    {
+      "name": "Jon Senra",
+      "email": "https://github.com/joncy"
+    },
+    {
+      "name": "Fran Ríos",
+      "email": "https://github.com/franrios"
+    },
+    {
+      "name": "Cayetano Rodríguez",
+      "email": "https://github.com/cayrodmed1"
+    },
+    {
+      "name": "Lourdes Liró",
+      "email": "https://github.com/loulirsal"
+    },
+    {
+      "name": "Ismael Martin",
+      "email": "https://github.com/Htmael"
+    }
+  ],
+  "gitHead": "61673dec05bc51cdb486b14d33c73a11864a507b",
+  "homepage": "https://github.com/netbeast/dashboard#readme",
+  "_npmVersion": "3.10.2",
+  "_nodeVersion": "5.8.0",
+  "dist": {
+    "shasum": "a6427938f736c4897862391b13e1b9c7609c8d73",
+    "tarball": "http://registry.npmjs.org/netbeast-cli/-/netbeast-cli-0.5.9.tgz"
+  },
+  "stars": 6,
+  "versions": [
+    {
+      "number": "1.2.4",
+      "date": "2015-11-13T16:08:51.086Z"
+    },
+    {
+      "number": "1.2.5",
+      "date": "2015-11-13T16:09:10.851Z"
+    },
+    {
+      "number": "1.2.6",
+      "date": "2015-11-26T09:39:04.595Z"
+    },
+    {
+      "number": "1.2.7",
+      "date": "2015-11-27T20:35:39.197Z"
+    },
+    {
+      "number": "0.2.4",
+      "date": "2016-01-28T14:43:30.458Z"
+    },
+    {
+      "number": "0.2.5",
+      "date": "2016-02-19T16:38:53.380Z"
+    },
+    {
+      "number": "0.2.6",
+      "date": "2016-04-01T12:54:26.280Z"
+    },
+    {
+      "number": "0.2.7",
+      "date": "2016-04-12T08:58:18.766Z"
+    },
+    {
+      "number": "0.2.8",
+      "date": "2016-04-12T09:06:09.308Z"
+    },
+    {
+      "number": "0.2.81",
+      "date": "2016-04-12T09:13:42.544Z"
+    },
+    {
+      "number": "0.2.85",
+      "date": "2016-04-12T09:16:39.811Z"
+    },
+    {
+      "number": "0.2.86",
+      "date": "2016-04-12T09:20:31.009Z"
+    },
+    {
+      "number": "0.2.87",
+      "date": "2016-04-12T09:38:30.130Z"
+    },
+    {
+      "number": "0.2.9",
+      "date": "2016-04-12T12:46:30.343Z"
+    },
+    {
+      "number": "0.3.0",
+      "date": "2016-04-21T08:53:11.767Z"
+    },
+    {
+      "number": "0.3.2",
+      "date": "2016-05-11T11:01:23.738Z"
+    },
+    {
+      "number": "0.3.3",
+      "date": "2016-05-11T11:07:51.802Z"
+    },
+    {
+      "number": "0.3.4",
+      "date": "2016-05-11T11:43:37.810Z"
+    },
+    {
+      "number": "0.4.2",
+      "date": "2016-05-11T14:09:13.932Z"
+    },
+    {
+      "number": "0.4.3",
+      "date": "2016-05-11T15:19:52.022Z"
+    },
+    {
+      "number": "0.5.0",
+      "date": "2016-05-11T15:21:57.490Z"
+    },
+    {
+      "number": "0.5.1",
+      "date": "2016-05-12T15:31:33.115Z"
+    },
+    {
+      "number": "0.5.2",
+      "date": "2016-05-18T14:05:58.086Z"
+    },
+    {
+      "number": "0.5.3",
+      "date": "2016-06-02T08:20:34.972Z"
+    },
+    {
+      "number": "0.5.4",
+      "date": "2016-06-02T08:30:24.278Z"
+    },
+    {
+      "number": "0.5.6",
+      "date": "2016-06-02T09:14:45.252Z"
+    },
+    {
+      "number": "0.5.7",
+      "date": "2016-06-02T09:16:43.242Z"
+    },
+    {
+      "number": "0.5.8",
+      "date": "2016-06-02T12:00:16.126Z"
+    },
+    {
+      "number": "0.5.9",
+      "date": "2016-07-11T23:31:18.986Z"
+    }
+  ],
+  "created": "2015-11-13T16:08:51.086Z",
+  "modified": "2016-12-05T15:04:27.248Z",
+  "lastPublisher": {
+    "name": "luisfpinto",
+    "email": "luisfpintos@gmail.com"
+  },
+  "owners": [
+    {
+      "name": "cayrodmed1",
+      "email": "cayetanorodriguez94@gmail.com"
+    },
+    {
+      "name": "fcojriosbello",
+      "email": "fcojriosbello@gmail.com"
+    },
+    {
+      "name": "ismael",
+      "email": "htmael@gmail.com"
+    },
+    {
+      "name": "jesusdario",
+      "email": "jesusdriru@gmail.com"
+    },
+    {
+      "name": "joncy",
+      "email": "jon@netbeast.co"
+    },
+    {
+      "name": "loulirsal",
+      "email": "lirosalinas@gmail.com"
+    },
+    {
+      "name": "luisfpinto",
+      "email": "luisfpintos@gmail.com"
+    },
+    {
+      "name": "netbeast",
+      "email": "staff@netbeast.co"
+    },
+    {
+      "name": "pablo.pi",
+      "email": "pablo@netbeast.co"
+    }
+  ]
+}

@@ -1,0 +1,157 @@
+{
+  "name": "megadata",
+  "version": "1.1.2",
+  "description": "Smart messaging for games",
+  "main": "./lib/index.js",
+  "types": "./lib/index.d.ts",
+  "engines": {
+    "node": ">=8.0.0"
+  },
+  "scripts": {
+    "--------------------- HOOKS ----------------------": "",
+    "postinstall": "node -e \"process.exit(require('is-there')('./lib') ? 0 : 1)\" || npm run build",
+    "prepublish": "run-s test build",
+    "--------------------- BUILD TASKS ----------------------": "",
+    "build": "tsc --project ./src",
+    "--------------------- BENCHMARKS ----------------------": "",
+    "benchmark:node": "          electron ./benchmarks/node",
+    "benchmark:browser": "       electron ./benchmarks/browser",
+    "benchmark:node:binary": "   electron ./benchmarks/node Binary",
+    "benchmark:browser:binary": "electron ./benchmarks/browser Binary",
+    "benchmark:node:json": "     electron ./benchmarks/node Json",
+    "benchmark:browser:json": "  electron ./benchmarks/browser Json",
+    "--------------------- EXAMPLE -------------------------": "",
+    "example:server": "cd example/server; ts-node .",
+    "example:client": "cd example/client; webpack-dev-server",
+    "--------------------- TESTS ----------------------": "",
+    "lint": " echo 'Check TypeScript code for style issues' &&      tslint --type-check -e \"node_modules/**/*.ts\" --format codeFrame --project",
+    "test:lint": "run-s test:lint:*",
+    "test:lint:src": "npm run lint src",
+    "test:lint:test": "npm run lint test",
+    "test:lint:benchmarks": "npm run lint benchmarks",
+    "test:lint:example-sshared": "npm run lint example/shared",
+    "test:lint:example-client": "npm run lint example/client",
+    "test:lint:example-server": "npm run lint example/server",
+    "test:cpd": "  echo 'Check the codebase for copy-pasted code' &&     jscpd --config .cpd.yaml",
+    "test:unit": " echo 'Run unit tests' &&                              mocha -r ts-node/register -r tsconfig-paths/register -r ./src/register.ts -R mocha-reporter ./test/index.ts",
+    "test:coverage": " echo 'Run unit tests and check coverage level' && nyc --check-coverage --reporter=lcovonly --reporter=text --reporter=html npm run test:unit",
+    "test": "run-s test:*",
+    "-------------------- REPORTING --------------------------": "",
+    "report:coverage": "npm run test:coverage && cat ./coverage-report/lcov.info | coveralls"
+  },
+  "nyc": {
+    "lines": 100,
+    "statements": 100,
+    "functions": 100,
+    "branches": 100,
+    "include": [
+      "src/*.ts",
+      "src/**/*.ts"
+    ],
+    "exclude": [
+      "typings"
+    ],
+    "extension": [
+      ".ts"
+    ],
+    "require": [
+      "ts-node/register"
+    ],
+    "cache": "true",
+    "instrument": "true",
+    "report-dir": "./coverage-report"
+  },
+  "repository": {
+    "user": "Wizcorp",
+    "repo": "megadata",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/Wizcorp/megadata/tarball/master",
+    "clone_url": "https://github.com/Wizcorp/megadata",
+    "https_url": "https://github.com/Wizcorp/megadata",
+    "travis_url": "https://travis-ci.org/Wizcorp/megadata",
+    "zip_url": "https://github.com/Wizcorp/megadata/archive/master.zip",
+    "api_url": "https://api.github.com/repos/Wizcorp/megadata"
+  },
+  "keywords": [
+    "game"
+  ],
+  "author": {
+    "name": "Marc Trudel",
+    "email": "mtrudel@wizcorp.jp"
+  },
+  "license": "MIT",
+  "homepage": "https://github.com/Wizcorp/megadata#readme",
+  "devDependencies": {
+    "@types/mocha": "^5.0.0",
+    "@types/node": "^9.6.2",
+    "@types/uws": "^0.13.2",
+    "babel-loader": "^7.1.4",
+    "copy-webpack-plugin": "^4.5.1",
+    "coveralls": "^3.0.0",
+    "electron": "^1.8.4",
+    "git-message": "^2.0.2",
+    "html-webpack-plugin": "^3.2.0",
+    "jscpd": "^0.6.17",
+    "mocha": "^5.0.5",
+    "mocha-reporter": "^0.1.1",
+    "npm-run-all": "^4.1.2",
+    "nyc": "^11.6.0",
+    "ts-loader": "^4.1.0",
+    "ts-node": "^5.0.1",
+    "tsconfig-paths": "^3.2.0",
+    "tsconfig-paths-webpack-plugin": "^3.0.3",
+    "tslint": "^5.9.1",
+    "typescript": "^2.8.1",
+    "uws": "^9.14.0",
+    "webpack": "^4.5.0",
+    "webpack-cli": "^2.0.14",
+    "webpack-dev-server": "^3.1.1"
+  },
+  "dependencies": {
+    "eventemitter2": "^5.0.1",
+    "is-there": "^4.4.3"
+  },
+  "gitHead": "253c91b3f529cae14346ab954201fad6b68090bf",
+  "_npmVersion": "5.5.1",
+  "_nodeVersion": "8.9.0",
+  "dist": {
+    "integrity": "sha512-a1IRrqBK5vstFwurPQ89i2i7183F8pUolnSzamkahbCsQgkv1Rk1xjE02xNogYx/ZllM3eF6cY+KxEc5D2kQrw==",
+    "shasum": "83b94eea6adb0dde281a2a336eb6d5c82c3a616a",
+    "tarball": "http://registry.npmjs.org/megadata/-/megadata-1.1.2.tgz",
+    "fileCount": 34,
+    "unpackedSize": 333171
+  },
+  "_hasShrinkwrap": false,
+  "versions": [
+    {
+      "number": "1.0.0",
+      "date": "2018-03-23T12:41:06.601Z"
+    },
+    {
+      "number": "1.1.0",
+      "date": "2018-03-28T04:35:49.032Z"
+    },
+    {
+      "number": "1.1.1",
+      "date": "2018-04-02T02:06:19.095Z"
+    },
+    {
+      "number": "1.1.2",
+      "date": "2018-04-11T09:50:31.147Z"
+    }
+  ],
+  "created": "2018-03-23T12:41:06.555Z",
+  "modified": "2018-04-11T09:50:31.801Z",
+  "lastPublisher": {
+    "name": "stelcheck",
+    "email": "mtrudel@wizcorp.jp"
+  },
+  "owners": [
+    {
+      "name": "stelcheck",
+      "email": "mtrudel@wizcorp.jp"
+    }
+  ]
+}

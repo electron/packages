@@ -1,0 +1,99 @@
+{
+  "main": "./lib/keytar.js",
+  "name": "keytar-prebuild",
+  "description": "Bindings to native Mac/Linux/Windows password APIs",
+  "version": "4.1.1",
+  "license": "MIT",
+  "repository": {
+    "user": "electron-userland",
+    "repo": "electron-builder-binaries",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/electron-userland/electron-builder-binaries/tarball/master",
+    "clone_url": "https://github.com/electron-userland/electron-builder-binaries",
+    "https_url": "https://github.com/electron-userland/electron-builder-binaries",
+    "travis_url": "https://travis-ci.org/electron-userland/electron-builder-binaries",
+    "zip_url": "https://github.com/electron-userland/electron-builder-binaries/archive/master.zip",
+    "api_url": "https://api.github.com/repos/electron-userland/electron-builder-binaries"
+  },
+  "homepage": "http://atom.github.io/node-keytar",
+  "keywords": [
+    "keychain",
+    "password",
+    "passwords",
+    "credential",
+    "credentials",
+    "vault",
+    "credential vault"
+  ],
+  "files": [
+    "lib",
+    "src",
+    "binding.gyp"
+  ],
+  "scripts": {
+    "install": "prebuild-install || node-gyp rebuild",
+    "lint": "npm run cpplint",
+    "cpplint": "node-cpplint --filters legal-copyright,build-include,build-namespaces src/*.cc",
+    "test": "npm run lint && npm build . && mocha --compilers js:babel-core/register spec/",
+    "prebuild-node": "prebuild -t 6.11.0 -t 7.9.0 -t 8.9.0 -t 9.4.0 --strip",
+    "prebuild-node-ia32": "prebuild -t 6.11.0 -t 7.9.0 -t 8.9.0 -t 9.4.0 -a ia32 --strip",
+    "prebuild-electron": "prebuild -t 1.6.11 -t 1.7.10 -t 1.8.0 -r electron --strip",
+    "prebuild-electron-ia32": "prebuild -t 1.6.11 -t 1.7.10 -t 1.8.0 -r electron -a ia32 --strip",
+    "upload": "node ./script/upload.js"
+  },
+  "devDependencies": {
+    "babel-core": "^6.26.0",
+    "babel-plugin-transform-async-to-generator": "^6.24.1",
+    "chai": "^4.1.2",
+    "mocha": "^3.5.0",
+    "node-cpplint": "~0.4.0",
+    "node-gyp": "^3.6.2",
+    "prebuild": "^7.4.0"
+  },
+  "dependencies": {
+    "nan": "2.8.0",
+    "prebuild-install": "^2.5.0"
+  },
+  "gitHead": "6ff1d38eb26c5db002476c131011bbd7a6a46b8c",
+  "_npmVersion": "5.6.0",
+  "_nodeVersion": "9.4.0",
+  "dist": {
+    "integrity": "sha512-ae+mUNXRsZZ9DiSaGC9AS1qbtkntxW8gCgVKo/fVO5nbvPnP6HQC+hbO5TqPKWJEA/5L9wtADFfZbOLtYv++aQ==",
+    "shasum": "f31cd3b2e5de743303f8c2f607f29f0117981295",
+    "tarball": "https://registry.npmjs.org/keytar-prebuild/-/keytar-prebuild-4.1.1.tgz"
+  },
+  "deprecated": "keytar-prebuild is no longer maintained. Use `keytar` instead.",
+  "stars": 1,
+  "versions": [
+    {
+      "number": "4.0.3",
+      "date": "2017-07-03T11:31:11.276Z"
+    },
+    {
+      "number": "4.0.4",
+      "date": "2017-09-21T17:01:29.619Z"
+    },
+    {
+      "number": "4.1.0",
+      "date": "2018-01-31T21:14:55.538Z"
+    },
+    {
+      "number": "4.1.1",
+      "date": "2018-01-31T21:21:58.187Z"
+    }
+  ],
+  "created": "2017-07-03T11:31:11.276Z",
+  "modified": "2018-04-17T08:47:39.769Z",
+  "lastPublisher": {
+    "name": "develar",
+    "email": "develar@gmail.com"
+  },
+  "owners": [
+    {
+      "name": "develar",
+      "email": "develar@gmail.com"
+    }
+  ]
+}

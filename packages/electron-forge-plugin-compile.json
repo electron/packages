@@ -1,0 +1,92 @@
+{
+  "name": "electron-forge-plugin-compile",
+  "version": "0.0.1",
+  "description": "Electron Compile plugin for forge",
+  "main": "dist/index.js",
+  "author": {
+    "name": "Samuel Attard"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "babel-eslint": "^8.2.1",
+    "babel-plugin-syntax-async-functions": "^6.13.0",
+    "babel-plugin-transform-async-to-module-method": "^6.16.0",
+    "babel-plugin-transform-runtime": "^6.15.0",
+    "babel-preset-env": "^1.6.0",
+    "eslint": "^4.17.0",
+    "eslint-config-airbnb-base": "^12.1.0",
+    "eslint-plugin-import": "^2.8.0",
+    "gulp": "^3.9.1",
+    "gulp-babel": "^6.0.1"
+  },
+  "scripts": {
+    "build": "gulp build"
+  },
+  "engines": {
+    "node": ">= 6.0"
+  },
+  "babel": {
+    "sourceMaps": "inline",
+    "env": {
+      "test": {
+        "plugins": [
+          "istanbul"
+        ]
+      }
+    },
+    "presets": [
+      [
+        "env",
+        {
+          "targets": {
+            "node": "6"
+          }
+        }
+      ]
+    ],
+    "plugins": [
+      "transform-runtime",
+      "syntax-async-functions",
+      [
+        "transform-async-to-module-method",
+        {
+          "module": "bluebird",
+          "method": "coroutine"
+        }
+      ]
+    ]
+  },
+  "dependencies": {
+    "fs-extra": "^5.0.0",
+    "global": "^4.3.2",
+    "npm-check-updates": "^2.14.0"
+  },
+  "gitHead": "97233c8e40b19e7006ec26341e1b8234a2a31f6c",
+  "_npmVersion": "3.10.8",
+  "_nodeVersion": "6.9.1",
+  "dist": {
+    "shasum": "bde3f89c0791daf8cf8cd134cf4b6d5304d1243e",
+    "tarball": "http://registry.npmjs.org/electron-forge-plugin-compile/-/electron-forge-plugin-compile-0.0.1.tgz",
+    "fileCount": 8,
+    "unpackedSize": 201220
+  },
+  "_hasShrinkwrap": false,
+  "versions": [
+    {
+      "number": "0.0.1",
+      "date": "2018-02-14T13:23:35.952Z"
+    }
+  ],
+  "created": "2018-02-14T13:23:35.895Z",
+  "modified": "2018-02-14T13:23:36.711Z",
+  "lastPublisher": {
+    "name": "marshallofsound",
+    "email": "samuel.r.attard@gmail.com"
+  },
+  "owners": [
+    {
+      "name": "marshallofsound",
+      "email": "samuel.r.attard@gmail.com"
+    }
+  ]
+}

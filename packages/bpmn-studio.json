@@ -1,0 +1,1987 @@
+{
+  "name": "bpmn-studio",
+  "description": "An Aurelia application for designing BPMN diagrams, which can also be connected to a process engine to execute these diagrams.",
+  "version": "1.1.1",
+  "author": {
+    "name": "process-engine",
+    "email": "hello@process-engine.io",
+    "url": "http://process-engine.io"
+  },
+  "main": "electron_app/electron.js",
+  "scripts": {
+    "start": "./bin/bpmn-studio.js",
+    "postinstall": "npm rebuild node-sass",
+    "start_dev": "au run --watch",
+    "build": "au build --prod",
+    "deploy": "npm run build && npm publish",
+    "integration-test-init": "webdriver-manager update && webdriver-manager start",
+    "integration-test": "au e2e",
+    "lint": "tslint --project .",
+    "test": "echo 'Currently there a no tests specified'",
+    "electron-start-dev": "electron electron_app/electron.js",
+    "electron-build": "build",
+    "electron-build-windows": "build --publish never --windows",
+    "electron-build-macos": "build --publish never --macos",
+    "electron-build-linux": "build --publish never --linux",
+    "electron-shipit": "build --publish always"
+  },
+  "build": {
+    "extraFiles": [
+      "config/**/*"
+    ]
+  },
+  "files": [
+    "scripts",
+    "index.html",
+    "bin",
+    "bootstrap",
+    "resources"
+  ],
+  "bin": {
+    "bpmn-studio": "./bin/bpmn-studio.js"
+  },
+  "repository": {
+    "user": "process-engine",
+    "repo": "bpmn-studio",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/process-engine/bpmn-studio/tarball/master",
+    "clone_url": "https://github.com/process-engine/bpmn-studio",
+    "https_url": "https://github.com/process-engine/bpmn-studio",
+    "travis_url": "https://travis-ci.org/process-engine/bpmn-studio",
+    "zip_url": "https://github.com/process-engine/bpmn-studio/archive/master.zip",
+    "api_url": "https://api.github.com/repos/process-engine/bpmn-studio"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "@process-engine/skeleton-electron": "^1.0.0",
+    "aurelia-validation": "^1.1.2",
+    "electron-is-dev": "^0.3.0",
+    "electron-notifications": "^1.0.0",
+    "electron-updater": "^2.19.1",
+    "get-port": "^3.2.0",
+    "highlight.js": "^9.12.0",
+    "highlightjs-line-numbers.js": "^2.2.0",
+    "node-http-server": "^8.1.2",
+    "open": "0.0.5",
+    "proxy-polyfill": "^0.1.7",
+    "spectrum-colorpicker": "^1.8.0",
+    "xml-beautifier": "^0.3.0"
+  },
+  "peerDependencies": {},
+  "devDependencies": {
+    "@essential-projects/core_contracts": "^1.0.0",
+    "@essential-projects/event_aggregator": "^1.0.0",
+    "@process-engine/bpmn-js-custom-bundle": "^1.0.0",
+    "@process-engine/bpmn-studio_client": "^2.0.0",
+    "@process-engine/process_engine_contracts": "^1.0.0",
+    "@types/jasmine": "^2.2.0",
+    "@types/node": "^6.0.45",
+    "@types/spectrum": "^1.5.29",
+    "addict-ioc": "^2.3.4",
+    "aurelia-animator-css": "^1.0.2",
+    "aurelia-bootstrap": "^0.1.20",
+    "aurelia-bootstrapper": "^2.1.1",
+    "aurelia-cli": "^0.30.1",
+    "aurelia-fetch-client": "^1.1.2",
+    "aurelia-protractor-plugin": "^1.0.6",
+    "aurelia-templating-resources": "1.4.0",
+    "aurelia-testing": "^1.0.0-beta.3.0.1",
+    "aurelia-tools": "^1.0.0",
+    "bluebird": "^3.5.1",
+    "bootstrap": "^3.3.7",
+    "browser-sync": "^2.13.0",
+    "canvg-browser": "^1.0.0",
+    "connect-history-api-fallback": "^1.2.0",
+    "debounce": "^1.0.2",
+    "debug": "^3.1.0",
+    "downloadjs": "1.4.4",
+    "electron": "^1.7.9",
+    "electron-builder": "^20.8.1",
+    "event-stream": "^3.3.3",
+    "eventemitter2": "^4.1.2",
+    "faye": "^1.2.4",
+    "fetch-ponyfill": "^4.1.0",
+    "font-awesome": "^4.7.0",
+    "gulp": "github:gulpjs/gulp#4.0",
+    "gulp-changed-in-place": "^2.0.3",
+    "gulp-notify": "^2.2.0",
+    "gulp-plumber": "^1.1.0",
+    "gulp-protractor": "^4.1.0",
+    "gulp-rename": "^1.2.2",
+    "gulp-sass": "^3.0.0",
+    "gulp-sourcemaps": "^2.0.0-alpha",
+    "gulp-tslint": "^5.0.0",
+    "gulp-typescript": "^3.1.4",
+    "gulp-watch": "^4.3.11",
+    "jasmine-core": "^2.4.1",
+    "jquery": "^3.0.0",
+    "karma": "^0.13.22",
+    "karma-chrome-launcher": "^1.0.1",
+    "karma-jasmine": "^1.0.2",
+    "karma-typescript-preprocessor": "^0.2.1",
+    "minimatch": "^3.0.2",
+    "ms": "^2.0.0",
+    "node-uuid": "^1.4.8",
+    "protractor": "^5.2.0",
+    "requirejs": "^2.3.2",
+    "tether": "^1.4.0",
+    "text": "github:requirejs/text#latest",
+    "through2": "^2.0.1",
+    "toastr": "^2.1.4",
+    "tslint": "^5.1.0 ",
+    "tslint-config-5minds": "^1.0.6",
+    "typescript": ">=1.9.0-dev || ^2.0.0",
+    "uglify-js": "^2.6.3",
+    "uuid": "^3.1.0",
+    "uuid-browser": "^3.1.0",
+    "velocity-animate": "^1.5.0",
+    "vinyl-fs": "^2.4.3",
+    "webdriver-manager": "^12.0.6",
+    "whatwg-fetch": "^2.0.3"
+  },
+  "gitHead": "1245d561d89adb3e8f2f6ff37bf53828fa28b2b0",
+  "homepage": "https://github.com/process-engine/bpmn-studio#readme",
+  "_npmVersion": "5.5.1",
+  "_nodeVersion": "8.9.2",
+  "dist": {
+    "integrity": "sha512-5uvbphG4zXjXfsTc5SzIOU4e3GGMz/NzVgP/CzZ5VjKbrzKthBds1Fi2fyOCxdfNfec9Q8gK9Jq0fS//p8ANfA==",
+    "shasum": "24e27d65cc9d63bd513aca7e42a98d4471194e6f",
+    "tarball": "https://registry.npmjs.org/bpmn-studio/-/bpmn-studio-1.1.1.tgz",
+    "fileCount": 13,
+    "unpackedSize": 9160160,
+    "npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJa2GpdCRA9TVsSAnZWagAA+QIP/26Ik0Ojgo0Ix3+uVTcS\nOV2qsk4QQ/+tOk7MDbjc3UyCJQBTmxOeZApACvUWBcq//LecrVpr0E/9cZ51\nNHpGFZfWRoLDucw/wmycYOEpuQE60fAjB+sbM08TCPeyHUkC82C7hAWpqLz1\nL+UAHliAiHSL5f+17+YFyIhAZuES7uLrIaDNWhfNsZpLUBpa22Ttml3g7Tvm\nQXtJGZpfVZ9xJAMoOL/gZ21tc6A/kYatltLacw9jvScZdCZRfZdi0J0GlOOV\nCcUF38YuEAq4+wQGbC5/670NriElw3Qm0oqoyFd7TC4+O/ofoNpvRQcHdSVk\nY/dM16O3KeeabkUnc/M71h1/VG+UV1aaF2WDcUitG0LlPUvd5n2ooA2alB4T\nX7mXyiqgPYNLYuTUFUaqU+TpKdfJJDCxfGmsFtA047cTvr+j4ssilRDLqcEP\naJVnKTz8/HGQm2f+7TkNlJY+aDLfCLh3iIC7wylCO8TtulY/ApvVIue/anXZ\n2+lYBuKC2m3eKpfwdQhGgVVMI7T8SqjdsLTmEz8ixmRzQAZBkVTU8q2mXZS2\npNkOoNKir/heyKqL8gso9QOZ3Kv6xrVlXa81EqtRG7EZahZUD69eeA1rZ5+Z\nU/oNwMrdkmfBICtEglLpJXk6KSkbSFjhL+tnuqtjQ7G9xSR3NL3UyoSHyAQD\n4X0g\r\n=z47z\r\n-----END PGP SIGNATURE-----\r\n"
+  },
+  "_hasShrinkwrap": false,
+  "versions": [
+    {
+      "number": "0.1.0",
+      "date": "2018-01-16T14:45:11.615Z"
+    },
+    {
+      "number": "1.0.0-rc11",
+      "date": "2018-01-25T16:00:27.739Z"
+    },
+    {
+      "number": "1.0.0-rc12",
+      "date": "2018-01-26T15:43:16.836Z"
+    },
+    {
+      "number": "1.0.0-rc13",
+      "date": "2018-01-26T15:50:04.002Z"
+    },
+    {
+      "number": "1.0.0-rc13-7f2a32c4-b8",
+      "date": "2018-02-14T09:32:15.596Z"
+    },
+    {
+      "number": "1.0.0-rc13-14dd0f2c-b9",
+      "date": "2018-02-16T12:35:21.971Z"
+    },
+    {
+      "number": "1.0.0-rc13-3bc4fa53-b30",
+      "date": "2018-02-16T12:40:08.904Z"
+    },
+    {
+      "number": "1.0.0-rc14-788dbb22-b31",
+      "date": "2018-02-16T13:42:25.567Z"
+    },
+    {
+      "number": "1.0.0-rc14-dcdfda0f-b1",
+      "date": "2018-02-16T15:33:17.637Z"
+    },
+    {
+      "number": "1.0.0-rc14-76342b3a-b2",
+      "date": "2018-02-16T16:25:33.675Z"
+    },
+    {
+      "number": "1.0.0-rc14-cf201321-b32",
+      "date": "2018-02-16T18:39:45.517Z"
+    },
+    {
+      "number": "1.0.0-rc14-9b5208b3-b1",
+      "date": "2018-02-16T22:49:29.954Z"
+    },
+    {
+      "number": "1.0.0-rc14-d946de28-b3",
+      "date": "2018-02-16T22:51:12.992Z"
+    },
+    {
+      "number": "1.0.0-rc14-6073894d-b2",
+      "date": "2018-02-16T22:55:35.650Z"
+    },
+    {
+      "number": "1.0.0-rc14-bbdfdd23-b1",
+      "date": "2018-02-19T08:23:31.619Z"
+    },
+    {
+      "number": "1.0.0-rc14-76be4959-b33",
+      "date": "2018-02-19T09:21:39.176Z"
+    },
+    {
+      "number": "1.0.0-rc14-aabd278d-b34",
+      "date": "2018-02-19T09:35:28.416Z"
+    },
+    {
+      "number": "1.0.0-rc14-8a77abeb-b35",
+      "date": "2018-02-19T09:42:21.167Z"
+    },
+    {
+      "number": "1.0.0-rc14-a64ba88a-b1",
+      "date": "2018-02-19T10:12:17.114Z"
+    },
+    {
+      "number": "1.0.0-rc14-775e6fad-b1",
+      "date": "2018-02-19T11:02:30.198Z"
+    },
+    {
+      "number": "1.0.0-rc14-d72dabd4-b2",
+      "date": "2018-02-19T11:21:07.125Z"
+    },
+    {
+      "number": "1.0.0-rc14-f78da2ad-b3",
+      "date": "2018-02-19T12:27:42.502Z"
+    },
+    {
+      "number": "1.0.0-rc15-cf3eb70c-b36",
+      "date": "2018-02-19T12:28:05.849Z"
+    },
+    {
+      "number": "1.0.0-rc14-adcd9c2a-b2",
+      "date": "2018-02-19T13:33:16.483Z"
+    },
+    {
+      "number": "1.0.0-rc15-17658169-b3",
+      "date": "2018-02-20T08:45:44.109Z"
+    },
+    {
+      "number": "1.0.0-rc15-4466483f-b4",
+      "date": "2018-02-20T09:50:20.400Z"
+    },
+    {
+      "number": "1.0.0-rc15-31de4744-b5",
+      "date": "2018-02-20T09:51:15.960Z"
+    },
+    {
+      "number": "1.0.0-rc15-47ba2556-b6",
+      "date": "2018-02-20T10:10:30.184Z"
+    },
+    {
+      "number": "1.0.0-rc15-ff3e9d5c-b7",
+      "date": "2018-02-20T10:12:40.689Z"
+    },
+    {
+      "number": "1.0.0-rc15-a65e4467-b8",
+      "date": "2018-02-20T13:41:14.846Z"
+    },
+    {
+      "number": "1.0.0-rc15-e7a61360-b9",
+      "date": "2018-02-20T13:41:57.986Z"
+    },
+    {
+      "number": "1.0.0-rc15-4702de09-b10",
+      "date": "2018-02-20T13:46:28.417Z"
+    },
+    {
+      "number": "1.0.0-rc15-16ae4526-b37",
+      "date": "2018-02-20T13:56:32.925Z"
+    },
+    {
+      "number": "1.0.0-rc14-16cf64d5-b3",
+      "date": "2018-02-20T14:07:49.454Z"
+    },
+    {
+      "number": "1.0.0-rc15-57e14530-b4",
+      "date": "2018-02-20T14:15:27.893Z"
+    },
+    {
+      "number": "1.0.0-rc15-0a62dc7c-b5",
+      "date": "2018-02-20T14:50:53.334Z"
+    },
+    {
+      "number": "1.0.0-rc15-ad20cc07-b6",
+      "date": "2018-02-20T15:06:03.343Z"
+    },
+    {
+      "number": "1.0.0-rc15-e442f15d-b7",
+      "date": "2018-02-20T15:14:56.933Z"
+    },
+    {
+      "number": "1.0.0-rc15-4105ae00-b1",
+      "date": "2018-02-20T17:11:59.533Z"
+    },
+    {
+      "number": "1.0.0-rc15-288021d2-b38",
+      "date": "2018-02-20T17:20:19.723Z"
+    },
+    {
+      "number": "1.0.0-rc15-7bbbe279-b8",
+      "date": "2018-02-21T09:17:36.631Z"
+    },
+    {
+      "number": "1.0.0-rc15-51c0f727-b9",
+      "date": "2018-02-21T09:22:33.151Z"
+    },
+    {
+      "number": "1.0.0-rc15-fa3c0c92-b1",
+      "date": "2018-02-21T10:07:45.408Z"
+    },
+    {
+      "number": "1.0.0-rc15-dcbf93fd-b10",
+      "date": "2018-02-21T10:22:20.755Z"
+    },
+    {
+      "number": "1.0.0-rc15-288021d2-b1",
+      "date": "2018-02-21T10:32:38.647Z"
+    },
+    {
+      "number": "1.0.0-rc15-a267fa1c-b2",
+      "date": "2018-02-21T11:23:33.294Z"
+    },
+    {
+      "number": "1.0.0-rc15-57533a98-b1",
+      "date": "2018-02-21T11:53:25.503Z"
+    },
+    {
+      "number": "1.0.0-rc15-b6a7ca0f-b39",
+      "date": "2018-02-21T12:12:35.033Z"
+    },
+    {
+      "number": "1.0.0-rc15-fdde0fa0-b2",
+      "date": "2018-02-21T12:12:37.665Z"
+    },
+    {
+      "number": "1.0.0-rc15-f382ec17-b40",
+      "date": "2018-02-21T12:18:58.676Z"
+    },
+    {
+      "number": "1.0.0-rc15-df38e368-b3",
+      "date": "2018-02-21T12:19:23.946Z"
+    },
+    {
+      "number": "1.0.0-rc15-baeb6709-b4",
+      "date": "2018-02-21T12:22:51.178Z"
+    },
+    {
+      "number": "1.0.0-rc15-5e7ea8a3-b3",
+      "date": "2018-02-21T12:26:50.685Z"
+    },
+    {
+      "number": "1.0.0-rc15-4f2e1f14-b4",
+      "date": "2018-02-21T12:37:22.977Z"
+    },
+    {
+      "number": "1.0.0-rc15-e0477879-b5",
+      "date": "2018-02-21T12:48:15.289Z"
+    },
+    {
+      "number": "1.0.0-rc15-7063d1c9-b6",
+      "date": "2018-02-21T12:51:21.637Z"
+    },
+    {
+      "number": "1.0.0-rc15-30e7772a-b41",
+      "date": "2018-02-21T13:59:19.725Z"
+    },
+    {
+      "number": "1.0.0-rc14-055cfecf-b1",
+      "date": "2018-02-21T14:22:07.705Z"
+    },
+    {
+      "number": "1.0.0-rc15-88ea4b06-b2",
+      "date": "2018-02-21T14:25:20.700Z"
+    },
+    {
+      "number": "1.0.0-rc15-f382ec17-b1",
+      "date": "2018-02-21T14:49:12.710Z"
+    },
+    {
+      "number": "1.0.0-rc15-53439c35-b42",
+      "date": "2018-02-21T15:55:42.424Z"
+    },
+    {
+      "number": "1.0.0-rc15-2d5414f7-b1",
+      "date": "2018-02-21T16:04:05.092Z"
+    },
+    {
+      "number": "1.0.0-rc15-ff27665b-b7",
+      "date": "2018-02-21T16:12:43.049Z"
+    },
+    {
+      "number": "1.0.0-rc15-7a4d6427-b8",
+      "date": "2018-02-21T16:15:52.475Z"
+    },
+    {
+      "number": "1.0.0-rc15-1d33f8d1-b43",
+      "date": "2018-02-21T16:20:25.050Z"
+    },
+    {
+      "number": "1.0.0-rc15-81253772-b3",
+      "date": "2018-02-21T16:27:34.569Z"
+    },
+    {
+      "number": "1.0.0-rc15-71b291cb-b4",
+      "date": "2018-02-21T16:28:56.360Z"
+    },
+    {
+      "number": "1.0.0-rc15-66c0640c-b5",
+      "date": "2018-02-21T17:30:32.810Z"
+    },
+    {
+      "number": "1.0.0-rc15-d4fd6c8f-b6",
+      "date": "2018-02-21T17:32:48.922Z"
+    },
+    {
+      "number": "1.0.0-rc15-68a49939-b1",
+      "date": "2018-02-21T21:47:39.921Z"
+    },
+    {
+      "number": "1.0.0-rc15-b3cc7943-b2",
+      "date": "2018-02-22T08:09:33.437Z"
+    },
+    {
+      "number": "1.0.0-rc15-c848d594-b44",
+      "date": "2018-02-22T09:16:31.315Z"
+    },
+    {
+      "number": "1.0.0-rc15-473ced99-b1",
+      "date": "2018-02-22T14:57:19.802Z"
+    },
+    {
+      "number": "1.0.0-rc15-1c6ac7f5-b2",
+      "date": "2018-02-22T16:14:39.316Z"
+    },
+    {
+      "number": "1.0.0-rc15-bc69c0d6-b7",
+      "date": "2018-02-23T07:35:22.122Z"
+    },
+    {
+      "number": "1.0.0-rc15-13b5a71a-b45",
+      "date": "2018-02-23T07:57:11.895Z"
+    },
+    {
+      "number": "1.0.0-rc15-c3d64171-b8",
+      "date": "2018-02-23T09:03:22.203Z"
+    },
+    {
+      "number": "1.0.0-rc15-05288c08-b3",
+      "date": "2018-02-23T09:28:33.483Z"
+    },
+    {
+      "number": "1.0.0-rc15-8236b2e5-b4",
+      "date": "2018-02-23T09:32:10.462Z"
+    },
+    {
+      "number": "1.0.0-rc15-9690d500-b5",
+      "date": "2018-02-23T09:54:47.486Z"
+    },
+    {
+      "number": "1.0.0-rc15-3842994c-b6",
+      "date": "2018-02-23T09:57:21.851Z"
+    },
+    {
+      "number": "1.0.0-rc15-f6bb2ead-b7",
+      "date": "2018-02-23T10:19:04.158Z"
+    },
+    {
+      "number": "1.0.0-rc15-b695b243-b8",
+      "date": "2018-02-23T10:39:59.057Z"
+    },
+    {
+      "number": "1.0.0-rc15-81a559e5-b9",
+      "date": "2018-02-23T12:50:31.296Z"
+    },
+    {
+      "number": "1.0.0-rc15-3319feaf-b10",
+      "date": "2018-02-23T13:59:22.597Z"
+    },
+    {
+      "number": "1.0.0-rc15-9485d9f2-b46",
+      "date": "2018-02-23T14:06:22.243Z"
+    },
+    {
+      "number": "1.0.0-rc15-68e29c22-b3",
+      "date": "2018-02-23T14:18:14.632Z"
+    },
+    {
+      "number": "1.0.0-rc15-a9e55674-b10",
+      "date": "2018-02-23T14:46:06.242Z"
+    },
+    {
+      "number": "1.0.0-rc15-6c307632-b11",
+      "date": "2018-02-23T15:00:04.991Z"
+    },
+    {
+      "number": "1.0.0-rc15-b86ce549-b12",
+      "date": "2018-02-23T15:27:46.351Z"
+    },
+    {
+      "number": "1.0.0-rc15-9a115ada-b2",
+      "date": "2018-02-23T16:02:31.739Z"
+    },
+    {
+      "number": "1.0.0-rc15-37c5f333-b13",
+      "date": "2018-02-23T16:08:42.036Z"
+    },
+    {
+      "number": "1.0.0-rc15-1d9e7651-b4",
+      "date": "2018-02-25T17:26:03.410Z"
+    },
+    {
+      "number": "1.0.0-rc15-5ab5767d-b5",
+      "date": "2018-02-25T17:29:33.611Z"
+    },
+    {
+      "number": "1.0.0-rc15-1ab5df5e-b14",
+      "date": "2018-02-26T16:11:57.668Z"
+    },
+    {
+      "number": "1.0.0-rc15-2dcd4940-b15",
+      "date": "2018-02-26T16:16:21.216Z"
+    },
+    {
+      "number": "1.0.0-rc15-18bc6012-b3",
+      "date": "2018-02-26T16:17:23.200Z"
+    },
+    {
+      "number": "1.0.0-rc15-eccda3c1-b9",
+      "date": "2018-02-27T08:28:03.314Z"
+    },
+    {
+      "number": "1.0.0-rc15-26df25c6-b10",
+      "date": "2018-02-27T08:42:27.358Z"
+    },
+    {
+      "number": "1.0.0-rc15-4ca4b49e-b16",
+      "date": "2018-02-27T09:50:40.617Z"
+    },
+    {
+      "number": "1.0.0-rc15-3d4c8bdd-b1",
+      "date": "2018-02-27T09:55:01.260Z"
+    },
+    {
+      "number": "1.0.0-rc15-63159126-b17",
+      "date": "2018-02-27T10:01:33.918Z"
+    },
+    {
+      "number": "1.0.0-rc15-6353445d-b4",
+      "date": "2018-02-27T10:16:38.994Z"
+    },
+    {
+      "number": "1.0.0-rc15-3a7593ab-b5",
+      "date": "2018-02-27T10:42:30.931Z"
+    },
+    {
+      "number": "1.0.0-rc15-d776b3b2-b6",
+      "date": "2018-02-27T10:52:52.166Z"
+    },
+    {
+      "number": "1.0.0-rc15-cdc404bc-b47",
+      "date": "2018-02-27T10:56:23.792Z"
+    },
+    {
+      "number": "1.0.0-rc15-899f0ae5-b11",
+      "date": "2018-02-27T11:08:36.509Z"
+    },
+    {
+      "number": "1.0.0-rc15-e5f08eb9-b7",
+      "date": "2018-02-27T11:50:46.706Z"
+    },
+    {
+      "number": "1.0.0-rc15-5c1b7190-b18",
+      "date": "2018-02-27T12:16:10.071Z"
+    },
+    {
+      "number": "1.0.0-rc15-f696cd40-b19",
+      "date": "2018-02-27T12:33:47.921Z"
+    },
+    {
+      "number": "1.0.0-rc15-de33000f-b8",
+      "date": "2018-02-27T14:19:19.141Z"
+    },
+    {
+      "number": "1.0.0-rc15-e2a623e1-b20",
+      "date": "2018-02-27T14:23:54.257Z"
+    },
+    {
+      "number": "1.0.0-rc15-a98a2542-b21",
+      "date": "2018-02-27T14:48:55.648Z"
+    },
+    {
+      "number": "1.0.0-rc15-58370019-b9",
+      "date": "2018-02-27T14:51:54.490Z"
+    },
+    {
+      "number": "1.0.0-rc15-e6cfc5f6-b22",
+      "date": "2018-02-27T15:03:22.582Z"
+    },
+    {
+      "number": "1.0.0-rc15-a46c12c3-b23",
+      "date": "2018-02-27T15:12:03.418Z"
+    },
+    {
+      "number": "1.0.0-rc15-6c49498b-b24",
+      "date": "2018-02-27T15:58:19.321Z"
+    },
+    {
+      "number": "1.0.0-rc15-23203408-b25",
+      "date": "2018-02-27T16:11:20.042Z"
+    },
+    {
+      "number": "1.0.0-rc15-8518a380-b12",
+      "date": "2018-02-27T20:35:40.402Z"
+    },
+    {
+      "number": "1.0.0-rc15-6e6350ba-b13",
+      "date": "2018-02-27T20:51:30.626Z"
+    },
+    {
+      "number": "1.0.0-rc15-707701ac-b14",
+      "date": "2018-02-28T08:42:46.215Z"
+    },
+    {
+      "number": "1.0.0-rc15-9290bf7a-b26",
+      "date": "2018-02-28T09:27:46.339Z"
+    },
+    {
+      "number": "1.0.0-rc15-e058e044-b27",
+      "date": "2018-02-28T09:31:55.839Z"
+    },
+    {
+      "number": "1.0.0-rc15-4f0c24de-b28",
+      "date": "2018-02-28T09:32:16.143Z"
+    },
+    {
+      "number": "1.0.0-rc15-cfc76fe0-b11",
+      "date": "2018-02-28T09:37:50.700Z"
+    },
+    {
+      "number": "1.0.0-rc15-18bd6b25-b12",
+      "date": "2018-02-28T09:38:38.702Z"
+    },
+    {
+      "number": "1.0.0-rc15-b63ed406-b13",
+      "date": "2018-02-28T09:41:34.548Z"
+    },
+    {
+      "number": "1.0.0-rc15-39a1ea7a-b29",
+      "date": "2018-02-28T10:19:52.990Z"
+    },
+    {
+      "number": "1.0.0-rc15-813338c3-b15",
+      "date": "2018-02-28T10:26:57.296Z"
+    },
+    {
+      "number": "1.0.0-rc15-6de0f3b0-b16",
+      "date": "2018-02-28T10:27:22.687Z"
+    },
+    {
+      "number": "1.0.0-rc15-0601de67-b30",
+      "date": "2018-02-28T11:42:03.181Z"
+    },
+    {
+      "number": "1.0.0-rc15-c05bafc1-b17",
+      "date": "2018-02-28T12:26:55.145Z"
+    },
+    {
+      "number": "1.0.0-rc15-cd82656e-b18",
+      "date": "2018-02-28T12:31:45.695Z"
+    },
+    {
+      "number": "1.0.0-rc15-94d9b583-b31",
+      "date": "2018-02-28T13:02:50.062Z"
+    },
+    {
+      "number": "1.0.0-rc15-5ac203d1-b32",
+      "date": "2018-02-28T13:07:19.164Z"
+    },
+    {
+      "number": "1.0.0-rc15-9ad39c12-b33",
+      "date": "2018-02-28T13:17:12.544Z"
+    },
+    {
+      "number": "1.0.0-rc15-e2c4dbe5-b34",
+      "date": "2018-02-28T13:18:47.136Z"
+    },
+    {
+      "number": "1.0.0-rc15-f1db5271-b1",
+      "date": "2018-02-28T13:59:15.966Z"
+    },
+    {
+      "number": "1.0.0-rc15-2ae155bb-b1",
+      "date": "2018-02-28T14:03:12.508Z"
+    },
+    {
+      "number": "1.0.0-rc15-c9d27e41-b1",
+      "date": "2018-02-28T15:01:28.255Z"
+    },
+    {
+      "number": "1.0.0-rc15-2fade72b-b14",
+      "date": "2018-02-28T15:14:57.721Z"
+    },
+    {
+      "number": "1.0.0-rc15-8af9265f-b2",
+      "date": "2018-02-28T15:31:08.328Z"
+    },
+    {
+      "number": "1.0.0-rc15-ca5d96b6-b48",
+      "date": "2018-02-28T15:32:28.397Z"
+    },
+    {
+      "number": "1.0.0-rc15-64aa867f-b15",
+      "date": "2018-02-28T16:19:39.720Z"
+    },
+    {
+      "number": "1.0.0-rc15-daec09d7-b3",
+      "date": "2018-02-28T16:28:40.532Z"
+    },
+    {
+      "number": "1.0.0-rc15-795efdfd-b16",
+      "date": "2018-02-28T16:42:23.405Z"
+    },
+    {
+      "number": "1.0.0-rc15-fb51a5ef-b4",
+      "date": "2018-02-28T16:42:27.581Z"
+    },
+    {
+      "number": "1.0.0-rc15-58858d56-b5",
+      "date": "2018-02-28T17:08:05.846Z"
+    },
+    {
+      "number": "1.0.0-rc15-d6f6867f-b17",
+      "date": "2018-02-28T17:19:45.733Z"
+    },
+    {
+      "number": "1.0.0-rc15-7d88bb8c-b49",
+      "date": "2018-02-28T17:20:34.876Z"
+    },
+    {
+      "number": "1.0.0-rc15-864ecc6f-b6",
+      "date": "2018-02-28T19:56:57.108Z"
+    },
+    {
+      "number": "1.0.0-rc15-83b8d852-b7",
+      "date": "2018-03-01T08:30:04.880Z"
+    },
+    {
+      "number": "1.0.0-rc15-694f085a-b8",
+      "date": "2018-03-01T08:33:55.068Z"
+    },
+    {
+      "number": "1.0.0-rc15-a27fb199-b9",
+      "date": "2018-03-01T08:52:31.664Z"
+    },
+    {
+      "number": "1.0.0-rc15-c881ec4a-b50",
+      "date": "2018-03-01T08:59:20.817Z"
+    },
+    {
+      "number": "1.0.0-rc15-562f7b3e-b10",
+      "date": "2018-03-01T09:07:45.550Z"
+    },
+    {
+      "number": "1.0.0-rc15-8662ccfa-b51",
+      "date": "2018-03-01T09:11:33.160Z"
+    },
+    {
+      "number": "1.0.0-rc15-af804b3c-b35",
+      "date": "2018-03-01T09:35:02.374Z"
+    },
+    {
+      "number": "1.0.0-rc15-aaac1c52-b36",
+      "date": "2018-03-01T09:48:45.765Z"
+    },
+    {
+      "number": "1.0.0-rc15-4dab9e80-b52",
+      "date": "2018-03-01T09:55:53.377Z"
+    },
+    {
+      "number": "1.0.0-rc15-7bb2e0b5-b53",
+      "date": "2018-03-01T10:28:05.052Z"
+    },
+    {
+      "number": "1.0.0-rc16-aa1c5438-b54",
+      "date": "2018-03-01T10:36:48.291Z"
+    },
+    {
+      "number": "1.0.0-rc15-b6f1b30e-b2",
+      "date": "2018-03-01T10:40:58.779Z"
+    },
+    {
+      "number": "1.0.0-rc15-6806c0b3-b3",
+      "date": "2018-03-01T10:54:20.876Z"
+    },
+    {
+      "number": "1.0.0-rc15-55e60ad0-b4",
+      "date": "2018-03-01T10:58:19.722Z"
+    },
+    {
+      "number": "1.0.0-rc15-de36fed7-b5",
+      "date": "2018-03-01T11:01:25.633Z"
+    },
+    {
+      "number": "1.0.0-rc16-f61d7ce3-b55",
+      "date": "2018-03-01T11:06:13.245Z"
+    },
+    {
+      "number": "1.0.0-rc16-8098ce70-b1",
+      "date": "2018-03-02T08:35:16.733Z"
+    },
+    {
+      "number": "1.0.0-rc16-01f9be1b-b1",
+      "date": "2018-03-02T12:09:49.985Z"
+    },
+    {
+      "number": "1.0.0-rc16-5a725a62-b56",
+      "date": "2018-03-02T12:28:00.724Z"
+    },
+    {
+      "number": "1.0.0-rc16-c849197e-b1",
+      "date": "2018-03-02T13:29:01.283Z"
+    },
+    {
+      "number": "1.0.0-rc16-49913824-b57",
+      "date": "2018-03-02T13:37:03.302Z"
+    },
+    {
+      "number": "1.0.0-rc16-58867a16-b1",
+      "date": "2018-03-02T14:53:12.090Z"
+    },
+    {
+      "number": "1.0.0-rc16-d1329f5b-b1",
+      "date": "2018-03-02T15:35:40.417Z"
+    },
+    {
+      "number": "1.0.0-rc16-1d7ea5e6-b1",
+      "date": "2018-03-02T15:59:03.376Z"
+    },
+    {
+      "number": "1.0.0-rc16-9956ac24-b1",
+      "date": "2018-03-05T08:34:51.172Z"
+    },
+    {
+      "number": "1.0.0-rc16-84305996-b2",
+      "date": "2018-03-06T10:06:06.424Z"
+    },
+    {
+      "number": "1.0.0-rc16-c4b52034-b3",
+      "date": "2018-03-06T10:31:52.492Z"
+    },
+    {
+      "number": "1.0.0-rc16-fa27dbc0-b58",
+      "date": "2018-03-07T12:49:07.112Z"
+    },
+    {
+      "number": "1.0.0-rc16-12107195-b59",
+      "date": "2018-03-07T12:53:48.309Z"
+    },
+    {
+      "number": "1.0.0-rc17-e867c762-b60",
+      "date": "2018-03-08T09:00:56.725Z"
+    },
+    {
+      "number": "1.0.0-rc17-f33dca1d-b1",
+      "date": "2018-03-08T09:48:08.040Z"
+    },
+    {
+      "number": "1.0.0-rc17-b5f576bb-b2",
+      "date": "2018-03-08T12:11:52.317Z"
+    },
+    {
+      "number": "1.0.0-rc17-7d8a3c63-b3",
+      "date": "2018-03-08T12:29:23.537Z"
+    },
+    {
+      "number": "1.0.0-rc17-ed86bfce-b4",
+      "date": "2018-03-08T13:48:57.891Z"
+    },
+    {
+      "number": "1.0.0-rc17-b2090744-b1",
+      "date": "2018-03-08T14:23:02.465Z"
+    },
+    {
+      "number": "1.0.0-rc17-59e710fd-b61",
+      "date": "2018-03-08T14:35:15.164Z"
+    },
+    {
+      "number": "1.0.0-rc16-553c5b74-b2",
+      "date": "2018-03-09T07:43:15.292Z"
+    },
+    {
+      "number": "1.0.0-rc16-f1e40d7b-b3",
+      "date": "2018-03-09T08:20:57.271Z"
+    },
+    {
+      "number": "1.0.0-rc17-294065b5-b62",
+      "date": "2018-03-09T08:23:12.918Z"
+    },
+    {
+      "number": "1.0.0-rc17-36f37418-b5",
+      "date": "2018-03-09T08:35:45.057Z"
+    },
+    {
+      "number": "1.0.0-rc17-0558e2e3-b2",
+      "date": "2018-03-09T10:09:52.557Z"
+    },
+    {
+      "number": "1.0.0-rc17-de818880-b64",
+      "date": "2018-03-09T10:09:54.756Z"
+    },
+    {
+      "number": "1.0.0-rc17-20c68291-b2",
+      "date": "2018-03-09T10:42:11.090Z"
+    },
+    {
+      "number": "1.0.0-rc17-b435a55b-b3",
+      "date": "2018-03-09T11:15:41.577Z"
+    },
+    {
+      "number": "1.0.0-rc17-451457d1-b4",
+      "date": "2018-03-09T11:33:29.226Z"
+    },
+    {
+      "number": "1.0.0-rc17-fb2ccf05-b1",
+      "date": "2018-03-09T14:29:34.423Z"
+    },
+    {
+      "number": "1.0.0-rc17-983cd8bd-b5",
+      "date": "2018-03-12T08:36:29.939Z"
+    },
+    {
+      "number": "1.0.0-rc17-1ae8ef5a-b6",
+      "date": "2018-03-12T08:41:09.310Z"
+    },
+    {
+      "number": "1.0.0-rc17-7af107c2-b7",
+      "date": "2018-03-12T10:40:21.873Z"
+    },
+    {
+      "number": "1.0.0-rc17-fe152440-b66",
+      "date": "2018-03-12T15:12:17.078Z"
+    },
+    {
+      "number": "1.0.0-rc17-fe152440-b67",
+      "date": "2018-03-12T15:12:33.123Z"
+    },
+    {
+      "number": "1.0.0-rc17-63efe54d-b1",
+      "date": "2018-03-13T08:24:33.609Z"
+    },
+    {
+      "number": "1.0.0-rc17-f54531a8-b8",
+      "date": "2018-03-13T09:00:33.147Z"
+    },
+    {
+      "number": "1.0.0-rc17-49a638c9-b2",
+      "date": "2018-03-13T09:09:35.348Z"
+    },
+    {
+      "number": "1.0.0-rc17-aefe859c-b68",
+      "date": "2018-03-13T09:17:51.384Z"
+    },
+    {
+      "number": "1.0.0-rc17-44cdea09-b3",
+      "date": "2018-03-13T09:40:41.025Z"
+    },
+    {
+      "number": "1.0.0-rc17-2e4f1da4-b4",
+      "date": "2018-03-13T09:44:39.412Z"
+    },
+    {
+      "number": "1.0.0-rc17-7cb86a70-b5",
+      "date": "2018-03-13T09:57:03.032Z"
+    },
+    {
+      "number": "1.0.0-rc17-0e88c780-b5",
+      "date": "2018-03-13T10:57:40.910Z"
+    },
+    {
+      "number": "1.0.0-rc17-a0e47eae-b6",
+      "date": "2018-03-13T11:06:21.393Z"
+    },
+    {
+      "number": "1.0.0-rc17-ea1003c8-b7",
+      "date": "2018-03-13T11:45:08.753Z"
+    },
+    {
+      "number": "1.0.0-rc17-8b128f2e-b6",
+      "date": "2018-03-13T13:46:45.427Z"
+    },
+    {
+      "number": "1.0.0-rc17-d4c35b82-b7",
+      "date": "2018-03-13T14:17:57.553Z"
+    },
+    {
+      "number": "1.0.0-rc17-1dbfce30-b3",
+      "date": "2018-03-14T08:28:26.837Z"
+    },
+    {
+      "number": "1.0.0-rc17-c9a16adb-b4",
+      "date": "2018-03-14T08:46:54.251Z"
+    },
+    {
+      "number": "1.0.0-rc17-4a178458-b69",
+      "date": "2018-03-14T08:52:33.562Z"
+    },
+    {
+      "number": "1.0.0-rc17-cb90408b-b8",
+      "date": "2018-03-14T09:01:53.249Z"
+    },
+    {
+      "number": "1.0.0-rc17-32689d99-b70",
+      "date": "2018-03-14T09:07:45.089Z"
+    },
+    {
+      "number": "1.0.0-rc17-9daae2f3-b71",
+      "date": "2018-03-14T09:27:09.728Z"
+    },
+    {
+      "number": "1.0.0-rc17-ced90cea-b72",
+      "date": "2018-03-14T10:11:50.702Z"
+    },
+    {
+      "number": "1.0.0-rc17-1a1e326c-b9",
+      "date": "2018-03-14T11:51:08.956Z"
+    },
+    {
+      "number": "1.0.0-rc17-f78065d3-b8",
+      "date": "2018-03-14T15:33:55.463Z"
+    },
+    {
+      "number": "1.0.0-rc17-fb427586-b9",
+      "date": "2018-03-15T08:08:45.260Z"
+    },
+    {
+      "number": "1.0.0-rc17-d5b4e516-b73",
+      "date": "2018-03-15T08:17:11.270Z"
+    },
+    {
+      "number": "1.0.0-rc17-b4bfa612-b10",
+      "date": "2018-03-15T08:27:28.690Z"
+    },
+    {
+      "number": "1.0.0-rc17-c2a1fb9e-b74",
+      "date": "2018-03-15T08:34:35.717Z"
+    },
+    {
+      "number": "1.0.0-rc17-c2a1fb9e-b1",
+      "date": "2018-03-15T08:37:30.337Z"
+    },
+    {
+      "number": "1.0.0-96ad436b-b2",
+      "date": "2018-03-15T13:52:05.358Z"
+    },
+    {
+      "number": "1.0.0-rc17-cb90408b-b11",
+      "date": "2018-03-15T14:01:55.870Z"
+    },
+    {
+      "number": "1.0.0-rc17-f78065d3-b10",
+      "date": "2018-03-15T14:01:59.596Z"
+    },
+    {
+      "number": "1.0.0-cdac60ec-b75",
+      "date": "2018-03-15T14:02:09.344Z"
+    },
+    {
+      "number": "1.0.0-rc17-c9a16adb-b5",
+      "date": "2018-03-15T14:02:13.893Z"
+    },
+    {
+      "number": "1.0.0-41dfcf30-b76",
+      "date": "2018-03-15T17:36:49.015Z"
+    },
+    {
+      "number": "1.0.1-677427e9-b77",
+      "date": "2018-03-15T17:37:47.049Z"
+    },
+    {
+      "number": "1.0.1-a60263bf-b3",
+      "date": "2018-03-16T10:02:23.746Z"
+    },
+    {
+      "number": "1.0.1-2eb1581e-b78",
+      "date": "2018-03-16T10:08:38.174Z"
+    },
+    {
+      "number": "1.0.1-add442ae-b1",
+      "date": "2018-03-16T10:32:46.255Z"
+    },
+    {
+      "number": "1.0.1-061f15b3-b79",
+      "date": "2018-03-16T10:38:38.988Z"
+    },
+    {
+      "number": "1.0.1-32a71b58-b1",
+      "date": "2018-03-16T14:07:19.827Z"
+    },
+    {
+      "number": "1.0.1-665140b0-b1",
+      "date": "2018-03-16T14:14:37.801Z"
+    },
+    {
+      "number": "1.0.1-4146b079-b2",
+      "date": "2018-03-16T14:51:50.577Z"
+    },
+    {
+      "number": "1.0.1-ef09045d-b80",
+      "date": "2018-03-16T14:59:36.830Z"
+    },
+    {
+      "number": "1.0.1-58d6ded0-b81",
+      "date": "2018-03-16T15:16:59.353Z"
+    },
+    {
+      "number": "1.0.1-1e5607cc-b1",
+      "date": "2018-03-19T09:36:15.478Z"
+    },
+    {
+      "number": "1.0.1-fdc8e2e0-b82",
+      "date": "2018-03-19T10:19:24.798Z"
+    },
+    {
+      "number": "1.0.1-7bc1af94-b1",
+      "date": "2018-03-19T16:18:50.358Z"
+    },
+    {
+      "number": "1.0.1-a25e1a2b-b2",
+      "date": "2018-03-19T16:26:26.816Z"
+    },
+    {
+      "number": "1.0.1-0483d689-b3",
+      "date": "2018-03-19T16:36:26.085Z"
+    },
+    {
+      "number": "1.0.1-5894efd9-b4",
+      "date": "2018-03-19T17:14:00.437Z"
+    },
+    {
+      "number": "1.0.1-5ca8e311-b5",
+      "date": "2018-03-20T11:04:23.635Z"
+    },
+    {
+      "number": "1.0.1-0c3320a4-b83",
+      "date": "2018-03-20T15:56:50.960Z"
+    },
+    {
+      "number": "1.0.1-59fd6168-b1",
+      "date": "2018-03-21T10:16:33.525Z"
+    },
+    {
+      "number": "1.0.1-356eccbb-b84",
+      "date": "2018-03-21T10:33:35.395Z"
+    },
+    {
+      "number": "1.1.0-25d243bf-b85",
+      "date": "2018-03-21T11:26:20.137Z"
+    },
+    {
+      "number": "1.0.1-ea5b67b5-b1",
+      "date": "2018-03-22T10:44:39.052Z"
+    },
+    {
+      "number": "1.0.1-c721627c-b2",
+      "date": "2018-03-22T18:13:22.625Z"
+    },
+    {
+      "number": "1.1.0-85373262-b1",
+      "date": "2018-03-23T09:30:00.815Z"
+    },
+    {
+      "number": "1.0.1-3826c789-b3",
+      "date": "2018-03-23T10:55:55.867Z"
+    },
+    {
+      "number": "1.1.0-3f318aa8-b1",
+      "date": "2018-03-23T13:21:20.939Z"
+    },
+    {
+      "number": "1.1.0-e5a3b696-b2",
+      "date": "2018-03-23T13:47:23.270Z"
+    },
+    {
+      "number": "1.1.0-61ea7295-b3",
+      "date": "2018-03-23T15:29:50.105Z"
+    },
+    {
+      "number": "1.1.0-c61852fc-b86",
+      "date": "2018-03-23T15:37:43.710Z"
+    },
+    {
+      "number": "1.1.0-0333016d-b2",
+      "date": "2018-03-23T15:40:15.390Z"
+    },
+    {
+      "number": "1.1.0-5edcd51d-b87",
+      "date": "2018-03-23T15:43:33.285Z"
+    },
+    {
+      "number": "1.1.0-7ccd2a39-b2",
+      "date": "2018-03-23T15:48:48.116Z"
+    },
+    {
+      "number": "1.1.0-083d6a5e-b88",
+      "date": "2018-03-23T15:53:00.802Z"
+    },
+    {
+      "number": "1.1.0-32683644-b1",
+      "date": "2018-03-23T15:55:46.825Z"
+    },
+    {
+      "number": "1.1.0-9b013ba8-b89",
+      "date": "2018-03-23T17:17:25.572Z"
+    },
+    {
+      "number": "1.1.0-12c3acdf-b1",
+      "date": "2018-04-03T13:33:11.560Z"
+    },
+    {
+      "number": "1.1.0-309d6c74-b2",
+      "date": "2018-04-03T13:47:05.033Z"
+    },
+    {
+      "number": "1.1.0-85cdd964-b4",
+      "date": "2018-04-04T07:34:30.320Z"
+    },
+    {
+      "number": "1.1.0-3e4464b3-b6",
+      "date": "2018-04-04T08:17:15.474Z"
+    },
+    {
+      "number": "1.1.0-56781891-b8",
+      "date": "2018-04-04T08:38:26.748Z"
+    },
+    {
+      "number": "1.1.0-37591921-b9",
+      "date": "2018-04-04T08:51:01.865Z"
+    },
+    {
+      "number": "1.1.0-50b90d80-b10",
+      "date": "2018-04-04T09:25:40.752Z"
+    },
+    {
+      "number": "1.1.0-fac41bff-b11",
+      "date": "2018-04-04T09:37:39.851Z"
+    },
+    {
+      "number": "1.1.1-snapshot-0f157052-b12",
+      "date": "2018-04-04T10:49:36.099Z"
+    },
+    {
+      "number": "1.1.1-snapshot-a5d43b1a-b13",
+      "date": "2018-04-04T11:11:50.994Z"
+    },
+    {
+      "number": "1.1.1-snapshot-9c18e193-b14",
+      "date": "2018-04-04T11:21:12.176Z"
+    },
+    {
+      "number": "1.1.1-snapshot-c8123669-b15",
+      "date": "2018-04-04T11:44:06.373Z"
+    },
+    {
+      "number": "1.1.1-snapshot-66377ad1-b20",
+      "date": "2018-04-04T13:58:21.801Z"
+    },
+    {
+      "number": "1.1.1-snapshot-8f96211a-b23",
+      "date": "2018-04-04T15:14:13.417Z"
+    },
+    {
+      "number": "1.1.0-9c0b94d3-b24",
+      "date": "2018-04-04T15:32:41.336Z"
+    },
+    {
+      "number": "1.1.0-1c0ec513-b26",
+      "date": "2018-04-05T09:06:10.878Z"
+    },
+    {
+      "number": "1.1.1-snapshot-bcb41623-b27",
+      "date": "2018-04-05T09:41:59.994Z"
+    },
+    {
+      "number": "1.1.1-snapshot-359e3fac-b29",
+      "date": "2018-04-05T13:14:37.409Z"
+    },
+    {
+      "number": "1.1.1-snapshot-56a66ea5-b32",
+      "date": "2018-04-05T13:40:37.009Z"
+    },
+    {
+      "number": "1.1.1-snapshot-cda4ad98-b33",
+      "date": "2018-04-05T13:57:30.641Z"
+    },
+    {
+      "number": "1.1.1-snapshot-b22f2ab2-b35",
+      "date": "2018-04-05T14:28:25.143Z"
+    },
+    {
+      "number": "1.1.1-snapshot-30ea1278-b37",
+      "date": "2018-04-05T14:50:53.203Z"
+    },
+    {
+      "number": "1.1.1-snapshot-1db2d7fa-b38",
+      "date": "2018-04-05T14:59:12.062Z"
+    },
+    {
+      "number": "1.1.1-snapshot-98036afa-b39",
+      "date": "2018-04-05T15:19:17.742Z"
+    },
+    {
+      "number": "1.1.1-snapshot-0f02cf71-b40",
+      "date": "2018-04-06T06:52:33.189Z"
+    },
+    {
+      "number": "1.1.0-e8e99c9a-b41",
+      "date": "2018-04-06T07:15:14.945Z"
+    },
+    {
+      "number": "1.1.0-459683cf-b1",
+      "date": "2018-04-06T09:16:52.518Z"
+    },
+    {
+      "number": "1.1.0-5c0545db-b90",
+      "date": "2018-04-06T13:16:25.661Z"
+    },
+    {
+      "number": "1.1.0-92552118-b91",
+      "date": "2018-04-06T13:28:15.741Z"
+    },
+    {
+      "number": "1.1.0-0bf9d816-b92",
+      "date": "2018-04-06T15:12:48.815Z"
+    },
+    {
+      "number": "1.1.0-4e1cc926-b4",
+      "date": "2018-04-10T15:13:08.606Z"
+    },
+    {
+      "number": "1.1.0-16ab96f7-b1",
+      "date": "2018-04-12T09:54:07.742Z"
+    },
+    {
+      "number": "1.1.0-aea43970-b2",
+      "date": "2018-04-12T10:27:43.946Z"
+    },
+    {
+      "number": "1.1.0-cc5b6ad7-b3",
+      "date": "2018-04-12T10:53:06.689Z"
+    },
+    {
+      "number": "1.1.0-574057bf-b4",
+      "date": "2018-04-12T12:31:28.751Z"
+    },
+    {
+      "number": "1.1.0-da4b8728-b5",
+      "date": "2018-04-12T12:41:39.998Z"
+    },
+    {
+      "number": "1.1.0-b100ec81-b6",
+      "date": "2018-04-12T12:51:45.901Z"
+    },
+    {
+      "number": "1.1.0-1f5e6379-b7",
+      "date": "2018-04-12T13:04:27.507Z"
+    },
+    {
+      "number": "1.1.0-1c07abad-b8",
+      "date": "2018-04-13T07:46:05.751Z"
+    },
+    {
+      "number": "1.1.0-cb0bca1e-b9",
+      "date": "2018-04-13T08:03:12.587Z"
+    },
+    {
+      "number": "1.1.0-14449f4a-b10",
+      "date": "2018-04-13T08:49:45.923Z"
+    },
+    {
+      "number": "1.1.0-f4f74881-b11",
+      "date": "2018-04-13T09:01:46.563Z"
+    },
+    {
+      "number": "1.1.0-04d89e0c-b12",
+      "date": "2018-04-13T09:59:05.571Z"
+    },
+    {
+      "number": "1.1.0-6f6b07b4-b13",
+      "date": "2018-04-13T12:40:24.838Z"
+    },
+    {
+      "number": "1.1.0-5b613581-b14",
+      "date": "2018-04-13T12:51:53.966Z"
+    },
+    {
+      "number": "1.1.0-b7634ffa-b5",
+      "date": "2018-04-13T12:56:45.262Z"
+    },
+    {
+      "number": "1.1.0-745b02db-b15",
+      "date": "2018-04-13T13:15:26.839Z"
+    },
+    {
+      "number": "1.1.0-92d4cf9a-b16",
+      "date": "2018-04-13T13:28:04.517Z"
+    },
+    {
+      "number": "1.1.0-52a0cc97-b17",
+      "date": "2018-04-13T13:40:14.715Z"
+    },
+    {
+      "number": "1.1.0-72ffc50d-b18",
+      "date": "2018-04-13T14:09:34.262Z"
+    },
+    {
+      "number": "1.1.0-87d556de-b19",
+      "date": "2018-04-13T14:27:59.475Z"
+    },
+    {
+      "number": "1.1.0-b2c0881f-b20",
+      "date": "2018-04-13T14:41:37.727Z"
+    },
+    {
+      "number": "1.1.0-ad739666-b21",
+      "date": "2018-04-13T15:35:57.911Z"
+    },
+    {
+      "number": "1.1.0-6645054b-b22",
+      "date": "2018-04-13T15:39:56.287Z"
+    },
+    {
+      "number": "1.1.0-7be0924b-b1",
+      "date": "2018-04-13T15:44:14.470Z"
+    },
+    {
+      "number": "1.1.0-1e269a4d-b23",
+      "date": "2018-04-13T15:54:22.878Z"
+    },
+    {
+      "number": "1.1.0-2dde0122-b2",
+      "date": "2018-04-13T16:06:52.533Z"
+    },
+    {
+      "number": "1.1.0-6050f855-b3",
+      "date": "2018-04-13T16:17:21.326Z"
+    },
+    {
+      "number": "1.1.0-9e8f6276-b8",
+      "date": "2018-04-16T12:38:17.685Z"
+    },
+    {
+      "number": "1.1.0-fe0d8123-b9",
+      "date": "2018-04-16T15:40:53.979Z"
+    },
+    {
+      "number": "1.0.0-rc16-3a309d30-b2",
+      "date": "2018-04-17T07:48:40.860Z"
+    },
+    {
+      "number": "1.1.0-18924b7a-b12",
+      "date": "2018-04-19T06:49:25.752Z"
+    },
+    {
+      "number": "1.1.0-22bbcec5-b9",
+      "date": "2018-04-19T07:00:28.322Z"
+    },
+    {
+      "number": "1.1.0-5480d582-b31",
+      "date": "2018-04-19T07:11:42.509Z"
+    },
+    {
+      "number": "1.1.0-01214761-b32",
+      "date": "2018-04-19T08:08:40.656Z"
+    },
+    {
+      "number": "1.1.1-c696e3e6-b2",
+      "date": "2018-04-19T08:32:14.477Z"
+    },
+    {
+      "number": "1.1.0-5110a147-b33",
+      "date": "2018-04-19T09:51:08.618Z"
+    },
+    {
+      "number": "1.1.1",
+      "date": "2018-04-19T10:07:25.205Z"
+    },
+    {
+      "number": "1.1.0-8c6422c0-b34",
+      "date": "2018-04-19T10:45:50.475Z"
+    },
+    {
+      "number": "1.1.1-b259dd52-b3",
+      "date": "2018-04-19T12:57:25.502Z"
+    },
+    {
+      "number": "1.1.1-1245d561-b94",
+      "date": "2018-04-19T13:19:40.054Z"
+    },
+    {
+      "number": "1.1.1-614dbd4b-b4",
+      "date": "2018-04-20T08:06:22.609Z"
+    },
+    {
+      "number": "1.1.0-99e0180d-b35",
+      "date": "2018-04-20T09:13:54.221Z"
+    },
+    {
+      "number": "1.1.0-43e22cdd-b36",
+      "date": "2018-04-20T09:25:32.238Z"
+    },
+    {
+      "number": "1.1.0-8797a31e-b37",
+      "date": "2018-04-20T09:41:10.512Z"
+    },
+    {
+      "number": "1.1.0-18afcf10-b38",
+      "date": "2018-04-20T09:52:05.306Z"
+    },
+    {
+      "number": "1.1.1-a87b5be9-b1",
+      "date": "2018-04-20T10:58:06.879Z"
+    },
+    {
+      "number": "1.1.0-35af7198-b13",
+      "date": "2018-04-20T11:00:58.336Z"
+    },
+    {
+      "number": "1.1.0-4c4d343c-b39",
+      "date": "2018-04-20T13:19:19.208Z"
+    },
+    {
+      "number": "1.1.0-4201aaf2-b40",
+      "date": "2018-04-20T13:31:20.028Z"
+    },
+    {
+      "number": "1.1.0-c791729d-b41",
+      "date": "2018-04-20T13:45:42.169Z"
+    },
+    {
+      "number": "1.1.1-0806f779-b95",
+      "date": "2018-04-20T13:59:33.013Z"
+    },
+    {
+      "number": "1.1.0-e3fe8e30-b42",
+      "date": "2018-04-20T14:11:43.724Z"
+    },
+    {
+      "number": "1.1.0-92eaddbb-b43",
+      "date": "2018-04-20T14:25:33.206Z"
+    },
+    {
+      "number": "1.1.0-aa60666b-b44",
+      "date": "2018-04-20T14:36:46.682Z"
+    },
+    {
+      "number": "1.1.1-2620f1b4-b96",
+      "date": "2018-04-20T14:48:22.992Z"
+    },
+    {
+      "number": "1.1.0-af101e0a-b45",
+      "date": "2018-04-20T15:50:46.988Z"
+    },
+    {
+      "number": "1.1.0-62220ec1-b46",
+      "date": "2018-04-21T11:01:49.639Z"
+    },
+    {
+      "number": "1.1.0-12092493-b47",
+      "date": "2018-04-21T11:21:12.624Z"
+    },
+    {
+      "number": "1.1.0-3aed8982-b48",
+      "date": "2018-04-21T11:31:31.206Z"
+    },
+    {
+      "number": "1.1.0-e590ebee-b49",
+      "date": "2018-04-21T14:44:36.486Z"
+    },
+    {
+      "number": "1.1.0-7a6c6724-b50",
+      "date": "2018-04-22T16:31:53.415Z"
+    },
+    {
+      "number": "1.1.0-7d1908b4-b51",
+      "date": "2018-04-22T16:47:47.512Z"
+    },
+    {
+      "number": "1.1.0-668dfbd5-b52",
+      "date": "2018-04-22T17:18:07.845Z"
+    },
+    {
+      "number": "1.1.0-8af0a4e8-b53",
+      "date": "2018-04-22T17:31:08.086Z"
+    },
+    {
+      "number": "1.1.0-ea3fd2f3-b54",
+      "date": "2018-04-23T07:33:18.502Z"
+    },
+    {
+      "number": "1.1.1-409736a5-b2",
+      "date": "2018-04-23T07:46:34.211Z"
+    },
+    {
+      "number": "1.1.1-ce126a89-b3",
+      "date": "2018-04-23T07:59:05.433Z"
+    },
+    {
+      "number": "1.1.1-c78ca84d-b4",
+      "date": "2018-04-23T08:13:08.864Z"
+    },
+    {
+      "number": "1.1.0-99d3668c-b14",
+      "date": "2018-04-23T08:22:40.008Z"
+    },
+    {
+      "number": "1.1.1-23cd65b0-b10",
+      "date": "2018-04-23T08:34:26.177Z"
+    },
+    {
+      "number": "1.1.1-1408616d-b5",
+      "date": "2018-04-23T08:46:37.980Z"
+    },
+    {
+      "number": "1.1.1-3bee1384-b15",
+      "date": "2018-04-23T08:53:45.296Z"
+    },
+    {
+      "number": "1.1.1-2200b9be-b1",
+      "date": "2018-04-23T11:13:50.654Z"
+    },
+    {
+      "number": "1.1.1-ccb6339c-b2",
+      "date": "2018-04-23T14:01:40.521Z"
+    },
+    {
+      "number": "1.1.1-2b0ae408-b97",
+      "date": "2018-04-23T15:00:29.487Z"
+    },
+    {
+      "number": "1.1.1-96b66901-b16",
+      "date": "2018-04-23T15:07:14.560Z"
+    },
+    {
+      "number": "1.1.1-80cd0930-b98",
+      "date": "2018-04-23T21:18:12.786Z"
+    },
+    {
+      "number": "1.1.1-7c4c08c0-b55",
+      "date": "2018-04-24T07:37:51.457Z"
+    },
+    {
+      "number": "1.1.1-cbda9de0-b56",
+      "date": "2018-04-24T08:04:07.752Z"
+    },
+    {
+      "number": "1.1.1-7e7fcd0c-b57",
+      "date": "2018-04-24T08:34:18.192Z"
+    },
+    {
+      "number": "1.1.1-4f13e11b-b58",
+      "date": "2018-04-24T09:10:16.504Z"
+    },
+    {
+      "number": "1.1.1-cb9a8a89-b1",
+      "date": "2018-04-24T12:11:48.593Z"
+    },
+    {
+      "number": "1.1.1-6a824bc8-b59",
+      "date": "2018-04-24T12:31:34.384Z"
+    },
+    {
+      "number": "1.1.1-b4f5efff-b60",
+      "date": "2018-04-24T12:45:58.572Z"
+    },
+    {
+      "number": "1.1.1-7fbd97ad-b61",
+      "date": "2018-04-24T12:54:06.149Z"
+    },
+    {
+      "number": "1.1.1-049a7974-b62",
+      "date": "2018-04-24T12:54:22.835Z"
+    },
+    {
+      "number": "1.1.1-cb60e69a-b99",
+      "date": "2018-04-24T13:09:50.087Z"
+    },
+    {
+      "number": "1.1.1-8e6c9bf9-b63",
+      "date": "2018-04-24T13:21:29.400Z"
+    },
+    {
+      "number": "1.1.1-d1495d4d-b64",
+      "date": "2018-04-24T13:42:17.932Z"
+    },
+    {
+      "number": "1.1.1-12a1c1c1-b65",
+      "date": "2018-04-24T13:52:41.968Z"
+    },
+    {
+      "number": "1.1.1-b2493f96-b66",
+      "date": "2018-04-24T13:57:20.556Z"
+    },
+    {
+      "number": "1.1.1-23af1e22-b67",
+      "date": "2018-04-24T14:12:28.974Z"
+    },
+    {
+      "number": "1.1.1-4d2d27b1-b68",
+      "date": "2018-04-24T14:47:35.585Z"
+    },
+    {
+      "number": "1.1.1-c7621aee-b69",
+      "date": "2018-04-24T14:52:45.526Z"
+    },
+    {
+      "number": "1.1.1-cac45070-b3",
+      "date": "2018-04-24T19:19:48.343Z"
+    },
+    {
+      "number": "1.1.1-0cc17fe6-b71",
+      "date": "2018-04-25T08:02:28.933Z"
+    },
+    {
+      "number": "1.1.1-0f34b81a-b73",
+      "date": "2018-04-25T08:39:30.717Z"
+    },
+    {
+      "number": "1.1.1-d18418c0-b74",
+      "date": "2018-04-25T08:53:59.790Z"
+    },
+    {
+      "number": "1.1.1-8243994e-b75",
+      "date": "2018-04-25T09:16:14.145Z"
+    },
+    {
+      "number": "1.1.1-e2b984a9-b76",
+      "date": "2018-04-25T09:21:54.217Z"
+    },
+    {
+      "number": "1.1.1-c985b09f-b77",
+      "date": "2018-04-25T09:41:13.892Z"
+    },
+    {
+      "number": "1.1.1-40480a4b-b78",
+      "date": "2018-04-25T11:37:11.955Z"
+    },
+    {
+      "number": "1.1.1-09812d8f-b79",
+      "date": "2018-04-25T11:39:46.364Z"
+    },
+    {
+      "number": "1.1.1-b9b7c34b-b80",
+      "date": "2018-04-25T12:11:55.407Z"
+    },
+    {
+      "number": "1.1.1-e725182d-b81",
+      "date": "2018-04-25T14:43:59.111Z"
+    },
+    {
+      "number": "1.1.1-9885947a-b2",
+      "date": "2018-04-26T06:39:44.159Z"
+    },
+    {
+      "number": "1.1.1-c6fd187a-b3",
+      "date": "2018-04-26T07:10:46.404Z"
+    },
+    {
+      "number": "1.1.1-2531fdf0-b4",
+      "date": "2018-04-26T07:31:31.814Z"
+    },
+    {
+      "number": "1.1.1-f8f5c459-b5",
+      "date": "2018-04-26T07:48:21.665Z"
+    },
+    {
+      "number": "1.1.1-9f05cbfc-b6",
+      "date": "2018-04-26T08:10:35.983Z"
+    },
+    {
+      "number": "1.1.1-675457cd-b82",
+      "date": "2018-04-26T08:36:34.167Z"
+    },
+    {
+      "number": "1.1.1-ab0bd7ac-b83",
+      "date": "2018-04-26T08:40:32.253Z"
+    },
+    {
+      "number": "1.1.1-b7e7ae02-b7",
+      "date": "2018-04-26T09:23:10.899Z"
+    },
+    {
+      "number": "1.1.1-7a31e8b6-b84",
+      "date": "2018-04-26T09:39:30.104Z"
+    },
+    {
+      "number": "1.1.1-84e5b7c9-b85",
+      "date": "2018-04-26T09:56:42.474Z"
+    },
+    {
+      "number": "1.1.1-cca14948-b86",
+      "date": "2018-04-26T10:03:23.790Z"
+    },
+    {
+      "number": "1.1.1-ad05754a-b101",
+      "date": "2018-04-26T10:25:21.400Z"
+    },
+    {
+      "number": "1.1.1-187d9024-b87",
+      "date": "2018-04-27T07:32:55.693Z"
+    },
+    {
+      "number": "1.1.1-7548c612-b102",
+      "date": "2018-04-27T07:48:48.157Z"
+    },
+    {
+      "number": "1.2.1-faa15d01-b103",
+      "date": "2018-04-27T08:46:48.051Z"
+    },
+    {
+      "number": "1.1.1-907f2491-b4",
+      "date": "2018-04-27T09:21:34.575Z"
+    },
+    {
+      "number": "1.1.1-1f2d9a5b-b5",
+      "date": "2018-04-27T09:36:46.094Z"
+    },
+    {
+      "number": "1.2.1-dd51210f-b3",
+      "date": "2018-04-27T11:07:43.658Z"
+    },
+    {
+      "number": "1.2.1-f263f948-b4",
+      "date": "2018-04-27T11:16:25.011Z"
+    },
+    {
+      "number": "1.2.1-e964ad3b-b5",
+      "date": "2018-04-27T11:21:40.496Z"
+    },
+    {
+      "number": "1.2.1-b6be211f-b1",
+      "date": "2018-04-27T11:39:00.991Z"
+    },
+    {
+      "number": "1.2.1-6f6df7b7-b1",
+      "date": "2018-04-27T13:56:18.251Z"
+    },
+    {
+      "number": "1.2.1-eb720d0f-b2",
+      "date": "2018-04-27T14:15:09.256Z"
+    },
+    {
+      "number": "1.2.1-8e124306-b5",
+      "date": "2018-04-27T14:24:20.225Z"
+    },
+    {
+      "number": "1.2.1-c39c40de-b6",
+      "date": "2018-04-27T14:35:12.171Z"
+    },
+    {
+      "number": "1.2.1-83195c3c-b7",
+      "date": "2018-04-27T14:46:49.314Z"
+    },
+    {
+      "number": "1.2.1-199c83b3-b104",
+      "date": "2018-05-02T07:30:31.204Z"
+    },
+    {
+      "number": "1.2.1-64aec61e-b6",
+      "date": "2018-05-02T08:10:10.155Z"
+    },
+    {
+      "number": "1.2.1-7d4af834-b105",
+      "date": "2018-05-02T08:41:06.703Z"
+    },
+    {
+      "number": "1.2.1-d2a43ab3-b2",
+      "date": "2018-05-02T08:46:35.017Z"
+    },
+    {
+      "number": "1.2.1-4fd748a8-b106",
+      "date": "2018-05-02T12:27:38.471Z"
+    },
+    {
+      "number": "1.2.1-2c509c5b-b1",
+      "date": "2018-05-02T13:07:35.209Z"
+    },
+    {
+      "number": "1.2.1-9b16c6e1-b2",
+      "date": "2018-05-02T15:06:30.426Z"
+    },
+    {
+      "number": "1.2.1-123b3bc0-b8",
+      "date": "2018-05-03T06:08:18.217Z"
+    },
+    {
+      "number": "1.2.1-239e3683-b9",
+      "date": "2018-05-03T06:31:36.396Z"
+    },
+    {
+      "number": "1.2.1-2ce71c93-b10",
+      "date": "2018-05-03T06:57:31.441Z"
+    },
+    {
+      "number": "1.2.1-923d6931-b11",
+      "date": "2018-05-03T07:23:33.274Z"
+    },
+    {
+      "number": "1.2.1-7a645fe9-b12",
+      "date": "2018-05-03T07:45:38.233Z"
+    },
+    {
+      "number": "1.2.1-7a645fe9-b13",
+      "date": "2018-05-03T08:10:45.654Z"
+    },
+    {
+      "number": "1.2.1-f0b84970-b14",
+      "date": "2018-05-03T11:39:35.646Z"
+    },
+    {
+      "number": "1.2.1-896bcd9c-b107",
+      "date": "2018-05-03T13:10:40.853Z"
+    },
+    {
+      "number": "1.2.1-f4f9a753-b109",
+      "date": "2018-05-03T14:10:26.860Z"
+    },
+    {
+      "number": "1.2.1-a2b4d5b5-b6",
+      "date": "2018-05-03T14:37:32.837Z"
+    },
+    {
+      "number": "1.2.1-f4f9a753-b110",
+      "date": "2018-05-03T14:49:20.811Z"
+    },
+    {
+      "number": "1.2.1-de412b88-b2",
+      "date": "2018-05-04T10:07:28.107Z"
+    },
+    {
+      "number": "1.2.1-04c257f7-b3",
+      "date": "2018-05-04T10:19:56.625Z"
+    },
+    {
+      "number": "1.2.1-f7db78a9-b1",
+      "date": "2018-05-04T11:45:52.366Z"
+    },
+    {
+      "number": "1.2.1-39d90821-b4",
+      "date": "2018-05-04T13:40:32.225Z"
+    },
+    {
+      "number": "1.2.1-2255f996-b5",
+      "date": "2018-05-04T14:13:21.049Z"
+    }
+  ],
+  "created": "2018-01-16T14:45:11.615Z",
+  "modified": "2018-05-04T14:13:27.434Z",
+  "lastPublisher": {
+    "name": "developers5minds",
+    "email": "developers+npm@5minds.de"
+  },
+  "owners": [
+    {
+      "name": "developers5minds",
+      "email": "developers@5minds.de"
+    }
+  ]
+}

@@ -1,0 +1,261 @@
+{
+  "name": "uupaa.es.js",
+  "version": "0.9.25",
+  "description": "[![npm](https://nodei.co/npm/uupaa.es.js.svg?downloads=true&stars=true)](https://nodei.co/npm/uupaa.es.js/)",
+  "url": "https://github.com/uupaa/ES.js",
+  "keywords": [
+    "es5",
+    "es6",
+    "es7",
+    "polyfill",
+    "uupaa",
+    "WebModule"
+  ],
+  "repository": {
+    "user": "uupaa",
+    "repo": "ES.js",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/uupaa/ES.js/tarball/master",
+    "clone_url": "https://github.com/uupaa/ES.js",
+    "https_url": "https://github.com/uupaa/ES.js",
+    "travis_url": "https://travis-ci.org/uupaa/ES.js",
+    "zip_url": "https://github.com/uupaa/ES.js/archive/master.zip",
+    "api_url": "https://api.github.com/repos/uupaa/ES.js"
+  },
+  "scripts": {
+    "sync": "node ../WebModule/run/sync.js; npm update; node ../WebModule/run/page.js",
+    "wiki": "node ../WebModule/run/wiki.js",
+    "min": "node ../WebModule/run/minify.js --verbose --strict --keep --pretty",
+    "build": "node ../WebModule/run/minify.js --verbose --strict --keep --release",
+    "watch": "node ../WebModule/run/watch.js --verbose --run lint",
+    "page": "node ../WebModule/run/page.js --verbose",
+    "test": "npm run min; npm run node; npm run browser",
+    "node": "NODE_ENV=production NODE_PATH=lib node test/node/index.js",
+    "noded": "NODE_ENV=production NODE_PATH=lib node --debug-brk test/node/index.js",
+    "browser": "open http://localhost:8000/ES.js/test/browser/index.html",
+    "el": "electron test/el",
+    "nw": "nw test/nw",
+    "add-src": "node ../WebModule/run/add-src.js",
+    "add-subclass": "node ../WebModule/run/add-subclass.js",
+    "sim": "node ../WebModule/run/sim.js http://localhost:8000/ES.js/test/browser/index.html",
+    "simx": "node ../WebModule/run/sim.js stop",
+    "lint": "eslint lib/*.js",
+    "score": "node ../WebModule/run/score.js; open lint/plato/index.html",
+    "patch": "node ../WebModule/run/patch.js",
+    "setup": "node ../WebModule/run/setup.js",
+    "start": "cd ../; Python -m SimpleHTTPServer 8000 &",
+    "stop": "killall -- Python -m SimpleHTTPServer 8000; exit 0"
+  },
+  "webmodule": {
+    "develop": false,
+    "label": [
+      "@dev",
+      "@es5",
+      "@es6",
+      "@es7",
+      "@esx"
+    ],
+    "browser": {
+      "output": "release/ES.b.min.js",
+      "source": [
+        "lib/ES.js"
+      ]
+    },
+    "worker": {
+      "output": "release/ES.w.min.js",
+      "source": [
+        "lib/ES.js"
+      ]
+    },
+    "node": {
+      "output": "release/ES.n.min.js",
+      "source": [
+        "lib/ES.js"
+      ]
+    },
+    "nw": {
+      "output": "release/ES.nw.min.js",
+      "source": [
+        "lib/ES.js"
+      ]
+    },
+    "el": {
+      "output": "release/ES.el.min.js",
+      "source": [
+        "lib/ES.js"
+      ]
+    }
+  },
+  "dependencies": {},
+  "devDependencies": {},
+  "lib": "./lib/",
+  "main": "./index.js",
+  "author": {
+    "name": "uupaa"
+  },
+  "license": "MIT",
+  "contributors": [],
+  "gitHead": "0f07e414a5074942b78f0d66f828e904d024d824",
+  "homepage": "https://github.com/uupaa/ES.js",
+  "_npmVersion": "2.0.0",
+  "dist": {
+    "shasum": "40fab9164569a1b291e0359381eeb6f93852340a",
+    "tarball": "http://registry.npmjs.org/uupaa.es.js/-/uupaa.es.js-0.9.25.tgz"
+  },
+  "versions": [
+    {
+      "number": "0.8.0",
+      "date": "2014-02-14T06:10:14.988Z"
+    },
+    {
+      "number": "0.8.1",
+      "date": "2014-02-15T03:18:09.807Z"
+    },
+    {
+      "number": "0.8.2",
+      "date": "2014-03-12T19:25:53.458Z"
+    },
+    {
+      "number": "0.8.3",
+      "date": "2014-03-12T19:27:36.479Z"
+    },
+    {
+      "number": "0.8.4",
+      "date": "2014-03-18T14:46:02.654Z"
+    },
+    {
+      "number": "0.8.5",
+      "date": "2014-04-06T09:03:03.040Z"
+    },
+    {
+      "number": "0.8.6",
+      "date": "2014-04-17T20:05:17.643Z"
+    },
+    {
+      "number": "0.8.7",
+      "date": "2014-04-17T20:58:05.887Z"
+    },
+    {
+      "number": "0.8.8",
+      "date": "2014-04-18T16:23:54.838Z"
+    },
+    {
+      "number": "0.8.9",
+      "date": "2014-04-28T05:29:14.278Z"
+    },
+    {
+      "number": "0.8.10",
+      "date": "2014-05-01T20:57:53.519Z"
+    },
+    {
+      "number": "0.8.11",
+      "date": "2014-05-08T01:58:56.106Z"
+    },
+    {
+      "number": "0.9.0",
+      "date": "2014-05-21T20:42:45.559Z"
+    },
+    {
+      "number": "0.9.1",
+      "date": "2014-05-22T08:04:31.328Z"
+    },
+    {
+      "number": "0.9.2",
+      "date": "2014-12-12T00:52:36.545Z"
+    },
+    {
+      "number": "0.9.3",
+      "date": "2014-12-14T03:46:21.033Z"
+    },
+    {
+      "number": "0.9.5",
+      "date": "2015-05-05T17:51:44.173Z"
+    },
+    {
+      "number": "0.9.6",
+      "date": "2015-05-05T18:13:47.447Z"
+    },
+    {
+      "number": "0.9.7",
+      "date": "2015-05-06T16:25:24.949Z"
+    },
+    {
+      "number": "0.9.8",
+      "date": "2015-05-07T10:42:11.456Z"
+    },
+    {
+      "number": "0.9.9",
+      "date": "2015-05-08T12:29:33.403Z"
+    },
+    {
+      "number": "0.9.10",
+      "date": "2015-05-24T15:03:35.637Z"
+    },
+    {
+      "number": "0.9.11",
+      "date": "2015-05-25T11:36:50.508Z"
+    },
+    {
+      "number": "0.9.12",
+      "date": "2015-06-05T01:19:57.850Z"
+    },
+    {
+      "number": "0.9.13",
+      "date": "2015-06-07T18:57:07.285Z"
+    },
+    {
+      "number": "0.9.14",
+      "date": "2015-06-09T03:33:05.859Z"
+    },
+    {
+      "number": "0.9.15",
+      "date": "2015-06-10T12:08:39.262Z"
+    },
+    {
+      "number": "0.9.16",
+      "date": "2015-06-17T18:38:17.138Z"
+    },
+    {
+      "number": "0.9.17",
+      "date": "2015-06-21T15:25:39.486Z"
+    },
+    {
+      "number": "0.9.18",
+      "date": "2015-09-02T12:10:40.790Z"
+    },
+    {
+      "number": "0.9.19",
+      "date": "2015-09-03T21:35:44.597Z"
+    },
+    {
+      "number": "0.9.21",
+      "date": "2015-09-14T02:51:14.582Z"
+    },
+    {
+      "number": "0.9.22",
+      "date": "2016-01-27T02:50:54.944Z"
+    },
+    {
+      "number": "0.9.23",
+      "date": "2016-02-19T05:57:49.865Z"
+    },
+    {
+      "number": "0.9.25",
+      "date": "2016-05-17T04:27:51.630Z"
+    }
+  ],
+  "created": "2014-02-14T06:10:13.736Z",
+  "modified": "2016-05-17T04:27:51.630Z",
+  "lastPublisher": {
+    "name": "uupaa",
+    "email": "uupaa.js@gmail.com"
+  },
+  "owners": [
+    {
+      "name": "uupaa",
+      "email": "uupaa.js@gmail.com"
+    }
+  ]
+}

@@ -1,0 +1,138 @@
+{
+  "name": "uupaa.webgldetector.js",
+  "version": "0.1.2",
+  "description": "Detect WebGL",
+  "url": "https://github.com/uupaa/WebGLDetector.js",
+  "keywords": [
+    "WebGL",
+    "uupaa",
+    "WebModule"
+  ],
+  "repository": {
+    "user": "uupaa",
+    "repo": "WebGLDetector.js",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/uupaa/WebGLDetector.js/tarball/master",
+    "clone_url": "https://github.com/uupaa/WebGLDetector.js",
+    "https_url": "https://github.com/uupaa/WebGLDetector.js",
+    "travis_url": "https://travis-ci.org/uupaa/WebGLDetector.js",
+    "zip_url": "https://github.com/uupaa/WebGLDetector.js/archive/master.zip",
+    "api_url": "https://api.github.com/repos/uupaa/WebGLDetector.js"
+  },
+  "scripts": {
+    "sync": "node ../WebModule/run/sync.js; npm update; node ../WebModule/run/page.js",
+    "wiki": "node ../WebModule/run/wiki.js",
+    "min": "node ../WebModule/run/minify.js --verbose --strict --keep --pretty",
+    "build": "node ../WebModule/run/minify.js --verbose --strict --keep --release",
+    "watch": "node ../WebModule/run/watch.js --verbose --run lint",
+    "page": "node ../WebModule/run/page.js --verbose",
+    "test": "npm run min; npm run node; npm run browser",
+    "node": "NODE_ENV=production NODE_PATH=lib node test/node/index.js",
+    "noded": "NODE_ENV=production NODE_PATH=lib node --debug-brk test/node/index.js",
+    "browser": "open http://localhost:8000/WebGLDetector.js/test/browser/index.html",
+    "el": "electron test/el",
+    "nw": "nw test/nw",
+    "add-src": "node ../WebModule/run/add-src.js",
+    "add-subclass": "node ../WebModule/run/add-subclass.js",
+    "sim": "node ../WebModule/run/sim.js http://localhost:8000/WebGLDetector.js/test/browser/index.html",
+    "simx": "node ../WebModule/run/sim.js stop",
+    "lint": "eslint lib/*.js",
+    "score": "node ../WebModule/run/score.js; open lint/plato/index.html",
+    "patch": "node ../WebModule/run/patch.js",
+    "setup": "node ../WebModule/run/setup.js",
+    "start": "cd ../; Python -m SimpleHTTPServer 8000 &",
+    "stop": "killall -- Python -m SimpleHTTPServer 8000; exit 0"
+  },
+  "webmodule": {
+    "develop": false,
+    "label": [
+      "@dev"
+    ],
+    "browser": {
+      "output": "release/WebGLDetector.b.min.js",
+      "source": [
+        "lib/WebGLDetector.js"
+      ]
+    },
+    "nw": {
+      "output": "release/WebGLDetector.nw.min.js",
+      "source": [
+        "lib/WebGLDetector.js"
+      ]
+    },
+    "el": {
+      "output": "release/WebGLDetector.el.min.js",
+      "source": [
+        "lib/WebGLDetector.js"
+      ]
+    }
+  },
+  "dependencies": {},
+  "devDependencies": {},
+  "lib": "./lib/",
+  "main": "./index.js",
+  "author": {
+    "name": "uupaa"
+  },
+  "license": "MIT",
+  "contributors": [],
+  "gitHead": "f4d174b59908b8f4c4e5dc112ac9613c346264a8",
+  "homepage": "https://github.com/uupaa/WebGLDetector.js",
+  "_npmVersion": "2.0.0",
+  "dist": {
+    "shasum": "5e460c94835f75465c166aa61233fcdfa3a7b12e",
+    "tarball": "http://registry.npmjs.org/uupaa.webgldetector.js/-/uupaa.webgldetector.js-0.1.2.tgz"
+  },
+  "versions": [
+    {
+      "number": "0.0.0",
+      "date": "2015-08-13T17:01:44.121Z"
+    },
+    {
+      "number": "0.0.1",
+      "date": "2015-08-13T17:25:32.145Z"
+    },
+    {
+      "number": "0.0.2",
+      "date": "2015-08-13T19:03:04.838Z"
+    },
+    {
+      "number": "0.0.3",
+      "date": "2015-08-17T09:56:40.050Z"
+    },
+    {
+      "number": "0.0.4",
+      "date": "2015-09-02T13:02:48.152Z"
+    },
+    {
+      "number": "0.0.5",
+      "date": "2016-03-03T08:08:36.771Z"
+    },
+    {
+      "number": "0.1.0",
+      "date": "2016-09-22T01:06:24.816Z"
+    },
+    {
+      "number": "0.1.1",
+      "date": "2016-09-22T01:23:13.135Z"
+    },
+    {
+      "number": "0.1.2",
+      "date": "2016-09-22T01:45:25.601Z"
+    }
+  ],
+  "created": "2015-08-13T17:01:44.121Z",
+  "modified": "2016-09-22T01:45:25.601Z",
+  "lastPublisher": {
+    "name": "uupaa",
+    "email": "uupaa.js@gmail.com"
+  },
+  "owners": [
+    {
+      "name": "uupaa",
+      "email": "uupaa.js@gmail.com"
+    }
+  ]
+}

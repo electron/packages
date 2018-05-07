@@ -1,0 +1,118 @@
+{
+  "name": "apollo-link-electron",
+  "version": "0.1.0",
+  "description": "Get GraphQL results over IPC for Electron apps.",
+  "main": "dist/index.js",
+  "typings": "dist/index.d.ts",
+  "scripts": {
+    "prepublish": "npm run dist",
+    "precommit": "lint-staged",
+    "prepush": "npm test",
+    "clean": "rimraf dist",
+    "build": "tsc",
+    "preview": "NODE_ENV=development electron test",
+    "dist": "npm-run-all clean build",
+    "dev": "npm-run-all dist preview",
+    "jest": "NODE_ENV=test jest",
+    "test": "npm-run-all dist jest"
+  },
+  "repository": {
+    "user": "firede",
+    "repo": "apollo-link-electron",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/firede/apollo-link-electron/tarball/master",
+    "clone_url": "https://github.com/firede/apollo-link-electron",
+    "https_url": "https://github.com/firede/apollo-link-electron",
+    "travis_url": "https://travis-ci.org/firede/apollo-link-electron",
+    "zip_url": "https://github.com/firede/apollo-link-electron/archive/master.zip",
+    "api_url": "https://api.github.com/repos/firede/apollo-link-electron"
+  },
+  "keywords": [
+    "graphql",
+    "electron",
+    "apollo-link",
+    "ipc"
+  ],
+  "author": {
+    "name": "Firede",
+    "email": "firede@firede.us"
+  },
+  "license": "MIT",
+  "homepage": "https://github.com/firede/apollo-link-electron#readme",
+  "devDependencies": {
+    "@types/graphql": "^0.12.3",
+    "@types/jest": "^22.1.1",
+    "@types/node": "^9.4.0",
+    "apollo-cache-inmemory": "^1.1.5",
+    "apollo-client": "^2.2.1",
+    "devtron": "^1.4.0",
+    "electron": "^1.7.11",
+    "electron-graphql": "^0.2.0",
+    "graphql": "^0.12.3",
+    "graphql-tag": "^2.6.1",
+    "husky": "^0.14.3",
+    "jest": "^22.1.4",
+    "lint-staged": "^6.1.0",
+    "npm-run-all": "^4.1.2",
+    "prettier": "^1.10.2",
+    "rimraf": "^2.6.2",
+    "spectron": "^3.8.0",
+    "ts-jest": "^22.0.2",
+    "typescript": "^2.6.2"
+  },
+  "dependencies": {
+    "apollo-link": "^1.0.7"
+  },
+  "peerDependencies": {
+    "electron-graphql": "^0.2.0",
+    "graphql": "^0.11.0 || ^0.12.0 || ^0.13.0"
+  },
+  "jest": {
+    "transform": {
+      "^.+\\.tsx?$": "ts-jest"
+    },
+    "testRegex": "(/__tests__/.*|(\\.|/)(test|spec))\\.(jsx?|tsx?)$",
+    "moduleFileExtensions": [
+      "ts",
+      "tsx",
+      "js",
+      "jsx",
+      "json",
+      "node"
+    ]
+  },
+  "lint-staged": {
+    "*.{ts,tsx}": [
+      "prettier --write",
+      "git add"
+    ]
+  },
+  "gitHead": "77456b6da04fb127b7494cbdc4dd777f94da09dc",
+  "_npmVersion": "5.6.0",
+  "_nodeVersion": "8.9.4",
+  "dist": {
+    "integrity": "sha512-llZSMMoy4P/YT7ZXtegExSRNMS6a0zDuiZHwZEEQhlBceCIVzUDsNpR7NeXnhG7454cY4yASpRP+n71D7FkK4A==",
+    "shasum": "9296360543a63f309bcff55017cba4f10880bdf5",
+    "tarball": "https://registry.npmjs.org/apollo-link-electron/-/apollo-link-electron-0.1.0.tgz"
+  },
+  "versions": [
+    {
+      "number": "0.1.0",
+      "date": "2018-01-31T08:49:35.061Z"
+    }
+  ],
+  "created": "2018-01-31T08:49:35.061Z",
+  "modified": "2018-01-31T08:49:35.061Z",
+  "lastPublisher": {
+    "name": "firede",
+    "email": "firede@firede.us"
+  },
+  "owners": [
+    {
+      "name": "firede",
+      "email": "firede@firede.us"
+    }
+  ]
+}

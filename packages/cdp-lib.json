@@ -1,0 +1,167 @@
+{
+  "name": "cdp-lib",
+  "version": "0.1.7",
+  "description": "Contains npm modules used primarily by cdp boilerplate generator.",
+  "main": "dist/cdp-lib.min.js",
+  "types": "dist/@types/cdp-lib/index.d.ts",
+  "scripts": {
+    "test": "run-s -l clean compile lint unit-test",
+    "ci": "run-s -l clean build lint unit-test metrics document",
+    "package": "run-s ci && node ./tasks/clean.js --built --test --temp",
+    "check:update": "npm outdated || exit 0",
+    "update": "npm update --save-dev && npm update --save && npm run package",
+    "depends": "npm list --depth=1",
+    "depends:prod": "npm list --depth=0 --only=prod",
+    "depends:dev": "npm list --depth=0 --only=dev",
+    "debug": "node --inspect --debug-brk ./node_modules/jasmine-node/bin/jasmine-node tests/unit/",
+    "debug:inspect": "node-debug ./node_modules/jasmine-node/bin/jasmine-node tests/unit/",
+    "clean": "node ./tasks/clean.js",
+    "clean:temp": "node ./tasks/clean.js --temp",
+    "clean:coverage": "node ./tasks/clean.js --coverage",
+    "clean:typedoc": "node ./tasks/clean.js --typedoc",
+    "clean:test": "node ./tasks/clean.js --test",
+    "clean:built": "node ./tasks/clean.js --built",
+    "clean:pkg": "node ./tasks/clean.js --pkg",
+    "build": "node ./tasks/clean.js --built --test && run-p build:*",
+    "build:ts": "run-s -l compile:ts bundle:ts minify:ts",
+    "compile": "node ./tasks/clean.js --built --test && run-p compile:*",
+    "compile:ts": "run-s compile:ts:* ",
+    "compile:ts:src": "tsc -p ./tsconfig.json",
+    "compile:ts:test": "tsc -p ./tests/unit/tsconfig.json",
+    "bundle": "run-p bundle:*",
+    "bundle:ts": "webpack --config ./webpack.config.js && node ./tasks/bundle-finalizer.js",
+    "minify": "run-p minify:*",
+    "minify:ts": "uglifyjs dist/cdp-lib.js -o dist/cdp-lib.min.js --comments /^!/ --source-map includeSources,url=cdp-lib.min.js.map",
+    "lint": "run-p -l lint:*",
+    "lint:js": "eslint tasks/**/*.js built/**/*.js -c tests/eslint/eslintrc.json",
+    "lint:ts": "tslint -p ./tsconfig.json -c ./tests/tslint/tslint.json -e src/**/*.d.ts src/**/*.ts",
+    "unit-test": "npm run coverage:exec",
+    "unit-test:ci": "node ./node_modules/jasmine-node/bin/jasmine-node tests/unit/",
+    "coverage": "run-s clean:coverage compile:ts coverage:exec",
+    "coverage:exec": "nyc --reporter=html --reporter=text --report-dir=docs/reports/coverage --temp-directory=docs/reports/coverage -n=built/** ./node_modules/jasmine-node/bin/jasmine-node tests/unit/",
+    "document": "typedoc --out docs/typedoc/ src/",
+    "metrics": "plato -r -d docs/reports/metrics -e ./tests/eslint/eslintrc.json built/**/*.js"
+  },
+  "repository": {
+    "user": "sony",
+    "repo": "cdp-lib",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/sony/cdp-lib/tarball/master",
+    "clone_url": "https://github.com/sony/cdp-lib",
+    "https_url": "https://github.com/sony/cdp-lib",
+    "travis_url": "https://travis-ci.org/sony/cdp-lib",
+    "zip_url": "https://github.com/sony/cdp-lib/archive/master.zip",
+    "api_url": "https://api.github.com/repos/sony/cdp-lib"
+  },
+  "keywords": [
+    "CDP",
+    "TypeScript",
+    "cordova",
+    "electron"
+  ],
+  "author": {
+    "name": "Shin Ogata"
+  },
+  "license": "Apache-2.0",
+  "homepage": "https://github.com/sony/cdp-lib#readme",
+  "dependencies": {
+    "chalk": "^2.3.1",
+    "cli-spinner": "^0.2.8",
+    "fs-extra": "^5.0.0",
+    "glob": "^7.1.2",
+    "hogan.js": "^3.0.2",
+    "jquery": "^3.3.1",
+    "jsdom": "^9.12.0",
+    "lodash": "^4.17.5",
+    "semver-regex": "^1.0.0",
+    "underscore.string": "^3.3.4",
+    "uuid": "^3.2.1",
+    "which": "^1.3.0",
+    "xmldom": "^0.1.27"
+  },
+  "devDependencies": {
+    "@types/del": "^3.0.0",
+    "@types/fs-extra": "^5.0.0",
+    "@types/glob": "^5.0.35",
+    "@types/jasmine": "^2.8.6",
+    "@types/jquery": "^3.3.0",
+    "@types/lodash": "^4.14.104",
+    "@types/node": "^9.4.6",
+    "@types/underscore.string": "0.0.32",
+    "@types/uuidjs": "^3.6.0",
+    "@types/which": "^1.3.1",
+    "@types/xmldom": "^0.1.29",
+    "convert-source-map": "^1.5.1",
+    "del": "^3.0.0",
+    "dts-bundle": "^0.7.3",
+    "eslint": "^4.18.1",
+    "jasmine-node": "^2.0.0",
+    "npm-run-all": "^4.1.2",
+    "nyc": "^11.5.0",
+    "plato": "^1.7.0",
+    "source-map": "^0.7.1",
+    "source-map-loader": "^0.2.3",
+    "tslint": "^5.9.1",
+    "typedoc": "^0.10.0",
+    "typescript": "^2.7.2",
+    "typescript-formatter": "^7.1.0",
+    "uglify-es": "^3.3.10",
+    "webpack": "^3.11.0"
+  },
+  "gitHead": "b8614f9d20f083d6cd3168bb8e0304c70d6a89a0",
+  "_npmVersion": "5.6.0",
+  "_nodeVersion": "8.9.4",
+  "dist": {
+    "integrity": "sha512-3A0bV1N83kM1Rac+DCzg9m0c7QEjgqNOImCHVVgY6O2kL8KVCUpvXvwuqWBjj0o/DA9mDxQMHWOK2uto7CWdWw==",
+    "shasum": "40345a14da86db25ad1dc7f0406919885b047ea1",
+    "tarball": "http://registry.npmjs.org/cdp-lib/-/cdp-lib-0.1.7.tgz",
+    "fileCount": 125,
+    "unpackedSize": 524627
+  },
+  "_hasShrinkwrap": false,
+  "stars": 2,
+  "versions": [
+    {
+      "number": "0.1.0",
+      "date": "2017-10-27T08:52:18.111Z"
+    },
+    {
+      "number": "0.1.1",
+      "date": "2017-10-27T09:10:35.826Z"
+    },
+    {
+      "number": "0.1.2",
+      "date": "2017-10-30T02:59:17.842Z"
+    },
+    {
+      "number": "0.1.4",
+      "date": "2017-11-21T08:34:18.017Z"
+    },
+    {
+      "number": "0.1.5",
+      "date": "2018-02-06T05:09:42.353Z"
+    },
+    {
+      "number": "0.1.6",
+      "date": "2018-02-14T03:52:00.521Z"
+    },
+    {
+      "number": "0.1.7",
+      "date": "2018-02-23T12:26:03.411Z"
+    }
+  ],
+  "created": "2017-10-27T08:52:18.111Z",
+  "modified": "2018-02-23T12:26:04.689Z",
+  "lastPublisher": {
+    "name": "cdp",
+    "email": "cdp-info@jp.sony.com"
+  },
+  "owners": [
+    {
+      "name": "cdp",
+      "email": "cdp-info@jp.sony.com"
+    }
+  ]
+}

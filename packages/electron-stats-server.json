@@ -1,0 +1,109 @@
+{
+  "name": "electron-stats-server",
+  "version": "0.2.2",
+  "description": "Stats collection & reports server",
+  "author": {
+    "name": "Emma",
+    "url": "Riley"
+  },
+  "license": "MIT",
+  "typings": "./scr/app.d.ts",
+  "repository": {
+    "user": "tdmio",
+    "repo": "ess",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/tdmio/ess/tarball/master",
+    "clone_url": "https://github.com/tdmio/ess",
+    "https_url": "https://github.com/tdmio/ess",
+    "travis_url": "https://travis-ci.org/tdmio/ess",
+    "zip_url": "https://github.com/tdmio/ess/archive/master.zip",
+    "api_url": "https://api.github.com/repos/tdmio/ess"
+  },
+  "scripts": {
+    "db:migrate": "knex migrate:latest",
+    "db:rollback": "knex migrate:rollback",
+    "gulp:live": "gulp dev",
+    "gulp:build": "gulp build",
+    "test": "mocha ./tests/test.js --exit",
+    "start": "node ./app/app.js",
+    "start:interactive": "node ./prompt.js",
+    "wiki:setup": "git remote add wiki git@github.com:tdmio/ess.wiki.git",
+    "wiki:update": "(git branch -D wiki || true) && git subtree split -b wiki --prefix docs/ && git push -f wiki wiki:master"
+  },
+  "dependencies": {
+    "dotenv": "^5.0.1",
+    "hasha": "^3.0.0",
+    "inquirer": "^5.1.0",
+    "joi": "^13.1.2",
+    "knex": "^0.14.4",
+    "mysql2": "^1.3.4",
+    "restify": "^6.3.4",
+    "restify-cors-middleware": "1.1.0",
+    "restify-errors": "^6.0.0",
+    "restify-joi-middleware": "^4.0.0",
+    "scrypt": "^6.0.3",
+    "sqlite3": "^3.1.8",
+    "uuid": "^3.1.0"
+  },
+  "devDependencies": {
+    "@types/dotenv": "^4.0.0",
+    "@types/inquirer": "0.0.37",
+    "@types/joi": "^13.0.5",
+    "@types/knex": "0.14.8",
+    "@types/restify": "^5.0.7",
+    "@types/restify-errors": "^4.3.1",
+    "gulp": "^3.9.1",
+    "gulp-livereload": "^3.8.1",
+    "gulp-nodemon": "^2.2.1",
+    "gulp-typescript": "^4.0.1",
+    "mocha": "^5.0.1",
+    "should": "^13.2.1",
+    "typescript": "^2.3.4",
+    "watchify": "^3.9.0"
+  },
+  "gitHead": "35de0cab7987c23691b96b5f2061450c95846b03",
+  "homepage": "https://github.com/tdmio/ess#readme",
+  "_npmVersion": "5.6.0",
+  "_nodeVersion": "8.9.4",
+  "dist": {
+    "integrity": "sha512-IhenLC2sUYcclGBy0fU+RY5tDzLJ38ctpXufYWOmr70AG7cJfZR4PttInHKHvgXUylye7TNpb+nsIqy9TU4EcA==",
+    "shasum": "9ab4730541a134cbf12e6a8d11d2488d2e6c4068",
+    "tarball": "http://registry.npmjs.org/electron-stats-server/-/electron-stats-server-0.2.2.tgz",
+    "fileCount": 41,
+    "unpackedSize": 484514
+  },
+  "_hasShrinkwrap": false,
+  "stars": 1,
+  "versions": [
+    {
+      "number": "0.1.0",
+      "date": "2017-07-07T11:34:57.041Z"
+    },
+    {
+      "number": "0.2.0",
+      "date": "2017-07-08T14:57:02.694Z"
+    },
+    {
+      "number": "0.2.1",
+      "date": "2017-07-09T02:35:54.294Z"
+    },
+    {
+      "number": "0.2.2",
+      "date": "2018-03-10T03:24:21.698Z"
+    }
+  ],
+  "created": "2017-07-07T11:34:57.041Z",
+  "modified": "2018-03-10T03:24:23.285Z",
+  "lastPublisher": {
+    "name": "rileyio",
+    "email": "riley@tdm.io"
+  },
+  "owners": [
+    {
+      "name": "rileyio",
+      "email": "riley@tdm.io"
+    }
+  ]
+}

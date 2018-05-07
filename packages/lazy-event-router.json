@@ -1,0 +1,158 @@
+{
+  "name": "lazy-event-router",
+  "version": "8.0.4",
+  "description": "an event router",
+  "keywords": [],
+  "main": "./dist/lib/lazy-event-router.js",
+  "types": "./dist/lib/lazy-event-router.d.ts",
+  "files": [
+    "dist",
+    "web",
+    "web-es5"
+  ],
+  "scripts": {
+    "prepare": "npm run dist",
+    "prepublishOnly": "npm run lint && npm run test",
+    "dist": "npm run node && npm run web && npm run web-es5",
+    "node": "shx rm -rf dist && cross-env NODE_ENV=production tsc",
+    "web": "shx rm -rf web && cross-env NODE_ENV=production webpack",
+    "web-es5": "shx rm -rf web-es5 && cross-env NODE_ENV=production webpack --config webpack.config.es5.js",
+    "lint": "npm run eslint && npm run tslint",
+    "eslint": "eslint *.js lib test",
+    "tslint": "tslint -p .",
+    "test": "npm run test-node && npm run test-web-es2015 && npm run test-electron && npm run test-nwjs",
+    "test-win": "npm run test && npm run test-web-es5",
+    "test-cli": "npm run test-node && npm run test-web-headless",
+    "test-node": "cross-env NODE_ENV=test nyc mocha",
+    "test-electron": "cross-env NODE_ENV=test electron-mocha",
+    "test-nwjs": "cross-env NODE_ENV=test karma start karma.conf.nwjs.js --single-run",
+    "test-web-headless": "cross-env NODE_ENV=test NO_DETECT=1 karma start --single-run --browsers ChromeHeadless",
+    "test-web-es5": "cross-env NODE_ENV=test NO_DETECT=1 karma start --single-run --browsers IE karma.conf.es5.js",
+    "test-web-es2015": "cross-env NODE_ENV=test NO_IE=1 karma start --single-run",
+    "docdist": "cd doc && git clean -fd && git rm -rf * && cd .. && npm run doc && cd doc && touch .nojekyll && git add . && git commit -m doc && git push",
+    "doc": "typedoc --mode file --out doc --disableOutputCheck --excludeNotExported lib && cd doc && git status && cd .."
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "@types/mocha": "^2.2.46",
+    "@types/node": "^9.3.0",
+    "@types/power-assert": "^1.4.29",
+    "copy": "^0.3.1",
+    "cross-env": "^5.1.3",
+    "electron": "^1.8.2",
+    "electron-mocha": "^5.0.0",
+    "eslint": "^4.15.0",
+    "eslint-config-narazaka": "^1.0.1",
+    "espower-typescript": "^8.1.2",
+    "istanbul-instrumenter-loader": "^3.0.0",
+    "karma": "^2.0.0",
+    "karma-chrome-launcher": "^2.2.0",
+    "karma-coverage": "^1.1.1",
+    "karma-detect-browsers": "^2.2.6",
+    "karma-edge-launcher": "^0.4.2",
+    "karma-espower-preprocessor": "^1.1.1",
+    "karma-firefox-launcher": "^1.1.0",
+    "karma-ie-launcher": "^1.0.0",
+    "karma-mocha": "^1.3.0",
+    "karma-mocha-reporter": "^2.2.5",
+    "karma-nodewebkit-mocha": "^0.1.0",
+    "karma-nwjs-launcher": "^0.1.0",
+    "karma-opera-launcher": "^1.0.0",
+    "karma-safari-launcher": "^1.0.0",
+    "karma-sourcemap-loader": "^0.3.7",
+    "karma-webpack": "^2.0.9",
+    "mocha": "^5.0.0",
+    "nyc": "^11.4.1",
+    "power-assert": "^1.4.4",
+    "shx": "^0.2.2",
+    "ts-loader": "^3.2.0",
+    "tslint": "^5.9.1",
+    "typedoc": "^0.10.0",
+    "typescript": "^2.6.2",
+    "webpack": "^3.10.0"
+  },
+  "url": "https://github.com/Narazaka/lazy-event-router.js",
+  "author": {
+    "name": "Narazaka"
+  },
+  "license": "MIT",
+  "repository": {
+    "user": "Narazaka",
+    "repo": "lazy-event-router.js",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/Narazaka/lazy-event-router.js/tarball/master",
+    "clone_url": "https://github.com/Narazaka/lazy-event-router.js",
+    "https_url": "https://github.com/Narazaka/lazy-event-router.js",
+    "travis_url": "https://travis-ci.org/Narazaka/lazy-event-router.js",
+    "zip_url": "https://github.com/Narazaka/lazy-event-router.js/archive/master.zip",
+    "api_url": "https://api.github.com/repos/Narazaka/lazy-event-router.js"
+  },
+  "gitHead": "1a71cafe0555be27bc8d1e333f3a7d07a6248e64",
+  "homepage": "https://github.com/Narazaka/lazy-event-router.js#readme",
+  "_npmVersion": "5.5.1",
+  "_nodeVersion": "8.1.2",
+  "dist": {
+    "integrity": "sha512-iaBL/HDREOhCUn0lTSfsMNIr5bSoK/A2u/EPtIsSaaajDlQifae14d4WLvd1r9i24iVjbVGDxuhUqtQ4kFCsCQ==",
+    "shasum": "fd7270852efc95640eb3d311733fda4a84104f1c",
+    "tarball": "http://registry.npmjs.org/lazy-event-router/-/lazy-event-router-8.0.4.tgz",
+    "fileCount": 46,
+    "unpackedSize": 209491
+  },
+  "_hasShrinkwrap": false,
+  "versions": [
+    {
+      "number": "6.0.0",
+      "date": "2016-11-24T20:13:57.860Z"
+    },
+    {
+      "number": "6.0.1",
+      "date": "2016-11-25T11:37:14.595Z"
+    },
+    {
+      "number": "6.0.2",
+      "date": "2016-11-25T13:37:53.367Z"
+    },
+    {
+      "number": "6.0.3",
+      "date": "2016-11-25T13:50:20.005Z"
+    },
+    {
+      "number": "7.0.0",
+      "date": "2017-06-04T05:28:25.952Z"
+    },
+    {
+      "number": "8.0.0",
+      "date": "2017-06-04T06:53:04.855Z"
+    },
+    {
+      "number": "8.0.1",
+      "date": "2018-01-01T05:43:46.908Z"
+    },
+    {
+      "number": "8.0.2",
+      "date": "2018-01-02T09:03:15.231Z"
+    },
+    {
+      "number": "8.0.3",
+      "date": "2018-02-10T13:05:28.362Z"
+    },
+    {
+      "number": "8.0.4",
+      "date": "2018-02-17T05:51:17.624Z"
+    }
+  ],
+  "created": "2016-11-24T20:13:57.860Z",
+  "modified": "2018-02-17T05:51:18.834Z",
+  "lastPublisher": {
+    "name": "narazaka",
+    "email": "info@narazaka.net"
+  },
+  "owners": [
+    {
+      "name": "narazaka",
+      "email": "info@narazaka.net"
+    }
+  ]
+}

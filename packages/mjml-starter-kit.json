@@ -1,0 +1,73 @@
+{
+  "name": "mjml-starter-kit",
+  "version": "1.0.3",
+  "description": "MJML starter kit",
+  "main": "index.js",
+  "scripts": {
+    "build": "gulp build",
+    "start": "gulp",
+    "init-component": "mjml --init-component",
+    "lint": "eslint src test *.js",
+    "dev": "npm run hot-server & npm run start-hot & wait",
+    "start-hot": "cross-env HOT=1 NODE_ENV=development electron ./",
+    "package": "cross-env NODE_ENV=production node build.js",
+    "package-all": "npm run package -- --all",
+    "clean:osx": "rm -rf release *.dmg *.zip mjml-app/*",
+    "build:osx": "npm run clean:osx && npm run package && appdmg build/osx.json ./mjml-app-osx.dmg -v"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "lodash": "^4.3.0",
+    "mjml": "^3.1.1",
+    "react": "^15.4.2"
+  },
+  "devDependencies": {
+    "babel-plugin-transform-decorators-legacy": "^1.3.4",
+    "babel-preset-es2015": "^6.5.0",
+    "babel-preset-react": "^6.5.0",
+    "babel-preset-stage-0": "^6.5.0",
+    "babel-register": "^6.5.2",
+    "browser-sync": "^2.11.1",
+    "del": "^2.2.0",
+    "mjml": "^3.1.1",
+    "gulp": "^3.9.1",
+    "gulp-mjml": "^1.0.0",
+    "gulp-nodemon": "^2.0.6",
+    "gulp-util": "^3.0.7",
+    "node-notifier": "latest",
+    "through2": "^2.0.1"
+  },
+  "_npmVersion": "4.4.4",
+  "_nodeVersion": "6.10.0",
+  "dist": {
+    "shasum": "a21d5ff04fea7f1a664c7655a387e2646abbca2c",
+    "tarball": "https://registry.npmjs.org/mjml-starter-kit/-/mjml-starter-kit-1.0.3.tgz"
+  },
+  "versions": [
+    {
+      "number": "1.0.0",
+      "date": "2017-04-06T09:59:28.112Z"
+    },
+    {
+      "number": "1.0.2",
+      "date": "2017-04-07T09:21:29.755Z"
+    },
+    {
+      "number": "1.0.3",
+      "date": "2017-04-07T09:28:41.922Z"
+    }
+  ],
+  "created": "2017-04-06T09:59:28.112Z",
+  "modified": "2017-04-07T09:28:41.922Z",
+  "lastPublisher": {
+    "name": "a.courro",
+    "email": "a.courro@prismamedia.com"
+  },
+  "owners": [
+    {
+      "name": "a.courro",
+      "email": "a.courro@prismamedia.com"
+    }
+  ]
+}

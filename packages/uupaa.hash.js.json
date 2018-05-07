@@ -1,0 +1,245 @@
+{
+  "name": "uupaa.hash.js",
+  "version": "0.2.8",
+  "description": "Hash functions.",
+  "url": "https://github.com/uupaa/Hash.js",
+  "keywords": [
+    "Hash",
+    "MD5",
+    "SHA1",
+    "HMAC",
+    "Adler32",
+    "xxHash",
+    "Murmur",
+    "CRC",
+    "CTC-16-CCITT",
+    "CRC-16-IBM",
+    "CRC-32",
+    "CRC-32/MPEG",
+    "uupaa",
+    "WebModule",
+    "Unstable"
+  ],
+  "repository": {
+    "user": "uupaa",
+    "repo": "Hash.js",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/uupaa/Hash.js/tarball/master",
+    "clone_url": "https://github.com/uupaa/Hash.js",
+    "https_url": "https://github.com/uupaa/Hash.js",
+    "travis_url": "https://travis-ci.org/uupaa/Hash.js",
+    "zip_url": "https://github.com/uupaa/Hash.js/archive/master.zip",
+    "api_url": "https://api.github.com/repos/uupaa/Hash.js"
+  },
+  "scripts": {
+    "sync": "node ../WebModule/run/sync.js; npm update; node ../WebModule/run/page.js",
+    "wiki": "node ../WebModule/run/wiki.js",
+    "min": "node ../WebModule/run/minify.js --verbose --strict --keep --pretty",
+    "build": "node ../WebModule/run/minify.js --verbose --strict --keep --release",
+    "watch": "node ../WebModule/run/watch.js --verbose --run lint",
+    "page": "node ../WebModule/run/page.js --verbose",
+    "test": "npm run min; npm run node; npm run browser",
+    "node": "NODE_ENV=production NODE_PATH=lib node test/node/index.js",
+    "noded": "NODE_ENV=production NODE_PATH=lib node --debug-brk test/node/index.js",
+    "browser": "open http://localhost:8000/Hash.js/test/browser/index.html",
+    "el": "electron test/el",
+    "nw": "nw test/nw",
+    "add-src": "node ../WebModule/run/add-src.js",
+    "add-subclass": "node ../WebModule/run/add-subclass.js",
+    "sim": "node ../WebModule/run/sim.js http://localhost:8000/Hash.js/test/browser/index.html",
+    "simx": "node ../WebModule/run/sim.js stop",
+    "lint": "eslint lib/*.js",
+    "score": "node ../WebModule/run/score.js; open lint/plato/index.html",
+    "patch": "node ../WebModule/run/patch.js",
+    "setup": "node ../WebModule/run/setup.js",
+    "start": "cd ../; Python -m SimpleHTTPServer 8000 &",
+    "stop": "killall -- Python -m SimpleHTTPServer 8000; exit 0"
+  },
+  "webmodule": {
+    "develop": false,
+    "label": [
+      "@dev",
+      "@md5",
+      "@sha1",
+      "@hmac"
+    ],
+    "browser": {
+      "output": "release/Hash.b.min.js",
+      "source": [
+        "lib/Hash.js"
+      ]
+    },
+    "worker": {
+      "output": "release/Hash.w.min.js",
+      "source": [
+        "lib/Hash.js"
+      ]
+    },
+    "node": {
+      "output": "release/Hash.n.min.js",
+      "source": [
+        "lib/Hash.js"
+      ]
+    },
+    "nw": {
+      "output": "release/Hash.nw.min.js",
+      "source": [
+        "lib/Hash.js"
+      ]
+    },
+    "el": {
+      "output": "release/Hash.el.min.js",
+      "source": [
+        "lib/Hash.js"
+      ]
+    }
+  },
+  "dependencies": {
+    "uupaa.bit.js": ""
+  },
+  "devDependencies": {
+    "uupaa.hexdump.js": ""
+  },
+  "lib": "./lib/",
+  "main": "./index.js",
+  "author": {
+    "name": "uupaa"
+  },
+  "license": "MIT",
+  "contributors": [],
+  "gitHead": "31d32cd5c2ef8149a75e4edf2803e5333c95ba9c",
+  "homepage": "https://github.com/uupaa/Hash.js",
+  "_npmVersion": "2.0.0",
+  "dist": {
+    "shasum": "6094516b51d6e00de7ba00ec31127902d07cb172",
+    "tarball": "http://registry.npmjs.org/uupaa.hash.js/-/uupaa.hash.js-0.2.8.tgz"
+  },
+  "versions": [
+    {
+      "number": "0.0.0",
+      "date": "2015-01-03T03:18:55.131Z"
+    },
+    {
+      "number": "0.0.1",
+      "date": "2015-01-03T05:00:56.860Z"
+    },
+    {
+      "number": "0.0.2",
+      "date": "2015-01-06T10:46:15.300Z"
+    },
+    {
+      "number": "0.0.4",
+      "date": "2015-01-24T10:12:10.992Z"
+    },
+    {
+      "number": "0.0.5",
+      "date": "2015-01-24T12:07:42.167Z"
+    },
+    {
+      "number": "0.0.6",
+      "date": "2015-01-25T21:06:54.409Z"
+    },
+    {
+      "number": "0.0.7",
+      "date": "2015-03-06T12:28:37.782Z"
+    },
+    {
+      "number": "0.0.8",
+      "date": "2015-03-06T13:17:45.404Z"
+    },
+    {
+      "number": "0.0.9",
+      "date": "2015-03-30T05:15:19.649Z"
+    },
+    {
+      "number": "0.0.10",
+      "date": "2015-03-30T05:43:28.229Z"
+    },
+    {
+      "number": "0.0.11",
+      "date": "2015-05-03T14:44:01.835Z"
+    },
+    {
+      "number": "0.0.12",
+      "date": "2015-05-23T22:29:10.207Z"
+    },
+    {
+      "number": "0.0.13",
+      "date": "2015-05-23T23:04:40.678Z"
+    },
+    {
+      "number": "0.0.14",
+      "date": "2015-05-23T23:20:43.447Z"
+    },
+    {
+      "number": "0.0.15",
+      "date": "2015-05-25T09:48:40.905Z"
+    },
+    {
+      "number": "0.0.16",
+      "date": "2015-05-25T09:55:48.630Z"
+    },
+    {
+      "number": "0.0.17",
+      "date": "2015-05-25T11:13:13.634Z"
+    },
+    {
+      "number": "0.0.18",
+      "date": "2015-05-25T11:38:06.395Z"
+    },
+    {
+      "number": "0.1.0",
+      "date": "2015-06-04T18:23:33.791Z"
+    },
+    {
+      "number": "0.2.0",
+      "date": "2015-06-04T18:31:31.480Z"
+    },
+    {
+      "number": "0.2.1",
+      "date": "2015-06-07T19:06:56.639Z"
+    },
+    {
+      "number": "0.2.2",
+      "date": "2015-06-12T08:35:04.240Z"
+    },
+    {
+      "number": "0.2.3",
+      "date": "2015-09-23T14:45:41.445Z"
+    },
+    {
+      "number": "0.2.4",
+      "date": "2015-09-23T14:59:42.541Z"
+    },
+    {
+      "number": "0.2.5",
+      "date": "2016-03-16T06:04:09.834Z"
+    },
+    {
+      "number": "0.2.6",
+      "date": "2016-03-23T19:11:02.297Z"
+    },
+    {
+      "number": "0.2.7",
+      "date": "2016-03-23T19:25:27.117Z"
+    },
+    {
+      "number": "0.2.8",
+      "date": "2016-04-18T16:16:15.498Z"
+    }
+  ],
+  "created": "2015-01-03T03:18:55.131Z",
+  "modified": "2016-04-18T16:16:15.498Z",
+  "lastPublisher": {
+    "name": "uupaa",
+    "email": "uupaa.js@gmail.com"
+  },
+  "owners": [
+    {
+      "name": "uupaa",
+      "email": "uupaa.js@gmail.com"
+    }
+  ]
+}

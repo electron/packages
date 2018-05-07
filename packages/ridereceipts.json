@@ -1,0 +1,165 @@
+{
+  "name": "ridereceipts",
+  "version": "1.3.0",
+  "author": {
+    "name": "Meet Godhani",
+    "email": "meetgodhani23@gmail.com"
+  },
+  "description": "Simple automation desktop app to download and organize your tax invoices from Uber.",
+  "license": "MIT",
+  "main": "./dist/electron/main.js",
+  "scripts": {
+    "build": "cross-env PUPPETEER_SKIP_CHROMIUM_DOWNLOAD=true node .electron-vue/build.js && electron-builder",
+    "build:dir": "node .electron-vue/build.js && electron-builder --dir",
+    "build:clean": "cross-env BUILD_TARGET=clean node .electron-vue/build.js",
+    "build:web": "cross-env BUILD_TARGET=web node .electron-vue/build.js",
+    "publish": "build --mac --win --linux -p always",
+    "dev": "node .electron-vue/dev-runner.js",
+    "lint": "eslint --ext .js,.vue -f ./node_modules/eslint-friendly-formatter src",
+    "lint:fix": "eslint --ext .js,.vue -f ./node_modules/eslint-friendly-formatter --fix src",
+    "pack": "npm run pack:main && npm run pack:renderer",
+    "pack:main": "cross-env NODE_ENV=production webpack --progress --colors --config .electron-vue/webpack.main.config.js",
+    "pack:renderer": "cross-env NODE_ENV=production webpack --progress --colors --config .electron-vue/webpack.renderer.config.js",
+    "postinstall": "npm run lint:fix"
+  },
+  "build": {
+    "publish": [
+      {
+        "provider": "github",
+        "owner": "ridereceipts",
+        "repo": "ridereceipts"
+      }
+    ],
+    "productName": "Ride Receipts",
+    "appId": "org.ridereceipts.ridereceipts",
+    "directories": {
+      "output": "build"
+    },
+    "files": [
+      "dist/electron/**/*"
+    ],
+    "dmg": {
+      "contents": [
+        {
+          "x": 410,
+          "y": 150,
+          "type": "link",
+          "path": "/Applications"
+        },
+        {
+          "x": 130,
+          "y": 150,
+          "type": "file"
+        }
+      ]
+    },
+    "mac": {
+      "publish": [
+        "github"
+      ],
+      "icon": "build/icons/icon.icns"
+    },
+    "win": {
+      "publish": [
+        "github"
+      ],
+      "icon": "build/icons/icon.ico"
+    },
+    "linux": {
+      "publish": [
+        "github"
+      ],
+      "icon": "build/icons"
+    }
+  },
+  "dependencies": {
+    "axios": "^0.18.0",
+    "bootstrap": "^4.1.0",
+    "bootstrap-vue": "^1.4.0",
+    "electron-store": "^1.3.0",
+    "fkill": "^5.2.0",
+    "fs-jetpack": "^1.2.0",
+    "jquery": "^3.2.1",
+    "moment": "^2.19.3",
+    "moment-timezone": "^0.5.14",
+    "popper.js": "^1.12.9",
+    "puppeteer": "^1.1.1",
+    "sass-loader": "^7.0.1",
+    "vue": "^2.5.9",
+    "vue-electron": "^1.0.6",
+    "vue-router": "^3.0.1"
+  },
+  "devDependencies": {
+    "babel-core": "^6.25.0",
+    "babel-eslint": "^8.0.3",
+    "babel-loader": "^7.1.1",
+    "babel-plugin-transform-runtime": "^6.23.0",
+    "babel-preset-env": "^1.6.0",
+    "babel-preset-stage-0": "^6.24.1",
+    "babel-register": "^6.24.1",
+    "babili-webpack-plugin": "^0.1.2",
+    "cfonts": "^1.1.3",
+    "chalk": "^2.1.0",
+    "copy-webpack-plugin": "^4.0.1",
+    "cross-env": "^5.0.5",
+    "css-loader": "^0.28.4",
+    "del": "^3.0.0",
+    "devtron": "^1.4.0",
+    "electron": "^1.8.4",
+    "electron-builder": "^20.2.0",
+    "electron-debug": "^1.4.0",
+    "electron-devtools-installer": "^2.2.0",
+    "electron-updater": "^2.20.1",
+    "eslint": "^4.4.1",
+    "eslint-config-standard": "^11.0.0",
+    "eslint-friendly-formatter": "^4.0.0",
+    "eslint-loader": "^2.0.0",
+    "eslint-plugin-html": "^4.0.1",
+    "eslint-plugin-import": "^2.7.0",
+    "eslint-plugin-node": "^6.0.0",
+    "eslint-plugin-promise": "^3.5.0",
+    "eslint-plugin-standard": "^3.0.1",
+    "extract-text-webpack-plugin": "^3.0.0",
+    "file-loader": "^1.1.5",
+    "html-webpack-plugin": "^2.30.1",
+    "multispinner": "^0.2.1",
+    "node-loader": "^0.6.0",
+    "node-sass": "^4.7.2",
+    "style-loader": "^0.20.1",
+    "url-loader": "^0.6.2",
+    "vue-html-loader": "^1.2.4",
+    "vue-loader": "^14.1.1",
+    "vue-style-loader": "^4.0.2",
+    "vue-template-compiler": "^2.4.2",
+    "webpack": "^3.5.2",
+    "webpack-dev-server": "^2.7.1",
+    "webpack-hot-middleware": "^2.18.2"
+  },
+  "licenseText": "The MIT License (MIT)\n\nCopyright (c) 2017-present Ride Receipts\n\nPermission is hereby granted, free of charge, to any person obtaining a copy\nof this software and associated documentation files (the \"Software\"), to deal\nin the Software without restriction, including without limitation the rights\nto use, copy, modify, merge, publish, distribute, sublicense, and/or sell\ncopies of the Software, and to permit persons to whom the Software is\nfurnished to do so, subject to the following conditions:\n\nThe above copyright notice and this permission notice shall be included in all\ncopies or substantial portions of the Software.\n\nTHE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR\nIMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,\nFITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE\nAUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER\nLIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,\nOUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE\nSOFTWARE.\n",
+  "dist": {
+    "shasum": "1f21d3580922584d52b413a197acd44126b22f06",
+    "tarball": "https://registry.npmjs.org/ridereceipts/-/ridereceipts-1.3.0.tgz",
+    "fileCount": 57,
+    "unpackedSize": 1327447,
+    "npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJa1VazCRA9TVsSAnZWagAAD2UP/114GDBhdKRfasXF6xP+\nN6ZRN9jzvdjNZn+SS9PsB9v/femw6l15KhpD5onEHSWAamQ29cBfe0gO5J/Z\nT4qvzR++wi7jDdZIYF0jAg2B4acPmt2hCcDNlJusHAzI2am+q9cdyMuhBygy\nyqGThfXNXZT8GKuCwfMLJ0136EJxtm3ArN+m8DFTID4rwzFQfS/6Xx5gMVTl\nBxGY6HgicTS5uSb406DUx60ZN+jLRTM/81suRCtzn1EAYMOz5zaPron5SbKl\nfCHQY0u3QvlOTdIAedwNoN9efQ3X/b3jwP0kcKpg1/5tiyrb00wKvBtOqHzk\naN1aNrnb+iPgAlCcS7e7zTUaS2ZGv52apoiUp3vFLUsUdTCP9/NQks/wPSZD\nB59tc42H3msRHHCi4VgfToJB+bW8Ywa/b35pBFCuQH4BS4Vkeq4kFLJyb815\nvMNZ+XSk4nNsnihEg4VaRsmDS0vF6HaBkOkUjbpryd3jHCXpcF4PLrEvpzQ6\nZkKMguSwPFdbpl4U/5GjnwDaOd+XbO7MZ2YgrFRxQxU6DSK5JOipoLy6MSV1\n6OazrM1FEYBapj5xukRovPBIDI6eW6wsrusi7lLE/gX/NcK9QewveCC1P/W/\nE1n+0/rkYxO4Ztn7AWz/4kyMqrQ4T6wFHFTnd8YEVMPcAv3IgbyH3xY/86aq\n7bxx\r\n=zMHc\r\n-----END PGP SIGNATURE-----\r\n"
+  },
+  "_hasShrinkwrap": false,
+  "versions": [
+    {
+      "number": "1.3.0",
+      "date": "2018-04-17T02:06:42.897Z"
+    }
+  ],
+  "created": "2018-04-17T02:06:42.705Z",
+  "modified": "2018-04-17T02:06:46.033Z",
+  "lastPublisher": {
+    "name": "mrgodhani",
+    "email": "meetgodhani23@gmail.com"
+  },
+  "owners": [
+    {
+      "name": "mrgodhani",
+      "email": "meetgodhani23@gmail.com"
+    }
+  ]
+}

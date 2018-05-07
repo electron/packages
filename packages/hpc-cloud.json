@@ -1,0 +1,429 @@
+{
+  "name": "hpc-cloud",
+  "description": "Virtual platform for running simulations and visualization",
+  "license": "Apache-2.0",
+  "version": "2.0.0",
+  "main": "./lib/app.js",
+  "repository": {
+    "user": "Kitware",
+    "repo": "HPCCloud",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/Kitware/HPCCloud/tarball/master",
+    "clone_url": "https://github.com/Kitware/HPCCloud",
+    "https_url": "https://github.com/Kitware/HPCCloud",
+    "travis_url": "https://travis-ci.org/Kitware/HPCCloud",
+    "zip_url": "https://github.com/Kitware/HPCCloud/archive/master.zip",
+    "api_url": "https://api.github.com/repos/Kitware/HPCCloud"
+  },
+  "engines": {
+    "node": ">= 8",
+    "npm": ">= 5"
+  },
+  "dependencies": {
+    "commander": "2.13.0",
+    "open": "0.0.5",
+    "shelljs": "0.8.1",
+    "monologue.js": "0.3.5",
+    "mout": "1.1.0",
+    "react": "16.2.0",
+    "react-dom": "16.2.0",
+    "hammerjs": "2.0.8",
+    "font-awesome": "4.7.0",
+    "react-redux": "5.0.6",
+    "redux": "3.7.2",
+    "reselect": "3.0.1",
+    "react-router-dom": "4.2.2",
+    "query-string": "6.0.0"
+  },
+  "devDependencies": {
+    "react-test-renderer": "16.2.0",
+    "wslink": "0.1.7",
+    "axios": "0.18.0",
+    "font-awesome": "4.7.0",
+    "bootstrap": "3.3.7",
+    "karma": "2.0.0",
+    "karma-chrome-launcher": "2.2.0",
+    "karma-coverage": "1.1.1",
+    "karma-electron": "5.2.2",
+    "karma-tap": "4.1.0",
+    "karma-spec-reporter": "0.0.32",
+    "karma-webpack": "2.0.9",
+    "tap-spec": "4.1.1",
+    "tap-markdown": "1.2.1",
+    "tape": "4.8.0",
+    "tape-catch": "1.0.6",
+    "karma-jasmine": "1.1.1",
+    "karma-sourcemap-loader": "0.3.7",
+    "istanbul-instrumenter-loader": "0.2.0",
+    "jasmine": "3.1.0",
+    "redux-actions-assertions": "1.3.0",
+    "redux-thunk": "2.2.0",
+    "expect": "1.20.1",
+    "codecov.io": "0.1.6",
+    "paraviewweb": "3.1.2",
+    "pvw-visualizer": "3.1.1",
+    "vtk.js": "6.3.14",
+    "simput": "1.5.0",
+    "candela": "0.19.1",
+    "kw-doc": "1.1.1",
+    "kw-web-suite": "6.0.1"
+  },
+  "scripts": {
+    "validate": "prettier --config ./prettier.config.js --list-different \"src/**/*.js\"",
+    "reformat": "prettier --config ./prettier.config.js --write \"src/**/*.js\"",
+    "install:pyfr": "cp ./node_modules/simput/dist/types/pyfr.js ./dist/simput-pyfr.js",
+    "install:nwchem": "cp ./node_modules/simput/dist/types/nwchem.js ./dist/simput-nwchem.js",
+    "install:nwchem-neb": "cp ./node_modules/simput/dist/types/nwchem-neb.js ./dist/simput-nwchem-neb.js",
+    "install:openfoam": "cp ./node_modules/simput/dist/types/openfoam_tutorials.js ./dist/simput-openfoam-tutorials.js",
+    "install:openfoamw": "cp ./node_modules/simput/dist/types/openfoam-windtunnel.js ./dist/simput-openfoam-windtunnel.js",
+    "postinstall": "npm run install:pyfr && npm run install:nwchem && npm run install:nwchem-neb && npm run install:openfoam && npm run install:openfoamw",
+    "check": "node bin/version-check.js",
+    "doc": "kw-doc -c ./docs/config.js",
+    "doc:www": "kw-doc -c ./docs/config.js -s",
+    "doc:publish": "kw-doc -c ./docs/config.js -p",
+    "prebuild": "npm run check",
+    "build": "webpack --progress --colors --mode development",
+    "build:debug": "webpack --display-modules --mode development",
+    "build:release": "webpack --progress --colors --mode production",
+    "start": "webpack-dev-server --progress --open",
+    "test": "karma start test/karma.all.js",
+    "test:redux": "karma start test/karma.redux.js",
+    "test:component": "karma start test/karma.component.js",
+    "test:debug": "karma start test/karma.all.js --no-single-run --browsers Chrome",
+    "codecov": "cat coverage/lcov/lcov.info | ./node_modules/codecov.io/bin/codecov.io.js",
+    "commit": "git cz",
+    "semantic-release": "semantic-release"
+  },
+  "bin": {
+    "HPCCloud": "./bin/hpc-cloud-cli.js"
+  },
+  "config": {
+    "commitizen": {
+      "path": "node_modules/cz-conventional-changelog"
+    }
+  },
+  "gitHead": "692e270420c9c681c38e6346c19a9df4a7268a07",
+  "homepage": "https://github.com/Kitware/HPCCloud#readme",
+  "_npmVersion": "5.5.1",
+  "_nodeVersion": "8.9.1",
+  "dist": {
+    "integrity": "sha512-x+37x43uSZkClYtHlAgGrDcXJTTkTDLRYqko4bQCC3nzr2Jovbn4Dpc99mSd6t2Yy+dJ1ZDDXAIoNn+6SX+uaQ==",
+    "shasum": "e70556265d10dabec5eb588bed5ee900868de173",
+    "tarball": "http://registry.npmjs.org/hpc-cloud/-/hpc-cloud-2.0.0.tgz",
+    "fileCount": 733,
+    "unpackedSize": 8255099
+  },
+  "_hasShrinkwrap": false,
+  "versions": [
+    {
+      "number": "1.0.0",
+      "date": "2016-03-07T19:08:51.765Z"
+    },
+    {
+      "number": "1.0.1",
+      "date": "2016-03-07T23:48:00.057Z"
+    },
+    {
+      "number": "1.0.2",
+      "date": "2016-03-08T23:58:14.286Z"
+    },
+    {
+      "number": "1.0.3",
+      "date": "2016-03-09T19:02:01.179Z"
+    },
+    {
+      "number": "1.0.4",
+      "date": "2016-03-09T21:01:16.511Z"
+    },
+    {
+      "number": "1.0.5",
+      "date": "2016-03-10T18:36:03.931Z"
+    },
+    {
+      "number": "1.0.6",
+      "date": "2016-03-11T23:53:16.699Z"
+    },
+    {
+      "number": "1.0.7",
+      "date": "2016-03-14T19:19:54.254Z"
+    },
+    {
+      "number": "1.0.8",
+      "date": "2016-03-14T20:58:49.095Z"
+    },
+    {
+      "number": "1.0.9",
+      "date": "2016-03-14T22:04:05.507Z"
+    },
+    {
+      "number": "1.0.10",
+      "date": "2016-03-14T23:04:18.713Z"
+    },
+    {
+      "number": "1.0.11",
+      "date": "2016-03-15T05:03:02.268Z"
+    },
+    {
+      "number": "1.0.12",
+      "date": "2016-03-15T21:28:09.097Z"
+    },
+    {
+      "number": "1.0.13",
+      "date": "2016-03-15T21:37:52.914Z"
+    },
+    {
+      "number": "1.0.14",
+      "date": "2016-03-16T14:37:45.621Z"
+    },
+    {
+      "number": "1.0.15",
+      "date": "2016-03-16T14:55:51.950Z"
+    },
+    {
+      "number": "1.0.16",
+      "date": "2016-03-16T15:24:58.442Z"
+    },
+    {
+      "number": "1.0.17",
+      "date": "2016-03-16T16:54:45.838Z"
+    },
+    {
+      "number": "1.0.18",
+      "date": "2016-03-16T22:01:51.591Z"
+    },
+    {
+      "number": "1.0.19",
+      "date": "2016-03-17T17:01:24.141Z"
+    },
+    {
+      "number": "1.0.20",
+      "date": "2016-03-17T17:59:06.481Z"
+    },
+    {
+      "number": "1.0.21",
+      "date": "2016-03-17T19:58:25.697Z"
+    },
+    {
+      "number": "1.0.22",
+      "date": "2016-03-17T20:20:06.665Z"
+    },
+    {
+      "number": "1.0.23",
+      "date": "2016-03-18T15:40:50.913Z"
+    },
+    {
+      "number": "1.1.0",
+      "date": "2016-03-18T16:56:03.878Z"
+    },
+    {
+      "number": "1.1.1",
+      "date": "2016-03-18T18:21:53.545Z"
+    },
+    {
+      "number": "1.1.2",
+      "date": "2016-03-18T20:07:49.960Z"
+    },
+    {
+      "number": "1.1.3",
+      "date": "2016-03-21T20:48:35.833Z"
+    },
+    {
+      "number": "1.1.4",
+      "date": "2016-03-21T21:53:15.135Z"
+    },
+    {
+      "number": "1.1.5",
+      "date": "2016-03-22T17:54:47.574Z"
+    },
+    {
+      "number": "1.1.6",
+      "date": "2016-03-22T18:00:15.056Z"
+    },
+    {
+      "number": "1.1.7",
+      "date": "2016-03-22T21:04:40.730Z"
+    },
+    {
+      "number": "1.1.8",
+      "date": "2016-03-22T23:11:27.561Z"
+    },
+    {
+      "number": "1.1.9",
+      "date": "2016-03-22T23:51:39.857Z"
+    },
+    {
+      "number": "1.1.10",
+      "date": "2016-03-24T17:22:06.317Z"
+    },
+    {
+      "number": "1.1.11",
+      "date": "2016-03-24T23:58:47.100Z"
+    },
+    {
+      "number": "1.1.12",
+      "date": "2016-03-25T17:00:35.578Z"
+    },
+    {
+      "number": "1.1.13",
+      "date": "2016-03-25T18:20:24.559Z"
+    },
+    {
+      "number": "1.1.14",
+      "date": "2016-03-28T16:57:14.460Z"
+    },
+    {
+      "number": "1.1.15",
+      "date": "2016-03-29T22:33:12.658Z"
+    },
+    {
+      "number": "1.1.16",
+      "date": "2016-03-29T22:47:40.346Z"
+    },
+    {
+      "number": "1.1.17",
+      "date": "2016-03-30T15:53:35.190Z"
+    },
+    {
+      "number": "1.1.18",
+      "date": "2016-03-30T18:14:49.435Z"
+    },
+    {
+      "number": "1.1.19",
+      "date": "2016-03-30T18:57:14.320Z"
+    },
+    {
+      "number": "1.1.20",
+      "date": "2016-03-30T21:48:27.326Z"
+    },
+    {
+      "number": "1.1.21",
+      "date": "2016-03-30T23:49:51.390Z"
+    },
+    {
+      "number": "1.1.22",
+      "date": "2016-03-31T17:32:33.335Z"
+    },
+    {
+      "number": "1.1.23",
+      "date": "2016-03-31T18:19:16.859Z"
+    },
+    {
+      "number": "1.2.0",
+      "date": "2016-03-31T18:51:27.028Z"
+    },
+    {
+      "number": "1.2.1",
+      "date": "2016-03-31T19:41:40.504Z"
+    },
+    {
+      "number": "1.2.2",
+      "date": "2016-03-31T20:26:34.016Z"
+    },
+    {
+      "number": "1.2.3",
+      "date": "2016-03-31T20:41:22.113Z"
+    },
+    {
+      "number": "1.2.4",
+      "date": "2016-03-31T22:20:49.456Z"
+    },
+    {
+      "number": "1.2.5",
+      "date": "2016-04-01T00:28:55.043Z"
+    },
+    {
+      "number": "1.2.6",
+      "date": "2016-04-01T21:22:08.212Z"
+    },
+    {
+      "number": "1.3.0",
+      "date": "2016-04-01T21:29:06.167Z"
+    },
+    {
+      "number": "1.3.1",
+      "date": "2016-04-04T21:35:27.640Z"
+    },
+    {
+      "number": "1.3.2",
+      "date": "2016-04-05T16:42:18.103Z"
+    },
+    {
+      "number": "1.3.3",
+      "date": "2016-04-05T22:07:39.453Z"
+    },
+    {
+      "number": "1.3.4",
+      "date": "2016-04-06T15:51:42.576Z"
+    },
+    {
+      "number": "1.3.5",
+      "date": "2016-04-06T19:33:59.190Z"
+    },
+    {
+      "number": "1.3.6",
+      "date": "2016-04-07T19:23:09.058Z"
+    },
+    {
+      "number": "1.3.7",
+      "date": "2016-04-13T20:30:58.238Z"
+    },
+    {
+      "number": "1.3.8",
+      "date": "2016-04-25T18:28:26.109Z"
+    },
+    {
+      "number": "1.3.9",
+      "date": "2016-04-25T19:38:57.392Z"
+    },
+    {
+      "number": "1.3.10",
+      "date": "2016-04-28T21:24:30.565Z"
+    },
+    {
+      "number": "1.3.11",
+      "date": "2016-05-03T20:22:17.150Z"
+    },
+    {
+      "number": "1.3.12",
+      "date": "2016-05-06T16:29:32.736Z"
+    },
+    {
+      "number": "1.3.13",
+      "date": "2016-05-09T19:23:35.740Z"
+    },
+    {
+      "number": "1.3.14",
+      "date": "2016-05-10T20:56:25.483Z"
+    },
+    {
+      "number": "1.3.15",
+      "date": "2016-05-10T21:33:57.986Z"
+    },
+    {
+      "number": "1.3.16",
+      "date": "2016-05-12T18:08:33.066Z"
+    },
+    {
+      "number": "1.3.17",
+      "date": "2016-05-16T18:32:19.394Z"
+    },
+    {
+      "number": "2.0.0",
+      "date": "2018-04-05T17:59:31.595Z"
+    }
+  ],
+  "created": "2016-03-07T19:08:51.765Z",
+  "modified": "2018-04-05T17:59:32.480Z",
+  "lastPublisher": {
+    "name": "sebastien.jourdain",
+    "email": "sebastien.jourdain@kitware.com"
+  },
+  "owners": [
+    {
+      "name": "sebastien.jourdain",
+      "email": "sebastien.jourdain@kitware.com"
+    }
+  ]
+}

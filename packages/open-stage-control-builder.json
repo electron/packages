@@ -1,0 +1,189 @@
+{
+  "name": "open-stage-control-builder",
+  "description": "[Builder package] Libre and modular OSC / MIDI controller",
+  "version": "0.28.0",
+  "author": {
+    "name": "Jean-Emmanuel Doucet",
+    "email": "jean-emmanuel@ammd.net"
+  },
+  "keywords": [
+    "osc",
+    "midi",
+    "interface",
+    "multi-touch"
+  ],
+  "repository": {
+    "user": "jean-emmanuel",
+    "repo": "open-stage-control",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/jean-emmanuel/open-stage-control/tarball/master",
+    "clone_url": "https://github.com/jean-emmanuel/open-stage-control",
+    "https_url": "https://github.com/jean-emmanuel/open-stage-control",
+    "travis_url": "https://travis-ci.org/jean-emmanuel/open-stage-control",
+    "zip_url": "https://github.com/jean-emmanuel/open-stage-control/archive/master.zip",
+    "api_url": "https://api.github.com/repos/jean-emmanuel/open-stage-control"
+  },
+  "homepage": "http://osc.ammd.net/",
+  "license": "GPL-3.0",
+  "dependencies": {
+    "autolayout": "0.7.0",
+    "babel-core": "^6.26.0",
+    "babel-plugin-transform-object-rest-spread": "6.26.0",
+    "babel-preset-env": "*",
+    "babelify": "8.0.0",
+    "browserify": "16.1.1",
+    "cardinal-spline-js": "2.3.6",
+    "deep-extend": "^0.5.0",
+    "electron": "~1.8.4",
+    "electron-packager": "11.1.0",
+    "electron-packager-plugin-non-proprietary-codecs-ffmpeg": "^1.0.1",
+    "exorcist": "1.0.1",
+    "file-saver": "1.3.3",
+    "jquery": "3.3.1",
+    "json5": "1.0.1",
+    "keyboardjs": "github:jean-emmanuel/KeyboardJS",
+    "kiwi.js": "1.0.1",
+    "licensify": "3.1.3",
+    "mathjs": "^4.0.1",
+    "minimatch": "^3.0.4",
+    "nanomorph": "^5.1.3",
+    "node-sass": "4.7.2",
+    "nodemon": "1.17.2",
+    "scope-css": "^1.0.5",
+    "screenfull": "3.3.2",
+    "shortid": "2.2.8",
+    "stacktrace-js": "^2.0.0",
+    "through": "^2.3.8",
+    "uglifyify": "4.0.5",
+    "wolfy87-eventemitter": "^5.2.4",
+    "electron-installer-debian": "0.8.1"
+  },
+  "optionalDependencies": {
+    "electron-installer-debian": "0.8.1"
+  },
+  "scripts": {
+    "postinstall": "cp resources/images/logo-nobadge.png app/browser/favicon.png && cp resources/images/logo.png app/browser/logo.png && cd app && npm install",
+    "start": "cd app && npm start --",
+    "build": "npm run build-css && npm run build-js && echo 'JS and CSS assets built. To build the binary package, run \"npm run package\".'",
+    "package": "npm run build-css && npm run build-js -- --prod && node scripts/package.js",
+    "deb32": "electron-installer-debian --src dist/open-stage-control-linux-ia32/ --arch i386 --dest dist/open-stage-control-linux-ia32/ --icon resources/images/logo.png",
+    "deb64": "electron-installer-debian --src dist/open-stage-control-linux-x64/ --arch amd64 --dest dist/open-stage-control-linux-x64/ --icon resources/images/logo.png",
+    "debarm": "electron-installer-debian --src dist/open-stage-control-linux-armv7l/ --arch armv7l --dest dist/open-stage-control-linux-armv7l/ --icon resources/images/logo.png",
+    "watch-css": "nodemon --watch src/browser/scss -e scss -x \"npm run build-css && node scripts/reload-css.js\"",
+    "watch-js": "nodemon --watch src/browser/js -e js -x \"npm run build-js\"",
+    "build-css": "node scripts/build-css.js",
+    "build-js": "node scripts/build-js.js > app/browser/scripts.js",
+    "deploy-docs": "cd resources && mkdocs gh-deploy --clean && rm -rf site",
+    "test": "npm run build"
+  },
+  "engines": {
+    "node": ">=6"
+  },
+  "gitHead": "eaa59ecadcb40e9b218e0a4a77fdbf9511bd386f",
+  "_npmVersion": "5.6.0",
+  "_nodeVersion": "9.5.0",
+  "dist": {
+    "integrity": "sha512-pWWg9570/OxpLqERI0bGN0HTfq6fpuU9MYge2hZlJ0Sxt9LpJvJ8LkWDUfRqKXkVQXcSWQpR33e4wpc8DXLYpg==",
+    "shasum": "32d60ef7b2532fca49708e0efd693f785d94d13d",
+    "tarball": "http://registry.npmjs.org/open-stage-control-builder/-/open-stage-control-builder-0.28.0.tgz",
+    "fileCount": 557,
+    "unpackedSize": 8461845
+  },
+  "_hasShrinkwrap": false,
+  "versions": [
+    {
+      "number": "0.8.3",
+      "date": "2016-10-17T14:37:44.362Z"
+    },
+    {
+      "number": "0.8.3-1",
+      "date": "2016-10-17T15:22:03.690Z"
+    },
+    {
+      "number": "0.13.1",
+      "date": "2017-01-07T15:02:51.985Z"
+    },
+    {
+      "number": "0.14.0",
+      "date": "2017-01-07T15:15:05.970Z"
+    },
+    {
+      "number": "0.15.1",
+      "date": "2017-01-21T06:08:47.722Z"
+    },
+    {
+      "number": "0.17.0",
+      "date": "2017-02-28T18:28:35.116Z"
+    },
+    {
+      "number": "0.17.1",
+      "date": "2017-03-13T18:14:56.200Z"
+    },
+    {
+      "number": "0.17.2",
+      "date": "2017-03-21T11:53:17.435Z"
+    },
+    {
+      "number": "0.17.3",
+      "date": "2017-03-22T12:38:05.184Z"
+    },
+    {
+      "number": "0.17.4",
+      "date": "2017-03-22T23:39:24.773Z"
+    },
+    {
+      "number": "0.17.7",
+      "date": "2017-05-17T17:27:10.380Z"
+    },
+    {
+      "number": "0.18.0",
+      "date": "2017-06-14T22:54:58.186Z"
+    },
+    {
+      "number": "0.21.1",
+      "date": "2017-10-17T07:37:46.708Z"
+    },
+    {
+      "number": "0.21.2",
+      "date": "2017-12-07T20:49:34.699Z"
+    },
+    {
+      "number": "0.21.3",
+      "date": "2017-12-09T14:57:19.194Z"
+    },
+    {
+      "number": "0.25.0",
+      "date": "2018-03-04T10:41:16.169Z"
+    },
+    {
+      "number": "0.26.1",
+      "date": "2018-03-06T00:13:39.699Z"
+    },
+    {
+      "number": "0.26.2",
+      "date": "2018-03-06T21:49:28.774Z"
+    },
+    {
+      "number": "0.27.0",
+      "date": "2018-03-19T15:44:58.847Z"
+    },
+    {
+      "number": "0.28.0",
+      "date": "2018-03-22T23:17:38.480Z"
+    }
+  ],
+  "created": "2016-10-17T14:37:44.362Z",
+  "modified": "2018-03-22T23:17:39.737Z",
+  "lastPublisher": {
+    "name": "jean-emmanuel",
+    "email": "jeannot@ammd.net"
+  },
+  "owners": [
+    {
+      "name": "jean-emmanuel",
+      "email": "jeannot@ammd.net"
+    }
+  ]
+}

@@ -1,0 +1,717 @@
+{
+  "name": "reactors",
+  "version": "4.2.19",
+  "description": "View components and APIs that work web, mobile and desktop!",
+  "main": "dist/index.js",
+  "keywords": [
+    "reactors",
+    "react",
+    "react-native",
+    "app",
+    "mobile",
+    "web",
+    "android",
+    "ios",
+    "mac osx",
+    "window",
+    "linux",
+    "ubuntu",
+    "desktop",
+    "electron",
+    "native",
+    "hybrid",
+    "awesome"
+  ],
+  "repository": {
+    "user": "co2-git",
+    "repo": "reactors",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/co2-git/reactors/tarball/master",
+    "clone_url": "https://github.com/co2-git/reactors",
+    "https_url": "https://github.com/co2-git/reactors",
+    "travis_url": "https://travis-ci.org/co2-git/reactors",
+    "zip_url": "https://github.com/co2-git/reactors/archive/master.zip",
+    "api_url": "https://api.github.com/repos/co2-git/reactors"
+  },
+  "scripts": {
+    "babel": "rm -rf dist; babel --out-dir dist/ app/",
+    "babel:watch": "rm -rf dist; babel --watch --out-dir dist/ app/",
+    "eslint": "eslint app",
+    "flow": "flow",
+    "prepublishOnly": "npm run eslint && yarn babel && yarn test",
+    "prepush": "npm run eslint && npm test",
+    "push": "npm run babel && npm run prepush && npm publish",
+    "jest": "jest --colors --notify --verbose",
+    "test": "rm -rf test; babel --out-dir test _test_; describe-react test/API/*/*.spec.js"
+  },
+  "author": {
+    "name": "francois"
+  },
+  "license": "ISC",
+  "devDependencies": {
+    "babel-cli": "^6.9.0",
+    "babel-eslint": "^6.0.4",
+    "babel-plugin-syntax-async-functions": "^6.8.0",
+    "babel-plugin-transform-regenerator": "^6.9.0",
+    "babel-plugin-transform-runtime": "^6.9.0",
+    "babel-polyfill": "^6.9.1",
+    "babel-preset-es2015": "^6.9.0",
+    "babel-preset-react": "^6.5.0",
+    "babel-preset-stage-0": "^6.5.0",
+    "enzyme": "^2.7.1",
+    "eslint": "^2.11.1",
+    "eslint-plugin-flowtype": "^2.29.1",
+    "eslint-plugin-react": "^5.1.1",
+    "eslint-plugin-react-native": "^1.1.0-beta",
+    "flow-bin": "^0.36.0",
+    "husky": "^0.13.1",
+    "jest": "^18.1.0",
+    "react-addons-test-utils": "^15.4.2",
+    "react-dom": "^15.4.2",
+    "react-test-renderer": "^15.4.2",
+    "should": "^11.2.0",
+    "sinon": "^1.17.7"
+  },
+  "dependencies": {
+    "@francoisv/describe-react": "^0.1.53",
+    "css-property-parser": "^1.0.5",
+    "electron-notifications": "^0.1.4",
+    "nedb": "^1.8.0"
+  },
+  "jest": {
+    "preset": "react-native"
+  },
+  "gitHead": "d188c6e85307f2c8ba2e458a94bd2c340725fc16",
+  "homepage": "https://github.com/co2-git/reactors#readme",
+  "_npmVersion": "5.6.0",
+  "_nodeVersion": "8.9.3",
+  "dist": {
+    "integrity": "sha512-FCT+8hZJRorcV2zLZuW0eYkvhAJGugu/bU2IbzBgD1UnIyvlFSWWrXsAcQa4cgAwpi+5F7EvUCM2ccHPRHM0zg==",
+    "shasum": "4e59672d221e929edb857981f61e9b59c33f8a1f",
+    "tarball": "https://registry.npmjs.org/reactors/-/reactors-4.2.19.tgz"
+  },
+  "versions": [
+    {
+      "number": "0.0.1",
+      "date": "2016-06-07T04:47:08.470Z"
+    },
+    {
+      "number": "0.0.2",
+      "date": "2016-06-10T03:24:23.572Z"
+    },
+    {
+      "number": "0.0.4",
+      "date": "2016-06-11T22:10:39.015Z"
+    },
+    {
+      "number": "0.0.5",
+      "date": "2016-06-12T00:41:28.470Z"
+    },
+    {
+      "number": "0.0.6",
+      "date": "2016-06-12T01:52:31.083Z"
+    },
+    {
+      "number": "0.0.8",
+      "date": "2016-06-12T05:44:15.144Z"
+    },
+    {
+      "number": "0.1.0",
+      "date": "2016-06-12T06:21:14.992Z"
+    },
+    {
+      "number": "0.1.1",
+      "date": "2016-06-13T04:16:38.243Z"
+    },
+    {
+      "number": "0.1.2",
+      "date": "2016-06-16T04:58:30.462Z"
+    },
+    {
+      "number": "0.1.3",
+      "date": "2016-06-17T04:27:27.267Z"
+    },
+    {
+      "number": "0.1.4",
+      "date": "2016-06-23T09:32:35.084Z"
+    },
+    {
+      "number": "0.1.5",
+      "date": "2016-06-23T09:43:16.804Z"
+    },
+    {
+      "number": "0.1.6",
+      "date": "2016-06-24T19:50:20.788Z"
+    },
+    {
+      "number": "0.1.7",
+      "date": "2016-06-27T00:15:30.948Z"
+    },
+    {
+      "number": "0.1.8",
+      "date": "2016-06-29T04:07:39.666Z"
+    },
+    {
+      "number": "0.1.9",
+      "date": "2016-07-07T06:04:58.420Z"
+    },
+    {
+      "number": "0.1.10",
+      "date": "2016-07-07T06:15:45.373Z"
+    },
+    {
+      "number": "0.1.11",
+      "date": "2016-07-07T07:36:53.071Z"
+    },
+    {
+      "number": "0.1.12",
+      "date": "2016-07-07T15:26:33.397Z"
+    },
+    {
+      "number": "0.1.13",
+      "date": "2016-07-07T16:35:26.611Z"
+    },
+    {
+      "number": "0.1.14",
+      "date": "2016-07-07T16:38:22.155Z"
+    },
+    {
+      "number": "0.1.15",
+      "date": "2016-07-07T17:00:06.733Z"
+    },
+    {
+      "number": "0.1.16",
+      "date": "2016-07-07T17:19:32.433Z"
+    },
+    {
+      "number": "0.1.17",
+      "date": "2016-07-12T03:14:28.865Z"
+    },
+    {
+      "number": "0.1.18",
+      "date": "2016-07-15T04:42:17.134Z"
+    },
+    {
+      "number": "0.1.19",
+      "date": "2016-07-15T10:16:53.350Z"
+    },
+    {
+      "number": "0.1.20",
+      "date": "2016-07-17T22:36:09.851Z"
+    },
+    {
+      "number": "0.1.21",
+      "date": "2016-07-18T00:41:49.232Z"
+    },
+    {
+      "number": "0.2.0",
+      "date": "2016-12-16T18:24:57.600Z"
+    },
+    {
+      "number": "0.2.1",
+      "date": "2016-12-16T18:32:39.199Z"
+    },
+    {
+      "number": "0.2.2",
+      "date": "2016-12-16T23:58:29.517Z"
+    },
+    {
+      "number": "1.0.0",
+      "date": "2016-12-17T10:32:52.303Z"
+    },
+    {
+      "number": "1.0.1",
+      "date": "2016-12-17T17:53:51.670Z"
+    },
+    {
+      "number": "1.1.0",
+      "date": "2016-12-18T17:37:43.290Z"
+    },
+    {
+      "number": "1.1.1",
+      "date": "2016-12-19T09:39:40.064Z"
+    },
+    {
+      "number": "1.2.0",
+      "date": "2017-01-06T07:51:35.942Z"
+    },
+    {
+      "number": "1.2.1",
+      "date": "2017-01-07T18:37:11.018Z"
+    },
+    {
+      "number": "1.2.2",
+      "date": "2017-01-09T02:32:59.688Z"
+    },
+    {
+      "number": "1.3.0",
+      "date": "2017-01-12T20:17:49.209Z"
+    },
+    {
+      "number": "1.4.0",
+      "date": "2017-01-12T22:41:35.194Z"
+    },
+    {
+      "number": "1.4.1",
+      "date": "2017-01-13T00:58:46.855Z"
+    },
+    {
+      "number": "1.4.2",
+      "date": "2017-01-13T01:10:12.731Z"
+    },
+    {
+      "number": "1.4.3-s",
+      "date": "2017-01-13T01:15:19.261Z"
+    },
+    {
+      "number": "1.4.4",
+      "date": "2017-01-13T01:17:26.605Z"
+    },
+    {
+      "number": "1.4.5",
+      "date": "2017-01-13T01:18:36.983Z"
+    },
+    {
+      "number": "1.4.6",
+      "date": "2017-01-13T01:20:23.622Z"
+    },
+    {
+      "number": "1.4.7",
+      "date": "2017-01-13T01:26:22.570Z"
+    },
+    {
+      "number": "1.4.8",
+      "date": "2017-01-13T01:30:39.450Z"
+    },
+    {
+      "number": "1.4.9",
+      "date": "2017-01-13T01:32:49.302Z"
+    },
+    {
+      "number": "1.4.10",
+      "date": "2017-01-13T01:35:32.007Z"
+    },
+    {
+      "number": "1.4.11",
+      "date": "2017-01-13T02:34:01.683Z"
+    },
+    {
+      "number": "1.4.12",
+      "date": "2017-01-13T03:56:16.027Z"
+    },
+    {
+      "number": "1.4.13",
+      "date": "2017-01-14T21:11:41.295Z"
+    },
+    {
+      "number": "1.4.14",
+      "date": "2017-02-02T21:00:25.988Z"
+    },
+    {
+      "number": "1.5.0",
+      "date": "2017-02-03T00:20:33.808Z"
+    },
+    {
+      "number": "1.5.2",
+      "date": "2017-02-03T03:34:14.123Z"
+    },
+    {
+      "number": "1.5.3",
+      "date": "2017-02-06T22:46:17.535Z"
+    },
+    {
+      "number": "1.5.7",
+      "date": "2017-02-07T14:51:48.753Z"
+    },
+    {
+      "number": "1.5.8",
+      "date": "2017-02-07T16:55:37.365Z"
+    },
+    {
+      "number": "1.5.9",
+      "date": "2017-02-08T17:08:09.146Z"
+    },
+    {
+      "number": "1.5.10",
+      "date": "2017-02-08T18:43:04.205Z"
+    },
+    {
+      "number": "1.5.11",
+      "date": "2017-02-08T19:52:06.767Z"
+    },
+    {
+      "number": "1.5.13",
+      "date": "2017-02-09T14:26:01.527Z"
+    },
+    {
+      "number": "1.5.14",
+      "date": "2017-02-09T16:01:21.457Z"
+    },
+    {
+      "number": "1.5.15",
+      "date": "2017-02-09T22:39:25.538Z"
+    },
+    {
+      "number": "1.5.17",
+      "date": "2017-02-11T18:10:48.073Z"
+    },
+    {
+      "number": "1.5.18",
+      "date": "2017-02-11T18:12:45.780Z"
+    },
+    {
+      "number": "1.5.19",
+      "date": "2017-02-11T18:16:39.102Z"
+    },
+    {
+      "number": "1.5.21",
+      "date": "2017-02-11T18:35:06.340Z"
+    },
+    {
+      "number": "1.5.22",
+      "date": "2017-02-12T18:54:02.096Z"
+    },
+    {
+      "number": "1.5.23",
+      "date": "2017-02-13T02:18:32.004Z"
+    },
+    {
+      "number": "1.5.24",
+      "date": "2017-02-13T03:06:44.220Z"
+    },
+    {
+      "number": "1.5.25",
+      "date": "2017-02-13T04:31:12.979Z"
+    },
+    {
+      "number": "1.5.26",
+      "date": "2017-02-13T06:09:52.247Z"
+    },
+    {
+      "number": "1.5.27",
+      "date": "2017-02-13T06:48:38.368Z"
+    },
+    {
+      "number": "1.5.28",
+      "date": "2017-02-13T07:48:25.224Z"
+    },
+    {
+      "number": "1.5.29",
+      "date": "2017-02-13T10:48:59.318Z"
+    },
+    {
+      "number": "1.5.30",
+      "date": "2017-02-13T15:56:54.301Z"
+    },
+    {
+      "number": "1.5.31",
+      "date": "2017-02-13T16:21:30.426Z"
+    },
+    {
+      "number": "1.5.32",
+      "date": "2017-02-13T23:57:01.084Z"
+    },
+    {
+      "number": "2.0.0",
+      "date": "2017-02-17T08:09:03.288Z"
+    },
+    {
+      "number": "2.1.0",
+      "date": "2017-02-20T14:36:12.556Z"
+    },
+    {
+      "number": "2.1.1",
+      "date": "2017-02-20T15:51:23.872Z"
+    },
+    {
+      "number": "2.1.2",
+      "date": "2017-02-20T20:05:43.500Z"
+    },
+    {
+      "number": "2.1.3",
+      "date": "2017-02-20T22:48:08.714Z"
+    },
+    {
+      "number": "2.1.4",
+      "date": "2017-02-27T08:44:37.239Z"
+    },
+    {
+      "number": "2.1.5",
+      "date": "2017-02-27T16:01:00.979Z"
+    },
+    {
+      "number": "4.0.0",
+      "date": "2017-12-17T22:05:37.169Z"
+    },
+    {
+      "number": "4.0.1",
+      "date": "2017-12-18T02:23:09.425Z"
+    },
+    {
+      "number": "4.0.2",
+      "date": "2017-12-23T16:39:16.814Z"
+    },
+    {
+      "number": "4.1.0",
+      "date": "2017-12-29T07:01:47.378Z"
+    },
+    {
+      "number": "4.1.1",
+      "date": "2017-12-29T16:03:00.942Z"
+    },
+    {
+      "number": "4.1.2",
+      "date": "2017-12-29T16:21:03.812Z"
+    },
+    {
+      "number": "4.1.4",
+      "date": "2017-12-29T16:23:28.726Z"
+    },
+    {
+      "number": "4.1.6",
+      "date": "2017-12-29T21:03:22.563Z"
+    },
+    {
+      "number": "4.1.7",
+      "date": "2018-01-05T17:43:02.604Z"
+    },
+    {
+      "number": "4.1.9",
+      "date": "2018-01-09T22:31:31.756Z"
+    },
+    {
+      "number": "4.1.10",
+      "date": "2018-01-09T22:49:33.405Z"
+    },
+    {
+      "number": "4.1.11",
+      "date": "2018-01-09T23:11:55.044Z"
+    },
+    {
+      "number": "4.1.12",
+      "date": "2018-01-10T14:59:11.836Z"
+    },
+    {
+      "number": "4.1.13",
+      "date": "2018-01-10T15:34:15.378Z"
+    },
+    {
+      "number": "4.1.14",
+      "date": "2018-01-10T15:37:57.339Z"
+    },
+    {
+      "number": "4.1.15",
+      "date": "2018-01-10T20:40:33.171Z"
+    },
+    {
+      "number": "4.1.16",
+      "date": "2018-01-10T20:42:56.194Z"
+    },
+    {
+      "number": "4.1.17",
+      "date": "2018-01-10T22:29:41.270Z"
+    },
+    {
+      "number": "4.1.18",
+      "date": "2018-01-10T23:44:54.932Z"
+    },
+    {
+      "number": "4.1.19",
+      "date": "2018-01-10T23:47:50.097Z"
+    },
+    {
+      "number": "4.1.20",
+      "date": "2018-01-11T00:28:58.300Z"
+    },
+    {
+      "number": "4.1.21",
+      "date": "2018-01-11T00:30:33.736Z"
+    },
+    {
+      "number": "4.1.22",
+      "date": "2018-01-11T00:31:56.871Z"
+    },
+    {
+      "number": "4.1.23",
+      "date": "2018-01-11T00:33:48.914Z"
+    },
+    {
+      "number": "4.1.24",
+      "date": "2018-01-11T00:36:53.993Z"
+    },
+    {
+      "number": "4.1.25",
+      "date": "2018-01-11T05:12:08.121Z"
+    },
+    {
+      "number": "4.1.26",
+      "date": "2018-01-11T05:27:55.321Z"
+    },
+    {
+      "number": "4.1.27",
+      "date": "2018-01-11T05:29:48.083Z"
+    },
+    {
+      "number": "4.1.28",
+      "date": "2018-01-11T05:35:24.065Z"
+    },
+    {
+      "number": "4.1.29",
+      "date": "2018-01-11T05:39:53.181Z"
+    },
+    {
+      "number": "4.1.30",
+      "date": "2018-01-11T05:42:08.889Z"
+    },
+    {
+      "number": "4.1.31",
+      "date": "2018-01-11T05:45:17.911Z"
+    },
+    {
+      "number": "4.1.32",
+      "date": "2018-01-11T05:49:43.212Z"
+    },
+    {
+      "number": "4.1.33",
+      "date": "2018-01-11T06:02:27.693Z"
+    },
+    {
+      "number": "4.1.34",
+      "date": "2018-01-11T06:07:44.463Z"
+    },
+    {
+      "number": "4.1.35",
+      "date": "2018-01-11T06:10:13.955Z"
+    },
+    {
+      "number": "4.1.36",
+      "date": "2018-01-11T06:11:34.514Z"
+    },
+    {
+      "number": "4.1.37",
+      "date": "2018-01-11T06:14:31.659Z"
+    },
+    {
+      "number": "4.1.38",
+      "date": "2018-01-11T06:16:18.522Z"
+    },
+    {
+      "number": "4.1.39",
+      "date": "2018-01-11T06:19:59.545Z"
+    },
+    {
+      "number": "4.1.40",
+      "date": "2018-01-11T06:22:11.518Z"
+    },
+    {
+      "number": "4.1.41",
+      "date": "2018-01-11T06:23:48.964Z"
+    },
+    {
+      "number": "4.1.42",
+      "date": "2018-01-11T06:25:29.686Z"
+    },
+    {
+      "number": "4.1.43",
+      "date": "2018-01-11T06:46:34.874Z"
+    },
+    {
+      "number": "4.1.44",
+      "date": "2018-01-11T06:48:06.116Z"
+    },
+    {
+      "number": "4.2.0",
+      "date": "2018-01-11T06:49:30.252Z"
+    },
+    {
+      "number": "4.2.1",
+      "date": "2018-01-11T07:03:36.062Z"
+    },
+    {
+      "number": "4.2.2",
+      "date": "2018-01-11T07:05:16.770Z"
+    },
+    {
+      "number": "4.2.3",
+      "date": "2018-01-11T07:18:13.040Z"
+    },
+    {
+      "number": "4.2.4",
+      "date": "2018-01-11T07:19:41.756Z"
+    },
+    {
+      "number": "4.2.5",
+      "date": "2018-01-11T15:30:04.708Z"
+    },
+    {
+      "number": "4.2.6",
+      "date": "2018-01-11T15:35:38.190Z"
+    },
+    {
+      "number": "4.2.7",
+      "date": "2018-01-11T15:38:32.834Z"
+    },
+    {
+      "number": "4.2.8",
+      "date": "2018-01-11T15:43:39.474Z"
+    },
+    {
+      "number": "4.2.9",
+      "date": "2018-01-11T15:45:19.516Z"
+    },
+    {
+      "number": "4.2.10",
+      "date": "2018-01-11T15:50:20.041Z"
+    },
+    {
+      "number": "4.2.11",
+      "date": "2018-01-11T15:53:18.639Z"
+    },
+    {
+      "number": "4.2.12",
+      "date": "2018-01-11T15:56:05.509Z"
+    },
+    {
+      "number": "4.2.13",
+      "date": "2018-01-11T16:00:45.307Z"
+    },
+    {
+      "number": "4.2.14",
+      "date": "2018-01-11T17:25:33.000Z"
+    },
+    {
+      "number": "4.2.15",
+      "date": "2018-01-19T00:42:58.387Z"
+    },
+    {
+      "number": "4.2.16",
+      "date": "2018-01-19T15:48:51.525Z"
+    },
+    {
+      "number": "4.2.17",
+      "date": "2018-01-19T23:15:11.980Z"
+    },
+    {
+      "number": "4.2.18",
+      "date": "2018-01-20T00:23:31.564Z"
+    },
+    {
+      "number": "4.2.19",
+      "date": "2018-01-20T00:46:10.421Z"
+    }
+  ],
+  "created": "2016-06-07T04:47:08.470Z",
+  "modified": "2018-01-20T00:46:10.421Z",
+  "lastPublisher": {
+    "name": "francoisv",
+    "email": "francoisrvespa@gmail.com"
+  },
+  "owners": [
+    {
+      "name": "francoisv",
+      "email": "francoisrvespa@gmail.com"
+    }
+  ]
+}

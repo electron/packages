@@ -1,0 +1,135 @@
+{
+  "name": "uupaa.h264profile.js",
+  "version": "0.0.4",
+  "description": "H264(AVC) Profile and Level detection.",
+  "url": "https://github.com/uupaa/H264Profile.js",
+  "keywords": [
+    "AVC",
+    "H264",
+    "Profile",
+    "Level",
+    "uupaa",
+    "WebModule",
+    "Unstable"
+  ],
+  "repository": {
+    "user": "uupaa",
+    "repo": "H264Profile.js",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/uupaa/H264Profile.js/tarball/master",
+    "clone_url": "https://github.com/uupaa/H264Profile.js",
+    "https_url": "https://github.com/uupaa/H264Profile.js",
+    "travis_url": "https://travis-ci.org/uupaa/H264Profile.js",
+    "zip_url": "https://github.com/uupaa/H264Profile.js/archive/master.zip",
+    "api_url": "https://api.github.com/repos/uupaa/H264Profile.js"
+  },
+  "scripts": {
+    "sync": "node ../WebModule/run/sync.js; npm update; node ../WebModule/run/page.js",
+    "wiki": "node ../WebModule/run/wiki.js",
+    "min": "node ../WebModule/run/minify.js --verbose --strict --keep --pretty",
+    "build": "node ../WebModule/run/minify.js --verbose --strict --keep --release",
+    "watch": "node ../WebModule/run/watch.js --verbose --run lint",
+    "page": "node ../WebModule/run/page.js --verbose",
+    "test": "npm run min; npm run node; npm run browser",
+    "node": "NODE_ENV=production NODE_PATH=lib node test/node/index.js",
+    "noded": "NODE_ENV=production NODE_PATH=lib node --debug-brk test/node/index.js",
+    "browser": "open http://localhost:8000/H264Profile.js/test/browser/index.html",
+    "el": "electron test/el",
+    "nw": "nw test/nw",
+    "add-src": "node ../WebModule/run/add-src.js",
+    "add-subclass": "node ../WebModule/run/add-subclass.js",
+    "sim": "node ../WebModule/run/sim.js http://localhost:8000/H264Profile.js/test/browser/index.html",
+    "simx": "node ../WebModule/run/sim.js stop",
+    "lint": "eslint lib/*.js",
+    "score": "node ../WebModule/run/score.js; open lint/plato/index.html",
+    "patch": "node ../WebModule/run/patch.js",
+    "setup": "node ../WebModule/run/setup.js",
+    "start": "cd ../; Python -m SimpleHTTPServer 8000 &",
+    "stop": "killall -- Python -m SimpleHTTPServer 8000; exit 0"
+  },
+  "webmodule": {
+    "develop": false,
+    "label": [
+      "@dev"
+    ],
+    "browser": {
+      "output": "release/H264Profile.b.min.js",
+      "source": [
+        "lib/H264Profile.js"
+      ]
+    },
+    "worker": {
+      "output": "release/H264Profile.w.min.js",
+      "source": [
+        "lib/H264Profile.js"
+      ]
+    },
+    "node": {
+      "output": "release/H264Profile.n.min.js",
+      "source": [
+        "lib/H264Profile.js"
+      ]
+    },
+    "nw": {
+      "output": "release/H264Profile.nw.min.js",
+      "source": [
+        "lib/H264Profile.js"
+      ]
+    },
+    "el": {
+      "output": "release/H264Profile.el.min.js",
+      "source": [
+        "lib/H264Profile.js"
+      ]
+    }
+  },
+  "dependencies": {},
+  "devDependencies": {},
+  "lib": "./lib/",
+  "main": "./index.js",
+  "author": {
+    "name": "uupaa"
+  },
+  "license": "MIT",
+  "contributors": [],
+  "gitHead": "8a59558de79655375ee19863423afd2e1a435a9a",
+  "homepage": "https://github.com/uupaa/H264Profile.js#readme",
+  "_npmVersion": "2.15.11",
+  "_nodeVersion": "0.12.18",
+  "dist": {
+    "shasum": "0092c360a602503a7ca5c5f55d6210054e88ec7d",
+    "tarball": "https://registry.npmjs.org/uupaa.h264profile.js/-/uupaa.h264profile.js-0.0.4.tgz"
+  },
+  "versions": [
+    {
+      "number": "0.0.1",
+      "date": "2016-04-07T07:14:34.180Z"
+    },
+    {
+      "number": "0.0.2",
+      "date": "2016-04-07T08:16:50.143Z"
+    },
+    {
+      "number": "0.0.3",
+      "date": "2016-04-10T17:20:02.422Z"
+    },
+    {
+      "number": "0.0.4",
+      "date": "2017-04-12T09:23:24.531Z"
+    }
+  ],
+  "created": "2016-04-07T07:14:34.180Z",
+  "modified": "2017-04-12T09:23:24.531Z",
+  "lastPublisher": {
+    "name": "uupaa",
+    "email": "uupaa.js@gmail.com"
+  },
+  "owners": [
+    {
+      "name": "uupaa",
+      "email": "uupaa.js@gmail.com"
+    }
+  ]
+}

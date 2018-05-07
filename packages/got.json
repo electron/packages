@@ -1,0 +1,438 @@
+{
+  "name": "got",
+  "version": "8.3.1",
+  "description": "Simplified HTTP requests",
+  "license": "MIT",
+  "repository": {
+    "user": "sindresorhus",
+    "repo": "got",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/sindresorhus/got/tarball/master",
+    "clone_url": "https://github.com/sindresorhus/got",
+    "https_url": "https://github.com/sindresorhus/got",
+    "travis_url": "https://travis-ci.org/sindresorhus/got",
+    "zip_url": "https://github.com/sindresorhus/got/archive/master.zip",
+    "api_url": "https://api.github.com/repos/sindresorhus/got"
+  },
+  "engines": {
+    "node": ">=4"
+  },
+  "scripts": {
+    "test": "xo && nyc ava",
+    "coveralls": "nyc report --reporter=text-lcov | coveralls"
+  },
+  "files": [
+    "index.js",
+    "errors.js"
+  ],
+  "keywords": [
+    "http",
+    "https",
+    "get",
+    "got",
+    "url",
+    "uri",
+    "request",
+    "util",
+    "utility",
+    "simple",
+    "curl",
+    "wget",
+    "fetch",
+    "net",
+    "network",
+    "electron"
+  ],
+  "dependencies": {
+    "@sindresorhus/is": "^0.7.0",
+    "cacheable-request": "^2.1.1",
+    "decompress-response": "^3.3.0",
+    "duplexer3": "^0.1.4",
+    "get-stream": "^3.0.0",
+    "into-stream": "^3.1.0",
+    "is-retry-allowed": "^1.1.0",
+    "isurl": "^1.0.0-alpha5",
+    "lowercase-keys": "^1.0.0",
+    "mimic-response": "^1.0.0",
+    "p-cancelable": "^0.4.0",
+    "p-timeout": "^2.0.1",
+    "pify": "^3.0.0",
+    "safe-buffer": "^5.1.1",
+    "timed-out": "^4.0.1",
+    "url-parse-lax": "^3.0.0",
+    "url-to-options": "^1.0.1"
+  },
+  "devDependencies": {
+    "ava": "^0.25.0",
+    "coveralls": "^3.0.0",
+    "form-data": "^2.1.1",
+    "get-port": "^3.0.0",
+    "nyc": "^11.0.2",
+    "p-event": "^1.3.0",
+    "pem": "^1.4.4",
+    "proxyquire": "^1.8.0",
+    "sinon": "^4.0.0",
+    "slow-stream": "0.0.4",
+    "tempfile": "^2.0.0",
+    "tempy": "^0.2.1",
+    "universal-url": "1.0.0-alpha",
+    "xo": "^0.20.0"
+  },
+  "ava": {
+    "concurrency": 4
+  },
+  "browser": {
+    "decompress-response": false,
+    "electron": false
+  },
+  "gitHead": "bd3315b6c61d20a68944831d8b3a05046d5554ad",
+  "homepage": "https://github.com/sindresorhus/got#readme",
+  "_npmVersion": "5.6.0",
+  "_nodeVersion": "8.11.1",
+  "dist": {
+    "integrity": "sha512-tiLX+bnYm5A56T5N/n9Xo89vMaO1mrS9qoDqj3u/anVooqGozvY/HbXzEpDfbNeKsHCBpK40gSbz8wGYSp3i1w==",
+    "shasum": "093324403d4d955f5a16a7a8d39955d055ae10ed",
+    "tarball": "https://registry.npmjs.org/got/-/got-8.3.1.tgz",
+    "fileCount": 5,
+    "unpackedSize": 42079,
+    "npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJa6BgNCRA9TVsSAnZWagAAeNwP/34bcjZvnu7Z8s0tCxru\nfRdWjUHrBk4nIdxII0cz9uthhCDkOv6CN6R4P01zkw3U9lI5yoDPebUlqXww\n7Wz5HcODeiAWtjD2OKwDDKdi1ShTdhXKd8mvz0/CgYgLjDwzhxqJwbmSGHZt\nXA1UJfQ2k4ttlpf/7fxe5YEUBQy+vwpMUS0VT7hNEiE8N8DJtg9nj6rXCQ1b\nBIEXQLinfQKtBx6W0I6tdfWDoIJCGjbKsDqsxjCOB2fnxC7K3IBkUahAxw9v\nlNMqOzXgCj8BUkkUaJt1IBmSMr2nzG6HQ6L4MvpkTK9Qeb3bFHD8EqYgCfUB\nsTNupR7W3cXY3H9R8b22BSq+91GS8m1AMFmfVIgxbYV+qv6dSUrqFrh0fUln\n2cnZ1XjWJVvtXBWW/4xceQA8s5SuNfyyrb0kEywj9YzhGG/XfeDyj1NiQJdT\nkKnfT2BIusYR+4ePrioWU1p2KlZbVXUbLGM8yPSl7uTTJS1j/TjOcYgYQqnV\npolyw9z3nOIJPCvjwdl7GV+ea96bBKhifVP1oxqESOvRQUwNWFnD3Ear2GXj\nOfFFJXRFDEPdg7+RvgLpn6HtiR//CGiwkXFjPuLKamlCH4lud90lkA++RdAD\nrByNrS7CLf5WsTl5c2eXNmgTviBxZ18Ej83sVGnAjn0LVbL9NC87vm8TGOkw\n/8Bd\r\n=kfsS\r\n-----END PGP SIGNATURE-----\r\n"
+  },
+  "_hasShrinkwrap": false,
+  "stars": 121,
+  "versions": [
+    {
+      "number": "0.1.0",
+      "date": "2014-03-27T22:43:12.196Z"
+    },
+    {
+      "number": "0.1.1",
+      "date": "2014-04-12T13:47:38.755Z"
+    },
+    {
+      "number": "0.2.0",
+      "date": "2014-04-13T18:14:49.110Z"
+    },
+    {
+      "number": "0.3.0",
+      "date": "2014-05-10T23:39:27.862Z"
+    },
+    {
+      "number": "1.0.0",
+      "date": "2014-08-05T09:43:06.091Z"
+    },
+    {
+      "number": "1.0.1",
+      "date": "2014-08-12T08:21:25.243Z"
+    },
+    {
+      "number": "1.1.0",
+      "date": "2014-08-17T12:43:15.105Z"
+    },
+    {
+      "number": "1.2.0",
+      "date": "2014-08-20T22:37:57.307Z"
+    },
+    {
+      "number": "1.2.1",
+      "date": "2014-09-23T14:14:34.374Z"
+    },
+    {
+      "number": "1.2.2",
+      "date": "2014-10-03T14:11:25.869Z"
+    },
+    {
+      "number": "2.0.0",
+      "date": "2014-11-23T09:01:36.404Z"
+    },
+    {
+      "number": "2.1.0",
+      "date": "2014-12-02T10:31:12.398Z"
+    },
+    {
+      "number": "2.2.0",
+      "date": "2014-12-07T17:49:45.912Z"
+    },
+    {
+      "number": "2.3.0",
+      "date": "2015-01-05T09:15:38.995Z"
+    },
+    {
+      "number": "2.3.1",
+      "date": "2015-01-19T13:02:19.029Z"
+    },
+    {
+      "number": "2.3.2",
+      "date": "2015-01-24T08:03:00.841Z"
+    },
+    {
+      "number": "2.4.0",
+      "date": "2015-02-06T09:25:12.987Z"
+    },
+    {
+      "number": "2.5.0",
+      "date": "2015-03-24T18:47:14.096Z"
+    },
+    {
+      "number": "2.6.0",
+      "date": "2015-04-03T14:49:18.932Z"
+    },
+    {
+      "number": "2.7.0",
+      "date": "2015-04-06T11:30:17.357Z"
+    },
+    {
+      "number": "2.7.1",
+      "date": "2015-04-08T11:03:27.381Z"
+    },
+    {
+      "number": "2.7.2",
+      "date": "2015-04-08T18:59:36.007Z"
+    },
+    {
+      "number": "2.8.0",
+      "date": "2015-04-21T05:48:05.902Z"
+    },
+    {
+      "number": "2.8.1",
+      "date": "2015-04-21T14:08:22.947Z"
+    },
+    {
+      "number": "2.9.0",
+      "date": "2015-04-26T15:55:52.739Z"
+    },
+    {
+      "number": "2.9.1",
+      "date": "2015-04-26T18:29:10.206Z"
+    },
+    {
+      "number": "2.9.2",
+      "date": "2015-04-27T06:30:24.516Z"
+    },
+    {
+      "number": "3.0.0",
+      "date": "2015-05-06T06:30:58.538Z"
+    },
+    {
+      "number": "3.1.0",
+      "date": "2015-05-08T11:12:05.123Z"
+    },
+    {
+      "number": "3.2.0",
+      "date": "2015-05-08T16:48:58.710Z"
+    },
+    {
+      "number": "3.3.0",
+      "date": "2015-06-30T13:05:28.712Z"
+    },
+    {
+      "number": "3.3.1",
+      "date": "2015-07-15T10:16:53.806Z"
+    },
+    {
+      "number": "4.0.0",
+      "date": "2015-07-25T06:31:20.863Z"
+    },
+    {
+      "number": "4.1.0",
+      "date": "2015-07-27T11:12:35.402Z"
+    },
+    {
+      "number": "4.1.1",
+      "date": "2015-07-28T15:01:59.215Z"
+    },
+    {
+      "number": "4.2.0",
+      "date": "2015-09-09T08:58:13.223Z"
+    },
+    {
+      "number": "5.0.0",
+      "date": "2015-10-18T09:28:57.901Z"
+    },
+    {
+      "number": "5.1.0",
+      "date": "2015-11-04T06:14:56.435Z"
+    },
+    {
+      "number": "5.2.0",
+      "date": "2015-12-02T07:54:48.847Z"
+    },
+    {
+      "number": "6.0.0-rc1",
+      "date": "2015-12-07T05:37:56.742Z"
+    },
+    {
+      "number": "5.2.1",
+      "date": "2015-12-15T15:05:48.697Z"
+    },
+    {
+      "number": "5.3.0",
+      "date": "2015-12-20T17:26:48.800Z"
+    },
+    {
+      "number": "6.0.0",
+      "date": "2016-01-07T16:32:11.588Z"
+    },
+    {
+      "number": "6.0.1",
+      "date": "2016-01-11T12:48:36.344Z"
+    },
+    {
+      "number": "5.3.1",
+      "date": "2016-01-12T10:42:52.883Z"
+    },
+    {
+      "number": "5.3.2",
+      "date": "2016-01-13T08:59:14.318Z"
+    },
+    {
+      "number": "6.0.2",
+      "date": "2016-01-13T08:59:36.251Z"
+    },
+    {
+      "number": "5.4.0",
+      "date": "2016-01-16T11:25:19.190Z"
+    },
+    {
+      "number": "6.1.0",
+      "date": "2016-01-16T11:25:45.613Z"
+    },
+    {
+      "number": "5.4.1",
+      "date": "2016-01-25T10:06:31.058Z"
+    },
+    {
+      "number": "6.1.1",
+      "date": "2016-01-25T10:11:30.894Z"
+    },
+    {
+      "number": "6.1.2",
+      "date": "2016-02-28T18:11:22.062Z"
+    },
+    {
+      "number": "5.4.2",
+      "date": "2016-02-28T18:11:46.401Z"
+    },
+    {
+      "number": "6.2.0",
+      "date": "2016-03-03T07:54:01.845Z"
+    },
+    {
+      "number": "5.5.0",
+      "date": "2016-03-03T08:00:46.060Z"
+    },
+    {
+      "number": "5.5.1",
+      "date": "2016-04-05T07:29:12.088Z"
+    },
+    {
+      "number": "5.6.0",
+      "date": "2016-04-06T18:32:20.306Z"
+    },
+    {
+      "number": "6.3.0",
+      "date": "2016-04-06T18:33:09.807Z"
+    },
+    {
+      "number": "6.5.0",
+      "date": "2016-09-14T09:02:20.690Z"
+    },
+    {
+      "number": "5.7.0",
+      "date": "2016-11-01T08:43:39.778Z"
+    },
+    {
+      "number": "6.6.0",
+      "date": "2016-11-01T08:51:18.521Z"
+    },
+    {
+      "number": "6.6.1",
+      "date": "2016-11-02T06:11:37.653Z"
+    },
+    {
+      "number": "5.7.1",
+      "date": "2016-11-02T19:03:21.382Z"
+    },
+    {
+      "number": "6.6.2",
+      "date": "2016-11-06T10:15:33.357Z"
+    },
+    {
+      "number": "6.6.3",
+      "date": "2016-11-06T10:25:25.129Z"
+    },
+    {
+      "number": "6.7.0",
+      "date": "2016-12-29T10:18:05.884Z"
+    },
+    {
+      "number": "6.7.1",
+      "date": "2016-12-29T14:42:52.311Z"
+    },
+    {
+      "number": "7.0.0",
+      "date": "2017-05-29T08:02:02.304Z"
+    },
+    {
+      "number": "7.1.0",
+      "date": "2017-06-30T15:50:27.227Z"
+    },
+    {
+      "number": "8.0.0",
+      "date": "2017-11-16T10:06:21.021Z"
+    },
+    {
+      "number": "8.0.1",
+      "date": "2017-12-01T12:50:25.797Z"
+    },
+    {
+      "number": "8.0.2",
+      "date": "2018-01-13T13:56:59.785Z"
+    },
+    {
+      "number": "8.0.3",
+      "date": "2018-01-20T20:56:16.440Z"
+    },
+    {
+      "number": "8.1.0",
+      "date": "2018-02-11T15:21:29.820Z"
+    },
+    {
+      "number": "8.2.0",
+      "date": "2018-02-19T06:23:09.405Z"
+    },
+    {
+      "number": "8.3.0",
+      "date": "2018-03-09T16:57:36.401Z"
+    },
+    {
+      "number": "8.3.1",
+      "date": "2018-05-01T07:32:27.487Z"
+    }
+  ],
+  "created": "2014-03-27T22:43:12.196Z",
+  "modified": "2018-05-01T07:32:33.554Z",
+  "lastPublisher": {
+    "name": "sindresorhus",
+    "email": "sindresorhus@gmail.com"
+  },
+  "owners": [
+    {
+      "email": "alex.tesfamichael@gmail.com",
+      "name": "alextes"
+    },
+    {
+      "email": "floatdrop@gmail.com",
+      "name": "floatdrop"
+    },
+    {
+      "email": "kevinmartensson@gmail.com",
+      "name": "kevva"
+    },
+    {
+      "email": "sindresorhus@gmail.com",
+      "name": "sindresorhus"
+    }
+  ]
+}

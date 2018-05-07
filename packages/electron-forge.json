@@ -1,0 +1,486 @@
+{
+  "name": "electron-forge",
+  "version": "5.2.1",
+  "description": "A complete tool for building modern Electron applications",
+  "repository": {
+    "user": "electron-userland",
+    "repo": "electron-forge",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/electron-userland/electron-forge/tarball/master",
+    "clone_url": "https://github.com/electron-userland/electron-forge",
+    "https_url": "https://github.com/electron-userland/electron-forge",
+    "travis_url": "https://travis-ci.org/electron-userland/electron-forge",
+    "zip_url": "https://github.com/electron-userland/electron-forge/archive/master.zip",
+    "api_url": "https://api.github.com/repos/electron-userland/electron-forge"
+  },
+  "main": "dist/api/index.js",
+  "bin": {
+    "electron-forge": "dist/electron-forge.js",
+    "forge": "dist/electron-forge.js",
+    "electron-forge-vscode-nix": "script/vscode.sh",
+    "electron-forge-vscode-win": "script/vscode.cmd"
+  },
+  "scripts": {
+    "build": "gulp build",
+    "precommit": "npm run lint",
+    "commit": "git-cz",
+    "docs": "esdoc",
+    "install": "node tabtab-install.js",
+    "lint": "eslint src test gulpfile.babel.js tabtab-install.js",
+    "prepublish": "gulp build",
+    "pretest": "gulp build",
+    "test": "npm run lint && npm run test-all",
+    "test-coverage": "npm run lint && npm run test-all-coverage",
+    "test-all": "mocha test/**/*_spec*.js test/**/**/*_spec*.js",
+    "test-fast": "mocha test/**/*_spec.js test/**/**/*_spec.js --timeout=10000",
+    "test-all-coverage": "cross-env NODE_ENV=test nyc npm run test-all",
+    "test-fast-coverage": "cross-env NODE_ENV=test nyc npm run test-fast",
+    "release:patch": "changelog -p && node ci/fix-changelog.js && git add CHANGELOG.md && git commit -m \"updated CHANGELOG.md\" && npm version patch && git push origin && git push origin --tags",
+    "release:minor": "changelog -m && node ci/fix-changelog.js && git add CHANGELOG.md && git commit -m \"updated CHANGELOG.md\" && npm version minor && git push origin && git push origin --tags",
+    "release:major": "changelog -M && node ci/fix-changelog.js && git add CHANGELOG.md && git commit -m \"updated CHANGELOG.md\" && npm version major && git push origin && git push origin --tags",
+    "watch": "gulp watch",
+    "watch-link": "nodemon --watch src --exec \"npm link\""
+  },
+  "author": {
+    "name": "Samuel Attard"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "asar": "^0.14.0",
+    "babel-eslint": "^7.0.0",
+    "babel-plugin-istanbul": "^4.0.0",
+    "babel-plugin-syntax-async-functions": "^6.13.0",
+    "babel-plugin-transform-async-to-module-method": "^6.16.0",
+    "babel-plugin-transform-runtime": "^6.15.0",
+    "babel-preset-env": "^1.6.0",
+    "chai": "^4.0.0",
+    "chai-as-promised": "^7.0.0",
+    "commitizen": "^2.8.6",
+    "coveralls": "^3.0.0",
+    "cross-env": "^5.0.0",
+    "cz-customizable": "^5.0.0",
+    "esdoc": "^1.0.1",
+    "esdoc-importpath-plugin": "^1.0.0",
+    "esdoc-standard-plugin": "^1.0.0",
+    "eslint": "^3.7.1",
+    "eslint-config-airbnb-base": "^8.0.0",
+    "eslint-plugin-import": "^1.16.0",
+    "eslint-plugin-mocha": "^4.8.0",
+    "fetch-mock": "^6.0.0",
+    "generate-changelog": "^1.0.2",
+    "gulp": "^3.9.1",
+    "gulp-babel": "^6.1.2",
+    "mocha": "^5.0.0",
+    "nodemon": "^1.11.0",
+    "nyc": "^11.0.0",
+    "proxyquire": "^2.0.1",
+    "sinon": "^4.1.2"
+  },
+  "babel": {
+    "sourceMaps": "inline",
+    "env": {
+      "test": {
+        "plugins": [
+          "istanbul"
+        ]
+      }
+    },
+    "presets": [
+      [
+        "env",
+        {
+          "targets": {
+            "node": "6"
+          }
+        }
+      ]
+    ],
+    "plugins": [
+      "transform-runtime",
+      "syntax-async-functions",
+      [
+        "transform-async-to-module-method",
+        {
+          "module": "bluebird",
+          "method": "coroutine"
+        }
+      ]
+    ]
+  },
+  "nyc": {
+    "reporter": [
+      "lcov",
+      "text-summary",
+      "html"
+    ],
+    "sourceMap": false,
+    "instrument": false,
+    "cache": true
+  },
+  "dependencies": {
+    "@octokit/rest": "^15.2.6",
+    "aws-sdk": "^2.9.0",
+    "babel-register": "^6.16.3",
+    "bluebird": "^3.4.6",
+    "colors": "^1.1.2",
+    "commander": "^2.9.0",
+    "cross-spawn-promise": "^0.10.1",
+    "debug": "^3.0.0",
+    "electron-forge-template-angular2": "^1.0.3",
+    "electron-forge-template-react": "^1.0.2",
+    "electron-forge-template-react-typescript": "^1.0.3",
+    "electron-forge-template-vue": "^1.0.2",
+    "electron-packager": "^11.0.0",
+    "electron-rebuild": "^1.6.0",
+    "exact-version": "^1.0.1",
+    "form-data": "^2.1.4",
+    "fs-extra": "^5.0.0",
+    "glob": "^7.1.1",
+    "inquirer": "^5.0.0",
+    "lodash.merge": "^4.6.0",
+    "lodash.template": "^4.4.0",
+    "log-symbols": "^2.0.0",
+    "mime-types": "^2.1.17",
+    "node-fetch": "^2.0.0",
+    "node-gyp": "^3.4.0",
+    "nugget": "^2.0.1",
+    "opn": "^5.0.0",
+    "ora": "^2.0.0",
+    "parse-author": "^2.0.0",
+    "pify": "^3.0.0",
+    "resolve-package": "^1.0.1",
+    "s3": "^4.4.0",
+    "semver": "^5.3.0",
+    "sudo-prompt": "^8.0.0",
+    "tabtab": "^2.2.1",
+    "username": "^3.0.0",
+    "yarn-or-npm": "^2.0.2",
+    "zip-folder": "^1.0.0",
+    "electron-installer-debian": "^0.8.0",
+    "electron-installer-dmg": "^0.2.0",
+    "electron-installer-flatpak": "^0.8.0",
+    "electron-installer-redhat": "^0.5.0",
+    "electron-installer-snap": "^2.0.0",
+    "electron-windows-store": "^0.12.0",
+    "electron-winstaller": "^2.5.0",
+    "electron-wix-msi": "^1.3.0"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-customizable"
+    },
+    "cz-customizable": {
+      "config": "./.cz.js"
+    }
+  },
+  "optionalDependencies": {
+    "electron-installer-debian": "^0.8.0",
+    "electron-installer-dmg": "^0.2.0",
+    "electron-installer-flatpak": "^0.8.0",
+    "electron-installer-redhat": "^0.5.0",
+    "electron-installer-snap": "^2.0.0",
+    "electron-windows-store": "^0.12.0",
+    "electron-winstaller": "^2.5.0",
+    "electron-wix-msi": "^1.3.0"
+  },
+  "engines": {
+    "node": ">= 6.0"
+  },
+  "gitHead": "977d112fb5f34304e5b7fdf33d0f63c6708298b8",
+  "homepage": "https://github.com/electron-userland/electron-forge#readme",
+  "_npmVersion": "3.10.10",
+  "_nodeVersion": "6.14.2",
+  "dist": {
+    "shasum": "3b7fa74ad5ce3efb54e07a71d14f02e29a0e4e31",
+    "tarball": "https://registry.npmjs.org/electron-forge/-/electron-forge-5.2.1.tgz",
+    "fileCount": 108,
+    "unpackedSize": 605472,
+    "npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJa756jCRA9TVsSAnZWagAAgOIP/1mZpLbEdW/AkEJB7rpt\n8UH6RGnTDKsZkBRbWuhj1hCcdp4UFB6ghaGabzyZfAQ4EC5ERdUiKrvdMkAn\noiMYd1Jlp3qe2jLoUJpmWnnm97+qiUMNiuSLg6/wMEgnqhJneJcItFHpfMSg\nMLJ7y3N2LQFJzIc77pNUefwiKI4xKTWSwEyuVRKlsrnB93E6aCkKZblRgsF/\npmd51l1tFRdJIrAGqsDAwwfytPmJ+qxBjnaQHcXXkjkrw9sDI26pJ2wYmV/O\nHs5Jsii1DTPGMZgAh8/2o3cxIA5DVmbPkRJ5t524iRAOC4C/BHMg1Pr0yhMi\nWSe3/pw5DgncO+VDcMVa50Hk6pd4a4lqI4H87gxf6TbrDPzl98Dr6L8syEwe\nlgqJp+C/ZTwCaz0XNCufp+DIA++OKCqldFdjCLFPVim6/4eERK0796SG1Ahj\nw3p7hPyXLbdjN0aWH2gCTJr0LlzlAopmvkEhJizQYkOZPoGIOb552ERDcmVM\n733VqXovWDXWynSyUWApbAghHDuo4WcUJ8GqyR+LfKJmrhKseaP51Dk4Vr+9\nFSHcp4MwqxfmLvOhVDwirHKQ+RE83+kdZLMbNk9VilrCUDXnGad/Y+e629An\ny2eEcunlE0KKvCL2NYInctlCfVTAuyaOFPbMGYFJlyqsstN/VRwJmdgiajFG\nKaHq\r\n=S4py\r\n-----END PGP SIGNATURE-----\r\n"
+  },
+  "_hasShrinkwrap": false,
+  "stars": 15,
+  "versions": [
+    {
+      "number": "0.0.1",
+      "date": "2016-10-05T15:09:34.738Z"
+    },
+    {
+      "number": "0.0.2",
+      "date": "2016-10-05T15:38:24.836Z"
+    },
+    {
+      "number": "0.0.3",
+      "date": "2016-12-03T06:23:30.526Z"
+    },
+    {
+      "number": "0.0.4",
+      "date": "2016-12-03T06:38:37.359Z"
+    },
+    {
+      "number": "0.0.5",
+      "date": "2016-12-03T11:16:02.187Z"
+    },
+    {
+      "number": "0.0.6",
+      "date": "2016-12-04T11:48:36.585Z"
+    },
+    {
+      "number": "0.0.7",
+      "date": "2016-12-07T08:42:36.371Z"
+    },
+    {
+      "number": "0.0.8",
+      "date": "2016-12-10T14:42:42.161Z"
+    },
+    {
+      "number": "0.0.9",
+      "date": "2016-12-10T14:46:36.670Z"
+    },
+    {
+      "number": "0.1.0",
+      "date": "2016-12-11T07:18:37.117Z"
+    },
+    {
+      "number": "1.0.0",
+      "date": "2016-12-11T09:33:23.151Z"
+    },
+    {
+      "number": "1.0.1",
+      "date": "2016-12-11T15:45:26.138Z"
+    },
+    {
+      "number": "1.1.0",
+      "date": "2016-12-27T08:17:48.084Z"
+    },
+    {
+      "number": "2.0.0",
+      "date": "2016-12-30T01:12:30.784Z"
+    },
+    {
+      "number": "2.1.0",
+      "date": "2016-12-30T03:51:31.640Z"
+    },
+    {
+      "number": "2.2.0",
+      "date": "2016-12-30T04:38:04.636Z"
+    },
+    {
+      "number": "2.3.0",
+      "date": "2016-12-31T22:57:39.400Z"
+    },
+    {
+      "number": "2.4.0",
+      "date": "2017-01-03T00:08:45.125Z"
+    },
+    {
+      "number": "2.5.0",
+      "date": "2017-01-04T04:29:45.170Z"
+    },
+    {
+      "number": "2.5.1",
+      "date": "2017-01-05T01:28:52.749Z"
+    },
+    {
+      "number": "2.5.2",
+      "date": "2017-01-07T06:40:47.524Z"
+    },
+    {
+      "number": "2.6.0",
+      "date": "2017-01-11T06:50:57.090Z"
+    },
+    {
+      "number": "2.7.0",
+      "date": "2017-01-14T09:51:04.495Z"
+    },
+    {
+      "number": "2.7.1",
+      "date": "2017-01-16T02:49:53.588Z"
+    },
+    {
+      "number": "2.7.2",
+      "date": "2017-01-19T07:02:25.350Z"
+    },
+    {
+      "number": "2.7.3",
+      "date": "2017-01-24T13:17:44.780Z"
+    },
+    {
+      "number": "2.7.4",
+      "date": "2017-01-27T03:12:27.694Z"
+    },
+    {
+      "number": "2.7.5",
+      "date": "2017-01-30T02:17:40.660Z"
+    },
+    {
+      "number": "2.8.0",
+      "date": "2017-02-02T14:25:54.664Z"
+    },
+    {
+      "number": "2.8.1",
+      "date": "2017-02-23T00:13:30.789Z"
+    },
+    {
+      "number": "2.8.2",
+      "date": "2017-02-28T00:36:33.448Z"
+    },
+    {
+      "number": "2.8.3",
+      "date": "2017-03-10T01:45:43.369Z"
+    },
+    {
+      "number": "2.9.0",
+      "date": "2017-04-03T01:24:17.563Z"
+    },
+    {
+      "number": "2.10.0",
+      "date": "2017-04-17T03:24:37.314Z"
+    },
+    {
+      "number": "2.12.0",
+      "date": "2017-04-24T22:16:07.314Z"
+    },
+    {
+      "number": "3.0.0",
+      "date": "2017-05-01T05:44:37.503Z"
+    },
+    {
+      "number": "3.0.1",
+      "date": "2017-05-03T07:10:06.638Z"
+    },
+    {
+      "number": "3.0.2",
+      "date": "2017-05-25T13:54:17.146Z"
+    },
+    {
+      "number": "3.0.3",
+      "date": "2017-05-26T12:56:14.048Z"
+    },
+    {
+      "number": "3.0.4",
+      "date": "2017-06-15T02:39:30.708Z"
+    },
+    {
+      "number": "3.0.5",
+      "date": "2017-06-16T18:23:32.152Z"
+    },
+    {
+      "number": "3.1.0",
+      "date": "2017-07-29T15:32:30.124Z"
+    },
+    {
+      "number": "3.1.1",
+      "date": "2017-08-02T12:03:47.532Z"
+    },
+    {
+      "number": "3.2.0",
+      "date": "2017-08-17T15:20:33.081Z"
+    },
+    {
+      "number": "4.0.0",
+      "date": "2017-08-30T03:49:05.049Z"
+    },
+    {
+      "number": "4.0.1",
+      "date": "2017-09-04T15:14:10.072Z"
+    },
+    {
+      "number": "4.0.2",
+      "date": "2017-09-10T15:07:13.712Z"
+    },
+    {
+      "number": "4.1.0",
+      "date": "2017-09-26T17:51:33.458Z"
+    },
+    {
+      "number": "4.1.1",
+      "date": "2017-09-27T04:38:39.046Z"
+    },
+    {
+      "number": "4.1.2",
+      "date": "2017-09-27T23:25:26.651Z"
+    },
+    {
+      "number": "4.1.3",
+      "date": "2017-11-10T02:28:36.214Z"
+    },
+    {
+      "number": "4.1.4",
+      "date": "2017-11-21T02:52:09.962Z"
+    },
+    {
+      "number": "4.1.5",
+      "date": "2017-11-24T03:27:21.219Z"
+    },
+    {
+      "number": "4.1.6",
+      "date": "2017-12-06T06:00:57.121Z"
+    },
+    {
+      "number": "4.1.7",
+      "date": "2017-12-24T18:52:31.968Z"
+    },
+    {
+      "number": "4.1.8",
+      "date": "2018-01-08T00:47:16.002Z"
+    },
+    {
+      "number": "4.1.9",
+      "date": "2018-01-08T02:34:49.112Z"
+    },
+    {
+      "number": "4.2.0",
+      "date": "2018-01-08T05:09:34.362Z"
+    },
+    {
+      "number": "4.2.1",
+      "date": "2018-01-30T01:25:22.512Z"
+    },
+    {
+      "number": "4.3.0",
+      "date": "2018-01-31T00:39:13.449Z"
+    },
+    {
+      "number": "5.0.0",
+      "date": "2018-02-01T03:11:44.045Z"
+    },
+    {
+      "number": "5.1.0",
+      "date": "2018-02-05T06:47:56.746Z"
+    },
+    {
+      "number": "5.1.1",
+      "date": "2018-02-15T17:37:30.657Z"
+    },
+    {
+      "number": "5.1.2",
+      "date": "2018-04-10T03:40:39.814Z"
+    },
+    {
+      "number": "5.2.0",
+      "date": "2018-04-15T21:43:40.993Z"
+    },
+    {
+      "number": "5.2.1",
+      "date": "2018-05-07T00:32:32.178Z"
+    }
+  ],
+  "created": "2016-10-05T15:09:34.738Z",
+  "modified": "2018-05-07T00:32:39.025Z",
+  "lastPublisher": {
+    "name": "malept",
+    "email": "nodejs.npm.nospam@lazymalevolence.com"
+  },
+  "owners": [
+    {
+      "name": "malept",
+      "email": "nodejs.npm.nospam@lazymalevolence.com"
+    },
+    {
+      "name": "marshallofsound",
+      "email": "samuel.r.attard@gmail.com"
+    }
+  ]
+}

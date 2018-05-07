@@ -1,0 +1,187 @@
+{
+  "name": "niltree-desktop",
+  "productName": "Niltree",
+  "description": "fast Javascript web browser for AR, VR, and WebG",
+  "version": "0.0.0-canary.1",
+  "author": {
+    "name": "Shawn Presser",
+    "email": "shawnpresser@gmail.com"
+  },
+  "repository": {
+    "user": "niltree",
+    "repo": "niltree-desktop",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/niltree/niltree-desktop/tarball/master",
+    "clone_url": "https://github.com/niltree/niltree-desktop",
+    "https_url": "https://github.com/niltree/niltree-desktop",
+    "travis_url": "https://travis-ci.org/niltree/niltree-desktop",
+    "zip_url": "https://github.com/niltree/niltree-desktop/archive/master.zip",
+    "api_url": "https://api.github.com/repos/niltree/niltree-desktop"
+  },
+  "main": "main/index.js",
+  "scripts": {
+    "start": "electron main",
+    "build": "yarn build-renderer && yarn build-app",
+    "build-app": "build",
+    "build-renderer": "next build renderer && next export renderer",
+    "precommit": "lint-staged",
+    "test": "yarn test-lint && yarn build -p never && yarn test-integration",
+    "test-lint": "xo",
+    "test-integration": "ava -s"
+  },
+  "build": {
+    "appId": "com.niltree.app",
+    "files": [
+      "**/*",
+      "!renderer",
+      "renderer/out"
+    ],
+    "win": {
+      "target": [
+        "squirrel"
+      ],
+      "icon": "main/static/icons/windows.ico"
+    },
+    "squirrelWindows": {
+      "loadingGif": "main/static/install-spinner.gif"
+    },
+    "mac": {
+      "category": "public.app-category.developer-tools",
+      "icon": "main/static/icons/mac.icns",
+      "extendInfo": {
+        "LSUIElement": 1
+      }
+    }
+  },
+  "lint-staged": {
+    "*.js": [
+      "yarn test-lint",
+      "prettier --single-quote --no-semi --write",
+      "git add"
+    ]
+  },
+  "xo": {
+    "parser": "babel-eslint",
+    "extends": [
+      "prettier",
+      "prettier/react",
+      "plugin:react/recommended"
+    ],
+    "env": [
+      "browser",
+      "node"
+    ],
+    "rules": {
+      "no-await-in-loop": 0,
+      "react/react-in-jsx-scope": 0,
+      "import/no-unresolved": 0,
+      "import/no-extraneous-dependencies": 0,
+      "complexity": 0,
+      "lines-between-class-members": 0
+    }
+  },
+  "license": "MIT",
+  "dependencies": {
+    "app-root-path": "2.0.1",
+    "arr-flatten": "1.1.0",
+    "async-retry": "1.2.1",
+    "babel-eslint": "8.2.2",
+    "bytes": "3.0.0",
+    "chalk": "2.3.2",
+    "child-process-promise": "2.2.1",
+    "chokidar": "2.0.3",
+    "date-fns": "1.29.0",
+    "deep-extend": "0.5.0",
+    "deployment-type": "1.0.3",
+    "docker-file-parser": "1.0.3",
+    "dot-prop": "4.2.0",
+    "electron-is-dev": "0.3.0",
+    "electron-next": "3.1.4",
+    "electron-squirrel-startup": "1.0.0",
+    "first-run": "1.2.0",
+    "fix-path": "2.1.0",
+    "fs-extra": "5.0.0",
+    "glob": "7.1.2",
+    "global-packages": "1.0.2",
+    "groom": "1.1.1",
+    "ignore": "3.3.7",
+    "ini": "1.3.5",
+    "just-compare": "1.2.2",
+    "load-licenses": "1.0.1",
+    "make-unique": "1.0.4",
+    "mkdirp": "0.5.1",
+    "ms": "2.1.1",
+    "node-fetch": "2.1.2",
+    "path-exists": "3.0.0",
+    "promisepipe": "2.1.2",
+    "react-input-autosize": "2.2.1",
+    "react-slick": "0.22.3",
+    "resumer": "0.0.0",
+    "semver": "5.5.0",
+    "serialize-error": "2.1.0",
+    "sleep-promise": "2.0.0",
+    "split-array": "1.0.1",
+    "sudo-prompt": "8.2.0",
+    "time-ago": "0.2.1",
+    "tmp-promise": "1.0.4",
+    "trim": "0.0.1",
+    "ua-parser-js": "0.7.17",
+    "winreg": "1.2.4"
+  },
+  "devDependencies": {
+    "ava": "1.0.0-beta.3",
+    "electron": "1.8.4",
+    "electron-builder": "20.8.1",
+    "electron-builder-squirrel-windows": "20.8.0",
+    "eslint-config-prettier": "2.9.0",
+    "eslint-plugin-react": "7.7.0",
+    "fkill": "5.3.0",
+    "html-to-react": "1.3.3",
+    "husky": "0.14.3",
+    "jquery": "3.3.1",
+    "lint-staged": "7.0.2",
+    "next": "5.1.0",
+    "prettier": "1.11.1",
+    "prop-types": "15.6.1",
+    "react": "16.3.0",
+    "react-dom": "16.3.0",
+    "react-refs": "3.0.4",
+    "react-sortable-hoc": "0.6.8",
+    "spectron": "3.8.0",
+    "strip": "3.0.0",
+    "xo": "0.20.3"
+  },
+  "gitHead": "4c97d3a8ee44347692567ba037432f76f36065df",
+  "homepage": "https://github.com/niltree/niltree-desktop#readme",
+  "_npmVersion": "5.6.0",
+  "_nodeVersion": "9.9.0",
+  "dist": {
+    "integrity": "sha512-Q2N+t6dUeMfAR9xTVkrzM6u7BFoYErV8g71wxebZr/YRgyJjlEZoGW4mGOVwWRbFPjQxxJoSso4HsvaXoiKnYA==",
+    "shasum": "576f9b973cd499c404f2e87f1ce960e52f034255",
+    "tarball": "https://registry.npmjs.org/niltree-desktop/-/niltree-desktop-0.0.0-canary.1.tgz",
+    "fileCount": 146,
+    "unpackedSize": 3055491,
+    "npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJa4QLmCRA9TVsSAnZWagAAtoAP/0xTSjTQ+6CSIwqI7a3j\nF/cFS9dcSobDfDCOigbAZj3U94CV+3DY/i0aK8ucdFtlsAkIV9aYHJYHYck3\n5ZmtFJEpVvAjQl4ZAaXDlQVmOcLHN5KuxTR9TPhx1M4K+HiYRQb5ua1QmYEf\n6LN6hRuBzNaUN0RMfceiq8bN8AWQECUC3L69+EwS5XnEdiTlAxAwy25eClSY\npkZ/Fuph33gC4bMTaYIAG/bFUbEnBIaaHFcqluE93Q+TkbFZ4KPNMAem35yV\nK8chVqEAFx9WUQzmvnM63eDiFy+O6uYVbnyGIUcLwrgqfkSwvsj8RopcOXSO\nuHZAdkzVr+okTidpxskhv0EchJk1s40wxrmmMqR+8MI+BelMUlbkXokwxXV0\nTJYSO/t5Ag2ARgYrFBfu0Hz3xMcRY5cD2fg2sFWyWMQMK+TfrhWWOamat4SH\n0uvsmqLs3SaXe13fayawg8SQbAaIqhotVi0x2sF0P7FTcEa8Oj6JeOgQC/6R\nofiJPjPnguntRpGYMlJ5nvGbGhU/HlfGV/vJf6amz8SLbu5Zqv7gumCWPlxA\nVLS25XXVhNKTq/0SLuRYSfMjreAEYF+VfR/MlnClu1PqjTU1j2celHOiIceX\n70csU0RVL40QnPCuYkj6PXKPjxTaBbhOLCumf4Z/FuIAmMUK5/416gMKmAy5\nwPwK\r\n=GF6g\r\n-----END PGP SIGNATURE-----\r\n"
+  },
+  "_hasShrinkwrap": false,
+  "versions": [
+    {
+      "number": "0.0.0-canary.1",
+      "date": "2018-04-25T22:36:21.307Z"
+    }
+  ],
+  "created": "2018-04-25T22:36:21.180Z",
+  "modified": "2018-04-25T22:36:26.234Z",
+  "lastPublisher": {
+    "name": "shawwn",
+    "email": "shawnpresser@gmail.com"
+  },
+  "owners": [
+    {
+      "name": "shawwn",
+      "email": "shawnpresser@gmail.com"
+    }
+  ]
+}

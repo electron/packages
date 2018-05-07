@@ -1,0 +1,122 @@
+{
+  "name": "meteor-desktop-localstorage",
+  "version": "0.0.11",
+  "engines": {
+    "node": ">=6.0.0"
+  },
+  "description": "Meteor Desktop localStorage replacement",
+  "main": "dist/index.js",
+  "scripts": {
+    "test": "ava tests/functional/**/*.js -s",
+    "test-watch": "ava tests/functional/**/*.js --watch --source src --verbose -s",
+    "lint": "eslint src tests plugins",
+    "build": "babel src --out-dir dist --source-maps inline --copy-files",
+    "build-watch": "babel src --watch --out-dir dist --source-maps inline --copy-files",
+    "version": "node dist/scripts/propagateVersion.js && git add plugins README.md",
+    "postversion": "npm run publish-all",
+    "publish-plugins": "(cls || reset) && cd plugins/localstorage && (meteor publish || echo)",
+    "prepublish": "npm run build || echo",
+    "publish-all": "npm run publish-plugins && npm publish"
+  },
+  "author": {
+    "name": "Bartosz Wojtkowiak",
+    "email": "bartosz@wojtkowiak.it"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "ava": "^0.16.0",
+    "babel-cli": "^6.18.0",
+    "babel-preset-node6": "^11.0.0",
+    "eslint": "^3.8.1",
+    "eslint-config-airbnb-base": "^9.0.0",
+    "eslint-plugin-import": "^2.0.1",
+    "spectron": "^3.4.0",
+    "shelljs": "^0.7.4",
+    "electron": "^1.4.4",
+    "meteor-desktop-test-suite": "0.0.16"
+  },
+  "dependencies": {},
+  "repository": {
+    "user": "wojtkowiak",
+    "repo": "meteor-desktop-localstorage",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/wojtkowiak/meteor-desktop-localstorage/tarball/master",
+    "clone_url": "https://github.com/wojtkowiak/meteor-desktop-localstorage",
+    "https_url": "https://github.com/wojtkowiak/meteor-desktop-localstorage",
+    "travis_url": "https://travis-ci.org/wojtkowiak/meteor-desktop-localstorage",
+    "zip_url": "https://github.com/wojtkowiak/meteor-desktop-localstorage/archive/master.zip",
+    "api_url": "https://api.github.com/repos/wojtkowiak/meteor-desktop-localstorage"
+  },
+  "keywords": [
+    "electron",
+    "meteor",
+    "packager",
+    "localstorage",
+    "local",
+    "storage"
+  ],
+  "homepage": "https://github.com/wojtkowiak/meteor-desktop-localstorage",
+  "meteorDependencies": {
+    "omega:meteor-desktop-localstorage": "@version"
+  },
+  "gitHead": "46949c3be0a8feaa71cd4e45023761b366cb7adf",
+  "_npmVersion": "4.0.1",
+  "_nodeVersion": "6.9.1",
+  "dist": {
+    "shasum": "14caf7d4ca61136d7da734cd4015b0147f85c492",
+    "tarball": "http://registry.npmjs.org/meteor-desktop-localstorage/-/meteor-desktop-localstorage-0.0.11.tgz"
+  },
+  "stars": 1,
+  "versions": [
+    {
+      "number": "0.0.1",
+      "date": "2016-10-25T10:20:31.062Z"
+    },
+    {
+      "number": "0.0.2",
+      "date": "2016-10-25T10:34:30.494Z"
+    },
+    {
+      "number": "0.0.3",
+      "date": "2016-10-25T10:55:45.201Z"
+    },
+    {
+      "number": "0.0.4",
+      "date": "2016-10-25T12:07:41.738Z"
+    },
+    {
+      "number": "0.0.5",
+      "date": "2016-10-26T23:05:02.305Z"
+    },
+    {
+      "number": "0.0.8",
+      "date": "2016-10-27T06:59:51.028Z"
+    },
+    {
+      "number": "0.0.9",
+      "date": "2016-10-28T11:40:48.062Z"
+    },
+    {
+      "number": "0.0.10",
+      "date": "2016-10-28T12:36:37.938Z"
+    },
+    {
+      "number": "0.0.11",
+      "date": "2016-11-02T00:08:36.071Z"
+    }
+  ],
+  "created": "2016-10-25T10:20:31.062Z",
+  "modified": "2017-11-08T20:11:53.253Z",
+  "lastPublisher": {
+    "name": "wojtkowiak",
+    "email": "bartosz@wojtkowiak.it"
+  },
+  "owners": [
+    {
+      "name": "wojtkowiak",
+      "email": "bartosz@wojtkowiak.it"
+    }
+  ]
+}

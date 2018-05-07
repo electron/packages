@@ -1,0 +1,521 @@
+{
+  "name": "patchcore",
+  "version": "1.26.1",
+  "description": "minimal core for ssb clients",
+  "main": "index.js",
+  "scripts": {
+    "start": "electro example",
+    "rebuild": "npm rebuild --runtime=electron --target=$(electron -v) --abi=$(electron --abi) --disturl=https://atom.io/download/atom-shell",
+    "test": "standard"
+  },
+  "repository": {
+    "user": "ssbc",
+    "repo": "patchcore",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/ssbc/patchcore/tarball/master",
+    "clone_url": "https://github.com/ssbc/patchcore",
+    "https_url": "https://github.com/ssbc/patchcore",
+    "travis_url": "https://travis-ci.org/ssbc/patchcore",
+    "zip_url": "https://github.com/ssbc/patchcore/archive/master.zip",
+    "api_url": "https://api.github.com/repos/ssbc/patchcore"
+  },
+  "keywords": [
+    "scuttlebutt",
+    "ssb",
+    "client"
+  ],
+  "author": {
+    "name": "Secure Scuttlebutt Consortium"
+  },
+  "license": "AGPL-3.0",
+  "homepage": "https://github.com/ssbc/patchcore#readme",
+  "dependencies": {
+    "bulk-require": "^1.0.0",
+    "bulkify": "^1.4.2",
+    "color-hash": "^1.0.3",
+    "depnest": "^1.0.2",
+    "emoji-named-characters": "^1.0.2",
+    "es2040": "^1.2.4",
+    "flat": "^4.0.0",
+    "hashlru": "^2.2.0",
+    "html-escape": "^2.0.0",
+    "human-time": "0.0.1",
+    "mutant": "^3.21.2",
+    "mutant-pull-reduce": "^1.1.0",
+    "pull-abortable": "^4.1.0",
+    "pull-box-stream": "~1.0.13",
+    "pull-cat": "^1.1.11",
+    "pull-defer": "~0.2.2",
+    "pull-reconnect": "0.0.3",
+    "pull-stream": "^3.5.0",
+    "scuttle-blog": "^1.0.0",
+    "simple-mime": "^0.1.0",
+    "sorted-array-functions": "^1.0.0",
+    "split-buffer": "^1.0.0",
+    "ssb-client": "^4.5.2",
+    "ssb-config": "^2.2.0",
+    "ssb-feed": "^2.3.0",
+    "ssb-friends": "^2.2.3",
+    "ssb-keys": "^7.0.9",
+    "ssb-markdown": "^3.6.0",
+    "ssb-ref": "^2.11.0",
+    "ssb-sort": "^1.0.0",
+    "xtend": "^4.0.1"
+  },
+  "browserify": {
+    "transform": [
+      "bulkify",
+      "es2040"
+    ]
+  },
+  "devDependencies": {
+    "depject": "github:dominictarr/depject#reduce-with-context",
+    "electro": "^2.0.3",
+    "insert-css": "^2.0.0",
+    "standard": "^8.6.0"
+  },
+  "gitHead": "ba3a2674f63fa05229e42bfed91b68333405c1a9",
+  "_npmVersion": "5.8.0",
+  "_nodeVersion": "8.9.4",
+  "dist": {
+    "integrity": "sha512-/wMrTdscJfVhCTTXWaN0LfTndzDsEqHgLUvuTjxCJBcXoZYFKTPG1YCcjBOrqVTJ2f1g1BY23qBlNXdB3566dQ==",
+    "shasum": "f3e9e3392237a062501674e5b5ef67eb6b4ae89b",
+    "tarball": "https://registry.npmjs.org/patchcore/-/patchcore-1.26.1.tgz",
+    "fileCount": 72,
+    "unpackedSize": 125508,
+    "npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJa4qqtCRA9TVsSAnZWagAAHL0P/3nz6oy8jW3EiZN0h+N3\nla+he5BpalDe8KFr2VV0YNt1e1CwvkTcSIJf4wH/+INICDJkygrPTRQvoj6G\nC9PGHoQAOTUCpT0hz3ngT1TlADg9ea5j0A323Fzx8gmXC9aSC1ly1bX0u/dl\n6OMlNW+U3dzLfrMO6celHSr/kmxOUsHY9IF317xttw3i3mTeX084pnRZm/aS\nKqGQwnNDCosuGDhxQQn7JrbJ6z3UJioIuwCzhGdns8pggTjdv1DdmHTZ2anU\nPtUXX5tjMocF+cG1fUc4/ZQgSAR+m1QvQJhbbwEWuTkEt2lUFPBn0D5uxdQv\nYnNBANqdWIv0iYjuJn6BWrJRveoIl31NdBsQx6z+ks1EHQfEgOuf9YZPWNXi\ny7JTXJUbsPkMO6QQrKp7aiUHUhTeOs2KhkxJ/Ku4uIzedmF1F6qxFgXhz7jT\nQaXWpIUiM110ZKdjMOpnvkOKdyLAlErc8BjhIGA2Rkij/G0qezwXZAKKLg0J\npiG/uD1UWhEMxV8tjHbrCsjJXFdCkn/NtNgyvexan8Uul1ol6+8fHbwMA5ET\nGKVYIIoOLq+wN6Hi0OxIYsG5+kw3i7KBSol/ml9pXMJh2YUHEzwUYAAUuaM8\n4qygZSizWaeWvbSX9PqkNHs2+ubDzr1PdQvg9n2+cfDyh/AUw/mR0twMsv/U\nvLiw\r\n=q9Yh\r\n-----END PGP SIGNATURE-----\r\n"
+  },
+  "_hasShrinkwrap": false,
+  "versions": [
+    {
+      "number": "0.1.0",
+      "date": "2017-02-22T03:17:23.364Z"
+    },
+    {
+      "number": "0.2.2",
+      "date": "2017-02-23T09:04:10.532Z"
+    },
+    {
+      "number": "0.3.0",
+      "date": "2017-02-24T17:24:08.774Z"
+    },
+    {
+      "number": "0.3.1",
+      "date": "2017-02-24T17:28:26.167Z"
+    },
+    {
+      "number": "0.3.2",
+      "date": "2017-02-24T17:44:45.050Z"
+    },
+    {
+      "number": "0.3.3",
+      "date": "2017-02-25T04:23:33.064Z"
+    },
+    {
+      "number": "0.3.4",
+      "date": "2017-03-04T00:17:30.434Z"
+    },
+    {
+      "number": "0.3.5",
+      "date": "2017-03-13T03:07:49.595Z"
+    },
+    {
+      "number": "0.4.0",
+      "date": "2017-03-13T11:03:36.765Z"
+    },
+    {
+      "number": "0.4.1",
+      "date": "2017-03-13T16:55:25.824Z"
+    },
+    {
+      "number": "0.4.2",
+      "date": "2017-03-16T09:12:23.460Z"
+    },
+    {
+      "number": "0.4.3",
+      "date": "2017-03-16T09:41:51.908Z"
+    },
+    {
+      "number": "0.4.4",
+      "date": "2017-03-17T03:02:53.382Z"
+    },
+    {
+      "number": "0.4.5",
+      "date": "2017-03-17T03:48:55.507Z"
+    },
+    {
+      "number": "0.4.6",
+      "date": "2017-03-17T04:28:16.900Z"
+    },
+    {
+      "number": "0.4.7",
+      "date": "2017-03-17T06:02:39.467Z"
+    },
+    {
+      "number": "0.4.8",
+      "date": "2017-04-03T02:37:39.768Z"
+    },
+    {
+      "number": "0.4.9",
+      "date": "2017-04-07T01:52:01.333Z"
+    },
+    {
+      "number": "0.4.10",
+      "date": "2017-04-07T01:57:01.725Z"
+    },
+    {
+      "number": "0.4.11",
+      "date": "2017-04-07T08:53:37.541Z"
+    },
+    {
+      "number": "0.4.12",
+      "date": "2017-04-08T10:59:53.305Z"
+    },
+    {
+      "number": "0.5.0",
+      "date": "2017-04-13T12:34:10.080Z"
+    },
+    {
+      "number": "0.5.1",
+      "date": "2017-04-18T06:27:42.860Z"
+    },
+    {
+      "number": "0.5.2",
+      "date": "2017-06-01T12:59:01.712Z"
+    },
+    {
+      "number": "0.6.0",
+      "date": "2017-06-02T07:26:29.650Z"
+    },
+    {
+      "number": "0.7.0",
+      "date": "2017-06-03T04:53:39.142Z"
+    },
+    {
+      "number": "0.8.0",
+      "date": "2017-06-12T05:03:09.675Z"
+    },
+    {
+      "number": "1.0.0",
+      "date": "2017-06-12T13:38:20.198Z"
+    },
+    {
+      "number": "1.0.1",
+      "date": "2017-06-12T13:50:15.445Z"
+    },
+    {
+      "number": "1.0.2",
+      "date": "2017-06-13T04:06:22.928Z"
+    },
+    {
+      "number": "1.1.0",
+      "date": "2017-06-14T03:38:18.409Z"
+    },
+    {
+      "number": "1.1.1",
+      "date": "2017-06-14T05:06:37.160Z"
+    },
+    {
+      "number": "1.2.0",
+      "date": "2017-06-15T05:19:31.363Z"
+    },
+    {
+      "number": "1.3.0",
+      "date": "2017-06-15T09:55:04.390Z"
+    },
+    {
+      "number": "1.3.1",
+      "date": "2017-06-15T10:57:17.292Z"
+    },
+    {
+      "number": "1.4.0",
+      "date": "2017-06-17T13:00:01.041Z"
+    },
+    {
+      "number": "1.4.1",
+      "date": "2017-06-17T14:49:25.653Z"
+    },
+    {
+      "number": "1.4.2",
+      "date": "2017-06-18T08:37:13.321Z"
+    },
+    {
+      "number": "1.4.3",
+      "date": "2017-06-20T04:47:26.487Z"
+    },
+    {
+      "number": "1.5.0",
+      "date": "2017-06-20T16:09:55.210Z"
+    },
+    {
+      "number": "1.5.1",
+      "date": "2017-06-21T00:35:29.642Z"
+    },
+    {
+      "number": "1.5.2",
+      "date": "2017-06-21T01:10:29.742Z"
+    },
+    {
+      "number": "1.5.3",
+      "date": "2017-06-21T01:22:54.485Z"
+    },
+    {
+      "number": "1.5.4",
+      "date": "2017-06-21T04:19:58.092Z"
+    },
+    {
+      "number": "1.6.0",
+      "date": "2017-06-22T02:32:04.037Z"
+    },
+    {
+      "number": "1.6.1",
+      "date": "2017-06-27T06:12:37.743Z"
+    },
+    {
+      "number": "1.6.2",
+      "date": "2017-06-27T06:27:49.157Z"
+    },
+    {
+      "number": "1.6.3",
+      "date": "2017-06-27T07:39:28.717Z"
+    },
+    {
+      "number": "1.7.0",
+      "date": "2017-06-28T07:38:12.692Z"
+    },
+    {
+      "number": "1.7.1",
+      "date": "2017-06-29T01:33:51.711Z"
+    },
+    {
+      "number": "1.7.2",
+      "date": "2017-06-30T01:49:58.160Z"
+    },
+    {
+      "number": "1.8.0",
+      "date": "2017-06-30T10:21:56.854Z"
+    },
+    {
+      "number": "1.8.1",
+      "date": "2017-07-03T03:55:13.084Z"
+    },
+    {
+      "number": "1.8.2",
+      "date": "2017-07-26T04:26:29.950Z"
+    },
+    {
+      "number": "1.9.0",
+      "date": "2017-08-07T04:55:26.944Z"
+    },
+    {
+      "number": "1.9.1",
+      "date": "2017-08-10T09:58:49.561Z"
+    },
+    {
+      "number": "1.10.0",
+      "date": "2017-08-17T02:58:00.360Z"
+    },
+    {
+      "number": "1.10.1",
+      "date": "2017-08-21T04:31:35.821Z"
+    },
+    {
+      "number": "1.10.2",
+      "date": "2017-08-21T04:34:49.220Z"
+    },
+    {
+      "number": "1.10.3",
+      "date": "2017-08-31T02:24:12.172Z"
+    },
+    {
+      "number": "1.11.0",
+      "date": "2017-09-14T20:37:24.662Z"
+    },
+    {
+      "number": "1.12.0",
+      "date": "2017-09-17T23:03:37.891Z"
+    },
+    {
+      "number": "1.12.1",
+      "date": "2017-09-29T10:52:31.562Z"
+    },
+    {
+      "number": "1.13.0",
+      "date": "2017-10-14T02:20:34.776Z"
+    },
+    {
+      "number": "1.13.1",
+      "date": "2017-10-14T05:58:27.143Z"
+    },
+    {
+      "number": "1.13.2",
+      "date": "2017-10-14T14:01:00.843Z"
+    },
+    {
+      "number": "1.14.0",
+      "date": "2017-10-18T11:10:18.120Z"
+    },
+    {
+      "number": "1.15.0",
+      "date": "2017-10-19T03:08:42.553Z"
+    },
+    {
+      "number": "1.15.1",
+      "date": "2017-10-28T09:46:00.710Z"
+    },
+    {
+      "number": "1.16.0",
+      "date": "2017-11-06T12:24:30.664Z"
+    },
+    {
+      "number": "1.17.0",
+      "date": "2017-11-22T09:25:50.850Z"
+    },
+    {
+      "number": "1.18.0",
+      "date": "2017-11-23T19:26:25.552Z"
+    },
+    {
+      "number": "1.19.0",
+      "date": "2017-12-04T05:42:23.482Z"
+    },
+    {
+      "number": "1.20.0",
+      "date": "2017-12-07T12:44:36.093Z"
+    },
+    {
+      "number": "1.20.1",
+      "date": "2017-12-09T23:32:04.429Z"
+    },
+    {
+      "number": "1.21.0",
+      "date": "2017-12-12T02:01:32.168Z"
+    },
+    {
+      "number": "1.22.0",
+      "date": "2017-12-12T11:20:34.998Z"
+    },
+    {
+      "number": "1.22.1",
+      "date": "2017-12-12T21:54:35.429Z"
+    },
+    {
+      "number": "1.22.2",
+      "date": "2017-12-13T01:18:24.267Z"
+    },
+    {
+      "number": "1.22.3",
+      "date": "2017-12-15T01:25:53.521Z"
+    },
+    {
+      "number": "1.23.0",
+      "date": "2017-12-15T05:37:31.740Z"
+    },
+    {
+      "number": "1.23.1",
+      "date": "2018-02-11T23:19:18.398Z"
+    },
+    {
+      "number": "1.23.2",
+      "date": "2018-02-11T23:28:47.099Z"
+    },
+    {
+      "number": "1.23.3",
+      "date": "2018-02-13T03:00:48.121Z"
+    },
+    {
+      "number": "1.23.4",
+      "date": "2018-02-20T21:58:17.697Z"
+    },
+    {
+      "number": "1.23.5",
+      "date": "2018-03-19T00:16:58.573Z"
+    },
+    {
+      "number": "1.23.6",
+      "date": "2018-03-29T09:42:26.115Z"
+    },
+    {
+      "number": "1.24.0",
+      "date": "2018-04-11T03:20:34.982Z"
+    },
+    {
+      "number": "1.24.1",
+      "date": "2018-04-12T00:58:05.553Z"
+    },
+    {
+      "number": "1.25.0",
+      "date": "2018-04-13T04:22:00.644Z"
+    },
+    {
+      "number": "1.26.0",
+      "date": "2018-04-20T09:14:31.803Z"
+    },
+    {
+      "number": "1.26.1",
+      "date": "2018-04-27T04:44:27.806Z"
+    }
+  ],
+  "created": "2017-02-22T03:17:23.364Z",
+  "modified": "2018-04-27T04:44:31.918Z",
+  "lastPublisher": {
+    "name": "mmckegg",
+    "email": "matt@wetsand.co.nz"
+  },
+  "owners": [
+    {
+      "email": "michael.williams@enspiral.com",
+      "name": "ahdinosaur"
+    },
+    {
+      "email": "arj03@protonmail.ch",
+      "name": "arj03"
+    },
+    {
+      "email": "npm.cel@celehner.com",
+      "name": "cel"
+    },
+    {
+      "email": "dominic.tarr@gmail.com",
+      "name": "dominictarr"
+    },
+    {
+      "email": "ev@evbogue.com",
+      "name": "ev"
+    },
+    {
+      "email": "gwen@gwenbell.com",
+      "name": "gwenbell"
+    },
+    {
+      "email": "whimful@gmail.com",
+      "name": "mixmix"
+    },
+    {
+      "email": "matt@wetsand.co.nz",
+      "name": "mmckegg"
+    },
+    {
+      "email": "stephen.whitmore@gmail.com",
+      "name": "noffle"
+    },
+    {
+      "email": "pfrazee@gmail.com",
+      "name": "pfrazee"
+    },
+    {
+      "email": "pietgeursen@gmail.com",
+      "name": "pietgeursen"
+    },
+    {
+      "email": "andre+npm@staltz.com",
+      "name": "staltz"
+    },
+    {
+      "email": "npm@vtllf.org",
+      "name": "vtduncan"
+    }
+  ]
+}

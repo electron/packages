@@ -1,0 +1,101 @@
+{
+  "name": "moyai",
+  "version": "0.0.1",
+  "description": "This project is **WORK IN PROGRESS**, do **NOT** try to use it :trollface:",
+  "main": "dist/index.js",
+  "typings": "dist/index.d.ts",
+  "scripts": {
+    "prepublish": "npm run dist",
+    "precommit": "lint-staged",
+    "prepush": "npm test",
+    "clean": "rimraf dist",
+    "build": "tsc",
+    "preview": "NODE_ENV=development electron test",
+    "dist": "npm-run-all clean build",
+    "dev": "npm-run-all dist preview",
+    "jest": "NODE_ENV=test jest",
+    "test": "npm-run-all dist jest"
+  },
+  "repository": {
+    "user": "firede",
+    "repo": "moyai",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/firede/moyai/tarball/master",
+    "clone_url": "https://github.com/firede/moyai",
+    "https_url": "https://github.com/firede/moyai",
+    "travis_url": "https://travis-ci.org/firede/moyai",
+    "zip_url": "https://github.com/firede/moyai/archive/master.zip",
+    "api_url": "https://api.github.com/repos/firede/moyai"
+  },
+  "keywords": [],
+  "author": {
+    "name": "Firede",
+    "email": "firede@firede.us"
+  },
+  "license": "MIT",
+  "homepage": "https://github.com/firede/moyai#readme",
+  "jest": {
+    "transform": {
+      "^.+\\.tsx?$": "ts-jest"
+    },
+    "testRegex": "(/__tests__/.*|(\\.|/)(test|spec))\\.(jsx?|tsx?)$",
+    "moduleFileExtensions": [
+      "ts",
+      "tsx",
+      "js",
+      "jsx",
+      "json",
+      "node"
+    ]
+  },
+  "lint-staged": {
+    "*.{ts,tsx}": [
+      "prettier --write",
+      "git add"
+    ]
+  },
+  "devDependencies": {
+    "@types/jest": "^22.1.1",
+    "@types/node": "^9.4.0",
+    "husky": "^0.14.3",
+    "jest": "^22.1.4",
+    "lint-staged": "^6.1.0",
+    "npm-run-all": "^4.1.2",
+    "prettier": "^1.10.2",
+    "rimraf": "^2.6.2",
+    "ts-jest": "^22.0.2",
+    "typescript": "^2.7.1"
+  },
+  "gitHead": "6e17226bf4a9facf67b36696b5568c4fc11dadcc",
+  "_npmVersion": "5.6.0",
+  "_nodeVersion": "8.9.4",
+  "dist": {
+    "integrity": "sha512-+Yy64FsGPm6t9VxSWwTqQH/OHI474PZ655o47pEnNqt+D6aqXLvNjmuf8ClXLNSXNmJHiBlMlPv+PivA2q7Z5w==",
+    "shasum": "ace9811c7f545a49ff992da3ce461465c02bfd65",
+    "tarball": "https://registry.npmjs.org/moyai/-/moyai-0.0.1.tgz"
+  },
+  "versions": [
+    {
+      "number": "0.0.0",
+      "date": "2017-06-08T11:14:20.379Z"
+    },
+    {
+      "number": "0.0.1",
+      "date": "2018-02-02T10:44:53.174Z"
+    }
+  ],
+  "created": "2017-06-08T11:14:20.379Z",
+  "modified": "2018-02-02T10:44:53.174Z",
+  "lastPublisher": {
+    "name": "firede",
+    "email": "firede@firede.us"
+  },
+  "owners": [
+    {
+      "name": "firede",
+      "email": "firede@firede.us"
+    }
+  ]
+}

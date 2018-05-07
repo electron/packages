@@ -1,0 +1,165 @@
+{
+  "name": "hearthstone-tracker",
+  "version": "0.5.1",
+  "description": "An electron based Hearthstone tracker",
+  "main": "bootstrap-babel.js",
+  "scripts": {
+    "build:release": "electron-packager . HearthstoneTracker --icon=assets/hearthstone --platform=all --arch=all --electron-version=$npm_package_devDependencies_electron --out=builds/",
+    "build:release:mac": "electron-packager . HearthstoneTracker --icon=assets/hearthstone.icns --platform=darwin --arch=x64 --electron-version=$npm_package_devDependencies_electron --out=builds/",
+    "build:release:win": "electron-packager . HearthstoneTracker --icon=assets/hearthstone.ico --platform=win32 --arch=x64 --electron-version=$npm_package_devDependencies_electron --out=builds/",
+    "changelog": "git log `git describe --tags --abbrev=0`..HEAD --pretty=format:' * %s (%an)' | grep -v 'Merge pull request'",
+    "coverage": "cross-env NODE_ENV=test ./node_modules/.bin/nyc --no-cache --reporter=lcov --reporter=text ./node_modules/.bin/_mocha test",
+    "lint": "eslint -c .eslintrc ./**/*.js ./**/*.jsx",
+    "rebuild:leveldb": "cd node_modules/leveldown && HOME=~/.electron-gyp node-gyp rebuild --target=$npm_package_devDependencies_electron --arch=x64 --dist-url=https://atom.io/download/atom-shell",
+    "security:check": "nsp check",
+    "start": "electron .",
+    "test": "NODE_ENV=test mocha"
+  },
+  "pre-push": [
+    "lint",
+    "test"
+  ],
+  "repository": {
+    "user": "gregstewart",
+    "repo": "hearthstone-tracker",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/gregstewart/hearthstone-tracker/tarball/master",
+    "clone_url": "https://github.com/gregstewart/hearthstone-tracker",
+    "https_url": "https://github.com/gregstewart/hearthstone-tracker",
+    "travis_url": "https://travis-ci.org/gregstewart/hearthstone-tracker",
+    "zip_url": "https://github.com/gregstewart/hearthstone-tracker/archive/master.zip",
+    "api_url": "https://api.github.com/repos/gregstewart/hearthstone-tracker"
+  },
+  "keywords": [
+    "hearthstone",
+    "tracker"
+  ],
+  "author": {
+    "name": "Greg Stewart"
+  },
+  "license": "MIT",
+  "homepage": "https://github.com/gregstewart/hearthstone-tracker#readme",
+  "devDependencies": {
+    "babel-cli": "6.26.0",
+    "babel-eslint": "8.2.2",
+    "babel-plugin-istanbul": "4.1.5",
+    "chai": "4.1.2",
+    "codeclimate-test-reporter": "0.5.0",
+    "cross-env": "5.1.4",
+    "devtron": "1.4.0",
+    "electron": "1.8.4",
+    "electron-packager": "12.0.0",
+    "electron-rebuild": "1.7.3",
+    "eslint": "4.19.1",
+    "eslint-plugin-import": "2.10.0",
+    "eslint-plugin-react": "7.7.0",
+    "mocha": "5.0.5",
+    "mocha-junit-reporter": "1.17.0",
+    "nsp": "3.2.1",
+    "nyc": "11.6.0",
+    "pouchdb-adapter-memory": "^6.4.3",
+    "pre-push": "0.1.1",
+    "react-addons-test-utils": "15.6.2",
+    "react-test-renderer": "^16.0.0",
+    "sinon": "5.0.0",
+    "sinon-chai": "3.0.0"
+  },
+  "dependencies": {
+    "babel-preset-env": "^1.6.1",
+    "babel-preset-react": "6.24.1",
+    "babel-register": "6.26.0",
+    "bluebird": "3.5.1",
+    "create-file": "1.0.1",
+    "datascript-mori": "0.17.0",
+    "date-fns": "2.0.0-alpha.1",
+    "debug": "3.1.0",
+    "farseer": "4.0.5",
+    "flipit": "2.0.3",
+    "pouchdb": "6.4.3",
+    "prop-types": "^15.5.4",
+    "react": "16.3.1",
+    "react-dom": "16.3.1",
+    "react-redux": "5.0.7",
+    "redux": "3.7.2",
+    "winston": "2.4.1",
+    "winston-loggly-bulk": "^2.0.1"
+  },
+  "nyc": {
+    "sourceMap": false,
+    "instrument": false
+  },
+  "engines": {
+    "node": "8.2.1"
+  },
+  "gitHead": "5cc72e588fd137831579ba7ac6f5e36fb844e4b3",
+  "_npmVersion": "5.3.0",
+  "_nodeVersion": "8.2.1",
+  "dist": {
+    "integrity": "sha512-SMy1W3R+MfGmZNH36UYCMVIjE6x5CfamxTzaQzdRbROMvZBuPnJyzT1OVL07ujif89DdXHlSjnKT/SKu7KYC4w==",
+    "shasum": "e6643e9c59c137449d3b4f694990d1571fc9651d",
+    "tarball": "http://registry.npmjs.org/hearthstone-tracker/-/hearthstone-tracker-0.5.1.tgz",
+    "fileCount": 120,
+    "unpackedSize": 9554135
+  },
+  "_hasShrinkwrap": false,
+  "versions": [
+    {
+      "number": "0.1.0",
+      "date": "2016-02-03T16:47:01.800Z"
+    },
+    {
+      "number": "0.1.1",
+      "date": "2016-02-03T17:14:39.045Z"
+    },
+    {
+      "number": "0.1.3",
+      "date": "2016-02-03T17:36:56.266Z"
+    },
+    {
+      "number": "0.1.4",
+      "date": "2016-02-13T16:53:06.220Z"
+    },
+    {
+      "number": "0.2.0",
+      "date": "2016-05-12T21:35:04.222Z"
+    },
+    {
+      "number": "0.3.0",
+      "date": "2016-08-02T21:44:01.498Z"
+    },
+    {
+      "number": "0.3.1",
+      "date": "2016-08-02T22:42:33.908Z"
+    },
+    {
+      "number": "0.4.0",
+      "date": "2016-11-04T17:02:30.606Z"
+    },
+    {
+      "number": "0.4.1",
+      "date": "2017-01-08T11:50:39.833Z"
+    },
+    {
+      "number": "0.4.2",
+      "date": "2017-04-29T15:39:41.123Z"
+    },
+    {
+      "number": "0.5.1",
+      "date": "2018-04-05T10:23:25.318Z"
+    }
+  ],
+  "created": "2016-02-03T16:47:01.800Z",
+  "modified": "2018-04-05T10:23:26.406Z",
+  "lastPublisher": {
+    "name": "gregstewart",
+    "email": "gregs@tcias.co.uk"
+  },
+  "owners": [
+    {
+      "name": "gregstewart",
+      "email": "gregs@tcias.co.uk"
+    }
+  ]
+}

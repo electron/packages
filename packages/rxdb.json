@@ -1,0 +1,431 @@
+{
+  "name": "rxdb",
+  "description": "Reactive database for progressive web apps and more",
+  "version": "7.5.1",
+  "author": {
+    "name": "pubkey"
+  },
+  "repository": {
+    "user": "pubkey",
+    "repo": "rxdb",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/pubkey/rxdb/tarball/master",
+    "clone_url": "https://github.com/pubkey/rxdb",
+    "https_url": "https://github.com/pubkey/rxdb",
+    "travis_url": "https://travis-ci.org/pubkey/rxdb",
+    "zip_url": "https://github.com/pubkey/rxdb/archive/master.zip",
+    "api_url": "https://api.github.com/repos/pubkey/rxdb"
+  },
+  "homepage": "https://pubkey.github.io/rxdb/",
+  "keywords": [
+    "db",
+    "database",
+    "offline-first",
+    "nosql",
+    "jsonschema",
+    "rxjs",
+    "pwa",
+    "localstorage",
+    "indexeddb",
+    "encryption",
+    "pouchdb",
+    "couchdb",
+    "rx"
+  ],
+  "license": "Apache-2.0",
+  "main": "./dist/lib/index.js",
+  "jsnext:main": "./dist/es/index.js",
+  "module": "./dist/es/index.js",
+  "types": "./src/typings/index.d.ts",
+  "scripts": {
+    "pretest": "npm run transpile",
+    "test": "gulp --gulpfile ./config/gulpfile.js test && karma start ./config/karma.conf.js",
+    "test:fast": "npm run pretest && NODE_ENV=fast gulp --gulpfile ./config/gulpfile.js test",
+    "test:node": "npm run pretest && gulp --gulpfile ./config/gulpfile.js test",
+    "test:browser": "npm run pretest && karma start ./config/karma.conf.js --single-run",
+    "test:core": "npm run pretest && mocha ./test_tmp/unit/core.node.js",
+    "test:typings": "npm run pretest && NODE_ENV=fast gulp --gulpfile ./config/gulpfile.js test:typings",
+    "test:deps": "dependency-check ./package.json --no-dev",
+    "test:performance": "npm run test:fast && NODE_ENV=fast gulp --gulpfile ./config/gulpfile.js test:performance",
+    "dockertest": "docker run -it -v $(pwd):/usr/src/app markadams/chromium-xvfb-js:latest-onbuild",
+    "profile": "npm run pretest && gulp --gulpfile ./config/gulpfile.js profile && node scripts/profile.js",
+    "clear": "rimraf -rf test_tmp/ && rimraf -rf dist/ && rimraf .transpile_state.json",
+    "lint": "eslint --ignore-path ./config/.eslintignore src test ./config/gulpfile.js",
+    "transpile:clean": "rimraf dist/lib",
+    "transpile": "node scripts/transpile.js",
+    "build:es": "rimraf -rf dist/es && cross-env NODE_ENV=es6 babel src --out-dir dist/es",
+    "build": "npm run clear && npm run transpile && npm run build:es && browserify dist/lib/browserify.index.js > dist/rxdb.browserify.js && uglifyjs --compress --mangle --output dist/rxdb.browserify.min.js -- dist/rxdb.browserify.js",
+    "build:min": "npm run transpile && browserify dist/lib/browserify.index.js > dist/rxdb.browserify.js && uglifyjs --compress --mangle --output dist/rxdb.browserify.min.js -- dist/rxdb.browserify.js",
+    "build:size": "echo \"Build-Size (minified+gzip):\" && gzip-size --raw ./dist/rxdb.browserify.min.js",
+    "docs:install": "gitbook install docs-src",
+    "docs:serve": "gitbook serve docs-src",
+    "docs:build": "gitbook install docs-src && gitbook build docs-src docs && cp docs-src/files/logo/icon.png docs/gitbook/images/apple-touch-icon-precomposed-152.png && cp docs-src/files/logo/icon.ico docs/gitbook/images/favicon.ico && npm run docs:copy",
+    "docs:copy": "cp -r docs-src/files docs/files",
+    "disc": "npm run transpile && browserify dist/lib/index.js --full-paths | uglifyjs --compress --mangle | discify --open --full-paths",
+    "preversion": "npm run lint && npm run test",
+    "dev": "watch 'npm run test:fast' src/ test/",
+    "dev:example": "watch 'npm run transpile:src && echo \"done\"' src/ test/"
+  },
+  "pre-commit": [
+    "lint"
+  ],
+  "peerDependencies": {
+    "rxjs": "^5.5.8"
+  },
+  "dependencies": {
+    "@types/core-js": "0.9.46",
+    "babel-runtime": "^6.26.0",
+    "clone": "^2.1.1",
+    "crypto-js": "^3.1.8",
+    "custom-idle-queue": "2.0.1",
+    "deep-equal": "^1.0.1",
+    "express": "4.16.3",
+    "express-pouchdb": "4.0.0",
+    "is-electron": "2.1.0",
+    "is-my-json-valid": "2.17.2",
+    "modifyjs": "0.3.1",
+    "object-path": "0.11.4",
+    "pouchdb-core": "6.4.3",
+    "pouchdb-find": "6.4.3",
+    "pouchdb-replication": "6.4.3",
+    "pouchdb-selector-core": "6.4.3",
+    "random-token": "0.0.8",
+    "spark-md5": "^3.0.0",
+    "unload": "1.3.6",
+    "url": "^0.11.0"
+  },
+  "devDependencies": {
+    "@babel/types": "7.0.0-beta.44",
+    "@types/pouchdb-adapter-memory": "6.1.2",
+    "assert": "1.4.1",
+    "async-test-util": "1.5.1",
+    "babel-cli": "6.26.0",
+    "babel-core": "6.26.0",
+    "babel-eslint": "7.2.3",
+    "babel-loader": "7.1.4",
+    "babel-plugin-transform-async-to-generator": "6.24.1",
+    "babel-plugin-transform-class-properties": "6.24.1",
+    "babel-plugin-transform-es2015-block-scoping": "6.26.0",
+    "babel-plugin-transform-es2015-constants": "6.1.4",
+    "babel-plugin-transform-es3-member-expression-literals": "6.22.0",
+    "babel-plugin-transform-es3-property-literals": "6.22.0",
+    "babel-plugin-transform-object-rest-spread": "6.26.0",
+    "babel-plugin-transform-regenerator": "6.26.0",
+    "babel-plugin-transform-runtime": "6.23.0",
+    "babel-polyfill": "6.26.0",
+    "babel-preset-es2015": "6.24.1",
+    "babel-preset-es2015-native-modules": "6.9.4",
+    "babel-preset-es2016": "6.24.1",
+    "babel-preset-es2017": "6.24.1",
+    "babel-preset-latest": "6.24.1",
+    "brfs": "1.6.1",
+    "browserify": "16.2.0",
+    "child-process-promise": "2.2.1",
+    "concurrently": "3.5.1",
+    "convert-hrtime": "2.0.0",
+    "cross-env": "5.1.4",
+    "delete": "1.1.0",
+    "dependency-check": "3.1.0",
+    "detect-browser": "2.4.0",
+    "disc": "1.3.3",
+    "eslint": "4.19.1",
+    "eslint-plugin-babel": "5.1.0",
+    "eslint-plugin-disable": "1.0.1",
+    "exists-file": "3.0.2",
+    "faker": "4.1.0",
+    "gitbook-cli": "2.3.2",
+    "gulp": "3.9.1",
+    "gulp-mocha": "5.0.0",
+    "gzip-size-cli": "2.1.0",
+    "http-server": "0.11.1",
+    "karma": "2.0.2",
+    "karma-babel-preprocessor": "7.0.0",
+    "karma-browserify": "5.2.0",
+    "karma-chrome-launcher": "2.2.0",
+    "karma-coverage": "1.1.1",
+    "karma-detect-browsers": "2.3.2",
+    "karma-edge-launcher": "0.4.2",
+    "karma-firefox-launcher": "1.1.0",
+    "karma-ie-launcher": "1.0.0",
+    "karma-mocha": "1.3.0",
+    "karma-opera-launcher": "1.0.0",
+    "karma-safari-launcher": "1.0.0",
+    "leveldown": "3.0.1",
+    "memdown": "2.0.0",
+    "mocha": "5.1.1",
+    "mocha.parallel": "0.15.5",
+    "nconf": "0.10.0",
+    "node": "10.0.0",
+    "pouchdb": "6.4.3",
+    "pouchdb-adapter-http": "6.4.3",
+    "pouchdb-adapter-idb": "6.4.3",
+    "pouchdb-adapter-leveldb": "6.4.3",
+    "pouchdb-adapter-localstorage": "6.4.3",
+    "pouchdb-adapter-memory": "6.4.3",
+    "pouchdb-adapter-websql": "6.4.3",
+    "pre-commit": "1.2.2",
+    "random-int": "1.0.0",
+    "request": "2.85.0",
+    "request-promise": "4.2.2",
+    "request-promise-native": "1.0.5",
+    "rimraf": "2.6.2",
+    "rxjs": "5.5.10",
+    "shelljs": "0.8.1",
+    "ts-node": "6.0.1",
+    "typescript": "2.8.3",
+    "uglify-js": "3.3.23",
+    "walk-sync": "0.3.2",
+    "watch": "1.0.2",
+    "watchify": "3.11.0",
+    "webpack": "4.6.0"
+  },
+  "// greenkeeper": [
+    "// babel-eslint: https://github.com/babel/babel-eslint/issues/530"
+  ],
+  "greenkeeper": {
+    "ignore": [
+      "babel-eslint"
+    ]
+  },
+  "gitHead": "96eb5a01964dd0c1bdccbdb0922ad676402c887a",
+  "_npmVersion": "6.0.0",
+  "_nodeVersion": "10.0.0",
+  "dist": {
+    "integrity": "sha512-Jy7fJcP1BjP4VaitwYA9vgLKONcL9gJzqoQpPWlFSNv1tes+nq9uBrW7JAwRYCcafcaeRpkoyf27zzR1y/v3hA==",
+    "shasum": "38faf007925e9e42910630d978e7ea00a7bbd826",
+    "tarball": "https://registry.npmjs.org/rxdb/-/rxdb-7.5.1.tgz",
+    "fileCount": 204,
+    "unpackedSize": 17430080,
+    "npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJa64daCRA9TVsSAnZWagAAEDkQAJJ7WCMBUumlWnrehlF6\nmhxVtDDXzjr1oevHBzpkqKMSTzbM0hFK17LiMH3UU8FNkf2WDpSFaR/znzHw\n5FTMwzyvIbERwcGK1It6wApG1vBb0bQiUuwUT5E0eMXYm+s2TLiZkqdXTazb\nHsTeHU0zxZnIZq6sZiQ3tUJGBpBwbLVf85e0yRh/DjWtzs6JRg99yyQZENhu\nMH8KdB6wBrGDH69NHU+eT4SBwyr2S0LhCwG4GLGYT4jjkE77/roe3rraPiSP\nEZd4TeB+TswVVGhO9CXa/E0UjQn3nMvXwvM3L7U/123+I/wN1nSfeKJf9T2b\nhc6NH96Rq8f1i783vOiqO7+PKjGkcamBSRzQU4XMw+3wqLVXkTYfJBMxA2YD\nCm2GrdmdTaiz0S1UfO4DNjMgaC7doKNTMW8gaTwVy0cRHZPOk+qslz5rkozA\nPlXHF/8By4Gpgt5/ysEG5eOIuFM3aDOV1P9SbzXqHbkrsQ8vQUVAq8vB6AVH\nBILoRrDAUkkcDsncqa435gPWs0nOchGdD89XdLyAM0Ctjm2wFAFNaTeQQeFK\nZcOKGl9zoZeS9JnMPi5dpV6PFc1mJoSSAEL8v51Du/D4PCQpjhFc7E9tzapp\n8mpoIOQB4wHaWHZLya7EpWAcoFKcx9s4IOEjHdT92/xX0kJ9xNnAPcf47Cyz\n/gAf\r\n=HnJq\r\n-----END PGP SIGNATURE-----\r\n"
+  },
+  "_hasShrinkwrap": false,
+  "stars": 7,
+  "versions": [
+    {
+      "number": "1.0.0",
+      "date": "2016-11-16T07:58:15.731Z"
+    },
+    {
+      "number": "1.1.0",
+      "date": "2016-11-28T22:18:26.764Z"
+    },
+    {
+      "number": "1.4.3",
+      "date": "2016-11-28T22:25:49.311Z"
+    },
+    {
+      "number": "1.4.4",
+      "date": "2016-12-02T19:47:26.781Z"
+    },
+    {
+      "number": "1.4.5",
+      "date": "2016-12-07T18:48:29.111Z"
+    },
+    {
+      "number": "1.5.5",
+      "date": "2016-12-20T17:41:27.010Z"
+    },
+    {
+      "number": "1.5.6",
+      "date": "2016-12-21T23:05:39.243Z"
+    },
+    {
+      "number": "1.5.7",
+      "date": "2016-12-24T17:16:52.897Z"
+    },
+    {
+      "number": "1.5.8",
+      "date": "2017-01-04T15:13:00.371Z"
+    },
+    {
+      "number": "1.6.7",
+      "date": "2017-01-11T01:34:27.713Z"
+    },
+    {
+      "number": "1.7.7",
+      "date": "2017-01-12T23:03:24.890Z"
+    },
+    {
+      "number": "2.0.0",
+      "date": "2017-01-23T21:37:43.111Z"
+    },
+    {
+      "number": "2.0.1",
+      "date": "2017-01-26T00:02:41.017Z"
+    },
+    {
+      "number": "2.0.2",
+      "date": "2017-01-27T18:46:18.383Z"
+    },
+    {
+      "number": "2.0.3",
+      "date": "2017-01-31T21:00:04.527Z"
+    },
+    {
+      "number": "2.0.4",
+      "date": "2017-02-12T19:07:45.133Z"
+    },
+    {
+      "number": "2.0.5",
+      "date": "2017-02-25T19:03:18.813Z"
+    },
+    {
+      "number": "3.0.0",
+      "date": "2017-02-27T16:42:33.168Z"
+    },
+    {
+      "number": "3.0.1",
+      "date": "2017-03-02T01:30:17.714Z"
+    },
+    {
+      "number": "3.0.2",
+      "date": "2017-03-02T12:41:12.675Z"
+    },
+    {
+      "number": "3.0.3",
+      "date": "2017-03-06T21:55:00.956Z"
+    },
+    {
+      "number": "3.0.4",
+      "date": "2017-03-12T02:13:56.856Z"
+    },
+    {
+      "number": "3.0.5",
+      "date": "2017-03-21T10:28:22.812Z"
+    },
+    {
+      "number": "3.0.6",
+      "date": "2017-03-29T17:23:02.127Z"
+    },
+    {
+      "number": "3.0.7",
+      "date": "2017-04-10T05:31:49.555Z"
+    },
+    {
+      "number": "3.0.8",
+      "date": "2017-04-20T20:27:59.126Z"
+    },
+    {
+      "number": "4.0.0",
+      "date": "2017-05-05T19:28:29.708Z"
+    },
+    {
+      "number": "4.0.1",
+      "date": "2017-05-17T15:10:58.455Z"
+    },
+    {
+      "number": "4.0.2",
+      "date": "2017-05-17T18:14:52.033Z"
+    },
+    {
+      "number": "4.1.0",
+      "date": "2017-06-07T18:13:00.198Z"
+    },
+    {
+      "number": "5.0.0",
+      "date": "2017-06-20T19:28:42.620Z"
+    },
+    {
+      "number": "5.1.0",
+      "date": "2017-07-10T05:32:03.617Z"
+    },
+    {
+      "number": "5.2.0",
+      "date": "2017-07-17T14:26:36.021Z"
+    },
+    {
+      "number": "5.2.1",
+      "date": "2017-07-17T21:16:13.788Z"
+    },
+    {
+      "number": "5.3.0",
+      "date": "2017-08-25T20:03:37.322Z"
+    },
+    {
+      "number": "6.0.0",
+      "date": "2017-09-19T14:01:55.790Z"
+    },
+    {
+      "number": "6.0.1",
+      "date": "2017-09-20T08:38:29.027Z"
+    },
+    {
+      "number": "7.0.0",
+      "date": "2017-11-14T10:11:48.341Z"
+    },
+    {
+      "number": "7.0.1",
+      "date": "2017-11-14T22:31:39.681Z"
+    },
+    {
+      "number": "7.1.0",
+      "date": "2017-11-21T23:28:01.648Z"
+    },
+    {
+      "number": "7.1.1",
+      "date": "2017-11-27T07:14:32.788Z"
+    },
+    {
+      "number": "7.2.0",
+      "date": "2017-12-07T19:08:27.885Z"
+    },
+    {
+      "number": "7.3.0",
+      "date": "2017-12-18T19:30:15.512Z"
+    },
+    {
+      "number": "7.3.1",
+      "date": "2018-01-03T16:21:20.430Z"
+    },
+    {
+      "number": "7.3.2",
+      "date": "2018-01-25T16:59:55.228Z"
+    },
+    {
+      "number": "7.3.3",
+      "date": "2018-02-04T22:19:48.162Z"
+    },
+    {
+      "number": "7.4.0",
+      "date": "2018-03-09T03:48:34.619Z"
+    },
+    {
+      "number": "7.4.1",
+      "date": "2018-03-11T22:37:24.302Z"
+    },
+    {
+      "number": "7.4.2",
+      "date": "2018-03-22T00:52:50.514Z"
+    },
+    {
+      "number": "7.4.3",
+      "date": "2018-04-07T21:52:29.130Z"
+    },
+    {
+      "number": "7.4.4",
+      "date": "2018-04-18T18:38:49.676Z"
+    },
+    {
+      "number": "7.5.0",
+      "date": "2018-04-24T19:55:00.561Z"
+    },
+    {
+      "number": "7.5.1",
+      "date": "2018-05-03T22:04:09.078Z"
+    }
+  ],
+  "created": "2016-11-16T07:58:15.731Z",
+  "modified": "2018-05-03T22:04:14.801Z",
+  "lastPublisher": {
+    "name": "pubkey",
+    "email": "dieser.daniel@outlook.com"
+  },
+  "owners": [
+    {
+      "name": "pubkey",
+      "email": "dieser.daniel@outlook.com"
+    }
+  ]
+}

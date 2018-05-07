@@ -1,0 +1,123 @@
+{
+  "name": "electron-graphql",
+  "version": "0.2.1",
+  "description": "Lightweight GraphQL server & client for Electron apps.",
+  "main": "dist/index.js",
+  "typings": "dist/index.d.ts",
+  "scripts": {
+    "prepublish": "npm run dist",
+    "precommit": "lint-staged",
+    "prepush": "npm test",
+    "clean": "rimraf dist",
+    "build": "tsc",
+    "preview": "NODE_ENV=development electron test",
+    "dist": "npm-run-all clean build",
+    "dev": "npm-run-all dist preview",
+    "jest": "NODE_ENV=test jest",
+    "test": "npm-run-all dist jest"
+  },
+  "repository": {
+    "user": "firede",
+    "repo": "electron-graphql",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/firede/electron-graphql/tarball/master",
+    "clone_url": "https://github.com/firede/electron-graphql",
+    "https_url": "https://github.com/firede/electron-graphql",
+    "travis_url": "https://travis-ci.org/firede/electron-graphql",
+    "zip_url": "https://github.com/firede/electron-graphql/archive/master.zip",
+    "api_url": "https://api.github.com/repos/firede/electron-graphql"
+  },
+  "keywords": [
+    "graphql",
+    "electron",
+    "ipc",
+    "graphql-electron"
+  ],
+  "author": {
+    "name": "Firede",
+    "email": "firede@firede.us"
+  },
+  "license": "MIT",
+  "homepage": "https://github.com/firede/electron-graphql#readme",
+  "devDependencies": {
+    "@types/graphql": "^0.12.3",
+    "@types/jest": "^22.1.1",
+    "@types/node": "^9.4.0",
+    "@types/uuid": "^3.4.3",
+    "devtron": "^1.4.0",
+    "electron": "^1.8.1",
+    "graphql": "^0.12.3",
+    "graphql-tag": "^2.7.0",
+    "husky": "^0.14.3",
+    "jest": "^22.1.4",
+    "lint-staged": "^6.1.0",
+    "npm-run-all": "^4.1.2",
+    "prettier": "^1.10.2",
+    "rimraf": "^2.6.2",
+    "spectron": "^3.8.0",
+    "ts-jest": "^22.0.3",
+    "typescript": "^2.7.1"
+  },
+  "peerDependencies": {
+    "graphql": "^0.9.0 || ^0.10.0 || ^0.11.0 || ^0.12.0 || ^0.13.0"
+  },
+  "jest": {
+    "transform": {
+      "^.+\\.tsx?$": "ts-jest"
+    },
+    "testRegex": "(/__tests__/.*|(\\.|/)(test|spec))\\.(jsx?|tsx?)$",
+    "moduleFileExtensions": [
+      "ts",
+      "tsx",
+      "js",
+      "jsx",
+      "json",
+      "node"
+    ]
+  },
+  "lint-staged": {
+    "*.{ts,tsx}": [
+      "prettier --write",
+      "git add"
+    ]
+  },
+  "dependencies": {
+    "uuid": "^3.2.1"
+  },
+  "gitHead": "9ff42aae450ff362cf04b5331159753cf96c7cd5",
+  "_npmVersion": "5.6.0",
+  "_nodeVersion": "8.9.4",
+  "dist": {
+    "integrity": "sha512-9ykbbBGqeQNPwdvBQ/hOw07gl/EC+epWJWgf+HKqEOyz6OcEhIO1mM8QBsGnHBAgorDzAoqbgw+QKr4zfKhEDw==",
+    "shasum": "b543fc7f6a8ff9e0bf5eeab39b05c310142a9c62",
+    "tarball": "https://registry.npmjs.org/electron-graphql/-/electron-graphql-0.2.1.tgz"
+  },
+  "versions": [
+    {
+      "number": "0.1.1",
+      "date": "2018-01-21T09:58:56.757Z"
+    },
+    {
+      "number": "0.2.0",
+      "date": "2018-01-30T19:09:41.014Z"
+    },
+    {
+      "number": "0.2.1",
+      "date": "2018-02-06T20:12:30.161Z"
+    }
+  ],
+  "created": "2018-01-21T09:58:56.757Z",
+  "modified": "2018-02-06T20:12:30.161Z",
+  "lastPublisher": {
+    "name": "firede",
+    "email": "firede@firede.us"
+  },
+  "owners": [
+    {
+      "name": "firede",
+      "email": "firede@firede.us"
+    }
+  ]
+}

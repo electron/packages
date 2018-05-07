@@ -1,0 +1,209 @@
+{
+  "name": "electron-winstaller",
+  "version": "2.6.4",
+  "description": "Module to generate Windows installers for Electron apps",
+  "main": "./lib/index.js",
+  "license": "MIT",
+  "repository": {
+    "user": "electronjs",
+    "repo": "windows-installer",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/electronjs/windows-installer/tarball/master",
+    "clone_url": "https://github.com/electronjs/windows-installer",
+    "https_url": "https://github.com/electronjs/windows-installer",
+    "travis_url": "https://travis-ci.org/electronjs/windows-installer",
+    "zip_url": "https://github.com/electronjs/windows-installer/archive/master.zip",
+    "api_url": "https://api.github.com/repos/electronjs/windows-installer"
+  },
+  "scripts": {
+    "compile": "babel -d lib/ src/",
+    "prepublish": "npm run compile",
+    "lint": "eslint src & eslint spec",
+    "test": "npm run lint && ava",
+    "tdd": "ava --watch"
+  },
+  "dependencies": {
+    "asar": "^0.11.0",
+    "bluebird": "^3.3.4",
+    "debug": "^2.2.0",
+    "fs-extra": "^0.26.7",
+    "lodash.template": "^4.2.2",
+    "temp": "^0.8.3"
+  },
+  "devDependencies": {
+    "ava": "^0.13.0",
+    "babel-cli": "^6.6.5",
+    "babel-eslint": "^6.0.2",
+    "babel-plugin-transform-async-to-module-method": "^6.7.0",
+    "babel-plugin-transform-runtime": "^6.6.0",
+    "babel-preset-es2015-node4": "^2.0.3",
+    "babel-preset-stage-0": "^6.5.0",
+    "babel-register": "^6.7.2",
+    "eslint": "^2.4.0"
+  },
+  "engines": {
+    "node": ">=0.4.0"
+  },
+  "babel": {
+    "presets": [
+      "stage-0",
+      "es2015-node4"
+    ],
+    "plugins": [
+      [
+        "transform-async-to-module-method",
+        {
+          "module": "bluebird",
+          "method": "coroutine"
+        }
+      ]
+    ]
+  },
+  "ava": {
+    "files": [
+      "spec/*.js"
+    ],
+    "failFast": true,
+    "require": [
+      "babel-register"
+    ],
+    "babel": "inherit"
+  },
+  "gitHead": "2fea77dc86540e09a21a20ccb15b7e6fb5c4e875",
+  "homepage": "https://github.com/electronjs/windows-installer#readme",
+  "_npmVersion": "4.2.0",
+  "_nodeVersion": "7.10.1",
+  "dist": {
+    "shasum": "6b48076e873a6ea356251f157b68b9e5dc03b5a9",
+    "tarball": "https://registry.npmjs.org/electron-winstaller/-/electron-winstaller-2.6.4.tgz"
+  },
+  "stars": 5,
+  "versions": [
+    {
+      "number": "2.0.0",
+      "date": "2016-02-23T23:40:45.282Z"
+    },
+    {
+      "number": "2.0.1",
+      "date": "2016-02-24T01:27:42.670Z"
+    },
+    {
+      "number": "2.0.2",
+      "date": "2016-02-24T23:28:25.979Z"
+    },
+    {
+      "number": "2.0.3",
+      "date": "2016-03-02T21:18:37.888Z"
+    },
+    {
+      "number": "2.0.4",
+      "date": "2016-03-02T21:20:14.077Z"
+    },
+    {
+      "number": "2.0.5",
+      "date": "2016-03-08T19:28:47.222Z"
+    },
+    {
+      "number": "2.1.0",
+      "date": "2016-04-11T20:46:48.126Z"
+    },
+    {
+      "number": "2.1.1",
+      "date": "2016-04-12T16:13:50.840Z"
+    },
+    {
+      "number": "2.2.0",
+      "date": "2016-04-12T23:10:07.982Z"
+    },
+    {
+      "number": "2.3.0",
+      "date": "2016-04-26T00:59:37.762Z"
+    },
+    {
+      "number": "2.3.1",
+      "date": "2016-05-31T16:11:10.027Z"
+    },
+    {
+      "number": "2.3.2",
+      "date": "2016-07-14T22:24:52.120Z"
+    },
+    {
+      "number": "2.3.3",
+      "date": "2016-07-20T14:41:55.829Z"
+    },
+    {
+      "number": "2.3.4",
+      "date": "2016-08-10T18:46:31.602Z"
+    },
+    {
+      "number": "2.4.0",
+      "date": "2016-11-10T17:56:46.940Z"
+    },
+    {
+      "number": "2.4.1",
+      "date": "2016-11-11T06:32:46.726Z"
+    },
+    {
+      "number": "2.5.0",
+      "date": "2016-12-02T23:23:10.646Z"
+    },
+    {
+      "number": "2.5.1",
+      "date": "2016-12-13T20:54:45.867Z"
+    },
+    {
+      "number": "2.5.2",
+      "date": "2017-01-26T21:48:15.972Z"
+    },
+    {
+      "number": "2.6.0",
+      "date": "2017-06-05T17:11:53.728Z"
+    },
+    {
+      "number": "2.6.1",
+      "date": "2017-06-06T22:17:50.815Z"
+    },
+    {
+      "number": "2.6.2",
+      "date": "2017-06-08T20:56:32.514Z"
+    },
+    {
+      "number": "2.6.3",
+      "date": "2017-06-20T00:02:36.327Z"
+    },
+    {
+      "number": "2.6.4",
+      "date": "2018-01-17T23:36:38.093Z"
+    }
+  ],
+  "created": "2016-02-23T23:40:45.282Z",
+  "modified": "2018-01-17T23:36:38.093Z",
+  "lastPublisher": {
+    "name": "damieng",
+    "email": "damieng@gmail.com"
+  },
+  "owners": [
+    {
+      "email": "damieng@gmail.com",
+      "name": "damieng"
+    },
+    {
+      "email": "zcbenz@gmail.com",
+      "name": "zcbenz"
+    },
+    {
+      "email": "to.jlord@gmail.com",
+      "name": "jlord"
+    },
+    {
+      "email": "zeke@sikelianos.com",
+      "name": "zeke"
+    },
+    {
+      "email": "kevinsawicki@gmail.com",
+      "name": "kevinsawicki"
+    }
+  ]
+}

@@ -1,0 +1,801 @@
+{
+  "name": "uupaa.spec.js",
+  "version": "3.2.7",
+  "description": "Mobile Device Spec detection.",
+  "url": "https://github.com/uupaa/Spec.js",
+  "keywords": [
+    "Mobile",
+    "SoC",
+    "CPU",
+    "GPU",
+    "RAM",
+    "BLE",
+    "NFC",
+    "OpenGLES",
+    "OpenCL",
+    "Vulkan",
+    "spec",
+    "uupaa",
+    "WebModule"
+  ],
+  "repository": {
+    "user": "uupaa",
+    "repo": "Spec.js",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/uupaa/Spec.js/tarball/master",
+    "clone_url": "https://github.com/uupaa/Spec.js",
+    "https_url": "https://github.com/uupaa/Spec.js",
+    "travis_url": "https://travis-ci.org/uupaa/Spec.js",
+    "zip_url": "https://github.com/uupaa/Spec.js/archive/master.zip",
+    "api_url": "https://api.github.com/repos/uupaa/Spec.js"
+  },
+  "scripts": {
+    "sync": "node ../WebModule/run/sync.js; npm update; node ../WebModule/run/page.js",
+    "wiki": "node ../WebModule/run/wiki.js",
+    "min": "node ../WebModule/run/minify.js --verbose --strict --keep --pretty @fp",
+    "build": "node ../WebModule/run/minify.js --verbose --strict --keep --release @fp",
+    "watch": "node ../WebModule/run/watch.js --verbose --run lint",
+    "page": "node ../WebModule/run/page.js --verbose",
+    "test": "npm run min; npm run node; npm run browser",
+    "node": "NODE_ENV=production NODE_PATH=lib node test/node/index.js",
+    "noded": "NODE_ENV=production NODE_PATH=lib node --debug-brk test/node/index.js",
+    "browser": "open http://localhost:8000/Spec.js/test/browser/index.html",
+    "el": "electron test/el",
+    "nw": "nw test/nw",
+    "add-src": "node ../WebModule/run/add-src.js",
+    "add-subclass": "node ../WebModule/run/add-subclass.js",
+    "pretest": "node tojson",
+    "sim": "node ../WebModule/run/sim.js http://localhost:8000/Spec.js/test/browser/index.html",
+    "simx": "node ../WebModule/run/sim.js stop",
+    "lint": "eslint lib/*.js",
+    "score": "node ../WebModule/run/score.js; open lint/plato/index.html",
+    "patch": "node ../WebModule/run/patch.js",
+    "setup": "node ../WebModule/run/setup.js",
+    "start": "cd ../; Python -m SimpleHTTPServer 8000 &",
+    "stop": "killall -- Python -m SimpleHTTPServer 8000; exit 0"
+  },
+  "webmodule": {
+    "develop": false,
+    "label": [
+      "@dev",
+      "@devicejp",
+      "@kindle",
+      "@windows",
+      "@fp"
+    ],
+    "browser": {
+      "output": "release/Spec.b.min.js",
+      "source": [
+        "lib/SpecCatalog.js",
+        "lib/SpecCatalogFP.js",
+        "lib/Spec.js"
+      ]
+    },
+    "worker": {
+      "output": "release/Spec.w.min.js",
+      "source": [
+        "lib/SpecCatalog.js",
+        "lib/SpecCatalogFP.js",
+        "lib/Spec.js"
+      ]
+    },
+    "node": {
+      "output": "release/Spec.n.min.js",
+      "source": [
+        "lib/SpecCatalog.js",
+        "lib/SpecCatalogFP.js",
+        "lib/Spec.js"
+      ]
+    },
+    "nw": {
+      "output": "release/Spec.nw.min.js",
+      "source": [
+        "lib/SpecCatalog.js",
+        "lib/SpecCatalogFP.js",
+        "lib/Spec.js"
+      ]
+    },
+    "el": {
+      "output": "release/Spec.el.min.js",
+      "source": [
+        "lib/SpecCatalog.js",
+        "lib/SpecCatalogFP.js",
+        "lib/Spec.js"
+      ]
+    }
+  },
+  "dependencies": {
+    "uupaa.useragent.js": ""
+  },
+  "devDependencies": {},
+  "lib": "./lib/",
+  "main": "./index.js",
+  "author": {
+    "name": "uupaa"
+  },
+  "license": "MIT",
+  "contributors": [],
+  "gitHead": "578ae01913aa4d19e972f327592938ead17e3229",
+  "homepage": "https://github.com/uupaa/Spec.js",
+  "_npmVersion": "2.0.0",
+  "dist": {
+    "shasum": "fe88ca0764628157a42c01a45b43a7395760b309",
+    "tarball": "http://registry.npmjs.org/uupaa.spec.js/-/uupaa.spec.js-3.2.7.tgz"
+  },
+  "versions": [
+    {
+      "number": "0.8.0",
+      "date": "2014-01-16T14:16:03.270Z"
+    },
+    {
+      "number": "0.8.1",
+      "date": "2014-01-26T16:56:02.247Z"
+    },
+    {
+      "number": "0.8.2",
+      "date": "2014-01-30T14:09:02.777Z"
+    },
+    {
+      "number": "0.8.3",
+      "date": "2014-02-10T20:44:29.004Z"
+    },
+    {
+      "number": "0.8.4",
+      "date": "2014-02-24T09:39:44.987Z"
+    },
+    {
+      "number": "0.8.5",
+      "date": "2014-02-24T10:02:58.516Z"
+    },
+    {
+      "number": "0.8.6",
+      "date": "2014-02-25T08:16:14.637Z"
+    },
+    {
+      "number": "0.8.7",
+      "date": "2014-03-09T21:34:24.469Z"
+    },
+    {
+      "number": "0.8.8",
+      "date": "2014-03-09T22:50:55.551Z"
+    },
+    {
+      "number": "0.8.9",
+      "date": "2014-03-10T04:32:18.311Z"
+    },
+    {
+      "number": "0.8.11",
+      "date": "2014-03-12T22:35:49.955Z"
+    },
+    {
+      "number": "0.8.12",
+      "date": "2014-03-18T20:16:08.955Z"
+    },
+    {
+      "number": "0.8.13",
+      "date": "2014-03-25T05:33:43.878Z"
+    },
+    {
+      "number": "0.9.0",
+      "date": "2014-03-26T18:36:22.768Z"
+    },
+    {
+      "number": "0.9.1",
+      "date": "2014-03-26T21:27:13.353Z"
+    },
+    {
+      "number": "0.9.2",
+      "date": "2014-03-27T09:51:20.292Z"
+    },
+    {
+      "number": "0.9.3",
+      "date": "2014-04-05T16:11:27.908Z"
+    },
+    {
+      "number": "0.9.4",
+      "date": "2014-04-06T13:07:47.563Z"
+    },
+    {
+      "number": "0.9.5",
+      "date": "2014-04-17T20:39:20.331Z"
+    },
+    {
+      "number": "0.9.6",
+      "date": "2014-04-18T16:30:30.619Z"
+    },
+    {
+      "number": "0.9.7",
+      "date": "2014-04-24T12:40:31.302Z"
+    },
+    {
+      "number": "0.9.8",
+      "date": "2014-04-28T03:56:04.260Z"
+    },
+    {
+      "number": "0.9.9",
+      "date": "2014-05-05T11:59:34.720Z"
+    },
+    {
+      "number": "0.9.10",
+      "date": "2014-05-07T07:16:45.419Z"
+    },
+    {
+      "number": "0.9.11",
+      "date": "2014-05-20T20:11:18.060Z"
+    },
+    {
+      "number": "0.9.12",
+      "date": "2014-05-21T07:28:09.302Z"
+    },
+    {
+      "number": "0.9.13",
+      "date": "2014-05-22T06:57:44.050Z"
+    },
+    {
+      "number": "0.9.14",
+      "date": "2014-05-27T21:53:28.846Z"
+    },
+    {
+      "number": "0.9.15",
+      "date": "2014-06-15T16:44:45.045Z"
+    },
+    {
+      "number": "0.10.0",
+      "date": "2014-06-16T08:12:12.584Z"
+    },
+    {
+      "number": "0.10.1",
+      "date": "2014-06-16T08:33:12.260Z"
+    },
+    {
+      "number": "0.10.2",
+      "date": "2014-06-16T08:37:04.625Z"
+    },
+    {
+      "number": "0.10.3",
+      "date": "2014-06-16T11:02:22.572Z"
+    },
+    {
+      "number": "0.10.4",
+      "date": "2014-06-16T11:20:24.788Z"
+    },
+    {
+      "number": "0.10.5",
+      "date": "2014-06-16T12:55:36.862Z"
+    },
+    {
+      "number": "0.11.0",
+      "date": "2014-06-17T19:03:57.253Z"
+    },
+    {
+      "number": "0.11.1",
+      "date": "2014-06-18T00:42:56.438Z"
+    },
+    {
+      "number": "0.11.2",
+      "date": "2014-06-18T02:08:48.031Z"
+    },
+    {
+      "number": "0.11.3",
+      "date": "2014-06-18T09:59:01.962Z"
+    },
+    {
+      "number": "0.11.4",
+      "date": "2014-06-18T10:36:37.260Z"
+    },
+    {
+      "number": "0.11.5",
+      "date": "2014-06-18T11:50:42.864Z"
+    },
+    {
+      "number": "0.11.6",
+      "date": "2014-06-18T12:12:38.103Z"
+    },
+    {
+      "number": "0.11.7",
+      "date": "2014-06-19T06:56:58.452Z"
+    },
+    {
+      "number": "0.11.8",
+      "date": "2014-06-19T12:51:21.052Z"
+    },
+    {
+      "number": "0.11.10",
+      "date": "2014-06-21T20:03:47.080Z"
+    },
+    {
+      "number": "0.11.11",
+      "date": "2014-06-22T12:06:43.948Z"
+    },
+    {
+      "number": "0.11.12",
+      "date": "2014-06-27T21:09:46.845Z"
+    },
+    {
+      "number": "0.12.0",
+      "date": "2014-06-27T21:34:36.305Z"
+    },
+    {
+      "number": "0.12.1",
+      "date": "2014-07-02T10:25:13.746Z"
+    },
+    {
+      "number": "0.12.2",
+      "date": "2014-07-02T10:37:51.686Z"
+    },
+    {
+      "number": "0.12.3",
+      "date": "2014-07-02T16:00:58.604Z"
+    },
+    {
+      "number": "0.12.5",
+      "date": "2014-07-04T08:04:06.557Z"
+    },
+    {
+      "number": "0.12.6",
+      "date": "2014-07-04T12:35:37.945Z"
+    },
+    {
+      "number": "0.13.0",
+      "date": "2014-07-10T01:02:12.458Z"
+    },
+    {
+      "number": "0.13.1",
+      "date": "2014-07-10T02:42:34.779Z"
+    },
+    {
+      "number": "0.14.0",
+      "date": "2014-07-11T10:51:55.261Z"
+    },
+    {
+      "number": "0.14.1",
+      "date": "2014-07-11T11:34:42.050Z"
+    },
+    {
+      "number": "0.14.2",
+      "date": "2014-07-11T13:34:12.582Z"
+    },
+    {
+      "number": "0.14.3",
+      "date": "2014-07-13T07:29:55.315Z"
+    },
+    {
+      "number": "0.14.4",
+      "date": "2014-07-13T10:32:30.404Z"
+    },
+    {
+      "number": "0.14.5",
+      "date": "2014-07-14T06:58:46.484Z"
+    },
+    {
+      "number": "0.14.6",
+      "date": "2014-07-14T07:21:44.539Z"
+    },
+    {
+      "number": "0.14.7",
+      "date": "2014-07-14T07:40:15.377Z"
+    },
+    {
+      "number": "0.14.8",
+      "date": "2014-07-14T07:40:59.451Z"
+    },
+    {
+      "number": "0.14.9",
+      "date": "2014-07-14T07:42:56.088Z"
+    },
+    {
+      "number": "0.15.0",
+      "date": "2014-07-16T11:13:07.365Z"
+    },
+    {
+      "number": "0.15.1",
+      "date": "2014-07-16T13:22:49.600Z"
+    },
+    {
+      "number": "0.15.2",
+      "date": "2014-07-16T13:28:54.783Z"
+    },
+    {
+      "number": "0.15.3",
+      "date": "2014-07-20T09:09:24.437Z"
+    },
+    {
+      "number": "0.15.4",
+      "date": "2014-08-15T09:45:11.220Z"
+    },
+    {
+      "number": "0.16.0",
+      "date": "2014-08-30T17:06:45.146Z"
+    },
+    {
+      "number": "0.16.1",
+      "date": "2014-09-01T15:44:17.182Z"
+    },
+    {
+      "number": "0.16.2",
+      "date": "2014-09-01T15:54:42.081Z"
+    },
+    {
+      "number": "0.16.3",
+      "date": "2014-09-01T16:02:37.960Z"
+    },
+    {
+      "number": "0.16.4",
+      "date": "2014-09-02T07:06:33.644Z"
+    },
+    {
+      "number": "0.16.5",
+      "date": "2014-09-19T23:19:43.232Z"
+    },
+    {
+      "number": "0.16.6",
+      "date": "2014-09-20T09:41:45.407Z"
+    },
+    {
+      "number": "0.17.0",
+      "date": "2014-09-22T01:07:31.843Z"
+    },
+    {
+      "number": "0.17.1",
+      "date": "2014-09-26T23:43:50.117Z"
+    },
+    {
+      "number": "0.17.2",
+      "date": "2014-10-10T20:51:56.425Z"
+    },
+    {
+      "number": "0.17.3",
+      "date": "2014-10-16T20:11:23.688Z"
+    },
+    {
+      "number": "0.17.4",
+      "date": "2014-10-17T05:17:19.725Z"
+    },
+    {
+      "number": "0.18.0",
+      "date": "2014-10-20T11:08:15.243Z"
+    },
+    {
+      "number": "0.18.1",
+      "date": "2014-10-22T06:11:19.701Z"
+    },
+    {
+      "number": "0.18.2",
+      "date": "2014-11-04T09:06:26.231Z"
+    },
+    {
+      "number": "0.18.3",
+      "date": "2014-11-07T11:15:38.148Z"
+    },
+    {
+      "number": "0.18.4",
+      "date": "2014-12-04T11:07:14.667Z"
+    },
+    {
+      "number": "0.18.5",
+      "date": "2014-12-12T00:26:08.828Z"
+    },
+    {
+      "number": "0.18.6",
+      "date": "2014-12-14T01:55:24.059Z"
+    },
+    {
+      "number": "0.18.7",
+      "date": "2014-12-23T10:18:35.991Z"
+    },
+    {
+      "number": "0.18.8",
+      "date": "2015-01-06T12:18:25.739Z"
+    },
+    {
+      "number": "0.18.9",
+      "date": "2015-01-07T09:02:06.274Z"
+    },
+    {
+      "number": "0.20.0",
+      "date": "2015-02-28T22:02:51.325Z"
+    },
+    {
+      "number": "0.20.1",
+      "date": "2015-02-28T22:34:23.875Z"
+    },
+    {
+      "number": "0.20.2",
+      "date": "2015-02-28T23:24:42.770Z"
+    },
+    {
+      "number": "0.20.3",
+      "date": "2015-03-01T20:41:39.836Z"
+    },
+    {
+      "number": "0.20.4",
+      "date": "2015-03-01T22:16:48.570Z"
+    },
+    {
+      "number": "0.20.5",
+      "date": "2015-03-01T22:34:48.430Z"
+    },
+    {
+      "number": "0.20.6",
+      "date": "2015-03-01T22:43:10.957Z"
+    },
+    {
+      "number": "0.20.7",
+      "date": "2015-03-02T08:11:17.051Z"
+    },
+    {
+      "number": "0.20.8",
+      "date": "2015-03-02T08:34:37.847Z"
+    },
+    {
+      "number": "0.20.9",
+      "date": "2015-03-04T09:11:42.638Z"
+    },
+    {
+      "number": "0.20.10",
+      "date": "2015-03-04T11:20:34.732Z"
+    },
+    {
+      "number": "0.20.11",
+      "date": "2015-03-05T17:29:02.813Z"
+    },
+    {
+      "number": "0.20.12",
+      "date": "2015-03-06T23:04:12.742Z"
+    },
+    {
+      "number": "0.20.13",
+      "date": "2015-03-18T13:14:14.492Z"
+    },
+    {
+      "number": "0.21.0",
+      "date": "2015-04-24T11:57:29.525Z"
+    },
+    {
+      "number": "0.21.1",
+      "date": "2015-04-30T11:45:17.852Z"
+    },
+    {
+      "number": "0.21.2",
+      "date": "2015-05-12T12:08:50.363Z"
+    },
+    {
+      "number": "0.21.3",
+      "date": "2015-05-13T06:52:14.486Z"
+    },
+    {
+      "number": "0.21.4",
+      "date": "2015-05-13T07:36:19.384Z"
+    },
+    {
+      "number": "0.21.5",
+      "date": "2015-05-15T13:12:17.147Z"
+    },
+    {
+      "number": "0.21.6",
+      "date": "2015-05-24T17:45:23.385Z"
+    },
+    {
+      "number": "0.21.7",
+      "date": "2015-05-25T11:52:35.923Z"
+    },
+    {
+      "number": "0.21.8",
+      "date": "2015-06-05T00:29:49.587Z"
+    },
+    {
+      "number": "0.21.9",
+      "date": "2015-06-08T11:50:42.331Z"
+    },
+    {
+      "number": "0.21.10",
+      "date": "2015-06-13T07:03:26.161Z"
+    },
+    {
+      "number": "0.21.11",
+      "date": "2015-06-20T17:57:55.390Z"
+    },
+    {
+      "number": "0.22.0",
+      "date": "2015-06-29T11:20:30.114Z"
+    },
+    {
+      "number": "0.22.1",
+      "date": "2015-06-30T21:15:58.112Z"
+    },
+    {
+      "number": "1.0.0",
+      "date": "2015-06-30T21:33:14.019Z"
+    },
+    {
+      "number": "1.0.1",
+      "date": "2015-07-03T00:57:58.393Z"
+    },
+    {
+      "number": "1.0.2",
+      "date": "2015-07-15T16:43:27.312Z"
+    },
+    {
+      "number": "2.0.0",
+      "date": "2015-08-16T01:54:26.034Z"
+    },
+    {
+      "number": "2.0.2",
+      "date": "2015-09-23T18:24:25.858Z"
+    },
+    {
+      "number": "2.0.3",
+      "date": "2015-09-23T18:32:47.171Z"
+    },
+    {
+      "number": "2.0.4",
+      "date": "2015-09-29T21:23:01.158Z"
+    },
+    {
+      "number": "2.0.5",
+      "date": "2015-10-05T12:54:12.080Z"
+    },
+    {
+      "number": "2.0.6",
+      "date": "2015-10-05T13:06:22.948Z"
+    },
+    {
+      "number": "2.0.7",
+      "date": "2015-10-06T03:36:16.230Z"
+    },
+    {
+      "number": "2.0.8",
+      "date": "2015-10-06T09:32:44.242Z"
+    },
+    {
+      "number": "2.0.9",
+      "date": "2015-10-08T06:53:33.945Z"
+    },
+    {
+      "number": "2.0.10",
+      "date": "2015-10-09T06:46:34.410Z"
+    },
+    {
+      "number": "2.0.11",
+      "date": "2015-10-26T08:50:55.669Z"
+    },
+    {
+      "number": "2.0.12",
+      "date": "2015-11-10T03:12:17.204Z"
+    },
+    {
+      "number": "2.0.13",
+      "date": "2015-11-11T05:42:04.931Z"
+    },
+    {
+      "number": "2.0.14",
+      "date": "2015-11-11T05:52:58.015Z"
+    },
+    {
+      "number": "2.0.15",
+      "date": "2015-11-12T04:16:27.979Z"
+    },
+    {
+      "number": "2.0.16",
+      "date": "2015-11-12T07:11:55.513Z"
+    },
+    {
+      "number": "2.0.17",
+      "date": "2015-11-19T05:46:37.809Z"
+    },
+    {
+      "number": "2.0.18",
+      "date": "2015-11-30T03:15:35.496Z"
+    },
+    {
+      "number": "2.0.19",
+      "date": "2015-12-08T18:16:26.470Z"
+    },
+    {
+      "number": "2.0.20",
+      "date": "2015-12-08T19:03:04.213Z"
+    },
+    {
+      "number": "2.0.21",
+      "date": "2015-12-11T10:17:42.293Z"
+    },
+    {
+      "number": "2.0.22",
+      "date": "2015-12-21T04:54:38.778Z"
+    },
+    {
+      "number": "2.0.23",
+      "date": "2015-12-25T03:15:54.625Z"
+    },
+    {
+      "number": "2.0.24",
+      "date": "2016-01-07T20:03:05.662Z"
+    },
+    {
+      "number": "2.0.25",
+      "date": "2016-01-08T18:53:09.657Z"
+    },
+    {
+      "number": "2.0.27",
+      "date": "2016-01-13T02:57:43.715Z"
+    },
+    {
+      "number": "2.0.28",
+      "date": "2016-03-22T08:06:01.576Z"
+    },
+    {
+      "number": "2.0.29",
+      "date": "2016-03-31T06:27:43.849Z"
+    },
+    {
+      "number": "2.0.30",
+      "date": "2016-03-31T06:52:27.697Z"
+    },
+    {
+      "number": "3.0.0",
+      "date": "2016-04-24T18:40:25.070Z"
+    },
+    {
+      "number": "3.0.1",
+      "date": "2016-04-25T09:20:15.383Z"
+    },
+    {
+      "number": "3.0.2",
+      "date": "2016-04-25T09:35:30.672Z"
+    },
+    {
+      "number": "3.0.3",
+      "date": "2016-04-25T09:39:09.397Z"
+    },
+    {
+      "number": "3.1.0",
+      "date": "2016-05-19T07:23:40.317Z"
+    },
+    {
+      "number": "3.2.0",
+      "date": "2016-05-21T16:47:54.306Z"
+    },
+    {
+      "number": "3.2.1",
+      "date": "2016-06-01T22:05:37.014Z"
+    },
+    {
+      "number": "3.2.2",
+      "date": "2016-06-06T22:29:15.513Z"
+    },
+    {
+      "number": "3.2.3",
+      "date": "2016-06-13T19:28:05.700Z"
+    },
+    {
+      "number": "3.2.4",
+      "date": "2016-06-27T18:02:12.275Z"
+    },
+    {
+      "number": "3.2.5",
+      "date": "2016-07-12T19:52:24.218Z"
+    },
+    {
+      "number": "3.2.6",
+      "date": "2016-09-22T21:48:23.015Z"
+    },
+    {
+      "number": "3.2.7",
+      "date": "2016-11-12T09:40:29.685Z"
+    }
+  ],
+  "created": "2014-01-16T14:16:00.928Z",
+  "modified": "2016-11-12T09:40:29.685Z",
+  "lastPublisher": {
+    "name": "uupaa",
+    "email": "uupaa.js@gmail.com"
+  },
+  "owners": [
+    {
+      "name": "uupaa",
+      "email": "uupaa.js@gmail.com"
+    }
+  ]
+}

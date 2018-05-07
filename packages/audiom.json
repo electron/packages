@@ -1,0 +1,78 @@
+{
+  "name": "audiom",
+  "productName": "Audiom",
+  "version": "0.1.0",
+  "description": "Modular music-making app",
+  "main": "src/index.js",
+  "scripts": {
+    "preinstall": "npm run install:naudio",
+    "install:naudio": "mkdir node_modules > /dev/null 2>&1; cd node_modules && ln -s ../naudio > /dev/null 2>&1; cd naudio && npm install --production --ignore-scripts",
+    "build:naudio": "cd naudio && npm run build",
+    "start": "NODE_PATH=./src electron-forge start",
+    "build": "NODE_PATH=./src electron-forge package --platform=darwin",
+    "make": "NODE_PATH=./src electron-forge make",
+    "_publish": "NODE_PATH=./src electron-forge publish",
+    "lint": "NODE_PATH=./src eslint --cache --color --ext .jsx,.js src"
+  },
+  "keywords": [],
+  "author": {
+    "name": "eliot-akira"
+  },
+  "license": "MIT",
+  "config": {
+    "forge": "./forge.config.js"
+  },
+  "dependencies": {
+    "electron-compile": "^6.4.2",
+    "electron-devtools-installer": "^2.2.3",
+    "electron-squirrel-startup": "^1.0.0",
+    "naudio": "file:./naudio",
+    "react": "^16.2.0",
+    "react-dom": "^16.2.0",
+    "react-hot-loader": "^4.0.0",
+    "styled-components": "^3.2.3",
+    "styled-system": "^2.2.1"
+  },
+  "devDependencies": {
+    "babel-plugin-add-module-exports": "^0.2.1",
+    "babel-plugin-react-require": "^3.0.0",
+    "babel-plugin-transform-async-to-generator": "^6.24.1",
+    "babel-plugin-transform-es2015-classes": "^6.24.1",
+    "babel-preset-env": "^1.6.1",
+    "babel-preset-react": "^6.24.1",
+    "babel-preset-stage-0": "^6.24.1",
+    "electron-forge": "^5.1.1",
+    "electron-prebuilt-compile": "1.8.4",
+    "eslint": "^4",
+    "eslint-plugin-react": "^7"
+  },
+  "gitHead": "056fa0df2f63b3f25e6fee4c68e36b2debc836a6",
+  "_npmVersion": "5.6.0",
+  "_nodeVersion": "9.2.1",
+  "dist": {
+    "integrity": "sha512-I9ivQklsn1V7NEZr1pO1Cg6Uyby05p3+W1nUcneX0qr3a9LDj70MLBS2PTowxtlVeKj6gBZN3+mZqZmy6S6elg==",
+    "shasum": "7fbd5c5f86b31bff14b8b31e8e07c801c6b4c2a8",
+    "tarball": "http://registry.npmjs.org/audiom/-/audiom-0.1.0.tgz",
+    "fileCount": 16315,
+    "unpackedSize": 164577660
+  },
+  "_hasShrinkwrap": false,
+  "versions": [
+    {
+      "number": "0.1.0",
+      "date": "2018-03-23T20:11:52.052Z"
+    }
+  ],
+  "created": "2018-03-23T20:11:51.179Z",
+  "modified": "2018-03-23T20:11:52.805Z",
+  "lastPublisher": {
+    "name": "eliot",
+    "email": "me@eliotakira.com"
+  },
+  "owners": [
+    {
+      "name": "eliot",
+      "email": "me@eliotakira.com"
+    }
+  ]
+}
