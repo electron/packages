@@ -1,6 +1,6 @@
 {
   "name": "electron-npm-packages",
-  "version": "3.0.0",
+  "version": "0.0.0-development",
   "description": "A collection of all npm packages that mention `electron` in their package.json",
   "main": "index.json",
   "scripts": {
@@ -9,7 +9,9 @@
     "build:downloads": "node bin/downloads.js",
     "build:authors": "node bin/authors.js",
     "build:compile": "node bin/compile.js > index.json",
-    "test": "node test.js | tap-spec && standard"
+    "test": "node test.js | tap-spec && standard",
+    "travis-deploy-once": "travis-deploy-once",
+    "semantic-release": "semantic-release"
   },
   "repository": "https://github.com/electron/electron-npm-packages",
   "keywords": [
@@ -44,6 +46,8 @@
     "sourceranks": "^2.0.0",
     "standard": "^8.5.0",
     "tap-spec": "^4.1.1",
-    "tape": "^4.6.2"
+    "tape": "^4.6.2",
+    "travis-deploy-once": "^5.0.0",
+    "semantic-release": "^15.4.0"
   }
 }
