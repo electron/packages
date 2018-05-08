@@ -1,0 +1,98 @@
+{
+  "name": "authllizer-electron-dialog",
+  "version": "0.1.0",
+  "description": "Authllizer Electron Dialog",
+  "main": "./es5/index.js",
+  "browser": "./bundles/authllizer-electron-dialog.umd.js",
+  "es2015": "./es2015/index.js",
+  "typings": "./typings/index.d.ts",
+  "files": [
+    "es5",
+    "es2015",
+    "bundles",
+    "typings",
+    "README.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "build": "run-s build:*",
+    "build:es5": "tsc -t es5 -m commonjs --outDir es5",
+    "build:es2015": "tsc -t es2015 -m es2015 --outDir es2015",
+    "build:umd": "rollup -c ../../../config/rollup.config.ts",
+    "clean": "rimraf es5 es2015 bundles typings",
+    "prepublish": "run-s clean build",
+    "watch": "run-p watch:*",
+    "watch:es5": "npm run build:es5 -- --watch",
+    "watch:es2015": "npm run build:es2015 -- --watch",
+    "watch:umd": "npm run build:umd -- --watch"
+  },
+  "keywords": [
+    "authllizer",
+    "authllizer-dialog",
+    "authentication",
+    "auth",
+    "oauth",
+    "electron"
+  ],
+  "author": {
+    "name": "Yisrael Eliav",
+    "email": "yisraelx@gmail.com",
+    "url": "https://github.com/yisraelx"
+  },
+  "license": "MIT",
+  "homepage": "https://github.com/yisraelx/authllizer#readme",
+  "repository": {
+    "user": "yisraelx",
+    "repo": "authllizer",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/yisraelx/authllizer/tarball/master",
+    "clone_url": "https://github.com/yisraelx/authllizer",
+    "https_url": "https://github.com/yisraelx/authllizer",
+    "travis_url": "https://travis-ci.org/yisraelx/authllizer",
+    "zip_url": "https://github.com/yisraelx/authllizer/archive/master.zip",
+    "api_url": "https://api.github.com/repos/yisraelx/authllizer"
+  },
+  "peerDependencies": {
+    "@authllizer/core": "^0.1.0"
+  },
+  "devDependencies": {
+    "@authllizer/core": "^0.1.0",
+    "electron": "^1.7.12",
+    "npm-run-all": "^4.1.2",
+    "rimraf": "^2.6.2",
+    "rollup": "^0.55.3",
+    "typescript": "^2.7.1"
+  },
+  "rollup": {
+    "globals": {
+      "@authllizer/core": "authllizer.core"
+    }
+  },
+  "_npmVersion": "5.6.0",
+  "_nodeVersion": "8.9.4",
+  "dist": {
+    "integrity": "sha512-Ii5qgoXbEUewblIW+E3ByOMs4FgmF82cSzYESsFGwxfpz9kKv4ndVNE1I6dkfX9I7/1pl1vtZ1psnXgJSw0iUQ==",
+    "shasum": "9d95e76525c554f9c90937a216044d863af92741",
+    "tarball": "https://registry.npmjs.org/authllizer-electron-dialog/-/authllizer-electron-dialog-0.1.0.tgz"
+  },
+  "versions": [
+    {
+      "number": "0.1.0",
+      "date": "2018-02-06T22:04:49.559Z"
+    }
+  ],
+  "created": "2018-02-06T22:04:49.559Z",
+  "modified": "2018-02-06T22:04:49.559Z",
+  "lastPublisher": {
+    "name": "yisraelx",
+    "email": "yisraelx@gmail.com"
+  },
+  "owners": [
+    {
+      "name": "yisraelx",
+      "email": "yisraelx@gmail.com"
+    }
+  ]
+}

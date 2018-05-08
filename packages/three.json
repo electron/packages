@@ -1,6 +1,6 @@
 {
   "name": "three",
-  "version": "0.89.0",
+  "version": "0.92.0",
   "description": "JavaScript 3D library",
   "main": "build/three.js",
   "repository": {
@@ -35,13 +35,15 @@
   },
   "scripts": {
     "build": "rollup -c",
-    "build-test": "rollup -c test/rollup.unit.config.js -w",
+    "build-test": "rollup -c test/rollup.unit.config.js",
     "build-uglify": "rollup -c && uglifyjs build/three.js -cm --preamble \"// threejs.org/license\" > build/three.min.js",
     "build-closure": "rollup -c && java -jar node_modules/google-closure-compiler/compiler.jar --warning_level=VERBOSE --jscomp_off=globalThis --jscomp_off=checkTypes --externs utils/build/externs.js --language_in=ECMASCRIPT5_STRICT --js build/three.js --js_output_file build/three.min.js",
     "dev": "concurrently --names \"ROLLUP,HTTP\" -c \"bgBlue.bold,bgGreen.bold\" \"rollup -c -w -m inline\" \"serve --port 8080\"",
+    "dev-test": "concurrently --names \"ROLLUP,ROLLUPTEST,HTTP\" -c \"bgBlue.bold,bgRed.bold,bgGreen.bold\" \"rollup -c -w -m inline\" \"rollup -c test/rollup.unit.config.js -w -m inline\" \"serve --port 8080\"",
     "start": "npm run dev",
     "lint": "eslint src",
-    "test": "qunit test/unit/three.source.unit.js",
+    "test": "npm run build-test && qunit test/unit/three.source.unit.js",
+    "travis": "npm run lint && npm test",
     "editor": "electron ./editor/main.js"
   },
   "keywords": [
@@ -54,27 +56,31 @@
     "name": "mrdoob"
   },
   "license": "MIT",
-  "homepage": "http://threejs.org/",
+  "homepage": "https://threejs.org/",
   "devDependencies": {
     "concurrently": "^3.5.0",
-    "electron": "1.7.8",
+    "electron": "~1.8.4",
     "eslint": "^4.1.1",
     "eslint-config-mdcs": "^4.2.2",
-    "google-closure-compiler": "^20170521.0.0",
-    "qunitjs": "^2.4.0",
-    "rollup": "^0.51.0",
+    "google-closure-compiler": "20180204.0.0",
+    "qunit": "^2.5.1",
+    "rollup": "^0.57.1",
     "rollup-watch": "^4.0.0",
-    "serve": "^6.3.1",
+    "serve": "~6.5.3",
     "uglify-js": "^3.0.23"
   },
-  "gitHead": "da2936540a48774b043a1e617bddbdce5102e417",
+  "gitHead": "ba4489ded66212ac9e6d3017a6bb856023bd026f",
   "_npmVersion": "3.10.10",
   "_nodeVersion": "6.10.3",
   "dist": {
-    "shasum": "4442d819a6168871b8d2cb37ad12a24310c170f5",
-    "tarball": "https://registry.npmjs.org/three/-/three-0.89.0.tgz"
+    "shasum": "8d3d1f5af890e62da7f4cb45d20c09fa51057dcd",
+    "tarball": "https://registry.npmjs.org/three/-/three-0.92.0.tgz",
+    "fileCount": 689,
+    "unpackedSize": 14977222,
+    "npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJa15gMCRA9TVsSAnZWagAAun0P/i6ErPSzEjjv5ewYf4Me\nx0K6s2Z2T8Ft+HNiETXdJFx83BSECI2YkdiR/tY7drlQZKxo/ho7W2NprdgP\nvz0sNaArlu0SoPeM5zHYr6Tim/rFMDgjTjitFCx8Qy2xrkmjkbrS+grGkzMS\na2325GcEZdlnM9DkRgWFVCCo8d6IFHw66A7drKVK4kJX3poiz9NmCCG86wir\nhDh01RY11b346fGLYZfrFDLDg5k/nmkUslWDsOVBMZmeY6t5lsr+Kqsj46uS\nDW2zKt4nQA6/mFhybeJ+WtIw1P25m7kdrCu5es7xYiwOaP7K+XXzXf3x3qa1\nfUrxUjY+vdrKZUHyL4ZuEeB0SL0HCrgX4I6pYKJQDV8hRwqa7ppq/+ln5ERB\ntxuiJkdwM6JGGKYnjN1hNxUFrFg1/YxwM70BBclMp/WMOjhjXc23no+HTV85\nfZ22hZNWdo3aSj65aCQbDpXysZ0gM4bHr1ctn3wigrmpFRo6l2cezIqfgsJ1\n2V6nI5wxLjAgUy07HdKteA9sA2lA8S+cjCObMCPqDiEPuXTbgH2cxnxP5c0n\ny/0Uteq43LuRObQmY3I9ZYjc9HI1TNI8NdW8bglSHw7rKBSJxGr5mtRH7GyX\ncvseQQdpWER2jQid9ejaDdA9y1++OueecD7JfIF+6A2h11vhFhNKt6vSxFQl\nGJE6\r\n=nWKg\r\n-----END PGP SIGNATURE-----\r\n"
   },
-  "stars": 68,
+  "_hasShrinkwrap": false,
+  "stars": 71,
   "versions": [
     {
       "number": "0.54.0-dev",
@@ -735,10 +741,22 @@
     {
       "number": "0.89.0",
       "date": "2017-12-18T23:28:26.965Z"
+    },
+    {
+      "number": "0.90.0",
+      "date": "2018-02-14T17:21:50.591Z"
+    },
+    {
+      "number": "0.91.0",
+      "date": "2018-03-14T18:21:27.523Z"
+    },
+    {
+      "number": "0.92.0",
+      "date": "2018-04-18T19:10:02.972Z"
     }
   ],
   "created": "2012-12-07T19:51:25.349Z",
-  "modified": "2018-01-11T08:23:58.193Z",
+  "modified": "2018-04-18T19:10:06.280Z",
   "lastPublisher": {
     "name": "mrdoob",
     "email": "info@mrdoob.com"

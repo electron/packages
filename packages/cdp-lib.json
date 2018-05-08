@@ -1,6 +1,6 @@
 {
   "name": "cdp-lib",
-  "version": "0.1.4",
+  "version": "0.1.7",
   "description": "Contains npm modules used primarily by cdp boilerplate generator.",
   "main": "dist/cdp-lib.min.js",
   "types": "dist/@types/cdp-lib/index.d.ts",
@@ -8,6 +8,7 @@
     "test": "run-s -l clean compile lint unit-test",
     "ci": "run-s -l clean build lint unit-test metrics document",
     "package": "run-s ci && node ./tasks/clean.js --built --test --temp",
+    "check:update": "npm outdated || exit 0",
     "update": "npm update --save-dev && npm update --save && npm run package",
     "depends": "npm list --depth=1",
     "depends:prod": "npm list --depth=0 --only=prod",
@@ -66,57 +67,60 @@
   "license": "Apache-2.0",
   "homepage": "https://github.com/sony/cdp-lib#readme",
   "dependencies": {
-    "chalk": "^2.3.0",
-    "cli-spinner": "^0.2.7",
-    "fs-extra": "^4.0.2",
+    "chalk": "^2.3.1",
+    "cli-spinner": "^0.2.8",
+    "fs-extra": "^5.0.0",
     "glob": "^7.1.2",
     "hogan.js": "^3.0.2",
-    "jquery": "^3.2.1",
+    "jquery": "^3.3.1",
     "jsdom": "^9.12.0",
-    "lodash": "^4.17.4",
+    "lodash": "^4.17.5",
     "semver-regex": "^1.0.0",
     "underscore.string": "^3.3.4",
-    "uuid": "^3.1.0",
+    "uuid": "^3.2.1",
     "which": "^1.3.0",
     "xmldom": "^0.1.27"
   },
   "devDependencies": {
     "@types/del": "^3.0.0",
-    "@types/fs-extra": "^4.0.3",
-    "@types/glob": "^5.0.33",
-    "@types/jasmine": "^2.6.2",
-    "@types/jquery": "^3.2.16",
-    "@types/lodash": "^4.14.82",
-    "@types/node": "^8.0.47",
-    "@types/underscore.string": "0.0.31",
-    "@types/uuidjs": "^3.3.2",
-    "@types/which": "^1.0.28",
+    "@types/fs-extra": "^5.0.0",
+    "@types/glob": "^5.0.35",
+    "@types/jasmine": "^2.8.6",
+    "@types/jquery": "^3.3.0",
+    "@types/lodash": "^4.14.104",
+    "@types/node": "^9.4.6",
+    "@types/underscore.string": "0.0.32",
+    "@types/uuidjs": "^3.6.0",
+    "@types/which": "^1.3.1",
     "@types/xmldom": "^0.1.29",
-    "convert-source-map": "^1.5.0",
+    "convert-source-map": "^1.5.1",
     "del": "^3.0.0",
     "dts-bundle": "^0.7.3",
-    "eslint": "^4.10.0",
+    "eslint": "^4.18.1",
     "jasmine-node": "^2.0.0",
-    "npm-run-all": "^4.1.1",
-    "nyc": "^11.3.0",
+    "npm-run-all": "^4.1.2",
+    "nyc": "^11.5.0",
     "plato": "^1.7.0",
-    "source-map": "^0.6.1",
+    "source-map": "^0.7.1",
     "source-map-loader": "^0.2.3",
-    "tslint": "^5.8.0",
-    "typedoc": "^0.9.0",
-    "typescript": "^2.6.1",
-    "typescript-formatter": "^7.0.0",
-    "uglify-es": "^3.1.7",
-    "webpack": "^3.8.1"
+    "tslint": "^5.9.1",
+    "typedoc": "^0.10.0",
+    "typescript": "^2.7.2",
+    "typescript-formatter": "^7.1.0",
+    "uglify-es": "^3.3.10",
+    "webpack": "^3.11.0"
   },
-  "gitHead": "2e30af3eb5c61644046173df1f7bd7439a05bda0",
-  "_npmVersion": "5.0.3",
-  "_nodeVersion": "8.7.0",
+  "gitHead": "b8614f9d20f083d6cd3168bb8e0304c70d6a89a0",
+  "_npmVersion": "5.6.0",
+  "_nodeVersion": "8.9.4",
   "dist": {
-    "integrity": "sha512-J+yLn4H3YKhkH7cpIErwb7owTbRtWcmWIliEL/2Xp6+nHGcLkt9DVu8tIY8Tp353IBjD62BbRhQ2f7mIKq/4eA==",
-    "shasum": "eb38e3f4a3d859add60e66dcb76d27f6fe2ebcc2",
-    "tarball": "https://registry.npmjs.org/cdp-lib/-/cdp-lib-0.1.4.tgz"
+    "integrity": "sha512-3A0bV1N83kM1Rac+DCzg9m0c7QEjgqNOImCHVVgY6O2kL8KVCUpvXvwuqWBjj0o/DA9mDxQMHWOK2uto7CWdWw==",
+    "shasum": "40345a14da86db25ad1dc7f0406919885b047ea1",
+    "tarball": "http://registry.npmjs.org/cdp-lib/-/cdp-lib-0.1.7.tgz",
+    "fileCount": 125,
+    "unpackedSize": 524627
   },
+  "_hasShrinkwrap": false,
   "stars": 2,
   "versions": [
     {
@@ -134,10 +138,22 @@
     {
       "number": "0.1.4",
       "date": "2017-11-21T08:34:18.017Z"
+    },
+    {
+      "number": "0.1.5",
+      "date": "2018-02-06T05:09:42.353Z"
+    },
+    {
+      "number": "0.1.6",
+      "date": "2018-02-14T03:52:00.521Z"
+    },
+    {
+      "number": "0.1.7",
+      "date": "2018-02-23T12:26:03.411Z"
     }
   ],
   "created": "2017-10-27T08:52:18.111Z",
-  "modified": "2017-11-21T08:34:18.017Z",
+  "modified": "2018-02-23T12:26:04.689Z",
   "lastPublisher": {
     "name": "cdp",
     "email": "cdp-info@jp.sony.com"

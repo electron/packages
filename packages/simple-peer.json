@@ -1,34 +1,34 @@
 {
   "name": "simple-peer",
   "description": "Simple one-to-one WebRTC video/voice and data channels",
-  "version": "8.2.0",
+  "version": "9.1.1",
   "author": {
     "name": "Feross Aboukhadijeh",
     "email": "feross@feross.org",
     "url": "http://feross.org/"
   },
   "dependencies": {
-    "debug": "^2.1.0",
+    "debug": "^3.1.0",
     "get-browser-rtc": "^1.0.0",
     "inherits": "^2.0.1",
     "randombytes": "^2.0.3",
-    "readable-stream": "^2.0.5"
+    "readable-stream": "^2.3.4"
   },
   "devDependencies": {
-    "browserify": "^14.0.0",
-    "concat-stream": "^1.4.6",
+    "airtap": "0.0.4",
+    "bowser": "^1.9.2",
+    "browserify": "^16.1.0",
     "electron-webrtc": "^0.3.0",
     "prettier-bytes": "^1.0.3",
-    "simple-get": "^2.0.0",
+    "simple-get": "^3.0.1",
     "speedometer": "^1.0.0",
     "standard": "*",
     "string-to-stream": "^1.0.0",
     "tape": "^4.0.0",
     "thunky": "^1.0.1",
-    "uglify-js": "^2.4.15",
-    "wrtc": "0.0.63",
-    "ws": "^2.0.2",
-    "zuul": "^3.8.0"
+    "uglify-js": "^3.3.11",
+    "wrtc": "^0.1.1",
+    "ws": "^5.0.0"
   },
   "keywords": [
     "data",
@@ -62,26 +62,28 @@
   },
   "scripts": {
     "build": "browserify -s SimplePeer -r ./ | uglifyjs -m > simplepeer.min.js",
+    "size": "npm run build && cat simplepeer.min.js | gzip | wc -c",
     "test": "standard && npm run test-node && npm run test-browser",
-    "test-browser": "zuul -- test/*.js",
-    "test-browser-local": "zuul --local -- test/*.js",
+    "test-browser": "airtap -- test/*.js",
+    "test-browser-local": "airtap --local -- test/*.js",
     "test-node": "npm run test-node-electron-webrtc && npm run test-node-wrtc",
     "test-node-electron-webrtc": "WRTC=electron-webrtc tape test/*.js",
     "test-node-wrtc": "WRTC=wrtc tape test/*.js"
   },
-  "testling": {
-    "files": "test/*.js"
-  },
-  "gitHead": "d68778c797f3a1d460964620b94cb12c4ffc3012",
+  "gitHead": "388caf2093e29fcaeccfc86663925b330c4a3a18",
   "homepage": "https://github.com/feross/simple-peer#readme",
-  "_npmVersion": "5.5.1",
-  "_nodeVersion": "8.9.0",
+  "_npmVersion": "6.0.0",
+  "_nodeVersion": "8.11.1",
   "dist": {
-    "integrity": "sha512-m3K7TJC7SjdzVB3KvvrcFkWfQknHYNF9d88aracdea/Jn/lreYQ6kGdD6+Rcjpq8w1Ai7dssd3XIYYWZ+Nt0qg==",
-    "shasum": "9cd002b33204e2791ea84e11bc75687d846cf604",
-    "tarball": "https://registry.npmjs.org/simple-peer/-/simple-peer-8.2.0.tgz"
+    "integrity": "sha512-Q1R/QHZPXpIp/2ozVtTXQa9dZaM3irXxqCRhCRyksbjqxp6t50IDmw15NNg1PzEa0PrGJG7jbZYFZn2B6sjUjg==",
+    "shasum": "d4aa5b16ab912b170cd44509814f9e30cefe5d43",
+    "tarball": "https://registry.npmjs.org/simple-peer/-/simple-peer-9.1.1.tgz",
+    "fileCount": 5,
+    "unpackedSize": 136140,
+    "npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJa39iOCRA9TVsSAnZWagAAPbEP/2QS7tz5GPTMsv11iGW5\nDh5iETmJTdFFUwulJ6LDMO1gNUemP1s4bgv7xp4ERuUBOrkoKBrJblAZzsxQ\nfcXzzrLpt9BwiaBLDB1RCGPFN8QfoEmmKtAsy5nsAHIhpgpZcL2g1ORyLDfr\n+qGaMmGBzBgr4Zlu9ImUHyw4h8ZhOWQGNxqAb9S9cw5O5Gp1BFQ3e7JcOW0r\nOhQiV6KflZBeVCeBbp0wWTiwUix5yF87kVT5xoId53MNSh5xhafcsnud2sDx\nzTd0TMSQDdpcP5GmG7///vWMts83O+dCj1ZCLv5ZbfDYRLBnKvo1tK+AFB1a\ntFYdKQXh+UE0EgxlME1KY7qlhZWO0hfiGkiG74zUgl8x1s0hIa8TctNoRqyt\n9P8/3eaXJH2CuWezylEQ0tBmtJZW7voMac2XnuhzdYkDCHmz65ukBc8LmzJE\nzcNyAUFAHoRXtVBKEqScLWWn9EwRxOjOsISEg0DGvc1lkpb+I7wR4DRWcQYI\ncyotbuUdqP6r8LMDrClLPxFodpbynJmW5GdvUUAOmpa0gZg/kR/kuCJXFbPm\n4/QYIU+iEHtNRf0EJxoWKrnjYd2XJd6NgFSkW8B3Cv11x2S8PnC2TN280NLm\n7+BARfb1/+6eJ8d9ocdC5k24cQI/vvFgiEb4H39EwS8fLLd/TELXHBs9u7nu\nMRNR\r\n=tMS6\r\n-----END PGP SIGNATURE-----\r\n"
   },
-  "stars": 28,
+  "_hasShrinkwrap": false,
+  "stars": 31,
   "versions": [
     {
       "number": "1.0.0",
@@ -454,10 +456,34 @@
     {
       "number": "8.2.0",
       "date": "2017-12-03T08:25:21.358Z"
+    },
+    {
+      "number": "8.3.0",
+      "date": "2018-01-29T04:59:36.483Z"
+    },
+    {
+      "number": "8.4.0",
+      "date": "2018-02-16T21:50:08.659Z"
+    },
+    {
+      "number": "8.5.0",
+      "date": "2018-02-17T05:11:41.991Z"
+    },
+    {
+      "number": "9.0.0",
+      "date": "2018-02-21T17:57:52.631Z"
+    },
+    {
+      "number": "9.1.0",
+      "date": "2018-04-20T20:54:59.654Z"
+    },
+    {
+      "number": "9.1.1",
+      "date": "2018-04-25T01:23:24.449Z"
     }
   ],
   "created": "2014-06-26T18:46:28.178Z",
-  "modified": "2017-12-03T08:25:21.358Z",
+  "modified": "2018-04-25T01:23:28.707Z",
   "lastPublisher": {
     "name": "feross",
     "email": "feross@feross.org"

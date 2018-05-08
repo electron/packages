@@ -1,0 +1,110 @@
+{
+  "name": "vue-vg-wxf",
+  "version": "1.0.1",
+  "description": "---->>>",
+  "main": "index.js",
+  "scripts": {
+    "dev": "cd shells/dev && webpack-dev-server --inline --hot --no-info",
+    "dev:chrome": "cd shells/chrome && webpack --watch --hide-modules",
+    "lint": "eslint src --ext=js,vue && eslint shells/chrome/src && eslint shells/dev/src && eslint shells/electron/src",
+    "build": "cd shells/chrome && cross-env NODE_ENV=production webpack --progress --hide-modules",
+    "run:firefox": "web-ext run -s shells/chrome -a dist -i src",
+    "zip": "npm run zip:chrome && npm run zip:firefox",
+    "zip:chrome": "cd shells && zip -r -FS ../dist/chrome.zip chrome -x *src/* -x *webpack.config.js",
+    "zip:firefox": "web-ext build -s shells/chrome -a dist -i src --overwrite-dest",
+    "release": "node release.js && npm run test && npm run build && npm run zip",
+    "test": "npm run lint && bash test/test.sh"
+  },
+  "repository": {
+    "user": "37972547",
+    "repo": "vg-test",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/37972547/vg-test/tarball/master",
+    "clone_url": "https://github.com/37972547/vg-test",
+    "https_url": "https://github.com/37972547/vg-test",
+    "travis_url": "https://travis-ci.org/37972547/vg-test",
+    "zip_url": "https://github.com/37972547/vg-test/archive/master.zip",
+    "api_url": "https://api.github.com/repos/37972547/vg-test"
+  },
+  "keywords": [
+    "gg",
+    "aa"
+  ],
+  "author": {
+    "name": "Evan You"
+  },
+  "license": "MIT",
+  "homepage": "https://github.com/37972547/vg-test#readme",
+  "devDependencies": {
+    "buble": "^0.19.0",
+    "buble-loader": "^0.4.1",
+    "chromedriver": "^2.34.0",
+    "cross-env": "^5.1.3",
+    "css-loader": "^0.28.7",
+    "eslint": "^4.13.1",
+    "eslint-plugin-vue-libs": "^2.0.1",
+    "file-loader": "^1.1.6",
+    "friendly-errors-webpack-plugin": "^1.6.1",
+    "inquirer": "^5.0.0",
+    "launch-editor-middleware": "^2.1.0",
+    "nightwatch": "^0.9.19",
+    "nightwatch-helpers": "^1.2.0",
+    "raw-loader": "^0.5.1",
+    "selenium-server": "2.53.1",
+    "semver": "^5.4.1",
+    "stylus": "^0.54.5",
+    "stylus-loader": "^3.0.1",
+    "url-loader": "^0.6.2",
+    "vue-loader": "^15.0.0-beta.1",
+    "vue-template-compiler": "^2.5.13",
+    "webpack": "^3.10.0",
+    "webpack-dev-server": "^2.9.7",
+    "webpack-merge": "^4.1.2"
+  },
+  "dependencies": {
+    "circular-json-es6": "^2.0.1",
+    "lodash.debounce": "^4.0.8",
+    "lodash.groupby": "^4.6.0",
+    "material-design-icons": "^3.0.1",
+    "uglifyjs-webpack-plugin": "^1.1.4",
+    "v-tooltip": "^2.0.0-rc.25",
+    "vue": "^2.5.13",
+    "vue-router": "^3.0.1",
+    "vuex": "^3.0.1"
+  },
+  "gitHead": "89e91a32c1dcfdd15150fbb0920f8b0d8c476177",
+  "_npmVersion": "5.5.1",
+  "_nodeVersion": "8.9.3",
+  "dist": {
+    "integrity": "sha512-YUhet5Vdv4Anm08Xvc5dCwfq4m+FrPlgkbTH3ri9EZs+mHnfnAtbBjoneZSYfyEThXw4AVxZDGnRAbiVknKJRw==",
+    "shasum": "c1380a99199dcb72da7e158286cf3e83b68581c2",
+    "tarball": "http://registry.npmjs.org/vue-vg-wxf/-/vue-vg-wxf-1.0.1.tgz",
+    "fileCount": 130,
+    "unpackedSize": 1602220
+  },
+  "_hasShrinkwrap": false,
+  "versions": [
+    {
+      "number": "1.0.0",
+      "date": "2018-04-08T10:29:54.823Z"
+    },
+    {
+      "number": "1.0.1",
+      "date": "2018-04-08T10:44:11.756Z"
+    }
+  ],
+  "created": "2018-04-08T10:29:54.685Z",
+  "modified": "2018-04-08T10:44:12.568Z",
+  "lastPublisher": {
+    "name": "wangxianfa",
+    "email": "37972547@qq.com"
+  },
+  "owners": [
+    {
+      "name": "wangxianfa",
+      "email": "37972547@qq.com"
+    }
+  ]
+}

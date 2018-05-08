@@ -1,6 +1,6 @@
 {
   "name": "electron-packager",
-  "version": "10.1.1",
+  "version": "12.0.2",
   "description": "Customize and package your Electron app with OS-specific bundles (.app, .exe, etc.) via JS or CLI",
   "main": "index.js",
   "bin": {
@@ -31,41 +31,40 @@
     "electron-osx-sign": "^0.4.1",
     "extract-zip": "^1.0.3",
     "fs-extra": "^5.0.0",
+    "galactus": "^0.2.1",
     "get-package-info": "^1.0.0",
-    "mz": "^2.6.0",
     "nodeify": "^1.0.1",
     "parse-author": "^2.0.0",
     "pify": "^3.0.0",
     "plist": "^2.0.0",
-    "pruner": "^0.0.7",
-    "rcedit": "^0.9.0",
+    "rcedit": "^1.0.0",
     "resolve": "^1.1.6",
     "sanitize-filename": "^1.6.0",
     "semver": "^5.3.0",
-    "yargs-parser": "^8.0.0"
+    "yargs-parser": "^10.0.0"
   },
   "devDependencies": {
-    "ava": "^0.24.0",
+    "ava": "^0.25.0",
     "buffer-equal": "^1.0.0",
-    "coveralls": "^3.0.0",
-    "eslint": "^4.1.0",
-    "eslint-config-standard": "^10.0.0",
+    "codecov": "^3.0.0",
+    "eslint": "^4.18.0",
+    "eslint-config-standard": "^11.0.0",
     "eslint-plugin-ava": "^4.3.0",
     "eslint-plugin-import": "^2.2.0",
-    "eslint-plugin-node": "^5.1.0",
+    "eslint-plugin-node": "^6.0.0",
     "eslint-plugin-promise": "^3.5.0",
     "eslint-plugin-standard": "^3.0.0",
+    "mz": "^2.6.0",
     "nyc": "^11.0.0",
     "pkg-up": "^2.0.0",
     "sinon": "^4.1.3",
-    "tempy": "^0.2.1",
-    "which": "^1.2.14"
+    "tempy": "^0.2.1"
   },
   "engines": {
     "node": ">= 4.0"
   },
   "scripts": {
-    "coveralls": "nyc report --reporter=text-lcov | coveralls",
+    "codecov": "nyc report --reporter=text-lcov > coverage.lcov && codecov",
     "lint": "eslint .",
     "test": "npm run lint && nyc ava test/index.js"
   },
@@ -75,7 +74,10 @@
   },
   "eslintConfig": {
     "extends": [
+      "eslint:recommended",
       "plugin:ava/recommended",
+      "plugin:import/errors",
+      "plugin:import/warnings",
       "plugin:promise/recommended",
       "standard"
     ],
@@ -98,17 +100,22 @@
         }
       ],
       "ava/prefer-async-await": 0,
+      "no-console": 0,
       "strict": "error"
     }
   },
-  "gitHead": "0b00895444a6bf2e31e506d25e303896d6ebd2e2",
+  "gitHead": "1b1b8d76916d8a4afc42eb18e631b10a011333a3",
   "_npmVersion": "3.10.10",
-  "_nodeVersion": "6.12.2",
+  "_nodeVersion": "6.14.2",
   "dist": {
-    "shasum": "316a7fa2cb1ffc2633f5805c9fc20913cbc09d94",
-    "tarball": "https://registry.npmjs.org/electron-packager/-/electron-packager-10.1.1.tgz"
+    "shasum": "095ae95aa4bd09930341db23166ea371e814991a",
+    "tarball": "https://registry.npmjs.org/electron-packager/-/electron-packager-12.0.2.tgz",
+    "fileCount": 81,
+    "unpackedSize": 494121,
+    "npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJa6pqsCRA9TVsSAnZWagAA3WwP/RkQnQauE/tcp7ZCgkV1\n7RLYJdvxbwuQM3KMc6tHFF6UybLmAcKxLEROdg+nl6jIxAJaUUsR7dWwiR/S\nSy06MkZ/Vr3sBih3iBXkEof9kEL3OFpNGHyE9B8hRlgrhs2fGmkx77LElX/o\n3EXia4bLCFTjPnSXSj4gsa8A5WFUx1I3veB3ZcqEzDPHXKY3NrGZAb5IWjQk\nYe2XosG1wr0IkJhAlklR5G0nfwBTIyqFBSJ7LYSE5cbWD0vwK/sUBflFeLlq\nYDpzuHnnlX3fW7SBjW/dqSKWwpbzA+DM4NXeMyD0xob8zy/prUGOijJCWzA7\nAzpGOq8IGSK1vRY/KiJGPQnWE3aj/+iTIvu4nKWEu/AO6JrWZ1qReEq84DF5\nV57aw4EFWE4oqED9tjpYsixNV4tmaQK9ylZBgOd/O0V7Mu6+A7IciEoE52nh\nepFisaSArIXRfHIKLQy8ZOjGVv5ydjGR2IJIRxiTq/a/XjDQhOnJW3hmq+Ec\nR25kTF0+d6BnkXfURD9Es1zSVw8DXZujqvWXLDXq/Sp2ln8RK5kgGnw1Rguz\nEvl6levJGJM7gBXFL3IoUZX4FTjo0A9v27+Xa0InDyX8bWcTp1DIfXeL7MdS\nmBorYfytJ6veNatPd2B4GD8w1+BjjwT4gcm6SzYotcmfou9r++Tvm4bH72wz\nX+3k\r\n=Di+l\r\n-----END PGP SIGNATURE-----\r\n"
   },
-  "stars": 98,
+  "_hasShrinkwrap": false,
+  "stars": 104,
   "versions": [
     {
       "number": "3.0.0",
@@ -329,30 +336,50 @@
     {
       "number": "10.1.1",
       "date": "2018-01-02T16:57:01.695Z"
+    },
+    {
+      "number": "10.1.2",
+      "date": "2018-01-27T02:03:42.968Z"
+    },
+    {
+      "number": "11.0.0",
+      "date": "2018-02-07T07:14:20.290Z"
+    },
+    {
+      "number": "11.0.1",
+      "date": "2018-02-13T06:28:58.920Z"
+    },
+    {
+      "number": "11.1.0",
+      "date": "2018-03-04T22:55:23.457Z"
+    },
+    {
+      "number": "11.2.0",
+      "date": "2018-03-24T18:56:50.382Z"
+    },
+    {
+      "number": "12.0.0",
+      "date": "2018-04-03T13:54:40.569Z"
+    },
+    {
+      "number": "12.0.1",
+      "date": "2018-04-11T17:07:23.415Z"
+    },
+    {
+      "number": "12.0.2",
+      "date": "2018-05-03T05:14:19.443Z"
     }
   ],
   "created": "2015-04-27T19:10:10.368Z",
-  "modified": "2018-01-02T21:51:11.304Z",
+  "modified": "2018-05-03T05:14:23.268Z",
   "lastPublisher": {
     "name": "malept",
     "email": "nodejs.npm.nospam@lazymalevolence.com"
   },
   "owners": [
     {
-      "email": "jason@denizac.org",
-      "name": "jsdnxx"
-    },
-    {
-      "email": "zeke@sikelianos.com",
-      "name": "zeke"
-    },
-    {
       "email": "feross@feross.org",
       "name": "feross"
-    },
-    {
-      "email": "nodejs.npm.nospam@lazymalevolence.com",
-      "name": "malept"
     },
     {
       "email": "to.jlord@gmail.com",
@@ -363,6 +390,10 @@
       "name": "kfranqueiro"
     },
     {
+      "email": "nodejs.npm.nospam@lazymalevolence.com",
+      "name": "malept"
+    },
+    {
       "email": "sindresorhus@gmail.com",
       "name": "sindresorhus"
     },
@@ -371,8 +402,8 @@
       "name": "stefanbuck"
     },
     {
-      "email": "max@maxogden.com",
-      "name": "maxogden"
+      "email": "zeke@sikelianos.com",
+      "name": "zeke"
     }
   ]
 }

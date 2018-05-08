@@ -1,16 +1,16 @@
 {
   "name": "marlin-conf",
-  "version": "2.8.1",
+  "version": "2.9.1",
   "description": "configuration tool for Marlin project",
   "main": "./index.js",
   "scripts": {
     "start": "electron . -G ~/TEST",
     "build": "build --dir",
-    "build-dev": "build -m --x64",
+    "build-dev": "build -w --x64",
     "dist": "GH_TOKEN=`./node_modules/.bin/json -f ~/.github.json -c 'console.log(this.OAuth)'` build -mwl --x64 --ia32 -p always",
     "test": "echo \"Error: no test specified\" && exit 1",
     "lint": "eslint .",
-    "rebuild": "npm rebuild serialport@6.0.0-beta1 --update-binary",
+    "rebuild": "npm rebuild serialport --update-binary",
     "prepublish": "json -I -f package.json -e 'if(this.devDependencies)this.devDependenciesOff=this.devDependencies;this.devDependencies=undefined'",
     "postpublish": "json -I -f package.json -e 'if(this.devDependenciesOff)this.devDependencies=this.devDependenciesOff;this.devDependenciesOff=undefined'",
     "prebuild-": "sudo apt install icnsutils graphicsmagick"
@@ -67,55 +67,60 @@
   "dependencies": {
     "body-parser": "^1.17.2",
     "bootstrap": "4.0.0-alpha.6",
-    "byline": "^5.0.0",
-    "cropper": "^3.0.0-rc.2",
-    "electron-debug": "^1.2.0",
-    "express": "^4.15.2",
+    "cropper": "^3.1.5",
+    "data-store": "^1.0.0",
+    "express": "^4.16.2",
     "fix-path": "^2.1.0",
     "font-awesome": "^4.7.0",
-    "form-data": "^2.3.1",
+    "form-data": "^2.3.2",
     "formidable": "^1.1.1",
     "get-port": "^3.1.0",
     "highlight.js": "^9.11.0",
-    "jquery": "^3.2.1",
+    "jquery": "^3.3.1",
     "jquery-ui-dist": "^1.12.1",
     "js-yaml": "^3.8.4",
-    "marked": "^0.3.6",
+    "marked": "^0.3.16",
     "mkdirp": "^0.5.1",
-    "moment": "^2.18.1",
-    "nat-upnp": "^1.1.0",
-    "node-machine-id": "^1.1.9",
-    "node-notifier": "^5.1.2",
-    "opn": "^5.0.0",
+    "moment": "^2.20.1",
+    "nat-upnp": "^1.1.1",
+    "node-machine-id": "^1.1.10",
+    "node-notifier": "^5.2.1",
+    "opn": "^5.2.0",
+    "platformio-node-helpers": "^0.4.3",
     "qr-image": "^3.2.0",
     "rtcmulticonnection-v3": "^3.4.4",
-    "serialport": "6.0.0-beta1",
-    "simple-git": "^1.72.0",
-    "socket.io": "^2.0.1",
+    "serialport": "^6.1.0",
+    "simple-git": "^1.91.0",
+    "socket.io": "^2.0.4",
     "swig-templates": "^2.0.2",
-    "tether": "^1.4.0",
+    "tether": "^1.4.3",
     "tmp": "0.0.33",
     "tty2html": "^1.0.0",
-    "universal-analytics": "^0.4.13",
+    "universal-analytics": "^0.4.16",
     "which": "^1.2.14",
     "yauzl": "^2.9.1",
     "yazl": "^2.4.3"
   },
-  "devDependencies": {
+  "devDependenciesOff": {
     "devtron": "^1.4.0",
-    "electron": "*",
-    "electron-builder": "*",
-    "eslint": "^4.3.0",
+    "electron": "=1.7.10",
+    "electron-builder": "^20.2.0",
+    "electron-debug": "^1.5.0",
+    "eslint": "^4.18.1",
     "json": "^9.0.6",
-    "nodemon": "^1.11.0"
+    "nodemon": "^1.15.1"
   },
-  "gitHead": "d5520aaa626ff3a3f37428be8bccbd0ffc988513",
-  "_npmVersion": "4.0.5",
-  "_nodeVersion": "7.10.1",
+  "gitHead": "1ba6cef2e6b27125eea2b4093059c415b5ca5b17",
+  "_npmVersion": "5.4.2",
+  "_nodeVersion": "6.11.4",
   "dist": {
-    "shasum": "947539de1462277b478a0210619e9137fcf685db",
-    "tarball": "https://registry.npmjs.org/marlin-conf/-/marlin-conf-2.8.1.tgz"
+    "integrity": "sha512-5rhwkDzamyA1rnt+mabzhJHrE3mdp2ufwF2c8YzxfBoT5AARS/b9g0hc9GXCWh4ogpuvCb1/FQWuInH+Aur+IA==",
+    "shasum": "52b326850431cc2565c65ab9febc0fd2f7e2cb23",
+    "tarball": "http://registry.npmjs.org/marlin-conf/-/marlin-conf-2.9.1.tgz",
+    "fileCount": 261,
+    "unpackedSize": 1171698
   },
+  "_hasShrinkwrap": false,
   "stars": 1,
   "versions": [
     {
@@ -277,10 +282,22 @@
     {
       "number": "2.8.1",
       "date": "2017-12-11T15:40:56.105Z"
+    },
+    {
+      "number": "2.8.2",
+      "date": "2018-02-25T13:30:26.019Z"
+    },
+    {
+      "number": "2.9.0",
+      "date": "2018-03-15T13:43:05.217Z"
+    },
+    {
+      "number": "2.9.1",
+      "date": "2018-03-17T12:50:52.963Z"
     }
   ],
   "created": "2017-05-09T19:43:04.955Z",
-  "modified": "2017-12-11T15:40:56.105Z",
+  "modified": "2018-03-17T12:50:54.292Z",
   "lastPublisher": {
     "name": "akajes",
     "email": "akajes@gmail.com"

@@ -1,9 +1,9 @@
 {
   "name": "prebuild",
-  "version": "7.1.0",
-  "description": "A command line tool for easily doing prebuilds for multiple versions of node/iojs or electron on a specific platform",
+  "version": "7.6.0",
+  "description": "A command line tool for easily making prebuilt binaries for multiple versions of node, electron or node-webkit on a specific platform",
   "scripts": {
-    "test": "tape test && npm run audit && npm run lint",
+    "test": "verify-travis-appveyor && tape test && npm run lint",
     "audit": "nsp check",
     "lint": "standard"
   },
@@ -17,20 +17,25 @@
     "c++",
     "bindings",
     "devops",
-    "electron"
+    "electron",
+    "node-webkit"
   ],
   "dependencies": {
     "async": "^2.1.4",
+    "cmake-js": "^3.6.2",
+    "detect-libc": "^1.0.3",
     "execspawn": "^1.0.1",
-    "ghreleases": "^1.0.2",
+    "ghreleases": "^2.0.0",
     "github-from-package": "0.0.0",
     "minimist": "^1.1.2",
     "mkdirp": "^0.5.1",
-    "node-abi": "^2.0.0",
+    "node-abi": "^2.2.0",
     "node-gyp": "^3.0.3",
     "node-ninja": "^1.0.1",
     "noop-logger": "^0.1.0",
+    "npm-which": "^3.0.1",
     "npmlog": "^4.0.1",
+    "nw-gyp": "^3.6.3",
     "osenv": "^0.1.4",
     "rc": "^1.0.3",
     "tar-stream": "^1.2.1",
@@ -41,23 +46,24 @@
     "nsp": "^3.1.0",
     "rimraf": "^2.4.2",
     "standard": "^10.0.3",
-    "tape": "^4.0.1"
+    "tape": "^4.0.1",
+    "verify-travis-appveyor": "^2.0.1"
   },
   "bin": {
     "prebuild": "./bin.js"
   },
   "repository": {
-    "user": "mafintosh",
+    "user": "prebuild",
     "repo": "prebuild",
     "host": "github.com",
     "branch": "master",
     "apiHost": "api.github.com",
-    "tarball_url": "https://api.github.com/repos/mafintosh/prebuild/tarball/master",
-    "clone_url": "https://github.com/mafintosh/prebuild",
-    "https_url": "https://github.com/mafintosh/prebuild",
-    "travis_url": "https://travis-ci.org/mafintosh/prebuild",
-    "zip_url": "https://github.com/mafintosh/prebuild/archive/master.zip",
-    "api_url": "https://api.github.com/repos/mafintosh/prebuild"
+    "tarball_url": "https://api.github.com/repos/prebuild/prebuild/tarball/master",
+    "clone_url": "https://github.com/prebuild/prebuild",
+    "https_url": "https://github.com/prebuild/prebuild",
+    "travis_url": "https://travis-ci.org/prebuild/prebuild",
+    "zip_url": "https://github.com/prebuild/prebuild/archive/master.zip",
+    "api_url": "https://api.github.com/repos/prebuild/prebuild"
   },
   "author": {
     "name": "Mathias Buus",
@@ -91,15 +97,19 @@
     }
   ],
   "license": "MIT",
-  "homepage": "https://github.com/mafintosh/prebuild",
-  "gitHead": "0326e5bfcfd15d05049518e71af67deb0ce4b5a3",
-  "_npmVersion": "5.6.0",
-  "_nodeVersion": "9.3.0",
+  "homepage": "https://github.com/prebuild/prebuild",
+  "gitHead": "944126b604605d092f82f0b2655e174c11d653a7",
+  "_npmVersion": "6.0.0",
+  "_nodeVersion": "10.0.0",
   "dist": {
-    "integrity": "sha512-iGEZfbNhJfuwUfEEijMyPJwYP6/luTC6m9cuDM/NmxiSeKjie6KMtXEMxwSibi5QHmiYMDqh3NWcDPaSzqT5NQ==",
-    "shasum": "2c777077b6a5e8520882d0ab15ed13fec950b8fe",
-    "tarball": "https://registry.npmjs.org/prebuild/-/prebuild-7.1.0.tgz"
+    "integrity": "sha512-HbLWdMjllpURj0r5ZSUtzXJI15nFaZXio6/QfyQWQM02rkJ37o4j/ebt3bGmVhCWnPFQxo5sRE4epdNb0YXDOg==",
+    "shasum": "b9c626ea07b955dbeb50afa7a1a33373372572b8",
+    "tarball": "https://registry.npmjs.org/prebuild/-/prebuild-7.6.0.tgz",
+    "fileCount": 21,
+    "unpackedSize": 29556,
+    "npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJa6aOlCRA9TVsSAnZWagAAP8gP/2sRe2XkWXbdhuQGnFpP\nMAEerq+AEgGPmVbvXae6PTJI8b4vDyBd5UyKu0XNk5pVJOjovywO/xw5WSN5\n4JyamQAj5OCKkIWXiGukSdGe/tLIV7sYdxtQh5Ij8wsuXF4p2K6btTEv95Mg\nyFtV3+UsxxyGEk1i19/S9KPLO4+pP18AXNBDrrs3fvZH7SqlfsOpVAiI7V00\nRWOAOgGfmw+33QQVO5TWgMW8McYeDOliH4W0Uvy/9j0kPLQxSA6bz7s07vto\nnH/upyYbas601hUdj5BZqI79mNghJG0OIYuvlOgMry67eIR1YEwiPfH1ugxd\nZ7wwQnlQSxuS2J8IurWR5V0LqpDrIDyBMYg1JpfU1/6Fu3QRqkj5ZFGRdhMn\n6pZHgsYN103n5WxeylLygRlc7f0v8Nhj8zPyTWGSflE4apvPhNm+cj0T9yhX\nHRIKY21qxDFfxDcSDN4O/ER+G6ApAR4+nrLgNtNCeIT9152mRu+AY0CSTEQj\naQiMcsxXmsUXE4MSfny1KzEPV82wqIluCDggOal9iKXlsjEdDXSumIel0Xpv\nx+QgE8TjK+1gm/3ivg/L8wxzMD4jymxEVNsUgLAw4OIKfwACfMwMFisOK/Oe\no66FYZMfsS05qjQ9TknUJBSK162tBfeYY0AQM+KaAys7ltFfzoD52PuDNB7b\nLDI5\r\n=oUOf\r\n-----END PGP SIGNATURE-----\r\n"
   },
+  "_hasShrinkwrap": false,
   "stars": 5,
   "versions": [
     {
@@ -445,10 +455,38 @@
     {
       "number": "7.1.0",
       "date": "2018-01-16T17:46:11.106Z"
+    },
+    {
+      "number": "7.2.0",
+      "date": "2018-01-19T17:42:07.557Z"
+    },
+    {
+      "number": "7.2.1",
+      "date": "2018-01-20T00:11:08.010Z"
+    },
+    {
+      "number": "7.2.2",
+      "date": "2018-01-20T01:57:15.121Z"
+    },
+    {
+      "number": "7.3.0",
+      "date": "2018-01-29T13:07:09.498Z"
+    },
+    {
+      "number": "7.4.0",
+      "date": "2018-01-30T16:18:22.212Z"
+    },
+    {
+      "number": "7.5.0",
+      "date": "2018-05-01T09:01:11.472Z"
+    },
+    {
+      "number": "7.6.0",
+      "date": "2018-05-02T11:40:20.052Z"
     }
   ],
   "created": "2015-07-25T17:21:13.929Z",
-  "modified": "2018-01-16T17:46:11.106Z",
+  "modified": "2018-05-02T11:40:26.885Z",
   "lastPublisher": {
     "name": "ralphtheninja",
     "email": "ralphtheninja@riseup.net"
@@ -459,12 +497,12 @@
       "name": "juliangruber"
     },
     {
-      "email": "ralphtheninja@riseup.net",
-      "name": "ralphtheninja"
-    },
-    {
       "email": "mathiasbuus@gmail.com",
       "name": "mafintosh"
+    },
+    {
+      "email": "ralphtheninja@riseup.net",
+      "name": "ralphtheninja"
     }
   ]
 }

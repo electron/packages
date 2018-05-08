@@ -44,20 +44,26 @@
     "api_url": "https://api.github.com/repos/kaizhu256/node-uglifyjs-lite"
   },
   "scripts": {
+    "apidocRawCreate": "[ ! -f npm_scripts.sh ] || ./npm_scripts.sh shNpmScriptApidocRawCreate",
+    "apidocRawFetch": "[ ! -f npm_scripts.sh ] || ./npm_scripts.sh shNpmScriptApidocRawFetch",
     "build-ci": "utility2 shReadmeTest build_ci.sh",
     "env": "env",
     "heroku-postbuild": "npm uninstall utility2 2>/dev/null; npm install kaizhu256/node-utility2#alpha && utility2 shDeployHeroku",
-    "postinstall": "[ ! -f npm_scripts.sh ] || ./npm_scripts.sh postinstall",
+    "postinstall": "[ ! -f npm_scripts.sh ] || ./npm_scripts.sh shNpmScriptPostinstall",
     "start": "PORT=${PORT:-8080} utility2 start test.js",
     "test": "PORT=$(utility2 shServerPortRandom) utility2 test test.js"
   },
-  "version": "2018.1.15",
-  "_npmVersion": "3.10.10",
-  "_nodeVersion": "6.12.3",
+  "version": "2018.4.8",
+  "_npmVersion": "5.6.0",
+  "_nodeVersion": "9.11.1",
   "dist": {
-    "shasum": "a678dd75ef68adc0a1fd33401a4d53be95e63bbb",
-    "tarball": "https://registry.npmjs.org/uglifyjs-lite/-/uglifyjs-lite-2018.1.15.tgz"
+    "integrity": "sha512-vVo81Gw/zff2hAwglb3FVcfPtnP+Rcgz5aLZzEcDaG94C4f5VLz/BSCSJbm+8VXuJMvZ9RVcQHi9a5DLtXzMHA==",
+    "shasum": "d957e1ee422f77f6bb3dad8e7b8edb2cd00d5e59",
+    "tarball": "http://registry.npmjs.org/uglifyjs-lite/-/uglifyjs-lite-2018.4.8.tgz",
+    "fileCount": 5,
+    "unpackedSize": 102985
   },
+  "_hasShrinkwrap": false,
   "stars": 1,
   "versions": [
     {
@@ -115,10 +121,14 @@
     {
       "number": "2018.1.15",
       "date": "2018-01-16T03:30:28.086Z"
+    },
+    {
+      "number": "2018.4.8",
+      "date": "2018-04-09T00:58:27.512Z"
     }
   ],
   "created": "2016-06-12T13:18:07.888Z",
-  "modified": "2018-01-16T03:30:28.086Z",
+  "modified": "2018-04-09T00:58:29.069Z",
   "lastPublisher": {
     "name": "kaizhu",
     "email": "kaizhu256@gmail.com"

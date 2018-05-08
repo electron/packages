@@ -1,0 +1,177 @@
+{
+  "name": "translated-react",
+  "version": "0.2.2",
+  "description": "Component for managing and using simple translations in React.js. Easily implement i18n with this dependency free internationalization library.",
+  "main": "dist",
+  "module": "dist-es6",
+  "jsnext:main": "dist-es6",
+  "license": "MIT",
+  "author": {
+    "name": "Miguel Calderón",
+    "email": "miguel.calderon@gmail.com"
+  },
+  "peerDependencies": {
+    "react": ">= 15.5.1 < 17.0.0"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-core": "^6.26.0",
+    "babel-eslint": "^7.2.3",
+    "babel-jest": "^21.2.0",
+    "babel-loader": "^7.1.2",
+    "babel-plugin-add-module-exports": "^0.2.1",
+    "babel-plugin-syntax-dynamic-import": "^6.18.0",
+    "babel-plugin-transform-class-properties": "^6.24.1",
+    "babel-plugin-transform-react-jsx": "^6.24.1",
+    "babel-plugin-transform-react-remove-prop-types": "^0.4.12",
+    "babel-preset-env": "^1.6.1",
+    "babel-preset-react": "^6.24.1",
+    "babel-preset-stage-3": "^6.24.1",
+    "catalog": "^3.2.3",
+    "cross-env": "^5.1.3",
+    "del-cli": "^1.1.0",
+    "electron": "^1.7.11",
+    "enzyme": "^3.3.0",
+    "enzyme-adapter-react-16": "^1.1.1",
+    "enzyme-to-json": "^3.3.0",
+    "eslint": "4.13.1",
+    "eslint-config-standard": "^10.2.1",
+    "eslint-config-standard-react": "^5.0.0",
+    "eslint-plugin-flowtype": "^2.35.0",
+    "eslint-plugin-import": "^2.7.0",
+    "eslint-plugin-jest": "^21.3.2",
+    "eslint-plugin-jsx-a11y": "^6.0.2",
+    "eslint-plugin-node": "^5.1.1",
+    "eslint-plugin-promise": "^3.5.0",
+    "eslint-plugin-react": "^7.2.1",
+    "eslint-plugin-standard": "^3.0.1",
+    "gh-pages": "^1.1.0",
+    "git-prepush-hook": "^1.0.2",
+    "jest": "^22.1.0",
+    "jest-cli": "^22.1.0",
+    "prop-types": "^15.6.0",
+    "react": ">= 15.5.1 < 17.0.0",
+    "react-devtools": "^3.0.0",
+    "react-dom": ">= 15.5.1 < 17.0.0",
+    "react-test-renderer": "^16.2.0",
+    "webpack": "^3.10.0"
+  },
+  "repository": {
+    "user": "miguelcalderon",
+    "repo": "translated-react",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/miguelcalderon/translated-react/tarball/master",
+    "clone_url": "https://github.com/miguelcalderon/translated-react",
+    "https_url": "https://github.com/miguelcalderon/translated-react",
+    "travis_url": "https://travis-ci.org/miguelcalderon/translated-react",
+    "zip_url": "https://github.com/miguelcalderon/translated-react/archive/master.zip",
+    "api_url": "https://api.github.com/repos/miguelcalderon/translated-react"
+  },
+  "homepage": "https://miguelcalderon.github.io/translated-react/",
+  "scripts": {
+    "start": "catalog start docs",
+    "test": "jest",
+    "test:update": "jest -u",
+    "test:coverage": "jest --coverage",
+    "test:watch": "jest --watch",
+    "test:lint": "eslint . --ignore-path .gitignore",
+    "gh-pages": "catalog build docs",
+    "gh-pages:deploy": "gh-pages -d docs/build",
+    "dist:es6": "del-cli ./dist-es6 && cross-env BABEL_ENV=es6 babel ./src --out-dir ./dist-es6",
+    "dist:modules": "del-cli ./dist-modules && cross-env BABEL_ENV=modules babel ./src --out-dir ./dist-modules",
+    "preversion": "npm run test",
+    "prepublishOnly": "npm run dist:es6 && npm run dist:modules",
+    "postpublish": "npm run gh-pages && npm run gh-pages:deploy",
+    "postinstall": "node lib/post_install.js",
+    "build": "webpack -p"
+  },
+  "pre-push": [],
+  "jest": {
+    "setupFiles": [
+      "./test/jestsetup.js"
+    ],
+    "setupTestFrameworkScriptFile": "./test/jestsetuptestframework.js",
+    "snapshotSerializers": [
+      "enzyme-to-json/serializer"
+    ],
+    "collectCoverageFrom": [
+      "**/src/**/*.{js,jsx}"
+    ],
+    "moduleFileExtensions": [
+      "js",
+      "jsx"
+    ]
+  },
+  "gitHead": "a19b39eb8b44d875c8223518d1e710064791031c",
+  "_npmVersion": "5.6.0",
+  "_nodeVersion": "8.9.0",
+  "dist": {
+    "integrity": "sha512-Zq1CEPO+MCNBtAVJjOXKd/hmo7y0LNVgUU9odhNBm1f0kuYCIzzlU/9x03Fz+OVmB9itkPLeoBjSTr+KawFsmA==",
+    "shasum": "0d85ce11a5a55b0a5925d76b50dfde2327508837",
+    "tarball": "https://registry.npmjs.org/translated-react/-/translated-react-0.2.2.tgz"
+  },
+  "versions": [
+    {
+      "number": "0.0.1",
+      "date": "2018-01-10T12:55:51.294Z"
+    },
+    {
+      "number": "0.0.2",
+      "date": "2018-01-10T13:27:35.176Z"
+    },
+    {
+      "number": "0.0.4",
+      "date": "2018-01-10T20:52:15.287Z"
+    },
+    {
+      "number": "0.1.0",
+      "date": "2018-01-15T16:47:18.859Z"
+    },
+    {
+      "number": "0.1.1",
+      "date": "2018-01-15T16:50:27.705Z"
+    },
+    {
+      "number": "0.1.2",
+      "date": "2018-01-17T08:40:18.791Z"
+    },
+    {
+      "number": "0.1.3",
+      "date": "2018-01-17T08:42:12.939Z"
+    },
+    {
+      "number": "0.1.4",
+      "date": "2018-01-17T08:44:12.278Z"
+    },
+    {
+      "number": "0.1.5",
+      "date": "2018-01-23T08:17:48.947Z"
+    },
+    {
+      "number": "0.2.0",
+      "date": "2018-01-31T11:27:28.260Z"
+    },
+    {
+      "number": "0.2.1",
+      "date": "2018-01-31T11:57:22.140Z"
+    },
+    {
+      "number": "0.2.2",
+      "date": "2018-02-05T14:07:29.930Z"
+    }
+  ],
+  "created": "2018-01-10T12:55:51.294Z",
+  "modified": "2018-02-05T14:07:29.930Z",
+  "lastPublisher": {
+    "name": "miguelcalderon",
+    "email": "miguel.calderon@gmail.com"
+  },
+  "owners": [
+    {
+      "name": "miguelcalderon",
+      "email": "miguel.calderon@gmail.com"
+    }
+  ]
+}

@@ -3,7 +3,7 @@
     "name": "kai zhu",
     "email": "kaizhu256@gmail.com"
   },
-  "description": "this zero-dependency package will provide a swagger-client for google-maps's web-apis, with a working web-demo",
+  "description": "this zero-dependency package will provide a (nodejs-compatible) swagger-client for google-maps's web-apis, with a working web-demo",
   "devDependencies": {
     "electron-lite": "github:kaizhu256/node-electron-lite#alpha",
     "utility2": "github:kaizhu256/node-utility2#alpha"
@@ -41,22 +41,29 @@
     "api_url": "https://api.github.com/repos/kaizhu256/node-swgg-google-maps"
   },
   "scripts": {
+    "apidocRawCreate": "[ ! -f npm_scripts.sh ] || ./npm_scripts.sh shNpmScriptApidocRawCreate",
+    "apidocRawFetch": "[ ! -f npm_scripts.sh ] || ./npm_scripts.sh shNpmScriptApidocRawFetch",
     "build-ci": "utility2 shReadmeTest build_ci.sh",
     "env": "env",
-    "heroku-postbuild": "npm uninstall utility2 2>/dev/null; npm install kaizhu256/node-utility2#alpha && utility2 shDeployHeroku",
-    "postinstall": "[ ! -f npm_scripts.sh ] || ./npm_scripts.sh postinstall",
+    "heroku-postbuild": "npm install kaizhu256/node-utility2#alpha --prefix . && utility2 shDeployHeroku",
+    "postinstall": "[ ! -f npm_scripts.sh ] || ./npm_scripts.sh shNpmScriptPostinstall",
     "start": "PORT=${PORT:-8080} utility2 start test.js",
     "test": "PORT=$(utility2 shServerPortRandom) utility2 test test.js"
   },
   "swggAll": "google-all",
   "swggTags0": "google-maps",
-  "version": "2018.1.15",
-  "_npmVersion": "3.10.10",
-  "_nodeVersion": "6.12.3",
+  "version": "2018.4.21",
+  "_npmVersion": "5.6.0",
+  "_nodeVersion": "9.11.1",
   "dist": {
-    "shasum": "2c5bd3d6caf7955e727a079af16f6ed6aad99785",
-    "tarball": "https://registry.npmjs.org/google-maps-lite/-/google-maps-lite-2018.1.15.tgz"
+    "integrity": "sha512-sRCISEptbQtuEITe737Eblt6Bu3wjc08/448S/m77Hdc0Nb3PFrhL/wqxXRi4qKW4O1Y4B7KqCKjKHAU0IckDA==",
+    "shasum": "15cdcf399e26901d93e15709b3faacf0d9f339e4",
+    "tarball": "https://registry.npmjs.org/google-maps-lite/-/google-maps-lite-2018.4.21.tgz",
+    "fileCount": 7,
+    "unpackedSize": 1738124,
+    "npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJa2zXtCRA9TVsSAnZWagAAmaUP/j2xkfW77qy2DPTvUnu/\nqAFRtck0xJF8Qd9FQlutsj7oAVCOrhDkGZfwL6qCHXuNEJn8MdOus7up+Q/k\njVmUAFtV6sF4baUdQsVddeFIAUIJnaShblr2YKw9wWNUOtlZ7gkIrpHtCvmL\nXCy0lGiHgEzQ1lFtp4TgLSluIAgZelxLyw3NHIweXV6FBCwqV5BcvIrWd3Y6\nig8AFEScR2amIgn1s9HbqCLEpChiKAbGE7pOI2wlCdfoujykoQAikSyLKNYf\ndrZOcrbnk/SIVwdZJT0ztwrYhrqA+dqSVSfT8qd5pwvx9eHU4TTAOqJ5t4wt\nkOT04NbkiYMr8nYSdY6UTY+Cv/+1HaiP56Bfmfzd63FGj/VRBuh0AHqLUc+C\n8rpv0NnNxdJYap6rIOLWpujPsYJbIecnC2MA3djhbLSI/q0lSDlF5bpVGAU9\nKssi5ZxN7L9QoGjv4FWsKFlLR6mVelz48xNJM0XzJe+1yq/czNajTy1Pmzz1\nlOpZ/LqCLVON2qIcZXXzA8T4CR8gN0b5QEhvuG2b7AoUsmcpjChjbEKA138f\nBhU6zmdd3vd2yvyTTb5UJfzuY/glroFpc4Dc0WGA2sLMABJMgz9nrw3ZKBeg\nPxf4XfynJ64CB+AMveBd+2cVGKF+qPV2sCRlIGsIlx+W67qMQ/IWAhCwxszi\n4pfS\r\n=gBFg\r\n-----END PGP SIGNATURE-----\r\n"
   },
+  "_hasShrinkwrap": false,
   "stars": 1,
   "versions": [
     {
@@ -94,10 +101,14 @@
     {
       "number": "2018.1.15",
       "date": "2018-01-16T01:45:09.366Z"
+    },
+    {
+      "number": "2018.4.21",
+      "date": "2018-04-21T13:00:28.210Z"
     }
   ],
   "created": "2017-09-18T06:58:28.153Z",
-  "modified": "2018-01-16T01:45:09.366Z",
+  "modified": "2018-04-21T13:00:31.353Z",
   "lastPublisher": {
     "name": "kaizhu",
     "email": "kaizhu256@gmail.com"

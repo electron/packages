@@ -1,6 +1,6 @@
 {
   "name": "libp2p",
-  "version": "0.15.1",
+  "version": "0.20.4",
   "description": "JavaScript base class for libp2p bundles",
   "main": "src/index.js",
   "scripts": {
@@ -35,7 +35,7 @@
     "node": ">=6.0.0",
     "npm": ">=3.0.0"
   },
-  "pre-commit": [
+  "pre-push": [
     "lint",
     "test"
   ],
@@ -47,45 +47,49 @@
   "homepage": "https://github.com/libp2p/js-libp2p",
   "dependencies": {
     "async": "^2.6.0",
-    "libp2p-ping": "~0.6.0",
-    "libp2p-swarm": "~0.35.0",
-    "mafmt": "^3.0.2",
-    "multiaddr": "^3.0.2",
-    "peer-book": "~0.5.2",
-    "peer-id": "~0.10.4",
-    "peer-info": "~0.11.4"
+    "libp2p-floodsub": "^0.15.0",
+    "libp2p-ping": "~0.8.0",
+    "libp2p-switch": "~0.39.2",
+    "mafmt": "^6.0.0",
+    "multiaddr": "^5.0.0",
+    "peer-book": "~0.7.0",
+    "peer-id": "~0.10.7",
+    "libp2p-websockets": "^0.12.0",
+    "peer-info": "~0.14.1"
   },
   "devDependencies": {
-    "aegir": "^12.3.0",
+    "aegir": "^13.1.0",
     "chai": "^4.1.2",
-    "cids": "~0.5.2",
+    "cids": "~0.5.3",
     "dirty-chai": "^2.0.1",
     "electron-webrtc": "~0.3.0",
-    "libp2p-circuit": "~0.1.4",
-    "libp2p-kad-dht": "~0.6.0",
-    "libp2p-mdns": "~0.9.1",
-    "libp2p-multiplex": "~0.5.1",
-    "libp2p-railing": "~0.7.1",
-    "libp2p-secio": "~0.9.0",
-    "libp2p-spdy": "~0.11.0",
-    "libp2p-tcp": "~0.11.2",
-    "libp2p-webrtc-star": "~0.13.3",
-    "libp2p-websockets": "~0.10.4",
-    "libp2p-websocket-star": "~0.7.2",
-    "libp2p-websocket-star-rendezvous": "~0.2.2",
+    "libp2p-circuit": "~0.2.0",
+    "libp2p-kad-dht": "~0.10.0",
+    "libp2p-mdns": "~0.11.0",
+    "libp2p-mplex": "~0.7.0",
+    "libp2p-railing": "~0.8.1",
+    "libp2p-secio": "~0.10.0",
+    "libp2p-spdy": "~0.12.1",
+    "libp2p-tcp": "~0.12.0",
+    "libp2p-webrtc-star": "~0.14.0",
+    "libp2p-websocket-star": "~0.8.0",
+    "libp2p-websocket-star-rendezvous": "~0.2.3",
     "lodash.times": "^4.3.2",
     "pre-commit": "^1.2.2",
     "pull-goodbye": "0.0.2",
     "pull-serializer": "~0.3.2",
-    "pull-stream": "^3.6.1",
-    "safe-buffer": "^5.1.1",
-    "sinon": "^4.1.5",
-    "wrtc": "0.0.65"
+    "pull-stream": "^3.6.7",
+    "sinon": "^5.0.1",
+    "wrtc": "0.1.4"
   },
   "contributors": [
     {
       "name": "Chris Bratlien",
       "email": "chrisbratlien@gmail.com"
+    },
+    {
+      "name": "Chris Dostert",
+      "email": "chrisdostert@users.noreply.github.com"
     },
     {
       "name": "Daijiro Wachi",
@@ -96,12 +100,20 @@
       "email": "daviddias.p@gmail.com"
     },
     {
+      "name": "Diogo Silva",
+      "email": "fsdiogo@gmail.com"
+    },
+    {
       "name": "Dmitriy Ryajov",
       "email": "dryajov@gmail.com"
     },
     {
       "name": "Elven",
       "email": "mon.samuel@qq.com"
+    },
+    {
+      "name": "Florian-Merle",
+      "email": "florian.david.merle@gmail.com"
     },
     {
       "name": "Friedel Ziegelmayer",
@@ -156,8 +168,16 @@
       "email": "ryan@piing.net"
     },
     {
+      "name": "Sönke Hahn",
+      "email": "soenkehahn@gmail.com"
+    },
+    {
       "name": "Tiago Alves",
       "email": "alvesjtiago@gmail.com"
+    },
+    {
+      "name": "Zane Starr",
+      "email": "zcstarr@gmail.com"
     },
     {
       "name": "greenkeeperio-bot",
@@ -172,15 +192,19 @@
       "email": "victorbjelkholm@gmail.com"
     }
   ],
-  "gitHead": "4c81f39ebe75946feeadf6920101b61e329fb179",
+  "gitHead": "37471135faffd29dfc7cc466b034b7e530eb4d91",
   "_npmVersion": "5.6.0",
-  "_nodeVersion": "8.8.0",
+  "_nodeVersion": "8.11.1",
   "dist": {
-    "integrity": "sha512-bsv3KWHIUowX8Sx+Eyxxva8Xp0Pd8MEJF9l7xcDRyYfNDzqjTGOVBSo09t7AbeIL3701wCCWaO/ESfZf/LDQnQ==",
-    "shasum": "e3da0fda5fe6f6b5c5c32fcc6be178dcdbc6d2fc",
-    "tarball": "https://registry.npmjs.org/libp2p/-/libp2p-0.15.1.tgz"
+    "integrity": "sha512-I93QXjo9LCUMzfr6f1XErQzwN9PuS3gZCpt6K/hgPbgMqssbtP1+AgCNpT5JK37+IUk+3HAxa4vyIEzUl3VsQA==",
+    "shasum": "c4e177ada316063e0e6d33225a08b8ee3180c969",
+    "tarball": "https://registry.npmjs.org/libp2p/-/libp2p-0.20.4.tgz",
+    "fileCount": 47,
+    "unpackedSize": 6952780,
+    "npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJa542mCRA9TVsSAnZWagAA4RYP/37E1amtsjPD4dfROYwC\nLExcYjvAv5B2UbeEikrwWZa8lFJ82JosMw+2E6Ce2JGXZq9JUztsIXLB/pfv\n/pjdadkw395FBZC/l1UN0DIshW6My4+N3bVknp97n0a6DuIIfzXH288mSUfo\nXUBlfc1IMpbhDvG+G8wXKSyqvDeb1pVF5S8qKYCWk9sxgDCTkdMh3SsksORL\nkZd3x4HSSfkY58u2olpF2qydjKvljT8h3GsCdqgeGPq08axp9ddA3BHjuo3M\npMZ0sabJ3Gr01enA4Yc8Yb7mU//fwx7UXL1Uw+bnnX6980yHgNzKvMB291CQ\ne6XQ8mB5+icDT8etaOTgexyc1E9YxpImkABPK8R9fHn+pbDIXZOw9Kfit1Jo\nnIFgOykDfurqdlJjoiiDCGNpihmkuDe/kixk1IafXdjN2vFzsjtC/JqsR+yN\nzS13hzk89qokG3P+MS5gojw5iDzCGMNuXD3x7gbecWh66bWB3KHakZTPase3\nGQxbYacNc3V9rcbvKHAdZA+q84c0Vl8HzfLg09o0QlLjBSaAWDQQgioknOTt\n79n32v/7SMdJU5MDvK9o7DnzzTh0brLJoeK/7EebFG14qaGnubhMX/+vtyc9\nvcxaZKL6kE+fyPYmkOelJ1JQaA5Ry5vWccIPBCxBiZV6VKfKdZaDERUB6Fic\npjnD\r\n=ptsX\r\n-----END PGP SIGNATURE-----\r\n"
   },
-  "stars": 2,
+  "_hasShrinkwrap": false,
+  "stars": 3,
   "versions": [
     {
       "number": "0.0.1",
@@ -325,13 +349,57 @@
     {
       "number": "0.15.1",
       "date": "2018-01-16T14:16:43.286Z"
+    },
+    {
+      "number": "0.15.2",
+      "date": "2018-01-28T02:53:27.656Z"
+    },
+    {
+      "number": "0.16.4",
+      "date": "2018-02-09T12:47:00.820Z"
+    },
+    {
+      "number": "0.16.5",
+      "date": "2018-02-14T09:57:19.638Z"
+    },
+    {
+      "number": "0.17.0",
+      "date": "2018-02-16T18:27:50.135Z"
+    },
+    {
+      "number": "0.18.0",
+      "date": "2018-02-19T10:01:16.365Z"
+    },
+    {
+      "number": "0.19.0",
+      "date": "2018-03-15T15:18:15.774Z"
+    },
+    {
+      "number": "0.19.2",
+      "date": "2018-03-28T22:35:32.437Z"
+    },
+    {
+      "number": "0.20.0",
+      "date": "2018-04-06T16:04:24.884Z"
+    },
+    {
+      "number": "0.20.1",
+      "date": "2018-04-10T03:16:29.096Z"
+    },
+    {
+      "number": "0.20.2",
+      "date": "2018-04-10T05:05:10.606Z"
+    },
+    {
+      "number": "0.20.4",
+      "date": "2018-04-30T21:41:56.896Z"
     }
   ],
   "created": "2015-09-20T15:19:25.685Z",
-  "modified": "2018-01-16T14:16:43.286Z",
+  "modified": "2018-04-30T21:42:05.214Z",
   "lastPublisher": {
     "name": "daviddias",
-    "email": "daviddias.p@gmail.com"
+    "email": "mail@daviddias.me"
   },
   "owners": [
     {

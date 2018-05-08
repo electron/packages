@@ -20,6 +20,7 @@
   "license": "MIT",
   "main": "lib.swagger_ui.js",
   "name": "swagger-ui-lite",
+  "nameAliasPublish": "",
   "nameLib": "swagger_ui",
   "nameOriginal": "swagger-ui-lite",
   "os": [
@@ -40,20 +41,26 @@
     "api_url": "https://api.github.com/repos/kaizhu256/node-swagger-ui-lite"
   },
   "scripts": {
+    "apidocRawCreate": "[ ! -f npm_scripts.sh ] || ./npm_scripts.sh shNpmScriptApidocRawCreate",
+    "apidocRawFetch": "[ ! -f npm_scripts.sh ] || ./npm_scripts.sh shNpmScriptApidocRawFetch",
     "build-ci": "utility2 shReadmeTest build_ci.sh",
     "env": "env",
     "heroku-postbuild": "npm uninstall utility2 2>/dev/null; npm install kaizhu256/node-utility2#alpha && utility2 shDeployHeroku",
-    "postinstall": "[ ! -f npm_scripts.sh ] || ./npm_scripts.sh postinstall",
+    "postinstall": "[ ! -f npm_scripts.sh ] || ./npm_scripts.sh shNpmScriptPostinstall",
     "start": "PORT=${PORT:-8080} utility2 start test.js",
     "test": "PORT=$(utility2 shServerPortRandom) utility2 test test.js"
   },
-  "version": "2018.1.14",
-  "_npmVersion": "3.10.10",
-  "_nodeVersion": "6.12.3",
+  "version": "2018.4.7",
+  "_npmVersion": "5.6.0",
+  "_nodeVersion": "9.11.1",
   "dist": {
-    "shasum": "bf570decd0deb70fef93827d4dfac97114239003",
-    "tarball": "https://registry.npmjs.org/swagger-ui-lite/-/swagger-ui-lite-2018.1.14.tgz"
+    "integrity": "sha512-49viW0EHFQTtgWiFBDOUHZHUKEH5unW7hPjQ68+aXMAB8ih1nhY2ZOs7rMxrraceSr2PVYZXfAqKTpc40jrs4A==",
+    "shasum": "b3c6725825020f27cc68c68624913efef43692e6",
+    "tarball": "http://registry.npmjs.org/swagger-ui-lite/-/swagger-ui-lite-2018.4.7.tgz",
+    "fileCount": 8,
+    "unpackedSize": 1354091
   },
+  "_hasShrinkwrap": false,
   "stars": 1,
   "versions": [
     {
@@ -195,10 +202,14 @@
     {
       "number": "2018.1.14",
       "date": "2018-01-15T05:05:56.605Z"
+    },
+    {
+      "number": "2018.4.7",
+      "date": "2018-04-08T11:24:03.484Z"
     }
   ],
   "created": "2014-11-22T07:16:53.467Z",
-  "modified": "2018-01-15T05:05:56.605Z",
+  "modified": "2018-04-08T11:24:04.947Z",
   "lastPublisher": {
     "name": "kaizhu",
     "email": "kaizhu256@gmail.com"

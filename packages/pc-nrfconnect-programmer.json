@@ -1,0 +1,99 @@
+{
+  "name": "pc-nrfconnect-programmer",
+  "version": "1.0.0-experimental",
+  "description": "Program a Nordic SoC with a .hex file from nRF Connect",
+  "displayName": "nRF Programmer",
+  "repository": {
+    "user": "NordicSemiconductor",
+    "repo": "pc-nrfconnect-programmer",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/NordicSemiconductor/pc-nrfconnect-programmer/tarball/master",
+    "clone_url": "https://github.com/NordicSemiconductor/pc-nrfconnect-programmer",
+    "https_url": "https://github.com/NordicSemiconductor/pc-nrfconnect-programmer",
+    "travis_url": "https://travis-ci.org/NordicSemiconductor/pc-nrfconnect-programmer",
+    "zip_url": "https://github.com/NordicSemiconductor/pc-nrfconnect-programmer/archive/master.zip",
+    "api_url": "https://api.github.com/repos/NordicSemiconductor/pc-nrfconnect-programmer"
+  },
+  "author": {
+    "name": "Nordic Semiconductor ASA"
+  },
+  "license": "SEE LICENSE IN LICENSE",
+  "engines": {
+    "nrfconnect": "2.x"
+  },
+  "main": "dist/bundle.js",
+  "files": [
+    "dist/",
+    "resources/icon.*",
+    "resources/dfu-cc.proto",
+    "icon.png",
+    "LICENSE"
+  ],
+  "scripts": {
+    "dev": "nrfconnect-scripts build-watch",
+    "webpack": "nrfconnect-scripts build-dev",
+    "build": "nrfconnect-scripts build-prod",
+    "lint": "nrfconnect-scripts lint lib index.jsx",
+    "lintfix": "nrfconnect-scripts lint --fix lib index.jsx",
+    "test": "nrfconnect-scripts test",
+    "test-watch": "nrfconnect-scripts test --watch",
+    "clean": "npm run clean-dist && npm run clean-modules",
+    "clean-dist": "rimraf dist",
+    "clean-modules": "rimraf \"node_modules/!(rimraf|.bin)\""
+  },
+  "devDependencies": {
+    "babel-loader": "^7.1.2",
+    "babel-plugin-transform-async-to-generator": "^6.24.1",
+    "immutable": "^3.8.2",
+    "nrf-intel-hex": "^1.2.0",
+    "pc-nrf-dfu-js": "^0.1.0",
+    "pc-nrfconnect-devdep": "git+https://github.com/NordicSemiconductor/pc-nrfconnect-devdep.git#semver:^1.2.2",
+    "protobufjs": "^6.8.4",
+    "unclutter1d": "^0.2.0",
+    "usb": "^1.4.0"
+  },
+  "dependencies": {
+    "electron-store": "^1.2.0"
+  },
+  "jest": {
+    "moduleNameMapper": {
+      "nrfconnect/core": "<rootDir>/mocks/coreMock.js"
+    }
+  },
+  "gitHead": "2bfe5e86ee9176c00f8e7277e9304c2762f3ed83",
+  "homepage": "https://github.com/NordicSemiconductor/pc-nrfconnect-programmer#readme",
+  "bundleDependencies": [
+    "electron-store"
+  ],
+  "_npmVersion": "5.6.0",
+  "_nodeVersion": "6.12.2",
+  "dist": {
+    "integrity": "sha512-vCGh95ih0I0svr0YQH4E8wQea+Ew7dfPIhz6X/540nH+9QoBTlN1L0NQizSZ57SESELzknqAjdw+9k9hCyGzWQ==",
+    "shasum": "59984ae906b6f01fe0f9e891c8e817bdb1b167a9",
+    "tarball": "https://registry.npmjs.org/pc-nrfconnect-programmer/-/pc-nrfconnect-programmer-1.0.0-experimental.tgz",
+    "fileCount": 87,
+    "unpackedSize": 4860585,
+    "npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJa3u2GCRA9TVsSAnZWagAABhoP/i9sLBGXzzOk5F+aSjHJ\n1jOVW2IaAtmOq4XzrOVQSkN2+r1SbxaIr97Mli/jLlsE/gc3MBuDS+3w/v3K\nHJoyuig+k9BDMfynZSy49lgt7piX3zwE+9L4Q4VRQxSYb4nS6iuFzGcYVSR/\nS+SR1eON3RmPhvwvahCixNrq7v1eRBFjfYfOg2OLXK4Y6pwa9KBrbjhsHQQM\n2d7LrMRcayB5QMHToDLtUt+T/GqfK0r8rtjtEuK2zkS+h+GDgDFerKx7PA4P\n0CG1RdS6Rl7L6Qx2G7WNCq912qy+WNNf76Hr/5EhCNiNylahIEaxBh5J1K5p\nEfojqmQ1P0ZvSPlSn5CNwcoBrncrIxZbvYO93HRGFva87128VYcjjXFGqKFS\n2cQHsfPUCBIY43VpKXC/vTppGPzLHzmlNdBSk3gEQ9D/9EMamgRdynTh8TBb\ngPcbKlLlSQJpa/XSQD815V5ZFoRMiNXXCEIo37hvi8YksQOk4UwiBGp5Sqyu\nuw9vhPllKWR76rvYkHHYh0xxbJ3XY60l2GZ/FSZUt7F+IdORPS+rz713VtTm\na408LKD+raJXJNOC9vYF/gZ5ak8A8nElFc+2RqxvrFakxkwzWhSYCKz7XRct\naGs9tYdRjaYXfgUOHaSe9+GKVLzCyf6Z27OKXjalMgA5nIVtXk2eaWFkFB/p\nSkHR\r\n=3kzo\r\n-----END PGP SIGNATURE-----\r\n"
+  },
+  "_hasShrinkwrap": false,
+  "versions": [
+    {
+      "number": "1.0.0-experimental",
+      "date": "2018-04-24T08:40:38.509Z"
+    }
+  ],
+  "created": "2018-04-24T08:40:38.392Z",
+  "modified": "2018-04-24T08:40:40.957Z",
+  "lastPublisher": {
+    "name": "nordicsemi",
+    "email": "npmjs@nordicsemi.no"
+  },
+  "owners": [
+    {
+      "name": "nordicsemi",
+      "email": "npmjs@nordicsemi.no"
+    }
+  ]
+}

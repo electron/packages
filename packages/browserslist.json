@@ -1,6 +1,6 @@
 {
   "name": "browserslist",
-  "version": "2.11.3",
+  "version": "3.2.6",
   "description": "Share target browsers between different front-end tools, like Autoprefixer, Stylelint and babel-env-preset",
   "keywords": [
     "caniuse",
@@ -13,42 +13,43 @@
   },
   "license": "MIT",
   "repository": {
-    "user": "ai",
+    "user": "browserslist",
     "repo": "browserslist",
     "host": "github.com",
     "branch": "master",
     "apiHost": "api.github.com",
-    "tarball_url": "https://api.github.com/repos/ai/browserslist/tarball/master",
-    "clone_url": "https://github.com/ai/browserslist",
-    "https_url": "https://github.com/ai/browserslist",
-    "travis_url": "https://travis-ci.org/ai/browserslist",
-    "zip_url": "https://github.com/ai/browserslist/archive/master.zip",
-    "api_url": "https://api.github.com/repos/ai/browserslist"
+    "tarball_url": "https://api.github.com/repos/browserslist/browserslist/tarball/master",
+    "clone_url": "https://github.com/browserslist/browserslist",
+    "https_url": "https://github.com/browserslist/browserslist",
+    "travis_url": "https://travis-ci.org/browserslist/browserslist",
+    "zip_url": "https://github.com/browserslist/browserslist/archive/master.zip",
+    "api_url": "https://api.github.com/repos/browserslist/browserslist"
   },
   "dependencies": {
-    "caniuse-lite": "^1.0.30000792",
-    "electron-to-chromium": "^1.3.30"
+    "caniuse-lite": "^1.0.30000830",
+    "electron-to-chromium": "^1.3.42"
   },
   "bin": {
     "browserslist": "./cli.js"
   },
   "devDependencies": {
-    "cross-spawn": "^5.1.0",
-    "eslint": "^4.15.0",
+    "cross-spawn": "^6.0.5",
+    "eslint": "^4.19.1",
     "eslint-ci": "^0.1.1",
-    "eslint-config-logux": "^17.0.0",
-    "eslint-config-standard": "^10.2.1",
-    "eslint-plugin-es5": "^1.2.0",
-    "eslint-plugin-import": "^2.8.0",
-    "eslint-plugin-jest": "^21.6.2",
-    "eslint-plugin-node": "^5.2.1",
-    "eslint-plugin-promise": "^3.6.0",
+    "eslint-config-logux": "^21.0.0",
+    "eslint-config-standard": "^11.0.0",
+    "eslint-plugin-es5": "^1.3.1",
+    "eslint-plugin-import": "^2.11.0",
+    "eslint-plugin-jest": "^21.15.1",
+    "eslint-plugin-node": "^6.0.1",
+    "eslint-plugin-promise": "^3.7.0",
     "eslint-plugin-security": "^1.4.0",
-    "eslint-plugin-standard": "^3.0.1",
-    "jest": "^22.0.6",
-    "lint-staged": "^6.0.0",
+    "eslint-plugin-standard": "^3.1.0",
+    "fs-extra": "^5.0.0",
+    "jest": "^22.4.3",
+    "lint-staged": "^7.0.4",
     "pre-commit": "^1.1.3",
-    "size-limit": "^0.14.0",
+    "size-limit": "^0.17.0",
     "yaspeller-ci": "^1.0.0"
   },
   "eslintConfig": {
@@ -80,13 +81,13 @@
   "size-limit": [
     {
       "path": "index.js",
-      "limit": "160 KB"
+      "limit": "7.2 KB"
     }
   ],
   "scripts": {
     "lint-staged": "lint-staged",
     "spellcheck": "yaspeller-ci README.md CHANGELOG.md",
-    "lint": "eslint-ci *.js test/*.js __mocks__/*.js",
+    "lint": "eslint-ci *.js test/*.js benchmark/*.js",
     "test": "jest --coverage && yarn lint && yarn spellcheck && size-limit"
   },
   "lint-staged": {
@@ -100,16 +101,20 @@
   "pre-commit": [
     "lint-staged"
   ],
-  "gitHead": "cc2548b391d2c7ab30d56b0873a404a23ada5ea1",
-  "homepage": "https://github.com/ai/browserslist#readme",
-  "_npmVersion": "5.5.1",
-  "_nodeVersion": "9.3.0",
+  "gitHead": "0778987a0b3fc25948d1267d09b2f2322d704fb7",
+  "homepage": "https://github.com/browserslist/browserslist#readme",
+  "_npmVersion": "5.6.0",
+  "_nodeVersion": "9.11.1",
   "dist": {
-    "integrity": "sha512-yWu5cXT7Av6mVwzWc8lMsJMHWn4xyjSuGYi4IozbVTLUOEYPSagUB8kiMDUHA1fS3zjr8nkxkn9jdvug4BBRmA==",
-    "shasum": "fe36167aed1bbcde4827ebfe71347a2cc70b99b2",
-    "tarball": "https://registry.npmjs.org/browserslist/-/browserslist-2.11.3.tgz"
+    "integrity": "sha512-XCsMSg9V4S1VRdcp265dJ+8kBRjfuFXcavbisY7G6T9QI0H1Z24PP53vvs0WDYWqm38Mco1ILDtafcS8ZR4xiw==",
+    "shasum": "138a44d04a9af64443679191d041f28ce5b965d5",
+    "tarball": "https://registry.npmjs.org/browserslist/-/browserslist-3.2.6.tgz",
+    "fileCount": 9,
+    "unpackedSize": 57060,
+    "npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJa4S46CRA9TVsSAnZWagAAytUP/2PfpyYCu2TmZcRVhDX+\nk8uKEvkKcuBQyNXOkzb3UJSGJkpTw6QC6QJsL+xBFTuh7/6UqIHfTGBJuGjV\ndNzdWfozehkk5rr3CR3WcE5UiIBis2wSyZ7+/eVmIUGHzEfUZ+Pvhq5oOPlv\neWlTZgJcyYPS3NAE6V1kt7CKkFaKIUXqBO/67VB63Vo+F3SWSFHjDYR5X3pL\nuwiBAnXtK6bzl7LJk0KacOV10znVK8GWFDdw33BsAwpzJh8BJ/UtSzzV9iIG\nbmOzuztJbHAoPgMbr1fUN4z24w8r7pOVd4NZ9tiXUgpbeU3m5j7CNlWGaZPA\n7rdDBLLWLtJ1Tk7345Y7DeKVr6xuBJ7Vom0r+ADXz7cEh5XFaLmPAPp5LQUZ\ndG+oIp0ql/x5yh/SyOdRJP9KcsdazmYeta6cfHFzJLXngZmAp+Cn8aIbI475\nmKzU3lwVVCSBD61ZM5ruOyIEF++SWLnwhZ7MwOdRZNrk3Retthg0RTDp6fm2\nav8KMITQSz541TymzuguXZjMT+vOeudMDKNj+RNIbTgyYb564dZstFD2SMfi\n4PSxC2/A7UaOvAmUrmCsohWlSTQg9jyy3XlQs1+bSFWoXot1iauw/hturUOR\nQt/O2S2C1ETtiOWhXmyCvFK0nvDGZOFRbeliMp8bwyJZDlQKZb1VGN5Hu7ij\nZThx\r\n=W99m\r\n-----END PGP SIGNATURE-----\r\n"
   },
-  "stars": 19,
+  "_hasShrinkwrap": false,
+  "stars": 23,
   "versions": [
     {
       "number": "0.1.0",
@@ -382,10 +387,54 @@
     {
       "number": "2.11.3",
       "date": "2018-01-15T11:51:30.511Z"
+    },
+    {
+      "number": "3.0.0",
+      "date": "2018-02-10T16:54:57.242Z"
+    },
+    {
+      "number": "3.1.0",
+      "date": "2018-02-14T13:17:43.352Z"
+    },
+    {
+      "number": "3.1.1",
+      "date": "2018-02-18T23:31:44.883Z"
+    },
+    {
+      "number": "3.1.2",
+      "date": "2018-03-08T15:08:19.476Z"
+    },
+    {
+      "number": "3.2.0",
+      "date": "2018-03-17T02:26:29.875Z"
+    },
+    {
+      "number": "3.2.1",
+      "date": "2018-03-22T18:29:39.852Z"
+    },
+    {
+      "number": "3.2.2",
+      "date": "2018-03-24T07:05:06.652Z"
+    },
+    {
+      "number": "3.2.3",
+      "date": "2018-03-25T01:15:26.131Z"
+    },
+    {
+      "number": "3.2.4",
+      "date": "2018-03-30T18:00:14.261Z"
+    },
+    {
+      "number": "3.2.5",
+      "date": "2018-04-23T03:15:43.375Z"
+    },
+    {
+      "number": "3.2.6",
+      "date": "2018-04-26T01:41:12.412Z"
     }
   ],
   "created": "2014-12-15T08:26:19.552Z",
-  "modified": "2018-01-15T11:51:30.511Z",
+  "modified": "2018-04-26T01:41:16.335Z",
   "lastPublisher": {
     "name": "ai",
     "email": "andrey@sitnik.ru"

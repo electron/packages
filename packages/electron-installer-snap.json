@@ -1,39 +1,121 @@
 {
   "name": "electron-installer-snap",
-  "version": "1.0.1",
-  "main": "main.js",
+  "version": "2.0.1",
+  "description": "Build snapcraft packages for Electron applications",
   "author": {
-    "name": "Vladimir Krivosheev"
+    "name": "Mark Lee"
   },
   "license": "MIT",
+  "main": "src/index.js",
+  "bin": {
+    "electron-installer-snap": "src/cli.js"
+  },
+  "files": [
+    "NEWS",
+    "resources",
+    "src"
+  ],
+  "scripts": {
+    "ava": "ava test",
+    "coverage": "nyc ava test",
+    "lint": "eslint .",
+    "test": "npm run lint && npm run ava"
+  },
   "repository": {
     "user": "electron-userland",
-    "repo": "electron-builder",
+    "repo": "electron-installer-snap",
     "host": "github.com",
     "branch": "master",
     "apiHost": "api.github.com",
-    "tarball_url": "https://api.github.com/repos/electron-userland/electron-builder/tarball/master",
-    "clone_url": "https://github.com/electron-userland/electron-builder",
-    "https_url": "https://github.com/electron-userland/electron-builder",
-    "travis_url": "https://travis-ci.org/electron-userland/electron-builder",
-    "zip_url": "https://github.com/electron-userland/electron-builder/archive/master.zip",
-    "api_url": "https://api.github.com/repos/electron-userland/electron-builder"
+    "tarball_url": "https://api.github.com/repos/electron-userland/electron-installer-snap/tarball/master",
+    "clone_url": "https://github.com/electron-userland/electron-installer-snap",
+    "https_url": "https://github.com/electron-userland/electron-installer-snap",
+    "travis_url": "https://travis-ci.org/electron-userland/electron-installer-snap",
+    "zip_url": "https://github.com/electron-userland/electron-installer-snap/archive/master.zip",
+    "api_url": "https://api.github.com/repos/electron-userland/electron-installer-snap"
   },
-  "homepage": "https://github.com/electron-userland/electron-builder",
-  "files": [
-    "*.js"
+  "keywords": [
+    "electron",
+    "installer",
+    "snap",
+    "snapcraft",
+    "linux"
   ],
+  "devDependencies": {
+    "ava": "^0.25.0",
+    "codecov": "^3.0.0",
+    "eslint": "^4.7.2",
+    "eslint-config-standard": "^11.0.0",
+    "eslint-plugin-ava": "^4.4.0",
+    "eslint-plugin-import": "^2.7.0",
+    "eslint-plugin-node": "^6.0.0",
+    "eslint-plugin-promise": "^3.5.0",
+    "eslint-plugin-standard": "^3.0.1",
+    "nyc": "^11.4.1"
+  },
   "dependencies": {
-    "electron-builder": "^19.30.4"
+    "asar": "^0.14.0",
+    "cross-spawn-promise": "^0.10.1",
+    "debug": "^3.0.1",
+    "fs-extra": "^5.0.0",
+    "js-yaml": "^3.10.0",
+    "lodash.filter": "^4.6.0",
+    "lodash.merge": "^4.6.0",
+    "lodash.pull": "^4.1.0",
+    "lodash.template": "^4.4.0",
+    "nodeify": "^1.0.1",
+    "pify": "^3.0.0",
+    "semver": "^5.5.0",
+    "tmp-promise": "^1.0.3",
+    "which": "^1.3.0",
+    "yargs": "^11.0.0"
   },
-  "description": "[electron-builder](https://github.com/electron-userland/electron-builder) [snap](https://snapcraft.io) target for electron-forge.",
-  "_npmVersion": "5.4.2",
-  "_nodeVersion": "8.5.0",
+  "engines": {
+    "node": ">= 4.0"
+  },
+  "eslintConfig": {
+    "extends": [
+      "eslint:recommended",
+      "plugin:ava/recommended",
+      "plugin:import/errors",
+      "plugin:import/warnings",
+      "plugin:node/recommended",
+      "plugin:promise/recommended",
+      "standard"
+    ],
+    "parserOptions": {
+      "sourceType": "script"
+    },
+    "plugins": [
+      "ava"
+    ],
+    "rules": {
+      "ava/prefer-async-await": 0,
+      "indent": [
+        "error",
+        2,
+        {
+          "CallExpression": {
+            "arguments": "first"
+          },
+          "SwitchCase": 1
+        }
+      ],
+      "no-console": 0,
+      "strict": "error"
+    }
+  },
+  "gitHead": "6712b9b1d932347d55b65072676ac47ca7f44d40",
+  "homepage": "https://github.com/electron-userland/electron-installer-snap#readme",
+  "_npmVersion": "3.10.10",
+  "_nodeVersion": "6.13.0",
   "dist": {
-    "integrity": "sha512-tRlW83iejY5rINzbQd24CKoINWAOadiMeTYaMmgg8al/mF/d4Ql1xNXOQgYBFV3cwAWY7wZAZ21s7zetRRuYnA==",
-    "shasum": "58d864a21a335219ad584bcc26295806bf497704",
-    "tarball": "https://registry.npmjs.org/electron-installer-snap/-/electron-installer-snap-1.0.1.tgz"
+    "shasum": "357715a85d0264bd6e2cec67d98ae7e401e4952d",
+    "tarball": "http://registry.npmjs.org/electron-installer-snap/-/electron-installer-snap-2.0.1.tgz",
+    "fileCount": 16,
+    "unpackedSize": 362201
   },
+  "_hasShrinkwrap": false,
   "versions": [
     {
       "number": "1.0.0",
@@ -42,18 +124,34 @@
     {
       "number": "1.0.1",
       "date": "2017-09-26T09:13:36.957Z"
+    },
+    {
+      "number": "2.0.0",
+      "date": "2018-01-31T23:42:05.283Z"
+    },
+    {
+      "number": "2.0.1",
+      "date": "2018-02-22T08:29:05.725Z"
     }
   ],
   "created": "2017-09-26T07:33:16.857Z",
-  "modified": "2017-09-27T04:50:52.358Z",
+  "modified": "2018-02-22T08:29:06.835Z",
   "lastPublisher": {
-    "name": "develar",
-    "email": "develar@gmail.com"
+    "name": "malept",
+    "email": "nodejs.npm.nospam@lazymalevolence.com"
   },
   "owners": [
     {
-      "name": "develar",
-      "email": "develar@gmail.com"
+      "email": "develar@gmail.com",
+      "name": "develar"
+    },
+    {
+      "email": "nodejs.npm.nospam@lazymalevolence.com",
+      "name": "malept"
+    },
+    {
+      "email": "zeke@sikelianos.com",
+      "name": "zeke"
     }
   ]
 }

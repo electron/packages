@@ -1,0 +1,149 @@
+{
+  "name": "grease-the-groove-app",
+  "version": "2.0.3",
+  "description": "Electron app to help you practice Grease the Groove method to achieve your goals and get stronger 💪!",
+  "license": "MIT",
+  "private": false,
+  "repository": {
+    "user": "alexdevero",
+    "repo": "grease-the-groove-app",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/alexdevero/grease-the-groove-app/tarball/master",
+    "clone_url": "https://github.com/alexdevero/grease-the-groove-app",
+    "https_url": "https://github.com/alexdevero/grease-the-groove-app",
+    "travis_url": "https://travis-ci.org/alexdevero/grease-the-groove-app",
+    "zip_url": "https://github.com/alexdevero/grease-the-groove-app/archive/master.zip",
+    "api_url": "https://api.github.com/repos/alexdevero/grease-the-groove-app"
+  },
+  "homepage": "https://github.com/alexdevero/grease-the-groove-app#readme",
+  "author": {
+    "name": "Alex Devero",
+    "email": "deveroalex@gmail.com",
+    "url": "https://alexdevero.com/"
+  },
+  "contributors": [
+    {}
+  ],
+  "keywords": [
+    "app",
+    "application",
+    "bodybuilding",
+    "calisthenics",
+    "desktop-app",
+    "desktop-application",
+    "electron-app",
+    "exercise",
+    "fitness",
+    "grease",
+    "groove",
+    "health",
+    "open",
+    "open-source",
+    "source",
+    "strength"
+  ],
+  "engines": {
+    "node": ">=9.x",
+    "npm": ">=5.x",
+    "yarn": ">=1.x.x"
+  },
+  "main": "main.js",
+  "scripts": {
+    "build": "webpack --config webpack.build.config.js --mode production",
+    "start": "webpack-dev-server --hot --host 0.0.0.0 --config=./webpack.dev.config.js  --mode development",
+    "package:all": "npm run build && electron-packager ./ --out=./builds --overwrite --platform=all --icon=src/assets/grease-the-groove-icon",
+    "package:linux": "npm run build && electron-packager ./ --out=./builds --overwrite --platform=linux --icon=src/assets/grease-the-groove-icon",
+    "package:macappstore": "npm run build && electron-packager ./ --out=./builds --overwrite --platform=mas --icon=src/assets/grease-the-groove-icon",
+    "package:osx": "npm run build && electron-packager ./ --out=./builds --overwrite --platform=darwin --icon=src/assets/grease-the-groove-icon",
+    "package:win": "npm run build && electron-packager ./ --out=./builds --overwrite --platform=win32 --icon=src/assets/grease-the-groove-icon",
+    "prod": "npm run build && electron --noDevServer ."
+  },
+  "dependencies": {
+    "electron": "^2.0.0",
+    "react": "^16.3.2",
+    "react-dom": "^16.3.2",
+    "styled-components": "^3.2.6"
+  },
+  "devDependencies": {
+    "babel-core": "^6.26.3",
+    "babel-loader": "^7.1.4",
+    "babel-preset-env": "^1.6.1",
+    "babel-preset-react": "^6.24.1",
+    "babili-webpack-plugin": "^0.1.2",
+    "electron-packager": "^12.0.1",
+    "extract-text-webpack-plugin": "^4.0.0-beta.0",
+    "file-loader": "^1.1.11",
+    "html-webpack-plugin": "^3.2.0",
+    "webpack": "^4.6.0",
+    "webpack-cli": "^2.1.2",
+    "webpack-dev-server": "^3.1.3"
+  },
+  "gitHead": "b1a00459e995d8ec23ec3158351ac477c26ad27a",
+  "_npmVersion": "6.0.0",
+  "_nodeVersion": "9.11.1",
+  "dist": {
+    "integrity": "sha512-U/QWFDZirwYOUIwhHMCpcq3R1IQjYx22g5g+umNRmB83LMs95Cy05MsnWLuV/1CeeNnvfVdEVoD3NwSoFwSZjA==",
+    "shasum": "ae2c7bd189776ab3ce5c9b2764774e48ad537ddd",
+    "tarball": "https://registry.npmjs.org/grease-the-groove-app/-/grease-the-groove-app-2.0.3.tgz",
+    "fileCount": 37,
+    "unpackedSize": 1676519,
+    "npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJa6W65CRA9TVsSAnZWagAA7vEQAJatxt2bIVKyIITozWJh\nM0kXymvfYJOWClgFt5WUw965zIMAJANtdSlQ1yl4gLsja+J+qfI12qHwoebC\nZDZOX5uD7d1LKFkqLXnJLChXHE2cnBhcZ/QiGHkyWYzUdOPpuMitj9npEblk\nBAsom4zVK9N0qvhGvJM+6fEQtLMQRernWuCyctNfJ0ZeXxBFyULd1cFzJ3EK\nJCPUwdSMzRLb9zdXMcKq9nKI4gIVRJQ4djWeUg33w/80ELB2NxFagX6IpLJ1\nWicJGZhsrTRD4OjRWDikw9mpyWvt0YrJH+eDZw9Q5RUMctRz+K43RQj1pPgv\nOXSygY2WfrdQys4nMAcZWFEyXx8e0DW/Mlmk48zz1kG1zK+Bm/Hm7ICk8rKg\njduatcmBIQqwlhb2yvoZ2ZNs6zSuXOO8vTh5Bo+CK9GQajJayq3QVgIJHw3L\nB+hgoj9oNNF9SDRNF6DfNisNKoSOtm2eY3k37V/+fQAwq8SiRwGdgiCUISCX\nFu02zwu3eO21DFqt1whWp0qFgMdCOHKs00gjcYD7u4W03DJEu1EPqk14ct0f\nrvIMfOLW7JkKQIrT8pM/xARU0PA8Hg6d5DE/951nxTXholMhwcqKHjbpyT2z\nsXu7CCHiH1mGaQfT9XmtcoFMzQdtmcSUqSzqWEELbC/ziJGyKSEavLElcf3O\n3LKp\r\n=LmgE\r\n-----END PGP SIGNATURE-----\r\n"
+  },
+  "_hasShrinkwrap": false,
+  "versions": [
+    {
+      "number": "0.0.4",
+      "date": "2018-02-25T16:25:03.836Z"
+    },
+    {
+      "number": "0.1.0",
+      "date": "2018-02-27T09:47:42.228Z"
+    },
+    {
+      "number": "0.1.1",
+      "date": "2018-02-27T10:18:54.272Z"
+    },
+    {
+      "number": "1.0.0",
+      "date": "2018-02-28T11:03:49.517Z"
+    },
+    {
+      "number": "1.0.1",
+      "date": "2018-03-06T16:24:59.753Z"
+    },
+    {
+      "number": "1.1.0",
+      "date": "2018-03-16T09:15:11.393Z"
+    },
+    {
+      "number": "2.0.0",
+      "date": "2018-03-17T15:11:46.465Z"
+    },
+    {
+      "number": "2.0.1",
+      "date": "2018-04-02T06:55:24.474Z"
+    },
+    {
+      "number": "2.0.2",
+      "date": "2018-04-20T07:54:17.744Z"
+    },
+    {
+      "number": "2.0.3",
+      "date": "2018-05-02T07:54:32.810Z"
+    }
+  ],
+  "created": "2018-02-25T16:25:03.609Z",
+  "modified": "2018-05-02T07:54:36.125Z",
+  "lastPublisher": {
+    "name": "alexdevero",
+    "email": "deveroalex@gmail.com"
+  },
+  "owners": [
+    {
+      "name": "alexdevero",
+      "email": "deveroalex@gmail.com"
+    }
+  ]
+}

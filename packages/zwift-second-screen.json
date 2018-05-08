@@ -1,17 +1,21 @@
 {
   "name": "zwift-second-screen",
-  "version": "0.0.86",
+  "version": "0.0.162",
   "description": "Second Screen companion application for Zwift",
   "main": "main.js",
   "scripts": {
     "build": "webpack --config webpack.production.config.js --progress --profile --colors",
-    "prepublish": "npm run build",
+    "postbuild": "sw-precache --root=public",
+    "prepublishOnly": "npm run build",
     "lint": "eslint --ext js --ext jsx src || exit 0",
     "dev-server": "nodemon index.js",
     "dev-client": "webpack-dev-server",
     "dev": "concurrently --kill-others \"npm run dev-server\" \"npm run dev-client\"",
     "start": "node index.js",
-    "electron": "electron ."
+    "electron": "electron .",
+    "test:ui": "jest --watch --config=src/jest.json",
+    "test:server": "jest --watch --config=server/jest.json",
+    "test:ci": "npm run test:ui -- --watch=false&&npm run test:server -- --watch=false"
   },
   "repository": {
     "user": "Ogadai",
@@ -36,63 +40,79 @@
   },
   "dependencies": {
     "body-parser": "^1.16.0",
+    "compression": "^1.7.2",
     "cookie-parser": "^1.4.3",
     "express": "^4.14.1",
     "express-ws": "^2.0.0",
     "guid": "0.0.12",
     "moment": "^2.17.1",
     "node-cache": "^4.1.1",
-    "strava-live-segments": "latest",
+    "nosleep.js": "^0.7.0",
+    "strava-live-segments": "0.0.12",
     "zwift-mobile-api": "latest"
   },
   "devDependencies": {
     "axios": "^0.15.3",
-    "babel-core": "6.21.0",
-    "babel-loader": "6.2.9",
+    "babel-core": "^6.26.0",
+    "babel-jest": "^22.4.3",
+    "babel-loader": "^6.4.1",
     "babel-plugin-transform-class-properties": "^6.19.0",
     "babel-plugin-transform-decorators-legacy": "^1.3.4",
     "babel-plugin-transform-runtime": "^6.15.0",
-    "babel-preset-es2015": "6.18.0",
-    "babel-preset-react": "6.16.0",
+    "babel-preset-env": "^1.6.1",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-react": "^6.24.1",
     "babel-runtime": "^6.20.0",
     "classnames": "^2.2.5",
     "concurrently": "^3.1.0",
     "copy-webpack-plugin": "^4.0.1",
     "css-loader": "0.26.1",
     "electron": "^1.4.15",
+    "enzyme": "^3.3.0",
+    "enzyme-adapter-react-16": "^1.1.1",
     "extract-text-webpack-plugin": "^1.0.1",
     "file-loader": "0.9.0",
+    "history": "^4.7.2",
     "html-webpack-plugin": "^2.26.0",
+    "jest": "^22.4.3",
     "nodemon": "^1.11.0",
     "open": "0.0.5",
     "postcss-cssnext": "^2.9.0",
     "postcss-import": "^9.1.0",
     "postcss-loader": "^1.2.2",
+    "prop-types": "^15.6.0",
     "raw-loader": "^0.5.1",
-    "react": "15.4.2",
-    "react-dom": "15.4.2",
-    "react-hot-loader": "^3.0.0-beta.6",
-    "react-redux": "^5.0.2",
-    "react-router": "^3.0.2",
-    "react-router-redux": "^4.0.7",
+    "react": "^16.2.0",
+    "react-dom": "^16.2.0",
+    "react-hot-loader": "^3.1.3",
+    "react-redux": "^5.0.7",
+    "react-router-dom": "^4.2.2",
+    "react-router-redux": "^5.0.0-alpha.9",
     "react-slider": "^0.7.0",
-    "redux": "^3.6.0",
+    "redux": "^3.7.2",
     "redux-thunk": "^2.2.0",
+    "request": "^2.85.0",
+    "sinon": "^4.4.8",
     "style-loader": "0.13.1",
+    "sw-precache": "^5.2.1",
     "url-loader": "0.5.7",
     "webpack": "1.14.0",
     "webpack-cleanup-plugin": "^0.4.1",
     "webpack-dashboard": "^0.2.1",
     "webpack-dev-server": "1.16.2"
   },
-  "gitHead": "7e27236212d280b143af913e39d6d9f4cab47a39",
+  "gitHead": "b87cac65f56222129e92ea0dfef792332346e7be",
   "_npmVersion": "5.4.2",
-  "_nodeVersion": "8.1.2",
+  "_nodeVersion": "8.10.0",
   "dist": {
-    "integrity": "sha512-PbZq129Sf0TWHbJmiKAqqueQHAEjGMUNkB4KlFwXbGgjahTPI83JJEmYvRNkEEwmumv5FFdoWXuk4jUqJi0Q4w==",
-    "shasum": "6cca8c01034665dfec1c028c499170f07f573cb0",
-    "tarball": "https://registry.npmjs.org/zwift-second-screen/-/zwift-second-screen-0.0.86.tgz"
+    "integrity": "sha512-MMaiKYakWNo0wN6M5WamRxF4QowMOrMSqVZfBwXb2omX/6/VKDF4R3URJuFK6+CVBde+nLqUoBk2QhRVdi6i4g==",
+    "shasum": "b275b063b11d943ae636b90b44ae7f466cc3f7a4",
+    "tarball": "https://registry.npmjs.org/zwift-second-screen/-/zwift-second-screen-0.0.162.tgz",
+    "fileCount": 67,
+    "unpackedSize": 4740001,
+    "npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJa6y2MCRA9TVsSAnZWagAA4vYP/j0WRkx0FKLB5uIxW2nA\narnMOOPg1gLfV+Oy9Sv+j8+SabOUo4NcSmW9aucbSiyIm95KtdIQKi+4YHEa\nZL5W0VB9DtV5JFTSIz5RTbGToxWCz41/p1K5YK+N+LcSY6nNPbXKFuU4D6/u\nCcbtSxdq8D7E+bLNr2XZfXaCq0HngmAXgBt3pQBdMlW/F8McMU+DX5ZDilAK\nWGkYi/CCsNC8k90Ak8gSelVlEeahfbm8V2x7Z57KbacV4Qb4RxQyusMfJ8ET\nbEnlHimDdooNPmRRJ0zxWd+gJjItLgxzjPzHa8i5B6lDwTAZr5l8w3yAGyVW\nshOBB4rvxNbKCz4Z0iBWC1VQs3/YCII2CdzcUNFXvemTnub73zWyr2y88bxk\n/Rb6BrUAd6yXHFfm6U3rZZVUTZS67jHxrildKCdjBb8tzT4ZQ86Oabpwl0H+\nz8ZHl0uMNgO/YN5Gw//2iFRKe7EKZLZ7w8QKZOd0Zh0AsIXk+UCsFnbTQKjz\nYUmswDRdiIz6/gwGcapj+dYOf2AIygcwKeBg4xrMqdxvmZSf72/ruxP/4/ox\n+ER9EqtQiWBYmLVPJPZ5Zdtvk3f1OB8fQHZkuPqnZXtIIIINYl4qjcrT+x2s\nm7H2uOz6inJp5yGhFwudIzoY5SlKtaPRiqQEKrzdqG+nJOmBdbB+KVRRDSXi\n7Omh\r\n=l8cX\r\n-----END PGP SIGNATURE-----\r\n"
   },
+  "_hasShrinkwrap": false,
   "versions": [
     {
       "number": "0.0.3",
@@ -429,10 +449,314 @@
     {
       "number": "0.0.86",
       "date": "2018-01-04T10:22:17.858Z"
+    },
+    {
+      "number": "0.0.87",
+      "date": "2018-01-23T17:02:50.803Z"
+    },
+    {
+      "number": "0.0.88",
+      "date": "2018-01-24T13:17:09.612Z"
+    },
+    {
+      "number": "0.0.89",
+      "date": "2018-01-24T13:59:29.920Z"
+    },
+    {
+      "number": "0.0.90",
+      "date": "2018-01-24T14:52:00.481Z"
+    },
+    {
+      "number": "0.0.91",
+      "date": "2018-01-24T14:55:39.042Z"
+    },
+    {
+      "number": "0.0.92",
+      "date": "2018-01-25T11:14:18.570Z"
+    },
+    {
+      "number": "0.0.93",
+      "date": "2018-01-26T09:41:27.361Z"
+    },
+    {
+      "number": "0.0.94",
+      "date": "2018-01-30T10:51:09.222Z"
+    },
+    {
+      "number": "0.0.95",
+      "date": "2018-01-30T11:46:10.565Z"
+    },
+    {
+      "number": "0.0.96",
+      "date": "2018-02-02T15:28:33.692Z"
+    },
+    {
+      "number": "0.0.97",
+      "date": "2018-02-05T16:36:29.431Z"
+    },
+    {
+      "number": "0.0.98",
+      "date": "2018-02-06T14:54:54.285Z"
+    },
+    {
+      "number": "0.0.99",
+      "date": "2018-02-06T15:19:55.798Z"
+    },
+    {
+      "number": "0.0.100",
+      "date": "2018-02-06T15:21:30.409Z"
+    },
+    {
+      "number": "0.0.101",
+      "date": "2018-02-07T11:48:23.451Z"
+    },
+    {
+      "number": "0.0.102",
+      "date": "2018-02-07T14:54:47.626Z"
+    },
+    {
+      "number": "0.0.103",
+      "date": "2018-02-08T12:44:55.275Z"
+    },
+    {
+      "number": "0.0.104",
+      "date": "2018-02-08T12:46:19.525Z"
+    },
+    {
+      "number": "0.0.105",
+      "date": "2018-02-09T11:35:21.737Z"
+    },
+    {
+      "number": "0.0.106",
+      "date": "2018-02-09T17:21:09.870Z"
+    },
+    {
+      "number": "0.0.107",
+      "date": "2018-02-19T15:45:05.039Z"
+    },
+    {
+      "number": "0.0.108",
+      "date": "2018-02-19T16:13:07.554Z"
+    },
+    {
+      "number": "0.0.109",
+      "date": "2018-02-19T16:42:06.784Z"
+    },
+    {
+      "number": "0.0.110",
+      "date": "2018-02-19T17:03:17.879Z"
+    },
+    {
+      "number": "0.0.111",
+      "date": "2018-02-20T12:25:47.360Z"
+    },
+    {
+      "number": "0.0.112",
+      "date": "2018-02-20T12:41:23.762Z"
+    },
+    {
+      "number": "0.0.113",
+      "date": "2018-02-21T15:44:11.232Z"
+    },
+    {
+      "number": "0.0.114",
+      "date": "2018-02-22T10:40:27.613Z"
+    },
+    {
+      "number": "0.0.115",
+      "date": "2018-02-23T10:56:03.216Z"
+    },
+    {
+      "number": "0.0.116",
+      "date": "2018-02-26T14:21:17.196Z"
+    },
+    {
+      "number": "0.0.117",
+      "date": "2018-02-27T15:21:16.329Z"
+    },
+    {
+      "number": "0.0.118",
+      "date": "2018-02-28T12:57:12.679Z"
+    },
+    {
+      "number": "0.0.119",
+      "date": "2018-03-02T11:49:40.315Z"
+    },
+    {
+      "number": "0.0.120",
+      "date": "2018-03-02T11:58:57.444Z"
+    },
+    {
+      "number": "0.0.121",
+      "date": "2018-03-03T17:34:52.472Z"
+    },
+    {
+      "number": "0.0.122",
+      "date": "2018-03-05T17:06:45.589Z"
+    },
+    {
+      "number": "0.0.123",
+      "date": "2018-03-07T10:53:54.553Z"
+    },
+    {
+      "number": "0.0.124",
+      "date": "2018-03-09T12:59:03.250Z"
+    },
+    {
+      "number": "0.0.125",
+      "date": "2018-03-09T13:13:24.943Z"
+    },
+    {
+      "number": "0.0.126",
+      "date": "2018-03-09T13:22:07.380Z"
+    },
+    {
+      "number": "0.0.127",
+      "date": "2018-03-12T09:12:29.586Z"
+    },
+    {
+      "number": "0.0.128",
+      "date": "2018-03-12T12:19:57.116Z"
+    },
+    {
+      "number": "0.0.129",
+      "date": "2018-03-12T13:18:35.919Z"
+    },
+    {
+      "number": "0.0.130",
+      "date": "2018-03-12T14:48:53.385Z"
+    },
+    {
+      "number": "0.0.131",
+      "date": "2018-03-13T10:57:05.625Z"
+    },
+    {
+      "number": "0.0.132",
+      "date": "2018-03-15T15:46:07.925Z"
+    },
+    {
+      "number": "0.0.133",
+      "date": "2018-03-16T12:15:31.376Z"
+    },
+    {
+      "number": "0.0.134",
+      "date": "2018-03-19T15:07:54.425Z"
+    },
+    {
+      "number": "0.0.135",
+      "date": "2018-03-19T15:31:44.245Z"
+    },
+    {
+      "number": "0.0.136",
+      "date": "2018-03-19T15:47:15.178Z"
+    },
+    {
+      "number": "0.0.137",
+      "date": "2018-03-19T15:59:25.580Z"
+    },
+    {
+      "number": "0.0.138",
+      "date": "2018-03-20T13:43:42.891Z"
+    },
+    {
+      "number": "0.0.139",
+      "date": "2018-03-20T16:23:35.817Z"
+    },
+    {
+      "number": "0.0.140",
+      "date": "2018-03-20T16:25:48.290Z"
+    },
+    {
+      "number": "0.0.141",
+      "date": "2018-03-20T16:37:56.722Z"
+    },
+    {
+      "number": "0.0.142",
+      "date": "2018-03-20T16:45:57.972Z"
+    },
+    {
+      "number": "0.0.143",
+      "date": "2018-03-20T16:49:44.508Z"
+    },
+    {
+      "number": "0.0.144",
+      "date": "2018-03-21T11:35:18.177Z"
+    },
+    {
+      "number": "0.0.145",
+      "date": "2018-03-21T12:10:18.310Z"
+    },
+    {
+      "number": "0.0.146",
+      "date": "2018-03-21T13:36:03.888Z"
+    },
+    {
+      "number": "0.0.147",
+      "date": "2018-03-21T13:42:10.772Z"
+    },
+    {
+      "number": "0.0.148",
+      "date": "2018-03-21T13:54:22.425Z"
+    },
+    {
+      "number": "0.0.149",
+      "date": "2018-03-21T13:57:53.085Z"
+    },
+    {
+      "number": "0.0.150",
+      "date": "2018-03-21T14:06:36.083Z"
+    },
+    {
+      "number": "0.0.151",
+      "date": "2018-03-22T09:59:05.979Z"
+    },
+    {
+      "number": "0.0.152",
+      "date": "2018-03-23T16:10:13.656Z"
+    },
+    {
+      "number": "0.0.153",
+      "date": "2018-03-23T19:55:42.480Z"
+    },
+    {
+      "number": "0.0.154",
+      "date": "2018-03-23T21:50:15.131Z"
+    },
+    {
+      "number": "0.0.155",
+      "date": "2018-03-28T09:11:57.706Z"
+    },
+    {
+      "number": "0.0.156",
+      "date": "2018-03-29T10:48:09.845Z"
+    },
+    {
+      "number": "0.0.157",
+      "date": "2018-03-29T15:40:02.800Z"
+    },
+    {
+      "number": "0.0.158",
+      "date": "2018-03-30T14:43:07.128Z"
+    },
+    {
+      "number": "0.0.159",
+      "date": "2018-03-30T15:32:54.304Z"
+    },
+    {
+      "number": "0.0.160",
+      "date": "2018-04-10T13:09:45.763Z"
+    },
+    {
+      "number": "0.0.161",
+      "date": "2018-04-10T13:14:15.963Z"
+    },
+    {
+      "number": "0.0.162",
+      "date": "2018-05-03T15:41:00.224Z"
     }
   ],
   "created": "2017-02-09T16:09:05.499Z",
-  "modified": "2018-01-04T10:22:17.858Z",
+  "modified": "2018-05-03T15:41:04.897Z",
   "lastPublisher": {
     "name": "andy.lee.surfer",
     "email": "andy.lee.surfer@gmail.com"

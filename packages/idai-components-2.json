@@ -2,16 +2,15 @@
   "name": "idai-components-2",
   "description": "iDAI.components 2",
   "main": "main.js",
-  "version": "1.4.70",
+  "version": "1.15.3",
   "license": "Apache-2.0",
   "scripts": {
     "prebuild": "rimraf css/* && rimraf fonts/*",
-    "build": "gulp create-configs && gulp compile && tsc -p src/tsconfig.json && tsc -p test/tsconfig.json",
+    "build": "tsc -p src/tsconfig.json && tsc -p test/tsconfig.json",
     "start": "npm run server",
-    "test:loop": "karma start src/test/config/karma.conf",
-    "test": "karma start test/browser/config/karma.conf.js --single-run",
-    "server": "gulp webserver-watch",
-    "e2e": "protractor test/e2e/config/protractor.conf.js"
+    "test": "npm run jasmine",
+    "jasmine": "jasmine JASMINE_CONFIG_PATH=test/unit/config/jasmine.json",
+    "server": "gulp webserver-watch"
   },
   "repository": {
     "type": "git",
@@ -37,7 +36,8 @@
     "reflect-metadata": "0.1.2",
     "rxjs": "5.0.1",
     "systemjs": "0.19.31",
-    "zone.js": "0.8.11"
+    "zone.js": "0.8.11",
+    "tsfun": "1.4.0"
   },
   "devDependencies": {
     "@types/electron": "1.4.31",
@@ -45,29 +45,29 @@
     "@types/leaflet": "~1.0.49",
     "@types/node": "7.0.4",
     "archiver": "1.0.0",
-    "chromedriver": "2.33.0",
     "gulp": "3.9.0",
     "gulp-concat": "2.6.0",
     "gulp-minify-css": "1.2.3",
     "gulp-sass": "3.1.0",
     "gulp-typescript": "3.1.4",
     "gulp-webserver": "0.9.1",
-    "jasmine-core": "2.4.1",
-    "karma": "0.13.21",
-    "karma-chrome-launcher": "0.2.2",
-    "karma-jasmine": "0.3.7",
-    "protractor": "5.1.1",
+    "jasmine": "2.5.2",
+    "jasmine-core": "2.5.2",
     "rimraf": "2.5.2",
     "typescript": "2.3.1"
   },
-  "gitHead": "e8713a6ac311aebc42f19c88291ffd410952d31b",
+  "gitHead": "039b51388ad21e0a76eda8e12fb3e87a514fbd3b",
   "_npmVersion": "5.2.0",
-  "_nodeVersion": "6.9.1",
+  "_nodeVersion": "8.1.3",
   "dist": {
-    "integrity": "sha512-jl41CT+2ytp1Sdg0bweFQW2sGEpLNO9nKSMAbPUaSVoFFZKCbSw7ULfqCcU2SzMSDmpXt0i7M+NMaRt5V0clEg==",
-    "shasum": "fca28d7f90820c4d51cd330379db00abe5a1f79b",
-    "tarball": "https://registry.npmjs.org/idai-components-2/-/idai-components-2-1.4.70.tgz"
+    "integrity": "sha512-pat3HnQZZvMKBedvvwZByiMQ/A762UjhJQcNJBd5KN+QuBpQ95xVhReCn3vahRquBGobu6vj4IxZ200darerqw==",
+    "shasum": "a28f185fdcb6421582f715c3fb3e8e23fd72b2ff",
+    "tarball": "https://registry.npmjs.org/idai-components-2/-/idai-components-2-1.15.3.tgz",
+    "fileCount": 339,
+    "unpackedSize": 3634645,
+    "npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJa42IYCRA9TVsSAnZWagAAbmkP/iozzqY2BEjoRt+E0S1k\nQbSmUoGmPNBMIQq798MhJNxN189FwMKsAf6fzC2DGpDXsnJTYPNGRiqRo1DK\nEQRgcBExazKyIJHoeAxg4td5KFaoUHKVxoEhQOELZ2vGKPMLPbTotkrP67+T\nLF2ncsPJJ7+IuzVk6sZt+t4cXJtJuc16v2XBWVPvtct1s15QzRG0/tzTGqGp\nKyR70e9eeOUdmbqGFR8AnrV/ldoE7Zr//4/gbfg47NeZVr9F9rr32lNfuM0o\nK26RPBNHPK2Zu4iKvJfido9LSVIutWz9jhUnz1cOBKBNhu3qg5vtMa4twPvC\n+sEwKAzozPWZx+u2q8Uy1DKp7m43wgF9tc3PfiyMaJMheaM6rsljJzeMOVyJ\n9Sj1Kp7yBFumVTQSa1yQRBVQ6SmcE0gsv84LXUHdlqhkQokzYEreX4zJfQle\nyzJuFHk7r/WoslVbnvkuBKPpJXuUtjo5mHGCjLVp+jo+EPogl/PVG+DZ+P41\n2QmeMFoA9BRRHQ3axuId86MTawCwGtnKnfgZIHWR20Zw6IJns2SzvT8A5L9K\nO6OcEyjRVUWOHN9omckzBjMJ9VUXgpb4uDa8xGOQ201hN5fod+w6q8U2cGim\nvVoQhpiwfR3Fn+ACPUXaoc6JUZQbJG6QASmpa2QfXfRbzY3wRsZDhGKZUsSI\nGywB\r\n=HjXs\r\n-----END PGP SIGNATURE-----\r\n"
   },
+  "_hasShrinkwrap": false,
   "versions": [
     {
       "number": "1.3.0",
@@ -828,34 +828,278 @@
     {
       "number": "1.4.70",
       "date": "2018-01-10T13:30:59.333Z"
+    },
+    {
+      "number": "1.4.71",
+      "date": "2018-01-17T13:10:17.442Z"
+    },
+    {
+      "number": "1.4.72",
+      "date": "2018-01-22T16:49:23.800Z"
+    },
+    {
+      "number": "1.4.74",
+      "date": "2018-01-30T10:40:23.545Z"
+    },
+    {
+      "number": "1.4.73",
+      "date": "2018-01-31T14:16:13.668Z"
+    },
+    {
+      "number": "1.4.75",
+      "date": "2018-01-31T14:17:33.259Z"
+    },
+    {
+      "number": "1.4.76",
+      "date": "2018-01-31T14:41:34.109Z"
+    },
+    {
+      "number": "1.4.77",
+      "date": "2018-02-01T00:41:29.174Z"
+    },
+    {
+      "number": "1.4.78",
+      "date": "2018-02-01T00:54:23.148Z"
+    },
+    {
+      "number": "1.4.79",
+      "date": "2018-02-01T02:03:04.909Z"
+    },
+    {
+      "number": "1.4.80",
+      "date": "2018-02-06T10:42:43.000Z"
+    },
+    {
+      "number": "1.4.81",
+      "date": "2018-02-06T16:02:02.890Z"
+    },
+    {
+      "number": "1.4.82",
+      "date": "2018-02-15T18:20:02.329Z"
+    },
+    {
+      "number": "1.4.83",
+      "date": "2018-02-15T20:49:49.266Z"
+    },
+    {
+      "number": "1.5.0",
+      "date": "2018-02-16T13:54:37.016Z"
+    },
+    {
+      "number": "1.6.0",
+      "date": "2018-02-17T16:43:11.676Z"
+    },
+    {
+      "number": "1.6.1",
+      "date": "2018-02-20T11:39:51.139Z"
+    },
+    {
+      "number": "1.6.2",
+      "date": "2018-02-20T13:13:50.213Z"
+    },
+    {
+      "number": "1.7.0",
+      "date": "2018-03-06T11:53:18.902Z"
+    },
+    {
+      "number": "1.7.1",
+      "date": "2018-03-06T12:32:17.137Z"
+    },
+    {
+      "number": "1.8.0",
+      "date": "2018-03-07T01:53:42.396Z"
+    },
+    {
+      "number": "1.8.1",
+      "date": "2018-03-07T01:57:08.946Z"
+    },
+    {
+      "number": "1.9.0",
+      "date": "2018-03-07T14:29:08.392Z"
+    },
+    {
+      "number": "1.9.1",
+      "date": "2018-03-07T14:31:31.539Z"
+    },
+    {
+      "number": "1.9.2",
+      "date": "2018-03-07T14:33:41.962Z"
+    },
+    {
+      "number": "1.9.3",
+      "date": "2018-03-07T15:27:07.016Z"
+    },
+    {
+      "number": "1.9.4",
+      "date": "2018-03-07T15:29:24.662Z"
+    },
+    {
+      "number": "1.9.5",
+      "date": "2018-03-07T15:53:07.412Z"
+    },
+    {
+      "number": "1.9.6",
+      "date": "2018-03-07T16:19:34.741Z"
+    },
+    {
+      "number": "1.9.8",
+      "date": "2018-03-07T16:23:25.703Z"
+    },
+    {
+      "number": "1.9.9",
+      "date": "2018-03-07T16:40:43.788Z"
+    },
+    {
+      "number": "1.9.10",
+      "date": "2018-03-07T17:06:02.647Z"
+    },
+    {
+      "number": "1.9.11",
+      "date": "2018-03-07T17:16:38.850Z"
+    },
+    {
+      "number": "1.9.12",
+      "date": "2018-03-07T17:57:44.556Z"
+    },
+    {
+      "number": "1.10.0",
+      "date": "2018-03-12T12:37:02.777Z"
+    },
+    {
+      "number": "1.10.1",
+      "date": "2018-03-14T15:58:18.718Z"
+    },
+    {
+      "number": "1.10.2",
+      "date": "2018-03-21T10:16:18.472Z"
+    },
+    {
+      "number": "1.10.3",
+      "date": "2018-03-22T12:01:08.120Z"
+    },
+    {
+      "number": "1.10.4",
+      "date": "2018-03-22T14:19:34.582Z"
+    },
+    {
+      "number": "1.10.5",
+      "date": "2018-03-22T14:51:12.480Z"
+    },
+    {
+      "number": "1.10.6",
+      "date": "2018-03-22T14:57:51.869Z"
+    },
+    {
+      "number": "1.10.7",
+      "date": "2018-03-22T15:23:23.044Z"
+    },
+    {
+      "number": "1.10.8",
+      "date": "2018-03-22T15:46:48.944Z"
+    },
+    {
+      "number": "1.10.9",
+      "date": "2018-03-26T09:55:58.388Z"
+    },
+    {
+      "number": "1.10.10",
+      "date": "2018-03-26T11:35:07.773Z"
+    },
+    {
+      "number": "1.10.11",
+      "date": "2018-03-26T16:40:11.074Z"
+    },
+    {
+      "number": "1.10.12",
+      "date": "2018-03-26T16:43:44.864Z"
+    },
+    {
+      "number": "1.10.13",
+      "date": "2018-03-26T16:49:12.512Z"
+    },
+    {
+      "number": "1.10.14",
+      "date": "2018-03-26T16:54:57.133Z"
+    },
+    {
+      "number": "1.11.0",
+      "date": "2018-03-29T18:57:25.209Z"
+    },
+    {
+      "number": "1.11.1",
+      "date": "2018-04-06T14:26:20.890Z"
+    },
+    {
+      "number": "1.11.2",
+      "date": "2018-04-10T13:03:54.102Z"
+    },
+    {
+      "number": "1.12.0",
+      "date": "2018-04-20T22:05:44.833Z"
+    },
+    {
+      "number": "1.12.1",
+      "date": "2018-04-26T13:27:18.550Z"
+    },
+    {
+      "number": "1.13.0",
+      "date": "2018-04-26T20:04:21.584Z"
+    },
+    {
+      "number": "1.13.1",
+      "date": "2018-04-26T20:07:21.621Z"
+    },
+    {
+      "number": "1.13.2",
+      "date": "2018-04-26T20:09:48.459Z"
+    },
+    {
+      "number": "1.14.0",
+      "date": "2018-04-26T21:41:48.815Z"
+    },
+    {
+      "number": "1.15.0",
+      "date": "2018-04-26T22:20:26.034Z"
+    },
+    {
+      "number": "1.15.1",
+      "date": "2018-04-27T12:25:12.812Z"
+    },
+    {
+      "number": "1.15.2",
+      "date": "2018-04-27T12:31:22.442Z"
+    },
+    {
+      "number": "1.15.3",
+      "date": "2018-04-27T17:47:03.509Z"
     }
   ],
   "created": "2017-06-16T10:23:01.534Z",
-  "modified": "2018-01-10T13:30:59.333Z",
+  "modified": "2018-05-04T15:54:10.925Z",
   "lastPublisher": {
-    "name": "tkleinke",
-    "email": "thomas.kleinke@dainst.de"
+    "name": "danielmarreirosdeoliveira",
+    "email": "danielmarreirosdeoliveira@googlemail.com"
   },
   "owners": [
     {
-      "email": "sebastian.cuy@dainst.de",
-      "name": "scuy"
-    },
-    {
-      "email": "phg@dainst.de",
-      "name": "pgerth"
+      "email": "danielmarreirosdeoliveira@googlemail.com",
+      "name": "danielmarreirosdeoliveira"
     },
     {
       "email": "jan@jan-wieners.de",
       "name": "janwieners"
     },
     {
-      "email": "thomas.kleinke@dainst.de",
-      "name": "tkleinke"
+      "email": "phg@dainst.de",
+      "name": "pgerth"
     },
     {
-      "email": "danielmarreirosdeoliveira@googlemail.com",
-      "name": "danielmarreirosdeoliveira"
+      "email": "sebastian.cuy@dainst.de",
+      "name": "scuy"
+    },
+    {
+      "email": "thomas.kleinke@dainst.de",
+      "name": "tkleinke"
     }
   ]
 }

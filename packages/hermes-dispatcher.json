@@ -1,0 +1,89 @@
+{
+  "name": "hermes-dispatcher",
+  "version": "0.0.4",
+  "description": "A Event dispatcher for Electron apps.",
+  "main": "index.js",
+  "scripts": {
+    "watch": "concurrently \"npm run copy\" \"tsc -w\"",
+    "build": "tsc && npm run copy",
+    "copy": "cpx {package.json,README.md} ./dist",
+    "watch-copy": "cpx {package.json,README.md} ./dist -w",
+    "test": "cd test/ && tsc && cpx src/*.html ./dist && electron dist/test.js",
+    "publish": "cd dist && npm publish --force --registry https://npm.marvinpeter.com"
+  },
+  "repository": {
+    "user": "marvinpeter95",
+    "repo": "hermes-dispatcher",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/marvinpeter95/hermes-dispatcher/tarball/master",
+    "clone_url": "https://github.com/marvinpeter95/hermes-dispatcher",
+    "https_url": "https://github.com/marvinpeter95/hermes-dispatcher",
+    "travis_url": "https://travis-ci.org/marvinpeter95/hermes-dispatcher",
+    "zip_url": "https://github.com/marvinpeter95/hermes-dispatcher/archive/master.zip",
+    "api_url": "https://api.github.com/repos/marvinpeter95/hermes-dispatcher"
+  },
+  "keywords": [
+    "electron",
+    "dispatcher",
+    "communication",
+    "messages",
+    "ipc"
+  ],
+  "author": {
+    "name": "Marvin Peter",
+    "email": "mail@marvinpeter.com"
+  },
+  "license": "MIT",
+  "homepage": "https://github.com/marvinpeter95/hermes-dispatcher#readme",
+  "devDependencies": {
+    "@types/uuid": "^3.4.2",
+    "concurrently": "^3.5.1",
+    "cpx": "^1.5.0",
+    "electron": "^1.7.8",
+    "ts-node": "^5.0.0",
+    "tslint": "^5.8.0",
+    "typescript": "^2.7.2"
+  },
+  "dependencies": {
+    "monad-types": "^1.0.1",
+    "uuid": "^3.1.0"
+  },
+  "_npmVersion": "5.6.0",
+  "_nodeVersion": "8.9.4",
+  "dist": {
+    "integrity": "sha512-asVH0NJ82UhK1MjWknaqyjYAaH1LO1x7YzvHJ0q3xMZDEfRCLVxkUeruvHbrRReFsLtYS3/4u+JSsTF/JvD1YA==",
+    "shasum": "78b943502f56a6d617d507e1b8d9867998f4297d",
+    "tarball": "http://registry.npmjs.org/hermes-dispatcher/-/hermes-dispatcher-0.0.4.tgz",
+    "fileCount": 12,
+    "unpackedSize": 35780
+  },
+  "_hasShrinkwrap": false,
+  "versions": [
+    {
+      "number": "0.0.1",
+      "date": "2018-02-22T20:31:41.181Z"
+    },
+    {
+      "number": "0.0.2",
+      "date": "2018-03-01T15:39:50.545Z"
+    },
+    {
+      "number": "0.0.4",
+      "date": "2018-03-01T16:04:29.540Z"
+    }
+  ],
+  "created": "2018-02-22T20:31:41.067Z",
+  "modified": "2018-03-01T16:04:30.166Z",
+  "lastPublisher": {
+    "name": "marvinpeter95",
+    "email": "mail@marvinpeter.com"
+  },
+  "owners": [
+    {
+      "name": "marvinpeter95",
+      "email": "mail@marvinpeter.com"
+    }
+  ]
+}

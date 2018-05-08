@@ -1,6 +1,6 @@
 {
   "name": "patchcore",
-  "version": "1.23.0",
+  "version": "1.26.1",
   "description": "minimal core for ssb clients",
   "main": "index.js",
   "scripts": {
@@ -45,9 +45,12 @@
     "mutant": "^3.21.2",
     "mutant-pull-reduce": "^1.1.0",
     "pull-abortable": "^4.1.0",
+    "pull-box-stream": "~1.0.13",
     "pull-cat": "^1.1.11",
+    "pull-defer": "~0.2.2",
     "pull-reconnect": "0.0.3",
     "pull-stream": "^3.5.0",
+    "scuttle-blog": "^1.0.0",
     "simple-mime": "^0.1.0",
     "sorted-array-functions": "^1.0.0",
     "split-buffer": "^1.0.0",
@@ -56,8 +59,8 @@
     "ssb-feed": "^2.3.0",
     "ssb-friends": "^2.2.3",
     "ssb-keys": "^7.0.9",
-    "ssb-markdown": "^3.3.1",
-    "ssb-ref": "^2.9.0",
+    "ssb-markdown": "^3.6.0",
+    "ssb-ref": "^2.11.0",
     "ssb-sort": "^1.0.0",
     "xtend": "^4.0.1"
   },
@@ -73,13 +76,18 @@
     "insert-css": "^2.0.0",
     "standard": "^8.6.0"
   },
-  "gitHead": "f379402d0c78ad0469d94960abe197a33f6e54c5",
-  "_npmVersion": "3.10.10",
-  "_nodeVersion": "6.11.3",
+  "gitHead": "ba3a2674f63fa05229e42bfed91b68333405c1a9",
+  "_npmVersion": "5.8.0",
+  "_nodeVersion": "8.9.4",
   "dist": {
-    "shasum": "3b38e14b52a225cb531d315b1622916941909252",
-    "tarball": "https://registry.npmjs.org/patchcore/-/patchcore-1.23.0.tgz"
+    "integrity": "sha512-/wMrTdscJfVhCTTXWaN0LfTndzDsEqHgLUvuTjxCJBcXoZYFKTPG1YCcjBOrqVTJ2f1g1BY23qBlNXdB3566dQ==",
+    "shasum": "f3e9e3392237a062501674e5b5ef67eb6b4ae89b",
+    "tarball": "https://registry.npmjs.org/patchcore/-/patchcore-1.26.1.tgz",
+    "fileCount": 72,
+    "unpackedSize": 125508,
+    "npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJa4qqtCRA9TVsSAnZWagAAHL0P/3nz6oy8jW3EiZN0h+N3\nla+he5BpalDe8KFr2VV0YNt1e1CwvkTcSIJf4wH/+INICDJkygrPTRQvoj6G\nC9PGHoQAOTUCpT0hz3ngT1TlADg9ea5j0A323Fzx8gmXC9aSC1ly1bX0u/dl\n6OMlNW+U3dzLfrMO6celHSr/kmxOUsHY9IF317xttw3i3mTeX084pnRZm/aS\nKqGQwnNDCosuGDhxQQn7JrbJ6z3UJioIuwCzhGdns8pggTjdv1DdmHTZ2anU\nPtUXX5tjMocF+cG1fUc4/ZQgSAR+m1QvQJhbbwEWuTkEt2lUFPBn0D5uxdQv\nYnNBANqdWIv0iYjuJn6BWrJRveoIl31NdBsQx6z+ks1EHQfEgOuf9YZPWNXi\ny7JTXJUbsPkMO6QQrKp7aiUHUhTeOs2KhkxJ/Ku4uIzedmF1F6qxFgXhz7jT\nQaXWpIUiM110ZKdjMOpnvkOKdyLAlErc8BjhIGA2Rkij/G0qezwXZAKKLg0J\npiG/uD1UWhEMxV8tjHbrCsjJXFdCkn/NtNgyvexan8Uul1ol6+8fHbwMA5ET\nGKVYIIoOLq+wN6Hi0OxIYsG5+kw3i7KBSol/ml9pXMJh2YUHEzwUYAAUuaM8\n4qygZSizWaeWvbSX9PqkNHs2+ubDzr1PdQvg9n2+cfDyh/AUw/mR0twMsv/U\nvLiw\r\n=q9Yh\r\n-----END PGP SIGNATURE-----\r\n"
   },
+  "_hasShrinkwrap": false,
   "versions": [
     {
       "number": "0.1.0",
@@ -404,42 +412,110 @@
     {
       "number": "1.23.0",
       "date": "2017-12-15T05:37:31.740Z"
+    },
+    {
+      "number": "1.23.1",
+      "date": "2018-02-11T23:19:18.398Z"
+    },
+    {
+      "number": "1.23.2",
+      "date": "2018-02-11T23:28:47.099Z"
+    },
+    {
+      "number": "1.23.3",
+      "date": "2018-02-13T03:00:48.121Z"
+    },
+    {
+      "number": "1.23.4",
+      "date": "2018-02-20T21:58:17.697Z"
+    },
+    {
+      "number": "1.23.5",
+      "date": "2018-03-19T00:16:58.573Z"
+    },
+    {
+      "number": "1.23.6",
+      "date": "2018-03-29T09:42:26.115Z"
+    },
+    {
+      "number": "1.24.0",
+      "date": "2018-04-11T03:20:34.982Z"
+    },
+    {
+      "number": "1.24.1",
+      "date": "2018-04-12T00:58:05.553Z"
+    },
+    {
+      "number": "1.25.0",
+      "date": "2018-04-13T04:22:00.644Z"
+    },
+    {
+      "number": "1.26.0",
+      "date": "2018-04-20T09:14:31.803Z"
+    },
+    {
+      "number": "1.26.1",
+      "date": "2018-04-27T04:44:27.806Z"
     }
   ],
   "created": "2017-02-22T03:17:23.364Z",
-  "modified": "2017-12-15T05:37:31.740Z",
+  "modified": "2018-04-27T04:44:31.918Z",
   "lastPublisher": {
     "name": "mmckegg",
     "email": "matt@wetsand.co.nz"
   },
   "owners": [
     {
-      "name": "ahdinosaur",
-      "email": "michael.williams@enspiral.com"
+      "email": "michael.williams@enspiral.com",
+      "name": "ahdinosaur"
     },
     {
-      "name": "cel",
-      "email": "npm.cel@celehner.com"
+      "email": "arj03@protonmail.ch",
+      "name": "arj03"
     },
     {
-      "name": "dominictarr",
-      "email": "dominic.tarr@gmail.com"
+      "email": "npm.cel@celehner.com",
+      "name": "cel"
     },
     {
-      "name": "mixmix",
-      "email": "whimful@gmail.com"
+      "email": "dominic.tarr@gmail.com",
+      "name": "dominictarr"
     },
     {
-      "name": "mmckegg",
-      "email": "matt@wetsand.co.nz"
+      "email": "ev@evbogue.com",
+      "name": "ev"
     },
     {
-      "name": "pietgeursen",
-      "email": "pietgeursen@gmail.com"
+      "email": "gwen@gwenbell.com",
+      "name": "gwenbell"
     },
     {
-      "name": "staltz",
-      "email": "andre+npm@staltz.com"
+      "email": "whimful@gmail.com",
+      "name": "mixmix"
+    },
+    {
+      "email": "matt@wetsand.co.nz",
+      "name": "mmckegg"
+    },
+    {
+      "email": "stephen.whitmore@gmail.com",
+      "name": "noffle"
+    },
+    {
+      "email": "pfrazee@gmail.com",
+      "name": "pfrazee"
+    },
+    {
+      "email": "pietgeursen@gmail.com",
+      "name": "pietgeursen"
+    },
+    {
+      "email": "andre+npm@staltz.com",
+      "name": "staltz"
+    },
+    {
+      "email": "npm@vtllf.org",
+      "name": "vtduncan"
     }
   ]
 }

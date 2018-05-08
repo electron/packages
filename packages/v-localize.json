@@ -1,14 +1,13 @@
 {
   "name": "v-localize",
-  "version": "1.1.7",
+  "version": "1.1.9",
   "description": "Simple localization plugin for the amazing Vue.js.",
   "main": "dist/v-localize.js",
   "scripts": {
-    "build": "cross-env NODE_ENV=production node_modules/.bin/webpack --config build/webpack.conf.js",
-    "build:dev": "webpack --config build/webpack.conf.js",
-    "lint": "eslint src/**.js",
-    "test:unit": "karma start test/karma.conf.js",
-    "test": "npm run lint && npm run test:unit"
+    "bundle": "webpack --config webpack.config.js",
+    "lint": "coffeelint -f coffee-lint.json src/**.coffee",
+    "test": "karma start test/karma.conf.js",
+    "build": "npm run lint && npm run bundle && npm run test"
   },
   "repository": {
     "user": "neetjn",
@@ -29,7 +28,8 @@
     "localize",
     "javascript",
     "i18n",
-    "internationalization"
+    "internationalization",
+    "coffeescript"
   ],
   "author": {
     "name": "John Nolette"
@@ -37,20 +37,15 @@
   "license": "MIT",
   "homepage": "https://neetjn.github.io/v-localize/",
   "devDependencies": {
+    "babel": "^6.23.0",
     "babel-core": "^6.26.0",
-    "babel-eslint": "^7.2.3",
+    "babel-eslint": "^8.2.1",
     "babel-loader": "^7.1.2",
-    "babel-plugin-add-module-exports": "^0.2.1",
     "babel-preset-env": "^1.6.1",
-    "babel-preset-flow-vue": "^1.0.0",
-    "babel-register": "^6.22.0",
-    "cross-env": "^5.0.1",
-    "electron": "^1.7.9",
-    "eslint": "^3.14.1",
-    "eslint-loader": "^1.6.1",
-    "eslint-plugin-flowtype": "^2.30.0",
-    "eslint-plugin-vue-libs": "^1.2.0",
-    "flow-bin": "^0.38.0",
+    "coffee-loader": "^0.9.0",
+    "coffeelint": "^2.0.7",
+    "coffeescript": "^2.2.0",
+    "electron": "^1.7.11",
     "jasmine": "2.5.2",
     "karma": "^1.7.1",
     "karma-electron": "^5.2.1",
@@ -58,14 +53,18 @@
     "vue": "^2.5.0",
     "webpack": "^3.8.1"
   },
-  "gitHead": "456b854dd9eb12da5d11b4ec9339ce9f8b25db2b",
+  "dependencies": {},
+  "gitHead": "2c3ad29d3a77bd3a655285a5fc238af54a693087",
   "_npmVersion": "5.6.0",
   "_nodeVersion": "8.9.4",
   "dist": {
-    "integrity": "sha512-poxfDkJSSScNrq9K+L11+AQevAhkLim5wNeapfIu0kofU5pJlY7c2RXKkWIALOZs8rrHCbbRNzSkISsPXqw79w==",
-    "shasum": "fd72d29beb3918d70fea3b27c44eafebbe6b0790",
-    "tarball": "https://registry.npmjs.org/v-localize/-/v-localize-1.1.7.tgz"
+    "integrity": "sha512-JPVgVoHcgNJAjJeQST45Jtv6U3vWDlJutXH2N/XRy3AZGPZo1NQJSCIUpt2rHpHqrGzVAfCXVX/puImSEfw/0w==",
+    "shasum": "682205f2285856a1de835daf9b13fc63e92901de",
+    "tarball": "http://registry.npmjs.org/v-localize/-/v-localize-1.1.9.tgz",
+    "fileCount": 25,
+    "unpackedSize": 118946
   },
+  "_hasShrinkwrap": false,
   "versions": [
     {
       "number": "1.0.0",
@@ -138,10 +137,18 @@
     {
       "number": "1.1.7",
       "date": "2018-01-11T00:32:03.571Z"
+    },
+    {
+      "number": "1.1.8",
+      "date": "2018-02-08T01:51:02.071Z"
+    },
+    {
+      "number": "1.1.9",
+      "date": "2018-02-09T17:54:00.898Z"
     }
   ],
   "created": "2017-05-22T01:54:44.996Z",
-  "modified": "2018-01-11T00:32:03.571Z",
+  "modified": "2018-02-09T17:54:00.898Z",
   "lastPublisher": {
     "name": "neetjn",
     "email": "john@neetgroup.net"

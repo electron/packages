@@ -1,0 +1,163 @@
+{
+  "name": "ifosfield",
+  "productName": "ifosfield",
+  "version": "0.0.1",
+  "description": "Aplikasi Kerja Luar.",
+  "main": "src/index.ts",
+  "scripts": {
+    "start": "electron-forge start",
+    "package": "electron-forge package --platform=win32 --arch=x64",
+    "make": "electron-forge make",
+    "lint": "tslint src",
+    "compile": "rimraf out && electron-compile -a . ./src",
+    "dist64": "build -w --x64 --prepackaged out/ifosfield-win32-x64",
+    "dist32": "build -w --ia32 --prepackaged out/ifosfield-win32-ia32",
+    "publish": "rimraf out && tsc && rimraf dist && build -w -p always"
+  },
+  "keywords": [],
+  "author": {
+    "name": "Plisca",
+    "email": "myifos@plisca.com.my",
+    "url": "M"
+  },
+  "license": "MIT",
+  "config": {
+    "forge": {
+      "make_targets": {
+        "win32": [
+          "squirrel"
+        ],
+        "darwin": [
+          "zip"
+        ],
+        "linux": [
+          "deb",
+          "rpm"
+        ]
+      },
+      "electronPackagerConfig": {
+        "asar": true,
+        "icon": "build/icon.ico"
+      },
+      "electronWinstallerConfig": {
+        "name": "iFOSfield"
+      },
+      "electronInstallerDebian": {},
+      "electronInstallerRedhat": {},
+      "github_repository": {
+        "owner": "plisca",
+        "name": "ifosfield"
+      },
+      "windowsStoreConfig": {
+        "packageName": "",
+        "name": "iFOSfield"
+      }
+    }
+  },
+  "dependencies": {
+    "@angular/animations": "^4.2.2",
+    "@angular/common": "^2.4.1",
+    "@angular/compiler": "^2.4.1",
+    "@angular/core": "^2.4.1",
+    "@angular/flex-layout": "^2.0.0-rc.1",
+    "@angular/forms": "^2.4.9",
+    "@angular/http": "^2.4.9",
+    "@angular/material": "^2.0.0-beta.2",
+    "@angular/platform-browser": "^2.4.1",
+    "@angular/platform-browser-dynamic": "^2.4.1",
+    "@angular/router": "^3.4.9",
+    "@swimlane/ngx-datatable": "^6.3.0",
+    "@types/electron": "^1.4.30",
+    "@types/file-saver": "0.0.0",
+    "@types/geojson": "^7946.0.0",
+    "@types/leaflet": "^1.0.60",
+    "@types/leaflet-draw": "^0.4.3",
+    "angular-oauth2-oidc": "^1.0.20",
+    "angular2-datatable": "^0.5.3",
+    "angular2-material-datepicker": "^0.5.0",
+    "cors": "^2.8.4",
+    "dom-to-image": "^2.5.2",
+    "electron-compile": "^6.1.3",
+    "electron-devtools-installer": "^2.0.1",
+    "electron-is-dev": "^0.1.2",
+    "electron-log": "^2.2.4",
+    "electron-oauth2": "^2.4.1",
+    "electron-updater": "^2.20.1",
+    "file-saver": "^1.3.3",
+    "hammerjs": "^2.0.8",
+    "jquery": "^3.2.1",
+    "leaflet": "^1.0.3",
+    "leaflet-draw": "^0.4.9",
+    "leaflet-image": "^0.4.0",
+    "leaflet-map": "0.2.1",
+    "material-components-web": "^0.6.0",
+    "material-design-icons": "^3.0.1",
+    "ngx-perfect-scrollbar": "^4.0.0",
+    "pouchdb": "^6.3.4",
+    "reflect-metadata": "^0.1.9",
+    "rxjs": "^5.2.0",
+    "sha.js": "^2.4.8",
+    "tslib": "^1.4.0",
+    "typing": "^0.1.9",
+    "zone.js": "^0.7.4"
+  },
+  "devDependencies": {
+    "babel-plugin-transform-async-to-generator": "^6.24.1",
+    "babel-preset-env": "^1.6.1",
+    "babel-preset-react": "^6.24.1",
+    "electron-builder": "^19.56.0",
+    "electron-forge": "^5.0.0",
+    "electron-prebuilt-compile": "1.7.11",
+    "rimraf": "^2.6.1",
+    "tslint": "^4.2.0",
+    "typescript": "~2.1.4"
+  },
+  "build": {
+    "appId": "com.electron.ifosfield",
+    "productName": "iFOSField",
+    "asar": true,
+    "npmRebuild": true,
+    "win": {
+      "target": "nsis",
+      "icon": "build/icon.ico"
+    },
+    "publish": [
+      {
+        "provider": "github",
+        "owner": "plisca",
+        "repo": "ifosfield"
+      }
+    ],
+    "nsis": {
+      "oneClick": false,
+      "perMachine": true,
+      "allowElevation": true,
+      "allowToChangeInstallationDirectory": true
+    }
+  },
+  "dist": {
+    "shasum": "f9d7112432a5887c48aae52190f5da24ffcc9df8",
+    "tarball": "http://registry.npmjs.org/ifosfield/-/ifosfield-0.0.1.tgz",
+    "fileCount": 294,
+    "unpackedSize": 7458355
+  },
+  "_hasShrinkwrap": false,
+  "versions": [
+    {
+      "number": "0.0.1",
+      "date": "2018-02-10T05:46:12.589Z"
+    }
+  ],
+  "created": "2018-02-10T05:46:12.260Z",
+  "modified": "2018-02-10T05:46:14.490Z",
+  "lastPublisher": {
+    "name": "huzaifahmazaly",
+    "email": "huzaifah@plisca.com.my"
+  },
+  "owners": [
+    {
+      "name": "huzaifahmazaly",
+      "email": "huzaifah@plisca.com.my"
+    }
+  ]
+}

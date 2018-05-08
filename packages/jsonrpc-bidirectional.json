@@ -1,0 +1,437 @@
+{
+  "name": "jsonrpc-bidirectional",
+  "description": "Bidirectional JSONRPC over web sockets or HTTP with extensive plugin support.",
+  "version": "6.7.2",
+  "scripts": {
+    "build": "node build.js",
+    "test": "node --expose-gc --max-old-space-size=1024 tests/main.js",
+    "benchmark": "node --expose-gc --max-old-space-size=1024 tests/benchmark.js",
+    "benchmark_endless_new_websockets": "node --expose-gc --max-old-space-size=1024 tests/benchmark_endless_new_websockets.js",
+    "lint": "eslint src tests --quiet"
+  },
+  "repository": {
+    "user": "oxygen",
+    "repo": "jsonrpc-bidirectional",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/oxygen/jsonrpc-bidirectional/tarball/master",
+    "clone_url": "https://github.com/oxygen/jsonrpc-bidirectional",
+    "https_url": "https://github.com/oxygen/jsonrpc-bidirectional",
+    "travis_url": "https://travis-ci.org/oxygen/jsonrpc-bidirectional",
+    "zip_url": "https://github.com/oxygen/jsonrpc-bidirectional/archive/master.zip",
+    "api_url": "https://api.github.com/repos/oxygen/jsonrpc-bidirectional"
+  },
+  "homepage": "https://github.com/oxygen/jsonrpc-bidirectional",
+  "author": {
+    "name": "Ionut Stan",
+    "email": "Ionut.Stan@bigstep.com"
+  },
+  "license": "MIT",
+  "contributors": [
+    {
+      "name": "Ionut Stan",
+      "email": "Ionut.Stan@bigstep.com"
+    },
+    {
+      "name": "Ionut Stan",
+      "email": "oxygenus@gmail.com"
+    }
+  ],
+  "preferGlobal": false,
+  "engines": {
+    "node": ">=7.80"
+  },
+  "browser": {
+    "child_process": false
+  },
+  "dependencies": {
+    "extendable-error-class": "^0.1.1",
+    "fs-promise": "^2.0.3",
+    "node-fetch": "^1.6.3",
+    "sleep-promise": "^2.0.0",
+    "babel-polyfill": "^6.23.0",
+    "babel-runtime": "^6.23.0",
+    "es6-promise": "^4.1.0",
+    "jssha": "^2.2.0",
+    "whatwg-fetch": "^2.0.3",
+    "node-forge": "^0.7.1"
+  },
+  "optionalDependencies": {
+    "babel-polyfill": "^6.23.0",
+    "babel-runtime": "^6.23.0",
+    "es6-promise": "^4.1.0",
+    "jssha": "^2.2.0",
+    "whatwg-fetch": "^2.0.3",
+    "node-forge": "^0.7.1"
+  },
+  "devDependencies": {
+    "@types/node": "^7.0.52",
+    "babel-core": "^6.24.1",
+    "babel-eslint": "^7.2.2",
+    "babel-loader": "^6.4.1",
+    "babel-plugin-async-to-promises": "^1.0.5",
+    "babel-plugin-remove-comments": "^2.0.0",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-stage-3": "^6.24.1",
+    "electron": "^1.7.9",
+    "eslint": "^3.19.0",
+    "eslint-plugin-jsdoc": "^3.3.1",
+    "phantom": "^4.0.12",
+    "recursive-keys": "^0.9.0",
+    "uglify-js": "^2.8.22",
+    "uws": "^0.14.5",
+    "webpack": "^2.4.1",
+    "ws": "^5.1.1"
+  },
+  "files": [
+    "builds/browser/es5/jsonrpc.min.js",
+    "builds/browser/es5/jsonrpc.min.js.map",
+    "builds/browser/es7/jsonrpc.min.js",
+    "builds/browser/es7/jsonrpc.min.js.map",
+    "LICENSE",
+    "src/*",
+    "index.js",
+    "README.MD",
+    "node_modules/babel-polyfill/dist/polyfill.min.js",
+    "node_modules/whatwg-fetch/fetch.js",
+    "node_modules/regenerator-runtime/runtime.js",
+    "node_modules/es6-promise/dist/es6-promise.auto.min.js",
+    "node_modules/es6-promise/dist/es6-promise.auto.min.js.map"
+  ],
+  "gitHead": "299b67ea078fbbf6b6ec9186f84993eb3af6bdbf",
+  "_npmVersion": "5.6.0",
+  "_nodeVersion": "9.5.0",
+  "dist": {
+    "integrity": "sha512-5H8Qg2Ch+A05ZEgaEsuGzABEhv6jfWWjC05ePXoHuUXCSmAX/LwLb2mDpqB1WflSmLhkflWJEQvqdJ3Qzknv/A==",
+    "shasum": "360eafea116243c9dc6c2aa2f4aaa74fcbd4bc73",
+    "tarball": "https://registry.npmjs.org/jsonrpc-bidirectional/-/jsonrpc-bidirectional-6.7.2.tgz",
+    "fileCount": 45,
+    "unpackedSize": 4065553,
+    "npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJa6ZGYCRA9TVsSAnZWagAAht8P/04wLENFMab4+dDl57zG\nwDiIgjGfgoQfyrdtRBLwVzGTIkP29JxkgX3c4R4f1t8Bb1bZl71YUGRgulOq\n5qNZcOICiGWCdGHCMdNygjzaQCrt2JA93mcn+RTUG/YDCYevOts8ncIRr8BM\n3oWHcN4SsqiUwy/vpFGl++75qXixSanGo8DBnmwiwbhh+RIle3gjRRNM9+Gj\n6u0oQBZw7dK4tloZw7bXapceUpVAy3FlVclvJ5Zu5vIwdD9OhRFXD4phFjQb\nhDICxp2bPeVp6fgSU4/Csgihwuf7DV+t8vlQQwfGM/NHqzOWhLqPaJ4HoYj9\nrj3BYwlx90KHG7VzLWz07AbfptE50ihqnQAEdOUedzCNBvACpzg8HQnQnqjz\ngux/AWpl4BgIdlQC6xzMSEaBcCWM5Hr0eI026M/HiO/cvZcSsQVUgCkT+552\ny5YUFThKh7WakVALcxNUBpgn7/xVelHzqNveR98Px/V7mjgVApwsUE6uv0hv\nemg2c2zsll67YipceqM/8gnVV2qFYpEzzd5m3c7j+kaglRjSZTTIRgg/a0q0\ncAWbYb6QY9mDbeOhsh7DbEpe+2zAlzEFSWHVMsffuFvZrP7ZXxDDLvbcnPmq\npmBl9pYSsvLZV3gx34+oXMFQuAoDCwutst5HVaPPSowD6wpMvpTTv99YvAkm\njc1V\r\n=LzB7\r\n-----END PGP SIGNATURE-----\r\n"
+  },
+  "_hasShrinkwrap": false,
+  "stars": 2,
+  "versions": [
+    {
+      "number": "1.0.0",
+      "date": "2017-01-03T22:05:04.440Z"
+    },
+    {
+      "number": "1.0.1",
+      "date": "2017-01-03T22:32:49.421Z"
+    },
+    {
+      "number": "1.0.2",
+      "date": "2017-01-03T23:33:14.757Z"
+    },
+    {
+      "number": "1.0.3",
+      "date": "2017-01-03T23:37:16.055Z"
+    },
+    {
+      "number": "1.0.4",
+      "date": "2017-01-05T20:25:49.517Z"
+    },
+    {
+      "number": "1.1.0",
+      "date": "2017-01-09T11:30:51.344Z"
+    },
+    {
+      "number": "1.1.1",
+      "date": "2017-01-12T13:53:14.107Z"
+    },
+    {
+      "number": "1.1.2",
+      "date": "2017-01-12T14:36:28.713Z"
+    },
+    {
+      "number": "1.1.4",
+      "date": "2017-01-17T12:55:12.843Z"
+    },
+    {
+      "number": "1.2.0",
+      "date": "2017-01-17T14:16:44.103Z"
+    },
+    {
+      "number": "1.3.0",
+      "date": "2017-01-19T18:03:25.648Z"
+    },
+    {
+      "number": "1.4.0",
+      "date": "2017-01-19T18:12:56.849Z"
+    },
+    {
+      "number": "1.4.1",
+      "date": "2017-01-19T18:27:42.819Z"
+    },
+    {
+      "number": "1.4.2",
+      "date": "2017-01-19T20:39:22.215Z"
+    },
+    {
+      "number": "1.4.3",
+      "date": "2017-02-03T11:07:03.121Z"
+    },
+    {
+      "number": "1.5.0",
+      "date": "2017-02-03T11:48:25.805Z"
+    },
+    {
+      "number": "1.5.1",
+      "date": "2017-02-03T11:53:58.740Z"
+    },
+    {
+      "number": "1.6.1",
+      "date": "2017-02-14T17:25:49.197Z"
+    },
+    {
+      "number": "1.6.3",
+      "date": "2017-04-03T23:12:53.183Z"
+    },
+    {
+      "number": "2.0.0",
+      "date": "2017-04-10T09:30:00.524Z"
+    },
+    {
+      "number": "2.1.3",
+      "date": "2017-04-18T21:34:19.092Z"
+    },
+    {
+      "number": "2.1.4",
+      "date": "2017-04-19T15:38:29.826Z"
+    },
+    {
+      "number": "2.2.0",
+      "date": "2017-04-20T18:14:00.908Z"
+    },
+    {
+      "number": "2.4.0",
+      "date": "2017-04-20T18:14:42.410Z"
+    },
+    {
+      "number": "2.4.1",
+      "date": "2017-04-20T18:22:59.381Z"
+    },
+    {
+      "number": "2.4.2",
+      "date": "2017-04-20T18:44:07.422Z"
+    },
+    {
+      "number": "2.4.5",
+      "date": "2017-04-21T09:33:53.701Z"
+    },
+    {
+      "number": "2.5.0",
+      "date": "2017-04-22T10:49:27.283Z"
+    },
+    {
+      "number": "2.5.1",
+      "date": "2017-04-22T10:58:54.446Z"
+    },
+    {
+      "number": "3.0.6",
+      "date": "2017-04-22T16:39:18.502Z"
+    },
+    {
+      "number": "3.2.0",
+      "date": "2017-04-25T20:22:56.861Z"
+    },
+    {
+      "number": "3.2.2",
+      "date": "2017-04-26T15:37:36.014Z"
+    },
+    {
+      "number": "3.2.3",
+      "date": "2017-04-26T16:06:21.695Z"
+    },
+    {
+      "number": "4.0.0",
+      "date": "2017-04-30T13:48:13.553Z"
+    },
+    {
+      "number": "4.2.0",
+      "date": "2017-05-06T14:51:03.569Z"
+    },
+    {
+      "number": "4.3.1",
+      "date": "2017-05-18T19:43:55.244Z"
+    },
+    {
+      "number": "5.0.0",
+      "date": "2017-06-11T19:22:07.662Z"
+    },
+    {
+      "number": "5.1.1",
+      "date": "2017-06-26T21:02:42.076Z"
+    },
+    {
+      "number": "5.2.1",
+      "date": "2017-09-16T10:53:09.602Z"
+    },
+    {
+      "number": "5.2.3",
+      "date": "2017-11-01T19:48:57.739Z"
+    },
+    {
+      "number": "5.2.5",
+      "date": "2017-11-10T15:21:48.053Z"
+    },
+    {
+      "number": "5.3.0",
+      "date": "2018-01-15T12:43:10.928Z"
+    },
+    {
+      "number": "5.3.1",
+      "date": "2018-01-15T12:45:05.220Z"
+    },
+    {
+      "number": "5.4.1",
+      "date": "2018-01-25T13:47:27.966Z"
+    },
+    {
+      "number": "5.5.1",
+      "date": "2018-01-25T15:24:58.473Z"
+    },
+    {
+      "number": "5.5.2",
+      "date": "2018-01-25T15:32:38.068Z"
+    },
+    {
+      "number": "5.5.3",
+      "date": "2018-01-25T15:58:25.243Z"
+    },
+    {
+      "number": "5.5.4",
+      "date": "2018-01-25T16:38:32.522Z"
+    },
+    {
+      "number": "5.6.0",
+      "date": "2018-01-26T13:44:27.460Z"
+    },
+    {
+      "number": "5.6.6",
+      "date": "2018-01-26T15:50:03.376Z"
+    },
+    {
+      "number": "5.6.7",
+      "date": "2018-01-26T16:01:41.761Z"
+    },
+    {
+      "number": "5.7.0",
+      "date": "2018-01-26T17:07:10.783Z"
+    },
+    {
+      "number": "5.7.1",
+      "date": "2018-01-26T18:43:29.424Z"
+    },
+    {
+      "number": "5.7.2",
+      "date": "2018-01-29T18:03:49.836Z"
+    },
+    {
+      "number": "5.7.3",
+      "date": "2018-01-30T10:44:23.651Z"
+    },
+    {
+      "number": "5.8.0",
+      "date": "2018-02-07T17:26:03.912Z"
+    },
+    {
+      "number": "5.8.1",
+      "date": "2018-02-12T14:34:57.741Z"
+    },
+    {
+      "number": "5.8.2",
+      "date": "2018-02-21T13:37:48.174Z"
+    },
+    {
+      "number": "5.8.3",
+      "date": "2018-03-15T09:53:48.464Z"
+    },
+    {
+      "number": "6.0.0",
+      "date": "2018-03-15T11:44:03.134Z"
+    },
+    {
+      "number": "6.0.1",
+      "date": "2018-03-15T15:37:53.936Z"
+    },
+    {
+      "number": "6.1.0",
+      "date": "2018-03-16T14:21:36.666Z"
+    },
+    {
+      "number": "6.1.1",
+      "date": "2018-03-20T15:25:26.000Z"
+    },
+    {
+      "number": "6.2.0",
+      "date": "2018-03-26T17:23:30.034Z"
+    },
+    {
+      "number": "6.2.2",
+      "date": "2018-03-28T09:10:13.863Z"
+    },
+    {
+      "number": "6.2.3",
+      "date": "2018-03-30T11:35:30.205Z"
+    },
+    {
+      "number": "6.3.0",
+      "date": "2018-04-05T10:30:37.425Z"
+    },
+    {
+      "number": "6.4.0",
+      "date": "2018-04-15T19:11:34.345Z"
+    },
+    {
+      "number": "6.4.2",
+      "date": "2018-04-16T07:26:34.993Z"
+    },
+    {
+      "number": "6.4.3",
+      "date": "2018-04-16T11:06:37.752Z"
+    },
+    {
+      "number": "6.4.9",
+      "date": "2018-04-16T11:25:26.914Z"
+    },
+    {
+      "number": "6.5.0",
+      "date": "2018-04-23T16:38:28.205Z"
+    },
+    {
+      "number": "6.6.1",
+      "date": "2018-05-01T20:15:21.834Z"
+    },
+    {
+      "number": "6.7.0",
+      "date": "2018-05-02T08:53:33.218Z"
+    },
+    {
+      "number": "6.7.1",
+      "date": "2018-05-02T08:54:37.700Z"
+    },
+    {
+      "number": "6.7.2",
+      "date": "2018-05-02T10:23:19.383Z"
+    }
+  ],
+  "created": "2017-01-03T22:05:04.440Z",
+  "modified": "2018-05-02T10:23:23.984Z",
+  "lastPublisher": {
+    "name": "oxygens",
+    "email": "oxygenus@gmail.com"
+  },
+  "owners": [
+    {
+      "email": "oxygenus@gmail.com",
+      "name": "oxygens"
+    },
+    {
+      "email": "cristiancocioaba@gmail.com",
+      "name": "w01f6"
+    }
+  ]
+}

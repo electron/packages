@@ -44,20 +44,27 @@
     "api_url": "https://api.github.com/repos/kaizhu256/node-apidoc-lite"
   },
   "scripts": {
+    "apidocRawCreate": "[ ! -f npm_scripts.sh ] || ./npm_scripts.sh shNpmScriptApidocRawCreate",
+    "apidocRawFetch": "[ ! -f npm_scripts.sh ] || ./npm_scripts.sh shNpmScriptApidocRawFetch",
     "build-ci": "utility2 shReadmeTest build_ci.sh",
     "env": "env",
-    "heroku-postbuild": "npm uninstall utility2 2>/dev/null; npm install kaizhu256/node-utility2#alpha && utility2 shDeployHeroku",
-    "postinstall": "[ ! -f npm_scripts.sh ] || ./npm_scripts.sh postinstall",
+    "heroku-postbuild": "npm install kaizhu256/node-utility2#alpha --prefix . && utility2 shDeployHeroku",
+    "postinstall": "[ ! -f npm_scripts.sh ] || ./npm_scripts.sh shNpmScriptPostinstall",
     "start": "PORT=${PORT:-8080} utility2 start test.js",
     "test": "PORT=$(utility2 shServerPortRandom) utility2 test test.js"
   },
-  "version": "2017.1.13",
-  "_npmVersion": "3.10.10",
-  "_nodeVersion": "6.12.3",
+  "version": "2018.5.2",
+  "_npmVersion": "5.6.0",
+  "_nodeVersion": "10.0.0",
   "dist": {
-    "shasum": "e5f3363c6d8f1aa77da29e040c57ac7f1a94a984",
-    "tarball": "https://registry.npmjs.org/apidoc-lite/-/apidoc-lite-2017.1.13.tgz"
+    "integrity": "sha512-jfn2kEoyB1k4hTKvVmounDh1yWRHEJLRY9pBOl+gVlO3CdRRyMN2wkpjfed5Esy+R/7enSKUPnACL+6Nq8Osvw==",
+    "shasum": "441fdf77921a4852926ed90104b2f7efd6a6bb98",
+    "tarball": "https://registry.npmjs.org/apidoc-lite/-/apidoc-lite-2018.5.2.tgz",
+    "fileCount": 5,
+    "unpackedSize": 60868,
+    "npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJa6aNZCRA9TVsSAnZWagAABcsP+gIiae4AUK0X2Jw850MK\nJaNB12yoIOSUIAf2vr/13QpWlP/28LBbCbfjHW8ZHcLq5rjyuXRYhhuVmGWi\n9SkPLJGXf6ifzX9nk3nuu2IgWccWn2unnbqHMGbREYDnNHy/Z2Yv0K4i6KT6\naSuuhj1U/hoU9pTxmy/Qz85+XIKqVYRVQ2KfykGSTKMCO56sycNskWzk6eUU\nsqVh3QkpAFy+Cyr1fzheQpcAOO2n1YO1cmUKI6MpaXYtam3mYolXLZXG0bN3\nahyRDGci2CefjqKGP0iVUsr9iqqsOwY3vhkBv9l3xPWYEAE9rA9rbUAlW6DE\nwGOwYFzwt5UUWl2b9shoN93N1LansF/uVQep+IPLPPeNIpON69Y25eJ9oD6a\n5BKI9+M7XRUTf+cBpjhk2ifi8x7MlAk/wiC6UvfgjXBaY3FPFMT2OFhviHPk\nS3LTSjeP0+ql9JmtZvySL5YX9IgegVbg0QCPMOJIFjvOJog+9TLw4JYqCZJ4\ngd+t/BwX9uCAo2IxPnIh+jqf+ZvHIifPN0I5O9agzJLvH8cQdbtm9R94l3Ob\nb1wccfJnih4bvZwlws1T5y0+bHX0hDjBPzjPET/4ovEz+gGeJ8w9SR34tTWC\nr+au5q1AukDRc8b0oZyqG9MhgkmTZoO6qK291xgsKXvWSmaZYnO9GGPjmx4y\nHtIT\r\n=tOL/\r\n-----END PGP SIGNATURE-----\r\n"
   },
+  "_hasShrinkwrap": false,
   "versions": [
     {
       "number": "0.0.1",
@@ -94,10 +101,22 @@
     {
       "number": "2017.1.13",
       "date": "2018-01-14T15:50:58.696Z"
+    },
+    {
+      "number": "2017.4.2",
+      "date": "2018-04-03T08:41:27.959Z"
+    },
+    {
+      "number": "2017.4.12",
+      "date": "2018-04-13T05:37:43.945Z"
+    },
+    {
+      "number": "2018.5.2",
+      "date": "2018-05-02T11:39:04.784Z"
     }
   ],
   "created": "2017-02-28T08:56:38.681Z",
-  "modified": "2018-01-14T15:50:58.696Z",
+  "modified": "2018-05-02T11:39:11.011Z",
   "lastPublisher": {
     "name": "kaizhu",
     "email": "kaizhu256@gmail.com"

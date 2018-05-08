@@ -1,0 +1,119 @@
+{
+  "name": "react-simple-dropdown-a11y",
+  "version": "0.0.1",
+  "description": "A fork of https://github.com/Fauntleroy/react-simple-dropdown with an a11y change",
+  "main": "lib/components/Dropdown.js",
+  "scripts": {
+    "prepublish": "npm run build",
+    "postpublish": "npm run clean",
+    "test": "npm run build && zuul -- test/**/*.{js,jsx}",
+    "test:browser": "zuul --local 55555 -- test/**/*.{js,jsx}",
+    "test:electron": "zuul --electron -- test/**/*.{js,jsx}",
+    "build": "babel src/components --out-dir lib/components",
+    "watch": "npm run build -- -w",
+    "dev": "npm-run-all --parallel watch test:browser",
+    "lint": "eslint src --ext .js --ext .jsx",
+    "clean": "trash lib",
+    "docs:build": "npm run build && npm-run-all -p docs:build:*",
+    "docs:build:css": "lessc src/docs/index.less docs/index.css",
+    "docs:build:js": "browserify -t [ babelify ] -t [ brfs ] --extension=.jsx src/docs/index.jsx --outfile docs/index.js",
+    "docs:build:html": "ncp src/docs/index.html docs/index.html",
+    "docs:watch": "npm-run-all -p docs:watch:*",
+    "docs:watch:css": "autoless src/docs/ docs/",
+    "docs:watch:js": "watchify -t [ babelify ] -t [ brfs ] --extension=.jsx src/docs/index.jsx --outfile docs/index.js -v",
+    "docs:watch:html": "sane 'npm run docs:build:html' src/docs/ --glob='index.html'"
+  },
+  "repository": {
+    "user": "Fauntleroy",
+    "repo": "react-simple-dropdown",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/Fauntleroy/react-simple-dropdown/tarball/master",
+    "clone_url": "https://github.com/Fauntleroy/react-simple-dropdown",
+    "https_url": "https://github.com/Fauntleroy/react-simple-dropdown",
+    "travis_url": "https://travis-ci.org/Fauntleroy/react-simple-dropdown",
+    "zip_url": "https://github.com/Fauntleroy/react-simple-dropdown/archive/master.zip",
+    "api_url": "https://api.github.com/repos/Fauntleroy/react-simple-dropdown"
+  },
+  "keywords": [
+    "react",
+    "react-component",
+    "component",
+    "dropdown"
+  ],
+  "author": {
+    "name": "Timothy Kempf",
+    "email": "tim@kemp59f.info",
+    "url": "http://kempfffffffffffffffffffffffffffffffffffffffffffffffffffffffffff.info"
+  },
+  "license": "ISC",
+  "homepage": "https://github.com/Fauntleroy/react-simple-dropdown",
+  "dependencies": {
+    "classnames": "^2.1.2",
+    "prop-types": "^15.5.8"
+  },
+  "devDependencies": {
+    "@meadow/eslint-config": "^2.0.2",
+    "autoless": "^0.1.7",
+    "babel": "6.5.2",
+    "babel-cli": "6.10.1",
+    "babel-eslint": "^7.2.2",
+    "babel-preset-es2016": "6.0.11",
+    "babel-preset-react": "6.5.0",
+    "babel-preset-stage-0": "6.5.0",
+    "babelify": "^7.3.0",
+    "brfs": "^1.4.3",
+    "browserify": "^13.1.0",
+    "dom-classes": "0.0.1",
+    "electron": "^1.6.2",
+    "eslint": "^3.19.0",
+    "highlight.js": "^9.6.0",
+    "less": "^2.7.1",
+    "mkdirp": "^0.5.1",
+    "ncp": "^2.0.0",
+    "npm-run-all": "^1.4.0",
+    "react": "^15.5.0",
+    "react-dom": "^15.5.0",
+    "react-highlight": "^0.9.0",
+    "sane": "^1.4.1",
+    "simple-mock": "0.8.0",
+    "tape": "^4.0.0",
+    "trash-cli": "^1.2.0",
+    "watchify": "^3.7.0",
+    "zuul": "^3.11.1"
+  },
+  "peerDependencies": {
+    "react": "0.14.x || 15.x",
+    "react-dom": "0.14.x || 15.x"
+  },
+  "gitHead": "1311908e71aad9d4134801b19ae839ca27664432",
+  "_npmVersion": "5.7.1",
+  "_nodeVersion": "8.7.0",
+  "dist": {
+    "integrity": "sha512-WqrKUUh5jibUk3dHAcQ5/gkHLbAsozntGO2nw8Y4AFRCm/GtM6JU3VVVA/+hQ/JHWf8aeUgKjOfk+FarSY/8bw==",
+    "shasum": "122e186fb7d6e4ef764ca02d07e317954feb8dc4",
+    "tarball": "http://registry.npmjs.org/react-simple-dropdown-a11y/-/react-simple-dropdown-a11y-0.0.1.tgz",
+    "fileCount": 23,
+    "unpackedSize": 1540096
+  },
+  "_hasShrinkwrap": false,
+  "versions": [
+    {
+      "number": "0.0.1",
+      "date": "2018-03-27T23:06:16.057Z"
+    }
+  ],
+  "created": "2018-03-27T23:06:15.932Z",
+  "modified": "2018-03-27T23:06:17.358Z",
+  "lastPublisher": {
+    "name": "emplums",
+    "email": "eplummer26@gmail.com"
+  },
+  "owners": [
+    {
+      "name": "emplums",
+      "email": "eplummer26@gmail.com"
+    }
+  ]
+}

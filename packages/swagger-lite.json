@@ -42,20 +42,27 @@
     "api_url": "https://api.github.com/repos/kaizhu256/node-swgg"
   },
   "scripts": {
+    "apidocRawCreate": "[ ! -f npm_scripts.sh ] || ./npm_scripts.sh shNpmScriptApidocRawCreate",
+    "apidocRawFetch": "[ ! -f npm_scripts.sh ] || ./npm_scripts.sh shNpmScriptApidocRawFetch",
     "build-ci": "utility2 shReadmeTest build_ci.sh",
     "env": "env",
-    "heroku-postbuild": "npm uninstall utility2 2>/dev/null; npm install kaizhu256/node-utility2#alpha && utility2 shDeployHeroku",
-    "postinstall": "[ ! -f npm_scripts.sh ] || ./npm_scripts.sh postinstall",
+    "heroku-postbuild": "npm install kaizhu256/node-utility2#alpha --prefix . && utility2 shDeployHeroku",
+    "postinstall": "[ ! -f npm_scripts.sh ] || ./npm_scripts.sh shNpmScriptPostinstall",
     "start": "PORT=${PORT:-8080} utility2 start test.js",
     "test": "PORT=$(utility2 shServerPortRandom) utility2 test test.js"
   },
-  "version": "2018.1.12",
-  "_npmVersion": "3.10.10",
-  "_nodeVersion": "6.12.3",
+  "version": "2018.4.21",
+  "_npmVersion": "5.6.0",
+  "_nodeVersion": "9.11.1",
   "dist": {
-    "shasum": "4953201c0171fe88b33eafe0d701b993c8e5b9f2",
-    "tarball": "https://registry.npmjs.org/swagger-lite/-/swagger-lite-2018.1.12.tgz"
+    "integrity": "sha512-YXVZ0bIZIsbnr/DRmd86dPKGlzQAiL7xP4wXfn2Yi6w7KbD6ycCCinn/ZNLsgWIGj/c6RrDFZPGd/XiNIPa1Eg==",
+    "shasum": "f65567ac505f53941ebc7a1e941535c8e3d13b27",
+    "tarball": "https://registry.npmjs.org/swagger-lite/-/swagger-lite-2018.4.21.tgz",
+    "fileCount": 7,
+    "unpackedSize": 2060767,
+    "npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJa25K8CRA9TVsSAnZWagAAgEEP/3S3BIcpK128pL5RSqbm\nqk6jGNbkhJQpJlDSmeaMYDshAtPZC+PcGFlPQUFXC/d7n68kMA2Y/SczseVf\nVgap0CWjSoXtjbQ0uDFvRsF1hC7IH8jHiEfV6Q6J4bvjeKc7XIIkZOqjtfKo\nQquTew22iQgGGzLdWX8mD+MY0Fo5vMEJ1/rW6L+CnG21/oAe+rpXXPcWFzTV\nF7JL+yqJrZ/kfR+flVuBAykUUDGUa1puC1ycBaz4a54VqQqGpGXTRXkDUmW0\nThYnS30tTaSYkYFeIRyJ6Ly9eXAb49Hr7ov7sUDJTh/xQ5ZtRYmlIMLeAe2p\nuA1BjskQb3O5ancLGDMkhTYZIgR/R48tI7WyqLcGKg1rBh7BLNMixiw/8rBe\nBrgvum09HPjtooX/c7VSaS1rKO5bG/Wfa8njnkX3xILkbSPkoj+rw6Q4UMh0\nkNgbLtbqYxjRATKBQCO3xxr4sAE2vfdkr6fLszxNA076YyG3nxaSp7v8uLZE\nIj0kjU1aRShmYEIWnMaBXeUCQiB+pxGIaSVIwPTaHqJybpU+TkxKg6YUF1/D\n5Xb+rKg3DKP+nr0dg7g6lfLLogHKDrJJObXUOTQwkeyQNoYPxfZ6+uhd4LQn\nknj74mRmMuOZTH/L+9n2R/BOgdmcI2aWuU1e/ajhzy188gx5c9u2yETL2VFn\nBDM6\r\n=DZXb\r\n-----END PGP SIGNATURE-----\r\n"
   },
+  "_hasShrinkwrap": false,
   "versions": [
     {
       "number": "2015.11.1",
@@ -292,10 +299,26 @@
     {
       "number": "2018.1.12",
       "date": "2018-01-13T12:33:25.159Z"
+    },
+    {
+      "number": "2018.2.1",
+      "date": "2018-02-02T06:31:49.554Z"
+    },
+    {
+      "number": "2018.2.24",
+      "date": "2018-02-25T12:09:54.113Z"
+    },
+    {
+      "number": "2018.3.25",
+      "date": "2018-03-26T15:49:37.827Z"
+    },
+    {
+      "number": "2018.4.21",
+      "date": "2018-04-21T19:36:27.328Z"
     }
   ],
   "created": "2015-11-22T15:47:49.249Z",
-  "modified": "2018-01-13T12:33:25.159Z",
+  "modified": "2018-04-21T19:36:30.449Z",
   "lastPublisher": {
     "name": "kaizhu",
     "email": "kaizhu256@gmail.com"

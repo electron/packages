@@ -1,7 +1,7 @@
 {
   "name": "osc",
   "main": "src/platforms/osc-node.js",
-  "version": "2.2.0",
+  "version": "2.2.1",
   "description": "A JavaScript Open Sound Control (OSC) library that works in Node.js and the browser.",
   "author": {
     "name": "Colin Clark"
@@ -33,36 +33,42 @@
     "TCP"
   ],
   "devDependencies": {
-    "jquery": "3.1.1",
-    "infusion": "2.0.0",
-    "requirejs": "2.3.2",
-    "node-jqunit": "1.1.4",
-    "grunt": "~1.0.1",
-    "grunt-contrib-concat": "~1.0.1",
-    "grunt-contrib-uglify": "~1.0.1",
-    "grunt-contrib-clean": "~1.0.0",
-    "grunt-contrib-jshint": "~1.0.0"
+    "jquery": "3.3.1",
+    "infusion": "3.0.0-dev.20180326T173646Z.8c6a109b1",
+    "requirejs": "2.3.5",
+    "node-jqunit": "1.1.8",
+    "grunt": "1.0.2",
+    "grunt-contrib-concat": "1.0.1",
+    "grunt-contrib-uglify": "3.3.0",
+    "grunt-contrib-clean": "1.1.0",
+    "grunt-contrib-jshint": "1.1.0"
   },
   "dependencies": {
-    "wolfy87-eventemitter": "5.0.0",
-    "long": "3.2.0",
-    "serialport": "4.0.7",
+    "wolfy87-eventemitter": "5.2.4",
+    "long": "4.0.0",
+    "serialport": "6.0.5",
     "slip": "1.0.2",
-    "ws": "1.1.1"
+    "ws": "5.1.1"
   },
   "scripts": {
-    "test": "node tests/node-all-tests.js && grunt && npm run browser-test",
+    "test": "npm run node-test && grunt && npm run browser-test",
+    "node-test": "node tests/node-all-tests.js",
     "browser-test": "testem ci --file tests/testem.json",
-    "electron-test": "cd tests/electron-tests && npm install && node_modules/.bin/electron .",
+    "electron-test": "cd tests/electron-tests && npm install && npm rebuild && node_modules/.bin/electron .",
     "clean-test": "./clean-npm.sh && npm install && npm test"
   },
-  "gitHead": "41e9969978c057c0b6675559fc2465ec53d49a4a",
-  "_npmVersion": "3.10.8",
-  "_nodeVersion": "6.9.1",
+  "gitHead": "81b728af8d0e352ba60a4c0e3ea4f47d3cc54b42",
+  "_npmVersion": "5.6.0",
+  "_nodeVersion": "8.11.1",
   "dist": {
-    "shasum": "c5db0a0e8823302da3d3207bae02c656cecf8b06",
-    "tarball": "http://registry.npmjs.org/osc/-/osc-2.2.0.tgz"
+    "integrity": "sha512-khM0xzeuBepmhHgy2ZE2KQdQAPmHU2+nPXRMqUt77BLdPOST9gE+R5bZxWGZj82B6qkKe74s+1nC4t6V7+22CQ==",
+    "shasum": "16da24ea276ebd34cb42faa54ca3787c8ed0b15f",
+    "tarball": "https://registry.npmjs.org/osc/-/osc-2.2.1.tgz",
+    "fileCount": 67,
+    "unpackedSize": 951604,
+    "npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJa409JCRA9TVsSAnZWagAAb30P/0EtUSGP7IB2G2blC3BL\nACioHroIFWME7lOkXLy3YmslJkxx2H6Cr164SyfpZeoEeFY7ygGlqi/ABl6W\nLzAyv9j/YmNuPjBw/CDYtYVIDnAyeAW33xH2hDvCCzdP8Gilx5cYNE4vRh2z\n+ehvYkr7G5eat/ZRRDsBLUc+ryv2NusnOWjVJ5xF84nBNHcp7rZLdmy7acpd\nXe7k8eWrhJMkje3+wrLp+Xiiy5G3F0IgLHEORgPgFoR4p7P7g5DrVBfHoHFW\nz1IAOw1QJahatEjyh00kg/9KAtywHPQ1DiIXFdlnB9sjNo9U796bFYDm5vL8\nQ0a7uNMg3pCxIrStqNOKE07jfYnVX4Ka2tAe2nJLb5Y5Sm7ooNWTPXLJAiYY\ny4c97v+A6m3NpnDpd3bTNCxjtMhIKehFd/+b42A4E9HvfIQud39dZxO3aVo3\nz4gXha8uSpxqHHrQ1bdd5fidd8FdOg04Mwn0ozQzT0gzKHPvFSyS4OvhsGZM\naxCEll1viZB0G+Nt5+7Lt4bNa9ZPtDXpip6rMYHNZcpZ2smANYEbARzJwFcD\n+SwP9kme15jEUFOJ7bBvYLG2fUTO2gXH0+sg22W4YYJkUlxZXR/IRCDoCT+w\nkv6FCtAiEZihWDhcFTyASti98xFFC4Ibmd+uF+iZTBcyd012UPZT6zev6yxC\ng9Vi\r\n=Y0K8\r\n-----END PGP SIGNATURE-----\r\n"
   },
+  "_hasShrinkwrap": false,
   "stars": 10,
   "versions": [
     {
@@ -144,10 +150,22 @@
     {
       "number": "2.2.0",
       "date": "2017-01-02T02:12:58.195Z"
+    },
+    {
+      "number": "2.2.0-dev.20180205T232620Z.7edd7d0",
+      "date": "2018-02-05T23:27:27.164Z"
+    },
+    {
+      "number": "2.2.1-dev.20180205T232925Z.6deb74c",
+      "date": "2018-02-05T23:30:12.394Z"
+    },
+    {
+      "number": "2.2.1",
+      "date": "2018-04-27T16:26:46.791Z"
     }
   ],
   "created": "2014-06-01T23:09:57.354Z",
-  "modified": "2017-01-02T02:12:58.195Z",
+  "modified": "2018-04-27T16:26:51.313Z",
   "lastPublisher": {
     "name": "colinbdclark",
     "email": "colinbdclark@gmail.com"

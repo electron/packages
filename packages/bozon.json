@@ -1,6 +1,6 @@
 {
   "name": "bozon",
-  "version": "0.7.9",
+  "version": "0.8.2",
   "description": "Framework for building Electron applications",
   "repository": {
     "user": "railsware",
@@ -17,7 +17,7 @@
   },
   "main": "lib",
   "scripts": {
-    "test": "mocha test/lib/bin/*.* --compilers coffee:coffee-script/register && mocha test/lib/building/*.* --compilers coffee:coffee-script/register && mocha test/lib/packaging/*.* --compilers coffee:coffee-script/register && mocha test/lib/scaffolding/*.* --compilers coffee:coffee-script/register && mocha test/lib/testing/*.* --compilers coffee:coffee-script/register && mocha test/lib/utils/*.* --compilers coffee:coffee-script/register"
+    "test": "mocha test/lib/bin/*.* --require coffee-script/register && mocha test/lib/building/*.* --require coffee-script/register && mocha test/lib/packaging/*.* --require coffee-script/register && mocha test/lib/scaffolding/*.* --require coffee-script/register && mocha test/lib/testing/*.* --require coffee-script/register && mocha test/lib/utils/*.* --require coffee-script/register"
   },
   "keywords": [
     "electron",
@@ -36,7 +36,7 @@
     "del": "^3.0.0",
     "ejs": "^2.5.7",
     "gulp-json-editor": "^2.2.1",
-    "inquirer": "^4.0.0",
+    "inquirer": "^5.2.0",
     "merge-config": "^2.0.0",
     "underscore.string": "^3.3.4"
   },
@@ -45,15 +45,15 @@
     "bozon": "bin/bozon"
   },
   "engines": {
-    "node": ">= 5.10.1"
+    "node": ">= 8.0.0"
   },
   "devDependencies": {
     "chai": "^4.1.2",
     "coffee-script": "^1.12.7",
-    "mocha": "^4.0.1",
-    "mock-require": "^2.0.2",
+    "mocha": "^5.1.1",
+    "mock-require": "^3.0.2",
     "require-reload": "^0.2.2",
-    "sinon": "^4.1.2"
+    "sinon": "^5.0.3"
   },
   "versions": [
     {
@@ -187,16 +187,40 @@
     {
       "number": "0.7.9",
       "date": "2017-12-08T10:41:02.982Z"
+    },
+    {
+      "number": "0.7.10",
+      "date": "2018-03-26T16:10:18.861Z"
+    },
+    {
+      "number": "0.7.11",
+      "date": "2018-04-28T09:24:27.141Z"
+    },
+    {
+      "number": "0.8.1",
+      "date": "2018-05-02T15:27:22.993Z"
+    },
+    {
+      "number": "0.8.2",
+      "date": "2018-05-05T08:40:01.228Z"
     }
   ],
-  "licenseText": "The MIT License (MIT)\n\nCopyright (c) 2016 Alex Chaplinsky <alchaplinsky@gmail.com>\n\nPermission is hereby granted, free of charge, to any person obtaining a copy\nof this software and associated documentation files (the \"Software\"), to deal\nin the Software without restriction, including without limitation the rights\nto use, copy, modify, merge, publish, distribute, sublicense, and/or sell\ncopies of the Software, and to permit persons to whom the Software is\nfurnished to do so, subject to the following conditions:\n\nThe above copyright notice and this permission notice shall be included in\nall copies or substantial portions of the Software.\n\nTHE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR\nIMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,\nFITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE\nAUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER\nLIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,\nOUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN\nTHE SOFTWARE.\n",
+  "gitHead": "108430f8f9a38cb7075eaedec4511092b1299153",
+  "homepage": "https://github.com/railsware/bozon#readme",
+  "_npmVersion": "5.6.0",
+  "_nodeVersion": "8.11.1",
   "dist": {
-    "shasum": "963652a00cd17099685c03b555ebce1db36f4195",
-    "tarball": "https://registry.npmjs.org/bozon/-/bozon-0.7.9.tgz"
+    "integrity": "sha512-h+V4eu3NmyaOT5jYrgrhVl+mif87TK7qETJ+hSjSPI5WpHL+CvxyeggOGhncd8yKxIR7I0cQYQKJ/JyWn1Q5NQ==",
+    "shasum": "f2e969988b89de3aa93f7147c725217c818ecf11",
+    "tarball": "https://registry.npmjs.org/bozon/-/bozon-0.8.2.tgz",
+    "fileCount": 72,
+    "unpackedSize": 1410173,
+    "npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJa7W3iCRA9TVsSAnZWagAAHz4QAJ54i0SaOYGYYpS8vYLt\npwc7XkVDQqdb8TmdIalygTkk2tk49EEQTWveFwnFuGKAsn6h7P5lLN8E9uzx\nkp6daq2FNIPwikr0N+1ABgp999hGfFNpZ52Ubx8bQVMsuuto61dYHA53Ykr2\n4/ZxK1ZHIlRYcyIgZQhoffK1LSgIMZz4nUYiMd6sZopxDh+UuHeCifYcZUDc\npsEGRzmTofmC8Wh6fpKYT4NoYkA8o+llU4aYODvntIWX0E3TmxsnnLar20dS\n0FvkS79XuBa+1f8WfAUY20mteAPKo4Ht23waEAemAs/hcGSjb/7ArvJL8PwX\nU8+MWrW/A+U1E9h+qizrS2e9tzq20uVcdoXQBhwjlbPAvCOBbSgsNgUnoQgy\nK6/AlzduesUFGq5496ah+TLCQENPRulXh86FZT5x5C8lAj6/xUE+uj2+jDll\nkUai9ubh2iBy4qHW7mwWqev+zk07maDJ075PgMiTMykHr/mOam0pOxxZsPcT\nxuCa6zvqbusXEyoAmOgJrWeoYflXi5cyMYCysUW+v5Mx0JViXnzh4SQM81tM\nb/f+DW7UbnWMHixAjIBqDAZQjLaLUXiXPKdhVYqbPLc66ccVhdMoFNNHpIlq\n/cJ6qyJia2G/tsr1itScKdMqU3VCtIQlPC/ZR/DU3mPamcJ/R9EIe3CdOH+r\nv4tF\r\n=7xML\r\n-----END PGP SIGNATURE-----\r\n"
   },
+  "_hasShrinkwrap": false,
   "stars": 3,
   "created": "2016-04-29T16:27:10.231Z",
-  "modified": "2017-12-08T10:41:02.982Z",
+  "modified": "2018-05-05T08:40:04.482Z",
   "lastPublisher": {
     "name": "alchaplinsky",
     "email": "alchaplinsky@gmail.com"

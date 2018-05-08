@@ -16,7 +16,6 @@
   },
   "homepage": "https://github.com/kaizhu256/node-istanbul-lite",
   "keywords": [
-    "browser",
     "coverage",
     "istanbul"
   ],
@@ -44,20 +43,27 @@
     "api_url": "https://api.github.com/repos/kaizhu256/node-istanbul-lite"
   },
   "scripts": {
+    "apidocRawCreate": "[ ! -f npm_scripts.sh ] || ./npm_scripts.sh shNpmScriptApidocRawCreate",
+    "apidocRawFetch": "[ ! -f npm_scripts.sh ] || ./npm_scripts.sh shNpmScriptApidocRawFetch",
     "build-ci": "utility2 shReadmeTest build_ci.sh",
     "env": "env",
-    "heroku-postbuild": "npm uninstall utility2 2>/dev/null; npm install kaizhu256/node-utility2#alpha && utility2 shDeployHeroku",
-    "postinstall": "[ ! -f npm_scripts.sh ] || ./npm_scripts.sh postinstall",
+    "heroku-postbuild": "npm install kaizhu256/node-utility2#alpha --prefix . && utility2 shDeployHeroku",
+    "postinstall": "[ ! -f npm_scripts.sh ] || ./npm_scripts.sh shNpmScriptPostinstall",
     "start": "PORT=${PORT:-8080} utility2 start test.js",
     "test": "PORT=$(utility2 shServerPortRandom) utility2 test test.js"
   },
-  "version": "2017.11.21",
-  "_npmVersion": "3.10.10",
-  "_nodeVersion": "6.12.0",
+  "version": "2018.4.25",
+  "_npmVersion": "5.6.0",
+  "_nodeVersion": "10.0.0",
   "dist": {
-    "shasum": "5aa12ddefec51541ec8bd7675fef66a83547f419",
-    "tarball": "https://registry.npmjs.org/istanbul-lite/-/istanbul-lite-2017.11.21.tgz"
+    "integrity": "sha512-m/k2yb1wBMcvYDZMjq8Bu71CYecrOKR3umLpe/1w8k4PVl9AWEx/LqHHcqGhQNeaMIoLrTdlPtChEpNhhnn9qA==",
+    "shasum": "3d1cd89fad61dfec8760f5f3915a8ed14795ded6",
+    "tarball": "https://registry.npmjs.org/istanbul-lite/-/istanbul-lite-2018.4.25.tgz",
+    "fileCount": 5,
+    "unpackedSize": 276635,
+    "npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJa4KVQCRA9TVsSAnZWagAA9HsQAKTM7sAN8lFgvMB9yQNb\n066ULolQg27v95cMcnFlPEB8wLKgw0rIHyYT/SRAVOGhXuPOPVluvzEjzUbl\n8BzH5gldHyMyyqSlyRWOHJgDUu5fl6cPh1y8nRGPxegJaoavvK0p4liQeyAD\nSWGLUml+/iG2EYFktSmlboDA7I1dazogB3H+Rkj/QsYkS0megFIQ9rDSfbcR\nE6LRQYqtASd/8wmFSyOWlQeCBAAmtWu7qyUHqdrDG6rcnt7gXbBImRLf+64a\nIztrMtP7Sp++HM4uX5nWQv24G5Nqn8CzQTmC71oCnuaDvaQHiKTHgqWLgMN8\nOzIVVCpxrE3WaRhDU05TV3weo1q4uiXOKWrfZimRsp+xz/zzNpht+OguanIU\nr38vf+yIVjz6shxOU0ZnAeiBdVf4vmy64XaoIRjBM+ul1c75oPt9LcEuO4Q1\n+Hm6bPhAC3D6XbQsykDnsNZZEwnoGWGSyPOs+6+wK3JM9qBrx/WrUnLL4VR5\nSbXWS2Gq4YgHzaUi6T1jfA5VZ0aYKYEMsFgumH4ufdfgEoAOg6QMpCX07Lo1\nJ54s0VjvfIS3KXvNV/kYEi0/cLAWXmUS+PvRK4dc4ScQeL5T+ROaUinnrN2n\nLJnFggDX7NEtyfe9rg1WnuNEGY55GJcT3MzRTZ8L4/mo+JyaWDChZM8y7tyU\nKW9N\r\n=saye\r\n-----END PGP SIGNATURE-----\r\n"
   },
+  "_hasShrinkwrap": false,
   "stars": 1,
   "versions": [
     {
@@ -359,10 +365,18 @@
     {
       "number": "2017.11.21",
       "date": "2017-11-22T09:05:22.683Z"
+    },
+    {
+      "number": "2018.3.28",
+      "date": "2018-03-29T06:38:21.972Z"
+    },
+    {
+      "number": "2018.4.25",
+      "date": "2018-04-25T15:57:03.417Z"
     }
   ],
   "created": "2014-07-28T09:52:03.078Z",
-  "modified": "2017-11-22T09:05:22.683Z",
+  "modified": "2018-04-25T15:57:12.877Z",
   "lastPublisher": {
     "name": "kaizhu",
     "email": "kaizhu256@gmail.com"

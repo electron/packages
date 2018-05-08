@@ -1,6 +1,6 @@
 {
   "name": "cwrc-writer-base",
-  "version": "2.9.4",
+  "version": "2.18.6",
   "description": "intuitive document editing with xml and rdf",
   "main": "src/js/writer.js",
   "repository": {
@@ -33,81 +33,84 @@
   "homepage": "https://github.com/cwrc/CWRC-WriterBase#readme",
   "browser": {
     "objtree": "./src/js/lib/objtree/ObjTree.js",
+    "dialogForm": "./src/js/dialogs/dialogForm.js",
     "jquery-watermark": "./src/js/lib/jquery/plugins/jquery.watermark.min.js",
     "jquery-contextmenu": "./src/js/lib/jquery/plugins/jquery.contextmenu.min.js",
+    "jquery-popup": "./src/js/lib/jquery/plugins/jquery.popup.js",
     "jquery-xpath": "./src/js/lib/jquery/plugins/jquery.xpath.js",
-    "jquery-popup": "./src/js/lib/jquery/plugins/jquery.popup.js"
+    "layout": "./src/js/lib/jquery/plugins/jquery.layout_and_plugins.js"
   },
   "dependencies": {
     "bootstrap": "3.3.7",
     "css-parse": "^2.0.0",
     "css-stringify": "^2.0.0",
-    "cwrc-git-dialogs": "^1.1.0",
-    "cwrc-public-entity-dialogs": "^1.2.0",
-    "dbpedia-entity-lookup": "0.0.0",
-    "getty-entity-lookup": "^1.2.0",
-    "jquery": "3.1.0",
+    "fscreen": "1.0.2",
+    "jquery": "3.2.1",
     "jquery-ui": "1.12",
-    "js-cookie": "2.1.3",
     "jstree": "3.3.3",
-    "layout": "github:ajmacdonald/layout",
-    "log4javascript": "^1.4.15",
-    "moment": "^2.13.0",
-    "octokit": "0.10.4",
+    "moment": "^2.22.0",
     "openseadragon": "2.3.1",
     "prismjs": "1.6.0",
-    "tinymce": "4.7.2",
-    "viaf-entity-lookup": "^1.1.1",
-    "wikidata-entity-lookup": "^1.1.0"
+    "tinymce": "4.7.2"
   },
   "devDependencies": {
     "babel-plugin-istanbul": "4.1.5",
     "babel-preset-es2015": "6.24.1",
     "babelify": "7.3.0",
-    "browser-run": "4.0.2",
+    "browser-run": "^5.0.0",
     "browserify": "14.3.0",
+    "browserify-istanbul": "2.0.0",
     "codecov.io": "0.1.6",
     "commitizen": "2.9.6",
     "concat-stream": "1.6.0",
     "copyfiles": "^1.2.0",
     "cross-env": "5.0.5",
+    "cwrc-git-dialogs": "^1.1.2",
+    "cwrc-public-entity-dialogs": "^1.2.6",
     "cz-conventional-changelog": "2.0.0",
-    "deamdify": "github:au-phiware/deamdify",
+    "dbpedia-entity-lookup": "0.0.0",
+    "deamdify": "0.3.0",
     "faucet": "0.0.1",
+    "getty-entity-lookup": "^1.4.2",
     "husky": "0.13.3",
     "istanbul": "0.4.5",
+    "less": "3.0.2",
+    "log4javascript": "^1.4.15",
     "mkdirp": "0.5.1",
     "rimraf": "^2.6.2",
-    "semantic-release": "^8.2.0",
+    "semantic-release": "^15.1.4",
     "sinon": "4.0.1",
     "tape": "4.6.3",
     "tape-promise": "2.0.1",
+    "travis-deploy-once": "4.4.1",
+    "viaf-entity-lookup": "^1.1.2",
     "watch": "1.0.2",
-    "watchify": "3.9.0"
+    "watchify": "3.9.0",
+    "wikidata-entity-lookup": "^1.2.1"
   },
   "scripts": {
-    "semantic-release": "semantic-release pre && npm publish && semantic-release post",
+    "semantic-release": "semantic-release",
     "cm": "git-cz",
     "precommit": "npm run test && npm run check-coverage",
-    "browserify-test": "mkdirp build && cross-env NODE_ENV=test && browserify -g deamdify test/test.js -o build/test.js --debug",
-    "watch-test": "mkdirp build && cross-env NODE_ENV=test && watchify -g deamdify test/test.js -o build/test.js --debug --verbose",
+    "browserify-test": "mkdirp build && browserify -g deamdify -t browserify-istanbul test/test.js -o build/test.js --debug",
+    "watch-test": "mkdirp build && watchify -g deamdify -t browserify-istanbul test/test.js -o build/test.js --debug --verbose",
     "test": "npm run test:electron && npm run generate-coverage",
-    "test:browser": "mkdirp coverage && cross-env NODE_ENV=test browserify -g deamdify test/test.js | browser-run  -p 2222 --static .  | node test/extract-coverage.js | faucet",
-    "test:electron": "mkdirp coverage && cross-env NODE_ENV=test browserify -g deamdify test/test.js | browser-run --static . | node test/extract-coverage.js | faucet ",
-    "test:chrome": "mkdirp coverage && cross-env NODE_ENV=test browserify -g deamdify test/test.js | browser-run --static . -b chrome | node test/extract-coverage.js | faucet ",
+    "test:browser": "mkdirp coverage && browserify -g deamdify -t [ browserify-istanbul --ignore \"**/schema/cwrcEntry/**\" --ignore \"**/schema/orlando/**\" ] test/test.js | browser-run  -p 2222 --static .  | node test/extract-coverage.js | faucet",
+    "test:electron": "mkdirp coverage && browserify -g deamdify -t [ browserify-istanbul --ignore \"**/schema/cwrcEntry/**\" --ignore \"**/schema/orlando/**\" ] test/test.js | browser-run --static . | node test/extract-coverage.js | faucet ",
+    "test:chrome": "mkdirp coverage && browserify -g deamdify -t [ browserify-istanbul --ignore \"**/schema/cwrcEntry/**\" --ignore \"**/schema/orlando/**\" ] test/test.js | browser-run --static . -b chrome | node test/extract-coverage.js | faucet ",
     "generate-coverage": "istanbul report --root coverage lcov",
-    "check-coverage": "istanbul check-coverage --statements 5 --branches 5 --functions 5 --lines 5",
+    "check-coverage": "istanbul check-coverage --statements 5 --branches 1 --functions 1 --lines 5",
     "report-coverage": "cat ./coverage/lcov.info | codecov",
     "debug:build": "npm run debug:clean && npm run debug:copyfiles && npm run debug:build:js",
     "debug:clean": "rimraf build",
-    "debug:copyfiles": "npm run debug:copy:images && npm run debug:copy:css && npm run debug:copy:html && npm run debug:copy:xml && npm run debug:copy:jstree && npm run debug:tinymce:copyskin ",
+    "debug:copyfiles": "npm run debug:copy:images && npm run debug:copy:css && npm run debug:copy:html && npm run debug:copy:xml && npm run debug:tinymce:copyskin ",
     "debug:copy:images": "copyfiles -u 1 \"src/img/**/*\" build/",
-    "debug:copy:css": "copyfiles -u 1 \"src/css/**/*\" build/ && copyfiles -u 1 node_modules/prismjs/themes/prism.css build/css/ && copyfiles -f node_modules/prismjs/themes/prism.css build/css/",
+    "debug:copy:css": "copyfiles -u 1 \"src/css/**/*\" build/",
     "debug:copy:html": "copyfiles -u 1 \"src/html/*\" build/ && copyfiles -f test/forDebug/index.html build/",
     "debug:copy:xml": "copyfiles -u 3 \"src/js/schema/*/xml/*\" build/schema/",
-    "debug:copy:jstree": "copyfiles -f \"node_modules/jstree/dist/themes/default/*\" build/css/jstree/themes/default && copyfiles -f src/css/jstree/themes/cwrc/cwrc.css build/css/jstree/themes/default",
     "debug:tinymce:copyskin": "copyfiles -u 2 \"node_modules/tinymce/skins/lightgray/**/*\" build/js/",
-    "debug:build:js": "mkdirp build/js && browserify test/forDebug/debug.js -o build/js/debug.js --debug --verbose -g deamdify"
+    "debug:build:js": "mkdirp build/js && browserify test/forDebug/debug.js -o build/js/debug.js --debug --verbose -g deamdify",
+    "travis-deploy-once": "travis-deploy-once"
   },
   "config": {
     "commitizen": {
@@ -133,14 +136,18 @@
       ]
     ]
   },
-  "gitHead": "5d2c262d2b9b0a080c014f9caf4c31d9d372fcd5",
+  "gitHead": "ba1f0a08d71520d12a102acf6e6bd602b322df81",
   "_npmVersion": "5.6.0",
-  "_nodeVersion": "8.9.4",
+  "_nodeVersion": "9.11.1",
   "dist": {
-    "integrity": "sha512-njZwQNycEgu0LaM2GteNp7O0eA/42GyqWG+TaopxfaF8Aame1FQZeE9kWd61CbujeX58JIlr1flCUjWn+LYcLA==",
-    "shasum": "ee9d501a4e6388823de8150c4c14b5769859d2af",
-    "tarball": "https://registry.npmjs.org/cwrc-writer-base/-/cwrc-writer-base-2.9.4.tgz"
+    "integrity": "sha512-djWp7nrO22FSlDREOazHdqmBSVM/U5Bi9lMfL6V28PjhXwdo3lBLsi3rL4boEnVshMFoIzn6aIEBoXS62MxMHQ==",
+    "shasum": "3585339d10721dc0a1fa5c357e6904f75a7e99b5",
+    "tarball": "https://registry.npmjs.org/cwrc-writer-base/-/cwrc-writer-base-2.18.6.tgz",
+    "fileCount": 242,
+    "unpackedSize": 2790074,
+    "npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJa6yPWCRA9TVsSAnZWagAAKhwP/jcXlrEBIpuIkR/r+O4w\nS7G6DdNiKQvLxqifgOfwXzLpEViv8FIVqVD9/7+M7Cc8QMuScXzVd7AcIT7X\nclrOnnnF05kI/tT33jZzq9t/YoFB8UlLCV8GkgtI7J5McuRy5CqUGQf64kqC\nCxlDXFRGSoslY4cK1C7sS+S7kS57kUlMOc1nm2VghFPucZT7ESldsrEPLDLh\n7ZxMqPrp+JMroaBOCUoFwlPBpYylEnX4Q+dvyqRYHv6X8MikNLQsW3Ki8dD3\n3UZoi+unInHS4YRoEtdOJ0osTQuBQccF8f/GZ3ZlVNM/Eu8uGJfj3CI6Vjut\nY8pkwC+b0BF79Jg4mlUvC2FMLaxlJbS5xk+li4gpteYqwG06URHF04kMF+ke\nsPXNhUVJs+rXXHd5IPPhAR/iiBeNlZO9UqrUkYYi6+U77U9HGwOirO8vLjmO\nYklrs1EUfOH9mO/y4VPsGrtO1EGGuPyhpIoYPKmp+4jB9dkBAP6QWYVPFGr+\n0K9tJsfqhYNnCWrwwoqAn6wRQzY07OeRfuDlPMB8ld+1NKkoNICpTGlpacYj\nFYSjyPiCGFaQW3UUvPOTvtMCOo4fl5JqmSy4+IG1yAds35hIXSn53onmaIJ+\nOvDXSmMfZCrii6RvkffunNVhRsg9GxY/VUQ4RARzzP9U5va5IZJUNN42Rscs\nK3tW\r\n=iaiO\r\n-----END PGP SIGNATURE-----\r\n"
   },
+  "_hasShrinkwrap": false,
   "versions": [
     {
       "number": "1.0.0",
@@ -345,10 +352,182 @@
     {
       "number": "2.9.4",
       "date": "2018-01-03T20:35:54.096Z"
+    },
+    {
+      "number": "2.9.5",
+      "date": "2018-01-25T17:25:18.558Z"
+    },
+    {
+      "number": "2.9.6",
+      "date": "2018-01-26T16:42:28.132Z"
+    },
+    {
+      "number": "2.9.7",
+      "date": "2018-01-30T00:45:46.928Z"
+    },
+    {
+      "number": "2.9.8",
+      "date": "2018-01-30T17:31:23.126Z"
+    },
+    {
+      "number": "2.9.9",
+      "date": "2018-01-31T16:39:15.250Z"
+    },
+    {
+      "number": "2.9.10",
+      "date": "2018-01-31T17:20:45.440Z"
+    },
+    {
+      "number": "2.9.11",
+      "date": "2018-01-31T18:57:04.974Z"
+    },
+    {
+      "number": "2.9.12",
+      "date": "2018-01-31T21:50:01.296Z"
+    },
+    {
+      "number": "2.9.13",
+      "date": "2018-02-01T19:07:23.362Z"
+    },
+    {
+      "number": "2.9.14",
+      "date": "2018-02-06T17:34:07.275Z"
+    },
+    {
+      "number": "2.9.15",
+      "date": "2018-02-06T18:10:47.552Z"
+    },
+    {
+      "number": "2.10.0",
+      "date": "2018-02-06T22:26:16.076Z"
+    },
+    {
+      "number": "2.11.0",
+      "date": "2018-02-07T18:08:08.223Z"
+    },
+    {
+      "number": "2.11.1",
+      "date": "2018-02-07T18:34:23.560Z"
+    },
+    {
+      "number": "2.11.2",
+      "date": "2018-02-08T19:38:37.451Z"
+    },
+    {
+      "number": "2.11.3",
+      "date": "2018-02-12T22:14:34.784Z"
+    },
+    {
+      "number": "2.11.4",
+      "date": "2018-02-12T22:34:15.736Z"
+    },
+    {
+      "number": "2.11.5",
+      "date": "2018-02-13T21:48:16.115Z"
+    },
+    {
+      "number": "2.11.6",
+      "date": "2018-02-14T19:26:39.649Z"
+    },
+    {
+      "number": "2.12.0",
+      "date": "2018-02-14T22:03:41.655Z"
+    },
+    {
+      "number": "2.12.1",
+      "date": "2018-02-16T19:20:20.310Z"
+    },
+    {
+      "number": "2.12.2",
+      "date": "2018-02-16T19:28:08.922Z"
+    },
+    {
+      "number": "2.13.0",
+      "date": "2018-02-20T22:31:20.468Z"
+    },
+    {
+      "number": "2.14.0",
+      "date": "2018-02-21T20:52:11.401Z"
+    },
+    {
+      "number": "2.14.1",
+      "date": "2018-02-21T23:24:31.567Z"
+    },
+    {
+      "number": "2.15.0",
+      "date": "2018-03-05T17:42:59.378Z"
+    },
+    {
+      "number": "2.15.1",
+      "date": "2018-03-07T19:16:07.059Z"
+    },
+    {
+      "number": "2.16.0",
+      "date": "2018-04-02T20:37:36.036Z"
+    },
+    {
+      "number": "2.16.1",
+      "date": "2018-04-03T16:54:21.963Z"
+    },
+    {
+      "number": "2.16.2",
+      "date": "2018-04-03T21:26:43.439Z"
+    },
+    {
+      "number": "2.16.3",
+      "date": "2018-04-03T22:02:37.227Z"
+    },
+    {
+      "number": "2.16.4",
+      "date": "2018-04-04T19:41:22.850Z"
+    },
+    {
+      "number": "2.16.5",
+      "date": "2018-04-05T16:58:16.909Z"
+    },
+    {
+      "number": "2.16.6",
+      "date": "2018-04-05T20:24:03.034Z"
+    },
+    {
+      "number": "2.17.0",
+      "date": "2018-04-06T20:21:46.701Z"
+    },
+    {
+      "number": "2.17.1",
+      "date": "2018-04-09T17:02:48.153Z"
+    },
+    {
+      "number": "2.18.0",
+      "date": "2018-04-16T19:02:05.605Z"
+    },
+    {
+      "number": "2.18.1",
+      "date": "2018-04-18T17:22:49.115Z"
+    },
+    {
+      "number": "2.18.2",
+      "date": "2018-04-18T20:40:35.811Z"
+    },
+    {
+      "number": "2.18.3",
+      "date": "2018-04-18T22:02:21.582Z"
+    },
+    {
+      "number": "2.18.4",
+      "date": "2018-04-24T17:37:53.732Z"
+    },
+    {
+      "number": "2.18.5",
+      "date": "2018-05-01T18:59:11.565Z"
+    },
+    {
+      "number": "2.18.6",
+      "date": "2018-05-03T14:59:32.892Z"
     }
   ],
   "created": "2017-02-21T00:18:17.095Z",
-  "modified": "2018-01-03T20:35:54.096Z",
+  "modified": "2018-05-03T14:59:37.102Z",
   "lastPublisher": {
     "name": "ajmacdonald",
     "email": "andrewjames.code@gmail.com"

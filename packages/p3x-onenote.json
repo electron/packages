@@ -1,21 +1,24 @@
 {
   "name": "p3x-onenote",
-  "version": "1.2.180-322",
-  "description": "P3X Onenote Linux",
+  "version": "1.4.17-521",
+  "description": "📚 P3X Onenote Linux",
   "main": "src/electron/app.js",
   "corifeus": {
     "prefix": "p3x-",
     "publish": true,
     "type": "p3x",
     "code": "Linux",
-    "nodejs": "v9.4.0"
+    "nodejs": "v10.0.0",
+    "opencollective": true,
+    "reponame": "onenote"
   },
   "bin": {
     "p3x-onenote": "bin/p3x-onenote.js"
   },
   "scripts": {
     "test": "grunt",
-    "build": "grunt && build build/dist"
+    "build": "build build/dist",
+    "postinstall": "opencollective postinstall"
   },
   "repository": {
     "user": "patrikx3",
@@ -41,13 +44,22 @@
   "license": "MIT",
   "homepage": "https://pages.corifeus.com/onenote",
   "dependencies": {
-    "electron": "^1.8.2-beta.1",
-    "configstore": "^3.1.1",
-    "corifeus-utils": "^1.1.767-266"
+    "angular": "^1.6.10",
+    "angular-animate": "^1.6.10",
+    "angular-aria": "^1.6.10",
+    "angular-material": "^1.1.9",
+    "angular-messages": "^1.6.10",
+    "configstore": "^3.1.2",
+    "corifeus-utils": "^1.2.33-371",
+    "electron": "^2.0.0",
+    "opencollective": "^1.0.3",
+    "typeface-roboto": "0.0.54"
   },
   "devDependencies": {
-    "corifeus-builder": "^1.7.1137-273",
-    "electron-builder": "^19.52.1"
+    "jsdom": "^11.10.0",
+    "angular-mocks": "^1.6.10",
+    "corifeus-builder": "^1.7.1375-396",
+    "electron-builder": "^20.11.1"
   },
   "engines": {
     "node": ">=8.9.0"
@@ -58,16 +70,26 @@
     "productName": "P3X OneNote",
     "linux": {
       "category": "Office",
-      "icon": "src/electron/images/"
+      "icon": "src/electron/asset/",
+      "target": "appimage"
     }
   },
-  "_npmVersion": "5.6.0",
-  "_nodeVersion": "9.4.0",
-  "dist": {
-    "integrity": "sha512-w8Q8YMnxch5vCfXFugjxW2GxMKmkHB9D64/VtxFlUZLjsfiyZzthNoZWBW8I1ejsc05pFHIbtDVN5nqZY34Bbg==",
-    "shasum": "392f1d084b7db5b30b887bb5a30a7f029bf5b8c9",
-    "tarball": "https://registry.npmjs.org/p3x-onenote/-/p3x-onenote-1.2.180-322.tgz"
+  "collective": {
+    "type": "opencollective",
+    "url": "https://opencollective.com/p3x-onenote"
   },
+  "_npmVersion": "6.0.0",
+  "_nodeVersion": "10.0.0",
+  "dist": {
+    "integrity": "sha512-2ZUTJUEWuY7BIQ1E7FvgwNsXIjUci6okyrRxfZeKu2Xiz9SGmNb+vlV0MRquHQvQZ9UqRnOZPm+3PM1SQCKByw==",
+    "shasum": "a23adffa9078c6fe6aa0cb6f6568455929d3a265",
+    "tarball": "https://registry.npmjs.org/p3x-onenote/-/p3x-onenote-1.4.17-521.tgz",
+    "fileCount": 31,
+    "unpackedSize": 41575,
+    "npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJa7xTRCRA9TVsSAnZWagAAgUYP/2r+epgGhpkaaxf3Rt6f\nAtIOGzWq5UTsWtjd4pU+qhhjQGAR/4GV4lMYGyLOEuIcU61TnNBJy9Dhe4J/\nu0iHJO4X3KzO1SUGTM59wPT7SMEPTYI/Y1jZjmnh/w9TQPtsvp8jG8uIIzWh\nY2tIlHrvzoFvmJnWPRR+YPqtEGFqC6gWW0wAHijDJM0A3tSw4/dByFf/mezt\n1Qbmoovxfz2MyWjikBWYl+VATos8br1GYqWMO6QyiIOpPJOBPdjyeIClRM0O\nBFe2/SoR9jBKQVT+yFLcJkSfhNSmPNc4Yv4orZ7dPRjM11B/roFXlRpMA9Kt\nyB8t2M88aoaQWmxwNiGpKv7osobNMaEsMFcM5jFIoqOa3PI4zOqrLPam9Fdg\n+xy0HzwLtycAYQjNdSOYNSDtHU9irLH3eljwpEaQeKVDVG9PU+ahIN6VFeAC\neVRMHFyVq1/ecUo2AnWCAoraZWM5U6cXBwolWx8XTt68VtCfddzoiqF4en7f\nl3QGSU6zcrLxiZwKRzwsQcULxFHNu37DyOZZk8QrupzsFmYx1kOXE3q0ocHo\nQlEzRZWX17OOOoN84pdeErYSEW6OVnG5xveqKhhUHmjp+0xfhU35CM7KW+O5\nOJRU6EzRgrBRBygsDuyI3vJhCtxZXRHKGJ27nyr8dSkzyd7C5kkrI0SS6C5N\nqQmN\r\n=9EI0\r\n-----END PGP SIGNATURE-----\r\n"
+  },
+  "_hasShrinkwrap": false,
+  "stars": 1,
   "versions": [
     {
       "number": "1.0.39-11",
@@ -700,10 +722,342 @@
     {
       "number": "1.2.180-322",
       "date": "2018-01-14T10:54:50.252Z"
+    },
+    {
+      "number": "1.2.187-327",
+      "date": "2018-01-20T11:01:53.563Z"
+    },
+    {
+      "number": "1.2.188-328",
+      "date": "2018-01-22T12:25:17.933Z"
+    },
+    {
+      "number": "1.2.189-328",
+      "date": "2018-01-22T12:36:28.309Z"
+    },
+    {
+      "number": "1.2.197-332",
+      "date": "2018-01-27T20:30:47.041Z"
+    },
+    {
+      "number": "1.2.201-332",
+      "date": "2018-01-27T21:09:40.185Z"
+    },
+    {
+      "number": "1.2.202-336",
+      "date": "2018-01-28T14:45:02.465Z"
+    },
+    {
+      "number": "1.2.203-337",
+      "date": "2018-01-29T10:10:43.678Z"
+    },
+    {
+      "number": "1.2.210-339",
+      "date": "2018-02-04T11:10:19.962Z"
+    },
+    {
+      "number": "1.2.218-343",
+      "date": "2018-02-10T19:22:06.579Z"
+    },
+    {
+      "number": "1.2.222-345",
+      "date": "2018-02-15T16:43:01.874Z"
+    },
+    {
+      "number": "1.2.224-347",
+      "date": "2018-02-16T12:37:39.888Z"
+    },
+    {
+      "number": "1.2.231-348",
+      "date": "2018-02-16T17:49:40.918Z"
+    },
+    {
+      "number": "1.2.235-349",
+      "date": "2018-02-16T18:54:19.326Z"
+    },
+    {
+      "number": "1.2.240-353",
+      "date": "2018-02-24T09:28:59.395Z"
+    },
+    {
+      "number": "1.2.242-354",
+      "date": "2018-02-24T15:08:13.032Z"
+    },
+    {
+      "number": "1.2.244-357",
+      "date": "2018-02-28T18:36:10.547Z"
+    },
+    {
+      "number": "1.2.245-359",
+      "date": "2018-02-28T18:38:24.631Z"
+    },
+    {
+      "number": "1.2.245-360",
+      "date": "2018-02-28T18:51:58.413Z"
+    },
+    {
+      "number": "1.2.246-362",
+      "date": "2018-02-28T18:53:09.016Z"
+    },
+    {
+      "number": "1.2.247-364",
+      "date": "2018-02-28T18:55:59.485Z"
+    },
+    {
+      "number": "1.2.251-366",
+      "date": "2018-03-02T20:37:49.232Z"
+    },
+    {
+      "number": "1.2.253-369",
+      "date": "2018-03-02T21:02:49.711Z"
+    },
+    {
+      "number": "1.2.254-372",
+      "date": "2018-03-02T21:05:40.190Z"
+    },
+    {
+      "number": "1.2.259-375",
+      "date": "2018-03-08T14:19:53.915Z"
+    },
+    {
+      "number": "1.2.260-375",
+      "date": "2018-03-08T14:32:18.663Z"
+    },
+    {
+      "number": "1.2.261-376",
+      "date": "2018-03-08T18:42:33.277Z"
+    },
+    {
+      "number": "1.2.262-376",
+      "date": "2018-03-08T19:08:16.645Z"
+    },
+    {
+      "number": "1.2.266-377",
+      "date": "2018-03-08T21:36:01.691Z"
+    },
+    {
+      "number": "1.2.267-378",
+      "date": "2018-03-09T06:56:02.310Z"
+    },
+    {
+      "number": "1.2.268-379",
+      "date": "2018-03-09T07:36:21.737Z"
+    },
+    {
+      "number": "1.2.269-380",
+      "date": "2018-03-09T08:28:28.578Z"
+    },
+    {
+      "number": "1.2.273-382",
+      "date": "2018-03-09T12:11:21.317Z"
+    },
+    {
+      "number": "1.2.275-388",
+      "date": "2018-03-14T19:46:35.201Z"
+    },
+    {
+      "number": "1.2.279-390",
+      "date": "2018-03-16T20:45:05.656Z"
+    },
+    {
+      "number": "1.2.289-393",
+      "date": "2018-03-21T23:55:38.372Z"
+    },
+    {
+      "number": "1.2.290-395",
+      "date": "2018-03-22T00:16:16.777Z"
+    },
+    {
+      "number": "1.2.294-397",
+      "date": "2018-03-25T15:48:00.714Z"
+    },
+    {
+      "number": "1.2.298-398",
+      "date": "2018-03-25T16:55:28.830Z"
+    },
+    {
+      "number": "1.2.302-399",
+      "date": "2018-03-29T21:27:03.060Z"
+    },
+    {
+      "number": "1.2.306-400",
+      "date": "2018-03-29T23:13:35.938Z"
+    },
+    {
+      "number": "1.2.307-403",
+      "date": "2018-03-31T11:00:26.257Z"
+    },
+    {
+      "number": "1.2.308-404",
+      "date": "2018-04-02T08:29:17.930Z"
+    },
+    {
+      "number": "1.2.312-405",
+      "date": "2018-04-02T09:13:45.091Z"
+    },
+    {
+      "number": "1.2.316-406",
+      "date": "2018-04-04T13:13:06.037Z"
+    },
+    {
+      "number": "1.2.323-407",
+      "date": "2018-04-07T08:00:48.797Z"
+    },
+    {
+      "number": "1.2.335-412",
+      "date": "2018-04-13T22:16:26.384Z"
+    },
+    {
+      "number": "1.2.336-414",
+      "date": "2018-04-15T11:01:51.076Z"
+    },
+    {
+      "number": "1.2.337-414",
+      "date": "2018-04-15T11:26:15.770Z"
+    },
+    {
+      "number": "1.2.339-423",
+      "date": "2018-04-19T13:31:25.777Z"
+    },
+    {
+      "number": "1.2.343-423",
+      "date": "2018-04-19T14:17:21.487Z"
+    },
+    {
+      "number": "1.2.344-426",
+      "date": "2018-04-19T18:07:49.592Z"
+    },
+    {
+      "number": "1.2.346-431",
+      "date": "2018-04-20T19:18:46.646Z"
+    },
+    {
+      "number": "1.2.350-432",
+      "date": "2018-04-22T13:15:28.172Z"
+    },
+    {
+      "number": "1.2.354-433",
+      "date": "2018-04-22T15:30:39.933Z"
+    },
+    {
+      "number": "1.2.355-437",
+      "date": "2018-04-23T16:25:54.519Z"
+    },
+    {
+      "number": "1.2.356-438",
+      "date": "2018-04-23T19:08:17.411Z"
+    },
+    {
+      "number": "1.2.357-440",
+      "date": "2018-04-24T13:56:27.510Z"
+    },
+    {
+      "number": "1.2.358-441",
+      "date": "2018-04-24T14:14:38.502Z"
+    },
+    {
+      "number": "1.2.359-442",
+      "date": "2018-04-24T14:16:14.307Z"
+    },
+    {
+      "number": "1.2.360-443",
+      "date": "2018-04-24T14:18:00.094Z"
+    },
+    {
+      "number": "1.2.361-444",
+      "date": "2018-04-24T14:19:48.288Z"
+    },
+    {
+      "number": "1.2.362-445",
+      "date": "2018-04-24T14:20:53.131Z"
+    },
+    {
+      "number": "1.2.363-446",
+      "date": "2018-04-24T14:22:05.581Z"
+    },
+    {
+      "number": "1.2.364-447",
+      "date": "2018-04-24T14:22:52.159Z"
+    },
+    {
+      "number": "1.2.365-447",
+      "date": "2018-04-24T14:30:01.468Z"
+    },
+    {
+      "number": "1.2.366-448",
+      "date": "2018-04-24T14:30:54.177Z"
+    },
+    {
+      "number": "1.2.367-449",
+      "date": "2018-04-24T14:32:46.875Z"
+    },
+    {
+      "number": "1.2.368-450",
+      "date": "2018-04-24T14:34:10.404Z"
+    },
+    {
+      "number": "1.2.369-452",
+      "date": "2018-04-24T15:17:56.315Z"
+    },
+    {
+      "number": "1.2.372-457",
+      "date": "2018-05-01T18:54:21.801Z"
+    },
+    {
+      "number": "1.2.374-458",
+      "date": "2018-05-01T20:20:12.320Z"
+    },
+    {
+      "number": "1.2.376-461",
+      "date": "2018-05-02T12:30:48.274Z"
+    },
+    {
+      "number": "1.2.378-464",
+      "date": "2018-05-02T12:39:25.975Z"
+    },
+    {
+      "number": "1.2.387-469",
+      "date": "2018-05-03T21:34:45.549Z"
+    },
+    {
+      "number": "1.2.397-482",
+      "date": "2018-05-04T19:19:00.766Z"
+    },
+    {
+      "number": "1.3.14-510",
+      "date": "2018-05-05T16:42:39.334Z"
+    },
+    {
+      "number": "1.4.1-511",
+      "date": "2018-05-05T16:54:57.741Z"
+    },
+    {
+      "number": "1.4.2-513",
+      "date": "2018-05-05T17:12:59.766Z"
+    },
+    {
+      "number": "1.4.4-514",
+      "date": "2018-05-05T17:39:10.649Z"
+    },
+    {
+      "number": "1.4.5-515",
+      "date": "2018-05-05T19:15:39.324Z"
+    },
+    {
+      "number": "1.4.15-519",
+      "date": "2018-05-06T12:42:18.804Z"
+    },
+    {
+      "number": "1.4.16-520",
+      "date": "2018-05-06T12:45:12.311Z"
+    },
+    {
+      "number": "1.4.17-521",
+      "date": "2018-05-06T14:44:32.408Z"
     }
   ],
   "created": "2017-05-12T15:46:05.838Z",
-  "modified": "2018-01-14T10:54:50.252Z",
+  "modified": "2018-05-06T14:44:36.369Z",
   "lastPublisher": {
     "name": "patrikx3",
     "email": "alabard@gmail.com"

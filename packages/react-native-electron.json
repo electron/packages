@@ -1,6 +1,6 @@
 {
   "name": "react-native-electron",
-  "version": "0.3.0",
+  "version": "0.5.1",
   "description": "Electron extensions to React Native for Web",
   "main": "lib/index.js",
   "module": "es/index.js",
@@ -10,7 +10,7 @@
     "compile:lib": "BABEL_ENV=cjs babel src --out-dir lib",
     "compile:es": "BABEL_ENV=esm babel src --out-dir es",
     "build": "npm run clean && npm run compile:lib && npm run compile:es",
-    "example:server": "webpack-dev-server --config ./example/webpack.config.babel.js --progress",
+    "example:server": "webpack-serve ./example/webpack.config.js",
     "example:electron": "electron ./example/app/main.js",
     "flow": "flow check",
     "prepublishOnly": "npm run build",
@@ -35,49 +35,58 @@
   },
   "license": "MIT",
   "homepage": "https://github.com/PaulLeCam/react-native-electron#readme",
+  "files": [
+    "es/*",
+    "lib/*"
+  ],
   "dependencies": {
     "warning": "^3.0.0"
   },
   "peerDependencies": {
-    "electron": "~1.6.6 || ~1.7.0",
+    "electron": "~1.8.4",
     "prop-types": "^15.6.0",
     "react": "^16.0.0",
-    "react-native-web": "^0.3.0"
+    "react-native-web": "^0.6.0"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",
     "babel-core": "^6.26.0",
-    "babel-eslint": "^8.2.1",
-    "babel-loader": "^7.1.2",
+    "babel-eslint": "^8.2.3",
+    "babel-loader": "^7.1.4",
     "babel-preset-env": "^1.6.1",
     "babel-preset-react": "^6.24.1",
     "babel-preset-stage-0": "^6.24.1",
-    "cross-env": "^5.1.3",
-    "electron": "~1.7.10",
-    "eslint": "^4.15.0",
+    "cross-env": "^5.1.4",
+    "electron": "~1.8.4",
+    "eslint": "^4.19.1",
     "eslint-config-prettier": "^2.9.0",
-    "eslint-plugin-flowtype": "^2.41.0",
-    "eslint-plugin-prettier": "^2.4.0",
-    "eslint-plugin-react": "^7.5.1",
-    "flow-bin": "^0.63.1",
-    "prettier": "^1.9.2",
-    "prettier-eslint": "^8.7.1",
-    "prop-types": "^15.6.0",
-    "react": "^16.2.0",
-    "react-dom": "^16.2.0",
-    "react-native-web": "^0.3.0",
+    "eslint-plugin-flowtype": "^2.46.2",
+    "eslint-plugin-prettier": "^2.6.0",
+    "eslint-plugin-react": "^7.7.0",
+    "flow-bin": "^0.66.0",
+    "prettier": "^1.12.1",
+    "prettier-eslint": "^8.8.1",
+    "prop-types": "^15.6.1",
+    "react": "^16.3.2",
+    "react-art": "^16.3.2",
+    "react-dom": "^16.3.2",
+    "react-native-web": "^0.6.0",
     "rimraf": "^2.6.2",
-    "webpack": "^3.10.0",
-    "webpack-dev-server": "^2.10.1"
+    "webpack": "^4.6.0",
+    "webpack-serve": "^0.3.1"
   },
-  "gitHead": "f248aeda2887589810c1056bcfa81807700b25ad",
-  "_npmVersion": "5.6.0",
-  "_nodeVersion": "9.2.1",
+  "gitHead": "ab5e0e4d450ac1687e30e489411d38fc072e9de8",
+  "_npmVersion": "5.8.0",
+  "_nodeVersion": "9.11.1",
   "dist": {
-    "integrity": "sha512-S7n46RrBgyIFEl3al0x/AGvD8lcA6xJTWQm2gz0vQA422jRC0a5ZhJmh7IKEGvlQ+mD/IINwcY22AxBIaw1+Qg==",
-    "shasum": "5047c3bd015cf9565205bf7a8f213d07099ac6ff",
-    "tarball": "https://registry.npmjs.org/react-native-electron/-/react-native-electron-0.3.0.tgz"
+    "integrity": "sha512-bBv1eoImBiVlpoVTYeWdNaElIUMiferaJW3ffPL5GyF2YtfRMMOBHgfaJxcByfu7m1TjmhQEFJnkqyiLNiOomw==",
+    "shasum": "7fbfb18576d7c273889192aa2adec130bab25e60",
+    "tarball": "https://registry.npmjs.org/react-native-electron/-/react-native-electron-0.5.1.tgz",
+    "fileCount": 16,
+    "unpackedSize": 37658,
+    "npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJa2d6gCRA9TVsSAnZWagAA1fEP/jQlvAbNwf0Jcd41KfXu\nkI0u1bcv7MFRZICN8z/GxqUe0vF6uCQMWtjBvWghULzYueJwDf+MrUgjXi9F\nd1WCfguxb/Ft4AU0GO5iiVkoLZ+64ngv+VvEJdldlBSg4XDLruMiNwv+OkFp\nFWiun2O3Kj4wG5P/JASPDULgsTmXe/wNdNmMhnnpyeetTE7G3yEVwjDdwCqN\nRlsa/CJ2iYAQD/38TExCNSkQuF2IVMZvQlFbaLS2PTYFMZpbHZd5UklSFMNq\n6swwthDavoXrHrJinOLsjLZAFVjkNExJp7GpckxpnNp1sH+nEUi3aDMExrvN\nsCDOpLWOWKCUa3RxDO6bpydgPjyOlWDKyFFzQMQ/G+ShdT6zMo21BCb+Rptd\njtr5PVAenOX+dpIBEoy9OLPDYKraGP7NrBZphWobmI3w4YAInghR4R8WMrDp\nrsYtyayBKliQerQGc3ocP+dGv/RAczTpsWTHjFZloTMIpGsGOaUGxHyW2Tz/\nfEBCxK/NLIqvJZON4FOBdZHigysyl8IAlIXOu798gflMPxKc5MPr5sRUw7pR\n9yceXivK741pBMXYwBYqCAoo71B6+sb8I2wRcEEm8Y1+ZMUGDbAdzDVox7jf\n3X4GTez84u+EpDxZV+sIL+Evy6qnR7emWywKCw6TelWdeU7YIj2vwA8SV35/\nRGtz\r\n=AtVu\r\n-----END PGP SIGNATURE-----\r\n"
   },
+  "_hasShrinkwrap": false,
   "versions": [
     {
       "number": "0.0.1",
@@ -174,10 +183,30 @@
     {
       "number": "0.3.0",
       "date": "2018-01-09T20:14:10.573Z"
+    },
+    {
+      "number": "0.4.0",
+      "date": "2018-02-20T20:31:22.722Z"
+    },
+    {
+      "number": "0.4.1",
+      "date": "2018-02-22T03:05:35.525Z"
+    },
+    {
+      "number": "0.4.2",
+      "date": "2018-03-23T00:52:05.724Z"
+    },
+    {
+      "number": "0.5.0",
+      "date": "2018-04-20T09:38:03.982Z"
+    },
+    {
+      "number": "0.5.1",
+      "date": "2018-04-20T12:35:44.005Z"
     }
   ],
   "created": "2016-10-29T23:29:10.954Z",
-  "modified": "2018-01-09T20:14:10.573Z",
+  "modified": "2018-04-20T12:35:47.006Z",
   "lastPublisher": {
     "name": "paul_lecam",
     "email": "paul@ulem.net"

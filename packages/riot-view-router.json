@@ -1,16 +1,17 @@
 {
   "name": "riot-view-router",
-  "version": "0.1.0",
+  "version": "0.1.4",
   "description": "Lightweight, extensive riot.js router for tag views.",
   "main": "dist/riot-view-router.js",
   "scripts": {
-    "build:prod": "cross-env NODE_ENV=production node_modules/.bin/webpack --config build/webpack.conf.js",
-    "build:dev": "webpack --config build/webpack.conf.js",
-    "build": "npm run build:dev && npm run build:prod",
+    "bundle:prod": "cross-env NODE_ENV=production node_modules/.bin/webpack --config build/webpack.conf.js",
+    "bundle:dev": "webpack --config build/webpack.conf.js",
+    "bundle": "npm run bundle:dev && npm run bundle:prod",
     "lint": "eslint src/**.js",
-    "test:unit": "jasmine test/unit/spec.*.js",
+    "test:unit": "jasmine test/unit/*.test.js",
     "test:e2e": "karma start test/karma.conf.js",
-    "test": "npm run lint && npm run test:unit && npm run test:e2e"
+    "test": "npm run test:unit && npm run test:e2e",
+    "build": "npm run lint && npm run bundle && npm run test"
   },
   "repository": {
     "user": "neetjn",
@@ -44,7 +45,7 @@
     "babel-plugin-add-module-exports": "^0.2.1",
     "babel-preset-env": "^1.6.1",
     "cross-env": "^5.1.0",
-    "electron": "^1.7.9",
+    "electron": "^1.7.11",
     "eslint": "^4.9.0",
     "eslint-plugin-riot": "^0.1.7",
     "jasmine": "2.5.2",
@@ -57,14 +58,13 @@
     "riot": "^3.7.3",
     "webpack": "^3.8.1"
   },
-  "dependencies": {},
-  "gitHead": "dd6c3a02c2e99644798a4a626a7acf36caeb5870",
-  "_npmVersion": "5.5.1",
-  "_nodeVersion": "8.9.3",
+  "gitHead": "72b7cf4eefc2e194df93eff24a51af86c71cd1f6",
+  "_npmVersion": "5.6.0",
+  "_nodeVersion": "8.9.4",
   "dist": {
-    "integrity": "sha512-ERsNjp3Y86CEKLXJp2Ethj1Q47Ub3fihpprXJ2FoyOKgTswmuWub4BkdMlFOoH+JP+zd8gkzVcXuOGYIQeqGJg==",
-    "shasum": "56218d5a2c5e9efe2fcfbd6ac6cfcd13aa52048a",
-    "tarball": "https://registry.npmjs.org/riot-view-router/-/riot-view-router-0.1.0.tgz"
+    "integrity": "sha512-U7kYUq2JhTLeGp10F47oJ0Ywm1mB9YJ9b6Tv6yV6H0/2M+fKA6puiZedF6CvETWeMcxrX3ICektY7VTei4EIHw==",
+    "shasum": "5980a6052be574df549fae6afacc6796a952a73c",
+    "tarball": "https://registry.npmjs.org/riot-view-router/-/riot-view-router-0.1.4.tgz"
   },
   "versions": [
     {
@@ -106,10 +106,26 @@
     {
       "number": "0.1.0",
       "date": "2017-12-26T04:23:00.259Z"
+    },
+    {
+      "number": "0.1.1",
+      "date": "2018-01-19T03:17:38.332Z"
+    },
+    {
+      "number": "0.1.2",
+      "date": "2018-01-22T20:02:29.292Z"
+    },
+    {
+      "number": "0.1.3",
+      "date": "2018-02-02T20:20:35.381Z"
+    },
+    {
+      "number": "0.1.4",
+      "date": "2018-02-03T08:40:17.608Z"
     }
   ],
   "created": "2017-11-03T03:48:26.509Z",
-  "modified": "2017-12-26T04:23:00.259Z",
+  "modified": "2018-02-03T08:40:17.608Z",
   "lastPublisher": {
     "name": "neetjn",
     "email": "john@neetgroup.net"

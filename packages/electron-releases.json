@@ -14,43 +14,49 @@
     "zip_url": "https://github.com/electron/electron-releases/archive/master.zip",
     "api_url": "https://api.github.com/repos/electron/electron-releases"
   },
-  "version": "2.1.0",
+  "version": "2.36.0",
   "main": "index.json",
   "license": "MIT",
   "devDependencies": {
+    "@octokit/rest": "^15.2.6",
     "chai": "^4.1.2",
     "check-for-leaks": "^1.2.0",
-    "dotenv-safe": "^4.0.4",
+    "dotenv-safe": "^5.0.1",
     "flat": "^4.0.0",
-    "github": "^13.0.1",
     "got": "^8.0.1",
     "hubdown": "^2.0.0",
+    "json-to-markdown-table": "^1.0.0",
     "lodash": "^4.17.4",
     "make-promises-safe": "^1.1.0",
-    "mocha": "^4.0.1",
-    "npm": "^5.6.0",
+    "mocha": "^5.0.5",
     "parse-link-header": "^1.0.1",
     "platform-utils": "^1.0.0",
     "semver": "^5.4.1",
-    "standard": "^10.0.3",
+    "standard": "^11.0.1",
     "standard-markdown": "^4.0.2"
   },
   "scripts": {
-    "build": "node script/build.js",
+    "build": "npm run collect && npm run update-readme",
+    "collect": "node script/collect.js",
+    "update-readme": "node script/update-readme.js",
     "test": "mocha && standard --fix && standard-markdown",
     "prepack": "check-for-leaks",
     "prepush": "check-for-leaks",
     "release": "./script/release.sh"
   },
-  "gitHead": "fd41ff4b03000d8be89836d1efc5cefb271931a2",
+  "gitHead": "b90f9911366b84a65a2b76386a3fdbf3cdfc3329",
   "homepage": "https://github.com/electron/electron-releases#readme",
   "_npmVersion": "5.6.0",
-  "_nodeVersion": "8.9.3",
+  "_nodeVersion": "8.11.1",
   "dist": {
-    "integrity": "sha512-cyKFD1bTE/UgULXfaueIN1k5EPFzs+FRc/rvCY5tIynefAPqopQEgjr0EzY+U3Dqrk/G4m9tXSPuZ77v6dL/Rw==",
-    "shasum": "c5614bf811f176ce3c836e368a0625782341fd4e",
-    "tarball": "https://registry.npmjs.org/electron-releases/-/electron-releases-2.1.0.tgz"
+    "integrity": "sha512-B/SHm7D2LwSMoN7NWcw/jzW8CIOrkxHJByOo1ly1lU/9liTM2gwxy5qOKsY59clKa4rvb/LI5VgfQk2KWgYd2g==",
+    "shasum": "baf487c69eb6ef9f8a875f0e5d1db34a5950ea88",
+    "tarball": "https://registry.npmjs.org/electron-releases/-/electron-releases-2.36.0.tgz",
+    "fileCount": 9,
+    "unpackedSize": 10080590,
+    "npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJa6NRSCRA9TVsSAnZWagAAYmcP/3DClubhcr628i0BBVGO\nhhtWhU8CPUC/OqTOhS2qEKJEkh0PDW1YLcPwk0V4UL6r/9KrkuSsu7FjE9Ys\n3ZzL0BM+iyQnDAlFTZuUDpbnWzMya4qshN6mF7yKR36LjUJpZl9TZUaFuojY\n9xAPg+1f8FTusNu1P4eHq/8t10yjoubjvTKhvxSQP3zhDm8oJsMhzv2Q22gC\nh70mqIm7dik84egCC/KtjVy7wOgFq8dNEyv9maeQ7BdVg1k7mcNkgKXr8Ps8\nsIAf9atrq+ty5PNpo7TvvFA5H9L/b15G5fFXXX6kiIU9jd/W/CKDiVsVl6Ev\nh+PmuTGQyRbfz+/nD/0k34NUGM+8usByFJy6t2wdQod/nSHEICwgW8ZSRdwu\n9tAAI24G76TO+7C4cZBwvlvt05T5C2sG3CoGowKrGuvvXwYKG0UoKA3y/KHj\n0OYM6Jrm200MpcPYT68heeycsqhFsp48826JJWao7m3s5vEYWy3CkZLvIN43\nTPGTPI7qXFjS/4LzMQ4epjDpnv3LQooPZ0lCYS0B0/bDF8CP4RGqq/Y4qJ7E\niAbOyd64aowLm3lNLWROQ2pWTr9Tnuja6mNZHL1t0Fcg8iCyDslWR++iQxgm\noiMemEw1s7TUnoU4NyfYg6BjH2HgfirfaFnzfWG7xbc4LDNIwNctGk4gL2d9\nrO6T\r\n=+km2\r\n-----END PGP SIGNATURE-----\r\n"
   },
+  "_hasShrinkwrap": false,
   "versions": [
     {
       "number": "1.1.0",
@@ -111,10 +117,158 @@
     {
       "number": "2.1.0",
       "date": "2017-12-20T19:36:15.619Z"
+    },
+    {
+      "number": "2.2.0",
+      "date": "2018-01-22T22:26:06.773Z"
+    },
+    {
+      "number": "2.3.0",
+      "date": "2018-01-22T22:36:34.622Z"
+    },
+    {
+      "number": "2.4.0",
+      "date": "2018-01-23T01:07:25.037Z"
+    },
+    {
+      "number": "2.5.0",
+      "date": "2018-01-23T03:46:37.268Z"
+    },
+    {
+      "number": "2.6.0",
+      "date": "2018-01-31T22:06:43.924Z"
+    },
+    {
+      "number": "2.7.0",
+      "date": "2018-01-31T22:16:30.804Z"
+    },
+    {
+      "number": "2.8.0",
+      "date": "2018-01-31T22:26:09.767Z"
+    },
+    {
+      "number": "2.9.0",
+      "date": "2018-02-07T01:45:44.354Z"
+    },
+    {
+      "number": "2.10.0",
+      "date": "2018-02-07T01:53:54.102Z"
+    },
+    {
+      "number": "2.11.0",
+      "date": "2018-02-21T21:27:16.093Z"
+    },
+    {
+      "number": "2.11.2",
+      "date": "2018-02-22T17:03:50.796Z"
+    },
+    {
+      "number": "2.12.0",
+      "date": "2018-02-22T17:07:22.858Z"
+    },
+    {
+      "number": "2.12.1",
+      "date": "2018-02-22T18:16:51.383Z"
+    },
+    {
+      "number": "2.13.0",
+      "date": "2018-02-22T18:26:24.722Z"
+    },
+    {
+      "number": "2.14.0",
+      "date": "2018-03-05T20:08:14.180Z"
+    },
+    {
+      "number": "2.15.0",
+      "date": "2018-03-05T20:17:08.355Z"
+    },
+    {
+      "number": "2.16.0",
+      "date": "2018-03-06T01:46:07.052Z"
+    },
+    {
+      "number": "2.17.0",
+      "date": "2018-03-06T01:56:22.388Z"
+    },
+    {
+      "number": "2.18.0",
+      "date": "2018-03-09T16:05:59.401Z"
+    },
+    {
+      "number": "2.19.0",
+      "date": "2018-03-09T17:25:52.090Z"
+    },
+    {
+      "number": "2.20.0",
+      "date": "2018-03-15T16:17:44.667Z"
+    },
+    {
+      "number": "2.21.0",
+      "date": "2018-03-15T16:26:59.888Z"
+    },
+    {
+      "number": "2.22.0",
+      "date": "2018-03-15T17:16:33.751Z"
+    },
+    {
+      "number": "2.23.0",
+      "date": "2018-03-16T18:56:01.431Z"
+    },
+    {
+      "number": "2.24.0",
+      "date": "2018-03-20T21:16:27.591Z"
+    },
+    {
+      "number": "2.25.0",
+      "date": "2018-03-27T21:06:50.140Z"
+    },
+    {
+      "number": "2.26.0",
+      "date": "2018-03-30T18:46:09.930Z"
+    },
+    {
+      "number": "2.27.0",
+      "date": "2018-04-03T20:56:28.314Z"
+    },
+    {
+      "number": "2.28.0",
+      "date": "2018-04-13T16:16:35.376Z"
+    },
+    {
+      "number": "2.29.0",
+      "date": "2018-04-24T16:56:21.654Z"
+    },
+    {
+      "number": "2.30.0",
+      "date": "2018-04-26T16:06:20.247Z"
+    },
+    {
+      "number": "2.31.0",
+      "date": "2018-04-26T16:16:18.695Z"
+    },
+    {
+      "number": "2.32.0",
+      "date": "2018-04-26T18:36:26.193Z"
+    },
+    {
+      "number": "2.33.0",
+      "date": "2018-04-27T00:46:16.026Z"
+    },
+    {
+      "number": "2.34.0",
+      "date": "2018-04-27T01:06:34.880Z"
+    },
+    {
+      "number": "2.35.0",
+      "date": "2018-05-01T20:46:30.803Z"
+    },
+    {
+      "number": "2.36.0",
+      "date": "2018-05-01T20:55:44.979Z"
     }
   ],
   "created": "2017-12-19T19:15:42.118Z",
-  "modified": "2017-12-20T19:36:15.619Z",
+  "modified": "2018-05-01T20:55:48.818Z",
   "lastPublisher": {
     "name": "electron",
     "email": "electron@github.com"

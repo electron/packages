@@ -1,23 +1,26 @@
 {
   "name": "gorgon",
   "appName": "Gorgon Server",
-  "version": "0.1.3",
+  "version": "0.1.5",
   "description": "An ES6 highly scriptable, configurable, and network capable service container server for Node JS.",
   "main": "lib/gorgon.js",
   "engines": {
-    "node": ">=5.11.0",
+    "node": ">=8.0.0",
     "npm": "^3.0.0"
   },
   "scripts": {
     "preinstall": "cp -n src/config/config.example.js src/config/config.js && cp -n src/config/env.example.js src/config/env.js",
     "postinstall": "echo Install complete - Run: npm run install-global - to install build tools for and electron",
     "babel": "babel-node src/gorgon.js --presets es2015,stage-2",
-    "babel-debug": "babel-node-debug src/gorgon.js --presets es2015,stage-2",
+    "babel-debug": "babel-node src/gorgon.js --presets es2015,stage-2 --inspect",
     "compile": "better-npm-run compile",
     "compile-dev": "better-npm-run compile-dev",
     "BuildUpdate": "grunt --gruntfile build/grunt/BuildUpdate.js",
     "test": "mocha --compilers js:babel-core/register --colors ./test/*.js",
     "test-better": "better-npm-run test",
+    "compile-StatusMonitor": "better-npm-run compile-StatusMonitor",
+    "dev-StatusService": "grunt --gruntfile build/grunt/StatusService.js",
+    "build-StatusService": "grunt --gruntfile build/grunt/StatusService.js build",
     "install-global": "npm install node-gyp -g && npm install asar -g && npm install electron-packager -g && npm install electron-builder -g"
   },
   "betterScripts": {
@@ -29,6 +32,12 @@
     },
     "compile-dev": {
       "command": "webpack-dev-server --inline --hot --mode=build --progress --colors --config build/webpack.config.dev.js",
+      "env": {
+        "DEBUG": "app:*"
+      }
+    },
+    "compile-StatusMonitor": {
+      "command": "webpack --mode=build --progress --colors --config build/webpack/webpack.config.StatusMonitor.js",
       "env": {
         "DEBUG": "app:*"
       }
@@ -69,11 +78,12 @@
     "fileNameMinified": ".min.js"
   },
   "publicVersion": "0.1",
-  "minorVersion": 3,
-  "buildNumber": "102",
+  "minorVersion": 5,
+  "buildNumber": "120",
   "homepage": "https://github.com/manufacturing-industry/gorgon#readme",
   "dependencies": {
     "async-config": "^1.1.1",
+    "babel": "^6.5.2",
     "babel-cli": "^6.11.4",
     "babel-core": "^6.14.0",
     "babel-loader": "^6.2.5",
@@ -92,12 +102,16 @@
     "css-loader": "^0.24.0",
     "cssnano": "^3.7.4",
     "debug": "^2.2.0",
-    "electron-prebuilt": "^1.3.1",
     "express": "^4.14.0",
     "express-session": "^1.14.1",
     "extract-text-webpack-plugin": "^1.0.0",
     "file-loader": "^0.9.0",
     "fs-extra": "^0.30.0",
+    "grunt": "^1.0.1",
+    "grunt-gitinfo": "^0.1.8",
+    "grunt-json-generator": "^0.1.0",
+    "grunt-update-json": "^0.2.2",
+    "hashids": "^1.1.1",
     "history": "^2.0.0",
     "html-webpack-plugin": "^2.22.0",
     "http-server": "^0.9.0",
@@ -115,7 +129,8 @@
     "node-sass": "^3.7.0",
     "normalize.css": "^4.1.1",
     "postcss-loader": "^0.11.1",
-    "pug": "^2.0.0-beta6",
+    "react": "^16.2.0",
+    "react-dom": "^16.2.0",
     "rimraf": "^2.5.4",
     "sanitize-filename": "^1.6.0",
     "sass-loader": "^4.0.0",
@@ -134,27 +149,12 @@
     "yargs": "^5.0.0"
   },
   "devDependencies": {
-    "babel": "^6.5.2",
-    "babel-cli": "^6.11.4",
-    "babel-core": "^6.11.4",
     "babel-eslint": "^6.1.2",
-    "babel-loader": "^6.2.4",
     "babel-plugin-add-module-exports": "^0.2.1",
+    "babel-plugin-external-helpers": "^6.18.0",
     "babel-plugin-transform-es2015-modules-commonjs-simple": "^6.7.4",
-    "babel-preset-es2015": "^6.16.0",
-    "babel-preset-es2015-webpack": "^6.4.3",
     "babel-preset-react": "^6.11.1",
     "babel-preset-stage-2": "^6.13.0",
-    "chai": "^3.5.0",
-    "chai-as-promised": "^5.3.0",
-    "chai-enzyme": "^0.5.0",
-    "cheerio": "^0.20.0",
-    "codecov": "^1.0.1",
-    "electron": "^1.3.1",
-    "electron-builder": "^5.20.0",
-    "electron-packager": "^7.4.0",
-    "electron-prebuilt": "^1.3.1",
-    "enzyme": "^2.0.0",
     "eslint": "^3.2.0",
     "eslint-config-standard": "^6.0.0",
     "eslint-config-standard-react": "^4.0.0",
@@ -163,48 +163,17 @@
     "eslint-plugin-promise": "^2.0.0",
     "eslint-plugin-react": "^6.0.0",
     "eslint-plugin-standard": "^2.0.0",
-    "grunt": "^1.0.1",
-    "grunt-babel": "^6.0.0",
-    "grunt-contrib-clean": "^0.7.0",
-    "grunt-contrib-concat": "^1.0.1",
-    "grunt-contrib-copy": "^0.8.2",
-    "grunt-contrib-csslint": "^0.5.0",
-    "grunt-contrib-cssmin": "^0.14.0",
-    "grunt-contrib-jshint": "^0.10.0",
-    "grunt-contrib-uglify": "^0.11.1",
-    "grunt-contrib-watch": "^0.6.1",
-    "grunt-eslint": "^19.0.0",
-    "grunt-file-append": "^0.0.6",
-    "grunt-gitinfo": "^0.1.8",
-    "grunt-json-generator": "^0.1.0",
-    "grunt-remove": "^0.1.0",
-    "grunt-update-json": "^0.2.2",
     "isparta-loader": "^2.0.0",
     "jshint": "^2.9.3",
-    "json-loader": "^0.5.4",
-    "karma": "^1.0.0",
-    "karma-coverage": "^1.0.0",
-    "karma-mocha": "^1.0.1",
-    "karma-mocha-reporter": "^2.0.0",
-    "karma-phantomjs-launcher": "^1.0.2",
-    "karma-webpack-with-fast-source-maps": "^1.9.2",
-    "mocha": "^3.0.2",
-    "node-inspector": "^0.12.8",
     "nodemon": "^1.10.2",
-    "phantomjs-prebuilt": "^2.1.12",
-    "sinon": "^1.17.5",
-    "sinon-chai": "^2.8.0",
-    "webpack": "^1.13.1",
-    "webpack-dev-middleware": "^1.6.1",
-    "webpack-hot-middleware": "^2.12.2",
-    "yargs": "^4.8.1"
+    "rollup-plugin-babel": "^2.6.1"
   },
-  "gitHead": "54a1ee5d5d9335ce8eedc8975f2b0f6820d968be",
-  "_npmVersion": "3.10.8",
-  "_nodeVersion": "6.2.1",
+  "gitHead": "32294e6e919e13d92305db6ce888b85d94d76464",
+  "_npmVersion": "4.1.2",
+  "_nodeVersion": "8.1.4",
   "dist": {
-    "shasum": "fed3937eed29e7819a6964aa663a3e1f5a77fecf",
-    "tarball": "http://registry.npmjs.org/gorgon/-/gorgon-0.1.3.tgz"
+    "shasum": "a96313b6612ccb56c16e951df83c27728e3aec33",
+    "tarball": "https://registry.npmjs.org/gorgon/-/gorgon-0.1.5.tgz"
   },
   "stars": 1,
   "versions": [
@@ -227,10 +196,14 @@
     {
       "number": "0.1.3",
       "date": "2016-10-17T05:29:35.743Z"
+    },
+    {
+      "number": "0.1.5",
+      "date": "2018-01-22T07:05:40.802Z"
     }
   ],
   "created": "2016-09-11T07:18:00.228Z",
-  "modified": "2016-10-17T05:29:35.743Z",
+  "modified": "2018-01-22T07:05:40.802Z",
   "lastPublisher": {
     "name": "rrentfro",
     "email": "rrentfro@gmail.com"

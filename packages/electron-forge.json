@@ -1,6 +1,6 @@
 {
   "name": "electron-forge",
-  "version": "4.2.0",
+  "version": "5.2.1",
   "description": "A complete tool for building modern Electron applications",
   "repository": {
     "user": "electron-userland",
@@ -68,14 +68,14 @@
     "eslint-config-airbnb-base": "^8.0.0",
     "eslint-plugin-import": "^1.16.0",
     "eslint-plugin-mocha": "^4.8.0",
-    "fetch-mock": "^5.1.0",
+    "fetch-mock": "^6.0.0",
     "generate-changelog": "^1.0.2",
     "gulp": "^3.9.1",
     "gulp-babel": "^6.1.2",
-    "mocha": "^4.0.1",
+    "mocha": "^5.0.0",
     "nodemon": "^1.11.0",
     "nyc": "^11.0.0",
-    "proxyquire": "^1.7.10",
+    "proxyquire": "^2.0.1",
     "sinon": "^4.1.2"
   },
   "babel": {
@@ -120,6 +120,7 @@
     "cache": true
   },
   "dependencies": {
+    "@octokit/rest": "^15.2.6",
     "aws-sdk": "^2.9.0",
     "babel-register": "^6.16.3",
     "bluebird": "^3.4.6",
@@ -131,21 +132,22 @@
     "electron-forge-template-react": "^1.0.2",
     "electron-forge-template-react-typescript": "^1.0.3",
     "electron-forge-template-vue": "^1.0.2",
-    "electron-packager": "^10.1.0",
+    "electron-packager": "^11.0.0",
     "electron-rebuild": "^1.6.0",
+    "exact-version": "^1.0.1",
     "form-data": "^2.1.4",
-    "fs-extra": "^4.0.0",
-    "github": "^12.0.3",
+    "fs-extra": "^5.0.0",
     "glob": "^7.1.1",
-    "inquirer": "^4.0.0",
+    "inquirer": "^5.0.0",
     "lodash.merge": "^4.6.0",
     "lodash.template": "^4.4.0",
     "log-symbols": "^2.0.0",
-    "node-fetch": "^1.6.3",
+    "mime-types": "^2.1.17",
+    "node-fetch": "^2.0.0",
     "node-gyp": "^3.4.0",
     "nugget": "^2.0.1",
     "opn": "^5.0.0",
-    "ora": "^1.1.0",
+    "ora": "^2.0.0",
     "parse-author": "^2.0.0",
     "pify": "^3.0.0",
     "resolve-package": "^1.0.1",
@@ -156,12 +158,14 @@
     "username": "^3.0.0",
     "yarn-or-npm": "^2.0.2",
     "zip-folder": "^1.0.0",
-    "electron-installer-debian": "^0.7.1",
+    "electron-installer-debian": "^0.8.0",
     "electron-installer-dmg": "^0.2.0",
     "electron-installer-flatpak": "^0.8.0",
     "electron-installer-redhat": "^0.5.0",
+    "electron-installer-snap": "^2.0.0",
     "electron-windows-store": "^0.12.0",
-    "electron-winstaller": "^2.5.0"
+    "electron-winstaller": "^2.5.0",
+    "electron-wix-msi": "^1.3.0"
   },
   "config": {
     "commitizen": {
@@ -172,24 +176,30 @@
     }
   },
   "optionalDependencies": {
-    "electron-installer-debian": "^0.7.1",
+    "electron-installer-debian": "^0.8.0",
     "electron-installer-dmg": "^0.2.0",
     "electron-installer-flatpak": "^0.8.0",
     "electron-installer-redhat": "^0.5.0",
+    "electron-installer-snap": "^2.0.0",
     "electron-windows-store": "^0.12.0",
-    "electron-winstaller": "^2.5.0"
+    "electron-winstaller": "^2.5.0",
+    "electron-wix-msi": "^1.3.0"
   },
   "engines": {
     "node": ">= 6.0"
   },
-  "gitHead": "6e93e292af6c8cbca2c21802799d699ad699931a",
+  "gitHead": "977d112fb5f34304e5b7fdf33d0f63c6708298b8",
   "homepage": "https://github.com/electron-userland/electron-forge#readme",
   "_npmVersion": "3.10.10",
-  "_nodeVersion": "6.11.1",
+  "_nodeVersion": "6.14.2",
   "dist": {
-    "shasum": "1286c93ba24198b64dadb7c334ad09c55f4606e3",
-    "tarball": "https://registry.npmjs.org/electron-forge/-/electron-forge-4.2.0.tgz"
+    "shasum": "3b7fa74ad5ce3efb54e07a71d14f02e29a0e4e31",
+    "tarball": "https://registry.npmjs.org/electron-forge/-/electron-forge-5.2.1.tgz",
+    "fileCount": 108,
+    "unpackedSize": 605472,
+    "npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJa756jCRA9TVsSAnZWagAAgOIP/1mZpLbEdW/AkEJB7rpt\n8UH6RGnTDKsZkBRbWuhj1hCcdp4UFB6ghaGabzyZfAQ4EC5ERdUiKrvdMkAn\noiMYd1Jlp3qe2jLoUJpmWnnm97+qiUMNiuSLg6/wMEgnqhJneJcItFHpfMSg\nMLJ7y3N2LQFJzIc77pNUefwiKI4xKTWSwEyuVRKlsrnB93E6aCkKZblRgsF/\npmd51l1tFRdJIrAGqsDAwwfytPmJ+qxBjnaQHcXXkjkrw9sDI26pJ2wYmV/O\nHs5Jsii1DTPGMZgAh8/2o3cxIA5DVmbPkRJ5t524iRAOC4C/BHMg1Pr0yhMi\nWSe3/pw5DgncO+VDcMVa50Hk6pd4a4lqI4H87gxf6TbrDPzl98Dr6L8syEwe\nlgqJp+C/ZTwCaz0XNCufp+DIA++OKCqldFdjCLFPVim6/4eERK0796SG1Ahj\nw3p7hPyXLbdjN0aWH2gCTJr0LlzlAopmvkEhJizQYkOZPoGIOb552ERDcmVM\n733VqXovWDXWynSyUWApbAghHDuo4WcUJ8GqyR+LfKJmrhKseaP51Dk4Vr+9\nFSHcp4MwqxfmLvOhVDwirHKQ+RE83+kdZLMbNk9VilrCUDXnGad/Y+e629An\ny2eEcunlE0KKvCL2NYInctlCfVTAuyaOFPbMGYFJlyqsstN/VRwJmdgiajFG\nKaHq\r\n=S4py\r\n-----END PGP SIGNATURE-----\r\n"
   },
+  "_hasShrinkwrap": false,
   "stars": 15,
   "versions": [
     {
@@ -423,13 +433,45 @@
     {
       "number": "4.2.0",
       "date": "2018-01-08T05:09:34.362Z"
+    },
+    {
+      "number": "4.2.1",
+      "date": "2018-01-30T01:25:22.512Z"
+    },
+    {
+      "number": "4.3.0",
+      "date": "2018-01-31T00:39:13.449Z"
+    },
+    {
+      "number": "5.0.0",
+      "date": "2018-02-01T03:11:44.045Z"
+    },
+    {
+      "number": "5.1.0",
+      "date": "2018-02-05T06:47:56.746Z"
+    },
+    {
+      "number": "5.1.1",
+      "date": "2018-02-15T17:37:30.657Z"
+    },
+    {
+      "number": "5.1.2",
+      "date": "2018-04-10T03:40:39.814Z"
+    },
+    {
+      "number": "5.2.0",
+      "date": "2018-04-15T21:43:40.993Z"
+    },
+    {
+      "number": "5.2.1",
+      "date": "2018-05-07T00:32:32.178Z"
     }
   ],
   "created": "2016-10-05T15:09:34.738Z",
-  "modified": "2018-01-08T05:09:34.362Z",
+  "modified": "2018-05-07T00:32:39.025Z",
   "lastPublisher": {
-    "name": "marshallofsound",
-    "email": "samuel.r.attard@gmail.com"
+    "name": "malept",
+    "email": "nodejs.npm.nospam@lazymalevolence.com"
   },
   "owners": [
     {

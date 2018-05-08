@@ -1,13 +1,18 @@
 {
   "name": "swagger-editor-offline",
-  "version": "0.0.3",
+  "version": "0.0.12",
   "description": "Cross-platform desktop version of swagger-editor",
   "main": "./main.js",
   "scripts": {
-    "postinstall": "postinstall-build editorSrc",
+    "postinstall": "postinstall-build editorSrc --script build:postinstall",
     "start": "cross-env NODE_ENV=development electron --inspect main.js",
     "clean": "gulp clean",
-    "build": "cross-env NODE_ENV=production gulp"
+    "build:postinstall": "cross-env NODE_ENV=production gulp postinstall",
+    "build": "cross-env NODE_ENV=production gulp",
+    "pack:dir": "electron-builder --projectDir electron --dir",
+    "pack": "electron-builder --projectDir electron",
+    "release:prepare": "npm version patch -m \"Release: %s\"",
+    "release": "npm-run-all clean build \"pack -- {@}\" --"
   },
   "bin": {
     "swagger-editor-offline": "bin/swagger-editor-offline.js"
@@ -35,30 +40,38 @@
   "license": "MIT",
   "homepage": "https://github.com/XuluWarrior/swagger-editor-offline",
   "devDependencies": {
-    "cross-env": "^5.0.5",
+    "cross-env": "^5.1.1",
     "del": "^3.0.0",
-    "electron-builder": "^19.36.0",
+    "electron-builder": "^19.55.2",
     "electron-load-devtool": "^0.5.1",
     "envify": "^4.1.0",
     "gulp": "^3.9.1",
     "gulp-envify": "^1.0.0",
     "gulp-string-replace": "^0.4.0",
     "gulp-uglify": "^3.0.0",
-    "npm-run-all": "^4.1.1",
-    "swagger-editor-dist": "^3.1.16"
+    "npm-run-all": "^4.1.2",
+    "swagger-editor-dist": "^3.1.18"
   },
   "dependencies": {
-    "electron": "^1.7.9",
+    "electron": "^1.8.4",
+    "electron-updater": "^2.20.1",
     "postinstall-build": "^5.0.1"
   },
-  "gitHead": "bdc08cd7b1262088d439813cd5233a83165ed114",
-  "_npmVersion": "5.5.1",
-  "_nodeVersion": "6.3.1",
-  "dist": {
-    "integrity": "sha512-5D+8/2Af5aWQFX9XSgIFWR3BxgPlgsL7f8ZL2PR+3Sa0WtqaOWgQu6QrFF2WWiWVsH9EWWLFTmj0+jjTkupeXw==",
-    "shasum": "6e7cdaf3a273854a205e25c706347c1f35278e12",
-    "tarball": "https://registry.npmjs.org/swagger-editor-offline/-/swagger-editor-offline-0.0.3.tgz"
+  "electronDependencies": {
+    "electron-updater": "^2.20.1",
+    "postinstall-build": "^5.0.1"
   },
+  "gitHead": "9b65642f5ed7369f2931b9f78aa562f37a013c19",
+  "_npmVersion": "5.6.0",
+  "_nodeVersion": "8.10.0",
+  "dist": {
+    "integrity": "sha512-9bDkiZlseY6lOFSL8NkpNjXmOjtOM3nbLCX8nPi/WfP+Ep2BMakgW4LtUYdEkzdTemDTriVFfqxtcW95cPBaVw==",
+    "shasum": "280c6c26eb57e3ae813cebbf12815b2ddc296faf",
+    "tarball": "http://registry.npmjs.org/swagger-editor-offline/-/swagger-editor-offline-0.0.12.tgz",
+    "fileCount": 8,
+    "unpackedSize": 12517
+  },
+  "_hasShrinkwrap": false,
   "versions": [
     {
       "number": "0.0.1",
@@ -71,10 +84,18 @@
     {
       "number": "0.0.3",
       "date": "2017-11-24T13:06:28.734Z"
+    },
+    {
+      "number": "0.0.11",
+      "date": "2018-02-28T17:28:53.249Z"
+    },
+    {
+      "number": "0.0.12",
+      "date": "2018-03-26T19:23:16.352Z"
     }
   ],
   "created": "2017-11-23T16:15:09.213Z",
-  "modified": "2017-11-24T13:06:28.734Z",
+  "modified": "2018-03-26T19:23:16.678Z",
   "lastPublisher": {
     "name": "xuluwarrior",
     "email": "npm@xuluwarrior.org"

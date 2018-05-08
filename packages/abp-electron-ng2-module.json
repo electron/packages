@@ -1,0 +1,84 @@
+{
+  "name": "abp-electron-ng2-module",
+  "version": "1.0.0",
+  "description": "AspNet Boilerplate Electron Angular Module",
+  "main": "dist/bundles/abp-ng2-module.umd.js",
+  "module": "dist/index.js",
+  "scripts": {
+    "cleanup": "rimraf dist/bundles dist/src dist/index.d.ts dist/index.metadata.json dist/index.js dist/index.js.map dist/LICENSE dist/README.md",
+    "bundling": "rollup -c",
+    "minify": "uglifyjs dist/bundles/abp-ng2-module.umd.js --screw-ie8 --compress --mangle --comments --output dist/bundles/abp-ng2-module.umd.min.js",
+    "copy": "copyfiles LICENSE README.md dist",
+    "build": "npm run cleanup && ngc && npm run bundling && npm run minify && npm run copy",
+    "publish-to-npm": "cd dist && npm publish"
+  },
+  "keywords": [
+    "angular",
+    "angular2",
+    "aspnetboilerplate"
+  ],
+  "author": {
+    "name": "Ömer Yusuf Başavul",
+    "email": "omerbasavul@gmail.com"
+  },
+  "license": "MIT",
+  "repository": {
+    "user": "YazgelderRp",
+    "repo": "abp-electron-ng2-module",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/YazgelderRp/abp-electron-ng2-module/tarball/master",
+    "clone_url": "https://github.com/YazgelderRp/abp-electron-ng2-module",
+    "https_url": "https://github.com/YazgelderRp/abp-electron-ng2-module",
+    "travis_url": "https://travis-ci.org/YazgelderRp/abp-electron-ng2-module",
+    "zip_url": "https://github.com/YazgelderRp/abp-electron-ng2-module/archive/master.zip",
+    "api_url": "https://api.github.com/repos/YazgelderRp/abp-electron-ng2-module"
+  },
+  "dependencies": {
+    "@angular/core": "^5.0.0",
+    "@angular/http": "^5.0.0",
+    "abp-electron-resources": "^1.0.0"
+  },
+  "devDependencies": {
+    "@angular/compiler": "^5.0.0",
+    "@angular/compiler-cli": "^5.0.0",
+    "copyfiles": "^1.0.0",
+    "rimraf": "^2.5.4",
+    "rollup": "^0.37.0",
+    "typescript": "^2.3.4",
+    "uglify-js": "^2.7.5",
+    "rxjs": "^5.5.2",
+    "zone.js": "^0.8.17"
+  },
+  "gitHead": "7f63f788ed73b6c5bc8ed8631c57c65bce7292a8",
+  "homepage": "https://github.com/YazgelderRp/abp-electron-ng2-module#readme",
+  "_npmVersion": "5.6.0",
+  "_nodeVersion": "8.9.4",
+  "dist": {
+    "integrity": "sha512-Wrlo3w/t9tI4PAcUd3Cp33f4IDND8pZWSzc7vV4P+JC2RapTImzWKus1NT3Yac9drz7Cj9PuMgg1x13aNcAcXg==",
+    "shasum": "6bb6b2fcb780129589867a13cc06083aa3076739",
+    "tarball": "http://registry.npmjs.org/abp-electron-ng2-module/-/abp-electron-ng2-module-1.0.0.tgz",
+    "fileCount": 111,
+    "unpackedSize": 187714
+  },
+  "_hasShrinkwrap": false,
+  "versions": [
+    {
+      "number": "1.0.0",
+      "date": "2018-03-06T15:12:00.597Z"
+    }
+  ],
+  "created": "2018-03-06T15:12:00.554Z",
+  "modified": "2018-03-06T15:12:01.852Z",
+  "lastPublisher": {
+    "name": "omerbasavul",
+    "email": "omerbasavul@gmail.com"
+  },
+  "owners": [
+    {
+      "name": "omerbasavul",
+      "email": "omerbasavul@gmail.com"
+    }
+  ]
+}

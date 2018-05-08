@@ -1,7 +1,7 @@
 {
   "name": "particle-cli",
   "description": "Simple Node commandline application for working with your Particle devices and using the Particle Cloud",
-  "version": "1.27.0",
+  "version": "1.29.0",
   "author": {
     "name": "David Middlecamp"
   },
@@ -51,14 +51,12 @@
     }
   ],
   "dependencies": {
-    "babel-polyfill": "^6.9.1",
-    "babel-runtime": "^6.9.2",
     "binary-version-reader": "^0.4.0",
     "chalk": "^1.0.0",
     "cli-spinner": "^0.2.1",
     "cli-table": "^0.3.1",
     "es6-promisify": "^4.1.0",
-    "form-data": "https://github.com/spark/form-data/releases/download/v1.0.0-relativepath.2/form-data-1.0.0-relativepath.2.tgz",
+    "form-data": "https://github.com/particle-iot/form-data/releases/download/v1.0.0-relativepath.2/form-data-1.0.0-relativepath.2.tgz",
     "glob": "^5.0.15",
     "handlebars": "^4.0.5",
     "hogan.js": "^2.0.0",
@@ -70,7 +68,7 @@
     "particle-api-js": "^6.4.1",
     "particle-commands": "0.2.11",
     "particle-library-manager": "0.1.12",
-    "request": "https://github.com/spark/request/releases/download/v2.75.1-relativepath.1/request-2.75.1-relativepath.1.tgz",
+    "request": "https://github.com/particle-iot/request/releases/download/v2.75.1-relativepath.1/request-2.75.1-relativepath.1.tgz",
     "safe-buffer": "^5.1.1",
     "semver": "^5.1.0",
     "serialport": "^6.0.4",
@@ -87,7 +85,10 @@
     "babel-eslint": "^7.1.1",
     "babel-istanbul": "^0.12.2",
     "babel-plugin-add-module-exports": "^0.1.2",
-    "babel-preset-es2015": "^6.5.0",
+    "babel-plugin-transform-es2015-destructuring": "^6.23.0",
+    "babel-plugin-transform-es2015-modules-commonjs": "^6.26.0",
+    "babel-plugin-transform-es2015-parameters": "^6.24.1",
+    "babel-plugin-transform-es2015-spread": "^6.22.0",
     "babel-register": "^6.5.2",
     "chai": "^3.5.0",
     "chai-as-promised": "^5.3.0",
@@ -104,17 +105,14 @@
     "proxyquire": "^1.6.0",
     "rimraf-promise": "^2.0.0",
     "should": "^7.0.2",
-    "sinon": "^1.15.4",
-    "sinon-as-promised": "^4.0.2",
-    "sinon-chai": "^2.8.0",
-    "testdouble": "^1.6.0",
-    "testdouble-chai": "^0.2.2",
+    "sinon": "^4.4.2",
+    "sinon-chai": "^2.14.0",
     "tmp": "0.0.28"
   },
   "engines": {
-    "node": ">=0.10.40"
+    "node": ">=4.4"
   },
-  "homepage": "https://github.com/spark/particle-cli/",
+  "homepage": "https://github.com/particle-iot/particle-cli/",
   "keywords": [
     "cli",
     "core",
@@ -128,28 +126,28 @@
   "main": "./bin/particle.js",
   "preferGlobal": true,
   "repository": {
-    "user": "spark",
+    "user": "particle-iot",
     "repo": "particle-cli",
     "host": "github.com",
     "branch": "master",
     "apiHost": "api.github.com",
-    "tarball_url": "https://api.github.com/repos/spark/particle-cli/tarball/master",
-    "clone_url": "https://github.com/spark/particle-cli",
-    "https_url": "https://github.com/spark/particle-cli",
-    "travis_url": "https://travis-ci.org/spark/particle-cli",
-    "zip_url": "https://github.com/spark/particle-cli/archive/master.zip",
-    "api_url": "https://api.github.com/repos/spark/particle-cli"
+    "tarball_url": "https://api.github.com/repos/particle-iot/particle-cli/tarball/master",
+    "clone_url": "https://github.com/particle-iot/particle-cli",
+    "https_url": "https://github.com/particle-iot/particle-cli",
+    "travis_url": "https://travis-ci.org/particle-iot/particle-cli",
+    "zip_url": "https://github.com/particle-iot/particle-cli/archive/master.zip",
+    "api_url": "https://api.github.com/repos/particle-iot/particle-cli"
   },
   "scripts": {
     "all": "npm run lint && npm run test && npm run accept",
     "accept": "npm run compile && accept/run",
     "babel-watch": "babel src -d dist --watch --source-maps",
-    "coverage": "babel-node node_modules/.bin/babel-istanbul cover _mocha test/app test/cli test/integration test/oldcmd test/oldcmd/WirelessCommand/connect test/oldlib  --report html -- -R spec",
+    "coverage": "babel-node node_modules/.bin/babel-istanbul cover _mocha test/app test/cli test/cmd test/integration test/dist/lib  --report html -- -R spec",
     "coveralls": "istanbul cover ./node_modules/mocha/bin/_mocha --report lcovonly -- -R spec --compilers js:babel-register test/ && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js && rm -rf ./coverage",
     "doctoc": "doctoc --title '## Table of Contents' README.md",
-    "lint": "eslint -f unix src/**/*.js",
-    "lint:fix": "eslint --fix -f unix src/**/*.js",
-    "test": "mocha test/ test/oldcmd/ test/app test/cli test/integration --compilers js:babel-register",
+    "lint": "eslint -f unix src/**",
+    "lint:fix": "eslint --fix -f unix src/**",
+    "test": "mocha test/ test/app test/cli test/cmd test/integration --compilers js:babel-register",
     "compile": "babel src -d dist",
     "prepublish": "npm run compile",
     "update-firmware-binaries": "node scripts/update-firmware-binaries.js",
@@ -159,14 +157,17 @@
   "yargs": {
     "camel-case-expansion": false
   },
-  "gitHead": "5df51c9ef3626f828f62f8f4d3559b0b775dc930",
-  "_npmVersion": "5.4.2",
-  "_nodeVersion": "6.11.4",
+  "gitHead": "28cc3515b4d1827f529eba51b3211285caccd534",
+  "_npmVersion": "5.8.0",
+  "_nodeVersion": "8.10.0",
   "dist": {
-    "integrity": "sha512-fYmxaYIduV5gwFrsPxSuXd/LhS+Ww7FpsmifjjBEzrcx5eN3+PthWhEFegeChDCTMo5tY7bLWfFtKEOAOROuKw==",
-    "shasum": "607e07c75ee90fc84ac705c2375142baceebf0c5",
-    "tarball": "https://registry.npmjs.org/particle-cli/-/particle-cli-1.27.0.tgz"
+    "integrity": "sha512-OEFpifMjSHziq2HepUKDhyX3PmOYMf6bDyhjVqDhP5TSI9jiOWSGEPVaE5dYn8R5q5XW+NfyauTtA/oV2dZK+Q==",
+    "shasum": "df8461dfe3ce99acafd948fbffc22e28a48eae5d",
+    "tarball": "http://registry.npmjs.org/particle-cli/-/particle-cli-1.29.0.tgz",
+    "fileCount": 264,
+    "unpackedSize": 2551610
   },
+  "_hasShrinkwrap": false,
   "stars": 1,
   "versions": [
     {
@@ -532,18 +533,38 @@
     {
       "number": "1.27.0",
       "date": "2017-12-06T03:09:04.311Z"
+    },
+    {
+      "number": "1.27.1",
+      "date": "2018-01-22T16:22:15.952Z"
+    },
+    {
+      "number": "1.28.0",
+      "date": "2018-03-08T15:47:49.616Z"
+    },
+    {
+      "number": "1.28.1",
+      "date": "2018-03-08T22:40:56.603Z"
+    },
+    {
+      "number": "1.28.2",
+      "date": "2018-03-21T18:55:21.176Z"
+    },
+    {
+      "number": "1.29.0",
+      "date": "2018-03-26T19:01:49.744Z"
     }
   ],
   "created": "2015-05-15T04:30:10.272Z",
-  "modified": "2017-12-06T03:09:04.311Z",
+  "modified": "2018-03-26T19:01:51.189Z",
   "lastPublisher": {
-    "name": "monkbroc",
-    "email": "jvanier@gmail.com"
+    "name": "particlebot",
+    "email": "engineering+npm@particle.io"
   },
   "owners": [
     {
-      "email": "engineering+npm@particle.io",
-      "name": "particlebot"
+      "email": "david@spark.io",
+      "name": "dmiddlecamp"
     },
     {
       "email": "mat.mcgowan+npm@gmail.com",
@@ -554,8 +575,8 @@
       "name": "monkbroc"
     },
     {
-      "email": "david@spark.io",
-      "name": "dmiddlecamp"
+      "email": "engineering+npm@particle.io",
+      "name": "particlebot"
     }
   ]
 }

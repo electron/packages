@@ -1,7 +1,7 @@
 {
   "name": "bittorrent-tracker",
   "description": "Simple, robust, BitTorrent tracker (client & server) implementation",
-  "version": "9.2.4",
+  "version": "9.9.1",
   "author": {
     "name": "WebTorrent, LLC",
     "email": "feross@webtorrent.io",
@@ -17,7 +17,7 @@
     "./server.js": false
   },
   "dependencies": {
-    "bencode": "^1.0.0",
+    "bencode": "^2.0.0",
     "bittorrent-peerid": "^1.0.2",
     "bn.js": "^4.4.0",
     "compact2string": "^1.2.0",
@@ -32,13 +32,13 @@
     "run-parallel": "^1.1.2",
     "run-series": "^1.0.2",
     "safe-buffer": "^5.0.0",
-    "simple-get": "^2.0.0",
-    "simple-peer": "^8.0.0",
-    "simple-websocket": "^5.0.0",
+    "simple-get": "^3.0.0",
+    "simple-peer": "^9.0.0",
+    "simple-websocket": "^7.0.1",
     "string2compact": "^1.1.1",
     "uniq": "^1.0.1",
     "unordered-array-remove": "^1.0.2",
-    "ws": "^3.3.1",
+    "ws": "^5.0.0",
     "xtend": "^4.0.0",
     "bufferutil": "^3.0.0"
   },
@@ -78,19 +78,23 @@
     "api_url": "https://api.github.com/repos/webtorrent/bittorrent-tracker"
   },
   "scripts": {
-    "update-authors": "./bin/update-authors.sh",
+    "update-authors": "./tools/update-authors.sh",
     "test": "standard && tape test/*.js",
     "start": "node server.js"
   },
-  "gitHead": "e1f30c1971e0f976bc265cf64efdf0109f7195d4",
+  "gitHead": "f9d9fa567fd387ef18762a791a625e540a65bad1",
   "homepage": "https://github.com/webtorrent/bittorrent-tracker#readme",
-  "_npmVersion": "5.5.1",
-  "_nodeVersion": "8.9.0",
+  "_npmVersion": "6.0.0",
+  "_nodeVersion": "8.11.1",
   "dist": {
-    "integrity": "sha512-pswjWFJrIBDcNNZFYakHyTYTwRwFB5cdXL/xBbx8SRHyUvHXqnU28MBo0FWvDELCkwJlWQXKgQZn++rzjJq5Dw==",
-    "shasum": "737d585e8a6d7f3c5f8786a0855d51abae97d27b",
-    "tarball": "https://registry.npmjs.org/bittorrent-tracker/-/bittorrent-tracker-9.2.4.tgz"
+    "integrity": "sha512-PdCrhMP0ajbutZEcw5FLd/pTvcxr7m5NTXEck3t1qS+UMcC9+pie2Zd59TSFefia2ipDlstOhVAUTOlaoZLlDQ==",
+    "shasum": "a592f9383f027927a87a2704f69583278538e99a",
+    "tarball": "https://registry.npmjs.org/bittorrent-tracker/-/bittorrent-tracker-9.9.1.tgz",
+    "fileCount": 18,
+    "unpackedSize": 95672,
+    "npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJa6PnJCRA9TVsSAnZWagAAObYP/ApMkkXNfslRLyiwA3F8\n7TZEHKUUtL1Yy9BHnVmrZG36uZlvwXN4iggknXvk8bE4AVcIVgXrN2TLCAkd\neRzugxHE9UBaXYWq7OmPBOwa9owSqD6waU2fcQjnu05xVkpl1RZkBPsRI/ik\nrBnNZJWhumdova3G++Y3cnM/ouq4+VLj100+kLn6WWVnLI+LP80H+RrP53fh\npOsVmfFlvja/z2MpoASZ3LH3ikJVJu0HAqpwflkmqVRV1MV+sFEuHgFB/tR2\nxMZAl0HSaQXKzDqYneNBN7Ff5AS9vzLrBSjPJldmd0uXwOgMgUk8C8S5Q+u5\nIq17C8EXT5lJFU15Sb0QuMz0ZSILczEM7ztfJcez+0phG/cdW53MU0E02uBx\nXQpuHQGnI0Gn4jo5hznmLCF1mCFNvJaWeW90ziXUpDkBiRM/kQlbMQZN/fLi\nBn85oC5RHFs5URyTZKBJEgrlD03FgmkrVg+7Mbm3LXpbY0QY2Zf8vaIG+oYc\nwNZBz/hHGSYc9aLaxtKWS3Upp8Pq7kyBDwYKGoaJGA4m45eMiZ+bMhtFMfKR\nS7MgePdHPk45Od4GUffyzF4b4ol231f7mCVhL6F5q5+4pNw711Da2MQRb9LY\n1S9erM8t+MUHoq4z0nIX7A8X2q/jJrzdZ4b01dTx10d9ID73v8BIxS5sVQMg\nxVA8\r\n=NHTh\r\n-----END PGP SIGNATURE-----\r\n"
   },
+  "_hasShrinkwrap": false,
   "stars": 5,
   "versions": [
     {
@@ -896,15 +900,63 @@
     {
       "number": "9.2.4",
       "date": "2017-11-09T07:30:07.954Z"
+    },
+    {
+      "number": "9.3.0",
+      "date": "2018-02-03T05:40:44.533Z"
+    },
+    {
+      "number": "9.4.0",
+      "date": "2018-02-17T07:34:31.281Z"
+    },
+    {
+      "number": "9.5.0",
+      "date": "2018-02-21T18:21:42.178Z"
+    },
+    {
+      "number": "9.6.0",
+      "date": "2018-02-28T04:07:38.863Z"
+    },
+    {
+      "number": "9.7.0",
+      "date": "2018-03-08T19:56:51.405Z"
+    },
+    {
+      "number": "9.7.1",
+      "date": "2018-04-21T01:27:11.717Z"
+    },
+    {
+      "number": "9.8.0",
+      "date": "2018-04-25T00:23:38.418Z"
+    },
+    {
+      "number": "9.8.1",
+      "date": "2018-04-25T00:25:28.465Z"
+    },
+    {
+      "number": "9.9.0",
+      "date": "2018-05-01T23:31:45.314Z"
+    },
+    {
+      "number": "9.9.1",
+      "date": "2018-05-01T23:35:36.492Z"
     }
   ],
   "created": "2014-03-26T08:37:44.141Z",
-  "modified": "2017-11-09T07:30:07.954Z",
+  "modified": "2018-05-01T23:35:39.637Z",
   "lastPublisher": {
     "name": "feross",
     "email": "feross@feross.org"
   },
   "owners": [
+    {
+      "email": "dcposch@dcpos.ch",
+      "name": "dcposch"
+    },
+    {
+      "email": "diegorbaquero@gmail.com",
+      "name": "diegorbaquero"
+    },
     {
       "email": "feross@feross.org",
       "name": "feross"
@@ -914,28 +966,20 @@
       "name": "fisch0920"
     },
     {
-      "email": "ungoldman@gmail.com",
-      "name": "ungoldman"
-    },
-    {
-      "email": "w@tson.dk",
-      "name": "watson"
-    },
-    {
       "email": "flettre@gmail.com",
       "name": "flet"
-    },
-    {
-      "email": "dcposch@dcpos.ch",
-      "name": "dcposch"
     },
     {
       "email": "mathiasbuus@gmail.com",
       "name": "mafintosh"
     },
     {
-      "email": "diegorbaquero@gmail.com",
-      "name": "diegorbaquero"
+      "email": "ungoldman@gmail.com",
+      "name": "ungoldman"
+    },
+    {
+      "email": "w@tson.dk",
+      "name": "watson"
     }
   ]
 }

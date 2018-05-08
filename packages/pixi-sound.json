@@ -1,6 +1,6 @@
 {
   "name": "pixi-sound",
-  "version": "2.0.1",
+  "version": "2.0.2",
   "description": "WebAudio API playback library with filters",
   "main": "dist/pixi-sound.js",
   "module": "dist/pixi-sound.es.js",
@@ -9,7 +9,7 @@
     "pretest": "npm run build",
     "test": "npm run unit-test",
     "unit-test": "floss --path=test/dist.js",
-    "preintegrations": "npm install checkpack@^0.2.1",
+    "preintegrations": "npm install checkpack@^0.2.8",
     "integrations": "npm run integration:webpack && npm run integration:browserify && npm run integration:vanillajs",
     "integration:webpack": "checkpack webpack -e test/integration.ts --validate",
     "integration:browserify": "checkpack browserify -e test/integration.ts --validate",
@@ -24,11 +24,11 @@
     "build": "npm run build:umd && npm run build:es",
     "build:umd": "rollup -c -f umd -o dist/pixi-sound.js",
     "build:es": "rollup -c -f es -o dist/pixi-sound.es.js",
-    "predocs": "rimraf docs/** .docs && gulp comments",
+    "predocs": "rimraf docs/** .docs && comments -d .docs \"src/**/*.{ts,js}\"",
     "docs": "jsdoc -c jsdoc.conf.json -R README.md",
     "postdocs": "rimraf .docs",
     "predeploy": "npm run docs",
-    "deploy": "gulp deploy",
+    "deploy": "gh-pages -d . -s \"{dist,examples,docs}/**\"",
     "examples": "electron examples/index",
     "publish:patch": "npm version patch && npm run publish:skip",
     "publish:minor": "npm version minor && npm run publish:skip",
@@ -67,6 +67,7 @@
   "license": "MIT",
   "homepage": "https://github.com/pixijs/pixi-sound#readme",
   "devDependencies": {
+    "@pixi/jsdoc-comments": "^1.0.0",
     "@pixi/jsdoc-template": "^2.0.0",
     "@types/es6-shim": "^0.31.34",
     "@types/node": "^8.0.0",
@@ -74,8 +75,6 @@
     "electron": "^1.4.15",
     "floss": "^2.0.1",
     "gh-pages": "^0.12.0",
-    "gulp": "^3.9.1",
-    "gulp-comments": "^1.2.0",
     "jsdoc": "^3.4.3",
     "pixi.js": "^4.3.4",
     "promise-polyfill": "^6.0.2",
@@ -92,13 +91,18 @@
   "peerDependencies": {
     "pixi.js": "^4.3.4"
   },
-  "gitHead": "489b6f00617eef7d8422ea0eb39d3d0f6214db31",
-  "_npmVersion": "3.10.10",
-  "_nodeVersion": "6.11.3",
+  "dependencies": {},
+  "gitHead": "2c10f7a99b3fa0174f5a512172bedef7308e01d2",
+  "_npmVersion": "5.6.0",
+  "_nodeVersion": "8.10.0",
   "dist": {
-    "shasum": "1016fa5b5e2d9d02e10239c0cb595fec33f191d0",
-    "tarball": "https://registry.npmjs.org/pixi-sound/-/pixi-sound-2.0.1.tgz"
+    "integrity": "sha512-m5oN9vsLNQhWPJNePQ6zaLNtvEC/6/OMEfjOogprDhMEQcMKsTnuTnlUj940MAK9u0+SmtscQ3CLPQj/5yO78g==",
+    "shasum": "3a48d72287b0a5ce2d20a240ec0d724a9f62c0a2",
+    "tarball": "http://registry.npmjs.org/pixi-sound/-/pixi-sound-2.0.2.tgz",
+    "fileCount": 8,
+    "unpackedSize": 494360
   },
+  "_hasShrinkwrap": false,
   "stars": 1,
   "versions": [
     {
@@ -168,10 +172,14 @@
     {
       "number": "2.0.1",
       "date": "2017-12-16T16:50:56.380Z"
+    },
+    {
+      "number": "2.0.2",
+      "date": "2018-04-06T20:16:17.518Z"
     }
   ],
   "created": "2017-02-03T18:00:00.368Z",
-  "modified": "2017-12-16T16:50:56.380Z",
+  "modified": "2018-04-06T20:16:18.905Z",
   "lastPublisher": {
     "name": "bigtimebuddy",
     "email": "matt@mattkarl.com"

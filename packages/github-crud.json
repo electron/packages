@@ -6,7 +6,7 @@
   "bin": {
     "github-crud": "lib.github_crud.js"
   },
-  "description": "this zero-dependency package will provide a simple cli tool to PUT / GET / DELETE github files",
+  "description": "this zero-dependency package will provide a simple cli-tool to PUT / GET / DELETE github files",
   "devDependencies": {
     "electron-lite": "github:kaizhu256/node-electron-lite#alpha",
     "utility2": "github:kaizhu256/node-utility2#alpha"
@@ -21,6 +21,7 @@
   "license": "MIT",
   "main": "lib.github_crud.js",
   "name": "github-crud",
+  "nameAliasPublish": "github-content-api github-content-lite",
   "nameLib": "github_crud",
   "nameOriginal": "github-crud",
   "os": [
@@ -41,20 +42,27 @@
     "api_url": "https://api.github.com/repos/kaizhu256/node-github-crud"
   },
   "scripts": {
+    "apidocRawCreate": "[ ! -f npm_scripts.sh ] || ./npm_scripts.sh shNpmScriptApidocRawCreate",
+    "apidocRawFetch": "[ ! -f npm_scripts.sh ] || ./npm_scripts.sh shNpmScriptApidocRawFetch",
     "build-ci": "utility2 shReadmeTest build_ci.sh",
     "env": "env",
-    "heroku-postbuild": "npm uninstall utility2 2>/dev/null; npm install kaizhu256/node-utility2#alpha && utility2 shDeployHeroku",
-    "postinstall": "[ ! -f npm_scripts.sh ] || ./npm_scripts.sh postinstall",
+    "heroku-postbuild": "npm install kaizhu256/node-utility2#alpha --prefix . && utility2 shDeployHeroku",
+    "postinstall": "[ ! -f npm_scripts.sh ] || ./npm_scripts.sh shNpmScriptPostinstall",
     "start": "PORT=${PORT:-8080} utility2 start test.js",
     "test": "PORT=$(utility2 shServerPortRandom) utility2 test test.js"
   },
-  "version": "2017.11.15",
-  "_npmVersion": "3.10.10",
-  "_nodeVersion": "6.12.0",
+  "version": "2018.4.28",
+  "_npmVersion": "5.8.0",
+  "_nodeVersion": "10.0.0",
   "dist": {
-    "shasum": "95e037bf2f981ef0d10f5df5a818ff8fedf6a7e9",
-    "tarball": "https://registry.npmjs.org/github-crud/-/github-crud-2017.11.15.tgz"
+    "integrity": "sha512-jbaHiKXvKQAoztnO2JRy3iXkcMahGFPpMii4JXkat7/lOQofvm51TOXjZOZrVQHwHIDj7mr401mZa8ItLKBT4A==",
+    "shasum": "727b473bb29e8da60ed62652f12f56a48456cd92",
+    "tarball": "https://registry.npmjs.org/github-crud/-/github-crud-2018.4.28.tgz",
+    "fileCount": 5,
+    "unpackedSize": 63839,
+    "npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJa5Q1nCRA9TVsSAnZWagAAiywP/1rXkTxaVD2LvPtnocSK\n/QPprJkpC2hDP97Xs2G/e/DHLFSerFJWGJ9uYrHBci/CFNhGW2f/OnPHE4TB\nfPmfHdLmWsiuIVZCqK6ChP6gLTRNGTdiRhNJgDx1ombFbQc80HxTVl1m/Q/S\n3miaPf4do0vvtVyqt6LjmEnK7ll53EVMrKJRjuxQi12H9gilMGJ/BKFUL95i\nagJu/XEK8jo0UAtiO1lRs6jdotUSza4XG3kE5C1HQH0ZcN/3e1yVe/AGI2IT\nYrqiCKOb5wbh29qLSXFt+Qy6ZFM+Jf3AuRd5duTjq49Y6Ddjt8J8aqffqG45\n5AUAW/7R8++DCWoU/3MWg8UpfmXawzrGP66tEXSv42OG37Mo2cUcbuTv74mW\ntzInqH/jblk2tdGpUb6j6cRQ3KvYaARo65tEKb5QCx8YbKLfQrSHk/5n/Sw1\ntdAA2H2ww0p/sPb/OgdvtM70tahP4IAnm99PJ/k4GulqZhxqDXrv8guz06aP\n0A0ND21O20F1lG455noDV0ZUtLojiJ2epREt5rJfJvVkI4I6q3SogaigwSwE\nMl6AbWF5XE3OMm0depDwbNPmiktZStWKcO7F4CwWvJZLQLJmew+KGpPBp4vf\numzqs+2VMhk0syRHMZAdrCMgNoCbkcyAtTtDluls0A9a3waCkVc7xMufU1sx\nrJMB\r\n=SHgQ\r\n-----END PGP SIGNATURE-----\r\n"
   },
+  "_hasShrinkwrap": false,
   "stars": 1,
   "versions": [
     {
@@ -112,10 +120,18 @@
     {
       "number": "2017.11.15",
       "date": "2017-11-16T14:08:55.310Z"
+    },
+    {
+      "number": "2018.3.6",
+      "date": "2018-03-07T08:52:03.063Z"
+    },
+    {
+      "number": "2018.4.28",
+      "date": "2018-04-29T00:10:14.182Z"
     }
   ],
   "created": "2014-12-28T11:06:51.849Z",
-  "modified": "2017-11-16T14:08:55.310Z",
+  "modified": "2018-04-29T00:10:18.095Z",
   "lastPublisher": {
     "name": "kaizhu",
     "email": "kaizhu256@gmail.com"

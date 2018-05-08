@@ -1,0 +1,112 @@
+{
+  "name": "elevation-net-app",
+  "version": "0.0.0",
+  "license": "MIT",
+  "main": "main.js",
+  "scripts": {
+    "ng": "ng",
+    "start": "ng serve --extract-css",
+    "build": "ng build --extract-css",
+    "build:ssr": "npm run build -- --app=ssr --output-hashing=media",
+    "test": "ng test",
+    "lint": "ng lint",
+    "e2e": "ng e2e",
+    "electron-aot": "ng serve --extract-css && electron .",
+    "electron": "ng build --extract-css && electron .",
+    "elec": "electron .",
+    "dist": "build"
+  },
+  "build": {
+    "appId": "elevation-net-app",
+    "directories": {
+      "buildResources": "../ElevationNetApp/assets",
+      "output": "deploy"
+    },
+    "extraResources": {
+      "from": "../ElevationNetApp/bin/dist/",
+      "to": "ElevationNetApp/bin/dist/",
+      "filter": [
+        "**/*"
+      ]
+    },
+    "mac": {
+      "category": "cross-platform-desktop"
+    },
+    "win": {
+      "target": [
+        "nsis"
+      ]
+    }
+  },
+  "private": false,
+  "dependencies": {
+    "@angular/animations": "^5.2.9",
+    "@angular/common": "^5.2.9",
+    "@angular/compiler": "^5.2.9",
+    "@angular/core": "^5.2.9",
+    "@angular/forms": "^5.2.9",
+    "@angular/http": "^5.2.9",
+    "@angular/platform-browser": "^5.2.9",
+    "@angular/platform-browser-dynamic": "^5.2.9",
+    "@angular/platform-server": "^5.2.9",
+    "@angular/router": "^5.2.9",
+    "@nguniversal/module-map-ngfactory-loader": "^5.0.0-beta.8",
+    "aspnet-prerendering": "^3.0.1",
+    "bootstrap": "^3.3.7",
+    "core-js": "^2.5.4",
+    "rxjs": "^5.5.8",
+    "zone.js": "^0.8.19"
+  },
+  "devDependencies": {
+    "@angular/cli": "^1.7.3",
+    "@angular/compiler-cli": "^5.2.9",
+    "@angular/language-service": "^5.2.9",
+    "@types/jasmine": "~2.8.3",
+    "@types/jasminewd2": "~2.0.2",
+    "@types/node": "^6.0.103",
+    "codelyzer": "^4.2.1",
+    "electron": "^1.8.4",
+    "electron-builder": "^20.8.1",
+    "jasmine-core": "~2.8.0",
+    "jasmine-spec-reporter": "~4.2.1",
+    "karma": "~2.0.0",
+    "karma-chrome-launcher": "~2.2.0",
+    "karma-coverage-istanbul-reporter": "^1.4.2",
+    "karma-jasmine": "~1.1.0",
+    "karma-jasmine-html-reporter": "^0.2.2",
+    "protractor": "~5.1.2",
+    "ts-node": "~4.1.0",
+    "tslint": "~5.9.1",
+    "typescript": "~2.5.3"
+  },
+  "description": "This project was generated with:\r *  [Angular CLI](https://github.com/angular/angular-cli) version 1.7.3\r *   Microsoft's [Dotnet CLI](https://www.microsoft.com/net/download/windows) version 2.1.\r *   Node's [NPM CLI](https://nodejs.org/en/) node version ",
+  "_npmVersion": "5.6.0",
+  "_nodeVersion": "8.9.4",
+  "dist": {
+    "integrity": "sha512-Y6KbU+6lYsR4ksel5aqf+X14eye9YV49t/lBs3oGWf3iMQVcV/YMum4XPHpuzvALS4PA6AbYOucRQQkP5d9bsA==",
+    "shasum": "92fdf3e829dc9a5d70bdea41002110b259a18808",
+    "tarball": "https://registry.npmjs.org/elevation-net-app/-/elevation-net-app-0.0.0.tgz",
+    "fileCount": 157,
+    "unpackedSize": 227188600,
+    "npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJa6KyWCRA9TVsSAnZWagAAPOQP/26HZQnQjrkXDbPuWrEE\nxsog1wTERHmoH01cJbjyGBj3Oi1qOevB2veXKvUq3FvvZ8aP4kDV9cHxBoSc\nxo86s4L8201h62XNtHhZvmlmM9XLJtAlgYMg0BAMZbFm3JKDpd4CLMouAdgk\n3xM16hMt0Fhu3tSePKTZYHvAJmJs3+7TEs8uemD3qkJXDXxn8HMcoVDDcyKL\nrxXKx9YHTqp98jWXf/FOLKJ6L8iHlUv0WCUVAgaKMrF+Btc+Xn6z5V6UF4xY\n/5USErRCi0x9HcyZHUr7JVMazau7+XsbtUvU0Q7AEQcNzqHBgVL4ihUHm83f\n2ZyDfU0b502ML864PgDGvDl1hfHY8HEbpt/kuvfoAbedUeVmZnUrQqilXMoK\nZC3erK40/wFjB3sUwJ00Goo3tB39pboN1DJTYZnpQx9/rB9Aspk/g/9iAwFa\nutiJaI1sB4STaP4B7Jh6OZIPU7aFRYWyDI6wpyDK0ogmlaaTGwZxfFjZmd2U\nLk/tVAJRq4oE6jSx8jEX1+Hz7JHO00QE/XCTUTDMuWiXe+J2kqhiRGSwZQVs\nQZqsR8FSy6CCh908ycSjOQJizbzc54mvP2I6WKak2V4O9QTTwvxAtoz2g6iq\nUpu6eKEyGyZVhFS/cco1P3DQBH2hadz/ZbsJ1uqx5lFxsr1xtCMd7Arn1t/O\nKPmQ\r\n=SI9h\r\n-----END PGP SIGNATURE-----\r\n"
+  },
+  "_hasShrinkwrap": false,
+  "versions": [
+    {
+      "number": "0.0.0",
+      "date": "2018-05-01T18:06:13.631Z"
+    }
+  ],
+  "created": "2018-05-01T18:06:08.391Z",
+  "modified": "2018-05-01T18:06:18.062Z",
+  "lastPublisher": {
+    "name": "bcramire",
+    "email": "bcramire@ra.rockwell.com"
+  },
+  "owners": [
+    {
+      "name": "bcramire",
+      "email": "bcramire@ra.rockwell.com"
+    }
+  ]
+}

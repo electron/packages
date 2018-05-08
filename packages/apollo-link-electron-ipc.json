@@ -1,0 +1,110 @@
+{
+  "name": "apollo-link-electron-ipc",
+  "version": "1.0.3",
+  "scripts": {
+    "test": "mocha --opts tests/mocha.opts tests/**/*-test.{ts,tsx} && npm run lint && npm run build",
+    "lint": "eslint 'src/**/*.{ts,tsx}' 'tests/**/*.{ts,tsx}'",
+    "format": "prettier --write 'src/**/*.{ts,tsx}' 'tests/**/*.{ts,tsx}'",
+    "build": "rm -rf lib && tsc -p . && rm -fr lib/tests && mv lib/src/** lib/ && rm -fr lib/src",
+    "prepublish": "npm run build"
+  },
+  "main": "lib/index.js",
+  "typings": "lib/index.d.ts",
+  "license": "MIT",
+  "files": [
+    "lib/"
+  ],
+  "devDependencies": {
+    "@types/chai": "^4.0.4",
+    "@types/graphql": "^0.12.3",
+    "@types/mocha": "^2.2.40",
+    "@types/node": "^8.0.34",
+    "apollo-client": "^2.2.1",
+    "chai": "^4.1.2",
+    "eslint": "^4.7.2",
+    "eslint-config-airbnb": "^16.0.0",
+    "eslint-config-prettier": "^2.6.0",
+    "eslint-config-typescript": "^1.0.2",
+    "eslint-formatter-pretty": "^1.3.0",
+    "eslint-import-resolver-typescript": "^1.0.0",
+    "eslint-loader": "^1.9.0",
+    "eslint-plugin-import": "^2.7.0",
+    "eslint-plugin-jsx-a11y": "^6.0.2",
+    "eslint-plugin-prettier": "^2.3.1",
+    "eslint-plugin-react": "^7.3.0",
+    "eslint-plugin-typescript": "^0.8.0",
+    "mocha": "^4.0.1",
+    "mocha-clean": "^1.0.0",
+    "prettier": "^1.7.0",
+    "ts-node": "^3.3.0",
+    "typescript": "^2.5.3",
+    "typescript-eslint-parser": "^8.0.0"
+  },
+  "peerDependencies": {
+    "apollo-client": "2.*"
+  },
+  "dependencies": {
+    "apollo-link": "^1.0.7",
+    "electron-simple-rpc": "github:alexstrat/electron-simple-rpc#54240bcc5f0454d6e46bc0d3e6c80b219b71939c",
+    "graphql": "^0.12.3",
+    "graphql-tag": "^2.7.3"
+  },
+  "gitHead": "15c728a43dbc764d7fcb9af4ba548e4ba3b10936",
+  "description": "...",
+  "_npmVersion": "5.5.1",
+  "_nodeVersion": "8.9.3",
+  "dist": {
+    "integrity": "sha512-LPsIU19G/hw8RzbjYryeD08zJUkXNtUfDnHyMes4KY635zCfVkGaMo3IPXDPMrisIE8n7vSSep/NX8zdPNNJGw==",
+    "shasum": "fae1340cdb6837b24ee57c1a074565620f449aa2",
+    "tarball": "http://registry.npmjs.org/apollo-link-electron-ipc/-/apollo-link-electron-ipc-1.0.3.tgz",
+    "fileCount": 14,
+    "unpackedSize": 8221
+  },
+  "_hasShrinkwrap": false,
+  "versions": [
+    {
+      "number": "0.0.0",
+      "date": "2018-02-02T07:09:42.390Z"
+    },
+    {
+      "number": "0.0.1",
+      "date": "2018-02-02T07:22:15.458Z"
+    },
+    {
+      "number": "0.0.2",
+      "date": "2018-02-08T18:13:48.173Z"
+    },
+    {
+      "number": "0.1.0",
+      "date": "2018-02-08T20:21:30.989Z"
+    },
+    {
+      "number": "1.0.0",
+      "date": "2018-02-09T00:33:19.361Z"
+    },
+    {
+      "number": "1.0.1",
+      "date": "2018-02-09T00:49:56.611Z"
+    },
+    {
+      "number": "1.0.2",
+      "date": "2018-02-10T02:16:28.353Z"
+    },
+    {
+      "number": "1.0.3",
+      "date": "2018-02-10T03:13:51.141Z"
+    }
+  ],
+  "created": "2018-02-02T07:09:42.390Z",
+  "modified": "2018-02-10T03:13:52.107Z",
+  "lastPublisher": {
+    "name": "alexstrat",
+    "email": "alexandre.lacheze@gmail.com"
+  },
+  "owners": [
+    {
+      "name": "alexstrat",
+      "email": "alexandre.lacheze@gmail.com"
+    }
+  ]
+}

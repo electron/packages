@@ -1,7 +1,7 @@
 {
   "name": "macaca-reporter",
-  "version": "1.0.51",
-  "description": "macaca reporter",
+  "version": "1.1.2",
+  "description": "reporter for Macaca",
   "keywords": [
     "macaca",
     "reporter"
@@ -21,7 +21,6 @@
     "api_url": "https://api.github.com/repos/macacajs/macaca-reporter"
   },
   "dependencies": {
-    "chalk": "^2.1.0",
     "json-stringify-safe": "^5.0.1",
     "macaca-utils": "^1.0.0",
     "microtemplate": "^1.0.2",
@@ -46,14 +45,13 @@
     "eslint-plugin-mocha": "^4.11.0",
     "eslint-plugin-react": "^7.2.1",
     "extract-text-webpack-plugin": "^3.0.0",
+    "git-contributor": "^1.0.3",
     "json-loader": "^0.5.7",
     "less": "^2.7.2",
     "less-loader": "^4.0.5",
     "lodash": "^4.17.4",
     "macaca-cli": "^2.0.12",
     "macaca-electron": "^1.1.17",
-    "macaca-istanbul": "^1.0.2",
-    "macaca-reporter": "^1.0.36",
     "macaca-wd": "^1.0.18",
     "react": "^15.6.1",
     "react-dom": "^15.6.1",
@@ -66,24 +64,29 @@
   },
   "scripts": {
     "dev": "webpack-dev-server",
-    "dev:test": "NODE_ENV=test webpack-dev-server",
+    "dev:test": "NODE_ENV=test npm run dev",
     "build": "cross-env NODE_ENV=production webpack -p",
-    "lint": "eslint --fix assets test",
+    "lint": "eslint --ext js,jsx --fix assets test",
     "prepublish": "npm run build",
     "serve": "npm run dev:test &",
-    "test": "macaca run -d ./test --reporter macaca-reporter",
-    "ci": "npm run lint && npm run serve && npm run test"
+    "test": "macaca run -d ./test",
+    "ci": "npm run lint && npm run serve && npm run test",
+    "contributor": "git-contributor"
   },
-  "homepage": "https://macacajs.github.io/pageuitest",
+  "homepage": "https://macacajs.github.io",
   "license": "MIT",
-  "gitHead": "78a0e6258244e9e87826e2f95150cae1727b56c6",
-  "_npmVersion": "5.6.0",
-  "_nodeVersion": "8.9.0",
+  "gitHead": "bba5462f2620db3b20af134a0f8c86a84a9afc8c",
+  "_npmVersion": "5.7.1",
+  "_nodeVersion": "8.9.4",
   "dist": {
-    "integrity": "sha512-MAoY+ykMTub5/cFDDFz8oML328/y4/vIXF47XkItkvew/tzMsEPZs9BCskxlirsw5fBR2FiLye+XrTaUfRHNQg==",
-    "shasum": "43bd7ef46bf7f3b1e169bc1da9c1d4d16f03b5b2",
-    "tarball": "https://registry.npmjs.org/macaca-reporter/-/macaca-reporter-1.0.51.tgz"
+    "integrity": "sha512-EWwMLqJLgjBKuMhizdYKIte/Uu/GupDGBYaDThtPKFmQx83iGTXITSJ2d+znFbTU7qqqSFcdqdjTI5F/YTYhqg==",
+    "shasum": "58627fda97e0818361dba207d28b3c883f9cc7d5",
+    "tarball": "https://registry.npmjs.org/macaca-reporter/-/macaca-reporter-1.1.2.tgz",
+    "fileCount": 31,
+    "unpackedSize": 1940592,
+    "npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJa59JVCRA9TVsSAnZWagAAlGwP/1xpQ8oU63n4ta08VmwA\nBvYBcAu/SxrRwuyH0DeNasFeGcwtvkqHSdHkd0mug/sVRrutBc6zhyP6OBhB\n3S95eb8+2fy/DNNH32nAgNu7omjUO80I+IOsydwyTr1v2Ce6fBmYGzRgRrdE\no+EfRhvZt+PEJRQljed4hbvhUSVyC10j1tlG8raKb44j9T8/DMlkOzfybBD6\n1YDNMucDgYLtVSuYGUAcCZmob7A69hVwtITQUvuBozc4/ID/7Sx4XJbTAjqi\nSCuFSJow7GJxCOdHxBIqTYPJcBbmkWM2XTllU7F60euVOlbfBo32yoDO0TIE\nFU4V3EQQt2qTnzSB1/1a5ncwvNjliTg2CgWxtd1jcwRRcU+FWHWuFe8kAVav\nIsU+9N+YPb74dvyqZvC+uPpDelgBKmPFXV+LT8MJd/e+/xGk9tfRjOq3Mz1n\n7bAuZMvPsMdefBWKm2kiAJHRfuchzlFAxx+5GMRo3F0tSUbng0KInoq5KtMT\nNVNZkxB89cHN8CW7GodKBGJE6iTMHa3DJSZCUHWGFcmrBFmUqOYB53DMaaJc\nS7MJ5/iG+cEO3sye9+utrC/Pr15g4YdWAGnMXBFd+UdBIy8Fs3Idtbo8EeAA\neRxuVhafZZzrQUP1Mt9w6upXLkOXgH7tBhc/JXizpCJmc7cTnR4xjaXeQajJ\nyO3O\r\n=tN8g\r\n-----END PGP SIGNATURE-----\r\n"
   },
+  "_hasShrinkwrap": false,
   "versions": [
     {
       "number": "1.0.0",
@@ -276,30 +279,74 @@
     {
       "number": "1.0.51",
       "date": "2018-01-06T07:47:50.327Z"
+    },
+    {
+      "number": "1.0.52",
+      "date": "2018-02-06T04:01:57.752Z"
+    },
+    {
+      "number": "1.0.53",
+      "date": "2018-03-11T12:28:20.084Z"
+    },
+    {
+      "number": "1.0.54",
+      "date": "2018-03-11T12:34:48.777Z"
+    },
+    {
+      "number": "1.0.55",
+      "date": "2018-03-13T03:46:52.165Z"
+    },
+    {
+      "number": "1.0.56",
+      "date": "2018-03-13T03:48:12.790Z"
+    },
+    {
+      "number": "1.0.57",
+      "date": "2018-03-13T06:53:00.473Z"
+    },
+    {
+      "number": "1.0.58",
+      "date": "2018-03-13T09:35:47.494Z"
+    },
+    {
+      "number": "1.0.59",
+      "date": "2018-03-15T07:11:05.724Z"
+    },
+    {
+      "number": "1.1.0",
+      "date": "2018-04-08T12:13:29.720Z"
+    },
+    {
+      "number": "1.1.1",
+      "date": "2018-04-30T17:07:33.677Z"
+    },
+    {
+      "number": "1.1.2",
+      "date": "2018-05-01T02:34:59.788Z"
     }
   ],
   "created": "2017-08-23T15:31:58.799Z",
-  "modified": "2018-01-06T07:47:50.327Z",
+  "modified": "2018-05-01T02:35:03.365Z",
   "lastPublisher": {
     "name": "xudafeng",
     "email": "xudafeng@126.com"
   },
   "owners": [
     {
-      "email": "495162889@qq.com",
-      "name": "zhuyali"
-    },
-    {
       "email": "362732414@qq.com",
       "name": "chun_chan"
     },
     {
-      "email": "zivyangll@gmail.com",
-      "name": "zivyangll"
-    },
-    {
       "email": "xudafeng@126.com",
       "name": "xudafeng"
+    },
+    {
+      "email": "495162889@qq.com",
+      "name": "zhuyali"
+    },
+    {
+      "email": "zivyangll@gmail.com",
+      "name": "zivyangll"
     }
   ]
 }

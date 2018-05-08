@@ -1,6 +1,6 @@
 {
   "name": "push-receiver",
-  "version": "1.1.5",
+  "version": "2.0.0",
   "description": "A module to subscribe to GCM/FCM and receive notifications within a node process.",
   "main": "src/index.js",
   "scripts": {
@@ -10,7 +10,18 @@
     "pretty": "prettier-eslint --single-quote --trailing-comma es5 --write \"**/*.js\" \"**/*.json\"",
     "pretty:check": "prettier-eslint --single-quote --trailing-comma es5 --list-different --log-level silent \"**/*.js\" \"**/*.json\"",
     "lint": "eslint 'src/**/*.js'",
-    "lint:fix": "eslint 'src/**/*.js' --fix"
+    "lint:fix": "eslint 'src/**/*.js' --fix",
+    "test": "jest",
+    "precommit": "lint-staged"
+  },
+  "lint-staged": {
+    "*.js": [
+      "eslint --fix",
+      "prettier-eslint --single-quote --trailing-comma es5 --write"
+    ],
+    "*.json": [
+      "prettier-eslint --single-quote --trailing-comma es5 --write"
+    ]
   },
   "repository": {
     "user": "MatthieuLemoine",
@@ -45,6 +56,9 @@
     "eslint": "^4.4.1",
     "eslint-plugin-jest": "^20.0.3",
     "http-proxy": "^1.16.2",
+    "husky": "^0.14.3",
+    "jest": "^22.2.2",
+    "lint-staged": "^6.1.0",
     "prettier": "^1.6.1",
     "prettier-eslint": "^7.0.0",
     "prettier-eslint-cli": "^4.3.0",
@@ -58,13 +72,17 @@
     "request-promise": "^4.2.1",
     "uuid": "^3.1.0"
   },
-  "gitHead": "fd8f849da050f8422abe8a03558fafb901793152",
-  "_npmVersion": "3.10.10",
-  "_nodeVersion": "6.11.4",
+  "gitHead": "817c843c0689d0b73b823485012897d7b02a168e",
+  "_npmVersion": "5.6.0",
+  "_nodeVersion": "8.9.4",
   "dist": {
-    "shasum": "00f79e8789245cf0b548ea82b6fbdc4acdef864c",
-    "tarball": "https://registry.npmjs.org/push-receiver/-/push-receiver-1.1.5.tgz"
+    "integrity": "sha512-9mHG/+TPp2BzlrzGlzpfGJYXjiqq0p89DaT7ArNYTp/iMv8atEEOAoR6kiYWZzdC/4IFX8HOlIMv8sfOwJxP0w==",
+    "shasum": "d6cf9c1ce4c3a8b3f3d63ddc2c519193c6682335",
+    "tarball": "http://registry.npmjs.org/push-receiver/-/push-receiver-2.0.0.tgz",
+    "fileCount": 26,
+    "unpackedSize": 183981
   },
+  "_hasShrinkwrap": false,
   "versions": [
     {
       "number": "1.0.0",
@@ -97,10 +115,14 @@
     {
       "number": "1.1.5",
       "date": "2017-11-20T14:25:48.135Z"
+    },
+    {
+      "number": "2.0.0",
+      "date": "2018-03-29T07:24:25.274Z"
     }
   ],
   "created": "2017-10-25T15:40:15.629Z",
-  "modified": "2017-11-20T14:25:48.135Z",
+  "modified": "2018-03-29T07:24:26.125Z",
   "lastPublisher": {
     "name": "matthieulemoine",
     "email": "ml.94230@gmail.com"

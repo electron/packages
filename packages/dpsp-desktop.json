@@ -1,0 +1,161 @@
+{
+  "name": "dpsp-desktop",
+  "productName": "Online-portal-DPSP-OMR",
+  "version": "2.1.9",
+  "description": "Desktop client for DPSP OMR",
+  "main": "lib/main.js",
+  "scripts": {
+    "prebuild": "npm run prebuild-main-process && npm run react-build",
+    "prebuild-main-process": "rm -rf lib && tsc --outDir lib/ src/*.ts",
+    "react-build": "node react-scripts/build.js",
+    "react-start": "node react-scripts/start.js",
+    "react-test": "node react-scripts/test.js --env=jsdom",
+    "start": "npm run prebuild && electron . --inspect 9222",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "pack": "electron-builder --dir",
+    "dist": "electron-builder -mw",
+    "publish": "build --mac --win -p always"
+  },
+  "postinstall": "electron-builder install-app-deps",
+  "repository": {
+    "type": "git",
+    "url": "git+git@bitbucket.org:soft-ua/dpsp-desktop.git"
+  },
+  "author": {
+    "name": "Soft UA"
+  },
+  "license": "ISC",
+  "homepage": "https://soft-ua.net/",
+  "build": {
+    "appId": "net.soft-ua.dpsp-portal",
+    "files": [
+      "lib/**/*",
+      ".env",
+      "build/**/*",
+      "env.json",
+      "package.json",
+      "package-lock.json"
+    ],
+    "mac": {
+      "category": "net.soft-ua.automazation-tools"
+    },
+    "win": {
+      "target": [
+        {
+          "target": "nsis",
+          "arch": [
+            "x64",
+            "ia32"
+          ]
+        }
+      ]
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true
+    },
+    "publish": [
+      {
+        "provider": "github",
+        "owner": "softua",
+        "repo": "dpsp-desktop-releases"
+      }
+    ]
+  },
+  "dependencies": {
+    "@types/react": "15.6.7",
+    "@types/react-dom": "15.5.6",
+    "@types/validator": "^6.3.0",
+    "axios": "0.16.0",
+    "classnames": "2.2.5",
+    "clipboard-js": "0.3.5",
+    "dateformat": "2.0.0",
+    "dotenv": "2.0.0",
+    "electron-is-dev": "0.3.0",
+    "electron-pdf-window": "1.0.12",
+    "electron-updater": "^2.20.1",
+    "history": "4.6.1",
+    "material-ui": "0.17.0",
+    "mobx": "3.1.5",
+    "mobx-react": "4.1.2",
+    "moment": "2.19.2",
+    "path-to-regexp": "2.1.0",
+    "postcss-cssnext": "2.10.0",
+    "prop-types": "15.5.8",
+    "query-string": "4.3.2",
+    "react": "15.6.2",
+    "react-dom": "15.6.2",
+    "react-tap-event-plugin": "2.0.1",
+    "rimraf": "2.6.2",
+    "universal-router": "5.0.0",
+    "validator": "8.0.0"
+  },
+  "devDependencies": {
+    "autoprefixer": "6.7.2",
+    "awesome-typescript-loader": "^3.4.0",
+    "case-sensitive-paths-webpack-plugin": "1.1.4",
+    "chalk": "1.1.3",
+    "connect-history-api-fallback": "1.3.0",
+    "cross-spawn": "4.0.2",
+    "css-loader": "0.26.1",
+    "detect-port": "1.1.0",
+    "electron": "1.7.10",
+    "electron-builder": "19.55.2",
+    "electron-packager": "9.1.0",
+    "eslint": "3.16.1",
+    "eslint-config-react-app": "0.6.2",
+    "eslint-loader": "1.6.0",
+    "eslint-plugin-flowtype": "2.21.0",
+    "eslint-plugin-import": "2.0.1",
+    "eslint-plugin-jsx-a11y": "4.0.0",
+    "eslint-plugin-react": "6.4.1",
+    "extract-text-webpack-plugin": "1.0.1",
+    "faker": "4.1.0",
+    "file-loader": "0.10.0",
+    "flow-bin": "0.51.0",
+    "fs-extra": "0.30.0",
+    "html-webpack-plugin": "2.24.0",
+    "http-proxy-middleware": "0.17.3",
+    "jest": "18.1.0",
+    "json-loader": "0.5.4",
+    "nwjs-builder-phoenix": "1.14.6",
+    "object-assign": "4.1.1",
+    "postcss-loader": "1.2.2",
+    "promise": "7.1.1",
+    "react-dev-utils": "^0.5.2",
+    "source-map-loader": "^0.2.3",
+    "style-loader": "0.13.1",
+    "ts-loader": "3.2.0",
+    "typescript": "^2.6.2",
+    "url-loader": "0.5.7",
+    "webpack": "1.14.0",
+    "webpack-dev-server": "1.16.2",
+    "webpack-manifest-plugin": "1.1.0",
+    "whatwg-fetch": "2.0.2"
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "dist": {
+    "shasum": "05f60a8cc46260e96587a8ef340cf9424cf5e2a0",
+    "tarball": "https://registry.npmjs.org/dpsp-desktop/-/dpsp-desktop-2.1.9.tgz"
+  },
+  "versions": [
+    {
+      "number": "2.1.9",
+      "date": "2018-01-28T12:57:39.144Z"
+    }
+  ],
+  "created": "2018-01-28T12:57:39.144Z",
+  "modified": "2018-01-28T12:57:39.144Z",
+  "lastPublisher": {
+    "name": "softua",
+    "email": "softua6@gmail.com"
+  },
+  "owners": [
+    {
+      "name": "softua",
+      "email": "softua6@gmail.com"
+    }
+  ]
+}

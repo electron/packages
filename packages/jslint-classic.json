@@ -16,7 +16,6 @@
   },
   "homepage": "https://github.com/kaizhu256/node-jslint-lite",
   "keywords": [
-    "browser",
     "csslint",
     "jslint"
   ],
@@ -44,20 +43,27 @@
     "api_url": "https://api.github.com/repos/kaizhu256/node-jslint-lite"
   },
   "scripts": {
+    "apidocRawCreate": "[ ! -f npm_scripts.sh ] || ./npm_scripts.sh shNpmScriptApidocRawCreate",
+    "apidocRawFetch": "[ ! -f npm_scripts.sh ] || ./npm_scripts.sh shNpmScriptApidocRawFetch",
     "build-ci": "utility2 shReadmeTest build_ci.sh",
     "env": "env",
-    "heroku-postbuild": "npm uninstall utility2 2>/dev/null; npm install kaizhu256/node-utility2#alpha && utility2 shDeployHeroku",
-    "postinstall": "[ ! -f npm_scripts.sh ] || ./npm_scripts.sh postinstall",
+    "heroku-postbuild": "npm install kaizhu256/node-utility2#alpha --prefix . && utility2 shDeployHeroku",
+    "postinstall": "[ ! -f npm_scripts.sh ] || ./npm_scripts.sh shNpmScriptPostinstall",
     "start": "PORT=${PORT:-8080} utility2 start test.js",
     "test": "PORT=$(utility2 shServerPortRandom) utility2 test test.js"
   },
-  "version": "2018.1.12",
-  "_npmVersion": "3.10.10",
-  "_nodeVersion": "6.12.3",
+  "version": "2018.4.30",
+  "_npmVersion": "5.6.0",
+  "_nodeVersion": "10.0.0",
   "dist": {
-    "shasum": "752e1d696c62e316e216a498a2e6aa8b16afd04e",
-    "tarball": "https://registry.npmjs.org/jslint-classic/-/jslint-classic-2018.1.12.tgz"
+    "integrity": "sha512-zbdkpWGv7sn8HBDbLo+2Lfy3pc+uB6YVlmQoz33laL5NbpJizT8GgbohoDtjLNYh8Pq7xa6PfdG16w1G+31FEw==",
+    "shasum": "1e95eda1567747726091b191ebca4e76e75bc188",
+    "tarball": "https://registry.npmjs.org/jslint-classic/-/jslint-classic-2018.4.30.tgz",
+    "fileCount": 5,
+    "unpackedSize": 393379,
+    "npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJa6SlrCRA9TVsSAnZWagAA0KgP/icUn/7ic7mizu6an0Ry\n9vy4X5WRFQ4VTp6mnZZ9C/maRrnIoDbRdwdvHEi6vAYUQce8PlOYg1VP/WDz\ngEopzSrCLWFyHM3VFuXfk9iWlMNtGDfhll2LfQJroS7nFbeWWAbBYnDPkDmm\nAg63Y+K/gQ5U23hn8xtu2eWZslSK6MJW7/HwwT6dMJHlZRhArVn6iyiifoRa\n5/CEDlGyGfQAQ4/vyTnu4pXViEEkULwH4ky0HpKTIssJMbZgqgaeKPDDEJY5\n8wcp6sUWo/8LuYywx/WsshwolpOgpwhQxlJo60XuTUp03HZakpOAwwLFcubO\nAaHJ9FYUrdbzUGkb+0CCjt68htrGycv0I68zhh3eBabZzrnUMP2t1iQmBwcl\nDgryqTkmAdOzI3lYLR0lcNBBxyr47Gq5IOPtPA0MVgbPOxVLNBFEVnKhY0GQ\n8bloOVAQoyET00/hYKNdQ4HD495a9dT9wszeCAVxkQWtsxJyhz75OKZXCSTi\nBjW6Pnx9oShepR6rFtahbcdROmw1TZOJkwSyBQmXGYE8ZcLYNiDl47TLSxlK\nLG/cc3Bx2N/O02fltbXzKSaL6mZz2exnby26GVgpLfKcKZPh5tkx2EmMv9cQ\n3GPlL1Aw1H9e1cV+DW0w52AvdyTfr3R0G4JsYNxSBRIqlHODJDem+b0b4dS7\ndwXv\r\n=0Ox2\r\n-----END PGP SIGNATURE-----\r\n"
   },
+  "_hasShrinkwrap": false,
   "versions": [
     {
       "number": "0.0.1",
@@ -82,10 +88,18 @@
     {
       "number": "2018.1.12",
       "date": "2018-01-13T13:30:02.975Z"
+    },
+    {
+      "number": "2018.3.31",
+      "date": "2018-04-02T15:08:44.122Z"
+    },
+    {
+      "number": "2018.4.30",
+      "date": "2018-05-02T02:58:49.899Z"
     }
   ],
   "created": "2017-03-20T14:10:16.002Z",
-  "modified": "2018-01-13T13:30:02.975Z",
+  "modified": "2018-05-02T02:58:54.079Z",
   "lastPublisher": {
     "name": "kaizhu",
     "email": "kaizhu256@gmail.com"

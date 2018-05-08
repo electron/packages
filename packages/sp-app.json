@@ -1,16 +1,17 @@
 {
   "name": "sp-app",
-  "version": "0.1.3",
+  "version": "0.2.0",
   "description": "Streamplace Desktop App",
   "main": "compiled/sp-app.js",
   "scripts": {
-    "prepublish": "babel --keep-lines --copy-files -d compiled src && rm -rf package-lock.json",
-    "start-electron": "npm run prepublish && SP_URL=$(cat ../../values-dev.yaml  | grep domain | sed 's/^.*://' | sed 's/ //') electron .",
-    "start": "nodemon -w src -x npm run start-electron",
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "npm run prepublish && npm run electron-builder-local",
-    "electron-builder-local": "ELECTRON_CHANNEL=\"${ELECTRON_CHANNEL:-dev}\" electron-builder --publish never",
+    "prepare": "NODE_ENV=production babel --keep-lines --copy-files -d compiled src && rm -rf package-lock.json",
+    "start-electron": "npm run prepare && SP_LOCAL_DEV=true electron .",
+    "start": "NODE_ENV=development nodemon -V -w src -x npm run start-electron",
+    "test": "echo \"no test specified\" && exit 0",
+    "build": "NODE_ENV=production npm run prepare && npm run electron-builder-local",
+    "electron-builder-local": "npm run prepare && ELECTRON_CHANNEL=dev electron-builder -mw --publish never",
     "electron-publish-windows": "electron-builder -w --publish always",
+    "electron-publish-windows-mac": "electron-builder -wm --publish always",
     "electron-publish-mac": "electron-builder -m --publish always"
   },
   "build": {
@@ -35,26 +36,43 @@
   },
   "license": "Apache-2.0",
   "devDependencies": {
+    "axios": "^0.18.0",
     "babel-cli": "^6.23.0",
     "babel-core": "^6.23.1",
+    "babel-preset-react-app": "^3.1.1",
     "babel-preset-streamplace": "0.0.3",
-    "electron": "^1.4.15",
-    "electron-builder": "^19.19.1",
-    "electron-publisher-s3": "^19.19.0",
+    "electron": "^1.8.3",
+    "electron-builder": "^19.56.2",
+    "electron-publisher-s3": "^19.56.0",
     "js-yaml": "^3.8.2",
-    "nodemon": "^1.11.0"
+    "mkdirp": "^0.5.1",
+    "nodemon": "^1.11.0",
+    "tmp-promise": "^1.0.4"
   },
   "dependencies": {
+    "auto-launch": "^5.0.5",
     "electron-log": "^2.0.0",
-    "electron-updater": "^2.4.3"
+    "electron-updater": "^2.21.0",
+    "sp-client": "0.2.0",
+    "sp-frontend": "0.2.0"
   },
-  "_npmVersion": "5.5.1",
-  "_nodeVersion": "8.6.0",
+  "babel": {
+    "presets": [
+      "streamplace",
+      "react-app"
+    ]
+  },
+  "_npmVersion": "5.6.0",
+  "_nodeVersion": "8.11.1",
   "dist": {
-    "integrity": "sha512-UNRoQ5sEziB8kp9eYviRILGJAeqHvUG/osZ9LnfQUERwuQqYo9qDs+6LaT5KIEvFYEIdyWO2LB90Bam7AXtR2A==",
-    "shasum": "250d789889f2ee8ba9d6c43eb330a7d673ae1076",
-    "tarball": "https://registry.npmjs.org/sp-app/-/sp-app-0.1.3.tgz"
+    "integrity": "sha512-sv0dauebeigH0H0U64EubLRaLhgNinotzV8n5hiIaCeJRHWjlqqTmzg4H1eR4lSh8guMHolK9ZwG9iE8aW2uuQ==",
+    "shasum": "33b03dcb9b22976d3914b8a3b07de94312478da0",
+    "tarball": "https://registry.npmjs.org/sp-app/-/sp-app-0.2.0.tgz",
+    "fileCount": 10,
+    "unpackedSize": 587109,
+    "npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJa2ngsCRA9TVsSAnZWagAA73EP/iOdWtQNiI97AdoWtBbi\nK1ncDURKvS/B0KoeoWrwzK6N1uknnhRLQ0meawUCuCOP2IjJsU+kAUaLIioa\nNY5OKsR3HZFlyk8jiB8hH3VnHsTvsq4GCcMbYiYD03lRYZxtAR3jzO0zbvlS\n5sEQa9p0BISVhueEr7fWzL4NaY+DZcvQOOSih4/AqcOHj4/H+TqYxBYEHvxt\nu5Nh4LWHFLf4b6o2oPag2YqSWHUcl/pofiL+Olym72Rgm3foO+6VP4Dfs9/s\nSCYS5JKBpEGWT0QW3gjqwNgOCmhbaomWYZ19t3Isisvy88KgoTgzBnFybZOb\nP/oYyabpWdgbdDPXg/PYTuWSVY91ZKrzzmS7hkUbwIv+qqH2jwIKvl7oSnAj\nAnjuYjuHoZrpT14vBJymrMiNGCze64nz4EImGVMJmSyNA4aaPjmPjnwd7xBR\nygei9BBaBDRxNgER/FXFc0ZSERSMpS75BvN/TDSvLizPdvG319fZykXOW2S2\nTnrMYiiqQ9PllNA6xXMEE26Frs6McYJn8P/f0zFQMpVFtCLbVBDdgfwR9sfY\nwswBE9U8FpJDBp5hFjmKTwy+//tvbEOr8I8gZT21xS+c+bzRk5QPiY5NEeP6\n4IDBcW1lj0VyTFSOZYXkqoamAQRJuhqwpJHYB4Hiixc3MU6xD9vybXUK09w8\nWWhI\r\n=VNyC\r\n-----END PGP SIGNATURE-----\r\n"
   },
+  "_hasShrinkwrap": false,
   "versions": [
     {
       "number": "0.0.7-11-g44da494",
@@ -911,10 +929,614 @@
     {
       "number": "0.1.4-0a5ef4f6",
       "date": "2018-01-17T02:04:54.218Z"
+    },
+    {
+      "number": "0.1.4-5b6f7178",
+      "date": "2018-01-19T23:11:56.573Z"
+    },
+    {
+      "number": "0.1.4-2b7961ae",
+      "date": "2018-01-19T23:53:11.132Z"
+    },
+    {
+      "number": "0.1.4-281660a5",
+      "date": "2018-01-23T03:20:21.026Z"
+    },
+    {
+      "number": "0.1.4-25ecd65f",
+      "date": "2018-01-23T06:15:48.143Z"
+    },
+    {
+      "number": "0.1.4-23f08e5b",
+      "date": "2018-01-26T22:49:13.483Z"
+    },
+    {
+      "number": "0.1.4-a19c82d4",
+      "date": "2018-01-26T23:21:07.879Z"
+    },
+    {
+      "number": "0.1.4-c9606ffc",
+      "date": "2018-01-27T00:11:23.579Z"
+    },
+    {
+      "number": "0.1.4-fb411a77",
+      "date": "2018-01-27T00:18:40.094Z"
+    },
+    {
+      "number": "0.1.4-8a7ee5e3",
+      "date": "2018-02-02T07:23:56.414Z"
+    },
+    {
+      "number": "0.1.4-deb16bbd",
+      "date": "2018-02-02T21:03:24.606Z"
+    },
+    {
+      "number": "0.1.4-880c0770",
+      "date": "2018-02-02T21:49:27.754Z"
+    },
+    {
+      "number": "0.1.4-a687515f",
+      "date": "2018-02-03T00:02:16.809Z"
+    },
+    {
+      "number": "0.1.4-328da82c",
+      "date": "2018-02-03T17:29:22.591Z"
+    },
+    {
+      "number": "0.1.4-dc55680c",
+      "date": "2018-02-03T19:09:12.217Z"
+    },
+    {
+      "number": "0.1.4-eddb6603",
+      "date": "2018-02-03T20:45:51.679Z"
+    },
+    {
+      "number": "0.1.4-94f98253",
+      "date": "2018-02-03T20:52:21.943Z"
+    },
+    {
+      "number": "0.1.4-1dea90d1",
+      "date": "2018-02-03T22:04:33.765Z"
+    },
+    {
+      "number": "0.1.5-9babc454",
+      "date": "2018-02-03T22:16:24.086Z"
+    },
+    {
+      "number": "0.1.4-fb448ea4",
+      "date": "2018-02-03T22:56:26.720Z"
+    },
+    {
+      "number": "0.1.5-7ea92ab2",
+      "date": "2018-02-03T23:04:50.507Z"
+    },
+    {
+      "number": "0.1.4",
+      "date": "2018-02-03T23:39:24.272Z"
+    },
+    {
+      "number": "0.1.5-958b493b",
+      "date": "2018-02-04T01:17:29.141Z"
+    },
+    {
+      "number": "0.1.5",
+      "date": "2018-02-04T01:29:48.593Z"
+    },
+    {
+      "number": "0.1.6-10144fa4",
+      "date": "2018-02-12T06:05:28.807Z"
+    },
+    {
+      "number": "0.1.6-26c14c04",
+      "date": "2018-02-12T06:15:26.890Z"
+    },
+    {
+      "number": "0.1.6-e9f78558",
+      "date": "2018-02-12T06:37:57.365Z"
+    },
+    {
+      "number": "0.1.6-ede5cae5",
+      "date": "2018-02-12T06:46:55.707Z"
+    },
+    {
+      "number": "0.1.6-2f2ffb46",
+      "date": "2018-02-12T06:55:37.127Z"
+    },
+    {
+      "number": "0.1.6-ad1f3245",
+      "date": "2018-02-21T03:03:46.213Z"
+    },
+    {
+      "number": "0.1.6-9b270c9b",
+      "date": "2018-02-21T05:04:08.293Z"
+    },
+    {
+      "number": "0.1.6-9d1f2d78",
+      "date": "2018-02-27T04:04:42.089Z"
+    },
+    {
+      "number": "0.1.6-b6875d23",
+      "date": "2018-03-05T04:59:12.925Z"
+    },
+    {
+      "number": "0.1.6-872554f2",
+      "date": "2018-03-06T03:56:31.333Z"
+    },
+    {
+      "number": "0.1.6-83ab6185",
+      "date": "2018-03-06T04:09:14.252Z"
+    },
+    {
+      "number": "0.1.6-f0942079",
+      "date": "2018-03-07T03:15:12.821Z"
+    },
+    {
+      "number": "0.1.6-12f18200",
+      "date": "2018-03-07T04:22:58.790Z"
+    },
+    {
+      "number": "0.1.6-5cc53557",
+      "date": "2018-03-07T04:33:00.839Z"
+    },
+    {
+      "number": "0.1.6-474471aa",
+      "date": "2018-03-07T05:27:38.675Z"
+    },
+    {
+      "number": "0.1.6-5130bbc4",
+      "date": "2018-03-07T05:39:04.216Z"
+    },
+    {
+      "number": "0.1.6-70e99d5a",
+      "date": "2018-03-07T05:56:56.727Z"
+    },
+    {
+      "number": "0.1.6-4e0c87d3",
+      "date": "2018-03-07T06:21:01.367Z"
+    },
+    {
+      "number": "0.1.6-c3eb1167",
+      "date": "2018-03-07T07:27:17.070Z"
+    },
+    {
+      "number": "0.1.6-5986b925",
+      "date": "2018-03-08T04:39:07.289Z"
+    },
+    {
+      "number": "0.1.6-b534c886",
+      "date": "2018-03-11T05:55:07.928Z"
+    },
+    {
+      "number": "0.1.6-5cb2fc9b",
+      "date": "2018-03-11T06:06:41.965Z"
+    },
+    {
+      "number": "0.1.6",
+      "date": "2018-03-12T01:10:39.962Z"
+    },
+    {
+      "number": "0.1.7-d732f905",
+      "date": "2018-03-14T01:56:38.397Z"
+    },
+    {
+      "number": "0.1.7-5200f0c3",
+      "date": "2018-03-14T02:16:34.085Z"
+    },
+    {
+      "number": "0.1.7-a38df799",
+      "date": "2018-03-14T02:25:49.092Z"
+    },
+    {
+      "number": "0.1.7-f47e70ec",
+      "date": "2018-03-14T06:57:51.830Z"
+    },
+    {
+      "number": "0.1.7-3b12a5ba",
+      "date": "2018-03-14T07:49:46.312Z"
+    },
+    {
+      "number": "0.1.7-9ae3027e",
+      "date": "2018-03-14T08:00:51.430Z"
+    },
+    {
+      "number": "0.1.7-858421ba",
+      "date": "2018-03-14T08:16:19.239Z"
+    },
+    {
+      "number": "0.1.7-ab20ef38",
+      "date": "2018-03-14T08:30:03.359Z"
+    },
+    {
+      "number": "0.1.7-2d54c27c",
+      "date": "2018-03-14T18:12:11.112Z"
+    },
+    {
+      "number": "0.1.7-e1e13777",
+      "date": "2018-03-14T20:17:41.376Z"
+    },
+    {
+      "number": "0.1.7-81a86074",
+      "date": "2018-03-14T23:00:14.660Z"
+    },
+    {
+      "number": "0.1.7-e22ddbef",
+      "date": "2018-03-14T23:09:19.185Z"
+    },
+    {
+      "number": "0.1.7-0e29767d",
+      "date": "2018-03-14T23:18:34.066Z"
+    },
+    {
+      "number": "0.1.7-6bbe3264",
+      "date": "2018-03-14T23:27:39.014Z"
+    },
+    {
+      "number": "0.1.7-32f0b7d4",
+      "date": "2018-03-15T00:52:41.403Z"
+    },
+    {
+      "number": "0.1.7-782d31c9",
+      "date": "2018-03-15T01:18:35.546Z"
+    },
+    {
+      "number": "0.1.7-70afab38",
+      "date": "2018-03-15T02:35:28.391Z"
+    },
+    {
+      "number": "0.1.7-f6cf908b",
+      "date": "2018-03-15T03:27:10.198Z"
+    },
+    {
+      "number": "0.1.7-643e42d8",
+      "date": "2018-03-15T04:01:18.152Z"
+    },
+    {
+      "number": "0.1.7-ea368aa7",
+      "date": "2018-03-15T04:40:11.117Z"
+    },
+    {
+      "number": "0.1.7-4d909483",
+      "date": "2018-03-15T19:41:16.844Z"
+    },
+    {
+      "number": "0.1.7-dde014bd",
+      "date": "2018-03-16T21:01:41.208Z"
+    },
+    {
+      "number": "0.1.7-b5b69939",
+      "date": "2018-03-17T22:31:27.144Z"
+    },
+    {
+      "number": "0.1.7-cb65a000",
+      "date": "2018-03-17T22:40:29.862Z"
+    },
+    {
+      "number": "0.1.7-591b5f44",
+      "date": "2018-03-18T00:44:28.722Z"
+    },
+    {
+      "number": "0.1.7-8cb9d29b",
+      "date": "2018-03-18T00:56:15.512Z"
+    },
+    {
+      "number": "0.1.7",
+      "date": "2018-03-18T01:19:31.217Z"
+    },
+    {
+      "number": "0.1.8-5a1b2c98",
+      "date": "2018-03-18T03:17:33.266Z"
+    },
+    {
+      "number": "0.1.8-59524fb9",
+      "date": "2018-03-18T03:41:01.013Z"
+    },
+    {
+      "number": "0.1.8-b5fdc4a3",
+      "date": "2018-03-18T19:34:54.255Z"
+    },
+    {
+      "number": "0.1.8-5a533e17",
+      "date": "2018-03-18T19:47:45.881Z"
+    },
+    {
+      "number": "0.1.8-c73398b6",
+      "date": "2018-03-18T20:12:03.856Z"
+    },
+    {
+      "number": "0.1.8",
+      "date": "2018-03-18T20:45:03.924Z"
+    },
+    {
+      "number": "0.1.9-f1a31046",
+      "date": "2018-03-18T21:43:50.767Z"
+    },
+    {
+      "number": "0.1.9",
+      "date": "2018-03-18T22:23:44.864Z"
+    },
+    {
+      "number": "0.1.10-17b3df01",
+      "date": "2018-03-18T23:16:25.694Z"
+    },
+    {
+      "number": "0.1.10-cdc0d83c",
+      "date": "2018-03-19T21:03:16.357Z"
+    },
+    {
+      "number": "0.1.10-ff31b2e8",
+      "date": "2018-03-19T21:40:32.836Z"
+    },
+    {
+      "number": "0.1.10-028f61dd",
+      "date": "2018-03-22T23:03:41.894Z"
+    },
+    {
+      "number": "0.1.10-56a262ae",
+      "date": "2018-03-23T05:47:45.587Z"
+    },
+    {
+      "number": "0.1.10-a2dfc852",
+      "date": "2018-03-26T02:59:35.254Z"
+    },
+    {
+      "number": "0.1.10-ea25b139",
+      "date": "2018-03-26T04:20:40.046Z"
+    },
+    {
+      "number": "0.1.10-0e7491c3",
+      "date": "2018-03-29T06:59:37.245Z"
+    },
+    {
+      "number": "0.1.10-21213a9f",
+      "date": "2018-03-29T08:42:15.561Z"
+    },
+    {
+      "number": "0.1.10-73ad245f",
+      "date": "2018-03-29T09:43:14.145Z"
+    },
+    {
+      "number": "0.1.10-d8ae6f3c",
+      "date": "2018-03-29T09:49:53.193Z"
+    },
+    {
+      "number": "0.1.10-d30b03f1",
+      "date": "2018-03-29T20:19:24.884Z"
+    },
+    {
+      "number": "0.1.10-d9c95a3e",
+      "date": "2018-03-29T21:15:20.096Z"
+    },
+    {
+      "number": "0.1.10-0c90023d",
+      "date": "2018-03-29T22:16:04.046Z"
+    },
+    {
+      "number": "0.1.10-3ac844e3",
+      "date": "2018-03-30T04:31:25.003Z"
+    },
+    {
+      "number": "0.1.10-6f6c0846",
+      "date": "2018-03-30T05:32:29.851Z"
+    },
+    {
+      "number": "0.1.10-02cd942c",
+      "date": "2018-03-30T05:39:29.308Z"
+    },
+    {
+      "number": "0.1.10-a3f28270",
+      "date": "2018-04-06T20:02:37.878Z"
+    },
+    {
+      "number": "0.1.10-290d2868",
+      "date": "2018-04-06T21:00:13.842Z"
+    },
+    {
+      "number": "0.1.10-e839b16c",
+      "date": "2018-04-07T19:10:34.492Z"
+    },
+    {
+      "number": "0.1.10-41f4ec41",
+      "date": "2018-04-08T17:24:15.215Z"
+    },
+    {
+      "number": "0.1.10-5a823ef3",
+      "date": "2018-04-08T21:38:21.862Z"
+    },
+    {
+      "number": "0.1.10-b5a1bbd1",
+      "date": "2018-04-08T21:46:14.605Z"
+    },
+    {
+      "number": "0.1.10-16026dce",
+      "date": "2018-04-08T21:51:46.844Z"
+    },
+    {
+      "number": "0.1.10-f8f859d6",
+      "date": "2018-04-08T22:59:24.810Z"
+    },
+    {
+      "number": "0.1.10-731eb577",
+      "date": "2018-04-11T07:36:37.283Z"
+    },
+    {
+      "number": "0.1.10-ffc9b46d",
+      "date": "2018-04-11T07:43:13.091Z"
+    },
+    {
+      "number": "0.1.10-7e464f90",
+      "date": "2018-04-11T08:03:32.182Z"
+    },
+    {
+      "number": "0.1.10-b7cfb162",
+      "date": "2018-04-11T08:17:27.253Z"
+    },
+    {
+      "number": "0.1.10-ec59b926",
+      "date": "2018-04-11T08:30:41.251Z"
+    },
+    {
+      "number": "0.1.10-4d021f7f",
+      "date": "2018-04-11T08:39:48.377Z"
+    },
+    {
+      "number": "0.1.10-256c86a8",
+      "date": "2018-04-11T08:53:55.843Z"
+    },
+    {
+      "number": "0.1.10",
+      "date": "2018-04-12T05:40:44.589Z"
+    },
+    {
+      "number": "0.1.11-6f9a49dc",
+      "date": "2018-04-13T02:50:24.768Z"
+    },
+    {
+      "number": "0.1.11-941dcb2c",
+      "date": "2018-04-13T05:58:01.569Z"
+    },
+    {
+      "number": "0.1.11-f5cabe11",
+      "date": "2018-04-13T07:11:32.087Z"
+    },
+    {
+      "number": "0.1.11-32018abf",
+      "date": "2018-04-13T08:57:21.403Z"
+    },
+    {
+      "number": "0.1.11-f804451e",
+      "date": "2018-04-14T02:33:20.893Z"
+    },
+    {
+      "number": "0.1.11-73bd8496",
+      "date": "2018-04-14T05:28:08.593Z"
+    },
+    {
+      "number": "0.1.11-e6c71d45",
+      "date": "2018-04-14T07:10:11.998Z"
+    },
+    {
+      "number": "0.1.11-2eecb017",
+      "date": "2018-04-14T08:26:01.766Z"
+    },
+    {
+      "number": "0.1.11-08a5d0fc",
+      "date": "2018-04-14T21:50:28.883Z"
+    },
+    {
+      "number": "0.1.11-a5c9fdad",
+      "date": "2018-04-14T22:07:13.712Z"
+    },
+    {
+      "number": "0.1.11-a4f8a205",
+      "date": "2018-04-14T22:26:53.352Z"
+    },
+    {
+      "number": "0.1.11-ddce3c42",
+      "date": "2018-04-14T23:00:11.031Z"
+    },
+    {
+      "number": "0.1.11-2bb1ca07",
+      "date": "2018-04-15T05:00:47.089Z"
+    },
+    {
+      "number": "0.1.11-fce5000c",
+      "date": "2018-04-18T06:46:34.000Z"
+    },
+    {
+      "number": "0.1.11-ad65f031",
+      "date": "2018-04-18T07:03:51.722Z"
+    },
+    {
+      "number": "0.1.11-e47faded",
+      "date": "2018-04-18T18:33:36.714Z"
+    },
+    {
+      "number": "0.1.11-265899a1",
+      "date": "2018-04-19T18:15:30.894Z"
+    },
+    {
+      "number": "0.1.11-3b539a00",
+      "date": "2018-04-19T22:48:29.656Z"
+    },
+    {
+      "number": "0.1.11-c6db04bc",
+      "date": "2018-04-19T23:32:36.822Z"
+    },
+    {
+      "number": "0.1.11-84e330f4",
+      "date": "2018-04-20T02:17:31.178Z"
+    },
+    {
+      "number": "0.1.11-fbef3105",
+      "date": "2018-04-20T19:55:31.961Z"
+    },
+    {
+      "number": "0.1.11-b507bda4",
+      "date": "2018-04-20T20:34:53.581Z"
+    },
+    {
+      "number": "0.1.11-cea04ed3",
+      "date": "2018-04-20T21:27:04.831Z"
+    },
+    {
+      "number": "0.1.11-6248c3b2",
+      "date": "2018-04-20T22:10:15.857Z"
+    },
+    {
+      "number": "0.1.11-f81a179b",
+      "date": "2018-04-20T22:46:45.853Z"
+    },
+    {
+      "number": "0.2.0",
+      "date": "2018-04-20T23:30:51.862Z"
+    },
+    {
+      "number": "0.2.1-9557f182",
+      "date": "2018-04-23T00:19:54.604Z"
+    },
+    {
+      "number": "0.2.1-fcdb5d2e",
+      "date": "2018-04-25T05:03:04.121Z"
+    },
+    {
+      "number": "0.2.1-d6a228f8",
+      "date": "2018-04-25T20:43:54.822Z"
+    },
+    {
+      "number": "0.2.1-2dba0639",
+      "date": "2018-04-25T21:48:25.998Z"
+    },
+    {
+      "number": "0.2.1-eaa1afc0",
+      "date": "2018-05-01T23:50:58.449Z"
+    },
+    {
+      "number": "0.2.1-546eea0b",
+      "date": "2018-05-02T00:02:53.197Z"
+    },
+    {
+      "number": "0.2.1-de00b0cc",
+      "date": "2018-05-02T00:30:17.283Z"
+    },
+    {
+      "number": "0.2.1-8b034c0d",
+      "date": "2018-05-02T01:10:11.748Z"
+    },
+    {
+      "number": "0.2.1-e997361a",
+      "date": "2018-05-02T01:25:14.069Z"
+    },
+    {
+      "number": "0.2.1-26c6afd6",
+      "date": "2018-05-03T21:16:21.067Z"
+    },
+    {
+      "number": "0.2.1-c8d51f58",
+      "date": "2018-05-05T23:55:59.268Z"
     }
   ],
   "created": "2017-03-05T04:28:22.504Z",
-  "modified": "2018-01-17T02:04:54.218Z",
+  "modified": "2018-05-05T23:56:02.401Z",
   "lastPublisher": {
     "name": "iameli",
     "email": "eli@iame.li"

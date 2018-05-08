@@ -1,0 +1,130 @@
+{
+  "name": "azure-aws-creds",
+  "version": "0.5.2",
+  "description": "Electron app to update AWS credentials via Azure AD federation",
+  "main": "src/main.js",
+  "bin": {
+    "azure-aws-creds": "./src/main.js"
+  },
+  "scripts": {
+    "start": "npm install && electron ./src/main.js",
+    "debug": "cross-env DEBUG=azure-aws-creds electron src/main.js",
+    "webpack": "webpack --config=build/webpack.app.config.js --env=production",
+    "release": "npm run webpack && electron-builder"
+  },
+  "build": {
+    "appId": "com.example.azure-aws-creds",
+    "files": [
+      "package.json",
+      "src/*",
+      "node_modules/**/*"
+    ],
+    "directories": {
+      "buildResources": "src/"
+    },
+    "linux": {
+      "category": "Utility"
+    },
+    "nsis": {
+      "artifactName": "${productName}_${version}_setup.${ext}"
+    },
+    "win": {
+      "icon": "src/AWS.ico"
+    }
+  },
+  "electronWebpack": {
+    "title": true,
+    "main": {
+      "sourceDirectory": "src/"
+    },
+    "renderer": {
+      "sourceDirectory": null
+    }
+  },
+  "repository": {
+    "user": "mr-olson",
+    "repo": "azure-aws-creds",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/mr-olson/azure-aws-creds/tarball/master",
+    "clone_url": "https://github.com/mr-olson/azure-aws-creds",
+    "https_url": "https://github.com/mr-olson/azure-aws-creds",
+    "travis_url": "https://travis-ci.org/mr-olson/azure-aws-creds",
+    "zip_url": "https://github.com/mr-olson/azure-aws-creds/archive/master.zip",
+    "api_url": "https://api.github.com/repos/mr-olson/azure-aws-creds"
+  },
+  "keywords": [
+    "Azure Active Directory",
+    "AWS",
+    "SAML",
+    "SSO",
+    "CLI",
+    "credentials"
+  ],
+  "author": {
+    "name": "Mark Olson"
+  },
+  "license": "MIT",
+  "homepage": "https://github.com/mr-olson/azure-aws-creds",
+  "devDependencies": {
+    "cross-env": "^5.1.4",
+    "devtron": "^1.4.0",
+    "electron": "^1.8.4",
+    "electron-builder": "^19.56.0",
+    "electron-builder-lib": "^20.8.2",
+    "electron-debug": "^1.5.0",
+    "electron-packager": "^11.2.0",
+    "webpack": "^3.11.0",
+    "webpack-node-externals": "^1.6.0"
+  },
+  "dependencies": {
+    "aws-sdk": "^2.215.1",
+    "bootstrap": "^4.0.0",
+    "cheerio": "^1.0.0-rc.2",
+    "datatables.net": "^1.10.16",
+    "datatables.net-bs4": "^1.10.16",
+    "datatables.net-dt": "^1.10.16",
+    "debug": "^3.1.0",
+    "ini": "^1.3.5",
+    "jquery": "^3.3.1",
+    "jquery-countdown": "^2.2.0",
+    "jwt-decode": "^2.2.0",
+    "popper.js": "^1.14.1",
+    "source-map-support": "^0.5.4",
+    "uuid": "^3.2.1"
+  },
+  "gitHead": "da341dc9eb2cf7591ec584ed28b2ff327e887576",
+  "_npmVersion": "5.6.0",
+  "_nodeVersion": "8.9.4",
+  "dist": {
+    "integrity": "sha512-lWY9S1wK5Ob/IT5gIkvEwoxlXZcjbwUa1cS8VYWwbcP8s2VWkzpgOu41UoEiXaaZvXqZxHXvqjv+dmLTcVuR7w==",
+    "shasum": "9e861d47beb66c4daae1b461934aa2b500c0878d",
+    "tarball": "http://registry.npmjs.org/azure-aws-creds/-/azure-aws-creds-0.5.2.tgz",
+    "fileCount": 17,
+    "unpackedSize": 225613
+  },
+  "_hasShrinkwrap": false,
+  "versions": [
+    {
+      "number": "0.5.1",
+      "date": "2018-02-25T20:40:04.824Z"
+    },
+    {
+      "number": "0.5.2",
+      "date": "2018-03-28T17:07:42.520Z"
+    }
+  ],
+  "created": "2018-02-25T20:40:04.648Z",
+  "modified": "2018-03-28T17:07:44.081Z",
+  "lastPublisher": {
+    "name": "mr-olson",
+    "email": "npm-mr-olson@nym.hush.com"
+  },
+  "owners": [
+    {
+      "name": "mr-olson",
+      "email": "npm-mr-olson@nym.hush.com"
+    }
+  ]
+}

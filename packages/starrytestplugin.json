@@ -1,0 +1,116 @@
+{
+  "name": "starrytestplugin",
+  "version": "2.0.22",
+  "starryPluginIcon": "./app.png",
+  "starryPluginMain": "./starry/index.html",
+  "description": "html file transfrom",
+  "main": "./build/htmlonline.js",
+  "watch": {
+    "test": {
+      "patterns": [
+        "src",
+        "test"
+      ],
+      "extensions": "js,html",
+      "quiet": true
+    }
+  },
+  "scripts": {
+    "build": "babel src/ --out-dir build/",
+    "test": "npm run build && mocha ./test/test.js",
+    "watch": "npm-watch",
+    "publish-npm": "npm run build && npm publish",
+    "build-starry": "webpack --config webpack.config.js --watch"
+  },
+  "repository": {
+    "user": "qingying",
+    "repo": "htmlonline",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/qingying/htmlonline/tarball/master",
+    "clone_url": "https://github.com/qingying/htmlonline",
+    "https_url": "https://github.com/qingying/htmlonline",
+    "travis_url": "https://travis-ci.org/qingying/htmlonline",
+    "zip_url": "https://github.com/qingying/htmlonline/archive/master.zip",
+    "api_url": "https://api.github.com/repos/qingying/htmlonline"
+  },
+  "author": {
+    "name": "qingying"
+  },
+  "license": "MIT",
+  "bin": {
+    "starrytestplugin": "./build/index.js"
+  },
+  "dependencies": {
+    "yargs": "~5.0.0",
+    "cheerio": "0.22.0",
+    "path": "~0.12.7",
+    "request": "~2.74.0",
+    "colour": "~0.7.1",
+    "babel-polyfill": "~6.13.0",
+    "webpack": "^3.5.2",
+    "@types/node": "8.5.2",
+    "@types/webpack": "^3.0.7",
+    "@types/webpack-env": "1.13.1",
+    "@types/react": "16.0.2",
+    "@types/react-dom": "15.5.2",
+    "awesome-typescript-loader": "^3.4.1",
+    "sass-loader": "4.1.1",
+    "node-sass": "4.3.0",
+    "style-loader": "0.13.0",
+    "url-loader": "0.5.7",
+    "css-loader": "0.23.0",
+    "typescript": "^2.6.2",
+    "fs-extra": "5.0.0",
+    "electron": "^1.7.9"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.0.0",
+    "babel-core": "^6.6.x",
+    "babel-preset-es2015": "*",
+    "babel-preset-stage-0": "*",
+    "babel-preset-stage-1": "*",
+    "babel-preset-stage-2": "*",
+    "babel-preset-stage-3": "*",
+    "npm-watch": "*",
+    "mocha": "~3.1.0",
+    "commander": "~2.9.0",
+    "antd": "*",
+    "react": "15.5.4",
+    "react-dom": "15.5.4"
+  },
+  "homepage": "https://github.com/qingying/htmlonline#readme",
+  "_npmVersion": "3.10.10",
+  "_nodeVersion": "6.10.2",
+  "dist": {
+    "shasum": "0652e3438b368217c2aa4daf388eab0fc0f121b7",
+    "tarball": "https://registry.npmjs.org/starrytestplugin/-/starrytestplugin-2.0.22.tgz"
+  },
+  "versions": [
+    {
+      "number": "2.0.20",
+      "date": "2018-01-02T04:44:50.211Z"
+    },
+    {
+      "number": "2.0.21",
+      "date": "2018-01-02T04:49:21.635Z"
+    },
+    {
+      "number": "2.0.22",
+      "date": "2018-01-19T02:13:38.727Z"
+    }
+  ],
+  "created": "2018-01-02T04:44:50.211Z",
+  "modified": "2018-01-19T02:13:38.727Z",
+  "lastPublisher": {
+    "name": "qingying",
+    "email": "tingbao.peng@gmail.com"
+  },
+  "owners": [
+    {
+      "name": "qingying",
+      "email": "tingbao.peng@gmail.com"
+    }
+  ]
+}

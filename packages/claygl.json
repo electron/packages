@@ -1,6 +1,6 @@
 {
   "name": "claygl",
-  "version": "1.0.0",
+  "version": "1.2.1",
   "description": "WebGL graphic library",
   "keywords": [
     "graphic",
@@ -11,8 +11,10 @@
     "url": "https://github.com/pissang"
   },
   "jsnext:main": "dist/claygl.es.js",
-  "module": "dist/claygl.es.js",
+  "module": "src/claygl.js",
   "main": "dist/claygl.js",
+  "types": "index.d.ts",
+  "sideEffects": false,
   "scripts": {
     "build": "npm run glsl2js && npm run gen:entry && rollup -c && uglifyjs dist/claygl.js -c -m > dist/claygl.min.js",
     "build:sourcemap": "npm run gen:entry && rollup --sourcemap inline -c",
@@ -56,23 +58,67 @@
     "rollup-watch": "^4.3.1"
   },
   "dependencies": {},
-  "gitHead": "307692e63ed621e0854601ff71cf53f14c103864",
+  "gitHead": "b0239d39fc7bb2024d43d5ddc84f8e0231ae78e1",
   "homepage": "https://github.com/pissang/claygl#readme",
   "_npmVersion": "5.4.2",
   "_nodeVersion": "8.5.0",
   "dist": {
-    "integrity": "sha512-cOog13wElXNc+svz9JMV34unWM5aqMLwklWIbwh6uNvNR62JckPmLMvM4aTBOzZiAk3BZ1/eJDCTOM7guUQZKw==",
-    "shasum": "9d1ff48142b36758c82a6d7937baefac8685ef4e",
-    "tarball": "https://registry.npmjs.org/claygl/-/claygl-1.0.0.tgz"
+    "integrity": "sha512-rjISL/0wgNxIIooprQiBucJbPS1fUrDOvpq+sEqd/qGmRlxo62x/GBtz6P3ZF3eAOeZyyWOvwSlCSBRLNHa/og==",
+    "shasum": "692641935c45ca825cd3e6ceb8eeadd3bad019df",
+    "tarball": "https://registry.npmjs.org/claygl/-/claygl-1.2.1.tgz",
+    "fileCount": 536,
+    "unpackedSize": 10788835,
+    "npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJa6ZjACRA9TVsSAnZWagAAdbIP/0EdKgtVYka+4UcOJP/5\nzQ+t8Y1wN7rXD7nNsCkVZ5eWC6OWP4mgs/2KP4CgFkH57RyxtRSRrGic7oSX\nYhNWQ+kwpH916uTjeOM2yM1s0k4eUngwKijevSItfk38jYLRDwKJPkNFrWVX\ndtoBTpQgYStm5CDwGosIA6QQboiYoPKeA96aJayAV+/PRcqtxQrYfkqrt29n\nqQqTaw2ns9OwkyHqLcHJpiETu9HiLZGKAoCMktLxbzRvCeNtpeQkXBqyM1jq\nhddvlbSjIxWKEXINR/p6PnQKPU5O+x4p73oCVqWEJaAbG1xqK5+AWiD0nNp+\noNdNjWZRwxIDlcyYIjJEpCoGVTcXRAnL3X+Ig4Wm9EAMmIA2jdmYhIMWeKC9\nwZ3v64zJrE7kvQC4gTENk3TQfvwPQdEjaXrO/Gj1jhQVHTEXDSxe0AYobCFm\ngseReECa+vutvFVUDyGf4OmXVGjfXx/6Aso4KpwPQAeNZFtXhRC7P/0GAgpG\nStrBdRnjo+l9YkOilvsHznoYrVAP3pUGNtViZvV6kHUIGQO679ovp1Zt16Vk\ndQhepXQm/e73g36DeLzm6+dzJrH7pdPk22xtHQ+K06o6vbGJ9Y7btUd6EJvU\nV6olCgviLxbLf9/djAQEoAgPd4a+rkIBTixQ+6ScWBXzCwavElgAa7naJOHg\nBnft\r\n=o06z\r\n-----END PGP SIGNATURE-----\r\n"
   },
+  "_hasShrinkwrap": false,
   "versions": [
     {
       "number": "1.0.0",
       "date": "2018-01-16T03:07:15.316Z"
+    },
+    {
+      "number": "1.0.1",
+      "date": "2018-01-23T07:31:50.869Z"
+    },
+    {
+      "number": "1.0.2",
+      "date": "2018-01-24T04:39:31.017Z"
+    },
+    {
+      "number": "1.0.3",
+      "date": "2018-01-30T09:25:18.342Z"
+    },
+    {
+      "number": "1.1.0",
+      "date": "2018-02-28T06:53:30.907Z"
+    },
+    {
+      "number": "1.1.1",
+      "date": "2018-03-12T10:00:00.942Z"
+    },
+    {
+      "number": "1.1.2",
+      "date": "2018-03-26T12:17:47.953Z"
+    },
+    {
+      "number": "1.1.3",
+      "date": "2018-03-28T14:50:08.292Z"
+    },
+    {
+      "number": "1.1.4",
+      "date": "2018-03-29T03:23:19.293Z"
+    },
+    {
+      "number": "1.2.0",
+      "date": "2018-03-30T14:05:16.909Z"
+    },
+    {
+      "number": "1.2.1",
+      "date": "2018-05-02T10:53:51.039Z"
     }
   ],
   "created": "2018-01-16T03:07:15.316Z",
-  "modified": "2018-01-16T03:07:15.316Z",
+  "modified": "2018-05-02T10:53:55.556Z",
   "lastPublisher": {
     "name": "lang",
     "email": "shenyi.914@gmail.com"

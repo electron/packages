@@ -19,7 +19,7 @@
   "email": "masato.u0107@gmail.com",
   "homepage": "https://github.com/uraway/electron-oauth-twitter",
   "license": "MIT",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "description": "Twitter OAuth Window library.",
   "main": "lib/OauthTwitter.js",
   "files": [
@@ -29,7 +29,9 @@
   "scripts": {
     "build": "babel src --out-dir lib --source-maps",
     "watch": "babel src --out-dir lib --watch --source-maps",
-    "prepublish": "npm run --if-present build"
+    "lint:fix": "eslint src/OauthTwitter.js example/index.babel.js --fix",
+    "lint": "eslint src/OauthTwitter.js example/index.babel.js",
+    "prepare": "npm run build"
   },
   "keywords": [
     "electron",
@@ -39,31 +41,35 @@
     "authentication"
   ],
   "devDependencies": {
-    "babel-cli": "^6.3.17",
-    "babel-core": "^6.5.2",
-    "babel-plugin-add-module-exports": "^0.1.2",
-    "babel-preset-es2015": "^6.3.13",
-    "electron": "^1.3.4"
+    "babel-cli": "^6.26.0",
+    "babel-core": "^6.26.0",
+    "babel-eslint": "^8.2.2",
+    "babel-plugin-add-module-exports": "^0.2.1",
+    "babel-preset-env": "^1.6.1",
+    "eslint": "^4.19.1",
+    "eslint-config-airbnb-base": "^12.1.0",
+    "eslint-config-prettier": "^2.9.0",
+    "eslint-plugin-import": "^2.9.0",
+    "eslint-plugin-prettier": "^2.6.0",
+    "prettier": "^1.11.1"
   },
   "dependencies": {
     "oauth": "^0.9.14"
   },
-  "babel": {
-    "presets": [
-      "es2015"
-    ],
-    "plugins": [
-      "add-module-exports"
-    ],
-    "sourceType": "module"
+  "peerDependencies": {
+    "electron": "^1.8.4"
   },
-  "gitHead": "19a3f8bfa3c896e03ca577601d80142dc85447a7",
-  "_npmVersion": "4.1.2",
-  "_nodeVersion": "6.9.2",
+  "gitHead": "b30270782edd9ef8a5da98214868703c5a44351c",
+  "_npmVersion": "5.5.1",
+  "_nodeVersion": "8.9.0",
   "dist": {
-    "shasum": "3e1530ac381c3670225cf6cdc653fbba80721731",
-    "tarball": "https://registry.npmjs.org/electron-oauth-twitter/-/electron-oauth-twitter-1.1.0.tgz"
+    "integrity": "sha512-nJEoL9r/7uckJVvuCX5WLhEJxLOnyP+pSjRPRL1Qbxd9jndtCMrD/wOym0n9n8RTSapekVgdtrUX5SUHUtGHWA==",
+    "shasum": "93a83a12bdb14c8d687e18e2ec042e6c237844ad",
+    "tarball": "http://registry.npmjs.org/electron-oauth-twitter/-/electron-oauth-twitter-1.2.0.tgz",
+    "fileCount": 6,
+    "unpackedSize": 16798
   },
+  "_hasShrinkwrap": false,
   "versions": [
     {
       "number": "0.0.1",
@@ -100,13 +106,17 @@
     {
       "number": "1.1.0",
       "date": "2017-03-03T14:13:14.707Z"
+    },
+    {
+      "number": "1.2.0",
+      "date": "2018-03-25T10:11:32.597Z"
     }
   ],
   "created": "2016-02-16T04:17:12.306Z",
-  "modified": "2017-09-01T02:37:47.971Z",
+  "modified": "2018-03-25T10:11:33.584Z",
   "lastPublisher": {
     "name": "uraway",
-    "email": "masato.u0107@gmail.com"
+    "email": "masato.uraway@gmail.com"
   },
   "owners": [
     {

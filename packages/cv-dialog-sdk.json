@@ -1,0 +1,236 @@
+{
+  "name": "cv-dialog-sdk",
+  "version": "4.11.0",
+  "description": "Catavolt Dialog Javascript API",
+  "main": "./src/js/catavolt.js",
+  "typings": "./src/tsd/catavolt.d.ts",
+  "repository": {
+    "user": "catavolt-oss",
+    "repo": "cv-dialog-sdk",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/catavolt-oss/cv-dialog-sdk/tarball/master",
+    "clone_url": "https://github.com/catavolt-oss/cv-dialog-sdk",
+    "https_url": "https://github.com/catavolt-oss/cv-dialog-sdk",
+    "travis_url": "https://travis-ci.org/catavolt-oss/cv-dialog-sdk",
+    "zip_url": "https://github.com/catavolt-oss/cv-dialog-sdk/archive/master.zip",
+    "api_url": "https://api.github.com/repos/catavolt-oss/cv-dialog-sdk"
+  },
+  "keywords": [
+    "catavolt",
+    "javascript"
+  ],
+  "author": {
+    "name": "Rob Burson",
+    "email": "rob.burson@catavolt.com"
+  },
+  "license": "Apache-2.0",
+  "dependencies": {
+    "moment": "2.20.1",
+    "moment-timezone": "0.5.14",
+    "numeral": "2.0.6"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^6.1.0",
+    "@commitlint/config-conventional": "^6.1.0",
+    "@types/numeral": "0.0.21",
+    "@types/tape": "^4.2.30",
+    "babel-cli": "^6.26.0",
+    "babel-preset-es2015": "^6.24.1",
+    "babelify": "^8.0.0",
+    "blue-tape": "*",
+    "browser-run": "^4.0.4",
+    "browserify": "^16.1.0",
+    "commitizen": "*",
+    "cz-conventional-changelog": "^2.1.0",
+    "faucet": "0.0.1",
+    "husky": "^0.15.0-rc.8",
+    "prettier": "1.10.2",
+    "standard-version": "^4.3.0",
+    "tslint": "^5.9.1",
+    "tslint-config-prettier": "^1.9.0",
+    "typedoc": "*",
+    "typescript": "~2.6.2"
+  },
+  "scripts": {
+    "commit": "git-cz",
+    "gen-version-code": "bin/gen-version-code.js",
+    "lint": "./node_modules/tslint/bin/tslint -c tslint.json --fix -e 'src/**/*.d.ts' 'src/**/*.ts'",
+    "prettier": "./node_modules/prettier/bin-prettier.js --write src/catavolt/**/*.ts",
+    "release": "standard-version",
+    "test": "browserify -v -t [ babelify --presets [ es2015 ] ] src/js/test/integration/api.test.js | ./node_modules/.bin/browser-run -b electron | ./node_modules/.bin/faucet",
+    "test-browser": "browserify -v -t [ babelify --presets [ es2015 ] ] src/js/test/integration/api.test.js | ./node_modules/.bin/browser-run -p 2222 | ./node_modules/.bin/faucet"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  },
+  "standard-version": {
+    "scripts": {
+      "postbump": "bin/gen-version-code.js && tsc && git add ."
+    }
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "./makeDocs && git add .",
+      "commit-msg": "commitlint -e $GIT_PARAMS"
+    }
+  },
+  "gitHead": "0c3910c0d8e06d137c0ed2c43c383aa4cd8d7746",
+  "homepage": "https://github.com/catavolt-oss/cv-dialog-sdk#readme",
+  "_npmVersion": "5.3.0",
+  "_nodeVersion": "8.9.3",
+  "dist": {
+    "integrity": "sha512-ZQDCEcNqb7Dt3yzDcxx9wcn3VNxJ1pATwC9Qs6E0wN7fBttducKAvHYYWpAG09peDACjOHDaBnzbm6iMyX/Bhg==",
+    "shasum": "d3c987b075616e239eacdc2515d9f2c4d44a6a7c",
+    "tarball": "https://registry.npmjs.org/cv-dialog-sdk/-/cv-dialog-sdk-4.11.0.tgz",
+    "fileCount": 909,
+    "unpackedSize": 10237222,
+    "npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJa4PcHCRA9TVsSAnZWagAAT9wP/iC7FwGBVmmUbzbwHYxY\nOUy9MJCv9GyDFIJd9MdiqZrxOUnIuvi9Tfjlb9BzxXGci1E/9we8To3eVAOB\ngKNkH8evRrRvnxzpb7n8d0vJXOvY8QoJV0q7s0DficN+uPK4IsvZIF04Erf3\nOW8ugDQfTcjwmegS303tHGGhbe+2SpqBGdP17T0XRoG0c1COebfE3Y1R3+/V\n84wouZgkmx+Gi8Ed9UbSFKu7kS8qmfWLdC3ufzLmMLpRXqL9yVNpeaXd1SYq\neX+ecSPYfdFgC8jfvVZ60w2ifVLIKaU5LZ84Xpor5O0l3CWxoYMsbLaip/wz\n2GukyG9hyifNie5CPhCztVCovWCKzngXMJGeudCH9iu+GPE/zNT9sv+hsDu5\nP+TVugQqwumae7W0AwWoD+bYrOp+DfYSQMHG5tybGsqR3Z2S9MpTtYc7eETV\nsUohdu6TTs2YlcIL6fMf889YXNvn+8M5FewNOovyWcAWI7ZAe3YDbmf+jZIo\nTId07Sh5i0acZNoP5qJ8JwJVU2jnYZGUf5Ar2DXUa/QammXMRHlKdNXxzlmC\n5Pj762afavK7dRo5Ww/BssFEQjPR1RQAB9BJVEiPFgcQ6dbWrJ4lExsfRHMO\nFkGYuL9lXayiE+43YRH6PZsL4j5rDEjov1Tbzeg6l7F7LJ748F05eY5lC3GB\nRSMh\r\n=LzQ5\r\n-----END PGP SIGNATURE-----\r\n"
+  },
+  "_hasShrinkwrap": false,
+  "versions": [
+    {
+      "number": "2.0.0",
+      "date": "2018-01-24T13:14:32.147Z"
+    },
+    {
+      "number": "3.0.0",
+      "date": "2018-01-29T19:50:58.223Z"
+    },
+    {
+      "number": "3.0.1",
+      "date": "2018-02-12T21:44:28.250Z"
+    },
+    {
+      "number": "3.1.0",
+      "date": "2018-02-14T16:07:49.788Z"
+    },
+    {
+      "number": "3.1.2",
+      "date": "2018-02-14T22:32:05.680Z"
+    },
+    {
+      "number": "3.1.3",
+      "date": "2018-02-15T12:37:27.769Z"
+    },
+    {
+      "number": "3.1.4",
+      "date": "2018-02-15T13:03:58.275Z"
+    },
+    {
+      "number": "3.2.0",
+      "date": "2018-02-15T19:52:39.220Z"
+    },
+    {
+      "number": "3.2.1",
+      "date": "2018-02-19T18:46:59.376Z"
+    },
+    {
+      "number": "3.2.2",
+      "date": "2018-02-19T19:41:18.906Z"
+    },
+    {
+      "number": "3.2.3",
+      "date": "2018-02-21T17:35:24.316Z"
+    },
+    {
+      "number": "4.0.0",
+      "date": "2018-02-23T20:03:28.484Z"
+    },
+    {
+      "number": "4.1.0",
+      "date": "2018-03-01T22:50:47.674Z"
+    },
+    {
+      "number": "4.1.1",
+      "date": "2018-03-02T14:49:30.135Z"
+    },
+    {
+      "number": "4.1.4",
+      "date": "2018-03-05T20:12:35.902Z"
+    },
+    {
+      "number": "4.2.0",
+      "date": "2018-03-07T15:23:31.811Z"
+    },
+    {
+      "number": "4.2.1",
+      "date": "2018-03-07T15:55:59.310Z"
+    },
+    {
+      "number": "4.4.2",
+      "date": "2018-03-08T22:28:43.070Z"
+    },
+    {
+      "number": "4.4.3",
+      "date": "2018-03-12T19:54:37.127Z"
+    },
+    {
+      "number": "4.4.4",
+      "date": "2018-03-13T14:17:32.073Z"
+    },
+    {
+      "number": "4.5.0",
+      "date": "2018-03-19T15:17:40.095Z"
+    },
+    {
+      "number": "4.5.1",
+      "date": "2018-03-20T23:10:04.585Z"
+    },
+    {
+      "number": "4.5.2",
+      "date": "2018-03-21T15:48:33.720Z"
+    },
+    {
+      "number": "4.5.3",
+      "date": "2018-03-22T18:57:19.355Z"
+    },
+    {
+      "number": "4.5.4",
+      "date": "2018-04-16T20:50:12.907Z"
+    },
+    {
+      "number": "4.5.5",
+      "date": "2018-04-18T17:07:13.725Z"
+    },
+    {
+      "number": "4.6.0",
+      "date": "2018-04-19T18:57:24.737Z"
+    },
+    {
+      "number": "4.7.0",
+      "date": "2018-04-20T15:36:19.010Z"
+    },
+    {
+      "number": "4.8.0",
+      "date": "2018-04-22T18:42:52.050Z"
+    },
+    {
+      "number": "4.9.0",
+      "date": "2018-04-23T13:48:38.334Z"
+    },
+    {
+      "number": "4.10.0",
+      "date": "2018-04-24T12:08:36.036Z"
+    },
+    {
+      "number": "4.11.0",
+      "date": "2018-04-25T21:45:42.361Z"
+    }
+  ],
+  "created": "2018-01-24T13:14:32.147Z",
+  "modified": "2018-04-25T21:45:48.689Z",
+  "lastPublisher": {
+    "name": "catavolt",
+    "email": "rob.burson@catavolt.com"
+  },
+  "owners": [
+    {
+      "name": "catavolt",
+      "email": "rob.burson@catavolt.com"
+    }
+  ]
+}

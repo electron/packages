@@ -1,7 +1,7 @@
 {
   "name": "ao-app",
   "productName": "Ao",
-  "version": "5.2.0",
+  "version": "5.4.0",
   "description": "✔️ Elegant Microsoft To-Do desktop app",
   "license": "MIT",
   "repository": {
@@ -20,16 +20,18 @@
   "author": {
     "name": "Klaus Sinani",
     "email": "klauscfhq@protonmail.com",
-    "url": "https://cookfood.me"
+    "url": "https://klauscfhq.github.io"
   },
   "scripts": {
-    "test": "xo",
+    "test": "npm run test:js && npm run test:css",
+    "test:js": "xo",
+    "test:css": "stylelint 'style/*.css'",
     "start": "electron .",
     "pack": "build --dir",
     "dist": "build --publish never",
     "clean": "node ./bin/clean.js",
     "authors": "./bin/update-authors.sh",
-    "pack-all": "npm run pack:macos && npm run pack:linux && npm run pack:windows",
+    "pack:all": "npm run pack:macos && npm run pack:linux && npm run pack:windows",
     "pack:macos": "electron-packager . --no-prune --overwrite --asar --out=dist --platform=darwin --arch=x64 --icon=static/Icon.icns && cd dist/Ao-darwin-x64 && zip -ryXq9 ../Ao-macos-v${npm_package_version}.zip Ao.app && electron-installer-dmg ../Ao-darwin-x64/Ao.app Ao --icon=../../static/Icon.icns && cp Ao.dmg  ../../dist",
     "pack:linux": "electron-packager . --no-prune --overwrite --out=dist --platform=linux --arch=x64 && cd dist/Ao-linux-x64/ && zip -ryq9 ../Ao-linux-v${npm_package_version}.zip *",
     "pack:windows": "electron-packager . --no-prune --overwrite --asar --out=dist --platform=win32 --arch=ia32 --icon=static/Icon.ico --version-string.ProductName=$npm_package_productName && cd dist/Ao-win32-ia32 && zip -ryq9 ../Ao-windows-v${npm_package_version}.zip *"
@@ -37,24 +39,25 @@
   "dependencies": {
     "auto-launch": "^5.0.1",
     "chalk": "^2.3.0",
-    "electron-config": "^1.0.0",
     "electron-context-menu": "^0.9.1",
     "electron-debug": "^1.4.0",
     "electron-dl": "^1.10.0",
     "electron-is-dev": "^0.3.0",
+    "electron-settings": "^3.1.4",
     "fs-extra": "^4.0.2",
     "ms": "^2.0.0",
     "rimraf": "^2.6.2",
     "simple-get": "^2.7.0",
+    "stylelint": "^9.2.0",
     "time-stamp": "^2.0.0"
   },
   "devDependencies": {
-    "xo": "^0.19.0",
-    "electron": "1.7.9",
-    "electron-packager": "9.1.0",
+    "electron": "1.8.4",
     "electron-builder": "19.33.0",
     "electron-builder-squirrel-windows": "19.33.0",
-    "electron-installer-dmg": "0.2.1"
+    "electron-installer-dmg": "0.2.1",
+    "electron-packager": "9.1.0",
+    "xo": "^0.20.0"
   },
   "xo": {
     "esnext": true,
@@ -64,7 +67,27 @@
       "browser"
     ]
   },
+  "stylelint": {
+    "rules": {
+      "block-closing-brace-empty-line-before": "never",
+      "block-closing-brace-newline-after": "always",
+      "block-no-empty": true,
+      "block-opening-brace-space-before": "always",
+      "color-hex-case": "upper",
+      "color-hex-length": "long",
+      "color-no-invalid-hex": true,
+      "comment-no-empty": true,
+      "declaration-block-semicolon-space-before": "never",
+      "indentation": 2,
+      "max-empty-lines": 0,
+      "no-duplicate-selectors": true
+    }
+  },
   "build": {
+    "snap": {
+      "grade": "stable",
+      "confinement": "strict"
+    },
     "files": [
       "**/*",
       "!media${/*}",
@@ -94,6 +117,12 @@
             "ia32",
             "x64"
           ]
+        },
+        {
+          "target": "snap",
+          "arch": [
+            "x64"
+          ]
         }
       ]
     },
@@ -103,14 +132,18 @@
       ]
     }
   },
-  "gitHead": "b07753cfd20f1ca610686090993e8a5c08833ca3",
+  "gitHead": "0e846dcc1894c2692b612e97b7a7808a0e014d74",
   "homepage": "https://github.com/klauscfhq/ao#readme",
-  "_npmVersion": "4.2.0",
-  "_nodeVersion": "7.10.1",
+  "_npmVersion": "5.5.1",
+  "_nodeVersion": "9.3.0",
   "dist": {
-    "shasum": "c43c7d90aad77b368a4c497ddc6fc5938c9ed19f",
-    "tarball": "https://registry.npmjs.org/ao-app/-/ao-app-5.2.0.tgz"
+    "integrity": "sha512-QYnjN6/9C2Ahv2E/OkJ59YHUPgHvvFbv+74jaxbG4FsWfp26H0u9GPHXQMlrR5mLx3JuebaQO2RT3o55DEQrBQ==",
+    "shasum": "5078dc8e54b04a0499407d7850bb864194ce9ea8",
+    "tarball": "http://registry.npmjs.org/ao-app/-/ao-app-5.4.0.tgz",
+    "fileCount": 63,
+    "unpackedSize": 16755447
   },
+  "_hasShrinkwrap": false,
   "versions": [
     {
       "number": "1.0.0",
@@ -147,10 +180,18 @@
     {
       "number": "5.2.0",
       "date": "2017-12-03T18:46:01.865Z"
+    },
+    {
+      "number": "5.3.0",
+      "date": "2018-02-07T20:15:58.374Z"
+    },
+    {
+      "number": "5.4.0",
+      "date": "2018-04-13T01:10:27.873Z"
     }
   ],
   "created": "2017-09-29T11:50:06.249Z",
-  "modified": "2017-12-03T18:46:01.865Z",
+  "modified": "2018-04-13T01:10:29.031Z",
   "lastPublisher": {
     "name": "klauscfhq",
     "email": "klauscfhq@protonmail.com"

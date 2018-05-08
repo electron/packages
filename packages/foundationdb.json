@@ -1,0 +1,145 @@
+{
+  "name": "foundationdb",
+  "version": "0.4.4",
+  "description": "Node.js bindings for the FoundationDB database",
+  "keywords": [
+    "foundationdb",
+    "database",
+    "NoSQL",
+    "ACID"
+  ],
+  "homepage": "https://foundationdb.org",
+  "license": "MIT",
+  "main": "dist/lib/index.js",
+  "types": "dist/lib/index.d.ts",
+  "cpu": [
+    "x64"
+  ],
+  "scripts": {
+    "install": "node-gyp-build",
+    "test": "mocha -r ts-node/register test/*.ts",
+    "prepare": "tsc -p .",
+    "prepublishOnly": "rm -rf prebuilds && prebuildify-ci download",
+    "prebuild": "prebuildify -t 8.0.0 -t 9.0.0 -t 10.0.0 -t electron@1.8.0 --strip"
+  },
+  "dependencies": {
+    "nan": "^2.10.0",
+    "node-gyp-build": "^3.3.0"
+  },
+  "devDependencies": {
+    "@types/bindings": "^1.3.0",
+    "@types/mocha": "^5.2.0",
+    "@types/node": "^9.6.6",
+    "@types/xml2js": "^0.4.2",
+    "chalk": "^2.4.1",
+    "mocha": "^5.1.1",
+    "prebuildify": "^2.6.0",
+    "prebuildify-ci": "^1.0.1",
+    "ts-node": "^6.0.0",
+    "typescript": "^2.8.3",
+    "xml2js": "^0.4.19"
+  },
+  "repository": {
+    "user": "josephg",
+    "repo": "node-foundationdb",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/josephg/node-foundationdb/tarball/master",
+    "clone_url": "https://github.com/josephg/node-foundationdb",
+    "https_url": "https://github.com/josephg/node-foundationdb",
+    "travis_url": "https://travis-ci.org/josephg/node-foundationdb",
+    "zip_url": "https://github.com/josephg/node-foundationdb/archive/master.zip",
+    "api_url": "https://api.github.com/repos/josephg/node-foundationdb"
+  },
+  "engines": {
+    "node": ">=8.0.0"
+  },
+  "gypfile": true,
+  "gitHead": "bfea4fe4bc0a22153336fab035f0f9021ce03204",
+  "_npmVersion": "5.6.0",
+  "_nodeVersion": "10.0.0",
+  "dist": {
+    "integrity": "sha512-gd4KKToVX6dcCT+l36TQNY2posQ47/L+8CBM18B1HcPFmRquTqhSxYr7pBMH9jUau0wbiepRgrOnrxEdDLwIhw==",
+    "shasum": "81e4a5dfc1e964103739a86db14a44493680a876",
+    "tarball": "https://registry.npmjs.org/foundationdb/-/foundationdb-0.4.4.tgz",
+    "fileCount": 132,
+    "unpackedSize": 3157317,
+    "npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJa6BlRCRA9TVsSAnZWagAAI5oP/3pCdDVEKN+GSbpqgHH4\npIlsIqslMj3tRxxaQonOScRgH7GMsDkb8+29X7wZNgQWtwVGmj0ItU0yqCl0\nfdBg9oA/VK70qecwP65OxXB0qJb9Ip7wzBczM0hcniomCBnIrarFoM4UQotd\nyCtxB87cvzMXQ/Zk8JMeShfkTADogvKWwZKwXykXRy5IQjYn47R5yf0dupzl\nCpqRbUNWmr1gjmytXOcq2FIQPKJmHXOAnSmxvPSFJN/PtNGulXMMAKoWC0uH\nVeZyt3zRiOo7/3PuwCxDWDJiqMB2Z6SFqssFAOA9cWt0zSemF01eTMXk8sRH\n5c4iKgNx/kJmeNsVyvwdKo70QB7Z69hYvFsxmBqysYVpno67qtEn9dUe2K/O\nqBtaj36u+D2QY87NSIw5T1PcvQyJw/ikVIWUJt8rRdBJ96PznbtDXc+EOqIF\n0C2X/tLm2nVcIgAav3Du7C1kstl7/eZ0ehwigf2V2XEbrtQ+3VnwtmbS83hL\nKYSrq4ZFcpOjLJPNETxglQ3XYB6layS2PBFqGzBzXd13yibJFaiMHScuLNfd\nwFfPs2GpKzFmPiryA0Gc3OmWJHLt8VFakcOgDoN3igQDWEHRWjGUM4740ly3\nMXOQ51M6BNKyeqUKU8hHB3L0ysjqR94+Em16SBY0z+TQxTy2IyJ6fKV88qdu\ndQ14\r\n=qBkR\r\n-----END PGP SIGNATURE-----\r\n"
+  },
+  "_hasShrinkwrap": false,
+  "versions": [
+    {
+      "number": "0.0.1",
+      "date": "2018-04-20T15:43:30.446Z"
+    },
+    {
+      "number": "0.0.2",
+      "date": "2018-04-20T15:44:20.873Z"
+    },
+    {
+      "number": "0.1.0",
+      "date": "2018-04-22T14:47:37.568Z"
+    },
+    {
+      "number": "0.1.1",
+      "date": "2018-04-23T06:40:47.924Z"
+    },
+    {
+      "number": "0.1.2",
+      "date": "2018-04-23T07:01:10.788Z"
+    },
+    {
+      "number": "0.2.0",
+      "date": "2018-04-24T03:01:31.347Z"
+    },
+    {
+      "number": "0.2.1",
+      "date": "2018-04-24T03:38:51.944Z"
+    },
+    {
+      "number": "0.3.0",
+      "date": "2018-04-26T08:42:59.269Z"
+    },
+    {
+      "number": "0.3.1",
+      "date": "2018-04-26T08:58:05.649Z"
+    },
+    {
+      "number": "0.3.2",
+      "date": "2018-04-26T12:55:49.523Z"
+    },
+    {
+      "number": "0.4.0",
+      "date": "2018-04-29T05:02:57.817Z"
+    },
+    {
+      "number": "0.4.1",
+      "date": "2018-05-01T00:46:39.689Z"
+    },
+    {
+      "number": "0.4.2",
+      "date": "2018-05-01T00:48:21.982Z"
+    },
+    {
+      "number": "0.4.3",
+      "date": "2018-05-01T04:45:10.473Z"
+    },
+    {
+      "number": "0.4.4",
+      "date": "2018-05-01T07:37:51.723Z"
+    }
+  ],
+  "created": "2018-04-20T15:43:30.350Z",
+  "modified": "2018-05-01T07:37:55.588Z",
+  "lastPublisher": {
+    "name": "josephg",
+    "email": "me@josephg.com"
+  },
+  "owners": [
+    {
+      "name": "josephg",
+      "email": "me@josephg.com"
+    }
+  ]
+}

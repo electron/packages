@@ -1,0 +1,189 @@
+{
+  "name": "semux",
+  "version": "1.1.1",
+  "description": "Semux Javascript SDK Library",
+  "main": "dist/semux.umd.js",
+  "module": "dist/semux.es6.js",
+  "typings": "dist/types/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "engines": {
+    "node": ">=9"
+  },
+  "scripts": {
+    "prebuild": "cross-env-shell \"npm run format:check && rimraf dist coverage .nyc_output\"",
+    "build": "cross-env-shell \"rollup -c rollup.config.js\"",
+    "build:docs": "cross-env-shell \"rimraf docs && typedoc index.ts\"",
+    "build:test": "cross-env-shell \"rollup -c rollup.test.config.js\"",
+    "build:test-api": "cross-env-shell \"rollup -c rollup.test-api.config.js\"",
+    "build:swagger": "$(npm bin)/swagger-codegen-cli generate -i semux/src/main/resources/org/semux/api/v2_0_0/swagger.json -c swagger/swagger-codegen.json -l typescript-fetch --additional-properties=classname=SemuxApi -t swagger/templates -o lib/api",
+    "test": "cross-env-shell \"npm run build:test && mocha --opts mocha.opts test/index.js\"",
+    "test:browser": "cross-env-shell \"karma start --single-run\"",
+    "test:browserstack": "cross-env-shell \"karma start karma.browserstack.conf.js --single-run\"",
+    "test:api": "cross-env-shell \"npm run build:test-api && mocha --opts mocha.opts test/api/index.js\"",
+    "test:api:browesr": "cross-env-shell \"karma start karma.api.conf.js --single-run\"",
+    "test:coverage": "cross-env-shell \"npm run build:test && nyc mocha --opts mocha.opts test/index.js\"",
+    "format": "cross-env-shell \"tslint --project . --fix\"",
+    "format:check": "cross-env-shell \"tslint --project .\"",
+    "release": "npm run format:check && npm run build:swagger && npm run build && npm run build:docs"
+  },
+  "repository": {
+    "user": "semuxproject",
+    "repo": "semux-js-sdk",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/semuxproject/semux-js-sdk/tarball/master",
+    "clone_url": "https://github.com/semuxproject/semux-js-sdk",
+    "https_url": "https://github.com/semuxproject/semux-js-sdk",
+    "travis_url": "https://travis-ci.org/semuxproject/semux-js-sdk",
+    "zip_url": "https://github.com/semuxproject/semux-js-sdk/archive/master.zip",
+    "api_url": "https://api.github.com/repos/semuxproject/semux-js-sdk"
+  },
+  "keywords": [
+    "semux"
+  ],
+  "author": {
+    "name": "cryptokat",
+    "email": "crypto.kat@semux.io"
+  },
+  "license": "MIT",
+  "homepage": "https://github.com/semuxproject/semux-js-sdk#readme",
+  "dependencies": {
+    "atob": "^2.0",
+    "blakejs": "^1.1.0",
+    "btoa": "^1.2.1",
+    "buffer": "^5.1.0",
+    "core-js": "^2.5.5",
+    "detect-node": "^2.0.3",
+    "hoek": "^5.0.3",
+    "lodash": "^4.17.5",
+    "long": "^4.0.0",
+    "ripemd160": "^2.0.2",
+    "tweetnacl": "^1.0.0",
+    "unfetch": "^3.0.0",
+    "xmlhttprequest": "^1.8.0"
+  },
+  "devDependencies": {
+    "@types/chai": "^4.1.2",
+    "@types/core-js": "^0.9.46",
+    "@types/karma": "^1.7.3",
+    "@types/lodash": "^4.14.107",
+    "@types/long": "^3.0.32",
+    "@types/mocha": "^2.2.48",
+    "@types/node": "^9",
+    "browserstacktunnel-wrapper": "^2.0.2",
+    "chai": "^4.1.2",
+    "chai-as-promised": "^7.1.1",
+    "coveralls": "^3.0.0",
+    "cross-env": "^5.1.4",
+    "electron": "^1.8.4",
+    "es7-sleep": "^1.0.0",
+    "eslint": "^4.19.1",
+    "eslint-config-standard": "^11.0.0",
+    "eslint-plugin-import": "^2.11.0",
+    "eslint-plugin-node": "^6.0.1",
+    "eslint-plugin-promise": "^3.6.0",
+    "eslint-plugin-react": "^7.7.0",
+    "eslint-plugin-standard": "^3.0.1",
+    "eslint-plugin-typescript": "^0.9.0",
+    "karma": "^2.0.2",
+    "karma-browserstack-launcher": "^1.3.0",
+    "karma-chrome-launcher": "^2.2.0",
+    "karma-cli": "^1.0.1",
+    "karma-coverage": "^1.1.1",
+    "karma-edge-launcher": "^0.4.2",
+    "karma-electron-launcher": "^0.2.0",
+    "karma-firefox-launcher": "^1.1.0",
+    "karma-ie-launcher": "^1.0.0",
+    "karma-mocha": "^1.3.0",
+    "karma-mocha-reporter": "^2.2.5",
+    "karma-rollup-preprocessor": "^5.1.1",
+    "karma-safari-launcher": "^1.0.0",
+    "karma-sourcemap-loader": "^0.3.7",
+    "karma-transform-path-preprocessor": "0.0.3",
+    "karma-typescript": "^3.0.12",
+    "maven": "^4.4.0",
+    "mocha": "^5.1.1",
+    "mocha-lcov-reporter": "^1.3.0",
+    "mocha-typescript": "^1.1.12",
+    "nyc": "^11.7.1",
+    "rimraf": "^2.6.2",
+    "rollup": "^0.56.5",
+    "rollup-plugin-browserify-transform": "^1.0.1",
+    "rollup-plugin-commonjs": "^9.1.0",
+    "rollup-plugin-glob-import": "^0.1.4",
+    "rollup-plugin-istanbul": "^2.0.1",
+    "rollup-plugin-json": "^2.3.0",
+    "rollup-plugin-node-builtins": "^2.1.2",
+    "rollup-plugin-node-globals": "^1.2.0",
+    "rollup-plugin-node-resolve": "^3.3.0",
+    "rollup-plugin-sourcemaps": "^0.4.2",
+    "rollup-plugin-typescript2": "^0.12.0",
+    "source-map-support": "^0.5.4",
+    "static-module": "^2.2.4",
+    "swagger-nodegen-cli": "^2.3.1",
+    "ts-node": "^5.0.1",
+    "ts-runtime": "^0.1.35",
+    "tsconfig-paths": "^3.3.1",
+    "tslint": "^5.9.1",
+    "tslint-config-prettier": "^1.12.0",
+    "tslint-eslint-rules": "^5.1.0",
+    "typedoc": "^0.11.1",
+    "typedoc-plugin-internal-external": "^1.0.10",
+    "typescript": "^2.8.3",
+    "typescript-eslint-parser": "^14.0.0",
+    "wait-on": "^2.1.0"
+  },
+  "nyc": {
+    "extension": [
+      ".ts"
+    ],
+    "reporter": [
+      "html",
+      "text"
+    ],
+    "include": [
+      "lib/**/*.ts"
+    ],
+    "exclude": [
+      "lib/**/*.spec.ts"
+    ],
+    "all": true
+  },
+  "gitHead": "c03a0672b7bd2a7e923024ed2764852e789d0e00",
+  "_npmVersion": "6.0.0",
+  "_nodeVersion": "9.6.1",
+  "dist": {
+    "integrity": "sha512-i74GuKwVSFiWfUbS6S/dRRAfk7AnMkbekJ3bDXGMP7Ua1vrubyYinj95vr+1r+e245KuJaVkf/b+QRX7vD+3ag==",
+    "shasum": "67970eadf62f770f261bfc798096ee7fef4073dd",
+    "tarball": "https://registry.npmjs.org/semux/-/semux-1.1.1.tgz",
+    "fileCount": 33,
+    "unpackedSize": 4086308,
+    "npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJa50XdCRA9TVsSAnZWagAAkmAP/iI3uUH8X85TSR4rF8p/\nSzpAblKsT3JsJgKDuZvlIhz9f82LjK03/Q/xCQ88M/Kz889T481LLll708yp\nJWuwCAeMEcSM1++RU7ps9NkqsLq52T0GBlEcxhRT5V/rGv6WEzPKVQRPrIvd\nTx/vvD/8jCpp0EKt6plfRwfRIN9MCemruQaYNc5Qw5dLZf0rq0UYxBr6mYR1\nyBkOydA/SG4EKDtLH3BN7OE4o0CfrRDxZ8R9mpI6bKnjYoKwheNJgrSW46i2\n0WLvVEe0Acs4rsl6Y4DuEcIL0/qIGpD4ET0BdiOcfrnxfRG+BfoM0ym1U1Lh\n4ANKnb+DNorqNIaXHM0SYuorKnr4ocGeiyZdzJIBVaXwpwH1xDf5lIxOz/lR\nojl4BCtUyN1dW0LywD53sV9vk2KHz/nQcbIZ4iN7eItQ40FJl+oOAPee80a6\noSmqtxK8NENOUVMl6U4p6bAst4YjXBN2JaBzIUt5AUKfLyYg3/ZYIjmqTWPw\nQ1A9NBxoR47UeDpGMaxThbvD+O5pAWfgybiJ+zhFuH7gtoWjvTrTw/mnnqBo\nGQWgbMH7bABkE88Uu0KLe74gI+ruse2cNGXzcyPbJ90Jo68pxPo7ROpP7GHe\nNWh8BIfOAALdRbYVY6TLDKukea8hOy5WFItsyiQcVyLITjiboJ0R1pYZdqcV\nWC/r\r\n=5hq1\r\n-----END PGP SIGNATURE-----\r\n"
+  },
+  "_hasShrinkwrap": false,
+  "versions": [
+    {
+      "number": "1.1.0",
+      "date": "2018-04-29T11:58:05.042Z"
+    },
+    {
+      "number": "1.1.1",
+      "date": "2018-04-30T16:35:40.616Z"
+    }
+  ],
+  "created": "2018-04-30T16:35:40.326Z",
+  "modified": "2018-04-30T16:35:45.511Z",
+  "lastPublisher": {
+    "name": "semuxproject",
+    "email": "crypto.kat@semux.io"
+  },
+  "owners": [
+    {
+      "name": "semuxproject",
+      "email": "crypto.kat@semux.io"
+    }
+  ]
+}

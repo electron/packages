@@ -1,6 +1,6 @@
 {
   "name": "electron-typescript-definitions",
-  "version": "1.2.11",
+  "version": "1.3.2",
   "description": "Automatically generated TypeScript definitions files for the Electron API",
   "bin": {
     "electron-typescript-definitions": "cli.js"
@@ -15,7 +15,8 @@
     "pretest-output": "npm run build -- -o=test-smoke/electron/index.d.ts && cd test-smoke/electron/test && rm -f *.js",
     "test-output": "tslint electron.d.ts --format stylish && cd test-smoke/electron && tsc --project tsconfig.json",
     "prepack": "check-for-leaks",
-    "prepush": "check-for-leaks"
+    "prepush": "check-for-leaks",
+    "semantic-release": "semantic-release pre && npm publish && semantic-release post"
   },
   "author": {
     "name": "Samuel Attard"
@@ -26,7 +27,8 @@
     "check-for-leaks": "^1.2.0",
     "husky": "^0.14.3",
     "mocha": "^3.1.2",
-    "standard": "^9.0.2"
+    "standard": "^9.0.2",
+    "semantic-release": "^8.2.0"
   },
   "standard": {
     "env": {
@@ -45,14 +47,31 @@
     "tslint": "^4.5.1",
     "typescript": "^2.2.1"
   },
-  "gitHead": "1ef2b33fb785e41c2db1127e9e26bdbfe9892da6",
-  "_npmVersion": "5.5.1",
-  "_nodeVersion": "8.4.0",
-  "dist": {
-    "integrity": "sha512-gBVmiGkw2hiut17wnSchYpFxrBmMb+jKFSjxbVFeivCn1OAAFykKtrsg26Sjcrra6AN1YiWyTC7SD9twPAO8dQ==",
-    "shasum": "7e9114c265a025b3f1b169df132bd670f90305e8",
-    "tarball": "https://registry.npmjs.org/electron-typescript-definitions/-/electron-typescript-definitions-1.2.11.tgz"
+  "repository": {
+    "user": "electron",
+    "repo": "electron-typescript-definitions",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/electron/electron-typescript-definitions/tarball/master",
+    "clone_url": "https://github.com/electron/electron-typescript-definitions",
+    "https_url": "https://github.com/electron/electron-typescript-definitions",
+    "travis_url": "https://travis-ci.org/electron/electron-typescript-definitions",
+    "zip_url": "https://github.com/electron/electron-typescript-definitions/archive/master.zip",
+    "api_url": "https://api.github.com/repos/electron/electron-typescript-definitions"
   },
+  "gitHead": "16b5b2b21ed73bb0a373672dc59e0c76d3b26e13",
+  "homepage": "https://github.com/electron/electron-typescript-definitions#readme",
+  "_npmVersion": "5.6.0",
+  "_nodeVersion": "9.5.0",
+  "dist": {
+    "integrity": "sha512-tnPS2cgKV5rT7y2QZfBHxBrM6hI0rc16/OXY137Gvm8ry93jTdfv4R1zjCRGc3RTCo4r4T8XS92U4Qqd/5pm8Q==",
+    "shasum": "0b50ef1b1d3837a4087e611f1f4b3b6ba6ccbe48",
+    "tarball": "http://registry.npmjs.org/electron-typescript-definitions/-/electron-typescript-definitions-1.3.2.tgz",
+    "fileCount": 25,
+    "unpackedSize": 817456
+  },
+  "_hasShrinkwrap": false,
   "versions": [
     {
       "number": "1.0.0",
@@ -109,34 +128,46 @@
     {
       "number": "1.2.11",
       "date": "2017-11-20T16:42:50.004Z"
+    },
+    {
+      "number": "1.3.0",
+      "date": "2018-02-12T19:34:37.653Z"
+    },
+    {
+      "number": "1.3.1",
+      "date": "2018-02-15T23:53:40.833Z"
+    },
+    {
+      "number": "1.3.2",
+      "date": "2018-02-21T01:14:57.178Z"
     }
   ],
   "created": "2017-04-01T03:11:08.676Z",
-  "modified": "2017-11-20T16:42:50.004Z",
+  "modified": "2018-02-21T01:14:58.385Z",
   "lastPublisher": {
-    "name": "zeke",
-    "email": "zeke@sikelianos.com"
+    "name": "electron",
+    "email": "electron@github.com"
   },
   "owners": [
     {
-      "email": "zcbenz@gmail.com",
-      "name": "zcbenz"
-    },
-    {
-      "email": "kevinsawicki@gmail.com",
-      "name": "kevinsawicki"
+      "email": "electron@github.com",
+      "name": "electron"
     },
     {
       "email": "felix@felixrieseberg.com",
       "name": "felixrieseberg"
     },
     {
+      "email": "kevinsawicki@gmail.com",
+      "name": "kevinsawicki"
+    },
+    {
       "email": "samuel.r.attard@gmail.com",
       "name": "marshallofsound"
     },
     {
-      "email": "electron@github.com",
-      "name": "electron"
+      "email": "zcbenz@gmail.com",
+      "name": "zcbenz"
     },
     {
       "email": "zeke@sikelianos.com",

@@ -1,13 +1,13 @@
 {
   "name": "text-buffer",
-  "version": "13.11.4",
+  "version": "13.14.2",
   "description": "A container for large mutable strings with annotated regions",
   "main": "./lib/text-buffer",
   "scripts": {
     "prepublish": "npm run clean && npm run compile && npm run lint && npm run atomdoc",
     "atomdoc": "grunt shell:update-atomdoc atomdoc",
     "clean": "grunt clean",
-    "compile": "coffee --no-header --output lib --compile src && cp src/*.js lib/",
+    "compile": "coffee --no-header --output lib --compile src && cpy src/*.js lib/",
     "lint": "coffeelint -r src spec && standard src/*.js spec/*.js",
     "test": "node script/test",
     "ci": "npm run compile && npm run lint && npm run test && npm run bench",
@@ -33,8 +33,9 @@
     "coffee-cache": "^0.2.0",
     "coffee-script": "^1.10.0",
     "coffeelint": "1.16.0",
+    "cpy-cli": "^1.0.1",
     "dedent": "^0.6.0",
-    "electron": "1.7",
+    "electron": "^1.7.11",
     "grunt": "^0.4.5",
     "grunt-atomdoc": "^1.0.1",
     "grunt-cli": "^0.1.13",
@@ -60,7 +61,7 @@
     "mkdirp": "^0.5.1",
     "pathwatcher": "8.0.1",
     "serializable": "^1.0.3",
-    "superstring": "^2.2.15",
+    "superstring": "2.3.0",
     "underscore-plus": "^1.0.0"
   },
   "standard": {
@@ -75,15 +76,19 @@
       "snapshotResult"
     ]
   },
-  "gitHead": "eabf196eac7bc458e4f2186124b3bc3ae4554dcb",
+  "gitHead": "c5b926599e127d30a436dca5c0f48d379c3e7b7a",
   "homepage": "https://github.com/atom/text-buffer#readme",
-  "_npmVersion": "5.6.0",
-  "_nodeVersion": "8.4.0",
+  "_npmVersion": "5.8.0",
+  "_nodeVersion": "9.8.0",
   "dist": {
-    "integrity": "sha512-LQ9YMy0kCbvzxOPylBOcj7tZes8S+/9vd3h46kXX+LSnhjnPbK5cqgOdL1XqXOlYvRFRwrFxsWyurQZFS7IClQ==",
-    "shasum": "23650e18fd3df26a6312106caa9672e31e9e099b",
-    "tarball": "https://registry.npmjs.org/text-buffer/-/text-buffer-13.11.4.tgz"
+    "integrity": "sha512-yMblPpHthyl5nLfTpnkA2C0TPVDqY1KnGpaCDfEAFEob39U1YPiXHCbL2iyszIUUCDV8niZwbN1KBvwUMsp5oA==",
+    "shasum": "52aff4162650c4270eefd81fe0a46b49bc6ce6f2",
+    "tarball": "https://registry.npmjs.org/text-buffer/-/text-buffer-13.14.2.tgz",
+    "fileCount": 29,
+    "unpackedSize": 446187,
+    "npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJa136GCRA9TVsSAnZWagAAADUP/2RyHhka3+ZM+w9YMzRC\n+l6xjqi8N7vBM4BDrNspO/aAVWVc2XgTtdlStLtq07LXh4hHyDWmqLTDmG4e\nNOafHiG25qCvs7qBlvvWj+1pN2OSjZEZTgQ+TlejjTdJa+f6de4l59GphUKD\nR3o1125l32xXOy6H+c9Minu76jDIVsNAiiuWZtNw/Aq5mK9RHpwU1ztpJ+15\nlYb3R41lEff+8CjcZu/pSlXrqTlF+ddJcY6oVNGiT9ldwlydEr7QpJk64wCV\nAt7wrN0lLZPQy6/MptU/Mq2SXgdXOqKWdoPkzHJ6p7UX12toWjLt+V7vuE9z\n/pIStGuGrQuO9tMx79mb/rP1wAFgxHcT5oDlmi7L97L9xEaXN+kdRH57oGiM\nvICGjQZZUBLydle37Mwq+Lu6yDGuac5M3KyFeJLCKTlr/eMGQIKcm9VgAXuv\nzfD6RqulkA3keowXXbXOnYG5x8sy7VQpqp3zhy/i2ITxEUVoJQO6hAK/oZNO\n7s5fuXAtYxIl+i8FlTI/NUT5exnOPeyfOJdju5R7LdL5PIHAN7yHSxN9M9Dv\nKr/wRbHQlO2ag213SD2ccWEP7Ie+wF/Yniuv8HfTaebMsZgygq2rKyXxZ20k\n9lCuf2d9LtWfPGithb/lB6x4jS6exsMlLmMPKv9EVC5RHQVw8uBbHm0G15xD\njQaD\r\n=Wxh1\r\n-----END PGP SIGNATURE-----\r\n"
   },
+  "_hasShrinkwrap": false,
   "stars": 1,
   "versions": [
     {
@@ -1741,66 +1746,130 @@
     {
       "number": "13.11.4",
       "date": "2018-01-17T01:42:05.596Z"
+    },
+    {
+      "number": "13.11.5",
+      "date": "2018-01-17T21:05:08.122Z"
+    },
+    {
+      "number": "13.11.6",
+      "date": "2018-01-23T14:46:58.136Z"
+    },
+    {
+      "number": "13.9.3",
+      "date": "2018-01-23T17:31:38.989Z"
+    },
+    {
+      "number": "13.11.7",
+      "date": "2018-01-26T22:01:08.669Z"
+    },
+    {
+      "number": "13.11.8",
+      "date": "2018-01-26T23:31:25.045Z"
+    },
+    {
+      "number": "13.12.1",
+      "date": "2018-03-19T19:12:15.355Z"
+    },
+    {
+      "number": "13.12.2",
+      "date": "2018-03-22T19:25:51.188Z"
+    },
+    {
+      "number": "13.12.3",
+      "date": "2018-03-22T19:39:17.392Z"
+    },
+    {
+      "number": "13.12.4",
+      "date": "2018-03-27T15:16:46.175Z"
+    },
+    {
+      "number": "13.13.0",
+      "date": "2018-03-29T17:05:35.212Z"
+    },
+    {
+      "number": "13.11.9",
+      "date": "2018-03-30T19:07:43.962Z"
+    },
+    {
+      "number": "13.14.0",
+      "date": "2018-04-09T18:14:03.097Z"
+    },
+    {
+      "number": "13.14.1-0",
+      "date": "2018-04-12T16:57:29.437Z"
+    },
+    {
+      "number": "13.14.1",
+      "date": "2018-04-12T17:53:05.867Z"
+    },
+    {
+      "number": "13.14.2",
+      "date": "2018-04-18T17:21:10.225Z"
     }
   ],
   "created": "2013-12-31T19:04:03.826Z",
-  "modified": "2018-01-17T01:42:05.596Z",
+  "modified": "2018-04-18T17:21:14.694Z",
   "lastPublisher": {
     "name": "maxbrunsfeld",
     "email": "maxbrunsfeld@gmail.com"
   },
   "owners": [
     {
-      "email": "daviwil@github.com",
-      "name": "daviwil"
-    },
-    {
-      "email": "justin@rafflecopter.com",
-      "name": "leroix"
-    },
-    {
-      "email": "smashwilson@gmail.com",
-      "name": "smashwilson"
+      "email": "as-cii@github.com",
+      "name": "as-cii"
     },
     {
       "email": "atom@github.com",
       "name": "atom-team"
     },
     {
+      "email": "ogle.ben@gmail.com",
+      "name": "benogle"
+    },
+    {
+      "email": "daviwil@github.com",
+      "name": "daviwil"
+    },
+    {
       "email": "ian.olsen@gmail.com",
       "name": "iolsen"
     },
     {
-      "email": "kuychaco@gmail.com",
-      "name": "kuychaco"
-    },
-    {
-      "email": "as-cii@github.com",
-      "name": "as-cii"
-    },
-    {
-      "email": "nathan@github.com",
-      "name": "nathansobo"
+      "email": "jason@jasonrudolph.com",
+      "name": "jasonrudolph"
     },
     {
       "email": "kevinsawicki@gmail.com",
       "name": "kevinsawicki"
     },
     {
-      "email": "probablycorey@gmail.com",
-      "name": "probablycorey"
+      "email": "kuychaco@gmail.com",
+      "name": "kuychaco"
     },
     {
-      "email": "zcbenz@gmail.com",
-      "name": "zcbenz"
-    },
-    {
-      "email": "ogle.ben@gmail.com",
-      "name": "benogle"
+      "email": "justin@rafflecopter.com",
+      "name": "leroix"
     },
     {
       "email": "maxbrunsfeld@gmail.com",
       "name": "maxbrunsfeld"
+    },
+    {
+      "email": "nathan@github.com",
+      "name": "nathansobo"
+    },
+    {
+      "email": "probablycorey@gmail.com",
+      "name": "probablycorey"
+    },
+    {
+      "email": "smashwilson@gmail.com",
+      "name": "smashwilson"
+    },
+    {
+      "email": "zcbenz@gmail.com",
+      "name": "zcbenz"
     }
   ]
 }

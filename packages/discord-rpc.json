@@ -1,6 +1,6 @@
 {
   "name": "discord-rpc",
-  "version": "3.0.0-beta.8",
+  "version": "3.0.0-beta.10",
   "description": "A simple RPC client for Discord",
   "keywords": [
     "discord",
@@ -16,36 +16,38 @@
     "email": "me@gus.host"
   },
   "license": "MIT",
-  "homepage": "https://github.com/devsnek/discord-rpc#readme",
+  "homepage": "https://github.com/discordjs/RPC#readme",
   "repository": {
-    "user": "devsnek",
-    "repo": "discord-rpc",
+    "user": "discordjs",
+    "repo": "RPC",
     "host": "github.com",
     "branch": "master",
     "apiHost": "api.github.com",
-    "tarball_url": "https://api.github.com/repos/devsnek/discord-rpc/tarball/master",
-    "clone_url": "https://github.com/devsnek/discord-rpc",
-    "https_url": "https://github.com/devsnek/discord-rpc",
-    "travis_url": "https://travis-ci.org/devsnek/discord-rpc",
-    "zip_url": "https://github.com/devsnek/discord-rpc/archive/master.zip",
-    "api_url": "https://api.github.com/repos/devsnek/discord-rpc"
+    "tarball_url": "https://api.github.com/repos/discordjs/RPC/tarball/master",
+    "clone_url": "https://github.com/discordjs/RPC",
+    "https_url": "https://github.com/discordjs/RPC",
+    "travis_url": "https://travis-ci.org/discordjs/RPC",
+    "zip_url": "https://github.com/discordjs/RPC/archive/master.zip",
+    "api_url": "https://api.github.com/repos/discordjs/RPC"
   },
   "scripts": {
+    "lint": "eslint src test --ext=js",
     "docs": "docgen --source src --output docs.json --jsdoc jsdoc.json --custom docgen.json",
     "example": "electron example/main.js",
     "build:browser": "webpack",
     "prepublishOnly": "NODE_ENV=production npm run build:browser"
   },
   "dependencies": {
-    "discord.js": "github:hydrabolt/discord.js",
+    "discord.js": "github:discordjs/discord.js",
     "snekfetch": "^3.5.8"
   },
   "peerDependencies": {
     "register-scheme": "github:devsnek/node-register-scheme"
   },
   "devDependencies": {
-    "discord.js-docgen": "github:hydrabolt/discord.js-docgen",
+    "discord.js-docgen": "github:discordjs/docgen",
     "electron": "^1.7.9",
+    "eslint": "^4.18.1",
     "jsdoc-strip-async-await": "^0.1.0",
     "uglifyjs-webpack-plugin": "^1.1.2",
     "webpack": "^3.10.0"
@@ -59,15 +61,18 @@
     "register-scheme": false,
     "./src/transports/IPC.js": false
   },
-  "gitHead": "ae3b0a0c5ce2b412f53936e04eeab680a996f5ee",
-  "_npmVersion": "5.5.1",
-  "_nodeVersion": "9.3.0",
+  "gitHead": "1dd14076eb5a64233d60efaf299ef349ce04a38f",
+  "_npmVersion": "5.7.1",
+  "_nodeVersion": "9.10.0",
   "dist": {
-    "integrity": "sha512-oKy8k54GB7SzBeTEjk4FlUk9Oqw/4Dw6Innr7uHy014lIM3O5UiQMnbPX5lKeFf1+qp9ILQyJX7sOjGP34mtzA==",
-    "shasum": "3522061d7fcc0dc74c06da90ccde3169f7394e94",
-    "tarball": "https://registry.npmjs.org/discord-rpc/-/discord-rpc-3.0.0-beta.8.tgz"
+    "integrity": "sha512-b0G6O0WJkxoLQSopyNRqByXCrpBL68HXPMULVZXLjRgj+sStwOmbABM+HwBDJWF6s/uhkB/+cAgq+19x4w0SPA==",
+    "shasum": "d1178347a4b1e2cc574e206fdb5efc69348af398",
+    "tarball": "http://registry.npmjs.org/discord-rpc/-/discord-rpc-3.0.0-beta.10.tgz",
+    "fileCount": 13,
+    "unpackedSize": 165008
   },
-  "stars": 5,
+  "_hasShrinkwrap": false,
+  "stars": 6,
   "versions": [
     {
       "number": "1.0.0",
@@ -164,10 +169,18 @@
     {
       "number": "3.0.0-beta.8",
       "date": "2017-12-17T17:08:06.655Z"
+    },
+    {
+      "number": "3.0.0-beta.9",
+      "date": "2018-02-22T03:42:34.856Z"
+    },
+    {
+      "number": "3.0.0-beta.10",
+      "date": "2018-03-29T03:38:23.892Z"
     }
   ],
   "created": "2016-11-17T13:35:02.214Z",
-  "modified": "2017-12-18T03:46:56.202Z",
+  "modified": "2018-03-29T03:38:25.052Z",
   "lastPublisher": {
     "name": "snek",
     "email": "me@gus.host"

@@ -1,7 +1,7 @@
 {
   "name": "futamata",
   "productName": "Futamata",
-  "version": "0.0.17",
+  "version": "0.0.18",
   "description": "Unofficial desktop client for sankakuchannel",
   "main": "main/main.js",
   "bin": {
@@ -9,10 +9,10 @@
   },
   "scripts": {
     "build": "tsc --pretty -p .",
-    "tslint": "tslint $(git ls-files | grep -E \"\\.tsx?$\")",
+    "watch": "tsc --pretty -p . --watch",
+    "tslint": "tslint --project . --exclude 'node_modules/**'",
     "stylelint": "stylelint renderer/style.css webview/style.css",
     "lint": "npm-run-all --parallel tslint stylelint",
-    "watch": "guard --watchdir main renderer webview common",
     "debug": "NODE_ENV=development electron .",
     "start": "NODE_ENV=production electron .",
     "release": "npm run lint && ./scripts/make-release.sh",
@@ -38,41 +38,40 @@
   "license": "MIT",
   "homepage": "https://github.com/Futamata/Futamata#readme",
   "devDependencies": {
-    "@types/cheerio": "^0.22.2",
-    "@types/loglevel": "^1.5.1",
-    "@types/react": "^16.0.7",
-    "@types/react-dom": "^15.5.5",
-    "@types/react-redux": "^5.0.9",
+    "@types/cheerio": "^0.22.7",
+    "@types/loglevel": "^1.5.3",
+    "@types/react": "^16.0.35",
+    "@types/react-dom": "^16.0.3",
+    "@types/react-redux": "^5.0.14",
     "@types/redux": "^3.6.31",
-    "@types/request": "2.0.3",
-    "electron-packager": "^9.1.0",
-    "npm-run-all": "^4.1.1",
-    "stylelint": "^8.1.1",
-    "stylelint-config-standard": "^17.0.0",
-    "tslint": "^5.7.0",
-    "tslint-react": "^3.2.0",
-    "typescript": "^2.5.3"
+    "@types/request": "^2.0.13",
+    "electron-packager": "^10.1.1",
+    "npm-run-all": "^4.1.2",
+    "stylelint": "^8.4.0",
+    "stylelint-config-standard": "^18.0.0",
+    "tslint": "^5.9.1",
+    "tslint-react": "^3.4.0",
+    "typescript": "^2.6.2"
   },
   "dependencies": {
     "cheerio": "^1.0.0-rc.2",
-    "electron": "~1.7.8",
+    "electron": "~1.7.11",
     "electron-dl": "^1.10.0",
-    "loglevel": "^1.5.0",
-    "react": "^16.0.0",
+    "loglevel": "^1.6.1",
+    "react": "^16.2.0",
     "react-component-bytesize-icons": "^2.0.1",
-    "react-dom": "^16.0.0",
+    "react-dom": "^16.2.0",
     "react-redux": "^5.0.6",
     "redux": "^3.7.2",
     "request": "^2.83.0"
   },
-  "false": {},
-  "gitHead": "447c74a67dba8e5143c3fd7c138ea603072e965f",
-  "_npmVersion": "5.0.3",
-  "_nodeVersion": "8.1.4",
+  "gitHead": "34f55901852b2025dbe7677062ac01036031fc78",
+  "_npmVersion": "5.5.1",
+  "_nodeVersion": "8.9.1",
   "dist": {
-    "integrity": "sha512-rA9WCNxVOaTH8DhCsvYLvAmBKAh6emIf4bUR6/noqfP/3T7RlHUM0RU5SPTHcoKrkDEl/vskNbNB9MwFZKFTTg==",
-    "shasum": "1eaf79907d58c11f4aa8ac0a3f779cc93b7f20c2",
-    "tarball": "https://registry.npmjs.org/futamata/-/futamata-0.0.17.tgz"
+    "integrity": "sha512-sUme3LWsQf7Xe8ad3lPTXshUL6PM5VzNeIHOjYmFcieHWx5AVCG5nYGkEWMXimpFlYxfnT2XlSBGz4pfjwrvbA==",
+    "shasum": "6f65b56f05bbf22de91de7af2cae8c3e0fc7b942",
+    "tarball": "https://registry.npmjs.org/futamata/-/futamata-0.0.18.tgz"
   },
   "versions": [
     {
@@ -142,10 +141,14 @@
     {
       "number": "0.0.17",
       "date": "2017-09-30T14:18:29.123Z"
+    },
+    {
+      "number": "0.0.18",
+      "date": "2018-01-26T15:29:48.003Z"
     }
   ],
   "created": "2016-11-21T08:23:00.223Z",
-  "modified": "2017-09-30T14:18:29.123Z",
+  "modified": "2018-01-26T15:29:48.003Z",
   "lastPublisher": {
     "name": "rhysd",
     "email": "lin90162@yahoo.co.jp"

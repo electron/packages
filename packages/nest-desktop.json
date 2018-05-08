@@ -1,11 +1,13 @@
 {
   "name": "nest-desktop",
-  "version": "0.11.0",
+  "version": "0.15.0",
   "description": "A NEST desktop application",
   "main": "main.js",
   "scripts": {
+    "prestart": "node init.js",
     "start": "electron .",
-    "package": "electron-packager . --overwrite --platform=linux --arch=x64 --icon=./src/assets/img/nest_logo.png --prune=true --out=release-builds"
+    "postinstall": "electron-rebuild",
+    "build": "electron-packager . --overwrite --platform=linux --arch=x64 --icon=./src/assets/img/nest-icon.png --prune=true --out=release-builds"
   },
   "repository": {
     "user": "babsey",
@@ -35,37 +37,42 @@
   "dependencies": {
     "bootstrap": "^3.3.7",
     "bootstrap-notify": "^3.1.3",
-    "bootstrap-slider": "^9.9.0",
+    "bootstrap-slider": "^10.0.0",
     "clipboard": "^1.7.1",
     "colorbrewer": "^1.0.0",
     "d3": "^4.11.0",
-    "electron": "1.7.8",
-    "flat": "^2.0.1",
+    "flat": "^4.0.0",
     "font-awesome": "^4.7.0",
-    "joi": "^10.6.0",
+    "joi": "^13.1.1",
     "jquery": "^3.2.1",
-    "jsonfile": "^2.4.0",
-    "mathjs": "^3.16.4",
+    "jsonfile": "^4.0.0",
+    "mathjs": "^4.0.0",
     "nedb": "^1.8.0",
     "numeric": "^1.2.6",
     "object-hash": "^1.1.8",
     "pouchdb": "^6.3.4",
     "pouchdb-upsert": "^2.2.0",
+    "request": "^2.83.0",
     "uuid": "^3.1.0"
   },
   "devDependencies": {
-    "debug": "^2.6.9",
-    "electron-packager": "^9.1.0"
+    "debug": "^3.1.0",
+    "electron": "^1.8.2",
+    "electron-packager": "^11.0.1",
+    "electron-rebuild": "^1.6.0"
   },
-  "gitHead": "c8c21bdc53dc01b146d185eb554f47aaa081b9cb",
+  "gitHead": "09d330cbf8b39eeb9d6193d39dc9015978cfe443",
   "homepage": "https://github.com/babsey/nest-desktop#readme",
-  "_npmVersion": "5.5.1",
-  "_nodeVersion": "6.10.3",
+  "_npmVersion": "5.6.0",
+  "_nodeVersion": "9.5.0",
   "dist": {
-    "integrity": "sha512-DjES7CvXlXmK6wQoAaRm2EKdxw+/23VQ/DeArK2UR/X6YxvcGf25iA5+dK1hnMVGz+Z9Cz5QcTmMUWRO/A8zVA==",
-    "shasum": "e2d239100dc8002ceabe54f41c7f4a685f92d081",
-    "tarball": "https://registry.npmjs.org/nest-desktop/-/nest-desktop-0.11.0.tgz"
+    "integrity": "sha512-6eGR8gAmMxT3gTJhlOAjkPu2as+MrcHvmC9VA84Fq8eV94HLKmGVwh7QZBbQHXgVDDRNPww9UKfVvWvkjkbPLg==",
+    "shasum": "49651890e39cfaf34f22db9ca61ebafd127fd970",
+    "tarball": "http://registry.npmjs.org/nest-desktop/-/nest-desktop-0.15.0.tgz",
+    "fileCount": 87,
+    "unpackedSize": 1009194
   },
+  "_hasShrinkwrap": false,
   "stars": 1,
   "versions": [
     {
@@ -223,10 +230,26 @@
     {
       "number": "0.11.0",
       "date": "2017-11-22T07:59:11.096Z"
+    },
+    {
+      "number": "0.12.0",
+      "date": "2018-01-29T14:10:28.540Z"
+    },
+    {
+      "number": "0.13.0",
+      "date": "2018-02-07T14:41:55.844Z"
+    },
+    {
+      "number": "0.14.0",
+      "date": "2018-02-15T21:25:13.786Z"
+    },
+    {
+      "number": "0.15.0",
+      "date": "2018-02-28T15:28:43.325Z"
     }
   ],
   "created": "2016-12-08T12:36:17.322Z",
-  "modified": "2017-11-22T07:59:11.096Z",
+  "modified": "2018-02-28T15:28:44.324Z",
   "lastPublisher": {
     "name": "babsey",
     "email": "spreizer@web.de"

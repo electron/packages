@@ -1,7 +1,7 @@
 {
   "name": "patchless",
   "description": "patchless is a _standard_ for modular ui apps. It's primarily intended for secure scuttlebutt, but not actually directly coupled to ssb.",
-  "version": "1.8.0",
+  "version": "2.1.1",
   "homepage": "https://github.com/dominictarr/patchless",
   "repository": {
     "user": "dominictarr",
@@ -21,36 +21,38 @@
     "hyperlightbox": "^1.0.0",
     "hyperloadmore": "^1.1.0",
     "hyperscript": "^2.0.2",
-    "patchapp-threads": "^2.1.0",
-    "patchapp-vote": "^1.0.3",
-    "patchavatar-names": "^1.0.0",
-    "patchavatar-raw": "^1.0.0",
+    "patchapp-friends": "^1.0.1",
+    "patchapp-raw": "^1.0.0",
+    "patchapp-threads": "^4.0.1",
+    "patchapp-vote": "^2.0.1",
+    "patchavatar-names": "^2.0.1",
+    "patchavatar-raw": "^2.0.1",
     "patchcompose": "^2.0.0",
-    "patchcompose-drafts": "^1.0.0",
+    "patchcompose-drafts": "^2.0.0",
     "patchcompose-file": "^1.0.0",
     "patchcompose-legacy-mentions": "^1.0.0",
+    "patchcompose-mentioned-recipients": "^1.0.0",
     "patchcompose-recipients": "^1.0.0",
-    "patchconfirm-lightbox": "^1.0.0",
+    "patchconfirm-lightbox": "^1.0.1",
     "patchidentity": "^1.2.1",
+    "patchmisc-recipients": "^2.0.0",
     "patchnav-basic": "^2.0.2",
+    "patchnav-command": "^1.0.0",
     "patchnav-less": "^2.0.2",
     "patchnav-tabs": "^2.0.1",
     "patchsuggest": "^2.0.0",
-    "patchsuggest-fulltext": "^1.0.0",
-    "patchthreads": "^1.0.0",
-    "pull-more": "^1.0.0",
+    "patchsuggest-fulltext": "^2.0.2",
     "pull-reconnect": "0.0.3",
-    "pull-scroll": "^1.0.9",
     "pull-stream": "^3.6.1",
-    "ssb-client": "^4.5.2",
+    "ssb-client": "^4.5.7",
     "ssb-config": "^2.2.0",
-    "ssb-keys": "^7.0.13",
-    "ssb-markdown": "^3.3.0",
-    "ssb-ref": "^2.8.0",
-    "visualize-buffer": "0.0.1"
+    "ssb-keys": "^7.0.13"
   },
   "devDependencies": {
-    "brfs": "^1.4.3"
+    "brfs": "^1.4.3",
+    "browserify": "^14.5.0",
+    "electro": "^2.1.0",
+    "electron": "^1.7.10"
   },
   "browserify": {
     "transform": [
@@ -71,13 +73,18 @@
     "url": "dominictarr.com"
   },
   "license": "MIT",
-  "gitHead": "8d7ffb8fc03925de84f6ede7163b9d7751875190",
-  "_npmVersion": "4.6.1",
-  "_nodeVersion": "6.5.0",
+  "gitHead": "dbd70096a599a9ae0549ee612db5978be88268c8",
+  "_npmVersion": "5.6.0",
+  "_nodeVersion": "8.11.1",
   "dist": {
-    "shasum": "8c7956302a743614ab03e8040a6212e3310b04ea",
-    "tarball": "https://registry.npmjs.org/patchless/-/patchless-1.8.0.tgz"
+    "integrity": "sha512-Ezp9TtSFCFcAr6lB2am/Q003u4b1tvUqje6FvdN1PyHZndNBCJAC95B0IfVeET4wf3r8YlW6pRvATAvIM5t7rQ==",
+    "shasum": "cc5f870d71379b7b9c4ec0c346b7e8843bbff770",
+    "tarball": "https://registry.npmjs.org/patchless/-/patchless-2.1.1.tgz",
+    "fileCount": 10,
+    "unpackedSize": 22001,
+    "npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJa4R+3CRA9TVsSAnZWagAAmtwQAJAQZpT8l3yVJpp8ypon\nc5oKPJs1rCOcUr63erBS3zfqDnZOliYhDBKTDh4B4BNgwPfUimoHVIgJ+gHn\nEWL+rMl/s/f2NYiCATQxi0BltlOJAV5BWv6k+V9abGiGGXBlL5ew6+kgFitI\nlBrI4ZCNrPwRGTxxSZbs1o9ZsfkKfZvn2BIVpzYh5gYOehp/arz9ngv6BM7S\n4ZvZwv91FPmP8V4sUsx3kCVISPU3/bKFWImTGYxmSXpNxGRFy7aTLf6r2b7J\n7mUEqmO3uBLC1fn/FPKzZzIiDLTIZwN7DfHvYjk04V27T9Vt7+0vxD+aC8/h\nvJdlBP4zybBAGNKSsnn88aLxpTb/w4Ab1AiomZWXVmQ/3ELvqQb5yD/Dg4ee\ng56bX3f7xYUybWlHGOT3OpKIjCS9m1Xpf337+HUn3aX0DK753zUJ/tAO17Sp\nWwXkNnN3wuUvjou0P1xPAACEXyPW6ZctUjXfQY2dGk045rh82cjqdo0IEbBX\nhivGcarjhyWzRTUHBbdoiHSHUqDYEFS+MX0mrTdHzxZpJP1dVAwmmBIx/Ojf\ndgCf+oQkje6Y6NJw6jGeSx+MGzW59IZa2eS37ltlCK0apu5MLF7/iQ5liojV\nRNgkJ0F7lWRBhY4J6RtvqIioLaCJ9Vu/046NFaXb7qNgR7bY3gYUjcKth0bw\n6N8H\r\n=OJsn\r\n-----END PGP SIGNATURE-----\r\n"
   },
+  "_hasShrinkwrap": false,
   "versions": [
     {
       "number": "1.0.0",
@@ -118,10 +125,38 @@
     {
       "number": "1.8.0",
       "date": "2018-01-03T10:07:38.222Z"
+    },
+    {
+      "number": "2.0.0",
+      "date": "2018-03-04T09:46:46.686Z"
+    },
+    {
+      "number": "2.0.1",
+      "date": "2018-03-07T03:43:42.316Z"
+    },
+    {
+      "number": "2.0.2",
+      "date": "2018-03-08T10:24:24.018Z"
+    },
+    {
+      "number": "2.0.3",
+      "date": "2018-04-04T08:54:12.712Z"
+    },
+    {
+      "number": "2.0.4",
+      "date": "2018-04-06T00:04:41.028Z"
+    },
+    {
+      "number": "2.1.0",
+      "date": "2018-04-19T04:38:23.079Z"
+    },
+    {
+      "number": "2.1.1",
+      "date": "2018-04-26T00:39:17.519Z"
     }
   ],
   "created": "2017-12-03T22:04:34.984Z",
-  "modified": "2018-01-03T10:07:38.222Z",
+  "modified": "2018-04-26T00:39:23.322Z",
   "lastPublisher": {
     "name": "dominictarr",
     "email": "dominic.tarr@gmail.com"

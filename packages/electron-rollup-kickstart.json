@@ -1,0 +1,103 @@
+{
+  "name": "electron-rollup-kickstart",
+  "version": "1.0.1",
+  "description": "this is a electron rollup project skeleton setup",
+  "main": "dist/main.js",
+  "keywords": [
+    "electron",
+    "rollup"
+  ],
+  "author": {
+    "name": "Bowen Li",
+    "email": "superdev@outlook.com.au"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "babel-core": "^6.26.0",
+    "babel-plugin-external-helpers": "^6.22.0",
+    "babel-preset-env": "^1.6.1",
+    "electron": "~1.8.2",
+    "electron-reloader": "^0.2.0",
+    "faucet": "^0.0.1",
+    "husky": "^0.14.3",
+    "lint-staged": "^6.0.0",
+    "npm-run-all": "^4.1.2",
+    "prettier": "1.9.2",
+    "rollup": "^0.56.3",
+    "rollup-plugin-babel": "^3.0.3",
+    "rollup-plugin-commonjs": "^8.2.6",
+    "rollup-plugin-node-resolve": "^3.0.0",
+    "rollup-plugin-uglify": "^2.0.1",
+    "sinon": "^4.1.3",
+    "tape": "^4.8.0"
+  },
+  "scripts": {
+    "start": "npm-run-all -p start:dev start:electron",
+    "start:dev": "rollup -c -w ",
+    "start:electron": "electron .",
+    "build": "rollup -c",
+    "test": "node test/test.js | faucet",
+    "pretest": "npm run build",
+    "precommit": "lint-staged",
+    "format": "prettier --trailing-comma es5 --single-quote --no-semi --write 'src/**/*.js'"
+  },
+  "lint-staged": {
+    "*.{js,json,css,md}": [
+      "prettier prettier --trailing-comma es5 --single-quote --no-semi --write",
+      "git add"
+    ],
+    "yarn.lock": [
+      "git rm --cached",
+      "git add"
+    ]
+  },
+  "files": [
+    "dist"
+  ],
+  "repository": {
+    "user": "bowen31337",
+    "repo": "electron-rollup-kickstart",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/bowen31337/electron-rollup-kickstart/tarball/master",
+    "clone_url": "https://github.com/bowen31337/electron-rollup-kickstart",
+    "https_url": "https://github.com/bowen31337/electron-rollup-kickstart",
+    "travis_url": "https://travis-ci.org/bowen31337/electron-rollup-kickstart",
+    "zip_url": "https://github.com/bowen31337/electron-rollup-kickstart/archive/master.zip",
+    "api_url": "https://api.github.com/repos/bowen31337/electron-rollup-kickstart"
+  },
+  "engines": {
+    "node": ">=8.6.0"
+  },
+  "gitHead": "efd8abc0718958f1c37333cbfb332a68b826368f",
+  "homepage": "https://github.com/bowen31337/electron-rollup-kickstart#readme",
+  "_npmVersion": "5.3.0",
+  "_nodeVersion": "8.6.0",
+  "dist": {
+    "integrity": "sha512-iPSV4m7JNunBgrujK0b4c9tzyQGZyYfBtelScOWxOfKyCmCKhAlF3d5tGNnRC35i4tNDraZrq9QQrF4+IVR93g==",
+    "shasum": "c83fb564a75824f41c9b4b9275fa700c9f7d48fb",
+    "tarball": "http://registry.npmjs.org/electron-rollup-kickstart/-/electron-rollup-kickstart-1.0.1.tgz",
+    "fileCount": 4,
+    "unpackedSize": 4533
+  },
+  "_hasShrinkwrap": false,
+  "versions": [
+    {
+      "number": "1.0.1",
+      "date": "2018-03-06T05:01:17.440Z"
+    }
+  ],
+  "created": "2018-03-06T05:01:17.369Z",
+  "modified": "2018-03-06T05:01:18.374Z",
+  "lastPublisher": {
+    "name": "bowen31337",
+    "email": "superdev@outlook.com.au"
+  },
+  "owners": [
+    {
+      "name": "bowen31337",
+      "email": "superdev@outlook.com.au"
+    }
+  ]
+}

@@ -1,32 +1,33 @@
 {
   "name": "quasar-framework",
-  "version": "0.14.7",
-  "description": "Simultaneously build desktop/mobile SPA websites & phone/tablet apps with VueJS",
-  "main": "dist/quasar.esm.js",
-  "module": "dist/quasar.esm.js",
-  "jsnext:main": "dist/quasar.esm.js",
+  "version": "0.15.10",
+  "description": "Build responsive websites, PWAs, hybrid mobile apps and Electron apps, all simultaneously using same codebase",
   "files": [
-    "dist"
+    "dist",
+    "i18n",
+    "icons",
+    "src"
   ],
   "scripts": {
     "clean": "node build/script.clean.js",
     "dev": "node build/script.dev.js",
     "build": "node build/script.build.js",
+    "test:umd": "node build/script.test-umd.js",
     "lint": "eslint --ext .js,.vue src dev",
-    "deploy": "npm run build && rm -rf deploy && mkdir deploy && cp -R dist LICENSE package.json deploy && cp build/README-edge.md deploy/README.md && node_modules/git-directory-deploy/bin/git-directory-deploy.sh -ddeploy -bmaster -rgit@github.com:quasarframework/quasar-edge.git && rm -rf deploy"
+    "deploy": "bash build/deploy.sh"
   },
   "repository": {
-    "user": "rstoenescu",
-    "repo": "quasar-framework",
+    "user": "quasarframework",
+    "repo": "quasar",
     "host": "github.com",
     "branch": "master",
     "apiHost": "api.github.com",
-    "tarball_url": "https://api.github.com/repos/rstoenescu/quasar-framework/tarball/master",
-    "clone_url": "https://github.com/rstoenescu/quasar-framework",
-    "https_url": "https://github.com/rstoenescu/quasar-framework",
-    "travis_url": "https://travis-ci.org/rstoenescu/quasar-framework",
-    "zip_url": "https://github.com/rstoenescu/quasar-framework/archive/master.zip",
-    "api_url": "https://api.github.com/repos/rstoenescu/quasar-framework"
+    "tarball_url": "https://api.github.com/repos/quasarframework/quasar/tarball/master",
+    "clone_url": "https://github.com/quasarframework/quasar",
+    "https_url": "https://github.com/quasarframework/quasar",
+    "travis_url": "https://travis-ci.org/quasarframework/quasar",
+    "zip_url": "https://github.com/quasarframework/quasar/archive/master.zip",
+    "api_url": "https://api.github.com/repos/quasarframework/quasar"
   },
   "keywords": [
     "vuejs",
@@ -37,6 +38,7 @@
     "tablet",
     "desktop",
     "spa",
+    "pwa",
     "website",
     "electron"
   ],
@@ -48,76 +50,92 @@
   "license": "MIT",
   "homepage": "http://quasar-framework.org",
   "devDependencies": {
-    "autoprefixer": "^6.5.0",
-    "babel-core": "^6.17.0",
-    "babel-eslint": "^7.0.0",
-    "babel-loader": "^7.1.2",
-    "babel-plugin-transform-runtime": "^6.15.0",
-    "babel-preset-es2015": "^6.16.0",
+    "ajv": "^6.2.1",
+    "autoprefixer": "^8.1.0",
+    "babel-core": "^6.26.0",
+    "babel-eslint": "^8.2.2",
+    "babel-loader": "^7.1.4",
+    "babel-plugin-transform-runtime": "^6.23.0",
+    "babel-preset-env": "1.6.1",
     "babel-preset-es2015-rollup": "^3.0.0",
-    "babel-preset-stage-2": "^6.17.0",
-    "colors": "^1.1.2",
-    "connect-history-api-fallback": "^1.3.0",
-    "css-loader": "^0.28.7",
-    "es6-promise": "^4.1.0",
-    "eslint": "^4.8.0",
-    "eslint-config-standard": "^10.2.1",
+    "babel-preset-stage-2": "^6.24.1",
+    "babel-register": "6.26.0",
+    "babel-runtime": "6.26.0",
+    "colors": "^1.2.1",
+    "connect-history-api-fallback": "^1.5.0",
+    "css-loader": "^0.28.11",
+    "eslint": "^4.18.2",
+    "eslint-config-standard": "^11.0.0-beta.0",
     "eslint-friendly-formatter": "^3.0.0",
     "eslint-loader": "^1.9.0",
-    "eslint-plugin-html": "^3.2.2",
-    "eslint-plugin-import": "^2.7.0",
-    "eslint-plugin-node": "^5.2.0",
-    "eslint-plugin-promise": "^3.5.0",
+    "eslint-plugin-html": "^4.0.2",
+    "eslint-plugin-import": "^2.9.0",
+    "eslint-plugin-node": "^6.0.1",
+    "eslint-plugin-promise": "^3.7.0",
     "eslint-plugin-standard": "^3.0.1",
     "eventsource-polyfill": "^0.9.6",
-    "express": "^4.16.1",
-    "extract-text-webpack-plugin": "^3.0.1",
-    "file-loader": "^0.11.1",
-    "friendly-errors-webpack-plugin": "^1.3.1",
+    "express": "^4.16.3",
+    "extract-text-webpack-plugin": "^3.0.2",
+    "file-loader": "^1.1.11",
+    "friendly-errors-webpack-plugin": "^1.6.1",
     "git-directory-deploy": "^1.5.1",
     "html-webpack-plugin": "^2.30.1",
     "json-loader": "^0.5.7",
-    "opn": "^5.1.0",
-    "parse5": "^2.1.0",
-    "postcss-loader": "^1.0.0",
-    "progress-bar-webpack-plugin": "^1.9.0",
-    "quasar-extras": "0.0.8",
+    "opn": "^5.3.0",
+    "parse5": "^2.2.3",
+    "postcss-loader": "^2.1.1",
+    "postcss-rtl": "^1.2.3",
+    "progress-bar-webpack-plugin": "^1.11.0",
+    "quasar-extras": "^1.0.2",
     "raw-loader": "^0.5.1",
-    "rollup": "^0.50.0",
-    "rollup-plugin-babel": "^3.0.2",
-    "rollup-plugin-buble": "^0.16.0",
-    "rollup-plugin-json": "^2.1.0",
-    "rollup-plugin-local-resolve": "^1.0.7",
-    "rollup-plugin-vue": "^2.5.1",
-    "rtlcss": "^2.2.0",
-    "shelljs": "^0.7.0",
-    "stylint": "^1.5.6",
+    "rollup": "^0.57.0",
+    "rollup-plugin-babel": "^3.0.3",
+    "rollup-plugin-buble": "^0.19.2",
+    "rollup-plugin-json": "^2.3.0",
+    "rollup-plugin-node-resolve": "^3.2.0",
+    "rollup-plugin-replace": "^2.0.0",
+    "rollup-plugin-vue": "^3.0.0",
+    "shelljs": "^0.8.1",
+    "stylint": "^1.5.9",
     "stylus": "^0.54.5",
-    "stylus-loader": "^3.0.1",
-    "url-loader": "^0.5.7",
-    "vue": "^2.5.0",
-    "vue-loader": "^13.0.5",
-    "vue-router": "^2.7.0",
-    "vue-style-loader": "^3.0.3",
-    "vue-template-compiler": "^2.5.0",
-    "webpack": "^3.6.0",
-    "webpack-dev-middleware": "^1.12.0",
-    "webpack-hot-middleware": "^2.19.1",
-    "webpack-merge": "^4.1.0"
+    "stylus-loader": "^3.0.2",
+    "sym": "0.0.4",
+    "uglify-es": "^3.3.9",
+    "url-loader": "^0.6.2",
+    "vue": "^2.5.16",
+    "vue-loader": "^14.2.1",
+    "vue-router": "^3.0.1",
+    "vue-style-loader": "^4.0.2",
+    "vue-template-compiler": "^2.5.16",
+    "webpack": "^3.11.0",
+    "webpack-dev-middleware": "^2.0.6",
+    "webpack-hot-middleware": "^2.21.2",
+    "webpack-merge": "^4.1.2"
   },
   "peerDependencies": {
-    "vue": "^2.5.0",
-    "quasar-extras": "0.x"
+    "vue": "^2.5.0"
   },
-  "gitHead": "601a9c05b3f109172ce1e54eaacdd7d3d93a0eb9",
-  "_npmVersion": "5.5.1",
-  "_nodeVersion": "6.11.4",
+  "engines": {
+    "node": ">= 8.9.0",
+    "npm": ">= 5.6.0"
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not ie <= 10"
+  ],
+  "gitHead": "3bdd38bea6df8b0d84368aaeeb9f5e3993f8228b",
+  "_npmVersion": "5.7.1",
+  "_nodeVersion": "8.9.4",
   "dist": {
-    "integrity": "sha512-c4sDAxceefSek7dl+p5VlAWXbDKDm4LAtyKQx/X5ZpzoRA2l6g6v8wfer/H9MGdqJJWgmQRKyRXJlXV/LzBSTA==",
-    "shasum": "aee96d2468284eba4172522a6ca010623038dcd3",
-    "tarball": "https://registry.npmjs.org/quasar-framework/-/quasar-framework-0.14.7.tgz"
+    "integrity": "sha512-+R2O8EE2vQHHm0ioa3s28wyJzpZy4MvIlr+HcHoT6qU7K/YW6qcRMBzTsdx1i5KoEQRfHukl8ZOmKssxpLHSGw==",
+    "shasum": "fe688442d005d4c9370c7aff9c79c4577ddd64e8",
+    "tarball": "http://registry.npmjs.org/quasar-framework/-/quasar-framework-0.15.10.tgz",
+    "fileCount": 487,
+    "unpackedSize": 5764190
   },
-  "stars": 3,
+  "_hasShrinkwrap": false,
+  "stars": 5,
   "versions": [
     {
       "number": "0.0.1",
@@ -490,10 +508,106 @@
     {
       "number": "0.15.0-beta.6",
       "date": "2018-01-16T17:26:33.977Z"
+    },
+    {
+      "number": "0.15.0-beta.7",
+      "date": "2018-01-18T14:36:22.834Z"
+    },
+    {
+      "number": "0.15.0-beta.8",
+      "date": "2018-01-20T13:49:34.011Z"
+    },
+    {
+      "number": "0.15.0-beta.9",
+      "date": "2018-01-21T12:01:58.554Z"
+    },
+    {
+      "number": "0.15.0-beta.10",
+      "date": "2018-01-23T16:46:21.399Z"
+    },
+    {
+      "number": "0.14.8",
+      "date": "2018-01-29T11:46:49.346Z"
+    },
+    {
+      "number": "0.15.0-beta.11",
+      "date": "2018-01-31T13:31:41.976Z"
+    },
+    {
+      "number": "0.15.0-beta.12",
+      "date": "2018-01-31T13:37:43.036Z"
+    },
+    {
+      "number": "0.14.9",
+      "date": "2018-01-31T13:40:10.860Z"
+    },
+    {
+      "number": "0.15.0-beta.13",
+      "date": "2018-02-04T13:22:47.550Z"
+    },
+    {
+      "number": "0.15.0-beta.14",
+      "date": "2018-02-20T13:14:16.976Z"
+    },
+    {
+      "number": "0.15.0",
+      "date": "2018-02-20T20:25:10.341Z"
+    },
+    {
+      "number": "0.15.1",
+      "date": "2018-02-20T20:26:43.698Z"
+    },
+    {
+      "number": "0.15.2",
+      "date": "2018-02-23T21:42:52.743Z"
+    },
+    {
+      "number": "0.15.3",
+      "date": "2018-02-25T14:50:44.110Z"
+    },
+    {
+      "number": "0.15.4",
+      "date": "2018-02-27T20:47:28.606Z"
+    },
+    {
+      "number": "0.15.5",
+      "date": "2018-03-01T18:14:27.282Z"
+    },
+    {
+      "number": "0.15.6",
+      "date": "2018-03-03T15:58:00.778Z"
+    },
+    {
+      "number": "0.15.7",
+      "date": "2018-03-13T19:21:45.664Z"
+    },
+    {
+      "number": "0.15.8",
+      "date": "2018-03-17T17:46:49.483Z"
+    },
+    {
+      "number": "0.14.10",
+      "date": "2018-03-20T16:30:26.628Z"
+    },
+    {
+      "number": "0.15.9",
+      "date": "2018-03-26T18:58:19.590Z"
+    },
+    {
+      "number": "0.15.10-beta.1",
+      "date": "2018-03-26T19:40:01.323Z"
+    },
+    {
+      "number": "0.15.10-beta.2",
+      "date": "2018-03-26T19:43:30.435Z"
+    },
+    {
+      "number": "0.15.10",
+      "date": "2018-03-26T20:08:26.657Z"
     }
   ],
   "created": "2015-10-05T18:39:00.102Z",
-  "modified": "2018-01-16T17:26:33.977Z",
+  "modified": "2018-03-26T20:08:28.440Z",
   "lastPublisher": {
     "name": "rstoenescu",
     "email": "razvan.stoenescu@gmail.com"

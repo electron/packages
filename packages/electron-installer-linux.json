@@ -1,9 +1,8 @@
 {
   "name": "electron-installer-linux",
-  "version": "2.0.0-alpha.2",
+  "version": "2.0.0-alpha.3",
   "description": "Aggregate electron-installer-debian, -redhat and -flatpak under a single package.",
-  "main": "index.js",
-  "module": "index.esm.js",
+  "main": "lib/index.js",
   "repository": {
     "user": "ibujs",
     "repo": "electron-installer-linux",
@@ -22,44 +21,42 @@
   },
   "license": "Apache-2.0",
   "scripts": {
-    "build": "webpack && rollup -c rollup.config.js",
+    "build": "babel src/* -d lib/",
     "lint": "eslint ."
   },
-  "optionalDependencies": {
-    "electron-installer-debian": "^0.5.2",
-    "electron-installer-flatpak": "^0.6.0",
-    "electron-installer-redhat": "^0.5.0"
+  "dependencies": {
+    "electron-installer-debian": "^0.8.1",
+    "electron-installer-flatpak": "^0.8.0",
+    "electron-installer-redhat": "^0.5.0",
+    "electron-installer-snap": "^2.0.1"
   },
   "devDependencies": {
+    "@types/jest": "^20.0.2",
+    "babel-cli": "^6.26.0",
     "babel-eslint": "^7.2.3",
-    "babel-loader": "^7.1.1",
     "babel-plugin-external-helpers": "^6.22.0",
     "babel-preset-env": "^1.5.2",
-    "babili-webpack-plugin": "^0.1.2",
+    "babel-preset-minify": "^0.2.0",
     "eslint": "^4.1.1",
-    "eslint-config-airbnb-base": "^11.2.0",
-    "eslint-plugin-import": "^2.6.1",
-    "eslint-plugin-react": "^7.1.0",
-    "rollup": "^0.43.0",
-    "rollup-plugin-babel": "^2.7.1",
-    "rollup-plugin-commonjs": "^8.0.2",
-    "rollup-plugin-node-resolve": "^3.0.0",
-    "webpack": "^3.0.0"
+    "eslint-config-standard": "^10.2.1",
+    "eslint-plugin-import": "^2.8.0",
+    "eslint-plugin-node": "^5.2.1",
+    "eslint-plugin-promise": "^3.6.0",
+    "eslint-plugin-standard": "^3.0.1",
+    "jest": "^20.0.4"
   },
-  "gitHead": "fb416ae47bef4dd100a67e1341556e886abb9d44",
+  "gitHead": "3c7991957bf76569ee8d29b0423a458d308d8b97",
   "homepage": "https://github.com/ibujs/electron-installer-linux#readme",
-  "dependencies": {
-    "electron-installer-debian": "^0.5.2",
-    "electron-installer-flatpak": "^0.6.0",
-    "electron-installer-redhat": "^0.5.0"
-  },
-  "_npmVersion": "5.0.3",
-  "_nodeVersion": "8.1.2",
+  "_npmVersion": "5.7.1",
+  "_nodeVersion": "9.6.1",
   "dist": {
-    "integrity": "sha512-YRYYGAesvB7bWBv7jVImp/njlt7o1DWt/kJk9UuKa4wsJNF41Q2Iqy35YEyELrLY7YUcKlO2fdAVmbRucy6IYQ==",
-    "shasum": "5d96dd2f3579d08abe42649907dfcfbb66c9c881",
-    "tarball": "https://registry.npmjs.org/electron-installer-linux/-/electron-installer-linux-2.0.0-alpha.2.tgz"
+    "integrity": "sha512-VTYopZdBM7Mgkd8QP5FHVdr145AE6wS2zmi6xVAfGllONlmcaDskekhRruH5fy7+nC5prch7zmYmyKFVD1Hg/Q==",
+    "shasum": "f8a0131b771b5243acac906ebe587a428f8064fb",
+    "tarball": "http://registry.npmjs.org/electron-installer-linux/-/electron-installer-linux-2.0.0-alpha.3.tgz",
+    "fileCount": 10,
+    "unpackedSize": 321210
   },
+  "_hasShrinkwrap": true,
   "versions": [
     {
       "number": "1.0.0",
@@ -88,10 +85,14 @@
     {
       "number": "2.0.0-alpha.2",
       "date": "2017-06-30T13:19:54.828Z"
+    },
+    {
+      "number": "2.0.0-alpha.3",
+      "date": "2018-02-24T07:24:06.695Z"
     }
   ],
   "created": "2017-06-06T10:02:53.401Z",
-  "modified": "2017-06-30T13:24:45.502Z",
+  "modified": "2018-02-24T07:24:07.498Z",
   "lastPublisher": {
     "name": "ibujs",
     "email": "ansari.ibrahim1@gmail.com"

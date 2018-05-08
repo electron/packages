@@ -1,7 +1,7 @@
 {
   "name": "webtorrent",
   "description": "Streaming torrent client",
-  "version": "0.98.20",
+  "version": "0.99.4",
   "author": {
     "name": "WebTorrent, LLC",
     "email": "feross@webtorrent.io",
@@ -24,8 +24,8 @@
   },
   "dependencies": {
     "addr-to-ip-port": "^1.4.2",
-    "bitfield": "^1.1.2",
-    "bittorrent-dht": "^7.2.2",
+    "bitfield": "^2.0.0",
+    "bittorrent-dht": "^8.0.0",
     "bittorrent-protocol": "^2.1.5",
     "chunk-store-stream": "^2.0.2",
     "create-torrent": "^3.24.5",
@@ -36,28 +36,28 @@
     "inherits": "^2.0.1",
     "load-ip-set": "^1.2.7",
     "memory-chunk-store": "^1.2.0",
-    "mime": "^1.4.1",
+    "mime": "^2.2.0",
     "multistream": "^2.0.5",
     "package-json-versionify": "^1.0.2",
-    "parse-torrent": "^5.8.0",
-    "pump": "^1.0.1",
+    "parse-torrent": "^6.0.0",
+    "pump": "^3.0.0",
     "random-iterate": "^1.0.1",
     "randombytes": "^2.0.3",
     "range-parser": "^1.2.0",
     "readable-stream": "^2.1.4",
-    "render-media": "^2.8.0",
+    "render-media": "^3.0.0",
     "run-parallel": "^1.1.6",
     "run-parallel-limit": "^1.0.3",
     "safe-buffer": "^5.0.1",
     "simple-concat": "^1.0.0",
-    "simple-get": "^2.2.1",
-    "simple-peer": "^8.0.0",
+    "simple-get": "^3.0.1",
+    "simple-peer": "^9.0.0",
     "simple-sha1": "^2.0.8",
     "speedometer": "^1.0.0",
     "stream-to-blob": "^1.0.0",
     "stream-to-blob-url": "^2.1.0",
     "stream-with-known-length-to-buffer": "^1.0.0",
-    "torrent-discovery": "^8.1.0",
+    "torrent-discovery": "^8.3.1",
     "torrent-piece": "^1.1.0",
     "uniq": "^1.0.1",
     "unordered-array-remove": "^1.0.2",
@@ -67,20 +67,20 @@
     "zero-fill": "^2.2.3"
   },
   "devDependencies": {
-    "babili": "^0.1.4",
-    "bittorrent-tracker": "^9.0.0",
+    "airtap": "0.0.4",
+    "babel-minify": "^0.3.0",
+    "bittorrent-tracker": "^9.4.0",
     "brfs": "^1.4.3",
-    "browserify": "^14.0.0",
-    "cross-spawn": "^5.0.1",
-    "electron": "^1.7.8",
+    "browserify": "^16.0.0",
+    "cross-spawn": "^6.0.3",
+    "electron": "^2.0.0",
     "finalhandler": "^1.0.0",
     "network-address": "^1.1.0",
     "run-series": "^1.1.4",
     "serve-static": "^1.11.1",
     "standard": "*",
     "tape": "^4.6.0",
-    "webtorrent-fixtures": "^1.5.0",
-    "zuul": "^3.10.1"
+    "webtorrent-fixtures": "^1.5.0"
   },
   "engines": {
     "node": ">=4"
@@ -118,25 +118,28 @@
     "api_url": "https://api.github.com/repos/webtorrent/webtorrent"
   },
   "scripts": {
-    "build": "browserify -s WebTorrent -e ./ | babili > webtorrent.min.js",
+    "build": "browserify -s WebTorrent -e ./ | minify > webtorrent.min.js",
     "build-debug": "browserify -s WebTorrent -e ./ > webtorrent.debug.js",
     "size": "npm run build && cat webtorrent.min.js | gzip | wc -c",
-    "test": "standard && node ./bin/test.js",
-    "test-browser": "zuul -- test/*.js test/browser/*.js",
-    "test-browser-headless": "zuul --electron -- test/*.js test/browser/*.js",
-    "test-browser-local": "zuul --local -- test/*.js test/browser/*.js",
+    "test": "standard && npm run test-node && npm run test-browser",
+    "test-browser": "airtap -- test/*.js test/browser/*.js",
+    "test-browser-local": "airtap --local -- test/*.js test/browser/*.js",
     "test-node": "tape test/*.js test/node/*.js",
-    "update-authors": "./bin/update-authors.sh"
+    "update-authors": "./scripts/update-authors.sh"
   },
-  "gitHead": "0c17a98fe83ed261e782346408a9241d06302113",
-  "_npmVersion": "5.5.1",
-  "_nodeVersion": "6.11.4",
+  "gitHead": "af8d52e7a1dc66b27e9310b7c8f904bc7b3cc74f",
+  "_npmVersion": "6.0.0",
+  "_nodeVersion": "8.11.1",
   "dist": {
-    "integrity": "sha512-iJvMCE+SMfFaQdwQzZbcXpjkT7aehxDwQtveveOzlewOgQdruKe/855uL8LMc/GbP7jCymR/IyYBa11pAQ+tnQ==",
-    "shasum": "f335869185a64447b6fe730c3c66265620b8c14a",
-    "tarball": "https://registry.npmjs.org/webtorrent/-/webtorrent-0.98.20.tgz"
+    "integrity": "sha512-coJ61iJOFDrSzyCwmhlLaU8tvcchI5ZA0fH9Toj4wwUq/OTUNdjXtNXwpCb6ldbBnJ04lQzxyDeuSR3KtN0MWg==",
+    "shasum": "b5d4652c72f20f6ad3322b6ecbc7215cf83c6a89",
+    "tarball": "https://registry.npmjs.org/webtorrent/-/webtorrent-0.99.4.tgz",
+    "fileCount": 20,
+    "unpackedSize": 487212,
+    "npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJa66l2CRA9TVsSAnZWagAAVjcQAJIzaMHxHG/GcnjY9ZRp\nVBpEFycZQZNT9WW0v6J9FfH4PPTdKPAMPPoi2PI2RC16ew7hEzty8f4EZCu0\ny3RJxLDKUck5Xh7It2Tp/uPl1C6E4l/ViipF8k3dOtwlxQKfPdOn82UT4HXe\nYMhOctzJ9MQKLa54n0rVV7IsBJ1jCI72k53qBI8jcoaY/kUxLy+qc1elKRW0\njjluYqaGwjess+mNnzKNyyi+qRq3NQrw5s+UPaHJIUGgDeGUivNlHS12nFQi\n4KRrDGrEIKJlOTEli9FJoSCx1gI6p92VsI5Hp8YxF/TtcX5UxssQThxVZp++\nVDawbzxtt/32ObfhAM29FNrKSK+jlPdz94bSwyKZKss1nzFrdAgevaYfbF7j\nBvsW8ycNcctrWRsWniIWbj6eG0OudFAprVv7HyxRy0RY9nDm+R7y8E3Af05k\nBmKJMinN5ClZiaAm0JHdHyWXnC00fNTm0X3O4QI3oy0yW7Jstqkq1ZsvvAlk\no+VZYzOV5gMgHrDpeQt4dernvSLp8gOUJUCZVmFjYiOhZvwdDnCiZnbGffv9\n6qefdyu3bIpqRHY7ZrYrhct8zlhnO4oM7RZiD+D2dt0u77emT1MuX8WDWyqs\nYynSwAPV3/qjUYM9S0BYPhj1dhi5KqHf1WsaOBt+5ATIqqO+Wpk5h2VUKef5\nQQPH\r\n=uHoU\r\n-----END PGP SIGNATURE-----\r\n"
   },
-  "stars": 59,
+  "_hasShrinkwrap": false,
+  "stars": 60,
   "versions": [
     {
       "number": "0.0.1",
@@ -1165,15 +1168,55 @@
     {
       "number": "0.98.20",
       "date": "2017-10-18T00:43:53.501Z"
+    },
+    {
+      "number": "0.98.21",
+      "date": "2018-01-26T08:52:07.630Z"
+    },
+    {
+      "number": "0.98.23",
+      "date": "2018-02-20T23:41:51.975Z"
+    },
+    {
+      "number": "0.98.24",
+      "date": "2018-03-02T22:40:40.284Z"
+    },
+    {
+      "number": "0.99.0",
+      "date": "2018-04-20T00:19:03.390Z"
+    },
+    {
+      "number": "0.99.1",
+      "date": "2018-04-25T00:55:59.016Z"
+    },
+    {
+      "number": "0.99.2",
+      "date": "2018-04-25T01:14:43.490Z"
+    },
+    {
+      "number": "0.99.3",
+      "date": "2018-04-27T00:05:46.771Z"
+    },
+    {
+      "number": "0.99.4",
+      "date": "2018-05-04T00:29:40.066Z"
     }
   ],
   "created": "2013-10-22T22:02:13.886Z",
-  "modified": "2018-01-14T10:01:54.119Z",
+  "modified": "2018-05-04T00:29:44.471Z",
   "lastPublisher": {
-    "name": "diegorbaquero",
-    "email": "diegorbaquero@gmail.com"
+    "name": "feross",
+    "email": "feross@feross.org"
   },
   "owners": [
+    {
+      "email": "dcposch@dcpos.ch",
+      "name": "dcposch"
+    },
+    {
+      "email": "diegorbaquero@gmail.com",
+      "name": "diegorbaquero"
+    },
     {
       "email": "feross@feross.org",
       "name": "feross"
@@ -1183,28 +1226,20 @@
       "name": "fisch0920"
     },
     {
-      "email": "ungoldman@gmail.com",
-      "name": "ungoldman"
-    },
-    {
-      "email": "w@tson.dk",
-      "name": "watson"
-    },
-    {
       "email": "flettre@gmail.com",
       "name": "flet"
-    },
-    {
-      "email": "dcposch@dcpos.ch",
-      "name": "dcposch"
     },
     {
       "email": "mathiasbuus@gmail.com",
       "name": "mafintosh"
     },
     {
-      "email": "diegorbaquero@gmail.com",
-      "name": "diegorbaquero"
+      "email": "ungoldman@gmail.com",
+      "name": "ungoldman"
+    },
+    {
+      "email": "w@tson.dk",
+      "name": "watson"
     }
   ]
 }

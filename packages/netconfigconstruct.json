@@ -1,0 +1,190 @@
+{
+  "name": "netconfigconstruct",
+  "version": "2.0.2",
+  "author": {
+    "name": "fupei"
+  },
+  "description": "辅助用户构建仿真激励",
+  "license": "ISC",
+  "main": "./dist/electron/main.js",
+  "scripts": {
+    "build": "node .electron-vue/build.js && electron-builder",
+    "build:dir": "node .electron-vue/build.js && electron-builder --dir",
+    "build:clean": "cross-env BUILD_TARGET=clean node .electron-vue/build.js",
+    "build:web": "cross-env BUILD_TARGET=web node .electron-vue/build.js",
+    "dev": "node .electron-vue/dev-runner.js",
+    "e2e": "npm run pack && mocha test/e2e",
+    "lint": "eslint --ext .js,.vue -f ./node_modules/eslint-friendly-formatter src test",
+    "lint:fix": "eslint --ext .js,.vue -f ./node_modules/eslint-friendly-formatter --fix src test",
+    "pack": "npm run pack:main && npm run pack:renderer",
+    "pack:main": "cross-env NODE_ENV=production webpack --progress --colors --config .electron-vue/webpack.main.config.js",
+    "pack:renderer": "cross-env NODE_ENV=production webpack --progress --colors --config .electron-vue/webpack.renderer.config.js",
+    "test": "npm run unit && npm run e2e",
+    "unit": "karma start test/unit/karma.conf.js",
+    "postinstall": "npm run lint:fix && electron-builder install-app-deps"
+  },
+  "build": {
+    "productName": "航电网络总线仿真测试激励构建工具",
+    "appId": "org.simulatedgreg.electron-vue",
+    "directories": {
+      "output": "build"
+    },
+    "files": [
+      "dist/electron/**/*"
+    ],
+    "extraFiles": [
+      "ExternalServices/**/*",
+      "ConfigGenerate.exe",
+      "libeay32.dll",
+      "Qt5Core.dll",
+      "Qt5Xml.dll",
+      "ssleay32.dll",
+      "zlib.dll"
+    ],
+    "dmg": {
+      "contents": [
+        {
+          "x": 410,
+          "y": 150,
+          "type": "link",
+          "path": "/Applications"
+        },
+        {
+          "x": 130,
+          "y": 150,
+          "type": "file"
+        }
+      ]
+    },
+    "mac": {
+      "icon": "build/icons/icon.icns"
+    },
+    "win": {
+      "icon": "build/icons/icon.ico"
+    },
+    "linux": {
+      "icon": "build/icons"
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "runAfterFinish": false,
+      "installerLanguages": "zh_CN"
+    }
+  },
+  "dependencies": {
+    "async": "^2.6.0",
+    "axios": "^0.16.2",
+    "bootstrap": "^4.0.0",
+    "cheerio": "^1.0.0-rc.2",
+    "codemirror": "^5.35.0",
+    "echarts": "^3.8.5",
+    "element-ui": "^1.4.13",
+    "font-awesome": "^4.7.0",
+    "google-protobuf": "^3.5.0",
+    "grpc": "^1.9.1",
+    "iview": "^2.10.1",
+    "jquery": "^3.3.1",
+    "lodash": "^4.17.5",
+    "minimist": "^1.2.0",
+    "popper.js": "^1.13.0",
+    "vue": "^2.5.15",
+    "vue-electron": "^1.0.6",
+    "vue-router": "^3.0.1",
+    "vue2-ace": "^1.0.6",
+    "vuex": "^3.0.1",
+    "xml-formatter": "^1.0.1"
+  },
+  "devDependencies": {
+    "babel-core": "^6.26.0",
+    "babel-eslint": "^8.2.2",
+    "babel-loader": "^7.1.4",
+    "babel-minify-webpack-plugin": "^0.2.0",
+    "babel-plugin-istanbul": "^4.1.6",
+    "babel-plugin-transform-runtime": "^6.23.0",
+    "babel-preset-env": "^1.6.1",
+    "babel-preset-stage-0": "^6.24.1",
+    "babel-register": "^6.26.0",
+    "cfonts": "^1.1.3",
+    "chai": "^4.1.2",
+    "chalk": "^2.3.2",
+    "copy-webpack-plugin": "^4.5.1",
+    "cross-env": "^5.1.4",
+    "css-loader": "^0.28.10",
+    "del": "^3.0.0",
+    "devtron": "^1.4.0",
+    "electron": "^2.0.0-beta.3",
+    "electron-builder": "^19.56.2",
+    "electron-debug": "^1.5.0",
+    "electron-devtools-installer": "^2.2.3",
+    "eslint": "^4.18.2",
+    "eslint-config-airbnb-base": "^12.1.0",
+    "eslint-friendly-formatter": "^3.0.0",
+    "eslint-import-resolver-webpack": "^0.8.4",
+    "eslint-loader": "^1.9.0",
+    "eslint-plugin-html": "^3.2.2",
+    "eslint-plugin-import": "^2.9.0",
+    "extract-text-webpack-plugin": "^3.0.2",
+    "file-loader": "^1.1.11",
+    "html-webpack-plugin": "^2.30.1",
+    "inject-loader": "^3.0.1",
+    "json-loader": "^0.5.7",
+    "karma": "^1.7.1",
+    "karma-chai": "^0.1.0",
+    "karma-coverage": "^1.1.1",
+    "karma-electron": "^5.2.2",
+    "karma-mocha": "^1.3.0",
+    "karma-sourcemap-loader": "^0.3.7",
+    "karma-spec-reporter": "^0.0.31",
+    "karma-webpack": "^2.0.13",
+    "mocha": "^4.1.0",
+    "multispinner": "^0.2.1",
+    "node-pre-gyp": "^0.6.39",
+    "require-dir": "^0.3.2",
+    "spectron": "^3.8.0",
+    "style-loader": "^0.19.1",
+    "url-loader": "^0.6.2",
+    "vue-html-loader": "^1.2.4",
+    "vue-loader": "^13.7.1",
+    "vue-style-loader": "^3.1.2",
+    "vue-template-compiler": "^2.5.15",
+    "webpack": "^3.11.0",
+    "webpack-dev-server": "^2.11.2",
+    "webpack-hot-middleware": "^2.21.2",
+    "webpack-merge": "^4.1.2"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://gitlab.com/lanhe/CAAC/caac-vue.git"
+  },
+  "gitHead": "19463d1562937db19ff2625d3eed636a735c87af",
+  "_npmVersion": "5.6.0",
+  "_nodeVersion": "9.6.1",
+  "dist": {
+    "integrity": "sha512-80rQ8+9KoYWr5cMvVJOEf6Wy1chcCTZJhEBajNwncRuruJTuyw5hm+K4aRpQu9bze3cH2TrecwEQnhqo5I6y+w==",
+    "shasum": "056218993c0a66f445f63b5fb2a763c91035d407",
+    "tarball": "https://registry.npmjs.org/netconfigconstruct/-/netconfigconstruct-2.0.2.tgz",
+    "fileCount": 425,
+    "unpackedSize": 125556471,
+    "npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJa0h5GCRA9TVsSAnZWagAApUsP+gIsn3tvpoLrL76dn2eC\nQD1b6w6eOGaGSHNBJJFXUZfHvKcZl4WjTkXuNjDam8QMJ3nIzxYzFUrTBRr3\nqpMPrWlhFVwrjsNck2UU3PgE/fYY2MrrL11c4kgY0ZfiDpwwDc2Oy5FYwCVT\ndkoK9w40AolpJisHYBPcQZGchnbR5bLwvZqNRGLFSx6HtXYiMj1FS41Lr2Mz\nzJDosMHj5dNKmHIJx4E9l7STYlNxkyfnBqRz0f8ID+CV78dZpUNOACuYRKV7\nkHU4WocetxjVuq3mFF9g5UK8N91ndf8mtSGu8Ws2W5qaDIoWs1bnfxK4oTer\nym0h8iZtflzV0OJM8KJe8m9RiciwZwVZegfqFJlYV1b3yXr6P25kvzgDkadg\nUjvwJ5mk7Y2ucX9R1fdNvRR0TVebow+IkZaeuo3dKCyRKvKLaXBFWjEs7tZW\n2hRdl8gEY6dCYFlv001v5n6wI+TqZi3WSH8+r10SR5dwj8DS6hsTgNnytNUi\n55gd9Gmx2bSCG5BM6RApqv8FjoJ+UepmsiyqEMbBBxdZFH9NtZozOlbTs5My\nub9w9Zn4YGrz+x/j6PPsd6ePqAzWePo/YMhlZM+xxflbkWvYbX9waQlfk81f\nD5diIlcHHdDiekuimqIrrM3pP8Wlo7zq1x4nlxJk2sbmfJFutY7a92nSCa6r\nrvnN\r\n=15T2\r\n-----END PGP SIGNATURE-----\r\n"
+  },
+  "_hasShrinkwrap": false,
+  "versions": [
+    {
+      "number": "2.0.2",
+      "date": "2018-04-14T15:29:09.019Z"
+    }
+  ],
+  "created": "2018-04-14T15:29:07.828Z",
+  "modified": "2018-04-14T15:29:12.356Z",
+  "lastPublisher": {
+    "name": "fp5312",
+    "email": "278275867@qq.com"
+  },
+  "owners": [
+    {
+      "name": "fp5312",
+      "email": "278275867@qq.com"
+    }
+  ]
+}

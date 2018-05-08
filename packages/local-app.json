@@ -1,0 +1,80 @@
+{
+  "homepage": "http://./",
+  "name": "local-app",
+  "author": {
+    "name": "Your Name",
+    "email": "name@domain.com"
+  },
+  "description": "A Description",
+  "version": "0.0.1",
+  "dependencies": {
+    "axios": "^0.17.1",
+    "download": "^6.2.5",
+    "electron-config": "^1.0.0",
+    "form-serialize": "^0.7.2",
+    "laravel-echo": "^1.3.3",
+    "printer": "^0.2.2",
+    "pusher-js": "^4.2.2",
+    "react": "^16.2.0",
+    "react-dom": "^16.2.0",
+    "react-redux": "^5.0.6",
+    "redux": "^3.7.2",
+    "uuid": "^3.2.1"
+  },
+  "devDependencies": {
+    "babel-plugin-transform-es2015-modules-commonjs": "^6.26.0",
+    "babel-plugin-transform-object-rest-spread": "^6.26.0",
+    "babel-register": "^6.26.0",
+    "concurrently": "^3.5.1",
+    "cross-env": "^5.1.3",
+    "electron": "^1.7.10",
+    "electron-builder": "^19.49.4",
+    "electron-publisher-s3": "^20.0.1",
+    "electron-rebuild": "^1.7.3",
+    "react-scripts-tailwindcss": "1.0.0",
+    "wait-on": "^2.0.2"
+  },
+  "main": "src/main.js",
+  "scripts": {
+    "react-start": "react-scripts start",
+    "electron-start": "cross-env API_URL=http://rendadec.wip/api electron .",
+    "build": "react-scripts build && cross-env NODE_ENV=production electron-builder --mac",
+    "test": "react-scripts test --env=jsdom",
+    "publish": "NODE_ENV=production electron-builder --publish"
+  },
+  "build": {
+    "appId": "com.demian.rendadec",
+    "files": [
+      "src/**/*",
+      "build/**/*"
+    ],
+    "publish": [
+      {
+        "bucket": "rendadec",
+        "provider": "s3"
+      }
+    ]
+  },
+  "dist": {
+    "shasum": "648642c6a12e972d3eb6f0fb677daf629fd9ca64",
+    "tarball": "https://registry.npmjs.org/local-app/-/local-app-0.0.1.tgz"
+  },
+  "versions": [
+    {
+      "number": "0.0.1",
+      "date": "2018-02-06T10:08:08.746Z"
+    }
+  ],
+  "created": "2018-02-06T10:08:08.746Z",
+  "modified": "2018-02-06T10:08:08.746Z",
+  "lastPublisher": {
+    "name": "demiand",
+    "email": "demian.dekoninck@telenet.be"
+  },
+  "owners": [
+    {
+      "name": "demiand",
+      "email": "demian.dekoninck@telenet.be"
+    }
+  ]
+}

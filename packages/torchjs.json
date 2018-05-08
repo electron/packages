@@ -1,6 +1,6 @@
 {
   "name": "torchjs",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "description": "test framework to light up the world",
   "main": "index.js",
   "bin": {
@@ -10,7 +10,7 @@
   "scripts": {
     "lint": "standard",
     "lint-fix": "standard --fix",
-    "test": "node bin/torch test/main && node bin/torch --compile --renderer --notify-on-fail test/renderer",
+    "test": "node bin/torch --dom-global test/main && node bin/torch --compile --renderer --notify-on-fail test/renderer",
     "test-live": "node bin/torch --compile --interactive test/renderer",
     "ci": "npm run lint && npm run test"
   },
@@ -45,8 +45,8 @@
   "license": "MIT",
   "homepage": "https://github.com/macacajs/torchjs#readme",
   "dependencies": {
-    "address": "^1.0.3",
     "babel-core": "^6.25.0",
+    "babel-plugin-istanbul": "^4.1.5",
     "babel-register": "^6.24.1",
     "chokidar": "^1.7.0",
     "commander": "^2.9.0",
@@ -56,6 +56,8 @@
     "glob": "^7.1.2",
     "is-electron-renderer": "^2.0.1",
     "istanbul": "^0.4.5",
+    "jsdom": "^11.6.0",
+    "jsdom-global": "^3.0.2",
     "macaca-utils": "^1.0.0",
     "microtemplate": "^1.0.2",
     "minimatch": "^3.0.4",
@@ -71,14 +73,17 @@
     "pre-commit": "^1.2.2",
     "standard": "^10.0.2"
   },
-  "gitHead": "87abcfc35f1ed56d5e70c67b12d9876fc5257a99",
-  "_npmVersion": "5.5.1",
-  "_nodeVersion": "8.9.3",
+  "gitHead": "e77c89f1982ea15e5b01174edef74c4eec7878d0",
+  "_npmVersion": "5.7.1",
+  "_nodeVersion": "8.9.4",
   "dist": {
-    "integrity": "sha512-2nCpSf3ZwHBCFog5cAPdWfvTEVo2UOlodqb69aIvWeSdmuRh2HGjJjKT3lzYyRcszG1h1VGJYzSzjeB5bTJ56A==",
-    "shasum": "60282c7bfbfad07ecc94cc94370e806478935827",
-    "tarball": "https://registry.npmjs.org/torchjs/-/torchjs-1.1.0.tgz"
+    "integrity": "sha512-5D5DEpBcgZeYv+Osr0kbC0flxLXA+OzJTVTXGZ1pn2COoTNZ61LMkS2JxZTdE3qhKVHu9Yz8fsS8fm2h/qjAqg==",
+    "shasum": "c43d93f06335d1387286396641f379a68ba17199",
+    "tarball": "http://registry.npmjs.org/torchjs/-/torchjs-1.2.0.tgz",
+    "fileCount": 23,
+    "unpackedSize": 42663
   },
+  "_hasShrinkwrap": false,
   "versions": [
     {
       "number": "0.2.5",
@@ -143,22 +148,34 @@
     {
       "number": "1.1.0",
       "date": "2017-12-21T10:09:13.688Z"
+    },
+    {
+      "number": "1.1.1",
+      "date": "2018-01-24T08:11:30.959Z"
+    },
+    {
+      "number": "1.1.2",
+      "date": "2018-01-24T09:12:36.536Z"
+    },
+    {
+      "number": "1.1.3",
+      "date": "2018-01-29T03:42:07.815Z"
+    },
+    {
+      "number": "1.2.0",
+      "date": "2018-03-16T10:55:39.735Z"
     }
   ],
   "created": "2017-08-07T02:50:42.989Z",
-  "modified": "2017-12-21T10:09:13.688Z",
+  "modified": "2018-03-16T10:55:41.140Z",
   "lastPublisher": {
-    "name": "chun_chan",
-    "email": "362732414@qq.com"
+    "name": "xudafeng",
+    "email": "xudafeng@126.com"
   },
   "owners": [
     {
       "email": "362732414@qq.com",
       "name": "chun_chan"
-    },
-    {
-      "email": "zivyangll@gmail.com",
-      "name": "zivyangll"
     },
     {
       "email": "laixiaolai@foxmail.com",
@@ -171,6 +188,10 @@
     {
       "email": "xudafeng@126.com",
       "name": "xudafeng"
+    },
+    {
+      "email": "zivyangll@gmail.com",
+      "name": "zivyangll"
     }
   ]
 }

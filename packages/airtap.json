@@ -1,0 +1,143 @@
+{
+  "name": "airtap",
+  "version": "0.0.5",
+  "description": "JavaScript browser testing in the cloud",
+  "main": "lib/airtap.js",
+  "dependencies": {
+    "batch": "~0.6.1",
+    "browserify": "~13.3.0",
+    "browserify-istanbul": "~3.0.1",
+    "chalk": "^2.3.1",
+    "commander": "~2.14.1",
+    "compression": "~1.7.1",
+    "convert-source-map": "~1.5.1",
+    "debug": "~3.1.0",
+    "express": "~4.16.2",
+    "express-state": "~1.4.0",
+    "find-nearest-file": "~1.1.0",
+    "firefox-profile": "~1.1.0",
+    "globs-to-files": "~1.0.0",
+    "hbs": "~4.0.1",
+    "highlight.js": "~9.12.0",
+    "http-proxy": "~1.16.2",
+    "humanize-duration": "~3.12.1",
+    "istanbul-middleware": "~0.2.2",
+    "load-script": "~1.0.0",
+    "lodash": "~4.17.5",
+    "opener": "~1.4.3",
+    "sauce-browsers": "~1.2.0",
+    "server-destroy": "~1.0.1",
+    "shell-quote": "~1.6.1",
+    "split2": "^2.2.0",
+    "stack-mapper": "~0.2.2",
+    "stacktrace-js": "~2.0.0",
+    "superagent": "~3.8.2",
+    "tap-finished": "~0.0.1",
+    "tap-parser": "~5.4.0",
+    "watchify": "~3.10.0",
+    "wd": "~1.5.0",
+    "yamljs": "~0.3.0"
+  },
+  "devDependencies": {
+    "airtap-browsers": "0.0.1",
+    "cross-env": "~5.1.3",
+    "dependency-check": "^3.0.0",
+    "electron": "^1.8.2",
+    "phantomjs-prebuilt": "^2.1.16",
+    "standard": "^11.0.0",
+    "tape": "^4.8.0",
+    "through2": "^2.0.3"
+  },
+  "repository": {
+    "user": "airtap",
+    "repo": "airtap",
+    "host": "github.com",
+    "branch": "master",
+    "apiHost": "api.github.com",
+    "tarball_url": "https://api.github.com/repos/airtap/airtap/tarball/master",
+    "clone_url": "https://github.com/airtap/airtap",
+    "https_url": "https://github.com/airtap/airtap",
+    "travis_url": "https://travis-ci.org/airtap/airtap",
+    "zip_url": "https://github.com/airtap/airtap/archive/master.zip",
+    "api_url": "https://api.github.com/repos/airtap/airtap"
+  },
+  "bin": {
+    "airtap": "./bin/airtap.js"
+  },
+  "keywords": [
+    "airtap",
+    "browser",
+    "saucelabs",
+    "tap",
+    "tape",
+    "testing"
+  ],
+  "author": {
+    "name": "Roman Shtylman",
+    "email": "shtylman@gmail.com"
+  },
+  "license": "MIT",
+  "scripts": {
+    "test": "standard && npm run dependency-check && cross-env DEBUG=airtap* tape test",
+    "dependency-check": "dependency-check package.json --missing --unused -i dependency-check -i phantomjs -i cross-env -i standard --entry test/index.js --entry test/fixtures/*/*.js --entry client/*.js"
+  },
+  "engines": {
+    "node": ">=6"
+  },
+  "gitHead": "ec73445d434e8a871f92a42eeb3f637f29bca72d",
+  "homepage": "https://github.com/airtap/airtap#readme",
+  "_npmVersion": "6.0.0",
+  "_nodeVersion": "10.0.0",
+  "dist": {
+    "integrity": "sha512-Czp2p9nVulEDMC1PphMcu3N2oYYmdVdn90uw3DY4BUD6OxdUGdyHioVIqP/+PhSmHWAt6RqgZmTVZSfLJJC4hg==",
+    "shasum": "0f1d607469f757e512e36264e463ed10394cc5d3",
+    "tarball": "https://registry.npmjs.org/airtap/-/airtap-0.0.5.tgz",
+    "fileCount": 60,
+    "unpackedSize": 493549,
+    "npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJa7uiqCRA9TVsSAnZWagAArsEQAIUdg8rvBowwYEkCn/5m\nCoUZbdmpguroYFOs0W/vXZeAgUBOAwVrbpY+mYBYngwPMrYgc1qk1y9ujnro\nuuam1NqTHh3coI0apq2G90bphJkcbdpurTUP/nQBad1x/0Nups/foskctEOx\ne2vZhA8NE19nBrs+hcMpvxrKAyO/oWvDr646vh0lCEDDLobKz77dU715ZN1x\nuY9jb0yzJ82cD3p71ObU3JNKoHABmYscyeqbjuqd3B24DHLvimO2sOMC9iie\n0StuHwU/Q+by9oZiGiq8ISwvAlSDkf3Jx4pJgOqD5LIIxBh1hsDHzHSJ3Ao0\ns+X/fEBjfKk1MTpZnwxxrX08qhe+chO2dnLqvvBH9L/IUINm+oWymLNzp3as\n+LYCzo5c/pq6kdJ0xTfAaYGccypY/PPcWpW/6kwM5WNGaVw/FthLp2Wlmlu7\n5gKcByVZ/fSTPiBHqVw3UQaTSeTGJdkGCVKsYOKfAJrHtAzD5Mcmu4jbZ6rB\n/6IrZ1AAcRLWznPaSNsDqAU/+Rgp77Vbgut/4qSzqXQGlrtVWR56wnph3OK7\nLS8Z8D/p+GheG3nTEMfiVyao3v/tijX8jSIy4IrLkWIiWn47Dz57hTnyECxz\n9gVigDkn8NvsNdhXZZo98vD+NzsrUwFOUzw6MJ9Fq9x44S3VWLqFSxTmrWZu\nStO/\r\n=zPW8\r\n-----END PGP SIGNATURE-----\r\n"
+  },
+  "_hasShrinkwrap": false,
+  "stars": 1,
+  "versions": [
+    {
+      "number": "0.0.1",
+      "date": "2018-02-18T13:25:52.312Z"
+    },
+    {
+      "number": "0.0.2",
+      "date": "2018-02-21T21:41:55.003Z"
+    },
+    {
+      "number": "0.0.3",
+      "date": "2018-02-24T17:56:00.628Z"
+    },
+    {
+      "number": "0.0.4",
+      "date": "2018-03-02T13:29:48.607Z"
+    },
+    {
+      "number": "0.0.5",
+      "date": "2018-05-06T11:36:08.856Z"
+    }
+  ],
+  "created": "2018-02-18T13:25:51.233Z",
+  "modified": "2018-05-06T11:36:12.722Z",
+  "lastPublisher": {
+    "name": "ralphtheninja",
+    "email": "ralphtheninja@riseup.net"
+  },
+  "owners": [
+    {
+      "email": "feross@feross.org",
+      "name": "feross"
+    },
+    {
+      "email": "ralphtheninja@riseup.net",
+      "name": "ralphtheninja"
+    },
+    {
+      "email": "dev@vincentweevers.nl",
+      "name": "vweevers"
+    }
+  ]
+}

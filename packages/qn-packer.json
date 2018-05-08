@@ -1,0 +1,175 @@
+{
+  "name": "qn-packer",
+  "version": "0.1.8",
+  "author": {
+    "name": "fnatic",
+    "email": "siliang.csl@alibaba-inc.com"
+  },
+  "description": "Qianniu offline package tool can generate cache zip packages for online addresses, which can be directly docked to QNCONSOLE(http://qnconsole.taobao.com), and currently supports cli and electron",
+  "license": "Apache-2.0",
+  "main": "./dist/electron/main.js",
+  "bin": {
+    "qn-packer": "./src/ci-cli.js"
+  },
+  "scripts": {
+    "build": "node .electron-vue/build.js && electron-builder",
+    "build:dir": "node .electron-vue/build.js && electron-builder --dir",
+    "build:clean": "cross-env BUILD_TARGET=clean node .electron-vue/build.js",
+    "build:web": "cross-env BUILD_TARGET=web node .electron-vue/build.js",
+    "dev": "node .electron-vue/dev-runner.js",
+    "pack": "npm run pack:main && npm run pack:renderer",
+    "pack:main": "cross-env NODE_ENV=production webpack --progress --colors --config .electron-vue/webpack.main.config.js",
+    "pack:renderer": "cross-env NODE_ENV=production webpack --progress --colors --config .electron-vue/webpack.renderer.config.js",
+    "postinstall": ""
+  },
+  "build": {
+    "productName": "qap-packer",
+    "appId": "org.simulatedgreg.electron-vue",
+    "directories": {
+      "output": "build"
+    },
+    "files": [
+      "dist/electron/**/*"
+    ],
+    "dmg": {
+      "contents": [
+        {
+          "x": 410,
+          "y": 150,
+          "type": "link",
+          "path": "/Applications"
+        },
+        {
+          "x": 130,
+          "y": 150,
+          "type": "file"
+        }
+      ]
+    },
+    "mac": {
+      "icon": "build/icons/icon.icns"
+    },
+    "win": {
+      "icon": "build/icons/icon.ico"
+    },
+    "linux": {
+      "icon": "build/icons"
+    }
+  },
+  "dependencies": {
+    "archiver": "^2.1.0",
+    "axios": "^0.16.1",
+    "chalk": "^2.3.0",
+    "cheerio": "^1.0.0-rc.2",
+    "crypto": "^1.0.1",
+    "element-ui": "^2.0.8",
+    "fs-extra": "^5.0.0",
+    "inquirer": "^4.0.1",
+    "mkdirp": "^0.5.1",
+    "node-gitlab": "^1.6.0",
+    "pipeline": "^0.1.3",
+    "vue": "^2.3.3",
+    "vue-electron": "^1.0.6",
+    "vue-router": "^2.5.3",
+    "vuex": "^2.3.1",
+    "yargs": "^11.0.0"
+  },
+  "devDependencies": {
+    "babel-core": "^6.25.0",
+    "babel-loader": "^7.1.1",
+    "babel-plugin-component": "^1.0.0",
+    "babel-plugin-transform-es2015-modules-commonjs": "^6.26.0",
+    "babel-plugin-transform-runtime": "^6.23.0",
+    "babel-preset-env": "^1.6.0",
+    "babel-preset-stage-0": "^6.24.1",
+    "babel-register": "^6.24.1",
+    "babili-webpack-plugin": "^0.1.2",
+    "cfonts": "^1.1.3",
+    "copy-webpack-plugin": "^4.0.1",
+    "cross-env": "^5.0.5",
+    "css-loader": "^0.28.4",
+    "del": "^3.0.0",
+    "devtron": "^1.4.0",
+    "electron": "^1.7.5",
+    "electron-builder": "^19.52.1",
+    "electron-debug": "^1.4.0",
+    "electron-devtools-installer": "^2.2.0",
+    "element-theme-chalk": "^2.0.8",
+    "extract-text-webpack-plugin": "^3.0.0",
+    "file-loader": "^0.11.2",
+    "html-webpack-plugin": "^2.30.1",
+    "multispinner": "^0.2.1",
+    "node-loader": "^0.6.0",
+    "style-loader": "^0.18.2",
+    "url-loader": "^0.5.9",
+    "vue-html-loader": "^1.2.4",
+    "vue-loader": "^13.7.0",
+    "vue-style-loader": "^3.0.1",
+    "vue-template-compiler": "^2.5.13",
+    "webpack": "^3.5.2",
+    "webpack-dev-server": "^2.7.1",
+    "webpack-hot-middleware": "^2.18.2"
+  },
+  "gitHead": "896bb8382dcfe4f9978da6ec7dd6f285d06062f6",
+  "_npmVersion": "5.6.0",
+  "_nodeVersion": "8.4.0",
+  "dist": {
+    "integrity": "sha512-JTeXie9FLK/CXJaf38NysXNV/rohsQwzIhaI7ZncxXdS8VRC0jCsehtd4ROH6IvZ6XKyobimVwnQfhZ0HMaYnQ==",
+    "shasum": "1ab8cb6eb6ce625635d2f5e63898484c530891e1",
+    "tarball": "https://registry.npmjs.org/qn-packer/-/qn-packer-0.1.8.tgz",
+    "fileCount": 56,
+    "unpackedSize": 1118468,
+    "npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJa6tinCRA9TVsSAnZWagAAWHoP/0tAmi7tLrLZgE1G3lrt\nrSwcFvSQRHaY0JCCOUYrMtZ7My9MW+wvUmJNWpLnyVb2w9MFOBmKYFRnl3jf\neZZkQJ/4NAkE3vUok6THhWFh7qQHE192tWZaZWgRFhqJb4GJe6Uxv9/1+zhh\nqieOpFIq3r+rFUm0zudQSszSW0iay5Ee5kofbNJQLZo8A6vSd7sFtfmKZ4kB\nM01M5Cy7RhReB4pFvXfLl+6n9zew6DS7pihwA4jfytzyvtNNG4SY071bMauW\noMh4jLNB0G+L93KZ4+rozDeZpWpdc8tWdTscFukUuBbuNi9Qb30GDCyCv3lC\ndaUYqkL9VU2JyeBCpSj1mKrbd8k1kliCvGuTG8IOM3NTXhtV8mJotff5wdSO\ngL3/SkJNizOh7hy8YMagTrnwiCdYC9yxguc+3AkF8RGZc5Ao+T+3NtYd7jD4\nuUOjuRbfRfdvlG+tDAVUp3IyrKrMoAR8+zBcO3tdfEYzfTjLCVoY6oud3Vn3\nuoqzwWpLSaKud51gZseN7F80OluCla+wn/GzhsJoHF3ZE5qug+biB7Eq/RUv\nKIVM9v8NWhRduunXI66PgHZfaoeE13Ls7iSZ8T4Z4Bmotkp/vsKzC8FFt0Gt\n4Ylsyse6GuNL1PTHKe0C/Zeah5k+65TdzlHb86ytL1hXPxBVHZ4+AtHIfZ5y\nYH7q\r\n=ffZq\r\n-----END PGP SIGNATURE-----\r\n"
+  },
+  "_hasShrinkwrap": false,
+  "versions": [
+    {
+      "number": "0.1.0",
+      "date": "2018-04-11T03:40:13.738Z"
+    },
+    {
+      "number": "0.1.1",
+      "date": "2018-04-11T07:13:16.139Z"
+    },
+    {
+      "number": "0.1.2",
+      "date": "2018-04-11T08:03:45.738Z"
+    },
+    {
+      "number": "0.1.3",
+      "date": "2018-04-11T08:10:07.679Z"
+    },
+    {
+      "number": "0.1.4",
+      "date": "2018-04-11T08:16:13.579Z"
+    },
+    {
+      "number": "0.1.5",
+      "date": "2018-04-23T08:59:30.221Z"
+    },
+    {
+      "number": "0.1.6",
+      "date": "2018-04-24T05:46:36.173Z"
+    },
+    {
+      "number": "0.1.7",
+      "date": "2018-04-25T06:21:47.633Z"
+    },
+    {
+      "number": "0.1.8",
+      "date": "2018-05-03T09:38:46.853Z"
+    }
+  ],
+  "created": "2018-04-11T03:40:13.594Z",
+  "modified": "2018-05-03T09:38:51.298Z",
+  "lastPublisher": {
+    "name": "fnatic",
+    "email": "csl39@live.com"
+  },
+  "owners": [
+    {
+      "name": "fnatic",
+      "email": "csl39@live.com"
+    }
+  ]
+}

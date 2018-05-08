@@ -1,0 +1,200 @@
+{
+  "name": "flo-components",
+  "version": "0.0.1",
+  "description": "Flo Component Library",
+  "files": [
+    "dist"
+  ],
+  "main": "dist/flo.mat.esm.js",
+  "scripts": {
+    "clean": "node build/script.clean.js",
+    "dev": "node build/script.dev.js",
+    "build": "node build/script.build.js",
+    "test:umd": "node build/script.test-umd.js",
+    "lint": "eslint --ext .js,.vue src dev",
+    "deploy": "bash build/deploy.sh",
+    "test": "mocha-webpack --webpack-config webpack.config.js --require test/setup.js test/**/*.spec.js"
+  },
+  "keywords": [
+    "vuejs",
+    "vue",
+    "quasar",
+    "js",
+    "phone",
+    "tablet",
+    "desktop",
+    "spa",
+    "pwa",
+    "website",
+    "electron"
+  ],
+  "author": {
+    "name": "Arjun Singh",
+    "email": "arjun.singh@newgen.co.in"
+  },
+  "devDependencies": {
+    "@vue/test-utils": "^1.0.0-beta.15",
+    "ajv": "^6.4.0",
+    "autoprefixer": "^8.3.0",
+    "babel-core": "^6.26.0",
+    "babel-eslint": "^8.2.3",
+    "babel-loader": "^7.1.2",
+    "babel-plugin-transform-runtime": "^6.23.0",
+    "babel-preset-env": "1.6.1",
+    "babel-preset-es2015-rollup": "^3.0.0",
+    "babel-preset-stage-2": "^6.24.1",
+    "babel-register": "6.26.0",
+    "babel-runtime": "6.26.0",
+    "colors": "^1.1.2",
+    "connect-history-api-fallback": "^1.5.0",
+    "css-loader": "^0.28.11",
+    "eslint": "^4.19.1",
+    "eslint-config-standard": "^11.0.0-beta.0",
+    "eslint-friendly-formatter": "^3.0.0",
+    "eslint-loader": "^1.9.0",
+    "eslint-plugin-html": "^4.0.3",
+    "eslint-plugin-import": "^2.11.0",
+    "eslint-plugin-node": "^6.0.1",
+    "eslint-plugin-promise": "^3.6.0",
+    "eslint-plugin-standard": "^3.1.0",
+    "eventsource-polyfill": "^0.9.6",
+    "express": "^4.16.3",
+    "extract-text-webpack-plugin": "^3.0.2",
+    "file-loader": "^1.1.9",
+    "friendly-errors-webpack-plugin": "^1.7.0",
+    "git-directory-deploy": "^1.5.1",
+    "html-webpack-plugin": "^2.30.1",
+    "jsdom": "^11.9.0",
+    "jsdom-global": "^3.0.2",
+    "json-loader": "^0.5.7",
+    "mocha": "^5.1.1",
+    "mocha-webpack": "^1.1.0",
+    "opn": "^5.3.0",
+    "parse5": "^2.2.3",
+    "postcss-loader": "^2.1.4",
+    "postcss-rtl": "^1.2.3",
+    "progress-bar-webpack-plugin": "^1.11.0",
+    "quasar-extras": "^1.0.2",
+    "raw-loader": "^0.5.1",
+    "rollup": "^0.56.2",
+    "rollup-plugin-babel": "^3.0.4",
+    "rollup-plugin-buble": "^0.19.2",
+    "rollup-plugin-json": "^2.3.0",
+    "rollup-plugin-node-resolve": "^3.3.0",
+    "rollup-plugin-replace": "^2.0.0",
+    "rollup-plugin-vue": "^3.0.0",
+    "shelljs": "^0.8.1",
+    "stylint": "^1.5.9",
+    "stylus": "^0.54.5",
+    "stylus-loader": "^3.0.1",
+    "sym": "0.0.4",
+    "uglify-es": "^3.3.10",
+    "url-loader": "^0.6.2",
+    "vue": "^2.5.16",
+    "vue-loader": "^14.2.2",
+    "vue-router": "^3.0.1",
+    "vue-style-loader": "^4.1.0",
+    "vue-template-compiler": "^2.5.16",
+    "webpack": "^3.11.0",
+    "webpack-dev-middleware": "^2.0.6",
+    "webpack-hot-middleware": "^2.22.1",
+    "webpack-merge": "^4.1.2",
+    "webpack-node-externals": "^1.7.2"
+  },
+  "peerDependencies": {
+    "vue": "^2.5.0",
+    "quasar-framework": "^0.15.10"
+  },
+  "engines": {
+    "node": ">= 8.9.0",
+    "npm": ">= 5.6.0"
+  },
+  "jest": {
+    "moduleFileExtensions": [
+      "js",
+      "vue",
+      "json"
+    ],
+    "collectCoverage": true,
+    "collectCoverageFrom": [
+      "**/*.{js,vue}",
+      "!**/node_modules/**"
+    ],
+    "coverageReporters": [
+      "html",
+      "text-summary"
+    ],
+    "transform": {
+      ".*\\.(vue)$": "<rootDir>/node_modules/vue-jest",
+      "^.+\\.js$": "<rootDir>/node_modules/babel-jest"
+    },
+    "snapshotSerializers": [
+      "<rootDir>/node_modules/jest-serializer-vue"
+    ]
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not ie <= 10"
+  ],
+  "dependencies": {
+    "@vuedoc/md": "^1.2.2",
+    "asmvue-chart": "0.0.6",
+    "axios": "^0.18.0",
+    "chai": "^4.1.2",
+    "chart.js": "^2.7.2",
+    "rollup-plugin-commonjs": "^9.1.0",
+    "vue-test-utils": "^1.0.0-beta.11",
+    "vuelidate": "^0.6.2",
+    "vuex": "^3.0.1"
+  },
+  "_npmVersion": "6.0.0",
+  "_nodeVersion": "8.9.4",
+  "dist": {
+    "integrity": "sha512-Jq6qrU3iNVBpKETqhXlgIDibRE6Eqm7H8LYbFoE8dt/rMiyEdwoRDWmhsgdoCxAZ13YhiPphKmkMMfZSf9DSRQ==",
+    "shasum": "1dde9bb92745f6114414db0796c123c4665a594b",
+    "tarball": "https://registry.npmjs.org/flo-components/-/flo-components-0.0.1.tgz",
+    "fileCount": 20,
+    "unpackedSize": 1214270,
+    "npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJa7DmtCRA9TVsSAnZWagAAe24QAI4ZZ0Rj3NEhnuKemfEM\nU4NqAyxYZ3AM1c97fbf46y8E0E1RkUgQ3SPf3KKHtjTZELgHEpjSRwuE4Bl+\nJWgVgs2vFRd+H0nYu83XabpHmLh7gndpbw96YBLvomUfQSFt3JZ2F9AVjiib\nHiRJliZpFCim93kTkmbagNMT/pk41+3fE1yFhOyKp/AkHbm22+aS1NKckxkk\nLvvr/qaGEEfHwmcgm09vZX++/IeZz9EEywk33/uRAUHJPkYBCeJ8M4Z6m3Ou\nE57y8ZS5JZQh7yqKK/tZhD9eZSdLVKi9qZnpspz4L8M96JPPZnrC6PELzYPO\nfNoAQzmx29vU8/i7IYZ7t933LCNqzDh3lQMR8GQnvd3qxxxCq0PAJcrW5lbn\nluKphjU93wWDJhEyPYxYe9RkagBJasEBRHqcEaLtcJVOwPSXi1Et2jQSgJp9\nxRsKYImzYsPeQg0qTN74TS5y5vwlKUUUFUJUxPU2IH4S/7Rgp1aSYy+8mcIE\nm5FdiWptf4o3JEs8OTj/KJFHd2pBCOQUQeD9F/0twBlNpsWXdt4mL6mRqF2z\nyKd2yMLL3enfAvz7bhY4hEcifSaGfhKzQFMWu0hCEwG4ZvoAjQuic2sFAjEj\n6IIYAv+9HdS+vK9GIH1oBIxo/NByeFa8XKAnnPKypNFqYLQSLKG6wBt+ylSz\n6ych\r\n=gXSd\r\n-----END PGP SIGNATURE-----\r\n"
+  },
+  "_hasShrinkwrap": false,
+  "versions": [
+    {
+      "number": "1.0.7",
+      "date": "2018-04-30T09:05:03.060Z"
+    },
+    {
+      "number": "1.0.8",
+      "date": "2018-05-02T06:04:37.562Z"
+    },
+    {
+      "number": "1.0.9",
+      "date": "2018-05-02T08:57:14.262Z"
+    },
+    {
+      "number": "1.0.10",
+      "date": "2018-05-02T12:25:48.937Z"
+    },
+    {
+      "number": "1.0.11",
+      "date": "2018-05-04T10:38:10.431Z"
+    },
+    {
+      "number": "0.0.1",
+      "date": "2018-05-04T10:45:00.716Z"
+    }
+  ],
+  "created": "2018-04-30T09:05:02.905Z",
+  "modified": "2018-05-04T10:45:04.400Z",
+  "lastPublisher": {
+    "name": "arjunmehra20",
+    "email": "arjunmehra20@gmail.com"
+  },
+  "owners": [
+    {
+      "name": "arjunmehra20",
+      "email": "arjunmehra20@gmail.com"
+    }
+  ]
+}

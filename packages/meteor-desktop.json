@@ -1,6 +1,6 @@
 {
   "name": "meteor-desktop",
-  "version": "0.11.2",
+  "version": "0.17.2",
   "bin": {
     "meteor-desktop": "dist/bin/cli.js"
   },
@@ -11,8 +11,8 @@
   "main": "dist/index.js",
   "scripts": {
     "test": "cross-env NODE_ENV=test nyc mocha -t 10000 -r ./tests/helpers/clear.js \"tests/+(unit|functional)/**/*.test.js\"",
-    "test-integration": "mocha -t 10000 --compilers js:babel-core/register \"tests/+(integration)/**/*.test.js\"",
-    "test-watch": "mocha -r ./tests/helpers/clear.js --compilers js:babel-core/register \"tests/+(unit|functional)/**/*.test.js\" --watch",
+    "test-integration": "mocha -t 10000 --compilers js:@babel/register \"tests/+(integration)/**/*.test.js\"",
+    "test-watch": "mocha -r ./tests/helpers/clear.js --compilers js:@babel/register \"tests/+(unit|functional)/**/*.test.js\" --watch",
     "lint": "eslint lib plugins scaffold skeleton tests",
     "prepare-integration-tests": "node tests/integration/prepare.js",
     "coverage-html": "nyc report --reporter=lcov",
@@ -21,7 +21,7 @@
     "version": "node dist/scripts/propagateVersion.js && git add plugins",
     "postversion": "npm run publish-all",
     "postinstall": "node dist/scripts/addToScripts || echo",
-    "publish-plugins": "(cls || reset) && cd plugins/bundler && (meteor publish --release=METEOR@1.5.2.2 || echo) && cd ../watcher && (meteor publish --release=METEOR@1.5.2.2 || echo)",
+    "publish-plugins": "(cls || reset) && cd plugins/bundler && (meteor publish --release=METEOR@1.5.2.2) && cd ../watcher && (meteor publish --release=METEOR@1.5.2.2)",
     "prepublish": "npm run build || echo",
     "publish-all": "npm run publish-plugins && npm publish",
     "build": "babel lib --out-dir dist --source-maps inline --copy-files",
@@ -35,8 +35,9 @@
   },
   "license": "MIT",
   "devDependencies": {
-    "babel-cli": "6.23.0",
-    "babel-plugin-istanbul": "4.0.0",
+    "@babel/cli": "7.0.0-beta.40",
+    "@babel/register": "7.0.0-beta.40",
+    "babel-plugin-istanbul": "4.1.5",
     "chai": "3.5.0",
     "codecov": "1.0.1",
     "connect": "3.5.0",
@@ -44,23 +45,22 @@
     "coveralls": "2.11.16",
     "cross-env": "3.1.4",
     "dirty-chai": "1.2.2",
-    "eslint": "3.16.0",
-    "eslint-config-airbnb-base": "11.1.0",
-    "eslint-plugin-import": "2.2.0",
+    "eslint": "4.18.2",
+    "eslint-config-airbnb-base": "12.1.0",
+    "eslint-plugin-import": "2.9.0",
     "find-port": "2.0.1",
     "fs-plus": "2.9.3",
     "import-fresh": "^2.0.0",
-    "jsdoc-to-markdown": "2.0.1",
+    "jsdoc-to-markdown": "4.0.1",
     "mocha": "2.5.3",
-    "mockery": "2.0.0",
+    "mockery": "2.1.0",
     "npm-run-all": "4.0.1",
-    "nyc": "10.1.2",
+    "nyc": "11.4.1",
     "proxyquire": "1.7.11",
     "queue": "4.0.1",
-    "reify": "0.4.4",
+    "reify": "0.15.1",
     "request": "2.79.0",
-    "rewire": "2.5.2",
-    "rimraf": "2.5.4",
+    "rewire": "3.0.2",
     "run-sequence": "1.2.2",
     "send": "0.15.3",
     "serve-static": "1.11.1",
@@ -72,30 +72,31 @@
     "watch": "1.0.1"
   },
   "dependencies": {
-    "asar": "0.13.0",
-    "babel-core": "6.23.1",
-    "babel-plugin-transform-runtime": "6.23.0",
-    "babel-preset-es2015": "6.22.0",
-    "babel-preset-node6": "11.0.0",
-    "babel-preset-stage-1": "6.22.0",
-    "babel-runtime": "6.23.0",
+    "asar": "0.14.3",
+    "@babel/core": "7.0.0-beta.40",
+    "@babel/preset-env": "7.0.0-beta.40",
+    "@babel/runtime": "7.0.0-beta.40",
     "commander": "2.9.0",
     "cross-spawn": "5.0.1",
     "del": "2.2.2",
-    "electron": "1.7.9",
-    "electron-builder": "13.11.1",
-    "electron-builder-squirrel-windows": "13.10.1",
-    "electron-packager": "8.5.2",
+    "electron": "1.8.4",
+    "electron-builder": "20.10.0",
+    "electron-builder-lib": "20.10.0",
+    "electron-builder-squirrel-windows": "20.10.0",
+    "electron-packager": "12.0.1",
     "glob": "7.1.1",
+    "isbinaryfile": "3.0.2",
     "hash-files": "1.1.1",
     "lodash": "4.17.4",
     "node-fetch": "1.6.3",
-    "npm": "4.2.0",
+    "regenerator-runtime": "0.11.1",
     "semver": "5.3.0",
+    "install-local": "0.5.0",
+    "rimraf": "2.5.4",
     "semver-regex": "1.0.0",
-    "shelljs": "0.7.6",
+    "shelljs": "0.8.1",
     "single-line-log": "1.1.2",
-    "uglify-js": "2.7.5"
+    "uglify-es": "3.3.9"
   },
   "repository": {
     "user": "wojtkowiak",
@@ -127,20 +128,25 @@
       "devEnvSetup.js"
     ],
     "require": [
-      "babel-core/register"
+      "@babel/register"
     ],
     "sourceMap": false,
     "instrument": false,
     "all": true
   },
   "homepage": "https://github.com/wojtkowiak/meteor-desktop",
-  "gitHead": "ddfebcfbffad712b9c827dd5805f4491f3bdfdbc",
-  "_npmVersion": "4.2.0",
-  "_nodeVersion": "8.9.0",
+  "gitHead": "190b5beab195a95b71b34840214b9c0a63bcfbb4",
+  "_npmVersion": "5.6.0",
+  "_nodeVersion": "8.10.0",
   "dist": {
-    "shasum": "a9922f3f607375f2501b3a349299eec3322fd0e3",
-    "tarball": "https://registry.npmjs.org/meteor-desktop/-/meteor-desktop-0.11.2.tgz"
+    "integrity": "sha512-6KPaH+86S/DRmsOuV1YEet4n8jYMLB8ZnBLumzQYnyz0giOHOJXKseJE8s33TpivAYk0ou8UGTV+R8xZvnVUWA==",
+    "shasum": "84f16c901cecb820aea1281851880fbbb202726e",
+    "tarball": "https://registry.npmjs.org/meteor-desktop/-/meteor-desktop-0.17.2.tgz",
+    "fileCount": 57,
+    "unpackedSize": 999455,
+    "npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJa5uFsCRA9TVsSAnZWagAAJqYP/2DEwrWLgdmhE+SqSq96\nLy4Mc3ffUGekxW2WnGHN0H4vV36NqwzbHGh3taof6nUGiseiIHn4Z9Vuxl3s\nglpYP2jqnPZ90J9AJu5r0PEh8ozFuG57Q2yA5SpL7AvAxY9L88ABmCMpv+rY\nxfukhhTlPdLSIiqDtkshkOQ3cYxKuA9eSIRv9cJi6zE9AEfozXSeFojaMDbC\n+6/pdA305+He6eveuLVpQl3ZmzmvQ7RN5cqri8LDJ9xyVxxuK5LuKjmhyDOc\nfbAW8Y/js8Wywb6S6jKyvXfc/mQt8yZK8hbIoZmaQUymxJteYDdB2/Ij9EvZ\nwba8vQABes24bQku18ykqy4vPw4aFUegM66ILZKFkPwdopHl+tWMyVM1OaJ/\nb1oRbRfEuEP4oMgZdyTRbEMN5iU8oQ2icVpJfo3lPyxQ5uW/YuBJ0HYpXMjh\nsn6eetoo2NeN0wEy09oJsysgLeVujN6caauCovQx4osbuz5wH9KstNVEUu2e\nR7/wnwCjKncqI54ajfQ9jWZTGjMeXBv0qFX73THeRZE/fW+TnTLB9jdH5AYe\nRXheBWA/jMDBrbZseEO82KwZ9GcTEb27wI10KpGGZQKuxJKvUWQBkjqx+9ma\nUHSgh+6IyTNOWCiThNiMihWQsgVMls0adCJ/eVnXHL/EE6AQac19gO4B8LV1\nR+US\r\n=Yaow\r\n-----END PGP SIGNATURE-----\r\n"
   },
+  "_hasShrinkwrap": false,
   "stars": 4,
   "versions": [
     {
@@ -482,10 +488,90 @@
     {
       "number": "0.11.2",
       "date": "2017-12-07T15:09:29.979Z"
+    },
+    {
+      "number": "0.11.3",
+      "date": "2018-01-18T11:59:04.443Z"
+    },
+    {
+      "number": "0.10.1",
+      "date": "2018-01-18T13:02:40.315Z"
+    },
+    {
+      "number": "0.12.0",
+      "date": "2018-02-23T13:43:58.612Z"
+    },
+    {
+      "number": "0.13.0",
+      "date": "2018-03-13T07:51:40.466Z"
+    },
+    {
+      "number": "0.13.1",
+      "date": "2018-03-15T11:42:44.793Z"
+    },
+    {
+      "number": "0.14.0",
+      "date": "2018-03-16T10:44:28.590Z"
+    },
+    {
+      "number": "0.14.1",
+      "date": "2018-03-16T11:26:01.375Z"
+    },
+    {
+      "number": "0.14.2",
+      "date": "2018-03-19T13:58:35.970Z"
+    },
+    {
+      "number": "0.14.3",
+      "date": "2018-03-19T14:22:28.773Z"
+    },
+    {
+      "number": "0.14.4",
+      "date": "2018-03-20T10:40:15.711Z"
+    },
+    {
+      "number": "0.15.0",
+      "date": "2018-04-08T22:08:47.343Z"
+    },
+    {
+      "number": "0.14.5",
+      "date": "2018-04-10T19:29:11.966Z"
+    },
+    {
+      "number": "0.15.1",
+      "date": "2018-04-10T22:23:15.466Z"
+    },
+    {
+      "number": "0.15.2",
+      "date": "2018-04-11T08:11:05.612Z"
+    },
+    {
+      "number": "0.14.6",
+      "date": "2018-04-11T08:26:03.371Z"
+    },
+    {
+      "number": "0.15.3",
+      "date": "2018-04-16T18:59:30.926Z"
+    },
+    {
+      "number": "0.16.0",
+      "date": "2018-04-25T20:23:28.474Z"
+    },
+    {
+      "number": "0.17.0",
+      "date": "2018-04-26T10:34:45.336Z"
+    },
+    {
+      "number": "0.17.1",
+      "date": "2018-04-26T11:10:06.381Z"
+    },
+    {
+      "number": "0.17.2",
+      "date": "2018-04-30T09:27:06.012Z"
     }
   ],
   "created": "2016-06-22T13:58:41.607Z",
-  "modified": "2017-12-07T15:09:29.979Z",
+  "modified": "2018-04-30T09:27:11.149Z",
   "lastPublisher": {
     "name": "wojtkowiak",
     "email": "bartosz@wojtkowiak.it"

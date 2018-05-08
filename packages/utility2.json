@@ -30,7 +30,7 @@
   "license": "MIT",
   "main": "lib.utility2.js",
   "name": "utility2",
-  "nameAliasPublish": "npmtest-lite npmtest4 test-lite",
+  "nameAliasPublish": "npmtest-lite npmclassic npmtest4 test-lite",
   "nameLib": "utility2",
   "nameOriginal": "utility2",
   "os": [
@@ -51,20 +51,27 @@
     "api_url": "https://api.github.com/repos/kaizhu256/node-utility2"
   },
   "scripts": {
+    "apidocRawCreate": "[ ! -f npm_scripts.sh ] || ./npm_scripts.sh shNpmScriptApidocRawCreate",
+    "apidocRawFetch": "[ ! -f npm_scripts.sh ] || ./npm_scripts.sh shNpmScriptApidocRawFetch",
     "build-ci": "./lib.utility2.sh shReadmeTest build_ci.sh",
     "env": "env",
     "heroku-postbuild": "./lib.utility2.sh shDeployHeroku",
-    "postinstall": "[ ! -f npm_scripts.sh ] || ./npm_scripts.sh postinstall",
+    "postinstall": "[ ! -f npm_scripts.sh ] || ./npm_scripts.sh shNpmScriptPostinstall",
     "start": "set -e; export PORT=${PORT:-8080}; if [ -f assets.app.js ]; then node assets.app.js; else npm_config_mode_auto_restart=1 ./lib.utility2.sh shRun shIstanbulCover test.js; fi",
-    "test": "PORT=$(./lib.utility2.sh shServerPortRandom) PORT_REPL=$(./lib.utility2.sh shServerPortRandom) npm_config_mode_auto_restart=1 ./lib.utility2.sh test test.js"
+    "test": "PORT=$(./lib.utility2.sh shServerPortRandom) PORT_REPL=$(./lib.utility2.sh shServerPortRandom) npm_config_mode_auto_restart=1 npm_config_timeout_default=\"${npm_config_timeout_default:-60000}\" ./lib.utility2.sh test test.js"
   },
-  "version": "2018.1.13",
-  "_npmVersion": "3.10.10",
-  "_nodeVersion": "6.12.3",
+  "version": "2018.5.2",
+  "_npmVersion": "5.6.0",
+  "_nodeVersion": "10.0.0",
   "dist": {
-    "shasum": "a6d7ebaf28baa62615f3ff5afacb7bae2530c753",
-    "tarball": "https://registry.npmjs.org/utility2/-/utility2-2018.1.13.tgz"
+    "integrity": "sha512-zbmpoCRbaja0Yv6raCJEv+E+hudeSbQsoVjHv4xp/T4/FVuz81oLuAgXrvH3dDRR8it6kTUi22SbnkNKygZzPA==",
+    "shasum": "16b25577e1f6dd5f172ea3d8791bddd3c90ec2c8",
+    "tarball": "https://registry.npmjs.org/utility2/-/utility2-2018.5.2.tgz",
+    "fileCount": 16,
+    "unpackedSize": 1718749,
+    "npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJa6uBrCRA9TVsSAnZWagAAvsgP/A5L3CYZQcIL3TMGA/ZW\nH8yGO3Ro7hwl0sJtbiYkA0ZnUE+IA3vguwt7x7Dc9l2HLHhtFd0QeExi60A3\nHo9H5D0Hh04wLYLEhRboZH4j4uZVceDcf+vxdTvYiHTofLRsWILDzBQ/ur51\nW6UQj43kq0U9sCYSJhSKVi79/boDHfCVlkZ6wvNw4qL+ikHj2iQu1Ybm0FUi\ngxbZ9kA2qnlvyH/p7vVjkD+ZPCKIqGcpE+pZ2ZLpPkaNW5bECX8rZ+ShrS9y\neOyG5VkPJDWSWmBWehx7OMf8GPcSuMxnr9c0x41BqpVKLzYd3D2mhF/1PRoO\nu53yJOnUkIKiYRC2mfcUVhLo6nj2j4vuE1/FBjH0tjQhp88A2Vx1lYHs+kX+\nNhf5NlBtmFvO0AKXVXlrggv10RMXwsxD5aAyzYhaAPXtxACc8Ue4RytclPzJ\nbimRQPx4x8KPUxWHb8iBl8c0j5ZmGbigwHirSE0vv60qf+Q3njaqHkDCI4aV\ndKqmd5+pPkAQTdhdSRbYSAl6yBN/cShxR04Jjdd86wVm8p3u02sHyUlAW32X\nDtEAFtwFG9k0eJgwx+1H5a7I75NFPzX541ion4YW4EdR29W2z+ljf1LqZNYT\nPpRG0r1rNxOWT3QrVhM2brjk/MyFj6+3t6oZtMNlqaApv5nNH2ya62n4Arpg\nURLZ\r\n=PfRI\r\n-----END PGP SIGNATURE-----\r\n"
   },
+  "_hasShrinkwrap": false,
   "stars": 2,
   "versions": [
     {
@@ -1670,10 +1677,30 @@
     {
       "number": "2018.1.13",
       "date": "2018-01-14T16:10:46.732Z"
+    },
+    {
+      "number": "2018.2.2",
+      "date": "2018-02-03T03:45:21.452Z"
+    },
+    {
+      "number": "2018.3.6",
+      "date": "2018-03-07T09:19:40.122Z"
+    },
+    {
+      "number": "2018.3.27",
+      "date": "2018-03-28T19:53:34.349Z"
+    },
+    {
+      "number": "2018.4.7",
+      "date": "2018-04-09T01:13:50.440Z"
+    },
+    {
+      "number": "2018.5.2",
+      "date": "2018-05-03T10:11:52.804Z"
     }
   ],
   "created": "2013-08-28T07:17:38.584Z",
-  "modified": "2018-01-14T16:10:46.732Z",
+  "modified": "2018-05-03T10:11:59.421Z",
   "lastPublisher": {
     "name": "kaizhu",
     "email": "kaizhu256@gmail.com"

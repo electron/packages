@@ -1,7 +1,7 @@
 {
   "name": "electron-installer-debian",
   "description": "Create a Debian package for your Electron app.",
-  "version": "0.7.1",
+  "version": "0.8.1",
   "license": "MIT",
   "author": {
     "name": "Daniel Perez Alvarez",
@@ -34,20 +34,24 @@
     "electron-installer-debian": "src/cli.js"
   },
   "scripts": {
-    "clean": "rimraf test/fixtures/out",
     "lint": "eslint .",
     "spec": "mocha",
-    "test": "npm run clean && npm run lint && npm run spec"
+    "test": "npm run lint && npm run spec"
+  },
+  "engines": {
+    "node": ">=4.0.0"
   },
   "dependencies": {
     "asar": "^0.14.0",
-    "async": "^2.5.0",
+    "cross-spawn-promise": "^0.10.1",
     "debug": "^3.1.0",
     "fs-extra": "^4.0.2",
     "get-folder-size": "^1.0.0",
     "glob": "^7.1.2",
     "lodash": "^4.17.4",
     "mkdirp": "^0.5.1",
+    "nodeify": "^1.0.1",
+    "pify": "^3.0.0",
     "semver": "^5.4.1",
     "temp": "^0.8.3",
     "word-wrap": "^1.2.3",
@@ -62,17 +66,21 @@
     "eslint-plugin-promise": "^3.6.0",
     "eslint-plugin-standard": "^3.0.1",
     "mocha": "^4.0.1",
-    "retry": "^0.10.1",
-    "rimraf": "^2.6.2"
+    "mz": "^2.7.0",
+    "promise-retry": "^1.1.1"
   },
-  "gitHead": "df067f4126836a11386cf72cba71c8fb1a263382",
+  "gitHead": "bc66de3336cc6b74b0dd8da9a90a5911c668f309",
   "homepage": "https://github.com/unindented/electron-installer-debian#readme",
-  "_npmVersion": "3.10.10",
-  "_nodeVersion": "6.12.0",
+  "_npmVersion": "5.6.0",
+  "_nodeVersion": "8.9.4",
   "dist": {
-    "shasum": "a09f8345861fe924e25a714d4af2e89c428b22b7",
-    "tarball": "https://registry.npmjs.org/electron-installer-debian/-/electron-installer-debian-0.7.1.tgz"
+    "integrity": "sha512-UkEk7d1L8gwaRnZMF1AcEb3WH5OStmUgv1AQUmTbKjvzGnAU9IZAZuDgFK/8hFClRJvhlWC6Xykv7WggC8jSxQ==",
+    "shasum": "c30e5b82ab5b87a9ae32b2a9f7f63b08e1ccf6d3",
+    "tarball": "http://registry.npmjs.org/electron-installer-debian/-/electron-installer-debian-0.8.1.tgz",
+    "fileCount": 13,
+    "unpackedSize": 450508
   },
+  "_hasShrinkwrap": false,
   "stars": 1,
   "versions": [
     {
@@ -126,10 +134,22 @@
     {
       "number": "0.7.1",
       "date": "2017-11-13T18:34:20.562Z"
+    },
+    {
+      "number": "0.7.2",
+      "date": "2018-01-18T08:40:02.670Z"
+    },
+    {
+      "number": "0.8.0",
+      "date": "2018-01-19T06:56:48.722Z"
+    },
+    {
+      "number": "0.8.1",
+      "date": "2018-02-21T02:57:48.714Z"
     }
   ],
   "created": "2016-01-28T12:20:28.770Z",
-  "modified": "2017-11-13T18:34:20.562Z",
+  "modified": "2018-02-21T02:57:50.760Z",
   "lastPublisher": {
     "name": "unindented",
     "email": "unindented@gmail.com"

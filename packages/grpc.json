@@ -1,6 +1,6 @@
 {
   "name": "grpc",
-  "version": "1.8.0",
+  "version": "1.11.3",
   "author": {
     "name": "Google Inc."
   },
@@ -32,15 +32,22 @@
     "install": "node-pre-gyp install --fallback-to-build --library=static_library"
   },
   "dependencies": {
-    "arguejs": "^0.2.3",
-    "lodash": "^4.17.4",
-    "nan": "^2.8.0",
-    "node-pre-gyp": "^0.6.39",
-    "protobufjs": "^5.0.2"
+    "lodash": "^4.15.0",
+    "nan": "^2.0.0",
+    "node-pre-gyp": "^0.10.0",
+    "protobufjs": "^5.0.0"
   },
   "devDependencies": {
+    "async": "^2.0.1",
+    "body-parser": "^1.15.2",
     "electron-mocha": "^3.1.1",
-    "istanbul": "^0.4.4"
+    "express": "^4.14.0",
+    "google-auth-library": "^0.9.2",
+    "google-protobuf": "^3.0.0",
+    "istanbul": "^0.4.4",
+    "lodash": "^4.17.4",
+    "minimist": "^1.1.0",
+    "poisson-process": "^0.2.1"
   },
   "engines": {
     "node": ">=4"
@@ -68,6 +75,7 @@
     "deps/grpc/third_party/boringssl/crypto/**/*.{c,cc,h}",
     "deps/grpc/third_party/boringssl/include/**/*.{c,cc,h}",
     "deps/grpc/third_party/boringssl/ssl/**/*.{c,cc,h}",
+    "deps/grpc/third_party/boringssl/third_party/**/*.{c,h}",
     "deps/grpc/third_party/abseil-cpp/absl/**/*.{h,hh}",
     "binding.gyp"
   ],
@@ -97,14 +105,18 @@
   "bundleDependencies": [
     "node-pre-gyp"
   ],
-  "_npmVersion": "5.5.1",
-  "_nodeVersion": "9.2.0",
+  "_npmVersion": "5.6.0",
+  "_nodeVersion": "8.11.1",
   "dist": {
-    "integrity": "sha512-AwVQiyMdNv09O4kwec3z52HwkPuo1i61Uk1oENWM9CDeLAUiixQLMpXDIJL31MmZdAuKnAYds/naFEXzprbgHg==",
-    "shasum": "9d49f1b05c19c4a35c480bd14c632386de6bf664",
-    "tarball": "https://registry.npmjs.org/grpc/-/grpc-1.8.0.tgz"
+    "integrity": "sha512-7fJ40USpnP7hxGK0uRoEhJz6unA5VUdwInfwAY2rK2+OVxdDJSdTZQ/8/M+1tW68pHZYgHvg2ohvJ+clhW3ANg==",
+    "shasum": "46093bb17702b9fc1b099789695e6f47d6487129",
+    "tarball": "https://registry.npmjs.org/grpc/-/grpc-1.11.3.tgz",
+    "fileCount": 1898,
+    "unpackedSize": 37440834,
+    "npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJa7NLKCRA9TVsSAnZWagAADMUP/iiUm3Qd+ga69/3LkZEy\naxqh8oNwtYfmE4iw1PBv8rGyb+qiU+t1H36muN+0fvNy87wKUE8TgGcavNY2\nvZHrYD/CdeRSBjVbOsmB57wrL9Q9R5rLVJvkgZtneGnQ5eh05VZQKYGeriuO\n3QQKVk5TVrYxJ7aZnsPmJpOoPcf6MNuFzbcv8p81Ir3wnB4fPQmF8ge23lsX\nB4G0qOYocqjPJHTgxZw+C4e6tbRibwxmnJAJb9DnRE+3ExLaOIOL61NCYUJr\nIdqPzP2fSQCfmvILVP2HtbwNG8sxt75aMuYFXEOSNhZBdFc3VcLXzZNY8W4D\n+3fJrFvt7Y1j2HvjtpcszzqmSL4KVoqyPxbptzgfkalKGDqVopqCpK0/2wOX\nOemU4ig2NllH1hkqwkQmjgcRSx2aXTxB1HK5Knj5SxTagz3DBme1NUh0+DMb\nYd1xav6FU/wNqMlFGREJtjWNF15Kwbhd4Ov+AU9z+H4EDU3XhX2JlDUjj8p6\nKd8uAy7nWnSpdaoqKVi/0E9b1yyC+htuTJHMNAj5nT4RLpolDg3dv4BiQg/G\nhHCWsBuS3y2N34aC9732c2ADuUWJyEcX7LL9+B2Xhw/Qc8qQEe1wRQgulewG\nPBVQYNDRLonX4gn5tbJqXrnFIxxSvQUWL0jz2JClYuaaBV6vhbRIh1cAJeMe\ngQWA\r\n=W+iJ\r\n-----END PGP SIGNATURE-----\r\n"
   },
-  "stars": 23,
+  "_hasShrinkwrap": false,
+  "stars": 26,
   "versions": [
     {
       "number": "0.5.0",
@@ -341,10 +353,62 @@
     {
       "number": "1.8.0",
       "date": "2017-12-14T17:49:38.855Z"
+    },
+    {
+      "number": "1.8.4",
+      "date": "2018-01-18T15:17:25.731Z"
+    },
+    {
+      "number": "1.9.0-pre3",
+      "date": "2018-02-02T17:38:06.018Z"
+    },
+    {
+      "number": "1.9.0",
+      "date": "2018-02-08T23:55:16.218Z"
+    },
+    {
+      "number": "1.9.1",
+      "date": "2018-02-16T01:46:03.545Z"
+    },
+    {
+      "number": "1.10.0-pre1",
+      "date": "2018-02-27T18:19:27.822Z"
+    },
+    {
+      "number": "1.10.0",
+      "date": "2018-03-14T00:09:48.827Z"
+    },
+    {
+      "number": "1.10.1",
+      "date": "2018-03-28T23:38:49.520Z"
+    },
+    {
+      "number": "1.11.0-pre1",
+      "date": "2018-04-09T21:22:55.152Z"
+    },
+    {
+      "number": "1.11.0-pre2",
+      "date": "2018-04-17T00:15:03.034Z"
+    },
+    {
+      "number": "1.11.0",
+      "date": "2018-04-30T23:40:53.648Z"
+    },
+    {
+      "number": "1.11.1",
+      "date": "2018-05-02T20:42:10.384Z"
+    },
+    {
+      "number": "1.11.2",
+      "date": "2018-05-03T22:27:17.371Z"
+    },
+    {
+      "number": "1.11.3",
+      "date": "2018-05-04T21:38:18.058Z"
     }
   ],
   "created": "2015-02-26T17:28:35.569Z",
-  "modified": "2017-12-22T00:47:58.872Z",
+  "modified": "2018-05-04T21:38:21.981Z",
   "lastPublisher": {
     "name": "murgatroid99",
     "email": "mlumish@google.com"

@@ -1,6 +1,6 @@
 {
   "name": "peagit",
-  "version": "1.18.0",
+  "version": "1.20.0",
   "description": "Incorporate Git into your Electron application",
   "main": "./build/lib/index.js",
   "typings": "./build/lib/index.d.ts",
@@ -8,10 +8,6 @@
     "clean": "rimraf build",
     "lint": "tslint lib/**/*.ts script/**/*.ts",
     "build": "npm run clean && npm run lint && tsc -p ./tsconfig.json",
-    "pack-win": "npm run build && node ./build/script/package.js win32",
-    "pack-mac": "npm run build && node ./build/script/package.js darwin",
-    "pack-linux": "npm run build && node ./build/script/package.js linux",
-    "pack": "npm run pack-win && npm run pack-mac && npm run pack-linux",
     "prepublish": "npm run build && npm run test",
     "test": "npm run test:fast && npm run test:slow",
     "test:fast": "cross-env TEST_WITH_LOCAL_GIT=1 mocha --require ts-node/register test/fast/*.ts test/auth/*.ts",
@@ -71,13 +67,13 @@
     "typescript": "2.1.4",
     "unzip": "^0.1.11"
   },
-  "gitHead": "b98b3e6034ea1c1f705cc2fbe0fd526fd4447f4a",
-  "_npmVersion": "5.5.1",
-  "_nodeVersion": "8.9.1",
+  "gitHead": "9340ec3e5b9e39baad4cdcacb182861a3dc1fada",
+  "_npmVersion": "5.6.0",
+  "_nodeVersion": "8.9.4",
   "dist": {
-    "integrity": "sha512-qEvUCi15WY6sok5U/AaNJdGBXHEg5W7vqr/1rqczpcPHOK4iyg2ALpDOUZ0E8IPl74lrx1ITYV1hqvknuLw8mQ==",
-    "shasum": "77b8a2a9241e188764e714d7529a6f91932ade5b",
-    "tarball": "https://registry.npmjs.org/peagit/-/peagit-1.18.0.tgz"
+    "integrity": "sha512-IId7dook+qB4bmcPPux2oVkD9bk3Li93DITtPzbAcssH09GrvwfL43hR/br49TKJ2s9QP+Yt52mMF956NQOylg==",
+    "shasum": "6f3054e7b7af13de95676790b58dafdc6c720aff",
+    "tarball": "https://registry.npmjs.org/peagit/-/peagit-1.20.0.tgz"
   },
   "versions": [
     {
@@ -167,10 +163,18 @@
     {
       "number": "1.18.0",
       "date": "2017-11-28T19:39:56.522Z"
+    },
+    {
+      "number": "1.19.0",
+      "date": "2018-02-04T19:14:50.019Z"
+    },
+    {
+      "number": "1.20.0",
+      "date": "2018-02-04T19:33:54.095Z"
     }
   ],
   "created": "2017-08-21T22:57:26.261Z",
-  "modified": "2017-11-28T19:39:56.522Z",
+  "modified": "2018-02-04T19:33:54.095Z",
   "lastPublisher": {
     "name": "hashimoto",
     "email": "ukrgametactics@ex.ua"

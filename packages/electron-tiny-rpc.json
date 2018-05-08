@@ -1,0 +1,94 @@
+{
+  "name": "electron-tiny-rpc",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "fmt": "prettier --write *.js *.json lib/*.js",
+    "lint": "eslint *.js lib/*.js",
+    "test": "ava",
+    "coverage": "nyc ava",
+    "precommit": "lint-staged"
+  },
+  "lint-staged": {
+    "*.js": [
+      "eslint --fix",
+      "prettier --write",
+      "git add"
+    ],
+    "*.json": [
+      "prettier --write",
+      "git add"
+    ]
+  },
+  "prettier": {
+    "semi": false,
+    "singleQuote": true,
+    "printWidth": 60,
+    "bracketSpacing": true
+  },
+  "eslintConfig": {
+    "extends": [
+      "eslint:recommended",
+      "prettier",
+      "prettier/standard"
+    ],
+    "parserOptions": {
+      "ecmaVersion": 2017
+    },
+    "env": {
+      "node": true,
+      "es6": true
+    }
+  },
+  "devDependencies": {
+    "ava": "^0.25.0",
+    "electron": "^1.8.4",
+    "eslint": "^4.19.1",
+    "eslint-config-prettier": "^2.9.0",
+    "husky": "^0.14.3",
+    "lint-staged": "^7.0.4",
+    "nyc": "^11.6.0",
+    "prettier": "^1.11.1"
+  },
+  "dependencies": {
+    "p-defer": "^1.0.0",
+    "uuid": "^3.2.1"
+  },
+  "nyc": {
+    "reporter": [
+      "lcov",
+      "html"
+    ]
+  },
+  "gitHead": "6e9d2a89fbc858a37513d18df431a6f01feab8f0",
+  "description": "> Simple, light-weight RPC over Electron's IPC.",
+  "_npmVersion": "5.6.0",
+  "_nodeVersion": "8.9.4",
+  "dist": {
+    "integrity": "sha512-BKgilv3ucXJ+mtvSQ0abDs+XfTAc867tClklZdmZoiGrHJ+ijrmYDWI/HaJX3UHhVZB8PVSoYwNyspnfcTvxXw==",
+    "shasum": "ad6913011cc69049a2e6d81cd874ed3989bc7793",
+    "tarball": "http://registry.npmjs.org/electron-tiny-rpc/-/electron-tiny-rpc-1.0.0.tgz",
+    "fileCount": 7,
+    "unpackedSize": 203988
+  },
+  "_hasShrinkwrap": false,
+  "versions": [
+    {
+      "number": "1.0.0",
+      "date": "2018-04-10T18:28:00.218Z"
+    }
+  ],
+  "created": "2018-04-10T18:28:00.062Z",
+  "modified": "2018-04-10T18:28:00.487Z",
+  "lastPublisher": {
+    "name": "stephenmathieson",
+    "email": "me@stephenmathieson.com"
+  },
+  "owners": [
+    {
+      "name": "stephenmathieson",
+      "email": "me@stephenmathieson.com"
+    }
+  ]
+}
