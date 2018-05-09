@@ -8,7 +8,7 @@
     "build:init": "mkdir -p packages && touch packages/___.json && rm packages/*",
     "build:collect": "node script/collect.js",
     "build:compile": "node script/compile.js > index.json",
-    "test": "node test.js | tap-spec && standard",
+    "test": "jest && standard --fix",
     "travis-deploy-once": "travis-deploy-once",
     "semantic-release": "semantic-release"
   },
@@ -28,6 +28,8 @@
   "devDependencies": {
     "clean-deep": "^2.0.1",
     "got": "^6.3.0",
+    "is-number": "^6.0.0",
+    "jest": "^22.4.3",
     "limiter": "^1.1.0",
     "lodash": "^4.17.2",
     "make-promises-safe": "^1.1.0",
@@ -37,11 +39,16 @@
     "package-stream": "^1.0.0",
     "request": "^2.74.0",
     "require-dir": "^0.3.0",
+    "semantic-release": "^15.4.0",
     "sourceranks": "^2.0.0",
-    "standard": "^8.5.0",
+    "standard": "^11.0.1",
     "tap-spec": "^4.1.1",
     "tape": "^4.6.2",
-    "travis-deploy-once": "^5.0.0",
-    "semantic-release": "^15.4.0"
+    "travis-deploy-once": "^5.0.0"
+  },
+  "standard": {
+    "env": [
+      "jest"
+    ]
   }
 }

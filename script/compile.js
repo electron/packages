@@ -11,6 +11,6 @@ const packages = objectValues(requireDir('../packages'))
     return pkg
   })
   .filter(pkg => pkg.mentions('electron'))
-  .sort((a, b) => b.sourcerank - a.sourcerank)
+  .sort((a, b) => (b.sourcerank || 0) - (a.sourcerank || 0))
 
 process.stdout.write(JSON.stringify(cleanDeep(packages), null, 2))
