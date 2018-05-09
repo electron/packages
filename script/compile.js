@@ -3,6 +3,7 @@ const requireDir = require('require-dir')
 const sourceranks = require('sourceranks')
 const Package = require('nice-package')
 const cleanDeep = require('clean-deep')
+const excludes = require('../lib/excludes')
 
 const packages = objectValues(requireDir('../packages'))
   .map(data => {
@@ -11,6 +12,7 @@ const packages = objectValues(requireDir('../packages'))
     return pkg
   })
   .filter(pkg => pkg.mentions('electron'))
-  .sort((a, b) => b.sourcerank - a.sourcerank)
+  .filter(pkg => !excludes.includes(pkg.name))
+  .sort((a, b) => (b.sourcerank || 0) - (a.sourcerank || 0))
 
 process.stdout.write(JSON.stringify(cleanDeep(packages), null, 2))
