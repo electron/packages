@@ -6,7 +6,7 @@ test('is an array', () => {
 })
 
 test('has lots of packages', () => {
-  expect(packages.length).toBeGreaterThan(3400)
+  expect(packages.length).toBeGreaterThan(3300)
 })
 
 test('has a high percentage of packages with sourceranks', () => {
@@ -18,4 +18,12 @@ test('has a high percentage of packages with sourceranks', () => {
 test('sorts results by sourcerank', () => {
   const sourceranks = packages.map(p => p.sourcerank)
   expect(sourceranks).toEqual(sourceranks.sort())
+})
+
+test('excludes packages like `electron` and `electron-prebuilt`', () => {
+  const names = packages.map(p => p.name)
+  expect(names.includes('electron-storage')).toBe(true)
+  expect(names.includes('electron')).toBe(false)
+  expect(names.includes('electron-prebuilt')).toBe(false)
+  expect(names.includes('matcha')).toBe(false)
 })
